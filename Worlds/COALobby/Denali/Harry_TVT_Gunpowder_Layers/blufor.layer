@@ -1,0 +1,464 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5446.033 377.927 5992.206
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5451.86 378.946 5995.908
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5458.113 380.291 5999.758
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5463.793 380.761 6003.041
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5470.828 381.656 6007.55
+  angles 0 -123.97 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5480.563 382.487 6012.452
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5492.001 382.969 6018.051
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5503.49 383.163 6022.927
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5516.153 383.089 6026.353
+  angles 0 -111.335 0
+  m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+}
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 5459.824 375.489 5959.145
+}
+GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 6000
+     m_fResourceValueMax 6000
+    }
+   }
+  }
+ }
+ coords 5000.062 290.363 5257.307
+ angles 0 113.921 0
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 5002.61 290.323 5261.949
+  angles 0 -62.53 0
+  {
+   GenericEntity {
+    ID "6186DB2F33FB321E"
+    {
+     GenericEntity {
+      ID "6186D3A8CE3D252F"
+      coords -3.004 0 1.196
+      angles 0 95.83 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D253A"
+      coords -3.046 0 -0.306
+      angles 0 -90.588 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2546"
+      coords 2.76 0 0.978
+      angles 0 88.081 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2553"
+      coords -0.961 0 3.237
+      angles 0 -6.91 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2566"
+      coords 2.74 0 -0.538
+      angles 0 -86.285 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2577"
+      coords 0.554 0 3.284
+      angles 0 -174.619 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2583"
+      coords 2.001 0.232 2.5
+      angles 0 45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25A8"
+      coords -2.319 0 2.499
+      angles 0 -45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B5"
+      coords -2.319 0.232 2.499
+      angles 0 -45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B8"
+      coords 2.001 0 2.5
+      angles 0 45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25C7"
+      coords -2.318 0 -2.001
+      angles 0 -135 0
+      {
+       GenericEntity {
+        ID "6186DB290A91C258"
+        coords -1.504 -0.06 -0.038
+        angles 0 -65.633 0
+       }
+       GenericEntity {
+        ID "6186DB290A91C259"
+        coords -1.425 0.246 -0.45
+        angles 2.39 167.781 -134.591
+       }
+       GenericEntity {
+        ID "6186DB290A91C25A"
+        coords -0.534 0.541 0.161
+        angles 0 -175.36 0
+       }
+       GenericEntity {
+        ID "6186DB290A91C25B"
+        coords 0.083 0.571 0.317
+        angles 0 -119.294 0
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2601"
+      coords 2.001 0 -2.001
+      angles 0 135 0
+      {
+       GenericEntity {
+        ID "6186DB291A937028"
+        coords 1.168 -0.092 0.462
+        angles 0 -147.954 0
+       }
+       GenericEntity {
+        ID "6186DB291A937029"
+        coords 1.545 -0.067 -0.062
+        angles -23.577 95.88 -2.354
+       }
+       GenericEntity {
+        ID "6186DB291A937056"
+        coords 0.564 0.545 0.23
+        angles 0 -171.275 0
+       }
+       GenericEntity {
+        ID "6186DB291A937057"
+        coords -1.177 0.485 -0.228
+        angles 0 -36.121 0
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2672"
+      coords 1.845 0 2.145
+      angles 0 150.163 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25E3"
+      coords -0.154 0.083 0.536
+      angles 0 163.319 0
+      {
+       DecalEntity {
+        ID "56DEFDB4A9499F9B"
+        coords 0 0 -0.001
+        angles -90 -180 -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24EB"
+      coords -0.047 0.083 -3.445
+      angles 0 90 0
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 0
+        angles -90 -180 -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24F0"
+      coords -0.047 0.083 -2.144
+      angles 0 90 0
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 0
+        angles -90 -180 -180
+       }
+      }
+     }
+     Turret {
+      ID "6186D3A8CE3D250E"
+      coords -0.294 0.014 0.5
+      angles 0 2 0
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4998.043 290.323 5252.717
+  angles 0 -62.53 0
+  {
+   GenericEntity {
+    ID "6186DB2F33FB321E"
+    {
+     GenericEntity {
+      ID "6186D3A8CE3D252F"
+      coords -3.004 0 1.196
+      angles 0 95.83 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D253A"
+      coords -3.046 0 -0.306
+      angles 0 -90.588 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2546"
+      coords 2.76 0 0.979
+      angles 0 88.081 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2553"
+      coords -0.961 0 3.238
+      angles 0 -6.91 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2566"
+      coords 2.74 0 -0.536
+      angles 0 -86.285 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2577"
+      coords 0.553 0 3.285
+      angles 0 -174.619 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2583"
+      coords 2.001 0.232 2.5
+      angles 0 45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25A8"
+      coords -2.318 0 2.501
+      angles 0 -45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B5"
+      coords -2.318 0.232 2.501
+      angles 0 -45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B8"
+      coords 2.001 0 2.5
+      angles 0 45 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25C7"
+      coords -2.318 0 -1.999
+      angles 0 -135 0
+      {
+       GenericEntity {
+        ID "6186DB290A91C258"
+        coords -1.503 -0.06 -0.036
+        angles 0 -65.633 0
+       }
+       GenericEntity {
+        ID "6186DB290A91C259"
+        coords -1.425 0.246 -0.448
+        angles 2.39 167.781 -134.591
+       }
+       GenericEntity {
+        ID "6186DB290A91C25A"
+        coords -0.533 0.541 0.161
+        angles 0 -175.36 0
+       }
+       GenericEntity {
+        ID "6186DB290A91C25B"
+        coords 0.083 0.571 0.317
+        angles 0 -119.294 0
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2601"
+      coords 2.001 0 -1.999
+      angles 0 135 0
+      {
+       GenericEntity {
+        ID "6186DB291A937028"
+        coords 1.169 -0.092 0.464
+        angles 0 -147.954 0
+       }
+       GenericEntity {
+        ID "6186DB291A937029"
+        coords 1.546 -0.067 -0.061
+        angles -23.577 95.88 -2.354
+       }
+       GenericEntity {
+        ID "6186DB291A937056"
+        coords 0.565 0.545 0.231
+        angles 0 -171.275 0
+       }
+       GenericEntity {
+        ID "6186DB291A937057"
+        coords -1.176 0.485 -0.227
+        angles 0 -36.121 0
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2672"
+      coords 1.845 0 2.146
+      angles 0 150.163 0
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25E3"
+      coords -0.154 0.083 0.537
+      angles 0 163.319 0
+      {
+       DecalEntity {
+        ID "56DEFDB4A9499F9B"
+        coords 0 0 0
+        angles -90 -180 -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24EB"
+      coords -0.046 0.083 -3.444
+      angles 0 90 0
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 0
+        angles -90 -180 -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24F0"
+      coords -0.046 0.083 -2.143
+      angles 0 90 0
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 -0.001
+        angles -90 -180 -180
+       }
+      }
+     }
+     Turret {
+      ID "6186D3A8CE3D250E"
+      coords -0.294 0.014 0.5
+      angles 0 2 0
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 3820.102 410.625 5641.669
+ angles 0 120.132 0
+}
+Vehicle M923A1_engineer_BLUFOR1 : "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et" {
+ coords 5465.317 376.495 5959.259
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 5472.974 375.946 5956.515
+ angles 0 -27.482 0
+ {
+  SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+   coords -1.055 -0.445 -4.596
+   angles 0 27.482 0
+   m_aUnitPrefabSlots +{
+    "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"
+   }
+   {
+    $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     {
+      coords 19.896 0.319 -2.149
+     }
+     {
+      coords 19.896 0.319 -4.639
+      {
+       SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+        coords -19.896 -0.319 2.2
+        m_aUnitPrefabSlots +{
+         "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"
+        }
+        {
+         $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+          {
+           coords 19.896 0.319 -5.719
+          }
+          {
+           coords 19.896 0.319 -8.915
+           {
+            SCR_AIGroup : "{3B279F5833A489CE}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MATTeam_p.et" {
+             coords -3.94 2.243 28.378
+             {
+              SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+               coords -494.583 -87.999 -738.632
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

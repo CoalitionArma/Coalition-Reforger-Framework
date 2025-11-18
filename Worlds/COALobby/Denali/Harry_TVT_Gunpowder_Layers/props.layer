@@ -1,0 +1,289 @@
+$grp Tree : "{20C4A23B039DFCF3}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_picea_abies_3s.et" {
+ {
+  coords 4984.891 0 5288.453
+  angles 1.698 49.901 -1.771
+  scale 0.869
+ }
+ {
+  coords 4975.661 0 5286.01
+  angles -1.33 -121.194 -1.274
+  scale 0.838
+ }
+ {
+  coords 4967.748 -0 5276.399
+  angles -1.053 -71.084 0.767
+  scale 0.955
+ }
+}
+Tree : "{59EDDDB5D3B5241F}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_piceaabies_3f.et" {
+ coords 4962.204 3.413 5262.052
+ angles 1.599 -161.043 -1.556
+ scale 0.989
+}
+Tree : "{C1F4CA4F9D788CE5}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_pinus_sylvestris_3s.et" {
+ coords 4953.051 0.719 5247.922
+ angles 1.454 -111.679 -0.438
+ scale 0.93
+}
+$grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+ {
+  coords 4967.114 289.501 5252.131
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+   }
+  }
+ }
+ {
+  coords 4969.516 289.164 5247.94
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4971.861 288.89 5243.827
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4965.115 289.266 5254.565
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4967.877 289.297 5258.29
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4970.651 289.329 5262.031
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4976.159 289.593 5269.458
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4978.933 289.706 5273.198
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4973.397 289.463 5265.732
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4981.1 289.043 5229.548
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4983.455 289.043 5225.407
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4985.828 289.043 5221.235
+  angles 0 -29.622 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4981.698 289.706 5276.926
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 4984.547 289.706 5280.768
+  angles 0 36.561 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 1.382 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+}
+$grp Tree : "{DE7FC095F656695C}Prefabs/Vegetation/Tree/t_picea_abies/t_picea_abies_3s.et" {
+ {
+  coords 4965.745 0.368 5262.467
+  angles -1.052 -57.746 -0.514
+  scale 0.67
+ }
+ {
+  coords 4958.805 0 5268.194
+  angles -1.329 -173.688 -0.941
+  scale 1.097
+ }
+ {
+  coords 4990.072 -0 5292.724
+  angles -1.329 -173.688 -0.941
+  scale 1.097
+ }
+ {
+  coords 4980.595 0.801 5284.349
+  angles -1.329 -173.688 -0.941
+  scale 1.097
+ }
+}
