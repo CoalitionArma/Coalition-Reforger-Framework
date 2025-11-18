@@ -1,0 +1,10 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ ID "65865377C721CC48"
+ components {
+  CRF_PolyZone "{65865377C721CCB0}" {
+   m_bIsSafestartBorder 0
+   m_bIsForwardDeployZone 1
+  }
+ }
+ coords 1480.955 1.358 978.488
+}

@@ -75,6 +75,9 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 			if (m_bAliveOnly && damageManager.GetState() == EDamageState.DESTROYED)
 				return false;
 			
+			if (!factionAffiliation)
+				return false;
+			
 			if (!m_aFactionKey.IsEmpty() && m_aFactionKey.Contains(factionAffiliation.GetDefaultAffiliatedFaction().GetFactionKey()))
 				return false;
 			
