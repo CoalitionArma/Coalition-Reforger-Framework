@@ -34,7 +34,7 @@ The CRF Vehicle Depot system allows players to spawn vehicles using various cost
 |------|--------|-------|----------|
 | **TICKETS** | CRF Side Ticket System | Spawns Vs Assets Balancing | High-value vehicles, spam prevention |
 | **SUPPLIES** | Nearby supply storage | Shared resource pool | Logistics gameplay, resource management |
-| **USES** | Global depot pool | Shared use count | Limited spawns, event vehicles |
+| **USES** | Spawn amount per vehicle (-1 for Unlimited) | Shared use count | Limited spawns per vehicle, event vehicles, COTVTs |
 
 ### Basic Configuration
 | Setting | Default | Description |
@@ -60,7 +60,6 @@ The CRF Vehicle Depot system allows players to spawn vehicles using various cost
 | Setting | Default | Description |
 |---------|---------|-------------|
 | **Supply Search Radius** | 50m | Range to find supply storage |
-| **Global Uses Pool** | 20 | Total uses for USES-type vehicles |
 
 ### Other Options
 | Setting | Description |

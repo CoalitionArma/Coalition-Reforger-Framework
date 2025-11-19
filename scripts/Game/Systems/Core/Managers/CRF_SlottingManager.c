@@ -28,6 +28,8 @@ class CRF_SlottingManager : ScriptComponent
 	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
+		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
+		m_OnSlottingUpdate = new ScriptInvoker();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -125,9 +127,6 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnSlottingUpdate()
 	{
-		if (!m_OnSlottingUpdate)
-			m_OnSlottingUpdate = new ScriptInvoker();
-
 		return m_OnSlottingUpdate;
 	}
 	
@@ -166,6 +165,11 @@ class CRF_SlottingManager : ScriptComponent
 		map<int, SCR_AIGroup> groupMap = new map<int, SCR_AIGroup>;
 		array<SCR_AIGroup> outputArray = {};
 		array<int> sortingArray = {};
+		
+		// Pre-allocate based on slot count (worst case: every slot has unique group)
+		int slotCount = m_mSlotsMap.Count();
+		sortingArray.Reserve(slotCount);
+		outputArray.Reserve(slotCount);
 		
 		// Collect all relevant groups
 		foreach (int slotId, CRF_SlotDataContainer slotData : m_mSlotsMap)

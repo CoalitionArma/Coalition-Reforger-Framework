@@ -3,11 +3,15 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 class CRF_GearscriptManager : ScriptComponent
 {
 	protected CRF_Gamemode m_Gamemode;
+	protected SCR_EntityCatalogManagerComponent m_CatalogManager; // PERFORMANCE OPTIMIZATION
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	ref array<IEntity> m_VehiclesInQueue = {};
 	
 	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
+	
+	// Resource cache to avoid repeated Resource.Load() calls - PERFORMANCE OPTIMIZATION
+	protected ref map<ResourceName, Resource> m_mResourceCache = new map<ResourceName, Resource>();
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -24,48 +28,72 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Get cached resource to avoid repeated Resource.Load() calls
+	 * @param resourceName Resource to load/retrieve from cache
+	 * @return Cached or newly loaded resource
+	 */
+	protected Resource GetCachedResource(ResourceName resourceName)
+	{
+		if (m_mResourceCache.Contains(resourceName))
+			return m_mResourceCache.Get(resourceName);
+		
+		Resource res = Resource.Load(resourceName);
+		if (res)
+			m_mResourceCache.Set(resourceName, res);
+		
+		return res;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
-		super.OnPostInit(owner);
+	super.OnPostInit(owner);
 
-		// Only run on in-game post init
-		if (!GetGame().InPlayMode())
-			return;
-		
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		#ifdef WORKBENCH
-		#else
-		if (!System.IsConsoleApp())
-			return;
-		#endif
-		SetEventMask(owner, EntityEvent.FRAME);
-	}	
+	// Only run on in-game post init
+	if (!GetGame().InPlayMode())
+		return;
 	
-	array<int> GetSupplyValuesForItems(array<ResourceName> items)
+	m_Gamemode = CRF_Gamemode.GetInstance();
+	m_CatalogManager = SCR_EntityCatalogManagerComponent.GetInstance(); // Cache catalog manager - PERFORMANCE OPTIMIZATION
+	#ifdef WORKBENCH
+	#else
+	if (!System.IsConsoleApp())
+		return;
+	#endif
+	SetEventMask(owner, EntityEvent.FRAME);
+}	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
-		array<int> itemSupply = {};
+		// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
+		array<int> itemSupply = new array<int>();
+		itemSupply.Reserve(items.Count());
+		
 		foreach(ResourceName item: items)
 		{
 			itemSupply.Insert(0);
 		}
 		
-		array<Faction> factions = {};
+		array<Faction> factions = new array<Faction>();
 		FactionManager factionManager = GetGame().GetFactionManager();
 		
 		if (!factionManager)
 			return itemSupply;
 		
-		factionManager.GetFactionsList(factions);
-		
-		array<ref SCR_EntityCatalog> itemCatalogs = {};
-		SCR_EntityCatalogManagerComponent catalogMan = SCR_EntityCatalogManagerComponent.GetInstance();
-		foreach (Faction faction: factions)
-		{
-			SCR_EntityCatalog catalog = catalogMan.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
-			itemCatalogs.Insert(catalog);
-		}
-		
-		foreach (SCR_EntityCatalog catalog: itemCatalogs)
+	factionManager.GetFactionsList(factions);
+	
+	// Pre-allocate catalogs array - PERFORMANCE OPTIMIZATION
+	array<ref SCR_EntityCatalog> itemCatalogs = new array<ref SCR_EntityCatalog>();
+	itemCatalogs.Reserve(factions.Count());
+	
+	// Use cached catalog manager - PERFORMANCE OPTIMIZATION
+	if (!m_CatalogManager)
+		return itemSupply;
+	
+	foreach (Faction faction: factions)
+	{
+		SCR_EntityCatalog catalog = m_CatalogManager.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
+		itemCatalogs.Insert(catalog);
+	}		foreach (SCR_EntityCatalog catalog: itemCatalogs)
 		{
 			for (int i = 0; i < itemSupply.Count(); i++)
 			{
@@ -86,7 +114,10 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		if (m_fUpdateBuffer >= 5)
 		{
-			array<IEntity> vehiclesToRemove = {};
+			// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
+			array<IEntity> vehiclesToRemove = new array<IEntity>();
+			vehiclesToRemove.Reserve(m_VehiclesInQueue.Count());
+			
 			foreach (IEntity vehicle: m_VehiclesInQueue)
 			{
 				if (!vehicle)
@@ -109,61 +140,66 @@ class CRF_GearscriptManager : ScriptComponent
 		super.EOnFrame(owner, timeSlice);
 	}
 	
-	bool FindFactionByClosestPlayer(IEntity vehicle)
-	{	
-		float closestPlayerDistance;
-		IEntity closestPlayer;
-		string factionKey = "";
+bool FindFactionByClosestPlayer(IEntity vehicle)
+{	
+	float closestPlayerDistance;
+	IEntity closestPlayer;
+	string factionKey = "";
+	
+	// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
+	ArmaReforgerScripted game = GetGame();
+	
+	array<AIAgent> agents = {};
+	game.GetAIWorld().GetAIAgents(agents);	
+	foreach (AIAgent agent: agents)
+	{
+		IEntity aiPlayer = agent.GetControlledEntity();
+		if (!aiPlayer)
+			continue;
 		
-		array<AIAgent> agents = {};
-		GetGame().GetAIWorld().GetAIAgents(agents);
+		if (!ChimeraCharacter.Cast(aiPlayer))
+			continue;
 		
-		foreach (AIAgent agent: agents)
+		// Cache component lookup - PERFORMANCE OPTIMIZATION
+		FactionAffiliationComponent factionComp = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent));
+		if (!factionComp)
+			continue;
+		
+		if (!closestPlayer)
 		{
-			IEntity aiPlayer = agent.GetControlledEntity();
-			if (!aiPlayer)
+			int distance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+			if (distance > 200)
 				continue;
 			
-			if (!ChimeraCharacter.Cast(aiPlayer))
-				continue;
-			
-			if (!aiPlayer.FindComponent(FactionAffiliationComponent))
-				continue;
-			
-			if (!closestPlayer)
-			{
-				int distance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-				if (distance > 200)
-					continue;
-				
-				closestPlayerDistance = distance;
-				closestPlayer = aiPlayer;
-				factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
-				continue;
-			}
-			
-			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-			if (playerDistance > closestPlayerDistance || playerDistance > 200)
-				continue;
-			
+			closestPlayerDistance = distance;
 			closestPlayer = aiPlayer;
-			closestPlayerDistance = playerDistance;
-			factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+			factionKey = factionComp.GetAffiliatedFactionKey();
+			continue;
 		}
 		
-		//There's no players
+		float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+		if (playerDistance > closestPlayerDistance || playerDistance > 200)
+			continue;
+		
+		closestPlayer = aiPlayer;
+		closestPlayerDistance = playerDistance;
+		factionKey = factionComp.GetAffiliatedFactionKey();
+	}		//There's no players
 		if (!closestPlayer)
 			return false;
 		
-		Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
-		GetGame().GetCallqueue().CallLater(
-					CRF_GearscriptManager.GetInstance().SetVehicleGear, 500, false,
-					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
-				);
-		return true;
+	Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
+	// Cache manager reference - PERFORMANCE OPTIMIZATION
+	CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+	if (gearscriptManager)
+	{
+		game.GetCallqueue().CallLater(
+			gearscriptManager.SetVehicleGear, 500, false,
+			vehicle, Vehicle.Cast(vehicle).m_sFactionKey
+		);
 	}
-	
-	int GetSuppliesInTruck(IEntity truck)
+	return true;
+}	int GetSuppliesInTruck(IEntity truck)
 	{
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
@@ -262,16 +298,19 @@ class CRF_GearscriptManager : ScriptComponent
 			return "";
 		}
 		
-		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		// Use cached reference - PERFORMANCE OPTIMIZATION
+		if (!m_Gamemode)
+			return "";
+		
 		switch (factionKey)
 		{
-			case "BLUFOR": return gm.m_rBLUFORCurrentGearScript; break;
-			case "OPFOR": return gm.m_rOPFORCurrentGearScript; break;
-			case "INDFOR": return gm.m_rINDFORCurrentGearScript; break;
-			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
+			case "BLUFOR": return m_Gamemode.m_rBLUFORCurrentGearScript; break;
+			case "OPFOR": return m_Gamemode.m_rOPFORCurrentGearScript; break;
+			case "INDFOR": return m_Gamemode.m_rINDFORCurrentGearScript; break;
+			case "CIV": return m_Gamemode.m_rCIVILIANCurrentGearScript; break;
 		}
 
-		return gm.m_rCIVILIANCurrentGearScript;
+		return m_Gamemode.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -362,22 +401,54 @@ class CRF_GearscriptManager : ScriptComponent
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CreateSpawnParams(entity);
 		
-		// Apply gear
+		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
-		GetGame().GetCallqueue().CallLater(ApplyWeapons, 375, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
-		GetGame().GetCallqueue().CallLater(ApplyInventoryItems, 250, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
-		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
-		if (playerId > 0)
-		{
-			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
-			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, entity);
-			pc.InitializeRadioFromServer();
-		}
+		
+		// Use single consolidated callback instead of multiple separate ones
+		GetGame().GetCallqueue().CallLater(ApplyGearConsolidated, 500, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager, entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Consolidated gear application callback - PERFORMANCE OPTIMIZATION
+	 * Applies weapons and inventory items in a single callback to reduce CallQueue overhead
+	 * @param gearConfig Gear configuration
+	 * @param role Role identifier
+	 * @param gearScriptSettings Gearscript settings
+	 * @param spawnParams Spawn parameters
+	 * @param inventory Inventory component
+	 * @param inventoryManager Inventory manager component
+	 * @param entity Entity being equipped
+	 */
+	protected void ApplyGearConsolidated(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
+		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
+	{
+		if (!inventory || !inventoryManager || !entity)
+			return;
+		
+		// Apply weapons (originally 375ms delay, now immediate in this consolidated callback at 500ms)
+		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		
+	// Apply inventory items (originally 250ms delay, now immediate in this consolidated callback at 500ms)
+	ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+	
+	// Initialize radios for player
+	int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+	if (playerId > 0)
+	{
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		// Cache groups manager reference - PERFORMANCE OPTIMIZATION
+		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+		
+		if (groupsMan)
+			groupsMan.TuneFreqDelayWithPresets(playerId, entity);
+		if (pc)
+		{
+			pc.InitializeRadios(entity);
+			pc.InitializeRadioFromServer();
+		}
+	}
+}	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Set gear for a vehicle entity based on its faction key
 	 *
@@ -388,58 +459,60 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param vehicle The vehicle entity to equip with gear
 	 * @param factionKey The key identifying the faction to use for gear configuration
 	 */
-	void SetVehicleGear(IEntity vehicle, string factionKey)
-	{
-		//Lets find a faction, if there is none start looking for one in the loop.
-		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
-		if (!faction)
-		{	
-			float closestPlayerDistance;
-			IEntity closestPlayer;
-			factionKey = "";
-			array<AIAgent> agents = {};
+void SetVehicleGear(IEntity vehicle, string factionKey)
+{
+	// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
+	ChimeraGame game = GetGame();
+	
+	//Lets find a faction, if there is none start looking for one in the loop.
+	Faction faction = SCR_FactionManager.Cast(game.GetFactionManager()).GetFactionByKey(factionKey);
+	if (!faction)
+	{	
+		float closestPlayerDistance;
+		IEntity closestPlayer;
+		factionKey = "";
+		array<AIAgent> agents = {};
+		
+		game.GetAIWorld().GetAIAgents(agents);		foreach (AIAgent agent: agents)
+		{
+			IEntity aiPlayer = agent.GetControlledEntity();
+			if (!aiPlayer)
+				continue;
 			
-			GetGame().GetAIWorld().GetAIAgents(agents);
+			if (!ChimeraCharacter.Cast(aiPlayer))
+				continue;
 			
-			foreach (AIAgent agent: agents)
+			// Cache component lookup - PERFORMANCE OPTIMIZATION
+			FactionAffiliationComponent factionComp = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent));
+			
+			if (!closestPlayer)
 			{
-				IEntity aiPlayer = agent.GetControlledEntity();
-				if (!aiPlayer)
+				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+				if (closestPlayerDistance > 200)
 					continue;
-				
-				if (!ChimeraCharacter.Cast(aiPlayer))
-					continue;
-				
-				if (!closestPlayer)
-				{
-					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-					if (closestPlayerDistance > 200)
-						continue;
-					closestPlayer = aiPlayer;
-					if (aiPlayer.FindComponent(FactionAffiliationComponent))
-					{
-						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
-					}
-					else
-						factionKey = "CIV";
-					continue;
-				}
-				
-				float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-				if (playerDistance > closestPlayerDistance || playerDistance > 200)
-					continue;
-				
 				closestPlayer = aiPlayer;
-				closestPlayerDistance = playerDistance;
-				if (aiPlayer.FindComponent(FactionAffiliationComponent))
-					{
-						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
-					}
-					else
-						factionKey = "CIV";
+				if (factionComp)
+				{
+					factionKey = factionComp.GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
+				continue;
 			}
 			
-			//There's no players
+			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+			if (playerDistance > closestPlayerDistance || playerDistance > 200)
+				continue;
+			
+			closestPlayer = aiPlayer;
+			closestPlayerDistance = playerDistance;
+			if (factionComp)
+				{
+					factionKey = factionComp.GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
+		}			//There's no players
 			if (!closestPlayer)
 			{
 				m_VehiclesInQueue.Insert(vehicle);
@@ -447,11 +520,11 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 
 			
-			faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
-			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
-		}
+
 		
-		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(faction.GetFactionKey());
+		faction = game.GetFactionManager().GetFactionByKey(factionKey);
+		Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
+	}		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(faction.GetFactionKey());
 		if (gsContainer.m_aSupplyTrucks.Contains(vehicle.GetPrefabData().GetPrefabName()))
 			SetTruckGear(vehicle, faction, gsContainer, true);
 		else
@@ -492,7 +565,9 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
 			array<ResourceName> heGLsToAdd = {};
+			heGLsToAdd.Reserve(8);
 			array<ResourceName> glsToAdd = {};
+			glsToAdd.Reserve(8);
 			for (int i = 0; i <= 11; i++)
 			{
 				//Regular Weapons
@@ -504,6 +579,10 @@ class CRF_GearscriptManager : ScriptComponent
 					array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
 					if (weapons.Count() == 0)
 						continue;
+					// Pre-allocate based on weapons and typical magazine counts
+					int estimatedMagazines = weapons.Count() * 2; // Estimate 2 magazine types per weapon
+					magazinesToAdd.Reserve(estimatedMagazines);
+					magazineCounts.Reserve(estimatedMagazines);
 					foreach (CRF_Weapon_Class weapon: weapons)
 					{
 						if (!weapon)
@@ -543,6 +622,12 @@ class CRF_GearscriptManager : ScriptComponent
 					CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
 					if (!weapon)
 						continue;
+					// Pre-allocate for magazine arrays
+					if (weapon.m_MagazineArray)
+					{
+						magazinesToAdd.Reserve(weapon.m_MagazineArray.Count());
+						magazineCounts.Reserve(weapon.m_MagazineArray.Count());
+					}
 					bool isDisposable = IsWeaponDisposable(weapon.m_Weapon);
 					if (isDisposable)
 					{
@@ -572,6 +657,13 @@ class CRF_GearscriptManager : ScriptComponent
 					
 			array<ResourceName> grenadesToAdd = {};
 			array<ResourceName> smokesToAdd = {};
+			// Pre-allocate based on default inventory items
+			if (gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
+			{
+				int itemCount = gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems.Count();
+				grenadesToAdd.Reserve(itemCount / 2); // Estimate half might be grenades
+				smokesToAdd.Reserve(itemCount / 2); // Estimate half might be smokes
+			}
 			foreach (CRF_Inventory_Item item: gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
 			{
 				bool isGrenade;
@@ -868,7 +960,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	void IsItemGrenade(ResourceName item, out bool isGrenade = false, out bool isSmoke = false)
 	{
-		Resource itemLoaded = Resource.Load(item);
+		Resource itemLoaded = GetCachedResource(item);
+		if (!itemLoaded)
+			return;
+		
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(itemLoaded);
 		if (!entitySource)
 			return;
@@ -901,7 +996,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	bool IsWeaponDisposable(ResourceName weapon)
 	{
-		Resource weaponLoaded = Resource.Load(weapon);
+		Resource weaponLoaded = GetCachedResource(weapon);
+		if (!weaponLoaded)
+			return false;
+		
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
 		if (!entitySource)
 			return false;
@@ -938,7 +1036,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	int GetMagazineCount(ResourceName resource)
 	{
-		Resource magazine = Resource.Load(resource);
+		Resource magazine = GetCachedResource(resource);
+		if (!magazine)
+			return 0;
+		
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
 		if (!entitySource)
 			return 0;
@@ -1060,7 +1161,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	bool IsGLHE(ResourceName glToCheck)
 	{
-		Resource glLoaded = Resource.Load(glToCheck);
+		Resource glLoaded = GetCachedResource(glToCheck);
+		if (!glLoaded)
+			return false;
+		
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(glLoaded);
 		if (!entitySource)
 			return false;
@@ -1092,7 +1196,10 @@ class CRF_GearscriptManager : ScriptComponent
 	bool IsSpecRegularMagazine(CRF_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
-		Resource magazine = Resource.Load(magazineToCheck);
+		Resource magazine = GetCachedResource(magazineToCheck);
+		if (!magazine)
+			return false;
+		
 		IEntitySource magazineEntitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
 		if (!magazineEntitySource)
 			return false;
@@ -1107,7 +1214,10 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!magazineWell)
 			return false;
 		
-		Resource weaponLoaded = Resource.Load(weaponToCheck.m_Weapon);
+		Resource weaponLoaded = GetCachedResource(weaponToCheck.m_Weapon);
+		if (!weaponLoaded)
+			return false;
+		
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
 		if (!entitySource)
 			return false;
@@ -1149,7 +1259,10 @@ class CRF_GearscriptManager : ScriptComponent
 	bool IsRegularMagazine(array<ref CRF_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
-		Resource magazine = Resource.Load(magazineToCheck);
+		Resource magazine = GetCachedResource(magazineToCheck);
+		if (!magazine)
+			return false;
+		
 		IEntitySource magazineEntitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
 		if (!magazineEntitySource)
 			return false;
@@ -1163,7 +1276,10 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		foreach (CRF_Weapon_Class weapon: weaponsToCheck)
 		{
-			Resource weaponLoaded = Resource.Load(weapon.m_Weapon);
+			Resource weaponLoaded = GetCachedResource(weapon.m_Weapon);
+			if (!weaponLoaded)
+				return false;
+			
 			IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
 			if (!entitySource)
 				return false;

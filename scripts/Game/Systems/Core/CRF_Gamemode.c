@@ -171,6 +171,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void CRF_Gamemode(IEntitySource src, IEntity parent)
 	{
 		m_sInstance = this;
+		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
+		m_OnStateChanged = new ScriptInvoker();
 	}
 	
 	static CRF_Gamemode GetInstance()
@@ -284,9 +286,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 */
 	ScriptInvoker GetOnStateChanged()
 	{
-		if (!m_OnStateChanged)
-			m_OnStateChanged = new ScriptInvoker();
-
 		return m_OnStateChanged;
 	}
 	
@@ -299,8 +298,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Server-side state change handling
 		if (Replication.IsServer())
 		{
-			if (m_OnStateChanged)
-				m_OnStateChanged.Invoke();
+			// Invoke state changed (invoker already initialized in constructor)
+			m_OnStateChanged.Invoke();
 			
 			// Set basic game mode states for basegamemode
 			// useful for default components that reference it like datacollector

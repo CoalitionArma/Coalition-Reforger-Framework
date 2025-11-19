@@ -75,11 +75,17 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void InitializeManagerReferences()
 	{
-		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
-		m_RespawnManager = CRF_RespawnManager.GetInstance();
-		m_MenuManager = CRF_MenuManager.GetInstance();
-		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
-		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+		// Cache all manager references to avoid repeated GetInstance() calls
+		if (!m_GamemodeManager)
+			m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!m_RespawnManager)
+			m_RespawnManager = CRF_RespawnManager.GetInstance();
+		if (!m_MenuManager)
+			m_MenuManager = CRF_MenuManager.GetInstance();
+		if (!m_AdminMenuManager)
+			m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
+		if (!m_TelemetryManager)
+			m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -90,6 +96,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!Replication.IsServer())
 			return;
 			
+		// Ensure telemetry manager is cached
 		if (!m_TelemetryManager)
 			m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
 			
@@ -1408,30 +1415,28 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-		// Play acceptance sound using UI sound system - more reliable
-		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
-		
-		// Show notification
-		if (SCR_PopUpNotification.GetInstance())
-			SCR_PopUpNotification.GetInstance().PopupMsg("Request Accepted", 3.0);
-	}
+	// Play acceptance sound using UI sound system - more reliable
+	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
 	
-	//------------------------------------------------------------------------------------------------
+	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+	if (popupNotification)
+		popupNotification.PopupMsg("Request Accepted", 3.0);
+}	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_NotifyRequestDenied(int requesterId)
 	{
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-		// Play denial sound using UI sound system - more reliable
-		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
-		
-		// Show notification
-		if (SCR_PopUpNotification.GetInstance())
-			SCR_PopUpNotification.GetInstance().PopupMsg("Request Denied", 3.0);
-	}
+	// Play denial sound using UI sound system - more reliable
+	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
 	
-	//------------------------------------------------------------------------------------------------
+	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+	if (popupNotification)
+		popupNotification.PopupMsg("Request Denied", 3.0);
+}	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TestTargetedBroadcast(int targetPlayerId, int testValue)
 	{
