@@ -2,13 +2,16 @@ modded class Vehicle
 {
 	[RplProp()] int m_iCurrentSupplies;
 	
-	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout")]
+	[Attribute("1", desc: "Should we add ammo to this vehicle", category: "CRF Vehicle Spawning")] 
+	bool m_bShouldAddAmmo;
+	
+	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout", category: "CRF Vehicle Spawning")]
 	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
 	
-	[Attribute()] 
+	[Attribute(category: "CRF Vehicle Spawning")] 
 	ref array<ref CRF_VehicleGearscriptOverride> m_aVehicleGearscriptOverrides;
 	
-	[Attribute()]
+	[Attribute(category: "CRF Vehicle Spawning")]
 	ref array<ref CRF_VehicleGearScriptAdditionalItem> m_aAdditionalVehicleItems;
 	
 	string m_sFactionKey = "";

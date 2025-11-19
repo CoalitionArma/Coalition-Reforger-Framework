@@ -153,7 +153,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		array<int> supplyToSubtract = {};
 		if (m_bSupplyEnabled)
 		{
-			foreach (int supply : m_RearmComponent.m_aSupplyCounts)
+			foreach (int supply : m_RearmComponent.GetSupplyCounts())
 			    totalAvailable += supply;
 			
 			if (totalAvailable < supplyNeeded)
@@ -169,9 +169,10 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			    int minIndex = -1;
 			
 			    // Find the supply object with the *smallest* nonzero count
+			    array<int> supplyCounts = m_RearmComponent.GetSupplyCounts();
 			    for (int i = 0; i < m_RearmComponent.GetEntityArray().Count(); i++)
 			    {
-			        int count = m_RearmComponent.m_aSupplyCounts[i];
+			        int count = supplyCounts[i];
 			        if (count <= 0)
 			            continue;
 			
@@ -205,7 +206,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			    supplyToSubtract.Insert(subtractAmount);
 			
 			    // Reduce the count of that supply item
-			    m_RearmComponent.m_aSupplyCounts.Get(minIndex) -= subtractAmount;
+			    supplyCounts[minIndex] = supplyCounts[minIndex] - subtractAmount;
 			}
 			
 			

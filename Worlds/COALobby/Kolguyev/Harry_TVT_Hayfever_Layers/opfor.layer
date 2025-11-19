@@ -1,7 +1,7 @@
 CRF_VehicleSpawner {
  coords 2022.59 129.469 7327.352
  angles 0 130.431 0
- m_rVehicle "{72C04A6EABC12143}Prefabs/Vehicles/Helicopters/AH6M/AH6M_M134.et"
+ m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
  m_sFactionKey "OPFOR"
  m_iRespawnTimer 1000000000
 }
@@ -17,12 +17,6 @@ GenericEntity : "{22BAB94CDC250B13}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
     }
     MultiSlotConfiguration "{65753B3B229639C6}" {
      NumSlots 0
-    }
-    MultiSlotConfiguration "{66C71EF21D9D61F3}" {
-     SlotTemplate InventoryStorageSlot Flare_mine {
-      Prefab "{732AAEF5A561620C}Prefabs/Weapons/Explosives/Mine_PMN4/Flare_trap.et"
-     }
-     NumSlots 60
     }
     MultiSlotConfiguration "{66C8EBE10E27CE30}" {
      SlotTemplate InventoryStorageSlot VIPvest {
@@ -73,6 +67,11 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
     SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
      coords -26.776 -0.524 -2.851
      angles 0 11.678 0
+     m_aUnitPrefabSlots {
+      "{1A48A3C1A69E573E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLead_P.et"
+      "{48E86145C5152AD5}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectGunner_P.et"
+      "{0F69A00097D4E2E1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLoader_P.et"
+     }
      {
       $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
        {

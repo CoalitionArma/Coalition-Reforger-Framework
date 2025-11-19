@@ -429,7 +429,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 			}
 			case CRF_EGamemodeState.AAR: 
 			{
-				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
+				if (CRF_Gamemode.GetInstance().m_bUseAAR)
+					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
 				break;
 			}
 		}

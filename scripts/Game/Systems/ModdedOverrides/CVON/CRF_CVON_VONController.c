@@ -8,7 +8,17 @@ modded class SCR_VONController
 		return (m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" 
 		&& m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC") ||
 		(m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" && m_PlayerController.m_bIsListeningToSpec) ||
-		(m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC" && m_VONGameModeComponent.m_aListeningPlayers.Contains(playerId));
+		(m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC" && m_VONGameModeComponent.IsPlayerListening(playerId));
+	}
+	
+	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if(topMenu.IsInherited(CRF_Outro))
+				return;
+		
+		super.ActivateCVON(transmitType);
 	}
 	
 	bool IsPlayerSpectator(int playerId)
@@ -85,6 +95,12 @@ modded class SCR_VONController
 	    bool    normalizePeak  = true
 	)
 	{
+		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		{
+			outLeft = 0;
+			outRight = 0;
+			return;
+		}
 		float specLeft;
 		float specRight;
 		if (SpectatorLRCheck(playerId, specLeft, specRight))
@@ -241,7 +257,7 @@ modded class SCR_VONController
 				continue;
 			
 			bool isOtherSpectator = IsPlayerSpectator(playerId);
-			bool isOtherListening = m_VONGameModeComponent.m_aListeningPlayers.Contains(playerId);
+			bool isOtherListening = m_VONGameModeComponent.IsPlayerListening(playerId);
 			//Not usual an issue but when the player is listening to an entity and he swaps to spectator, he goes into null space until he clicks game.
 			//Meaning unless we remove his direct voice line here it just stays and he'll never be heard on spectator.
 			IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);

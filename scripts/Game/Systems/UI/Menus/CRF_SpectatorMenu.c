@@ -552,7 +552,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// ALL SLOT-BASED CHARACTERS
 		//------------------------------------------------------------------------------------------------
 		
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		if (slotMap && !slotMap.IsEmpty())
 		{
@@ -1078,7 +1078,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void InitSlots()
 	{
 		// Get all slots from the slotting manager
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Process each slot to count by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
@@ -1162,7 +1162,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_iAliveCivSlots, m_iCivSlots);
 		
 		// Get slot and group data
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		array<SCR_AIGroup> factionGroups = {};
 		

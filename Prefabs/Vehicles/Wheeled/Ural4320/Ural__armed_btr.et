@@ -1,0 +1,84 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{66D50BDFB66975DD}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{0C8289287F937461}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
+    m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
+    m_aAuthoredLabels + {
+     TRAIT_ARMED
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{66D50BDFA9345B19}" {
+       m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{66D50BDFA9345B25}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_WeaponInfo"
+        }
+       }
+       m_sInterfaceSettingName "m_bShowWeaponInfo"
+      }
+     }
+    }
+    BaseWeaponManagerComponent "{66D50BDFA9345B2D}" {
+     DefaultWeaponIndex 0
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{66D50BDFA9345B2E}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{66D50BDFA9345B28}" {
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{66D50BDFA9345B2B}" {
+   m_Position PointInfo "{66D50BDFA9345B2A}" {
+    Offset -0.3117 1.2527 0.5386
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo rearcab {
+     Offset 0 -0.0841 0.1813
+     Prefab "{0B70147AE612A768}Prefabs/Vehicles/Wheeled/M998/VehParts/M1025_roof_empty.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+  WeaponSlotComponent "{66D50BDFA9345B37}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{66D50BDFA9345B31}" {
+   }
+   useAimingType MainTurret
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot UPK23 {
+    Offset 0.054 0.0994 -0.4322
+    Angles 0 -180 0
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{8021A4D1ADFCF506}Prefabs/Vehicles/Tracked/BMP1/VehParts/Turret/BMP1_Turret.et"
+  }
+ }
+}

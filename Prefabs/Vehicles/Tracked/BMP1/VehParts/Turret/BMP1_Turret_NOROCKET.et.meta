@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{732AAEF5A561620C}Prefabs/Weapons/Explosives/Mine_PMN4/Flare_trap.et"
+ Name "{A66A3A14BE10A930}Prefabs/Vehicles/Tracked/BMP1/VehParts/Turret/BMP1_Turret_NOROCKET.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

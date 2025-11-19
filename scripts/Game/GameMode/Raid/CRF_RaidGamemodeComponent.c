@@ -391,7 +391,19 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
 		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
+		
+		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
 		currentData.SetSlotFactionKey(m_sIndependentFaction);
-		m_SlottingManager.BatchUpdateSlot(m_SlottingManager.GetPlayerSlotID(playerId), playerId, groupRplId, characterRplId, character.GetPrefabData().GetPrefabName(), currentData.GetSlotName(), false, false);
+		currentData.SetSlotCurrentPlayerId(playerId);
+		currentData.SetSlotCurrentGroup(groupRplId);
+		currentData.SetSlotCurrentCharacter(characterRplId);
+		currentData.SetSlotResource(character.GetPrefabData().GetPrefabName());
+		
+		// Use optimized delta updates instead of full container broadcast
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		broadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
+		broadcastManager.UpdateSlotGroupDelta(slotId, groupRplId);
+		broadcastManager.UpdateSlotCharacterDelta(slotId, characterRplId);
+		broadcastManager.UpdateSlotResourceDelta(slotId, character.GetPrefabData().GetPrefabName());
 	}
 }

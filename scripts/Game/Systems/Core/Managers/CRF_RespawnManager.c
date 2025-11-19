@@ -267,6 +267,19 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
+		// Client-side: Just update local timer display
+		if (!Replication.IsServer())
+		{
+			// Timer value already updated via replication
+			// Update local display time if needed
+			if (m_iRespawnWaveCurrentTime == 0)
+			{
+				m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+			}
+			return;
+		}
+		
+		// Server-side: Update timer and trigger replication
 		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 

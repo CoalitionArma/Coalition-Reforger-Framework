@@ -522,7 +522,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
@@ -585,7 +585,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
