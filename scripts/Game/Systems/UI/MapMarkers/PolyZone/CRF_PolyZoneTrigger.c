@@ -72,8 +72,9 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 			if (m_bAliveOnly)
 				damageManager = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));
 			
-			if (m_bAliveOnly && damageManager.GetState() == EDamageState.DESTROYED)
-				return false;
+			if (damageManager)
+				if (m_bAliveOnly && damageManager.GetState() == EDamageState.DESTROYED)
+					return false;
 			
 			if (!factionAffiliation)
 				return false;

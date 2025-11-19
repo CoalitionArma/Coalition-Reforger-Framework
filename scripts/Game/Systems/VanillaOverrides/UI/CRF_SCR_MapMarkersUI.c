@@ -3,6 +3,12 @@ modded class SCR_PlayerControllerCommandingComponent
 	override bool AddElementsFromCategoryToMap(notnull SCR_PlayerCommandingMenuCategoryElement category, SCR_SelectionMenuCategoryEntry parentCategory = null)
 	{
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
+		if (!SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId))
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+		
+		if (!CRF_SafestartManager.GetInstance())
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+		
 		if (!SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId).IsPlayerLeader(playerId) || !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		SCR_MapMarkerMenuEntry menuEntry = new SCR_MapMarkerMenuEntry();

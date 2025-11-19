@@ -1625,6 +1625,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
+		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		IEntity polyzone;
 		cursorWorldPos[1] = SCR_TerrainHelper.GetTerrainY(cursorWorldPos);
 		foreach (IEntity zone: CRF_GamemodeManager.GetInstance().GetForwardDeployZones())
@@ -1651,7 +1652,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		array<IEntity> entities = {};
 		
 		SCR_GroupsManagerComponent groupMan = SCR_GroupsManagerComponent.GetInstance();
-		groupMan.GetPlayerGroup(playerId).GetAgents(players);
+		SCR_AIGroup playerGroup = groupMan.GetPlayerGroup(playerId);
+		if (!playerGroup)
+		{
+		    SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+		    return;
+		}
+		playerGroup.GetAgents(players);
 		foreach (AIAgent agent : players)
 		{
 			IEntity entity = agent.GetControlledEntity();
@@ -1681,7 +1688,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 					compartmentMan.GetCompartments(slots);
 					//Check if majority of the vic is the same group, if not don't teleport.
 					int amountInGroup = 0;
-					int ammountNotInGroup = 0;
+					int amountNotInGroup = 0;
 					foreach (BaseCompartmentSlot slot: slots)
 					{
 						if (!slot.IsOccupied())
@@ -1693,9 +1700,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 						if (entities.Contains(slot.GetOccupant()))
 							amountInGroup++;
 						else
-							ammountNotInGroup++;
+							amountNotInGroup++;
 					}
-					if (amountInGroup < ammountNotInGroup)
+					if (amountInGroup < amountNotInGroup)
 						continue; 
 					if (teleportedVehicles.Contains(vehicle))
 						continue;

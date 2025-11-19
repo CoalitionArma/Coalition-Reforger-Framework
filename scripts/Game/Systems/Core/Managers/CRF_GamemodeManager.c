@@ -148,17 +148,23 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	float m_fBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		super.EOnFrame(owner, timeSlice);
-		m_fBuffer += timeSlice;
-		if (m_fBuffer > 0.1)
-		{
-			m_fBuffer = 0;
-			CRF_ForwardDeployRequest request = CRF_ForwardDeployRequest.Cast(m_aForwardDeployRequests.Get(0));
-			PreformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
-			m_aForwardDeployRequests.RemoveOrdered(0);
-			if (m_aForwardDeployRequests.Count() == 0)
-				ClearEventMask(owner, EntityEvent.FRAME);
-		}
+	    super.EOnFrame(owner, timeSlice);
+	    m_fBuffer += timeSlice;
+	    if (m_fBuffer > 0.1)
+	    {
+	        m_fBuffer = 0;
+	        if (m_aForwardDeployRequests.Count() > 0)
+	        {
+	            CRF_ForwardDeployRequest request = m_aForwardDeployRequests.Get(0);
+	            if (request)
+	            {
+	                PreformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
+	                m_aForwardDeployRequests.RemoveOrdered(0);
+	            }
+	        }
+	        if (m_aForwardDeployRequests.Count() == 0)
+	            ClearEventMask(owner, EntityEvent.FRAME);
+	    }
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -725,7 +731,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(zone);
 		}
 		
-		m_aForwardDeployZones.Clear()
+		m_aForwardDeployZones.Clear();
 	}
 	
 	void CreateForwardDeployRequest(int playerId, vector transform)
