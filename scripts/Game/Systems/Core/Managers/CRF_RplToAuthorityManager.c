@@ -615,7 +615,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_SendAdminMessage", bytes);
 		
 		// Broadcast a new ticket/message to admins
-		m_RplBroadcastManager.SendAdminMessage(data, playerID, m_AdminMenuManager.TicketExists(playerID));
+		bool ticketExists = m_AdminMenuManager.TicketExists(playerID);
+		m_RplBroadcastManager.SendAdminMessage(data, playerID, ticketExists);
 		
 		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
 		if (!SCR_Global.IsAdmin(playerID) && !m_GamemodeManager.IsModerator(playerID))

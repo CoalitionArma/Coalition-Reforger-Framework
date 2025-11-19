@@ -30,25 +30,26 @@ class CRF_TicketMessageData
 	
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
-		snapshot.EncodeString(packet);
-		snapshot.EncodeString(packet);
-		snapshot.EncodeString(packet);
+		snapshot.EncodeString(packet); // sender
+		snapshot.EncodeString(packet); // msg
+		snapshot.EncodeString(packet); // timestamp
 	}
 	
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
-		snapshot.DecodeString(packet);
-		snapshot.DecodeString(packet);
-		snapshot.DecodeString(packet);
+		snapshot.DecodeString(packet); // sender
+		snapshot.DecodeString(packet); // msg
+		snapshot.DecodeString(packet); // timestamp
 		
 		return true;
 	}
 	
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
-		return lhs.CompareStringSnapshots(rhs)  
-		&& lhs.CompareStringSnapshots(rhs)
-		&& lhs.CompareStringSnapshots(rhs);
+		if (!lhs.CompareStringSnapshots(rhs)) return false;  // sender
+	    if (!lhs.CompareStringSnapshots(rhs)) return false;  // msg
+	    if (!lhs.CompareStringSnapshots(rhs)) return false;  // timestamp
+	    return true;
 	}
 	
 	static bool PropCompare(CRF_TicketMessageData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)

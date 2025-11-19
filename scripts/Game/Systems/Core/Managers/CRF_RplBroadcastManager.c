@@ -1228,6 +1228,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_RefreshAdminMenuLists()
 	{
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
 		m_AdminMenuManager.GetInstance().RefreshLists();
 	}
 
