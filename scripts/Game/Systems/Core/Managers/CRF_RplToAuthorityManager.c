@@ -384,7 +384,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		// Telemetry: int
 		LogTelemetry("RpcAsk_RequestInitilizePlayer", CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		
-		m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		// Use staggered initialization system to prevent server overload
+		m_Gamemode.QueuePlayerInitialization(playerId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

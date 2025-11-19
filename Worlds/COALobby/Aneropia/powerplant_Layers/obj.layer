@@ -1,0 +1,46 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1275.485 2.566 847.762
+  m_MarkerColor 0.817 0.016 0.035 1
+  m_sDescription "OBJ1 - Bridge"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1181.196 1.875 1087.195
+  m_MarkerColor 0.817 0.016 0.035 1
+  m_sDescription "OBJ2 - Plant"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1044.283 13.735 1134.252
+  m_MarkerColor 0.817 0.016 0.035 1
+  m_sDescription "OBJ3 - Admin Office"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1157.366 6.639 554.941
+  angles 0 33.285 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "arrow-medium"
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 983.893 17.573 17.838
+  angles 0 33.285 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "entry-point-2"
+  m_sDescription "Insert"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

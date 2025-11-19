@@ -1,0 +1,76 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 993.091 15.246 52.652
+ m_iTimeLimitMinutes 70
+ EnableAIInGameState 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A powerplant has been seized in the Aneropia region. Secure it by taking control of the three major points in linear order."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "N/A"
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+  m_bEnableMagnifiedOptics 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EEF62EAA1D0BB1D5}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSATACS_AK12.conf"
+ }
+ {
+  SCR_FactionManager "66E130098992D979" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66E13008387D8611}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66E13008382BF966}" {
+        m_sCallsign "IFV1"
+       }
+       SCR_CallsignInfo "{66E130083CCCCD04}" {
+        m_sCallsign "IFV2"
+       }
+       SCR_CallsignInfo "{66E130083C97D388}" {
+        m_sCallsign "IFV3"
+       }
+       SCR_CallsignInfo "{66E130083366FCFD}" {
+        m_sCallsign "IFV4"
+       }
+       SCR_CallsignInfo "{66E130082BD8D7E3}" {
+        m_sCallsign "DEATH1-1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}Prefabs/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 1
+   m_eSpawnPattern LINE
+   m_iGlobalUsesPool 26
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "M2A3"
+     m_sVehiclePrefab "{07CD2F66BF403D19}Prefabs/Vehicles/Tracked/BFV/M2A3_BASE.et"
+     m_eCostType USES
+     m_iCost 4
+    }
+    CRF_VehicleDepotVehicle "{66E1300ED1C5D06F}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+     m_eCostType USES
+     m_iCost 1
+    }
+   }
+  }
+ }
+ coords 979.778 18.161 6.706
+ angles 0 -161 0
+}
