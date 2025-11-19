@@ -1162,6 +1162,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
 			return;
 		}
+		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(oldItem.FindComponent(InventoryItemComponent));
+		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newItem.FindComponent(InventoryItemComponent));
+		if (oldItemComp && newItemComp)
+		{
+			string oldItemName = oldItemComp.GetUIInfo().GetName();
+			string newItemName = newItemComp.GetUIInfo().GetName();
+			CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
+			newItemName, playerId, false);
+		}
+		
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
 		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, playerId, player);
 	}
@@ -1278,6 +1288,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			}
 		}
 		
+		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(weapon.FindComponent(InventoryItemComponent));
+		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newWeapon.FindComponent(InventoryItemComponent));
+		if (oldItemComp && newItemComp)
+		{
+			string oldItemName = oldItemComp.GetUIInfo().GetName();
+			string newItemName = newItemComp.GetUIInfo().GetName();
+			CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
+			newItemName, playerId, false);
+		}
+		
 		//Delete Old Weapon;
 		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, storageMan, storageComp, newWeapon, attachments, magazines, magazineCounts, role);
@@ -1364,6 +1384,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			
 			invManager.TryInsertItemInStorage(newSight, weaponInv);
 		}
+		
+		InventoryItemComponent itemComp = InventoryItemComponent.Cast(newSight.FindComponent(InventoryItemComponent));
+		CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced their sight with " + 
+		itemComp.GetUIInfo().GetName(), playerId, false);
 	}
     
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
