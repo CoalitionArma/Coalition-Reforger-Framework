@@ -43,7 +43,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{E617393F9CA52064}Configs/Gearscripts/Custom/Harry/BackToBasics/CRF_GS_UK80s_BackToBasics.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{DC284775351CF801}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_FIA_6B3.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
  }
  {
   SCR_FactionManager "66DC03592B07ABD7" {

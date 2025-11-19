@@ -619,7 +619,7 @@ PolylineShapeEntity {
      }
      {
       coords -17.75 -10.233 -21.799
-      angles 1.369 39.387 -0
+      angles 1.369 39.387 0
       scale 0.873
      }
      {
@@ -755,4 +755,7 @@ PolylineShapeEntity {
    }
   }
  }
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ coords 12239.522 -0.282 10369.761
 }

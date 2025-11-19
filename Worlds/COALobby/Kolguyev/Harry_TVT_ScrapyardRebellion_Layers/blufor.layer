@@ -36,6 +36,11 @@ $grp CRF_VehicleSpawner {
     m_VehicleAmmoType HEGL
    }
   }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DF28E65402488A}" {
+    m_Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+   }
+  }
  }
  {
   coords 12099.823 2.156 10442.091
@@ -72,6 +77,11 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D50BCB04373889}" {
     m_VehicleAmmoType HEGL
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DF28E65402488A}" {
+    m_Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
    }
   }
  }
@@ -117,6 +127,9 @@ $grp CRF_VehicleSpawner {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
     m_iAmountOfItemSupplyTruck 200
     m_iAmountOfItemRegularVehicle 200
+   }
+   CRF_VehicleGearScriptAdditionalItem "{66DF28E65EDB2006}" {
+    m_Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
    }
   }
  }
