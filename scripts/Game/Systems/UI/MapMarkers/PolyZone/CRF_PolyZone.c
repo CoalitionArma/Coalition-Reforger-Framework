@@ -34,6 +34,9 @@ class CRF_PolyZone : ScriptComponent
 	
 	[Attribute("0")]
 	bool m_bIsSafestartBorder;
+	
+	[Attribute("0")]
+	bool m_bIsForwardDeployZone;
 		
 	[Attribute("0")]
 	bool m_bLineMode;
@@ -91,6 +94,9 @@ class CRF_PolyZone : ScriptComponent
 		
 		if (m_bIsSafestartBorder && Replication.IsServer() && CRF_SafestartManager.GetInstance())
 			CRF_SafestartManager.GetInstance().AddSafestartZone(owner);
+		
+		if (m_bIsForwardDeployZone && Replication.IsServer() && CRF_GamemodeManager.GetInstance())
+			CRF_GamemodeManager.GetInstance().AddForwardDeployZone(owner);
 	}
 	
 	void UpdatePolygon()

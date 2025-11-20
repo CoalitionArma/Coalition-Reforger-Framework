@@ -470,6 +470,7 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 			
 			DeleteAllSafestartZones();
+			CRF_GamemodeManager.GetInstance().DeleteAllForwardDeployZones();
 		}
 	};
 	

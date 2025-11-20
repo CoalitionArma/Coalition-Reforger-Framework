@@ -34,6 +34,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
 	
 	ref array<IEntity> m_aDeadBodies = {};
+	protected ref array<IEntity> m_aForwardDeployZones = {};
+	protected ref array<ref CRF_ForwardDeployRequest> m_aForwardDeployRequests = {};
 	
 	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
 	{
@@ -139,10 +141,32 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	override void OnPostInit(IEntity owner)
 	{	
 		super.OnPostInit(owner);
-		
 		// Initialize all required manager references
 		InitializeManagers();
 		LoadConfigurations();
+	}
+	
+	//Needed so when we teleport players/vehicles the aren't spawning on top of each other.
+	float m_fBuffer = 0;
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+	    super.EOnFrame(owner, timeSlice);
+	    m_fBuffer += timeSlice;
+	    if (m_fBuffer > 0.1)
+	    {
+	        m_fBuffer = 0;
+	        if (m_aForwardDeployRequests.Count() > 0)
+	        {
+	            CRF_ForwardDeployRequest request = m_aForwardDeployRequests.Get(0);
+	            if (request)
+	            {
+	                PerformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
+	                m_aForwardDeployRequests.RemoveOrdered(0);
+	            }
+	        }
+	        if (m_aForwardDeployRequests.Count() == 0)
+	            ClearEventMask(owner, EntityEvent.FRAME);
+	    }
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -686,4 +710,58 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		return m_aDonators.Contains(playerId);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AddForwardDeployZone(IEntity entity)
+	{
+		m_aForwardDeployZones.Insert(entity);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<IEntity> GetForwardDeployZones()
+	{
+		return m_aForwardDeployZones;
+	}
+	
+		
+	//------------------------------------------------------------------------------------------------
+	void DeleteAllForwardDeployZones()
+	{
+		foreach(IEntity zone : m_aForwardDeployZones)
+		{
+			if(zone)
+				SCR_EntityHelper.DeleteEntityAndChildren(zone);
+		}
+		
+		m_aForwardDeployZones.Clear();
+	}
+	
+	void CreateForwardDeployRequest(int playerId, vector transform)
+	{
+		ref CRF_ForwardDeployRequest request = new CRF_ForwardDeployRequest();
+		request.m_iPlayerId = playerId;
+		request.m_vTransform = transform;
+		m_aForwardDeployRequests.Insert(request);
+		SetEventMask(GetOwner(), EntityEvent.FRAME);
+	}
+	
+	void PerformForwardDeploy(int playerId, vector transform)
+	{
+		vector initialSpawnLocation;
+		SCR_WorldTools.FindEmptyTerrainPosition(initialSpawnLocation, transform, 10);
+		vector params[4];
+		params[3] = initialSpawnLocation;
+		SCR_TerrainHelper.OrientToTerrain(params, GetGame().GetWorld(), true);
+		vector finalSpawnLocation;
+		SCR_TerrainHelper.SnapToGeometry(finalSpawnLocation, params[3], null);
+		params[3] = finalSpawnLocation;
+		SCR_Global.TeleportPlayer(playerId, finalSpawnLocation, SCR_EPlayerTeleportedReason.NONE);
+		CRF_RplBroadcastManager.GetInstance().BroadcastVehiclePosUpdate(finalSpawnLocation, playerId);
+	}
+}
+
+class CRF_ForwardDeployRequest
+{
+	int m_iPlayerId;
+	vector m_vTransform;
 }

@@ -1,4 +1,4 @@
-FrameWidgetClass {
+FrameWidgetClass "{66E816AFB0D707FC}" {
  Name "root"
  Slot FrameWidgetSlot "{5EC357C57F92C4C8}" {
   OffsetLeft 0
@@ -12,11 +12,11 @@ FrameWidgetClass {
  Clipping False
  "Ignore Cursor" 0
  components {
-  CRF_ManualMarkerComponent "{66E816AF456CF218}" {
+  CRF_MissionMarkerComponent "{66E816A0408CC4A1}" {
   }
  }
  {
-  FrameWidgetClass "{5EB91D1E5DDA01E7}" {
+  FrameWidgetClass "{66E816AFB0D707FA}" {
    Name "MarkerFrame"
    Slot FrameWidgetSlot "{5EB91D1D83A6D1B0}" {
     PositionX 0
@@ -29,13 +29,13 @@ FrameWidgetClass {
     OffsetBottom -60
    }
    {
-    OverlayWidgetClass "{5EC357C5300FE777}" {
+    OverlayWidgetClass "{66E816AFB0D707F8}" {
      Name "MarkerScrollLayout"
      Slot FrameWidgetSlot "{5EC357C5300FE75C}" {
      }
      "Ignore Cursor" 0
     }
-    ImageWidgetClass "{5EB91D178F17F034}" {
+    ImageWidgetClass "{66E816AFB0D707F9}" {
      Name "MarkerIcon"
      Slot FrameWidgetSlot "{5EB91D1E649170D7}" {
       Anchor 0 0 0 0
@@ -53,7 +53,7 @@ FrameWidgetClass {
      Image "exclamationCircle"
      Size 56 56
     }
-    ImageWidgetClass "{5EB91D1A3673B11B}" {
+    ImageWidgetClass "{66E816AFB0D707F6}" {
      Name "MarkerGlowIcon"
      Slot FrameWidgetSlot "{5EB91D1E649170D7}" {
       Anchor 0 0 0 0
@@ -71,7 +71,7 @@ FrameWidgetClass {
      Image "exclamationCircle"
      Size 96 96
     }
-    PanelWidgetClass "{5EC357C30F6D2666}" {
+    PanelWidgetClass "{66E816AFB0D738EE}" {
      Name "DescriptionPanel"
      Slot FrameWidgetSlot "{5EC357C312430E6F}" {
       SizeToContent 1
@@ -79,7 +79,7 @@ FrameWidgetClass {
      Color 0 0 0 0.6
      style full
      {
-      PanelWidgetClass "{5EC3651206FED48D}" {
+      PanelWidgetClass "{66E816AFB0D738EF}" {
        Name "PanelBorder"
        Slot FrameWidgetSlot "{5EC3651206FED4CB}" {
         PositionX 0
@@ -94,7 +94,7 @@ FrameWidgetClass {
        }
        style outline_2px
        {
-        OverlayWidgetClass "{5EC357C0B0940163}" {
+        OverlayWidgetClass "{66E816AFB0D738EC}" {
          Name "Overlay"
          Slot FrameWidgetSlot "{5EC357C0B094015A}" {
           PositionX 0
@@ -108,7 +108,7 @@ FrameWidgetClass {
           SizeToContent 1
          }
          {
-          RichTextWidgetClass "{5EB91D112318E078}" {
+          RichTextWidgetClass "{66E816AFB0D738ED}" {
            Name "DescriptionText"
            Slot OverlayWidgetSlot "{5EC357C069D46CD2}" {
             Padding 10 10 10 10
@@ -121,6 +121,84 @@ FrameWidgetClass {
            "Vertical Alignment" Center
            "Shadow Offset" 3 3
            "Shadow Size Increase" 2
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass "{66E816AFB0D738EA}" {
+     Name "MarkerBriefing"
+     Slot FrameWidgetSlot "{66E73E4433133EE0}" {
+      Anchor 0 0 0 0
+      PositionX 540.6
+      OffsetLeft 540.622
+      PositionY 0.414
+      OffsetTop 0.414
+      SizeX 499.998
+      OffsetRight -1040.62
+      SizeY 500
+      OffsetBottom -500.414
+      SizeToContent 1
+     }
+     Color 0 0 0 0.6
+     style full
+     {
+      PanelWidgetClass "{66E816AFB0D738EB}" {
+       Name "Panel0"
+       Slot FrameWidgetSlot "{66E7574B53BAA9A2}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -400
+        OffsetRight 0
+        SizeY -470
+        OffsetBottom 0
+        SizeToContent 1
+       }
+       "Z Order" -1
+       style outline_2px
+       {
+        OverlayWidgetClass "{66E816AFB0E8CAFC}" {
+         Name "Overlay0"
+         Slot FrameWidgetSlot "{66E757545AD945D4}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX -399.998
+          OffsetRight 0
+          SizeY -470
+          OffsetBottom 0
+          SizeToContent 1
+         }
+         {
+          VerticalLayoutWidgetClass "{66E816AFB0E8CAFE}" {
+           Name "VerticalLayout0"
+           Slot OverlayWidgetSlot "{66E80D15C98F949B}" {
+           }
+           {
+            RichTextWidgetClass "{66E816AFB0E8AB1F}" {
+             Name "MissionDescriptionText"
+             Slot LayoutSlot "{66E7574C6EAEB42D}" {
+              Padding 10 10 10 0
+             }
+             Text ""
+             "Shadow Offset" 3 3
+             "Shadow Size Increase" 2
+            }
+            VerticalLayoutWidgetClass "{66E816AFB0E8A8E0}" {
+             Name "Images"
+             Slot LayoutSlot "{66E75755744B19AD}" {
+              Padding 5 0 10 10
+             }
+             IsPixelPerfect 0
+            }
+           }
           }
          }
         }
