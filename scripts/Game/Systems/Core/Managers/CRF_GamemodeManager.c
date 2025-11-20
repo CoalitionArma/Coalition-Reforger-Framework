@@ -160,7 +160,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	            CRF_ForwardDeployRequest request = m_aForwardDeployRequests.Get(0);
 	            if (request)
 	            {
-	                PreformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
+	                PerformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
 	                m_aForwardDeployRequests.RemoveOrdered(0);
 	            }
 	        }
@@ -745,7 +745,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
 	
-	void PreformForwardDeploy(int playerId, vector transform)
+	void PerformForwardDeploy(int playerId, vector transform)
 	{
 		vector initialSpawnLocation;
 		SCR_WorldTools.FindEmptyTerrainPosition(initialSpawnLocation, transform, 10);
