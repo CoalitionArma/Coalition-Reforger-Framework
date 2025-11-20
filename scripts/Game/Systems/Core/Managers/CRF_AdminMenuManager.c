@@ -192,7 +192,7 @@ class CRF_AdminMenuManager : ScriptComponent
 	* @param admin ID of the admin that will be helping the player
 	*/
 	void AssignAdminTicket(int ticketID, int adminID)
-	{		
+	{
 		CRF_Ticket ticket;
 		
 		// Check if player already has ticket open
@@ -209,7 +209,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		ticket.adminID = adminID;
 		
 		// Refresh Lists if admin menu is open
-		CRF_RplBroadcastManager.GetInstance().AssignAdminTicket(ticketID, adminID, true);
+		CRF_RplBroadcastManager.GetInstance().NotifiyTicketAssigned(ticketID, adminID, true);
 	}
 	
 	/**

@@ -356,17 +356,17 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	void NotifiyTicketAssigned(int ticketID, int adminID, bool logAction)
 	{
 		// Telemetry: 2 ints + bool
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("AssignAdminTicket", bytes);
+		LogTelemetry("NotifiyTicketAssigned", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_AssignAdminTicket(ticketID, adminID, logAction);
+		RpcDo_NotifiyTicketAssigned(ticketID, adminID, logAction);
 		#else
-		Rpc(RpcDo_AssignAdminTicket, ticketID, adminID, logAction);
+		Rpc(RpcDo_NotifiyTicketAssigned, ticketID, adminID, logAction);
 		#endif
 	}
 	//------------------------------------------------------------------------------------------------
@@ -1206,7 +1206,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	void RpcDo_NotifiyTicketAssigned(int ticketID, int adminID, bool logAction)
 	{
 		string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
