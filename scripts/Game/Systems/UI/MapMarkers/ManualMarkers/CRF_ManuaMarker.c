@@ -52,7 +52,8 @@ class CRF_ManualMarker : GenericEntity
 	Widget m_wRoot;
 	SCR_MapEntity m_MapEntity;
 	CRF_ManualMarkerComponent m_hManualMarkerComponent;
-	protected ResourceName m_sMarkerPrefab = "{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout";
+	[Attribute("{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout")]
+	protected ResourceName m_sMarkerPrefab;
 	
 	// Get/Set Broadcast
 	// Setters must be call from autority (usualy server)
@@ -341,6 +342,7 @@ class CRF_ManualMarker : GenericEntity
 		m_hManualMarkerComponent.SetDescription(m_sDescription);
 		m_hManualMarkerComponent.SetColor(m_MarkerColor);
 		m_hManualMarkerComponent.OnMouseLeave(null, null, 0, 0);
+		m_hManualMarkerComponent.SetManualMarker(this);
 		
 		// Enable every frame updating
 		SetEventMask(EntityEvent.POSTFRAME);

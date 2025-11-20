@@ -1,0 +1,41 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot LayoutSlot "{66E73E4E6EC3252A}" {
+  Padding 5 5 0 0
+  SizeMode Fill
+ }
+ {
+  ImageWidgetClass "{66E73E497CDED8EE}" {
+   Name "BriefImage"
+   Slot FrameWidgetSlot "{66E73E497CDED8F0}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -326
+    OffsetRight 0
+    SizeY -210
+    OffsetBottom 0
+    SizeToContent 1
+   }
+   Size 426 240
+  }
+  PanelWidgetClass "{66E75755569C52E6}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{66E75755569C52FA}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+   style outline_4px
+  }
+ }
+}
