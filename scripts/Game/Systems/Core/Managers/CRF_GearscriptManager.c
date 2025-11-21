@@ -2758,7 +2758,52 @@ void SetVehicleGear(IEntity vehicle, string factionKey)
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// RplSave: Serialize vehicle supply costs for JIP sync
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		// Write the count of vehicle supply cost entries
+		int count = m_mVehicleSupplyCosts.Count();
+		writer.WriteInt(count);
+		
+		// Write each vehicle resource and its supply cost
+		foreach (ResourceName vehicleResource, int supplyCost : m_mVehicleSupplyCosts)
+		{
+			writer.WriteResourceName(vehicleResource);
+			writer.WriteInt(supplyCost);
+		}
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RplLoad: Deserialize vehicle supply costs for JIP sync
+	override bool RplLoad(ScriptBitReader reader)
+	{
+		// Read the count of vehicle supply cost entries
+		int count;
+		reader.ReadInt(count);
+		
+		// Clear existing data (for JIP clients)
+		m_mVehicleSupplyCosts.Clear();
+		
+		// Read each vehicle resource and its supply cost
+		for (int i = 0; i < count; i++)
+		{
+			ResourceName vehicleResource;
+			int supplyCost;
+			
+			reader.ReadResourceName(vehicleResource);
+			reader.ReadInt(supplyCost);
+			
+			m_mVehicleSupplyCosts.Set(vehicleResource, supplyCost);
+		}
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// Public method: Send all vehicle supply costs (called by JIP sync manager)
+	// DEPRECATED: Now handled by RplSave/RplLoad
 	void SyncVehicleCostsToPlayer(int playerId)
 	{
 		// Only server sends JIP sync
