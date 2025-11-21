@@ -17,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 5640.351 198.198 7642.953
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "US Special forces have been tasked with destroying a Russian controlled fuel depot and fuel refinery in Mineraly's harbor."\
+   m_sTextData "US Special Forces have been tasked with destroying a Russian controlled fuel depot and fuel refinery in Mineraly's harbor."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
    "BLUFOR Assets: 2x Armed Humvee"\
