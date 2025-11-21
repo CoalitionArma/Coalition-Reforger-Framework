@@ -3,68 +3,79 @@ $grp CRF_VehicleSpawner {
   coords 5446.033 377.927 5992.206
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5451.86 378.946 5995.908
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5458.113 380.291 5999.758
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5463.793 380.761 6003.041
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5470.828 381.656 6007.55
   angles 0 -123.97 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5480.563 382.487 6012.452
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5492.001 382.969 6018.051
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5503.49 383.163 6022.927
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
  {
   coords 5516.153 383.089 6026.353
   angles 0 -111.335 0
   m_rVehicle "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-  m_sFactionKey "OPFOR"
+  m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
-}
-Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
- coords 5459.824 375.489 5959.145
+ {
+  coords 5467.725 378.784 5973.585
+  angles 0 -30.335 0
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5463.035 377.34 5970.397
+  angles 0 -30.335 0
+  m_rVehicle "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
 }
 GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  components {
@@ -403,13 +414,6 @@ $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSma
    }
   }
  }
-}
-Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- coords 3820.102 410.625 5641.669
- angles 0 120.132 0
-}
-Vehicle M923A1_engineer_BLUFOR1 : "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et" {
- coords 5465.317 376.495 5959.259
 }
 SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
  coords 5472.974 375.946 5956.515

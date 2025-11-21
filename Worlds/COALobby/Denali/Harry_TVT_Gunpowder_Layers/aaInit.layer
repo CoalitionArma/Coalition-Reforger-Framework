@@ -44,7 +44,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{D5C89381FB2A3871}Configs/Gearscripts/Custom/Harry/Gunpowder/CRF_GS_RHSMSV_MMGoptic_Spotter.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66EB654BDAB6234F" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
