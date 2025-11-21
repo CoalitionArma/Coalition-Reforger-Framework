@@ -9,8 +9,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
     }
-    CRF_JIPSyncManager "{66D522DD5658CFEC}" {
-    }
     CRF_LoggingManager "{65654A2C50A1F78D}" {
     }
     CRF_MenuManager "{652A3313EB733550}" {

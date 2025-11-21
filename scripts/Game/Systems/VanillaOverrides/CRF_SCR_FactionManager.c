@@ -173,4 +173,72 @@ modded class SCR_FactionManager
 				break;
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RplSave: Serialize faction radio channels for JIP sync
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		// Write SR channels for all factions
+		WriteChannelArray(writer, m_aBLUFORActiveSRChannels);
+		WriteChannelArray(writer, m_aOPFORActiveSRChannels);
+		WriteChannelArray(writer, m_aINDFORActiveSRChannels);
+		WriteChannelArray(writer, m_aCIVFORActiveSRChannels);
+		
+		// Write LR channels for all factions
+		WriteChannelArray(writer, m_aBLUFORActiveLRChannels);
+		WriteChannelArray(writer, m_aOPFORActiveLRChannels);
+		WriteChannelArray(writer, m_aINDFORActiveLRChannels);
+		WriteChannelArray(writer, m_aCIVFORActiveLRChannels);
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RplLoad: Deserialize faction radio channels for JIP sync
+	override bool RplLoad(ScriptBitReader reader)
+	{
+		// Read SR channels for all factions
+		ReadChannelArray(reader, m_aBLUFORActiveSRChannels);
+		ReadChannelArray(reader, m_aOPFORActiveSRChannels);
+		ReadChannelArray(reader, m_aINDFORActiveSRChannels);
+		ReadChannelArray(reader, m_aCIVFORActiveSRChannels);
+		
+		// Read LR channels for all factions
+		ReadChannelArray(reader, m_aBLUFORActiveLRChannels);
+		ReadChannelArray(reader, m_aOPFORActiveLRChannels);
+		ReadChannelArray(reader, m_aINDFORActiveLRChannels);
+		ReadChannelArray(reader, m_aCIVFORActiveLRChannels);
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Helper: Write a channel array to the writer
+	protected void WriteChannelArray(ScriptBitWriter writer, array<string> channels)
+	{
+		int count = channels.Count();
+		writer.WriteInt(count);
+		
+		foreach (string channel : channels)
+		{
+			writer.WriteString(channel);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Helper: Read a channel array from the reader
+	protected void ReadChannelArray(ScriptBitReader reader, array<string> channels)
+	{
+		channels.Clear();
+		
+		int count;
+		reader.ReadInt(count);
+		
+		for (int i = 0; i < count; i++)
+		{
+			string channel;
+			reader.ReadString(channel);
+			channels.Insert(channel);
+		}
+	}
 }
