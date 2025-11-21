@@ -374,6 +374,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
 	}
 	
+	void RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
+	{
+		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -970,6 +975,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
+		
+		if (resourceSpawned)
+			if (resourceSpawned.FindComponent(CVON_RadioComponent))
+			{
+				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+				SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+				SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+				GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
+				GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
+				pc.InitializeRadioFromServer();
+			
+			}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1162,6 +1179,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
 			return;
 		}
+		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(oldItem.FindComponent(InventoryItemComponent));
+		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newItem.FindComponent(InventoryItemComponent));
+		if (oldItemComp && newItemComp)
+		{
+			string oldItemName = oldItemComp.GetUIInfo().GetName();
+			string newItemName = newItemComp.GetUIInfo().GetName();
+			CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
+			newItemName, playerId, false);
+		}
+		
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
 		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, playerId, player);
 	}
@@ -1278,6 +1305,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			}
 		}
 		
+		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(weapon.FindComponent(InventoryItemComponent));
+		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newWeapon.FindComponent(InventoryItemComponent));
+		if (oldItemComp && newItemComp)
+		{
+			string oldItemName = oldItemComp.GetUIInfo().GetName();
+			string newItemName = newItemComp.GetUIInfo().GetName();
+			CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
+			newItemName, playerId, false);
+		}
+		
 		//Delete Old Weapon;
 		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, storageMan, storageComp, newWeapon, attachments, magazines, magazineCounts, role);
@@ -1364,6 +1401,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			
 			invManager.TryInsertItemInStorage(newSight, weaponInv);
 		}
+		
+		InventoryItemComponent itemComp = InventoryItemComponent.Cast(newSight.FindComponent(InventoryItemComponent));
+		CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced their sight with " + 
+		itemComp.GetUIInfo().GetName(), playerId, false);
 	}
     
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1615,5 +1656,98 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		supplyComp.UpdateCurrentSupply();
 		
 		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_GearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
+	{
+		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		IEntity polyzone;
+		cursorWorldPos[1] = SCR_TerrainHelper.GetTerrainY(cursorWorldPos);
+		foreach (IEntity zone: CRF_GamemodeManager.GetInstance().GetForwardDeployZones())
+		{
+			CRF_PolyZone zoneComp = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
+			if (!zoneComp.IsInsidePolygon(Vector(cursorWorldPos[0], 0, cursorWorldPos[2])))
+				continue;
+			
+			if (!zoneComp.m_aVisibleForFactions.Contains(factionKey))
+				continue;
+			
+			polyzone = zone;
+			break;
+		}
+		
+		if (!polyzone)
+		{
+			SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+			return;
+		}
+		
+		array<IEntity> teleportedVehicles = {};
+		array<AIAgent> players = {};
+		array<IEntity> entities = {};
+		
+		SCR_GroupsManagerComponent groupMan = SCR_GroupsManagerComponent.GetInstance();
+		SCR_AIGroup playerGroup = groupMan.GetPlayerGroup(playerId);
+		if (!playerGroup)
+		{
+		    SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+		    return;
+		}
+		playerGroup.GetAgents(players);
+		foreach (AIAgent agent : players)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+				
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+			if (!character)
+				continue;
+			
+			entities.Insert(entity);
+		}
+		foreach (IEntity entity: entities)
+		{
+			int currentPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+			if (currentPlayerId <= 0)
+				continue;
+			SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(entity.FindComponent(SCR_CompartmentAccessComponent));
+			if (compartmentAccess)
+			{
+				IEntity vehicle = compartmentAccess.GetVehicle();
+				
+				if (vehicle)
+				{
+					SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(SCR_BaseCompartmentManagerComponent));
+					array<BaseCompartmentSlot> slots = {};
+					compartmentMan.GetCompartments(slots);
+					//Check if majority of the vic is the same group, if not don't teleport.
+					int amountInGroup = 0;
+					int amountNotInGroup = 0;
+					foreach (BaseCompartmentSlot slot: slots)
+					{
+						if (!slot.IsOccupied())
+							continue;
+						
+						if (!slot.GetOccupant().FindComponent(FactionAffiliationComponent))
+							continue;
+						
+						if (entities.Contains(slot.GetOccupant()))
+							amountInGroup++;
+						else
+							amountNotInGroup++;
+					}
+					if (amountInGroup < amountNotInGroup)
+						continue; 
+					if (teleportedVehicles.Contains(vehicle))
+						continue;
+					teleportedVehicles.Insert(vehicle);
+					CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
+					continue;
+				}
+			}
+			CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
+		}
 	}
 };

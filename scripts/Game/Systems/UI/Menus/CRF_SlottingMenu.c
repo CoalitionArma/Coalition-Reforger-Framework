@@ -1241,8 +1241,6 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				if (m_VONController.m_bIsBroadcasting)
 					comp.SetTalking();
 			}
-			if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
-				comp.SetTalking();
 		}
 	}
 	

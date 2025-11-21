@@ -1,0 +1,7 @@
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ ID "612517386F2BD406"
+ coords 0 0 0
+ m_aVisibleForFactions {
+  "CIV"
+ }
+}

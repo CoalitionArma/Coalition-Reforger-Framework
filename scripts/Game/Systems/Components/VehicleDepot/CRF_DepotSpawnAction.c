@@ -111,7 +111,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 					errorMsg = string.Format("Insufficient supplies! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetAggregatedSupplies());
 					break;
 				case CRF_EVehicleDepotCostType.USES:
-					errorMsg = string.Format("Insufficient uses! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetUsesRemaining());
+					errorMsg = string.Format("Insufficient uses! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetVehicleUsesRemaining(m_iVehicleIndex));
 					break;
 			}
 			

@@ -56,8 +56,8 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
-    m_iAmountOfItemRegularVehicle 200
+    m_iAmountOfItemSupplyTruck 50
+    m_iAmountOfItemRegularVehicle 50
    }
   }
  }
@@ -118,8 +118,8 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
-    m_iAmountOfItemRegularVehicle 200
+    m_iAmountOfItemSupplyTruck 50
+    m_iAmountOfItemRegularVehicle 50
    }
   }
  }
@@ -180,16 +180,17 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
-    m_iAmountOfItemRegularVehicle 200
+    m_iAmountOfItemSupplyTruck 50
+    m_iAmountOfItemRegularVehicle 50
    }
   }
  }
  {
   coords 5320.313 65.121 3411.426
   angles 0 63.019 0
-  m_rVehicle "{A5A69E8C42A3DC43}Prefabs/Vehicles/Tracked/BMP1/BMP1_NOROCKET.et"
+  m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
   m_aVehicleGearscriptOverrides {
    CRF_VehicleGearscriptOverride "{66DB5799CD3CEFE2}" {
    }
@@ -297,7 +298,7 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemSupplyTruck 50
     m_iAmountOfItemRegularVehicle 200
    }
   }
@@ -359,7 +360,7 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemSupplyTruck 50
     m_iAmountOfItemRegularVehicle 200
    }
   }
@@ -421,7 +422,7 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{66DB579991291218}" {
     m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
-    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemSupplyTruck 50
     m_iAmountOfItemRegularVehicle 200
    }
   }
