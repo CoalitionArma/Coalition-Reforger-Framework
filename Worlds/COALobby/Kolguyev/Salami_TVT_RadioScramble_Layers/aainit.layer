@@ -82,7 +82,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "- Defend both antennas, if they both get captured it is a loss."\
    ""\
-   "- Find and destroy the ammo caches and vehicles depots"
+   "- Find and destroy the ammo caches and vehicles depots"\
+   ""\
+   "RHS CISS Call-Ins allowed: 4"\
+   ""\
+   "RHS CISS Instructions: "\
+   "Anyone who has a DAGR in their inventory may pull out their vector 21 binos, look through it and open up the RHS radial menu. You will then see the option of vector 21. Select it and there you will see the option to call in CAS. The CAS will be called in at where ever you are looking with the vector-21. It will take around 50-70 seconds before the plane actual flies in to drop the GBU."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "- Capture both NATO antennas to cut off CAS in the region."\
