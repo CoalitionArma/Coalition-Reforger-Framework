@@ -2083,4 +2083,15 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_Outro);
 	}
+	
+	void BroadcastVehiclePosUpdate(vector pos, int playerId)
+	{
+		Rpc(RpcDo_BroadcastVehiclePosUpdate, pos, playerId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastVehiclePosUpdate(vector pos, int playerId)
+	{
+		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
+	}
 };

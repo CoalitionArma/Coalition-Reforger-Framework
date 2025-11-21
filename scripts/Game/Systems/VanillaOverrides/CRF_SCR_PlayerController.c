@@ -131,4 +131,26 @@ modded class SCR_PlayerController
 			m_aRadioSettings.Insert(setting);
 		}
 	}
+	
+	void ForwardDeployRequestRejected()
+	{
+		Rpc(RpcDo_ForwardDeployRequestRejected);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_ForwardDeployRequestRejected()
+	{
+		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
+	}
+	
+	void TeleportLocalPlayer(vector location)
+	{
+		Rpc(RpcDo_TeleportLocalPlayer, location);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_TeleportLocalPlayer(vector location)
+	{
+		SCR_Global.TeleportPlayer(GetPlayerId(), location);
+	}
 }

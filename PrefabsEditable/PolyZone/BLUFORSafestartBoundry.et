@@ -57,7 +57,7 @@ PolylineShapeEntity {
   CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
    ID "65885ABE0B4CA07D"
    coords 0 0 0
-   angleY 0
+   angles 0 0 0
    m_sQuadName "mine-single-2"
    m_fWorldSize 15
    m_sDescription "BLUFOR Safe Start Area"
