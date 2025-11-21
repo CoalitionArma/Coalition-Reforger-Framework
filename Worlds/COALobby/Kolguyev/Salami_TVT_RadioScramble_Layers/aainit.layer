@@ -17,8 +17,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
       }
      }
-     SCR_CallInSupportContainer "{66EA696FAB6970F0}" {
-     }
      SCR_CallInSupportContainer "{625128CEE70F67FD}" {
       m_sCallInPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
       m_eSupportType FIRE_BOMBARDMENT
@@ -44,6 +42,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sGadgetName "#RHS-CISS_Gadget_GPS_Name"
        }
       }
+     }
+     SCR_CallInSupportContainer "{66EA696FAB6970F0}" {
      }
     }
    }
@@ -80,12 +80,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Snowstorm"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Defend both of the antennas as they are our only link to CAS in the region, if both fall our JTAC cannot call in CAS and we will be overran by the militia."\
+   m_sTextData "- Defend both antennas, if they both get captured it is a loss."\
    ""\
-   "As well Squadron wants us to send out a recon team to go and scout out intel in region and blow it up with our JTAC. "
+   "- Find and destroy the ammo caches and vehicles depots"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Capture the NATO antennas so they can no longer use them to call in CAS on us. If both our captured we will overrun their positions."
+   m_sTextData "- Capture both NATO antennas to cut off CAS in the region."\
+   ""
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "Try and spawn some F18 flyovers throughout the mission, make it seem like the air power of BLUFOR is a threat."
@@ -311,16 +312,16 @@ $grp GenericEntity : "{5069A070F3DA111B}Prefabs/Props/Military/AmmoBoxes/Equipme
   angles 0 -9 0
  }
  {
-  coords 2478.998 94.743 1670.89
-  angles 0 -57 0
+  coords 2065.351 225.452 2392.685
+  angles 0 -82 0
  }
  {
-  coords 2479.672 94.728 1672.237
-  angles 0 -57 0
+  coords 2064.37 225.452 2394.194
+  angles 0 -9 0
  }
  {
-  coords 2482.455 94.741 1674.865
-  angles 0 -57 0
+  coords 2064.909 225.452 2395.634
+  angles 0 -82 0
  }
 }
 $grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
@@ -362,6 +363,20 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
   m_aMissionMarkerImages {
    "{1D00176E41F6E3E9}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ4.edds"
    "{6F389B1286E03E03}CRF Images/BriefingImages/Salami/RadioScramble/ammoObjective.edds"
+  }
+ }
+ {
+  coords 661.402 43.292 1603.432
+  m_aMissionMarkerImages {
+   "{D6BB96BD1DBB33FD}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ5.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
+  }
+ }
+ {
+  coords 785.486 31.26 1490.115
+  m_aMissionMarkerImages {
+   "{8853BFFEA236BDF2}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ6.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
   }
  }
 }
