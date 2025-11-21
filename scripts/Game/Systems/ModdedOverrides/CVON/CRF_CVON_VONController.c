@@ -1,14 +1,56 @@
 modded class SCR_VONController
 {
-	bool IsPlayerAndClientSpectator(int playerId)
+	ref map<int, bool> m_SpectatorChecks = new map<int, bool>;
+	
+	void UpdateSpectatorChecks()
+	{
+		m_SpectatorChecks.Clear();
+		array<int> playerIds = {};
+		m_PlayerManager.GetPlayers(playerIds);
+		foreach (int playerId: playerIds)
+		{
+			bool isPlayerAndClientSpec = IsOtherPlayerSpectator(playerId);
+			bool inSameChannel = InSameChannel(playerId);
+
+			if (isPlayerAndClientSpec && inSameChannel)
+				m_SpectatorChecks.Insert(playerId, true);
+			else
+				m_SpectatorChecks.Insert(playerId, false);
+		}
+	}
+	
+	bool IsOtherPlayerSpectator(int playerId)
 	{
 		if (playerId == 0)
 			return false;
+
+		string otherFactionKey = m_FactionManager.GetPlayerFaction(playerId).GetFactionKey();
+		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
 		
-		return (m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" 
-		&& m_FactionManager.GetPlayerFaction(m_PlayerController.GetPlayerId()).GetFactionKey() == "SPEC") ||
-		(m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" && m_PlayerController.m_bIsListeningToSpec) ||
-		(m_FactionManager.GetPlayerFaction(m_PlayerController.GetPlayerId()).GetFactionKey() == "SPEC" && m_VONGameModeComponent.IsPlayerListening(playerId));
+		return isOtherPlayerSpec;
+	}
+	
+	bool SpectatorCheck(int playerId)
+	{
+		if (!m_SpectatorChecks.Contains(playerId))
+			return false;
+		
+		return m_SpectatorChecks.Get(playerId);
+	}
+	
+	bool InSameChannel(int playerId)
+	{
+		int frequency = CRF_MenuManager.GetInstance().GetChannel(m_PlayerController.GetPlayerId());
+		int senderFrequency = CRF_MenuManager.GetInstance().GetChannel(playerId);
+		
+		//Are we deafened
+		if (frequency == 0)
+			return false;
+		
+		if (frequency == senderFrequency)
+			return true;
+		else
+			return false;
 	}
 	
 	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
@@ -21,25 +63,9 @@ modded class SCR_VONController
 		super.ActivateCVON(transmitType);
 	}
 	
-	bool IsPlayerSpectator(int playerId)
-	{
-		if (playerId == 0)
-			return false;
-		
-		if (m_FactionManager.GetPlayerFaction(playerId) == null)
-			return false;
-		
-		return m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC";
-	}
-	
-	bool IsPlayerInDeafenChannel()
-	{
-		return CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0;
-	}
-	
 	override bool ShouldMuffleAudio(IEntity senderEntity, int playerId = 0, out int loweredDecibles = 0)
 	{
-		if (IsPlayerAndClientSpectator(playerId))
+		if (SpectatorCheck(playerId))
 			return false;
 		
 		IEntity player = m_PlayerController.GetLocalControlledEntity();
@@ -86,81 +112,18 @@ modded class SCR_VONController
 		return false;
 	}
 	
-	override void ComputeStereoLR(
-	    IEntity listener,
-	    vector  sourcePos,
-	    float   volume_m,    
-		int playerId ,       // interpret as the inaudible distance (≈ −45 dB)
-	    out float outLeft,
-	    out float outRight,
-	    out int  silencedDecibels = 0,
-	    float   rearPanBoost   = 0.55,
-	    float   rearShadow     = 0.12,
-	    float   elevNarrow     = 0.25,
-	    float   bleed          = 0.10,
-	    bool    normalizePeak  = true
-	)
-	{
-		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
-		{
-			outLeft = 0;
-			outRight = 0;
-			return;
-		}
-		float specLeft;
-		float specRight;
-		if (SpectatorLRCheck(playerId, specLeft, specRight))
-		{
-			outLeft = specLeft;
-			outRight = specRight;
-			silencedDecibels = 0;
-			return;
-		}
-		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
-	}
-	
 	override void ComputeSpectatorLR(int playerId, out float outLeft = 1, out float outRight = 1, out int silencedDecibels = 0)
 	{
-		float specLeft;
-		float specRight;
-		if (SpectatorLRCheck(playerId, specLeft, specRight))
+		if (SpectatorCheck(playerId))
 		{
-			outLeft = specLeft;
-			outRight = specRight;
+			outLeft = 1;
+			outRight = 1;
 			silencedDecibels = 0;
 			return;
 		}
 	}
 	
-	bool SpectatorLRCheck(int playerId, out float left, out float right)
-	{
-		if (!IsPlayerAndClientSpectator(playerId))
-			return false;
-		
-		if (IsPlayerInDeafenChannel())
-		{
-			left = 0;
-			right = 0;
-			return true;
-		}
-		
-		int frequency = CRF_MenuManager.GetInstance().GetChannel(m_PlayerController.GetPlayerId());
-		int senderFrequency = CRF_MenuManager.GetInstance().GetChannel(playerId);
-		
-		if (frequency == senderFrequency)
-		{
-			left = 1;
-			right = 1;
-			return true;
-		}
-		else
-		{
-			left = 0;
-			right = 0;
-			return true;
-		}
-	}
-	
+	float m_fSpecCheckBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		if (m_fWriteTeamspeakClientIdCooldown > 0)
@@ -204,8 +167,6 @@ modded class SCR_VONController
 		
 		m_PlayerIdTemp.Clear();
 		m_PlayerManager.GetPlayers(m_PlayerIdTemp);
-		bool isLocalSpectator = IsPlayerSpectator(m_PlayerController.GetPlayerId());
-		bool isListeningToSpectator = m_PlayerController.m_bIsListeningToSpec;
 		
     	//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
 		//This removes that container as when they reconnect they will no longer be heard.
@@ -216,6 +177,12 @@ modded class SCR_VONController
 			{
 				m_PlayerController.m_aLocalEntries.Remove(playerId);
 				continue;
+			}
+			
+			if (container.m_bIsSpectator)
+			{
+				if (!SpectatorCheck(playerId))
+					m_PlayerController.m_aLocalEntries.Remove(playerId);
 			}
 		
 			if (container.m_SoundSource)
@@ -234,6 +201,14 @@ modded class SCR_VONController
 			
 		}
 		
+		bool isLocalSpectator = SpectatorCheck(m_PlayerController.GetPlayerId());
+		if (m_fSpecCheckBuffer >= 1)
+		{
+			m_fSpecCheckBuffer = 0;
+			UpdateSpectatorChecks();
+		}
+		else
+			m_fSpecCheckBuffer += timeSlice;
 		foreach (int playerId: m_PlayerIdTemp)
 		{
 			if (!m_Player)
@@ -241,16 +216,15 @@ modded class SCR_VONController
 			
 			if (playerId == m_PlayerController.GetPlayerId())
 				continue;
-			
-			bool isOtherSpectator = IsPlayerSpectator(playerId);
-			bool isOtherListening = m_VONGameModeComponent.IsPlayerListening(playerId);
+
+			bool isOtherSpectator = SpectatorCheck(playerId);
 			//Not usual an issue but when the player is listening to an entity and he swaps to spectator, he goes into null space until he clicks game.
 			//Meaning unless we remove his direct voice line here it just stays and he'll never be heard on spectator.;
 			IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
 			if (!player)
 			{
 				//Sometimes spectators and players listening are not in eachothers Rpl bubble.
-				if ((isLocalSpectator || isListeningToSpectator) && (isOtherSpectator || isOtherListening))
+				if (isLocalSpectator && isOtherSpectator)
 				{
 					if (m_PlayerController.m_aLocalEntries.Contains(playerId))
 						continue;
@@ -259,10 +233,9 @@ modded class SCR_VONController
 						CVON_VONContainer container = new CVON_VONContainer();
 						container.m_eVonType = CVON_EVONType.DIRECT;
 						container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
-						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 						container.m_iPlayerId = playerId;
-						container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
+						container.m_bIsSpectator = isOtherSpectator;
 						m_PlayerController.m_aLocalEntries.Insert(playerId, container);
 					}
 				}
@@ -294,7 +267,7 @@ modded class SCR_VONController
 			float distance = vector.DistanceSq(player.GetOrigin(), m_Camera.GetOrigin());
 			if (distance > maxDistance)
 			{
-				if ((isLocalSpectator || isListeningToSpectator) && (isOtherSpectator || isOtherListening))
+				if (isLocalSpectator && isOtherSpectator)
 				{
 					if (m_PlayerController.m_aLocalEntries.Contains(playerId))
 						continue;
@@ -306,7 +279,7 @@ modded class SCR_VONController
 						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 						container.m_iPlayerId = playerId;
-						container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
+						container.m_bIsSpectator = isOtherSpectator;
 						m_PlayerController.m_aLocalEntries.Insert(playerId, container);
 					}
 				}
@@ -333,7 +306,7 @@ modded class SCR_VONController
 					container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 					container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 					container.m_iPlayerId = playerId;
-					container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
+					container.m_bIsSpectator = isOtherSpectator;
 					m_PlayerController.m_aLocalEntries.Insert(playerId, container);
 				}
 				
@@ -359,5 +332,37 @@ modded class SCR_VONController
 					
 		}
 		WriteJSON();
+	}
+	
+	override void ComputeStereoLR(
+	    IEntity listener,
+	    vector  sourcePos,
+	    float   volume_m,    
+		int playerId ,       // interpret as the inaudible distance (≈ −45 dB)
+	    out float outLeft,
+	    out float outRight,
+	    out int  silencedDecibels = 0,
+	    float   rearPanBoost   = 0.55,
+	    float   rearShadow     = 0.12,
+	    float   elevNarrow     = 0.25,
+	    float   bleed          = 0.10,
+	    bool    normalizePeak  = true
+	)
+	{
+		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		{
+			outLeft = 0;
+			outRight = 0;
+			return;
+		}
+		
+		if (SpectatorCheck(playerId))
+		{
+			outLeft = 1;
+			outRight = 1;
+			return;
+		}
+		
+		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
 	}
 }
