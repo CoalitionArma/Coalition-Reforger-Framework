@@ -340,6 +340,7 @@ $grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSma
 $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
  {
   coords 1496.793 73.298 1158.285
+  m_sDescription "Potential Ammo Cache"
   m_sMissionMarkerDescription "Drone ops from brigade report a ton of local militia movement out of the southern most building here. It's the tan one with the beige roof at the southern edge. Investigate and see if there's an ammo cache inside."
   m_aMissionMarkerImages {
    "{FE386CAA816071F8}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ1.edds"
@@ -348,6 +349,7 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  {
   coords 2478.319 90.028 1666.552
+  m_sDescription "Potential Ammo Cache"
   m_sMissionMarkerDescription "A local firefighter sent in a tip that the red roofed building in town, right next to the building he was attempting to put out, had militia men inside gearing up for something big. Try and see if they left any ammo behind."
   m_aMissionMarkerImages {
    "{A0D045E93EEDFFF7}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ2.edds"
@@ -356,6 +358,7 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  {
   coords 2047.367 133.031 1948.555
+  m_sDescription "Potential Vehicle Depot"
   m_sMissionMarkerDescription "Brigade is also reporting some technicals stored here, check and see if they are still there."
   m_aMissionMarkerImages {
    "{54D8027133309783}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ3.edds"
@@ -364,6 +367,7 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  {
   coords 2072.181 228.912 2398.235
+  m_sDescription "Potential Ammo Cache"
   m_sMissionMarkerDescription "Tons of reports right before this snow storm kicked up of local militamen meeting in the tall building in Vipar on the south eastern side of town. Investigate for any ammo they may have stashed there."
   m_aMissionMarkerImages {
    "{1D00176E41F6E3E9}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ4.edds"
@@ -372,6 +376,7 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  {
   coords 661.402 43.292 1603.432
+  m_sDescription "Antenna"
   m_aMissionMarkerImages {
    "{D6BB96BD1DBB33FD}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ5.edds"
    "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
@@ -379,6 +384,7 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  {
   coords 785.486 31.26 1490.115
+  m_sDescription "Antenna"
   m_aMissionMarkerImages {
    "{8853BFFEA236BDF2}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ6.edds"
    "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
