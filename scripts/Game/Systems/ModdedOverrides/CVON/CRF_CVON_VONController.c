@@ -370,7 +370,13 @@ modded class SCR_VONController
 			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
 					
 		}
-		WriteJSON();
+		//Our plugin only checks every 50ms
+		if (m_fVONSaveBuffer >= 0.05)
+		{
+			WriteJSON();
+			m_fVONSaveBuffer = 0;
+		}
+		else m_fVONSaveBuffer += timeSlice;
 	}
 	
 	override void ComputeStereoLR(
