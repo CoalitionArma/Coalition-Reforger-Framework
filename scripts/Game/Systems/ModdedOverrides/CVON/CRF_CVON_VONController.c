@@ -1,6 +1,48 @@
 modded class SCR_VONController
 {
 	ref map<int, bool> m_SpectatorChecks = new map<int, bool>;
+    int m_iLastChannelChanges = -1; // Track last known channel change count
+	CRF_MenuManager m_CRFMenuManager;
+	
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		m_CRFMenuManager = CRF_MenuManager.GetInstance();
+	}
+    
+    // Only update when something actually changes
+    void UpdateSpectatorChecksIfNeeded()
+    {
+        if (!m_CRFMenuManager)
+            return;
+            
+        // Check if channels have changed
+        if (m_iLastChannelChanges != m_CRFMenuManager.m_iChannelChanges)
+        {
+            m_iLastChannelChanges = m_CRFMenuManager.m_iChannelChanges;
+            UpdateSpectatorChecks(); // Only update when channels change
+        }
+    }
+    
+    // Cache individual player spectator status - update on demand
+    bool SpectatorCheck(int playerId)
+    {
+        // Check if we have cached data
+        if (m_SpectatorChecks.Contains(playerId))
+            return m_SpectatorChecks.Get(playerId);
+        
+        // Not cached - calculate and cache it
+        bool result = CalculateSpectatorStatus(playerId);
+        m_SpectatorChecks.Insert(playerId, result);
+        return result;
+    }
+    
+    bool CalculateSpectatorStatus(int playerId)
+    {
+        bool isPlayerAndClientSpec = IsOtherPlayerSpectator(playerId);
+        bool inSameChannel = InSameChannel(playerId);
+        return isPlayerAndClientSpec && inSameChannel;
+    }
 	
 	void UpdateSpectatorChecks()
 	{
@@ -24,18 +66,13 @@ modded class SCR_VONController
 		if (playerId == 0)
 			return false;
 
+		if (!m_FactionManager.GetPlayerFaction(playerId))
+			return false;
+		
 		string otherFactionKey = m_FactionManager.GetPlayerFaction(playerId).GetFactionKey();
 		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
 		
 		return isOtherPlayerSpec;
-	}
-	
-	bool SpectatorCheck(int playerId)
-	{
-		if (!m_SpectatorChecks.Contains(playerId))
-			return false;
-		
-		return m_SpectatorChecks.Get(playerId);
 	}
 	
 	bool InSameChannel(int playerId)
@@ -187,25 +224,25 @@ modded class SCR_VONController
 		
 			if (container.m_SoundSource)
 			{
-				int maxDistance = m_VONGameModeComponent.GetPlayerVolume(playerId);
+				int volume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+				int maxDistance = volume;
 				maxDistance *= maxDistance;
-				container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+				container.m_iVolume = volume;
 				
 				float distance = vector.DistanceSq(container.m_SoundSource.GetOrigin(), m_Camera.GetOrigin());
 				if (distance < maxDistance)
 					container.m_fDistanceToSender = distance;
 				else
 					container.m_fDistanceToSender = -1;
-				container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
 			}
 			
 		}
 		
 		bool isLocalSpectator = SpectatorCheck(m_PlayerController.GetPlayerId());
-		if (m_fSpecCheckBuffer >= 1)
+		if (m_fSpecCheckBuffer >= 0.1)
 		{
 			m_fSpecCheckBuffer = 0;
-			UpdateSpectatorChecks();
+			UpdateSpectatorChecksIfNeeded();
 		}
 		else
 			m_fSpecCheckBuffer += timeSlice;
@@ -251,26 +288,54 @@ modded class SCR_VONController
 				else
 					continue;
 			}
-			
-			SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(ChimeraCharacter.Cast(player).GetCharacterController());
-			if (charCont.IsDead() || charCont.IsUnconscious())
-				if (m_PlayerController.m_aLocalEntries.Contains(playerId))
+			else
+			{
+				SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(ChimeraCharacter.Cast(player).GetCharacterController());
+				if (charCont.IsDead() || charCont.IsUnconscious())
+					if (m_PlayerController.m_aLocalEntries.Contains(playerId))
+					{
+						m_PlayerController.m_aLocalEntries.Remove(playerId);
+						continue;
+					}
+					else
+						continue;
+				
+				int maxDistance = m_VONGameModeComponent.GetPlayerVolume(playerId);
+				maxDistance *= maxDistance;
+				float distance = vector.DistanceSq(player.GetOrigin(), m_Camera.GetOrigin());
+				if (distance > maxDistance)
 				{
-					m_PlayerController.m_aLocalEntries.Remove(playerId);
-					continue;
+					if (isLocalSpectator && isOtherSpectator)
+					{
+						if (m_PlayerController.m_aLocalEntries.Contains(playerId))
+							continue;
+						else
+						{
+							CVON_VONContainer container = new CVON_VONContainer();
+							container.m_eVonType = CVON_EVONType.DIRECT;
+							container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+							container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
+							container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
+							container.m_iPlayerId = playerId;
+							container.m_bIsSpectator = isOtherSpectator;
+							m_PlayerController.m_aLocalEntries.Insert(playerId, container);
+						}
+					}
+					else if (m_PlayerController.m_aLocalEntries.Contains(playerId))
+					{
+						//If this VON Transmission is radio, don't do shit
+						if (m_PlayerController.m_aLocalEntries.Get(playerId).m_eVonType == CVON_EVONType.RADIO)
+							continue;
+						m_PlayerController.m_aLocalEntries.Remove(playerId);
+						continue;
+					}
+					else
+						continue;
 				}
 				else
-					continue;
-			
-			int maxDistance = m_VONGameModeComponent.GetPlayerVolume(playerId);
-			maxDistance *= maxDistance;
-			float distance = vector.DistanceSq(player.GetOrigin(), m_Camera.GetOrigin());
-			if (distance > maxDistance)
-			{
-				if (isLocalSpectator && isOtherSpectator)
 				{
 					if (m_PlayerController.m_aLocalEntries.Contains(playerId))
-						continue;
+							continue;
 					else
 					{
 						CVON_VONContainer container = new CVON_VONContainer();
@@ -282,34 +347,8 @@ modded class SCR_VONController
 						container.m_bIsSpectator = isOtherSpectator;
 						m_PlayerController.m_aLocalEntries.Insert(playerId, container);
 					}
+					
 				}
-				else if (m_PlayerController.m_aLocalEntries.Contains(playerId))
-				{
-					//If this VON Transmission is radio, don't do shit
-					if (m_PlayerController.m_aLocalEntries.Get(playerId).m_eVonType == CVON_EVONType.RADIO)
-						continue;
-					m_PlayerController.m_aLocalEntries.Remove(playerId);
-					continue;
-				}
-				else
-					continue;
-			}
-			else
-			{
-				if (m_PlayerController.m_aLocalEntries.Contains(playerId))
-						continue;
-				else
-				{
-					CVON_VONContainer container = new CVON_VONContainer();
-					container.m_eVonType = CVON_EVONType.DIRECT;
-					container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
-					container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
-					container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
-					container.m_iPlayerId = playerId;
-					container.m_bIsSpectator = isOtherSpectator;
-					m_PlayerController.m_aLocalEntries.Insert(playerId, container);
-				}
-				
 			}
 		}
 
@@ -328,7 +367,7 @@ modded class SCR_VONController
 					DeactivateCVON();
 				return;
 			}
-			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerIdTemp, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
+			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
 					
 		}
 		WriteJSON();

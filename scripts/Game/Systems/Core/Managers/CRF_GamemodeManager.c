@@ -279,6 +279,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		} else {
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+			CRF_MenuManager.GetInstance().RemovePlayerFromAnyChannel(playerId, false);
 		}
 		
 		if (playerCharacter)
