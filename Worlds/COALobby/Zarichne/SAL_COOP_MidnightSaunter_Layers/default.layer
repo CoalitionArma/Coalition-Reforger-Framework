@@ -1,0 +1,133 @@
+SCR_MapEntity MapEntity_Zarichne1 : "{AAA23254C87C0B55}Prefabs/World/Game/Zarichne/MapEntity_Zarichne.et" {
+ coords 3923.134 19.296 528.034
+}
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2310.467 9 2326.629
+}
+SCR_DestructionManager : "{E5B570B5F32A7BAE}Prefabs/Systems/Destruction/DestructionManager.et" {
+ coords 2313.424 9 2325.928
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_AirdropManager "{66EE72016218E8DC}" {
+  }
+  RHS_AdditionalGameModeSettingsComponent "{61AE627E9607513B}" {
+   m_CallInSupportsConfig SCR_CallInSupportContainerConfig "{621B2B44550E77F5}" {
+    m_aCallIns {
+     SCR_CallInSupportContainer "{66EE72005C6E2F80}" : "{94C612087EB33D34}Configs/Systems/RHS_CallIn/RHS_CallIn_Blue_CAS_GBU.conf" {
+      m_iRequestCooldown 300
+      m_iRequestCost 0
+      m_eRequiredRank RENEGADE
+      m_aAvialableForFactions {
+       "BLUFOR"
+      }
+      m_iMinSpawnDelay 15
+      m_iMaxSpawnDelay 30
+      m_iMarkerTimeToLive 1
+      m_bMustBeSquadLeader 0
+      m_iMinNumberOfSquadMembers 0
+      m_aRequiredGadgets {
+       SCR_CallInRequiredGadgetContainer "{624EB6B34E1269D8}" {
+        m_sGadgetType "GPS"
+        m_sGadgetName "#RHS-CISS_Gadget_GPS_Name"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3783.897 18.735 1755.096
+ m_iTimeLimitMinutes 90
+ EnableAIInGameState 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A German unit has been haulted in it's tracks along the Zarichne river, we've been tasked in to destroy some artillery that's been bombarding our German friends. These 2S1s are slippery and don't stay in one area for too long after firing. Find them and take them out. "\
+   ""\
+   "Once you are sastified we must capture the western side of the bridge across the Zarichne river. The Germans have attempted numerous infiltration and breakthroughs that have failed because of the positions across the river. We must capture these positions for the German breakthrough in the morning."\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   "JTAC"\
+   ""\
+   "Time: 90"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Destroy the 2 2S1 positions first"\
+   "- Capture the bridge"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "To call in CAS the JTAC must pull out his binos and use the RHS radial menu."\
+   ""\
+   "Anyone with a DAGR can call in CAS."\
+   ""\
+   "Respawns: Once an objective is captured it triggers a respawn wave."
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{2D94AD67BEABCC05}Configs/Gearscripts/Custom/Salami/CRF_GS_Modern_GreenBeretCOOP.conf"
+  m_bEnableMagnifiedOptics 1
+ }
+ {
+  SCR_FactionManager "66EE7CA70E4D4715" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66EE7207667F2171}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66EE72076634E277}" {
+        m_sCallsign "MAT"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+BaseGameTriggerEntity flightGenerator {
+ coords 2268.416 7.944 2363.231
+ userScript "	bool m_bSafeStartInit = false;"\
+ "	void InitPlane()"\
+ "	{"\
+ "		vector start = \"0 900 5000\";"\
+ "		vector end = \"5000 900 0\";"\
+ "		float angle = 135;"\
+ "		vector greenLight = \"2500 900 2500\";"\
+ "		vector flightData[4];"\
+ "		flightData[0] = start;"\
+ "		flightData[3] = end;"\
+ "		flightData[2] = greenLight;"\
+ "		ref CRF_AirdropObject flight = new CRF_AirdropObject(\"BLUFOR\", \"{D35A20947FE9E130}PrefabsEditable/Auto/Props/c130.et\", flightData, angle);"\
+ "		CRF_AirdropManager.GetInstance().InitFlight(flight);"\
+ "		delete this;"\
+ "	}"
+ TriggerShapeType Sphere
+ PeriodicQueries 1
+ UpdatePeriod 5
+ OnQueryFinished ""\
+ "		if (!Replication.IsServer())"\
+ "		{"\
+ "			delete this;"\
+ "			return;"\
+ "		}"\
+ "		if (!m_bSafeStartInit)"\
+ "		{"\
+ "			m_bSafeStartInit = CRF_SafestartManager.GetInstance().GetSafestartStatus();	"\
+ "			return;"\
+ "		}"\
+ "		else"\
+ "		{"\
+ "			if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "				InitPlane();"\
+ "		}"\
+ "	"
+}
+SCR_MPDestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDestructionManager.et" {
+ coords 2305.792 9 2324.651
+}

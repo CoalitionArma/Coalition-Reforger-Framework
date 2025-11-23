@@ -1,0 +1,14 @@
+GenericEntity : "{4A0D1B3EB0396C9F}Prefabs/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01_light.et" {
+ ID "5A0283818DC75DC0"
+ components {
+  LightSourceVisualizationObject "{5A02839A0D5BE210}" {
+   Size 10
+   LV 20
+  }
+  RplComponent "{5AC2A87086509090}" {
+   SpatialRelevancy 0
+   Streamable Disabled
+  }
+ }
+ coords 2306.346 10.026 2314.609
+}

@@ -1,0 +1,31 @@
+GenericEntity : "{172585DCA4F947FE}Prefabs/Props/Furniture/PhoneTable_01_khaki.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SlotManagerComponent "{62A330ABFAF7756E}" {
+   Slots {
+    EntitySlotInfo Slot0 {
+     Offset -0.6545 1.5393 5.8721
+    }
+    EntitySlotInfo LightSlot0 {
+     Offset 0.0952 5.4608 1.9087
+    }
+    EntitySlotInfo LightSlot2 {
+     Offset 0.0952 5.4608 -1.8677
+    }
+    EntitySlotInfo LightSlot3 {
+     Offset 0.0952 5.5316 -5.3704
+    }
+    EntitySlotInfo LightSlot4 {
+     Offset 0.0952 5.6224 -11.2539
+    }
+    EntitySlotInfo LightSlot1 {
+     Offset 0.0952 5.4608 4.9412
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   SpatialRelevancy 0
+   Streamable Disabled
+  }
+ }
+}

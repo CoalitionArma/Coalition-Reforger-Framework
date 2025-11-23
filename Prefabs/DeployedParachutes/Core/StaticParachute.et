@@ -1,0 +1,155 @@
+ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  ColliderHistoryComponent "{6132A72CCF77E788}" {
+   Enabled 1
+  }
+  MeshObject "{4B42E716914465B9}" {
+   Object "{A372F4DA63729C28}Assets/ParachuteMK3/ParachuteMK3.xob"
+   Materials {
+    MaterialAssignClass "{66EE7CA79D79E911}" {
+     SourceMaterial "DefaultGeneratedMaterial"
+     AssignedMaterial "{68A8C1F690E56659}Assets/Props/Commercial/CabinetCardFile_01/Data/CabinetCardFile_01_green.emat"
+    }
+    MaterialAssignClass "{66EE7CA79D79E907}" {
+     SourceMaterial "blinn1SG"
+     AssignedMaterial "{68A8C1F690E56659}Assets/Props/Commercial/CabinetCardFile_01/Data/CabinetCardFile_01_green.emat"
+    }
+   }
+   LODFactors {
+    1 1 1 1 1 1
+   }
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Layers 0x4040 0
+   Mass 40
+   CenterOfMass 0 1.862 0
+   LinearDamping 0.5
+   AngularDamping 0.1
+   SimState Simulation
+   ResponseIndex "Normal"
+  }
+  SCR_BaseCompartmentManagerComponent "{2CD4A765A7D52986}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{66EE7CA79D79E90B}" {
+     EntryPositionInfo PointInfo "{66EE7CA79D79E909}" {
+      PivotID "passenger_getin"
+     }
+     ExitPositionInfo PointInfo "{66EE7CA79D79E908}" {
+      Offset 0 1 0
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     AccessibilitySettings CompartmentAccessibilityContext "{66EE7CA79D79E90C}" {
+      BBHalfExtents 0.5 0.7 0.005
+      TraceOffset 0 1 0.65
+      ExcludePhysicsLayer 0x40000 0
+     }
+    }
+   }
+   CompartmentSlots {
+    CargoCompartmentSlot passenger_l02 {
+     CompartmentAction SCR_GetInUserAction "{66EE7CA79D79E930}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+      CanAggregate 1
+      "Sort Priority" 3
+     }
+     GetOutAction SCR_GetOutAction "{66EE7CA79D79E937}" {
+      ParentContextList {
+       "door_rear_int"
+      }
+      VisibilityRange 5
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{66EE7CA79D79E935}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{66EE7CA79D79E934}" {
+        Name "Remove Casualty"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 9
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset 0 0.674 0
+     }
+     ForcedFreeLook 1
+     SkipCharacterDoorAnimationsFromSeat 1
+     DoorInfoList {
+      0
+     }
+     BaseCoverage 0
+     ContextName "passenger_l02"
+     m_fFreelookAimLimitOverrideLeft -160
+     m_fFreelookAimLimitOverrideRight 160
+     m_fFreelookCameraNeckFollowTraverse 1
+    }
+   }
+  }
+  SCR_BaseHUDComponent "{59BC55AE2A7F6FE0}" {
+   Enabled 0
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   "Additional hit zones" {
+    SCR_VehicleHitZone Cargo {
+     BaseDamageMultiplier 1
+     MaxHealth 60
+     AreaOverride 0
+     m_pDestructionHandler SCR_DestructionBaseHandler "{5C77025948537C40}" {
+     }
+    }
+   }
+  }
+  SCR_EditableEntityComponent "{66EE7CA79D79E922}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66EE7CA79D79E926}" {
+    Name "Parachute"
+    Icon "{73B3D8BBB785B5B9}UI/Textures/Common/circleFull.edds"
+    m_Image "{AC7E384FF9D8016A}Common/Textures/placeholder_BCR.edds"
+    m_aAutoLabels {
+     ENTITYTYPE_VEHICLE CONTENT_MODDED
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5E58C207959A9200}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{2CD4A765B4482F53}" {
+   ActionContexts {
+    UserActionContext "{66EE7CA79D79E92B}" {
+     UIInfo SCR_ActionContextUIInfo "{66EE7CA79D79E96A}" {
+     }
+     ContextName "passenger_l02"
+     Position PointInfo "{66EE7CA79D79E96F}" {
+      PivotID "passenger_l02_idle"
+      Offset 0 0.05 0
+     }
+     Height 0
+    }
+    UserActionContext "{66EE7CA79D79E96D}" {
+     ContextName "default"
+     Position PointInfo "{66EE7CA79D79E96C}" {
+      PivotID "Bone"
+      Offset 0.0001 0.0001 1.9219
+     }
+     Radius 2.5
+     Height 0
+    }
+   }
+  }
+  RplComponent "{63136787FD0BCE14}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+ }
+ m_PitchTorque 1
+ m_RollTorque 1
+ m_GlideDownPitch 4
+ m_GlideUpPitch 5
+}

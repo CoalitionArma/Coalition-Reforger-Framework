@@ -3,6 +3,9 @@ modded class SCR_AIGroup
 	[Attribute("0", category: "Group")]
 	protected bool m_bIsPlayable;
 	
+	[Attribute("0")]
+	bool m_bIsGarrisonGroup;
+	
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
 	protected CRF_EFlagType m_FlagType;
 	
@@ -20,6 +23,9 @@ modded class SCR_AIGroup
 	{
 		// Call the parent implementation first
 		super.EOnInit(owner);
+		
+		if (m_bIsGarrisonGroup)
+			GetGame().GetCallqueue().CallLater(SetGarrison, 1000, false);
 		
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
@@ -42,6 +48,23 @@ modded class SCR_AIGroup
 		};
 		
 		
+	}
+	
+	void SetGarrison()
+	{
+		array<AIAgent> agents = {};
+		GetAgents(agents);
+		foreach (AIAgent agent: agents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+			
+			if (!SCR_ChimeraCharacter.Cast(entity))
+				continue;
+			
+			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
+		}
 	}
 	
 	void SetGroupSlots(array<ResourceName> slots)
