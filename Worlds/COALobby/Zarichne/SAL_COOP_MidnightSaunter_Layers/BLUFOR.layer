@@ -79,6 +79,11 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
             }
            }
            coords 2.298 0.047 0.125
+           {
+            SCR_AIGroup : "{5F4B68E250ACF256}Prefabs/Groups/BLUFOR/Zeus/CRF_BLUFOR_Zeus.et" {
+             coords 6.963 0.764 23.803
+            }
+           }
           }
          }
         }
