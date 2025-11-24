@@ -15,7 +15,9 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
 	
 	protected IEntity m_eSpecEntity;
-	vector m_vSpreadPos;
+	//So the client tracks where he needs to teleport his player
+	//Since teleporting is mostly client authorative
+	[RplProp()] vector m_vSpreadPos;
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -100,19 +102,32 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		if (isCRFInitialEntity)
 		{
-			vector mapSize = SCR_MapEntity.GetMapInstance().Size();
-			vector mapCenter = Vector(mapSize[0] / 2, 0, mapSize[1] / 2);
-			vector spreadPos = GenerateRandomSpreadPosition(mapCenter, 500.0);
-			spreadPos[1] = 1000.0; // Set elevation to 1000m
-			m_vSpreadPos = spreadPos;
-			owner.SetOrigin(spreadPos);
+			if (Replication.IsServer())
+			{
+				vector mapCenter;
+				float radius;
+				CRF_Gamemode.GetInstance().GetAOCenterAndRadius(mapCenter, radius);
+				vector spreadPos = GenerateRandomSpreadPosition(mapCenter, radius);
+				spreadPos[1] = 1000.0; // Set elevation to 1000m
+				m_vSpreadPos = spreadPos;
+				owner.SetOrigin(spreadPos);
+				Replication.BumpMe();
+			}
 		}
 		else if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
 		{
 			// Use random spread position for other spectators too, instead of hardcoded 0,10000,0
-			vector spreadPos = GenerateRandomSpreadPosition("0 10000 0", 500.0);
-			spreadPos[1] = 10000.0;
-			owner.SetOrigin(spreadPos);
+			if (Replication.IsServer())
+			{
+				vector mapCenter;
+				float radius;
+				CRF_Gamemode.GetInstance().GetAOCenterAndRadius(mapCenter, radius);
+				vector spreadPos = GenerateRandomSpreadPosition(mapCenter, radius);
+				spreadPos[1] = 1000.0; // Set elevation to 1000m
+				m_vSpreadPos = spreadPos;
+				owner.SetOrigin(spreadPos);
+				Replication.BumpMe();
+			}
 		}
 		
 		Physics physics = owner.GetPhysics();
@@ -290,7 +305,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			mat[1] = vector.Up;
 			mat[2] = vector.Forward;
-			mat[3][1] = 10000;
+			mat[3] = m_vSpreadPos;
 		}
 		
 		
