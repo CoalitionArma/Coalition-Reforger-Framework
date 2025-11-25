@@ -379,6 +379,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
 	}
 	
+	void RequestSpreadPos(RplId entityId)
+	{
+		Rpc(RpcAsk_RequestSpreadPos, entityId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1749,5 +1754,22 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			}
 			CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
 		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestSpreadPos(RplId entityId)
+	{
+		if (!Replication.FindItem(entityId))
+			return;
+		
+		IEntity entity = RplComponent.Cast(Replication.FindItem(entityId)).GetEntity();
+		if (!entity)
+			return;
+		
+		if (!entity.FindComponent(CRF_PlayableCharacter))
+			return;
+		
+		CRF_PlayableCharacter playableCharacter = CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter));
+		playableCharacter.SendSpreadPos();
 	}
 };
