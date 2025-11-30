@@ -1,21 +1,21 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 261.96 66.656 2401.072
-  angles 0 82.053 0
+  coords 257.139 66.634 2407.601
+  angles 0 146.662 0
   m_rVehicle "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et"
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
  {
-  coords 285.599 67.742 2404.372
-  angles 0 82.053 0
+  coords 266.104 67.156 2417.125
+  angles 0 168.295 0
   m_rVehicle "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et"
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
  {
-  coords 273.733 67.053 2402.716
-  angles 0 82.053 0
+  coords 269.774 67.071 2402.273
+  angles 0 173.622 0
   m_rVehicle "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et"
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
@@ -53,14 +53,14 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 1754.367 66.605 1406.253
+  coords 1754.367 66.606 1406.253
   angles 0 160.007 0
   m_rVehicle "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et"
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
  {
-  coords 1036.925 4.467 1465.51
+  coords 1036.925 4.463 1465.51
   angles 0 12.313 0
   m_rVehicle "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et"
   m_sFactionKey "BLUFOR"
