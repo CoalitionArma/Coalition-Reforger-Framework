@@ -289,6 +289,7 @@ class CRF_RespawnManager : ScriptComponent
 		{
 			m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
 			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+			RespawnAllVehicles();
 		}
 		
 		if (!m_bSuppressReplication)
@@ -616,6 +617,49 @@ class CRF_RespawnManager : ScriptComponent
 			RespawnPlayer(playerId);
 		}
 		
+		RespawnSideVehicles(faction);
+	}
+	
+	void RespawnAllVehicles()
+	{
+		//Makes my life 20x easier
+		array<string> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		foreach (string faction: factionKeys)
+		{
+			//Vehicle respawn logic (without additional ticket operations)
+			foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)
+			{
+				if (vehicle.m_sFactionKey != faction)
+					continue;
+				
+				//Do we have enough tickets and are they not at 0.
+				if (GetFactionTickets(faction) != 0 && GetFactionTickets(faction) < vehicle.m_iTicketsPerRespawn)
+					continue;
+				
+				//Is the vehicle non existant anymore
+				if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
+				{
+					CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+					continue;
+				}
+				
+				//Vehicle is not vehicling wth
+				if (!vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent))
+					continue;
+				
+				SCR_VehicleDamageManagerComponent vehicleDamageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+				if (vehicleDamageManager.GetState() != EDamageState.DESTROYED)
+					continue;
+				
+				//Vehicle is destroyed respawn it.
+				CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+				continue;
+			}
+		}
+	}
+	
+	void RespawnSideVehicles(FactionKey faction)
+	{
 		//Vehicle respawn logic (without additional ticket operations)
 		foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)
 		{

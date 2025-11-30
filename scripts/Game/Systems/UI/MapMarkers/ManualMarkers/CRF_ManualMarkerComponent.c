@@ -2,6 +2,7 @@
 class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 {
 	protected SCR_MapEntity m_MapEntity;
+	protected CRF_ManualMarker m_ManualMarker;
 	
 	// Cache widgets
 	protected ImageWidget m_wMarkerIcon;
@@ -27,6 +28,11 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 		m_wDescriptionText = RichTextWidget.Cast(w.FindAnyWidget("DescriptionText"));
 		m_wMarkerScrollLayout = OverlayWidget.Cast(w.FindAnyWidget("MarkerScrollLayout"));
 		m_wDescriptionPanel = PanelWidget.Cast(w.FindAnyWidget("DescriptionPanel"));
+	}
+	
+	void SetManualMarker(CRF_ManualMarker marker)
+	{
+		m_ManualMarker = marker;
 	}
 	
 	float GetYScale()
@@ -133,7 +139,6 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 		m_wRoot.SetZOrder(10000);
 		if (m_bHasGlow) m_wMarkerIconGlow.SetVisible(true);
 		if (m_sDescription != "") m_wDescriptionPanel.SetVisible(true);
-		
 		return true;
 	}
 	override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)

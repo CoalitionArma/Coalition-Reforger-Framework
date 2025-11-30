@@ -333,8 +333,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 					if (m_VONController.m_bIsBroadcasting)
 						comp.SetTalking();
 				}
-				else if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(player))
-					comp.SetTalking();
 			}
 		}
 	}

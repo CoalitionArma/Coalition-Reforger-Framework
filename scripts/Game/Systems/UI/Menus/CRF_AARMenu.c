@@ -348,8 +348,6 @@ class CRF_AARMenu: ChimeraMenuBase
 					comp.SetColor(Color.Red);
 				else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
-				else if(m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
-					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
 			}
 		}
 		

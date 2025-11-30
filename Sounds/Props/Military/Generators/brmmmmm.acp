@@ -1,0 +1,542 @@
+AudioClass {
+ signals {
+  SignalClass "15373" {
+   id 15373
+   name "Signal 15"
+   tl 150 -119
+   res "{9DEC40DAE4E5212C}Sounds/_SharedData/Signals/OneSignal/Trigger.sig"
+   inputsport {
+    1
+   }
+   outputsport {
+    2
+   }
+   inputvalues {
+    1
+   }
+   inputvaluesmin {
+    0
+   }
+   inputvaluesmax {
+    1
+   }
+   path "{9DEC40DAE4E5212C}Sounds/_SharedData/Signals/OneSignal/Trigger.sig"
+  }
+  SignalClass "23565" {
+   id 23565
+   name "Signal 15"
+   tl -64.75 -278.542
+   res "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+   inputsport {
+    23 52
+   }
+   outputsport {
+    37
+   }
+   inputvalues {
+    0 1000
+   }
+   inputvaluesmin {
+    0 0
+   }
+   inputvaluesmax {
+    1 10000
+   }
+   path "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+  }
+  SignalClass "26637" {
+   id 26637
+   name "Signal Reverb"
+   tl 410.273 3.303
+   res "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
+   inputsport {
+    1 35 112
+   }
+   outputsport {
+    39 105 107 106 110
+   }
+   inputvalues {
+    40 1 16000
+   }
+   inputvaluesmin {
+    0 0 0
+   }
+   inputvaluesmax {
+    100 1 16000
+   }
+   path "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
+  }
+ }
+ sounds {
+  SoundClass "2057" {
+   id 2057
+   name "SOUND_GENERATOR_LP"
+   version 5
+   tl 146.666 -34.46
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "15373:2" {
+       id 15373
+       port 2
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "1042:65" {
+       id 1042
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    1 0
+   }
+   varName "Props"
+   varResource "{A60F08955792B575}Sounds/_SharedData/Variables/GlobalVariables.conf"
+   outState 12299
+   outStatePort 79879
+   transformation Offset
+   offset 0 1 0
+  }
+  SoundClass "16393" {
+   id 16393
+   name "SOUND_TURN_OFF"
+   version 5
+   tl 145.185 357.516
+   ins {
+    ConnectionsClass "con:3" {
+     id 3
+     links {
+      ConnectionClass "18441:4" {
+       id 18441
+       port 4
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "21522:65" {
+       id 21522
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    8 0
+   }
+   outState 12299
+   outStatePort 79879
+   transformation Offset
+   offset 0 1 0
+   eventType "OnStart - Stop"
+  }
+  SoundClass "18441" {
+   id 18441
+   name "SOUND_TURN_ON"
+   version 5
+   tl 145.296 159.738
+   ins {
+    ConnectionsClass "con:3" {
+     id 3
+     links {
+      ConnectionClass "16393:4" {
+       id 16393
+       port 4
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "20498:65" {
+       id 20498
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    8 0
+   }
+   outState 12299
+   outStatePort 79879
+   transformation Offset
+   offset 0 1 0
+   eventType "OnStart - Stop"
+  }
+ }
+ mixers {
+  MixerClass "12299" {
+   id 12299
+   name "OutputState 12"
+   version 4
+   tl 411.273 245.576
+   res "{B764D803219C775E}Sounds/FinalMix.afm"
+   ins {
+    ConnectionsClass "con:79879" {
+     id 79879
+     links {
+      ConnectionClass "2057:65" {
+       id 2057
+       port 65
+      }
+      ConnectionClass "18441:65" {
+       id 18441
+       port 65
+      }
+      ConnectionClass "16393:65" {
+       id 16393
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:152583" {
+     id 152583
+     links {
+      ConnectionClass "24605:65" {
+       id 24605
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    24576 0
+   }
+   path "{B764D803219C775E}Sounds/FinalMix.afm"
+   inputs {
+    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb_OBSOLETE" "VON_Reverb_Small" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin" "VON_Reverb_Medium" "VON_Reverb_Large"
+   }
+  }
+ }
+ shaders {
+  ShaderClass "1042" {
+   id 1042
+   name "Shader 1"
+   version 5
+   tl -66 -36
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "4124:65" {
+       id 4124
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "3091:65" {
+       id 3091
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "5141:65" {
+       id 5141
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "14340:65" {
+       id 14340
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23 0
+   }
+  }
+  ShaderClass "20498" {
+   id 20498
+   name "Shader 1"
+   version 5
+   tl -67.037 159.627
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "4124:65" {
+       id 4124
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "3091:65" {
+       id 3091
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "5141:65" {
+       id 5141
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "19460:65" {
+       id 19460
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23 0
+   }
+  }
+  ShaderClass "21522" {
+   id 21522
+   name "Shader 1"
+   version 5
+   tl -68.148 357.404
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "4124:65" {
+       id 4124
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "3091:65" {
+       id 3091
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "5141:65" {
+       id 5141
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "17412:65" {
+       id 17412
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23 0
+   }
+  }
+ }
+ amplitudes {
+  AmplitudeClass "3091" : "{F1CC7B4D741028C3}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-45LUFS_to_-40LUFS.conf" {
+   id 3091
+   version 5
+   tl -64 -426.847
+   parent "{F1CC7B4D741028C3}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-45LUFS_to_-40LUFS.conf"
+   curve Custom
+   AttenuationCurve {
+    CurvePoint "1" {
+     Y 1
+    }
+    CurvePoint "2" {
+     X 1399.39014
+     Y 0.60847
+    }
+    CurvePoint "3" {
+     X 3078.65918
+     Y 0.31017
+    }
+    CurvePoint "4" {
+     X 4856.70752
+     Y 0.11356
+    }
+    CurvePoint "5" {
+     X 7500
+    }
+   }
+  }
+ }
+ frequency {
+  FrequencyClass "5141" : "{0005FE42A6D80399}Sounds/_SharedData/Configs/Frequency/_SharedData/Frequency_DynamicUpdate.conf" {
+   id 5141
+   version 5
+   tl -65 -352.694
+   parent "{0005FE42A6D80399}Sounds/_SharedData/Configs/Frequency/_SharedData/Frequency_DynamicUpdate.conf"
+   ins {
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "23565:37" {
+       id 23565
+       port 37
+      }
+     }
+    }
+   }
+   pi {
+    16 0
+   }
+   pu {
+    16 0
+   }
+  }
+ }
+ banks_local {
+  BankLocalClass "14340" {
+   id 14340
+   name "FloodLight"
+   version 7
+   tl -308.738 -32.515
+   Pitch 0.5
+   "Loop count" 255
+   "Infinite loop" 1
+   "Termination Fade Out" 400
+   "Random start offset" 1
+   "Fade in time" 800
+   Samples {
+    AudioBankSampleClass "c130 insidee.wav" {
+     Filename "{5DB97F2D7F76A999}Sounds/Vehicles/Helicopters/UH1H/c130 insidee.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "17412" {
+   id 17412
+   name "TurnOff"
+   version 7
+   tl -258.148 356.349
+   Volume -13
+   Samples {
+    AudioBankSampleClass "Props_GeneratorFloodlight_TurnOff.wav" {
+     Filename "{0521E864EB383F8F}Sounds/Props/Military/Generators/Sampes/Props_GeneratorFloodlight_TurnOff.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "19460" {
+   id 19460
+   name "TurnOn"
+   version 7
+   tl -255.886 159.365
+   Volume -13
+   Samples {
+    AudioBankSampleClass "Props_GeneratorFloodlight_TurnOn.wav" {
+     Filename "{30DB11E649C43DFB}Sounds/Props/Military/Generators/Sampes/Props_GeneratorFloodlight_TurnOn.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass "4124" {
+   id 4124
+   name "Spatiality 4"
+   version 5
+   tl -63 -501
+   SpatialFactorSource Curve
+   SFCurve {
+    CurvePoint "1" {
+     Y 0.4
+     Shape Exponential
+     Modifier 2
+    }
+    CurvePoint "2" {
+     X 2.5
+     Y 1
+    }
+   }
+  }
+ }
+ auxOuts {
+  AuxOutClass "24605" {
+   id 24605
+   name "AuxOut Reverb INT"
+   version 5
+   tl 411.695 124.555
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "2057:5" {
+       id 2057
+       port 5
+      }
+      ConnectionClass "18441:5" {
+       id 18441
+       port 5
+      }
+      ConnectionClass "16393:5" {
+       id 16393
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "26637:34" {
+       id 26637
+       port 34
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "26637:39" {
+       id 26637
+       port 39
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+   pu {
+    6 0
+   }
+   OSPort 152583
+  }
+ }
+ version 1
+ listenerWindowModel "{FA5A7EAC616E8593}Assets/Props/Military/Generators/GeneratorPortable_USSR_01/dst/GeneratorPortable_USSR_01_dst_01.xob"
+}

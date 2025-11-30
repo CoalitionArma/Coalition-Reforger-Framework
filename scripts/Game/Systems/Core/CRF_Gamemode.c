@@ -805,6 +805,56 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		return m_aPendingPlayerInitializations.Contains(playerId);
 	}
+	
+	vector ComputeAOCenter(vector pts[4])
+	{
+		vector sum = "0 0 0";
+		int count = 0;
+	
+		for (int i = 0; i < 4; i++)
+		{
+			vector p = pts[i];
+			if (p[0] == 0 && p[1] == 0 && p[2] == 0)   // ignore empty
+				continue;
+	
+			sum += p;
+			count++;
+		}
+	
+		if (count == 0)
+			return "0 0 0";   // no data
+	
+		return sum / count;
+	}
+	
+	float ComputeAORadius(vector pts[4], vector center)
+	{
+		float maxDist = 0;
+	
+		for (int i = 0; i < 4; i++)
+		{
+			vector p = pts[i];
+			if (p[0] == 0 && p[1] == 0 && p[2] == 0)
+				continue;
+	
+			float d = vector.Distance(center, p);
+			if (d > maxDist)
+				maxDist = d;
+		}
+	
+		return maxDist;
+	}
+	
+	void GetAOCenterAndRadius(out vector center, out float radius)
+	{
+		CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
+		//We are cooked
+		if (!slottingMan)
+			return;
+		
+	 	center = ComputeAOCenter(slottingMan.m_vLastSlotRegisteredPosition);
+		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
+	}
 }
 
 //------------------------------------------------------------------------------------
