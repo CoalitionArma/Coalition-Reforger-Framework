@@ -42,12 +42,11 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 1881.633 1.213 495.434
+  coords 1872.864 0.984 499.857
   angles 0 -42.146 0
-  m_rVehicle "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et"
+  m_rVehicle "{A6035FB3AF08D122}Prefabs/Vehicles/Tracked/BMP1/BMP1_Prototype.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
  }
  {
   coords 1911.76 0.932 470.866

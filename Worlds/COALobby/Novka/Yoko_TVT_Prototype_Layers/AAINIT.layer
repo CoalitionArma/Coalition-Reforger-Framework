@@ -15,10 +15,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "A Russian prototype tank has been sold recently on the black market  and is being escorted to the port for delivery. Task Force Omega has been deployed to prevent the tank from leaving Novka."\
    ""\
    "BLUFOR Composition: Motorized Infatry Platoon"\
-   "BLUFOR Assets: 3x Armed Humvee (.50 cal), 1x Weapons Team and 1x Sniper Team"\
+   "BLUFOR Assets: 3x Armed Humvee (.50 cal), 1x Weapons Team, 1x MAT Team and 1x Sniper Team"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
-   "OPFOR Assets: 1x Prototype Tank, 2x BRDM2, and 1x Recon Team (Thermal)"\
+   "OPFOR Assets: 1x Prototype Tank, 2x BRDM2, 1x Recon Team (Thermal) and 2x MMG Team"\
    ""\
    "Time: 12:00 A.M"\
    ""\
@@ -41,7 +41,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTitle "BLUFOR Info"
    m_sTextData "Bridge sections marked with a red flag can be destroyed via a satchel. Your combat engineer has enough to destroy one bridge."\
    ""\
-   "Your forward deploy zone at the dam is bugged, try to deploy a close as you can to the tunnel to not fall into the void."
+   "Your forward deploy zone at the dam is bugged, try to deploy a close as you can to the tunnel to not fall into the void. Same goes for Vehicles."
    m_aFactionKeys {
     "BLUFOR"
     ""

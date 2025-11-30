@@ -1,0 +1,87 @@
+Tank : "{1DC01AAACFFA8B63}Prefabs/Vehicles/Tracked/BMP1/BMP1_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{66FC2C204AFDC1C9}" {
+     SourceMaterial "bmp1_hull"
+     AssignedMaterial "{B7D7AB90DF918FD3}Assets/Vehicles/Tracked/BMP1/Data/FIA/bmp1_hull_FIA.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{659B7E968DE1FD25}" {
+      m_sDefaultOccupantPrefab "{641AD7731E23454B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Crew.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_R01 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{677B515F119222C2}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_R02 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{58E47E5A4D599432}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MG.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_R03 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{D25BC9815A9F9E8D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AT.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_R04 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{FF43925D26526B95}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAT.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_L01 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{CE33AB22F61F3365}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sharpshooter.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_L02 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{066644E57BA1E26E}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sapper.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_L03 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{75FC25863194612A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AMG.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_L04 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{5E58712EC1A93882}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{40A5FABFBCDDE8B2}UI/Textures/EditorPreviews/Vehicles/Tracked/BMP1/BMP1_FIA.edds"
+    m_sFaction "FIA"
+    m_aAutoLabels {
+     FACTION_FIA SIZE_M CONTENT_MODDED
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "FIA"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Offset -0.0329 0.2231 0.7085
+     Prefab "{DD676DD48265BD15}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret/T72A_Turret_FIA.et"
+    }
+    RegisteringComponentSlotInfo Commander_Turret {
+     Enabled 0
+     Prefab "{820F70E82EB950B3}Prefabs/Vehicles/Tracked/BMP1/VehParts/CommanderTurret/BMP1_Commander_Turret_FIA.et"
+    }
+   }
+  }
+ }
+ coords 0 0.071 0
+}
