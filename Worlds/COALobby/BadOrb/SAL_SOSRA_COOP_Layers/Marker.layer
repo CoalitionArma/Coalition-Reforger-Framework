@@ -1,0 +1,40 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsEditable/Markers/ObjectiveMarkers/GlobalObjectiveMarker.et" {
+ {
+  coords 935.683 142.594 4089.316
+  m_sMissionMarkerDescription "We must break through this initial barbed wire line to open up a lane for our vehicles to come into the region. Utilize the engineers attached to your from Brigade to clear out the minefields around the barbed wire and cut a hole through it."
+ }
+ {
+  coords 1064.714 142.915 4272.684
+  m_sMissionMarkerDescription "Both bridges have been blocked with C-Wire as well, this is the last obstacle we must take down before we can freely manuever armor into the region. We must clear out any mines in the area as well."
+ }
+ {
+  coords 2286.223 217.462 3987.405
+  m_sMissionMarkerDescription "Key Terrain Viper holds complete observation of everything north-west of it, including the MSR, we will need to take this before vehicles can be allowed to come into the region. Expect an enemy counterattack after we take this hill."
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1022.405 227.71 3239.246
+ Points {
+  ShapePoint "{66FC0BAD8DE92143}" {
+   Position 16.184 0 15.337
+  }
+  ShapePoint "{66FC0BAD8C660B3E}" {
+   Position 75.86 0 20.987
+  }
+  ShapePoint "{66FC0BAD8C00B8B1}" {
+   Position 118.737 0 -13.202
+  }
+  ShapePoint "{66FC0BAD8CA31029}" {
+   Position 98.563 0 -60.592
+  }
+  ShapePoint "{66FC0BAD8F40EEEF}" {
+   Position 39.501 0 -75.029
+  }
+  ShapePoint "{66FC0BAD8FDF3E47}" {
+   Position -33.543 0 -51.841
+  }
+  ShapePoint "{66FC0BAD8E7BD645}" {
+   Position -21.579 0 -17.024
+  }
+ }
+}
