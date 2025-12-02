@@ -203,6 +203,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -216,6 +218,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -229,6 +233,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -242,6 +248,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -255,6 +263,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -268,6 +278,8 @@ $grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyS
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
      }
     }
    }
@@ -287,10 +299,13 @@ GenericEntity : "{D882E25557A0ABC6}Prefabs/Compositions/Misc/SubCompositions/Sto
      m_aContainers {
       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
        m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
       }
      }
     }
    }
+   coords 2.509 -0.001 -2.176
   }
   GenericEntity {
    ID "62F4A407B8DE2DA9"
@@ -299,10 +314,13 @@ GenericEntity : "{D882E25557A0ABC6}Prefabs/Compositions/Misc/SubCompositions/Sto
      m_aContainers {
       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
        m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
       }
      }
     }
    }
+   coords -1.957 -0.001 0.223
   }
   GenericEntity {
    ID "62F4A407B8DFA02D"
@@ -311,6 +329,8 @@ GenericEntity : "{D882E25557A0ABC6}Prefabs/Compositions/Misc/SubCompositions/Sto
      m_aContainers {
       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
        m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
       }
      }
     }
