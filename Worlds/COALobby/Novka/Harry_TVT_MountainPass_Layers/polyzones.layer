@@ -1,0 +1,67 @@
+PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsEditable/PolyZone/IndforForwardDeployZone.et" {
+ coords 2503.399 158.789 1818.176
+ Points {
+  ShapePoint "{66F2F42E2221377E}" {
+   Position -141.583 0 -204.627
+  }
+  ShapePoint "{66F2F42E212B0560}" {
+   Position 184.487 0 -223.303
+  }
+  ShapePoint "{66F2F42E20E89525}" {
+   Position 188.872 0 681.866
+  }
+  ShapePoint "{66F2F42E28BB7CA6}" {
+   Position -189.753 0 372.586
+  }
+  ShapePoint "{66F2F425DFC00A7D}" {
+   Position -105.222 0 -7.8
+  }
+  ShapePoint "{66F2F425F797631B}" {
+   Position -72.342 0 -86.678
+  }
+  ShapePoint "{66F2F425F6F3B8C8}" {
+   Position -170.763 0 -78.846
+  }
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 2042.396 250.989 2114.875
+ Points {
+  ShapePoint "{66F2F42DBDB07025}" {
+   Position 714.515 0 495.672
+  }
+  ShapePoint "{66F2F42D82290E80}" {
+   Position 665.552 0 -656.635
+  }
+  ShapePoint "{66F2F42D8050B036}" {
+   Position -390.989 0 -613.036
+  }
+  ShapePoint "{66F2F42D8597B520}" {
+   Position -784.291 0 610.603
+  }
+ }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 2233.814 110.586 1631.127
+ m_MarkerColor 0 0 0 1
+ m_sDescription "FOB Bravo"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1729.072 159.321 2226.245
+ Points {
+  ShapePoint "{66F2F42DAD1B7C04}" {
+   Position -160.32 0 234.069
+  }
+  ShapePoint "{66F2F42DAD895817}" {
+   Position 207.902 0 224.693
+  }
+  ShapePoint "{66F2F42DAC3E596A}" {
+   Position 168.367 0 -102.044
+  }
+  ShapePoint "{66F2F42DAC9246D3}" {
+   Position -146.435 0 -101.145
+  }
+ }
+}
