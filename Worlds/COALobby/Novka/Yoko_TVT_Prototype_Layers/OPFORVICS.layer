@@ -60,4 +60,10 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
   m_sFactionKey "OPFOR"
  }
+ {
+  coords 1903.679 1.375 451.187
+  angles 0 -11.29 0
+  m_rVehicle "{1F248314047F79CF}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_REPAIR.et"
+  m_sFactionKey "OPFOR"
+ }
 }

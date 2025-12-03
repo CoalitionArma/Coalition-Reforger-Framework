@@ -60,10 +60,18 @@ $grp CRF_VehicleSpawner {
   m_bShouldRespawnOnSideRespawn 0
  }
  {
-  coords 1036.925 4.463 1465.51
-  angles 0 12.313 0
+  coords 1046.265 4.462 1470.608
+  angles 0 43.829 0
   m_rVehicle "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et"
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 341.682 70.609 2430.626
+  angles 0 -154.21 0
+  m_rVehicle "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
 }

@@ -1,29 +1,36 @@
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 1 1 1 0.431
+   m_fPolygonUVScale 0.001
+   m_bLineMode 1
+  }
+ }
  coords 1644.06 61.915 1275.732
  Points {
   ShapePoint "{66F6519EE8DE3EBF}" {
    Position 1131.57 0 -504.119
   }
   ShapePoint "{66F6519EEFD2CD2D}" {
-   Position 964.847 -0 122.372
+   Position 964.847 0 122.372
   }
   ShapePoint "{66F6519E90F6D212}" {
-   Position 204.812 -0 312.09
+   Position 204.812 0 312.09
   }
   ShapePoint "{66F6519E9403D6FB}" {
    Position 68.968 71.784 403.819
   }
   ShapePoint "{66F6519C949FC5C2}" {
-   Position -129.818 -0 886.838
+   Position -129.818 0 886.838
   }
   ShapePoint "{66F6519E8653FE61}" {
-   Position -793.424 -0 489.572
+   Position -793.424 0 489.572
   }
   ShapePoint "{66F6519E8B360A73}" {
    Position -978.331 0 55.275
   }
   ShapePoint "{66F6519E8E651BBE}" {
-   Position -721.363 -0 -362.404
+   Position -721.363 0 -362.404
   }
   ShapePoint "{66F6519EB7510E00}" {
    Position -506.016 0 -852.229
@@ -32,122 +39,82 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position -405.289 19.548 -1032.92
   }
   ShapePoint "{66F6519EBD596952}" {
-   Position 335.195 -0 -1081.294
+   Position 335.195 0 -1081.294
+  }
+  ShapePoint "{670444A97B83907A}" {
+   Position 1131.415 0 -504.251
   }
  }
 }
-$grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORForwardDeployZone.et" {
- {
-  coords 1750.606 66.709 1397.528
-  Points {
-   ShapePoint "{66ECF551A87EAECB}" {
-    Position 48.222 23.174 47.496
-   }
-   ShapePoint "{66ECF551ACA90396}" {
-    Position 33.094 0 -22.397
-   }
-   ShapePoint "{66ECF551AFF56F84}" {
-    Position 10.013 5.428 -16.008
-   }
-   ShapePoint "{66ECF55155C06B2E}" {
-    Position 7.391 0 -38.449
-   }
-   ShapePoint "{66ECF55154270F91}" {
-    Position -29.198 0 -36.788
-   }
-   ShapePoint "{66ECF5515610B3FF}" {
-    Position -27.927 0 -9.88
-   }
-   ShapePoint "{66ECF5515BC14B77}" {
-    Position -36.852 0 -8.337
-   }
-   ShapePoint "{66ECF551466C08D1}" {
-    Position -48.927 0 -7.798
-   }
-   ShapePoint "{66ECF5514888D0D9}" {
-    Position -46.762 0 8.577
-   }
-   ShapePoint "{66ECF5514ADEB243}" {
-    Position -44.268 0 66.479
-   }
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORForwardDeployZone.et" {
+ coords 1554.788 50.736 1231.965
+ Points {
+  ShapePoint "{66ECF5511C0B324A}" {
+   Position -131.221 -5.498 60.148
+  }
+  ShapePoint "{66ECF551320BBBA2}" {
+   Position -295.641 15.713 -17.8
+  }
+  ShapePoint "{66EE47E5627ECAC3}" {
+   Position -266.209 -2.074 -281.406
+  }
+  ShapePoint "{670444ABB7D6A810}" {
+   Position -224.297 0 -272.536
+  }
+  ShapePoint "{670444ABBB4ADCEC}" {
+   Position -223.808 -0 -224.823
+  }
+  ShapePoint "{670444ABC32CBDB0}" {
+   Position -103.687 -0 -215.16
+  }
+  ShapePoint "{670444ABBF8FF9DB}" {
+   Position -0.206 -0 -190.291
+  }
+  ShapePoint "{670444ABBE7DA05B}" {
+   Position 45.585 -0 -254.101
+  }
+  ShapePoint "{670444ABDC19C8D1}" {
+   Position 74.731 -0 -239.859
+  }
+  ShapePoint "{670444ABA2C83210}" {
+   Position 33.639 -0 -173.374
+  }
+  ShapePoint "{670444ABA56D214E}" {
+   Position 104.819 -0 -82.588
+  }
+  ShapePoint "{670444ABA7241398}" {
+   Position 156.868 -0 -43.719
+  }
+  ShapePoint "{670444ABA6011AB3}" {
+   Position 218.025 -0 8.71
+  }
+  ShapePoint "{670444ABA9F61896}" {
+   Position 245.502 -0 67.37
+  }
+  ShapePoint "{670444ABA97A1505}" {
+   Position 247.894 -0 88.763
+  }
+  ShapePoint "{66ECF551018A18B9}" {
+   Position 432.988 12.051 -82.695
+  }
+  ShapePoint "{670444ABF3DC3909}" {
+   Position 497.245 20.723 -36.335
+  }
+  ShapePoint "{670444ABF40197AF}" {
+   Position 192.937 -0 357.703
+  }
+  ShapePoint "{670444ABF9668353}" {
+   Position 93.776 -0 262.812
+  }
+  ShapePoint "{66ECF551086771FE}" {
+   Position -38.958 15.339 137.714
   }
  }
- {
-  coords 1554.788 50.736 1231.965
-  Points {
-   ShapePoint "{66ECF5511D01BCF2}" {
-    Position -5.441 21.56 68.571
-   }
-   ShapePoint "{66ECF5511C0B324A}" {
-    Position -131.221 -5.498 60.148
-   }
-   ShapePoint "{66ECF551320BBBA2}" {
-    Position -137.735 15.713 -87.884
-   }
-   ShapePoint "{66EE47E5627ECAC3}" {
-    Position -14.443 0 -114.929
-   }
-   ShapePoint "{66ECF551018A18B9}" {
-    Position 28.185 6.014 -29
-   }
-   ShapePoint "{66ECF551086771FE}" {
-    Position 11.746 -0.659 15.776
-   }
-   ShapePoint "{66ECF5510B30409B}" {
-    Position 26.216 8.149 61.44
-   }
-  }
- }
- {
-  coords 1039.952 4.463 1477.864
-  Points {
-   ShapePoint "{66F630C751FEEDD1}" {
-    Position 39.25 0 -11.385
-   }
-   ShapePoint "{66F630C75311E586}" {
-    Position 25.365 0 7.578
-   }
-   ShapePoint "{66F630C752CFCA39}" {
-    Position 16.874 0 3.886
-   }
-   ShapePoint "{66F630C75212BAE6}" {
-    Position 10.103 0 10.924
-   }
-   ShapePoint "{66F630C773C9D753}" {
-    Position 9.307 0 22.377
-   }
-   ShapePoint "{66F630C754E14D19}" {
-    Position -3.606 0 23.635
-   }
-   ShapePoint "{66F630C757935AEF}" {
-    Position -11.692 0 32.055
-   }
-   ShapePoint "{66F630C757633236}" {
-    Position -35.685 0 9.316
-   }
-   ShapePoint "{66F630C75DCC330A}" {
-    Position -24.562 0 -1.526
-   }
-   ShapePoint "{66F630C75D79A110}" {
-    Position -16.253 0 5.833
-   }
-   ShapePoint "{66F630C75F2AD878}" {
-    Position -7.365 0 -2.705
-   }
-   ShapePoint "{66F630C740349DFB}" {
-    Position -10.043 0 -13.457
-   }
-   ShapePoint "{66F630C7426ED3E7}" {
-    Position -2.465 0 -19.831
-   }
-   ShapePoint "{66F630C7444395C7}" {
-    Position 15.509 0 -4.329
-   }
-   ShapePoint "{66F630C74A5D8FF9}" {
-    Position 28.322 0 -21.357
-   }
-  }
- }
+}
+CRF_MissionMarker : "{C44FD776546321F2}PrefabsEditable/Markers/ObjectiveMarkers/OPFORObjectiveMarker.et" {
+ coords 1040.715 4.463 1480.185
+ m_MarkerColor 1 0 0 1
+ m_sMissionMarkerDescription "Get the Prototype Tank to the Port!"
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
  coords 1880.382 2.156 454.875
