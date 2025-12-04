@@ -780,13 +780,13 @@ class CRF_AdminMenu : ChimeraMenuBase
 		searchButton.m_OnClicked.Insert(SearchList0);
 		
 		// Setup selection change handlers
-		playerList.m_OnChanged.Insert(PopulateTicketMessages);
+		playerList.m_OnChanged.Insert(GetTicketMessages);
 		
 		// Change title of the menu
 		UpdateMenuTitle("Tickets");
 
 		// Populate list of players that need help
-		PopulateOpenTicketList();
+		GetOpenTickets();
 	}
 	
 	/**
@@ -874,43 +874,58 @@ class CRF_AdminMenu : ChimeraMenuBase
 	}
 	
 	/**
-	* Populates the list of messages selected in list 1
+	* Request the list of messages from the server
 	*/
-	void PopulateTicketMessages()
-	{		
-		int playerID = -1;
-
+	void GetTicketMessages()
+	{
+		int ticketID = -1;
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
 		// Load List Boxes
 		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent ticketMessagesList = GetListBox("TicketMessagesListBox0");
-		if (!playerList || !ticketMessagesList)
+		if (!playerList)
 			return;
-		
-		// Clear old Messages 
-		ticketMessagesList.Clear();
 		
 		// Check if a ticket was selected either via the list or pre ui refresh
 		if (playerList.GetSelectedItem() != -1)
 		{
 			// Get selected player ID
-			string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-			playerID = GetplayerIdFromName(playerName);
-			if (playerID == 0)
-				return;
+			string ticketName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
 			
+			// Extract ID from ticketName in list
+			array<string> data = {};
+		
+			ticketName.Split(":", data, true);
+			ticketID = data[0].ToInt();
+			if (ticketID == 0)
+				return;
+
 			// Store selected ticket for use after ui refresh
-			m_iSelectedTicket = playerID;
+			m_iSelectedTicket = ticketID;
 		}
 		else if (m_iSelectedTicket != -1)
 			// Get the stored ticket selected before refresh
-			playerID = m_iSelectedTicket;
+			ticketID = m_iSelectedTicket;
 		else
 			return;
-
-		// Get messages in the ticket
-		array<ref CRF_TicketMessageData> messages = m_AdminMenuManager.GetTicketMessages(playerID);
+		
+		CRF_RplToAuthorityManager.GetInstance().GetTicketMessages(adminID, ticketID);
+	}
+	
+	/**
+	* Populates the list of messages selected in list 1
+	*/
+	void PopulateTicketMessages(array<ref CRF_TicketMessageData> messages)
+	{
 		if (!messages)
 			return;
+		
+		SCR_ListBoxComponent ticketMessagesList = GetListBox("TicketMessagesListBox0");
+		if (!ticketMessagesList)
+			return;
+		
+		// Clear old Messages 
+		ticketMessagesList.Clear();
 		
 		// Format and add the messages to the list
 		foreach (int i, ref CRF_TicketMessageData message : messages)
@@ -919,37 +934,34 @@ class CRF_AdminMenu : ChimeraMenuBase
 		}
 
 	}
-		
+	
+	/**
+	* Request the list of open tickets from the server
+	*/
+	void GetOpenTickets()
+	{	
+		CRF_RplToAuthorityManager.GetInstance().GetOpenTickets(SCR_PlayerController.GetLocalPlayerId());
+	}
+	
 	/**
 	 * Populates the list of players that need help
 	 */
-	void PopulateOpenTicketList()
+	void PopulateOpenTicketList(array<int> tickets)
 	{
-		TStringArray playerNames = {};
-
 		// Load List Boxes
 		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
 		if (!playerList)
 			return;
 		
-		// Grab player ids that have open tickets
-		array<int> openTickets = m_AdminMenuManager.GetOpenTickets();
-		
 		// Clear old ticket list
 		playerList.Clear();
 
-		// Get and sort player names
-		foreach (int playerId : openTickets)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
-
-		playerNames.Sort(false);
-
-		// Open tickets to list
-		foreach (string name : playerNames)
+		// Add the list of tickets with their IDs
+		foreach (int playerId : tickets)
 		{
-			playerList.AddItem(string.Format("%1", name));
+			string name = m_playerManager.GetPlayerName(playerId);
+			playerList.AddItem(string.Format("%1:%2", playerId ,name));
 		}
-		
 	}
 	
 	/**

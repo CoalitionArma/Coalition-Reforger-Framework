@@ -31,9 +31,6 @@ modded class SCR_ChatPanel : SCR_ScriptedWidgetComponent
 		// Set the history index to the most recent message
 		m_iHistoryId = messageCount - 1;
 		
-		// Enable history mode
-		m_bHistoryMode = true;
-		
 		// Refresh the displayed messages
 		UpdateChatMessages();
 	}
