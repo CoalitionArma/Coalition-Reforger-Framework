@@ -293,7 +293,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SendAdminMessage(string data, int playerID)
+	void SendAdminMessage(string data, int playerID, bool ticketExists)
 	{
 		// Telemetry: string + int
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
@@ -301,12 +301,29 @@ class CRF_RplBroadcastManager : ScriptComponent
 		LogTelemetry("SendAdminMessage", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_SendAdminMessage(data, playerID);
+		RpcDo_SendAdminMessage(data, playerID, ticketExists);
 		#else
-		Rpc(RpcDo_SendAdminMessage, data, playerID);
+		Rpc(RpcDo_SendAdminMessage, data, playerID, ticketExists);
 		#endif
 	}
-	
+	//------------------------------------------------------------------------------------------------
+	void GetOpenTickets(int playerID)
+	{
+		#ifdef WORKBENCH
+		RpcDo_GetOpenTickets(playerID, CRF_AdminMenuManager.GetInstance().GetOpenTickets());
+		#else
+		Rpc(RpcDo_GetOpenTickets, playerID, CRF_AdminMenuManager.GetInstance().GetOpenTickets());
+		#endif
+	}
+	//------------------------------------------------------------------------------------------------
+	void GetTicketMessages(int playerID, int ticketID)
+	{
+		#ifdef WORKBENCH
+		RpcDo_GetTicketMessages(playerID, CRF_AdminMenuManager.GetInstance().GetTicketMessages(ticketID));
+		#else
+		Rpc(RpcDo_GetTicketMessages, playerID, CRF_AdminMenuManager.GetInstance().GetTicketMessages(ticketID));
+		#endif
+	}
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
@@ -339,17 +356,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	void NotifiyTicketAssigned(int ticketID, int adminID, bool logAction)
 	{
 		// Telemetry: 2 ints + bool
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("AssignAdminTicket", bytes);
+		LogTelemetry("NotifiyTicketAssigned", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_AssignAdminTicket(ticketID, adminID, logAction);
+		RpcDo_NotifiyTicketAssigned(ticketID, adminID, logAction);
 		#else
-		Rpc(RpcDo_AssignAdminTicket, ticketID, adminID, logAction);
+		Rpc(RpcDo_NotifiyTicketAssigned, ticketID, adminID, logAction);
+		#endif
+	}
+	//------------------------------------------------------------------------------------------------
+	void RefreshAdminMenuLists()
+	{
+		#ifdef WORKBENCH
+		RpcDo_RefreshAdminMenuLists();
+		#else
+		Rpc(RpcDo_RefreshAdminMenuLists);
 		#endif
 	}
 
@@ -1065,7 +1091,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_SendAdminMessage(string data, int playerID)
+	void RpcDo_SendAdminMessage(string data, int playerID, bool ticketExists)
 	{
 		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
@@ -1085,11 +1111,55 @@ class CRF_RplBroadcastManager : ScriptComponent
 			chatComponent.ShowMessage(string.Format("Admin - %1: %2", playerName, data));
 		} else {
 			// Check if it's a new ticket and let admins know
-			if (!m_AdminMenuManager.TicketExists(playerID))
+			if (!ticketExists)
 				chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_GetOpenTickets(int playerID, array<int> tickets)
+	{
+		if (!IsLocalPlayer(playerID))
+			return;
+		
+		// Check if the top menu is the admin menu
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (!topMenu)
+			return;
 			
-			// Create a new ticket or/and add reply to existing ticket
-			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
+		if (!topMenu.IsInherited(CRF_AdminMenu))
+			return;
+			
+		// Repopulate menu components
+		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
+		if (adminMenu.GetCurrentOpenTab() == "Tickets")
+		{
+			adminMenu.PopulateOpenTicketList(tickets);
+		}
+		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_GetTicketMessages(int playerID, array<ref CRF_TicketMessageData> messages)
+	{
+		if (!IsLocalPlayer(playerID))
+			return;
+		
+		// Check if the top menu is the admin menu
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (!topMenu)
+			return;
+			
+		if (!topMenu.IsInherited(CRF_AdminMenu))
+			return;
+			
+		// Repopulate menu components
+		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
+		if (adminMenu.GetCurrentOpenTab() == "Tickets")
+		{
+			adminMenu.PopulateTicketMessages(messages);
 		}
 	}
 	
@@ -1102,11 +1172,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 				GetGame().GetPlayerManager().GetPlayerName(playerId), data), 
 				playerId, 
 				false);
-
-		// Create a new ticket or add reply to existing ticket
-		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
-			m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
-		
+			
 		if (!IsLocalPlayer(playerId))
 			return;
 
@@ -1121,30 +1187,51 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
+		string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
+		
 		if (logAction)
-		{
-			string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
 			LogAdminAction(string.Format("%1 closed %2's ticket", adminName, playerName), -1, false);
-		}
-
-		// Remove the ticket from the array
-		m_AdminMenuManager.CloseTicket(ticketID);
+		
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
+		SCR_ChatComponent chatComponent = GetLocalChatComponent();
+		if (!chatComponent)
+			return;
+		
+		// Display an admin closed a ticket
+		chatComponent.ShowMessage(string.Format("%1 closed %2's ticket", adminName, playerName));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	void RpcDo_NotifiyTicketAssigned(int ticketID, int adminID, bool logAction)
 	{
+		string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
+		
 		if (logAction)
-		{
-			string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
 			LogAdminAction(string.Format("%1 assigned to %2's ticket", adminName, playerName), -1, false);
-		}
+		
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
+		SCR_ChatComponent chatComponent = GetLocalChatComponent();
+		if (!chatComponent)
+			return;
 
-		// Display a admin assigned them self to the ticket
-		m_AdminMenuManager.NewTicketMessage(ticketID, adminID, "Assigned to Ticket");
+		// Display an admin assigned them self to the ticket
+		chatComponent.ShowMessage(string.Format("%1 assigned to %2's ticket", adminName, playerName));
+	}
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_RefreshAdminMenuLists()
+	{
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
+		m_AdminMenuManager.GetInstance().RefreshLists();
 	}
 
 	//------------------------------------------------------------------------------------------------
