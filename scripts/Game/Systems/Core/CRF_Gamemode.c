@@ -855,6 +855,27 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 	center = ComputeAOCenter(slottingMan.m_vLastSlotRegisteredPosition);
 		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
 	}
+	
+	bool IsSideBFTEnabled(string factionKey)
+	{
+		switch(factionKey)
+		{
+			case "BLUFOR":
+				return m_BLUFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "OPFOR":
+				return m_OPFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "INDFOR":
+				return m_INDFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "CIV":
+				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
+				break;
+		}
+		
+		return true;
+	}
 }
 
 //------------------------------------------------------------------------------------
