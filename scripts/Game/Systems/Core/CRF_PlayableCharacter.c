@@ -15,6 +15,8 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
 	
 	protected IEntity m_eSpecEntity;
+	//So the client tracks where he needs to teleport his player
+	//Since teleporting is mostly client authorative
 	vector m_vSpreadPos;
 
 	//------------------------------------------------------------------------------------------------
@@ -100,19 +102,18 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		if (isCRFInitialEntity)
 		{
-			vector mapSize = SCR_MapEntity.GetMapInstance().Size();
-			vector mapCenter = Vector(mapSize[0] / 2, 0, mapSize[1] / 2);
-			vector spreadPos = GenerateRandomSpreadPosition(mapCenter, 500.0);
-			spreadPos[1] = 1000.0; // Set elevation to 1000m
-			m_vSpreadPos = spreadPos;
-			owner.SetOrigin(spreadPos);
+			if (Replication.IsServer())
+				GenerateSpreadPosServer(owner);
+			else
+				RequestSpreadPos();
 		}
 		else if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
 		{
 			// Use random spread position for other spectators too, instead of hardcoded 0,10000,0
-			vector spreadPos = GenerateRandomSpreadPosition("0 10000 0", 500.0);
-			spreadPos[1] = 10000.0;
-			owner.SetOrigin(spreadPos);
+			if (Replication.IsServer())
+				GenerateSpreadPosServer(owner);
+			else
+				RequestSpreadPos();
 		}
 		
 		Physics physics = owner.GetPhysics();
@@ -128,6 +129,37 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
 		}
+	}
+	
+	void GenerateSpreadPosServer(IEntity entity)
+	{
+		vector mapCenter;
+		float radius;
+		CRF_Gamemode.GetInstance().GetAOCenterAndRadius(mapCenter, radius);
+		vector spreadPos = GenerateRandomSpreadPosition(mapCenter, radius);
+		spreadPos[1] = 1000.0; // Set elevation to 1000m
+		m_vSpreadPos = spreadPos;
+		entity.SetOrigin(spreadPos);
+	}
+	
+	void RequestSpreadPos()
+	{
+		if (!GetOwner().FindComponent(RplComponent))
+			return;
+		
+		RplId entityId = RplComponent.Cast(GetOwner().FindComponent(RplComponent)).Id();
+		CRF_RplToAuthorityManager.GetInstance().RequestSpreadPos(entityId);
+	}
+	
+	void SendSpreadPos()
+	{
+		Rpc(RpcDo_SendSpreadPos, m_vSpreadPos);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_SendSpreadPos(vector spreadPos)
+	{
+		m_vSpreadPos = spreadPos;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -290,7 +322,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			mat[1] = vector.Up;
 			mat[2] = vector.Forward;
-			mat[3][1] = 10000;
+			mat[3] = m_vSpreadPos;
 		}
 		
 		

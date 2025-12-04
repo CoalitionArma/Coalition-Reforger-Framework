@@ -11,7 +11,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
 	
 	// Resource cache to avoid repeated Resource.Load() calls - PERFORMANCE OPTIMIZATION
-	protected ref map<ResourceName, Resource> m_mResourceCache = new map<ResourceName, Resource>();
+	protected ref map<ResourceName, ref Resource> m_mResourceCache = new map<ResourceName, ref Resource>();
 	
 	//------------------------------------------------------------------------------------------------
 	/**

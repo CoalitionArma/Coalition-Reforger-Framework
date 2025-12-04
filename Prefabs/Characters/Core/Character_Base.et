@@ -16,8 +16,11 @@ SCR_ChimeraCharacter {
    StaminaDrainSprint -0.009
    EncumbranceMassMax 170
   }
-  SCR_VoNComponent "{520EA1D2F659C856}" {
-   "Speaking Range" 30
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+    }
+   }
   }
   RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
    Slots {
@@ -28,9 +31,17 @@ SCR_ChimeraCharacter {
     }
    }
   }
-  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
-   Identity Identity "{5584CBC6363C648B}" {
-    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+  CharacterAnimationComponent "{520EA1D2F659C994}" {
+   LinkingObjects LinkingObjectArray "{649C9A0C1A1B1AFF}" {
+    LinkingObjects {
+     LinkingObject "{66EE199EAA151287}" {
+      Prefab "{D35A20947FE9E130}PrefabsEditable/Auto/Props/c130.et"
+      LinkingColliderConfig {
+       LinkingColliderConfig "{66EE199E9A5F4DE3}" {
+        LinkingConfig "{20D6C9A48069F770}Configs/CharacterLinking/TruckCargo.conf"
+       }
+      }
+     }
     }
    }
   }
