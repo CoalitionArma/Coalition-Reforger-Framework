@@ -2,11 +2,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 2
-   m_iStartingMinutes 11
+   m_iStartingMinutes 25
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_iStartingHour 2
-     m_iStartingMinutes 11
+     m_iStartingMinutes 26
     }
    }
   }
