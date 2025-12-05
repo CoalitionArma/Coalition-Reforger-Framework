@@ -1,0 +1,172 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 0
+  }
+ }
+ coords 1392.144 73.928 1197.076
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A Russian prototype tank has been sold recently on the black market  and is being escorted to the port for delivery. Task Force Omega has been deployed to prevent the tank from leaving Novka."\
+   ""\
+   "BLUFOR Composition: Motorized Infatry Platoon"\
+   "BLUFOR Assets: 3x Armed Humvee (.50 cal), 1x Eng Team, 1x MMG Team and 1x Sniper Team"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 1x Prototype Tank, 2x BRDM2,  2x MMG Team, 1x Sniper Team and 1x Drone Operator"\
+   ""\
+   "Time: 12:00 A.M"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Prevent OPFOR from getting the tank to the port, the tank can be destroyed."\
+   ""\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "1. Interact with the radio in the the town of Veska, to inform the buyer that the tank is on its way. "\
+   "2. Get the Prototype tank to the docks intact."\
+   ""\
+   ""
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "BLUFOR Info"
+   m_sTextData "Bridge sections marked with a red flag can be destroyed via a satchel. Your combat engineers has enough to destroy two bridges."\
+   ""\
+   "When deploying at the dam, be careful the terrain is bugged, try to deploy as close as you can to the tunnel to not fall into the void. Same goes for Vehicles."
+   m_aFactionKeys {
+    "BLUFOR"
+    ""
+    ""
+   }
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{9821918264DE8F88}Configs/Gearscripts/Custom/Yoko/CRF_GS_USpmc.conf"
+  m_rSightArsenal "{E408EBE559872CB5}Configs/Gearscripts/Custom/Yoko/CRF_Global_SightArsenal_Regular_Yoko.conf"
+  m_rMagnifiedSightArsenal "{90E7B2B8B492E6BE}Configs/Gearscripts/Custom/Yoko/CRF_Global_SightArsenal_Magnified_Yoko.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{07DC48CBB4EE65D5}Configs/Gearscripts/Custom/Yoko/CRF_GS_RUS_MIL.conf"
+  m_rSightArsenal "{E408EBE559872CB5}Configs/Gearscripts/Custom/Yoko/CRF_Global_SightArsenal_Regular_Yoko.conf"
+  m_rMagnifiedSightArsenal "{90E7B2B8B492E6BE}Configs/Gearscripts/Custom/Yoko/CRF_Global_SightArsenal_Magnified_Yoko.conf"
+ }
+ {
+  SCR_FactionManager "66F6519DA1636641" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66F6519AA7645738}" {
+        m_sCallsign "Eng Team"
+       }
+       SCR_CallsignInfo "{66F6519AAD1177E7}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{670444A05155662F}" {
+        m_sCallsign "Sniper Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66F6519A96579B47}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66F6519A9BBE888C}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66F6519A83313AAB}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66F6519A8AFF4708}" {
+        m_sCallsign "Sniper Team"
+       }
+       SCR_CallsignInfo "{66F6519A8E004147}" {
+        m_sCallsign "Prototype Tank"
+       }
+       SCR_CallsignInfo "{66FB710AFC6AFEEA}" {
+        m_sCallsign "BDRM2"
+       }
+       SCR_CallsignInfo "{66FB710AFF24E077}" {
+        m_sCallsign "BDRM2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ {
+  coords 1592.195 34.838 1019.728
+  m_MarkerColor 1 0 0 1
+  m_sMissionMarkerDescription "Tjeska Long Bridge, One of the possible crossing point for the prototype tank. Our intel reports that this bridge has a weak section allowing the bridge to be destroyed."
+  m_aMissionMarkerImages {
+   "{57F999D1759B22D9}CRF Images/BriefingImages/Yoko/Prototype/MidBlu.edds"
+  }
+ }
+ {
+  coords 1308.831 99.263 970.229
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sMissionMarkerDescription "Conva Bridge, One of the possible crossing point for the prototype tank. Our intel reports that this bridge has a weak section allowing the bridge to be destroyed."
+  m_aMissionMarkerImages {
+   "{574598521DC2349F}CRF Images/BriefingImages/Yoko/Prototype/SouthBlu.edds"
+  }
+ }
+ {
+  coords 1910.388 66.71 1319.825
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sMissionMarkerDescription "D. Hall Dam, One of the possible crossing point for the prototype tank. We were able to get a truck with construction materials here to help with the defense "
+  m_aMissionMarkerImages {
+   "{0A70708DB871E729}CRF Images/BriefingImages/Yoko/Prototype/Dam.edds"
+  }
+ }
+ {
+  coords 1103.821 4.478 1435.269
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sMissionMarkerDescription "TK Bridge and the Port,  Our intel reports that this bridge has a weak section allowing the bridge to be destroyed."
+  m_aMissionMarkerImages {
+   "{E5E79CBDB573ACC8}CRF Images/BriefingImages/Yoko/Prototype/PortBlu.edds"
+  }
+ }
+}
+CRF_MissionMarker : "{C44FD776546321F2}PrefabsEditable/Markers/ObjectiveMarkers/OPFORObjectiveMarker.et" {
+ coords 1540.283 67.194 1155.151
+ m_MarkerColor 0 1 0.008 1
+ m_sQuadName "point-of-interest"
+ m_sMissionMarkerDescription "Radio Location, Within this building is the radio. Interacting with it will respawn both sides."
+ m_aMissionMarkerImages {
+  "{566F0727D788B45B}CRF Images/BriefingImages/Yoko/Prototype/OpforRadio.edds"
+ }
+ {
+  GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
+   components {
+    CRF_RadioPhaseManager "{6605652AC71F4A2E}" {
+     interactingSide "OPFOR"
+     respawnBlufor 1
+     respawnOpfor 1
+    }
+   }
+   coords -0.828 -6.321 0.865
+  }
+ }
+}

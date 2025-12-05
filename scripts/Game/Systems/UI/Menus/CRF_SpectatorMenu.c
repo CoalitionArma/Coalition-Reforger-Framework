@@ -196,7 +196,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_bNVGActivated = !m_bNVGActivated;
 
 		if (m_bNVGActivated)
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
+			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{511CD467ED159EA2}Assets/Items/Equipment/NVG/pvs14/data/NVG_Spectator_HDR.emat", true);
 		else
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}

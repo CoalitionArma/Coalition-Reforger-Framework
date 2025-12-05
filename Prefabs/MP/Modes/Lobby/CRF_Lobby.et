@@ -6,6 +6,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_AdminMenuManager "{6544E589C41BEFA8}" {
     }
     CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
+     m_iSummaryInterval 300
     }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
     }

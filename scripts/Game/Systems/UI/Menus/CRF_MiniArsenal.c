@@ -9,6 +9,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	protected bool m_bFocused = true;
 	CameraBase m_Camera;
 	CameraBase m_OldCamera;
+	LightEntity m_Light;
 	CRF_GearscriptManager m_GearscriptManager;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
 	CRF_SafestartManager m_SafeStart;
@@ -375,7 +376,11 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuClose()
 	{
-		delete m_Camera;
+		if (m_Light)
+			delete m_Light;
+		
+		if (m_Camera)
+			delete m_Camera;
 		GetGame().GetCameraManager().SetCamera(m_OldCamera);
 	}
 	
@@ -444,6 +449,9 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_Camera = CameraBase.Cast(cam);
 		m_OldCamera = GetGame().GetCameraManager().CurrentCamera();
 		GetGame().GetCameraManager().SetCamera(m_Camera);
+		EntitySpawnParams lightParam = new EntitySpawnParams();
+		m_Camera.GetTransform(lightParam.Transform);
+		m_Light = LightEntity.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{226FC159EFA3EAA2}Prefabs/Systems/MiniArsenalLight.et"), null, lightParam));
 	}
 	
 	override void OnMenuFocusLost()
