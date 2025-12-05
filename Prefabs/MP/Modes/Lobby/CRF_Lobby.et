@@ -1,6 +1,9 @@
 CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
+  Persistence "{65B27918147B3DEC}" {
+   Enabled 0
+  }
   CRF_GamemodeManager "{652A3313EC014E7F}" {
    components {
     CRF_AdminMenuManager "{6544E589C41BEFA8}" {
@@ -25,6 +28,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    }
   }
   CRF_GroupLeaderMarkerManager "{663A2207B840B089}" {
+  }
+  CRF_MissionValidatorComponent "{67094DE3BA792F81}" {
   }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_sFreqConfig "{8FE52CD7F8502E24}Configs/FreqConfigs/CFCFrequencyConfig.conf"

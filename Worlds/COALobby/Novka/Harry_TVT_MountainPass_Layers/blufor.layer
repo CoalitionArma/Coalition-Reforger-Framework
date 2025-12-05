@@ -1,0 +1,331 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1732.552 159.53 2230.968
+  angles -3.407 -132.501 5.527
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1730.005 159.119 2235.198
+  angles -3.407 -132.501 5.527
+  m_rVehicle "{99D8E96526104CCD}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_REPAIR.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1727.434 158.783 2238.074
+  angles -5.211 -132.495 3.554
+  m_rVehicle "{D629E80D144891E6}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_COMMAND.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1707.788 157.905 2293.96
+  angles -5.475 -68.306 -3.131
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1710.351 158.945 2298.959
+  angles -5.475 -68.306 -3.131
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1712.763 159.964 2304.013
+  angles -5.475 -68.306 -3.131
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1715.039 160.953 2308.713
+  angles -5.475 -68.306 -3.131
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+SCR_AIGroup : "{04C3AF302F4B8EC3}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_Large_p.et" {
+ coords 1757.37 163.843 2210.089
+ m_aUnitPrefabSlots {
+  "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et"
+  "{F5FDAAADCCD3C2F9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_1SG_P.et"
+ }
+ {
+  SCR_AIGroup : "{93B14C52DA54543D}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon-Large_p.et" {
+   coords 0.018 0.352 -4.908
+   m_aUnitPrefabSlots {
+    "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"
+    "{6BB714F2C0835B67}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PSG_P.et"
+    "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"
+   }
+   {
+    $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     {
+      coords 6.629 1.832 -11.78
+      m_aUnitPrefabSlots {
+       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+       "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+       "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+       "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"
+      }
+     }
+     {
+      coords 6.629 2.318 -15.6
+      m_aUnitPrefabSlots {
+       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+       "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+       "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+       "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"
+      }
+      {
+       SCR_AIGroup : "{93B14C52DA54543D}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon-Large_p.et" {
+        coords -6.629 -2.183 12.456
+        m_aUnitPrefabSlots {
+         "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"
+         "{6BB714F2C0835B67}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PSG_P.et"
+         "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"
+        }
+        {
+         $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+          {
+           coords 6.629 2.53 -16.739
+           m_aUnitPrefabSlots {
+            "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+            "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+            "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+            "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+            "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+            "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+            "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+            "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+            "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"
+           }
+          }
+          {
+           coords 6.629 2.742 -20.154
+           m_aUnitPrefabSlots {
+            "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+            "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+            "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+            "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+            "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+            "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+            "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+            "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+            "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"
+           }
+           {
+            SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+             coords -17.731 -4.654 28.494
+             m_aUnitPrefabSlots {
+              "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+              "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et"
+              "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+              "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et"
+              "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et"
+             }
+             {
+              SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+               coords -0.034 0.25 -4.644
+               {
+                SCR_AIGroup : "{FDF05DC2E670936E}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_EngiTeam_p.et" {
+                 coords 24.05 3.247 1.564
+                 m_aUnitPrefabSlots {
+                  "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+                  "{0C720583644340B9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_ComEngi_P.et"
+                  "{0C720583644340B9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_ComEngi_P.et"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 1698.227 156.926 2219.722
+  angles 0 180 0
+ }
+ {
+  coords 1698.563 156.926 2233.329
+  angles 0 180 0
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1536.356 144.62 2022.912
+ Points {
+  ShapePoint "{670A12BA856C460B}" {
+   Position -174.828 285.474 672.889
+  }
+  ShapePoint "{670A12BA88E90806}" {
+   Position 1276.424 520.265 759.682
+  }
+  ShapePoint "{670A12BA939D5159}" {
+   Position 1237.687 341.981 -662.001
+  }
+  ShapePoint "{670A12BA95E2E874}" {
+   Position -247.235 0 -707.165
+  }
+ }
+}
+$grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_US_01_20ft_Empty.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1686.662 154.354 2223.006
+  angles 3.681 36.031 -5.044
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1683.624 154.059 2226.333
+  angles 0.885 -0.097 -6.243
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1688.448 154.581 2227.972
+  angles 6.225 94.191 0.455
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1686.043 154.206 2216.805
+  angles 7.057 93.565 1.329
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1688.712 154.579 2221.5
+  angles 3.681 36.031 -5.044
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 0.5
+     }
+    }
+   }
+  }
+  coords 1687.856 154.457 2237.144
+  angles 7.057 93.565 1.329
+ }
+}
+GenericEntity : "{D882E25557A0ABC6}Prefabs/Compositions/Misc/SubCompositions/Storage/Slotted/Storage_Supplies_Containers_US_04.et" {
+ coords 1685.205 154.226 2233.898
+ angles 0 0 -6.242
+ {
+  GenericEntity {
+   ID "62F4A407B8DE2D97"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
+      }
+     }
+    }
+   }
+   coords 2.509 -0.001 -2.176
+  }
+  GenericEntity {
+   ID "62F4A407B8DE2DA9"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
+      }
+     }
+    }
+   }
+   coords -1.957 -0.001 0.223
+  }
+  GenericEntity {
+   ID "62F4A407B8DFA02D"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 1000
+       m_bEnableResourceGain 1
+       m_fResourceGain 0.5
+      }
+     }
+    }
+   }
+  }
+ }
+}

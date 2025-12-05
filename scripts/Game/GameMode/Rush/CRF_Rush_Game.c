@@ -500,8 +500,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void SpawnMCOMAtPosition(IEntity trigger, string mcomIdentifier)
 	{
-		Print("[SpawnMCOMAtPosition] Spawning " + mcomIdentifier + " at trigger: " + trigger.GetName());
-		
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		trigger.GetWorldTransform(spawnParams.Transform);
@@ -511,11 +509,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity mcomEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_MCOMPrefab), GetGame().GetWorld(), spawnParams);
 		if (!mcomEntity)
 		{
-			Print("[SpawnMCOMAtPosition] FAILED to spawn MCOM entity for " + mcomIdentifier);
 			return;
 		}
-		
-		Print("[SpawnMCOMAtPosition] Successfully spawned " + mcomIdentifier + " with entity ID: " + mcomEntity.GetID());
 		
 		// Configure the 3D marker component on the spawned MCOM
 		CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(mcomEntity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -1823,30 +1818,24 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		{
 			case "MCOMA":
 				zoneIndex = 0; mcomIndex = 0; 
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
 				return true;
 			case "MCOMB":
 				if (m_iMCOMsPerZone == 1) { zoneIndex = 1; mcomIndex = 0; }
 				else { zoneIndex = 0; mcomIndex = 1; }
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
 				return true;
 			case "MCOMC":
 				if (m_iMCOMsPerZone == 1) { zoneIndex = 2; mcomIndex = 0; } // Zone 3, Index 0 for 1 MCOM per zone
 				else { zoneIndex = 1; mcomIndex = 0; } // Zone 2, Index 0 for 2 MCOMs per zone
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
 				return true;
 			case "MCOMD":
 				zoneIndex = 1; mcomIndex = 1; 
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
 				return true;
 			case "MCOME":
 				if (m_iMCOMsPerZone == 1) { zoneIndex = 2; mcomIndex = 0; }
 				else { zoneIndex = 2; mcomIndex = 0; }
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
 				return true;
 			case "MCOMF":
 				zoneIndex = 2; mcomIndex = 1; 
-				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
 				return true;
 		}
 		
@@ -2365,8 +2354,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected int GetZoneNumber(string mcomIdentifier)
 	{
-		Print("[GetZoneNumber] Checking zone for: " + mcomIdentifier + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
-		
 		// Handle MCOMB special case based on configuration
 		if (mcomIdentifier == "MCOMB")
 		{
@@ -2375,7 +2362,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				zone = 2;
 			else
 				zone = 1;
-			Print("[GetZoneNumber] " + mcomIdentifier + " → Zone " + zone + " (config-aware)");
 			return zone;
 		}
 		
@@ -2387,7 +2373,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				zone = 3;
 			else
 				zone = 2;
-			Print("[GetZoneNumber] " + mcomIdentifier + " → Zone " + zone + " (config-aware)");
 			return zone;
 		}
 		

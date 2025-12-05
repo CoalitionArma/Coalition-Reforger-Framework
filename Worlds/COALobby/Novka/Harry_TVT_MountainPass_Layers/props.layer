@@ -1,0 +1,1040 @@
+GenericEntity {
+ components {
+  SCR_EditableEntityVisibilityChildComponent "{5EE8A81943F6CA49}" {
+   m_State 96
+  }
+  SCR_SupportStationAreaMeshComponent "{5EE8A81943F6CA5A}" {
+   Enabled 1
+   m_vResolution 48
+   m_bStretchMaterial 1
+   m_Material "{0A8FAD171DB3DC49}Assets/Editor/VirtualArea/VirtualArea_01_Focused.emat"
+   m_fRadius 5
+  }
+  Hierarchy "{5EE8A81943F6CAA2}" {
+  }
+ }
+ coords 2197.982 114.332 1628.255
+}
+GenericEntity : "{18B92018CF634D22}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_03.et" {
+ coords 2216.044 109.693 1655.973
+ angles 0 40.805 0
+}
+GenericEntity : "{382758319508ECF1}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_US_03.et" {
+ coords 2273.683 109.947 1635.244
+ angles 0 75.328 0
+}
+$grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_US_01_20ft_Empty.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     }
+    }
+   }
+  }
+  coords 2246.884 110.219 1624.842
+  angles 7.057 93.565 1.329
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     }
+    }
+   }
+  }
+  coords 2247.262 110.219 1619.712
+  angles 4.635 32.927 -5.49
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     }
+    }
+   }
+  }
+  coords 2251.515 110.219 1620.379
+  angles 4.635 32.927 -5.49
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+     }
+    }
+   }
+  }
+  coords 1681.387 153.656 2218.909
+  angles 0.881 -0.11 -7.126
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 1000
+     }
+    }
+   }
+  }
+  coords 1679.83 153.607 2237.134
+  angles 0 0 -6.242
+ }
+}
+$grp GenericEntity : "{A6FBA7EA8DE8CAC6}Prefabs/Compositions/Misc/SubCompositions/Fortifications/SandbagCamo_wall_High_US.et" {
+ {
+  coords 2225.486 109.69 1655.962
+  angles -5.356 0 0
+ }
+ {
+  coords 2228.275 109.756 1655.962
+  angles -2.683 0.042 -0.896
+ }
+ {
+  coords 2230.995 109.783 1655.962
+  angles -2.684 0 0
+ }
+ {
+  coords 2233.745 109.81 1655.962
+  angles -2.683 0.042 -0.896
+ }
+ {
+  coords 2236.367 109.802 1655.962
+  angles -0.894 -0.028 1.79
+ }
+ {
+  coords 2239.061 109.718 1655.962
+  angles -0.894 -0.028 1.79
+ }
+ {
+  coords 2241.787 109.632 1655.962
+  angles 0 0 1.79
+ }
+ {
+  coords 2244.34 109.594 1655.962
+  angles 0 0 0
+ }
+ {
+  coords 2246.811 109.581 1655.962
+  angles 0 0 0.895
+ }
+ {
+  coords 2249.521 109.563 1655.962
+  angles -0.895 0 0
+ }
+ {
+  coords 2252.228 109.601 1655.962
+  angles 0 0 -1.79
+ }
+}
+GenericEntity : "{CDD0712FD6215F03}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_Conflict_US_01.et" {
+ coords 2199.13 110.433 1630.518
+ angles 0 21.415 0
+}
+$grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+ {
+  coords 2224.336 114.14 1725.582
+  angles 0 104.397 0
+ }
+ {
+  coords 2224.336 112.758 1725.582
+  angles 0 104.397 0
+ }
+ {
+  coords 2224.336 111.377 1725.582
+  angles 0 104.397 0
+ }
+ {
+  coords 2224.336 115.521 1725.582
+  angles 0 104.397 0
+ }
+ {
+  coords 2228.965 112.758 1724.394
+  angles 0 104.397 0
+ }
+ {
+  coords 2228.965 111.377 1724.394
+  angles 0 104.397 0
+ }
+ {
+  coords 2228.965 115.521 1724.394
+  angles 0 104.397 0
+ }
+ {
+  coords 2228.965 114.14 1724.394
+  angles 0 104.397 0
+ }
+ {
+  coords 2233.555 112.758 1723.216
+  angles 0 104.397 0
+ }
+ {
+  coords 2233.555 111.377 1723.216
+  angles 0 104.397 0
+ }
+ {
+  coords 2233.555 115.521 1723.216
+  angles 0 104.397 0
+ }
+ {
+  coords 2233.555 114.14 1723.216
+  angles 0 104.397 0
+ }
+ {
+  coords 2274.889 112.096 1699.514
+  angles 0 104.397 0
+ }
+ {
+  coords 2265.67 112.096 1701.88
+  angles 0 104.397 0
+ }
+ {
+  coords 2265.67 110.714 1701.88
+  angles 0 104.397 0
+ }
+ {
+  coords 2265.67 109.333 1701.88
+  angles 0 104.397 0
+ }
+ {
+  coords 2265.67 113.477 1701.88
+  angles 0 104.397 0
+ }
+ {
+  coords 2270.299 110.714 1700.692
+  angles 0 104.397 0
+ }
+ {
+  coords 2270.299 109.333 1700.692
+  angles 0 104.397 0
+ }
+ {
+  coords 2270.299 113.477 1700.692
+  angles 0 104.397 0
+ }
+ {
+  coords 2270.299 112.096 1700.692
+  angles 0 104.397 0
+ }
+ {
+  coords 2274.889 110.714 1699.514
+  angles 0 104.397 0
+ }
+ {
+  coords 2274.889 109.333 1699.514
+  angles 0 104.397 0
+ }
+ {
+  coords 2274.889 113.477 1699.514
+  angles 0 104.397 0
+ }
+ {
+  coords 2288.104 112.023 1693.53
+  angles 0 116.645 0
+ }
+ {
+  coords 2279.596 112.023 1697.798
+  angles 0 116.645 0
+ }
+ {
+  coords 2279.596 110.641 1697.798
+  angles 0 116.645 0
+ }
+ {
+  coords 2279.596 109.26 1697.798
+  angles 0 116.645 0
+ }
+ {
+  coords 2279.596 113.404 1697.798
+  angles 0 116.645 0
+ }
+ {
+  coords 2283.868 110.641 1695.655
+  angles 0 116.645 0
+ }
+ {
+  coords 2283.868 109.26 1695.655
+  angles 0 116.645 0
+ }
+ {
+  coords 2283.868 113.404 1695.655
+  angles 0 116.645 0
+ }
+ {
+  coords 2283.868 112.023 1695.655
+  angles 0 116.645 0
+ }
+ {
+  coords 2288.104 110.641 1693.53
+  angles 0 116.645 0
+ }
+ {
+  coords 2288.104 109.26 1693.53
+  angles 0 116.645 0
+ }
+ {
+  coords 2288.104 113.404 1693.53
+  angles 0 116.645 0
+ }
+ {
+  coords 2292.152 113.382 1690.895
+  angles 0 128.163 0
+ }
+ {
+  coords 2292.152 112.001 1690.895
+  angles 0 128.163 0
+ }
+ {
+  coords 2292.152 110.619 1690.895
+  angles 0 128.163 0
+ }
+ {
+  coords 2292.152 109.238 1690.895
+  angles 0 128.163 0
+ }
+ {
+  coords 2295.91 109.238 1687.942
+  angles 0 128.163 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 2299.637 109.238 1685.014
+  angles 0 128.163 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2303.005 109.277 1681.491
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 1.381 0
+    }
+   }
+  }
+ }
+ {
+  coords 2305.781 109.277 1677.6
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 2.763 0
+    }
+   }
+  }
+ }
+ {
+  coords 2308.533 108.689 1673.742
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2238.601 115.048 1722.562
+  angles 0 100.271 0
+ }
+ {
+  coords 2238.601 113.667 1722.562
+  angles 0 100.271 0
+ }
+ {
+  coords 2238.601 112.285 1722.562
+  angles 0 100.271 0
+ }
+ {
+  coords 2238.601 110.904 1722.562
+  angles 0 100.271 0
+ }
+ {
+  coords 2243.303 112.285 1721.711
+  angles 0 100.271 0
+ }
+ {
+  coords 2243.303 110.904 1721.711
+  angles 0 100.271 0
+ }
+ {
+  coords 2243.303 115.048 1721.711
+  angles 0 100.271 0
+ }
+ {
+  coords 2243.303 113.667 1721.711
+  angles 0 100.271 0
+ }
+ {
+  coords 2247.25 109.934 1721.767
+  angles 1.25 134.888 0.863
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2256.181 109.528 1716.208
+  angles 0.268 -179.885 1.495
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2256.171 109.421 1711.466
+  angles 0.268 -179.885 1.495
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2256.161 109.284 1706.727
+  angles 0.268 -179.885 1.495
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2309.753 108.785 1668.92
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2308.89 108.785 1664.234
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2308.028 108.785 1659.552
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2306.31 108.784 1650.223
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2305.448 108.784 1645.541
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2307.173 108.784 1654.909
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2287.44 109.888 1621.225
+  angles -1.355 -106.53 0.685
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2282.93 109.777 1619.886
+  angles -1.355 -106.53 0.685
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2278.436 109.666 1618.552
+  angles -1.355 -106.53 0.685
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2273.72 109.864 1616.904
+  angles -1.213 -116.72 0.914
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2269.518 110.03 1614.788
+  angles -1.213 -116.72 0.914
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2265.331 110.178 1612.68
+  angles -1.213 -116.72 0.914
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2258.361 110.347 1609.86
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2254.015 110.243 1608.057
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2249.685 110.138 1606.262
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2240.901 109.926 1602.619
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2236.571 109.822 1600.824
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2245.247 110.031 1604.422
+  angles -1.277 -112.524 0.822
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2303.005 114.802 1681.491
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 4.144 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 1.381 0
+    }
+   }
+  }
+ }
+ {
+  coords 2305.781 114.802 1677.6
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2308.533 114.214 1673.742
+  angles 0 144.501 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2299.637 114.763 1685.014
+  angles 0 128.163 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2309.54 114.307 1668.959
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2308.677 114.307 1664.273
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2307.815 114.307 1659.591
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2306.96 114.306 1654.948
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2306.097 114.306 1650.262
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2305.235 114.306 1645.58
+  angles -0.004 -169.566 1.518
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2304.219 109.781 1640.754
+  angles -0.199 -162.216 1.505
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2302.746 109.764 1636.162
+  angles -0.199 -162.216 1.505
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+ {
+  coords 2295.91 114.763 1687.942
+  angles 0 128.163 0
+  {
+   $grp GenericEntity : "{DA3490CC6013EA8B}Prefabs/Props/AF_HescoBoxes/AF_HescoBox_4x_Forest.et" {
+    {
+     coords 0 1.381 0
+    }
+    {
+     coords 0 2.763 0
+    }
+    {
+     coords 0 4.144 0
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{F09296B9255F6704}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_US_01.et" {
+ coords 2228.133 111.242 1622.359
+}
+$grp StaticModelEntity : "{F9F0FBA940588BAF}Prefabs/Compositions/Misc/SubCompositions/Tent_Barrack_Cluttered_US_02.et" {
+ {
+  coords 2225.782 110.398 1647.249
+  angles 0 0 0
+ }
+ {
+  coords 2236.772 109.96 1646.528
+  angles 0 0 0
+ }
+ {
+  coords 2249.074 109.811 1647.609
+  angles 0 0 0
+ }
+}
+$grp GenericEntity : "{FD256CE1C386DA49}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_02.et" {
+ {
+  coords 2204.56 109.719 1662.867
+  angles 0 47.065 0
+ }
+ {
+  coords 2267.983 109.989 1641.144
+  angles 0 45.741 0
+ }
+}

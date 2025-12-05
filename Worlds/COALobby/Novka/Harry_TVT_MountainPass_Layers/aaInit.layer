@@ -1,0 +1,124 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 2
+   m_iStartingMinutes 25
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_iStartingHour 2
+     m_iStartingMinutes 26
+    }
+   }
+  }
+ }
+ coords 1720.741 159.333 2262.644
+ EnableAIInGameState 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Blufor has been fighting insurgent forces in Novka for months now. FOB Bravo needs resupply, but the supply routes have grown dangerous, and locals have suddenly dissappeared from around Ireska."\
+   ""\
+   "BLUFOR Composition: Inf"\
+   "BLUFOR Assets: Mortars, MMG, Engi Team"\
+   ""\
+   "INDFOR Composition: Inf"\
+   "INDFOR Assets:"\
+   ""\
+   "Time: 45"\
+   "Weather: Day Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Bring 3000 supply to FOB Bravo, which is two full transport trucks. You can check the supply in the FOB by using a supply transporting vehicle. "
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Destroy the enemy, and prevent them from resupplying FOB Bravo."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  }
+ }
+ m_iFactionOneRatio 4
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{CFFCEFF3E8A5A866}Configs/Gearscripts/Custom/Harry/MountainPass/CRF_GS_RHSUSArmyMC_MountainPass.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{B4351BD23B50D8C8}Configs/Gearscripts/Custom/Harry/MountainPass/CRF_GS_Modern_Rebels_MountainPass.conf"
+ }
+ {
+  SCR_FactionManager "670A12B93FBBCE29" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6704234AA94F187C}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6704234AA9C5DB8D}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6704234AA87EAD5E}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6704234AA8E977DE}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6704234AAF3F07B4}" {
+        m_sCallsign "Mortars"
+       }
+       SCR_CallsignInfo "{670A12B9FFBB9BA8}" {
+        m_sCallsign "Engi Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Area Commander"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell Lead 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{670A12B8F6B9FEC8}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{6704234AEAC3E92F}" {
+        m_sCallsign "Cell Lead 2"
+       }
+       SCR_CallsignInfo "{6704234AE9EF9C02}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{6704234AE8215516}" {
+        m_sCallsign "Cell 5"
+       }
+       SCR_CallsignInfo "{6704234AE86E3ECB}" {
+        m_sCallsign "Cell 6"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
