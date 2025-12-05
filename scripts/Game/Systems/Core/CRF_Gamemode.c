@@ -855,6 +855,27 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 	center = ComputeAOCenter(slottingMan.m_vLastSlotRegisteredPosition);
 		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
 	}
+	
+	bool DoesFactionShareMarker(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": 
+			return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
+			break;
+			case "OPFOR": 
+			return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
+			break;
+			case "INDFOR": 
+			return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
+			break;
+			case "CIV": 
+			return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+			break;
+		}
+		
+		return true;
+	}
 }
 
 //------------------------------------------------------------------------------------

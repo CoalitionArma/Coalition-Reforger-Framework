@@ -153,4 +153,64 @@ modded class SCR_PlayerController
 	{
 		SCR_Global.TeleportPlayer(GetPlayerId(), location);
 	}
+	
+	void ShareMapMarkers()
+	{
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		array<int> markerUIDs = {};
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			markerUIDs.Insert(marker.GetMarkerID());
+		}
+		
+		Rpc(RpcAsk_ShareMapMarkers,markerUIDs, GetPlayerId());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
+	{
+		PlayerManager pm = GetGame().GetPlayerManager();
+		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
+		if (!playerEntity)
+			return;
+		
+		array<int> playerIds = {};
+		pm.GetPlayers(playerIds);
+		foreach (int otherPlayerId: playerIds)
+		{
+			if (otherPlayerId == playerId)
+				continue;
+			
+			IEntity entity = pm.GetPlayerControlledEntity(otherPlayerId);
+			if (!entity)
+				continue;
+			
+			if (vector.Distance(playerEntity.GetOrigin(), entity.GetOrigin()) > 8)
+				continue;
+			
+			SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId)).ShareMarker(markerUIDs);
+		}
+	}
+	
+	void ShareMarker(array<int> markerUIDs)
+	{
+		Rpc(RpcDo_ShareMarker, markerUIDs);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+    protected void RpcDo_ShareMarker(array<int> markerUIDs)
+    {	
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+			
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (markerUIDs.Contains(marker.GetMarkerID()))
+				marker.m_bIsShared = true;
+		}
+    }
 }
