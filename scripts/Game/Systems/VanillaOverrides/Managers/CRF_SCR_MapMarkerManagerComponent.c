@@ -36,7 +36,10 @@ modded class SCR_MapMarkerManagerComponent
 		if (m_iCachedLocalPlayerId == -1)
 			m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		
-		bool shouldBeVisible = (marker.GetMarkerOwnerID() == m_iCachedLocalPlayerId) || marker.m_bIsShared;
+		bool isPlayersMarker = (marker.GetMarkerOwnerID() == m_iCachedLocalPlayerId);
+		if (isPlayersMarker)
+			marker.m_bIsShared = true;
+		bool shouldBeVisible = isPlayersMarker || marker.m_bIsShared;
 		marker.SetVisible(shouldBeVisible);
 	}
 	
