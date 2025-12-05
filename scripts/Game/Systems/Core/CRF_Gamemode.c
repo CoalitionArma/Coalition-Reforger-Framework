@@ -861,17 +861,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		switch (factionKey)
 		{
 			case "BLUFOR": 
-			return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
-			break;
+				return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "OPFOR": 
-			return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
-			break;
+				return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "INDFOR": 
-			return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
-			break;
+				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "CIV": 
-			return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-			break;
+				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
 		}
 		
 		return true;

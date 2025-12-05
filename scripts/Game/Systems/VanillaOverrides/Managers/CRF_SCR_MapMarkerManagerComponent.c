@@ -2,6 +2,7 @@
 modded class SCR_MapMarkerManagerComponent
 {
 	SCR_PlayerController m_PlayerController;
+	protected int m_iCachedLocalPlayerId = -1;
 	
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
 	{								
@@ -19,18 +20,36 @@ modded class SCR_MapMarkerManagerComponent
 		
 		
 		super.OnAddSynchedMarker(marker);
+		
+		// Update visibility for the newly added marker
+		UpdateMarkerVisibility(marker);
 	}
 	
-	override void Update(float timeSlice)
+	//------------------------------------------------------------------------------------------------
+	// Update visibility for a single marker based on ownership and shared status
+	protected void UpdateMarkerVisibility(SCR_MapMarkerBase marker)
 	{
-		super.Update(timeSlice);
+		if (!marker)
+			return;
+			
+		// Cache the local player ID to avoid repeated calls
+		if (m_iCachedLocalPlayerId == -1)
+			m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
+		bool shouldBeVisible = (marker.GetMarkerOwnerID() == m_iCachedLocalPlayerId) || marker.m_bIsShared;
+		marker.SetVisible(shouldBeVisible);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update all marker visibilities (call this when shared state changes)
+	void UpdateAllMarkerVisibilities()
+	{
+		// Refresh cached player ID
+		m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
 		foreach (SCR_MapMarkerBase marker: m_aStaticMarkers)
 		{
-			
-			if (marker.GetMarkerOwnerID() == SCR_PlayerController.GetLocalPlayerId())
-				marker.SetVisible(true);
-			else
-				marker.SetVisible(marker.m_bIsShared);
+			UpdateMarkerVisibility(marker);
 		}
 	}
 	
