@@ -1,9 +1,6 @@
 CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
-  Persistence "{65B27918147B3DEC}" {
-   Enabled 0
-  }
   CRF_GamemodeManager "{652A3313EC014E7F}" {
    components {
     CRF_AdminMenuManager "{6544E589C41BEFA8}" {

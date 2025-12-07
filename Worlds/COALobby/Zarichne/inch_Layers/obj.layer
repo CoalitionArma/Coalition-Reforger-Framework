@@ -1,0 +1,26 @@
+$grp BaseGameTriggerEntity {
+ mcom_a_trigger {
+  coords 2711.502 12.797 2588.948
+  angles 0.996 93.27 -1.736
+ }
+ mcom_b_trigger {
+  coords 2697.453 10.798 2457.847
+  angles 0.707 84.11 -1.872
+ }
+ mcom_c_trigger {
+  coords 2544.353 9.116 2355.464
+  angles -0.274 -108.715 1.982
+ }
+ mcom_d_trigger {
+  coords 2478.934 8.971 2458.452
+  angles 1.234 101.488 -1.576
+ }
+ mcom_e_trigger {
+  coords 2408.846 9.041 2272.611
+  angles -1.79 0 -0.895
+ }
+ mcom_f_trigger {
+  coords 2312.224 9 2318.839
+  angles 1.934 168.341 0.515
+ }
+}

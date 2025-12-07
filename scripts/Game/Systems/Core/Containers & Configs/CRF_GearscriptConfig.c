@@ -46,6 +46,9 @@ class CRF_GearScriptContainer
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableShareableMarkers;
+  
+  [Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableBFT;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rShortRangeRadioPrefab;

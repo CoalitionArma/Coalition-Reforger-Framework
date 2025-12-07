@@ -643,7 +643,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_ReplyAdminMessage", bytes);
 		
 		// Create a new ticket or/and add reply to existing ticket
-		m_AdminMenuManager.NewTicketMessage(playerId, playerId, data);
+		m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
 		
 		// Broadcast to the reply to the player
 		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);

@@ -1,0 +1,12 @@
+$grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 3014.582 21.372 2484.239
+  angles 0 90 0
+  m_sDescription "Forward Trenches"
+ }
+ {
+  coords 2996.584 20.773 2586.176
+  angles 0 90 0
+  m_sDescription "Forward Trenches"
+ }
+}

@@ -48,6 +48,19 @@ modded class SCR_MapMarkerSquadLeader
 			SetLocalVisible(false);
 			return;
 		}
+		
+		Faction groupFaction = localPlayerGroup.GetFaction();
+		if (!groupFaction)
+		{
+			SetLocalVisible(false);
+			return;
+		}
+		
+		if (!CRF_Gamemode.GetInstance().IsSideBFTEnabled(groupFaction.GetFactionKey()))
+		{
+			SetLocalVisible(false);
+			return;
+		}
 
 		bool isLocalPlayerLeader = localPlayerGroup.IsPlayerLeader(pController.GetPlayerId());
 
