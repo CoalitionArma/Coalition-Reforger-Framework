@@ -868,9 +868,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "CIV": 
 				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-     }
-     return true;
-  }
+    	 }
+    	return true;
+ 	}
+	
 	bool IsSideBFTEnabled(string factionKey)
 	{
 		switch(factionKey)
@@ -887,10 +888,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "CIV":
 				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
 				break;
-		 }
+		}
    		return true;
 	}
-
+}
 //------------------------------------------------------------------------------------
 // Fix for manual camera to work with spectator menu
 //------------------------------------------------------------------------------------
