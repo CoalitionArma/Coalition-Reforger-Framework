@@ -41,7 +41,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{1DCFD33B70F9A72D}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "670F275C9C0F44D3" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -66,6 +66,52 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{670E03A093E205B4}" {
         m_sCallsign "MAT"
+       }
+      }
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{670F275C89C71101}" {
+        m_aGroupNames {
+         "Crew 1 (T-72)"
+        }
+        m_aSRFrequencies {
+         "Crew 1 (T-72)"
+        }
+        m_aLRFrequencies {
+         "Armor"
+        }
+       }
+       CVON_GroupFrequencyContainer "{670F275CF731EF81}" {
+        m_aGroupNames {
+         "Crew 2 (BMP-1)"
+        }
+        m_aSRFrequencies {
+         "Crew 2 (BMP-1)"
+        }
+        m_aLRFrequencies {
+         "Armor"
+        }
+       }
+       CVON_GroupFrequencyContainer "{670F275CE9DE6312}" {
+        m_aGroupNames {
+         "Crew 3 (T-72)"
+        }
+        m_aSRFrequencies {
+         "Crew 3 (T-72)"
+        }
+        m_aLRFrequencies {
+         "Armor"
+        }
+       }
+       CVON_GroupFrequencyContainer "{670F275CE118CA0B}" {
+        m_aGroupNames {
+         "Crew 4 (BMP-1)"
+        }
+        m_aSRFrequencies {
+         "Crew 4 (BMP-1)"
+        }
+        m_aLRFrequencies {
+         "Armor"
+        }
        }
       }
      }
