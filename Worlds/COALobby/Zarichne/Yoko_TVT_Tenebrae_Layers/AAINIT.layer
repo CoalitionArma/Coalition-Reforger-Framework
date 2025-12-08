@@ -1,0 +1,162 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1553.67 20.214 2167.772
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGamemodeManager "{6710522B63E7B039}" {
+   m_timeBetweenPings 60
+   m_transponderEntity "INTEL"
+   m_markerText "HVT Location"
+   m_filterFaction 1
+   m_hvtPrefab "{AE2B7341B5A82545}Prefabs/Items/PersonalBelongings/PersonalBelongings_FIA.et"
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 0
+    }
+   }
+  }
+ }
+ coords 1467.896 20.594 2322.005
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: 2x MMG and 1x MATT"\
+   ""\
+   "INDFOR Composition: Motorized Infantry Platoon"\
+   "INDFOR Assets: 2x BTR"\
+   ""\
+   "Time: 12:00 A.M"\
+   ""\
+   "Weather: Heavy Wet Fog"
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{12A7439CDFCB526E}Configs/Gearscripts/Custom/Yoko/CRF_GS_USSpecOps_Yoko.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{554C5E704628C60B}Configs/Gearscripts/Custom/Yoko/CRF_GS_CHDKz_HVT_Yoko.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6710522CFB726210}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6710522CFAFCACDA}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6710522CE43F67C1}" {
+        m_sCallsign "MATT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HVT / Rebel Commander"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{6710522CC32D9043}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{6710522CC78E2F8E}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{6710522CCBFAA6A7}" {
+        m_sCallsign "Crew 1 (BTR)"
+       }
+       SCR_CallsignInfo "{6710522CCB10A67E}" {
+        m_sCallsign "Crew 2 (BTR)"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity INTEL {
+ coords 1500.898 20.523 2211.198
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1516.063 26.209 2217.114
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 45
+  m_sDescription "NSV"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 1463.926 20.657 2270.259
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 45
+  m_sDescription "PKM"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 1416.367 29.04 2246.082
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 45
+  m_sDescription "PKM"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 1380.872 25.219 2240.898
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 45
+  m_sDescription "PKM"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 1386.735 21.905 2464.497
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 45
+  m_sDescription "NSV"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+}

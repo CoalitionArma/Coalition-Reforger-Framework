@@ -1,0 +1,14 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1496.412 20.394 2185.007
+  angles 0 -29.976 0
+  m_rVehicle "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 1491.604 20.394 2182.233
+  angles 0 -29.976 0
+  m_rVehicle "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+  m_sFactionKey "INDFOR"
+ }
+}

@@ -1,0 +1,327 @@
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 1500.978 20.375 2198.26
+ Points {
+  ShapePoint "{67102A1454388AAF}" {
+   Position 163.362 0 88.288
+  }
+  ShapePoint "{67102A145AF00548}" {
+   Position 207.473 0 16.281
+  }
+  ShapePoint "{67102A145C48EFDD}" {
+   Position 104.062 0 -68.115
+  }
+  ShapePoint "{67102A145E87C091}" {
+   Position 41.335 0 -106.238
+  }
+  ShapePoint "{67102A1441B1FDB4}" {
+   Position -67.269 0 -101.603
+  }
+  ShapePoint "{67102A1443E21BB6}" {
+   Position -126.113 0 -73.522
+  }
+  ShapePoint "{67102A1445CF22E2}" {
+   Position -140.773 0 -63.049
+  }
+  ShapePoint "{67102A147392AA4D}" {
+   Position -146.422 0 10.231
+  }
+  ShapePoint "{67102A144FF59C47}" {
+   Position -162.531 0 88.887
+  }
+  ShapePoint "{67102A144953D285}" {
+   Position -188.174 0 205.95
+  }
+  ShapePoint "{67102A1469F3CB82}" {
+   Position -194.511 0 255.852
+  }
+  ShapePoint "{67102A141FC172E7}" {
+   Position -212.374 0 320.271
+  }
+  ShapePoint "{67102A14016C9578}" {
+   Position -16.264 0 434.55
+  }
+ }
+}
+CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+ coords 1708.282 18.401 2214.817
+ angles 0 0 0
+ {
+  CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+   coords -35.881 -2.538 58.573
+   angles 0 0 0
+   {
+    CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+     coords -33.157 0.762 63.144
+     angles 0 0 0
+     {
+      CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+       coords -22.672 0.715 43.753
+       angles 0 0 0
+       {
+        CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+         coords -26.931 2.701 50.259
+         angles 0 0 0
+         {
+          CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+           coords -29.043 10.314 55.985
+           angles 0 0 0
+           {
+            CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+             coords -25.731 16.645 49.602
+             angles 0 0 0
+             {
+              CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+               coords -34.583 -16.863 66.664
+               angles 0 0 0
+               {
+                CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                 coords -15.779 -9.527 29.969
+                 angles 0 0 0
+                 {
+                  CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                   coords -33.7 0.45 -19.715
+                   angles 0 0 0
+                   {
+                    CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                     coords -31.807 6.962 -18.535
+                     angles 0 0 0
+                     {
+                      CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                       coords -50.324 4.477 -29.325
+                       angles 0 0 0
+                       {
+                        CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                         coords -30.265 6.497 -17.636
+                         angles 0 0 0
+                         {
+                          CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                           coords -48.528 -2.242 -28.279
+                           angles 0 0 0
+                           {
+                            CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                             coords 9.69 -16.074 -41.481
+                             angles 0 0 0
+                             {
+                              CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                               coords 10.901 2.065 -55.224
+                               angles 0 0 0
+                               {
+                                CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                 coords 9.181 -2.065 -63.188
+                                 angles 0 0 0
+                                 {
+                                  CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                   coords 14.911 -0 -56.949
+                                   angles 0 0 0
+                                   {
+                                    CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                     coords 13.048 7.003 -60.041
+                                     angles 0 0 0
+                                     {
+                                      CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                       coords 7.448 -5.714 -60.369
+                                       angles 0 0 0
+                                       {
+                                        CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                         coords 3.507 -2.516 -47.087
+                                         angles 0 0 0
+                                         {
+                                          CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                           coords 36.385 -0.419 -20.487
+                                           angles 0 0 0
+                                           {
+                                            CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                             coords 33.606 5.247 -17.349
+                                             angles 0 0 0
+                                             {
+                                              CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                               coords 45.742 -7.156 -2.176
+                                               angles 0 0 0
+                                               {
+                                                CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                 coords 49.65 2.307 -2.119
+                                                 angles 0 0 0
+                                                 {
+                                                  CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                   coords 27.613 5.332 4.839
+                                                   angles 0 0 0
+                                                   {
+                                                    CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                     coords 37.731 2.831 22.931
+                                                     angles 0 0 0
+                                                     {
+                                                      CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                       coords 37.375 4.161 27.222
+                                                       angles 0 0 0
+                                                       {
+                                                        CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                         coords 30.405 -7.779 24.814
+                                                         angles 0 0 0
+                                                         {
+                                                          CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+                                                           coords 17.11 -2.08 13.963
+                                                           angles 0 0 0
+                                                          }
+                                                         }
+                                                        }
+                                                       }
+                                                      }
+                                                     }
+                                                    }
+                                                   }
+                                                  }
+                                                 }
+                                                }
+                                               }
+                                              }
+                                             }
+                                            }
+                                           }
+                                          }
+                                         }
+                                        }
+                                       }
+                                      }
+                                     }
+                                    }
+                                   }
+                                  }
+                                 }
+                                }
+                               }
+                              }
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORForwardDeployZone.et" {
+ {
+  coords 863.491 20.656 2626.183
+  Points {
+   ShapePoint "{67102A1282CAFE14}" {
+    Position 48.324 0 33.691
+   }
+   ShapePoint "{67102A1285BCFE97}" {
+    Position 46.546 0 -24.153
+   }
+   ShapePoint "{67102A128558A34F}" {
+    Position -52.152 0 -34.204
+   }
+   ShapePoint "{67102A1287C4AEF8}" {
+    Position -63.726 0 29.275
+   }
+  }
+ }
+ {
+  coords 1745.488 2.549 2912.049
+  Points {
+   ShapePoint "{67102A12A7B2F676}" {
+    Position 23.981 0 8.717
+   }
+   ShapePoint "{67102A12A7453186}" {
+    Position -24.517 0 29.736
+   }
+   ShapePoint "{67102A12A801D107}" {
+    Position -43.346 0 18.67
+   }
+   ShapePoint "{67102A12AB061CA6}" {
+    Position -15.585 0 -36.268
+   }
+   ShapePoint "{67102A12AD48B5FA}" {
+    Position 10.755 0 -16.789
+   }
+  }
+ }
+ {
+  coords 1976.029 7.532 1601.092
+  Points {
+   ShapePoint "{67102A124393BCA4}" {
+    Position -58.193 0 30.135
+   }
+   ShapePoint "{67102A1242569357}" {
+    Position -49.92 0 -38.248
+   }
+   ShapePoint "{67102A124484ABA8}" {
+    Position 23.613 0 -34.539
+   }
+   ShapePoint "{67102A1244D38C1A}" {
+    Position 34.861 0 -30.647
+   }
+   ShapePoint "{67102A1247EFBC0C}" {
+    Position 27.214 0 30.161
+   }
+  }
+ }
+ {
+  coords 1215.823 20.324 1613.742
+  Points {
+   ShapePoint "{67102A1268050D4F}" {
+    Position 43.006 0 8.08
+   }
+   ShapePoint "{67102A126B707A9C}" {
+    Position -3.033 0 41.47
+   }
+   ShapePoint "{67102A126A2957FB}" {
+    Position -28.011 0 25.583
+   }
+   ShapePoint "{67102A126C97305A}" {
+    Position -36.728 0 16.671
+   }
+   ShapePoint "{67102A126FB0FD5E}" {
+    Position -31.224 0 -32.741
+   }
+   ShapePoint "{67102A1211388ADC}" {
+    Position 56.161 0 -5.545
+   }
+  }
+ }
+ {
+  coords 2116.045 3.774 2100.15
+  Points {
+   ShapePoint "{6710522590C03C1F}" {
+    Position -16.993 -0 -57.832
+   }
+   ShapePoint "{671052259325CE3D}" {
+    Position 47.825 -0 -46.44
+   }
+   ShapePoint "{6710522595A14469}" {
+    Position 13.696 -0 51.739
+   }
+   ShapePoint "{67105225951A5CEA}" {
+    Position -21.051 -0 47.469
+   }
+   ShapePoint "{6710522597CC204D}" {
+    Position -49.584 -0 16.013
+   }
+   ShapePoint "{671052259743390E}" {
+    Position -40.961 -0 -13.359
+   }
+  }
+ }
+}
