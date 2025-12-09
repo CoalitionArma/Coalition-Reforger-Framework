@@ -28,7 +28,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "A Rebel Commander has recently taken contorl of the city of Zarichne. US Special Forces have be tasked with his assassination."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: 2x MMG and 1x MATT"\
@@ -40,7 +40,24 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "Weather: Heavy Wet Fog"
   }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Kill the Commander."\
+   ""\
+   "He is armed and dangerous."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend your Commander."\
+   ""\
+   "Suggested Defensive postions marked in red."\
+   ""\
+   "Emplacments marked in black."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "When playing the HVT, you consider highest in command for INDFOR."
+  }
  }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{12A7439CDFCB526E}Configs/Gearscripts/Custom/Yoko/CRF_GS_USSpecOps_Yoko.conf"
  }
@@ -48,7 +65,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{554C5E704628C60B}Configs/Gearscripts/Custom/Yoko/CRF_GS_CHDKz_HVT_Yoko.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "67120428FD356B7C" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -114,6 +131,19 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   m_aVisibleForFactions {
    "INDFOR"
   }
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -129.328 -4.304 247.383
+    angles 0 0 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "dot"
+    m_fWorldSize 45
+    m_sDescription "NSV"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
  }
  {
   coords 1463.926 20.657 2270.259
@@ -125,38 +155,133 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   m_aVisibleForFactions {
    "INDFOR"
   }
- }
- {
-  coords 1416.367 29.04 2246.082
-  angles 0 0 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "dot"
-  m_fWorldSize 45
-  m_sDescription "PKM"
-  m_aVisibleForFactions {
-   "INDFOR"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -47.559 8.383 -24.177
+    angles 0 0 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "dot"
+    m_fWorldSize 45
+    m_sDescription "PKM"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+    {
+     CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+      coords -35.495 -3.821 -5.184
+      angles 0 0 0
+      m_MarkerColor 0 0 0 1
+      m_sQuadName "dot"
+      m_fWorldSize 45
+      m_sDescription "PKM"
+      m_aVisibleForFactions {
+       "INDFOR"
+      }
+      {
+       CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+        coords -14.739 7.636 222.629
+        angles 0 0 0
+        m_MarkerColor 0 0 0 1
+        m_sQuadName "dot"
+        m_fWorldSize 45
+        m_sDescription "PKM"
+        m_aVisibleForFactions {
+         "INDFOR"
+        }
+        {
+         CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+          coords 195.957 -4.599 -83.889
+          angles 0 0 0
+          m_MarkerColor 0 0 0 1
+          m_sQuadName "dot"
+          m_fWorldSize 45
+          m_sDescription "PKM"
+          m_aVisibleForFactions {
+           "INDFOR"
+          }
+          {
+           CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+            coords -197.169 1.232 159.214
+            angles 0 0 0
+            m_MarkerColor 0 0 0 1
+            m_sQuadName "dot"
+            m_fWorldSize 45
+            m_sDescription "PKM"
+            m_aVisibleForFactions {
+             "INDFOR"
+            }
+            {
+             CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+              coords 156.012 -1.966 -370.112
+              angles 0 0 0
+              m_MarkerColor 0 0 0 1
+              m_sQuadName "dot"
+              m_fWorldSize 45
+              m_sDescription "PKM"
+              m_aVisibleForFactions {
+               "INDFOR"
+              }
+              {
+               CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+                coords -86.386 -3.138 46.333
+                angles 0 0 0
+                m_MarkerColor 0 0 0 1
+                m_sQuadName "dot"
+                m_fWorldSize 45
+                m_sDescription "PKM"
+                m_aVisibleForFactions {
+                 "INDFOR"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
   }
  }
  {
-  coords 1380.872 25.219 2240.898
+  coords 1366.929 23.769 2501.374
   angles 0 0 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "dot"
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "strong-point"
   m_fWorldSize 45
-  m_sDescription "PKM"
+  m_sDescription "DP1"
   m_aVisibleForFactions {
    "INDFOR"
   }
- }
- {
-  coords 1386.735 21.905 2464.497
-  angles 0 0 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "dot"
-  m_fWorldSize 45
-  m_sDescription "NSV"
-  m_aVisibleForFactions {
-   "INDFOR"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 200.135 8.608 -143.165
+    angles 0 0 0
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "strong-point"
+    m_fWorldSize 45
+    m_sDescription "DP2"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+    {
+     CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+      coords -154.282 -11.697 -147.602
+      angles 0 0 0
+      m_MarkerColor 1 0 0 1
+      m_sQuadName "strong-point"
+      m_fWorldSize 45
+      m_sDescription "DP3"
+      m_aVisibleForFactions {
+       "INDFOR"
+      }
+     }
+    }
+   }
   }
  }
 }

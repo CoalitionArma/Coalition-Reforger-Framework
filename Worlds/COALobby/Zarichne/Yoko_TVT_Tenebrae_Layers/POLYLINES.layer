@@ -111,7 +111,7 @@ CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_IND
                                  angles 0 0 0
                                  {
                                   CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
-                                   coords 14.911 -0 -56.949
+                                   coords 14.911 0 -56.949
                                    angles 0 0 0
                                    {
                                     CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
@@ -222,19 +222,19 @@ CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_IND
 }
 $grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORForwardDeployZone.et" {
  {
-  coords 863.491 20.656 2626.183
+  coords 534.672 20.034 2668.189
   Points {
    ShapePoint "{67102A1282CAFE14}" {
-    Position 48.324 0 33.691
+    Position 63.104 -20.745 70.849
    }
    ShapePoint "{67102A1285BCFE97}" {
     Position 46.546 0 -24.153
    }
    ShapePoint "{67102A128558A34F}" {
-    Position -52.152 0 -34.204
+    Position -123.102 -0.416 -34.418
    }
    ShapePoint "{67102A1287C4AEF8}" {
-    Position -63.726 0 29.275
+    Position -140.184 -22.347 68.055
    }
   }
  }
@@ -244,25 +244,28 @@ $grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORFor
    ShapePoint "{67102A12A7B2F676}" {
     Position 23.981 0 8.717
    }
+   ShapePoint "{6712042923C65E52}" {
+    Position -23.552 0 45.339
+   }
    ShapePoint "{67102A12A7453186}" {
-    Position -24.517 0 29.736
+    Position -48.331 0 83.341
    }
    ShapePoint "{67102A12A801D107}" {
-    Position -43.346 0 18.67
+    Position -99.529 0 65.673
    }
    ShapePoint "{67102A12AB061CA6}" {
-    Position -15.585 0 -36.268
+    Position -20.722 0 -75.795
    }
    ShapePoint "{67102A12AD48B5FA}" {
-    Position 10.755 0 -16.789
+    Position 29.154 0 -26.33
    }
   }
  }
  {
-  coords 1976.029 7.532 1601.092
+  coords 1761.224 8.562 1626.308
   Points {
    ShapePoint "{67102A124393BCA4}" {
-    Position -58.193 0 30.135
+    Position -54.818 0 2.242
    }
    ShapePoint "{67102A1242569357}" {
     Position -49.92 0 -38.248
@@ -305,22 +308,22 @@ $grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORFor
   coords 2116.045 3.774 2100.15
   Points {
    ShapePoint "{6710522590C03C1F}" {
-    Position -16.993 -0 -57.832
+    Position -16.993 0 -57.832
    }
    ShapePoint "{671052259325CE3D}" {
-    Position 47.825 -0 -46.44
+    Position 47.825 0 -46.44
    }
    ShapePoint "{6710522595A14469}" {
-    Position 13.696 -0 51.739
+    Position 13.696 0 51.739
    }
    ShapePoint "{67105225951A5CEA}" {
-    Position -21.051 -0 47.469
+    Position -21.051 0 47.469
    }
    ShapePoint "{6710522597CC204D}" {
-    Position -49.584 -0 16.013
+    Position -49.584 0 16.013
    }
    ShapePoint "{671052259743390E}" {
-    Position -40.961 -0 -13.359
+    Position -40.961 0 -13.359
    }
   }
  }
