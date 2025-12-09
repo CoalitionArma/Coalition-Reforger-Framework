@@ -16,7 +16,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 4902.366 422.425 3539.602
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "British forces have infiltrated this area held by Russian forces, scouting the terrain and setting up supply caches for future operations. Russiand VDV have been sent to root out the intruders, and destroy the caches."\
+   m_sTextData "British forces have infiltrated this area held by Russian forces, scouting the terrain and setting up supply caches for future operations. Russian VDV have been sent to root out the intruders, and destroy the caches."\
    ""\
    "BLUFOR Composition: British Inf"\
    "BLUFOR Assets: MMG, Mortars, Drones"\
