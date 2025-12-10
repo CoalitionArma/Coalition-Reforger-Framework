@@ -1,11 +1,4 @@
 SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Company_p.et" {
- components {
-  CRF_HighValueTargetGamemodeManager "{67102A157A178B26}" {
-   m_markerText "Last Known Location"
-   m_filterFaction 1
-   m_hvtPrefab "{E096C6BD45C87B63}Prefabs/Items/PersonalBelongings/PersonalBelongings_USSR.et"
-  }
- }
  coords 1501.314 20.556 2212.573
  angles 0 -110.439 0
  m_aUnitPrefabSlots {
@@ -27,10 +20,10 @@ SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
        coords 0 0 2.698
        {
         SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-         coords -0 0 3.514
+         coords 0 0 3.514
          {
           SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-           coords -0 0 2.783
+           coords 0 0 2.783
            {
             SCR_AIGroup : "{F1BEC7CF032A0B7C}Prefabs/Groups/INDFOR/Standard/Vehicle/CRF_INDFOR_2ManCrew_p.et" {
              coords -8.721 -2.062 6.357

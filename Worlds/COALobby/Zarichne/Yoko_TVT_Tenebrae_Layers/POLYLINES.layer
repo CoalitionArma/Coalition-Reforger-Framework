@@ -45,6 +45,10 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
 CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
  coords 1708.282 18.401 2214.817
  angles 0 0 0
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+ m_bVisibleForEmptyFaction 0
  {
   CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
    coords -35.881 -2.538 58.573
