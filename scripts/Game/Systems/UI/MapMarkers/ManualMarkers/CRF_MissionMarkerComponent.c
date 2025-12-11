@@ -54,7 +54,7 @@ class CRF_MissionMarkerComponent: CRF_ManualMarkerComponent
 	{
 		super.SetSlot(posX, posY, sizeX, sizeY, rotation);
 		WorkspaceWidget ws = GetGame().GetWorkspace();
-
+		m_wDescriptionPanel.SetVisible(false);
 		float panelX, panelY;
 		m_wDescriptionPanel.GetScreenSize(panelX, panelY);
 	

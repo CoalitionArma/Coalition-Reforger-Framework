@@ -3,8 +3,9 @@ PolylineShapeEntity {
  components {
   CRF_PolyZone "{671626BD5DA5AE25}" {
    m_cPolygonColor 0.045 0.045 0.045 0.431
-   m_cPolygonBorderColor 0.045 0.045 0.045 1
-   m_fPolygonBorderWidth 10
+   m_fPolygonUVScale 0.001
+   m_cPolygonBorderColor 0 0 0 1
+   m_fPolygonBorderWidth 8
    m_bLineMode 1
    m_aVisibleForFactions {
     "BLUFOR" "OPFOR" "INDFOR" "CIV" "SPEC"

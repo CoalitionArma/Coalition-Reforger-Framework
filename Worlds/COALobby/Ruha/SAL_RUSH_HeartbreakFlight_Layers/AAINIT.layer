@@ -372,6 +372,7 @@ $grp BaseGameTriggerEntity {
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
  components {
   CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 0.045 0.045 0.045 0
    m_bReversed 0
   }
  }
@@ -478,6 +479,9 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
   }
  }
 }
+GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
+ coords 6738.586 55.678 7093.269
+}
 $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
  {
   coords 4286.789 51.889 4428.566
@@ -574,35 +578,68 @@ $grp CRF_MissionMarker : "{C44FD776546321F2}PrefabsEditable/Markers/ObjectiveMar
   m_sDescription "Defend 2S1 Battery"
  }
 }
-PolylineShapeEntity : "{FE33610F66DBCB07}DrawLinePrefab.et" {
- components {
-  CRF_PolyZone "{671626BD5DA5AE25}" {
-   m_cPolygonBorderColor 0 0 0 1
-   m_fPolygonBorderWidth 5
-   m_aVisibleForFactions {
-    "BLUFOR"
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4838.857 0 5752.158
+ angles 0 0 0
+ m_bJustText 1
+ m_MarkerColor 0 0 0 1
+ m_fWorldSize 100
+ m_sDescription "DZ OMEGA"
+}
+$grp PolylineShapeEntity : "{FE33610F66DBCB07}DrawLinePrefab.et" {
+ {
+  components {
+   CRF_PolyZone "{671626BD5DA5AE25}" {
+    m_cPolygonBorderColor 0 0 0 1
+    m_fPolygonBorderWidth 8
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+  coords 4587.31 68.071 5508.714
+  Points {
+   ShapePoint "{671626B3BAB2F3E6}" {
+    Position 3.813 0 -11.03
+   }
+   ShapePoint "{671626B3B5C85A44}" {
+    Position 70.889 0 61.834
+   }
+   ShapePoint "{671626B3AD7F69A1}" {
+    Position 1007.438 0 -1001.722
+   }
+   ShapePoint "{671626B3ABECB670}" {
+    Position 755.139 0 -1267.869
+   }
+   ShapePoint "{671626B3A5FE9605}" {
+    Position -163.098 0 -188.477
+   }
+   ShapePoint "{671626B3A33ED521}" {
+    Position 3.744 0 -10.969
    }
   }
  }
- coords 4587.31 68.071 5508.714
- Points {
-  ShapePoint "{671626B3BAB2F3E6}" {
-   Position 3.813 0 -11.03
+ {
+  components {
+   CRF_PolyZone "{671626BD5DA5AE25}" {
+    m_cPolygonBorderColor 0 0 0 1
+    m_fPolygonBorderWidth 8
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
   }
-  ShapePoint "{671626B3B5C85A44}" {
-   Position 70.889 0 61.834
-  }
-  ShapePoint "{671626B3AD7F69A1}" {
-   Position 1007.438 0 -1001.722
-  }
-  ShapePoint "{671626B3ABECB670}" {
-   Position 755.139 0 -1267.869
-  }
-  ShapePoint "{671626B3A5FE9605}" {
-   Position -163.098 0 -188.477
-  }
-  ShapePoint "{671626B3A33ED521}" {
-   Position 3.744 0 -10.969
+  coords 4819.88 0 5574.47
+  Points {
+   ShapePoint "{671742D1A7280A1E}" {
+    Position -162.135 0 -4.849
+   }
+   ShapePoint "{671742D19CE69513}" {
+    Position -90.023 0 143.854
+   }
+   ShapePoint "{671742D1983589D1}" {
+    Position 174.451 0 142.222
+   }
   }
  }
 }
