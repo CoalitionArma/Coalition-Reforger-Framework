@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A3B8E3FEC2E2D001}Sounds/CCOBackground.acp"
+ Configurations {
+  AudioProjectResourceClass PC {
+  }
+  AudioProjectResourceClass XBOX_ONE : PC {
+  }
+  AudioProjectResourceClass XBOX_SERIES : PC {
+  }
+  AudioProjectResourceClass PS4 : PC {
+  }
+  AudioProjectResourceClass PS5 : PC {
+  }
+  AudioProjectResourceClass HEADLESS : PC {
+  }
+  AudioProjectResourceClass Xbox : PC {
+  }
+ }
+}

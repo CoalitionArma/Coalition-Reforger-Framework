@@ -1,0 +1,13 @@
+LightEntity : "{8E0D13E02E4229A2}Prefabs/Vehicles/Core/Lights/VehicleLight_Head_Base.et" {
+ ID "514ED7499ABC27FE"
+ components {
+  LightSourceVisualizationObject "{6709684672C97750}" {
+   Size 10
+   Color 0 0.4356 0.0065 1
+   LV 20
+  }
+ }
+ Color 0 0.4356 0.0065 1
+ ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+ VolLightOffset 0.2
+}
