@@ -27,10 +27,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
    "BLUFOR Assets:"\
    "Airborn"\
+   "MMG"\
+   "ENGI"\
    ""\
    "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
    "OPFOR Assets:"\
-   "2x GAZ PKM Trucks"\
+   "2x MMG"\
    ""\
    "Time: 0515"\
    ""\
@@ -143,33 +145,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
        SCR_CallsignInfo "{671626B7C79637D0}" {
-        m_sCallsign "MMG"
+        m_sCallsign "MMG 1"
        }
        SCR_CallsignInfo "{671626B7C312F614}" {
-        m_sCallsign "Gun Truck 1 (GAZ)"
-       }
-       SCR_CallsignInfo "{671626B7C3DDB7C0}" {
-        m_sCallsign "Gun Truck 2 (GAZ)"
+        m_sCallsign "MMG 2"
        }
       }
       m_aGroupFrequencyOverrides {
        CVON_GroupFrequencyContainer "{671626B75513A9E4}" {
         m_aGroupNames {
-         "Gun Truck 1 (GAZ)"
+         "MMG 2"
         }
         m_aSRFrequencies {
-         "Gun Truck 1 (GAZ)"
-        }
-        m_aLRFrequencies {
-         "1PLT"
-        }
-       }
-       CVON_GroupFrequencyContainer "{671626B755BCBE6B}" {
-        m_aGroupNames {
-         "Gun Truck 2 (GAZ)"
-        }
-        m_aSRFrequencies {
-         "Gun Truck 2 (GAZ)"
+         "MMG 2"
         }
         m_aLRFrequencies {
          "1PLT"

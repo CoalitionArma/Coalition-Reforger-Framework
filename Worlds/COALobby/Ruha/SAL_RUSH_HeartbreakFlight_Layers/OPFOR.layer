@@ -1,17 +1,3 @@
-$grp CRF_VehicleSpawner {
- {
-  coords 5041.207 56.676 4025
-  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
-  m_sFactionKey "OPFOR"
-  m_iTicketsPerRespawn 0
- }
- {
-  coords 5041.879 56.721 4032.61
-  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
-  m_sFactionKey "OPFOR"
-  m_iTicketsPerRespawn 0
- }
-}
 GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
  coords 5061.089 56.653 4039.383
 }
@@ -97,18 +83,20 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
           "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
          }
          {
-          SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-           coords 17.974 -0.038 5.156
-           m_aUnitPrefabSlots +{
-            "{CF0D98BF4CA5E97F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"
-           }
-           {
-            SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-             coords 9.028 0.006 2.007
-             m_aUnitPrefabSlots +{
-              "{CF0D98BF4CA5E97F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"
-             }
+          SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
             }
+           }
+           coords -3.372 -0.052 0.576
+           m_aUnitPrefabSlots {
+            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+            "{CF0D98BF4CA5E97F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"
+            "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et"
+            "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
+            "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et"
+            "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
            }
           }
          }
