@@ -7,12 +7,16 @@ class CRF_BushMovementComponent: ScriptComponent
 	[Attribute(params: "et")]
 	ref array<ResourceName> m_aBushPrefabs;
 	
-	float m_fOriginalSpeed = 0;
+	
+	float m_fOldMovementDamage = 0;
+	float m_fAppliedBushDamage = 0;
+	const float BUSH_DISTANCE_SQ = 6.25; // 2.5 * 2.5
 	bool m_bEffectsApplied = false;
 	bool m_bEffectsAppliedThisFrame = false;
 	vector m_vOriginThisFrame;
 	protected SCR_CharacterControllerComponent m_CharacterController;
 	protected SCR_CharacterDamageManagerComponent m_DamageManager;
+	protected SCR_HintManagerComponent m_HintManager;
 	
 	void RegisterEntity()
 	{
@@ -22,6 +26,7 @@ class CRF_BushMovementComponent: ScriptComponent
 		
 		m_CharacterController = SCR_CharacterControllerComponent.Cast(GetOwner().FindComponent(SCR_CharacterControllerComponent));
 		m_DamageManager = SCR_CharacterDamageManagerComponent.Cast(GetOwner().FindComponent(SCR_CharacterDamageManagerComponent));
+		m_HintManager = SCR_HintManagerComponent.GetInstance();
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
 	
@@ -58,10 +63,7 @@ class CRF_BushMovementComponent: ScriptComponent
 	
 	bool IsBush(int soundType)
 	{
-		if (soundType >= 7 || soundType == 1)
-			return true;
-		else
-			return false;
+		return (soundType >= 7 || soundType == 1);
 	}
 	
 	bool BushCheckCallback(IEntity entity)
@@ -75,8 +77,8 @@ class CRF_BushMovementComponent: ScriptComponent
 		
 		//2.5 because query entity sphere fucking lies, thanks BI
 		//Good balance between outside of bush/inside
-		if (vector.Distance(m_vOriginThisFrame, entity.GetOrigin()) >= 2.5)
-			return true;
+		if (vector.DistanceSq(m_vOriginThisFrame, entity.GetOrigin()) >= BUSH_DISTANCE_SQ)
+    		return true;
 		
 		ApplyBushEffects();
 			
@@ -85,25 +87,56 @@ class CRF_BushMovementComponent: ScriptComponent
 	
 	void ResetBushEffects()
 	{
-		m_DamageManager.SetMovementDamage(0);
+		m_bEffectsApplied = false;
+	
+		// restore whatever the engine value was (including any injury/heal changes we captured)
+		m_DamageManager.SetMovementDamage(m_fOldMovementDamage);
+	
+		m_fOldMovementDamage = 0;
+		m_fAppliedBushDamage = 0;
 	}
+
 	
 	void ApplyBushEffects()
 	{
-		m_bEffectsAppliedThisFrame = true;
-		m_bEffectsApplied = true;
 		if (m_CharacterController.GetStance() == ECharacterStance.PRONE)
 		{
 			m_CharacterController.SetStanceChange(2);
-			SCR_HintManagerComponent hintManager = SCR_HintManagerComponent.GetInstance();
-			if (hintManager)
-			{
-			    hintManager.ShowCustomHint("Can't prone here mf", "Too thicc", 10);
-			}
+			if (m_HintManager)
+				m_HintManager.ShowCustomHint("Can't prone here mf", "Too thicc", 10);
 		}
-		
-		m_DamageManager.SetMovementDamage(0.5);
+	
+		// Read current engine movement damage BEFORE we override it
+		float current = m_DamageManager.GetMovementDamage();
+	
+		// First time entering bush: cache baseline
+		if (!m_bEffectsApplied)
+		{
+			m_fOldMovementDamage = current;
+		}
+		else
+		{
+			// If the engine changed movement damage since our last override (injury/heal), update baseline
+			// If it's identical to what we applied, assume nothing changed.
+			if (Math.AbsFloat(current - m_fAppliedBushDamage) > 0.001)
+				m_fOldMovementDamage = current;
+		}
+	
+		// Enforce "bush minimum"
+		float desired = m_fOldMovementDamage;
+		if (desired < 0.5)
+			desired = 0.5;
+	
+		// Only set if needed
+		if (Math.AbsFloat(current - desired) > 0.001)
+			m_DamageManager.SetMovementDamage(desired);
+	
+		m_fAppliedBushDamage = desired;
+	
+		m_bEffectsAppliedThisFrame = true;
+		m_bEffectsApplied = true;
 	}
+
 	
 	//Extra redundancy incase something fucking insane happens
 	void ~CRF_BushMovementComponent()
