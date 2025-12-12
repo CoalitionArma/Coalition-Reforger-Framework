@@ -44,6 +44,27 @@ modded class SCR_PlayerController
 			if (charController.IsDead())
 				from.GetTransform(m_vPlayersLastDeath);
 		}
+		
+		if (!Replication.IsServer())
+		{
+			if (from)
+			{
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(from.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.UnregisterEntity();
+			}
+			
+			if (to)
+			{
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(to.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.RegisterEntity();
+			}
+		}
 	}
 	
 	/**
