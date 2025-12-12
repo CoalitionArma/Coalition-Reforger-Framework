@@ -1,6 +1,8 @@
 // Prevents map markers from being deleted when a player disconnects
 modded class SCR_MapMarkerManagerComponent
 {
+	// Maximum distance (in meters) to share markers with nearby players
+	static const float MARKER_SHARE_DISTANCE = 8.0;
 	ref map<int, ref array<int>> m_MarkersSharedReference = new map<int, ref array<int>>; 
 	SCR_PlayerController m_PlayerController;
 	protected int m_iCachedLocalPlayerId = -1;
@@ -51,9 +53,9 @@ modded class SCR_MapMarkerManagerComponent
 			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 			if (safestartMan && gamemode && playerFaction)
 				if (safestartMan.GetSafestartStatus() && marker.GetMarkerOwnerID() == playerId)
-					pc.SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
 				else if (!gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()) && marker.GetMarkerOwnerID() == playerId)
-					pc.SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
 		}
 		
 		super.OnAddSynchedMarker(marker);

@@ -31,7 +31,7 @@ modded class SCR_PlayerControllerCommandingComponent
 	
 	void ShareMapMarkers()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).ShareMapMarkers();
+		CRF_RplToAuthorityManager.GetInstance().ShareMapMarkers();
 	}
 	
 	void CheckIfValidSpawn()
