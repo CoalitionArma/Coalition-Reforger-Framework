@@ -1,23 +1,62 @@
 // Prevents map markers from being deleted when a player disconnects
 modded class SCR_MapMarkerManagerComponent
 {
+	// Maximum distance (in meters) to share markers with nearby players
+	static const float MARKER_SHARE_DISTANCE = 8.0;
+	ref map<int, ref array<int>> m_MarkersSharedReference = new map<int, ref array<int>>; 
 	SCR_PlayerController m_PlayerController;
 	protected int m_iCachedLocalPlayerId = -1;
+	
+	void UpdateSharedMarkers(array<int> markers, int playerId)
+	{
+		array<int> currentMarkers = m_MarkersSharedReference.Get(playerId);
+		foreach (int markerUID: markers)
+		{
+			if (currentMarkers.Contains(markerUID))
+				continue;
+			
+			currentMarkers.Insert(markerUID);
+		}
+	}
+	
+	override void OnPlayerConnected(int playerId)
+	{
+		super.OnPlayerConnected(playerId);
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		if (!pc)
+			return;
+		
+		array<int> markers = m_MarkersSharedReference.Get(playerId);
+		if (!markers)
+		{
+			m_MarkersSharedReference.Set(playerId, new array<int>);
+			return;
+		}
+		
+		if (markers.Count() == 0)
+			return;
+
+		pc.ShareMarker(markers);
+	}
 	
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
 	{								
 		CRF_SafestartManager safestartMan = CRF_SafestartManager.GetInstance();	
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		Faction playerFaction;
-		if (factionMan)
-			playerFaction = factionMan.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (safestartMan && gamemode && playerFaction)
-			if (safestartMan.GetSafestartStatus())
-				marker.m_bIsShared = true;
-			else if (!gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()))
-				marker.m_bIsShared = true;
-		
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if (pc)
+		{
+			int playerId = pc.GetPlayerId();
+			Faction playerFaction;
+			if (factionMan)
+				playerFaction = factionMan.GetPlayerFaction(playerId);
+			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+			if (safestartMan && gamemode && playerFaction)
+				if (safestartMan.GetSafestartStatus() && marker.GetMarkerOwnerID() == playerId)
+					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+				else if (!gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()) && marker.GetMarkerOwnerID() == playerId)
+					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+		}
 		
 		super.OnAddSynchedMarker(marker);
 		

@@ -9,6 +9,11 @@ SCR_ChimeraCharacter {
    InputAimLimits 0 0
    DeathTimer 10
   }
+  CRF_BushMovementComponent "{6718339807F660CA}" {
+   m_aBushPrefabs {
+    "{C98A6C1C2372354E}Prefabs/Vegetation/Bush/b_corylus_avellana_1.et"
+   }
+  }
   CRF_PolyZoneEffectHandler "{658642B682EA66C8}" {
   }
   SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
