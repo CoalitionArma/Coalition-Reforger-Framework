@@ -104,4 +104,10 @@ class CRF_BushMovementComponent: ScriptComponent
 		
 		m_DamageManager.SetMovementDamage(0.5);
 	}
+	
+	//Extra redundancy incase something fucking insane happens
+	void ~CRF_BushMovementComponent()
+	{
+		UnregisterEntity();
+	}
 }
