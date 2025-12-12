@@ -6,9 +6,6 @@ class CRF_BulletTracerContainer
 
 modded class SCR_PlayerController
 {
-	// Maximum distance (in meters) to share markers with nearby players
-	protected const float MARKER_SHARE_DISTANCE = 8.0;
-	
 	bool m_bIsBulletTrackingEnabled = false;
 	ref array<ref CRF_BulletTracerContainer> m_aActiveTraces = {};
 	bool m_bIsListeningToSpec = false;
@@ -178,64 +175,31 @@ modded class SCR_PlayerController
 		SCR_Global.TeleportPlayer(GetPlayerId(), location);
 	}
 	
-	void ShareMapMarkers()
+	void SharerMarkerGlobal(int markerUID)
+	{
+		Rpc(RpcDo_SharerMarkerGlobal, markerUID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_SharerMarkerGlobal(int markerUID)
 	{
 		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
 		if (!mapMarkersMan)
 			return;
 		
-		array<int> markerUIDs = {};
+		bool markersUpdated = false;
 		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
 		{
-			markerUIDs.Insert(marker.GetMarkerID());
+			if (marker.GetMarkerID() == markerUID && !marker.m_bIsShared)
+			{
+				marker.m_bIsShared = true;
+				markersUpdated = true;
+			}
 		}
 		
-		Rpc(RpcAsk_ShareMapMarkers,markerUIDs, GetPlayerId());
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
-	{
-		PlayerManager pm = GetGame().GetPlayerManager();
-		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
-		if (!playerEntity)
-			return;
-		
-		// Get the faction of the sharing player
-		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		if (!factionMan)
-			return;
-			
-		Faction sharingPlayerFaction = factionMan.GetPlayerFaction(playerId);
-		if (!sharingPlayerFaction)
-			return;
-		
-		array<int> playerIds = {};
-		pm.GetPlayers(playerIds);
-		foreach (int otherPlayerId: playerIds)
-		{
-			if (otherPlayerId == playerId)
-				continue;
-			
-			IEntity entity = pm.GetPlayerControlledEntity(otherPlayerId);
-			if (!entity)
-				continue;
-			
-			// Check distance - only share with nearby players
-			if (vector.Distance(playerEntity.GetOrigin(), entity.GetOrigin()) > MARKER_SHARE_DISTANCE)
-				continue;
-			
-			// Check faction - only share with same faction players
-			Faction otherPlayerFaction = factionMan.GetPlayerFaction(otherPlayerId);
-			if (!otherPlayerFaction || otherPlayerFaction != sharingPlayerFaction)
-				continue;
-			
-			SCR_PlayerController otherController = SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
-			if (!otherController)
-				continue;
-				
-			otherController.ShareMarker(markerUIDs);
-		}
+		// Only update visibility if any markers were actually changed
+		if (markersUpdated)
+			mapMarkersMan.UpdateAllMarkerVisibilities();
 	}
 	
 	void ShareMarker(array<int> markerUIDs)
