@@ -295,7 +295,10 @@ class CRF_PlayableCharacter : ScriptComponent
 		}
 		else
 		{
-			UpdateSpectatorPosition();
+			if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && m_Gamemode.m_bUseAAR)
+				UpdateSpectatorPosition();
+			else
+				UpdateGamePlayerPosition();
 		}
 	}
 	
