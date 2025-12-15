@@ -1,0 +1,43 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2666.866 31.689 3596.575
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{671D7084CDDDCE42}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "INDFOR"
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Heavy Thunderstorm"
+     m_iStartingHour 8
+    }
+   }
+  }
+ }
+ coords 2674.32 19.83 3599.406
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Multiple bases of operations for a rebel group has been discovered within the forests, with the majority of the Russian army fighting NATO forces pushing towards Zarichne from the south. A Russian militia is being deployed instead to deal with the rebel bases."\
+   ""\
+   "OPFOR Composition: Motorized infantry Company"\
+   "OPFOR Assets: None"\
+   ""\
+   "INDFOR Composition: Infantry Platoon"\
+   "INDFOR Assets: 1x FPV Drone and 1x MMG"\
+   ""\
+   "Time: 8:00 AM"\
+   ""\
+   "Weather: Heavy Thunderstorm"
+  }
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{07DC48CBB4EE65D5}Configs/Gearscripts/Custom/Yoko/CRF_GS_RUS_MIL.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{B0615BC5DB754083}Configs/Gearscripts/Custom/Yoko/CRF_GS_MOD_Rebels_Yoko.conf"
+ }
+}
