@@ -11,8 +11,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Heavy Thunderstorm"
-     m_iStartingHour 8
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 2
     }
    }
   }
@@ -29,7 +29,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "INDFOR Composition: Infantry Platoon"\
    "INDFOR Assets: 1x FPV Drone and 1x MMG"\
    ""\
-   "Time: 8:00 AM"\
+   "Time: 2:00 AM"\
    ""\
    "Weather: Heavy Thunderstorm"
   }

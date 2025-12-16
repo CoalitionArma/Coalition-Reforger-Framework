@@ -2,28 +2,28 @@ PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsEditable/PolyZone/IndforForwardD
  coords 2165.99 12.939 3491.526
  Points {
   ShapePoint "{671E0707976174FF}" {
-   Position -43.177 -0 -119.017
+   Position -43.177 0 -119.017
   }
   ShapePoint "{671E070799AB1F67}" {
-   Position -83.34 -0 19.992
+   Position -83.34 0 19.992
   }
   ShapePoint "{671E07079B7FE176}" {
-   Position -28.084 -0 85.598
+   Position -28.084 0 85.598
   }
   ShapePoint "{671E07078BF4B558}" {
-   Position 101.767 -0 176.289
+   Position 101.767 0 176.289
   }
   ShapePoint "{671E07078C9EAA9B}" {
    Position 163.603 0 184.007
   }
   ShapePoint "{671E07078F0E60FE}" {
-   Position 221.629 -0 159.058
+   Position 221.629 0 159.058
   }
   ShapePoint "{671E0707B1DEFDC9}" {
-   Position 248.478 -0 -64.514
+   Position 248.478 0 -64.514
   }
   ShapePoint "{671E0707B3830D3C}" {
-   Position 103.843 -0 -73.709
+   Position 103.843 0 -73.709
   }
  }
 }
