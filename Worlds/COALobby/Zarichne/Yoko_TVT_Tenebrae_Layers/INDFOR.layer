@@ -8,9 +8,6 @@ SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
   SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
    coords 4.966 0.069 9.265
    angles 0 -125.326 0
-   m_aUnitPrefabSlots +{
-    "{06E225B70C43C545}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_DroneOp_P.et"
-   }
    {
     SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
      coords -0.373 1.625 36.023

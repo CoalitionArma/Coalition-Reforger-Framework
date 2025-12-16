@@ -28,10 +28,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A Rebel Commander has recently taken contorl of the city of Zarichne. US Special Forces have be tasked with his assassination."\
+   m_sTextData "A Rebel Commander has recently taken control of the city of Zarichne. US Special Forces have be tasked with his assassination."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
-   "BLUFOR Assets: 2x MMG and 1x MATT"\
+   "BLUFOR Assets: 2x MMG and 1x MATT and 1x Drone Operator"\
    ""\
    "INDFOR Composition: Motorized Infantry Platoon"\
    "INDFOR Assets: 2x BTR"\
