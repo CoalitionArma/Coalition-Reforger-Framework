@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Multiple bases of operations for a rebel group has been discovered within the forests, with the majority of the Russian army fighting NATO forces pushing towards Zarichne from the south. A Russian militia is being deployed instead to deal with the rebel bases."\
+   m_sTextData "Multiple bases of operations belonging to a rebel group has been discovered within the forests, with the majority of the Russian army fighting NATO forces pushing towards Zarichne from the south. A Russian militia is being deployed instead to deal with the rebel bases."\
    ""\
    "OPFOR Composition: Motorized infantry Company"\
    "OPFOR Assets: None"\
@@ -31,9 +31,23 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "Time: 2:00 AM"\
    ""\
-   "Weather: Heavy Thunderstorm"
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destroy the MCOMs in order."\
+   ""\
+   "Respawn after each MCOM in gone."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend the MOCOMs in order."\
+   ""\
+   "Respawns after each MCOM is gone."
   }
  }
+ m_iFactionOneRatio 4
+ m_sFactionOneKey "OPF"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "IND"
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{07DC48CBB4EE65D5}Configs/Gearscripts/Custom/Yoko/CRF_GS_RUS_MIL.conf"
  }
