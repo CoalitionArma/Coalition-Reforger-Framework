@@ -28,32 +28,39 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A Rebel Commander has recently taken control of the city of Zarichne. US Special Forces have be tasked with his assassination."\
+   m_sTextData "A Rebel Commander has recently taken control of the city of Zarichne. US Special Forces have be tasked with his assassination. The commander has caught wind of this assassinatation attempt and has requested an EVAC Team to come for him to try and get him out of the city."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
-   "BLUFOR Assets: 2x MMG and 1x MATT and 1x Drone Operator"\
+   "BLUFOR Assets: 1x MMG, 2x MATT, 1x Sniper Team and 1x Drone Operator"\
    ""\
    "INDFOR Composition: Motorized Infantry Platoon"\
-   "INDFOR Assets: 2x BTR"\
+   "INDFOR Assets: 4x BTR70"\
    ""\
    "Time: 12:00 A.M"\
    ""\
    "Weather: Heavy Wet Fog"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Kill the Commander."\
+   m_sTextData "Kill the Commander before his EVAC Team arrives and takes him to the EVAC Point."\
    ""\
-   "He is armed and dangerous."
+   "He is armed and dangerous."\
+   ""\
+   "We do not know where his EVAC Team is coming from nor do we know which is the correct Extraction Point. We do know that the HVT will be leaving this region via helicoptor, so the correct extraction point must have a helicoptor at it."\
+   ""
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "Defend your Commander."\
+   m_sTextData "Defend your Commander until the EVAC Team arrives."\
    ""\
    "Suggested Defensive postions marked in red."\
    ""\
-   "Emplacments marked in black."
+   "Emplacments marked in black."\
+   ""\
+   "Once the EVAC Team arrives you are allowed to leave your AO Limit and get the Commander to the EVAC Point."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "When playing the HVT, you consider highest in command for INDFOR."
+   m_sTextData "When playing the HVT, you consider highest in command for INDFOR. Also when you spawn in as the HVT please pick up the stack of files infront of the green UAZ"\
+   ""\
+   ""
   }
  }
  m_sFactionOneKey "BLU"
@@ -75,10 +82,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{6710522CFAFCACDA}" {
-        m_sCallsign "MMG"
+        m_sCallsign "MATT 1"
        }
        SCR_CallsignInfo "{6710522CE43F67C1}" {
-        m_sCallsign "MATT"
+        m_sCallsign "MATT 2"
+       }
+       SCR_CallsignInfo "{67234267478ABA43}" {
+        m_sCallsign "Recon"
        }
       }
      }
@@ -102,13 +112,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Cell 3"
        }
        SCR_CallsignInfo "{6710522CC78E2F8E}" {
-        m_sCallsign "Cell 4"
+        m_sCallsign "EVAC Team"
        }
        SCR_CallsignInfo "{6710522CCBFAA6A7}" {
         m_sCallsign "Crew 1 (BTR)"
        }
        SCR_CallsignInfo "{6710522CCB10A67E}" {
         m_sCallsign "Crew 2 (BTR)"
+       }
+       SCR_CallsignInfo "{6723426F7120EFF3}" {
+        m_sCallsign " Crew 3 (BTR)"
+       }
+       SCR_CallsignInfo "{6723426F790324F2}" {
+        m_sCallsign "Crew 4 (BMP1)"
        }
       }
      }
@@ -118,7 +134,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
 }
 SCR_BaseTriggerEntity INTEL {
- coords 1500.898 20.523 2211.198
+ coords 1520.851 20.288 2191.272
+}
+CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsEditable/Markers/ObjectiveMarkers/INDFORObjectiveMarker.et" {
+ coords 1810.219 15.395 380.252
+ angles 0 0 0
+ m_MarkerColor 1 0 0 1
+ m_fWorldSize 200
+ m_sMissionMarkerDescription "EXTRACTION POINT"
 }
 $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
@@ -283,5 +306,31 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
     }
    }
   }
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ {
+  coords 540.883 16.484 2553.017
+  angles 0 0 0
+  m_fWorldSize 200
+  m_sMissionMarkerDescription "EXTRACTION POINT?"
+ }
+ {
+  coords 1188.262 6.418 3433.386
+  angles 0 0 0
+  m_fWorldSize 200
+  m_sMissionMarkerDescription "EXTRACTION POINT?"
+ }
+ {
+  coords 1814.932 15.298 377.903
+  angles 0 0 0
+  m_fWorldSize 200
+  m_sMissionMarkerDescription "EXTRACTION POINT?"
+ }
+ {
+  coords 2362.56 6.677 969.585
+  angles 0 0 0
+  m_fWorldSize 200
+  m_sMissionMarkerDescription "EXTRACTION POINT?"
  }
 }

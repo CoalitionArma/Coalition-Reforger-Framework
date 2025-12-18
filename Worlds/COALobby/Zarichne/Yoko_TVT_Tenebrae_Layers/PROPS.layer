@@ -45,8 +45,8 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
   angles 0 150.145 0
  }
  {
-  coords 1516.814 19.776 2159.243
-  angles 0 64.662 0
+  coords 1527.306 20.602 2190.658
+  angles 0 -121.682 0
  }
  {
   coords 1387.962 20.626 2434.182
@@ -63,6 +63,22 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
  {
   coords 1356.554 20.659 2520.489
   angles 0 151.632 0
+ }
+ {
+  coords 1610.564 20.219 2173.321
+  angles 0 -29.747 0
+ }
+ {
+  coords 220.511 59.57 4518.219
+  angles 0 81.648 0
+ }
+ {
+  coords 1830.396 15.171 391.798
+  angles 0 46.271 0
+ }
+ {
+  coords 1794.909 15.768 368.522
+  angles 0 -108.242 0
  }
 }
 GenericEntity : "{8C73F42FBAB6D9D7}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_02.et" {
@@ -133,6 +149,10 @@ $grp GenericEntity : "{9751583B234C4202}Prefabs/Compositions/Misc/SubComposition
   coords 1432.527 21.288 2214.939
   angles -0.185 146.044 0.113
  }
+}
+GenericEntity : "{9A783CC8688290E1}Prefabs/Compositions/Slotted/SlotFlatLarge/COAL_Helipad_L_01.et" {
+ coords 1813.273 15.786 373.108
+ angles 0 94.246 0
 }
 $grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
  {
@@ -292,6 +312,22 @@ $grp GenericEntity : "{A80F0848BFF11327}Prefabs/Structures/Infrastructure/Lamps/
  {
   coords 1430.37 0.142 2338.635
   angles 0 -158.305 0
+ }
+ {
+  coords 1647.682 -0 2231.525
+  angles 0 43.117 0
+ }
+ {
+  coords 1648.609 0 2245.742
+  angles 0 -153.023 0
+ }
+ {
+  coords 1683.891 0.001 2234.555
+  angles 0 -153.023 0
+ }
+ {
+  coords 1652.997 0.001 2211.202
+  angles 0 27.974 0
  }
 }
 $grp GenericEntity : "{B31A14BC1A0E7776}Prefabs/Props/Military/Sandbags/Sandbag_01_round_burlap.et" {
@@ -494,6 +530,14 @@ $grp GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/
  {
   coords 1412.293 -1.016 2329.912
   angles 0 -112.932 0
+ }
+ {
+  coords 1538.872 0.001 2227.814
+  angles 0 154.362 0
+ }
+ {
+  coords 1606.372 -0.028 2246.275
+  angles 0 -64.978 0
  }
 }
 GenericEntity : "{BBBC235B9B053092}Prefabs/Props/Furniture/Armchair_02.et" {
