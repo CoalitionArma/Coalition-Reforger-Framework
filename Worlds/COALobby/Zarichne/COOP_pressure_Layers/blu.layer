@@ -1,0 +1,124 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 2154.851 20.624 4433.607
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 2107.808 16.859 4422.66
+ angles -0.895 0 -1.79
+ m_aUnitPrefabSlots +{
+  "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"
+  "{A49CC762AEE2A230}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_DroneOp_P.et"
+  "{A49CC762AEE2A230}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_DroneOp_P.et"
+ }
+ {
+  SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+   coords 43.91 4.214 25.533
+   angles -9.719 -0.336 1.821
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords 0.435 3.296 28.699
+     angles 6.999 -0.45 -5.404
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords -16.708 -0.982 39.78
+       angles -1.753 -0.282 1.806
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 24.37 0.369 -9.726
+         angles -2.646 0.3 -0.853
+         {
+          SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+           coords 8.119 -0.406 -20.159
+           angles 2.635 -0.071 -0.923
+           {
+            SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+             coords 10.053 -0.31 -17.533
+             angles 2.66 1.143 0.011
+             {
+              SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+               coords -13.03 -0.227 -6.636
+               angles 0.89 -0.001 0.004
+               {
+                SCR_AIGroup : "{E882CACEF106E15B}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_LogiTeam_p.et" {
+                 coords 13.923 -3.131 46.985
+                 angles -7.944 -0.119 0.859
+                 m_aUnitPrefabSlots {
+                  "{48FB5BBC1A942F28}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiLead_P.et"
+                  "{EB5C0AB8268A5C43}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiRunner_P.et"
+                  "{EB5C0AB8268A5C43}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiRunner_P.et"
+                 }
+                 {
+                  SCR_AIGroup : "{5F4B68E250ACF256}Prefabs/Groups/BLUFOR/Zeus/CRF_BLUFOR_Zeus.et" {
+                   coords -1.692 -2.427 40.727
+                   m_aUnitPrefabSlots {
+                    "{15992AA89FF4475A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Zeus_P.et"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 2158.76 21.218 4441.404
+}
+GenericEntity : "{649C26508301D3CC}Prefabs/Compositions/Slotted/SlotFlatMedium/COAL_FieldHospital_M_US_01.et" {
+ coords 2171.794 22.419 4438.045
+ angles 1.774 -0.166 -5.358
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 2125.373 18.132 4437.546
+ Points {
+  ShapePoint "{671D26C231CDC8AA}" {
+   Position 2.477 0 -40.718
+  }
+  ShapePoint "{671D26C2300EA25D}" {
+   Position -53.709 0 -46.838
+  }
+  ShapePoint "{671D26C237346E18}" {
+   Position -54.226 0 104.603
+  }
+  ShapePoint "{671D26C2361C22B9}" {
+   Position 130.139 -0 102.827
+  }
+  ShapePoint "{671D26C235FE7CD5}" {
+   Position 108.182 0 -27.13
+  }
+ }
+}
+Vehicle BLUFOR_AMMO1 : "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et" {
+ coords 2110.271 16.896 4442.902
+}
+$grp Vehicle : "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et" {
+ M1240A1_MATV_Turret_Green1 {
+  coords 2091.855 16.354 4428.612
+  angles 0 -93 0
+ }
+ M1240A1_MATV_Turret_Green2 {
+  coords 2101.862 16.56 4428.942
+  angles 0 -85 0
+ }
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport2 {
+  coords 2125.968 18.247 4446.302
+ }
+ M923A1_transport1 {
+  coords 2119.986 17.718 4445.305
+ }
+}
+Vehicle BLUFOR_ARSENAL1 : "{FF65607D073A8981}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ARSENAL.et" {
+ coords 2104.738 16.489 4441.684
+}
