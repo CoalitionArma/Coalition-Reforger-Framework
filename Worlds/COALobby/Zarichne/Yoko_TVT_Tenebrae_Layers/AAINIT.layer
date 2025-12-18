@@ -28,7 +28,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A Rebel Commander has recently taken control of the city of Zarichne. US Special Forces have be tasked with his assassination. The commander has caught wind of this assassinatation attempt and has requested an EVAC Team to come for him to try and get him out of the city."\
+   m_sTextData "A Rebel Commander has recently taken control of the city of Zarichne. US Special Forces have been tasked with his assassination. The commander has caught wind of this assassination attempt and has requested an EVAC Team to come for him to try and get him out of the city."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: 1x MMG, 2x MATT, 1x Sniper Team and 1x Drone Operator"\
