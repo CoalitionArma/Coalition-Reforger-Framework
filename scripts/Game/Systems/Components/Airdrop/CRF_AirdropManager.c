@@ -5,7 +5,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
 	static CRF_AirdropManager m_sInstance;
-	protected ref array<ref CRF_AirdropFlight> m_aFlights = {};
+	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -26,39 +26,20 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		array<string> playersInPlane = {""};
 		int playersAdded = 0;
 		PlayerManager pm = GetGame().GetPlayerManager();
-		foreach (SCR_AIGroup group: groups)
-		{
-			if (!group.GetFaction())
-				continue;
-			
-			if (group.GetFaction().GetFactionKey() != planeObject.m_sFactionKey)
-				continue;
-			
-			array<AIAgent> agents = {};
-			group.GetAgents(agents);
-			
-			if (agents.Count() == 0)
-				continue;
-			
+		foreach (int playerId: planeObject.m_aPlayerIds)
+		{			
 			//This group will put us past the 40 slots available in the plane, we gotta spawn another one
-			if (playersAdded + agents.Count() > 40)
+			if (playersAdded + 1 > 40)
 			{
 				planeIndex++;
 				playersAdded = 0;
 				playersInPlane.Insert("");
 			}
-			foreach (AIAgent agent: agents)
-			{
-				int playerId = pm.GetPlayerIdFromControlledEntity(agent.GetControlledEntity());
-				if (playerId <= 0)
-					continue;
 				
-				string currentPlayers = playersInPlane.Get(planeIndex);
-				currentPlayers += playerId.ToString() + "|";
-				playersInPlane.Set(planeIndex, currentPlayers);
-				playersAdded++;
-			}
-			
+			string currentPlayers = playersInPlane.Get(planeIndex);
+			currentPlayers += playerId.ToString() + "|";
+			playersInPlane.Set(planeIndex, currentPlayers);
+			playersAdded++;
 		}
 		
 		for (int i = 0; i <= planeIndex; i++)
@@ -77,9 +58,29 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		params.Transform[2] = angles[2];
 		params.Transform[3] = planeObject.m_vFlightCoordinates[0];
 		IEntity plane = GetGame().SpawnEntityPrefab(Resource.Load(planeObject.m_sPlane), null, params);
+		//Redundant but just in case
+		StreamPlaneIntoReplication(plane);
 		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 65);
 		//Delay so the flight has a chance to actual load the entity
-		GetGame().GetCallqueue().CallLater(TeleportPlayers, 500, false, players, SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent)), plane);
+		GetGame().GetCallqueue().CallLater(TeleportPlayers, 2000, false, players, SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent)), plane, flight);
+	}
+	
+	void StreamPlaneIntoReplication(IEntity plane)
+	{
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		RplComponent rplComp = RplComponent.Cast(plane.FindComponent(RplComponent));
+		if (!rplComp)
+			return;
+		
+		foreach (int playerId: playerIds)
+		{
+			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			if (!pc)
+				continue;
+
+			rplComp.EnableStreamingConNode(pc.GetRplIdentity(), false);
+		}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -96,14 +97,18 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			SCR_BaseInteractiveLightComponent.Cast(plane.FindComponent(SCR_BaseInteractiveLightComponent)).ToggleLight(true);
 	}
 	
-	void TeleportPlayers(string players, SlotManagerComponent slotMan, IEntity plane)
+		
+	void TeleportPlayers(string players, SlotManagerComponent slotMan, IEntity plane, CRF_AirdropFlight flight)
 	{
 		array<string> playerIds = {};
 		players.Split("|", playerIds, true);
 		int slotId = 0;
 		RplId planeRplId = RplComponent.Cast(plane.FindComponent(RplComponent)).Id();
+		PlayerManager pm = GetGame().GetPlayerManager();
 		foreach (int i, string playerId: playerIds)
 		{
+			//Let's delay adding them until the player has had time to teleport into the plane
+			GetGame().GetCallqueue().CallLater(flight.m_PlayersInPlane.Insert, 2000, false, pm.GetPlayerControlledEntity(playerId.ToInt()));
 			EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId.ToString());
 			vector transform[4];
 			slot.GetLocalTransform(transform);
@@ -154,24 +159,54 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		SCR_Global.TeleportPlayer(playerId, transform[3], SCR_EPlayerTeleportedReason.NONE);
 	}
 	
+	float m_fParachuteCheck = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
-		if (!m_aFlights)
+		if (!m_aFlightObjects)
 		{
 			ClearEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
 			return;
 		}
 		
-		if (m_aFlights.Count() == 0)
+		if (m_aFlightObjects.Count() == 0)
 		{
 			ClearEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
 			return;
 		}
 		
-		foreach (CRF_AirdropFlight flight: m_aFlights)
+		bool checkDeployParachutes = false;
+		if (m_fParachuteCheck >= 0.1)
 		{
+			checkDeployParachutes = true;
+			m_fParachuteCheck = 0;
+		}
+		else
+			m_fParachuteCheck += timeSlice;
+		foreach (CRF_AirdropFlight flight: m_aFlightObjects)
+		{
+			if (checkDeployParachutes)
+			{
+				PlayerManager pm = GetGame().GetPlayerManager();
+				foreach (int i, IEntity player: flight.m_PlayersInPlane)
+				{
+					int playerId = pm.GetPlayerIdFromControlledEntity(player);
+					if (playerId <= 0)
+						continue;
+					
+					SCR_CharacterControllerComponent charCon = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+					if (!charCon)
+						continue;
+
+					if (charCon.GetAnimationComponent().PhysicsIsLinked())
+						continue;
+					
+					ParachuteComponent.Cast(pm.GetPlayerController(playerId).FindComponent(ParachuteComponent)).RpcAskDeployParachute();
+					flight.m_PlayersInPlane.Remove(i);
+				}
+			}		
+			
 			if (flight.m_fProgress >= 2.0)
-            	m_aFlights.RemoveItem(flight);
+            	m_aFlightObjects.RemoveItem(flight);
 
 			float distance = vector.Distance(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3]);
 			float step = (flight.m_fSpeed * timeSlice) / distance;
@@ -236,7 +271,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 				delete slot.GetAttachedEntity();
 			
 			slot.GetWorldTransform(params.Transform);
-			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{22E711A4236A5FE4}PrefabsEditable/Auto/Props/RedLight.et"), null, params);
+			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{CA26D8A680895BBD}PrefabsEditable/Auto/Props/RedLightObject.et"), null, params);
 			slot.AttachEntity(light);
 		}
 		
@@ -262,7 +297,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 				delete slot.GetAttachedEntity();
 			
 			slot.GetWorldTransform(params.Transform);
-			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{134538EF4DD59327}PrefabsEditable/Auto/Props/GreenLight.et"), null, params);
+			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{7CBC56493AB0430E}PrefabsEditable/Auto/Props/GreenLightObject.et"), null, params);
 			slot.AttachEntity(light);
 		}
 		
@@ -286,7 +321,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	
 	void RegisterFlight(CRF_AirdropFlight flight)
 	{
-		m_aFlights.Insert(flight);
+		m_aFlightObjects.Insert(flight);
 		SetEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
 	}
 }
@@ -317,17 +352,20 @@ class CRF_AirdropFlight
 	float m_fProgress = 0;
 	float m_fSpeed;
 	float m_fGreenT;
+	ref array<IEntity> m_PlayersInPlane = {};
 }
 
 class CRF_AirdropObject
 {
-	void CRF_AirdropObject(string factionKey, ResourceName resourceName, vector flightCoordinates[4], float angle)
+	void CRF_AirdropObject(string factionKey, ResourceName resourceName, vector flightCoordinates[4], float angle, array<int> playerIds)
 	{
 		m_sFactionKey = factionKey;
 		m_sPlane = resourceName;
 		m_vFlightCoordinates = flightCoordinates;
 		m_fAngle = angle;
+		m_aPlayerIds = playerIds;
 	}
+	ref array<int> m_aPlayerIds = {};
 	string m_sFactionKey;
 	ResourceName m_sPlane;
 	float m_fAngle;

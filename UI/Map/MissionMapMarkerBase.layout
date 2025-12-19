@@ -1,4 +1,4 @@
-FrameWidgetClass "{66E816AFB0D707FC}" {
+FrameWidgetClass {
  Name "root"
  Slot FrameWidgetSlot "{5EC357C57F92C4C8}" {
   OffsetLeft 0
@@ -199,6 +199,62 @@ FrameWidgetClass "{66E816AFB0D707FC}" {
              IsPixelPerfect 0
             }
            }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass "{671742D2BE61E383}" {
+     Name "TextMarkerPanel"
+     Slot FrameWidgetSlot "{5EC357C312430E6F}" {
+      SizeToContent 1
+     }
+     Color 0 0 0 0
+     style full
+     {
+      PanelWidgetClass "{671742D2BE61E380}" {
+       Name "PanelBorder"
+       Slot FrameWidgetSlot "{5EC3651206FED4CB}" {
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -370.054
+        OffsetRight 370.054
+        SizeY 156.209
+        OffsetBottom -156.209
+        SizeToContent 1
+       }
+       Color 1 1 1 0
+       style outline_2px
+       {
+        OverlayWidgetClass "{671742D2BE61E381}" {
+         Name "Overlay"
+         Slot FrameWidgetSlot "{5EC357C0B094015A}" {
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX -370.054
+          OffsetRight 370.054
+          SizeY 156.209
+          OffsetBottom -156.209
+          SizeToContent 1
+         }
+         {
+          RichTextWidgetClass "{671742D2BE61E386}" {
+           Name "TextMarkerText"
+           Slot OverlayWidgetSlot "{5EC357C069D46CD2}" {
+            Padding 10 10 10 10
+           }
+           "Z Order" 1
+           Text "Test"
+           "Horizontal Alignment" Center
+           "Vertical Alignment" Center
+           "Shadow Offset" 3 3
+           "Shadow Size Increase" 2
           }
          }
         }

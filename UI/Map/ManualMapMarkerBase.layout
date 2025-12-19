@@ -128,6 +128,75 @@ FrameWidgetClass {
       }
      }
     }
+    PanelWidgetClass "{671742D722B982CB}" {
+     Name "TextMarkerPanel"
+     Slot FrameWidgetSlot "{5EC357C312430E6F}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 48.79
+      OffsetRight -48.79
+      SizeY 30
+      OffsetBottom -30
+      SizeToContent 1
+     }
+     Color 0 0 0 0
+     style full
+     {
+      PanelWidgetClass "{671742D722B982CA}" {
+       Name "PanelBorder"
+       Slot FrameWidgetSlot "{5EC3651206FED4CB}" {
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -370.054
+        OffsetRight 370.054
+        SizeY 156.209
+        OffsetBottom -156.209
+        SizeToContent 1
+       }
+       Color 1 1 1 0
+       style outline_2px
+       {
+        OverlayWidgetClass "{671742D722B982C9}" {
+         Name "Overlay"
+         Slot FrameWidgetSlot "{5EC357C0B094015A}" {
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX -370.054
+          OffsetRight 370.054
+          SizeY 156.209
+          OffsetBottom -156.209
+          SizeToContent 1
+         }
+         {
+          RichTextWidgetClass "{671742D722B96EA0}" {
+           Name "TextMarkerText"
+           Slot OverlayWidgetSlot "{5EC357C069D46CD2}" {
+            Padding 10 10 10 10
+           }
+           "Z Order" 1
+           Text "This is a good test"
+           "Min Font Size" 1
+           "Horizontal Alignment" Center
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{671742DCB621C668}" {
+            Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+            OutlineSize 4
+           }
+           "Shadow Offset" 3 3
+           "Shadow Size Increase" 2
+          }
+         }
+        }
+       }
+      }
+     }
+    }
    }
   }
  }

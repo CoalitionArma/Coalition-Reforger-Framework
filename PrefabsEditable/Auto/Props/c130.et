@@ -8,22 +8,28 @@ GenericEntity : "{172585DCA4F947FE}Prefabs/Props/Furniture/PhoneTable_01_khaki.e
     }
     EntitySlotInfo LightSlot0 {
      Offset 0.0952 5.4608 1.9087
+     Angles -90 0 0
     }
     EntitySlotInfo LightSlot2 {
      Offset 0.0952 5.4608 -1.8677
+     Angles -90 0 0
     }
     EntitySlotInfo LightSlot3 {
      Offset 0.0952 5.5316 -5.3704
+     Angles -90 0 0
     }
     EntitySlotInfo LightSlot4 {
      Offset 0.0952 5.6224 -11.2539
+     Angles -90 0 0
     }
     EntitySlotInfo LightSlot1 {
      Offset 0.0952 5.4608 4.9412
+     Angles -90 0 0
     }
    }
   }
   RplComponent "{5624A88DC2D9928D}" {
+   "Rpl State Override" Runtime
    SpatialRelevancy 0
    Streamable Disabled
   }

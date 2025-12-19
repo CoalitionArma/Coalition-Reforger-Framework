@@ -150,6 +150,9 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
  }
  m_PitchTorque 1
  m_RollTorque 1
- m_GlideDownPitch 4
- m_GlideUpPitch 5
+ m_MaxFallSpeed 10
+ m_GlideDownPitch 0.01
+ m_GlideUpPitch 0.01
+ m_MaxForwardSpeed 0.01
+ m_MaxTurnRate 0
 }

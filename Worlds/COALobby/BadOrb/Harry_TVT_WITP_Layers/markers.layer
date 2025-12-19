@@ -1,0 +1,75 @@
+GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ coords 4369.548 217.385 2650.045
+ angles 0 72.722 0
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 4376.905 308.457 1945.805
+ Points {
+  ShapePoint "{671202BC7BC7D94D}" {
+   Position 721.649 450.802 -1929.135
+  }
+  ShapePoint "{671202BC7FE91D3D}" {
+   Position -1343.394 364.943 -1927.674
+  }
+  ShapePoint "{671202BC478F78F4}" {
+   Position -1210.065 234.766 1396.362
+  }
+  ShapePoint "{671202BC4FE1DB73}" {
+   Position 640.12 406.713 1509.132
+  }
+ }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4279.928 218.521 2625.487
+ m_MarkerColor 0.502 0 0 1
+ m_sDescription "Forward Resupply"
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsEditable/PolyZone/BLUFORForwardDeployZone.et" {
+ coords 3891.218 410.254 890.766
+ Points {
+  ShapePoint "{671202BBE7352E2A}" {
+   Position -509.627 306.49 -129.308
+  }
+  ShapePoint "{671202BBC9BB1110}" {
+   Position -378.804 438.48 -23.432
+  }
+  ShapePoint "{671202BBC8A6C605}" {
+   Position -70.66 297.152 34.302
+  }
+  ShapePoint "{671202BBCFA1687C}" {
+   Position 134.406 355.396 104.153
+  }
+  ShapePoint "{671202BBE645738C}" {
+   Position 405.247 225.734 374.081
+  }
+  ShapePoint "{671202BBF2D75EB1}" {
+   Position 1113.89 186.828 408.251
+  }
+  ShapePoint "{671202BBF5EA65B2}" {
+   Position 1104.708 241.603 -376.692
+  }
+  ShapePoint "{671202BBFB511509}" {
+   Position -211.704 283.251 -558.578
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 4378.505 213.972 2685.73
+ Points {
+  ShapePoint "{671202BC2B2A64C9}" {
+   Position -164.844 0 296.627
+  }
+  ShapePoint "{671202BC2B4E0DEA}" {
+   Position 182.619 0 218.246
+  }
+  ShapePoint "{671202BC2A74E4FC}" {
+   Position 115.509 0 -224.087
+  }
+  ShapePoint "{671202BC2AC39A0A}" {
+   Position -178.201 0 -125.357
+  }
+ }
+}

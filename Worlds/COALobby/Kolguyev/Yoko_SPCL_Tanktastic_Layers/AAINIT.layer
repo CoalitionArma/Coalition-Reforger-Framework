@@ -1,0 +1,134 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 4406.058 50.35 3305.438
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 12
+  }
+ }
+ coords 4404.555 49.271 3319.132
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Tank Fight!"\
+   ""\
+   ""\
+   "Time: 12:00 PM"\
+   ""\
+   "Weather: Clear"
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Crew 1"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Crew 2"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Crew 3"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Crew 4"
+       }
+       SCR_CallsignInfo "{67252CAE6E42C277}" {
+        m_sCallsign "Crew 5"
+       }
+       SCR_CallsignInfo "{67252CAE6E7FC659}" {
+        m_sCallsign "Crew 6"
+       }
+       SCR_CallsignInfo "{67252CAE1195050C}" {
+        m_sCallsign "Crew 7"
+       }
+       SCR_CallsignInfo "{67252CAE11BA8F00}" {
+        m_sCallsign "Crew 8"
+       }
+       SCR_CallsignInfo "{67252CAE19408ED1}" {
+        m_sCallsign "Crew 9"
+       }
+       SCR_CallsignInfo "{67252CAE188E2482}" {
+        m_sCallsign "Crw 10"
+       }
+       SCR_CallsignInfo "{67252CAE18C4597C}" {
+        m_sCallsign "Crew 11"
+       }
+       SCR_CallsignInfo "{67252CAE180CB729}" {
+        m_sCallsign "Crew 12"
+       }
+       SCR_CallsignInfo "{67252CAE184444A6}" {
+        m_sCallsign "Crew 13"
+       }
+       SCR_CallsignInfo "{67252CAE304EAFC4}" {
+        m_sCallsign "Crew 14"
+       }
+       SCR_CallsignInfo "{67252CAE3069756A}" {
+        m_sCallsign "Crew 15"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Crew 1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Crew 2"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Crew 3"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Crew 4"
+       }
+       SCR_CallsignInfo "{67252CAD995852DB}" {
+        m_sCallsign "Crew 5"
+       }
+       SCR_CallsignInfo "{67252CAD99767715}" {
+        m_sCallsign "Crew 6"
+       }
+       SCR_CallsignInfo "{67252CAD989A0DF3}" {
+        m_sCallsign "Crew 7"
+       }
+       SCR_CallsignInfo "{67252CAD98BE5059}" {
+        m_sCallsign "Crew 8"
+       }
+       SCR_CallsignInfo "{67252CAD98C2443E}" {
+        m_sCallsign "Crew 9"
+       }
+       SCR_CallsignInfo "{67252CAD98F9860F}" {
+        m_sCallsign "Crew 10"
+       }
+       SCR_CallsignInfo "{67252CAD9818D846}" {
+        m_sCallsign "Crew 11"
+       }
+       SCR_CallsignInfo "{67252CAD983D3C2C}" {
+        m_sCallsign "Crew 12"
+       }
+       SCR_CallsignInfo "{67252CAD98411AAC}" {
+        m_sCallsign "Crew 13"
+       }
+       SCR_CallsignInfo "{67252CAD9B86417B}" {
+        m_sCallsign "Crew 14"
+       }
+       SCR_CallsignInfo "{67252CAD9B0C0AAE}" {
+        m_sCallsign "Crew 15"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

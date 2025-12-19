@@ -9,13 +9,16 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 	protected ImageWidget m_wMarkerIconGlow;
 	protected FrameWidget m_wMarkerFrame;
 	protected RichTextWidget m_wDescriptionText;
+	protected RichTextWidget m_wTextMarkerText;
 	protected PanelWidget m_wDescriptionPanel;
+	protected PanelWidget m_wTextMarkerPanel;
 	protected OverlayWidget m_wMarkerScrollLayout; // ...
 	
 	// Internal variables
 	protected string m_sDescription;
 	protected bool m_bHasGlow;
 	protected int m_iZOrder;
+	protected bool m_bJustText = false;
 	
 	// Cache every used widget after attaching to widget tree
 	override void HandlerAttached(Widget w)
@@ -26,6 +29,8 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 		m_wMarkerIconGlow = ImageWidget.Cast(w.FindAnyWidget("MarkerGlowIcon"));
 		m_wMarkerFrame = FrameWidget.Cast(w.FindAnyWidget("MarkerFrame"));
 		m_wDescriptionText = RichTextWidget.Cast(w.FindAnyWidget("DescriptionText"));
+		m_wTextMarkerText = RichTextWidget.Cast(w.FindAnyWidget("TextMarkerText"));
+		m_wTextMarkerPanel = PanelWidget.Cast(w.FindAnyWidget("TextMarkerPanel"));
 		m_wMarkerScrollLayout = OverlayWidget.Cast(w.FindAnyWidget("MarkerScrollLayout"));
 		m_wDescriptionPanel = PanelWidget.Cast(w.FindAnyWidget("DescriptionPanel"));
 	}
@@ -61,11 +66,14 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 		else
 			m_wMarkerIconGlow.LoadImageFromSet(0, m_sImageSet, quadName);
 	}
-	void SetDescription(string description)
+	void SetDescription(string description, bool justText)
 	{
 		m_sDescription = description;
-		
-		m_wDescriptionText.SetText(description);
+		m_bJustText = justText;
+		if (!justText)
+			m_wDescriptionText.SetText(description);
+		else
+			m_wTextMarkerText.SetText(description);
 	}
 	void SetColor(Color color)
 	{
@@ -110,31 +118,55 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 	// Update marker "Transform", called every frame
 	void SetSlot(float posX, float posY, float sizeX, float sizeY, float rotation)
 	{
-		FrameSlot.SetPos(m_wRoot, posX, posY);
+		if (m_bJustText)
+		{
+			FrameSlot.SetPos(m_wRoot, posX, posY);
 		
-		FrameSlot.SetPos(m_wMarkerIcon, -sizeX/2, -sizeY/2);
-		FrameSlot.SetSize(m_wMarkerIcon, sizeX, sizeY);
-		FrameSlot.SetPos(m_wMarkerIconGlow, -sizeX/2, -sizeY/2);
-		FrameSlot.SetSize(m_wMarkerIconGlow, sizeX, sizeY);
-		FrameSlot.SetPos(m_wMarkerScrollLayout, -sizeX/2, -sizeY/2);
-		FrameSlot.SetSize(m_wMarkerScrollLayout, sizeX, sizeY);
-		
-		float panelX, panelY;
-		m_wDescriptionPanel.GetScreenSize(panelX, panelY);
-		float panelXD = GetGame().GetWorkspace().DPIUnscale(panelX);
-		float panelYD = GetGame().GetWorkspace().DPIUnscale(panelY);
-		if (panelX == 0)
-			m_wDescriptionPanel.SetOpacity(0);
+			float panelX, panelY;
+			m_wTextMarkerPanel.GetScreenSize(panelX, panelY);
+			float panelXD = GetGame().GetWorkspace().DPIUnscale(panelX);
+			float panelYD = GetGame().GetWorkspace().DPIUnscale(panelY);
+			if (panelX == 0)
+				m_wTextMarkerPanel.SetOpacity(0);
+			else
+				m_wTextMarkerPanel.SetOpacity(1);
+			FrameSlot.SetPos(m_wTextMarkerPanel, -panelXD/2, -panelYD/2);
+			m_wMarkerIcon.SetVisible(false);
+			m_wMarkerIconGlow.SetVisible(false);
+			m_wDescriptionPanel.SetVisible(false);
+		}
 		else
-			m_wDescriptionPanel.SetOpacity(1);
-		FrameSlot.SetPos(m_wDescriptionPanel, -panelXD/2, -panelYD/2);
-		m_wMarkerIcon.SetRotation(rotation);
-		m_wMarkerIconGlow.SetRotation(rotation);
+		{
+			FrameSlot.SetPos(m_wRoot, posX, posY);
+		
+			FrameSlot.SetPos(m_wMarkerIcon, -sizeX/2, -sizeY/2);
+			FrameSlot.SetSize(m_wMarkerIcon, sizeX, sizeY);
+			FrameSlot.SetPos(m_wMarkerIconGlow, -sizeX/2, -sizeY/2);
+			FrameSlot.SetSize(m_wMarkerIconGlow, sizeX, sizeY);
+			FrameSlot.SetPos(m_wMarkerScrollLayout, -sizeX/2, -sizeY/2);
+			FrameSlot.SetSize(m_wMarkerScrollLayout, sizeX, sizeY);
+			
+			float panelX, panelY;
+			m_wDescriptionPanel.GetScreenSize(panelX, panelY);
+			float panelXD = GetGame().GetWorkspace().DPIUnscale(panelX);
+			float panelYD = GetGame().GetWorkspace().DPIUnscale(panelY);
+			if (panelX == 0)
+				m_wDescriptionPanel.SetOpacity(0);
+			else
+				m_wDescriptionPanel.SetOpacity(1);
+			FrameSlot.SetPos(m_wDescriptionPanel, -panelXD/2, -panelYD/2);
+			m_wMarkerIcon.SetRotation(rotation);
+			m_wMarkerIconGlow.SetRotation(rotation);
+			m_wTextMarkerPanel.SetVisible(false);
+		}
+		
 	}
 	
 	// Show/Hide description box
 	override bool OnMouseEnter(Widget w, int x, int y)
 	{
+		if (m_bJustText)
+			return true;
 		m_iZOrder = m_wRoot.GetZOrder();
 		m_wRoot.SetZOrder(10000);
 		if (m_bHasGlow) m_wMarkerIconGlow.SetVisible(true);
@@ -143,6 +175,8 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 	}
 	override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)
 	{
+		if (m_bJustText)
+			return true;
 		m_wRoot.SetZOrder(m_iZOrder);
 		m_wMarkerIconGlow.SetVisible(false);	
 		m_wDescriptionPanel.SetVisible(false);

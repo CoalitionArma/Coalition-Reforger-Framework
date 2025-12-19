@@ -41,6 +41,27 @@ modded class SCR_PlayerController
 			if (charController.IsDead())
 				from.GetTransform(m_vPlayersLastDeath);
 		}
+		
+		if (!Replication.IsServer())
+		{
+			if (from)
+			{
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(from.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.UnregisterEntity();
+			}
+			
+			if (to)
+			{
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(to.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.RegisterEntity();
+			}
+		}
 	}
 	
 	/**
@@ -153,4 +174,58 @@ modded class SCR_PlayerController
 	{
 		SCR_Global.TeleportPlayer(GetPlayerId(), location);
 	}
+	
+	void SharerMarkerGlobal(int markerUID)
+	{
+		Rpc(RpcDo_SharerMarkerGlobal, markerUID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_SharerMarkerGlobal(int markerUID)
+	{
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		bool markersUpdated = false;
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (marker.GetMarkerID() == markerUID && !marker.m_bIsShared)
+			{
+				marker.m_bIsShared = true;
+				markersUpdated = true;
+			}
+		}
+		
+		// Only update visibility if any markers were actually changed
+		if (markersUpdated)
+			mapMarkersMan.UpdateAllMarkerVisibilities();
+	}
+	
+	void ShareMarker(array<int> markerUIDs)
+	{
+		Rpc(RpcDo_ShareMarker, markerUIDs);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+    protected void RpcDo_ShareMarker(array<int> markerUIDs)
+    {	
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		bool markersUpdated = false;
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (markerUIDs.Contains(marker.GetMarkerID()) && !marker.m_bIsShared)
+			{
+				marker.m_bIsShared = true;
+				markersUpdated = true;
+			}
+		}
+		
+		// Only update visibility if any markers were actually changed
+		if (markersUpdated)
+			mapMarkersMan.UpdateAllMarkerVisibilities();
+    }
 }
