@@ -140,7 +140,6 @@ $grp SCR_BaseTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 300
   TriggerActivationType "All changes"
-  PeriodicQueries 1
   UpdatePeriod 5
   NamesFilter {
    "HVT"
