@@ -1,4 +1,4 @@
-SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Company_p.et" {
+SCR_AIGroup HVT : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Company_p.et" {
  coords 1512.908 20.154 2183.597
  angles 0 1.593 0
  m_aUnitPrefabSlots {

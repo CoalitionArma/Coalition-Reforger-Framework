@@ -140,8 +140,10 @@ $grp SCR_BaseTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 300
   TriggerActivationType "All changes"
+  PeriodicQueries 1
+  UpdatePeriod 5
   NamesFilter {
-   "INTEL"
+   "HVT"
   }
   OnActivate ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"HVT is headed to the EVAC point\");"\
