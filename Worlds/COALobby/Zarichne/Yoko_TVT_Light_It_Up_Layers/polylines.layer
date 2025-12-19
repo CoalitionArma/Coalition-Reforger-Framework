@@ -8,7 +8,7 @@ PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsEditable/PolyZone/IndforForwardD
    Position -83.34 0 19.992
   }
   ShapePoint "{671E07079B7FE176}" {
-   Position -28.084 0 85.598
+   Position -93.887 0 59.005
   }
   ShapePoint "{671E07078BF4B558}" {
    Position 101.767 0 176.289
@@ -58,7 +58,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 145.204 0 -422.227
   }
   ShapePoint "{671E0707442D4F5A}" {
-   Position -268.046 0 -328.209
+   Position -264.966 0 -402.618
   }
   ShapePoint "{671E07074CB23845}" {
    Position -624.575 0 -342.967

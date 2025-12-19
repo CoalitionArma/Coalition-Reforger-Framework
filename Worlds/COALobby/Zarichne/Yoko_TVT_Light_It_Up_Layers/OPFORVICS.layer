@@ -61,4 +61,10 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{3927510D48AB7EB5}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ARSENAL.et"
   m_sFactionKey "OPFOR"
  }
+ {
+  coords 1555.376 8.171 3563.181
+  angles 0 141.251 0
+  m_rVehicle "{3927510D48AB7EB5}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ARSENAL.et"
+  m_sFactionKey "OPFOR"
+ }
 }
