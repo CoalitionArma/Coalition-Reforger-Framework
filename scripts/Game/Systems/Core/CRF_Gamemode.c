@@ -856,6 +856,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
 	}
 	
+	bool DoesFactionShareMarker(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": 
+				return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "OPFOR": 
+				return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "INDFOR": 
+				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "CIV": 
+				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+    	 }
+    	return true;
+ 	}
+	
 	bool IsSideBFTEnabled(string factionKey)
 	{
 		switch(factionKey)
@@ -873,11 +889,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
 				break;
 		}
-		
-		return true;
+   		return true;
 	}
 }
-
 //------------------------------------------------------------------------------------
 // Fix for manual camera to work with spectator menu
 //------------------------------------------------------------------------------------

@@ -13,8 +13,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_iStartingHours 10
    m_bUsePredefineStartingTimeAndWeather 1
    m_aStartingWeatherAndTime {
-    SCR_TimeAndWeatherState "{66EE7203FF20EF31}" {
-     m_iStartingHour 1
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_iStartingHour 12
     }
    }
   }
@@ -118,28 +118,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
-}
-BaseGameTriggerEntity spawner {
- coords 930.863 6.799 1059.204
- userScript "	void InitPlane()"\
- "	{"\
- "		vector start = \"0 1000 0\";"\
- "		vector end = \"2000 1000 2000\";"\
- "		vector greenLight = \"1000 1000 1000\";"\
- "		vector flightPath[4];"\
- "		flightPath[0] = start;"\
- "		flightPath[3] = end;"\
- "		flightPath[2] = greenLight;"\
- "		CRF_AirdropObject object = new CRF_AirdropObject(\"BLUFOR\", \"{D35A20947FE9E130}PrefabsEditable/Auto/Props/c130.et\", flightPath, 45);"\
- "		CRF_AirdropManager.GetInstance().InitFlight(object);"\
- "		Print(\"Plane init\");"\
- "	}"
- EOnInit ""\
- "		if (!Replication.IsServer())"\
- "			return;"\
- "		"\
- "		GetGame().GetCallqueue().CallLater(InitPlane, 25000, false);"\
- "	"
 }
 GenericEntity : "{134538EF4DD59327}PrefabsEditable/Auto/Props/GreenLight.et" {
  coords 954.43 8.716 1063.419

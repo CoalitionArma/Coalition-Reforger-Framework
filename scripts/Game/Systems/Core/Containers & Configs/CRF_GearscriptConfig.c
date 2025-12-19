@@ -45,6 +45,9 @@ class CRF_GearScriptContainer
 	bool m_bEnableMagnifiedOptics;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableShareableMarkers;
+  
+ 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableBFT;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]

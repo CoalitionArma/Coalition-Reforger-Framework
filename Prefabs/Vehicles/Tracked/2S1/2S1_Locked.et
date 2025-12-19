@@ -1,0 +1,9 @@
+RHS_Tank : "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {
+   m_bIsLocked 1
+  }
+ }
+ coords 4260.79 53.375 4531.909
+}

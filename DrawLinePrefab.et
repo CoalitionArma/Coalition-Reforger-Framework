@@ -1,0 +1,19 @@
+PolylineShapeEntity {
+ ID "671626BCA8FADED8"
+ components {
+  CRF_PolyZone "{671626BD5DA5AE25}" {
+   m_cPolygonColor 0.045 0.045 0.045 0.431
+   m_fPolygonUVScale 0.001
+   m_cPolygonBorderColor 0 0 0 1
+   m_fPolygonBorderWidth 8
+   m_bLineMode 1
+   m_aVisibleForFactions {
+    "BLUFOR" "OPFOR" "INDFOR" "CIV" "SPEC"
+   }
+  }
+  RplComponent "{671626BD599E44E1}" {
+   Streamable Disabled
+  }
+ }
+ coords 3.191 -2.002 -0.936
+}
