@@ -1,0 +1,131 @@
+$grp GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
+ OBJ_A {
+  components {
+   FactionAffiliationComponent "{5D06E95D12174E9C}" {
+    "faction affiliation" "OPFOR"
+   }
+  }
+  coords 2701.794 61.076 4312.69
+  {
+   GenericEntity {
+    ID "5D3706BDF0F0CFF8"
+    components {
+     SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+      "faction affiliation" "OPFOR"
+     }
+     SCR_MilitaryBaseComponent "{5CB0DBC6A4CEAB7F}" {
+      m_iRadius 80
+     }
+    }
+    {
+     GenericEntity {
+      ID "5D3706BECE3A18AD"
+      components {
+       SCR_FactionAffiliationComponent "{5D36D46E9AAC6ACB}" {
+        "faction affiliation" "OPFOR"
+       }
+       SCR_SeizingComponent "{5CB66A118D01098D}" {
+        m_fMaximumSeizingTime 60
+        m_fMinimumSeizingTime 60
+        m_bGradualTimerReset 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ OBJ_B {
+  components {
+   FactionAffiliationComponent "{5D06E95D12174E9C}" {
+    "faction affiliation" "OPFOR"
+   }
+   SCR_CampaignMilitaryBaseComponent "{6726064CB94C6CE6}" {
+    m_sBaseName "OBJ1"
+    m_sBaseNameUpper "OBJ1"
+    m_sMapLocationName "OBJ1"
+    m_bIsResupplyTaskCreationEnabled 0
+   }
+  }
+  coords 3429.445 59.474 4049.116
+  angles 0 -126.382 0
+  {
+   GenericEntity {
+    ID "5D3706BDF0F0CFF8"
+    components {
+     SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+      "faction affiliation" "OPFOR"
+     }
+     SCR_MilitaryBaseComponent "{5CB0DBC6A4CEAB7F}" {
+      m_iRadius 80
+     }
+    }
+    {
+     GenericEntity {
+      ID "5D3706BECE3A18AD"
+      components {
+       SCR_SeizingComponent "{5CB66A118D01098D}" {
+        m_fMaximumSeizingTime 60
+        m_fMinimumSeizingTime 60
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+ {
+  coords 2400.364 60.829 4407.373
+  angles 0 -83.731 0
+ }
+ {
+  coords 2404.587 60.906 4428.51
+  angles 0 -83.731 0
+ }
+ {
+  coords 2411.654 60.865 4456.216
+  angles 0 -83.731 0
+ }
+ {
+  coords 2417.165 60.914 4489.274
+  angles 0 -83.731 0
+ }
+ {
+  coords 2418.235 60.75 4367.909
+  angles 0 -125.982 0
+ }
+ {
+  coords 2436.671 60.781 4351.378
+  angles 0 -125.982 0
+ }
+ {
+  coords 2465.469 60.813 4330.277
+  angles 0 -125.982 0
+ }
+ {
+  coords 2488.501 60.711 4307.263
+  angles 0 -125.982 0
+ }
+ {
+  coords 2516.898 60.814 4284.102
+  angles 0 -125.982 0
+ }
+ {
+  coords 2542.205 60.753 4265.37
+  angles 0 -125.982 0
+ }
+ {
+  coords 2436.851 61.014 4531.485
+  angles 0 -83.731 0
+ }
+ {
+  coords 2451.251 61.124 4567.067
+  angles 0 -52.147 0
+ }
+ {
+  coords 2472.189 61.285 4603.801
+  angles 0 -50.245 0
+ }
+}
