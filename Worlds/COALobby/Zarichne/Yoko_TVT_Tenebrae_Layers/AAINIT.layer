@@ -24,7 +24,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
- coords 1467.896 20.594 2322.005
+ coords 1466.701 20.595 2326.426
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -45,8 +45,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "He is armed and dangerous."\
    ""\
-   "We do not know where his EVAC Team is coming from nor do we know which is the correct Extraction Point. We do know that the HVT will be leaving this region via helicoptor, so the correct extraction point must have a helicoptor at it."\
-   ""
+   "We do not know where his EVAC Team is coming from but we know where he is extracting."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTextData "Defend your Commander until the EVAC Team arrives."\
@@ -58,7 +57,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Once the EVAC Team arrives you are allowed to leave your AO Limit and get the Commander to the EVAC Point."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "When playing the HVT, you consider highest in command for INDFOR. Also when you spawn in as the HVT please pick up the stack of files infront of the green UAZ"\
+   m_sTextData "When playing the HVT, you consider highest in command for INDFOR. "\
+   ""\
+   "Also when you spawn in as the HVT please pick up the stack of files infront of the green UAZ"\
    ""\
    ""
   }
@@ -82,13 +83,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{6710522CFAFCACDA}" {
-        m_sCallsign "MATT 1"
+        m_sCallsign "MAT 1"
        }
        SCR_CallsignInfo "{6710522CE43F67C1}" {
-        m_sCallsign "MATT 2"
-       }
-       SCR_CallsignInfo "{67234267478ABA43}" {
-        m_sCallsign "Recon"
+        m_sCallsign "MAT 2"
        }
       }
      }
@@ -124,7 +122,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign " Crew 3 (BTR)"
        }
        SCR_CallsignInfo "{6723426F790324F2}" {
-        m_sCallsign "Crew 4 (BMP1)"
+        m_sCallsign "Crew 4 (BTR)"
        }
       }
      }
@@ -133,8 +131,23 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
-SCR_BaseTriggerEntity INTEL {
- coords 1520.851 20.288 2191.272
+$grp SCR_BaseTriggerEntity {
+ INTEL {
+  coords 1520.851 20.288 2191.272
+ }
+ EVACTrig {
+  coords 1454.481 20.656 2362.152
+  TriggerShapeType Sphere
+  SphereRadius 300
+  TriggerActivationType "All changes"
+  NamesFilter {
+   "INTEL"
+  }
+  OnActivate ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"HVT is headed to the EVAC point\");"\
+  "		"\
+  "	"
+ }
 }
 CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsEditable/Markers/ObjectiveMarkers/INDFORObjectiveMarker.et" {
  coords 1810.219 15.395 380.252
@@ -308,29 +321,10 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   }
  }
 }
-$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
- {
-  coords 540.883 16.484 2553.017
-  angles 0 0 0
-  m_fWorldSize 200
-  m_sMissionMarkerDescription "EXTRACTION POINT?"
- }
- {
-  coords 1188.262 6.418 3433.386
-  angles 0 0 0
-  m_fWorldSize 200
-  m_sMissionMarkerDescription "EXTRACTION POINT?"
- }
- {
-  coords 1814.932 15.298 377.903
-  angles 0 0 0
-  m_fWorldSize 200
-  m_sMissionMarkerDescription "EXTRACTION POINT?"
- }
- {
-  coords 2362.56 6.677 969.585
-  angles 0 0 0
-  m_fWorldSize 200
-  m_sMissionMarkerDescription "EXTRACTION POINT?"
- }
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ coords 1814.932 15.298 377.903
+ angles 0 0 0
+ m_MarkerColor 1 0 0 1
+ m_fWorldSize 200
+ m_sMissionMarkerDescription "EXTRACTION POINT"
 }

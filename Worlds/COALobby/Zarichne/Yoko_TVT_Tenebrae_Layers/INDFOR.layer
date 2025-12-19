@@ -36,7 +36,7 @@ SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
                angles 0 -0.143 0
                {
                 SCR_AIGroup : "{CE21A9AD1526A581}Prefabs/Groups/INDFOR/Standard/Vehicle/CRF_INDFOR_3ManCrew_p.et" {
-                 coords 16.819 -0.394 -3.899
+                 coords 12.816 -0.394 -6.316
                  angles 0 -31.122 0
                  m_aUnitPrefabSlots {
                   "{FE9C0A1600114796}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehDriver_P.et"
