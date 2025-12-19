@@ -1,0 +1,22 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsEditable/Markers/ObjectiveMarkers/GlobalObjectiveMarker.et" {
+ {
+  coords 2741.062 60.816 4306.215
+  angles 0 90 0
+  m_bUseWorldScale 0
+  m_sMissionMarkerDescription "OBJ A"
+ }
+ {
+  coords 3450.828 59.601 4066.486
+  angles 0 90 0
+  m_bUseWorldScale 0
+  m_sMissionMarkerDescription "OBJ B"
+ }
+}
+CRF_MissionMarker : "{C44FD776546321F2}PrefabsEditable/Markers/ObjectiveMarkers/OPFORObjectiveMarker.et" {
+ coords 2448.883 61.001 4454.62
+ angles 0 90 0
+ m_MarkerColor 0.733 0.017 0.017 1
+ m_sQuadName "mine-field-2"
+ m_bUseWorldScale 0
+ m_sMissionMarkerDescription "Minefield"
+}
