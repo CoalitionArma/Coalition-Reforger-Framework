@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 80
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "After a successful capture of Ruckberg, US Forces set their eyes of Westen Bad Orb and the valley to its south. "\
+   m_sTextData "After a successful capture of Ruckberg, US Forces set their eyes on Westen Bad Orb and the valley to its south. "\
    ""\
    "BLUFOR Composition: Mechanized Infantry Platoon"\
    "BLUFOR Assets: 4x M1A2 Abrams, 3x M2A2 Bradley and 2x Recon Drone"\
