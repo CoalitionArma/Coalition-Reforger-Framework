@@ -1,0 +1,15 @@
+MatPBRBasic {
+ SurfaceProperties "{CE9253778DD8FBDE}Common/Materials/Game/metal.gamemat"
+ AlphaTest 0.061
+ AlphaMul 0.87
+ BlendMode AlphaBlend
+ CrossFade 0
+ AllowUserAlphaBias 1
+ MetalnessScale 0
+ BCRMap "{45E04F775812C4C5}UI/GermanFlag.edds"
+ OpacityMap "{E21D6A4BC34E5F54}UI/GermanFlag_Opacity.edds"
+ Refs {
+  "OpacityMap"
+  "RHS_MaterialController.m_iOpacityMapID"
+ }
+}

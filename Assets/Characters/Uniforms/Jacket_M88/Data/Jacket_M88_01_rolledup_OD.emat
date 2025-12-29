@@ -1,11 +1,11 @@
 MatPBRMulti {
- Color 0.181 0.254 0.093 1
  CavityFromAO 0.949
  VFXMap "{352F6A90BA769E73}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_rolledup_VFX.edds"
  DirtUserOpacity 1
  DirtOpacity 3
  DirtRoughness 1
  DirtBCRMap "{0F2F66A669CD24D7}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_rolledup_Blood_BCR.edds"
+ Color_1 0.345 0.451 0.207 1
  BCR_1 "{7D85D4AA3F657D81}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_rolledup_BCR.edds"
  NMO_1 "{455D6F38E6122F1F}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_rolledup_NMO.edds"
 }
