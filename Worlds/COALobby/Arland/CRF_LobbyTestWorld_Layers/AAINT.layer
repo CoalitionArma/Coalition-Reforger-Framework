@@ -24,18 +24,16 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 1228.604 37.813 2846.753
- m_bSafestartInstantlyEnabled 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{195BE77A8FEFF946}Configs/Gearscripts/Custom/Salami/CRF_GS_IRAQ90s.conf"
+  m_rGearScript "{15DFCCFA43B71A71}Configs/Gearscripts/Custom/Harry/CliffSideRDV/CRF_GS_RHSMSV_CSRDV.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{9F1BB18540252916}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP.conf"
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{820872D33029EA15}Configs/Gearscripts/Standard/80s/CRF_GS_USEarly80s.conf"
+  m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
  }
  {
   SCR_FactionManager "66631CE7FE1E32BB" {
