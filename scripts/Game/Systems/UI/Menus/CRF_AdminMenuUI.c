@@ -703,7 +703,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			BaseContainerTools.LoadContainer(CRF_GearscriptManager.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
 		));
 
-		return gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab;
+		return gearConfig.m_sLeadershipBinocularsPrefab;
 	}
 
 	/**
