@@ -833,15 +833,15 @@ class CRF_GearscriptManager : ScriptComponent
 						AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 					break;
 			}
-			
-			// Default medical items
-			foreach (CRF_Inventory_Item item : gearConfig.m_InfantryMedicalItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
-			
-			// Default inventory items
-			foreach (CRF_Inventory_Item item : gearConfig.m_DefaultInventoryItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 		}
+		
+		// Default medical items
+		foreach (CRF_Inventory_Item item : gearConfig.m_InfantryMedicalItems)
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+		
+		// Default inventory items
+		foreach (CRF_Inventory_Item item : gearConfig.m_DefaultInventoryItems)
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 	}
 	
 	//------------------------------------------------------------------------------------------------
