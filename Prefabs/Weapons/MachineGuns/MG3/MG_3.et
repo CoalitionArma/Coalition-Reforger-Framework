@@ -1,0 +1,30 @@
+GenericEntity : "{6E42C85D9FC0CA5D}Prefabs/Weapons/MachineGuns/M60/MG_M60_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0 0
+     }
+     SightsRanges {
+      SightRangeInfo "{584CED31925D92DC}" {
+       WeaponPosition PointInfo "{584CED31925D92F6}" {
+        Offset 0 -0.003 0
+        Angles 0 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{6497438FFBBB6042}" {
+      PivotID "Scene_Root"
+      Offset 0 0.1282 0.1772
+     }
+     SightsPointRear PointInfo "{6497438FFBBB607E}" {
+      PivotID "w_sight_slider"
+      Offset 0 0.0188 -0.0024
+     }
+    }
+   }
+  }
+ }
+}

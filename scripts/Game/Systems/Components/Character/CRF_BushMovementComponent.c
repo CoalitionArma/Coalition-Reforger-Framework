@@ -10,7 +10,7 @@ class CRF_BushMovementComponent: ScriptComponent
 	
 	float m_fOldMovementDamage = 0;
 	float m_fAppliedBushDamage = 0;
-	const float BUSH_DISTANCE_SQ = 6.25; // 2.5 * 2.5
+	const float BUSH_DISTANCE_SQ = 2.25; // 1.5m x 1.5m
 	bool m_bEffectsApplied = false;
 	bool m_bEffectsAppliedThisFrame = false;
 	vector m_vOriginThisFrame;
@@ -55,7 +55,7 @@ class CRF_BushMovementComponent: ScriptComponent
 		
 		m_bEffectsAppliedThisFrame = false;
 		m_vOriginThisFrame = owner.GetOrigin();
-		m_vOriginThisFrame[1] = m_vOriginThisFrame[1] + 1;
+		m_vOriginThisFrame[1] = m_vOriginThisFrame[1] + 1.3;
 		GetGame().GetWorld().QueryEntitiesBySphere(m_vOriginThisFrame, 1, BushCheckCallback, null);
 		if (!m_bEffectsAppliedThisFrame && m_bEffectsApplied)
 			ResetBushEffects();
@@ -99,7 +99,7 @@ class CRF_BushMovementComponent: ScriptComponent
 	
 	void ApplyBushEffects()
 	{
-		if (m_CharacterController.GetStance() == ECharacterStance.PRONE)
+		if (m_CharacterController.GetStance() == ECharacterStance.PRONE && !m_CharacterController.IsUnconscious())
 		{
 			m_CharacterController.SetStanceChange(2);
 			if (m_HintManager)
