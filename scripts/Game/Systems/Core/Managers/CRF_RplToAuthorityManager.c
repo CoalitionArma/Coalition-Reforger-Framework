@@ -1375,7 +1375,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			for (int i = 0; i < magazineCount; i++)
 			{
 				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
-				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false, false);
+				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false);
 			}
 			currentMagazine++;
 		}

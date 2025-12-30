@@ -6,7 +6,7 @@ class CRF_GamemodeClass : SCR_BaseGameModeClass {}
 //------------------------------------------------------------------------------------
 // Mission briefing descriptor for displaying mission information
 //------------------------------------------------------------------------------------
-[BaseContainerProps()]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sTitle"}, "%1")]
 class CRF_MissionDescriptor
 {
 	[Attribute("")]

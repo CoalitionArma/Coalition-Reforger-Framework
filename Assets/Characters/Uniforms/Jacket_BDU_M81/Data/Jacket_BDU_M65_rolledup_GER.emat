@@ -1,0 +1,10 @@
+MatPBRMulti {
+ CavityFromAO 1
+ VFXMap "{AD709B82B5634455}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_rolledup_VFX.edds"
+ DirtUserOpacity 1
+ DirtOpacity 3
+ DirtRoughness 1
+ DirtBCRMap "{EF2FDEDD3B952E43}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_rolledup_02_Blood_BCR.edds"
+ BCR_1 "{190F9B4560DD423E}UI/jacket_BDU_rolledup_ger.edds"
+ NMO_1 "{0EDD31674C208D02}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_rolledup_02_NMO.edds"
+}

@@ -1,113 +1,135 @@
 $grp SCR_VehicleSpawn {
  {
   coords 4899.821 28.562 11735.766
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4882.661 28.594 11735.766
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4863.611 28.594 11735.766
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4844.892 28.5 11735.766
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4882.661 28.594 11757.913
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4863.611 28.594 11757.913
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4844.891 28.594 11757.913
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4899.821 28.594 11757.913
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4882.661 28.594 11783.206
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4863.611 28.594 11783.206
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4844.892 28.594 11783.206
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4899.821 28.594 11783.206
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4863.611 28.594 11809.933
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4844.891 28.594 11809.933
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4899.821 28.594 11809.933
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4882.661 28.594 11809.933
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  respawnDelay 200
  }
  {
   coords 4857.151 28.594 11850.449
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  respawnDelay 200
  }
  {
   coords 4889.835 28.594 11850.451
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  respawnDelay 200
  }
  {
   coords 4857.151 28.594 11890.788
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  respawnDelay 200
  }
  {
   coords 4889.835 28.594 11890.788
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  respawnDelay 200
  }
  {
   coords 4857.151 28.5 11935.152
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  respawnDelay 200
  }
  {
   coords 4889.835 28.594 11935.155
-  angleY 90
+  angles 0 90 0
   m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  respawnDelay 200
  }
 }
 CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
@@ -123,14 +145,14 @@ CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.
 $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
  {
   coords 4911.332 28.594 11820.659
-  angleY 90
+  angles 0 90 0
  }
  {
   coords 4911.332 28.594 11815.326
-  angleY 90
+  angles 0 90 0
  }
  {
   coords 4911.332 28.594 11810.887
-  angleY 90
+  angles 0 90 0
  }
 }

@@ -1,7 +1,0 @@
-SCR_VehicleSpawn {
- coords 1745.287 377.875 1534.778
- angleY 9.026
- m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
- respawnDelay 10000
- firstSpawn 1
-}
