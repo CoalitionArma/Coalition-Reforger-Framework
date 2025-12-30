@@ -145,7 +145,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		array<ResourceName> radioItems = {};
 		array<ResourceName> medicalItems = {};
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
+		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_DefaultInventoryItems)
 		{
 			if (miscItems.Contains(item.m_sItemPrefab) || explosiveItems.Contains(item.m_sItemPrefab) || grenadeItems.Contains(item.m_sItemPrefab) || 
 				radioItems.Contains(item.m_sItemPrefab) || medicalItems.Contains(item.m_sItemPrefab))
@@ -165,7 +165,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		array<ResourceName> overrideWeaponsResources = {};
 		array<ref CRF_Weapon_Class> overrideWeapons = {};
 		
-		foreach (CRF_Role_Custom_Gear customGear: m_GearScriptConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+		foreach (CRF_Role_Custom_Gear customGear: m_GearScriptConfig.m_RolesToSetCustomSettings)
 		{
 			foreach (CRF_Weapon_Class primary: customGear.m_PrimaryWeapon)
 			{
@@ -183,7 +183,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				overrideWeaponsResources.Insert(secondary.m_Weapon);
 			}
 			
-			foreach (CRF_Weapon_Class pistol: customGear.m_Pistol)
+			foreach (CRF_Weapon_Class pistol: customGear.m_Pistols)
 			{
 				if (overrideWeaponsResources.Contains(pistol.m_Weapon))
 					continue;
@@ -221,7 +221,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			}	
 		}
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_DefaultFactionGear.m_DefaultMedicMedicalItems)
+		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_InfantryMedicalItems)
+		{
+			medicalItems.Insert(item.m_sItemPrefab);
+		}
+
+		
+		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_MedicMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
 		}
@@ -317,31 +323,31 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		array<ref CRF_Weapon_Class> weapons = {};
-		CRF_Weapons weaponConfig = gearSriptConfig.m_FactionWeapons;
+		
 		switch(index)
 		{
 			case 0:
-			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Rifle)
+			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Rifles)
 				weapons.Insert(weapon);
 			break;
 
 			case 1:
-			foreach (CRF_Weapon_Class weapon: weaponConfig.m_RifleUGL)
+			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_RifleUGLs)
 				weapons.Insert(weapon);
 			break;
 
 			case 2:
-			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Carbine)
+			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Carbines)
 				weapons.Insert(weapon);
 			break;
 
 			case 3:
-			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Pistol)
+			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Pistols)
 				weapons.Insert(weapon);
 			break;
 
 			case 11:
-			weapons.Insert(weaponConfig.m_Sniper);
+			weapons.Insert(gearSriptConfig.m_SNIPER);
 			break;
 		}
 
@@ -351,36 +357,35 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		CRF_Spec_Weapon_Class weapon;
-		CRF_Weapons weaponConfig = gearSriptConfig.m_FactionWeapons;
 
 		switch (index)
 		{
 			case 4:
-			weapon = weaponConfig.m_AR;
+			weapon = gearSriptConfig.m_AR;
 			break;
 
 			case 5:
-			weapon = weaponConfig.m_MMG;
+			weapon = gearSriptConfig.m_MMG;
 			break;
 
 			case 6:
-			weapon = weaponConfig.m_HMG;
+			weapon = gearSriptConfig.m_HMG;
 			break;
 
 			case 7:
-			weapon = weaponConfig.m_AT;
+			weapon = gearSriptConfig.m_AT;
 			break;
 
 			case 8:
-			weapon = weaponConfig.m_MAT;
+			weapon = gearSriptConfig.m_MAT;
 			break;
 
 			case 9:
-			weapon = weaponConfig.m_HAT;
+			weapon = gearSriptConfig.m_HAT;
 			break;
 
 			case 10:
-			weapon = weaponConfig.m_AA;
+			weapon = gearSriptConfig.m_AA;
 			break;
 		}
 
