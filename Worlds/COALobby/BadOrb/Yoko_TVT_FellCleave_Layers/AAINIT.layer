@@ -49,6 +49,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "All Vehicles respawn with your respawn."
   }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
  }
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
