@@ -403,7 +403,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
 		
 		// Respawn all players when zone is captured
-		CRF_RespawnSystemComponent respawnManager = CRF_RespawnSystemComponent.GetInstance();
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		if (respawnManager)
 			respawnManager.RespawnAllSides();
 		
