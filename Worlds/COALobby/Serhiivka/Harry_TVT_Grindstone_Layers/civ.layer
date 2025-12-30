@@ -1,6 +1,0 @@
-SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
- coords 4906.706 163.618 4154.354
- m_aUnitPrefabSlots {
-  "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et"
- }
-}
