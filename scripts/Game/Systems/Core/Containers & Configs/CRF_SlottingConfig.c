@@ -9,19 +9,16 @@ class CRF_SlottingConfig
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sCallsign"}, "%1")]
 class CRF_SlottingGroup
 {		
-	static const string m_sPreselectedSlots = "{0,0}";
-	
-	
 	[Attribute()]
 	LocalizedString m_sCallsign;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType))]
 	CRF_EFlagType m_FlagType;
 	
-	[Attribute("1", category: "Group")]
+	[Attribute("1")]
 	bool m_bBlueForceTrackerEnabled;
 	
-	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
 	ref array<ref CRF_EGearRole> m_aSlots;
 }
 
@@ -31,13 +28,7 @@ class CRF_SlottingGroup_AirCrew : CRF_SlottingGroup
 {		
 	void CRF_SlottingGroup_AirCrew()
 	{
-		ref array<ref CRF_EGearRole> temparray;
-		
-		//if (m_aSlots.IsEmpty())
-			temparray.Insert(CRF_EGearRole.PILOT); //CRF_EGearRole.CREW_CHIEF};
-		
-		m_aSlots = temparray;
-		
-		Print(m_aSlots);
+		m_FlagType = CRF_EFlagType.HELICOPER;
+		m_aSlots = {CRF_EGearRole.PILOT, CRF_EGearRole.CREW_CHIEF};
 	}
 }
