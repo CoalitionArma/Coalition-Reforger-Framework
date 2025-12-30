@@ -1,0 +1,75 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{673B3CBB560558C8}" {
+     NavmeshFile "{64EFF6DFC1035FF2}Navmesh/terrainName_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{D6A343ABC6E87F7B}Navmesh/terrainName_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{4BA74EE15BDA627F}Navmesh/terrainName_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 6088.919 6.094 2202.311
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_FrontlineGamemodeManager "{673B3CBAF94DB22B}" {
+   m_BluforSide "BLUFOR"
+   m_sBluforSideNickname "BLUFOR"
+   m_OpforSide "OPFOR"
+   m_sOpforSideNickname "OPFOR"
+   m_aZoneObjectNames {
+    "Zone_A"
+    "Zone_B"
+    "Zone_C"
+    "Zone_D"
+    "Zone_E"
+   }
+   m_iZoneCaptureTime 60
+   m_iInitialTime 600
+  }
+ }
+ coords 6103.573 6.093 2213.002
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Two forces attempt to control the Chernarussian capital of Chernogorsk"\
+   ""\
+   "BLUFOR Composition: Motorized Infantry"\
+   "BLUFOR Assets: 2x Stryker"\
+   ""\
+   "OPFOR Composition: Motorized Infantry"\
+   "OPFOR Assets: 2x BRDM"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Capture the points in linear order, starting with C in the city center"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Capture the points in linear order, starting with C in the city center"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "A respawn wave will fire after each objective flip"
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{2805BE2020A0EC22}Configs/Gearscripts/Standard/Modern/CRF_GS_TFUSArmyMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+ }
+}
