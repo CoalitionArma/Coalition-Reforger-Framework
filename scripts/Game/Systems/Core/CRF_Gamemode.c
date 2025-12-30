@@ -46,86 +46,98 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode General")]
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Config - General")]
 	bool m_bUseAAR;
 	
-	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
+	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - General")]
 	int m_iTimeLimitMinutes;
 
-	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Gamemode General")]
+	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
 	bool m_bAllowEspionage;
 
-	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
+	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Mission Config - General")]
 	bool EnableAIInGameState;
 	
 	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
 	
-	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Config - General")]
 	bool m_bDisableChat;
 
-	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
+	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
 	bool m_bLockSlotsAfterSafestart;
 
-	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]
+	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Config - General")]
 	bool m_bSafestartInstantlyEnabled;
 
 	// Mission Descriptors (shown in briefing)
-	[Attribute("", category: "CRF Gamemode General")]
+	[Attribute("", category: "CRF Mission Config - General")]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
 
 	// Faction Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
+	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
 	int m_iFactionOneRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
 	string m_sFactionOneKey;
 
-	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
+	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
 	int m_iFactionTwoRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
 	string m_sFactionTwoKey;
+	
+	[Attribute(category: "CRF Mission Config - BLUFOR Slots")]
+	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
+
+	[Attribute(category: "CRF Mission Config - OPFOR Slots")]
+	ref array <ref CRF_SlottingGroup> m_OpforSlots;	
+	
+	[Attribute(category: "CRF Mission Config - INDOFR Slots")]
+	ref array <ref CRF_SlottingGroup> m_IndforSlots;	
+	
+	[Attribute(category: "CRF Mission Config - CIV Slots")]
+	ref array <ref CRF_SlottingGroup> m_CivSlots;	
 
 	// Gearscript Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Mission Config - Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Mission Config - Gearscript")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
 	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Mission Config - Gearscript")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
 	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Mission Config - Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 
 	// Respawn Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
+	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
 	bool m_bRespawnEnabled;
 
-	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
+	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
 	bool m_bWaveRespawn;
 
-	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
+	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Mission Config - Respawn")]
 	int m_iTimeToRespawn;
 
-	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iBLUFORTickets;
 
-	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iOPFORTickets;
 
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iINDFORTickets;
 
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iCIVTickets;
 
 	// Generic spawn point for spectator camera (handles entity streaming)
