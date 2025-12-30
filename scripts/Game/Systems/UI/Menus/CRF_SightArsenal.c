@@ -137,9 +137,9 @@ class CRF_SightArsenal: ChimeraMenuBase
 			switch (weaponType)
 			{
 				case CRF_EGearscriptWeapons.RIFLE:
-					if(m_GearScriptConfig.m_FactionWeapons.m_Rifle && !m_GearScriptConfig.m_FactionWeapons.m_Rifle.IsEmpty())
+					if(m_GearScriptConfig.m_Rifles && !m_GearScriptConfig.m_Rifles.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_FactionWeapons.m_Rifle)
+						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Rifles)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -162,9 +162,9 @@ class CRF_SightArsenal: ChimeraMenuBase
 					break;
 				
 				case CRF_EGearscriptWeapons.RIFLEUGL:
-					if(m_GearScriptConfig.m_FactionWeapons.m_RifleUGL && !m_GearScriptConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
+					if(m_GearScriptConfig.m_RifleUGLs && !m_GearScriptConfig.m_RifleUGLs.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_FactionWeapons.m_RifleUGL)
+						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_RifleUGLs)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -186,9 +186,9 @@ class CRF_SightArsenal: ChimeraMenuBase
 					break;
 				
 				case CRF_EGearscriptWeapons.CARBINE:
-					if(m_GearScriptConfig.m_FactionWeapons.m_Carbine && !m_GearScriptConfig.m_FactionWeapons.m_Carbine.IsEmpty())
+					if(m_GearScriptConfig.m_Carbines && !m_GearScriptConfig.m_Carbines.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_FactionWeapons.m_Carbine)
+						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Carbines)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -210,10 +210,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 					break;
 
 				case CRF_EGearscriptWeapons.PISTOL:
-					if(m_GearScriptConfig.m_FactionWeapons.m_Pistol && !m_GearScriptConfig.m_FactionWeapons.m_Pistol.IsEmpty())
+					if(m_GearScriptConfig.m_Pistols && !m_GearScriptConfig.m_Pistols.IsEmpty())
 					{
 						
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_FactionWeapons.m_Pistol)
+						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Pistols)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -235,12 +235,12 @@ class CRF_SightArsenal: ChimeraMenuBase
 					break;
 
 				case CRF_EGearscriptWeapons.SNIPER:
-					if(m_GearScriptConfig.m_FactionWeapons.m_Sniper)
+					if(m_GearScriptConfig.m_SNIPER)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_Sniper.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_SNIPER.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_Sniper.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_SNIPER.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -249,19 +249,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_Sniper.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_SNIPER.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 
 				case CRF_EGearscriptWeapons.AR:
-					if(m_GearScriptConfig.m_FactionWeapons.m_AR)
+					if(m_GearScriptConfig.m_AR)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_AR.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_AR.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_AR.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_AR.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -270,19 +270,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_AR.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_AR.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 
 				case CRF_EGearscriptWeapons.MMG:
-					if(m_GearScriptConfig.m_FactionWeapons.m_MMG)
+					if(m_GearScriptConfig.m_MMG)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_MMG.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_MMG.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_MMG.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_MMG.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -291,19 +291,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_MMG.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_MMG.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 
 				case CRF_EGearscriptWeapons.AT:
-					if(m_GearScriptConfig.m_FactionWeapons.m_AT)
+					if(m_GearScriptConfig.m_AT)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_AT.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_AT.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_AT.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_AT.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -312,19 +312,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_AT.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_AT.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 	
 				case CRF_EGearscriptWeapons.MAT:
-					if(m_GearScriptConfig.m_FactionWeapons.m_MAT)
+					if(m_GearScriptConfig.m_MAT)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_MAT.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_MAT.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_MAT.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_MAT.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -333,19 +333,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_MAT.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_MAT.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 	
 				case CRF_EGearscriptWeapons.HAT:
-					if(m_GearScriptConfig.m_FactionWeapons.m_HAT)
+					if(m_GearScriptConfig.m_HAT)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_HAT.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_HAT.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_HAT.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_HAT.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -354,19 +354,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_HAT.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_HAT.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 
 				case CRF_EGearscriptWeapons.AA:
-					if(m_GearScriptConfig.m_FactionWeapons.m_AA)
+					if(m_GearScriptConfig.m_AA)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_AA.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_AA.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_AA.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_AA.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -375,19 +375,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_AA.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_AA.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
 					break;
 
 				case CRF_EGearscriptWeapons.HMG:
-					if(m_GearScriptConfig.m_FactionWeapons.m_HMG)
+					if(m_GearScriptConfig.m_HMG)
 					{
-						if (currentWeapon != m_GearScriptConfig.m_FactionWeapons.m_HMG.m_Weapon)
+						if (currentWeapon != m_GearScriptConfig.m_HMG.m_Weapon)
 								continue;
 						bool overrideAttachment = false;
-						foreach (ResourceName attachment: m_GearScriptConfig.m_FactionWeapons.m_HMG.m_Attachments)
+						foreach (ResourceName attachment: m_GearScriptConfig.m_HMG.m_Attachments)
 						{
 							if (IsSight(attachment))
 								overrideAttachment = true;
@@ -396,7 +396,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 						
 						if (overrideAttachment)
 							break;
-						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_FactionWeapons.m_HMG.m_Weapon);
+						ResourceName sightAttachment = GetPrefabsDefaultSight(m_GearScriptConfig.m_HMG.m_Weapon);
 						if (sightAttachment != "")
 							attachmentsToAdd.Insert(sightAttachment);
 					}
