@@ -77,6 +77,12 @@ GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPF
  coords 7824.656 5.75 3465.638
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonBorderColor 0.733 0.017 0.017 1
+   m_bLineMode 1
+  }
+ }
  coords 6682.351 5.75 2551.119
  Points {
   ShapePoint "{673C49EB1A703E12}" {
@@ -89,16 +95,16 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position -1137.708 0 -644.479
   }
   ShapePoint "{673C49EB1F2EDE0B}" {
-   Position -888.87 -0 -533.829
+   Position -888.87 0 -533.829
   }
   ShapePoint "{673C49EB137BD283}" {
-   Position -358.971 -0 -477.124
+   Position -358.971 0 -477.124
   }
   ShapePoint "{673C49EB128AEC48}" {
-   Position -127.488 -0 -335.73
+   Position -127.488 0 -335.73
   }
   ShapePoint "{673C49EB11A613C1}" {
-   Position 221.209 -0 -244.603
+   Position 221.209 0 -244.603
   }
   ShapePoint "{673C49EB17C62639}" {
    Position 558.673 0 22.798
@@ -107,13 +113,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 809.685 0 316.905
   }
   ShapePoint "{673C49EB143F99FC}" {
-   Position 986.333 -0 592.286
+   Position 986.333 0 592.286
   }
   ShapePoint "{673C49EB0A34DC3B}" {
-   Position 1252.959 -0 668.634
+   Position 1252.959 0 668.634
   }
   ShapePoint "{673C49EB0A98A73C}" {
-   Position 1336.198 -0 1089.877
+   Position 1336.198 0 1089.877
   }
   ShapePoint "{673C49EB0872C816}" {
    Position 547.519 -30.493 899.379
@@ -125,16 +131,19 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position -155.513 0 413.221
   }
   ShapePoint "{673C49EB05E18FE8}" {
-   Position -422.667 -0 140.263
+   Position -422.667 0 140.263
   }
   ShapePoint "{673C49EB3A7F979D}" {
    Position -459.522 0 -165.638
   }
   ShapePoint "{673C49EB3DAE9D9B}" {
-   Position -913.223 -0 -370.728
+   Position -913.223 0 -370.728
   }
   ShapePoint "{673C49EB30D4DF54}" {
    Position -1235.525 0 -359.545
+  }
+  ShapePoint "{673C4DF6F2C3431F}" {
+   Position -1565.427 0 -67.325
   }
  }
 }
