@@ -19,9 +19,9 @@ class CRF_SlottingGroup
 [BaseContainerProps()]
 class CRF_SlottingSpawnPoint
 {		
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("DEFAULT", "0"), ParamEnum("CUSTOM", "1")})]
-	bool m_bStartingSpawnPoint;
+	[Attribute("0", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("DEFAULT", "0"), ParamEnum("CUSTOM", "1")})]
+	int m_bStartingSpawnPoint;
 	
-	[Attribute()]
-	vector m_CustomPosition;
+	[Attribute("")]
+	ref PointInfo m_CustomPosition;
 }

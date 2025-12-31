@@ -87,16 +87,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
 	string m_sFactionTwoKey;
 	
-	[Attribute(category: "CRF Mission Config - BLUFOR Slots")]
+	[Attribute(UIWidgets.Auto, desc: "BLUFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
 
-	[Attribute(category: "CRF Mission Config - OPFOR Slots")]
+	[Attribute(UIWidgets.Auto, desc: "OPFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - OPFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_OpforSlots;	
 	
-	[Attribute(category: "CRF Mission Config - INDOFR Slots")]
+	[Attribute(UIWidgets.Auto, desc: "INDFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - INDFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_IndforSlots;	
 	
-	[Attribute(category: "CRF Mission Config - CIV Slots")]
+	[Attribute(UIWidgets.Auto, desc: "CIVILIAN Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - CIVILIAN Slots")]
 	ref array <ref CRF_SlottingGroup> m_CivSlots;	
 
 	// Gearscript Settings
@@ -137,7 +137,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iINDFORTickets;
 
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iCIVTickets;
 
 	// Generic spawn point for spectator camera (handles entity streaming)
