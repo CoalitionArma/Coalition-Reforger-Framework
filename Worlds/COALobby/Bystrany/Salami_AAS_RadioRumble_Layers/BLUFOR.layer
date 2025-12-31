@@ -4,8 +4,8 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
    DefaultFormation "Column"
   }
  }
- coords 4867.354 380.349 6356.217
- angles 0.268 -47.359 -0.026
+ coords 4608.31 406.906 6406.528
+ angles 0 -47.359 0
  m_aUnitPrefabSlots {
   "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"
   "{4BCB20FFA9A0D6BF}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"
@@ -60,7 +60,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
         }
        }
        coords 1.825 -0.013 -2.43
-       angles -0.966 -0 0.702
+       angles -0.966 0 0.702
        m_aUnitPrefabSlots {
         "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
         "{4BCB20FFA9A0D6BF}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"
@@ -75,4 +75,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
    }
   }
  }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 4725.872 371.875 6323.943
 }
