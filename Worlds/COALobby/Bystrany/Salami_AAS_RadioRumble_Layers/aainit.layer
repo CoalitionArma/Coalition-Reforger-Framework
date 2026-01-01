@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Before first light, an East German platoon slips across the border under orders that don’t exist on paper. Their target is Castle Itter, a stone fortress now in West German hands, being used as a lookout and comms point over nearby mountain routes. The place is tough to take—high ground, thick walls, narrow access—but intelligence says the garrison is light and NATO support may arrive soon. "\
+   m_sTextData "Before first light, an East German platoon slips across the border under orders that don’t exist on paper. Their target is Castle Itter, a stone fortress now in West German hands, being used as a lookout and comms point over nearby mountain routes. The place is tough to take, with high ground, thick walls, and a narrow access, but ISR reports the garrison is light and NATO support may arrive soon. "\
    ""\
    "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
    "BLUFOR Assets:"\
