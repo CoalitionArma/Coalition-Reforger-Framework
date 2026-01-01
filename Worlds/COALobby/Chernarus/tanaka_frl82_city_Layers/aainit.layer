@@ -43,7 +43,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 6103.573 6.093 2213.002
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 70
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Two forces attempt to control the Chernarussian capital of Chernogorsk"\
@@ -71,6 +71,43 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{68436242C2035D17}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{68436242C1ED822E}" {
+        m_sCallsign "IFV A"
+       }
+       SCR_CallsignInfo "{68436242C1BA8C5A}" {
+        m_sCallsign "IFV B"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{68436242E309BBCA}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{68436242E3D69E1E}" {
+        m_sCallsign "IFV A"
+       }
+       SCR_CallsignInfo "{68436242E3A2EBD4}" {
+        m_sCallsign "IFV B"
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }
 GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {

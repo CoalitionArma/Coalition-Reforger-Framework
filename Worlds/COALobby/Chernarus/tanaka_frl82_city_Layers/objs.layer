@@ -28,5 +28,6 @@ GenericEntity : "{AB200B41DC349F62}Prefabs/Structures/Frontline/FlagPole_Zone_E.
  coords 7079.731 7.089 3124.092
 }
 GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
- coords 6247.636 18.891 2175.7
+ coords 6237.716 7.522 2168.558
+ angles 0 60.019 0
 }
