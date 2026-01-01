@@ -400,6 +400,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 */
 	void OpenCurrentStateMenu()
 	{	
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && !m_Gamemode.m_bUseAAR)
+			return;
+		
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		

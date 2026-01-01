@@ -21,6 +21,8 @@ class CRF_ManualMarker : GenericEntity
 	// Attributes for editing through workbench TODO: proper description
 	[Attribute("{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset")]
 	protected ResourceName m_sImageSet;
+	[Attribute("0")]
+	bool m_bJustText;
 	[Attribute("")]
 	protected ResourceName m_sImageSetGlow;
 	[Attribute("1 1 1 1", UIWidgets.ColorPicker)]
@@ -157,16 +159,16 @@ class CRF_ManualMarker : GenericEntity
 	}
 	void SetDescription(string description)
 	{
-		RPC_SetDescription(description);
-		Rpc(RPC_SetDescription, description);
+		RPC_SetDescription(description, m_bJustText);
+		Rpc(RPC_SetDescription, description, m_bJustText);
 	}
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RPC_SetDescription(string description)
+	void RPC_SetDescription(string description, bool justText)
 	{
 		m_sDescription = description;
 		
 		// Update "On fly" if map open and marker exist
-		if (m_hManualMarkerComponent) m_hManualMarkerComponent.SetDescription(m_sDescription);
+		if (m_hManualMarkerComponent) m_hManualMarkerComponent.SetDescription(m_sDescription, justText);
 	}
 	
 	bool GetUseWorldScale()
@@ -339,7 +341,7 @@ class CRF_ManualMarker : GenericEntity
 		m_hManualMarkerComponent = CRF_ManualMarkerComponent.Cast(m_wRoot.FindHandler(CRF_ManualMarkerComponent));
 		m_hManualMarkerComponent.SetImage(m_sImageSet, m_sQuadName);
 		m_hManualMarkerComponent.SetImageGlow(m_sImageSetGlow, m_sQuadName);
-		m_hManualMarkerComponent.SetDescription(m_sDescription);
+		m_hManualMarkerComponent.SetDescription(m_sDescription, m_bJustText);
 		m_hManualMarkerComponent.SetColor(m_MarkerColor);
 		m_hManualMarkerComponent.OnMouseLeave(null, null, 0, 0);
 		m_hManualMarkerComponent.SetManualMarker(this);

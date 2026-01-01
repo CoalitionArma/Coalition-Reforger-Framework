@@ -6,7 +6,7 @@ class CRF_GamemodeClass : SCR_BaseGameModeClass {}
 //------------------------------------------------------------------------------------
 // Mission briefing descriptor for displaying mission information
 //------------------------------------------------------------------------------------
-[BaseContainerProps()]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sTitle"}, "%1")]
 class CRF_MissionDescriptor
 {
 	[Attribute("")]
@@ -803,8 +803,93 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		return m_aPendingPlayerInitializations.Contains(playerId);
 	}
+	
+	vector ComputeAOCenter(vector pts[4])
+	{
+		vector sum = "0 0 0";
+		int count = 0;
+	
+		for (int i = 0; i < 4; i++)
+		{
+			vector p = pts[i];
+			if (p[0] == 0 && p[1] == 0 && p[2] == 0)   // ignore empty
+				continue;
+	
+			sum += p;
+			count++;
+		}
+	
+		if (count == 0)
+			return "0 0 0";   // no data
+	
+		return sum / count;
+	}
+	
+	float ComputeAORadius(vector pts[4], vector center)
+	{
+		float maxDist = 0;
+	
+		for (int i = 0; i < 4; i++)
+		{
+			vector p = pts[i];
+			if (p[0] == 0 && p[1] == 0 && p[2] == 0)
+				continue;
+	
+			float d = vector.Distance(center, p);
+			if (d > maxDist)
+				maxDist = d;
+		}
+	
+		return maxDist;
+	}
+	
+	void GetAOCenterAndRadius(out vector center, out float radius)
+	{
+		CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
+		//We are cooked
+		if (!slottingMan)
+			return;
+		
+	 	center = ComputeAOCenter(slottingMan.m_vLastSlotRegisteredPosition);
+		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
+	}
+	
+	bool DoesFactionShareMarker(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": 
+				return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "OPFOR": 
+				return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "INDFOR": 
+				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "CIV": 
+				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+    	 }
+    	return true;
+ 	}
+	
+	bool IsSideBFTEnabled(string factionKey)
+	{
+		switch(factionKey)
+		{
+			case "BLUFOR":
+				return m_BLUFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "OPFOR":
+				return m_OPFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "INDFOR":
+				return m_INDFORGearScriptSettings.m_bEnableBFT;
+				break;
+			case "CIV":
+				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
+				break;
+		}
+   		return true;
+	}
 }
-
 //------------------------------------------------------------------------------------
 // Fix for manual camera to work with spectator menu
 //------------------------------------------------------------------------------------

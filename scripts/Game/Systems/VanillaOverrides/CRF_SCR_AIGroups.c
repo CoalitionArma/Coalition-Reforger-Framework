@@ -3,6 +3,9 @@ modded class SCR_AIGroup
 	[Attribute("0", category: "Group")]
 	protected bool m_bIsPlayable;
 	
+	[Attribute("0")]
+	bool m_bIsGarrisonGroup;
+	
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
 	protected CRF_EFlagType m_FlagType;
 	
@@ -20,6 +23,9 @@ modded class SCR_AIGroup
 	{
 		// Call the parent implementation first
 		super.EOnInit(owner);
+		
+		if (m_bIsGarrisonGroup)
+			GetGame().GetCallqueue().CallLater(SetGarrison, 1000, false);
 		
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
@@ -42,6 +48,23 @@ modded class SCR_AIGroup
 		};
 		
 		
+	}
+	
+	void SetGarrison()
+	{
+		array<AIAgent> agents = {};
+		GetAgents(agents);
+		foreach (AIAgent agent: agents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+			
+			if (!SCR_ChimeraCharacter.Cast(entity))
+				continue;
+			
+			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
+		}
 	}
 	
 	void SetGroupSlots(array<ResourceName> slots)
@@ -161,12 +184,29 @@ modded class SCR_AIGroup
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------
-	override void RemovePlayer(int playerID)
+	//------------------------------------------------------------------------------------------------	
+	// Removes the "x left your group" upon death or anything else. Fucking stupid tbh.
+	// This is a carbon copy of the method and may break if it changes in an update
+	override void RemovePlayer(int playerID) 
 	{
-		// Super up so we dont break the vanilla side
-		super.RemovePlayer(playerID);
+		if (!m_aPlayerIDs.Contains(playerID))
+			return;
 
+		//if player is last in group it doesnt matter as the group will get deleted
+		if (playerID == m_iLeaderID && GetPlayerCount() > 1)
+		{
+			SetCustomName("", 0);
+			SetCustomDescription("", 0);
+		}
+
+		RPC_DoRemovePlayer(playerID);
+		Rpc(RPC_DoRemovePlayer, playerID);
+		CheckForLeader(-1, false);
+		RemovePlayerAgent(playerID);
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_LEFT, playerID);
+		
+		// End of original method (aka super) ===========================================
+		
 		// Get player manager
 		PlayerManager playerManager = GetGame().GetPlayerManager();
 		if (!playerManager)

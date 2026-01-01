@@ -1,0 +1,170 @@
+$grp GenericEntity : "{972F01488E5B23C2}Prefabs/Structures/Military/CamoNets/US/CamoNet_Medium_Top_US.et" {
+ cacheA {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5D46D21E5FD531BA}" {
+    Enabled 1
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+   RplComponent "{5D46D21E5CE2E86E}" {
+    Enabled 1
+   }
+  }
+  coords 4264.106 382.069 902.367
+  angles 0 -8.922 0
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache A destroyed\", duration: 10);"\
+  "	"
+  {
+   $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords -3.173 -0.19 -0.114
+     angles 0 98.922 0
+     m_MarkerColor 0 0.125 0.502 1
+     m_sDescription "Cache A"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+    {
+     coords -54.921 26.106 -4.104
+     angles 0 98.922 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "mark-question"
+     m_sDescription "Cache A"
+     m_aVisibleForFactions {
+      "SPEC"
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+   GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
+    coords -0.541 -0.012 0.263
+    angles 0 8.922 0
+    {
+     GenericEntity {
+      ID "5DB6D404249F7F5C"
+      coords 0 -0.295 0
+     }
+    }
+   }
+  }
+ }
+ cacheB {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5D46D21E5FD531BA}" {
+    Enabled 1
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+   RplComponent "{5D46D21E5CE2E86E}" {
+    Enabled 1
+   }
+  }
+  coords 4274.838 447.547 1190.477
+  angles 0 -8.922 0
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache B destroyed\", duration: 10);"\
+  "	"
+  {
+   $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords -3.173 -0.19 -0.114
+     angles 0 98.922 0
+     m_MarkerColor 0 0.125 0.502 1
+     m_sDescription "Cache B"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+    {
+     coords 39.561 1.159 120.91
+     angles 0 98.922 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "mark-question"
+     m_sDescription "Cache B"
+     m_aVisibleForFactions {
+      "SPEC"
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+   GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
+    coords -0.541 -0.012 0.263
+    angles 0 8.922 0
+    {
+     GenericEntity {
+      ID "5DB6D404249F7F5C"
+      coords 0 -0.295 0
+     }
+    }
+   }
+  }
+ }
+ cacheC {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5D46D21E5FD531BA}" {
+    Enabled 1
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+   RplComponent "{5D46D21E5CE2E86E}" {
+    Enabled 1
+   }
+  }
+  coords 4666.914 426.077 1158.468
+  angles 0 -8.922 0
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache C destroyed\", duration: 10);"\
+  "	"
+  {
+   $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords -3.173 -0.19 -0.114
+     angles 0 98.922 0
+     m_MarkerColor 0 0.125 0.502 1
+     m_sDescription "Cache C"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+    {
+     coords -22.229 0.259 -49.077
+     angles 0 98.922 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "mark-question"
+     m_sDescription "Cache C"
+     m_aVisibleForFactions {
+      "SPEC"
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+   GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
+    coords -0.541 -0.012 0.263
+    angles 0 8.922 0
+    {
+     GenericEntity {
+      ID "5DB6D404249F7F5C"
+      coords 0 -0.295 0
+     }
+    }
+   }
+  }
+ }
+}

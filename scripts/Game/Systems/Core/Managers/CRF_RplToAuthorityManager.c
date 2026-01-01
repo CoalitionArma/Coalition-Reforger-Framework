@@ -14,6 +14,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_SafestartManager m_SafestartManager;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
@@ -54,6 +55,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
@@ -200,6 +202,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		Rpc(RpcAsk_AssignAdminTicket, ticketID, adminID, logAction); 
+	}
+	
+	void GetOpenTickets(int playerID)
+	{
+		Rpc(RpcAsk_GetOpenTickets, playerID); 
+	}
+	
+	void GetTicketMessages(int playerID, int ticketID)
+	{
+		Rpc(RpcAsk_GetTicketMessages, playerID, ticketID); 
 	}
 	
 	// Player management functions
@@ -377,6 +389,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
+	}
+	
+	void RequestSpreadPos(RplId entityId)
+	{
+		Rpc(RpcAsk_RequestSpreadPos, entityId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -607,7 +624,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_SendAdminMessage", bytes);
 		
-		m_RplBroadcastManager.SendAdminMessage(data, playerID);
+		// Broadcast a new ticket/message to admins
+		bool ticketExists = m_AdminMenuManager.TicketExists(playerID);
+		m_RplBroadcastManager.SendAdminMessage(data, playerID, ticketExists);
+		
+		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
+		if (!SCR_Global.IsAdmin(playerID) && !m_GamemodeManager.IsModerator(playerID))
+			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -619,6 +642,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_ReplyAdminMessage", bytes);
 		
+		// Create a new ticket or/and add reply to existing ticket
+		m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
+		
+		// Broadcast to the reply to the player
 		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
 	}
 	
@@ -630,7 +657,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_CloseAdminTicket", bytes);
 		
-		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, logAction);
+		m_AdminMenuManager.CloseTicket(ticketID);
+		
+		// Broadcast to admins that ticket was clsoed
+		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, true);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -641,7 +671,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_AssignAdminTicket", bytes);
 		
-		m_RplBroadcastManager.AssignAdminTicket(ticketID, adminID, logAction);
+		m_AdminMenuManager.AssignAdminTicket(ticketID, adminID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_GetOpenTickets(int playerID)
+	{
+		m_RplBroadcastManager.GetOpenTickets(playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_GetTicketMessages(int playerID, int ticketID)
+	{
+		m_RplBroadcastManager.GetTicketMessages(playerID, ticketID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1333,7 +1375,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			for (int i = 0; i < magazineCount; i++)
 			{
 				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
-				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false, false);
+				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false);
 			}
 			currentMagazine++;
 		}
@@ -1748,6 +1790,126 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				}
 			}
 			CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
+		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestSpreadPos(RplId entityId)
+	{
+		if (!Replication.FindItem(entityId))
+			return;
+		
+		IEntity entity = RplComponent.Cast(Replication.FindItem(entityId)).GetEntity();
+		if (!entity)
+			return;
+		
+		if (!entity.FindComponent(CRF_PlayableCharacter))
+			return;
+		
+		CRF_PlayableCharacter playableCharacter = CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter));
+		playableCharacter.SendSpreadPos();
+	}
+	
+	void SharerMapMarkerGlobal(int markerUID, int playerId)
+	{
+		Faction playerFaction = SCR_FactionManager.SGetLocalPlayerFaction();
+		if (!playerFaction)
+			return;
+		
+		Rpc(RpcAsk_ShareMapMarkerGlobal, markerUID, playerFaction.GetFactionKey(), playerId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
+	{
+		array<int> playerIds = {};
+		PlayerManager pm = GetGame().GetPlayerManager();
+		pm.GetPlayers(playerIds);
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionManager)
+			return;
+		foreach (int otherPlayerId: playerIds)
+		{
+			if (playerId == otherPlayerId)
+				continue;
+			
+			Faction playerFaction = factionManager.GetPlayerFaction(otherPlayerId);
+			if (!playerFaction)
+				continue;
+			
+			if (playerFaction.GetFactionKey() != factionKey)
+				continue;
+			
+			SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
+			if (!pc)
+				continue;
+			
+			pc.SharerMarkerGlobal(markerUID);
+			array<int> tempMarkerArray = {};
+			tempMarkerArray.Insert(markerUID);
+			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
+		}
+	}
+	
+	void ShareMapMarkers()
+	{
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		array<int> markerUIDs = {};
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (marker.m_bIsShared)
+				markerUIDs.Insert(marker.GetMarkerID());
+		}
+		
+		Rpc(RpcAsk_ShareMapMarkers,markerUIDs, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
+	{
+		PlayerManager pm = GetGame().GetPlayerManager();
+		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
+		if (!playerEntity)
+			return;
+		
+		// Get the faction of the sharing player
+		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
+			
+		Faction sharingPlayerFaction = factionMan.GetPlayerFaction(playerId);
+		if (!sharingPlayerFaction)
+			return;
+		
+		array<int> playerIds = {};
+		pm.GetPlayers(playerIds);
+		foreach (int otherPlayerId: playerIds)
+		{
+			if (otherPlayerId == playerId)
+				continue;
+			
+			IEntity entity = pm.GetPlayerControlledEntity(otherPlayerId);
+			if (!entity)
+				continue;
+			
+			// Check distance - only share with nearby players
+			if (vector.Distance(playerEntity.GetOrigin(), entity.GetOrigin()) > SCR_MapMarkerManagerComponent.MARKER_SHARE_DISTANCE)
+				continue;
+			
+			// Check faction - only share with same faction players
+			Faction otherPlayerFaction = factionMan.GetPlayerFaction(otherPlayerId);
+			if (!otherPlayerFaction || otherPlayerFaction != sharingPlayerFaction)
+				continue;
+			
+			SCR_PlayerController otherController = SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
+			if (!otherController)
+				continue;
+				
+			otherController.ShareMarker(markerUIDs);
+			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(markerUIDs, otherPlayerId);
 		}
 	}
 };

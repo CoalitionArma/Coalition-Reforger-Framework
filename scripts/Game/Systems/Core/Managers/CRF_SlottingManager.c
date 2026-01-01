@@ -17,6 +17,12 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
+	//0 - BLUFOR
+	//1 - OPFOR
+	//2 - INDFOR
+	//3 - CIV
+	vector m_vLastSlotRegisteredPosition[4] = {"0 0 0", "0 0 0", "0 0 0", "0 0 0"};
+	
 	protected static CRF_SlottingManager m_sInstance;
 	
 	// Resource caching for optimized spawning
@@ -643,6 +649,22 @@ class CRF_SlottingManager : ScriptComponent
 		RplComponent groupRplComp = RplComponent.Cast(group.FindComponent(RplComponent));
 		slotData.SetSlotCurrentGroup(groupRplComp.Id());
 		slotData.SetSlotFactionKey(group.GetFaction().GetFactionKey());
+		
+		switch(group.GetFaction().GetFactionKey())
+		{
+			case "BLUFOR": 
+				m_vLastSlotRegisteredPosition[0] = entity.GetOrigin();
+				break;
+			case "OPFOR": 
+				m_vLastSlotRegisteredPosition[1] = entity.GetOrigin();
+				break;
+			case "INDFOR": 
+				m_vLastSlotRegisteredPosition[2] = entity.GetOrigin();
+				break;
+			case "CIV": 
+				m_vLastSlotRegisteredPosition[3] = entity.GetOrigin();
+				break;
+		}
 		
 		// Set position
 		vector tempVec[4];

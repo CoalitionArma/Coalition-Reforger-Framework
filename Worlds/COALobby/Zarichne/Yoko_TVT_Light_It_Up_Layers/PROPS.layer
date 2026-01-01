@@ -1,0 +1,224 @@
+$grp GenericEntity : "{405637751A0755F8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_Conflict_FIA_01.et" {
+ {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    Enabled 0
+   }
+  }
+  coords 2604.709 6.601 3569.663
+  angles 0 52.43 0
+  {
+   GenericEntity {
+    ID "65914ADA7DCF585D"
+    components {
+     ActionsManagerComponent "{5CB66A0F7D87DD32}" {
+      Enabled 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "65914ADA7DCF0966"
+    components {
+     SCR_SpawnPositionComponent "{5DCAAA19520B7416}" {
+      Enabled 0
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    Enabled 0
+   }
+  }
+  coords 3263.957 13.174 3633.004
+  angles 0 176.202 -1.067
+  {
+   GenericEntity {
+    ID "65914ADA7DCF585D"
+    components {
+     ActionsManagerComponent "{5CB66A0F7D87DD32}" {
+      Enabled 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "65914ADA7DCF0966"
+    components {
+     SCR_SpawnPositionComponent "{5DCAAA19520B7416}" {
+      Enabled 0
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
+ {
+  coords 2624.667 6.389 3574.873
+  angles 0 -57.788 0
+ }
+ {
+  coords 3274.935 13.72 3629.525
+  angles -3.773 -57.788 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{4B562C4A5132F9D8}Prefabs/Structures/Ruins/House_Ruin_1I01/House_Ruin_1I01_V2_base.et" {
+ coords 2419.735 -0.077 3509.274
+ angles 0 41.498 0
+}
+$grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ {
+  coords 2183.82 1.191 3497.068
+  angles 0 -104.394 0
+  {
+   GenericEntity {
+    ID "5CCCBED96B5A2281"
+    coords -3.701 0.047 -0.715
+    angles 0 -104.18 0
+   }
+   GenericEntity {
+    ID "5CCCBED96B5A22B1"
+    coords 2.93 -0.075 -1.214
+    angles 0 -70.516 0
+   }
+  }
+ }
+ {
+  coords 2411.156 2.938 3517
+  angles 0 -88.003 0
+ }
+}
+GenericEntity : "{82E175249B28B1ED}Prefabs/Props/Recreation/Camp/TentBig_02/TentBig_02_base.et" {
+ coords 2861.793 22.678 3684.62
+ angles 0 -64.852 0
+}
+SCR_DestructibleBuildingEntity : "{8F4638A94301B14D}Prefabs/Structures/Ruins/House_Ruin_1I01/House_Ruin_1I01_V2.et" {
+ coords 2759.817 0 3670.674
+ angles 0 -88.836 0
+}
+$grp GenericEntity : "{B73423FE52121937}Prefabs/Props/Furniture/DeckChair_01/DeckChair_01_greenstripe.et" {
+ {
+  coords 2588.027 6.125 3574.088
+  angles 0 27.945 0
+ }
+ {
+  coords 2589.996 6.124 3578.554
+  angles 0 -154.329 0
+ }
+ {
+  coords 2418.583 2.697 3508.778
+  angles 0 -87.32 0
+ }
+ {
+  coords 2416.952 2.754 3507.314
+  angles 0 -9.784 0
+ }
+}
+$grp GenericEntity : "{BC1F6A91A8756582}Prefabs/Props/Furniture/DeckChair_01/DeckChair_01_turquoise.et" {
+ {
+  coords 2669.435 13.062 3551.22
+  angles 0 -56.624 0
+ }
+ {
+  coords 2670.256 12.772 3553.966
+  angles 0 -107.767 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{C164FD53E7B7A776}Prefabs/Structures/Ruins/House_Ruin_1I01/House_Ruin_1I01_V1_base.et" {
+ coords 2778.067 -0 3648.592
+ angles 0 -114.111 0
+}
+SCR_DestructibleBuildingEntity : "{C212C8AC6001F002}Prefabs/Structures/Houses/Wooden/House_Wooden_E_1I01/House_Wooden_E_1I01.et" {
+ coords 2812.853 1.517 3627.166
+ angles 0 -95.666 0
+}
+StaticModelEntity : "{C4C4DE9135340298}Prefabs/Compositions/Misc/SubCompositions/Tent_Barrack_Cluttered_US_05.et" {
+ coords 2579.437 8.909 3615.409
+ angles 0 -7.177 0
+}
+$grp GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_US_01.et" {
+ {
+  coords 2852.567 23.035 3691.459
+  angles 0 -5.75 0
+ }
+ {
+  coords 2849.482 22.639 3680.598
+  angles 0 -145.282 0
+ }
+ {
+  coords 2892.882 22.572 3637.177
+  angles 0 -92.773 -0.357
+ }
+}
+$grp GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ {
+  coords 2667.935 12.993 3553.266
+  {
+   ParticleEffectEntity : "{899360C930DA3EE3}Prefabs/Particles/Campfire_burning.et" {
+    coords 0.057 0.092 0.043
+   }
+  }
+ }
+ {
+  coords 2588.835 6.124 3576.278
+  angles 0 97.581 0
+  {
+   ParticleEffectEntity : "{899360C930DA3EE3}Prefabs/Particles/Campfire_burning.et" {
+    coords 0.058 0 0.043
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{DC1CA32A90006916}Prefabs/Structures/Houses/Village/HouseAddon_Workshop_E_01/HouseAddon_Workshop_E_01.et" {
+ coords 2631.034 0.838 3548.638
+ angles 0 42.311 0
+}
+GenericEntity : "{DED4DB7D08E6E0BE}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01.et" {
+ coords 2619.483 5.981 3566.128
+ angles 0 -43.489 0
+}
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 2096.47 12.489 3538.83
+  angles 0 -122.205 0
+ }
+ {
+  coords 2534.433 18.788 3645.797
+  angles 0 -88.341 0
+ }
+}
+$grp GenericEntity : "{E68D72D11ACBB6DC}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Medium_Top_FIA_01.et" {
+ {
+  coords 2666.459 12.57 3539.381
+ }
+ {
+  coords 2650.569 8.048 3558.506
+  angles 0 69.392 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {
+ {
+  coords 2709.319 5.832 3672.1
+  angles 0 -90.755 0
+ }
+ {
+  coords 2797.42 5.724 3498.475
+  angles 0 -57.963 0
+ }
+ {
+  coords 2980.792 5.312 3577.625
+  angles 0 -150.994 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{FBCE1861B987EA68}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01.et" {
+ {
+  coords 2666.35 5.229 3583.953
+  angles 0 -156.952 0
+ }
+ {
+  coords 2687.907 4.791 3545.54
+  angles 0 -89.842 0
+ }
+}

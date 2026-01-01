@@ -1,0 +1,86 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5536.658 95.531 6049.953
+  angles 0 30 0
+  m_rVehicle "{CD1B5570AF3D50B6}Prefabs/Vehicles/Wheeled/M998/M1025_ION.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5531.658 95.5 6040.375
+  angles 0 30 0
+  m_rVehicle "{053040D358C1DC44}Prefabs/Vehicles/Wheeled/M998/M1025_ION_armed_m2hb.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5031.955 176.055 6983.572
+  angles 0 220 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5039.166 176.502 6994.487
+  angles 0 210 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5047.721 176.959 7007.621
+  angles 0 215 0
+  m_rVehicle "{4E3A86638BFF9FC6}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_USAF.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5055.564 177.348 7019.586
+  angles 0 215 0
+  m_rVehicle "{4E3A86638BFF9FC6}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_USAF.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 5528.392 95.528 6032.679
+  angles 0 30 0
+  m_rVehicle "{053040D358C1DC44}Prefabs/Vehicles/Wheeled/M998/M1025_ION_armed_m2hb.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4900.627 35.813 9107.836
+  angles 0 120 0
+  m_rVehicle "{B15B8D3E31D43639}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_OD.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2829.827 86.457 6341.85
+  angles 0 330 0
+  m_rVehicle "{1FF144F8A209239D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_arsenal.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2846.858 86.561 6335.071
+  angles 0 270 0
+  m_rVehicle "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2860.33 86.786 6337.005
+  angles 0 260 0
+  m_rVehicle "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2877.7 87.164 6339.507
+  angles 0 260 0
+  m_rVehicle "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}

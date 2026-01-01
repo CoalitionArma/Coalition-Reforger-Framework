@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E588FE0346DE7D59}Worlds/COALobby/Kolguyev/Salami_TVT_RadioScramble.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,25 @@
+GenericEntity : "{A507D9AE39652BD6}Prefabs/Vehicles/Core/Vehicle_Part_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  MeshObject "{4B42E716914465B9}" {
+   Object "{86A7E1B27390862D}Assets/Vehicles/SharedMeshes/DecalVehicle.xob"
+   Materials {
+    MaterialAssignClass "{673A19048A975E0C}" {
+     SourceMaterial "decal_plane"
+     AssignedMaterial "{1A5247B944882C58}Assets/Vehicles/SharedMaterials/decals/numbers/Data/decal_germanFlag.emat"
+    }
+   }
+  }
+  RHS_MaterialController "{673A19070A102373}" {
+   m_iNumberOfTextures 10
+   m_sGroupName "GROUP"
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Enabled 0
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   Enabled 0
+  }
+ }
+ coords 0.428 0.924 -0.662
+}

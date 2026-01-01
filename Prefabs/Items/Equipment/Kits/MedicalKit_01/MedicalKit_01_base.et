@@ -1,0 +1,11 @@
+GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_HealSupportStationComponent "{5E68A54C698EFD84}" {
+   m_bAllowGetFactionFromParent 0
+   m_eSupportStationPriority MEDIUM
+   m_fRange 7
+   m_eFactionUsageCheck 0
+  }
+ }
+}
