@@ -554,11 +554,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
-		// Data collector stuff for stats
-		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-		SCR_InstigatorContextData inst = new SCR_InstigatorContextData(GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity), entity, killerEntity, instigator);
-		dc.OnPlayerKilled(inst);
-
+		// Note: The base game's data collector is automatically triggered by super.OnControllableDestroyed()
+		// Our modded CRF_SCR_DataCollectorComponent.OnPlayerKilled() hooks into this and calls the logging manager
+		
 		// Create instigator context for tracking kill details
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
 		int playerId = instigatorContextData.GetVictimPlayerID();

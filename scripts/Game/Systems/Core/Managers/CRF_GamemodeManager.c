@@ -408,10 +408,14 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			alreadyCreated = false;
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
-			// Run datacollector for stats
+			
+			// Notify data collector about the spawn
 			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-			//Tanaka TODO
-			//dc.OnPlayerSpawnFinalize_S(playerId, playerCharacter);
+			if (dc)
+			{
+				// Use our custom notification method since we don't use the spawn request system
+				dc.NotifyPlayerSpawned(playerId, playerCharacter);
+			}
 		}
 			
 		return playerCharacter;

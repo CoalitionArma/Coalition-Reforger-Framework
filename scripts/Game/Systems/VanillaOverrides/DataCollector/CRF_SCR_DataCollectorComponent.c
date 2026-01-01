@@ -48,6 +48,20 @@ modded class SCR_DataCollectorComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Helper method for custom spawn systems that don't use the spawn request system
+	// Call this when spawning players through custom methods to ensure data collector modules are notified
+	void NotifyPlayerSpawned(int playerId, IEntity entity)
+	{
+		if (!entity || playerId <= 0)
+			return;
+		
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.OnPlayerSpawned(playerId, entity);
+		}
+	}
+	
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		foreach (SCR_DataCollectorModule module : m_aModules)

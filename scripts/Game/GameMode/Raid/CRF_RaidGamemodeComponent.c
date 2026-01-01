@@ -381,6 +381,13 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		playerController.SetInitialMainEntity(entity);
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
 		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerController.GetPlayerId(), playerRplComp.Id());
+		
+		// Notify data collector about the spawn
+		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+		if (dc)
+		{
+			dc.NotifyPlayerSpawned(playerController.GetPlayerId(), entity);
+		}
 	}
 	
 	void AssignPlayerToGroup(int groupId, int playerId, RplId groupRplId)
