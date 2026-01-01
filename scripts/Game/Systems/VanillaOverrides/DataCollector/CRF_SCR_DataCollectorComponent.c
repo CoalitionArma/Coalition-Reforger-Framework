@@ -187,12 +187,32 @@ modded class SCR_DataCollectorComponent
 	
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
-		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId);
+		// Get player data without creating new instance
+		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId, false);
+		
+		// Safety check: Player might disconnect before data was initialized
+		if (!playerDisconnectedData)
+		{
+			Print(string.Format("[CRF_DataCollector] Player %1 disconnected before data initialization", 
+				playerId), LogLevel.VERBOSE);
+			return;
+		}
+		
+		// Safety check: Player might disconnect before profile was loaded from backend
+		if (!playerDisconnectedData.IsDataReady())
+		{
+			Print(string.Format("[CRF_DataCollector] Player %1 disconnected before profile loaded", 
+				playerId), LogLevel.VERBOSE);
+			return;
+		}
+		
+		// Notify all modules about disconnect
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerDisconnected(playerId);
 		}
 
+		// Save player profile to backend
 		playerDisconnectedData.StoreProfile();
 
 		// ADD STATS TO FACTION
