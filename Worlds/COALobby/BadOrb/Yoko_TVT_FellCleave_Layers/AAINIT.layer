@@ -1,0 +1,170 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 4762.783 181.58 3975.338
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_MissionValidatorComponent "{673840BF325F3243}" {
+   m_bBlockOnCriticalErrors 1
+  }
+  CRF_RushGamemodeManager "{673840BF08C35DAF}" {
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+    }
+   }
+  }
+ }
+ coords 4763.256 167.389 3668.946
+ m_iTimeLimitMinutes 80
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "After a successful capture of Ruckberg, US Forces set their eyes on Westen Bad Orb and the valley to its south. "\
+   ""\
+   "BLUFOR Composition: Mechanized Infantry Platoon"\
+   "BLUFOR Assets: 4x M1A2 Abrams, 3x M2A2 Bradley and 2x Recon Drone"\
+   ""\
+   "OPFOR Composition: Mechanized Infantry Platoon"\
+   "OPFOR Assets:  2x T72A, 3x BMP1P, 1x Mortar Team, 1x Eng Team and 2x Recon Drone"\
+   ""\
+   "Time: 12:00 A.M"\
+   ""\
+   "Weather: Overcast"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "You have the upper hand in number of armored assets, use your drones to spot out enemy armor before attacking the mcoms."\
+   ""\
+   "Don't sit still, keep moving otherwise you'll  catch mortar fire."\
+   ""\
+   "You have limited infantry squads protect them,  as they are your easiest way to destory the objectives."\
+   ""\
+   "All Vehicles respawn with your respawn"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "The enemy has more armored assets, than you play safe and slow the enemy's advance. If the enemy is sitting still call in mortars to flush them out. They have limtied infantry squads, killing them makes destorying the objects a lot harder."\
+   ""\
+   "You also have two build trucks to fortifiy the MCOMs and mortar emplacements are at MCOM E."\
+   ""\
+   "All Vehicles respawn with your respawn."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{D0E73DFF58988B36}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_HMGSPP.conf"
+ }
+ {
+  SCR_FactionManager "673840A73340C8D3" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{673840AF1E1314DA}" {
+        m_sCallsign "Crew 1 (Abrams)"
+       }
+       SCR_CallsignInfo "{673840AF036485A9}" {
+        m_sCallsign "Crew 2 (Abrams)"
+       }
+       SCR_CallsignInfo "{673840AF071B8DBA}" {
+        m_sCallsign "Crew 3 (Abrams)"
+       }
+       SCR_CallsignInfo "{673840AF2BBEBC9E}" {
+        m_sCallsign "Crew 4 (Abrams)"
+       }
+       SCR_CallsignInfo "{673840AF2C2D3D7D}" {
+        m_sCallsign "Crew 5  (Bradley)"
+       }
+       SCR_CallsignInfo "{673840A0D3F27802}" {
+        m_sCallsign "Crew 6 (Bradley)"
+       }
+       SCR_CallsignInfo "{673923D70251089C}" {
+        m_sCallsign "Crew 7 (Bradley)"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Eng Team"
+       }
+       SCR_CallsignInfo "{673840A0507F58CF}" {
+        m_sCallsign "Mortar Team"
+       }
+       SCR_CallsignInfo "{673840A053BE456A}" {
+        m_sCallsign "Crew 1 (T72A)"
+       }
+       SCR_CallsignInfo "{673840A053415961}" {
+        m_sCallsign "Crew 2 (T72A)"
+       }
+       SCR_CallsignInfo "{673840A056459A0D}" {
+        m_sCallsign "Crew 3 (BMP1P)"
+       }
+       SCR_CallsignInfo "{673923D6DE30269B}" {
+        m_sCallsign "Crew 4 (BMP1P)"
+       }
+       SCR_CallsignInfo "{673923D6C661F8DF}" {
+        m_sCallsign "Crew 5 (BMP1P)"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ MRTS {
+  coords 4699.174 293.889 2737.137
+  angles 0 89.99 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Mortars"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ BLULOA {
+  coords 1822.057 300.697 3896.152
+  angles 0 89.99 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_sDescription "BLUFOR  LOA"
+  m_bShowForAnyFaction 1
+ }
+ BLULOA3 {
+  coords 1717.718 285.111 4430.147
+  angles 0 89.99 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_sDescription "BLUFOR  LOA"
+  m_bShowForAnyFaction 1
+ }
+ BLULOA2 {
+  coords 1638.181 156.523 4176.618
+  angles 0 89.99 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_sDescription "BLUFOR  LOA"
+  m_bShowForAnyFaction 1
+ }
+}
