@@ -1,0 +1,33 @@
+$grp SCR_BaseTriggerEntity {
+ Zone_A {
+  coords 6246.177 17.714 2174.29
+ }
+ Zone_B {
+  coords 6454.998 5.75 2635.247
+ }
+ Zone_C {
+  coords 6872.203 5.75 2518.658
+ }
+ Zone_D {
+  coords 7097.213 17.908 2746.729
+ }
+ Zone_E {
+  coords 7079.485 5.75 3124.958
+ }
+}
+GenericEntity : "{4EBC47B8D0D10809}Prefabs/Structures/Frontline/FlagPole_Zone_D.et" {
+ coords 7097.106 19.235 2746.761
+}
+GenericEntity : "{73886280A5BD813E}Prefabs/Structures/Frontline/FlagPole_Zone_C.et" {
+ coords 6872.046 6.968 2518.629
+}
+GenericEntity : "{96142E79A9581655}Prefabs/Structures/Frontline/FlagPole_Zone_B.et" {
+ coords 6454.226 7.042 2635.31
+}
+GenericEntity : "{AB200B41DC349F62}Prefabs/Structures/Frontline/FlagPole_Zone_E.et" {
+ coords 7079.731 7.089 3124.092
+}
+GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
+ coords 6237.716 7.522 2168.558
+ angles 0 60.019 0
+}
