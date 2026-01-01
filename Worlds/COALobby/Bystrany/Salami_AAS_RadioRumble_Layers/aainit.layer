@@ -36,12 +36,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather:"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Capture the Radio Tower"\
-   "Capture the Castle"
-  }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Defend the Radio Tower"\
    "Defend the Castle"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Capture the Radio Tower"\
+   "Capture the Castle"
   }
  }
  m_iFactionOneRatio 2
