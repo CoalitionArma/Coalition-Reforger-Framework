@@ -378,9 +378,24 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void AssignPlayerToCharacter(SCR_PlayerController playerController, IEntity entity)
 	{
+		if (!playerController || !entity)
+		{
+			Print("[CRF_Raid] ERROR: AssignPlayerToCharacter called with null parameters", LogLevel.ERROR);
+			return;
+		}
+		
+		int playerId = playerController.GetPlayerId();
+		
 		playerController.SetInitialMainEntity(entity);
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
-		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerController.GetPlayerId(), playerRplComp.Id());
+		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerId, playerRplComp.Id());
+		
+		// Notify data collector about the spawn
+		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+		if (dc)
+		{
+			dc.NotifyPlayerSpawned(playerId, entity);
+		}
 	}
 	
 	void AssignPlayerToGroup(int groupId, int playerId, RplId groupRplId)

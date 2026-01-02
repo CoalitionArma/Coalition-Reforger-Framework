@@ -406,12 +406,23 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
 		{
 			alreadyCreated = false;
+			
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
-			// Run datacollector for stats
+			
+			if (!playerCharacter)
+			{
+				Print(string.Format("[CRF_GamemodeManager] ERROR: Failed to spawn character for player %1", playerId), LogLevel.ERROR);
+				return null;
+			}
+			
+			// Notify data collector about the spawn
 			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-			//Tanaka TODO
-			//dc.OnPlayerSpawnFinalize_S(playerId, playerCharacter);
+			if (dc)
+			{
+				// Use our custom notification method since we don't use the spawn request system
+				dc.NotifyPlayerSpawned(playerId, playerCharacter);
+			}
 		}
 			
 		return playerCharacter;

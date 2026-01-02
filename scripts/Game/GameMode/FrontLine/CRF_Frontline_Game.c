@@ -613,7 +613,14 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateClients()
 	{
-		CRF_PlayerControllerManager.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
+		CRF_PlayerControllerManager instance = CRF_PlayerControllerManager.GetInstance();
+		if (!instance)
+		{
+			Print("[CRF_Frontline] WARNING: CRF_PlayerControllerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
+			return;
+		}
+		
+		instance.UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------
