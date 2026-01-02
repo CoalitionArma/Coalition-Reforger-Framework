@@ -30,6 +30,9 @@ class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 
 		foreach (string config : allConfigs)
 		{
+			if (config.Contains("Variants") || config.Contains("Obsolete") || config.Contains("Specials"))
+				continue;
+			
 			string key = config.Substring(config.LastIndexOf("/") + 1, config.LastIndexOf(".") - config.LastIndexOf("/") - 1);
 			key.Replace("CRF_GS_", "");
 			
