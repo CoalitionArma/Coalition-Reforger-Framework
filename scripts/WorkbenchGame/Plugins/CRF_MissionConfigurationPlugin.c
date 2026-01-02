@@ -5,31 +5,30 @@
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0xF6E8)
+	awesomeFontCode: 0x0033)
 ] 
 class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 {	
-	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("<Author>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Author>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	string m_iMissionAuthor;
 	
-	[Attribute("<Name>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Name>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	string m_iMissionName;
 	
-	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - General")]
+	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - Mission Info")]
 	int m_iMissionTimeLimitInMinutes;
 	
-	[Attribute("<Playercount>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Playercount>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	int m_iMissionPlayercount;
 	
-	[Attribute("<Mode>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Mode>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	string m_iMissionMode;
 	
-	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	string m_iMissionDescription;
 	
-	[Attribute("<Terrain Name>", "auto", "", category: "CRF Mission Config - General")]
+	[Attribute("<Terrain Name>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	string m_iMissionTerrain;
 
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
@@ -53,15 +52,39 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - Safestart")]
 	bool m_bLockSlotsAfterSafestart;
 
-	protected static const string CAPTION_INTRO =						"Mission Setup";
-	protected static const string CAPTION_VALIDATION =					"Game Mode Setup - World Scan";
-	protected static const string CAPTION_VALIDATION_RESULTS =			"Game Mode Setup - World Scan Results";
-	protected static const string CAPTION_GENERATION =					"Game Mode Setup - World Configuration";
-	protected static const string CAPTION_GENERATION_RESULTS =			"Game Mode Setup - World Configuration Completed";
-	protected static const string CAPTION_MISSION_HEADER =				"Game Mode Setup - Mission Header";
-	protected static const string CAPTION_MISSION_HEADER_RESULTS =		"Game Mode Setup - Mission Header Created";
-	protected static const string CAPTION_OUTRO_GOOD =					"Game Mode Setup - Success";
-	protected static const string CAPTION_OUTRO_BAD =					"Game Mode Setup - Actions Required";
+	protected static const string DESCRIPTION_INTRO =					"Welcome to step-by-step setup of a CRF mission.\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY";
+	//------------------------------------------------------------------------------------------------
+	override void Run()
+	{
+		if (!Workbench.ScriptDialog(
+		"Mission Config Generator", 
+		DESCRIPTION_INTRO, 
+		this))
+			return;
+
+		//CRF_MissionSetupPluginValidation dialog = new CRF_MissionSetupPluginValidation();
+		
+		//if (!Workbench.ScriptDialog(
+		//"Mission Config Generator", 
+		//DESCRIPTION_INTRO, 
+		//this))
+		//	return;
+
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[ButtonAttribute("Cancel")]
+	protected bool ButtonCancel()
+	{
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[ButtonAttribute("Next", true)]
+	protected bool ButtonNext()
+	{
+		return true;
+	}
 }
 	/*
 	protected static const string DESCRIPTION_INTRO =					"Welcome to step-by-step setup of a CRF mission.\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY";
@@ -549,7 +572,7 @@ class CRF_MissionSetupPluginError
 		return 0;
 	}
 }
-
+	*/
 [EnumLinear()]
 enum CRF_EMissionSetupPage
 {
@@ -572,5 +595,4 @@ enum CRF_EMissionSetupButton
 	SKIP,
 	VALIDATE,
 }
-	*/
 #endif

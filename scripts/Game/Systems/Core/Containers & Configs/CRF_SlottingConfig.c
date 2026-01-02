@@ -27,13 +27,15 @@ class CRF_SlottingGroup
 		if (!m_eOwnerSrc)
 			return;
 		
-		if (!m_WorldAPI.CreateObjectVariableMember(m_eOwnerSrc, path, "m_iTimeToRespawn", "CRF_Gamemode"))
-			return;
-
-		path.Insert(new ContainerIdPathEntry("m_iTimeToRespawn"));
-
-		if (!m_WorldAPI.SetVariableValue(m_eOwnerSrc, path, "m_iTimeToRespawn", "999"))
-			return;
+		m_WorldAPI.BeginEditSequence(m_eOwnerSrc);
+		m_WorldAPI.BeginEntityAction("Modify Properties");
+		
+		m_WorldAPI.SetVariableValue(m_eOwnerSrc, null, "m_iTimeToRespawn", "50");
+		
+		m_WorldAPI.EndEntityAction();
+		m_WorldAPI.EndEditSequence(m_eOwnerSrc);
+		
+		m_WorldAPI.UpdateSelectionGui();
 				
 		//m_WorldAPI.SetVariableValue(m_eOwnerSrc, null, "m_iTimeToRespawn", "69");
 		/*
