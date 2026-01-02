@@ -54,12 +54,24 @@ modded class SCR_DataCollectorComponent
 	void NotifyPlayerSpawned(int playerId, IEntity entity)
 	{
 		if (!entity || playerId <= 0)
+		{
+			Print(string.Format("[CRF_DataCollector] NotifyPlayerSpawned called with invalid params: playerId=%1, entity=%2", 
+				playerId, entity), LogLevel.WARNING);
 			return;
+		}
 		
+		Print(string.Format("[CRF_DataCollector] Player %1 spawned, notifying %2 modules", 
+			playerId, m_aModules.Count()), LogLevel.NORMAL);
+		
+		int modulesNotified = 0;
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerSpawned(playerId, entity);
+			modulesNotified++;
 		}
+		
+		Print(string.Format("[CRF_DataCollector] Successfully notified %1 modules for player %2", 
+			modulesNotified, playerId), LogLevel.VERBOSE);
 	}
 	
 	override void OnGameModeEnd(SCR_GameModeEndData data)

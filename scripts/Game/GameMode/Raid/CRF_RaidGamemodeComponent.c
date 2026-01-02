@@ -378,15 +378,29 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void AssignPlayerToCharacter(SCR_PlayerController playerController, IEntity entity)
 	{
+		if (!playerController || !entity)
+		{
+			Print("[CRF_Raid] ERROR: AssignPlayerToCharacter called with null parameters", LogLevel.ERROR);
+			return;
+		}
+		
+		int playerId = playerController.GetPlayerId();
+		Print(string.Format("[CRF_Raid] Assigning player %1 to entity %2", playerId), LogLevel.NORMAL);
+		
 		playerController.SetInitialMainEntity(entity);
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
-		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerController.GetPlayerId(), playerRplComp.Id());
+		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerId, playerRplComp.Id());
 		
 		// Notify data collector about the spawn
 		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
 		if (dc)
 		{
-			dc.NotifyPlayerSpawned(playerController.GetPlayerId(), entity);
+			Print(string.Format("[CRF_Raid] Notifying data collector about player %1 spawn", playerId), LogLevel.VERBOSE);
+			dc.NotifyPlayerSpawned(playerId, entity);
+		}
+		else
+		{
+			Print("[CRF_Raid] WARNING: Data collector not found!", LogLevel.WARNING);
 		}
 	}
 	

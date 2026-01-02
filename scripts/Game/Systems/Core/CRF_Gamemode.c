@@ -740,8 +740,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (m_SlottingManager)
 				m_SlottingManager.SetMassInitializationInProgress(true);
 			
-			Print(string.Format("[CRF] Starting batch initialization for %1 players", 
-				m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
+			//Print(string.Format("[CRF] Starting batch initialization for %1 players", m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
 		}
 	}
 	

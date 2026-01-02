@@ -400,11 +400,13 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 */
 	void OpenCurrentStateMenu()
 	{	
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && !m_Gamemode.m_bUseAAR)
-			return;
-		
+		// Initialize references first
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		
+		// Check if we should skip AAR
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && !m_Gamemode.m_bUseAAR)
+			return;
 		
 		// Close any existing menus
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
