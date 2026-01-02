@@ -71,6 +71,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private Faction m_Faction;
 	private CRF_Gamemode m_GM;
 	
+	// Cached references for performance
+	private ArmaReforgerScripted m_Game;
+	private BackendApi m_BackendApi;
+	private BaseWorld m_World;
+	
 	// Winner tracking variables
 	private FactionKey m_sWinningFaction = "";
 	private string m_sWinnerMethod = ""; // "automatic", "manual", "timeout", "inconclusive"
@@ -89,6 +94,14 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Initialize damage tracking maps
 		m_mPendingDamageWeapons = new map<string, string>();
 		m_mPendingDamageTypes = new map<string, int>();
+		
+		// Cache frequently accessed singleton references
+		m_Game = GetGame();
+		if (m_Game)
+		{
+			m_BackendApi = m_Game.GetBackendApi();
+			m_World = m_Game.GetWorld();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -115,10 +128,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 		
-		if (!GetGame().InPlayMode())
+		if (!m_Game || !m_Game.InPlayMode())
 			return;
 		
-		m_PlayerManager = GetGame().GetPlayerManager();
+		m_PlayerManager = m_Game.GetPlayerManager();
 		if (!m_PlayerManager)
 		{
 			Print("[CRF_LoggingManager] Error: Could not get PlayerManager during initialization", LogLevel.ERROR);
@@ -143,12 +156,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private void InitializeLogging()
 	{
 		// Initialize mission data
-		m_sMissionName = GetGame().GetMissionName();
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		m_sMissionName = m_Game.GetMissionName();
+		m_iPlayerCount = m_PlayerManager.GetPlayerCount();
 		//if (m_iPlayerCount < 9)
 			//return;
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
-		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+		SCR_MissionHeader header = SCR_MissionHeader.Cast(m_Game.GetMissionHeader());
 		m_sAuthorName = header.m_sAuthor;
 		m_sMaxPlayers = header.m_iPlayerCount.ToString();
 		m_sMissionDetails = header.m_sDetails;
@@ -178,8 +191,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		m_sPlayerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_sPlayerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
+		m_sPlayerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
 		
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
@@ -194,7 +207,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		m_sPlayerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("disconnect" + SEPARATOR + m_sPlayerName + SEPARATOR + cause);
 	}
@@ -273,12 +286,14 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private void UpdatePlayerCount()
 	{
 		// Basic player count is always available
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		m_iPlayerCount = m_PlayerManager.GetPlayerCount();
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
 		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers;
 		
 		// Try to get faction manager - it may not be ready during early initialization
-		m_FM = GetGame().GetFactionManager();
+		if (!m_FM)
+			m_FM = m_Game.GetFactionManager();
+		
 		if (!m_FM)
 		{
 			Print("[CRF_LoggingManager] FactionManager not yet available, using default faction counts", LogLevel.VERBOSE);
@@ -290,7 +305,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		else
 		{
-			m_SFM = SCR_FactionManager.Cast(m_FM);
+			if (!m_SFM)
+				m_SFM = SCR_FactionManager.Cast(m_FM);
+			
 			if (!m_SFM)
 			{
 				Print("[CRF_LoggingManager] Warning: SCR_FactionManager cast failed, cannot update faction player counts", LogLevel.WARNING);
@@ -328,18 +345,21 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			}
 		}
 		
-		// Update the side counts array
-		if (m_aSideCounts.IsEmpty()) {
-			m_aSideCounts.Insert(m_iBluforCount);
-			m_aSideCounts.Insert(m_iOpforCount);
-			m_aSideCounts.Insert(m_iIndforCount);
-			m_aSideCounts.Insert(m_iCivCount);
-		} else {
+		// Update the side counts array - optimize by avoiding clear/insert if possible
+		if (m_aSideCounts.Count() != 4)
+		{
 			m_aSideCounts.Clear();
 			m_aSideCounts.Insert(m_iBluforCount);
 			m_aSideCounts.Insert(m_iOpforCount);
 			m_aSideCounts.Insert(m_iIndforCount);
 			m_aSideCounts.Insert(m_iCivCount);
+		}
+		else
+		{
+			m_aSideCounts.Set(0, m_iBluforCount);
+			m_aSideCounts.Set(1, m_iOpforCount);
+			m_aSideCounts.Set(2, m_iIndforCount);
+			m_aSideCounts.Set(3, m_iCivCount);
 		}
 	}
 	
@@ -367,10 +387,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		// Log players in attendance
 		array<int> players = {};
-		GetGame().GetPlayerManager().GetPlayers(players);
+		m_PlayerManager.GetPlayers(players);
 		foreach (int player : players)
 		{
-			m_LogFileHandle.WriteLine("attendance," + GetGame().GetBackendApi().GetPlayerIdentityId(player));
+			m_LogFileHandle.WriteLine("attendance," + m_BackendApi.GetPlayerIdentityId(player));
 		}
 		
 		// ORBAT is now logged separately via OnGamemodeStateChanged when entering GAME state
@@ -398,13 +418,14 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 				continue;
 			
 			// Get faction name and player count
-			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+			Faction faction = m_FM.GetFactionByKey(factionKey);
 			if (!faction)
 				continue;
 				
 			string factionName = faction.GetFactionName();
-			SCR_FactionManager scrFM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-			int factionPlayerCount = scrFM.GetFactionPlayerCount(faction);
+			int factionPlayerCount = 0;
+			if (m_SFM)
+				factionPlayerCount = m_SFM.GetFactionPlayerCount(faction);
 			
 			// Log faction header with player count
 			m_LogFileHandle.WriteLine("orbat_side" + SEPARATOR + factionKey + SEPARATOR + factionName + SEPARATOR + factionPlayerCount);
@@ -474,13 +495,13 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 						continue;
 					
 					// Get player name
-					string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+					string playerName = m_PlayerManager.GetPlayerName(playerId);
 					
 					// Get player role
 					string roleName = slotData.GetSlotName();
 					
 					// Get player GUID
-					string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+					string playerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
 					
 					// Log player role info
 					m_LogFileHandle.WriteLine("orbat_player" + SEPARATOR + factionKey + SEPARATOR + 
@@ -533,42 +554,65 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		int victimId = instiContext.GetVictimPlayerID();
-		
-		// Victim info
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(victimId));
-		if (m_PlayerChimera)
-			m_sVictimFaction = m_PlayerChimera.GetFactionKey();
-		else
-		{
-			m_sVictimFaction = "UNKNOWN";
-			Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
-		}
-		
-		m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(victimId);
-		if (victimId > 0) // if it's a player 
-			m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(victimId);
-		else 
-			m_sVictimName = "AI";
-		m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
-		
-		// Killer info
-		int killerId = instiContext.GetKillerPlayerID();
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(killerId));
-		if (m_PlayerChimera)
-			m_sKillerFaction = m_PlayerChimera.GetFactionKey();
-		else
-		{
-			m_sKillerFaction = "UNKNOWN";
-			Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
-		}
-		
-		m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(killerId);
-		if (killerId > 0) // if it's a player and ignore aar killings
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killerId);
-		else
-			m_sKillerName = "AI";
-		m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
+	// Get victim entity and determine if it's a player
+	IEntity victimEntity = instiContext.GetVictimEntity();
+	int victimId = 0;
+	if (victimEntity)
+	{
+		// Try to get player ID from the controlled entity
+		victimId = m_PlayerManager.GetPlayerIdFromControlledEntity(victimEntity);
+	}
+	
+	// If we didn't find a player ID from the entity, fall back to instigator context
+	if (victimId <= 0)
+		victimId = instiContext.GetVictimPlayerID();
+	
+	// Victim info
+	m_PlayerChimera = SCR_ChimeraCharacter.Cast(victimEntity);
+	if (m_PlayerChimera)
+		m_sVictimFaction = m_PlayerChimera.GetFactionKey();
+	else
+	{
+		m_sVictimFaction = "UNKNOWN";
+		Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
+	}
+	
+	m_sVictimGUID = m_BackendApi.GetPlayerIdentityId(victimId);
+	if (victimId > 0) // if it's a player 
+		m_sVictimName = m_PlayerManager.GetPlayerName(victimId);
+	else 
+		m_sVictimName = "AI";
+	m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
+	
+	// Get killer entity and determine if it's a player
+	IEntity killerEntity = instiContext.GetKillerEntity();
+	int killerId = 0;
+	if (killerEntity)
+	{
+		// Try to get player ID from the controlled entity
+		killerId = m_PlayerManager.GetPlayerIdFromControlledEntity(killerEntity);
+	}
+	
+	// If we didn't find a player ID from the entity, fall back to instigator context
+	if (killerId <= 0)
+		killerId = instiContext.GetKillerPlayerID();
+	
+	// Killer info
+	m_PlayerChimera = SCR_ChimeraCharacter.Cast(killerEntity);
+	if (m_PlayerChimera)
+		m_sKillerFaction = m_PlayerChimera.GetFactionKey();
+	else
+	{
+		m_sKillerFaction = "UNKNOWN";
+		Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
+	}
+	
+	m_sKillerGUID = m_BackendApi.GetPlayerIdentityId(killerId);
+	if (killerId > 0) // if it's a player and ignore aar killings
+		m_sKillerName = m_PlayerManager.GetPlayerName(killerId);
+	else
+		m_sKillerName = "AI";
+	m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
 		
 		// Default weapon name and damage type
 		m_sWeaponName = "Unknown Weapon";
@@ -590,35 +634,35 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		else
 		{
-			// If no tracked weapon, use utility to determine the weapon
-			m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
-			
-			// If we still don't have a weapon name, try the killer's current weapon as a last resort
-			if (m_sWeaponName == "Unknown Weapon")
+		// If no tracked weapon, use utility to determine the weapon
+		m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
+		
+		// If we still don't have a weapon name, try the killer's current weapon as a last resort
+		if (m_sWeaponName == "Unknown Weapon")
+		{
+			// Reuse the killerEntity we already retrieved
+			if (killerEntity)
 			{
-				IEntity killerEntity = instiContext.GetKillerEntity();
-				if (killerEntity)
+				m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+				if (m_Inventory)
 				{
-					m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
-					if (m_Inventory)
-					{
-						m_BWC = m_Inventory.GetCurrentCharacterWeapon();
-						if (m_BWC)
-							m_sWeaponName = m_BWC.GetUIInfo().GetName();
-					}
+					m_BWC = m_Inventory.GetCurrentCharacterWeapon();
+					if (m_BWC)
+						m_sWeaponName = m_BWC.GetUIInfo().GetName();
 				}
 			}
 		}
-		
-		// Range
-		if (!instiContext.GetKillerEntity())
-			return;
-		m_fRange = vector.Distance(instiContext.GetVictimEntity().GetOrigin(),instiContext.GetKillerEntity().GetOrigin());
-		
-		// Time
-		m_fTotalTime = GetGame().GetWorld().GetWorldTime();
-  		m_iTotalSeconds = (m_fTotalTime / 1000);
-		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
+	}
+	
+	// Range
+	if (!killerEntity)
+		return;
+	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerEntity.GetOrigin());
+	
+	// Time
+	m_fTotalTime = m_World.GetWorldTime();
+  	m_iTotalSeconds = (m_fTotalTime / 1000);
+	m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
 		// Append damage type to weapon name if available
 		if (damageType > 0)
@@ -657,7 +701,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		
 		// Only track if this is a player-to-player event
-		int killerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity);
+		int killerId = m_PlayerManager.GetPlayerIdFromControlledEntity(killerEntity);
 		if (killerId <= 0)
 			return;
 			
