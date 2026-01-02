@@ -10,7 +10,37 @@
 // - Bomb planting/defusing mechanics with countdown timers
 // - Configurable attacking/defending sides
 // - Dynamic MCOM naming: A, B (Zone 1), C, D (Zone 2), E, F (Zone 3)
+// - Optional dynamic respawn point control/spawn teleportation per zone; Same convention as MCOMs
 //------------------------------------------------------------------------------------
+
+
+// RESPAWN CONFIGURATION CLASSES
+/**
+ * Individual respawn marker entry - defines where to teleport a faction's respawn flag
+ */
+[BaseContainerProps()]
+class CRF_Rush_RespawnPointEntry
+{
+	[Attribute("", UIWidgets.EditBox, desc: "Name of spawn point entity (e.g., 'Zone1_BLUFOR_Spawn', 'Zone2_OPFOR_Spawn')")]
+	string m_sMarkerEntityName;
+	
+	[Attribute("BLUFOR", UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR"), ParamEnum("CIV", "CIV")}, desc: "Which faction's respawn flag to move")]
+	FactionKey m_eFaction;
+}
+
+/**
+ * Zone respawn configuration - defines where to move respawn flags when a zone is cleared
+ * Zone number is determined by position in array (first entry = Zone 1, second = Zone 2, etc.)
+ */
+[BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sZoneName")]
+class CRF_Rush_ZoneRespawnConfig
+{
+	[Attribute("Zone", UIWidgets.Auto, desc: "Name of the zone, can be left alone. Does NOT do anything outside of MM organization.")]
+	protected string m_sZoneName;
+	
+	[Attribute("", UIWidgets.Auto, desc: "Marker positions to teleport respawn flags to when the previous zone is cleared. Ensure entities and these marker spawn names are named identically.")]
+	ref array<ref CRF_Rush_RespawnPointEntry> m_aRespawnPoints;
+}
 
 [ComponentEditorProps(category: "Game Mode Component", description: "Rush gamemode with 3 zones and 6 sequential MCOM sites (A-F)")]
 class CRF_RushGamemodeManagerClass: SCR_BaseGameModeComponentClass
@@ -53,9 +83,21 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("2", UIWidgets.Slider, desc: "Number of MCOMs per zone (1-2)", params: "1 2 1")]
 	int m_iMCOMsPerZone;
 	
+	// Respawn Point Control
+	//------------------------------------------------------------------------------------
+	[Attribute("0", UIWidgets.CheckBox, desc: "Enable dynamic respawn point control based on zone progression")]
+	bool m_bEnableDynamicRespawns;
+	
+	[Attribute("", UIWidgets.Auto, desc: "Add zones and respawn points to enable when each zone is cleared. Entry position in list determines zone number (first index = Zone 1, etc.) If wanting to SKIP a zone, add no respawns but maintain the order.")]
+	ref array<ref CRF_Rush_ZoneRespawnConfig> m_aZoneRespawnConfigs;
+	
 	//===================================================================================
 	// RUNTIME VARIABLES
 	//===================================================================================
+	
+	// Zone cleared tracking (to prevent re-enabling spawns)
+	//------------------------------------------------------------------------------------
+	protected ref array<bool> m_aZonesClearedStatus;		// Track which zones have been cleared
 	
 	// Zone Management
 	//------------------------------------------------------------------------------------
@@ -361,8 +403,17 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				m_aMCOMEntities[zoneIndex].Insert(null);
 			}
 		}
+		
+		// Initialize zone cleared tracking only if dynamic respawns are enabled
+		if (m_bEnableDynamicRespawns && m_aZoneRespawnConfigs && !m_aZoneRespawnConfigs.IsEmpty())
+		{
+			m_aZonesClearedStatus = new array<bool>();
+			for (int i = 0; i < m_iNumberOfZones; i++)
+			{
+				m_aZonesClearedStatus.Insert(false);
+			}
+		}
 	}
-	
 	/**
 	 * Generate trigger name for zone and MCOM index
 	 * @param zoneNumber The zone number (1-3)
@@ -1885,12 +1936,19 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (zoneCleared && zoneNumber < m_iNumberOfZones)
 		{
+			// First teleport the flags if dynamic respawns enabled
+			if (m_bEnableDynamicRespawns && m_aZoneRespawnConfigs && !m_aZoneRespawnConfigs.IsEmpty())
+			{
+				Print(string.Format("[CRF_Rush] Zone %1 fully cleared, scheduling respawn point changes for zone %2", zoneNumber, zoneNumber));
+				GetGame().GetCallqueue().CallLater(EnableZoneRespawnPoints, 250, false, zoneNumber);
+			}
+			
 			// Update both map markers and 3D markers for new active zone
 			Print("[CheckZoneCleared] Updating markers for new active zone: " + m_iCurrentZone);
 			GetGame().GetCallqueue().CallLater(UpdateAllMCOMMarkers, 500, false);
 			
-			// Update zone status which triggers respawn waves
-			UpdateZoneStatus();
+			// Delay zone status update (respawn wave) until after teleport completes
+			GetGame().GetCallqueue().CallLater(UpdateZoneStatus, 500, false);
 		}
 		
 		Replication.BumpMe();
@@ -3414,6 +3472,117 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (m_aMCOMPlanted && zoneIndex < m_aMCOMPlanted.Count() && mcomIndex < m_aMCOMPlanted[zoneIndex].Count())
 			return m_aMCOMPlanted[zoneIndex][mcomIndex];
 		return false;
+	}
+	
+	//------------------------------------------------------------------------------------
+	// EnableZoneRespawnPoints - Enable configured respawn points when a zone is cleared
+	//------------------------------------------------------------------------------------
+	protected void EnableZoneRespawnPoints(int zoneNumber)
+	{
+		// Only run on server
+		if (!Replication.IsServer())
+			return;
+		
+		// Check if dynamic respawns are enabled
+		if (!m_bEnableDynamicRespawns)
+			return;
+		
+		// If no respawn configs, exit early
+		if (!m_aZoneRespawnConfigs || m_aZoneRespawnConfigs.IsEmpty())
+			return;
+		
+		// Check if tracking array exists (safety check)
+		if (!m_aZonesClearedStatus)
+			return;
+		
+		// Check if this zone was already cleared (prevent duplicate lookups)
+		int zoneIndex = zoneNumber - 1;
+		if (zoneIndex < 0 || zoneIndex >= m_aZonesClearedStatus.Count())
+			return;
+		
+		if (m_aZonesClearedStatus[zoneIndex])
+		{
+			Print(string.Format("[CRF_Rush] Zone %1 already cleared, skipping respawn activation", zoneNumber));
+			return;
+		}
+		
+		// Mark this zone as cleared
+		m_aZonesClearedStatus[zoneIndex] = true;
+		
+		// Check if respawn flags need to be teleported for this zone (optional)
+		GetGame().GetCallqueue().CallLater(EnableCurrentZoneRespawns, 100, false, zoneNumber);
+	}
+	
+	//------------------------------------------------------------------------------------
+	// EnableCurrentZoneRespawns - Teleport respawn flags to new zone positions (if configured)
+	//------------------------------------------------------------------------------------
+	protected void EnableCurrentZoneRespawns(int zoneNumber)
+	{
+		// Find config for this zone by array index (zone number - 1)
+		int configIndex = zoneNumber - 1;
+		
+		if (configIndex < 0 || configIndex >= m_aZoneRespawnConfigs.Count())
+		{
+			Print(string.Format("[CRF_Rush] No respawn configuration at index %1 for Zone %2", configIndex, zoneNumber));
+			return;
+		}
+		
+		CRF_Rush_ZoneRespawnConfig zoneConfig = m_aZoneRespawnConfigs[configIndex];
+		
+		// Skip if no respawn points configured (optional)
+		if (!zoneConfig || !zoneConfig.m_aRespawnPoints || zoneConfig.m_aRespawnPoints.IsEmpty())
+		{
+			Print(string.Format("[CRF_Rush] Zone %1: No respawn flag movement configured (optional)", zoneNumber));
+			return;
+		}
+		
+		// Get respawn manager
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (!respawnManager)
+		{
+			Print("[CRF_Rush] ERROR: RespawnManager not found!", LogLevel.ERROR);
+			return;
+		}
+		
+		Print(string.Format("[CRF_Rush] Zone %1: Moving %2 respawn flag(s) to new positions", zoneNumber, zoneConfig.m_aRespawnPoints.Count()));
+		
+		// Move each faction's respawn flag to its marker position
+		foreach (CRF_Rush_RespawnPointEntry entry : zoneConfig.m_aRespawnPoints)
+		{
+			if (!entry || entry.m_sMarkerEntityName == "")
+			{
+				Print("[CRF_Rush] ERROR: Empty marker entity name in config!", LogLevel.ERROR);
+				continue;
+			}
+			
+			// Find the marker entity by name
+			IEntity markerEntity = GetGame().GetWorld().FindEntityByName(entry.m_sMarkerEntityName);
+			if (!markerEntity)
+			{
+				Print(string.Format("[CRF_Rush] ERROR: Marker entity '%1' not found in world!", entry.m_sMarkerEntityName), LogLevel.ERROR);
+				continue;
+			}
+			
+			// Get the first respawn flag for this faction
+			array<IEntity> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
+			if (!factionSpawns || factionSpawns.IsEmpty())
+			{
+				Print(string.Format("[CRF_Rush] No spawns found for faction %1", entry.m_eFaction), LogLevel.WARNING);
+				continue;
+			}
+			
+			IEntity respawnFlag = factionSpawns[0];
+			
+			// Get marker position and orientation
+			vector markerPos = markerEntity.GetOrigin();
+			vector markerAngles = markerEntity.GetAngles();
+			
+			// Move respawn flag (Note: visual flag mesh may not update immediately)
+			respawnFlag.SetOrigin(markerPos);
+			respawnFlag.SetAngles(markerAngles);
+			
+			Print(string.Format("[CRF_Rush] Teleported %1 respawn flag to zone %2 at %3", entry.m_eFaction, zoneNumber, markerPos));
+		}
 	}
 	
 	/**

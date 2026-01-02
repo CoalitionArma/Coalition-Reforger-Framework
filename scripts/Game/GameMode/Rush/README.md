@@ -45,6 +45,29 @@ Add the `CRF_RushGamemodeManager` component to your gamemode and configure the f
 #### UI Settings:
 - **Hide Map Markers**: Option to hide MCOM markers on the map
 
+#### Respawn Control (Optional):
+- **Enable Dynamic Respawns**: When enabled, teleports faction respawn flags to new positions as zones are cleared
+- **Zone Respawn Configs**: Configure marker positions for each zone's respawn teleport
+
+Examples:
+Create empty GameEntity or Trigger objects in your world (similar to MCOMS)
+
+> **Zone 1 Respawn Markers (example names):**
+> - Entity name: `BLUspawn_z1` (example: BLUFOR respawn position after Zone 1 clears)
+> - Entity name: `OPFspawn_z1` (example: OPFOR respawn position after Zone 1 clears)
+> 
+> **Zone 2 Respawn Markers (example names):**
+> - Entity name: `BLUspawn_z2` (example: BLUFOR respawn position after Zone 2 clears)
+> - Entity name: `OPFspawn_z2` (example: OPFOR respawn position after Zone 2 clears)
+> 
+> **Note**: Make the entity names and marker entity name fields (within the RUSH component) identical. __Zone list entry order matters, zone name doesnt (purely visual).__  (first entry = Zone 1, etc.). 
+>
+> <img src="https://i.imgur.com/eoI8au0.png" alt="Sample Image" width="250">
+> 
+> **Additional Options**:
+> - Partial configs supported - zones without respawn entries keep flags at previous respawn flag's position
+> - To SKIP a Zone clearing from moving spawns, create a zone and add NO spawns. __IE: Zone 1 entry has no respawn marker entities, Zone 2 still has `BLUspawn_z2`__
+
 ## Gameplay Flow
 
 ### Phase 1: Zone 1
