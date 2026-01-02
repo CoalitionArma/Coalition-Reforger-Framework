@@ -1689,7 +1689,13 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Load config files into listboxs and array
 		LoadGearConfigList();
 
+		array<string> gearArray = {};
 		foreach (string name, string path : m_gearsetlist.gearset)
+			gearArray.Insert(name);
+		
+		gearArray.Sort();
+		
+		foreach (string name : gearArray)
 		{
 			foreach (string faction : factions)
 			{
@@ -1697,6 +1703,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 				listBox.AddItem(name);
 			}
 		}
+		
 		
 		// Change title of the menu
 		UpdateMenuTitle("Gamemode Settings");

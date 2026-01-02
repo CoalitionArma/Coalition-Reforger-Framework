@@ -39,7 +39,6 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
     AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
      AttachmentSlot InventoryStorageSlot "{5EA2BE9573F14F0C}" {
       Offset 0 0.1115 0.2206
-      Prefab "{7ECE886D040CF8AE}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_base.et"
       InspectionWidgetOffset 0 0.1115 0.3184
      }
      AttachmentType AttachmentRIS1913 "{5EA2BE94941B23EB}" {
@@ -52,11 +51,16 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
     AttachmentSlotComponent "{61749A66C4BA094E}" {
      Enabled 0
     }
+    AttachmentSlotComponent "{629ADD50107BFFEA}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
+      Prefab "{7ECE886D040CF8AE}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_base.et"
+     }
+    }
     AttachmentSlotComponent "{66FB7E88B513F098}" {
      AttachmentSlot InventoryStorageSlot "{5EB2C96A8030BC9E}" {
       PivotID "barrel_chamber"
       MergePhysics 1
-      Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
+      Prefab "{239CEF0C9AB5556E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203.et"
       InspectionWidgetOffset 0 0.0546 0.3683
      }
      AttachmentType AttachmentUnderBarrelM203 "{66FB7E88B513F085}" {
