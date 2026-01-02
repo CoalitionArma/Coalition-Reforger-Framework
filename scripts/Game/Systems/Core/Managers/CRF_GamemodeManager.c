@@ -406,7 +406,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
 		{
 			alreadyCreated = false;
-			Print(string.Format("[CRF_GamemodeManager] Spawning new character for player %1", playerId), LogLevel.NORMAL);
 			
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
@@ -417,25 +416,13 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				return null;
 			}
 			
-			Print(string.Format("[CRF_GamemodeManager] Character spawned successfully for player %1", 
-				playerId), LogLevel.NORMAL);
-			
 			// Notify data collector about the spawn
 			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
 			if (dc)
 			{
-				Print(string.Format("[CRF_GamemodeManager] Notifying data collector about player %1 spawn", playerId), LogLevel.VERBOSE);
 				// Use our custom notification method since we don't use the spawn request system
 				dc.NotifyPlayerSpawned(playerId, playerCharacter);
 			}
-			else
-			{
-				Print("[CRF_GamemodeManager] WARNING: Data collector not found!", LogLevel.WARNING);
-			}
-		}
-		else
-		{
-			Print(string.Format("[CRF_GamemodeManager] Player %1 already has existing character, skipping spawn", playerId), LogLevel.VERBOSE);
 		}
 			
 		return playerCharacter;

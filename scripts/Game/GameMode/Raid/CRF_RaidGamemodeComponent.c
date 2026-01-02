@@ -385,7 +385,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		int playerId = playerController.GetPlayerId();
-		Print(string.Format("[CRF_Raid] Assigning player %1 to entity %2", playerId), LogLevel.NORMAL);
 		
 		playerController.SetInitialMainEntity(entity);
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
@@ -395,12 +394,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
 		if (dc)
 		{
-			Print(string.Format("[CRF_Raid] Notifying data collector about player %1 spawn", playerId), LogLevel.VERBOSE);
 			dc.NotifyPlayerSpawned(playerId, entity);
-		}
-		else
-		{
-			Print("[CRF_Raid] WARNING: Data collector not found!", LogLevel.WARNING);
 		}
 	}
 	
