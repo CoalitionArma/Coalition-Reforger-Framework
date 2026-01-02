@@ -533,42 +533,65 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		int victimId = instiContext.GetVictimPlayerID();
-		
-		// Victim info
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(victimId));
-		if (m_PlayerChimera)
-			m_sVictimFaction = m_PlayerChimera.GetFactionKey();
-		else
-		{
-			m_sVictimFaction = "UNKNOWN";
-			Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
-		}
-		
-		m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(victimId);
-		if (victimId > 0) // if it's a player 
-			m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(victimId);
-		else 
-			m_sVictimName = "AI";
-		m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
-		
-		// Killer info
-		int killerId = instiContext.GetKillerPlayerID();
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(killerId));
-		if (m_PlayerChimera)
-			m_sKillerFaction = m_PlayerChimera.GetFactionKey();
-		else
-		{
-			m_sKillerFaction = "UNKNOWN";
-			Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
-		}
-		
-		m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(killerId);
-		if (killerId > 0) // if it's a player and ignore aar killings
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killerId);
-		else
-			m_sKillerName = "AI";
-		m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
+	// Get victim entity and determine if it's a player
+	IEntity victimEntity = instiContext.GetVictimEntity();
+	int victimId = 0;
+	if (victimEntity)
+	{
+		// Try to get player ID from the controlled entity
+		victimId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(victimEntity);
+	}
+	
+	// If we didn't find a player ID from the entity, fall back to instigator context
+	if (victimId <= 0)
+		victimId = instiContext.GetVictimPlayerID();
+	
+	// Victim info
+	m_PlayerChimera = SCR_ChimeraCharacter.Cast(victimEntity);
+	if (m_PlayerChimera)
+		m_sVictimFaction = m_PlayerChimera.GetFactionKey();
+	else
+	{
+		m_sVictimFaction = "UNKNOWN";
+		Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
+	}
+	
+	m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(victimId);
+	if (victimId > 0) // if it's a player 
+		m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(victimId);
+	else 
+		m_sVictimName = "AI";
+	m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
+	
+	// Get killer entity and determine if it's a player
+	IEntity killerEntity = instiContext.GetKillerEntity();
+	int killerId = 0;
+	if (killerEntity)
+	{
+		// Try to get player ID from the controlled entity
+		killerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity);
+	}
+	
+	// If we didn't find a player ID from the entity, fall back to instigator context
+	if (killerId <= 0)
+		killerId = instiContext.GetKillerPlayerID();
+	
+	// Killer info
+	m_PlayerChimera = SCR_ChimeraCharacter.Cast(killerEntity);
+	if (m_PlayerChimera)
+		m_sKillerFaction = m_PlayerChimera.GetFactionKey();
+	else
+	{
+		m_sKillerFaction = "UNKNOWN";
+		Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
+	}
+	
+	m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(killerId);
+	if (killerId > 0) // if it's a player and ignore aar killings
+		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killerId);
+	else
+		m_sKillerName = "AI";
+	m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
 		
 		// Default weapon name and damage type
 		m_sWeaponName = "Unknown Weapon";
@@ -590,32 +613,30 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		else
 		{
-			// If no tracked weapon, use utility to determine the weapon
-			m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
-			
-			// If we still don't have a weapon name, try the killer's current weapon as a last resort
-			if (m_sWeaponName == "Unknown Weapon")
+		// If no tracked weapon, use utility to determine the weapon
+		m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
+		
+		// If we still don't have a weapon name, try the killer's current weapon as a last resort
+		if (m_sWeaponName == "Unknown Weapon")
+		{
+			// Reuse the killerEntity we already retrieved
+			if (killerEntity)
 			{
-				IEntity killerEntity = instiContext.GetKillerEntity();
-				if (killerEntity)
+				m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+				if (m_Inventory)
 				{
-					m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
-					if (m_Inventory)
-					{
-						m_BWC = m_Inventory.GetCurrentCharacterWeapon();
-						if (m_BWC)
-							m_sWeaponName = m_BWC.GetUIInfo().GetName();
-					}
+					m_BWC = m_Inventory.GetCurrentCharacterWeapon();
+					if (m_BWC)
+						m_sWeaponName = m_BWC.GetUIInfo().GetName();
 				}
 			}
 		}
-		
-		// Range
-		if (!instiContext.GetKillerEntity())
-			return;
-		m_fRange = vector.Distance(instiContext.GetVictimEntity().GetOrigin(),instiContext.GetKillerEntity().GetOrigin());
-		
-		// Time
+	}
+	
+	// Range
+	if (!killerEntity)
+		return;
+	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerEntity.GetOrigin());		// Time
 		m_fTotalTime = GetGame().GetWorld().GetWorldTime();
   		m_iTotalSeconds = (m_fTotalTime / 1000);
 		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
