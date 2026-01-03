@@ -82,7 +82,10 @@ class CRF_PlayableCharacter : ScriptComponent
 		// Logs entity on server and disables AI if not spawned by a slot
 		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !isSpec)
 		{
-			m_SlottingManager.AddPlayableEntityToManager(owner);
+			if (m_SlottingManager)
+				m_SlottingManager.AddPlayableEntityToManager(owner);
+			else
+				Print("[CRF_PlayableCharacter] SlottingManager not available", LogLevel.WARNING);
 			return;
 		}
 		
@@ -133,9 +136,21 @@ class CRF_PlayableCharacter : ScriptComponent
 	
 	void GenerateSpreadPosServer(IEntity entity)
 	{
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
+		{
+			Print("[CRF_PlayableCharacter] Gamemode not initialized yet, using fallback position", LogLevel.WARNING);
+			// Fallback to a default spread position if gamemode not ready
+			vector spreadPos = GenerateRandomSpreadPosition("0 0 0", 1000.0);
+			spreadPos[1] = 1000.0; // Set elevation to 1000m
+			m_vSpreadPos = spreadPos;
+			entity.SetOrigin(spreadPos);
+			return;
+		}
+		
 		vector mapCenter;
 		float radius;
-		CRF_Gamemode.GetInstance().GetAOCenterAndRadius(mapCenter, radius);
+		gamemode.GetAOCenterAndRadius(mapCenter, radius);
 		vector spreadPos = GenerateRandomSpreadPosition(mapCenter, radius);
 		spreadPos[1] = 1000.0; // Set elevation to 1000m
 		m_vSpreadPos = spreadPos;
@@ -147,8 +162,16 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!GetOwner().FindComponent(RplComponent))
 			return;
 		
+		CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
+		if (!rplManager)
+		{
+			Print("[CRF_PlayableCharacter] RplToAuthorityManager not initialized yet, retrying...", LogLevel.WARNING);
+			GetGame().GetCallqueue().CallLater(RequestSpreadPos, 100, false);
+			return;
+		}
+		
 		RplId entityId = RplComponent.Cast(GetOwner().FindComponent(RplComponent)).Id();
-		CRF_RplToAuthorityManager.GetInstance().RequestSpreadPos(entityId);
+		rplManager.RequestSpreadPos(entityId);
 	}
 	
 	void SendSpreadPos()
