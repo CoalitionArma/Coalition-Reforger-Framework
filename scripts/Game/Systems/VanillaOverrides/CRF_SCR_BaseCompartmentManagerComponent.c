@@ -29,9 +29,8 @@ modded class SCR_BaseCompartmentManagerComponent
 		GetCompartmentsOfType(driverCompartments, ECompartmentType.PILOT);
 		GetCompartmentsOfType(turretCompartments, ECompartmentType.TURRET);
 		
-		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(group);
 		array<AIAgent> agents = {};
-		aiGroup.GetAgents(agents);
+		group.GetAgents(agents);
 		array<AIAgent> agentsAddedToVehicle = {};
 		array<BaseCompartmentSlot> compartmentsUsed = {};
 		foreach (AIAgent agent: agents)

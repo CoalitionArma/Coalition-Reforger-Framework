@@ -15,11 +15,11 @@ modded class SCR_ChimeraCharacter
 		if (!ChimeraCharacter.Cast(entity))
 			return;
 		
-		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).GetWeaponManager());
+		BaseWeaponManagerComponent weaponMan = ChimeraCharacter.Cast(entity).GetWeaponManager();
 		if (!weaponMan)
 			return;
 		
-		CharacterControllerComponent charController = CharacterControllerComponent.Cast(ChimeraCharacter.Cast(entity).GetCharacterController());
+		CharacterControllerComponent charController = ChimeraCharacter.Cast(entity).GetCharacterController();
 		if (!charController)
 			return;
 		
