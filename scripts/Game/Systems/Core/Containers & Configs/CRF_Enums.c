@@ -268,7 +268,7 @@ enum CRF_EFactions
 	BLUFOR,
 	OPFOR,
 	INDFOR,
-	CIV
+	CIV,
 }
 
 enum CRF_EGamemode
