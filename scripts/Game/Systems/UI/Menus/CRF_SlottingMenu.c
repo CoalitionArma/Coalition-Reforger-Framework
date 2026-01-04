@@ -591,7 +591,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
 		{			
 			// Skip locked or dead slots
-			if(slotData.GetIsLockedSlot() || slotData.GetIsDeadSlot())
+			if(slotData.GetIsLockedSlot())
 				continue;
 			
 			// Increment appropriate faction counter

@@ -27,7 +27,7 @@ class CRF_SlotDataContainer
 			SetSlotCurrentPlayerId(newSlotData.GetSlotCurrentPlayerId());
 			SetSlotCurrentGroup(newSlotData.GetSlotCurrentGroup());
 			SetSlotCurrentCharacter(newSlotData.GetSlotCurrentCharacter());
-			SetSlotFactionKey(newSlotData.GetSlotFactionKey());
+			SetSlotFactionEnum(newSlotData.GetSlotFactionEnum());
 			SetIsLockedSlot(newSlotData.GetIsLockedSlot());
 			
 			if (m_OnDataUpdate)
@@ -92,13 +92,32 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetSlotFactionKey(CRF_EFactions faction)
+	void SetSlotFactionKey(FactionKey faction)
 	{
+		CRF_EFactions factionEnum;
+		switch (faction)
+		{
+			case "BLUFOR" 	: factionEnum = CRF_EFactions.BLUFOR; break;
+			case "OPFOR" 	: factionEnum = CRF_EFactions.OPFOR; break;
+			case "INDFOR" 	: factionEnum = CRF_EFactions.INDFOR; break;
+			case "CIV" 		: factionEnum = CRF_EFactions.CIV; break;
+		}
+		
 		// Dirty flag check: only update if value actually changed
-		if (m_SlotFaction == faction)
+		if (m_SlotFaction == factionEnum)
 			return;
 		
-		m_SlotFaction = faction;
+		m_SlotFaction = factionEnum;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotFactionEnum(CRF_EFactions factionEnum)
+	{
+		// Dirty flag check: only update if value actually changed
+		if (m_SlotFaction == factionEnum)
+			return;
+		
+		m_SlotFaction = factionEnum;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -146,7 +165,22 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_EFactions GetSlotFactionKey()
+	FactionKey GetSlotFactionKey()
+	{
+		FactionKey faction;
+		switch (m_SlotFaction)
+		{
+			case CRF_EFactions.BLUFOR 	: faction = "BLUFOR"; break;
+			case CRF_EFactions.OPFOR 	: faction = "OPFOR"; break;
+			case CRF_EFactions.INDFOR 	: faction = "INDFOR"; break;
+			case CRF_EFactions.CIV 		: faction = "CIV"; break;
+		}
+		
+		return faction;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	CRF_EFactions GetSlotFactionEnum()
 	{
 		return m_SlotFaction;
 	}

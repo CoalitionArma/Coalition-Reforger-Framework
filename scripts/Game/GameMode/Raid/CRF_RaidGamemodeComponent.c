@@ -288,7 +288,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			else
 				joes.Insert(playerId);
 			
-			
 			GetGame().GetCallqueue().CallLater(AssignFactionToPlayer, 100, false, playerController, indfor);
 			GetGame().GetCallqueue().CallLater(SpawnEntity, 300, false, roleConfig, indParams, playerController);
 		}
