@@ -90,6 +90,13 @@ class CRF_PolyZone : ScriptComponent
 		
 		m_ePolylineShapeEntity = ShapeEntity.Cast(owner);
 		
+		// Validate that owner is a ShapeEntity before proceeding
+		if (!m_ePolylineShapeEntity)
+		{
+			Print(string.Format("[CRF_PolyZone] ERROR: Component attached to non-ShapeEntity! Owner: %1", owner), LogLevel.ERROR);
+			return;
+		}
+		
 		GetGame().GetCallqueue().CallLater(UpdatePolygon, 0, false);
 		
 		if (m_bIsSafestartBorder && Replication.IsServer() && CRF_SafestartManager.GetInstance())
@@ -101,6 +108,13 @@ class CRF_PolyZone : ScriptComponent
 	
 	void UpdatePolygon()
 	{
+		// Check if polyline shape entity is valid
+		if (!m_ePolylineShapeEntity)
+		{
+			Print("[CRF_PolyZone] ERROR: m_ePolylineShapeEntity is NULL. Owner entity must be a ShapeEntity!", LogLevel.ERROR);
+			return;
+		}
+		
 		array<vector> outPoints = new array<vector>();
 		
 		m_ePolylineShapeEntity.GetPointsPositions(outPoints);

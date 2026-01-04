@@ -155,6 +155,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// Initialize logging system
 	private void InitializeLogging()
 	{
+		// Avoids NPEs on player disconnect
+		if (!m_PlayerManager)
+			return;
+		
 		// Initialize mission data
 		m_sMissionName = m_Game.GetMissionName();
 		m_iPlayerCount = m_PlayerManager.GetPlayerCount();
@@ -191,6 +195,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
+		if (!m_PlayerManager)
+		{
+			Print("[CRF_LoggingManager] Error: PlayerManager is NULL in OnPlayerConnected", LogLevel.ERROR);
+			return;
+		}
+		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
 		m_sPlayerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
 		
@@ -206,6 +216,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
+		
+		if (!m_PlayerManager)
+		{
+			Print("[CRF_LoggingManager] Error: PlayerManager is NULL in OnPlayerDisconnected", LogLevel.ERROR);
+			return;
+		}
 		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
 		if (m_LogFileHandle)
@@ -285,6 +301,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// Helper method to update player count
 	private void UpdatePlayerCount()
 	{
+		if (!m_PlayerManager)
+		{
+			Print("[CRF_LoggingManager] Error: PlayerManager is NULL in UpdatePlayerCount", LogLevel.ERROR);
+			return;
+		}
+		
 		// Basic player count is always available
 		m_iPlayerCount = m_PlayerManager.GetPlayerCount();
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
@@ -385,6 +407,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (!m_LogFileHandle)
 			return;
 		
+		if (!m_PlayerManager)
+		{
+			Print("[CRF_LoggingManager] Error: PlayerManager is NULL in Attendance", LogLevel.ERROR);
+			return;
+		}
+		
 		// Log players in attendance
 		array<int> players = {};
 		m_PlayerManager.GetPlayers(players);
@@ -402,6 +430,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	{
 		if (!m_LogFileHandle)
 			return;
+		
+		if (!m_PlayerManager)
+		{
+			Print("[CRF_LoggingManager] Error: PlayerManager is NULL in LogORBAT", LogLevel.ERROR);
+			return;
+		}
 		
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)

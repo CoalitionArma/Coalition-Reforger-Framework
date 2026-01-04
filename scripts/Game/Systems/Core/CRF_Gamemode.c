@@ -196,6 +196,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			CRF_ModeratorConfig.LoadConfig();	
 			CRF_DonatorConfig.LoadConfig();
+			
+			// Initialize sight arsenal registry for optimized RPC
+			CRF_SightArsenalRegistry.InitializeRegistry();
 		}
 			
 	
