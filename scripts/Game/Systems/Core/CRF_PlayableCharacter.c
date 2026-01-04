@@ -99,11 +99,6 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		// Disable streaming for initial/spectator entities to reduce replication overhead
-		RplComponent rplComp = RplComponent.Cast(owner.FindComponent(RplComponent));
-		if (rplComp)
-			rplComp.EnableStreaming(false);
-		
 		// Set all initial entities to a fixed position at 500m elevation
 		// Add slight offset to prevent spatial clustering issues with 70+ entities
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(owner);
