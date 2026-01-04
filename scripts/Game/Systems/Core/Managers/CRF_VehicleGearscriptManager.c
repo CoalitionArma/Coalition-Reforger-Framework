@@ -133,9 +133,16 @@ modded class CRF_GearscriptManager
 		
 		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
 		ArmaReforgerScripted game = GetGame();
+		if (!game)
+			return false;
+		
+		AIWorld aiWorld = game.GetAIWorld();
+		
+		if (!aiWorld)
+			return false;
 		
 		array<AIAgent> agents = {};
-		game.GetAIWorld().GetAIAgents(agents);	
+		aiWorld.GetAIAgents(agents);	
 		foreach (AIAgent agent: agents)
 		{
 			IEntity aiPlayer = agent.GetControlledEntity();

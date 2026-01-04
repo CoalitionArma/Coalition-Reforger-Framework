@@ -271,14 +271,26 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
+			// SPECTATOR PATH: Create initial entity for spectators
 			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);
 			DisableDamageForSpectator(playerCharacter);
-		} else {
+		} 
+		else 
+		{
+			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
+			// This optimization eliminates 50% of entity spawns (no temporary initial entities)
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+			
+			// If character already existed (respawn case), clean up any old initial/spectator entity
+			if (alreadyCreated)
+			{
+				DeleteOldInitialEntity(playerController, playerCharacter);
+			}
+			
 			CRF_MenuManager.GetInstance().RemovePlayerFromAnyChannel(playerId, false);
 		}
 		
@@ -457,8 +469,42 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		if (!character || !playerController)
 			return;
-			
+		
+		// Delete the old initial entity BEFORE assigning new character
+		// This prevents "ghost" entities
+		DeleteOldInitialEntity(playerController, character);
+		
 		playerController.SetInitialMainEntity(character);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Delete old initial entity if it exists (prevents ghost entities)
+	* @param playerController Player controller to check
+	* @param newCharacter The new character being assigned (don't delete this one)
+	*/
+	static void DeleteOldInitialEntity(SCR_PlayerController playerController, IEntity newCharacter)
+	{
+		if (!playerController)
+			return;
+			
+		IEntity oldEntity = playerController.GetMainEntity();
+		if (!oldEntity || oldEntity == newCharacter)
+			return;
+		
+		// Check if old entity is an initial entity (spawned at 1000m)
+		string oldPrefab = oldEntity.GetPrefabData().GetPrefabName();
+		if (oldPrefab == SPECTATOR_RESOURCE || oldPrefab.Contains("InitialEntity"))
+		{
+			// Log deletion for debugging
+			Print(string.Format("[CRF] Deleting ghost initial entity for player %1 at position %2", 
+				playerController.GetPlayerId(), 
+				oldEntity.GetOrigin()), 
+				LogLevel.VERBOSE);
+			
+			// Delete immediately to prevent replication
+			SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

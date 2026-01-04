@@ -1,0 +1,19 @@
+GenericEntity : "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      AttachmentSlotComponent "{5B28E1674ABA35A7}" {
+       AttachmentSlot InventoryStorageSlot Stock {
+        Offset 0 0.1006 0.5148
+        Prefab "{42BA91AA0BCCA157}Prefabs/Weapons/Attachments/Muzzle/762x51/Suppressor_SFTI2_762_Base.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

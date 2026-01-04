@@ -1405,8 +1405,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Call parent class cleanup
 		super.OnMenuClose();
 		
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled = false;
-		
 		// Unregister spectator camera frame event
 		UnregisterFrameEvent();
 		

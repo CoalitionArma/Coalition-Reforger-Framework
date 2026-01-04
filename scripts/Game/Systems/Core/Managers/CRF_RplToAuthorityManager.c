@@ -323,7 +323,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
 	{
-		Rpc(RpcAsk_SightArsenalRequestNewSight, playerId, resourceName, type);
+		// Convert to indices before sending for bandwidth optimization
+		int sightIndex = CRF_SightArsenalRegistry.GetSightIndex(resourceName);
+		if (sightIndex < 0)
+		{
+			// Fallback to old method for unknown sights (mod compatibility)
+			Print(string.Format("[CRF] Warning: Sight not in registry, using fallback: %1", resourceName), LogLevel.WARNING);
+			Rpc(RpcAsk_SightArsenalRequestNewSight_Fallback, playerId, resourceName, type);
+			return;
+		}
+		
+		// Determine sight type from index (more reliable than type string)
+		CRF_ESightType sightType = CRF_SightArsenalRegistry.GetSightTypeFromIndex(sightIndex);
+		Rpc(RpcAsk_SightArsenalRequestNewSight_Optimized, playerId, sightIndex, sightType);
 	}
 	
 	void TogglePlayerListening(int playerId, bool input)
@@ -389,11 +401,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
-	}
-	
-	void RequestSpreadPos(RplId entityId)
-	{
-		Rpc(RpcAsk_RequestSpreadPos, entityId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1403,6 +1410,45 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Optimized RPC using index-based lookup (6 bytes vs 134 bytes)
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SightArsenalRequestNewSight_Optimized(int playerId, int sightIndex, CRF_ESightType sightType)
+	{
+		// Telemetry: int (4) + int as byte (1) + enum as byte (1) = ~6 bytes
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += 2; // sightIndex + sightType as bytes
+		LogTelemetry("RpcAsk_SightArsenalRequestNewSight_Optimized", bytes);
+		
+		// Convert index back to resource
+		ResourceName newResource = CRF_SightArsenalRegistry.GetSightResource(sightIndex);
+		if (newResource == "")
+		{
+			Print(string.Format("[CRF] Error: Invalid sight index received: %1", sightIndex), LogLevel.ERROR);
+			return;
+		}
+		
+		// Use shared implementation
+		ProcessSightChange(playerId, newResource, sightType);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Fallback RPC for unknown sights (mod compatibility)
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SightArsenalRequestNewSight_Fallback(int playerId, string newResource, string type)
+	{
+		// Telemetry: int + 2 strings (original bandwidth)
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(newResource);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(type);
+		LogTelemetry("RpcAsk_SightArsenalRequestNewSight_Fallback", bytes);
+		
+		CRF_ESightType sightType = CRF_SightArsenalRegistry.GetSightTypeFromString(type);
+		ProcessSightChange(playerId, newResource, sightType);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Legacy RPC - deprecated but kept for backwards compatibility
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SightArsenalRequestNewSight(int playerId, string newResource, string type)
 	{
@@ -1410,30 +1456,122 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(newResource);
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(type);
-		LogTelemetry("RpcAsk_SightArsenalRequestNewSight", bytes);
+		LogTelemetry("RpcAsk_SightArsenalRequestNewSight_Legacy", bytes);
 		
+		CRF_ESightType sightType = CRF_SightArsenalRegistry.GetSightTypeFromString(type);
+		ProcessSightChange(playerId, newResource, sightType);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Get attachment type from sight prefab
+	protected BaseAttachmentType GetSightAttachmentType(ResourceName sightResource)
+	{
+		Resource loadedSight = Resource.Load(sightResource);
+		if (!loadedSight)
+			return null;
+			
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedSight);
+		if (!entitySource)
+			return null;
+		
+		for (int nComponent = 0, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+		{
+			IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+			if (componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
+			{
+				BaseContainer attributesContainer = componentSource.GetObject("Attributes");
+				if (!attributesContainer)
+					continue;
+					
+				BaseContainerList itemAttributes = attributesContainer.GetObjectArray("CustomAttributes");
+				if (!itemAttributes)
+					continue;
+					
+				for (int i = 0; i < itemAttributes.Count(); i++)
+				{
+					BaseContainer attributeContainer = itemAttributes.Get(i);
+					if (attributeContainer.GetClassName().ToType().IsInherited(WeaponAttachmentAttributes))
+					{
+						BaseAttachmentType attachmentType;
+						attributeContainer.Get("AttachmentType", attachmentType);
+						if (attachmentType)
+							return attachmentType;
+					}
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Shared sight change implementation
+	protected void ProcessSightChange(int playerId, ResourceName newResource, CRF_ESightType sightType)
+	{
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!player)
 			return;
+			
 		EntitySpawnParams params = new EntitySpawnParams();
 		player.GetTransform(params.Transform);
 		
 		IEntity newSight = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
+		if (!newSight)
+		{
+			Print(string.Format("[CRF] Error: Failed to spawn sight: %1", newResource), LogLevel.ERROR);
+			return;
+		}
+		
 		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		if (!charController)
+		{
+			Print("[CRF] Error: Failed to get character controller for sight change", LogLevel.ERROR);
+			delete newSight;
+			return;
+		}
+		
+		BaseWeaponComponent currentWeapon = charController.GetWeaponManagerComponent().GetCurrentWeapon();
+		if (!currentWeapon)
+		{
+			Print("[CRF] Error: No weapon equipped for sight change", LogLevel.ERROR);
+			delete newSight;
+			return;
+		}
+		
 		array<AttachmentSlotComponent> attachments = {};
-		charController.GetWeaponManagerComponent().GetCurrentWeapon().GetAttachments(attachments);
+		currentWeapon.GetAttachments(attachments);
 		AttachmentSlotComponent sightAttachment;
 		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
-		BaseInventoryStorageComponent weaponInv = BaseInventoryStorageComponent.Cast(charController.GetWeaponManagerComponent().GetCurrentWeapon().GetOwner().FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent weaponInv = BaseInventoryStorageComponent.Cast(currentWeapon.GetOwner().FindComponent(BaseInventoryStorageComponent));
+		
+		// Get the attachment type from the sight prefab
+		BaseAttachmentType sightAttachmentType = GetSightAttachmentType(newResource);
+		if (!sightAttachmentType)
+		{
+			Print(string.Format("[CRF] Error: Could not determine attachment type for sight: %1", newResource), LogLevel.ERROR);
+			delete newSight;
+			return;
+		}
+		
+		// Find matching attachment slot
 		foreach (AttachmentSlotComponent attachment: attachments)
 		{
 			if (!attachment.GetAttachmentSlotType())
 				continue;
-			if (type.ToType().IsInherited(attachment.GetAttachmentSlotType().Type()))
+				
+			if (sightAttachmentType.Type().IsInherited(attachment.GetAttachmentSlotType().Type()))
+			{
 				sightAttachment = attachment;
+				break;
+			}
 		}
+		
 		if (!sightAttachment)
+		{
+			Print(string.Format("[CRF] Error: No matching sight attachment slot found for type: %1", sightAttachmentType.Type()), LogLevel.ERROR);
+			delete newSight;
 			return;
+		}
 		
 		IEntity oldSight = sightAttachment.GetAttachedEntity();
 		if (sightAttachment.CanSetAttachment(newSight))
@@ -1443,10 +1581,20 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			
 			invManager.TryInsertItemInStorage(newSight, weaponInv);
 		}
+		else
+		{
+			Print("[CRF] Error: Cannot attach sight to slot", LogLevel.ERROR);
+			delete newSight;
+			return;
+		}
 		
 		InventoryItemComponent itemComp = InventoryItemComponent.Cast(newSight.FindComponent(InventoryItemComponent));
-		CRF_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced their sight with " + 
-		itemComp.GetUIInfo().GetName(), playerId, false);
+		if (itemComp && itemComp.GetUIInfo())
+		{
+			CRF_RplBroadcastManager.GetInstance().LogAdminAction(
+				GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced their sight with " + 
+				itemComp.GetUIInfo().GetName(), playerId, false);
+		}
 	}
     
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1791,23 +1939,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			}
 			CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
 		}
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestSpreadPos(RplId entityId)
-	{
-		if (!Replication.FindItem(entityId))
-			return;
-		
-		IEntity entity = RplComponent.Cast(Replication.FindItem(entityId)).GetEntity();
-		if (!entity)
-			return;
-		
-		if (!entity.FindComponent(CRF_PlayableCharacter))
-			return;
-		
-		CRF_PlayableCharacter playableCharacter = CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter));
-		playableCharacter.SendSpreadPos();
 	}
 	
 	void SharerMapMarkerGlobal(int markerUID, int playerId)

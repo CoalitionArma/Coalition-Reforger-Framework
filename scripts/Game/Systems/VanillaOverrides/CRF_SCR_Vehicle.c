@@ -35,7 +35,10 @@ modded class Vehicle
 		
 		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
 		GetGame().GetCallqueue().CallLater(CheckIfSpawnPassenger, 500, false);
-		CRF_Gamemode.GetInstance().AddVehicleToArray(this);
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (gamemode)
+			gamemode.AddVehicleToArray(this);
 	}
 	
 	void CheckIfSpawnPassenger()
@@ -68,14 +71,24 @@ modded class Vehicle
 		if (!GetGame().GetWorld())
 			return;
 		
-		CRF_Gamemode.GetInstance().RemoveVehicleFromArray(this);
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (gamemode)
+			gamemode.RemoveVehicleFromArray(this);
 		
 		if (m_iVehicleSpawnerIndex == -1)
 			return;
+		
 		//Just in case the damage manager doesn't actually get it when it blows up.
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (!respawnManager)
+			return;
+			
 		foreach (CRF_VehicleSpawner vehicle: respawnManager.GetVehicleSpawners())
 		{
+			// Check if vehicle spawner is valid and has a vehicle entity
+			if (!vehicle || !vehicle.m_eVehicle)
+				continue;
+				
 			if (vehicle.m_eVehicle != this)
 				continue;
 			
