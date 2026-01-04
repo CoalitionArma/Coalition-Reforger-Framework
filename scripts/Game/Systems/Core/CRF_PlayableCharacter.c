@@ -99,8 +99,15 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		SetEventMask(owner, EntityEvent.FRAME);
 		
+		// Disable streaming for initial/spectator entities to reduce replication overhead
+		RplComponent rplComp = RplComponent.Cast(owner.FindComponent(RplComponent));
+		if (rplComp)
+			rplComp.EnableStreaming(false);
+		
 		// Set all initial entities to a fixed position at 500m elevation
-		vector fixedPos = Vector(0, 500, 0);
+		// Add slight offset to prevent spatial clustering issues with 70+ entities
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(owner);
+		vector fixedPos = Vector(playerId * 2, 500, playerId * 2); // 2m spacing per player
 		m_vSpreadPos = fixedPos;
 		owner.SetOrigin(fixedPos);
 		
@@ -113,7 +120,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
 		
 		int numGeoms = physics.GetNumGeoms();
-		for (int i = 0; i <= numGeoms; i++)
+		for (int i = 0; i < numGeoms; i++) // Fixed: was i <= numGeoms (off-by-one error)
 		{
 			physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
 		}
