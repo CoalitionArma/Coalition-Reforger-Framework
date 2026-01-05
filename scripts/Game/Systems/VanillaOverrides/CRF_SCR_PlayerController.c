@@ -15,6 +15,11 @@ modded class SCR_PlayerController
 		
 		if (!Replication.IsServer())
 		{
+			SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+			//Let the entity init before we update global markers (For faction check purposes)
+			if (mapMarkerManager)
+				GetGame().GetCallqueue().CallLater(mapMarkerManager.RequestGlobalMarkersRefresh, 1000, false);
+			
 			if (from)
 			{
 				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(from.FindComponent(CRF_BushMovementComponent));
@@ -199,4 +204,19 @@ modded class SCR_PlayerController
 		if (markersUpdated)
 			mapMarkersMan.UpdateAllMarkerVisibilities();
     }
+	
+	void RefreshGlobalMarkers(array<int> markers)
+	{
+		Rpc(RpcDo_RefreshGlobalMarkers, markers);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_RefreshGlobalMarkers(array<int> markers)
+	{
+		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkerManager)
+			return;
+		
+		mapMarkerManager.RefreshGlobalMarkers(markers);
+	}
 }

@@ -1947,6 +1947,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!playerFaction)
 			return;
 		
+		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkerManager)
+			return;
+		
 		Rpc(RpcAsk_ShareMapMarkerGlobal, markerUID, playerFaction.GetFactionKey(), playerId);
 	}
 	
@@ -1959,6 +1963,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		if (!factionManager)
 			return;
+		
+		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkerManager)
+			return;
+		
+		Faction localPlayerFaction = factionManager.GetPlayerFaction(playerId);
+		
+		if (!mapMarkerManager.m_aGlobalMarkers.Contains(markerUID) && localPlayerFaction)
+			mapMarkerManager.m_aGlobalMarkers.Insert(markerUID, localPlayerFaction.GetFactionKey());
+		
 		foreach (int otherPlayerId: playerIds)
 		{
 			if (playerId == otherPlayerId)
@@ -1978,7 +1992,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			pc.SharerMarkerGlobal(markerUID);
 			array<int> tempMarkerArray = {};
 			tempMarkerArray.Insert(markerUID);
-			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
+			mapMarkerManager.UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
 		}
 	}
 	
@@ -2042,5 +2056,49 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			otherController.ShareMarker(markerUIDs);
 			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(markerUIDs, otherPlayerId);
 		}
+	}
+	
+	void RequestGlobalMarkerRefresh()
+	{
+		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
+	{
+		// Get the faction of the sharing player
+		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
+			
+		Faction sharingPlayerFaction = factionMan.GetPlayerFaction(playerId);
+		if (!sharingPlayerFaction)
+			return;
+		
+		string playerFactionKey = sharingPlayerFaction.GetFactionKey();
+		
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+
+		array<int> globalMarkers = {};
+		foreach (int markerUID, string factionKey: mapMarkersMan.m_aGlobalMarkers)
+		{
+			if (factionKey != playerFactionKey)
+				continue;
+			
+			globalMarkers.Insert(markerUID);
+		}
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		//huh
+		if (!pm)
+			return;
+		
+		SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(playerId));
+		if (!pc)
+			return;
+		
+		pc.RefreshGlobalMarkers(globalMarkers);
 	}
 };
