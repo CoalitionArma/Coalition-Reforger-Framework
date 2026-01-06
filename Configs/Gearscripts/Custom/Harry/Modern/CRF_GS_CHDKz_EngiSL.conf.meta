@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E1A160AAFE1FF5C5}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz_EngiSL.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
