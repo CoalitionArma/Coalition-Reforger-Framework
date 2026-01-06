@@ -1723,15 +1723,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).SetText(CRF_RespawnManager.GetInstance().m_iCurrentTimeToRespawn.ToString());
 		SCR_ButtonTextComponent setRespawnTime = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("SetRespawnTimeButton").FindHandler(SCR_ButtonTextComponent));
 		setRespawnTime.m_OnClicked.Insert(SetRespawnTime);
-		
-		//Setting AI Enabled Button
-		SCR_ButtonTextComponent toggleAI = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("EnableAIButton").FindHandler(SCR_ButtonTextComponent));
-		toggleAI.m_OnClicked.Insert(ToggleAI);
-	}
-	
-	void ToggleAI()
-	{
-		CRF_RplToAuthorityManager.GetInstance().ToggleEnableAIInGameState();
 	}
 	
 	void ToggleWaveRespawn()
@@ -1949,20 +1940,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		{
 			respawnEnabledText.SetText("Respawns Disabled");
 			respawnEnabledText.SetColorInt(Color.RED);
-		}
-		
-		bool m_bAIEnabled = CRF_Gamemode.GetInstance().m_bCurrentEnableAIInGameState;
-		Widget AIEnabledButton = m_wMenuContent.FindAnyWidget("EnableAIButton");
-		TextWidget AIEnabledButtonText = TextWidget.Cast(AIEnabledButton.FindWidget("ActionButtonText"));
-		if (m_bAIEnabled)
-		{
-			AIEnabledButtonText.SetText("AI Enabled");
-			AIEnabledButtonText.SetColorInt(Color.GREEN);
-		}
-		else
-		{
-			AIEnabledButtonText.SetText("AI Disabled");
-			AIEnabledButtonText.SetColorInt(Color.RED);
 		}
 	}
 	

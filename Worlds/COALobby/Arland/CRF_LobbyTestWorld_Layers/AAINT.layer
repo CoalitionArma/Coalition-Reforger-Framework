@@ -25,7 +25,17 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 1228.604 37.813 2846.753
  m_BluforSlots {
-  CRF_SlottingGroup "{673C936A1F6A4981}" : "{C50D6F576810DE04}Configs/SlottingGroups/CRF_AirCrew.conf" {
+  CRF_SlottingGroup "{684963A1C56F8FEA}" : "{F779F56A759256A8}Configs/SlottingGroups/Leadership/CRF_PLT.conf" {
+  }
+  CRF_SlottingGroup "{684963A1AFF09BCA}" : "{496BAA2CA4279ADA}Configs/SlottingGroups/Squads/CRF_RifleSquad.conf" {
+   m_sCallsign "SALAMI GAY"
+  }
+  CRF_SlottingGroup "{684963A1A83CFB00}" : "{496BAA2CA4279ADA}Configs/SlottingGroups/Squads/CRF_RifleSquad.conf" {
+   m_sCallsign "1-2"
+  }
+  CRF_SlottingGroup "{673C936A1F6A4981}" : "{C50D6F576810DE04}Configs/SlottingGroups/Crews/CRF_AirCrew.conf" {
+  }
+  CRF_SlottingGroup "{684963A1A852CA5A}" : "{3C46FECBC2DC1F33}Configs/SlottingGroups/Specialties/CRF_MAT.conf" {
   }
  }
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {

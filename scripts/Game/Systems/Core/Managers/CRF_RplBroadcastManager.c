@@ -8,9 +8,8 @@ enum CRF_ESlotUpdateField
 	PLAYER_ID,
 	CHARACTER,
 	GROUP,
-	RESOURCE,
 	LOCKED,
-	DEATH
+	ROLE
 }
 
 //------------------------------------------------------------------------------------------------
@@ -22,7 +21,6 @@ class CRF_SlotUpdateBatch
 	CRF_ESlotUpdateField m_eFieldType;
 	int m_iIntValue;
 	RplId m_RplIdValue;
-	ResourceName m_ResourceValue;
 	bool m_bBoolValue;
 	
 	void CRF_SlotUpdateBatch(int slotId, CRF_ESlotUpdateField fieldType)
@@ -169,16 +167,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 					SendSlotGroupUpdate(batch.m_iSlotId, batch.m_RplIdValue);
 					break;
 				
-				case CRF_ESlotUpdateField.RESOURCE:
-					SendSlotResourceUpdate(batch.m_iSlotId, batch.m_ResourceValue);
-					break;
-				
 				case CRF_ESlotUpdateField.LOCKED:
 					SendSlotLockedUpdate(batch.m_iSlotId, batch.m_bBoolValue);
 					break;
 				
-				case CRF_ESlotUpdateField.DEATH:
-					SendSlotDeathUpdate(batch.m_iSlotId, batch.m_bBoolValue);
+				case CRF_ESlotUpdateField.ROLE:
+					SendSlotRoleUpdate(batch.m_iSlotId, batch.m_iIntValue);
 					break;
 			}
 		}
@@ -220,17 +214,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
-	protected void SendSlotResourceUpdate(int slotId, ResourceName resource)
-	{
-		int bytes = 4 + CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(resource);
-		LogTelemetry("UpdateSlotResourceDelta", bytes);
-		#ifdef WORKBENCH
-		RpcDo_UpdateSlotResourceDelta(slotId, resource);
-		#else
-		Rpc(RpcDo_UpdateSlotResourceDelta, slotId, resource);
-		#endif
-	}
-	
 	protected void SendSlotLockedUpdate(int slotId, bool isLocked)
 	{
 		LogTelemetry("UpdateSlotLockedDelta", 5);
@@ -241,13 +224,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
-	protected void SendSlotDeathUpdate(int slotId, bool isDead)
+	protected void SendSlotRoleUpdate(int slotId, bool isDead)
 	{
-		LogTelemetry("UpdateSlotDeathDelta", 5);
+		LogTelemetry("UpdateSlotRoleDelta", 5);
 		#ifdef WORKBENCH
-		RpcDo_UpdateSlotDeathDelta(slotId, isDead);
+		RpcDo_UpdateSlotRoleDelta(slotId, isDead);
 		#else
-		Rpc(RpcDo_UpdateSlotDeathDelta, slotId, isDead);
+		Rpc(RpcDo_UpdateSlotRoleDelta, slotId, isDead);
 		#endif
 	}
 	
@@ -856,7 +839,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot player ID only (~8 bytes vs 366 bytes)
+	// SlottingManager: Update slot player ID only (~8 bytes)
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotPlayerIdDelta(int slotId, int playerId)
 	{
@@ -916,26 +899,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot resource only (~20-60 bytes depending on path length)
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotResourceDelta(int slotId, ResourceName resource)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		if (m_bBatchingEnabled)
-		{
-			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.RESOURCE);
-			batch.m_ResourceValue = resource;
-			QueueSlotUpdate(batch);
-		}
-		else
-		{
-			SendSlotResourceUpdate(slotId, resource);
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot locked state only (~5 bytes)
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedDelta(int slotId, bool isLocked)
@@ -956,22 +919,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot death state only (~5 bytes)
+	// SlottingManager: Update slot role (~8 bytes)
 	//------------------------------------------------------------------------------------------------
-	void UpdateSlotDeathDelta(int slotId, bool isDead)
+	void UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
 	{
 		if (!Replication.IsServer())
 			return;
 		
 		if (m_bBatchingEnabled)
 		{
-			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.DEATH);
-			batch.m_bBoolValue = isDead;
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.ROLE);
+			batch.m_iIntValue = role;
 			QueueSlotUpdate(batch);
 		}
 		else
 		{
-			SendSlotDeathUpdate(slotId, isDead);
+			SendSlotRoleUpdate(slotId, role);
 		}
 	}
 	
@@ -2031,7 +1994,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotResourceDelta(int slotId, ResourceName resource)
+	void RpcDo_UpdateSlotRoleDelta(int slotId, CRF_ESlotType role)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
@@ -2040,7 +2003,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
-			slotData.SetSlotResource(resource);
+			slotData.SetSlotRole(role);
 			slotData.GetOnDataUpdate().Invoke();
 			
 			// Trigger global slotting update for UI refresh
@@ -2062,27 +2025,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetIsLockedSlot(isLocked);
-			slotData.GetOnDataUpdate().Invoke();
-			
-			// Trigger global slotting update for UI refresh
-			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
-			if (invoker)
-				invoker.Invoke();
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotDeathDelta(int slotId, bool isDead)
-	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		if (!slottingManager)
-			return;
-		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
-		if (slotData)
-		{
-			slotData.SetIsDeadSlot(isDead);
 			slotData.GetOnDataUpdate().Invoke();
 			
 			// Trigger global slotting update for UI refresh

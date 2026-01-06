@@ -11,72 +11,11 @@ class CRF_SlottingGroup
 	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType))]
 	CRF_EFlagType m_FlagType;
 	
-	[Attribute()]
-	ref CRF_SlottingSpawnPoint m_sSpawnpoint;
+	//[Attribute()]
+	//ref CRF_SlottingSpawnPoint m_sSpawnpoint;
 	
 	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
 	ref array<ref CRF_EGearRole> m_aSlots;
-	
-	protected void SetSlotsArray()
-	{
-		array<ref ContainerIdPathEntry> path;
-		Print(m_eOwnerSrc.GetComponentCount());
-		Print(m_eOwnerSrc);
-		Print(m_WorldAPI);
-		
-		if (!m_eOwnerSrc)
-			return;
-		
-		m_WorldAPI.BeginEditSequence(m_eOwnerSrc);
-		m_WorldAPI.BeginEntityAction("Modify Properties");
-		
-		m_WorldAPI.SetVariableValue(m_eOwnerSrc, null, "m_iTimeToRespawn", "50");
-		
-		m_WorldAPI.EndEntityAction();
-		m_WorldAPI.EndEditSequence(m_eOwnerSrc);
-		
-		m_WorldAPI.UpdateSelectionGui();
-				
-		//m_WorldAPI.SetVariableValue(m_eOwnerSrc, null, "m_iTimeToRespawn", "69");
-		/*
-		int count = ownerSrc.GetComponentCount();
-		for (int i = 0; i < count; i++)
-		{
-			IEntityComponentSource componentContainer = ownerSrc.GetComponent(i);
-			if (componentContainer.GetClassName() == "MeshObject")
-			{
-				string remapOptions;
-				componentContainer.Get("Materials", remapOptions);
-				array<string> parts = {};
-				remapOptions.Split(";", parts, true);
-				foreach (int idx, string part : parts)
-				{
-					array<string> partParts = {};
-					part.Split(",", partParts, true);
-
-					array<ref ContainerIdPathEntry> path = {new ContainerIdPathEntry("RHS_Armament_TurretDestructionComponent")};
-					api.CreateObjectArrayVariableMember(ownerSrc, path, "m_aMaterialsRemap", "RHS_Armament_MaterialRemapContainer", idx);
-					path = {new ContainerIdPathEntry("RHS_Armament_TurretDestructionComponent"), new ContainerIdPathEntry("m_aMaterialsRemap", idx)};
-					api.SetVariableValue(ownerSrc, path, "m_sMaterialName", partParts[0]);
-					api.SetVariableValue(ownerSrc, path, "m_sMaterialPath", partParts[1]);
-				}
-				api.UpdateSelectionGui();
-				return;
-			}
-		}
-		*/
-		
-	}
-	
-	void CRF_SlottingGroup()
-	{
-		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
-		if (!worldEditor)
-			return;
-
-		m_WorldAPI = worldEditor.GetApi();
-		m_eOwnerSrc = m_WorldAPI.GetSelectedEntity(0);
-	}
 }
 
 //------------------------------------------------------------------------------------------------
@@ -88,13 +27,4 @@ class CRF_SlottingSpawnPoint
 	
 	[Attribute("")]
 	ref PointInfo m_CustomPosition;
-}
-
-[BaseContainerProps()]
-class CRF_SlottingGroup_AirCrew : CRF_SlottingGroup
-{
-	void CRF_SlottingGroup_AirCrew(IEntitySource src, IEntity parent)
-	{
-		SetSlotsArray();
-	}
 }

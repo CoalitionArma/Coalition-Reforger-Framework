@@ -1,23 +1,20 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Generate Mission World", 
-	description: "Automatically Generate Mission World", 
+	name: "0 | Spawn Initial Mission Layers/Objects", 
+	description: "Automatically Generate Mission Layers", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0031)
+	awesomeFontCode: 0x0030)
 ] 
 class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 {	
-	[Attribute(defvalue: "{1EA95DAE3230BEB0}worlds/Cain/Cain.ent", uiwidget: UIWidgets.ResourceNamePicker, params: "ent")]
-	protected ResourceName m_sBaseWorld;
-
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
 		if (!Workbench.ScriptDialog(
-		"Mission Config Generator", 
-		"Welcome to step-by-step setup of a CRF mission.\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY\n TANKA GAY", 
+		"Mission Layer Generator", 
+		"This Automatically generates the missions layers to keep consistancy across all CRF missions", 
 		this))
 			return;
 	}
@@ -39,10 +36,14 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		
 		WorldEditorAPI api = worldEditor.GetApi();
 		
+		api.CreateSubsceneLayer(1, "_INIT");
+		api.CreateSubsceneLayer(1, "SPAWNPOINTS");
+		api.CreateSubsceneLayer(1, "OBJECTIVES");
+		api.CreateSubsceneLayer(1, "POLYZONES");
+		api.CreateSubsceneLayer(1, "VEHICLES");
+		api.CreateSubsceneLayer(1, "PROPS");
 		
-		
-		
-		
+		api.SetActiveSubsceneLayer(1, "_INIT");
 		
 		return true;
 	}

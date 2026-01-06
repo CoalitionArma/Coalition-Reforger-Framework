@@ -40,25 +40,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
-	//AI Settings
-	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF AI Settings")]
-	bool m_bDisableAICrouching;
-	
 	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Config - General")]
-	bool m_bUseAAR;
-	
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - General")]
 	int m_iTimeLimitMinutes;
+	
+	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF Mission Config - General")]
+	bool m_bDisableAICrouching;
 
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
 	bool m_bAllowEspionage;
-
-	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Mission Config - General")]
-	bool EnableAIInGameState;
 	
-	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Config - General")]
+	bool m_bUseAAR;
 	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Config - General")]
 	bool m_bDisableChat;
@@ -612,18 +606,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 			);
 		}
 
-		// Update slot death state so player gets put into spec
-		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-		
-		if(slotID != -1)
-			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-
 		// Get death position for spectator camera initialization
 		vector deathPosition[4];
 		entity.GetWorldTransform(deathPosition);
 
 		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3]);
+		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3], true);
 	}
 	
 	/**
@@ -634,7 +622,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	* @param locationTwo Position 2 in the world vector to spawn the player
 	* @param locationThree Position 3 in the world vector to spawn the player
 	*/
-	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
+	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree, bool isDead = false)
 	{
 		vector location[4];
 		
@@ -643,7 +631,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		location[2] = locationTwo;
 		location[3] = locationThree;
 		
-		m_GamemodeManager.InitilizePlayer(playerId, location);
+		m_GamemodeManager.InitilizePlayer(playerId, location, isDead);
 	}
 	
 	/**
@@ -677,22 +665,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		HitZone defaultHitZone = damageManager.GetDefaultHitZone();
 		if (defaultHitZone)
 			defaultHitZone.SetHealth(0);
-		
-		// Schedule restoration of original alive status after death processing completes
-		// This ensures the player shows as alive in AAR even though they were killed for transition
-		GetGame().GetCallqueue().CallLater(RestorePlayerAliveStatusForAAR, 3000, false, slotId, originalDeadState);
-	}
-	
-	/**
-	 * Restores a player's original alive/dead status after they've been moved to spectator for AAR
-	 * @param slotId The slot ID of the player
-	 * @param originalDeadState The player's original dead state before AAR
-	 */
-	void RestorePlayerAliveStatusForAAR(int slotId, bool originalDeadState)
-	{
-		// Restore the player's original alive/dead status
-		// This ensures the AAR display shows their actual mission-end status
-		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
 	}
 	
 	void UpdateGearscriptResource(string factionKey, string resource)
@@ -704,12 +676,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
 			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
 		}
-		Replication.BumpMe();
-	}
-	
-	void ToggleEnableAIInGameState()
-	{
-		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
 		Replication.BumpMe();
 	}
 	
