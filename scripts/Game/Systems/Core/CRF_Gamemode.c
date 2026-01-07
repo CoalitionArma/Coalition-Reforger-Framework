@@ -58,7 +58,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	bool m_bDisableChat;
 
 	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
-	bool m_bLockSlotsAfterSafestart;
+	bool m_bLockUnusedSlots;
 
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Config - General")]
 	bool m_bSafestartInstantlyEnabled;

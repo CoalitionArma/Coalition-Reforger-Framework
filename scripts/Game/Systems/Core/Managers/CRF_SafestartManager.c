@@ -437,7 +437,7 @@ class CRF_SafestartManager : ScriptComponent
 			m_bIndforReady = false;
 			m_bCivReady = false;
 			
-			if(m_Gamemode.m_bLockSlotsAfterSafestart)
+			if(m_Gamemode.m_bLockUnusedSlots)
 				m_SlottingManager.LockAllOpenSlots();
 
 			m_bUpdatedServerWorldTime = false;

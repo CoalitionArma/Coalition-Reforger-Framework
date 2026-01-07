@@ -45,6 +45,8 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		
 		api.SetActiveSubsceneLayer(1, "_INIT");
 		
+		worldEditor.Save();
+		
 		return true;
 	}
 }
