@@ -1,8 +1,9 @@
 GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR.et" {
  components {
   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
-   m_eSupportedArsenalItemTypes 327768
-   m_eSupportedArsenalItemModes 50
+   m_eSupportedArsenalItemTypes 327704
+   m_eSupportedArsenalItemModes 62
+   m_eEditableAttributeGroups 18
   }
  }
  coords 10694.339 129.204 3508.915

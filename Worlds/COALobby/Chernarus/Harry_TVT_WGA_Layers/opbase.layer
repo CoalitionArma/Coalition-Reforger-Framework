@@ -23,6 +23,14 @@ $grp CRF_VehicleSpawner {
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
  }
+ {
+  coords 10709.141 130.015 3508.345
+  angles 0 -62.675 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_sFactionKey "OFPOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
 }
 GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
  components {
