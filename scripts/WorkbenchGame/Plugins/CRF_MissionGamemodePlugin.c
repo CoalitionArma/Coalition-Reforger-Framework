@@ -27,18 +27,6 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
 	bool m_bWaveRespawn;
 	
-	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn")]
-	int m_iBLUFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn")]
-	int m_iOPFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn")]
-	int m_iINDFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn")]
-	int m_iCIVTickets;
-	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
@@ -51,8 +39,8 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
 		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
 		
-		m_iMissionTimeLimit = gamemode.m_iMissionTimeLimit;
-		m_bMissionAllowsEspionage = gamemode.m_bMissionAllowsEspionage;
+		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
+		m_bMissionAllowsEspionage = gamemode.m_bAllowEspionage;
 		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
@@ -76,6 +64,32 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[ButtonAttribute("Next", true)]
 	protected bool ButtonNext()
 	{
+		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
+		if (!worldEditor)
+			return false;
+		
+		WBProgressDialog progress = new WBProgressDialog("Processing...", Workbench.GetModule(WorldEditor));
+		
+		WorldEditorAPI api = worldEditor.GetApi();
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		
+		api.BeginEntityAction();
+		api.BeginEditSequence(entitySource);
+		
+		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
+		api.SetVariableValue(entitySource, null, "m_bAllowEspionage", m_bMissionAllowsEspionage.ToString());
+		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
+		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
+		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
+		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
+		
+		api.EndEditSequence(entitySource);
+		api.EndEntityAction();
+		
+		api.UpdateSelectionGui();
+		
+		worldEditor.Save();
+		
 		return true;
 	}
 }

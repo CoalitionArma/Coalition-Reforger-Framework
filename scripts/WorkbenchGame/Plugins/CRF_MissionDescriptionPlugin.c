@@ -61,24 +61,31 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
 		
-		for ( int i; i < m_aMissionDescriptors.Count(); i++ )
+		for (int i; i < m_aMissionDescriptors.Count(); i++ )
 		{
-			if (api.CreateObjectArrayVariableMember(entitySource, null, "m_aMissionDescriptors", "CRF_MissionDescriptor", i))
+			array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("m_aMissionDescriptors", i + 2)};
+			CRF_MissionDescriptor descriptor = m_aMissionDescriptors[i];
+			
+			api.SetVariableValue(entitySource, path, "m_sTitle", descriptor.m_sTitle);
+			api.SetVariableValue(entitySource, path, "m_sTextData", descriptor.m_sTextData);
+			api.SetVariableValue(entitySource, path, "m_bShowForAnyFaction", descriptor.m_bShowForAnyFaction.ToString());
+			
+			string finalFactionsArrayStr;
+			foreach (int f, FactionKey factionKey : descriptor.m_aFactionKeys)
 			{
-				array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("m_aMissionDescriptors", i + 2)};
-				CRF_MissionDescriptor descriptor = m_aMissionDescriptors[i];
-				
-				api.SetVariableValue(entitySource, path, "m_sTitle", descriptor.m_sTitle);
-				api.SetVariableValue(entitySource, path, "m_sTextData", descriptor.m_sTextData);
-				api.SetVariableValue(entitySource, path, "m_aFactionKeys", descriptor.m_aFactionKeys.ToString());
-				api.SetVariableValue(entitySource, path, "m_bShowForAnyFaction", descriptor.m_bShowForAnyFaction.ToString());
+				if (f == 0)
+					finalFactionsArrayStr = factionKey;
+				else	
+					finalFactionsArrayStr = finalFactionsArrayStr + ", " + factionKey;
 			}
+			
+			api.SetVariableValue(entitySource, path, "m_aFactionKeys", finalFactionsArrayStr);
 		}
 		
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
 		
-		//api.UpdateSelectionGui();
+		api.UpdateSelectionGui();
 		
 		worldEditor.Save();
 		
