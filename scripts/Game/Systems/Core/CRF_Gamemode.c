@@ -45,7 +45,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - General")]
 	int m_iTimeLimitMinutes;
 	
-	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF Mission Config - General")]
+	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Mission Config - General")]
 	bool m_bDisableAICrouching;
 
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]

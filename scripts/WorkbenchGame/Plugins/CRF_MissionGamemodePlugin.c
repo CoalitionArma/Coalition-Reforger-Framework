@@ -15,7 +15,10 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
 	bool m_bMissionAllowsEspionage;
 
-	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
+	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Config - General")]
+	bool m_bSafestartEnabledOnMissionStart;
+	
+	[Attribute("true", "auto", "Should we lock all non-slotted slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
 	bool m_bLockUnusedSlots;
 	
 	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Mission Config - Respawn")]
@@ -45,6 +48,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
+		m_bSafestartEnabledOnMissionStart = gamemode.m_bSafestartInstantlyEnabled;
 		
 		if (!Workbench.ScriptDialog(
 		"Mission Gamemode Settings", 
@@ -82,6 +86,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
+		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());		
 		
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
