@@ -9,6 +9,18 @@
 ] 
 class CRF_MissionFactionsPlugin : WorkbenchPlugin
 {	
+	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
+	int m_iFactionOneRatio;
+
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
+	string m_sFactionOneKey;
+
+	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
+	int m_iFactionTwoRatio;
+
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
+	string m_sFactionTwoKey;
+	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{

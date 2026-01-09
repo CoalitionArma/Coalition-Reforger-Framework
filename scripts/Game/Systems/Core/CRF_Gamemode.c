@@ -40,46 +40,57 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
-	// General Gamemode Settings
+	// Attributes Set By Plugins
 	//------------------------------------------------------------------------------------
-	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Mission Config - General")]
+	[Attribute("0", "")]
+	bool m_bRespawnEnabled;
+
+	[Attribute("0", "")]
+	bool m_bWaveRespawn;
+
+	[Attribute("60", "")]
+	int m_iTimeToRespawn;
+	
+	[Attribute("45", "")]
 	int m_iTimeLimitMinutes;
 	
-	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Mission Config - General")]
-	bool m_bDisableAICrouching;
-
-	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
+	[Attribute("false", "")]
 	bool m_bAllowEspionage;
 	
-	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Config - General")]
-	bool m_bUseAAR;
-	
-	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Config - General")]
-	bool m_bDisableChat;
-
-	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
+	[Attribute("true", "")]
 	bool m_bLockUnusedSlots;
 
-	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Config - General")]
+	[Attribute("true", "")]
 	bool m_bSafestartInstantlyEnabled;
-
-	// Mission Descriptors (shown in briefing)
-	[Attribute("", category: "CRF Mission Config - General")]
+	
+	[Attribute("", "")]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
+	
+	[Attribute("", "")]
+	int m_iFactionOneRatio;
+
+	[Attribute("", "")]
+	int m_iFactionTwoRatio;
+	
+	[Attribute("", "")]
+	string m_sFactionOneKey;
+
+	[Attribute("", "")]
+	string m_sFactionTwoKey;
+	
+	// Advanced Gamemode Settings
+	//------------------------------------------------------------------------------------
+	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Mission Settings - Advanced")]
+	bool m_bDisableAICrouching;
+	
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Settings - Advanced")]
+	bool m_bUseAAR;
+	
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Settings - Advanced")]
+	bool m_bDisableChat;
 
 	// Faction Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
-	int m_iFactionOneRatio;
-
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
-	string m_sFactionOneKey;
-
-	[Attribute("1", "auto", "", category: "CRF Mission Config - Slotting Ratio")]
-	int m_iFactionTwoRatio;
-
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Mission Config - Slotting Ratio")]
-	string m_sFactionTwoKey;
 	
 	[Attribute(UIWidgets.Auto, desc: "BLUFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
@@ -113,14 +124,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	// Respawn Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
-	bool m_bRespawnEnabled;
-
-	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
-	bool m_bWaveRespawn;
-
-	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Mission Config - Respawn")]
-	int m_iTimeToRespawn;
 
 	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
 	int m_iBLUFORTickets;
