@@ -28,21 +28,26 @@ modded class SCR_MapMarkerManagerComponent
 	//Method used for JIPs to get markers placed during safestart
 	void RefreshGlobalMarkers(array<int> globalMarkers)
 	{
-		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
-		if (!mapMarkerManager)
-			return;
-		
-		//Nested loop to ensure all global markers are enabled that should be.
-		foreach (int markerUID: globalMarkers)
-		{
-			foreach (SCR_MapMarkerBase marker: mapMarkerManager.GetStaticMarkers())
-			{
-				if (marker.GetMarkerID() == markerUID && !marker.m_bIsShared)
-					marker.m_bIsShared = true;
-			}
-		}
-		
-		UpdateAllMarkerVisibilities();
+	    SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+	    if (!mapMarkerManager)
+	        return;
+	
+	    // Build a map of markerID -> marker for O(1) lookups
+	    map<int, SCR_MapMarkerBase> markerMap = new map<int, SCR_MapMarkerBase>;
+	    foreach (SCR_MapMarkerBase marker: mapMarkerManager.GetStaticMarkers())
+	    {
+	        markerMap.Set(marker.GetMarkerID(), marker);
+	    }
+	
+	    // Now just do direct lookups instead of nested iteration
+	    foreach (int markerUID: globalMarkers)
+	    {
+	        SCR_MapMarkerBase marker = markerMap.Get(markerUID);
+	        if (marker && !marker.m_bIsShared)
+	            marker.m_bIsShared = true;
+	    }
+	
+	    UpdateAllMarkerVisibilities();
 	}
 	
 	override void OnPlayerConnected(int playerId)
@@ -88,6 +93,12 @@ modded class SCR_MapMarkerManagerComponent
 		
 		// Update visibility for the newly added marker
 		UpdateMarkerVisibility(marker);
+	}
+	
+	override void OnAskRemoveStaticMarker(int markerID)
+	{
+		super.OnAskRemoveStaticMarker(markerID);
+		m_aGlobalMarkers.Remove(markerID);
 	}
 	
 	//------------------------------------------------------------------------------------------------

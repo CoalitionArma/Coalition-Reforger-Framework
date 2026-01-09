@@ -2,6 +2,13 @@ modded class SCR_PlayerController
 {
 	bool m_bIsListeningToSpec = false;
 	vector m_vPlayersLastDeath[4];
+	CRF_BandwidthTelemetryManager m_TelemetryManager;
+	
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+	}
 	
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
@@ -213,6 +220,9 @@ modded class SCR_PlayerController
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_RefreshGlobalMarkers(array<int> markers)
 	{
+		int bytes = 0;
+		bytes += m_TelemetryManager.EstimateSize_IntArray(markers);
+		m_TelemetryManager.LogRPC("RpcDo_RefreshGlobalMarkers", bytes);
 		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		if (!mapMarkerManager)
 			return;
