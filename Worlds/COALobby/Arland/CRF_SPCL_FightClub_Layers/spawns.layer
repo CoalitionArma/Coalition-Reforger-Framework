@@ -1,0 +1,1829 @@
+$grp SCR_BaseTriggerEntity {
+ lootSpawn1 {
+  coords 1355.21 38.066 2964.479
+ }
+ lootSpawn2 {
+  coords 1337.22 38.286 2947.453
+ }
+ lootSpawn3 {
+  coords 1328.797 38.286 2945.299
+ }
+ lootSpawn4 {
+  coords 1327.476 38.286 2949.078
+ }
+ lootSpawn5 {
+  coords 1327.942 38.786 2947.469
+ }
+ lootSpawn6 {
+  coords 1326.504 38.78 2946.951
+ }
+ lootSpawn7 {
+  coords 1327.621 38.781 2943.756
+ }
+ lootSpawn8 {
+  coords 1328.976 38.783 2944.206
+ }
+ lootSpawn9 {
+  coords 1327.077 38.786 2946.258
+ }
+ lootSpawn10 {
+  coords 1328.178 38.788 2946.54
+ }
+ lootSpawn11 {
+  coords 1339.55 38.752 2946.83
+ }
+ lootSpawn12 {
+  coords 1337.567 38.781 2946.356
+ }
+ lootSpawn13 {
+  coords 1336.7 38.286 2949.133
+ }
+ lootSpawn14 {
+  coords 1338.078 38.286 2949.432
+ }
+ lootSpawn15 {
+  coords 1339.235 38.286 2949.743
+ }
+ lootSpawn16 {
+  coords 1337.084 38.847 2952.958
+ }
+ lootSpawn17 {
+  coords 1338.271 38.842 2953.34
+ }
+ lootSpawn18 {
+  coords 1328.176 39.192 2952.064
+ }
+ lootSpawn19 {
+  coords 1325.94 38.761 2951.518
+ }
+ lootSpawn20 {
+  coords 1325.13 38.761 2954.389
+ }
+ lootSpawn21 {
+  coords 1324.473 38.762 2957.185
+ }
+ lootSpawn22 {
+  coords 1336.725 39.192 2956.672
+ }
+ lootSpawn23 {
+  coords 1337.578 39.192 2954.346
+ }
+ lootSpawn24 {
+  coords 1333.796 38.286 2959.35
+ }
+ lootSpawn25 {
+  coords 1336.687 38.286 2957.993
+ }
+ lootSpawn26 {
+  coords 1324.128 38.781 2958.702
+ }
+ lootSpawn27 {
+  coords 1326.965 39.286 2959.232
+ }
+ lootSpawn28 {
+  coords 1323.679 38.781 2961.167
+ }
+ lootSpawn29 {
+  coords 1324.814 38.286 2963.838
+ }
+ lootSpawn30 {
+  coords 1334.159 39.192 2962.861
+ }
+ lootSpawn31 {
+  coords 1333.16 38.286 2966.278
+ }
+ lootSpawn32 {
+  coords 1336.014 38.286 2961.577
+ }
+ lootSpawn33 {
+  coords 1321.404 38.761 2968.396
+ }
+ lootSpawn34 {
+  coords 1322.287 38.767 2965.637
+ }
+ lootSpawn35 {
+  coords 1320.641 38.76 2971.114
+ }
+ lootSpawn36 {
+  coords 1331.428 38.286 2971.01
+ }
+ lootSpawn37 {
+  coords 1329.586 39.438 2973.663
+ }
+ lootSpawn38 {
+  coords 1331.241 38.933 2974.124
+ }
+ lootSpawn39 {
+  coords 1331.16 40.46 2974.037
+ }
+ lootSpawn40 {
+  coords 1333.605 38.698 2971.77
+ }
+ lootSpawn41 {
+  coords 1333.543 39.175 2972.265
+ }
+ lootSpawn42 {
+  coords 1333.721 39.172 2971.358
+ }
+ lootSpawn43 {
+  coords 1333.642 39.656 2971.707
+ }
+ lootSpawn44 {
+  coords 1342.81 38.347 2979.784
+ }
+ lootSpawn45 {
+  coords 1342.595 37.802 2967.283
+ }
+ lootSpawn46 {
+  coords 1360.503 37.794 2975.662
+ }
+ lootSpawn47 {
+  coords 1360.07 39.509 2967.957
+ }
+ lootSpawn48 {
+  coords 1361.968 39.013 2962.986
+ }
+ lootSpawn49 {
+  coords 1365.396 39.013 2964.051
+ }
+ lootSpawn50 {
+  coords 1367.309 39.919 2969.135
+ }
+ lootSpawn51 {
+  coords 1368.118 40.454 2966.583
+ }
+ lootSpawn52 {
+  coords 1367.72 40.454 2967.7
+ }
+ lootSpawn53 {
+  coords 1369.638 39.013 2965.863
+ }
+ lootSpawn54 {
+  coords 1369.608 39.013 2962.19
+ }
+ lootSpawn55 {
+  coords 1370.757 39.919 2962.407
+ }
+ lootSpawn56 {
+  coords 1367.375 39.919 2959.462
+ }
+ lootSpawn57 {
+  coords 1363.374 39.013 2960.096
+ }
+ lootSpawn58 {
+  coords 1359.494 39.919 2960.622
+ }
+ lootSpawn59 {
+  coords 1360.408 43.715 2960.465
+ }
+ lootSpawn60 {
+  coords 1362.759 43.709 2960.988
+ }
+ lootSpawn61 {
+  coords 1366.175 43.709 2962.001
+ }
+ lootSpawn62 {
+  coords 1364.323 43.709 2961.517
+ }
+ lootSpawn63 {
+  coords 1364.908 43.709 2959.103
+ }
+ lootSpawn64 {
+  coords 1363.209 43.709 2958.737
+ }
+ lootSpawn65 {
+  coords 1368.973 42.809 2961.119
+ }
+ lootSpawn66 {
+  coords 1360.52 43.715 2966.895
+ }
+ lootSpawn67 {
+  coords 1358.43 42.809 2965.313
+ }
+ lootSpawn68 {
+  coords 1358.642 42.809 2967.236
+ }
+ lootSpawn69 {
+  coords 1360.578 46.989 2958.955
+ }
+ lootSpawn70 {
+  coords 1370.285 46.984 2961.085
+ }
+ lootSpawn71 {
+  coords 1368.159 46.987 2969.309
+ }
+ lootSpawn72 {
+  coords 1358.269 46.984 2966.099
+ }
+ lootSpawn73 {
+  coords 1365.569 50.56 2962.969
+ }
+ lootSpawn74 {
+  coords 1366.301 50.56 2965.143
+ }
+ lootSpawn75 {
+  coords 1362.124 50.56 2965.16
+ }
+ lootSpawn76 {
+  coords 1363.505 50.56 2962.74
+ }
+ lootSpawn77 {
+  coords 1718.766 39.01 2854.427
+ }
+ lootSpawn78 {
+  coords 1636.818 38.857 2921.698
+ }
+ lootSpawn79 {
+  coords 1530.09 38.999 2787.627
+ }
+ lootSpawn80 {
+  coords 1491.469 38.001 2890.094
+ }
+ lootSpawn81 {
+  coords 1357.247 38.999 2759.939
+ }
+ lootSpawn82 {
+  coords 1331.962 37.969 2873.153
+ }
+ lootSpawn83 {
+  coords 1176.85 39.001 2704.562
+ }
+ lootSpawn84 {
+  coords 1182.606 38 2818.78
+ }
+ lootSpawn85 {
+  coords 923.837 39.009 2626.538
+ }
+ lootSpawn86 {
+  coords 1034.911 38.029 2793.611
+ }
+ lootSpawn87 {
+  coords 1178.861 1.018 3274.091
+ }
+ lootSpawn88 {
+  coords 1162.025 1.156 3293.406
+ }
+ lootSpawn89 {
+  coords 1174 1.11 3312.492
+ }
+ lootSpawn90 {
+  coords 1147.596 1.157 3339.42
+ }
+ lootSpawn91 {
+  coords 1153.705 3.689 3270.252
+ }
+ lootSpawn92 {
+  coords 1150.669 3.72 3270.344
+ }
+ lootSpawn93 {
+  coords 1192.151 2.863 3297.912
+ }
+ lootSpawn94 {
+  coords 1191.94 1.821 3297.99
+ }
+ lootSpawn95 {
+  coords 1190.716 1.325 3299.633
+ }
+ lootSpawn96 {
+  coords 1183.088 1.125 3294.541
+ }
+ lootSpawn97 {
+  coords 1180.921 1.125 3291.488
+ }
+ lootSpawn98 {
+  coords 1183.678 1.094 3287.415
+ }
+ lootSpawn99 {
+  coords 1153.07 2.373 3272.478
+ }
+ lootSpawn100 {
+  coords 1151.277 1.947 3274.069
+ }
+ lootSpawn101 {
+  coords 1133.029 1.161 3242.5
+ }
+ lootSpawn102 {
+  coords 1108.658 1.125 3389.389
+ }
+ lootSpawn103 {
+  coords 1128.941 1.202 3380.564
+ }
+ lootSpawn104 {
+  coords 1134.148 1.202 3383.854
+ }
+ lootSpawn105 {
+  coords 1135.373 2.228 3381.97
+ }
+ lootSpawn106 {
+  coords 1148.418 1.942 3362.397
+ }
+ lootSpawn107 {
+  coords 1148.473 2.997 3362.53
+ }
+ lootSpawn108 {
+  coords 1257.07 37.6 2925.866
+ }
+ lootSpawn109 {
+  coords 1252.714 37.6 2931.032
+ }
+ lootSpawn110 {
+  coords 1247.147 37.6 2931.19
+ }
+ lootSpawn111 {
+  coords 1252.829 37.6 2944.281
+ }
+ lootSpawn112 {
+  coords 1252.581 37.6 2939.882
+ }
+ lootSpawn113 {
+  coords 1242.749 37.6 2943.572
+ }
+ lootSpawn114 {
+  coords 1245.968 37.6 2923.152
+ }
+ lootSpawn115 {
+  coords 1248.622 37.6 2923.097
+ }
+ lootSpawn116 {
+  coords 1285.154 37.788 2930.241
+ }
+ lootSpawn117 {
+  coords 1289.324 38.575 2941.985
+ }
+ lootSpawn118 {
+  coords 1293.254 39.132 2943.108
+ }
+ lootSpawn119 {
+  coords 1305.832 38.62 2903.049
+ }
+ lootSpawn120 {
+  coords 1310.317 38.809 2904.131
+ }
+ lootSpawn121 {
+  coords 1430.81 38.08 2970.059
+ }
+ lootSpawn122 {
+  coords 1429.755 38.016 2972.531
+ }
+ lootSpawn123 {
+  coords 1444.949 38.124 2984.057
+ }
+ lootSpawn124 {
+  coords 1453.101 37.993 2964.442
+ }
+ lootSpawn125 {
+  coords 1437.111 34.93 3186.288
+ }
+ lootSpawn126 {
+  coords 1438.036 34.93 3178.528
+ }
+ lootSpawn127 {
+  coords 1434.394 34.93 3183.778
+ }
+ lootSpawn128 {
+  coords 1975.629 51.925 3038.515
+ }
+ lootSpawn129 {
+  coords 1970.831 51.925 3041.185
+ }
+ lootSpawn130 {
+  coords 1971.75 52.061 3038.291
+ }
+ lootSpawn131 {
+  coords 1970.326 52.061 3038.986
+ }
+ lootSpawn132 {
+  coords 1970.259 52.572 3038.813
+ }
+ lootSpawn133 {
+  coords 1971.803 52.571 3038.194
+ }
+ lootSpawn134 {
+  coords 1972.057 53.078 3038.2
+ }
+ lootSpawn135 {
+  coords 1970.435 53.081 3038.885
+ }
+ lootSpawn136 {
+  coords 1970.626 53.588 3038.841
+ }
+ lootSpawn137 {
+  coords 1972.076 53.587 3038.227
+ }
+ lootSpawn138 {
+  coords 1971.316 54.098 3038.597
+ }
+ lootSpawn139 {
+  coords 1987.27 51.925 3033.782
+ }
+ lootSpawn140 {
+  coords 2004.562 51.925 3026.532
+ }
+ lootSpawn141 {
+  coords 2012.215 51.675 3016.712
+ }
+ lootSpawn142 {
+  coords 1989.408 51.675 3026.458
+ }
+ lootSpawn143 {
+  coords 2009.198 51.925 3011.654
+ }
+ lootSpawn144 {
+  coords 1988.471 51.925 3020.97
+ }
+ lootSpawn145 {
+  coords 1966.461 51.925 3029.719
+ }
+ lootSpawn146 {
+  coords 1967.931 52.421 3027.574
+ }
+ lootSpawn147 {
+  coords 1964.012 52.73 3028.627
+ }
+ lootSpawn148 {
+  coords 1965.037 52.929 3032.046
+ }
+ lootSpawn149 {
+  coords 1998.052 51.672 3040.978
+ }
+ lootSpawn150 {
+  coords 1993.213 51.667 3043.323
+ }
+ lootSpawn151 {
+  coords 1992.87 52.87 3040.573
+ }
+ lootSpawn152 {
+  coords 1995.925 52.905 3039.494
+ }
+ lootSpawn153 {
+  coords 1988.541 52.81 3042.233
+ }
+ lootSpawn154 {
+  coords 1987.273 52.842 3042.955
+ }
+ lootSpawn155 {
+  coords 1167.206 37.955 2936.761
+ }
+ lootSpawn156 {
+  coords 1160.1 37.752 2944.775
+ }
+ lootSpawn157 {
+  coords 1159.239 38.426 2943.569
+ }
+ lootSpawn158 {
+  coords 1169.637 36.408 2955.895
+ }
+ lootSpawn159 {
+  coords 1181.742 36.375 2967.548
+ }
+ lootSpawn160 {
+  coords 1179.781 36.497 2954.107
+ }
+ lootSpawn161 {
+  coords 1449.979 39.88 2973.846
+ }
+ lootSpawn162 {
+  coords 1426.121 37.992 2979.459
+ }
+ lootSpawn163 {
+  coords 1617.346 44.426 3106.043
+ }
+ lootSpawn164 {
+  coords 1615.316 44.426 3107.876
+ }
+ lootSpawn165 {
+  coords 1619.695 45.226 3109.646
+ }
+ lootSpawn166 {
+  coords 1618.728 44.921 3110.789
+ }
+ lootSpawn167 {
+  coords 1619.347 44.426 3108.414
+ }
+ lootSpawn168 {
+  coords 1934.85 57.33 3316.275
+ }
+ lootSpawn169 {
+  coords 1936.331 57.35 3316.003
+ }
+ lootSpawn170 {
+  coords 1946.153 57.636 3306.926
+ }
+ lootSpawn171 {
+  coords 1946.176 57.608 3302.52
+ }
+ lootSpawn172 {
+  coords 1945.047 57.608 3300.601
+ }
+ lootSpawn173 {
+  coords 1943.946 58.608 3301.611
+ }
+ lootSpawn174 {
+  coords 1943.298 58.093 3303.288
+ }
+ lootSpawn175 {
+  coords 1948.286 58.514 3301.33
+ }
+ lootSpawn176 {
+  coords 1948.767 57.608 3298.168
+ }
+ lootSpawn177 {
+  coords 1945.921 57.608 3296.92
+ }
+ lootSpawn178 {
+  coords 2083.192 39.209 3330.882
+ }
+ lootSpawn179 {
+  coords 2082.635 39.209 3332.459
+ }
+ lootSpawn180 {
+  coords 1970.142 44.271 3423.196
+ }
+ lootSpawn181 {
+  coords 1969.44 44.27 3425.601
+ }
+ lootSpawn182 {
+  coords 1971.297 44.27 3425.851
+ }
+ lootSpawn183 {
+  coords 1972.233 44.27 3425.519
+ }
+ lootSpawn184 {
+  coords 2345.315 2.468 3263.018
+ }
+ lootSpawn185 {
+  coords 2343.77 2.455 3263.705
+ }
+ lootSpawn186 {
+  coords 2343.677 2.717 3258.141
+ }
+ lootSpawn187 {
+  coords 2340.381 2.712 3259.005
+ }
+ lootSpawn188 {
+  coords 2338.201 2.643 3260.877
+ }
+ lootSpawn189 {
+  coords 2393.509 0.704 3296.471
+ }
+ lootSpawn190 {
+  coords 2393.166 0.704 3293.924
+ }
+ lootSpawn191 {
+  coords 2392.771 0.713 3292.807
+ }
+ lootSpawn192 {
+  coords 2398.192 0.704 3295.363
+ }
+ lootSpawn193 {
+  coords 2397.597 0.704 3293.13
+ }
+ lootSpawn194 {
+  coords 2397.361 0.707 3291.979
+ }
+ lootSpawn195 {
+  coords 2389.869 0.901 3294.777
+ }
+ lootSpawn196 {
+  coords 2391.018 0.915 3300.677
+ }
+ lootSpawn197 {
+  coords 2392.574 0.904 3307.878
+ }
+ lootSpawn198 {
+  coords 2393.692 0.886 3313.587
+ }
+ lootSpawn199 {
+  coords 635.777 0.145 3488.756
+ }
+ lootSpawn200 {
+  coords 639.808 0.188 3490.017
+ }
+ lootSpawn201 {
+  coords 644.475 0.204 3495.754
+ }
+ lootSpawn202 {
+  coords 643.159 0.174 3501.34
+ }
+ lootSpawn203 {
+  coords 638.533 0.173 3499.587
+ }
+ lootSpawn204 {
+  coords 632.521 0.091 3497.623
+ }
+ lootSpawn205 {
+  coords 639.22 0.249 3494.872
+ }
+ lootSpawn206 {
+  coords 648.266 0.09 3502.651
+ }
+ lootSpawn207 {
+  coords 649.257 0.085 3495.99
+ }
+ lootSpawn208 {
+  coords 1252.996 38 2912.215
+ }
+ lootSpawn209 {
+  coords 1258.41 38 2912.678
+ }
+ lootSpawn210 {
+  coords 1255.591 38 2902.793
+ }
+ lootSpawn211 {
+  coords 1261.422 38 2903.985
+ }
+ lootSpawn212 {
+  coords 1258.502 36.755 2964.442
+ }
+ lootSpawn213 {
+  coords 1258.286 36.763 2965.411
+ }
+ lootSpawn214 {
+  coords 1258.452 37.818 2964.41
+ }
+ lootSpawn215 {
+  coords 1258.216 37.821 2965.363
+ }
+ lootSpawn216 {
+  coords 1257.683 36.745 2966.91
+ }
+ lootSpawn217 {
+  coords 1257.633 36.762 2967.705
+ }
+ lootSpawn218 {
+  coords 1257.755 37.828 2967.065
+ }
+ lootSpawn219 {
+  coords 1257.732 37.819 2967.855
+ }
+ lootSpawn220 {
+  coords 1257.654 36.272 2969.73
+ }
+ lootSpawn221 {
+  coords 1259.246 36.758 2970.36
+ }
+ lootSpawn222 {
+  coords 1259.368 36.757 2969.625
+ }
+ lootSpawn223 {
+  coords 1259.218 37.816 2970.431
+ }
+ lootSpawn224 {
+  coords 1259.287 37.825 2969.453
+ }
+ lootSpawn225 {
+  coords 1259.876 36.732 2968.017
+ }
+ lootSpawn226 {
+  coords 1259.907 36.769 2967.289
+ }
+ lootSpawn227 {
+  coords 1259.787 37.828 2967.985
+ }
+ lootSpawn228 {
+  coords 1259.904 37.822 2967.228
+ }
+ lootSpawn229 {
+  coords 1260.516 36.272 2970.192
+ }
+ lootSpawn230 {
+  coords 1261.068 36.271 2968.635
+ }
+ lootSpawn231 {
+  coords 1262.211 36.739 2968.471
+ }
+ lootSpawn232 {
+  coords 1262.311 36.757 2967.58
+ }
+ lootSpawn233 {
+  coords 1262.303 37.821 2968.48
+ }
+ lootSpawn234 {
+  coords 1262.413 37.831 2967.434
+ }
+ lootSpawn235 {
+  coords 1261.623 36.751 2970.92
+ }
+ lootSpawn236 {
+  coords 1261.651 36.758 2969.945
+ }
+ lootSpawn237 {
+  coords 1261.623 37.814 2970.999
+ }
+ lootSpawn238 {
+  coords 1261.699 37.83 2970.02
+ }
+ lootSpawn239 {
+  coords 1257.678 36.272 2971.5
+ }
+ lootSpawn240 {
+  coords 1260.245 36.272 2972.869
+ }
+ lootSpawn241 {
+  coords 1259.607 36.252 2972.366
+ }
+ lootSpawn242 {
+  coords 1259.971 36.272 2971.971
+ }
+ lootSpawn243 {
+  coords 1258.445 40.464 2971.519
+ }
+ lootSpawn244 {
+  coords 1249.842 37.27 2959.295
+ }
+ lootSpawn245 {
+  coords 1196.608 38.092 2908.292
+ }
+ lootSpawn246 {
+  coords 1209.42 38 2924.59
+ }
+ lootSpawn247 {
+  coords 1278.296 37.937 2802.729
+ }
+ lootSpawn248 {
+  coords 1277.681 37.938 2806.234
+ }
+ lootSpawn249 {
+  coords 1276.688 37.938 2809.833
+ }
+ lootSpawn250 {
+  coords 1275.994 37.938 2812.917
+ }
+ lootSpawn251 {
+  coords 1274.185 37.938 2801.49
+ }
+ lootSpawn252 {
+  coords 1273.169 37.937 2804.812
+ }
+ lootSpawn253 {
+  coords 1272.283 37.938 2808.452
+ }
+ lootSpawn254 {
+  coords 1271.214 37.937 2812.115
+ }
+ lootSpawn255 {
+  coords 954.645 39.344 2744.743
+ }
+ lootSpawn256 {
+  coords 960.131 39.344 2748.939
+ }
+ lootSpawn257 {
+  coords 951.292 39.344 2752.039
+ }
+ lootSpawn258 {
+  coords 956.772 39.332 2757.133
+ }
+ lootSpawn259 {
+  coords 930.704 39.018 2778.836
+ }
+ lootSpawn260 {
+  coords 938.382 38.969 2782.693
+ }
+ lootSpawn261 {
+  coords 924.152 39.06 2788.191
+ }
+ lootSpawn262 {
+  coords 932.641 38.938 2793.217
+ }
+ lootSpawn263 {
+  coords 907.272 39.094 2817.234
+ }
+ lootSpawn264 {
+  coords 912.188 39.065 2821.046
+ }
+ lootSpawn265 {
+  coords 901.426 39.033 2823.939
+ }
+ lootSpawn266 {
+  coords 905.512 39.031 2827.353
+ }
+ lootSpawn267 {
+  coords 837.316 40.384 2840.543
+ }
+ lootSpawn268 {
+  coords 839.363 40.388 2838.937
+ }
+ lootSpawn269 {
+  coords 851.303 40.428 2851.97
+ }
+ lootSpawn270 {
+  coords 855.526 40.452 2851.417
+ }
+ lootSpawn271 {
+  coords 814.331 39.779 2820.337
+ }
+ lootSpawn272 {
+  coords 782.133 39 2725.823
+ }
+ lootSpawn273 {
+  coords 777.944 39 2731.646
+ }
+ lootSpawn274 {
+  coords 774.428 39.001 2719.285
+ }
+ lootSpawn275 {
+  coords 768.893 39 2728.077
+ }
+ lootSpawn276 {
+  coords 725.246 39.001 2685.33
+ }
+ lootSpawn277 {
+  coords 722.652 39 2694.824
+ }
+ lootSpawn278 {
+  coords 716.445 39.001 2681.122
+ }
+ lootSpawn279 {
+  coords 712.89 39.001 2689.943
+ }
+ lootSpawn280 {
+  coords 671.003 39.086 2648.514
+ }
+ lootSpawn281 {
+  coords 669.063 38.999 2655.415
+ }
+ lootSpawn282 {
+  coords 661.517 39.075 2644.705
+ }
+ lootSpawn283 {
+  coords 660.3 39 2652.177
+ }
+ lootSpawn284 {
+  coords 1415.385 37.094 2703.955
+ }
+ lootSpawn285 {
+  coords 1412.073 37.093 2703.775
+ }
+ lootSpawn286 {
+  coords 1409.801 37.094 2702.528
+ }
+ lootSpawn287 {
+  coords 1407.977 37.094 2702.676
+ }
+ lootSpawn288 {
+  coords 1406.181 37.094 2702.169
+ }
+ lootSpawn289 {
+  coords 1404.112 37.094 2701.551
+ }
+ lootSpawn290 {
+  coords 1357.01 36.828 2687.988
+ }
+ lootSpawn291 {
+  coords 1359.5 36.857 2688.824
+ }
+ lootSpawn292 {
+  coords 1361.428 36.864 2689.293
+ }
+ lootSpawn293 {
+  coords 1362.687 36.865 2689.689
+ }
+ lootSpawn294 {
+  coords 1364.951 36.86 2690.165
+ }
+ lootSpawn295 {
+  coords 1367.133 36.857 2691.265
+ }
+ lootSpawn296 {
+  coords 1385.587 37.036 2640.633
+ }
+ lootSpawn297 {
+  coords 1390.166 37.039 2622.037
+ }
+ lootSpawn298 {
+  coords 1385.787 37.039 2620.223
+ }
+ lootSpawn299 {
+  coords 1384.843 37.039 2625.3
+ }
+ lootSpawn300 {
+  coords 1388.52 37.038 2626.865
+ }
+ lootSpawn301 {
+  coords 1387.255 37.037 2630.467
+ }
+ lootSpawn302 {
+  coords 1384.043 37.04 2630.349
+ }
+ lootSpawn303 {
+  coords 1382.603 37.042 2633.542
+ }
+ lootSpawn304 {
+  coords 1387.257 37.036 2634.614
+ }
+ lootSpawn305 {
+  coords 1383.662 37.04 2637.376
+ }
+ lootSpawn306 {
+  coords 1381.008 37.044 2638.538
+ }
+ lootSpawn307 {
+  coords 1385.664 37.037 2633.147
+ }
+ lootSpawn308 {
+  coords 1387.656 37.039 2624.543
+ }
+ lootSpawn309 {
+  coords 1361.483 37.679 2655.545
+ }
+ lootSpawn310 {
+  coords 1356.688 37.289 2655.231
+ }
+ lootSpawn311 {
+  coords 1426.735 37.259 2631.977
+ }
+ lootSpawn312 {
+  coords 1423.168 37.259 2631.862
+ }
+ lootSpawn313 {
+  coords 1420.656 37.26 2638.217
+ }
+ lootSpawn314 {
+  coords 1424.274 37.258 2636.305
+ }
+ lootSpawn315 {
+  coords 1423.715 37.257 2640.405
+ }
+ lootSpawn316 {
+  coords 1419.909 37.261 2641.221
+ }
+ lootSpawn317 {
+  coords 1423.09 37.256 2644.09
+ }
+ lootSpawn318 {
+  coords 1419.755 37.261 2645.365
+ }
+ lootSpawn319 {
+  coords 1417.217 37.264 2649.826
+ }
+ lootSpawn320 {
+  coords 1421.701 37.258 2647.177
+ }
+ lootSpawn321 {
+  coords 1422.416 37.256 2651.322
+ }
+ lootSpawn322 {
+  coords 1420.312 37.259 2650.327
+ }
+ lootSpawn323 {
+  coords 1418.53 37.125 2668.069
+ }
+ lootSpawn324 {
+  coords 1417.343 37.125 2662.509
+ }
+ lootSpawn325 {
+  coords 1423.565 38.358 2671.428
+ }
+ lootSpawn326 {
+  coords 1473.872 39.182 2666.708
+ }
+ lootSpawn327 {
+  coords 1476.266 39.387 2666.85
+ }
+ lootSpawn328 {
+  coords 1479.03 38.559 2660.488
+ }
+ lootSpawn329 {
+  coords 1476.327 38.292 2675.053
+ }
+ lootSpawn330 {
+  coords 1475.737 38.983 2672.751
+ }
+ lootSpawn331 {
+  coords 1461.516 39.356 2656.671
+ }
+ lootSpawn332 {
+  coords 1451.878 39.05 2662.17
+ }
+ lootSpawn333 {
+  coords 1451.874 39.529 2662.136
+ }
+ lootSpawn334 {
+  coords 1451.921 40.014 2662
+ }
+ lootSpawn335 {
+  coords 1453.179 39.656 2666.049
+ }
+ lootSpawn336 {
+  coords 1452.995 39.661 2664.893
+ }
+ lootSpawn337 {
+  coords 1451.061 38.641 2667.177
+ }
+ lootSpawn338 {
+  coords 1451.367 38.641 2664.072
+ }
+ lootSpawn339 {
+  coords 1449.109 38.641 2659.694
+ }
+ lootSpawn340 {
+  coords 1447.859 38.641 2666.602
+ }
+ lootSpawn341 {
+  coords 1465.774 38.156 2668.471
+ }
+ lootSpawn342 {
+  coords 1269.949 36.837 2648.5
+ }
+ lootSpawn343 {
+  coords 1443.333 38.01 2694.563
+ }
+ lootSpawn344 {
+  coords 1537.141 38.531 2723.374
+ }
+ lootSpawn345 {
+  coords 1652.366 38.131 2985.895
+ }
+ lootSpawn346 {
+  coords 1666.047 39.105 3009.988
+ }
+ lootSpawn347 {
+  coords 1665.495 39.333 3013.428
+ }
+ lootSpawn348 {
+  coords 1668.262 38.354 3021.39
+ }
+ lootSpawn349 {
+  coords 1667.244 38.832 3022.238
+ }
+ lootSpawn350 {
+  coords 1666.996 38.836 3022.887
+ }
+ lootSpawn351 {
+  coords 1667.169 39.89 3022.547
+ }
+ lootSpawn352 {
+  coords 1668.436 39.26 3024.254
+ }
+ lootSpawn353 {
+  coords 1676.889 38.006 3019.513
+ }
+ lootSpawn354 {
+  coords 1677.792 37.906 3010.006
+ }
+ lootSpawn355 {
+  coords 1701.175 38.062 3009.559
+ }
+ lootSpawn356 {
+  coords 1696.083 38.062 3006.496
+ }
+ lootSpawn357 {
+  coords 1699.916 38.095 3024.181
+ }
+ lootSpawn358 {
+  coords 1687.095 38.113 3015.55
+ }
+ lootSpawn359 {
+  coords 1688.334 39.116 3016.837
+ }
+ lootSpawn360 {
+  coords 1690.888 38.075 3017.136
+ }
+ lootSpawn361 {
+  coords 1692.612 38.113 3017.029
+ }
+ lootSpawn362 {
+  coords 1688.688 38.862 3012.185
+ }
+ lootSpawn363 {
+  coords 1703.257 39.05 3023.038
+ }
+ lootSpawn364 {
+  coords 1699.665 39.099 3030.027
+ }
+ lootSpawn365 {
+  coords 1696.496 38.295 3029.369
+ }
+ lootSpawn366 {
+  coords 1692.017 39.263 3019.556
+ }
+ lootSpawn367 {
+  coords 1691.869 39.263 3020.807
+ }
+ lootSpawn368 {
+  coords 1691.333 39.263 3022.342
+ }
+ lootSpawn369 {
+  coords 1690.046 39.263 3023.829
+ }
+ lootSpawn370 {
+  coords 1690.032 39.263 3025.842
+ }
+ lootSpawn371 {
+  coords 1689.634 39.263 3026.629
+ }
+ lootSpawn372 {
+  coords 1694.217 39.263 3024.188
+ }
+ lootSpawn373 {
+  coords 1704.468 38.944 3017.542
+ }
+ lootSpawn374 {
+  coords 1913.282 40.455 2696.319
+ }
+ lootSpawn375 {
+  coords 1911.032 40.512 2696.239
+ }
+ lootSpawn376 {
+  coords 1908.025 40.562 2695.869
+ }
+ lootSpawn377 {
+  coords 1905.984 40.594 2695.665
+ }
+ lootSpawn378 {
+  coords 2036.094 44.534 2681.044
+ }
+ lootSpawn379 {
+  coords 2036.217 43.633 2679.233
+ }
+ lootSpawn380 {
+  coords 2038.09 43.633 2678.778
+ }
+ lootSpawn381 {
+  coords 2041.068 44.63 2677.696
+ }
+ lootSpawn382 {
+  coords 2035.085 43.633 2676.606
+ }
+ lootSpawn383 {
+  coords 2037.102 43.633 2675.269
+ }
+ lootSpawn384 {
+  coords 2037.2 44.145 2676.157
+ }
+ lootSpawn385 {
+  coords 2041.253 43.633 2674.398
+ }
+ lootSpawn386 {
+  coords 2039.717 43.633 2671.96
+ }
+ lootSpawn387 {
+  coords 2041.303 44.145 2672.828
+ }
+ lootSpawn388 {
+  coords 2031.93 43.633 2674.064
+ }
+ lootSpawn389 {
+  coords 2032.228 43.633 2674.672
+ }
+ lootSpawn390 {
+  coords 2039.097 44.048 2670.676
+ }
+ lootSpawn391 {
+  coords 2038.745 44.521 2670.856
+ }
+ lootSpawn392 {
+  coords 2039.218 45.008 2670.53
+ }
+ lootSpawn393 {
+  coords 2198.835 53.443 2883.766
+ }
+ lootSpawn394 {
+  coords 2195.92 53.57 2885.763
+ }
+ lootSpawn395 {
+  coords 2196.835 53.566 2885.471
+ }
+ lootSpawn396 {
+  coords 2194.034 54.49 2887.535
+ }
+ lootSpawn397 {
+  coords 2193.293 54.533 2888.373
+ }
+ lootSpawn398 {
+  coords 2230.518 55.21 2916.351
+ }
+ lootSpawn399 {
+  coords 2233.92 55.238 2917.24
+ }
+ lootSpawn400 {
+  coords 2233.92 54.217 2914.152
+ }
+ lootSpawn401 {
+  coords 2232.215 54.217 2915.101
+ }
+ lootSpawn402 {
+  coords 2232.387 54.217 2908.193
+ }
+ lootSpawn403 {
+  coords 2233.247 54.217 2910.34
+ }
+ lootSpawn404 {
+  coords 2234.78 54.714 2909.709
+ }
+ lootSpawn405 {
+  coords 2229.183 54.217 2907.898
+ }
+ lootSpawn406 {
+  coords 2229.146 54.217 2908.963
+ }
+ lootSpawn407 {
+  coords 2228.486 54.632 2906.877
+ }
+ lootSpawn408 {
+  coords 2228.966 55.116 2906.803
+ }
+ lootSpawn409 {
+  coords 2228.163 55.609 2906.96
+ }
+ lootSpawn410 {
+  coords 2220.431 54.217 2904.202
+ }
+ lootSpawn411 {
+  coords 2221.199 54.217 2906.655
+ }
+ lootSpawn412 {
+  coords 2223.585 54.222 2906.649
+ }
+ lootSpawn413 {
+  coords 2225.05 54.222 2905.751
+ }
+ lootSpawn414 {
+  coords 2227.336 54.219 2901.897
+ }
+ lootSpawn415 {
+  coords 2229.651 54.218 2902.232
+ }
+ lootSpawn416 {
+  coords 2228.67 55.117 2900.617
+ }
+ lootSpawn417 {
+  coords 2230.956 54.217 2900.992
+ }
+ lootSpawn418 {
+  coords 2231.355 57.522 2903.17
+ }
+ lootSpawn419 {
+  coords 2230.733 57.522 2902.349
+ }
+ lootSpawn420 {
+  coords 2232.369 57.991 2902.861
+ }
+ lootSpawn421 {
+  coords 2232.102 57.997 2901.899
+ }
+ lootSpawn422 {
+  coords 2227.972 57.522 2902.052
+ }
+ lootSpawn423 {
+  coords 2229.566 58.517 2903.195
+ }
+ lootSpawn424 {
+  coords 2220.918 57.522 2904.911
+ }
+ lootSpawn425 {
+  coords 2223.116 57.522 2904.149
+ }
+ lootSpawn426 {
+  coords 2220.414 58.022 2903.758
+ }
+ lootSpawn427 {
+  coords 2219.689 58.027 2903.788
+ }
+ lootSpawn428 {
+  coords 2220.556 58.007 2906.712
+ }
+ lootSpawn429 {
+  coords 2221.406 58.02 2906.29
+ }
+ lootSpawn430 {
+  coords 2223.24 58.522 2905.857
+ }
+ lootSpawn431 {
+  coords 2257.199 54.512 2875.99
+ }
+ lootSpawn432 {
+  coords 2256.623 54.331 2871.957
+ }
+ lootSpawn433 {
+  coords 2256.921 54.409 2873.813
+ }
+ lootSpawn434 {
+  coords 2252.5 54.188 2872.678
+ }
+ lootSpawn435 {
+  coords 2252.753 54.27 2876.146
+ }
+ lootSpawn436 {
+  coords 2163.862 53.751 2887.941
+ }
+ lootSpawn437 {
+  coords 2161.906 53.876 2884.626
+ }
+ lootSpawn438 {
+  coords 2162.234 53.851 2885.612
+ }
+ lootSpawn439 {
+  coords 2161.917 53.888 2886.502
+ }
+ lootSpawn440 {
+  coords 1972.645 41.337 2661.835
+ }
+ lootSpawn441 {
+  coords 1960.758 41.464 2672.598
+ }
+ lootSpawn442 {
+  coords 1941.411 41.164 2636.953
+ }
+ lootSpawn443 {
+  coords 1983.169 41.428 2639.092
+ }
+ lootSpawn444 {
+  coords 2532.392 143.707 2294.563
+ }
+ lootSpawn445 {
+  coords 2510.87 147.374 2293.985
+ }
+ lootSpawn446 {
+  coords 2502.676 147.511 2287.152
+ }
+ lootSpawn447 {
+  coords 2495.643 147.071 2273.254
+ }
+ lootSpawn448 {
+  coords 2493.639 146.836 2260.82
+ }
+ lootSpawn449 {
+  coords 2501.351 146.116 2244.244
+ }
+ lootSpawn450 {
+  coords 2513.765 147.58 2254.716
+ }
+ lootSpawn451 {
+  coords 2520.256 147.22 2272.58
+ }
+ lootSpawn452 {
+  coords 2505.754 147.59 2276.474
+ }
+ lootSpawn453 {
+  coords 2503.117 147.749 2264.627
+ }
+ lootSpawn454 {
+  coords 2520.31 147.606 2309.04
+ }
+ lootSpawn455 {
+  coords 2503.636 147.158 2304.32
+ }
+ lootSpawn456 {
+  coords 2476.396 141.797 2253.75
+ }
+ lootSpawn457 {
+  coords 2183.233 65.231 2135.796
+ }
+ lootSpawn458 {
+  coords 2185.291 65.866 2137.877
+ }
+ lootSpawn459 {
+  coords 2171.778 63.313 2123.909
+ }
+ lootSpawn460 {
+  coords 2169.834 64.32 2134.445
+ }
+ lootSpawn461 {
+  coords 2165.059 63.024 2122.663
+ }
+ lootSpawn462 {
+  coords 2151.145 61.359 2115.057
+ }
+ lootSpawn463 {
+  coords 2150.089 61.848 2113.685
+ }
+ lootSpawn464 {
+  coords 2149.396 61.848 2113.885
+ }
+ lootSpawn465 {
+  coords 2149.72 62.893 2113.726
+ }
+ lootSpawn466 {
+  coords 2037.189 10.719 1840.899
+ }
+ lootSpawn467 {
+  coords 2038.203 10.719 1842.552
+ }
+ lootSpawn468 {
+  coords 2034.485 10.719 1841.685
+ }
+ lootSpawn469 {
+  coords 2034.843 10.705 1842.902
+ }
+ lootSpawn470 {
+  coords 2036.075 10.719 1846.048
+ }
+ lootSpawn471 {
+  coords 2117.801 30.873 1783.461
+ }
+ lootSpawn472 {
+  coords 1988.795 11.497 1867.758
+ }
+ lootSpawn473 {
+  coords 1863.655 18.534 1848.426
+ }
+ lootSpawn474 {
+  coords 1857.547 26.956 1941.556
+ }
+ lootSpawn475 {
+  coords 2052.872 49.632 2081.143
+ }
+ lootSpawn476 {
+  coords 2354.858 84.943 2075.942
+ }
+ lootSpawn477 {
+  coords 1456.817 11.411 1925.234
+ }
+ lootSpawn478 {
+  coords 1453.404 11.827 1925.327
+ }
+ lootSpawn479 {
+  coords 1453.599 12.296 1925.933
+ }
+ lootSpawn480 {
+  coords 1453.609 12.782 1926.027
+ }
+ lootSpawn481 {
+  coords 1453.243 12.79 1925.351
+ }
+ lootSpawn482 {
+  coords 1455.058 12.414 1918.809
+ }
+ lootSpawn483 {
+  coords 1453.244 11.411 1920.082
+ }
+ lootSpawn484 {
+  coords 1453.754 11.411 1923.491
+ }
+ lootSpawn485 {
+  coords 1428.467 10.938 1875.987
+ }
+ lootSpawn486 {
+  coords 1431.491 10.941 1874.286
+ }
+ lootSpawn487 {
+  coords 1428.905 11 1869.277
+ }
+ lootSpawn488 {
+  coords 1426.191 11.011 1871.106
+ }
+ lootSpawn489 {
+  coords 1424.684 11.103 1859.875
+ }
+ lootSpawn490 {
+  coords 1402.59 11.913 1852.074
+ }
+ lootSpawn491 {
+  coords 1403.232 11.901 1854.171
+ }
+ lootSpawn492 {
+  coords 1401.296 11.91 1854.043
+ }
+ lootSpawn493 {
+  coords 1405.191 11.807 1852.826
+ }
+ lootSpawn494 {
+  coords 1404.862 12.281 1850.66
+ }
+ lootSpawn495 {
+  coords 1394.903 11.81 1840.525
+ }
+ lootSpawn496 {
+  coords 1393.164 11.594 1836.78
+ }
+ lootSpawn497 {
+  coords 1407.111 21.019 1814.401
+ }
+ lootSpawn498 {
+  coords 1403.251 20.952 1814.722
+ }
+ lootSpawn499 {
+  coords 1404.645 14 1813.335
+ }
+ lootSpawn500 {
+  coords 1406.571 14 1815.244
+ }
+ lootSpawn501 {
+  coords 1482.92 1.182 1758.251
+ }
+ lootSpawn502 {
+  coords 1474.87 1.182 1762.781
+ }
+ lootSpawn503 {
+  coords 1471.325 1.182 1764.556
+ }
+ lootSpawn504 {
+  coords 1463.036 1.182 1769.812
+ }
+ lootSpawn505 {
+  coords 1458.224 1.182 1772.675
+ }
+ lootSpawn506 {
+  coords 1452.075 1.208 1776.669
+ }
+ lootSpawn507 {
+  coords 1467.18 1.125 1826.249
+ }
+ lootSpawn508 {
+  coords 1459.809 1.125 1818.441
+ }
+ lootSpawn509 {
+  coords 1462.445 1.219 1806.34
+ }
+ lootSpawn510 {
+  coords 1475.612 1.997 1823.143
+ }
+ lootSpawn511 {
+  coords 1468.44 1.985 1820.63
+ }
+ lootSpawn512 {
+  coords 1467.611 2.051 1833.207
+ }
+ lootSpawn513 {
+  coords 1454.149 1.942 1810.164
+ }
+ lootSpawn514 {
+  coords 1499.047 2.293 1867.07
+ }
+ lootSpawn515 {
+  coords 1495.196 2.978 1865.083
+ }
+ lootSpawn516 {
+  coords 1508.421 2.537 1856.146
+ }
+ lootSpawn517 {
+  coords 1510.601 2.517 1857.455
+ }
+ lootSpawn518 {
+  coords 1504.604 1.125 1860.642
+ }
+ lootSpawn519 {
+  coords 1501.906 1.125 1854.902
+ }
+ lootSpawn520 {
+  coords 1507.332 1.125 1851.21
+ }
+ lootSpawn521 {
+  coords 1294.577 11.171 1865.555
+ }
+ lootSpawn522 {
+  coords 1293.55 11.215 1866.951
+ }
+ lootSpawn523 {
+  coords 1290.33 11.302 1868.763
+ }
+ lootSpawn524 {
+  coords 1287.897 11.378 1868.553
+ }
+ lootSpawn525 {
+  coords 1286.499 12.387 1869.377
+ }
+ lootSpawn526 {
+  coords 1291.554 12.068 1866.349
+ }
+ lootSpawn527 {
+  coords 1290.032 12.121 1866.012
+ }
+ lootSpawn528 {
+  coords 1289.222 12.289 1867.434
+ }
+ lootSpawn529 {
+  coords 1221.024 12.817 1895.339
+ }
+ lootSpawn530 {
+  coords 1213.091 12.952 1898.442
+ }
+ lootSpawn531 {
+  coords 1208.168 13.23 1919.432
+ }
+ lootSpawn532 {
+  coords 1213.873 12.997 1911.65
+ }
+ lootSpawn533 {
+  coords 1258.538 12.468 1895.011
+ }
+ lootSpawn534 {
+  coords 1241.886 12.835 1905.145
+ }
+ lootSpawn535 {
+  coords 1230.768 13.032 1910.428
+ }
+ lootSpawn536 {
+  coords 1242.361 18.674 1899.833
+ }
+ lootSpawn537 {
+  coords 1243.936 18.663 1898.663
+ }
+ lootSpawn538 {
+  coords 1245.51 18.653 1897.864
+ }
+ lootSpawn539 {
+  coords 1247.452 18.65 1897.103
+ }
+ lootSpawn540 {
+  coords 1114.067 15.984 1944.243
+ }
+ lootSpawn541 {
+  coords 1113.131 15.964 1946.778
+ }
+ lootSpawn542 {
+  coords 1113.268 16.453 1943.416
+ }
+ lootSpawn543 {
+  coords 1112.917 16.478 1944.042
+ }
+ lootSpawn544 {
+  coords 1112.852 17.536 1943.641
+ }
+ lootSpawn545 {
+  coords 1112.155 16.479 1945.771
+ }
+ lootSpawn546 {
+  coords 1111.846 16.451 1946.385
+ }
+ lootSpawn547 {
+  coords 1111.874 17.533 1945.927
+ }
+ lootSpawn548 {
+  coords 1113.015 16.472 1949.13
+ }
+ lootSpawn549 {
+  coords 1113.402 16.468 1948.463
+ }
+ lootSpawn550 {
+  coords 1113.212 17.55 1948.585
+ }
+ lootSpawn551 {
+  coords 1113.968 16.479 1946.895
+ }
+ lootSpawn552 {
+  coords 1114.225 16.465 1946.107
+ }
+ lootSpawn553 {
+  coords 1113.881 17.538 1946.815
+ }
+ lootSpawn554 {
+  coords 1115.283 16.478 1949.875
+ }
+ lootSpawn555 {
+  coords 1115.792 16.456 1949.15
+ }
+ lootSpawn556 {
+  coords 1115.644 17.526 1949.731
+ }
+ lootSpawn557 {
+  coords 1116.315 16.468 1947.415
+ }
+ lootSpawn558 {
+  coords 1116.446 16.476 1946.933
+ }
+ lootSpawn559 {
+  coords 1116.667 17.54 1947.205
+ }
+ lootSpawn560 {
+  coords 1115.068 15.964 1947.865
+ }
+ lootSpawn561 {
+  coords 1111.09 15.984 1949.925
+ }
+ lootSpawn562 {
+  coords 1113.735 15.984 1951.953
+ }
+ lootSpawn563 {
+  coords 1113.064 15.964 1951.39
+ }
+ lootSpawn564 {
+  coords 1113.343 15.964 1951.134
+ }
+ lootSpawn565 {
+  coords 930.001 22.043 2235.216
+ }
+ lootSpawn566 {
+  coords 973.36 39.198 2291.194
+ }
+ lootSpawn567 {
+  coords 976.435 37.533 2271.899
+ }
+ lootSpawn568 {
+  coords 949.685 38.562 2353.199
+ }
+ lootSpawn569 {
+  coords 382.47 1.641 2317.025
+ }
+ lootSpawn570 {
+  coords 349.149 2.84 2472.526
+ }
+ lootSpawn571 {
+  coords 338.693 2.666 2423.264
+ }
+ lootSpawn572 {
+  coords 1599.448 40.602 2367.685
+ }
+ lootSpawn573 {
+  coords 1599.488 40.602 2370.178
+ }
+ lootSpawn574 {
+  coords 1604.995 40.602 2365.738
+ }
+ lootSpawn575 {
+  coords 1601.668 40.602 2366.078
+ }
+ lootSpawn576 {
+  coords 1841.198 39.47 2786.073
+ }
+ lootSpawn577 {
+  coords 1864.512 40.359 2771.499
+ }
+ lootSpawn578 {
+  coords 1933.501 39.442 2765.345
+ }
+ lootSpawn579 {
+  coords 2057.52 46.944 2734.21
+ }
+ lootSpawn580 {
+  coords 2057.123 46.912 2733.098
+ }
+ lootSpawn581 {
+  coords 2056.352 46.929 2733.638
+ }
+ lootSpawn582 {
+  coords 1854.733 23.563 1887.218
+ }
+ lootSpawn583 {
+  coords 1852.521 23.565 1886.996
+ }
+ lootSpawn584 {
+  coords 2101.002 45.886 1407.212
+ }
+ lootSpawn585 {
+  coords 1808.435 39.237 1025.491
+ }
+ lootSpawn586 {
+  coords 1825.315 50.52 1093.378
+ }
+ lootSpawn587 {
+  coords 1766.814 10.946 892.524
+ }
+ lootSpawn588 {
+  coords 1766.483 10.446 889.771
+ }
+ lootSpawn589 {
+  coords 1763.888 11.345 888.411
+ }
+ lootSpawn590 {
+  coords 1760.84 10.446 889.127
+ }
+ lootSpawn591 {
+  coords 1760.301 10.446 892.273
+ }
+ lootSpawn592 {
+  coords 1742.474 10.547 909.529
+ }
+ lootSpawn593 {
+  coords 1741.987 10.541 908.106
+ }
+ lootSpawn594 {
+  coords 1744.483 10.534 908.962
+ }
+ lootSpawn595 {
+  coords 1744.177 10.42 908.146
+ }
+ lootSpawn596 {
+  coords 1743.981 10.312 918.546
+ }
+ lootSpawn597 {
+  coords 1743.421 10.291 917.378
+ }
+ lootSpawn598 {
+  coords 1743.274 10.332 915.266
+ }
+ lootSpawn599 {
+  coords 1676.985 3.553 876.378
+ }
+ lootSpawn600 {
+  coords 1678.414 3.569 876.417
+ }
+ lootSpawn601 {
+  coords 1681.022 3.589 877.342
+ }
+ lootSpawn602 {
+  coords 1680.624 3.531 872.009
+ }
+ lootSpawn603 {
+  coords 1678.873 3.531 872.364
+ }
+ lootSpawn604 {
+  coords 1675.411 3.528 873.765
+ }
+ lootSpawn605 {
+  coords 1461.395 34.829 1155.509
+ }
+ lootSpawn606 {
+  coords 1464.551 34.828 1152.49
+ }
+ lootSpawn607 {
+  coords 1460.387 34.828 1152.877
+ }
+ lootSpawn608 {
+  coords 1465.562 34.829 1156.202
+ }
+ lootSpawn609 {
+  coords 1462.068 35.446 1162.36
+ }
+}

@@ -1,0 +1,32 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 2770.337 0 3510.611
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_LooterGamemodeComponent "{68530918F51648E0}" {
+   m_iTotalSpawnPoints 15
+   m_aWeaponEntries {
+    CRF_WeaponLootEntry "{6853091BDEF57E51}" {
+     m_sPrimaryPrefab "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et"
+     m_iMagazineCount 1
+    }
+   }
+  }
+ }
+ coords 2681.279 610.958 1840.279
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "It's a Battle Royale. Loot gear, try to stay alive."
+  }
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{B22880EF6DF1482D}Configs/Gearscripts/Custom/Harry/80s/CRF_GS_USSR80s_Unarm_NoEquip.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
