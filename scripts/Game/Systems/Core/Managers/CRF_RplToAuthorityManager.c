@@ -19,6 +19,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
+	protected SCR_MapMarkerManagerComponent m_MapMarkerManager;
 	
 	protected static CRF_RplToAuthorityManager m_sInstance;
 	
@@ -60,6 +61,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
+		m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1983,6 +1985,15 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		if (!factionManager)
 			return;
+		
+		if (!m_MapMarkerManager)
+			return;
+		
+		Faction localPlayerFaction = factionManager.GetPlayerFaction(playerId);
+		
+		if (!m_MapMarkerManager.m_aGlobalMarkers.Contains(markerUID) && localPlayerFaction)
+			m_MapMarkerManager.m_aGlobalMarkers.Insert(markerUID, localPlayerFaction.GetFactionKey());
+		
 		foreach (int otherPlayerId: playerIds)
 		{
 			if (playerId == otherPlayerId)
@@ -2002,18 +2013,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			pc.SharerMarkerGlobal(markerUID);
 			array<int> tempMarkerArray = {};
 			tempMarkerArray.Insert(markerUID);
-			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
+			m_MapMarkerManager.UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
 		}
 	}
 	
 	void ShareMapMarkers()
 	{
-		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
-		if (!mapMarkersMan)
+		if (!m_MapMarkerManager)
 			return;
 		
 		array<int> markerUIDs = {};
-		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		foreach (SCR_MapMarkerBase marker: m_MapMarkerManager.GetStaticMarkers())
 		{
 			if (marker.m_bIsShared)
 				markerUIDs.Insert(marker.GetMarkerID());
@@ -2051,7 +2061,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				continue;
 			
 			// Check distance - only share with nearby players
-			if (vector.Distance(playerEntity.GetOrigin(), entity.GetOrigin()) > SCR_MapMarkerManagerComponent.MARKER_SHARE_DISTANCE)
+			if (vector.Distance(playerEntity.GetOrigin(), entity.GetOrigin()) > m_MapMarkerManager.MARKER_SHARE_DISTANCE)
 				continue;
 			
 			// Check faction - only share with same faction players
@@ -2064,7 +2074,52 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				continue;
 				
 			otherController.ShareMarker(markerUIDs);
-			SCR_MapMarkerManagerComponent.GetInstance().UpdateSharedMarkers(markerUIDs, otherPlayerId);
+			m_MapMarkerManager.UpdateSharedMarkers(markerUIDs, otherPlayerId);
 		}
+	}
+	
+	void RequestGlobalMarkerRefresh()
+	{
+		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
+	{
+		int bytes = m_TelemetryManager.EstimateSize_Int();
+		LogTelemetry("RpcAsk_RequestGlobalMarkerRefresh", bytes);
+		// Get the faction of the sharing player
+		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
+			
+		Faction sharingPlayerFaction = factionMan.GetPlayerFaction(playerId);
+		if (!sharingPlayerFaction)
+			return;
+		
+		string playerFactionKey = sharingPlayerFaction.GetFactionKey();
+		
+		if (!m_MapMarkerManager)
+			return;
+
+		array<int> globalMarkers = {};
+		foreach (int markerUID, string factionKey: m_MapMarkerManager.m_aGlobalMarkers)
+		{
+			if (factionKey != playerFactionKey)
+				continue;
+			
+			globalMarkers.Insert(markerUID);
+		}
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		//huh
+		if (!pm)
+			return;
+		
+		SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(playerId));
+		if (!pc)
+			return;
+		
+		pc.RefreshGlobalMarkers(globalMarkers);
 	}
 };

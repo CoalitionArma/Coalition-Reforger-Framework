@@ -1,0 +1,49 @@
+Turret : "{66596659FB0F645B}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70_Turret.et" {
+ ID "51ACD0965653D003"
+ components {
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     CompartmentUniqueName "gunner"
+    }
+   }
+  }
+  WCS_Armament_DispenserManagerComponent "{68427479C8F97D34}" {
+   m_SmokeInfo WCS_Armament_DispenserSmokeInfo "{68427479C8F97DC2}" {
+    m_aActionEnabledCompartments {
+     "gunner"
+    }
+    m_FireModes {
+     WCS_Armament_DispenserFullRippleFireMode "{68427479C8F97DC5}" {
+     }
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{68427479C8F97DC7}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{68427479C8F97DC8}" {
+    }
+    WCS_ArmamentSlotGroup "{68427479C8F97DC9}" {
+     slotIndex 1
+    }
+   }
+   m_sPilotCompartmentUniqueName "gunner"
+  }
+  SlotManagerComponent "{68427479C8F97DE5}" {
+  }
+  WeaponSlotComponent "{0AACE747111B1282}" {
+   WeaponTemplate ""
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate ""
+  }
+  WeaponSlotComponent "{68427479C8F97DEA}" {
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot Armament {
+    PivotID "Scene_Root"
+   }
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 2
+  }
+ }
+}
