@@ -245,13 +245,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
   CRF_MapStagingComponent "{685322BA91EF84ED}" {
-   m_iInitialDelay 500
+   m_iInitialDelay 650
    m_sFinalCompletionSubMessage "Final Zone!"
    m_iFinalCompletionMessageDuration 10
    m_aBoundaryStages {
     CRF_BoundaryStageData "{685322B7E9F1AEB3}" {
      m_sBoundaryEntityName "Zone1"
-     m_iStageDuration 500
+     m_iStageDuration 450
      m_sStageDisplayText "Zone Closing!"
      m_bShowStageCompletionMessage 0
      m_sStageCompletionMainMessage "Zone Closing"
@@ -262,7 +262,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     }
     CRF_BoundaryStageData "{685322ADBEF71DA9}" {
      m_sBoundaryEntityName "Zone2"
-     m_iStageDuration 500
+     m_iStageDuration 450
      m_sStageDisplayText "Zone Closing!"
      m_bShowStageCompletionMessage 0
      m_cActivePolygonColor 0.273 0.074 0 0.75
@@ -272,7 +272,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     }
     CRF_BoundaryStageData "{685322AD492F9212}" {
      m_sBoundaryEntityName "Zone3"
-     m_iStageDuration 500
+     m_iStageDuration 450
      m_sStageDisplayText "Final Zone Closing!"
      m_bShowStageCompletionMessage 0
      m_cActivePolygonColor 0.273 0.074 0 0.75
