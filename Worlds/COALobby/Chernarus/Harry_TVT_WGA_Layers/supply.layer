@@ -1,0 +1,205 @@
+GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 327704
+   m_eSupportedArsenalItemModes 62
+   m_eEditableAttributeGroups 18
+  }
+ }
+ coords 10694.339 129.204 3508.915
+ angles 7.887 12.018 -2.857
+}
+$grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 11002.741 4.02 2752.115
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10828.031 6.018 2494.744
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10620.729 6.192 2291.741
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10262.958 20.951 2459.353
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10160.384 6.205 2010.344
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10208.062 5.916 1838.274
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 10412.999 6.76 2565.845
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 9979.488 46.603 2625.405
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.264 0 0.536
+    m_MarkerColor 0.017 0.017 0.017 1
+    m_sQuadName "mark-exclamation"
+    m_fWorldSize 45
+    m_sDescription "Supply Box"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}

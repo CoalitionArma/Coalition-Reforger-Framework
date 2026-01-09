@@ -1,0 +1,302 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 2770.337 0 3510.611
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_AirdropManager "{685355B93E7507C0}" {
+  }
+  CRF_LooterGamemodeComponent "{68530918F51648E0}" {
+   m_fGlobalSpawnChance 0.6
+   m_iTotalSpawnPoints 3125
+   m_aWeaponEntries {
+    CRF_WeaponLootEntry "{6853091BDEF57E51}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et"
+     m_sMagazinePrefab "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et"
+    }
+    CRF_WeaponLootEntry "{68531C9B98A37897}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et"
+     m_sMagazinePrefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+    }
+    CRF_WeaponLootEntry "{68531C9BF738C907}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{458A4E8CD3590D92}Prefabs/Weapons/Shotguns/Remington 870/BC_Shotgun_Remington_870.et"
+     m_sMagazinePrefab "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et"
+     m_iMagazineCount 6
+    }
+    CRF_WeaponLootEntry "{68531C98278DEDCA}" {
+     m_fWeight 0.3
+     m_sPrimaryPrefab "{B6673927CF21BE87}Prefabs/Weapons/Rifles/Thompson M1A1/BC_Rifle_Thompson_M1A1.et"
+     m_sMagazinePrefab "{5C43D5083942A22B}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1A1_45acp_Thompson_30rnd_Stick.et"
+    }
+    CRF_WeaponLootEntry "{68531C9815F4A408}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{05D871A0CEE5026F}Prefabs/Weapons/MachineGuns/BAR/BC_BAR_M1918A2.et"
+     m_sMagazinePrefab "{34A82AA1E0CBFE4B}Prefabs/Weapons/Magazines/BC_Magazine_30-06_BAR_20rnd_M2_4Ball_1Tracer.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C987A4F0EBA}" {
+     m_fWeight 0.6
+     m_sPrimaryPrefab "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
+     m_sMagazinePrefab "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C984DB0559F}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{63A0A8DBB02DCB60}Prefabs/Weapons/Rifles/STG44/BC_Rifle_STG44.et"
+     m_sMagazinePrefab "{E6E1D3A5D7E15D27}Prefabs/Weapons/Magazines/STG44/BC_Magazine_792x33mm_Kurz_STG44.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C98A64A057A}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{8F5A4A44DD1D84D6}Prefabs/Weapons/Rifles/M1 Garand/BC_Rifle_M1_Garand.et"
+     m_sMagazinePrefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C98BDE96B66}" {
+     m_fWeight 0.01
+     m_sPrimaryPrefab "{898B4433EED614A4}Prefabs/Weapons/Rifles/M1 Garand/BC_Rifle_M1D.et"
+     m_sMagazinePrefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C98E7DE1C2C}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{6AA1C567A2F7F8CE}Prefabs/Weapons/Rifles/PPSH41/BC_PPSh41.et"
+     m_sMagazinePrefab "{4198718E0E2A3A83}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_71rd_PPSH41.et"
+    }
+    CRF_WeaponLootEntry "{68531C98FFD8AF6B}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{026CE108BFB3EC03}Prefabs/Weapons/MachineGuns/UK59/MG_UK59.et"
+     m_sMagazinePrefab "{03094E059B554A9C}Prefabs/Weapons/Magazines/UK59/Box_762x54_UK59_50rnd_4Ball_1Tracer.et"
+    }
+    CRF_WeaponLootEntry "{68531C98D4E4A896}" {
+     m_fWeight 0.01
+     m_sPrimaryPrefab "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et"
+     m_sMagazinePrefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_WeaponLootEntry "{68531C99036E9706}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{9C948630078D154D}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58P.et"
+     m_sMagazinePrefab "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
+     m_iMagazineCount 1
+    }
+    CRF_WeaponLootEntry "{68531C99725058D3}" {
+     m_fWeight 0.01
+     m_sPrimaryPrefab "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et"
+     m_sMagazinePrefab "{609E216CBF8D0B68}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VL.et"
+    }
+    CRF_WeaponLootEntry "{68531C994A1E8A99}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+    }
+    CRF_WeaponLootEntry "{68531C871741E4E2}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et"
+     m_sMagazinePrefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_WeaponLootEntry "{68531C8770EB67F3}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{AEE56E1D665AE0AA}Prefabs/Weapons/Launchers/M79/BC_M79_Shorty.et"
+     m_sMagazinePrefab "{0DE4A55F189A32CB}Prefabs/Weapons/Ammo/BC_Ammo_Grenade_M576_Buckshot.et"
+     m_iMagazineCount 3
+    }
+   }
+   m_aGearEntries {
+    CRF_GearLootEntry "{68531C9B102F7302}" {
+     m_sPrimaryPrefab "{07B1F856943B7075}Prefabs/Characters/Vests/Vest_M69/Vest_M69_base.et"
+    }
+    CRF_GearLootEntry "{68531C9B10625351}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{ADE19B33DCBB9005}Prefabs/Characters/Vests/Vest_6B2/Vest_6B2.et"
+    }
+    CRF_GearLootEntry "{68531C9B104C4A87}" {
+     m_fWeight 0.001
+     m_sPrimaryPrefab "{4CBDC206FEF9897C}Prefabs/Characters/Vests/Vest_6B3/Vest_6B3.et"
+    }
+    CRF_GearLootEntry "{68531C9B10AEA898}" {
+     m_fWeight 0.3
+     m_sPrimaryPrefab "{156DC7109CEE6F69}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_AR.et"
+    }
+    CRF_GearLootEntry "{68531C9B7B10651B}" {
+     m_sPrimaryPrefab "{2E8829632CBA7A9B}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_commander.et"
+    }
+    CRF_GearLootEntry "{68531C9B7D5529E8}" {
+     m_sPrimaryPrefab "{08155E701A949620}Prefabs/Characters/Vests/Vest_SovietHarness/Variants/Vest_SovietHarness_rifleman.et"
+    }
+    CRF_GearLootEntry "{68531C96225D3214}" {
+     m_fWeight 0.3
+     m_sPrimaryPrefab "{A7E6D7ECD5F684D7}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01.et"
+    }
+    CRF_GearLootEntry "{68531C96125E80DE}" {
+     m_sPrimaryPrefab "{EB2F05A3751B905A}Prefabs/Characters/HeadGear/Helmet_TSh4_01/Helmet_TSh4_01.et"
+    }
+    CRF_GearLootEntry "{68531C96671D9AAE}" {
+     m_fWeight 0.3
+     m_sPrimaryPrefab "{B74A4FF0DD8BB116}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01.et"
+    }
+    CRF_GearLootEntry "{68531C9673D6A0EB}" {
+     m_sPrimaryPrefab "{483A80042765275F}Prefabs/Characters/HeadGear/Helmet_SPH4_01/Helmet_SPH4_01.et"
+    }
+   }
+   m_aBagEntries {
+    CRF_BagLootEntry "{68531C9A62626CC8}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+    }
+    CRF_BagLootEntry "{68531C9A69D6666E}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+    }
+   }
+   m_aMiscEntries {
+    CRF_MiscLootEntry "{68531C9B5DF3B6D0}" {
+     m_fWeight 0.6
+     m_sPrimaryPrefab "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et"
+    }
+    CRF_MiscLootEntry "{68531C9BA41DEDFD}" {
+     m_sPrimaryPrefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+    }
+    CRF_MiscLootEntry "{68531C9BAD5EAD92}" {
+     m_sPrimaryPrefab "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et"
+    }
+    CRF_MiscLootEntry "{68531C9BB633A960}" {
+     m_fWeight 0.7
+     m_sPrimaryPrefab "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+    }
+    CRF_MiscLootEntry "{68531C99E0F81889}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+    }
+    CRF_MiscLootEntry "{68531C99F212429C}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+    }
+    CRF_MiscLootEntry "{68531C99C035F1C6}" {
+     m_fWeight 0.001
+     m_sPrimaryPrefab "{2E5BFBBBC0AD79CE}Prefabs/Weapons/Explosives/Explosive_Satchels/OPFOR_Satchel.et"
+    }
+    CRF_MiscLootEntry "{68531C8BD0CEB3DE}" {
+     m_sPrimaryPrefab "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C8BDE9CEF97}" {
+     m_sPrimaryPrefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C88218C31F0}" {
+     m_fWeight 0.5
+     m_sPrimaryPrefab "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et"
+     m_iPrimaryCount 5
+    }
+    CRF_MiscLootEntry "{68531C882D6979AF}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{5C43D5083942A22B}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1A1_45acp_Thompson_30rnd_Stick.et"
+    }
+    CRF_MiscLootEntry "{68531C883AB35376}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{34A82AA1E0CBFE4B}Prefabs/Weapons/Magazines/BC_Magazine_30-06_BAR_20rnd_M2_4Ball_1Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C883E82645F}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et"
+    }
+    CRF_MiscLootEntry "{68531C88097C1D30}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{E6E1D3A5D7E15D27}Prefabs/Weapons/Magazines/STG44/BC_Magazine_792x33mm_Kurz_STG44.et"
+    }
+    CRF_MiscLootEntry "{68531C880DFFF4EA}" {
+     m_sPrimaryPrefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{68531C881022099A}" {
+     m_sPrimaryPrefab "{4198718E0E2A3A83}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_71rd_PPSH41.et"
+    }
+    CRF_MiscLootEntry "{68531C886B601ED1}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{03094E059B554A9C}Prefabs/Weapons/Magazines/UK59/Box_762x54_UK59_50rnd_4Ball_1Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C886C4AC0EF}" {
+     m_fWeight 0.01
+     m_sPrimaryPrefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C8874411959}" {
+     m_sPrimaryPrefab "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C887EF9205C}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{609E216CBF8D0B68}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VL.et"
+    }
+    CRF_MiscLootEntry "{68531C89F558AE45}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{68531C877DECF461}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_MiscLootEntry "{68531C87A8E4010C}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{0DE4A55F189A32CB}Prefabs/Weapons/Ammo/BC_Ammo_Grenade_M576_Buckshot.et"
+    }
+    CRF_MiscLootEntry "{68531C87B667B78E}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et"
+    }
+   }
+  }
+  CRF_MapStagingComponent "{685322BA91EF84ED}" {
+   m_iInitialDelay 450
+   m_sFinalCompletionSubMessage "Final Zone!"
+   m_iFinalCompletionMessageDuration 10
+   m_aBoundaryStages {
+    CRF_BoundaryStageData "{685322B7E9F1AEB3}" {
+     m_sBoundaryEntityName "Zone1"
+     m_iStageDuration 250
+     m_sStageDisplayText "Zone Closing!"
+     m_bShowStageCompletionMessage 0
+     m_sStageCompletionMainMessage "Zone Closing"
+     m_cActivePolygonColor 0.273 0.074 0 0.75
+     m_cActivePolygonBorderColor 0.102 0.023 0 0.5
+     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.5
+    }
+    CRF_BoundaryStageData "{685322ADBEF71DA9}" {
+     m_sBoundaryEntityName "Zone2"
+     m_iStageDuration 250
+     m_sStageDisplayText "Zone Closing!"
+     m_bShowStageCompletionMessage 0
+     m_cActivePolygonColor 0.273 0.074 0 0.75
+     m_cActivePolygonBorderColor 0.102 0.023 0 0.5
+     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.5
+    }
+    CRF_BoundaryStageData "{685322AD492F9212}" {
+     m_sBoundaryEntityName "Zone3"
+     m_iStageDuration 250
+     m_sStageDisplayText "Final Zone Closing!"
+     m_bShowStageCompletionMessage 0
+     m_cActivePolygonColor 0.273 0.074 0 0.75
+     m_cActivePolygonBorderColor 0.102 0.023 0 0.8
+     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.8
+    }
+   }
+  }
+ }
+ coords 2681.279 610.958 1840.279
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "It's a Battle Royale. Loot gear, try to stay alive."
+  }
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{B22880EF6DF1482D}Configs/Gearscripts/Custom/Harry/80s/CRF_GS_USSR80s_Unarm_NoEquip.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
