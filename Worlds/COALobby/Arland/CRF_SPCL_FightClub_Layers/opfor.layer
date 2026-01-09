@@ -1,6 +1,6 @@
 $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
  {
-  coords 2130.712 71.042 2461.65
+  coords 873.748 11.819 1442.649
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -8,7 +8,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2138.089 71.202 2457.226
+  coords 881.125 13.243 1438.225
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -16,7 +16,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2145.415 71.209 2453.952
+  coords 888.451 14.594 1434.951
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -24,7 +24,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2152.745 71.292 2449.77
+  coords 895.781 15.642 1430.769
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -32,7 +32,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2160.544 71.516 2446.68
+  coords 903.58 17.202 1427.679
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -40,7 +40,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2168.408 72.083 2440.949
+  coords 911.444 18.96 1421.948
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -48,7 +48,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2179.058 72.858 2435.354
+  coords 922.094 21.436 1416.353
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -56,7 +56,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2134.165 69.761 2472.894
+  coords 861.542 8.991 1435.239
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -64,7 +64,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2145.916 70.109 2468.189
+  coords 888.952 15.374 1449.188
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -72,7 +72,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2157.024 70.545 2462.546
+  coords 900.06 17.384 1443.545
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -80,7 +80,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2165.339 71.104 2457.511
+  coords 908.375 18.676 1438.51
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -88,7 +88,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2174.462 71.793 2454.274
+  coords 917.498 20.236 1435.273
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -96,7 +96,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2183.783 72.586 2449.454
+  coords 926.819 21.837 1430.453
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -104,7 +104,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2191.438 73.14 2445.309
+  coords 934.474 22.785 1426.308
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -112,7 +112,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2142.095 66.792 2494.548
+  coords 885.131 14.239 1475.547
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -120,7 +120,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2151.04 67.695 2490.056
+  coords 894.076 15.731 1471.055
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -128,7 +128,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2162.261 68.763 2484.461
+  coords 905.297 17.389 1465.46
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -136,7 +136,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2173.949 69.785 2478.96
+  coords 916.985 18.58 1459.959
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -144,7 +144,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2184.699 70.684 2473.115
+  coords 927.735 19.569 1454.114
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -152,7 +152,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2192.004 71.263 2468.898
+  coords 935.04 20.585 1449.897
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -160,7 +160,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2199.237 71.695 2465.825
+  coords 942.273 21.466 1446.824
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -168,7 +168,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2207.306 72.129 2462.53
+  coords 949.875 27.597 1390.089
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -176,7 +176,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2150.46 64.015 2511.189
+  coords 893.496 15.247 1492.188
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -184,7 +184,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2160.935 65.426 2505.221
+  coords 903.971 16.737 1486.22
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -192,7 +192,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2175.358 66.904 2498.191
+  coords 918.394 17.988 1479.19
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -200,7 +200,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2185.398 67.934 2492.197
+  coords 928.434 18.11 1473.196
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -208,7 +208,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2193.81 68.604 2487.733
+  coords 934.577 17.739 1462.778
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -216,7 +216,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2203.093 69.16 2483.667
+  coords 946.129 16.269 1464.666
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -224,7 +224,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2210.276 69.587 2480.243
+  coords 952.845 27.733 1407.802
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -232,7 +232,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2218.919 70.389 2474.746
+  coords 961.488 29.869 1402.305
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -240,7 +240,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2119.606 70.693 2466.513
+  coords 862.642 11.354 1447.512
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -248,7 +248,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2122.719 68.821 2479.824
+  coords 850.096 7.358 1442.169
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -256,7 +256,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2127.33 66.544 2493.656
+  coords 854.707 10.632 1456.001
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -264,7 +264,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2131.672 64.746 2503.945
+  coords 874.708 13.37 1484.944
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -272,7 +272,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2135.124 62.85 2514.651
+  coords 878.16 14.6 1495.65
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -280,7 +280,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2141.017 60.392 2528.741
+  coords 884.053 15.158 1509.74
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -288,7 +288,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2189.106 73.344 2429.841
+  coords 932.142 23.67 1410.84
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -296,7 +296,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2196.701 73.517 2437.669
+  coords 939.737 24.73 1418.668
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -304,7 +304,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2203.337 73.457 2445.809
+  coords 946.373 24.629 1426.808
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -312,7 +312,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2211.799 72.832 2456.43
+  coords 954.368 28.336 1383.989
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -320,7 +320,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2217.784 71.898 2464.948
+  coords 960.353 29.927 1392.507
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -328,7 +328,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2224.281 71.056 2470.766
+  coords 966.85 31.389 1398.325
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -336,7 +336,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2152.271 69.241 2477.473
+  coords 895.307 16.054 1458.472
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -344,7 +344,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2162.846 70.027 2471.767
+  coords 905.882 17.858 1452.766
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -352,7 +352,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2174.479 71.033 2466.262
+  coords 917.515 19.442 1447.261
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -360,7 +360,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2184.345 71.883 2460.83
+  coords 927.381 21.206 1441.829
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -368,7 +368,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2193.324 72.541 2455.997
+  coords 936.36 22.882 1436.996
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -376,7 +376,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2164.161 61.607 2524.407
+  coords 907.197 16.472 1505.406
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -384,7 +384,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2186.085 64.069 2513.541
+  coords 929.121 16.442 1494.54
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
@@ -392,7 +392,7 @@ $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF
   }
  }
  {
-  coords 2207.501 66.329 2499.995
+  coords 950.07 24.652 1427.554
   angles 0 -52.346 0
   m_aUnitPrefabSlots {
    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
