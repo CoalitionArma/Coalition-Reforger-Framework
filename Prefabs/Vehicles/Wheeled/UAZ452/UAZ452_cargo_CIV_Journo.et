@@ -1,0 +1,27 @@
+Vehicle : "{A003493D32140960}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{68522230DB087EAD}" {
+     SourceMaterial "uaz452_body"
+     AssignedMaterial "{814E4D1986CAED36}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_orange.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{1A0AACFB6FC0F4DF}UI/Textures/EditorPreviews/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_orange.edds"
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo Antenna {
+     Offset 0 2.0846 -0.5717
+     Prefab "{1D2BBC06E656974F}Prefabs/Structures/BuildingParts/Misc/TvAntenna_01.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+ }
+}

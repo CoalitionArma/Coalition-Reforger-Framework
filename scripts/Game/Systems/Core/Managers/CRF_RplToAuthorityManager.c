@@ -135,6 +135,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
 	}
 	
+	void RequestMissionSave(string saveName)
+	{
+		if (SCR_Global.IsAdmin())
+			Rpc(RpcAsk_RequestMissionSave, saveName);
+	}
+	
 	void RequestAdvanceSlottingPhase()
 	{
 		if (SCR_Global.IsAdmin())
@@ -540,6 +546,24 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_RequestAdvanceSlottingPhase", 0);
 		
 		m_Gamemode.AdvanceSlottingState();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestMissionSave(string saveName)
+	{
+		// Telemetry: string
+		LogTelemetry("RpcAsk_RequestMissionSave", CRF_BandwidthTelemetryManager.EstimateSize_String(saveName));
+		
+		// Get persistence manager and trigger save
+		CRF_PersistenceManager persistenceManager = CRF_PersistenceManager.GetInstance();
+		if (persistenceManager)
+		{
+			persistenceManager.TriggerManualSave(saveName);
+		}
+		else
+		{
+			Print("[CRF_RplToAuthorityManager] Persistence manager not available", LogLevel.ERROR);
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

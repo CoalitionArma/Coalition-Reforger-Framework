@@ -152,4 +152,17 @@ modded class SCR_VoNComponent
 		// This isolates direct speech to only players in the same spectator channel
 		return localChannel != senderChannel;
 	}
+	
+	//===================================================================================
+	// CLEANUP
+	//===================================================================================
+	
+	/**
+	 * Clean up when component is deleted
+	 */
+	void OnDelete(IEntity owner)
+	{
+		// Cancel any pending CallLater callbacks to prevent memory leaks
+		GetGame().GetCallqueue().Remove(RemovePlayerTalking);
+	}
 };
