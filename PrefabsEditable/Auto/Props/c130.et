@@ -28,6 +28,17 @@ GenericEntity : "{172585DCA4F947FE}Prefabs/Props/Furniture/PhoneTable_01_khaki.e
     }
    }
   }
+  ActionsManagerComponent "{62A61ECDA24C8486}" {
+   additionalActions {
+    SCR_SwitchLightUserAction "{62A61ECD8125E03C}" {
+     ParentContextList {
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{65C7120E3A327FCA}" {
+   Enabled 0
+  }
   RplComponent "{5624A88DC2D9928D}" {
    "Rpl State Override" Runtime
    SpatialRelevancy 0

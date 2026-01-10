@@ -55,6 +55,9 @@ class CRF_BoundaryStageData
 	[Attribute("", UIWidgets.EditBox, "Text under Stage Timer (If timer for stage is enabled)")]
 	string m_sStageDisplayText;
 	
+	[Attribute("true", UIWidgets.CheckBox, "Show completion message when this stage finishes", category: "Completion Message")]
+	bool m_bShowStageCompletionMessage;
+	
 	[Attribute("Stage Complete", UIWidgets.EditBox, "Main completion message for this stage (leave empty for default)", category: "Completion Message")]
 	string m_sStageCompletionMainMessage;
 	
@@ -871,31 +874,38 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		// Play stage end sound using centralized system
 		PlayStageSound("end");
 
-		// Show completion popup with custom message
-		string completionMessage;
-		if (!stageData.m_sStageCompletionMainMessage.IsEmpty())
+		// Show completion popup with custom message (if enabled)
+		if (stageData.m_bShowStageCompletionMessage)
 		{
-			// Use custom stage completion message with full format support
-			string subMessage;
-			if (stageData.m_sStageCompletionSubMessage.IsEmpty())
-				subMessage = string.Format("Play area %1", stageTypeString);
+			string completionMessage;
+			if (!stageData.m_sStageCompletionMainMessage.IsEmpty())
+			{
+				// Use custom stage completion message with full format support
+				string subMessage;
+				if (stageData.m_sStageCompletionSubMessage.IsEmpty())
+					subMessage = string.Format("Play area %1", stageTypeString);
+				else
+					subMessage = stageData.m_sStageCompletionSubMessage;
+					
+				completionMessage = string.Format("%1|%2|%3", 
+					stageData.m_sStageCompletionMainMessage, 
+					stageData.m_iStageCompletionDuration, 
+					subMessage);
+			}
 			else
-				subMessage = stageData.m_sStageCompletionSubMessage;
-				
-			completionMessage = string.Format("%1|%2|%3", 
-				stageData.m_sStageCompletionMainMessage, 
-				stageData.m_iStageCompletionDuration, 
-				subMessage);
-		}
-		else
-		{
-			// Use default format
-			completionMessage = string.Format("Stage %1 Complete|10|Play area %2", stageIndex + 1, stageTypeString);
-		}
+			{
+				// Use default format
+				completionMessage = string.Format("Stage %1 Complete|10|Play area %2", stageIndex + 1, stageTypeString);
+			}
 
-		m_sMessageContent = completionMessage;
-		Replication.BumpMe();
-		ShowMessage();
+			m_sMessageContent = completionMessage;
+			Replication.BumpMe();
+			ShowMessage();
+		}
+		else if (m_bDebugEnabled)
+		{
+			Print(string.Format("[CRF_MapStagingComponent] Stage %1 completion message suppressed (toggle disabled)", stageIndex + 1));
+		}
 
 		return stageTypeString;
 	}
