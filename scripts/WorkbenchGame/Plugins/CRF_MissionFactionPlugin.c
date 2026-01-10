@@ -4,7 +4,7 @@
 	description: "Configure Mission Factions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
-	category: "Coalition Reforger Framework",
+	category: "Coalition Reforger Framework/1 | Configure Factions",
 	awesomeFontCode: 0x0031)
 ] 
 class CRF_MissionFactionsPlugin : WorkbenchPlugin
