@@ -40,6 +40,10 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		WorldEditorAPI api = worldEditor.GetApi();
 		
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+
+		if (!entitySource)
+			return;		
+
 		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
 		
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
@@ -52,7 +56,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		
 		if (!Workbench.ScriptDialog(
 		"Mission Gamemode Settings", 
-		"This is a simplified settings window for settings that most mission makers will use, for more advanced settings go to the CRF_Lobby entitiy in your world file", 
+		"This is a settings window for settings that most mission makers will use, for more advanced settings go to the CRF_Lobby entitiy in your world file", 
 		this))
 			return;
 	}

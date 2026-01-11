@@ -27,6 +27,11 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
+		m_iMissionAuthor = "<Author>";
+		m_iMissionMode = "<Mode>";
+		m_iMissionName = "<Name>";
+		m_iMissionDescription = "<Description>";
+		
 		if (!Workbench.ScriptDialog(
 		"Mission Config Generator", 
 		"This will automatically generate and sort the mission configuration file", 
@@ -45,14 +50,16 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[ButtonAttribute("Next", true)]
 	protected bool ButtonNext()
 	{
-		//--- Get mission header from the template config (can't use m_MissionHeader directly, it's engine-controlled class that cannot have reference in script)
+		int missionPlayercount;
+		string worldPath;
+		
+		//--- Get mission header from the template config (can't use the class directly, it's engine-controlled class that cannot have reference in script)
 		Resource templateResource = Resource.Load("{3D094352621EA88C}Missions/ACRF_BaseMissionConfig.conf");
 		BaseContainer missionHeaderContainer = templateResource.GetResource().ToBaseContainer();
 		
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
 		WorldEditorAPI api = worldEditor.GetApi();
 
-		string worldPath;
 		api.GetWorldPath(worldPath);
 
 		//--- Get world path with GUID and save it to the header
@@ -68,9 +75,11 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		missionHeaderContainer.Set("m_iMapMarkerLimitPerPlayer", 256);
 		
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
 		
-		int missionPlayercount;
+		if (!entitySource)
+			return false;
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
 		
 		if (gamemode)
 		{
@@ -136,6 +145,8 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			Print(string.Format("Unable to create mission header at %1!", missionHeaderPath), LogLevel.ERROR);
 			return false;
 		}
+		
+		worldEditor.Close();
 		
 		return true;
 	}

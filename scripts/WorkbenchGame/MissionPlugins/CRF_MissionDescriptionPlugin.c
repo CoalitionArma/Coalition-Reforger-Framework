@@ -22,6 +22,10 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		WorldEditorAPI api = worldEditor.GetApi();
 		
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		
+		if (!entitySource)
+			return;		
+		
 		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
 		
 		m_aMissionDescriptors.Clear();
@@ -32,8 +36,8 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		}
 		
 		if (!Workbench.ScriptDialog(
-		"Mission Layer Generator", 
-		"This Automatically generates the missions layers to keep consistancy across all CRF missions", 
+		"Mission Descriptions Editor", 
+		"This allows you to edit all mission descriptions", 
 		this))
 			return;
 	}

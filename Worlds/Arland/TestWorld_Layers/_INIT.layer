@@ -1,5 +1,7 @@
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 30.6 0 15.182
+ userScript "	// code here"\
+ ""
  m_BluforSlots {
   CRF_SlottingGroup "{684C183E7BC074AC}" : "{496BAA2CA4279ADA}Configs/SlottingGroups/Squads/CRF_RifleSquad.conf" {
   }
