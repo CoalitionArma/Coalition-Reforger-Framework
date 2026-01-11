@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "4 | Generate Mission Config File", 
+	name: "5 | Generate Mission Config File", 
 	description: "Generate Mission Configuration File", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0034)
+	awesomeFontCode: 0x0035)
 ] 
 class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 {	

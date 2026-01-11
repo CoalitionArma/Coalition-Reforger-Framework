@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "3 | Configure Mission Settings", 
+	name: "1 | Configure Mission Settings", 
 	description: "Configure Mission Gamemode Settings", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0033)
+	awesomeFontCode: 0x0031)
 ] 
 class CRF_MissionGamemodePlugin : WorkbenchPlugin
 {	

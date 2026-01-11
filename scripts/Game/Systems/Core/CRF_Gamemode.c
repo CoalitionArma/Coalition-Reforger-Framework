@@ -78,6 +78,30 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", "")]
 	string m_sFactionTwoKey;
 	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
+
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_OpforSlots;	
+	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_IndforSlots;	
+	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_CivSlots;	
+	
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iBLUFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iOPFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iINDFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iCIVTickets;
+	
 	// Advanced Gamemode Settings
 	//------------------------------------------------------------------------------------
 	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Mission Settings - Advanced")]
@@ -88,21 +112,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Settings - Advanced")]
 	bool m_bDisableChat;
-
-	// Faction Settings
-	//------------------------------------------------------------------------------------
-	
-	[Attribute(UIWidgets.Auto, desc: "BLUFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - BLUFOR Slots")]
-	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
-
-	[Attribute(UIWidgets.Auto, desc: "OPFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - OPFOR Slots")]
-	ref array <ref CRF_SlottingGroup> m_OpforSlots;	
-	
-	[Attribute(UIWidgets.Auto, desc: "INDFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - INDFOR Slots")]
-	ref array <ref CRF_SlottingGroup> m_IndforSlots;	
-	
-	[Attribute(UIWidgets.Auto, desc: "CIVILIAN Slots", "conf class=CRF_SlottingGroup", category: "CRF Mission Config - CIVILIAN Slots")]
-	ref array <ref CRF_SlottingGroup> m_CivSlots;	
 
 	// Gearscript Settings
 	//------------------------------------------------------------------------------------
@@ -121,21 +130,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Mission Config - Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
-
-	// Respawn Settings
-	//------------------------------------------------------------------------------------
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
-	int m_iBLUFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
-	int m_iOPFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
-	int m_iINDFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Mission Config - Respawn"), RplProp()]
-	int m_iCIVTickets;
 
 	// Generic spawn point for spectator camera (handles entity streaming)
 	[RplProp()]
