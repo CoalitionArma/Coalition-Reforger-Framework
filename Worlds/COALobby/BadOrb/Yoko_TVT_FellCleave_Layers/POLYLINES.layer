@@ -25,10 +25,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position -55.116 165.803 1017.591
   }
   ShapePoint "{673840AEA77B7C8E}" {
-   Position -231.93 145.614 1016.271
+   Position -184.453 145.614 456.982
   }
   ShapePoint "{673840AE17BD2922}" {
-   Position -2079.414 114.419 871.403
+   Position -1801.262 114.419 636.032
   }
   ShapePoint "{673840AE1D567CBF}" {
    Position -2656.428 0 189.51
