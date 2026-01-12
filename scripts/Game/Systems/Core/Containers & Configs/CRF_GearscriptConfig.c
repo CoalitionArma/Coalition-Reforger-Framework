@@ -5,8 +5,29 @@
 [BaseContainerProps()]
 class CRF_GearScriptContainer
 {
-	[Attribute("", UIWidgets.Hidden, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_GearScriptConfig")]
+	//------------------------------------------------------------------------------------------------
+	// Vars set by plugin
+	
+	[Attribute("", UIWidgets.Hidden)]
 	ResourceName m_rGearScript;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableShareableMarkers;
+  
+ 	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableBFT;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableLeadershipRadios;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableGIRadios;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableRTORadios;
+	
+	//------------------------------------------------------------------------------------------------
+	// Vars considered "advanced" and not set by plugin
 	
 	[Attribute("{E6555DA2F31B0EC0}Configs/Gearscripts/CRF_Global_SightArsenal_Regular.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_SightArsenalConfig")]
 	ResourceName m_rSightArsenal;
@@ -32,7 +53,7 @@ class CRF_GearScriptContainer
 	[Attribute()] 
 	ref array<ResourceName> m_aAdditonalItemsForSupplyArsenal;
 	
-	[Attribute("true", UIWidgets.Hidden)]
+	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableMiniArsenal;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
@@ -44,12 +65,6 @@ class CRF_GearScriptContainer
 	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableMagnifiedOptics;
 	
-	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bEnableShareableMarkers;
-  
- 	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bEnableBFT;
-	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rShortRangeRadioPrefab;
 	
@@ -58,15 +73,6 @@ class CRF_GearScriptContainer
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rRTORadiosPrefab;
-	
-	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bEnableLeadershipRadios;
-	
-	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bEnableGIRadios;
-	
-	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bEnableRTORadios;
 }
 
 
@@ -78,15 +84,6 @@ class CRF_SimplifiedGearScriptContainer
 	ResourceName m_rGearScript;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableMiniArsenal;
-	
-	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableShareableMarkers;
-  
- 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableBFT;
-	
-	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
@@ -94,6 +91,12 @@ class CRF_SimplifiedGearScriptContainer
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableRTORadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableShareableMarkers;
+  
+ 	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableBFT;
 }
 
 //------------------------------------------------------------------------------------------------

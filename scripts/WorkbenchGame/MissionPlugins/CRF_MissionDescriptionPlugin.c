@@ -62,6 +62,9 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		WorldEditorAPI api = worldEditor.GetApi();
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
 		
+		if (!entitySource)
+			return false;
+		
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
 		

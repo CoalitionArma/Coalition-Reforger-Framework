@@ -44,19 +44,57 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 	//------------------------------------------------------------------------------------
 	
 	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Config - CIVILIAN"), RplProp()]
-	int m_iCIVTickets;
+	int m_iCIVILIANTickets;
 	
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Faction Config - CIVILIAN")]
 	ref CRF_SimplifiedGearScriptContainer m_CIVILIANGearScriptSettings;
 
 	//------------------------------------------------------------------------------------------------
 	override void Run()
-	{
+	{	
+		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
+		if (!worldEditor)
+			return;
+		
+		WorldEditorAPI api = worldEditor.GetApi();
+		
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		
+		if (!entitySource)
+			return;		
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		
+		m_iBLUFORTickets = gamemode.m_iBLUFORTickets;
+		m_iOPFORTickets = gamemode.m_iOPFORTickets;
+		m_iINDFORTickets = gamemode.m_iINDFORTickets;
+		m_iCIVILIANTickets = gamemode.m_iCIVTickets;
+		
+		m_BLUFORGearScriptSettings = new CRF_SimplifiedGearScriptContainer;
+		m_OPFORGearScriptSettings = new CRF_SimplifiedGearScriptContainer;
+		m_INDFORGearScriptSettings = new CRF_SimplifiedGearScriptContainer;
+		m_CIVILIANGearScriptSettings = new CRF_SimplifiedGearScriptContainer;
+		
+		SetPluginGearscriptVariables(m_BLUFORGearScriptSettings, gamemode.m_BLUFORGearScriptSettings);
+		SetPluginGearscriptVariables(m_OPFORGearScriptSettings, gamemode.m_OPFORGearScriptSettings);
+		SetPluginGearscriptVariables(m_INDFORGearScriptSettings, gamemode.m_INDFORGearScriptSettings);
+		SetPluginGearscriptVariables(m_CIVILIANGearScriptSettings, gamemode.m_CIVILIANGearScriptSettings);
+		
 		if (!Workbench.ScriptDialog(
 		"Mission Faction Editor", 
-		"This allows you to change all mission faction related settings", 
+		"This allows you to change basic mission faction related settings, for advanced gearscript settings (Mini-Arsenal, Vehicle Gearscript Settings, etc) please go into the CRF_Lobby entity properties in _INIT", 
 		this))
 			return;
+	}
+	
+	protected void SetPluginGearscriptVariables(CRF_SimplifiedGearScriptContainer pluginGearscript, CRF_GearScriptContainer gearscript)
+	{			
+		pluginGearscript.m_rGearScript = gearscript.m_rGearScript;
+		pluginGearscript.m_bEnableShareableMarkers = gearscript.m_bEnableShareableMarkers;
+		pluginGearscript.m_bEnableBFT = gearscript.m_bEnableBFT;
+		pluginGearscript.m_bEnableLeadershipRadios = gearscript.m_bEnableLeadershipRadios;
+		pluginGearscript.m_bEnableGIRadios = gearscript.m_bEnableGIRadios;
+		pluginGearscript.m_bEnableRTORadios = gearscript.m_bEnableRTORadios;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -74,7 +112,47 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		if (!worldEditor)
 			return false;
 		
+		WBProgressDialog progress = new WBProgressDialog("Processing...", Workbench.GetModule(WorldEditor));
+		
+		WorldEditorAPI api = worldEditor.GetApi();
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		
+		if (!entitySource)
+			return false;
+		
+		api.BeginEntityAction();
+		api.BeginEditSequence(entitySource);
+		
+		api.SetVariableValue(entitySource, null, "m_iBLUFORTickets", m_iBLUFORTickets.ToString());
+		api.SetVariableValue(entitySource, null, "m_iOPFORTickets", m_iOPFORTickets.ToString());
+		api.SetVariableValue(entitySource, null, "m_iINDFORTickets", m_iINDFORTickets.ToString());
+		api.SetVariableValue(entitySource, null, "m_iCIVTickets", m_iCIVILIANTickets.ToString());
+		
+		SetGamemodeGearscriptVariables(api, entitySource, m_BLUFORGearScriptSettings, "m_BLUFORGearScriptSettings");
+		SetGamemodeGearscriptVariables(api, entitySource, m_OPFORGearScriptSettings, "m_OPFORGearScriptSettings");
+		SetGamemodeGearscriptVariables(api, entitySource, m_INDFORGearScriptSettings, "m_INDFORGearScriptSettings");
+		SetGamemodeGearscriptVariables(api, entitySource, m_CIVILIANGearScriptSettings, "m_CIVILIANGearScriptSettings");
+		
+		api.EndEditSequence(entitySource);
+		api.EndEntityAction();
+		
+		api.UpdateSelectionGui();
+		
+		worldEditor.Save();
+		
 		return true;
+	}
+	
+	protected void SetGamemodeGearscriptVariables(WorldEditorAPI api, IEntitySource entitySource, CRF_SimplifiedGearScriptContainer pluginGSContainer, string gearscriptContainterToChange)
+	{			
+		array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry(gearscriptContainterToChange)};
+		
+		api.SetVariableValue(entitySource, path, "m_rGearScript", pluginGSContainer.m_rGearScript);
+		api.SetVariableValue(entitySource, path, "m_bEnableShareableMarkers", pluginGSContainer.m_bEnableShareableMarkers.ToString());
+		api.SetVariableValue(entitySource, path, "m_bEnableBFT", pluginGSContainer.m_bEnableBFT.ToString());
+		api.SetVariableValue(entitySource, path, "m_bEnableLeadershipRadios", pluginGSContainer.m_bEnableLeadershipRadios.ToString());
+		api.SetVariableValue(entitySource, path, "m_bEnableGIRadios", pluginGSContainer.m_bEnableGIRadios.ToString());
+		api.SetVariableValue(entitySource, path, "m_bEnableRTORadios", pluginGSContainer.m_bEnableRTORadios.ToString());
 	}
 }
 #endif

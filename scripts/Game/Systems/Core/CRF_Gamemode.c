@@ -42,53 +42,53 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// Attributes Set By Plugins
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "")]
+	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bRespawnEnabled;
 
-	[Attribute("0", "")]
+	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
 
-	[Attribute("60", "")]
+	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
 	
-	[Attribute("45", "")]
+	[Attribute("45", UIWidgets.Hidden)]
 	int m_iTimeLimitMinutes;
 	
-	[Attribute("false", "")]
+	[Attribute("false", UIWidgets.Hidden)]
 	bool m_bAllowEspionage;
 	
-	[Attribute("true", "")]
+	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bLockUnusedSlots;
 
-	[Attribute("true", "")]
+	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bSafestartInstantlyEnabled;
 	
-	[Attribute("", "")]
+	[Attribute("", UIWidgets.Hidden)]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
 	
-	[Attribute("", "")]
+	[Attribute("", UIWidgets.Hidden)]
 	int m_iFactionOneRatio;
 
-	[Attribute("", "")]
+	[Attribute("", UIWidgets.Hidden)]
 	int m_iFactionTwoRatio;
 	
-	[Attribute("", "")]
+	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionOneKey;
 
-	[Attribute("", "")]
+	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionTwoKey;
 	
 	[Attribute("", UIWidgets.Hidden)]
-	ref array <ref CRF_SlottingGroup> m_BluforSlots;	
+	ref array <ref CRF_SlottingGroup> m_BluforSlots;
 
 	[Attribute("", UIWidgets.Hidden)]
-	ref array <ref CRF_SlottingGroup> m_OpforSlots;	
+	ref array <ref CRF_SlottingGroup> m_OpforSlots;
 	
 	[Attribute("", UIWidgets.Hidden)]
-	ref array <ref CRF_SlottingGroup> m_IndforSlots;	
+	ref array <ref CRF_SlottingGroup> m_IndforSlots;
 	
 	[Attribute("", UIWidgets.Hidden)]
-	ref array <ref CRF_SlottingGroup> m_CivSlots;	
+	ref array <ref CRF_SlottingGroup> m_CivSlots;
 	
 	[Attribute("0", UIWidgets.Hidden), RplProp()]
 	int m_iBLUFORTickets;
