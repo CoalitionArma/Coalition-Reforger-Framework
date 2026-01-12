@@ -10,25 +10,25 @@
 class CRF_MissionGamemodePlugin : WorkbenchPlugin
 {	
 	[Attribute("45", "auto", "Mission Time (Minutes) (set to -1 to disable)", category: "CRF Mission Config - General")]
-	int m_iMissionTimeLimit;
+	protected int m_iMissionTimeLimit;
 
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Config - General")]
-	bool m_bMissionAllowsEspionage;
+	protected bool m_bMissionAllowsEspionage;
 
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Config - General")]
-	bool m_bSafestartEnabledOnMissionStart;
+	protected bool m_bSafestartEnabledOnMissionStart;
 	
 	[Attribute("true", "auto", "Should we lock all non-slotted slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Config - General")]
-	bool m_bLockUnusedSlots;
+	protected bool m_bLockUnusedSlots;
 	
 	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Mission Config - Respawn")]
-	int m_iTimeToRespawn;
+	protected int m_iTimeToRespawn;
 	
 	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
-	bool m_bRespawnEnabled;
+	protected bool m_bRespawnEnabled;
 
 	[Attribute("0", "auto", "", category: "CRF Mission Config - Respawn")]
-	bool m_bWaveRespawn;
+	protected bool m_bWaveRespawn;
 	
 	//------------------------------------------------------------------------------------------------
 	override void Run()

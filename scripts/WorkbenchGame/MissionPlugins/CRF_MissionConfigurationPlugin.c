@@ -11,16 +11,16 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 {	
 	//------------------------------------------------------------------------------------
 	[Attribute("<Author>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	string m_iMissionAuthor;
+	protected string m_iMissionAuthor;
 	
 	[Attribute("<Mode>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	string m_iMissionMode;
+	protected string m_iMissionMode;
 	
 	[Attribute("<Name>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	string m_iMissionName;
+	protected string m_iMissionName;
 	
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	string m_iMissionDescription;
+	protected string m_iMissionDescription;
 	
 	protected const string SCENARIOS_PATH = "Missions";
 
@@ -47,7 +47,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Generate Config", true)]
+	[ButtonAttribute("Generate Mission Config", true)]
 	protected bool ButtonNext()
 	{
 		int missionPlayercount;

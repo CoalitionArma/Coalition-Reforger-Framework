@@ -10,7 +10,7 @@
 class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 {	
 	[Attribute("", category: "CRF Mission Config - General")]
-	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
+	protected ref array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
 	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
@@ -70,11 +70,13 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
 		
-		for (int i; i < m_aMissionDescriptors.Count(); i++ )
+		for (int r; r < gamemode.m_aMissionDescriptors.Count(); r++)
+			api.RemoveObjectArrayVariableMember(entitySource, null, "m_aMissionDescriptors", 0);
+		
+		foreach (int i, CRF_MissionDescriptor descriptor : m_aMissionDescriptors)
 		{
 			int descriptorOffset = i + 2;
 			array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("m_aMissionDescriptors", descriptorOffset)};
-			CRF_MissionDescriptor descriptor = m_aMissionDescriptors[i];
 			
 			if (descriptorOffset > (gamemode.m_aMissionDescriptors.Count() - 1))
 				api.CreateObjectArrayVariableMember(entitySource, null, "m_aMissionDescriptors", "CRF_MissionDescriptor", descriptorOffset);
@@ -94,7 +96,7 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 			
 			api.SetVariableValue(entitySource, path, "m_aFactionKeys", finalFactionsArrayStr);
 		}
-		
+
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
 		
