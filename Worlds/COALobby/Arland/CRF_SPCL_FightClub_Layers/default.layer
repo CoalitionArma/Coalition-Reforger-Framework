@@ -7,7 +7,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_LooterGamemodeComponent "{68530918F51648E0}" {
    m_fGlobalSpawnChance 0.6
-   m_iTotalSpawnPoints 3125
+   m_iTotalSpawnPoints 3235
    m_aWeaponEntries {
     CRF_WeaponLootEntry "{6853091BDEF57E51}" {
      m_fWeight 0.2
@@ -151,7 +151,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
    m_aMiscEntries {
     CRF_MiscLootEntry "{68531C9B5DF3B6D0}" {
-     m_fWeight 0.6
+     m_fWeight 1
      m_sPrimaryPrefab "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et"
     }
     CRF_MiscLootEntry "{68531C9BA41DEDFD}" {
