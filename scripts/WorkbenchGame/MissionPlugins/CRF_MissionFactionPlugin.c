@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "2 | Configure Mission Factions", 
+	name: "2 | Configure Factions", 
 	description: "Configure Mission Factions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -105,7 +105,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Next", true)]
+	[ButtonAttribute("Apply Faction Settings", true)]
 	protected bool ButtonNext()
 	{
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);

@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "4 | Configure Mission Descriptions", 
+	name: "4 | Configure Descriptions", 
 	description: "Configure Mission Descriptions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -50,7 +50,7 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Next", true)]
+	[ButtonAttribute("Apply Mission Descriptions", true)]
 	protected bool ButtonNext()
 	{
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
@@ -65,13 +65,19 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		if (!entitySource)
 			return false;
 		
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
 		
 		for (int i; i < m_aMissionDescriptors.Count(); i++ )
 		{
-			array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("m_aMissionDescriptors", i + 2)};
+			int descriptorOffset = i + 2;
+			array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("m_aMissionDescriptors", descriptorOffset)};
 			CRF_MissionDescriptor descriptor = m_aMissionDescriptors[i];
+			
+			if (descriptorOffset > (gamemode.m_aMissionDescriptors.Count() - 1))
+				api.CreateObjectArrayVariableMember(entitySource, null, "m_aMissionDescriptors", "CRF_MissionDescriptor", descriptorOffset);
 			
 			api.SetVariableValue(entitySource, path, "m_sTitle", descriptor.m_sTitle);
 			api.SetVariableValue(entitySource, path, "m_sTextData", descriptor.m_sTextData);

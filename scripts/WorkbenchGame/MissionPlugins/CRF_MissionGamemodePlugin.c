@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "1 | Configure Mission Settings", 
+	name: "1 | Configure Settings", 
 	description: "Configure Mission Gamemode Settings", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -69,7 +69,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Next", true)]
+	[ButtonAttribute("Apply Gamemode Settings", true)]
 	protected bool ButtonNext()
 	{
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);

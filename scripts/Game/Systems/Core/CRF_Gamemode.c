@@ -78,16 +78,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionTwoKey;
 	
-	[Attribute("", UIWidgets.Hidden)]
+	[Attribute("", UIWidgets.Auto)]
 	ref array <ref CRF_SlottingGroup> m_BluforSlots;
 
-	[Attribute("", UIWidgets.Hidden)]
+	[Attribute("", UIWidgets.Auto)]
 	ref array <ref CRF_SlottingGroup> m_OpforSlots;
 	
-	[Attribute("", UIWidgets.Hidden)]
+	[Attribute("", UIWidgets.Auto)]
 	ref array <ref CRF_SlottingGroup> m_IndforSlots;
 	
-	[Attribute("", UIWidgets.Hidden)]
+	[Attribute("", UIWidgets.Auto)]
 	ref array <ref CRF_SlottingGroup> m_CivSlots;
 	
 	[Attribute("0", UIWidgets.Hidden), RplProp()]
@@ -104,30 +104,30 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// Advanced Gamemode Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Mission Settings - Advanced")]
+	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableAICrouching;
 	
-	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Mission Settings - Advanced")]
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bUseAAR;
 	
-	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Mission Settings - Advanced")]
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableChat;
 
 	// Gearscript Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Mission Config - Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Mission Config - Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
 	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Mission Config - Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
 	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Mission Config - Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 

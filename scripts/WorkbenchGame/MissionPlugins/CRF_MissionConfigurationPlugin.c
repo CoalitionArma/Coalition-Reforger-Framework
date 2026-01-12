@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "5 | Generate Mission Config File", 
+	name: "5 | Generate Config File", 
 	description: "Generate Mission Configuration File", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -47,7 +47,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Next", true)]
+	[ButtonAttribute("Generate Config", true)]
 	protected bool ButtonNext()
 	{
 		int missionPlayercount;

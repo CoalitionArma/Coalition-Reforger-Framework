@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "0 | Spawn Initial Mission Layers/Objects", 
+	name: "0 | Spawn Initial Layers/Objects", 
 	description: "Automatically Generate Mission Layers", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -27,7 +27,7 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[ButtonAttribute("Next", true)]
+	[ButtonAttribute("Generate Layers/Objects", true)]
 	protected bool ButtonNext()
 	{
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
