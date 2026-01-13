@@ -617,7 +617,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdateSlotRole(int slotId, CRF_ESlotType role)
+	protected void RpcAsk_UpdateSlotRole(int slotId, CRF_EGearRole role)
 	{
 		// Telemetry: int + int
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();

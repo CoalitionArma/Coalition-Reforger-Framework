@@ -56,8 +56,8 @@ class CRF_SlottingManager : ScriptComponent
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		
-		// Need to call later due to race conditions if the faction manager hasn't fully initilized.
-		GetGame().GetCallqueue().CallLater(InitilizeSlots, 250, false);
+		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
+		GetGame().GetCallqueue().Call(InitilizeSlots);
 	}
 	
 	protected void InitilizeSlots()
@@ -620,8 +620,8 @@ class CRF_SlottingManager : ScriptComponent
 				TStringArray flagArray = {};
 				scrFaction.GetFlagNames(flagArray);
 				if((flagArray.Count() - 1) < flagType)
-					flagType = CRF_EFlagType.INFANTRY
-			}
+					flagType = CRF_EFlagType.INFANTRY;
+			};
 			
 			SCR_AIGroup group = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(scrFaction);
 			group.SetFaction(scrFaction);

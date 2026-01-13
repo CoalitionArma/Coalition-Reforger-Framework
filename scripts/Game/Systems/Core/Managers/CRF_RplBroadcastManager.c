@@ -239,13 +239,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
-	protected void SendSlotRoleUpdate(int slotId, bool isDead)
+	protected void SendSlotRoleUpdate(int slotId, CRF_EGearRole role)
 	{
-		LogTelemetry("UpdateSlotRoleDelta", 5);
+		LogTelemetry("UpdateSlotRoleDelta", 8);
 		#ifdef WORKBENCH
-		RpcDo_UpdateSlotRoleDelta(slotId, isDead);
+		RpcDo_UpdateSlotRoleDelta(slotId, role);
 		#else
-		Rpc(RpcDo_UpdateSlotRoleDelta, slotId, isDead);
+		Rpc(RpcDo_UpdateSlotRoleDelta, slotId, role);
 		#endif
 	}
 	
@@ -963,7 +963,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		}
 		else
 		{
-			SendSlotLockedUpdate(slotId, isDead);
+			SendSlotDeathUpdate(slotId, isDead);
 		}
 	}
 	
@@ -1957,28 +1957,27 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update single slot data on all clients (LEGACY - USE DELTA UPDATES INSTEAD)
 	// 
-	// ⚠️ PERFORMANCE WARNING: This method sends ~366 bytes per call
+	// ⚠️ PERFORMANCE WARNING: This method sends ~64 bytes per call
 	// ⚠️ Use UpdateSlot*Delta() methods instead for 90%+ bandwidth savings:
-	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 366)
-	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 366)
-	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 366)
-	//    - UpdateSlotResourceDelta()   : ~40 bytes (vs 366)
-	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 366)
-	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 366)
+	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 64)
+	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 64)
+	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 64)
+	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 64)
+	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 64)
 	//
 	// Only use UpdateSlotData() for:
 	//   - Creating new slots (all fields are new)
 	//   - JIP sync (initial state transmission)
 	//
-	// Bandwidth: ~366 bytes vs 8-40 bytes for delta updates
+	// Bandwidth: ~64 bytes vs 8-40 bytes for delta updates
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotData(CRF_SlotDataContainer slotData)
 	{
 		if (!Replication.IsServer())
 			return;
 		
-		// Estimate bandwidth: slot data (~366 bytes avg)
-		LogTelemetry("UpdateSlotData", 366);
+		// Estimate bandwidth: slot data (~64 bytes avg)
+		LogTelemetry("UpdateSlotData", 64);
 		
 		RpcDo_UpdateSlotData(slotData);
 		Rpc(RpcDo_UpdateSlotData, slotData);
@@ -2063,7 +2062,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotRoleDelta(int slotId, CRF_ESlotType role)
+	void RpcDo_UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
