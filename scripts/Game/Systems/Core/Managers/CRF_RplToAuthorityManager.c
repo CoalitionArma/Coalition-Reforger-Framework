@@ -196,6 +196,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_SendAdminMessage, data, playerID); 
 	}
 	
+	void ReportSettingsViolation(int playerId, string violationType)
+	{
+		Rpc(RpcAsk_ReportSettingsViolation, playerId, violationType);
+	}
+	
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
@@ -1154,6 +1159,33 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_LogAdminAction", bytes);
 		
 		m_RplBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ReportSettingsViolation(int playerId, string violationType)
+	{
+		// Telemetry: int + string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(violationType);
+		LogTelemetry("RpcAsk_ReportSettingsViolation", bytes);
+		
+		// Get player name on server
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		
+		// Create violation message
+		string message = string.Format("[SETTINGS VIOLATION] Player: %1 (ID: %2) attempted to modify display settings - %3", 
+			playerName, playerId, violationType);
+		
+		// Log to admin action logs
+		if (m_AdminMenuManager)
+			m_AdminMenuManager.StoreAdminLogs(message);
+		
+		// Broadcast to admin chat (only admins/mods will see this)
+		if (m_RplBroadcastManager)
+			m_RplBroadcastManager.BroadcastAdminChatMessage(message);
+		
+		// Also log to server console
+		Print(message, LogLevel.WARNING);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
