@@ -130,6 +130,17 @@ class CRF_SlottingManager : ScriptComponent
 		};
 	}
 	
+	void UpdateSlotDeathState(int slotId, bool input)
+	{
+		CRF_SlotDataContainer slotData = GetSlotData(slotId);
+		
+		if (slotData)
+		{
+			slotData.SetIsDeadSlot(input);
+			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
+		};
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnSlottingUpdate()
 	{

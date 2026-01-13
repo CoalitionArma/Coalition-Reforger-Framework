@@ -166,6 +166,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateGroupLockedState, groupRplId, input); 
 	}
 	
+	void UpdateSlotDeathState(int slotId, bool input)
+	{
+		// Direct manager call if BatchUpdateSlot unavailable
+		Rpc(RpcAsk_UpdateSlotDeathState, slotId, input);
+	}
+	
 	void UpdateSlotRole(int slotId, CRF_EGearRole role)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
@@ -592,6 +598,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_AIGroup group = SCR_AIGroup.Cast(rplComponent.GetEntity());
 		if (group)
 			group.SetPrivate(input);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotDeathState(int slotId, bool input)
+	{
+		// Telemetry: int + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("RpcAsk_UpdateSlotDeathState", bytes);
+		
+		m_SlottingManager.UpdateSlotDeathState(slotId, input); 
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

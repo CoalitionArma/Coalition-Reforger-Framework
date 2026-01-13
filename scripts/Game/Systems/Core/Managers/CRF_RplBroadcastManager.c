@@ -9,6 +9,7 @@ enum CRF_ESlotUpdateField
 	CHARACTER,
 	GROUP,
 	LOCKED,
+	DEATH,
 	ROLE
 }
 
@@ -171,6 +172,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 					SendSlotLockedUpdate(batch.m_iSlotId, batch.m_bBoolValue);
 					break;
 				
+				case CRF_ESlotUpdateField.DEATH:
+					SendSlotDeathUpdate(batch.m_iSlotId, batch.m_bBoolValue);
+					break;
+				
 				case CRF_ESlotUpdateField.ROLE:
 					SendSlotRoleUpdate(batch.m_iSlotId, batch.m_iIntValue);
 					break;
@@ -221,6 +226,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		RpcDo_UpdateSlotLockedDelta(slotId, isLocked);
 		#else
 		Rpc(RpcDo_UpdateSlotLockedDelta, slotId, isLocked);
+		#endif
+	}
+	
+	protected void SendSlotDeathUpdate(int slotId, bool isDead)
+	{
+		LogTelemetry("UpdateSlotDeathDelta", 5);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotDeathDelta(slotId, isDead);
+		#else
+		Rpc(RpcDo_UpdateSlotDeathDelta, slotId, isDead);
 		#endif
 	}
 	
@@ -917,6 +932,27 @@ class CRF_RplBroadcastManager : ScriptComponent
 			SendSlotLockedUpdate(slotId, isLocked);
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot locked state only (~5 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotDeathDelta(int slotId, bool isDead)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.DEATH);
+			batch.m_bBoolValue = isDead;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotLockedUpdate(slotId, isDead);
+		}
+	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot role (~8 bytes)
@@ -2025,6 +2061,27 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetIsLockedSlot(isLocked);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotDeathDelta(int slotId, bool isDead)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetIsDeadSlot(isDead);
 			slotData.GetOnDataUpdate().Invoke();
 			
 			// Trigger global slotting update for UI refresh

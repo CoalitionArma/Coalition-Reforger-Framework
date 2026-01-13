@@ -126,6 +126,13 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 				slotData.SetIsLockedSlot(isLocked);
 			}
 			
+			// Restore dead state 
+			bool isDead;
+			if (context.ReadValue(slotPrefix + "isDead", isDead))
+			{
+				slotData.SetIsDeadSlot(isDead);
+			}
+			
 			restoredSlots++;
 		}
 		

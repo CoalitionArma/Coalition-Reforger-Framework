@@ -602,6 +602,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 				playerId
 			);
 		}
+		
+		// Update slot death state so player gets put into spec
+		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
+		
+		if(slotID != -1)
+			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 
 		// Get death position for spectator camera initialization
 		vector deathPosition[4];
