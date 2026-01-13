@@ -38,13 +38,12 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 			return;
 		
 		WorldEditorAPI api = worldEditor.GetApi();
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
-
 		if (!entitySource)
 			return;		
-
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
 		m_bMissionAllowsEspionage = gamemode.m_bAllowEspionage;
@@ -54,6 +53,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
 		m_bSafestartEnabledOnMissionStart = gamemode.m_bSafestartInstantlyEnabled;
 		
+		// Actually shows the window
 		if (!Workbench.ScriptDialog(
 		"Mission Gamemode Settings", 
 		"This is a settings window for settings that most mission makers will use, for more advanced settings go to the CRF_Lobby entitiy in your world file", 
@@ -76,13 +76,20 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		if (!worldEditor)
 			return false;
 		
-		WBProgressDialog progress = new WBProgressDialog("Processing...", Workbench.GetModule(WorldEditor));
+		WBProgressDialog progress = new WBProgressDialog("Processing...", worldEditor); // Show a simple processing window.
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
+		
+		if (!entitySource)
+			return false;
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
+		// BEGIN EDIT ACTION ON ENTITY
+		//-----------------------------------------------------
 		
 		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
 		api.SetVariableValue(entitySource, null, "m_bAllowEspionage", m_bMissionAllowsEspionage.ToString());
@@ -92,6 +99,8 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());		
 		
+		//-----------------------------------------------------
+		// END EDIT ACTION ON ENTITY
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
 		

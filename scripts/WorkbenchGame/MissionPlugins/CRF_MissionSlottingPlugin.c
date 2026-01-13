@@ -17,26 +17,32 @@ class CRF_MissionSlottingPlugin : WorkbenchPlugin
 			return;
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
 		if (!entitySource)
-			return;		
+			return;
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
+		// Only call the quick slot setup if there is no slots setup on the gamemode (this is typically only true when a mission makers is first setting up slots).
 		if (gamemode.m_BluforSlots.IsEmpty() && gamemode.m_OpforSlots.IsEmpty() && gamemode.m_IndforSlots.IsEmpty() && gamemode.m_CivSlots.IsEmpty())
 		{
+			// Create the Quick Slot Setup Dialouge, NOTE: MUST CALL Workbench.ScriptDialog FOR WINDOW TO POP UP.
 			CRF_MissionSlottingQuickSetupDialouge dialog = new CRF_MissionSlottingQuickSetupDialouge();
-			dialog.Run();
+			dialog.Run(); // Have to call Run() Manually since the dialouge isnt a child of WorkbenchPlugin.
+			
+			// Actually shows the window.
 			if (!Workbench.ScriptDialog(
 				"Mission Quick Slot Setup", 
 				"This allows you to change mission slots at a more basic level so you arent building PLTs from scratch each time \n\n WARNING: THIS EDITOR WILL NOT BE AVALIBLE AFTER INITIAL SLOTS SETUP!", 
 				dialog))
 				return;
 		} else {
-			CRF_MissionSlottingGranularSetupDialouge dialog = new CRF_MissionSlottingGranularSetupDialouge();
-			dialog.Run();
+			// Create the Regular Slot Setup Dialouge, NOTE: MUST CALL Workbench.ScriptDialog FOR WINDOW TO POP UP.
+			CRF_MissionSlottingSetupDialouge dialog = new CRF_MissionSlottingSetupDialouge();
+			dialog.Run(); // Have to call Run() Manually since the dialouge isnt a child of WorkbenchPlugin.
+			
+			// Actually shows the window.
 			if (!Workbench.ScriptDialog(
 				"Mission Slotting Editor", 
 				"This allows you to change mission slots/slotting ratios \n\n If you wish to go back to Quick Slot Setup, you must clear all slot arrays and re-launch the plugin", 
@@ -46,6 +52,7 @@ class CRF_MissionSlottingPlugin : WorkbenchPlugin
 	}
 }
 
+//------------------------------------------------------------------------------------------------
 class CRF_MissionSlottingQuickSetupDialouge
 {
 	[Attribute("", UIWidgets.ResourceNamePicker, desc: "BLUFOR Slots", "conf class=CRF_SlottingGroup", category: "CRF Quick Slot - BLUFOR Slots")]
@@ -60,6 +67,7 @@ class CRF_MissionSlottingQuickSetupDialouge
 	[Attribute("", UIWidgets.ResourceNamePicker, desc: "CIVILIAN Slots", "conf class=CRF_SlottingGroup", category: "CRF Quick Slot - CIVILIAN Slots")]
 	protected ref array <ResourceName> m_CIVILIANQuickSlots = {};
 	
+	// Default slot resources all quick slots get set to.
 	static ref array<ResourceName> DEFAULT_SLOTS = {
 		"{AA52A4B0CDA99915}Configs/SlottingGroups/Leadership/CRF_COY.conf",
 		"{F779F56A759256A8}Configs/SlottingGroups/Leadership/CRF_PLT.conf",
@@ -79,6 +87,7 @@ class CRF_MissionSlottingQuickSetupDialouge
 	//------------------------------------------------------------------------------------------------
 	void Run()
 	{
+		// This just sets all the DEFAULT_SLOTS to each factions quick slot array.
 		SetDefaultSlots(m_BLUFORQuickSlots);
 		SetDefaultSlots(m_OPFORQuickSlots);
 		SetDefaultSlots(m_INDFORQuickSlots);
@@ -96,14 +105,18 @@ class CRF_MissionSlottingQuickSetupDialouge
 	[ButtonAttribute("Apply Quick Slots", true)]
 	protected bool ButtonNext()
 	{	
-		CRF_MissionSlottingGranularSetupDialouge dialog = new CRF_MissionSlottingGranularSetupDialouge();
+		// Create the Regular Slot Setup Dialouge, NOTE: MUST CALL Workbench.ScriptDialog FOR WINDOW TO POP UP.
+		CRF_MissionSlottingSetupDialouge dialog = new CRF_MissionSlottingSetupDialouge();
 		
+		// Set Quick Slots to the various factions slots in the regualr slotting dialouge.
 		dialog.SetPluginQuickSlots(m_BLUFORQuickSlots, dialog.m_BLUFORSlots);
 		dialog.SetPluginQuickSlots(m_OPFORQuickSlots, dialog.m_OPFORSlots);
 		dialog.SetPluginQuickSlots(m_INDFORQuickSlots, dialog.m_INDFORSlots);
 		dialog.SetPluginQuickSlots(m_CIVILIANQuickSlots, dialog.m_CIVILIANSlots);
 		
-		dialog.Run();
+		dialog.Run(); // Have to call Run() Manually since the dialouge isnt a child of WorkbenchPlugin.
+		
+		// Actually shows the window.
 		if (!Workbench.ScriptDialog(
 			"Mission Slotting Editor", 
 			"This allows you to change mission slots/slotting ratios", 
@@ -115,16 +128,16 @@ class CRF_MissionSlottingQuickSetupDialouge
 	
 	protected void SetDefaultSlots(array <ResourceName> quickSlots)
 	{
-		quickSlots.Clear();
+		quickSlots.Clear(); // Due to attributes in plugins being saved when the plugin is closed, we need to clear the array each time so the user gets the same attributes each time.
 		
+		// To avoid array fuckery, we just manually insert each resource in.
 		for ( int i; i < DEFAULT_SLOTS.Count(); i++ )
-		{
 			quickSlots.Insert(DEFAULT_SLOTS.Get(i));
-		}
 	}
 }
 
-class CRF_MissionSlottingGranularSetupDialouge
+//------------------------------------------------------------------------------------------------
+class CRF_MissionSlottingSetupDialouge
 {
 	[Attribute("1", "auto", "", category: "CRF Slotting Config - Slotting Ratio")]
 	protected int m_iFactionOneRatio;
@@ -138,30 +151,14 @@ class CRF_MissionSlottingGranularSetupDialouge
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Config - Slotting Ratio")]
 	protected string m_sFactionTwoKey;
 	
-	//------------------------------------------------------------------------------------------------
-	// BLU
-	//------------------------------------------------------------------------------------------------
-	
 	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Config - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BLUFORSlots = {};
-	
-	//------------------------------------------------------------------------------------------------
-	// OPF
-	//------------------------------------------------------------------------------------------------
 	
 	[Attribute("", UIWidgets.Auto, desc: "OPFOR Slots", category: "CRF Slotting Config - OPFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_OPFORSlots = {};
 	
-	//------------------------------------------------------------------------------------------------
-	// IND
-	//------------------------------------------------------------------------------------------------
-	
 	[Attribute("", UIWidgets.Auto, desc: "INDFOR Slots", category: "CRF Slotting Config - INDFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_INDFORSlots = {};
-	
-	//------------------------------------------------------------------------------------------------
-	// CIV
-	//------------------------------------------------------------------------------------------------
 
 	[Attribute("", UIWidgets.Auto, desc: "CIVILIAN Slots", category: "CRF Slotting Config - CIVILIAN Slots")]
 	ref array <ref CRF_SlottingGroup> m_CIVILIANSlots = {};
@@ -174,19 +171,19 @@ class CRF_MissionSlottingGranularSetupDialouge
 			return;
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
 		if (!entitySource)
 			return;		
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
 		m_iFactionOneRatio = gamemode.m_iFactionOneRatio;
 		m_sFactionOneKey = gamemode.m_sFactionOneKey;
 		m_iFactionTwoRatio = gamemode.m_iFactionTwoRatio;
 		m_sFactionTwoKey = gamemode.m_sFactionTwoKey;
 		
+		// Only use the quick slot setup variables if there is no slots setup on the gamemode.
 		if (m_BLUFORSlots.IsEmpty() && m_OPFORSlots.IsEmpty() && m_INDFORSlots.IsEmpty() && m_CIVILIANSlots.IsEmpty())
 		{
 			SetPluginSlottingVariables(m_BLUFORSlots, gamemode.m_BluforSlots);
@@ -199,12 +196,11 @@ class CRF_MissionSlottingGranularSetupDialouge
 	//------------------------------------------------------------------------------------------------
 	protected void SetPluginSlottingVariables(array <ref CRF_SlottingGroup> pluginSlots, array <ref CRF_SlottingGroup> gamemodeSlots)
 	{
-		pluginSlots.Clear();
+		pluginSlots.Clear(); // Due to attributes in plugins being saved when the plugin is closed, we need to clear the array each time so the user gets the same attributes each time.
 		
+		// To avoid array fuckery, we just manually insert each resource in.
 		for ( int i; i < gamemodeSlots.Count(); i++ )
-		{
 			pluginSlots.Insert(gamemodeSlots.Get(i));
-		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -253,18 +249,20 @@ class CRF_MissionSlottingGranularSetupDialouge
 		if (!worldEditor)
 			return false;
 		
-		WBProgressDialog progress = new WBProgressDialog("Processing...", Workbench.GetModule(WorldEditor));
+		WBProgressDialog progress = new WBProgressDialog("Processing...", worldEditor); // Show a simple processing window.
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
 		if (!entitySource)
 			return false;
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
+		// BEGIN EDIT ACTION ON ENTITY
+		//-----------------------------------------------------
 		
 		api.SetVariableValue(entitySource, null, "m_iFactionOneRatio", m_iFactionOneRatio.ToString());
 		api.SetVariableValue(entitySource, null, "m_sFactionOneKey", m_sFactionOneKey);
@@ -276,6 +274,8 @@ class CRF_MissionSlottingGranularSetupDialouge
 		SetGamemodeSlottingVariables(api, entitySource, m_INDFORSlots, "m_IndforSlots", gamemode.m_IndforSlots);
 		SetGamemodeSlottingVariables(api, entitySource, m_CIVILIANSlots, "m_CivSlots", gamemode.m_CivSlots);
 		
+		//-----------------------------------------------------
+		// END EDIT ACTION ON ENTITY
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
 		

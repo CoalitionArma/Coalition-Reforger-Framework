@@ -44,8 +44,21 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		api.CreateSubsceneLayer(1, "PROPS");
 		
 		api.SetActiveSubsceneLayer(1, "_INIT");
+
+		api.CreateEntity("{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et", "CRF_Lobby", 1, null, vector.Zero, vector.Zero);
 		
 		worldEditor.Save();
+		
+		string worldPath;
+		api.GetWorldPath(worldPath);
+		
+		ResourceManager resourceManager = Workbench.GetModule(ResourceManager);
+		string absWorldPath;
+		Workbench.GetAbsolutePath(worldPath, absWorldPath);
+		MetaFile worldMeta = resourceManager.GetMetaFile(absWorldPath);
+		string fullWorldPath = worldMeta.GetResourceID();
+		
+		worldEditor.SetOpenedResource(fullWorldPath);
 		
 		return true;
 	}

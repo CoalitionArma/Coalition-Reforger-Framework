@@ -57,13 +57,12 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 			return;
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
 		if (!entitySource)
 			return;		
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource)); // Get the actual Gamemode so we can pull any variables we need.
 		
 		m_iBLUFORTickets = gamemode.m_iBLUFORTickets;
 		m_iOPFORTickets = gamemode.m_iOPFORTickets;
@@ -80,6 +79,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		SetPluginGearscriptVariables(m_INDFORGearScriptSettings, gamemode.m_INDFORGearScriptSettings);
 		SetPluginGearscriptVariables(m_CIVILIANGearScriptSettings, gamemode.m_CIVILIANGearScriptSettings);
 		
+		// Actually shows the window
 		if (!Workbench.ScriptDialog(
 		"Mission Faction Editor", 
 		"This allows you to change basic mission faction related settings, for advanced gearscript settings (Mini-Arsenal, Vehicle Gearscript Settings, etc) please go into the CRF_Lobby entity properties in _INIT", 
@@ -87,6 +87,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 			return;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SetPluginGearscriptVariables(CRF_SimplifiedGearScriptContainer pluginGearscript, CRF_GearScriptContainer gearscript)
 	{			
 		pluginGearscript.m_rGearScript = gearscript.m_rGearScript;
@@ -112,16 +113,18 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		if (!worldEditor)
 			return false;
 		
-		WBProgressDialog progress = new WBProgressDialog("Processing...", Workbench.GetModule(WorldEditor));
+		WBProgressDialog progress = new WBProgressDialog("Processing...", worldEditor); // Show a simple processing window.
 		
 		WorldEditorAPI api = worldEditor.GetApi();
-		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby"); // Getting the IEntitySource of the lobby, this allows us to set variables on the lobby just like if you were changing Object Properties.
 		
 		if (!entitySource)
 			return false;
 		
 		api.BeginEntityAction();
 		api.BeginEditSequence(entitySource);
+		// BEGIN EDIT ACTION ON ENTITY
+		//-----------------------------------------------------
 		
 		api.SetVariableValue(entitySource, null, "m_iBLUFORTickets", m_iBLUFORTickets.ToString());
 		api.SetVariableValue(entitySource, null, "m_iOPFORTickets", m_iOPFORTickets.ToString());
@@ -133,6 +136,8 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		SetGamemodeGearscriptVariables(api, entitySource, m_INDFORGearScriptSettings, "m_INDFORGearScriptSettings");
 		SetGamemodeGearscriptVariables(api, entitySource, m_CIVILIANGearScriptSettings, "m_CIVILIANGearScriptSettings");
 		
+		//-----------------------------------------------------
+		// END EDIT ACTION ON ENTITY
 		api.EndEditSequence(entitySource);
 		api.EndEntityAction();
 		
@@ -143,6 +148,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SetGamemodeGearscriptVariables(WorldEditorAPI api, IEntitySource entitySource, CRF_SimplifiedGearScriptContainer pluginGSContainer, string gearscriptContainterToChange)
 	{			
 		array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry(gearscriptContainterToChange)};
