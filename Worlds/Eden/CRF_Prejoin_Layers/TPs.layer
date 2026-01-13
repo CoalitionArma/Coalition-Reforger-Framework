@@ -1,9 +1,6 @@
-$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPoles/PreJoin_Teleport.et" {
  Spawn {
   components {
-   CRF_RespawnPointComponent "{645F590E86479CDD}" {
-    m_sRespawnPointFaction "CIV"
-   }
    ActionsManagerComponent "{645A0008F3808301}" {
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
@@ -50,7 +47,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPol
    }
   }
   coords 7493.073 6.578 6707.718
-  angleY 150.497
+  angles 0 150.497 0
  }
  VehRange {
   components {
@@ -198,7 +195,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPol
    }
   }
   coords 8420.233 187.048 3871.933
-  angleY -88.198
+  angles 0 -88.198 0
  }
  OPFOR {
   components {

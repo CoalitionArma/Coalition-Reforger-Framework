@@ -1,6 +1,6 @@
 CommentEntity {
  coords 7449.809 10.758 6698.563
- angleY -158.304
+ angles 0 -158.304 0
  m_Comment "Tanaka when there is no "\
  "prejoin update for 2 months."
  m_Size 0.3
@@ -13,7 +13,7 @@ CommentEntity {
  {
   GenericEntity : "{167A0AF597E9CA76}Prefabs/Props/Military/E_SignFlag_PensiveMan_01.et" {
    coords 0 -3.266 0
-   angleY 177.902
+   angles 0 177.902 0
    scale 1.5
   }
  }
@@ -21,184 +21,83 @@ CommentEntity {
 $grp SCR_VehicleSpawn {
  {
   coords 7403.349 9.688 6732.658
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7400.754 9.688 6729.215
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7410.427 9.688 6742.427
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7414.312 9.688 6747.585
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7417.149 9.688 6751.348
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7419.747 9.688 6754.796
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7422.201 9.688 6758.052
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7424.606 9.688 6761.244
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
  {
   coords 7397.524 9.688 6724.927
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7394.153 9.688 6720.454
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7391.714 9.688 6717.217
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7388.347 9.688 6712.754
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
   coords 7432.048 9.686 6766.776
-  angleY -145
+  angles 0 -145 0
   m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
  }
  {
   coords 7436.403 9.617 6763.725
-  angleY -145
+  angles 0 -145 0
   m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
  }
  {
   coords 7440.845 9.415 6760.611
-  angleY -145
+  angles 0 -145 0
   m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
  }
  {
   coords 7379.902 9.724 6709.354
-  angleY 127
+  angles 0 127 0
   m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
- }
-}
-$grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevRifleman_p.et" {
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7523.997 6.158 6753.121
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7525.026 6.158 6754.638
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7526.041 6.122 6756.134
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7526.979 6.086 6757.518
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7527.887 6.037 6758.856
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7528.763 5.984 6760.147
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7529.771 5.921 6761.632
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7530.626 5.843 6762.893
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7531.604 5.782 6764.335
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7532.71 5.696 6765.965
-  angleY -145.848
- }
- {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "Row"
-   }
-  }
-  coords 7533.716 5.66 6767.449
-  angleY -145.848
  }
 }
 $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
@@ -209,7 +108,7 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
    }
   }
   coords 7449.104 7.875 6724.164
-  angleY -26.182
+  angles 0 -26.182 0
  }
  {
   components {
@@ -218,7 +117,7 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
    }
   }
   coords 7478.841 7.875 6693.617
-  angleY 164.067
+  angles 0 164.067 0
  }
  {
   components {
@@ -227,7 +126,7 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
    }
   }
   coords 7477.154 7.602 6761.553
-  angleY 41.749
+  angles 0 41.749 0
  }
  {
   components {
@@ -236,7 +135,7 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
    }
   }
   coords 7416.175 9.699 6778.773
-  angleY -56.656
+  angles 0 -56.656 0
  }
  {
   components {
@@ -245,16 +144,19 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
    }
   }
   coords 7425.633 7.875 6673.595
-  angleY -26.182
+  angles 0 -26.182 0
  }
+}
+GenericEntity : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/RespawnPoles/CIV_Respawn.et" {
+ coords 7525.148 5.98 6763.489
 }
 GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
  coords 7449.313 -2.835 6697.37
- angleY 21.696
+ angles 0 21.696 0
 }
-CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFORSpawnMarker.et" {
  coords 7493.132 6.579 6707.769
- angleY 90
+ angles 0 90 0
  m_MarkerColor 0.392 0.157 0.624 1
  m_sDescription "Spawn"
  m_aVisibleForFactions {
@@ -265,7 +167,7 @@ CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.
 }
 GenericEntity : "{F4B7F1D4D3ADE456}Prefabs/Structures/Signs/Military/Sign_VehicleRepair_US_01.et" {
  coords 7442.783 9.356 6759.423
- angleY 132.012
+ angles 0 132.012 0
 }
 $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
  {
@@ -278,7 +180,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7445.353 7.875 6715.401
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -290,7 +192,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7450.01 7.875 6717.639
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -302,7 +204,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7455.967 7.875 6720.37
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -314,7 +216,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7462.258 7.875 6723.138
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -326,7 +228,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7452.187 7.875 6713.067
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -338,7 +240,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7447.531 7.875 6710.831
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -350,7 +252,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7458.144 7.875 6715.8
-  angleY 155
+  angles 0 155 0
  }
  {
   components {
@@ -362,10 +264,10 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
    }
   }
   coords 7464.436 7.875 6718.566
-  angleY 155
+  angles 0 155 0
  }
 }
 GenericEntity : "{F9CB37885DA59BF4}Prefabs/Props/Military/E_SignFlag_COAL_01.et" {
  coords 7463.61 8.584 6726.082
- angleY 154.492
+ angles 0 154.492 0
 }
