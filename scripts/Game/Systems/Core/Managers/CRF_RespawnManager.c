@@ -744,7 +744,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
 		{
 			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
-			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR, true);
+			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 			return;
 		}
 		

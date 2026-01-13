@@ -249,7 +249,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param playerId ID of the player to initialize
 	* @param spawnLocation Location to spawn the player (Use "CRF_GamemodeManager.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
 	*/
-	void InitilizePlayer(int playerId, vector spawnLocation[4], bool isDead = false)
+	void InitilizePlayer(int playerId, vector spawnLocation[4])
 	{
 		if (!IsValidSpawnVector(spawnLocation[3]) && spawnLocation != ZERO_SPAWN_VECTOR)
 		{
@@ -269,14 +269,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		bool alreadyCreated;
 		
 		// Determine if player should be spectator or playable character
-		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId) || isDead)
+		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
 			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
-			
-			RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
-			if (charRplComp)
-				m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetPlayerSlotID(playerId), charRplComp.Id());
+	
 			
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			

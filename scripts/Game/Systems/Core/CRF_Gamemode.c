@@ -625,7 +625,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	* @param locationTwo Position 2 in the world vector to spawn the player
 	* @param locationThree Position 3 in the world vector to spawn the player
 	*/
-	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree, bool isDead = false)
+	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
 	{
 		vector location[4];
 		
@@ -634,7 +634,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		location[2] = locationTwo;
 		location[3] = locationThree;
 		
-		m_GamemodeManager.InitilizePlayer(playerId, location, isDead);
+		m_GamemodeManager.InitilizePlayer(playerId, location);
 	}
 	
 	/**
