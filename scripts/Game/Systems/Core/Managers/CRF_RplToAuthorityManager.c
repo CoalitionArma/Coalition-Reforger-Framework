@@ -2019,6 +2019,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			return;
 		
 		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		Faction localPlayerFaction = factionManager.GetPlayerFaction(playerId);
@@ -2052,6 +2055,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void ShareMapMarkers()
 	{
 		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		array<int> markerUIDs = {};
@@ -2070,6 +2076,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		PlayerManager pm = GetGame().GetPlayerManager();
 		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
+			return;
+		
+		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		// Get the faction of the sharing player
@@ -2130,6 +2142,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			return;
 		
 		string playerFactionKey = sharingPlayerFaction.GetFactionKey();
+		
+		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		
 		if (!m_MapMarkerManager)
 			return;
