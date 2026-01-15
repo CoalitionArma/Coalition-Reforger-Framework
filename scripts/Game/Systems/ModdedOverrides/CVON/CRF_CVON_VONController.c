@@ -373,10 +373,15 @@ modded class SCR_VONController
 				else
 					DeactivateCVON();
 				return;
-			}
-			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
-					
+			}	
 		}
+		
+		if (!m_bHasBroadcasted && m_bIsBroadcasting)
+		{
+			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
+			m_bHasBroadcasted = true;
+		}
+		
 		//Our plugin only checks every 50ms
 		if (m_fVONSaveBuffer >= 0.05)
 		{
