@@ -19,6 +19,7 @@ modded class CVON_RadioComponent
 		if (!factionComp)
 			return;
 		m_sFactionKey = factionComp.GetAffiliatedFactionKey();
+		m_sOriginalFactionKey = factionComp.GetAffiliatedFactionKey();
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		SCR_Faction faction = SCR_Faction.Cast(factionMan.GetFactionByKey(m_sFactionKey));
 		m_aChannels.InsertAll(factionMan.GetFactionActiveChannelSR(faction.GetFactionKey()));
@@ -49,6 +50,7 @@ modded class CVON_RadioComponent
 				return;
 
 			m_sFactionKey = factionComp.GetAffiliatedFactionKey();
+			m_sOriginalFactionKey = factionComp.GetAffiliatedFactionKey();
 			//Add that faction to this radio and get the faction to prep to load the factions frequencies
 			SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			SCR_Faction faction = SCR_Faction.Cast(factionMan.GetFactionByKey(m_sFactionKey));
