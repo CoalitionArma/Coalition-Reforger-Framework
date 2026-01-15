@@ -34,7 +34,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		
 		if (!Workbench.ScriptDialog(
 		"Mission Config Generator", 
-		"This will automatically generate and sort the mission configuration file", 
+		"This will automatically generate and sort the mission configuration file. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
 		this))
 			return;
 	}

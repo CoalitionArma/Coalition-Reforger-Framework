@@ -78,16 +78,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionTwoKey;
 	
-	[Attribute("", UIWidgets.Auto)]
+	[Attribute("", UIWidgets.Hidden)]
 	ref array <ref CRF_SlottingGroup> m_BluforSlots;
 
-	[Attribute("", UIWidgets.Auto)]
+	[Attribute("", UIWidgets.Hidden)]
 	ref array <ref CRF_SlottingGroup> m_OpforSlots;
 	
-	[Attribute("", UIWidgets.Auto)]
+	[Attribute("", UIWidgets.Hidden)]
 	ref array <ref CRF_SlottingGroup> m_IndforSlots;
 	
-	[Attribute("", UIWidgets.Auto)]
+	[Attribute("", UIWidgets.Hidden)]
 	ref array <ref CRF_SlottingGroup> m_CivSlots;
 	
 	[Attribute("0", UIWidgets.Hidden), RplProp()]

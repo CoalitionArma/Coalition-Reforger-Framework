@@ -9,7 +9,7 @@
 ] 
 class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 {	
-	[Attribute("", category: "CRF Mission Config - General")]
+	[Attribute("", category: "CRF Mission Settings - Descriptors")]
 	protected ref array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
 	
 	//------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		// Actually shows the window
 		if (!Workbench.ScriptDialog(
 		"Mission Descriptions Editor", 
-		"This allows you to edit all mission descriptions", 
+		"This allows you to edit all mission descriptions.", 
 		this))
 			return;
 	}

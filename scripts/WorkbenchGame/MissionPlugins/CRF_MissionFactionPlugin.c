@@ -13,40 +13,40 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 	// BLU
 	//------------------------------------------------------------------------------------
 	
-	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Config - BLUFOR"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Settings - BLUFOR"), RplProp()]
 	protected int m_iBLUFORTickets;
 	
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Faction Config - BLUFOR")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Faction Settings - BLUFOR")]
 	protected ref CRF_SimplifiedGearScriptContainer m_BLUFORGearScriptSettings;
 
 	//------------------------------------------------------------------------------------
 	// OPF
 	//------------------------------------------------------------------------------------
 	
-	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Config - OPFOR"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Settings - OPFOR"), RplProp()]
 	protected int m_iOPFORTickets;
 	
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Faction Config - OPFOR")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Faction Settings - OPFOR")]
 	protected ref CRF_SimplifiedGearScriptContainer m_OPFORGearScriptSettings;
 	
 	//------------------------------------------------------------------------------------
 	// IND
 	//------------------------------------------------------------------------------------
 	
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Config - INDFOR"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Settings - INDFOR"), RplProp()]
 	protected int m_iINDFORTickets;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Faction Config - INDFOR")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Faction Settings - INDFOR")]
 	protected ref CRF_SimplifiedGearScriptContainer m_INDFORGearScriptSettings;
 
 	//------------------------------------------------------------------------------------
 	// CIV
 	//------------------------------------------------------------------------------------
 	
-	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Config - CIVILIAN"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of CIVILIAN Tickets. 0 = disabled/-1 = unlimited", category: "CRF Faction Settings - CIVILIAN"), RplProp()]
 	protected int m_iCIVILIANTickets;
 	
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Faction Config - CIVILIAN")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Faction Settings - CIVILIAN")]
 	protected ref CRF_SimplifiedGearScriptContainer m_CIVILIANGearScriptSettings;
 
 	//------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		// Actually shows the window
 		if (!Workbench.ScriptDialog(
 		"Mission Faction Editor", 
-		"This allows you to change basic mission faction related settings, for advanced gearscript settings (Mini-Arsenal, Vehicle Gearscript Settings, etc) please go into the CRF_Lobby entity properties in _INIT", 
+		"This allows you to change basic mission faction settings, for advanced gearscript settings (Mini-Arsenal, Vehicle Gearscript Settings, etc) please go into the CRF_Lobby entity's object properties", 
 		this))
 			return;
 	}

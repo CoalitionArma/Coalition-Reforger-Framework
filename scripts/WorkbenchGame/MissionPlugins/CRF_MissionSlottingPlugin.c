@@ -139,28 +139,28 @@ class CRF_MissionSlottingQuickSetupDialouge
 //------------------------------------------------------------------------------------------------
 class CRF_MissionSlottingSetupDialouge
 {
-	[Attribute("1", "auto", "", category: "CRF Slotting Config - Slotting Ratio")]
+	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
 	protected int m_iFactionOneRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Config - Slotting Ratio")]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
 	protected string m_sFactionOneKey;
 
-	[Attribute("1", "auto", "", category: "CRF Slotting Config - Slotting Ratio")]
+	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
 	protected int m_iFactionTwoRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Config - Slotting Ratio")]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
 	protected string m_sFactionTwoKey;
 	
-	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Config - BLUFOR Slots")]
+	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Settings - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BLUFORSlots = {};
 	
-	[Attribute("", UIWidgets.Auto, desc: "OPFOR Slots", category: "CRF Slotting Config - OPFOR Slots")]
+	[Attribute("", UIWidgets.Auto, desc: "OPFOR Slots", category: "CRF Slotting Settings - OPFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_OPFORSlots = {};
 	
-	[Attribute("", UIWidgets.Auto, desc: "INDFOR Slots", category: "CRF Slotting Config - INDFOR Slots")]
+	[Attribute("", UIWidgets.Auto, desc: "INDFOR Slots", category: "CRF Slotting Settings - INDFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_INDFORSlots = {};
 
-	[Attribute("", UIWidgets.Auto, desc: "CIVILIAN Slots", category: "CRF Slotting Config - CIVILIAN Slots")]
+	[Attribute("", UIWidgets.Auto, desc: "CIVILIAN Slots", category: "CRF Slotting Settings - CIVILIAN Slots")]
 	ref array <ref CRF_SlottingGroup> m_CIVILIANSlots = {};
 
 	//------------------------------------------------------------------------------------------------
