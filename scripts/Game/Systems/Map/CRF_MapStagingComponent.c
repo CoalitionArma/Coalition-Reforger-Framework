@@ -48,6 +48,9 @@ class CRF_BoundaryStageData
 	
 	[Attribute("0", UIWidgets.ComboBox, "Stage behavior type\nACTIVATION: STARTS DISABLED, WILL ENABLE ON TRIGGER/TIMER\nDELETION: STARTS ENABLED, WILL DISABLE ON TRIGGER/TIMER\nDEACTIVATION: STARTS ENABLED, WILL DISABLE ON TRIGGER/TIMER\n", "", ParamEnumArray.FromEnum(CRF_BoundaryStageType))]
 	CRF_BoundaryStageType m_eStageType;
+	
+	[Attribute("false", UIWidgets.CheckBox, "When triggered, delete the previous boundary in the list (index - 1).", category: "Advanced")]
+	bool m_bDeletePrevious;
 
 	[Attribute("120", UIWidgets.EditBox, "Duration of this stage in seconds, enacts the stage ACTIVATION TYPE at the END of timer")]
 	int m_iStageDuration;
@@ -114,7 +117,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Auto, "List of boundary stages", category: "Stage Configuration")]
 	ref array<ref CRF_BoundaryStageData> m_aBoundaryStages;
 	
- 	[Attribute("STAGING DOCUMENTATION\n\n=== Stage Execution ===\nGet Line:\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));\n\nCall Types:\n\nstaging.ExecuteStaging(stageIndex, useTimer, chainToNext)\n• stageIndex: Stage to execute (your first non main-gameboundry in the list is index0)\n• useTimer: true = countdown timer, false = immediate\n• chainToNext: true = auto progress to next stages, false = single stage only\n\nstaging.ExecuteStagingSequence(startIndex)\n• Start full sequence from specified stage\n\n=== USAGE EXAMPLES ===\n\n// Execute stage 3 in list immediately without timer, no chaining after execution\nstaging.ExecuteStaging(2, false, false);\n\n// Execute stage 2 in list with timer, chain to next stage in list after execution\nstaging.ExecuteStaging(1, true, true);\n\n// Execute stage 1 in list with stage timer but no chaining to next stage in list\nstaging.ExecuteStaging(0, true, false);\n\n// Start full sequence from stage 3 in list\nstaging.ExecuteStagingSequence(2);\n\n=== SETUP ===\n\n- Place & rename Gameboundry prefabs\n- Position them where you want the final boundary areas\n- Be sure to edit faction keys within the boundrys' CRF_Polyzonetriggers based on what factions youre excluding and on your activation type\n- Enable debug if problems arise\n- Only for Non-Reversed gameboundries/crf_polyzones\n\n=== STAGE TYPES ===\nACTIVATION/DEACTIVATION: Boundary either is removed or placed at the END of the timer/manual trigger\nDELETION: Boundary exists at normal position, gets deleted when timer completes", UIWidgets.EditBoxMultiline, "Staging Setup Instructions & API Examples", category: "Documentation")]
+ 	[Attribute("STAGING DOCUMENTATION\n\n=== Stage Execution ===\nGet Line:\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));\n\nCall Types:\n\nstaging.ExecuteStaging(stageIndex, useTimer, chainToNext)\n• stageIndex: Stage to execute (your first non main-gameboundry in the list is index0)\n• useTimer: true = countdown timer, false = immediate\n• chainToNext: true = auto progress to next stages, false = single stage only\n\nstaging.ExecuteStagingSequence(startIndex)\n• Start full sequence from specified stage\n\n=== USAGE EXAMPLES ===\n\n// Execute stage 3 in list immediately without timer, no chaining after execution\nstaging.ExecuteStaging(2, false, false);\n\n// Execute stage 2 in list with timer, chain to next stage in list after execution\nstaging.ExecuteStaging(1, true, true);\n\n// Execute stage 1 in list with stage timer but no chaining to next stage in list\nstaging.ExecuteStaging(0, true, false);\n\n// Start full sequence from stage 3 in list\nstaging.ExecuteStagingSequence(2);\n\n=== FULL DESTRUCTOR EXAMPLE (No Chaining) ===\nFor use in .layer files with destructible objects:\n\nif (!GetGame())\n    return;\n\nBaseGameMode gameMode = GetGame().GetGameMode();\nif (!gameMode)\n    return;\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(gameMode.FindComponent(CRF_MapStagingComponent));\nif (!staging)\n    return;\n\nstaging.ExecuteStaging(0, true, false);\n\n=== SETUP ===\n\n- Place & rename Gameboundry prefabs\n- Position them where you want the final boundary areas\n- Be sure to edit faction keys within the boundrys' CRF_Polyzonetriggers based on what factions youre excluding and on your activation type\n- Enable debug if problems arise\n- Only for Non-Reversed gameboundries/crf_polyzones\n\n=== STAGE TYPES ===\nACTIVATION/DEACTIVATION: Boundary either is removed or placed at the END of the timer/manual trigger\nDELETION: Boundary exists at normal position, gets deleted when timer completes", UIWidgets.EditBoxMultiline, "Staging Setup Instructions & API Examples", category: "Documentation")]
 	string m_sInstructions;
 	
 	// Public state for display
@@ -342,6 +345,34 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		}
 		
 		return entity;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Get the CRF_PolyZoneTrigger child entity from a GameBoundry parent
+	 * @param boundaryName - Name of the parent GameBoundry entity
+	 * @return CRF_PolyZoneTrigger - The child trigger entity, or null if not found
+	 */
+	CRF_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
+	{
+		if (!boundaryName || boundaryName.IsEmpty())
+			return null;
+		
+		IEntity parentEntity = GetCachedBoundaryEntity(boundaryName);
+		if (!parentEntity)
+			return null;
+		
+		// Find child CRF_PolyZoneTrigger
+		IEntity child = parentEntity.GetChildren();
+		while (child)
+		{
+			CRF_PolyZoneTrigger trigger = CRF_PolyZoneTrigger.Cast(child);
+			if (trigger)
+				return trigger;
+			child = child.GetSibling();
+		}
+		
+		return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -822,6 +853,22 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		}
 
 		string stageTypeString;
+		
+		// Handle "Delete Previous" option first
+		if (stageData.m_bDeletePrevious && stageIndex > 0)
+		{
+			CRF_BoundaryStageData prevStageData = m_aBoundaryStages[stageIndex - 1];
+			if (prevStageData)
+			{
+				IEntity prevEntity = GetCachedBoundaryEntity(prevStageData.m_sBoundaryEntityName);
+				if (prevEntity)
+				{
+					if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] Deleting previous boundary '%1'", prevStageData.m_sBoundaryEntityName));
+					SCR_EntityHelper.DeleteEntityAndChildren(prevEntity);
+					m_mBoundaryEntityCache.Remove(prevStageData.m_sBoundaryEntityName);
+				}
+			}
+		}
 
 		// Execute the boundary action
 		if (stageData.m_eStageType == CRF_BoundaryStageType.ACTIVATION)
@@ -837,6 +884,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 				else
 					logPrefix = "Single execution: ";
 				if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] %1ACTIVATION boundary '%2' activated", logPrefix, stageData.m_sBoundaryEntityName));
+				
+				// For reversed (INCLUSION) zones, apply effects to players already outside
+				CRF_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sBoundaryEntityName);
+				if (trigger)
+					trigger.CheckPlayersOutside();
 			}
 		}
 		else if (stageData.m_eStageType == CRF_BoundaryStageType.DEACTIVATION)
@@ -858,6 +910,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		else
 		{
 			SCR_EntityHelper.DeleteEntityAndChildren(boundaryEntity);
+			m_mBoundaryEntityCache.Remove(stageData.m_sBoundaryEntityName);
 			stageTypeString = "DELETED";
 			string logPrefix;
 			if (isChainedExecution)

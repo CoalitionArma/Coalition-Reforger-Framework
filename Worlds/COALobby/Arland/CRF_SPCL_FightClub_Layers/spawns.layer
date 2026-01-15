@@ -9704,4 +9704,43 @@ $grp SCR_BaseTriggerEntity {
  lootSpawn3235 {
   coords 971.852 37.482 3048.682
  }
+ lootSpawn3240 {
+  coords 2527.255 150.975 2286.626
+ }
+ lootSpawn3248 {
+  coords 2496.516 151.202 2265.685
+ }
+ lootSpawn3241 {
+  coords 2533.078 150.981 2281.393
+ }
+ lootSpawn3246 {
+  coords 2538.982 150.54 2264.883
+ }
+ lootSpawn3243 {
+  coords 2529.455 146.279 2287.787
+ }
+ lootSpawn3247 {
+  coords 2539.453 150.54 2265.604
+ }
+ lootSpawn3244 {
+  coords 2522.467 147.185 2286.118
+ }
+ lootSpawn3245 {
+  coords 2540.272 150.54 2265.591
+ }
+ lootSpawn3242 {
+  coords 2533.869 146.279 2281.641
+ }
+ lootSpawn3236 {
+  coords 2535.247 154.255 2281.802
+ }
+ lootSpawn3239 {
+  coords 2532.43 155.161 2284.24
+ }
+ lootSpawn3238 {
+  coords 2523.066 154.256 2283.125
+ }
+ lootSpawn3237 {
+  coords 2527.686 157.826 2284.401
+ }
 }
