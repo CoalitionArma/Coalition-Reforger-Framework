@@ -29,7 +29,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces in Nova Olsov established a minefield on the eastern ridge, preventing the USMC from flanking flank them. Now with rumors of RUS reinforcements coming to Nova Olesov, the USMC have decided to tough it out and push through the town before reinforcements arrive."\
    ""\
    "BLUFOR Composition: Infantry Company"\
-   "BLUFOR Assets: None"\
+   "BLUFOR Assets: 2x Combat ENG"\
    ""\
    "OPFOR Composition: Infantry Platoon"\
    "OPFOR Assets: 2x MMG and 2x fortification trucks."\
@@ -59,10 +59,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 4
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+  m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
  }
  {
   SCR_FactionManager "685E30F3DF891C13" {
