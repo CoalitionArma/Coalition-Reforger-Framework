@@ -33,7 +33,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 7066.55 117.707 7989.974
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces in Nova Olsov establised a minefield on the eastern ridge preventing the USMC to flank them. Now with rumors of RUS reinforcements coming to Nova Olesov, the USMC have deicde to toughen it out and push through the town before reinforcements arrive."\
+   m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces in Nova Olsov established a minefield on the eastern ridge, preventing the USMC from flanking flank them. Now with rumors of RUS reinforcements coming to Nova Olesov, the USMC have deicde to tough it out and push through the town before reinforcements arrive."\
    ""\
    "BLUFOR Composition: Infantry Company"\
    "BLUFOR Assets: None"\
