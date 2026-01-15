@@ -100,26 +100,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628C2D2BFC8C6447}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "Eng Team"
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Zeus"
        }
-       SCR_CallsignInfo "{673840A0507F58CF}" {
-        m_sCallsign "Mortar Team"
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign ""
        }
-       SCR_CallsignInfo "{673840A053BE456A}" {
-        m_sCallsign "Crew 1 (T72A)"
-       }
-       SCR_CallsignInfo "{673840A053415961}" {
-        m_sCallsign "Crew 2 (T72A)"
-       }
-       SCR_CallsignInfo "{673840A056459A0D}" {
-        m_sCallsign "Crew 3 (BMP1P)"
-       }
-       SCR_CallsignInfo "{673923D6DE30269B}" {
-        m_sCallsign "Crew 4 (BMP1P)"
-       }
-       SCR_CallsignInfo "{673923D6C661F8DF}" {
-        m_sCallsign "Crew 5 (BMP1P)"
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign ""
        }
       }
      }
@@ -127,4 +115,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 1746.738 157.749 4182.77
 }
