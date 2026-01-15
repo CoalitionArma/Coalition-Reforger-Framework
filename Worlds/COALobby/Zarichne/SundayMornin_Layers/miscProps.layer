@@ -1,0 +1,306 @@
+GenericEntity : "{31627435F2C7CBF4}Prefabs/Props/Services/Healthcare/CabinetMedical_01_single.et" {
+ coords 1295.932 21.355 2416.408
+ angles 0 -180 0
+}
+$grp GenericEntity : "{363032002DD275E4}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Leave_V1.et" {
+ {
+  coords 1386.319 23.29 2558.107
+  angles 0 59.431 0
+  scale 4.03
+ }
+ {
+  coords 1558.349 23.285 2240.006
+  angles 0 151.393 -7.558
+  scale 1.75
+ }
+}
+GenericEntity : "{3E49A2FF5FFE1CA8}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Peace_V1.et" {
+ coords 1416.486 29.776 2271.084
+ angles 0 -28.102 0
+ scale 2.681
+}
+GenericEntity : "{53506DCB398C7EBE}Prefabs/Props/Furniture/Table_01.et" {
+ coords 1432.442 28.606 2409.313
+ angles 0 49.552 0
+}
+GenericEntity : "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et" {
+ coords 1432.59 29.504 2408.754
+ angles 0 64.812 0
+}
+GenericEntity : "{865B9E01D2C0B2D7}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_01_full.et" {
+ coords 1432.489 29.64 2409.461
+ angles 87.174 53.766 0
+}
+GenericEntity : "{899258ADB1D070E6}Prefabs/Props/Civilian/WallMap_01_vertical.et" {
+ coords 1434.476 29.79 2408.263
+ angles 0 -30.299 0
+}
+$grp GenericEntity : "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et" {
+ {
+  coords 1470.16 22.633 2268.381
+  angles -90 -180 -180
+ }
+ {
+  coords 1470.228 22.594 2268.294
+  angles 0 -176.962 -90
+ }
+ {
+  coords 1470.139 22.56 2268.178
+  angles 0 -59.66 0
+ }
+}
+$grp GenericEntity : "{9132672C4D9B2102}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_FIA.et" {
+ {
+  coords 1297.915 22.507 2414.06
+  angles 0 87.188 0
+ }
+ {
+  coords 1298.126 22.506 2414.071
+  angles 0 87.188 0
+ }
+ {
+  coords 1298.791 22.507 2414.115
+  angles 0 87.188 0
+ }
+ {
+  coords 1298.5 22.506 2414.14
+  angles 0 87.188 0
+ }
+ {
+  coords 1298.319 22.506 2414.114
+  angles 0 87.188 0
+ }
+}
+GenericEntity : "{953B5D589B15D11A}Prefabs/Props/Civilian/WallMap_01_Military_VZ61_V1.et" {
+ coords 1471.123 22.908 2268.257
+ angles 0 61.313 0
+}
+$grp GenericEntity : "{998E801FB34C4C28}Prefabs/Props/Military/Posters/Poster_USSR_cutouts_star.et" {
+ {
+  coords 1471.632 23.287 2267.295
+  angles 0 60.122 0
+  scale 2.91
+ }
+ {
+  coords 1434.202 30.263 2408.72
+  angles 0 149.488 0
+  scale 3.376
+ }
+}
+GenericEntity : "{9DDD398F7463A42B}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_open.et" {
+ coords 1298.531 22.26 2416.677
+ angles 0 -137.306 0
+}
+GenericEntity : "{A67BC8B7352F5E69}Prefabs/Props/Services/Healthcare/ScaleMedical_01.et" {
+ coords 1295.857 21.355 2414.78
+ angles 0 70.531 0
+}
+GenericEntity : "{ADC3CB9A7E9E68F2}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Medical_US_01.et" {
+ coords 1295.642 21.355 2415.595
+ angles 0 -72.019 0
+}
+GenericEntity : "{C5A56330031A28EB}Prefabs/Props/Medical/SterilizerMedical_01/SterilizerMedical_01.et" {
+ coords 1297.248 22.307 2416.465
+ angles 0 176.339 0
+}
+GenericEntity : "{C84DF17F96616C76}Prefabs/Props/Military/Manuals/Manual_US_01.et" {
+ coords 1470.644 22.95 2267.558
+}
+$grp GenericEntity : "{DEDB1E8616B31771}PrefabsEditable/Auto/Props/Military/AmmoBoxes/E_AmmoBox_556x45_1680rnd.et" {
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{FE31750973EA92C7}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Medical_01.xob"
+    Materials {
+     MaterialAssignClass "{685D1240C7DBA3D5}" {
+      SourceMaterial "EquipmentBoxWooden_Medical_01"
+      AssignedMaterial "{D3A76235D6723F0B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Medical_01_FIA.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{AF3411AAF94D18C2}Prefabs/Items/Medicine/Gauze_02/Gauze_02.et"
+      }
+      NumSlots 25
+     }
+     MultiSlotConfiguration "{685D121E3C259841}" {
+      SlotTemplate InventoryStorageSlot bleh {
+       Prefab "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{685D121E48CE66A9}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+      }
+      NumSlots 10
+     }
+    }
+   }
+  }
+  coords 1298.521 22 2414.018
+  angles 0 -4.129 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{FE31750973EA92C7}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Medical_01.xob"
+    Materials {
+     MaterialAssignClass "{685D1240C7DBA3D5}" {
+      SourceMaterial "EquipmentBoxWooden_Medical_01"
+      AssignedMaterial "{D3A76235D6723F0B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Medical_01_FIA.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{57A7222BCD92A59E}Prefabs/Items/Medicine/SalineBag_01/SalineBag_UK_01.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{685D121E3C259841}" {
+      SlotTemplate InventoryStorageSlot bleh {
+       Prefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{685D121E48CE66A9}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{685D12430D56B4DE}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{685D12430D85136E}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{D0434D5215B54181}Prefabs/Items/Medicine/MetoprololInjection/ACE_Medical_MetoprololInjection.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{685D12431C622828}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+      }
+      NumSlots 10
+     }
+    }
+   }
+  }
+  coords 1296.843 22.001 2413.832
+  angles 0 -4.129 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{819ED3266EE5113B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Weapon_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{3909998CAFD62EA3}Prefabs/Weapons/Explosives/DemoBlock_Hayrick/DemoBlock_Hayrick.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{685D121392D6B005}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{74369C511864A660}Prefabs/Weapons/Explosives/Mine_L9A1_Barmine/Mine_L9A1_Barmine.et"
+      }
+      NumSlots 3
+     }
+     MultiSlotConfiguration "{685D12138D6A0092}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{07D3AD1BE6EA2AB2}Prefabs/Weapons/Explosives/Mine_Mk7/Mine_Mk7.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 1470.734 22.576 2267.642
+  angles 0 -117.676 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{26602B855125635D}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Explosives_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D1243B200EB15}" {
+      SlotTemplate InventoryStorageSlot uahdgs {
+       Prefab "{91CE54ECA33BCB05}Prefabs/Weapons/Explosives/Mine_M14/Mine_M14_base.et"
+      }
+      NumSlots 14
+     }
+    }
+   }
+  }
+  coords 1471.278 22.578 2266.753
+  angles 0 -158.114 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{2C2903391E74AAC9}Assets/Props/Crates/CardboardBox_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D12436B40E7CD}" {
+      SlotTemplate InventoryStorageSlot sdsads {
+       Prefab "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et"
+      }
+      NumSlots 12
+     }
+    }
+   }
+  }
+  coords 1469.277 22.44 2269.374
+  angles 0 -116.156 0
+ }
+}
+$grp GenericEntity : "{E598D6291182ACDA}Prefabs/Items/Equipment/Radios/Radio_R187_INDFOR.et" {
+ {
+  coords 1433.973 29.512 2409.202
+  angles 90 -33.328 -97.359
+ }
+ {
+  coords 1434.26 29.512 2409.487
+  angles 90 -33.328 4.273
+ }
+ {
+  coords 1434.481 29.512 2409.709
+  angles 90 146.672 146.578
+ }
+ {
+  coords 1434.16 29.512 2409.363
+  angles 90 -33.328 155.61
+ }
+ {
+  coords 1433.807 29.512 2409.389
+  angles 90 -33.328 38.891
+ }
+}
+$grp GenericEntity : "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et" {
+ {
+  coords 1433.853 29.563 2408.844
+ }
+ {
+  coords 1434.661 29.544 2409.307
+  angles 0 -115.097 0
+ }
+ {
+  coords 1434.218 29.537 2409.037
+  angles 0 140.011 0
+ }
+}

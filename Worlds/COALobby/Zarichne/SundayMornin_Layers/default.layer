@@ -1,0 +1,193 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1528.01 20.534 2223.097
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear Fog"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 2
+   m_iStartingMinutes 30
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear Fog"
+     m_iStartingHour 2
+     m_iStartingMinutes 30
+    }
+   }
+  }
+ }
+ coords 1529.257 20.563 2224.694
+ m_bUseAAR 1
+ m_iTimeLimitMinutes 80
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Insurgent activity has led to the complete takeover of the town of Zarichne. All civilians have been ordered to evacuate. Now D Coy, 40 Commando of the Royal Marines is preparing for a raid on the town to knock out explosive caches used to spread a reign of terror across the region."\
+   ""\
+   "BLUFOR Composition: Infantry Company"\
+   "BLUFOR Assets:"\
+   "1x Weapons Platoon"\
+   "2x Land Rover Gun Truck"\
+   "1x Alouette Scout Helicopter (GPMG)"\
+   ""\
+   "OPFOR Composition: Guerilla Infantry"\
+   "OPFOR Assets:"\
+   "3x Bombsetters"\
+   ""\
+   "Time: 0230 hours (Dawn)"\
+   ""\
+   "Weather: Clear Light Fog"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Move in to destroy the two caches marked in the city blocks on the map. To win, both caches must be destroyed."\
+   "The more time given to the enemy, including during safestart, the more organized and well armed they will be when you arrive."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "-Check the building you spawn in or in front of, all levels of it, to see if it is a cache."\
+   "- If so find other teammates and spread the word about the location. If not, move out into the town and link up with other teammates until you locate a cache."\
+   "- Arm yourself at the cache, leaving gear and weapons for your teammates. DO NOT take two primary weapons excluding a launcher."\
+   "- Organize yourself at the cache and move out."\
+   "- If a leader, medic, or bombsetter, move out to your respective building marked on your map to acquire further equipment. DO NOT go to these buildings for equipment if it is not your role."\
+   ""\
+   "- Defend the two caches inside the town. Attackers must destroy both to win."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "What the caches look like is visible in the AAR entry for the mission. They are only destructible by C4 blocks or more capable explosives. Hand grenades are not able to destroy the cache. It will have a massive secondary explosion."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{2E7348A593AB885D}Configs/Gearscripts/Custom/fluff/CRF_GS_UK80s_fluff_SMCD.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{8A47112BA38128FE}Configs/Gearscripts/Custom/fluff/CRF_GS_FIA_fluff_SMCD.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "685C6B81644CE4D8" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "D Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "41 Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "41A Section"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "41B Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E3ED3714}" {
+        m_sCallsign "41C Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E3A9FA13}" {
+        m_sCallsign "42 Platoon"
+       }
+       SCR_CallsignInfo "{685C4BD1E06054AB}" {
+        m_sCallsign "42A Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E069B46C}" {
+        m_sCallsign "42B Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E0507355}" {
+        m_sCallsign "42C Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E02990D9}" {
+        m_sCallsign "43 Platoon"
+       }
+       SCR_CallsignInfo "{685C4BD1E0106D2B}" {
+        m_sCallsign "43A Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E01816EF}" {
+        m_sCallsign "43B Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E0D0B559}" {
+        m_sCallsign "43C Section"
+       }
+       SCR_CallsignInfo "{685C4BD1E0A8F048}" {
+        m_sCallsign "Marmite 1"
+       }
+       SCR_CallsignInfo "{685C4BD390A35021}" {
+        m_sCallsign "Marmite 2"
+       }
+       SCR_CallsignInfo "{685C4BD3917D83E1}" {
+        m_sCallsign "Warbler 1"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Rebel Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9F68BABD}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9F2F9F0F}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9F195E6D}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9FD45E2F}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9F94C600}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120A9C56CAA0}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120AA4AE625C}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120AA56DDC51}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120AA52CDEBF}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120AA5D3241E}" {
+        m_sCallsign "Rebel Group"
+       }
+       SCR_CallsignInfo "{685D120AA5938188}" {
+        m_sCallsign "Rebel Group"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
