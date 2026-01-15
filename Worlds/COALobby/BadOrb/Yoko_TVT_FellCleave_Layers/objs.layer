@@ -1,26 +1,37 @@
-$grp SCR_BaseTriggerEntity {
- mcom_a_trigger {
-  coords 3253.885 233.516 3307.367
-  angles 0 11.97 0
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ obj1 {
+  coords 3338.886 246.373 3470.194
+  angles 0 0 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_sMissionMarkerDescription "Capture and secure Wasserberg and Allenburg"
  }
- mcom_b_trigger {
-  coords 3312.801 269.954 3827.649
-  angles 0 -60.461 0
+ obj2 {
+  coords 3387.132 156.565 4423.801
+  angles 0 0 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_sMissionMarkerDescription "Capture and secure  the Water Treatment Plant"
  }
- mcom_e_trigger {
-  coords 4725.995 295.531 2740.633
-  angles 0 18.838 0
+ obj3 {
+  coords 4763.472 165.032 3597.66
+  angles 0 0 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_sMissionMarkerDescription "Capture Westen Bad Orb"
  }
- mcom_f_trigger {
-  coords 4365.314 220.669 2599.797
-  angles 0 -85.276 0
+ obj4 {
+  coords 4308.65 187.973 4365.315
+  angles 0 0 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_sMissionMarkerDescription "Capture and secure Funf-Wege"
  }
- mcom_d_trigger {
-  coords 4808.415 166.422 3818.672
-  angles 0 -169.463 0
- }
- mcom_c_trigger {
-  coords 4513.868 181.488 3671.669
-  angles 0 65.86 0
+ obj5 {
+  coords 4522.354 196.45 3191.509
+  angles 0 0 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_sMissionMarkerDescription "Defend Westen Bad Orb from RUS Counterattack"
  }
 }

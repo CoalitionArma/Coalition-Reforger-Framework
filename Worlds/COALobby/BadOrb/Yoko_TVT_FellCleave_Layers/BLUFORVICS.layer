@@ -70,18 +70,6 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 1810.58 152.249 4218.057
-  angles 0 159.798 0
-  m_rVehicle "{AA2C157A78544E69}Prefabs/Vehicles/Tracked/M1A2/SEPV2/M1A2_SEPV2_MERDC.et"
-  m_sFactionKey "BLUFOR"
- }
- {
-  coords 1824.147 151.666 4224.52
-  angles 0 159.798 0
-  m_rVehicle "{AA2C157A78544E69}Prefabs/Vehicles/Tracked/M1A2/SEPV2/M1A2_SEPV2_MERDC.et"
-  m_sFactionKey "BLUFOR"
- }
- {
   coords 1807.205 153.365 4194.46
   angles 0 110.73 0
   m_rVehicle "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et"
