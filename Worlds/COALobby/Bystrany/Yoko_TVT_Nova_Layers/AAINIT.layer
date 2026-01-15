@@ -134,12 +134,11 @@ BaseGameTriggerEntity WeatherFix {
  "		handlerComp.OnWorldPostProcess(GetGame().GetWorld());"\
  "	}"
  EOnInit ""\
- "			super.EOnInit(owner);"\
+ "		super.EOnInit(owner);"\
  "		if (!Replication.IsServer())"\
  "			return;"\
  "		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());"\
  "		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 1000, false, WeatherManager.GetRegisteredWeatherManagerEntity(world));"\
  "		GetGame().GetCallqueue().CallLater(SpawnNewWeatherManager, 2000, false);"\
- "	}"\
  "	"
 }
