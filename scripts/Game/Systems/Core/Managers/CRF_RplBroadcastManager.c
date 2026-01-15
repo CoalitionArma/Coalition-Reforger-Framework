@@ -470,6 +470,20 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void BroadcastAdminChatMessage(string message)
+	{
+		// Telemetry: string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(message);
+		LogTelemetry("BroadcastAdminChatMessage", bytes);
+		
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAdminChatMessage(message);
+		#else
+		Rpc(RpcDo_BroadcastAdminChatMessage, message);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SendRespawnScreenUpdate(RplId rplID, bool active)
 	{
 		// Telemetry: RplId + bool
@@ -1113,6 +1127,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 			// Check if it's a new ticket and let admins know
 			if (!ticketExists)
 				chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
+			
+			// Show the player's message in admin chat
+			chatComponent.ShowMessage(string.Format("%1: %2", playerName, data));
 		}
 	}
 	
@@ -1350,6 +1367,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 			// Show the target player the log messages
 			chatComponent.ShowMessage(data);
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastAdminChatMessage(string message)
+	{
+		// Only show to admins and moderators
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
+		SCR_ChatComponent chatComponent = GetLocalChatComponent();
+		if (!chatComponent)
+			return;
+		
+		// Show message in admin chat (similar to /a messages)
+		chatComponent.ShowMessage(message);
 	}
 
 	//------------------------------------------------------------------------------------------------
