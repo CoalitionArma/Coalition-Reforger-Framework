@@ -54,9 +54,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{D0E73DFF58988B36}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_HMGSPP.conf"
- }
  m_bRespawnEnabled 1
  m_iTimeToRespawn 30
  m_iBLUFORTickets 500
