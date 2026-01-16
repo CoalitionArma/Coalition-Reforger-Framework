@@ -1,0 +1,144 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 7362.831 142.507 7715.496
+ "Map Geometry Data" "{BF5F2D022EA8CB36}Worlds/Bystrany/Bystrany_Map_v02.topo"
+ "Satellite background image" "{E7F34FEC87C0BBF9}UI/Textures/Map/Worlds/Bystrany/Bystrany_Rasterized_Enhanced_Border.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 7049.741 117.721 8003.219
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{685E080BFB86D612}" {
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 12
+    }
+   }
+  }
+ }
+ coords 7066.55 117.707 7989.974
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces in Nova Olesov established a minefield on the eastern ridge, preventing the USMC from flanking flank them. Now with rumors of RUS reinforcements coming to Nova Olesov, the USMC have decided to tough it out and push through the town before reinforcements arrive."\
+   ""\
+   "BLUFOR Composition: Infantry Company"\
+   "BLUFOR Assets: 2x Combat ENG (PLT-Level)"\
+   ""\
+   "OPFOR Composition: Infantry Platoon"\
+   "OPFOR Assets: 2x MMG and 2x fortification trucks."\
+   ""\
+   "Time: 12:00 PM"\
+   ""\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy both bombsites."\
+   ""\
+   "The enemy will be dug in with fortifcations so expect  hardpoints from them."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend both bombsites."\
+   ""\
+   "You have two build truck to assist you in your defense."\
+   ""\
+   "DONT BUILD ANY GUN EMPLACMENTS THROUGH THE BUILD TRUCKS!"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "GM/Admin: Set weather to Cloudy and time to 12:00 PM. (If not already)"
+  }
+ }
+ m_iFactionOneRatio 5
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 4
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
+ }
+ {
+  SCR_FactionManager "685E30F3DF891C13" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{685E0803C60B78DB}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{685E0803CDB7080A}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{685E0803CEADC2D2}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{685E0803F55830EE}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{685E0803F60D2908}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{685E0803E5F82062}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{685E0803E73A5A3C}" {
+        m_sCallsign "MMG 1"
+       }
+       SCR_CallsignInfo "{685E0803ED1252B3}" {
+        m_sCallsign "MMG 2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+BaseGameTriggerEntity WeatherFix {
+ coords 7309.859 137.695 7735.967
+ userScript "	void SpawnNewWeatherManager()"\
+ "	{"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(\"{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et\"));"\
+ "		GetGame().GetCallqueue().CallLater(ApplyWeather, 1000, false);"\
+ "	}"\
+ "	"\
+ "	void ApplyWeather()"\
+ "	{"\
+ "		SCR_TimeAndWeatherHandlerComponent handlerComp = SCR_TimeAndWeatherHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_TimeAndWeatherHandlerComponent));"\
+ "		handlerComp.OnWorldPostProcess(GetGame().GetWorld());"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());"\
+ "		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 1000, false, WeatherManager.GetRegisteredWeatherManagerEntity(world));"\
+ "		GetGame().GetCallqueue().CallLater(SpawnNewWeatherManager, 2000, false);"\
+ "	"
+}
