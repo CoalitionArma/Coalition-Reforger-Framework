@@ -182,10 +182,10 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		if (!m_bIsInitialized)
 			return;
 		
-		// Update existing markers every frame for smooth positioning
+		// Update existing markers for smooth positioning
 		UpdateMarkerPositions();
 		
-		// Periodic update for group leader status
+		// Periodic update for group leader status changes
 		m_fUpdateTimer += timeSlice;
 		if (m_fUpdateTimer >= m_fUpdateInterval)
 		{
@@ -481,6 +481,11 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	 */
 	protected void UpdateMarkerPositions()
 	{
+		// Safety guard - should never run on server
+		if (Replication.IsServer())
+			return;
+		
+		// Update each visible marker
 		foreach (int playerId, CRF_GroupLeaderMarkerData markerData : m_mPlayerMarkers)
 		{
 			if (markerData.m_bIsVisible)
@@ -989,6 +994,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	 */
 	override void OnDelete(IEntity owner)
 	{
+		// Cancel any pending CallLater callbacks to prevent memory leaks
+		GetGame().GetCallqueue().Remove(InitializeClientUI);
+		
 		// Unsubscribe from safestart changes
 		if (m_SafestartManager && m_SafestartManager.m_OnSafeStartChange)
 		{

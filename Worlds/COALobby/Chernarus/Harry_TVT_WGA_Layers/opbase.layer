@@ -1,0 +1,49 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 10696.973 130.646 3517.933
+  angles 0 105.803 0
+  m_rVehicle "{26AF1879FBDA37EB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_base.et"
+  m_sFactionKey "OFPOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10699.254 131.282 3522.5
+  angles 0 105.803 0
+  m_rVehicle "{26AF1879FBDA37EB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_base.et"
+  m_sFactionKey "OFPOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10701.013 131.708 3526.857
+  angles 0 105.803 0
+  m_rVehicle "{26AF1879FBDA37EB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_base.et"
+  m_sFactionKey "OFPOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10709.141 130.015 3508.345
+  angles 0 -62.675 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_sFactionKey "OFPOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 0
+     m_bEnableResourceGain 1
+     m_fResourceGain 0.17
+    }
+   }
+  }
+ }
+ coords 10694.984 129.473 3510.593
+ angles -1.097 -67.781 -9.073
+}

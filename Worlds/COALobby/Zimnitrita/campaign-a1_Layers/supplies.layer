@@ -1,0 +1,41 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 8266.217 46.835 5512.912
+  angles -1.337 0.084 -3.577
+ }
+ {
+  coords 7536.488 58.063 5725.917
+ }
+ {
+  coords 7535.797 58.063 5733.143
+ }
+ {
+  coords 7594.681 51.986 6212.512
+  angles -0.447 0.014 -1.79
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    coords 9.72 0.3 2.317
+    angles 1.813 86.714 0.344
+   }
+  }
+ }
+}
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ components {
+  FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 7236.537 54.187 6323.245
+ angles 0 121.175 0
+}
+GenericEntity : "{FEFE7B425EA72746}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_Conflict_US_01.et" {
+ components {
+  FactionAffiliationComponent "{658A80EFA3FCE805}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 7246.129 54.156 6324.942
+ angles 0 176 0
+}

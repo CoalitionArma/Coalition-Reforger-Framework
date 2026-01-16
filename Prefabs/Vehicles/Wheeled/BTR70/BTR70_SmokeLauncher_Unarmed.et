@@ -1,0 +1,184 @@
+Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_BaseHUDComponent "{68427479B02904EA}" {
+   InfoDisplays {
+    SCR_WeaponInfoVehicle "{68427479B029049D}" {
+     m_bIsEnabled 0
+    }
+    SCR_WeaponSelectionMenu "{68427479B029049F}" {
+     m_LayoutPath "{2180D62E7C6F0DFC}UI/layouts/HUD/WeaponSelection/WeaponSelectionMenu.layout"
+    }
+    WCS_Armament_WeaponInfoVehicle "{68427479B02904A1}" {
+     m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+     m_aHandlers {
+      SCR_InfoDisplaySlotHandler "{68427479B02904A5}" {
+       m_bCanUpdate 1
+       m_sSlotName "Slot_WeaponInfo"
+      }
+     }
+     m_sInterfaceSettingName "m_bShowWeaponInfo"
+    }
+   }
+  }
+  WCS_Armament_ContinuousSmokeDispenser "{68427479B02904AA}" {
+   m_aActionEnabledCompartments {
+    "pilot"
+   }
+   m_Particle "{FC98EA459BD98A6C}Particles/Vehicle/Vehicle_smoke_BTR_exhaust_normal_01.ptc"
+   m_vParticlePosition -1.241 1.437 -3.616
+  }
+  WCS_Armament_DispenserManagerComponent "{68427479B02904AC}" {
+   m_SmokeInfo WCS_Armament_DispenserSmokeInfo "{68427479B02904AE}" {
+    m_aActionEnabledCompartments {
+     "pilot"
+    }
+    m_FireModes {
+     WCS_Armament_DispenserFullRippleFireMode "{68427479B02904AF}" {
+     }
+    }
+   }
+  }
+  WCS_Armament_RadarReflectorComponent "{62DF1E77862863F8}" {
+   m_vPosition 0 0.951 -0.493
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{39892970C8F493CE}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70_Turret_Gunless.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke_Left {
+     Offset 0 2.0012 -0.4051
+     MergePhysics 1
+     Prefab "{BE733285C090F150}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_BTR70.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke_Center {
+     Offset -1.275 1.583 1.1466
+     Angles 23.5356 19.1602 -48.9725
+     MergePhysics 1
+     Prefab "{BE733285C090F150}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_BTR70.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke_Left_2 {
+     Offset -1.275 1.583 0.449
+     Angles 23.5356 19.1602 -48.9725
+     MergePhysics 1
+     Prefab "{BE733285C090F150}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_BTR70.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke_Right {
+     Offset 1.275 1.583 1.1466
+     Angles 23.5356 -19.1602 48.9725
+     MergePhysics 1
+     Prefab "{BE733285C090F150}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_BTR70.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke_Right_2 {
+     Offset 1.275 1.583 0.449
+     Angles 23.5356 -19.1602 48.9725
+     MergePhysics 1
+     Prefab "{BE733285C090F150}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_BTR70.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{62DF2ABC0A12B462}" : "{383D10251D4CDA3D}Prefabs/Weapons/Core/Configs/WCS_Armament_VehicleCameraActionContext.conf" {
+     ContextName "camera_1"
+     Position PointInfo "{68427479B0290549}" {
+      Offset -0.8574 1.6061 2.2531
+      Angles 0 106.771 0
+     }
+    }
+    UserActionContext "{62DF2ABAC77C2316}" : "{383D10251D4CDA3D}Prefabs/Weapons/Core/Configs/WCS_Armament_VehicleCameraActionContext.conf" {
+     ContextName "camera_2"
+     Position PointInfo "{68427479B029054B}" {
+      Offset -0.5524 1.6878 2.3168
+      Angles 0 155.5195 0
+     }
+    }
+    UserActionContext "{62DF2AB55975CA6D}" : "{383D10251D4CDA3D}Prefabs/Weapons/Core/Configs/WCS_Armament_VehicleCameraActionContext.conf" {
+     ContextName "camera_3"
+     Position PointInfo "{68427479B029054E}" {
+      Offset -0.3328 1.6925 2.387
+      Angles 0 180 0
+     }
+    }
+    UserActionContext "{62E312ABB44ABFF6}" : "{383D10251D4CDA3D}Prefabs/Weapons/Core/Configs/WCS_Armament_VehicleCameraActionContext.conf" {
+     ContextName "camera_4"
+     Position PointInfo "{68427479B0290550}" {
+      Offset -0.1202 1.6913 2.3361
+      Angles 0 -150 0
+     }
+    }
+    UserActionContext "{68427479B0290553}" {
+     ContextName "continuous_smoke_dispenser"
+     Position PointInfo "{68427479B0290554}" {
+      Offset -0.0698 1.2449 2.8251
+     }
+    }
+    UserActionContext "{68427479B0290556}" {
+     ContextName "smoke_dispenser"
+     Position PointInfo "{68427479B0291DB2}" {
+      Offset -0.1658 1.2194 2.8081
+     }
+    }
+   }
+   additionalActions {
+    WCS_Armament_VehicleCameraAction "{68427479B0291243}" {
+     ParentContextList {
+      "camera_1"
+     }
+     m_sCameraId "camera_1"
+    }
+    WCS_Armament_VehicleCameraAction "{68427479B0291245}" {
+     ParentContextList {
+      "camera_2"
+     }
+     m_sCameraId "camera_2"
+    }
+    WCS_Armament_VehicleCameraAction "{68427479B0291247}" {
+     ParentContextList {
+      "camera_3"
+     }
+     m_sCameraId "camera_3"
+    }
+    WCS_Armament_VehicleCameraAction "{68427479B0291248}" {
+     ParentContextList {
+      "camera_4"
+     }
+     m_sCameraId "camera_4"
+    }
+    WCS_Armament_DeployContinuousSmokeAction "{68427479B029124B}" {
+     ParentContextList {
+      "continuous_smoke_dispenser"
+     }
+     UIInfo UIInfo "{68427479B029124E}" {
+      Name "Toggle smoke emitter"
+     }
+     m_bIsToggle 1
+     m_bPilotOnly 0
+     m_bInteriorOnly 1
+    }
+    WCS_Armament_DeploySmokeAction "{68427479B0291251}" {
+     ParentContextList {
+      "smoke_dispenser"
+     }
+     UIInfo UIInfo "{68427479B0291252}" {
+      Name "Deploy smoke"
+     }
+     m_bIsToggle 0
+     m_sActionStateOn ""
+     m_sActionStateOff ""
+     m_bPilotOnly 0
+     m_bInteriorOnly 1
+    }
+   }
+  }
+ }
+ coords 0.917 0 -0.298
+}

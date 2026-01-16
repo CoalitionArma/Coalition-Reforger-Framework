@@ -1,0 +1,86 @@
+BaseGameTriggerEntity airdrop {
+ coords 1836.74 53.18 2252.188
+ userScript "	"\
+ "	bool m_bSafeStartInit = false;"\
+ "	"\
+ "	void InitPlane()"\
+ "	{"\
+ "		vector start      = \"4100 600 0\";"\
+ "		vector end        = \"0 600 4100\";"\
+ "		vector greenLight = \"4100 600 0\";"\
+ "		float angle       = 315;"\
+ "	"\
+ "		vector flightData[4];"\
+ "		flightData[0] = start;       // Start point"\
+ "		flightData[2] = greenLight;  // Green light point"\
+ "		flightData[3] = end;         // End point"\
+ "	"\
+ "		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();"\
+ "		array<SCR_AIGroup> groups = {};"\
+ "		groupsMan.GetAllPlayableGroups(groups);"\
+ "	"\
+ "		PlayerManager pm = GetGame().GetPlayerManager();"\
+ "		array<int> players = {};"\
+ "	"\
+ "		foreach (SCR_AIGroup group : groups)"\
+ "		{"\
+ "			if (!group.GetFaction())"\
+ "				continue;"\
+ "	"\
+ "			if (group.GetFaction().GetFactionKey() != \"OPFOR\")"\
+ "				continue;"\
+ "	"\
+ "			array<AIAgent> agents = {};"\
+ "			group.GetAgents(agents);"\
+ "	"\
+ "			if (agents.Count() == 0)"\
+ "				continue;"\
+ "	"\
+ "			foreach (AIAgent agent : agents)"\
+ "			{"\
+ "				int playerId = pm.GetPlayerIdFromControlledEntity(agent.GetControlledEntity());"\
+ "				if (playerId <= 0)"\
+ "					continue;"\
+ "	"\
+ "				players.Insert(playerId);"\
+ "			}"\
+ "		}"\
+ "	"\
+ "		ref CRF_AirdropObject flight = new CRF_AirdropObject("\
+ "			\"BLUFOR\","\
+ "			\"{D35A20947FE9E130}PrefabsEditable/Auto/Props/c130.et\","\
+ "			flightData,"\
+ "			angle,"\
+ "			players,"\
+ "			false"\
+ "		);"\
+ "	"\
+ "		CRF_AirdropManager.GetInstance().InitFlight(flight);"\
+ "	"\
+ "		delete this;"\
+ "	}"
+ TriggerShapeType Sphere
+ PeriodicQueries 1
+ UpdatePeriod 5
+ OnQueryFinished ""\
+ "		if (!Replication.IsServer())"\
+ "		{"\
+ "			delete this;"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		if (!m_bSafeStartInit)"\
+ "		{"\
+ "			m_bSafeStartInit = CRF_SafestartManager"\
+ "				.GetInstance()"\
+ "				.GetSafestartStatus();"\
+ "		"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "		{"\
+ "			InitPlane();"\
+ "		}"\
+ "	"
+}

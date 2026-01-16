@@ -28,8 +28,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		PlayerManager pm = GetGame().GetPlayerManager();
 		foreach (int playerId: planeObject.m_aPlayerIds)
 		{			
-			//This group will put us past the 40 slots available in the plane, we gotta spawn another one
-			if (playersAdded + 1 > 40)
+			//This group will put us past the 30 slots available in the plane, we gotta spawn another one
+			if (playersAdded + 1 > 30)
 			{
 				planeIndex++;
 				playersAdded = 0;
@@ -60,7 +60,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		IEntity plane = GetGame().SpawnEntityPrefab(Resource.Load(planeObject.m_sPlane), null, params);
 		//Redundant but just in case
 		StreamPlaneIntoReplication(plane);
-		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 65);
+		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 65, planeObject.m_bAutoDeployParachute);
 		//Delay so the flight has a chance to actual load the entity
 		GetGame().GetCallqueue().CallLater(TeleportPlayers, 2000, false, players, SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent)), plane, flight);
 	}
@@ -112,14 +112,14 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId.ToString());
 			vector transform[4];
 			slot.GetLocalTransform(transform);
-			if (i < 20)
+			if (i < 15)
 	        {
 	            transform[3][2] = transform[3][2] - (0.8 * i);
 	        }
 	        else
 	        {
 	            transform[3][0] = transform[3][0] + 1.4;
-	            transform[3][2] = transform[3][2] - (0.8 * (i - 20));
+	            transform[3][2] = transform[3][2] - (0.8 * (i - 15));
 	        }
 			vector pos = plane.CoordToParent(transform[3]);
 			transform[3] = pos;
@@ -145,14 +145,14 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId);
 		vector transform[4];
 		slot.GetLocalTransform(transform);
-		if (index < 20)
+		if (index < 15)
         {
             transform[3][2] = transform[3][2] - (0.8 * index);
         }
         else
         {
             transform[3][0] = transform[3][0] + 1.4;
-            transform[3][2] = transform[3][2] - (0.8 * (index - 20));
+            transform[3][2] = transform[3][2] - (0.8 * (index - 15));
         }
 		vector pos = plane.CoordToParent(transform[3]);
 		transform[3] = pos;
@@ -200,7 +200,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 					if (charCon.GetAnimationComponent().PhysicsIsLinked())
 						continue;
 					
-					ParachuteComponent.Cast(pm.GetPlayerController(playerId).FindComponent(ParachuteComponent)).RpcAskDeployParachute();
+					if (flight.m_bAutoDeployParachute)
+						ParachuteComponent.Cast(pm.GetPlayerController(playerId).FindComponent(ParachuteComponent)).RpcAskDeployParachute();
 					flight.m_PlayersInPlane.Remove(i);
 				}
 			}		
@@ -328,12 +329,13 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 
 class CRF_AirdropFlight
 {
-	void CRF_AirdropFlight(IEntity plane, vector flightCoordinates[4], float speed)
+	void CRF_AirdropFlight(IEntity plane, vector flightCoordinates[4], float speed, bool autoDeployParachute = true)
 	{
 		m_Plane = plane;
 		m_RplId = RplComponent.Cast(plane.FindComponent(RplComponent)).Id();
 		m_vFlightCoordinates = flightCoordinates;
 		m_fSpeed = speed;
+		m_bAutoDeployParachute = autoDeployParachute;
 		CRF_AirdropManager.GetInstance().RegisterFlight(this);
 	}
 	
@@ -353,17 +355,19 @@ class CRF_AirdropFlight
 	float m_fSpeed;
 	float m_fGreenT;
 	ref array<IEntity> m_PlayersInPlane = {};
+	bool m_bAutoDeployParachute;
 }
 
 class CRF_AirdropObject
 {
-	void CRF_AirdropObject(string factionKey, ResourceName resourceName, vector flightCoordinates[4], float angle, array<int> playerIds)
+	void CRF_AirdropObject(string factionKey, ResourceName resourceName, vector flightCoordinates[4], float angle, array<int> playerIds, bool autoDeployParachute = true)
 	{
 		m_sFactionKey = factionKey;
 		m_sPlane = resourceName;
 		m_vFlightCoordinates = flightCoordinates;
 		m_fAngle = angle;
 		m_aPlayerIds = playerIds;
+		m_bAutoDeployParachute = autoDeployParachute;
 	}
 	ref array<int> m_aPlayerIds = {};
 	string m_sFactionKey;
@@ -374,4 +378,5 @@ class CRF_AirdropObject
 	//2 - Greenlight start
 	//3 - Greenlight end
 	vector m_vFlightCoordinates[4];
+	bool m_bAutoDeployParachute;
 }

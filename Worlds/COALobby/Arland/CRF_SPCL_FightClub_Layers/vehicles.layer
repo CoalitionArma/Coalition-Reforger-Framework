@@ -1,0 +1,86 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1460.794 11.31 1935.601
+  angles 0 94.047 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 9999
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 1000.805 12.313 1970.206
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1375.922 36.58 2411.622
+  angles 0 -27.181 0
+  m_rVehicle "{6B24D5AFD884D64C}Prefabs/Vehicles/Wheeled/M998/M998_uncovered_MERDC.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1432.112 29.75 1150.728
+  angles 0 158.547 0
+  m_rVehicle "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 2022.116 44.484 2682.459
+  angles 0 27.472 0
+  m_rVehicle "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 2666.489 78.334 1747.942
+  angles 0 -25.258 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 2029.862 10.615 1849.336
+  angles 0 88.617 0
+  m_rVehicle "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 2604.766 110.955 2499.34
+  angles 0 158.547 0
+  m_rVehicle "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 3079.231 11.578 2876.254
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 3135.337 14.377 2708.396
+  angles 0 -48.839 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1268.34 37.477 2935.462
+  angles 0 27.472 0
+  m_rVehicle "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1193.17 39 2714.632
+  angles 0 92.767 0
+  m_rVehicle "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1163.139 0.728 1155.452
+  angles 0 132.549 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 9999
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
