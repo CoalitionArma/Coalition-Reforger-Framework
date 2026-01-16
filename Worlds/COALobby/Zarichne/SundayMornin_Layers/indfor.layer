@@ -1,151 +1,144 @@
-SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
- coords 1366.09 20.656 2428.044
- m_aUnitPrefabSlots {
-  "{83EC6868D4319899}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PL_P.et"
-  "{7D94B1371CED7004}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PSG_P.et"
+$grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
+ {
+  coords 1362.712 20.656 2428.925
+  angles 0 63.099 0
+  m_aUnitPrefabSlots {
+   "{83EC6868D4319899}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PL_P.et"
+   "{7D94B1371CED7004}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PSG_P.et"
+  }
+  m_bSnapToTerrain 0
  }
  {
-  SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-   coords 91.737 7.559 68.556
-   angles 0 54.488 0
-   m_aUnitPrefabSlots {
-    "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
-    "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-   }
-   m_bSnapToTerrain 0
-   {
-    SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-     coords 76.068 -7.559 -264.892
-     m_aUnitPrefabSlots {
-      "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
-      "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-     }
-     {
-      SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-       coords -66.206 6.792 167.863
-       m_aUnitPrefabSlots {
-        "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-        "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
-        "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-       }
-       m_bSnapToTerrain 0
-       {
-        SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-         coords -54.722 0.476 -122.785
-         m_aUnitPrefabSlots {
-          "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
-          "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-          "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-         }
-         m_bSnapToTerrain 0
-         {
-          SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-           coords 62.1 -7.268 -20.631
-           m_aUnitPrefabSlots {
-            "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
-            "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-           }
-           {
-            SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-             coords -118.213 0 64.019
-             m_aUnitPrefabSlots {
-              "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
-              "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-             }
-             {
-              SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-               coords 132.734 0 13.636
-               m_aUnitPrefabSlots {
-                "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
-                "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-               }
-               {
-                SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                 coords -72.958 0 -119.116
-                 m_aUnitPrefabSlots {
-                  "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                  "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                 }
-                 {
-                  SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                   coords -56.909 0 136.532
-                   m_aUnitPrefabSlots {
-                    "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
-                    "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                   }
-                   {
-                    SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                     coords 65.571 0.932 3.525
-                     m_aUnitPrefabSlots {
-                      "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                      "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
-                     }
-                     {
-                      SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                       coords 182.121 2.772 -47.567
-                       angles 0 150.342 0
-                       m_aUnitPrefabSlots {
-                        "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                        "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                        "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                       }
-                       m_bSnapToTerrain 0
-                       {
-                        SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                         coords 202.843 -3.514 -261.824
-                         angles 0 -77.178 0
-                         m_aUnitPrefabSlots {
-                          "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                          "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                          "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                         }
-                         m_bSnapToTerrain 0
-                         {
-                          SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                           coords 146.36 3.073 111.128
-                           angles 0 -90.904 0
-                           m_aUnitPrefabSlots {
-                            "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                            "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
-                            "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                           }
-                           m_bSnapToTerrain 0
-                           {
-                            SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
-                             coords -55.808 -3.263 193.566
-                             angles 0 17.74 0
-                             m_aUnitPrefabSlots {
-                              "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                              "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                              "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
-                             }
-                            }
-                           }
-                          }
-                         }
-                        }
-                       }
-                      }
-                     }
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-     }
-    }
-   }
+  coords 1468.925 20.656 2502.342
+  angles 0 -112.227 0
+  m_aUnitPrefabSlots {
+   "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
   }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1294.201 20.656 2287.049
+  angles 0 54.488 0
+  m_aUnitPrefabSlots {
+   "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1363.04 20.656 2297.264
+  angles 0 -12.406 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1423.429 20.532 2283.545
+  angles 0 -118.133 0
+  m_aUnitPrefabSlots {
+   "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1436.643 20.656 2206.305
+  angles 0 -115.681 0
+  m_aUnitPrefabSlots {
+   "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1251.557 20.561 2469.608
+  angles 0 -13.686 0
+  m_aUnitPrefabSlots {
+   "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1351.614 20.656 2366.564
+  angles 0 54.488 0
+  m_aUnitPrefabSlots {
+   "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1197.56 20.378 2378.939
+  angles 0 54.488 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1300.275 21.254 2501.473
+  angles 0 75.711 0
+  m_aUnitPrefabSlots {
+   "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1555.037 21.519 2362.296
+  angles 0 54.488 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1556.044 20.176 2271.248
+  angles 0 -120.375 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1324.415 20.846 2571.434
+  angles 0 127.652 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1424.399 20.366 2353.641
+  angles 0 36.748 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 1534.555 19.182 2579.21
+  angles 0 54.488 0
+  m_aUnitPrefabSlots {
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+   "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
  }
 }

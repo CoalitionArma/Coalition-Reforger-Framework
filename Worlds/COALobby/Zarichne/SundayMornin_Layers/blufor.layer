@@ -4,7 +4,7 @@ SCR_AIGroup : "{04C3AF302F4B8EC3}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
    DefaultFormation "Column"
   }
  }
- coords 3039.098 18.437 914.004
+ coords 3039.098 13.671 914.004
  angles 0 -12.58 0
  m_aUnitPrefabSlots {
   "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et"
