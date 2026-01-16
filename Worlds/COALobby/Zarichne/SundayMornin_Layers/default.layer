@@ -16,6 +16,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_iStartingMinutes 30
     }
    }
+   m_bWindOverride 1
+   m_fWindSpeed 2.182
+   m_fWindDirection 0.218
   }
  }
  coords 1529.257 20.563 2224.694
