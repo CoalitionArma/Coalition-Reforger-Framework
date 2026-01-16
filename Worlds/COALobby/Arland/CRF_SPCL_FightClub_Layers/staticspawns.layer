@@ -1,0 +1,35 @@
+SCR_DestructibleBuildingEntity : "{33F50E1C918159AB}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01_base.et" {
+ coords 2539.762 -0.023 2265.241
+ angles 0 94.026 0
+}
+SCR_DestructibleBuildingEntity : "{49721D29CCBB820E}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_02/ControlTowerMilitary_E_02.et" {
+ coords 2496.971 0.487 2265.866
+ angles 0 -79.283 0
+}
+GenericEntity : "{6415B7923DE28C1B}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_PSO.et" {
+ coords 1463.16 54.091 1165.348
+ angles 0 0 80.961
+}
+StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
+ coords 2511.846 147.827 2272.361
+}
+GenericEntity : "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" {
+ coords 1463.037 54.091 1165.394
+ angles 0 0 82.866
+}
+GenericEntity : "{A7AF84C6C58BA3E8}Prefabs/Weapons/MachineGuns/RPK74/MG_RPK74.et" {
+ coords 3407.958 1.172 3210.107
+ angles 0 0 88.268
+}
+GenericEntity : "{B5B2CD276A3BDB08}Prefabs/Weapons/MachineGuns/UK59/MG_UK59_4x8.et" {
+ coords 633.484 1.372 3492.684
+ angles 0 0 -68.966
+}
+GenericEntity : "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et" {
+ coords 3562.682 69.154 2644.5
+ angles 0 0 -52.771
+}
+SCR_DestructibleBuildingEntity : "{F6FC9703E7F4FDCA}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01.et" {
+ coords 2528.904 1.027 2283.89
+ angles 0 165.286 0
+}

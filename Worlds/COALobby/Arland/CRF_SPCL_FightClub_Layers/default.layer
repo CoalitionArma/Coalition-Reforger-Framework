@@ -7,7 +7,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_LooterGamemodeComponent "{68530918F51648E0}" {
    m_fGlobalSpawnChance 0.6
-   m_iTotalSpawnPoints 3125
+   m_iTotalSpawnPoints 3248
    m_aWeaponEntries {
     CRF_WeaponLootEntry "{6853091BDEF57E51}" {
      m_fWeight 0.2
@@ -151,7 +151,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
    m_aMiscEntries {
     CRF_MiscLootEntry "{68531C9B5DF3B6D0}" {
-     m_fWeight 0.6
+     m_fWeight 1
      m_sPrimaryPrefab "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et"
     }
     CRF_MiscLootEntry "{68531C9BA41DEDFD}" {
@@ -245,40 +245,69 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
   CRF_MapStagingComponent "{685322BA91EF84ED}" {
-   m_iInitialDelay 450
+   m_iInitialDelay 180
    m_sFinalCompletionSubMessage "Final Zone!"
    m_iFinalCompletionMessageDuration 10
    m_aBoundaryStages {
     CRF_BoundaryStageData "{685322B7E9F1AEB3}" {
      m_sBoundaryEntityName "Zone1"
-     m_iStageDuration 250
+     m_bDeletePrevious 1
+     m_iStageDuration 240
      m_sStageDisplayText "Zone Closing!"
      m_bShowStageCompletionMessage 0
      m_sStageCompletionMainMessage "Zone Closing"
-     m_cActivePolygonColor 0.273 0.074 0 0.75
-     m_cActivePolygonBorderColor 0.102 0.023 0 0.5
-     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
-     m_cActivatedPolygonBorderColor 0.16 0 0 0.5
+     m_cActivePolygonColor 0.409 0.092 0 0.2
+     m_cActivePolygonBorderColor 0.409 0.116 0.007 0.9
+     m_cActivatedPolygonColor 0.293 0 0 0.7
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.85
     }
-    CRF_BoundaryStageData "{685322ADBEF71DA9}" {
+    CRF_BoundaryStageData "{685CB25519438167}" {
      m_sBoundaryEntityName "Zone2"
-     m_iStageDuration 250
+     m_bDeletePrevious 1
+     m_iStageDuration 270
      m_sStageDisplayText "Zone Closing!"
      m_bShowStageCompletionMessage 0
-     m_cActivePolygonColor 0.273 0.074 0 0.75
-     m_cActivePolygonBorderColor 0.102 0.023 0 0.5
-     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
-     m_cActivatedPolygonBorderColor 0.16 0 0 0.5
+     m_sStageCompletionMainMessage "Zone Closing"
+     m_cActivePolygonColor 0.409 0.092 0 0.2
+     m_cActivePolygonBorderColor 0.409 0.116 0.007 0.9
+     m_cActivatedPolygonColor 0.293 0 0 0.7
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.85
     }
-    CRF_BoundaryStageData "{685322AD492F9212}" {
+    CRF_BoundaryStageData "{685CB25DF6D80BCF}" {
      m_sBoundaryEntityName "Zone3"
-     m_iStageDuration 250
-     m_sStageDisplayText "Final Zone Closing!"
+     m_bDeletePrevious 1
+     m_iStageDuration 240
+     m_sStageDisplayText "Zone Closing!"
      m_bShowStageCompletionMessage 0
-     m_cActivePolygonColor 0.273 0.074 0 0.75
-     m_cActivePolygonBorderColor 0.102 0.023 0 0.8
-     m_cActivatedPolygonColor 0.318 0.027 0.027 0.75
-     m_cActivatedPolygonBorderColor 0.16 0 0 0.8
+     m_sStageCompletionMainMessage "Zone Closing"
+     m_cActivePolygonColor 0.409 0.092 0 0.2
+     m_cActivePolygonBorderColor 0.409 0.116 0.007 0.9
+     m_cActivatedPolygonColor 0.293 0 0 0.7
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.85
+    }
+    CRF_BoundaryStageData "{685CB25DE9E6CFFC}" {
+     m_sBoundaryEntityName "Zone4"
+     m_bDeletePrevious 1
+     m_iStageDuration 240
+     m_sStageDisplayText "Zone Closing!"
+     m_bShowStageCompletionMessage 0
+     m_sStageCompletionMainMessage "Zone Closing"
+     m_cActivePolygonColor 0.409 0.092 0 0.2
+     m_cActivePolygonBorderColor 0.409 0.116 0.007 0.9
+     m_cActivatedPolygonColor 0.293 0 0 0.7
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.85
+    }
+    CRF_BoundaryStageData "{685CB25DE8ECFD20}" {
+     m_sBoundaryEntityName "Zone5"
+     m_bDeletePrevious 1
+     m_iStageDuration 240
+     m_sStageDisplayText "Zone Closing!"
+     m_bShowStageCompletionMessage 0
+     m_sStageCompletionMainMessage "Zone Closing"
+     m_cActivePolygonColor 0.409 0.092 0 0.2
+     m_cActivePolygonBorderColor 0.409 0.116 0.007 0.9
+     m_cActivatedPolygonColor 0.293 0 0 0.7
+     m_cActivatedPolygonBorderColor 0.16 0 0 0.85
     }
    }
   }
@@ -295,6 +324,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
   m_bEnableBFT 0
+  m_bEnableIndividualBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
