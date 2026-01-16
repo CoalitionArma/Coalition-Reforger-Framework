@@ -396,6 +396,7 @@ modded class SCR_VONController
 	    vector  sourcePos,
 	    float   volume_m,    
 		int playerId ,       // interpret as the inaudible distance (≈ −45 dB)
+		out float outBehindIntensity,   
 	    out float outLeft,
 	    out float outRight,
 	    out int  silencedDecibels = 0,
