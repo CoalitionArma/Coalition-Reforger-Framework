@@ -19,14 +19,18 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
+  CRF_RushGamemodeManager "{68602D4605A729BF}" {
+   m_iMCOMsPerZone 1
+  }
   SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
    m_fTourniquettedLegMovementSlowdown 0.5
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Clear"
+   m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 4
+   m_iStartingHours 18
    m_iStartingMinutes 30
    m_iRangeHoursStart 16
    m_fDayTimeAcceleration 8
@@ -38,7 +42,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 90
  m_bAllowEspionage 1
  m_bLockSlotsAfterSafestart 0
- m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Ask your leadership"
@@ -79,8 +82,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_bRespawnEnabled 1
  m_bWaveRespawn 1
  m_iTimeToRespawn 180
- m_iBLUFORTickets 200
- m_iOPFORTickets 200
+ m_iBLUFORTickets 100
+ m_iOPFORTickets 100
+ m_iCIVTickets 100
  {
   SCR_FactionManager "685018D7EDA8F8E2" {
    ID "632A77473B3CC3A8"
@@ -115,7 +119,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
          m_sIdentifier "Ammunition"
          m_aEntities {
           SCR_EntityCatalogEntry "{684F7513920B0A40}" {
-           m_sEntityPrefab "{2BD22103CDD20356}Prefabs/Weapons/Magazines/762x39_AKM_AK55_30rnd/Magazine_762x39_AKM_AK55_30rnd_Ball_57N231.et"
+           m_sEntityPrefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
            m_aEntityDataList {
             SCR_ArsenalItem "{684F751010A2C8FD}" {
              m_eItemMode AMMUNITION
@@ -129,7 +133,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
          m_sIdentifier "Weapons"
          m_aEntities {
           SCR_EntityCatalogEntry "{685018DCBABD3F46}" {
-           m_sEntityPrefab "{5BFF97EFD0BF6D9F}Prefabs/Weapons/Rifles/AKM/Rifle_AKMN.et"
+           m_sEntityPrefab "{96DFD2E7E63B3386}Prefabs/Weapons/Rifles/AK74/Rifle_AK74N.et"
            m_aEntityDataList {
             SCR_ArsenalItem "{685018DCB359C579}" {
              m_iSupplyCost 20
@@ -168,22 +172,22 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Company"
        }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
-        m_sCallsign "Leaders"
+        m_sCallsign "Topor 1"
        }
        SCR_CallsignInfo "{55CCB79287BAFBD6}" {
-        m_sCallsign "Border Guards"
+        m_sCallsign "Toper 2"
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "Soldiers"
+        m_sCallsign "Conscripts"
        }
        SCR_CallsignInfo "{685018D1C0DB98BA}" {
-        m_sCallsign "Soldiers"
+        m_sCallsign "Zashchita 1"
        }
        SCR_CallsignInfo "{685018D1C0A93652}" {
-        m_sCallsign "Soldiers"
+        m_sCallsign "Zashchita 2"
        }
        SCR_CallsignInfo "{685018D1C77ABD2B}" {
-        m_sCallsign "Soldiers"
+        m_sCallsign "Zashchita 3"
        }
       }
      }
@@ -194,7 +198,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
          m_sIdentifier "Ammunition"
          m_aEntities {
           SCR_EntityCatalogEntry "{684F7513920B0A40}" {
-           m_sEntityPrefab "{892F30500E6E7E04}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Base.et"
+           m_sEntityPrefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
            m_aEntityDataList {
             SCR_ArsenalItem "{684F751010A2C8FD}" {
              m_eItemMode AMMUNITION
@@ -208,7 +212,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
          m_sIdentifier "Weapons"
          m_aEntities {
           SCR_EntityCatalogEntry "{685018DCBABD3F46}" {
-           m_sEntityPrefab "{9C948630078D154D}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58P.et"
+           m_sEntityPrefab "{96DFD2E7E63B3386}Prefabs/Weapons/Rifles/AK74/Rifle_AK74N.et"
            m_aEntityDataList {
             SCR_ArsenalItem "{685018DCB359C579}" {
              m_iSupplyCost 20
@@ -234,45 +238,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
             }
            }
           }
-          SCR_EntityCatalogEntry "{685018DD19681BF9}" {
-           m_sEntityPrefab "{BFCE7FE311985683}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01_base.et"
-           m_aEntityDataList {
-            SCR_ArsenalItem "{685018DD0308DC4B}" {
-             m_iSupplyCost 0
-            }
-           }
-          }
-          SCR_EntityCatalogEntry "{685018DD0470D2C7}" {
-           m_sEntityPrefab "{D262D2102B9931C6}Prefabs/Characters/Uniforms/Jacket_M88_rolledup.et"
-           m_aEntityDataList {
-            SCR_ArsenalItem "{685018DD0308DC4B}" {
-             m_iSupplyCost 0
-            }
-           }
-          }
-          SCR_EntityCatalogEntry "{685018DD3105366C}" {
-           m_sEntityPrefab "{DCF980831E880F6A}Prefabs/Characters/Uniforms/Pants_M88.et"
-           m_aEntityDataList {
-            SCR_ArsenalItem "{685018DD0308DC4B}" {
-             m_iSupplyCost 0
-            }
-           }
-          }
-          SCR_EntityCatalogEntry "{685018DD23DA31FD}" {
-           m_sEntityPrefab "{C7923961D7235D70}Prefabs/Characters/Footwear/CombatBoots_Soviet_01.et"
-           m_aEntityDataList {
-            SCR_ArsenalItem "{685018DD0308DC4B}" {
-             m_iSupplyCost 0
-            }
-           }
-          }
-          SCR_EntityCatalogEntry "{685018DD51D7580A}" {
-           m_sEntityPrefab "{9713FE6DDCC9510D}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik.et"
-           m_aEntityDataList {
-            SCR_ArsenalItem "{685018DD0308DC4B}" {
-            }
-           }
-          }
          }
         }
        }
@@ -283,32 +248,48 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+$grp SCR_BaseTriggerEntity {
+ mcom_c_trigger {
+  coords 10804.671 61.406 8833.571
+  angles 0 143.521 0
+ }
+ mcom_a_trigger {
+  coords 10010.775 122.813 7128.259
+  angles 0 -132.207 0
+ }
+ mcom_b_trigger {
+  coords 9885.745 72.313 8158.689
+  angles 0 -65.529 0
+ }
+}
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 11064.473 33.742 7256.826
+ m_sDescription "MAIN"
+}
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
- coords 7326.481 54.111 6267.468
+ coords 9743.752 80 7680.364
  Points {
-  ShapePoint "{684E56CC49BE6776}" {
-   Position -1339.489 0 -581.777
+  ShapePoint "{68601BD1B7E2E1DB}" {
+   Position -109.253 0 -838.527
   }
-  ShapePoint "{684E56CC4E460F44}" {
-   Position -2693.659 0 717.661
+  ShapePoint "{68601BD1A5A56292}" {
+   Position -816.457 12.707 561.538
   }
-  ShapePoint "{684E56CC43B7A7F2}" {
-   Position -1736.441 0 1633.359
+  ShapePoint "{68601BD1CA0F3172}" {
+   Position -180.799 0 1766.385
   }
-  ShapePoint "{684E56CC462B8A62}" {
-   Position -16.376 0.323 1886.827
+  ShapePoint "{68601BD1F8D19236}" {
+   Position 1475.716 0 1781.273
   }
-  ShapePoint "{684E56CC7B5A69A1}" {
-   Position 1374.391 0 1915.782
+  ShapePoint "{68601BD1EC1AA678}" {
+   Position 2102.708 0 550.755
   }
-  ShapePoint "{684E56CC63C3634D}" {
-   Position 2290.714 0 691.952
-  }
-  ShapePoint "{684E56CD95AD1A5B}" {
-   Position 1465.287 0 -879.875
-  }
-  ShapePoint "{684E56CD8AB68EAC}" {
-   Position 41.195 0 -883.747
+  ShapePoint "{68601BD10872C4AA}" {
+   Position 1425.59 0 -832.577
   }
  }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 9148.622 68.844 8344.885
+ m_sDescription "MAIN"
 }
