@@ -1139,8 +1139,15 @@ class CRF_GearscriptManager : ScriptComponent
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		AttachmentSlotComponent verifyAttachmentSlot = null;
+		
+		if (!Resource.Load(attachmentResource).IsValid())
+			return;
+		
 		IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachmentResource), GetGame().GetWorld(), spawnParams);
 		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+		if (!weaponStorageComp)
+			return;
+
 		IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
 		
 		foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
