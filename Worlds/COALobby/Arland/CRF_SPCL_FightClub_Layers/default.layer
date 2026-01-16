@@ -324,6 +324,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
   m_bEnableBFT 0
+  m_bEnableIndividualBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
