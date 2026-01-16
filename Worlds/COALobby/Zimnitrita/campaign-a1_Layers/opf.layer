@@ -1,0 +1,146 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 8534.254 36.763 8148.521
+}
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 7382.402 56.469 6307.503
+  angles 0 -8 0
+ }
+ Ural4320_transport2 {
+  coords 7392.972 56.469 6321.937
+  angles 0 -12 0
+ }
+}
+GenericEntity : "{1FE6CA907FA552E7}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_04.et" {
+ coords 8511.743 36.75 8137.461
+}
+Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ coords 8476.119 36.75 8133.685
+}
+$grp Vehicle : "{26AF1879FBDA37EB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_base.et" {
+ UAZ469_uncovered_CIV_base1 {
+  coords 7364.863 56.469 6300.388
+  angles 0 -102 0
+ }
+ UAZ469_uncovered_CIV_base2 {
+  coords 7546.363 58.135 5706.521
+  angles 0 -4 0
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 8533.683 37.014 8146.589
+ angles 0 -12 0
+}
+GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ coords 8498.456 36.691 8142.021
+ angles 0 -98 0
+}
+$grp Vehicle : "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et" {
+ S105_beige1 {
+  coords 8454.7 36.76 8137.808
+  angles 0 -68 0
+ }
+ S105_beige2 {
+  coords 7804.293 38.95 6493.732
+  angles 1.92 -95.962 1.149
+ }
+}
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
+ coords 8479.509 36.742 8137.469
+ {
+  SCR_AIGroup : "{0CDC49E5036D0A16}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_leaders.et" {
+   coords 10.866 -0.039 1.476
+   {
+    SCR_AIGroup : "{BCB50B3B178A37D1}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Border_Guards.et" {
+     coords -1242.293 17.451 -1860.961
+     angles 0 -102.081 0
+     {
+      SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+       coords -213.178 -21.217 911.091
+       {
+        SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+         coords 1659.824 11.152 -243.314
+         {
+          SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+           coords -164.15 64.91 -638.723
+           {
+            SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+             coords -546.05 -59.022 -636.196
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ {
+  coords 8506.936 36.742 8143.292
+  angles 0.448 89.046 -0.007
+ }
+ {
+  coords 8514.814 36.775 8144.321
+  angles 0.431 92.081 0.464
+ }
+ {
+  coords 8513.735 36.753 8142.61
+  angles -0.447 179.93 0.448
+ }
+ {
+  coords 8511.181 36.75 8142.45
+  angles 0 179.944 0
+ }
+ {
+  coords 8508.722 36.75 8142.423
+  angles 0 179.944 0
+ }
+ {
+  coords 8514.821 36.795 8147.006
+  angles 0.431 92.081 0.464
+ }
+ {
+  coords 8506.854 36.732 8145.904
+  angles 0.431 92.081 0.464
+ }
+}
+$grp Vehicle : "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et" {
+ S105_darkblue1 {
+  coords 8468.477 36.719 8140.992
+  angles 0 -95 0
+ }
+ S105_darkblue2 {
+  coords 7120.063 49.313 7224.554
+  angles 0 -108 0
+ }
+}
+Vehicle Ural4320_transport_covered_closed1 : "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et" {
+ coords 8490.819 36.792 8130.641
+ angles -1.79 0 0
+}
+Vehicle S105_darkbrown1 : "{A1CD41DFE0C93CAD}Prefabs/Vehicles/Wheeled/S105/S105_darkbrown.et" {
+ coords 8464.821 36.75 8136.621
+ angles 0 -92 0
+}
+GenericEntity : "{A46AD3EA3096DACF}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_OPFOR_CAMPAIGN.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_bCheckFactionForOverwriteArsenalConfig 1
+   m_bGetDefaultIfNoFaction 0
+   m_eArsenalSaveType SAVING_DISABLED
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 8511.305 36.758 8145.849
+}
+Vehicle Ural4320_tanker_CIV_randomized1 : "{DCAF0585D17B917A}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_randomized.et" {
+ coords 7446.562 56.469 6313.996
+ angles 0 78 0
+}

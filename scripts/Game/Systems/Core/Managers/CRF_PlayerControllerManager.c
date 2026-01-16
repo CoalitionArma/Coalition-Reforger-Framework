@@ -489,6 +489,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("aar");
 		invoker5.Insert(Advance_Callback);
+		
+		ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("save");
+		invoker6.Insert(SaveMission_Callback);
 	}
 	
 	/**
@@ -755,6 +758,45 @@ class CRF_PlayerControllerManager : ScriptComponent
 			}
 			return;
 		}
+	}
+	
+	/**
+	 * Callback for triggering a manual mission save
+	 * Usage: /save [save name]
+	 * Examples: /save, /save After Attack, /save Checkpoint 1
+	 */
+	void SaveMission_Callback(SCR_ChatPanel panel, string data)
+	{
+		// Check if admin privileges are required
+		if (!SCR_Global.IsAdmin())
+		{
+			if (panel)
+			{
+				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+				if (chatComponent)
+					chatComponent.ShowMessage("You need admin privileges to use the /save command.");
+			}
+			return;
+		}
+		
+		// Use provided name or default
+		string saveName = "Manual Save";
+		if (data && data.Length() > 0)
+		{
+			data.Trim();
+			saveName = data;
+		}
+		
+		// Show confirmation to admin
+		if (panel)
+		{
+			SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+			if (chatComponent)
+				chatComponent.ShowMessage(string.Format("Requesting mission save: %1...", saveName));
+		}
+		
+		// Request save from server via RPC
+		m_RplToAuthorityManager.RequestMissionSave(saveName);
 	}
 	
 	//------------------------------------------------------------------------------------------------

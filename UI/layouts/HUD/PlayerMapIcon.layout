@@ -1,0 +1,14 @@
+ImageWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{68605C4C5228F553}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 50
+  OffsetRight -50
+  SizeY 50
+  OffsetBottom -50
+ }
+ Color 1 0 0 1
+ Texture "{85914613C4644831}UI/Textures/RadialMenu/GroupIndicationArrow.edds"
+ Size 28 28
+}

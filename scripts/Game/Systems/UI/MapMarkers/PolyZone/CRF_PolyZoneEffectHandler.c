@@ -11,11 +11,22 @@ class CRF_PolyZoneEffectHandler : ScriptComponent
 	
 	override void OnPostInit(IEntity owner)
 	{
-		SetEventMask(owner, EntityEvent.FRAME);
+		// Only server needs frame updates for effect processing
+		if (Replication.IsServer())
+			SetEventMask(owner, EntityEvent.FRAME);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Frame update for processing active poly zone effects
+	//! Only runs on server - effects are server-authoritative
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
+		// Guard: Only process effects on server
+		// Clients receive effect state through replication, not frame updates
+		if (!Replication.IsServer())
+			return;
+		
+		// Process all active effects
 		foreach (CRF_PolyZoneTrigger zone, CRF_PolyZoneEffect effect : m_mapPolyZoneEffects)
 		{
 			effect.OnFrame(this, owner, timeSlice);
