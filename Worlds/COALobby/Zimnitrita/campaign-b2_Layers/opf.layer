@@ -1,0 +1,322 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 11051.419 34.05 7274.618
+ angles 0 -0.133 0
+}
+GenericEntity : "{1FE6CA907FA552E7}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_04.et" {
+ coords 11053.512 35.557 7239.986
+ angles -3.921 -0.479 11.916
+ {
+  GenericEntity {
+   ID "5D453938FA2CE085"
+   {
+    GenericEntity {
+     ID "5D453938F45912F0"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 1500
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 11052.046 33.583 7288.379
+ angles 1.551 -172.981 -1.612
+}
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
+ coords 11087.558 32.272 7259.909
+ angles 1.336 0.115 3.132
+ m_aUnitPrefabSlots +{
+  "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+ }
+ {
+  SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+   coords 37.275 2.227 -6.399
+   angles -36.511 -22.616 35.887
+   m_aUnitPrefabSlots {
+    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+   }
+   {
+    SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+     coords -9.136 22.327 35.871
+     angles 40.897 -0 -29.905
+     m_aUnitPrefabSlots {
+      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     {
+      SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+       coords -3.357 -0.09 26.012
+       angles -0.447 -0.004 0.447
+       m_aUnitPrefabSlots {
+        "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+       }
+       {
+        SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+         coords -19.279 0.204 -140.455
+         angles -5.755 -0.388 3.584
+         m_aUnitPrefabSlots {
+          "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+         }
+         {
+          SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+           coords 36.033 2.577 6.529
+           angles 2.043 0.548 -7.444
+           m_aUnitPrefabSlots {
+            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+           }
+           {
+            SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
+             coords 20.035 0.647 23.053
+             angles 8.228 0.056 0.791
+             m_aUnitPrefabSlots {
+              "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 11047.994 37.477 7227.297
+ angles 6.652 -150.631 -5.432
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 11050.99 35.227 7250.006
+ angles -7.598 89.467 -3.475
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.483 0.147 -0.148
+   angles -0.43 3.056 -0.463
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 1.333 0.032 1.06
+     angles -0.447 87.727 0
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords -2.39 -0.187 -0.155
+       angles -0 0.031 0
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords -2.515 -0.129 -0.06
+         {
+          GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+           coords -0.885 -0.073 -1.264
+           angles 0.446 -87.779 0.016
+           {
+            GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+             coords -2.295 -0.049 0.111
+             {
+              GenericEntity : "{A46AD3EA3096DACF}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_OPFOR_CAMPAIGN.et" {
+               components {
+                SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+                 m_bCheckFactionForOverwriteArsenalConfig 1
+                 m_bGetDefaultIfNoFaction 0
+                 m_eArsenalSaveType SAVING_DISABLED
+                }
+                SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+                 "faction affiliation" "OPFOR"
+                }
+               }
+               coords 0.346 0.185 -4.272
+               angles 0 -92.151 -0
+               {
+                GenericEntity {
+                 ID "685018D4885AF34D"
+                 coords -0.349 -0.021 0.867
+                 angles 0 -45.82 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF343"
+                 coords 0.81 0.01 -1.144
+                 angles 7.117 97.794 -1.702
+                }
+                GenericEntity {
+                 ID "685018D4885AF340"
+                 coords -1.466 0.112 -0.784
+                 angles 30.705 -127.202 -21.186
+                }
+                GenericEntity {
+                 ID "685018D4885AF346"
+                 coords -1.135 0.064 -0.059
+                 angles 0 89.179 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33A"
+                 coords -0.859 0.089 -0.925
+                 angles 11.144 -118.209 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33B"
+                 coords 0.035 0.049 -1.065
+                 angles 0 177.707 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D60"
+                 coords 1.105 -0.051 0.284
+                 angles 0 39.419 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF338"
+                 coords 0.534 -0.047 0.923
+                 angles 0 -19.083 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D64"
+                 coords 0.438 -0.036 0.316
+                 angles 0 54.557 0
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}Prefabs/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 20
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+   }
+  }
+ }
+ coords 11046.896 35.843 7249.72
+ angles -7.705 88.313 -4.645
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 11065.693 33.622 7260.572
+ Points {
+  ShapePoint "{68602D44CFA265A4}" {
+   Position 113.694 0 71.127
+  }
+  ShapePoint "{68602D44FB0E6C45}" {
+   Position -3.539 0 -369.892
+  }
+  ShapePoint "{68602D44F81042D2}" {
+   Position -1033.483 0 -238.417
+  }
+  ShapePoint "{68602D44FFC1230F}" {
+   Position -1170.673 0 -303.249
+  }
+  ShapePoint "{68602D44FD6F40FF}" {
+   Position -1208.369 0 -235.505
+  }
+  ShapePoint "{68602D44FDE583E1}" {
+   Position -1200.467 0 -137.217
+  }
+  ShapePoint "{68602D44FCCA275C}" {
+   Position -1136.821 0 -41.354
+  }
+  ShapePoint "{68602D44F3E37612}" {
+   Position -1038.773 0 -5.828
+  }
+  ShapePoint "{68602D44E251E182}" {
+   Position -400.403 0 52.351
+  }
+  ShapePoint "{68602D44E005E2C0}" {
+   Position -344.662 0 418.843
+  }
+  ShapePoint "{68602D44E6E2600B}" {
+   Position -1224.843 0 847.635
+  }
+  ShapePoint "{68602D44E5370378}" {
+   Position -1196.472 0 947.907
+  }
+  ShapePoint "{68602D44E49B84DF}" {
+   Position -949.27 0 871.32
+  }
+  ShapePoint "{68602D4418E01434}" {
+   Position -239.775 0 699.453
+  }
+  ShapePoint "{68602D4416EC8F40}" {
+   Position -235.386 49.994 1363.409
+  }
+  ShapePoint "{68602D441683268F}" {
+   Position -409.984 0 1581.756
+  }
+  ShapePoint "{68602D44150CB2C8}" {
+   Position -190.449 0 1725.017
+  }
+  ShapePoint "{68602D440AC458FB}" {
+   Position 228.311 0 850.679
+  }
+  ShapePoint "{68602D44075FDA14}" {
+   Position 162.045 0 411.789
+  }
+ }
+}

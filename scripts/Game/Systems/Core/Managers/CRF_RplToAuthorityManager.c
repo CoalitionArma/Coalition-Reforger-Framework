@@ -2169,4 +2169,20 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		pc.RefreshGlobalMarkers(globalMarkers);
 	}
+	
+	void RequestSupplyUpdate(RplId supplyArsenalId)
+	{
+		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
+	{
+		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
+		
+		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
+		if (!supplyComp)
+			return;
+		supplyComp.UpdateCurrentSupply();
+	}
 };

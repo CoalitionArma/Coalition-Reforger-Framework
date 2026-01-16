@@ -50,6 +50,9 @@ class CRF_GearScriptContainer
  	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableBFT;
 	
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bEnableIndividualBFT;
+	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rShortRangeRadioPrefab;
 	

@@ -1,0 +1,23 @@
+SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevRifleman_p.et" {
+ coords 10010.715 67.168 8778.309
+ angles 0 0.433 0
+ m_aUnitPrefabSlots {
+  "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et"
+  "{9E7073842E6135B7}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_RTO_P.et"
+  "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et"
+  "{9E7073842E6135B7}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_RTO_P.et"
+ }
+}
+$grp Vehicle : "{81554826C1B2A2D6}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_Journo.et" {
+ UAZ452_cargo_CIV_Journo1 {
+  coords 10018.384 67.747 8772.743
+  angles -9.243 -117.696 4.324
+ }
+ UAZ452_cargo_CIV_Journo2 {
+  coords 10024.082 68.103 8776.075
+  angles -5.757 -117.247 2.457
+ }
+}
+SCR_AIGroup : "{A2FC590C090D9693}Prefabs/Groups/CIV/Zeus/CRF_CIV_Zeus.et" {
+ coords 10010.941 67.332 8783.479
+}

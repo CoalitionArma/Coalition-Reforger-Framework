@@ -13,6 +13,11 @@ class CRF_VehicleArsenalAction: ScriptedUserAction
 	{
 		CRF_SupplyArsenal menu = CRF_SupplyArsenal.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SupplyArsenal));
 		menu.m_ArsenalPoint = pOwnerEntity.GetRootParent();
+		RplComponent rplComp = RplComponent.Cast(pOwnerEntity.FindComponent(RplComponent));
+		if (!rplComp)
+			return;
+		
+		CRF_RplToAuthorityManager.GetInstance().RequestSupplyUpdate(rplComp.Id());
 	}
 	
 	override bool CanBePerformedScript(IEntity user)

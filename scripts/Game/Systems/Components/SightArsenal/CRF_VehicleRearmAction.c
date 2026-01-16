@@ -13,6 +13,11 @@ class CRF_VehicleRearmAction: ScriptedUserAction
 	{
 		CRF_SupplyArsenalVehicle menu = CRF_SupplyArsenalVehicle.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SupplyArsenalVehicle));
 		menu.m_Truck = pOwnerEntity.GetRootParent();
+		RplComponent rplComp = RplComponent.Cast(pOwnerEntity.FindComponent(RplComponent));
+		if (!rplComp)
+			return;
+		
+		CRF_RplToAuthorityManager.GetInstance().RequestSupplyUpdate(rplComp.Id());
 	}
 	
 	override bool CanBePerformedScript(IEntity user)

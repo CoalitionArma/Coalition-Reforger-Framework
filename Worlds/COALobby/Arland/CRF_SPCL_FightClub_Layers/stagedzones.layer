@@ -4,123 +4,72 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
    CRF_PolyZone "{65862E4575B86577}" {
     m_cPolygonColor 0.045 0.045 0.045 0
     m_cPolygonBorderColor 0.045 0.045 0.045 0
-    m_bReversed 0
    }
   }
   coords 1808.104 23.437 1917.201
   Points {
-   ShapePoint "{685322ABA085C8AD}" {
-    Position -1926.933 -23.437 -107.467
+   ShapePoint "{685CB25330465F9A}" {
+    Position 211.892 -35.916 -1223.066
    }
-   ShapePoint "{685322AB9955A837}" {
-    Position -1909.153 -23.437 1870.793
+   ShapePoint "{685CB25330FB2550}" {
+    Position -306.66 -36.658 -1120.769
    }
-   ShapePoint "{685322AB9894B144}" {
-    Position 2045.327 -122.12 1829.749
+   ShapePoint "{685CB25333183C72}" {
+    Position -752.233 -46.942 -921.268
    }
-   ShapePoint "{685322AB9F9CD161}" {
-    Position 1978.621 -23.437 -2140.46
+   ShapePoint "{685CB25333C2272B}" {
+    Position -1031.845 -37.541 -572.157
    }
-   ShapePoint "{685322AB9EC928B0}" {
-    Position -1924.831 -23.437 -2079.107
+   ShapePoint "{685CB2531DD8025B}" {
+    Position -1163.329 -44.345 -215.663
    }
-   ShapePoint "{685322AB922E310B}" {
-    Position -1914.444 -23.437 -283.251
+   ShapePoint "{685CB25332A19EA9}" {
+    Position -1230.328 -29.402 229.905
    }
-   ShapePoint "{685322ABE8D36293}" {
-    Position -951.013 -30.422 -276.024
+   ShapePoint "{685CB2533521AB35}" {
+    Position -1157.164 15.563 640.369
    }
-   ShapePoint "{685322AB97F8BD38}" {
-    Position 172.874 36.273 -823.387
+   ShapePoint "{685CB25309EE5990}" {
+    Position -1082.147 12.963 924.383
    }
-   ShapePoint "{685322AB8CA9C51C}" {
-    Position 907.568 17.873 -517.372
+   ShapePoint "{685CB25335B161BF}" {
+    Position -980.321 -28.94 1196.133
    }
-   ShapePoint "{685322AB96B03945}" {
-    Position 1204.185 40.289 -61.624
+   ShapePoint "{685CB25335EE8D26}" {
+    Position -542.932 4.783 1492.099
    }
-   ShapePoint "{685322AB897BB0F4}" {
-    Position 1084.053 25.377 818.206
+   ShapePoint "{685CB25337FFD02F}" {
+    Position -161.175 -28.354 1643.563
    }
-   ShapePoint "{685322AB8B4F5934}" {
-    Position 397.084 29.433 1043.87
+   ShapePoint "{685CB253255A1CEB}" {
+    Position 297.575 -35.347 1695.787
    }
-   ShapePoint "{685322AB8A3870BA}" {
-    Position -392.743 15.016 933.996
+   ShapePoint "{685CB253293FEFC1}" {
+    Position 702.445 -45.371 1638.932
    }
-   ShapePoint "{685322AB80600883}" {
-    Position -1044.846 -37.135 -127.682
+   ShapePoint "{685CB253280FADDE}" {
+    Position 1102.141 -0.82 1399.894
    }
-  }
-  {
-   CRF_PolyZoneTrigger {
-    ID "658635BEF7631DCD"
-    components {
-     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-      m_fHeight 100
-     }
-    }
-    m_bReversed 0
+   ShapePoint "{685CB253289CF1D2}" {
+    Position 1530.366 -27.431 973.916
    }
-  }
- }
- Zone2 {
-  components {
-   CRF_PolyZone "{65862E4575B86577}" {
-    m_cPolygonColor 0.045 0.045 0.045 0
-    m_cPolygonBorderColor 0.045 0.045 0.045 0
-    m_bReversed 0
+   ShapePoint "{685CB2532B3DC6FA}" {
+    Position 1713.429 -20.91 570.556
    }
-  }
-  coords 1929.124 77.225 2234.281
-  Points {
-   ShapePoint "{685322AC0A1119A0}" {
-    Position -1147.689 -90.078 -443.157
+   ShapePoint "{685CB2532B5543B4}" {
+    Position 1746.607 -28.403 105.475
    }
-   ShapePoint "{685322AC0DD3EBB1}" {
-    Position -523.326 -38.484 607.892
+   ShapePoint "{685CB2532BFC95C0}" {
+    Position 1660.607 -17.165 -334.975
    }
-   ShapePoint "{685322AC0051CBE0}" {
-    Position 270.901 -24.749 724.511
+   ShapePoint "{685CB2532A7E1355}" {
+    Position 1462.941 -29.932 -803.958
    }
-   ShapePoint "{685322ADC56D0706}" {
-    Position 447.298 -13.114 666.198
+   ShapePoint "{685CB2532A9EBFC9}" {
+    Position 1089.721 -34.247 -1085.19
    }
-   ShapePoint "{685322ADA0C72B97}" {
-    Position 211.939 -26.525 521.953
-   }
-   ShapePoint "{685322AC659539A4}" {
-    Position -169.046 -33.744 241.507
-   }
-   ShapePoint "{685322AC662BDC3E}" {
-    Position -271.422 -37.717 -70.053
-   }
-   ShapePoint "{685322ADFDF96248}" {
-    Position -110.898 -56.953 -383.088
-   }
-   ShapePoint "{685322AC6680CE2A}" {
-    Position 331.672 -16.182 -445.266
-   }
-   ShapePoint "{685322ADFFB908DB}" {
-    Position 696.846 9.123 -325.122
-   }
-   ShapePoint "{685322AD391BA487}" {
-    Position 1040.614 -24.464 -70.056
-   }
-   ShapePoint "{685322AC59BC5294}" {
-    Position 1065.489 -16.277 -286.575
-   }
-   ShapePoint "{685322AC5899ECD8}" {
-    Position 1080.253 -13.323 -374.756
-   }
-   ShapePoint "{685322AC5B942FE8}" {
-    Position 776.306 -35.033 -825.136
-   }
-   ShapePoint "{685322AC5AB7F8D2}" {
-    Position 52.738 -17.261 -1133.882
-   }
-   ShapePoint "{685322AC5C0E80A3}" {
-    Position -1080.103 -85.339 -582.855
+   ShapePoint "{685CB2532D2DF0A8}" {
+    Position 661.26 -22.612 -1220.272
    }
   }
   {
@@ -128,10 +77,11 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     ID "658635BEF7631DCD"
     components {
      CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-      m_fHeight 100
+      m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+      m_bStretchMaterial 1
      }
     }
-    m_bReversed 0
+    UpdatePeriod 2
    }
   }
  }
@@ -140,70 +90,66 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
    CRF_PolyZone "{65862E4575B86577}" {
     m_cPolygonColor 0.045 0.045 0.045 0
     m_cPolygonBorderColor 0.045 0.045 0.045 0
-    m_bReversed 0
    }
   }
-  coords 2098.093 72.48 2283.677
+  coords 1743.631 23.437 1993.291
   Points {
-   ShapePoint "{685322AD70E1C8B4}" {
-    Position -336.759 -29.085 195.006
+   ShapePoint "{685CB25EE1A5A5E7}" {
+    Position 382.443 -8.654 -379.488
    }
-   ShapePoint "{685322AD737975EC}" {
-    Position 47.357 -21.534 475.862
+   ShapePoint "{685CB25EE4105F17}" {
+    Position 183.235 -24.306 -245.934
    }
-   ShapePoint "{685322AD721D6684}" {
-    Position 277.12 -7.937 620.442
+   ShapePoint "{685CB25EDFB03035}" {
+    Position 89.756 1.009 -77.431
    }
-   ShapePoint "{685322AD72F7820B}" {
-    Position 799.302 -25.421 453.872
+   ShapePoint "{685CB25EE7BE3432}" {
+    Position 25.793 2.077 83.863
    }
-   ShapePoint "{685322AD775D1A44}" {
-    Position 821.606 -30.641 270.992
+   ShapePoint "{685CB25ED07AA3D9}" {
+    Position 23.459 25.339 251.904
    }
-   ShapePoint "{685322AD681E9C7F}" {
-    Position 514.388 41.808 123.036
+   ShapePoint "{685CB25EE7D4F681}" {
+    Position 77.768 31.707 429.259
    }
-   ShapePoint "{685322AD6A227A91}" {
-    Position 353.863 31.407 198.385
+   ShapePoint "{685CB25EE6564C2E}" {
+    Position 184.614 22.589 565.473
    }
-   ShapePoint "{685322AD6AA04365}" {
-    Position 183.904 8.165 144.108
+   ShapePoint "{685CB25ED4CE2A09}" {
+    Position 351.279 23.011 644.678
    }
-   ShapePoint "{685322AD6D049754}" {
-    Position 123.834 16.66 -8.75
+   ShapePoint "{685CB25EE6E42DD2}" {
+    Position 514.607 37.336 694.999
    }
-   ShapePoint "{685322AD6D81DB67}" {
-    Position 177.865 5.776 -161.246
+   ShapePoint "{685CB25EC92CAD15}" {
+    Position 713.293 52.227 704.801
    }
-   ShapePoint "{685322AD6C64005B}" {
-    Position 323.779 32.277 -175.919
+   ShapePoint "{685CB25ED965919B}" {
+    Position 944.819 71.502 648.161
    }
-   ShapePoint "{685322AD6F77B5F5}" {
-    Position 509.251 45.342 -120.042
+   ShapePoint "{685CB25ED9E25A87}" {
+    Position 1090.803 35.359 536.132
    }
-   ShapePoint "{685322AD6EB87B60}" {
-    Position 540.877 35.179 10.775
+   ShapePoint "{685CB25ECD7B4A57}" {
+    Position 1168.553 40.976 366.877
    }
-   ShapePoint "{685322AD600B8869}" {
-    Position 517.595 41.474 119.042
+   ShapePoint "{685CB25ED87CF563}" {
+    Position 1201.204 29.321 222.969
    }
-   ShapePoint "{685322AD637491CE}" {
-    Position 818.317 -30.305 261.973
+   ShapePoint "{685CB25ECEEA80DF}" {
+    Position 1206.93 27.699 59.387
    }
-   ShapePoint "{685322AD62F3C476}" {
-    Position 864.011 -18.993 -117.027
+   ShapePoint "{685CB25ED8878337}" {
+    Position 1156.283 39.78 -90.062
    }
-   ShapePoint "{685322AD6425BA2F}" {
-    Position 529.563 13.579 -371.053
+   ShapePoint "{685CB25EDB0D273C}" {
+    Position 1053.696 44.042 -228.847
    }
-   ShapePoint "{685322AD64932F87}" {
-    Position 161.081 -11.858 -494.455
+   ShapePoint "{685CB25EDB92F348}" {
+    Position 884.895 48.212 -348.144
    }
-   ShapePoint "{685322AD6704AA4B}" {
-    Position -276.92 -52.169 -433.896
-   }
-   ShapePoint "{685322AD67EF6092}" {
-    Position -442.498 -33 -118.974
+   ShapePoint "{685CB25EDA1F70C9}" {
+    Position 612.85 41.4 -409.355
    }
   }
   {
@@ -211,10 +157,215 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     ID "658635BEF7631DCD"
     components {
      CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-      m_fHeight 100
+      m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+      m_bStretchMaterial 1
      }
     }
-    m_bReversed 0
+    UpdatePeriod 2
+   }
+  }
+ }
+ Zone2 {
+  components {
+   CRF_PolyZone "{65862E4575B86577}" {
+    m_cPolygonColor 0.045 0.045 0.045 0
+    m_cPolygonBorderColor 0.045 0.045 0.045 0
+   }
+  }
+  coords 1743.631 23.437 1993.291
+  Points {
+   ShapePoint "{685CB255CB94DA6C}" {
+    Position 170.805 22.286 -677.075
+   }
+   ShapePoint "{685CB255CC2AD3DB}" {
+    Position -136.676 -45.684 -530.583
+   }
+   ShapePoint "{685CB255CCA4EE69}" {
+    Position -373.678 -58.186 -342.081
+   }
+   ShapePoint "{685CB255CF30418E}" {
+    Position -529.548 -3.863 -45.155
+   }
+   ShapePoint "{685CB255CF6C40A1}" {
+    Position -591.648 15.563 351.906
+   }
+   ShapePoint "{685CB255CE3B9A5D}" {
+    Position -526.657 15.324 677.652
+   }
+   ShapePoint "{685CB255CE4673A1}" {
+    Position -283.303 14.563 915.873
+   }
+   ShapePoint "{685CB2553E41D016}" {
+    Position -15.983 18.445 1025.665
+   }
+   ShapePoint "{685CB255CEF02F4B}" {
+    Position 323.899 25.728 1099.42
+   }
+   ShapePoint "{685CB255C10C3625}" {
+    Position 663.797 -0.489 1078.338
+   }
+   ShapePoint "{685CB2553270D667}" {
+    Position 959.395 45.909 962.504
+   }
+   ShapePoint "{685CB255C1B91F5F}" {
+    Position 1149.747 22.248 800.453
+   }
+   ShapePoint "{685CB255C1EBA6AA}" {
+    Position 1292.544 8.404 555.848
+   }
+   ShapePoint "{685CB255C013471F}" {
+    Position 1434.864 -2.002 253.898
+   }
+   ShapePoint "{685CB25529AA7B1C}" {
+    Position 1455.62 16.385 -50.632
+   }
+   ShapePoint "{685CB255C057288F}" {
+    Position 1351.399 44.536 -362.618
+   }
+   ShapePoint "{685CB255C095815E}" {
+    Position 1177.973 12.382 -620.808
+   }
+   ShapePoint "{685CB255C0C22B25}" {
+    Position 839.313 41.883 -755.918
+   }
+   ShapePoint "{685CB255C65F25DD}" {
+    Position 523.933 66.429 -749.017
+   }
+  }
+  {
+   CRF_PolyZoneTrigger {
+    ID "658635BEF7631DCD"
+    components {
+     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+      m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+      m_bStretchMaterial 1
+     }
+    }
+    UpdatePeriod 2
+   }
+  }
+ }
+ Zone4 {
+  components {
+   CRF_PolyZone "{65862E4575B86577}" {
+    m_cPolygonColor 0.045 0.045 0.045 0
+    m_cPolygonBorderColor 0.045 0.045 0.045 0
+   }
+  }
+  coords 1753.784 23.437 2053.759
+  Points {
+   ShapePoint "{685CB25E64940095}" {
+    Position 622.971 61.942 -131.679
+   }
+   ShapePoint "{685CB25E5A0A1A4C}" {
+    Position 521.024 38.088 -73.557
+   }
+   ShapePoint "{685CB25E51E07BE2}" {
+    Position 443.413 21.452 8.603
+   }
+   ShapePoint "{685CB25E5A4F03D8}" {
+    Position 412.031 42.755 147.487
+   }
+   ShapePoint "{685CB25E5AE8EF2A}" {
+    Position 425.714 61.611 276.386
+   }
+   ShapePoint "{685CB25E5D0A32A7}" {
+    Position 527.503 57.785 402.344
+   }
+   ShapePoint "{685CB25E5DAA96BE}" {
+    Position 657.643 71.429 473.099
+   }
+   ShapePoint "{685CB25E5DCE1831}" {
+    Position 795.096 105.063 447.09
+   }
+   ShapePoint "{685CB25E5C5CEF02}" {
+    Position 934.321 71.376 384.94
+   }
+   ShapePoint "{685CB25E5CFA0769}" {
+    Position 1005.242 65.269 248.873
+   }
+   ShapePoint "{685CB25E5F223B29}" {
+    Position 1005.754 56.473 120.667
+   }
+   ShapePoint "{685CB25E5F5289E7}" {
+    Position 956.967 51.523 -13.354
+   }
+   ShapePoint "{685CB25E5FF85F5D}" {
+    Position 861.516 64.915 -90.301
+   }
+   ShapePoint "{685CB25E440B0666}" {
+    Position 757.974 68.686 -134.734
+   }
+  }
+  {
+   CRF_PolyZoneTrigger {
+    ID "658635BEF7631DCD"
+    components {
+     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+      m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+      m_bStretchMaterial 1
+     }
+    }
+    UpdatePeriod 2
+   }
+  }
+ }
+ Zone5 {
+  components {
+   CRF_PolyZone "{65862E4575B86577}" {
+    m_cPolygonColor 0.045 0.045 0.045 0
+    m_cPolygonBorderColor 0.045 0.045 0.045 0
+   }
+  }
+  coords 1787.879 23.437 2108.194
+  Points {
+   ShapePoint "{685CB25DB7B2414E}" {
+    Position 756.565 112.703 105.225
+   }
+   ShapePoint "{685E012B1BD81821}" {
+    Position 730.355 119.363 104.736
+   }
+   ShapePoint "{685CB25DAA804C22}" {
+    Position 704.058 116.817 106.452
+   }
+   ShapePoint "{685CB25DAD169F33}" {
+    Position 681.658 118.715 124.399
+   }
+   ShapePoint "{685CB25DAD8761D8}" {
+    Position 663.948 110.387 155.211
+   }
+   ShapePoint "{685CB25DAC193EBB}" {
+    Position 668.972 106.958 187.01
+   }
+   ShapePoint "{685CB25DA3646B01}" {
+    Position 692.289 117.645 210.369
+   }
+   ShapePoint "{685CB25DAF12151F}" {
+    Position 721.317 121.62 220.994
+   }
+   ShapePoint "{685CB239779F003F}" {
+    Position 754.346 113.83 218.456
+   }
+   ShapePoint "{685CB25DAFA2D510}" {
+    Position 777.475 107.197 195.006
+   }
+   ShapePoint "{685CB25DAFC9B9C7}" {
+    Position 786.384 104.201 161.365
+   }
+   ShapePoint "{685CB25DAE4798AD}" {
+    Position 780.033 111.669 128.664
+   }
+  }
+  {
+   CRF_PolyZoneTrigger {
+    ID "658635BEF7631DCD"
+    components {
+     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+      m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+      m_bStretchMaterial 1
+     }
+    }
+    UpdatePeriod 2
    }
   }
  }
