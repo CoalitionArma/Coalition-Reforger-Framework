@@ -8,6 +8,9 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
 	
+	// Track entities currently having gear applied to prevent race conditions
+	protected ref set<IEntity> m_sEntitiesBeingGeared = new set<IEntity>();
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Get singleton instance of the GearscriptManager
@@ -98,6 +101,13 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
 			return;
 
+		// Prevent multiple simultaneous gearscript operations on same entity (fixes MuzzleInMagComponent crash)
+		if (m_sEntitiesBeingGeared.Contains(entity))
+		{
+			Print(string.Format("CRF GEARSCRIPT: Entity %1 is already being geared, skipping to prevent race condition", entity), LogLevel.WARNING);
+			return;
+		}
+
 		// Determine faction from resource name
 		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
 		if (factionKey.IsEmpty())
@@ -117,6 +127,9 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!ValidateComponents(entity, inventory, inventoryManager))
 			return;
 
+		// Mark entity as being geared
+		m_sEntitiesBeingGeared.Insert(entity);
+
 		// Get role and clear entity
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
@@ -130,12 +143,19 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		// If entity was deleted or snapped up by the slotting manager
 		if(!entity)
+		{
+			// Clean up tracking set
+			m_sEntitiesBeingGeared.RemoveItem(entity);
 			return;
+		}
 		
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
+		{
+			m_sEntitiesBeingGeared.RemoveItem(entity);
 			return;
+		}
 		
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CreateSpawnParams(entity);
@@ -163,7 +183,12 @@ class CRF_GearscriptManager : ScriptComponent
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
 	{
 		if (!inventory || !inventoryManager || !entity)
+		{
+			// Clean up tracking set if entity is invalid
+			if (entity)
+				m_sEntitiesBeingGeared.RemoveItem(entity);
 			return;
+		}
 		
 		// Apply weapons (originally 375ms delay, now immediate in this consolidated callback at 500ms)
 		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
@@ -187,7 +212,22 @@ class CRF_GearscriptManager : ScriptComponent
 				pc.InitializeRadioFromServer();
 			}
 		}
+		
+		// CRITICAL: Mark entity as fully geared after ALL operations complete (including weapon attachment delays)
+		// Wait for attachment delay (1000ms from SpawnWeapon) + safety margin
+		GetGame().GetCallqueue().CallLater(FinishGearingEntity, 1200, false, entity);
 	}	
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Mark entity as finished being geared, allowing future gearscript operations
+	 * @param entity Entity that finished being geared
+	 */
+	protected void FinishGearingEntity(IEntity entity)
+	{
+		if (entity && m_sEntitiesBeingGeared.Contains(entity))
+			m_sEntitiesBeingGeared.RemoveItem(entity);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -280,9 +320,46 @@ class CRF_GearscriptManager : ScriptComponent
 
 		items.InsertAll(itemsRoot);
 
+		// Separate weapons from other items to delete weapons first
+		// This prevents MuzzleInMagComponent crashes when projectiles are deleted before weapon detaches them
+		array<IEntity> weapons = {};
+		array<IEntity> otherItems = {};
+		
 		foreach (IEntity item : items)
 		{
-			if(item)
+			if (!item)
+				continue;
+				
+			// Check if item is a weapon
+			if (item.FindComponent(WeaponComponent))
+				weapons.Insert(item);
+			else
+				otherItems.Insert(item);
+		}
+		
+		// Delete weapons FIRST - this allows them to properly detach projectiles from MuzzleInMagComponent
+		foreach (IEntity weapon : weapons)
+		{
+			if (weapon)
+				SCR_EntityHelper.DeleteEntityAndChildren(weapon);
+		}
+		
+		// Small delay before deleting other items to ensure weapon cleanup is complete
+		// This prevents race conditions with MuzzleInMagComponent projectile attachment
+		if (!otherItems.IsEmpty())
+			GetGame().GetCallqueue().CallLater(DeleteRemainingItems, 50, false, otherItems);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Delete remaining non-weapon items after weapon cleanup
+	 * @param items Array of items to delete
+	 */
+	protected void DeleteRemainingItems(array<IEntity> items)
+	{
+		foreach (IEntity item : items)
+		{
+			if (item)
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 	}
@@ -1284,11 +1361,18 @@ class CRF_GearscriptManager : ScriptComponent
 			// Special handling for throwables
 			if (isThrowable)
 			{
+				// Delete the pre-spawned entity first to avoid duplicate projectile attachment issues
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				
+				// Now spawn directly to storage - this prevents MuzzleInMagComponent conflicts
 				bool spawned = inventoryManager.TrySpawnPrefabToStorage(item, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
 				if (!spawned)
-					InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isThrowable);
-				else 
-					SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				{
+					// If direct spawn failed, try spawning again and inserting manually
+					resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
+					if (resourceSpawned)
+						InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isThrowable);
+				}
 				
 				continue;
 			}
