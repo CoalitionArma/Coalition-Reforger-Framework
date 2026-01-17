@@ -1,0 +1,45 @@
+MatPBRMulti {
+ Color 0.415 0.539 0.666 1
+ Cull none
+ GlobalMCRMap "{88E9966A46FF39BA}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusetail_BW_BCR.edds"
+ GlobalMCRMode Multiply
+ OverlayBlackPower 0.504
+ MaskMap "{60077CE2BB59D8FA}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusetail_Mask.edds"
+ VFXMap "{EA3E928D02C4B365}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusetail_VFX.edds"
+ GlobalNMOMap "{B0312DF89F886B24}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusetail_BW_NMO.edds"
+ MudColor 0.016 0.012 0.008 1
+ MudRoughness 3
+ MudBCRMap "{366028E90066FC57}Assets/_SharedData/Dirt/ST_Dirt_Sand_BCR.edds"
+ MudNMOMap "{0EB8937BD911AEC9}Assets/_SharedData/Dirt/ST_Dirt_Sand_NMO.edds"
+ MudMaskMap "{8A50472D717443E4}Assets/_SharedData/DetailMask/ST_Dirt_02_Mask1.edds"
+ MudUVTransform MatUVTransform "{6560E5A053038A7A}" {
+  TilingU 10
+  TilingV 10
+ }
+ DirtColor 0.251 0.224 0.165 1
+ DirtBCRMap "{15A4D0147C0F3804}Assets/_SharedData/Plaster/ST_Plaster_Damaged_01_BCR.edds"
+ DirtMaskMap "{A074608E879A25CB}Assets/_SharedData/DetailMask/ST_Dirt_01_Mask1.edds"
+ Enabled_3 1
+ Color_3 0.224 0.165 0.09 1
+ BCR_3 "{8A0C885766CAD60D}Assets/_SharedData/Metal/ST_Rust_01_Aluminium_V2_BCR.edds"
+ NMO_3 "{5E9B5A9AF633BD94}Assets/_SharedData/Metal/ST_Steel_Battered_NMO.edds"
+ UVTransform_3 MatUVTransform "{6560E5A0FBEB20BB}" {
+  TilingU 14
+  TilingV 14
+ }
+ Enabled_2 1
+ Color_2 0.114 0.106 0.067 1
+ BCR_2 "{8A0C885766CAD60D}Assets/_SharedData/Metal/ST_Rust_01_Aluminium_V2_BCR.edds"
+ NMO_2 "{5E9B5A9AF633BD94}Assets/_SharedData/Metal/ST_Steel_Battered_NMO.edds"
+ UVTransform_2 MatUVTransform "{6560E5A0E212AC3B}" {
+  TilingU 14
+  TilingV 14
+ }
+ Color_1 0.067 0.067 0.031 1
+ BCR_1 "{8A0C885766CAD60D}Assets/_SharedData/Metal/ST_Rust_01_Aluminium_V2_BCR.edds"
+ NMO_1 "{5E9B5A9AF633BD94}Assets/_SharedData/Metal/ST_Steel_Battered_NMO.edds"
+ UVTransform_1 MatUVTransform "{6560E5A0E0C3416C}" {
+  TilingU 14
+  TilingV 14
+ }
+}

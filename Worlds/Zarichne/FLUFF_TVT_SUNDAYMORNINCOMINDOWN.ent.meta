@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{1AF76770F7201E53}Worlds/Zarichne/FLUFF_TVT_SUNDAYMORNINCOMINDOWN.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}

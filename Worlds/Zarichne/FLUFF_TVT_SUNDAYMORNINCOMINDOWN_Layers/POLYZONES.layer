@@ -1,4 +1,4 @@
-PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFORSafestartBoundry.et" {
  components {
   CRF_PolyZone "{6586537E5441D07A}" {
    m_bIsSafestartBorder 0
@@ -47,94 +47,17 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
   }
  }
 }
-$grp CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsEditable/Markers/ObjectiveMarkers/INDFORObjectiveMarker.et" {
- {
-  coords 1469.068 27.9 2267.193
-  angles 0 90 0
-  m_MarkerColor 0.561 0.071 0.439 1
-  m_sQuadName "mine-single-3"
-  m_fWorldSize 50
-  m_sDescription "Bombmaker's House"
- }
- {
-  coords 1302.29 26.256 2418.537
-  angles 0 90 0
-  m_MarkerColor 0.561 0.071 0.439 1
-  m_sQuadName "heal"
-  m_fWorldSize 50
-  m_sDescription "Medical Storage"
- }
- {
-  coords 1436.53 32.632 2409.17
-  angles 0 90 0
-  m_MarkerColor 0.561 0.071 0.439 1
-  m_sQuadName "flag-2"
-  m_fWorldSize 50
-  m_sDescription "Leadership HQ"
- }
- {
-  coords 1458.082 34.32 2495.857
-  m_MarkerColor 0.561 0.071 0.439 1
-  m_fWorldSize 100
-  m_sDescription "Cache Alpha"
- }
- {
-  coords 1413.688 32.905 2279.425
-  m_MarkerColor 0.561 0.071 0.439 1
-  m_fWorldSize 100
-  m_sDescription "Cache Bravo"
- }
-}
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
- coords 3006.438 9.653 822.655
- Points {
-  ShapePoint "{685D124691BACCF1}" {
-   Position -0.354 0 1.64
-  }
-  ShapePoint "{685D124696D4A3DD}" {
-   Position 31.576 0 13.135
-  }
-  ShapePoint "{685D12469741632E}" {
-   Position 62.814 0 14.745
-  }
-  ShapePoint "{685D1246949BADA3}" {
-   Position 99.303 0 23.457
-  }
-  ShapePoint "{685D12469AD21600}" {
-   Position 122.272 0 147.235
-  }
-  ShapePoint "{685D12469B7D5453}" {
-   Position 63.836 0 175.325
-  }
-  ShapePoint "{685D12469C672B0F}" {
-   Position -28.851 0 131.254
-  }
-  ShapePoint "{685D12469D41933B}" {
-   Position -61.598 0 100.423
-  }
- }
-}
-$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
- {
-  coords 3059.659 11.716 876.63
-  angles 0 90 0
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "flag-2"
-  m_fWorldSize 60
-  m_sDescription "BLUFOR SPAWN"
- }
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
  cacheaborder1 {
   coords 1546.05 19.531 2517.411
-  angles 0 0 0
   m_MarkerColor 0 0.125 0.502 1
   m_sQuadName "dot"
   m_fWorldSize 30
   m_sDescription ""
   {
-   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
     {
      coords -21.023 0.319 32.981
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -142,7 +65,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -41.002 0.596 62.724
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -150,7 +72,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -77.036 1.017 74.528
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -158,7 +79,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -121.734 1.126 80.618
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -166,7 +86,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -168.822 1.126 60.843
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -174,7 +93,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -202.082 1.126 39.304
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -182,7 +100,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -212.718 1.126 24.598
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -190,7 +107,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -210.981 1.751 1.084
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -198,7 +114,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -192.037 1.125 -23.571
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -206,7 +121,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -179.314 1.298 -49.113
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -214,7 +128,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -166.862 1.253 -61.541
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -222,7 +135,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -145.302 1.126 -56.979
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -230,7 +142,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -111.751 1.126 -44.65
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -238,7 +149,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -86.378 1.263 -54.716
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -246,7 +156,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -38.77 1.208 -23.564
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -257,16 +166,14 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
  }
  cachebbordser {
   coords 1475.284 20.312 2189.647
-  angles 0 0 0
   m_MarkerColor 0 0.125 0.502 1
   m_sQuadName "dot"
   m_fWorldSize 30
   m_sDescription ""
   {
-   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
     {
      coords -13.286 0.156 24.678
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -274,7 +181,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -32.854 0.188 63.091
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -282,7 +188,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -50.229 0.219 98.438
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -290,7 +195,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -68.005 0.25 126.455
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -298,7 +202,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -101.609 0.344 131.765
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -306,7 +209,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -136.719 0.344 120.131
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -314,7 +216,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -127.034 0.344 76.821
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -322,7 +223,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -116.806 0.344 36.812
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -330,7 +230,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -110.84 0.281 -2.779
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -338,7 +237,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -106.743 -0.395 -42.952
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -346,7 +244,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -84.38 -0.5 -52.068
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -354,7 +251,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -48.784 -0.187 -27.868
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -362,7 +258,6 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
     {
      coords -16.006 -0.031 -15.7
-     angles 0 0 0
      m_MarkerColor 0 0.125 0.502 1
      m_sQuadName "dot"
      m_fWorldSize 30
@@ -370,45 +265,5 @@ $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMar
     }
    }
   }
- }
- {
-  coords 3032.564 13.398 929.191
-  angles 0 0 -90
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "dot"
-  m_fWorldSize 25
-  m_sDescription "1PLT cars"
- }
- {
-  coords 3052.395 30.633 929.984
-  angles 0 0 -90
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "dot"
-  m_fWorldSize 25
-  m_sDescription "Coy car"
- }
- {
-  coords 3014.135 13.136 938.686
-  angles 0 0 -90
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "dot"
-  m_fWorldSize 25
-  m_sDescription "Marmite cars"
- }
- {
-  coords 3074.019 13.972 919.108
-  angles 0 0 -90
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "dot"
-  m_fWorldSize 25
-  m_sDescription "2PLT cars"
- }
- {
-  coords 3085.397 12.565 882.78
-  angles 0 0 -90
-  m_MarkerColor 0 0.125 0.502 1
-  m_sQuadName "dot"
-  m_fWorldSize 25
-  m_sDescription "3PLT cars"
  }
 }

@@ -1,0 +1,86 @@
+Vehicle _Series_LWB_Recce_M2HB1 : "{57FE9BCA625CA0E3}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB.et" {
+ coords 3014.501 13.064 934.576
+ angles 0 168.047 0
+}
+Vehicle _Series_LWB_Transport1 : "{701ADC27F9D842DF}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport.et" {
+ coords 3020.018 12.944 928.342
+ angles 0 -99.563 0
+ {
+  $grp Vehicle : "{184706A56EC2BC7D}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_3.et" {
+   _Series_LWB_Transport_Variant_2 {
+    coords 0.148 0.618 -16.922
+    angles 0 8.747 0
+   }
+   _Series_LWB_Transport_Variant_4 {
+    coords -20.446 0.97 -51.531
+    angles 0 81.659 0
+   }
+   _Series_LWB_Transport_Variant_5 {
+    coords -43.826 0.239 -55.317
+    angles 0 90.47 0
+   }
+   _Series_LWB_Transport_Variant_7 {
+    coords -67.513 -0.912 -57.698
+    angles 0 93.192 0
+   }
+  }
+  $grp Vehicle : "{701ADC27F9D842DF}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport.et" {
+   _Series_LWB_Transport2 {
+    coords -0.051 0.855 -25
+    angles 0 3.145 0
+   }
+   _Series_LWB_Transport3 {
+    coords -9.766 1.282 -47.129
+    angles 0 58.904 0
+   }
+   _Series_LWB_Transport4 {
+    coords -26.654 0.802 -53.517
+    angles 0 83.169 0
+   }
+   _Series_LWB_Transport5 {
+    coords -51.825 -0.188 -55.871
+    angles 0 94.119 0
+   }
+  }
+  $grp Vehicle : "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et" {
+   _Series_LWB_Transport_Variant_1 {
+    coords 0.913 0.373 -8.417
+    angles 0 -1.084 0
+   }
+   _Series_LWB_Transport_Variant_3 {
+    coords -15.014 1.125 -49.542
+    angles 0 69.846 0
+   }
+   _Series_LWB_Transport_Variant_6 {
+    coords -59.872 -0.57 -57.28
+    angles 0 87.271 0
+   }
+  }
+ }
+}
+Vehicle K_Car_Early_RhAF1 : "{9E7898490A881754}Prefabs/Vehicles/Helicopters/Alouette III/K-Car_Early_RhAF.et" {
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{657677785B8D89EC}" {
+     SourceMaterial "Fusemain"
+     AssignedMaterial "{67173ACD20E93882}Assets/Vehicles/Helicopters/Alouette/Fusemain_BritArmy_Coal.emat"
+    }
+    MaterialAssignClass "{657677785B8D881E}" {
+     SourceMaterial "Fusetail"
+     AssignedMaterial "{EDB8E56E7E975202}Assets/Vehicles/Helicopters/Alouette/Fusetail_BritArmy_Coal.emat"
+    }
+   }
+  }
+ }
+ coords 3028.699 10.02 865.185
+ angles 0 -32.849 0
+}
+Vehicle _Series_SWB_Transport1 : "{EDEAE951AFF2A836}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Transport.et" {
+ coords 3057.41 14.111 933.711
+ angles 0 -98.224 0
+}
+Vehicle _Series_LWB_Recce_CommandoOps1 : "{F677356F331CA946}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_CommandoOps.et" {
+ coords 3012.062 13.208 941.372
+ angles 0 162.889 0
+}
