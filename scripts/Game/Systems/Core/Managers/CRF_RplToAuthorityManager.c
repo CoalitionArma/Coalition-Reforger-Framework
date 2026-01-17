@@ -2000,6 +2000,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			return;
 		
 		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		Faction localPlayerFaction = factionManager.GetPlayerFaction(playerId);
@@ -2033,6 +2036,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void ShareMapMarkers()
 	{
 		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		array<int> markerUIDs = {};
@@ -2051,6 +2057,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		PlayerManager pm = GetGame().GetPlayerManager();
 		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
+			return;
+		
+		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 		
 		// Get the faction of the sharing player
@@ -2113,6 +2125,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		string playerFactionKey = sharingPlayerFaction.GetFactionKey();
 		
 		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
 			return;
 
 		array<int> globalMarkers = {};
@@ -2134,5 +2149,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			return;
 		
 		pc.RefreshGlobalMarkers(globalMarkers);
+	}
+	
+	void RequestSupplyUpdate(RplId supplyArsenalId)
+	{
+		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
+	{
+		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
+		
+		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
+		if (!supplyComp)
+			return;
+		supplyComp.UpdateCurrentSupply();
 	}
 };

@@ -1,0 +1,16 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 7421.065 152.304 7648.793
+  angles 0 -53.164 0
+  m_rVehicle "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 7433.249 153.844 7636.131
+  angles 0 -26.525 0
+  m_rVehicle "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}

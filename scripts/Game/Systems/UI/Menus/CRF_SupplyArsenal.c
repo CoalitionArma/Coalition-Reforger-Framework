@@ -701,7 +701,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		if (m_bSupplyEnabled)
 		{
 			int totalAvailable = 0;
-			foreach (int supply : m_SupplyArsnealComponent.GetSupplyCounts())
+			foreach (int supply : m_SupplyArsnealComponent.GetLocalSupplyCounts())
 			    totalAvailable += supply;
 			
 			if (totalAvailable < supplyNeeded)
@@ -719,8 +719,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			    int minIndex = -1;
 			
 			    // Find the supply object with the *smallest* nonzero count
-			    array<int> supplyCounts = m_SupplyArsnealComponent.GetSupplyCounts();
-			    for (int i = 0; i < m_SupplyArsnealComponent.GetEntityArray().Count(); i++)
+			    array<int> supplyCounts = m_SupplyArsnealComponent.GetLocalSupplyCounts();
+			    for (int i = 0; i < m_SupplyArsnealComponent.GetLocalEntityArray().Count(); i++)
 			    {
 			        int count = supplyCounts[i];
 			        if (count <= 0)
@@ -729,7 +729,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			        if (count < minSupply)
 			        {
 			            minSupply = count;
-			            supplyObject = m_SupplyArsnealComponent.GetEntityArray()[i];
+			            supplyObject = m_SupplyArsnealComponent.GetLocalEntityArray()[i];
 			            minIndex = i;
 			        }
 			    }

@@ -373,10 +373,15 @@ modded class SCR_VONController
 				else
 					DeactivateCVON();
 				return;
-			}
-			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
-					
+			}	
 		}
+		
+		if (!m_bHasBroadcasted && m_bIsBroadcasting)
+		{
+			m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, m_PlayerController.GetPlayerId(), m_CurrentVONContainer.m_iRadioId);
+			m_bHasBroadcasted = true;
+		}
+		
 		//Our plugin only checks every 50ms
 		if (m_fVONSaveBuffer >= 0.05)
 		{
@@ -391,6 +396,7 @@ modded class SCR_VONController
 	    vector  sourcePos,
 	    float   volume_m,    
 		int playerId ,       // interpret as the inaudible distance (≈ −45 dB)
+		out float outBehindIntensity,   
 	    out float outLeft,
 	    out float outRight,
 	    out int  silencedDecibels = 0,
@@ -415,6 +421,6 @@ modded class SCR_VONController
 			return;
 		}
 		
-		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
+		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outBehindIntensity, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
 	}
 }
