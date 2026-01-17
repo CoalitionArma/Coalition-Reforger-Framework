@@ -66,3 +66,26 @@ class CRF_RespawnPointComponent: ScriptComponent
 		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
 	}
 };
+
+class CRF_TempSpawnPointComponentClass: ScriptComponentClass {}
+class CRF_TempSpawnPointComponent: ScriptComponent
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR"), ParamEnum("CIV", "CIV")})]
+	string m_sSpawnPointFaction;
+
+	[Attribute("1-1", "auto", "Callsign for the group to spawn at this point")]
+	string m_sCallsignOfGroupToSpawn;
+
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		
+		// Only server should register respawn points
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
+			return;
+		
+		if(CRF_RespawnManager.GetInstance())
+			CRF_RespawnManager.GetInstance().RegisterTempRespawnPoint(owner);
+	};
+};

@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "4 | Configure Descriptions", 
+	name: "Configure Descriptions", 
 	description: "Configure Mission Descriptions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0034)
+	awesomeFontCode: 0xF15C)
 ] 
 class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 {	

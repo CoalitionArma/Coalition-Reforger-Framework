@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "0 | Spawn Initial Layers/Objects", 
+	name: "Automatically Create Initial Layers/Objects", 
 	description: "Automatically Generate Mission Layers", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0030)
+	awesomeFontCode: 0xF1B3)
 ] 
 class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 {	
@@ -38,6 +38,7 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		
 		api.CreateSubsceneLayer(1, "_INIT");
 		api.CreateSubsceneLayer(1, "SPAWNPOINTS");
+		api.CreateSubsceneLayer(1, "SPAWNPOINTSGROUPS");
 		api.CreateSubsceneLayer(1, "OBJECTIVES");
 		api.CreateSubsceneLayer(1, "POLYZONES");
 		api.CreateSubsceneLayer(1, "VEHICLES");

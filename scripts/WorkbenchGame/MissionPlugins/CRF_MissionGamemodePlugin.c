@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "1 | Configure Settings", 
+	name: "Configure Settings", 
 	description: "Configure Mission Gamemode Settings", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0031)
+	awesomeFontCode: 0xF013)
 ] 
 class CRF_MissionGamemodePlugin : WorkbenchPlugin
 {	
@@ -30,19 +30,19 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bWaveRespawn;
 	
-	[Attribute("", desc: "Starting Weather", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("Clear", "Clear"), ParamEnum("Cloudy", "Cloudy"), ParamEnum("Overcast", "Overcast"), ParamEnum("Rainy", "Rainy")}, category: "CRF Mission Settings - Weather")]
+	[Attribute("", desc: "Starting Weather", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("Clear", "Clear"), ParamEnum("Cloudy", "Cloudy"), ParamEnum("Overcast", "Overcast"), ParamEnum("Rainy", "Rainy")}, category: "CRF Mission Settings - Weather & Time")]
 	protected string m_sMissionWeather;
 	
-	[Attribute("12", UIWidgets.Slider, desc: "Starting time of day (hour)", "0 23 1", category: "CRF Mission Settings - Weather")]
+	[Attribute("12", UIWidgets.Slider, desc: "Starting time of day (hour)", "0 23 1", category: "CRF Mission Settings - Weather & Time")]
 	protected int m_iStartingHour;
 
-	[Attribute("0", UIWidgets.Slider, "Starting time of day (minutes)", "0 59 1", category: "CRF Mission Settings - Weather")]
+	[Attribute("0", UIWidgets.Slider, "Starting time of day (minutes)", "0 59 1", category: "CRF Mission Settings - Weather & Time")]
 	protected int m_iStartingMinutes;
 	
-	[Attribute("0", category: "CRF Mission Settings - Weather")]
+	[Attribute("0", category: "CRF Mission Settings - Weather & Time")]
 	protected bool m_bRandomStartingWeather;
 	
-	[Attribute("0", desc: "Weather can change during gameplay", category: "CRF Mission Settings - Weather")]
+	[Attribute("0", desc: "Weather can change during gameplay", category: "CRF Mission Settings - Weather & Time")]
 	protected bool m_bRandomWeatherChanges;
 	
 	//------------------------------------------------------------------------------------------------

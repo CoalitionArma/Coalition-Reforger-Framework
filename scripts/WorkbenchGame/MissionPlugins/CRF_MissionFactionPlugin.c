@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "2 | Configure Factions", 
+	name: "Configure Factions", 
 	description: "Configure Mission Factions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0032)
+	awesomeFontCode: 0xF024)
 ] 
 class CRF_MissionFactionsPlugin : WorkbenchPlugin
 {		

@@ -1,11 +1,11 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "3 | Configure Slots", 
+	name: "Configure Slots", 
 	description: "Configure Mission Slots", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
 	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0x0033)
+	awesomeFontCode: 0xF00B)
 ] 
 class CRF_MissionSlottingPlugin : WorkbenchPlugin
 {	

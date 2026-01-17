@@ -5,8 +5,29 @@
 [BaseContainerProps()]
 class CRF_GearScriptContainer
 {
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_GearScriptConfig")]
+	//------------------------------------------------------------------------------------------------
+	// Vars set by plugin
+	
+	[Attribute("", UIWidgets.Hidden)]
 	ResourceName m_rGearScript;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableShareableMarkers;
+  
+ 	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableBFT;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableLeadershipRadios;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableGIRadios;
+	
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bEnableRTORadios;
+	
+	//------------------------------------------------------------------------------------------------
+	// Vars considered "advanced" and not set by plugin
 	
 	[Attribute("{E6555DA2F31B0EC0}Configs/Gearscripts/CRF_Global_SightArsenal_Regular.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_SightArsenalConfig")]
 	ResourceName m_rSightArsenal;
@@ -44,12 +65,6 @@ class CRF_GearScriptContainer
 	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableMagnifiedOptics;
 	
-	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableShareableMarkers;
-  
- 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableBFT;
-	
 	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableIndividualBFT;
 	
@@ -61,6 +76,15 @@ class CRF_GearScriptContainer
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rRTORadiosPrefab;
+}
+
+
+// Simplified Container for Faction Plugin
+[BaseContainerProps()]
+class CRF_SimplifiedGearScriptContainer
+{
+	[Attribute("{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_GearScriptConfig")]
+	ResourceName m_rGearScript;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipRadios;
@@ -70,6 +94,12 @@ class CRF_GearScriptContainer
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableRTORadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableShareableMarkers;
+  
+ 	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableBFT;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -358,59 +388,4 @@ class CRF_SightArsenalConfig
 {	
 	[Attribute()]
 	ref array<ResourceName> m_aSights;
-}
-
-[BaseContainerProps(configRoot:true)]
-class CRF_VehicleGearscriptConfig
-{
-	[Attribute("1200")] int m_iAmountOfBulletsRifles;
-	[Attribute("600")] int m_iAmountOfBulletsRifleUGLs;
-	[Attribute("600")] int m_iAmountOfBulletsCarbines;
-	[Attribute("200")] int m_iAmountOfBulletsPistols;
-	[Attribute("2400")] int m_iAmountOfBulletsAR;
-	[Attribute("3000")] int m_iAmountOfBulletsMMG;
-	[Attribute("600")] int m_iAmountOfBulletsHMG;
-	
-	[Attribute("4")] int m_iAmountOfDisposables;
-	[Attribute("8")] int m_iAmountOfRocketsAT;
-	[Attribute("8")] int m_iAmountOfRocketsMAT;
-	[Attribute("2")] int m_iAmountOfRocketsAA;
-	
-	[Attribute("120")] int m_iAmountOfBulletsSniper;
-	
-	[Attribute("8")] int m_iAmountOfGrenades;
-	[Attribute("16")] int m_iAmountOfSmokeGrenades;
-	
-	[Attribute("20")] int m_iAmountOfHEGLs;
-	[Attribute("40")] int m_iAmountOfSmokeGLs;
-}
-
-[BaseContainerProps()]
-class CRF_VehicleGearscriptOverride
-{
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EVehicleGearScriptType))]
-	CRF_EVehicleGearScriptType m_VehicleAmmoType;
-	
-	[Attribute()] 
-	int m_iAmountOfBullets;
-}
-
-[BaseContainerProps()]
-class CRF_VehicleGearScriptAdditionalItem
-{
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")] 
-	ResourceName m_Prefab;
-	
-	[Attribute("1")] 
-	int m_iAmountOfItemSupplyTruck;
-	
-	[Attribute("1")] 
-	int m_iAmountOfItemRegularVehicle;
-}
-
-[BaseContainerProps()]
-class CRF_VehicleGearScriptLoadout
-{
-	[Attribute("300")] int m_iAmountofAutoCannonAmmo;
-	[Attribute("1200")] int m_iAmountofMachineGunAmmo;
 }

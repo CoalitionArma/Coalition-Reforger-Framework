@@ -513,7 +513,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 		
 		vector playerSlotVector[4];
-		CRF_RespawnManager.GetInstance().FindSpawnPointLocation(GetPlayerSlotFaction(playerId).GetFactionKey(), playerSlotVector);
+		CRF_RespawnManager.GetInstance().FindInitalSpawnLocation(GetPlayerSlotFaction(playerId).GetFactionKey(), GetPlayerSlotGroup(playerId), playerSlotVector);
 
 		// Setup spawn parameters
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
