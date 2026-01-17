@@ -94,6 +94,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{685F54A614421D80}" {
         m_sCallsign "Crew 5 (Abrams"
        }
+       SCR_CallsignInfo "{6863472699E2A43E}" {
+        m_sCallsign "A-10 Thunderbolt"
+       }
       }
      }
     }
@@ -115,7 +118,4 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
-}
-GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
- coords 1746.738 157.749 4182.77
 }
