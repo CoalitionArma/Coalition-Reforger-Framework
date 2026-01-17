@@ -39,6 +39,7 @@ class CRF_RespawnManager : ScriptComponent
 	
 	// Protected Member Variables
 	protected ref array<IEntity> m_aRespawnPoints = {}; // Used for server
+	protected ref array<IEntity> m_aTempRespawnPoints = {}; // Used for server
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SafestartManager m_SafestartManager;
@@ -457,6 +458,16 @@ class CRF_RespawnManager : ScriptComponent
 		// Broadcast UI updates to clients
 		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RegisterTempRespawnPoint(IEntity respawnPoint)
+	{
+		if (!respawnPoint)
+			return;
+
+		// Store Temp Respawnpoints only on server
+		m_aTempRespawnPoints.Insert(respawnPoint);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void UnRegisterRespawnPoint(IEntity respawnPoint)
@@ -739,12 +750,9 @@ class CRF_RespawnManager : ScriptComponent
 		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
 			FindSpawnPointLocation(factionKey, spawnLocation);
 		
-		// Fallback to slot origin 
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
-			m_SlottingManager.GetPlayerSlotVector(playerId, spawnLocation);
 
 		// If no spawn location found, enter spectator mode
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
+		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]) || GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
 			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
@@ -760,11 +768,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void FindSpawnPointLocation(FactionKey factionKey, out vector spawnPointLocation[4])
 	{
-		if (factionKey.IsEmpty())
-		{
-			spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
-			return;
-		};
+		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
 		
 		foreach (IEntity spawnPoint : m_aRespawnPoints)
 		{
@@ -784,6 +788,43 @@ class CRF_RespawnManager : ScriptComponent
 			spawnPoint.GetWorldTransform(spawnPointLocation);
 			break;
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void FindInitalSpawnLocation(FactionKey factionKey, SCR_AIGroup group, out vector spawnPointLocation[4])
+	{
+		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		
+		foreach (IEntity spawnPoint : m_aTempRespawnPoints)
+		{
+			if (!spawnPoint)
+				continue;
+
+			CRF_TempSpawnPointComponent tempSpawnComponent = CRF_TempSpawnPointComponent.Cast(spawnPoint.FindComponent(CRF_TempSpawnPointComponent));
+			if (!tempSpawnComponent)
+				continue;
+
+			if (tempSpawnComponent.m_sSpawnPointFaction != factionKey)
+				continue;
+			
+			string company, platoon, squad, character, format;
+			group.GetCallsigns(company, platoon, squad, character, format);
+			
+			Print(tempSpawnComponent.m_sCallsignOfGroupToSpawn);
+			Print(squad);
+
+			if (tempSpawnComponent.m_sCallsignOfGroupToSpawn != squad)
+				continue;
+
+			spawnPoint.GetWorldTransform(spawnPointLocation);
+			break;
+		}
+		
+		if (spawnPointLocation[0] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[0]
+		 && spawnPointLocation[1] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[1]
+		 && spawnPointLocation[2] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[2]
+		 && spawnPointLocation[3] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[3])
+			FindSpawnPointLocation(factionKey, spawnPointLocation);
 	}
 	
 	//------------------------------------------------------------------------------------------------

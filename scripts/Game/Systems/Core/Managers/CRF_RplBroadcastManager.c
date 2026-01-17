@@ -8,9 +8,9 @@ enum CRF_ESlotUpdateField
 	PLAYER_ID,
 	CHARACTER,
 	GROUP,
-	RESOURCE,
 	LOCKED,
-	DEATH
+	DEATH,
+	ROLE
 }
 
 //------------------------------------------------------------------------------------------------
@@ -22,7 +22,6 @@ class CRF_SlotUpdateBatch
 	CRF_ESlotUpdateField m_eFieldType;
 	int m_iIntValue;
 	RplId m_RplIdValue;
-	ResourceName m_ResourceValue;
 	bool m_bBoolValue;
 	
 	void CRF_SlotUpdateBatch(int slotId, CRF_ESlotUpdateField fieldType)
@@ -169,16 +168,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 					SendSlotGroupUpdate(batch.m_iSlotId, batch.m_RplIdValue);
 					break;
 				
-				case CRF_ESlotUpdateField.RESOURCE:
-					SendSlotResourceUpdate(batch.m_iSlotId, batch.m_ResourceValue);
-					break;
-				
 				case CRF_ESlotUpdateField.LOCKED:
 					SendSlotLockedUpdate(batch.m_iSlotId, batch.m_bBoolValue);
 					break;
 				
 				case CRF_ESlotUpdateField.DEATH:
 					SendSlotDeathUpdate(batch.m_iSlotId, batch.m_bBoolValue);
+					break;
+				
+				case CRF_ESlotUpdateField.ROLE:
+					SendSlotRoleUpdate(batch.m_iSlotId, batch.m_iIntValue);
 					break;
 			}
 		}
@@ -220,17 +219,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
-	protected void SendSlotResourceUpdate(int slotId, ResourceName resource)
-	{
-		int bytes = 4 + CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(resource);
-		LogTelemetry("UpdateSlotResourceDelta", bytes);
-		#ifdef WORKBENCH
-		RpcDo_UpdateSlotResourceDelta(slotId, resource);
-		#else
-		Rpc(RpcDo_UpdateSlotResourceDelta, slotId, resource);
-		#endif
-	}
-	
 	protected void SendSlotLockedUpdate(int slotId, bool isLocked)
 	{
 		LogTelemetry("UpdateSlotLockedDelta", 5);
@@ -248,6 +236,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		RpcDo_UpdateSlotDeathDelta(slotId, isDead);
 		#else
 		Rpc(RpcDo_UpdateSlotDeathDelta, slotId, isDead);
+		#endif
+	}
+	
+	protected void SendSlotRoleUpdate(int slotId, CRF_EGearRole role)
+	{
+		LogTelemetry("UpdateSlotRoleDelta", 8);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotRoleDelta(slotId, role);
+		#else
+		Rpc(RpcDo_UpdateSlotRoleDelta, slotId, role);
 		#endif
 	}
 	
@@ -870,7 +868,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot player ID only (~8 bytes vs 366 bytes)
+	// SlottingManager: Update slot player ID only (~8 bytes)
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotPlayerIdDelta(int slotId, int playerId)
 	{
@@ -930,26 +928,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot resource only (~20-60 bytes depending on path length)
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotResourceDelta(int slotId, ResourceName resource)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		if (m_bBatchingEnabled)
-		{
-			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.RESOURCE);
-			batch.m_ResourceValue = resource;
-			QueueSlotUpdate(batch);
-		}
-		else
-		{
-			SendSlotResourceUpdate(slotId, resource);
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot locked state only (~5 bytes)
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedDelta(int slotId, bool isLocked)
@@ -970,7 +948,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot death state only (~5 bytes)
+	// SlottingManager: Update slot locked state only (~5 bytes)
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotDeathDelta(int slotId, bool isDead)
 	{
@@ -986,6 +964,27 @@ class CRF_RplBroadcastManager : ScriptComponent
 		else
 		{
 			SendSlotDeathUpdate(slotId, isDead);
+		}
+	}
+	
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot role (~8 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.ROLE);
+			batch.m_iIntValue = role;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotRoleUpdate(slotId, role);
 		}
 	}
 	
@@ -1958,28 +1957,27 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update single slot data on all clients (LEGACY - USE DELTA UPDATES INSTEAD)
 	// 
-	// ⚠️ PERFORMANCE WARNING: This method sends ~366 bytes per call
+	// ⚠️ PERFORMANCE WARNING: This method sends ~64 bytes per call
 	// ⚠️ Use UpdateSlot*Delta() methods instead for 90%+ bandwidth savings:
-	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 366)
-	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 366)
-	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 366)
-	//    - UpdateSlotResourceDelta()   : ~40 bytes (vs 366)
-	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 366)
-	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 366)
+	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 64)
+	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 64)
+	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 64)
+	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 64)
+	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 64)
 	//
 	// Only use UpdateSlotData() for:
 	//   - Creating new slots (all fields are new)
 	//   - JIP sync (initial state transmission)
 	//
-	// Bandwidth: ~366 bytes vs 8-40 bytes for delta updates
+	// Bandwidth: ~64 bytes vs 8-40 bytes for delta updates
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotData(CRF_SlotDataContainer slotData)
 	{
 		if (!Replication.IsServer())
 			return;
 		
-		// Estimate bandwidth: slot data (~366 bytes avg)
-		LogTelemetry("UpdateSlotData", 366);
+		// Estimate bandwidth: slot data (~64 bytes avg)
+		LogTelemetry("UpdateSlotData", 64);
 		
 		RpcDo_UpdateSlotData(slotData);
 		Rpc(RpcDo_UpdateSlotData, slotData);
@@ -2064,7 +2062,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotResourceDelta(int slotId, ResourceName resource)
+	void RpcDo_UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
@@ -2073,7 +2071,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
-			slotData.SetSlotResource(resource);
+			slotData.SetSlotRole(role);
 			slotData.GetOnDataUpdate().Invoke();
 			
 			// Trigger global slotting update for UI refresh

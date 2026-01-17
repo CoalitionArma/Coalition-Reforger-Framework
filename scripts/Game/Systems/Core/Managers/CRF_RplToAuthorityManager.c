@@ -172,16 +172,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSlotDeathState, slotId, input);
 	}
 	
+	void UpdateSlotRole(int slotId, CRF_EGearRole role)
+	{
+		// Direct manager call if BatchUpdateSlot unavailable
+		Rpc(RpcAsk_UpdateSlotRole, slotId, role);
+	}
+	
 	void UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotGroup, slotId, groupRplId);
-	}
-	
-	void UpdateSlotResource(int slotId, ResourceName resource)
-	{
-		// Direct manager call if BatchUpdateSlot unavailable
-		Rpc(RpcAsk_UpdateSlotResource, slotId, resource);
 	}
 	
 	void UpdateSlotCharacter(int slotId, RplId charId)
@@ -369,11 +369,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void SetRespawnTime(int seconds)
 	{
 		Rpc(RpcAsk_SetRespawnTime, seconds);
-	}
-	
-	void ToggleEnableAIInGameState()
-	{
-		Rpc(RpcAsk_ToggleEnableAIInGameState);
 	}
 	
 	void CleanUpBodies()
@@ -622,6 +617,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotRole(int slotId, CRF_EGearRole role)
+	{
+		// Telemetry: int + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("RpcAsk_UpdateSlotRole", bytes);
+		
+		m_SlottingManager.UpdateSlotRole(slotId, role); 
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
 		// Telemetry: int + RplId
@@ -630,17 +636,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_UpdateSlotGroup", bytes);
 		
 		m_SlottingManager.UpdateSlotGroup(slotId, groupRplId); 
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdateSlotResource(int slotId, ResourceName resource)
-	{
-		// Telemetry: int + ResourceName
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(resource);
-		LogTelemetry("RpcAsk_UpdateSlotResource", bytes);
-		
-		m_SlottingManager.UpdateSlotResource(slotId, resource); 
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -922,17 +917,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
 		
-		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
 		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
 		
 		// Use delta updates for individual field changes (90%+ bandwidth savings)
-		slotData.SetSlotResource(prefab);
-		m_RplBroadcastManager.UpdateSlotResourceDelta(slotId, prefab);
-		
-		slotData.SetSlotName(roleConfig.m_sRoleName);
-		slotData.SetSlotType(roleConfig.m_SlottingType);
-		slotData.SetSlotIcon(roleConfig.m_RoleIcon);
+		slotData.SetSlotRole(role);
+		m_RplBroadcastManager.UpdateSlotRoleDelta(slotId, role);
 		
 		// Note: Name, Type, and Icon don't have delta updates as they rarely change
 		// If they change frequently in the future, add delta methods for them too
@@ -1691,15 +1681,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_SetRespawnTime", CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		
 		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleEnableAIInGameState()
-	{
-		// Telemetry: no parameters
-		LogTelemetry("RpcAsk_ToggleEnableAIInGameState", 0);
-		
-		CRF_Gamemode.GetInstance().ToggleEnableAIInGameState();
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

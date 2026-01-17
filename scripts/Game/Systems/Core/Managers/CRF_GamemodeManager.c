@@ -273,6 +273,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
 			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+	
+			
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);

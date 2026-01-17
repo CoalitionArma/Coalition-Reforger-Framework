@@ -150,7 +150,7 @@ class CRF_MissionValidatorComponent : ScriptComponent
 		{
 			// Validate faction ratios
 			if (gamemode.m_iFactionOneRatio <= 0 && gamemode.m_iFactionTwoRatio <= 0)
-				AddCriticalError("At least one Faction Ratio must be greater than 0!");
+				AddCriticalError("(If TVT) At least one Faction Ratio must be greater than 0!");
 			else if (gamemode.m_iFactionOneRatio <= 0)
 				AddWarning("Faction One Ratio is 0 - Set a ratio!");
 			else if (gamemode.m_iFactionTwoRatio <= 0)
@@ -172,6 +172,33 @@ class CRF_MissionValidatorComponent : ScriptComponent
 			AddCriticalError("Missing SCR_MapEntity in world! Map UI will not function.");
 		else
 			AddInfo("[OK] SCR_MapEntity found");
+		
+		// Check for spawn points
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		// BLUFOR spawn point check
+		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty())
+			AddCriticalError("Missing BLUFOR Spawn Point(s) in the world! the BLUFOR Faction will not function");
+		else
+			AddInfo("[OK] BLUFOR Spawn point found");
+		
+		// OPFOR spawn point check
+		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty())
+			AddCriticalError("Missing OPFOR Spawn Point(s) in the world! the OPFOR Faction will not function");
+		else
+			AddInfo("[OK] OPFOR Spawn point found");
+		
+		// INDFOR spawn point check
+		if (respawnManager.GetFactionSpawnpoints("INDFOR").IsEmpty())
+			AddCriticalError("Missing INDFOR Spawn Point(s) in the world! the INDFOR Faction will not function");
+		else
+			AddInfo("[OK] INDFOR Spawn point found");
+		
+		// CIV spawn point check
+		if (respawnManager.GetFactionSpawnpoints("CIV").IsEmpty())
+			AddCriticalError("Missing CIV Spawn Point(s) in the world! the CIV Faction will not function");
+		else
+			AddInfo("[OK] CIV Spawn point found");
 	}
 	
 	//! Validate faction setup

@@ -261,7 +261,23 @@ modded enum EEditableEntityLabel
 	FACTION_CRF_OPFOR = 51871,
 	FACTION_CRF_INDFOR = 51872,
 	FACTION_CRF_CIV = 51873,
-};
+}
+
+enum CRF_EFactions
+{
+	BLUFOR,
+	OPFOR,
+	INDFOR,
+	CIV,
+}
+
+enum CRF_EGamemode
+{
+	COOP,
+	COTVT,
+	TVT,
+	SPCL
+}
 
 //------------------------------------------------------------------------------------
 // Enumerations for game state tracking

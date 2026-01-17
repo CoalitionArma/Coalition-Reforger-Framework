@@ -1,0 +1,273 @@
+CommentEntity {
+ coords 7449.809 10.758 6698.563
+ angles 0 -158.304 0
+ m_Comment "Tanaka when there is no "\
+ "prejoin update for 2 months."
+ m_Size 0.3
+ m_Color 1 0 0
+ m_FaceCamera 1
+ m_VisibleOverall 1
+ m_VisibleIngame 1
+ m_TextBackground 1
+ m_BackgroundTransparency 0.2
+ {
+  GenericEntity : "{167A0AF597E9CA76}Prefabs/Props/Military/E_SignFlag_PensiveMan_01.et" {
+   coords 0 -3.266 0
+   angles 0 177.902 0
+   scale 1.5
+  }
+ }
+}
+$grp SCR_VehicleSpawn {
+ {
+  coords 7403.349 9.688 6732.658
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7400.754 9.688 6729.215
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7410.427 9.688 6742.427
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7414.312 9.688 6747.585
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7417.149 9.688 6751.348
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7419.747 9.688 6754.796
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7422.201 9.688 6758.052
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7424.606 9.688 6761.244
+  angles 0 127 0
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7397.524 9.688 6724.927
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7394.153 9.688 6720.454
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7391.714 9.688 6717.217
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7388.347 9.688 6712.754
+  angles 0 127 0
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7432.048 9.686 6766.776
+  angles 0 -145 0
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7436.403 9.617 6763.725
+  angles 0 -145 0
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7440.845 9.415 6760.611
+  angles 0 -145 0
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7379.902 9.724 6709.354
+  angles 0 127 0
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+}
+$grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
+   }
+  }
+  coords 7449.104 7.875 6724.164
+  angles 0 -26.182 0
+ }
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
+   }
+  }
+  coords 7478.841 7.875 6693.617
+  angles 0 164.067 0
+ }
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
+   }
+  }
+  coords 7477.154 7.602 6761.553
+  angles 0 41.749 0
+ }
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
+   }
+  }
+  coords 7416.175 9.699 6778.773
+  angles 0 -56.656 0
+ }
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
+   }
+  }
+  coords 7425.633 7.875 6673.595
+  angles 0 -26.182 0
+ }
+}
+GenericEntity : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/RespawnPoles/CIV_Respawn.et" {
+ coords 7525.148 5.98 6763.489
+}
+GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
+ coords 7449.313 -2.835 6697.37
+ angles 0 21.696 0
+}
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFORSpawnMarker.et" {
+ coords 7493.132 6.579 6707.769
+ angles 0 90 0
+ m_MarkerColor 0.392 0.157 0.624 1
+ m_sDescription "Spawn"
+ m_aVisibleForFactions {
+  "CIV"
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+GenericEntity : "{F4B7F1D4D3ADE456}Prefabs/Structures/Signs/Military/Sign_VehicleRepair_US_01.et" {
+ coords 7442.783 9.356 6759.423
+ angles 0 132.012 0
+}
+$grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7445.353 7.875 6715.401
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7450.01 7.875 6717.639
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7455.967 7.875 6720.37
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7462.258 7.875 6723.138
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7452.187 7.875 6713.067
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7447.531 7.875 6710.831
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7458.144 7.875 6715.8
+  angles 0 155 0
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eSupportedArsenalItemTypes 654528
+    m_eSupportedArsenalItemModes 130
+    m_eEditableAttributeGroups 12
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+  }
+  coords 7464.436 7.875 6718.566
+  angles 0 155 0
+ }
+}
+GenericEntity : "{F9CB37885DA59BF4}Prefabs/Props/Military/E_SignFlag_COAL_01.et" {
+ coords 7463.61 8.584 6726.082
+ angles 0 154.492 0
+}

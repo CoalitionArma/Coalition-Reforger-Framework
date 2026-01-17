@@ -1,0 +1,20 @@
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 1226.81 38.031 2813.217
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1230.972 38 2794.036
+ Points {
+  ShapePoint "{659E505E589E0FCC}" {
+   Position 1.314 0 -18.464
+  }
+  ShapePoint "{659E505E591C5D43}" {
+   Position -8.375 0 19.043
+  }
+  ShapePoint "{659E505E598C6B6F}" {
+   Position -1.851 0 20.121
+  }
+  ShapePoint "{659E505E5A107F6E}" {
+   Position 7.817 0 -17.172
+  }
+ }
+}

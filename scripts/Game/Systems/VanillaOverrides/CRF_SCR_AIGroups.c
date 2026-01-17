@@ -1,21 +1,7 @@
 modded class SCR_AIGroup
 {
-	[Attribute("0", category: "Group")]
-	protected bool m_bIsPlayable;
-	
 	[Attribute("0")]
 	bool m_bIsGarrisonGroup;
-	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
-	protected CRF_EFlagType m_FlagType;
-	
-	[Attribute("1", category: "Group")]
-	bool m_bBlueForceTrackerEnabled;
-	
-	protected bool m_bIsPlayableGroup;
-	protected SCR_AIGroup m_NewGroup;
-	
-	[RplProp()] ref array<ResourceName> m_aGroupSlots = {};
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when the entity is initialized
@@ -26,28 +12,6 @@ modded class SCR_AIGroup
 		
 		if (m_bIsGarrisonGroup)
 			GetGame().GetCallqueue().CallLater(SetGarrison, 1000, false);
-		
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-		
-		// Skip processing if not in play mode or if gamemode doesn't exist
-		if (!IsGroupPlayable() || !GetGame().InPlayMode() || !gamemode || !groupsManager || !Replication.IsServer())
-			return;
-		
-		// In GAME state and AI is enabled in GAME state
-		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.m_bCurrentEnableAIInGameState)
-		{
-			if (!IsAIActivated())
-				ActivateAI();
-			
-			SetCanDeleteIfNoPlayer(true);
-			SetDeleteWhenEmpty(true);
-		} else {
-			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
-			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false); // DO NOT CHANGE. RPL JIP ERROR IF NOT INIT'd AFTER (LOL FUCK THIS ENGINE)
-		};
-		
-		
 	}
 	
 	void SetGarrison()
@@ -65,90 +29,6 @@ modded class SCR_AIGroup
 			
 			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
 		}
-	}
-	
-	void SetGroupSlots(array<ResourceName> slots)
-	{
-		// Only authority should modify replicated state
-		if (!Replication.IsServer())
-			return;
-			
-		m_aGroupSlots = slots;
-		Replication.BumpMe();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	bool IsGroupPlayable()
-	{
-		return m_bIsPlayable;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void CreateNewGroup()
-	{
-		if(m_bIsPlayableGroup)
-			return;
-		
-		SCR_Faction scrFaction = SCR_Faction.Cast(GetFaction());
-		if(scrFaction && scrFaction.GetFlagName(0))
-		{
-			TStringArray flagArray = {};
-			scrFaction.GetFlagNames(flagArray);
-			if((flagArray.Count() - 1) < m_FlagType)
-				m_FlagType = CRF_EFlagType.INFANTRY
-		}
-		
-		m_NewGroup = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(GetFaction());
-		m_NewGroup.SetFaction(GetFaction());
-		m_NewGroup.SetGroupFlag(m_FlagType, true);
-		m_NewGroup.SetCanDeleteIfNoPlayer(false);
-		m_NewGroup.SetDeleteWhenEmpty(false);
-		m_NewGroup.SetMaxMembers(GetMaxMembers());
-		m_NewGroup.SetIsPlayableGroup();
-		
-		m_NewGroup.SetGroupSlots(m_aUnitPrefabSlots);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void AllMembersSpawned(SCR_AIGroup group)
-	{
-		GetGame().GetCallqueue().CallLater(ConvertSlotsToNewGroup, 350, false);
-		GetOnAllDelayedEntitySpawned().Remove(AllMembersSpawned);
-	};
-	
-	//------------------------------------------------------------------------------------------------
-	void ConvertSlotsToNewGroup()
-	{
-		if (m_bIsPlayableGroup)
-			return;
-		
-		// Safely get RplIds - prevent crashes if groups don't have RplComponent
-		RplId newRplId, oldRplId;
-		if (!CRF_ReplicationHelpers.GetRplId(m_NewGroup, newRplId))
-		{
-			Print("[SCR_AIGroup] ERROR: New group has no RplComponent", LogLevel.ERROR);
-			return;
-		}
-		
-		if (!CRF_ReplicationHelpers.GetRplId(this, oldRplId))
-		{
-			Print("[SCR_AIGroup] ERROR: Old group has no RplComponent", LogLevel.ERROR);
-			return;
-		}
-		
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		array<int> slotIdsForOldGroup = slottingManager.GetAllSlotIDsForGroup(oldRplId);
-		
-		foreach(int slotId : slotIdsForOldGroup)
-			slottingManager.UpdateSlotGroup(slotId, newRplId);
-
-		SCR_EntityHelper.DeleteEntityAndChildren(this);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetIsPlayableGroup()
-	{
-		m_bIsPlayableGroup = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
