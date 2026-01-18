@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+ Name "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

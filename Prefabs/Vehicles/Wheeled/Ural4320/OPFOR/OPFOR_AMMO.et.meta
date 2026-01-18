@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8759EDBCF78920B7}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR_AMMO.et"
+ Name "{8759EDBCF78920B7}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_AMMO.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

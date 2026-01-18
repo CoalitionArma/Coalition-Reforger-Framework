@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0943D5F807CFD8BC}Worlds/Lobby/Eden/CRF_Prejoin.ent"
+ Name "{0943D5F807CFD8BC}Worlds/Eden/CRF_Prejoin.ent"
  Configurations {
   ENTResourceClass PC {
   }

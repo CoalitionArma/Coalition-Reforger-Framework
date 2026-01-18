@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2FB2744FFCD276AC}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_SPS_fluff.conf"
+ Name "{2FB2744FFCD276AC}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_SPS_fluff.conf"
  Configurations {
   CONFResourceClass PC {
   }

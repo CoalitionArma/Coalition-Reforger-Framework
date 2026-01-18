@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{93C4AAA0496F0B42}Configs/Identities/FactionIdentity_COAL_American.conf"
+ Name "{93C4AAA0496F0B42}Configs/_Identities/CRF_CharacterIdentity_American.conf"
  Configurations {
   CONFResourceClass PC {
   }

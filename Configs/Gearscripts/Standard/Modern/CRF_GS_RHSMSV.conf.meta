@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{EC17EA82C390260C}Configs/Gearscripts/CRF_GS_RHSMSV.conf"
+ Name "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  Configurations {
   CONFResourceClass PC {
   }

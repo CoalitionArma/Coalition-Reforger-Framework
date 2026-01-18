@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D17D3BA5B463DACB}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_AKMs.conf"
+ Name "{D17D3BA5B463DACB}Configs/Gearscripts/Custom/fluff/CRF_GS_FIA_AKMs.conf"
  Configurations {
   CONFResourceClass PC {
   }

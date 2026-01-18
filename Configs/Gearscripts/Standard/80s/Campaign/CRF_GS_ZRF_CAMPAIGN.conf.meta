@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/CRF_GS_ZRF_CAMPAIGN.conf"
+ Name "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{404BCDF54E18BA5B}Configs/Gearscripts/Standard/Specials/Rally/CRF_GS_SnowballFightBLU.conf"
+ Name "{404BCDF54E18BA5B}Configs/Gearscripts/Standard/Specials/SnowballFight/CRF_GS_SnowballFightBLU.conf"
  Configurations {
   CONFResourceClass PC {
   }

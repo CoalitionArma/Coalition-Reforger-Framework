@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FAF2FF414B2245C9}Configs/EntityCatalog/US/SupplyContainerItems_EntityCatalog_BLUFOR.conf"
+ Name "{FAF2FF414B2245C9}Configs/Systems/Entities/Entity Catalog/BLU/SupplyContainerItems_EntityCatalog_BLUFOR.conf"
  Configurations {
   CONFResourceClass PC {
   }

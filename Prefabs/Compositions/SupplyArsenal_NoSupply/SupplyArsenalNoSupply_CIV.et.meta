@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3324FCADDE3D4D31}Prefabs/Compositions/SupplyArsenal/SupplyArsenalNoSupply_CIV.et"
+ Name "{3324FCADDE3D4D31}Prefabs/Compositions/SupplyArsenal_NoSupply/SupplyArsenalNoSupply_CIV.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

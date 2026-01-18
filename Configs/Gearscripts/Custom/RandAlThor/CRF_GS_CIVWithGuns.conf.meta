@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F528876B88A01733}Configs/Gearscripts/CRF_GS_CIVWithGuns.conf"
+ Name "{F528876B88A01733}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_CIVWithGuns.conf"
  Configurations {
   CONFResourceClass PC {
   }

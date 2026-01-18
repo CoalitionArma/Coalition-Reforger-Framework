@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPoints/Spawn_Temp.et"
+ Name "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPointsGroups/InitalGroupSpawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

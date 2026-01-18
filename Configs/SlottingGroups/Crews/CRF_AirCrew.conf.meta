@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C50D6F576810DE04}Configs/SlottingGroups/CRF_AirCrew.conf"
+ Name "{C50D6F576810DE04}Configs/SlottingGroups/Crews/CRF_AirCrew.conf"
  Configurations {
   CONFResourceClass PC {
   }

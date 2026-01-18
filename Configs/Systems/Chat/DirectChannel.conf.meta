@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{5B1826FE43E755F7}Configs/Chat/DirectChannel.conf"
+ Name "{5B1826FE43E755F7}Configs/Systems/Chat/DirectChannel.conf"
  Configurations {
   CONFResourceClass PC {
   }

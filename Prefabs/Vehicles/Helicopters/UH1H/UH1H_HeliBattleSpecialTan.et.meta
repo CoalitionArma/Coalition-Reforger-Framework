@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecial.et"
+ Name "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialTan.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

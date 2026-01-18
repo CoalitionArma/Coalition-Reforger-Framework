@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{BDC0570417BFB1EA}UI/Spectator/SpectatorMenu.layout"
+ Name "{BDC0570417BFB1EA}UI/Spectator/SpectatorHUD.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   LayoutResourceClass PS4 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }

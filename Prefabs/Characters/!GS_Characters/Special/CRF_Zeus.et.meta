@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{15992AA89FF4475A}Prefabs/Characters/Factions/CIV/CRF_GS_BLUFOR_Zeus_P.et"
+ Name "{15992AA89FF4475A}Prefabs/Characters/!GS_Characters/Special/CRF_Zeus.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

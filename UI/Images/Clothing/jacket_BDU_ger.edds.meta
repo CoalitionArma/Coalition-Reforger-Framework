@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2DED30813FDF67F2}UI/jacket_BDU_ger.edds"
+ Name "{2DED30813FDF67F2}UI/Images/Clothing/jacket_BDU_ger.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB

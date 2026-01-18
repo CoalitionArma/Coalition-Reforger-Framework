@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F74038577DFD5492}Worlds/COALobby/Pacifica/COOP_RecentEvents.ent"
+ Name "{F74038577DFD5492}Worlds/Pacifica/COOP_RecentEvents.ent"
  Configurations {
   ENTResourceClass PC {
   }

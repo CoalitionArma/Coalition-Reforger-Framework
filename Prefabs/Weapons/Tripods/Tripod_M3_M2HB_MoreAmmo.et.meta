@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{73530808E4B455BB}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et"
+ Name "{73530808E4B455BB}Prefabs/Weapons/Tripods/Tripod_M3_M2HB_MoreAmmo.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

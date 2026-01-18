@@ -25,7 +25,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    DefaultWeaponIndex 0
   }
   FactionAffiliationComponent "{520EC961FB0A2E90}" {
-   "faction affiliation" "BLUFOR"
   }
   SCR_CharacterRankComponent "{528E6D4286AA2D8F}" {
    m_iRank CAPTAIN

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C93E5964759082FF}Prefabs/Compositions/SupplyArsenal/SupplyArsenalNoSupply_OPFOR.et"
+ Name "{C93E5964759082FF}Prefabs/Compositions/SupplyArsenal_NoSupply/SupplyArsenalNoSupply_OPFOR.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

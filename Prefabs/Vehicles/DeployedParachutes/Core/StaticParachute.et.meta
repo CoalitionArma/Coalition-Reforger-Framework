@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A57B956E947FBEE6}Prefabs/DeployedParachutes/Core/StaticParachute.et"
+ Name "{A57B956E947FBEE6}Prefabs/Vehicles/DeployedParachutes/Core/StaticParachute.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{024AB272759D649A}UI/Preview/PreviewMenu.layout"
+ Name "{024AB272759D649A}UI/Phases/Briefing.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   LayoutResourceClass PS5 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }

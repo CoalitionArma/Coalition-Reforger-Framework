@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DDFC9128CBEF1AAB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLead_P.et"
+ Name "{DDFC9128CBEF1AAB}Prefabs/Characters/!GS_Characters/Leadership/CRF_IndirectLead.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

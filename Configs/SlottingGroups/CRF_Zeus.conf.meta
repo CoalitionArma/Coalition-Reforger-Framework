@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{70947F876C8043ED}Configs/SlottingGroups/Crews/CRF_Zeus.conf"
+ Name "{70947F876C8043ED}Configs/SlottingGroups/CRF_Zeus.conf"
  Configurations {
   CONFResourceClass PC {
   }

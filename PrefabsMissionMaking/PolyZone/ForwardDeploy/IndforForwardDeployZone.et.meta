@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{287EBEC40E39BF8F}PrefabsEditable/PolyZone/IndforForwardDeployZone.et"
+ Name "{287EBEC40E39BF8F}PrefabsMissionMaking/PolyZone/ForwardDeploy/IndforForwardDeployZone.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

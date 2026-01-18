@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/BLUFORObjectiveMarker.et"
+ Name "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{190F9B4560DD423E}UI/jacket_BDU_rolledup_ger.edds"
+ Name "{190F9B4560DD423E}UI/Images/Clothing/jacket_BDU_rolledup_ger.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB

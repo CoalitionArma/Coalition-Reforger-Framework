@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2D1ED31B21B4FE69}Configs/Gearscripts/Standard/GWOT/CRF_GS_East_GER_80s.conf"
+ Name "{2D1ED31B21B4FE69}Configs/Gearscripts/Standard/80s/CRF_GS_East_GER_80s.conf"
  Configurations {
   CONFResourceClass PC {
   }

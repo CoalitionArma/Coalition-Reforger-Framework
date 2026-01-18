@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1FAFC87125B4C514}Configs/Core/CRF_PlacableEntitiesRegestry_OPFOR.conf"
+ Name "{1FAFC87125B4C514}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_OPFOR.conf"
  Configurations {
   CONFResourceClass PC {
   }

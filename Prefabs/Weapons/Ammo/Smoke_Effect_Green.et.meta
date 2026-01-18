@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{50FD61D778BD2A99}Prefabs/Weapons/Ammo/FlareEffect_40mm_M661_Green.et"
+ Name "{50FD61D778BD2A99}Prefabs/Weapons/Ammo/Smoke_Effect_Green.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

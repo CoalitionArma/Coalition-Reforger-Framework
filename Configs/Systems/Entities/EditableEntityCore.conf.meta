@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DE17AC501F0CD5EB}Configs/Core/EditableEntityCore.conf"
+ Name "{DE17AC501F0CD5EB}Configs/Systems/Entities/EditableEntityCore.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1067,7 +1067,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void AddAttachments(ResourceName weaponResource, array<ResourceName> attachmentResources, 
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if (!attachmentResources || attachmentResources.IsEmpty())
+		if (!inventoryManager || !attachmentResources || attachmentResources.IsEmpty())
 			return;
 			
 		ChimeraCharacter character = ChimeraCharacter.Cast(inventoryManager.GetOwner());

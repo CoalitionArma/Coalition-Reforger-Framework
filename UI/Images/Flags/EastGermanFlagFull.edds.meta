@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{08CF3D2C94A8AC19}UI/EastGermanFlagFull.edds"
+ Name "{08CF3D2C94A8AC19}UI/Images/Flags/EastGermanFlagFull.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB

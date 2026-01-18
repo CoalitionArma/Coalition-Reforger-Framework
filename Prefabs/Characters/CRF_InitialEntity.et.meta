@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{59886ECB7BBAF5BC}Prefabs/Characters/Factions/BLUFOR/US_Army/CRF_InitialEntity.et"
+ Name "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

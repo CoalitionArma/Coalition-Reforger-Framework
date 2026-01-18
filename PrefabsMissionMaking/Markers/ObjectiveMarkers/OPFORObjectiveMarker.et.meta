@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C44FD776546321F2}PrefabsEditable/Markers/OPFORObjectiveMarker.et"
+ Name "{C44FD776546321F2}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFORObjectiveMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

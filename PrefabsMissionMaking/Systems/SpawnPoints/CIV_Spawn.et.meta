@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{91AC884B31EDEE23}Prefabs/Structures/FlagPoles/RespawnPoles/CIV_Respawn.et"
+ Name "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIV_Spawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

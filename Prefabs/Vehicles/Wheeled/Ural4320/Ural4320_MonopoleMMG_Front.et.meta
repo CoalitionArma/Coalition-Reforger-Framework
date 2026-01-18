@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG.et"
+ Name "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

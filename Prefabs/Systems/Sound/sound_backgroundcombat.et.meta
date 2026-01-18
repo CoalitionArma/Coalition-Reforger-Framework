@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_ccobackground.et"
+ Name "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

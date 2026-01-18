@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E4A20C9CE20EEC0B}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_Zone_A.et"
+ Name "{E4A20C9CE20EEC0B}Prefabs/Structures/Frontline/FlagPole_Zone_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0EE7D3E30E7A7D6C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC_MMGoptic.conf"
+ Name "{0EE7D3E30E7A7D6C}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSUSMC_MMGoptic.conf"
  Configurations {
   CONFResourceClass PC {
   }

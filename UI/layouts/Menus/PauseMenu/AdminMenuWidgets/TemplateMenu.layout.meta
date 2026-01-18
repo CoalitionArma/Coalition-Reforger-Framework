@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FD7582ED92D34191}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/ticketMenu.layout"
+ Name "{FD7582ED92D34191}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/TemplateMenu.layout"
  Configurations {
   LayoutResourceClass PC {
   }

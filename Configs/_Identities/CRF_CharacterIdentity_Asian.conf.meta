@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E13982CDA81E8F0C}Configs/Identities/CRF_CharacterIdentity_Asian.conf"
+ Name "{E13982CDA81E8F0C}Configs/_Identities/CRF_CharacterIdentity_Asian.conf"
  Configurations {
   CONFResourceClass PC {
   }

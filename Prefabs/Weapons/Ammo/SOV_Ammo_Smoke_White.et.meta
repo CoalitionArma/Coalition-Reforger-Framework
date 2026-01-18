@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B4CFBAF48A598F45}Prefabs/Weapons/Ammo/SOV_Smoke.et"
+ Name "{B4CFBAF48A598F45}Prefabs/Weapons/Ammo/SOV_Ammo_Smoke_White.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

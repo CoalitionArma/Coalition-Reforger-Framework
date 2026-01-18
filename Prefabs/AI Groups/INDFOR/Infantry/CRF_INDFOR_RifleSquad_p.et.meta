@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3C51AF203A05A29D}Prefabs/AI Groups/BLUFOR/Infantry/CRF_INDFOR_RifleSquad_p.et"
+ Name "{3C51AF203A05A29D}Prefabs/AI Groups/INDFOR/Infantry/CRF_INDFOR_RifleSquad_p.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

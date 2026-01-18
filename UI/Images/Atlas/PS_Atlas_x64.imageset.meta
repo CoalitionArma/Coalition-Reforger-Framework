@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F3A9B47F55BE8D2B}UI/Textures/Icons/PS_Atlas_x64.imageset"
+ Name "{F3A9B47F55BE8D2B}UI/Images/Atlas/PS_Atlas_x64.imageset"
  Configurations {
   ImageSetResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   ImageSetResourceClass PS4 : PC {
   }
   ImageSetResourceClass HEADLESS : PC {
+  }
+  ImageSetResourceClass PS5 : PC {
+  }
+  ImageSetResourceClass Xbox : PC {
   }
  }
 }

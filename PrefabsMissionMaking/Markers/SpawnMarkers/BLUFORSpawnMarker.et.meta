@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawn.et"
+ Name "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFORSpawnMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

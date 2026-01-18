@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E21D6A4BC34E5F54}UI/GermanFlag_Opacity.edds"
+ Name "{E21D6A4BC34E5F54}UI/Images/Clothing/Patches/GermanFlag_Opacity.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

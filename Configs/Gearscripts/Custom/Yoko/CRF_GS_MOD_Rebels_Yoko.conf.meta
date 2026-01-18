@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B0615BC5DB754083}Configs/Gearscripts/Standard/Modern/CRF_GS_MOD_Rebels_Yoko.conf"
+ Name "{B0615BC5DB754083}Configs/Gearscripts/Custom/Yoko/CRF_GS_MOD_Rebels_Yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

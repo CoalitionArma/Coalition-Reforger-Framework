@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D9FDD2A390D771B0}Configs/Core/CRF_PlacableEntitiesRegestry_CIV.conf"
+ Name "{D9FDD2A390D771B0}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_CIV.conf"
  Configurations {
   CONFResourceClass PC {
   }

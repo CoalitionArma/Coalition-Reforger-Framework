@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{95469A5A93925052}Configs/Gearscripts/Custom/RandAlThor/Special/CanyonRun/CivilDispute_Cops.conf"
+ Name "{95469A5A93925052}Configs/Gearscripts/Custom/RandAlThor/Special/CivilDispute/CivilDispute_Cops.conf"
  Configurations {
   CONFResourceClass PC {
   }

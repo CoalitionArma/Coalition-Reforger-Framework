@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{57C8559AEDAEFF2D}UI/layouts/CCO19_OBJ.layout"
+ Name "{57C8559AEDAEFF2D}UI/layouts/CRF_Frontline_HUD.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   LayoutResourceClass PS5 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundryPolyZone.et"
+ Name "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

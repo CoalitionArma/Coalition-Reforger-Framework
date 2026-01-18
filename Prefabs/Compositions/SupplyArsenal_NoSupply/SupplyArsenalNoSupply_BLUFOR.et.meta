@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2213786125174561}Prefabs/Compositions/SupplyArsenal/SupplyArsenalNoSupply_BLUFOR.et"
+ Name "{2213786125174561}Prefabs/Compositions/SupplyArsenal_NoSupply/SupplyArsenalNoSupply_BLUFOR.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

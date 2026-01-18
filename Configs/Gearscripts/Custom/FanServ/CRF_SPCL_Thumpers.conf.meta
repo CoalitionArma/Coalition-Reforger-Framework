@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A1E8D96CDA3BD561}Configs/Gearscripts/Standard/80s/CRF_SPCL_Thumpers.conf"
+ Name "{A1E8D96CDA3BD561}Configs/Gearscripts/Custom/FanServ/CRF_SPCL_Thumpers.conf"
  Configurations {
   CONFResourceClass PC {
   }

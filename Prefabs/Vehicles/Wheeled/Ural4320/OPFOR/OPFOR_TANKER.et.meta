@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DDA7022CD3D52829}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR_TANKER.et"
+ Name "{DDA7022CD3D52829}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_TANKER.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{9BF4B255F2B5872E}Configs/Chat/PrivateChannel.conf"
+ Name "{9BF4B255F2B5872E}Configs/Systems/Chat/PrivateChannel.conf"
  Configurations {
   CONFResourceClass PC {
   }

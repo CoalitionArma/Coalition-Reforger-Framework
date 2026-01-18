@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{821DA53A26209581}PrefabsEditable/Markers/GlobalObjectiveMarker.et"
+ Name "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/GlobalObjectiveMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

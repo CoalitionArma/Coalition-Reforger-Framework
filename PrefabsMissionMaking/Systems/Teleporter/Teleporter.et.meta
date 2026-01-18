@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/RespawnPoles/PreJoin_Teleport.et"
+ Name "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

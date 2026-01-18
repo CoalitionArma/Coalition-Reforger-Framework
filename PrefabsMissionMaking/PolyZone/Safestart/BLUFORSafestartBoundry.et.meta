@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et"
+ Name "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFORSafestartBoundry.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{807CD99AED640B43}Configs/Identities/CRF_CharacterIdentity_AmericanCamo.conf"
+ Name "{807CD99AED640B43}Configs/_Identities/CRF_CharacterIdentity_AmericanCamo.conf"
  Configurations {
   CONFResourceClass PC {
   }

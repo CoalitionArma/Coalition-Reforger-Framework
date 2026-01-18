@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawn.et"
+ Name "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFORSpawnMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

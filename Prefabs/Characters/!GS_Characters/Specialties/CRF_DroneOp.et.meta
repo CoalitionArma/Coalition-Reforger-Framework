@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A49CC762AEE2A230}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_DroneOp_P.et"
+ Name "{A49CC762AEE2A230}Prefabs/Characters/!GS_Characters/Specialties/CRF_DroneOp.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

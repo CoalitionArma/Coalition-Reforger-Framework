@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A3FA81D92051A9E1}PrefabsEditable/Markers/CIVObjectiveMarker.et"
+ Name "{A3FA81D92051A9E1}PrefabsMissionMaking/Markers/ObjectiveMarkers/CIVObjectiveMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

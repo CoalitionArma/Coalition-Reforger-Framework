@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{226FC159EFA3EAA2}Prefabs/Vehicles/Wheeled/M998/Lights/MiniArsenalLight.et"
+ Name "{226FC159EFA3EAA2}Prefabs/Systems/MiniArsenalLight.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

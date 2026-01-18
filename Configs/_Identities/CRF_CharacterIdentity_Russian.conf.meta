@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B96582A978CDF7AD}Configs/Identities/CRF_CharacterIdentity_Russian.conf"
+ Name "{B96582A978CDF7AD}Configs/_Identities/CRF_CharacterIdentity_Russian.conf"
  Configurations {
   CONFResourceClass PC {
   }

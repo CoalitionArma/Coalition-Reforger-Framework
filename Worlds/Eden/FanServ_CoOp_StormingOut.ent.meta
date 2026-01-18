@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{46B69853F6DE308B}Worlds/COALobby/Eden/FanServ_CoOp_StormingOut.ent"
+ Name "{46B69853F6DE308B}Worlds/Eden/FanServ_CoOp_StormingOut.ent"
  Configurations {
   ENTResourceClass PC {
   }

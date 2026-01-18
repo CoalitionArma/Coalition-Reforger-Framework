@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3FF79D3497333882}UI/data/iraqiflagicon_BC.edds"
+ Name "{3FF79D3497333882}UI/Images/Flags/iraqiflagicon_BC.edds"
  Configurations {
   TIFFResourceClass PC : "{EAB5DE3219F9CBA8}Configs/System/ResourceTypes/PC/TextureColorMap.conf" {
   }
@@ -9,7 +9,7 @@ MetaFileClass {
   }
   TIFFResourceClass PS4 : "{12273E1A0928F0C4}Configs/System/ResourceTypes/PS4/TextureColorMap.conf" {
   }
-  TIFFResourceClass PS5 : "{531A0D167B1ABD97}configs/ResourceTypes/PS5/TextureColorMap.conf" {
+  TIFFResourceClass PS5 : "{531A0D167B1ABD97}Configs/System/ResourceTypes/PS5/TextureColorMap.conf" {
   }
   TIFFResourceClass HEADLESS : "{BEAF5CD0C438676E}Configs/System/ResourceTypes/HEADLESS/TextureColorMap.conf" {
   }

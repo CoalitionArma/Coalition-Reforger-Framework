@@ -9,7 +9,7 @@ MetaFileClass {
   }
   PTCResourceClass PS4 : "{B94602D6C3160C98}Configs/System/ResourceTypes/PS4/ParticleEffect.conf" {
   }
-  PTCResourceClass PS5 : "{E8F9F77ECEB75947}configs/ResourceTypes/PS5/ParticleEffect.conf" {
+  PTCResourceClass PS5 : "{E8F9F77ECEB75947}Configs/System/ResourceTypes/PS5/ParticleEffect.conf" {
   }
   PTCResourceClass HEADLESS : "{EED8908A9A55ED1C}Configs/System/ResourceTypes/HEADLESS/ParticleEffect.conf" {
   }

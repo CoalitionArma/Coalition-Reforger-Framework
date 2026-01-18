@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et"
+ Name "{5804AD2759E17E13}Prefabs/AI Groups/BLUFOR/Vehicle/CRF_BLUFOR_VehicleCrew_p.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

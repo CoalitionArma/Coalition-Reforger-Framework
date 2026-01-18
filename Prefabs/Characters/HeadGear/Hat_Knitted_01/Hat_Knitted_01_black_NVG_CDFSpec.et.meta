@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{40A06224DEE95860}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_black_NVG_CDF_Spec.et"
+ Name "{40A06224DEE95860}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_black_NVG_CDFSpec.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

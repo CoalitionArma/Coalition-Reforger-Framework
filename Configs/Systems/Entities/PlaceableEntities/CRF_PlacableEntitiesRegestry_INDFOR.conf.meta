@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CE655A6827EFDD0F}Configs/Core/CRF_PlacableEntitiesRegestry_INDFOR.conf"
+ Name "{CE655A6827EFDD0F}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_INDFOR.conf"
  Configurations {
   CONFResourceClass PC {
   }

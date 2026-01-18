@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B494227B1212A8B2}Configs/Editor/PlaceableEntities/GameMasterFX_Entities.conf"
+ Name "{B494227B1212A8B2}Configs/Systems/Entities/PlaceableEntities/GameMasterFX_Entities.conf"
  Configurations {
   CONFResourceClass PC {
   }

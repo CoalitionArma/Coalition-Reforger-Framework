@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E53779CD941C12EB}Prefabs/Structures/LinearAAS/Flags/Flag_Zone_E.et"
+ Name "{E53779CD941C12EB}Prefabs/Structures/Frontline/Flags/Flag_Zone_E.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

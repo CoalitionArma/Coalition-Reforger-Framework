@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{54271130C7F4DA82}Configs/EntityCatalog/US/Vehicles_EntityCatalog_US80.conf"
+ Name "{54271130C7F4DA82}Configs/Systems/Entities/Entity Catalog/US/Vehicles_EntityCatalog_Blufor80s.conf"
  Configurations {
   CONFResourceClass PC {
   }

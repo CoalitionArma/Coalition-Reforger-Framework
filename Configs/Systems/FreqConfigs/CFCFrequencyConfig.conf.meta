@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8FE52CD7F8502E24}Configs/FreqConfigs/CFCFrequencyConfig.conf"
+ Name "{8FE52CD7F8502E24}Configs/Systems/FreqConfigs/CFCFrequencyConfig.conf"
  Configurations {
   CONFResourceClass PC {
   }

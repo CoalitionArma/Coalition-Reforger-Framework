@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{52CA8FF5F56C6F31}UI/layouts/Map/ManualMapMarkerBase.layout"
+ Name "{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   LayoutResourceClass PS4 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }
