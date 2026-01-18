@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E82F2F4BA20A2914}UI/Fonts/Adventor_400.edds"
+ Configurations {
+  TGAResourceClass PC : "{F18523FA5BAAEA63}Configs/System/ResourceTypes/PC/TextureFonts.conf" {
+  }
+  TGAResourceClass XBOX_ONE : "{02B393E0229C74CB}configs/ResourceTypes/XBOX_ONE/TextureFonts.conf" {
+  }
+  TGAResourceClass XBOX_SERIES : "{85ECC27BD918BA89}configs/ResourceTypes/XBOX_SERIES/TextureFonts.conf" {
+  }
+  TGAResourceClass PS4 : "{3C102C974458DF07}configs/ResourceTypes/PS4/TextureFonts.conf" {
+  }
+  TGAResourceClass PS5 : "{863E314F45203AC4}Configs/System/ResourceTypes/PS5/TextureFonts.conf" {
+  }
+  TGAResourceClass HEADLESS : "{D20F8633D63483FA}configs/ResourceTypes/HEADLESS/TextureFonts.conf" {
+  }
+  TGAResourceClass Xbox : PC {
+  }
+ }
+}

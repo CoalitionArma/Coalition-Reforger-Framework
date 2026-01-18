@@ -1,0 +1,100 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 5352.04 65.02 3387.26
+ Points {
+  ShapePoint "{66D60C855C7E9410}" {
+   Position -114.567 0 -4.09
+  }
+  ShapePoint "{66D60C855EB477E6}" {
+   Position -38.238 0 -138.516
+  }
+  ShapePoint "{66D60C85434CB8B2}" {
+   Position 322.927 0 -234.455
+  }
+  ShapePoint "{66D60C8544B3F7B9}" {
+   Position 716.345 0 -322.341
+  }
+  ShapePoint "{66D60C8548D072EE}" {
+   Position 1058.678 0 -299.374
+  }
+  ShapePoint "{66D60C854A64C5CB}" {
+   Position 1178.652 0 -290.291
+  }
+  ShapePoint "{66D60C854CF14804}" {
+   Position 1295.247 0 -161.419
+  }
+  ShapePoint "{66D60C854F76A53E}" {
+   Position 1609.893 0 108.543
+  }
+  ShapePoint "{66D60C8578945EC3}" {
+   Position 1640.022 0 330.866
+  }
+  ShapePoint "{66D60C857A8C6EFD}" {
+   Position 1375.281 52.619 659.324
+  }
+  ShapePoint "{66D60C8F49B2B32B}" {
+   Position 1356.952 0 651.853
+  }
+  ShapePoint "{66D60C8F48821310}" {
+   Position 1330.423 0 632.224
+  }
+  ShapePoint "{66D60C8F4B7AA2CB}" {
+   Position 1316.434 0 632.962
+  }
+  ShapePoint "{66D60C8F75928499}" {
+   Position 1299.761 0 652.601
+  }
+  ShapePoint "{66D60C8F74FBFD46}" {
+   Position 1298.046 0 664.318
+  }
+  ShapePoint "{66D60C8F7ADB1DB0}" {
+   Position 1300.405 0 674.197
+  }
+  ShapePoint "{66D60C8F7D36AF67}" {
+   Position 1297.118 0 678.278
+  }
+  ShapePoint "{66D60C8F6106E6B2}" {
+   Position 1238.835 0 689.022
+  }
+  ShapePoint "{66D60C8F609B312A}" {
+   Position 1218.167 0 717.261
+  }
+  ShapePoint "{66D60C8FEC69008A}" {
+   Position 1164.284 0 704.676
+  }
+  ShapePoint "{66D60C8F839183A4}" {
+   Position 980.15 0 759.408
+  }
+  ShapePoint "{66D60C856105662A}" {
+   Position 872.16 94.215 782.572
+  }
+  ShapePoint "{66D60C8567B32E0D}" {
+   Position 301.821 52.838 648.515
+  }
+  ShapePoint "{66D60C8568D399DB}" {
+   Position 27.415 0 692.34
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 6588.54 217.13 5371.157
+ Points {
+  ShapePoint "{66D9775C28F83F94}" {
+   Position 45.078 0 92.81
+  }
+  ShapePoint "{66D9775C2DC3D74E}" {
+   Position -58.046 0 37.264
+  }
+  ShapePoint "{66D9775C2C1CEC24}" {
+   Position -71.638 0 -46.56
+  }
+  ShapePoint "{66D9775C2E8A06A3}" {
+   Position -47.914 0 -88.649
+  }
+  ShapePoint "{66D9775C2E4E2236}" {
+   Position -34.296 0 -102.282
+  }
+  ShapePoint "{66D9775DD5DD584C}" {
+   Position 103.899 0 22.246
+  }
+ }
+}

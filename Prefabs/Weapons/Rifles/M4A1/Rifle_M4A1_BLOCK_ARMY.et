@@ -1,0 +1,30 @@
+GenericEntity : "{CFDEA9657EAB6269}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_CQBR_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDA2E5FAA2B6}" {
+     AttachmentSlot InventoryStorageSlot Buttstock {
+      Prefab "{1FA4BF60B0648BFC}Prefabs/Weapons/Attachments/Stocks/Stock_AR15_USGI/RHS_M4_Buttstock.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA70372C8BA}" {
+     AttachmentSlot InventoryStorageSlot Barrel {
+      Prefab "{76B3DF0E04D44214}Prefabs/Weapons/Rifles/M4A1/base_parts/RHS_M4_BARREL_14_5.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626713EF43D3CC9E}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Offset 0 0 -0.0058
+       }
+      }
+     }
+     MagazineTemplate "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et"
+    }
+   }
+  }
+ }
+ coords 1414.819 51.063 2004.421
+}

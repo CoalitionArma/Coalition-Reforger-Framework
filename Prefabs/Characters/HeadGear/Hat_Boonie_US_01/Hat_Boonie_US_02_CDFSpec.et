@@ -1,0 +1,92 @@
+GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_01_base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{52C8D6017C371EA6}" {
+    ItemDisplayName UIInfo "{52C8D60173B1164A}" {
+     Name "#AR-Headgear_BoonieHat_Olive_Name"
+     Description "#AR-Headgear_BoonieHat_Olive_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{52C8D6017161AECA}" {
+     SizeSetupStrategy Manual
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{4A9A37EEC12CD4F0}Assets/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_01.xob"
+   Materials {
+    MaterialAssignClass "{66423D0294062CAD}" {
+     SourceMaterial "Hat_Boonie_US_01"
+     AssignedMaterial "{1DC7272F727FA80B}Assets/Characters/HeadGear/Hat_Boonie_US_01/Data/Hat_Boonie_US_02.emat"
+    }
+   }
+  }
+  RHS_HelmetNodeStorageComponent "{66423D079E36CD68}" {
+   Attributes SCR_ItemAttributeCollection "{66423D079F875A80}" {
+    ItemDisplayName UIInfo "{66423D079D6FD38C}" {
+     Name "gone fishin'"
+     Description "surely will keep the sun out of your eyes! oh wait..."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66423D07A21601FF}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{66423D07A062CC6D}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{66423D07CECA0BFB}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+      AspectRatio 1
+     }
+     RHS_CustomAttributes "{66423D07C936DCE2}" {
+      m_sShortName "#RHS-Headgear_OPSCORE_MT_Name"
+     }
+    }
+   }
+   Priority 150
+   StoragePurpose 64
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100
+   MaxItemSize 1 1 1
+  }
+  SCR_ItemOutfitFactionComponent "{618AD7BA9EE725D7}" {
+   Enabled 0
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     PivotID "Head"
+     Offset 0 0.149 -0.1004
+     Angles -1.8476 -180 0
+     InspectionWidgetOffset 0 1.7698 0.129
+     m_sInspectIconTexture "{2099559B5965F0C7}UI/Textures/InventoryIcons/Inspection-gizmo-nvg-slot-UI.edds"
+    }
+    RHS_LoadoutSlotInfo BackVelcro {
+     PivotID "Head"
+     Offset -0.0094 0.0937 0.0859
+     Angles -7.2901 -2.2741 0.8817
+     ChildPivotID "AttachmentPoint"
+     Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
+     InspectionWidgetOffset 0 1.72 -0.1675
+     m_bShouldUseCMorphedMesh 1
+     m_fMorphValue 0.6
+     m_sInspectIconTexture "{73E124B6750302C1}UI/Textures/InventoryIcons/Inspection-gizmo-backVelcro-slot-UI.edds"
+    }
+   }
+   WornMaterialsOverride {
+    "{1DC7272F727FA80B}Assets/Characters/HeadGear/Hat_Boonie_US_01/Data/Hat_Boonie_US_02.emat"
+   }
+   ItemMaterialsOverride {
+    "{1DC7272F727FA80B}Assets/Characters/HeadGear/Hat_Boonie_US_01/Data/Hat_Boonie_US_02.emat"
+   }
+  }
+ }
+}

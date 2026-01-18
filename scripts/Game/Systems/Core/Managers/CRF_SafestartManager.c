@@ -170,10 +170,10 @@ class CRF_SafestartManager : ScriptComponent
 		m_aPlayedFactionsArray.Clear();
 
 		// Initialize default faction status strings
-		string bluforStatus = "#Coal_SS_No_Faction";
-		string opforStatus = "#Coal_SS_No_Faction";
-		string indforStatus = "#Coal_SS_No_Faction";
-		string civStatus = "#Coal_SS_No_Faction";
+		string bluforStatus = "N/A";
+		string opforStatus = "N/A";
+		string indforStatus = "N/A";
+		string civStatus = "N/A";
 
 		// Process each faction
 		foreach (SCR_Faction faction : factionArray)
@@ -190,27 +190,27 @@ class CRF_SafestartManager : ScriptComponent
 			// Set appropriate status string based on faction and ready state
 			if (factionKey == "BLUFOR") {
 				if (m_bBluforReady) {
-					bluforStatus = "#Coal_SS_Faction_Ready";
+					bluforStatus = "Ready";
 				} else {
-					bluforStatus = "#Coal_SS_Faction_Not_Ready";
+					bluforStatus = "Not Ready";
 				}
 			} else if (factionKey == "OPFOR") {
 				if (m_bOpforReady) {
-					opforStatus = "#Coal_SS_Faction_Ready";
+					opforStatus = "Ready";
 				} else {
-					opforStatus = "#Coal_SS_Faction_Not_Ready";
+					opforStatus = "Not Ready";
 				}
 			} else if (factionKey == "INDFOR") {
 				if (m_bIndforReady) {
-					indforStatus = "#Coal_SS_Faction_Ready";
+					indforStatus = "Ready";
 				} else {
-					indforStatus = "#Coal_SS_Faction_Not_Ready";
+					indforStatus = "Not Ready";
 				}
 			} else if (factionKey == "CIV") {
 				if (m_bCivReady) {
-					civStatus = "#Coal_SS_Faction_Ready";
+					civStatus = "Ready";
 				} else {
-					civStatus = "#Coal_SS_Faction_Not_Ready";
+					civStatus = "Not Ready";
 				}
 			}
 		}
@@ -222,7 +222,7 @@ class CRF_SafestartManager : ScriptComponent
 		m_iPlayedFactionsCount = 0;
 		foreach (string factionStatus : m_aFactionsStatusArray)
 		{
-			if (factionStatus != "#Coal_SS_No_Faction")
+			if (factionStatus != "N/A")
 				m_iPlayedFactionsCount++;
 		}
 
@@ -280,9 +280,9 @@ class CRF_SafestartManager : ScriptComponent
 				m_bBluforReady = !m_bBluforReady;
 				newStatus = m_bBluforReady;
 				if (newStatus) {
-					messageKey = "#Coal_SS_Faction_Readied_Blufor";
+					messageKey = "[CRF] : BLUFOR READY";
 				} else {
-					messageKey = "#Coal_SS_Faction_Unreadied_Blufor";
+					messageKey = "[CRF] : BLUFOR NOT READY";
 				}
 				break;
 			}
@@ -290,9 +290,9 @@ class CRF_SafestartManager : ScriptComponent
 				m_bOpforReady = !m_bOpforReady;
 				newStatus = m_bOpforReady;
 				if (newStatus) {
-					messageKey = "#Coal_SS_Faction_Readied_Opfor";
+					messageKey = "[CRF] : OPFOR READY";
 				} else {
-					messageKey = "#Coal_SS_Faction_Unreadied_Opfor";
+					messageKey = "[CRF] : OPFOR NOT READY";
 				}
 				break;
 			}
@@ -300,9 +300,9 @@ class CRF_SafestartManager : ScriptComponent
 				m_bIndforReady = !m_bIndforReady;
 				newStatus = m_bIndforReady;
 				if (newStatus) {
-					messageKey = "#Coal_SS_Faction_Readied_Indfor";
+					messageKey = "[CRF] : INDFOR READY";
 				} else {
-					messageKey = "#Coal_SS_Faction_Unreadied_Indfor";
+					messageKey = "[CRF] : INDFOR NOT READY";
 				}
 				break;
 			}
@@ -310,9 +310,9 @@ class CRF_SafestartManager : ScriptComponent
 				m_bCivReady = !m_bCivReady;
 				newStatus = m_bCivReady;
 				if (newStatus) {
-					messageKey = "#Coal_SS_Faction_Readied_Civ";
+					messageKey = "[CRF] : CIV READY";
 				} else {
-					messageKey = "#Coal_SS_Faction_Unreadied_Civ";
+					messageKey = "[CRF] : CIV NOT READY";
 				}
 				break;
 			}
@@ -320,7 +320,7 @@ class CRF_SafestartManager : ScriptComponent
 
 		message = string.Format("%1 - %2", messageKey, playerName);
 		
-		m_RplBroadcastManager.PopUpNotification(3.25, message, "#Coal_SS_Countdown_Started_Subtext");
+		m_RplBroadcastManager.PopUpNotification(3.25, message, "Any leader can toggle ready to cancel the countdown");
 		
 		UpdatePlayedFactions();
 		m_bCheckStartCountdown = true;
@@ -331,7 +331,7 @@ class CRF_SafestartManager : ScriptComponent
 	protected void CheckStartCountDown()
 	{
 		string message;
-		string submessage = "#Coal_SS_Countdown_Started_Subtext";
+		string submessage = "Any leader can toggle ready to cancel the countdown";
 		float popupLife = 3.25;
 		
 		// Count how many factions are ready
@@ -345,7 +345,7 @@ class CRF_SafestartManager : ScriptComponent
 		// Cancel countdown if a faction unreadied after countdown began
 		if (readyFactionsCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35)
 		{
-			message = "#Coal_SS_Countdown_Cancelled";
+			message = "[CRF] : Game Live Countdown Canceled!";
 			m_iSafeStartTimeRemaining = 35;
 			m_bCheckStartCountdown = false;
 			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
@@ -356,14 +356,14 @@ class CRF_SafestartManager : ScriptComponent
 		if (readyFactionsCount == m_iPlayedFactionsCount)
 		{
 			m_iSafeStartTimeRemaining -= 5;
-			message = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
+			message = string.Format("[CRF] : Game Live In: %1 Seconds!", m_iSafeStartTimeRemaining);
 
 			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
 				m_bCheckStartCountdown = false;
-				message = "#Coal_SS_Game_Live";
-				submessage = "#Coal_SS_SafeStart_Started_Subtext";
+				message = "[CRF] : GAME LIVE!";
+				submessage = "Safestart has ended, weapons are now live!";
 				popupLife = 8;
 			}
 
@@ -377,7 +377,7 @@ class CRF_SafestartManager : ScriptComponent
 		int readyFactionsCount = 0;
 		foreach (string factionStatus : m_aFactionsStatusArray)
 		{
-			if (factionStatus == "#Coal_SS_Faction_Ready")
+			if (factionStatus == "Ready")
 				readyFactionsCount++;
 		}
 		
@@ -437,7 +437,7 @@ class CRF_SafestartManager : ScriptComponent
 			m_bIndforReady = false;
 			m_bCivReady = false;
 			
-			if(m_Gamemode.m_bLockSlotsAfterSafestart)
+			if(m_Gamemode.m_bLockUnusedSlots)
 				m_SlottingManager.LockAllOpenSlots();
 
 			m_bUpdatedServerWorldTime = false;
@@ -470,6 +470,7 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 			
 			DeleteAllSafestartZones();
+			CRF_GamemodeManager.GetInstance().DeleteAllForwardDeployZones();
 		}
 	};
 	
@@ -501,10 +502,10 @@ class CRF_SafestartManager : ScriptComponent
 			}
 			
 			switch (true) {
-				case(factionKey == "BLUFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "OPFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "INDFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "CIV" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "BLUFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[0] != "N/A") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "OPFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[1] != "N/A") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "INDFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[2] != "N/A") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "CIV" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[3] != "N/A") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
 			};
 		};
 

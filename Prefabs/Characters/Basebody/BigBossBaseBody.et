@@ -1,8 +1,0 @@
-GenericEntity : "{0023F898C0FF18AA}Prefabs/Characters/Basebody/CharacterBasebody.et" {
- ID "56E4FD8779CD1867"
- components {
-  MeshObject "{56E4FD8779CD19A7}" {
-   Object "{49EC2C4C8CAF4853}Assets/BigBoss.xob"
-  }
- }
-}

@@ -1,6 +1,8 @@
 Vehicle : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
  ID "BBCBA43A9778AE21"
  components {
+  CRF_SupplyArsenalComponent "{66C45982988725CF}" {
+  }
   MeshObject "{51DAA09FEFBFC0E7}" {
    Materials {
     MaterialAssignClass "{65990AF0A278F54C}" {
@@ -22,7 +24,7 @@ Vehicle : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et"
     m_aAuthoredLabels +{
     }
     m_aAutoLabels {
-     51872 122 54
+     FACTION_CRF_INDFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EF07CE051E72289}" {

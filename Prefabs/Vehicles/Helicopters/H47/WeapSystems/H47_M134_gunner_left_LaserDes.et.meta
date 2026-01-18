@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5B4FE5E19DE64D74}Prefabs/Vehicles/Helicopters/H47/WeapSystems/H47_M134_gunner_left_LaserDes.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

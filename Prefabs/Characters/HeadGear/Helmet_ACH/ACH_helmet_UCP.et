@@ -1,0 +1,60 @@
+GameEntity : "{EC0071079B219026}Prefabs/Characters/Core/Headgear_Helmet_Base.et" {
+ ID "65F936E95BCFCDAD"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{32B3FF5B91086392}Assets/Characters/Headwear/ACH_helmet/ACH_helmet.xob"
+  }
+  RHS_HelmetNodeStorageComponent "{66FC0976D522914C}" {
+   Attributes SCR_ItemAttributeCollection "{66FC0976D359B7B1}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "ACH (UCP)"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66FC0976C3C7AB1A}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5DB13C57226FEA81}" {
+     }
+     RHS_CustomAttributes "{5DB8F5B9ACB547EA}" {
+     }
+    }
+   }
+   Priority 150
+   StoragePurpose 0x40 0x1
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100
+   MaxItemSize 1 1 1
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Goggles {
+     InspectionWidgetOffset 0 1.6901 0.0813
+     m_sInspectIconTexture "{8C5C7CED1FFCE9F6}UI/Textures/InventoryIcons/Inspection-gizmo-goggles-slot-UI.edds"
+    }
+    LoadoutSlotInfo MeshCover {
+    }
+    RHS_LoadoutSlotInfo NVG {
+     PivotID "Head"
+     Offset 0 0.1516 -0.1414
+     Angles 0 180 0
+     InspectionWidgetOffset 0 1.7698 0.129
+     AreaType RHS_LoadoutNVGSlotArea "{66FC0BBBA1BE3DBD}" {
+     }
+     m_sInspectIconTexture "{2099559B5965F0C7}UI/Textures/InventoryIcons/Inspection-gizmo-nvg-slot-UI.edds"
+    }
+    RHS_LoadoutSlotInfo Masks {
+     InspectionWidgetOffset 0 1.6 0
+     AreaType LoadoutHeadCoverArea "{5DB0913540BC60B8}" {
+     }
+     m_sInspectIconTexture "{9D824B02D8CE6328}UI/Textures/InventoryIcons/Inspection-gizmo-mask-slot-UI.edds"
+    }
+   }
+  }
+ }
+}

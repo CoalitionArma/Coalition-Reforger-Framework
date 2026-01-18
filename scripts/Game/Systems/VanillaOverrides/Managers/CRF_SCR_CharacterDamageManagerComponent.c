@@ -1,4 +1,4 @@
-/**
+ /*
  * CRF_SCR_CharacterDamageManagerComponent
  * Tracks damage events for weapon logging to fix issues with incorrect weapons being reported
  */

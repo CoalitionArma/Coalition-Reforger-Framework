@@ -222,7 +222,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	void InitializePlayer()
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+
 	}
 	
 	/**
@@ -333,8 +333,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 					if (m_VONController.m_bIsBroadcasting)
 						comp.SetTalking();
 				}
-				else if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(player))
-					comp.SetTalking();
 			}
 		}
 	}

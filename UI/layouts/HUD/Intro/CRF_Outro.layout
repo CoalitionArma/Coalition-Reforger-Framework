@@ -1,0 +1,85 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{66C48CCD6044BAA3}" {
+   Name "Image0"
+   Slot FrameWidgetSlot "{66C48CCD6044BA9A}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+  }
+  TextWidgetClass "{66C48CCD5642A4C9}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{66BECC467C5F1E8A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -900
+    OffsetLeft -900
+    PositionY -150
+    OffsetTop -150
+    SizeX 1800
+    OffsetRight -900
+    SizeY 300
+    OffsetBottom -150
+   }
+   Text "STORAGE WARS"
+   "Font Size" 400
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BECC4669BF8CC2}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{66C48CCFC434CD93}" {
+   Name "TitleText1"
+   Slot FrameWidgetSlot "{66BECC467C5F1E8A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -900
+    OffsetLeft -900
+    PositionY 56.672
+    OffsetTop 56.672
+    SizeX 1800
+    OffsetRight -900
+    SizeY 300
+    OffsetBottom -356.672
+   }
+   "Is Visible" 0
+   Text "Thank You For Attending!"
+   "Font Size" 30
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BECC4669BF8CC2}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{66C48CCFD37B419D}" {
+   Name "TitleText2"
+   Slot FrameWidgetSlot "{66BECC467C5F1E8A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -900
+    OffsetLeft -900
+    PositionY 96.597
+    OffsetTop 96.597
+    SizeX 1800
+    OffsetRight -900
+    SizeY 300
+    OffsetBottom -396.597
+   }
+   "Is Visible" 0
+   Text "Please wait for server restart for the next mission!"
+   "Font Size" 30
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BECC4669BF8CC2}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+ }
+}

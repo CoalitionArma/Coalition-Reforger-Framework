@@ -1,0 +1,10 @@
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ ID "6586537E1F83840C"
+ components {
+  CRF_PolyZone "{6586537E1F838475}" {
+   m_bIsSafestartBorder 0
+   m_bIsForwardDeployZone 1
+  }
+ }
+ coords 1475.704 2.673 1009.093
+}

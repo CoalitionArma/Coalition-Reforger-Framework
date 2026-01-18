@@ -1,0 +1,17 @@
+GameEntity : "{27DABFBB719485AA}Prefabs/Characters/Uniforms/Pants_US_BDU_base.et" {
+ ID "5104869D194C6243"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+      PreviewModel "{F3675A241847B157}Assets/Characters/Uniforms/Pants_BDU_M81/Pants_BDU_M81.xob"
+     }
+    }
+   }
+   MaxCumulativeVolume 30150
+   MaxItemSize 100 100 100
+   m_fMaxWeight 100
+  }
+ }
+}

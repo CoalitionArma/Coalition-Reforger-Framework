@@ -229,36 +229,6 @@ FrameWidgetClass {
       }
      }
     }
-    RichTextWidgetClass "{631F7C6DE6B58549}" {
-     Prefab "{00000000B0FD85CE}"
-     Name "Action"
-     Slot FrameWidgetSlot "{59107CC3B4EF4150}" {
-      Anchor 1 1 1 1
-      OffsetLeft 0
-      OffsetTop 0
-      SizeX 1
-      OffsetRight -1
-      SizeY 1
-      OffsetBottom -1
-      Alignment 0.5 0.5
-     }
-     Clipping False
-     Color 0.761 0.386 0.078 1
-     components {
-      SCR_DeviceSpecificComponent "{5918811AAA9B9B8D}" {
-       m_bControllerOnly 1
-      }
-     }
-     Text "<image set=\"{F7FD1672FECA05E8}UI/Textures/Icons/icons_gamepad_64.imageset\" name=\"DPAD_horizontal\" scale=\"1\"/>"
-     "Font Size" 32
-     "Min Font Size" 32
-     "Vertical Alignment" Center
-     FontProperties FontProperties "{58CE6BA0EDCA2C14}" {
-      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-     }
-     Offset -40 0
-     "Line Spacing" 0
-    }
    }
   }
   FrameWidgetClass "{631F7C6DE6B5854C}" : "{B7A765172F0BD4D9}UI/layouts/Common/GameVersionWatermark.layout" {

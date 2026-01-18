@@ -1,0 +1,8 @@
+GenericEntity : "{3D44D0E5AC135BDC}Prefabs/Weapons/Magazines/Magazine_M242/Box_25x137_M242_150rnd_HEIT_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MaxAmmo 300
+  }
+ }
+}

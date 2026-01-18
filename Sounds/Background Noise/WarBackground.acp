@@ -1,0 +1,372 @@
+AudioClass {
+ signals {
+  SignalClass "5133" {
+   id 5133
+   name "Signal 12"
+   tl -1804.915 39.086
+   res "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+   inputsport {
+    23 52
+   }
+   outputsport {
+    37
+   }
+   inputvalues {
+    0 1000
+   }
+   inputvaluesmin {
+    0 0
+   }
+   inputvaluesmax {
+    1 10000
+   }
+   path "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+  }
+ }
+ filters {
+  FilterClass "9238" : "{C8BF585AA246C60F}Sounds/_SharedData/Configs/Filter/Character/Filter_Character_Occlusion_OBSOLETE.conf" {
+   id 9238
+   name "Filter 13"
+   version 5
+   tl -1610.058 40.775
+   parent "{C8BF585AA246C60F}Sounds/_SharedData/Configs/Filter/Character/Filter_Character_Occlusion_OBSOLETE.conf"
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "5133:5" {
+       id 5133
+       port 5
+      }
+     }
+    }
+   }
+   pi {
+    3 0
+   }
+  }
+ }
+ sounds {
+  SoundClass "12297" {
+   id 12297
+   name "SOUND_SIREN_INCOMING"
+   version 5
+   tl -773.357 588.429
+   ins {
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "13330:65" {
+       id 13330
+       port 65
+      }
+     }
+    }
+   }
+   volume_dB 3
+   outState 22539
+   outStatePort 79879
+   speedOfSoundSimulation 1
+  }
+  SoundClass "20489" {
+   id 20489
+   name "SOUND_SIREN_GENERIC"
+   version 5
+   tl -774.827 184.538
+   ins {
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "3090:65" {
+       id 3090
+       port 65
+      }
+     }
+    }
+   }
+   volume_dB 3
+   outState 22539
+   outStatePort 79879
+  }
+ }
+ mixers {
+  MixerClass "22539" {
+   id 22539
+   name "OutputState"
+   version 4
+   tl -352.077 224.538
+   res "{B764D803219C775E}Sounds/FinalMix.afm"
+   ins {
+    ConnectionsClass "con:79879" {
+     id 79879
+     links {
+      ConnectionClass "20489:65" {
+       id 20489
+       port 65
+      }
+      ConnectionClass "12297:65" {
+       id 12297
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:152583" {
+     id 152583
+     links {
+      ConnectionClass "20489:5" {
+       id 20489
+       port 5
+      }
+      ConnectionClass "12297:5" {
+       id 12297
+       port 5
+      }
+     }
+    }
+   }
+   pi {
+    24576 0
+   }
+   path "{B764D803219C775E}Sounds/FinalMix.afm"
+   inputs {
+    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb_OBSOLETE" "VON_Reverb_Small" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin" "VON_Reverb_Medium" "VON_Reverb_Large"
+   }
+  }
+ }
+ shaders {
+  ShaderClass "3090" {
+   id 3090
+   name "Flush Shader"
+   version 5
+   tl -1140.058 185.178
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "4124:65" {
+       id 4124
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "10259:65" {
+       id 10259
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "7189:65" {
+       id 7189
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "9238:65" {
+       id 9238
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "1028:65" {
+       id 1028
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23 0
+   }
+  }
+  ShaderClass "13330" {
+   id 13330
+   name "Flush Shader"
+   version 5
+   tl -1137.143 605.714
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "4124:65" {
+       id 4124
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "19475:65" {
+       id 19475
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "7189:65" {
+       id 7189
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "9238:65" {
+       id 9238
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "14340:65" {
+       id 14340
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23 0
+   }
+  }
+ }
+ amplitudes {
+  AmplitudeClass "10259" {
+   id 10259
+   name "AmplitudeLarge"
+   version 5
+   tl -1603.787 -106.577
+   curve Custom
+   AttenuationCurve {
+    CurvePoint "1" {
+     Y 1
+    }
+    CurvePoint "2" {
+     X 726.80908
+     Y 0.48488
+    }
+    CurvePoint "3" {
+     X 1860.95532
+     Y 0.25128
+    }
+    CurvePoint "4" {
+     X 4204.26855
+     Y 0.0661
+    }
+    CurvePoint "5" {
+     X 6000
+     Y 0.01
+    }
+    CurvePoint "6" {
+     X 10000
+    }
+   }
+  }
+  AmplitudeClass "19475" {
+   id 19475
+   name "AmplitudeSmall"
+   version 5
+   tl -1573.75 668.75
+   curve Custom
+   AttenuationCurve {
+    CurvePoint "1" {
+     Y 1
+    }
+    CurvePoint "2" {
+     X 726.80908
+     Y 0.48488
+    }
+    CurvePoint "3" {
+     X 1860.95532
+     Y 0.25128
+    }
+    CurvePoint "4" {
+     X 4204.26855
+     Y 0.0661
+    }
+    CurvePoint "5" {
+     X 6000
+     Y 0.01
+    }
+    CurvePoint "6" {
+     X 10000
+    }
+   }
+  }
+ }
+ frequency {
+  FrequencyClass "7189" {
+   id 7189
+   name "Frequency 8"
+   version 5
+   tl -1875.308 460.111
+   dynamicUpdate 1
+   enableDistanceAtt 1
+   filterStrength 1.5
+   enableDirectivity 1
+  }
+ }
+ banks_local {
+  BankLocalClass "1028" {
+   id 1028
+   name "SIREN_AIR_RAID_DEVON"
+   version 7
+   tl -1596.571 202.714
+   Volume 6
+   "Loop count" 255
+   "Infinite loop" 1
+   Samples {
+    AudioBankSampleClass "CCOWarBG.wav" {
+     Filename "{2FBE561BC12C5A7A}Sounds/CCOWarBG.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "14340" {
+   id 14340
+   name "SIREN_INCOMING"
+   version 7
+   tl -1569.286 568.036
+   Volume 8
+   "Loop count" 255
+   "Infinite loop" 1
+   Samples {
+    AudioBankSampleClass "CCOWarBG.wav" {
+     Filename "{2FBE561BC12C5A7A}Sounds/CCOWarBG.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass "4124" {
+   id 4124
+   name "Spatiality 4"
+   version 5
+   tl -1878.165 550.27
+   spatialFactor 1
+  }
+ }
+ version 1
+}

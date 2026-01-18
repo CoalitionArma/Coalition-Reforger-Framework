@@ -1,9 +1,0 @@
-GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
- coords 4416.728 149.21 6887.062
-}
-GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
- coords 5137.822 175.726 7047.061
-}
-GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
- coords 4734.769 163.267 7328.843
-}

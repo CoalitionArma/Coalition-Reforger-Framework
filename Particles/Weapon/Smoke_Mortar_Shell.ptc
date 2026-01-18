@@ -159,7 +159,7 @@ EffectDef {
    LodMax 2
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 5
+   SizeMultiplier 7
    SizeRND 4
    RotMultiplier 15
    RandomRotDir 1
@@ -235,7 +235,7 @@ EffectDef {
    Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
    StretchMultiplier 0
    StreakFullUV 0
-   SizeMultiplier 5.5
+   SizeMultiplier 20
    SizeRND 6
    RotMultiplier 20
    RandomRotDir 1
@@ -309,8 +309,9 @@ EffectDef {
    Material "{5C751A80FB6CD3F4}Particles/_Materials/Gas/Smoke_loop_02.emat"
    StretchMultiplier 0
    StreakFullUV 0
-   SizeMultiplier 8
+   SizeMultiplier 20
    SizeRND 5
+   CenterY 0.25
    RotMultiplier 20
    RandomRotDir 1
    BillboardingType Full
@@ -322,7 +323,7 @@ EffectDef {
    VelAffect 0.2
    AirResistance 0.7
    AirResistanceRND 0.1
-   WindInfluence 0.18
+   WindInfluence 0.1
    ParentVelRelToAir 0.05
    GravityMultiplyRND -0.005
    EnableCollisions 1

@@ -5,8 +5,7 @@ GenericEntity : "{250CCD685336BC19}Prefabs/Weapons/Warheads/Warhead_HEAT_M72A3.e
    PROJECTILE_EFFECTS {
     SubmunitionEffect "{567CB8E002C26D97}" {
      TriggerOnce 1
-     Count 3
-     Dispersion 30
+     Dispersion 0
     }
     SubmunitionEffect "{5D692C94EC533259}" {
      TriggerOnce 1

@@ -9,6 +9,9 @@ class CRF_RadioPhaseManager: ScriptComponent
 	[Attribute("BLUFOR", "auto", "The side what interacts")]
 	FactionKey interactingSide;
 	
+	[Attribute("false", "auto", "Checks if you need an HVT for the Push gamemode")]
+	bool requireHVT;
+	
 	[Attribute("false", "auto", "The object with the script")]
 	bool respawnBlufor;
 	

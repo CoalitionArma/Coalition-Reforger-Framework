@@ -6,6 +6,11 @@ class CRF_GearscriptManager : ScriptComponent
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	
+	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
+	
+	// Track entities currently having gear applied to prevent race conditions
+	protected ref set<IEntity> m_sEntitiesBeingGeared = new set<IEntity>();
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Get singleton instance of the GearscriptManager
@@ -18,18 +23,6 @@ class CRF_GearscriptManager : ScriptComponent
 			return null;
 		
 		return CRF_GearscriptManager.Cast(gameMode.FindComponent(CRF_GearscriptManager));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void OnPostInit(IEntity owner)
-	{
-		super.OnPostInit(owner);
-
-		// Only run on in-game post init
-		if (!GetGame().InPlayMode())
-			return;
-		
-		m_Gamemode = CRF_Gamemode.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -47,16 +40,19 @@ class CRF_GearscriptManager : ScriptComponent
 			return "";
 		}
 		
-		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		// Use cached reference - PERFORMANCE OPTIMIZATION
+		if (!m_Gamemode)
+			return "";
+		
 		switch (factionKey)
 		{
-			case "BLUFOR": return gm.m_rBLUFORCurrentGearScript; break;
-			case "OPFOR": return gm.m_rOPFORCurrentGearScript; break;
-			case "INDFOR": return gm.m_rINDFORCurrentGearScript; break;
-			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
+			case "BLUFOR": return m_Gamemode.m_rBLUFORCurrentGearScript; break;
+			case "OPFOR": return m_Gamemode.m_rOPFORCurrentGearScript; break;
+			case "INDFOR": return m_Gamemode.m_rINDFORCurrentGearScript; break;
+			case "CIV": return m_Gamemode.m_rCIVILIANCurrentGearScript; break;
 		}
 
-		return gm.m_rCIVILIANCurrentGearScript;
+		return m_Gamemode.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -105,6 +101,13 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
 			return;
 
+		// Prevent multiple simultaneous gearscript operations on same entity (fixes MuzzleInMagComponent crash)
+		if (m_sEntitiesBeingGeared.Contains(entity))
+		{
+			Print(string.Format("CRF GEARSCRIPT: Entity %1 is already being geared, skipping to prevent race condition", entity), LogLevel.WARNING);
+			return;
+		}
+
 		// Determine faction from resource name
 		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
 		if (factionKey.IsEmpty())
@@ -124,6 +127,9 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!ValidateComponents(entity, inventory, inventoryManager))
 			return;
 
+		// Mark entity as being geared
+		m_sEntitiesBeingGeared.Insert(entity);
+
 		// Get role and clear entity
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
@@ -137,29 +143,90 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		// If entity was deleted or snapped up by the slotting manager
 		if(!entity)
+		{
+			// Clean up tracking set
+			m_sEntitiesBeingGeared.RemoveItem(entity);
 			return;
+		}
 		
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
+		{
+			m_sEntitiesBeingGeared.RemoveItem(entity);
 			return;
+		}
 		
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CreateSpawnParams(entity);
 		
-		// Apply gear
+		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
-		GetGame().GetCallqueue().CallLater(ApplyWeapons, 375, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
-		GetGame().GetCallqueue().CallLater(ApplyInventoryItems, 250, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		
+		// Use single consolidated callback instead of multiple separate ones
+		GetGame().GetCallqueue().CallLater(ApplyGearConsolidated, 500, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager, entity);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Consolidated gear application callback - PERFORMANCE OPTIMIZATION
+	 * Applies weapons and inventory items in a single callback to reduce CallQueue overhead
+	 * @param gearConfig Gear configuration
+	 * @param role Role identifier
+	 * @param gearScriptSettings Gearscript settings
+	 * @param spawnParams Spawn parameters
+	 * @param inventory Inventory component
+	 * @param inventoryManager Inventory manager component
+	 * @param entity Entity being equipped
+	 */
+	protected void ApplyGearConsolidated(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
+		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
+	{
+		if (!inventory || !inventoryManager || !entity)
+		{
+			// Clean up tracking set if entity is invalid
+			if (entity)
+				m_sEntitiesBeingGeared.RemoveItem(entity);
+			return;
+		}
+		
+		// Apply weapons (originally 375ms delay, now immediate in this consolidated callback at 500ms)
+		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		
+		// Apply inventory items (originally 250ms delay, now immediate in this consolidated callback at 500ms)
+		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		
+		// Initialize radios for player
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
 		{
 			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			// Cache groups manager reference - PERFORMANCE OPTIMIZATION
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
-			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, entity);
-			pc.InitializeRadioFromServer();
+			
+			if (groupsMan)
+				groupsMan.TuneFreqDelayWithPresets(playerId, entity);
+			if (pc)
+			{
+				pc.InitializeRadios(entity);
+				pc.InitializeRadioFromServer();
+			}
 		}
+		
+		// CRITICAL: Mark entity as fully geared after ALL operations complete (including weapon attachment delays)
+		// Wait for attachment delay (1000ms from SpawnWeapon) + safety margin
+		GetGame().GetCallqueue().CallLater(FinishGearingEntity, 1200, false, entity);
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Mark entity as finished being geared, allowing future gearscript operations
+	 * @param entity Entity that finished being geared
+	 */
+	protected void FinishGearingEntity(IEntity entity)
+	{
+		if (entity && m_sEntitiesBeingGeared.Contains(entity))
+			m_sEntitiesBeingGeared.RemoveItem(entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -169,6 +236,9 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	void SetEntityIdentity(IEntity entity)
 	{
+		if (!entity)
+			return;
+		
 		ResourceName resourceNameToScan = entity.GetPrefabData().GetPrefabName();
 		
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
@@ -246,13 +316,50 @@ class CRF_GearscriptManager : ScriptComponent
 		array<IEntity> items = {};
 		array<IEntity> itemsRoot = {};
 		inventoryManager.GetAllItems(items, inventory);
-		inventoryManager.GetAllRootItems(itemsRoot);
+		inventoryManager.GetItems(itemsRoot);
 
 		items.InsertAll(itemsRoot);
 
+		// Separate weapons from other items to delete weapons first
+		// This prevents MuzzleInMagComponent crashes when projectiles are deleted before weapon detaches them
+		array<IEntity> weapons = {};
+		array<IEntity> otherItems = {};
+		
 		foreach (IEntity item : items)
 		{
-			if(item)
+			if (!item)
+				continue;
+				
+			// Check if item is a weapon
+			if (item.FindComponent(WeaponComponent))
+				weapons.Insert(item);
+			else
+				otherItems.Insert(item);
+		}
+		
+		// Delete weapons FIRST - this allows them to properly detach projectiles from MuzzleInMagComponent
+		foreach (IEntity weapon : weapons)
+		{
+			if (weapon)
+				SCR_EntityHelper.DeleteEntityAndChildren(weapon);
+		}
+		
+		// Small delay before deleting other items to ensure weapon cleanup is complete
+		// This prevents race conditions with MuzzleInMagComponent projectile attachment
+		if (!otherItems.IsEmpty())
+			GetGame().GetCallqueue().CallLater(DeleteRemainingItems, 50, false, otherItems);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Delete remaining non-weapon items after weapon cleanup
+	 * @param items Array of items to delete
+	 */
+	protected void DeleteRemainingItems(array<IEntity> items)
+	{
+		foreach (IEntity item : items)
+		{
+			if (item)
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 	}
@@ -266,6 +373,18 @@ class CRF_GearscriptManager : ScriptComponent
 	protected CRF_GearScriptConfig LoadGearScriptConfig(ResourceName resourceName)
 	{
 		return CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Load vehicle gear script config from resource
+	 * @param resourceName Resource to load
+	 * @return Loaded config or null if failed
+	 */
+	protected CRF_VehicleGearscriptConfig LoadVehicleGearScriptConfig(ResourceName resourceName)
+	{
+		return CRF_VehicleGearscriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
 	}
 	
@@ -312,10 +431,10 @@ class CRF_GearscriptManager : ScriptComponent
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		
-		if (!gearConfig || !gearConfig.m_CustomFactionGear)
+		if (!gearConfig)
 			return string.Empty;
 		
-		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
 		{
 			if (customGear.m_Role != role)
 				continue;
@@ -360,13 +479,13 @@ class CRF_GearscriptManager : ScriptComponent
 			
 			if (gsVisIdentity)
 			{
-	        	visIdentity.SetHead(gsVisIdentity.m_Head);
-	        	visIdentity.SetBody(gsVisIdentity.m_Body);
+	        		visIdentity.SetHead(gsVisIdentity.m_Head);
+	        		visIdentity.SetBody(gsVisIdentity.m_Body);
 			};
 			
 			if (gsSndIdentity)
 			{
-	        	sndIdentity.SetVoiceID(gsSndIdentity.m_VoiceID);
+	        		sndIdentity.SetVoiceID(gsSndIdentity.m_VoiceID);
 				sndIdentity.SetPitch(gsSndIdentity.m_VoicePitch);
 			};
 			
@@ -388,18 +507,18 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		// Apply default faction clothing
-		if (gearConfig.m_DefaultFactionGear)
+		if (gearConfig)
 		{
-			foreach (CRF_Clothing clothing : gearConfig.m_DefaultFactionGear.m_DefaultClothing)
+			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
 			{
 				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_iClothingType, role, false, spawnParams, inventory, inventoryManager);
 			}
 		}
 		
 		// Apply custom clothing if available
-		if (gearConfig.m_CustomFactionGear)
+		if (gearConfig)
 		{
-			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
 			{
 				if (customGear.m_Role != role)
 					continue;
@@ -425,13 +544,13 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if(!inventory || !inventoryManager)
+		if(!inventory || !inventoryManager || !gearConfig)
 			return;
 		
 		bool customWeaponsSet = ApplyCustomWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
 		// Apply default weapons if no custom weapons were set
-		if (!customWeaponsSet && gearConfig.m_FactionWeapons)
+		if (!customWeaponsSet)
 		{
 			ApplyDefaultWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
 		}
@@ -450,12 +569,12 @@ class CRF_GearscriptManager : ScriptComponent
 	protected bool ApplyCustomWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if (!gearConfig.m_CustomFactionGear)
+		if (!gearConfig)
 			return false;
 			
 		bool customWeaponsSet = false;
 		
-		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
 		{
 			if (customGear.m_Role != role)
 				continue;
@@ -485,9 +604,9 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 			
 			// Pistol
-			if (!customGear.m_Pistol.IsEmpty())
+			if (!customGear.m_Pistols.IsEmpty())
 			{
-				CRF_Weapon_Class pistol = SelectRandomWeapon(customGear.m_Pistol);
+				CRF_Weapon_Class pistol = SelectRandomWeapon(customGear.m_Pistols);
 				if(pistol.m_Weapon)
 				{
 					SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, spawnParams, inventory, inventoryManager);
@@ -512,7 +631,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyDefaultWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if (!gearConfig.m_FactionWeapons)
+		if (!gearConfig)
 			return;
 		
 		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
@@ -526,75 +645,75 @@ class CRF_GearscriptManager : ScriptComponent
 			switch (weaponType)
 			{
 				case CRF_EGearscriptWeapons.RIFLE:
-					if(gearConfig.m_FactionWeapons.m_Rifle && !gearConfig.m_FactionWeapons.m_Rifle.IsEmpty())
+					if(gearConfig.m_Rifles && !gearConfig.m_Rifles.IsEmpty())
 					{
-						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Rifle);
+						weapon = SelectRandomWeapon(gearConfig.m_Rifles);
 						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 				
 				case CRF_EGearscriptWeapons.RIFLEUGL:
-					if(gearConfig.m_FactionWeapons.m_RifleUGL && !gearConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
+					if(gearConfig.m_RifleUGLs && !gearConfig.m_RifleUGLs.IsEmpty())
 					{
-						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_RifleUGL);
+						weapon = SelectRandomWeapon(gearConfig.m_RifleUGLs);
 						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 				
 				case CRF_EGearscriptWeapons.CARBINE:
-					if(gearConfig.m_FactionWeapons.m_Carbine && !gearConfig.m_FactionWeapons.m_Carbine.IsEmpty())
+					if(gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty())
 					{
-						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Carbine);
+						weapon = SelectRandomWeapon(gearConfig.m_Carbines);
 						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 
 				case CRF_EGearscriptWeapons.PISTOL:
-					if(gearConfig.m_FactionWeapons.m_Pistol && !gearConfig.m_FactionWeapons.m_Pistol.IsEmpty())
+					if(gearConfig.m_Pistols && !gearConfig.m_Pistols.IsEmpty())
 					{
-						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Pistol);
+						weapon = SelectRandomWeapon(gearConfig.m_Pistols);
 						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 
 				case CRF_EGearscriptWeapons.SNIPER:
-					if(gearConfig.m_FactionWeapons.m_Sniper)
-						weapon = gearConfig.m_FactionWeapons.m_Sniper;
+					if(gearConfig.m_SNIPER)
+						weapon = gearConfig.m_SNIPER;
 					break;
 
 				case CRF_EGearscriptWeapons.AR:
-					if(gearConfig.m_FactionWeapons.m_AR)
-						specWeapon = gearConfig.m_FactionWeapons.m_AR;
+					if(gearConfig.m_AR)
+						specWeapon = gearConfig.m_AR;
 					break;
 
 				case CRF_EGearscriptWeapons.MMG:
-					if(gearConfig.m_FactionWeapons.m_MMG)
-						specWeapon = gearConfig.m_FactionWeapons.m_MMG;
+					if(gearConfig.m_MMG)
+						specWeapon = gearConfig.m_MMG;
 					break;
 
 				case CRF_EGearscriptWeapons.AT:
-					if(gearConfig.m_FactionWeapons.m_AT)
-						specWeapon = gearConfig.m_FactionWeapons.m_AT;
+					if(gearConfig.m_AT)
+						specWeapon = gearConfig.m_AT;
 					break;
 	
 				case CRF_EGearscriptWeapons.MAT:
-					if(gearConfig.m_FactionWeapons.m_MAT)
-						specWeapon = gearConfig.m_FactionWeapons.m_MAT;
+					if(gearConfig.m_MAT)
+						specWeapon = gearConfig.m_MAT;
 					break;
 	
 				case CRF_EGearscriptWeapons.HAT:
-					if(gearConfig.m_FactionWeapons.m_HAT)
-						specWeapon = gearConfig.m_FactionWeapons.m_HAT;
+					if(gearConfig.m_HAT)
+						specWeapon = gearConfig.m_HAT;
 					break;
 
 				case CRF_EGearscriptWeapons.AA:
-					if(gearConfig.m_FactionWeapons.m_AA)
-						specWeapon = gearConfig.m_FactionWeapons.m_AA;
+					if(gearConfig.m_AA)
+						specWeapon = gearConfig.m_AA;
 					break;
 
 				case CRF_EGearscriptWeapons.HMG:
-					if(gearConfig.m_FactionWeapons.m_HMG)
-						specWeapon = gearConfig.m_FactionWeapons.m_HMG;
+					if(gearConfig.m_HMG)
+						specWeapon = gearConfig.m_HMG;
 					break;
 			}
 			
@@ -620,7 +739,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyDefaultMagazines(array<CRF_Weapon_Class> weaponsSelected, CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if (!gearConfig.m_FactionWeapons)
+		if (!gearConfig)
 			return;
 		
 		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
@@ -634,63 +753,63 @@ class CRF_GearscriptManager : ScriptComponent
 			switch (roleMags)
 			{
 				case CRF_EGearscriptMagazines.RIFLE_MAG:
-					if(gearConfig.m_FactionWeapons.m_Rifle && !gearConfig.m_FactionWeapons.m_Rifle.IsEmpty())
-						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Rifle, selectedWeapon);
+					if(gearConfig.m_Rifles && !gearConfig.m_Rifles.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_Rifles, selectedWeapon);
 					break;
 				
 				case CRF_EGearscriptMagazines.RIFLEUGL_MAG:
-					if(gearConfig.m_FactionWeapons.m_RifleUGL && !gearConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
-						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_RifleUGL, selectedWeapon);
+					if(gearConfig.m_RifleUGLs && !gearConfig.m_RifleUGLs.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_RifleUGLs, selectedWeapon);
 					break;
 				
 				case CRF_EGearscriptMagazines.CARBINE_MAG:
-					if(gearConfig.m_FactionWeapons.m_Carbine && !gearConfig.m_FactionWeapons.m_Carbine.IsEmpty())
-						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Carbine, selectedWeapon);
+					if(gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_Carbines, selectedWeapon);
 					break;
 
 				case CRF_EGearscriptMagazines.PISTOL_MAG:
-					if(gearConfig.m_FactionWeapons.m_Pistol && !gearConfig.m_FactionWeapons.m_Pistol.IsEmpty())
-						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Pistol, selectedWeapon);
+					if(gearConfig.m_Pistols && !gearConfig.m_Pistols.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_Pistols, selectedWeapon);
 					break;
 
 				case CRF_EGearscriptMagazines.SNIPER_MAG:
-					if(gearConfig.m_FactionWeapons.m_Sniper && gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray)
-						magazineArray = gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray;
+					if(gearConfig.m_SNIPER && gearConfig.m_SNIPER.m_MagazineArray)
+						magazineArray = gearConfig.m_SNIPER.m_MagazineArray;
 					break;
 
 				case CRF_EGearscriptMagazines.AR_MAG:
-					if(gearConfig.m_FactionWeapons.m_AR && gearConfig.m_FactionWeapons.m_AR.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AR.m_MagazineArray, isAssistant);
+					if(gearConfig.m_AR && gearConfig.m_AR.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_AR.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.MMG_MAG:
-					if(gearConfig.m_FactionWeapons.m_MMG && gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray, isAssistant);
+					if(gearConfig.m_MMG && gearConfig.m_MMG.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_MMG.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.AT_MAG:
-					if(gearConfig.m_FactionWeapons.m_AT && gearConfig.m_FactionWeapons.m_AT.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_AT && gearConfig.m_AT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_AT.m_MagazineArray, isAssistant);
 					break;
 	
 				case CRF_EGearscriptMagazines.MAT_MAG:
-					if(gearConfig.m_FactionWeapons.m_MAT && gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_MAT && gearConfig.m_MAT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_MAT.m_MagazineArray, isAssistant);
 					break;
 	
 				case CRF_EGearscriptMagazines.HAT_MAG:
-					if(gearConfig.m_FactionWeapons.m_HAT && gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_HAT && gearConfig.m_HAT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_HAT.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.AA_MAG:
-					if(gearConfig.m_FactionWeapons.m_AA && gearConfig.m_FactionWeapons.m_AA.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AA.m_MagazineArray, isAssistant);
+					if(gearConfig.m_AA && gearConfig.m_AA.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_AA.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.HMG_MAG:
-					if(gearConfig.m_FactionWeapons.m_HMG && gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray)
-						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray, isAssistant);
+					if(gearConfig.m_HMG && gearConfig.m_HMG.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_HMG.m_MagazineArray, isAssistant);
 					break;
 			}
 			
@@ -740,71 +859,66 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyInventoryItems(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if(!inventory || !inventoryManager)
+		if(!inventory || !inventoryManager || !gearConfig)
 			return;
 		
-		// Apply custom gear first
-		if (gearConfig.m_CustomFactionGear)
+		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
 		{
-			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+			if (customGear.m_Role != role)
+				continue;
+	
+			foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
 			{
-				if (customGear.m_Role != role)
-					continue;
-		
-				foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				{
-					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
-				}
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 			}
 		}
 		
 		// Then apply default gear
-		if (gearConfig.m_DefaultFactionGear)
+		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		
+		foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
 		{
-			CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
-			
-			foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
+			switch (roleItem)
 			{
-				switch (roleItem)
-				{
-					case CRF_EGearscriptItems.SHORTRANGE_RADIO:
-						if (gearScriptSettings.m_bEnableGIRadios)
-							AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
-						break;
-					
-					case CRF_EGearscriptItems.LONGRANGE_RADIO:
-						if (gearScriptSettings.m_bEnableLeadershipRadios)
-							AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
-						break;
-					
-					case CRF_EGearscriptItems.RTO_RADIO:
-						if (gearScriptSettings.m_bEnableRTORadios)
-							AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1, spawnParams, inventory, inventoryManager);
-						break;
-					
-					case CRF_EGearscriptItems.LEADERSHIP_BINO:
-						if (gearConfig.m_DefaultFactionGear.m_bEnableLeadershipBinoculars)
-							AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
-						break;
-					
-					case CRF_EGearscriptItems.ASSISTANT_BINO:
-						if (gearConfig.m_DefaultFactionGear.m_bEnableAssistantBinoculars)
-							AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sAssistantBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
-						break;
-	
-					case CRF_EGearscriptItems.MEDIC_ITEMS:
-						foreach (CRF_Inventory_Item item : gearConfig.m_DefaultFactionGear.m_DefaultMedicMedicalItems)
-							AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
-						break;
-				}
-			}
-			
-			// Default inventory items
-			foreach (CRF_Inventory_Item item : gearConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
-			{
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role, gearConfig.m_DefaultFactionGear.m_bEnableMedicFrags);
+				case CRF_EGearscriptItems.SHORTRANGE_RADIO:
+					if (gearScriptSettings.m_bEnableGIRadios)
+						AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
+					break;
+				
+				case CRF_EGearscriptItems.LONGRANGE_RADIO:
+					if (gearScriptSettings.m_bEnableLeadershipRadios)
+						AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
+					break;
+				
+				case CRF_EGearscriptItems.RTO_RADIO:
+					if (gearScriptSettings.m_bEnableRTORadios)
+						AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+					break;
+				
+				case CRF_EGearscriptItems.LEADERSHIP_BINO:
+					if (gearConfig.m_bEnableLeadershipBinoculars)
+						AddInventoryItem(gearConfig.m_sLeadershipBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
+					break;
+				
+				case CRF_EGearscriptItems.ASSISTANT_BINO:
+					if (gearConfig.m_bEnableAssistantBinoculars)
+						AddInventoryItem(gearConfig.m_sAssistantBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
+					break;
+
+				case CRF_EGearscriptItems.MEDIC_ITEMS:
+					foreach (CRF_Inventory_Item item : gearConfig.m_MedicMedicalItems)
+						AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+					break;
 			}
 		}
+		
+		// Default medical items
+		foreach (CRF_Inventory_Item item : gearConfig.m_InfantryMedicalItems)
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+		
+		// Default inventory items
+		foreach (CRF_Inventory_Item item : gearConfig.m_DefaultInventoryItems)
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -878,6 +992,45 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
 		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+	}
+	
+	void SelectWeapon(IEntity entity)
+	{
+		if (!ChimeraCharacter.Cast(entity))
+			return;
+		
+		BaseWeaponManagerComponent weaponMan = ChimeraCharacter.Cast(entity).GetWeaponManager();
+		if (!weaponMan)
+			return;
+		
+		CharacterControllerComponent charController = ChimeraCharacter.Cast(entity).GetCharacterController();
+		if (!charController)
+			return;
+		
+		array<WeaponSlotComponent> outSlots = {};
+		weaponMan.GetWeaponsSlots(outSlots);
+		WeaponSlotComponent weapon;
+		foreach (WeaponSlotComponent outSlot: outSlots)
+		{
+			if (!outSlot.GetWeaponEntity())
+				continue;
+			
+			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
+				continue;
+			
+			weapon = outSlot;
+			break;
+		}
+		
+		if (!weapon)
+			return;
+		
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+			SCR_ChimeraCharacter.Cast(entity).SelectPrimaryWeapon();
+		else
+			charController.SelectWeapon(weapon);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -990,8 +1143,15 @@ class CRF_GearscriptManager : ScriptComponent
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		AttachmentSlotComponent verifyAttachmentSlot = null;
+		
+		if (!Resource.Load(attachmentResource).IsValid())
+			return;
+		
 		IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachmentResource), GetGame().GetWorld(), spawnParams);
 		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+		if (!weaponStorageComp)
+			return;
+
 		IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
 		
 		foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
@@ -1181,12 +1341,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param inventory Inventory component
 	 * @param inventoryManager Inventory manager component
 	 * @param role Role identifier
-	 * @param enableMedicFrags Whether to enable frags for medics
-	 * @param isAssistant Whether item is for assistant role
 	 */
 	protected void AddInventoryItem(ResourceName item, int itemAmount, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, 
-		CRF_EGearRole role = 0, bool enableMedicFrags = false, bool isAssistant = false)
+		CRF_EGearRole role = 0)
 	{
 		if (item.IsEmpty() || itemAmount <= 0)
 			return;
@@ -1199,23 +1357,22 @@ class CRF_GearscriptManager : ScriptComponent
 				continue;
 
 			bool isThrowable = IsThrowableWeapon(resourceSpawned);
-
-			// Skip frags for medics if disabled
-			if (!enableMedicFrags && CRF_GamemodeManager.RolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
-				(isThrowable && WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE))
-			{
-				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-				continue;
-			}
 			
 			// Special handling for throwables
 			if (isThrowable)
 			{
+				// Delete the pre-spawned entity first to avoid duplicate projectile attachment issues
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				
+				// Now spawn directly to storage - this prevents MuzzleInMagComponent conflicts
 				bool spawned = inventoryManager.TrySpawnPrefabToStorage(item, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
 				if (!spawned)
-					InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isAssistant, isThrowable);
-				else 
-					SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				{
+					// If direct spawn failed, try spawning again and inserting manually
+					resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
+					if (resourceSpawned)
+						InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isThrowable);
+				}
 				
 				continue;
 			}
@@ -1228,7 +1385,7 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 
 			// Regular inventory insertion
-			InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isAssistant, isThrowable);
+			InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isThrowable);
 		}
 	}
 	
@@ -1249,9 +1406,9 @@ class CRF_GearscriptManager : ScriptComponent
 	Public method to insert an item into a storage and keep the same storage it would usually be assigned to
 	*/
 	void InsertInventoryItemPublic(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
-		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isAssistant = false, bool isThrowable = false)
+		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isThrowable = false)
 	{
-		InsertInventoryItem(item, inventory, inventoryManager, role, isAssistant, isThrowable);
+		InsertInventoryItem(item, inventory, inventoryManager, role, isThrowable);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1261,16 +1418,15 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param inventory Inventory component
 	 * @param inventoryManager Inventory manager component
 	 * @param role Role identifier
-	 * @param isAssistant Whether item is for assistant role
 	 * @param isThrowable Whether item is a throwable
 	 */
 	protected void InsertInventoryItem(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
-		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isAssistant = false, bool isThrowable = false)
+		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isThrowable = false)
 	{
 		if (!item)
 			return;
 
-		TIntArray clothingIDs = FilterItemToClothing(item, role, isAssistant, isThrowable);
+		TIntArray clothingIDs = FilterItemToClothing(item, role, isThrowable);
 
 		// Try inserting into appropriate clothing first
 		bool inserted = TryInsertIntoSpecificClothing(item, clothingIDs, inventory, inventoryManager);
@@ -1344,11 +1500,10 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @brief Determine appropriate clothing slots for an item
 	 * @param item Item to filter
 	 * @param role Role identifier
-	 * @param isAssistant Whether item is for assistant role
 	 * @param isThrowable Whether item is a throwable
 	 * @return Array of appropriate clothing slot IDs
 	 */
-	TIntArray FilterItemToClothing(IEntity item, CRF_EGearRole role = 0, bool isAssistant = false, bool isThrowable = false)
+	TIntArray FilterItemToClothing(IEntity item, CRF_EGearRole role = 0, bool isThrowable = false)
 	{
 		array<int> clothingIDs = {};
 
@@ -1364,17 +1519,15 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
 		
-		bool isAssistantMagazine = isAssistant && MagazineComponent.Cast(item.FindComponent(MagazineComponent));
-		
 		bool isExplosive = IsExplosiveOrTool(item);
 
-		// Magazines and throwables go in vest, armor, backpack primarily
+		// Magazines and throwables go in backpack, vest, armor, primarily
 		if (isMagazine)
 		{
 			clothingIDs = {
+				CRF_EGearscriptClothing.BACKPACK,
 				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST, 
-				CRF_EGearscriptClothing.BACKPACK, 
+				CRF_EGearscriptClothing.ARMOREDVEST,
 				CRF_EGearscriptClothing.PANTS, 
 				CRF_EGearscriptClothing.SHIRT
 			};
@@ -1388,16 +1541,6 @@ class CRF_GearscriptManager : ScriptComponent
 				CRF_EGearscriptClothing.VEST, 
 				CRF_EGearscriptClothing.ARMOREDVEST, 
 				CRF_EGearscriptClothing.BACKPACK
-			};
-		}
-
-		// Medical items go in backpack, vest primarily
-		if (isMedical)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.BACKPACK, 
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST
 			};
 		}
 
@@ -1424,21 +1567,11 @@ class CRF_GearscriptManager : ScriptComponent
 			};
 		}
 
-		// Assistant mags go in backpack, vest primarily
-		if (isAssistantMagazine)
+		// Explosives/Medical items go in backpack, vest primarily
+		if (isExplosive || isMedical)
 		{
 			clothingIDs = {
 				CRF_EGearscriptClothing.BACKPACK,
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST
-			};
-		}
-
-		// Explosives and tools go in backpack, vest primarily
-		if (isExplosive)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.BACKPACK, 
 				CRF_EGearscriptClothing.VEST, 
 				CRF_EGearscriptClothing.ARMOREDVEST
 			};
@@ -1460,5 +1593,49 @@ class CRF_GearscriptManager : ScriptComponent
 			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent)) ||
 			   SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
 			   SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RplSave: Serialize vehicle supply costs for JIP sync
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		// Write the count of vehicle supply cost entries
+		int count = m_mVehicleSupplyCosts.Count();
+		writer.WriteInt(count);
+		
+		// Write each vehicle resource and its supply cost
+		foreach (ResourceName vehicleResource, int supplyCost : m_mVehicleSupplyCosts)
+		{
+			writer.WriteResourceName(vehicleResource);
+			writer.WriteInt(supplyCost);
+		}
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RplLoad: Deserialize vehicle supply costs for JIP sync
+	override bool RplLoad(ScriptBitReader reader)
+	{
+		// Read the count of vehicle supply cost entries
+		int count;
+		reader.ReadInt(count);
+		
+		// Clear existing data (for JIP clients)
+		m_mVehicleSupplyCosts.Clear();
+		
+		// Read each vehicle resource and its supply cost
+		for (int i = 0; i < count; i++)
+		{
+			ResourceName vehicleResource;
+			int supplyCost;
+			
+			reader.ReadResourceName(vehicleResource);
+			reader.ReadInt(supplyCost);
+			
+			m_mVehicleSupplyCosts.Set(vehicleResource, supplyCost);
+		}
+		
+		return true;
 	}
 };

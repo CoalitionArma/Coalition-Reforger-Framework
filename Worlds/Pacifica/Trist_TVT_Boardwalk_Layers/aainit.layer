@@ -1,0 +1,268 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 1467.67 1.515 2299.895
+ "Map Geometry Data" "{08498E1AF326042D}Missions/PacificaConflict.topo"
+ "Satellite background image" "{69E5B5B27F96C324}Missions/PaperMapBKGRNDFinal.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 770.045 4.69 2650.894
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_MapStagingComponent "{684A62A0138CC4D1}" {
+   m_iInitialDelay 15
+   m_bEnableAutoStart 0
+   m_sFinalCompletionMainMessage ""
+   m_sFinalCompletionSubMessage ""
+   m_iFinalCompletionMessageDuration 0
+   m_aBoundaryStages {
+    CRF_BoundaryStageData "{684A62A00AF799F4}" {
+     m_sBoundaryEntityName "playboundry_z1"
+     m_eStageType DELETION
+     m_iStageDuration 150
+     m_sStageDisplayText "Regroup! Zone Opening"
+     m_bShowStageCompletionMessage 0
+     m_sStageCompletionMainMessage ""
+     m_sStageCompletionSubMessage ""
+    }
+    CRF_BoundaryStageData "{684C3481ED1D1E60}" {
+     m_sBoundaryEntityName "playboundry_z2"
+     m_eStageType DELETION
+     m_iStageDuration 180
+     m_sStageDisplayText "Regroup! Zone Opening"
+     m_bShowStageCompletionMessage 0
+     m_sStageCompletionMainMessage ""
+     m_sStageCompletionSubMessage ""
+    }
+   }
+  }
+  CRF_RushGamemodeManager "{673F4DA0E0B533AF}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_iMCOMsPerZone 1
+   m_bEnableDynamicRespawns 1
+   m_aZoneRespawnConfigs {
+    CRF_Rush_ZoneRespawnConfig "{684C58F6F662578A}" {
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{684C58F6EB04173B}" {
+       m_sMarkerEntityName "BLUspawn_z1"
+      }
+      CRF_Rush_RespawnPointEntry "{684C58F6EA79A339}" {
+       m_sMarkerEntityName "OPFspawn_z1"
+       m_eFaction "OPFOR"
+      }
+     }
+    }
+    CRF_Rush_ZoneRespawnConfig "{684C58F6D9950F67}" {
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{684C58F6D9950FDD}" {
+       m_sMarkerEntityName "BLUspawn_z2"
+      }
+      CRF_Rush_RespawnPointEntry "{684C58F6D9950FE0}" {
+       m_sMarkerEntityName "OPFspawn_z2"
+       m_eFaction "OPFOR"
+      }
+     }
+    }
+   }
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 18
+   m_fDayTimeAcceleration 0.5
+   m_fNightTimeAcceleration 0.5
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear Fog"
+    }
+   }
+   m_bWindOverride 1
+   m_fWindSpeed 10
+   m_bDateOverride 1
+   m_iMonth 4
+  }
+ }
+ coords 759.247 3.155 2641.271
+ m_iTimeLimitMinutes 65
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "The long war between Sino-Russian allies and the West has wrecked borders & coastlines across the world, nations' military stockpiles dwindle & armies resort to surplus. An amphibious landing on a long since devastated American coastline commences."\
+   ""\
+   "LEADERSHIP Radios Only"\
+   ""\
+   "BLUFOR Composition: US Army Plt."\
+   "BLUFOR Assets: Transports w/Supplies"\
+   ""\
+   "OPFOR Composition: Soviet Army Cmpy."\
+   "OPFOR Assets: 1x Armed BTR"\
+   "Unarmed BTRs w/Supplies (Per Squad)"\
+   ""\
+   "Time: Late Evening"\
+   ""\
+   "Weather: Foggy/Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Shore up defences with engineers"\
+   "- Plan fallbacks accordingly and provide resistance"\
+   "- Defend the RUSH objectives"\
+   ""\
+   "Additional Info:"\
+   "- A vehicle depot is provided with sufficient resources as well as all forces have sandbags for fortifications."\
+   "- Both A and B MCOMS are different zones, but close together. Plan accordingly for fallbacks or whatever deemed necessary."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Plan and commence the landing"\
+   "- Plant and destroy enemy MCOMS"\
+   ""\
+   "Additional Info:"\
+   "The vehicle depot's transport vehicles contain sufficient squad level amounts of supplies for the operation."
+  }
+  CRF_MissionDescriptor "{684C58C03745642F}" {
+   m_sTitle "Additional Info"
+   m_sTextData "- This scenario includes staged map restrictions per zone to represent a proper frontline with timed openings to let frontlines be re/established."\
+   "- Large amounts of non map-indicated buildings and fortifications are within the scenario. Take this into account when planning or making decisions."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{C6BAA1ED6AA6B985}Configs/Gearscripts/Custom/Trist/Boardwalk/CRF_GS_US80s_BOARDWALK.conf"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{684C58DC1D3914DD}" {
+    m_Prefab "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M856_Tracer.et"
+    m_iAmountOfItemRegularVehicle 20
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58DC1D118C4E}" {
+    m_Prefab "{BCB5E5C608ECFF50}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M80.et"
+    m_iAmountOfItemRegularVehicle 25
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58DDBD607983}" {
+    m_Prefab "{5C43D5083942A22B}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1A1_45acp_Thompson_30rnd_Stick.et"
+    m_iAmountOfItemRegularVehicle 30
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58DC1D761746}" {
+    m_Prefab "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58DA38349336}" {
+    m_Prefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    m_iAmountOfItemRegularVehicle 15
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684D679828A0F0AC}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemRegularVehicle 30
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684E27A7C6C266EF}" {
+    m_Prefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+    m_iAmountOfItemRegularVehicle 40
+   }
+  }
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{79BC9C410D0E876E}Configs/Gearscripts/Custom/Trist/Boardwalk/CRF_GS_USSR80s_BOARDWALK.conf"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{684C58FC3CBE21F5}" {
+    m_Prefab "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et"
+    m_iAmountOfItemRegularVehicle 15
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58D6E252CB01}" {
+    m_Prefab "{5587A9FD1C78FE17}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_Ppsh41_35rnd_Stick.et"
+    m_iAmountOfItemRegularVehicle 15
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684D679C963FC647}" {
+    m_Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
+    m_iAmountOfItemRegularVehicle 6
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684D679CFEFCA4FC}" {
+    m_Prefab "{5897D01F41DB5D2D}Prefabs/Weapons/Magazines/Magazine_545x39_RPK_45rnd_Tracer.et"
+    m_iAmountOfItemRegularVehicle 10
+   }
+   CRF_VehicleGearScriptAdditionalItem "{684C58FD604087C6}" {
+    m_Prefab "{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et"
+   }
+  }
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "684D678FB0FB6FF3" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Engineers"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{684D46D1E5B7E1B9}" {
+        m_sCallsign "1-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Sappers"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{68520651982EB30E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{68520651984F937E}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{685206519B37DB5F}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{685206519B03471F}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{685206519B6C87ED}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{685206519BB6FF88}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GameEntity {
+ OPFspawn_z1 {
+  coords 943.091 0 3218.846
+ }
+ OPFspawn_z2 {
+  coords 957.928 0 3074.086
+ }
+ BLUspawn_z1 {
+  coords 1020.033 3.55 2750.49
+ }
+ BLUspawn_z2 {
+  coords 1421.031 1.324 2229.24
+ }
+}
+GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
+ coords 1757.977 2240.515 2986.839
+}

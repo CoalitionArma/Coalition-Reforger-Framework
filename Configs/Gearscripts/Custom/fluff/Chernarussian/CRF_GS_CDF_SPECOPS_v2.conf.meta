@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{9C77704256E7CA8D}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CDF_SPECOPS_v2.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

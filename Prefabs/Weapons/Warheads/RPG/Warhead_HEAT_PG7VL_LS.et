@@ -17,8 +17,7 @@ GenericEntity : "{8C3C62C58D2DBEDA}Prefabs/Weapons/Warheads/RPG/Warhead_HEAT.et"
     SubmunitionEffect "{567CB8E002C26D97}" {
      TriggerOnce 1
      Prefab "{8CB4A6E6FA1F2BF0}Prefabs/Weapons/Warheads/RPG/Penetrator/Ammo_Rocket_PG7VL_Penetrator.et"
-     Count 3
-     Dispersion 30
+     Dispersion 0
     }
     SubmunitionEffect "{5D692C94EC533259}" {
      TriggerOnce 1

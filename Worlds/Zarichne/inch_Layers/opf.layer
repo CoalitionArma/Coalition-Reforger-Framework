@@ -1,0 +1,44 @@
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 2311.983 9 2312.331
+ m_aUnitPrefabSlots +{
+  "{2A9957B9D12FD70B}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_DroneOp_P.et"
+ }
+ {
+  SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+   coords 17.637 0 -25.698
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords 36.286 0 -43.386
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords -37.654 0 82.532
+       {
+        SCR_AIGroup : "{A1BDE5C4CC62ACAC}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MATTeam_p.et" {
+         coords -7.976 0 -20.573
+         m_aUnitPrefabSlots {
+          "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+          "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et"
+          "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et"
+         }
+         {
+          SCR_AIGroup : "{2E159CDF28FA27ED}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_EngiTeam_p.et" {
+           coords 22.171 0 23.947
+           m_aUnitPrefabSlots {
+            "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
+            "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
+            "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ coords 2365.635 9 2321.532
+}

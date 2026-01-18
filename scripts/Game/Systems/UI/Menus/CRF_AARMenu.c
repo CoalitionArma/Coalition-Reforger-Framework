@@ -348,8 +348,6 @@ class CRF_AARMenu: ChimeraMenuBase
 					comp.SetColor(Color.Red);
 				else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
-				else if(m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
-					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
 			}
 		}
 		
@@ -522,7 +520,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
@@ -585,7 +583,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
@@ -665,30 +663,12 @@ class CRF_AARMenu: ChimeraMenuBase
 	{
 		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		
-		// Handle player status (alive/dead/disconnected)
-		if(!slotData.GetIsDeadSlot())
-		{
-			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-			else
-			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-				elementComponent.GetDisconnectWidget().SetVisible(true);
-			}
-		}		
+		if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 		else
 		{
-			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
-			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-				elementComponent.GetDeathWidget().SetVisible(true);
-			}
-			else
-			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-				elementComponent.GetDisconnectWidget().SetVisible(true);
-				elementComponent.GetDeathWidget().SetVisible(true);
-			}
+			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+			elementComponent.GetDisconnectWidget().SetVisible(true);
 		}
 		
 		// Disable slot button

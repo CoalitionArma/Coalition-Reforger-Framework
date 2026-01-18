@@ -1,0 +1,59 @@
+HDREffect {
+ VisiblePercentWhite 53.6
+ VisiblePercentBlack 62
+ TargetBrightness 0.26
+ SpeedDarkToBright 62.1
+ SpeedBrightToDark 42
+ SceneLVAverageTime 0.24
+ BasicSceneLV 7.59
+ FilmicShoulderStrength 1.047
+ FilmicLinearStrength 0.85
+ FilmicLinearAngle 0.336
+ FilmicToeStrength 1.446
+ FilmicToeNumerator 0.024
+ FilmicToeDenumerator 7.726
+ FilmicExposureBias 6.782
+ FilmicWhitePoint 11.938
+ SecondSceneLV 2.34
+ FilmicShoulderStrength2 1.12
+ FilmicLinearStrength2 1.036
+ FilmicLinearAngle2 1.223
+ FilmicToeStrength2 1.583
+ FilmicToeNumerator2 1.141
+ FilmicToeDenumerator2 12.483
+ FilmicExposureBias2 9.868
+ FilmicWhitePoint2 12.955
+ ToneMapBlend 0.06
+ BlendBetweenTables 0.47
+ BloomIntensity 3.45
+ BloomColor 1 1 1 1
+ BloomUseThreshold 1
+ BloomThreshold 2.28
+ BloomSteepness 5.26
+ BloomDownsampleHalfRes 1
+ BloomDownsampleQuality "Low (4-tap)"
+ BloomStrength0 0.41
+ BloomStrength1 0.65
+ BloomStrength2 0.79
+ BloomStrength3 0.66
+ BloomStrength4 0.936
+ BloomStrength5 0.51
+ BloomStrength6 0.99
+ BloomRadius0 1.44
+ BloomRadius1 1.905
+ BloomRadius2 1.16
+ BloomRadius4 1.768
+ BloomRadius5 1.859
+ BloomRadius6 2
+ Contrast 2
+ Gamma 0.35
+ Brightness 0.25
+ ImageOffset 0.6
+ DesaturationWeights 1 1 1 0
+ VignetteSharpness 0.344
+ ReticleMap "{C4F268A5B80234A5}UI/Textures/RadialMenu/RadialMenuMask.edds" clampu clampv nofilter noresize
+ ReticleScale 1.209
+ MaxChromAbberation 0.82
+ LensFlaresEnabled 1
+ LensFlaresHalfRes 1
+}

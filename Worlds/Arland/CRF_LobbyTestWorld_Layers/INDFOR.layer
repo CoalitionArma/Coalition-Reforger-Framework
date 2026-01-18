@@ -1,0 +1,20 @@
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 1255.811 37.999 2803.395
+ Points {
+  ShapePoint "{659E505E4CE5A7A1}" {
+   Position 1.379 0 -21.707
+  }
+  ShapePoint "{659E505E4D7FC691}" {
+   Position -9.456 0 16.171
+  }
+  ShapePoint "{659E505E4DF61AA5}" {
+   Position -1.482 0 18.203
+  }
+  ShapePoint "{659E505E4E9E6354}" {
+   Position 9.495 0 -21.098
+  }
+ }
+}
+GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
+ coords 1251.068 37.938 2820.262
+}

@@ -1,0 +1,59 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 4538.563 146.616 7062.91
+ Points {
+  ShapePoint "{672B1AEC2C02ECE9}" {
+   Position -62.623 10.238 -86.255
+  }
+  ShapePoint "{672B1AEC2D4ABDD4}" {
+   Position -75.302 0 60.287
+  }
+  ShapePoint "{672B1AEC2DD3650C}" {
+   Position 48.197 0 145.585
+  }
+  ShapePoint "{672B1AEC2FF667B4}" {
+   Position 131.013 0 193.218
+  }
+  ShapePoint "{672B1AEC30AF0335}" {
+   Position 132.695 0 336.681
+  }
+  ShapePoint "{672B1AEC312B3E33}" {
+   Position 281.669 0 337.336
+  }
+  ShapePoint "{672B1AEC358B140C}" {
+   Position 600.484 36.103 95.168
+  }
+  ShapePoint "{672B1AEDDF855C46}" {
+   Position 748.145 28.465 -13.124
+  }
+  ShapePoint "{672B1AEDE798B058}" {
+   Position 618.432 0 -137.287
+  }
+  ShapePoint "{672B1AEDEC634802}" {
+   Position 352.35 0.331 -180.53
+  }
+  ShapePoint "{672B1AED84B58532}" {
+   Position 257.342 7.267 -318.768
+  }
+  ShapePoint "{672B1AEDEF63B3BF}" {
+   Position -53.328 2.702 -300.799
+  }
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ {
+  coords 5544.509 95.383 6062.95
+  m_sMissionMarkerDescription "MCOM A"
+ }
+ {
+  coords 5817.29 214.797 7050.15
+  m_sMissionMarkerDescription "MCOM B"
+ }
+ {
+  coords 4910.511 37.185 9071.759
+  m_sMissionMarkerDescription "MCOM C"
+ }
+ {
+  coords 2830.285 82.09 6419.696
+  m_sMissionMarkerDescription "MCOM D"
+ }
+}

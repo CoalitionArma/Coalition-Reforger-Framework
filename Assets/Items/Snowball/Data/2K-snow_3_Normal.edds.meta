@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3DB748116383F742}Assets/Items/Snowball/Data/2K-snow_3_Normal.edds"
+ Configurations {
+  JPGResourceClass PC : "{835E083C88C3D9C3}Configs/System/ResourceTypes/PC/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass XBOX_ONE : "{6C5EFFA712A52100}Configs/System/ResourceTypes/XBOX_ONE/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass XBOX_SERIES : "{90ADE65A903F3042}Configs/System/ResourceTypes/XBOX_SERIES/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass PS4 : "{6F6E5A1432381FD2}Configs/System/ResourceTypes/PS4/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass PS5 : "{5CEA2418C9F889F8}Configs/System/ResourceTypes/PS5/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass HEADLESS : "{EAB38BDFD096C0A6}Configs/System/ResourceTypes/HEADLESS/TextureTerrainNormal.conf" {
+  }
+  JPGResourceClass Xbox : PC {
+  }
+ }
+}

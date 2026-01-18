@@ -3,6 +3,11 @@ class CRF_Radio_Interact : ScriptedUserAction
 {	
 	SCR_FactionManager factionManager;
 	CRF_RadioPhaseManager rp;
+	CRF_HighValueTargetGamemodeManager hvtm;
+	IEntity radio;
+	vector radioPos;
+	IEntity hvt;
+	vector hvtPos;
 	
 	bool m_fired = false;
 	
@@ -13,6 +18,8 @@ class CRF_Radio_Interact : ScriptedUserAction
 		
 		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		rp = CRF_RadioPhaseManager.Cast(pOwnerEntity.FindComponent(CRF_RadioPhaseManager));
+		radio = pOwnerEntity;
+		
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -26,6 +33,8 @@ class CRF_Radio_Interact : ScriptedUserAction
 			return;
 		
 		rp.fireTrigger();
+		
+		SCR_PopUpNotification.GetInstance().PopupMsg("Radio has been triggered", duration: 10);
 		
 		m_fired = true;
 		
@@ -45,6 +54,21 @@ class CRF_Radio_Interact : ScriptedUserAction
 		
 		if (m_fired)
 			return false;
+		
+		if (rp.requireHVT)
+		{
+			hvtm = CRF_HighValueTargetGamemodeManager.Cast(CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
+			hvt = hvtm.m_eHvtEntity;
+			hvtPos = hvt.GetOrigin();
+			radioPos = radio.GetOrigin();
+			float distance = vector.Distance(hvtPos, radioPos);
+			
+			if (distance <50)
+				return true;
+			else 
+				return false;
+		}
+		
 		
 		// else true
 		return true;

@@ -1,0 +1,25 @@
+GameEntity : "{B4F051C0C107D837}Prefabs/Characters/Uniforms/Crye_Shirt/crye_shirt_rolled_base.et" {
+ ID "5104869D194C6243"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    ItemDisplayName UIInfo "{5222CB0109A04AB2}" {
+     Name "#RHS-Uniform_CRYE_Combat_Shirt_Name - #RHS-Camo_MARPAT_WD"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+      PreviewModel "{27CC04BA1462EDF4}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_Rolled_MARPAT_Woodland_wear.et"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   WornMaterialsOverride {
+    "{B7E9B8B74AF99FDA}Assets/Characters/Uniforms/Jacket_VKPO/data/rhs_triada_combat_shirt.emat"
+   }
+   ItemMaterialsOverride {
+    "{B7E9B8B74AF99FDA}Assets/Characters/Uniforms/Jacket_VKPO/data/rhs_triada_combat_shirt.emat"
+   }
+  }
+ }
+}

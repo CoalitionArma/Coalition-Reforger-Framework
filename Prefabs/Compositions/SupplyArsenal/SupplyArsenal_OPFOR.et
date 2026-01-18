@@ -1,0 +1,71 @@
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ ID "52D6D6DB69F982D9"
+ components {
+  CRF_SupplyArsenalComponent "{66C34A66F9693505}" {
+  }
+  FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+   "faction affiliation" "OPFOR"
+  }
+  SCR_EditableEntityComponent "{66C34A66F969356E}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C34A66F9693592}" {
+    Name "Supply Arsenal"
+    Icon "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+    m_Image "{DB9BCA1FFFB590DA}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_US_01.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_OPFOR
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{66C34A66F9693597}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bStatic 1
+   m_Flags 5
+  }
+ }
+ coords 845.952 7.862 1472.917
+ angles 0 37 0
+ {
+  GenericEntity {
+   ID "568ED76844F05A2F"
+   components {
+    ActionsManagerComponent "{66C34A66F9693586}" {
+     ActionContexts {
+      UserActionContext "{66C34A66F969358A}" {
+       ContextName "default"
+       Position PointInfo "{66C34A66F9693589}" {
+        Offset 0 1.2463 0.1023
+       }
+      }
+     }
+     additionalActions {
+      CRF_VehicleArsenalAction "{66C34A66F969358E}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{66C34A66F969358D}" {
+        Name "Open Supply Arsenal"
+       }
+      }
+      CRF_VehicleRearmAction "{66C6552D931DE916}" {
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "58C28EA16E7B7C58"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}

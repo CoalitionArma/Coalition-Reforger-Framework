@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F0EA113B002D62AD}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CHDKZ_NIGHT.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

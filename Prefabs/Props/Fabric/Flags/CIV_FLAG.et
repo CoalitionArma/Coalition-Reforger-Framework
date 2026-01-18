@@ -1,0 +1,14 @@
+GenericEntity : "{AE09DA7896F9DB37}Prefabs/Props/Fabric/Flags/Flag_1_2.et" {
+ ID "50E2C85E7DD38DD0"
+ components {
+  MeshObject "{52AE82368499B365}" {
+   Materials {
+    MaterialAssignClass "{66B4D32F8EC0938B}" {
+     SourceMaterial "Flag_1_2"
+     AssignedMaterial "{A9E848D901E17302}Prefabs/Structures/FlagPoles/Flags/CIV_Flag.emat"
+    }
+   }
+  }
+ }
+ scale 0.5
+}

@@ -1,0 +1,6 @@
+SCR_AIGroup : "{B57F271D229B3074}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_VIP_P.et" {
+ coords 1915.925 132.515 7405.651
+ m_aUnitPrefabSlots {
+  "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et"
+ }
+}

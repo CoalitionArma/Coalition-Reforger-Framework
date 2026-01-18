@@ -1,0 +1,11 @@
+MatPBRBasic {
+ Color 0.008 0.008 0.008 1
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ MetalnessScale 4.118
+ CavityFromAO 0
+ BCRMap "{4FFFE68DAA4AFBDC}Assets/Characters/HeadGear/Mask_6B49/Data/rhs_6b49_mask_BCR.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NormalPower 0.987
+ NMOMap "{77275D1F733DA942}Assets/Characters/HeadGear/Mask_6B49/Data/rhs_6b49_mask_NMO.edds"
+}

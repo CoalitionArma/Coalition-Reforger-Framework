@@ -53,6 +53,10 @@ CIV Assets:
 
 **Mission Briefing Screenshot:**
 
+**Any Technical testing needed? Triggers? Scripts?:**
+
+<enter text here>
+
 **Design concept/thoughts:**
 
 <enter text here>

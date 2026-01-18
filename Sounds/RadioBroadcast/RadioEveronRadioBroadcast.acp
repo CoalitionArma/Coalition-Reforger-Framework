@@ -1,0 +1,1048 @@
+AudioClass {
+ signals {
+  SignalClass "39949" {
+   id 39949
+   name "Signal Occlusion"
+   tl -25 -328.437
+   res "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+   inputsport {
+    23 52
+   }
+   outputsport {
+    37
+   }
+   inputvalues {
+    0 1000
+   }
+   inputvaluesmin {
+    0 0
+   }
+   inputvaluesmax {
+    1 10000
+   }
+   path "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
+  }
+  SignalClass "45069" {
+   id 45069
+   name "Signal Reverb"
+   tl 512.87 128
+   res "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
+   inputsport {
+    1 35 112
+   }
+   outputsport {
+    39 105 107 106 110
+   }
+   inputvalues {
+    40 0 0
+   }
+   inputvaluesmin {
+    0 0 0
+   }
+   inputvaluesmax {
+    100 1 16000
+   }
+   path "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
+  }
+  SignalClass "47117" {
+   id 47117
+   name "Signal 46"
+   tl -981.108 -145.146
+   res "{C3E05BC9953729B5}Sounds/RadioBroadcast/CustomRadioBroadcast.sig"
+   inputsport {
+    30 31 32 35 41
+   }
+   outputsport {
+    33 34 36 37 40
+   }
+   inputvalues {
+    0 0 0 0 0
+   }
+   inputvaluesmin {
+    0 0 0 0 0
+   }
+   inputvaluesmax {
+    100 1 300000 1 1
+   }
+   path "{C3E05BC9953729B5}Sounds/RadioBroadcast/CustomRadioBroadcast.sig"
+  }
+ }
+ sounds {
+  SoundClass "1033" {
+   id 1033
+   name "SOUND_CUSTOM_RADIO"
+   version 5
+   tl 193 -116
+   ins {
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "5138:65" {
+       id 5138
+       port 65
+      }
+     }
+    }
+   }
+   volume_dB -16
+   outState 48139
+   outStatePort 22535
+  }
+  SoundClass "16393" {
+   id 16393
+   name "SOUND_RADIO_TURN_ON"
+   version 5
+   tl 190.333 159.666
+   ins {
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "18450:65" {
+       id 18450
+       port 65
+      }
+     }
+    }
+   }
+   outState 48139
+   outStatePort 22535
+  }
+  SoundClass "17417" {
+   id 17417
+   name "SOUND_RADIO_TURN_OFF"
+   version 5
+   tl 189.222 341
+   ins {
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "19474:65" {
+       id 19474
+       port 65
+      }
+     }
+    }
+   }
+   outState 48139
+   outStatePort 22535
+  }
+ }
+ selectors {
+  SelectorClass "27654" {
+   id 27654
+   name "Selector 27"
+   version 5
+   tl -456.369 -130.25
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "47117:37" {
+       id 47117
+       port 37
+      }
+     }
+    }
+    ConnectionsClass "con:2590" {
+     id 2590
+     links {
+      ConnectionClass "35844:65" {
+       id 35844
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:150398217" {
+     id 150398217
+     links {
+      ConnectionClass "32772:65" {
+       id 32772
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    1 0
+   }
+   ports {
+    PortClass DJ {
+     max 0.5
+    }
+    PortClass Music {
+     min 0.51
+     max 1.1
+    }
+   }
+  }
+ }
+ mixers {
+  MixerClass "43019" {
+   id 43019
+   name "OutputState"
+   version 4
+   tl 1145 -26
+   res "{B764D803219C775E}Sounds/FinalMix.afm"
+   pi {
+    234889216 0
+   }
+   path "{B764D803219C775E}Sounds/FinalMix.afm"
+   inputs {
+    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb_OBSOLETE" "VON_Reverb_Small" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin" "VON_Reverb_Medium" "VON_Reverb_Large"
+   }
+  }
+  MixerClass "48139" {
+   id 48139
+   name "OutputState"
+   version 4
+   tl 873.4 -11.701
+   res "{AF08E302CF8BA2E6}Sounds/FinalMix_UI_Music.afm"
+   ins {
+    ConnectionsClass "con:22535" {
+     id 22535
+     links {
+      ConnectionClass "1033:65" {
+       id 1033
+       port 65
+      }
+      ConnectionClass "16393:65" {
+       id 16393
+       port 65
+      }
+      ConnectionClass "17417:65" {
+       id 17417
+       port 65
+      }
+      ConnectionClass "40989:65" {
+       id 40989
+       port 65
+      }
+      ConnectionClass "44061:65" {
+       id 44061
+       port 65
+      }
+      ConnectionClass "42013:65" {
+       id 42013
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    1 0
+   }
+   path "{AF08E302CF8BA2E6}Sounds/FinalMix_UI_Music.afm"
+   inputs {
+    "Music" "UI"
+   }
+  }
+ }
+ shaders {
+  ShaderClass "5138" {
+   id 5138
+   name "Shader"
+   version 5
+   tl -25 -115
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "22556:65" {
+       id 22556
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "7187:65" {
+       id 7187
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "14357:65" {
+       id 14357
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "33796:65" {
+       id 33796
+       port 65
+      }
+      ConnectionClass "27654:65" {
+       id 27654
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+  }
+  ShaderClass "18450" {
+   id 18450
+   name "Shader 18"
+   version 5
+   tl -26.667 159.143
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "22556:65" {
+       id 22556
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "36883:65" {
+       id 36883
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "14357:65" {
+       id 14357
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "20484:65" {
+       id 20484
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+  }
+  ShaderClass "19474" {
+   id 19474
+   name "Shader 19"
+   version 5
+   tl -27.778 339.334
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "22556:65" {
+       id 22556
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "36883:65" {
+       id 36883
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "14357:65" {
+       id 14357
+       port 65
+      }
+     }
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "21508:65" {
+       id 21508
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+  }
+ }
+ amplitudes {
+  AmplitudeClass "7187" : "{C97DEFA6B88F6DE9}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-55LUFS_to_-50LUFS.conf" {
+   id 7187
+   version 5
+   tl -25 -497.659
+   parent "{C97DEFA6B88F6DE9}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-55LUFS_to_-50LUFS.conf"
+  }
+  AmplitudeClass "36883" : "{7BAAAD4DE72D5E71}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-65LUFS_to_-60LUFS.conf" {
+   id 36883
+   version 5
+   tl -26.667 83.667
+   parent "{7BAAAD4DE72D5E71}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-65LUFS_to_-60LUFS.conf"
+  }
+ }
+ frequency {
+  FrequencyClass "14357" : "{CA912C59A9267045}Sounds/_SharedData/Configs/Frequency/_SharedData/Frequency_Base.conf" {
+   id 14357
+   version 5
+   tl -25 -424.886
+   parent "{CA912C59A9267045}Sounds/_SharedData/Configs/Frequency/_SharedData/Frequency_Base.conf"
+   ins {
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "39949:37" {
+       id 39949
+       port 37
+      }
+     }
+    }
+   }
+   pi {
+    16 0
+   }
+   pu {
+    16 0
+   }
+   dynamicUpdate 1
+   enableDirectivity 1
+   directivityFactor 0.6
+  }
+ }
+ banks_local {
+  BankLocalClass "20484" {
+   id 20484
+   name "Turn On"
+   version 7
+   tl -250.594 158.333
+   Volume -18
+   Samples {
+    AudioBankSampleClass "Radio_TurnOn.wav" {
+     Filename "{76CC7BF5BDA67366}Sounds/RadioBroadcast/Samples/Everon/Radio_TurnOn.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "21508" {
+   id 21508
+   name "Turn Off"
+   version 7
+   tl -251.778 341.303
+   Volume -18
+   Samples {
+    AudioBankSampleClass "Radio_TurnOff.wav" {
+     Filename "{049C5C173E8C0259}Sounds/RadioBroadcast/Samples/Everon/Radio_TurnOff.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "32772" {
+   id 32772
+   name "Music"
+   version 7
+   tl -701.25 -26.607
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "47117:40" {
+       id 47117
+       port 40
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "47117:33" {
+       id 47117
+       port 33
+      }
+     }
+    }
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "47117:36" {
+       id 47117
+       port 36
+      }
+     }
+    }
+   }
+   pi {
+    21 0
+   }
+   pu {
+    1 0
+   }
+   Selection CustomSignalIndex
+   Resampler FIR_8
+   Samples {
+    AudioBankSampleClass "RadioBroadcast_Music_01_TBay_HopeForTheOctopus.wav" {
+     Filename "{8DDBAD35EE0481D7}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_01_TBay_HopeForTheOctopus.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_02_LeonB_SlowBladesRemix.wav" {
+     Filename "{EA32AD17A662A5A2}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_02_LeonB_SlowBladesRemix.wav"
+     Probability 100
+     Index 1
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_03_EChenbay_DreamOfWolfAndRabbit.wav" {
+     Filename "{F57D7D43CA46E6FD}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_03_EChenbay_DreamOfWolfAndRabbit.wav"
+     Probability 100
+     Index 2
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_04_Propis_HappyMondayInAFactory.wav" {
+     Filename "{436F043F4F844ADD}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_04_Propis_HappyMondayInAFactory.wav"
+     Probability 100
+     Index 3
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_05_Propis_Follow.wav" {
+     Filename "{A6BE66015DA50841}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_05_Propis_Follow.wav"
+     Probability 100
+     Index 4
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_06_Havarna_Draty.wav" {
+     Filename "{F4BD7AAE329CC6B6}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_06_Havarna_Draty.wav"
+     Probability 100
+     Index 5
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_07_BertDave_RadioEveron.wav" {
+     Filename "{98565D4A0F1B1525}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_07_BertDave_RadioEveron.wav"
+     Probability 100
+     Index 6
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_08_BertDave_Electrolite.wav" {
+     Filename "{8DD19F81BA72474E}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_08_BertDave_Electrolite.wav"
+     Probability 100
+     Index 7
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_09_AMDavidoff_Praga.wav" {
+     Filename "{31925D14DA155A13}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_09_AMDavidoff_Praga.wav"
+     Probability 100
+     Index 8
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_10_BertDave_TajnyPlan.wav" {
+     Filename "{5F80427DE5959D8F}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_10_BertDave_TajnyPlan.wav"
+     Probability 100
+     Index 9
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_11_Siluety_Pata.wav" {
+     Filename "{A46CEC155CE1ADA4}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_11_Siluety_Pata.wav"
+     Probability 100
+     Index 10
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_12_Siluety_CernaPlaz.wav" {
+     Filename "{7AEADAE19F4C09A0}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_12_Siluety_CernaPlaz.wav"
+     Probability 100
+     Index 11
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_13_Siluety_Minimal.wav" {
+     Filename "{715F27DDB3CEB221}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_13_Siluety_Minimal.wav"
+     Probability 100
+     Index 12
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_14_Siluety_2facesRemix.wav" {
+     Filename "{4B7262C029B9F073}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_14_Siluety_2facesRemix.wav"
+     Probability 100
+     Index 13
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Music_15_OMatejka_Walk(LeonB_Remix).wav" {
+     Filename "{550011A32B90BBAD}Sounds/RadioBroadcast/Samples/Everon/Music/RadioBroadcast_Music_15_OMatejka_Walk(LeonB_Remix).wav"
+     Probability 100
+     Index 14
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "33796" {
+   id 33796
+   name "Static"
+   version 7
+   tl -698.535 -275.394
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "47117:40" {
+       id 47117
+       port 40
+      }
+     }
+    }
+   }
+   pi {
+    1 0
+   }
+   pu {
+    1 0
+   }
+   Volume -8
+   "Loop count" 255
+   "Infinite loop" 1
+   Resampler FIR_8
+   Samples {
+    AudioBankSampleClass "BroadcastRadio_Static_LP.wav" {
+     Filename "{88E4C185F6CC5059}Sounds/RadioBroadcast/Samples/Everon/BroadcastRadio_Static_LP.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+  BankLocalClass "35844" {
+   id 35844
+   name "DJ"
+   version 7
+   tl -701.337 -175.107
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "47117:40" {
+       id 47117
+       port 40
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "47117:34" {
+       id 47117
+       port 34
+      }
+     }
+    }
+    ConnectionsClass "con:4" {
+     id 4
+     links {
+      ConnectionClass "47117:36" {
+       id 47117
+       port 36
+      }
+     }
+    }
+   }
+   pi {
+    21 0
+   }
+   pu {
+    1 0
+   }
+   Selection CustomSignalIndex
+   Resampler FIR_8
+   Samples {
+    AudioBankSampleClass "AF_ER_EMERGENCYMESSAGE_01.wav" {
+     Filename "{B905DDA0F67F85EE}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_EMERGENCYMESSAGE_01.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_EMERGENCYMESSAGE_02.wav" {
+     Filename "{201B6439EB98B47E}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_EMERGENCYMESSAGE_02.wav"
+     Probability 100
+     Index 1
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_EMERGENCYMESSAGE_03.wav" {
+     Filename "{57110CB11F3A5B0E}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_EMERGENCYMESSAGE_03.wav"
+     Probability 100
+     Index 2
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_EMERGENCYMESSAGE_04.wav" {
+     Filename "{50D6F6E079BCE1CD}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_EMERGENCYMESSAGE_04.wav"
+     Probability 100
+     Index 3
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_EMERGENCYMESSAGE_05.wav" {
+     Filename "{27DC9E688D1E0EBD}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_EMERGENCYMESSAGE_05.wav"
+     Probability 100
+     Index 4
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_01.wav" {
+     Filename "{1F16A2D4E47AEA0D}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_01.wav"
+     Probability 100
+     Index 5
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_02.wav" {
+     Filename "{86081B4DF99DDB9D}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_02.wav"
+     Probability 100
+     Index 6
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_03.wav" {
+     Filename "{F10273C50D3F34ED}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_03.wav"
+     Probability 100
+     Index 7
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_04.wav" {
+     Filename "{F6C589946BB98E2E}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_04.wav"
+     Probability 100
+     Index 8
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_05.wav" {
+     Filename "{81CFE11C9F1B615E}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_05.wav"
+     Probability 100
+     Index 9
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_06.wav" {
+     Filename "{18D1588582FC50CE}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_06.wav"
+     Probability 100
+     Index 10
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_07.wav" {
+     Filename "{6FDB300D765EBFBE}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_07.wav"
+     Probability 100
+     Index 11
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_08.wav" {
+     Filename "{175EAC274FF12548}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_08.wav"
+     Probability 100
+     Index 12
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_09.wav" {
+     Filename "{6054C4AFBB53CA38}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_09.wav"
+     Probability 100
+     Index 13
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_10.wav" {
+     Filename "{9C148DC41D056D09}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_10.wav"
+     Probability 100
+     Index 14
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_11.wav" {
+     Filename "{EB1EE54CE9A78279}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_11.wav"
+     Probability 100
+     Index 15
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_12.wav" {
+     Filename "{72005CD5F440B3E9}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_12.wav"
+     Probability 100
+     Index 16
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_13.wav" {
+     Filename "{050A345D00E25C99}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_13.wav"
+     Probability 100
+     Index 17
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_14.wav" {
+     Filename "{02CDCE0C6664E65A}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_14.wav"
+     Probability 100
+     Index 18
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_15.wav" {
+     Filename "{75C7A68492C6092A}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_15.wav"
+     Probability 100
+     Index 19
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_16.wav" {
+     Filename "{ECD91F1D8F2138BA}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_16.wav"
+     Probability 100
+     Index 20
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_17.wav" {
+     Filename "{9BD377957B83D7CA}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_17.wav"
+     Probability 100
+     Index 21
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_18.wav" {
+     Filename "{E356EBBF422C4D3C}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_18.wav"
+     Probability 100
+     Index 22
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_19.wav" {
+     Filename "{945C8337B68EA24C}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_19.wav"
+     Probability 100
+     Index 23
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_20.wav" {
+     Filename "{C2FCA487A288E306}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_20.wav"
+     Probability 100
+     Index 24
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_21.wav" {
+     Filename "{B5F6CC0F562A0C76}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_21.wav"
+     Probability 100
+     Index 25
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_22.wav" {
+     Filename "{2CE875964BCD3DE6}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_22.wav"
+     Probability 100
+     Index 26
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_23.wav" {
+     Filename "{5BE21D1EBF6FD296}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_23.wav"
+     Probability 100
+     Index 27
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_24.wav" {
+     Filename "{5C25E74FD9E96855}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_24.wav"
+     Probability 100
+     Index 28
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_25.wav" {
+     Filename "{2B2F8FC72D4B8725}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_25.wav"
+     Probability 100
+     Index 29
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_26.wav" {
+     Filename "{B231365E30ACB6B5}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_26.wav"
+     Probability 100
+     Index 30
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_27.wav" {
+     Filename "{C53B5ED6C40E59C5}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_27.wav"
+     Probability 100
+     Index 31
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "AF_ER_SEGUE_28.wav" {
+     Filename "{BDBEC2FCFDA1C333}Sounds/RadioBroadcast/Samples/Everon/DJ/AF_ER_SEGUE_28.wav"
+     Probability 100
+     Index 32
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Jingle_01.wav" {
+     Filename "{8CD73BB853B01DE0}Sounds/RadioBroadcast/Samples/Everon/DJ/RadioBroadcast_Jingle_01.wav"
+     Probability 100
+     Index 33
+     SampleMetadata ""
+    }
+    AudioBankSampleClass "RadioBroadcast_Jingle_02.wav" {
+     Filename "{15C982214E572C70}Sounds/RadioBroadcast/Samples/Everon/DJ/RadioBroadcast_Jingle_02.wav"
+     Probability 100
+     Index 34
+     SampleMetadata ""
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass "22556" {
+   id 22556
+   name "Spatiality"
+   version 5
+   tl -25 -570.912
+   spatialFactor 1
+  }
+ }
+ auxOuts {
+  AuxOutClass "40989" {
+   id 40989
+   name "AuxOut Reverb INT Small"
+   version 5
+   tl 512 320
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "1033:5" {
+       id 1033
+       port 5
+      }
+      ConnectionClass "16393:5" {
+       id 16393
+       port 5
+      }
+      ConnectionClass "17417:5" {
+       id 17417
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "45069:107" {
+       id 45069
+       port 107
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "45069:39" {
+       id 45069
+       port 39
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+   pu {
+    6 0
+   }
+   OSPort 22535
+  }
+  AuxOutClass "42013" {
+   id 42013
+   name "AuxOut Reverb INT Medium"
+   version 5
+   tl 513.521 446.479
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "1033:5" {
+       id 1033
+       port 5
+      }
+      ConnectionClass "16393:5" {
+       id 16393
+       port 5
+      }
+      ConnectionClass "17417:5" {
+       id 17417
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "45069:106" {
+       id 45069
+       port 106
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "45069:39" {
+       id 45069
+       port 39
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+   pu {
+    6 0
+   }
+   OSPort 22535
+  }
+  AuxOutClass "44061" {
+   id 44061
+   name "AuxOut Revverb INT Large"
+   version 5
+   tl 513.521 574.479
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "1033:5" {
+       id 1033
+       port 5
+      }
+      ConnectionClass "16393:5" {
+       id 16393
+       port 5
+      }
+      ConnectionClass "17417:5" {
+       id 17417
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+     links {
+      ConnectionClass "45069:110" {
+       id 45069
+       port 110
+      }
+     }
+    }
+    ConnectionsClass "con:2" {
+     id 2
+     links {
+      ConnectionClass "45069:39" {
+       id 45069
+       port 39
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+   pu {
+    6 0
+   }
+   OSPort 22535
+  }
+ }
+ version 1
+}

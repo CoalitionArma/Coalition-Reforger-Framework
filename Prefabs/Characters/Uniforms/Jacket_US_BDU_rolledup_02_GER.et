@@ -1,0 +1,43 @@
+GameEntity : "{8A5424D1A2AA6595}Prefabs/Characters/Uniforms/Jacket_US_BDU_base.et" {
+ ID "5104869D194C6243"
+ components {
+  MeshObject "{5104869D194C6262}" {
+   Materials {
+    MaterialAssignClass "{673A1902C5CDD908}" {
+     SourceMaterial "Jacket_BDU_M81_item"
+     AssignedMaterial "{0470AF73470E54F1}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_02_item.emat"
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    ItemDisplayName UIInfo "{5222CB0109A04AB2}" {
+     Name "#AR-Uniform_M65_Jacket_RolledUp_Name"
+     Description "#AR-Uniform_M65_Jacket_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+      PreviewWornModel 1
+      PreviewModel "{8DD1393CD1F874E1}Assets/Characters/Uniforms/Jacket_BDU_M81/Jacket_BDU_M81_rolledup.xob"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   Slots {
+    LoadoutSlotInfo DummyBelt {
+     Prefab "{ACB6C2B49C1230F9}Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_belt_dummy.et"
+    }
+   }
+   WornModel "{8DD1393CD1F874E1}Assets/Characters/Uniforms/Jacket_BDU_M81/Jacket_BDU_M81_rolledup.xob"
+   WornMaterialsOverride {
+    "{B079C0CFB1CE3D1E}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M65_GER.emat"
+   }
+   ItemMaterialsOverride {
+    "{0470AF73470E54F1}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_02_item.emat"
+   }
+   DebugWornModel 1
+   DeflatedModel "{305B26A94BFEDB4C}Assets/Characters/Uniforms/Jacket_BDU_M81/Jacket_BDU_M81_rolledup_Deflated.xob"
+  }
+ }
+}

@@ -38,7 +38,7 @@ class CRF_VehicleDepotVehicle
 	[Attribute("0", UIWidgets.ComboBox, "Cost type", "", ParamEnumArray.FromEnum(CRF_EVehicleDepotCostType), category: "Cost Configuration")]
 	CRF_EVehicleDepotCostType m_eCostType;
 	
-	[Attribute("10", UIWidgets.SpinBox, "Cost amount (TICKETS/SUPPLIES: direct cost, USES: cost deducted from global pool, -1 = unlimited)", "-1 1000 1", category: "Cost Configuration")]
+	[Attribute("10", UIWidgets.SpinBox, "Cost/Amount (TICKETS/SUPPLIES: cost to deduct, USES: total available spawns for this vehicle, -1 = unlimited)", "-1 1000 1", category: "Cost Configuration")]
 	int m_iCost;
 }
 
@@ -74,21 +74,22 @@ class CRF_VehicleDepot : ScriptComponent
 	
 	[Attribute("8", UIWidgets.Slider, "Grid spawn pattern Row spacing (meters between rows)", "3 20 0.5", category: "Spawn Configuration")]
 	protected float m_fGridRowSpacing;
+
+	// Spawn visualization (only visible in Workbench editor)
+	[Attribute("0", UIWidgets.CheckBox, "Show debug spawn point visuals", category: "Spawn Configuration")]
+	bool m_bEnableSpawnVisuals;
 	
 	// Resource Configuration
 	[Attribute("10.0", UIWidgets.SpinBox, "Supply storage search radius (meters)", "10.0 200.0 5.0", category: "Resource Configuration")]
 	protected float m_fSupplySearchRadius;
 	
-	[Attribute("20", UIWidgets.SpinBox, "Total uses pool for USES-type vehicles", "0 1000 1", category: "Resource Configuration")]
-	protected int m_iGlobalUsesPool;
-	
 	// Vehicle Configuration
 	[Attribute("", UIWidgets.Object, "Available vehicles", category: "Vehicle Configuration")]
 	protected ref array<ref CRF_VehicleDepotVehicle> m_aVehicles;
 	
-	// Track current uses remaining in the global pool (replicated for real-time UI updates)
+	// Per vehicle USES spawn type tracking - only created if USES vehicles exist
 	[RplProp()]
-	protected int m_iUsesRemaining;
+	protected ref array<int> m_aVehicleSpawnUses;
 	
 	// Track aggregated supplies for real-time UI updates (replicated from server)
 	[RplProp()]
@@ -111,10 +112,6 @@ class CRF_VehicleDepot : ScriptComponent
 	// Role restrictions
 	[Attribute("0", UIWidgets.CheckBox, "Restrict to leadership roles only (Squad Leaders, Team Leaders, Platoon Leaders, Platoon Sergeants)")]
 	bool m_bRestrictToLeadership;
-	
-	// Debug visualization (only visible in Workbench editor)
-	[Attribute("0", UIWidgets.CheckBox, "Show debug spawn point visuals")]
-	bool m_bEnableSpawnVisuals;
 	
 	// Debug logging
 	[Attribute("0", UIWidgets.CheckBox, "Enable debug logging")]
@@ -147,8 +144,8 @@ class CRF_VehicleDepot : ScriptComponent
 		m_aDebugShapes = {};
 		#endif
 			
-		// Initialize global uses pool
-		m_iUsesRemaining = m_iGlobalUsesPool;
+		// Initialize per-vehicle uses tracking
+		InitializeVehicleUses();
 		
 		// Initialize aggregated supplies to 0 (will be updated by server)
 		m_iAggregatedSupplies = 0;
@@ -195,6 +192,68 @@ class CRF_VehicleDepot : ScriptComponent
 		#ifdef WORKBENCH
 		DebugPrint("Spawn positions pre-cached during initialization");
 		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Initialize per-vehicle uses tracking (optimized - only creates arrays if USES vehicles exist)
+	protected void InitializeVehicleUses()
+	{
+		// USES vehicle detection pass to prevent unnecessary array creation
+		int usesVehicleCount = 0;
+		for (int i = 0; i < m_aVehicles.Count(); i++)
+		{
+			CRF_VehicleDepotVehicle vehicle = m_aVehicles[i];
+			if (vehicle && vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
+				usesVehicleCount++;
+		}
+		
+		// Only create array if we have USES vehicles and clear when empty
+		if (usesVehicleCount > 0)
+		{
+			if (!m_aVehicleSpawnUses)
+				m_aVehicleSpawnUses = {};
+				
+			m_aVehicleSpawnUses.Clear();
+			
+			// Populate array only with USES vehicles (in order they appear)
+			for (int i = 0; i < m_aVehicles.Count(); i++)
+			{
+				CRF_VehicleDepotVehicle vehicle = m_aVehicles[i];
+				if (vehicle && vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
+				{
+					// Store the vehicle's initial uses
+					m_aVehicleSpawnUses.Insert(vehicle.m_iCost);
+				}
+			}
+		}
+		else
+		{
+			// No USES vehicles - clear array to save memory
+			m_aVehicleSpawnUses = null;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Convert vehicle index to uses array index (returns -1 if vehicle is not USES type or array doesn't exist)
+	protected int GetUsesArrayIndex(int vehicleIndex)
+	{
+		if (!m_aVehicleSpawnUses || vehicleIndex < 0 || vehicleIndex >= m_aVehicles.Count())
+			return -1;
+			
+		// Count USES vehicles up to the target index
+		int usesArrayIndex = 0;
+		for (int i = 0; i <= vehicleIndex; i++)
+		{
+			CRF_VehicleDepotVehicle vehicle = m_aVehicles[i];
+			if (vehicle && vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
+			{
+				if (i == vehicleIndex)
+					return usesArrayIndex; // Found target vehicle
+				usesArrayIndex++;
+			}
+		}
+		
+		return -1; // Target vehicle is not USES type
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -445,23 +504,41 @@ class CRF_VehicleDepot : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected bool CanAffordUses(int playerId, int vehicleIndex)
 	{
+		if (vehicleIndex < 0 || vehicleIndex >= m_aVehicles.Count())
+			return false;
+			
 		CRF_VehicleDepotVehicle vehicle = m_aVehicles[vehicleIndex];
 		if (!vehicle || vehicle.m_eCostType != CRF_EVehicleDepotCostType.USES)
 			return false;
 			
-		// Check for unlimited uses (cost of -1)
-		if (vehicle.m_iCost == -1)
-			return true;
+		// If no uses array exists, no USES vehicles are configured
+		if (!m_aVehicleSpawnUses)
+			return false;
 			
-		// Check if global pool has enough uses for this vehicle's cost
-		return m_iUsesRemaining >= vehicle.m_iCost;
+		int usesArrayIndex = GetUsesArrayIndex(vehicleIndex);
+		if (usesArrayIndex == -1)
+			return false; // Vehicle not found in uses array
+			
+		int usesRemaining = m_aVehicleSpawnUses[usesArrayIndex];
+		if (usesRemaining == -1)
+			return true; // Unlimited uses
+			
+		// Check if this vehicle has uses remaining
+		return usesRemaining > 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Get remaining uses in the global pool
-	int GetUsesRemaining()
+	//! Get remaining uses for a specific vehicle
+	int GetVehicleUsesRemaining(int vehicleIndex)
 	{
-		return m_iUsesRemaining;
+		if (!m_aVehicleSpawnUses)
+			return 0; // No uses array means no USES vehicles
+			
+		int usesArrayIndex = GetUsesArrayIndex(vehicleIndex);
+		if (usesArrayIndex == -1)
+			return 0; // Vehicle not in uses array or not USES type
+			
+		return m_aVehicleSpawnUses[usesArrayIndex];
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -623,22 +700,30 @@ class CRF_VehicleDepot : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void DeductUses(int vehicleIndex)
 	{
+		if (vehicleIndex < 0 || vehicleIndex >= m_aVehicles.Count() || !m_aVehicleSpawnUses)
+			return;
+			
 		CRF_VehicleDepotVehicle vehicle = m_aVehicles[vehicleIndex];
 		if (vehicle && vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
 		{
-			// Check for unlimited uses (cost of -1)
-			if (vehicle.m_iCost == -1)
+			int usesArrayIndex = GetUsesArrayIndex(vehicleIndex);
+			if (usesArrayIndex == -1)
+				return; // Vehicle not in uses array
+				
+			int usesRemaining = m_aVehicleSpawnUses[usesArrayIndex];
+			
+			// Check for unlimited uses (uses remaining of -1)
+			if (usesRemaining == -1)
 			{
 				return;
 			}
 			
-			// Deduct the vehicle's cost from the global pool
-			int cost = vehicle.m_iCost;
-			if (m_iUsesRemaining >= cost)
+			// Deduct 1 use from this specific vehicle's pool
+			if (usesRemaining > 0)
 			{
-				m_iUsesRemaining -= cost;
+				m_aVehicleSpawnUses[usesArrayIndex] = usesRemaining - 1;
 				#ifdef WORKBENCH
-				DebugPrint(string.Format("Deducted %1 uses from global pool, %2 remaining", cost, m_iUsesRemaining));
+				DebugPrint(string.Format("Deducted 1 use from vehicle %1 (%2), %3 remaining", vehicleIndex, vehicle.m_sVehicleName, m_aVehicleSpawnUses[usesArrayIndex]));
 				#endif
 				
 				// Trigger replication to update all clients immediately
@@ -688,7 +773,8 @@ class CRF_VehicleDepot : ScriptComponent
 			}
 			else if (vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
 			{
-				ShowNotificationToPlayer(playerId, "Spawn Failed", string.Format("Insufficient uses! Need %1, but only %2 remaining", vehicle.m_iCost, m_iUsesRemaining));
+				int usesRemaining = GetVehicleUsesRemaining(vehicleIndex);
+				ShowNotificationToPlayer(playerId, "Spawn Failed", string.Format("Insufficient uses! Need 1, but only %1 remaining", usesRemaining));
 			}
 			else
 			{
@@ -1086,7 +1172,7 @@ class CRF_VehicleDepot : ScriptComponent
 		{
 			case CRF_EVehicleDepotCostType.TICKETS: return string.Format("%1 tickets", vehicle.m_iCost);
 			case CRF_EVehicleDepotCostType.SUPPLIES: return string.Format("%1 supplies", vehicle.m_iCost);
-			case CRF_EVehicleDepotCostType.USES: return string.Format("%1 uses (Pool: %2 remaining)", vehicle.m_iCost, m_iUsesRemaining);
+			case CRF_EVehicleDepotCostType.USES: return "1 Use";
 		}
 		
 		return "unknown cost";
@@ -1141,15 +1227,15 @@ class CRF_VehicleDepot : ScriptComponent
 			}
 			case CRF_EVehicleDepotCostType.USES:
 			{
-				int remaining = GetUsesRemaining();
-				if (vehicle.m_iCost == -1)
+				int remaining = GetVehicleUsesRemaining(vehicleIndex);
+				if (remaining == -1)
 				{
 					costText = "Unlimited Uses";
 					remainingText = "";
 				}
 				else
 				{
-					costText = string.Format("%1 Uses", vehicle.m_iCost);
+					costText = "1 Use";
 					remainingText = string.Format("(%1 left)", remaining);
 				}
 				break;

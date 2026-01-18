@@ -1,0 +1,120 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7511.68 0 2820.464
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 6658.321 524.877 3901.637
+ m_iTimeLimitMinutes 35
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Researchers were studying something in the Stahkanov Mine before they made the call to collapse the tunnels. Now more than 2 dozen are wandering Ugoldar, shell shocked and confused. We need to find out what they saw. "\
+   ""\
+   "BLUFOR Composition: Inf"\
+   "BLUFOR Assets: MMG teams"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: MMG teams"\
+   ""\
+   "Time: 35 Min"\
+   "Weather: Day Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Find, and extract to your spawn NPCs located throughout Ugoldar. Deny the enemy from doing so. Most NPCs secured wins."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Find, and extract to your spawn NPCs located throughout Ugoldar. Deny the enemy from doing so. Most NPCs secured wins."
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{0EE7D3E30E7A7D6C}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSUSMC_MMGoptic.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{7B447D3DBCEFB131}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSMSV_MMGoptic.conf"
+ }
+ {
+  SCR_FactionManager "66DB5C662827ECEB" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66DB56F759F255B6}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{66DB56F75857754E}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66DB56F75D1695B3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66DB56F75DAF7667}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66DB56F75DD313F1}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66DB56F7B5A5C98D}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{66DB56F7B4BFC32F}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66DB56F7B4C2ED05}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66DB56F7BB41FFF4}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66DB56F7BB9E899D}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

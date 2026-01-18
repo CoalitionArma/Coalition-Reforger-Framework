@@ -18,6 +18,19 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     }
    }
   }
+  SCR_RespawnComponent "{998227246E6A49E0}" {
+   components {
+    SCR_FreeSpawnRequestComponent "{5CD2D126A634C24E}" {
+     Enabled 0
+    }
+    SCR_PossessSpawnRequestComponent "{5CD2D126BA9130E9}" {
+     Enabled 0
+    }
+    SCR_SpawnPointRespawnRequestComponent "{5CD2D126BE7315B8}" {
+     Enabled 0
+    }
+   }
+  }
   SCR_ScenarioFrameworkTriggerNetworkComponent "{61B2C5720492B2E2}" {
   }
  }

@@ -1,0 +1,654 @@
+GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
+ coords 1394.718 20.627 2443.071
+ angles 5.2 133.141 33.218
+}
+$grp GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck/M113_wreck.et" {
+ {
+  coords 1403.422 20.563 2313.656
+  angles 0 -164.553 0
+ }
+ {
+  coords 1425.191 20.701 2410.657
+  angles 0 117.752 0
+ }
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck/T62_wreck.et" {
+ coords 1453.659 20.625 2337.629
+}
+GenericEntity : "{4E288C9E06A3A2B8}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_MG_USSR_01_NSV_SPP.et" {
+ coords 1383.071 20.752 2471.198
+ angles 0 150.792 0
+}
+GenericEntity : "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et" {
+ coords 1420.989 27.213 2246.192
+ angles 0 -28.48 -27.656
+}
+GenericEntity : "{7BD9FE9138A2304E}Prefabs/MP/CombatOps/Cain/COCain_UgoldarBaseCenter_Blockage1.et" {
+ coords 1401.147 20.656 2439.992
+ angles 0 99.022 0
+}
+GenericEntity : "{7F29BE4FBFC98392}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wreck.et" {
+ coords 1465.591 20.625 2343.128
+ angles 0 87.983 0
+}
+$grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
+ {
+  coords 1587.261 20.718 2333.389
+  angles 0 -32.493 0
+ }
+ {
+  coords 1571.274 20.718 2385.517
+  angles 0 -116.996 0
+ }
+ {
+  coords 1487.584 20.656 2230.101
+  angles 0 150.145 0
+ }
+ {
+  coords 1527.306 20.602 2190.658
+  angles 0 -121.682 0
+ }
+ {
+  coords 1387.962 20.626 2434.182
+  angles 0 -133.506 0
+ }
+ {
+  coords 1461.907 20.656 2516.761
+  angles 0 -119.034 0
+ }
+ {
+  coords 1375.576 20.659 2485.262
+  angles 0 151.632 0
+ }
+ {
+  coords 1356.554 20.659 2520.489
+  angles 0 151.632 0
+ }
+ {
+  coords 1610.564 20.219 2173.321
+  angles 0 -29.747 0
+ }
+ {
+  coords 220.511 59.57 4518.219
+  angles 0 81.648 0
+ }
+ {
+  coords 1830.396 15.171 391.798
+  angles 0 46.271 0
+ }
+ {
+  coords 1794.909 15.768 368.522
+  angles 0 -108.242 0
+ }
+}
+GenericEntity : "{8C73F42FBAB6D9D7}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_02.et" {
+ components {
+  Hierarchy "{5C5AE69E25533947}" {
+   Enabled 1
+  }
+ }
+ coords 1366.384 29.18 2464.258
+ angles 0 -116.38 0
+}
+$grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+ {
+  coords 1418.224 24.712 2245.47
+  angles 0 61.369 0
+ }
+ {
+  coords 1416.089 24.712 2244.304
+  angles 0 61.369 0
+ }
+ {
+  coords 1418.184 25.819 2245.544
+  angles 0 61.369 0
+ }
+ {
+  coords 1415.842 24.712 2244.169
+  angles 0 61.369 0
+ }
+}
+$grp GenericEntity : "{9751583B234C4202}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_02_PKM.et" {
+ {
+  coords 1379.455 25.369 2241.545
+  angles 0 58.302 0
+ }
+ {
+  coords 1416.996 25.064 2245.085
+  angles 0 -38.305 0
+  {
+   GenericEntity {
+    ID "5C5AC612652E574F"
+    coords 0 -0.029 0
+   }
+  }
+ }
+ {
+  coords 1466.019 21.852 2266.739
+  angles 0 -31.01 0
+ }
+ {
+  coords 1521.474 27.523 2167.187
+  angles 0 162.802 0
+ }
+ {
+  coords 1364.641 25.008 2538.909
+  angles 0 144.551 0
+  {
+   GenericEntity {
+    ID "5C5AC612652E574F"
+    coords -0.019 0 -0.214
+   }
+  }
+ }
+ {
+  coords 1560.861 28.223 2380.584
+  angles 0 5.8 0
+ }
+ {
+  coords 1432.527 21.288 2214.939
+  angles -0.185 146.044 0.113
+ }
+}
+GenericEntity : "{9A783CC8688290E1}Prefabs/Compositions/Slotted/SlotFlatLarge/COAL_Helipad_L_01.et" {
+ coords 1813.273 15.786 373.108
+ angles 0 94.246 0
+}
+$grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
+ {
+  coords 1523.658 27.523 2168.168
+  angles 0 -28.112 0
+ }
+ {
+  coords 1520.416 27.523 2170.584
+  angles 0 -28.112 0
+ }
+ {
+  coords 1397.245 20.656 2488.146
+  angles 0 -31.242 0
+ }
+ {
+  coords 1394.616 20.657 2481.972
+  angles 0 -31.242 0
+ }
+ {
+  coords 1334.756 20.656 2533.815
+  angles 0 -28.151 0
+ }
+ {
+  coords 1336.781 20.656 2517.849
+  angles 0 -28.151 0
+ }
+ {
+  coords 1558.486 28.223 2379.532
+  angles 0 -27.665 0
+ }
+ {
+  coords 1562.641 28.223 2375.738
+  angles 0 -28.276 0
+ }
+ {
+  coords 1424.458 24.112 2181.364
+  angles 0 -27.665 0
+ }
+ {
+  coords 1422.067 24.112 2180.11
+  angles 0 -27.665 0
+ }
+ {
+  coords 1417.62 24.112 2177.779
+  angles 0 -27.665 0
+ }
+ {
+  coords 1429.121 24.112 2183.808
+  angles 0 -27.665 0
+ }
+ {
+  coords 1417.506 25.133 2183.729
+  angles 0 -27.665 0
+ }
+ {
+  coords 1426.556 25.187 2188.688
+  angles 0 -27.665 0
+ }
+ {
+  coords 1428.118 24.786 2187.557
+  angles 0 58.235 4.542
+ }
+ {
+  coords 1429.203 24.622 2185.805
+  angles 0 58.235 4.542
+ }
+ {
+  coords 1415.245 25.05 2182.346
+  angles 0 -38.629 0
+ }
+}
+$grp GenericEntity : "{A80F0848BFF11327}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleAngled.et" {
+ {
+  coords 1417.042 -0.004 2376.787
+  angles 0 -20.873 0
+ }
+ {
+  coords 1403.158 -1.181 2387.79
+  angles 0 -88.178 0
+ }
+ {
+  coords 1397.073 0 2401.669
+  angles 0 -88.178 0
+ }
+ {
+  coords 1414.504 -1.179 2353.083
+  angles 0 -119.753 0
+ }
+ {
+  coords 1427.574 0 2352.907
+  angles 0 1.883 0
+ }
+ {
+  coords 1394.825 0 2243.219
+  angles 0 -63.932 0
+ }
+ {
+  coords 1408.817 0 2250.143
+  angles 0 103.123 0
+ }
+ {
+  coords 1402.458 -1.137 2244.864
+  angles 0 -159.549 0
+ }
+ {
+  coords 1401.093 -0.98 2248.169
+  angles 0 24.951 0
+ }
+ {
+  coords 1374.301 -0.001 2319.544
+  angles 0 66.108 0
+ }
+ {
+  coords 1372.882 -0.001 2273.417
+  angles 0 -2.787 0
+ }
+ {
+  coords 1402.672 0 2272.13
+  angles 0 17.122 0
+ }
+ {
+  coords 1454.688 0 2292.453
+  angles 0 -2.787 0
+ }
+ {
+  coords 1458.997 -0.001 2284.216
+  angles 0 -96.258 0
+ }
+ {
+  coords 1475.931 0.005 2364.555
+  angles 0 52.781 0
+ }
+ {
+  coords 1479.327 0.005 2357.852
+  angles 0 166.932 0
+ }
+ {
+  coords 1441.754 -0.001 2420.995
+  angles 0 -21.851 0
+ }
+ {
+  coords 1534.722 -0.001 2259.483
+  angles 0 -30.048 0
+ }
+ {
+  coords 1503.558 -0.001 2314.235
+  angles 0 -153.716 0
+ }
+ {
+  coords 1486.762 -0.001 2334.083
+  angles 0 146.585 0
+ }
+ {
+  coords 1435.427 0 2328.719
+  angles 0 26.934 0
+ }
+ {
+  coords 1430.37 0.142 2338.635
+  angles 0 -158.305 0
+ }
+ {
+  coords 1647.682 -0 2231.525
+  angles 0 43.117 0
+ }
+ {
+  coords 1648.609 0 2245.742
+  angles 0 -153.023 0
+ }
+ {
+  coords 1683.891 0.001 2234.555
+  angles 0 -153.023 0
+ }
+ {
+  coords 1652.997 0.001 2211.202
+  angles 0 27.974 0
+ }
+}
+$grp GenericEntity : "{B31A14BC1A0E7776}Prefabs/Props/Military/Sandbags/Sandbag_01_round_burlap.et" {
+ {
+  coords 1427.016 24.178 2182.469
+  angles 0 152.877 0
+ }
+ {
+  coords 1419.86 24.178 2178.803
+  angles 0 152.877 0
+ }
+}
+$grp GenericEntity : "{B61A08FB644D2050}Prefabs/Props/Furniture/LampFluorescent/LampFluorescent_01_exterior.et" {
+ {
+  coords 1467.037 24.796 2264.366
+  angles 0 -25.946 0
+ }
+ {
+  coords 1429.921 25.7 2222.469
+  angles -55.739 -27.877 1.597
+ }
+ {
+  coords 1425.348 25.702 2220.053
+  angles -55.739 -27.877 -2.479
+ }
+}
+$grp GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
+ {
+  coords 1418.788 0 2319.809
+  angles 0 -97.621 0
+ }
+ {
+  coords 1450.168 0.148 2335.873
+  angles 0 8.646 0
+ }
+ {
+  coords 1445.225 -0.156 2265.026
+  angles 0 -122.398 0
+ }
+ {
+  coords 1481.862 0 2198.866
+  angles 0 -122.398 0
+ }
+ {
+  coords 1467.235 0 2189.441
+  angles 0 60.202 0
+ }
+ {
+  coords 1447.386 -0.001 2229.864
+  angles 0 60.202 0
+ }
+ {
+  coords 1427.015 -1.18 2268.311
+  angles 0 60.202 0
+ }
+ {
+  coords 1398.144 -1.181 2321.749
+  angles 0 60.202 0
+ }
+ {
+  coords 1344.888 0 2323.313
+  angles 0 -104.14 0
+ }
+ {
+  coords 1362.066 0 2249.62
+  angles 0 -104.14 0
+ }
+ {
+  coords 1376.436 0 2146.633
+  angles 0 -147.484 0
+ }
+ {
+  coords 1525.503 0 2237.878
+  angles 0 -118.866 0
+ }
+ {
+  coords 1508.384 -0.016 2267.179
+  angles 0 -118.866 0
+ }
+ {
+  coords 1487.408 -0.03 2305.231
+  angles 0 -118.866 0
+ }
+ {
+  coords 1459.416 -0.045 2354.823
+  angles 0 -118.866 0
+ }
+ {
+  coords 1440.044 -0.042 2389.965
+  angles 0 -118.866 0
+ }
+ {
+  coords 1415.89 -0.072 2432.044
+  angles 0 -118.866 0
+ }
+ {
+  coords 1400.76 -0.072 2424.215
+  angles 0 63.585 0
+ }
+ {
+  coords 1390.508 -0.072 2439.876
+  angles 0 33.702 0
+ }
+ {
+  coords 1405.659 -0.072 2451.575
+  angles 0 -68.228 0
+ }
+ {
+  coords 1362.239 -1.18 2428.116
+  angles 0 -68.228 0
+ }
+ {
+  coords 1361.588 -0.149 2393.516
+  angles 0 59.077 0
+ }
+ {
+  coords 1377.458 -0.894 2361.472
+  angles 0 59.077 0
+ }
+ {
+  coords 1332.359 0 2376.491
+  angles 0 -90.699 0
+ }
+ {
+  coords 1567.214 0 2242.728
+  angles 0 96.317 0
+ }
+ {
+  coords 1664.616 -0.001 2272.284
+  angles 0 -11.967 0
+ }
+ {
+  coords 1546.625 0 2277.194
+  angles 0 61.031 0
+ }
+ {
+  coords 1537.479 -0.001 2290.016
+  angles 0 61.031 0
+ }
+ {
+  coords 1517.875 -0.001 2325.428
+  angles 0 61.031 0
+ }
+ {
+  coords 1495.429 -0.001 2365.974
+  angles 0 61.031 0
+ }
+ {
+  coords 1471.982 0.001 2408.328
+  angles 0 61.031 0
+ }
+ {
+  coords 1437.535 -0.156 2470.551
+  angles 0 61.031 0
+ }
+ {
+  coords 1455.673 0 2437.787
+  angles 0 61.031 0
+ }
+ {
+  coords 1399.547 -0.001 2469.148
+  angles 0 157.132 0
+ }
+ {
+  coords 1427.281 -0.001 2489.125
+  angles 0 104.671 0
+ }
+ {
+  coords 1341.572 -0.001 2440.015
+  angles 0 160.829 0
+ }
+ {
+  coords 1366.091 -0.001 2450.368
+  angles 0 160.829 0
+ }
+ {
+  coords 1326.472 -0.001 2419.867
+  angles 0 -54.7 0
+ }
+ {
+  coords 1345.895 -0.001 2423.795
+  angles 0 49.505 0
+ }
+ {
+  coords 1421.04 -0.001 2461.64
+  angles 0 -31.678 0
+ }
+ {
+  coords 1413.027 -0.001 2402.511
+  angles 0 58.663 0
+ }
+ {
+  coords 1428.154 0 2411.721
+  angles 0 -97.143 0
+ }
+ {
+  coords 1443.529 0.148 2347.688
+  angles 0 90.975 0
+ }
+ {
+  coords 1412.293 -1.016 2329.912
+  angles 0 -112.932 0
+ }
+ {
+  coords 1538.872 0.001 2227.814
+  angles 0 154.362 0
+ }
+ {
+  coords 1606.372 -0.028 2246.275
+  angles 0 -64.978 0
+ }
+}
+GenericEntity : "{BBBC235B9B053092}Prefabs/Props/Furniture/Armchair_02.et" {
+ coords 1419.505 25.621 2246.134
+ angles 55.291 0 -46.064
+}
+GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ coords 1462.382 20.656 2310.459
+ angles 0 57.829 0
+}
+$grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
+ {
+  coords 1379.769 24.956 2241.687
+  angles 0 61.625 0
+ }
+ {
+  coords 1379.089 24.956 2241.32
+  angles 0 61.625 0
+ }
+ {
+  coords 1417.229 24.712 2244.541
+  angles 0 153.629 0
+ }
+ {
+  coords 1416.968 24.712 2245.409
+  angles 0 153.629 0
+ }
+ {
+  coords 1466.14 21.559 2266.283
+  angles 0 153.629 0
+ }
+ {
+  coords 1465.764 21.559 2267.042
+  angles 0 153.629 0
+ }
+ {
+  coords 1364.418 24.713 2539.461
+  angles 0 152.252 0
+ }
+ {
+  coords 1366.081 28.745 2464.268
+  angles 0 152.252 0
+ }
+ {
+  coords 1366.35 28.745 2463.757
+  angles 0 152.252 0
+ }
+}
+$grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+ {
+  coords 1598.513 21.636 2296.327
+  angles 3.788 -30.649 -90.028
+ }
+ {
+  coords 1598.562 23.111 2296.242
+  angles 3.788 -30.649 -90.028
+ }
+ {
+  coords 1610.108 22.405 2314.226
+  angles 89.293 151.626 92.273
+ }
+ {
+  coords 1420.227 27.918 2246.323
+  angles -43.428 60.136 0
+ }
+ {
+  coords 1434.533 22.706 2218.229
+  angles 30.671 -27.053 88.09
+ }
+}
+GenericEntity : "{CD67070EFAFC28C7}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_burlap.et" {
+ coords 1402.059 20.656 2479.586
+ angles 0 -28.289 0
+}
+$grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {
+ {
+  coords 1432.726 20.673 2214.729
+  angles -1.076 153.725 -2.179
+ }
+ {
+  coords 1432.369 20.688 2215.453
+  angles -1.076 153.725 -2.179
+ }
+}
+GenericEntity : "{DB56577F30DE9129}Prefabs/Props/Furniture/Table_02.et" {
+ coords 1420.296 26.036 2246.594
+ angles 0 0 -32.943
+}
+$grp GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
+ {
+  coords 1541.829 20.656 2280.73
+  angles 0 85.022 0
+ }
+ {
+  coords 1458.468 20.656 2314.521
+  angles 0 60.19 0
+ }
+ {
+  coords 1371.833 20.656 2191.083
+  angles 0 -155.534 0
+ }
+ {
+  coords 1374.401 20.611 2198.516
+  angles 0 -66.8 0
+ }
+ {
+  coords 1328 20.656 2532.289
+  angles 0 -85.017 0
+ }
+}
+GameEntity : "{FCC9A062B697948E}Prefabs/Structures/BuildingParts/Ladders/Ladder_Pier_520_B.et" {
+ coords 1421.724 4.622 2186.839
+ angles 0 -26.164 0
+}

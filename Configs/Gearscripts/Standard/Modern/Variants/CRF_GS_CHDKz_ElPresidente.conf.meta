@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7CA2D04CE91970D3}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz_ElPresidente.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

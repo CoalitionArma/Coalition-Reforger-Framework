@@ -1,6 +1,0 @@
-MatPBRBasic {
- AllowUserAlphaBias 1
- DisableUserAphaInShadow 1
- BCRMap "{3C184DF6D6551095}Assets/Data/eyepatch.edds"
- NMOMap "{E3A51C7BE66E2BA7}Assets/Data/normalmap.edds"
-}

@@ -1,0 +1,18 @@
+GenericEntity : "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{B502E4DC8A9E835E}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      Prefab "{E5E9DBBF3BFB88C6}Prefabs/Weapons/Attachments/Optics/Optic_PGO7/Optic_PGO7V3.et"
+     }
+    }
+    SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
+     DispersionRange 20
+     AmmoTemplate "{9E0B02AA0AE6E59D}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VL_LS.et"
+    }
+   }
+  }
+ }
+}

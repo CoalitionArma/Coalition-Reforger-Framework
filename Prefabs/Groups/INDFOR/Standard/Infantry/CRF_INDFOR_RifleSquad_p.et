@@ -23,10 +23,10 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
     m_Image "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
     m_sFaction "INDFOR"
     m_aAuthoredLabels {
-     4 51872 34 25 38
+     ENTITYTYPE_GROUP FACTION_CRF_INDFOR TRAIT_SUPPRESSIVE TRAIT_ARMORPIERCING TRAIT_EXPLOSIVE
     }
     m_aAutoLabels {
-     72
+     GROUPSIZE_LARGE
     }
     m_EntityChildrenBudgetCost {
      SCR_EntityBudgetValue "{629509BD11B7AC84}" {
@@ -149,17 +149,11 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "INDFOR"
  m_aUnitPrefabSlots {
-  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et"
+  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Gren_P.et"
  }
  m_bDeleteWhenEmpty 0
  m_iMaxMembers 12
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0
- m_aUnitPrefabColorTeams {
-  "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
- }
- m_aUnitPrefabOverrideIcons {
-  "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
- }
  m_bIsPlayable 1
 }

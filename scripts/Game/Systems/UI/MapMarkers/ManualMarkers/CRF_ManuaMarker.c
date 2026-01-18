@@ -21,6 +21,8 @@ class CRF_ManualMarker : GenericEntity
 	// Attributes for editing through workbench TODO: proper description
 	[Attribute("{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset")]
 	protected ResourceName m_sImageSet;
+	[Attribute("0")]
+	bool m_bJustText;
 	[Attribute("")]
 	protected ResourceName m_sImageSetGlow;
 	[Attribute("1 1 1 1", UIWidgets.ColorPicker)]
@@ -52,7 +54,8 @@ class CRF_ManualMarker : GenericEntity
 	Widget m_wRoot;
 	SCR_MapEntity m_MapEntity;
 	CRF_ManualMarkerComponent m_hManualMarkerComponent;
-	protected ResourceName m_sMarkerPrefab = "{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout";
+	[Attribute("{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout")]
+	protected ResourceName m_sMarkerPrefab;
 	
 	// Get/Set Broadcast
 	// Setters must be call from autority (usualy server)
@@ -156,16 +159,16 @@ class CRF_ManualMarker : GenericEntity
 	}
 	void SetDescription(string description)
 	{
-		RPC_SetDescription(description);
-		Rpc(RPC_SetDescription, description);
+		RPC_SetDescription(description, m_bJustText);
+		Rpc(RPC_SetDescription, description, m_bJustText);
 	}
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RPC_SetDescription(string description)
+	void RPC_SetDescription(string description, bool justText)
 	{
 		m_sDescription = description;
 		
 		// Update "On fly" if map open and marker exist
-		if (m_hManualMarkerComponent) m_hManualMarkerComponent.SetDescription(m_sDescription);
+		if (m_hManualMarkerComponent) m_hManualMarkerComponent.SetDescription(m_sDescription, justText);
 	}
 	
 	bool GetUseWorldScale()
@@ -338,9 +341,10 @@ class CRF_ManualMarker : GenericEntity
 		m_hManualMarkerComponent = CRF_ManualMarkerComponent.Cast(m_wRoot.FindHandler(CRF_ManualMarkerComponent));
 		m_hManualMarkerComponent.SetImage(m_sImageSet, m_sQuadName);
 		m_hManualMarkerComponent.SetImageGlow(m_sImageSetGlow, m_sQuadName);
-		m_hManualMarkerComponent.SetDescription(m_sDescription);
+		m_hManualMarkerComponent.SetDescription(m_sDescription, m_bJustText);
 		m_hManualMarkerComponent.SetColor(m_MarkerColor);
 		m_hManualMarkerComponent.OnMouseLeave(null, null, 0, 0);
+		m_hManualMarkerComponent.SetManualMarker(this);
 		
 		// Enable every frame updating
 		SetEventMask(EntityEvent.POSTFRAME);
@@ -374,11 +378,11 @@ class CRF_ManualMarker : GenericEntity
 		writer.WriteString(m_sImageSet);
 		writer.WriteString(m_sImageSetGlow);
 		writer.WriteString(m_sQuadName);
-		writer.WriteInt(m_MarkerColor.PackToInt());
-		writer.WriteFloat(m_fWorldSize);
+		writer.Write(m_MarkerColor.PackToInt(), 32);
+		writer.Write(m_fWorldSize, 32);
 		writer.WriteString(m_sDescription);
-		writer.WriteBool(m_bUseWorldScale);
-		writer.WriteBool(m_bVisibleForEmptyFaction);
+		writer.Write(m_bUseWorldScale, 1);
+		writer.Write(m_bVisibleForEmptyFaction, 1);
 		
 		string factions = "";
 		foreach (FactionKey factionKey: m_aVisibleForFactions)
@@ -397,12 +401,12 @@ class CRF_ManualMarker : GenericEntity
 		reader.ReadString(m_sImageSetGlow);
 		reader.ReadString(m_sQuadName);
 		int colorI; // This break flow, where is Color serealization? :(
-		reader.ReadInt(colorI);
+		reader.Read(colorI, 32);
 		m_MarkerColor = Color.FromInt(colorI);
-		reader.ReadFloat(m_fWorldSize);
+		reader.Read(m_fWorldSize, 32);
 		reader.ReadString(m_sDescription);
-		reader.ReadBool(m_bUseWorldScale);
-		reader.ReadBool(m_bVisibleForEmptyFaction);
+		reader.Read(m_bUseWorldScale, 1);
+		reader.Read(m_bVisibleForEmptyFaction, 1);
 		
 		string factions;
 		reader.ReadString(factions);

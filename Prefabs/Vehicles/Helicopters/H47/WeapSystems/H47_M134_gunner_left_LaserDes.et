@@ -1,0 +1,221 @@
+Turret : "{398D01C541761153}Prefabs/Vehicles/Helicopters/UH1H/VehParts/WeapSystems/UH1H_M60D_gunner_base.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSoundComponent "{6130E793A8CDFFBD}" {
+   Filenames {
+    "{EE8892C4180091FF}Sounds/Weapons/HeavyWeapons/M134/SPC_Weapons_HeavyWeapons_M134_Shot.acp"
+   }
+  }
+  RigidBody "{51ACD09C423F175F}" {
+   Static 0
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{615A7AF205FFCDE6}" {
+     AnimDoorIndex 0
+     OpenCloseDoorAnimGraph "{F5C4F592131F89DF}Assets/Vehicles/Helicopters/H47/workspace/h47.agr"
+     ContextName "left_gunner_door"
+     OpenDoorAction SCR_GetInUserAction "{667B7B62525CCB52}" {
+      ParentContextList {
+       "gunner" "left_gunner_door"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B62525CCCA6}" {
+      }
+     }
+     CloseDoorAction SCR_GetOutAction "{667B7B62525CCCAC}" {
+      ParentContextList {
+       "gunner" "left_gun"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B62525CCCAD}" {
+      }
+     }
+     EntryPositionInfo PointInfo "{667B7B62525CCCB1}" {
+      Offset 0 0 -1.2286
+     }
+     ExitPositionInfo PointInfo "{667B7B62525CCCB3}" {
+      Offset 0 0 -1.2277
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     AccessibilitySettings CompartmentAccessibilityContext "{667B7B62525CCCB8}" {
+     }
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     CompartmentUniqueName "RightGunCompartment"
+     CompartmentAction SCR_GetInUserAction "{5086CC2CFDD3A05A}" {
+      ParentContextList {
+       "gunner" "left_gun" "cabin_door"
+      }
+     }
+     GetOutAction SCR_GetOutAction "{667B7B62525CCC88}" {
+      ParentContextList {
+       "gunner" "right_gun"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B62525CCC8A}" {
+      }
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D566648F37562}" {
+      ParentContextList {
+       "gunner"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D56867A46DBE769}" {
+       ParentContextList {
+        "default"
+       }
+      }
+      SCR_RemoveCasualtyUserAction "{61089D59F48D7BD2}" {
+       ParentContextList {
+        "door_gunner_r"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{B1CB25848A3D93A8}" {
+      DisablePhysicsInteraction 1
+     }
+     OverrideExitPositionInfo PointInfo "{667B7B62525CCC97}" {
+      Offset 0 0.2466 -1.5049
+     }
+     UIInfo SCR_ActionUIInfo "{50870A10DCCDED83}" {
+     }
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{667B7B62525CCC9E}" {
+   Attributes SCR_ItemAttributeCollection "{667B7B62525CCCE0}" {
+    ItemDisplayName WeaponUIInfo "{667B7B62525CCCE3}" {
+     Name "#WCS-Weapon_M134_Name"
+     Description "#WCS-Weapon_M134_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{667B7B62525CCCED}" {
+     Weight 38.1
+     SizeSetupStrategy Volume
+     ItemDimensions 10 10 10
+     ItemVolume 12000
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{667B7B62525CCCF2}" {
+      ProneLimitsVertical -90 90
+      DeploymentAimSpeedMultiplier 1 1
+      DeploymentHorizontalAimSensitivityMax 120
+      LowerGunCollisionDistance 0.05
+     }
+     ItemMovementSwayAttributes "{667B7B62525CCCF8}" {
+      BobDamper 0.95 0.95 1
+      BobMagnitudeLinear 0.03 -0.01 -0.01
+      BobMagnitudeAngular -6.25 5 0
+      BobSpeed 16
+      MaxMagnitude 1
+      DefaultMagnitudeLinear 0 0.04 0
+      DefaultMagnitudeAngular 35 3 -40
+      LoweredMagnitudeLinear 0 0.125 0
+      LoweredMagnitudeAngular 90 7.5 -45
+      OneHandMagnitudeLinear 0 0.065 0
+      OneHandMagnitudeAngular 35 5 -40
+      ADSMagnitudeLinear -0.023 0 0
+      ADSMagnitudeAngular 8.84 10.6 20
+      InjuredMagnitudeLinear 0 0.065 0
+      InjuredMagnitudeAngular 35 5 -40
+      TargetVelocity 3.6
+      TargetVelocitySteepness 3
+      TargetVelocityLimit 3.6
+      MaxVelocity 2
+     }
+     SCR_RecoilCameraShakeParams "{667B7B62525CCCFD}" {
+      m_fBlendOutTime 0.089
+      m_fMaxVelocity 15
+      m_fRecoilTarget 0.038
+      m_vTranslationMin 0.004 0.004 0
+      m_vTranslationMax 0.005 0.005 0
+      m_fFOVModifier 0.985
+      m_vRotationImpulseMin 0.005 0.005 7
+      m_vRotationImpulseMax 0.012 0.012 8
+      m_fMinImpulseThreshold 0.01
+      m_fImpulseCrouchMagnitudeModifier 0.7
+      m_fImpulseProneMagnitudeModifier 1
+      m_fCrouchMagnitudeModifier 0.5
+      m_fProneMagnitudeModifier 0.33
+     }
+     CharacterModifierAttributes "{667B7B62525CCCC1}" {
+      ADSSpeedLimit 1.5
+      SpeedLimitHighready 1.8
+     }
+     PreviewRenderAttributes "{667B7B62525CCCC4}" {
+      CameraPreset Right
+      CameraDistanceToItem 1.9
+      FOV 30
+      AspectRatio 1
+      AnimationInstance "{C79EA6F6F4EFE7CC}anims/workspaces/player/player_inventory_LMG.asi"
+     }
+    }
+    m_SlotType SLOT_WEAPONS_STORAGE
+   }
+  }
+  TurretControllerComponent "{51ACD09C61C183E4}" {
+   LimitsHoriz -50 50
+   LimitsVert -60 12
+   TurretUnconsciousPosition 20 0
+  }
+  TurretComponent "{6048CB72E6432EAA}" {
+   components {
+    SightsComponent "{611EF962F1536F27}" {
+     SightsPosition PointInfo "{611EF962CB431058}" {
+      Offset -0.0477 0.4891 0.3916
+     }
+    }
+   }
+   SignalsSourceAccess SignalsSourceAccessClass "{6048CB72E6432EDE}" {
+   }
+   ikTargets {
+    AnimationIKTargetInfo "{6066B35C7414ADED}" {
+     PositionInfo PointInfo "{6066B35CAF0AB9BE}" {
+      Offset -0.1814 0.4453 0.2987
+     }
+    }
+    AnimationIKTargetInfo "{6066B35C7448F851}" {
+     PositionInfo PointInfo "{6066B35CAE71840F}" {
+      Offset 0.0474 0.4353 0.3009
+     }
+    }
+   }
+   aimRotationBones {
+    "pitch" "yaw"
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{51ACD08AE7410D68}" {
+    signalsSuffix "Gunner"
+   }
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+    MergePhysics 1
+    DisablePhysicsInteraction 1
+   }
+   WeaponTemplate "{65CB95C06823084A}Prefabs/Weapons/HeavyWeapons/CH47_M134_Base_LaserDes.et"
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{6048CB72E6432ED1}" {
+     UIInfo SCR_ActionContextUIInfo "{667B7B62525CCC25}" {
+     }
+     ContextName "left_gunner_door"
+     Position PointInfo "{6048CB72E6429AB9}" {
+      Offset -0.0115 1.051 -0.2435
+     }
+    }
+   }
+  }
+  BaseItemAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{DB4B329BCA95B0A7}Assets/Weapons/MachineGuns/workspaces/M60D_UH1_Right.agr"
+    AnimInstance "{CF08C55C26037588}Assets/Weapons/MachineGuns/workspaces/M60D_player_UH1_Right.asi"
+   }
+  }
+ }
+}

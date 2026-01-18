@@ -1,0 +1,53 @@
+GenericEntity {
+ ID "66CCE1900CB7A20E"
+ components {
+  SignalsManagerComponent "{66CCE1900CB7A217}" {
+  }
+  SoundComponent "{66CCE1900CB7A25B}" {
+   Filenames {
+    "{A3B8E3FEC2E2D001}Sounds/CCOBackground.acp"
+   }
+   OnFrameUpdate 1
+   DistanceManagement 0
+  }
+  Bacon_PlaySoundComponent "{66CCE1900CB7A25E}" {
+   m_soundEventName "SOUND_SIREN_GENERIC"
+  }
+  SCR_EditableEntityComponent "{66CCE1900CB7A25C}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{66CCE1900CB7A261}" {
+    Name "CCO Background Noise"
+    Description "very loud"
+    Icon "{F02CC9ED8E974DA3}UI/Textures/Notifications/Notification_Sound_Unmuted.edds"
+    m_Image "{1BC4A1E1EF9089D8}Prefabs/Systems/Sound/icon_sound.edds"
+    m_aAuthoredLabels {
+     CONTENT_MODDED
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_FX
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{66CCE1900CB7A265}" {
+      m_BudgetType SYSTEMS
+      m_Value 20
+     }
+    }
+   }
+   m_Flags 65
+  }
+  SCR_PreviewEntityComponent "{66CCE1900CB7A26B}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{66CCE1900CB7A269}" {
+     m_Mesh "{E3F57B450939B769}Assets/Structures/Military/Sirens/SirenMilitary_E_01/SirenMilitary_E_01_addon.xob"
+     m_Shape MESH
+    }
+   }
+  }
+  RplComponent "{66CCE1900CB7A26C}" {
+   "Rpl State Override" Runtime
+   SpatialRelevancy 0
+   Streamable Disabled
+  }
+ }
+ coords 157.204 1.49 123.056
+}

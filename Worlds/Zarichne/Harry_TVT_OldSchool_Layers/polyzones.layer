@@ -1,0 +1,122 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1190.129 15.095 2921.722
+ Points {
+  ShapePoint "{6857675A7F0B56D0}" {
+   Position -1005.265 0 -541.844
+  }
+  ShapePoint "{6857675A7DE5F119}" {
+   Position -1040.482 0 370.783
+  }
+  ShapePoint "{6857675AA37F4DEC}" {
+   Position -333.93 0 385.245
+  }
+  ShapePoint "{6857675AA1B71972}" {
+   Position 26.477 0 447.275
+  }
+  ShapePoint "{6857675AA7FDFB10}" {
+   Position 777.255 0 841.488
+  }
+  ShapePoint "{6857675AA585E2D8}" {
+   Position 1163.28 0 818.602
+  }
+  ShapePoint "{6857675AA8B0B548}" {
+   Position 1338.736 0 62.122
+  }
+  ShapePoint "{6857675AB7A99032}" {
+   Position 676.798 0 -96.696
+  }
+  ShapePoint "{6857675AB56EA9E8}" {
+   Position 280.555 0 -310.801
+  }
+  ShapePoint "{6857675ABA5CDDE2}" {
+   Position -214.473 0 -596.45
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 224.255 52.542 3147.429
+  angles 0 87.936 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 120
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 225.174 52.542 2810.601
+  angles 0 87.936 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 120
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 243.192 52.542 2527.137
+  angles 0 87.936 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 120
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 421.039 18.285 2449.748
+ Points {
+  ShapePoint "{685767516AD47867}" {
+   Position 46.508 0 39.367
+  }
+  ShapePoint "{685767516965F9CB}" {
+   Position 29.904 0 -55.283
+  }
+  ShapePoint "{68576751698FC88F}" {
+   Position -46.498 0 -58.054
+  }
+  ShapePoint "{68576751687F9206}" {
+   Position -64.41 0 42.458
+  }
+ }
+}
+PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsEditable/PolyZone/OPFORForwardDeployZone.et" {
+ coords 1751.073 2.208 3157.292
+ Points {
+  ShapePoint "{6857675110425F25}" {
+   Position 555.441 0 549.843
+  }
+  ShapePoint "{6857675110D6789B}" {
+   Position 771.689 0 -145.932
+  }
+  ShapePoint "{68576751153D6703}" {
+   Position 45.386 0 -305.675
+  }
+  ShapePoint "{685767511A5A23E9}" {
+   Position -338.739 0 -422.605
+  }
+  ShapePoint "{68582C0BDDAA918D}" {
+   Position -392.793 0 -350.572
+  }
+  ShapePoint "{68582C0A2337BA39}" {
+   Position -580.247 0 -313.468
+  }
+  ShapePoint "{68582C0A235BA185}" {
+   Position -622.134 0 -214.869
+  }
+  ShapePoint "{68582C0A2752C878}" {
+   Position -650.513 0 -100.2
+  }
+  ShapePoint "{6857675118281B04}" {
+   Position -575.126 0 59.992
+  }
+  ShapePoint "{68576751626B6DDB}" {
+   Position -509.84 0 180.734
+  }
+  ShapePoint "{68576751619C0E77}" {
+   Position 192.972 0 505.865
+  }
+ }
+}

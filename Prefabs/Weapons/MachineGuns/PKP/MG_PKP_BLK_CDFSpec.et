@@ -1,0 +1,35 @@
+GenericEntity : "{1414EEC1849D2447}Prefabs/Weapons/MachineGuns/PKP/MG_PKP_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07E1D123E9}" {
+     Name "#WCS-Weapon_PKP_Name - #WCS-Camo_Black"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{62435EDE10730ED7}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Top_RIS {
+     }
+    }
+    AttachmentSlotComponent "{62435EDF164C1918}" {
+     AttachmentSlot InventoryStorageSlot Left_RIS {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{62435EDF98DC9FCA}" {
+     AttachmentSlot InventoryStorageSlot Right_RIS {
+     }
+    }
+    AttachmentSlotComponent "{62440892990BFA08}" {
+     Enabled 1
+     AttachmentSlot InventoryStorageSlot Foregrip {
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 -0.044
+}

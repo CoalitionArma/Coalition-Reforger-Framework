@@ -1,0 +1,143 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 376.953 59.826 4406.321
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{6857675D4FC00107}" {
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 16
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_iStartingHour 16
+    }
+   }
+  }
+ }
+ coords 1097.751 537.808 3145.792
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Negotiations have broken down, and American forces are pushing into Eastern Europe. After each MCOM destruction, a respawn wave will trigger. There are zero radios on this mission."\
+   ""\
+   "BLUFOR Composition: Mech Inf"\
+   "BLUFOR Assets: 2x armed M113 per platoon"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets:"\
+   ""\
+   "Time: 60 min"\
+   "Weather: Day Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Attack the MCOM's in series. "\
+   ""\
+   "Mission Maker Notes- "\
+   "There are no radios. I would suggest setting up a communication network of runners, and flares. Have a plan for how respawns will re-enter the fight without communication. "\
+   "There's not a lot of terrain between where you start and the enemy. Keep that in mind. "
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the MCOM's in series. "\
+   ""\
+   "Mission Maker Notes- "\
+   "There are no radios. I would suggest setting up a communication network of runners, and flares. Have a plan for how respawns will re-enter the fight without communication. "\
+   "While the M113's do have m2's mounted, the gunner is exposed and can be killed by small arms."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{888A4A3845FEA201}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USLate70s.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{B9177B50FDCF2DF1}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USSRLate70s.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{68582C0065312BD7}" {
+        m_sCallsign "Support-1"
+       }
+       SCR_CallsignInfo "{68582C00649542B7}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{68582C006B54612B}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{68582C006BFAC58B}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{68582C006A1D4652}" {
+        m_sCallsign "Support-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Assault-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Support-1"
+       }
+       SCR_CallsignInfo "{68582C00ABB59884}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{68582C00AD6AD97A}" {
+        m_sCallsign "Assault-2"
+       }
+       SCR_CallsignInfo "{68582C00B78A26FC}" {
+        m_sCallsign "Support-2"
+       }
+       SCR_CallsignInfo "{68582C00B6CEF739}" {
+        m_sCallsign "3PLT"
+       }
+       SCR_CallsignInfo "{68582C00B5BB4168}" {
+        m_sCallsign "Assault-3"
+       }
+       SCR_CallsignInfo "{68582C00B5C9E248}" {
+        m_sCallsign "Support-3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

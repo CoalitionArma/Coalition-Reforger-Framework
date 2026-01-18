@@ -135,10 +135,13 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
 		vector cameraPos[4];
-		playerCharacter.GetWorldTransform(cameraPos);
+		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
+		//If Respawns are enabled, everybody goes to the fixed spectator position
+		if (CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled)
+			cameraPos[3] = Vector(0, 500, 0);
 		// Use provided death position if available
-		if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+		else if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
 			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
 		}
 		// Use stored camera position if available
@@ -304,9 +307,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		// Set frequency based on group
 		if (pc && group)
 		{
-			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
-			if (rhc)
-				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
+			grpTsv.SetFrequency(group.GetRadioFrequency());
 		}
 
 		// Set up Voice over Network component
@@ -399,17 +400,19 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 */
 	void OpenCurrentStateMenu()
 	{	
+		// Initialize references first
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		
+		// Check if we should skip AAR
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && !m_Gamemode.m_bUseAAR)
+			return;
 		
 		// Close any existing menus
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
-		
-		if(!SCR_PlayerController.GetLocalMainEntity())
-			m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 		
 		// Open appropriate menu based on gamemode state
 		switch (m_Gamemode.m_GamemodeState)
@@ -431,7 +434,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 			}
 			case CRF_EGamemodeState.AAR: 
 			{
-				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
+				if (CRF_Gamemode.GetInstance().m_bUseAAR)
+					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
 				break;
 			}
 		}
@@ -485,6 +489,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("aar");
 		invoker5.Insert(Advance_Callback);
+		
+		ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("save");
+		invoker6.Insert(SaveMission_Callback);
 	}
 	
 	/**
@@ -753,6 +760,45 @@ class CRF_PlayerControllerManager : ScriptComponent
 		}
 	}
 	
+	/**
+	 * Callback for triggering a manual mission save
+	 * Usage: /save [save name]
+	 * Examples: /save, /save After Attack, /save Checkpoint 1
+	 */
+	void SaveMission_Callback(SCR_ChatPanel panel, string data)
+	{
+		// Check if admin privileges are required
+		if (!SCR_Global.IsAdmin())
+		{
+			if (panel)
+			{
+				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+				if (chatComponent)
+					chatComponent.ShowMessage("You need admin privileges to use the /save command.");
+			}
+			return;
+		}
+		
+		// Use provided name or default
+		string saveName = "Manual Save";
+		if (data && data.Length() > 0)
+		{
+			data.Trim();
+			saveName = data;
+		}
+		
+		// Show confirmation to admin
+		if (panel)
+		{
+			SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+			if (chatComponent)
+				chatComponent.ShowMessage(string.Format("Requesting mission save: %1...", saveName));
+		}
+		
+		// Request save from server via RPC
+		m_RplToAuthorityManager.RequestMissionSave(saveName);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// MAP MARKER SYSTEM
 	//------------------------------------------------------------------------------------------------
@@ -860,5 +906,44 @@ class CRF_PlayerControllerManager : ScriptComponent
 			// Add zone marker
 			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
 		}
+	}
+	
+	string SanitizeMissionName(string fullName)
+	{
+	    array<string> parts = {};
+		
+	    fullName.Split(" ", parts, true);
+	
+	    // Remove the first two tokens like "CRF" and "CO50"/"COTVT55"
+	    if (parts.Count() > 2)
+	    {
+	        string cleanName;
+	        for (int i = 2; i < parts.Count(); i++)
+	        {
+	            if (i > 2)
+	                cleanName += " ";
+	            cleanName += parts[i];
+	        }
+			cleanName.ToUpper();
+	        return cleanName;
+	    }
+	
+		fullName.ToUpper();
+	    return fullName; // fallback if unexpected format
+	}
+	
+	void DisplayTitleCard()
+	{
+		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
+		TextWidget.Cast(titleCard.FindAnyWidget("TitleText")).SetText(SanitizeMissionName(GetGame().GetMissionName()));
+		AudioSystem.PlaySound("{932C08A5A988F96A}Sounds/Intro/cinematicBoom.wav");
+		GetGame().GetCallqueue().CallLater(RemoveWidget, 4000, false, titleCard);
+	}
+	
+		
+	static void RemoveWidget(Widget widget)
+	{
+		if (widget)
+			widget.RemoveFromHierarchy();
 	}
 }

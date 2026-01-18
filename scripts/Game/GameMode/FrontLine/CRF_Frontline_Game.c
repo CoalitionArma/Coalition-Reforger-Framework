@@ -402,6 +402,11 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
 		
+		// Respawn all players when zone is captured
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+			respawnManager.RespawnAllSides();
+		
 		if((zoneIndex == (m_aZoneObjectNames.Count() - 1) && side == m_BluforSide) || (zoneIndex == 0 && side == m_OpforSide))
 			m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", side, "Unlocked", side));
 		else
@@ -608,7 +613,14 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateClients()
 	{
-		CRF_PlayerControllerManager.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
+		CRF_PlayerControllerManager instance = CRF_PlayerControllerManager.GetInstance();
+		if (!instance)
+		{
+			Print("[CRF_Frontline] WARNING: CRF_PlayerControllerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
+			return;
+		}
+		
+		instance.UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------

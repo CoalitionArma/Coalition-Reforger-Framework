@@ -1,0 +1,9 @@
+MatPBRBasic {
+ Color 0.515 0.489 0.46 1
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ BCRMap "{8653B00609EB12E7}Prefabs/Assets/Props/Fabric/Data/cloths/NEWCDFcamopart1.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NormalPower 1.5
+ NMOMap "{309D6FC26DCC18E1}Assets/_SharedData/Fabric/ST_Velvet_N.edds"
+}

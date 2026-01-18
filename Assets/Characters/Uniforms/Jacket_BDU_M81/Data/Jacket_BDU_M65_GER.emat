@@ -1,0 +1,13 @@
+MatPBRMulti {
+ SurfaceProperties "{DA94EA1EF2914EB7}Common/Materials/Game/flesh.gamemat"
+ CavityFromAO 1
+ VFXMap "{CF2CEFED70C22C4B}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_VFX.edds"
+ MudColor 0.392 0.002 0.002 1
+ DirtUserOpacity 1
+ DirtOpacity 3
+ DirtColor 1 1 1 1
+ DirtRoughness 1.2
+ DirtBCRMap "{6B0C79F785EA2254}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_02_wound_BCR.edds"
+ BCR_1 "{2DED30813FDF67F2}UI/jacket_BDU_ger.edds" "{33E930585C58F2A4}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_BCR.edds" anim( 0 )
+ NMO_1 "{933B944D8FADF4E4}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_02_NMO.edds" "{0B318BCA852FA03A}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_NMO.edds" anim( 0 )
+}

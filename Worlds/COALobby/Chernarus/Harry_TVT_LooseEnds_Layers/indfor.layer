@@ -1,7 +1,0 @@
-SCR_AIGroup hvt_player : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
- coords 5025.069 183.378 13264.342
- m_faction "INDFOR"
- m_aUnitPrefabSlots {
-  "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et"
- }
-}

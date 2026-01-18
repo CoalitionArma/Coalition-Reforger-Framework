@@ -1,0 +1,92 @@
+GenericEntity : "{599A1E833BEF3A43}Prefabs/Weapons/MachineGuns/M249/MG_M249_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  RHS_WeaponRplComponent "{6694BD90BD89C864}" {
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07E1D123E9}" {
+     Name "#WCS-Weapon_M249_Paratrooper_Name"
+     Description "#WCS-Weapon_M249_Paratrooper_Description"
+     m_aItemHints {
+      SCR_InventoryItemHintUIInfo "{64F1648A29D686BA}" {
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6694BD90BD89C830}" {
+     AttachmentSlot InventoryStorageSlot left_rail {
+      Offset -0.0327 0.0963 0.2159
+      Angles 0 0 -90
+      Prefab "{0BF789ABC933E013}Prefabs/Weapons/Attachments/Rails/Rail_Picatinny.et"
+     }
+    }
+    AttachmentSlotComponent "{6694BD90BD89C832}" {
+     AttachmentSlot InventoryStorageSlot right_rail {
+      Offset 0.0333 0.0963 0.2159
+      Angles 0 0 90
+      Prefab "{0BF789ABC933E013}Prefabs/Weapons/Attachments/Rails/Rail_Picatinny.et"
+     }
+    }
+    AttachmentSlotComponent "{6694BD90BD89C836}" {
+     AttachmentSlot InventoryStorageSlot Top_Rail {
+      Offset 0 0.1411 0.0175
+      Prefab "{0BF789ABC933E013}Prefabs/Weapons/Attachments/Rails/Rail_Picatinny.et"
+     }
+    }
+    AttachmentSlotComponent "{6694BD90BD89C83C}" {
+     AttachmentSlot InventoryStorageSlot Rail_Right {
+      PivotID "barrel_muzzle"
+      Offset 0.0368 -0.004 -0.4176
+      Angles 0 0 90
+      InspectionWidgetOffset 0.0536 0.0969 0.2152
+     }
+     AttachmentType AttachmentRIS1913Short "{6694BD90BD89C837}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{6694BD90BD89C841}" {
+     AttachmentSlot InventoryStorageSlot Rail_Left {
+      PivotID "barrel_muzzle"
+      Offset -0.0368 -0.004 -0.4176
+      Angles 0 0 -90
+      InspectionWidgetOffset -0.0536 0.0969 0.2152
+     }
+     AttachmentType AttachmentRIS1913Short "{6694BD90BD89C83D}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{6694BD90BD89C849}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Offset 0 0.1453 -0.0212
+      InspectionWidgetOffset 0 0.1553 0.0118
+      m_fMaximumPositiveSlideOffset 0.06
+      m_fMaximumNegativeSlideOffset -0.05
+     }
+     AttachmentType AttachmentOpticsRIS1913Medium "{6694BD90BD89C842}" {
+     }
+     ShowInInspection 1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsSwitchSkip 1
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{6694BD90BD89C829}" {
+     ContextName "optic"
+     Position PointInfo "{6694BD90BD89C826}" {
+      PivotID "barrel_chamber"
+      Offset 0 0.0475 -0.1631
+     }
+     Radius 0.08
+     Height 0
+    }
+   }
+  }
+ }
+}

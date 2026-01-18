@@ -1,0 +1,77 @@
+GameEntity : "{BCCB7D5AB38BB3A7}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{552CCA09F70E8E9A}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{56F4753ADA911363}" {
+      FOV 60
+      PreviewModel "{49B326457951B0F6}Assets/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01.xob"
+     }
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{49B326457951B0F6}Assets/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01.xob"
+  }
+  RHS_HelmetNodeStorageComponent "{66423D085FEDF8DE}" {
+   Attributes SCR_ItemAttributeCollection "{66423D08614C6620}" {
+    ItemDisplayName UIInfo "{66423D0864FB2193}" {
+     Name "its a fuckin beanie yo"
+     Description "fluff is the best ;)"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66423D0873CFE560}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{66423D087BA626E2}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{66423D0881F0CD05}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+      AspectRatio 1
+     }
+     RHS_CustomAttributes "{66423D0885514BBC}" {
+      m_sShortName "#RHS-Headgear_OPSCORE_MT_Name"
+     }
+    }
+   }
+   Priority 150
+   StoragePurpose 64
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100.2
+   MaxItemSize 1 1 1
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     PivotID "Head"
+     Offset 0 0.1526 -0.1078
+     Angles -1.8476 -180 0
+     InspectionWidgetOffset 0 1.7698 0.129
+     m_sInspectIconTexture "{2099559B5965F0C7}UI/Textures/InventoryIcons/Inspection-gizmo-nvg-slot-UI.edds"
+    }
+    RHS_LoadoutSlotInfo BackVelcro {
+     PivotID "Head"
+     Offset -0.0094 0.0459 0.0862
+     Angles -22.008 -2.5157 0.9433
+     ChildPivotID "AttachmentPoint"
+     Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
+     InspectionWidgetOffset 0 1.72 -0.1675
+     m_bShouldUseCMorphedMesh 1
+     m_fMorphValue 0.6
+     m_sInspectIconTexture "{73E124B6750302C1}UI/Textures/InventoryIcons/Inspection-gizmo-backVelcro-slot-UI.edds"
+    }
+   }
+  }
+ }
+ coords 0.286 -0.506 -0.667
+}

@@ -1,6 +1,0 @@
-MatPBRBasic {
- Color 0.302 0.057 0.057 1
- RoughnessScale 0.793
- MetalnessScale 0.529
- BCRMap "{4E74A01D6DD5AC36}Assets/Data/t_bionic_arm_BCR.edds"
-}

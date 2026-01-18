@@ -1,0 +1,92 @@
+GameEntity : "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_01.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{55468BEE3B337324}" {
+    ItemDisplayName UIInfo "{55468BEE3B337321}" {
+     Name "Cap, Combat, DPM"
+     Description "Crap Hat/DILAC Cap"
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{AE3329894AB9AB15}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_01.xob"
+  }
+  RHS_HelmetNodeStorageComponent "{66423D015B5226F0}" {
+   Attributes SCR_ItemAttributeCollection "{66423D0184B9D2E8}" {
+    ItemDisplayName UIInfo "{66423D018B4FBBF7}" {
+     Name "sure hope this cloth cap stops shrapnel"
+     Description "fluff is the best ;)"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66423D01880B0168}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{66423D0189A985AE}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{66423D01CA8D7262}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+      AspectRatio 1
+     }
+     RHS_CustomAttributes "{66423D01C8BA20E7}" {
+      m_sShortName "#RHS-Headgear_OPSCORE_MT_Name"
+     }
+    }
+   }
+   Priority 150
+   StoragePurpose 64
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100
+   MaxItemSize 1 1 1
+  }
+  SCR_ItemOutfitFactionComponent "{6196E25106CE0FF9}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{61A8D966F25983BD}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{61A8D966F17017A5}" {
+      m_AffiliatedFactionKey "UK"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     PivotID "Head"
+     Offset 0 0.1526 -0.1078
+     Angles -1.8476 -180 0
+     InspectionWidgetOffset 0 1.7698 0.129
+     m_sInspectIconTexture "{2099559B5965F0C7}UI/Textures/InventoryIcons/Inspection-gizmo-nvg-slot-UI.edds"
+    }
+    RHS_LoadoutSlotInfo BackVelcro {
+     PivotID "Head"
+     Offset -0.0032 0.0715 0.0834
+     Angles -22.0151 -1.9946 0.748
+     ChildPivotID "AttachmentPoint"
+     Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
+     InspectionWidgetOffset 0 1.72 -0.1675
+     m_bShouldUseCMorphedMesh 1
+     m_fMorphValue 0.6
+     m_sInspectIconTexture "{73E124B6750302C1}UI/Textures/InventoryIcons/Inspection-gizmo-backVelcro-slot-UI.edds"
+    }
+   }
+   WornModel "{AE3329894AB9AB15}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_01.xob"
+   WornMaterialsOverride {
+    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
+   }
+   ItemModel "{400CB696AE97DFC9}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_Ground_01.xob"
+   ItemMaterialsOverride {
+    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
+   }
+  }
+ }
+}

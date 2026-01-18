@@ -1,0 +1,413 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  RHS_AdditionalGameModeSettingsComponent "{61AE627E9607513B}" {
+   m_CallInSupportsConfig SCR_CallInSupportContainerConfig "{621B2B44550E77F5}" {
+    m_aCallIns {
+     SCR_CallInSupportContainer "{613B10C78ECB03E7}" {
+      m_iRequestUsageLimit 4
+      m_iRequestCooldown 300
+      m_iRequestCost 0
+      m_eRequiredRank RENEGADE
+      m_iMarkerTimeToLive 1
+      m_bMustBeSquadLeader 0
+      m_iMinNumberOfSquadMembers 0
+      m_aRequiredGadgets {
+       SCR_CallInRequiredRadioContainer "{624EB6B34E1269D8}" {
+        m_bRequireRadioFromCorrectFaction 0
+       }
+      }
+     }
+     SCR_CallInSupportContainer "{625128CEE70F67FD}" {
+      m_sCallInPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+      m_eSupportType FIRE_BOMBARDMENT
+      m_iRequestUsageLimit 4
+      m_iRequestCooldown 300
+      m_iRequestCost 0
+      m_eRequiredRank RENEGADE
+      m_aAvialableForFactions {
+       "RHS_USAF"
+       "BLUFOR"
+      }
+      m_iMinCallInDistance 1
+      m_fDispersion 1.5
+      m_eMapMarkerColor BLUE
+      m_iMarkerTimeToLive 1
+      m_bMustBeSquadLeader 0
+      m_iMinNumberOfSquadMembers 0
+      m_aRequiredGadgets {
+       SCR_CallInRequiredGadgetContainer "{624EB6B351DB734E}" {
+       }
+       SCR_CallInRequiredGadgetContainer "{624EB6B34E1269D8}" {
+        m_sGadgetType "GPS"
+        m_sGadgetName "#RHS-CISS_Gadget_GPS_Name"
+       }
+      }
+     }
+     SCR_CallInSupportContainer "{66EA696FAB6970F0}" {
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EA4D94D297F8E9}" {
+     m_sWeatherPresetName "Snowstorm"
+     m_iStartingHour 1
+     m_iStartingMinutes 15
+    }
+   }
+  }
+ }
+ coords 1195.252 4.463 1434.015
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "During a NATO winter-training exercise in northern Norway, a forward element of 1PLT, B TRP, 3-71CAV were garrisoning a small harbor used as a refuel and logistics point. In the days prior, reports indicated that pro-Russian militia elements were amassing in the north, abandoning their usual ammo caches and technical positions, suggesting they were preparing for movement rather than defense. Taking advantage of a heavy snowstorm sweeping across the region, the militia hoped to use the reduced visibility and muffled terrain to infiltrate south undetected"\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   "Drone Operator"\
+   "JTAC"\
+   ""\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   "The men, if you will"\
+   ""\
+   "Time: 60 Minutes"\
+   ""\
+   "Weather: Snowstorm"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Defend both antennas, if they both get captured it is a loss."\
+   ""\
+   "- Find and destroy the ammo caches and vehicles depots"\
+   ""\
+   "RHS CISS Call-Ins allowed: 4"\
+   ""\
+   "RHS CISS Instructions: "\
+   "Anyone who has a DAGR in their inventory may pull out their vector 21 binos, look through it and open up the RHS radial menu. You will then see the option of vector 21. Select it and there you will see the option to call in CAS. The CAS will be called in at where ever you are looking with the vector-21. It will take around 50-70 seconds before the plane actual flies in to drop the GBU."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Capture both NATO antennas to cut off CAS in the region."\
+   ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Try and spawn some F18 flyovers throughout the mission, make it seem like the air power of BLUFOR is a threat."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{276F4614046C4175}Configs/Gearscripts/Custom/Salami/CRF_GS_Modern_RadioScrambleBLUFOR.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A1490B6D459B20D7}Configs/Gearscripts/Custom/Salami/CRF_GS_ModernRUSMiltia.conf"
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "66EA696093F946EF" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "RECON"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{66EA4D9394465336}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66EA4D93902F0D5D}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66EA6966CF9801F5}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66EA6966CE541B33}" {
+        m_sCallsign "SNIPER"
+       }
+      }
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{66EA696796381331}" {
+        m_aGroupNames {
+         "RECON"
+        }
+        m_aSRFrequencies {
+         "RECON SR"
+        }
+        m_aLRFrequencies {
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{66EA696780CCC0BF}" {
+        m_aGroupNames {
+         "SNIPER"
+        }
+        m_aSRFrequencies {
+         "SNIPER SR"
+        }
+        m_aLRFrequencies {
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{66EA69670D9BC5C0}" {
+        m_aGroupNames {
+         "MED"
+        }
+        m_aSRFrequencies {
+         "MEDIC SR"
+        }
+        m_aLRFrequencies {
+         "MEDIC NET"
+         "1PLT"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66EA6966389A6821}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66EA69663BDCF896}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66EA69663B91484A}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66EA69663A47E661}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66EA69663A013E64}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_VehicleSpawner {
+ {
+  coords 801.296 4.463 1313.861
+  m_rVehicle "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66EA696B1CFFF16C}" {
+    m_Prefab "{FDA92D590B9C633B}Prefabs/Drones/DJIBase/DJIBase.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 3
+   }
+   CRF_VehicleGearScriptAdditionalItem "{66EA696B01D7BDA4}" {
+    m_Prefab "{F09518802063A355}Prefabs/Items/Equipment/DroneAntenna/DroneAntenna.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{66EA696B78E19E18}" {
+    m_Prefab "{6356BFD802DEB290}Prefabs/Characters/Items/DroneCommandStation.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+  }
+ }
+ {
+  coords 829.784 4.462 1318.574
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66EA4D9BC702C15C}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemRegularVehicle 200
+   }
+  }
+ }
+ {
+  coords 824.561 4.463 1317.732
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66EA4D9BC702C15C}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemRegularVehicle 200
+   }
+  }
+ }
+ {
+  coords 820 4.463 1316.843
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66EA4D9BC702C15C}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemRegularVehicle 200
+   }
+  }
+ }
+ {
+  coords 814.762 4.463 1316.466
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66EA4D9BC702C15C}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+    m_iAmountOfItemRegularVehicle 200
+   }
+  }
+ }
+ {
+  coords 2049.459 133.031 1947.563
+  angles 0 30 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2047.308 133.031 1948.715
+  angles 0 30 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+}
+$grp GenericEntity : "{5069A070F3DA111B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V4_dst_01_USSR.et" {
+ {
+  coords 1509.578 63.131 1158.828
+  angles 0 -9 0
+ }
+ {
+  coords 1510.944 63.131 1153.608
+  angles 0 -9 0
+ }
+ {
+  coords 1510.274 63.131 1156.605
+  angles 0 -9 0
+ }
+ {
+  coords 2065.351 225.452 2392.685
+  angles 0 -82 0
+ }
+ {
+  coords 2064.37 225.452 2394.194
+  angles 0 -9 0
+ }
+ {
+  coords 2064.909 225.452 2395.634
+  angles 0 -82 0
+ }
+}
+$grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
+ {
+  coords 660.752 39.967 1601.125
+ }
+ {
+  coords 786.023 30.988 1488.47
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ {
+  coords 1496.793 73.298 1158.285
+  m_sDescription "Potential Ammo Cache"
+  m_sMissionMarkerDescription "Drone ops from brigade report a ton of local militia movement out of the southern most building here. It's the tan one with the beige roof at the southern edge. Investigate and see if there's an ammo cache inside."
+  m_aMissionMarkerImages {
+   "{FE386CAA816071F8}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ1.edds"
+   "{6F389B1286E03E03}CRF Images/BriefingImages/Salami/RadioScramble/ammoObjective.edds"
+  }
+ }
+ {
+  coords 2478.319 90.028 1666.552
+  m_sDescription "Potential Ammo Cache"
+  m_sMissionMarkerDescription "A local firefighter sent in a tip that the red roofed building in town, right next to the building he was attempting to put out, had militia men inside gearing up for something big. Try and see if they left any ammo behind."
+  m_aMissionMarkerImages {
+   "{A0D045E93EEDFFF7}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ2.edds"
+   "{6F389B1286E03E03}CRF Images/BriefingImages/Salami/RadioScramble/ammoObjective.edds"
+  }
+ }
+ {
+  coords 2047.367 133.031 1948.555
+  m_sDescription "Potential Vehicle Depot"
+  m_sMissionMarkerDescription "Brigade is also reporting some technicals stored here, check and see if they are still there."
+  m_aMissionMarkerImages {
+   "{54D8027133309783}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ3.edds"
+   "{F9E7A4A8904B40B9}CRF Images/BriefingImages/Salami/RadioScramble/uazObjective.edds"
+  }
+ }
+ {
+  coords 2072.181 228.912 2398.235
+  m_sDescription "Potential Ammo Cache"
+  m_sMissionMarkerDescription "Tons of reports right before this snow storm kicked up of local militamen meeting in the tall building in Vipar on the south eastern side of town. Investigate for any ammo they may have stashed there."
+  m_aMissionMarkerImages {
+   "{1D00176E41F6E3E9}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ4.edds"
+   "{6F389B1286E03E03}CRF Images/BriefingImages/Salami/RadioScramble/ammoObjective.edds"
+  }
+ }
+ {
+  coords 661.402 43.292 1603.432
+  m_sDescription "Antenna"
+  m_aMissionMarkerImages {
+   "{D6BB96BD1DBB33FD}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ5.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
+  }
+ }
+ {
+  coords 785.486 31.26 1490.115
+  m_sDescription "Antenna"
+  m_aMissionMarkerImages {
+   "{8853BFFEA236BDF2}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableBLUFOROBJ6.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
+  }
+ }
+}
+$grp CRF_MissionMarker : "{C44FD776546321F2}PrefabsEditable/Markers/ObjectiveMarkers/OPFORObjectiveMarker.et" {
+ {
+  coords 786.413 31.325 1490.436
+  m_sDescription "Antenna"
+  m_sMissionMarkerDescription "Local operatives within the harbor managed to snag these intel pics before running away, take a look, we've got images of their antenna as well as it's relative location. It's relatively exposed but surrounded by dense trees."
+  m_aMissionMarkerImages {
+   "{861282A53D2C0609}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableOPFOROBJ2.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
+  }
+ }
+ {
+  coords 660.294 40.162 1606.49
+  m_sDescription "Antenna"
+  m_sMissionMarkerDescription "The priest used the local church to get photos of the NATO antenna set up outside of it, it's exposed but the church makes taking it a little harder."
+  m_aMissionMarkerImages {
+   "{D8FAABE682A18806}CRF Images/BriefingImages/Salami/RadioScramble/RadioScrableOPFOROBJ1.edds"
+   "{20DEE045181D4020}CRF Images/BriefingImages/Salami/RadioScramble/radioObjective.edds"
+  }
+ }
+}

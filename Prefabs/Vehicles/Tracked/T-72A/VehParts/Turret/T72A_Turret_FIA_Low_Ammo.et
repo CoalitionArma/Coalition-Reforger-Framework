@@ -1,0 +1,54 @@
+Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret/T72_turret_base.et" {
+ ID "51ACD0965653D003"
+ components {
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Materials {
+    MaterialAssignClass "{66FC2C21148FA5E5}" {
+     SourceMaterial "t72a_turret"
+     AssignedMaterial "{05B8AA18C0B961B8}Assets/Vehicles/Tracked/T-72A/Data/FIA/t72a_turret_FIA.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{648607B0513712C5}" {
+      m_sDefaultOccupantPrefab "{641AD7731E23454B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Crew.et"
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{64863497471CD184}" {
+   Slots {
+    RegisteringComponentSlotInfo CommanderTurrets {
+     Prefab "{CA2A12F3A0D47EB7}Prefabs/Vehicles/Tracked/T-72A/VehParts/CommanderTurret/T72A_Commander_Turret_FIA.et"
+    }
+    WCS_Armament_DispenserSlotInfo Smoke {
+     Prefab "{14B063896AFF01CE}Prefabs/Weapons/Countermeasures/Dispenser_Smoke_T72A_FIA.et"
+    }
+    EntitySlotInfo AmmoBox_01 {
+     Prefab "{96AB0C4B6CCEFDB7}Prefabs/Vehicles/Tracked/T-72A/VehParts/Magazines/T72_Turret_Magazine_Exterior.et"
+    }
+    EntitySlotInfo AmmoBox_02 {
+     Prefab "{2A34F1AA91FA0F60}Prefabs/Vehicles/Tracked/T-72A/VehParts/Magazines/T72_Turret_Magazine_Exterior_FIA.et"
+    }
+    EntitySlotInfo Toolbox_01 {
+     Prefab "{770AED1A1890FCD7}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret_Toolboxes/T72_Turret_Toolbox_01_FIA.et"
+    }
+    EntitySlotInfo ToolBox_02 {
+     Prefab "{C5DDAFF14732CF4F}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret_Toolboxes/T72_Turret_Toolbox_02_FIA.et"
+    }
+    EntitySlotInfo ToolBox_03 {
+     Prefab "{AE7903385DC92E73}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret_Tube/T72_Turret_Tube_FIA.et"
+    }
+    EntitySlotInfo Tube {
+     Prefab "{AE7903385DC92E73}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret_Tube/T72_Turret_Tube_FIA.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate "{405C1F1AD79E9F77}Prefabs/Weapons/HeavyWeapons/2A46/Cannon_2A466_T72A_FIA.et"
+  }
+ }
+ coords 72.351 1 1226.241
+}

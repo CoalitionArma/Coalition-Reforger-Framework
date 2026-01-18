@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8550175E5377DF0E}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSMSV_MMGoptic_Sandbags.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

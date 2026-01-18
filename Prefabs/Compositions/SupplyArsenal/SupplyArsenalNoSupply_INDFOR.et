@@ -1,0 +1,77 @@
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ ID "52D6D6DB69F982D9"
+ components {
+  CRF_SupplyArsenalComponent "{66C37680F537E585}" {
+   m_bSupplyEnabled 0
+  }
+  FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+   "faction affiliation" "INDFOR"
+  }
+  SCR_EditableEntityComponent "{66C37680F537E5BF}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C37680F537E5BB}" {
+    Name "Supply Arsenal (Disabled SUpply)"
+    Icon "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+    m_Image "{DB9BCA1FFFB590DA}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_US_01.edds"
+    m_sFaction "INDFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_INDFOR
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{66C37680F537E5B5}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bStatic 1
+   m_Flags 5
+  }
+ }
+ coords 845.952 7.862 1472.917
+ angles 0 37 0
+ {
+  GenericEntity {
+   ID "568ED76844F05A2F"
+   components {
+    ActionsManagerComponent "{66C37680F537E5A6}" {
+     ActionContexts {
+      UserActionContext "{66C37680F537E5A0}" {
+       ContextName "default"
+       Position PointInfo "{66C37680F537E5A2}" {
+        Offset 0 1.2463 0.1023
+       }
+      }
+     }
+     additionalActions {
+      CRF_VehicleArsenalAction "{66C37680F537E65F}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{66C37680F537E658}" {
+        Name "Open Supply Arsenal"
+       }
+      }
+      CRF_VehicleRearmAction "{66C6552D5E048FD7}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{66C6552D5FEB00A2}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "58C28EA16E7B7C58"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}

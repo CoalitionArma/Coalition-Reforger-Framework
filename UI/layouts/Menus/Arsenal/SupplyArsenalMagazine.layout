@@ -1,0 +1,98 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{66872908CE8F0651}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 300
+  OffsetRight -300
+  OffsetBottom -30
+ }
+ {
+  ButtonWidgetClass "{6698DAF35B273022}" {
+   Name "ArsenalItemButton"
+   Slot FrameWidgetSlot "{668729143FFC10C1}" {
+    Anchor 0 0 1 1
+    PositionX 33.71
+    OffsetLeft 33.71
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight -33.71
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.1559 0.1559 0.1559 0.5187
+   components {
+    CRF_MiniArsenalItemButton "{6687292A15C7C119}" {
+    }
+   }
+  }
+  ItemPreviewWidgetClass "{6698DAF35B273027}" {
+   Name "ArsenalItemPreview"
+   Slot FrameWidgetSlot "{668729040F4E6BF6}" {
+    PositionX 33.71
+    OffsetLeft 33.71
+    PositionY 0
+    OffsetTop 0
+    SizeX 30
+    OffsetRight -63.71
+    SizeY 30
+    OffsetBottom -30
+   }
+  }
+  TextWidgetClass "{6698DAF35B273026}" {
+   Name "ArsenalItemText"
+   Slot FrameWidgetSlot "{668729082A629B89}" {
+    PositionX 67.845
+    OffsetLeft 67.845
+    PositionY 0.082
+    OffsetTop 0.082
+    SizeX 196.593
+    OffsetRight -264.438
+    SizeY 30
+    OffsetBottom -30.082
+   }
+   Text "Alice Vest"
+   "Min Font Size" 10
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FAE6E2D5E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{66BD38428F88672C}" {
+   Name "Supply"
+   Slot FrameWidgetSlot "{668729082A629B89}" {
+    PositionX 299.589
+    OffsetLeft 299.589
+    PositionY 0.082
+    OffsetTop 0.082
+    SizeX 34.011
+    OffsetRight -333.6
+    SizeY 30
+    OffsetBottom -30.082
+   }
+   Text "0"
+   "Min Font Size" 10
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FB2B1C37C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ImageWidgetClass "{66BD38428F886481}" {
+   Name "SupplyImage"
+   Slot FrameWidgetSlot "{66BD384339CBF3D1}" {
+    Anchor 0 0 0 0
+    PositionX 267
+    OffsetLeft 267
+    PositionY 0
+    OffsetTop 0
+    SizeX 30
+    OffsetRight -297
+    SizeY 30
+    OffsetBottom -30
+   }
+   Texture "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+   Size 64 64
+  }
+ }
+}

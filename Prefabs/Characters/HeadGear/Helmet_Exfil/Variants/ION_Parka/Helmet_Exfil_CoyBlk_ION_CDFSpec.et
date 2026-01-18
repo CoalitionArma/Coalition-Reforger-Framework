@@ -1,0 +1,30 @@
+GameEntity : "{A4D777EE8F5BE6D3}Prefabs/Characters/HeadGear/Helmet_Exfil/Helmet_Exfil_CoyBlk.et" {
+ ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Goggles {
+    }
+    RHS_LoadoutSlotInfo Masks {
+     Prefab "{CB379AD8EC48690C}Prefabs/Characters/HeadGear/Balaclavas/Balaclava_v1/Balaclava_v1_BLK.et"
+    }
+    RHS_LoadoutSlotInfo BackVelcro {
+     Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
+    }
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
+    }
+    RHS_LoadoutSlotInfo Headset {
+     Prefab "{6D6ADA201AD4E09B}Prefabs/Characters/HeadGear/Headphones_Peltor/Headphones_Peltor_olive.et"
+    }
+    RHS_LoadoutSlotInfo TopVelcro {
+    }
+    RHS_LoadoutSlotInfo RightVelcro {
+    }
+    RHS_LoadoutSlotInfo ExfilVelcro {
+     Prefab "{8F54EE49D3317266}Prefabs/Items/Equipment/Nightvision/VipLight/VipLight.et"
+    }
+   }
+  }
+ }
+}

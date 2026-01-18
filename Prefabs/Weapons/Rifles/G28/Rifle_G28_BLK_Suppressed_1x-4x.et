@@ -1,0 +1,33 @@
+GenericEntity : "{11625C065C1F1116}Prefabs/Weapons/Rifles/G28/Rifle_G28_BLK.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{625A4CA2E2C50139}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Handguard {
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+     }
+    }
+    AttachmentSlotComponent "{625A4CA2E2C50140}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot optics {
+      Prefab "{BEDA88B88A067248}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_SpecterDR_1-4x/Optic_ElcanSpecterDR_MRDS_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{6293600DF3C6CE9C}" {
+     AttachmentSlot InventoryStorageSlot "{6293600DFB45DD2F}" {
+      Enabled 0
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{625A4CA2E2C50104}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{B26165A1B7F96CAF}Prefabs/Weapons/Attachments/Muzzle/762x51/Suppressor_G28.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

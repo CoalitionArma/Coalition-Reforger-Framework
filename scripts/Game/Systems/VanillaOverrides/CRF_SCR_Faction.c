@@ -3,6 +3,11 @@ modded class SCR_Faction
 	ref array<string> m_aActiveSRChannels = {};
 	ref array<string> m_aActiveLRChannels = {};
 	
+	array<ref SCR_EntityCatalog> GetEntityCatalogs()
+	{
+		return m_aEntityCatalogs;
+	}
+	
 	static string NormalizeCallsign(string callsign)
 	{
 		ref array<string> callsignSplit = {};
@@ -43,7 +48,10 @@ modded class SCR_Faction
 		if (GetFactionKey() == "CIV")
 			return;
 		ref array<ref SCR_CallsignInfo> squadCallsigns = {};
-		GetCallsignInfo().GetSquadArray(squadCallsigns);
+		SCR_FactionCallsignInfo callsignInfo = GetCallsignInfo();
+		if (!callsignInfo)
+			return;
+		callsignInfo.GetSquadArray(squadCallsigns);
 		CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
 		if (!gamemodeComp.m_FreqConfig)
 			return;
@@ -87,7 +95,7 @@ modded class SCR_Faction
 			
 			if (!foundContainer)
 			{
-				Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!");
+				Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!", LogLevel.WARNING);
 				m_aActiveSRChannels.Insert(groupName);
 			}
 		}

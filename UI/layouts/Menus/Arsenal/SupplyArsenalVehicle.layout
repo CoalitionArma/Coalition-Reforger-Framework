@@ -1,0 +1,163 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{66C377BB122D9C18}" {
+   Name "ItemsBG1"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -374.304
+    OffsetLeft -374.304
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 420.497
+    OffsetRight -46.193
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   Color 0.006 0.006 0.006 0.2188
+  }
+  ImageWidgetClass "{66C377BB122D9C1A}" {
+   Name "ItemsBG"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -374.15
+    OffsetLeft -374.15
+    PositionY -250
+    OffsetTop -250
+    SizeX 635.371
+    OffsetRight -261.221
+    SizeY 500
+    OffsetBottom -250
+   }
+   Color 0.006 0.006 0.006 0.425
+  }
+  ScrollLayoutWidgetClass "{66C377BB122DD8D9}" {
+   Name "ScrollLayout1"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -374.573
+    OffsetLeft -374.573
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 420.766
+    OffsetRight -46.193
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   {
+    VerticalLayoutWidgetClass "{66C377BB122DD8DA}" {
+     Name "ItemButtons"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{66C377BB122DD8DB}" {
+   Name "AddSupplyButton"
+   Slot FrameWidgetSlot "{6698D2C2B0D27120}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 104.828
+    OffsetLeft 104.828
+    PositionY -15
+    OffsetTop -15
+    SizeX 100
+    OffsetRight -204.828
+    SizeY 30
+    OffsetBottom -15
+   }
+   Color 0.2629 0.2629 0.2629 1
+   components {
+    SCR_ButtonComponent "{6698DAFA087C4DAC}" {
+    }
+   }
+   {
+    TextWidgetClass "{66C377BB122DD8A4}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{6698D2C29E07A33C}" {
+     }
+     Text "Ressuply Vehicle"
+     "Min Font Size" 10
+     FontProperties FontProperties "{66BD386F9E68B2B7}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+  ScrollLayoutWidgetClass "{66C377BB122DE164}" {
+   Name "ScrollLayout2"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 281.474
+    OffsetLeft 281.474
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 327.892
+    OffsetRight -609.366
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   {
+    VerticalLayoutWidgetClass "{66C377BB122DE165}" {
+     Name "Notifications"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  TextWidgetClass "{66C377BB122DE162}" {
+   Name "CurrentSupplies"
+   Slot FrameWidgetSlot "{66BD386872EE7A4E}" {
+    PositionX 1020.66
+    OffsetLeft 1020.66
+    PositionY 303.903
+    OffsetTop 303.903
+    SizeX 184.96
+    OffsetRight -1205.62
+    SizeY 30
+    OffsetBottom -333.903
+   }
+   Text "Current Supplies: 0"
+   "Font Size" 33
+   "Min Font Size" 16
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FAAACD32E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ButtonWidgetClass "{66C377BD0534D086}" {
+   Name "RefreshButton"
+   Slot FrameWidgetSlot "{6698D2C2B0D27120}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 59.245
+    OffsetLeft 59.245
+    PositionY -195.13
+    OffsetTop -195.13
+    SizeX 100
+    OffsetRight -159.245
+    SizeY 30
+    OffsetBottom 165.13
+   }
+   Color 0.2629 0.2629 0.2629 1
+   components {
+    SCR_ButtonComponent "{6698DAFA087C4DAC}" {
+    }
+   }
+   {
+    TextWidgetClass "{66C377BD0534D084}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{6698D2C29E07A33C}" {
+     }
+     Text "Refresh"
+     "Min Font Size" 10
+     FontProperties FontProperties "{66BD386F9E68B2B7}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+ }
+}

@@ -15,6 +15,9 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
 	
 	protected IEntity m_eSpecEntity;
+	//So the client tracks where he needs to teleport his player
+	//Since teleporting is mostly client authorative
+	vector m_vSpreadPos;
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -46,9 +49,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!m_Gamemode)
 			return false;
 		
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && 
-			m_Gamemode.m_bCurrentEnableAIInGameState && 
-			!CRF_GamemodeManager.IsSpectator(owner))
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_GamemodeManager.IsSpectator(owner))
 			return false;
 		
 		return true;
@@ -76,13 +77,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		// Get if we are a spectator
 		bool isSpec = CRF_GamemodeManager.IsSpectator(owner);
 		
-		// Logs entity on server and disables AI if not spawned by a slot
-		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !isSpec)
-		{
-			m_SlottingManager.AddPlayableEntityToManager(owner);
-			return;
-		}
-		
 		// Configure spectator entity
 		if (isSpec)
 			ConfigureSpectatorEntity(owner);
@@ -93,25 +87,12 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		// Check if this is a CRF_InitialEntity that needs random positioning
-		string prefabName = owner.GetPrefabData().GetPrefabName();
-		bool isCRFInitialEntity = prefabName.Contains("CRF_InitialEntity.et");
-		
-		if (isCRFInitialEntity)
-		{
-			// Apply random spread positioning to CRF_InitialEntity
-			vector currentPos = owner.GetOrigin();
-			vector spreadPos = GenerateRandomSpreadPosition(currentPos, 500.0);
-			spreadPos[1] = 10000.0; // Set elevation to 10000m
-			owner.SetOrigin(spreadPos);
-		}
-		else if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
-		{
-			// Use random spread position for other spectators too, instead of hardcoded 0,10000,0
-			vector spreadPos = GenerateRandomSpreadPosition("0 10000 0", 500.0);
-			spreadPos[1] = 10000.0;
-			owner.SetOrigin(spreadPos);
-		}
+		// Set all initial entities to a fixed position at 500m elevation
+		// Add slight offset to prevent spatial clustering issues with 70+ entities
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(owner);
+		vector fixedPos = Vector(playerId * 2, 500, playerId * 2); // 2m spacing per player
+		m_vSpreadPos = fixedPos;
+		owner.SetOrigin(fixedPos);
 		
 		Physics physics = owner.GetPhysics();
 		if (!physics)
@@ -122,7 +103,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
 		
 		int numGeoms = physics.GetNumGeoms();
-		for (int i = 0; i <= numGeoms; i++)
+		for (int i = 0; i < numGeoms; i++) // Fixed: was i <= numGeoms (off-by-one error)
 		{
 			physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
 		}
@@ -136,15 +117,21 @@ class CRF_PlayableCharacter : ScriptComponent
 			return;
 		
 		AIAgent agent = aiComponent.GetAIAgent();
-		if (agent)
-			agent.DeactivateAI();
+		if (!agent)
+			return;
 		
+		agent.DeactivateAI();
+		
+		// Double-check deactivation next frame
 		GetGame().GetCallqueue().Call(DisableAIWrap, owner, aiComponent);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void DisableAIWrap(IEntity owner, AIControlComponent aiComponent)
 	{
+		if (!aiComponent)
+			return;
+		
 		AIAgent agent = aiComponent.GetAIAgent();
 		if (agent)
 			agent.DeactivateAI();
@@ -155,28 +142,27 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		super.EOnFrame(owner, timeSlice);
 		
-		// Check if entity should be deleted
-		if (ShouldDeleteEntity(owner))
-		{
-			ClearEventMask(owner, EntityEvent.FRAME);
-			SCR_EntityHelper.DeleteEntityAndChildren(owner);
-			return;
-		}
+		// Check if entity should be deleted - disabled for now
+		// if (ShouldDeleteEntity(owner))
+		// {
+		// 	ClearEventMask(owner, EntityEvent.FRAME);
+		// 	SCR_EntityHelper.DeleteEntityAndChildren(owner);
+		// 	return;
+		// }
 		
 		UpdateEntityPhysics(owner);
 		
 		if (m_bCameraUpdateEnabled)
 			OnFrameSpectatorCamera();
 		
-		// Handle position updates for local player entity
-		if (RplSession.Mode() != RplMode.Dedicated && SCR_PlayerController.GetLocalMainEntity() == owner)
-		{
+		// Handle position updates for local player entity only
+		if (RplSession.Mode() == RplMode.Dedicated)
+			return;
+		
+		if (SCR_PlayerController.GetLocalMainEntity() == owner)
 			UpdatePlayerPosition(owner);
-		} 
-		else if (RplSession.Mode() != RplMode.Dedicated)
-		{
+		else
 			ClearEventMask(owner, EntityEvent.FRAME);
-		}
 	}
 	
 	/**
@@ -191,36 +177,24 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		if (!playerControllerComp || !playerControllerComp.m_eCamera)
-		{
 			return;
-		}
 		
 		// Get the slot component for camera positioning
 		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
 		if (!slotComp)
-		{
 			return;
-		}
 		
 		// Get the first-person camera slot
 		EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
 		if (!camera)
-		{
 			return;
-		}
 		
 		// Get transform and modify it to be slightly behind and to the right of the player
 		vector transform[4];
 		camera.GetTransform(transform);
 		
-		// Calculate offset position
-		vector forward = transform[2];  // Z-axis is forward in the transform matrix
-		vector right = transform[0];    // X-axis is right in the transform matrix
-		
-		// Move camera back by 0.5 meters and right by 0.3 meters (over weapon shoulder)
-		vector offsetPosition = transform[3] - (forward * 0.5) + (right * 0.3);
-		
-		// Apply the offset to the transform
+		// Calculate offset position (0.5m back, 0.3m right for over-shoulder view)
+		vector offsetPosition = transform[3] - (transform[2] * 0.5) + (transform[0] * 0.3);
 		transform[3] = offsetPosition;
 		
 		// Apply transform to spectator camera
@@ -255,20 +229,22 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!m_PlayerControllerComponent.m_eCamera)
 			return;
 		
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			UpdateGamePlayerPosition();
-		}
-		else
+		// AAR state check
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && m_Gamemode.m_bUseAAR)
 		{
 			UpdateSpectatorPosition();
+			return;
 		}
+		
+		// Default to game player position
+		UpdateGamePlayerPosition();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateGamePlayerPosition()
 	{
 		vector mat[4];
+		
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
 			m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
@@ -288,9 +264,8 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			mat[1] = vector.Up;
 			mat[2] = vector.Forward;
-			mat[3][1] = 10000;
+			mat[3] = m_vSpreadPos;
 		}
-		
 		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
 	}
@@ -301,39 +276,9 @@ class CRF_PlayableCharacter : ScriptComponent
 		vector mat[4];
 		mat[1] = vector.Up;
 		mat[2] = vector.Forward;
-		mat[3][1] = 10000;
+		mat[3] = m_vSpreadPos;
 		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
 		m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Generate a random position within specified radius to spread out initial entity spawns
-	* This reduces replication congestion when many entities spawn in the same location
-	* @param centerPosition Original spawn position to spread from
-	* @param maxRadius Maximum radius in meters to spread entities (default 500m)
-	* @return New spawn position within the spread radius
-	*/
-	protected vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
-	{
-		// Generate random angle (0-360 degrees)
-		float randomAngle = Math.RandomFloat(0, 2 * Math.PI);
-		
-		// Generate random distance within radius (using square root for uniform distribution)
-		float randomDistance = Math.Sqrt(Math.RandomFloat(0, 1)) * maxRadius;
-		
-		// Calculate offset from center
-		float offsetX = Math.Cos(randomAngle) * randomDistance;
-		float offsetZ = Math.Sin(randomAngle) * randomDistance;
-		
-		// Apply offset to center position
-		vector spreadPosition = centerPosition;
-		spreadPosition[0] = centerPosition[0] + offsetX;
-		spreadPosition[2] = centerPosition[2] + offsetZ;
-		
-		// For initial entities, we don't need terrain validation since they're at 10000m elevation
-		// Just return the spread position
-		return spreadPosition;
 	}
 }

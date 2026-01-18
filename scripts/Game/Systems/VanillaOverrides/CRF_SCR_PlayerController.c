@@ -1,32 +1,48 @@
-class CRF_BulletTracerContainer
-{
-	ref Shape m_Line;
-	float m_fTimeAlive;
-}
-
 modded class SCR_PlayerController
 {
-	bool m_bIsBulletTrackingEnabled = false;
-	ref array<ref CRF_BulletTracerContainer> m_aActiveTraces = {};
 	bool m_bIsListeningToSpec = false;
+	vector m_vPlayersLastDeath[4];
+	CRF_BandwidthTelemetryManager m_TelemetryManager;
 	
-	override void EOnFrame(IEntity owner, float timeSlice)
+	override void EOnInit(IEntity owner)
 	{
-		
-		super.EOnFrame(owner, timeSlice);
-		ref array<ref CRF_BulletTracerContainer> bulletsToDelete = {};
-		foreach (ref CRF_BulletTracerContainer bullet: m_aActiveTraces)
+		super.EOnInit(owner);
+		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+	}
+	
+	override void OnControlledEntityChanged(IEntity from, IEntity to)
+	{
+		super.OnControlledEntityChanged(from, to);
+		if (from)
 		{
-			bullet.m_fTimeAlive -= timeSlice;
-			if (bullet.m_fTimeAlive <= 0 || !m_bIsBulletTrackingEnabled)
-				bulletsToDelete.Insert(bullet);
+			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
+			if (charController.IsDead())
+				from.GetTransform(m_vPlayersLastDeath);
 		}
-		if (bulletsToDelete.Count() > 0)
+		
+		if (!Replication.IsServer())
 		{
-			foreach (ref CRF_BulletTracerContainer bullet: bulletsToDelete)
+			SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+			//Let the entity init before we update global markers (For faction check purposes)
+			if (mapMarkerManager)
+				GetGame().GetCallqueue().CallLater(mapMarkerManager.RequestGlobalMarkersRefresh, 1000, false);
+			
+			if (from)
 			{
-				delete bullet.m_Line;
-				m_aActiveTraces.RemoveItem(bullet);
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(from.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.UnregisterEntity();
+			}
+			
+			if (to)
+			{
+				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(to.FindComponent(CRF_BushMovementComponent));
+				if (!bushComp)
+					return;
+				
+				bushComp.RegisterEntity();
 			}
 		}
 	}
@@ -43,47 +59,6 @@ modded class SCR_PlayerController
 			return;
 		
 		CRF_PlayerControllerManager.GetInstance().InitilizePlayerControllerComp();
-	}
-	
-	/**
-	 * Called when the entity controlled by this player controller changes
-	 * @param from The previous entity being controlled
-	 * @param to The new entity being controlled
-	 */
-	override void OnControlledEntityChanged(IEntity from, IEntity to)
-	{	
-		// Check if gamemode instance exists, if not, exit early
-		if (!CRF_Gamemode.GetInstance())
-		{
-			// Call the parent implementation
-			super.OnControlledEntityChanged(from, to);
-			return;
-		};
-		
-		// Get the CRF player controller comp
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-
-		// Handle race condition: If player is being assigned initial entity when they should have a playable character
-		if (to && to.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource() && 
-			CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			int playerId = GetPlayerId();
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-			
-			// Check if this player should have a proper character instead of initial entity
-			if (slottingManager && slottingManager.IsPlayerInASlot(playerId) && !slottingManager.IsPlayerConsideredDead(playerId))
-			{
-				// Request re-initialization from server to fix race condition
-				CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
-				if (rplManager)
-				{
-					GetGame().GetCallqueue().CallLater(rplManager.RequestInitilizePlayer, 250, false, playerId);
-				}
-			}
-		}
-
-		// Call the parent implementation
-		super.OnControlledEntityChanged(from, to);
 	}
 
 	/**
@@ -159,5 +134,99 @@ modded class SCR_PlayerController
 			setting.m_iVolume = radioComp.m_iVolume;
 			m_aRadioSettings.Insert(setting);
 		}
+	}
+	
+	void ForwardDeployRequestRejected()
+	{
+		Rpc(RpcDo_ForwardDeployRequestRejected);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_ForwardDeployRequestRejected()
+	{
+		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
+	}
+	
+	void TeleportLocalPlayer(vector location)
+	{
+		Rpc(RpcDo_TeleportLocalPlayer, location);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_TeleportLocalPlayer(vector location)
+	{
+		SCR_Global.TeleportPlayer(GetPlayerId(), location);
+	}
+	
+	void SharerMarkerGlobal(int markerUID)
+	{
+		Rpc(RpcDo_SharerMarkerGlobal, markerUID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_SharerMarkerGlobal(int markerUID)
+	{
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		bool markersUpdated = false;
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (marker.GetMarkerID() == markerUID && !marker.m_bIsShared)
+			{
+				marker.m_bIsShared = true;
+				markersUpdated = true;
+			}
+		}
+		
+		// Only update visibility if any markers were actually changed
+		if (markersUpdated)
+			mapMarkersMan.UpdateAllMarkerVisibilities();
+	}
+	
+	void ShareMarker(array<int> markerUIDs)
+	{
+		Rpc(RpcDo_ShareMarker, markerUIDs);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+    protected void RpcDo_ShareMarker(array<int> markerUIDs)
+    {	
+		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkersMan)
+			return;
+		
+		bool markersUpdated = false;
+		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
+		{
+			if (markerUIDs.Contains(marker.GetMarkerID()) && !marker.m_bIsShared)
+			{
+				marker.m_bIsShared = true;
+				markersUpdated = true;
+			}
+		}
+		
+		// Only update visibility if any markers were actually changed
+		if (markersUpdated)
+			mapMarkersMan.UpdateAllMarkerVisibilities();
+    }
+	
+	void RefreshGlobalMarkers(array<int> markers)
+	{
+		Rpc(RpcDo_RefreshGlobalMarkers, markers);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_RefreshGlobalMarkers(array<int> markers)
+	{
+		int bytes = 0;
+		bytes += m_TelemetryManager.EstimateSize_IntArray(markers);
+		m_TelemetryManager.LogRPC("RpcDo_RefreshGlobalMarkers", bytes);
+		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkerManager)
+			return;
+		
+		mapMarkerManager.RefreshGlobalMarkers(markers);
 	}
 }

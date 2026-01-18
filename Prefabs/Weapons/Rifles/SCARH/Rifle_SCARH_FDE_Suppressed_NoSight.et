@@ -1,0 +1,23 @@
+GenericEntity : "{89DF815305A59693}Prefabs/Weapons/Rifles/SCARH/Rifle_SCARH_FDE.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{61785E090D53496F}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Prefab ""
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626E2147F1287008}" {
+       AttachmentSlot InventoryStorageSlot "{626E2147FFDB258A}" {
+        Prefab "{DD71997306E60BD3}Prefabs/Weapons/Attachments/Muzzle/762x51/Suppressor_SDN6_FDE.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

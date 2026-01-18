@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{97914D39693B6BD9}UI/layouts/Menus/Arsenal/SupplyArsenal.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

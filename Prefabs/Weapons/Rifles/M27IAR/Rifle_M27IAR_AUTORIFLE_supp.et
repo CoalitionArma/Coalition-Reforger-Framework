@@ -1,0 +1,48 @@
+GenericEntity : "{0761CE8644BBB28E}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR_TA31RCO.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CC8E73BB698D287}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot optics {
+      Prefab "{648E66F8FA240BA6}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_AimpointCompM4s/Collim_AimpointCompM4s_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{5CF88C80AF78DA73}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot PicattinyRailTop {
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+     }
+    }
+    AttachmentSlotComponent "{5D873BE26346E4D7}" {
+     AttachmentSlot InventoryStorageSlot attachment_railcover {
+      Prefab "{5C79645A168A9D69}Prefabs/Weapons/Attachments/Misc/manta_railcover/kits/RHS_manta_kit_kacGrip_M27_2.et"
+     }
+    }
+    AttachmentSlotComponent "{631F58122CD73C1F}" {
+     AttachmentSlot InventoryStorageSlot bipodSlot {
+      Prefab "{23D34FB66BBC8BEE}Prefabs/Weapons/Attachments/Bipods/harris_bipod/rhs_lt706_harris.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626541D4146E1B36}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{F3DD3F69F633AD36}Prefabs/Weapons/Attachments/Muzzle/Supressor_TGPA/Supressor_TGPA.et"
+       }
+      }
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo m27_buttstock_deploy_target {
+      Offset 0 0.0612 -0.2982
+     }
+     MagazineTemplate "{C6C5376E80AAE22D}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_40rnd_Tracer.et"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,86 @@
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ ID "52D6D6DB69F982D9"
+ components {
+  CRF_SupplyArsenalComponent "{66BD386F19EE1745}" {
+  }
+  FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_EditableEntityComponent "{66C33BAA23D04887}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C33BAA5C3D6E43}" {
+    Name "Supply Arsenal"
+    Icon "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+    m_Image "{DB9BCA1FFFB590DA}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_US_01.edds"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_BLUFOR
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{64904260E3C6B087}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bStatic 1
+   m_Flags 5
+  }
+ }
+ coords 845.952 7.862 1472.917
+ angles 0 37 0
+ {
+  GenericEntity {
+   ID "568ED76844F05A2F"
+   components {
+    ActionsManagerComponent "{6698DAEDB93D3A45}" {
+     ActionContexts {
+      UserActionContext "{6698DAEDBA5F607F}" {
+       ContextName "default"
+       Position PointInfo "{6698DAEDB687CDAD}" {
+        Offset 0 1.2463 0.1023
+       }
+      }
+     }
+     additionalActions {
+      CRF_VehicleArsenalAction "{6698DAEDA5C57C05}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{6698DAEDA0658C73}" {
+        Name "Open Supply Arsenal"
+       }
+      }
+      CRF_VehicleRearmAction "{66C6552DF2EFE003}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{66C6552D8E61E6A5}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "56FCD4F0D529BD2E"
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0 0 0
+     angles -89.966 -180 180
+    }
+   }
+  }
+  GenericEntity {
+   ID "58C28EA16E7B7C58"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}

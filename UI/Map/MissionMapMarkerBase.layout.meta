@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{88490FD6A9BFF0FA}UI/Map/MissionMapMarkerBase.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

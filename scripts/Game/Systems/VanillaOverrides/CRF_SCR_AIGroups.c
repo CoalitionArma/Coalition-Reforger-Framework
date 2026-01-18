@@ -1,13 +1,7 @@
 modded class SCR_AIGroup
 {
-	[Attribute("0", category: "Group")]
-	protected bool m_bIsPlayable;
-	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
-	protected CRF_EFlagType m_FlagType;
-	
-	protected bool m_bIsPlayableGroup;
-	protected SCR_AIGroup m_NewGroup;
+	[Attribute("0")]
+	bool m_bIsGarrisonGroup;
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when the entity is initialized
@@ -16,86 +10,25 @@ modded class SCR_AIGroup
 		// Call the parent implementation first
 		super.EOnInit(owner);
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-		
-		// Skip processing if not in play mode or if gamemode doesn't exist
-		if (!IsGroupPlayable() || !GetGame().InPlayMode() || !gamemode || !groupsManager || !Replication.IsServer())
-			return;
-		
-		// In GAME state and AI is enabled in GAME state
-		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.m_bCurrentEnableAIInGameState)
+		if (m_bIsGarrisonGroup)
+			GetGame().GetCallqueue().CallLater(SetGarrison, 1000, false);
+	}
+	
+	void SetGarrison()
+	{
+		array<AIAgent> agents = {};
+		GetAgents(agents);
+		foreach (AIAgent agent: agents)
 		{
-			if (!IsAIActivated())
-				ActivateAI();
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
 			
-			SetCanDeleteIfNoPlayer(true);
-			SetDeleteWhenEmpty(true);
-		} else {
-			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
-			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false); // DO NOT CHANGE. RPL JIP ERROR IF NOT INIT'd AFTER (LOL FUCK THIS ENGINE)
-		};
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	bool IsGroupPlayable()
-	{
-		return m_bIsPlayable;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void CreateNewGroup()
-	{
-		if(m_bIsPlayableGroup)
-			return;
-		
-		SCR_Faction scrFaction = SCR_Faction.Cast(GetFaction());
-		if(scrFaction && scrFaction.GetFlagName(0))
-		{
-			TStringArray flagArray = {};
-			scrFaction.GetFlagNames(flagArray);
-			if((flagArray.Count() - 1) < m_FlagType)
-				m_FlagType = CRF_EFlagType.INFANTRY
+			if (!SCR_ChimeraCharacter.Cast(entity))
+				continue;
+			
+			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
 		}
-		
-		m_NewGroup = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(GetFaction());
-		m_NewGroup.SetFaction(GetFaction());
-		m_NewGroup.SetGroupFlag(m_FlagType, true);
-		m_NewGroup.SetCanDeleteIfNoPlayer(false);
-		m_NewGroup.SetDeleteWhenEmpty(false);
-		m_NewGroup.SetMaxMembers(GetMaxMembers());
-		m_NewGroup.SetIsPlayableGroup();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void AllMembersSpawned(SCR_AIGroup group)
-	{
-		GetGame().GetCallqueue().CallLater(ConvertSlotsToNewGroup, 350, false);
-		GetOnAllDelayedEntitySpawned().Remove(AllMembersSpawned);
-	};
-	
-	//------------------------------------------------------------------------------------------------
-	void ConvertSlotsToNewGroup()
-	{
-		if (m_bIsPlayableGroup)
-			return;
-		
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		RplId newRplId = RplComponent.Cast(m_NewGroup.FindComponent(RplComponent)).Id();
-		RplId oldRplId = RplComponent.Cast(this.FindComponent(RplComponent)).Id();
-		
-		array<int> slotIdsForOldGroup = slottingManager.GetAllSlotIDsForGroup(oldRplId);
-		
-		foreach(int slotId : slotIdsForOldGroup)
-			slottingManager.UpdateSlotGroup(slotId, newRplId);
-
-		SCR_EntityHelper.DeleteEntityAndChildren(this);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetIsPlayableGroup()
-	{
-		m_bIsPlayableGroup = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -131,12 +64,29 @@ modded class SCR_AIGroup
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------
-	override void RemovePlayer(int playerID)
+	//------------------------------------------------------------------------------------------------	
+	// Removes the "x left your group" upon death or anything else. Fucking stupid tbh.
+	// This is a carbon copy of the method and may break if it changes in an update
+	override void RemovePlayer(int playerID) 
 	{
-		// Super up so we dont break the vanilla side
-		super.RemovePlayer(playerID);
+		if (!m_aPlayerIDs.Contains(playerID))
+			return;
 
+		//if player is last in group it doesnt matter as the group will get deleted
+		if (playerID == m_iLeaderID && GetPlayerCount() > 1)
+		{
+			SetCustomName("", 0);
+			SetCustomDescription("", 0);
+		}
+
+		RPC_DoRemovePlayer(playerID);
+		Rpc(RPC_DoRemovePlayer, playerID);
+		CheckForLeader(-1, false);
+		RemovePlayerAgent(playerID);
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_LEFT, playerID);
+		
+		// End of original method (aka super) ===========================================
+		
 		// Get player manager
 		PlayerManager playerManager = GetGame().GetPlayerManager();
 		if (!playerManager)

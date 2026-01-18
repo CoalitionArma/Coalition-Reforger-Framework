@@ -1,0 +1,257 @@
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 3455.141 267.822 6168.903
+ angles 0 -82.215 0
+ {
+  SCR_AIGroup : "{677549B9DAF416D1}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_SniperTeam_p.et" {
+   coords 12.75 1.478 -3.176
+   angles 0 -3.132 0
+   m_aUnitPrefabSlots {
+    "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+    "{49CC52FEE609771E}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Spotter_P.et"
+   }
+   {
+    $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     {
+      coords -9.457 -2.296 -9.636
+      angles 0 0.43 0
+      m_aUnitPrefabSlots {
+       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+       "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+       "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+      }
+     }
+     {
+      coords -9.484 -2.329 -12.958
+      angles 0 0.43 0
+      m_aUnitPrefabSlots {
+       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+       "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+       "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+      }
+     }
+     {
+      coords -9.499 -2.351 -15.254
+      angles 0 0.43 0
+      m_aUnitPrefabSlots {
+       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+       "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"
+       "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"
+       "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+       "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
+      }
+      {
+       SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+        coords 21.731 3.746 6.953
+        angles 0 2.686 0
+        m_aUnitPrefabSlots {
+         "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+         "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et"
+         "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+         "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"
+         "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 3130.797 4.831 7822.896
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "East Shore"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 2910.926 226.525 6778.271
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "Meadow Ridge"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 2206.295 3.111 6376.744
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "West Shore"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 3447.999 266.908 6178.009
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "Spawn"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+}
+$grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
+ {
+  coords 3458.94 265.264 6144.802
+ }
+ {
+  coords 3422.227 270.096 6201.832
+ }
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+ Spawn {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to East Shore"
+      }
+      m_sObjectNameToTeleportTo "EastShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to West Shore"
+      }
+      m_sObjectNameToTeleportTo "WestShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Meadow Ridge"
+      }
+      m_sObjectNameToTeleportTo "MeadowRidge"
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 3449.578 266.913 6177.41
+ }
+ WestShore {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to East Shore"
+      }
+      m_sObjectNameToTeleportTo "EastShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to West Shore"
+      }
+      m_sObjectNameToTeleportTo "WestShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Meadow Ridge"
+      }
+      m_sObjectNameToTeleportTo "MeadowRidge"
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 2206.806 3.172 6378.156
+ }
+ MeadowRidge {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to East Shore"
+      }
+      m_sObjectNameToTeleportTo "EastShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to West Shore"
+      }
+      m_sObjectNameToTeleportTo "WestShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Meadow Ridge"
+      }
+      m_sObjectNameToTeleportTo "MeadowRidge"
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 2910.22 226.594 6780.233
+ }
+ EastShore {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to East Shore"
+      }
+      m_sObjectNameToTeleportTo "EastShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to West Shore"
+      }
+      m_sObjectNameToTeleportTo "WestShore"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Meadow Ridge"
+      }
+      m_sObjectNameToTeleportTo "MeadowRidge"
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 3131.351 4.823 7823.3
+ }
+}
