@@ -350,6 +350,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/CRF_PlayerControllerMP.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
+ m_eGME_GlobalAISkill VETERAN
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{632771FB5C619E1C}" {
    m_sTitle "Welcome / How to Play"
