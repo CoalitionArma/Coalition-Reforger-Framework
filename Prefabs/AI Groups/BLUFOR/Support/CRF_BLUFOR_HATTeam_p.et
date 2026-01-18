@@ -3,12 +3,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  components {
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 1
-   m_aDangerReactions {
-    SCR_AIDangerReaction_DamageTaken "{646806D0D8D34EAC}" {
-    }
-    SCR_AIDangerReaction_ProjectileHit "{646806D0CC0A7C00}" {
-    }
-   }
    m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{646806D1F0DE616B}" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
@@ -116,9 +110,9 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "BLUFOR"
  m_aUnitPrefabSlots {
-  "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{9E133FF6147DCF5A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HAT_P.et" "{B1C216E5902395EB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHAT_P.et" "{9E133FF6147DCF5A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HAT_P.et" "{B1C216E5902395EB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHAT_P.et"
+  "{CC8EDD051CB0C1CE}Prefabs/Characters/!GS_Characters/Squad Level/CRF_SL.et" "{9E133FF6147DCF5A}Prefabs/Characters/!GS_Characters/Specialties/CRF_HAT.et" "{B1C216E5902395EB}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHAT.et" "{9E133FF6147DCF5A}Prefabs/Characters/!GS_Characters/Specialties/CRF_HAT.et" "{B1C216E5902395EB}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHAT.et"
  }
- m_bDeleteWhenEmpty 0
+ m_bDeleteWhenEmpty 1
  m_iMaxMembers 12
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0

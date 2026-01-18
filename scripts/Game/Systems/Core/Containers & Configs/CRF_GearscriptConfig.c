@@ -189,13 +189,17 @@ class CRF_GearScriptRolesConfig
 	[Attribute()]
 	ref array<ref CRF_RoleConfig> m_RoleConfigs;
 	
+	protected ref map<CRF_EGearRole, CRF_RoleConfig> m_RoleConfigsMap = new map<CRF_EGearRole, CRF_RoleConfig>;
+	
 	CRF_RoleConfig FindRoleConfig(CRF_EGearRole role)
 	{
+		return m_RoleConfigsMap.Get(role);
+	}
+	
+	void CRF_GearScriptRolesConfig()
+	{
 		foreach(CRF_RoleConfig roleConfig : m_RoleConfigs)
-			if (roleConfig.m_Role == role)
-				return roleConfig;
-
-		return new CRF_RoleConfig;
+			m_RoleConfigsMap.Set(roleConfig.m_Role, roleConfig);	
 	}
 }
 
@@ -219,16 +223,7 @@ class CRF_RoleConfig
 	CRF_ESlotType m_SlottingType;
 
 	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
-	ResourceName m_BluforVariant;
-	
-	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
-	ResourceName m_OpforVariant;
-	
-	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
-	ResourceName m_IndforVariant;
-	
-	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
-	ResourceName m_CivVariant;
+	ResourceName m_RoleResource;
 	
 	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]
 	ref array<CRF_EGearscriptWeapons> m_aWeapons;

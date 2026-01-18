@@ -98,7 +98,7 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	void SetEntityGear(IEntity entity, ResourceName resourceNameToScan)
 	{
-		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
+		if (!entity)
 			return;
 
 		// Prevent multiple simultaneous gearscript operations on same entity (fixes MuzzleInMagComponent crash)
@@ -109,7 +109,7 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 
 		// Determine faction from resource name
-		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
+		FactionKey factionKey = DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
 			return;
 
@@ -238,14 +238,9 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		if (!entity)
 			return;
-		
-		ResourceName resourceNameToScan = entity.GetPrefabData().GetPrefabName();
-		
-		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
-			return;
 
 		// Determine faction from resource name
-		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
+		FactionKey factionKey = DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
 			return;
 
@@ -265,25 +260,14 @@ class CRF_GearscriptManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * @brief Determine faction key from resource name
-	 * @param resourceName Resource name to analyze
+	 * @brief Determine faction key from faction affiliation comp
+	 * @param entity Entity to pull the faction comp of
 	 * @return Faction key or empty string if not found
 	 */
-	protected FactionKey DetermineFactionKey(ResourceName resourceName)
+	protected FactionKey DetermineFactionKey(IEntity entity)
 	{
-		switch (true)
-		{
-			case resourceName.Contains("BLUFOR"):
-				return "BLUFOR";
-			case resourceName.Contains("OPFOR"):
-				return "OPFOR";
-			case resourceName.Contains("INDFOR"):
-				return "INDFOR";
-			case resourceName.Contains("CIV"):
-				return "CIV";
-		};
-			
-		return "";
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
+		return facComp.GetAffiliatedFactionKey();;
 	}
 	
 	//------------------------------------------------------------------------------------------------

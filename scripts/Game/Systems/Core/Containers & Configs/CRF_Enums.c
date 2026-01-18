@@ -81,47 +81,24 @@ class CRF_RoleHelper
 	static CRF_EGearRole ResourceToRole(ResourceName roleResource)
 	{
 		foreach(CRF_RoleConfig roleConfig : CRF_GamemodeManager.RolesConfig().m_RoleConfigs)
-			if (roleConfig.m_BluforVariant == roleResource || roleConfig.m_OpforVariant == roleResource || roleConfig.m_IndforVariant == roleResource || roleConfig.m_CivVariant == roleResource)
+			if (roleConfig.m_RoleResource == roleResource)
 				return roleConfig.m_Role;
 		
 		return CRF_EGearRole.RIFLEMAN;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey factionKey)
+	static ResourceName RoleToResource(CRF_EGearRole role)
 	{
-		ResourceName roleResource;
+		CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
 		
-		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
-
-		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(roleInt);
-		
-		switch (factionKey)
-		{
-			case "BLUFOR":
-				roleResource = roleConfig.m_BluforVariant;
-				break;
-			
-			case "OPFOR":
-				roleResource = roleConfig.m_OpforVariant;
-				break;
-			
-			case "INDFOR":
-				roleResource = roleConfig.m_IndforVariant;
-				break;
-			
-			case "CIV":
-				roleResource = roleConfig.m_CivVariant;
-				break;
-		}
-		
-		return roleResource;
+		return roleConfig.m_RoleResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool IsValidGearscriptResource(ResourceName resource)
 	{
-		return resource.Contains("CRF_GS_");
+		return resource.Contains("!GS_Characters");
 	};
 	
 	// Pulled from the respawn manager, need to find a better solution eventually^tm.

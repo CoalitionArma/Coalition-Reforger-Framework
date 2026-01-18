@@ -554,6 +554,10 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (!playerCharacter)
 			return null;
+		
+		// Update character faction
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(playerCharacter.FindComponent(FactionAffiliationComponent));
+		facComp.SetAffiliatedFaction(GetPlayerSlotFaction(playerId));
 	
 		// Update slot data
 		RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));

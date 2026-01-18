@@ -396,14 +396,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 * @param index The role index
 	 * @return The resource name for the corresponding prefab
 	 */
-	ResourceName GetPrefab(int groupID, int index)
+	ResourceName GetPrefab(int index)
 	{
-		SCR_AIGroup group = m_groupManagerComponent.FindGroup(groupID);
-		if (!group)
-			return ResourceName.Empty;
-			
-		string factionKey = group.GetFaction().GetFactionKey();
-		ResourceName prefab = CRF_RoleHelper.RoleToResource(index, factionKey);
+		ResourceName prefab = CRF_RoleHelper.RoleToResource(index);
 		return prefab;
 	}
 
@@ -728,16 +723,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		int playerId = GetplayerIdFromName(playerName);
 		if (playerId == 0)
 			return;
-			
-		// Get player's group
-		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
-		if (!playerGroup)
-			return;
-			
-		int groupID = playerGroup.GetGroupID();
 		
 		// Get the prefab for the selected role
-		ResourceName prefab = GetPrefab(groupID, roleList.GetSelectedItem());
+		ResourceName prefab = GetPrefab(roleList.GetSelectedItem());
 		if (prefab.IsEmpty())
 			return;
 

@@ -121,7 +121,7 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 			if (!factionAffiliation)
 				return false;
 			
-			if (!m_aFactionKey.IsEmpty() && m_aFactionKey.Contains(factionAffiliation.GetDefaultAffiliatedFaction().GetFactionKey()))
+			if (!m_aFactionKey.IsEmpty() && m_aFactionKey.Contains(factionAffiliation.GetAffiliatedFactionKey()))
 				return false;
 			
 			if (m_sGroupKey != "")

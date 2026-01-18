@@ -241,18 +241,8 @@ class CRF_SlotDataContainer
 	
 	ResourceName GetSlotResource() 
 	{
-		ref CRF_RoleConfig config = CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole);
-		ResourceName resource;
-		
-		switch (GetSlotFactionEnum())
-		{
-			case CRF_EFactions.BLUFOR : resource = config.m_BluforVariant; break;
-			case CRF_EFactions.OPFOR : resource = config.m_OpforVariant; break;
-			case CRF_EFactions.INDFOR : resource = config.m_IndforVariant; break;
-			case CRF_EFactions.CIV : resource = config.m_CivVariant; break;
-		}
-		
-		return resource;
+		ref CRF_RoleConfig config = CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole);	
+		return config.m_RoleResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------

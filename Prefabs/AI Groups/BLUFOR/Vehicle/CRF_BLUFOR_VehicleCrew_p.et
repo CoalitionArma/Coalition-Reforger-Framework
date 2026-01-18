@@ -3,12 +3,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  components {
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 1
-   m_aDangerReactions {
-    SCR_AIDangerReaction_DamageTaken "{646806D0D8D34EAC}" {
-    }
-    SCR_AIDangerReaction_ProjectileHit "{646806D0CC0A7C00}" {
-    }
-   }
    m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{646806D1F0DE616B}" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
@@ -96,9 +90,9 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "BLUFOR"
  m_aUnitPrefabSlots {
-  "{478FBA09EDDFC439}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehLead_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et" "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et"
+  "{478FBA09EDDFC439}Prefabs/Characters/!GS_Characters/Leadership/CRF_VehLead.et" "{5915E51A1AABB9D2}Prefabs/Characters/!GS_Characters/Crews/CRF_VehGunner.et" "{88611B14BF2B14B1}Prefabs/Characters/!GS_Characters/Crews/CRF_VehDriver.et"
  }
- m_bDeleteWhenEmpty 0
+ m_bDeleteWhenEmpty 1
  m_iMaxMembers 12
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0

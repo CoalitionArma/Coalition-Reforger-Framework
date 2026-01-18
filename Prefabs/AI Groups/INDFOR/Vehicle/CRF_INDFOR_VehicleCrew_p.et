@@ -1,20 +1,11 @@
-SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
+SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  ID "0000000000000001"
  components {
-  AIFormationComponent "{507E9DC12F541FE6}" {
-   DefaultFormation "Row"
-  }
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 1
-   m_aDangerReactions {
-    SCR_AIDangerReaction_DamageTaken "{646806D0D8D34EAC}" {
-    }
-    SCR_AIDangerReaction_ProjectileHit "{646806D0CC0A7C00}" {
-    }
+   m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{686470D7F7D02F2B}" {
    }
-   m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{646806D1F0DE616B}" {
-   }
-   m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
+   m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{686470D7F7D02F2C}" {
    }
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
@@ -29,13 +20,13 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      GROUPSIZE_SMALL
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{629509BF4D514CA4}" {
+     SCR_EntityBudgetValue "{686470D7F7D02F30}" {
       m_BudgetType AI
       m_Value 1
      }
     }
     m_bUseUIInfoName 1
-    m_MilitarySymbol SCR_MilitarySymbol "{629509BF4D514CAF}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{686470D7F7D02F32}" {
      m_Identity INDFOR
      m_Dimension LAND
      m_Icons MOTORIZED
@@ -45,6 +36,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
   SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
    m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity INDFOR
     m_Icons MOTORIZED
     m_Amplifier SQUAD
    }
@@ -53,7 +45,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{629509BF4D514CB9}" {
+    SCR_BasePreviewEntry "{686470D7F7D02F36}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -63,7 +55,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{629509BF4D514CBB}" {
+    SCR_BasePreviewEntry "{686470D7F7D02F37}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -73,7 +65,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{629509BF4D514CBC}" {
+    SCR_BasePreviewEntry "{686470D7F7D02F38}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -83,7 +75,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{629509BF4D514CBF}" {
+    SCR_BasePreviewEntry "{686470D7F7D02F39}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -99,10 +91,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "INDFOR"
  m_aUnitPrefabSlots {
-  "{C74239418F3417B9}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehLead_P.et" "{2FE8F418A591EAF5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehGunner_P.et" "{FE9C0A1600114796}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehDriver_P.et"
+  "{478FBA09EDDFC439}Prefabs/Characters/!GS_Characters/Leadership/CRF_VehLead.et" "{5915E51A1AABB9D2}Prefabs/Characters/!GS_Characters/Crews/CRF_VehGunner.et" "{88611B14BF2B14B1}Prefabs/Characters/!GS_Characters/Crews/CRF_VehDriver.et"
  }
- m_bDeleteWhenEmpty 0
- m_iMaxMembers 12
- m_bPlayable 0
- m_bDeleteIfNoPlayer 0
+ m_iMaxMembers 8
 }

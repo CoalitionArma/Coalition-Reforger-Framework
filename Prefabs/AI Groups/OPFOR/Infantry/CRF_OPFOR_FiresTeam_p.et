@@ -1,38 +1,32 @@
-SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
+SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  ID "0000000000000001"
  components {
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 1
-   m_aDangerReactions {
-    SCR_AIDangerReaction_DamageTaken "{668C2D6DF6F2EC5C}" {
-    }
-    SCR_AIDangerReaction_ProjectileHit "{668C2D6DF6F2EC40}" {
-    }
+   m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{686470D473644A23}" {
    }
-   m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{668C2D6DF6F2EC4A}" {
-   }
-   m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{668C2D6DF6F2ECB6}" {
+   m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{686470D473644A25}" {
    }
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "Fires Team"
-    m_Image "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
+    m_Image "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
     m_aAuthoredLabels {
-     4 51871 34 25 38
+     ENTITYTYPE_GROUP FACTION_CRF_OPFOR TRAIT_SUPPRESSIVE TRAIT_ARMORPIERCING TRAIT_EXPLOSIVE
     }
     m_aAutoLabels {
-     71
+     GROUPSIZE_MEDIUM
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{668C2D6DF6F2ECBD}" {
+     SCR_EntityBudgetValue "{686470D473644A39}" {
       m_BudgetType AI
       m_Value 1
      }
     }
     m_bUseUIInfoName 1
-    m_MilitarySymbol SCR_MilitarySymbol "{668C2D6DF6F2ECA7}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{686470D473644A3A}" {
      m_Identity OPFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -42,6 +36,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
   SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
    m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity OPFOR
     m_Icons INFANTRY
     m_Amplifier SQUAD
    }
@@ -50,7 +45,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC97}" {
+    SCR_BasePreviewEntry "{686470D473644A3E}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -60,17 +55,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC93}" {
-     m_iParentID 0
-     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
-     m_Flags 0
-     m_Shape PREFAB
-     m_iPivotID ""
-     m_vScale 1 1 1
-     m_vPosition 0 0 0
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC9E}" {
+    SCR_BasePreviewEntry "{686470D473644A3F}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -80,7 +65,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC9C}" {
+    SCR_BasePreviewEntry "{686470D47364C663}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -90,7 +75,17 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC9A}" {
+    SCR_BasePreviewEntry "{686470D47364C66C}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D47364C66D}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -100,7 +95,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC99}" {
+    SCR_BasePreviewEntry "{686470D47364C66E}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -116,17 +111,10 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "OPFOR"
  m_aUnitPrefabSlots {
-  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"
+  "{CC8EDD051CB0C1CE}Prefabs/Characters/!GS_Characters/Squad Level/CRF_SL.et" "{690B6588C8F675A4}Prefabs/Characters/!GS_Characters/Squad Level/CRF_AR.et" "{690B6588C8F675A4}Prefabs/Characters/!GS_Characters/Squad Level/CRF_AR.et" "{F8F683DD0F361239}Prefabs/Characters/!GS_Characters/Squad Level/CRF_AAR.et" "{F8F683DD0F361239}Prefabs/Characters/!GS_Characters/Squad Level/CRF_AAR.et"
  }
  m_bDeleteWhenEmpty 0
  m_iMaxMembers 12
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0
- m_aUnitPrefabColorTeams {
-  "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
- }
- m_aUnitPrefabOverrideIcons {
-  "None" "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
- }
- m_bIsPlayable 1
 }
