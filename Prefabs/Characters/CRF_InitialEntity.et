@@ -101,11 +101,11 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#AR-Role_Rifleman"
-    Icon "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
-    m_Image "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
+    Icon "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
+    m_Image "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
     m_sFaction "SPEC"
     m_aAuthoredLabels + {
-     2 11
+     ENTITYTYPE_CHARACTER FACTION_NONE
     }
     m_aAutoLabels {
     }
@@ -127,26 +127,14 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    m_eGender NEUTRAL
    m_fChanceOfIdentityDocumentBeingValuable 0
   }
-  SCR_VoNComponent "{520EA1D2F659C856}" {
-   "Speaking Range" 0
-  }
   BaseFlattenGrassComponent "{520EA1D2F659CE26}" {
    Enabled 0
    ParametersCollection {
     FlattenGrassParametersObject "{520EA1D2F659CE2C}" {
-     SideX 0
-     SideZ 0
-     MaxHeight 0
     }
     FlattenGrassParametersObject "{520EA1D2F659CE28}" {
-     SideX 0
-     SideZ 0
-     MaxHeight 0
     }
     FlattenGrassParametersObject "{520EA1D2F659CE27}" {
-     SideX 0
-     SideZ 0
-     MaxHeight 0
     }
    }
   }
@@ -159,14 +147,11 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponSlotIndex 1
   }
-  RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
-   Enabled 0
-  }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
    Identity Identity "{5584CBC6363C648B}" {
     VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Head ""
-     Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+     Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
+     Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
     }
     SoundIdentity SoundIdentity "{56E6D945D8F79290}" {
      VoiceID 0
@@ -180,6 +165,9 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     }
    }
   }
+  RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
+   Enabled 0
+  }
   CharacterAnimationComponent "{520EA1D2F659C994}" {
    components {
     SCR_CharacterBuoyancyComponent "{5EDCE7B429F7D056}" {
@@ -188,5 +176,5 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    }
   }
  }
- Flags 0
+ Flags 0 0x3
 }

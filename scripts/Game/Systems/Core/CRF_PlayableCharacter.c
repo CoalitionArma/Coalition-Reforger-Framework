@@ -49,9 +49,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!m_Gamemode)
 			return false;
 		
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && 
-			m_Gamemode.m_bCurrentEnableAIInGameState && 
-			!CRF_GamemodeManager.IsSpectator(owner))
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_GamemodeManager.IsSpectator(owner))
 			return false;
 		
 		return true;
@@ -78,16 +76,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		// Get if we are a spectator
 		bool isSpec = CRF_GamemodeManager.IsSpectator(owner);
-		
-		// Logs entity on server and disables AI if not spawned by a slot
-		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !isSpec)
-		{
-			if (m_SlottingManager)
-				m_SlottingManager.AddPlayableEntityToManager(owner);
-			else
-				Print("[CRF_PlayableCharacter] SlottingManager not available", LogLevel.WARNING);
-			return;
-		}
 		
 		// Configure spectator entity
 		if (isSpec)

@@ -273,7 +273,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 				delete slot.GetAttachedEntity();
 			
 			slot.GetWorldTransform(params.Transform);
-			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{CA26D8A680895BBD}PrefabsEditable/Auto/Props/RedLightObject.et"), null, params);
+			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{CA26D8A680895BBD}Prefabs/Vehicles/Airplanes/C-130/Props/Lights/RedLightObject.et"), null, params);
 			slot.AttachEntity(light);
 		}
 		
@@ -299,7 +299,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 				delete slot.GetAttachedEntity();
 			
 			slot.GetWorldTransform(params.Transform);
-			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{7CBC56493AB0430E}PrefabsEditable/Auto/Props/GreenLightObject.et"), null, params);
+			IEntity light = GetGame().SpawnEntityPrefab(Resource.Load("{7CBC56493AB0430E}Prefabs/Vehicles/Airplanes/C-130/Props/Lights/GreenLightObject.et"), null, params);
 			slot.AttachEntity(light);
 		}
 		

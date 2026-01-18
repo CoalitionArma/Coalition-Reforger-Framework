@@ -591,7 +591,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
 		{			
 			// Skip locked or dead slots
-			if(slotData.GetIsLockedSlot() || slotData.GetIsDeadSlot())
+			if(slotData.GetIsLockedSlot())
 				continue;
 			
 			// Increment appropriate faction counter
@@ -764,9 +764,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		
 		array<int> slotStored = {};
-		foreach (ResourceName prefab: group.m_aGroupSlots)
+		foreach (int id: slottingManager.GetAllSlotIDsForGroup(groupId))
 		{
+			ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
 			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
 			{	
 				if (slotData.GetSlotResource() != prefab || slotStored.Contains(slotId))

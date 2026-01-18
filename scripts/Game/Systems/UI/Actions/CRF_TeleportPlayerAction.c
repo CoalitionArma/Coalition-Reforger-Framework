@@ -6,7 +6,7 @@ class CRF_TeleportPlayerAction : ScriptedUserAction
 	string m_sObjectNameToTeleportTo;
 	
 	// Optional gearscript to apply to the player after teleportation
-	[Attribute("", "auto", "Gearscript given to the teleported entity on the other side", category: "CRF Teleport")]
+	[Attribute("", "auto", "Gearscript given to the teleported entity on the other side (ONLY USE IF ABSOLUTELY NECESSARY)", category: "CRF Teleport")]
 	ResourceName m_sGearscriptToSet;
 	
 	//------------------------------------------------------------------------------------------------

@@ -1,0 +1,97 @@
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 4694.921 293.88 2740.23
+  angles 0 -19.747 0
+ }
+ {
+  coords 4705.22 294.062 2736.425
+  angles 0 -19.747 0
+ }
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 4683.16 279.585 2543.723
+ angles 0 -135.856 0
+ m_aUnitPrefabSlots +{
+  "{2A9957B9D12FD70B}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_DroneOp_P.et"
+  "{2A9957B9D12FD70B}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_DroneOp_P.et"
+ }
+ {
+  SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+   coords 14.866 -6.419 23.689
+   angles 0 176.913 0
+   m_aUnitPrefabSlots {
+    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+    "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+    "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+    "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et"
+    "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"
+    "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+    "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et"
+    "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et"
+    "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords 27.378 1.869 0
+     m_aUnitPrefabSlots {
+      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+      "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+      "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+      "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et"
+      "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"
+      "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
+      "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et"
+      "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et"
+      "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et"
+     }
+     {
+      SCR_AIGroup : "{2E159CDF28FA27ED}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_EngiTeam_p.et" {
+       coords 0.188 -2.408 -22.254
+       angles 0 -41.057 0
+       m_aUnitPrefabSlots {
+        "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+        "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
+        "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
+       }
+       {
+        SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
+         coords -28.187 -6.074 28.443
+         angles 0 37.171 0
+         {
+          SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+           coords 77.743 14.449 60.282
+           angles 0 177.336 0
+           {
+            SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+             coords 15.007 0 -7.085
+             angles 0 -8.813 0
+             {
+              SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+               coords 21.575 3.691 -12.894
+               angles 0 47.272 0
+               {
+                SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+                 coords 29.698 1.683 17.979
+                 angles 0 -97.972 0
+                 {
+                  SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+                   coords -22.058 0 3.787
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

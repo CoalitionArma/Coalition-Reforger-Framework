@@ -288,7 +288,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			else
 				joes.Insert(playerId);
 			
-			
 			GetGame().GetCallqueue().CallLater(AssignFactionToPlayer, 100, false, playerController, indfor);
 			GetGame().GetCallqueue().CallLater(SpawnEntity, 300, false, roleConfig, indParams, playerController);
 		}
@@ -308,7 +307,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			newGroup.SetCanDeleteIfNoPlayer(false);
 			newGroup.SetDeleteWhenEmpty(false);
 			newGroup.SetMaxMembers(15);
-			newGroup.SetIsPlayableGroup();
 			groups.Insert(newGroup);
 		}
 		
@@ -407,18 +405,20 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
 		
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(character.GetPrefabData().GetPrefabName());
+		
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
 		currentData.SetSlotFactionKey(m_sIndependentFaction);
 		currentData.SetSlotCurrentPlayerId(playerId);
 		currentData.SetSlotCurrentGroup(groupRplId);
 		currentData.SetSlotCurrentCharacter(characterRplId);
-		currentData.SetSlotResource(character.GetPrefabData().GetPrefabName());
+		currentData.SetSlotRole(role);
 		
 		// Use optimized delta updates instead of full container broadcast
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		broadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
 		broadcastManager.UpdateSlotGroupDelta(slotId, groupRplId);
 		broadcastManager.UpdateSlotCharacterDelta(slotId, characterRplId);
-		broadcastManager.UpdateSlotResourceDelta(slotId, character.GetPrefabData().GetPrefabName());
+		broadcastManager.UpdateSlotRoleDelta(slotId, role);
 	}
 }

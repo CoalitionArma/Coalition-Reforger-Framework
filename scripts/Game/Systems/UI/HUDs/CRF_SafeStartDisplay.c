@@ -200,17 +200,17 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 			int colorToSet = 0;
 			
 			// Set color based on faction status
-			if (factionReady == "#Coal_SS_Faction_Ready")     
+			if (factionReady == "Ready")     
 			{
 				colorToSet = ARGB(185, 0, 190, 85);   // Green for ready
 			}
 			
-			if (factionReady == "#Coal_SS_Faction_Not_Ready") 
+			if (factionReady == "Not Ready") 
 			{
 				colorToSet = ARGB(185, 200, 65, 65);  // Red for not ready
 			}
 			
-			if (factionReady == "#Coal_SS_No_Faction")       
+			if (factionReady == "N/A")       
 			{
 				colorToSet = ARGB(185, 135, 135, 135); // Gray for no faction
 			}
@@ -223,7 +223,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 					m_wBluforReady.SetText(factionReady); 
 					m_wBluforReady.SetColorInt(colorToSet); 
 					
-					if (factionReady != "#Coal_SS_No_Faction")
+					if (factionReady != "N/A")
 					{
 						m_wBluforFrame.SetVisible(true);
 					}
@@ -239,7 +239,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 					m_wOpforReady.SetText(factionReady);  
 					m_wOpforReady.SetColorInt(colorToSet);  
 					
-					if (factionReady != "#Coal_SS_No_Faction")
+					if (factionReady != "N/A")
 					{
 						m_wOpforFrame.SetVisible(true);
 					}
@@ -255,7 +255,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 					m_wIndforReady.SetText(factionReady); 
 					m_wIndforReady.SetColorInt(colorToSet);
 					 
-					if (factionReady != "#Coal_SS_No_Faction")
+					if (factionReady != "N/A")
 					{
 						m_wIndforFrame.SetVisible(true);
 					}
@@ -271,7 +271,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 					m_wCivReady.SetText(factionReady);    
 					m_wCivReady.SetColorInt(colorToSet);    
 					
-					if (factionReady != "#Coal_SS_No_Faction")
+					if (factionReady != "N/A")
 					{
 						m_wCivFrame.SetVisible(true);
 					}

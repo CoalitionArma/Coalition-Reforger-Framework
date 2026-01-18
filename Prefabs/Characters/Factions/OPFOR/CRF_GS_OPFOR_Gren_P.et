@@ -32,13 +32,13 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     Name "Grenadier"
     Icon "{DDAEEF112BEBCF94}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Grenadier.edds"
     IconSetName ""
-    m_Image "{0A1F947948102E69}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
+    m_Image "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
-    m_aAuthoredLabels {
-     70 2 51871
+    m_aAuthoredLabels + {
+     ENTITYTYPE_CHARACTER FACTION_CRF_OPFOR
     }
     m_aAutoLabels {
-     122 46
+     SIZE_M ROLE_RIFLEMAN
     }
    }
   }

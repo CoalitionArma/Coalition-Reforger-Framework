@@ -119,18 +119,18 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 				slotData.SetSlotCurrentPlayerId(playerId);
 			}
 			
-			// Restore death state
-			bool isDead;
-			if (context.ReadValue(slotPrefix + "isDead", isDead))
-			{
-				slotData.SetIsDeadSlot(isDead);
-			}
-			
 			// Restore locked state
 			bool isLocked;
 			if (context.ReadValue(slotPrefix + "isLocked", isLocked))
 			{
 				slotData.SetIsLockedSlot(isLocked);
+			}
+			
+			// Restore dead state 
+			bool isDead;
+			if (context.ReadValue(slotPrefix + "isDead", isDead))
+			{
+				slotData.SetIsDeadSlot(isDead);
 			}
 			
 			restoredSlots++;

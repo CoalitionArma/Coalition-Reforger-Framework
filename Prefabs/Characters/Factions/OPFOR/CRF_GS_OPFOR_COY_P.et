@@ -30,15 +30,15 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Company Leader"
-    Icon "{FEA2B502764491C9}UI/data/CPT_Rank.edds"
+    Icon "{FEA2B502764491C9}UI/Images/Ranks/CPT_Rank.edds"
     IconSetName ""
-    m_Image "{0A1F947948102E69}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
+    m_Image "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
-    m_aAuthoredLabels {
-     70 2 51871
+    m_aAuthoredLabels + {
+     ENTITYTYPE_CHARACTER FACTION_CRF_OPFOR
     }
     m_aAutoLabels {
-     122 46
+     SIZE_M ROLE_RIFLEMAN
     }
    }
   }

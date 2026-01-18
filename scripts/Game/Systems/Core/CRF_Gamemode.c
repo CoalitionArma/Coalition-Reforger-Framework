@@ -40,93 +40,96 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
-	//AI Settings
-	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF AI Settings")]
-	bool m_bDisableAICrouching;
-	
-	// General Gamemode Settings
+	// Attributes Set By Plugins
 	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode General")]
-	bool m_bUseAAR;
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bRespawnEnabled;
+
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bWaveRespawn;
+
+	[Attribute("60", UIWidgets.Hidden)]
+	int m_iTimeToRespawn;
 	
-	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
+	[Attribute("45", UIWidgets.Hidden)]
 	int m_iTimeLimitMinutes;
-
-	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Gamemode General")]
+	
+	[Attribute("false", UIWidgets.Hidden)]
 	bool m_bAllowEspionage;
-
-	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
-	bool EnableAIInGameState;
 	
-	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
-	
-	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
-	bool m_bDisableChat;
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bLockUnusedSlots;
 
-	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
-	bool m_bLockSlotsAfterSafestart;
-
-	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]
+	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bSafestartInstantlyEnabled;
-
-	// Mission Descriptors (shown in briefing)
-	[Attribute("", category: "CRF Gamemode General")]
+	
+	[Attribute("", UIWidgets.Hidden)]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
-
-	// Faction Settings
-	//------------------------------------------------------------------------------------
-	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
+	
+	[Attribute("", UIWidgets.Hidden)]
 	int m_iFactionOneRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
+	[Attribute("", UIWidgets.Hidden)]
+	int m_iFactionTwoRatio;
+	
+	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionOneKey;
 
-	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
-	int m_iFactionTwoRatio;
-
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
+	[Attribute("", UIWidgets.Hidden)]
 	string m_sFactionTwoKey;
+	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_BluforSlots;
+
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_OpforSlots;
+	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_IndforSlots;
+	
+	[Attribute("", UIWidgets.Hidden)]
+	ref array <ref CRF_SlottingGroup> m_CivSlots;
+	
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iBLUFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iOPFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iINDFORTickets;
+
+	[Attribute("0", UIWidgets.Hidden), RplProp()]
+	int m_iCIVTickets;
+	
+	// Advanced Gamemode Settings
+	//------------------------------------------------------------------------------------
+	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bDisableAICrouching;
+	
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bUseAAR;
+	
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bDisableChat;
 
 	// Gearscript Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
 	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
 	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
-	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
-
-	// Respawn Settings
-	//------------------------------------------------------------------------------------
-	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
-	bool m_bRespawnEnabled;
-
-	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
-	bool m_bWaveRespawn;
-
-	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
-	int m_iTimeToRespawn;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
-	int m_iBLUFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
-	int m_iOPFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
-	int m_iINDFORTickets;
-
-	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
-	int m_iCIVTickets;
 
 	// Generic spawn point for spectator camera (handles entity streaming)
 	[RplProp()]
@@ -599,7 +602,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				playerId
 			);
 		}
-
+		
 		// Update slot death state so player gets put into spec
 		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
 		
@@ -611,7 +614,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		entity.GetWorldTransform(deathPosition);
 
 		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3]);
+		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3], true);
 	}
 	
 	/**
@@ -665,22 +668,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		HitZone defaultHitZone = damageManager.GetDefaultHitZone();
 		if (defaultHitZone)
 			defaultHitZone.SetHealth(0);
-		
-		// Schedule restoration of original alive status after death processing completes
-		// This ensures the player shows as alive in AAR even though they were killed for transition
-		GetGame().GetCallqueue().CallLater(RestorePlayerAliveStatusForAAR, 3000, false, slotId, originalDeadState);
-	}
-	
-	/**
-	 * Restores a player's original alive/dead status after they've been moved to spectator for AAR
-	 * @param slotId The slot ID of the player
-	 * @param originalDeadState The player's original dead state before AAR
-	 */
-	void RestorePlayerAliveStatusForAAR(int slotId, bool originalDeadState)
-	{
-		// Restore the player's original alive/dead status
-		// This ensures the AAR display shows their actual mission-end status
-		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
 	}
 	
 	void UpdateGearscriptResource(string factionKey, string resource)
@@ -692,12 +679,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
 			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
 		}
-		Replication.BumpMe();
-	}
-	
-	void ToggleEnableAIInGameState()
-	{
-		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
 		Replication.BumpMe();
 	}
 	

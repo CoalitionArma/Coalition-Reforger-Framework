@@ -43,7 +43,7 @@ class CRF_YourLootEntry : CRF_BaseLootEntry
 // -------------------------
 // Base Class: CRF_BaseLootEntry
 // -------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sPrimaryPrefab"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrimaryPrefab", true)]
 class CRF_BaseLootEntry //Base class for loottype
 {
 	[Attribute(defvalue: "0.5", desc: "Drop weight (0.0–1.0 scale). Higher = more common.", params: "0 1 0.01")]
@@ -75,7 +75,7 @@ class CRF_BaseLootEntry //Base class for loottype
 // -------------------------
 // Class: CRF_WeaponLootEntry
 // -------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_iMagazineCount", "m_sPrimaryPrefab"}, "%1 | %2")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrimaryPrefab", true)]
 class CRF_WeaponLootEntry : CRF_BaseLootEntry
 {
 	[Attribute(defvalue: "{FB5EB0F6D447E858}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_Ball.et", uiwidget: UIWidgets.ResourcePickerThumbnail, params: "et", desc: "Magazine prefab")]
@@ -97,13 +97,13 @@ class CRF_WeaponLootEntry : CRF_BaseLootEntry
 // -------------------------
 // Simple Loot Types: Gear/Bags
 // ------------------------- 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sPrimaryPrefab"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrimaryPrefab", true)]
 class CRF_GearLootEntry : CRF_BaseLootEntry
 {
 	void CRF_GearLootEntry() { m_bIsFlat = false; m_bHasSpread = false; m_fSpreadRadius = 0.3; }
 }
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sPrimaryPrefab"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrimaryPrefab", true)]
 class CRF_BagLootEntry : CRF_BaseLootEntry
 {
 	void CRF_BagLootEntry() { m_bIsFlat = false; m_bHasSpread = false; m_fSpreadRadius = 0.3; }
@@ -112,7 +112,7 @@ class CRF_BagLootEntry : CRF_BaseLootEntry
 // -------------------------
 // Multi-Item Loot Types: Kits and Misc Items
 // -------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_iCount", "m_sPrefab"}, "%1 | %2")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrefab", true)]
 class CRF_KitItem
 {
     [Attribute(defvalue: "", uiwidget: UIWidgets.ResourcePickerThumbnail, params: "et", desc: "Item prefab")]
@@ -145,7 +145,7 @@ class CRF_KitLootEntry : CRF_BaseLootEntry
 	}
 }
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_iCount", "m_sPrefab"}, "%1 | %2")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrefab", true)]
 class CRF_MiscItem
 {
     [Attribute(defvalue: "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et", uiwidget: UIWidgets.ResourcePickerThumbnail, params: "et", desc: "Item prefab")]
@@ -155,7 +155,7 @@ class CRF_MiscItem
     int m_iCount;
 }
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_iPrimaryCount", "m_sPrimaryPrefab"}, "%1 | %2")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleResourceName("m_sPrimaryPrefab", true)]
 class CRF_MiscLootEntry : CRF_BaseLootEntry
 {
     [Attribute(defvalue: "1", desc: "Number of primary items to spawn")]
