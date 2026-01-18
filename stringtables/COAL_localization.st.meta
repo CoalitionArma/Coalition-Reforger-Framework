@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{44C0935F53D620BF}stringtables/COAL_localization.st"
+ Configurations {
+  StringTableResourceClass PC {
+  }
+  StringTableResourceClass XBOX_ONE : PC {
+  }
+  StringTableResourceClass XBOX_SERIES : PC {
+  }
+  StringTableResourceClass PS4 : PC {
+  }
+  StringTableResourceClass PS5 : PC {
+  }
+  StringTableResourceClass HEADLESS : PC {
+  }
+  StringTableResourceClass Xbox : PC {
+  }
+ }
+}

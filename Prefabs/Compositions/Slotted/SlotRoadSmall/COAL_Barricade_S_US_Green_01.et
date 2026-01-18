@@ -1,0 +1,56 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62AF22089ECADF1D}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62AF22089AC99780}" {
+  }
+ }
+ coords 4763.77 27.844 11280.116
+ {
+  $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   {
+    ID "62AF2208DDEA2469"
+    coords 1.274 0 -0.285
+    angleY 91.564
+   }
+   {
+    ID "62AF2208DDEA42A9"
+    coords -1.363 0 -0.213
+    angleY 91.564
+   }
+  }
+  $grp GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
+   {
+    ID "62AF2208DDEA2DBF"
+    coords -1.879 0 -1.133
+   }
+   {
+    ID "62AF2208DDEAF553"
+    coords 1.487 0 -1.133
+   }
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62AF2208DDEA246A"
+    coords -3.474 0 -0.192
+    angleY -85.091
+   }
+   {
+    ID "62AF2208DDEA246B"
+    coords 3.537 0 -0.219
+    angleY -25.361
+   }
+   {
+    ID "62AF2208DDEA2DBA"
+    coords -1.244 0 1.142
+    angleY -79.505
+   }
+   {
+    ID "62AF2208DDEA4152"
+    coords 1.272 0 1.127
+   }
+  }
+ }
+}

@@ -27,18 +27,6 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Needed to see which supply point we take the supply from
-	array<int> GetLocalSupplyCounts()
-	{
-		// Rebuild inventory arrays
-		m_aSupplyItems.Clear();
-		m_aSupplyCounts.Clear();
-		GetGame().GetWorld().QueryEntitiesBySphere(GetOwner().GetOrigin(), 50, FindSupplyCallback, null);
-		
-		return m_aSupplyCounts;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	// Get supply counts array (server-side only - used for calculations)
 	array<int> GetSupplyCounts()
 	{
@@ -64,26 +52,6 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 		}
 		
 		return m_aSupplyItems;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Get full entity array for clients to see which supply points to request supply consumption from
-	array<IEntity> GetLocalEntityArray()
-	{
-		array<IEntity> entityArray = {};
-		foreach (RplId entityId: m_aSupplyItems)
-		{
-			// Safely get the RplComponent - might be null if item was deleted or streamed out
-			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityId));
-			if (!rplComp)
-				continue;
-			
-			IEntity itemEntity = rplComp.GetEntity();
-			if (itemEntity)
-				entityArray.Insert(itemEntity);
-		}
-		
-		return entityArray;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -149,15 +117,11 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 		SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
 		float storedResources = 0;
 		
-		SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);
-			
-		if (!consumer)
-			consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-		
-		if (!consumer)
+		SCR_ResourceConsumer resConsumer = SCR_ResourceSystemHelper.GetStorageConsumer(resourceComponent);
+		if (!resConsumer)
 			return true;
 		
-		storedResources = consumer.GetAggregatedResourceValue();
+		storedResources = resConsumer.GetAggregatedResourceValue();
 		
 		// Safely get RplComponent - entity might not be replicated
 		RplComponent rplComp = RplComponent.Cast(entity.FindComponent(RplComponent));

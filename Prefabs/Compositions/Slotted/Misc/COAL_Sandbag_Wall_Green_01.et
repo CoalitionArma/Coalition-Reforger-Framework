@@ -1,0 +1,67 @@
+GenericEntity : "{5519B339E041781E}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Wall_BarbedWire_US_01.et" {
+ ID "5282DCB5DFC8538F"
+ coords 2.639 0.001 -0.729
+ {
+  GenericEntity {
+   ID "5CB0D991FC809131"
+   coords 1.509 0 0.03
+  }
+  GenericEntity {
+   ID "5CB0D991FC809132"
+   coords 2.516 0 -0.546
+   angleY 56.735
+  }
+  GenericEntity {
+   ID "5CB0D991FC809133"
+   coords -1.357 0 -0.004
+  }
+  GenericEntity {
+   ID "5CB0D991FC80DF02"
+   coords 1.713 0.959 0.004
+  }
+  GenericEntity {
+   ID "5CB0D991FC80DF0F"
+   coords -1.312 0.959 -0.03
+  }
+  GenericEntity {
+   ID "5CB0D991FC833336"
+   coords -2.345 0 0.019
+   angleY -175.063
+  }
+  GenericEntity {
+   ID "5CB0D991FC83334D"
+   coords 2.593 0.95 -0.574
+   angleY 58.723
+  }
+  GenericEntity {
+   ID "5CB0D991FC83334E"
+   coords -3.612 0 0.337
+   angleY -153.699
+  }
+  GenericEntity {
+   ID "5CB0D991FC83658F"
+   coords -0.441 0.573 -0.727
+   angleY -90
+   angleZ 97.394
+  }
+  GenericEntity {
+   ID "5CB0D991FC836596"
+   coords 0.348 0 0.05
+  }
+  GenericEntity {
+   ID "5CB0D991FC836598"
+   coords -2.457 1.095 0.032
+   angleY -174.46
+  }
+  GenericEntity {
+   ID "5CB0D991FC836599"
+   coords 2.476 0 0.177
+   angleY -30
+  }
+  StaticModelEntity {
+   ID "5CB0D991FC833332"
+   coords 0.193 2.167 0.331
+   angleY -90
+  }
+ }
+}

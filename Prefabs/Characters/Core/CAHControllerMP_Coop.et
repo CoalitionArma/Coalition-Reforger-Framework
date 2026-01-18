@@ -1,0 +1,34 @@
+SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerControllerMP.et" {
+ ID "1A9BA6BEFA06E3B1"
+ components {
+  PS_PlayableControllerComponent "{61F533B610BD82A2}" {
+  }
+  SCR_FastTravelComponent "{5DAA74121E45C2EB}" {
+   m_iCooldown 0
+   m_iDistanceToTarget 5
+   m_sDestinationType "SCR_SpawnPoint"
+  }
+  SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
+   InfoDisplays {
+    SCR_ScenarioFrameworkTriggerCountdownDisplay "{61F533B610BD8291}" {
+     m_LayoutPath "{47864BB47AB0B1F4}UI/layouts/HUD/CampaignMP/CampaignMainHUD.layout"
+     m_eLayer ALWAYS_TOP
+     m_bAdaptiveOpacity 1
+    }
+    SCR_CaptureAndHoldObjectiveDisplay "{61F533B1FE99B4FE}" {
+     m_LayoutPath "{56B174A06C7ECFAC}UI/Layouts/HUD/CaptureAndHold/CaptureAndHoldObjectiveLayout.layout"
+     m_eLayer OVERLAY
+     m_rObjectiveHUDLayout "{56B174A06C7ECFAB}UI/Layouts/HUD/CaptureAndHold/CaptureAndHoldObjectiveElementLayout.layout"
+    }
+    SCR_CaptureAndHoldTeamScoreDisplay "{61F533B1F056FE4C}" {
+     m_LayoutPath "{7734F3A7543FD9BE}UI/Layouts/HUD/CaptureAndHold/CaptureAndHoldScoringLayout.layout"
+     m_eLayer OVERLAY
+     m_rObjectiveHUDLayout "{56B174A06C7ECFAB}UI/Layouts/HUD/CaptureAndHold/CaptureAndHoldObjectiveElementLayout.layout"
+    }
+   }
+  }
+  SCR_ScenarioFrameworkTriggerNetworkComponent "{61F533B610BD829E}" {
+  }
+ }
+ SelfRegister 0
+}

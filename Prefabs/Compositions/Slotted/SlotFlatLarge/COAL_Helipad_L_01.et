@@ -1,0 +1,82 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ coords 4771.867 28.248 11286.075
+ {
+  $grp GenericEntity : "{03740F1BD7C816A9}Prefabs/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_yellow.et" {
+   {
+    ID "62B30A738205DD06"
+    components {
+     Hierarchy "{5D6477379AFA93BE}" {
+      Enabled 1
+     }
+    }
+    coords -0.149 -0.404 -13.882
+    angleY 177.42
+   }
+   {
+    ID "62B30A738205DD15"
+    components {
+     Hierarchy "{5D64773799205C60}" {
+      Enabled 1
+     }
+    }
+    coords -0.149 -0.301 13.876
+    angleY -178.202
+   }
+   {
+    ID "62B30A73821A22F0"
+    components {
+     Hierarchy "{5D647737993E689B}" {
+      Enabled 1
+     }
+    }
+    coords -0.058 -0.404 10.876
+    angleY 177.564
+   }
+   {
+    ID "62B30A73821A22F2"
+    components {
+     Hierarchy "{5D64773799317963}" {
+      Enabled 1
+     }
+    }
+    coords -0.024 -0.404 -10.882
+    angleY 4.578
+   }
+   {
+    ID "62B30A73821A4574"
+    components {
+     Hierarchy "{5D647737991C629D}" {
+      Enabled 1
+     }
+    }
+    coords -0.024 -0.301 16.876
+    angleY -9.128
+   }
+   {
+    ID "62B30A73821A4575"
+    components {
+     Hierarchy "{5D6477379AED83C9}" {
+      Enabled 1
+     }
+    }
+    coords -0.013 -0.396 -19.882
+    angleY 170.004
+   }
+   {
+    ID "62B30A73821A457B"
+    components {
+     Hierarchy "{5D647737990F5AB5}" {
+      Enabled 1
+     }
+    }
+    coords -0.058 -0.404 -16.882
+    angleY 6.639
+   }
+  }
+  StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
+   ID "62B30A738205DD0E"
+   coords 0.311 -0.404 0.618
+  }
+ }
+}

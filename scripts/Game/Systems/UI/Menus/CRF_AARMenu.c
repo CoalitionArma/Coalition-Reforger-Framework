@@ -663,12 +663,30 @@ class CRF_AARMenu: ChimeraMenuBase
 	{
 		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		
-		if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
-			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+		// Handle player status (alive/dead/disconnected)
+		if(!slotData.GetIsDeadSlot())
+		{
+			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+			else
+			{
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+				elementComponent.GetDisconnectWidget().SetVisible(true);
+			}
+		}		
 		else
 		{
-			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-			elementComponent.GetDisconnectWidget().SetVisible(true);
+			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+			{
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+				elementComponent.GetDeathWidget().SetVisible(true);
+			}
+			else
+			{
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
+				elementComponent.GetDisconnectWidget().SetVisible(true);
+				elementComponent.GetDeathWidget().SetVisible(true);
+			}
 		}
 		
 		// Disable slot button

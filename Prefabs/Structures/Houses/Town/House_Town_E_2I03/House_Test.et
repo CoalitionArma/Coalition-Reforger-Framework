@@ -1,0 +1,110 @@
+SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{506EDA9D46FC6C06}" {
+   Object "{B054B8C437B0154C}Assets/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03.xob"
+   Materials {
+    MaterialAssignClass "{61E740EF5AA0D5A7}" {
+     SourceMaterial "PRT_130x142_A_EM_32EEDB65CD635FAA"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D5A8}" {
+     SourceMaterial "PRT_130x182_A_EM_0A968C0B348F4507"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D595}" {
+     SourceMaterial "PRT_130x72_A_EM_277322FAFE34929B"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D591}" {
+     SourceMaterial "PRT_90x142_A_EM_C9492DBFAE77AABB"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D592}" {
+     SourceMaterial "PRT_90x182_A_EM_F1317AD1579BB016"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D599}" {
+     SourceMaterial "PRT_DOOR_INT_A_8E55D99EDC035CEA"
+     AssignedMaterial ""
+    }
+    MaterialAssignClass "{61E740EF5AA0D59B}" {
+     SourceMaterial "PRT_Null_8E55D99EDC035CEA"
+     AssignedMaterial ""
+    }
+   }
+  }
+  RigidBody "{506EDA9CBE1B57FF}" {
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ coords 0 0 0
+ SlotBoneMappings {
+  SlotBoneMappingObject "{555CB7A4C8A047C4}" {
+   BonePrefix "socket_door_ext_left_02"
+   Prefab "{79F622DEBB73D581}Prefabs/Structures/BuildingParts/Doors/DoorSet_Village_E_01_L_EXT_COV_B_brown.et"
+  }
+  SlotBoneMappingObject "{5682C6567CF446CB}" {
+   BonePrefix "socket_door_ext_left_01"
+   Prefab "{A460E80C7AB3A1B4}Prefabs/Structures/BuildingParts/Doors/Door_Village_E_A_LEFT_EXT_COV_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A4C353B250}" {
+   BonePrefix "socket_door_int_right"
+   Prefab "{864BABBFAC109FD9}Prefabs/Structures/BuildingParts/Doors/DoorSet_Village_E_02_L_INT_COV_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A4C7F072DD}" {
+   BonePrefix "socket_win_150x142"
+   Prefab "{66F33EA352B6BF22}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_150x142_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A430AE857F}" {
+   BonePrefix "socket_win_150x182"
+   Prefab "{4C667F958AF5713E}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_150x182_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A428CD78D0}" {
+   BonePrefix "socket_win_150x72"
+   Prefab "{F55785300AA0AB66}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_150x72_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A4247AAE85}" {
+   BonePrefix "socket_win_100x142"
+   Prefab "{189F564749841553}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_100x142_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A413C2D40B}" {
+   BonePrefix "socket_win_70x70"
+   Prefab "{B0AE21F6C99146AA}Prefabs/Structures/BuildingParts/Windows/win_roof_70x70_1_B.et"
+  }
+  SlotBoneMappingObject "{555CB7A4072F85A7}" {
+   BonePrefix "socket_entry"
+   Prefab "{FA188839C5E6DAD3}Prefabs/Structures/BuildingParts/Entry/Entry_Direct_01_narrow.et"
+  }
+  SlotBoneMappingObject "{555CB7A4071D7B45}" {
+   BonePrefix "socket_utilitybox"
+   Prefab "{81B7DA7DEF4795FE}Prefabs/Structures/BuildingParts/UtilityBoxes/UtilityBoxExt_01_M.et"
+  }
+  SlotBoneMappingObject "{555CB7A524378985}" {
+   BonePrefix "socket_win_100x182"
+   Prefab "{320A177191C7DB4F}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_100x182_B.et"
+  }
+ }
+ {
+  EnvironmentProbeEntity : "{565470F7BA530E0D}Prefabs/Structures/Core/ProbeHouse_Base.et" {
+   ID "61E740EDE5DA365F"
+   coords 5.069 1.767 0.895
+  }
+  GenericEntity : "{81B7DA7DEF4795FE}Prefabs/Structures/BuildingParts/UtilityBoxes/UtilityBoxExt_01_M.et" {
+   ID "61E740EDE5DA3641"
+   components {
+    Hierarchy "{612AE78C95E98EEB}" {
+     Enabled 1
+     PivotID "socket_utilitybox_01"
+     AutoTransform 1
+    }
+   }
+   coords 0 0 0
+  }
+  GenericEntity : "{8BF0BF5989A14148}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_furniture_02.et" {
+   ID "61E740EDE5DA3665"
+   coords 0 0 0
+  }
+ }
+}

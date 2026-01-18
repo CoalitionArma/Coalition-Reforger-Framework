@@ -1,0 +1,39 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62AF220E689B539F}" {
+   "faction affiliation" "USSR"
+  }
+  Hierarchy "{62AF220E6EC876C9}" {
+  }
+ }
+ coords 4761.343 28.152 11169.86
+ {
+  $grp GenericEntity : "{0B0C600941B2A6A8}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_plastic.et" {
+   {
+    ID "62AF22167E7A7C39"
+    coords 0.989 0 -0.221
+   }
+   {
+    ID "62AF22167E7BD11B"
+    coords -0.806 0 -0.221
+   }
+  }
+  $grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
+   {
+    ID "62AF22167E7BC9A8"
+    coords 2.566 0 -0.187
+    angleY 11.881
+   }
+   {
+    ID "62AF22167E7BD11F"
+    coords -2.544 0 -0.38
+    angleY -13.775
+   }
+  }
+  GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpoint_01_stop.et" {
+   ID "62AF22167E7BC9A9"
+   coords -0.609 0 0.49
+  }
+ }
+}

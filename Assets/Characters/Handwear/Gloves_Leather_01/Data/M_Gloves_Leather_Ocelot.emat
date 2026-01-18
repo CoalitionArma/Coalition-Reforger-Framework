@@ -1,0 +1,5 @@
+MatPBRBasic {
+ Color 0.377 0.083 0.055 1
+ MetalnessScale 0
+ NMOMap "{DA83B05268ACF6C5}Assets/Characters/Handwear/Gloves_Leather_01/Data/Glove_Leather_01_NMO.edds"
+}

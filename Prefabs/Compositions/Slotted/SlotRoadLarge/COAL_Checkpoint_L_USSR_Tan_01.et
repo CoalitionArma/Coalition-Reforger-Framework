@@ -1,0 +1,172 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62AD09251E81F601}" {
+   "faction affiliation" "USSR"
+  }
+  SCR_CampaignBuildingCompositionComponent "{5E96A067C097D570}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{5E96A067C355978C}" {
+    m_sSoundEventName "SOUND_BUILD_CHECKPOINT_MG"
+   }
+  }
+  Hierarchy "{62AD092557FA3DE5}" {
+  }
+ }
+ coords 4761.675 27.844 11231.967
+ {
+  Turret : "{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et" {
+   ID "62AD0924BAF00694"
+   coords 5.751 0.59 10.246
+  }
+  GenericEntity : "{79AA43911CC6C3E8}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Small_Soviet.et" {
+   ID "62AD0924BAF07D42"
+   coords 6.119 0 7.79
+   angleY -4.169
+  }
+  $grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
+   {
+    ID "62AD0924BAF0F396"
+    coords 7.578 0 10.022
+    angleY 34.99
+   }
+   {
+    ID "62AD0924BAF1791E"
+    coords 3.951 0 9.993
+    angleY -38.025
+   }
+   {
+    ID "62AD0924BAFED4EF"
+    coords -6.952 0 -4.458
+    angleY -144.115
+   }
+  }
+  $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+   {
+    ID "62AD0924BAFE9DC3"
+    coords -4.784 0 -4.949
+   }
+   {
+    ID "62AD0924BAFE9DFC"
+    coords -7.715 0 -2.354
+    angleY -90.529
+   }
+  }
+  $grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
+   {
+    ID "62AD0924BAFD793E"
+    coords 3.449 0 3.403
+    angleY -30.519
+   }
+   {
+    ID "62AD0924BAFDF84B"
+    coords 9.626 0 5.964
+    angleY -30.519
+   }
+   {
+    ID "62AD0924BAFE0829"
+    coords -4.136 0 10.442
+    angleY 20.941
+   }
+   {
+    ID "62AD0924BAFE4380"
+    coords -9.146 0 6.242
+    angleY 20.941
+   }
+   {
+    ID "62AD0924BAFE4381"
+    coords -8.604 0 10.396
+    angleY 20.941
+   }
+   {
+    ID "62AD0924BAFED4EB"
+    coords 3.176 0 10.749
+    angleY 20.941
+   }
+   {
+    ID "62AD0924BAFED4EC"
+    coords 8.366 0 11.034
+    angleY -30.519
+   }
+  }
+  $grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+   {
+    ID "62AD0924BAF00697"
+    coords 3.325 0 4.79
+    angleY 88.935
+   }
+   {
+    ID "62AD0924BAF07D49"
+    coords 8.387 0 4.884
+    angleY 88.935
+   }
+   {
+    ID "62AD0924BAFE9DC2"
+    coords 3.827 0 -5.606
+    angleY 179.771
+   }
+   {
+    ID "62AD0924BAFEA3C3"
+    coords 7.578 0 -4.097
+    angleY -88.224
+   }
+   {
+    ID "62AD0924BAFF2A88"
+    coords -7.744 0 7.778
+    angleY 92.004
+   }
+   {
+    ID "62AD0924BAFF8756"
+    coords -3.988 0 9.272
+   }
+  }
+  $grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+   {
+    ID "62AD0924BAF0068F"
+    coords 8.325 0 7.361
+    angleY -90.304
+   }
+   {
+    ID "62AD0924BAF0F395"
+    coords 3.233 0 7.335
+    angleY -90.304
+   }
+   {
+    ID "62AD0924BAFEA3C0"
+    coords 6.533 0 -5.663
+    angleY 179.771
+   }
+   {
+    ID "62AD0924BAFF8757"
+    coords -6.693 0 9.341
+   }
+  }
+  $grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {
+   {
+    ID "62AD0924BAF17919"
+    coords 5.754 0 10.031
+    angleY 89.484
+   }
+   {
+    ID "62AD0924BAFCF118"
+    coords -2.093 0 30.892
+    angleY -90.604
+   }
+  }
+  GenericEntity : "{DA34DC311BF6D0CB}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_USSR_01.et" {
+   ID "62AD0924BAFCF11F"
+   coords 5.848 0.759 -5.755
+   angleY -179.88
+  }
+  $grp GenericEntity : "{DDF59362051B28BC}Prefabs/Props/Military/Fortification/BarbedTape_KnifeRest.et" {
+   {
+    ID "62AD0924BAFD793F"
+    coords -8.74 -0.297 8.274
+   }
+   {
+    ID "62AD0924BAFDF846"
+    coords -6.259 -0.396 10.644
+    angleY 91.578
+   }
+  }
+ }
+}

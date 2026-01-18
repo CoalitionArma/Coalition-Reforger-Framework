@@ -1,0 +1,53 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62AF220FF5FB478D}" {
+   "faction affiliation" "USSR"
+  }
+  Hierarchy "{62AF220FF2E2D56C}" {
+  }
+ }
+ coords 4764.826 27.844 11262.245
+ {
+  $grp GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
+   {
+    ID "62AF220FC45C1490"
+    coords -1.689 0 -0.553
+   }
+   {
+    ID "62AF220FC45D6BD8"
+    coords 1.678 0 -0.553
+   }
+  }
+  $grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
+   {
+    ID "62AF220FC45D8C9D"
+    coords 1.828 -0 1.752
+   }
+   {
+    ID "62AF220FC45D8C9E"
+    coords -1.744 -0 1.671
+   }
+   {
+    ID "62AF220FC45D8CA3"
+    coords -4.445 -0 -0.232
+   }
+   {
+    ID "62AF220FC45DDE13"
+    coords 4.569 -0 -0.437
+   }
+  }
+  $grp GenericEntity : "{DDF59362051B28BC}Prefabs/Props/Military/Fortification/BarbedTape_KnifeRest.et" {
+   {
+    ID "62AF220FC45DDE18"
+    coords -1.489 -0.422 0.538
+    angleY -91.114
+   }
+   {
+    ID "62AF220FC45DDE1B"
+    coords 1.968 -0.422 0.605
+    angleY -91.114
+   }
+  }
+ }
+}

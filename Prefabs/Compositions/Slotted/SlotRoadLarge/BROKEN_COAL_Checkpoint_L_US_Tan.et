@@ -1,0 +1,98 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ coords 4768.678 27.844 11259.668
+ {
+  $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   {
+    ID "62AD5BF418D65C5F"
+    coords 4.79 -0.001 -5.266
+    angleY -88.021
+   }
+   {
+    ID "62AD5BF418D6604B"
+    coords -6.212 -0.001 -7.91
+    angleY -85.7
+   }
+   {
+    ID "62AD5BF418D6604C"
+    coords -9.047 -0.001 -5.546
+    angleY -15.162
+   }
+   {
+    ID "62AD5BF418D6604D"
+    coords -9.093 -0.001 2.258
+   }
+  }
+  $grp StaticModelEntity : "{46904AF5D473FB75}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long_noStake.et" {
+   {
+    ID "62AD5BF418D6604F"
+    coords -7.205 -0.001 4.815
+    angleY 88.158
+   }
+   {
+    ID "62AD5BF418D66070"
+    coords -3.84 -0.001 4.923
+    angleY 88.158
+   }
+  }
+  GenericEntity : "{70F4AEC6D6641173}Prefabs/Structures/Military/CamoNets/US/CamoNet_Small_US.et" {
+   ID "62AD5BF418D65C52"
+   coords -5.202 0 2.414
+  }
+  Turret : "{73530808E4B455BA}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et" {
+   ID "62AD5BF418D65C55"
+   coords -5.14 0.695 4.305
+  }
+  GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+   ID "62AD5BF418D66075"
+   coords 4.732 0.796 -6.642
+   angleY 178.735
+  }
+  StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+   ID "62AD5BF418D6607B"
+   coords 5.151 -0.001 5.107
+   angleY -86.239
+  }
+  $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   {
+    ID "62AD5BF418D66079"
+    coords 4.447 0.597 -5.871
+    angleX -0.127
+    angleY 89.554
+    angleZ -74.1
+   }
+   {
+    ID "62AD5BF418D6607A"
+    coords 4.563 0.544 -7.302
+    angleY -90.133
+    angleZ -67.934
+   }
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62AD5BF418D6607E"
+    coords -9.397 -0.001 4.363
+    angleY 12.115
+   }
+   {
+    ID "62AD5BF418D6607F"
+    coords -8.073 -0.001 5.354
+    angleY 34.372
+   }
+   {
+    ID "62AD5BF418D6BC3F"
+    coords -2.688 -0.001 5.29
+    angleY 34.372
+   }
+   {
+    ID "62AD5BF418D6DE09"
+    coords 3.158 -0.001 5.217
+    angleY 19.322
+   }
+   {
+    ID "62AD5BF418D6DE16"
+    coords 6.724 -0.001 5.074
+   }
+  }
+ }
+}

@@ -55,17 +55,6 @@ class CRF_SlottingManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		
-		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
-		GetGame().GetCallqueue().Call(InitilizeSlots);
-	}
-	
-	protected void InitilizeSlots()
-	{
-		InitilizeSlotsForFaction("BLUFOR", m_Gamemode.m_BluforSlots);
-		InitilizeSlotsForFaction("OPFOR", m_Gamemode.m_OpforSlots);
-		InitilizeSlotsForFaction("INDFOR", m_Gamemode.m_IndforSlots);
-		InitilizeSlotsForFaction("CIV", m_Gamemode.m_CivSlots);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -83,14 +72,25 @@ class CRF_SlottingManager : ScriptComponent
 		};
 	}
 	
-	void UpdateSlotRole(int slotId, CRF_EGearRole role)
+	void UpdateSlotResource(int slotId, ResourceName resource)
 	{
 		CRF_SlotDataContainer slotData = GetSlotData(slotId);
 		
 		if (slotData)
 		{
-			slotData.SetSlotRole(role);
-			m_RplBroadcastManager.UpdateSlotRoleDelta(slotId, role);
+			slotData.SetSlotResource(resource);
+			m_RplBroadcastManager.UpdateSlotResourceDelta(slotId, resource);
+		};
+	}
+	
+	void UpdateSlotDeathState(int slotId, bool input)
+	{
+		CRF_SlotDataContainer slotData = GetSlotData(slotId);
+		
+		if (slotData)
+		{
+			slotData.SetIsDeadSlot(input);
+			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
 		};
 	}
 	
@@ -127,17 +127,6 @@ class CRF_SlottingManager : ScriptComponent
 				slotData.SetSlotCurrentPlayerId(0);
 			
 			m_RplBroadcastManager.UpdateSlotLockedDelta(slotId, isLocked);
-		};
-	}
-	
-	void UpdateSlotDeathState(int slotId, bool input)
-	{
-		CRF_SlotDataContainer slotData = GetSlotData(slotId);
-		
-		if (slotData)
-		{
-			slotData.SetIsDeadSlot(input);
-			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
 		};
 	}
 	
@@ -252,7 +241,7 @@ class CRF_SlottingManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Helper method to get character from RplId
-	static SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
+	SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
 	{
 		if (charId == RplId.Invalid())
 			return null;
@@ -274,8 +263,6 @@ class CRF_SlottingManager : ScriptComponent
 			if (slotData.GetSlotCurrentGroup() == rplId)
 				outputArray.Insert(slotID);
 		}
-		
-		outputArray.Sort();
 		
 		return outputArray;
 	}
@@ -370,6 +357,16 @@ class CRF_SlottingManager : ScriptComponent
 			return ResourceName.Empty;
 			
 		return slotData.GetSlotResource();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void GetPlayerSlotVector(int playerId, out vector vec[4])
+	{
+		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
+		if (!slotData)
+			return;
+			
+		slotData.GetSlotVector(vec);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -513,7 +510,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 		
 		vector playerSlotVector[4];
-		CRF_RespawnManager.GetInstance().FindInitalSpawnLocation(GetPlayerSlotFaction(playerId).GetFactionKey(), GetPlayerSlotGroup(playerId), playerSlotVector);
+		GetPlayerSlotVector(playerId, playerSlotVector);
 
 		// Setup spawn parameters
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -526,8 +523,9 @@ class CRF_SlottingManager : ScriptComponent
 				if (overrideLocation[i] == vector.Zero)
 					overrideLocation[i] = playerSlotVector[i];
 			}
-			
+		
 			spawnParams.Transform[3] = overrideLocation[3];
+		
 		} else {
 			spawnParams.Transform = playerSlotVector;
 		}
@@ -558,7 +556,10 @@ class CRF_SlottingManager : ScriptComponent
 		// Update slot data
 		RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (charRplComp)
+		{
 			UpdateSlotCharacter(slotId, charRplComp.Id());
+			UpdateSlotDeathState(slotId, false);
+		}
 		
 		// Set playable flag if component exists
 		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(
@@ -598,82 +599,159 @@ class CRF_SlottingManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void InitilizeSlotsForFaction(FactionKey factionKey, array <ref CRF_SlottingGroup> factionSlots)
+	void AddPlayableEntityToManager(IEntity entity)
 	{
-		if (factionKey.IsEmpty() || factionSlots.IsEmpty())
-			return;
-		
-		InitilizeGroupCallsignsForFaction(factionKey, factionSlots);
-		
 		if (RplSession.Mode() == RplMode.Client)
 			return;
+			
+		if (!entity)
+			return;
 		
-		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
-		{	
-			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
-			SCR_Faction scrFaction = SCR_Faction.Cast(faction);
+		// Check if entity is playable
+		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(
+			entity.FindComponent(CRF_PlayableCharacter)
+		);
+		
+		if (!playableCharComp)
+			return;
+		
+		// Get required components
+		SCR_EditableCharacterComponent editableCharComp = SCR_EditableCharacterComponent.Cast(
+			entity.FindComponent(SCR_EditableCharacterComponent)
+		);
+		
+		if (!editableCharComp)
+			return;
 			
-			CRF_EFlagType flagType = slotGroup.m_FlagType;
+		ChimeraAIControlComponent aiControlComp = ChimeraAIControlComponent.Cast(
+			entity.FindComponent(ChimeraAIControlComponent)
+		);
+		
+		if (!aiControlComp)
+			return;
 			
-			if(scrFaction && scrFaction.GetFlagName(0))
-			{
-				TStringArray flagArray = {};
-				scrFaction.GetFlagNames(flagArray);
-				if((flagArray.Count() - 1) < flagType)
-					flagType = CRF_EFlagType.INFANTRY;
-			};
+		SCR_AIGroup group = SCR_AIGroup.Cast(aiControlComp.GetControlAIAgent().GetParentGroup());
+		if (!group || !group.IsGroupPlayable())
+			return;
+		
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(entity.GetPrefabData().GetPrefabName());
+		
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+		
+		if (!role || !roleConfig || !rolesConfig)
+			return;
 			
-			SCR_AIGroup group = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(scrFaction);
-			group.SetFaction(scrFaction);
-			group.SetGroupFlag(flagType, true);
-			group.SetCanDeleteIfNoPlayer(false);
-			group.SetDeleteWhenEmpty(false);
-			group.SetMaxMembers(16);
-			
-			foreach(CRF_EGearRole role : slotGroup.m_aSlots)
-			{
-				CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
-				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
-				
-				if (!role || !roleConfig || !rolesConfig)
-					return;
-					
-				// Create and configure new slot data
-				CRF_SlotDataContainer slotData = new CRF_SlotDataContainer;
-				
-				// Set group and faction
-				RplComponent groupRplComp = RplComponent.Cast(group.FindComponent(RplComponent));
-				slotData.SetSlotCurrentGroup(groupRplComp.Id());
-				slotData.SetSlotFactionKey(factionKey);
-				
-				// Set resource and character ID
-				slotData.SetSlotRole(role);
-						
-				// Add to slots map
-				m_iLatestSlotID++;
-				slotData.SetSlotId(m_iLatestSlotID);
-				m_mSlotsMap.Set(m_iLatestSlotID, slotData);
-				
-				// Broadcast new slot to all clients
-				m_RplBroadcastManager.UpdateSlotData(slotData);
-			}
+		// Create and configure new slot data
+		CRF_SlotDataContainer slotData = new CRF_SlotDataContainer;
+		
+		// Set group and faction
+		RplComponent groupRplComp = RplComponent.Cast(group.FindComponent(RplComponent));
+		slotData.SetSlotCurrentGroup(groupRplComp.Id());
+		slotData.SetSlotFactionKey(group.GetFaction().GetFactionKey());
+		
+		switch(group.GetFaction().GetFactionKey())
+		{
+			case "BLUFOR": 
+				m_vLastSlotRegisteredPosition[0] = entity.GetOrigin();
+				break;
+			case "OPFOR": 
+				m_vLastSlotRegisteredPosition[1] = entity.GetOrigin();
+				break;
+			case "INDFOR": 
+				m_vLastSlotRegisteredPosition[2] = entity.GetOrigin();
+				break;
+			case "CIV": 
+				m_vLastSlotRegisteredPosition[3] = entity.GetOrigin();
+				break;
 		}
+		
+		// Set position
+		vector tempVec[4];
+		entity.GetWorldTransform(tempVec);
+		slotData.SetSlotVector(tempVec);
+		
+		// Set resource and character ID
+		slotData.SetSlotResource(entity.GetPrefabData().GetPrefabName());
+		
+		RplComponent entityRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
+		slotData.SetSlotCurrentCharacter(entityRplComp.Id());
+		
+		string customSlottingName = m_GearscriptManager.GetCustomRoleName(group.GetFaction().GetFactionKey(), role);
+		
+		// Set slot name
+		if (!customSlottingName.IsEmpty())
+			slotData.SetSlotName(customSlottingName);
+		else if (!roleConfig.m_sRoleName.IsEmpty())
+			slotData.SetSlotName(roleConfig.m_sRoleName);
+		else
+			slotData.SetSlotName(editableCharComp.GetDisplayName());
+		
+		// Set icon
+		if (!roleConfig.m_RoleIcon.IsEmpty())
+			slotData.SetSlotIcon(roleConfig.m_RoleIcon);
+		else
+			slotData.SetSlotIcon(editableCharComp.GetInfo().GetIconPath());
+		
+		// Set type
+		slotData.SetSlotType(roleConfig.m_SlottingType);
+				
+		// Add to slots map
+		m_iLatestSlotID++;
+		slotData.SetSlotId(m_iLatestSlotID);
+		m_mSlotsMap.Set(m_iLatestSlotID, slotData);
+		
+		// Broadcast new slot to all clients
+		m_RplBroadcastManager.UpdateSlotData(slotData);
+		
+		// Delete entity if not in game state
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+			SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 	
-	protected void InitilizeGroupCallsignsForFaction(FactionKey factionKey, array <ref CRF_SlottingGroup> factionSlots)
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Generate a random position within specified radius to spread out initial entity spawns
+	* This reduces replication congestion when many entities spawn in the same location
+	* @param centerPosition Original spawn position to spread from
+	* @param maxRadius Maximum radius in meters to spread entities (default 500m)
+	* @return New spawn position within the spread radius
+	*/
+	protected vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
 	{
-		array<ref SCR_CallsignInfo> callsignArray = new array<ref SCR_CallsignInfo>;
-		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
+		// Generate random angle (0-360 degrees)
+		float randomAngle = Math.RandomFloat(0, 2 * Math.PI);
+		
+		// Generate random distance within radius (using square root for uniform distribution)
+		float randomDistance = Math.Sqrt(Math.RandomFloat(0, 1)) * maxRadius;
+		
+		// Calculate offset from center
+		float offsetX = Math.Cos(randomAngle) * randomDistance;
+		float offsetZ = Math.Sin(randomAngle) * randomDistance;
+		
+		// Apply offset to center position
+		vector spreadPosition = centerPosition;
+		spreadPosition[0] = centerPosition[0] + offsetX;
+		spreadPosition[2] = centerPosition[2] + offsetZ;
+		
+		// Attempt to find valid terrain position, fallback to original logic if needed
+		vector finalPosition;
+		bool foundValidPosition = SCR_WorldTools.FindEmptyTerrainPosition(finalPosition, spreadPosition, 25);
+		
+		if (!foundValidPosition)
 		{
-			ref SCR_CallsignInfo callsignInfo = new SCR_CallsignInfo;
-			callsignInfo.SetCallsign(slotGroup.m_sCallsign);
-			callsignArray.Insert(callsignInfo);
+			// Fallback: try original position with smaller search radius
+			bool foundFallback = SCR_WorldTools.FindEmptyTerrainPosition(finalPosition, centerPosition, 12);
+			if (!foundFallback)
+				finalPosition = centerPosition; // Last resort: use original position
 		}
 		
-		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
-		SCR_Faction scrFaction = SCR_Faction.Cast(faction);
-		
-		scrFaction.GetCallsignInfo().SetSquadArray(callsignArray);
+		Print(string.Format("GenerateRandomSpreadPosition: Original pos [%1, %2, %3] -> Spread pos [%4, %5, %6] (distance: %7m)", 
+			centerPosition[0], centerPosition[1], centerPosition[2],
+			finalPosition[0], finalPosition[1], finalPosition[2],
+			vector.Distance(centerPosition, finalPosition)), LogLevel.VERBOSE);
+			
+		return finalPosition;
 	}
 	
 	//------------------------------------------------------------------------------------------------

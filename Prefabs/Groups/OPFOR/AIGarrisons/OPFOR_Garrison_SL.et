@@ -1,0 +1,22 @@
+SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+ ID "0000000000000001"
+ components {
+  SCR_AIGroupMovementComponent "{6126A0E02097C7FF}" {
+   "Min Speed" 0
+   "Max Speed" 0
+  }
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "Garrison SL"
+    m_aAuthoredLabels {
+     ENTITYTYPE_CHARACTER FACTION_CRF_OPFOR TRAIT_SUPPRESSIVE TRAIT_ARMORPIERCING TRAIT_EXPLOSIVE
+    }
+   }
+  }
+ }
+ coords 127.071 1 173.351
+ m_aUnitPrefabSlots {
+  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
+ }
+ m_bIsGarrisonGroup 1
+}

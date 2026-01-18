@@ -1,0 +1,578 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B30A6AF4FE5489}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B30A6AF93B383A}" {
+  }
+ }
+ coords 4771.125 31.765 11726.301
+ {
+  $grp GenericEntity : "{0B0C600941B2A6A8}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_plastic.et" {
+   {
+    ID "62B30A6AF2753E70"
+    components {
+     Hierarchy "{5D6477377113D4FB}" {
+      Enabled 1
+     }
+    }
+    coords -2.621 -3.009 -17.354
+    angleY -1.946
+   }
+   {
+    ID "62B30A6AF27597F0"
+    components {
+     Hierarchy "{5D647737713E08E0}" {
+      Enabled 1
+     }
+    }
+    coords 2.291 -3.015 -17.355
+    angleY 1.091
+   }
+   {
+    ID "62B30A6AF276D2E8"
+    components {
+     Hierarchy "{5D6477377113D4FB}" {
+      Enabled 1
+     }
+    }
+    coords 6.479 -3.369 15.58
+    angleY 178.67
+   }
+   {
+    ID "62B30A6AF277F4C6"
+    components {
+     Hierarchy "{5D647737713E08E0}" {
+      Enabled 1
+     }
+    }
+    coords -6.529 -3.386 15.489
+    angleY -178.293
+   }
+  }
+  $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   {
+    ID "62B30A6AF2759D84"
+    components {
+     Hierarchy "{5D647737715ACC99}" {
+      Enabled 1
+     }
+    }
+    coords 4.065 -3.015 -18.209
+    angleY -91.351
+   }
+   {
+    ID "62B30A6AF27616D4"
+    components {
+     Hierarchy "{5D647737712C5367}" {
+      Enabled 1
+     }
+    }
+    coords -4.915 -3.015 -18.116
+    angleY -86.224
+   }
+   {
+    ID "62B30A6AF2774815"
+    components {
+     Hierarchy "{5D647737712C5367}" {
+      Enabled 1
+     }
+    }
+    coords 8.78 -3.375 16.316
+    angleY 94.392
+   }
+   {
+    ID "62B30A6AF2774816"
+    components {
+     Hierarchy "{5D647737715ACC99}" {
+      Enabled 1
+     }
+    }
+    coords -8.293 -3.387 16.36
+    angleY 89.265
+   }
+  }
+  $grp StaticModelEntity : "{2632E70989CA0CFC}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_FabricCentral02.et" {
+   {
+    ID "62B30A6AF2703893"
+    coords -8.116 -2.984 -10.19
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF270A572"
+    coords -8.015 -3.005 -0.971
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF2713622"
+    coords -7.984 -3.128 6.891
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF272B0E2"
+    coords 7.639 -3.204 7.024
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF273BF37"
+    coords 7.628 -3.183 -1.848
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF274497C"
+    coords 7.504 -3.118 -10.153
+    angleX 0.5
+    angleY 90
+   }
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B30A6AF2753E6F"
+    components {
+     Hierarchy "{5D64773770A28553}" {
+      Enabled 1
+     }
+    }
+    coords -4.363 -3.01 -17.392
+    angleY 180
+   }
+   {
+    ID "62B30A6AF27597F3"
+    components {
+     Hierarchy "{5D64773770B7456B}" {
+      Enabled 1
+     }
+    }
+    coords 0.64 -3.011 -17.328
+    angleY -180
+   }
+   {
+    ID "62B30A6AF2759D88"
+    components {
+     Hierarchy "{5D647737709D65C6}" {
+      Enabled 1
+     }
+    }
+    coords 3.653 -3.015 -17.399
+    angleY 2.034
+   }
+   {
+    ID "62B30A6AF275BEB2"
+    components {
+     Hierarchy "{5D647737708852D6}" {
+      Enabled 1
+     }
+    }
+    coords -0.927 -3.008 -17.245
+    angleY -2.291
+   }
+   {
+    ID "62B30A6AF276AAC3"
+    components {
+     Hierarchy "{5D64773770B7456B}" {
+      Enabled 1
+     }
+    }
+    coords -4.878 -3.382 15.443
+    angleY 0.616
+   }
+   {
+    ID "62B30A6AF276D2E9"
+    components {
+     Hierarchy "{5D64773770A28553}" {
+      Enabled 1
+     }
+    }
+    coords 8.22 -3.37 15.598
+    angleY 0.616
+   }
+   {
+    ID "62B30A6AF276DC54"
+    components {
+     Hierarchy "{5D647737708852D6}" {
+      Enabled 1
+     }
+    }
+    coords 4.783 -3.368 15.489
+    angleY 178.325
+   }
+   {
+    ID "62B30A6AF2782B21"
+    components {
+     Hierarchy "{5D647737709D65C6}" {
+      Enabled 1
+     }
+    }
+    coords -7.89 -3.386 15.546
+    angleY -177.35
+   }
+  }
+  $grp StaticModelEntity : "{4A66D3E9350E83D2}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_FabricCentral01.et" {
+   {
+    ID "62B30A6AF2703890"
+    coords -10.567 -2.984 -10.191
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF270A573"
+    coords -10.466 -3.005 -0.93
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF2711379"
+    coords -10.434 -3.126 6.825
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF27210E6"
+    coords 10.088 -3.234 7.024
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF2737847"
+    coords 10.078 -3.203 -1.903
+    angleX 0.5
+    angleY 90
+   }
+   {
+    ID "62B30A6AF2746039"
+    coords 9.953 -3.157 -10.137
+    angleX 0.5
+    angleY 90
+   }
+  }
+  GenericEntity : "{73F79A126D469E2D}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/SignFlag_US_01.et" {
+   ID "62B30A6AF2749AC9"
+   components {
+    Hierarchy "{5D6477377D02FE71}" {
+     Enabled 1
+    }
+   }
+   coords 3.357 -3.261 15.463
+   angleX -0.968
+   angleY -2.617
+   angleZ 0.697
+  }
+  $grp GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   {
+    ID "62B30A6AF2749AC1"
+    components {
+     Hierarchy "{5D6477377DF91FB2}" {
+      Enabled 1
+     }
+    }
+    coords -7.214 -3.01 -17.385
+    angleY 180
+   }
+   {
+    ID "62B30A6AF2753E6B"
+    components {
+     Hierarchy "{5D6477377DA0553A}" {
+      Enabled 1
+     }
+    }
+    coords -6.044 -3.01 -17.385
+   }
+   {
+    ID "62B30A6AF2759D89"
+    components {
+     Hierarchy "{5D6477377DE57783}" {
+      Enabled 1
+     }
+    }
+    coords 5.031 -3.015 -17.411
+   }
+   {
+    ID "62B30A6AF276AAFC"
+    components {
+     Hierarchy "{5D6477377DF91FB2}" {
+      Enabled 1
+     }
+    }
+    coords 11.071 -3.37 15.561
+    angleY 0.616
+   }
+   {
+    ID "62B30A6AF276F5BB"
+    components {
+     Hierarchy "{5D6477377DA0553A}" {
+      Enabled 1
+     }
+    }
+    coords 9.902 -3.37 15.575
+    angleY -179.384
+   }
+   {
+    ID "62B30A6AF2782B20"
+    components {
+     Hierarchy "{5D6477377DE57783}" {
+      Enabled 1
+     }
+    }
+    coords -9.268 -3.386 15.571
+    angleY -179.384
+   }
+  }
+  $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+   {
+    ID "62B30A6AF2759D80"
+    components {
+     Hierarchy "{5D6477377CAA9F2E}" {
+      Enabled 1
+     }
+    }
+    coords -2.029 -3.015 -18.163
+    angleY -90
+   }
+   {
+    ID "62B30A6AF2759D81"
+    components {
+     Hierarchy "{5D6477377CD74FD6}" {
+      Enabled 1
+     }
+    }
+    coords 1.241 -3.015 -18.163
+    angleY -90
+   }
+   {
+    ID "62B30A6AF27616D5"
+    components {
+     Hierarchy "{5D6477377CD74FD6}" {
+      Enabled 1
+     }
+    }
+    coords -5.47 -3.386 16.285
+    angleY 90.616
+   }
+   {
+    ID "62B30A6AF277BE9B"
+    components {
+     Hierarchy "{5D6477377CAA9F2E}" {
+      Enabled 1
+     }
+    }
+    coords 5.896 -3.375 16.395
+    angleY 90.616
+   }
+  }
+  GenericEntity : "{972F01488E5B23C2}Prefabs/Structures/Military/CamoNets/US/CamoNet_Medium_Top_US.et" {
+   ID "62B30A6AF27038A1"
+   coords 0.544 -3.041 -1.474
+   angleY 91.455
+  }
+  $grp StaticModelEntity : "{C3AEABF0852F9B97}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_FabricCentral03.et" {
+   {
+    ID "62B30A6AF2703848"
+    coords -12.967 -2.984 -10.192
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF2703854"
+      coords -0.002 -0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF2703853"
+    coords -12.865 -3.005 -0.887
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF27070B0"
+      coords 0 0 0
+     }
+    }
+   }
+   {
+    ID "62B30A6AF270389E"
+    coords -5.688 -2.984 -10.189
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF270389B"
+      coords -0.002 0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF270A571"
+    coords -5.588 -3.004 -1.013
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF2708AC3"
+      coords 0 0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF2711376"
+    coords -12.833 -3.125 6.764
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF2715B12"
+      coords -0.002 0 0
+     }
+    }
+   }
+   {
+    ID "62B30A6AF2712648"
+    coords -5.556 -3.128 6.957
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF2712649"
+      coords 0 0 0
+     }
+    }
+   }
+   {
+    ID "62B30A6AF271ED8D"
+    coords 12.489 -3.248 7.024
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF271ED8C"
+      coords -0.002 0 0
+     }
+    }
+   }
+   {
+    ID "62B30A6AF272B0E1"
+    coords 5.208 -3.197 7.024
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF272C77B"
+      coords -0.002 0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF27312C3"
+    coords 12.478 -3.233 -1.952
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF27312C2"
+      coords 0 0 0
+     }
+    }
+   }
+   {
+    ID "62B30A6AF273DD23"
+    coords 5.198 -3.127 -1.797
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF273DD24"
+      coords 0 0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF274497F"
+    coords 5.074 -3.081 -10.167
+    angleX -0.5
+    angleY 90
+    {
+     StaticModelEntity : "{6FDFC92CC73E4A69}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorOpened.et" {
+      ID "62B30A6AF2749AB5"
+      coords 0 0 0.001
+     }
+    }
+   }
+   {
+    ID "62B30A6AF27460C8"
+    coords 12.353 -3.194 -10.117
+    angleX 0.5
+    angleY 90
+    {
+     StaticModelEntity : "{9F5C43D4CD7A1963}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_DoorClosed.et" {
+      ID "62B30A6AF2746038"
+      coords 0 0 0.001
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   {
+    ID "62B30A6AF2759D8C"
+    components {
+     Hierarchy "{5D647737C04177F0}" {
+      Enabled 1
+     }
+    }
+    coords -2.702 -2.346 -16.644
+    angleY -90
+    angleZ -94.769
+   }
+   {
+    ID "62B30A6AF2759D8D"
+    components {
+     Hierarchy "{5D647737C04177F0}" {
+      Enabled 1
+     }
+    }
+    coords 2.082 -2.363 -16.642
+    angleY -90
+    angleZ -94.769
+   }
+   {
+    ID "62B30A6AF278034B"
+    components {
+     Hierarchy "{5D647737C04177F0}" {
+      Enabled 1
+     }
+    }
+    coords 6.551 -2.676 14.862
+    angleY 90.616
+    angleZ -93.714
+   }
+   {
+    ID "62B30A6AF27870EA"
+    components {
+     Hierarchy "{5D647737C04177F0}" {
+      Enabled 1
+     }
+    }
+    coords -6.326 -2.647 14.766
+    angleY 90.616
+    angleZ -94.612
+   }
+  }
+  GenericEntity : "{D174C165E264E087}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_BaseEntrance_US_01.et" {
+   ID "62B30A6AF2749ACE"
+   components {
+    Hierarchy "{5D6477377A5863C7}" {
+     Enabled 1
+    }
+   }
+   coords -3.447 -3.259 15.385
+   angleX 0.93
+   angleY 3.453
+   angleZ -0.979
+  }
+ }
+}

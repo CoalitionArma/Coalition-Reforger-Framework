@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{12B45D04A89C9C89}Assets/Data/t_bionic_arm_n.edds"
+ Configurations {
+  PNGResourceClass PC : "{CEA87F769FD618D2}Configs/System/ResourceTypes/PC/TextureNormalMap.conf" {
+  }
+  PNGResourceClass XBOX_ONE : "{5B84FAB5D39FB8AA}Configs/System/ResourceTypes/XBOX_ONE/TextureNormalMap.conf" {
+  }
+  PNGResourceClass XBOX_SERIES : "{1B409AA3788B720F}Configs/System/ResourceTypes/XBOX_SERIES/TextureNormalMap.conf" {
+  }
+  PNGResourceClass PS4 : "{9533DFD9EDDCEDD2}Configs/System/ResourceTypes/PS4/TextureNormalMap.conf" {
+  }
+  PNGResourceClass PS5 : "{30F530559C17A96E}configs/ResourceTypes/PS5/TextureNormalMap.conf" {
+  }
+  PNGResourceClass HEADLESS : "{FC84ABE4B37D0DA0}Configs/System/ResourceTypes/HEADLESS/TextureNormalMap.conf" {
+  }
+  PNGResourceClass Xbox : PC {
+  }
+ }
+}

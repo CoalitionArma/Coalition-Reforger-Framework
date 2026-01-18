@@ -1,0 +1,198 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B361967A3A5560}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B3619675900E38}" {
+  }
+ }
+ coords 0 0 0
+ {
+  StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   ID "62B77329178954DD"
+   components {
+    Hierarchy "{5CB0D991B00CC67F}" {
+     Enabled 1
+    }
+   }
+   coords -0.164 2.788 -1.203
+   angleY -90
+  }
+  $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+   {
+    ID "62B7732917892324"
+    components {
+     Hierarchy "{5CB0D991B00CC603}" {
+      Enabled 1
+     }
+    }
+    coords 2.374 0.621 -0.889
+    angleY -175.063
+   }
+   {
+    ID "62B773291789AB46"
+    components {
+     Hierarchy "{5CB0D991B00CC617}" {
+      Enabled 1
+     }
+    }
+    coords 1.341 1.58 -0.84
+   }
+   {
+    ID "62B773291789AB78"
+    components {
+     Hierarchy "{5CB0D991B00CC612}" {
+      Enabled 1
+     }
+    }
+    coords -1.684 1.58 -0.874
+   }
+   {
+    ID "62B773291789ED3C"
+    components {
+     Hierarchy "{5CB0D991B00CC61E}" {
+      Enabled 1
+     }
+    }
+    coords 1.386 0.621 -0.867
+   }
+   {
+    ID "62B773291789ED3F"
+    components {
+     Hierarchy "{5CB0D991B00CC605}" {
+      Enabled 1
+     }
+    }
+    coords -1.48 0.621 -0.903
+   }
+   {
+    ID "62B77329178A5CD9"
+    components {
+     Hierarchy "{5CB0D991B00CC628}" {
+      Enabled 1
+     }
+    }
+    coords -2.487 0.621 -0.325
+    angleY 56.735
+   }
+  }
+  $grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+   {
+    ID "62B7732917892323"
+    components {
+     Hierarchy "{5CB0D991B00CC62D}" {
+      Enabled 1
+     }
+    }
+    coords -2.564 1.571 -0.296
+    angleY 58.723
+   }
+   {
+    ID "62B7732917894206"
+    components {
+     Hierarchy "{5CCCBEF0E22FB32C}" {
+      Enabled 1
+     }
+    }
+    coords 3.876 0.621 -1.119
+    angleY 12.421
+   }
+   {
+    ID "62B77329178954C0"
+    components {
+     Hierarchy "{5CCCBEF0E22B1DA5}" {
+      Enabled 1
+     }
+    }
+    coords -3.181 0.621 0.509
+    angleY -140.172
+   }
+  }
+  $grp StaticModelEntity : "{CAE1588B6265A2AB}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short_noStake.et" {
+   {
+    ID "62B7732917889E80"
+    components {
+     Hierarchy "{5CCCBEF0E232187B}" {
+      Enabled 1
+     }
+    }
+    coords -2.244 0.62 0.922
+    angleY -41.535
+   }
+   {
+    ID "62B7732917889E83"
+    components {
+     Hierarchy "{5CCCBEF0E2357871}" {
+      Enabled 1
+     }
+    }
+    coords 4.034 0.621 0.01
+    angleY -68.18
+   }
+  }
+  $grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
+   {
+    ID "62B7732917889E84"
+    components {
+     Hierarchy "{5CCCBEF0E23C4568}" {
+      Enabled 1
+     }
+    }
+    coords 4.41 0.621 -1.201
+    angleY 9.665
+   }
+   {
+    ID "62B7732917892321"
+    components {
+     Hierarchy "{5CB0D991B00CC639}" {
+      Enabled 1
+     }
+    }
+    coords -2.447 0.621 -1.047
+    angleY -30
+   }
+   {
+    ID "62B77329178954D6"
+    components {
+     Hierarchy "{5CB0D991B00CC63D}" {
+      Enabled 1
+     }
+    }
+    coords 2.486 1.716 -0.905
+    angleY -174.46
+   }
+  }
+  GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   ID "62B77329178954C1"
+   components {
+    Hierarchy "{5CB0D991B00CC636}" {
+     Enabled 1
+    }
+   }
+   coords -0.26 1.163 -1.576
+   angleX 0.047
+   angleY 89.391
+   angleZ 94.39
+  }
+  GenericEntity : "{CD67070EFAFC28C7}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_burlap.et" {
+   ID "62B77329178A5CD8"
+   components {
+    Hierarchy "{5CB0D991B00CC7CA}" {
+     Enabled 1
+    }
+   }
+   coords -0.319 0.621 -0.92
+  }
+  StaticModelEntity : "{EF39F5715EF2323E}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short.et" {
+   ID "62B773291788B865"
+   components {
+    Hierarchy "{5CCCBEF0E200DCA0}" {
+     Enabled 1
+    }
+   }
+   coords 2.192 0.621 0.139
+   angleY -90
+  }
+ }
+}

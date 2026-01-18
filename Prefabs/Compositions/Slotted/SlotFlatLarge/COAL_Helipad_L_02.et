@@ -1,0 +1,10 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ coords 4771.867 28.248 11286.075
+ {
+  StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
+   ID "62B30A73F9E868C7"
+   coords 0.311 -0.404 0.618
+  }
+ }
+}

@@ -1,0 +1,119 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B361967A3A5560}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B3619675900E38}" {
+  }
+ }
+ coords 0 0 0
+ {
+  GenericEntity : "{21D83950DF36F250}Prefabs/Props/Military/Sandbags/Sandbag_01_long_burlap.et" {
+   ID "62B36186464F2866"
+   components {
+    Hierarchy "{5CCCBEF0E3441395}" {
+     Enabled 1
+    }
+   }
+   coords 0.253 -0.626 -0.564
+   angleY 175.635
+  }
+  $grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+   {
+    ID "62B36186464F2876"
+    components {
+     Hierarchy "{5CCCBEF0E35226F3}" {
+      Enabled 1
+     }
+    }
+    coords -2.845 -0.626 -0.714
+    angleY -179.28
+   }
+   {
+    ID "62B36186464F4918"
+    components {
+     Hierarchy "{5CCCBEF0E356B4DF}" {
+      Enabled 1
+     }
+    }
+    coords 3.221 -0.626 -0.429
+    angleY 1.572
+   }
+   {
+    ID "62B36186464F4919"
+    components {
+     Hierarchy "{5CCCBEF0E3593EFA}" {
+      Enabled 1
+     }
+    }
+    coords -1.349 -0.626 -0.673
+    angleY -3.669
+   }
+   {
+    ID "62B36186464F491A"
+    components {
+     Hierarchy "{5CCCBEF0E35DC0F9}" {
+      Enabled 1
+     }
+    }
+    coords 1.828 -0.626 -0.46
+    angleY 176.331
+   }
+  }
+  $grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
+   {
+    ID "62B36186464F491B"
+    components {
+     Hierarchy "{5CCCBEF0E3AB31A5}" {
+      Enabled 1
+     }
+    }
+    coords 4.014 -0.626 -0.439
+    angleY 0.739
+   }
+   {
+    ID "62B36186464FAB6C"
+    components {
+     Hierarchy "{5CCCBEF0E3A885B5}" {
+      Enabled 1
+     }
+    }
+    coords -3.878 -0.626 -0.612
+    angleY -175.781
+   }
+  }
+  $grp StaticModelEntity : "{EF39F5715EF2323E}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short.et" {
+   {
+    ID "62B36186464F96F6"
+    components {
+     Hierarchy "{5CCCBEF318C0E20F}" {
+      Enabled 1
+     }
+    }
+    coords 2.313 -0.635 0.509
+    angleY -78.372
+   }
+   {
+    ID "62B36186464FAB61"
+    components {
+     Hierarchy "{5CCCBEF318C7B083}" {
+      Enabled 1
+     }
+    }
+    coords 3.987 -0.635 0.545
+    angleY -98.101
+   }
+   {
+    ID "62B36186464FEBC6"
+    components {
+     Hierarchy "{5CCCBEF318C34AAC}" {
+      Enabled 1
+     }
+    }
+    coords -2.224 -0.635 0.367
+    angleY -101.323
+   }
+  }
+ }
+}

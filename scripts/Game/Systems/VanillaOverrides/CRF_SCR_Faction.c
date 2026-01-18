@@ -95,7 +95,7 @@ modded class SCR_Faction
 			
 			if (!foundContainer)
 			{
-				Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!", LogLevel.WARNING);
+				Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!");
 				m_aActiveSRChannels.Insert(groupName);
 			}
 		}

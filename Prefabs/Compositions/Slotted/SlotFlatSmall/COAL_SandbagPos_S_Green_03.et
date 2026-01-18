@@ -1,0 +1,175 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B361967A3A5560}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B3619675900E38}" {
+  }
+ }
+ coords 4772.408 27.852 11178.26
+ {
+  $grp GenericEntity : "{0B0C600941B2A6A8}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_plastic.et" {
+   {
+    ID "62B77327665D32FD"
+    components {
+     Hierarchy "{5CB0D991FC8365A1}" {
+      Enabled 1
+     }
+    }
+    coords -1.369 -0.008 0.4
+    angleY -175.063
+   }
+   {
+    ID "62B77327665D4B22"
+    components {
+     Hierarchy "{5CB0D991FC8365AA}" {
+      Enabled 1
+     }
+    }
+    coords 2.689 0.951 0.386
+   }
+   {
+    ID "62B77327665D4B23"
+    components {
+     Hierarchy "{5CB0D991FC8365A6}" {
+      Enabled 1
+     }
+    }
+    coords -0.336 0.951 0.352
+   }
+   {
+    ID "62B77327665D9279"
+    components {
+     Hierarchy "{5CB0D991FC8365B6}" {
+      Enabled 1
+     }
+    }
+    coords 3.492 -0.008 -0.163
+    angleY 56.735
+   }
+   {
+    ID "62B77327665D927B"
+    components {
+     Hierarchy "{5CB0D991FC836582}" {
+      Enabled 1
+     }
+    }
+    coords 2.485 -0.008 0.413
+   }
+   {
+    ID "62B77327665D927E"
+    components {
+     Hierarchy "{5CB0D991FC8365B0}" {
+      Enabled 1
+     }
+    }
+    coords -0.381 -0.008 0.379
+   }
+  }
+  StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   ID "62B77327665D32E1"
+   components {
+    Hierarchy "{5CB0D991FC83655B}" {
+     Enabled 1
+    }
+   }
+   coords 1.169 2.159 0.715
+   angleY -90
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B77327665CA852"
+    components {
+     Hierarchy "{5CB0D991FC836551}" {
+      Enabled 1
+     }
+    }
+    coords -2.636 -0.008 0.72
+    angleY -153.699
+   }
+   {
+    ID "62B77327665D32E2"
+    components {
+     Hierarchy "{5CB0D991FC836556}" {
+      Enabled 1
+     }
+    }
+    coords 3.569 0.942 -0.192
+    angleY 58.723
+   }
+   {
+    ID "62B77327665DAACD"
+    components {
+     Hierarchy "{5CCCBEF0E71BCA24}" {
+      Enabled 1
+     }
+    }
+    coords 4.55 -0.008 -1.214
+    angleY 33.867
+   }
+  }
+  $grp GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   {
+    ID "62B77327665C6360"
+    components {
+     Hierarchy "{5CCCBEF0E762096F}" {
+      Enabled 1
+     }
+    }
+    coords -2.809 -0.008 0.225
+    angleY 167.866
+   }
+   {
+    ID "62B77327665CA854"
+    components {
+     Hierarchy "{5CB0D991FC836540}" {
+      Enabled 1
+     }
+    }
+    coords -1.481 1.087 0.415
+    angleY -174.46
+   }
+   {
+    ID "62B77327665CA855"
+    components {
+     Hierarchy "{5CB0D991FC836544}" {
+      Enabled 1
+     }
+    }
+    coords 3.452 -0.008 0.559
+    angleY -30
+   }
+   {
+    ID "62B77327665CA85B"
+    components {
+     Hierarchy "{5CCCBEF0E71E5A26}" {
+      Enabled 1
+     }
+    }
+    coords 5.675 -0.008 -1.52
+    angleY 5.184
+   }
+  }
+  GenericEntity : "{A7930B258A9B4CA8}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_plastic.et" {
+   ID "62B77327665CA856"
+   components {
+    Hierarchy "{5CB0D991FC83657B}" {
+     Enabled 1
+    }
+   }
+   coords 1.324 -0.008 0.432
+  }
+  GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   ID "62B77327665CA85A"
+   components {
+    Hierarchy "{5CB0D991FC83656F}" {
+     Enabled 1
+    }
+   }
+   coords 0.535 0.565 -0.344
+   angleY -90
+   angleZ 97.394
+  }
+ }
+}

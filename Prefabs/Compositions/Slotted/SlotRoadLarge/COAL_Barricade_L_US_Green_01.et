@@ -1,0 +1,129 @@
+GenericEntity {
+ ID "62AD09020E36BD63"
+ components {
+  FactionAffiliationComponent "{62AD09032A8C9289}" {
+   "faction affiliation" "US"
+  }
+  RigidBody "{62AD09031D92D01B}" {
+   ResponseIndex "NoCollision"
+   Geometries {
+    PhysicsBoxGeometry UserAction {
+     LayerPreset "Interaction"
+     Extents 15 0.5 5
+    }
+   }
+   Static 1
+  }
+  SCR_CampaignBuildingCompositionComponent "{62AD09034F6A7117}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{62AD0902B08243B8}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_BUILD_SANDBAG_BARBWIRE_CONCRETE"
+   }
+   m_AudioSourceConfigurationDespawn SCR_AudioSourceConfiguration "{62AD0902B1FF8CE0}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_DESTROY_GENERIC"
+   }
+  }
+  SCR_SlotCompositionComponent "{62AD0902AB2C6CA4}" {
+  }
+  ActionsManagerComponent "{62AD0902A369CF8F}" {
+   ActionContexts {
+    UserActionContext "{62AD0902FFEA047D}" {
+     ContextName "Disassembly"
+     Position PointInfo "{62AD0902F06B3B97}" {
+      Offset 0 0.5 0
+     }
+     Radius 5
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{62AD09023BBEB362}" {
+     ParentContextList {
+      "Dissassembly"
+     }
+     UIInfo UIInfo "{62AD09022C339BF9}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly-UC"
+     }
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{62AD09029E953616}" {
+  }
+  Hierarchy "{62AD090295FBE909}" {
+  }
+ }
+ coords 4764.404 27.864 11301.285
+ {
+  StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   ID "62AD09020E361850"
+   coords 0.011 0.017 0.403
+   angleY -87.712
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62AD09020E36B45A"
+    coords -4.375 0.011 -1.53
+    angleY 179.926
+   }
+   {
+    ID "62AD09020E377772"
+    coords 4.161 0.011 -1.526
+   }
+  }
+  $grp GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
+   {
+    ID "62AD09020E36B446"
+    coords -1.745 -0.004 -1.564
+   }
+   {
+    ID "62AD09020E36BD6A"
+    coords 1.532 -0.001 -1.57
+   }
+  }
+  $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+   {
+    ID "62AD09020E36182D"
+    coords 4.418 0.026 -0.027
+    angleY -74.716
+   }
+   {
+    ID "62AD09020E36182E"
+    coords -4.529 0.026 0.095
+    angleY -102.698
+   }
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62AD09020E361827"
+    coords -6.675 -0.008 -0.403
+    angleY 38.053
+   }
+   {
+    ID "62AD09020E363DEC"
+    coords -2.09 -0.008 0.745
+    angleY 29.809
+   }
+   {
+    ID "62AD09020E363DED"
+    coords 6.381 -0.008 -0.729
+    angleY 29.809
+   }
+   {
+    ID "62AD09020E36B45E"
+    coords 2.25 -0.008 0.596
+    angleY 29.809
+   }
+   {
+    ID "62AD09020E37A5DC"
+    coords 7.38 -0.008 -2.038
+    angleY 29.809
+   }
+   {
+    ID "62AD09020E37A5DD"
+    coords -7.747 -0.008 -1.514
+    angleY -18.025
+   }
+  }
+ }
+}

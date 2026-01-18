@@ -1,0 +1,161 @@
+GenericEntity : "{36B55E2B9C47373C}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_US_01.et" {
+ ID "5282DCB5DFC8538F"
+ coords 3.507 0 -3.735
+ angleY -0.828
+ {
+  StaticModelEntity {
+   ID "5CC501D152FDEC18"
+   coords -2.455 0 -4.88
+   angleY -91.831
+  }
+  StaticModelEntity {
+   ID "5CC501D152FDEC19"
+   coords -0.852 0 -4.917
+   angleY -87.972
+  }
+  StaticModelEntity {
+   ID "5CC501D152FDEC1E"
+   coords 0.787 0 -4.93
+   angleY -89.534
+  }
+  StaticModelEntity {
+   ID "5CC501D152FDEC1F"
+   coords 2.395 0 -4.922
+   angleY -85.993
+  }
+  StaticModelEntity {
+   ID "5CC501D152FDEC34"
+   coords 0.001 0 0
+   angleY -180
+   {
+    StaticModelEntity {
+     ID "5D466416286F4114"
+     coords 0 0 0
+     {
+      StaticModelEntity {
+       ID "5D44C2DB95A68590"
+       coords 0 0 1.204
+       {
+        StaticModelEntity {
+         ID "5D38E5916001C17C"
+         coords 0 0 -1.207
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21B37017"
+           coords 0 0 0
+           angleX 0.5
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D44C2DB95A685B0"
+       coords 0.001 0 3.629
+       {
+        StaticModelEntity {
+         ID "5D38E5916001C17C"
+         coords -0.001 0 -1.207
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21AC9CA9"
+           coords 0 0 0.026
+           angleX 0.5
+           {
+            GenericEntity {
+             ID "5D4681D433E7A055"
+             coords 0 0 0
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D44C7DD3033981E"
+       coords 0 0 -3.641
+       angleY -180
+       {
+        StaticModelEntity {
+         ID "5D38E5916001C17C"
+         coords 0.001 0 -1.209
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21AF877B"
+           coords -0.001 0 0
+           angleX -0.5
+           {
+            GenericEntity {
+             ID "5D4681D402F0BBBC"
+             coords 0 0 0
+             angleY 0
+            }
+            StaticModelEntity {
+             ID "5D44AE1C21AF877A"
+             coords 0 0 0
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44AE1C21AF877C"
+         coords 0 0 -2.427
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D44C7DD925DE682"
+       coords 0 0 6.055
+       {
+        StaticModelEntity {
+         ID "5D38E5916001C17C"
+         coords 0.001 0 -1.207
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21B12310"
+           coords -0.001 0 0
+           angleX 0.5
+           {
+            GenericEntity {
+             ID "5D4681D4089DE15D"
+             coords 0 0 0
+            }
+            StaticModelEntity {
+             ID "5D44AE1C21B12312"
+             coords 0 0 0
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D466416345A60A8"
+     coords 0 0 -2.424
+     angleX 0.3
+    }
+    StaticModelEntity {
+     ID "5D466416345A60C6"
+     coords 0 0 0.09
+     angleX -0.3
+     angleY -180
+    }
+    StaticModelEntity {
+     ID "5D466416773DDF19"
+     coords 0.001 0 2.481
+     angleX 0.3
+    }
+    StaticModelEntity {
+     ID "5D466416773DDFFA"
+     coords 0 0 4.854
+     angleX 0.3
+    }
+   }
+  }
+ }
+}

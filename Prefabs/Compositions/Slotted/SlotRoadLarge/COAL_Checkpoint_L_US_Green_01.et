@@ -1,0 +1,194 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62AD09147F56AD30}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62AD09143E2F008F}" {
+  }
+ }
+ coords -0.094 0 0
+ {
+  $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+   {
+    ID "62AD09286C433902"
+    coords 6.127 0 -4.805
+    angleY -88.021
+   }
+   {
+    ID "62AD09286C436E93"
+    coords -8.573 0 -4.908
+    angleY -15.162
+   }
+   {
+    ID "62AD09286C43963D"
+    coords -8.797 0 2.461
+   }
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62AD09286C4019FF"
+    coords -2.992 0 -6.364
+    angleY -0.786
+   }
+   {
+    ID "62AD09286C40971D"
+    coords 4.14 0 -6.098
+    angleY -178.061
+   }
+   {
+    ID "62AD09286C40F531"
+    coords 7.764 0 -6.098
+   }
+   {
+    ID "62AD09286C41F36C"
+    coords -7.832 0.053 4.13
+    angleY -89.595
+   }
+   {
+    ID "62AD09286C41F36D"
+    coords 7.247 0 1.58
+    angleY 88.286
+   }
+   {
+    ID "62AD09286C41F962"
+    coords 4.284 0 4.165
+    angleY -177.899
+   }
+   {
+    ID "62AD09286C431BBB"
+    coords -2.473 0 0.386
+    angleY 89.431
+   }
+   {
+    ID "62AD09286C439637"
+    coords -7.825 0 -4.045
+    angleY -94.601
+   }
+   {
+    ID "62AD09286C462354"
+    coords -3.797 0 4.305
+    angleY 178.991
+   }
+   {
+    ID "62AD09286C46235A"
+    coords -7.723 0 0.516
+    angleY 89.431
+   }
+   {
+    ID "62AD09286C4631E1"
+    coords -6.34 0 4.332
+   }
+  }
+  GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
+   ID "62AD09286C41162B"
+   coords 5.831 0 -6.119
+  }
+  $grp StaticModelEntity : "{46904AF5D473FB75}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long_noStake.et" {
+   {
+    ID "62AD09286C439638"
+    coords -6.908 0 5.019
+    angleY 88.158
+   }
+   {
+    ID "62AD09286C439639"
+    coords -3.543 0 5.126
+    angleY 88.158
+   }
+  }
+  $grp GenericEntity : "{53EB8BF116A99F3B}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_base.et" {
+   {
+    ID "62AD09286C42EEC4"
+    coords -2.24 0.053 3.895
+    angleY -85.605
+   }
+   {
+    ID "62AD09286C431BBA"
+    coords -2.416 0.053 2.066
+    angleY -85.605
+   }
+   {
+    ID "62AD09286C462367"
+    coords -7.772 0.053 2.302
+    angleY -91.203
+   }
+  }
+  GenericEntity : "{5789E2676151FD33}Prefabs/Structures/Military/CamoNets/US/CamoNet_Small_Top_US.et" {
+   ID "62AD09286C462365"
+   coords -5.395 0.026 3.063
+   angleY 121.493
+  }
+  GenericEntity : "{6762F7C5C3A2419B}Prefabs/Props/Military/Sandbags/Sandbag_01_short_plastic.et" {
+   ID "62AD09286C4631E7"
+   coords -5.107 0 4.354
+   angleY -90.604
+  }
+  Turret : "{73530808E4B455BA}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et" {
+   ID "62AD09286C46235E"
+   coords -5.105 0.644 4.369
+  }
+  GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+   ID "62AD09286C42EEC0"
+   coords 6.07 0.797 -6.18
+   angleY 178.735
+  }
+  StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+   ID "62AD09286C43963F"
+   coords 5.384 0 5.174
+   angleY -86.239
+  }
+  $grp GenericEntity : "{B6307C189CCCA0B9}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_plastic.et" {
+   {
+    ID "62AD09286C41F96F"
+    coords 6.421 0 3.684
+    angleY 34.798
+   }
+   {
+    ID "62AD09286C439634"
+    coords -6.902 0 -6.004
+    angleY -148.09
+   }
+  }
+  $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   {
+    ID "62AD09286C403760"
+    coords 5.783 0.598 -5.411
+    angleX -0.127
+    angleY 89.554
+    angleZ -74.1
+   }
+   {
+    ID "62AD09286C409719"
+    coords 5.9 0.545 -6.84
+    angleY -90.133
+    angleZ -67.934
+   }
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62AD09286C411634"
+    coords -9.101 0 4.567
+    angleY 12.115
+   }
+   {
+    ID "62AD09286C41698E"
+    coords -7.777 0 5.558
+    angleY 34.372
+   }
+   {
+    ID "62AD09286C41A50D"
+    coords -2.392 0 5.493
+    angleY 34.372
+   }
+   {
+    ID "62AD09286C41A50E"
+    coords 6.956 0 5.141
+   }
+   {
+    ID "62AD09286C41F968"
+    coords 3.391 0 5.283
+    angleY 19.322
+   }
+  }
+ }
+}

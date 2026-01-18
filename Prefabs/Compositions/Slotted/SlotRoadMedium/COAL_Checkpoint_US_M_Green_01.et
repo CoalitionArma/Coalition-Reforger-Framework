@@ -1,0 +1,190 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B0F371480380D6}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B0F3714DEAB238}" {
+  }
+ }
+ coords 4763.106 27.844 11239.638
+ {
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B0F37788B473B1"
+    components {
+     Hierarchy "{5CB0D9910F7995CE}" {
+      Enabled 1
+     }
+    }
+    coords -3.59 0 -3.917
+    angleY -180
+   }
+   {
+    ID "62B0F37788B4C99C"
+    components {
+     Hierarchy "{5CB0D9910F7995C7}" {
+      Enabled 1
+     }
+    }
+    coords -1.388 0 -3.822
+   }
+   {
+    ID "62B0F37788B57CE1"
+    components {
+     Hierarchy "{569E7A0A13C8FA46}" {
+      Enabled 1
+     }
+    }
+    coords -1.104 0 3.776
+    angleY -178.083
+   }
+   {
+    ID "62B0F37788B57CE2"
+    components {
+     Hierarchy "{569E7A0A13D399D3}" {
+      Enabled 1
+     }
+    }
+    coords -4.042 0 3.35
+    angleY 90.523
+   }
+   {
+    ID "62B0F37788B57CE3"
+    components {
+     Hierarchy "{569E7A0A13CD6D92}" {
+      Enabled 1
+     }
+    }
+    coords -3.436 0 3.866
+    angleY 2.218
+   }
+   {
+    ID "62B0F37788B5B19C"
+    components {
+     Hierarchy "{569E7A0A13D0632D}" {
+      Enabled 1
+     }
+    }
+    coords -0.716 0 3.245
+    angleY 93.588
+   }
+  }
+  GenericEntity : "{53EB8BF116A99F3B}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_base.et" {
+   ID "62B0F37788B4C99D"
+   components {
+    Hierarchy "{5CB0D9910F7995C8}" {
+     Enabled 1
+    }
+   }
+   coords -2.417 0 -3.918
+   angleY -180
+  }
+  GenericEntity : "{6762F7C5C3A2419B}Prefabs/Props/Military/Sandbags/Sandbag_01_short_plastic.et" {
+   ID "62B0F37788B57CE7"
+   components {
+    Hierarchy "{569E7A0A13E1570E}" {
+     Enabled 1
+    }
+   }
+   coords -2.316 0 3.777
+   angleY -88.083
+  }
+  GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+   ID "62B0F37788B57CDA"
+   components {
+    Hierarchy "{5CB0D9910F7995D5}" {
+     Enabled 1
+    }
+   }
+   coords -2.573 0.77 -3.853
+   angleY -180
+  }
+  GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   ID "62B0F37788B57CDC"
+   components {
+    Hierarchy "{5CCCBEF31CD7BE34}" {
+     Enabled 1
+    }
+   }
+   coords -4.029 0 2.111
+   angleY 90
+  }
+  Turret : "{887DB60486A18575}Prefabs/Weapons/Tripods/Tripod_M122_MG_M60.et" {
+   ID "62B0F37788B57CD3"
+   components {
+    TurretControllerComponent "{51ACD09C61C183E4}" {
+     LimitsHoriz -45 45
+    }
+    SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+     CompartmentSlots {
+      TurretCompartmentSlot TurretCompartment {
+       SidestepRayZOffset -0.15
+       HeightAdjustmentRayZOffset -0.4
+      }
+     }
+    }
+   }
+   coords -2.345 0.683 3.612
+  }
+  GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpoint_01_stop.et" {
+   ID "62B0F37788B57CD6"
+   components {
+    Hierarchy "{5CCCBEF31B20446E}" {
+     Enabled 1
+    }
+   }
+   coords -0.445 0 5.03
+   angleY 3.07
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62B0F37788B4C99F"
+    coords 0.069 0 -3.771
+    angleY -3.752
+   }
+   {
+    ID "62B0F37788B51852"
+    coords -4.867 0 4.656
+    angleY -128.217
+   }
+   {
+    ID "62B0F37788B51855"
+    coords 0.33 0 4.653
+    angleY 64.637
+   }
+   {
+    ID "62B0F37788B52336"
+    coords 5.442 0 4.187
+    angleY 32.674
+   }
+   {
+    ID "62B0F37788B57CCA"
+    coords 5.409 0 -3.531
+    angleY 86.078
+   }
+  }
+  $grp StaticModelEntity : "{EF39F5715EF2323E}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short.et" {
+   {
+    ID "62B0F37788B473BB"
+    components {
+     Hierarchy "{5CCCBEF31B078206}" {
+      Enabled 1
+     }
+    }
+    coords -3.313 -0.126 4.841
+    angleY -89.475
+   }
+   {
+    ID "62B0F37788B7F5B0"
+    components {
+     Hierarchy "{5CCCBEF31B078206}" {
+      Enabled 1
+     }
+    }
+    coords -1.708 -0.126 4.826
+    angleY -89.475
+   }
+  }
+ }
+}

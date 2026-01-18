@@ -1,0 +1,581 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B30A6DA3E0ABDE}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B30A6DA6D2BD99}" {
+  }
+ }
+ coords 4769.15 28.437 11528.58
+ {
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B30A6D9EC31A2C"
+    components {
+     Hierarchy "{5D06E95AFB171C3C}" {
+      Enabled 1
+     }
+    }
+    coords -7.12 -0.008 -13.124
+    angleY 4.028
+   }
+   {
+    ID "62B30A6D9EC37FEF"
+    components {
+     Hierarchy "{5D06E95AFB171C3B}" {
+      Enabled 1
+     }
+    }
+    coords -9.05 -0.005 -12.941
+    angleY -173.962
+   }
+  }
+  GenericEntity : "{36B55E2B9C47373C}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_US_01.et" {
+   ID "62B30A6D9EC096EF"
+   coords 3.507 0 -3.735
+   angleY -0.828
+   {
+    StaticModelEntity {
+     ID "5CC501D152FDEC18"
+     coords -2.455 0 -4.88
+     angleY -91.831
+    }
+    StaticModelEntity {
+     ID "5CC501D152FDEC19"
+     coords -0.852 0 -4.917
+     angleY -87.972
+    }
+    StaticModelEntity {
+     ID "5CC501D152FDEC1E"
+     coords 0.787 0 -4.93
+     angleY -89.534
+    }
+    StaticModelEntity {
+     ID "5CC501D152FDEC1F"
+     coords 2.395 0 -4.922
+     angleY -85.993
+    }
+    StaticModelEntity {
+     ID "5CC501D152FDEC34"
+     coords 0.001 0 0
+     angleY -180
+     {
+      StaticModelEntity {
+       ID "5D466416286F4114"
+       coords 0 0 0
+       {
+        StaticModelEntity {
+         ID "5D44C2DB95A68590"
+         coords 0 0 1.204
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0 0 -1.207
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B37017"
+             coords 0 0 0
+             angleX 0.5
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C2DB95A685B0"
+         coords 0.001 0 3.629
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.001 0 -1.207
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AC9CA9"
+             coords 0 0 0.026
+             angleX 0.5
+             {
+              GenericEntity {
+               ID "5D4681D433E7A055"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD3033981E"
+         coords 0 0 -3.641
+         angleY -180
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0.001 0 -1.209
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AF877B"
+             coords -0.001 0 0
+             angleX -0.5
+             {
+              GenericEntity {
+               ID "5D4681D402F0BBBC"
+               coords 0 0 0
+               angleY 0
+              }
+              StaticModelEntity {
+               ID "5D44AE1C21AF877A"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+          StaticModelEntity {
+           ID "5D44AE1C21AF877C"
+           coords 0 0 -2.427
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD925DE682"
+         coords 0 0 6.055
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0.001 0 -1.207
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B12310"
+             coords -0.001 0 0
+             angleX 0.5
+             {
+              GenericEntity {
+               ID "5D4681D4089DE15D"
+               coords 0 0 0
+              }
+              StaticModelEntity {
+               ID "5D44AE1C21B12312"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D466416345A60A8"
+       coords 0 0 -2.424
+       angleX 0.3
+      }
+      StaticModelEntity {
+       ID "5D466416345A60C6"
+       coords 0 0 0.09
+       angleX -0.3
+       angleY -180
+      }
+      StaticModelEntity {
+       ID "5D466416773DDF19"
+       coords 0.001 0 2.481
+       angleX 0.3
+      }
+      StaticModelEntity {
+       ID "5D466416773DDFFA"
+       coords 0 0 4.854
+       angleX 0.3
+      }
+     }
+    }
+   }
+  }
+  GenericEntity : "{5AE16ACB2083B812}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_US_02.et" {
+   ID "62B30A6D9EC096FF"
+   coords -3.577 0 -3.766
+   angleY 1.683
+   {
+    StaticModelEntity {
+     ID "5CC501D811E60508"
+     coords -2.319 0 0.545
+     angleY -82.768
+    }
+    StaticModelEntity {
+     ID "5CC501D811E75EA0"
+     coords -2.403 0 -4.932
+     angleY -91.305
+    }
+    StaticModelEntity {
+     ID "5CC501D811E75EB6"
+     coords 1.666 0 -5.584
+     angleY 179.821
+    }
+    StaticModelEntity {
+     ID "5CC501D811E75EB7"
+     coords 1.725 0 -3.591
+     angleY -178.39
+    }
+    StaticModelEntity {
+     ID "5CC501D811E75EC9"
+     coords 1.765 0 -1.949
+     angleY 177.87
+    }
+    StaticModelEntity {
+     ID "5CC501D811E7D180"
+     coords 2.426 0 2.465
+     angleY -91.305
+    }
+    StaticModelEntity {
+     ID "5CC501D811E7D19D"
+     coords 0 0 0
+     angleY 180
+     {
+      StaticModelEntity {
+       ID "5D466416286F4114"
+       coords 0 0 0
+       {
+        StaticModelEntity {
+         ID "5D44C2DB95A68590"
+         coords -0.001 0 1.205
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0.001 0 -1.207
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B37017"
+             coords 0 0 0
+             angleX 0.5
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C2DB95A685B0"
+         coords 0 0 3.631
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.001 0 -1.208
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AC9CA9"
+             coords 0.001 0 0.025
+             angleX 0.5
+             {
+              GenericEntity {
+               ID "5D4681D433E7A055"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD3033981E"
+         coords 0 0 -3.64
+         angleY 180
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0 0 -1.207
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AF877B"
+             coords 0 0 0
+             angleX -0.5
+             {
+              GenericEntity {
+               ID "5D4681D402F0BBBC"
+               coords 0 0 0
+               angleY 0
+              }
+              StaticModelEntity {
+               ID "5D44AE1C21AF877A"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+          StaticModelEntity {
+           ID "5D44AE1C21AF877C"
+           coords 0 0 -2.426
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD925DE682"
+         coords 0 0 6.056
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.001 0 -1.208
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B12310"
+             coords 0.001 0 -0.001
+             angleX 0.5
+             {
+              GenericEntity {
+               ID "5D4681D4089DE15D"
+               coords 0 0 0
+              }
+              StaticModelEntity {
+               ID "5D44AE1C21B12312"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D466416345A60A8"
+       coords 0 0 -2.423
+       angleX 0.3
+      }
+      StaticModelEntity {
+       ID "5D466416345A60C6"
+       coords -0.001 0 0.09
+       angleX -0.3
+       angleY 180
+      }
+      StaticModelEntity {
+       ID "5D466416773DDF19"
+       coords 0 0 2.481
+       angleX 0.3
+      }
+      StaticModelEntity {
+       ID "5D466416773DDFFA"
+       coords 0 0 4.855
+       angleX 0.3
+      }
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   {
+    ID "62B30A6D9EC0192E"
+    components {
+     Hierarchy "{5D06E95AFB171B93}" {
+      Enabled 1
+     }
+    }
+    coords -12.96 -0.001 -9.091
+    angleY 79.921
+   }
+   {
+    ID "62B30A6D9EC0429C"
+    components {
+     Hierarchy "{5D06E95AFB171B94}" {
+      Enabled 1
+     }
+    }
+    coords -13.184 -0.001 -7.786
+    angleY -98.493
+   }
+   {
+    ID "62B30A6D9EC0429D"
+    components {
+     Hierarchy "{5D06E95AFB171B85}" {
+      Enabled 1
+     }
+    }
+    coords -12.888 -0.001 -2.185
+    angleY 94.6
+   }
+   {
+    ID "62B30A6D9EC07EE3"
+    components {
+     Hierarchy "{5D06E95AFB171B81}" {
+      Enabled 1
+     }
+    }
+    coords -12.735 -0.001 -0.407
+    angleY -86.143
+   }
+   {
+    ID "62B30A6D9EC096D8"
+    components {
+     Hierarchy "{5D06E95AFB171B88}" {
+      Enabled 1
+     }
+    }
+    coords -2.047 -0.009 -13.146
+    angleY -3.598
+   }
+   {
+    ID "62B30A6D9EC0B27C"
+    components {
+     Hierarchy "{5D06E95AFB171B94}" {
+      Enabled 1
+     }
+    }
+    coords -13.031 -0.001 -4.461
+    angleY -88.155
+   }
+   {
+    ID "62B30A6D9EC10510"
+    components {
+     Hierarchy "{5D06E95AFB171B93}" {
+      Enabled 1
+     }
+    }
+    coords -13.045 -0.001 -5.783
+    angleY 90.259
+   }
+   {
+    ID "62B30A6D9EC31A2F"
+    components {
+     Hierarchy "{5D06E95AFB171B8C}" {
+      Enabled 1
+     }
+    }
+    coords -5.794 -0.01 -13.223
+    angleY 3.681
+   }
+   {
+    ID "62B30A6D9EC31A33"
+    components {
+     Hierarchy "{5D06E95AFB171B88}" {
+      Enabled 1
+     }
+    }
+    coords -3.875 -0.01 -13.22
+    angleY 177.929
+   }
+  }
+  $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+   {
+    ID "62B30A6D9EC2C550"
+    components {
+     Hierarchy "{5D06E95AFB171BAC}" {
+      Enabled 1
+     }
+    }
+    coords -8.412 -0.02 -13.904
+    angleY 94.444
+   }
+   {
+    ID "62B30A6D9EC31A34"
+    components {
+     Hierarchy "{5D06E95AFB171BB1}" {
+      Enabled 1
+     }
+    }
+    coords -3.274 -0.024 -14.108
+    angleY 90.366
+   }
+   {
+    ID "62B30A6D9EC31A3A"
+    components {
+     Hierarchy "{5D06E95AFB171BA0}" {
+      Enabled 1
+     }
+    }
+    coords -5.897 -0.022 -13.988
+    angleY 94.913
+   }
+   {
+    ID "62B30A6D9EC3864C"
+    components {
+     Hierarchy "{5D06E95AFB171BA4}" {
+      Enabled 1
+     }
+    }
+    coords -14.077 0 -3.521
+    angleY -0.94
+   }
+   {
+    ID "62B30A6D9EC3864D"
+    components {
+     Hierarchy "{5D06E95AFB171B98}" {
+      Enabled 1
+     }
+    }
+    coords -13.899 0 -0.639
+    angleY 4.959
+   }
+   {
+    ID "62B30A6D9EC3D328"
+    components {
+     Hierarchy "{5D06E95AFB171BB4}" {
+      Enabled 1
+     }
+    }
+    coords -14.013 0 -6.254
+    angleY 0.119
+   }
+   {
+    ID "62B30A6D9EC3D32F"
+    components {
+     Hierarchy "{5D06E95AFB171BA8}" {
+      Enabled 1
+     }
+    }
+    coords -13.724 0 -9.172
+    angleY 173.383
+   }
+  }
+  $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   {
+    ID "62B30A6D9EC0960D"
+    components {
+     Hierarchy "{5D647736D946A237}" {
+      Enabled 1
+     }
+    }
+    coords 5.647 0 1.269
+    angleY -95.797
+   }
+   {
+    ID "62B30A6D9EC096D3"
+    components {
+     Hierarchy "{5D647736D9746465}" {
+      Enabled 1
+     }
+    }
+    coords 1.85 0 1.355
+    angleY -91.505
+   }
+   {
+    ID "62B30A6D9EC096F2"
+    components {
+     Hierarchy "{5D647736D951E884}" {
+      Enabled 1
+     }
+    }
+    coords -5.902 0 1.232
+    angleY -99.358
+   }
+   {
+    ID "62B30A6D9EC0B27D"
+    components {
+     Hierarchy "{5D647736D97F7263}" {
+      Enabled 1
+     }
+    }
+    coords -1.981 0 1.31
+    angleY -88.329
+   }
+  }
+  GenericEntity : "{FFB132CEFD1E6D48}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_02_Hospital_US.et" {
+   ID "62B30A6D9EC10517"
+   components {
+    Hierarchy "{5E331960300830E8}" {
+    }
+   }
+   coords 0.003 0.731 0.338
+  }
+ }
+}

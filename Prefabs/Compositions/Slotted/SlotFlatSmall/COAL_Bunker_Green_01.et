@@ -1,0 +1,119 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  Hierarchy "{62B8D48779964406}" {
+  }
+ }
+ coords 4391.754 25.419 10084.388
+ {
+  $grp GenericEntity : "{0B0C600941B2A6A8}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_plastic.et" {
+   {
+    ID "62B8D48769A8A4CA"
+    components {
+     Hierarchy "{5CCCBEF312A66656}" {
+      Enabled 1
+     }
+    }
+    coords 2.74 -0.193 2.657
+    angleY 92.884
+   }
+   {
+    ID "62B8D48769AB46EC"
+    components {
+     Hierarchy "{5CCCBEF312A3D6EC}" {
+      Enabled 1
+     }
+    }
+    coords 2.676 -0.118 -3.411
+    angleY 92.884
+   }
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B8D48769AA7FBD"
+    components {
+     Hierarchy "{5CCCBEF312B1E926}" {
+      Enabled 1
+     }
+    }
+    coords 2.371 -0.183 3.987
+    angleY -177.116
+   }
+   {
+    ID "62B8D48769AB46E8"
+    components {
+     Hierarchy "{5CCCBEF312AD78E0}" {
+      Enabled 1
+     }
+    }
+    coords -2.536 0.213 -2.976
+    angleY 92.884
+   }
+   {
+    ID "62B8D48769AB46EF"
+    components {
+     Hierarchy "{5CCCBEF312AAE897}" {
+      Enabled 1
+     }
+    }
+    coords 2.586 -0.092 -5.329
+    angleY 92.884
+   }
+   {
+    ID "62B8D48769AB5E08"
+    components {
+     Hierarchy "{5CCCBEF312B45EBD}" {
+      Enabled 1
+     }
+    }
+    coords -2.232 0.127 3.063
+    angleY -87.116
+   }
+   {
+    ID "62B8D48769AB5E09"
+    components {
+     Hierarchy "{5CCCBEF312B8C997}" {
+      Enabled 1
+     }
+    }
+    coords -2.492 0.2 -2.113
+    angleY -87.116
+   }
+   {
+    ID "62B8D48769ABC42F"
+    components {
+     Hierarchy "{5CCCBEF312BB50F1}" {
+      Enabled 1
+     }
+    }
+    coords -2.333 0.166 1.035
+    angleY 92.884
+   }
+  }
+  StaticModelEntity : "{5FB3A1755261CA59}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Bunker_Camouflaged_US_01.et" {
+   ID "62B8D48769AA7FCE"
+   coords 3.389 -0.192 -0.569
+   angleY 92.884
+  }
+  GenericEntity : "{78AB783E28EDEBD4}Prefabs/Props/Military/Sandbags/Sandbag_01_long_plastic.et" {
+   ID "62B8D48769AA7FC8"
+   components {
+    Hierarchy "{5CCCBEF3128DD05D}" {
+     Enabled 1
+    }
+   }
+   coords -2.422 0.195 -0.542
+   angleY 92.884
+  }
+  GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   ID "62B8D48769AA7FB4"
+   components {
+    Hierarchy "{5CCCBEF3129053D1}" {
+     Enabled 1
+    }
+   }
+   coords -2.591 0.227 -3.632
+   angleY 92.884
+  }
+ }
+}

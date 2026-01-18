@@ -1,0 +1,106 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B361967A3A5560}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B3619675900E38}" {
+  }
+ }
+ coords 0 0 0
+ {
+  GenericEntity {
+   ID "5CB0D9916F5857E9"
+   coords -0.039 0 2.211
+  }
+  $grp GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
+   {
+    ID "62B76D3BF382C9E8"
+    components {
+     Hierarchy "{5CCCBEF0E48A0D4C}" {
+      Enabled 1
+     }
+    }
+    coords -1.804 -0.008 2.233
+    angleY 180
+   }
+   {
+    ID "62B76D3BF382FF05"
+    components {
+     Hierarchy "{5CCCBEF0E48EC88C}" {
+      Enabled 1
+     }
+    }
+    coords 3.345 -0.008 -0.781
+    angleY 90
+   }
+  }
+  GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+   ID "62B76D3BF382FF01"
+   components {
+    Hierarchy "{5CCCBEF0E4952911}" {
+     Enabled 1
+    }
+   }
+   coords -2.505 -0.008 2.188
+   angleY 180
+  }
+  GenericEntity : "{B6307C189CCCA0B9}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_plastic.et" {
+   ID "62B76D3BF382FF06"
+   components {
+    Hierarchy "{5CCCBEF0E4E75E76}" {
+     Enabled 1
+    }
+   }
+   coords 2.464 -0.008 1.343
+   angleY 45
+  }
+  StaticModelEntity : "{CAE1588B6265A2AB}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short_noStake.et" {
+   ID "62B76D3BF382C9EA"
+   components {
+    Hierarchy "{5CCCBEF0E4F240BF}" {
+     Enabled 1
+    }
+   }
+   coords 3.734 -0.008 0.828
+   angleY -18.109
+  }
+  $grp StaticModelEntity : "{EF39F5715EF2323E}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short.et" {
+   {
+    ID "62B76D3BF382C9EC"
+    components {
+     Hierarchy "{5CCCBEF0E4F6D9E9}" {
+      Enabled 1
+     }
+    }
+    coords 3.275 -0.008 2.03
+    angleY -46.436
+   }
+   {
+    ID "62B76D3BF382C9EE"
+    components {
+     Hierarchy "{5CCCBEF0E4F9743F}" {
+      Enabled 1
+     }
+    }
+    coords -2.232 -0.008 3.218
+    angleY -98.385
+   }
+   {
+    ID "62B76D3BF382FF0D"
+    components {
+     Hierarchy "{5CCCBEF0E4FD10A0}" {
+      Enabled 1
+     }
+    }
+    coords 1.8 -0.008 2.837
+    angleY -82.395
+   }
+  }
+  GenericEntity : "{F9910219711EC4FE}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_long_high_US.et" {
+   ID "62B76D3BF382C9E9"
+   coords -0.04 0 2.211
+   angleY 0
+  }
+ }
+}

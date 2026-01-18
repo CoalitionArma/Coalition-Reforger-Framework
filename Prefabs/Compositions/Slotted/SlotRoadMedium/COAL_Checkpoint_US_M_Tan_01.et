@@ -1,0 +1,143 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{62B0F371480380D6}" {
+   "faction affiliation" "US"
+  }
+  Hierarchy "{62B0F3714DEAB238}" {
+  }
+ }
+ coords 4763.106 27.844 11239.638
+ {
+  GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+   ID "62B0F35EB0CB3FB6"
+   components {
+    Hierarchy "{5CB0D9910F7995D5}" {
+     Enabled 1
+    }
+   }
+   coords -2.573 0.77 -3.971
+   angleY -180
+  }
+  Turret : "{887DB60486A18575}Prefabs/Weapons/Tripods/Tripod_M122_MG_M60.et" {
+   ID "62B0F35EB0CB3FB0"
+   components {
+    TurretControllerComponent "{51ACD09C61C183E4}" {
+     LimitsHoriz -45 45
+    }
+    SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+     CompartmentSlots {
+      TurretCompartmentSlot TurretCompartment {
+       SidestepRayZOffset -0.15
+       HeightAdjustmentRayZOffset -0.4
+      }
+     }
+    }
+   }
+   coords -2.345 0.683 3.756
+  }
+  GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+   ID "62B0F35EB0CA9C86"
+   coords -2.244 0 -3.977
+  }
+  $grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+   {
+    ID "62B0F35EB0CA3BAC"
+    coords -3.517 0 -3.953
+    angleY -179.042
+   }
+   {
+    ID "62B0F35EB0CA4321"
+    coords -3.483 0 3.905
+   }
+   {
+    ID "62B0F35EB0CA432E"
+    coords -0.717 0 3.236
+    angleY 90.911
+   }
+   {
+    ID "62B0F35EB0CA722C"
+    coords -4.073 0 3.344
+    angleY 92.006
+   }
+   {
+    ID "62B0F35EB0CA9CBB"
+    coords -1.125 0 3.759
+    angleY -178.604
+   }
+   {
+    ID "62B0F35EB0CBA40A"
+    coords -1.434 0 -3.943
+   }
+  }
+  GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpoint_01_stop.et" {
+   ID "62B0F35EB0CB3F4E"
+   components {
+    Hierarchy "{5CCCBEF31B20446E}" {
+     Enabled 1
+    }
+   }
+   coords -0.445 0 5.03
+   angleY 3.07
+  }
+  GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
+   ID "62B0F35EB0CA3BAF"
+   coords -4.03 0 2.109
+   angleY 89.158
+  }
+  GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {
+   ID "62B0F35EB0CA9C87"
+   coords -2.322 0 3.675
+   angleY 92.286
+  }
+  $grp StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   {
+    ID "62B0F35EB0CB1082"
+    coords 0.069 0 -3.771
+    angleY -3.752
+   }
+   {
+    ID "62B0F35EB0CB1924"
+    coords -4.867 0 4.656
+    angleY -128.217
+   }
+   {
+    ID "62B0F35EB0CB1925"
+    coords 0.33 0 4.653
+    angleY 64.637
+   }
+   {
+    ID "62B0F35EB0CB192A"
+    coords 5.442 0 4.187
+    angleY 32.674
+   }
+   {
+    ID "62B0F35EB0CB3F4A"
+    coords 5.409 0 -3.531
+    angleY 86.078
+   }
+  }
+  $grp StaticModelEntity : "{EF39F5715EF2323E}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Short.et" {
+   {
+    ID "62B0F35EB0CB1084"
+    components {
+     Hierarchy "{5CCCBEF31B078206}" {
+      Enabled 1
+     }
+    }
+    coords -3.314 -0.209 4.714
+    angleY -89.475
+   }
+   {
+    ID "62B0F35EB0CBA411"
+    components {
+     Hierarchy "{5CCCBEF31B078206}" {
+      Enabled 1
+     }
+    }
+    coords -1.709 -0.209 4.699
+    angleY -89.475
+   }
+  }
+ }
+}
