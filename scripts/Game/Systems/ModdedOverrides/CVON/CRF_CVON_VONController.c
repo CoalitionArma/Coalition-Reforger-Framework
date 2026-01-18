@@ -421,6 +421,6 @@ modded class SCR_VONController
 			return;
 		}
 		
-		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
+		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outBehindIntensity, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
 	}
 }
