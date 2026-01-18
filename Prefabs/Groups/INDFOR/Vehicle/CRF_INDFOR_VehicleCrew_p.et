@@ -37,6 +37,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
    m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
     m_Icons MOTORIZED
+    m_Amplifier SQUAD
    }
   }
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
