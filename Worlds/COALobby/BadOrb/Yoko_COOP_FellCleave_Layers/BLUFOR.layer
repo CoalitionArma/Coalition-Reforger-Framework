@@ -85,6 +85,15 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
                     SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
                      coords 12.903 -0.477 9.744
                      angles 0 -5.625 0
+                     {
+                      SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+                       coords -37.267 0.518 -16.476
+                       angles 0 51.532 0
+                       m_aUnitPrefabSlots {
+                        "{810337D2F231A02D}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Pilot_P.et"
+                       }
+                      }
+                     }
                     }
                    }
                   }
