@@ -93,5 +93,5 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  m_aUnitPrefabSlots {
   "{478FBA09EDDFC439}Prefabs/Characters/!GS_Characters/Leadership/CRF_VehLead.et" "{5915E51A1AABB9D2}Prefabs/Characters/!GS_Characters/Crews/CRF_VehGunner.et" "{88611B14BF2B14B1}Prefabs/Characters/!GS_Characters/Crews/CRF_VehDriver.et"
  }
- m_iMaxMembers 8
+ m_iMaxMembers 12
 }

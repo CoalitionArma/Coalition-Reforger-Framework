@@ -113,7 +113,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  m_aUnitPrefabSlots {
   "{CC8EDD051CB0C1CE}Prefabs/Characters/!GS_Characters/Squad Level/CRF_SL.et" "{B6AEA6F0469C66DD}Prefabs/Characters/!GS_Characters/Specialties/CRF_HMG.et" "{997F8FE3C2C23C6C}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHMG.et" "{B6AEA6F0469C66DD}Prefabs/Characters/!GS_Characters/Specialties/CRF_HMG.et" "{997F8FE3C2C23C6C}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHMG.et"
  }
- m_bDeleteWhenEmpty 0
+ m_bDeleteWhenEmpty 1
  m_iMaxMembers 12
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0
