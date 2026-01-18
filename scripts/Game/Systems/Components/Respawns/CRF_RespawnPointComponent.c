@@ -86,6 +86,6 @@ class CRF_TempSpawnPointComponent: ScriptComponent
 			return;
 		
 		if(CRF_RespawnManager.GetInstance())
-			CRF_RespawnManager.GetInstance().RegisterTempRespawnPoint(owner);
+			CRF_RespawnManager.GetInstance().RegisterTempGroupSpawnPoint(owner);
 	};
 };

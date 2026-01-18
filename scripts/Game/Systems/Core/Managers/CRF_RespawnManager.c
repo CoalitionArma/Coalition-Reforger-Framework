@@ -39,7 +39,7 @@ class CRF_RespawnManager : ScriptComponent
 	
 	// Protected Member Variables
 	protected ref array<IEntity> m_aRespawnPoints = {}; // Used for server
-	protected ref array<IEntity> m_aTempRespawnPoints = {}; // Used for server
+	protected ref array<IEntity> m_aTempGroupSpawnPoints = {}; // Used for server
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SafestartManager m_SafestartManager;
@@ -62,6 +62,18 @@ class CRF_RespawnManager : ScriptComponent
 	static CRF_RespawnManager GetInstance()
 	{
 		return m_sInstance;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<IEntity> GetTempGroupSpawnPoints()
+	{
+		return m_aTempGroupSpawnPoints;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ClearTempGroupSpawnPoints()
+	{
+		m_aTempGroupSpawnPoints.Clear();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -460,13 +472,13 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RegisterTempRespawnPoint(IEntity respawnPoint)
+	void RegisterTempGroupSpawnPoint(IEntity respawnPoint)
 	{
 		if (!respawnPoint)
 			return;
 
 		// Store Temp Respawnpoints only on server
-		m_aTempRespawnPoints.Insert(respawnPoint);
+		m_aTempGroupSpawnPoints.Insert(respawnPoint);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -795,7 +807,7 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
 		
-		foreach (IEntity spawnPoint : m_aTempRespawnPoints)
+		foreach (IEntity spawnPoint : m_aTempGroupSpawnPoints)
 		{
 			if (!spawnPoint)
 				continue;

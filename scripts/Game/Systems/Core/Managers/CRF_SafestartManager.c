@@ -464,15 +464,30 @@ class CRF_SafestartManager : ScriptComponent
 
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_bSafeStartEnabled can propagate.
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 1500);
+			
+			// Delete Temp Group Spawn Points
+			GetGame().GetCallqueue().CallLater(DeleteTempGroupSpawnPoints, 8500);
+			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);
 
+			// Delay the change being broadcasted
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 			
 			DeleteAllSafestartZones();
 			CRF_GamemodeManager.GetInstance().DeleteAllForwardDeployZones();
 		}
 	};
+	
+	void DeleteTempGroupSpawnPoints()
+	{
+		array<IEntity> tempSpawns = CRF_RespawnManager.GetInstance().GetTempGroupSpawnPoints();
+	
+		foreach (IEntity tempSpawn : tempSpawns)
+			SCR_EntityHelper.DeleteEntityAndChildren(tempSpawn);
+		
+		CRF_RespawnManager.GetInstance().ClearTempGroupSpawnPoints();
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	void AddSafestartZone(IEntity entity)
