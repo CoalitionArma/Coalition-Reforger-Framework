@@ -267,7 +267,11 @@ class CRF_GearscriptManager : ScriptComponent
 	protected FactionKey DetermineFactionKey(IEntity entity)
 	{
 		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
-		return facComp.GetAffiliatedFactionKey();;
+		
+		if (!facComp)
+			return "CIV";
+		
+		return facComp.GetAffiliatedFactionKey();
 	}
 	
 	//------------------------------------------------------------------------------------------------
