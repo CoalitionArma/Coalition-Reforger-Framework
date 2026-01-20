@@ -22,7 +22,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	protected string m_sMissionDescription;
 	
-	protected const string SCENARIOS_PATH = "Missions";
+	protected const string SCENARIOS_PATH = "_Missions";
 
 	//------------------------------------------------------------------------------------------------
 	override void Run()

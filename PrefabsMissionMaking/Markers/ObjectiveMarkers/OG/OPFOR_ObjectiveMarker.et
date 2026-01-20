@@ -1,0 +1,8 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ ID "60F6FAB82CC9BE71"
+ m_MarkerColor 0.561 0.071 0.071 1
+ m_sDescription "OPFOR OBJ"
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}

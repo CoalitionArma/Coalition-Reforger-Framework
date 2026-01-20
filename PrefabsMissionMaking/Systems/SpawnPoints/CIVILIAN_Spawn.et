@@ -1,13 +1,13 @@
 GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
  ID "50C6D20663830070"
  components {
-  CRF_RespawnPointComponent "{645A31042AA16609}" {
-   m_sRespawnPointFaction "BLUFOR"
+  CRF_RespawnPointComponent "{645A31042C357FC9}" {
+   m_sRespawnPointFaction "CIV"
   }
-  MeshObject "{645911BD734B5E66}" {
+  MeshObject "{645911A168BE4336}" {
    Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
   }
-  RigidBody "{645911BD734B5E6A}" {
+  RigidBody "{645911A168BE433B}" {
    SimState None
    ResponseIndex "NoCollision"
    ModelGeometry 1
@@ -16,7 +16,7 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    EnableDamage 0
    m_fBaseHealth 100000
    m_DestroySpawnObjects {
-    SCR_DebrisSpawnable "{645911BD734B5E56}" {
+    SCR_DebrisSpawnable "{645911A168BE4326}" {
      m_ModelPrefabs {
       "{180F19ED1440D32A}Assets/Structures/Military/Flags/FlagPole_01/dst/Flagpole_01_dst.xob"
      }
@@ -26,30 +26,30 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_eMaterialSoundType BREAK_METAL_POLE
   }
-  SCR_EditableCommentComponent "{68682AC2AF06EE86}" {
-   m_UIInfo SCR_EditableCommentUIInfo "{68682AC2D7A1A071}" {
-    Name "BLUFOR SPAWN"
+  SCR_EditableCommentComponent "{68682AC2CB60B978}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68682AC2FDFB7294}" {
+    Name "CIVILIAN SPAWN"
    }
    m_bStatic 0
    m_bGME_IsVisible 0
-   m_sColor 0.071 0.192 0.561 1
+   m_sColor 0.318 0.071 0.561 1
    m_fSizeCoef 0.8
   }
-  SCR_EditableSystemComponent "{648F3AE4214B26AE}" {
+  SCR_EditableSystemComponent "{648F3AE5D0DBD388}" {
    m_EntityType SYSTEM
-   m_UIInfo SCR_EditableEntityUIInfo "{648F3AE4442CEAB6}" {
-    Name "Blufor Spawn Point"
+   m_UIInfo SCR_EditableEntityUIInfo "{648F3AE5DC336674}" {
+    Name "Civ Spawn Point"
     Icon "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds"
     m_Image "{2F23E25348144FAE}UI/Textures/FieldManual/MPModes/Conflict/Tiles/respawn_UI.edds"
-    m_sFaction "BLUFOR"
+    m_sFaction "CIV"
     m_aAuthoredLabels {
-     ENTITYTYPE_SYSTEM FACTION_CRF_BLUFOR
+     ENTITYTYPE_SYSTEM FACTION_CRF_CIV
     }
     m_aAutoLabels {
      ENTITYTYPE_SYSTEM
     }
     m_EntityBudgetCost {
-     SCR_EntityBudgetValue "{64904260E3C6B087}" {
+     SCR_EntityBudgetValue "{649042601DC95893}" {
       m_BudgetType SYSTEMS
       m_Value 1
      }
@@ -61,28 +61,28 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    m_AccessKey 769
    m_Flags 69
   }
-  SCR_FactionAffiliationComponent "{6490426F457D9246}" {
-   "faction affiliation" "BLUFOR"
+  SCR_FactionAffiliationComponent "{6490426F6F5A27D8}" {
+   "faction affiliation" "CIV"
   }
-  SCR_HorizontalAlignComponent "{6490426F517E6DD0}" {
+  SCR_HorizontalAlignComponent "{6490426F6C873C41}" {
   }
-  SlotManagerComponent "{645911BAB1D66B16}" {
+  SlotManagerComponent "{645911A168BE4321}" {
    Slots {
     EntitySlotInfo Flag {
      Offset 0.0181 5.2653 0.0122
      Angles 0 180 0
-     Prefab "{AB72A0D9CB73483B}Prefabs/Props/Fabric/Flags/Gearscript Factions/BLUFOR_FLAG.et"
+     Prefab "{103104DE0FD580AA}Prefabs/Props/Fabric/Flags/Gearscript Factions/CIV_FLAG.et"
     }
    }
   }
-  RplComponent "{649042617FEE1ECC}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  RplComponent "{649042617FD38925}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
    Streamable Disabled
   }
  }
  coords 0 0 0
  {
-  CRF_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
-   ID "68682AC1B6C9C4BC"
+  CRF_ManualMarker : "{CC041EDE06E4A0C3}PrefabsMissionMaking/Markers/SpawnMarkers/CIVILIAN_SpawnMarker.et" {
+   ID "68682AC1B261B1FF"
    coords 0 0 0
    angles 0 0 0
   }

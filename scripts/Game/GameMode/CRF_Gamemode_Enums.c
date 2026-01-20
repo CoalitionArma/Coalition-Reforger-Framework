@@ -1,3 +1,4 @@
+// Enumaration for all active gamemodes for the config gneration plugin (NO SPACES OR "_", ALL MUST BE ONE WORD)
 enum CRF_EGamemode
 {
 	TVT,
@@ -10,6 +11,6 @@ enum CRF_EGamemode
 	RADIOPHASE,
 	RAID,
 	RUSH,
-	SND,
+	SEARCHANDDESTROY,
 	SUPPLYEXTRACT,
 }

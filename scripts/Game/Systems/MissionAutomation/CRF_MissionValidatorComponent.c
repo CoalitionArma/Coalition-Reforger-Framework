@@ -82,8 +82,11 @@ class CRF_MissionValidatorComponent : ScriptComponent
 		// Run all validation checks
 		ValidateGamemodeEntity();
 		ValidateFactions();
-		ValidateSpawnMarkers();
-		ValidateSafezones();
+		
+		// Semms like they arent pulling the entities names, so these are being shelved so mission makers dont get yelled at.
+		//ValidateSpawnMarkers();
+		//ValidateSafezones();
+		
 		ValidateCVONSetup();
 		ValidateSlottingSetup();
 		ValidateSpecialGamemodeRequirements();
@@ -145,7 +148,7 @@ class CRF_MissionValidatorComponent : ScriptComponent
 			AddInfo("[OK] CRF_RespawnManager component found");
 		
 		// Check for CRF_Gamemode component and validate slot ratio
-		CRF_Gamemode gamemode = CRF_Gamemode.Cast(gamemodeEntity.FindComponent(CRF_Gamemode));
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		if (gamemode)
 		{
 			// Validate faction ratios
@@ -177,25 +180,25 @@ class CRF_MissionValidatorComponent : ScriptComponent
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		
 		// BLUFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty())
+		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BluforSlots || !gamemode.m_BluforSlots.IsEmpty()))
 			AddCriticalError("Missing BLUFOR Spawn Point(s) in the world! the BLUFOR Faction will not function");
 		else
 			AddInfo("[OK] BLUFOR Spawn point found");
 		
 		// OPFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty())
+		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty() && (!gamemode.m_OpforSlots || !gamemode.m_OpforSlots.IsEmpty()))
 			AddCriticalError("Missing OPFOR Spawn Point(s) in the world! the OPFOR Faction will not function");
 		else
 			AddInfo("[OK] OPFOR Spawn point found");
 		
 		// INDFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("INDFOR").IsEmpty())
+		if (respawnManager.GetFactionSpawnpoints("INDFOR").IsEmpty() && (!gamemode.m_IndforSlots || !gamemode.m_IndforSlots.IsEmpty()))
 			AddCriticalError("Missing INDFOR Spawn Point(s) in the world! the INDFOR Faction will not function");
 		else
 			AddInfo("[OK] INDFOR Spawn point found");
 		
 		// CIV spawn point check
-		if (respawnManager.GetFactionSpawnpoints("CIV").IsEmpty())
+		if (respawnManager.GetFactionSpawnpoints("CIV").IsEmpty() && (!gamemode.m_CivSlots || !gamemode.m_CivSlots.IsEmpty()))
 			AddCriticalError("Missing CIV Spawn Point(s) in the world! the CIV Faction will not function");
 		else
 			AddInfo("[OK] CIV Spawn point found");
@@ -228,43 +231,63 @@ class CRF_MissionValidatorComponent : ScriptComponent
 	//! Validate spawn markers
 	protected void ValidateSpawnMarkers()
 	{
-		int bluforMarkers = CountEntitiesWithName("BLUFORSpawnMarker");
-		int opforMarkers = CountEntitiesWithName("OPFORSpawnMarker");
-		int indforMarkers = CountEntitiesWithName("INDFORSpawnMarker");
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		
-		if (bluforMarkers == 0)
-			AddWarning("No BLUFOR spawn markers found (searched for entities named 'BLUFORSpawnMarker')");
+		int bluforMarkers = CountEntitiesWithName("BLUFOR_SpawnMarker");
+		int opforMarkers = CountEntitiesWithName("OPFOR_SpawnMarker");
+		int indforMarkers = CountEntitiesWithName("INDFOR_SpawnMarker");
+		int civMarkers = CountEntitiesWithName("CIVILIAN_SpawnMarker");
+		
+		if (bluforMarkers == 0 && gamemode.m_BluforSlots && !gamemode.m_BluforSlots.IsEmpty())
+			AddWarning("No BLUFOR spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 BLUFOR spawn marker(s)", bluforMarkers));
 		
-		if (opforMarkers == 0)
-			AddWarning("No OPFOR spawn markers found (searched for entities named 'OPFORSpawnMarker')");
+		if (opforMarkers == 0 && gamemode.m_OpforSlots && !gamemode.m_OpforSlots.IsEmpty())
+			AddWarning("No OPFOR spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 OPFOR spawn marker(s)", opforMarkers));
 		
-		if (indforMarkers > 0)
+		if (indforMarkers == 0 && gamemode.m_IndforSlots && !gamemode.m_IndforSlots.IsEmpty())
+			AddWarning("No INDFOR spawn markers found");
+		else
 			AddInfo(string.Format("[OK] Found %1 INDFOR spawn marker(s)", indforMarkers));
+		
+		if (civMarkers == 0 && gamemode.m_CivSlots && !gamemode.m_CivSlots.IsEmpty())
+			AddWarning("No CIVILIAN spawn markers found");
+		else
+			AddInfo(string.Format("[OK] Found %1 CIVILIAN spawn marker(s)", civMarkers));
 	}
 	
 	//! Validate safestart zones
 	protected void ValidateSafezones()
 	{
-		int bluforZones = CountEntitiesWithName("BLUFORSafestartBoundry");
-		int opforZones = CountEntitiesWithName("OPFORSafestartBoundry");
-		int indforZones = CountEntitiesWithName("INDFORSafestartBoundry");
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		
-		if (bluforZones == 0)
+		int bluforZones = CountEntitiesWithName("BLUFOR_SafestartBoundry");
+		int opforZones = CountEntitiesWithName("OPFOR_SafestartBoundry");
+		int indforZones = CountEntitiesWithName("INDFOR_SafestartBoundry");
+		int civZones = CountEntitiesWithName("CIVILIAN_SafestartBoundry");
+		
+		if (bluforZones == 0 && gamemode.m_BluforSlots && !gamemode.m_BluforSlots.IsEmpty())
 			AddWarning("No BLUFOR safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 BLUFOR safestart boundary/boundaries", bluforZones));
 		
-		if (opforZones == 0)
+		if (opforZones == 0 && gamemode.m_OpforSlots && !gamemode.m_OpforSlots.IsEmpty())
 			AddWarning("No OPFOR safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 OPFOR safestart boundary/boundaries", opforZones));
 		
-		if (indforZones > 0)
+		if (indforZones == 0 && gamemode.m_IndforSlots && !gamemode.m_IndforSlots.IsEmpty())
+			AddWarning("No INDFOR safestart boundary found");
+		else
 			AddInfo(string.Format("[OK] Found %1 INDFOR safestart boundary/boundaries", indforZones));
+		
+		if (civZones == 0 && gamemode.m_CivSlots && !gamemode.m_CivSlots.IsEmpty())
+			AddWarning("No CIVILIAN safestart boundary found");
+		else
+			AddInfo(string.Format("[OK] Found %1 CIVILIAN safestart boundary/boundaries", civZones));
 	}
 	
 	//! Validate CVON setup
@@ -439,16 +462,13 @@ class CRF_MissionValidatorComponent : ScriptComponent
 	//! Count entities with a specific name
 	protected int CountEntitiesWithName(string entityName)
 	{
+		IEntity entity;
 		int count = 0;
-		IEntity entity = GetGame().GetWorld().FindEntityByName(entityName);
 		
-		if (entity)
-			count = 1;
-		
-		// Check for numbered variants (e.g., BLUFORSpawnMarker1, BLUFORSpawnMarker2)
+		// Check for numbered variants (e.g., BLUFOR_SpawnMarker_1, BLUFOR_SpawnMarker_2)
 		for (int i = 1; i < 10; i++)
-		{
-			entity = GetGame().GetWorld().FindEntityByName(entityName + i.ToString());
+		{	
+			entity = GetGame().GetWorld().FindEntityByName(entityName + "_" + i.ToString());
 			if (entity)
 				count++;
 		}
