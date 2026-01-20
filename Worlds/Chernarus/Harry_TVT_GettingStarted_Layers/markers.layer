@@ -1,0 +1,28 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarker.et" {
+ {
+  coords 9977.024 149.2 10379.081
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 120
+  m_sDescription "Bomb Sites Nearby"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 9888.003 157.982 10336.532
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription "Bomb Site B"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 10037.067 145.592 10402.137
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription "Bomb Site A"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
