@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: " Configure Descriptions", 
+	name: "5 | Configure Descriptions", 
 	description: "Configure Mission Descriptions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 

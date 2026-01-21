@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Automatically Create Initial Layers/Objects", 
+	name: "1 | Automatically Create Initial Layers/Objects", 
 	description: "Automatically Generate Mission Layers", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -37,6 +37,7 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		WorldEditorAPI api = worldEditor.GetApi();
 		
 		api.CreateSubsceneLayer(1, "_INIT");
+		api.CreateSubsceneLayer(1, "MARKERS");
 		api.CreateSubsceneLayer(1, "SPAWNPOINTS");
 		api.CreateSubsceneLayer(1, "SPAWNPOINTSGROUPS");
 		api.CreateSubsceneLayer(1, "OBJECTIVES");
@@ -46,7 +47,7 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		
 		api.SetActiveSubsceneLayer(1, "_INIT");
 
-		api.CreateEntity("{6A996BBFCEB37E78}Prefabs/Systems/_Lobby/CRF_Lobby.et", "CRF_Lobby", 1, null, vector.Zero, vector.Zero);
+		api.CreateEntity("{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et", "CRF_Lobby", 1, null, vector.Zero, vector.Zero);
 		
 		worldEditor.Save();
 		

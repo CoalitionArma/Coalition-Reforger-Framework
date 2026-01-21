@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Generate Config File", 
+	name: "6 | Generate Config File", 
 	description: "Generate Mission Configuration File", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -22,7 +22,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	protected string m_sMissionDescription;
 	
-	protected const string SCENARIOS_PATH = "_Missions";
+	protected const string SCENARIOS_PATH = "!Missions";
 
 	//------------------------------------------------------------------------------------------------
 	override void Run()
@@ -55,7 +55,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		string worldPath;
 		
 		//--- Get mission header from the template config (can't use the class directly, it's engine-controlled class that cannot have reference in script)
-		Resource templateResource = Resource.Load("{3D094352621EA88C}Missions/ACRF_BaseMissionConfig.conf");
+		Resource templateResource = Resource.Load("{3D094352621EA88C}!Missions/CRF_BaseMissionConfig.conf");
 		BaseContainer missionHeaderContainer = templateResource.GetResource().ToBaseContainer();
 		
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
@@ -92,7 +92,6 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		};
 		
 		missionHeaderContainer.Set("m_sName", string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName));
-		missionHeaderContainer.Set("m_iPlayerCount", missionPlayercount);
 		
 		//--- Get target config path
 		string fileSystem = FilePath.FileSystemNameFromFileName(worldPath);
@@ -153,6 +152,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected int GetPlayerCount(array<ref CRF_SlottingGroup> factionSlots)
 	{
 		int missionPlayercount;

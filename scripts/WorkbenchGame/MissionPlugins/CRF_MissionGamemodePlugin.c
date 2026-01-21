@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Configure Settings", 
+	name: "2 | Configure Settings", 
 	description: "Configure Mission Gamemode Settings", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
