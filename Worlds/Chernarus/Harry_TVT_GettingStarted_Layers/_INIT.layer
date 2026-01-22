@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "A simpler mission for educational purposes. Access the front panel of the generator to set the bomb, and defuse the bomb. The bomb markers are hidden, and the attackers must find them."\
    ""\
    "BLUFOR Composition: Inf"\
-   "BLUFOR Assets: MMGs"\
+   "BLUFOR Assets: MMGs and Intergrated Combat Engineers"\
    ""\
    "OPFOR Composition: Inf"\
    "OPFOR Assets: Integrated Demo"\
