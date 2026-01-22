@@ -1,7 +1,7 @@
 SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 2770.337 0 3510.611
 }
-CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_AirdropManager "{685355B93E7507C0}" {
   }
@@ -20,7 +20,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_sMagazinePrefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
     }
     CRF_WeaponLootEntry "{68531C9BF738C907}" {
-     m_fWeight 0.4
+     m_fWeight 0.2
      m_sPrimaryPrefab "{458A4E8CD3590D92}Prefabs/Weapons/Shotguns/Remington 870/BC_Shotgun_Remington_870.et"
      m_sMagazinePrefab "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et"
      m_iMagazineCount 6
@@ -311,20 +311,273 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     }
    }
   }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
  }
  coords 2681.279 610.958 1840.279
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 25
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "It's a Battle Royale. Loot gear, try to stay alive."
   }
  }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey ""
+ m_sFactionTwoKey ""
+ m_OpforSlots {
+  CRF_SlottingGroup "{686D1842C01B9840}" {
+   m_sCallsign "1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9ECE}" {
+   m_sCallsign "2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9E77}" {
+   m_sCallsign "3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9DF9}" {
+   m_sCallsign "4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9D01}" {
+   m_sCallsign "5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9C96}" {
+   m_sCallsign "6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9C21}" {
+   m_sCallsign "7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B93B0}" {
+   m_sCallsign "8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B92C6}" {
+   m_sCallsign "9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B925E}" {
+   m_sCallsign "10"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B91E0}" {
+   m_sCallsign "11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9174}" {
+   m_sCallsign "12"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9080}" {
+   m_sCallsign "13"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9009}" {
+   m_sCallsign "14"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B978B}" {
+   m_sCallsign "15"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9720}" {
+   m_sCallsign "16"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B96B4}" {
+   m_sCallsign "17"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B95C2}" {
+   m_sCallsign "18"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9555}" {
+   m_sCallsign "19"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B94DC}" {
+   m_sCallsign "20"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B9465}" {
+   m_sCallsign "21"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B8BE3}" {
+   m_sCallsign "22"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B8B75}" {
+   m_sCallsign "23"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B8AFB}" {
+   m_sCallsign "24"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686D1842C01B8A09}" {
+   m_sCallsign "25"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{B22880EF6DF1482D}Configs/Gearscripts/Custom/Harry/80s/CRF_GS_USSR80s_Unarm_NoEquip.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
-  m_bEnableBFT 0
   m_bEnableIndividualBFT 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
