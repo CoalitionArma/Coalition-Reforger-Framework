@@ -26,6 +26,15 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_eMaterialSoundType BREAK_METAL_POLE
   }
+  SCR_EditableCommentComponent "{68682AC214542A0F}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68682AC213D25A11}" {
+    Name "INDFOR SPAWN"
+   }
+   m_bStatic 0
+   m_bGME_IsVisible 0
+   m_sColor 0.071 0.561 0.192 1
+   m_fSizeCoef 0.8
+  }
   SCR_EditableSystemComponent "{649042996FDBC111}" {
    m_EntityType SYSTEM
    m_UIInfo SCR_EditableEntityUIInfo "{649042989AEA61BA}" {
@@ -70,5 +79,12 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Streamable Disabled
   }
  }
- coords 0 -1.175 0
+ coords 0 0 0
+ {
+  CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+   ID "68682AC1BDF231D9"
+   coords 0 0 0
+   angles 0 0 0
+  }
+ }
 }

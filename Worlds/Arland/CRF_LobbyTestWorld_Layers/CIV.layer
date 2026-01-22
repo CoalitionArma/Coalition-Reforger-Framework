@@ -1,4 +1,4 @@
-PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBoundry.et" {
+PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart/CIVILIAN_SafestartBoundry.et" {
  coords 1266.01 37.781 2804.427
  Points {
   ShapePoint "{659E505E47CDF295}" {
@@ -15,6 +15,6 @@ PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBo
   }
  }
 }
-GenericEntity : "{91AC884B31EDEE23}Prefabs/Structures/FlagPoles/RespawnPoles/CIV_Respawn.et" {
+GenericEntity : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
  coords 1259.927 37.937 2822.596
 }

@@ -26,6 +26,15 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_eMaterialSoundType BREAK_METAL_POLE
   }
+  SCR_EditableCommentComponent "{68682AC2AF06EE86}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68682AC2D7A1A071}" {
+    Name "BLUFOR SPAWN"
+   }
+   m_bStatic 0
+   m_bGME_IsVisible 0
+   m_sColor 0.071 0.192 0.561 1
+   m_fSizeCoef 0.8
+  }
   SCR_EditableSystemComponent "{648F3AE4214B26AE}" {
    m_EntityType SYSTEM
    m_UIInfo SCR_EditableEntityUIInfo "{648F3AE4442CEAB6}" {
@@ -70,5 +79,12 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Streamable Disabled
   }
  }
- coords 0 -1.175 0
+ coords 0 0 0
+ {
+  CRF_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
+   ID "68682AC1B6C9C4BC"
+   coords 0 0 0
+   angles 0 0 0
+  }
+ }
 }

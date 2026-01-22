@@ -1,0 +1,8 @@
+GenericEntity : "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPointsGroups/InitalGroupSpawn_Base.et" {
+ ID "50C6D20663830070"
+ components {
+  CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+   m_sSpawnPointFaction "OPFOR"
+  }
+ }
+}
