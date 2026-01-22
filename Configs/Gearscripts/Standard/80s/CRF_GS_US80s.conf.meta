@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+ Name "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
  Configurations {
   CONFResourceClass PC {
   }

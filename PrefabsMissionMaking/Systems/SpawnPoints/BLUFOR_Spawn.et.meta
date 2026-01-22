@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{62865C82AB534D91}Prefabs/Structures/Military/Flags/FlagPole_01/BLUFOR_Respawn.et"
+ Name "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

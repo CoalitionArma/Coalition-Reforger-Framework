@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2FBE561BC12C5A7A}Sounds/CCOWarBG.wav"
+ Name "{2FBE561BC12C5A7A}Sounds/Background Noise/WarBG.wav"
  Configurations {
   WAVResourceClass PC : "{F72B05D02F3F135E}Configs/System/ResourceTypes/PC/Sound.conf" {
   }

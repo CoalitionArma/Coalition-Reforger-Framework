@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Configure Factions", 
+	name: "3 | Configure Factions", 
 	description: "Configure Mission Factions", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Satchel_Base.et"
+ Name "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Explosive_Satchels/Satchel_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

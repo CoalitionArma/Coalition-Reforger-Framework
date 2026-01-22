@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents_Poor.conf"
+ Name "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgents_Poor.conf"
  Configurations {
   CONFResourceClass PC {
   }

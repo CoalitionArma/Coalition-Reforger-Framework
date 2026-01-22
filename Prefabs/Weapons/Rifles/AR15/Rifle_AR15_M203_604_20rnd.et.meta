@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A0B26BDE66E0BA41}Prefabs/Weapons/Rifles/M16/Rifle_AR15_M203_604_20rnd.et"
+ Name "{A0B26BDE66E0BA41}Prefabs/Weapons/Rifles/AR15/Rifle_AR15_M203_604_20rnd.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

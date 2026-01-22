@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F30D06CA4F8748DE}Configs/Gearscripts/Standard/Vietnam/CRF_GS_VC_Yoko.conf"
+ Name "{F30D06CA4F8748DE}Configs/Gearscripts/Custom/Yoko/CRF_GS_VC_Yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{02F5D37299026EEF}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC_yoko.conf"
+ Name "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

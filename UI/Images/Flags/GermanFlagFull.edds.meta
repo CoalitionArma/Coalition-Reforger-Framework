@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{17F85AC99B1B8412}UI/GermanFlagFull.edds"
+ Name "{17F85AC99B1B8412}UI/Images/Flags/GermanFlagFull.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB

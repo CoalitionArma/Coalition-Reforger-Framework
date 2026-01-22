@@ -1,6 +1,0 @@
-MatPBRBasic {
- RoughnessScale 0.521
- BCRMap "{99BE4AFE4B9AA902}Assets/Items/Snowball/Data/2K-snow_3_Base Color.edds"
- NormalPower 4
- NMOMap "{3DB748116383F742}Assets/Items/Snowball/Data/2K-snow_3_Normal.edds"
-}

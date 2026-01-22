@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{14B5B4648300DD22}Prefabs/Items/Equipment/Backpacks/M2/Backpack_M2_Weapon.et"
+ Name "{14B5B4648300DD22}Prefabs/Items/Equipment/Backpacks/M2/Backpack_M2_Weapon_MoreAmmo.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

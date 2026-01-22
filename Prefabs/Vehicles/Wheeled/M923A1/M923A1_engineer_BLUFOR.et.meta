@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_test.et"
+ Name "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

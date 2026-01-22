@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C747AFB6B750CE9A}Configs/System/chimeraMenus.conf"
+ Name "{C747AFB6B750CE9A}Configs/Systems/Menus/chimeraMenus.conf"
  Configurations {
   CONFResourceClass PC {
   }

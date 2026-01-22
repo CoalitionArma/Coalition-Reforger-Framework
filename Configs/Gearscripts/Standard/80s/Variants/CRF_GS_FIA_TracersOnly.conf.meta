@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2F68FE4489B35DE8}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_TracersOnly.conf"
+ Name "{2F68FE4489B35DE8}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_FIA_TracersOnly.conf"
  Configurations {
   CONFResourceClass PC {
   }

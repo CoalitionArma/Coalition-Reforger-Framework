@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FD560710482AA439}Prefabs/Nuke/CRF_NukeSpawner.et"
+ Name "{FD560710482AA439}Prefabs/Systems/Explosions/Nuke/CRF_NukeSpawner.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

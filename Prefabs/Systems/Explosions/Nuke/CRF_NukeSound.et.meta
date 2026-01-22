@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{6D887D33B0E6CB31}Prefabs/Nuke/CRF_NukeSound.et"
+ Name "{6D887D33B0E6CB31}Prefabs/Systems/Explosions/Nuke/CRF_NukeSound.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

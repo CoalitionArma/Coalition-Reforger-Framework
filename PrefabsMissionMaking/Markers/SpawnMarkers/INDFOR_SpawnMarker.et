@@ -1,0 +1,8 @@
+CRF_ManualMarker : "{5F967DAA15AA1622}PrefabsMissionMaking/Markers/SpawnMarkers/SpawnMarker_Base.et" {
+ ID "60F6FAB9D60D60D6"
+ m_MarkerColor 0.071 0.561 0.192 1
+ m_sDescription "INDFOR Spawn"
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+}

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2D5480C525C61D0C}Configs/Gearscripts/Custom/RandAlThor/Special/CRF_GS_RallyUSSR.conf"
+ Name "{2D5480C525C61D0C}Configs/Gearscripts/Standard/Specials/Rally/CRF_GS_RallyUSSR.conf"
  Configurations {
   CONFResourceClass PC {
   }

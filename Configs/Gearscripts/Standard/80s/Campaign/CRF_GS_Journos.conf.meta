@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/CRF_GS_Journos.conf"
+ Name "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_Journos.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0BEC033432F40F31}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_SCARs_HMGs.conf"
+ Name "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_INFonly.conf"
  Configurations {
   CONFResourceClass PC {
   }

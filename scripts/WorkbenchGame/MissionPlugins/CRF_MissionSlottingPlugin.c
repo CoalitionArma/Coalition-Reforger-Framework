@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Configure Slots", 
+	name: "4 | Configure Slots", 
 	description: "Configure Mission Slots", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -140,16 +140,16 @@ class CRF_MissionSlottingQuickSetupDialouge
 class CRF_MissionSlottingSetupDialouge
 {
 	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
-	protected int m_iFactionOneRatio;
+	int m_iFactionOneRatio;
 
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
-	protected string m_sFactionOneKey;
+	string m_sFactionOneKey;
 
 	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
-	protected int m_iFactionTwoRatio;
+	int m_iFactionTwoRatio;
 
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
-	protected string m_sFactionTwoKey;
+	string m_sFactionTwoKey;
 	
 	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Settings - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BLUFORSlots = {};

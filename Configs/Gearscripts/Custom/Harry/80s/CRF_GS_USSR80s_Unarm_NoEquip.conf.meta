@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B22880EF6DF1482D}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_USSR80s_Unarm_Noeqiup.conf"
+ Name "{B22880EF6DF1482D}Configs/Gearscripts/Custom/Harry/80s/CRF_GS_USSR80s_Unarm_NoEquip.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{533092FF68C19D59}UI/Layouts/COA_SafeStart.layout"
+ Name "{533092FF68C19D59}UI/layouts/CRF_SafeStartDisplay.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   LayoutResourceClass PS4 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }

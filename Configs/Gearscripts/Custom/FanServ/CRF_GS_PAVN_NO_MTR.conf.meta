@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E018E7FC36197722}Configs/Gearscripts/Standard/Vietnam/CRF_GS_PAVN_NO_MTR.conf"
+ Name "{E018E7FC36197722}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAVN_NO_MTR.conf"
  Configurations {
   CONFResourceClass PC {
   }

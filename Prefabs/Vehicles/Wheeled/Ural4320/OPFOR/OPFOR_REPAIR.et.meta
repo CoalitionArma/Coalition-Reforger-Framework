@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1F248314047F79CF}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR_REPAIR.et"
+ Name "{1F248314047F79CF}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_REPAIR.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

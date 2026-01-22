@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{363B38F3CA035DCC}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_Urban_Container.conf"
+ Name "{363B38F3CA035DCC}Configs/Gearscripts/Custom/RandAlThor/Special/Container/CRF_GS_RHSION_Urban_Container.conf"
  Configurations {
   CONFResourceClass PC {
   }

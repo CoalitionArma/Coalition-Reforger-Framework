@@ -23,14 +23,14 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    m_eMaterialSoundType BREAK_METAL_POLE
   }
   SCR_FlagComponent "{645A0008C015ACBC}" {
-   m_sDefaultMaterial "{AC8120550DC6D979}Assets/Props/Fabric/Flags/Data/Flag_1_2_COA.emat"
+   m_sDefaultMaterial "{AC8120550DC6D979}Assets/Materials/Flags/Factions/Flag_COA.emat"
   }
   SlotManagerComponent "{645A0008C015ACB8}" {
    Slots {
     EntitySlotInfo Flag {
      Offset 0.0181 5.2653 0.0122
      Angles 0 180 0
-     Prefab "{CCCC185722D6D6EC}Assets/Props/Fabric/Flags/Flag_1_2_White_Base.et"
+     Prefab "{AB72A0D9CB73483A}Prefabs/Props/Fabric/Flags/Flag_1_2_White_01.et"
     }
    }
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{EC087023D0487451}CRF Images/memes/IMG_6267.edds"
+ Name "{EC087023D0487451}UI/Images/Memes/IMG_6267.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

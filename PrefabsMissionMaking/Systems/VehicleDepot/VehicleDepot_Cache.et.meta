@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{02D89CB8A159DDF0}Prefabs/Systems/VehicleDepot/VehicleDepot_wCache.et"
+ Name "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

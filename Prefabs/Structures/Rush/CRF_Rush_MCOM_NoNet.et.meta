@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3950CB4E59C348EA}Prefabs/Structures/CRF_Rush_MCOM_NoNet.et"
+ Name "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

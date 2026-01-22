@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+ Name "{B7385DA4504BD4D5}UI/Images/Coalition/crflogo.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

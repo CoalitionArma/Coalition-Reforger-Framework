@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et"
+ Name "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

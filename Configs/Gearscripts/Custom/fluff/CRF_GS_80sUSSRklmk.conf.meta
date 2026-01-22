@@ -1,7 +1,5 @@
 MetaFileClass {
-<<<<<<<< HEAD:Configs/Gearscripts/fluff/CRF_GS_80sUSSRklmk.conf.meta
- Name "{E22DAC2682656C91}Configs/Gearscripts/fluff/CRF_GS_80sUSSRklmk.conf"
-========
+ Name "{E22DAC2682656C91}Configs/Gearscripts/Custom/fluff/CRF_GS_80sUSSRklmk.conf"
  Configurations {
   CONFResourceClass PC {
   }

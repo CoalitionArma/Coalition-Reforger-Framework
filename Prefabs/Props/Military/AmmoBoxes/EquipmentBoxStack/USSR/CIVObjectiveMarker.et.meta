@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0CACE56ECDB2CB1F}PrefabsEditable/Markers/MoveableObjectiveMarker.et"
+ Name "{0CACE56ECDB2CB1F}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/CIVObjectiveMarker.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

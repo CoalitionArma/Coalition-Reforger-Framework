@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4E86D291CA30D545}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_NoMap.conf"
+ Name "{4E86D291CA30D545}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_CIV_NoMap_Pistol.conf"
  Configurations {
   CONFResourceClass PC {
   }

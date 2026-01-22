@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{EFEDAFEB7090A2F9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_SPC_COL.conf"
+ Name "{EFEDAFEB7090A2F9}Configs/Gearscripts/Custom/FanServ/CRF_GS_SPC_COL.conf"
  Configurations {
   CONFResourceClass PC {
   }

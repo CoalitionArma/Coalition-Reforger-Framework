@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
+ Name "{99561B7D90B0CE24}Assets/Materials/Fabric/CDFSpecCamo.emat"
  Configurations {
   EMATResourceClass PC {
   }

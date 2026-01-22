@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D7F3DA99D8543DF0}Prefabs/Structures/Frontline/Flags/Zone_E_Mat.emat"
+ Name "{D7F3DA99D8543DF0}Assets/Materials/Flags/Objectives/Zone_E_Mat.emat"
  Configurations {
   EMATResourceClass PC {
   }

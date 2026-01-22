@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4EE7794C9A3F11EF}Configs/System/keyBindingMenu.conf"
+ Name "{4EE7794C9A3F11EF}Configs/Systems/Menus/keyBindingMenu.conf"
  Configurations {
   CONFResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   CONFResourceClass PS4 : PC {
   }
   CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass Xbox : PC {
   }
  }
 }

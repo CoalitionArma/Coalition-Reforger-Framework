@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4432B91C92476A76}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_drones.conf"
+ Name "{4432B91C92476A76}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_RHSMSV_drones.conf"
  Configurations {
   CONFResourceClass PC {
   }

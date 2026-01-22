@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{51E2BFEBE0765F3C}UI/Slotting/AAR.layout"
+ Name "{51E2BFEBE0765F3C}UI/Phases/AAR.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   LayoutResourceClass PS5 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }

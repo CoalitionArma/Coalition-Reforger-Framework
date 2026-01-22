@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{BBFA8257E348897C}UI/layouts/COA_GameTimer.layout"
+ Name "{BBFA8257E348897C}UI/layouts/CRF_GameTimerDisplay.layout"
  Configurations {
   LayoutResourceClass PC {
   }

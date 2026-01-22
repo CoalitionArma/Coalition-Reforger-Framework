@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4E5DAC62A374950F}Prefabs/Characters/Core/DefaultPlayerControllerMP_Coop.et"
+ Name "{4E5DAC62A374950F}Prefabs/Characters/Core/CRF_PlayerControllerMP.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass HEADLESS : PC {
   }
   EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

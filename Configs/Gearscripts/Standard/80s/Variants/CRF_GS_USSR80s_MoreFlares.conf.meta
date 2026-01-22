@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C7452E022D66CDF3}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_MoreFlares.conf"
+ Name "{C7452E022D66CDF3}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_USSR80s_MoreFlares.conf"
  Configurations {
   CONFResourceClass PC {
   }

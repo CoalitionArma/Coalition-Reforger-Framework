@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{AD4AA36C417881FD}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_mortarbackpacks.conf"
+ Name "{AD4AA36C417881FD}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_USSR80s_mortarbackpacks.conf"
  Configurations {
   CONFResourceClass PC {
   }

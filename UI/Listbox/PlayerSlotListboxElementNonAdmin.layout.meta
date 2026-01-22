@@ -13,5 +13,7 @@ MetaFileClass {
   }
   LayoutResourceClass HEADLESS : PC {
   }
+  LayoutResourceClass Xbox : PC {
+  }
  }
 }

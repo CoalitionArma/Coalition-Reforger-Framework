@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D0E73DFF58988B36}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_HMGSPP.conf"
+ Name "{D0E73DFF58988B36}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_HMGSPP.conf"
  Configurations {
   CONFResourceClass PC {
   }

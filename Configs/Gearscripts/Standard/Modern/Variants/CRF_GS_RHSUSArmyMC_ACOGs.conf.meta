@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{90EEF2B42B1C1ED8}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC_ACOGs.conf"
+ Name "{90EEF2B42B1C1ED8}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSUSArmyMC_ACOGs.conf"
  Configurations {
   CONFResourceClass PC {
   }

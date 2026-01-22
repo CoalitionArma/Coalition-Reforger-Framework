@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E87A99E18FA57C5C}Configs/Gearscripts/CRF_GS_RHSION.conf"
+ Name "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
  Configurations {
   CONFResourceClass PC {
   }
