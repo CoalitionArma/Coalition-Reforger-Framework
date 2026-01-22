@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{9E7382D41D099E93}Prefabs/Vehicles/Wheeled/S105/S105_rally_armed_red_gau_test.et"
+ Name "{9E7382D41D099E93}Prefabs/Vehicles/Wheeled/S105/armed/Ural_rally_armed_red_gau.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

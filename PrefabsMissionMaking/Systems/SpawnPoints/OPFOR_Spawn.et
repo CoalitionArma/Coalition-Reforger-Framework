@@ -26,6 +26,15 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_eMaterialSoundType BREAK_METAL_POLE
   }
+  SCR_EditableCommentComponent "{68682AC204AF91F5}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68682AC20C1CFC5A}" {
+    Name "OPFOR SPAWN"
+   }
+   m_bStatic 0
+   m_bGME_IsVisible 0
+   m_sColor 0.561 0.071 0.071 1
+   m_fSizeCoef 0.8
+  }
   SCR_EditableSystemComponent "{648F3AE50F1F3B96}" {
    m_EntityType SYSTEM
    m_UIInfo SCR_EditableEntityUIInfo "{648F3AE53F8033C8}" {
@@ -34,10 +43,10 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
     m_Image "{2F23E25348144FAE}UI/Textures/FieldManual/MPModes/Conflict/Tiles/respawn_UI.edds"
     m_sFaction "OPFOR"
     m_aAuthoredLabels {
-     7 51871
+     ENTITYTYPE_SYSTEM FACTION_CRF_OPFOR
     }
     m_aAutoLabels {
-     7
+     ENTITYTYPE_SYSTEM
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{6490426025A01C2B}" {
@@ -55,9 +64,6 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
   SCR_FactionAffiliationComponent "{6490426ED5F5FBAB}" {
    "faction affiliation" "OPFOR"
   }
-  SCR_FlagComponent "{645911A160C1D2C7}" {
-   m_sDefaultMaterial "{6E9FD76E21FF14D4}Prefabs/Structures/FlagPoles/Flags/OPFOR_Flag.emat"
-  }
   SCR_HorizontalAlignComponent "{6490426EBA3A2988}" {
   }
   SlotManagerComponent "{645911A160C1D2C6}" {
@@ -65,7 +71,7 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
     EntitySlotInfo Flag {
      Offset 0.0181 5.2653 0.0122
      Angles 0 180 0
-     Prefab "{CCCC185722D6D6EC}Assets/Props/Fabric/Flags/Flag_1_2_White_Base.et"
+     Prefab "{6B9C2405427CACEC}Prefabs/Props/Fabric/Flags/Gearscript Factions/OPFOR_FLAG.et"
     }
    }
   }
@@ -73,5 +79,12 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Streamable Disabled
   }
  }
- coords 0 -1.175 0
+ coords 0 0 0
+ {
+  CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsMissionMaking/Markers/SpawnMarkers/OPFOR_SpawnMarker.et" {
+   ID "68682AC1849E53AF"
+   coords 0 0 0
+   angles 0 0 0
+  }
+ }
 }

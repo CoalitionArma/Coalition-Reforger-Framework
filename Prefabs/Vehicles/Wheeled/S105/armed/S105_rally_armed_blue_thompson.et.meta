@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/S105_rally_armed_blue_thompson.et"
+ Name "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

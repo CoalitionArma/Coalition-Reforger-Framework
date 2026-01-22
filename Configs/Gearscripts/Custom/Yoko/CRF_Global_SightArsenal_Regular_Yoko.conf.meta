@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E408EBE559872CB5}Configs/Gearscripts/CRF_Global_SightArsenal_Regular_Yoko.conf"
+ Name "{E408EBE559872CB5}Configs/Gearscripts/Custom/Yoko/CRF_Global_SightArsenal_Regular_Yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

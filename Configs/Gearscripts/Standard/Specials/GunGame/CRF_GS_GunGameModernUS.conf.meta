@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A4C7C628E5F338EB}Configs/Gearscripts/Standard/Modern/CRF_GS_GunGame.conf"
+ Name "{A4C7C628E5F338EB}Configs/Gearscripts/Standard/Specials/GunGame/CRF_GS_GunGameModernUS.conf"
  Configurations {
   CONFResourceClass PC {
   }

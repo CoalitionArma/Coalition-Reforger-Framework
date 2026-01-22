@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{221DA4E9C09EF11E}Prefabs/Weapons/Launchers/M79/BC_M79_LS.et"
+ Name "{221DA4E9C09EF11E}Prefabs/Weapons/Launchers/M79/BC_M79_HEDP_LS.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

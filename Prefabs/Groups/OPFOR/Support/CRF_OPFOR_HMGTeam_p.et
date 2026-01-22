@@ -1,0 +1,120 @@
+SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
+ ID "0000000000000001"
+ components {
+  SCR_AIConfigComponent "{512CC1759AE69D6D}" {
+   m_Skill 1
+   m_Reaction_UnknownTarget SCR_AITargetReaction_Unknown "{686470D723A8708C}" {
+   }
+   m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{686470D723A8708F}" {
+   }
+  }
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "Heavy Machine-Gun Team"
+    m_Image "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_GROUP FACTION_CRF_OPFOR TRAIT_SUPPRESSIVE TRAIT_ARMORPIERCING TRAIT_EXPLOSIVE
+    }
+    m_aAutoLabels {
+     GROUPSIZE_MEDIUM
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{686470D723A8708A}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+    m_bUseUIInfoName 1
+    m_MilitarySymbol SCR_MilitarySymbol "{686470D723A87084}" {
+     m_Identity OPFOR
+     m_Dimension LAND
+     m_Icons MACHINEGUN
+     m_Amplifier SQUAD
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity OPFOR
+    m_Icons MACHINEGUN
+    m_Amplifier SQUAD
+   }
+   m_bForced 1
+  }
+  SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{686470D723A87080}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 3
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D723A87083}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D723A87082}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D723A8709D}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D723A8A860}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 6 0 -6
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{686470D723A8A862}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -6 0 -6
+     m_vAngles 0 0 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_faction "OPFOR"
+ m_aUnitPrefabSlots {
+  "{CC8EDD051CB0C1CE}Prefabs/Characters/!GS_Characters/Squad Level/CRF_SL.et" "{B6AEA6F0469C66DD}Prefabs/Characters/!GS_Characters/Specialties/CRF_HMG.et" "{997F8FE3C2C23C6C}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHMG.et" "{B6AEA6F0469C66DD}Prefabs/Characters/!GS_Characters/Specialties/CRF_HMG.et" "{997F8FE3C2C23C6C}Prefabs/Characters/!GS_Characters/Specialties/CRF_AHMG.et"
+ }
+ m_bDeleteWhenEmpty 1
+ m_iMaxMembers 1
+ m_bPlayable 0
+ m_bDeleteIfNoPlayer 1
+}

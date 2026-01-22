@@ -1,0 +1,35 @@
+GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+ ID "50C6D20663830070"
+ components {
+  CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+  }
+  MeshObject "{68624CBAAD83E72A}" {
+   Object "{85E21F4FAEF9C8E3}system/wbdata/MaterialEditor/MaterialCube.xob"
+   Materials {
+    MaterialAssignClass "{68624CBACAC60541}" {
+     SourceMaterial "DummyMaterial"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+   }
+  }
+  RigidBody "{68624CBAAD83E729}" {
+   SimState None
+   ResponseIndex "NoCollision"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_EditableCommentComponent "{68676886C34AFFB9}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{686768861857938D}" {
+    Name "Group Spawns Get Deleted After Safestart Ends"
+   }
+   m_bStatic 1
+   m_bGME_IsVisible 0
+   m_fSizeCoef 0.6
+  }
+  SCR_HorizontalAlignComponent "{68624CBAAD83E71C}" {
+  }
+  RplComponent "{649042617FEE1ECC}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  }
+ }
+ coords 0 -1.175 0
+}

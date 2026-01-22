@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0370CF23AA203775}Configs/Gearscripts/Standard/80s/CRF_GS_US90s.conf"
+ Name "{0370CF23AA203775}Configs/Gearscripts/Custom/Salami/CRF_GS_US90s.conf"
  Configurations {
   CONFResourceClass PC {
   }

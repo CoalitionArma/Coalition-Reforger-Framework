@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Configure Slots", 
+	name: "4 | Configure Slots", 
 	description: "Configure Mission Slots", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -34,7 +34,7 @@ class CRF_MissionSlottingPlugin : WorkbenchPlugin
 			// Actually shows the window.
 			if (!Workbench.ScriptDialog(
 				"Mission Quick Slot Setup", 
-				"This allows you to change mission slots at a more basic level so you arent building PLTs from scratch each time \n\n WARNING: THIS EDITOR WILL NOT BE AVALIBLE AFTER INITIAL SLOTS SETUP!", 
+				"This allows you to change mission slots at a more basic level so you arent building PLTs from scratch each time\nAll factions have pre-made quickslots set in their quikcslot arrays, please ensure you clear a factions quickslot array if you aren't planning to use that faction \n\n WARNING: THIS EDITOR WILL NOT BE AVALIBLE AFTER INITIAL SLOTS SETUP!", 
 				dialog))
 				return;
 		} else {
@@ -140,16 +140,16 @@ class CRF_MissionSlottingQuickSetupDialouge
 class CRF_MissionSlottingSetupDialouge
 {
 	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
-	protected int m_iFactionOneRatio;
+	int m_iFactionOneRatio;
 
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
-	protected string m_sFactionOneKey;
+	string m_sFactionOneKey;
 
 	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
-	protected int m_iFactionTwoRatio;
+	int m_iFactionTwoRatio;
 
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
-	protected string m_sFactionTwoKey;
+	string m_sFactionTwoKey;
 	
 	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Settings - BLUFOR Slots")]
 	ref array <ref CRF_SlottingGroup> m_BLUFORSlots = {};

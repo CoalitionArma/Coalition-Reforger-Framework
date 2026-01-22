@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E9C9526CD5C379ED}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Mortar_Box.et"
+ Name "{E9C9526CD5C379ED}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/USSR_Mortar_Box.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

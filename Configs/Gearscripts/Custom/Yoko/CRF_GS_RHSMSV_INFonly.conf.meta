@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7A6CF63F3156FF4D}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_Pic.conf"
+ Name "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
  Configurations {
   CONFResourceClass PC {
   }

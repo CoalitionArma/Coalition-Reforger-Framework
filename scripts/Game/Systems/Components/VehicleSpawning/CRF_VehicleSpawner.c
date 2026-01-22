@@ -40,11 +40,18 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	bool m_bWaitingToRespawn = false;
 	override void EOnInit(IEntity owner)
 	{
-		if (!m_sFactionKey && CRF_Gamemode.GetInstance())
+		if (m_rVehicle.IsEmpty())
 		{
-			Debug.Error("No Faction Key set on " + m_rVehicle + " spawner");
+			Print(string.Format("No Vehicle set on %1", this), LogLevel.ERROR);
 			return;
 		}
+		
+		if (m_sFactionKey.IsEmpty())
+		{
+			Print(string.Format("No Faction Key set on %1", this), LogLevel.ERROR);
+			return;
+		}
+		
 		Print("Init");
 		#ifdef WORKBENCH
 		#else

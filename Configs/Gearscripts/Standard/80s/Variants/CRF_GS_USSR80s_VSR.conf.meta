@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{EBD66AA635DA78AE}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_Flora.conf"
+ Name "{EBD66AA635DA78AE}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_USSR80s_VSR.conf"
  Configurations {
   CONFResourceClass PC {
   }

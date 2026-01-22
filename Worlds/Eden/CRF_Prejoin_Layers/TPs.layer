@@ -1,4 +1,4 @@
-$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPoles/PreJoin_Teleport.et" {
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
  Spawn {
   components {
    ActionsManagerComponent "{645A0008F3808301}" {
@@ -46,7 +46,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 7493.073 6.578 6707.718
+  coords 7493.121 6.578 6707.745
   angles 0 150.497 0
  }
  VehRange {
@@ -96,7 +96,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 7433.136 9.688 6774
+  coords 7433.172 9.688 6774
  }
  Airfield {
   components {
@@ -145,7 +145,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 4911.522 28.594 11829.207
+  coords 4911.543 28.594 11829.207
  }
  FiringRange {
   components {
@@ -194,7 +194,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 8420.233 187.048 3871.933
+  coords 8420.234 187.048 3871.958
   angles 0 -88.198 0
  }
  OPFOR {
@@ -216,7 +216,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 9410.54 46.423 1647.302
+  coords 9410.472 46.423 1647.302
  }
  BLUFOR {
   components {
@@ -237,6 +237,6 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/TeleportPol
     }
    }
   }
-  coords 9953.116 2.532 1555.111
+  coords 9953.146 2.532 1555.111
  }
 }

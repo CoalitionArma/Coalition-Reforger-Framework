@@ -492,18 +492,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.OnControllableSpawned(entity);
 		
-		// Check if we are not in the "GAME" state
-		if (m_GamemodeState != CRF_EGamemodeState.GAME && !m_bGenericSpawnSet && !CRF_GamemodeManager.IsSpectator(entity))
-		{
-			// Update generic spawnpoint for spectator cameras
-			entity.GetWorldTransform(m_vGenericSpawn);
-			m_bGenericSpawnSet = true;
-		}
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+		
+		if (!character)
+			return;
 			
 		// Handle initial entity race condition fix
-		if (entity && entity.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
+		if (character.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
 		{
-			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
 			if (playerId > 0 && m_GamemodeState == CRF_EGamemodeState.GAME)
 			{
 				// Check if player should have a proper character instead of initial entity
@@ -515,9 +512,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}
 		}
 		
-		// Apply gearscript/identity if in play mode and not on client
-		if (GetGame().InPlayMode() && entity && entity.GetPrefabData() && !m_GamemodeManager.IsSpectator(entity) && m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
+		// Apply gearscript/identity if in play mode and are initilizing a gearscript character
+		if (GetGame().InPlayMode() && character.GetPrefabData() && CRF_RoleHelper.IsValidGearscriptResource(character.GetPrefabData().GetPrefabName()))
+		{	
 			// Ensure gearscript manager is available
 			if (!m_GearscriptManager)
 				m_GearscriptManager = CRF_GearscriptManager.GetInstance();
@@ -525,7 +522,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Schedule gearscript identity setup with appropriate delay
 			GetGame().GetCallqueue().Call(
 				m_GearscriptManager.SetEntityIdentity, 
-				entity
+				character
 			);
 		
 			// Apply gearscript if not on client
@@ -538,8 +535,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 				// Schedule gear setup with appropriate delay
 				GetGame().GetCallqueue().Call(
 					m_GearscriptManager.SetEntityGear, 
-					entity, 
-					entity.GetPrefabData().GetPrefabName()
+					character, 
+					character.GetPrefabData().GetPrefabName()
 				);
 			};
 		}

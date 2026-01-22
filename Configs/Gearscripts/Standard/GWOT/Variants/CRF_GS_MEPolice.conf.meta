@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A9782873BADDA4C5}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEPolice.conf"
+ Name "{A9782873BADDA4C5}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEPolice.conf"
  Configurations {
   CONFResourceClass PC {
   }

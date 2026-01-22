@@ -271,7 +271,7 @@ class CRF_ManualMarker : GenericEntity
 		
 		// Update widget
 		// Since every default direction marcers turned to right, -90° added to entity rotation
-		m_hManualMarkerComponent.SetSlot(screenXD, screenYD, sizeXD, sizeYD, GetYawPitchRoll()[0] - 90);
+		m_hManualMarkerComponent.SetSlot(screenXD, screenYD, sizeXD, sizeYD, GetYawPitchRoll()[0]);
 	}
 	
 	override protected void EOnInit(IEntity owner)

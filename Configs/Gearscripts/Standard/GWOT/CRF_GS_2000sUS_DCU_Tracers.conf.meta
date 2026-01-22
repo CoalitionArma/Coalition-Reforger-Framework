@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{63E8294BD78E97BC}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_Tracers.conf"
+ Name "{63E8294BD78E97BC}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU_Tracers.conf"
  Configurations {
   CONFResourceClass PC {
   }

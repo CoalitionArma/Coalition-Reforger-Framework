@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3FCA1378C33401ED}Configs/Gearscripts/CRF_GS_RHSUSArmyMC.conf"
+ Name "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/Obsolete/CRF_GS_RHSUSArmyMC.conf"
  Configurations {
   CONFResourceClass PC {
   }

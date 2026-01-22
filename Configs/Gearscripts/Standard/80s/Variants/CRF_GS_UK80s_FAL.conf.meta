@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B476F825AD9CCBEA}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s_FAL.conf"
+ Name "{B476F825AD9CCBEA}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL.conf"
  Configurations {
   CONFResourceClass PC {
   }

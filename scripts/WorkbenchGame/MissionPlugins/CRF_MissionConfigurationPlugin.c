@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(
-	name: "Generate Config File", 
+	name: "6 | Generate Config File", 
 	description: "Generate Mission Configuration File", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -11,30 +11,30 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 {	
 	//------------------------------------------------------------------------------------
 	[Attribute("<Author>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	protected string m_iMissionAuthor;
+	protected string m_sMissionAuthor;
 	
-	[Attribute("<Mode>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	protected string m_iMissionMode;
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGamemode), category: "CRF Mission Config - Mission Info")]
+	CRF_EGamemode m_MissionMode;
 	
 	[Attribute("<Name>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	protected string m_iMissionName;
+	protected string m_sMissionName;
 	
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
-	protected string m_iMissionDescription;
+	protected string m_sMissionDescription;
 	
-	protected const string SCENARIOS_PATH = "Missions";
+	protected const string SCENARIOS_PATH = "!Missions";
 
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
-		m_iMissionAuthor = "<Author>";
-		m_iMissionMode = "<Mode>";
-		m_iMissionName = "<Name>";
-		m_iMissionDescription = "<Description>";
+		m_sMissionAuthor = "<Author>";
+		m_MissionMode = CRF_EGamemode.TVT;
+		m_sMissionName = "<Name>";
+		m_sMissionDescription = "<Description>";
 		
 		if (!Workbench.ScriptDialog(
 		"Mission Config Generator", 
-		"This will automatically generate and sort the mission configuration file. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
+		"This will automatically generate and sort the mission configuration file.\nPlease do NOT include any special characters in your text for any input, this can cause issues. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
 		this))
 			return;
 	}
@@ -50,11 +50,12 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[ButtonAttribute("Generate Mission Config", true)]
 	protected bool ButtonNext()
 	{
+		string missionMode = SCR_Enum.GetEnumName(CRF_EGamemode, m_MissionMode);
 		int missionPlayercount;
 		string worldPath;
 		
 		//--- Get mission header from the template config (can't use the class directly, it's engine-controlled class that cannot have reference in script)
-		Resource templateResource = Resource.Load("{3D094352621EA88C}Missions/ACRF_BaseMissionConfig.conf");
+		Resource templateResource = Resource.Load("{3D094352621EA88C}!Missions/CRF_BaseMissionConfig.conf");
 		BaseContainer missionHeaderContainer = templateResource.GetResource().ToBaseContainer();
 		
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
@@ -69,10 +70,11 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		MetaFile worldMeta = resourceManager.GetMetaFile(absWorldPath);
 		string fullWorldPath = worldMeta.GetResourceID();
 		missionHeaderContainer.Set("World", fullWorldPath);
-		missionHeaderContainer.Set("m_sAuthor", m_iMissionAuthor);
-		missionHeaderContainer.Set("m_sGameMode", m_iMissionMode);
-		missionHeaderContainer.Set("m_sDescription", m_iMissionDescription);
+		missionHeaderContainer.Set("m_sAuthor", m_sMissionAuthor);
+		missionHeaderContainer.Set("m_sGameMode", missionMode);
+		missionHeaderContainer.Set("m_sDescription", m_sMissionDescription);
 		missionHeaderContainer.Set("m_iMapMarkerLimitPerPlayer", 256);
+		missionHeaderContainer.Set("m_iPlayerCount", 128);
 		
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
 		
@@ -89,8 +91,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_CivSlots);
 		};
 		
-		missionHeaderContainer.Set("m_sName", string.Format("CRF %1%2 %3", m_iMissionMode, missionPlayercount, m_iMissionName));
-		missionHeaderContainer.Set("m_iPlayerCount", missionPlayercount);
+		missionHeaderContainer.Set("m_sName", string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName));
 		
 		//--- Get target config path
 		string fileSystem = FilePath.FileSystemNameFromFileName(worldPath);
@@ -136,7 +137,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		
 		dayFinal = dayFinal + day.ToString();
 		
-		string missionHeaderPath = FilePath.Concat(relativeDirPath, string.Format("%1_%2_%3%4_%5%6_%7", m_iMissionAuthor, missionTerrain, monthFinal, dayFinal, m_iMissionMode, missionPlayercount, m_iMissionName));
+		string missionHeaderPath = FilePath.Concat(relativeDirPath, string.Format("%1_%2_%3%4_%5%6_%7", m_sMissionAuthor, missionTerrain, monthFinal, dayFinal, missionMode, missionPlayercount, m_sMissionName));
 		missionHeaderPath = FilePath.AppendExtension(missionHeaderPath, "conf");
 
 		//--- Create the config
@@ -151,6 +152,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected int GetPlayerCount(array<ref CRF_SlottingGroup> factionSlots)
 	{
 		int missionPlayercount;

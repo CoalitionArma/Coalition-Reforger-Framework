@@ -1,0 +1,4 @@
+CRF_VehicleSpawner : "{A3259A321D7B7B7F}PrefabsMissionMaking/Systems/VehicleSpawner/VehicleSpawner_Base.et" {
+ ID "6867688431D9F9C2"
+ m_sFactionKey "BLUFOR"
+}

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4DCC0759877C9433}Configs/Gearscripts/Standard/80s/CRF_GS_US50s.conf"
+ Name "{4DCC0759877C9433}Configs/Gearscripts/Custom/fluff/CRF_GS_US50s.conf"
  Configurations {
   CONFResourceClass PC {
   }

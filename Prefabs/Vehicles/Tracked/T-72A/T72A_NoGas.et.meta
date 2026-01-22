@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B31D9738B9ADC50F}Prefabs/Vehicles/Tracked/T-72A/T72A_disabled.et"
+ Name "{B31D9738B9ADC50F}Prefabs/Vehicles/Tracked/T-72A/T72A_NoGas.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

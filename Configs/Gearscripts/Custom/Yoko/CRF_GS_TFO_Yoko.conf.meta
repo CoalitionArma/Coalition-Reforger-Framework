@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{00F4309987A5AAAF}Configs/Gearscripts/Standard/GWOT/CRF_GS_SWAT_Yoko.conf"
+ Name "{00F4309987A5AAAF}Configs/Gearscripts/Custom/Yoko/CRF_GS_TFO_Yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

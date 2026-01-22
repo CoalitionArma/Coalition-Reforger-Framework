@@ -370,7 +370,11 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void SpawnEntity(CRF_RoleConfig roleConfig, EntitySpawnParams indParams, PlayerController playerController)
 	{
-		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(roleConfig.m_IndforVariant), null, indParams);
+		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(roleConfig.m_RoleResource), null, indParams);
+		
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(newEntity.FindComponent(FactionAffiliationComponent));
+		facComp.SetAffiliatedFactionByKey("INDFOR");
+		
 		GetGame().GetCallqueue().CallLater(AssignPlayerToCharacter, 250, false, SCR_PlayerController.Cast(playerController), newEntity);
 	}
 	

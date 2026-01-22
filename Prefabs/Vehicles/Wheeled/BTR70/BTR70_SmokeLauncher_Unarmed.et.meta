@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A2E386D17E1E38FE}Prefabs/Vehicles/Wheeled/BTR70/BTR70_SmokeLauncher.et"
+ Name "{A2E386D17E1E38FE}Prefabs/Vehicles/Wheeled/BTR70/BTR70_SmokeLauncher_Unarmed.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

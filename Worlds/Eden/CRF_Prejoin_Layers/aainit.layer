@@ -1,7 +1,7 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 9994.791 0 1406.353
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/_Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Clear"
@@ -36,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et"
    m_fNightTimeAcceleration 12
   }
  }
- coords 7481.18 2.585 6666.222
+ coords 7481.149 2.585 6666.222
  m_bRespawnEnabled 1
  m_iTimeToRespawn 10
  m_iTimeLimitMinutes -1

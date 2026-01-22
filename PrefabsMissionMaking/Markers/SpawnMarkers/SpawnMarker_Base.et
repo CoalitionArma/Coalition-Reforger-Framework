@@ -1,0 +1,37 @@
+CRF_ManualMarker {
+ ID "68682AC6A138B447"
+ components {
+  CRF_EditableMarkerComponent "{68682AC6A138B44A}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableDescriptorUIInfo "{68682AC6A138B49F}" {
+    Name "Map Marker"
+    Icon "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_Image "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_aAuthoredLabels {
+     ENTITYTYPE_OBJECT
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_sNameFormat "Marker"
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 71
+  }
+  MeshObject "{68682AC6A138B49C}" {
+  }
+  SCR_EditableEntityVisibilityChildComponent "{68682AC6A138B49B}" {
+   m_State 96
+  }
+  RplComponent "{68682AC6A138B49A}" {
+   Streamable Disabled
+  }
+  Hierarchy "{68682AC6A138B498}" {
+  }
+ }
+ m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+ m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+ m_sQuadName "flag-2"
+ m_fWorldSize 25
+}

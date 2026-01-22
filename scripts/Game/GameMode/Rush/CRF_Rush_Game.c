@@ -64,7 +64,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	
 	// MCOM Prefab Settings
 	//------------------------------------------------------------------------------------
-	[Attribute("{A8C69227F4322F20}Prefabs/Structures/CRF_Rush_MCOM.et", UIWidgets.ResourceNamePicker, desc: "The prefab to spawn as MCOM sites", params: "et")]
+	[Attribute("{963C20EF4BFB3E19}Prefabs/Structures/Rush/CRF_Rush_MCOM.et", UIWidgets.ResourceNamePicker, desc: "The prefab to spawn as MCOM sites", params: "et")]
 	ResourceName m_MCOMPrefab;
 	
 	// UI Settings
@@ -992,13 +992,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		switch (letter)
 		{
-			case "A": return "{21A2A457BD0E42C1}UI/Objectives/A.edds";
-			case "B": return "{7F4A8D140283CCCE}UI/Objectives/B.edds";
-			case "C": return "{8B42CA8C0F5EA4BA}UI/Objectives/C.edds";
-			case "D": return "{C29ADF937D98D0D0}UI/Objectives/D.edds";
-			case "E": return "{3692980B7045B8A4}UI/Objectives/E.edds";
-			case "F": return "{687AB148CFC836AB}UI/Objectives/F.edds";
-			default: return "{21A2A457BD0E42C1}UI/Objectives/A.edds";
+			case "A": return "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds";
+			case "B": return "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds";
+			case "C": return "{8B42CA8C0F5EA4BA}UI/Images/Objectives/C.edds";
+			case "D": return "{C29ADF937D98D0D0}UI/Images/Objectives/D.edds";
+			case "E": return "{3692980B7045B8A4}UI/Images/Objectives/E.edds";
+			case "F": return "{687AB148CFC836AB}UI/Images/Objectives/F.edds";
+			default: return "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds";
 		}
 		
 		return "";

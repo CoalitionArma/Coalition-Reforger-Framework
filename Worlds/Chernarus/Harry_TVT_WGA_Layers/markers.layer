@@ -1,7 +1,0 @@
-CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
- coords 10315.06 6.061 2127.965
- m_MarkerColor 0.017 0.017 0.017 1
- m_sDescription "Rail Station"
- m_bVisibleForEmptyFaction 1
- m_bShowForAnyFaction 1
-}

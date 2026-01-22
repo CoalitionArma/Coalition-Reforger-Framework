@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{BBDCB264A0AE9B2E}Prefabs/Systems/VehicleDepot/VehicleDepot.et"
+ Name "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
