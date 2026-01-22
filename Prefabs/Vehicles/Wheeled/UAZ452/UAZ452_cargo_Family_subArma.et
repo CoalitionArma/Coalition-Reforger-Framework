@@ -1,0 +1,22 @@
+Vehicle : "{A003493D32140960}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{686C158D0DBF78F4}" {
+     SourceMaterial "uaz452_body"
+     AssignedMaterial "{B7498331E7A05FAE}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_black_subArma.emat"
+    }
+    MaterialAssignClass "{686C158D0DBF78C9}" {
+     SourceMaterial "uaz452_interior_1"
+     AssignedMaterial "{CF3514485C969346}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_black_SubArma.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{551F4F32C33675D9}UI/Textures/EditorPreviews/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_grey.edds"
+   }
+  }
+ }
+}

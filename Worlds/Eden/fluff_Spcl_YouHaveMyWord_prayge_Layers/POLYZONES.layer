@@ -1,4 +1,4 @@
-PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBoundry.et" {
+PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart/CIVSafestartBoundry.et" {
  coords 5903.148 71.108 9783.31
  Points {
   ShapePoint "{667365C29E2F01CE}" {
@@ -18,7 +18,7 @@ PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBo
   }
  }
 }
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  components {
   CRF_PolyZone "{65862E4575B86577}" {
    m_bLineMode 1
@@ -73,7 +73,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
   }
  }
 }
-PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFORSafestartBoundry.et" {
  coords 5858.534 4.544 9813.21
  Points {
   ShapePoint "{667365C287E846D8}" {
@@ -96,7 +96,7 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
   }
  }
 }
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFORSafestartBoundry.et" {
  coords 5838.224 10.132 9927.148
  Points {
   ShapePoint "{667365C278E11427}" {
@@ -113,7 +113,7 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
   }
  }
 }
-PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFORSafestartBoundry.et" {
  coords 2249.732 22.286 7452.574
  Points {
   ShapePoint "{667365C263908E10}" {

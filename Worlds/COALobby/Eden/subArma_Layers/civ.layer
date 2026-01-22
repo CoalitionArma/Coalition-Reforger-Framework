@@ -1,6 +1,0 @@
-SCR_AIGroup : "{4A33E944FA83F988}Prefabs/Groups/CIV/Zeus/CRF_CIV_Zeus.et" {
- coords 5841.338 4.723 9788.401
- m_aUnitPrefabSlots {
-  "{B57F271D229B3074}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_VIP_P.et"
- }
-}

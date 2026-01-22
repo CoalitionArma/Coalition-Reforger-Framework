@@ -1,6 +1,0 @@
-MatPBRBasic {
- Color 0.614 0.549 0.175 1
- MetalnessScale 2.132
- BCRMap "{995F82B05470532A}Assets/Weapons/Handguns/M9/Data/M9_Details_BCR.edds"
- NMOMap "{A18739228D0701B4}Assets/Weapons/Handguns/M9/Data/M9_Details_NMO.edds"
-}

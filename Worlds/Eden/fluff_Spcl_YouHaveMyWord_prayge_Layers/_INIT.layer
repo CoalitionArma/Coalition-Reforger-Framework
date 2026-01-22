@@ -1,0 +1,438 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 2246.077 19.024 7513.2
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 45
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Local police have been dispatched to the Everon Power Plant where workers are striking after a worker lost an arm due to unresolved safety concerns. The strikers took the factory owner hostage during a visit and refuse to come out. Meanwhile the Family lurks in the shadows, hoping to settle scores and make a profit."\
+   "Do hostage negotiations ever go down according to plan?"\
+   ""\
+   "Time: Set for 40m, mission will end based on vibe but it should be winding down/over by 40"\
+   ""\
+   "Ratio is like 2:1:6 or smthn"\
+   " "\
+   "NO RESPAWNS"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "- A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
+   ""\
+   "- Factory owner wears a brown suit and can be seen in AAR."\
+   ""\
+   "BLUFOR:"\
+   "Win Condition - Bring the Factory Owner to safety at the Montignac PD building."\
+   "Side objective - Peacefully re-establish control over the factory"\
+   ""\
+   "Lose Condition: - All police officers killed OR Factory owner is killed"\
+   ""\
+   ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "BLUFOR In-depth Brief and Lore"
+   m_sTextData "2 days ago, the workers at the Everon Power Plant that supplies the entire island with electricity seized the means of production and took the factory owner hostage. They've continued their work to try and appease us but the island governor Sir Novotny says there will be hell to pay."\
+   "Us at the Saint Phillipe, Montignac and Lamentin PDs have been tasked with rescuing the factory owner and retaking control of the factory. Despite what Novotny says though, the situation is quite complex."\
+   ""\
+   "We have a barricade and two police cars prepared outside the main gate, the only easy way in. A team of SWAT is on site as well. The strikers inside the factory hold the owner hostage, if we open fire at the wrong time they could execute him at no loss to themselves. Novotny also wants the factory building secured from the strikers who will surely want to remain inside it. We imagine that can be figured out later once the owner is safe but maybe he would bless us with some sorely needed additional funding if we got it done now. Alongside that, Novotny has told us that the workers themselves shouldn't be of much concern. If the factory owner gets killed for any reason, we have the green light to use any force necessary to take the factory. He wants us to make sure the death of the owner won't go unpunished if it occurs."\
+   ""\
+   "The Montignac PD building contains more firearms, medical equipment, protective equipment, and ammunition. It's a long ways away though, choose wisely if you think you need it. If you go, you'll have to physically load the equipment you want, so more men can load it faster, but that further weakens the forces left at the plant."\
+   ""\
+   "We have decided that the Montignac PD will be the best place to bring the owner once he is rescued."\
+   ""\
+   "The shadowy Family is lurking around, surely with some ulterior motives. We know the Factory owner snipped the wrong wires with them a year back when he invested in a company that put one of their money laundering spots out of business, but we aren't quite sure what they want with him yet. Either way it isn't good, and though they aren't on site yet, we can be sure they'll be here soon with hell on their minds. Starting a gunfight may cause an uncontrollable escalation."\
+   ""
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
+   ""\
+   "Factory owner wears a brown suit and can be seen in AAR."\
+   ""\
+   "OPFOR:"\
+   "Win Condition - Capture the factory owner and make him pay"\
+   "Side objective - Kill the police chief"\
+   ""\
+   "Lose Condition - All Family members killed OR fail to seize the Factory owner and exact your revenge."\
+   "- You MUST be the ones to carry out both the win condition and side objective for it to count, meaning if the factory owner dies for another reason other than you killing him, you fail. The police chief must also be killed by a Family member for it to count. It's about the message :)"\
+   ""\
+   ""
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "OPFOR In-depth Brief and Lore"
+   m_sTextData "We have been given a rare opportunity to strike. The factory owner of the Everon Power Plant has done plenty to fuck us over, but his high position and ass-kissing towards the Governor makes him a hard target. He thought we had forgotten about what he did to that laundering joint of ours on Ile Troyes, and of course his \"accident\" with the Don's wife. But strikers at his power plant have revolted and are now holding him hostage. The strikers themselves should bend over for us. We have never had an issue with the common man anyways, save for when they get in our way. But we need to get our hands on the plant owner, bring him off site, make him suffer for everything he's done, and kill his stupid cockroach ass."\
+   ""\
+   "The police will want him as well though. We know they are already on site there at the plant and a paid-off jagoff said they're planning on bringing him to the police station in Montignac if they get him. They got suspect of his dumbass and put him on administrative, can you believe we paid him 15000 fucking Tolar for this bullshit? Anyways, before he went he told us he's sure the St. Phillippe chief will be there. He usually wears a stupid mook blue beret. What could be the harm in smoking the rat bastard just for a good time while we're at it?"\
+   ""\
+   "We have got a couple legs up. First off we have our heavy firepower. Those typewriters were expensive but damn if they aren't a sight to behold. I'm sure the Aiello brothers could attest to that, if we could hear them from the seventh layer of hell. In the barn there down the road we have also got a van and plenty of arms, equipment and ammunition."\
+   "Boss says don't give the nice shit out to goons, hold onto it for leverage in negotiation. Speaking of, that's the real kicker. All those guns could surely be used by some hard up factory workers looking to defend themselves from the cocksuckers, maybe they'd even hand over the owner for them. Don't worry about any payment for them, we will get that outta them later. It'd be best to try and refrain from using force, one antsy bastard and they might just blow the brains out of the fucker then and there, and where's the fun in that?"\
+   ""\
+   "Also, we need to watch our fire on the ratfucks. Same thing goes there, stirring up the strikers is only gonna lead to bad news, but if we have the opportunity some more dead coppers are always good."\
+   ""\
+   "That's about all I've got for you at the moment."\
+   ""\
+   "Remember brothers:"\
+   "Silenzio è Potere, Sangue è Legge."\
+   ""
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{686422AB4E73E407}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
+   ""\
+   "Factory owner wears a brown suit and can be seen in AAR."\
+   ""\
+   "INDFOR:"\
+   "Win Condition - Maintain control of the main factory building"\
+   "Side objective - Have 3 or less strikers killed by mission end"\
+   ""\
+   "Lose Condition - All strikers are killed OR control of the building is lost by mission end (no triggers for this) "\
+   ""
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{686422AB4E73E5D8}" {
+   m_sTitle "INDFOR In-depth Brief and Lore"
+   m_sTextData "The day of reckoning is upon us. We knew it wouldn't come easy."\
+   "The long hours and low pay are plenty to be sour over, but a week ago, after months of complaints about improper protective equipment that fell on deaf ears, Jan caught a sleeve in one of the pistons and it ripped his arm off. Enough was enough."\
+   ""\
+   "2 days ago the owner came around to smugly purview us again, but this time would be different. We smuggled in a few guns and took over the factory, taking the owner as a hostage."\
+   ""\
+   "It's been a tense few days but that's only just the beginning. The police started camping out yesterday, and it's plain to see trouble's coming soon. They want the owner bad, we may be able to get something out of them for him. Though hanging him from his gold-buckled belt would be a pretty sight, he is surely best used as a bargaining chip to make peace."\
+   ""\
+   "If only things were as simple as that though. We don't know much about them, but the \"Family\" has been said to be interested in the factory owner. Word in the plant is that these are some powerful guys, and they aren't stupid. They'll have something to throw in for us in exchange for him. Governor Navotny is pretty shrewd, God knows what orders he has given the police if the owner gets handed over to these family guys ;) though."\
+   ""\
+   "We need to do our best to navigate the hell that's about to occur, and leverage anything we have. We only have a handful of guns, so taking any fights is a death sentence."\
+   ""\
+   "We need to hold on to the factory no matter what. Once we leave it behind, we will never get our jobs back. Not having to attend many funerals when the dust settles will surely make this much better as well. We don't care for violence or self-rule in particular, but it's only natural for hard-working men to wish to be treated fairly. "\
+   ""
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{686422AB4E73E6F6}" {
+   m_sTitle "CIV Objectives"
+   m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
+   ""\
+   "Factory owner wears a brown suit and can be seen in AAR."\
+   ""\
+   "CIV:"\
+   "Win Condition - Survive"\
+   "Lose Condition - Visit the great beyond"\
+   ""\
+   ""
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{686422AB4E73E7B9}" {
+   m_sTitle "CIV In-depth Brief and Lore"
+   m_sTextData ""\
+   "2 days ago your visit to your plant took a turn for the worse. It felt off when you walked in, but who could expect what has occurred, much less an optimist such as yourself? Your former employees are now quite cruel, if they had only known of your humble beginnings, perhaps they would hold a little more respect for the harder working. Now they've just resigned you to shitting in a potted plant and pissing your pants. It may be ungentlemanly, but one can figure it's better than death."\
+   ""\
+   "You've got big ties to Governor Novotny from climbing the social ladder, and he has sent the police to get you back. The only foreseeable way out of this is to get to them. The problem is the gun being held to your head seemingly around the clock. Trying to run is a death sentence, so it can only be recommended that you do as you are told."\
+   ""\
+   "A couple of hours ago, you had a quite foreboding thought. You'd crossed some quite thick-accented Italians a couple times over the past few years, even ended up spending the night with one of their wives which forced you to take a spontaneous month-long trip to Paris. You'd all but forgotten about their small-time dealings until recently. The death threats you get in the mail never did stop coming, you figure, only your servant got better at sorting them out. However, you decide you won't try anything stupid even if they get their greasy palms on you, biding time may well be the best option."\
+   ""\
+   "You gave up praying many winters ago, but maybe you should consider taking it up again."
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{686422AB4E73E753}" {
+   m_sTitle "Administration"
+   m_sTextData "tanaka give my my yap session"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 6
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BluforSlots {
+  CRF_SlottingGroup "{686C28CEC28C9CDA}" {
+   m_sCallsign "Police HQ"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    TEAM_LEAD
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28C9D4E}" {
+   m_sCallsign "Police Squad"
+   m_FlagType INFANTRY
+   m_aSlots {
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28C9E11}" {
+   m_sCallsign "Police Squad"
+   m_FlagType INFANTRY
+   m_aSlots {
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28C9FFC}" {
+   m_sCallsign "SWAT Team"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+    VEHICLE_DRIVER
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{686C28CEC28CA0E2}" {
+   m_sCallsign "The Family"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{686C28CEC28CA2C3}" {
+   m_sCallsign "Strike Lead"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA3B1}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA37B}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA405}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA5C1}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA6BD}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA674}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{686C28CEC28CA73F}" {
+   m_sCallsign "Strikers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_HEAVY_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+    ASSISTANT_ANTI_AIR
+   }
+  }
+ }
+ m_CivSlots {
+  CRF_SlottingGroup "{686C28CEC28CA82F}" {
+   m_sCallsign "Factory Owner"
+   m_FlagType SIGNAL
+   m_aSlots {
+    VIP
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
