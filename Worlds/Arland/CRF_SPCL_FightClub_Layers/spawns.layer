@@ -9743,4 +9743,10 @@ $grp SCR_BaseTriggerEntity {
  lootSpawn3237 {
   coords 2527.686 157.826 2284.401
  }
+ lootSpawn3249 {
+  coords 1149.776 38.497 2826.157
+ }
+ lootSpawn3250 {
+  coords 1148.852 38.375 2824.764
+ }
 }

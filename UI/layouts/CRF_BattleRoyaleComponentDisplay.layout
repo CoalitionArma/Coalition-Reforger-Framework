@@ -1,0 +1,152 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ "Is Visible" 0
+ {
+  ImageWidgetClass "{612734D48040FA26}" {
+   Name "Background"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -64
+    OffsetLeft -64
+    PositionY 16
+    OffsetTop 16
+    SizeX 128
+    OffsetRight -64
+    SizeY 40
+    OffsetBottom -56
+   }
+   Opacity 0
+   Color 0.0648 0.0637 0.0637 0.7812
+   Texture "{4EFD2783DFD76834}UI/Images/UIElements/uibox_1.edds"
+   Size 900 300
+   "Shadow Offset" 0 0
+   "Shadow Size Increase" 1 1
+  }
+  TextWidgetClass "{612734D4E397B2B1}" {
+   Name "Timer"
+   Slot FrameWidgetSlot "{612734D4E397B329}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -56
+    OffsetLeft -56
+    PositionY 16
+    OffsetTop 16
+    SizeX 112
+    OffsetRight -56
+    SizeY 40
+    OffsetBottom -56
+   }
+   Opacity 0
+   Color 0.053 0.578 0.053 1
+   Text ""
+   "Font Size" 32
+   "Min Font Size" 26
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{612734D416229D9E}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    Bold 1
+    OutlineColor 0.013 0.125 0.0007 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{612734D4E397B2B2}" {
+   Name "StageText"
+   Slot FrameWidgetSlot "{612734D4E397B330}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -88
+    OffsetLeft -88
+    PositionY 59.011
+    OffsetTop 59.011
+    SizeX 176
+    OffsetRight -88
+    SizeY 32
+    OffsetBottom -91.011
+   }
+   Opacity 0
+   Color 1 1 1 1
+   Text "Zone Shrinking"
+   "Font Size" 17
+   "Min Font Size" 17
+   "Horizontal Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{612734D416229D9E}" {
+    Font "{3B42613D74662826}UI/Fonts/TahomaBd.fnt"
+    OutlineColor 0 0 0 0
+    ShadowSize 32
+    ShadowOffset 0.5 0.5
+   }
+   "Line Spacing" 2.2
+  }
+  TextWidgetClass "{612734D4E397B2B3}" {
+   Name "PlayerCount"
+   Slot FrameWidgetSlot "{612734D4E397B331}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -72
+    OffsetLeft -72
+    PositionY 90.4
+    OffsetTop 90.4
+    SizeX 144
+    OffsetRight -72
+    SizeY 20
+    OffsetBottom -110.4
+   }
+   Opacity 0
+   Color 0.6549 0.8745 0.7098 1
+   Text "Alive: 0"
+   "Font Size" 18
+   "Min Font Size" 16
+   "Horizontal Alignment" Center
+   FontProperties FontProperties "{612734D416229D9F}" {
+    Font "{3B42613D74662826}UI/Fonts/TahomaBd.fnt"
+    ShadowSize 32
+    ShadowOffset 0.5 0.5
+   }
+  }
+  BlurWidgetClass "{686E6740E87E5EAA}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{686E6740E87E5C4E}" {
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 1920
+    OffsetRight -1920
+    SizeY 1080
+    OffsetBottom -1080
+   }
+   Opacity 0
+   Color 0.2086 0.2086 0.2086 1
+   Intensity 0.3
+  }
+  TextWidgetClass "{686E6770C9EF9DA7}" {
+   Name "WinnerText"
+   Slot FrameWidgetSlot "{612734D4E397B331}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -300
+    OffsetLeft -300
+    PositionY 400
+    OffsetTop 400
+    SizeX 600
+    OffsetRight -300
+    SizeY 600
+    OffsetBottom -1000
+   }
+   Opacity 0
+   Color 0.1255 0.9294 0.1255 1
+   Text "Winners: "\
+   ""\
+   " Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name"\
+   ""\
+   ""\
+   ""
+   "Font Size" 35
+   "Min Font Size" 33
+   "Horizontal Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{612734D416229D9F}" {
+    Font "{3B42613D74662826}UI/Fonts/TahomaBd.fnt"
+    ShadowSize 32
+    ShadowOffset 0.5 0.5
+   }
+  }
+ }
+}

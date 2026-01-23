@@ -5,6 +5,26 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  components {
   CRF_AirdropManager "{685355B93E7507C0}" {
   }
+  CRF_BattleRoyaleComponent "{686F1BAC9584AE29}" {
+   m_iInitialDelay 150
+   m_aZoneSequences {
+    CRF_BattleRoyaleZoneData "{686F1BAC976E31CF}" {
+     m_iDefaultStageDuration 300
+    }
+    CRF_BattleRoyaleZoneData "{686F1BAC97E3C931}" {
+     m_sZonePrefix "ZoneB"
+     m_iDefaultStageDuration 300
+    }
+    CRF_BattleRoyaleZoneData "{686F1BAC8EF3DECA}" {
+     m_sZonePrefix "ZoneC"
+     m_iDefaultStageDuration 300
+    }
+    CRF_BattleRoyaleZoneData "{686F1BAC81A39547}" {
+     m_sZonePrefix "ZoneD"
+     m_iDefaultStageDuration 300
+    }
+   }
+  }
   CRF_LooterGamemodeComponent "{68530918F51648E0}" {
    m_fGlobalSpawnChance 0.6
    m_iTotalSpawnPoints 3248
@@ -245,6 +265,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
   CRF_MapStagingComponent "{685322BA91EF84ED}" {
+   Enabled 0
    m_iInitialDelay 180
    m_sFinalCompletionSubMessage "Final Zone!"
    m_iFinalCompletionMessageDuration 10
@@ -311,8 +332,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
    }
   }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   Enabled 0
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 4
+   m_iRangeHoursEnd 18
+   m_fDayTimeAcceleration 3
+   m_fNightTimeAcceleration 3
    m_bRandomStartingWeather 0
+   m_bUsePredefineStartingTimeAndWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Clear"
@@ -327,13 +357,48 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
- m_iTimeLimitMinutes 25
+ m_iTimeLimitMinutes 28
  m_bAllowEspionage 0
  m_bLockUnusedSlots 1
  m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "It's a Battle Royale. Loot gear, try to stay alive."
+   m_sTitle "Mission: Situation"
+   m_sTextData "It's a Battle Royale. Loot gear, try to stay alive."\
+   ""\
+   "SPACEBAR to deploy chutes, DO NOT wait to."\
+   "Flare out to land on your cheeks."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
   }
  }
  m_iFactionOneRatio 0
