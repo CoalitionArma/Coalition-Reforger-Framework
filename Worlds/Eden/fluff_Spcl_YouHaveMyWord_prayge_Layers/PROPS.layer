@@ -45,6 +45,10 @@ $grp GenericEntity : "{0B17FB1F4A9F5289}Prefabs/Weapons/Magazines/M3A1/BC_Magazi
   angles 0 105.555 -90
  }
 }
+GenericEntity : "{157E18D526C3A7E6}Prefabs/Compositions/Misc/SubCompositions/CrateWooden_Stacked_02.et" {
+ coords 5833.983 7.99 9905.469
+ angles 0 32.723 0
+}
 GenericEntity : "{1CA1A9D19D7C8445}Prefabs/Props/Furniture/Rack_01_Short.et" {
  coords 2169.956 21.027 7428.482
  angles 0 21.871 0
@@ -382,7 +386,7 @@ GenericEntity : "{2B26287DC5B7F9D0}Prefabs/Props/Industrial/ToolBox_01/ToolBox_0
 GenericEntity : "{2C166D8DBBA47738}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_base.et" {
  components {
   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
-   m_sDefaultMaterial "{AC8120550DC6D979}Assets/Props/Fabric/Flags/Data/Flag_1_2_COA.emat"
+   m_sDefaultMaterial "{AC8120550DC6D979}Assets/Materials/Flags/Factions/Flag_COA.emat"
   }
  }
  coords 5835.99 7.971 9905.052
@@ -888,7 +892,7 @@ $grp GenericEntity : "{49CB86DE0B2A2659}Prefabs/Props/Fabric/Flags/Flag_2_3_Ever
     Materials {
      MaterialAssignClass "{589EBB829BFEEF9D}" {
       SourceMaterial "Flag_1_2"
-      AssignedMaterial "{AC8120550DC6D979}Assets/Props/Fabric/Flags/Data/Flag_1_2_COA.emat"
+      AssignedMaterial "{AC8120550DC6D979}Assets/Materials/Flags/Factions/Flag_COA.emat"
      }
     }
    }
@@ -1373,9 +1377,9 @@ $grp GenericEntity : "{81563D558B5BCF69}Prefabs/Weapons/Magazines/ARY_Magazine_4
   angles 16.161 -90 90
  }
 }
-GenericEntity : "{859995D75C355384}Prefabs/Compositions/Misc/SubCompositions/CrateWooden_Cluttered_US_01.et" {
- coords 5833.904 7.972 9905.064
- angles 2.81 76.109 3.356
+GenericEntity : "{835CFAD8AF023440}Prefabs/Compositions/Misc/SubCompositions/CrateWooden_Cluttered_USSR_02.et" {
+ coords 5834.741 7.877 9904.435
+ angles 0 -140.924 0
 }
 $grp GenericEntity : "{881558ACD5FC31C0}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x2.et" {
  {
