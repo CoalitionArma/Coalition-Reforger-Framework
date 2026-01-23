@@ -1,0 +1,8 @@
+Vehicle UAZ452_cargo_Family_subArma1 : "{ABF642EA544CD71D}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_Family_subArma.et" {
+ coords 2169.298 21.027 7425.488
+ angles 0 116.771 0
+}
+Vehicle _Series_LWB_Civvie_V8_Black1 : "{CFE1F4103795068B}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Black.et" {
+ coords 2241.028 19.165 7519.749
+ angles 0 163.706 0
+}

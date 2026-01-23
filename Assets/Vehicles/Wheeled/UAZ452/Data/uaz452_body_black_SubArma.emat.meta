@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B7498331E7A05FAE}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_black_subArma.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

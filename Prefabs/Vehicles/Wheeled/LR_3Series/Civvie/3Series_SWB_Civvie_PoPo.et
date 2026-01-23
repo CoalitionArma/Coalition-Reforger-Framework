@@ -1,0 +1,202 @@
+Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightSlots {
+    SCR_LightSlot "{650510A111C6D2BB}" {
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo "5DD6BB25F0B075F2" {
+      Enabled 0
+     }
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot ConvoyLight {
+     Enabled 0
+    }
+   }
+   LightAction {
+    SCR_LightsDashboardUserAction "{650510A00F52B742}" {
+     VisibilityRange 0
+     m_aDefinedCompartmentSectionsOnly {
+      2
+     }
+    }
+   }
+  }
+  BaseRadioComponent "{648B4DF41C297E41}" {
+   Enabled 0
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Object "{612A93CA3436C18C}Assets/Vehicles/Wheeled/LR3Series/3Series_SWB_Civvie.xob"
+   Materials {
+    MaterialAssignClass "{65949A0452B0712D}" {
+     SourceMaterial "lr_3series_body"
+     AssignedMaterial "{8411237D1F86F87D}Assets/Vehicles/Wheeled/LR3Series/Data/Civvie/lr_3series_body_civvie_base.emat"
+    }
+    MaterialAssignClass "{666847605A95F78E}" {
+     SourceMaterial "lr_3series_body_swb"
+     AssignedMaterial "{894047BCB521DA74}Assets/Vehicles/Wheeled/LR3Series/Data/Civvie/lr_3series_body_swb_civvie_PoPo.emat"
+    }
+    MaterialAssignClass "{666847605A95F795}" {
+     SourceMaterial "lr_3series_cover"
+     AssignedMaterial "{893F71AA12204C2D}Assets/Vehicles/Wheeled/LR3Series/Data/Civvie/lr_3series_cover_civvie_PoPo.emat"
+    }
+    MaterialAssignClass "{666847605A95F79C}" {
+     SourceMaterial "lr_3series_plates"
+     AssignedMaterial "{FECB044B2A4727A0}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_plates_civ_1.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CharactersCanFallOutOnFlip 0
+    }
+    CargoCompartmentSlot Passenger_r01 {
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#BF-Vehicle_88_Civvie_Name"
+    m_sFaction "CIV"
+    m_aAutoLabels {
+     13 122 50
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    SCR_WheelSlotInfo Wheel_L01 {
+     Prefab "{68FD8BACBBCACC3C}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Wheels/UAZ469_wheel_3Series_Civvie.et"
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     Prefab "{68FD8BACBBCACC3C}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Wheels/UAZ469_wheel_3Series_Civvie.et"
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     Prefab "{68FD8BACBBCACC3C}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Wheels/UAZ469_wheel_3Series_Civvie.et"
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     Prefab "{68FD8BACBBCACC3C}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Wheels/UAZ469_wheel_3Series_Civvie.et"
+    }
+    RegisteringComponentSlotInfo RearCargo {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo NumberPlate {
+     Prefab "{996673AB601A8A37}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Misc/NumberPlate/3Series_Numberplate_SWB_Civ_1.et"
+    }
+    RegisteringComponentSlotInfo Wheel_Spare {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_Door_L {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo Glass_Door_R {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo Cargo_L01_01 {
+     Offset -0.0131 0.8161 -0.7707
+     Angles 0 90 0
+     MergePhysics 1
+     Prefab "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo Cargo_L02_01 {
+     Offset -0.2957 1.0968 -0.7707
+     Angles 0 90 0
+     MergePhysics 1
+     Prefab "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo Cargo_L02_02 {
+     Offset 0.2841 1.0968 -0.7707
+     Angles 0 90 0
+     MergePhysics 1
+     Prefab "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{648B4DF41C2B8918}" {
+     Position PointInfo "{648B4DF41C2B8919}" {
+      PivotID ""
+      Offset -0.6098 1.4737 0.6234
+     }
+    }
+   }
+  }
+ }
+ {
+  $grp DecalEntity : "{7D2718ED6A430612}Prefabs/Decals/Dirt/Decal_HeliPad_01.et" {
+   {
+    ID "667365CE2C770D04"
+    components {
+     MeshObject "{66780A9036CE64C9}" {
+      LODFactors {
+       1
+      }
+      PixelSizeScale 2
+     }
+    }
+    coords -0.008 1.342 1.48
+    angleX -89.98
+    angleZ -179.608
+    scale 0.96
+    FarPlane 0.1
+    Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
+   }
+   {
+    ID "667365CE2C770D41"
+    components {
+     MeshObject "{66780A903F38964E}" {
+      LODFactors {
+       1
+      }
+      PixelSizeScale 2
+     }
+    }
+    coords 0.847 0.958 0.47
+    angleY -90.842
+    angleZ -0.808
+    scale 0.527
+    FarPlane 0.1
+    Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
+   }
+   {
+    ID "667365CE2C770D6C"
+    components {
+     MeshObject "{66780A9044238013}" {
+      LODFactors {
+       1
+      }
+      PixelSizeScale 2
+     }
+    }
+    coords -0.846 0.948 0.453
+    angleY 89.158
+    angleZ -0.958
+    scale 0.515
+    FarPlane 0.1
+    Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
+   }
+  }
+  $grp GenericEntity : "{A3C0CF9F97FBCDDC}Prefabs/Structures/BuildingParts/Eletrical/HazardBeacon_01/HazardBeacon_01.et" {
+   {
+    ID "6668476072D97A3F"
+    coords 0.336 1.943 0.643
+    angleZ 90
+    scale 0.63
+   }
+   {
+    ID "666847614F096DDC"
+    coords -0.34 1.947 0.647
+    angleY -180
+    angleZ 90
+    scale 0.63
+   }
+  }
+ }
+}

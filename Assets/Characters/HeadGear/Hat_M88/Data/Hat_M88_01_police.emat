@@ -1,0 +1,10 @@
+MatPBRBasic {
+ Color 0.141 0.25 0.694 1
+ SurfaceProperties "{CE9253778DD8FBDE}Common/Materials/Game/metal.gamemat"
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ CavityFromAO 0.853
+ BCRMap "{1403744228CF2E75}Assets/Characters/HeadGear/Hat_M88/Data/Hat_M88_01_BCR.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NMOMap "{2CDBCFD0F1B87CEB}Assets/Characters/HeadGear/Hat_M88/Data/Hat_M88_01_NMO.edds"
+}

@@ -1,0 +1,9 @@
+MatPBRBasic {
+ Color 0.141 0.25 0.694 1
+ AlphaTest 0.037
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ BCRMap "{9C7110F087DC8DED}Assets/Characters/HeadGear/Hat_PeakedCap_USSR_01/data/Hat_PeakedCap_USSR_01_BCR.edds"
+ OpacityMap "{6D6EE506BD012239}Assets/Characters/HeadGear/Hat_PeakedCap_USSR_01/data/Hat_PeakedCap_USSR_01_A.edds"
+ NMOMap "{1AD45FAB19A56589}Assets/Characters/HeadGear/Hat_PeakedCap_USSR_01/data/Hat_PeakedCap_USSR_01_NMO.edds"
+}

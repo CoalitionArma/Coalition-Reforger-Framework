@@ -1,0 +1,25 @@
+$grp Vehicle : "{33E306975481B2AA}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_SWB_Civvie_PoPo.et" {
+ _Series_SWB_Civvie_PoPo1 {
+  coords 5854.901 8.135 9887.901
+  angles 0 -165.564 0
+  {
+   DecalEntity {
+    ID "667365CE2C770D04"
+    components {
+     MeshObject "{66780A9036CE64C9}" {
+      PixelSizeScale 0.43
+     }
+    }
+   }
+  }
+ }
+ _Series_SWB_Civvie_PoPo2 {
+  coords 5836.948 7.886 9881.094
+  angles 0 59.462 0
+  {
+   DecalEntity {
+    ID "667365CE2C770D04"
+   }
+  }
+ }
+}
