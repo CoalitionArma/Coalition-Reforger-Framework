@@ -5,13 +5,13 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
    Enabled 1
   }
   MeshObject "{4B42E716914465B9}" {
-   Object "{A372F4DA63729C28}Assets/ParachuteMK3/ParachuteMK3.xob"
+   Object "{0183C3070DFDAD41}assets/ChickenGlider/ChickenGlider.xob"
    Materials {
-    MaterialAssignClass "{66EE7CA79D79E911}" {
+    MaterialAssignClass "{686F43E2D983423A}" {
      SourceMaterial "DefaultGeneratedMaterial"
      AssignedMaterial "{68A8C1F690E56659}Assets/Props/Commercial/CabinetCardFile_01/Data/CabinetCardFile_01_green.emat"
     }
-    MaterialAssignClass "{66EE7CA79D79E907}" {
+    MaterialAssignClass "{686F43E2D9834265}" {
      SourceMaterial "blinn1SG"
      AssignedMaterial "{68A8C1F690E56659}Assets/Props/Commercial/CabinetCardFile_01/Data/CabinetCardFile_01_green.emat"
     }
@@ -31,17 +31,17 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
   }
   SCR_BaseCompartmentManagerComponent "{2CD4A765A7D52986}" {
    DoorInfoList {
-    CompartmentDoorInfo "{66EE7CA79D79E90B}" {
-     EntryPositionInfo PointInfo "{66EE7CA79D79E909}" {
+    CompartmentDoorInfo "{686F43E2D983426D}" {
+     EntryPositionInfo PointInfo "{686F43E2D9834271}" {
       PivotID "passenger_getin"
      }
-     ExitPositionInfo PointInfo "{66EE7CA79D79E908}" {
+     ExitPositionInfo PointInfo "{686F43E2D9834277}" {
       Offset 0 1 0
      }
      GetInTeleport 1
      GetOutTeleport 1
      FakeDoor 1
-     AccessibilitySettings CompartmentAccessibilityContext "{66EE7CA79D79E90C}" {
+     AccessibilitySettings CompartmentAccessibilityContext "{686F43E2D983427B}" {
       BBHalfExtents 0.5 0.7 0.005
       TraceOffset 0 1 0.65
       ExcludePhysicsLayer 0x40000 0
@@ -50,25 +50,25 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
    }
    CompartmentSlots {
     CargoCompartmentSlot passenger_l02 {
-     CompartmentAction SCR_GetInUserAction "{66EE7CA79D79E930}" {
+     CompartmentAction SCR_GetInUserAction "{686F43E2D9834282}" {
       ParentContextList {
        "passenger_l02"
       }
       CanAggregate 1
       "Sort Priority" 3
      }
-     GetOutAction SCR_GetOutAction "{66EE7CA79D79E937}" {
+     GetOutAction SCR_GetOutAction "{686F43E2D9834280}" {
       ParentContextList {
        "door_rear_int"
       }
       VisibilityRange 5
      }
      AdditionalActions {
-      SCR_RemoveCasualtyUserAction "{66EE7CA79D79E935}" {
+      SCR_RemoveCasualtyUserAction "{686F43E2D9834287}" {
        ParentContextList {
         "default"
        }
-       UIInfo UIInfo "{66EE7CA79D79E934}" {
+       UIInfo UIInfo "{686F43E2D9834285}" {
         Name "Remove Casualty"
        }
        Duration 1
@@ -107,8 +107,8 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
     }
    }
   }
-  SCR_EditableEntityComponent "{66EE7CA79D79E922}" {
-   m_UIInfo SCR_EditableEntityUIInfo "{66EE7CA79D79E926}" {
+  SCR_EditableEntityComponent "{686F43E2D9834291}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{686F43E2D983429A}" {
     Name "Parachute"
     Icon "{73B3D8BBB785B5B9}UI/Textures/Common/circleFull.edds"
     m_Image "{AC7E384FF9D8016A}Common/Textures/placeholder_BCR.edds"
@@ -120,21 +120,30 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
   SCR_UniversalInventoryStorageComponent "{5E58C207959A9200}" {
    Enabled 0
   }
+  SlotManagerComponent "{686F4569BF52D211}" {
+   Enabled 0
+   Slots {
+    EntitySlotInfo GliderChute {
+     Offset 0 2.4071 0
+     Prefab "{24F57C3C97C1FC1B}Prefabs/DeployedParachutes/Core/ChickenPrefab.et"
+    }
+   }
+  }
   ActionsManagerComponent "{2CD4A765B4482F53}" {
    ActionContexts {
-    UserActionContext "{66EE7CA79D79E92B}" {
-     UIInfo SCR_ActionContextUIInfo "{66EE7CA79D79E96A}" {
+    UserActionContext "{686F43E2D983429F}" {
+     UIInfo SCR_ActionContextUIInfo "{686F43E2D98342BC}" {
      }
      ContextName "passenger_l02"
-     Position PointInfo "{66EE7CA79D79E96F}" {
+     Position PointInfo "{686F43E2D98342C2}" {
       PivotID "passenger_l02_idle"
       Offset 0 0.05 0
      }
      Height 0
     }
-    UserActionContext "{66EE7CA79D79E96D}" {
+    UserActionContext "{686F43E2D98342C0}" {
      ContextName "default"
-     Position PointInfo "{66EE7CA79D79E96C}" {
+     Position PointInfo "{686F43E2D98342C6}" {
       PivotID "Bone"
       Offset 0.0001 0.0001 1.9219
      }
@@ -148,12 +157,6 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
    "Parent Node From Parent Entity" 0
   }
  }
- coords 0.197 -0.008 0.001
- m_PitchTorque 1
- m_RollTorque 1
- m_MaxFallSpeed 10
- m_GlideDownPitch 0.01
- m_GlideUpPitch 0.01
- m_MaxForwardSpeed 0.01
- m_MaxTurnRate 0
+ m_GlideDownPitch 4
+ m_GlideUpPitch 5
 }
