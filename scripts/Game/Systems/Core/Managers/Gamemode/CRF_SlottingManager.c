@@ -612,11 +612,11 @@ class CRF_SlottingManager : ScriptComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
+		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+		SCR_Faction scrFaction = SCR_Faction.Cast(faction);
+		
 		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
 		{	
-			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
-			SCR_Faction scrFaction = SCR_Faction.Cast(faction);
-			
 			CRF_EFlagType flagType = slotGroup.m_FlagType;
 			
 			if(scrFaction && scrFaction.GetFlagName(0))
@@ -639,7 +639,7 @@ class CRF_SlottingManager : ScriptComponent
 				CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 				
-				if (!role || !roleConfig || !rolesConfig)
+				if (!roleConfig || !rolesConfig)
 					return;
 					
 				// Create and configure new slot data
@@ -664,6 +664,7 @@ class CRF_SlottingManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void InitilizeGroupCallsignsForFaction(FactionKey factionKey, array <ref CRF_SlottingGroup> factionSlots)
 	{
 		array<ref SCR_CallsignInfo> callsignArray = new array<ref SCR_CallsignInfo>;
