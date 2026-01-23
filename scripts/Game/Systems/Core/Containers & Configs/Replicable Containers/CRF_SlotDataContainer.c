@@ -193,7 +193,7 @@ class CRF_SlotDataContainer
 		switch (m_SlotFaction)
 		{
 			case CRF_EFactions.BLUFOR 	: faction = "BLUFOR"; break;
-			case CRF_EFactions.OPFOR 	: faction = "OPFOR"; break;
+			case CRF_EFactions.OPFOR 		: faction = "OPFOR"; break;
 			case CRF_EFactions.INDFOR 	: faction = "INDFOR"; break;
 			case CRF_EFactions.CIV 		: faction = "CIV"; break;
 		}
@@ -219,6 +219,7 @@ class CRF_SlotDataContainer
 		return m_bIsDeadSlot;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	string GetSlotName() 
 	{
 		string customSlottingName = CRF_GearscriptManager.GetInstance().GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
@@ -229,16 +230,19 @@ class CRF_SlotDataContainer
 			return customSlottingName;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	CRF_ESlotType GetSlotType() 
 	{
 		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_SlottingType;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotIconResource() 
 	{
 		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_RoleIcon;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotResource() 
 	{
 		ref CRF_RoleConfig config = CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole);	
