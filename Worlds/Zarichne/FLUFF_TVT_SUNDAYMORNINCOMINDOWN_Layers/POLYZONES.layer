@@ -1,0 +1,269 @@
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFORSafestartBoundry.et" {
+ components {
+  CRF_PolyZone "{6586537E5441D07A}" {
+   m_bIsSafestartBorder 0
+  }
+ }
+ coords 1235.505 13.037 1977.818
+ Points {
+  ShapePoint "{685D127979739FE2}" {
+   Position 36.033 0 81.943
+  }
+  ShapePoint "{685D1279799A642B}" {
+   Position 218.765 0 109.295
+  }
+  ShapePoint "{685D12797E86B334}" {
+   Position 401.335 0 169.87
+  }
+  ShapePoint "{685D12797F00B182}" {
+   Position 500.668 0 232.503
+  }
+  ShapePoint "{685D12797C32C37A}" {
+   Position 504.57 0 421.593
+  }
+  ShapePoint "{685D12797DF23909}" {
+   Position 387.864 0 588.508
+  }
+  ShapePoint "{685D127982C30DA6}" {
+   Position 325.035 0 781.985
+  }
+  ShapePoint "{685D127980747550}" {
+   Position 258.292 0 882.447
+  }
+  ShapePoint "{685D1279801845FA}" {
+   Position 86.798 0 818.435
+  }
+  ShapePoint "{685D127980871138}" {
+   Position -0.254 0 768.49
+  }
+  ShapePoint "{685D127986182A7E}" {
+   Position -75.569 0 631.576
+  }
+  ShapePoint "{685D127987ADA7BD}" {
+   Position -105.571 0 416.491
+  }
+  ShapePoint "{685D12798B7F6272}" {
+   Position -35.091 0 147.241
+  }
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+ cacheaborder1 {
+  coords 1546.05 19.531 2517.411
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_fWorldSize 30
+  m_sDescription ""
+  {
+   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+    {
+     coords -21.023 0.319 32.981
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -41.002 0.596 62.724
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -77.036 1.017 74.528
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -121.734 1.126 80.618
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -168.822 1.126 60.843
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -202.082 1.126 39.304
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -212.718 1.126 24.598
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -210.981 1.751 1.084
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -192.037 1.125 -23.571
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -179.314 1.298 -49.113
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -166.862 1.253 -61.541
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -145.302 1.126 -56.979
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -111.751 1.126 -44.65
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -86.378 1.263 -54.716
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -38.77 1.208 -23.564
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+   }
+  }
+ }
+ cachebbordser {
+  coords 1475.284 20.312 2189.647
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_fWorldSize 30
+  m_sDescription ""
+  {
+   $grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+    {
+     coords -13.286 0.156 24.678
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -32.854 0.188 63.091
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -50.229 0.219 98.438
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -68.005 0.25 126.455
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -101.609 0.344 131.765
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -136.719 0.344 120.131
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -127.034 0.344 76.821
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -116.806 0.344 36.812
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -110.84 0.281 -2.779
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -106.743 -0.395 -42.952
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -84.38 -0.5 -52.068
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -48.784 -0.187 -27.868
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+    {
+     coords -16.006 -0.031 -15.7
+     m_MarkerColor 0 0.125 0.502 1
+     m_sQuadName "dot"
+     m_fWorldSize 30
+     m_sDescription ""
+    }
+   }
+  }
+ }
+}

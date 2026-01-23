@@ -1,0 +1,70 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ obj2 {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{94924D8A66F6C78C}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/AmmoBox_P150_Hydra_Pallet_US.xob"
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_DestroySpawnObjects {
+     SCR_DebrisSpawnable "{5E9ABCDC5BC2B844}" {
+      m_ModelPrefabs {
+       "{0E2A4475AEEC0793}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_12.xob"
+       "{FDE5F9BCC5B7D524}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_05.xob"
+       "{3DDC148008992CCF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_02.xob"
+       "{13F128AD2CF20BC4}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_07.xob"
+       "{3EA3BC8789867F9C}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Sledge_dst_01_dbr_03.xob"
+       "{5B9C695DE62AEC0F}Assets/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/Dst/SupplyStack_Large_01_dst_07.xob"
+       "{FA2203EDA3316FE7}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_02.xob"
+       "{3DDC148008992CCF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_02.xob"
+       "{4AD67C08FC3BC3BF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_03.xob"
+      }
+     }
+     SCR_PrefabSpawnable "{685D125C6D49BA2A}" {
+      m_Prefabs {
+       "{BC91A8CA354E845B}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge_Inst.et"
+      }
+     }
+     SCR_ParticleSpawnable "{685D125FA41586A7}" {
+      m_Particle "{2DAA5F5D2B63EE41}Particles/Logistics/Explosion/Explosion_Satchel.ptc"
+     }
+    }
+   }
+  }
+  coords 1414.536 28.133 2280.621
+  angles 0 -17.71 0
+ }
+ obj1 {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{94924D8A66F6C78C}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/AmmoBox_P150_Hydra_Pallet_US.xob"
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_DestroySpawnObjects {
+     SCR_DebrisSpawnable "{5E9ABCDC5BC2B844}" {
+      m_ModelPrefabs {
+       "{0E2A4475AEEC0793}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_12.xob"
+       "{FDE5F9BCC5B7D524}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_05.xob"
+       "{3DDC148008992CCF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_02.xob"
+       "{13F128AD2CF20BC4}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_07.xob"
+       "{3EA3BC8789867F9C}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Sledge_dst_01_dbr_03.xob"
+       "{5B9C695DE62AEC0F}Assets/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/Dst/SupplyStack_Large_01_dst_07.xob"
+       "{FA2203EDA3316FE7}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Pallet_US_dst_01_dbr_02.xob"
+       "{3DDC148008992CCF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_02.xob"
+       "{4AD67C08FC3BC3BF}Assets/Props/Military/AmmoBox/AmmoBox_P150_Hydra_Container_US/Dst/AmmoBox_P150_Hydra_Container_US_dst_01_dbr_03.xob"
+      }
+     }
+     SCR_PrefabSpawnable "{685D125C6D49BA2A}" {
+      m_Prefabs {
+       "{BC91A8CA354E845B}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge_Inst.et"
+      }
+     }
+     SCR_ParticleSpawnable "{685D125FA41586A7}" {
+      m_Particle "{2DAA5F5D2B63EE41}Particles/Logistics/Explosion/Explosion_Satchel.ptc"
+     }
+    }
+   }
+  }
+  coords 1455.738 28.215 2499.368
+  angles 0 -29.556 0
+ }
+}
