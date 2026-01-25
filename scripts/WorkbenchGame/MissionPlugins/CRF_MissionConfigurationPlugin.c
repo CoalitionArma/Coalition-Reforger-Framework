@@ -22,7 +22,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	protected string m_sMissionDescription;
 	
-	protected const string SCENARIOS_PATH = "_Missions";
+	protected const string SCENARIOS_PATH = "Missions";
 
 	//------------------------------------------------------------------------------------------------
 	override void Run()
@@ -34,7 +34,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		
 		if (!Workbench.ScriptDialog(
 		"Mission Config Generator", 
-		"This will automatically generate and sort the mission configuration file.\nPlease do NOT include any special characters in your text for any input, this can cause issues. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
+		"This will automatically generate and sort the mission configuration file. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
 		this))
 			return;
 	}
@@ -55,7 +55,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		string worldPath;
 		
 		//--- Get mission header from the template config (can't use the class directly, it's engine-controlled class that cannot have reference in script)
-		Resource templateResource = Resource.Load("{3D094352621EA88C}Missions/ACRF_BaseMissionConfig.conf");
+		Resource templateResource = Resource.Load("{3D094352621EA88C}!Missions/CRF_BaseMissionConfig.conf");
 		BaseContainer missionHeaderContainer = templateResource.GetResource().ToBaseContainer();
 		
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
@@ -137,7 +137,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		
 		dayFinal = dayFinal + day.ToString();
 		
-		string missionHeaderPath = FilePath.Concat(relativeDirPath, string.Format("%1_%2_%3%4_%5%6_%7", m_sMissionAuthor, missionTerrain, monthFinal, dayFinal, missionMode, missionPlayercount, m_sMissionName));
+		string missionHeaderPath = FilePath.Concat(relativeDirPath, string.Format("%1_%2%3_%4%5_%6", SCR_StringHelper.Filter(m_sMissionAuthor, SCR_StringHelper.ALPHANUMERICAL), monthFinal, dayFinal, missionMode, missionPlayercount, SCR_StringHelper.Filter(m_sMissionName, SCR_StringHelper.ALPHANUMERICAL)));
 		missionHeaderPath = FilePath.AppendExtension(missionHeaderPath, "conf");
 
 		//--- Create the config
@@ -147,11 +147,14 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			return false;
 		}
 		
-		worldEditor.Close();
+		string missionHeaderAbsPath;
+		Workbench.GetAbsolutePath(missionHeaderPath, missionHeaderAbsPath, false);
+		resourceManager.RegisterResourceFile(missionHeaderAbsPath, false);
 		
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected int GetPlayerCount(array<ref CRF_SlottingGroup> factionSlots)
 	{
 		int missionPlayercount;

@@ -1,0 +1,155 @@
+$grp CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/INDFOR_NewObjectiveMarker.et" {
+ {
+  coords 1469.068 27.9 2267.193
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "AR_icon_mine_02"
+  m_fWorldSize 30
+  m_sDescription "Bombmaker's House"
+  m_sMissionMarkerDescription "Bombmaker's House"
+ }
+ {
+  coords 1302.29 26.256 2418.537
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "AR_icon_heal_01"
+  m_fWorldSize 30
+  m_sDescription "Medical Storage"
+  m_sMissionMarkerDescription "Medical Storage"
+ }
+ {
+  coords 1436.53 32.632 2409.17
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "AR_icon_flag_02"
+  m_fWorldSize 30
+  m_sDescription "Leadership HQ"
+  m_sMissionMarkerDescription "Leadership HQ"
+ }
+ {
+  coords 1458.082 34.32 2495.857
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "AR_icon_mine_field_02_1"
+  m_fWorldSize 60
+  m_sDescription "Cache Alpha"
+  m_sMissionMarkerDescription "Cache Alpha"
+ }
+ {
+  coords 1413.688 32.905 2279.425
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "AR_icon_mine_field_02_1"
+  m_fWorldSize 60
+  m_sDescription "Cache Bravo"
+  m_sMissionMarkerDescription "Cache Bravo"
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 3006.438 9.653 822.655
+ Points {
+  ShapePoint "{685D124691BACCF1}" {
+   Position -0.354 0 1.64
+  }
+  ShapePoint "{685D124696D4A3DD}" {
+   Position 31.576 0 13.135
+  }
+  ShapePoint "{685D12469741632E}" {
+   Position 62.814 0 14.745
+  }
+  ShapePoint "{685D1246949BADA3}" {
+   Position 99.303 0 23.457
+  }
+  ShapePoint "{685D12469AD21600}" {
+   Position 122.272 0 147.235
+  }
+  ShapePoint "{685D12469B7D5453}" {
+   Position 63.836 0 175.325
+  }
+  ShapePoint "{685D12469C672B0F}" {
+   Position -28.851 0 131.254
+  }
+  ShapePoint "{685D12469D41933B}" {
+   Position -61.598 0 100.423
+  }
+ }
+}
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ {
+  coords 3059.659 11.716 876.63
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_flag_01"
+  m_fWorldSize 50
+  m_sDescription "BLUFOR SPAWN"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "BLUFOR SPAWN"
+ }
+ {
+  coords 3032.564 13.398 929.191
+  angles 0 0 -90
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_dot_01"
+  m_fWorldSize 15
+  m_sDescription "1PLT cars"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "1PLT cars"
+ }
+ {
+  coords 3052.395 30.633 929.984
+  angles 0 0 -90
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_dot_01"
+  m_fWorldSize 15
+  m_sDescription "Coy car"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "Coy car"
+ }
+ {
+  coords 3014.135 13.136 938.686
+  angles 0 0 -90
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_dot_01"
+  m_fWorldSize 15
+  m_sDescription "Marmite cars"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "Marmite cars"
+ }
+ {
+  coords 3074.019 13.972 919.108
+  angles 0 0 -90
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_dot_01"
+  m_fWorldSize 15
+  m_sDescription "2PLT cars"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "2PLT cars"
+ }
+ {
+  coords 3085.397 12.565 882.78
+  angles 0 0 -90
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "AR_icon_dot_01"
+  m_fWorldSize 15
+  m_sDescription "3PLT cars"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "3PLT cars"
+ }
+}

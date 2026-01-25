@@ -1,0 +1,214 @@
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 8310.431 5.593 10132.268
+ angles 0 -0.133 0
+}
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsMissionMaking/Markers/SpawnMarkers/OPFOR_SpawnMarker.et" {
+ coords 8386.309 5.327 10089.078
+ m_sDescription "MAIN"
+}
+GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D12174E9C}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 8916.696 106.531 9161.421
+ angles 0 -0.167 0
+ {
+  GenericEntity {
+   ID "5D3706BDF0F0CFF8"
+   {
+    GenericEntity {
+     ID "5D3706BECE3A18AD"
+     components {
+      SCR_SeizingComponent "{5CB66A118D01098D}" {
+       m_iRadius 120
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 8293.337 5.594 10124.515
+ angles 0 175.019 0
+}
+GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ coords 8292.747 5.474 10110.081
+ angles 0 73 0
+ {
+  GenericEntity {
+   ID "58C28EA171B30DC1"
+   components {
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{686D70CAE9CB5EE8}" {
+       m_eResourceRights ALL
+       m_fResourceValueCurrent 3849
+       m_fResourceValueMax 50000
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 8323.751 5.393 10104.544
+ angles -2.052 80.177 1.263
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 8289.522 5.344 10104.45
+ angles 0 179.467 0
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.483 0.147 -0.148
+   angles -0.43 3.056 -0.463
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 1.333 0.032 1.06
+     angles -0.447 87.727 0
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords -2.39 -0.187 -0.155
+       angles 0 0.031 0
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords -2.515 -0.129 -0.06
+         {
+          GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+           coords -0.885 -0.073 -1.264
+           angles 0.446 -87.779 0.016
+           {
+            GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+             coords -2.295 -0.049 0.111
+             {
+              GenericEntity : "{A46AD3EA3096DACF}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_OPFOR_CAMPAIGN.et" {
+               components {
+                SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+                 m_bCheckFactionForOverwriteArsenalConfig 1
+                 m_bGetDefaultIfNoFaction 0
+                 m_eArsenalSaveType SAVING_DISABLED
+                }
+                SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+                 "faction affiliation" "OPFOR"
+                }
+               }
+               coords 0.346 0.185 -4.272
+               angles 0 -92.151 0
+               {
+                GenericEntity {
+                 ID "685018D4885AF34D"
+                 coords -0.349 -0.021 0.867
+                 angles 0 -45.82 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF343"
+                 coords 0.81 0.01 -1.144
+                 angles 7.117 97.794 -1.702
+                }
+                GenericEntity {
+                 ID "685018D4885AF340"
+                 coords -1.466 0.112 -0.784
+                 angles 30.705 -127.202 -21.186
+                }
+                GenericEntity {
+                 ID "685018D4885AF346"
+                 coords -1.135 0.064 -0.059
+                 angles 0 89.179 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33A"
+                 coords -0.859 0.089 -0.925
+                 angles 11.144 -118.209 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33B"
+                 coords 0.035 0.049 -1.065
+                 angles 0 177.707 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D60"
+                 coords 1.105 -0.051 0.284
+                 angles 0 39.419 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF338"
+                 coords 0.534 -0.047 0.923
+                 angles 0 -19.083 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D64"
+                 coords 0.438 -0.036 0.316
+                 angles 0 54.557 0
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 50
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+   }
+  }
+ }
+ coords 8312.428 5.594 10121.933
+ angles 0 -100.687 0
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 8310.011 5.556 10111.295
+ Points {
+  ShapePoint "{686D70DA9ACE3558}" {
+   Position -47.074 0 132.169
+  }
+  ShapePoint "{686D70DA9F1D6BD8}" {
+   Position 683.764 0 193.992
+  }
+  ShapePoint "{686D70DA93A10293}" {
+   Position 903.224 0 -1.852
+  }
+  ShapePoint "{686D70DA90A6DDA2}" {
+   Position 882.526 153.106 -571.153
+  }
+  ShapePoint "{686D70DA978004C8}" {
+   Position 468.511 0 -443.546
+  }
+  ShapePoint "{686D70DA95AB6E4B}" {
+   Position 515.446 0 -266.876
+  }
+  ShapePoint "{686D70DA8B1CB668}" {
+   Position 284.674 0 -170.638
+  }
+  ShapePoint "{686D70DA88431014}" {
+   Position -30.21 0 -68.446
+  }
+ }
+}

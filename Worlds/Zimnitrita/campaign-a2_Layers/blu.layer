@@ -1,0 +1,170 @@
+GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_US_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D0B27AEF9}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 8100.455 39.265 8133.556
+ angles -8.331 -103.708 -13.235
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 8118.348 36.608 8122.884
+ angles 0 -1.135 0
+}
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ coords 8118.304 41.033 8143.763
+ {
+  GenericEntity {
+   ID "58C28EA16E7B7C58"
+   components {
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{686D70C9FD78BF7A}" {
+       m_eResourceRights ALL
+       m_fResourceValueCurrent 15042
+       m_fResourceValueMax 50000
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{84B388FC52E2F46E}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_BLUFOR_CAMPAIGN.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_bCheckFactionForOverwriteArsenalConfig 1
+   m_bGetDefaultIfNoFaction 0
+   m_eArsenalSaveType SAVING_DISABLED
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 8132.131 40.635 8145.458
+ angles 12.769 0.111 -1.721
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 8124.554 38.637 8134.338
+ Points {
+  ShapePoint "{686D70DDB4301AA6}" {
+   Position 83.454 0 -20.484
+  }
+  ShapePoint "{686D70DDAB99A619}" {
+   Position -87.48 0 -68.232
+  }
+  ShapePoint "{686D70DDA95136A7}" {
+   Position -77.409 0 108.786
+  }
+  ShapePoint "{686D70DDA8461D70}" {
+   Position 89.848 0 91.097
+  }
+ }
+}
+$grp Vehicle : "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et" {
+ RHIB_Transport1 {
+  coords 7728.665 0 8458.362
+  angles 0 -60 0
+ }
+ RHIB_Transport2 {
+  coords 7734.135 0 8465.373
+  angles 0 -60 0
+ }
+ RHIB_Transport3 {
+  coords 7738.471 0 8473.24
+  angles 0 -60 0
+ }
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 8135.092 40.285 8144.735
+ angles 3.247 -91.454 -12.828
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.623 -0.041 -0.09
+   angles 0.032 -4.97 -0.831
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 2.177 -0.028 0.711
+     angles -1.227 130.915 -1.571
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords 3.371 0.004 -5.865
+       angles 0.606 132.926 -4.954
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords 2.808 -0.172 0.05
+         angles 2.959 -175.112 -4.564
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 20
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+   }
+  }
+ }
+ coords 8109.043 41.685 8146.035
+ angles 0 119 0
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95AFB171C7A}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 8089.994 35.064 8107.402
+ angles 6.938 41.034 8.896
+ {
+  GenericEntity {
+   ID "5D088D1F968989A8"
+   {
+    GenericEntity {
+     ID "620EDD9C7774D884"
+     components {
+      SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+       m_aContainers {
+        SCR_ResourceContainer "{684F75133F346BB5}" {
+         m_fResourceValueCurrent 1000
+         m_fResourceValueMax 1000
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
+ {
+  coords 8134.367 36.154 8125.126
+  m_sDescription "MAIN"
+ }
+ {
+  coords 7751.385 1.109 8466.388
+  m_sQuadName "dot"
+  m_sDescription "Boats"
+  m_bUseWorldScale 0
+ }
+}

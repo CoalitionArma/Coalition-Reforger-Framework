@@ -1,0 +1,641 @@
+GenericEntity : "{0089B23327C9B8CA}Prefabs/Props/Furniture/TableLong_01/TableLong_01.et" {
+ coords 1462.435 28.215 2503.427
+ angles 0 62.058 0
+}
+GenericEntity : "{026CE108BFB3EC03}Prefabs/Weapons/MachineGuns/UK59/MG_UK59.et" {
+ coords 1462.64 29.116 2502.957
+ angles 0 -28.969 0
+}
+$grp GenericEntity : "{0AE2212733AB9861}Prefabs/Weapons/Rifles/M16/Rifle_AR15_604.et" {
+ {
+  coords 1461.984 28.657 2495.931
+  angles 90 165.964 14.202
+ }
+ {
+  coords 1462.223 28.67 2496.088
+  angles 90 165.964 14.202
+ }
+}
+$grp GenericEntity : "{0AFA7580D190A36A}Prefabs/Weapons/Magazines/UK59/Box_762x54_UK59_50rnd_Tracer.et" {
+ {
+  coords 1462.038 29.125 2503.57
+ }
+ {
+  coords 1462.177 29.123 2503.476
+ }
+ {
+  coords 1461.923 29.119 2503.52
+ }
+ {
+  coords 1462.038 29.173 2503.422
+  angles 90 180 -180
+ }
+}
+$grp GenericEntity : "{17E171EFFE876BA5}Prefabs/Weapons/Rifles/ARY_G3/ARY_G3_41/Variants/Old/ARY_Rifle_G3_41_Old_SlimOD.et" {
+ {
+  coords 1462.759 28.689 2496.4
+  angles 90 -29.285 -180
+ }
+ {
+  coords 1461.819 28.709 2495.887
+  angles 90 -29.895 -180
+ }
+}
+$grp GenericEntity : "{1E7D876C06089E21}Prefabs/Weapons/Magazines/Magazine_9x19_HiPower_13rnd_Ball.et" {
+ {
+  coords 1463.308 29.365 2496.818
+  angles 0 41.841 -90
+ }
+ {
+  coords 1463.388 29.365 2496.656
+  angles 0 0 -90
+ }
+ {
+  coords 1463.41 29.365 2496.604
+  angles 0 157.444 -90
+ }
+ {
+  coords 1463.466 29.365 2496.915
+  angles 0 -80.165 -90
+ }
+ {
+  coords 1463.627 29.365 2496.675
+  angles 0 -26.956 -90
+ }
+}
+$grp GenericEntity : "{243948B23D90BECB}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8.et" {
+ {
+  coords 1460.242 29.103 2497.512
+ }
+ {
+  coords 1460.351 29.108 2497.345
+  angles 0 -127.374 0
+ }
+ {
+  coords 1460.451 29.105 2497.596
+  angles 0 -127.374 0
+ }
+ {
+  coords 1460.541 29.106 2497.44
+  angles 0 -157.652 0
+ }
+}
+$grp GenericEntity : "{24FFA508861139C9}Prefabs/Weapons/Rifles/L42A1/Rifle_L8.et" {
+ {
+  coords 1464.108 28.627 2493.458
+  angles 90 152.517 -180
+ }
+ {
+  coords 1464.699 28.615 2493.763
+  angles 90 152.517 -180
+ }
+ {
+  coords 1463.824 28.603 2493.294
+  angles 90 152.517 -180
+ }
+}
+GenericEntity : "{385D00E56B647C7F}Prefabs/Props/Ruins/TableOld_01_ruined/TableOld_01_ruined.et" {
+ coords 1458.718 28.215 2502.269
+ angles 0 -31.092 0
+}
+$grp GenericEntity : "{3C4FB3D9D54B46DF}Prefabs/Weapons/Shotguns/Double Barrel/BC_Shotgun_Double_Barrel_760mm.et" {
+ {
+  coords 1464.404 28.613 2493.604
+  angles 90 -23.015 6.582
+ }
+ {
+  coords 1465.156 28.607 2493.98
+  angles 90 -23.015 6.582
+ }
+}
+GenericEntity : "{3D3758C525994D3A}Prefabs/Weapons/Shotguns/Double Barrel/BC_Shotgun_Double_Barrel_610mm.et" {
+ coords 1464.261 28.623 2493.529
+ angles 90 152.617 -180
+}
+GenericEntity : "{45CC07DD54662B1F}PrefabLibrary/DefaultLibrary/Props/Civilian/Recreation/BlanketBeach_01/BlanketBeach_01_red.et" {
+ coords 1462.505 29.116 2503.319
+ angles -0.047 59.423 0.002
+ scale 0.58
+}
+GenericEntity : "{47EAC92E805AFB93}Prefabs/Props/Furniture/TableDecorative_01/TableDecorative_01.et" {
+ coords 1460.551 28.215 2503.325
+ angles 0 -25.576 0
+}
+GenericEntity : "{5182D2E81189AC44}Prefabs/Props/Furniture/TableRecreation_01/TableRecreation_01.et" {
+ coords 1462.044 28.215 2493.464
+ angles 0 -61.794 0
+}
+GenericEntity : "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et" {
+ coords 1459.924 29.112 2502.712
+}
+GenericEntity : "{52A12ECB132C3E1F}Prefabs/Props/Furniture/TableKitchen_02/TableKitchen_02.et" {
+ coords 1456.419 28.215 2497.877
+ angles 0 -27.507 0
+}
+GenericEntity : "{5D694BB6F4A3819B}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Green.et" {
+ coords 1456.559 29.127 2497.592
+ angles -45 -141.292 0
+}
+GenericEntity : "{63EE93F804B5EFB9}Prefabs/Weapons/Rifles/ARY_G3/ARY_G3_41/Variants/Old/ARY_Rifle_G3_41_Old_Wood.et" {
+ coords 1463.049 28.72 2496.503
+ angles 88.54 -29.887 -180
+}
+GenericEntity : "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et" {
+ coords 1453.62 29.165 2496.647
+ angles 0 148.584 0
+}
+$grp GameEntity : "{725C5E1C75CADAF4}Prefabs/Characters/Vests/Vest_M69/Vest_M69_M81woodland.et" {
+ {
+  coords 1457.408 28.637 2502.133
+  angles 0 150.824 0
+ }
+ {
+  coords 1457.387 28.752 2502.138
+  angles 0 148.681 0
+ }
+}
+GenericEntity : "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et" {
+ coords 1455.911 28.215 2495.875
+ angles 0 58.668 0
+}
+GenericEntity : "{7762F50A860DD074}Prefabs/Props/Military/Furniture/TableMilitary_US_01.et" {
+ coords 1453.667 28.215 2496.672
+ angles 0 -24.734 0
+}
+$grp GenericEntity : "{7C45EC94C698246B}Prefabs/Weapons/Launchers/RPG75/Launcher_RPG75.et" {
+ {
+  coords 1453.984 29.165 2496.867
+ }
+ {
+  coords 1453.252 29.165 2496.517
+  angles 0 14.308 0
+ }
+}
+GenericEntity : "{8C82BBBDEE9CBA3A}Prefabs/Props/Military/Camps/WeaponRackStand_01.et" {
+ coords 1464.565 28.215 2493.48
+ angles 0 -27.502 0
+}
+$grp GenericEntity : "{8F5A4A44DD1D84D6}Prefabs/Weapons/Rifles/M1 Garand/BC_Rifle_M1_Garand.et" {
+ {
+  coords 1462.353 28.606 2496.164
+  angles 90 0 -159.072
+ }
+ {
+  coords 1462.621 28.618 2496.312
+  angles 90 0 -159.072
+ }
+}
+GameEntity : "{93190FC12B4DD0B0}Prefabs/Characters/HeadGear/Helmet_Mk5_01/Helmet_Mk5_cover_net_01.et" {
+ coords 1458.891 29.115 2502.027
+ angles 0 22.803 0
+}
+GenericEntity : "{942A96E02BC7AFA6}Prefabs/Items/Equipment/Maps/Map_Paper_01/Map_Paper_01_unfolded_table_USSR.et" {
+ coords 1456.391 29.121 2495.438
+ angles 0 147.217 0
+}
+$grp GenericEntity : "{9655CB851205DF47}Prefabs/Weapons/Shotguns/Ithaca 37/BC_Shotgun_Ithaca_37.et" {
+ {
+  coords 1464.857 28.642 2493.834
+  angles 90 154.12 -180
+ }
+ {
+  coords 1464.583 28.63 2493.663
+  angles 90 154.12 -180
+ }
+}
+GenericEntity : "{A314981748872A43}Prefabs/Weapons/Rifles/M1 Carbine/BC_Rifle_M1_Carbine.et" {
+ coords 1462.069 28.627 2496.051
+ angles 90 -28.991 -180
+}
+GenericEntity : "{A7DA7AC6FEF7B643}Prefabs/Props/Military/Camps/WeaponRackCabinet_01.et" {
+ coords 1462.537 28.215 2496.541
+ angles 0 151.745 0
+}
+GenericEntity : "{BFE79C383ABDE6D2}Prefabs/Weapons/Rifles/MP40/BC_MP40.et" {
+ coords 1464.853 28.653 2495.765
+ angles 0 -29.712 90
+}
+GenericEntity : "{CE4BDC1B0C4C6965}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Orange.et" {
+ coords 1456.412 29.124 2497.522
+ angles -45 0 0
+}
+$grp GenericEntity : "{D9889FC9DB8C06C0}Prefabs/Weapons/Handguns/HiPower/Handgun_HiPower.et" {
+ {
+  coords 1463.284 29.38 2496.564
+  angles 0 0 -90
+ }
+ {
+  coords 1463.473 29.367 2496.748
+  angles 0 109.062 -90
+ }
+}
+$grp GenericEntity : "{DEDB1E8616B31771}PrefabsEditable/Auto/Props/Military/AmmoBoxes/E_AmmoBox_556x45_1680rnd.et" {
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{62A30D148D0D93B0}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Equipment_01.xob"
+    Materials {
+     MaterialAssignClass "{685D121C98BDAE8A}" {
+      SourceMaterial "EquipmentBoxWooden_Medical_01"
+      AssignedMaterial "{D3A76235D6723F0B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Medical_01_FIA.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{ED5574EA7F63B457}Prefabs/Characters/Vests/Vest_Type56/Vest_Type56.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+  }
+  coords 1458.324 29.095 2502.198
+  angles 0 156.884 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{CD1CAAD3EFC0BE21}Assets/Props/Crates/CrateWooden_01/CrateWooden_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{7805DA34D73CCD62}Prefabs/Characters/HeadGear/Helmet_Mk5_01/Helmet_Mk5_01_base.et"
+      }
+      NumSlots 6
+     }
+     MultiSlotConfiguration "{685D121F4CD926FB}" {
+      SlotTemplate InventoryStorageSlot Helmet {
+       Prefab "{2E1199EFECE50F35}Prefabs/Characters/HeadGear/Helmet_M1_01/Helmet_M1_01_Cover_ERDL.et"
+      }
+      NumSlots 3
+     }
+    }
+   }
+  }
+  coords 1458.774 28.244 2502.277
+  angles 0 62.428 0
+  scale 0.86
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{62A30D148D0D93B0}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Equipment_01.xob"
+    Materials {
+     MaterialAssignClass "{685D121FCE7D7858}" {
+      SourceMaterial "EquipmentBoxWooden_Medical_01"
+      AssignedMaterial "{0DE28DDDEB295E00}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Medical_01_US.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{03040FA68DB35714}Prefabs/Characters/Vests/Vest_COP/Vest_COP.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685D121FDFFBA40A}" {
+      SlotTemplate InventoryStorageSlot belh {
+       Prefab "{506EF3B2F0A69D34}Prefabs/Characters/Vests/Vest_NAZ/Vest_NAZ.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 1459.238 29.106 2502.567
+  angles 0 62.558 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{FE31750973EA92C7}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Medical_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{CDCC313B2FB76FE7}Prefabs/Items/Medicine/FieldDressing_01/Gauze_01.et"
+      }
+      NumSlots 25
+     }
+     MultiSlotConfiguration "{685D121E3C259841}" {
+      SlotTemplate InventoryStorageSlot bleh {
+       Prefab "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{685D121E48CE66A9}" {
+      SlotTemplate InventoryStorageSlot morp {
+       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+      }
+      NumSlots 3
+     }
+    }
+   }
+  }
+  coords 1460.349 29.112 2503.134
+  angles 0 156.884 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{C5FA287991B7CEEA}Assets/Props/Crates/CardboardBox_04.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_01_folded.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 1456.221 29.125 2495.263
+  angles 0 -159.609 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{56B55CB0378598D5}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V6.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{C8B6565467AA8CB7}Prefabs/Items/Equipment/Compass/Compass_Baseplate.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{685D1213018ECE9A}" {
+      SlotTemplate InventoryStorageSlot Watch {
+       Prefab "{6FD6C96121905202}Prefabs/Items/Equipment/Watches/Watch_Vostok.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 1455.886 29.121 2496.054
+  angles 0 -118.515 0
+  scale 0.75
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{26602B855125635D}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Explosives_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{5D694BB6F4A3819B}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Green.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{685D121392D6B005}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{CE4BDC1B0C4C6965}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Orange.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{685D12138D6A0092}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{9361BEC03E52E6F8}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_White.et"
+      }
+      NumSlots 10
+     }
+    }
+   }
+  }
+  coords 1456.087 29.114 2497.543
+  angles 0 129.852 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{26602B855125635D}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Explosives_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+      }
+     }
+     MultiSlotConfiguration "{685D121392D6B005}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{CE179546A16382BA}Prefabs/Weapons/Grenades/Grenade_L2A2.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{685D12138D6A0092}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 1460.922 29.1 2496.614
+  angles 0 -117.676 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{819ED3266EE5113B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Weapon_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{96FFE213B19D1D57}Prefabs/Weapons/Grenades/Smoke_No80_WP.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685D121392D6B005}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
+      NumSlots 12
+     }
+     MultiSlotConfiguration "{685D12138D6A0092}" {
+      SlotTemplate InventoryStorageSlot Vests {
+      }
+     }
+    }
+   }
+  }
+  coords 1460.65 29.583 2497.173
+  angles 0 -117.676 0
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{9E1DFF036BCE913E}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Ammunition_01.xob"
+    Materials {
+     MaterialAssignClass "{685D1200EA0DF9FB}" {
+      SourceMaterial "EquipmentBoxWooden_Ammunition_01"
+      AssignedMaterial "{01344AC5F9E023E4}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Ammunition_01_FIA.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{D61CF7CA41197110}Prefabs/Weapons/Magazines/ARY_Magazine_45acp_M3A1_30rnd_Mixed.et"
+      }
+      NumSlots 15
+     }
+     MultiSlotConfiguration "{685D1200EF30D5E2}" {
+      SlotTemplate InventoryStorageSlot hui {
+       Prefab "{EA76BE12E7C97CF1}Prefabs/Weapons/Magazines/MP40/BC_Magazine_9x19_MP40_32rnd_Ball.et"
+      }
+      NumSlots 6
+     }
+    }
+   }
+  }
+  coords 1465.374 29.36 2494.839
+  angles 0 -118.171 0
+  scale 0.76
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{9E1DFF036BCE913E}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Ammunition_01.xob"
+    Materials {
+     MaterialAssignClass "{685D1200EA0DF9FB}" {
+      SourceMaterial "EquipmentBoxWooden_Ammunition_01"
+      AssignedMaterial "{01344AC5F9E023E4}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Ammunition_01_FIA.emat"
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+      }
+      NumSlots 23
+     }
+     MultiSlotConfiguration "{685D1200EF30D5E2}" {
+      SlotTemplate InventoryStorageSlot hui {
+       Prefab "{8A2D5C9766FE4375}Prefabs/Weapons/Magazines/M1 Carbine/BC_Magazine_30_Carbine_M1_Carbine_15rnd_Ball.et"
+      }
+      NumSlots 9
+     }
+     MultiSlotConfiguration "{685D1203A837B105}" {
+      SlotTemplate InventoryStorageSlot shdg {
+       Prefab "{8B826E0AE097C497}Prefabs/Weapons/Magazines/ARY_G3/10Rnd/ARY_Magazine_762x51_G3_10Rnd_Surplus_Ball.et"
+      }
+      NumSlots 46
+     }
+     MultiSlotConfiguration "{685D1203C58B0E00}" {
+      SlotTemplate InventoryStorageSlot ddas {
+       Prefab "{15DE59A0089AA290}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_20rnd_Ball.et"
+      }
+      NumSlots 24
+     }
+    }
+   }
+  }
+  coords 1462.34 29.114 2493.673
+  angles 0 50.172 0
+  scale 0.942
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{B537BAA003939B59}Assets/Props/Crates/CardboardBox_02.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et"
+      }
+      NumSlots 90
+     }
+     MultiSlotConfiguration "{685D1200EF30D5E2}" {
+      SlotTemplate InventoryStorageSlot hui {
+       Prefab "{4F4439BAA80A7A66}Prefabs/Weapons/Magazines/Magazine_762x51_L42a1_10rnd_Base.et"
+      }
+      NumSlots 30
+     }
+    }
+   }
+  }
+  coords 1461.724 29.114 2493.395
+  angles 0 -55.806 0
+  scale 0.942
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Object "{819ED3266EE5113B}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Weapon_01.xob"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{685D121D878FEFB2}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{DC4B73FD0B1E8816}Prefabs/Weapons/Handguns/ARY_1911/ARY_Handgun_1911_Worn.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685D121392D6B005}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{81563D558B5BCF69}Prefabs/Weapons/Magazines/ARY_Magazine_45acp_1911_7rnd.et"
+      }
+      NumSlots 11
+     }
+     MultiSlotConfiguration "{685D12138D6A0092}" {
+      SlotTemplate InventoryStorageSlot Vests {
+       Prefab "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{685D12024B23C943}" {
+      SlotTemplate InventoryStorageSlot ioasd {
+       Prefab "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et"
+      }
+      NumSlots 7
+     }
+    }
+   }
+  }
+  coords 1460.707 28.628 2496.951
+  angles 0 -117.676 0
+ }
+}
+$grp GenericEntity : "{E7E46292F7EC7AA1}Prefabs/Weapons/Rifles/ARY_M3A1/ARY_Rifle_M3A1.et" {
+ {
+  coords 1464.853 29.049 2495.812
+  angles 0 -30.404 90
+ }
+ {
+  coords 1465.17 29.032 2495.373
+  angles 0 142.08 90
+ }
+}
+GenericEntity : "{ED5574EA7F63B457}Prefabs/Characters/Vests/Vest_Type56/Vest_Type56.et" {
+ coords 1458.363 29.112 2501.74
+ angles 0 147.541 0
+}
+GameEntity : "{F342102250ED03CC}Prefabs/Characters/Vests/Vest_CBA/Vest_CBA.et" {
+ coords 1459.245 29.558 2502.532
+ angles 0 55.031 0
+}
+GameEntity : "{F9ACDDE62D906D61}Prefabs/Characters/Vests/Vest_M69/Vest_M69_olive.et" {
+ coords 1456.966 28.628 2501.841
+ angles 0 -130.499 0
+}

@@ -1,0 +1,21 @@
+GenericEntity : "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  ParachuteItemComponent "{686F43E2E7870728}" {
+   m_ParachutePrefab "{117CDA692D8720BE}Prefabs/DeployedParachutes/Core/ChickenChute.et"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Chicken Glider"
+     Description "The only parachute we sell"
+    }
+    m_Size SLOT_1x1
+    m_bStackable 0
+   }
+   MaxCumulativeVolume 500
+   MaxItemSize 5 5 5
+   m_fMaxWeight 10
+  }
+ }
+}

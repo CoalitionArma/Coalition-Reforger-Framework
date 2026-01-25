@@ -58,55 +58,55 @@ Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
        }
        m_iBallisticDataOffset -1
        m_aBallisticConfigs {
-        SCR_BaseBallisticConfig "{615084EA964A097A}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
+        SCR_BaseBallisticConfig "{615084EA964A097A}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_O832DU_4Rings_Name"
          m_fProjectileInitSpeedCoef 2.455
         }
-        SCR_BaseBallisticConfig "{6322AA83B1751FBC}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
+        SCR_BaseBallisticConfig "{6322AA83B1751FBC}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_O832DU_3Rings_Name"
          m_fProjectileInitSpeedCoef 2.087
         }
-        SCR_BaseBallisticConfig "{6322AA8341A598B0}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
+        SCR_BaseBallisticConfig "{6322AA8341A598B0}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_O832DU_2Rings_Name"
          m_fProjectileInitSpeedCoef 1.736
         }
-        SCR_BaseBallisticConfig "{6322AA834686FD92}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
+        SCR_BaseBallisticConfig "{6322AA834686FD92}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_O832DU_1Ring_Name"
          m_fProjectileInitSpeedCoef 1.321
         }
-        SCR_BaseBallisticConfig "{6322AA8340644BF3}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
+        SCR_BaseBallisticConfig "{6322AA8340644BF3}" : "{E40F8BD0C80241F3}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_O832DU_HE.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_O832DU_0Rings_Name"
          m_iRangeStep 50
         }
-        SCR_BaseBallisticConfig "{6322AA8340DF591F}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
+        SCR_BaseBallisticConfig "{6322AA8340DF591F}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_D832DU_3Rings_Name"
          m_fProjectileInitSpeedCoef 2.086
         }
-        SCR_BaseBallisticConfig "{6322AA8343A4B0FB}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
+        SCR_BaseBallisticConfig "{6322AA8343A4B0FB}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_D832DU_2Rings_Name"
          m_fProjectileInitSpeedCoef 1.748
         }
-        SCR_BaseBallisticConfig "{6322AA83420BEA76}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
+        SCR_BaseBallisticConfig "{6322AA83420BEA76}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_D832DU_1Ring_Name"
          m_fProjectileInitSpeedCoef 1.339
         }
-        SCR_BaseBallisticConfig "{6322AA834D21009B}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
+        SCR_BaseBallisticConfig "{6322AA834D21009B}" : "{3E421BB0852FB6C9}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_D832DU_Smoke.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_D832DU_0Rings_Name"
          m_iRangeStep 50
         }
-        SCR_BaseBallisticConfig "{6322AA834F4D78C8}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
+        SCR_BaseBallisticConfig "{6322AA834F4D78C8}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_S832S_4Rings_Name"
          m_fProjectileInitSpeedCoef 2.154
         }
-        SCR_BaseBallisticConfig "{6322AA834E1A39FB}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
+        SCR_BaseBallisticConfig "{6322AA834E1A39FB}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_S832S_3Rings_Name"
          m_fProjectileInitSpeedCoef 1.512
         }
-        SCR_BaseBallisticConfig "{6322AA834EEEBE24}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
+        SCR_BaseBallisticConfig "{6322AA834EEEBE24}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_S832S_2Rings_Name"
          m_fProjectileInitSpeedCoef 1.111
         }
-        SCR_BaseBallisticConfig "{6322AA83B46ED69C}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
+        SCR_BaseBallisticConfig "{6322AA83B46ED69C}" : "{5507D62DCC7288DD}Prefabs/Items/Equipment/BallisticTable/Configs/BallisticConfig_S832S_Illumination.conf" {
          m_sDisplayedText "#AR-UI_MortarShell_S832S_1Ring_Name"
          m_iRangeStep 50
          m_fProjectileInitSpeedCoef 0.698
@@ -147,10 +147,10 @@ Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
     m_Image "{42E75AFC1995B809}UI/Textures/EditorPreviews/Auto/Weapons/Mortars/2B14/E_Mortar_2B14.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels {
-     10 3 281 913
+     FACTION_USSR ENTITYTYPE_VEHICLE TRAIT_MORTAR SERVICE_MORTAR
     }
     m_aAutoLabels {
-     108 121
+     THEME_MILITARY SIZE_S
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{64F779F618E6FEF5}" {
@@ -231,12 +231,8 @@ Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
     Angles 90 90 -90
    }
   }
-  StaticWeaponComponent "{64F779F6000520C8}" {
-   m_rWeaponBagPrefab "{2E965A1D8DD5D27B}Prefabs/Items/Equipment/Backpacks/NSV/Backpack_2b14_mortar_Weapon.et"
-   m_rBipodBagPrefab "{7611D0DAE5796941}Prefabs/Items/Equipment/Backpacks/Backpack_USSR_Bipod.et"
-  }
   TagComponent "{6124671047E09B64}" {
-   "Tag categories" 32
+   "Tag categories" 0x20 0
   }
   BaseFlattenGrassComponent "{5E48930C12E53B02}" {
    ParametersCollection {

@@ -34,8 +34,6 @@ GameEntity : "{17F335BF60DD2550}Prefabs/Characters/Core/Headgear_Base.et" {
    }
   }
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
-   AreaType CGS_EyeArea "{66631310D4D74B09}" {
-   }
    WornModel "{6A12B81FA9CFBE56}Assets/Eyepatch.xob"
    ItemModel "{6A12B81FA9CFBE56}Assets/Eyepatch.xob"
   }

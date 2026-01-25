@@ -129,7 +129,7 @@ ButtonWidgetClass {
           SizeY 0
           OffsetBottom 0
          }
-         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Texture "{356FBF661306DFD6}UI/Images/LobbyImages/disconnect_icon.edds"
          Size 800 800
         }
        }

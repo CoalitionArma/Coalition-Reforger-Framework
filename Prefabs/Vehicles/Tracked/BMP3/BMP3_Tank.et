@@ -5,13 +5,13 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
    MultiSlots {
     MultiSlotConfiguration "{64626B75113EF709}" {
      SlotTemplate InventoryStorageSlot HEAmmo {
-      Prefab "{8F8C2A7877DBBFF2}Prefabs/Weapons/Magazines/Box_30x165_2A72_300rnd_HEF-I.et"
+      Prefab "{8F8C2A7877DBBFF2}Prefabs/Weapons/Magazines/Box_30x165_2A42_300rnd_HEF-I.et"
      }
      NumSlots 2
     }
     MultiSlotConfiguration "{64626B756CB5AB46}" {
      SlotTemplate InventoryStorageSlot APAmmo {
-      Prefab "{4195403866390EEE}Prefabs/Weapons/Magazines/Box_30x165_2A72_200rnd_AP-T.et"
+      Prefab "{4195403866390EEE}Prefabs/Weapons/Magazines/Box_30x165_2A42_200rnd_AP-T.et"
      }
      NumSlots 4
     }

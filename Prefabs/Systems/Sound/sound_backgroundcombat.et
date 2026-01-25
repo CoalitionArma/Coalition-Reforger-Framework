@@ -5,7 +5,7 @@ GenericEntity {
   }
   SoundComponent "{66CCE1900CB7A25B}" {
    Filenames {
-    "{A3B8E3FEC2E2D001}Sounds/CCOBackground.acp"
+    "{A3B8E3FEC2E2D001}Sounds/Background Noise/WarBackground.acp"
    }
    OnFrameUpdate 1
    DistanceManagement 0

@@ -11,5 +11,5 @@ Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" 
   }
  }
  coords 4770.931 27.844 11070.154
- angleY -178.357
+ angles 0 -178.357 0
 }

@@ -1,0 +1,9 @@
+GenericEntity : "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPointsGroups/InitalGroupSpawn.et" {
+ components {
+  CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+   m_sSpawnPointFaction "OPFOR"
+   m_sCallsignOfGroupToSpawn "The Family"
+  }
+ }
+ coords 2244.714 19.102 7511.361
+}

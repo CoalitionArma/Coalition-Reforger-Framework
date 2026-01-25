@@ -44,7 +44,7 @@ GenericEntity : "{068C2EB42635973F}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_RAS.et
      ShowInInspection 0
     }
     MuzzleComponent "{CA6BE4D6B867541F}" {
-     MagazineTemplate "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et"
+     MagazineTemplate "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M856_Tracer.et"
     }
    }
   }

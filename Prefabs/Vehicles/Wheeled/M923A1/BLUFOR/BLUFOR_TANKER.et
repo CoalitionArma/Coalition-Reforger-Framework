@@ -10,10 +10,10 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     m_Image "{1506630FF32CAA58}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_tanker.edds"
     m_sFaction "BLUFOR"
     m_aAuthoredLabels + {
-     23 280
+     TRAIT_REFUELING TRAIT_ARSENAL
     }
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
@@ -72,7 +72,7 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
    Slots {
     RegisteringComponentSlotInfo Tank {
      MergePhysics 1
-     Prefab "{57F0F8355127D262}Prefabs/Vehicles/Wheeled/M923A1/M923A1_fuel_tank.et"
+     Prefab "{57F0F8355127D262}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_fuel_tank.et"
      RegisterActions 1
      RegisterDamage 1
      RegisterControllers 1

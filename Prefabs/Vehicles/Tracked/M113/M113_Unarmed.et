@@ -220,7 +220,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
      }
     }
     m_aOccupantFillCompartmentTypes {
-     1
+     TURRET
     }
     m_aCrewEntityBudgetCost {
      SCR_EntityBudgetValue "{64693ECE3D217B95}" {

@@ -17,7 +17,7 @@ FrameWidgetClass {
    }
    Opacity 0
    Color 0.0648 0.0637 0.0637 0.7812
-   Texture "{4EFD2783DFD76834}UI/data/uibox_1.edds"
+   Texture "{4EFD2783DFD76834}UI/Images/UIElements/uibox_1.edds"
    Size 900 300
    "Shadow Offset" 0 0
    "Shadow Size Increase" 1 1

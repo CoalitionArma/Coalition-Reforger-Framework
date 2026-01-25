@@ -1,6 +1,6 @@
 SCR_ManualCamera : "{89ABC7C0A6B85312}Prefabs/Editor/Camera/ManualCameraEdit.et" {
  ID "51625C12EB8231E4"
- cameraFlags 4
+ cameraFlags 0x4 0x2
  m_aComponents {
   SCR_HideHUDManualCameraComponent "{52CC693B212FF1ED}" {
    m_FlagsBlacklist 127

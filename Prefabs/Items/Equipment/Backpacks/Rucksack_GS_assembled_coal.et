@@ -37,9 +37,9 @@ GenericEntity : "{F45E998709CE0B5D}Prefabs/Items/Equipment/Backpacks/Rucksack_GS
     }
    }
    UseCapacityCoefficient 0
-   MaxCumulativeVolume 10000
+   MaxCumulativeVolume 100000
    MaxItemSize 20 20 20
-   m_fMaxWeight 40
+   m_fMaxWeight 100
   }
   SimpleSoundComponent "{62DD779F2D77A690}" {
    Filenames {

@@ -181,9 +181,7 @@ GenericEntity {
     }
    }
    coords -0.01 -0.159 -0.671
-   angleX 0.49
-   angleY -3.402
-   angleZ -1.34
+   angles 0.49 -3.402 -1.34
   }
  }
 }

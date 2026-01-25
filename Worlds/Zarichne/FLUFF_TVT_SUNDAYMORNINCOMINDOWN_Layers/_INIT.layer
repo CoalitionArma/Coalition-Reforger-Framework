@@ -1,0 +1,439 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1427.643 20.625 2391.499
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear Fog"
+     m_iStartingHour 2
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_bWindOverride 1
+   m_fWindSpeed 3.345
+   m_fWindDirection 0.262
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 80
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "After a series of bloody bombings in the region of Zarichne and a guerilla uprising that took over the town proper, D Coy, 40 Commando, Royal Marines stages for an assualt to knock out any guerilla forces in the town and destroy the caches filled with explosives. However, the staging ground was spotted by locals and the guerillas are scambling to prepare for the offensive. They won't go down without a fight."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Company (2x Rifle Platoons, 1x Weapons Platoon)"\
+   "BLUFOR Assets:"\
+   "2x Land Rover Gun Trucks"\
+   "1x Alouette Scout Helicopter w/ GPMG"\
+   ""\
+   "INDFOR Composition: Guerilla Infantry"\
+   "INDFOR Assets:"\
+   "IED Supplies"\
+   ""\
+   "Time: 0230 (dawn)"\
+   ""\
+   "Weather: Clear Fog"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Destroy BOTH weapons caches inside of the town of Zarichne. Their approximate locations are outlined by blue dots on your map. You are searching for the crates carrying tubes of Semtex explosives, a picture of them can be found in the AAR thread. "\
+   "The guerillas may have other supplies stored elsewhere in the town. You are free to destroy them as you see fit, but they will not count towards a victory."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Defend the weapon caches inside the town of Zarichne. You only need to defend one to win, but your strength is in your guerilla capability. Setting up a standard defense on one of the caches is not reccomended."\
+   ""\
+   "When you spawn in, search your nearest building, all layers of it, to try and find a cache. If your building is a cache, move out into the streets and find and alert your teammates to it's location. If not, use your sense and teammates to locate the caches and gear up. Once one cache is found and people have maps, the other one will be visible on the maps as well."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "Administration"
+   m_sTextData "BLUFOR must destroy BOTH caches to win. The caches are only destructible via TNT blocks or more powerful explosives like satchels. Grenades are not capable of destroying the caches."\
+   ""\
+   "No notification will be given when a cache is destroyed, but it'll be hard to miss."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BluforSlots {
+  CRF_SlottingGroup "{686C35CA319AB892}" {
+   m_sCallsign "D Company"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    JTAC
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319AB917}" {
+   m_sCallsign "41 Platoon"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    COMBAT_ENGINEER
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABADF}" {
+   m_sCallsign "41A"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABB91}" {
+   m_sCallsign "41B"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABB77}" {
+   m_sCallsign "41C"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABC28}" {
+   m_sCallsign "42 Platoon"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    COMBAT_ENGINEER
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABD92}" {
+   m_sCallsign "42A"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABD7D}" {
+   m_sCallsign "42B"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABE31}" {
+   m_sCallsign "43C"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABFF0}" {
+   m_sCallsign "43 Platoon"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319ABF57}" {
+   m_sCallsign "43A"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{686C35CA3199400E}" {
+   m_sCallsign "43B"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319941C6}" {
+   m_sCallsign "43C"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    LOGI_LEAD
+    HEAVY_MACHINEGUN
+    ASSISTANT_HEAVY_MACHINEGUN
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319942AD}" {
+   m_sCallsign "MARMITE 1"
+   m_FlagType MOTORIZED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994212}" {
+   m_sCallsign "MARMITE 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319943FB}" {
+   m_sCallsign "WARBLER 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{686C35CA319947AA}" {
+   m_sCallsign "Rebel Lead"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994713}" {
+   m_sCallsign "Rebel Group 1"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA319948E5}" {
+   m_sCallsign "Rebel Group 2"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994846}" {
+   m_sCallsign "Rebel Group 3"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    MEDIC
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA3199496C}" {
+   m_sCallsign "Rebel Group 4"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994A2A}" {
+   m_sCallsign "Rebel Group 5"
+   m_FlagType RECON
+   m_aSlots {
+    MEDIC
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994B95}" {
+   m_sCallsign "Rebel Group 6"
+   m_FlagType RECON
+   m_aSlots {
+    COMBAT_ENGINEER
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994B6C}" {
+   m_sCallsign "Rebel Group 7"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994CCE}" {
+   m_sCallsign "Rebel Group 8"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994DA4}" {
+   m_sCallsign "Rebel Group 9"
+   m_FlagType RECON
+   m_aSlots {
+    MEDIC
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994D01}" {
+   m_sCallsign "Rebel Group 10"
+   m_FlagType RECON
+   m_aSlots {
+    COMBAT_ENGINEER
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994E9C}" {
+   m_sCallsign "Rebel Group 11"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994E7F}" {
+   m_sCallsign "Rebel Group 12"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA31994F20}" {
+   m_sCallsign "Rebel Group 13"
+   m_FlagType RECON
+   m_aSlots {
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{686C35CA3199509A}" {
+   m_sCallsign "Rebel Group 14"
+   m_FlagType RECON
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{2E7348A593AB885D}Configs/Gearscripts/Custom/fluff/CRF_GS_UK80s_fluff_SMCD.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{8A47112BA38128FE}Configs/Gearscripts/Custom/fluff/CRF_GS_FIA_fluff_SMCD.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}

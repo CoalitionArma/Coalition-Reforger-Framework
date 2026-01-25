@@ -49,7 +49,7 @@ FrameWidgetClass {
     SizeY 32
     OffsetBottom -32
    }
-   Texture "{F3A9B47F55BE8D2B}UI/data/PS_Atlas_x64.imageset"
+   Texture "{F3A9B47F55BE8D2B}UI/Images/Atlas/PS_Atlas_x64.imageset"
    Image "Player"
    Size 32 32
   }

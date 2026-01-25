@@ -60,6 +60,10 @@ modded class EditorMenuUI
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
+		
+		if (!CRF_Gamemode.GetInstance())
+			return;
+		
 		m_PlayerController.m_bIsListeningToSpec = false;
 		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
 		CloseConfirmAction();
@@ -67,6 +71,9 @@ modded class EditorMenuUI
 	
 	void ToggleListen()
 	{
+		if (!CRF_Gamemode.GetInstance())
+			return;
+		
 		m_PlayerController.m_bIsListeningToSpec = !m_PlayerController.m_bIsListeningToSpec;
 		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerController.m_bIsListeningToSpec);
 	}

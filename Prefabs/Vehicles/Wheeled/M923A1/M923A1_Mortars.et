@@ -26,7 +26,7 @@ Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_co
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Cargo {
-     Prefab "{F109C8DFC6DB0C92}Prefabs/Vehicles/Wheeled/M923A1/M923A1_cargo_canvas_closed_MERDC.et"
+     Prefab "{F109C8DFC6DB0C92}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_cargo_canvas_closed_MERDC.et"
     }
    }
   }

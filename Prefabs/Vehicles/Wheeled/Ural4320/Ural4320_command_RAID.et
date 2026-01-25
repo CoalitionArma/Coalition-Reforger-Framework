@@ -15,6 +15,10 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     }
    }
   }
+  CRF_RaidItemComponent "{668333D623041E8A}" {
+   m_iPointsEarnedWhenDestroyed 40
+   m_sItemName "Command Vehicle"
+  }
   MeshObject "{51DAA09FEFBFC0E7}" {
    LODFactors {
     4 1 0.5 0.1 0.1
@@ -30,7 +34,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     m_Image "{50433C12B67E23CB}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_command.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels + {
-     35 280 210
+     TRAIT_RADIO TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels +{
     }
@@ -93,10 +97,6 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
      }
     }
    }
-  }
-  CRF_RaidItemComponent "{668333D623041E8A}" {
-   m_iPointsEarnedWhenDestroyed 40
-   m_sItemName "Command Vehicle"
   }
  }
  coords 64 0 64

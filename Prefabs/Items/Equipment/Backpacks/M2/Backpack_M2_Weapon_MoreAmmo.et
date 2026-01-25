@@ -1,8 +1,3 @@
 GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium_frame.et" {
  ID "511E9C6ADE70F798"
- components {
-  StaticWeaponBagComponent "{62B2ACD8914DC29E}" {
-   m_rWeaponPrefab "{73530808E4B455BB}Prefabs/Weapons/Tripods/Tripod_M3_M2HB_MoreAmmo.et"
-  }
- }
 }

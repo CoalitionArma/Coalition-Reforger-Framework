@@ -1,0 +1,29 @@
+GameEntity : "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et" {
+ ID "5104869D194C6243"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   Slots {
+    LoadoutSlotInfo DummyBelt {
+     Prefab "{ACB6C2B49C1230F9}Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_belt_dummy.et"
+    }
+   }
+   WornMaterialsOverride {
+    "{0B37313808B61447}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_police.emat"
+   }
+   ItemMaterialsOverride {
+    "{0B37313808B61447}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_police.emat"
+   }
+   OverrideMeshesToHide + {
+    "Arm_L" "Arm_R"
+   }
+  }
+ }
+}

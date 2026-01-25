@@ -2,14 +2,15 @@ GenericEntity : "{73F79A126D469E2D}Prefabs/Structures/Signs/Military/SignRectang
  ID "50D67C36F4200F97"
  components {
   MeshObject "{54969A6AAAADA251}" {
+   Object "{0183C3070DFDAD41}assets/ChickenGlider/ChickenGlider.xob"
    Materials {
     MaterialAssignClass "{567878E29CBBF710}" {
      SourceMaterial "SignRectangle_01_140x100"
-     AssignedMaterial "{CD22A28C12071185}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_US.emat"
+     AssignedMaterial "{CD22A28C12071185}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_COAL.emat"
     }
     MaterialAssignClass "{567878E29CBBF73E}" {
      SourceMaterial "SignRectangle_01_140x100_MLOD"
-     AssignedMaterial "{B397FD8AEDE93C3F}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_US_MLOD.emat"
+     AssignedMaterial "{B397FD8AEDE93C3F}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_COAL_MLOD.emat"
     }
    }
   }
@@ -17,19 +18,21 @@ GenericEntity : "{73F79A126D469E2D}Prefabs/Structures/Signs/Military/SignRectang
    Enabled 0
   }
   SCR_EditableEntityComponent "{5E588CA3E9FEB211}" : "{7933327C6791C5D0}Prefabs/Editor/Components/Structures_SCR_EditableEntityComponent.ct" {
+   Enabled 0
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#AR-EditableEntity_SignFlag_US_01_Name"
     m_Image "{677B9488DFA615CC}UI/Textures/EditorPreviews/Auto/Structures/Signs/Military/E_SignFlag_US_01.edds"
     m_sFaction "US"
     m_aAuthoredLabels {
-     11
+     FACTION_US
     }
     m_aAutoLabels {
-     108 112 1 121
+     THEME_MILITARY THEME_SIGNS ENTITYTYPE_OBJECT SIZE_S
     }
    }
   }
   SCR_PreviewEntityComponent "{5E588CA3E9FE5FE4}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   Enabled 0
    m_bRuntime 0
    m_aEntries {
     SCR_BasePreviewEntry "{64596409D6E0B9C8}" {

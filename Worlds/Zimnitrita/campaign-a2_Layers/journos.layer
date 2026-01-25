@@ -1,0 +1,13 @@
+$grp Vehicle : "{81554826C1B2A2D6}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_Journo.et" {
+ UAZ452_cargo_CIV_Journo1 {
+  coords 8337.777 5.562 10148.964
+  angles 0 -117.696 0
+ }
+ UAZ452_cargo_CIV_Journo2 {
+  coords 8345.029 5.531 10149.936
+  angles 0 -117.247 0
+ }
+}
+GenericEntity : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 8310.626 5.595 10128.289
+}

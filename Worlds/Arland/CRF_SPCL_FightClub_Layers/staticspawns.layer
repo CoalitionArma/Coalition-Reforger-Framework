@@ -1,35 +1,630 @@
+$grp GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
+ {
+  coords 3266.893 2 2896.921
+ }
+ {
+  coords 3260.774 2.004 2888.066
+ }
+}
+$grp GenericEntity : "{080E381B512E1B01}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x15x3.et" {
+ {
+  coords 1130.235 38.485 2816.5
+  angles 90 -180 180
+ }
+ {
+  coords 1119.252 38.474 2813.056
+  angles -90 -84.339 0
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{0E9A4FF62219106F}Prefabs/Rocks/Granite/GraniteCliff_03_Fucus.et" {
+ coords 2287.144 -11.572 3189.936
+}
+SCR_IndestructibleEnvironmentalEntity : "{1200EAC7C79003AF}Prefabs/Rocks/Granite/GraniteRock_03_V2.et" {
+ coords 2259.15 3.655 3219.487
+ angles 0 -153.813 0
+}
+$grp GenericEntity : "{124DC29CA359557C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_USSR_ammo.et" {
+ {
+  coords 1109.605 38 2822.323
+  angles 0 -70.899 0
+ }
+ {
+  coords 1127.972 38 2810.098
+  angles 0 -136.272 0
+ }
+}
+$grp GenericEntity : "{1359D393ED1D1A3F}Prefabs/Props/Garbage/Medical/GarbageMedicalUSSR_01.et" {
+ {
+  coords 1129.142 38 2820.479
+ }
+ {
+  coords 1136.927 38 2883.936
+ }
+}
+GenericEntity : "{1A1CE09F7BCA6650}Prefabs/Props/Wrecks/S105_wreck/S105_wreck_static.et" {
+ coords 1129.396 38.001 2870.218
+ angles 0 -164.674 36.064
+}
+SCR_DestructibleBuildingEntity : "{1A6F379C9755CB88}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_03/FishermanShed_E_03_green.et" {
+ coords 2380.094 0.284 3295.61
+ angles 0 102.287 0
+}
+$grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
+ {
+  coords 3251.855 2.115 2883.969
+  angles 0 -70.398 0
+ }
+ {
+  coords 1142.104 38.475 2851.995
+  angles -9.576 -128.96 1.352
+ }
+}
+GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
+ coords 1134.524 37.681 2835.615
+ angles 0 -5.784 0
+}
+GenericEntity : "{20759E1CA7F808BE}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUS_01.et" {
+ coords 1104.578 38 2812.908
+}
+$grp GenericEntity : "{20D02D188D3E883F}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Camo_wall_high_USSR.et" {
+ {
+  coords 1108.364 38 2851.178
+  angles 0 0 0
+ }
+ {
+  coords 1102.418 38 2861.96
+  angles 0 -38.177 0
+ }
+ {
+  coords 1100.754 38 2859.961
+  angles 0 -63.848 0
+ }
+}
+$grp GenericEntity : "{24F6E5FFFC6FF4DC}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_olive_rusty.et" {
+ {
+  coords 1117.405 38.009 2836.382
+  angles 0 61.672 0
+ }
+ {
+  coords 3262.937 2 2911.518
+ }
+ {
+  coords 1134.829 38.009 2856.186
+  angles 0 -18.244 0
+ }
+ {
+  coords 1182.916 38 2837.815
+  angles 0 18.036 0
+ }
+ {
+  coords 1176.887 37.856 2814.18
+  angles 0 -29.877 0
+ }
+}
+GenericEntity : "{286212B6EFA9C01C}Prefabs/Compositions/Misc/SubCompositions/Garbage/Garbage_Vehicle_03.et" {
+ coords 1121.492 38 2815.53
+ angles 0 -24.233 0
+}
+$grp StaticModelEntity : "{2CF6244D6C76F560}Prefabs/Terrain/Erosion/ErodedEmbankment_01/ErodedEmbankment_01_dirt_straight.et" {
+ {
+  coords 2325.783 4.868 3215.733
+  angles -14.449 -167.178 -0.804
+  scale 1.81
+ }
+ {
+  coords 2324.836 4.351 3228.761
+  angles -14.449 17.507 -0.804
+  scale 1.81
+ }
+ {
+  coords 2312.355 4.351 3230.677
+  angles -14.449 -5.233 -0.804
+  scale 1.81
+ }
+ {
+  coords 2314.046 4.868 3217.404
+  angles -14.449 -177.097 -0.804
+  scale 1.81
+ }
+}
+StaticModelEntity : "{2D4C04BB044B4F5E}Prefabs/Terrain/Erosion/ErodedEmbankment_01/ErodedEmbankment_01_terrainmat_wave.et" {
+ coords 2247.576 3.836 3259.253
+ angles -11.933 -132.057 -0.758
+ scale 3.903
+}
 SCR_DestructibleBuildingEntity : "{33F50E1C918159AB}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01_base.et" {
  coords 2539.762 -0.023 2265.241
  angles 0 94.026 0
+}
+StaticModelEntity : "{344AC61579021D72}Prefabs/Props/Wrecks/ShipWreckMetal_01/ShipWreckMetal_01_Ruin.et" {
+ coords 2397.049 6.6 3191.643
+ angles -5.334 36.166 0
+}
+GenericEntity : "{35E211705F8FED68}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_blue.et" {
+ coords 3273.251 2 2899.553
+ angles 0 82.481 0
+}
+GenericEntity : "{361EEFE7B91BF9E8}Prefabs/Compositions/Misc/SubCompositions/BarrelMetalGroup_01.et" {
+ coords 3261.027 2 2889.283
+ angles 0 43.145 0
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck/T62_wreck.et" {
+ coords 1131.963 38.006 2869.003
+ angles 0 -27.673 0
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Granite/GraniteCliff_01.et" {
+ {
+  coords 2259.533 3.925 3292.938
+  angles -48.524 43.716 162.998
+ }
+ {
+  coords 2328.021 -1.1 3288.893
+  angles -83.066 121.875 -145.761
+ }
+}
+$grp StaticModelEntity : "{41CCD40548A3F72E}Prefabs/Props/Wrecks/ShipWreckMetal_02/ShipWreckMetal_02_Ruin.et" {
+ {
+  coords 2289.656 2.755 3253.79
+  angles -3.611 0 0
+  scale 2.47
+ }
+ {
+  coords 2418.16 3.907 3217.975
+  angles -1.237 21.264 48.394
+ }
+}
+GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
+ coords 3278.958 2 2891.226
+}
+$grp GenericEntity : "{43957C1E3ECCDFE2}Prefabs/Props/Wrecks/ShipWreckWooden_01/ShipWreckWooden_01.et" {
+ {
+  coords 2379.223 -0.239 3275.324
+  angles 3.02 -146.801 4.741
+ }
+ {
+  coords 2405.479 2.076 3257.157
+  angles -0.556 97.31 -103.811
+ }
+ {
+  coords 2468.248 4.025 3257.487
+  angles -3.626 -13.605 -162.667
+ }
+}
+$grp GenericEntity : "{45D056CC11985141}Prefabs/Props/Wrecks/S1203_wreck/S1203_wreck.et" {
+ {
+  coords 1132.71 38 2863.072
+  angles 0 17.296 0
+ }
+ {
+  coords 1107.444 38.941 2883.06
+  angles -4.767 -87.833 98.561
+ }
+ {
+  coords 1161.348 38 2846.875
+  angles 0 -22.213 0
+ }
 }
 SCR_DestructibleBuildingEntity : "{49721D29CCBB820E}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_02/ControlTowerMilitary_E_02.et" {
  coords 2496.971 0.487 2265.866
  angles 0 -79.283 0
 }
+GenericEntity : "{49EB48C211087B41}Prefabs/Props/Wrecks/ShipWreckWooden_01/ShipWreckWooden_Underwater_01.et" {
+ coords 2308.212 -1.9 3308.93
+ angles 0 0 -45.373
+}
+$grp GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck.et" {
+ {
+  coords 1157.597 37.454 2832.59
+  angles -2.784 -69.639 -0.72
+ }
+ {
+  coords 1083.934 37.676 2862.755
+  angles -5.364 151.782 3.614
+ }
+ {
+  coords 1143.637 37.612 2853.203
+  angles -2.784 42.975 -0.72
+ }
+}
+$grp StaticModelEntity : "{528AB2322A646026}Prefabs/Terrain/Erosion/ErodedEmbankment_01/ErodedEmbankment_01_forest_wave.et" {
+ {
+  coords 2287.965 4.226 3242.723
+  angles -20.668 -88.784 3.077
+  scale 3.607
+ }
+ {
+  coords 2291.161 3.827 3247.987
+  angles -16.049 104.743 -4.106
+  scale 3.69
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{533CDABD77C4C43E}Prefabs/Rocks/Granite/GraniteCliff_02.et" {
+ coords 2487.599 -0.577 3217.811
+ angles 88.304 180 -180
+}
+$grp GenericEntity : "{5B17515707F080E0}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Starline.et" {
+ {
+  coords 1144.067 37.797 2882.123
+  angles -2.661 11.835 5.701
+ }
+ {
+  coords 3286.78 1.913 2871.817
+  angles 0 44.23 0
+ }
+ {
+  coords 1081.829 37.843 2895.367
+  angles 0 166.264 0
+ }
+}
+StaticModelEntity : "{5B66620F4D614BE1}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_base.et" {
+ coords 1126.32 0 2880.285
+ angles 0 -47.673 0
+}
+GenericEntity : "{5B91941C0D244457}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Wall_Ladder_US_01.et" {
+ coords 1100.874 38 2854.112
+ angles 0 79.342 0
+}
 GenericEntity : "{6415B7923DE28C1B}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_PSO.et" {
  coords 1463.16 54.091 1165.348
  angles 0 0 80.961
 }
+GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck.et" {
+ coords 1124.188 37.631 2873.527
+}
+StaticModelEntity : "{6EAC75D8EF841198}Prefabs/Structures/Infrastructure/Naval/Sheds/BoatShed_01/Dst/BoatShed_01_Ruin.et" {
+ coords 2337.351 -0.091 3299.47
+ angles -4.97 18.484 -1.659
+}
+GenericEntity : "{6F5A05BE35A35C93}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/Dst/CargoContainer_01_20ft_Ruin_base.et" {
+ coords 3255.823 2.312 2877.164
+}
+StaticModelEntity : "{75F61E9FA5F4ADE6}Prefabs/Terrain/Erosion/ErodedEmbankment_01/ErodedEmbankment_01_terrainmat_turnin.et" {
+ coords 2447.347 5.353 3180.894
+ angles -15.994 -175.208 -1.323
+ scale 2.715
+}
+GenericEntity : "{777C176677786B31}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_blue.et" {
+ coords 1161.187 37.894 2861.552
+ angles -4.799 -21.929 0
+}
+GenericEntity : "{78A930FB0825AAA0}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_long_high_USSR.et" {
+ coords 1100.373 37.901 2857.118
+ angles 0 -99.093 0
+}
+GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
+ coords 1132.804 38.409 2815.083
+ angles 0.735 14.464 -57.116
+}
+$grp GenericEntity : "{7E3F6F5A6BAEC717}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_olive.et" {
+ {
+  coords 1109.044 38 2837.58
+  angles 0 -62.232 0
+ }
+ {
+  coords 1128.705 37.948 2910.983
+  angles 0 -143.532 0
+ }
+ {
+  coords 1133.639 38.029 2904.239
+  angles 0 129.65 0
+ }
+}
+GenericEntity : "{7F29BE4FBFC98392}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wreck.et" {
+ coords 1157.844 38.893 2827.614
+ angles -28.882 21.083 92.065
+}
 StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
  coords 2511.846 147.827 2272.361
+}
+GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck/S105_wreck.et" {
+ coords 1131.86 38 2874.579
+ angles 0 -160.683 0
+}
+GenericEntity : "{8777F96EBE817623}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_base.et" {
+ coords 1112.835 37.833 2860.645
+ angles 0 -14.307 0
+}
+$grp GenericEntity : "{881558ACD5FC31C0}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x2.et" {
+ {
+  coords 1125.815 38 2821.11
+ }
+ {
+  coords 1112.153 38 2816.52
+  angles 0 106.226 0
+ }
+ {
+  coords 1103.271 38 2820.079
+  angles 0 -34.556 0
+ }
+}
+GenericEntity : "{887780D497AADE00}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_Base.et" {
+ coords 3274.073 0.152 2931.193
+ angles -29.766 95.506 -9.344
+}
+GenericEntity : "{88A64A32F78CFB77}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_blue.et" {
+ coords 3293.28 2 2898.948
+ angles 0 -118.369 0
+}
+GenericEntity : "{892D59073561FCA6}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_US_ammo.et" {
+ coords 1110.34 38 2866.936
+ angles 0 -29.901 0
+}
+SCR_DestructibleBuildingEntity : "{8D35B3D72731D649}Prefabs/Structures/Wreck/c130.et" {
+ components {
+  RigidBody "{686E673255488F75}" {
+   ResponseIndex "Normal"
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ coords 1143.655 37.734 2823.296
+ angles 0 -116.314 -6.859
+}
+GenericEntity : "{8F08705D73A7C711}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_red.et" {
+ coords 3279.505 2.065 2911.826
+ angles 1.592 -13.939 -0.154
+}
+GenericEntity : "{8F2945BE755E7694}Prefabs/Props/Wrecks/ShipWreckWooden_01/ShipWreckWooden_01_base.et" {
+ coords 3282.501 -1.677 2921.023
+ angles 5.081 142.038 4.645
+}
+StaticModelEntity : "{929564697C6FBF5D}Prefabs/Terrain/Erosion/ErodedEmbankment_01/ErodedEmbankment_01_terrainmat_straight.et" {
+ coords 2416.495 6.041 3199.501
+ angles -20.147 -160.652 1.097
+ scale 1.74
+}
+GenericEntity : "{92A3009960EBCFDA}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_MG_US_01_M60.et" {
+ coords 1111.838 38.056 2852.128
+ angles 0 0 0
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Granite/GraniteRock_01.et" {
+ {
+  coords 2388.251 -9.793 3260.158
+  scale 2.06
+ }
+ {
+  coords 2381.266 -11.792 3282.461
+  angles 0 17.668 0
+  scale 2.06
+ }
+}
+$grp GenericEntity : "{9A3ADECE49EF8993}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_green.et" {
+ {
+  coords 3267.247 2.054 2883.474
+  angles -0.895 0 0.895
+ }
+ {
+  coords 3248.621 2 2917.37
+  angles 0 -30.545 0
+ }
 }
 GenericEntity : "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" {
  coords 1463.037 54.091 1165.394
  angles 0 0 82.866
 }
+GenericEntity : "{A285421E5231FF5A}Prefabs/Props/Garbage/Generic/GarbageGeneric_01_plentiful.et" {
+ coords 1124.103 38 2814.06
+}
+$grp GenericEntity : "{A46F8469F129E154}Prefabs/Props/Military/CargoContainers/CargoContainer_01_military_base.et" {
+ {
+  coords 1110.289 40.555 2837.265
+  angles 0 -36.418 0
+ }
+ {
+  coords 1096.755 38 2884.562
+  angles 0 37.06 0
+ }
+ {
+  coords 1079.404 37.979 2908.678
+  angles 0 -67.957 0
+ }
+ {
+  coords 1057.892 37.954 2860.494
+  angles 0 37.06 0
+ }
+}
+GenericEntity : "{A52C57FE8549A13E}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_red.et" {
+ coords 3289.487 1.802 2888.446
+}
+$grp SCR_DestructibleBuildingEntity : "{A665817267C8BC2D}Prefabs/Props/Wrecks/ShipWreckMetal_01/ShipWreckMetal_01_base.et" {
+ {
+  coords 3309.647 -0.572 2905.601
+  angles 24.01 -164.507 1.783
+ }
+ {
+  coords 2421.64 -0.508 3300.609
+  angles 11.013 151.426 173.83
+  scale 2.5
+ }
+}
 GenericEntity : "{A7AF84C6C58BA3E8}Prefabs/Weapons/MachineGuns/RPK74/MG_RPK74.et" {
  coords 3407.958 1.172 3210.107
  angles 0 0 88.268
+}
+GenericEntity : "{AB87B392A989CA95}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_US_01.et" {
+ coords 1115.237 38 2857.139
+ angles 0 165 0
+}
+$grp StaticModelEntity : "{B03F9691E961C4CA}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v3.et" {
+ {
+  coords 1148.764 -0.739 2821.669
+  angles -21.808 -28.13 -1.729
+  scale 5.19
+ }
+ {
+  coords 1147.047 -1.15 2827.75
+  angles -21.808 156.841 -1.729
+  scale 5.19
+ }
+}
+GenericEntity : "{B2DCC836439482A9}Prefabs/Props/Garbage/Generic/GarbageGeneric_01_sparse.et" {
+ coords 1130.847 38 2877.208
+}
+GenericEntity : "{B350840088390760}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Stack_01.et" {
+ coords 3257.521 2 2913.981
+ angles 0 71.279 0
+}
+GenericEntity : "{B423187F6C8DEFFD}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Tire_01.et" {
+ coords 3277.264 2 2887.894
+ angles 0 -175.462 0
+}
+GenericEntity : "{B4FFD63EDFCBD850}Prefabs/Compositions/Misc/SubCompositions/CrateStacked_02.et" {
+ coords 1136.289 38 2821.417
+ angles 0 46.713 0
 }
 GenericEntity : "{B5B2CD276A3BDB08}Prefabs/Weapons/MachineGuns/UK59/MG_UK59_4x8.et" {
  coords 633.484 1.372 3492.684
  angles 0 0 -68.966
 }
+$grp SCR_IndestructibleEnvironmentalEntity : "{B6A096447B215355}Prefabs/Rocks/Granite/GraniteCliff_03.et" {
+ {
+  coords 2454.387 -11.577 3196.213
+  angles 0 -20.174 0
+ }
+ {
+  coords 2434.94 -11.577 3174.068
+  angles -17.431 10.319 -121.291
+  scale 2.24
+ }
+ {
+  coords 2373.873 -41.04 3203.34
+  angles -6.894 -64.642 -19.213
+  scale 2.24
+ }
+}
+GenericEntity : "{B898D2A1F45058F6}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUSSR_01.et" {
+ coords 1112.476 38 2818.94
+}
+$grp SCR_DestructibleBuildingEntity : "{B952B23CBCF785AB}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_01/FishermanShed_01_V2.et" {
+ {
+  coords 2457.705 -0.111 3245.917
+  angles 0 -30.987 0
+ }
+ {
+  coords 2446.804 -0.092 3247.856
+  angles 0 31.523 0
+ }
+}
+GenericEntity : "{BB664061CF5E85C4}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Sign_US_01.et" {
+ coords 1109.245 38 2857.945
+ angles 0 -101.536 0
+}
+$grp GenericEntity : "{C1868B74D5A0C96E}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_ammo.et" {
+ {
+  coords 3263.621 2.078 2857.072
+  angles 7.805 -73.432 -3.642
+ }
+ {
+  coords 3237.079 2 2936.482
+ }
+}
+$grp GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_supplies.et" {
+ {
+  coords 3282.123 1.838 2894.397
+  angles 0 -54.45 0
+ }
+ {
+  coords 3281.65 1.882 2879.846
+  angles 0 -69.893 0
+ }
+ {
+  coords 3251.957 4.536 2915.843
+  angles 0 54.929 0
+ }
+ {
+  coords 3250.495 4.565 2917.933
+  angles 0 56.274 0
+ }
+}
+GenericEntity : "{CAE986C2BF5D5859}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_Base.et" {
+ coords 3289.387 2.056 2906.684
+}
+GenericEntity : "{D5062960B7211EB4}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Long.et" {
+ coords 1148.031 38 2868.157
+ angles 0 49.475 0
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{D5CC7A5A32C640A3}Prefabs/Rocks/Granite/GraniteRock_02_V2.et" {
+ {
+  coords 2277.349 -4.418 3318.618
+  scale 1.47
+ }
+ {
+  coords 2360.28 3.704 3166.345
+  scale 1.61
+ }
+ {
+  coords 2371.351 -17.582 3267.573
+  angles 0 -1.697 0
+  scale 2.999
+ }
+}
+GenericEntity : "{DB403F1A9E7B0B4F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_red.et" {
+ coords 3275.523 4.562 2896.319
+ angles 0.411 -58.723 0.755
+}
+GenericEntity : "{DDBB14C899ED7B9A}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_US_02.et" {
+ coords 1107.659 38 2864.188
+ angles 0 -16.001 0
+}
+GenericEntity : "{DE658AC78172D02E}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Short.et" {
+ coords 1144.837 37.986 2873.192
+ angles 0 69.975 0
+}
+GenericEntity : "{E08F31F0EC81F2AD}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_US_05.et" {
+ coords 1117.45 38 2863.395
+ angles 0 77.204 0
+}
+StaticModelEntity : "{E2971F2C529A6F83}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_5m_M1.et" {
+ coords 1127.502 0 2888.376
+ angles 0 64.37 0
+}
+$grp GenericEntity : "{E4416C4C6938BEEE}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x1.et" {
+ {
+  coords 1125.39 38 2816.266
+ }
+ {
+  coords 1110.882 38 2815.949
+  angles 0 29.885 0
+ }
+ {
+  coords 1104.617 38 2819.718
+  angles 0 -110.897 0
+ }
+}
 GenericEntity : "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et" {
  coords 3562.682 69.154 2644.5
  angles 0 0 -52.771
 }
+GenericEntity : "{E98385D7F126474C}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_02_static.et" {
+ coords 1152.286 37.084 2879.845
+ angles 1.853 -42.506 -1.698
+}
+GenericEntity : "{EF2962FC3EFD9C17}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_grey.et" {
+ coords 3252.822 2 2919.438
+ angles 0 -24.637 0
+}
+GenericEntity : "{F29A05EBA7063E7C}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_plastic.et" {
+ coords 1104.594 37.924 2856.044
+ angles 0 -67.186 0
+}
+GenericEntity : "{F4123D86F860B5E1}Prefabs/Props/Garbage/Medical/GarbageMedicalUSSR_02.et" {
+ coords 1136.17 38 2824.035
+}
 SCR_DestructibleBuildingEntity : "{F6FC9703E7F4FDCA}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01.et" {
  coords 2528.904 1.027 2283.89
  angles 0 165.286 0
+}
+$grp GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
+ {
+  coords 1086.488 38 2883.29
+  angles 0 -72.731 0
+ }
+ {
+  coords 1096.67 37.779 2904.655
+  angles 0 43.37 0
+ }
+ {
+  coords 1062.121 37.911 2906.044
+  angles 0 -102.754 0
+ }
 }

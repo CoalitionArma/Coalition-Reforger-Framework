@@ -1,0 +1,40 @@
+$grp SCR_DestructibleBuildingEntity : "{4DD5F16D919A99F4}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Base.et" {
+ {
+  coords 8961.833 -0.001 9853.716
+  angles 6.062 128.729 -2.563
+ }
+ {
+  coords 8909.391 -0 9893.316
+  angles 0 -34 0
+ }
+ {
+  coords 8942.065 -0 9899.078
+  angles 7.121 0.168 1.353
+ }
+ {
+  coords 8919.486 0 9838.16
+  angles 2.495 -165.953 1.085
+ }
+}
+SCR_DestructibleBuildingEntity : "{E7B389CB00F53EB8}PrefabsEditable/Auto/Structures/Infrastructure/Bridges/E_ConcreteBridge_01_Narrow_PillarBig.et" {
+ coords 8927.643 3.446 9884.665
+ angles 0 72.446 0
+ {
+  $grp SCR_DestructibleBuildingEntity : "{E7B389CB00F53EB8}PrefabsEditable/Auto/Structures/Infrastructure/Bridges/E_ConcreteBridge_01_Narrow_PillarBig.et" {
+   {
+    coords 12.999 -0.058 -0.115
+   }
+   {
+    coords 25.925 -0.043 -0.203
+   }
+   {
+    coords 0.018 -0.09 0.022
+    angles 0 -179.551 10.445
+   }
+   {
+    coords 38.873 -0.028 -0.233
+    angles 0 0 20.286
+   }
+  }
+ }
+}

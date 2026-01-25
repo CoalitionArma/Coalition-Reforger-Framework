@@ -1,12 +1,6 @@
-Vehicle : "{E1D118037BE446D3}Prefabs/Vehicles/Helicopters/AH64D/AH64D_AGM114L_X4.et" {
+Vehicle {
  ID "57DA6675519A417B"
  components {
-  AH64D_AGM114X4_AmmoDisplayComponent "{64F3533D1FB7CEA1}" {
-   Enabled 0
-  }
-  AH64D_AGM65X4_AmmoDisplayComponent "{65F02D15B20E41B4}" {
-   m_LayoutPath "{31372613D17883EF}UI/Layouts/MFD/Ammo_AGM65_X4.layout"
-  }
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "AH-64D (LAU117)"
@@ -24,10 +18,6 @@ Vehicle : "{E1D118037BE446D3}Prefabs/Vehicles/Helicopters/AH64D/AH64D_AGM114L_X4
    Enabled 0
   }
   ActionsManagerComponent "{C97BE5489221AE18}" {
-   additionalActions {
-    AH64D_AGM65X4_AmmoDisplayPowerAction "{63276C68E25FD19E}" {
-    }
-   }
   }
  }
 }

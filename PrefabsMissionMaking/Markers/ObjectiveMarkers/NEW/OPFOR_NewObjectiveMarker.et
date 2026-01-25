@@ -1,4 +1,4 @@
-CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsEditable/Markers/ObjectiveMarkers/BLUFORObjectiveMarker.et" {
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
  ID "612517386F2BD406"
  coords 0 0 0
  m_aVisibleForFactions {

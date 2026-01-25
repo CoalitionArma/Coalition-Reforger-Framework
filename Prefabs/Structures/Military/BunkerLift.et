@@ -1,6 +1,6 @@
 StaticModelEntity : "{E27FB14C3073BF80}Prefabs/Compositions/Misc/CustomEntities/DestructionEntities/Sandbag_01_bunker_plastic_CompositionDestruction.et" {
  ID "5A532DC567D4E321"
- angleY -98.253
+ angles 0 -98.253 0
  {
   GenericEntity {
    ID "5A532DCF3ECE3109"
@@ -18,7 +18,7 @@ StaticModelEntity : "{E27FB14C3073BF80}Prefabs/Compositions/Misc/CustomEntities/
      }
     }
     coords -0.127 1.4 1.069
-    angleY -1.948
+    angles 0 -1.948 0
    }
    {
     ID "64437B212110FE94"
@@ -27,7 +27,7 @@ StaticModelEntity : "{E27FB14C3073BF80}Prefabs/Compositions/Misc/CustomEntities/
      }
     }
     coords -0.167 1.4 2.641
-    angleY -1.72
+    angles 0 -1.72 0
    }
   }
  }

@@ -1,4 +1,4 @@
-CRF_MissionMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+CRF_MissionMarker {
  ID "612517386F2BD406"
  coords 0 0 0
  m_MarkerColor 0 0 0 1

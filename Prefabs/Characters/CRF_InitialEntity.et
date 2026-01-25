@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
+SCR_ChimeraCharacter : "{D7EB93B0550FD158}Prefabs/Characters/Core/CRF_Character_Base.et" {
  ID "520EC961A090B1EE"
  components {
   CharacterSoundComponent "{520EA1D2F659CF84}" {
@@ -28,19 +28,19 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    Materials {
     MaterialAssignClass "{65AB3C7F849E4B47}" {
      SourceMaterial "Basebody_01_Male_Arms"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{65AB3C7F849E4BA2}" {
      SourceMaterial "Basebody_01_Male_Arms_wound"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{65AB3C7F849E4BAB}" {
      SourceMaterial "Basebody_01_Male_Body"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{65AB3C7F849E4B96}" {
      SourceMaterial "Basebody_01_Male_Body_wound"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
    PixelSizeScale 0

@@ -2,7 +2,7 @@ MatPBRMulti {
  DielectricReflectance 0.02
  GlobalMCRMap "{26979FABA844179E}Assets/Vehicles/Wheeled/S105/Data/S105Body_MCR.edds"
  OverlayWhitePower 0.2
- MaskMap "{9E1079A780993226}Assets/_SharedData/VehicleParts/vehicle_mask.edds"
+ MaskMap "{9E1079A780993226}Assets/_SharedData/VehicleParts/VehiclesCommon/vehicle_mask.edds"
  MaskRedScale 1
  VFXMap "{3D9987871F05E9AC}Assets/Vehicles/Wheeled/S105/Data/S105Body_VFX.edds"
  UseGlobAOOnly 1

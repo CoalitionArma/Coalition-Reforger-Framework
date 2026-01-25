@@ -67,7 +67,7 @@ HorizontalLayoutWidgetClass {
       OffsetBottom -107.504
      }
      Color 0 0.584 1 1
-     Texture "{7294DBB54D4BFED6}UI/data/SFC_Rank.edds"
+     Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
      Size 128 128
      "Transition width" 1
      Progress 0.41

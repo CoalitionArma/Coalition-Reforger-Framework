@@ -1,0 +1,68 @@
+GameEntity : "{B89432A8B5F489E5}Prefabs/Characters/Core/Uniform_Base.et" {
+ ID "5104869D194C6243"
+ components {
+  MeshObject "{5104869D194C6262}" {
+   Object "{4E1D59C21015F300}Assets/Characters/Uniforms/Pants_M88/Pants_M88_item.xob"
+   PixelSizeScale 3
+  }
+  SCR_ItemOutfitFactionComponent "{66684767E603ED80}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{66684767E603ED8C}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{66684767E603ED92}" {
+      m_AffiliatedFactionKey "USSR"
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    ItemDisplayName UIInfo "{5222CB0109A04AB2}" {
+     Name "#AR-Uniform_M88_Trousers_Name"
+     Description "#AR-Uniform_M88_Trousers_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.6
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 2000
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+      CameraOffset 0 0.05 0
+     }
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_LOADOUT_STORAGE
+   }
+   Priority 2
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1
+   MaxCumulativeVolume 1600
+   MaxItemSize 10 10 10
+   m_fMaxWeight 5
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   AreaType LoadoutPantsArea "{66684767E603EDE3}" {
+   }
+   WornModel "{1094DDE5E932B418}Assets/Characters/Uniforms/Pants_M88/Pants_M88_01.xob"
+   WornMaterialsOverride {
+    "{8E9213A730F16286}Assets/Characters/Uniforms/Pants_M88/Data/Pants_M88_01_police.emat"
+   }
+   ItemModel "{4E1D59C21015F300}Assets/Characters/Uniforms/Pants_M88/Pants_M88_item.xob"
+   ItemMaterialsOverride {
+    "{8E9213A730F16286}Assets/Characters/Uniforms/Pants_M88/Data/Pants_M88_01_police.emat"
+   }
+   SoundInt 520
+  }
+  ActionsManagerComponent "{5104869D194C6245}" {
+   ActionContexts {
+    UserActionContext "{5104869D194C624D}" {
+     Position PointInfo "{5104869D194C6273}" {
+      Offset 0 0.05 0
+     }
+    }
+   }
+  }
+ }
+ coords 1214.84 39.081 2840.303
+}

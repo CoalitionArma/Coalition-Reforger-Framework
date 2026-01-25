@@ -28,6 +28,26 @@ GenericEntity : "{E5155BCAC2B2C772}Prefabs/Weapons/Rifles/L1A1_SLR/Rifle_L1A1_SL
       Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
      }
     }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
     AttachmentSlotComponent "{6173377B981F5766}" {
      AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
       Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
@@ -67,5 +87,5 @@ GenericEntity : "{E5155BCAC2B2C772}Prefabs/Weapons/Rifles/L1A1_SLR/Rifle_L1A1_SL
   }
  }
  coords 0 -0.012 0.01
- angleY 0
+ angles 0 0 0
 }

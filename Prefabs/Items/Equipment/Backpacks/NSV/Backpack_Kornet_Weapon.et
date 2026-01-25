@@ -28,9 +28,6 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
    MaxItemSize 20 20 20
    m_fMaxWeight 0
   }
-  StaticWeaponBagComponent "{64626B7604A4585F}" {
-   m_rWeaponPrefab "{E8F0DA0C05A8FED4}Prefabs/Weapons/Tripods/Kornet/Tripod_Kornet.et"
-  }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    WornModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"
    ItemModel "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
@@ -47,18 +44,6 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
      Position PointInfo "{511E9C6ADE70F78D}" {
       Offset 0 0.1281 0.0436
      }
-    }
-   }
-   additionalActions {
-    AssembleWeaponAction "{64626B7604A458B9}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{64626B7604A458BB}" {
-      Name "Assemble Weapon"
-     }
-     Duration 5
-     "Sort Priority" 3
     }
    }
   }

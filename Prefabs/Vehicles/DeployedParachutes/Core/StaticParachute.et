@@ -148,6 +148,7 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
    "Parent Node From Parent Entity" 0
   }
  }
+ coords 0.197 -0.008 0.001
  m_PitchTorque 1
  m_RollTorque 1
  m_MaxFallSpeed 10

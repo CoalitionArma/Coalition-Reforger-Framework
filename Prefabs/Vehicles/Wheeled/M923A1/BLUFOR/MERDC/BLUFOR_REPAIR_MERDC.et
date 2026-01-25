@@ -18,7 +18,7 @@ Vehicle : "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et" {
     m_aAuthoredLabels +{
     }
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_aOccupantFillCompartmentTypes +{
     }

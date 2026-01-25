@@ -15,7 +15,7 @@ Vehicle : "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
     m_Image "{34DD9D596A1064E1}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_engineer_MERDC.edds"
     m_sFaction "BLUFOR"
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_aOccupantFillCompartmentTypes +{
     }

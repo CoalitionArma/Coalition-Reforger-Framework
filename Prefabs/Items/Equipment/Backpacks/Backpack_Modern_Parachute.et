@@ -5,7 +5,7 @@ GenericEntity : "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Ko
    Object "{AD81AC53FCFA8AE2}Assets/Items/Equipment/Backpacks/Wartech_BB102_Backpack/BB102_inf.xob"
   }
   ParachuteItemComponent "{66EE7CA7ABCE93EC}" {
-   m_ParachutePrefab "{A57B956E947FBEE6}Prefabs/DeployedParachutes/Core/StaticParachute.et"
+   m_ParachutePrefab "{A57B956E947FBEE6}Prefabs/Vehicles/DeployedParachutes/Core/StaticParachute.et"
   }
   SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
    Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {

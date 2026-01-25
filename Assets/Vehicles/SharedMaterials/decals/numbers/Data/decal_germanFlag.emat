@@ -6,8 +6,8 @@ MatPBRBasic {
  CrossFade 0
  AllowUserAlphaBias 1
  MetalnessScale 0
- BCRMap "{45E04F775812C4C5}UI/GermanFlag.edds"
- OpacityMap "{E21D6A4BC34E5F54}UI/GermanFlag_Opacity.edds"
+ BCRMap "{45E04F775812C4C5}UI/Images/Clothing/Patches/GermanFlag.edds"
+ OpacityMap "{E21D6A4BC34E5F54}UI/Images/Clothing/Patches/GermanFlag_Opacity.edds"
  Refs {
   "OpacityMap"
   "RHS_MaterialController.m_iOpacityMapID"

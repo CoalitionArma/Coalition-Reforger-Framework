@@ -25,11 +25,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
    }
   }
-  AUS_MultiFunctionDisplay "{64A417D07634ACC2}" {
-   m_LayoutPath "{A99AC55795FB901F}UI/layouts/AUS_MultiFunctionDisplay_Unarmed.layout"
-   m_OnMaterialPath "{A05B2E9E9D56FB3A}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/Data/MFD_3_PIPMaterial.emat"
-   m_OffMaterialPath "{6B623C778223D5AD}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/Data/MFD_3_Off.emat"
-  }
   BaseLightManagerComponent "{51F88B1C7D1C1F11}" {
    LightSlots {
     SCR_LightSlot "{5E32ACA107A21791}" {
@@ -37,7 +32,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Offset 0.5968 0.6976 6.0642
       Angles -79.1559 52.0834 -52.9864
      }
-     LightPrefab "{378505675E535F61}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Landing_Base.et"
+     LightPrefab "{378505675E535F62}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Landing_Base.et"
      ParentSurface "Landing_Light_01"
     }
     SCR_LightSlot "{5E32ACA104651DD1}" {
@@ -45,14 +40,14 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Offset -0.6158 0.6849 6.0632
       Angles -79.7412 -49.436 48.9793
      }
-     LightPrefab "{545DF5DD32109488}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Searchlight_Base.et"
+     LightPrefab "{545DF5DD32109489}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Searchlight_Base.et"
      ParentSurface "Landing_Light_02"
     }
     SCR_LightSlot "{5E3EDDEBCBCE7D76}" {
      LightPositionInfo EntitySlotInfo d {
       Offset 0 0.445 -2.8958
      }
-     LightPrefab "{784BE91DCD048586}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
+     LightPrefab "{37B6849082DD4D4E}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
      LightShouldTick 1
      LightPhaseTime 3
      ParentSurface "Anticollision_01"
@@ -61,7 +56,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      LightPositionInfo EntitySlotInfo d {
       Offset -0.0454 3.7085 -7.3997
      }
-     LightPrefab "{784BE91DCD048586}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
+     LightPrefab "{37B6849082DD4D4E}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
      LightShouldTick 1
      LightPhaseTime 2
      ParentSurface "Anticollision_02"
@@ -71,7 +66,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Offset -1.5514 0.6413 4.7446
       Angles 0 -90 90
      }
-     LightPrefab "{0A71FB4312EE8498}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Red.et"
+     LightPrefab "{315DFCEAC9B30363}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Red.et"
      ParentSurface "Pos_Light_L01"
     }
     SCR_LightSlot "{5E427CC4927A300B}" {
@@ -80,7 +75,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Angles 0 180 -180
       Enabled 0
      }
-     LightPrefab "{151BE8583E8C4025}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Position_White.et"
+     LightPrefab "{8F8E49D5E961011C}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Position_White.et"
      ParentSurface "Pos_Light_Tail_01"
     }
     SCR_LightSlot "{5E427CC1E135743C}" {
@@ -99,7 +94,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Offset -1.8992 1.4307 -6.4792
       Angles 0 0 0
      }
-     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     LightPrefab "{CFC25A48D93F8254}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
      ParentSurface "Pos_Light_R02"
     }
     SCR_LightSlot "{5E427CC420178A0E}" {
@@ -107,7 +102,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
       Offset 1.5522 0.6402 4.7385
       Angles 0 90 -90
      }
-     LightPrefab "{16CC37949793768F}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Green.et"
+     LightPrefab "{ACD1E78874E5C737}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Green.et"
      ParentSurface "Pos_Light_L02"
     }
     SCR_LightSlot "{5E427CC405410FE0}" {
@@ -144,7 +139,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      LightPositionInfo EntitySlotInfo s {
       Offset 1.9004 1.4307 -6.4792
      }
-     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     LightPrefab "{CFC25A48D93F8254}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
      ParentSurface "Pos_Light_R02"
     }
     SCR_LightSlot "{64A417D07634AC91}" {
@@ -153,7 +148,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      LightPositionInfo EntitySlotInfo s {
       Offset 0.0002 1.6127 -3.9639
      }
-     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     LightPrefab "{CFC25A48D93F8254}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
      ParentSurface "Pos_Light_R02"
     }
     SCR_LightSlot "{64A417D07634AC92}" {
@@ -162,7 +157,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      LightPositionInfo EntitySlotInfo s {
       Offset 0.0002 2.0966 -1.1455
      }
-     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     LightPrefab "{CFC25A48D93F8254}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
      ParentSurface "Pos_Light_R02"
     }
    }
@@ -175,7 +170,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
     EmissiveLightSurfaceSlot Landing_Light_02 {
      Prefab "{8BC6CAE0C4EEB531}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_landinglight_02.et"
-     LightType 1024
+     LightType 0x400 0x200
      ConfigurationsOverride {
       SurfaceLightConfigItem "{5E6B5A9478833FC0}" {
        ForLightType 1024
@@ -206,7 +201,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
     EmissiveLightSurfaceSlot Anticollision_02 {
      Prefab "{2F9C6EA678D07DA0}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_anticollision_Tail.et"
-     LightType 256
+     LightType 0x100 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{64A417D07634ACB1}" {
       }
@@ -261,44 +256,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
    }
   }
-  BaseVehicleNodeComponent "{57DA667544C3090A}" {
-   components {
-    SCR_HelicopterControllerComponent "{5CB0B40B1BD943AB}" {
-     AirIntakes {
-      PointInfo "{5E15188E34C0B8D3}" {
-       PivotID "v_engine_intake_l"
-       Offset 0 0 0
-      }
-      PointInfo "{64A417D07634AC55}" {
-       PivotID "v_engine_intake_r"
-      }
-     }
-    }
-    BaseHUDComponent "{50F09A38B4352300}" {
-     InfoDisplays {
-      SCR_InfoDisplay "{5E16CDD43EBA9D74}" {
-       InfoDisplays {
-        SCR_AnalogGauge "{5E12DE8116DE69BF}" {
-         m_eShow 6
-        }
-        SCR_AnalogGauge360 "{5E12DE8115FE048B}" {
-         m_eShow 6
-        }
-        SCR_AnalogGaugeNonLinear "{5E12DE8113984306}" {
-         m_eShow 6
-        }
-        SCR_AnalogGauge "{5E12DE8111E23FB2}" {
-         m_eShow 6
-        }
-        SCR_AnalogGaugeMultiSignal "{5E12DE80EF903498}" {
-         m_eShow 6
-        }
-       }
-      }
-     }
-    }
-   }
-  }
   MeshObject "{51DAA09FEFBFC0E7}" {
    Object "{CBB2918B56DB040E}Assets/Vehicles/Helicopters/AUS_MH60/AUS_MH60_Base.xob"
   }
@@ -313,7 +270,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
   SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
    DoorInfoList {
     CompartmentDoorInfo "{60F8D2B583BD6505}" {
-     Coverage 0.15
      CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
       ParentContextList {
        "door_r01_int"
@@ -330,7 +286,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      GetInTeleport 1
     }
     CompartmentDoorInfo "{60F8D2B58CA24A75}" {
-     Coverage 0.15
      CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
       ParentContextList {
        "door_l01_int"
@@ -348,7 +303,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      GetInAligningTeleport 1
     }
     CompartmentDoorInfo "{60F8D2B4A57BB87E}" {
-     Coverage 0.2
      OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
       ParentContextList {
        "door_l03" "door_l03_int"
@@ -377,7 +331,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      FakeDoor 0
     }
     CompartmentDoorInfo "{60F8D2B4B6C9A956}" {
-     Coverage 0.2
      OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
       ParentContextList {
        "door_r03" "door_r03_int"
@@ -534,7 +487,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
    MultiSlots {
     MultiSlotConfiguration "{60F686523ED8885E}" {
      SlotTemplate InventoryStorageSlot MGammo {
-      Prefab "{86994F47CFBD3289}Prefabs/Weapons/Magazines/Box_762x51_M134_2000rnd_2Ball_1Tracer.et"
+      Prefab "{86994F47CFBD3289}Prefabs/Weapons/Magazines/AUS_WCS_Box_762x51_M134_2000rnd_APIT.et"
      }
      NumSlots 0
     }
@@ -663,6 +616,44 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
    }
   }
+  BaseVehicleNodeComponent "{57DA667544C3090A}" {
+   components {
+    BaseHUDComponent "{50F09A38B4352300}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{5E16CDD43EBA9D74}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{5E12DE8116DE69BF}" {
+         m_eShow 6
+        }
+        SCR_AnalogGauge360 "{5E12DE8115FE048B}" {
+         m_eShow 6
+        }
+        SCR_AnalogGaugeNonLinear "{5E12DE8113984306}" {
+         m_eShow 6
+        }
+        SCR_AnalogGauge "{5E12DE8111E23FB2}" {
+         m_eShow 6
+        }
+        SCR_AnalogGaugeMultiSignal "{5E12DE80EF903498}" {
+         m_eShow 6
+        }
+       }
+      }
+     }
+    }
+    SCR_HelicopterControllerComponent "{5CB0B40B1BD943AB}" {
+     AirIntakes {
+      PointInfo "{5E15188E34C0B8D3}" {
+       PivotID "v_engine_intake_l"
+       Offset 0 0 0
+      }
+      PointInfo "{64A417D07634AC55}" {
+       PivotID "v_engine_intake_r"
+      }
+     }
+    }
+   }
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     EntitySlotInfo ShadowAO {
@@ -747,11 +738,11 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     }
     RegisteringComponentSlotInfo Glass_CargoDoor_FrontLeft {
      Enabled 0
-     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Left.et"
+     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoorLeft1.et"
     }
     RegisteringComponentSlotInfo Glass_CargoDoor_FrontRight {
      Enabled 0
-     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Right.et"
+     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoorRight1.et"
     }
     RegisteringComponentSlotInfo Glass_CargoDoor_RearLeft {
      Enabled 0
@@ -809,14 +800,14 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      Offset 0 0 0.0589
      Angles 0 -90 0
      ChildPivotID "w_left_minigun_slot"
-     Prefab "{A2A1B4001EDCA44C}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_left.et"
+     Prefab "{A2A1B4001EDCA44D}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_left.et"
      DeactivatePhysicsOnAtaching 1
     }
     RegisteringComponentSlotInfo GunnerRight {
      PivotID "v_right_minigun_slot"
      Angles 0 90 0
      ChildPivotID "w_right_minigun_slot"
-     Prefab "{198E64980C247B89}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_right.et"
+     Prefab "{198E64980C247B8A}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_right.et"
     }
     RegisteringComponentSlotInfo Windscreen {
      PivotID "Scene_Root"
@@ -864,7 +855,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     RegisteringComponentSlotInfo Cargo_Left {
      PivotID "v_cargo_door_left"
      Offset 1.4081 -1.5352 -1.6135
-     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Left.et"
+     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoorLeft1.et"
      InheritParentSkeleton 1
      RegisterActions 1
      RegisterDamage 1
@@ -872,7 +863,7 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
     RegisteringComponentSlotInfo Cargo_Right {
      PivotID "v_cargo_door_right"
      Offset -1.4081 -1.5352 -1.6135
-     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Right.et"
+     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoorRight1.et"
      InheritParentSkeleton 1
      RegisterActions 1
      RegisterDamage 1
@@ -1296,16 +1287,6 @@ Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
      }
      Radius 0.05
      Height 0
-    }
-   }
-   additionalActions {
-    AUS_MFD2_Power "{64A417D07634A400}" {
-     ParentContextList {
-      "mfd3_pilot" "mfd3_copilot"
-     }
-     UIInfo SCR_ActionContextUIInfo "{64A417D07634A407}" {
-     }
-     ActionTitle "use"
     }
    }
    AllowCrossHierarchy 1

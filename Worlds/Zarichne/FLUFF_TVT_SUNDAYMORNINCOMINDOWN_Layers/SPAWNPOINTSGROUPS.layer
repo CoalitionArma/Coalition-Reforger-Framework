@@ -1,0 +1,137 @@
+$grp GenericEntity : "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPointsGroups/InitalGroupSpawn.et" {
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Lead"
+   }
+  }
+  coords 1362.869 20.656 2428.845
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 1"
+   }
+  }
+  coords 1468.883 20.656 2502.25
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 2"
+   }
+  }
+  coords 1294.206 20.656 2287.089
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 3"
+   }
+  }
+  coords 1362.966 20.656 2297.242
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 4"
+   }
+  }
+  coords 1423.418 20.531 2283.549
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 5"
+   }
+  }
+  coords 1436.649 20.656 2206.333
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 6"
+   }
+  }
+  coords 1251.628 20.656 2469.515
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 7"
+   }
+  }
+  coords 1351.602 20.656 2366.569
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 8"
+   }
+  }
+  coords 1198.071 20.656 2378.896
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 9"
+   }
+  }
+  coords 1300.281 20.656 2501.228
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 10"
+   }
+  }
+  coords 1554.967 20.719 2362.4
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 11"
+   }
+  }
+  coords 1556.058 20.469 2271.86
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 12"
+   }
+  }
+  coords 1324.309 20.656 2571.588
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 13"
+   }
+  }
+  coords 1424.274 20.589 2353.958
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sSpawnPointFaction "INDFOR"
+    m_sCallsignOfGroupToSpawn "Rebel Group 14"
+   }
+  }
+  coords 1534.583 19.058 2579.278
+ }
+}

@@ -10,10 +10,10 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     m_Image "{51E748C34660D11E}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_repair.edds"
     m_sFaction "BLUFOR"
     m_aAuthoredLabels + {
-     39 280 210 291
+     TRAIT_REPAIRING TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE TRAIT_VEHICLE_REARMING
     }
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {

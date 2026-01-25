@@ -23,10 +23,10 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     m_Image "{ADF5342179CB2029}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_command.edds"
     m_sFaction "BLUFOR"
     m_aAuthoredLabels + {
-     35 280 210
+     TRAIT_RADIO TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
@@ -56,7 +56,7 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     }
     RegisteringComponentSlotInfo Radio {
      MergePhysics 1
-     Prefab "{DCE16D92C350D64F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_combox.et"
+     Prefab "{DCE16D92C350D64F}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_combox.et"
      RegisterActions 1
      RegisterDamage 1
      RegisterCompartments 1

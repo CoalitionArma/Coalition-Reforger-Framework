@@ -1,0 +1,67 @@
+MatPBRMulti {
+ GlobalMCRMap "{B89E579C92EA1752}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_MCR.edds"
+ OverlayWhitePower 0.077
+ MaskMap "{F627E46C97763EEF}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_GLOBAL_MASK.edds"
+ MaskGreenScale 1
+ VFXMap "{0C5F63376507647E}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_VFX.edds"
+ GlobalNMOMap "{7C2D669F3963D512}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_NMO.edds"
+ GlobalNMOUVTransform MatUVTransform "{5A673397D65E8962}" {
+ }
+ UVSrcGlobNormal "UV set 2"
+ MudMetalness 0
+ DirtOpacity 1.104
+ DirtLayerSharpness 0.192
+ DirtColor 0.022 0.018 0.013 1
+ DirtRoughness 1
+ DirtBCRMap "{366028E90066FC57}Assets/_SharedData/Dirt/ST_Dirt_Sand_BCR.edds"
+ DirtMaskMap "{6BF099C52F07E579}Assets/_SharedData/DetailMask/ST_Rock_Grunge_01_Mask1.edds"
+ DirtUVTransform MatUVTransform "{5A429864DC8D0303}" {
+  TilingU 30
+  TilingV 30
+  OffsetU -0.221
+  Rotation 42.894
+ }
+ Enabled_4 1
+ Color_4 0.227 0.227 0.227 1
+ BCR_4 "{884C38B4DD0DD84A}Assets/_SharedData/Metal/ST_Metal_Worn_01_BCR.edds"
+ NMO_4 "{B0948326047A8AD4}Assets/_SharedData/Metal/ST_Metal_Worn_01_NMO.edds"
+ MaskSharpness_4 1.574
+ MaskOffset_4 0.002
+ Mask_4 "{0DC0CF2664DE6DE5}Assets/_SharedData/DetailMask/ST_Scratch_01_Mask1.edds"
+ UVTransform_4 MatUVTransform "{5A3CD8AFBE6E5CB9}" {
+  TilingU 30
+  TilingV 30
+ }
+ Enabled_3 1
+ Color_3 0.065 0.055 0.026 1
+ BCR_3 "{EE0847E3FCCEFBDA}Assets/_SharedData/Metal/ST_Metal_Peel_01_BCR.edds"
+ NMO_3 "{0DFFD3095DD0BFF7}Assets/_SharedData/Metal/ST_Paint_OldMachine_01_NMO.edds"
+ MaskSharpness_3 0.907
+ Mask_3 "{AF3EED70E19D46AB}Assets/_SharedData/DetailMask/ST_Scratches_02_MASK1.edds"
+ MaskUVScale_3 3
+ UVTransform_3 MatUVTransform "{5A3CD8AF05E4DF4F}" {
+  TilingU 20
+  TilingV 20
+  Rotation 79.412
+ }
+ Roughness_3 1.16
+ Metalness_3 0
+ Enabled_2 1
+ Color_2 0.02 0.02 0.02 1
+ BCR_2 "{BB440784A103CB06}Assets/_SharedData/Metal/ST_MetalPaint_Coated_1m_BCR.edds"
+ NMO_2 "{839CBC1678749998}Assets/_SharedData/Metal/ST_MetalPaint_Coated_1m_NMO.edds"
+ UVTransform_2 MatUVTransform "{5A3E704D3C7320DB}" {
+  TilingU 30
+  TilingV 30
+ }
+ Metalness_2 0
+ Color_1 0.992 0.008 0.008 1
+ BCR_1 "{1837E633B1A92A98}Assets/_SharedData/Metal/ST_MetalPaint_Coated_02_1m_BCR.edds"
+ NMO_1 "{20EF5DA168DE7806}Assets/_SharedData/Metal/ST_MetalPaint_Coated_02_1m_NMO.edds"
+ UVTransform_1 MatUVTransform "{5A3CD8AF72042003}" {
+  TilingU 30
+  TilingV 30
+  Rotation 92.647
+ }
+ Metalness_1 0
+}

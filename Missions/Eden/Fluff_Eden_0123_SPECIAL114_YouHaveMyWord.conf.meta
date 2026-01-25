@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B427382FAF9058AE}Missions/Eden/Fluff_Eden_0123_SPECIAL114_YouHaveMyWord.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

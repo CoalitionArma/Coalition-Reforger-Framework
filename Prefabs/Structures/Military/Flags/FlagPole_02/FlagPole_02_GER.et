@@ -5,7 +5,7 @@ GenericEntity : "{FCE3FA547AA13ECC}Prefabs/Structures/Military/Flags/FlagPole_02
    ResponseIndex "TinyDestructible"
   }
   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
-   m_sDefaultMaterial "{6AB201474F6B1B43}Assets/Props/Fabric/Flags/Data/Flag_1_2_GER.emat"
+   m_sDefaultMaterial "{6AB201474F6B1B43}Assets/Materials/Flags/Factions/Flag_GER.emat"
   }
   SCR_UniversalInventoryStorageComponent "{673F00A9CB2D37AA}" {
    Attributes SCR_ItemAttributeCollection "{673F00A9CB2D37E2}" {

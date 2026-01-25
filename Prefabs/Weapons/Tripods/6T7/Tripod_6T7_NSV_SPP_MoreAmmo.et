@@ -83,6 +83,46 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
   }
   SCR_PreviewEntityComponent "{5ECC91C02782BF7F}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_aEntries {
+    SCR_BasePreviewEntry "{62D2660385953997}" {
+     m_iParentID -1
+     m_Mesh "{13AFBB0D97F4666E}Assets/Weapons/Tripods/6T7/Tripod_6T7.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{62D2660385953991}" {
+     m_iParentID 0
+     m_Mesh "{1C372CC3C2897372}Assets/Weapons/HeavyWeapons/NSV/NSV_body.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID "slot_gun"
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{62D2660385953990}" {
+     m_iParentID 1
+     m_Mesh "{9D5EE41AF59F1FD9}Assets/Weapons/Attachments/Mounts/Dovetail_NSV/Dovetail_NSV.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID "hw_root"
+     m_vPosition -0.027 0.1 -0.046
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{62D2660385953993}" {
+     m_iParentID 2
+     m_Mesh "{7516F3AE4D768FD1}Assets/Weapons/Attachments/Optics/SPP/Scope_SPP.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID "hw_root"
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{5ECC91C02782BF7F}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_aEntries {
     SCR_BasePreviewEntry "{62D26603859539E1}" {
      m_iParentID -1
      m_Mesh "{13AFBB0D97F4666E}Assets/Weapons/Tripods/6T7/Tripod_6T7.xob"
@@ -123,7 +163,7 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
   }
   SCR_PreviewEntityComponent "{5ECC91C02782BF7F}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_aEntries {
-    SCR_BasePreviewEntry "{62D2660385953997}" {
+    SCR_BasePreviewEntry "{62D26603859539E1}" {
      m_iParentID -1
      m_Mesh "{13AFBB0D97F4666E}Assets/Weapons/Tripods/6T7/Tripod_6T7.xob"
      m_Flags EDITABLE
@@ -132,7 +172,7 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{62D2660385953991}" {
+    SCR_BasePreviewEntry "{62D26603859539F0}" {
      m_iParentID 0
      m_Mesh "{1C372CC3C2897372}Assets/Weapons/HeavyWeapons/NSV/NSV_body.xob"
      m_Flags 0
@@ -141,7 +181,7 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{62D2660385953990}" {
+    SCR_BasePreviewEntry "{62D26603859539FE}" {
      m_iParentID 1
      m_Mesh "{9D5EE41AF59F1FD9}Assets/Weapons/Attachments/Mounts/Dovetail_NSV/Dovetail_NSV.xob"
      m_Flags 0
@@ -150,7 +190,7 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
      m_vPosition -0.027 0.1 -0.046
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{62D2660385953993}" {
+    SCR_BasePreviewEntry "{62D2660385953986}" {
      m_iParentID 2
      m_Mesh "{7516F3AE4D768FD1}Assets/Weapons/Attachments/Optics/SPP/Scope_SPP.xob"
      m_Flags 0
@@ -321,46 +361,6 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
     }
    }
   }
-  SCR_PreviewEntityComponent "{5ECC91C02782BF7F}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
-   m_aEntries {
-    SCR_BasePreviewEntry "{62D26603859539E1}" {
-     m_iParentID -1
-     m_Mesh "{13AFBB0D97F4666E}Assets/Weapons/Tripods/6T7/Tripod_6T7.xob"
-     m_Flags EDITABLE
-     m_Shape MESH
-     m_iPivotID ""
-     m_vPosition 0 0 0
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{62D26603859539F0}" {
-     m_iParentID 0
-     m_Mesh "{1C372CC3C2897372}Assets/Weapons/HeavyWeapons/NSV/NSV_body.xob"
-     m_Flags 0
-     m_Shape MESH
-     m_iPivotID "slot_gun"
-     m_vPosition 0 0 0
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{62D26603859539FE}" {
-     m_iParentID 1
-     m_Mesh "{9D5EE41AF59F1FD9}Assets/Weapons/Attachments/Mounts/Dovetail_NSV/Dovetail_NSV.xob"
-     m_Flags 0
-     m_Shape MESH
-     m_iPivotID "hw_root"
-     m_vPosition -0.027 0.1 -0.046
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{62D2660385953986}" {
-     m_iParentID 2
-     m_Mesh "{7516F3AE4D768FD1}Assets/Weapons/Attachments/Optics/SPP/Scope_SPP.xob"
-     m_Flags 0
-     m_Shape MESH
-     m_iPivotID "hw_root"
-     m_vPosition 0 0 0
-     m_vAngles 0 0 0
-    }
-   }
-  }
   SCR_UniversalInventoryStorageComponent "{570EACF4F2F94F1B}" {
    InitialStorageSlots {
     InventoryStorageSlot Magazine_4 {
@@ -376,9 +376,6 @@ Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
      Prefab "{843D9B182BCD2765}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_4AP_1APIT.et"
     }
    }
-  }
-  StaticWeaponComponent "{62B2ACD63B00B58D}" {
-   m_rWeaponBagPrefab "{55A4FF54169F395A}Prefabs/Items/Equipment/Backpacks/NSV/Backpack_NSVSPP_Weapon.et"
   }
  }
 }

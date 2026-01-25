@@ -79,6 +79,12 @@ modded class SCR_ChatPanel : SCR_ScriptedWidgetComponent
 	//--------------------------------------------------------------------------
 	override protected void SendMessage()
 	{
+		if (!CRF_Gamemode.GetInstance())
+		{
+			super.SendMessage();	
+			return;
+		}
+
 		SCR_ChatPanelManager mgr = SCR_ChatPanelManager.GetInstance();
 
 		SCR_ChatComponent chatComponent = GetChatComponent();

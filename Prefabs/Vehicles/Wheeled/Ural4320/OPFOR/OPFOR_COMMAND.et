@@ -27,10 +27,10 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     m_Image "{50433C12B67E23CB}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_command.edds"
     m_sFaction "OPFOR"
     m_aAuthoredLabels + {
-     35 280 210
+     TRAIT_RADIO TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels {
-     51871 122 54
+     FACTION_CRF_OPFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {

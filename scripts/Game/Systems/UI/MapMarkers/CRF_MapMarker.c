@@ -18,6 +18,9 @@ modded class SCR_MapMarkersUI
 	{
 		super.OnMapOpen(config);
 		
+		if (!CRF_Gamemode.GetInstance())
+			return;
+		
 		// Update map open status
 		if (!m_bIsMapOpen)
 			m_bIsMapOpen = true;

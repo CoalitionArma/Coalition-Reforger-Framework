@@ -1,0 +1,133 @@
+GenericEntity : "{FD0890CE5C6D26CB}Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_assembled_base.et" {
+ ID "526492DCB8322C65"
+ components {
+  ClothNodeStorageComponent "{6478F237506572A8}" {
+   Attributes SCR_ItemAttributeCollection "{685C5A884FEA4750}" {
+    ItemDisplayName UIInfo "{685C5A884FEA488F}" {
+     Name "#bf-webbing-p58-rifleman-name"
+     Description "#bf-webbing-p58-rifleman-description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{685C5A884FEA4897}" {
+     Weight 2
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 5000
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{685C5A884FEA489B}" {
+      CameraDistanceToItem 4
+      ItemRenderRotation 0 180 0
+      FOV 10
+      PreviewWornModel 1
+     }
+    }
+    m_Size SLOT_2x2
+   }
+   Priority 10
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 3300
+   MaxItemSize 15 15 15
+  }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   Slots {
+    LoadoutSlotInfo Suspenders {
+     Enabled 0
+     Prefab "{FA02D3CA920DBAC5}Prefabs/Characters/Vests/Vest_58Pattern/Vest_P58_suspenders.et"
+     EnableDeflatedOffset 0
+    }
+    LoadoutSlotInfo MagPouch {
+     Offset -0.1927 -0.1468 0.0534
+     Angles 1.7816 -152.3179 -2.5819
+     Prefab "{07F8B5145AA8AA3E}Prefabs/Items/Equipment/Accessories/Pouch_P58_20rnd_L1A1_Left/Pouch_P58_20rnd_L1A1_Left.et"
+     DeflatedOffset -0.1874 -0.115 0.0593
+     DeflatedAngles 2.7333 -150.8089 8.0566
+    }
+    LoadoutSlotInfo MagPouch2 {
+     Offset 0.1924 -0.1395 0.0221
+     Angles -6.1227 -20.8689 -2.3433
+     Prefab "{574923EE5F63D47E}Prefabs/Items/Equipment/Accessories/Pouch_P58_20rnd_L1A1_Right/Pouch_P58_20rnd_L1A1_Right.et"
+     DeflatedOffset 0.1765 -0.1101 0.0565
+     DeflatedAngles -1.8842 -30.6022 9.6754
+    }
+    LoadoutSlotInfo Etool {
+     Offset -0.1567 0.0282 -0.0194
+     Angles 0 -103.7338 0
+     Enabled 0
+     Prefab "{9A1FD25254696618}Prefabs/Items/Equipment/Accessories/Pouch_58Pattern/Pouch_P58_GasMask_base.et"
+     DeflatedOffset -0.203 0.0844 -0.0078
+     DeflatedAngles -3.8701 -83.536 6.5729
+    }
+    LoadoutSlotInfo Buttpack {
+     Offset -0.064 0.046 -0.1111
+     Angles -0.456 -160.1908 2.1123
+     Prefab "{9A1FD25254696618}Prefabs/Items/Equipment/Accessories/Pouch_58Pattern/Pouch_P58_GasMask_base.et"
+     DeflatedOffset 0.0259 0.0803 -0.1842
+     DeflatedAngles -4.2017 175.3266 -0.5433
+    }
+    LoadoutSlotInfo FirstAid {
+     Enabled 0
+    }
+    LoadoutSlotInfo Cateen {
+     Offset 0.1225 0.0047 -0.0839
+     Angles 6.2183 131.1528 0.1873
+     Prefab "{15A7C9D389E17362}Prefabs/Items/Equipment/Canteens/Canteen_P44_01.et"
+     DeflatedOffset 0.1725 0.0717 -0.0873
+     DeflatedAngles -7.6572 121.2786 -0.9453
+    }
+    LoadoutSlotInfo Bayonet {
+     Offset -0.1645 0.0596 -0.0361
+     Angles 4.7199 -121.6047 1.1217
+     Enabled 1
+     Prefab "{AE86A91AAFD0DD69}Prefabs/Items/Equipment/Accessories/Scabbard_Bayonet_L1A4/Scabbard_Bayonet_L1A4_Filled.et"
+     DeactivatePhysicsOnAtaching 1
+     DeflatedOffset -0.1194 0.0961 -0.1501
+     DeflatedAngles 0.7071 39.282 1.9744
+    }
+    LoadoutSlotInfo HelmetClip : Bayonet {
+     Offset 0.1957 -0.0643 -0.1167
+     Angles 16.9998 126.014 0.165
+     Prefab "{6EE71B93AB3BCA3F}Prefabs/Items/Equipment/Accessories/Pouches/Holster/Helmet_Holder_Clip.et"
+     DeactivatePhysicsOnAtaching 1
+     DeflatedOffset 0.1815 -0.0149 -0.1298
+     DeflatedAngles 5.056 122.88081 3.0393
+    }
+    LoadoutSlotInfo KidneyRight {
+     PivotID "spine3"
+     Offset 0.0702 0.0446 -0.1072
+     Angles 4.8592 163.38123 1.0926
+     Enabled 0
+     Prefab "{2A2DE67771133F2E}Prefabs/Items/Equipment/Accessories/Pouch_P58_Kidney/Vest_P58_kidney_right.et"
+     EnableDeflatedOffset 1
+     DeflatedOffset 0.0601 0.095 -0.1528
+     DeflatedAngles 5.9422 165.8658 3.2873
+    }
+    LoadoutSlotInfo Scabbard {
+     PivotID "spine3"
+     Offset -0.1784 0.0343 0.0926
+     Angles 3.2966 -111.0427 -6.7662
+     Enabled 0
+     Prefab "{AE86A91AAFD0DD69}Prefabs/Items/Equipment/Accessories/Scabbard_Bayonet_L1A4/Scabbard_Bayonet_L1A4_Filled.et"
+     EnableDeflatedOffset 1
+     DeflatedOffset -0.1827 0.0641 0.1145
+     DeflatedAngles -0.6194 -110.5784 -6.7554
+    }
+    LoadoutSlotInfo TorchClip {
+     PivotID "spine3"
+     Offset 0.1812 -0.1234 0.0915
+     Angles 10.8818 40.5784 4.7821
+     Enabled 0
+     Prefab "{E8C192520BE67C0A}Prefabs/Items/Equipment/Accessories/Pouches/Holster/Flashlight_Holder_Clip.et"
+     DeactivatePhysicsOnAtaching 1
+     EnableDeflatedOffset 1
+     DeflatedOffset 0.1942 -0.0802 0.1222
+     DeflatedAngles 7.5429 40.2968 4.737
+    }
+   }
+   WornModel "{E6CB72C589FA4F63}Assets/Characters/Vests/Vest_P58/P58_Belt_01.xob"
+   DebugWornModel 0
+   DeflatedModel "{31A5CA9B9546064F}Assets/Characters/Vests/Vest_P58/P58_Belt_01_Inflated.xob"
+   DebugDeflatedModel 1
+  }
+ }
+ coords 0.252 1.134 -0.776
+}

@@ -8,7 +8,7 @@ modded class SCR_AIGetCombatMoveRequestParameters_ChangeStance
 		if (!rq)
 			return SCR_AIErrorMessages.NodeErrorCombatMoveRequest(this, owner, rqBase);
 			
-		if (rq.m_eStance == ECharacterStance.PRONE && CRF_Gamemode.GetInstance().m_bDisableAICrouching)
+		if (rq.m_eStance == ECharacterStance.PRONE && (!CRF_Gamemode.GetInstance() || CRF_Gamemode.GetInstance().m_bDisableAICrouching))
 			SetVariableOut(PORT_STANCE, ECharacterStance.CROUCH);
 		else
 			SetVariableOut(PORT_STANCE, rq.m_eStance);

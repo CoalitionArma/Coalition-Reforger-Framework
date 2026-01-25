@@ -101,7 +101,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
     }
     m_Size SLOT_1x1
    }
-   StoragePurpose 32
+   StoragePurpose 0x20 0x1
   }
   WeaponComponent "{6D23670EA18BF513}" {
    components {

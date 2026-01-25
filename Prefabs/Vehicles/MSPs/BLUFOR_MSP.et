@@ -155,7 +155,7 @@ Vehicle {
     SCR_EmissiveLightSurfaceSlot RHeading {
      Prefab "{5B6754090AF1D923}Prefabs/Vehicles/Wheeled/M923A1/Lights/RHeadlight_M923_ES.et"
      RegisterDamage 1
-     LightType 522
+     LightType 0x20a 0
      LightSide 1
      EmissiveOnMultiplier 5
      ConfigurationsOverride {
@@ -173,7 +173,7 @@ Vehicle {
     SCR_EmissiveLightSurfaceSlot LHeading {
      Prefab "{D9E3A47E407BB7F6}Prefabs/Vehicles/Wheeled/M923A1/Lights/LHeadlight_M923_ES.et"
      RegisterDamage 1
-     LightType 522
+     LightType 0x20a 0
      LightSide 0
      EmissiveOnMultiplier 5
      ConfigurationsOverride {
@@ -191,7 +191,7 @@ Vehicle {
     SCR_EmissiveLightSurfaceSlot LFIndicator {
      Prefab "{175BBAF4F9C3A6BC}Prefabs/Vehicles/Wheeled/M923A1/Lights/LFIndicator_M923_ES.et"
      RegisterDamage 1
-     LightType 256
+     LightType 0x100 0
      LightSide 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{66B4D32790D82CB3}" {
@@ -204,7 +204,7 @@ Vehicle {
     SCR_EmissiveLightSurfaceSlot RFIndicator {
      Prefab "{C3AAEC57786FF7B1}Prefabs/Vehicles/Wheeled/M923A1/Lights/RFIndicator_M923_ES.et"
      RegisterDamage 1
-     LightType 256
+     LightType 0x100 0
      LightSide 1
      ConfigurationsOverride {
       SurfaceLightConfigItem "{66B4D32790D82EAC}" {
@@ -291,35 +291,13 @@ Vehicle {
   }
   ChimeraAIPathfindingComponent "{66B4D32790D81022}" {
    NavmeshProject "BTRlike"
-   IgnoreFlags 16
+   IgnoreFlags 0x10 0
    "Use Road Network" 1
    "Turn radius" 15
   }
   ColliderHistoryComponent "{66B4D32790D81028}" {
   }
   ControllersManagerComponent "{66B4D32790D81035}" {
-  }
-  LM_SuppressionExplosionComponent "{66B4D32790D81054}" {
-   m_fForceMultiplier 0.8
-   m_fExplosionRangeMin 6
-   m_fExplosionRangeMax 18
-   m_bApplyOnInit 0
-  }
-  LM_SuppressionVehicleComponent "{66B4D32790D8107C}" {
-   m_aSuppressionDefinitions {
-    LM_SuppressionVehicleSuppressionData "{66B4D32790D81069}" {
-     m_fDampenProjectile 0.4
-     m_fDampenProjectileGunner 0.9
-     m_fDampenExplosion 0.5
-     m_bCanFlyby 0
-    }
-    LM_SuppressionVehicleSuppressionData "{66B4D32790D81077}" {
-     m_iCompartmentSection 1
-     m_fDampenProjectile 0.3
-     m_fDampenProjectileGunner 0.9
-     m_fDampenExplosion 0.5
-    }
-   }
   }
   MeshObject "{66B4D32790D811CF}" {
    Object "{DF7CF60669EFC7E5}Assets/Vehicles/Wheeled/M923A1/M923A1_BASE.xob"
@@ -374,7 +352,7 @@ Vehicle {
      AccessibilitySettings CompartmentAccessibilityContext "{66B4D32790D812C5}" {
       BBHalfExtents 0.44 0.4 0.005
       TraceOffset -0.3 1.45 0.75
-      ExcludePhysicsLayer 262144
+      ExcludePhysicsLayer 0x40000 0
      }
     }
     CompartmentDoorInfo "{66B4D32790D81227}" {
@@ -409,7 +387,7 @@ Vehicle {
      AccessibilitySettings CompartmentAccessibilityContext "{66B4D32790D81226}" {
       BBHalfExtents 0.44 0.4 0.005
       TraceOffset 0.5 1.45 1.4
-      ExcludePhysicsLayer 262144
+      ExcludePhysicsLayer 0x40000 0
      }
     }
    }
@@ -689,13 +667,13 @@ Vehicle {
     Name "BLUFOR MSP"
     Icon "{B3FBE7D84E42508A}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Respawn.edds"
     IconSetName ""
-    m_Image "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
+    m_Image "{E5DECCCA6F4B7416}UI/Images/GS_Factions/BLUFOR_NATO.edds"
     m_sFaction "BLUFOR"
     m_aAuthoredLabels {
-     3 35 280 210
+     ENTITYTYPE_VEHICLE TRAIT_RADIO TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels {
-     51870 122 54 1677929688
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK FACTION_RHS_USAF
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{66B4D32790D81820}" {
@@ -712,7 +690,7 @@ Vehicle {
      }
     }
     m_aOccupantFillCompartmentTypes {
-     0 2
+     PILOT CARGO
     }
     m_aCrewEntityBudgetCost {
      SCR_EntityBudgetValue "{66B4D32790D81851}" {
@@ -865,7 +843,7 @@ Vehicle {
       0.7 0.4 0.2
      }
      m_pDestructionHandler SCR_DestructionBaseHandler "{66B4D32790D81C6D}" {
-      m_sWreckModel "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck.et"
+      m_sWreckModel "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et"
       m_iWreckDelay 250
      }
      m_sDestructionSoundEvent "SOUND_VEHICLE_DESTRUCTION"
@@ -899,10 +877,10 @@ Vehicle {
      m_aDamagePassRules {
       SCR_DamagePassRule "{66B4D32790D81EB8}" {
        m_aDamageStates {
-        2 5
+        DESTROYED STATE3
        }
        m_aSourceDamageTypes {
-        1 3
+        COLLISION KINETIC
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 0.07
@@ -910,7 +888,7 @@ Vehicle {
       }
       SCR_DamagePassRule "{66B4D32790D81EC0}" {
        m_aSourceDamageTypes {
-        6
+        INCENDIARY
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 5
@@ -937,10 +915,10 @@ Vehicle {
      m_aDamagePassRules {
       SCR_DamagePassRule "{66B4D32790D81E55}" {
        m_aDamageStates {
-        2 5
+        DESTROYED STATE3
        }
        m_aSourceDamageTypes {
-        1 3
+        COLLISION KINETIC
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 0.004
@@ -967,10 +945,10 @@ Vehicle {
      m_aDamagePassRules {
       SCR_DamagePassRule "{66B4D32790D81F07}" {
        m_aDamageStates {
-        2
+        DESTROYED
        }
        m_aSourceDamageTypes {
-        1 3
+        COLLISION KINETIC
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 0.1
@@ -978,7 +956,7 @@ Vehicle {
       }
       SCR_DamagePassRule "{66B4D32790D81F25}" {
        m_aSourceDamageTypes {
-        6
+        INCENDIARY
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 8
@@ -1003,7 +981,7 @@ Vehicle {
      m_aDamagePassRules {
       SCR_DamagePassRule "{66B4D32790D800BC}" {
        m_aSourceDamageTypes {
-        6
+        INCENDIARY
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 5
@@ -1026,7 +1004,7 @@ Vehicle {
      m_aDamagePassRules {
       SCR_DamagePassRule "{66B4D32790D80022}" {
        m_aSourceDamageTypes {
-        6
+        INCENDIARY
        }
        m_eOutputDamageType INCENDIARY
        m_fMultiplier 5
@@ -1480,12 +1458,6 @@ Vehicle {
   BaseFlattenGrassComponent "{66B4D32790D8050B}" {
    ParametersCollection {
     FlattenGrassParametersObject "{66B4D32790D805F9}" {
-     SideX 9
-     SideZ 3.4
-     Offset 0
-     TimeDown 0
-     MaxHeight 1
-     ShapeOfGrassFlattening "Rect"
     }
    }
   }
@@ -1839,7 +1811,7 @@ Vehicle {
   SCR_VehiclePerceivableComponent "{66B4D32790D8F116}" {
    "Additional aim points" {
     AimPoint "{66B4D32790D8F07F}" {
-     AimPointPosition PointInfo "{66B4D32790D8F060}" {
+     AimPointPosition AttachPoint "{66B4D32790D8F060}" {
       Offset 0 1.4864 -0.9396
      }
      AimpointChecked 1
@@ -1847,7 +1819,7 @@ Vehicle {
      Dimension 0.5
     }
     AimPoint "{66B4D32790D8F19E}" {
-     AimPointPosition PointInfo "{66B4D32790D8F183}" {
+     AimPointPosition AttachPoint "{66B4D32790D8F183}" {
       Offset 0 1.4839 -3.2817
      }
      AimpointChecked 1
@@ -1855,14 +1827,14 @@ Vehicle {
      Dimension 0.5
     }
     AimPoint "{66B4D32790D8F1C0}" {
-     AimPointPosition PointInfo "{66B4D32790D8F1AC}" {
+     AimPointPosition AttachPoint "{66B4D32790D8F1AC}" {
       Offset 0 2.2137 1.1093
      }
      Dimension 0.5
      AimPointType Weak
     }
     AimPoint "{66B4D32790D8F1E0}" {
-     AimPointPosition PointInfo "{66B4D32790D8F1D4}" {
+     AimPointPosition AttachPoint "{66B4D32790D8F1D4}" {
       Offset 0 1.5 2.5
      }
      Dimension 0.5
@@ -2027,7 +1999,7 @@ Vehicle {
     }
     RegisteringComponentSlotInfo Radio {
      MergePhysics 1
-     Prefab "{DCE16D92C350D64F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_combox.et"
+     Prefab "{DCE16D92C350D64F}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_combox.et"
      RegisterActions 1
      RegisterDamage 1
      RegisterCompartments 1
@@ -2039,76 +2011,32 @@ Vehicle {
     }
     EntitySlotInfo Flag {
      Offset -1.0191 4.8845 0.4648
-     Prefab "{AB72A0D9CB73483B}Prefabs/Props/Fabric/Flags/BLUFOR_FLAG.et"
+     Prefab "{AB72A0D9CB73483B}Prefabs/Props/Fabric/Flags/Gearscript Factions/BLUFOR_FLAG.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Light1 {
      Offset 1.1298 3.4368 0.151
      Angles 90 -45 135
-     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     Prefab "{954774A4B062F1FC}PrefabLibrary/DefaultLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Light2 {
      Offset -1.1326 3.439 0.152
      Angles 90 -45 135
-     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     Prefab "{954774A4B062F1FC}PrefabLibrary/DefaultLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Light3 {
      Offset -0.9616 3.3488 -4.3626
      Angles 90 180 -180
-     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     Prefab "{954774A4B062F1FC}PrefabLibrary/DefaultLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Light4 {
      Offset 0.9518 3.3488 -4.3626
      Angles 90 180 -180
-     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     Prefab "{954774A4B062F1FC}PrefabLibrary/DefaultLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
      DisablePhysicsInteraction 1
-    }
-   }
-   SlotMappers {
-    CompartmentToSlotMapping Window_Right {
-     SlotName "window_right"
-     Coverage 0.03
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
-    }
-    CompartmentToSlotMapping Window_Left {
-     SlotName "window_left"
-     Coverage 0.03
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
-    }
-    CompartmentToSlotMapping Window_Back {
-     SlotName "window_back"
-     Coverage 0.01
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
-    }
-    CompartmentToSlotMapping Window_Back_02 {
-     SlotName "window_back_02"
-     Coverage 0.01
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
-    }
-    CompartmentToSlotMapping Window_Front {
-     SlotName "window_front"
-     Coverage 0.035
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
-    }
-    CompartmentToSlotMapping Window_Front_02 {
-     SlotName "window_front_02"
-     Coverage 0.035
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01"
-     }
     }
    }
   }
@@ -2537,7 +2465,7 @@ Vehicle {
       }
      }
      m_aHitZoneGroups {
-      30
+      DRIVE_TRAIN
      }
      m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32790D8F9CF}" {
       m_aHitZoneGroupNames {
@@ -2674,7 +2602,7 @@ Vehicle {
       }
      }
      m_aHitZoneGroups {
-      10
+      HULL
      }
      m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32790D8FA10}" {
       m_aHitZoneGroupNames {
@@ -2811,7 +2739,7 @@ Vehicle {
       }
      }
      m_aHitZoneGroups {
-      40
+      FUEL_TANKS
      }
      m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32790D8FB31}" {
       m_aHitZoneGroupNames {
@@ -2948,7 +2876,7 @@ Vehicle {
       }
      }
      m_aHitZoneGroups {
-      20
+      ENGINE
      }
      m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32790D8FC5D}" {
       m_aHitZoneGroupNames {

@@ -47,7 +47,7 @@ class CRF_MissionWorldCreationPlugin : WorkbenchPlugin
 		
 		api.SetActiveSubsceneLayer(1, "_INIT");
 
-		api.CreateEntity("{6A996BBFCEB37E78}Prefabs/Systems/_Lobby/CRF_Lobby.et", "CRF_Lobby", 1, null, vector.Zero, vector.Zero);
+		api.CreateEntity("{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et", "CRF_Lobby", 1, null, vector.Zero, vector.Zero);
 		
 		worldEditor.Save();
 		

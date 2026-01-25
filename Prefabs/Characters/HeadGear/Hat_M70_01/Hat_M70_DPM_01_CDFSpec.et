@@ -44,7 +44,7 @@ GameEntity : "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_0
     }
    }
    Priority 150
-   StoragePurpose 64
+   StoragePurpose 0x40 0x1
    UseCapacityCoefficient 0
    MaxCumulativeVolume 100
    MaxItemSize 1 1 1
@@ -81,11 +81,11 @@ GameEntity : "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_0
    }
    WornModel "{AE3329894AB9AB15}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_01.xob"
    WornMaterialsOverride {
-    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
+    "{99561B7D90B0CE24}Assets/Materials/Fabric/CDFSpecCamo.emat"
    }
    ItemModel "{400CB696AE97DFC9}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_Ground_01.xob"
    ItemMaterialsOverride {
-    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
+    "{99561B7D90B0CE24}Assets/Materials/Fabric/CDFSpecCamo.emat"
    }
   }
  }

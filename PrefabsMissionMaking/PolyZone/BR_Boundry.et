@@ -1,0 +1,22 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ ID "658635BEF7631DCE"
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 0.045 0.045 0.045 0
+   m_cPolygonBorderColor 0.045 0.045 0.045 0
+  }
+ }
+ coords 2404.821 3.795 3228.043
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   components {
+    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+     m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+     m_bStretchMaterial 1
+    }
+   }
+   UpdatePeriod 2
+  }
+ }
+}

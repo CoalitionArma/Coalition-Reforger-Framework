@@ -1,18 +1,17 @@
 ImageSetClass {
  RefSize 500 500
  Textures {
-  ImageSetTextureClass {
+  ImageSetTextureClass "{6872A369BED4E1E4}" {
    screenSize FHD
    size 500 500
-   path "{ACCB34036028A711}UI/Objectives/zone.edds"
+   path "{ACCB34036028A711}UI/Images/Objectives/zone.edds"
   }
  }
  Images {
   ImageSetDefClass Zone {
-   Name "Zone"
    Pos 40 40
    Size 420 420
-   Flags 0
+   Flags 0 0
   }
  }
 }

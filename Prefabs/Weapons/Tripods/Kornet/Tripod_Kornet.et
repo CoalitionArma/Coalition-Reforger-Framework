@@ -1,37 +1,9 @@
 Turret : "{16CAF1AAD82A3127}Prefabs/Weapons/Core/Tripod_Base.et" {
  ID "52D30EFBEBC74642"
  components {
-  StaticWeaponComponent "{64626B77DEA0984C}" {
-   m_rWeaponBagPrefab "{5C609DE29BEE19CF}Prefabs/Items/Equipment/Backpacks/NSV/Backpack_Kornet_Weapon.et"
-   m_rBipodBagPrefab "{7611D0DAE5796941}Prefabs/Items/Equipment/Backpacks/Backpack_USSR_Bipod.et"
-  }
   WCS_Armament_LoadoutComponent "{62E8E87892D31C6D}" {
    m_ArmamentGroups {
     WCS_ArmamentWeaponGroup "{62E9132135EBAFB3}" {
-    }
-   }
-  }
-  ActionsManagerComponent "{51ACD09C7181BA0B}" {
-   additionalActions {
-    MoveWeaponAction "{64626B71D2A918DF}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62B366B8AE26700A}" {
-      Name "Move Weapon"
-     }
-     Duration 5
-     "Sort Priority" 3
-    }
-    DisassembleWeaponAction "{64626B71E768F17C}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62B366B8A0CCB826}" {
-      Name "Disassemble Weapon"
-     }
-     Duration 5
-     "Sort Priority" 4
     }
    }
   }

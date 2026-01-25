@@ -1,4 +1,4 @@
-GenericEntity : "{67AD477577B7BFF2}Prefabs/Characters/Vests/Vest_6B3/Vest_6B3_base.et" {
+GameEntity : "{67AD477577B7BFF2}Prefabs/Characters/Vests/Vest_6B3/Vest_6B3_base.et" {
  ID "50D8C49B3558F152"
  components {
   SCR_ArmorDamageManagerComponent "{5E58DD321A29E783}" {
