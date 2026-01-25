@@ -1,4 +1,5 @@
 BaseGameTriggerEntity airdrop {
+ Flags 0x200000 0
  coords 1836.74 53.18 2252.188
  userScript "	"\
  "	bool m_bSafeStartInit = false;"\

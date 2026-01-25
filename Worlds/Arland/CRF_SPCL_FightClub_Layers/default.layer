@@ -4,6 +4,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_AirdropManager "{685355B93E7507C0}" {
+   Enabled 0
   }
   CRF_BattleRoyaleComponent "{686F1BAC9584AE29}" {
    m_iInitialDelay 150
