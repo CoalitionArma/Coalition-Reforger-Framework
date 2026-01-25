@@ -37,7 +37,7 @@ Vehicle : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.e
     m_Image "{7D1C38DE1BE2AF73}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_FIA_tanker.edds"
     m_sFaction "INDFOR"
     m_aAutoLabels {
-     51872 122 54
+     FACTION_CRF_INDFOR SIZE_M VEHICLE_TRUCK
     }
    }
   }

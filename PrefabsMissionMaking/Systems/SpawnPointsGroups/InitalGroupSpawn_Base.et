@@ -8,7 +8,7 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Materials {
     MaterialAssignClass "{68624CBACAC60541}" {
      SourceMaterial "DummyMaterial"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
   }

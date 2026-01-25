@@ -62,7 +62,7 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
     Name "#BF-Vehicle_88_Civvie_Name"
     m_sFaction "CIV"
     m_aAutoLabels {
-     13 122 50
+     FACTION_CIV SIZE_M VEHICLE_CAR
     }
    }
   }
@@ -130,7 +130,7 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
   }
  }
  {
-  $grp DecalEntity : "{7D2718ED6A430612}Prefabs/Decals/Dirt/Decal_HeliPad_01.et" {
+  $grp DecalEntity {
    {
     ID "667365CE2C770D04"
     components {
@@ -142,8 +142,7 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
      }
     }
     coords -0.008 1.342 1.48
-    angleX -89.98
-    angleZ -179.608
+    angles -89.98 0 -179.608
     scale 0.96
     FarPlane 0.1
     Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
@@ -159,8 +158,7 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
      }
     }
     coords 0.847 0.958 0.47
-    angleY -90.842
-    angleZ -0.808
+    angles 0 -90.842 -0.808
     scale 0.527
     FarPlane 0.1
     Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
@@ -176,8 +174,7 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
      }
     }
     coords -0.846 0.948 0.453
-    angleY 89.158
-    angleZ -0.958
+    angles 0 89.158 -0.958
     scale 0.515
     FarPlane 0.1
     Mat "{66F803693C8814A2}Assets/_SharedData/Decals/Coat_of_arms_FIA.emat"
@@ -187,14 +184,13 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
    {
     ID "6668476072D97A3F"
     coords 0.336 1.943 0.643
-    angleZ 90
+    angles 0 0 90
     scale 0.63
    }
    {
     ID "666847614F096DDC"
     coords -0.34 1.947 0.647
-    angleY -180
-    angleZ 90
+    angles 0 -180 90
     scale 0.63
    }
   }

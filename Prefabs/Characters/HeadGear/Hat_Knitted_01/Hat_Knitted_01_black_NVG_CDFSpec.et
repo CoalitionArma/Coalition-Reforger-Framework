@@ -45,7 +45,7 @@ GameEntity : "{BCCB7D5AB38BB3A7}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_K
     }
    }
    Priority 150
-   StoragePurpose 64
+   StoragePurpose 0x40 0x1
    UseCapacityCoefficient 0
    MaxCumulativeVolume 100.2
    MaxItemSize 1 1 1

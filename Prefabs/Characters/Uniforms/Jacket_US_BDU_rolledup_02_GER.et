@@ -31,7 +31,7 @@ GameEntity : "{8A5424D1A2AA6595}Prefabs/Characters/Uniforms/Jacket_US_BDU_base.e
    }
    WornModel "{8DD1393CD1F874E1}Assets/Characters/Uniforms/Jacket_BDU_M81/Jacket_BDU_M81_rolledup.xob"
    WornMaterialsOverride {
-    "{B079C0CFB1CE3D1E}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M65_GER.emat"
+    "{B079C0CFB1CE3D1E}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M65_rolledup_GER.emat"
    }
    ItemMaterialsOverride {
     "{0470AF73470E54F1}Assets/Characters/Uniforms/Jacket_BDU_M81/Data/Jacket_BDU_M81_02_item.emat"

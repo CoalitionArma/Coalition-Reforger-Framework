@@ -20,7 +20,7 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
    components {
     AttachmentSlotComponent "{5E0EEDA2E5FAA2B6}" {
      AttachmentSlot InventoryStorageSlot Buttstock {
-      Prefab "{BC68AE520F42BF35}Prefabs/Weapons/Attachments/Stocks/Buttstock_AR15_SOPMOD/RHS_M4_SOPMOD_Black.et"
+      Prefab "{BC68AE520F42BF35}Prefabs/Weapons/Attachments/Stocks/Stock_AR15_SOPMOD/RHS_M4_SOPMOD_Black.et"
      }
     }
     AttachmentSlotComponent "{5E0EEDA47E3F452D}" {
@@ -66,7 +66,6 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
       Offset 0 0.0558 0.3259
       MergePhysics 1
       Enabled 0
-      Name "Bipod"
       InspectionWidgetOffset 0 0.0546 0.3683
      }
      AttachmentType AttachmentUnderbarrelRIS1913Short "{625D5460B1C1B656}" {

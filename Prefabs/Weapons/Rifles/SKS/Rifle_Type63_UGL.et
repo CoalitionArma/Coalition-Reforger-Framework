@@ -38,7 +38,7 @@ GenericEntity : "{3FB5275A6505B323}Prefabs/Weapons/Rifles/M14/Rifle_M21_base.et"
      AttachmentSlot InventoryStorageSlot bayonet {
       PivotID "barrel_muzzle"
       MergePhysics 1
-      Prefab "{98C79F5FAE12F9B6}Prefabs/Weapons/Attachments/Bayonets/Bayonet_type56.et"
+      Prefab "{98C79F5FAE12F9B6}Prefabs/Weapons/Attachments/Bayonets/Bayonet_6Kh4.et"
      }
      AttachmentType AttachmentBayonet6Kh4 "{66361839596ACC1D}" {
      }

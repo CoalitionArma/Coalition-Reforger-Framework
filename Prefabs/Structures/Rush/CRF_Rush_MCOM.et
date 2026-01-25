@@ -5,14 +5,6 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
    Filenames + {
     "{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp" "{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp"
    }
-   Events {
-    SoundEventInfoClass "{661900A1486D23F0}" {
-     Name "RUSH_BEEP"
-    }
-    SoundEventInfoClass "{661900A14194E762}" {
-     Name "RUSH_PLANTING"
-    }
-   }
   }
   CRF_Rush_3DMarkerComponent "{613048A3A6DEB8A1}" {
    m_sMarkerLetter "A"
@@ -74,7 +66,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords 0.666 -3.996 3.464
-   angleY 174.654
+   angles 0 174.654 0
    scale 1.562
    {
     GenericEntity {
@@ -108,7 +100,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.356 0.874 -1.698
-   angleY -90.69
+   angles 0 -90.69 0
   }
   GenericEntity : "{34736979381CA219}Prefabs/Props/Military/Radios/RadioStation_ANGRC160_01.et" {
    ID "661442D805B35590"
@@ -120,7 +112,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.482 0.91 1.277
-   angleY -90.52
+   angles 0 -90.52 0
   }
   $grp GenericEntity : "{34C2F623958FCACE}Prefabs/Props/Civilian/Ashtray_01_Full_clear.et" {
    {
@@ -130,7 +122,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.612 0.907 0.925
-    angleY 0
+    angles 0 0 0
    }
    {
     ID "661442D9FD89752D"
@@ -139,7 +131,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.464 0.907 -2.085
-    angleY -90.69
+    angles 0 -90.69 0
    }
   }
   GenericEntity : "{3800AA04761AE0EC}Prefabs/Props/Civilian/Notebook_01_Single_Blue.et" {
@@ -149,7 +141,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.708 0.876 -1.309
-   angleY 75.613
+   angles 0 75.613 0
   }
   $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
    {
@@ -159,7 +151,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.945 -0.014 -1.999
-    angleY 78.774
+    angles 0 78.774 0
    }
    {
     ID "661442DD5FA75139"
@@ -168,7 +160,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -2.067 -0.014 0.853
-    angleY 116.43
+    angles 0 116.43 0
    }
   }
   $grp StaticModelEntity : "{5019513019F0885A}Prefabs/Props/Military/Furniture/TableMilitary_US_02.et" {
@@ -179,7 +171,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.702 -0.032 -1.452
-    angleY -90.69
+    angles 0 -90.69 0
    }
    {
     ID "661442D805B35576"
@@ -188,7 +180,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.65 0.001 1.234
-    angleY -89.515
+    angles 0 -89.515 0
    }
   }
   GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
@@ -220,7 +212,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.514 -0.018 -0.569
-   angleY -90.69
+   angles 0 -90.69 0
   }
   GenericEntity : "{6B75B63C065F5F6C}Prefabs/Props/PersonalBelongings/Dogtags/Dogtags_US.et" {
    ID "661442D805B35227"
@@ -246,7 +238,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.366 -0.027 -1.787
-   angleY -90.69
+   angles 0 -90.69 0
   }
   $grp StaticModelEntity : "{8B7B5323534404A7}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V2.et" {
    {
@@ -266,13 +258,13 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
    {
     ID "661442D805B35205"
     coords -1.865 0.907 0.658
-    angleY 90.649
+    angles 0 90.649 0
     scale 0.6
    }
    {
     ID "661442D9FD897519"
     coords -1.581 0.876 -1.929
-    angleY 100.519
+    angles 0 100.519 0
     scale 0.6
    }
   }
@@ -280,12 +272,12 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
    {
     ID "661442D805B3527B"
     coords -1.868 0.907 0.491
-    angleY 56.036
+    angles 0 56.036 0
    }
    {
     ID "661442D9FD8974AE"
     coords -1.603 0.876 -1.661
-    angleY 137.161
+    angles 0 137.161 0
    }
   }
   $grp GenericEntity : "{C30C5EF1C048A606}Prefabs/Props/PersonalBelongings/Notebooks/Notebook_Small_01_Personal_US.et" {
@@ -296,7 +288,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.61 0.907 0.583
-    angleY 79.381
+    angles 0 79.381 0
    }
    {
     ID "661442D9FD897536"
@@ -305,7 +297,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      }
     }
     coords -1.615 0.896 -0.951
-    angleY 54.925
+    angles 0 54.925 0
    }
   }
   GenericEntity : "{CF92D5CE4EC7F917}Prefabs/Props/Military/Radios/RadioStation_RF10/RadioStation_RF10.et" {
@@ -318,19 +310,19 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.492 1.044 1.29
-   angleY -89.011
+   angles 0 -89.011 0
   }
   $grp GenericEntity : "{F0A6370C7F04CEDF}Prefabs/Props/PersonalBelongings/Papers/Papers_Personal_Civilian.et" {
    {
     ID "661442D805B35254"
     coords -1.657 0.91 1.629
-    angleY -87.345
+    angles 0 -87.345 0
     scale 0.6
    }
    {
     ID "661442D9FD8974F9"
     coords -1.655 0.895 -1.303
-    angleY -108.818
+    angles 0 -108.818 0
     scale 0.6
    }
   }
@@ -344,7 +336,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.465 0.907 1.012
-   angleY 163.1
+   angles 0 163.1 0
   }
   GenericEntity : "{FB388A4B8389EFB2}Prefabs/Props/PersonalBelongings/Notebooks/Notebook_01_Personal_Civilian.et" {
    ID "661442D9FD8974DD"
@@ -353,7 +345,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
     }
    }
    coords -1.62 0.877 -0.924
-   angleY 121.124
+   angles 0 121.124 0
   }
  }
 }

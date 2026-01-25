@@ -10,11 +10,11 @@ GenericEntity : "{BD048236F83D85DA}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_
     ItemAnimationAttributes ItemAnimationAttributes "{5284960DAA53DDFC}" {
      IkSettings {
       ItemIKSettings "{5526E345D0462B03}" {
-       IkSettingsStand 4
+       IkSettingsStand 0x4 0
       }
       ItemIKSettings "{625220182F280BF5}" {
        ProneTurn 1
-       IkSettingsStand 4
+       IkSettingsStand 0x4 0
       }
      }
     }

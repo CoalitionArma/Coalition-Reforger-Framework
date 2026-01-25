@@ -1,4 +1,4 @@
-PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  ID "6586537E1F83840C"
  components {
   CRF_PolyZone "{6586537E1F838475}" {

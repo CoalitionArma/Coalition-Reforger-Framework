@@ -5,7 +5,7 @@ GameEntity : "{27DABFBB719485AA}Prefabs/Characters/Uniforms/Pants_US_BDU_base.et
    Materials {
     MaterialAssignClass "{64DF1411B731D407}" {
      SourceMaterial "Pants_BDU_M81_tucked_item"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
   }
@@ -25,5 +25,5 @@ GameEntity : "{27DABFBB719485AA}Prefabs/Characters/Uniforms/Pants_US_BDU_base.et
    DebugWornModel 1
   }
  }
- Flags 0
+ Flags 0 0x3
 }

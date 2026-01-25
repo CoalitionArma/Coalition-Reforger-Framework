@@ -1,12 +1,12 @@
-Vehicle : "{38DE44985B0AD338}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_base.et" {
+Vehicle {
  ID "57DA6675519A417B"
  components {
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#WCS-Helicopter_MI24P_Name - #WCS-Weapon_B8V20A_Name"
     m_Image "{9DC8C406880FE588}UI/Textures/EditorPreviews/Vehicles/Helicopters/Mi24V/Mi24P_armed_9M114.edds"
-    m_aAuthoredLabels + {
-     37 21
+    m_aAuthoredLabels {
+     TRAIT_PASSENGERS_LARGE TRAIT_ARMED
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{629A82D4737471F8}" {

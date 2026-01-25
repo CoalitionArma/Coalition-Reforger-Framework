@@ -129,5 +129,5 @@ GameEntity : "{966B4E5523D2F166}Prefabs/Weapons/Attachments/Optics/WeaponOptic_B
    }
   }
  }
- Flags 4194307
+ Flags 0x400003 0
 }

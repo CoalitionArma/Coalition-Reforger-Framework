@@ -56,7 +56,7 @@ modded class SCR_MapMarkerSquadLeader
 			return;
 		}
 		
-		if (!CRF_Gamemode.GetInstance().IsSideBFTEnabled(groupFaction.GetFactionKey()))
+		if (CRF_Gamemode.GetInstance() && !CRF_Gamemode.GetInstance().IsSideBFTEnabled(groupFaction.GetFactionKey()))
 		{
 			SetLocalVisible(false);
 			return;

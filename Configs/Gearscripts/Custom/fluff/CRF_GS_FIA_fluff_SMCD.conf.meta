@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8A47112BA38128FE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_fluff_SMCD.conf"
+ Name "{8A47112BA38128FE}Configs/Gearscripts/Custom/fluff/CRF_GS_FIA_fluff_SMCD.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -22,7 +22,7 @@ Vehicle : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_repair.e
     m_aAuthoredLabels +{
     }
     m_aAutoLabels {
-     51872 122 54
+     FACTION_CRF_INDFOR SIZE_M VEHICLE_TRUCK
     }
     m_aOccupantFillCompartmentTypes +{
     }

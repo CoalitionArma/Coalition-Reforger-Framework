@@ -19,7 +19,7 @@ GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployab
    Materials {
     MaterialAssignClass "{64DF14109715D065}" {
      SourceMaterial "Radio_ANPRC77_01"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
    PixelSizeScale 0
@@ -36,7 +36,7 @@ GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployab
   }
   BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
    WornMaterialsOverride {
-    "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
    }
   }
   RplComponent "{508AB59531D748C9}" {

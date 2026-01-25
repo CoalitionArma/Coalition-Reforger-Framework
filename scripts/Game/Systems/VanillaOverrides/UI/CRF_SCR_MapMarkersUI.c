@@ -2,6 +2,11 @@ modded class SCR_PlayerControllerCommandingComponent
 {
 	override bool AddElementsFromCategoryToMap(notnull SCR_PlayerCommandingMenuCategoryElement category, SCR_SelectionMenuCategoryEntry parentCategory = null)
 	{
+		if (!CRF_Gamemode.GetInstance())
+		{
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+		}
+
 		SCR_MapMarkerMenuEntry shareMenuEntry = new SCR_MapMarkerMenuEntry();
 		shareMenuEntry.SetName("Share Map Markers");
 		shareMenuEntry.GetOnPerform().Insert(ShareMapMarkers);

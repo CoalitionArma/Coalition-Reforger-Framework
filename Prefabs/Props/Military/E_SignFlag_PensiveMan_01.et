@@ -15,5 +15,5 @@ GenericEntity : "{F9CB37885DA59BF4}Prefabs/Props/Military/E_SignFlag_COAL_01.et"
   }
  }
  coords 7416.758 8.605 6686.933
- angleY 38.802
+ angles 0 38.802 0
 }

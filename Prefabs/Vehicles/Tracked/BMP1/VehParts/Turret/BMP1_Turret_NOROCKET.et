@@ -246,28 +246,28 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
     EntitySlotInfo Periscope_01 {
      PivotID "v_turret_01"
      Offset -0.1597 0.2052 0.0925
-     Prefab "{986BBDD66E50B41F}Prefabs/Props/Core/Triplex_Placeholder.et"
+     Prefab "{986BBDD66E50B41F}Prefabs/Vehicles/Generic/VehParts/TriplexPlaceholder/Triplex_Placeholder.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Periscope_02 {
      PivotID "v_turret_01"
      Offset -0.4603 0.2023 0.0438
      Angles 0 -50 0
-     Prefab "{986BBDD66E50B41F}Prefabs/Props/Core/Triplex_Placeholder.et"
+     Prefab "{986BBDD66E50B41F}Prefabs/Vehicles/Generic/VehParts/TriplexPlaceholder/Triplex_Placeholder.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Periscope_03 {
      PivotID "v_turret_01"
      Offset -0.4965 0.2023 -0.1406
      Angles 0 -90 0
-     Prefab "{986BBDD66E50B41F}Prefabs/Props/Core/Triplex_Placeholder.et"
+     Prefab "{986BBDD66E50B41F}Prefabs/Vehicles/Generic/VehParts/TriplexPlaceholder/Triplex_Placeholder.et"
      DisablePhysicsInteraction 1
     }
     EntitySlotInfo Periscope_04 {
      PivotID "v_turret_01"
      Offset 0.1856 0.2052 -0.2311
      Angles 0 100 0
-     Prefab "{986BBDD66E50B41F}Prefabs/Props/Core/Triplex_Placeholder.et"
+     Prefab "{986BBDD66E50B41F}Prefabs/Vehicles/Generic/VehParts/TriplexPlaceholder/Triplex_Placeholder.et"
      DisablePhysicsInteraction 1
     }
    }

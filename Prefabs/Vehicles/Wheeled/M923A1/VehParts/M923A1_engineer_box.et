@@ -3,7 +3,7 @@ GenericEntity : "{0CD6E71D33E1CCD0}Prefabs/Vehicles/Core/Vehicle_EngineerBox_Bas
  components {
   SCR_CampaignBuildingProviderComponent "{5DF54421B01A7FF8}" {
    m_aAvailableTraits {
-    32 28 230 108 107
+    TRAIT_ILLUMINATION TRAIT_FORTIFICATION TRAIT_BASE THEME_MILITARY THEME_INFRASTRUCTURE
    }
   }
   SCR_ResourceComponent "{5D82E3A391ED9E1F}" {

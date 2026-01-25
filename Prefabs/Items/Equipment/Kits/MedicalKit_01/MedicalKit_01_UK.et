@@ -6,7 +6,7 @@ GenericEntity : "{46FD263F0F368A92}Prefabs/Items/Equipment/Kits/MedicalKit_01/Me
   }
   SCR_SupportStationGadgetComponent "{5DF4D9A1113FBAD9}" {
    m_aSupportStationTypes {
-    300
+    HEAL
    }
   }
   ActionsManagerComponent "{508AB5952B584B2E}" {

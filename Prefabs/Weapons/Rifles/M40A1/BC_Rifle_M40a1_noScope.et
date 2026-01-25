@@ -47,8 +47,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
       AutoTransform 1
       ChildPivotID "snap_weapon"
      }
-     AttachmentType AttachmentOpticsM40A1 "{58E2BCF93BDCA8BA}" {
-     }
      AttachmentObstructs 0
     }
     SightsComponent "{666D136F03017277}" {
@@ -325,8 +323,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
        ManualAction 1
       }
      }
-     MagazineWell MagazineWellM40A1 "{52D8E2D6B49EF12E}" {
-     }
      WeaponAimModifiers {
       SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
        IsEnabled 1
@@ -354,35 +350,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
       }
      }
      MagazineTemplate "{541E6C7E6AF67A89}Prefabs/Weapons/Magazines/BC_Magazine_762x51_M40a1.et"
-    }
-    SCR_BoltAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{9591BA316190C870}Assets/Weapons/Rifles/workspaces/m40a1.agr"
-     AnimInstance "{B9FA8AD97278A38D}Assets/Weapons/Rifles/workspaces/m40a1_weapon.asi"
-     AnimVariables {
-      AnimationVariableInt "{666D136F0301ECC6}" {
-       VariableName "MosinAmmoCount"
-       SignalName "MosinAmmoCount"
-      }
-     }
-     AlwaysActive 0
-     AnimInjection AnimationAttachmentInfo "{532F3A9CB912F2BA}" {
-      AnimGraph "{9591BA316190C870}Assets/Weapons/Rifles/workspaces/m40a1.agr"
-      AnimInstance "{42A41BE8EA79C761}Assets/Weapons/Rifles/workspaces/m40a1_player.asi"
-     }
-     AutoVariablesBind 1
-     AnimVariablesToBind + {
-      "MosinAmmoCount"
-     }
-     m_sCasingEjectionAnimation "{AF79085C7E79CA95}Particles/Weapon/Casing_762x51_M40a1.ptc"
-     m_effectPosition PointInfo "{666D136F0301ECC0}" {
-      PivotID "slot_magazine"
-      Offset 0 0 0.0417
-      Angles 0 72.4431 0
-     }
-     m_sMaxReloadTime 8000
-     m_sShellPrefab "{4ECD2D758E6FED70}Prefabs/Weapons/Ammo/BC_Dummy_Round_762x51_M40A1_AP.et"
-     m_sBulletMesh "Bullet"
-     m_sCasingMesh "Casing"
     }
    }
    UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {

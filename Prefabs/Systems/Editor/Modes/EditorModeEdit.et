@@ -3,13 +3,13 @@ SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et
  components {
   SCR_PlacingEditorComponent "{5145484399BAA2E7}" {
    m_Registries {
-    SCR_PlaceableEntitiesRegistry "{64468232E859A47C}" : "{6D7BC9B4C66AE7B9}Configs/Core/CRF_PlacableEntitiesRegestry_BLUFOR.conf" {
+    SCR_PlaceableEntitiesRegistry "{64468232E859A47C}" : "{6D7BC9B4C66AE7B9}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_BLUFOR.conf" {
     }
-    SCR_PlaceableEntitiesRegistry "{64468234AF6E4F97}" : "{1FAFC87125B4C514}Configs/Core/CRF_PlacableEntitiesRegestry_OPFOR.conf" {
+    SCR_PlaceableEntitiesRegistry "{64468234AF6E4F97}" : "{1FAFC87125B4C514}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_OPFOR.conf" {
     }
-    SCR_PlaceableEntitiesRegistry "{64468234AE745EAC}" : "{CE655A6827EFDD0F}Configs/Core/CRF_PlacableEntitiesRegestry_INDFOR.conf" {
+    SCR_PlaceableEntitiesRegistry "{64468234AE745EAC}" : "{CE655A6827EFDD0F}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_INDFOR.conf" {
     }
-    SCR_PlaceableEntitiesRegistry "{64468234AD84BC4F}" : "{D9FDD2A390D771B0}Configs/Core/CRF_PlacableEntitiesRegestry_CIV.conf" {
+    SCR_PlaceableEntitiesRegistry "{64468234AD84BC4F}" : "{D9FDD2A390D771B0}Configs/Systems/Entities/PlaceableEntities/CRF_PlacableEntitiesRegestry_CIV.conf" {
     }
    }
   }

@@ -1,15 +1,6 @@
 Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
  ID "BBCBA43A9778AE21"
  components {
-  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-   components {
-    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
-     ClutchUncoupleTime 0.1
-     ClutchCoupleTime 0.1
-     Latency 0.1
-    }
-   }
-  }
   SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
@@ -68,6 +59,15 @@ Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
      DragCoefficient 0.49
     }
     Pacejka Pacejka "{54D561D473F27BA1}" {
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ClutchUncoupleTime 0.1
+     ClutchCoupleTime 0.1
+     Latency 0.1
     }
    }
   }

@@ -5,6 +5,11 @@ modded class SCR_EditorManagerEntity
 	//----------------------------------------------------------------
 	override bool CanOpen()
 	{
+		if (!CRF_Gamemode.GetInstance())
+		{
+			return super.CanOpen();;
+		}
+
 		// If in building mode, limit editor capabilities and allow opening
 		if (GetCurrentMode() == EEditorMode.BUILDING)
 		{

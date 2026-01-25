@@ -48,9 +48,6 @@ GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_AL
    MaxItemSize 20 20 20
    m_fMaxWeight 0
   }
-  StaticWeaponBagComponent "{64F779F1B02DA71E}" {
-   m_rWeaponPrefab "{3484565B1404E3EA}Prefabs/Weapons/Mortars/M252/Mortar_M252_StaticWeapon.et"
-  }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    Animate 1
    WornModel "{E0BEDFA62478F57F}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_combined.xob"
@@ -67,18 +64,6 @@ GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_AL
      Position PointInfo "{511E9C6ADE70F78D}" {
       Offset 0 0.1322 0
      }
-    }
-   }
-   additionalActions {
-    AssembleWeaponAction "{64F779F1B02DA70B}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{64F779F1B02DA709}" {
-      Name "Assemble Weapon"
-     }
-     Duration 5
-     "Sort Priority" 3
     }
    }
   }

@@ -7,6 +7,13 @@ modded class SCR_PopUpNotification : GenericEntity
 	//! This method is called during the entity initialization phase
 	override protected void ProcessInit()
 	{
+		
+		if (!CRF_Gamemode.GetInstance())
+		{
+			super.ProcessInit();
+			return;
+		};
+		
 		// Check if HUD manager exists
 		if (!GetGame().GetHUDManager())
 			return;

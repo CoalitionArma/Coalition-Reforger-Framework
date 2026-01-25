@@ -1,4 +1,4 @@
-GenericEntity : "{FA7937B6B7D13933}Prefabs/Weapons/AircraftWeapons/MissilePods/Pod_XM65.et" {
+GenericEntity : "{FA7937B6B7D13933}Prefabs/Weapons/AircraftWeapons/MissilePods/XM65/Pod_XM65.et" {
  ID "629D11C8BD6AE717"
  components {
   WCS_Armament_WeaponComponent "{629D11C992611C79}" {
@@ -15,8 +15,8 @@ GenericEntity : "{FA7937B6B7D13933}Prefabs/Weapons/AircraftWeapons/MissilePods/P
    }
   }
   RplComponent "{629D11CAC0959C56}" {
-   Streamable Disabled
    SpatialRelevancy 0
+   Streamable Disabled
   }
  }
 }

@@ -41,7 +41,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
     SCR_EmissiveLightSurfaceSlot LBreaklight {
      Offset 0.1281 -0.2308 0.08329
      Prefab "{1FD53A767E79AB2D}Prefabs/Vehicles/Wheeled/M923A1/Lights/LBrakelight_M923_Cargo_ES.et"
-     LightType 322
+     LightType 0x142 0
      LightSide 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{551CDACEBC38564B}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
@@ -58,7 +58,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
     SCR_EmissiveLightSurfaceSlot RBreaklight {
      Offset -0.1281 -0.2308 0.08329
      Prefab "{D9E2CCC57B1791F5}Prefabs/Vehicles/Wheeled/M923A1/Lights/RBrakelight_M923_Cargo_ES.et"
-     LightType 322
+     LightType 0x142 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{551CDACEA308BB0F}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
       }

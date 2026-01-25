@@ -34,8 +34,6 @@ GameEntity : "{17F335BF60DD2550}Prefabs/Characters/Core/Headgear_Base.et" {
    }
   }
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
-   AreaType CGS_NeckArea "{66631314F4C27ADB}" {
-   }
    WornModel "{AD076639379C478D}Assets/Characters/Accessories/Neck_Scarf/Neck_Scarf.xob"
    WornMaterialsOverride {
     "{3793F7B4E6739717}Assets/Characters/Accessories/Neck_Scarf/Data/Neck_Scarf_Ocelot.emat"

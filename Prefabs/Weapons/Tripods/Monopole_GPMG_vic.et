@@ -73,13 +73,13 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
     m_Image "{05DB97D4269EF1FB}UI/Textures/EditorPreviews/Weapons/Tripods/Tripod_M122_MG_M60.edds"
     m_sFaction "UK"
     m_aAuthoredLabels {
-     7000 21 34
+     FACTION_BRITISH TRAIT_ARMED TRAIT_SUPPRESSIVE
     }
     m_aAutoLabels {
-     121 55
+     SIZE_S VEHICLE_TURRET
     }
     m_aOccupantFillCompartmentTypes {
-     1
+     TURRET
     }
     m_aCrewEntityBudgetCost {
      SCR_EntityBudgetValue "{668B32E3560CCD98}" {
@@ -245,5 +245,5 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
   }
  }
  coords -1.333 0.014 -0.263
- angleY -130.591
+ angles 0 -130.591 0
 }

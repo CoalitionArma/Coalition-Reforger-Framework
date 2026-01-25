@@ -6,19 +6,19 @@ GenericEntity {
    Materials {
     MaterialAssignClass "{64DF141E660DC910}" {
      SourceMaterial "Basebody_01_Male_Arms"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{64DF141E660DC97F}" {
      SourceMaterial "Basebody_01_Male_Arms_wound"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{64DF141E660DC978}" {
      SourceMaterial "Basebody_01_Male_Body"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{64DF141E660DC962}" {
      SourceMaterial "Basebody_01_Male_Body_wound"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
    LODFactors {

@@ -18,5 +18,5 @@ Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
   }
  }
  coords 4716.867 29.107 10920.974
- angleY 169.928
+ angles 0 169.928 0
 }

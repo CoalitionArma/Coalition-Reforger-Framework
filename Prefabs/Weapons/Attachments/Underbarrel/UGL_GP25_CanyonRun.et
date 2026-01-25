@@ -129,21 +129,21 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
     IkSettings {
      ItemIKSettings "{61E63CAE67AFDD6A}" {
       MovementSpeedRange 0 1
-      IkSettingsStand 7
-      IkSettingsCrouch 7
-      IkSettingsProne 7
+      IkSettingsStand 0x7 0
+      IkSettingsCrouch 0x7 0
+      IkSettingsProne 0x7 0
      }
      ItemIKSettings "{61E63CAE67AFDD6C}" {
       MovementSpeedRange 1 2.5
-      IkSettingsStand 7
-      IkSettingsCrouch 7
-      IkSettingsProne 6
+      IkSettingsStand 0x7 0
+      IkSettingsCrouch 0x7 0
+      IkSettingsProne 0x6 0
      }
      ItemIKSettings "{61E63CAE67AFDD6E}" {
       MovementSpeedRange 2.5 3
-      IkSettingsStand 6
-      IkSettingsCrouch 6
-      IkSettingsProne 6
+      IkSettingsStand 0x6 0
+      IkSettingsCrouch 0x6 0
+      IkSettingsProne 0x6 0
      }
     }
     AnimationIKPose "{3B93DBA2F1AED3DD}Assets/Weapons/Rifles/AK74/anims/anmGP25/p_ak74_GP25_UGL_ik.anm"
@@ -189,25 +189,25 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
      IkSettings {
       ItemIKSettings "{61E63CAE67AFDD4D}" {
        MovementSpeedRange 0 1
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 7
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
       }
       ItemIKSettings "{61E63CAE67AFDD4E}" {
        MovementSpeedRange 1 2.5
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 6
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{61E63CAE67AE3F40}" {
        MovementSpeedRange 2.5 3
-       IkSettingsStand 6
-       IkSettingsCrouch 6
-       IkSettingsProne 6
+       IkSettingsStand 0x6 0
+       IkSettingsCrouch 0x6 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{61E63CAE67AE3F41}" {
        ProneTurn 1
-       IkSettingsStand 7
+       IkSettingsStand 0x7 0
       }
      }
      AnimationIKPose "{F34F7E3F9ECE0099}Assets/Weapons/Rifles/AK74/anims/anmGP25/p_ak74_GP25_ik.anm"
@@ -274,7 +274,7 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
     }
     m_Size SLOT_1x1
    }
-   StoragePurpose 32
+   StoragePurpose 0x20 0x1
   }
   ActionsManagerComponent "{5284E0EFF569AD07}" {
    Enabled 1
@@ -341,5 +341,5 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
    SimulateOnHeadless 0
   }
  }
- Flags 4194307
+ Flags 0x400003 0
 }

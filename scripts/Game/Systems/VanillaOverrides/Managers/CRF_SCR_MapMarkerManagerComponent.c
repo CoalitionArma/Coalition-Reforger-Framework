@@ -72,7 +72,13 @@ modded class SCR_MapMarkerManagerComponent
 	
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
 	{								
-		CRF_SafestartManager safestartMan = CRF_SafestartManager.GetInstance();	
+		CRF_SafestartManager safestartMan = CRF_SafestartManager.GetInstance();
+		if (!safestartMan)
+		{
+			super.OnAddSynchedMarker(marker);
+			return;
+		};
+
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		if (pc)

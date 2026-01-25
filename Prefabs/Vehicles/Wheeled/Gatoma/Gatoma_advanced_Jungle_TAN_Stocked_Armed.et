@@ -1,4 +1,4 @@
-Vehicle : "{1760B962AEA2719F}Prefabs/Vehicles/Wheeled/Gatoma/Gatoma_advanced_Jungle.et" {
+Vehicle {
  ID "BBCBA43A9778AE21"
  components {
   MeshObject "{51DAA09FEFBFC0E7}" {
@@ -65,5 +65,4 @@ Vehicle : "{1760B962AEA2719F}Prefabs/Vehicles/Wheeled/Gatoma/Gatoma_advanced_Jun
   }
  }
  coords 147.445 1 144.901
- angleY 0
 }

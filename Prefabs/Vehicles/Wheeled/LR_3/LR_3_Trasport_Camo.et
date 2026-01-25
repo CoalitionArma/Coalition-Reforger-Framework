@@ -22,5 +22,5 @@ Vehicle : "{9C7C2DC1C45E06A0}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Bas
   }
  }
  coords 2862.755 64.428 703.406
- angleY 104
+ angles 0 104 0
 }

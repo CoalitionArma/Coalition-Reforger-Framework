@@ -15,7 +15,7 @@ Vehicle : "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et" {
     m_Image "{F73A7173D14FDB31}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_tanker_MERDC.edds"
     m_sFaction "BLUFOR"
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
    }
   }
@@ -36,7 +36,7 @@ Vehicle : "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et" {
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Tank {
-     Prefab "{29DC3751588E54E7}Prefabs/Vehicles/Wheeled/M923A1/M923A1_fuel_tank_MERDC.et"
+     Prefab "{29DC3751588E54E7}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_fuel_tank_MERDC.et"
     }
    }
   }

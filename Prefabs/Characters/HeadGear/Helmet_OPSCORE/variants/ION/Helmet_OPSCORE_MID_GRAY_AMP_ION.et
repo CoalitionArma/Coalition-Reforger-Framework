@@ -7,7 +7,7 @@ GameEntity : "{8E35CFEB34D060AA}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helme
      Prefab "{79A869C91A7A1368}Prefabs/Characters/Eyewear/gascan/Eyewear_gascan_Blk.et"
     }
     RHS_LoadoutSlotInfo Masks {
-     Prefab "{BADB7C8F7B9AF1F4}Prefabs/Characters/HeadGear/Helmet_LShZ/Balaclava_LShZ_MCBlk.et"
+     Prefab "{BADB7C8F7B9AF1F4}Prefabs/Characters/HeadGear/Balaclavas/LShZ_Balaclava/Balaclava_LShZ_MCBlk.et"
     }
     RHS_LoadoutSlotInfo NVG {
      Prefab "{9A9555D10664B8CB}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_WP.et"

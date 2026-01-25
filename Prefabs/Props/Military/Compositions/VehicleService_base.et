@@ -1,4 +1,4 @@
-GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
   MeshObject "{5872F0EB7FA40561}" {
@@ -78,7 +78,7 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
     }
    }
    m_aAvailableTraits {
-    50
+    VEHICLE_CAR
    }
   }
   SCR_CatalogEntitySpawnerComponent "{6447525E56AFDDB2}" {

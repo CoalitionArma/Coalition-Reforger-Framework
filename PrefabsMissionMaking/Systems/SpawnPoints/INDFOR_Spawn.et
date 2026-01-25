@@ -84,7 +84,6 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
   CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
    ID "68682AC1BDF231D9"
    coords 0 0 0
-   angles 0 0 0
   }
  }
 }

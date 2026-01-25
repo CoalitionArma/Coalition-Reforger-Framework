@@ -66,8 +66,6 @@ GenericEntity : "{599A1E833BEF3A43}Prefabs/Weapons/MachineGuns/M249/MG_M249_base
        RoundsPerMinute 900
       }
      }
-     MagazineWell MagazineWellC_germg "{5534C496A19A521F}" {
-     }
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
       PivotID "snap_magazine"
       Offset 0.0182 0 -0.0117

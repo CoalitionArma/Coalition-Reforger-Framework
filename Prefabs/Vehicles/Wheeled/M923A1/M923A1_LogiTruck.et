@@ -15,7 +15,7 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     m_Image "{4C3B89AE70636D52}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo.edds"
     m_sFaction "US"
     m_aAuthoredLabels + {
-     27 280 210
+     TRAIT_REARMING TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels +{
     }
@@ -47,17 +47,17 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     }
    }
   }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
   SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
    "Additional aim points" {
     AimPoint "{5A44DB098ADDB55E}" : "{94ED6806120FB600}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_Truck.conf" {
-     AimPointPosition PointInfo "{5A44DB148C16BF03}" {
+     AimPointPosition AttachPoint "{5A44DB148C16BF03}" {
       Offset 0 2.25 -2.25
      }
     }
    }
-  }
-  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
-   m_fVehicleDestroyDamage 17524
   }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {

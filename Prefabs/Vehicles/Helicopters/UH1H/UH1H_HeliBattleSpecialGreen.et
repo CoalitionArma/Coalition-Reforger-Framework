@@ -19,7 +19,6 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
     CompartmentDoorInfo "{60F8D2B58CA24A75}" {
     }
     CompartmentDoorInfo "{60F8D2B4A57BB87E}" {
-     Coverage 0
      OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
       ParentContextList {
        "" ""
@@ -34,7 +33,6 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
      FakeDoor 1
     }
     CompartmentDoorInfo "{60F8D2B4B6C9A956}" {
-     Coverage 0
      OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
       ParentContextList {
        "" ""
@@ -54,7 +52,7 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#AR-Vehicle_UH1H_Armed_Name"
     m_aAuthoredLabels + {
-     21
+     TRAIT_ARMED
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {

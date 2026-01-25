@@ -10,7 +10,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     m_Image "{D5D72AE01574410E}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_tanker.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels + {
-     23 280
+     TRAIT_REFUELING TRAIT_ARSENAL
     }
     m_aAutoLabels +{
     }

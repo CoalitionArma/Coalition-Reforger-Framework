@@ -28,17 +28,17 @@ GenericEntity : "{5CA39ACB3F74625B}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
    }
    m_fMaxWeight 100000000
   }
-  RplComponent "{5476B36C54387F41}" {
-   "Rpl State Override" Runtime
-  }
-  SCR_InventoryStorageManagerComponent "{66C46EEBE319D084}" {
-  }
   SlotManagerComponent "{66C46EEAB4EF179C}" {
    Slots {
     EntitySlotInfo Cover {
      Prefab "{E98B1DE2DBE52D2C}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V5_cover.et"
     }
    }
+  }
+  SCR_InventoryStorageManagerComponent "{66C46EEBE319D084}" {
+  }
+  RplComponent "{5476B36C54387F41}" {
+   "Rpl State Override" Runtime
   }
  }
  coords 846.93 7.219 1474.268

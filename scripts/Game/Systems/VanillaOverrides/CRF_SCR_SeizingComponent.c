@@ -119,7 +119,8 @@ modded class SCR_SeizingComponent
 		};
 		
 		CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();
-		rm.RespawnAllSides();
+		if (rm)
+			rm.RespawnAllSides();
 		
 		super.NotifyPlayerInRadius(faction);
 	}

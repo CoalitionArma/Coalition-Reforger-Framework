@@ -1,6 +1,6 @@
 MatPBRBasic {
  Cull none
- BCRMap "{3C11EF3C5B51A286}Assets/Props/Fabric/Flags/Data/GERFlagWorld.edds"
+ BCRMap "{3C11EF3C5B51A286}Assets/Materials/Flags/Factions/data/GERFlagWorld.edds"
  NormalPower 1.2
  NMOMap "{C39D234EF0D4B94D}Assets/Props/Fabric/Flags/Data/Flag_1_2_N.edds"
  GlobalMapsUVTransform MatUVTransform "{589E89E460291744}" {

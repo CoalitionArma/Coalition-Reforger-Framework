@@ -7,7 +7,7 @@ GenericEntity : "{62AFF7A02EE209F9}Prefabs/Props/Military/Compositions/VehicleSe
   SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
    m_bUserActionActivationOnly 0
    m_aAvailableTraits + {
-    54 53 1285538991
+    VEHICLE_TRUCK VEHICLE_APC VEHICLE_TANK
    }
   }
   SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
@@ -15,10 +15,10 @@ GenericEntity : "{62AFF7A02EE209F9}Prefabs/Props/Military/Compositions/VehicleSe
    m_eBuildingLabel SERVICE_VEHICLE_DEPOT_HEAVY
    m_sDelegatePrefab "{5B423F7ACE06881D}Prefabs/Systems/Services/ServicePointDelegate_VehicleDepotLight.et"
    m_aCatalogTypes {
-    30
+    VEHICLE
    }
    m_aAllowedLabels {
-    50 54 53 1285538991
+    VEHICLE_CAR VEHICLE_TRUCK VEHICLE_APC VEHICLE_TANK
    }
   }
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {

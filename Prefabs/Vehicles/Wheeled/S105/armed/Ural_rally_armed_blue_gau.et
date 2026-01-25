@@ -21,7 +21,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
     m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
     m_aAuthoredLabels + {
-     21
+     TRAIT_ARMED
     }
    }
   }
@@ -68,7 +68,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     DisablePhysicsInteraction 1
     DeactivatePhysicsOnAtaching 1
    }
-   WeaponTemplate "{10183E46CD7CEF84}Prefabs/Weapons/AircraftWeapons/Miniguns/GAU19.et"
+   WeaponTemplate "{E6FAD6B2D64B2965}Prefabs/Weapons/AircraftWeapons/Miniguns/GAU19.et"
   }
  }
 }

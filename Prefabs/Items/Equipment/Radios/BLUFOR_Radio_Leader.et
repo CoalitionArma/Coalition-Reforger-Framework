@@ -13,7 +13,5 @@ GenericEntity : "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_G
   }
  }
  coords 0 0 0
- angleX -90
- angleY -180
- angleZ -180
+ angles -90 -180 -180
 }

@@ -43,8 +43,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
      AttachmentSlot InventoryStorageSlot Scope {
       ChildPivotID "snap_weapon"
      }
-     AttachmentType AttachmentOpticsMosinPU "{58E2BCF93BDCA8BA}" {
-     }
      AttachmentObstructs 0
     }
     AttachmentSlotComponent "{6644F40408715ED6}" {
@@ -314,8 +312,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
        ManualAction 1
       }
      }
-     MagazineWell MagazineWellMosin "{52D8E2D6B49EF12E}" {
-     }
      WeaponAimModifiers {
       SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
        IsEnabled 1
@@ -344,34 +340,6 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
      }
      OutOfADSWhileReloading 1
      MagazineTemplate "{CA96DF808C7F2269}Prefabs/Weapons/Magazines/Magazine_762x54_B30_Mosin_Nagant.et"
-    }
-    SCR_BoltAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{7C5D11BD4B0DBD8A}Assets/Weapons/Rifles/workspaces/mosin.agr"
-     AnimInstance "{304BFBC3098D66EB}Assets/Weapons/Rifles/workspaces/mosin_weapon.asi"
-     AnimVariables {
-      AnimationVariableInt "{6644F41BE16110B1}" {
-       VariableName "MosinAmmoCount"
-       SignalName "MosinAmmoCount"
-      }
-     }
-     AlwaysActive 0
-     AnimInjection AnimationAttachmentInfo "{532F3A9CB912F2BA}" {
-      AnimGraph "{7C5D11BD4B0DBD8A}Assets/Weapons/Rifles/workspaces/mosin.agr"
-      AnimInstance "{CB156AF2918C0207}Assets/Weapons/Rifles/workspaces/mosin_player.asi"
-     }
-     AutoVariablesBind 1
-     AnimVariablesToBind + {
-      "MosinAmmoCount"
-     }
-     m_sCasingEjectionAnimation "{38D9CB344FD6151E}Particles/Weapon/Casing_762x54_Mosin.ptc"
-     m_effectPosition PointInfo "{6644F41BE16110BC}" {
-      PivotID "slot_magazine"
-      Offset 0 0 0.0417
-      Angles 0 72.4431 0
-     }
-     m_sShellPrefab "{E0DB673C9DE516D1}Prefabs/Weapons/Ammo/BC_Dummy_Round_762x54r_Ball_BS32.et"
-     m_sBulletMesh "Bullet"
-     m_sCasingMesh "Casing"
     }
    }
    UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
