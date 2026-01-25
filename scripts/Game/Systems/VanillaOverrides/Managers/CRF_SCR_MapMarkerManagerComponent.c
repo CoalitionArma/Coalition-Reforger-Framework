@@ -22,7 +22,8 @@ modded class SCR_MapMarkerManagerComponent
 	
 	void RequestGlobalMarkersRefresh()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
+		if (CRF_RplToAuthorityManager.GetInstance())
+			CRF_RplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
 	}
 	
 	//Method used for JIPs to get markers placed during safestart

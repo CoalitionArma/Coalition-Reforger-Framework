@@ -154,7 +154,7 @@ modded class SCR_VONController
 	
 	override void ComputeSpectatorLR(int playerId, out float outLeft = 1, out float outRight = 1, out int silencedDecibels = 0)
 	{
-		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		if (CRF_Gamemode.GetInstance() && CRF_Gamemode.GetInstance().m_bIsInEndCredits)
 		{
 			outLeft = 0;
 			outRight = 0;
@@ -410,7 +410,7 @@ modded class SCR_VONController
 	    bool    normalizePeak  = true
 	)
 	{
-		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		if (CRF_Gamemode.GetInstance() && CRF_Gamemode.GetInstance().m_bIsInEndCredits)
 		{
 			outLeft = 0;
 			outRight = 0;
