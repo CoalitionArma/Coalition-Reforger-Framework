@@ -130,11 +130,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
-
-	// Generic spawn point for spectator camera (handles entity streaming)
-	[RplProp()]
-	vector m_vGenericSpawn[4];
-	bool m_bGenericSpawnSet = false;
 	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------

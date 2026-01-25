@@ -10,6 +10,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	
 	// Component references
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_CameraManager m_CameraManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_PlayerControllerManager m_PlayerControllerComponent;
 	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
@@ -32,6 +33,7 @@ class CRF_PlayableCharacter : ScriptComponent
 
 		// Initialize managers
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_CameraManager = CRF_CameraManager.GetInstance();
 		m_PlayerControllerComponent = CRF_PlayerControllerManager.GetInstance();
 		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
 		
@@ -175,8 +177,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!m_eSpecEntity)
 			return;
 		
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerComp || !playerControllerComp.m_eCamera)
+		if (!m_CameraManager || !m_CameraManager.m_eCamera)
 			return;
 		
 		// Get the slot component for camera positioning
@@ -198,7 +199,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		transform[3] = offsetPosition;
 		
 		// Apply transform to spectator camera
-		playerControllerComp.m_eCamera.SetTransform(transform);
+		m_CameraManager.m_eCamera.SetTransform(transform);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -226,7 +227,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayerPosition(IEntity owner)
 	{
-		if (!m_PlayerControllerComponent.m_eCamera)
+		if (!m_CameraManager.m_eCamera)
 			return;
 		
 		// AAR state check
@@ -247,12 +248,12 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
-			m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
+			m_CameraManager.m_eCamera.GetWorldTransform(mat);
 
-			if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
+			if (GetGame().GetCallqueue().GetRemainingTime(m_CameraManager.UpdateStoredCameraPos) <= 0)
 			{
 				GetGame().GetCallqueue().CallLater(
-					m_PlayerControllerComponent.UpdateStoredCameraPos, 
+					m_CameraManager.UpdateStoredCameraPos, 
 					1000, 
 					false, 
 					mat[0], mat[1], mat[2], mat[3]
@@ -279,6 +280,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		mat[3] = m_vSpreadPos;
 		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
-		m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
+		m_CameraManager.m_eCamera.SetWorldTransform(mat);
 	}
 }
