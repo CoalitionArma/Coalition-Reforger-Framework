@@ -6,19 +6,23 @@ AudioClass {
    tl -25 -328.437
    res "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
    inputsport {
-    23 52
+    23
+    52
    }
    outputsport {
     37
    }
    inputvalues {
-    0 1000
+    0
+    1000
    }
    inputvaluesmin {
-    0 0
+    0
+    0
    }
    inputvaluesmax {
-    1 10000
+    1
+    10000
    }
    path "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
   }
@@ -28,19 +32,31 @@ AudioClass {
    tl 512.87 128
    res "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
    inputsport {
-    1 35 112
+    1
+    35
+    112
    }
    outputsport {
-    39 105 107 106 110
+    39
+    105
+    107
+    106
+    110
    }
    inputvalues {
-    40 0 0
+    40
+    0
+    0
    }
    inputvaluesmin {
-    0 0 0
+    0
+    0
+    0
    }
    inputvaluesmax {
-    100 1 16000
+    100
+    1
+    16000
    }
    path "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
   }
@@ -50,19 +66,39 @@ AudioClass {
    tl -963.478 -156.522
    res "{C3E05BC9953729B5}Sounds/RadioBroadcast/CustomRadioBroadcast.sig"
    inputsport {
-    30 31 32 35 41
+    30
+    31
+    32
+    35
+    41
    }
    outputsport {
-    33 34 36 37 40
+    33
+    34
+    36
+    37
+    40
    }
    inputvalues {
-    0 0 0 0 0
+    0
+    0
+    0
+    0
+    0
    }
    inputvaluesmin {
-    0 0 0 0 0
+    0
+    0
+    0
+    0
+    0
    }
    inputvaluesmax {
-    100 1 300000 1 1
+    100
+    1
+    300000
+    1
+    1
    }
    path "{C3E05BC9953729B5}Sounds/RadioBroadcast/CustomRadioBroadcast.sig"
   }
@@ -163,7 +199,8 @@ AudioClass {
     }
    }
    pi {
-    1 0
+    1
+    0
    }
    ports {
     PortClass DJ {
@@ -185,7 +222,43 @@ AudioClass {
    res "{B764D803219C775E}Sounds/FinalMix.afm"
    path "{B764D803219C775E}Sounds/FinalMix.afm"
    inputs {
-    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb_OBSOLETE" "VON_Reverb_Small" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin" "VON_Reverb_Medium" "VON_Reverb_Large"
+    "WPN_Handling"
+    "WPN_Shots"
+    "WPN_Explosions"
+    "WNP_BulletHits"
+    "CHAR"
+    "ENV_AMB_2D"
+    "VEH_Animations"
+    "Impacts"
+    "Dialog"
+    "ENV_Doors"
+    "VEH_Engine"
+    "VEH_Tires"
+    "VON"
+    "SFX"
+    "SFX_Reverb_OBSOLETE"
+    "VON_Reverb_Small"
+    "Dialog_Reverb"
+    "Impacts_EXT"
+    "ENV_AMB_3D"
+    "WPN_SonicCracks"
+    "CHAR_Gear"
+    "PA"
+    "SFX_Reverb_Exterior"
+    "ENV_AMB_3D_Reverb_Exterior"
+    "SFX_Direct"
+    "SFX_Reverb_Small"
+    "SFX_Reverb_Medium"
+    "SFX_Reverb_Large"
+    "WPN_Shots_Player"
+    "Dialog_Reverb_Small"
+    "Dialog_Reverb_Medium"
+    "Dialog_Reverb_Large"
+    "WPN_TravelingProjectile"
+    "Dialog_Delay_Exterior"
+    "SFX_Reverb_InCabin"
+    "VON_Reverb_Medium"
+    "VON_Reverb_Large"
    }
   }
   MixerClass "49163" {
@@ -226,11 +299,13 @@ AudioClass {
     }
    }
    pi {
-    1 0
+    1
+    0
    }
    path "{AF08E302CF8BA2E6}Sounds/FinalMix_UI_Music.afm"
    inputs {
-    "Music" "UI"
+    "Music"
+    "UI"
    }
   }
  }
@@ -283,7 +358,8 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
   }
   ShaderClass "18450" {
@@ -330,7 +406,8 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
   }
   ShaderClass "19474" {
@@ -377,7 +454,8 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
   }
  }
@@ -413,10 +491,12 @@ AudioClass {
     }
    }
    pi {
-    16 0
+    16
+    0
    }
    pu {
-    16 0
+    16
+    0
    }
    dynamicUpdate 1
    enableDirectivity 1
@@ -489,10 +569,12 @@ AudioClass {
     }
    }
    pi {
-    21 0
+    21
+    0
    }
    pu {
-    1 0
+    1
+    0
    }
    Selection CustomSignalIndex
    Resampler FIR_8
@@ -522,10 +604,12 @@ AudioClass {
     }
    }
    pi {
-    1 0
+    1
+    0
    }
    pu {
-    1 0
+    1
+    0
    }
    Volume -8
    "Loop count" 255
@@ -575,10 +659,12 @@ AudioClass {
     }
    }
    pi {
-    21 0
+    21
+    0
    }
    pu {
-    1 0
+    1
+    0
    }
    Selection CustomSignalIndex
    Resampler FIR_8
@@ -645,10 +731,12 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
    pu {
-    6 0
+    6
+    0
    }
    OSPort 22535
   }
@@ -695,10 +783,12 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
    pu {
-    6 0
+    6
+    0
    }
    OSPort 22535
   }
@@ -745,10 +835,12 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
    pu {
-    6 0
+    6
+    0
    }
    OSPort 22535
   }

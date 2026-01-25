@@ -1,6 +1,6 @@
 AudioClass {
  sounds {
-  SoundClass {
+  SoundClass "{6872A369BED98600}" {
    id 4105
    name "RUSH_BEEP"
    version 5
@@ -21,7 +21,7 @@ AudioClass {
   }
  }
  mixers {
-  MixerClass {
+  MixerClass "{6872A369BED986BA}" {
    id 3083
    name "OutputState 9"
    version 4
@@ -39,16 +39,53 @@ AudioClass {
     }
    }
    pi {
-    16384 0
+    16384
+    0
    }
    path "{B764D803219C775E}Sounds/FinalMix.afm"
    inputs {
-    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "Music" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb" "VON_Reverb" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "UI" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin"
+    "WPN_Handling"
+    "WPN_Shots"
+    "WPN_Explosions"
+    "WNP_BulletHits"
+    "CHAR"
+    "ENV_AMB_2D"
+    "VEH_Animations"
+    "Impacts"
+    "Dialog"
+    "Music"
+    "ENV_Doors"
+    "VEH_Engine"
+    "VEH_Tires"
+    "VON"
+    "SFX"
+    "SFX_Reverb"
+    "VON_Reverb"
+    "Dialog_Reverb"
+    "Impacts_EXT"
+    "ENV_AMB_3D"
+    "WPN_SonicCracks"
+    "CHAR_Gear"
+    "PA"
+    "SFX_Reverb_Exterior"
+    "UI"
+    "ENV_AMB_3D_Reverb_Exterior"
+    "SFX_Direct"
+    "SFX_Reverb_Small"
+    "SFX_Reverb_Medium"
+    "SFX_Reverb_Large"
+    "WPN_Shots_Player"
+    "Dialog_Reverb_Small"
+    "Dialog_Reverb_Medium"
+    "Dialog_Reverb_Large"
+    "WPN_TravelingProjectile"
+    "Dialog_Delay_Exterior"
+    "SFX_Reverb_InCabin"
    }
   }
  }
  shaders {
-  ShaderClass {
+  ShaderClass "{6872A369BED986DB}" {
    id 7186
    name "Shader 3"
    version 5
@@ -92,12 +129,13 @@ AudioClass {
     }
    }
    pi {
-    7 0
+    7
+    0
    }
   }
  }
  amplitudes {
-  AmplitudeClass {
+  AmplitudeClass "{6872A369BED98716}" {
    id 6163
    name "Amplitude 5"
    version 5
@@ -108,7 +146,7 @@ AudioClass {
   }
  }
  frequency {
-  FrequencyClass {
+  FrequencyClass "{6872A369BED9870A}" {
    id 5141
    name "Frequency 4"
    version 5
@@ -117,7 +155,7 @@ AudioClass {
   }
  }
  banks_local {
-  BankLocalClass {
+  BankLocalClass "{6872A369BED98778}" {
    id 1028
    name "Bank 1"
    version 7
@@ -130,7 +168,7 @@ AudioClass {
   }
  }
  spatialities {
-  SpatialityClass {
+  SpatialityClass "{6872A369BED98741}" {
    id 2076
    name "Spatiality 6"
    version 5

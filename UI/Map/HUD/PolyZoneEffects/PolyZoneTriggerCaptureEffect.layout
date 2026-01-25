@@ -3,10 +3,6 @@ PanelWidgetClass {
  Slot LayoutSlot "{5F38BC501A1901F1}" {
  }
  Color 0.008 0.012 0.016 1
- components {
-  PS_PolyZoneEffectHUDTriggerCapture "{60FD404F2C9D1262}" {
-  }
- }
  style full
  {
   VerticalLayoutWidgetClass "{60FD404FB51C99C6}" {

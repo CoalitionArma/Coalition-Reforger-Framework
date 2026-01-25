@@ -267,7 +267,7 @@ FrameWidgetClass {
     SizeToContent 1
    }
    Opacity 0
-   Texture "{0B2A63596D36430B}UI/Timer.edds"
+   Texture "{0B2A63596D36430B}UI/Images/LobbyImages/Timer.edds"
    Size 20 20
    "Shadow Offset" 0.5 0.5
   }

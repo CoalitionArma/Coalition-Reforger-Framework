@@ -6,19 +6,23 @@ AudioClass {
    tl -1804.915 39.086
    res "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
    inputsport {
-    23 52
+    23
+    52
    }
    outputsport {
     37
    }
    inputvalues {
-    0 1000
+    0
+    1000
    }
    inputvaluesmin {
-    0 0
+    0
+    0
    }
    inputvaluesmax {
-    1 10000
+    1
+    10000
    }
    path "{A45B14CDEA2D5DCD}Sounds/_SharedData/Signals/Props/Props_Occlusion.sig"
   }
@@ -42,7 +46,8 @@ AudioClass {
     }
    }
    pi {
-    3 0
+    3
+    0
    }
   }
  }
@@ -125,11 +130,48 @@ AudioClass {
     }
    }
    pi {
-    24576 0
+    24576
+    0
    }
    path "{B764D803219C775E}Sounds/FinalMix.afm"
    inputs {
-    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb_OBSOLETE" "VON_Reverb_Small" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin" "VON_Reverb_Medium" "VON_Reverb_Large"
+    "WPN_Handling"
+    "WPN_Shots"
+    "WPN_Explosions"
+    "WNP_BulletHits"
+    "CHAR"
+    "ENV_AMB_2D"
+    "VEH_Animations"
+    "Impacts"
+    "Dialog"
+    "ENV_Doors"
+    "VEH_Engine"
+    "VEH_Tires"
+    "VON"
+    "SFX"
+    "SFX_Reverb_OBSOLETE"
+    "VON_Reverb_Small"
+    "Dialog_Reverb"
+    "Impacts_EXT"
+    "ENV_AMB_3D"
+    "WPN_SonicCracks"
+    "CHAR_Gear"
+    "PA"
+    "SFX_Reverb_Exterior"
+    "ENV_AMB_3D_Reverb_Exterior"
+    "SFX_Direct"
+    "SFX_Reverb_Small"
+    "SFX_Reverb_Medium"
+    "SFX_Reverb_Large"
+    "WPN_Shots_Player"
+    "Dialog_Reverb_Small"
+    "Dialog_Reverb_Medium"
+    "Dialog_Reverb_Large"
+    "WPN_TravelingProjectile"
+    "Dialog_Delay_Exterior"
+    "SFX_Reverb_InCabin"
+    "VON_Reverb_Medium"
+    "VON_Reverb_Large"
    }
   }
  }
@@ -187,7 +229,8 @@ AudioClass {
     }
    }
    pi {
-    23 0
+    23
+    0
    }
   }
   ShaderClass "13330" {
@@ -243,7 +286,8 @@ AudioClass {
     }
    }
    pi {
-    23 0
+    23
+    0
    }
   }
  }
@@ -334,7 +378,7 @@ AudioClass {
    "Infinite loop" 1
    Samples {
     AudioBankSampleClass "CCOWarBG.wav" {
-     Filename "{2FBE561BC12C5A7A}Sounds/CCOWarBG.wav"
+     Filename "{2FBE561BC12C5A7A}Sounds/Background Noise/WarBG.wav"
      Probability 100
      Index 0
      SampleMetadata ""
@@ -351,7 +395,7 @@ AudioClass {
    "Infinite loop" 1
    Samples {
     AudioBankSampleClass "CCOWarBG.wav" {
-     Filename "{2FBE561BC12C5A7A}Sounds/CCOWarBG.wav"
+     Filename "{2FBE561BC12C5A7A}Sounds/Background Noise/WarBG.wav"
      Probability 100
      Index 0
      SampleMetadata ""
