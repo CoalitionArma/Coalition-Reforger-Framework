@@ -36,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "OPFOR Composition: Motorized Infantry Platoon"\
    "OPFOR Assets: 1x Eng Team and 1x MMG"\
    ""\
-   "Time:  6:30 am (Sunrise)"\
+   "Time:  7:00 am (Sunrise)"\
    ""\
    "Weather: Clear Fog"
    m_aFactionKeys {
