@@ -1,0 +1,18 @@
+CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/INDFOR_NewObjectiveMarker.et" {
+ coords 2067.794 152.083 2047.228
+ m_fWorldSize 40
+ m_sDescription "Intruders"
+ m_aVisibleForFactions +{
+  "CIV"
+ }
+ m_sMissionMarkerDescription "Intruders"
+}
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ coords 2179.81 297.136 1421.03
+ m_fWorldSize 40
+ m_sDescription "Tomb of the Pharaoh"
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+ m_sMissionMarkerDescription "Tomb of the Pharaoh"
+}
