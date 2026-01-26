@@ -6,7 +6,6 @@ class CRF_CameraManager : ScriptComponent
 {
 	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
 	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
-	protected vector m_vGenericSpawn[4];   // Stores camera transform between sessions
 	
 	protected static CRF_CameraManager m_sInstance;
 	
@@ -15,6 +14,7 @@ class CRF_CameraManager : ScriptComponent
 	protected IEntity m_eCameraEntity;
 	protected vector m_vCameraOrbitPoint;
 	protected float m_vCameraOrbitDistance;
+	protected float m_vCameraOrbitHeight;
 	protected PolylineShapeEntity m_CameraPolyLine;
 	
 	//------------------------------------------------------------------------------------------------
@@ -64,12 +64,13 @@ class CRF_CameraManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetCameraOnRailsOrbit(vector point, float distance)
+	void SetCameraOnRailsOrbit(vector point, float distance, float height)
 	{	
 		if (m_eCamera) {
 			ClearCameraOnRailsVariables();
 			m_vCameraOrbitPoint = point;
 			m_vCameraOrbitDistance = distance;
+			m_vCameraOrbitHeight = height;
 			InitalizeCameraOnRails();
 		}
 	}
@@ -98,6 +99,7 @@ class CRF_CameraManager : ScriptComponent
 		m_CameraPolyLine = null;
 		m_vCameraOrbitPoint = vector.Zero;
 		m_vCameraOrbitDistance = 0;
+		m_vCameraOrbitHeight = 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -142,7 +144,7 @@ class CRF_CameraManager : ScriptComponent
 		} 
 		// Fallback to generic spawn position
 		else {
-			cameraPos = m_vGenericSpawn;
+			cameraPos[3] = CRF_Gamemode.GetInstance().GetGenericSpawn();
 		}
 			
 		// Set up camera entity
