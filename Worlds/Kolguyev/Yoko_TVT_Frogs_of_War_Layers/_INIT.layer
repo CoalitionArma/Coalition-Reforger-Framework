@@ -28,9 +28,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Green Berets have been taksed with capturing Udarnik, to establish a foothold on the island. "\
+   m_sTextData "Green Berets have been tasked with capturing Udarnik, establishing a foothold on the island. "\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Composition: Amphibious Infantry Company"\
    "BLUFOR Assets: 2x RHIB (Minigun)"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
