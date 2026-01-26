@@ -10,6 +10,13 @@ class CRF_CameraManager : ScriptComponent
 	
 	protected static CRF_CameraManager m_sInstance;
 	
+	protected bool m_bCameraOnRails;
+	
+	protected IEntity m_eCameraEntity;
+	protected vector m_vCameraOrbitPoint;
+	protected float m_vCameraOrbitDistance;
+	protected PolylineShapeEntity m_CameraPolyLine;
+	
 	//------------------------------------------------------------------------------------------------
 	// STATIC ACCESSORS
 	//------------------------------------------------------------------------------------------------
@@ -47,10 +54,77 @@ class CRF_CameraManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void SetCameraOnRailsEntity(IEntity entity)
+	{
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_eCameraEntity = entity;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetCameraOnRailsOrbit(vector point, float distance)
+	{	
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_vCameraOrbitPoint = point;
+			m_vCameraOrbitDistance = distance;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetCameraOnRailsPolyline(PolylineShapeEntity poly)
+	{
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_CameraPolyLine = poly;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void InitalizeCameraOnRails()
+	{
+		m_bCameraOnRails = true;
+		SetEventMask(GetOwner(), EntityEvent.FRAME);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void ClearCameraOnRailsVariables()
+	{
+		m_eCameraEntity = null;
+		m_CameraPolyLine = null;
+		m_vCameraOrbitPoint = vector.Zero;
+		m_vCameraOrbitDistance = 0;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+	    super.EOnFrame(owner, timeSlice);
+		
+		if (!m_bCameraOnRails || !m_eCamera)
+		{
+			ClearCameraOnRailsVariables();
+			ClearEventMask(owner, EntityEvent.FRAME);
+			return;
+		} else {
+			switch (true) 
+			{
+				case (m_vCameraOrbitPoint != vector.Zero) : FrameUpdateOrbit(); break;
+				case (m_eCameraEntity) : FrameUpdateEntity(); break;
+				case (m_CameraPolyLine) : FrameUpdatePolyline(); break;
+			}
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	/*!
 	 * Initilizes players if they have a valid spectator entity
 	 */
-	void InitilizeInitialCamera()
+	void InitilizeSpecCamera()
 	{
 		vector cameraPos[4];
 		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
@@ -89,4 +163,41 @@ class CRF_CameraManager : ScriptComponent
 		// Switch to spectator camera
 		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdateEntity()
+	{
+		// Get the slot component for camera positioning
+		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eCameraEntity.FindComponent(SlotManagerComponent));
+		if (!slotComp)
+			return;
+		
+		// Get the first-person camera slot
+		EntitySlotInfo cameraPoint = slotComp.GetSlotByName("CRF_FPP");
+		if (!cameraPoint)
+			return;
+		
+		// Get transform and modify it to be slightly behind and to the right of the player
+		vector transform[4];
+		cameraPoint.GetTransform(transform);
+		
+		// Calculate offset position (0.5m back, 0.3m right for over-shoulder view)
+		vector offsetPosition = transform[3] - (transform[2] * 0.5) + (transform[0] * 0.3);
+		transform[3] = offsetPosition;
+		
+		// Apply transform to spectator camera
+		m_eCamera.SetTransform(transform);
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdateOrbit()
+	{
+	
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdatePolyline()
+	{
+	
+	}
 }

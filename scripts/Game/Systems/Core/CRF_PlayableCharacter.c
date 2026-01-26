@@ -64,13 +64,6 @@ class CRF_PlayableCharacter : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetCameraUpdateEnabled(bool updateCamera, IEntity specEntity)
-	{
-		m_eSpecEntity = specEntity;
-		m_bCameraUpdateEnabled = updateCamera;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	void SetInitialEntity(IEntity owner)
 	{
 		// Disable AI next frame to avoid race condition
@@ -154,9 +147,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		UpdateEntityPhysics(owner);
 		
-		if (m_bCameraUpdateEnabled)
-			OnFrameSpectatorCamera();
-		
 		// Handle position updates for local player entity only
 		if (RplSession.Mode() == RplMode.Dedicated)
 			return;
@@ -167,40 +157,6 @@ class CRF_PlayableCharacter : ScriptComponent
 			ClearEventMask(owner, EntityEvent.FRAME);
 	}
 	
-	/**
-	 * Frame event handler for smooth spectator camera tracking
-	 * Called every frame when spectating an entity for smoother camera movement
-	 */
-	protected void OnFrameSpectatorCamera()
-	{
-		// Exit if no spectator entity
-		if (!m_eSpecEntity)
-			return;
-		
-		if (!m_CameraManager || !m_CameraManager.m_eCamera)
-			return;
-		
-		// Get the slot component for camera positioning
-		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
-		if (!slotComp)
-			return;
-		
-		// Get the first-person camera slot
-		EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
-		if (!camera)
-			return;
-		
-		// Get transform and modify it to be slightly behind and to the right of the player
-		vector transform[4];
-		camera.GetTransform(transform);
-		
-		// Calculate offset position (0.5m back, 0.3m right for over-shoulder view)
-		vector offsetPosition = transform[3] - (transform[2] * 0.5) + (transform[0] * 0.3);
-		transform[3] = offsetPosition;
-		
-		// Apply transform to spectator camera
-		m_CameraManager.m_eCamera.SetTransform(transform);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected bool ShouldDeleteEntity(IEntity owner)

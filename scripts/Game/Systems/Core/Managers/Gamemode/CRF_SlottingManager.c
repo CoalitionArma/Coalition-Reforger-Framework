@@ -612,6 +612,8 @@ class CRF_SlottingManager : ScriptComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
+		
+		
 		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 		SCR_Faction scrFaction = SCR_Faction.Cast(faction);
 		

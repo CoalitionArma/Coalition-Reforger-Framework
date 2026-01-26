@@ -31,6 +31,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;        // Reference to the gamemode manager
 	protected CRF_SlottingManager m_SlottingManager;		 // Reference to the slotting manager
 	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;  // Network authority manager
+	protected CRF_CameraManager m_CameraManager;                  // Reference to the local camera manager
 	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
@@ -75,6 +76,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
+		m_CameraManager = CRF_CameraManager.GetInstance();
 
 		// Register input action handlers
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
@@ -130,6 +132,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 */
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
+		m_CameraManager.InitilizeSpecCamera();
+		
 		// Register for VON (voice chat)
 		m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
 		
@@ -151,14 +155,14 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizeLocalCharacter()
 	{
 		// Clean up previous camera if exists
-		GetGame().GetCameraManager().CurrentCamera();
+		if (m_CameraManager.m_eCamera)
+			delete m_CameraManager.m_eCamera;
 		
 		// Originally added for data collector
 		m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
 		
 		// Reset Stored Pos
-		CRF_CameraManager cameraManager = CRF_CameraManager.GetInstance();
-		GetGame().GetCallqueue().CallLater(cameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+		GetGame().GetCallqueue().CallLater(m_CameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
 		
 		// Reset kill feed type to default
 		SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(

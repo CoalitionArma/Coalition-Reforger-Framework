@@ -456,8 +456,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (!CRF_GamemodeManager.IsSpectator(specEntity))
 				return;
 			
-			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
-			playableChar.SetCameraUpdateEnabled(true, m_eSpecEntity);
+			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			camManager.SetCameraOnRailsEntity(m_eSpecEntity);
 			
 			m_bFrameEventRegistered = true;
 		}
@@ -475,8 +475,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (!CRF_GamemodeManager.IsSpectator(specEntity))
 				return;
 			
-			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
-			playableChar.SetCameraUpdateEnabled(false, null);
+			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			camManager.SetCameraOnRailsEntity(null);
 			
 			m_bFrameEventRegistered = false;
 		}
