@@ -10,6 +10,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	
 	// Component references
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_CameraManager m_CameraManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_PlayerControllerManager m_PlayerControllerComponent;
 	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
@@ -32,6 +33,7 @@ class CRF_PlayableCharacter : ScriptComponent
 
 		// Initialize managers
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_CameraManager = CRF_CameraManager.GetInstance();
 		m_PlayerControllerComponent = CRF_PlayerControllerManager.GetInstance();
 		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
 		
@@ -59,13 +61,6 @@ class CRF_PlayableCharacter : ScriptComponent
 	void SetIsSlotSpawned()
 	{
 		m_bIsSlotSpawned = true;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetCameraUpdateEnabled(bool updateCamera, IEntity specEntity)
-	{
-		m_eSpecEntity = specEntity;
-		m_bCameraUpdateEnabled = updateCamera;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -152,9 +147,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		UpdateEntityPhysics(owner);
 		
-		if (m_bCameraUpdateEnabled)
-			OnFrameSpectatorCamera();
-		
 		// Handle position updates for local player entity only
 		if (RplSession.Mode() == RplMode.Dedicated)
 			return;
@@ -165,41 +157,6 @@ class CRF_PlayableCharacter : ScriptComponent
 			ClearEventMask(owner, EntityEvent.FRAME);
 	}
 	
-	/**
-	 * Frame event handler for smooth spectator camera tracking
-	 * Called every frame when spectating an entity for smoother camera movement
-	 */
-	protected void OnFrameSpectatorCamera()
-	{
-		// Exit if no spectator entity
-		if (!m_eSpecEntity)
-			return;
-		
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerComp || !playerControllerComp.m_eCamera)
-			return;
-		
-		// Get the slot component for camera positioning
-		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
-		if (!slotComp)
-			return;
-		
-		// Get the first-person camera slot
-		EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
-		if (!camera)
-			return;
-		
-		// Get transform and modify it to be slightly behind and to the right of the player
-		vector transform[4];
-		camera.GetTransform(transform);
-		
-		// Calculate offset position (0.5m back, 0.3m right for over-shoulder view)
-		vector offsetPosition = transform[3] - (transform[2] * 0.5) + (transform[0] * 0.3);
-		transform[3] = offsetPosition;
-		
-		// Apply transform to spectator camera
-		playerControllerComp.m_eCamera.SetTransform(transform);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected bool ShouldDeleteEntity(IEntity owner)
@@ -226,7 +183,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayerPosition(IEntity owner)
 	{
-		if (!m_PlayerControllerComponent.m_eCamera)
+		if (!m_CameraManager.m_eCamera)
 			return;
 		
 		// AAR state check
@@ -247,12 +204,12 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
-			m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
+			m_CameraManager.m_eCamera.GetWorldTransform(mat);
 
-			if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
+			if (GetGame().GetCallqueue().GetRemainingTime(m_CameraManager.UpdateStoredCameraPos) <= 0)
 			{
 				GetGame().GetCallqueue().CallLater(
-					m_PlayerControllerComponent.UpdateStoredCameraPos, 
+					m_CameraManager.UpdateStoredCameraPos, 
 					1000, 
 					false, 
 					mat[0], mat[1], mat[2], mat[3]
@@ -279,6 +236,6 @@ class CRF_PlayableCharacter : ScriptComponent
 		mat[3] = m_vSpreadPos;
 		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
-		m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
+		m_CameraManager.m_eCamera.SetWorldTransform(mat);
 	}
 }

@@ -17,12 +17,6 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
-	//0 - BLUFOR
-	//1 - OPFOR
-	//2 - INDFOR
-	//3 - CIV
-	vector m_vLastSlotRegisteredPosition[4] = {"0 0 0", "0 0 0", "0 0 0", "0 0 0"};
-	
 	protected static CRF_SlottingManager m_sInstance;
 	
 	// Resource caching for optimized spawning

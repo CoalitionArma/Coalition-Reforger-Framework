@@ -469,6 +469,8 @@ class CRF_RespawnManager : ScriptComponent
 		
 		// Broadcast UI updates to clients
 		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
+		
+		m_Gamemode.GetAOCenter();
 	}
 	
 	//------------------------------------------------------------------------------------------------
