@@ -1,51 +1,51 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 4550.695 -0.037 261.518
+  coords 4550.695 -0.3 261.518
   m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4542.906 -0.656 261.518
+  coords 4542.906 -0.919 261.518
   m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4534.155 -0.656 261.518
+  coords 4534.155 -0.919 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4526.451 -0.919 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4517.406 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4526.451 -0.656 261.518
+  coords 4507.818 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4517.406 -0.656 261.518
+  coords 4498.43 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4507.818 -0.656 261.518
+  coords 4490.854 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4498.43 -0.656 261.518
+  coords 4482.874 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4490.854 -0.656 261.518
-  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
-  m_sFactionKey "BLUFOR"
- }
- {
-  coords 4482.874 -0.656 261.518
-  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
-  m_sFactionKey "BLUFOR"
- }
- {
-  coords 4474.652 -0.656 261.518
+  coords 4474.652 -0.919 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
  }
@@ -86,5 +86,59 @@ $grp CRF_VehicleSpawner {
   coords 4455.859 -0.812 261.518
   m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
   m_sFactionKey "BLUFOR"
+ }
+}
+$grp Turret : "{1B9C20F0ED5B191D}M119/M119_fieldgun_Smoke/M119SMOKEHE.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
+    MultiSlots {
+     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
+     }
+     MultiSlotConfiguration "{68761C9EF7C61741}" {
+     }
+    }
+   }
+   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4481.515 2.247 218.24
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
+    MultiSlots {
+     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{68761C9EF7C61741}" {
+      NumSlots 0
+     }
+    }
+   }
+   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4460.778 2.275 218.33
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
+    MultiSlots {
+     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{68761C9EF7C61741}" {
+      NumSlots 0
+     }
+    }
+   }
+   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4471.007 2.255 218.28
  }
 }

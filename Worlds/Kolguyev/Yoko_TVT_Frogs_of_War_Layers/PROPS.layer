@@ -211,10 +211,34 @@ $grp SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infr
  }
 }
 SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
- coords 4442.912 146.218 245.549
- angles 0 -179.301 0
+ coords 4552.017 146.688 191.842
+ angles 0 1.274 0
 }
-SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {
- coords 4314.031 1.186 2809.282
- angles 0 -162.419 0
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 4311.607 22.781 2854.332
+  angles 0 -165.244 0
+ }
+ {
+  coords 4438.336 17.513 2920.591
+  angles 0 87.866 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {
+ {
+  coords 4314.031 1.186 2809.282
+  angles 0 -162.419 0
+ }
+ {
+  coords 4427.626 0.422 2769.204
+  angles 0 139.09 0
+ }
+ {
+  coords 4556.372 0.529 2825.875
+  angles 0 158.695 0
+ }
+ {
+  coords 4243.967 0.533 2898.767
+  angles 0 -149.309 0
+ }
 }

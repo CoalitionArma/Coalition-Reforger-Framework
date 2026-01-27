@@ -31,7 +31,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Green Berets have been tasked with capturing Udarnik, establishing a foothold on the island. "\
    ""\
    "BLUFOR Composition: Amphibious Infantry Company"\
-   "BLUFOR Assets: 2x RHIB (Minigun)"\
+   "BLUFOR Assets: 4x RHIB (Minigun) and 3x 105mm Fieldgun"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
    "OPFOR Assets: 1x Eng Team and 1x MMG"\
@@ -86,7 +86,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "N/A"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -97,15 +97,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68740B52C200723E}" {
+  CRF_SlottingGroup "{68761C9D30106D4D}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
     COMPANY_COMMANDER
     FIRST_SERGEANT
+    JTAC
    }
   }
-  CRF_SlottingGroup "{68740B52C20073FA}" {
+  CRF_SlottingGroup "{68761C9D30106E07}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -113,7 +114,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68740B52C2007453}" {
+  CRF_SlottingGroup "{68761C9D30106F84}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -128,7 +129,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C20074CB}" {
+  CRF_SlottingGroup "{68761C9D301068FC}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +144,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C2007551}" {
+  CRF_SlottingGroup "{68761C9D30106888}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -158,7 +159,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C20075C6}" {
+  CRF_SlottingGroup "{68761C9D3010681F}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -166,7 +167,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68740B52C20075A7}" {
+  CRF_SlottingGroup "{68761C9D301069BD}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C2007620}" {
+  CRF_SlottingGroup "{68761C9D30106931}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,7 +197,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C20076AB}" {
+  CRF_SlottingGroup "{68761C9D30106ACC}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -211,9 +212,19 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
+  CRF_SlottingGroup "{68761C9D30106A64}" {
+   m_sCallsign "ARTILLERY"
+   m_FlagType ARTILLERY
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_GUNNER
+    INDIRECT_GUNNER
+   }
+  }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68740B52C2007794}" {
+  CRF_SlottingGroup "{68761C9D30106B95}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -221,7 +232,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68740B52C2004875}" {
+  CRF_SlottingGroup "{68761C9D30106B34}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -236,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C20048F9}" {
+  CRF_SlottingGroup "{68761C9D301074BB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -251,7 +262,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C200497C}" {
+  CRF_SlottingGroup "{68761C9D30107448}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -266,7 +277,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68740B52C20049E8}" {
+  CRF_SlottingGroup "{68761C9D301075D1}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -278,7 +289,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68740B52C2004A43}" {
+  CRF_SlottingGroup "{68761C9D30107573}" {
    m_sCallsign "ENGI"
    m_FlagType MAINTENANCE
    m_aSlots {
