@@ -11,6 +11,12 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     }
    }
   }
+  ParachuteComponent "{65932336581E53D0}" {
+   m_fHardLandingVelocity 50
+   m_fDeathLandingVelocity 100
+   m_bBreakLegs 0
+   m_bFallToDeath 0
+  }
   SCR_FastTravelComponent "{5DAA74121E45C2EB}" {
    m_iCooldown 0
    m_iDistanceToTarget 5
