@@ -146,32 +146,32 @@ $grp CRF_VehicleSpawner {
 }
 $grp SCR_VehicleSpawn {
  {
-  coords 4514.42 134.873 5824.102
-  angles -0.485 90.285 -0.017
+  coords 4124.143 135.961 6713.075
+  angles 0.476 -102.963 -0.095
   m_rnPrefab "{4EF93A3807E3C000}Prefabs/Vehicles/Wheeled/LAV25/LAV25_D_2004.et"
   respawnDelay 10000
  }
  {
-  coords 4514.495 134.867 5839.111
-  angles -0.485 90.285 -0.017
+  coords 4127.508 136.368 6698.45
+  angles 0.476 -102.963 -0.095
   m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
   respawnDelay 10000
  }
  {
-  coords 4514.47 134.869 5834.103
-  angles -0.485 90.285 -0.017
+  coords 4126.384 136.259 6703.329
+  angles 0.476 -102.963 -0.095
   m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
   respawnDelay 10000
  }
  {
-  coords 4514.443 134.871 5828.684
-  angles -0.485 90.285 -0.017
+  coords 4125.17 136.113 6708.61
+  angles 0.476 -102.963 -0.095
   m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
   respawnDelay 10000
  }
  {
-  coords 4514.395 134.875 5818.985
-  angles -0.485 90.285 -0.017
+  coords 4122.994 135.827 6718.064
+  angles 0.476 -102.963 -0.095
   m_rnPrefab "{4EF93A3807E3C000}Prefabs/Vehicles/Wheeled/LAV25/LAV25_D_2004.et"
   respawnDelay 10000
  }

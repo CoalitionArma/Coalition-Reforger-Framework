@@ -5,10 +5,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -668.535 0 -3091.609
   }
   ShapePoint "{6874ECD7EC099DDD}" {
-   Position -878.124 0 -1636.324
+   Position -952.52 0 -1569.259
   }
   ShapePoint "{6874ECD7F2FF8F20}" {
-   Position -674.712 0 -1583.84
+   Position -686.146 0 -1512.254
   }
   ShapePoint "{6874ECD7F4F44F7F}" {
    Position -762.467 0 -871.362
