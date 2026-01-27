@@ -88,57 +88,25 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
 }
-$grp Turret : "{1B9C20F0ED5B191D}M119/M119_fieldgun_Smoke/M119SMOKEHE.et" {
+$grp Turret : "{1B9C20F0ED5B191D}M119/M119_fieldgun_HE_only/M119HE.et" {
  {
-  components {
-   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
-    MultiSlots {
-     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
-     }
-     MultiSlotConfiguration "{68761C9EF7C61741}" {
-     }
-    }
-   }
-   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
-    "faction affiliation" "BLUFOR"
-   }
-  }
-  coords 4481.515 2.247 218.24
+  coords 4446.712 2.236 236.73
  }
  {
-  components {
-   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
-    MultiSlots {
-     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
-      NumSlots 0
-     }
-     MultiSlotConfiguration "{68761C9EF7C61741}" {
-      NumSlots 0
-     }
-    }
-   }
-   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
-    "faction affiliation" "BLUFOR"
-   }
-  }
-  coords 4460.778 2.275 218.33
+  coords 4462.376 2.222 228.216
  }
  {
-  components {
-   SCR_UniversalInventoryStorageComponent "{68761C9EC4FCDABC}" {
-    MultiSlots {
-     MultiSlotConfiguration "{68761C9EC4FCDACA}" {
-      NumSlots 0
-     }
-     MultiSlotConfiguration "{68761C9EF7C61741}" {
-      NumSlots 0
-     }
-    }
-   }
-   SCR_VehicleFactionAffiliationComponent "{68761C9EC4FCDAC7}" {
-    "faction affiliation" "BLUFOR"
-   }
-  }
-  coords 4471.007 2.255 218.28
+  coords 4478.985 2.222 236.363
+ }
+}
+$grp Turret : "{F2B55C1D6271E61F}M119/M119_fieldgun_HE_only/M119Smoke.et" {
+ {
+  coords 4454.937 2.211 236.637
+ }
+ {
+  coords 4487.275 2.211 236.34
+ }
+ {
+  coords 4470.604 2.211 228.206
  }
 }

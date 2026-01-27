@@ -245,7 +245,7 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
      SlotTemplate InventoryStorageSlot ammo {
       Prefab "{C4328B4EADF42343}Prefabs/Weapons/Ammo/105mmHE_muzzlemag.et"
      }
-     NumSlots 25
+     NumSlots 50
     }
     MultiSlotConfiguration "{68761C9EC4FCDAC8}" {
      SlotTemplate InventoryStorageSlot ammo {
@@ -253,14 +253,8 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
      }
      NumSlots 5
     }
-    MultiSlotConfiguration "{68761C9EF7C61741}" {
-     SlotTemplate InventoryStorageSlot ammo2 {
-      Prefab "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
-     }
-     NumSlots 25
-    }
    }
-   m_fMaxWeight 75000
+   m_fMaxWeight 10000000
   }
   SCR_VehicleCameraDataComponent "{51AE850D79DDB1F5}" {
    m_fHeight 1.3
