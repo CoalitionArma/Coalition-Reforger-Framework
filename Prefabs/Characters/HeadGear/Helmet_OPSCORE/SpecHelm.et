@@ -12,15 +12,15 @@ GameEntity : "{FFE310568696EB49}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helme
    Materials {
     MaterialAssignClass "{64DF1411AD820C52}" {
      SourceMaterial "MATERIAL_PODUSHKA"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{64DF1411AD820CB3}" {
      SourceMaterial "MATERIAL_XP"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{64DF1411AD820CBD}" {
      SourceMaterial "straps"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
    PixelSizeScale 0

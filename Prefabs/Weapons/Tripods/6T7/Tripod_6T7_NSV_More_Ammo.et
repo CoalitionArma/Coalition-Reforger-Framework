@@ -14,33 +14,5 @@ Turret : "{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et" {
     }
    }
   }
-  StaticWeaponComponent "{652B5503ECA3B579}" {
-   m_rWeaponBagPrefab "{B4C47869B0B37699}Prefabs/Items/Equipment/Backpacks/NSV/Backpack_NSV_Weapon.et"
-   m_rBipodBagPrefab "{7611D0DAE5796941}Prefabs/Items/Equipment/Backpacks/Backpack_USSR_Bipod.et"
-  }
-  ActionsManagerComponent "{51ACD09C7181BA0B}" {
-   additionalActions {
-    MoveWeaponAction "{652B5503ECA3B515}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{652B5503ECA3B511}" {
-      Name "Move Weapon"
-     }
-     Duration 5
-     "Sort Priority" 3
-    }
-    DisassembleWeaponAction "{652B5503ECA3B51F}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{652B5503ECA3B51E}" {
-      Name "Disassemble Weapon"
-     }
-     Duration 5
-     "Sort Priority" 4
-    }
-   }
-  }
  }
 }

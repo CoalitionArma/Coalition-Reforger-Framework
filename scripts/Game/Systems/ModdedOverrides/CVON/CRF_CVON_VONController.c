@@ -66,7 +66,7 @@ modded class SCR_VONController
 		if (playerId == 0)
 			return false;
 
-		if (!m_FactionManager.GetPlayerFaction(playerId))
+		if (!m_FactionManager || !m_FactionManager.GetPlayerFaction(playerId))
 			return false;
 		
 		string otherFactionKey = m_FactionManager.GetPlayerFaction(playerId).GetFactionKey();
@@ -77,8 +77,11 @@ modded class SCR_VONController
 	
 	bool InSameChannel(int playerId)
 	{
-		int frequency = CRF_MenuManager.GetInstance().GetChannel(m_PlayerController.GetPlayerId());
-		int senderFrequency = CRF_MenuManager.GetInstance().GetChannel(playerId);
+		if (!m_CRFMenuManager)
+			return false;
+		
+		int frequency = m_CRFMenuManager.GetChannel(m_PlayerController.GetPlayerId());
+		int senderFrequency = m_CRFMenuManager.GetChannel(playerId);
 		
 		//Are we deafened
 		if (frequency == 0)
@@ -151,7 +154,7 @@ modded class SCR_VONController
 	
 	override void ComputeSpectatorLR(int playerId, out float outLeft = 1, out float outRight = 1, out int silencedDecibels = 0)
 	{
-		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		if (CRF_Gamemode.GetInstance() && CRF_Gamemode.GetInstance().m_bIsInEndCredits)
 		{
 			outLeft = 0;
 			outRight = 0;
@@ -407,7 +410,7 @@ modded class SCR_VONController
 	    bool    normalizePeak  = true
 	)
 	{
-		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		if (CRF_Gamemode.GetInstance() && CRF_Gamemode.GetInstance().m_bIsInEndCredits)
 		{
 			outLeft = 0;
 			outRight = 0;

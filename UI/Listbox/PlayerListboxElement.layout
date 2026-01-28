@@ -33,7 +33,7 @@ ButtonWidgetClass {
         Padding 0 0 5 0
        }
        "Is Visible" 0
-       Texture "{5315FE771E747FBB}UI/data/Speaker_Icon.edds"
+       Texture "{5315FE771E747FBB}UI/Images/LobbyImages/Speaker_Icon.edds"
        Size 32 32
       }
       ImageWidgetClass "{630A25D7A5616D16}" {

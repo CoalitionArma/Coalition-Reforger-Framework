@@ -22,10 +22,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
 	Widget m_wSavedHintWidget;             // Reference to hint widget for reuse
 	
-	// Camera and Spectator
-	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
-	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
-	
 	// Game Performance Settings
 	protected int m_iFPS = -1;              // Stored user FPS setting (-1 means uninitialized)
 	protected int m_iAudioSetting = -1;     // Stored audio volume (-1 means uninitialized)
@@ -35,6 +31,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;        // Reference to the gamemode manager
 	protected CRF_SlottingManager m_SlottingManager;		 // Reference to the slotting manager
 	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;  // Network authority manager
+	protected CRF_CameraManager m_CameraManager;                  // Reference to the local camera manager
 	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
@@ -79,6 +76,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
+		m_CameraManager = CRF_CameraManager.GetInstance();
 
 		// Register input action handlers
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
@@ -134,49 +132,14 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 */
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
-		vector cameraPos[4];
-		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
+		m_CameraManager.InitilizeSpecCamera();
 		
-		//If Respawns are enabled, everybody goes to the fixed spectator position
-		if (CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled)
-			cameraPos[3] = Vector(0, 500, 0);
-		// Use provided death position if available
-		else if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
-			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
-		}
-		// Use stored camera position if available
-		else if (CRF_GamemodeManager.IsValidSpawnVector(m_vStoredCameraPos[3])) {
-			cameraPos = m_vStoredCameraPos;
-		} 
-		// Fallback to generic spawn position
-		else {
-			cameraPos = m_Gamemode.m_vGenericSpawn;
-		}
-			
-		// Set up camera entity
-		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
-		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
-		cameraSpawnParams.Transform = cameraPos;
-
-		// Spawn or reposition camera
-		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
-		else
-			m_eCamera.SetWorldTransform(cameraPos);
-		
-		// Level camera horizon
-		vector mat = m_eCamera.GetAngles();
-		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
-
 		// Register for VON (voice chat)
 		m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
 		
 		// Open spectator menu if in game state
 		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
-		
-		// Switch to spectator camera
-		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
 		
 		// Turn on killfeed for specs
 		SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(
@@ -192,14 +155,14 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizeLocalCharacter()
 	{
 		// Clean up previous camera if exists
-		if (m_eCamera)
-			delete m_eCamera;
+		if (m_CameraManager.m_eCamera)
+			delete m_CameraManager.m_eCamera;
 		
 		// Originally added for data collector
 		m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
 		
 		// Reset Stored Pos
-		GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+		GetGame().GetCallqueue().CallLater(m_CameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
 		
 		// Reset kill feed type to default
 		SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(
@@ -220,37 +183,25 @@ class CRF_PlayerControllerManager : ScriptComponent
 	{
 		m_bHUDVisible = !m_bHUDVisible;
 	}
-	
-	/**
-	 * Updates stored camera position for persistence between sessions
-	 * @param cameraPosToStore - Array of 4 vectors representing camera transform
-	 */
-	void UpdateStoredCameraPos(vector cameraPosToStoreOne, vector cameraPosToStoreTwo, vector cameraPosToStoreThree, vector cameraPosToStoreFour)
-	{
-		m_vStoredCameraPos[0] = cameraPosToStoreOne;
-		m_vStoredCameraPos[1] = cameraPosToStoreTwo;
-		m_vStoredCameraPos[2] = cameraPosToStoreThree;
-		m_vStoredCameraPos[3] = cameraPosToStoreFour;
-	}
 
 	/**
 	 * Updates entity position and resets physics
-	 * @param cameraPos - New position/transform
+	 * @param position - New position/transform
 	 */
-	void UpdateEntityPos(vector cameraPos[4])
+	void UpdateEntityPos(vector position[4])
 	{
 		IEntity player = GetGame().GetPlayerController().GetControlledEntity();
 
 		// Align to terrain if not a character
 		if (!ChimeraCharacter.Cast(player))
-			SCR_TerrainHelper.OrientToTerrain(cameraPos);
+			SCR_TerrainHelper.OrientToTerrain(position);
 
 		// Teleport or transform entity
 		BaseGameEntity baseGameEntity = BaseGameEntity.Cast(player);
 		if (baseGameEntity)
-			baseGameEntity.Teleport(cameraPos);
+			baseGameEntity.Teleport(position);
 		else
-			player.SetWorldTransform(cameraPos);
+			player.SetWorldTransform(position);
 
 		// Reset physics to prevent unwanted movement
 		Physics phys = player.GetPhysics();

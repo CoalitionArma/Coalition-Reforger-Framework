@@ -5,7 +5,7 @@ Vehicle : "{A003493D32140960}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_ba
    Materials {
     MaterialAssignClass "{686C158D0DBF78F4}" {
      SourceMaterial "uaz452_body"
-     AssignedMaterial "{B7498331E7A05FAE}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_black_subArma.emat"
+     AssignedMaterial "{B7498331E7A05FAE}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_black_SubArma.emat"
     }
     MaterialAssignClass "{686C158D0DBF78C9}" {
      SourceMaterial "uaz452_interior_1"

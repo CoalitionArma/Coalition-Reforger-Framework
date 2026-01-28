@@ -1,6 +1,6 @@
 MatPBRBasic {
  Cull none
- BCRMap "{62C0ACD6CF2544DD}Assets/Props/Fabric/Flags/Data/EASTGERFlagWorld.edds"
+ BCRMap "{62C0ACD6CF2544DD}Assets/Materials/Flags/Factions/data/EASTGERFlagWorld.edds"
  NormalPower 1.2
  NMOMap "{C39D234EF0D4B94D}Assets/Props/Fabric/Flags/Data/Flag_1_2_N.edds"
  GlobalMapsUVTransform MatUVTransform "{589E89E460291744}" {

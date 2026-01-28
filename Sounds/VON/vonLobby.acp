@@ -1,6 +1,6 @@
 AudioClass {
  signals {
-  SignalClass {
+  SignalClass "{6872A369BEDFDC58}" {
    id 30733
    name "Signal 1"
    tl -792.242 -542.905
@@ -9,7 +9,9 @@ AudioClass {
     1
    }
    outputsport {
-    5 8 12
+    5
+    8
+    12
    }
    inputvalues {
     1
@@ -21,51 +23,90 @@ AudioClass {
     1
    }
   }
-  SignalClass {
+  SignalClass "{6872A369BEDFDCA7}" {
    id 66573
    name "Signal 65"
    tl -18.571 -1113.444
    res "{2DE6099BBD60C620}Sounds/_SharedData/Signals/Character/Character_Occlusion.sig"
    inputsport {
-    1 2 6 7 8 20 50 54
+    1
+    2
+    6
+    7
+    8
+    20
+    50
+    54
    }
    outputsport {
-    5 36
+    5
+    36
    }
    inputvalues {
-    0 0 0 0 0 0 1000 400
+    0
+    0
+    0
+    0
+    0
+    0
+    1000
+    400
    }
    inputvaluesmin {
-    0 0 0 0 0 0 0 0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
    }
    inputvaluesmax {
-    1 1 1 1 1 1 10000 10000
+    1
+    1
+    1
+    1
+    1
+    1
+    10000
+    10000
    }
   }
-  SignalClass {
+  SignalClass "{6872A369BEDFDC9C}" {
    id 77837
    name "Signal Reverb"
    tl 501.25 -886.875
    res "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
    inputsport {
-    1 35 40
+    1
+    35
+    40
    }
    outputsport {
-    34 39 105
+    34
+    39
+    105
    }
    inputvalues {
-    40 1 1
+    40
+    1
+    1
    }
    inputvaluesmin {
-    0 0 0
+    0
+    0
+    0
    }
    inputvaluesmax {
-    100 1 1
+    100
+    1
+    1
    }
   }
  }
  filters {
-  FilterClass {
+  FilterClass "{6872A369BEDFDCF1}" {
    id 33814
    name "Filter Bitcrusher"
    version 5
@@ -92,7 +133,7 @@ AudioClass {
     bitMask "11010101"
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD32}" {
    id 39958
    name "Filter Compressor"
    version 5
@@ -108,7 +149,7 @@ AudioClass {
     release 50
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD2C}" {
    id 54294
    name "Filter HP"
    version 5
@@ -122,7 +163,7 @@ AudioClass {
     Q 1
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD19}" {
    id 58390
    name "Filter LP"
    version 5
@@ -135,7 +176,7 @@ AudioClass {
     Q 1.5
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD01}" {
    id 62486
    name "Filter LS"
    version 5
@@ -150,7 +191,7 @@ AudioClass {
     gain -6
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD75}" {
    id 63510
    name "Filter HP"
    version 5
@@ -165,7 +206,7 @@ AudioClass {
     Q 2
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD7C}" {
    id 64534
    name "Filter LP"
    version 5
@@ -179,7 +220,7 @@ AudioClass {
     Q 1.8
    }
   }
-  FilterClass {
+  FilterClass "{6872A369BEDFDD64}" {
    id 75798
    name "Filter Test"
    version 5
@@ -193,7 +234,7 @@ AudioClass {
   }
  }
  filter_chain {
-  FilterChainClass {
+  FilterChainClass "{6872A369BEDFDD5E}" {
    id 32791
    name "FilterChain"
    comment "Dont use compressor here. Creates panorama movement when DIRECT and RADIO are mixed."
@@ -234,7 +275,7 @@ AudioClass {
    }
    ports 3
   }
-  FilterChainClass {
+  FilterChainClass "{6872A369BEDFDDB9}" {
    id 53271
    name "FilterChain 52"
    version 5
@@ -284,7 +325,7 @@ AudioClass {
   }
  }
  sounds {
-  SoundClass {
+  SoundClass "{6872A369BEDFDD85}" {
    id 27657
    name "VON_RADIO"
    version 0
@@ -310,7 +351,7 @@ AudioClass {
    outState 13323
    outStatePort 77831
   }
-  SoundClass {
+  SoundClass "{6872A369BEDFDDE7}" {
    id 45065
    name "SOUND_ROGER_BEEP"
    version 0
@@ -330,7 +371,7 @@ AudioClass {
    outState 13323
    outStatePort 77831
   }
-  SoundClass {
+  SoundClass "{6872A369BEDFDDE9}" {
    id 49161
    name "VON_DIRECT"
    version 0
@@ -351,7 +392,7 @@ AudioClass {
    outState 13323
    outStatePort 77831
   }
-  SoundClass {
+  SoundClass "{6872A369BEDFDDDA}" {
    id 56329
    name "VON_RAW"
    version 0
@@ -372,7 +413,7 @@ AudioClass {
   }
  }
  buses {
-  BusClass {
+  BusClass "{6872A369BEDFDDC8}" {
    id 38919
    name "Bus 1"
    version 5
@@ -404,7 +445,7 @@ AudioClass {
     1
    }
   }
-  BusClass {
+  BusClass "{6872A369BEDFDA2D}" {
    id 50183
    name "Bus 49"
    version 5
@@ -449,7 +490,7 @@ AudioClass {
     1
    }
   }
-  BusClass {
+  BusClass "{6872A369BEDFDA02}" {
    id 52231
    name "Bus Direct Processing"
    version 5
@@ -480,7 +521,7 @@ AudioClass {
    volume 0.631
    volume_dB -4
   }
-  BusClass {
+  BusClass "{6872A369BEDFDA7E}" {
    id 76807
    name "Bus Test"
    version 5
@@ -511,20 +552,20 @@ AudioClass {
   }
  }
  generators {
-  GeneratorClass {
+  GeneratorClass "{6872A369BEDFDA5A}" {
    id 36869
    name "Generator 1"
    version 5
    tl -792.242 -214.893
    function BrownianNoise
-   time 10
    volume 0.2
    volume_dB -14
+   time 10
    loopCount 255
   }
  }
  mixers {
-  MixerClass {
+  MixerClass "{6872A369BEDFDAB4}" {
    id 13323
    name "OutputState"
    version 4
@@ -563,12 +604,40 @@ AudioClass {
    }
    path "{B764D803219C775E}Sounds/FinalMix.afm"
    inputs {
-    "ANM_Footsteps" "ANM_Voice" "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialogue" "Music" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb" "VON_Reverb" "Dialogue_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "UI" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct"
+    "ANM_Footsteps"
+    "ANM_Voice"
+    "WPN_Handling"
+    "WPN_Shots"
+    "WPN_Explosions"
+    "WNP_BulletHits"
+    "CHAR"
+    "ENV_AMB_2D"
+    "VEH_Animations"
+    "Impacts"
+    "Dialogue"
+    "Music"
+    "ENV_Doors"
+    "VEH_Engine"
+    "VEH_Tires"
+    "VON"
+    "SFX"
+    "SFX_Reverb"
+    "VON_Reverb"
+    "Dialogue_Reverb"
+    "Impacts_EXT"
+    "ENV_AMB_3D"
+    "WPN_SonicCracks"
+    "CHAR_Gear"
+    "PA"
+    "SFX_Reverb_Exterior"
+    "UI"
+    "ENV_AMB_3D_Reverb_Exterior"
+    "SFX_Direct"
    }
   }
  }
  shaders {
-  ShaderClass {
+  ShaderClass "{6872A369BEDFDAFD}" {
    id 22546
    name "Shader 1"
    version 5
@@ -616,7 +685,7 @@ AudioClass {
    }
    ITD 0
   }
-  ShaderClass {
+  ShaderClass "{6872A369BEDFDADD}" {
    id 44050
    name "Shader 4"
    version 5
@@ -646,7 +715,7 @@ AudioClass {
    }
    ITD 0
   }
-  ShaderClass {
+  ShaderClass "{6872A369BEDFDACA}" {
    id 46098
    name "Shader 2"
    version 5
@@ -664,7 +733,7 @@ AudioClass {
    }
    ITD 0
   }
-  ShaderClass {
+  ShaderClass "{6872A369BEDFDB3F}" {
    id 57362
    name "Shader 56"
    version 5
@@ -684,17 +753,17 @@ AudioClass {
   }
  }
  amplitudes {
-  AmplitudeClass : "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_10-5.conf" {
+  AmplitudeClass "{6872A369BEDFDB1A}" : "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-40LUFS_to_-35LUFS.conf" {
    id 23571
    version 5
    tl -18.571 -1190.389
    ctl 0 -21
-   parent "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_10-5.conf"
+   parent "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-40LUFS_to_-35LUFS.conf"
    outerRange 20
   }
  }
  frequency {
-  FrequencyClass : "{85F92D98658CB0F5}Sounds/_SharedData/Configs/Frequency/Character/Frequency_Character_Voice.conf" {
+  FrequencyClass "{6872A369BEDFDB7B}" : "{85F92D98658CB0F5}Sounds/_SharedData/Configs/Frequency/Character/Frequency_Character_Voice.conf" {
    id 78869
    version 5
    tl -18.194 -920.833
@@ -720,7 +789,7 @@ AudioClass {
   }
  }
  playlist {
-  PlaylistClass {
+  PlaylistClass "{6872A369BEDFDB52}" {
    id 43032
    name "Playlist 1"
    version 5
@@ -751,7 +820,7 @@ AudioClass {
   }
  }
  streams {
-  StreamClass {
+  StreamClass "{6872A369BEDFDB49}" {
    id 26641
    name "Stream 1"
    version 5
@@ -759,7 +828,7 @@ AudioClass {
   }
  }
  banks_local {
-  BankLocalClass {
+  BankLocalClass "{6872A369BEDFDBBB}" {
    id 40964
    name "Roger Beep A"
    version 0
@@ -779,7 +848,7 @@ AudioClass {
     }
    }
   }
-  BankLocalClass {
+  BankLocalClass "{6872A369BEDFDBF4}" {
    id 41988
    name "Roger Beep B"
    version 0
@@ -799,7 +868,7 @@ AudioClass {
     }
    }
   }
-  BankLocalClass {
+  BankLocalClass "{6872A369BEDFDBD7}" {
    id 55300
    name "Test Bank"
    version 0
@@ -813,7 +882,7 @@ AudioClass {
   }
  }
  spatialities {
-  SpatialityClass {
+  SpatialityClass "{6872A369BEDFDBC0}" {
    id 48156
    name "Spatiality"
    version 5
@@ -822,7 +891,7 @@ AudioClass {
   }
  }
  auxOuts {
-  AuxOutClass {
+  AuxOutClass "{6872A369BEDFD834}" {
    id 69661
    name "AuxOut Reverb INT"
    version 5

@@ -11,33 +11,5 @@ Turret : "{73530808E4B455BA}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et" {
     }
    }
   }
-  StaticWeaponComponent "{62EF5AC5756B91D0}" {
-   m_rWeaponBagPrefab "{14B5B4648300DD22}Prefabs/Items/Equipment/Backpacks/M2/Backpack_M2_Weapon.et"
-   m_rBipodBagPrefab "{A207909C42E58944}Prefabs/Items/Equipment/Backpacks/Backpack_US_Tripod.et"
-  }
-  ActionsManagerComponent "{51ACD09C7181BA0B}" {
-   additionalActions {
-    MoveWeaponAction "{62EF5AC5756B91EE}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62EF5AC5756B91F4}" {
-      Name "Move Weapon"
-     }
-     Duration 5
-     "Sort Priority" 3
-    }
-    DisassembleWeaponAction "{62EF5AC5756B91F1}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62EF5AC5756B91FD}" {
-      Name "Disassemble Weapon"
-     }
-     Duration 5
-     "Sort Priority" 4
-    }
-   }
-  }
  }
 }

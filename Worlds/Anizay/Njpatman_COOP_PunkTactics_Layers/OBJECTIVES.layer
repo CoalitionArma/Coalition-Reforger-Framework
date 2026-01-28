@@ -1,0 +1,18 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 6337.675 165.501 4672.898
+  m_sDescription "Secure Personnel"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7116.953 361.761 3660.836
+  m_sDescription "Secure Palace"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

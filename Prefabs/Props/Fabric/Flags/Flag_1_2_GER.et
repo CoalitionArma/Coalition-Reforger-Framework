@@ -5,7 +5,7 @@ GenericEntity : "{AE09DA7896F9DB37}Prefabs/Props/Fabric/Flags/Flag_1_2.et" {
    Materials {
     MaterialAssignClass "{673F045FB01CB5BA}" {
      SourceMaterial "Flag_1_2"
-     AssignedMaterial "{6AB201474F6B1B43}Assets/Props/Fabric/Flags/Data/Flag_1_2_GER.emat"
+     AssignedMaterial "{6AB201474F6B1B43}Assets/Materials/Flags/Factions/Flag_GER.emat"
     }
    }
   }

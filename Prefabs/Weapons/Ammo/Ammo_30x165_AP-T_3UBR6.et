@@ -1,4 +1,4 @@
-TracerProjectile : "{6DEC9F287271AB24}Prefabs/Weapons/Ammo/Ammo_127x99_AP_M2.et" {
+TracerProjectile : "{6DEC9F287271AB24}Prefabs/Weapons/Ammo/SmallArms/Ammo_127x99_AP_M2.et" {
  ID "476AE74C1F2F140D"
  components {
   CollisionTriggerComponent "{6463399D24AD37B7}" {
@@ -32,7 +32,7 @@ TracerProjectile : "{6DEC9F287271AB24}Prefabs/Weapons/Ammo/Ammo_127x99_AP_M2.et"
      DamageValue 2500
     }
    }
-   BallisticTableConfig "{9CB7C5D3DD2A3C2A}Configs/Weapons/AIBallisiticTables/AIBT_127x99_APIT_M20.conf"
+   BallisticTableConfig "{9CB7C5D3DD2A3C2A}Configs/Weapons/AIBallisiticTables/SmallArms/AIBT_127x99_APIT_M20.conf"
    AirDrag 0.0000117
    Length 70
    TumblingDamageMultiplier 0

@@ -288,77 +288,79 @@ modded class CRF_GearscriptManager
 	 * @param vehicle The vehicle entity to equip with gear
 	 * @param factionKey The key identifying the faction to use for gear configuration
 	 */
-void SetVehicleGear(IEntity vehicle, string factionKey)
-{
-	// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
-	ChimeraGame game = GetGame();
-	
-	//Lets find a faction, if there is none start looking for one in the loop.
-	Faction faction = SCR_FactionManager.Cast(game.GetFactionManager()).GetFactionByKey(factionKey);
-	if (!faction)
-	{	
-		float closestPlayerDistance;
-		IEntity closestPlayer;
-		factionKey = "";
-		array<AIAgent> agents = {};
+	void SetVehicleGear(IEntity vehicle, string factionKey)
+	{
+		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
+		ChimeraGame game = GetGame();
 		
-		game.GetAIWorld().GetAIAgents(agents);		foreach (AIAgent agent: agents)
-		{
-			IEntity aiPlayer = agent.GetControlledEntity();
-			if (!aiPlayer)
-				continue;
+		//Lets find a faction, if there is none start looking for one in the loop.
+		Faction faction = SCR_FactionManager.Cast(game.GetFactionManager()).GetFactionByKey(factionKey);
+		if (!faction)
+		{	
+			float closestPlayerDistance;
+			IEntity closestPlayer;
+			factionKey = "";
+			array<AIAgent> agents = {};
 			
-			if (!ChimeraCharacter.Cast(aiPlayer))
-				continue;
-			
-			// Cache component lookup - PERFORMANCE OPTIMIZATION
-			FactionAffiliationComponent factionComp = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent));
-			
-			if (!closestPlayer)
+			game.GetAIWorld().GetAIAgents(agents);		foreach (AIAgent agent: agents)
 			{
-				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-				if (closestPlayerDistance > 200)
+				IEntity aiPlayer = agent.GetControlledEntity();
+				if (!aiPlayer)
 					continue;
+				
+				if (!ChimeraCharacter.Cast(aiPlayer))
+					continue;
+				
+				// Cache component lookup - PERFORMANCE OPTIMIZATION
+				FactionAffiliationComponent factionComp = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent));
+				
+				if (!closestPlayer)
+				{
+					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+					if (closestPlayerDistance > 200)
+						continue;
+					closestPlayer = aiPlayer;
+					if (factionComp)
+					{
+						factionKey = factionComp.GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
+					continue;
+				}
+				
+				float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+				if (playerDistance > closestPlayerDistance || playerDistance > 200)
+					continue;
+				
 				closestPlayer = aiPlayer;
+				closestPlayerDistance = playerDistance;
 				if (factionComp)
+					{
+						factionKey = factionComp.GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
+			}			//There's no players
+				if (!closestPlayer)
 				{
-					factionKey = factionComp.GetAffiliatedFactionKey();
+					m_VehiclesInQueue.Insert(vehicle);
+					return;
 				}
-				else
-					factionKey = "CIV";
-				continue;
-			}
+	
+				
+	
 			
-			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-			if (playerDistance > closestPlayerDistance || playerDistance > 200)
-				continue;
-			
-			closestPlayer = aiPlayer;
-			closestPlayerDistance = playerDistance;
-			if (factionComp)
-				{
-					factionKey = factionComp.GetAffiliatedFactionKey();
-				}
-				else
-					factionKey = "CIV";
-		}			//There's no players
-			if (!closestPlayer)
-			{
-				m_VehiclesInQueue.Insert(vehicle);
-				return;
-			}
-
-			
-
+			faction = game.GetFactionManager().GetFactionByKey(factionKey);
+			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
+		}		
 		
-		faction = game.GetFactionManager().GetFactionByKey(factionKey);
-		Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
-	}		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(faction.GetFactionKey());
+		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(faction.GetFactionKey());
 		if (gsContainer.m_aSupplyTrucks.Contains(vehicle.GetPrefabData().GetPrefabName()))
 			SetTruckGear(vehicle, faction, gsContainer, true);
 		else
 			SetTruckGear(vehicle, faction, gsContainer, false);
-		
+			
 	}
 	
 	bool IsSupplyTruck(IEntity truck, string factionKey)
@@ -672,6 +674,10 @@ void SetVehicleGear(IEntity vehicle, string factionKey)
 				continue;
 			
 			suppliesNeeded += SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, factionKey, isSupply, true, truck.GetPrefabData().GetPrefabName());
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			invManager.TrySpawnPrefabToStorage("{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et");
 		}
 		return suppliesNeeded;
 	}

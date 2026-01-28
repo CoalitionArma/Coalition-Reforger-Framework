@@ -263,7 +263,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void UpdateCompass()
 	{
 		// Get camera yaw angle
-		float yaw = -CRF_PlayerControllerManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
+		float yaw = -CRF_CameraManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
 		float yawFloat = -yaw;
 		
 		// Convert negative angles to 0-360 range
@@ -400,7 +400,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 */
 	protected void UpdateSpectatorCamera(float tDelta)
 	{
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
+		CRF_CameraManager cameraManager = CRF_CameraManager.GetInstance();
 		
 		if (m_eSpecEntity)
 		{
@@ -422,8 +422,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				UnregisterFrameEvent();
 				
 				// Reset camera angle after leaving FPP
-				vector mat = playerControllerComp.m_eCamera.GetAngles();
-				playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+				vector mat = cameraManager.m_eCamera.GetAngles();
+				cameraManager.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 			}
 			else
 			{
@@ -438,8 +438,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		else if(!m_eSpecEntity && m_bFPPEntityValidityCheck)
 		{
 			// Reset camera roll when not spectating and unregister frame event
-			vector mat = playerControllerComp.m_eCamera.GetAngles();
-			playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+			vector mat = cameraManager.m_eCamera.GetAngles();
+			cameraManager.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 			UnregisterFrameEvent();
 		}
 	}
@@ -456,8 +456,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (!CRF_GamemodeManager.IsSpectator(specEntity))
 				return;
 			
-			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
-			playableChar.SetCameraUpdateEnabled(true, m_eSpecEntity);
+			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			camManager.SetCameraOnRailsEntity(m_eSpecEntity);
 			
 			m_bFrameEventRegistered = true;
 		}
@@ -475,8 +475,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (!CRF_GamemodeManager.IsSpectator(specEntity))
 				return;
 			
-			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
-			playableChar.SetCameraUpdateEnabled(false, null);
+			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			camManager.SetCameraOnRailsEntity(null);
 			
 			m_bFrameEventRegistered = false;
 		}

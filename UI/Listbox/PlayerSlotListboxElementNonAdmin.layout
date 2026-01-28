@@ -55,7 +55,7 @@ ButtonWidgetClass {
           SizeY 52.017
           OffsetBottom -43.517
          }
-         Texture "{7294DBB54D4BFED6}UI/data/SFC_Rank.edds"
+         Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
          Size 40 40
         }
         TextWidgetClass "{632444CB4D4DDE7F}" {
@@ -184,7 +184,7 @@ ButtonWidgetClass {
           SizeY 0
           OffsetBottom 0
          }
-         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Texture "{356FBF661306DFD6}UI/Images/LobbyImages/disconnect_icon.edds"
          Size 800 800
         }
        }

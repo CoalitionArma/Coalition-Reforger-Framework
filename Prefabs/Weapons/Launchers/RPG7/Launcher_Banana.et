@@ -10,11 +10,11 @@ GenericEntity : "{BD048236F83D85DA}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_
     ItemAnimationAttributes ItemAnimationAttributes "{5284960DAA53DDFC}" {
      IkSettings {
       ItemIKSettings "{5526E345D0462B03}" {
-       IkSettingsStand 4
+       IkSettingsStand 0x4 0
       }
       ItemIKSettings "{666C0086D7628BD5}" {
        ProneTurn 1
-       IkSettingsStand 4
+       IkSettingsStand 0x4 0
       }
      }
     }
@@ -24,7 +24,7 @@ GenericEntity : "{BD048236F83D85DA}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_
    components {
     SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
      AllowWeaponDeployment 0
-     AmmoTemplate "{9DC0CFF13E3F473E}Prefabs/Weapons/Ammo/Ammo_Rocket_CAR.et"
+     AmmoTemplate "{9DC0CFF13E3F473E}Prefabs/Weapons/Ammo/Ammo_Rocket_Banana.et"
      AllowDetachingProjectile 1
     }
    }

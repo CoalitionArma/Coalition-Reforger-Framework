@@ -21,6 +21,18 @@ PolylineShapeEntity {
  IsClosed 1
  LineColor 0.251 0 0.502 1
  {
+  CRF_ManualMarker {
+   ID "65885ABE4C9EEBA5"
+   coords 0 0 0
+   m_MarkerColor 0.251 0 0.502 1
+   m_sQuadName "mine-single-2"
+   m_fWorldSize 15
+   m_sDescription "CIV Safe Start Area"
+   m_aVisibleForFactions {
+    "CIV"
+   }
+   m_iZOrder 10
+  }
   CRF_PolyZoneTrigger {
    ID "6586537D9DECC16D"
    components {
@@ -53,19 +65,6 @@ PolylineShapeEntity {
    m_aFactionKey {
     "BLUFOR" "OPFOR" "INDFOR" "SPEC"
    }
-  }
-  CRF_ManualMarker : "{8245D146576FEB30}PrefabsEditable/Markers/CIVSafeStartBorderMarker.et" {
-   ID "65885ABE4C9EEBA5"
-   coords 0 0 0
-   angleY 0
-   m_MarkerColor 0.251 0 0.502 1
-   m_sQuadName "mine-single-2"
-   m_fWorldSize 15
-   m_sDescription "CIV Safe Start Area"
-   m_aVisibleForFactions {
-    "CIV"
-   }
-   m_iZOrder 10
   }
  }
 }

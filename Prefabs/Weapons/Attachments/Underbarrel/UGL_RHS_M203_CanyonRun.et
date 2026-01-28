@@ -106,21 +106,21 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
     IkSettings {
      ItemIKSettings "{61E638660C51F061}" {
       MovementSpeedRange 0 1
-      IkSettingsStand 7
-      IkSettingsCrouch 7
-      IkSettingsProne 7
+      IkSettingsStand 0x7 0
+      IkSettingsCrouch 0x7 0
+      IkSettingsProne 0x7 0
      }
      ItemIKSettings "{61E638660C51F063}" {
       MovementSpeedRange 1 2.5
-      IkSettingsStand 7
-      IkSettingsCrouch 7
-      IkSettingsProne 6
+      IkSettingsStand 0x7 0
+      IkSettingsCrouch 0x7 0
+      IkSettingsProne 0x6 0
      }
      ItemIKSettings "{61E638660C51F064}" {
       MovementSpeedRange 2.5 3
-      IkSettingsStand 6
-      IkSettingsCrouch 6
-      IkSettingsProne 6
+      IkSettingsStand 0x6 0
+      IkSettingsCrouch 0x6 0
+      IkSettingsProne 0x6 0
      }
     }
     AnimationIKPose "{16FC70F15C5507DD}Assets/Weapons/Rifles/M16A2/anims/anmM203/p_m16_M203_UGL_ik.anm"
@@ -164,25 +164,25 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
      IkSettings {
       ItemIKSettings "{61E638660C51F05D}" {
        MovementSpeedRange 0 1
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 7
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
       }
       ItemIKSettings "{61E638660C51F05E}" {
        MovementSpeedRange 1 2.5
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 6
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{61E638660C51F046}" {
        MovementSpeedRange 2.5 3
-       IkSettingsStand 6
-       IkSettingsCrouch 6
-       IkSettingsProne 6
+       IkSettingsStand 0x6 0
+       IkSettingsCrouch 0x6 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{61E638660C51F048}" {
        ProneTurn 1
-       IkSettingsStand 7
+       IkSettingsStand 0x7 0
       }
      }
      AnimationIKPose "{9CA239925FE3C73A}Assets/Weapons/Rifles/M16A2/anims/anmM203/p_m16_M203_ik.anm"
@@ -252,7 +252,7 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
     m_bVisible 0
    }
    Priority -1
-   StoragePurpose 32
+   StoragePurpose 0x20 0x1
   }
   ActionsManagerComponent "{5284E0EFF569AD07}" {
    Enabled 1

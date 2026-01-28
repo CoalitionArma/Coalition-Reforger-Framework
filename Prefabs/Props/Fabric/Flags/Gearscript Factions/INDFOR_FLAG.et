@@ -5,7 +5,7 @@ GenericEntity : "{AB72A0D9CB73483A}Prefabs/Props/Fabric/Flags/Flag_1_2_White_01.
    Materials {
     MaterialAssignClass "{66B4D32F8068F7C7}" {
      SourceMaterial "Flag_1_2"
-     AssignedMaterial "{83AEA78E1C112F01}Prefabs/Structures/FlagPoles/Flags/INDFOR_Flag.emat"
+     AssignedMaterial "{83AEA78E1C112F01}Assets/Materials/Flags/Factions/INDFOR_Flag.emat"
     }
    }
   }

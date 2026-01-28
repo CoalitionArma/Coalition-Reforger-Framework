@@ -8,6 +8,6 @@ MatPBRBasic {
  RoughnessScale 0
  MetalnessScale 0
  AOScale 5
- BCRMap "{33D7ADFAA764F368}Assets/Vehicles/Helicopters/AH6M/Data/Textures/AH6M_Body_1_BCR.edds"
- NMOMap "{0B0F16687E13A1F6}Assets/Vehicles/Helicopters/AH6M/Data/Textures/AH6M_Body_1_NMO.edds"
+ BCRMap "{33D7ADFAA764F368}Assets/Vehicles/Helicopters/AH6M/Data/_Textures/Black/AH6M_Body_1_BCR.edds"
+ NMOMap "{0B0F16687E13A1F6}Assets/Vehicles/Helicopters/AH6M/Data/_Textures/Black/AH6M_Body_1_NMO.edds"
 }

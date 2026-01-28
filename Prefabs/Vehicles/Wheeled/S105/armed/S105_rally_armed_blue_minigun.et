@@ -25,7 +25,7 @@ Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
     Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
     m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
     m_aAuthoredLabels + {
-     21
+     TRAIT_ARMED
     }
    }
   }

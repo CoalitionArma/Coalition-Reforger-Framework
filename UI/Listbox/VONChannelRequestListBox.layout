@@ -127,7 +127,7 @@ ButtonWidgetClass {
              Name "Image1"
              Slot ButtonWidgetSlot "{64853C585E07733D}" {
              }
-             Texture "{BA29CA05FF6FE474}UI/data/cross.edds"
+             Texture "{BA29CA05FF6FE474}UI/Images/LobbyImages/cross.edds"
              Size 528 528
             }
            }
@@ -165,7 +165,7 @@ ButtonWidgetClass {
              Name "Image0"
              Slot ButtonWidgetSlot "{64853C585E0773B7}" {
              }
-             Texture "{7DEEE956159B85D2}UI/data/check.edds"
+             Texture "{7DEEE956159B85D2}UI/Images/LobbyImages/check.edds"
              Size 528 528
             }
            }
@@ -206,7 +206,7 @@ ButtonWidgetClass {
           SizeY 0
           OffsetBottom 0
          }
-         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Texture "{356FBF661306DFD6}UI/Images/LobbyImages/disconnect_icon.edds"
          Size 800 800
         }
        }

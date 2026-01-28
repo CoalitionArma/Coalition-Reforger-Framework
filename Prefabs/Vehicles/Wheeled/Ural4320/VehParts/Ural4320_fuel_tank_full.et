@@ -48,7 +48,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset 0.2474 0.1487 0
      Prefab "{91551D4FB665D64E}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rearlight_R.et.et"
      RegisterDamage 1
-     LightType 18
+     LightType 0x12 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{585C9D24F3ADBC30}" : "{D2808DEC948D08B2}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Rear.conf" {
       }
@@ -58,7 +58,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset -0.2465 0.1487 0
      Prefab "{D8AF4422B8E21448}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rearlight_L.et"
      RegisterDamage 1
-     LightType 18
+     LightType 0x12 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{585C9D24FE194352}" : "{D2808DEC948D08B2}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Rear.conf" {
       }
@@ -68,7 +68,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset -0.2465 0.1487 0
      Prefab "{72EB96E2D26256E2}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Brakelight_L.et"
      RegisterDamage 1
-     LightType 64
+     LightType 0x40 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{585C9D24FB4C5653}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
       }
@@ -78,7 +78,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset 0.2465 0.1487 0
      Prefab "{0FF37A1AB7F16A7B}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Brakelight_R.et"
      RegisterDamage 1
-     LightType 64
+     LightType 0x40 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{585C9D24E1CD787B}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
       }
@@ -88,7 +88,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset -0.2465 0.1487 0
      Prefab "{378E9FF823054916}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rear_Indicator_L.et"
      RegisterDamage 1
-     LightType 256
+     LightType 0x100 0
      LightSide 0
      ConfigurationsOverride {
       SurfaceLightConfigItem "{652C11AFE3BD83BF}" {
@@ -99,7 +99,7 @@ GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.
      Offset 0.2474 0.1487 0
      Prefab "{4EAA607E686F9381}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rear_Indicator_R.et.et"
      RegisterDamage 1
-     LightType 256
+     LightType 0x100 0
      LightSide 1
      ConfigurationsOverride {
       SurfaceLightConfigItem "{652C11AFE3BD83BA}" {

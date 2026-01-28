@@ -78,7 +78,7 @@ FrameWidgetClass {
     SizeY 120
     OffsetBottom 65.567
    }
-   Texture "{19769D9272BEC68A}UI/data/coalitionlarge.edds"
+   Texture "{19769D9272BEC68A}UI/Images/Coalition/coalitionlarge.edds"
    Size 1000 1000
   }
   ImageWidgetClass "{65F8873D044B9E7D}" {
@@ -94,7 +94,7 @@ FrameWidgetClass {
     SizeY 1080
     OffsetBottom 0
    }
-   Texture "{5C4FB511CB6AC109}UI/data/GunGameHud.edds"
+   Texture "{5C4FB511CB6AC109}UI/Images/Special/GunGameHud.edds"
    Size 1920 1080
   }
   TextWidgetClass "{65F8873D5FC9A88B}" {

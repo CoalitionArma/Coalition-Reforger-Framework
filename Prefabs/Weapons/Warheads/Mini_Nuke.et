@@ -54,6 +54,6 @@ GenericEntity : "{492CA9A2919ECA45}Prefabs/Weapons/Warheads/Warhead_Mine_HE.et" 
    ParticleEffect "{DB460C99707F948E}Particles/Weapon/Explosion_TM62M_AT_Mine.ptc"
   }
  }
- Flags 0
+ Flags 0 0x3
  coords 0 1 0
 }

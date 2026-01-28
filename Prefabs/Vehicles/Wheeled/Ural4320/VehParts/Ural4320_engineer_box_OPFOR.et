@@ -9,7 +9,7 @@ GenericEntity : "{0CD6E71D33E1CCD0}Prefabs/Vehicles/Core/Vehicle_EngineerBox_Bas
   SCR_CampaignBuildingProviderComponent "{5DF54421B01A7FF8}" {
    m_bUserActionActivationOnly 0
    m_aAvailableTraits {
-    0 0 108
+    NONE NONE THEME_MILITARY
    }
   }
   SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {

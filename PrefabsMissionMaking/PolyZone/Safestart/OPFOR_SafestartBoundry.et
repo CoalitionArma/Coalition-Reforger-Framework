@@ -21,6 +21,14 @@ PolylineShapeEntity {
  IsClosed 1
  LineColor 0.502 0 0 1
  {
+  CRF_ManualMarker {
+   ID "65885AB9AC6E2C67"
+   coords 0 0 0
+   m_sQuadName "mine-single-2"
+   m_fWorldSize 15
+   m_sDescription "OPFOR Safe Start Area"
+   m_iZOrder 10
+  }
   CRF_PolyZoneTrigger {
    ID "6586537E1F83840B"
    components {
@@ -53,15 +61,6 @@ PolylineShapeEntity {
    m_aFactionKey {
     "BLUFOR" "INDFOR" "CIV" "SPEC"
    }
-  }
-  CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
-   ID "65885AB9AC6E2C67"
-   coords 0 0 0
-   angleY 0
-   m_sQuadName "mine-single-2"
-   m_fWorldSize 15
-   m_sDescription "OPFOR Safe Start Area"
-   m_iZOrder 10
   }
  }
 }

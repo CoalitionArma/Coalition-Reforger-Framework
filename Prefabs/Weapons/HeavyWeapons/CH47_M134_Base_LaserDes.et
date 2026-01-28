@@ -31,7 +31,7 @@ GenericEntity : "{D495DCDE5D8148B8}Prefabs/Weapons/HeavyWeapons/M134/M134_Turret
      AccessibilitySettings CompartmentAccessibilityContext "{667B7B6274C5F0CF}" {
       BBHalfExtents 0.1 0.1 0.005
       TraceOffset 0 0.2 0.5
-      ExcludePhysicsLayer 50331648
+      ExcludePhysicsLayer 0x3000000 0
      }
     }
    }

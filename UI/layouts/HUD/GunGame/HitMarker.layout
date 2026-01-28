@@ -14,7 +14,7 @@ FrameWidgetClass {
     SizeY 75
     OffsetBottom -39.542
    }
-   Texture "{27BB73FAA64DABE4}UI/data/hitmarker.edds"
+   Texture "{27BB73FAA64DABE4}UI/Images/Special/hitmarker.edds"
    Size 150 150
   }
  }

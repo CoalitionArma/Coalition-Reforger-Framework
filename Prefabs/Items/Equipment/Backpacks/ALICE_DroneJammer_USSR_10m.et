@@ -23,8 +23,6 @@ GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_AL
    Object "{90BCF5990C026CCD}Assets/jammerbags/jammer bag test.xob"
   }
   SAL_DroneJammerComponent "{62CF1244FE40E7F1}" {
-   m_iJammerRange 20
-   m_rDestroyedBag "{138E789405941498}Prefabs/Items/Equipment/Backpacks/Backpack_DestroyedJammerBagUSSR.et"
   }
   SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
    Enabled 1
@@ -68,36 +66,6 @@ GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_AL
      Position PointInfo "{511E9C6ADE70F78D}" {
       Offset 0 0.1322 0
      }
-    }
-   }
-   additionalActions {
-    SAL_DroneJammerTurnOnAction "{62CF1244FE40E7CB}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62CF1244FE40E7C8}" {
-      Name "Turn Jammer on"
-     }
-     "Sort Priority" 1
-    }
-    SAL_DroneJammerTurnOffAction "{62CF1244FE40E7CE}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62CF1244FE40E7CF}" {
-      Name "Turn Jammer Off"
-     }
-     "Sort Priority" 2
-    }
-    SAL_DroneJammerDestroyAction "{62CF1244FE40E7CC}" {
-     ParentContextList {
-      "default"
-     }
-     UIInfo UIInfo "{62CF1244FE40E7CD}" {
-      Name "Destroy Drone Jammer"
-     }
-     Duration 5
-     "Sort Priority" 3
     }
    }
   }

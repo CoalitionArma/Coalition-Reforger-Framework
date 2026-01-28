@@ -102,61 +102,6 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
     }
    }
   }
-  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-   components {
-    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
-     MaxStartupTime 1.2
-     AirIntakes {
-      PointInfo "{62F95364F5CB3B5F}" {
-       Offset -0.0393 1.4437 -3.074
-      }
-      PointInfo "{645F55E0B86D4247}" {
-       Offset 0 1.3427 -3.0151
-      }
-     }
-     MaxLightsTime 2
-     TransmissionRND 0
-     ThrottleCurve {
-      2080 0.8 2600 0.5 4000 0
-     }
-     ReverseCurve {
-      1000 0.8 1250 0.5 1500 0
-     }
-     BrakingCurve {
-      0 0 0.3 0.4 0.7 0.4 1 0.7 1.7 0.7 2 1
-     }
-     ClutchUncoupleTime 0.5
-     ClutchCoupleTime 0.25
-     ClutchUncoupleRpm 1250
-     ClutchCoupleRpm 1510
-     Latency 1
-     UpShiftRpm 1380
-     DownShiftRpm 1250
-    }
-    SCR_BaseHUDComponent "{37C2676694790BC7}" {
-     InfoDisplays {
-      SCR_InfoDisplay "{50E6E6F81354B90F}" {
-       InfoDisplays {
-        SCR_AnalogGauge "{50E6E9C42E916085}" {
-         InfoDisplays {
-          SCR_GearShiftInfo "{5A76D388D738902B}" {
-          }
-         }
-         m_sInfoText "#AR-VehicleInfo_RPMx100"
-         m_fLabelValueMultiplier 0.01
-         m_fValueMax 4000
-        }
-        SCR_AnalogGaugeMultiSignal "{50E6F12BB4D36587}" {
-         m_fValueMax 1200
-         m_fSectionEveryNthValue 600
-         m_sSignalNamePrefix "fuel"
-        }
-       }
-      }
-     }
-    }
-   }
-  }
   MeshObject "{51DAA09FEFBFC0E7}" {
    Object "{D645CA5944A81699}Assets/Vehicles/Tracked/T-72A/t-72a_base.xob"
    LODFactors {
@@ -203,7 +148,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      AccessibilitySettings CompartmentAccessibilityContext "{645F55E0B86D4234}" {
       BBHalfExtents 0.5 0.4 0.005
       TraceOffset 0 0.5 1
-      ExcludePhysicsLayer 262144
+      ExcludePhysicsLayer 0x40000 0
      }
     }
    }
@@ -264,10 +209,10 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
     m_Image "{BE11273436506F42}UI/Textures/EditorPreviews/Vehicles/Tracked/T72A/T72A.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels + {
-     20 21 1001
+     TRAIT_ARMOR TRAIT_ARMED CONTENT_MODDED
     }
     m_aAutoLabels {
-     10 122 54
+     FACTION_USSR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
@@ -280,7 +225,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
     }
     m_bEditorPlaceAsOneGroup 0
     m_aOccupantFillCompartmentTypes {
-     0 1
+     PILOT TURRET
     }
     m_aCrewEntityBudgetCost {
      SCR_EntityBudgetValue "{645F55E0B86D41FD}" {
@@ -348,7 +293,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
     m_bDraggable 1
     m_bStackable 0
    }
-   StoragePurpose 9
+   StoragePurpose 0x9 0
    UseCapacityCoefficient 0
    MaxCumulativeVolume 40000
    MaxItemSize 35 35 35
@@ -400,42 +345,6 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
   }
   SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
    "faction affiliation" "USSR"
-  }
-  SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
-   "Additional aim points" {
-    AimPoint "{5A448CE484C5A9D6}" : "{9E76A1CE4C88117E}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_APC.conf" {
-     AimPointPosition PointInfo "{5A44DB148C16BF03}" {
-      Offset 0 0.9 1.5
-     }
-    }
-    AimPoint "{60F284C67B8B0BC5}" : "{9E76A1CE4C88117E}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_APC.conf" {
-     AimPointPosition PointInfo "{5A44DB148C16BF03}" {
-      Offset 0 1 -1.5
-     }
-    }
-    AimPoint "{60F284C67C7BBC67}" : "{5D12ACF04A43E73A}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Crew_APC.conf" {
-     AimPointPosition PointInfo "{5A44DB1CE905843B}" {
-      Offset 0 0.9 1.1
-     }
-    }
-    AimPoint "{60F284C67CA9BB60}" : "{5D12ACF04A43E73A}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Crew_APC.conf" {
-     AimPointPosition PointInfo "{5A44DB1CE905843B}" {
-      PivotID "v_turret_01"
-      Offset 0 0 -0.2
-     }
-    }
-    AimPoint "{60F284C64147217F}" : "{495CEB8368A8EAA4}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Powertrain_APC.conf" {
-     AimPointPosition PointInfo "{5A44DB1CB55BE678}" {
-      Offset 0 0.9 -2.5
-     }
-    }
-    AimPoint "{60F284C6971DBBE9}" : "{A1DAEC172F74D498}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Ammunition.conf" {
-     AimPointPosition PointInfo "{60F284C6B532F799}" {
-      Offset 0 0.65 -0.4
-     }
-    }
-   }
-   UnitType VehicleHeavy
   }
   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
    "Additional hit zones" {
@@ -568,12 +477,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L01"
        Output1 "Wheel_R01"
       }
-      Suspension Suspension "{4D8B26DFF8859A7B}" : "{65F07867D104C198}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspensionLocked.conf" {
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
        MaxSteeringAngle 35
       }
-      Wheel Wheel "{5CB63E75C05DD829}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75C05DD829}" {
       }
-      Tyre Tyre "{5DF455FAD1D87891}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5DF455FAD1D87891}" {
       }
       WheelPositions {
        WheelPosition Wheel_L01 {
@@ -593,12 +502,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L02"
        Output1 "Wheel_R02"
       }
-      Suspension Suspension "{4D8B26DF2B10AE05}" : "{70D7D2AF87CB728E}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension_Hard.conf" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
        MaxSteeringAngle 35
       }
-      Wheel Wheel "{5CB63E75C3728451}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75C3728451}" {
       }
-      Tyre Tyre "{5CB63E75CCA2638C}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75CCA2638C}" {
       }
       WheelPositions {
        WheelPosition Wheel_L02 {
@@ -618,12 +527,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L03"
        Output1 "Wheel_R03"
       }
-      Suspension Suspension "{5B3A8D44B1452858}" : "{70D7D2AF87CB728E}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension_Hard.conf" {
+      Suspension Suspension "{5B3A8D44B1452858}" {
       }
-      Wheel Wheel "{5CB63E75CEABD61F}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75CEABD61F}" {
        BrakeTorque 0
       }
-      Tyre Tyre "{5CB63E75C97DC023}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75C97DC023}" {
       }
       WheelPositions {
        WheelPosition Wheel_L03 {
@@ -643,12 +552,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L04"
        Output1 "Wheel_R04"
       }
-      Suspension Suspension "{5B3A8D44BDC38472}" : "{8DE5F84424C46755}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension.conf" {
+      Suspension Suspension "{5B3A8D44BDC38472}" {
       }
-      Wheel Wheel "{5CB63E75CB21F1B9}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75CB21F1B9}" {
        BrakeTorque 0
       }
-      Tyre Tyre "{5CB63E75CBE6B18C}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75CBE6B18C}" {
       }
       WheelPositions {
        WheelPosition Wheel_L04 {
@@ -668,12 +577,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L05"
        Output1 "Wheel_R05"
       }
-      Suspension Suspension "{5B3A8D44B986A4EB}" : "{8DE5F84424C46755}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension.conf" {
+      Suspension Suspension "{5B3A8D44B986A4EB}" {
       }
-      Wheel Wheel "{5CB63E75D5F89198}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75D5F89198}" {
        BrakeTorque 0
       }
-      Tyre Tyre "{5CB63E75D69ADDFC}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75D69ADDFC}" {
       }
       WheelPositions {
        WheelPosition Wheel_L05 {
@@ -693,12 +602,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L06"
        Output1 "Wheel_R06"
       }
-      Suspension Suspension "{5B3A8D448659D92F}" : "{8DE5F84424C46755}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension.conf" {
+      Suspension Suspension "{5B3A8D448659D92F}" {
       }
-      Wheel Wheel "{5CB63E75D071A4F0}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75D071A4F0}" {
        BrakeTorque 0
       }
-      Tyre Tyre "{5CB63E75D12E4D3B}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75D12E4D3B}" {
       }
       WheelPositions {
        WheelPosition Wheel_L06 {
@@ -718,12 +627,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L07"
        Output1 "Wheel_R07"
       }
-      Suspension Suspension "{5B3A8D44825ECF19}" : "{70D7D2AF87CB728E}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspension_Hard.conf" {
+      Suspension Suspension "{5B3A8D44825ECF19}" {
        MaxSteeringAngle -35
       }
-      Wheel Wheel "{5CB63E75D2E13AEA}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75D2E13AEA}" {
       }
-      Tyre Tyre "{5CB63E75D3856777}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75D3856777}" {
       }
       WheelPositions {
        WheelPosition Wheel_L07 {
@@ -743,12 +652,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L08"
        Output1 "Wheel_R08"
       }
-      Suspension Suspension "{5B3A8D448D7BA280}" : "{65F07867D104C198}Prefabs/Vehicles/Tracked/T-72A/Configs/T72ASuspensionLocked.conf" {
+      Suspension Suspension "{5B3A8D448D7BA280}" {
        MaxSteeringAngle -35
       }
-      Wheel Wheel "{5CB63E75DCEE0AF8}" : "{01A271682FE559F5}Prefabs/Vehicles/Tracked/T-72A/Configs/T72AWheel.conf" {
+      Wheel Wheel "{5CB63E75DCEE0AF8}" {
       }
-      Tyre Tyre "{5CB63E75DD9EE3FC}" : "{400ED763733315CA}Prefabs/Vehicles/Tracked/T-72A/Configs/VehicleSimulationTire_T72.conf" {
+      Tyre Tyre "{5CB63E75DD9EE3FC}" {
       }
       WheelPositions {
        WheelPosition Wheel_L08 {
@@ -775,12 +684,98 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
   BaseFlattenGrassComponent "{55FCDD8048D3AE17}" {
    ParametersCollection {
     FlattenGrassParametersObject "{55FCDD804A371EA5}" {
-     SideX 5
-     SideZ 5
-     Offset 0
-     CenterLerp 0
     }
    }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{50E6E6F81354B90F}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{50E6E9C42E916085}" {
+         InfoDisplays {
+          SCR_GearShiftInfo "{5A76D388D738902B}" {
+          }
+         }
+         m_sInfoText "#AR-VehicleInfo_RPMx100"
+         m_fLabelValueMultiplier 0.01
+         m_fValueMax 4000
+        }
+        SCR_AnalogGaugeMultiSignal "{50E6F12BB4D36587}" {
+         m_fValueMax 1200
+         m_fSectionEveryNthValue 600
+         m_sSignalNamePrefix "fuel"
+        }
+       }
+      }
+     }
+    }
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     MaxStartupTime 1.2
+     AirIntakes {
+      PointInfo "{62F95364F5CB3B5F}" {
+       Offset -0.0393 1.4437 -3.074
+      }
+      PointInfo "{645F55E0B86D4247}" {
+       Offset 0 1.3427 -3.0151
+      }
+     }
+     MaxLightsTime 2
+     TransmissionRND 0
+     ThrottleCurve {
+      2080 0.8 2600 0.5 4000 0
+     }
+     ReverseCurve {
+      1000 0.8 1250 0.5 1500 0
+     }
+     BrakingCurve +{
+     }
+     ClutchUncoupleTime 0.5
+     ClutchCoupleTime 0.25
+     ClutchUncoupleRpm 1250
+     ClutchCoupleRpm 1510
+     Latency 1
+     UpShiftRpm 1380
+     DownShiftRpm 1250
+    }
+   }
+  }
+  SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
+   "Additional aim points" {
+    AimPoint "{5A448CE484C5A9D6}" : "{9E76A1CE4C88117E}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_APC.conf" {
+     AimPointPosition AttachPoint "{5A44DB148C16BF03}" {
+      Offset 0 0.9 1.5
+     }
+    }
+    AimPoint "{60F284C67B8B0BC5}" : "{9E76A1CE4C88117E}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_APC.conf" {
+     AimPointPosition AttachPoint "{5A44DB148C16BF03}" {
+      Offset 0 1 -1.5
+     }
+    }
+    AimPoint "{60F284C67C7BBC67}" : "{5D12ACF04A43E73A}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Crew_APC.conf" {
+     AimPointPosition AttachPoint "{5A44DB1CE905843B}" {
+      Offset 0 0.9 1.1
+     }
+    }
+    AimPoint "{60F284C67CA9BB60}" : "{5D12ACF04A43E73A}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Crew_APC.conf" {
+     AimPointPosition AttachPoint "{5A44DB1CE905843B}" {
+      Bone "v_turret_01"
+      Offset 0 0 -0.2
+     }
+    }
+    AimPoint "{60F284C64147217F}" : "{495CEB8368A8EAA4}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Powertrain_APC.conf" {
+     AimPointPosition AttachPoint "{5A44DB1CB55BE678}" {
+      Offset 0 0.9 -2.5
+     }
+    }
+    AimPoint "{60F284C6971DBBE9}" : "{A1DAEC172F74D498}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Ammunition.conf" {
+     AimPointPosition AttachPoint "{60F284C6B532F799}" {
+      Offset 0 0.65 -0.4
+     }
+    }
+   }
+   UnitType VehicleHeavy
   }
   CarProcAnimComponent "{A201E6A6F82F2CDA}" {
    Parameters {

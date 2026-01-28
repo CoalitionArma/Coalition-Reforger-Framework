@@ -1,7 +1,7 @@
 MatPBRBasicGlass {
  Color 0 0 0 0
  BCRMap  cube
- OpacityMap "{78B08C886EE40A97}Assets/Characters/Spectator/OpacityMap.edds"
+ OpacityMap "{78B08C886EE40A97}Assets/Materials/Invisibility/OpacityMap.edds"
  NormalPower 0
  NMOMap  cube
  FresnelPower 0.01

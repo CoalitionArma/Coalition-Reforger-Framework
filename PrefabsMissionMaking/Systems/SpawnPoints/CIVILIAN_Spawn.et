@@ -84,7 +84,6 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
   CRF_ManualMarker : "{CC041EDE06E4A0C3}PrefabsMissionMaking/Markers/SpawnMarkers/CIVILIAN_SpawnMarker.et" {
    ID "68682AC1B261B1FF"
    coords 0 0 0
-   angles 0 0 0
   }
  }
 }

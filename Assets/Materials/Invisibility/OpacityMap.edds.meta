@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{78B08C886EE40A97}Assets/Characters/Spectator/OpacityMap.edds"
+ Name "{78B08C886EE40A97}Assets/Materials/Invisibility/OpacityMap.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

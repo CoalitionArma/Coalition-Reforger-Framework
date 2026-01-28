@@ -130,11 +130,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
-
-	// Generic spawn point for spectator camera (handles entity streaming)
-	[RplProp()]
-	vector m_vGenericSpawn[4];
-	bool m_bGenericSpawnSet = false;
 	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
@@ -151,6 +146,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected static CRF_Gamemode m_sInstance;
 	
 	protected ref array<Vehicle> m_aSpawnedVehicles = {};
+	
+	[RplProp()]
+	protected vector m_vGenericSpawn;
 	
 	bool m_bIsInEndCredits = false;
 	
@@ -203,7 +201,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Initialize sight arsenal registry for optimized RPC
 			CRF_SightArsenalRegistry.InitializeRegistry();
 		}
-			
 	
 		// Initialize all manager references
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
@@ -805,6 +802,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return sum / count;
 	}
 	
+	/*
 	float ComputeAORadius(vector pts[4], vector center)
 	{
 		float maxDist = 0;
@@ -822,16 +820,32 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 		return maxDist;
 	}
+	*/
 	
-	void GetAOCenterAndRadius(out vector center, out float radius)
+	vector GetGenericSpawn()
 	{
-		CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
+		return m_vGenericSpawn;
+	}
+	
+	void GetAOCenter()//out vector center, out float radius)
+	{
+		CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();
 		//We are cooked
-		if (!slottingMan)
+		if (!respawnMan)
 			return;
 		
-	 	center = ComputeAOCenter(slottingMan.m_vLastSlotRegisteredPosition);
-		radius = ComputeAORadius(slottingMan.m_vLastSlotRegisteredPosition, center);
+		vector spawnPointLocation[4];
+		array<string> facKey = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		vector registeredPosition[4] = {"0 0 0", "0 0 0", "0 0 0", "0 0 0"};
+		
+		foreach(int i, FactionKey factionKey : facKey)
+		{
+			respawnMan.FindSpawnPointLocation(factionKey, spawnPointLocation);
+			registeredPosition[i] = spawnPointLocation[3];
+		};
+		
+	 	m_vGenericSpawn = ComputeAOCenter(registeredPosition);
+		Replication.BumpMe();
 	}
 	
 	bool DoesFactionShareMarker(string factionKey)

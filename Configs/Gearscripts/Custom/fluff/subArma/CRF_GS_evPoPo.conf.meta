@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A99B50B1852E6B38}Configs/Gearscripts/Standard/80s/CRF_GS_evPoPo.conf"
+ Name "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
  Configurations {
   CONFResourceClass PC {
   }

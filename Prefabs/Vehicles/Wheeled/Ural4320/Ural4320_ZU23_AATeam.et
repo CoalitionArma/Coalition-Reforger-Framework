@@ -7,7 +7,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     Description "Temporary, hopefully"
     m_Image "{19AD04D1091FD077}Assets/BaconZU23/ArmaReforgerWorkbenchSteam_QMlSFzzYcU.edds"
     m_aAuthoredLabels + {
-     1001
+     CONTENT_MODDED
     }
    }
   }
@@ -46,15 +46,6 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
      RegisterControllers 1
      RegisterWeapons 1
      RegisterCompartments 1
-    }
-   }
-   SlotMappers {
-    CompartmentToSlotMapping cannon {
-     SlotName "cannon"
-     Coverage 0.001
-     Compartments {
-      "PilotCompartment" "Passenger_r01" "Passenger_m01" "TurretCompartment"
-     }
     }
    }
   }

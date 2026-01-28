@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C6DC7F818DAA149A}Configs/Identities/CRF_CharacterIdentity_HVT_SubArma.conf"
+ Name "{C6DC7F818DAA149A}Configs/Identities/custom/fluff/CRF_CharacterIdentity_HVT_SubArma.conf"
  Configurations {
   CONFResourceClass PC {
   }

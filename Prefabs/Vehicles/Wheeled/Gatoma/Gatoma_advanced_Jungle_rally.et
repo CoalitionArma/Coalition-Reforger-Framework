@@ -1,19 +1,10 @@
-Vehicle : "{7D3C3A29F3863C9B}Prefabs/Vehicles/Wheeled/Gatoma/Gatoma_advanced_Offroad_Sport.et" {
+Vehicle {
  ID "BBCBA43A9778AE21"
  components {
   BaseLightManagerComponent "{51E210F17D2534F7}" {
    LightAction {
     SCR_LightsSearchLightUserAction "{605D5241E4E9F52E}" {
      m_eLightType SearchLight
-    }
-   }
-  }
-  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-   components {
-    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
-     Type Manual
-     ThrottleCurve +{
-     }
     }
    }
   }
@@ -71,6 +62,15 @@ Vehicle : "{7D3C3A29F3863C9B}Prefabs/Vehicles/Wheeled/Gatoma/Gatoma_advanced_Off
     }
    }
   }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     Type Manual
+     ThrottleCurve {
+     }
+    }
+   }
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Bumper {
@@ -102,5 +102,4 @@ Vehicle : "{7D3C3A29F3863C9B}Prefabs/Vehicles/Wheeled/Gatoma/Gatoma_advanced_Off
   }
  }
  coords 146.332 1 132.183
- angleY 0
 }

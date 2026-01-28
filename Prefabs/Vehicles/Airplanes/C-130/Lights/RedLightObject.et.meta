@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{134538EF4DD59327}Prefabs/Vehicles/Airplanes/C-130/Props/Lights/GreenLight.et"
+ Name "{CA26D8A680895BBD}Prefabs/Vehicles/Airplanes/C-130/Lights/RedLightObject.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -66,10 +66,22 @@ GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
       PivotID "slot_rail_front"
       ActivatePhysicsOnDetaching 1
       DeactivatePhysicsOnAtaching 1
-      Name "place_mbus_front_here"
       InspectionWidgetOffset -0.0235 0.1931 0.7358
      }
      AttachmentType AttachmentRIS1913BUISFront "{631A3EADF2CACCB6}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{631A3EADF2CACCA4}" {
+     AttachmentSlot InventoryStorageSlot mbus {
+      PivotID "slot_optics"
+      Offset 0 0 0.0295
+      ChildPivotID "snap_weapon"
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+      InspectionWidgetOffset -0.0303 0.2016 0.1299
+     }
+     AttachmentType AttachmentRIS1913BUISRear "{631A3EADF2CACCA7}" {
      }
      ShowInInspection 1
     }
@@ -79,7 +91,6 @@ GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
       Offset -0.0008 0 0.0046
       ActivatePhysicsOnDetaching 1
       DeactivatePhysicsOnAtaching 1
-      Name "MBS"
       InspectionWidgetOffset -0.0589 0.1409 0.3086
      }
      AttachmentType AttachmentMBS "{631A3EADF2CACCBC}" {
@@ -93,24 +104,9 @@ GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
       Angles 0 0 -70
       ActivatePhysicsOnDetaching 1
       DeactivatePhysicsOnAtaching 1
-      Name "peqbox"
       InspectionWidgetOffset 0 0.1083 0.3923
      }
      AttachmentType AttachmentRIS1913 "{631A3EADF2CACCA0}" {
-     }
-     ShowInInspection 1
-    }
-    AttachmentSlotComponent "{631A3EADF2CACCA4}" {
-     AttachmentSlot InventoryStorageSlot mbus {
-      PivotID "slot_optics"
-      Offset 0 0 0.0295
-      ChildPivotID "snap_weapon"
-      ActivatePhysicsOnDetaching 1
-      DeactivatePhysicsOnAtaching 1
-      Name "mbus_rear"
-      InspectionWidgetOffset -0.0303 0.2016 0.1299
-     }
-     AttachmentType AttachmentRIS1913BUISRear "{631A3EADF2CACCA7}" {
      }
      ShowInInspection 1
     }
@@ -119,7 +115,6 @@ GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
       ChildPivotID "snap_weapon"
       ActivatePhysicsOnDetaching 1
       DeactivatePhysicsOnAtaching 1
-      Name "shortris_acog_maybe"
       InspectionWidgetOffset -0.0303 0.2016 0.2229
      }
      AttachmentType AttachmentOpticsRIS1913Short "{631A3EADF2CACC96}" {

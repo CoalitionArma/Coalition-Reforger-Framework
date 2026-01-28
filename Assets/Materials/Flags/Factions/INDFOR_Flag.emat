@@ -1,6 +1,6 @@
 MatPBRBasic {
  Cull none
- BCRMap "{4ACC15DF9C6020B2}Images/UI/Zeus GearScript Factions/Flags/INDFOR_FLAG.edds"
+ BCRMap "{4ACC15DF9C6020B2}UI/Images/GS_Factions/Flags/INDFOR_FLAG.edds"
  OpacityMap "{8A9851949BF85522}Assets/Props/Fabric/Flags/Data/Flag_2_3_A.edds"
  NormalPower 1.2
  NMOMap "{C39D234EF0D4B94D}Assets/Props/Fabric/Flags/Data/Flag_1_2_N.edds"

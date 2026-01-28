@@ -1,4 +1,4 @@
-CRF_SatchelEntity : "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Satchel_Base.et" {
+CRF_SatchelEntity : "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Explosive_Satchels/Satchel_Base.et" {
  ID "5968D2B6A82C6019"
  components {
   MeshObject "{5968D9C73C08706E}" {

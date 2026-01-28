@@ -3,8 +3,6 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
  components {
   CRF_SupplyArsenalComponent "{66C449059CE1682C}" {
   }
-  CRF_VehicleRearmComponent "{66C4490710864540}" {
-  }
   RigidBody "{51DAA09FECF52BBF}" {
    Mass 11402
    CenterOfMass 0 0.2 -1.4

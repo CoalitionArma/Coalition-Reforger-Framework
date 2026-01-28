@@ -48,7 +48,7 @@ GenericEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" 
      AccessibilitySettings CompartmentAccessibilityContext "{667B6C64E6CC79A3}" {
       BBHalfExtents 0.5 0.7 0.005
       TraceOffset 0 1 0.65
-      ExcludePhysicsLayer 262144
+      ExcludePhysicsLayer 0x40000 0
      }
     }
    }

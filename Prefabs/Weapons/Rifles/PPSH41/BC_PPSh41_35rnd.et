@@ -42,24 +42,24 @@ GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
      IkSettings {
       ItemIKSettings "{66363B53D2EBCB46}" {
        MovementSpeedRange 0 1
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 7
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
       }
       ItemIKSettings "{66363B53D2EBCB43}" {
       }
       ItemIKSettings "{66363B53D2EBCB42}" {
        MovementSpeedRange 1 2.5
-       IkSettingsStand 7
-       IkSettingsCrouch 7
-       IkSettingsProne 6
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{66363B53D2EBCB7E}" {
        ProneTurn 1
        MovementSpeedRange 2.5 3
-       IkSettingsStand 7
-       IkSettingsCrouch 6
-       IkSettingsProne 6
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x6 0
+       IkSettingsProne 0x6 0
       }
       ItemIKSettings "{66363B53D2EBCB7C}" {
       }

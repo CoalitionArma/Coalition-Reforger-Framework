@@ -13,9 +13,9 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
   AICombatPropertiesComponent "{59C92CB12877478B}" {
    Priority 0
    PriorityAgainstVehicles 0
-   UsedAgainst 0
-   IndirectlyUsedAgainst 0
-   Traits 1
+   UsedAgainst 0 0x7
+   IndirectlyUsedAgainst 0 0x1
+   Traits 0x1 0
   }
   BaseProjectileComponent "{61CAF435739E1D6A}" {
    Enabled 0

@@ -52,7 +52,7 @@ GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat
     }
    }
    Priority 150
-   StoragePurpose 64
+   StoragePurpose 0x40 0x1
    UseCapacityCoefficient 0
    MaxCumulativeVolume 100
    MaxItemSize 1 1 1
