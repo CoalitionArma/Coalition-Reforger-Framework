@@ -157,6 +157,7 @@ ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo
    "Parent Node From Parent Entity" 0
   }
  }
+ m_DestructableParachute 0
  m_GlideDownPitch 4
  m_GlideUpPitch 5
 }
