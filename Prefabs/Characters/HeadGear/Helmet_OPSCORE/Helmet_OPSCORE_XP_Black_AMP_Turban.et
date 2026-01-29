@@ -1,0 +1,38 @@
+GameEntity : "{0C05EC01BC9518B2}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_Black.et" {
+ ID "50D485E1435D6C72"
+ components {
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{6F6A656F8A0C40C6}Assets/Head/TurbantMercenary/TurbantMercenary.xob"
+  }
+  RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_OPSCORE_XP_Name (#RHS-Headgear_AMP_Name_Short) - #RHS-Color_BLK"
+    }
+   }
+  }
+  SCR_HeadgearInventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{5244E4431DA56D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_OPSCORE_XP_Name (#RHS-Headgear_AMP_Name_Short) - #RHS-Color_BLK"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Headset {
+     Enabled 0
+    }
+   }
+   WornModel "{6F6A656F8A0C40C6}Assets/Head/TurbantMercenary/TurbantMercenary.xob"
+   WornMaterialsOverride {
+    "{78169A5A63B11963}Assets/Head/TurbantMercenary/Data/turban.emat"
+   }
+   ItemModel "{7B71CABBF99A5E56}Assets/Head/TurbantMercenary/TurbantMercenary_item.xob"
+   ItemMaterialsOverride {
+    "{78169A5A63B11963}Assets/Head/TurbantMercenary/Data/turban.emat"
+   }
+   DebugWornModel 0
+  }
+ }
+}
