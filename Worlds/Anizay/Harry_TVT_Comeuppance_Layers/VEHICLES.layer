@@ -53,7 +53,7 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{6874ECD1C6BE75B6}" {
     m_Prefab "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et"
-    m_iAmountOfItemSupplyTruck 40
+    m_iAmountOfItemSupplyTruck 10
     m_iAmountOfItemRegularVehicle 40
    }
    CRF_VehicleGearScriptAdditionalItem "{68751B22640A5404}" {

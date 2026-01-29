@@ -29,7 +29,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Blufor are trapped without assets in Deraz with local insurgent forces bearing down on them. If Deraz falls, Blufor will spawn with their assets and a chance for vengeance. "\
    ""\
    "BLUFOR Composition: Moto Inf"\
-   "BLUFOR Assets: 1x LAV / Platoon"\
+   "BLUFOR Assets: 1x LAV / Platoon, PLT CE, MMG"\
    ""\
    "INDFOR Composition: Inf"\
    "INDFOR Assets: Unknown"\
