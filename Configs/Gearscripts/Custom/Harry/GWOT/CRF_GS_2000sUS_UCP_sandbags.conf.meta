@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{670CAB98D21A8356}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP_sandbags.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
