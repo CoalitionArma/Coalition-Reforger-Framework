@@ -242,3 +242,6 @@ $grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Mili
   angles 0 -149.309 0
  }
 }
+SCR_DestructibleBuildingEntity : "{F16324CB8CB07C00}Prefabs/Structures/Military/Houses/GarageMilitary_E_01/GarageMilitary_E_01.et" {
+ coords 4514.475 149.846 199.107
+}

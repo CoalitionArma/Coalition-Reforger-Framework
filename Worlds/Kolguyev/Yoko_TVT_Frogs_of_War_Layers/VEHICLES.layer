@@ -88,25 +88,3 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
 }
-$grp Turret : "{1B9C20F0ED5B191D}M119/M119_fieldgun_HE_only/M119HE.et" {
- {
-  coords 4446.712 2.236 236.73
- }
- {
-  coords 4462.376 2.222 228.216
- }
- {
-  coords 4478.985 2.222 236.363
- }
-}
-$grp Turret : "{F2B55C1D6271E61F}M119/M119_fieldgun_HE_only/M119Smoke.et" {
- {
-  coords 4454.937 2.211 236.637
- }
- {
-  coords 4487.275 2.211 236.34
- }
- {
-  coords 4470.604 2.211 228.206
- }
-}
