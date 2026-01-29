@@ -88,43 +88,14 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
 }
-$grp GenericEntity : "{78F4D7F6AC303713}M119_placeable_smoke_only.et" {
+$grp GenericEntity : "{78F4D7F6AC303713}M119_placeable_empty.et" {
  {
-  coords 4442.98 1.313 201.94
+  coords 4451.446 1.222 218.822
  }
  {
-  coords 4469.153 1.313 201.94
-  {
-   Turret {
-    ID "687A171CC13AEDF1"
-    coords 5.059 0.75 4.313
-   }
-  }
+  coords 4465.2 1.222 218.822
  }
  {
-  coords 4458.995 1.313 192.644
-  {
-   Turret {
-    ID "687A171CC13AEDF1"
-    coords -0.846 0.75 5.216
-   }
-  }
- }
-}
-$grp GenericEntity : "{9FDD4CC4F88DDC4A}M119_placeable.et" {
- {
-  coords 4451.201 1.305 201.866
- }
- {
-  coords 4466.455 1.287 193.516
- }
- {
-  coords 4478.791 1.287 193.516
-  {
-   Turret {
-    ID "61C4E79CADEB49E5"
-    coords 3.737 0.75 12.704
-   }
-  }
+  coords 4480.462 1.222 218.822
  }
 }

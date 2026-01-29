@@ -210,6 +210,21 @@ $grp SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infr
   coords 4433.832 1.207 192.019
  }
 }
+GenericEntity : "{97A03B43D914B4DD}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft_Base.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_bEnableResourceGain 1
+     m_fResourceGain 5
+     m_fResourceGainTimeout 1000
+    }
+   }
+  }
+ }
+ coords 4464.314 1.222 207.211
+ angles 0 90.554 0
+}
 SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
  coords 4552.017 146.688 191.842
  angles 0 1.274 0
@@ -222,6 +237,92 @@ $grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSma
  {
   coords 4438.336 17.513 2920.591
   angles 0 87.866 0
+ }
+}
+$grp GenericEntity : "{E1FD1ACDA98123AE}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Mortar_US.et" {
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{687A1710D868270B}" {
+     m_aArsenalItems {
+      SCR_ArsenalItemStandalone "{687A1710DA6CB1F4}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{C4328B4EADF42343}Prefabs/Weapons/Ammo/105mmHE_muzzlemag.et"
+      }
+      SCR_ArsenalItemStandalone "{687A1710F9B902E6}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
+      }
+     }
+    }
+   }
+  }
+  coords 4451.857 1.222 216.074
+  scale 2.5
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{687A1710D868270B}" {
+     m_aArsenalItems {
+      SCR_ArsenalItemStandalone "{687A1710DA6CB1F4}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{C4328B4EADF42343}Prefabs/Weapons/Ammo/105mmHE_muzzlemag.et"
+      }
+      SCR_ArsenalItemStandalone "{687A1710F9B902E6}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
+      }
+     }
+    }
+   }
+  }
+  coords 4464.883 1.222 216.074
+  scale 2.5
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{687A1710D868270B}" {
+     m_aArsenalItems {
+      SCR_ArsenalItemStandalone "{687A1710DA6CB1F4}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{C4328B4EADF42343}Prefabs/Weapons/Ammo/105mmHE_muzzlemag.et"
+      }
+      SCR_ArsenalItemStandalone "{687A1710F9B902E6}" {
+       m_eItemType MORTARS
+       m_eArsenalGameModeTypes 0
+       m_iSupplyCost 0
+       m_eRequiredRank INVALID
+       m_bUseMilitarySupplyAllocation 0
+       m_ItemResourceName "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
+      }
+     }
+    }
+   }
+  }
+  coords 4480.047 1.222 216.074
+  scale 2.5
  }
 }
 $grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {

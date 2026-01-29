@@ -94,13 +94,10 @@ GenericEntity {
      MultiSlots {
       MultiSlotConfiguration "{61C4E051D0FB59D6}" {
        SlotTemplate InventoryStorageSlot ammo {
-        Prefab "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
+        Enabled 0
        }
       }
      }
-    }
-    WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
-     WeaponTemplate "{560D8C6469E29A26}M119/m119weapon_muzzlemag_smoke.et"
     }
    }
    Flags 0x100000 0x3
