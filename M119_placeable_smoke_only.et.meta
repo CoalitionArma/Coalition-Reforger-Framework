@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1B9C20F0ED5B191D}M119/M119_fieldgun_Smoke/HE.et"
+ Name "{78F4D7F6AC303713}M119_placeable_smoke_only.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
