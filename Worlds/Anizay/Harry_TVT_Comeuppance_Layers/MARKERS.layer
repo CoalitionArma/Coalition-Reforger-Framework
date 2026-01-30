@@ -1,0 +1,14 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ coords 4967.206 143.092 8169.419
+ m_MarkerColor 0.017 0.017 0.017 1
+ m_sQuadName "objective-marker-2"
+ m_sDescription "Domination"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+ coords 4886.266 147.942 9079.381
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
+ coords 4104.514 135.862 6747.212
+}

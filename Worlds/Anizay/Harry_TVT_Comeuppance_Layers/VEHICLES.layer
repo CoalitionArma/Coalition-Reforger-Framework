@@ -1,0 +1,178 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4926.157 146.452 9057.531
+  angles 0 -96.773 0
+  m_rVehicle "{5DA1C29E005ECC50}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_MEI.et"
+  m_sFactionKey "INDFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{6874ECD1C5402396}" {
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1CA60CAD9}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1C8CFABD9}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1CD56C86D}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1D3CF7FE4}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1D0E17248}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1DB383088}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD1DF53C3D7}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD023AA5D40}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD02B30CA80}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD02EB3BC1B}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD0325C4BC1}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD0358B80D2}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD0382191BC}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{6874ECD003A48324}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6874ECD1C6BE75B6}" {
+    m_Prefab "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et"
+    m_iAmountOfItemSupplyTruck 10
+    m_iAmountOfItemRegularVehicle 40
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68751B22640A5404}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+  }
+ }
+ {
+  coords 4901.784 146.194 9050.946
+  angles 0 -6.758 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68751B2210973B63}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+   CRF_VehicleGearScriptAdditionalItem "{687532931C341A55}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+   }
+  }
+ }
+ {
+  coords 4895.921 146.194 9049.683
+  angles 0 -6.758 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68751B2210973B63}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+   CRF_VehicleGearScriptAdditionalItem "{687532931C341A55}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+   }
+  }
+ }
+ {
+  coords 4890.396 146.194 9048.781
+  angles 0 -6.758 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68751B2210973B63}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+   CRF_VehicleGearScriptAdditionalItem "{687532931C341A55}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+   }
+  }
+ }
+ {
+  coords 4884.881 146.194 9047.014
+  angles 0 -6.758 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68751B2210973B63}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+   CRF_VehicleGearScriptAdditionalItem "{687532931C341A55}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+   }
+  }
+ }
+ {
+  coords 4878.793 146.194 9044.795
+  angles 0 -6.758 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68751B2210973B63}" {
+    m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+    m_iAmountOfItemSupplyTruck 100
+    m_iAmountOfItemRegularVehicle 100
+   }
+   CRF_VehicleGearScriptAdditionalItem "{687532931C341A55}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+   }
+  }
+ }
+}
+$grp SCR_VehicleSpawn {
+ {
+  coords 4124.143 135.961 6713.075
+  angles 0.476 -102.963 -0.095
+  m_rnPrefab "{4EF93A3807E3C000}Prefabs/Vehicles/Wheeled/LAV25/LAV25_D_2004.et"
+  respawnDelay 10000
+ }
+ {
+  coords 4127.508 136.368 6698.45
+  angles 0.476 -102.963 -0.095
+  m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
+  respawnDelay 10000
+ }
+ {
+  coords 4126.384 136.259 6703.329
+  angles 0.476 -102.963 -0.095
+  m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
+  respawnDelay 10000
+ }
+ {
+  coords 4125.17 136.113 6708.61
+  angles 0.476 -102.963 -0.095
+  m_rnPrefab "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et"
+  respawnDelay 10000
+ }
+ {
+  coords 4122.994 135.827 6718.064
+  angles 0.476 -102.963 -0.095
+  m_rnPrefab "{4EF93A3807E3C000}Prefabs/Vehicles/Wheeled/LAV25/LAV25_D_2004.et"
+  respawnDelay 10000
+ }
+}

@@ -1,0 +1,25 @@
+SCR_FactionControlTriggerEntity deraz {
+ coords 4966.469 143.167 8165.448
+ userScript "	bool msg_sent = false;"
+ TriggerShapeType Sphere
+ SphereRadius 75
+ DrawShape 1
+ TriggerActivationType "First change"
+ PeriodicQueries 1
+ UpdatePeriod 15
+ OnActivate ""\
+ "		super.OnActivate(ent);"\
+ "		if (msg_sent == false)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Insurgents have taken Daraz\", 15);"\
+ "			CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+ "			respawnManager.RespawnAllSides();"\
+ "			msg_sent = true;"\
+ "		}"\
+ "	"
+ m_aOwnerFactionKeys {
+  "INDFOR"
+ }
+ m_iRatioMethod "More than"
+ m_fFriendlyRatioLimit 0.8
+}
