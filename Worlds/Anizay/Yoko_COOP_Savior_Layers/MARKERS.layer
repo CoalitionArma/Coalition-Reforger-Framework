@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 3627.471 190.374 1513.287
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy Enemy Air Assets"
+ }
+ {
+  coords 3164.075 121.312 1797.134
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy Enemy Weapons Cache"
+ }
+ {
+  coords 3554.266 208.438 667.568
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy COMMS Tower"
+ }
+}

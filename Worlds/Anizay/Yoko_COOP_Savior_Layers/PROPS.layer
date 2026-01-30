@@ -1,0 +1,26 @@
+$grp GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_US_01_20ft_Empty.et" {
+ {
+  coords 3103.061 121.313 1752.924
+  angles 0 -4.224 0
+ }
+ {
+  coords 3110.905 121.313 1759.988
+  angles 0 56.236 0
+ }
+ {
+  coords 3117.715 121.313 1766.44
+  angles 0 95.78 0
+ }
+ {
+  coords 3114.143 121.313 1750.366
+  angles 0 95.78 0
+ }
+ {
+  coords 3120.054 121.313 1757.724
+  angles 0 95.78 0
+ }
+}
+StaticModelEntity : "{7E2380494811A5FB}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01_medium.et" {
+ coords 3550.092 208.479 685.547
+ angles 0 146.558 0
+}
