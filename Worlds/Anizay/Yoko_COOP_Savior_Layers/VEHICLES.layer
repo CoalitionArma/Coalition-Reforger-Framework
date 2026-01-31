@@ -50,7 +50,7 @@ $grp CRF_VehicleSpawner {
  {
   coords 5168.317 207.219 1812.865
   angles 0 -88.288 0
-  m_rVehicle "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et"
+  m_rVehicle "{5C24713F38CDA98C}Prefabs/Vehicles/Tracked/BFV/M2A3_Desert.et"
   m_sFactionKey "BLUFOR"
  }
 }

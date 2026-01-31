@@ -40,7 +40,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_sTextData "Locate the informant and extract him back to the FOB"\
+   ""\
+   "Optional Objectives:"\
+   "1. Destroy Comms tower and destroy enemy air Assets at Riqay Airfield"\
+   "3. Destory Enemy Supply Cache at"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -72,7 +76,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{687D1A710F9CEBDE}" {
+  CRF_SlottingGroup "{687E4CA4B354FA56}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -80,7 +84,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CECA1}" {
+  CRF_SlottingGroup "{687E4CA4B354FB6A}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -91,11 +95,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CEDBF}" {
+  CRF_SlottingGroup "{687E4CA4B354FB9E}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -106,11 +110,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CEE33}" {
+  CRF_SlottingGroup "{687E4CA4B354FC1D}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -121,11 +125,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CEEB6}" {
+  CRF_SlottingGroup "{687E4CA4B354FCE4}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -136,11 +140,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CEF24}" {
+  CRF_SlottingGroup "{687E4CA4B354FD64}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -152,7 +156,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CEFA9}" {
+  CRF_SlottingGroup "{687E4CA4B354FDEE}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -164,7 +168,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CE007}" {
+  CRF_SlottingGroup "{687E4CA4B354FE47}" {
    m_sCallsign "IFV 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -173,7 +177,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{687D1A710F9CE09C}" {
+  CRF_SlottingGroup "{687E4CA4B354FED9}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
