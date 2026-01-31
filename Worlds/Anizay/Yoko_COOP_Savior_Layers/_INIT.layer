@@ -46,7 +46,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData " Main Objective: Locate the informant and extract him back to the FOB."\
    ""\
    "Optional Objectives:"\
-   "1. Destroy Comms tower and destroy enemy air Assets at Riqay Airfield."\
+   "1. Destroy Comms tower and  enemy air assets at Riqay Airfield."\
    "2. Destory Enemy Supply Cache at Amaro"\
    "3. Secure RUS Roadblock in Riqay"\
    "4. Secure Enemy Mortars in Akhund South."
