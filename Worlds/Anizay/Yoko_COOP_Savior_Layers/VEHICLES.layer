@@ -52,5 +52,7 @@ $grp CRF_VehicleSpawner {
   angles 0 -88.288 0
   m_rVehicle "{5C24713F38CDA98C}Prefabs/Vehicles/Tracked/BFV/M2A3_Desert.et"
   m_sFactionKey "BLUFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{687F1EB17486A8FE}" {
+  }
  }
 }

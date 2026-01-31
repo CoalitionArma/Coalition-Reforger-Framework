@@ -7,8 +7,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Clear"
-     m_iStartingHour 18
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
      m_iStartingMinutes 0
     }
    }
@@ -29,14 +29,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "An informant has gone missing, A US QRF has been deployed to locate the infomant and extract him back to the FOB."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: 3x M1151 (Armed) and 1x M2A3 Bradley"\
+   "BLUFOR Assets: 1x MMG, 1X MAT, 3x M1151 (Armed) and 1x M2A3 Bradley"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
    ""\
    "Time: Noon"\
    ""\
-   "Weather: Cloudy"
+   "Weather: Overcast"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
