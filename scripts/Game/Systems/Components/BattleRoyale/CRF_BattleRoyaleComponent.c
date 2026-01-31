@@ -79,6 +79,9 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	[Attribute("true", UIWidgets.CheckBox, "Randomly select a zone sequence on init (if false, uses first zone)", category: "Base Configuration")]
 	bool m_bRandomZoneSelection;
 	
+	[Attribute("false", UIWidgets.CheckBox, "Enable player count tracking and winner detection. POSSIBLE CAUSE OF INSTABILITY ISSUES UNTIL FURTHER STRESS TESTING?", category: "Base Configuration")]
+	bool m_bEnablePlayerTracking;
+	
 	[Attribute("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav", UIWidgets.ResourceNamePicker, "Audio to play when stage timer starts", "wav", category: "Base Configuration")]
 	ResourceName m_sStageStartSound;
 	
@@ -227,6 +230,10 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	{
 		super.OnControllableDestroyed(instigatorContextData);
 		
+		// Player tracking disabled
+		if (!m_bEnablePlayerTracking)
+			return;
+		
 		// Server only
 		#ifdef WORKBENCH
 		#else
@@ -332,7 +339,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				UpdateStageTimer();
 			
 			// Backup poll every Xs (primary detection is OnControllableDestroyed)
-			if (m_bBattleRoyaleActive)
+			// Gated behind player tracking toggle
+			if (m_bEnablePlayerTracking && m_bBattleRoyaleActive)
 			{
 				m_iPlayerCountUpdateCounter++;
 				if (m_iPlayerCountUpdateCounter >= 30)
@@ -346,8 +354,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		}
 		m_fUpdateBuffer += timeSlice;
 		
-		// Winner check loop (m_bWinnerCheckActive implies BR is active)
-		if (m_bWinnerCheckActive)
+		// Winner check loop - only when player tracking enabled
+		if (m_bEnablePlayerTracking && m_bWinnerCheckActive)
 		{
 			m_fWinnerCheckTimer += timeSlice;
 			
@@ -565,7 +573,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				{
 					if (m_bDebugEnabled) 
 						Print(string.Format("[CRF_BattleRoyaleComponent] Deleting unused boundary: '%1' from zone '%2'", stageData.m_sStageBoundaryName, otherZone.m_sZonePrefix));
-					SCR_EntityHelper.DeleteEntityAndChildren(boundaryEntity);
+					// Delay deletion, maybe will help replication issues
+					GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, boundaryEntity);
 				}
 			}
 		}
@@ -916,8 +925,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 					{
 						if (m_bDebugEnabled) 
 							Print(string.Format("[CRF_BattleRoyaleComponent] Deleting previous boundary '%1'", prevStageData.m_sStageBoundaryName));
-						SCR_EntityHelper.DeleteEntityAndChildren(prevEntity);
 						m_mBoundaryEntityCache.Remove(prevStageData.m_sStageBoundaryName);
+						GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, prevEntity);
 					}
 				}
 			}

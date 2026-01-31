@@ -14,6 +14,9 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 	protected BlurWidget m_wBlur;
 	protected CRF_BattleRoyaleComponent m_BattleRoyaleComponent;
 	
+	// Cached toggle - read once at init, never re-checked
+	protected bool m_bPlayerTrackingEnabled = true;
+	
 	// Store original sizes of elements
 	protected float m_fOriginalTimerWidth = -1;
 	protected float m_fOriginalTimerHeight = -1;
@@ -65,6 +68,9 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 			if (!m_BattleRoyaleComponent) 
 				return;
 			
+			// Cache player tracking toggle once - never re-read
+			m_bPlayerTrackingEnabled = m_BattleRoyaleComponent.m_bEnablePlayerTracking;
+			
 			m_wTimer = TextWidget.Cast(m_wRoot.FindWidget("Timer"));
 			m_wStageText = TextWidget.Cast(m_wRoot.FindWidget("StageText"));
 			m_wPlayerCount = TextWidget.Cast(m_wRoot.FindWidget("PlayerCount"));
@@ -104,18 +110,20 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 		if (!m_BattleRoyaleComponent.m_bBattleRoyaleActive)
 		{
 			HideDisplay();
-			m_wPlayerCount.SetOpacity(0); // Only hide player count when BR is completely inactive
+			if (m_bPlayerTrackingEnabled)
+				m_wPlayerCount.SetOpacity(0); // Only hide player count when BR is completely inactive
 			// Reset delay when BR stops
 			m_bDelayActive = false;
 			m_fDisplayDelay = 0;
 			return;
 		}
 		
-		// Update player count display (reads already time-gated replicated value from server)
-		UpdatePlayerCount();
-		
-		// Update winner display (ALWAYS check, regardless of countdown state)
-		UpdateWinnerDisplay();
+		// Update player count and winner display only if tracking is enabled
+		if (m_bPlayerTrackingEnabled)
+		{
+			UpdatePlayerCount();
+			UpdateWinnerDisplay();
+		}
 		
 		// Check if countdown is active (timer/stage display)
 		if (!m_BattleRoyaleComponent.countDownActive)
