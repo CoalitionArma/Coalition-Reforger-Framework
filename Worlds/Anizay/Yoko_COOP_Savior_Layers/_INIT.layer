@@ -1,3 +1,6 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 3516.273 187.737 1426.605
+}
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -12,7 +15,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomWeatherChanges 0
   }
  }
- coords 5694.733 23.897 2407.219
+ coords 4096.583 31.251 1603.653
  m_bRespawnEnabled 1
  m_bWaveRespawn 0
  m_iTimeToRespawn 35
@@ -23,7 +26,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "An informat has gone missing, A US QRF has been deployed to locate the infomant and if needed extract him."\
+   m_sTextData "An informant has gone missing, A US QRF has been deployed to locate the infomant and extract him back to the FOB."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 3x M1151 (Armed) and 1x M2A3 Bradley"\
@@ -40,11 +43,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Locate the informant and extract him back to the FOB"\
+   m_sTextData " Main Objective: Locate the informant and extract him back to the FOB."\
    ""\
    "Optional Objectives:"\
-   "1. Destroy Comms tower and destroy enemy air Assets at Riqay Airfield"\
-   "3. Destory Enemy Supply Cache at"
+   "1. Destroy Comms tower and destroy enemy air Assets at Riqay Airfield."\
+   "2. Destory Enemy Supply Cache at Amaro"\
+   "3. Secure RUS Roadblock in Riqay"\
+   "4. Secure Enemy Mortars in Akhund South."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -65,7 +70,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "N/A"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -76,7 +81,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{687E4CA4B354FA56}" {
+  CRF_SlottingGroup "{687F1EB3B68E65BD}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -84,7 +89,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FB6A}" {
+  CRF_SlottingGroup "{687F1EB3B68E6778}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -99,7 +104,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FB9E}" {
+  CRF_SlottingGroup "{687F1EB3B68E67E7}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -114,7 +119,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FC1D}" {
+  CRF_SlottingGroup "{687F1EB3B68E7869}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -129,7 +134,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FCE4}" {
+  CRF_SlottingGroup "{687F1EB3B68E78FB}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -144,7 +149,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FD64}" {
+  CRF_SlottingGroup "{687F1EB3B68E797D}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -156,7 +161,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FDEE}" {
+  CRF_SlottingGroup "{687F1EB3B68E79D2}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -168,7 +173,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FE47}" {
+  CRF_SlottingGroup "{687F1EB3B68E79A8}" {
    m_sCallsign "IFV 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -177,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{687E4CA4B354FED9}" {
+  CRF_SlottingGroup "{687F1EB3B68E7A38}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
@@ -191,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A65DDE01371A3B53}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_Marines_Desert.conf"
+  m_rGearScript "{9F1BB18540252916}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

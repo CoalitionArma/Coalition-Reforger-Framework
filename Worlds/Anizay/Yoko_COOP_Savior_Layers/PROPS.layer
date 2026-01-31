@@ -12,6 +12,20 @@ $grp GenericEntity : "{16148BF23770F1D3}Prefabs/Compositions/Slotted/SlotFlatSma
   angles 0 79.382 0
  }
 }
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 2219.733 166.096 1136.997
+  angles 0 82.749 0
+ }
+ {
+  coords 2219.896 167.244 1123.656
+  angles 0 82.749 0
+ }
+ {
+  coords 2217.047 164.825 1153.418
+  angles 0 82.749 0
+ }
+}
 GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
  coords 3493.44 205.316 656.892
  angles 0 -177.505 0
@@ -466,6 +480,16 @@ StaticModelEntity : "{7E2380494811A5FB}Prefabs/Structures/Infrastructure/Towers/
 GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
  coords 3189.135 121.313 1793.001
  angles 0 53.865 0
+}
+$grp GenericEntity : "{9751583B234C4202}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_02_PKM.et" {
+ {
+  coords 3547.704 217.181 704.649
+  angles 0 81.85 0
+ }
+ {
+  coords 3543.876 217.143 710.672
+  angles 0 10.793 0
+ }
 }
 $grp GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_USSR_01.et" {
  {
@@ -965,6 +989,24 @@ $grp GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLar
     angles 0 -9.476 0
    }
   }
+ }
+}
+$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ {
+  coords 3545.601 217.116 708.98
+  angles 0 55.214 0
+ }
+ {
+  coords 3546.926 217.116 707.072
+  angles 0 55.214 0
+ }
+ {
+  coords 3546.06 217.116 702.396
+  angles 0 144.695 0
+ }
+ {
+  coords 3541.228 217.116 709.678
+  angles 0 144.695 0
  }
 }
 GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
