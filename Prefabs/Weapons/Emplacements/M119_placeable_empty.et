@@ -1,0 +1,107 @@
+GenericEntity {
+ ID "687A171CC13AEDF0"
+ components {
+  RigidBody "{687A171CC13AEDEA}" {
+  }
+  SCR_CampaignBuildingCompositionComponent "{687A171CC13AEDB3}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{687A171CC13AEDB5}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_BUILD_HEDGEHOG"
+   }
+   m_AudioSourceConfigurationDespawn SCR_AudioSourceConfiguration "{687A171CC13AEDB7}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_DESTROY_HEDGEHOG"
+    m_eFlags 5
+   }
+  }
+  SCR_EditableEntityComponent "{687A171CC13AEDA9}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{687A171CC13AEDAA}" {
+    Name "M119"
+    Description "105mm M119 Howitzer"
+    Icon "{91C4A9B5AD80D443}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_Explosive.edds"
+    m_Image "{07AD2866C2577463}Artythings/m119.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels {
+     THEME_MILITARY FACTION_US TRAIT_EXPLOSIVE ENTITYTYPE_COMPOSITION
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_OBJECT SIZE_L
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{687A171CC13AEDAB}" {
+      m_BudgetType CAMPAIGN
+      m_Value 1000
+     }
+     SCR_EntityBudgetValue "{687A171CC13AEDAC}" {
+      m_BudgetType RANK_LIEUTENANT
+      m_Value 4
+     }
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{687A171CC13AEDAE}" {
+      m_Value 1
+     }
+    }
+   }
+   m_Flags 131523
+  }
+  SCR_EditorLinkComponent "{687A171CC13AEDA0}" {
+   m_aEntries {
+    SCR_EditorLinkEntry "{687A171CC13AEDA2}" {
+     m_Prefab "{ECDC9FE2503E6152}M119/M119_fieldgun.et"
+     m_vPosition 0 0.75 4.313
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  SCR_SlotCompositionComponent "{687A171CC13AEDA4}" {
+   m_bOrientChildrenToTerrain 0
+  }
+  ActionsManagerComponent "{687A171CC13AEDA7}" {
+   ActionContexts {
+    UserActionContext "{687A171CC13AEE43}" {
+     ContextName "Disassembly"
+     Position PointInfo "{687A171CC13AEE47}" {
+     }
+     Radius 0.5
+     Height 0.5
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{687A171CC13AEE79}" {
+     ParentContextList {
+      "Disassembly"
+     }
+     UIInfo UIInfo "{687A171CC13AEE7A}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly-UC"
+     }
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{687A171CC13AEE7B}" {
+  }
+  Hierarchy "{687A171CC13AEE7C}" {
+   AutoTransform 0
+  }
+ }
+ coords 0 0 0
+ {
+  Turret : "{ECDC9FE2503E6152}M119/M119_fieldgun.et" {
+   ID "687A171CC13AEDF1"
+   components {
+    SCR_UniversalInventoryStorageComponent "{61C4E051D0FB59BF}" {
+     MultiSlots {
+      MultiSlotConfiguration "{61C4E051D0FB59D6}" {
+       SlotTemplate InventoryStorageSlot ammo {
+        Enabled 0
+       }
+      }
+     }
+    }
+   }
+   Flags 0x100000 0x3
+   coords 0 0.75 4.313
+  }
+ }
+}

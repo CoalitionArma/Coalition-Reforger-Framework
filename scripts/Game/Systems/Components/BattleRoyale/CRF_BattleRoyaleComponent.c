@@ -6,8 +6,8 @@
 
  - Has the same timer system as MapStagingComponent, but adapted for BR use
  - Zones and Zone Stages are auto-discovered from entity name prefixes, unused zones are deleted
- - Player Count is tracked via CRF_SlottingManager for accuracy (Time gated opt.)
- - Player Winner detection is included, based on alive player count threshold (time gated opt.)
+ - Player Count: Event-driven deaths (instant) + 60s backup poll
+ - Winner detection uses group-based alive check, gated by player count threshold
 
  Comments: (Trist): May need revaluation of optimization logic, most expensive RPL's arent from here
 
@@ -79,6 +79,9 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	[Attribute("true", UIWidgets.CheckBox, "Randomly select a zone sequence on init (if false, uses first zone)", category: "Base Configuration")]
 	bool m_bRandomZoneSelection;
 	
+	[Attribute("false", UIWidgets.CheckBox, "Enable player count tracking and winner detection. POSSIBLE CAUSE OF INSTABILITY ISSUES UNTIL FURTHER STRESS TESTING?", category: "Base Configuration")]
+	bool m_bEnablePlayerTracking;
+	
 	[Attribute("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav", UIWidgets.ResourceNamePicker, "Audio to play when stage timer starts", "wav", category: "Base Configuration")]
 	ResourceName m_sStageStartSound;
 	
@@ -130,11 +133,16 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	[RplProp()]
 	int m_iAlivePlayerCount = 0;
 	
-	// Winner tracking
-	[RplProp()]
+	// Winner tracking, before was RPLProp'd constantly but that could cause network nonos - rpl sync fix?
 	ref array<int> m_aWinnerPlayerIds;
 	
 	protected bool m_bWinnerCheckActive = false;
+	
+	// Cached collections
+	protected ref array<int> m_aCachedSlotIds; // Cache slots IDs to MAYBE avoid dynamic array issues
+	protected ref map<RplId, ref array<int>> m_mGroupPlayers;
+	protected ref array<int> m_aCachedWinnerBuffer;
+
 	protected float m_fWinnerCheckTimer = 0;
 	protected bool m_bWinnersDeclared = false; // Permanent flag - never check again after winners declared
 	protected int m_iLastReplicatedAliveCount = -1; // Track last replicated value to avoid spam
@@ -164,11 +172,11 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	[RplProp()]
 	protected CRF_BattleRoyaleStageState m_iCurrentBoundaryState = CRF_BattleRoyaleStageState.INACTIVE;
 	
-	// Performance limiters
+	// Boundry search limit preventing infinite search 
 	protected int m_iInitRetryCount = 0;
 	protected static const int MAX_INIT_RETRIES = 3;
 	
-	// These are for 
+	// cacheing stage/zone data
 	protected ref map<string, ref CRF_BattleRoyaleStageData> m_mStageDataCache;
 	protected ref map<string, IEntity> m_mBoundaryEntityCache;
 	
@@ -198,8 +206,11 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 		if (!m_aZoneSequences)
 			m_aZoneSequences = new array<ref CRF_BattleRoyaleZoneData>();
 		
-		// Initialize winner array
+		// Initialize winner array and cached collections
 		m_aWinnerPlayerIds = new array<int>();
+		m_aCachedSlotIds = new array<int>();
+		m_mGroupPlayers = new map<RplId, ref array<int>>();
+		m_aCachedWinnerBuffer = new array<int>();
 		
 		// Server-only initialization
 		if (RplSession.Mode() == RplMode.Client)
@@ -207,11 +218,49 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 		
 		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 		
-		// Delay initialization to ensure world is fully loaded (
+		// Delay initialization to ensure world is fully loaded
 		GetGame().GetCallqueue().CallLater(InitializeBattleRoyale, 5000, false);
 		
 
 		GetGame().GetCallqueue().CallLater(MonitorSafestart, 7000, false);
+	}
+	
+	// Called when any controllable entity is destroyed (player death)
+	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnControllableDestroyed(instigatorContextData);
+		
+		// Player tracking disabled
+		if (!m_bEnablePlayerTracking)
+			return;
+		
+		// Server only
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		
+		if (!m_bBattleRoyaleActive || m_bWinnersDeclared)
+			return;
+		
+		int victimId = instigatorContextData.GetVictimPlayerID();
+		if (victimId <= 0)
+			return;
+		
+		if (m_bDebugEnabled)
+			Print(string.Format("[CRF_BattleRoyale] Player %1 died - scheduling count update", victimId));
+		
+		// 250ms delay to ensure slot death state is updated
+		GetGame().GetCallqueue().CallLater(OnPlayerDeathDelayed, 250, false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void OnPlayerDeathDelayed()
+	{
+		UpdateAlivePlayerCount();
+		if (m_bWinnerCheckActive)
+			CheckForWinners();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -219,7 +268,6 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	{
 		int aliveCount = 0;
 		
-		// Reads from slotting manager
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
 		{
@@ -228,18 +276,31 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
-		if (!slotMap)
+		// SAFE ITERATION: Copy slot IDs first to prevent crash if player disconnects mid-iteration
+		m_aCachedSlotIds.Clear();
+		array<int> tempIds = slottingManager.GetAllSlotIds();
+		if (!tempIds || tempIds.Count() == 0)
 			return;
 		
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		m_aCachedSlotIds.Copy(tempIds);
+		tempIds = null;
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		if (!pm)
+			return;
+		
+		foreach (int slotId : m_aCachedSlotIds)
 		{
+			CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData)
+				continue;
+			
 			// Skip locked or empty
 			if (slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
 			
 			// Skip disconnected players
-			if (!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+			if (!pm.IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 				continue;
 			
 			// Count alive 
@@ -277,11 +338,12 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 			if (m_bUpdateStageTimer)
 				UpdateStageTimer();
 			
-			// Update player count every 15 seconds when BR is active to save on replication calls
-			if (m_bBattleRoyaleActive)
+			// Backup poll every Xs (primary detection is OnControllableDestroyed)
+			// Gated behind player tracking toggle
+			if (m_bEnablePlayerTracking && m_bBattleRoyaleActive)
 			{
 				m_iPlayerCountUpdateCounter++;
-				if (m_iPlayerCountUpdateCounter >= 15)
+				if (m_iPlayerCountUpdateCounter >= 30)
 				{
 					UpdateAlivePlayerCount();
 					m_iPlayerCountUpdateCounter = 0;
@@ -292,8 +354,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		}
 		m_fUpdateBuffer += timeSlice;
 		
-		// Winner check loop (m_bWinnerCheckActive implies BR is active)
-		if (m_bWinnerCheckActive)
+		// Winner check loop - only when player tracking enabled
+		if (m_bEnablePlayerTracking && m_bWinnerCheckActive)
 		{
 			m_fWinnerCheckTimer += timeSlice;
 			
@@ -511,7 +573,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				{
 					if (m_bDebugEnabled) 
 						Print(string.Format("[CRF_BattleRoyaleComponent] Deleting unused boundary: '%1' from zone '%2'", stageData.m_sStageBoundaryName, otherZone.m_sZonePrefix));
-					SCR_EntityHelper.DeleteEntityAndChildren(boundaryEntity);
+					// Delay deletion, maybe will help replication issues
+					GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, boundaryEntity);
 				}
 			}
 		}
@@ -862,8 +925,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 					{
 						if (m_bDebugEnabled) 
 							Print(string.Format("[CRF_BattleRoyaleComponent] Deleting previous boundary '%1'", prevStageData.m_sStageBoundaryName));
-						SCR_EntityHelper.DeleteEntityAndChildren(prevEntity);
 						m_mBoundaryEntityCache.Remove(prevStageData.m_sStageBoundaryName);
+						GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, prevEntity);
 					}
 				}
 			}
@@ -1106,6 +1169,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	/**
 	 * Check for winning team in Battle Royale, works for any group size
 	 * Detects when only ONE group has any alive members, then lists ALL members of that group as winners
+	 * Uses SAFE iteration pattern to prevent crashes during player disconnect
 	 */
 	void CheckForWinners()
 	{
@@ -1120,106 +1184,95 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 			return;
 		}
 		
-		map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
-		if (!slotMap)
-		{
-			if (m_bDebugEnabled)
-				Print("[CRF_BattleRoyale] CheckForWinners: SlotMap not found!");
+		// SAFE ITERATION: Copy slot IDs first
+		m_aCachedSlotIds.Clear();
+		array<int> tempIds = slottingManager.GetAllSlotIds();
+		if (!tempIds || tempIds.Count() == 0)
 			return;
-		}
+		
+		m_aCachedSlotIds.Copy(tempIds);
+		tempIds = null;
 		
 		if (m_bDebugEnabled)
-			Print(string.Format("[CRF_BattleRoyale] === CheckForWinners called - Total slots: %1 ===", slotMap.Count()));
+			Print(string.Format("[CRF_BattleRoyale] === CheckForWinners called - Total slots: %1 ===", m_aCachedSlotIds.Count()));
 		
-		// Single-pass optimization: Track both alive groups AND all players by group
-		map<RplId, ref array<int>> allPlayersByGroup = new map<RplId, ref array<int>>();
-		map<RplId, bool> groupsWithAlivePlayers = new map<RplId, bool>();
+		m_mGroupPlayers.Clear();
 		
-		// Single iteration - collect everything at once
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		RplId aliveGroupId = RplId.Invalid();
+		int aliveGroupCount = 0;
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		if (!pm)
+			return;
+		
+		foreach (int slotId : m_aCachedSlotIds)
 		{
+			CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData)
+				continue;
+			
 			int playerId = slotData.GetSlotCurrentPlayerId();
 			if (playerId <= 0)
 				continue;
 			
-			// Skip disconnected players - they don't count for winner detection
-			if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			if (!pm.IsPlayerConnected(playerId))
 				continue;
 			
 			RplId groupId = slotData.GetSlotCurrentGroup();
 			if (groupId == RplId.Invalid())
-			{
-				if (m_bDebugEnabled)
-					Print(string.Format("[CRF_BattleRoyale] Player %1 has invalid group ID", playerId));
 				continue;
-			}
 			
-			// Track ALL players in this group
-			if (!allPlayersByGroup.Contains(groupId))
-				allPlayersByGroup.Insert(groupId, new array<int>());
-			allPlayersByGroup[groupId].Insert(playerId);
-			
-			// Check if this player is alive
-			bool isAlive = !slotData.GetIsDeadSlot();
-			
-			if (isAlive)
+			array<int> groupPlayers;
+			if (!m_mGroupPlayers.Find(groupId, groupPlayers))
 			{
-				// Mark this group as having alive players
-				if (!groupsWithAlivePlayers.Contains(groupId))
-					groupsWithAlivePlayers.Insert(groupId, true);
+				groupPlayers = new array<int>();
+				m_mGroupPlayers.Insert(groupId, groupPlayers);
+			}
+			groupPlayers.Insert(playerId);
+			
+			if (!slotData.GetIsDeadSlot())
+			{
+				if (aliveGroupId != groupId)
+				{
+					if (aliveGroupId == RplId.Invalid())
+						aliveGroupId = groupId;
+					else
+						aliveGroupCount++;
+				}
+				if (aliveGroupCount == 0 && aliveGroupId == groupId)
+					aliveGroupCount = 1;
 			}
 		}
 		
 		if (m_bDebugEnabled)
-			Print(string.Format("[CRF_BattleRoyale] Groups with alive players: %1", groupsWithAlivePlayers.Count()));
+			Print(string.Format("[CRF_BattleRoyale] Groups with alive players: %1", aliveGroupCount));
 		
-		// Check if only ONE group has alive players
-		if (groupsWithAlivePlayers.Count() != 1)
+		if (aliveGroupCount != 1)
 		{
 			if (m_bDebugEnabled)
-				Print(string.Format("[CRF_BattleRoyale] No winner yet - %1 teams with alive players", groupsWithAlivePlayers.Count()));
+				Print(string.Format("[CRF_BattleRoyale] No winner yet - %1 teams with alive players", aliveGroupCount));
 			return;
 		}
 		
-		// Get winning group ID
-		RplId winningGroupId = RplId.Invalid();
-		foreach (RplId groupId, bool hasAlive : groupsWithAlivePlayers)
-		{
-			winningGroupId = groupId;
-			break; // Only one group in the map
-		}
-		
 		if (m_bDebugEnabled)
-			Print(string.Format("[CRF_BattleRoyale] WINNER DETECTED! Winning GroupID: %1", winningGroupId));
+			Print(string.Format("[CRF_BattleRoyale] WINNER DETECTED! Winning GroupID: %1", aliveGroupId));
 		
-		// Use pre-collected data (no second iteration needed)
 		m_aWinnerPlayerIds.Clear();
-		array<int> winningPlayers = allPlayersByGroup[winningGroupId];
-		if (winningPlayers)
+		array<int> winningPlayers;
+		if (m_mGroupPlayers.Find(aliveGroupId, winningPlayers))
 			m_aWinnerPlayerIds.Copy(winningPlayers);
 		
 		if (m_bDebugEnabled)
 			Print(string.Format("[CRF_BattleRoyale] Total winners: %1", m_aWinnerPlayerIds.Count()));
 		
-		// Announce winners
 		if (m_aWinnerPlayerIds.Count() > 0)
-		{
 			DeclareWinners();
-		}
-		else
-		{
-			if (m_bDebugEnabled)
-				Print("[CRF_BattleRoyale] ERROR: No winners found despite having winning group!");
-		}
-		
-		// Clear temporary collections
-		allPlayersByGroup.Clear();
-		groupsWithAlivePlayers.Clear();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Declare the winners and stop the game
+	 * Uses RPC broadcast instead of RplProp array
 	 */
 	void DeclareWinners()
 	{
@@ -1229,34 +1282,106 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		if (m_bDebugEnabled)
 			Print("[CRF_BattleRoyale] ===== DECLARING WINNERS =====");
 		
-		// Stop winner checking permanently
 		m_bWinnerCheckActive = false;
-		m_bWinnersDeclared = true; // PERMANENT - never check again
+		m_bWinnersDeclared = true;
 		
-		// Replicate winner data
-		Replication.BumpMe();
+		// Broadcast winner IDs via RPC (safer than RplProp array)
+		BroadcastWinnersToClients();
 		
-		// Show popup notification
-		m_sMessageContent = "Victory!";
-		Replication.BumpMe();
+		// Build winner names string for notification
+		string winnerNames = BuildWinnerNamesString();
 		
-		// Play victory sound
+		// Broadcast victory notification via RPC (works for spectators)
+		Rpc(RpcDo_ShowVictoryNotification, winnerNames);
+		RpcDo_ShowVictoryNotification(winnerNames);
+		
 		Rpc(PlayStageSound, "victory");
 		
-		// Stop the battle royale system (preserves winner display since m_bWinnersDeclared is true)
 		StopBattleRoyale();
 		
 		if (m_bDebugEnabled)
-			Print("[CRF_BattleRoyale] Winner data replicated, notifications sent");
+			Print("[CRF_BattleRoyale] Winner data broadcast via RPC");
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Emergency Stop Method
+	string BuildWinnerNamesString()
+	{
+		string names = "";
+		PlayerManager pm = GetGame().GetPlayerManager();
+		if (!pm)
+			return "Unknown";
+		
+		for (int i = 0; i < m_aWinnerPlayerIds.Count(); i++)
+		{
+			int playerId = m_aWinnerPlayerIds[i];
+			string playerName = pm.GetPlayerName(playerId);
+			if (playerName.IsEmpty())
+				playerName = "Player " + playerId.ToString();
+			
+			if (i > 0)
+				names += ", ";
+			names += playerName;
+		}
+		
+		if (names.IsEmpty())
+			names = "Unknown";
+		
+		return names;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ShowVictoryNotification(string winnerNames)
+	{
+		SCR_PopUpNotification popup = SCR_PopUpNotification.GetInstance();
+		if (popup)
+			popup.PopupMsg("VICTORY!", 15, "Winners: " + winnerNames);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void BroadcastWinnersToClients()
+	{
+		m_aCachedWinnerBuffer.Clear();
+		for (int i = 0; i < 8; i++)
+		{
+			if (i < m_aWinnerPlayerIds.Count())
+				m_aCachedWinnerBuffer.Insert(m_aWinnerPlayerIds[i]);
+			else
+				m_aCachedWinnerBuffer.Insert(0);
+		}
+		
+		Rpc(RpcDo_ReceiveWinners, 
+			m_aCachedWinnerBuffer[0], m_aCachedWinnerBuffer[1], 
+			m_aCachedWinnerBuffer[2], m_aCachedWinnerBuffer[3],
+			m_aCachedWinnerBuffer[4], m_aCachedWinnerBuffer[5],
+			m_aCachedWinnerBuffer[6], m_aCachedWinnerBuffer[7]);
+		
+		RpcDo_ReceiveWinners(
+			m_aCachedWinnerBuffer[0], m_aCachedWinnerBuffer[1], 
+			m_aCachedWinnerBuffer[2], m_aCachedWinnerBuffer[3],
+			m_aCachedWinnerBuffer[4], m_aCachedWinnerBuffer[5],
+			m_aCachedWinnerBuffer[6], m_aCachedWinnerBuffer[7]);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ReceiveWinners(int w1, int w2, int w3, int w4, int w5, int w6, int w7, int w8)
+	{
+		m_aWinnerPlayerIds.Clear();
+		if (w1 > 0) m_aWinnerPlayerIds.Insert(w1);
+		if (w2 > 0) m_aWinnerPlayerIds.Insert(w2);
+		if (w3 > 0) m_aWinnerPlayerIds.Insert(w3);
+		if (w4 > 0) m_aWinnerPlayerIds.Insert(w4);
+		if (w5 > 0) m_aWinnerPlayerIds.Insert(w5);
+		if (w6 > 0) m_aWinnerPlayerIds.Insert(w6);
+		if (w7 > 0) m_aWinnerPlayerIds.Insert(w7);
+		if (w8 > 0) m_aWinnerPlayerIds.Insert(w8);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Gamemode Stop Method
 	//------------------------------------------------------------------------------------------------
 	
-	/**
-	 * Emergency stop - halt all battle royale activity and clear timers
-	 */
 	void StopBattleRoyale()
 	{
 		if (RplSession.Mode() == RplMode.Client)

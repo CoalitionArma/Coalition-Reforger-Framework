@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{2780553CDBB95D4E}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents_Poor_Mortar.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

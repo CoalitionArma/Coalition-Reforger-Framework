@@ -1,0 +1,350 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 6930.567 169.546 9694.82
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 60
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Blufor are trapped without assets in Deraz with local insurgent forces bearing down on them. If Deraz falls, Blufor will spawn with their assets and a chance for vengeance. "\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: 1x LAV / Platoon, PLT CE, MMG"\
+   ""\
+   "INDFOR Composition: Inf"\
+   "INDFOR Assets: Unknown"\
+   ""\
+   "Time: 60"\
+   "Weather: Day Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Hold out as long as possible at the marked Deraz neighborhood. When Deraz falls, you will respawn at the marked location where you will receive your assets. If the mission times out, the faction who controlled Deraz the longest will win."\
+   ""\
+   "Mission Maker Notes:"\
+   "You start on the back foot for the first phase of the mission, but can better dicate how things go during phase 2. The Deraz trigger is based on a 90% control rate. "
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Sieze the marked Deraz neighborhood as quickly as possible. When Deraz falls, you will respawn. If the mission times out, the faction who controlled Deraz the longest will win. You start with Armed Urals, and a truck with additional mortar rounds in it."\
+   ""\
+   "Mission Maker Notes:"\
+   "Attacking into an entrenched, better armoured enemy can be tough, but you have high caliber weapons available to you, and strong fire support with smoke. The Deraz trigger is based on a 90% control rate. During phase 2, the enemy will have long range superiority due to auto cannons across the relatively open area."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "There is a script to detect Indfor control of Deraz, but if it doesn't function properly, we may need to send a message and manually respawn."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BluforSlots {
+  CRF_SlottingGroup "{6876014E7D16B445}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16AB20}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16AA6F}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A988}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A91D}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A801}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16AF4F}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16AE1F}" {
+   m_sCallsign "LAV 1"
+   m_FlagType MOTORIZED
+   m_aSlots {
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16AD74}" {
+   m_sCallsign "LAV 2"
+   m_FlagType MOTORIZED
+   m_aSlots {
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{6876014E7D16A2FD}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A1FB}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A0A1}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A7AA}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A640}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A566}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D16A427}" {
+   m_sCallsign "1-6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D169B3C}" {
+   m_sCallsign "MTR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{6876014E7D169A3F}" {
+   m_sCallsign "MAT"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{670CAB98D21A8356}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{2780553CDBB95D4E}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_MEInsurgents_Poor_Mortar.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}

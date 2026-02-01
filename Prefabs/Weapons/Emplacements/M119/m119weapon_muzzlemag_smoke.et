@@ -1,0 +1,140 @@
+GenericEntity : "{842D220FF4EFF2A8}Prefabs/Weapons/HeavyWeapons/NSV/HMG_NSV_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{CFC6C8EE426C5919}Weapons_Mortars_arty_shot.acp" "{712905F2C84E9AF2}Artythings/Weapons_HeavyWeapons_shell_Handling_Copy.acp"
+   }
+  }
+  LongRangeSoundComponent "{687721809212D325}" {
+   SoundDataName "Weapons_Mortars_2B14_Shot"
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{85AAA688F52C49DE}M119/m119.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "M119"
+     Description "M119"
+    }
+   }
+  }
+  SCR_WeaponBlastComponent "{687721809212D3D4}" {
+   m_aBlastEffects {
+    SCR_WeaponBlastEffect "{687721809212D3D6}" {
+     m_eDamageType EXPLOSIVE
+     m_fDamageValue 0.3
+     m_aDistanceDamageFalloff {
+      0 1 0.305 0.958 0.569 0.255 1 0
+     }
+     m_aAngleDamageFalloff {
+      0 0 0.01 0.88 1 1
+     }
+    }
+   }
+   m_BlastOrigin PointInfo "{687721809212D3C8}" {
+    PivotID "context_fire"
+    Offset 0.0085 0.0881 3.1157
+   }
+   m_fBlastLength 7
+   m_fBlastConeAngle 80
+   m_bCanBlastRicochet 0
+  }
+  SlotManagerComponent "{6044A1932A368344}" {
+   Slots {
+    EntitySlotInfo Dovetail {
+     PivotID "slot_dovetail"
+     ChildPivotID "snap_weapon"
+     Enabled 0
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5AF070F55031A54D}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      PivotID "w_sight"
+      Offset -0.027 0.0997 -0.0486
+     }
+    }
+    SCR_MuzzleInMagComponent "{50F64C4591CD7AA6}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{9A22442DE6DE9BAA}Casing_arty.ptc"
+       EffectPosition EntitySlotInfo "{513A938439231378}" {
+        PivotID "w_bolt"
+        Offset 0 0.0123 -0.1288
+        Angles -90 180 0
+       }
+      }
+      CaseEjectingEffectComponent "{5EBE9EB3C771E45A}" {
+       ParticleEffect "{28CFF222D76F82D8}Artythings/t34muzsmoke.ptc"
+       EffectPosition EntitySlotInfo Smoke {
+        PivotID "w_bolt"
+        Angles 0 180 0
+       }
+      }
+      SCR_MuzzleEffectComponent "{687721809212D3C0}" {
+       ParticleEffect "{3F6AA90E803E1D70}Artythings/tankshotsmoke.ptc"
+       EffectPosition EntitySlotInfo "{65E4F262813EEEF0}" {
+        PivotID "w_bolt"
+        Offset 0 0 3.2519
+        AutoTransform 0
+       }
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{9D85855F6D71595B}Artythings/tankshotheavy.ptc"
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        PivotID "w_bolt"
+        Offset 0 0 3.2519
+       }
+      }
+     }
+     MuzzleEndPositions {
+      PointInfo "{B80A64F4B6CFB9BF}" {
+       PivotID "barrel_muzzle"
+      }
+     }
+     ChamberedAmmo 0
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst -1
+       RoundsPerMinute 10
+       UIName "Fire"
+      }
+     }
+     MissileWeaponLink BaseMissileWeaponLinkClass "{687721809212D3C6}" {
+     }
+     MagazineWell MagazineWellArty "{5AF070F55031A55A}" {
+     }
+     BulletInitSpeedCoef 1
+     UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
+      m_sCaliber "105mm"
+     }
+     ReloadDuration 4
+     ProjectilePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 0.0162 0.5009
+     }
+     AmmoTemplate "{60875FD5B683A5CC}Prefabs/Weapons/Ammo/105mmSmoke_muzzlemag.et"
+     ProjectileVisible 1
+     IsAttachment 1
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{936AEF8CECA7B24E}M119/M119anim/M119_tripod.agr"
+     AnimInstance "{BB8E3980BD9B1344}M119/M119anim/M119_Weapon_tripod.asi"
+     StartNode "WeaponMasterControl"
+     AnimInjection AnimationAttachmentInfo "{5F26990B240DBF6F}" {
+      AnimGraph "{936AEF8CECA7B24E}M119/M119anim/M119_tripod.agr"
+      AnimInstance "{BB8E3980BD9B1344}M119/M119anim/M119_Weapon_tripod.asi"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M119"
+    Description "M119"
+   }
+   CanBeOnSling 0
+  }
+ }
+}

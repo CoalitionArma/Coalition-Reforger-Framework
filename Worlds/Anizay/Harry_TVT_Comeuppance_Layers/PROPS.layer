@@ -1,0 +1,18 @@
+$grp SCR_IndestructibleEnvironmentalEntity : "{2EABAD6A7429CCBA}Prefabs/Models/Rocks/tem_r_tk_boulder_03.et" {
+ {
+  coords 4880.961 4.16 9000.46
+  angles 0 -115.347 45.13
+ }
+ {
+  coords 4895.285 3.289 8996.094
+  angles -32.649 -115.347 0
+ }
+ {
+  coords 4867.081 2.785 9000.19
+  angles 0 27.474 0
+ }
+ {
+  coords 4910.46 3.816 8993.988
+  angles 0 -115.347 0
+ }
+}

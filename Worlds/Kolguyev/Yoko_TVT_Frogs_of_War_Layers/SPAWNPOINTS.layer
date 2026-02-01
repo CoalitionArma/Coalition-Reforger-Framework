@@ -1,0 +1,6 @@
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 4595.568 43.062 3583.949
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 4516.497 2.319 201.14
+}

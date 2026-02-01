@@ -1,0 +1,641 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{FA02CD1FDA9A7EE4}World/Data/BTRLikeZimnitrita.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{118D26584E97D8E6}World/Data/LowResZimnitrita.nmn"
+    }
+   }
+  }
+ }
+ coords 7217.692 54.156 6273.15
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{68602D4605A729BF}" {
+   m_iMCOMsPerZone 1
+  }
+  CRF_SearchAndDestroyGamemodeManager "{687C30A3F2434777}" {
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fTourniquettedLegMovementSlowdown 0.5
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 19
+   m_iStartingMinutes 30
+   m_fDayTimeAcceleration 8
+   m_fNightTimeAcceleration 8
+   m_bUsePredefineStartingTimeAndWeather 0
+  }
+ }
+ coords 8443.404 61.263 11864.6
+ angles -0.894 -0.035 2.237
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iTimeToRespawn 180
+ m_iTimeLimitMinutes 90
+ m_bAllowEspionage 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Ask your leadership"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Ask your leadership"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Ask your leadership"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "N/A"
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{687D7080728BBB13}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBA10}" {
+   m_sCallsign "LOGI"
+   m_FlagType MAINTENANCE
+   m_aSlots {
+    LOGI_LEAD
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBA9B}" {
+   m_sCallsign "1PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBD31}" {
+   m_sCallsign "Alpha"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBD9E}" {
+   m_sCallsign "Bravo"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBC1D}" {
+   m_sCallsign "Charlie"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBC9D}" {
+   m_sCallsign "Delta"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{687D7080728BBFA5}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBE3C}" {
+   m_sCallsign "Topor 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BBEC3}" {
+   m_sCallsign "Topor 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BB152}" {
+   m_sCallsign "Conscripts"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BB1E0}" {
+   m_sCallsign "Zashchita 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BB074}" {
+   m_sCallsign "Zashchita 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BB007}" {
+   m_sCallsign "Zashchita 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_CivSlots {
+  CRF_SlottingGroup "{687D7080728BB36E}" {
+   m_sCallsign "Journalists"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RADIO_TELEPHONE_OPERATOR
+    RIFLEMAN
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{687D7080728BB305}" {
+   m_sCallsign "Zeus"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_iBLUFORTickets 200
+ m_iOPFORTickets 100
+ m_iINDFORTickets 0
+ m_iCIVTickets 100
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{686F4CC1FCF4782E}" {
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1F2199963}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1F092797C}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1F5C00F27}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1EA3273FA}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC0FB08F966}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1EF8D2F7F}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC1EC2CC2CE}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC0C01A9289}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZWC_CAMPAIGN.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{686F4CC21F1575CB}" {
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC21D4C91E7}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC213AEFE30}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC2106C9583}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{686F4CC2161195EC}" {
+    m_VehicleAmmoType AR
+   }
+  }
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_Journos.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "685018D7EDA8F8E2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Logistics"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{685222256AA1BDC2}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{68522225697DED79}" {
+        m_sCallsign "Delta"
+       }
+      }
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{684F75139AEF0E6C}" {
+         m_sIdentifier "Ammunition"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{684F7513920B0A40}" {
+           m_sEntityPrefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{684F751010A2C8FD}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 5
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{684F751396C2A43E}" {
+         m_sIdentifier "Weapons"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{685018DCBABD3F46}" {
+           m_sEntityPrefab "{96DFD2E7E63B3386}Prefabs/Weapons/Rifles/AK74/Rifle_AK74N.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{685018DCB359C579}" {
+             m_iSupplyCost 20
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{684F75138ACC27E8}" {
+         m_sIdentifier "Throwables"
+        }
+        SCR_EntityCatalogMultiListEntry "{684F75138E3BBD39}" {
+         m_sIdentifier "Placeables"
+        }
+        SCR_EntityCatalogMultiListEntry "{685018DF5A562164}" {
+         m_sIdentifier "Gear"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{685018DF5F49BF58}" {
+           m_sEntityPrefab "{F96A42271F2D72CB}Prefabs/Characters/Armbands/Single/Armband_Red.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{685018DF4E5847CD}" {
+             m_iSupplyCost 0
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170F9940CC09}" {
+           m_sEntityPrefab "{36218D5F0C7095E6}Prefabs/Weapons/Flares/Flare_RSP30_red.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FBEDBA061}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170FA6C6276B}" {
+           m_sEntityPrefab "{FC79F6BDEB7F1BC2}Prefabs/Weapons/Flares/Flare_RSP30_green.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FA6C62728}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170FDABB4980}" {
+           m_sEntityPrefab "{327103CB218E7CA1}Prefabs/Weapons/Flares/Flare_RSP30_white.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FDABB4838}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Topor 1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Toper 2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Conscripts"
+       }
+       SCR_CallsignInfo "{685018D1C0DB98BA}" {
+        m_sCallsign "Zashchita 1"
+       }
+       SCR_CallsignInfo "{685018D1C0A93652}" {
+        m_sCallsign "Zashchita 2"
+       }
+       SCR_CallsignInfo "{685018D1C77ABD2B}" {
+        m_sCallsign "Zashchita 3"
+       }
+      }
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" {
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{684F75139AEF0E6C}" {
+         m_sIdentifier "Ammunition"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{684F7513920B0A40}" {
+           m_sEntityPrefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{684F751010A2C8FD}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 5
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{686D70CA7AF86558}" {
+           m_sEntityPrefab "{B9006AD5B5EDF4C1}Prefabs/Weapons/Magazines/BC_Drum_762x39_RPD_100rnd_Mixed.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{684F751010A2C8FD}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 20
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{684F751396C2A43E}" {
+         m_sIdentifier "Weapons"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{685018DCBABD3F46}" {
+           m_sEntityPrefab "{96DFD2E7E63B3386}Prefabs/Weapons/Rifles/AK74/Rifle_AK74N.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{685018DCB359C579}" {
+             m_iSupplyCost 20
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{686D70CA5FFB3C10}" {
+           m_sEntityPrefab "{102AC2A328B1229E}Prefabs/Weapons/MachineGuns/RPD/BC_RPD.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{686D70CA5510330B}" {
+             m_iSupplyCost 100
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{684F75138ACC27E8}" {
+         m_sIdentifier "Throwables"
+        }
+        SCR_EntityCatalogMultiListEntry "{684F75138E3BBD39}" {
+         m_sIdentifier "Placeables"
+        }
+        SCR_EntityCatalogMultiListEntry "{685018DF5A562164}" {
+         m_sIdentifier "Gear"
+         m_aEntities {
+          SCR_EntityCatalogEntry "{685018DF5F49BF58}" {
+           m_sEntityPrefab "{7DEDA95CC6A54555}Prefabs/Characters/Armbands/Single/Armband_Yellow.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{685018DF4E5847CD}" {
+             m_iSupplyCost 0
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170F9940CC09}" {
+           m_sEntityPrefab "{36218D5F0C7095E6}Prefabs/Weapons/Flares/Flare_RSP30_red.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FBEDBA061}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170FA6C6276B}" {
+           m_sEntityPrefab "{FC79F6BDEB7F1BC2}Prefabs/Weapons/Flares/Flare_RSP30_green.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FA6C62728}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+          SCR_EntityCatalogEntry "{687D170FDABB4980}" {
+           m_sEntityPrefab "{327103CB218E7CA1}Prefabs/Weapons/Flares/Flare_RSP30_white.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{687D170FDABB4838}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 15
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 8428.481 60.481 11921.278
+ }
+ bSiteTrigger {
+  coords 8443.549 58.827 11919.66
+  angles 0 -82.291 0
+ }
+}
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 8434.257 59.578 11925.236
+  angles 0 0 0
+  m_sDescription "OBJ A"
+  m_bUseWorldScale 0
+ }
+ {
+  coords 8384.219 56.671 12714.978
+  angles 0 0 0
+  m_sDescription "OBJ B"
+  m_bUseWorldScale 0
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 8403.047 84.609 11591.442
+ Points {
+  ShapePoint "{687C30B79E56F8B9}" {
+   Position -1078.802 0 1905.229
+  }
+  ShapePoint "{687C30B7933C9E68}" {
+   Position 456.068 0 1904.59
+  }
+  ShapePoint "{687C30B7873E45E9}" {
+   Position 1284.369 24.327 514.106
+  }
+  ShapePoint "{687C30B7B9478BBA}" {
+   Position 506.133 56.723 -904.13
+  }
+  ShapePoint "{687C30B7BFCF3B15}" {
+   Position -1128.723 21.089 -906.567
+  }
+  ShapePoint "{687C30B7B206F0F2}" {
+   Position -1869.202 179.383 481.936
+  }
+ }
+}
