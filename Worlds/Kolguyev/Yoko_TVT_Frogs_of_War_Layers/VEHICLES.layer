@@ -1,0 +1,116 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4550.695 -0.3 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4542.906 -0.919 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4534.155 -0.919 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4526.451 -0.919 261.518
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4517.406 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4507.818 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4498.43 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4490.854 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4482.874 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4474.652 -0.919 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4569.387 44.206 3591.538
+  angles 0 -162.505 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4573.423 45.614 3604.343
+  angles 0 -162.505 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4561.246 42.256 3565.711
+  angles 0 -162.505 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4565.746 43.154 3579.987
+  angles 0 -162.505 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4464.446 -0.812 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4455.859 -0.812 261.518
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  components {
+   SCR_SlotCompositionComponent "{52CAE30B655050CF}" {
+    m_bOrientChildrenToTerrain 0
+   }
+  }
+  coords 4452.463 1.3 218.575
+ }
+ {
+  components {
+   SCR_SlotCompositionComponent "{52CAE30B655050CF}" {
+    m_bOrientChildrenToTerrain 0
+   }
+  }
+  coords 4465.453 1.3 218.575
+ }
+ {
+  components {
+   SCR_SlotCompositionComponent "{52CAE30B655050CF}" {
+    m_bOrientChildrenToTerrain 0
+   }
+  }
+  coords 4476.754 1.3 218.575
+ }
+}

@@ -1,0 +1,262 @@
+$grp SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Base.et" {
+ {
+  coords 4548.696 1.207 245.527
+ }
+ {
+  coords 4548.696 1.207 236.467
+ }
+ {
+  coords 4548.696 1.207 227.561
+ }
+ {
+  coords 4548.696 1.207 218.64
+ }
+ {
+  coords 4548.696 1.207 209.74
+ }
+ {
+  coords 4548.696 1.207 201.035
+ }
+ {
+  coords 4535.85 1.207 236.467
+ }
+ {
+  coords 4535.85 1.207 227.561
+ }
+ {
+  coords 4535.85 1.207 218.64
+ }
+ {
+  coords 4535.85 1.207 209.74
+ }
+ {
+  coords 4535.85 1.207 201.035
+ }
+ {
+  coords 4535.85 1.207 245.527
+ }
+ {
+  coords 4523.117 1.207 236.467
+ }
+ {
+  coords 4523.117 1.207 227.561
+ }
+ {
+  coords 4523.117 1.207 218.64
+ }
+ {
+  coords 4523.117 1.207 209.74
+ }
+ {
+  coords 4523.117 1.207 201.035
+ }
+ {
+  coords 4523.117 1.207 245.527
+ }
+ {
+  coords 4510.386 1.207 236.467
+ }
+ {
+  coords 4510.386 1.207 227.561
+ }
+ {
+  coords 4510.386 1.207 218.64
+ }
+ {
+  coords 4510.386 1.207 209.74
+ }
+ {
+  coords 4510.386 1.207 201.035
+ }
+ {
+  coords 4510.386 1.207 245.527
+ }
+ {
+  coords 4497.663 1.207 236.467
+ }
+ {
+  coords 4497.663 1.207 227.561
+ }
+ {
+  coords 4497.663 1.207 218.64
+ }
+ {
+  coords 4497.663 1.207 209.74
+ }
+ {
+  coords 4497.663 1.207 201.035
+ }
+ {
+  coords 4497.663 1.207 245.527
+ }
+ {
+  coords 4484.882 1.207 236.467
+ }
+ {
+  coords 4484.882 1.207 227.561
+ }
+ {
+  coords 4484.882 1.207 218.64
+ }
+ {
+  coords 4484.882 1.207 209.74
+ }
+ {
+  coords 4484.882 1.207 201.035
+ }
+ {
+  coords 4484.882 1.207 245.527
+ }
+ {
+  coords 4472.083 1.207 236.467
+ }
+ {
+  coords 4472.083 1.207 227.561
+ }
+ {
+  coords 4472.083 1.207 218.64
+ }
+ {
+  coords 4472.083 1.207 209.74
+ }
+ {
+  coords 4472.083 1.207 201.035
+ }
+ {
+  coords 4472.083 1.207 245.527
+ }
+ {
+  coords 4459.548 1.207 236.467
+ }
+ {
+  coords 4459.548 1.207 227.561
+ }
+ {
+  coords 4459.548 1.207 218.64
+ }
+ {
+  coords 4459.548 1.207 209.74
+ }
+ {
+  coords 4459.548 1.207 201.035
+ }
+ {
+  coords 4459.548 1.207 245.527
+ }
+ {
+  coords 4446.681 1.207 236.467
+ }
+ {
+  coords 4446.681 1.207 227.561
+ }
+ {
+  coords 4446.681 1.207 218.64
+ }
+ {
+  coords 4446.681 1.207 209.74
+ }
+ {
+  coords 4446.681 1.207 201.035
+ }
+ {
+  coords 4446.681 1.207 245.527
+ }
+ {
+  coords 4433.832 1.207 236.467
+ }
+ {
+  coords 4433.832 1.207 227.561
+ }
+ {
+  coords 4433.832 1.207 218.64
+ }
+ {
+  coords 4433.832 1.207 209.74
+ }
+ {
+  coords 4433.832 1.207 201.035
+ }
+ {
+  coords 4433.832 1.207 245.527
+ }
+ {
+  coords 4535.85 1.207 192.019
+ }
+ {
+  coords 4523.117 1.207 192.019
+ }
+ {
+  coords 4484.882 1.207 192.019
+ }
+ {
+  coords 4497.663 1.207 192.019
+ }
+ {
+  coords 4446.681 1.207 192.019
+ }
+ {
+  coords 4510.386 1.207 192.019
+ }
+ {
+  coords 4548.696 1.207 192.019
+ }
+ {
+  coords 4459.548 1.207 192.019
+ }
+ {
+  coords 4472.083 1.207 192.019
+ }
+ {
+  coords 4433.832 1.207 192.019
+ }
+}
+GenericEntity : "{97A03B43D914B4DD}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft_Base.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_bEnableResourceGain 1
+     m_fResourceGain 5
+     m_fResourceGainTimeout 1000
+    }
+   }
+  }
+ }
+ coords 4464.314 1.222 207.211
+ angles 0 90.554 0
+}
+SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
+ coords 4552.017 146.688 191.842
+ angles 0 1.274 0
+}
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 4311.607 22.781 2854.332
+  angles 0 -165.244 0
+ }
+ {
+  coords 4438.336 17.513 2920.591
+  angles 0 87.866 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {
+ {
+  coords 4314.031 1.186 2809.282
+  angles 0 -162.419 0
+ }
+ {
+  coords 4427.626 0.422 2769.204
+  angles 0 139.09 0
+ }
+ {
+  coords 4556.372 0.529 2825.875
+  angles 0 158.695 0
+ }
+ {
+  coords 4243.967 0.533 2898.767
+  angles 0 -149.309 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{F16324CB8CB07C00}Prefabs/Structures/Military/Houses/GarageMilitary_E_01/GarageMilitary_E_01.et" {
+ coords 4514.475 149.846 199.107
+}
