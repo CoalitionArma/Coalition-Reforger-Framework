@@ -106,12 +106,15 @@ FrameWidgetClass {
   BlurWidgetClass "{686E6740E87E5EAA}" {
    Name "Blur"
    Slot FrameWidgetSlot "{686E6740E87E5C4E}" {
+    Anchor 0 0 1 1
+    PositionX 0
     OffsetLeft 0
+    PositionY 0
     OffsetTop 0
-    SizeX 1920
-    OffsetRight -1920
-    SizeY 1080
-    OffsetBottom -1080
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
    }
    Opacity 0
    Color 0.2086 0.2086 0.2086 1

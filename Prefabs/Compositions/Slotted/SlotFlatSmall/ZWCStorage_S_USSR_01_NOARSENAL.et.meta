@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4E287D7A04A12D2D}Prefabs/Compositions/Slotted/SlotFlatSmall/ZWCStorage_S_USSR_01_NOARSENAL.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
