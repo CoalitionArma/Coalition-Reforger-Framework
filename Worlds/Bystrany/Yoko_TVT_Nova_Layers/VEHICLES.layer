@@ -1,0 +1,56 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 7421.065 152.304 7648.793
+  angles 0 -53.164 0
+  m_rVehicle "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7433.249 153.844 7636.131
+  angles 0 -26.525 0
+  m_rVehicle "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 6251.645 207.55 8724.549
+  angles 0 65.484 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6234.196 207.714 8718.793
+  angles 0 74.084 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6283.495 205.738 8742.271
+  angles 0 66.088 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6264.449 206.779 8730.389
+  angles 0 65.484 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6283.622 204.721 8761.672
+  angles 0 173.555 0
+  m_rVehicle "{7F0CE77CBE1A1F65}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6281.723 204.667 8774.099
+  angles 0 172.952 0
+  m_rVehicle "{7F0CE77CBE1A1F65}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 6221.282 208.905 8715.11
+  angles 0 75.65 0
+  m_rVehicle "{EC657C9B3C73E192}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
