@@ -16,7 +16,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Cloudy"
+     m_sWeatherPresetName "Rainy"
      m_iStartingHour 12
      m_iStartingMinutes 0
     }
@@ -45,7 +45,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""\
    "Time: 12:00 PM"\
    ""\
-   "Weather: Cloudy"
+   "Weather: Rainy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
