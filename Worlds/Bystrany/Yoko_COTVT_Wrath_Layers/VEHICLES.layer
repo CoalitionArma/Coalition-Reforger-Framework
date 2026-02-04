@@ -1,0 +1,32 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4149.475 209.933 7634.811
+  angles 0 -138.637 0
+  m_rVehicle "{D1D2D8ADC6E1D409}Prefabs/Vehicles/Tracked/M1A2/SEPV2/M1A2_SEPV2_TUSK_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4070.706 213.62 7591.921
+  angles 0 178.778 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4077.637 213.62 7592.069
+  angles 0 178.778 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4084.197 213.62 7592.208
+  angles 0 178.778 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4137.437 210.969 7621.231
+  angles 0 -138.637 0
+  m_rVehicle "{634C65C1C55CA723}Prefabs/Vehicles/Tracked/BFV/M2A2_BUSK_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
