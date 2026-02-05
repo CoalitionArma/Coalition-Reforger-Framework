@@ -1,15 +1,62 @@
-CRF_VehicleSpawner {
- coords 5736.081 105.676 7140.112
- angles 0 179.421 0
- m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
- m_sFactionKey "OPFOR"
- m_bShouldRespawnOnSideRespawn 0
- m_iRespawnTimer 10000
- m_aAdditionalVehicleItems {
-  CRF_VehicleGearScriptAdditionalItem "{6889775C80403675}" {
-   m_Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
-   m_iAmountOfItemSupplyTruck 2
-   m_iAmountOfItemRegularVehicle 2
-  }
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 5783.188 113.429 7223.833
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5736.827 105.535 7140.399
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5790.623 113.638 7218.508
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5798.655 114.246 7213.254
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5805.54 114.399 7208.697
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5810.36 114.521 7203.987
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5816.774 114.688 7198.604
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5776.177 113.525 7231.421
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5771.806 113.643 7235.007
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5785.58 114.141 7235.131
+  angles 0 -90 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_iRespawnTimer 10000
  }
 }
