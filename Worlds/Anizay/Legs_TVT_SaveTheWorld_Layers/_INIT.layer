@@ -6,7 +6,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_SearchAndDestroyGamemodeManager "{6888224BD036CC2A}" {
    attackingSide "OPFOR"
    defendingSide "INDFOR"
-   hideMapMarkers 1
+   bombSitePrefab "{690F012127F996C7}Prefabs/Structures/S&D/CRF_Bomb.et"
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
