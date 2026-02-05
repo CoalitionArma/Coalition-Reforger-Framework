@@ -1,0 +1,44 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 3627.471 190.374 1513.287
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy Enemy Air Assets and Comms Tower"
+ }
+ {
+  coords 3119.958 121.312 1741.789
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy Enemy Weapons Cache"
+ }
+ {
+  coords 3526.835 208.438 667.568
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Secure RUS Roadblock"
+ }
+ {
+  coords 2261.506 167.505 1127.666
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Destroy Enemy Mortars"
+ }
+ {
+  coords 3076.923 121.311 1791.611
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sDescription "Poss. Informant Location"
+ }
+ {
+  coords 3572.04 207.574 696.966
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sDescription "Poss. Informant Location"
+ }
+ {
+  coords 2414.261 169.707 1111.393
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sDescription "Poss. Informant Location"
+ }
+}

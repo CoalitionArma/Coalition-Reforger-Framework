@@ -59,6 +59,8 @@ modded class SCR_Faction
 		foreach (SCR_CallsignInfo group: squadCallsigns)
 		{
 			string groupName = group.GetCallsign();
+			if (groupName == "NULL")
+				continue;
 			bool foundContainer = false;
 			if (GetCallsignInfo().m_aGroupFrequencyOverrides)
 			foreach (CVON_GroupFrequencyContainer container: GetCallsignInfo().m_aGroupFrequencyOverrides)

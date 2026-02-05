@@ -1,0 +1,230 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 3516.273 187.737 1426.605
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 4096.583 31.251 1603.653
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 35
+ m_iTimeLimitMinutes 60
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "An informant has gone missing, A US QRF has been deployed to locate the infomant and extract him back to the FOB."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x MMG, 1X MAT, 3x M1151 (Armed) and 1x M2A3 Bradley"\
+   ""\
+   "OPFOR Composition: Unknown"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time: Noon"\
+   ""\
+   "Weather: Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData " Main Objective: Locate the informant and extract him back to the FOB."\
+   ""\
+   "Optional Objectives:"\
+   "1. Destroy Comms tower and  enemy air assets at Riqay Airfield."\
+   "2. Destory Enemy Supply Cache at Amaro"\
+   "3. Secure RUS Roadblock in Riqay"\
+   "4. Secure Enemy Mortars in Akhund South."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "N/A"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey ""
+ m_sFactionTwoKey ""
+ m_BluforSlots {
+  CRF_SlottingGroup "{687F1EB3B68E65BD}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E6778}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E67E7}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E7869}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E78FB}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E797D}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E79D2}" {
+   m_sCallsign "MAT"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E79A8}" {
+   m_sCallsign "IFV 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{687F1EB3B68E7A38}" {
+   m_sCallsign "Zeus"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{9F1BB18540252916}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{FA82A9F5101BF159}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUS_2000s.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}

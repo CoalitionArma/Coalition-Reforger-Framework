@@ -1,0 +1,58 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5152.023 207.219 1792.706
+  angles 0 -88.288 0
+  m_rVehicle "{533820E8979A44A9}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5151.785 207.219 1784.735
+  angles 0 -88.288 0
+  m_rVehicle "{533820E8979A44A9}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5151.546 207.219 1776.745
+  angles 0 -88.288 0
+  m_rVehicle "{533820E8979A44A9}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5151.288 207.219 1768.125
+  angles 0 -88.288 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5151.074 207.219 1760.967
+  angles 0 -88.288 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5150.817 207.219 1752.376
+  angles 0 -88.288 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5150.521 207.219 1742.485
+  angles 0 -88.288 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5143.879 207.477 1735.208
+  angles 0 -47.348 0
+  m_rVehicle "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5168.317 207.219 1812.865
+  angles 0 -88.288 0
+  m_rVehicle "{5C24713F38CDA98C}Prefabs/Vehicles/Tracked/BFV/M2A3_Desert.et"
+  m_sFactionKey "BLUFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{687F1EB17486A8FE}" {
+  }
+ }
+}
