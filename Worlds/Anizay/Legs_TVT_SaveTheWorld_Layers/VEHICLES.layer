@@ -1,43 +1,43 @@
 $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
  {
-  coords 2992.191 138.663 7086.287
-  angles 0 87.343 0
+  coords 2876.448 139.4 7058.692
+  angles 0 107.305 0
   m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2992.384 138.674 7089.915
-  angles 0 87.343 0
+  coords 2877.868 139.317 7062.036
+  angles 0 107.305 0
   m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2992.623 138.633 7094.228
-  angles 0 87.343 0
+  coords 2879.565 139.196 7066.007
+  angles 0 107.305 0
   m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2992.854 138.616 7098.526
-  angles 0 87.343 0
+  coords 2881.249 139.06 7069.969
+  angles 0 107.305 0
   m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2992.857 138.616 7101.908
-  angles 0 87.343 0
+  coords 2882.407 138.978 7073.146
+  angles 0 107.305 0
   m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2993.148 138.648 7105.31
-  angles 0 87.343 0
+  coords 2883.842 138.876 7076.245
+  angles 0 107.305 0
   m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
   m_iRespawnTimer 10000
  }
  {
-  coords 2992.869 138.648 7109.177
-  angles 0 87.343 0
+  coords 2884.899 138.785 7079.975
+  angles 0 107.305 0
   m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
   m_iRespawnTimer 10000
  }
