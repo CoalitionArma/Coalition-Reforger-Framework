@@ -15,7 +15,7 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   coords 4024.614 281.839 9318.553
   angles 0 0 0
   m_MarkerColor 1 0.962 0 1
-  m_sDescription "Secure Military Base"
+  m_sDescription "Capture the General"
  }
  {
   coords 3352.347 283.159 9218.053
@@ -28,5 +28,11 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   angles 0 0 0
   m_MarkerColor 1 0.962 0 1
   m_sDescription "Secure Old Checkpoint"
+ }
+ {
+  coords 3351.275 226.845 8241.644
+  angles 0 0 0
+  m_MarkerColor 1 0.962 0 1
+  m_sDescription "Secure MRSP."
  }
 }

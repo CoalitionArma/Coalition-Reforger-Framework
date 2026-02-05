@@ -26,7 +26,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iTimeToRespawn 30
  m_iTimeLimitMinutes 75
  m_bAllowEspionage 0
- m_bLockUnusedSlots 1
+ m_bLockUnusedSlots 0
  m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -48,10 +48,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "1. Secure the old checkpoints"\
-   "2. Secure the industrial area at the Airfield"\
-   "3. Secure the Military Base"\
-   "4. Securce the Hangers"
+   m_sTextData "1. Secure MRSP."\
+   "2.Secure the old checkpoints"\
+   "3. Secure the industrial area at the Airfield"\
+   "4. Secrue the Military Base."\
+   "5. Securce the Hangers"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
