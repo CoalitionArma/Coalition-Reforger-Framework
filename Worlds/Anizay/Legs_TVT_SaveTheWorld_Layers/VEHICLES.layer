@@ -1,0 +1,15 @@
+CRF_VehicleSpawner {
+ coords 5736.081 105.676 7140.112
+ angles 0 179.421 0
+ m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+ m_sFactionKey "OPFOR"
+ m_bShouldRespawnOnSideRespawn 0
+ m_iRespawnTimer 10000
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6889775C80403675}" {
+   m_Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+   m_iAmountOfItemSupplyTruck 2
+   m_iAmountOfItemRegularVehicle 2
+  }
+ }
+}

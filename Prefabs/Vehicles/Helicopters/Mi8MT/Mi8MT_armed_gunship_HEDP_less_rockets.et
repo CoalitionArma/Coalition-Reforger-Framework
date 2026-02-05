@@ -1,0 +1,12 @@
+Vehicle : "{DBEC63C9DEE4358C}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP.et" {
+ ID "5A7CEB06421662F8"
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    SCR_WeaponRackSlotInfo Hardpoints {
+     Prefab "{F9A371C00F09D01B}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_Hardpoints_HEDP_less_rockets.et"
+    }
+   }
+  }
+ }
+}
