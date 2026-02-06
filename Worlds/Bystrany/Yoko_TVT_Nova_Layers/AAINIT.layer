@@ -6,118 +6,332 @@ SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 7049.741 117.721 8003.219
 }
-CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_SearchAndDestroyGamemodeManager "{685E080BFB86D612}" {
-  }
-  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Cloudy"
-   m_iSetWeatherConstant 1
+  CRF_RushGamemodeManager "{68851C466C60BF2F}" {
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Cloudy"
+     m_sWeatherPresetName "Rainy"
      m_iStartingHour 12
+     m_iStartingMinutes 0
     }
    }
+   m_bRandomWeatherChanges 1
   }
  }
- coords 7066.55 117.707 7989.974
+ coords 7003.5 117.346 8102.207
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 65
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces in Nova Olesov established a minefield on the eastern ridge, preventing the USMC from flanking flank them. Now with rumors of RUS reinforcements coming to Nova Olesov, the USMC have decided to tough it out and push through the town before reinforcements arrive."\
+   m_sTitle "Mission: Situation"
+   m_sTextData "USMC forces have pushed RUS forces onto their heels. RUS forces are making a last stand attempt in Nova Olesov to hold the town from being overrun."\
    ""\
-   "BLUFOR Composition: Infantry Company"\
-   "BLUFOR Assets: 2x Combat ENG (PLT-Level)"\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 2x PLT level combat ENG and 2x MATV (Armed)"\
    ""\
-   "OPFOR Composition: Infantry Platoon"\
-   "OPFOR Assets: 2x MMG and 2x fortification trucks."\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 2x MMG and 2X ENG Trucks"\
    ""\
    "Time: 12:00 PM"\
    ""\
-   "Weather: Cloudy"
+   "Weather: Rainy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Destroy both bombsites."\
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Destroy each Mcom in order (A then B)."\
    ""\
-   "The enemy will be dug in with fortifcations so expect  hardpoints from them."
+   ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Defend both bombsites."\
-   ""\
-   "You have two build truck to assist you in your defense."\
-   ""\
-   "DONT BUILD ANY GUN EMPLACMENTS THROUGH THE BUILD TRUCKS!"
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Defend each Mcom in order (A then B)."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "GM/Admin: Set weather to Cloudy and time to 12:00 PM. (If not already)"
+   m_sTitle "Administration"
+   m_sTextData "N/A"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 5
+ m_iFactionOneRatio 6
+ m_iFactionTwoRatio 5
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 4
  m_sFactionTwoKey "OPF"
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
- }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
- }
- {
-  SCR_FactionManager "685E30F3DF891C13" {
-   ID "632A77473B3CC3A8"
-   Factions {
-    SCR_Faction "{628B22E9B4056C88}" {
-     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
-      m_aSquadNames {
-       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "COY"
-       }
-       SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1PLT"
-       }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "1-1"
-       }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "1-2"
-       }
-       SCR_CallsignInfo "{685E0803C60B78DB}" {
-        m_sCallsign "1-3"
-       }
-       SCR_CallsignInfo "{685E0803CDB7080A}" {
-        m_sCallsign "2PLT"
-       }
-       SCR_CallsignInfo "{685E0803CEADC2D2}" {
-        m_sCallsign "2-1"
-       }
-       SCR_CallsignInfo "{685E0803F55830EE}" {
-        m_sCallsign "2-2"
-       }
-       SCR_CallsignInfo "{685E0803F60D2908}" {
-        m_sCallsign "2-3"
-       }
-      }
-     }
-    }
-    SCR_Faction "{628C2D2BFC8C6447}" {
-     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
-      m_aSquadNames {
-       SCR_CallsignInfo "{685E0803E5F82062}" {
-        m_sCallsign "1-4"
-       }
-       SCR_CallsignInfo "{685E0803E73A5A3C}" {
-        m_sCallsign "MMG 1"
-       }
-       SCR_CallsignInfo "{685E0803ED1252B3}" {
-        m_sCallsign "MMG 2"
-       }
-      }
-     }
-    }
+ m_BluforSlots {
+  CRF_SlottingGroup "{68874B068861E552}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
    }
   }
+  CRF_SlottingGroup "{68874B068861E603}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861E680}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861E7D8}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861F85C}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861F8C1}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861F948}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861F9F9}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FA19}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68874B068861FB7B}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FBD1}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FC5A}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FC31}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FC97}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FD6C}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{68874B068861FDCA}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{02F5D37299026EEF}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSUSMC_yoko.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{8550175E5377DF0E}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSMSV_MMGoptic_Sandbags.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
 }
 BaseGameTriggerEntity WeatherFix {
