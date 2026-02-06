@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5B2F05B78E560F1D}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents_Stingers.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
