@@ -1,0 +1,47 @@
+GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
+ coords 6226.188 208.635 8709.124
+ angles 0 -29.506 0
+ {
+  GenericEntity {
+   ID "62EACD01B6ED2B53"
+   {
+    GenericEntity {
+     ID "62F4A407B8DE2D97"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 1000
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "62F4A407B8DE2DA9"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 1000
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "62F4A407B8DFA02D"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 1000
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

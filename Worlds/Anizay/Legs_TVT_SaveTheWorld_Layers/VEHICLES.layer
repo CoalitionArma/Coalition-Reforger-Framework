@@ -1,0 +1,123 @@
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 2876.448 139.462 7058.692
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2877.868 139.492 7062.036
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2879.565 139.371 7066.007
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2881.249 139.235 7069.969
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2882.407 139.153 7073.146
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2883.842 139.051 7076.245
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2884.899 138.96 7079.975
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2886.396 139.118 7086.051
+  m_rVehicle "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2891.461 138.828 7095.567
+  angles 0 107.305 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2886.962 138.723 7104.896
+  angles 0 107.305 0
+  m_rVehicle "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et"
+  m_iRespawnTimer 10000
+ }
+}
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 5783.188 113.429 7223.833
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5736.827 105.535 7140.399
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5790.623 113.638 7218.508
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5798.655 114.246 7213.254
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5805.54 114.399 7208.697
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5810.36 114.521 7203.987
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5816.774 114.688 7198.604
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5776.177 113.525 7231.421
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5771.806 113.643 7235.007
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5785.58 114.141 7235.131
+  angles 0 -90 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_iRespawnTimer 10000
+ }
+}
