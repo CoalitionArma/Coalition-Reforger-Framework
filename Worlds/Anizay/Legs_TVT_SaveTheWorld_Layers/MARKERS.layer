@@ -1,0 +1,50 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ {
+  coords 3004.192 138.277 7299.013
+  m_sImageSet "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds"
+  m_sQuadName ""
+  m_fWorldSize 20
+  m_sDescription "Cache Area A"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area A"
+ }
+ {
+  coords 2606.756 138.514 7058.422
+  m_sImageSet "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds"
+  m_fWorldSize 20
+  m_sDescription "Cache Area B"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area B"
+ }
+ {
+  coords 2609.197 155.408 6986.878
+  m_sImageSet "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds"
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 20
+  m_sDescription "Cache Area B"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area B"
+ }
+ {
+  coords 3043.765 139.469 7187.099
+  m_sImageSet "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds"
+  m_MarkerColor 1 0 0 1
+  m_sQuadName ""
+  m_fWorldSize 20
+  m_sDescription "Cache Area A"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area A"
+ }
+}

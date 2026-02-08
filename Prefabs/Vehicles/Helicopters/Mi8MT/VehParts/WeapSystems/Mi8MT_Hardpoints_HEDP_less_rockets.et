@@ -1,0 +1,20 @@
+Turret : "{BE610EC0304CF5BA}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_Hardpoints_HEDP.et" {
+ ID "4B42E71698F5739C"
+ components {
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   Enabled 0
+  }
+  WeaponSlotComponent "{61A4C94C413BD93B}" {
+   Enabled 0
+  }
+  WeaponSlotComponent "{61A4C94C43D3648B}" {
+   Enabled 0
+  }
+  WeaponSlotComponent "{61A4C94C47BA46AE}" {
+   Enabled 0
+  }
+  WeaponSlotComponent "{61A4C94C58320613}" {
+   Enabled 0
+  }
+ }
+}
