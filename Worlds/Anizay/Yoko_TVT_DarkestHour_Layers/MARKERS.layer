@@ -1,0 +1,23 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 9555.414 39.282 1386.215
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9559.214 39.282 1391.291
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+CRF_ManualMarker indforevacpoint : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ coords 9024.597 196.789 3794.105
+ angles 0 0 0
+ m_sDescription "EXTRACTION POINT"
+}
+CRF_ManualMarker bluforevacpoint : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 9427.339 50.865 1563.439
+ m_sDescription "EXTRACTION POINT"
+}

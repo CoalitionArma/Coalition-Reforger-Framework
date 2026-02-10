@@ -1,0 +1,8 @@
+ParticleEffectEntity {
+ coords 9562.098 98.63 2579.427
+ EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
+}
+GenericEntity : "{D8E44F4BA05D8C20}Prefabs/Models/props/tem_uh60_crashed.et" {
+ coords 9562.014 96.129 2580.859
+ angles 0 -55.836 0
+}

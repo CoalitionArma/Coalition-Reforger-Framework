@@ -1,0 +1,56 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 9027.3 198.035 3815.543
+  angles 0 -171.186 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9029.005 198.035 3826.542
+  angles 0 -171.186 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9028.79 198.035 3836.741
+  angles 0 172.821 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9035.576 196.836 3852.484
+  angles 0 -167.183 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9017.183 197.008 3850.752
+  angles 0 147.474 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9540.844 39.282 1366.75
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9544.703 39.282 1371.906
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9548.367 39.282 1376.801
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9552.14 39.282 1381.841
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
