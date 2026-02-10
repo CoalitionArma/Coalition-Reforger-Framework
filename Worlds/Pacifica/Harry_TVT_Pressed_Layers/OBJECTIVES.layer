@@ -1,0 +1,12 @@
+$grp StaticModelEntity : "{DBCDEC45DB834E8A}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01.et" {
+ {
+  coords 2632.044 136.946 2144.377
+ }
+ {
+  coords 2897.519 173.699 2761.944
+  angles 0 -15.834 0
+ }
+ {
+  coords 3638.381 174.045 2415.424
+ }
+}
