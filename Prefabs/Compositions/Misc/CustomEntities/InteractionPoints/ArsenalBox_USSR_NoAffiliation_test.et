@@ -1,0 +1,10 @@
+GenericEntity : "{0150701FD7034232}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_USSR_NoAffiliation.et" {
+ ID "56F2C6D6F7C6DAFA"
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_bGetDefaultIfNoFaction 0
+   m_eArsenalSaveType NO_RESTRICTIONS
+   m_eArsenalTypes GADGETS
+  }
+ }
+}
