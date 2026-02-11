@@ -53,4 +53,22 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_sFactionKey "BLUFOR"
  }
+ {
+  coords 9555.414 39.282 1386.215
+  angles 0 -53.183 0
+  m_rVehicle "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9016.654 198.035 3815.14
+  angles 0 124.705 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9561.182 39.282 1393.92
+  angles 0 -53.183 0
+  m_rVehicle "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
 }
