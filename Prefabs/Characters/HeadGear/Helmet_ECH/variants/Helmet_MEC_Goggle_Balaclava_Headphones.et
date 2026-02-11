@@ -23,6 +23,10 @@ GameEntity : "{50CAAEEDC59F23C6}Prefabs/Characters/HeadGear/Helmet_ECH/Helmet_EC
     RHS_LoadoutSlotInfo MeshCover {
     }
     RHS_LoadoutSlotInfo Masks {
+     Prefab "{40ED520CE1154848}Prefabs/Characters/HeadGear/Balaclavas/LShZ_Balaclava/Balaclava_LShZ_black.et"
+    }
+    RHS_LoadoutSlotInfo Headset {
+     Prefab "{F8554F236521F974}Prefabs/Characters/HeadGear/Headphones_6M2/headphones_6m2.et"
     }
    }
   }

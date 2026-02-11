@@ -24,6 +24,9 @@ GameEntity : "{50CAAEEDC59F23C6}Prefabs/Characters/HeadGear/Helmet_ECH/Helmet_EC
     }
     RHS_LoadoutSlotInfo Masks {
     }
+    RHS_LoadoutSlotInfo Headset {
+     Prefab "{150CBCB5E706F291}Prefabs/Characters/HeadGear/Headphones_6M2/Headphones_6M2-1.et"
+    }
    }
   }
  }

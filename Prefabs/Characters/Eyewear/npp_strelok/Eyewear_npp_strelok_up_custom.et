@@ -1,0 +1,48 @@
+GameEntity : "{916484D0EB7F9923}Prefabs/Characters/Core/AttachableHeadgear_Base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{52C8D601873E6784}" {
+    ItemDisplayName SCR_ItemHintUIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-eyewear_npp_Strelok_Name"
+     Description "#RHS-eyewear_npp_Strelok_Description"
+     m_aItemHints {
+      SCR_InventoryItemHintUIInfo "{61CC91EC7E01D20D}" {
+       Icon "{8C5C7CED1FFCE9F6}UI/Textures/InventoryIcons/Inspection-gizmo-goggles-slot-UI.edds"
+      }
+     }
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5DB140EE28B043EA}" {
+     ItemDimensions 100 2 3
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5DB0D374F851F850}" {
+      CameraOrbitAngles -25 15 0
+      CameraDistanceToItem 0.2
+      CameraOffset -0.02 0 0
+     }
+     RHS_CustomAttributes "{5DB8FCFA57CB5068}" {
+      m_sShortName "#RHS-eyewear_npp_Strelok_Name"
+      m_sCompatibleSlotNames {
+       "Goggles"
+      }
+     }
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{E08732E667E4B5F3}Assets/Characters/Eyewear/Eyewear_npp_strelok/npp_strelok_item.xob"
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   AreaType LoadoutGooglesArea "{5AD4C744691240D1}" {
+   }
+   WornModel "{FFFACCAE51F22EE9}Assets/Characters/Eyewear/Eyewear_npp_strelok/npp_strelok_wear_tor.xob"
+   WornMaterialsOverride {
+   }
+   ItemModel "{E08732E667E4B5F3}Assets/Characters/Eyewear/Eyewear_npp_strelok/npp_strelok_item.xob"
+   ItemMaterialsOverride {
+   }
+  }
+ }
+ coords 0.643 0 0.079
+}

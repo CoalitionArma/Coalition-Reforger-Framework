@@ -1,0 +1,15 @@
+GameEntity : "{F14913F524AA2C55}Prefabs/Characters/HeadGear/Hat_Beanie/Hat_beanie_Black.et" {
+ ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Goggles {
+     Prefab "{E2AEE09BA445A688}Prefabs/Characters/Eyewear/npp_kondor/Eyewear_npp_kondor.et"
+    }
+    LoadoutSlotInfo Headset {
+    }
+   }
+  }
+ }
+ coords 1130.363 51 1302.952
+}
