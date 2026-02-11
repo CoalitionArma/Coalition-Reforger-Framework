@@ -7,7 +7,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
  coords 9580.586 136.111 2722.769
  Points {
   ShapePoint "{68937AA0568D7059}" {
-   Position -1099.069 93.321 1159.022
+   Position -1178.278 93.321 1233.678
   }
   ShapePoint "{68937AA05AE45513}" {
    Position -1375.002 86.494 866.26
@@ -22,7 +22,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -769.452 48.888 -994.568
   }
   ShapePoint "{68937AA07730D4CE}" {
-   Position -700.283 71.061 -1118.191
+   Position -614.983 57.32 -1287.41
   }
   ShapePoint "{68937AA07C0B4F26}" {
    Position -266.804 20.583 -1640.028
@@ -31,13 +31,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position 28.58 108.173 -1664.484
   }
   ShapePoint "{68937AA0643AAA07}" {
-   Position 522.719 32.68 -1524.175
+   Position 218.32 32.68 -1524.842
   }
   ShapePoint "{68937AA0680D6B10}" {
-   Position 569.052 109.487 -898.684
+   Position 612.605 109.487 -902.082
   }
   ShapePoint "{68937AA06DC51F96}" {
-   Position 553.498 73.034 -230.475
+   Position 621.101 73.034 -231.572
   }
   ShapePoint "{68937AA011EE74FD}" {
    Position 568.022 106.418 664.386
@@ -49,21 +49,22 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -567.174 79.756 1354.087
   }
   ShapePoint "{68937AA004BE6209}" {
-   Position -1095.277 91.298 1160.667
+   Position -1174.575 86.512 1237.014
   }
  }
 }
 PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFOR_SafestartBoundry.et" {
- coords 9027.21 197.983 3821.66
+ coords 8617.153 175.674 3877.747
+ angles 0 -52.357 0
  Points {
   ShapePoint "{68937AA6877B2A99}" {
    Position 64.717 0 -90.504
   }
   ShapePoint "{68937AA686566FBD}" {
-   Position 43.604 0 132.067
+   Position 39.749 0 93.363
   }
   ShapePoint "{68937AA6888F9FCA}" {
-   Position -166.693 0 153.013
+   Position -123.001 43.986 97.88
   }
   ShapePoint "{68937AA68BB95D69}" {
    Position -89.929 0 -164.758

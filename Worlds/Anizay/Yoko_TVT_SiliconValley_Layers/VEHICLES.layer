@@ -1,31 +1,31 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 9027.3 198.035 3815.543
-  angles 0 -171.186 0
+  coords 8632.454 179.709 3806.217
+  angles 0 128.716 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "INDFOR"
  }
  {
-  coords 9029.005 198.035 3826.542
-  angles 0 -171.186 0
+  coords 8623.769 178.728 3813.178
+  angles 0 128.716 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "INDFOR"
  }
  {
-  coords 9028.79 198.035 3836.741
-  angles 0 172.821 0
+  coords 8614.821 178.901 3818.077
+  angles 0 112.723 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "INDFOR"
  }
  {
-  coords 9035.576 196.836 3852.484
-  angles 0 -167.183 0
+  coords 8604.557 178.639 3831.808
+  angles 0 132.719 0
   m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
   m_sFactionKey "INDFOR"
  }
  {
-  coords 9017.183 197.008 3850.752
-  angles 0 147.474 0
+  coords 8596.888 180.836 3814.998
+  angles 0 87.376 0
   m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
   m_sFactionKey "INDFOR"
  }
@@ -60,7 +60,7 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 9016.654 198.035 3815.14
+  coords 8576.092 180.173 3827.045
   angles 0 124.705 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "INDFOR"
