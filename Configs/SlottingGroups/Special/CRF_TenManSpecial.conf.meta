@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FD49C5FCAE8A3304}Configs/SlottingGroups/CRF_TenManSpecial.conf"
+ Name "{FD49C5FCAE8A3304}Configs/SlottingGroups/Special/CRF_TenManSpecial.conf"
  Configurations {
   CONFResourceClass PC {
   }

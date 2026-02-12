@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7E848A03C000BA98}Configs/Gearscripts/Standard/Modern/CRF_GS_Modern_GreenBeret_Yoko.conf"
+ Name "{7E848A03C000BA98}Configs/Gearscripts/Custom/Yoko/CRF_GS_Modern_GreenBeret_Yoko.conf"
  Configurations {
   CONFResourceClass PC {
   }

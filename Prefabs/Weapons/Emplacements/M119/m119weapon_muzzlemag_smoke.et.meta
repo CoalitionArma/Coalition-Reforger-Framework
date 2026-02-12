@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{560D8C6469E29A26}M119/m119weapon_muzzlemag_smoke.et"
+ Name "{560D8C6469E29A26}Prefabs/Weapons/Emplacements/M119/m119weapon_muzzlemag_smoke.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

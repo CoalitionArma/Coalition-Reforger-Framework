@@ -15,8 +15,14 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Settings - General")]
 	protected bool m_bMissionAllowsEspionage;
 
-	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Settings - General")]
+	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Settings - Safestart")]
 	protected bool m_bSafestartEnabledOnMissionStart;
+	
+	[Attribute("false", "auto", "Enable safestart time limit countdown (forces mission start after time expires)", category: "CRF Mission Settings - Safestart")]
+	protected bool m_bUseSafestartTimeLimit;
+	
+	[Attribute("10", UIWidgets.EditBox, "Safestart Time Limit (Minutes) - Only used if time limit is enabled", category: "CRF Mission Settings - Safestart")]
+	protected int m_iSafestartTimeLimit;
 	
 	[Attribute("true", "auto", "Should we lock all non-slotted slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Settings - General")]
 	protected bool m_bLockUnusedSlots;
@@ -68,6 +74,8 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
 		m_bSafestartEnabledOnMissionStart = gamemode.m_bSafestartInstantlyEnabled;
+		m_bUseSafestartTimeLimit = gamemode.m_bUseSafestartTimeLimit;
+		m_iSafestartTimeLimit = gamemode.m_iSafestartTimeLimit;
 		
 		// Weather
 		SCR_TimeAndWeatherHandlerComponent timeAndWeatherComp = SCR_TimeAndWeatherHandlerComponent.Cast(gamemode.FindComponent(SCR_TimeAndWeatherHandlerComponent));
@@ -124,7 +132,9 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
-		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());	
+		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());
+		api.SetVariableValue(entitySource, null, "m_bUseSafestartTimeLimit", m_bUseSafestartTimeLimit.ToString());
+		api.SetVariableValue(entitySource, null, "m_iSafestartTimeLimit", m_iSafestartTimeLimit.ToString());	
 		
 		// Weather
 		int componentIndex = SCR_BaseContainerTools.FindComponentIndex(entitySource, SCR_TimeAndWeatherHandlerComponent);

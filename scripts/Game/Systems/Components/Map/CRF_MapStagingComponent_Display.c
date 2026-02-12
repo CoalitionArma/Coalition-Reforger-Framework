@@ -13,6 +13,9 @@ class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 	protected ImageWidget m_wBackground;
 	protected CRF_MapStagingComponent m_StagingComponent;
 	
+	// Track If Component Is Present (Temporary solution for minimizing perf. impact of FindComponent() loops when main component isnt used.)
+	protected bool m_bComponentPresent = false;
+	
 	// Store original sizes of elements, For future use but not implemented
 	protected float m_fOriginalTimerWidth = -1;
 	protected float m_fOriginalTimerHeight = -1;
@@ -53,10 +56,15 @@ class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 		if (RplSession.Mode() == RplMode.Dedicated)
 			return;
 		
+		// Early exit: If we already searched and component doesn't exist, don't spam FindComponent() every frame
+		if (m_bComponentPresent && !m_StagingComponent)
+			return;
+		
 		// Get components if not initialized
 		if (!m_StagingComponent || !m_wTimer || !m_wBackground || !m_wStageText) 
 		{
 			m_StagingComponent = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));
+			m_bComponentPresent = true;  // Mark that we've searched
 			if (!m_StagingComponent) return;
 			
 			m_wTimer = TextWidget.Cast(m_wRoot.FindWidget("Timer"));
