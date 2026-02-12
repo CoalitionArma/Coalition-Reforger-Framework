@@ -23,10 +23,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
- m_iTimeLimitMinutes 45
+ m_iTimeLimitMinutes 70
  m_bAllowEspionage 0
  m_bLockUnusedSlots 1
  m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
