@@ -9,7 +9,7 @@ CRF_MissionMarker info : "{821DA53A26209581}PrefabsMissionMaking/Markers/Objecti
  m_sDescription "INFO"
  m_bUseWorldScale 0
  m_bVisibleForEmptyFaction 1
- m_sMissionMarkerDescription "The Tech"
+ m_sMissionMarkerDescription "The Tech - An ANPRC77 Radio backpack"
  m_aMissionMarkerImages {
   "{7DE58AB822C1E072}UI/Textures/QuickMenu/Icons/radioBackpack_ANPRC77.edds"
  }

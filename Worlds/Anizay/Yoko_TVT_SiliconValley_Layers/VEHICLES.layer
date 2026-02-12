@@ -22,12 +22,18 @@ $grp CRF_VehicleSpawner {
   angles 0 132.719 0
   m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
   m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6899330242AFDFC0}" {
+  }
  }
  {
   coords 8596.888 180.836 3814.998
   angles 0 87.376 0
   m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
   m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6899330248B544AF}" {
+  }
  }
  {
   coords 9540.844 39.282 1366.75

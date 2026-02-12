@@ -67,7 +67,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Reach the crash site and pick up the tech."\
    "Take the tech to your extraction point to win."\
    ""\
-   "The tech's location will be revealed when safe start ends."
+   "The tech's location will be revealed when safe start ends."\
+   ""\
+   "You cannot use the ammo in the BTR to resupply your team."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
