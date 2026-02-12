@@ -1,0 +1,160 @@
+GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_US_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D0B27AEF9}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 9604.552 57.843 12689.744
+ angles 2.038 -113.036 -1.802
+}
+GenericEntity : "{12028B6476092F3D}Prefabs/Compositions/Slotted/SlotFlatSmall/ZFRSupplyStorage_S_US_01_NOARSENAL.et" {
+ components {
+  FactionAffiliationComponent "{687C65EBF5416312}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 9554.759 57.885 12781.355
+ angles 0 168 0
+ {
+  GenericEntity {
+   ID "687C65EBF5447EDA"
+   components {
+    SCR_ResourceComponent "{687D17168D37E642}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{687D17168332A08A}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 23236
+       m_fResourceValueMax 50000
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumer "{687D1718EA1AF177}" {
+       m_eResourceRights ALL
+       m_fResourceRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceConsumerContainerQueue "{687D171F9D5AAAC8}" {
+        m_StoragePolicies {
+         SCR_ResourceConsumerStoragePolicy "{687D171F9334639A}" {
+          m_StorageQueue SCR_ResourceConsumerContainerStorageQueueExtended "{687D171F82CCDDA9}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+      }
+     }
+     m_aGenerators {
+      SCR_ResourceGenerator "{687D171F1AEDD301}" {
+       m_eResourceRights ALL
+       m_eIdentifier DEFAULT_STORAGE
+       m_fStorageRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{687D171E20F5EF9F}" {
+        m_StoragePolicies {
+         SCR_ResourceGeneratorStoragePolicy "{687D171E26127B49}" {
+          m_StorageQueue SCR_ResourceGeneratorContainerStorageQueueExtended "{687D171E5BE7E98F}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+       m_aActions {
+        SCR_ResourceGeneratorActionStore "{687D171F3F061A68}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 9598.278 58.361 12753.609
+ angles 0 -1.135 0
+}
+GenericEntity : "{84B388FC52E2F46E}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_BLUFOR_CAMPAIGN.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_bCheckFactionForOverwriteArsenalConfig 1
+   m_bGetDefaultIfNoFaction 0
+   m_eArsenalSaveType SAVING_DISABLED
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 9566.087 57.907 12779.996
+ angles 0.276 137.436 0.962
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 9572.766 57.894 12769.043
+ angles 0 18 0
+ Points {
+  ShapePoint "{687D171614F93D64}" {
+   Position -57.975 0 12.262
+  }
+  ShapePoint "{687D17160B8C0861}" {
+   Position 27.222 0 152.337
+  }
+  ShapePoint "{687D1716096309E0}" {
+   Position 204.08 0 24.132
+  }
+  ShapePoint "{687D171608322493}" {
+   Position 84.32 0 -124.292
+  }
+ }
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 9565.612 57.939 12784.034
+ angles 0.558 149.579 -0.7
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.623 -0.041 -0.09
+   angles 0.032 -4.97 -0.831
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 2.177 -0.028 0.711
+     angles -1.227 130.915 -1.571
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords 3.371 0.004 -5.865
+       angles 0.606 132.926 -4.954
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords 2.808 -0.172 0.05
+         angles 2.959 -175.112 -4.564
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 20
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+   }
+  }
+ }
+ coords 9551.108 57.875 12772.074
+ angles 0 -43 0
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}

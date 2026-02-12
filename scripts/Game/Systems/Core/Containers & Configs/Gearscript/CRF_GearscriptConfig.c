@@ -157,12 +157,6 @@ class CRF_GearScriptConfig
 	[Attribute(category: "CRF Gearscript - Faction Clothing")]
 	ref array<ref CRF_Clothing> m_DefaultClothing;
 	
-	[Attribute("true", UIWidgets.CheckBox, category: "CRF Gearscript - Faction Gear")]
-	bool m_bEnableLeadershipBinoculars;
-	
-	[Attribute("true", UIWidgets.CheckBox, category: "CRF Gearscript - Faction Gear")]
-	bool m_bEnableAssistantBinoculars;
-	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et", category: "CRF Gearscript - Faction Gear")]
 	ResourceName m_sLeadershipBinocularsPrefab;
 	
