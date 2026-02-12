@@ -2,49 +2,49 @@ $grp CRF_VehicleSpawner {
  {
   coords 1941.178 85.987 3576.012
   angles 0 -150.098 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1946.923 85.987 3572.708
   angles 0 -150.098 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1953.266 86.34 3569.06
   angles 0 -150.098 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1611.457 14.366 1689.073
   angles 0 34.554 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "BLUFOR"
  }
  {
   coords 1618.1 14.212 1698.553
   angles 0 34.554 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "BLUFOR"
  }
  {
   coords 1626.415 14.154 1710.945
   angles 0 34.554 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "BLUFOR"
  }
  {
   coords 1960.434 87.416 3564.938
   angles 0 -150.098 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1602.654 14.566 1676.733
   angles 0 34.554 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "BLUFOR"
  }
  {
@@ -54,7 +54,7 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 1946.456 92.165 3530.611
+  coords 1945.543 90.713 3534.257
   angles 0 122.48 0
   m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
   m_sFactionKey "OPFOR"
@@ -168,7 +168,7 @@ $grp StaticModelEntity : "{D4ABEC6A0DB2E253}PrefabsEditable/Auto/Compositions/Mi
   }
  }
  {
-  coords 1946.111 2.087 3531.067
+  coords 1945.198 1.175 3534.713
   angles 0 -58.213 0
  }
 }
