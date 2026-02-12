@@ -2,19 +2,19 @@ $grp CRF_VehicleSpawner {
  {
   coords 1941.178 85.987 3576.012
   angles 0 -150.098 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1946.923 85.987 3572.708
   angles 0 -150.098 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1953.266 86.34 3569.06
   angles 0 -150.098 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "OPFOR"
  }
  {
@@ -38,7 +38,7 @@ $grp CRF_VehicleSpawner {
  {
   coords 1960.434 87.416 3564.938
   angles 0 -150.098 0
-  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
   m_sFactionKey "OPFOR"
  }
  {
@@ -50,19 +50,19 @@ $grp CRF_VehicleSpawner {
  {
   coords 1591.722 15.841 1697.764
   angles 0 123.846 0
-  m_rVehicle "{474B7D565A4A3F68}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_MoreAmmo.et"
+  m_rVehicle "{00BC1E407D536A34}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_sharkNose.et"
   m_sFactionKey "BLUFOR"
  }
  {
   coords 1946.456 92.165 3530.611
   angles 0 122.48 0
-  m_rVehicle "{474B7D565A4A3F68}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_MoreAmmo.et"
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 1967.79 89.164 3558.504
   angles 0 -150.098 0
-  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
   m_sFactionKey "OPFOR"
  }
  {
