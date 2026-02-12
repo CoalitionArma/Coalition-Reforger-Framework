@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{15BA12C4E85FE84F}Missions/Pacifica/Harry_0210_TVT104_Pressed.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

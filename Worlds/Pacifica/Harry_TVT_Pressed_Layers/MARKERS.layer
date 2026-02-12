@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ {
+  coords 2629.388 137.979 2155.321
+  m_sDescription "Tower A"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2897.885 174.267 2756.787
+  m_sDescription "Tower B"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3634.718 173.61 2415.453
+  m_sDescription "Tower C"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
