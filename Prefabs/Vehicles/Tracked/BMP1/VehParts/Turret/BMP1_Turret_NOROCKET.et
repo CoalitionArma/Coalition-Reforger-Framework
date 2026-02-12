@@ -150,17 +150,17 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
      m_sReticleGlowTexture "{A69BBC9569E33737}UI/Textures/Sights/PP61/PP61-glow1024_UI.edds"
      m_bHasIllumination 1
      m_cReticleTextureIllumination 0.814 0.702 0.213 1
-     m_fMagnification 4.7
-     m_fReticleAngularSize 3.6
-     m_fReticlePortion 0.53711
-     m_fReticleBaseZoom 2.6
-     m_fObjectiveFov 10
-     m_fObjectiveScale 0.77
      m_fVignetteScale 0.847
      m_fRotationScale 0.3
      m_fMovementDampingSpeed 8
      m_fVignetteMoveSpeed 16
      m_fMotionBlurScale 0
+     m_fObjectiveFov 10
+     m_fObjectiveScale 0.77
+     m_fReticleAngularSize 3.6
+     m_fReticlePortion 0.53711
+     m_fReticleBaseZoom 2.6
+     m_fMagnification 4.7
     }
    }
    SignalsSourceAccess SignalsSourceAccessClass "{66D60C81E8CDE2E4}" {

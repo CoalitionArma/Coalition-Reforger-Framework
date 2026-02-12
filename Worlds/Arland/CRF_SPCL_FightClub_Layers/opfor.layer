@@ -1,3 +1,90 @@
-GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+GenericEntity Spawn : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ components {
+  ActionsManagerComponent "{6895290083F066D5}" {
+   ActionContexts {
+    UserActionContext "{689529008B17F26B}" {
+     ContextName "default"
+     Position PointInfo "{646722087C87E39D}" {
+      Offset 0 2.0733 -0.3554
+     }
+     Radius 5
+     Height 5
+    }
+   }
+   additionalActions {
+    CRF_TeleportPlayerActionPostSafestart "{689529009E702B2A}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Airport"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "Airport"
+    }
+    CRF_TeleportPlayerActionPostSafestart "{68952906091694BE}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Arleville"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "Arleville1"
+    }
+    CRF_TeleportPlayerActionPostSafestart "{689529066D09C8A5}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Beauregard"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "Beauregard1"
+    }
+   }
+  }
+ }
  coords 907.871 17.664 1466.491
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ Airport {
+  coords 1457.825 34.037 2556.506
+ }
+ Beauregard1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Spawn"
+      }
+      m_sObjectNameToTeleportTo "Spawn"
+     }
+    }
+   }
+  }
+  coords 3432.379 7.488 2757.889
+ }
+ Arleville1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Spawn"
+      }
+      m_sObjectNameToTeleportTo "Spawn"
+     }
+    }
+   }
+  }
+  coords 3037.964 57.351 1413.369
+ }
 }

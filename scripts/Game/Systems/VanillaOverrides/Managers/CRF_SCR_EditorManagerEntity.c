@@ -10,31 +10,26 @@ modded class SCR_EditorManagerEntity
 			return super.CanOpen();;
 		}
 
-		// If in building mode, limit editor capabilities and allow opening
+		// Spectators and moderators always get unlimited editor access
+		bool isSpectator = CRF_GamemodeManager.IsSpectator();
+		bool isModerator = CRF_GamemodeManager.GetInstance() && CRF_GamemodeManager.GetInstance().IsModerator();
+		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
+		
+		if (isSpectator || isModerator || isAdmin)
+		{
+			SetIsLimited(false);
+		}
+		else
+		{
+			// Regular players get limited editor
+			SetIsLimited(true);
+		}
+		
+		// If in building mode, always limit editor capabilities
 		if (GetCurrentMode() == EEditorMode.BUILDING)
 		{
 			SetIsLimited(true);
 			return true;
-		}
-		
-		// If in photo mode and player is spectator or moderator, allow full editor capabilities
-		if ((GetCurrentMode() == EEditorMode.PHOTO) && (CRF_GamemodeManager.IsSpectator() || CRF_GamemodeManager.GetInstance().IsModerator()))
-		{
-			SetIsLimited(false);
-			return true;
-		}
-		
-		// If in admin mode and player is admin or moderator, allow full editor capabilities
-		if ((GetCurrentMode() == EEditorMode.ADMIN) && (SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) || CRF_GamemodeManager.GetInstance().IsModerator()))
-		{
-			SetIsLimited(false);
-			return true;
-		}
-		
-		// If not admin or moderator, limit editor capabilities
-		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && !CRF_GamemodeManager.GetInstance().IsModerator())
-		{
-			SetIsLimited(true);
 		}
 		
 		// No modes available

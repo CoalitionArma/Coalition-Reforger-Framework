@@ -1,0 +1,411 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  OverlayWidgetClass "{65F256DF1AA8A299}" {
+   Name "SafeStartInfoPanel"
+   Slot FrameWidgetSlot "{65F256DF1AA8A2D9}" {
+    Anchor 1 0 1 0
+    PositionX -10
+    OffsetLeft -310
+    PositionY 250
+    OffsetTop 60
+    SizeX 300
+    OffsetRight -10
+    SizeY 600
+    OffsetBottom -660
+   }
+   "Is Visible" 1
+   {
+    PanelWidgetClass "{65F256D58A4D0234}" {
+     Name "BackgroundPanel"
+     Slot OverlayWidgetSlot "{65F256D58A4D05ED}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0 0 0 0.6
+    }
+    VerticalLayoutWidgetClass "{65F256DF1BB8A299}" {
+     Name "ContentLayout"
+     Slot OverlayWidgetSlot "{65F256DF1BB8A2D9}" {
+      Padding 10 10 10 10
+     }
+     {
+      // Title: Mission Info
+      TextWidgetClass "{65F256D640C3A66A}" {
+       Name "TitleText"
+       Slot LayoutSlot "{65F256DABA2E8FCA}" {
+        Padding 0 0 0 5
+        SizeMode Fill Fill
+       }
+       Color 1 1 1 1
+       Text "Mission Info"
+       "Font Size" 22
+       "Min Font Size" 22
+       "Horizontal Alignment" Center
+       Bold 1
+      }
+      
+      // Divider
+      PanelWidgetClass "{65F256D58A4D0235}" {
+       Name "DividerPanel1"
+       Slot LayoutSlot "{65F256D58A4D05EE}" {
+        Padding 0 0 0 8
+        SizeMode Auto
+       }
+       Color 0.5 0.5 0.5 0.8
+       "Size Mode H" Auto
+       "Size Mode V" Fixed
+       HeightOverride 2
+      }
+      
+      // Mission Title
+      TextWidgetClass "{65F256D640C3A66A}" {
+       Name "MissionTitleValue"
+       Slot LayoutSlot "{65F256DABA2E8FCA}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 1 1 1 1
+       Text "Mission: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+       Bold 1
+      }
+      
+      // Mission Author
+      TextWidgetClass "{65F256D640C3A66B}" {
+       Name "MissionAuthorValue"
+       Slot LayoutSlot "{65F256DABA2E8FCB}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "By: Unknown"
+       "Font Size" 14
+       "Min Font Size" 14
+      }
+      
+      // Mission Type (displayed directly after author)
+      TextWidgetClass "{65F256D640C3A66C}" {
+       Name "MissionTypeValue"
+       Slot LayoutSlot "{65F256DABA2E8FCC}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 14
+       "Min Font Size" 14
+      }
+      
+      // Side Ratios
+      TextWidgetClass "{65F256D640C3A66D}" {
+       Name "SideRatiosValue"
+       Slot LayoutSlot "{65F256DABA2E8FCD}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 14
+       "Min Font Size" 14
+      }
+      
+      // Safe Start Limit
+      TextWidgetClass "{65F256D640C3A66E}" {
+       Name "SafeStartHardLimitLabel"
+       Slot LayoutSlot "{65F256DABA2E8FCE}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.9 0.9 0.9 1
+       Text "Safe Start Limit:"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      TextWidgetClass "{65F256D640C3A66F}" {
+       Name "SafeStartHardLimitValue"
+       Slot LayoutSlot "{65F256DABA2E8FCF}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Mission Length
+      TextWidgetClass "{65F256D640C3A671}" {
+       Name "MissionLengthLabel"
+       Slot LayoutSlot "{65F256DABA2E8FD1}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.9 0.9 0.9 1
+       Text "Mission Length:"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      TextWidgetClass "{65F256D640C3A672}" {
+       Name "MissionLengthValue"
+       Slot LayoutSlot "{65F256DABA2E8FD2}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // JIP After Safestart
+      TextWidgetClass "{65F256D640C3A673}" {
+       Name "JIPAfterSafestartLabel"
+       Slot LayoutSlot "{65F256DABA2E8FD3}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.9 0.9 0.9 1
+       Text "JIP After Safestart:"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      TextWidgetClass "{65F256D640C3A674}" {
+       Name "JIPAfterSafestartValue"
+       Slot LayoutSlot "{65F256DABA2E8FD4}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Respawn
+      TextWidgetClass "{65F256D640C3A675}" {
+       Name "RespawnLabel"
+       Slot LayoutSlot "{65F256DABA2E8FD5}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.9 0.9 0.9 1
+       Text "Respawn:"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      TextWidgetClass "{65F256D640C3A676}" {
+       Name "RespawnValue"
+       Slot LayoutSlot "{65F256DABA2E8FD6}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Espionage
+      TextWidgetClass "{65F256D640C3A677}" {
+       Name "EspionageLabel"
+       Slot LayoutSlot "{65F256DABA2E8FD7}" {
+        Padding 0 0 0 2
+        SizeMode Fill Fill
+       }
+       Color 0.9 0.9 0.9 1
+       Text "Espionage:"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      TextWidgetClass "{65F256D640C3A678}" {
+       Name "EspionageValue"
+       Slot LayoutSlot "{65F256DABA2E8FD8}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Divider
+      PanelWidgetClass "{65F256D58A4D0236}" {
+       Name "DividerPanel2"
+       Slot LayoutSlot "{65F256D58A4D05EF}" {
+        Padding 0 0 0 8
+        SizeMode Auto
+       }
+       Color 0.5 0.5 0.5 0.8
+       "Size Mode H" Auto
+       "Size Mode V" Fixed
+       HeightOverride 2
+      }
+      
+      // Markers Header
+      TextWidgetClass "{65F256D640C3A673}" {
+       Name "MarkersHeader"
+       Slot LayoutSlot "{65F256DABA2E8FD3}" {
+        Padding 0 0 0 5
+        SizeMode Fill Fill
+       }
+       Color 1 1 1 1
+       Text "Markers"
+       "Font Size" 20
+       "Min Font Size" 20
+       "Horizontal Alignment" Center
+       Bold 1
+      }
+      
+      // Blue Force Tracker
+      TextWidgetClass "{65F256D640C3A674}" {
+       Name "BlueForceTrackerValue"
+       Slot LayoutSlot "{65F256DABA2E8FD4}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Blue Force Tracker: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Unit Map Markers
+      TextWidgetClass "{65F256D640C3A675}" {
+       Name "UnitMapMarkersValue"
+       Slot LayoutSlot "{65F256DABA2E8FD5}" {
+        Padding 0 0 0 8
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Unit Map Markers: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Divider
+      PanelWidgetClass "{65F256D58A4D0237}" {
+       Name "DividerPanel3"
+       Slot LayoutSlot "{65F256D58A4D05F0}" {
+        Padding 0 0 0 8
+        SizeMode Auto
+       }
+       Color 0.5 0.5 0.5 0.8
+       "Size Mode H" Auto
+       "Size Mode V" Fixed
+       HeightOverride 2
+      }
+      
+      // Equipment Header
+      TextWidgetClass "{65F256D640C3A676}" {
+       Name "EquipmentHeader"
+       Slot LayoutSlot "{65F256DABA2E8FD6}" {
+        Padding 0 0 0 5
+        SizeMode Fill Fill
+       }
+       Color 1 1 1 1
+       Text "Equipment"
+       "Font Size" 20
+       "Min Font Size" 20
+       "Horizontal Alignment" Center
+       Bold 1
+      }
+      
+      // Faction Name
+      TextWidgetClass "{65F256D640C3A677}" {
+       Name "FactionNameValue"
+       Slot LayoutSlot "{65F256DABA2E8FD7}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Faction Name: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Radios
+      TextWidgetClass "{65F256D640C3A678}" {
+       Name "RadiosValue"
+       Slot LayoutSlot "{65F256DABA2E8FD8}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Radios: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Map
+      TextWidgetClass "{65F256D640C3A679}" {
+       Name "MapValue"
+       Slot LayoutSlot "{65F256DABA2E8FD9}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Map: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Binoculars
+      TextWidgetClass "{65F256D640C3A67A}" {
+       Name "BinocularsValue"
+       Slot LayoutSlot "{65F256DABA2E8FDA}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Binoculars: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Entrenching Tool
+      TextWidgetClass "{65F256D640C3A67B}" {
+       Name "EntrenchingToolValue"
+       Slot LayoutSlot "{65F256DABA2E8FDB}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Entrenching Tool: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Night Vision
+      TextWidgetClass "{65F256D640C3A67C}" {
+       Name "NightVisionValue"
+       Slot LayoutSlot "{65F256DABA2E8FDC}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Night Vision: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+      
+      // Flashlight
+      TextWidgetClass "{65F256D640C3A67D}" {
+       Name "FlashlightValue"
+       Slot LayoutSlot "{65F256DABA2E8FDD}" {
+        Padding 0 0 0 3
+        SizeMode Fill Fill
+       }
+       Color 0.8 0.8 0.8 1
+       Text "Flashlight: N/A"
+       "Font Size" 16
+       "Min Font Size" 16
+      }
+     }
+    }
+   }
+  }
+ }
+}

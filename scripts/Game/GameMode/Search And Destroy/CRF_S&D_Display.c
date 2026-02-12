@@ -6,6 +6,9 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplayExtended
 	protected CRF_SearchAndDestroyGamemodeManager m_SDComponent = null;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	// Trist: Track If Component Is Present (Temporary solution for minimizing perf. impact of FindComponent() loops when main component isnt used.)
+	protected bool m_bComponentPresent = false;
+	
 	//------------------------------------------------------------------------------------------------
 
 	// override/static functions
@@ -16,11 +19,16 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplayExtended
 	{
 		super.DisplayUpdate(owner, timeSlice);
 		
+		// Trist Bandaid: If we already searched and component doesn't exist, don't spam FindComponent() every frame
+		if (m_bComponentPresent && !m_SDComponent) // ^
+			return; // ^
+		
 		if (!m_SDComponent || !m_wTimer || !m_wBackground) {
 			m_SDComponent = CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager));
+			m_bComponentPresent = true;  // Trist: FindComponent Bandaid
 			m_wTimer      = TextWidget.Cast(m_wRoot.FindWidget("Timer"));
 			m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("Background"));
-			return;
+			if (!m_SDComponent) return; // Trist: FindComponent Bandaid
 		};
 		
 		if(!CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
