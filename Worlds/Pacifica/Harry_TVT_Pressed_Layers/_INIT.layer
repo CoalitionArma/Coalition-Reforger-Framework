@@ -50,7 +50,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Sieze two of the 3 comms towers, and hold them for 10 minutes to win. "\
    ""\
    "Mission Makers Note:"\
-   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on their assets to identify them."
+   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on their assets to identify them. You have a burst fire 5.56 primary, a relatively strong AR, and ok MMG. The enemy has a strong full auto 7.62 primary, a weak AR, and a strong MMG. The PL must create conditions that favor their equipment."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -60,7 +60,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Sieze two of the 3 comms towers, and hold them for 10 minutes to win. "\
    ""\
    "Mission Makers Note:"\
-   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on assets to make the indentifiable. The MG3 sights must be manually opened by inspecting the gun."
+   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on assets to make the indentifiable. The MG3 sights must be manually opened by inspecting the gun. You have a strong full auto 7.62 primary, a weak AR, and a strong MMG. The enemy has a burst fire 5.56 primary, a relatively strong AR, and ok MMG. The PL must create conditions that favor their equipment."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
