@@ -274,15 +274,15 @@ Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
      m_sReticleTexture "{6111EA6B45BCA0A7}UI/Textures/Sights/M64A1/Reticle_M64A1_UI.edds"
      m_sReticleGlowTexture "{6111EA6B45BCA0A7}UI/Textures/Sights/M64A1/Reticle_M64A1_UI.edds"
      m_ReticleOutlineColor 0.5 1 0 1
-     m_fMagnification 1.5
-     m_fReticleAngularSize 9
-     m_fReticlePortion 0.955
-     m_fReticleBaseZoom 1.5
-     m_fObjectiveFov 17
      m_bShouldHideParentObject 0
      m_bShouldHideParentCharacter 1
      m_fMovementDampingSpeed 4
      m_fMisalignmentScale 0
+     m_fObjectiveFov 17
+     m_fReticleAngularSize 9
+     m_fReticlePortion 0.955
+     m_fReticleBaseZoom 1.5
+     m_fMagnification 1.5
     }
    }
    ikTargets {

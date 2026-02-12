@@ -884,12 +884,12 @@ class CRF_GearscriptManager : ScriptComponent
 					break;
 				
 				case CRF_EGearscriptItems.LEADERSHIP_BINO:
-					if (gearConfig.m_bEnableLeadershipBinoculars)
+					if (gearConfig.m_sLeadershipBinocularsPrefab != "")
 						AddInventoryItem(gearConfig.m_sLeadershipBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 				
 				case CRF_EGearscriptItems.ASSISTANT_BINO:
-					if (gearConfig.m_bEnableAssistantBinoculars)
+					if (gearConfig.m_sAssistantBinocularsPrefab != "")
 						AddInventoryItem(gearConfig.m_sAssistantBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 

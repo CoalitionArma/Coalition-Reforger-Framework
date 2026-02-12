@@ -286,11 +286,19 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 	}
 	
 	/**
-	 * Updates the timer display with current server world time
+	 * Updates the timer display with current server world time or countdown timer
 	 */
 	protected void UpdateTimer()
 	{	
-		m_wTimerText.SetText(CRF_GamemodeManager.GetInstance().GetServerWorldTime());
+		// If in countdown mode, show the countdown timer instead of world time
+		if (m_SafestartManager && m_SafestartManager.GetCountdownMode())
+		{
+			m_wTimerText.SetText(m_SafestartManager.GetFormattedSafeStartTimeRemaining());
+		}
+		else
+		{
+			m_wTimerText.SetText(CRF_GamemodeManager.GetInstance().GetServerWorldTime());
+		}
 	}
 
 	/**

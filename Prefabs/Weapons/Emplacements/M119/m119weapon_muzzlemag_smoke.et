@@ -33,13 +33,13 @@ GenericEntity : "{842D220FF4EFF2A8}Prefabs/Weapons/HeavyWeapons/NSV/HMG_NSV_base
      }
     }
    }
+   m_fBlastLength 7
+   m_fBlastConeAngle 80
+   m_bCanBlastRicochet 0
    m_BlastOrigin PointInfo "{687721809212D3C8}" {
     PivotID "context_fire"
     Offset 0.0085 0.0881 3.1157
    }
-   m_fBlastLength 7
-   m_fBlastConeAngle 80
-   m_bCanBlastRicochet 0
   }
   SlotManagerComponent "{6044A1932A368344}" {
    Slots {

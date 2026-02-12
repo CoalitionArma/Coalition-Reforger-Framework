@@ -1,3 +1,14 @@
+SCR_DestructibleBuildingEntity {
+ components {
+  RigidBody "{686E673255488F75}" {
+   ResponseIndex "Normal"
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ coords 1143.655 38 2823.296
+ angles 0 -116.314 -6.859
+}
 $grp GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
  {
   coords 3266.893 2 2896.921
@@ -287,6 +298,10 @@ GenericEntity : "{777C176677786B31}Prefabs/Props/Industrial/CargoContainers/Carg
  coords 1161.187 37.894 2861.552
  angles -4.799 -21.929 0
 }
+GenericEntity : "{77F237994998613F}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck.et" {
+ coords 1155.231 38.019 2828.273
+ angles -4.299 22.888 20.409
+}
 GenericEntity : "{78A930FB0825AAA0}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_long_high_USSR.et" {
  coords 1100.373 37.901 2857.118
  angles 0 -99.093 0
@@ -310,7 +325,7 @@ $grp GenericEntity : "{7E3F6F5A6BAEC717}Prefabs/Props/Industrial/CargoContainers
  }
 }
 GenericEntity : "{7F29BE4FBFC98392}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wreck.et" {
- coords 1157.844 38.893 2827.614
+ coords 1157.844 38 2827.614
  angles -28.882 21.083 92.065
 }
 StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
@@ -348,17 +363,6 @@ GenericEntity : "{88A64A32F78CFB77}Prefabs/Props/Industrial/CargoContainers/Carg
 GenericEntity : "{892D59073561FCA6}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_US_ammo.et" {
  coords 1110.34 38 2866.936
  angles 0 -29.901 0
-}
-SCR_DestructibleBuildingEntity : "{8D35B3D72731D649}Prefabs/Structures/Wreck/c130.et" {
- components {
-  RigidBody "{686E673255488F75}" {
-   ResponseIndex "Normal"
-   ModelGeometry 1
-   Static 1
-  }
- }
- coords 1143.655 37.734 2823.296
- angles 0 -116.314 -6.859
 }
 GenericEntity : "{8F08705D73A7C711}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_red.et" {
  coords 3279.505 2.065 2911.826
@@ -447,12 +451,12 @@ GenericEntity : "{AB87B392A989CA95}Prefabs/Compositions/Slotted/SlotFlatSmall/Gu
 }
 $grp StaticModelEntity : "{B03F9691E961C4CA}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v3.et" {
  {
-  coords 1148.764 -0.739 2821.669
-  angles -21.808 -28.13 -1.729
+  coords 1150.189 -1.665 2822.633
+  angles -28.412 -26.882 -1.948
   scale 5.19
  }
  {
-  coords 1147.047 -1.15 2827.75
+  coords 1147.805 -1.15 2828.343
   angles -21.808 156.841 -1.729
   scale 5.19
  }
@@ -471,6 +475,17 @@ GenericEntity : "{B423187F6C8DEFFD}Prefabs/Compositions/Misc/SubCompositions/Dec
 GenericEntity : "{B4FFD63EDFCBD850}Prefabs/Compositions/Misc/SubCompositions/CrateStacked_02.et" {
  coords 1136.289 38 2821.417
  angles 0 46.713 0
+ {
+  GenericEntity {
+   ID "5712BD07524545A6"
+   coords 0.446 0 -0.064
+   angles 0 4.885 0
+  }
+  GenericEntity {
+   ID "5712BD07524545D5"
+   coords -0.481 0 -0
+  }
+ }
 }
 GenericEntity : "{B5B2CD276A3BDB08}Prefabs/Weapons/MachineGuns/UK59/MG_UK59_4x8.et" {
  coords 633.484 1.372 3492.684

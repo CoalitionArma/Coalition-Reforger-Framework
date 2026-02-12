@@ -16,7 +16,11 @@ class CRF_SafestartManager : ScriptComponent
 	int m_iTimeSafeStartBegan;
 	[RplProp()]
 	int m_iTimeMissionEnds;
+	[RplProp()]
 	int m_iSafeStartTimeRemaining;
+	
+	[RplProp()]
+	protected bool m_bCountdownMode = false; // True if using time limit countdown instead of ready-up countdown
 
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
@@ -107,13 +111,19 @@ class CRF_SafestartManager : ScriptComponent
 			
 			if (m_bUpdateMissionEndTimer)
 				m_GamemodeManager.UpdateMissionEndTimer();
+			
+			// Handle countdown mode (time limit based) - Update every second
+			if (m_bCountdownMode && m_bSafeStartEnabled)
+				CheckCountdownMode();
+			
 			m_fUpdateBuffer = 0;
 		}
 		m_fUpdateBuffer += timeSlice;
 		
 		if (m_fMediumUpdateBuffer >= 5)
 		{
-			if (m_bCheckStartCountdown)
+			// Handle traditional ready-up countdown - Keep at 5 second intervals
+			if (!m_bCountdownMode && m_bCheckStartCountdown)
 				if(FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
 					CheckStartCountDown();
 			m_fMediumUpdateBuffer = 0;
@@ -371,6 +381,105 @@ class CRF_SafestartManager : ScriptComponent
 		}
 	};
 	
+	//Call from server
+	//------------------------------------------------------------------------------------------------
+	protected void CheckCountdownMode()
+	{
+		string message;
+		string submessage = "";
+		float popupLife = 3.25;
+		bool showMessage = false; // Only show messages at specific intervals
+		
+		// Countdown from time limit (every second)
+		m_iSafeStartTimeRemaining -= 1;
+		
+		// Replicate the updated time to all clients
+		Replication.BumpMe();
+		
+		// Only show popup warnings when 5 minutes or less remain
+		if (m_iSafeStartTimeRemaining <= 300)
+		{
+			// Format time remaining as MM:SS
+			int minutesRemaining = m_iSafeStartTimeRemaining / 60;
+			int secondsRemaining = m_iSafeStartTimeRemaining % 60;
+			string timeString;
+			
+			if (minutesRemaining > 0)
+				timeString = string.Format("%1:%2", minutesRemaining, secondsRemaining.ToString(2)); // 2 digits for seconds
+			else
+				timeString = string.Format("%1 Seconds", secondsRemaining);
+			
+			message = string.Format("[CRF] : Safestart Ends In: %1", timeString);
+			
+			// Give warnings at specific intervals (5 minutes or less)
+			if (m_iSafeStartTimeRemaining == 300) // 5 minutes
+			{
+				submessage = "5 minutes remaining";
+				popupLife = 5;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining == 240) // 4 minutes
+			{
+				submessage = "4 minutes remaining";
+				popupLife = 4;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining == 180) // 3 minutes
+			{
+				submessage = "3 minutes remaining";
+				popupLife = 4;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining == 120) // 2 minutes
+			{
+				submessage = "2 minutes remaining";
+				popupLife = 5;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining == 60) // 1 minute
+			{
+				submessage = "1 minute remaining";
+				popupLife = 5;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining == 30) // 30 seconds
+			{
+				submessage = "30 seconds remaining";
+				popupLife = 5;
+				showMessage = true;
+			}
+			else if (m_iSafeStartTimeRemaining <= 10 && m_iSafeStartTimeRemaining > 0) // Final 10 seconds
+			{
+				submessage = "Get ready!";
+				popupLife = 1;
+				showMessage = true;
+			}
+		}
+		
+		// End safe start when countdown reaches zero
+		if (m_iSafeStartTimeRemaining <= 0)
+		{
+			// Force all sides to be ready
+			m_bBluforReady = true;
+			m_bOpforReady = true;
+			m_bIndforReady = true;
+			m_bCivReady = true;
+			m_bAdminForcedReady = true;
+			UpdatePlayedFactions();
+			
+			ToggleSafeStartServer(false);
+			m_bCountdownMode = false;
+			message = "[CRF] : GAME LIVE!";
+			submessage = "Safestart timer expired, mission is now live!";
+			popupLife = 8;
+			showMessage = true;
+		}
+		
+		// Only send popup notification if we have something to show
+		if (showMessage)
+			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	protected int FactionsReadyCount()
 	{
@@ -390,6 +499,30 @@ class CRF_SafestartManager : ScriptComponent
 	{
 		return m_bSafeStartEnabled;
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetCountdownMode()
+	{
+		return m_bCountdownMode;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetSafeStartTimeRemaining()
+	{
+		return m_iSafeStartTimeRemaining;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetFormattedSafeStartTimeRemaining()
+	{
+		if (m_iSafeStartTimeRemaining <= 0)
+			return "00:00";
+			
+		int minutes = m_iSafeStartTimeRemaining / 60;
+		int seconds = m_iSafeStartTimeRemaining % 60;
+		
+		return string.Format("%1:%2", minutes.ToString(2), seconds.ToString(2));
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void OnSafeStartChange()
@@ -408,7 +541,18 @@ class CRF_SafestartManager : ScriptComponent
 
 			m_iTimeSafeStartBegan = GetGame().GetWorld().GetWorldTime();
 			m_bSafeStartEnabled = true;
-			m_iSafeStartTimeRemaining = 35;
+			
+			// Check if using countdown mode (boolean enabled AND time limit > 0)
+			if (m_Gamemode.m_bUseSafestartTimeLimit && m_Gamemode.m_iSafestartTimeLimit > 0)
+			{
+				m_bCountdownMode = true;
+				m_iSafeStartTimeRemaining = m_Gamemode.m_iSafestartTimeLimit * 60; // Convert minutes to seconds
+			}
+			else
+			{
+				m_bCountdownMode = false;
+				m_iSafeStartTimeRemaining = 35; // Default ready-up countdown
+			}
 
 			m_bUpdateMissionEndTimer = false;
 			m_bCheckPlayersAlive = false;
