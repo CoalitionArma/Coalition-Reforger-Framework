@@ -1,0 +1,178 @@
+SCR_BaseTriggerEntity coordinator {
+ coords 3465.621 185.546 3186.745
+ userScript "	// coordinator for the triggers. 0 is starting, 1 is blu, -1 is red"\
+ "	int a_control = 0;"\
+ "	int b_control = 0;"\
+ "	int c_control = 0;"\
+ "	int gamestate = 0;"
+ TriggerShapeType Sphere
+ DrawShape 1
+ TriggerActivationType "Every query"
+ PeriodicQueries 1
+ UpdatePeriod 20
+ OnActivate ""\
+ "		if ((a_control + b_control + c_control) >= 2 && gamestate != 1)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blu has two towers. Opf has ten minutes to contest.\", 10);"\
+ "			gamestate = 1;"\
+ "		}"\
+ "		"\
+ "		if ((a_control + b_control + c_control) <= -2 && gamestate != -1)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Opf has two towers. Blu has ten minutes to contest.\", 10);"\
+ "			gamestate = -1;"\
+ "		}"\
+ "	"
+}
+$grp SCR_FactionControlTriggerEntity {
+ objA_Blu {
+  coords 2631.128 137.439 2148.618
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.a_control != 1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor have taken Tower A\", 10);"\
+  "			control.a_control = 1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "BLUFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+ objA_Opf {
+  coords 2630.969 137.47 2148.857
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.a_control != -1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor have taken Tower A\", 10);"\
+  "			control.a_control = -1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "OPFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+ objB_Blu {
+  coords 2897.776 174.178 2758.171
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.b_control != 1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor have taken Tower B\", 10);"\
+  "			control.b_control = 1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "BLUFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+ objB_Opf {
+  coords 2897.844 174.157 2758.63
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.b_control != -1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor have taken Tower B\", 10);"\
+  "			control.b_control = -1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "OPFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+ objC_Blu {
+  coords 3637.985 173.95 2415.56
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.c_control != 1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor have taken Tower C\", 10);"\
+  "			control.c_control = 1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "BLUFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+ objC_Opf {
+  coords 3638.1 173.976 2415.532
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		coordinator_Class control = coordinator_Class.Cast(GetGame().GetWorld().FindEntityByName(\"coordinator\"));"\
+  "		if (control.c_control != -1)"\
+  "		{	"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor have taken Tower C\", 10);"\
+  "			control.c_control = -1;"\
+  "		}"\
+  ""\
+  "	"
+  m_aOwnerFactionKeys {
+   "OPFOR"
+  }
+  m_iRatioMethod "More than"
+ }
+}
+$grp StaticModelEntity : "{DBCDEC45DB834E8A}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01.et" {
+ {
+  coords 2632.044 136.946 2144.377
+ }
+ {
+  coords 2897.519 173.699 2761.944
+  angles 0 -15.834 0
+ }
+ {
+  coords 3638.381 174.045 2415.424
+ }
+}

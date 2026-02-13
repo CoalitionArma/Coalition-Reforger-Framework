@@ -1,0 +1,339 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 3548.183 128.753 2525.661
+ "Map Geometry Data" "{08498E1AF326042D}Missions/PacificaConflict.topo"
+ "Satellite background image" "{69E5B5B27F96C324}Missions/PaperMapBKGRNDFinal.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2102.081 235.813 347.229
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 45
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "An East German intelligence unit has managed to infiltrate local forces, and turn half of a motorized battalion traitor. It's a race to the local comms towers if the remaining blufor can get a call out. "\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: LAVs, Weapons teams, Integrated Engi, Armed UH1H"\
+   ""\
+   "OPFOR Composition: Moto Inf"\
+   "OPFOR Assets: LAVs, Weapons teams, Integrated Engi, Armed UH1H"\
+   ""\
+   "Time: 45 Min"\
+   "Weather: Day Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Sieze two of the 3 comms towers, and hold them for 10 minutes to win. "\
+   ""\
+   "Mission Makers Note:"\
+   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on their assets to identify them. You have a burst fire 5.56 primary, a relatively strong AR, and ok MMG. The enemy has a strong full auto 7.62 primary, a weak AR, and a strong MMG. The PL must create conditions that favor their equipment."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Sieze two of the 3 comms towers, and hold them for 10 minutes to win. "\
+   ""\
+   "Mission Makers Note:"\
+   "Be wary of using the UH1H to transport troops in view of enemy LAVs. Each side has, or lacks, distinctive markings on assets to make the indentifiable. The MG3 sights must be manually opened by inspecting the gun. You have a strong full auto 7.62 primary, a weak AR, and a strong MMG. The enemy has a burst fire 5.56 primary, a relatively strong AR, and ok MMG. The PL must create conditions that favor their equipment."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "I'd like to manage control of the towers via moderator/admin and just send updates as necessary. "
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{68937EEDD23E87ED}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E86B9}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E85D1}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E850E}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E84B5}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7BD6}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7B76}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7A8F}" {
+   m_sCallsign "Weapons Team"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7A1B}" {
+   m_sCallsign "HELI 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68937EEDD23E7892}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7821}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7F47}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7EEC}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7E0F}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7D9C}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7D32}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E7C4B}" {
+   m_sCallsign "Weapons Team"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{68937EEDD23E73DB}" {
+   m_sCallsign "HELI 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{3A15E672C2171BB9}Configs/Gearscripts/Standard/80s/CRF_GS_GER_80s.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}

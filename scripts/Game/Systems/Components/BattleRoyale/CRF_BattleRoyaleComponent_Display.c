@@ -14,6 +14,9 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 	protected BlurWidget m_wBlur;
 	protected CRF_BattleRoyaleComponent m_BattleRoyaleComponent;
 	
+	// Track if Component is present (Temporary solution for minimizing perf. impact of FindComponent() loops when main component isnt used.)
+	protected bool m_bComponentPresent = false;
+	
 	// Cached toggle - read once at init, never re-checked
 	protected bool m_bPlayerTrackingEnabled = true;
 	
@@ -61,10 +64,15 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 		if (RplSession.Mode() == RplMode.Dedicated)
 			return;
 		
+		// Early exit: If we already searched and component doesn't exist, don't spam FindComponent() every frame
+		if (m_bComponentPresent && !m_BattleRoyaleComponent)
+			return;
+		
 		// Get components if not initialized
 		if (!m_BattleRoyaleComponent || !m_wTimer || !m_wBackground || !m_wStageText || !m_wPlayerCount || !m_wWinnerText) 
 		{
 			m_BattleRoyaleComponent = CRF_BattleRoyaleComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_BattleRoyaleComponent));
+			m_bComponentPresent = true;  // Mark that we've searched
 			if (!m_BattleRoyaleComponent) 
 				return;
 			

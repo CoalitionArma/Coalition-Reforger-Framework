@@ -1,0 +1,16 @@
+CRF_ManualMarker flightpaTH : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 8547.988 143.109 3023.643
+ angles 0 18.278 0
+ m_MarkerColor 1 0 0 1
+ m_sQuadName "arrow-large"
+ m_sDescription "UH-60 Flight Path "
+}
+CRF_ManualMarker indforevacpoint : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ coords 9023.149 196.92 3795.979
+ angles 0 0 0
+ m_sDescription "EXTRACTION POINT"
+}
+CRF_ManualMarker bluforevacpoint : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 9428.853 65.501 1562.094
+ m_sDescription "EXTRACTION POINT"
+}

@@ -1,0 +1,19 @@
+ParticleEffectEntity {
+ coords 9560.883 96.883 2581.089
+ EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
+}
+GenericEntity : "{160E4E4110803F26}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_FIA.et" {
+ components {
+  SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+   m_sDefaultMaterial "{19CFEC4F05FD38C9}Assets/Props/Fabric/Flags/Data/Flag_1_2_MiddleEastInsurgents.emat"
+  }
+ }
+ coords 9017.021 199.816 3788.74
+}
+GenericEntity : "{90B7CEB4C665B1E2}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1.et" {
+ coords 9427.66 66.227 1563.499
+}
+GenericEntity : "{D8E44F4BA05D8C20}Prefabs/Models/props/tem_uh60_crashed.et" {
+ coords 9562.014 96.129 2580.859
+ angles 0 -55.836 0
+}

@@ -139,16 +139,16 @@ class CRF_MissionSlottingQuickSetupDialouge
 //------------------------------------------------------------------------------------------------
 class CRF_MissionSlottingSetupDialouge
 {
-	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
+	[Attribute(defvalue: "1", uiwidget: UIWidgets.Auto, desc: "", category: "CRF Slotting Settings - Slotting Ratio")]
 	int m_iFactionOneRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
+	[Attribute(defvalue: "", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
 	string m_sFactionOneKey;
 
-	[Attribute("1", "auto", "", category: "CRF Slotting Settings - Slotting Ratio")]
+	[Attribute(defvalue: "1", uiwidget: UIWidgets.Auto, desc: "", category: "CRF Slotting Settings - Slotting Ratio")]
 	int m_iFactionTwoRatio;
 
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
+	[Attribute(defvalue: "", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Slotting Settings - Slotting Ratio")]
 	string m_sFactionTwoKey;
 	
 	[Attribute("", UIWidgets.Auto, desc: "BLUFOR Slots", category: "CRF Slotting Settings - BLUFOR Slots")]

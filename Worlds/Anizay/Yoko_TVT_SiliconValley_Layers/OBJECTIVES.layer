@@ -1,0 +1,16 @@
+SCR_BaseTriggerEntity Radio {
+ coords 9557.605 95.294 2573.701
+}
+CRF_MissionMarker info : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ coords 8079.242 168.565 2984.158
+ m_sImageSetGlow "{4A0541F28AB25C21}UI/Images/Objectives/the tech.png"
+ m_MarkerColor 1 0 0 1
+ m_fWorldSize 50
+ m_sDescription "INFO"
+ m_bUseWorldScale 0
+ m_bVisibleForEmptyFaction 1
+ m_sMissionMarkerDescription "The Tech - An ANPRC77 Radio backpack"
+ m_aMissionMarkerImages {
+  "{7DE58AB822C1E072}UI/Textures/QuickMenu/Icons/radioBackpack_ANPRC77.edds"
+ }
+}

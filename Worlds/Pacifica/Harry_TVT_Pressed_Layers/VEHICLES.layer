@@ -1,0 +1,174 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1941.178 85.987 3576.012
+  angles 0 -150.098 0
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1946.923 85.987 3572.708
+  angles 0 -150.098 0
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1953.266 86.34 3569.06
+  angles 0 -150.098 0
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1611.457 14.366 1689.073
+  angles 0 34.554 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1618.1 14.212 1698.553
+  angles 0 34.554 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1626.415 14.154 1710.945
+  angles 0 34.554 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1960.434 87.416 3564.938
+  angles 0 -150.098 0
+  m_rVehicle "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1602.654 14.566 1676.733
+  angles 0 34.554 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1591.722 15.841 1697.764
+  angles 0 123.846 0
+  m_rVehicle "{00BC1E407D536A34}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_sharkNose.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1945.543 90.713 3534.257
+  angles 0 122.48 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1967.79 89.164 3558.504
+  angles 0 -150.098 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1975.369 89.682 3555.312
+  angles 0 -150.098 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1587.017 14.867 1658.124
+  angles 0 45.148 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1576.689 16.276 1648.466
+  angles 0 48.266 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_sFactionKey "OPFOR"
+ }
+}
+$grp StaticModelEntity : "{D4ABEC6A0DB2E253}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Utility/E_Helipad_Lights_US_01.et" {
+ {
+  coords 1591.389 0.992 1698.228
+  angles 0 -56.847 0
+  {
+   GenericEntity {
+    ID "5D1EB45993212F43"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 5.912 0.063
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F49"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.403 0.063
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F4A"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.567 0.062
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F4B"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.463 0.062
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F4C"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords -0.001 -0.397 0.063
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F4E"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.403 0.064
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F54"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.403 0.063
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D1EB45993212F55"
+    {
+     GenericEntity {
+      ID "5A26B380A63C2147"
+      coords 0 -0.77 0.062
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E92E720B6346009"
+    coords -0.5 0 -0.501
+   }
+  }
+ }
+ {
+  coords 1945.198 1.175 3534.713
+  angles 0 -58.213 0
+ }
+}

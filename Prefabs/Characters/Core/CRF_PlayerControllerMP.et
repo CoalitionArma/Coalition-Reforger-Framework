@@ -41,6 +41,11 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
      m_eLayer OVERLAY
      m_eShow 119
     }
+    CRF_SafeStartInfoDisplay "{61303B9E05796EC8}" {
+     m_LayoutPath "{533092FF68C19D5A}UI/layouts/CRF_SafeStartInfoDisplay.layout"
+     m_eLayer OVERLAY
+     m_eShow 119
+    }
     CRF_GameTimerDisplay "{61303B9E065107C1}" {
      m_LayoutPath "{BBFA8257E348897C}UI/layouts/CRF_GameTimerDisplay.layout"
      m_eLayer ALWAYS_TOP
@@ -58,7 +63,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     }
     CRF_BattleRoyaleComponentDisplay "{61303B9EA39FC281}" {
      m_LayoutPath "{A597F5CD1D996DD4}UI/layouts/CRF_BattleRoyaleComponentDisplay.layout"
-     m_eLayer OVERLAY
+     m_eLayer ALWAYS_TOP
      m_eShow 118
     }
     SCR_ScenarioFrameworkTriggerCountdownDisplay "{61B2C5720492B2C9}" {

@@ -1,0 +1,80 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 8632.454 179.709 3806.217
+  angles 0 128.716 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 8623.769 178.728 3813.178
+  angles 0 128.716 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 8614.821 178.901 3818.077
+  angles 0 112.723 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 8604.557 178.639 3831.808
+  angles 0 132.719 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6899330242AFDFC0}" {
+  }
+ }
+ {
+  coords 8596.888 180.836 3814.998
+  angles 0 87.376 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6899330248B544AF}" {
+  }
+ }
+ {
+  coords 9540.844 39.282 1366.75
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9544.703 39.282 1371.906
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9548.367 39.282 1376.801
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9552.14 39.282 1381.841
+  angles 0 -53.183 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 9555.414 39.282 1386.215
+  angles 0 -53.183 0
+  m_rVehicle "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 8576.092 180.173 3827.045
+  angles 0 124.705 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 9561.182 39.282 1393.92
+  angles 0 -53.183 0
+  m_rVehicle "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
