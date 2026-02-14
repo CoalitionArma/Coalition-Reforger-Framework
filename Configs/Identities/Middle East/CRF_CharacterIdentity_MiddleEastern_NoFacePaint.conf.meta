@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{99FF10C1BD9CE814}Configs/Identities/Middle East/CRF_CharacterIdentity_MiddleEastern_NoFacePaint.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
