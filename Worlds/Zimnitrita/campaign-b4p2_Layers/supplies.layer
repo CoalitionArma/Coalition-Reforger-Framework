@@ -1,0 +1,40 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 10058.573 61.445 12787.612
+  angles 0.814 0.574 8.012
+ }
+ {
+  coords 11088.391 25.288 12876.459
+  angles 1.76 13.435 2.259
+ }
+ {
+  coords 10642.26 22.562 12897.162
+  angles 0 -95.608 0
+ }
+ {
+  coords 10085.118 55.741 13588.255
+  angles 4.443 -77.991 -12.104
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    coords 9.72 0.3 2.317
+    angles 1.813 86.714 0.344
+   }
+  }
+ }
+ {
+  coords 9500.668 20.87 14028.865
+  angles -4.145 -78.041 2.316
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    coords 9.72 0.3 2.317
+    angles 1.813 86.714 0.344
+   }
+  }
+ }
+ {
+  coords 9221.185 2.179 13759.538
+  angles -0.873 -146.241 3.718
+ }
+}

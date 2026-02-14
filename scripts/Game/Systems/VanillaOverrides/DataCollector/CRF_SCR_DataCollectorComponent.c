@@ -190,21 +190,18 @@ modded class SCR_DataCollectorComponent
 		// Get player data without creating new instance
 		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId, false);
 		
-		// Safety check: Player might disconnect before data was initialized
-		if (!playerDisconnectedData)
-			return;
-		
-		// Safety check: Player might disconnect before profile was loaded from backend
-		if (!playerDisconnectedData.IsDataReady())
-			return;
-		
-		// Notify all modules about disconnect
+		// Notify all modules about disconnect first
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerDisconnected(playerId);
 		}
-
-		// Save player profile to backend
+		
+		// Safety check: Player might disconnect before data was initialized
+		if (!playerDisconnectedData)
+			return;
+		
+		// Save player profile to backend IMMEDIATELY after modules are notified
+		// This must happen before any calculations to ensure data is saved
 		playerDisconnectedData.StoreProfile();
 
 		// ADD STATS TO FACTION
@@ -229,5 +226,17 @@ modded class SCR_DataCollectorComponent
 		//m_mPlayerData.Remove(playerId);
 
 		//As an alternative, in GetPlayerDataStats we put this instance to be removed after its used in C++
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// When game shuts down, store the profile of every player who hasn't disconnected yet
+	override void OnGameEnd()
+	{	
+		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
+		{
+			SCR_PlayerData playerData = GetPlayerData(m_mPlayerData.GetKey(i), false);
+			if (playerData)
+				playerData.StoreProfile();
+		}
 	}
 }

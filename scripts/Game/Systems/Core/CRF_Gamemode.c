@@ -449,6 +449,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 
+		/*
 		// Check if player is the mission designer and grant admin chat
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(iPlayerID);
 		SCR_MissionHeader missionHeader = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
@@ -461,7 +462,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				// Grant session admin (admin chat) to mission designer
 				GetGame().GetPlayerManager().GivePlayerRole(iPlayerID, EPlayerRole.SESSION_ADMINISTRATOR);
 			}
-		}
+		}*/
 
 		// Check if player is a moderator/donator and set privileges
 		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
