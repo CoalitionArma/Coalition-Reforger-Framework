@@ -1,0 +1,83 @@
+GameEntity : "{8A2B2A544F3ED831}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_base.et" {
+ ID "50D485E1435D6C72"
+ components {
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{21D4DB3CA0B5913F}Assets/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_item.xob"
+  }
+  RHS_ClothNodeStorageComponent "{5DB13C5777E6E695}" {
+   Enabled 1
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_Beanie_Name - #RHS-Color_Tan"
+     Description "#RHS-Headgear_Beanie_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5DB13C575AD680C2}" {
+     Weight 0.1
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5DB13C57226FEA81}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+     }
+     RHS_CustomAttributes "{5DB8F5B9ACB547EA}" {
+      m_sShortName "#RHS-Headgear_Beanie_Name"
+     }
+    }
+   }
+  }
+  SCR_ArmorDamageManagerComponent "{5E208A6BCC801EAE}" {
+   Enabled 0
+  }
+  SCR_HeadgearInventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{5244E4431DA56D64}" {
+    ItemDisplayName UIInfo "{689D188A386FB38C}" {
+     Name "#RHS-Headgear_6B47_Name"
+     Description "#RHS-Headgear_6B47_Description"
+    }
+   }
+  }
+  SCR_ItemOutfitFactionComponent "{618AD7BB075F1045}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{61A8D96650B5696D}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{61A8D96650441EDE}" {
+      m_AffiliatedFactionKey "RHS_USAF"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Goggles {
+     Prefab "{F8554F236521F974}Prefabs/Characters/HeadGear/Headphones_6M2/headphones_6m2.et"
+    }
+    LoadoutSlotInfo MeshCover {
+     Enabled 0
+    }
+    LoadoutSlotInfo Masks {
+    }
+    LoadoutSlotInfo NVG {
+     Offset 0.0026 0.1528 -0.1414
+     Angles -9.8766 180 0
+    }
+    LoadoutSlotInfo Headset {
+     Offset 0 0.005 0
+     Enabled 1
+    }
+   }
+   WornModel "{49B326457951B0F6}Assets/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01.xob"
+   WornMaterialsOverride {
+    "{BD8F9DE2660F5639}Assets/Characters/HeadGear/Hat_Knitted_01/Data/Hat_Knitted_01_brown.emat"
+   }
+   ItemModel "{21D4DB3CA0B5913F}Assets/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_item.xob"
+   ItemMaterialsOverride {
+    "{BD8F9DE2660F5639}Assets/Characters/HeadGear/Hat_Knitted_01/Data/Hat_Knitted_01_brown.emat"
+   }
+   DebugWornModel 0
+  }
+ }
+}
