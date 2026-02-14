@@ -689,7 +689,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+  m_rGearScript "{B1024A9AA980F79B}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEC.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
