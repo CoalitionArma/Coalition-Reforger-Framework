@@ -681,7 +681,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{3A15E672C2171BB9}Configs/Gearscripts/Standard/80s/CRF_GS_GER_80s.conf"
+  m_rGearScript "{B87903C26CC683BB}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000s_Iraq.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
