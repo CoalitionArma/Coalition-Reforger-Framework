@@ -1,0 +1,31 @@
+GameEntity : "{F545C1BE7C99954A}Prefabs/Characters/HeadGear/Hat_Patrol_US_01/Hat_Patrol_US_01.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{689641BDD8D92774}" {
+    ItemDisplayName UIInfo "{689641BDD8C7BAB5}" {
+     Name "#RAS-Headgear_Beret_US_Army_Name"
+     Description "#RAS-Headgear_Beret_US_Army_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{689641BDD8C7BA40}" {
+      PreviewWornModel 1
+     }
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{D6E2BFA8A0F5F9A5}Assets/Characters/HeadGear/Beret_US_Army/Beret_US_Army_Ground.xob"
+   Materials {
+    MaterialAssignClass "{68981E7267471DCC}" {
+     SourceMaterial "Beret_US_Army_Badge"
+     AssignedMaterial "{A4C0CC29FB10952A}Assets/Characters/HeadGear/Beret_US_Army/Data/Beret_MEC_Badge.emat"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   WornModel "{17BD80AFB66BE51A}Assets/Characters/HeadGear/Beret_US_Army/Beret_US_Army.xob"
+   ItemModel "{D6E2BFA8A0F5F9A5}Assets/Characters/HeadGear/Beret_US_Army/Beret_US_Army_Ground.xob"
+  }
+ }
+}

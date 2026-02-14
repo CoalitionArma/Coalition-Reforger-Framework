@@ -1,0 +1,9 @@
+MatPBRBasic {
+ Cull none
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ CavityFromAO 1
+ BCRMap "{B0752AB48D78A1E7}Assets/Characters/HeadGear/Beret_US_Army/Data/bage_mec_mod_by_4.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NMOMap "{AB12B6AE03646CAA}Assets/Characters/HeadGear/Beret_US_Army/Data/Beret_US_Army_Badge_NMO.edds"
+}
