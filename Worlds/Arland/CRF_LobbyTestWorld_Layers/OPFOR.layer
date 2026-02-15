@@ -36,12 +36,6 @@ CRF_PolyZoneTrigger {
 GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 1237.293 37.974 2816.348
 }
-GenericEntity : "{0BA6ECA87AC06B83}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/Weapons/6U16/KORD_Tigr.et" {
- coords 1271.839 42.138 2797.758
-}
-Turret : "{BB80F8048F07C989}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/TIGR_KORD_Turret.et" {
- coords 1272.879 40.316 2794.396
-}
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  coords 1240.502 38.009 2796.924
  Points {
