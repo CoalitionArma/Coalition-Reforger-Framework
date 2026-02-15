@@ -1,0 +1,460 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 3985.72 299.926 7585.586
+ "Map Geometry Data" "{BF5F2D022EA8CB36}Worlds/Bystrany/Bystrany_Map_v02.topo"
+ "Satellite background image" "{10EB7E9261F936BC}UI/Textures/Map/Worlds/Bystrany/Bystrany_Rasterized_Enhanced.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{689CCB57A3EECFD3}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 3365.319 224.379 8394.489
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGamemodeManager "{689D15417C5BF229}" {
+   m_timeBetweenPings 240
+   m_filterFaction 1
+   m_searcherFactionKey "INDFOR"
+   m_aHVTEntries {
+    CRF_HVTEntry "{689D15415DA4AFDA}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{421E220F53811D41}Prefabs/Characters/!GS_Characters/Special/CRF_VIP.et"
+     m_eFaction OPFOR
+     m_sTransponderEntityName "transponder1"
+     m_sMarkerText "HVT Intel"
+    }
+    CRF_HVTEntry "{689D15415DCF5F7F}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{421E220F53811D41}Prefabs/Characters/!GS_Characters/Special/CRF_VIP.et"
+     m_eFaction OPFOR
+     m_sTransponderEntityName "transponder2"
+     m_sMarkerText "HVT Intel"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 10
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iTimeToRespawn 60
+ m_iTimeLimitMinutes 75
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 0
+ m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "A few Western COs are on short leave from the frontlines with only part of their company on little to no alert. You must meet with your undercover informants, and determine the best course of action to eliminate them."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "- Optional: Recover your informants at the objective marker, they will have approximate intel on enemy leader locations"\
+   "- Optional: Eliminate local COMMS relay personel to reduce response times and threat level"\
+   "- Optional: Stealth"\
+   "- Eliminate the enemy HVT's"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Be proper NPC's and then fight hard. :^)"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Remain stealthy, navigate your way to rendevous with Russian forces in order to assist them with locating the HVT(s)"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey ""
+ m_sFactionTwoKey ""
+ m_BluforSlots {
+  CRF_SlottingGroup "{689E0909372FAAFC}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FA86F}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FA957}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FA991}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FAED1}" {
+   m_sCallsign "1-4 Recon"
+   m_FlagType SNIPER
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FAF13}" {
+   m_sCallsign "1-5 Recon"
+   m_FlagType SNIPER
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FAC41}" {
+   m_sCallsign "MAT"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FACFA}" {
+   m_sCallsign "CREW 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FAD1A}" {
+   m_sCallsign "CREW 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FADBA}" {
+   m_sCallsign "Chuds"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{689E0909372FA2B8}" {
+   m_sCallsign "VIPs"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VIP
+    VIP
+   }
+  }
+  CRF_SlottingGroup "{689E0909372FA3DF}" {
+   m_sCallsign "Fodder Guard"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{689E0909372FA0D7}" {
+   m_sCallsign "Informants"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets -1
+ m_iOPFORTickets 0
+ m_iINDFORTickets 2
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{8626C4AC2A8BCC03}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_RHSRusSO_AK12.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+  m_bEnableMagnifiedOptics 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{B0D4D61E3B42AE7C}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_TFUSArmyMC_VIP.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{1DBBA6AE9AB0433C}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_RHSIndformant_AK12.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
+$grp GameEntity {
+ transponder1 {
+ }
+ transponder2 {
+ }
+}
+SCR_BaseTriggerEntity Weatherfix {
+ coords 3491.836 222.206 8269.301
+ userScript "void SpawnNewWeatherManager()"\
+ "	{"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(\"{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et\"));"\
+ "		GetGame().GetCallqueue().CallLater(ApplyWeather, 1000, false);"\
+ "	}"\
+ "	"\
+ "	void ApplyWeather()"\
+ "	{"\
+ "		SCR_TimeAndWeatherHandlerComponent handlerComp = SCR_TimeAndWeatherHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_TimeAndWeatherHandlerComponent));"\
+ "		handlerComp.OnWorldPostProcess(GetGame().GetWorld());"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());"\
+ "		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 1000, false, WeatherManager.GetRegisteredWeatherManagerEntity(world));"\
+ "		GetGame().GetCallqueue().CallLater(SpawnNewWeatherManager, 2000, false);"\
+ "	"
+}
+GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 4
+   m_fSpawnDistance 20
+   m_eSpawnPattern LINE
+   m_fSpawnSpacing 20
+   m_fVehicleFacingOffset -180
+   m_fCollisionRadius 2
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "GAZ AGS"
+     m_sVehiclePrefab "{BA4D13CD7E974C76}Prefabs/Vehicles/Wheeled/TIGR/AGS/GAZ_TIGR_v2_AGS17_Green_PAG17.et"
+     m_iCost 250
+    }
+    CRF_VehicleDepotVehicle "{689CCB5C1CB34FCC}" {
+     m_sVehicleName "K4386 30mm"
+     m_sVehiclePrefab "{AB5DE68E3E654FCA}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed.et"
+     m_eCostType SUPPLIES
+     m_iCost 500
+    }
+    CRF_VehicleDepotVehicle "{689CCB5C924D99CF}" {
+     m_sVehicleName "GAZ PKM"
+     m_sVehiclePrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+    CRF_VehicleDepotVehicle "{689CCB5D1455BC83}" {
+     m_sVehicleName "Transport"
+     m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+     m_eCostType USES
+     m_iCost 8
+    }
+   }
+  }
+ }
+ coords 6642.743 128.219 7662.813
+ angles 0 90.749 0
+ {
+  GenericEntity {
+   ID "664C7C261783AF9D"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 500
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 6849.658 229.031 5948.995
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 4839.349 333.729 6292.294
+ Points {
+  ShapePoint "{689D1543FE062377}" {
+   Position -912.098 51.323 -1146.979
+  }
+  ShapePoint "{689D1543F443E7DD}" {
+   Position -1003.536 -120.017 1681.223
+  }
+  ShapePoint "{689D1543E9F5AC43}" {
+   Position 2806.171 -184.622 1837.267
+  }
+  ShapePoint "{689D1543EB25388E}" {
+   Position 2797.719 -125.583 -1091.437
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFOR_SafestartBoundry.et" {
+ coords 4826.039 311.633 5794.587
+ Points {
+  ShapePoint "{689D155FF30581BB}" {
+   Position -53.362 9.331 -69.181
+  }
+  ShapePoint "{689D155FF38C61E1}" {
+   Position -60.675 -9.172 62.613
+  }
+  ShapePoint "{689D155FF21CF13E}" {
+   Position 129.669 -10.604 74.562
+  }
+  ShapePoint "{689D155FF2B234D0}" {
+   Position 89.682 11.558 -59.712
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 6654.5 127.405 7640.914
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 6390.483 131.933 7682.941
+ Points {
+  ShapePoint "{689D155FD8902147}" {
+   Position 528.238 0.397 127.895
+  }
+  ShapePoint "{689D155FDB29C854}" {
+   Position 548.905 -6.744 -89.552
+  }
+  ShapePoint "{689D155FDA6680A2}" {
+   Position 149.226 8.903 -108.909
+  }
+  ShapePoint "{689D155FDADC7E70}" {
+   Position 142.539 13.611 118.487
+  }
+ }
+}
+GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ coords 4845.89 535.13 5862.255
+}

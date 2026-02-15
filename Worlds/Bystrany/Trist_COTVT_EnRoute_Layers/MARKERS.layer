@@ -1,0 +1,55 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 5580.893 245.393 6694.474
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_fWorldSize 110
+  m_sDescription "Informant Meetup Point"
+ }
+ {
+  coords 4817.332 397.847 6390.072
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 110
+  m_sDescription "HVT Presence?"
+ }
+ {
+  coords 6059.611 234.296 6374.828
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 110
+  m_sDescription "HVT Presence?"
+ }
+ {
+  coords 6522.781 283.622 5813.687
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 110
+  m_sDescription "HVT Presence?"
+ }
+ {
+  coords 5884.6 255.908 5873.25
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 110
+  m_sDescription "HVT Presence?"
+ }
+ {
+  coords 4090.821 337.897 5431.063
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 110
+ }
+ {
+  coords 5205.716 348.745 6498.587
+  angles 0 0 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_fWorldSize 110
+  m_sDescription "Clear COMMS Relay Personnel"
+ }
+}
