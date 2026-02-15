@@ -1,11 +1,15 @@
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{68937AA22D779F1F}" {
-   m_timeBetweenPings 5
-   m_disableDamage 1
-   m_transponderEntity "Radio"
-   m_markerText "Radio Signal"
-   m_hvtPrefab "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et"
+   m_bDisableDamage 1
+   m_timeBetweenPings 10
+   m_aHVTEntries {
+    CRF_HVTEntry "{689EC5295839772D}" {
+     m_eEntryType OBJECT
+     m_hvtPrefab "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et"
+     m_sTransponderEntityName "Radio"
+    }
+   }
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
