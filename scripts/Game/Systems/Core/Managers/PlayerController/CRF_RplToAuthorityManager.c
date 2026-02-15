@@ -190,6 +190,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSlotCharacter, slotId, charId);
 	}
 	
+	void ReportBug(string data, int playerID)
+	{
+		Rpc(RpcAsk_ReportBug, data, playerID);
+	}
+	
 	// Admin messaging functions
 	void SendAdminMessage(string data, int playerID)
 	{
@@ -664,6 +669,60 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
 		if (!SCR_Global.IsAdmin(playerID) && !m_GamemodeManager.IsModerator(playerID))
 			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ReportBug(string data, int playerID)
+	{
+		// Telemetry: string + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("RpcAsk_SendAdminMessage", bytes);
+		
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
+
+		// Setup rest call
+		RestApi rest = GetGame().GetRestApi();
+		if (!rest)
+			return;
+	
+		RestContext restContext = rest.GetContext("https://api.github.com/");
+		string token = CRF_BugReportConfig.GetToken();
+		string repo = CRF_BugReportConfig.GetRepo();
+		
+		// Setup headers
+		restContext.SetHeaders(string.Format("Authorization, Bearer %1,Accept,application/vnd.github+json,Content-Type,application/json", token));
+		
+		// Collect mission details
+		string missionName = "Unknown Mission";
+		string missionAuthor = "Unknown";
+		string time = CRF_AdminMenuManager.GetFormattedTimestamp();
+		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+		if (header)
+			missionAuthor = header.m_sAuthor;
+		if (GetGame().GetMissionName())
+			missionName = GetGame().GetMissionName();
+		
+		// Collect gearset details
+		CRF_EGearRole gearSet = CRF_RoleHelper.ResourceToRole(CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerID));
+		string gearSetName = SCR_Enum.GetEnumName(CRF_EGearRole, gearSet);
+		
+		// Collect slot info
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		
+		FactionKey faction = slottingManager.GetPlayerSlotFaction(playerID).GetFactionKey();
+		int slotID = slottingManager.GetPlayerSlotID(playerID);
+		string slotGroup = slottingManager.GetPlayerSlotGroup(playerID).GetCustomNameWithOriginal();
+		
+		// Set title and body
+		string title = string.Format("[CRF General Bug] During %1 by %2", missionName, playerName);
+		string body = string.Format("%1 \\n\\n Reported by %2 at %3 \\n\\n Role: %4 \\n Group: %5 | %6 \\n Mission: %7 by %8", data, playerName, time, gearSetName, slotGroup, faction, missionName, missionAuthor);
+		
+		// UP!
+		string payload = string.Format("{\"title\": \"%1\", \"body\": \"%2\"}", title, body);
+		
+		// SEND IT!
+		restContext.POST(null, repo, payload);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

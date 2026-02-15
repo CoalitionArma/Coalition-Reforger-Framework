@@ -295,10 +295,17 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			else
 				ticketString = " - No Tickets";
 			
+			// Add respawn cutoff info if configured
+			string cutoffString = "";
+			if (m_Gamemode.m_iRespawnCutoffMinutes > 0)
+			{
+				cutoffString = string.Format(" (Disabled After %1 Min)", m_Gamemode.m_iRespawnCutoffMinutes);
+			}
+			
 			if (m_Gamemode.m_bWaveRespawn)
-				respawnStatus = string.Format("Yes - Waves - %1%2", timeString, ticketString);
+				respawnStatus = string.Format("Yes - Waves - %1%2%3", timeString, ticketString, cutoffString);
 			else
-				respawnStatus = string.Format("Yes - %1%2", timeString, ticketString);
+				respawnStatus = string.Format("Yes - %1%2%3", timeString, ticketString, cutoffString);
 		}
 		else
 		{

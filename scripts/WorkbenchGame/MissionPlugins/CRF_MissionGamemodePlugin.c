@@ -36,6 +36,9 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bWaveRespawn;
 	
+	[Attribute("0", UIWidgets.EditBox, "Minutes before mission end when respawns disable (0 = never disable)", category: "CRF Mission Settings - Respawn")]
+	protected int m_iRespawnCutoffMinutes;
+	
 	[Attribute("", desc: "Starting Weather", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("Clear", "Clear"), ParamEnum("Cloudy", "Cloudy"), ParamEnum("Overcast", "Overcast"), ParamEnum("Rainy", "Rainy")}, category: "CRF Mission Settings - Weather & Time")]
 	protected string m_sMissionWeather;
 	
@@ -73,6 +76,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
+		m_iRespawnCutoffMinutes = gamemode.m_iRespawnCutoffMinutes;
 		m_bSafestartEnabledOnMissionStart = gamemode.m_bSafestartInstantlyEnabled;
 		m_bUseSafestartTimeLimit = gamemode.m_bUseSafestartTimeLimit;
 		m_iSafestartTimeLimit = gamemode.m_iSafestartTimeLimit;
@@ -132,6 +136,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
+		api.SetVariableValue(entitySource, null, "m_iRespawnCutoffMinutes", m_iRespawnCutoffMinutes.ToString());
 		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());
 		api.SetVariableValue(entitySource, null, "m_bUseSafestartTimeLimit", m_bUseSafestartTimeLimit.ToString());
 		api.SetVariableValue(entitySource, null, "m_iSafestartTimeLimit", m_iSafestartTimeLimit.ToString());	

@@ -442,7 +442,37 @@ class CRF_PlayerControllerManager : ScriptComponent
 		invoker5.Insert(Advance_Callback);
 		
 		ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("save");
-		invoker6.Insert(SaveMission_Callback);
+		invoker6.Insert(SaveMission_Callback);		
+		
+		ChatCommandInvoker invoker7 = chatPanelManager.GetCommandInvoker("bug");
+		invoker7.Insert(ReportBug);
+	}
+	
+	 /**
+	 * Reports bugs to github
+	 * @param panel - Chat panel
+	 * @param data - Message content
+	 */
+	void ReportBug(SCR_ChatPanel panel, string data)
+	{
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		
+		int playerID = GetGame().GetPlayerController().GetPlayerId();
+		
+		if (!data.Length() > 0)
+		{
+			chatComponent.ShowMessage("You need to include your bug report after /bug");
+			return;
+		}	
+		
+		chatComponent.ShowMessage(string.Format("Bug Report Sent: \"%1\"", data));
+		m_RplToAuthorityManager.ReportBug(data, playerID);
 	}
 	
 	/**

@@ -51,6 +51,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
 	
+	[Attribute("0", UIWidgets.Hidden, desc: "Minutes before mission end when respawns disable (0 = never disable)", category: "CRF Gamemode Settings - Respawn")]
+	int m_iRespawnCutoffMinutes;
+	
 	[Attribute("45", UIWidgets.Hidden)]
 	int m_iTimeLimitMinutes;
 	
@@ -203,6 +206,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			CRF_ModeratorConfig.LoadConfig();	
 			CRF_DonatorConfig.LoadConfig();
+			CRF_BugReportConfig.LoadConfig();
 			
 			// Initialize sight arsenal registry for optimized RPC
 			CRF_SightArsenalRegistry.InitializeRegistry();
@@ -598,11 +602,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (faction)
 			factionKey = faction.GetFactionKey();
 
-		// Handle respawn if enabled and tickets available
+		// Handle respawn if enabled, tickets available, and within time window
 		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
+			m_RespawnManager.IsRespawnTimeAllowed() &&
 			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
 			!factionKey.IsEmpty())
 		{

@@ -129,6 +129,26 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Check if respawns are allowed based on time cutoff setting
+	* @return True if respawns are allowed, false if past the cutoff time
+	*/
+	bool IsRespawnTimeAllowed()
+	{
+		// No cutoff configured (0 = never disable)
+		if (m_Gamemode.m_iRespawnCutoffMinutes <= 0)
+			return true;
+		
+		// Check if we're within the cutoff window
+		int currentTime = GetGame().GetWorld().GetWorldTime();
+		int missionEndTime = m_SafestartManager.m_iTimeMissionEnds;
+		int cutoffTime = missionEndTime - (m_Gamemode.m_iRespawnCutoffMinutes * 60000);
+		
+		// If current time is past the cutoff, disable respawns
+		return currentTime < cutoffTime;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	int GetFactionTickets(string faction)
 	{
 		switch (faction)
@@ -165,17 +185,17 @@ class CRF_RespawnManager : ScriptComponent
 			
 		int currentTickets = GetFactionTickets(faction);
 		
-		// Only subtract if tickets are positive and not unlimited (-1)
-		if (currentTickets <= 0 || currentTickets == -1)
+		// Don't subtract if tickets are unlimited (-1) or already at 0
+		if (currentTickets == -1 || currentTickets <= 0)
 			return false;
 			
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_iBLUFORTickets -= amount; if (m_iBLUFORTickets < 0) m_iBLUFORTickets = 0; break;
-			case "OPFOR": m_iOPFORTickets -= amount; if (m_iOPFORTickets < 0) m_iOPFORTickets = 0; break;
-			case "INDFOR": m_iINDFORTickets -= amount; if (m_iINDFORTickets < 0) m_iINDFORTickets = 0; break;
-			case "CIV": m_iCIVTickets -= amount; if (m_iCIVTickets < 0) m_iCIVTickets = 0; break;
+			case "BLUFOR": m_iBLUFORTickets -= amount; if (m_iBLUFORTickets < 0 && m_iBLUFORTickets != -1) m_iBLUFORTickets = 0; break;
+			case "OPFOR": m_iOPFORTickets -= amount; if (m_iOPFORTickets < 0 && m_iOPFORTickets != -1) m_iOPFORTickets = 0; break;
+			case "INDFOR": m_iINDFORTickets -= amount; if (m_iINDFORTickets < 0 && m_iINDFORTickets != -1) m_iINDFORTickets = 0; break;
+			case "CIV": m_iCIVTickets -= amount; if (m_iCIVTickets < 0 && m_iCIVTickets != -1) m_iCIVTickets = 0; break;
 		}
 		
 		return true;
@@ -355,7 +375,8 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RespawnTimer(float timeSlice)
 	{
-		if (GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey()) <= 0 || !m_bCurrentRespawnEnabled)
+		int tickets = GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
+		if ((tickets <= 0 && tickets != -1) || !m_bCurrentRespawnEnabled || !IsRespawnTimeAllowed())
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
@@ -535,6 +556,9 @@ class CRF_RespawnManager : ScriptComponent
 		{
 			IEntity point = GetSpawnEntityFromRplID(pointRplID);
 			
+			if (!point)
+				continue;
+			
 			CRF_RespawnPointComponent pointRespawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
 			if (!pointRespawnComponent)
 				continue;
@@ -545,7 +569,7 @@ class CRF_RespawnManager : ScriptComponent
 			if (!pointRespawnComponent.m_bActiveRespawnPoint)
 				continue;
 
-			RplIDs.Insert(pointRplID)
+			RplIDs.Insert(pointRplID);
 		}
 		
 		return RplIDs;
@@ -594,8 +618,13 @@ class CRF_RespawnManager : ScriptComponent
 			if (vehicle.m_sFactionKey != faction)
 				continue;
 			
-			//Do we have enough tickets and are they not at 0.
-			if (GetFactionTickets(faction) != 0 && GetFactionTickets(faction) < vehicle.m_iTicketsPerRespawn)
+			// Check if we have enough tickets to respawn this vehicle
+			int factionTickets = GetFactionTickets(faction);
+			// Skip if we're out of tickets (but allow if unlimited -1)
+			if (factionTickets == 0)
+				continue;
+			// Skip if we don't have enough tickets (but allow if unlimited -1)
+			if (factionTickets > 0 && factionTickets < vehicle.m_iTicketsPerRespawn)
 				continue;
 			
 			bool shouldRespawn = false;
@@ -753,10 +782,13 @@ class CRF_RespawnManager : ScriptComponent
 			if (rplComp)
 			{
 				IEntity point = rplComp.GetEntity();
-				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
-			
-				if (respawnComponent.m_bActiveRespawnPoint)
-					spawnLocation[3] = point.GetOrigin();
+				if (point)
+				{
+					CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+				
+					if (respawnComponent && respawnComponent.m_bActiveRespawnPoint)
+						spawnLocation[3] = point.GetOrigin();
+				}
 			}
 		}
 		

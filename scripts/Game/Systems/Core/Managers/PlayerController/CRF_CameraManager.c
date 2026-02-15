@@ -131,11 +131,8 @@ class CRF_CameraManager : ScriptComponent
 		vector cameraPos[4];
 		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
-		//If Respawns are enabled, everybody goes to the fixed spectator position
-		if (CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled)
-			cameraPos[3] = Vector(0, 500, 0);
 		// Use provided death position if available
-		else if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+		if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
 			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
 		}
 		// Use stored camera position if available
