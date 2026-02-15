@@ -225,7 +225,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_fUpdateBuffer += timeSlice;
 	}
 	
-	// Spawn AI/Object HVTs at transponder locations and register them
+	// Spawn AI/Object HVTs at transponder locations, then hide transponders until first position sync
 	void SetHVTAndState()
 	{
 		m_bHVTStateSet = true;
@@ -236,7 +236,55 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Move all transponder entities initially to hide their markers on start until next ping (shows markers on map where theyre editor placed, race condition thats pointless to fix)
+		// Server: Spawn AI/Object entries FIRST (while transponders still have their editor positions)
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+			{
+				if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
+					continue;
+				
+				if (entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
+				{
+					Print(string.Format("[HVT] Warning: Entry %1 missing transponder name or prefab!", index), LogLevel.WARNING);
+					continue;
+				}
+				
+				IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
+				if (!transponderEntity)
+				{
+					Print(string.Format("[HVT] Warning: Entity '%1' not found!", entry.m_sTransponderEntityName), LogLevel.WARNING);
+					continue;
+				}
+				
+				EntitySpawnParams spawnParams = new EntitySpawnParams();
+				spawnParams.TransformMode = ETransformMode.WORLD;
+				spawnParams.Transform[3] = transponderEntity.GetOrigin();
+				
+				IEntity hvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(entry.m_hvtPrefab), GetGame().GetWorld(), spawnParams);
+				if (!hvtEntity)
+					continue;
+				
+				RegisterHVTEntity(hvtEntity, index);
+				
+				// AI-specific: rotation and unconscious state
+				if (entry.m_eEntryType == CRF_HVTEntryType.AI)
+				{
+					hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
+					
+					if (m_setUnconcious)
+					{
+						SetEntityUnconscious(hvtEntity);
+						
+						SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+						if (characterController)
+							characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+					}
+				}
+			}
+		}
+		
+		// All machines: NOW hide transponders underground so markers don't flash at editor positions
 		foreach (CRF_HVTEntry entry : m_aHVTEntries)
 		{
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
@@ -245,53 +293,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
 			if (transponder)
 				transponder.SetOrigin("0 -1000 0");
-		}
-		
-		if (RplSession.Mode() != RplMode.Dedicated)
-			return;
-		
-		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
-		{
-			if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
-				continue;
-			
-			if (entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
-			{
-				Print(string.Format("[HVT] Warning: Entry %1 missing transponder name or prefab!", index), LogLevel.WARNING);
-				continue;
-			}
-			
-			IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-			if (!transponderEntity)
-			{
-				Print(string.Format("[HVT] Warning: Entity '%1' not found!", entry.m_sTransponderEntityName), LogLevel.WARNING);
-				continue;
-			}
-			
-			EntitySpawnParams spawnParams = new EntitySpawnParams();
-			spawnParams.TransformMode = ETransformMode.WORLD;
-			spawnParams.Transform[3] = transponderEntity.GetOrigin();
-			
-			IEntity hvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(entry.m_hvtPrefab), GetGame().GetWorld(), spawnParams);
-			if (!hvtEntity)
-				continue;
-			
-			RegisterHVTEntity(hvtEntity, index);
-			
-			// AI-specific: rotation and unconscious state
-			if (entry.m_eEntryType == CRF_HVTEntryType.AI)
-			{
-				hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
-				
-				if (m_setUnconcious)
-				{
-					SetEntityUnconscious(hvtEntity);
-					
-					SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
-					if (characterController)
-						characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
-				}
-			}
 		}
 	}
 	
