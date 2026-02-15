@@ -39,59 +39,8 @@ GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFO
 GenericEntity : "{0BA6ECA87AC06B83}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/Weapons/6U16/KORD_Tigr.et" {
  coords 1271.839 42.138 2797.758
 }
-Vehicle Mi8MT_armed_gunship_kord_empty1 : "{94C26FA5F8BC62C6}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_empty.et" {
- components {
-  SlotManagerComponent "{55BCE45E438E4CFF}" {
-   Slots {
-    RegisteringComponentSlotInfo kord_side {
-     Offset -1.0002 -2.0239 1.5003
-    }
-   }
-  }
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   ActionContexts {
-    UserActionContext "{689F25CB2191DB6A}" {
-     UIInfo SCR_ActionContextUIInfo "{615C689E51833252}" : "{7CD00B230573CAC6}Prefabs/Vehicles/Core/Configs/Actions/ActionUIInfo/SCR_ActionContextUIInfo.conf" {
-     }
-     ContextName "sideGunner_switch_seat"
-     Position PointInfo "{689F25CB2191D8C1}" {
-      Offset -1.09 2.0973 1.5876
-      Angles 0 177.6595 0
-     }
-     Omnidirectional 0
-    }
-   }
-  }
- }
- coords 1244.636 37.836 2798.311
-}
-Turret : "{A1A67E5A65D2B00E}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_KORD_Sidegun.et" {
- coords 1234.399 38.698 2815.165
-}
-Vehicle GAZ_TIGR_v2_KORD1 : "{AC12E5669B411D57}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD.et" {
- coords 1241.412 37.938 2813.283
-}
 Turret : "{BB80F8048F07C989}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/TIGR_KORD_Turret.et" {
  coords 1272.879 40.316 2794.396
-}
-Turret : "{CD5E8BBE136CB05F}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/KORD_Turret_Heli.et" {
- components {
-  SCR_TurretControllerComponent "{51ACD09C61C183E4}" {
-   HasMoveableBase 1
-  }
-  SCR_UniversalInventoryStorageComponent "{689D7ED195F6D623}" {
-   MultiSlots {
-    MultiSlotConfiguration "{689D7ED1890FA48F}" {
-     SlotTemplate InventoryStorageSlot "{689D7ED1802A9BD4}" {
-      Prefab "{6D518F289805B8A1}Prefabs/Weapons/Magazines/NSV/Box_127x108_KORD_50rnd_4AP_1APIT.et"
-     }
-     NumSlots 2
-    }
-   }
-   m_fMaxWeight 10000
-  }
- }
- coords 1236.488 37.006 2810.34
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  coords 1240.502 38.009 2796.924
