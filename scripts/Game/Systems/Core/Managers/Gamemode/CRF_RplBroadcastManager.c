@@ -1521,28 +1521,30 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-	// Play acceptance sound using UI sound system - more reliable
-	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		// Play acceptance sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		
+		// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+		SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+		if (popupNotification)
+			popupNotification.PopupMsg("Request Accepted", 3.0);
+	}	
 	
-	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
-	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
-	if (popupNotification)
-		popupNotification.PopupMsg("Request Accepted", 3.0);
-}	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_NotifyRequestDenied(int requesterId)
 	{
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-	// Play denial sound using UI sound system - more reliable
-	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		// Play denial sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		
+		// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+		SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+		if (popupNotification)
+			popupNotification.PopupMsg("Request Denied", 3.0);
+	}	
 	
-	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
-	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
-	if (popupNotification)
-		popupNotification.PopupMsg("Request Denied", 3.0);
-}	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TestTargetedBroadcast(int targetPlayerId, int testValue)
 	{
@@ -1998,7 +2000,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentPlayerId(playerId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.PLAYER_ID);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();
@@ -2019,7 +2024,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentCharacter(characterId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.CHARACTER);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();
@@ -2040,7 +2048,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentGroup(groupId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.GROUP);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();
@@ -2061,7 +2072,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotRole(role);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.ROLE);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();
@@ -2082,7 +2096,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetIsLockedSlot(isLocked);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.LOCKED);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();
@@ -2103,7 +2120,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetIsDeadSlot(isDead);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
+			ScriptInvoker slotChangedInvoker = slottingManager.GetOnSlotChanged();
+			if (slotChangedInvoker)
+				slotChangedInvoker.Invoke(slotId, CRF_ESlotUpdateField.DEATH);
+			
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
 				invoker.Invoke();

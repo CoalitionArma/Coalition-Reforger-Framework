@@ -14,6 +14,9 @@ class CRF_SlottingManager : ScriptComponent
 	// Invoker for slot updates
 	protected ref ScriptInvoker m_OnSlottingUpdate;
 	
+	// Separate invoker for individual slot changes
+	protected ref ScriptInvoker m_OnSlotChanged;
+	
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
@@ -33,6 +36,7 @@ class CRF_SlottingManager : ScriptComponent
 		m_sInstance = this;
 		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
 		m_OnSlottingUpdate = new ScriptInvoker();
+		m_OnSlotChanged = new ScriptInvoker();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -152,6 +156,12 @@ class CRF_SlottingManager : ScriptComponent
 	ScriptInvoker GetOnSlottingUpdate()
 	{
 		return m_OnSlottingUpdate;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnSlotChanged()
+	{
+		return m_OnSlotChanged;
 	}
 	
 	//------------------------------------------------------------------------------------------------
