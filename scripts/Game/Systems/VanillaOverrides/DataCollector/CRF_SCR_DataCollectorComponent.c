@@ -187,7 +187,7 @@ modded class SCR_DataCollectorComponent
 	
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
-		// Get player data without creating new instance
+		// Get player data - let it be created if it doesn't exist (vanilla behavior)
 		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId, false);
 		
 		// Notify all modules about disconnect first
@@ -197,11 +197,14 @@ modded class SCR_DataCollectorComponent
 		}
 		
 		// Safety check: Player might disconnect before data was initialized
+		// In vanilla, this can't happen because GetPlayerData creates it, but we use false to match their pattern
 		if (!playerDisconnectedData)
 			return;
 		
-		// Save player profile to backend IMMEDIATELY after modules are notified
-		// This must happen before any calculations to ensure data is saved
+		// Calculate session duration before storing
+		playerDisconnectedData.CalculateSessionDuration();
+		
+		// Save player profile to backend IMMEDIATELY after session duration calculated
 		playerDisconnectedData.StoreProfile();
 
 		// ADD STATS TO FACTION
@@ -224,8 +227,6 @@ modded class SCR_DataCollectorComponent
 		// DONE ADDING STATS TO THE FACTION
 		//We cannot remove this instance of data from the player collector because the event has not been sent yet to the Database for tracking purposes
 		//m_mPlayerData.Remove(playerId);
-
-		//As an alternative, in GetPlayerDataStats we put this instance to be removed after its used in C++
 	}
 	
 	//------------------------------------------------------------------------------------------------

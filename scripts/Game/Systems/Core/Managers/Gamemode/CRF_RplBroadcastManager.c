@@ -1,19 +1,6 @@
 class CRF_RplBroadcastManagerClass : ScriptComponentClass {}
 
 //------------------------------------------------------------------------------------------------
-// Enum for slot update field types (batching system)
-//------------------------------------------------------------------------------------------------
-enum CRF_ESlotUpdateField
-{
-	PLAYER_ID,
-	CHARACTER,
-	GROUP,
-	LOCKED,
-	DEATH,
-	ROLE
-}
-
-//------------------------------------------------------------------------------------------------
 // Container for queued slot update
 //------------------------------------------------------------------------------------------------
 class CRF_SlotUpdateBatch
