@@ -1,13 +1,4 @@
 //------------------------------------------------------------------------------------------------
-// Enum for team visibility options
-enum EInsurgencyTeam
-{
-	ATTACKERS,
-	DEFENDERS,
-	BOTH
-}
-
-//------------------------------------------------------------------------------------------------
 [ComponentEditorProps(category: "GameScripted/Insurgency", description: "Phase-based polygon zone for Insurgency gamemode", color: "255 128 0 255", icon: HYBRID_COMPONENT_ICON)]
 class CRF_InsurgencyPolyZoneClass: CRF_PolyZoneClass
 {
@@ -18,9 +9,6 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 {
 	[Attribute("1", UIWidgets.EditBox, "Which phase should this zone be visible during (1, 2, 3, etc)")]
 	protected int m_iVisibleDuringPhase;
-	
-	[Attribute("2", UIWidgets.ComboBox, "Which team should see this zone", "", ParamEnumArray.FromEnum(EInsurgencyTeam))]
-	protected EInsurgencyTeam m_eVisibleForTeam;
 	
 	[Attribute("0", UIWidgets.CheckBox, "Show zone to both teams when phase is complete?")]
 	protected bool m_bShowToAllWhenPhaseComplete;
@@ -79,11 +67,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	 * @return True if player's team matches visibility settings
 	 */
 	protected bool IsVisibleForPlayerTeam()
-	{
-		// If visible for both teams, always show
-		if (m_eVisibleForTeam == EInsurgencyTeam.BOTH)
-			return true;
-		
+	{	
 		if (!m_InsurgencyGamemode)
 			return false;
 		
@@ -103,15 +87,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		
 		FactionKey playerFactionKey = playerFaction.GetFactionKey();
 		
-		// Check if player is on attacking team
-		if (m_eVisibleForTeam == EInsurgencyTeam.ATTACKERS)
-			return (playerFactionKey == m_InsurgencyGamemode.attackingSide);
-		
-		// Check if player is on defending team
-		if (m_eVisibleForTeam == EInsurgencyTeam.DEFENDERS)
-			return (playerFactionKey == m_InsurgencyGamemode.defendingSide);
-		
-		return false;
+		return (playerFactionKey == m_InsurgencyGamemode.m_AttackingSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -122,16 +98,6 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	int GetVisiblePhase()
 	{
 		return m_iVisibleDuringPhase;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Get which team can see this zone
-	 * @return Team enum value
-	 */
-	EInsurgencyTeam GetVisibleTeam()
-	{
-		return m_eVisibleForTeam;
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -19,16 +19,16 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
  coords 704.209 41.569 2637.755
  Points {
   ShapePoint "{68A135AB25B0AB68}" {
-   Position -10.618 0 1.484
+   Position -8.672 0 0.556
   }
   ShapePoint "{68A135AB2510EF57}" {
-   Position -7.027 0 14.146
+   Position -3.285 0 15.982
   }
   ShapePoint "{68A135AB254639CE}" {
-   Position 8.225 0 12.26
+   Position 10.752 0 9.564
   }
   ShapePoint "{68A135AB24B6C1DC}" {
-   Position 7.799 0 2.88
+   Position 1.55 0 1.38
   }
  }
 }
@@ -36,8 +36,13 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
  {
   components {
    CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_mPolygonTexture ""
+    m_cPolygonColor 0 0 0 1
+    m_cPolygonBorderColor 0 0 0 1
     m_bLineMode 1
-    m_eVisibleForTeam ATTACKERS
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
    }
   }
   coords 720.979 39 2683.986
@@ -54,13 +59,23 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
    ShapePoint "{68A135AB97FE62F7}" {
     Position 13.657 0 2.349
    }
+   ShapePoint "{68A135A7C55BC72B}" {
+    Position -4.411 0 -10.224
+   }
   }
+  IsClosed 0
  }
  {
   components {
    CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_mPolygonTexture ""
+    m_cPolygonColor 0 0 0 1
+    m_cPolygonBorderColor 0 0 0 1
     m_bLineMode 1
-    m_eVisibleForTeam ATTACKERS
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+    m_iVisibleDuringPhase 2
    }
   }
   coords 672.864 39.3 2641.417
@@ -77,8 +92,20 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
    ShapePoint "{68A135AB906B0125}" {
     Position 8.134 0 8.246
    }
+   ShapePoint "{68A135A7C25E4BF3}" {
+    Position -9.577 0 -3.978
+   }
+  }
+  IsClosed 0
+ }
+}
+GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ components {
+  CRF_InsDestructiveComponent "{68A135AA4E71A81F}" {
+   m_bStartActive 1
   }
  }
+ coords 717.376 39 2676.809
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  coords 778.721 42.219 2676.15

@@ -3,11 +3,14 @@ class CRF_InsurgencyGamemodeManagerClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 {
-    [Attribute("OPFOR", "auto", "The side assaulting the cache sites")]
-    FactionKey attackingSide;
-
-    [Attribute("INDFOR", "auto", "The side defending the cache sites")]
-    FactionKey defendingSide;
+    [Attribute("OPFOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side attacking the MCOM sites")]
+	FactionKey m_AttackingSide;
+	
+	[Attribute("INFDOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side defending the MCOM sites")]
+	FactionKey m_DefendingSide;
+	
+	[Attribute("5", "auto", "Time until next phase zone is revealed to attackers (Set to 0 for instant reveal)")]
+	int phaseBufferMinutes;
 
     // Replicated Properties
     [RplProp()]
@@ -28,6 +31,8 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     protected ref map<int, ref array<IEntity>> m_mPhaseToDestroyedCaches = new map<int, ref array<IEntity>>();
 
     protected static CRF_InsurgencyGamemodeManager m_sInstance;
+	protected static CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected static CRF_RespawnManager m_RespawnManager;
 
     void CRF_InsurgencyGamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
     {
@@ -40,6 +45,17 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     {
         return m_sInstance;
     }
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		
+		// Gamemode reference to Broadcast Manager
+		if (Replication.IsClient() || Replication.IsServer())
+			m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+			m_RespawnManager = CRF_RespawnManager.GetInstance();
+	}
 
     //------------------------------------------------------------------------------------------------
     void RegisterCacheObjective(IEntity objectiveItem)
@@ -146,6 +162,8 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             phase, 
             m_mPhaseToActiveCaches.Get(phase).Count(), 
             m_mPhaseToDestroyedCaches.Get(phase).Count()), LogLevel.NORMAL);
+		
+		
         
         // Check if all caches in current phase are destroyed
         CheckPhaseCompletion(phase);
@@ -166,22 +184,33 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (activeCaches.IsEmpty())
         {
             Print(string.Format("Phase %1 complete! All caches destroyed.", phase), LogLevel.NORMAL);
+			
+			
             
             // Activate next phase
-            ActivateNextPhase(phase + 1);
+            int res = ActivateNextPhase(phase + 1);
             
-            // Check overall win conditions
-            CheckGameEndConditions();
+			if (res == -1)
+			{
+				m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Attackers win!", phase));
+			}
         }
+		else
+		{
+			int cachesDestroyedForPhase = m_mPhaseToActiveCaches.Get(phase).Count();
+			int cacheTotalForPhase = m_mPhaseToActiveCaches.Get(phase).Count() + m_mPhaseToDestroyedCaches.Get(phase).Count();
+			
+			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1: (%2/%3) caches destroyed", phase, cachesDestroyedForPhase, cacheTotalForPhase));
+		}
     }
     
     //------------------------------------------------------------------------------------------------
-    protected void ActivateNextPhase(int nextPhase)
+    protected int ActivateNextPhase(int nextPhase)
     {
         if (!m_mPhaseToActiveCaches.Contains(nextPhase))
         {
             Print(string.Format("No phase %1 configured. Mission complete!", nextPhase), LogLevel.NORMAL);
-            return;
+            return -1;
         }
         
         m_iCurrentPhase = nextPhase;
@@ -197,9 +226,35 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             if (cacheComp)
                 cacheComp.SetCacheActive(true);
         }
+		
+		RespawnPlayersForZoneAdvance();
         
         Replication.BumpMe();
+		
+		if (phaseBufferMinutes > 0)
+		{
+			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Shifting to phase %2.", nextPhase-1, nextPhase),
+			string.Format("Search area for attackers revealed in %1 minutes!", phaseBufferMinutes));
+		}
+		else
+		{
+			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Shifting to phase %2.", nextPhase-1, nextPhase),
+			string.Format("Attackers need to destroy %1 caches"));
+		}
+		
+		return 1;
     }
+	
+	//------------------------------------------------------------------------------------------------
+	protected void RespawnPlayersForZoneAdvance()
+	{
+		if (!m_RespawnManager)
+			return;
+
+		// Trigger respawn waves for both attacking and defending sides
+		m_RespawnManager.RespawnSide(m_AttackingSide);
+		m_RespawnManager.RespawnSide(m_DefendingSide);
+	}
     
     //------------------------------------------------------------------------------------------------
     protected void CheckGameEndConditions()
@@ -208,11 +263,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (m_aObjCaches.IsEmpty() && !m_aDestroyedCaches.IsEmpty())
         {
             Print("All caches destroyed across all phases! Attackers win!", LogLevel.NORMAL);
-            // Trigger win condition for attacking side
-            // Example integration with your gamemode:
-            // CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-            // if (gamemode)
-            //     gamemode.EndGame(attackingSide);
+			m_RplBroadcastManager.PopUpNotification(15, "All caches destroyed across all phases! Attackers win!");
         }
     }
     
