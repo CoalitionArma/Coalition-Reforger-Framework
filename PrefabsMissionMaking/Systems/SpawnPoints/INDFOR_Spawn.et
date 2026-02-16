@@ -57,7 +57,6 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_bAutoRegister ALWAYS
    m_vIconPos 0 0 0
-   m_bStatic 1
    m_AccessKey 769
    m_Flags 69
   }
