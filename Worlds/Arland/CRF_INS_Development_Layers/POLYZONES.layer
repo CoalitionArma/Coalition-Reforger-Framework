@@ -22,16 +22,62 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
  coords 1199.794 39.181 2323.008
  Points {
   ShapePoint "{689F62E1C91C71FF}" {
-   Position 28.131 -0 7.761
+   Position 28.131 0 7.761
   }
   ShapePoint "{689F62E1C8819FFB}" {
-   Position 23.987 -0 35.621
+   Position 23.987 0 35.621
   }
   ShapePoint "{689F62E1C8E09BC7}" {
-   Position 40.629 -0 39.851
+   Position 40.629 0 39.851
   }
   ShapePoint "{689F62E1C85D625A}" {
-   Position 58.317 -0 11.254
+   Position 58.317 0 11.254
+  }
+ }
+}
+$grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_PhaseZoneLine/Ins_PhaseZoneLinePrefab.et" {
+ {
+  components {
+   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_eVisibleForTeam ATTACKERS
+   }
+  }
+  coords 1262.962 39.046 2298.166
+  Points {
+   ShapePoint "{68A135AE2E00DF85}" {
+    Position -1.04 0 -0.428
+   }
+   ShapePoint "{68A135AE2E7CF2FA}" {
+    Position -0.535 0 12.375
+   }
+   ShapePoint "{68A135AE2DB0E61E}" {
+    Position 9.037 0 11.071
+   }
+   ShapePoint "{68A135AE2DF0A4E3}" {
+    Position 9.936 0 -0.239
+   }
+  }
+ }
+ {
+  components {
+   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_eVisibleForTeam ATTACKERS
+   }
+  }
+  coords 1230.166 39.151 2296.787
+  Points {
+   ShapePoint "{68A135AE123326F1}" {
+    Position 0.759 0 -1.664
+   }
+   ShapePoint "{68A135AE127A4792}" {
+    Position 0.692 0 9.442
+   }
+   ShapePoint "{68A135AE11B0224F}" {
+    Position 18.393 0 8.794
+   }
+   ShapePoint "{68A135AE11CD2FB3}" {
+    Position 16.332 0 -2.397
+   }
   }
  }
 }
