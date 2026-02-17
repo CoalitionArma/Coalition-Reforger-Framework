@@ -3,14 +3,14 @@ class CRF_InsurgencyGamemodeManagerClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 {
-    [Attribute("OPFOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side attacking the MCOM sites")]
+    [Attribute("OPFOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side attacking the cache sites")]
 	FactionKey m_AttackingSide;
 	
-	[Attribute("INFDOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side defending the MCOM sites")]
+	[Attribute("INFDOR", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR")}, desc: "The side defending the cache sites")]
 	FactionKey m_DefendingSide;
 	
-	[Attribute("5", "auto", "Time until next phase zone is revealed to attackers (Set to 0 for instant reveal)")]
-	int phaseBufferMinutes;
+	[Attribute("0", UIWidgets.Slider, "Time until next phase zone is revealed to attackers (in minutes, 0 for instant reveal)", params: "0 30 1")]
+	int m_iPhaseBufferMinutes;
 
     // Replicated Properties
     [RplProp()]
@@ -21,6 +21,9 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     
     [RplProp()]
     int m_iCurrentPhase = 1; // Current active phase
+    
+    [RplProp()]
+    float m_iTimePhaseZoneReveals = -1; // World time (milliseconds) when current phase zones should be revealed (-1 = instant/already revealed)
 
     // Protected Member Variables
     protected ref array<IEntity> m_aObjCaches = {}; // All caches (server)
@@ -33,6 +36,9 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     protected static CRF_InsurgencyGamemodeManager m_sInstance;
 	protected static CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected static CRF_RespawnManager m_RespawnManager;
+    protected static CRF_GamemodeManager m_GamemodeManager;
+    
+    protected bool m_bZoneRevealNotificationSent = false; // Track if we've sent the reveal notification
 
     void CRF_InsurgencyGamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
     {
@@ -53,8 +59,14 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Gamemode reference to Broadcast Manager
 		if (Replication.IsClient() || Replication.IsServer())
+        {
 			m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 			m_RespawnManager = CRF_RespawnManager.GetInstance();
+            m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+        }
+        
+        // Phase 1 zones are always immediately visible
+        m_iTimePhaseZoneReveals = -1; // Phase 1 starts visible
 	}
 
     //------------------------------------------------------------------------------------------------
@@ -162,8 +174,6 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             phase, 
             m_mPhaseToActiveCaches.Get(phase).Count(), 
             m_mPhaseToDestroyedCaches.Get(phase).Count()), LogLevel.NORMAL);
-		
-		
         
         // Check if all caches in current phase are destroyed
         CheckPhaseCompletion(phase);
@@ -184,23 +194,23 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (activeCaches.IsEmpty())
         {
             Print(string.Format("Phase %1 complete! All caches destroyed.", phase), LogLevel.NORMAL);
-			
-			
             
             // Activate next phase
             int res = ActivateNextPhase(phase + 1);
             
 			if (res == -1)
 			{
-				m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Attackers win!", phase));
+				if (m_RplBroadcastManager)
+                    m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 complete! All caches destroyed. Attackers win!", phase));
 			}
         }
 		else
 		{
-			int cachesDestroyedForPhase = m_mPhaseToActiveCaches.Get(phase).Count();
-			int cacheTotalForPhase = m_mPhaseToActiveCaches.Get(phase).Count() + m_mPhaseToDestroyedCaches.Get(phase).Count();
+			int cachesDestroyed = m_mPhaseToDestroyedCaches.Get(phase).Count();
+			int cacheTotal = m_mPhaseToActiveCaches.Get(phase).Count() + m_mPhaseToDestroyedCaches.Get(phase).Count();
 			
-			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1: (%2/%3) caches destroyed", phase, cachesDestroyedForPhase, cacheTotalForPhase));
+			if (m_RplBroadcastManager)
+                m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1: %2/%3 caches destroyed", phase, cachesDestroyed, cacheTotal));
 		}
     }
     
@@ -226,23 +236,83 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             if (cacheComp)
                 cacheComp.SetCacheActive(true);
         }
+        
+        if (m_iPhaseBufferMinutes > 0)
+        {
+            float currentTime = GetGame().GetWorld().GetWorldTime();
+            // Convert minutes to milliseconds (your codebase pattern)
+            m_iTimePhaseZoneReveals = currentTime + (m_iPhaseBufferMinutes * 60 * 1000);
+            m_bZoneRevealNotificationSent = false;
+            
+            Print(string.Format("Phase %1 zones will reveal in %2 minutes (at world time: %3)", 
+                nextPhase, m_iPhaseBufferMinutes, m_iTimePhaseZoneReveals), LogLevel.NORMAL);
+                
+            GetGame().GetCallqueue().Remove(UpdateZoneRevealTimer);
+            GetGame().GetCallqueue().CallLater(UpdateZoneRevealTimer, 1000, true);
+        }
+        else
+        {
+            m_iTimePhaseZoneReveals = -1; // Instant reveal
+            m_bZoneRevealNotificationSent = true;
+        }
 		
 		RespawnPlayersForZoneAdvance();
         
         Replication.BumpMe();
 		
-		if (phaseBufferMinutes > 0)
-		{
-			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Shifting to phase %2.", nextPhase-1, nextPhase),
-			string.Format("Search area for attackers revealed in %1 minutes!", phaseBufferMinutes));
-		}
-		else
-		{
-			m_RplBroadcastManager.PopUpNotification(15, string.Format("Phase %1 all caches destroyed. Shifting to phase %2.", nextPhase-1, nextPhase),
-			string.Format("Attackers need to destroy %1 caches"));
-		}
+		// Send notification to players
+		if (m_RplBroadcastManager)
+        {
+            if (m_iPhaseBufferMinutes > 0)
+            {
+                m_RplBroadcastManager.PopUpNotification(15, 
+                    string.Format("Phase %1 complete! Advancing to Phase %2", nextPhase - 1, nextPhase),
+                    string.Format("Search area will be revealed to attackers in %1 minute(s)", m_iPhaseBufferMinutes));
+            }
+            else
+            {
+                int cachesInPhase = nextPhaseCaches.Count();
+                m_RplBroadcastManager.PopUpNotification(15, 
+                    string.Format("Phase %1 complete! Advancing to Phase %2", nextPhase - 1, nextPhase),
+                    string.Format("Attackers must destroy %1 cache(s)", cachesInPhase));
+            }
+        }
 		
 		return 1;
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    // Update zone reveal countdown timer (similar to UpdateServerWorldTime/UpdateMissionEndTimer pattern)
+    void UpdateZoneRevealTimer()
+    {
+        float currentTime = GetGame().GetWorld().GetWorldTime();
+        float millis = m_iTimePhaseZoneReveals - currentTime;
+        int totalSeconds = (millis * 0.001);
+        
+        // Check if time has expired
+        if (totalSeconds <= 0)
+        {
+            // Stop the timer
+            GetGame().GetCallqueue().Remove(UpdateZoneRevealTimer);
+            
+            // Send reveal notification
+            if (!m_bZoneRevealNotificationSent && m_RplBroadcastManager)
+            {
+                m_bZoneRevealNotificationSent = true;
+                
+                int cachesInPhase = GetActiveCacheCountForPhase(m_iCurrentPhase) + GetDestroyedCacheCountForPhase(m_iCurrentPhase);
+                m_RplBroadcastManager.PopUpNotification(15, 
+                    string.Format("Phase %1 search area revealed!", m_iCurrentPhase),
+                    string.Format("Attackers must destroy %1 cache(s)", GetActiveCacheCountForPhase(m_iCurrentPhase)));
+                
+                Print(string.Format("Phase %1 zones now revealed to attackers", m_iCurrentPhase), LogLevel.NORMAL);
+            }
+            
+            // CRITICAL: Force clients to re-evaluate zone visibility immediately
+            Replication.BumpMe();
+            
+            Print("Zone reveal timer expired - replication triggered to update client zone visibility", LogLevel.NORMAL);
+        }
     }
 	
 	//------------------------------------------------------------------------------------------------
@@ -263,8 +333,55 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (m_aObjCaches.IsEmpty() && !m_aDestroyedCaches.IsEmpty())
         {
             Print("All caches destroyed across all phases! Attackers win!", LogLevel.NORMAL);
-			m_RplBroadcastManager.PopUpNotification(15, "All caches destroyed across all phases! Attackers win!");
+			if (m_RplBroadcastManager)
+                m_RplBroadcastManager.PopUpNotification(15, "All caches destroyed across all phases! Attackers win!");
         }
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //! Check if zones for the current phase should be visible yet
+    bool AreCurrentPhaseZonesRevealed()
+    {
+        // If no delay or already revealed
+        if (m_iTimePhaseZoneReveals <= 0)
+            return true;
+        
+        // Check if enough time has passed
+        float currentTime = GetGame().GetWorld().GetWorldTime();
+        return currentTime >= m_iTimePhaseZoneReveals;
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //! Get remaining time formatted as string (for UI display)
+    string GetTimeUntilZoneReveal()
+    {
+        if (m_iTimePhaseZoneReveals <= 0)
+            return "";
+        
+        float currentTime = GetGame().GetWorld().GetWorldTime();
+        float millis = m_iTimePhaseZoneReveals - currentTime;
+        
+        if (millis <= 0)
+            return "0:00";
+        
+        int totalSeconds = (millis * 0.001);
+        return SCR_FormatHelper.FormatTime(totalSeconds);
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //! Get remaining time in seconds (for calculations)
+    int GetSecondsUntilZoneReveal()
+    {
+        if (m_iTimePhaseZoneReveals <= 0)
+            return 0;
+        
+        float currentTime = GetGame().GetWorld().GetWorldTime();
+        float millis = m_iTimePhaseZoneReveals - currentTime;
+        
+        if (millis <= 0)
+            return 0;
+        
+        return Math.Ceil(millis * 0.001);
     }
     
     //------------------------------------------------------------------------------------------------

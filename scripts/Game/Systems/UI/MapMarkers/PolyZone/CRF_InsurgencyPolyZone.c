@@ -27,7 +27,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Override visibility check to include phase-based logic
+	 * Override visibility check to include phase-based logic with delayed reveal
 	 * @return True if zone should be visible to current player
 	 */
 	override bool IsCurrentVisibility()
@@ -43,27 +43,35 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		if (!m_InsurgencyGamemode)
 			return false; // Gamemode not ready yet
 		
+		// CRITICAL: Defenders should NEVER see search area zones
+		if (IsVisibleForDefendingTeam())
+			return false;
+		
 		int currentPhase = m_InsurgencyGamemode.GetCurrentPhase();
 		
 		// Check if this zone's phase is active
 		bool isPhaseActive = (currentPhase == m_iVisibleDuringPhase);
 		bool isPhaseComplete = (currentPhase > m_iVisibleDuringPhase);
 		
-		// If phase is complete and we should show to all teams, show it
+		// If phase is complete and we should show to all teams, show it (but still only attackers due to check above)
 		if (isPhaseComplete && m_bShowToAllWhenPhaseComplete)
-			return true;
+			return IsVisibleForPlayerTeam();
 		
 		// If phase isn't active, hide the zone
 		if (!isPhaseActive)
 			return false;
 		
-		// Phase is active - check team visibility
+		// Phase is active - check if zones are revealed yet to attackers
+		if (!m_InsurgencyGamemode.AreCurrentPhaseZonesRevealed())
+			return false; // Not revealed yet - hide from everyone
+		
+		// Zones revealed - show to attacking team only
 		return IsVisibleForPlayerTeam();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Check if current player's team should see this zone
+	 * Check if current player's team should see this zone (attacking team)
 	 * @return True if player's team matches visibility settings
 	 */
 	protected bool IsVisibleForPlayerTeam()
@@ -88,6 +96,35 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		FactionKey playerFactionKey = playerFaction.GetFactionKey();
 		
 		return (playerFactionKey == m_InsurgencyGamemode.m_AttackingSide);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Check if current player is on defending team
+	 * @return True if player is defender
+	 */
+	protected bool IsVisibleForDefendingTeam()
+	{
+		if (!m_InsurgencyGamemode)
+			return false;
+		
+		// Get player's faction
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if (!playerController)
+			return false;
+		
+		SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
+			playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
+		if (!factionComp)
+			return false;
+		
+		Faction playerFaction = factionComp.GetAffiliatedFaction();
+		if (!playerFaction)
+			return false;
+		
+		FactionKey playerFactionKey = playerFaction.GetFactionKey();
+		
+		return (playerFactionKey == m_InsurgencyGamemode.m_DefendingSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -4,6 +4,8 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
    CRF_InsDestructiveComponent "{68A135AA4E71A81F}" {
     m_bStartActive 1
    }
+   CRF_InsurgencyCacheMarkerComponent "{68A13592999570E2}" {
+   }
   }
   coords 723.313 39 2697.742
  }
@@ -11,6 +13,9 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   components {
    CRF_InsDestructiveComponent "{68A135AA3EEBE094}" {
     m_iCachePhase 2
+   }
+   CRF_InsurgencyCacheMarkerComponent "{68A135911E64EFA6}" {
+    m_sMarkerIcon "{687AB148CFC836AB}UI/Images/Objectives/F.edds"
    }
   }
   coords 667.384 39.022 2652.349

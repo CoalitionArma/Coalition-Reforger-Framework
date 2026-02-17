@@ -44,6 +44,9 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
      "OPFOR"
     }
    }
+   CRF_InsurgencyPolyZoneMarkerComponent "{68A135928959C3DB}" {
+    m_sMarkerIcon "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds"
+   }
   }
   coords 720.979 39 2683.986
   Points {
@@ -77,6 +80,9 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
     }
     m_iVisibleDuringPhase 2
    }
+   CRF_InsurgencyPolyZoneMarkerComponent "{68A1359152FFEFF1}" {
+    m_sMarkerIcon "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds"
+   }
   }
   coords 672.864 39.3 2641.417
   Points {
@@ -99,10 +105,15 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
   IsClosed 0
  }
 }
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ coords 716.162 39 2672.869
+}
 GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
  components {
   CRF_InsDestructiveComponent "{68A135AA4E71A81F}" {
    m_bStartActive 1
+  }
+  CRF_InsurgencyCacheMarkerComponent "{68A13592B483A203}" {
   }
  }
  coords 717.376 39 2676.809
