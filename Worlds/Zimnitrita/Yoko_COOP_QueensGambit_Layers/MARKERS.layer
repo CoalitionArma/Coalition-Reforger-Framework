@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ OBJECTIVE3 {
+  coords 15793.586 138.625 8795.502
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Optional: Capture the Military Basse"
+ }
+ OBJECTIVE1 {
+  coords 14906.75 86.842 8395.795
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Destroy 4x 2S1"
+ }
+ OBJECTIVE2 {
+  coords 15600.842 49.993 7457.295
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Destroy Enemy Supply Cache"
+ }
+}

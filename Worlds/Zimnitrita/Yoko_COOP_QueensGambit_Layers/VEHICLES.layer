@@ -1,0 +1,74 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 14260.949 31.531 9293.969
+  angles 0 -175.97 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14259.652 31.951 9275.559
+  angles 0 -175.97 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14890.163 80.494 8378.615
+  angles 0 -85.619 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14928.484 80.493 8379.001
+  angles 0 -85.619 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14892.131 78.543 8404.299
+  angles 0 -85.619 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14930.199 78.209 8401.382
+  angles 0 -85.619 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14277.688 32.551 9291.593
+  angles 0 -175.97 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14275.77 32.012 9274.423
+  angles 0 -175.97 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14286.841 32.551 9290.948
+  angles 0 -175.97 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14286.166 32.079 9273.69
+  angles 0 -175.97 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14245.114 31.865 9276.583
+  angles 0 -175.97 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 14246.411 31.331 9294.993
+  angles 0 -175.97 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
