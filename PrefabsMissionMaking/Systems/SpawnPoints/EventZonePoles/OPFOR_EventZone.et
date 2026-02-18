@@ -1,0 +1,92 @@
+GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+ ID "50C6D20663830070"
+ components {
+  CRF_EventRespawnComponent "{68A470C20D10F40F}" {
+   m_sEventPoleFaction "OPFOR"
+  }
+  CRF_RespawnPointComponent "{68A470C26DE48948}" {
+   Enabled 0
+   m_sRespawnPointFaction "OPFOR"
+  }
+  MeshObject "{68A470C26DE48AFB}" {
+   Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
+  }
+  RigidBody "{68A470C26DE48AF0}" {
+   SimState None
+   ResponseIndex "NoCollision"
+   ModelGeometry 1
+  }
+  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   EnableDamage 0
+   m_fBaseHealth 100000
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{68A470C26DE48AF7}" {
+     m_ModelPrefabs {
+      "{180F19ED1440D32A}Assets/Structures/Military/Flags/FlagPole_01/dst/Flagpole_01_dst.xob"
+     }
+     m_fMass 50
+     m_eMaterialSoundType METAL_POLE
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL_POLE
+  }
+  SCR_EditableCommentComponent "{68A470C26DE48AEB}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68A470C26DE48AEC}" {
+    Name "OPFOR SPAWN"
+   }
+   m_bStatic 0
+   m_bGME_IsVisible 0
+   m_sColor 0.561 0.071 0.071 1
+   m_fSizeCoef 0.8
+  }
+  SCR_EditableSystemComponent "{68A470C26DE48AEE}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{68A470C26DE48AE0}" {
+    Name "Opfor Spawn Point"
+    Icon "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds"
+    m_Image "{2F23E25348144FAE}UI/Textures/FieldManual/MPModes/Conflict/Tiles/respawn_UI.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_OPFOR
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{68A470C26DE48AE4}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 0 0
+   m_AccessKey 769
+   m_Flags 69
+  }
+  SCR_FactionAffiliationComponent "{68A470C26DE48AE6}" {
+   "faction affiliation" "OPFOR"
+  }
+  SCR_HorizontalAlignComponent "{68A470C26DE48AE7}" {
+  }
+  SlotManagerComponent "{68A470C26DE48A99}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Offset 0.0181 5.2653 0.0122
+     Angles 0 180 0
+     Prefab "{6B9C2405427CACEC}Prefabs/Props/Fabric/Flags/Gearscript Factions/OPFOR_FLAG.et"
+    }
+   }
+  }
+  RplComponent "{649042617FCFD793}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+   Streamable Disabled
+  }
+ }
+ coords 0 0 0
+ {
+  CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsMissionMaking/Markers/SpawnMarkers/OPFOR_SpawnMarker.et" {
+   ID "68A470C26DE48981"
+   coords 0 0 0
+  }
+ }
+}

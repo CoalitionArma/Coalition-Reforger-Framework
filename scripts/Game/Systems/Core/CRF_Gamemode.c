@@ -44,6 +44,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bRespawnEnabled;
+	
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bEventBasedRespawns;
 
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
@@ -202,6 +205,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.EOnInit(owner);
 		
+		//Checks for errors in Workbench
+		#ifdef WORKBENCH
+		//Checks to see if event based respawn poles are down for the active sides
+		GetGame().GetCallqueue().CallLater(EventPoleWarning, 1000, false);
+		#endif
+		
 		// Load configs on dedicated server
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			CRF_ModeratorConfig.LoadConfig();	
@@ -222,6 +231,29 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		// Enable frame events for batch processing
 		SetEventMask(EntityEvent.FRAME);
+	}
+	
+	/**
+	 * Delayed to allow time for entities to register themselves
+	 */
+	void EventPoleWarning()
+	{
+		if (m_bEventBasedRespawns)
+		{
+			CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();
+			if (m_BluforSlots.Count() > 0 && !respawnMan.m_BLUFOREventPole)
+				Print(string.Format("No Event pole for BLUFOR"), LogLevel.ERROR);
+			
+			if (m_OpforSlots.Count() > 0 && !respawnMan.m_OPFOREventPole)
+				Print(string.Format("No Event pole for OPFOR"), LogLevel.ERROR);
+			
+			if (m_IndforSlots.Count() > 0 && !respawnMan.m_INDFOREventPole)
+				Print(string.Format("No Event pole for INDFOR"), LogLevel.ERROR);
+			
+			if (m_CivSlots.Count() > 0 && !respawnMan.m_CIVEventPole)
+				Print(string.Format("No Event pole for CIV"), LogLevel.ERROR);
+			
+		}
 	}
 	
 	//===================================================================================

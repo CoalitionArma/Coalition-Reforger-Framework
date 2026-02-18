@@ -134,8 +134,12 @@ class CRF_GearscriptManager : ScriptComponent
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
 
+		//If it's an event pole character spawn them unarmed
 		//Delay so when we clear gear, the client has enough time to actually clear it before getting new gear. This prevents animation bugs.
-		GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, role, inventory, inventoryManager, gearScriptSettings);
+		if (SCR_ChimeraCharacter.Cast(entity).m_bEventPoleCharacter)
+			GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, CRF_EGearRole.UNARMED, inventory, inventoryManager, gearScriptSettings);
+		else
+			GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, role, inventory, inventoryManager, gearScriptSettings);
 	}
 	
 	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,

@@ -32,6 +32,9 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bRespawnEnabled;
+	
+	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
+	protected bool m_bEventBasedRespawns;
 
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bWaveRespawn;
@@ -73,7 +76,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
 		m_bMissionAllowsEspionage = gamemode.m_bAllowEspionage;
 		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
-		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
+		m_bEventBasedRespawns = gamemode.m_bEventBasedRespawns;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
 		m_iRespawnCutoffMinutes = gamemode.m_iRespawnCutoffMinutes;
@@ -134,6 +137,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_bAllowEspionage", m_bMissionAllowsEspionage.ToString());
 		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
+		api.SetVariableValue(entitySource, null, "m_bEventBasedRespawns", m_bEventBasedRespawns.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iRespawnCutoffMinutes", m_iRespawnCutoffMinutes.ToString());

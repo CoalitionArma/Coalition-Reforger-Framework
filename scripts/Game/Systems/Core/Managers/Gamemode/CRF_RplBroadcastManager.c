@@ -488,7 +488,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		// Telemetry: int
 		LogTelemetry("SendRespawnScreen", CRF_BandwidthTelemetryManager.EstimateSize_Int());
-		
 		#ifdef WORKBENCH
 		RpcDo_SendRespawnScreen(playerId);
 		#else
@@ -1384,20 +1383,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		if (!IsLocalPlayer(playerId))
 			return;
-
-		// Close any open menus
-		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-		if (topMenu)
+		
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
+			return;
+		
+		if (!gamemode.m_bEventBasedRespawns)
 		{
-			topMenu.Close();
+			// Close any open menus
+			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+			if (topMenu)
+			{
+				topMenu.Close();
+			}
+	
+			GetGame().GetMenuManager().CloseAllMenus();
+			
+			// Open respawn menu
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 		}
 
-		GetGame().GetMenuManager().CloseAllMenus();
-		
-		// Open respawn menu
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
-
-		
 		// Set up respawn timers
 		m_RespawnManager.m_iLocalTimeToRespawn = m_RespawnManager.m_iCurrentTimeToRespawn;
 		m_RespawnManager.m_fRespawnTimer = (float)m_RespawnManager.GetCurrentWaveTimer();

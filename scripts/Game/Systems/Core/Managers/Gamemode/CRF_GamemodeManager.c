@@ -27,6 +27,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	protected CRF_RespawnManager m_RespawnManager;
 	
 	protected static CRF_GamemodeManager m_sInstance;
 	
@@ -199,6 +200,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
@@ -271,14 +273,37 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
-			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
-	
-			
-			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
-			
-			RemovePlayerFromCurrentGroup(playerId);
-			DisableDamageForSpectator(playerCharacter);
+			//Handled for event based respawns so characters are spawned at the flag poles unarmed
+			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+			if (!faction)
+				return;
+			if (m_Gamemode.m_bEventBasedRespawns && m_Gamemode.m_bRespawnEnabled && m_RespawnManager.TicketsRemaining(faction.GetFactionKey()))
+			{			
+				GetEventPoleRespawn(playerId, spawnLocation);
+				
+				playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
+				if (playerCharacter)
+					SCR_ChimeraCharacter.Cast(playerCharacter).m_bEventPoleCharacter = true;
+				// If character already existed (respawn case), clean up any old initial/spectator entity
+				if (alreadyCreated)
+				{
+					DeleteOldInitialEntity(playerController, playerCharacter);
+				}
+				CRF_MenuManager.GetInstance().RemovePlayerFromAnyChannel(playerId, false);
+				// Schedule gear setup so when they respawn they get set to unarmed characters
+				// So much more simple than rooting up 3 entire systems		
+			}
+			else
+			{
+				// SPECTATOR PATH: Create initial entity for spectators
+				playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		
+				
+				faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
+				
+				RemovePlayerFromCurrentGroup(playerId);
+				DisableDamageForSpectator(playerCharacter);
+			}
 		} 
 		else 
 		{
@@ -301,6 +326,54 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			AssignFactionToPlayer(playerController, faction);
 			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Fetches the event respawn area of a player
+	* @param playerId ID of the player
+	* @out param spawnLocation The spawn location for the sides event respawn area
+	*/
+	void GetEventPoleRespawn(int playerId, out vector spawnLocation[4])
+	{
+		Faction faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+		//WTFFFFFFFFFFFFFFFFFFF
+		if (!faction)
+			return;
+		
+		CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();
+		if (!respawnMan)
+			return;
+		switch (faction.GetFactionKey())
+		{
+			case "BLUFOR":
+			if (!respawnMan.m_BLUFOREventPole)
+				return;
+			
+			respawnMan.m_BLUFOREventPole.GetTransform(spawnLocation);
+			break;
+								
+			case "OPFOR":
+			if (!respawnMan.m_OPFOREventPole)
+				return;
+			
+			respawnMan.m_OPFOREventPole.GetTransform(spawnLocation);
+			break;
+			
+			case "INDFOR":
+			if (!respawnMan.m_INDFOREventPole)
+				return;
+			
+			respawnMan.m_INDFOREventPole.GetTransform(spawnLocation);
+			break;
+			
+			case "CIV":
+			if (!respawnMan.m_CIVEventPole)
+				return;
+			
+			respawnMan.m_CIVEventPole.GetTransform(spawnLocation);
+			break;
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -416,6 +489,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		alreadyCreated = true;
 		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
+		
+		if (playerCharacter && playerCharacter.m_bEventPoleCharacter)
+			SCR_EntityHelper.DeleteEntityAndChildren(playerCharacter);
 		
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
 		{

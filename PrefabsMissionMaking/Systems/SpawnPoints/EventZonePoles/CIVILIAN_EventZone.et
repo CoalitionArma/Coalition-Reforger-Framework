@@ -1,0 +1,92 @@
+GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+ ID "50C6D20663830070"
+ components {
+  CRF_EventRespawnComponent "{68A470C278AD5A7A}" {
+   m_sEventPoleFaction "CIV"
+  }
+  CRF_RespawnPointComponent "{68A470C263EEAD12}" {
+   Enabled 0
+   m_sRespawnPointFaction "CIV"
+  }
+  MeshObject "{68A470C263EEAD06}" {
+   Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
+  }
+  RigidBody "{68A470C263EEAD3A}" {
+   SimState None
+   ResponseIndex "NoCollision"
+   ModelGeometry 1
+  }
+  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   EnableDamage 0
+   m_fBaseHealth 100000
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{68A470C263EEAD3F}" {
+     m_ModelPrefabs {
+      "{180F19ED1440D32A}Assets/Structures/Military/Flags/FlagPole_01/dst/Flagpole_01_dst.xob"
+     }
+     m_fMass 50
+     m_eMaterialSoundType METAL_POLE
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL_POLE
+  }
+  SCR_EditableCommentComponent "{68A470C263EEAD33}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{68A470C263EEAD35}" {
+    Name "CIVILIAN SPAWN"
+   }
+   m_bStatic 0
+   m_bGME_IsVisible 0
+   m_sColor 0.318 0.071 0.561 1
+   m_fSizeCoef 0.8
+  }
+  SCR_EditableSystemComponent "{68A470C263EEAD37}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{68A470C263EEAD29}" {
+    Name "Civ Spawn Point"
+    Icon "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds"
+    m_Image "{2F23E25348144FAE}UI/Textures/FieldManual/MPModes/Conflict/Tiles/respawn_UI.edds"
+    m_sFaction "CIV"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_CIV
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{68A470C263EEAD2C}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 0 0
+   m_AccessKey 769
+   m_Flags 69
+  }
+  SCR_FactionAffiliationComponent "{68A470C263EEAD2F}" {
+   "faction affiliation" "CIV"
+  }
+  SCR_HorizontalAlignComponent "{68A470C263EEAD20}" {
+  }
+  SlotManagerComponent "{68A470C263EEAD21}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Offset 0.0181 5.2653 0.0122
+     Angles 0 180 0
+     Prefab "{103104DE0FD580AA}Prefabs/Props/Fabric/Flags/Gearscript Factions/CIV_FLAG.et"
+    }
+   }
+  }
+  RplComponent "{649042617FD38925}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+   Streamable Disabled
+  }
+ }
+ coords 0 0 0
+ {
+  CRF_ManualMarker : "{CC041EDE06E4A0C3}PrefabsMissionMaking/Markers/SpawnMarkers/CIVILIAN_SpawnMarker.et" {
+   ID "68A470C263EEAD66"
+   coords 0 0 0
+  }
+ }
+}

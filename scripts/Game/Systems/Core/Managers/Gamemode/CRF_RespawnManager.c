@@ -19,6 +19,12 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	int m_iCIVTickets;
 	
+	//Server logs location of event poles(Where players huddle when they die during our longer events)
+	IEntity m_BLUFOREventPole;
+	IEntity m_OPFOREventPole;
+	IEntity m_INDFOREventPole;
+	IEntity m_CIVEventPole;
+	
 	
 	//Respawn variables
 	[RplProp()] bool m_bCurrentRespawnEnabled;
@@ -420,36 +426,53 @@ class CRF_RespawnManager : ScriptComponent
 		{
 			// Check if Respawn Screen is open
 			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-			if (!topMenu)
-				return;
-			if (topMenu.IsInherited(CRF_RespawnMenu))
+			if (topMenu)
 			{
-				// Check if respawn selection was confirmed in the UI
-				CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
-				if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
+				if (topMenu.IsInherited(CRF_RespawnMenu))
 				{
-					// Reset the timer
-					m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
-					m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
-					m_bNeedsRespawn = false;
-					// Only perform respawn if not in AAR state
-					if (!isGameInAARState)
+					// Check if respawn selection was confirmed in the UI
+					CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
+					if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
 					{
-						GetGame().GetMenuManager().CloseAllMenus();
-						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
-						
-						// Set menu state back to default
-						m_SelectedSpawnRplID = -1;
-						m_RespawnConfirmed = false; 
+						// Reset the timer
+						m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
+						m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+						m_bNeedsRespawn = false;
+						// Only perform respawn if not in AAR state
+						if (!isGameInAARState)
+						{
+							GetGame().GetMenuManager().CloseAllMenus();
+							CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+							
+							// Set menu state back to default
+							m_SelectedSpawnRplID = -1;
+							m_RespawnConfirmed = false; 
+						}
+		
+						return;
 					}
-	
-					return;
 				}
 			}
 		}
 
 		// Handle respawn menu
-		ShowRespawnMenuIfNeeded();
+		if (!m_Gamemode.m_bEventBasedRespawns)
+			ShowRespawnMenuIfNeeded();
+		else
+		{
+			if (isTimerExpired || isGameInAARState)
+			{
+				MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+				
+				if (topMenu)
+					if (topMenu.IsInherited(CRF_RespawnMenu))
+						return;
+				
+				GetGame().GetMenuManager().CloseAllMenus();
+				
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

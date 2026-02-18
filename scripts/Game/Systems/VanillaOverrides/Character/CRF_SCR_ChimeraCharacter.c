@@ -1,5 +1,8 @@
 modded class SCR_ChimeraCharacter
 {
+	// Used in the event pole process to know if we should delete this character if a respawn is requested.
+	// Only tracked on the auth
+	bool m_bEventPoleCharacter = false;
 	void SelectPrimaryWeapon()
 	{
 		Rpc(RpcDo_SelectPrimaryWeapon);
