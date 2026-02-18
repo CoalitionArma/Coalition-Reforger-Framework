@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E40F9F160FEC1032}Missions/Zarichne/Salami_0218_RUSH120_SalamiZarichne0218RUSH120IronSickleconf.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
