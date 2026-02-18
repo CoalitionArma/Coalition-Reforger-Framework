@@ -277,7 +277,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 			if (!faction)
 				return;
-			if (m_Gamemode.m_bEventBasedRespawns && m_Gamemode.m_bRespawnEnabled && m_RespawnManager.TicketsRemaining(faction.GetFactionKey()))
+			if (m_Gamemode.m_bEventBasedRespawns && m_RespawnManager.m_bCurrentRespawnEnabled && m_RespawnManager.TicketsRemaining(faction.GetFactionKey()))
 			{			
 				GetEventPoleRespawn(playerId, spawnLocation);
 				
@@ -290,8 +290,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 					DeleteOldInitialEntity(playerController, playerCharacter);
 				}
 				CRF_MenuManager.GetInstance().RemovePlayerFromAnyChannel(playerId, false);
-				// Schedule gear setup so when they respawn they get set to unarmed characters
-				// So much more simple than rooting up 3 entire systems		
 			}
 			else
 			{

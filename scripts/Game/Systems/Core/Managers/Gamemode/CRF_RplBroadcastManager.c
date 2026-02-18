@@ -1404,6 +1404,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 		}
 
 		// Set up respawn timers
+		if (!m_RespawnManager.m_wEventRespawnUI)
+			m_RespawnManager.m_wEventRespawnUI = GetGame().GetWorkspace().CreateWidgets("{2BC691AB45F165D7}UI/layouts/HUD/EventRespawns/CRF_EventRespawnTimer.layout");
+		
 		m_RespawnManager.m_iLocalTimeToRespawn = m_RespawnManager.m_iCurrentTimeToRespawn;
 		m_RespawnManager.m_fRespawnTimer = (float)m_RespawnManager.GetCurrentWaveTimer();
 	}

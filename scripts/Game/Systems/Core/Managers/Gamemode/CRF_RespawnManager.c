@@ -57,6 +57,8 @@ class CRF_RespawnManager : ScriptComponent
 	
 	protected bool m_bNeedsRespawn = false;
 	protected bool m_bRespawnInit = false;
+	
+	Widget m_wEventRespawnUI;
 
 	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -422,10 +424,19 @@ class CRF_RespawnManager : ScriptComponent
 		bool isTimerExpired = m_fRespawnTimer <= 0;
 		bool isGameInAARState = (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR);
 		
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		//Removes timer whenever respawn menu is open
+		if (topMenu && topMenu.IsInherited(CRF_RespawnMenu))
+		{
+			if (m_wEventRespawnUI)
+				m_wEventRespawnUI.RemoveFromHierarchy();
+		}
+			
+				
+		
 		if (isTimerExpired || isGameInAARState)
 		{
 			// Check if Respawn Screen is open
-			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 			if (topMenu)
 			{
 				if (topMenu.IsInherited(CRF_RespawnMenu))
@@ -454,6 +465,9 @@ class CRF_RespawnManager : ScriptComponent
 				}
 			}
 		}
+		
+		if (m_wEventRespawnUI)
+			TextWidget.Cast(m_wEventRespawnUI.FindAnyWidget("TimerText")).SetText(SCR_FormatHelper.FormatTime((int)CRF_RespawnManager.GetInstance().m_fRespawnTimer));
 
 		// Handle respawn menu
 		if (!m_Gamemode.m_bEventBasedRespawns)
@@ -461,9 +475,7 @@ class CRF_RespawnManager : ScriptComponent
 		else
 		{
 			if (isTimerExpired || isGameInAARState)
-			{
-				MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-				
+			{	
 				if (topMenu)
 					if (topMenu.IsInherited(CRF_RespawnMenu))
 						return;
@@ -965,5 +977,11 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
 		Replication.BumpMe();
+	}
+	
+	void ~CRF_RespawnManager()
+	{
+		if (m_wEventRespawnUI)
+			delete m_wEventRespawnUI;
 	}
 }

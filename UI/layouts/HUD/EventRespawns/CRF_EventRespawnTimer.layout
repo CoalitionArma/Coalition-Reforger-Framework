@@ -1,0 +1,40 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{68A470C52AC925D1}" {
+   Name "TimerText"
+   Slot FrameWidgetSlot "{68A470C52AC925FD}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -150
+    OffsetLeft -150
+    PositionY 20
+    OffsetTop 20
+    SizeX 300
+    OffsetRight -150
+    SizeY 80
+    OffsetBottom -100
+   }
+   Text "1199.85"
+   "Font Size" 100
+   "Horizontal Alignment" Center
+   FontProperties FontProperties "{68A470C53032A6B3}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  PanelWidgetClass "{68A470C5D78E33B0}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{68A470C5D78E335C}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -150
+    OffsetLeft -150
+    PositionY 20
+    OffsetTop 20
+    SizeX 300
+    OffsetRight -150
+    SizeY 80
+    OffsetBottom -100
+   }
+   Color 0 0 0 1
+  }
+ }
+}
