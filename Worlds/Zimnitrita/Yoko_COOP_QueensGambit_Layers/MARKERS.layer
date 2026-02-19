@@ -3,10 +3,10 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   coords 15793.586 138.625 8795.502
   angles 0 0 0
   m_MarkerColor 0 0.125 0.502 1
-  m_sDescription "Optional: Capture the Military Basse"
+  m_sDescription "Capture the Military Base"
  }
  OBJECTIVE1 {
-  coords 14906.75 86.842 8395.795
+  coords 14816.11 70.209 6822.01
   angles 0 0 0
   m_MarkerColor 0 0.125 0.502 1
   m_sDescription "Destroy 4x 2S1"
