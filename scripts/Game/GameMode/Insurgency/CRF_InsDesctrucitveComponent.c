@@ -9,9 +9,16 @@ class CRF_InsDestructiveComponent: ScriptComponent
     
     [Attribute("0", UIWidgets.CheckBox, "Should this cache start visible/active")]
     bool m_bStartActive;
-    
+	
+	[Attribute(params: "edds", uiwidget: UIWidgets.ResourcePickerThumbnail)]
+	private ResourceName m_Image;
+
     protected SCR_DestructionMultiPhaseComponent m_DestructionComponent;
     protected bool m_bIsActive;
+	
+	protected bool m_bDefenderMarkerActive = false;
+	protected bool m_bSiteDestroyed = false;
+	protected static const int CACHE_MARKER_COLOR = ARGB(255, 255, 50, 50); // red for cache
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     override void OnPostInit(IEntity owner)
@@ -39,6 +46,7 @@ class CRF_InsDestructiveComponent: ScriptComponent
             
         // Set initial active state
         SetCacheActive(m_bStartActive);
+		GetGame().GetCallqueue().CallLater(UpdateCacheMarker, 1000, true);
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,8 +65,16 @@ class CRF_InsDestructiveComponent: ScriptComponent
         // Check if the cache has been destroyed
         if (damageState == EDamageState.DESTROYED)
         {
+			IEntity owner = GetOwner();
+			vector pos = owner.GetOrigin();
+			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+			CRF_PlayerControllerManager pcm = CRF_PlayerControllerManager.GetInstance();
+			pcm.RemoveScriptedMarker("Static Marker", posStr, 1000,
+	            string.Format("Cache (Phase %1)", m_iCachePhase),
+	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+			
             Print("Cache has been DESTROYED!", LogLevel.NORMAL);
-            
+            m_bSiteDestroyed = true;
             // Notify the gamemode manager
             if (CRF_InsurgencyGamemodeManager.GetInstance())
                 CRF_InsurgencyGamemodeManager.GetInstance().OnCacheDestroyed(GetOwner());
@@ -88,6 +104,58 @@ class CRF_InsDestructiveComponent: ScriptComponent
             Print(string.Format("Cache hidden: Phase %1", m_iCachePhase), LogLevel.NORMAL);
         }
     }
+	
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateCacheMarker()
+	{
+	    CRF_PlayerControllerManager pcm = CRF_PlayerControllerManager.GetInstance();
+	    CRF_InsurgencyGamemodeManager ins = CRF_InsurgencyGamemodeManager.GetInstance();
+	    if (!pcm || !ins)
+	        return;
+	    
+	    // Defenders only
+	    SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+	    if (!playerController)
+	        return;
+	    
+	    SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
+	        playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
+	    if (!factionComp)
+	        return;
+	    
+	    Faction playerFaction = factionComp.GetAffiliatedFaction();
+	    if (!playerFaction)
+	        return;
+	    
+	    bool isDefender = (playerFaction.GetFactionKey() == ins.m_DefendingSide);
+	    
+	    // Show only if defender, cache is active, and not destroyed
+	    IEntity owner = GetOwner();
+	    bool isVisible = owner && (owner.GetFlags() & EntityFlags.VISIBLE) != 0;
+	    bool shouldShow = isDefender && isVisible && !IsCacheDestroyed();
+	    
+	    if (shouldShow && !m_bDefenderMarkerActive)
+	    {
+			vector pos = owner.GetOrigin();
+			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+			
+	        pcm.AddScriptedMarker("Static Marker", posStr, 1000,
+	            string.Format("Cache (Phase %1)", m_iCachePhase),
+	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+	        m_bDefenderMarkerActive = true;
+	    }
+	    else if (m_bSiteDestroyed || (!shouldShow && m_bDefenderMarkerActive))
+	    {
+			vector pos = owner.GetOrigin();
+			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+			
+	        pcm.RemoveScriptedMarker("Static Marker", posStr, 1000,
+	            string.Format("Cache (Phase %1)", m_iCachePhase),
+	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+	        m_bDefenderMarkerActive = false;
+	    }
+	}
+
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     bool IsCacheActive()
@@ -104,8 +172,11 @@ class CRF_InsDestructiveComponent: ScriptComponent
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     override void OnDelete(IEntity owner)
     {
-        super.OnDelete(owner);
-        
+		
+		super.OnDelete(owner);
+
+        GetGame().GetCallqueue().Remove(UpdateCacheMarker);
+		
         // Clean up event subscription
         if (m_DestructionComponent)
             m_DestructionComponent.GetOnDamageStateChanged().Remove(OnDamageStateChanged);

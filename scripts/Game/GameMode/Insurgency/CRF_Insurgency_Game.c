@@ -86,8 +86,6 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             return;
         }
 
-        Print(string.Format("Registering cache objective: %1 (RplId: %2)", objectiveItem, rplComp.Id()));
-
         // Get the cache component to determine its phase
         CRF_InsDestructiveComponent cacheComp = CRF_InsDestructiveComponent.Cast(objectiveItem.FindComponent(CRF_InsDestructiveComponent));
         if (!cacheComp)
@@ -308,7 +306,6 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
                 Print(string.Format("Phase %1 zones now revealed to attackers", m_iCurrentPhase), LogLevel.NORMAL);
             }
             
-            // CRITICAL: Force clients to re-evaluate zone visibility immediately
             Replication.BumpMe();
             
             Print("Zone reveal timer expired - replication triggered to update client zone visibility", LogLevel.NORMAL);

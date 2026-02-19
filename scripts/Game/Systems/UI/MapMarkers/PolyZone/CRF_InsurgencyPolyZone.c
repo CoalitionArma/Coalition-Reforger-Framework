@@ -13,7 +13,13 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	[Attribute("0", UIWidgets.CheckBox, "Show zone to both teams when phase is complete?")]
 	protected bool m_bShowToAllWhenPhaseComplete;
 	
+	[Attribute(params: "edds", uiwidget: UIWidgets.ResourcePickerThumbnail)]
+	private ResourceName m_Image;
+	
 	protected CRF_InsurgencyGamemodeManager m_InsurgencyGamemode;
+	
+	protected bool m_bMarkerActive = false;
+	protected static const int ZONE_MARKER_COLOR = ARGB(255, 255, 165, 0);
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -23,6 +29,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		// Cache reference to insurgency gamemode
 		if (Replication.IsClient() || Replication.IsServer())
 			m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
+			GetGame().GetCallqueue().CallLater(UpdateZoneMarker, 1000, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -125,6 +132,45 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		FactionKey playerFactionKey = playerFaction.GetFactionKey();
 		
 		return (playerFactionKey == m_InsurgencyGamemode.m_DefendingSide);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateZoneMarker()
+	{
+    	CRF_PlayerControllerManager pcm = CRF_PlayerControllerManager.GetInstance();
+    	if (!pcm)
+        	return;
+    
+    	bool shouldShow = IsCurrentVisibility();
+    	
+    	if (shouldShow && !m_bMarkerActive)
+    	{
+			IEntity owner = GetOwner();
+        	vector pos = owner.GetOrigin();
+			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+
+	        pcm.AddScriptedMarker("Static Marker", posStr, 1000,
+	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
+	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+        	m_bMarkerActive = true;
+    	}
+    	else if (!shouldShow && m_bMarkerActive)
+    	{
+			IEntity owner = GetOwner();
+        	vector pos = owner.GetOrigin();
+			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+
+	        pcm.RemoveScriptedMarker("Static Marker", posStr, 1000,
+	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
+	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+        	m_bMarkerActive = false;
+    	}
+	}
+	
+	override void OnDelete(IEntity owner)
+	{
+    	GetGame().GetCallqueue().Remove(UpdateZoneMarker);
+    	super.OnDelete(owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
