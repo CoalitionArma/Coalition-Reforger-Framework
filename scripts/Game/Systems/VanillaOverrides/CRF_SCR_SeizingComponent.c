@@ -115,7 +115,8 @@ modded class SCR_SeizingComponent
 				}
 			}
 			
-			hintManager.ShowCustomHint(hintMessage, hintTitle, 10);
+			// Disabled until used or implemented into AAS
+			// hintManager.ShowCustomHint(hintMessage, hintTitle, 10);
 		};
 		
 		CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();

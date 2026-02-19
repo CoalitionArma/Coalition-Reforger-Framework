@@ -160,6 +160,9 @@ class CRF_GearscriptManager : ScriptComponent
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CreateSpawnParams(entity);
 		
+		// Apply identity first (before clothing changes appearance)
+		SetIdentity(gearConfig, entity);
+		
 		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		

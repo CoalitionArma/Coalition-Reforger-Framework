@@ -21,6 +21,8 @@ class CRF_SafestartManager : ScriptComponent
 	
 	[RplProp()]
 	protected bool m_bCountdownMode = false; // True if using time limit countdown instead of ready-up countdown
+	
+	protected int m_iStoredTimeBeforeReadyUp = 0; // Stores the time remaining before all sides readied up
 
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
@@ -365,7 +367,14 @@ class CRF_SafestartManager : ScriptComponent
 		// Process countdown if all factions are ready
 		if (readyFactionsCount == m_iPlayedFactionsCount)
 		{
-			m_iSafeStartTimeRemaining -= 5;
+			// Prevent going below zero
+			if (m_iSafeStartTimeRemaining > 0)
+				m_iSafeStartTimeRemaining -= 5;
+			
+			// Clamp to zero just in case
+			if (m_iSafeStartTimeRemaining < 0)
+				m_iSafeStartTimeRemaining = 0;
+			
 			message = string.Format("[CRF] : Game Live In: %1 Seconds!", m_iSafeStartTimeRemaining);
 
 			// End safe start when countdown reaches zero
@@ -390,8 +399,54 @@ class CRF_SafestartManager : ScriptComponent
 		float popupLife = 3.25;
 		bool showMessage = false; // Only show messages at specific intervals
 		
-		// Countdown from time limit (every second)
-		m_iSafeStartTimeRemaining -= 1;
+		// Check if all factions are ready - if so, skip to 30 second countdown
+		int readyFactionsCount = FactionsReadyCount();
+		if (readyFactionsCount != 0 && m_iPlayedFactionsCount != 0 && readyFactionsCount == m_iPlayedFactionsCount)
+		{
+			// All factions are ready - jump to 30 second countdown if we're above that
+			if (m_iSafeStartTimeRemaining > 30)
+			{
+				// Store the current time before jumping to 30 seconds
+				m_iStoredTimeBeforeReadyUp = m_iSafeStartTimeRemaining;
+				
+				m_iSafeStartTimeRemaining = 30;
+				message = "[CRF] : All Factions Ready! Game Live In: 30 Seconds!";
+				submessage = "Any leader can toggle ready to cancel the countdown";
+				popupLife = 5;
+				showMessage = true;
+				Replication.BumpMe();
+				
+				// Send notification and continue countdown
+				if (showMessage)
+					m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
+				return;
+			}
+		}
+		else if (m_iSafeStartTimeRemaining <= 30 && m_iStoredTimeBeforeReadyUp > 0)
+		{
+			// A faction unreadied during the 30 second countdown - restore the original time
+			message = "[CRF] : Game Live Countdown Canceled!";
+			submessage = "A faction has unreadied";
+			popupLife = 5;
+			showMessage = true;
+			
+			// Restore to the time we had before all sides readied up
+			m_iSafeStartTimeRemaining = m_iStoredTimeBeforeReadyUp;
+			m_iStoredTimeBeforeReadyUp = 0; // Reset the stored time
+			Replication.BumpMe();
+			
+			if (showMessage)
+				m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
+			return;
+		}
+		
+		// Countdown from time limit (every second) - only if above zero
+		if (m_iSafeStartTimeRemaining > 0)
+			m_iSafeStartTimeRemaining -= 1;
+		
+		// Clamp to zero to prevent negatives
+		if (m_iSafeStartTimeRemaining < 0)
+			m_iSafeStartTimeRemaining = 0;
 		
 		// Replicate the updated time to all clients
 		Replication.BumpMe();

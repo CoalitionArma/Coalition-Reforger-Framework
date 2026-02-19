@@ -27,6 +27,10 @@ modded class CVON_VONGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	protected void RpcDo_PlayerListeningChanged(int playerId, bool isListening)
 	{
+		// Ensure set is initialized before accessing
+		if (!m_sListeningPlayers)
+			m_sListeningPlayers = new set<int>;
+		
 		// Update local state on all clients
 		if (isListening)
 			m_sListeningPlayers.Insert(playerId);
@@ -37,12 +41,20 @@ modded class CVON_VONGameModeComponent
 	// Helper: Check if player is listening
 	bool IsPlayerListening(int playerId)
 	{
+		// Safety check
+		if (!m_sListeningPlayers)
+			return false;
+			
 		return m_sListeningPlayers.Contains(playerId);
 	}
 	
 	// Helper: Get all listening players (if needed)
 	set<int> GetListeningPlayers()
 	{
+		// Safety check
+		if (!m_sListeningPlayers)
+			m_sListeningPlayers = new set<int>;
+			
 		return m_sListeningPlayers;
 	}
 }
