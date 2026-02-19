@@ -56,11 +56,7 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
 CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  coords 2314.686 130.257 5017.235
  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
- m_aVehicleGearscriptOverrides {
-  CRF_VehicleGearscriptOverride "{68A619F4249A8B42}" {
-   m_iAmountOfBullets 10
-  }
- }
+ m_iRespawnTimer 999999
 }
 GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
  components {
