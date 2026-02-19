@@ -158,8 +158,16 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (m_CameraManager.m_eCamera)
 			delete m_CameraManager.m_eCamera;
 		
+		// Notify data collector about player spawn for movement tracking and stats
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		IEntity localPlayerEntity = SCR_PlayerController.GetLocalMainEntity();
+		
+		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
+		if (dataCollector && localPlayerEntity)
+			dataCollector.NotifyPlayerSpawned(localPlayerId, localPlayerEntity);
+		
 		// Originally added for data collector
-		m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
+		m_Gamemode.GetOnPlayerSpawned().Invoke(localPlayerId, localPlayerEntity);
 		
 		// Reset Stored Pos
 		GetGame().GetCallqueue().CallLater(m_CameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
