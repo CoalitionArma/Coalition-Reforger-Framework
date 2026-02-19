@@ -1,0 +1,14 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ {
+  components {
+   CRF_InsDestructiveComponent "{68A619F1A1CD5F81}" {
+    m_iCachePhase 1
+    m_bStartActive 1
+   }
+  }
+  coords 1781.832 141.658 7718.353
+ }
+ {
+  coords 2617.258 139.7 7362.772
+ }
+}

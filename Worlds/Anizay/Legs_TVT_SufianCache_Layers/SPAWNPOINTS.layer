@@ -1,0 +1,76 @@
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 2335.964 127.627 5080.178
+}
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 1775.148 141.875 7669.949
+  m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1779.711 141.817 7670.176
+  m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1783.781 141.787 7670.362
+  m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1788.874 141.751 7670.916
+  m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1793.361 141.712 7671.451
+  m_rVehicle "{5168FEA3054D6D15}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1797.281 141.7 7672.062
+  m_rVehicle "{5168FEA3054D6D15}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1800.821 141.678 7672.709
+  m_rVehicle "{5168FEA3054D6D15}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1807.301 141.73 7672.743
+  m_rVehicle "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1771.333 141.395 7643.721
+  m_rVehicle "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1771.974 141.875 7655.542
+  m_rVehicle "{1449105FD658EDFB}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_forest.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
+CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ coords 2314.686 130.257 5017.235
+ m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ m_aVehicleGearscriptOverrides {
+  CRF_VehicleGearscriptOverride "{68A619F4249A8B42}" {
+   m_iAmountOfBullets 10
+  }
+ }
+}
+GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ components {
+  SlotManagerComponent "{645911A16DDD122C}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Enabled 0
+    }
+   }
+  }
+ }
+ coords 2770.995 142.389 8141.005
+}
