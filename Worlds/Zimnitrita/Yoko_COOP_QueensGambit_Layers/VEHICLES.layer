@@ -59,16 +59,4 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
   m_sFactionKey "BLUFOR"
  }
- {
-  coords 14245.114 31.865 9276.583
-  angles 0 -175.97 0
-  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
-  m_sFactionKey "BLUFOR"
- }
- {
-  coords 14246.411 31.331 9294.993
-  angles 0 -175.97 0
-  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
-  m_sFactionKey "BLUFOR"
- }
 }
