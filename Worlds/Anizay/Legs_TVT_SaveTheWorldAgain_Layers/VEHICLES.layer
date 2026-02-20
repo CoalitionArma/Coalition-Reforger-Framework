@@ -120,4 +120,16 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
   m_iRespawnTimer 10000
  }
+ {
+  coords 6538.816 105.042 7163.983
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 6582.89 103.397 7144.084
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
 }
