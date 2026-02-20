@@ -1,0 +1,135 @@
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 2655.343 138.033 7178.585
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2656.762 138.043 7181.93
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2658.459 138.299 7185.901
+  angles 0 107.305 0
+  m_rVehicle "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2660.144 138.551 7189.864
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2661.302 138.706 7193.039
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2662.737 138.749 7196.139
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2663.793 138.729 7199.868
+  angles 0 107.305 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2665.291 138.687 7205.945
+  m_rVehicle "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2670.355 138.674 7215.46
+  angles 0 107.305 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 2665.856 138.835 7224.789
+  angles 0 107.305 0
+  m_rVehicle "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et"
+  m_iRespawnTimer 10000
+ }
+}
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 5783.188 113.429 7223.833
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5736.827 105.535 7140.399
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5790.623 113.638 7218.508
+  angles 0 -90 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5798.655 114.246 7213.254
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5805.54 114.399 7208.697
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5810.36 114.521 7203.987
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5816.774 114.688 7198.604
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5776.177 113.525 7231.421
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5771.806 113.643 7235.007
+  angles 0 -90 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 5785.58 114.141 7235.131
+  angles 0 -90 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 6538.816 105.042 7163.983
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+ {
+  coords 6582.89 103.397 7144.084
+  angles 0 -90 0
+  m_rVehicle "{4D8D92F196555D4E}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_HEDP_less_rockets.et"
+  m_iRespawnTimer 10000
+ }
+}

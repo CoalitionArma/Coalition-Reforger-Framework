@@ -1,0 +1,62 @@
+GenericEntity : "{FA8556A46D3A6FDA}Prefabs/Weapons/AircraftWeapons/RocketPods/Pod_UB1657.et" {
+ ID "116226BBE864C91B"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SCR_RocketEjectorMuzzleComponent "{61A6977B6DC1FE72}" {
+     ProjectilePositions {
+      InventoryStorageSlot Rocket01 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket02 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket03 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket04 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket05 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket06 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket07 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket08 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket09 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket10 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket11 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket12 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket13 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket14 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket15 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+      InventoryStorageSlot Rocket16 {
+       Prefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+      }
+     }
+     m_sDefaultAmmoPrefab "{EE65544BA845C458}Prefabs/Weapons/Ammo/Ammo_Rocket_S5_HEDP_S5KO.et"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,8 @@
+$grp BaseGameTriggerEntity {
+ mcom_a_trigger {
+  coords 2562.951 6.164 959.759
+ }
+ mcom_b_trigger {
+  coords 3091.584 13.024 1147.671
+ }
+}

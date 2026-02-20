@@ -14,6 +14,10 @@ modded class CVON_VONGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
+		// Ensure set is initialized before accessing
+		if (!m_sListeningPlayers)
+			m_sListeningPlayers = new set<int>;
+		
 		if (!input)
 			m_sListeningPlayers.Remove(playerId);
 		else
