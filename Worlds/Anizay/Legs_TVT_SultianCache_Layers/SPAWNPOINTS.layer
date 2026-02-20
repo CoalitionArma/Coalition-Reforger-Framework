@@ -8,7 +8,7 @@ GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFO
    }
   }
  }
- coords 2985.648 137.826 6834.558
+ coords 2514.397 135.255 6778.769
 }
 GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
  components {
@@ -20,5 +20,5 @@ GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDF
    }
   }
  }
- coords 2920.951 141.156 7580.052
+ coords 2778.428 143.914 7472.555
 }
