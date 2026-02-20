@@ -80,6 +80,174 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
   }
  }
 }
+$grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_PhaseZoneLine/Ins_PhaseZoneLinePrefab.et" {
+ {
+  components {
+   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_mPolygonTexture ""
+    m_cPolygonColor 0 0 0 1
+    m_cPolygonBorderColor 0 0 0 1
+    m_bLineMode 1
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+    m_Image "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
+   }
+  }
+  coords 1577.017 141.717 7871.433
+  Points {
+   ShapePoint "{68A80E018B6423C6}" {
+    Position 99.974 -0 -263.743
+   }
+   ShapePoint "{68A80E018A4DDA6C}" {
+    Position 66.152 0 -220.934
+   }
+   ShapePoint "{68A80E018952DB52}" {
+    Position 70.748 0 -180.139
+   }
+   ShapePoint "{68A80E01886DF498}" {
+    Position 96.939 0 -147.695
+   }
+   ShapePoint "{68A80E0187A2B526}" {
+    Position 156.711 0 -143.973
+   }
+   ShapePoint "{68A80E0187264034}" {
+    Position 170.847 0 -112.683
+   }
+   ShapePoint "{68A80E0186B32CA9}" {
+    Position 136.819 0 -84.771
+   }
+   ShapePoint "{68A80E0186EBF0AD}" {
+    Position 128.879 0 -56.702
+   }
+   ShapePoint "{68A80E0186310FFD}" {
+    Position 137.522 0 -18.145
+   }
+   ShapePoint "{68A80E01867F7005}" {
+    Position 155.396 0 3.467
+   }
+   ShapePoint "{68A80E0185B51177}" {
+    Position 182.896 0 17.641
+   }
+   ShapePoint "{68A80E01853E6658}" {
+    Position 203.595 0 27.543
+   }
+   ShapePoint "{68A80E01854064FD}" {
+    Position 241.204 -0 35.914
+   }
+   ShapePoint "{68A80E01849AB435}" {
+    Position 266.397 0 34.451
+   }
+   ShapePoint "{68A80E0184A41CF9}" {
+    Position 284.806 0 29.13
+   }
+   ShapePoint "{68A80E0184E69436}" {
+    Position 296.465 0 0.907
+   }
+   ShapePoint "{68A80E01842AA57D}" {
+    Position 298.102 0 -39.32
+   }
+   ShapePoint "{68A80E018174DAB9}" {
+    Position 326.123 0 -112.109
+   }
+   ShapePoint "{68A80E007B793006}" {
+    Position 298.762 0 -162.721
+   }
+   ShapePoint "{68A80E007AAE557D}" {
+    Position 261.378 0 -215.399
+   }
+   ShapePoint "{68A80E007A06B17F}" {
+    Position 214.886 -0 -278.048
+   }
+   ShapePoint "{68A80E007A7938F2}" {
+    Position 168.34 0 -292.257
+   }
+   ShapePoint "{68A80E0079BC70B3}" {
+    Position 122.93 0 -279.188
+   }
+  }
+  IsClosed 0
+ }
+ {
+  components {
+   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_mPolygonTexture ""
+    m_cPolygonColor 0 0 0 1
+    m_cPolygonBorderColor 0 0 0 1
+    m_bLineMode 1
+    m_iVisibleDuringPhase 2
+    m_Image "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
+   }
+  }
+  coords 2492.139 139.471 7479.137
+  Points {
+   ShapePoint "{68A80E00398E1723}" {
+    Position 113.063 0 -181.21
+   }
+   ShapePoint "{68A80E00391006EA}" {
+    Position 88.466 0 -158.092
+   }
+   ShapePoint "{68A80E00395502AB}" {
+    Position 74.742 0 -123.903
+   }
+   ShapePoint "{68A80E0038C7F612}" {
+    Position 80.273 0 -101.706
+   }
+   ShapePoint "{68A80E0038105FD6}" {
+    Position 89.491 0 -87.749
+   }
+   ShapePoint "{68A80E0038297056}" {
+    Position 102.786 0 -73.897
+   }
+   ShapePoint "{68A80E00387CEBEB}" {
+    Position 113.712 0 -53.48
+   }
+   ShapePoint "{68A80E0037886D0F}" {
+    Position 116.5 0 -33.376
+   }
+   ShapePoint "{68A80E0037A54BAE}" {
+    Position 131.901 0 -22.766
+   }
+   ShapePoint "{68A80E0037F81A03}" {
+    Position 166.096 0 -23.211
+   }
+   ShapePoint "{68A80E00370C72DA}" {
+    Position 190.836 0 -29.307
+   }
+   ShapePoint "{68A80E0037257FC2}" {
+    Position 194.949 0 -66.684
+   }
+   ShapePoint "{68A80E00377EF2C5}" {
+    Position 189.104 0 -99.793
+   }
+   ShapePoint "{68A80E003692CAC4}" {
+    Position 188.867 0 -126.187
+   }
+   ShapePoint "{68A80E0036C405F9}" {
+    Position 194.989 0 -155.387
+   }
+   ShapePoint "{68A80E00362997EB}" {
+    Position 187.148 0 -182.448
+   }
+   ShapePoint "{68A80E003676439A}" {
+    Position 169.597 0 -205.271
+   }
+   ShapePoint "{68A80E0035881291}" {
+    Position 151.304 0 -229.762
+   }
+   ShapePoint "{68A80E0035D44DA4}" {
+    Position 125.539 0 -242.024
+   }
+   ShapePoint "{68A80E0035F58A7F}" {
+    Position 118.469 0 -236.708
+   }
+   ShapePoint "{68A80E00350BAE72}" {
+    Position 108.069 0 -206.489
+   }
+  }
+  IsClosed 0
+ }
+}
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  coords 2034.923 127.171 4847.173
  Points {

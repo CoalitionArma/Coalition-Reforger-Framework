@@ -1,7 +1,7 @@
 GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/SupplyStack_Large_01_storage_base.et" {
  ID "F0DBA538AC2A0552"
  components {
-  SoundComponent "{658806598565AF90}" {
+  SoundComponent "{68A80E000A22372C}" {
    Filenames {
     "{4340FAB152ACD12D}Sounds/Compositions/Slotted/SlotFlatSmall/Compositions_Radio_Chatter.acp"
    }
@@ -11,8 +11,7 @@ GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/
     }
    }
   }
-  CRF_InsDestructiveComponent "{68A619F1A1CD5F81}" {
-   Enabled 0
+  CRF_InsDestructiveComponent "{68A80E000A223702}" {
    m_iCachePhase 2
    m_Image "{E65174B46D8AA4D5}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Defend.edds"
   }
