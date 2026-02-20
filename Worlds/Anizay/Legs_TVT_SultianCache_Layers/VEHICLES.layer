@@ -45,6 +45,47 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
   m_bShouldRespawnOnSideRespawn 0
  }
+ {
+  coords 1805.634 141.909 7715.008
+  m_rVehicle "{B6D330E7E40FE7DD}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_forest.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1871.335 140.773 7747.151
+  angles 0 91.945 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1853.152 141.222 7869.015
+  angles 0 91.945 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1735.404 142.056 7678.748
+  angles 0 -28.055 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1850.341 141.889 7682.234
+  angles 0 88.19 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1749.814 140.628 7734.129
+  angles 0 166.945 0
+  m_rVehicle "{FBD9E898478968DF}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA_9k135_Inv.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68A80E1C0B8D5150}" {
+    m_VehicleAmmoType HAT
+    m_iAmountOfBullets 2
+   }
+  }
+ }
 }
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
@@ -100,6 +141,11 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 2379.523 125.652 5029.199
   m_rVehicle "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2326.041 129.053 5038.376
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
   m_bShouldRespawnOnSideRespawn 0
  }
 }
