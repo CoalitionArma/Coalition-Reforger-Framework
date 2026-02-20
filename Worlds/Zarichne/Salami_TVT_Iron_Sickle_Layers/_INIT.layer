@@ -38,9 +38,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets:"\
+   "Weapons Platoon"\
+   "	Mortars"\
+   "	LMG Section"\
    ""\
    "OPFOR Composition: Infantry"\
    "OPFOR Assets:"\
+   "Snipers"\
    ""\
    "Time: 60"\
    ""\
@@ -396,31 +400,31 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
    Position 352.972 0 -355.269
   }
   ShapePoint "{68A56004C43CD9BE}" {
-   Position 360.752 -0 -474.169
+   Position 360.752 0 -474.169
   }
   ShapePoint "{68A56004C46009A4}" {
-   Position 217.993 -0 -516.17
+   Position 217.993 0 -516.17
   }
   ShapePoint "{68A56004C38F75A0}" {
-   Position 54.32 -0 -553.622
+   Position 54.32 0 -553.622
   }
   ShapePoint "{68A56004C23C5961}" {
-   Position -415.93 -0 -653.264
+   Position -415.93 0 -653.264
   }
   ShapePoint "{68A56004C2549461}" {
-   Position -459.477 -0 -567.342
+   Position -459.477 0 -567.342
   }
   ShapePoint "{68A56004C1C67B7E}" {
-   Position -507.842 -0 -501.559
+   Position -507.842 0 -501.559
   }
   ShapePoint "{68A56004C10E022E}" {
-   Position -557.26 -0 -379.912
+   Position -557.26 0 -379.912
   }
   ShapePoint "{68A56004C0BD3EE7}" {
-   Position -584.915 -0 -256.453
+   Position -584.915 0 -256.453
   }
   ShapePoint "{68A56004C02699E0}" {
-   Position -539.796 -0 -129.099
+   Position -539.796 0 -129.099
   }
  }
 }
