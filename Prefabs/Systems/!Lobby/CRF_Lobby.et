@@ -78,10 +78,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
    Enabled 0
   }
-  CRF_InsurgencyGamemodeManager "{68A619CDF3A209C1}" {
-   m_DefendingSide "INDFOR"
-   m_iPhaseBufferMinutes 5
-  }
  }
  coords 0 0 0
  PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/CRF_PlayerControllerMP.et"
