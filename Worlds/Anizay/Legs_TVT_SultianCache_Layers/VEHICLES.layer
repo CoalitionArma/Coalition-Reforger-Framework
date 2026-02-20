@@ -46,21 +46,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldRespawnOnSideRespawn 0
  }
 }
-Vehicle Mi8MT_armed_gunship_kord_HEDP_less_rockets1 : "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5E1E99434B3A7648}" {
-   MultiSlots {
-    MultiSlotConfiguration "{68A80E14CA0C8277}" {
-     SlotTemplate InventoryStorageSlot NSV50rd {
-      Prefab "{6D518F289805B8A1}Prefabs/Weapons/Magazines/NSV/Box_127x108_KORD_50rnd_4AP_1APIT.et"
-     }
-     NumSlots 5
-    }
-   }
-  }
- }
- coords 2375.077 125.212 5007.601
-}
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
   coords 2312.537 130.559 5011.565
@@ -117,7 +102,4 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et"
   m_bShouldRespawnOnSideRespawn 0
  }
-}
-Vehicle Mi8MT_armed_gunship_kord_empty1 : "{94C26FA5F8BC62C6}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_empty.et" {
- coords 2371.893 126.107 4985.137
 }

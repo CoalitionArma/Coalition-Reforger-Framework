@@ -1,0 +1,162 @@
+$grp GenericEntity : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPointsGroups/OPFOR_InitalGroupSpawn.et" {
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "1-2"
+   }
+  }
+  coords 2311.792 130.372 5064.118
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "1PLT"
+   }
+  }
+  coords 2312.901 130.498 5072.198
+ }
+ {
+  coords 2312.281 130.407 5067.74
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "COY"
+   }
+  }
+  coords 2315.094 130.455 5076.285
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "2PLT"
+   }
+  }
+  coords 2320.225 129.864 5074.545
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "2-1"
+   }
+  }
+  coords 2322.332 129.538 5071.53
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "2-2"
+   }
+  }
+  coords 2323.785 129.265 5068.613
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "Recon 1"
+   }
+  }
+  coords 2314.277 130.429 5027.601
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "Recon 2"
+   }
+  }
+  coords 2325.621 129.078 5029.482
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "BTR 1"
+   }
+  }
+  coords 2311.488 130.828 5047.224
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "BTR 2"
+   }
+  }
+  coords 2323.434 129.131 5047.561
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "MMG"
+   }
+  }
+  coords 2319.786 129.529 5060.563
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "HELI 1"
+   }
+  }
+  coords 2372.006 125.435 5043.972
+ }
+}
+$grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPointsGroups/INDFOR_InitalGroupSpawn.et" {
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "BOSS"
+   }
+  }
+  coords 1760.607 140.307 7754.867
+ }
+ {
+  coords 1771.856 140.362 7754.819
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "1-2"
+   }
+  }
+  coords 1772.022 140.467 7750.207
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "2-1"
+   }
+  }
+  coords 1767.461 140.71 7744.634
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "2-2"
+   }
+  }
+  coords 1778.876 140.764 7744.529
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "ATGM"
+   }
+  }
+  coords 1753.061 140.642 7740.421
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "MMG"
+   }
+  }
+  coords 1749.548 140.193 7760.131
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "AA"
+   }
+  }
+  coords 1725.767 138.103 7779.863
+ }
+}
