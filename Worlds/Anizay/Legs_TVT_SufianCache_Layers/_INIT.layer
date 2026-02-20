@@ -1,6 +1,0 @@
-SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
- coords 1803.689 140.969 7494.862
-}
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
- coords 0 0 0
-}
