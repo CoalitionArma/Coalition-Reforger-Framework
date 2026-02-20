@@ -12,7 +12,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 1738.98 139.515 7757.112
   m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
-  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1761.027 139.647 7764.874
@@ -22,7 +21,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 1731.544 140.727 7755.855
   m_rVehicle "{1449105FD658EDFB}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_forest.et"
-  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1752.638 139.278 7776.204
@@ -32,7 +30,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 1737.418 138.793 7777.161
   m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
-  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1762.492 139.359 7775.129
@@ -42,7 +39,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 1746.811 139.268 7776.414
   m_rVehicle "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et"
-  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1732.547 138.189 7777.659
@@ -50,9 +46,20 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldRespawnOnSideRespawn 0
  }
 }
-GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
- coords 2396.131 125.14 5030.571
- angles 0 -92.957 0
+Vehicle Mi8MT_armed_gunship_kord_HEDP_less_rockets1 : "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5E1E99434B3A7648}" {
+   MultiSlots {
+    MultiSlotConfiguration "{68A80E14CA0C8277}" {
+     SlotTemplate InventoryStorageSlot NSV50rd {
+      Prefab "{6D518F289805B8A1}Prefabs/Weapons/Magazines/NSV/Box_127x108_KORD_50rnd_4AP_1APIT.et"
+     }
+     NumSlots 5
+    }
+   }
+  }
+ }
+ coords 2375.077 125.212 5007.601
 }
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
@@ -105,4 +112,12 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
   m_bShouldRespawnOnSideRespawn 0
  }
+ {
+  coords 2379.523 125.652 5029.199
+  m_rVehicle "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
+Vehicle Mi8MT_armed_gunship_kord_empty1 : "{94C26FA5F8BC62C6}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_empty.et" {
+ coords 2371.893 126.107 4985.137
 }

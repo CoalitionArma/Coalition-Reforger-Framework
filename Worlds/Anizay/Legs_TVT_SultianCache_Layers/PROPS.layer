@@ -1,3 +1,21 @@
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 2396.131 125.14 5030.571
+ angles 0 -92.957 0
+ {
+  GenericEntity {
+   ID "5E330D6CA3AAA53F"
+   components {
+    SCR_ResourceComponent "{5E3298BE225F0743}" {
+     m_aConsumers {
+      SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+       m_fResourceRange 8
+      }
+     }
+    }
+   }
+  }
+ }
+}
 GenericEntity : "{525C793E1943EA06}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_Conflict_USSR_01.et" {
  coords 2378.531 125.064 5028.978
 }

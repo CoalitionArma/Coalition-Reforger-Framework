@@ -36,6 +36,12 @@ Vehicle : "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et" 
      }
      NumSlots 5
     }
+    MultiSlotConfiguration "{68A80E14C00779AC}" {
+     SlotTemplate InventoryStorageSlot NSV50rd {
+      Prefab "{6D518F289805B8A1}Prefabs/Weapons/Magazines/NSV/Box_127x108_KORD_50rnd_4AP_1APIT.et"
+     }
+     NumSlots 10
+    }
    }
   }
   VehicleHelicopterSimulation "{51FAEE57F7DA270E}" {
