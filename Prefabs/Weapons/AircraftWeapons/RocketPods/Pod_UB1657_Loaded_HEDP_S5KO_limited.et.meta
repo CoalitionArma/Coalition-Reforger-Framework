@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{13B7DB0A32C91896}Prefabs/Weapons/AircraftWeapons/RocketPods/Pod_UB1657_Loaded_HEDP_S5KO_limited.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
