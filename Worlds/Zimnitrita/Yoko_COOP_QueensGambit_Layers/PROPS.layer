@@ -1,0 +1,41 @@
+$grp GenericEntity : "{084825E68F0FAF86}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_Scoped_S_USSR_01.et" {
+ {
+  coords 13682.494 48.508 7198.473
+  angles 0 -34.504 0
+ }
+ {
+  coords 13809.555 50.423 7216.506
+ }
+}
+GenericEntity : "{1D2887BB9A7D4670}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_USSR_01.et" {
+ coords 13703.823 49.725 7183.15
+ angles 0 149.693 0
+}
+$grp GenericEntity : "{4510C273B794F3A9}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_USSR_01.et" {
+ {
+  coords 13769.846 51.376 7177.778
+  angles 0 -110.05 0
+ }
+ {
+  coords 13753.09 51.338 7147.442
+  angles 0 7.925 0
+ }
+}
+$grp StaticModelEntity : "{605A7848CB4D361A}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Bunker_Camouflaged_USSR_01.et" {
+ {
+  coords 13819.763 52.959 7141.244
+  angles 0 87.841 0
+ }
+ {
+  coords 13819.066 52.959 7159.724
+  angles 0 87.841 0
+ }
+}
+GenericEntity : "{B4FE2CA8ADB74E6D}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Fortifications/E_SandBag_Tower_S_USSR_01.et" {
+ coords 13754.843 48.62 6953.716
+ angles 0 178.23 0
+}
+SCR_DestructibleBuildingEntity : "{BD4E6475CA2BAE24}Prefabs/Structures/Military/Houses/GuardTower_USSR_01/GuardTower_USSR_01_blue.et" {
+ coords 13698.473 0.095 7162.904
+ angles 0 89.894 0
+}

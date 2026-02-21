@@ -45,10 +45,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "West German Forces have flanked East German Army's supply line, West German forces have decided to make a daring move to push forward and possibly finish it."\
+   m_sTextData "US Green Berets are behind enemy lines and are waiting to attack key RUS postions. However, upon scouting their regroup point the found some Leopard 1s. It is time to cause some chaos."\
    ""\
    "BLUFOR Composition: Armored Infantry Platoon"\
-   "BLUFOR Assets: 1x MMG, 1x MAT and 1x Leopard 1"\
+   "BLUFOR Assets: 1x MMG, 2x MATV (Armed) and  2x Leopard 1"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
@@ -62,9 +62,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Capture the Military Base"\
+   m_sTextData "Capture Enemy Vehicle Depot"\
    "Destroy Enemy Supply Cache"\
-   "Destroy Enemy 2T1s at the makred location"
+   "Destroy Enemy 2T1s at the marked location"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -96,7 +96,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68A713686CF14C17}" {
+  CRF_SlottingGroup "{68AB0D0989DA305E}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -104,7 +104,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68A713686CF14D35}" {
+  CRF_SlottingGroup "{68AB0D0989DA30A5}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -119,7 +119,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68A713686CF14DAC}" {
+  CRF_SlottingGroup "{68AB0D0989DA31C8}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -134,7 +134,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68A713686CF14E38}" {
+  CRF_SlottingGroup "{68AB0D0989DA325A}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -146,19 +146,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68A713686CF14E9F}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{68A713686CF14F6C}" {
+  CRF_SlottingGroup "{68AB0D0989DA323E}" {
    m_sCallsign "Tank 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -168,13 +156,23 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
+  CRF_SlottingGroup "{68AB0D0989DA3297}" {
+   m_sCallsign "Tank 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_LOADER
+    VEHICLE_DRIVER
+   }
+  }
  }
- m_iBLUFORTickets 100
+ m_iBLUFORTickets 150
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{2F8DA0B031A1AE20}Configs/Gearscripts/Custom/Yoko/CRF_GS_GER_80s_Yoko.conf"
+  m_rGearScript "{696E32C057156A37}Configs/Gearscripts/Standard/Modern/CRF_GS_Modern_GreenBeret.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -182,7 +180,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{2D1ED31B21B4FE69}Configs/Gearscripts/Standard/80s/CRF_GS_East_GER_80s.conf"
+  m_rGearScript "{EEF62EAA1D0BB1D5}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSATACS_AK12.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
