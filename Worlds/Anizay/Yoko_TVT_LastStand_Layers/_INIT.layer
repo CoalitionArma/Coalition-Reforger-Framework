@@ -1,3 +1,6 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 6315.756 220.602 2282.147
+}
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_SearchAndDestroyGamemodeManager "{68AC18D3F2442E1E}" {
@@ -8,15 +11,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 5
-     m_iStartingMinutes 30
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 6
+     m_iStartingMinutes 0
     }
    }
    m_bRandomWeatherChanges 0
   }
  }
- coords 7061.11 -56.874 5367.215
+ coords 6053.939 229.53 2184.639
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
@@ -27,12 +30,61 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
- m_iFactionOneRatio 0
- m_iFactionTwoRatio 0
- m_sFactionOneKey ""
- m_sFactionTwoKey ""
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "US Marines are surround in Gorqan, they are making alast stand hold against MEC."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x Weapons Team and 1x STYKER MGS"\
+   ""\
+   "OPFOR Composition: Motorized Infatry Platoon"\
+   "OPFOR Assets: 2x BTR70"\
+   ""\
+   "Time: 5:30 am"\
+   ""\
+   "Weather: Cloudy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Defend both bomsites."\
+   ""\
+   ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Destroy both Bomsites."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "N/A"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 4
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{68AC18D4109F7C56}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F9CA1}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -40,7 +92,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7D57}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F9DA4}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -55,7 +107,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7DF5}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F9ECB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -70,36 +122,31 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7E78}" {
-   m_sCallsign "1-3"
+  CRF_SlottingGroup "{68AEF9C2BF9F9F59}" {
+   m_sCallsign "Weapons Team"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7ED5}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
+  CRF_SlottingGroup "{68AEF9C2BF9F9F28}" {
+   m_sCallsign "STYKER 1"
+   m_FlagType ARMORED
    m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
    }
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{68AC18D4109F7F2D}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F903B}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -107,7 +154,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7F8D}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F908B}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -122,7 +169,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F7066}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F9118}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -137,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F70FC}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F91FF}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -152,7 +199,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68AC18D4109F715F}" {
+  CRF_SlottingGroup "{68AEF9C2BF9F924C}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,13 +214,29 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
+  CRF_SlottingGroup "{68AEF9C2BF9F9226}" {
+   m_sCallsign "BTR 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{68AEF9C2BF9F9286}" {
+   m_sCallsign "BTR 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+  }
  }
  m_iBLUFORTickets 0
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A65DDE01371A3B53}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_Marines_Desert.conf"
+  m_rGearScript "{670CAB98D21A8357}Configs/Gearscripts/Custom/Yoko/CRF_GS_2000sUS_UCP_sandbags.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
