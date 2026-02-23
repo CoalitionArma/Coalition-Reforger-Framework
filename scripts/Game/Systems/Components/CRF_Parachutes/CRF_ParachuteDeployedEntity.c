@@ -31,6 +31,22 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 
 	protected bool m_HasLanded;
 
+	// Network sync
+	[Attribute("10", UIWidgets.Slider, "Network sync interval (hz)", "1 60 1")]
+	protected float m_NetworkSyncHz = 10;
+	protected float m_NetSendInterval;
+	protected float m_NetAccTime;
+
+	// Interpolation for non-owners
+	protected vector m_TargetPos;
+	protected vector m_TargetAngles;
+	protected vector m_TargetVel;
+	protected float m_InterpFactor;
+
+	// --------------------------------------------------------------------------------------------
+	// Initialization
+	// --------------------------------------------------------------------------------------------
+
 	bool IsAuthority()
 	{
 		return m_RplComponent && m_RplComponent.Role() == RplRole.Authority;
@@ -47,10 +63,6 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			return m_RplComponent.Id();
 		return RplId.Invalid();
 	}
-
-	// --------------------------------------------------------------------------------------------
-	// Initialization
-	// --------------------------------------------------------------------------------------------
 
 	override void EOnInit(IEntity owner)
 	{
@@ -82,8 +94,13 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			m_VelocityApplied = true;
 		}
 
+		// Network sync interval
+		m_NetSendInterval = 1.0 / Math.Max(m_NetworkSyncHz, 1.0);
+		m_NetAccTime = 0;
+
 		SetEventMask(EntityEvent.SIMULATE);
 		SetEventMask(EntityEvent.CONTACT);
+		SetEventMask(EntityEvent.FRAME); // for interpolation
 	}
 
 	override void EOnDeactivate(IEntity owner)
@@ -166,6 +183,14 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			if (m_CargoSlot && m_CargoSlot.IsOccupied())
 				RequestExit();
 		}
+
+		// Network sync
+		m_NetAccTime += timeSlice;
+		if (m_NetAccTime >= m_NetSendInterval)
+		{
+			m_NetAccTime = 0;
+			SendSync();
+		}
 	}
 
 	override void EOnContact(IEntity owner, IEntity other, Contact contact)
@@ -210,6 +235,100 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			return;
 
 		playerComp.Rpc_RequestExit(GetRplId(), velocityAtExit);
+	}
+
+	// --------------------------------------------------------------------------------------------
+	// Network Synchronization with Deletion Protection
+	// --------------------------------------------------------------------------------------------
+
+	void SendSync()
+	{
+		if (!IsAuthority())
+			return;
+
+		vector transform[4];
+		GetWorldTransform(transform);
+		vector vel = m_Physics.GetVelocity();
+		vector angVel = m_Physics.GetAngularVelocity();
+
+		Rpc(RpcDo_SyncMovement, transform, vel, angVel, m_WindDirDeg, m_WindSpeed);
+	}
+
+	[RplRpc(RplChannel.Unreliable, RplRcver.Broadcast)]
+	void RpcDo_SyncMovement(vector transform[4], vector vel, vector angVel, float windDirDeg, float windSpeed)
+	{
+		// Ignore if we are the authority or if the entity has already landed/deleted
+		if (IsAuthority() || m_HasLanded || !m_Physics)
+			return;
+
+		m_WindDirDeg = windDirDeg;
+		m_WindSpeed = windSpeed;
+
+		// Simple interpolation: store target and apply linearly over time
+		m_TargetPos = transform[3];
+		m_TargetAngles = Math3D.MatrixToAngles(transform);
+		m_TargetVel = vel;
+		m_InterpFactor = 0; // will be increased each frame
+
+		// If the difference is large, snap
+		vector curPos = GetOrigin();
+		if (vector.Distance(m_TargetPos, curPos) > 5.0)
+		{
+			SetWorldTransform(transform);
+			m_Physics.SetVelocity(vel);
+			m_Physics.SetAngularVelocity(angVel);
+		}
+	}
+
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		// Skip if landed, deleted, or if we are the owner/authority
+		if (m_HasLanded || !m_Physics || IsAuthority() || IsOwner())
+			return;
+
+		if (m_InterpFactor < 1.0)
+		{
+			m_InterpFactor += timeSlice * 5; // interpolation speed (5 per second)
+			if (m_InterpFactor > 1.0) m_InterpFactor = 1.0;
+
+			// Interpolate position and orientation
+			vector curPos = GetOrigin();
+			vector newPos = Lerp(curPos, m_TargetPos, m_InterpFactor);
+
+			// Get current transform
+			vector curTransform[4];
+			GetWorldTransform(curTransform);
+			vector curAng = Math3D.MatrixToAngles(curTransform);
+			vector newAng = LerpAngles(curAng, m_TargetAngles, m_InterpFactor);
+
+			vector newTransform[4];
+			Math3D.AnglesToMatrix(newAng, newTransform);
+			newTransform[3] = newPos;
+			SetWorldTransform(newTransform);
+
+			// Interpolate velocity
+			vector curVel = m_Physics.GetVelocity();
+			vector newVel = Lerp(curVel, m_TargetVel, m_InterpFactor);
+			m_Physics.SetVelocity(newVel);
+		}
+	}
+
+	vector Lerp(vector a, vector b, float t)
+	{
+		return a + (b - a) * t;
+	}
+
+	vector LerpAngles(vector a, vector b, float t)
+	{
+		vector result;
+		for (int i = 0; i < 3; i++)
+		{
+			float diff = b[i] - a[i];
+			if (diff > 180) diff -= 360;
+			if (diff < -180) diff += 360;
+			result[i] = a[i] + diff * t;
+		}
+		return result;
 	}
 
 	// --------------------------------------------------------------------------------------------
