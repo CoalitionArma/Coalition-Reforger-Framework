@@ -1,0 +1,298 @@
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 12343.384 31.019 10906.604
+ angles 0 -0.133 0
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 12327.644 31.068 10900.872
+ angles -1.584 -22.714 -0.307
+}
+GenericEntity : "{4E287D7A04A12D2D}Prefabs/Compositions/Slotted/SlotFlatSmall/ZWCStorage_S_USSR_01_NOARSENAL.et" {
+ components {
+  FactionAffiliationComponent "{687C30AF3D4FA883}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 12356.303 30.562 10937.02
+ angles -0.722 -10.047 3.724
+ {
+  GenericEntity {
+   ID "687C30AF3D4B4EA6"
+  }
+  GenericEntity {
+   ID "687C30AF3D4B4E95"
+   components {
+    SCR_ResourceComponent "{687C65EA564E3FF1}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{687C65EA55DF0AC9}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 5236
+       m_fResourceValueMax 50000
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumer "{687D17366F72E0DD}" {
+       m_eResourceRights ALL
+       m_fResourceRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceConsumerContainerQueue "{687D1736645F6AFD}" {
+        m_StoragePolicies {
+         SCR_ResourceConsumerStoragePolicy "{687D17359BD452A6}" {
+          m_StorageQueue SCR_ResourceConsumerContainerStorageQueueExtended "{687D173599B24CDD}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+      }
+     }
+     m_aGenerators {
+      SCR_ResourceGenerator "{687D1736416A9747}" {
+       m_eResourceRights ALL
+       m_fStorageRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{687D1736796815A2}" {
+        m_StoragePolicies {
+         SCR_ResourceGeneratorStoragePolicy "{687D17367D375F05}" {
+          m_StorageQueue SCR_ResourceGeneratorContainerStorageQueueExtended "{687D173670B39CF0}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+       m_aActions {
+        SCR_ResourceGeneratorActionStore "{687D173674ED6FB4}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{6B1CAED52B91E267}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_Conflict_USSR_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{659122CEBD83D1B9}" {
+    "faction affiliation" "OPFOR"
+   }
+  }
+  coords 12360.114 30.389 10916.762
+  {
+   GenericEntity {
+    ID "659122CEAC7F1517"
+    {
+     GenericEntity {
+      ID "65912058D6360042"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+        m_fBuildingRadius 200
+       }
+       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+        "faction affiliation" "OPFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{659122CEBD83D1B9}" {
+    "faction affiliation" "OPFOR"
+   }
+  }
+  coords 11774.436 30.7 11845.127
+  angles -1.79 -160.986 -0.448
+  {
+   GenericEntity {
+    ID "659122CEAC7F1517"
+    {
+     GenericEntity {
+      ID "65912058D6360042"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+        m_fBuildingRadius 200
+       }
+       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+        "faction affiliation" "OPFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 12389.064 32.996 10969.565
+ angles -0.332 13.409 -0.539
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 12368.192 30.25 10923.973
+ angles 0 5.697 0
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.483 0.147 -0.148
+   angles -0.43 3.056 -0.463
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 1.333 0.032 1.06
+     angles -0.447 87.727 0
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords -2.39 -0.187 -0.155
+       angles 0 0.031 0
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords -2.515 -0.129 -0.06
+         {
+          GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+           coords -0.885 -0.073 -1.264
+           angles 0.446 -87.779 0.016
+           {
+            GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+             coords -2.295 -0.049 0.111
+             {
+              GenericEntity : "{A46AD3EA3096DACF}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_OPFOR_CAMPAIGN.et" {
+               components {
+                SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+                 m_bCheckFactionForOverwriteArsenalConfig 1
+                 m_bGetDefaultIfNoFaction 0
+                 m_eArsenalSaveType SAVING_DISABLED
+                 m_bAlwaysUseDefaultFaction 1
+                }
+                SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+                 "faction affiliation" "OPFOR"
+                }
+               }
+               coords 0.346 0.185 -4.272
+               angles 0 -92.151 0
+               {
+                GenericEntity {
+                 ID "685018D4885AF34D"
+                 coords -0.349 -0.021 0.867
+                 angles 0 -45.82 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF343"
+                 coords 0.81 0.01 -1.144
+                 angles 7.117 97.794 -1.702
+                }
+                GenericEntity {
+                 ID "685018D4885AF340"
+                 coords -1.466 0.112 -0.784
+                 angles 30.705 -127.202 -21.186
+                }
+                GenericEntity {
+                 ID "685018D4885AF346"
+                 coords -1.135 0.064 -0.059
+                 angles 0 89.179 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33A"
+                 coords -0.859 0.089 -0.925
+                 angles 11.144 -118.209 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF33B"
+                 coords 0.035 0.049 -1.065
+                 angles 0 177.707 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D60"
+                 coords 1.105 -0.051 0.284
+                 angles 0 39.419 0
+                }
+                GenericEntity {
+                 ID "685018D4885AF338"
+                 coords 0.534 -0.047 0.923
+                 angles 0 -19.083 0
+                }
+                GenericEntity {
+                 ID "685018D4885A1D64"
+                 coords 0.438 -0.036 0.316
+                 angles 0 54.557 0
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 50
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+    CRF_VehicleDepotVehicle "{68A62196B6CF1BB9}" {
+     m_sVehicleName "M113 M2"
+     m_sVehiclePrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+     m_eCostType SUPPLIES
+     m_iCost 1000
+    }
+    CRF_VehicleDepotVehicle "{68A62196CDB171E6}" {
+     m_sVehicleName "M113 M2 Armored"
+     m_sVehiclePrefab "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A2_APC.et"
+     m_eCostType SUPPLIES
+     m_iCost 1250
+    }
+    CRF_VehicleDepotVehicle "{68A95350E5A2F070}" {
+     m_sVehicleName "Mobile Spawn Point"
+     m_sVehiclePrefab "{0AAB05F13990369D}Prefabs/Vehicles/MSPs/OPFOR_MSP.et"
+     m_eCostType SUPPLIES
+     m_iCost 3000
+    }
+   }
+  }
+ }
+ coords 12366.173 30.692 10939.437
+ angles 0 -125.687 0
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 12072.791 26.537 11363.141
+ Points {
+  ShapePoint "{68A772E412CEBB94}" {
+   Position -69.135 0 -537.721
+  }
+  ShapePoint "{68A772E4102E1191}" {
+   Position -593.957 0 590.932
+  }
+  ShapePoint "{68A772E417B9DE48}" {
+   Position -83.637 0 682.182
+  }
+  ShapePoint "{68A772E40E2B4A77}" {
+   Position 612.752 0 -421.834
+  }
+  ShapePoint "{68A772E40DBFEC01}" {
+   Position 416.902 0 -574.203
+  }
+ }
+}

@@ -1,0 +1,17 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 1744.254 6.895 1001.044
+ Points {
+  ShapePoint "{68A56003EFB75F0E}" {
+   Position 7.779 0 -4.631
+  }
+  ShapePoint "{68A56003EBD606F4}" {
+   Position 1558.865 0 431.679
+  }
+  ShapePoint "{68A56003E8C37EFC}" {
+   Position 1629.457 0 -227.018
+  }
+  ShapePoint "{68A56003E3C9AAEC}" {
+   Position 117.531 0 -489.838
+  }
+ }
+}

@@ -39,17 +39,11 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	// - All players within a zones range
 	ref array<SCR_ChimeraCharacter> m_aAllPlayersWithinZoneRange = new array<SCR_ChimeraCharacter>;
 	
-	[RplProp(onRplName: "UpdateClients")]
-	string m_sHudMessage;
-	
-	[RplProp(onRplName: "PlayRadioSound")]
-	string m_sRadioSoundString;
-	
-	[RplProp(onRplName: "PlayAlertSound")]
-	string m_sAlertSoundString;
-	
-	[RplProp(onRplName: "UpdateClients")]
-	ref array<string> m_aZonesStatus = new array<string>;
+	// RPC-based state management - no more BumpMe needed
+	protected string m_sHudMessage;
+	protected string m_sRadioSoundString;
+	protected string m_sAlertSoundString;
+	protected ref array<string> m_aZonesStatus = new array<string>;
 	
 	[RplProp()]
 	bool m_bGameStarted = false;
@@ -87,18 +81,41 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	{
 		return s_Instance;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Public getters for protected variables
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	string GetHudMessage()
+	{
+		return m_sHudMessage;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<string> GetZonesStatus()
+	{
+		return m_aZonesStatus;
+	}
 
 	//------------------------------------------------------------------------------------------------
-	override protected void OnPostInit(IEntity owner)
+	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		SetEventMask(owner, EntityEvent.FIXEDFRAME);
-
-		//--- Server only
+		SetEventMask(owner, EntityEvent.INIT | EntityEvent.FIXEDFRAME);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		
+		// Initialize the array on all machines (needed for RPC updates to work)
+		SetupZoneStatus();
+		
+		// Server-only initialization
 		if (RplSession.Mode() == RplMode.Client)
 			return;
-		
-		SetupZoneStatus();
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -123,6 +140,68 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// RPC Methods for efficient network updates
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateHudMessage(string message)
+	{
+		m_sHudMessage = message;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateZoneStatus(int index, string status)
+	{
+		if (index < 0 || index >= m_aZonesStatus.Count())
+			return;
+			
+		m_aZonesStatus.Set(index, status);
+		UpdateClients();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateMultipleZones(array<int> indices, array<string> statuses)
+	{
+		if (indices.Count() != statuses.Count())
+			return;
+			
+		for (int i = 0; i < indices.Count(); i++)
+		{
+			int index = indices[i];
+			if (index >= 0 && index < m_aZonesStatus.Count())
+				m_aZonesStatus.Set(index, statuses[i]);
+		}
+		UpdateClients();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_PlayRadioSound(string message)
+	{
+		m_sHudMessage = message;
+		PlayRadioSound();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_PlayAlertSound(string message)
+	{
+		m_sHudMessage = message;
+		PlayAlertSound();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_ClearMessages()
+	{
+		m_sHudMessage = "";
+		m_sAlertSoundString = "";
+	}
+
 	//------------------------------------------------------------------------------------------------
 
 	// Frontline functions
@@ -173,19 +252,21 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		if(m_iInitialTimeIteratorInt != 0)
 		{
 			m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", "N/A", m_iInitialTimeIteratorInt, "N/A"));
-			m_sHudMessage = string.Format("%1 Unlocks In: %2", zoneText, SCR_FormatHelper.FormatTime(m_iInitialTimeIteratorInt));
+			string message = string.Format("%1 Unlocks In: %2", zoneText, SCR_FormatHelper.FormatTime(m_iInitialTimeIteratorInt));
 			m_iInitialTimeIteratorInt = m_iInitialTimeIteratorInt - 1;
-			Replication.BumpMe();
+			
+			Rpc(RpcDo_UpdateZoneStatus, zoneIndex, string.Format("%1:%2:%3", "N/A", m_iInitialTimeIteratorInt, "N/A"));
+			Rpc(RpcDo_UpdateHudMessage, message);
 			return;
 		};
 		
 		m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", "N/A", "Unlocked", "N/A"));
-		m_sHudMessage = string.Format("%1 Unlocked!", zoneText);
-		m_sRadioSoundString = m_sHudMessage;
-		PlayRadioSound();
+		string unlockMessage = string.Format("%1 Unlocked!", zoneText);
 		m_bGameStarted = true;
-		UpdateClients();
-		Replication.BumpMe();
+		
+		Rpc(RpcDo_UpdateZoneStatus, zoneIndex, string.Format("%1:%2:%3", "N/A", "Unlocked", "N/A"));
+		Rpc(RpcDo_PlayRadioSound, unlockMessage);
+		Replication.BumpMe(); // Only for m_bGameStarted flag
 		
 		GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
 		
@@ -264,8 +345,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 			if(zoneState.ToInt() != 0)  
 			{
 				m_aZonesStatus.Set(index, string.Format("%1:%2:%3", zoneFactionStored, "Unlocked", zoneFactionStored));
-				UpdateClients();
-				Replication.BumpMe();
+				Rpc(RpcDo_UpdateZoneStatus, index, string.Format("%1:%2:%3", zoneFactionStored, "Unlocked", zoneFactionStored));
 			};
 		}
 		
@@ -274,6 +354,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (m_sHudMessage == string.Format("%1 Victory!", m_sBluforSideNickname) || m_sHudMessage == string.Format("%1 Victory!", m_sOpforSideNickname))
 		{
+			array<int> indices = {};
+			array<string> statuses = {};
+			
 			foreach(int index, string zoneName : m_aZoneObjectNames)
 			{
 				string status = m_aZonesStatus[index];
@@ -282,10 +365,11 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 				status.Split(":", zoneStatusArray, false);
 		
 				m_aZonesStatus.Set(index, string.Format("%1:%2:%3", zoneStatusArray[0], "Locked", zoneStatusArray[0]));
+				indices.Insert(index);
+				statuses.Insert(string.Format("%1:%2:%3", zoneStatusArray[0], "Locked", zoneStatusArray[0]));
 			}
 			
-			UpdateClients();
-			Replication.BumpMe();
+			Rpc(RpcDo_UpdateMultipleZones, indices, statuses);
 			return;
 		}
 		
@@ -294,16 +378,18 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_iTimeToWinIteratorInt = m_iTimeToWinIteratorInt - 1;
 			
+			string victoryMessage;
 			if(m_iTimeToWinIteratorInt <= 0)
 			{
-				m_sHudMessage = string.Format("%1 Victory!", m_sBluforSideNickname);
-				m_sRadioSoundString = m_sHudMessage;
-				PlayRadioSound();
+				victoryMessage = string.Format("%1 Victory!", m_sBluforSideNickname);
+				m_sHudMessage = victoryMessage;
+				Rpc(RpcDo_PlayRadioSound, victoryMessage);
 			} else {
-				m_sHudMessage = string.Format("%1 Victory In: %2", m_sBluforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
+				victoryMessage = string.Format("%1 Victory In: %2", m_sBluforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
+				m_sHudMessage = victoryMessage;
+				Rpc(RpcDo_UpdateHudMessage, victoryMessage);
 			};
 
-			Replication.BumpMe();
 			return;
 		};
 		
@@ -311,16 +397,18 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_iTimeToWinIteratorInt = m_iTimeToWinIteratorInt - 1;
 
+			string victoryMessage;
 			if(m_iTimeToWinIteratorInt <= 0)
 			{
-				m_sHudMessage = string.Format("%1 Victory!", m_sOpforSideNickname);
-				m_sRadioSoundString = m_sHudMessage;
-				PlayRadioSound();
+				victoryMessage = string.Format("%1 Victory!", m_sOpforSideNickname);
+				m_sHudMessage = victoryMessage;
+				Rpc(RpcDo_PlayRadioSound, victoryMessage);
 			} else {
-				m_sHudMessage = string.Format("%1 Victory In: %2", m_sOpforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
+				victoryMessage = string.Format("%1 Victory In: %2", m_sOpforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
+				m_sHudMessage = victoryMessage;
+				Rpc(RpcDo_UpdateHudMessage, victoryMessage);
 			};
 
-			Replication.BumpMe();
 			return;
 		};
 		
@@ -367,9 +455,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 				case m_OpforSide  : { nickname = m_sOpforSideNickname;  break;}; //Opfor
 			}
 			
-			m_sHudMessage = nickname + " Is Capturing " + ConvertIndexToZoneString(zoneIndex) + "!";
-			m_sAlertSoundString = m_sHudMessage;
-			PlayAlertSound();
+			string alertMessage = nickname + " Is Capturing " + ConvertIndexToZoneString(zoneIndex) + "!";
+			m_sHudMessage = alertMessage;
+			Rpc(RpcDo_PlayAlertSound, alertMessage);
 			
 			GetGame().GetCallqueue().CallLater(ResetMessage, 8500);
 		};
@@ -377,8 +465,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		m_iWhichZoneCaptureIsInProgress = zoneIndex;
 		m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", side, zoneState.ToInt() + 1, zoneFactionStored));
 		
-		UpdateClients();
-		Replication.BumpMe();
+		Rpc(RpcDo_UpdateZoneStatus, zoneIndex, string.Format("%1:%2:%3", side, zoneState.ToInt() + 1, zoneFactionStored));
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -397,9 +484,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 		m_sHudMessage = string.Format("%1 Captured %2!", nickname, zoneText);
 		m_sRadioSoundString = m_sHudMessage;
-		PlayRadioSound();
 		
-		Replication.BumpMe();
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
 		
 		// Respawn all players when zone is captured
@@ -432,9 +517,33 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 		m_aZonesStatus.Set(zoneIndexToChange, string.Format("%1:%2:%3", zoneStatusToChangeArray[0], "Locked", zoneStatusToChangeArray[2]));
 		
+		// Batch update all zone changes
+		array<int> indices = {zoneIndex, zoneIndexToChange};
+		
+		string capturedZoneStatus;
+		if ((zoneIndex == (m_aZoneObjectNames.Count() - 1) && side == m_BluforSide) || (zoneIndex == 0 && side == m_OpforSide))
+			capturedZoneStatus = "Unlocked";
+		else
+			capturedZoneStatus = "Locked";
+		
+		array<string> statuses = {
+			string.Format("%1:%2:%3", side, capturedZoneStatus, side),
+			string.Format("%1:%2:%3", zoneStatusToChangeArray[0], "Locked", zoneStatusToChangeArray[2])
+		};
+		
+		if(zoneIndexBehind <= (m_aZoneObjectNames.Count() - 1) && zoneIndexBehind >= 0)
+		{
+			indices.Insert(zoneIndexBehind);
+			string zoneBehindToChange = m_aZonesStatus.Get(zoneIndexBehind);
+			array<string> zoneStatusBehindArray = {};
+			zoneBehindToChange.Split(":", zoneStatusBehindArray, false);
+			statuses.Insert(string.Format("%1:%2:%3", zoneStatusBehindArray[0], "Locked", zoneStatusBehindArray[2]));
+			m_aZonesStatus.Set(zoneIndexBehind, string.Format("%1:%2:%3", zoneStatusBehindArray[0], "Locked", zoneStatusBehindArray[2]));
+		};
+		
+		Rpc(RpcDo_UpdateMultipleZones, indices, statuses);
+		
 		GetGame().GetCallqueue().CallLater(UnlockZoneDelay, 7650, false, zoneIndex, zoneIndexToChange); // need to allow players to read m_sHudMessage
-		UpdateClients();
-		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -475,88 +584,95 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 			 
 			if (checkIfTimerArray.Count() <= 3)
 			{
+				string unlockMessage;
 				if(zoneText != zoneTextTwo)
-					m_sHudMessage = zoneText + " & " + zoneTextTwo + " Are Now Unlocked!";
+					unlockMessage = zoneText + " & " + zoneTextTwo + " Are Now Unlocked!";
 				else
-					m_sHudMessage = zoneText + " Is Now Unlocked!";
+					unlockMessage = zoneText + " Is Now Unlocked!";
 			
-				m_sRadioSoundString = m_sHudMessage;
+				m_sHudMessage = unlockMessage;
+				Rpc(RpcDo_PlayRadioSound, unlockMessage);
 				GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-				PlayRadioSound();
 			};
 			
-			UpdateClients();
-			Replication.BumpMe();
+			// Update both zones
+			array<int> indices = {zoneIndex, zoneIndexTwo};
+			array<string> statuses = {
+				string.Format("%1:%2:%3", zoneStatusArray[2], "Unlocked", zoneStatusArray[2]),
+				string.Format("%1:%2:%3", zoneStatusTwoArray[2], "Unlocked", zoneStatusTwoArray[2])
+			};
+			Rpc(RpcDo_UpdateMultipleZones, indices, statuses);
+			
 			m_bZoneUpdateChecks = false;
 			return;
 		};
 
 		if (checkIfTimerArray.Count() <= 3)
 		{
+			string timerMessage;
 			switch (m_iZoneUnlockTimeIteratorInt)
 			{
 				case 1200: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 20 Minute(s)";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 20 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 20 Minute(s)";
+						timerMessage = zoneText + " Unlocks In 20 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				};
 				case 900: {
 				if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 Minute(s)";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 15 Minute(s)";
+						timerMessage = zoneText + " Unlocks In 15 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				};
 				case 600: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 10 Minute(s)";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 10 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 10 Minute(s)";
+						timerMessage = zoneText + " Unlocks In 10 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				};
 				case 300: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 5 Minute(s)";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 5 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 5 Minute(s)";
+						timerMessage = zoneText + " Unlocks In 5 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				}
 				case 60: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 1 Minute!";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 1 Minute!";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 1 Minute";
+						timerMessage = zoneText + " Unlocks In 1 Minute";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				}
 				case 15: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 seconds!";
+						timerMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 seconds!";
 					else
-						m_sHudMessage = zoneText + " Unlocks In 15 Seconds!";
+						timerMessage = zoneText + " Unlocks In 15 Seconds!";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sRadioSoundString = m_sHudMessage;
-					PlayRadioSound();
+					m_sHudMessage = timerMessage;
+					Rpc(RpcDo_PlayRadioSound, timerMessage);
 					break;
 				}
 			}
-			Replication.BumpMe();
 		};
 	}
 	
@@ -604,9 +720,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (checkIfTimerArray.Count() <= 3)
 		{
-			m_sHudMessage = "";
-			m_sAlertSoundString = "";
-			Replication.BumpMe();
+			Rpc(RpcDo_ClearMessages);
 		};
 	}
 	

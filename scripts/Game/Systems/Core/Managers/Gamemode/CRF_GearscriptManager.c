@@ -160,6 +160,9 @@ class CRF_GearscriptManager : ScriptComponent
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CreateSpawnParams(entity);
 		
+		// Apply identity first (before clothing changes appearance)
+		SetIdentity(gearConfig, entity);
+		
 		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
@@ -249,16 +252,14 @@ class CRF_GearscriptManager : ScriptComponent
 		if (gearScriptResourceName.IsEmpty())
 			return;
 
-		// Load gearscript config
-		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
-		if (!gearConfig)
-			return;
-		
-		// Apply gear
-		SetIdentity(gearConfig, entity)
-	}
-
-	//------------------------------------------------------------------------------------------------
+	// Load gearscript config
+	CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
+	if (!gearConfig)
+		return;
+	
+	// Apply identity
+	SetIdentity(gearConfig, entity);
+}	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Determine faction key from faction affiliation comp
 	 * @param entity Entity to pull the faction comp of

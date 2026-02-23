@@ -1,0 +1,72 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 12051.246 19.781 12614.766
+  angles 0 0.574 0
+  {
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords -7.299 -0 2.207
+    angles 0 -0.574 0
+   }
+  }
+ }
+ {
+  coords 12519.037 14.001 12412.212
+  angles 2.316 13.472 3.769
+  {
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords 0.317 0.135 2.478
+    angles -3.126 -13.31 -3.13
+   }
+  }
+ }
+ {
+  coords 12377.41 12.314 12841.134
+  angles -2.567 -95.458 -3.345
+  {
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords 4.818 -0 2.313
+    angles -3.574 95.463 2.237
+   }
+  }
+ }
+ {
+  coords 12849.158 53.205 11538.721
+  angles 2.188 -78.009 0.465
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    coords 9.72 0.3 2.317
+    angles 1.813 86.714 0.344
+   }
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords 2.544 0.257 -5.823
+    angles 0 78.018 -2.237
+   }
+  }
+ }
+ {
+  coords 13512.352 56.877 11481.771
+  angles -1.896 -78.2 -4.046
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    coords 9.72 0.3 2.317
+    angles 1.813 86.714 0.344
+   }
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords 6.054 0.242 6.478
+    angles -3.572 78.184 2.684
+   }
+  }
+ }
+ {
+  coords 13292.21 57.241 12250.269
+  angles -3.203 -146.503 6.429
+  {
+   GenericEntity : "{647C8407E399D6BB}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleStraight.et" {
+    coords -1.151 -0 4.039
+    angles 0.888 146.379 7.125
+   }
+  }
+ }
+}

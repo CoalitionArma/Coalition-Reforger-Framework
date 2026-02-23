@@ -71,9 +71,14 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 		else
 			m_wRoot.SetOpacity(1);
 		
-		m_wSiteCaptureText.SetText(m_FrontlineGamemodeManager.m_sHudMessage);
+		m_wSiteCaptureText.SetText(m_FrontlineGamemodeManager.GetHudMessage());
 		
 		m_bStoredProgressBarBoolean = false;
+		
+		// Safety check: ensure zones status array is valid
+		array<string> zonesStatus = m_FrontlineGamemodeManager.GetZonesStatus();
+		if (!zonesStatus || zonesStatus.IsEmpty())
+			return;
 		
 		foreach(int i, string zoneName : m_FrontlineGamemodeManager.m_aZoneObjectNames)
 		{
@@ -82,13 +87,21 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 			if(!zone)
 				continue;
 			
-			string status = m_FrontlineGamemodeManager.m_aZonesStatus[i];
+			// Safety check: ensure index is within bounds
+			if (i >= zonesStatus.Count())
+				continue;
+			
+			string status = zonesStatus[i];
 			
 			ImageWidget widget;
 			ImageWidget lockWidget;
 			
 			array<string> zoneStatusArray = {};
 			status.Split(":", zoneStatusArray, false);
+			
+			// Safety check: ensure we have valid status data
+			if (zoneStatusArray.Count() < 2)
+				continue;
 			
 			FactionKey zonefaction = zoneStatusArray[0];
 			string zoneState = zoneStatusArray[1];

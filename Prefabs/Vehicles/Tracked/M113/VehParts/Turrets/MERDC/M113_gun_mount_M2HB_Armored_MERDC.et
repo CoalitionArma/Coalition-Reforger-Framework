@@ -1,0 +1,8 @@
+Turret : "{75CD41C2C73548B9}Prefabs/Vehicles/Tracked/M113/VehParts/Turrets/M113_gun_mount_M2HB_Armored.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate "{CFA240BE56511D5B}Prefabs/Weapons/HeavyWeapons/HMG_M2HB_pintle_M113.et"
+  }
+ }
+}

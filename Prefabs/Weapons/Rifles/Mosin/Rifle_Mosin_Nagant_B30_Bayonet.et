@@ -3,11 +3,11 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
  components {
   WeaponSoundComponent "{5A8685198A9AEEDD}" {
    Filenames {
-    "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{6F5597365A3E2FFA}Sounds/Weapons/Rifles/Mosin/Weapons_Rifles_Mosin_Shot.acp" "{00AB0532CCEE5B13}Sounds/Weapons/Rifles/Mosin/Weapons_Rifles_Mosin_Handling.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+    "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{6F5597365A3E2FFA}Sounds/Weapons/Rifles/Mosin/Weapons_Rifles_Mosin_Shot.acp" "{00AB0532CCEE5B13}Sounds/Weapons/Rifles/Mosin/BC_Weapons_Rifles_Mosin_Handling.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
    }
   }
   MeshObject "{CFBAA4B701F95D69}" {
-   Object "{0AC909417B7EFCB9}Assets/Weapons/Rifles/mosin.xob"
+   Object "{0AC909417B7EFCB9}Assets/Weapons/Rifles/bc_mosin.xob"
   }
   SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
    Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {

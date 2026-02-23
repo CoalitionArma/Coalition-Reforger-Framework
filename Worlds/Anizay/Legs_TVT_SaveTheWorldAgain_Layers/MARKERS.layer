@@ -1,0 +1,62 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ Attack_A_Marker {
+  coords 2903.083 138.014 7017.583
+  m_sImageSet "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds"
+  m_sQuadName ""
+  m_fWorldSize 20
+  m_sDescription "Cache Area A"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area A"
+  m_aMissionMarkerImages {
+   "{7A832EF82CF7543E}UI/Textures/EditorPreviews/Auto/Props/Military/Generators/E_GeneratorPortable_US_01.edds"
+  }
+ }
+ Attack_B_Marker {
+  coords 2729.24 145.186 7419.855
+  m_sImageSet "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds"
+  m_fWorldSize 20
+  m_sDescription "Cache Area B"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area B"
+  m_aMissionMarkerImages {
+   "{7A832EF82CF7543E}UI/Textures/EditorPreviews/Auto/Props/Military/Generators/E_GeneratorPortable_US_01.edds"
+  }
+ }
+ Defend_B_Marker {
+  coords 2602.928 140.125 7415.109
+  m_sImageSet "{7F4A8D140283CCCE}UI/Images/Objectives/B.edds"
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 20
+  m_sDescription "Cache Area B"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area B"
+  m_aMissionMarkerImages {
+   "{7A832EF82CF7543E}UI/Textures/EditorPreviews/Auto/Props/Military/Generators/E_GeneratorPortable_US_01.edds"
+  }
+ }
+ Defend_A_Marker {
+  coords 2799.687 139.469 7152.245
+  m_sImageSet "{21A2A457BD0E42C1}UI/Images/Objectives/A.edds"
+  m_MarkerColor 1 0 0 1
+  m_sQuadName ""
+  m_fWorldSize 20
+  m_sDescription "Cache Area A"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  m_bShowForAnyFaction 0
+  m_sMissionMarkerDescription "Cache Area A"
+  m_aMissionMarkerImages {
+   "{7A832EF82CF7543E}UI/Textures/EditorPreviews/Auto/Props/Military/Generators/E_GeneratorPortable_US_01.edds"
+  }
+ }
+}
