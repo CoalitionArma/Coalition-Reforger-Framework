@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{42029D555D2EE4BA}Configs/Gearscripts/Custom/Salami/CRF_GS_IRAQ90s_Armored.conf"
+ Name "{42029D555D2EE4BA}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_IRAQ90s_Armored.conf"
  Configurations {
   CONFResourceClass PC {
   }

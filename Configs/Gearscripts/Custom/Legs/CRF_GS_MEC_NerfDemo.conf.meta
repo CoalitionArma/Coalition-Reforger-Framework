@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CD6139CD81CE0635}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEC_NerfDemo.conf"
+ Name "{CD6139CD81CE0635}Configs/Gearscripts/Custom/Legs/CRF_GS_MEC_NerfDemo.conf"
  Configurations {
   CONFResourceClass PC {
   }
