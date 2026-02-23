@@ -9,10 +9,7 @@
 ] 
 class CRF_MissionFactionsPlugin : WorkbenchPlugin
 {		
-	// Due to limitations in getting the faction managers faction list (obfuscated) we have to manually point to each factions index.
-	static int BLUFOR_FACMANAGER_INDEX = 12;
-	static int OPFOR_FACMANAGER_INDEX = 13;
-	static int INDFOR_FACMANAGER_INDEX = 14;
+	// Due to limitations in getting the faction managers faction list (obfuscated) we have to manually point to the CIV faction index.
 	static int CIV_FACMANAGER_INDEX = 3;
 	
 	//------------------------------------------------------------------------------------
@@ -229,13 +226,15 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		SCR_FactionManager facManager = SCR_FactionManager.Cast(api.SourceToEntity(facManagerSource));
 		
 		Faction faction = facManager.GetFactionByKey(factionKey);
+		int facCount = facManager.GetFactionsCount();
 		int factionIndex;
 		
 		switch(factionKey)
 		{
-			case "BLUFOR" : factionIndex = BLUFOR_FACMANAGER_INDEX; break;
-			case "OPFOR" : factionIndex = OPFOR_FACMANAGER_INDEX; break;
-			case "INDFOR" : factionIndex = INDFOR_FACMANAGER_INDEX; break;
+			// Due to the power or *Hierarchical Structures* in the lobby prefab BLUFOR, OPFOR, and INDFOR will always be the 3rd to last, 2nd to last, and last faction in the faction array.
+			case "BLUFOR" : factionIndex = (facCount - 3); break;
+			case "OPFOR" : factionIndex = (facCount - 2); break;
+			case "INDFOR" : factionIndex = (facCount - 1); break;
 			case "CIV" : factionIndex = CIV_FACMANAGER_INDEX; break;
 		}
 		
