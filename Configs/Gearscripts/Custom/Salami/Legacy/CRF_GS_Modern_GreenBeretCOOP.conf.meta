@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2D94AD67BEABCC05}Configs/Gearscripts/Custom/Salami/CRF_GS_Modern_GreenBeretCOOP.conf"
+ Name "{2D94AD67BEABCC05}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_Modern_GreenBeretCOOP.conf"
  Configurations {
   CONFResourceClass PC {
   }

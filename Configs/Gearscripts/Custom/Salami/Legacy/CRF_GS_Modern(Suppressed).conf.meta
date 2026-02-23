@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DB7DEF90909BC51E}Configs/Gearscripts/Custom/Salami/CRF_GS_Modern(Suppressed).conf"
+ Name "{DB7DEF90909BC51E}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_Modern(Suppressed).conf"
  Configurations {
   CONFResourceClass PC {
   }

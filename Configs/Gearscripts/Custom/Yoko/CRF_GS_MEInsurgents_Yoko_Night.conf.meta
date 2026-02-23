@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7A1098B87A2D121E}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents_Yoko_Night.conf"
+ Name "{7A1098B87A2D121E}Configs/Gearscripts/Custom/Yoko/CRF_GS_MEInsurgents_Yoko_Night.conf"
  Configurations {
   CONFResourceClass PC {
   }

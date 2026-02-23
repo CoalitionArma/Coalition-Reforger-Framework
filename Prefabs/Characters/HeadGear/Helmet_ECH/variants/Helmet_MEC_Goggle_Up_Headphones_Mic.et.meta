@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{477FA2492E917EE8}Prefabs/Characters/HeadGear/Helmet_ECH/variants/Helmet_MEC_Goggle_Up_Headphones.et"
+ Name "{477FA2492E917EE8}Prefabs/Characters/HeadGear/Helmet_ECH/variants/Helmet_MEC_Goggle_Up_Headphones_Mic.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
