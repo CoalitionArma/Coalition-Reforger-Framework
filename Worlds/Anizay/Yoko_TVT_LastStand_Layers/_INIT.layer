@@ -11,9 +11,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Overcast"
-     m_iStartingHour 6
-     m_iStartingMinutes 0
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+     m_iStartingMinutes 30
     }
    }
    m_bRandomWeatherChanges 0
@@ -41,9 +41,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "OPFOR Composition: Motorized Infatry Platoon"\
    "OPFOR Assets: 2x BTR70"\
    ""\
-   "Time: 5:30 am"\
+   "Time: 7:30 am"\
    ""\
-   "Weather: Cloudy"
+   "Weather: Clear"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1

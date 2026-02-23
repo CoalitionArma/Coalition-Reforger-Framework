@@ -1,17 +1,17 @@
 $grp SCR_BaseTriggerEntity {
- asitetrigger {
+ aSiteTrigger {
   coords 6505.846 206.743 2291.229
   angles 0 13.331 0
  }
- bsitetrigger {
+ bSiteTrigger {
   coords 6203.326 205.972 2518.163
   angles 0 -24.435 0
  }
 }
 $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  LOA {
-  coords 6045.144 273.347 3831.563
-  angles 0 78.154 0
+  coords 5332.394 280.33 2483.867
+  angles 0 7.463 0
   m_MarkerColor 0 0.502 0.125 1
   m_sQuadName "arrow-large"
   m_sDescription "INDFOR  SECONDARY LOA"
@@ -22,12 +22,5 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_MarkerColor 0 0.502 0.125 1
   m_sQuadName "flag-2"
   m_sDescription "INDFOR MAIN BASE"
- }
- LOA3 {
-  coords 5326.807 195.814 2488.973
-  angles 0 9.607 0
-  m_MarkerColor 0 0.502 0.125 1
-  m_sQuadName "arrow-large"
-  m_sDescription "INDFOR TERTIARY LOA"
  }
 }

@@ -1,42 +1,23 @@
-$grp PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsMissionMaking/PolyZone/ForwardDeploy/INDFOR_ForwardDeployZone.et" {
- {
-  coords 5997.995 186.084 4021.413
-  Points {
-   ShapePoint "{68AEF9C4D86E81D9}" {
-    Position -3.208 0 59.364
-   }
-   ShapePoint "{68AEF9C4DB546703}" {
-    Position -53.913 0 9.912
-   }
-   ShapePoint "{68AEF9C4DDDD9CC7}" {
-    Position -10.404 0 -48.344
-   }
-   ShapePoint "{68AEF9C4DF9DC80E}" {
-    Position 50.897 0 -14.193
-   }
+PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsMissionMaking/PolyZone/ForwardDeploy/INDFOR_ForwardDeployZone.et" {
+ coords 5237.577 169.862 2495.046
+ Points {
+  ShapePoint "{68AEF9C30C988C8E}" {
+   Position 57.862 0 0.168
   }
- }
- {
-  coords 5237.577 169.862 2495.046
-  Points {
-   ShapePoint "{68AEF9C30C988C8E}" {
-    Position 57.862 0 0.168
-   }
-   ShapePoint "{68AEF9C30E8BDD2D}" {
-    Position 3.623 0 -67.531
-   }
-   ShapePoint "{68AEF9C30E3D13E3}" {
-    Position -75.267 0 -35.686
-   }
-   ShapePoint "{68AEF9C33134A9BF}" {
-    Position -72.635 0 71.965
-   }
-   ShapePoint "{68AEF9C3302F9242}" {
-    Position 13.85 0 75.391
-   }
-   ShapePoint "{68AEF9C333EA50D5}" {
-    Position 66.236 0 22.675
-   }
+  ShapePoint "{68AEF9C30E8BDD2D}" {
+   Position 3.623 0 -67.531
+  }
+  ShapePoint "{68AEF9C30E3D13E3}" {
+   Position -178.688 -68.57 -14.898
+  }
+  ShapePoint "{68AEF9C33134A9BF}" {
+   Position -151.853 -55.458 144.108
+  }
+  ShapePoint "{68AEF9C3302F9242}" {
+   Position 13.85 0 75.391
+  }
+  ShapePoint "{68AEF9C333EA50D5}" {
+   Position 66.236 0 22.675
   }
  }
 }
@@ -56,7 +37,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -1394.952 29.826 313.556
   }
   ShapePoint "{68AEF9C4A28A8394}" {
-   Position -474.138 -10.091 1645.361
+   Position -468.713 118.118 599.729
   }
   ShapePoint "{68AEF9C4AA40037C}" {
    Position 151.88 15.143 675.813
@@ -73,6 +54,11 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
  }
 }
 PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFOR_SafestartBoundry.et" {
+ components {
+  CRF_PolyZone "{6586537E5441D07A}" {
+   m_bIsForwardDeployZone 1
+  }
+ }
  coords 5147.607 207.219 1793.763
  Points {
   ShapePoint "{68AEF9C7BFA8726E}" {
