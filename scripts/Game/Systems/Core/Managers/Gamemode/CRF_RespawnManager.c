@@ -800,14 +800,12 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]) || GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
-			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
 			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 			return;
 		}
 		
 		// Respawn the player
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
-		m_SlottingManager.UpdateSlotDeathState(slotID, false);
 		m_GamemodeManager.InitilizePlayer(playerId, spawnLocation);
 	}
 	

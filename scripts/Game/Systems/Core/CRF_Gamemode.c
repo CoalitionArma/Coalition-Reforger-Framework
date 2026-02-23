@@ -629,15 +629,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 				playerId
 			);
 		}
-		else
-		{
-			// Only mark slot as permanently dead if respawn is not available
-			// This prevents slots from being removed when respawn is enabled
-			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-			
-			if(slotID != -1)
-				m_SlottingManager.UpdateSlotDeathState(slotID, true);
-		}
 
 		// Get death position for spectator camera initialization
 		vector deathPosition[4];
