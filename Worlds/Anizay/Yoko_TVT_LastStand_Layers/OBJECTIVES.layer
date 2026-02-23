@@ -1,11 +1,11 @@
 $grp SCR_BaseTriggerEntity {
  aSiteTrigger {
-  coords 6505.846 206.743 2291.229
-  angles 0 13.331 0
+  coords 6461.054 214.375 2429.942
+  angles -0.207 -118.232 -0.234
  }
  bSiteTrigger {
-  coords 6203.326 205.972 2518.163
-  angles 0 -24.435 0
+  coords 6177.953 206.102 2511.382
+  angles 0 -115.163 0
  }
 }
 $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {

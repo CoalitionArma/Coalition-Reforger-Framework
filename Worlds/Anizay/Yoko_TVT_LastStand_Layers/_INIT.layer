@@ -11,12 +11,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Clear"
-     m_iStartingHour 7
-     m_iStartingMinutes 30
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 6
     }
    }
-   m_bRandomWeatherChanges 0
+   m_bRandomWeatherChanges 1
   }
  }
  coords 6053.939 229.53 2184.639
@@ -33,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "US Marines are surround in Gorqan, they are making alast stand hold against MEC."\
+   m_sTextData "US Marines are surround in Gorqan, they are making a last stand hold against MEC. MEC is using the \"sandstorm\" that is currently active to provide coverage for their assault."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 1x Weapons Team and 1x STYKER MGS"\
@@ -41,9 +40,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "OPFOR Composition: Motorized Infatry Platoon"\
    "OPFOR Assets: 2x BTR70"\
    ""\
-   "Time: 7:30 am"\
+   "Time: 6:00 am"\
    ""\
-   "Weather: Clear"
+   "Weather: Heavy Wet Fog"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
