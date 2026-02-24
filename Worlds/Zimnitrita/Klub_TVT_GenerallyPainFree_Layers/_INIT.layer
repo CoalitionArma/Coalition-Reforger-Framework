@@ -36,10 +36,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "Mission: Situation"
    m_sTextData "BLUFOR want hill, OPFOR want hill; who get hill?"\
    ""\
-   "BLUFOR Composition: US80s Inf."\
+   "BLUFOR Composition: US 80s Inf. Defending"\
    "BLUFOR Assets: MAT, Sandbags"\
    ""\
-   "OPFOR Composition: USSR80s Mechanized Inf."\
+   "OPFOR Composition: USSR 80s Mechanized Inf. Attacking"\
    "OPFOR Assets: 1x BMP-1, 1x BTR-70, Urals"\
    ""\
    "Time: 1500"\
