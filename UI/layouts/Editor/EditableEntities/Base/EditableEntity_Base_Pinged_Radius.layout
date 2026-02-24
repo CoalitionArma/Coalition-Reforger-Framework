@@ -116,6 +116,7 @@ FrameWidgetClass {
     OffsetBottom -140
     Alignment 0.5 0.5
    }
+   Opacity 0.35
    Clipping True
    "Inherit Color" 1
    components {
