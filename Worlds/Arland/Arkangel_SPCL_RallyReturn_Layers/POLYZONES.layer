@@ -1,0 +1,20 @@
+PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart/CIVILIAN_SafestartBoundry.et" {
+ coords 995.62 39.769 2751.089
+ Points {
+  ShapePoint "{68B02105FAE35E77}" {
+   Position -1.541 -0.493 3.52
+  }
+  ShapePoint "{68B02105F2D82888}" {
+   Position -13.537 -0.769 51.204
+  }
+  ShapePoint "{68B02105F1B609BC}" {
+   Position 93.036 -1.769 105.18
+  }
+  ShapePoint "{68B02105EB078E75}" {
+   Position 130.341 -1.769 83.426
+  }
+  ShapePoint "{68B02105EBC7FCE2}" {
+   Position 137.973 -1.769 35.422
+  }
+ }
+}
