@@ -1,0 +1,92 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 3897.067 320.201 5602.259
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
+    m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF04729386C}" {
+    m_Prefab "{5D7F9C778624C1CF}Prefabs/Weapons/Magazines/762x54_PKPB_100rnd/Box_762x54_PKPB_100rnd_4AP_1Tracer_7N13_7T2.et"
+    m_iAmountOfItemSupplyTruck 6
+    m_iAmountOfItemRegularVehicle 6
+   }
+  }
+ }
+ {
+  coords 3905.742 354.633 5788.541
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+  }
+ }
+ {
+  coords 3484.485 312.537 5786.157
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+  }
+ }
+ {
+  coords 3759.913 362.822 6173.431
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+  }
+ }
+ {
+  coords 3391.955 321.805 6065.718
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
+    m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF04729386C}" {
+    m_Prefab "{5D7F9C778624C1CF}Prefabs/Weapons/Magazines/762x54_PKPB_100rnd/Box_762x54_PKPB_100rnd_4AP_1Tracer_7N13_7T2.et"
+    m_iAmountOfItemSupplyTruck 6
+    m_iAmountOfItemRegularVehicle 6
+   }
+  }
+ }
+ {
+  coords 3976.393 363.536 6031.944
+  angles 10.317 -1.793 -9.914
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
+    m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
+    m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CF04729386C}" {
+    m_Prefab "{5D7F9C778624C1CF}Prefabs/Weapons/Magazines/762x54_PKPB_100rnd/Box_762x54_PKPB_100rnd_4AP_1Tracer_7N13_7T2.et"
+    m_iAmountOfItemSupplyTruck 6
+    m_iAmountOfItemRegularVehicle 6
+   }
+  }
+ }
+}
