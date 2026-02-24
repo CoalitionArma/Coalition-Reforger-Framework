@@ -11,6 +11,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_aZoneObjectNames {
     "zoneA"
    }
+   m_iMinNumberOfPlayersNeeded 3
    m_iTimeToWin 900
    m_iInitialTime 600
   }
@@ -35,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins. "\
+   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins. For this mission, infantry may use any specialty asset taken in the field. "\
    ""\
    "Mission Maker Notes:"\
    "There are varied assets, and equipment to be captured at the marked locations. In addition, there are weapon caches in the form of UAZ's spread throughout the Green Mountain forest. "
@@ -45,7 +46,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins. "\
+   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins.  For this mission, infantry may use any specialty asset taken in the field. "\
    ""\
    "Mission Maker Notes:"\
    "There are varied assets, and equipment to be captured at the marked locations. In addition, there are weapon caches in the form of UAZ's spread throughout the Green Mountain forest. "

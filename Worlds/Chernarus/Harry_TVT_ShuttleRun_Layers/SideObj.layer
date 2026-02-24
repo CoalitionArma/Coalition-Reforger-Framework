@@ -313,6 +313,9 @@ GenericEntity : "{8E49E48C2BD0BFE3}Prefabs/Compositions/Slotted/SlotFlatSmall/Am
     GenericEntity {
      ID "5D371ACA25245B28"
      components {
+      MeshObject "{56F2C6D1431AD85A}" {
+       Enabled 0
+      }
       SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
        Enabled 0
       }
@@ -375,6 +378,9 @@ GenericEntity : "{8E49E48C2BD0BFE3}Prefabs/Compositions/Slotted/SlotFlatSmall/Am
     GenericEntity {
      ID "5D371ACA12DB6B57"
      components {
+      MeshObject "{56F2C6D1431AD85A}" {
+       Enabled 0
+      }
       SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
        Enabled 0
       }

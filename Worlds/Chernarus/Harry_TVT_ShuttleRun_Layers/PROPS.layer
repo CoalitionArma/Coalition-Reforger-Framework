@@ -7,6 +7,8 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
    }
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
     m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
@@ -26,6 +28,11 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68B0F7B5014B24E7}" {
+    m_Prefab "{4977C9711C8F1943}Prefabs/Items/Equipment/Backpacks/JammerBag.et"
    }
   }
  }
@@ -37,6 +44,11 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68B0F7B5014B24E7}" {
+    m_Prefab "{4977C9711C8F1943}Prefabs/Items/Equipment/Backpacks/JammerBag.et"
    }
   }
  }
@@ -48,6 +60,11 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68B0F7B5014B24E7}" {
+    m_Prefab "{4977C9711C8F1943}Prefabs/Items/Equipment/Backpacks/JammerBag.et"
    }
   }
  }
@@ -59,6 +76,8 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
    }
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
     m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
@@ -78,6 +97,8 @@ $grp CRF_VehicleSpawner {
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF2807D8BFC}" {
     m_Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
    }
    CRF_VehicleGearScriptAdditionalItem "{68AF7CF02F2A0047}" {
     m_Prefab "{98BDF2EE3EAB98BB}Prefabs/Weapons/MachineGuns/PKPB/MG_PKPB_PK06_SF_SQUAD.et"
