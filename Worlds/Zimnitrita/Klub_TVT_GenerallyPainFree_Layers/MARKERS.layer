@@ -1,0 +1,24 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 12469.202 173.829 4542.493
+  m_sQuadName "mark-exclamation-3"
+  m_sDescription "Bomb Site B"
+ }
+ {
+  coords 12656.4 193.068 4687.384
+  m_sQuadName "mark-exclamation-3"
+  m_sDescription "Bomb Site A"
+ }
+}
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 12656.853 192.636 4686.505
+  m_sQuadName "mark-exclamation-3"
+  m_sDescription "Bomb Site A"
+ }
+ {
+  coords 12470.158 173.867 4541.476
+  m_sQuadName "mark-exclamation-3"
+  m_sDescription "Bomb Site B"
+ }
+}
