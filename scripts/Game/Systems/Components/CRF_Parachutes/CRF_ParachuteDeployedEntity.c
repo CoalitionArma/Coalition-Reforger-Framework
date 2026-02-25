@@ -20,14 +20,24 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 	protected float m_WindDirDeg;
 	protected float m_WindSpeed;
 
-	[Attribute("5.0", UIWidgets.Slider, "Max fall speed (m/s)", "1 20 0.1")]
-	protected float m_MaxFallSpeed;
+	[Attribute("4.0", UIWidgets.Slider, "Max fall speed (m/s)", "1 20 0.1")]
+	protected float m_MaxFallSpeed = 4.0;
 
 	[Attribute("2.0", UIWidgets.Slider, "Drag strength to limit fall speed", "0 20 0.1")]
-	protected float m_DragStrength;
+	protected float m_DragStrength = 2.0;
+
+	// Flare settings
+	[Attribute("10.0", UIWidgets.Slider, "Flare start height (m)", "0 50 1")]
+	protected float m_FlareStartHeight = 10.0;
+
+	[Attribute("1.0", UIWidgets.Slider, "Flare end height (m)", "0 10 0.1")]
+	protected float m_FlareEndHeight = 1.0;
+
+	[Attribute("10.0", UIWidgets.Slider, "Max flare deceleration (m/s²)", "0 30 0.5")]
+	protected float m_MaxFlareDeceleration = 10.0;
 
 	[Attribute("0.5", UIWidgets.Slider, "Ground detection extra offset (m)", "0 2 0.1")]
-	protected float m_GroundCheckOffset;
+	protected float m_GroundCheckOffset = 0.5;
 
 	protected bool m_HasLanded;
 
@@ -148,12 +158,18 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 	}
 
 	// --------------------------------------------------------------------------------------------
-	// Simulation
+	// Simulation (runs on authority and owner client for prediction)
 	// --------------------------------------------------------------------------------------------
 
 	override void EOnSimulate(IEntity owner, float timeSlice)
 	{
-		if (!IsAuthority() || m_HasLanded || !m_Physics)
+		// Skip if landed or no physics
+		if (m_HasLanded || !m_Physics)
+			return;
+
+		// Run simulation on authority (server) AND on owner client for prediction
+		// Non-owner clients rely on interpolation only
+		if (!IsAuthority() && !IsOwner())
 			return;
 
 		if (!m_VelocityApplied && m_InitialVelocity != vector.Zero)
@@ -165,6 +181,7 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		vector vel = m_Physics.GetVelocity();
 		float downwardSpeed = -vel[1];
 
+		// Limit downward speed with drag
 		if (downwardSpeed > m_MaxFallSpeed)
 		{
 			float excess = downwardSpeed - m_MaxFallSpeed;
@@ -174,22 +191,32 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			m_Physics.ApplyImpulse(vector.Up * impulse);
 		}
 
-		HandleWeather(timeSlice);
+		// Apply wind (only authority, wind is global)
+		if (IsAuthority())
+			HandleWeather(timeSlice);
 
+		// Ground flare: aggressively slow descent when near ground
+		HandleGroundFlare(timeSlice);
+
+		// Ground detection
 		vector pos = GetOrigin();
 		float groundY = SCR_TerrainHelper.GetTerrainY(pos, null, true);
-		if (pos[1] - groundY < m_GroundCheckOffset)
+		float altitude = pos[1] - groundY;
+		if (altitude < m_GroundCheckOffset)
 		{
 			if (m_CargoSlot && m_CargoSlot.IsOccupied())
 				RequestExit();
 		}
 
-		// Network sync
-		m_NetAccTime += timeSlice;
-		if (m_NetAccTime >= m_NetSendInterval)
+		// Network sync (only authority sends)
+		if (IsAuthority())
 		{
-			m_NetAccTime = 0;
-			SendSync();
+			m_NetAccTime += timeSlice;
+			if (m_NetAccTime >= m_NetSendInterval)
+			{
+				m_NetAccTime = 0;
+				SendSync();
+			}
 		}
 	}
 
@@ -207,6 +234,12 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			return;
 		m_HasLanded = true;
 
+		// Small delay before exit to allow flare to finish
+		GetGame().GetCallqueue().CallLater(DoRequestExit, 100, false);
+	}
+
+	void DoRequestExit()
+	{
 		float velocityAtExit = -m_Physics.GetVelocity()[1];
 		Rpc(Rpc_RequestExit, velocityAtExit);
 	}
@@ -235,6 +268,30 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			return;
 
 		playerComp.Rpc_RequestExit(GetRplId(), velocityAtExit);
+	}
+
+	// --------------------------------------------------------------------------------------------
+	// Aggressive Ground Flare
+	// --------------------------------------------------------------------------------------------
+
+	void HandleGroundFlare(float timeSlice)
+	{
+		vector pos = GetOrigin();
+		float terrainY = SCR_TerrainHelper.GetTerrainY(pos, null, true);
+		float height = pos[1] - terrainY;
+
+		// Too high, no flare
+		if (height > m_FlareStartHeight)
+			return;
+
+		// Normalized factor: 0 at start height, 1 at end height
+		float t = 1.0 - (height - m_FlareEndHeight) / (m_FlareStartHeight - m_FlareEndHeight);
+		t = Math.Clamp(t, 0.0, 1.0);
+
+		// Apply upward impulse to kill downward velocity
+		float decel = t * m_MaxFlareDeceleration;
+		float impulse = decel * m_Physics.GetMass() * timeSlice;
+		m_Physics.ApplyImpulse(vector.Up * impulse);
 	}
 
 	// --------------------------------------------------------------------------------------------

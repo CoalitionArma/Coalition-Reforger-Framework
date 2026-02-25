@@ -212,16 +212,16 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			return false;
 		if (backpack.IsUsed())
 			return false;
-	
+
 		SCR_ChimeraCharacter pawn = SCR_ChimeraCharacter.Cast(character);
 		if (!pawn || pawn.IsInVehicle())
 			return false;
-	
+
 		// Check if player is falling
 		CharacterAnimationComponent animComp = CharacterAnimationComponent.Cast(character.FindComponent(CharacterAnimationComponent));
 		if (!animComp || !animComp.PhysicsIsFalling())
 			return false;
-	
+
 		// Obstacle check – ignore entities without physics (triggers, etc.)
 		m_QueryCharacter = character;
 		m_ObstacleFound = false;
@@ -233,13 +233,13 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.STATIC);
 		if (m_ObstacleFound)
 			return false;
-		
+
 		// Altitude check
 		float terrainY = SCR_TerrainHelper.GetTerrainY(pawn.GetOrigin(), null, true);
 		float altitude = pawn.GetOrigin()[1] - terrainY;
 		if (altitude < m_MinimumAltitude)
 			return false;
-		
+
 		return true;
 	}
 
@@ -580,10 +580,40 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		if (!IsAuthority() || !m_IsDeployed || chuteId != m_DeployedChuteRplId)
 			return;
 
-		if (m_CharacterCompartmentAccess)
-			m_CharacterCompartmentAccess.AskOwnerToGetOutFromVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.LEAVE_OPEN, true, true);
+		IEntity character = GetControlledCharacter();
+		if (character)
+		{
+			// 1. Place player safely on ground with zero velocity
+			PlacePlayerSafelyOnGround(character);
 
+			// 2. Ask player to exit the vehicle (teleport)
+			if (m_CharacterCompartmentAccess)
+				m_CharacterCompartmentAccess.AskOwnerToGetOutFromVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.LEAVE_OPEN, true, true);
+
+			// 3. After teleport, ensure they are still grounded
+			PlacePlayerSafelyOnGround(character);
+		}
+
+		// Start checking for empty compartment before deletion
 		GetGame().GetCallqueue().CallLater(CheckAndDeleteIfEmpty, 200, false, m_DeployedChuteEntity);
+	}
+
+	// Helper to place player safely on ground with zero velocity
+	void PlacePlayerSafelyOnGround(IEntity player)
+	{
+		if (!player) return;
+
+		vector pos = player.GetOrigin();
+		float terrainY = SCR_TerrainHelper.GetTerrainY(pos, null, true);
+		pos[1] = terrainY + 0.5; // .5 meters above terrain for safety
+		player.SetOrigin(pos);
+
+		Physics phys = player.GetPhysics();
+		if (phys)
+		{
+			phys.SetVelocity(vector.Zero);
+			phys.SetAngularVelocity(vector.Zero);
+		}
 	}
 
 	protected void CheckAndDeleteIfEmpty(IEntity chute)
