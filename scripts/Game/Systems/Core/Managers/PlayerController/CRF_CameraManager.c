@@ -15,7 +15,7 @@ class CRF_CameraManager : ScriptComponent
 	// Orbit camera state (TPP mode)
 	protected float m_fOrbitYaw    = 0.0;   // Accumulated horizontal orbit angle (degrees)
 	protected float m_fOrbitPitch  = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
-	protected float m_fOrbitRadius = 4.0;   // Distance from entity in metres (clamped 1.5–20)
+	protected float m_fOrbitRadius = 4.0;   // Distance from entity in meters (clamped 1.5–20)
 	
 	protected IEntity m_eCameraEntity;
 	protected vector m_vCameraOrbitPoint;
@@ -219,7 +219,7 @@ class CRF_CameraManager : ScriptComponent
 	 * ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
 	 * Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
 	 * Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
-	 * Radius is clamped 1.5–20 metres.
+	 * Radius is clamped 1.5–20 meters.
 	 */
 	protected void FrameUpdateEntityTPP(float timeSlice)
 	{

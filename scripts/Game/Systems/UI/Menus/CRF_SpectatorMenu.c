@@ -88,6 +88,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	
 	protected bool m_bWarningDismissed = false;
 	
+	// Follow-mode HUD widgets (created at runtime, shown when latched onto a player in TPP/FPP)
+	protected Widget        m_wFollowHUD;
+	protected Widget        m_wFollowHUDHealthBar;
+	protected TextWidget    m_wFollowHUDName;
+	protected TextWidget    m_wFollowHUDRole;
+	protected TextWidget    m_wFollowHUDBloodStatus;  // ACE blood state label (left side of status row)
+	protected TextWidget    m_wFollowHUDBleeding;     // "BLEEDING" indicator (right side of status row)
+	protected ImageWidget   m_wFollowHUDHealthBarFill;
+	// Limb damage grid — one fill-bar and one hitzone name per limb slot
+	// Order: 0=Head, 1=Chest, 2=LeftArm, 3=RightArm, 4=LeftLeg, 5=RightLeg
+	protected ref array<ImageWidget>  m_aLimbFills    = new array<ImageWidget>();
+	protected ref array<TextWidget>   m_aLimbLabels   = new array<TextWidget>();
+	protected ref array<string>       m_aLimbHZNames  = new array<string>();
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -137,6 +151,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
 		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
+		
+		// Follow-mode HUD — build entirely at runtime so no hand-crafted layout GUIDs are needed
+		CreateFollowHUD();
 		
 		// Register input action listeners
 		RegisterActionListeners();
@@ -330,6 +347,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
 		
+		// Update follow-mode HUD overlay
+		UpdateFollowHUD();
+		
 		// Process channel requests
 		ProcessChannelRequests(tDelta);
 		
@@ -417,7 +437,474 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_wCIVTickets.SetVisible(false);
 
 	}
-	
+
+	/**
+	 * Creates the follow-mode HUD overlay at runtime and parents it to the menu root.
+	 * Layout structure (all sizes in reference-resolution pixels, 1920×1080):
+	 *   FollowHUD (350×130, bottom-centre, hidden by default)
+	 *     ↳ background (dark semi-transparent fill)
+	 *     ↳ FollowHUDName      (row 0: bold white name)
+	 *     ↳ FollowHUDRole      (row 1: grey role/group/vehicle)
+	 *     ↳ BloodStatus / Bleeding (row 2: ACE state + bleeding indicator)
+	 *     ↳ health-bar frame   (row 3: blood volume bar)
+	 *     ↳ limb grid          (row 4: 6 mini bars + labels — Head/Torso/Arms/Legs)
+	 */
+	protected void CreateFollowHUD()
+	{
+		WorkspaceWidget ws = GetGame().GetWorkspace();
+		if (!ws || !m_wRoot)
+			return;
+
+		// --- root frame -------------------------------------------------------
+		// Use SetPos/SetSize for absolute positioning to avoid any anchor/offset
+		// layout calculation issues. Panel is 350×72px, centred horizontally,
+		// sitting 12px above the bottom of the screen.
+		m_wFollowHUD = ws.CreateWidget(WidgetType.FrameWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(1, 1, 1, 1), 0, m_wRoot);
+		if (!m_wFollowHUD)
+			return;
+
+		// Anchor to top-left origin; position is set explicitly each frame in UpdateFollowHUD
+		FrameSlot.SetAnchorMin(m_wFollowHUD, 0.0, 0.0);
+		FrameSlot.SetAnchorMax(m_wFollowHUD, 0.0, 0.0);
+		FrameSlot.SetAlignment(m_wFollowHUD, 0.0, 0.0);
+		FrameSlot.SetSize(m_wFollowHUD, 350, 130);
+		FrameSlot.SetPos(m_wFollowHUD, 0, 0);
+		m_wFollowHUD.SetVisible(false);
+
+		// --- dark background --------------------------------------------------
+		Widget bg = ws.CreateWidget(WidgetType.ImageWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0, 0, 0, 0.75), 0, m_wFollowHUD);
+		if (bg)
+		{
+			FrameSlot.SetAnchorMin(bg, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(bg, 1.0, 1.0);
+			FrameSlot.SetOffsets(bg, 0, 0, 0, 0);
+		}
+
+		// --- player name text -------------------------------------------------
+		m_wFollowHUDName = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING,
+			new Color(1, 1, 1, 1), 0, m_wFollowHUD));
+		if (m_wFollowHUDName)
+		{
+			FrameSlot.SetAnchorMin(m_wFollowHUDName, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDName, 1.0, 0.0);
+			FrameSlot.SetOffsets(m_wFollowHUDName, 8, 6, -8, -36);
+			m_wFollowHUDName.SetDesiredFontSize(18);
+			m_wFollowHUDName.SetBold(true);
+			m_wFollowHUDName.SetOutline(1);
+			m_wFollowHUDName.SetText("");
+		}
+
+		// --- role / vehicle text ----------------------------------------------
+		m_wFollowHUDRole = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING,
+			new Color(0.8, 0.8, 0.8, 1), 0, m_wFollowHUD));
+		if (m_wFollowHUDRole)
+		{
+			FrameSlot.SetAnchorMin(m_wFollowHUDRole, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDRole, 1.0, 0.0);
+			FrameSlot.SetOffsets(m_wFollowHUDRole, 8, 30, -8, -52);
+			m_wFollowHUDRole.SetDesiredFontSize(14);
+			m_wFollowHUDRole.SetOutline(1);
+			m_wFollowHUDRole.SetText("");
+		}
+
+		// --- ACE medical status row (blood state label + bleeding indicator) --
+		// Blood state label — left-aligned, small grey text
+		m_wFollowHUDBloodStatus = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING,
+			new Color(0.7, 0.7, 0.7, 1), 0, m_wFollowHUD));
+		if (m_wFollowHUDBloodStatus)
+		{
+			FrameSlot.SetAnchorMin(m_wFollowHUDBloodStatus, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDBloodStatus, 0.65, 0.0);
+			FrameSlot.SetOffsets(m_wFollowHUDBloodStatus, 8, 52, 0, -70);
+			m_wFollowHUDBloodStatus.SetDesiredFontSize(12);
+			m_wFollowHUDBloodStatus.SetOutline(1);
+			m_wFollowHUDBloodStatus.SetText("");
+		}
+
+		// Bleeding indicator — right-aligned, red when active, hidden when not bleeding
+		m_wFollowHUDBleeding = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING,
+			new Color(0.9, 0.15, 0.15, 1), 0, m_wFollowHUD));
+		if (m_wFollowHUDBleeding)
+		{
+			FrameSlot.SetAnchorMin(m_wFollowHUDBleeding, 0.65, 0.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDBleeding, 1.0, 0.0);
+			FrameSlot.SetOffsets(m_wFollowHUDBleeding, 0, 52, -8, -70);
+			m_wFollowHUDBleeding.SetDesiredFontSize(12);
+			m_wFollowHUDBleeding.SetOutline(1);
+			m_wFollowHUDBleeding.SetText("");
+		}
+
+		// --- health / blood bar (track + fill) --------------------------------
+		m_wFollowHUDHealthBar = ws.CreateWidget(WidgetType.FrameWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(1, 1, 1, 1), 0, m_wFollowHUD);
+		if (m_wFollowHUDHealthBar)
+		{
+			FrameSlot.SetAnchorMin(m_wFollowHUDHealthBar, 0.0, 1.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDHealthBar, 1.0, 1.0);
+			FrameSlot.SetOffsets(m_wFollowHUDHealthBar, 8, -12, -8, -6);
+
+			Widget track = ws.CreateWidget(WidgetType.ImageWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.15, 0.15, 0.15, 1), 0, m_wFollowHUDHealthBar);
+			if (track)
+			{
+				FrameSlot.SetAnchorMin(track, 0.0, 0.0);
+				FrameSlot.SetAnchorMax(track, 1.0, 1.0);
+				FrameSlot.SetOffsets(track, 0, 0, 0, 0);
+			}
+
+			// Fill is left-anchored; AnchorMax.x is driven each frame by bloodScaled (0..1)
+			m_wFollowHUDHealthBarFill = ImageWidget.Cast(ws.CreateWidget(WidgetType.ImageWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.1, 0.75, 0.1, 1), 0, m_wFollowHUDHealthBar));
+			if (m_wFollowHUDHealthBarFill)
+			{
+				FrameSlot.SetAnchorMin(m_wFollowHUDHealthBarFill, 0.0, 0.0);
+				FrameSlot.SetAnchorMax(m_wFollowHUDHealthBarFill, 1.0, 1.0);
+				FrameSlot.SetOffsets(m_wFollowHUDHealthBarFill, 0, 0, 0, 0);
+			}
+		}
+
+		Print("[CRF_FollowHUD] CreateFollowHUD completed — m_wFollowHUD=" + m_wFollowHUD, LogLevel.DEBUG);
+
+		// --- Limb damage grid (row 4) -----------------------------------------
+		// 6 equal columns across the 334px content area (8px margin each side).
+		// Each column: a mini bar (10px tall) + a label (12px font) beneath it.
+		// Row sits at Y=96 (8px below the blood-volume bar which ends at ~88px).
+		//
+		//  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐
+		//  │ Head │ │Torso │ │L.Arm │ │R.Arm │ │L.Leg │ │R.Leg │   ← 14px tall bar
+		//  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘
+		//   Head    Torso   L.Arm   R.Arm   L.Leg   R.Leg           ← 10px font label
+		//
+		// Anchors: each column i spans [i/6 … (i+1)/6] horizontally with 2px inner gap.
+
+		m_aLimbFills.Clear();
+		m_aLimbLabels.Clear();
+		m_aLimbHZNames.Clear();
+
+		// Hitzone names (must match Enfusion character hitzone names exactly)
+		array<string> hzNames = {"Head", "Chest", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+		// Short display labels shown beneath each bar
+		array<string> hzLabels = {"Head", "Torso", "L.Arm", "R.Arm", "L.Leg", "R.Leg"};
+
+		int limbCount = hzNames.Count();
+		for (int i = 0; i < limbCount; i++)
+		{
+			float anchorL = i / (float)limbCount;
+			float anchorR = (i + 1) / (float)limbCount;
+
+			// Column container (makes inner offsets relative to column width)
+			Widget col = ws.CreateWidget(WidgetType.FrameWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(1, 1, 1, 1), 0, m_wFollowHUD);
+			if (!col)
+				continue;
+
+			FrameSlot.SetAnchorMin(col, anchorL, 0.0);
+			FrameSlot.SetAnchorMax(col, anchorR, 0.0);
+			// 2px gap between columns; 8px margin on outermost edges
+			float leftOff;
+			if (i == 0)
+				leftOff = 8;
+			else
+				leftOff = 2;
+
+			float rightOff;
+			if (i == limbCount - 1)
+				rightOff = 8;
+			else
+				rightOff = 2;
+			// Top = 96, bottom = 130 - 4 = 126  →  offsets=(left, top, -right, -bottom)
+			FrameSlot.SetOffsets(col, leftOff, 96, -rightOff, -4);
+
+			// Dark track
+			Widget limbTrack = ws.CreateWidget(WidgetType.ImageWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.15, 0.15, 0.15, 1), 0, col);
+			if (limbTrack)
+			{
+				FrameSlot.SetAnchorMin(limbTrack, 0.0, 0.0);
+				FrameSlot.SetAnchorMax(limbTrack, 1.0, 0.0);
+				FrameSlot.SetOffsets(limbTrack, 0, 0, 0, -14);
+			}
+
+			// Green fill (driven each frame)
+			ImageWidget limbFill = ImageWidget.Cast(ws.CreateWidget(WidgetType.ImageWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.1, 0.75, 0.1, 1), 0, col));
+			if (limbFill)
+			{
+				FrameSlot.SetAnchorMin(limbFill, 0.0, 0.0);
+				FrameSlot.SetAnchorMax(limbFill, 1.0, 0.0);
+				FrameSlot.SetOffsets(limbFill, 0, 0, 0, -14);
+			}
+			m_aLimbFills.Insert(limbFill);
+
+			// Label beneath the bar
+			TextWidget limbLabel = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
+				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.7, 0.7, 0.7, 1), 0, col));
+			if (limbLabel)
+			{
+				FrameSlot.SetAnchorMin(limbLabel, 0.0, 0.0);
+				FrameSlot.SetAnchorMax(limbLabel, 1.0, 0.0);
+				FrameSlot.SetOffsets(limbLabel, 0, 16, 0, -30);
+				limbLabel.SetDesiredFontSize(10);
+				limbLabel.SetOutline(1);
+				limbLabel.SetText(hzLabels[i]);
+			}
+			m_aLimbLabels.Insert(limbLabel);
+			m_aLimbHZNames.Insert(hzNames[i]);
+		}
+	}
+
+	/**
+	 * Updates the follow-mode HUD overlay shown when latched onto a player in TPP or FPP mode.
+	 * Displays: player name, role name, faction-colored health bar.
+	 * Hidden automatically when not following anyone.
+	 */
+	protected void UpdateFollowHUD()
+	{
+		if (!m_wFollowHUD)
+			return;
+
+		// Hide the HUD if we are not following anyone
+		if (!m_eSpecEntity)
+		{
+			m_wFollowHUD.SetVisible(false);
+			return;
+		}
+
+		// Position the panel: bottom-centre of screen, 12px above bottom
+		WorkspaceWidget ws = GetGame().GetWorkspace();
+		if (ws)
+		{
+			float sW = ws.GetWidth();
+			float sH = ws.GetHeight();
+			float panelW = 350;
+			float panelH = 130;
+			float px = (sW - panelW) * 0.5;
+			float py = sH - panelH - 12;
+			FrameSlot.SetPos(m_wFollowHUD, px, py);
+		}
+
+		m_wFollowHUD.SetVisible(true);
+
+		// --- Player name ---
+		if (m_wFollowHUDName)
+		{
+			string playerName = "";
+			RplComponent rpl = RplComponent.Cast(m_eSpecEntity.FindComponent(RplComponent));
+			if (rpl)
+			{
+				CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+				int playerId = 0;
+				if (slotData)
+					playerId = slotData.GetSlotCurrentPlayerId();
+				if (playerId > 0)
+					playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+				if (playerName.IsEmpty() && slotData)
+					playerName = slotData.GetSlotName();
+			}
+
+			// Truncate with ellipsis if the name is too long (~36 chars at bold font 18)
+			const int NAME_MAX_CHARS = 36;
+			if (playerName.Length() > NAME_MAX_CHARS)
+				playerName = playerName.Substring(0, NAME_MAX_CHARS - 1) + "…";
+
+			m_wFollowHUDName.SetText(playerName);
+		}
+
+		// --- Role name ---
+		if (m_wFollowHUDRole)
+		{
+			string roleName = "";
+			RplComponent rpl = RplComponent.Cast(m_eSpecEntity.FindComponent(RplComponent));
+			if (rpl)
+			{
+				CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+				if (slotData)
+				{
+					roleName = slotData.GetSlotName();
+
+					// Prepend group name if available
+					int rolePlayerId = slotData.GetSlotCurrentPlayerId();
+					if (rolePlayerId > 0)
+					{
+						SCR_AIGroup playerGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(rolePlayerId);
+						if (playerGroup)
+						{
+							string groupName = playerGroup.GetCustomName();
+							if (groupName.IsEmpty())
+								groupName = playerGroup.GetCustomNameWithOriginal();
+							if (!groupName.IsEmpty())
+								roleName = groupName + " | " + roleName;
+						}
+					}
+				}
+			}
+
+			// Append vehicle info if the character is inside one
+			IEntity vehicle = SCR_CompartmentAccessComponent.GetVehicleIn(m_eSpecEntity);
+			if (vehicle)
+			{
+				SCR_EditableVehicleComponent editableVehicle = SCR_EditableVehicleComponent.Cast(vehicle.FindComponent(SCR_EditableVehicleComponent));
+				string vehicleName = "";
+				if (editableVehicle)
+				{
+					SCR_UIInfo vehicleInfo = editableVehicle.GetInfo();
+					if (vehicleInfo)
+						vehicleName = vehicleInfo.GetName();
+				}
+				if (!vehicleName.IsEmpty())
+					roleName = roleName + "  |  " + vehicleName;
+				else
+					roleName = roleName + "  |  In Vehicle";
+			}
+
+			// Truncate with ellipsis if the string is too long to fit the role line (~48 chars at font 14)
+			const int ROLE_MAX_CHARS = 48;
+			if (roleName.Length() > ROLE_MAX_CHARS)
+				roleName = roleName.Substring(0, ROLE_MAX_CHARS - 1) + "…";
+
+			m_wFollowHUDRole.SetText(roleName);
+		}
+
+		// --- ACE Medical status (blood volume bar + blood state + bleeding indicator) ---
+		SCR_CharacterDamageManagerComponent charDmg = SCR_CharacterDamageManagerComponent.Cast(
+			m_eSpecEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+
+		// Blood volume: prefer ACE blood hit zone (tracks bleeding), fall back to vanilla health
+		float bloodScaled = 1.0;
+		bool isBleeding = false;
+		string bloodStateText = "";
+		if (charDmg)
+		{
+			SCR_CharacterBloodHitZone bloodHZ = SCR_CharacterBloodHitZone.Cast(charDmg.GetBloodHitZone());
+			if (bloodHZ)
+			{
+				bloodScaled = bloodHZ.GetHealthScaled();
+
+				// Map blood damage state to a readable label.
+				// ECharacterBloodState integer values per ACE-Anvil:
+				//   0 = NORMAL, 1 = CLASS_1_HEMORRHAGE, 3 = CLASS_2_HEMORRHAGE,
+				//   4 = CLASS_3_HEMORRHAGE, 5 = CLASS_4_HEMORRHAGE,
+				//   2 = FATAL, UNCONSCIOUS maps to vanilla EDamageState.
+				int bloodState = bloodHZ.GetDamageState();
+				if (bloodState == 0)
+					bloodStateText = "Healthy";
+				else if (bloodState == 1)
+					bloodStateText = "Class I Hemorrhage";
+				else if (bloodState == 3)
+					bloodStateText = "Class II Hemorrhage";
+				else if (bloodState == 4)
+					bloodStateText = "Class III Hemorrhage";
+				else if (bloodState == 5)
+					bloodStateText = "Class IV Hemorrhage";
+				else if (bloodState == 2)
+					bloodStateText = "Fatal Blood Loss";
+				else
+					bloodStateText = "Hemorrhagic Shock";
+			}
+			else
+			{
+				// ACE bleeding not available — fall back to vanilla health
+				bloodScaled = charDmg.GetHealthScaled();
+				bloodStateText = "Healthy";
+			}
+
+			isBleeding = charDmg.IsBleeding();
+		}
+
+		// --- Blood bar fill ---
+		if (m_wFollowHUDHealthBarFill)
+		{
+			// Drive the fill purely by anchors: AnchorMin.x = 0, AnchorMax.x = bloodScaled.
+			// This is resolution/DPI-independent — no pixel math required.
+			float clamped = Math.Clamp(bloodScaled, 0.0, 1.0);
+			FrameSlot.SetAnchorMin(m_wFollowHUDHealthBarFill, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(m_wFollowHUDHealthBarFill, clamped, 1.0);
+			FrameSlot.SetOffsets(m_wFollowHUDHealthBarFill, 0, 0, 0, 0);
+
+			// Color: green → yellow → red as blood drops; deep red when critically low
+			Color barColor;
+			if (bloodScaled > 0.75)
+				barColor = Color.FromRGBA(25, 191, 25, 255);    // green  — normal
+			else if (bloodScaled > 0.5)
+				barColor = Color.FromRGBA(220, 180, 20, 255);   // yellow — Class I/II
+			else if (bloodScaled > 0.25)
+				barColor = Color.FromRGBA(210, 100, 20, 255);   // orange — Class III
+			else
+				barColor = Color.FromRGBA(200, 30, 30, 255);    // red    — Class IV / fatal
+
+			m_wFollowHUDHealthBarFill.SetColor(barColor);
+		}
+
+		// --- Blood state label ---
+		if (m_wFollowHUDBloodStatus)
+			m_wFollowHUDBloodStatus.SetText(bloodStateText);
+
+		// --- Bleeding indicator ---
+		if (m_wFollowHUDBleeding)
+		{
+			if (isBleeding)
+				m_wFollowHUDBleeding.SetText("BLEEDING");
+			else
+				m_wFollowHUDBleeding.SetText("");
+		}
+
+		// --- Limb damage grid ---
+		// Read each named hitzone's scaled health from the damage manager.
+		// Colors match the blood bar scale: green → yellow → orange → red.
+		// If ACE Medical Hitzones is not present some zones may not exist — handled gracefully.
+		int limbCount2 = m_aLimbHZNames.Count();
+
+		// Build a name→health map from physical hitzones once per update (avoids repeated GetHitZoneByName calls)
+		array<HitZone> physHitZones = {};
+		if (charDmg)
+			charDmg.GetPhysicalHitZones(physHitZones);
+
+		for (int li = 0; li < limbCount2; li++)
+		{
+			ImageWidget limbFill = m_aLimbFills.Get(li);
+			if (!limbFill)
+				continue;
+
+			float limbHealth = 1.0;
+			string targetName = m_aLimbHZNames[li];
+
+			foreach (HitZone hz : physHitZones)
+			{
+				if (hz && hz.GetName() == targetName)
+				{
+					limbHealth = hz.GetHealthScaled();
+					break;
+				}
+			}
+
+			limbHealth = Math.Clamp(limbHealth, 0.0, 1.0);
+
+			Color limbColor;
+			if (limbHealth > 0.75)
+				limbColor = Color.FromRGBA(25, 191, 25, 255);   // green  — intact
+			else if (limbHealth > 0.5)
+				limbColor = Color.FromRGBA(220, 180, 20, 255);  // yellow — light damage
+			else if (limbHealth > 0.25)
+				limbColor = Color.FromRGBA(210, 100, 20, 255);  // orange — heavy damage
+			else
+				limbColor = Color.FromRGBA(200, 30, 30, 255);   // red    — critical / destroyed
+
+			limbFill.SetColor(limbColor);
+
+			// AnchorMin.x = 0 (left edge), AnchorMax.x = limbHealth (right edge as fraction of column).
+			// Y anchors both 0.0 — height is fixed at 14px by the -14 bottom offset set at creation.
+			FrameSlot.SetAnchorMin(limbFill, 0.0, 0.0);
+			FrameSlot.SetAnchorMax(limbFill, limbHealth, 0.0);
+			FrameSlot.SetOffsets(limbFill, 0, 0, 0, -14);
+		}
+	}
+
 	/**
 	 * Handle spectator camera updates
 	 * @param tDelta - Time since last frame
@@ -706,14 +1193,17 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// If the character is alive and not a spectator, let spectators spectate them
 		if (CheckIfEntityAlive(entity) && !CRF_GamemodeManager.IsSpectator(entity))
 		{
-			// LMB — follow in FPP (helmet cam)
-			spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
+			// Give the icon a reference to this menu so its click callbacks can call SelectSpecCursorFPP/TPP directly
+			spectatorIcon.SetSpectatorMenu(this);
 			
-			// MMB — follow in TPP; wire via ButtonActionComponent so the ButtonWidget
-			// forwards middle-click events, which SCR_ButtonTextComponent.m_OnClicked never fires for
+			// LMB — follow in FPP (helmet cam) via direct entity reference, bypassing cursor hit-testing
+			spectatorIcon.GetButton().m_OnClicked.Insert(spectatorIcon.OnLMBClicked);
+			
+			// MMB — follow in TPP; wire directly through the icon handler so the entity
+			// is passed via m_eEntity rather than unreliable cursor hit-testing at callback time
 			Widget labelButton = spectatorIconWidget.FindAnyWidget("LabelButton");
 			if (labelButton)
-				ButtonActionComponent.GetOnAction(labelButton, true, 2).Insert(SelectSpecCursorTPPCursor);
+				ButtonActionComponent.GetOnAction(labelButton, true, 2).Insert(spectatorIcon.OnMMBClicked);
 		}
 		
 		spectatorIcon.SetEntity(entity, "Spine3");
@@ -769,21 +1259,23 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			SetIconForGroup(group, groupId);
 		}
 		
-		// Remove group icons that no longer exist
-		array<int> groupIndexesToDelete = {};
-		
+		// Remove group icons that no longer exist.
+		// Collect IDs to remove first, then delete from highest index downward
+		// so that RemoveOrdered doesn't invalidate subsequent indices.
+		array<int> groupIdsToDelete = {};
+
 		foreach (int storedGroupId : m_aGroupIconIds)
 		{
 			if (!currentGroupIds.Contains(storedGroupId))
-			{
-				int index = m_aGroupIconIds.Find(storedGroupId);
-				if (index != -1)
-					groupIndexesToDelete.Insert(index);
-			}
+				groupIdsToDelete.Insert(storedGroupId);
 		}
-		
-		foreach (int index : groupIndexesToDelete)
+
+		foreach (int idToDelete : groupIdsToDelete)
 		{
+			int index = m_aGroupIconIds.Find(idToDelete);
+			if (index == -1)
+				continue;
+
 			m_aGroupIconIds.RemoveOrdered(index);
 			delete m_aGroupIconWidgets.Get(index);
 			m_aGroupIconWidgets.RemoveOrdered(index);
@@ -1178,14 +1670,54 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (!CRF_GamemodeManager.IsSpectator(specEntity))
 			return;
 		
+		// Toggle off if already following this entity in TPP mode
+		if (m_bTPPMode && m_bFrameEventRegistered && m_eSpecEntity == entity)
+		{
+			m_bTPPMode = false;
+			m_eSpecEntity = null;
+			UnregisterFrameEvent();
+			return;
+		}
+		
 		m_bTPPMode = true;
 		m_eSpecEntity = entity;
 		m_bFPPEntityValidityCheck = true;
 		
-		// Call SetCameraOnRailsEntity directly — RegisterFrameEvent guards on
-		// m_bFrameEventRegistered so it would no-op if already following someone.
 		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
 		camManager.SetCameraOnRailsEntity(m_eSpecEntity, true);
+		m_bFrameEventRegistered = true;
+	}
+
+	/**
+	 * Selects a specific entity to spectate in first-person (helmet cam) mode.
+	 * Called directly from the icon's left-click handler with the known entity,
+	 * bypassing cursor hit-testing which is unreliable inside button callbacks.
+	 * @param entity - The entity to follow in FPP mode
+	 */
+	void SelectSpecCursorFPP(IEntity entity)
+	{
+		if (!entity)
+			return;
+		
+		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			return;
+		
+		// Toggle off if already following this entity in FPP mode
+		if (!m_bTPPMode && m_bFrameEventRegistered && m_eSpecEntity == entity)
+		{
+			m_bTPPMode = false;
+			m_eSpecEntity = null;
+			UnregisterFrameEvent();
+			return;
+		}
+		
+		m_bTPPMode = false;
+		m_eSpecEntity = entity;
+		m_bFPPEntityValidityCheck = true;
+		
+		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+		camManager.SetCameraOnRailsEntity(m_eSpecEntity, false);
 		m_bFrameEventRegistered = true;
 	}
 

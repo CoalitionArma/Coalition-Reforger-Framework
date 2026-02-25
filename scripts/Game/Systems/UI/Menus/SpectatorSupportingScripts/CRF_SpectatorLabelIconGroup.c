@@ -19,7 +19,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	protected vector m_vRawCentroid;
 	
 	// Group display settings
-	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 10.0;
+	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 6.0;
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MAX = 65.0;
 	
 	// Fade-out when the camera is very close to the group — individual character icons

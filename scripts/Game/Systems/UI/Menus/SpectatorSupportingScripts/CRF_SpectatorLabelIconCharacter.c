@@ -9,6 +9,9 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	protected bool m_bWounded = false;
 	protected float m_fClickIgnoreTime;
 	
+	// Spectator menu reference (set by SetIconForEntity so MMB can call SelectSpecCursorTPP directly)
+	protected CRF_SpectatorMenu m_SpectatorMenu;
+	
 	// Character components
 	protected SCR_ChimeraCharacter m_eChimeraCharacter;
 	protected SCR_CharacterControllerComponent m_ControllerComponent;
@@ -60,6 +63,34 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			return null;
 			
 		return SCR_ButtonTextComponent.Cast(buttonWidget.FindHandler(SCR_ButtonTextComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Store a reference to the spectator menu so OnMMBClicked can call SelectSpecCursorTPP
+	//------------------------------------------------------------------------------------------------
+	void SetSpectatorMenu(CRF_SpectatorMenu menu)
+	{
+		m_SpectatorMenu = menu;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Called when the player middle-clicks this icon.
+	// Bypasses cursor hit-testing by using the already-known m_eEntity directly.
+	//------------------------------------------------------------------------------------------------
+	void OnMMBClicked()
+	{
+		if (m_SpectatorMenu && m_eEntity)
+			m_SpectatorMenu.SelectSpecCursorTPP(m_eEntity);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Called when the player left-clicks this icon (FPP / helmet cam).
+	// Bypasses cursor hit-testing by using the already-known m_eEntity directly.
+	//------------------------------------------------------------------------------------------------
+	void OnLMBClicked()
+	{
+		if (m_SpectatorMenu && m_eEntity)
+			m_SpectatorMenu.SelectSpecCursorFPP(m_eEntity);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -198,18 +229,16 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	{
 		if (!m_eEntity || !m_wSpectatorLabelText)
 			return;
-		
-		if (!CheckIfEntityAlive(m_eEntity))
-		{
-			m_wSpectatorLabelText.SetText("");
-			return;
-		};
-			
+
+		bool isDead = !CheckIfEntityAlive(m_eEntity);
+
 		RplComponent rplComponent = RplComponent.Cast(m_eEntity.FindComponent(RplComponent));
 		if (!rplComponent)
 			return;
 			
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rplComponent.Id());
+		
+		string displayName = "";
 		
 		int playerId = 0;
 		if (slotData)
@@ -219,17 +248,25 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		{
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 			if (!playerName.IsEmpty())
-				m_wSpectatorLabelText.SetText(playerName);
+				displayName = playerName;
 			else
-				m_wSpectatorLabelText.SetText("DISCONNECTED PLAYER");
+				displayName = "DISCONNECTED PLAYER";
 		}
 		else 
 		{
 			if (slotData)
-				m_wSpectatorLabelText.SetText(slotData.GetSlotName());
-			else 
-				m_wSpectatorLabelText.SetText("");
+				displayName = slotData.GetSlotName();
 		}
+		
+		if (isDead && !displayName.IsEmpty())
+			displayName = "† " + displayName;
+		
+		m_wSpectatorLabelText.SetText(displayName);
+		
+		if (isDead)
+			m_wSpectatorLabelText.SetOpacity(0.3);
+		else
+			m_wSpectatorLabelText.SetOpacity(1.0);
 	}
 	
 	/**
