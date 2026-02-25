@@ -13,9 +13,9 @@ class CRF_CameraManager : ScriptComponent
 	protected bool m_bTPPMode = false; // True = third-person, false = first-person (helmet cam)
 	
 	// Orbit camera state (TPP mode)
-	protected float m_fOrbitYaw   = 0.0;   // Accumulated horizontal orbit angle (degrees)
-	protected float m_fOrbitPitch = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
-	protected float m_fOrbitRadius = 4.0;  // Distance from entity in metres
+	protected float m_fOrbitYaw    = 0.0;   // Accumulated horizontal orbit angle (degrees)
+	protected float m_fOrbitPitch  = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
+	protected float m_fOrbitRadius = 4.0;   // Distance from entity in metres (clamped 1.5–20)
 	
 	protected IEntity m_eCameraEntity;
 	protected vector m_vCameraOrbitPoint;
@@ -218,6 +218,8 @@ class CRF_CameraManager : ScriptComponent
 	 * Rotation only occurs while RMB (ManualCameraRotate) is held.
 	 * ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
 	 * Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
+	 * Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
+	 * Radius is clamped 1.5–20 metres.
 	 */
 	protected void FrameUpdateEntityTPP(float timeSlice)
 	{
@@ -226,7 +228,7 @@ class CRF_CameraManager : ScriptComponent
 
 		InputManager im = GetGame().GetInputManager();
 
-		// Only rotate while RMB is held (ManualCameraRotate action)
+		// Only rotate/zoom while RMB is held (ManualCameraRotate action)
 		if (im.GetActionValue("ManualCameraRotate") != 0)
 		{
 			float rawYaw   = im.GetActionValue("ManualCameraRotateYaw");
@@ -237,6 +239,16 @@ class CRF_CameraManager : ScriptComponent
 			const float SPEED = 90.0;
 			m_fOrbitYaw   += rawYaw   * SPEED * timeSlice;
 			m_fOrbitPitch  = Math.Clamp(m_fOrbitPitch - rawPitch * SPEED * timeSlice, 5.0, 80.0);
+
+			// Scroll wheel while RMB held: ManualCameraSpeedAdjust gives a signed
+			// per-frame impulse (positive = scroll up). Multiply radius by it to zoom.
+			float zoomInput = im.GetActionValue("ManualCameraSpeedAdjust");
+			if (zoomInput != 0)
+			{
+				// zoomInput is a rate value; scale so one notch (~1.0 unit) moves radius by 1 m/s
+				const float ZOOM_SPEED = 8.0;
+				m_fOrbitRadius = Math.Clamp(m_fOrbitRadius - zoomInput * ZOOM_SPEED * timeSlice, 1.5, 20.0);
+			}
 		}
 
 		// --- Build camera position on sphere around entity -------------------
