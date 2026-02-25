@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8CFDA0A357401938}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogs.conf"
+ Name "{8CFDA0A357401938}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_DiamondDogs.conf"
  Configurations {
   CONFResourceClass PC {
   }

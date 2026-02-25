@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A1490B6D459B20D7}Configs/Gearscripts/Custom/Salami/CRF_GS_ModernRUSMiltia.conf"
+ Name "{A1490B6D459B20D7}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_ModernRUSMiltia.conf"
  Configurations {
   CONFResourceClass PC {
   }

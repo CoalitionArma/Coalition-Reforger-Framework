@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{811174B0399FD4D4}Configs/Gearscripts/Custom/Salami/CRF_GS_US90s_Armored.conf"
+ Name "{811174B0399FD4D4}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_US90s_Armored.conf"
  Configurations {
   CONFResourceClass PC {
   }
