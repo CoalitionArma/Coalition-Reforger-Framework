@@ -96,11 +96,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected TextWidget    m_wFollowHUDBloodStatus;  // ACE blood state label (left side of status row)
 	protected TextWidget    m_wFollowHUDBleeding;     // "BLEEDING" indicator (right side of status row)
 	protected ImageWidget   m_wFollowHUDHealthBarFill;
-	// Limb damage grid — one fill-bar and one hitzone name per limb slot
-	// Order: 0=Head, 1=Chest, 2=LeftArm, 3=RightArm, 4=LeftLeg, 5=RightLeg
-	protected ref array<ImageWidget>  m_aLimbFills    = new array<ImageWidget>();
-	protected ref array<TextWidget>   m_aLimbLabels   = new array<TextWidget>();
-	protected ref array<string>       m_aLimbHZNames  = new array<string>();
 	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
@@ -152,7 +147,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
 		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
 		
-		// Follow-mode HUD — build entirely at runtime so no hand-crafted layout GUIDs are needed
+		// Follow-mode HUD 
 		CreateFollowHUD();
 		
 		// Register input action listeners
@@ -457,7 +452,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// --- root frame -------------------------------------------------------
 		// Use SetPos/SetSize for absolute positioning to avoid any anchor/offset
-		// layout calculation issues. Panel is 350×72px, centred horizontally,
+		// layout calculation issues. Panel is 350×90px, centered horizontally,
 		// sitting 12px above the bottom of the screen.
 		m_wFollowHUD = ws.CreateWidget(WidgetType.FrameWidgetTypeID,
 			WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(1, 1, 1, 1), 0, m_wRoot);
@@ -468,7 +463,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		FrameSlot.SetAnchorMin(m_wFollowHUD, 0.0, 0.0);
 		FrameSlot.SetAnchorMax(m_wFollowHUD, 0.0, 0.0);
 		FrameSlot.SetAlignment(m_wFollowHUD, 0.0, 0.0);
-		FrameSlot.SetSize(m_wFollowHUD, 350, 130);
+		FrameSlot.SetSize(m_wFollowHUD, 350, 90);
 		FrameSlot.SetPos(m_wFollowHUD, 0, 0);
 		m_wFollowHUD.SetVisible(false);
 
@@ -570,93 +565,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		}
 
 		Print("[CRF_FollowHUD] CreateFollowHUD completed — m_wFollowHUD=" + m_wFollowHUD, LogLevel.DEBUG);
-
-		// --- Limb damage grid (row 4) -----------------------------------------
-		// 6 equal columns across the 334px content area (8px margin each side).
-		// Each column: a mini bar (10px tall) + a label (12px font) beneath it.
-		// Row sits at Y=96 (8px below the blood-volume bar which ends at ~88px).
-		//
-		//  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐
-		//  │ Head │ │Torso │ │L.Arm │ │R.Arm │ │L.Leg │ │R.Leg │   ← 14px tall bar
-		//  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘
-		//   Head    Torso   L.Arm   R.Arm   L.Leg   R.Leg           ← 10px font label
-		//
-		// Anchors: each column i spans [i/6 … (i+1)/6] horizontally with 2px inner gap.
-
-		m_aLimbFills.Clear();
-		m_aLimbLabels.Clear();
-		m_aLimbHZNames.Clear();
-
-		// Hitzone names (must match Enfusion character hitzone names exactly)
-		array<string> hzNames = {"Head", "Chest", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-		// Short display labels shown beneath each bar
-		array<string> hzLabels = {"Head", "Torso", "L.Arm", "R.Arm", "L.Leg", "R.Leg"};
-
-		int limbCount = hzNames.Count();
-		for (int i = 0; i < limbCount; i++)
-		{
-			float anchorL = i / (float)limbCount;
-			float anchorR = (i + 1) / (float)limbCount;
-
-			// Column container (makes inner offsets relative to column width)
-			Widget col = ws.CreateWidget(WidgetType.FrameWidgetTypeID,
-				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(1, 1, 1, 1), 0, m_wFollowHUD);
-			if (!col)
-				continue;
-
-			FrameSlot.SetAnchorMin(col, anchorL, 0.0);
-			FrameSlot.SetAnchorMax(col, anchorR, 0.0);
-			// 2px gap between columns; 8px margin on outermost edges
-			float leftOff;
-			if (i == 0)
-				leftOff = 8;
-			else
-				leftOff = 2;
-
-			float rightOff;
-			if (i == limbCount - 1)
-				rightOff = 8;
-			else
-				rightOff = 2;
-			// Top = 96, bottom = 130 - 4 = 126  →  offsets=(left, top, -right, -bottom)
-			FrameSlot.SetOffsets(col, leftOff, 96, -rightOff, -4);
-
-			// Dark track
-			Widget limbTrack = ws.CreateWidget(WidgetType.ImageWidgetTypeID,
-				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.15, 0.15, 0.15, 1), 0, col);
-			if (limbTrack)
-			{
-				FrameSlot.SetAnchorMin(limbTrack, 0.0, 0.0);
-				FrameSlot.SetAnchorMax(limbTrack, 1.0, 0.0);
-				FrameSlot.SetOffsets(limbTrack, 0, 0, 0, -14);
-			}
-
-			// Green fill (driven each frame)
-			ImageWidget limbFill = ImageWidget.Cast(ws.CreateWidget(WidgetType.ImageWidgetTypeID,
-				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.1, 0.75, 0.1, 1), 0, col));
-			if (limbFill)
-			{
-				FrameSlot.SetAnchorMin(limbFill, 0.0, 0.0);
-				FrameSlot.SetAnchorMax(limbFill, 1.0, 0.0);
-				FrameSlot.SetOffsets(limbFill, 0, 0, 0, -14);
-			}
-			m_aLimbFills.Insert(limbFill);
-
-			// Label beneath the bar
-			TextWidget limbLabel = TextWidget.Cast(ws.CreateWidget(WidgetType.TextWidgetTypeID,
-				WidgetFlags.VISIBLE | WidgetFlags.INHERIT_CLIPPING, new Color(0.7, 0.7, 0.7, 1), 0, col));
-			if (limbLabel)
-			{
-				FrameSlot.SetAnchorMin(limbLabel, 0.0, 0.0);
-				FrameSlot.SetAnchorMax(limbLabel, 1.0, 0.0);
-				FrameSlot.SetOffsets(limbLabel, 0, 16, 0, -30);
-				limbLabel.SetDesiredFontSize(10);
-				limbLabel.SetOutline(1);
-				limbLabel.SetText(hzLabels[i]);
-			}
-			m_aLimbLabels.Insert(limbLabel);
-			m_aLimbHZNames.Insert(hzNames[i]);
-		}
 	}
 
 	/**
@@ -683,7 +591,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			float sW = ws.GetWidth();
 			float sH = ws.GetHeight();
 			float panelW = 350;
-			float panelH = 130;
+			float panelH = 90;
 			float px = (sW - panelW) * 0.5;
 			float py = sH - panelH - 12;
 			FrameSlot.SetPos(m_wFollowHUD, px, py);
@@ -852,56 +760,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				m_wFollowHUDBleeding.SetText("BLEEDING");
 			else
 				m_wFollowHUDBleeding.SetText("");
-		}
-
-		// --- Limb damage grid ---
-		// Read each named hitzone's scaled health from the damage manager.
-		// Colors match the blood bar scale: green → yellow → orange → red.
-		// If ACE Medical Hitzones is not present some zones may not exist — handled gracefully.
-		int limbCount2 = m_aLimbHZNames.Count();
-
-		// Build a name→health map from physical hitzones once per update (avoids repeated GetHitZoneByName calls)
-		array<HitZone> physHitZones = {};
-		if (charDmg)
-			charDmg.GetPhysicalHitZones(physHitZones);
-
-		for (int li = 0; li < limbCount2; li++)
-		{
-			ImageWidget limbFill = m_aLimbFills.Get(li);
-			if (!limbFill)
-				continue;
-
-			float limbHealth = 1.0;
-			string targetName = m_aLimbHZNames[li];
-
-			foreach (HitZone hz : physHitZones)
-			{
-				if (hz && hz.GetName() == targetName)
-				{
-					limbHealth = hz.GetHealthScaled();
-					break;
-				}
-			}
-
-			limbHealth = Math.Clamp(limbHealth, 0.0, 1.0);
-
-			Color limbColor;
-			if (limbHealth > 0.75)
-				limbColor = Color.FromRGBA(25, 191, 25, 255);   // green  — intact
-			else if (limbHealth > 0.5)
-				limbColor = Color.FromRGBA(220, 180, 20, 255);  // yellow — light damage
-			else if (limbHealth > 0.25)
-				limbColor = Color.FromRGBA(210, 100, 20, 255);  // orange — heavy damage
-			else
-				limbColor = Color.FromRGBA(200, 30, 30, 255);   // red    — critical / destroyed
-
-			limbFill.SetColor(limbColor);
-
-			// AnchorMin.x = 0 (left edge), AnchorMax.x = limbHealth (right edge as fraction of column).
-			// Y anchors both 0.0 — height is fixed at 14px by the -14 bottom offset set at creation.
-			FrameSlot.SetAnchorMin(limbFill, 0.0, 0.0);
-			FrameSlot.SetAnchorMax(limbFill, limbHealth, 0.0);
-			FrameSlot.SetOffsets(limbFill, 0, 0, 0, -14);
 		}
 	}
 
