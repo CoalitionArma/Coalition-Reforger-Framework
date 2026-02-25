@@ -38,7 +38,7 @@ class CRF_VehicleDepotVehicle
 	[Attribute("0", UIWidgets.ComboBox, "Cost type", "", ParamEnumArray.FromEnum(CRF_EVehicleDepotCostType), category: "Cost Configuration")]
 	CRF_EVehicleDepotCostType m_eCostType;
 	
-	[Attribute("10", UIWidgets.SpinBox, "Cost/Amount (TICKETS/SUPPLIES: cost to deduct, USES: total available spawns for this vehicle, -1 = unlimited)", "-1 2000 1", category: "Cost Configuration")]
+	[Attribute("10", UIWidgets.SpinBox, "Cost/Amount (TICKETS/SUPPLIES: cost to deduct, USES: total available spawns for this vehicle, -1 = unlimited)", "-1 9999 1", category: "Cost Configuration")]
 	int m_iCost;
 }
 

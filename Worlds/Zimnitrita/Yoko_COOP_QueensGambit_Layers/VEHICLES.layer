@@ -1,0 +1,62 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 13578.791 60.671 8132.509
+  angles 0 61.118 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 13546.96 59.25 8111.168
+  angles 0 61.118 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 13591.233 61.07 8109.954
+  angles 0 61.118 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 13557.803 59.643 8091.513
+  angles 0 61.118 0
+  m_rVehicle "{D8136D90BE12445F}Prefabs/Vehicles/Tracked/2S1/Tank_2S1.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 15586.188 49.968 7489.864
+  angles 0 83.419 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 15585.438 49.968 7496.354
+  angles 0 83.419 0
+  m_rVehicle "{A4EA6DD24C1ED74F}Leopard/Leopard1_grn.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 15629.573 49.937 7498.626
+  angles 0 -149.598 0
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 15623.408 49.937 7502.243
+  angles 0 -149.598 0
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 15617.789 49.937 7505.54
+  angles 0 -149.598 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 15612.463 49.937 7508.665
+  angles 0 -149.598 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

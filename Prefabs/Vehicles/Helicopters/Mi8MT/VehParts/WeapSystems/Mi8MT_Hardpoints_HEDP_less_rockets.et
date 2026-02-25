@@ -11,7 +11,7 @@ Turret : "{BE610EC0304CF5BA}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSyst
    Enabled 0
   }
   WeaponSlotComponent "{61A4C94C450BB3F3}" {
-   WeaponTemplate "{2A8D3A9DBDCF78B8}Prefabs/Weapons/AircraftWeapons/RocketPods/Pod_UB1657_Loaded_HEDP_S5KO_No_FRAG.et"
+   WeaponTemplate "{13B7DB0A32C91896}Prefabs/Weapons/AircraftWeapons/RocketPods/Pod_UB1657_Loaded_HEDP_S5KO_limited.et"
   }
   WeaponSlotComponent "{61A4C94C47BA46AE}" {
    Enabled 0

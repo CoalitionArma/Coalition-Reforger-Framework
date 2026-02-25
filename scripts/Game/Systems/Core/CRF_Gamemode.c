@@ -453,28 +453,35 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 
-		/*
+		// Get player's BI account GUID for privilege checks
+		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+		
 		// Check if player is the mission designer and grant admin chat
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(iPlayerID);
 		SCR_MissionHeader missionHeader = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		
-		if (missionHeader && missionHeader.m_sAuthor && !missionHeader.m_sAuthor.IsEmpty())
+		if (missionHeader && missionHeader.m_sAuthorGUID && !missionHeader.m_sAuthorGUID.IsEmpty() && !playerGUID.IsEmpty())
 		{
-			string authorName = missionHeader.m_sAuthor;
-			if (playerName.ToLower() == authorName.ToLower())
+			// Compare player's BI account GUID with mission author's GUID
+			if (playerGUID == missionHeader.m_sAuthorGUID)
 			{
 				// Grant session admin (admin chat) to mission designer
 				GetGame().GetPlayerManager().GivePlayerRole(iPlayerID, EPlayerRole.SESSION_ADMINISTRATOR);
 			}
-		}*/
+		}
 
 		// Check if player is a moderator/donator and set privileges
-		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
-		if (!playerIdentity.IsEmpty()) {
-			if (CRF_ModeratorConfig.IsModerator(playerIdentity))
+		if (!playerGUID.IsEmpty()) {
+			if (CRF_ModeratorConfig.IsModerator(playerGUID))
 				m_GamemodeManager.SetPlayerStatus(iPlayerID, "mod");
 			
-			if (CRF_DonatorConfig.IsDonator(playerIdentity))
+			if (CRF_DonatorConfig.IsDonator(playerGUID))
+				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
+		}
+		if (!playerGUID.IsEmpty()) {
+			if (CRF_ModeratorConfig.IsModerator(playerGUID))
+				m_GamemodeManager.SetPlayerStatus(iPlayerID, "mod");
+			
+			if (CRF_DonatorConfig.IsDonator(playerGUID))
 				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
 		}
 	}

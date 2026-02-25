@@ -1,0 +1,86 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1843.696 22.197 859.348
+  m_rVehicle "{5EAB576EF84336C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_More_Space.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68A56002CFF33BA4}" {
+    m_Prefab "{62B704DD79A3B5BE}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Barrel.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D24B8C1B}" {
+    m_Prefab "{0D540E16A6E53433}Prefabs/Items/Equipment/Mortars/M252/Part_M252_BasePlate.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D1F9292D}" {
+    m_Prefab "{80D38046CB4D4663}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Bipod.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002E7AD05A0}" {
+    m_Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002F7871702}" {
+    m_Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+  }
+ }
+ {
+  coords 1835.374 21.566 859.753
+  m_rVehicle "{5EAB576EF84336C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_More_Space.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68A56002CFF33BA4}" {
+    m_Prefab "{62B704DD79A3B5BE}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Barrel.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D24B8C1B}" {
+    m_Prefab "{0D540E16A6E53433}Prefabs/Items/Equipment/Mortars/M252/Part_M252_BasePlate.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D1F9292D}" {
+    m_Prefab "{80D38046CB4D4663}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Bipod.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002E7AD05A0}" {
+    m_Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002F7871702}" {
+    m_Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+  }
+ }
+ {
+  coords 1838.117 21.938 860.123
+  m_rVehicle "{5EAB576EF84336C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_More_Space.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68A56002CFF33BA4}" {
+    m_Prefab "{62B704DD79A3B5BE}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Barrel.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D24B8C1B}" {
+    m_Prefab "{0D540E16A6E53433}Prefabs/Items/Equipment/Mortars/M252/Part_M252_BasePlate.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002D1F9292D}" {
+    m_Prefab "{80D38046CB4D4663}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Bipod.et"
+    m_iAmountOfItemSupplyTruck 0
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002E7AD05A0}" {
+    m_Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68A56002F7871702}" {
+    m_Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 40
+   }
+  }
+ }
+}

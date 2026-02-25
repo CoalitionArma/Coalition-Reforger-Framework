@@ -1,0 +1,229 @@
+GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_US_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D0B27AEF9}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 13208.546 33.125 13072.853
+ angles 0 110.987 0
+}
+GenericEntity : "{12028B6476092F3D}Prefabs/Compositions/Slotted/SlotFlatSmall/ZFRSupplyStorage_S_US_01_NOARSENAL.et" {
+ components {
+  FactionAffiliationComponent "{687C65EBF5416312}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 13226.734 33.125 13104.402
+ angles 0 117 0
+ {
+  GenericEntity {
+   ID "687C65EBF5447EDA"
+   components {
+    SCR_ResourceComponent "{687D17168D37E642}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{687D17168332A08A}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 19133
+       m_fResourceValueMax 50000
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumer "{687D1718EA1AF177}" {
+       m_eResourceRights ALL
+       m_fResourceRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceConsumerContainerQueue "{687D171F9D5AAAC8}" {
+        m_StoragePolicies {
+         SCR_ResourceConsumerStoragePolicy "{687D171F9334639A}" {
+          m_StorageQueue SCR_ResourceConsumerContainerStorageQueueExtended "{687D171F82CCDDA9}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+      }
+     }
+     m_aGenerators {
+      SCR_ResourceGenerator "{687D171F1AEDD301}" {
+       m_eResourceRights ALL
+       m_eIdentifier DEFAULT_STORAGE
+       m_fStorageRange 10
+       m_bIsIgnoringItself 1
+       m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{687D171E20F5EF9F}" {
+        m_StoragePolicies {
+         SCR_ResourceGeneratorStoragePolicy "{687D171E26127B49}" {
+          m_StorageQueue SCR_ResourceGeneratorContainerStorageQueueExtended "{687D171E5BE7E98F}" {
+          }
+          m_eStorageType STORED
+         }
+        }
+       }
+       m_aActions {
+        SCR_ResourceGeneratorActionStore "{687D171F3F061A68}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 13196.547 30.557 13122.936
+ angles 0 -0.054 0
+}
+GenericEntity : "{84B388FC52E2F46E}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_BLUFOR_CAMPAIGN.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_bCheckFactionForOverwriteArsenalConfig 1
+   m_bGetDefaultIfNoFaction 0
+   m_bAlwaysUseDefaultFaction 1
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 13217.127 33.125 13107.772
+ angles 0 137.436 0
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 13169.37 26.095 13124.404
+ Points {
+  ShapePoint "{68A772E4EB9F32E1}" {
+   Position 122.491 -40.705 365.719
+  }
+  ShapePoint "{68A772E4EE9D62C0}" {
+   Position 854.816 0 -942.532
+  }
+  ShapePoint "{68A772E4EDA559AC}" {
+   Position 493.651 0 -1271.205
+  }
+  ShapePoint "{68A772E4E30D21B6}" {
+   Position -290.402 0 -52.313
+  }
+ }
+}
+GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+ coords 13214.485 33.125 13104.69
+ angles 0 23.579 0
+ {
+  GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+   coords 2.623 -0.041 -0.09
+   angles 0.032 -4.97 -0.831
+   {
+    GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+     coords 2.177 -0.028 0.711
+     angles -1.227 130.915 -1.571
+     {
+      GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+       coords 3.371 0.004 -5.865
+       angles 0.606 132.926 -4.954
+       {
+        GenericEntity : "{95E4917C4E27A44D}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.et" {
+         coords 2.808 -0.172 0.05
+         angles 2.959 -175.112 -4.564
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_fSupplySearchRadius 20
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    }
+   }
+  }
+ }
+ coords 13221.075 33.095 13095.83
+ angles -4.8 24.198 9.494
+ {
+  GenericEntity {
+   ID "6658CBE24069A755"
+   coords -0.01 -0.232 -0.672
+   angles 0.49 -3.402 -1.34
+  }
+ }
+}
+$grp GenericEntity : "{FEFE7B425EA72746}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_Conflict_US_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 13229.835 33.125 13119.532
+  angles 0 0.994 0
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+        m_bUseAllAvailableProviders 1
+        m_fBuildingRadius 200
+        m_aAvailableTraits {
+         TRAIT_BASE
+         TRAIT_FORTIFICATION
+         THEME_MILITARY
+        }
+       }
+       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+        "faction affiliation" "BLUFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 13741.209 49.563 12171.721
+  angles 0 -150 0
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+        m_bUseAllAvailableProviders 1
+        m_fBuildingRadius 200
+        m_aAvailableTraits {
+         TRAIT_BASE
+         TRAIT_FORTIFICATION
+         THEME_MILITARY
+        }
+       }
+       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+        "faction affiliation" "BLUFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

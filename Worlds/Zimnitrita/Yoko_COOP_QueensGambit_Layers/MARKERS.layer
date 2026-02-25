@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ OBJECTIVE3 {
+  coords 13574.479 46.741 8957.548
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Destroy Supply Cache"
+ }
+ OBJECTIVE4 {
+  coords 13566.774 60.142 8160.192
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Destroy Emeny Artillery"
+ }
+ OBJECTIVE5 {
+  coords 13753.186 51.169 7172.702
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Capture Enemy Vehicle Depot."
+ }
+}

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E6ACB3564D5CE167}Missions/Zimnitrita/tanaKa_0219_TVT111_LOZCampaignDay7.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

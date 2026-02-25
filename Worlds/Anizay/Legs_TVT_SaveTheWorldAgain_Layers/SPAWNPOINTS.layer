@@ -1,0 +1,19 @@
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 5768.771 114.406 7284.494
+}
+GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ components {
+  CRF_RespawnPointComponent "{645A3104263E67EF}" {
+   m_bIsDefaultRespawn 1
+  }
+  SlotManagerComponent "{645911A16DDD122C}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Enabled 0
+    }
+   }
+  }
+ }
+ Flags 0 0x1
+ coords 2661.218 139.251 7226.451
+}

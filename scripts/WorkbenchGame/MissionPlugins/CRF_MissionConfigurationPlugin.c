@@ -13,6 +13,9 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	[Attribute("<Author>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	protected string m_sMissionAuthor;
 	
+	[Attribute("", "auto", "Your BI account GUID for automatic admin privileges (auto-filled from workbench)", category: "CRF Mission Config - Mission Info")]
+	protected string m_sMissionAuthorGUID;
+	
 	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGamemode), category: "CRF Mission Config - Mission Info")]
 	CRF_EGamemode m_MissionMode;
 	
@@ -28,6 +31,22 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	override void Run()
 	{
 		m_sMissionAuthor = "<Author>";
+		
+		// Auto-fill GUID from currently logged-in Workbench user
+		BackendApi backendApi = GetGame().GetBackendApi();
+		if (backendApi)
+		{
+			UUID identityId = BackendAuthenticatorApi.GetIdentityId();
+			if (identityId && !identityId.IsNull())
+				m_sMissionAuthorGUID = identityId; // UUID extends string, can be assigned directly
+			else
+				m_sMissionAuthorGUID = "<AuthorGUID - Not logged in to BI account>";
+		}
+		else
+		{
+			m_sMissionAuthorGUID = "<AuthorGUID - Backend not available>";
+		}
+		
 		m_MissionMode = CRF_EGamemode.TVT;
 		m_sMissionName = "<Name>";
 		m_sMissionDescription = "<Description>";
@@ -71,6 +90,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		string fullWorldPath = worldMeta.GetResourceID();
 		missionHeaderContainer.Set("World", fullWorldPath);
 		missionHeaderContainer.Set("m_sAuthor", m_sMissionAuthor);
+		missionHeaderContainer.Set("m_sAuthorGUID", m_sMissionAuthorGUID);
 		missionHeaderContainer.Set("m_sGameMode", missionMode);
 		missionHeaderContainer.Set("m_sDescription", m_sMissionDescription);
 		missionHeaderContainer.Set("m_iMapMarkerLimitPerPlayer", 256);
