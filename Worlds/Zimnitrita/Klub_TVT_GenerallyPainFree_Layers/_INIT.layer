@@ -85,7 +85,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "BLUFOR - 2x MAT"\
    ""\
    "OPFOR 3:2 BLUFOR Always"
-   m_aFactionKeys +{
+   m_aFactionKeys {
+    ""
+    ""
+    ""
    }
    m_bShowForAnyFaction 0
   }
