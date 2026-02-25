@@ -1263,6 +1263,10 @@ FrameWidgetClass {
         }
        }
       }
+     }
+    }
+   }
+  }
   FrameWidgetClass "{64841DFA6C3BEF46}" {
    Name "CompassHiddenFrame"
    Slot FrameWidgetSlot "{633533821239C89D}" {
