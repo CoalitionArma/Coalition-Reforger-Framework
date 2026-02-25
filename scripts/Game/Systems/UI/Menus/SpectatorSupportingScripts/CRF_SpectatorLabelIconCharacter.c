@@ -26,6 +26,9 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	protected ResourceName m_rIconImageSet = "{F3A9B47F55BE8D2B}UI/Textures/Icons/PS_Atlas_x64.imageset";
 	protected ref Color m_cDeadColor = Color.Gray;
 	
+	protected static const float CHAR_ICON_FADE_NEAR = 250.0; // fully opaque closer than this
+	protected static const float CHAR_ICON_FADE_FAR  = 500.0; // fully transparent beyond this
+	
 	//------------------------------------------------------------------------------------------------
 	// Widget initialization
 	//------------------------------------------------------------------------------------------------
@@ -57,6 +60,33 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			return null;
 			
 		return SCR_ButtonTextComponent.Cast(buttonWidget.FindHandler(SCR_ButtonTextComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Override Update to apply far-distance fade-out on character icons
+	//------------------------------------------------------------------------------------------------
+	override void Update()
+	{
+		if (!m_eEntity)
+			return;
+		
+		// Let the base class handle world-position projection, distance measurement,
+		// far-distance hard-culling, label visibility, icon sizing and z-ordering.
+		super.Update();
+		
+		// Soft-fade icons as the camera pulls away, so they dissolve smoothly rather
+		// than popping out at the hard-cull distance.
+		if (m_fDistanceToIcon >= CHAR_ICON_FADE_FAR)
+		{
+			m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		if (m_fDistanceToIcon > CHAR_ICON_FADE_NEAR)
+		{
+			float farOpacity = 1.0 - (m_fDistanceToIcon - CHAR_ICON_FADE_NEAR) / (CHAR_ICON_FADE_FAR - CHAR_ICON_FADE_NEAR);
+			m_wRoot.SetOpacity(farOpacity);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

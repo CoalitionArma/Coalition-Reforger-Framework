@@ -1263,11 +1263,22 @@ FrameWidgetClass {
         }
        }
       }
-      ImageWidgetClass "{5DB6D18100D38307}" {
-       Prefab "{5DB6D18100D38307}"
-       "Is Visible" 0
-      }
-     }
+  ButtonWidgetClass "{CRF_CAM_MODE_BTN_0001}" {
+   Name "CamModeButton"
+   Slot FrameWidgetSlot "{CRF_CAM_MODE_BTN_0002}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 390
+    OffsetLeft 390
+    PositionY 12
+    OffsetTop 12
+    SizeX 90
+    OffsetRight -480
+    SizeY 20
+    OffsetBottom -32
+   }
+   Color 0.05 0.05 0.05 0.75
+   components {
+    SCR_ButtonComponent "{CRF_CAM_MODE_BTN_0003}" {
     }
    }
   }
