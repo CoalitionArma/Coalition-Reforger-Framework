@@ -1263,25 +1263,6 @@ FrameWidgetClass {
         }
        }
       }
-  ButtonWidgetClass "{CRF_CAM_MODE_BTN_0001}" {
-   Name "CamModeButton"
-   Slot FrameWidgetSlot "{CRF_CAM_MODE_BTN_0002}" {
-    Anchor 0.5 0 0.5 0
-    PositionX 390
-    OffsetLeft 390
-    PositionY 12
-    OffsetTop 12
-    SizeX 90
-    OffsetRight -480
-    SizeY 20
-    OffsetBottom -32
-   }
-   Color 0.05 0.05 0.05 0.75
-   components {
-    SCR_ButtonComponent "{CRF_CAM_MODE_BTN_0003}" {
-    }
-   }
-  }
   FrameWidgetClass "{64841DFA6C3BEF46}" {
    Name "CompassHiddenFrame"
    Slot FrameWidgetSlot "{633533821239C89D}" {

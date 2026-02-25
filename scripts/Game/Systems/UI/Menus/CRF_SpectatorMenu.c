@@ -59,9 +59,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bFrameEventRegistered = false;          // Flag to track if frame event is registered
 	protected bool m_bTPPMode = false;                       // True = third-person camera, false = first-person (helmet cam)
 	
-	// Camera mode toggle button
-	protected TextWidget m_wCamModeButtonText;
-	
 	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
 	
 	// Main timer elements
@@ -168,15 +165,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wTimer = TextWidget.Cast(m_wRoot.FindAnyWidget("timeLeftTimer"));
 		m_wBackground = ImageWidget.Cast(m_wRoot.FindAnyWidget("timeLeftBackground"));
 
-		// Wire up camera mode toggle button
-		m_wCamModeButtonText = TextWidget.Cast(m_wRoot.FindAnyWidget("CamModeButtonText"));
-		SCR_ButtonComponent camModeBtn = SCR_ButtonComponent.Cast(
-			m_wRoot.FindAnyWidget("CamModeButton").FindHandler(SCR_ButtonComponent)
-		);
-		if (camModeBtn)
-			camModeBtn.m_OnClicked.Insert(ToggleCameraMode);
-		UpdateCamModeButtonText();
-
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
 	}
@@ -215,7 +203,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void ToggleCameraMode()
 	{
 		m_bTPPMode = !m_bTPPMode;
-		UpdateCamModeButtonText();
 
 		// If already following someone, restart the rails with the new mode
 		if (m_eSpecEntity && m_bFrameEventRegistered)
@@ -223,19 +210,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
 			camManager.SetCameraOnRailsEntity(m_eSpecEntity, m_bTPPMode);
 		}
-	}
-
-	/**
-	 * Updates the camera mode toggle button label to reflect the current mode.
-	 */
-	protected void UpdateCamModeButtonText()
-	{
-		if (!m_wCamModeButtonText)
-			return;
-		if (m_bTPPMode)
-			m_wCamModeButtonText.SetText("CAM: 3RD");
-		else
-			m_wCamModeButtonText.SetText("CAM: 1ST");
 	}
 
 	/**
@@ -1182,7 +1156,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (m_bTPPMode && m_bFrameEventRegistered)
 		{
 			m_bTPPMode = false;
-			UpdateCamModeButtonText();
 			m_eSpecEntity = null;
 			UnregisterFrameEvent();
 			return;
@@ -1206,7 +1179,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		m_bTPPMode = true;
-		UpdateCamModeButtonText();
 		m_eSpecEntity = entity;
 		m_bFPPEntityValidityCheck = true;
 		
@@ -1244,7 +1216,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (iconHandler.m_eEntity)
 		{
 			m_bTPPMode = tpp;
-			UpdateCamModeButtonText();
 			m_eSpecEntity = iconHandler.m_eEntity;
 			RegisterFrameEvent();
 		}
