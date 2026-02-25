@@ -1955,6 +1955,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		foreach (IEntity zone: CRF_GamemodeManager.GetInstance().GetForwardDeployZones())
 		{
 			CRF_PolyZone zoneComp = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
+			if (!zoneComp)
+				continue;
+			
 			if (!zoneComp.IsInsidePolygon(Vector(cursorWorldPos[0], 0, cursorWorldPos[2])))
 				continue;
 			
