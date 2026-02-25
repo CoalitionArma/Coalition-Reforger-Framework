@@ -52,7 +52,7 @@ BaseGameTriggerEntity airdrop {
  "			flightData,"\
  "			angle,"\
  "			players,"\
- "			true"\
+ "			false"\
  "		);"\
  "	"\
  "		CRF_AirdropManager.GetInstance().InitFlight(flight);"\

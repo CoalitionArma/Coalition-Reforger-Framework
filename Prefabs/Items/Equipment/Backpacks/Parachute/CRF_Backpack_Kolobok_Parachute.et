@@ -10,14 +10,14 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
   SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
    Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
     ItemDisplayName UIInfo "{5222CB03904B414C}" {
-     Name "#AR-Backpack_Kolobok_Name"
-     Description "#AR-Backpack_Kolobok_Description"
+     Name "Chicken Parachute Backpack"
+     Description "A chicken what slows your fall"
     }
     ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
      Weight 1
      SizeSetupStrategy Manual
-     ItemDimensions 20 20 20
-     ItemVolume 8001
+     ItemDimensions 5 5 5
+     ItemVolume 500
     }
     CustomAttributes {
      PreviewRenderAttributes "{52BCBDD2B54658EC}" {
