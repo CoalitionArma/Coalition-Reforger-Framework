@@ -753,13 +753,50 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (m_wFollowHUDBloodStatus)
 			m_wFollowHUDBloodStatus.SetText(bloodStateText);
 
-		// --- Bleeding indicator ---
+		// --- Bleeding / unconscious indicator ---
 		if (m_wFollowHUDBleeding)
 		{
-			if (isBleeding)
+			// Check if the spectated character is unconscious and get their resilience %
+			bool isUnconscious = false;
+			string unconsciousText = "";
+			SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
+				m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
+			if (ctrl && ctrl.IsUnconscious())
+			{
+				isUnconscious = true;
+				if (charDmg)
+				{
+					SCR_CharacterResilienceHitZone resHz = SCR_CharacterResilienceHitZone.Cast(
+						charDmg.GetResilienceHitZone());
+					if (resHz)
+						unconsciousText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
+					else
+						unconsciousText = "UNCON";
+				}
+				else
+					unconsciousText = "UNCON";
+			}
+
+			if (isUnconscious && isBleeding)
+			{
+				// Both — combine into one label, colour orange (bleeding is already implied as critical)
+				m_wFollowHUDBleeding.SetText(unconsciousText + " | BLEEDING");
+				m_wFollowHUDBleeding.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
+			}
+			else if (isUnconscious)
+			{
+				m_wFollowHUDBleeding.SetText(unconsciousText);
+				m_wFollowHUDBleeding.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
+			}
+			else if (isBleeding)
+			{
 				m_wFollowHUDBleeding.SetText("BLEEDING");
+				m_wFollowHUDBleeding.SetColor(new Color(0.9, 0.15, 0.15, 1));
+			}
 			else
+			{
 				m_wFollowHUDBleeding.SetText("");
+			}
 		}
 	}
 
