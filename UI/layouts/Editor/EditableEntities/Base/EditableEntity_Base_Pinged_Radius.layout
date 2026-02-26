@@ -1,0 +1,131 @@
+FrameWidgetClass {
+ Name "Pinged"
+ Slot FrameWidgetSlot "{54FA665AF536FF76}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ "Z Order" 100
+ components {
+  SCR_CustomArrayEditableEntityUIComponent "{597EB0ABB0CD1F76}" {
+   m_bShowOffScreen 1
+   m_sIconWidgetNames {
+    "StaticIcon" "PulseWidget"
+   }
+   m_bColorWidget 1
+  }
+  SCR_PingEffectsEditorUIComponent "{56E486CE703C2F65}" {
+  }
+ }
+ {
+  ImageWidgetClass "{68B04A49357B974E}" {
+   Name "PulseWidget"
+   Slot FrameWidgetSlot "{530686E77D019C28}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 60
+    OffsetRight -60
+    SizeY 60
+    OffsetBottom -60
+    Alignment 0.5 0.5
+   }
+   "Is Visible" 0
+   Clipping False
+   "Inherit Color" 1
+   components {
+    SCR_BaseEditableEntityUIComponent "{53068243F665CA90}" {
+     m_bShowOffScreen 1
+    }
+   }
+   Texture "{1CD65C97061661F6}UI/Textures/Editor/Logos/Editor-Logo.imageset"
+   Image "Logo_Editor"
+   Size 64 64
+  }
+  ImageWidgetClass "{68B04A49357B9740}" {
+   Name "StaticBorder"
+   Slot FrameWidgetSlot "{530686E77D019C28}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 75
+    OffsetRight -75
+    SizeY 75
+    OffsetBottom -75
+    Alignment 0.5 0.5
+   }
+   "Is Visible" 0
+   Clipping False
+   "Inherit Color" 1
+   components {
+    SCR_BaseEditableEntityUIComponent "{53068243F665CA90}" {
+     m_bShowOffScreen 1
+    }
+   }
+   Texture "{1CD65C97061661F6}UI/Textures/Editor/Logos/Editor-Logo.imageset"
+   Image "EditorPing_Border"
+   Size 64 64
+  }
+  ImageWidgetClass "{68B04A49357B9741}" {
+   Name "PingBorder"
+   Slot FrameWidgetSlot "{530686E77D019C28}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 75
+    OffsetRight -75
+    SizeY 75
+    OffsetBottom -75
+    Alignment 0.5 0.5
+   }
+   "Is Visible" 0
+   Clipping False
+   "Inherit Color" 1
+   components {
+    SCR_BaseEditableEntityUIComponent "{53068243F665CA90}" {
+     m_bShowOffScreen 1
+    }
+   }
+   Texture "{1CD65C97061661F6}UI/Textures/Editor/Logos/Editor-Logo.imageset"
+   Image "EditorPing_Border"
+   Size 64 64
+  }
+  ImageWidgetClass "{68B04A49357B976E}" {
+   Name "StaticIcon"
+   Slot FrameWidgetSlot "{530686E77D019C28}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 140
+    OffsetRight -140
+    SizeY 140
+    OffsetBottom -140
+    Alignment 0.5 0.5
+   }
+   Opacity 0.35
+   Clipping True
+   "Inherit Color" 1
+   components {
+    SCR_BaseEditableEntityUIComponent "{53068243F665CA90}" {
+     m_bShowOffScreen 1
+    }
+   }
+   Texture "{8B87B3F9DC8EC844}UI/Images/Special/CoalitionPING.edds"
+   Size 64 64
+  }
+ }
+}

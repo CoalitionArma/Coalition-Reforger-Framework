@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0399DCD26540AF9E}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_US80Airborn_Klub.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
