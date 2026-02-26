@@ -312,6 +312,9 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_iOrder 7
      m_sFactionFlag "{C8565602E0F422C5}UI/Images/GS_Factions/CIV_NATO.edds"
      m_FactionFlagMaterial "{A9E848D901E17302}Assets/Materials/Flags/Factions/CIV_Flag.emat"
+     m_aFriendlyFactionsIds + {
+      "BLUFOR" "OPFOR" "INDFOR"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_sCallsignGroupFormat "%3"
      }
