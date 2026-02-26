@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B5F2DC386497E0A1}Prefabs/Weapons/Ammo/TF_Ammo_Shell_82mm_HE_O832DU_2B9_Fire.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

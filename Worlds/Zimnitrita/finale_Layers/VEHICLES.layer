@@ -6,6 +6,16 @@ $grp GameEntity {
   coords 12800.287 51.844 9762.027
  }
 }
+$grp Vehicle : "{A78D786EFFDDC8FD}Prefabs/Vehicles/Wheeled/2B9/TF_Wheeled_2B9.et" {
+ TF_Wheeled_2B1 {
+  coords 12858.385 40.044 9836.993
+  angles 0 -89 0
+ }
+ TF_Wheeled_2B2 {
+  coords 11515.049 47.656 10097.998
+  angles 0 117.409 0
+ }
+}
 $grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
  {
   components {
@@ -39,7 +49,7 @@ $grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepo
       m_fResourceValueCurrent 1000
       m_fResourceValueMax 1000
       m_bEnableResourceGain 1
-      m_fResourceGain 100
+      m_fResourceGain 10
       m_fResourceGainTickrate 60
      }
     }
@@ -86,7 +96,7 @@ $grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepo
     }
    }
   }
-  coords 12809.737 51.844 9764.184
-  angles 0 91 0
+  coords 12810.563 42.29 9858.349
+  angles -7.404 91.715 -5.533
  }
 }
