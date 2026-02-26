@@ -1,12 +1,3 @@
-GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 12786.892 51.844 9718.451
- {
-  CRF_ManualMarker {
-   ID "68682AC1849E53AF"
-   coords 49.908 17.292 140.638
-  }
- }
-}
 GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 11533.27 46.047 10075.471
 }
