@@ -102,7 +102,9 @@ class CRF_PolyZone : ScriptComponent
 		if (m_bIsSafestartBorder && Replication.IsServer() && CRF_SafestartManager.GetInstance())
 			CRF_SafestartManager.GetInstance().AddSafestartZone(owner);
 		
-		if (m_bIsForwardDeployZone && Replication.IsServer() && CRF_GamemodeManager.GetInstance())
+		//Clients track this too so we don't have to ask the server to see if theres any active forward deploy zones
+		//Needed for checking if we need to add the action in the map
+		if (m_bIsForwardDeployZone && CRF_GamemodeManager.GetInstance())
 			CRF_GamemodeManager.GetInstance().AddForwardDeployZone(owner);
 	}
 	
