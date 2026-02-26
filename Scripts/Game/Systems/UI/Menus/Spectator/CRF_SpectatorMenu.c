@@ -35,6 +35,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected ref array<Widget> m_aSpectatorWidgets = {};    // Array of spectator UI widgets
 	protected ref array<ref CRF_SpectatorLabelIconCharacter> m_aSpectatorIcons = {}; // Array of spectator icons
 	
+	// Group icon tracking
+	protected ref array<int> m_aGroupIconIds = {};           // Array of group IDs with icons
+	protected ref array<Widget> m_aGroupIconWidgets = {};    // Array of group icon UI widgets
+	protected ref array<ref CRF_SpectatorLabelIconGroup> m_aGroupIcons = {}; // Array of group icon handlers
+	
 	// Faction counters
 	protected int m_iBluforSlots = 0;                        // Total Blufor slots
 	protected int m_iOpforSlots = 0;                         // Total Opfor slots
@@ -52,6 +57,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bHideUi = false;                        // Flag indicating if UI is hidden
 	ref array<Widget> m_aRequest = {};            			  // Array of request widgets
 	protected bool m_bFrameEventRegistered = false;          // Flag to track if frame event is registered
+	protected bool m_bTPPMode = false;                       // True = third-person camera, false = first-person (helmet cam)
 	
 	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
 	
@@ -81,6 +87,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bCIVTicketsActive;
 	
 	protected bool m_bWarningDismissed = false;
+	
+	protected CRF_EntityInfoDisplay m_EntityInfoDisplay;
 	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
@@ -144,6 +152,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Initialize faction buttons
 		InitFactionButtons();
 		
+		// Get follow-mode HUD overlay
+		Widget entityInfoDisplay = m_wRoot.FindAnyWidget("EntityInfoDisplay");
+		m_EntityInfoDisplay = CRF_EntityInfoDisplay.Cast(entityInfoDisplay.FindHandler(CRF_EntityInfoDisplay));
+		
 		// Initialize VON (Voice Over Network)
 		if (!CVON_VONGameModeComponent.GetInstance())
 			InitVON();
@@ -186,8 +198,26 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		inputManager.AddActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 		inputManager.AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 		inputManager.AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+		inputManager.AddActionListener("CRF_SpecToggleCamMode", EActionTrigger.DOWN, ToggleCameraMode);
 	}
 	
+	/**
+	 * Toggles between first-person (helmet cam) and third-person spectator camera modes.
+	 * Can be triggered by the HUD button or a key binding.
+	 * If currently following an entity, the camera switches mode immediately.
+	 */
+	void ToggleCameraMode()
+	{
+		m_bTPPMode = !m_bTPPMode;
+
+		// If already following someone, restart the rails with the new mode
+		if (m_eSpecEntity && m_bFrameEventRegistered)
+		{
+			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			camManager.SetCameraOnRailsEntity(m_eSpecEntity, m_bTPPMode);
+		}
+	}
+
 	/**
 	 * Toggles night vision goggles in spectator mode
 	 */
@@ -262,22 +292,22 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 */
 	void UpdateCompass()
 	{
-		// Get camera yaw angle
-		float yaw = -CRF_CameraManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
-		float yawFloat = -yaw;
+		// Get camera yaw angle (double negation cancels — equivalent to raw [0] value)
+		float yaw = CRF_CameraManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
 		
-		// Convert negative angles to 0-360 range
-		if (yawFloat < 0) 
-			yawFloat = 360 - Math.AbsFloat(yawFloat);
+		// Normalise to 0-360
+		yaw = yaw - 360 * Math.Floor(yaw / 360);
+		if (yaw < 0)
+			yaw += 360;
 		
-		// Update compass widget position based on camera orientation
-		FrameSlot.SetOffsets(
-			FrameWidget.Cast(m_wRoot.FindAnyWidget("CompassFrameMoveable")), 
-			-1090 - 1880 * (yawFloat / 360), 
-			-63, 
-			-2750 + 1880 * (yawFloat / 360), 
-			-995
-		);
+		FrameWidget compassMoveable = FrameWidget.Cast(m_wRoot.FindAnyWidget("CompassFrameMoveable"));
+		if (!compassMoveable)
+			return;
+		
+		// Only shift horizontally — vertical offsets are pinned to the exact layout values
+		// so the bar cannot shift up/down regardless of yaw.
+		float scroll = 1880 * (yaw / 360);
+		FrameSlot.SetOffsets(compassMoveable, -1090 - scroll, -67.785, -2750 + scroll, -990.214);
 	}
 	
 	/**
@@ -305,6 +335,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
+		
+		// Update follow-mode HUD overlay
+		m_EntityInfoDisplay.UpdateEntityInfoDisplay(m_eSpecEntity);
 		
 		// Process channel requests
 		ProcessChannelRequests(tDelta);
@@ -393,7 +426,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_wCIVTickets.SetVisible(false);
 
 	}
-	
+
 	/**
 	 * Handle spectator camera updates
 	 * @param tDelta - Time since last frame
@@ -406,12 +439,14 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			InputManager im = GetGame().GetInputManager();
 			
-			// Check if user is trying to control camera manually or if entity is a spectator
+			// Check if user is trying to control camera manually or if entity is a spectator.
+			// In TPP mode we ignore ManualCameraRotate — mouse movement doesn't mean the
+			// user has taken control of the free camera, so we keep following the entity.
 			bool isManualControl = 
 				im.GetActionValue("ManualCameraMoveLateral") != 0 || 
 				im.GetActionValue("ManualCameraMoveVertical") != 0 || 
 				im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || 
-				im.GetActionValue("ManualCameraRotate") != 0 || 
+				(!m_bTPPMode && im.GetActionValue("ManualCameraRotate") != 0) || 
 				CRF_GamemodeManager.IsSpectator(m_eSpecEntity);
 				
 			if (isManualControl)
@@ -457,7 +492,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				return;
 			
 			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
-			camManager.SetCameraOnRailsEntity(m_eSpecEntity);
+			camManager.SetCameraOnRailsEntity(m_eSpecEntity, m_bTPPMode);
 			
 			m_bFrameEventRegistered = true;
 		}
@@ -649,6 +684,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_aSpectatorWidgets.RemoveOrdered(index);
 			m_aSpectatorIcons.RemoveOrdered(index);
 		}
+		
+		//------------------------------------------------------------------------------------------------
+		// GROUP NATO ICONS - Create/update floating NATO group icons for all groups
+		//------------------------------------------------------------------------------------------------
+		UpdateGroupIcons();
 	}
 	
 	/**
@@ -674,7 +714,19 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// If the character is alive and not a spectator, let spectators spectate them
 		if (CheckIfEntityAlive(entity) && !CRF_GamemodeManager.IsSpectator(entity))
-			spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
+		{
+			// Give the icon a reference to this menu so its click callbacks can call SelectSpecCursorFPP/TPP directly
+			spectatorIcon.SetSpectatorMenu(this);
+			
+			// LMB — follow in FPP (helmet cam) via direct entity reference, bypassing cursor hit-testing
+			spectatorIcon.GetButton().m_OnClicked.Insert(spectatorIcon.OnLMBClicked);
+			
+			// MMB — follow in TPP; wire directly through the icon handler so the entity
+			// is passed via m_eEntity rather than unreliable cursor hit-testing at callback time
+			Widget labelButton = spectatorIconWidget.FindAnyWidget("LabelButton");
+			if (labelButton)
+				ButtonActionComponent.GetOnAction(labelButton, true, 2).Insert(spectatorIcon.OnMMBClicked);
+		}
 		
 		spectatorIcon.SetEntity(entity, "Spine3");
 		
@@ -697,6 +749,98 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return true;
 		else 
 			return false;
+	}
+	
+	//=================================================================================================
+	// GROUP NATO ICON METHODS
+	//=================================================================================================
+	
+	/**
+	 * Updates group NATO icons across all factions
+	 * Creates new icons for groups that don't have them, removes stale ones
+	 */
+	protected void UpdateGroupIcons()
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		// Collect all current group IDs across all factions
+		array<int> currentGroupIds = {};
+		array<SCR_AIGroup> allGroups = slottingManager.GetAllGroups();
+		
+		foreach (SCR_AIGroup group : allGroups)
+		{
+			if (!group || group.IsPrivate())
+				continue;
+			
+			int groupId = group.GetGroupID();
+			currentGroupIds.Insert(groupId);
+			
+			// Create icon if it doesn't exist yet
+			SetIconForGroup(group, groupId);
+		}
+		
+		// Remove group icons that no longer exist.
+		// Collect IDs to remove first, then delete from highest index downward
+		// so that RemoveOrdered doesn't invalidate subsequent indices.
+		array<int> groupIdsToDelete = {};
+
+		foreach (int storedGroupId : m_aGroupIconIds)
+		{
+			if (!currentGroupIds.Contains(storedGroupId))
+				groupIdsToDelete.Insert(storedGroupId);
+		}
+
+		foreach (int idToDelete : groupIdsToDelete)
+		{
+			int index = m_aGroupIconIds.Find(idToDelete);
+			if (index == -1)
+				continue;
+
+			m_aGroupIconIds.RemoveOrdered(index);
+			delete m_aGroupIconWidgets.Get(index);
+			m_aGroupIconWidgets.RemoveOrdered(index);
+			m_aGroupIcons.RemoveOrdered(index);
+		}
+	}
+	
+	/**
+	 * Creates a floating NATO group icon for the specified group
+	 * @param group - The SCR_AIGroup to create an icon for
+	 * @param groupId - The group's unique ID
+	 */
+	protected void SetIconForGroup(SCR_AIGroup group, int groupId)
+	{
+		// Skip if icon already exists for this group
+		if (m_aGroupIconIds.Contains(groupId))
+			return;
+		
+		// Create new group icon widget
+		Widget groupIconWidget = GetGame().GetWorkspace().CreateWidgets(
+			"{B19F5B7D61B4E1C1}UI/Spectator/SpectatorLabelIconGroup.layout",
+			FrameWidget.Cast(GetRootWidget().FindAnyWidget("IconsFrame"))
+		);
+		
+		if (!groupIconWidget)
+			return;
+		
+		CRF_SpectatorLabelIconGroup groupIcon = CRF_SpectatorLabelIconGroup.Cast(
+			groupIconWidget.FindHandler(CRF_SpectatorLabelIconGroup)
+		);
+		
+		if (!groupIcon)
+		{
+			groupIconWidget.RemoveFromHierarchy();
+			return;
+		}
+		
+		groupIcon.SetGroup(group);
+		
+		// Store references
+		m_aGroupIconIds.Insert(groupId);
+		m_aGroupIcons.Insert(groupIcon);
+		m_aGroupIconWidgets.Insert(groupIconWidget);
 	}
 	
 	/**
@@ -1009,9 +1153,101 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Selects an entity to spectate based on cursor position
+	 * Selects an entity to spectate based on cursor position (left-click = FPP / helmet cam)
 	 */
 	void SelectSpecCursor()
+	{
+		SelectSpecCursorInternal(false);
+	}
+
+	/**
+	 * Selects an entity to spectate in TPP based on cursor position (middle-click via ButtonActionComponent).
+	 * If already latched in TPP mode, middle-clicking again releases the latch and returns to free cam.
+	 */
+	void SelectSpecCursorTPPCursor()
+	{
+		// Second MMB click — release the latch
+		if (m_bTPPMode && m_bFrameEventRegistered)
+		{
+			m_bTPPMode = false;
+			m_eSpecEntity = null;
+			UnregisterFrameEvent();
+			return;
+		}
+		SelectSpecCursorInternal(true);
+	}
+
+	/**
+	 * Selects a specific entity to spectate in third-person mode.
+	 * Called directly from the icon's right-click handler with the known entity,
+	 * bypassing cursor hit-testing which is unreliable inside OnMouseButtonDown.
+	 * @param entity - The entity to follow in TPP mode
+	 */
+	void SelectSpecCursorTPP(IEntity entity)
+	{
+		if (!entity)
+			return;
+		
+		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			return;
+		
+		// Toggle off if already following this entity in TPP mode
+		if (m_bTPPMode && m_bFrameEventRegistered && m_eSpecEntity == entity)
+		{
+			m_bTPPMode = false;
+			m_eSpecEntity = null;
+			UnregisterFrameEvent();
+			return;
+		}
+		
+		m_bTPPMode = true;
+		m_eSpecEntity = entity;
+		m_bFPPEntityValidityCheck = true;
+		
+		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+		camManager.SetCameraOnRailsEntity(m_eSpecEntity, true);
+		m_bFrameEventRegistered = true;
+	}
+
+	/**
+	 * Selects a specific entity to spectate in first-person (helmet cam) mode.
+	 * Called directly from the icon's left-click handler with the known entity,
+	 * bypassing cursor hit-testing which is unreliable inside button callbacks.
+	 * @param entity - The entity to follow in FPP mode
+	 */
+	void SelectSpecCursorFPP(IEntity entity)
+	{
+		if (!entity)
+			return;
+		
+		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			return;
+		
+		// Toggle off if already following this entity in FPP mode
+		if (!m_bTPPMode && m_bFrameEventRegistered && m_eSpecEntity == entity)
+		{
+			m_bTPPMode = false;
+			m_eSpecEntity = null;
+			UnregisterFrameEvent();
+			return;
+		}
+		
+		m_bTPPMode = false;
+		m_eSpecEntity = entity;
+		m_bFPPEntityValidityCheck = true;
+		
+		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+		camManager.SetCameraOnRailsEntity(m_eSpecEntity, false);
+		m_bFrameEventRegistered = true;
+	}
+
+	/**
+	 * Internal implementation for cursor-based entity selection (left-click only).
+	 * @param tpp - True to use third-person camera, false for first-person helmet cam
+	 */
+	protected void SelectSpecCursorInternal(bool tpp)
 	{
 		// Get widget under cursor
 		Widget cursorWidget = WidgetManager.GetWidgetUnderCursor();
@@ -1031,8 +1267,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (!iconHandler)
 			return;
 		
-		if(iconHandler.m_eEntity)
+		if (iconHandler.m_eEntity)
+		{
+			m_bTPPMode = tpp;
 			m_eSpecEntity = iconHandler.m_eEntity;
+			RegisterFrameEvent();
+		}
 	}
 	
 	/**
@@ -1801,6 +2041,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (spectatorIcon)
 			{
 				spectatorIcon.Update();
+			}
+		}
+		
+		// Update each group icon
+		if (m_aGroupIcons)
+		{
+			foreach (CRF_SpectatorLabelIconGroup groupIcon : m_aGroupIcons)
+			{
+				if (groupIcon)
+				{
+					groupIcon.Update();
+				}
 			}
 		}
 	}
