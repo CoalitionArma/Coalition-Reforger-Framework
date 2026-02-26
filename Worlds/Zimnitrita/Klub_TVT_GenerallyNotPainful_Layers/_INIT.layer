@@ -1,5 +1,5 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- coords 11703.106 -0 2926.436
+ coords 11703.106 0 2926.436
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
@@ -53,7 +53,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Defend this hill, you love this hill."\
    ""\
-   "OPFOR spawns to the SE."
+   "OPFOR spawns to the SE / can forward deploy to the North."\
+   ""\
+   "BLUFOR LOA is the safestart border. Do not leave the mountain. "\
+   ""\
+   "Note: The brown, grated bunker doors cannot be interacted with. You have been supplied with additional sandbags to offset this."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
