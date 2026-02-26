@@ -10,6 +10,12 @@ class CRF_CameraManager : ScriptComponent
 	protected static CRF_CameraManager m_sInstance;
 	
 	protected bool m_bCameraOnRails;
+	protected bool m_bTPPMode = false; // True = third-person, false = first-person (helmet cam)
+	
+	// Orbit camera state (TPP mode)
+	protected float m_fOrbitYaw    = 0.0;   // Accumulated horizontal orbit angle (degrees)
+	protected float m_fOrbitPitch  = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
+	protected float m_fOrbitRadius = 4.0;   // Distance from entity in meters (clamped 1.5–20)
 	
 	protected IEntity m_eCameraEntity;
 	protected vector m_vCameraOrbitPoint;
@@ -54,11 +60,20 @@ class CRF_CameraManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetCameraOnRailsEntity(IEntity entity)
+	void SetCameraOnRailsEntity(IEntity entity, bool tpp = false)
 	{
 		if (m_eCamera) {
 			ClearCameraOnRailsVariables();
 			m_eCameraEntity = entity;
+			m_bTPPMode = tpp;
+			// Initialise orbit yaw to face behind the entity so camera starts at its back
+			if (tpp && entity)
+			{
+				vector angles = entity.GetAngles();
+				// angles[0] = yaw (world Y-rotation). Offset 180° so we're behind.
+				m_fOrbitYaw = angles[0] + 180.0;
+				m_fOrbitPitch = 20.0;
+			}
 			InitalizeCameraOnRails();
 		}
 	}
@@ -100,6 +115,10 @@ class CRF_CameraManager : ScriptComponent
 		m_vCameraOrbitPoint = vector.Zero;
 		m_vCameraOrbitDistance = 0;
 		m_vCameraOrbitHeight = 0;
+		m_bTPPMode = false;
+		m_fOrbitYaw        = 0.0;
+		m_fOrbitPitch      = 20.0;
+		m_fOrbitRadius     = 4.0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -116,7 +135,12 @@ class CRF_CameraManager : ScriptComponent
 			switch (true) 
 			{
 				case (m_vCameraOrbitPoint != vector.Zero) : FrameUpdateOrbit(); break;
-				case (m_eCameraEntity) : FrameUpdateEntity(); break;
+				case (m_eCameraEntity) : 
+				{
+					if (m_bTPPMode) FrameUpdateEntityTPP(timeSlice);
+					else FrameUpdateEntity();
+					break;
+				}
 				case (m_CameraPolyLine) : FrameUpdatePolyline(); break;
 			}
 		};
@@ -188,6 +212,78 @@ class CRF_CameraManager : ScriptComponent
 		m_eCamera.SetTransform(transform);
 	};
 	
+	//------------------------------------------------------------------------------------------------
+	/*!
+	 * Third-person orbit camera: orbits around the entity using mouse look input.
+	 * Rotation only occurs while RMB (ManualCameraRotate) is held.
+	 * ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
+	 * Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
+	 * Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
+	 * Radius is clamped 1.5–20 meters.
+	 */
+	protected void FrameUpdateEntityTPP(float timeSlice)
+	{
+		if (!m_eCameraEntity || !m_eCamera)
+			return;
+
+		InputManager im = GetGame().GetInputManager();
+
+		// Only rotate/zoom while RMB is held (ManualCameraRotate action)
+		if (im.GetActionValue("ManualCameraRotate") != 0)
+		{
+			float rawYaw   = im.GetActionValue("ManualCameraRotateYaw");
+			float rawPitch = im.GetActionValue("ManualCameraRotatePitch");
+
+			// Values are angular deltas; scale by timeSlice for frame-rate independence.
+			// Speed constant matches SCR_RotateManualCameraComponent default (90 deg/s).
+			const float SPEED = 90.0;
+			m_fOrbitYaw   += rawYaw   * SPEED * timeSlice;
+			m_fOrbitPitch  = Math.Clamp(m_fOrbitPitch - rawPitch * SPEED * timeSlice, 5.0, 80.0);
+
+			// Scroll wheel while RMB held: ManualCameraSpeedAdjust gives a signed
+			// per-frame impulse (positive = scroll up). Multiply radius by it to zoom.
+			float zoomInput = im.GetActionValue("ManualCameraSpeedAdjust");
+			if (zoomInput != 0)
+			{
+				// zoomInput is a rate value; scale so one notch (~1.0 unit) moves radius by 1 m/s
+				const float ZOOM_SPEED = 8.0;
+				m_fOrbitRadius = Math.Clamp(m_fOrbitRadius - zoomInput * ZOOM_SPEED * timeSlice, 1.5, 20.0);
+			}
+		}
+
+		// --- Build camera position on sphere around entity -------------------
+		// Pivot at entity head height
+		vector entityPos = m_eCameraEntity.GetOrigin() + Vector(0, 1.0, 0);
+
+		float yawRad   = m_fOrbitYaw   * Math.DEG2RAD;
+		float pitchRad = m_fOrbitPitch * Math.DEG2RAD;
+
+		float cosPitch = Math.Cos(pitchRad);
+		vector offset = Vector(
+			m_fOrbitRadius * cosPitch * Math.Sin(yawRad),
+			m_fOrbitRadius * Math.Sin(pitchRad),
+			m_fOrbitRadius * cosPitch * Math.Cos(yawRad)
+		);
+		vector camPos = entityPos + offset;
+
+		// --- Build look-at transform -----------------------------------------
+		vector lookDir = vector.Direction(camPos, entityPos);
+		lookDir.Normalize();
+
+		vector worldUp = Vector(0, 1, 0);
+		vector right   = lookDir * worldUp; // forward × up (cross product)
+		right.Normalize();
+		vector up = right * lookDir; // right × forward
+		up.Normalize();
+
+		vector camTransform[4];
+		camTransform[0] = right;
+		camTransform[1] = up;
+		camTransform[2] = lookDir;
+		camTransform[3] = camPos;
+		m_eCamera.SetTransform(camTransform);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	protected void FrameUpdateOrbit()
 	{
