@@ -1,0 +1,39 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1406.808 123.1 5434.282
+  angles 0 87.971 0
+  m_rVehicle "{81A2910690EDA9E5}Prefabs/Vehicles/MSPs/BLUFOR_MSP.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1407.85 126.038 5464.255
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1407.865 125.639 5458.789
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1407.881 124.969 5452.949
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1407.897 124.419 5447.098
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1407.911 123.945 5442.078
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

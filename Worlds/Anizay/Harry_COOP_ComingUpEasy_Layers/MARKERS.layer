@@ -1,0 +1,4 @@
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 2410.828 169.657 1118.317
+ m_sDescription "Rescue the VIP"
+}
