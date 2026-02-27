@@ -1,0 +1,55 @@
+FrameWidgetClass : "{8A4C0D6D625BB09D}UI/Spectator/SpectatorLabelIcon.layout" {
+ components {
+  CRF_SpectatorLabelIconGroup "{63221ACB3BE0CEB0}" {
+  }
+ }
+ {
+  ImageWidgetClass "{60DB07187E8C4DF9}" {
+   Name "GroupLeaderLine"
+   Slot FrameWidgetSlot "{63221ACB28A9FC10}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 2
+    OffsetRight 0
+    SizeY 10
+    OffsetBottom 0
+   }
+   "Is Visible" 0
+   Color 1 1 1 0.6
+   Texture "{F3A9B47F55BE8D2B}UI/Images/Atlas/PS_Atlas_x64.imageset"
+   Image "Circle"
+   Size 2 10
+   "Z Order" -2
+  }
+  OverlayWidgetClass "{60DB071976551894}" {
+   Name "GroupNATOOverlay"
+   Slot FrameWidgetSlot "{63221ACB28A9FBE6}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 40
+    OffsetRight -40
+    SizeY 40
+    OffsetBottom -40
+   }
+   {
+    ImageWidgetClass "{60DCA24F25DC2EF8}" {
+     Name "GroupNATOBackground"
+     Slot OverlayWidgetSlot "{60DB07187FD3FD8A}" {
+     }
+     Color 0 0 0 0.6
+     Size 40 40
+    }
+    ImageWidgetClass "{60DB07187E8C4DF4}" {
+     Name "GroupNATOIcon"
+     Slot OverlayWidgetSlot "{60DB071F89457600}" {
+     }
+     Size 40 40
+    }
+   }
+  }
+ }
+}

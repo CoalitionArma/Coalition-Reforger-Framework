@@ -818,6 +818,34 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SCR_Global.TeleportPlayer(playerId, finalSpawnLocation, SCR_EPlayerTeleportedReason.NONE);
 		CRF_RplBroadcastManager.GetInstance().BroadcastVehiclePosUpdate(finalSpawnLocation, playerId);
 	}
+	
+	/*
+	* Checks if there are any forward deploy zones active for this faction.
+	* These are deleted and then removed from m_aVisibleForFactions on safestart ending.
+	* @param factionKey is the faction of the group you are checking.
+	* @return True if there is an active forward deploy zone.
+	*/
+	bool IsForwardDeployActive(string factionKey)
+	{
+		if (m_aForwardDeployZones.Count() == 0)
+			return false;
+		
+		bool isActive = false;
+		foreach (IEntity zone: m_aForwardDeployZones)
+		{
+			CRF_PolyZone polyZone = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
+			if (!polyZone)
+				continue;
+
+			if(!polyZone.m_aVisibleForFactions.Contains(factionKey))
+				continue;
+			
+			isActive = true;
+			break;
+		}
+		
+		return isActive;
+	}
 }
 
 class CRF_ForwardDeployRequest

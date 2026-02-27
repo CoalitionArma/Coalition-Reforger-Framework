@@ -6,6 +6,11 @@ modded class SCR_PlayerControllerCommandingComponent
 		{
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		}
+		
+		//Buh...
+		CRF_GamemodeManager gamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!gamemodeManager)
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
 
 		SCR_MapMarkerMenuEntry shareMenuEntry = new SCR_MapMarkerMenuEntry();
 		shareMenuEntry.SetName("Share Map Markers");
@@ -24,6 +29,9 @@ modded class SCR_PlayerControllerCommandingComponent
 		
 		if (!playerGroup.IsPlayerLeader(playerId) || !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
+		
+		if (!gamemodeManager.IsForwardDeployActive(playerGroup.GetFaction().GetFactionKey()))
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
 		SCR_MapMarkerMenuEntry menuEntry = new SCR_MapMarkerMenuEntry();
 		menuEntry.SetName("Forward Deploy Element");
