@@ -1,0 +1,8 @@
+SCR_EditorManagerEntity {
+ ID "5078954CACA87B8E"
+ components {
+  ACE_Finger_EditorComponent "{606C3698D6820F4F}" {
+   m_fPingLifetimeS 3
+  }
+ }
+}

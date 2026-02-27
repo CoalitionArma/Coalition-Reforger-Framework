@@ -1,0 +1,369 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 7590.068 0 886.754
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_FrontlineGamemodeManager "{68AF1B0D696E9137}" {
+   m_BluforSide "BLUFOR"
+   m_sBluforSideNickname "CDF"
+   m_OpforSide "OPFOR"
+   m_sOpforSideNickname "CHDKz"
+   m_aZoneObjectNames {
+    "zoneA"
+   }
+   m_iMinNumberOfPlayersNeeded 3
+   m_iTimeToWin 900
+   m_iInitialTime 600
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 60
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "A supporting nation has abruptly pulled out of the Chernarus area, leaving behind valuable materiel and abandoning control over the Green Mountain Area. CDF and CHDKz now rush to fill the gap."\
+   ""\
+   "BLUFOR Composition: Inf"\
+   "BLUFOR Assets: Whatever you can capture"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: Whatever you can capture"\
+   ""\
+   "Time: 60 min"\
+   "Weather: Cloudy Dawn"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins. For this mission, infantry may use any specialty asset taken in the field. "\
+   ""\
+   "Mission Maker Notes:"\
+   "There are varied assets, and equipment to be captured at the marked locations. In addition, there are weapon caches in the form of UAZ's spread throughout the Green Mountain forest. "
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Capture the marked frontline location, and hold it for 15 minutes to win. The location unlocks after 10 minutes. If time runs out, whoever controls it at mission end wins.  For this mission, infantry may use any specialty asset taken in the field. "\
+   ""\
+   "Mission Maker Notes:"\
+   "There are varied assets, and equipment to be captured at the marked locations. In addition, there are weapon caches in the form of UAZ's spread throughout the Green Mountain forest. "
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{68AF7CE0D2113BB2}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113A1B}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D21139B1}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D21138EF}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D211380A}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113FBB}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113ED2}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113E7A}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113DA4}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68AF7CE0D21133FC}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113337}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113258}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113665}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113582}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2113535}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMBAT_ENGINEER
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D21134BB}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2112BE5}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{68AF7CE0D2112B73}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{AF06DCD9277D1AF9}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{7CE2A30418C4E517}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_CHDKz_PKM.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
