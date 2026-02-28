@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{AAAA7A00DF368021}Prefabs/Vehicles/Wheeled/M923A1/M923A1_Mortars.et"
+ Name "{80D38046CB4D4663}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Bipod.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

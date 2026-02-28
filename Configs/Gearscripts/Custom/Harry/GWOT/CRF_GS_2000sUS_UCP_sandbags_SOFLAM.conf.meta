@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D45EEC92AAD87C87}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags_SOFLAM.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

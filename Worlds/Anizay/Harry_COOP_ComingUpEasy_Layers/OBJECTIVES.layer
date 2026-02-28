@@ -110,19 +110,6 @@ $grp DecalEntity : "{71979372AFE909E5}Prefabs/Decals/Blood/BloodStain_Large_01.e
   scale 1.5
  }
 }
-SCR_ChimeraCharacter : "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et" {
- components {
-  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
-   "Additional hit zones" {
-    SCR_CharacterHealthHitZone Health {
-     MaxHealth 0
-    }
-   }
-  }
- }
- coords 2441.396 169.808 1109.528
- angles 0 -28.307 0
-}
 $grp DecalEntity : "{CCE57C4C9C0E5009}Prefabs/Decals/Blood/BloodStain_Small_01.et" {
  {
   coords 2441.243 0.151 1110.02

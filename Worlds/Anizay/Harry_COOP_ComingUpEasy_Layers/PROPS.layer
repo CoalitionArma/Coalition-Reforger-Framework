@@ -1,3 +1,16 @@
+SCR_ChimeraCharacter : "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et" {
+ components {
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHealthHitZone Health {
+     MaxHealth 0
+    }
+   }
+  }
+ }
+ coords 2441.396 169.808 1109.528
+ angles 0 -28.307 0
+}
 SCR_ChimeraCharacter : "{8C7093AF368F496A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1.et" {
  components {
   SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {

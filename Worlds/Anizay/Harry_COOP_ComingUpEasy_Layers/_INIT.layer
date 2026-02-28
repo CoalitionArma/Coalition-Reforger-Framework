@@ -1,3 +1,6 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 4471.058 212.616 1290.248
+}
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -16,10 +19,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bRespawnEnabled 1
  m_bWaveRespawn 0
  m_iTimeToRespawn 30
- m_iRespawnCutoffMinutes 30
+ m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 90
  m_bAllowEspionage 0
- m_bLockUnusedSlots 1
+ m_bLockUnusedSlots 0
  m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
@@ -29,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Insurgents have kidnapped a VIP who was touring the Akhund pyramids. Blufor is rerouting the nearest local force to mount a rescue attempt. "\
    ""\
    "BLUFOR Composition: Motorized Inf"\
-   "BLUFOR Assets: 1x Armed Humvee per squad"\
+   "BLUFOR Assets: 1x Armed Humvee per squad, Mortar"\
    ""\
    "OPFOR Composition: Inf"\
    "OPFOR Assets: Unknown"\
@@ -42,7 +45,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Get to the Akhund area, and search for the VIP. Get him alive to FOB Obeh. "
+   m_sTextData "Get to the Akhund area, and search for the VIP. Get him out alive."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -74,7 +77,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68B6372F42ED2DFC}" {
+  CRF_SlottingGroup "{68B8F5C9136A842C}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -82,15 +85,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED135D}" {
+  CRF_SlottingGroup "{68B8F5C9136A7AA0}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    FORWARD_OBSERVER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED1238}" {
+  CRF_SlottingGroup "{68B8F5C9136A79DE}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -105,7 +109,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED12ED}" {
+  CRF_SlottingGroup "{68B8F5C9136A7939}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -120,7 +124,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED115A}" {
+  CRF_SlottingGroup "{68B8F5C9136A7804}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -132,15 +136,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED1009}" {
+  CRF_SlottingGroup "{68B8F5C9136A7F9A}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    FORWARD_OBSERVER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED10E2}" {
+  CRF_SlottingGroup "{68B8F5C9136A7F29}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -155,7 +160,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED1754}" {
+  CRF_SlottingGroup "{68B8F5C9136A7E49}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -170,7 +175,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED1632}" {
+  CRF_SlottingGroup "{68B8F5C9136A7DF0}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -182,7 +187,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68B6372F42ED16FB}" {
+  CRF_SlottingGroup "{68B8F5C9136A7D0E}" {
+   m_sCallsign "Mortar"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7C9F}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
@@ -193,7 +207,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68B6372F42ED147B}" {
+  CRF_SlottingGroup "{68B8F5C9136A73DA}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -204,12 +218,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
- m_iBLUFORTickets 0
+ m_iBLUFORTickets 25
  m_iOPFORTickets -1
- m_iINDFORTickets 0
+ m_iINDFORTickets 100
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
+  m_rGearScript "{D45EEC92AAD87C87}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags_SOFLAM.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -225,7 +239,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{D45EEC92AAD87C87}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags_SOFLAM.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -241,7 +255,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "68B8F5CB30870E21" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
