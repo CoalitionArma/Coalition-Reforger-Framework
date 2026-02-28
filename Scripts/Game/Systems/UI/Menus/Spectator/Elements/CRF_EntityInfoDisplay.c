@@ -159,8 +159,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				bloodStateText = "Healthy";
 			}
 			
-			isDead = charDmg.IsDestroyed();
-			isBleeding = charDmg.IsBleeding();
+			isDead = !CRF_DamageUtility.CheckIfEntityAlive(m_eSpecEntity);
 			
 			if (isDead)
 			{
@@ -169,11 +168,12 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				BaseDamageEffect fatalDamageEffect = charDmg.GetFatalDamageEffect();
 				
 				if (fatalDamageEffect)
-				{
-					bloodStateText = "KIA - Killed By: " + GetGame().GetPlayerManager().GetPlayerName(fatalDamageEffect.GetInstigator().GetInstigatorPlayerID());
+				{	
+					bloodStateText = string.Format("KIA - Killed By: %1", GetGame().GetPlayerManager().GetPlayerName(fatalDamageEffect.GetInstigator().GetInstigatorPlayerID()));
 					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(charDmg.GetFatalDamageEffect().GetDamageType());
 				};
-			}
+			} else
+				isBleeding = charDmg.IsBleeding();
 		}
 		
 		// --- Blood state label ---
@@ -225,6 +225,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		{
 			m_wEntityDamageType.SetText(damageStateText);
 			m_wEntityDamageType.SetColor(new Color(0.5, 0.5, 0.5, 1.0));
+			return;
 		}
 		else if (isUnconscious && isBleeding)
 		{
