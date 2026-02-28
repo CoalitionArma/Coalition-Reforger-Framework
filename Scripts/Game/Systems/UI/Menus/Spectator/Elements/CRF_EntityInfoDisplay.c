@@ -181,12 +181,58 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 
 		m_wEntityHealthSlider.SetColor(barColor);
 		
-		// --- Bleeding / unconscious indicator ---
+		// --- Bleeding / unconscious / dead indicator ---
+		SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
+			m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
+
+		// Dead takes priority over everything else
+		if (ctrl && ctrl.IsDead())
+		{
+			string causeOfDeath = "";
+			int fatalDmgType = -1;
+
+			if (rpl)
+			{
+				CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+				if (slotData)
+				{
+					fatalDmgType = slotData.GetFatalDamageType();
+					Print("[CRF_EntityInfoDisplay] slotData found, GetFatalDamageType() = " + fatalDmgType);
+				}
+				else
+					Print("[CRF_EntityInfoDisplay] slotData is NULL for rpl.Id() = " + rpl.Id());
+			}
+			else
+				Print("[CRF_EntityInfoDisplay] rpl is NULL");
+
+			// Fallback: read directly from the damage manager
+			if (fatalDmgType == -1 && charDmg)
+			{
+				fatalDmgType = charDmg.m_eCRF_FatalDamageType;
+				Print("[CRF_EntityInfoDisplay] charDmg fallback, m_eCRF_FatalDamageType = " + fatalDmgType);
+			}
+
+			if (fatalDmgType != -1)
+			{
+				string cod = CRF_DamageUtility.GetCauseOfDeathString(fatalDmgType);
+				Print("[CRF_EntityInfoDisplay] GetCauseOfDeathString(" + fatalDmgType + ") = '" + cod + "'");
+				if (!cod.IsEmpty())
+					causeOfDeath = cod;
+			}
+			else
+				Print("[CRF_EntityInfoDisplay] fatalDmgType still -1, no cause of death available");
+
+			m_wEntityDamage.SetText("KIA");
+			m_wEntityDamageType.SetText(causeOfDeath);
+			m_wEntityDamageType.SetColor(new Color(0.5, 0.5, 0.5, 1.0));
+			m_wEntityHealthSlider.SetCurrent(0.0);
+			m_wEntityHealthSlider.SetColor(Color.FromRGBA(80, 80, 80, 255));
+			return;
+		}
+
 		// Check if the spectated character is unconscious and get their resilience %
 		bool isUnconscious = false;
 		string unconsciousText = "";
-		SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
-			m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (ctrl && ctrl.IsUnconscious())
 		{
 			isUnconscious = true;

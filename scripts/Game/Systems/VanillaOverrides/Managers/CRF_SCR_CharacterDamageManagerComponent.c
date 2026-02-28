@@ -1,9 +1,14 @@
  /*
  * CRF_SCR_CharacterDamageManagerComponent
- * Tracks damage events for weapon logging to fix issues with incorrect weapons being reported
+ * Tracks damage events for weapon logging to fix issues with incorrect weapons being reported.
+ * Also broadcasts cause-of-death damage type to all clients when a player dies.
  */
 modded class SCR_CharacterDamageManagerComponent
 {
+	// Cause-of-death damage type, broadcast to all clients via RPC when the player dies.
+	// Stored locally so the spectator UI can read it from charDmg at any time after death.
+	EDamageType m_eCRF_FatalDamageType = EDamageType.KINETIC;
+
 	protected void CRF_HandleDamageTracking(notnull BaseDamageContext damageContext)
 	{
 		// Only run on server
@@ -56,12 +61,36 @@ modded class SCR_CharacterDamageManagerComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Called when damage is received
+	// Called when damage is received — track the last harmful damage type on all machines.
 	override protected void OnDamage(notnull BaseDamageContext damageContext)
 	{
+		// Track on every machine so the local copy is always up to date regardless of authority.
+		EDamageType dt = damageContext.damageType;
+		if (dt != EDamageType.HEALING && dt != EDamageType.REGENERATION)
+			m_eCRF_FatalDamageType = dt;
+
 		super.OnDamage(damageContext);
-		
-		// Track damage for weapon logging
+
+		// Track damage for weapon logging (server-only, handled inside)
 		CRF_HandleDamageTracking(damageContext);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// When the character is destroyed (killed), broadcast the fatal damage type to all clients.
+	override protected void OnDamageStateChanged(EDamageState newState, EDamageState previousDamageState, bool isJIP)
+	{
+		super.OnDamageStateChanged(newState, previousDamageState, isJIP);
+
+		if (Replication.IsServer() && newState == EDamageState.DESTROYED)
+			Rpc(RpcDo_SetFatalDamageType, m_eCRF_FatalDamageType);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Received on all clients — store the fatal damage type so the spectator UI can display it.
+	// EDamageType is passed as int because Enfusion RPCs cannot serialise enum types directly.
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_SetFatalDamageType(int damageType)
+	{
+		m_eCRF_FatalDamageType = damageType;
 	}
 }

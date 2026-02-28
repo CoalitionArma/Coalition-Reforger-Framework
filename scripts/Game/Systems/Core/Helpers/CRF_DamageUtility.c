@@ -29,6 +29,33 @@ class CRF_DamageUtility
 		// This should never be reached due to default case above, but added to satisfy compiler
 		return "Unknown";
 	}
+
+	//------------------------------------------------------------------------------------------------
+	// Convert damage type to a cause-of-death display string for the spectator panel.
+	// Kinetic: "Velocity Wound / Gunshot"
+	// Explosive / Fragmentation: "Explosive / Fragmentation"
+	// Melee: "Melee"
+	// Fire / Incendiary: "Burned Alive"
+	// Bleeding: "Bled Out"
+	// Everything else falls back to the generic string.
+	static string GetCauseOfDeathString(int damageType)
+	{
+		switch (damageType)
+		{
+			case EDamageType.KINETIC:                  return "Velocity Wound";
+			case EDamageType.EXPLOSIVE:                return "Explosive / Fragmentation";
+			case EDamageType.FRAGMENTATION:            return "Explosive / Fragmentation";
+			case EDamageType.PROCESSED_FRAGMENTATION:  return "Explosive / Fragmentation";
+			case EDamageType.MELEE:                    return "Melee";
+			case EDamageType.FIRE:                     return "Burned Alive";
+			case EDamageType.INCENDIARY:               return "Burned Alive";
+			case EDamageType.BLEEDING:                 return "Bled Out";
+			case EDamageType.COLLISION:                return "Collision";
+			default:                                   return "";
+		}
+
+		return "";
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Try to get a descriptive name for the weapon that caused the damage
