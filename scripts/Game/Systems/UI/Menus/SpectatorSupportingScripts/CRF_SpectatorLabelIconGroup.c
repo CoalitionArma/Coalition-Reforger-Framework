@@ -25,7 +25,12 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	// Fade-out when the camera is very close to the group — individual character icons
 	// are clearly visible at short range, so the group symbol becomes redundant noise.
 	protected static const float GROUP_ICON_FADE_START = 20.0; 
-	protected static const float GROUP_ICON_FADE_END   = 10.0; 
+	protected static const float GROUP_ICON_FADE_END   = 10.0;
+	
+	// Label fade distances — the group name fades out when the camera gets close.
+	// Label is fully visible beyond GROUP_LABEL_FADE_START and hidden below GROUP_LABEL_FADE_END.
+	protected static const float GROUP_LABEL_FADE_START = 60.0;
+	protected static const float GROUP_LABEL_FADE_END   = 30.0;
 	
 	// Icon sizing — group icons are larger than individual character icons so they are
 	// easily visible from a distance but don't overwhelm individual unit icons.
@@ -327,6 +332,31 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	{
 		super.UpdateLabel();
 		SetGroupName();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Override label visibility — group names should appear when far away (opposite of characters).
+	// The label fades in as the camera moves away from the icon and fades out when very close,
+	// since individual character icons already provide readable info at short range.
+	// Label is fully visible beyond GROUP_LABEL_FADE_START (60 m) and hidden below GROUP_LABEL_FADE_END (30 m).
+	//------------------------------------------------------------------------------------------------
+	override protected void UpdateLabelVisibility()
+	{
+		// Fully hidden when camera is very close (individual icons take over)
+		if (m_fDistanceToIcon <= GROUP_LABEL_FADE_END)
+		{
+			m_wSpectatorLabel.SetOpacity(0.0);
+			return;
+		}
+		
+		// Fade in between GROUP_LABEL_FADE_END and GROUP_LABEL_FADE_START
+		float opacity = (m_fDistanceToIcon - GROUP_LABEL_FADE_END) / (GROUP_LABEL_FADE_START - GROUP_LABEL_FADE_END);
+		
+		// Clamp to [0, 1]
+		if (opacity > 1.0)
+			opacity = 1.0;
+		
+		m_wSpectatorLabel.SetOpacity(opacity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
