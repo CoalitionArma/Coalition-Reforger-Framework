@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Insurgents have kidnapped a VIP who was touring the Akhund pyramids. Blufor is rerouting the nearest local force to mount a rescue attempt. "\
    ""\
    "BLUFOR Composition: Motorized Inf"\
-   "BLUFOR Assets: 1x Armed Humvee per squad, Mortar"\
+   "BLUFOR Assets: 1x Armed Humvee per squad, Indirect Team"\
    ""\
    "OPFOR Composition: Inf"\
    "OPFOR Assets: Unknown"\
@@ -45,7 +45,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Get to the Akhund area, and search for the VIP. Get him out alive."
+   m_sTextData "Get to the Akhund area, and search for the VIP. Get him to the nearest FOB alive."\
+   ""\
+   "MM notes:"\
+   "Indirect team will get an m777, and a mortar. The mortar has PGMs to use in conjuction with the FO SOFLAM. Consider both weapons when deploying. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
