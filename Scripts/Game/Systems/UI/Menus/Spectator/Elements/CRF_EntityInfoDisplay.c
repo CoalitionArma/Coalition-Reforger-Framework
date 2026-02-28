@@ -120,6 +120,9 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		// Blood volume: prefer ACE blood hit zone (tracks bleeding), fall back to vanilla health
 		float bloodScaled = 1.0;
 		bool isBleeding = false;
+		bool isDead = false;
+		bool isUnconscious = false;
+		string damageStateText = "";
 		string bloodStateText = "";
 		if (charDmg)
 		{
@@ -155,8 +158,22 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				bloodScaled = charDmg.GetHealthScaled();
 				bloodStateText = "Healthy";
 			}
-
+			
+			isDead = charDmg.IsDestroyed();
 			isBleeding = charDmg.IsBleeding();
+			
+			if (isDead)
+			{
+				bloodScaled = 0;
+				
+				BaseDamageEffect fatalDamageEffect = charDmg.GetFatalDamageEffect();
+				
+				if (fatalDamageEffect)
+				{
+					bloodStateText = "KIA - Killed By: " + GetGame().GetPlayerManager().GetPlayerName(fatalDamageEffect.GetInstigator().GetInstigatorPlayerID());
+					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(charDmg.GetFatalDamageEffect().GetDamageType());
+				};
+			}
 		}
 		
 		// --- Blood state label ---
@@ -176,64 +193,19 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 			barColor = Color.FromRGBA(220, 180, 20, 255);   // yellow — Class I/II
 		else if (bloodScaled > 0.25)
 			barColor = Color.FromRGBA(210, 100, 20, 255);   // orange — Class III
-		else
+		else if (bloodScaled > 0)
 			barColor = Color.FromRGBA(200, 30, 30, 255);    // red    — Class IV / fatal
+		else
+			barColor = Color.FromRGBA(80, 80, 80, 255);	 // grey   — Dead
 
 		m_wEntityHealthSlider.SetColor(barColor);
 		
-		// --- Bleeding / unconscious / dead indicator ---
+		// --- Bleeding / unconscious indicator ---
 		SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
 			m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
 
-		// Dead takes priority over everything else
-		if (ctrl && ctrl.IsDead())
-		{
-			string causeOfDeath = "";
-			int fatalDmgType = -1;
-
-			if (rpl)
-			{
-				CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
-				if (slotData)
-				{
-					fatalDmgType = slotData.GetFatalDamageType();
-					Print("[CRF_EntityInfoDisplay] slotData found, GetFatalDamageType() = " + fatalDmgType);
-				}
-				else
-					Print("[CRF_EntityInfoDisplay] slotData is NULL for rpl.Id() = " + rpl.Id());
-			}
-			else
-				Print("[CRF_EntityInfoDisplay] rpl is NULL");
-
-			// Fallback: read directly from the damage manager
-			if (fatalDmgType == -1 && charDmg)
-			{
-				fatalDmgType = charDmg.m_eCRF_FatalDamageType;
-				Print("[CRF_EntityInfoDisplay] charDmg fallback, m_eCRF_FatalDamageType = " + fatalDmgType);
-			}
-
-			if (fatalDmgType != -1)
-			{
-				string cod = CRF_DamageUtility.GetCauseOfDeathString(fatalDmgType);
-				Print("[CRF_EntityInfoDisplay] GetCauseOfDeathString(" + fatalDmgType + ") = '" + cod + "'");
-				if (!cod.IsEmpty())
-					causeOfDeath = cod;
-			}
-			else
-				Print("[CRF_EntityInfoDisplay] fatalDmgType still -1, no cause of death available");
-
-			m_wEntityDamage.SetText("KIA");
-			m_wEntityDamageType.SetText(causeOfDeath);
-			m_wEntityDamageType.SetColor(new Color(0.5, 0.5, 0.5, 1.0));
-			m_wEntityHealthSlider.SetCurrent(0.0);
-			m_wEntityHealthSlider.SetColor(Color.FromRGBA(80, 80, 80, 255));
-			return;
-		}
-
 		// Check if the spectated character is unconscious and get their resilience %
-		bool isUnconscious = false;
-		string unconsciousText = "";
-		if (ctrl && ctrl.IsUnconscious())
+		if (ctrl && ctrl.IsUnconscious() && !isDead)
 		{
 			isUnconscious = true;
 			if (charDmg)
@@ -241,23 +213,28 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				SCR_CharacterResilienceHitZone resHz = SCR_CharacterResilienceHitZone.Cast(
 					charDmg.GetResilienceHitZone());
 				if (resHz)
-					unconsciousText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
+					damageStateText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
 				else
-					unconsciousText = "UNCON";
+					damageStateText = "UNCON";
 			}
 			else
-				unconsciousText = "UNCON";
+				damageStateText = "UNCON";
 		}
-
-		if (isUnconscious && isBleeding)
+		
+		if (isDead)
+		{
+			m_wEntityDamageType.SetText(damageStateText);
+			m_wEntityDamageType.SetColor(new Color(0.5, 0.5, 0.5, 1.0));
+		}
+		else if (isUnconscious && isBleeding)
 		{
 			// Both — combine into one label, colour orange (bleeding is already implied as critical)
-			m_wEntityDamageType.SetText(unconsciousText + " | BLEEDING");
+			m_wEntityDamageType.SetText(damageStateText + " | BLEEDING");
 			m_wEntityDamageType.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
 		}
 		else if (isUnconscious)
 		{
-			m_wEntityDamageType.SetText(unconsciousText);
+			m_wEntityDamageType.SetText(damageStateText);
 			m_wEntityDamageType.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
 		}
 		else if (isBleeding)

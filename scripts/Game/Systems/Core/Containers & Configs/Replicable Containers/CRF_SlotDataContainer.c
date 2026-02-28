@@ -8,7 +8,6 @@ class CRF_SlotDataContainer
 	protected RplId m_iSlotCurrentCharacter = RplId.Invalid();
 	protected bool m_bIsLockedSlot = false;
 	protected bool m_bIsDeadSlot = false;
-	protected int m_iCRF_FatalDamageType = -1; // EDamageType of the killing hit; -1 = unknown
 	
 	// Invoker for data updates
 	protected ref ScriptInvoker m_OnDataUpdate;
@@ -32,7 +31,6 @@ class CRF_SlotDataContainer
 			SetSlotFactionEnum(newSlotData.GetSlotFactionEnum());
 			SetIsLockedSlot(newSlotData.GetIsLockedSlot());
 			SetIsDeadSlot(newSlotData.GetIsDeadSlot());
-			SetFatalDamageType(newSlotData.GetFatalDamageType());
 			
 			if (m_OnDataUpdate)
 				m_OnDataUpdate.Invoke();
@@ -143,12 +141,6 @@ class CRF_SlotDataContainer
 		
 		m_bIsDeadSlot = deadState;
 	}
-
-	//------------------------------------------------------------------------------------------------
-	void SetFatalDamageType(int damageType)
-	{
-		m_iCRF_FatalDamageType = damageType;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotRole(CRF_EGearRole role)
@@ -226,12 +218,6 @@ class CRF_SlotDataContainer
 	{
 		return m_bIsDeadSlot;
 	}
-
-	//------------------------------------------------------------------------------------------------
-	int GetFatalDamageType()
-	{
-		return m_iCRF_FatalDamageType;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	string GetSlotName() 
@@ -282,7 +268,6 @@ class CRF_SlotDataContainer
 		writer.WriteRplId(m_iSlotCurrentCharacter);
 		writer.WriteBool(m_bIsLockedSlot);
 		writer.WriteBool(m_bIsDeadSlot);
-		writer.WriteInt(m_iCRF_FatalDamageType);
 	}
 	
 	void Load(ScriptBitReader reader)
@@ -295,7 +280,6 @@ class CRF_SlotDataContainer
 		reader.ReadRplId(m_iSlotCurrentCharacter);
 		reader.ReadBool(m_bIsLockedSlot);
 		reader.ReadBool(m_bIsDeadSlot);
-		reader.ReadInt(m_iCRF_FatalDamageType);
 	}
 	
 	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
@@ -308,7 +292,6 @@ class CRF_SlotDataContainer
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
 	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-		snapshot.SerializeBytes(instance.m_iCRF_FatalDamageType, 4);
 	    return true;
 	}
 	
@@ -322,7 +305,6 @@ class CRF_SlotDataContainer
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
 	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-		snapshot.SerializeBytes(instance.m_iCRF_FatalDamageType, 4);
 	    return true;
 	}
 	
@@ -336,7 +318,6 @@ class CRF_SlotDataContainer
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeBool(packet);
 		snapshot.EncodeBool(packet);
-		snapshot.EncodeInt(packet);
 	}
 	
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
@@ -349,14 +330,12 @@ class CRF_SlotDataContainer
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
-		snapshot.DecodeInt(packet);
 	    return true;
 	}
 	
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
 	    return lhs.CompareSnapshots(rhs, 4)
-		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
@@ -375,7 +354,6 @@ class CRF_SlotDataContainer
 		&& snapshot.Compare(instance.m_iSlotCurrentGroup, 4)
 		&& snapshot.Compare(instance.m_iSlotCurrentCharacter, 4)
 		&& snapshot.Compare(instance.m_bIsLockedSlot, 4)
-		&& snapshot.Compare(instance.m_bIsDeadSlot, 4)
-		&& snapshot.Compare(instance.m_iCRF_FatalDamageType, 4);
+		&& snapshot.Compare(instance.m_bIsDeadSlot, 4);
 	}
 }

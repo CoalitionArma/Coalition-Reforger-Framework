@@ -634,20 +634,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
 		
 		if(slotID != -1)
-		{
-			// Capture the fatal damage type from the damage manager before marking dead
-			SCR_CharacterDamageManagerComponent charDmg = SCR_CharacterDamageManagerComponent.Cast(
-				entity.FindComponent(SCR_CharacterDamageManagerComponent));
-			if (charDmg)
-			{
-				CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotID);
-				if (slotData)
-					slotData.SetFatalDamageType(charDmg.m_eCRF_FatalDamageType);
-			}
-
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-		}
-
+		
 		// Get death position for spectator camera initialization
 		vector deathPosition[4];
 		entity.GetWorldTransform(deathPosition);
