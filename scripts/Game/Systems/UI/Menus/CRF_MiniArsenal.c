@@ -10,7 +10,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	CameraBase m_Camera;
 	CameraBase m_OldCamera;
 	LightEntity m_Light;
-	CRF_GearscriptManager m_GearscriptManager;
+	CRF_Gamemode m_Gamemode;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
 	CRF_SafestartManager m_SafeStart;
 	
@@ -25,19 +25,19 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_wRoot = GetRootWidget();
 		m_InputManager = GetGame().GetInputManager();
 		SpawnCameraFacingPlayer();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindWidget("CategoryButtons"));
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
 		m_SafeStart = CRF_SafestartManager.GetInstance();
 		
-		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
+		ResourceName gearResource = m_Gamemode.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		
 		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
 		if (!playerFaction)
 			return;
 		
-		CRF_GearScriptContainer container = m_GearscriptManager.GetGearScriptSettings(playerFaction.GetFactionKey());
+		CRF_GearScriptContainer container = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
 		if (!container)
 			return;
 		

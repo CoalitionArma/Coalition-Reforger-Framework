@@ -222,7 +222,7 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	string GetSlotName() 
 	{
-		string customSlottingName = CRF_GearscriptManager.GetInstance().GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
+		string customSlottingName = GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
 		
 		if (customSlottingName.IsEmpty())
 			return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_sRoleName;
@@ -250,8 +250,35 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// REPLICATION STUFF
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Apply custom weapons based on role
+	 * @param faction Faction to pull GS
+	 * @param role Role identifier
+	 */
+	protected string GetCustomRoleName(FactionKey factionKey, CRF_EGearRole role)
+	{
+		// Get gearscript resources
+		ResourceName gearScriptResourceName = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
+
+		if (gearScriptResourceName.IsEmpty())
+			return string.Empty;
+
+		// Load gearscript config
+		CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gearScriptResourceName);
+		
+		if (!gearConfig)
+			return string.Empty;
+		
+		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
+		{
+			if (customGear.m_Role != role)
+				continue;
+			
+			return customGear.m_sRoleName;
+		}
+		
+		return string.Empty;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// REPLICATION STUFF

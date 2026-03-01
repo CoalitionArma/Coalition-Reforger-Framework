@@ -491,7 +491,7 @@ class CRF_RespawnManager : ScriptComponent
 		// Broadcast UI updates to clients
 		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
 		
-		m_Gamemode.GetAOCenter();
+		m_Gamemode.UpdateGenericSpawn();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -693,7 +693,7 @@ class CRF_RespawnManager : ScriptComponent
 				//Is the vehicle non existant anymore
 				if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
 				{
-					CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+					CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 					continue;
 				}
 				
@@ -706,7 +706,7 @@ class CRF_RespawnManager : ScriptComponent
 					continue;
 				
 				//Vehicle is destroyed respawn it.
-				CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+				CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 				continue;
 			}
 		}
@@ -727,7 +727,7 @@ class CRF_RespawnManager : ScriptComponent
 			//Is the vehicle non existant anymore
 			if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
 			{
-				CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+				CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 				continue;
 			}
 			
@@ -740,7 +740,7 @@ class CRF_RespawnManager : ScriptComponent
 				continue;
 			
 			//Vehicle is destroyed respawn it.
-			CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+			CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 			continue;
 		}
 	}
@@ -776,7 +776,7 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		// Check if the respawn menu provided a spawn point
-		if (SpawnRplID != -1 && !CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
+		if (SpawnRplID != -1)
 		{
 			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(SpawnRplID));
 			if (rplComp)
@@ -793,12 +793,11 @@ class CRF_RespawnManager : ScriptComponent
 		}
 		
 		// Use provided spawn location or fall back to factions default spawn
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
-			FindSpawnPointLocation(factionKey, spawnLocation);
+		FindSpawnPointLocation(factionKey, spawnLocation);
 		
 
 		// If no spawn location found, enter spectator mode
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]) || GetFactionSpawnpoints(factionKey).IsEmpty())
+		if (GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
 			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);

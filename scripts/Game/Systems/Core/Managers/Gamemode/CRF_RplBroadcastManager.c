@@ -1931,9 +1931,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
 	{
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
-		if (gearscriptManager)
-			gearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (vehicleGearscriptManager)
+			vehicleGearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
 	}
 	
 	//================================================================================================

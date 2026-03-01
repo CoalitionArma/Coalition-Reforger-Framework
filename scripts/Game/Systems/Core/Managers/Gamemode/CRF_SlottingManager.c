@@ -558,14 +558,6 @@ class CRF_SlottingManager : ScriptComponent
 		if (charRplComp)
 			UpdateSlotCharacter(slotId, charRplComp.Id());
 		
-		// Set playable flag if component exists
-		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(
-			playerCharacter.FindComponent(CRF_PlayableCharacter)
-		);
-		
-		if (playableCharComp)
-			playableCharComp.SetIsSlotSpawned();
-		
 		return playerCharacter;
 	}
 	

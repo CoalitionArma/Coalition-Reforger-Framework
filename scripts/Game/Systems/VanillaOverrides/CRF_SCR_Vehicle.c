@@ -33,13 +33,13 @@ modded class Vehicle
 		if (!GetGame().GetWorld())
 			return;
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if(gamemode)
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if(vehicleGearscriptManager)
 		{
 			GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
 			GetGame().GetCallqueue().CallLater(CheckIfSpawnPassenger, 500, false);
 	
-			gamemode.AddVehicleToArray(this);
+			vehicleGearscriptManager.AddVehicleToSpawnedArray(this);
 		};
 	}
 	
@@ -58,7 +58,7 @@ modded class Vehicle
 	void SetVehicleGear()
 	{
 		GetGame().GetCallqueue().CallLater(
-					CRF_GearscriptManager.GetInstance().SetVehicleGear, 2000, false,
+					CRF_VehicleGearscriptManager.GetInstance().SetVehicleGear, 2000, false,
 					this, m_sFactionKey
 				);
 	}
@@ -73,9 +73,9 @@ modded class Vehicle
 		if (!GetGame().GetWorld())
 			return;
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode)
-			gamemode.RemoveVehicleFromArray(this);
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (vehicleGearscriptManager)
+			vehicleGearscriptManager.RemoveVehicleFromSpawnedArray(this);
 		
 		if (m_iVehicleSpawnerIndex == -1)
 			return;

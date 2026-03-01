@@ -1482,14 +1482,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		EntitySpawnParams params = new EntitySpawnParams();
 		newWeapon.GetTransform(params.Transform);
 		storageMan.TryInsertItem(newWeapon);
-		CRF_GearscriptManager gearScriptManager = CRF_GearscriptManager.GetInstance();
 		int currentMagazine = 0;
 		foreach (int magazineCount: magazineCounts)
 		{
 			for (int i = 0; i < magazineCount; i++)
 			{
 				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
-				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false);
+				CRF_InventoryHelper.InsertInventoryItem(newMagazine, storageComp, storageMan, role);
 			}
 			currentMagazine++;
 		}
@@ -1903,7 +1902,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
 		
-		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_GearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1920,7 +1919,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
 		
-		CRF_GearscriptManager.GetInstance().SetVehicleGear(truck, Vehicle.Cast(truck).m_sFactionKey);
+		CRF_VehicleGearscriptManager.GetInstance().SetVehicleGear(truck, Vehicle.Cast(truck).m_sFactionKey);
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
 			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
@@ -1943,7 +1942,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(rearmTruck.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
 		
-		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_GearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

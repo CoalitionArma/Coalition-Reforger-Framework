@@ -1,6 +1,6 @@
 modded class SCR_InventoryMenuUI
 {
-	CRF_GearscriptManager m_GearscriptManager;
+	CRF_Gamemode m_Gamemode;
 	CRF_SafestartManager m_SafeStartManager;
 
 	override void OnItemAddedListener( IEntity item, notnull BaseInventoryStorageComponent storage )
@@ -34,17 +34,17 @@ modded class SCR_InventoryMenuUI
 	{
 		super.OnMenuOpen();
 		SCR_ButtonComponent.Cast(GetRootWidget().FindWidget("MiniArsenal").FindHandler(SCR_ButtonComponent)).m_OnClicked.Insert(OpenMiniArsenal);
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_SafeStartManager = CRF_SafestartManager.GetInstance();
 		
-		if (!m_GearscriptManager || !m_SafeStartManager)
+		if (!m_Gamemode || !m_SafeStartManager)
 			return;
 		
 		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
 		if (!playerFaction)
 			return;
 		
-		CRF_GearScriptContainer container = m_GearscriptManager.GetGearScriptSettings(playerFaction.GetFactionKey());
+		CRF_GearScriptContainer container = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
 		if (!container)
 			return;
 		

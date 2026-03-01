@@ -364,7 +364,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
 		// Check if we should skip AAR
-		if (m_Gamemode && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR && !m_Gamemode.m_bUseAAR)
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR)
 			return;
 		
 		// Close any existing menus
@@ -393,8 +393,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 			}
 			case CRF_EGamemodeState.AAR: 
 			{
-				if (CRF_Gamemode.GetInstance().m_bUseAAR)
-					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
 				break;
 			}
 		}

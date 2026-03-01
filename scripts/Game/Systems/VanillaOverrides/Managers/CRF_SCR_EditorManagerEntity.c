@@ -140,18 +140,7 @@ modded class SCR_EditorManagerEntity
 		// Verify gamemode exists and check player permissions
 		if (gamemode)
 		{
-			// Check if local entity is a playable character
-			if (SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter))
-			{
-				CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(
-					SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter));
-					
-				// Return if player is not spectating
-				if (!CRF_GamemodeManager.IsSpectator())
-					return;
-			}
-			// Return if not a playable character and not spectating
-			else if (!CRF_GamemodeManager.IsSpectator())
+			 if (!CRF_GamemodeManager.IsSpectator())
 				return;
 		}
 

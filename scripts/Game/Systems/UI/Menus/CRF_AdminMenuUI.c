@@ -597,7 +597,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLongRangeRadioPrefab;
+		ResourceName radioPrefab = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey).m_rLongRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
@@ -627,7 +627,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rShortRangeRadioPrefab;
+		ResourceName radioPrefab = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey).m_rShortRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
@@ -695,7 +695,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Load the gear config for the faction
 		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(CRF_GearscriptManager.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
+			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
 		));
 
 		return gearConfig.m_sLeadershipBinocularsPrefab;

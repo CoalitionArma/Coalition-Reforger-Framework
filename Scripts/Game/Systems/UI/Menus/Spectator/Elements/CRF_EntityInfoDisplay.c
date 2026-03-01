@@ -159,7 +159,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				bloodStateText = "Healthy";
 			}
 			
-			isDead = !CRF_DamageUtility.CheckIfEntityAlive(m_eSpecEntity);
+			isDead = !CRF_DamageHelper.CheckIfEntityAlive(m_eSpecEntity);
 			
 			if (isDead)
 			{
@@ -169,7 +169,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				
 				if (fatalDamageEffect)
 				{
-					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(fatalDamageEffect.GetDamageType());
+					damageStateText = CRF_DamageHelper.GetCauseOfDeathString(fatalDamageEffect.GetDamageType());
 					
 					// Instigator can be null for environmental kills (falls, fire, etc.) — guard before chaining
 					Instigator instigator = fatalDamageEffect.GetInstigator();

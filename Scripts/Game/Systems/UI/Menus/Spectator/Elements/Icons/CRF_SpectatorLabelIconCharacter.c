@@ -230,7 +230,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		if (!m_eEntity || !m_wSpectatorLabelText)
 			return;
 
-		bool isDead = !CRF_DamageUtility.CheckIfEntityAlive(m_eEntity);
+		bool isDead = !CRF_DamageHelper.CheckIfEntityAlive(m_eEntity);
 
 		RplComponent rplComponent = RplComponent.Cast(m_eEntity.FindComponent(RplComponent));
 		if (!rplComponent)

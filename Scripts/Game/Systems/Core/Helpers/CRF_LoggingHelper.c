@@ -1,0 +1,19 @@
+class CRF_LoggingHelper
+{
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Log item error
+	 * @param item Item that failed to insert
+	 * @param entity Entity that the item was being added to
+	 * @param itemType type of item to display (default is "ITEM")
+	 */
+	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM")
+	{
+		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
+		Print(string.Format("CRF ERROR: UNABLE TO INSERT %1: %2", itemType, item.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
+		Print(string.Format("CRF ERROR: INTO ENTITY: %1", entity.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
+		Print(" ", LogLevel.ERROR);
+		Print(string.Format("CRF ERROR: NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType), LogLevel.ERROR);
+		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
+	}
+}

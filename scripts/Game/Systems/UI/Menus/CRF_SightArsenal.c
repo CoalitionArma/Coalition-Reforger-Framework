@@ -8,7 +8,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	InputManager m_InputManager;
 	bool m_bFocused = true;
 	
-	CRF_GearscriptManager m_GearScriptManager;
+	CRF_Gamemode m_Gamemode;
 	CRF_GearScriptContainer m_GearScriptContainer;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
 	ref CRF_SightArsenalConfig m_SightArsenalConfig;
@@ -27,10 +27,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 	override void OnMenuOpen()
 	{
 		m_InputManager = GetGame().GetInputManager();
-		m_GearScriptManager = CRF_GearscriptManager.GetInstance();
-		m_GearScriptContainer = m_GearScriptManager.GetGearScriptSettings(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_GearScriptContainer = m_Gamemode.GetGearScriptSettings(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_SafeStart = CRF_SafestartManager.GetInstance();
-		ResourceName gearResource = m_GearScriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
+		ResourceName gearResource = m_Gamemode.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		m_SightArsenalConfig = CRF_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 		BaseContainerTools.LoadContainer(m_GearScriptContainer.m_rSightArsenal).GetResource().ToBaseContainer()));

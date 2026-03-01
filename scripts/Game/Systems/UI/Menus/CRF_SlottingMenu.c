@@ -256,43 +256,37 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	protected void InitializeFactionDisplay()
 	{
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
-		
 		// Set up each faction if valid
-		SetupFactionUIDisplay("BLUFOR", gearscriptManager, m_rBluforIcon, "BluforFrame", "FlagBlufor", "BluforBGSelect", Color.FromRGBA(34, 196, 244, 33));
-		SetupFactionUIDisplay("OPFOR", gearscriptManager, m_rOpforIcon, "OpforFrame", "FlagOpfor", "OpforBGSelect", Color.FromRGBA(238, 49, 47, 33));
-		SetupFactionUIDisplay("INDFOR", gearscriptManager, m_rIndforIcon, "IndforFrame", "FlagIndfor", "IndforBGSelect", Color.FromRGBA(0, 177, 79, 33));
-		SetupFactionUIDisplay("CIV", gearscriptManager, m_rCivIcon, "CivFrame", "FlagCiv", "CivBGSelect", Color.FromRGBA(168, 110, 207, 33));
+		SetupFactionUIDisplay("BLUFOR", m_rBluforIcon, "BluforFrame", "FlagBlufor", "BluforBGSelect", Color.FromRGBA(34, 196, 244, 33));
+		SetupFactionUIDisplay("OPFOR", m_rOpforIcon, "OpforFrame", "FlagOpfor", "OpforBGSelect", Color.FromRGBA(238, 49, 47, 33));
+		SetupFactionUIDisplay("INDFOR", m_rIndforIcon, "IndforFrame", "FlagIndfor", "IndforBGSelect", Color.FromRGBA(0, 177, 79, 33));
+		SetupFactionUIDisplay("CIV", m_rCivIcon, "CivFrame", "FlagCiv", "CivBGSelect", Color.FromRGBA(168, 110, 207, 33));
 	}
 	
 	/**
 	 * Sets up UI display for a single faction
 	 * @param factionKey Key identifying the faction
-	 * @param gearscriptManager Reference to the gearscript manager
 	 * @param iconResource Resource to store the faction icon
 	 * @param frameWidget Name of the faction frame widget
 	 * @param flagWidget Name of the faction flag widget
 	 * @param bgSelectWidget Name of the faction background select widget
 	 * @param bgColor Background color for the faction
 	 */
-	protected void SetupFactionUIDisplay(string factionKey, CRF_GearscriptManager gearscriptManager, out ResourceName iconResource, string frameWidget, string flagWidget, string bgSelectWidget, Color bgColor)
+	protected void SetupFactionUIDisplay(string factionKey, out ResourceName iconResource, string frameWidget, string flagWidget, string bgSelectWidget, Color bgColor)
 	{
 		// Only process if faction is valid
 		if(!CRF_SlottingManager.GetInstance().IsFactionValid(factionKey))
 			return;
 		
 		// Try to get faction icon from gearscript if available
-		if(gearscriptManager)
-		{	
-			ResourceName gearScriptResource = gearscriptManager.GetGearScriptResource(factionKey);
-			if(!gearScriptResource.IsEmpty())
-			{
-				CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
-					
-				if(gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
-					iconResource = gearConfig.m_FactionIcon;
-			}
+		ResourceName gearScriptResource = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
+		if(!gearScriptResource.IsEmpty())
+		{
+			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+				BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
+				
+			if(gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
+				iconResource = gearConfig.m_FactionIcon;
 		}
 		
 		// If no icon was set from gearscript, use default faction flag

@@ -6,7 +6,6 @@ modded enum ChimeraMenuPreset
 class CRF_SupplyArsenal: ChimeraMenuBase
 {
 	Widget m_wRoot;
-	CRF_GearscriptManager m_GearscriptManager;
 	CRF_GearScriptContainer m_GearScriptContainer;
 	CRF_SupplyArsenalComponent m_SupplyArsnealComponent;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
@@ -38,9 +37,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		m_InputManager = GetGame().GetInputManager();
 		
 		string factionKey = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
-		m_GearScriptContainer = m_GearscriptManager.GetGearScriptSettings(factionKey);
-		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(factionKey);
+		m_GearScriptContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
+		ResourceName gearResource = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("CategoryButtons"));
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
@@ -462,7 +460,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			itemsToBeAdded.Insert(item.m_sItemPrefab);
 		}
 		
-		array<int> supplyCosts = m_GearscriptManager.GetSupplyValuesForItems(itemsToBeAdded);
+		array<int> supplyCosts = CRF_VehicleGearscriptManager.GetInstance().GetSupplyValuesForItems(itemsToBeAdded);
 		m_SupplyCosts.Clear();
 		for (int i = 0; i < itemsToBeAdded.Count(); i ++)
 		{

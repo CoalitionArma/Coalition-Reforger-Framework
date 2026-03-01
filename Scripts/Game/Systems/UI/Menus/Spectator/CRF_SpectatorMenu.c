@@ -1364,25 +1364,24 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Get required managers
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
 		
 		// Initialize slot counters
 		InitSlots();
 		
 		// Update faction UI elements
-		UpdateFactionUI("BLUFOR", gearscriptManager, m_wRoot.FindAnyWidget("BLUButton"), 
+		UpdateFactionUI("BLUFOR", m_wRoot.FindAnyWidget("BLUButton"), 
 			m_wRoot.FindAnyWidget("BLUFlag"), m_wRoot.FindAnyWidget("BLURatio"), 
 			m_iAliveBluforSlots, m_iBluforSlots);
 			
-		UpdateFactionUI("OPFOR", gearscriptManager, m_wRoot.FindAnyWidget("OPFButton"), 
+		UpdateFactionUI("OPFOR", m_wRoot.FindAnyWidget("OPFButton"), 
 			m_wRoot.FindAnyWidget("OPFFlag"), m_wRoot.FindAnyWidget("OPFRatio"), 
 			m_iAliveOpforSlots, m_iOpforSlots);
-			
-		UpdateFactionUI("INDFOR", gearscriptManager, m_wRoot.FindAnyWidget("INDButton"), 
+		
+		UpdateFactionUI("INDFOR", m_wRoot.FindAnyWidget("INDButton"), 
 			m_wRoot.FindAnyWidget("INDFlag"), m_wRoot.FindAnyWidget("INDRatio"), 
 			m_iAliveIndforSlots, m_iIndforSlots);
 			
-		UpdateFactionUI("CIV", gearscriptManager, m_wRoot.FindAnyWidget("CIVButton"), 
+		UpdateFactionUI("CIV", m_wRoot.FindAnyWidget("CIVButton"), 
 			m_wRoot.FindAnyWidget("CIVFlag"), m_wRoot.FindAnyWidget("CIVRatio"), 
 			m_iAliveCivSlots, m_iCivSlots);
 		
@@ -1494,14 +1493,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	/**
 	 * Helper method to update a single faction's UI elements
 	 * @param factionKey - The faction key (e.g., "BLUFOR", "OPFOR")
-	 * @param gearscriptManager - Reference to the gearscript manager
 	 * @param buttonWidget - Button widget for this faction
 	 * @param flagWidget - Flag image widget for this faction
 	 * @param ratioWidget - Text widget showing player count ratio
 	 * @param aliveCount - Number of alive players in faction
 	 * @param totalCount - Total number of players in faction
 	 */
-	protected void UpdateFactionUI(string factionKey, CRF_GearscriptManager gearscriptManager, 
+	protected void UpdateFactionUI(string factionKey, 
 		Widget buttonWidget, Widget flagWidget, Widget ratioWidget, int aliveCount, int totalCount)
 	{
 		// Skip if faction is not valid
@@ -1516,21 +1514,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		ResourceName iconPath;
 		
 		// Try to get icon from gearscript first
-		if (gearscriptManager)
-		{	
-			ResourceName gearScriptResource = gearscriptManager.GetGearScriptResource(factionKey);
-			if (!gearScriptResource.IsEmpty())
+		ResourceName gearScriptResource = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
+		if (!gearScriptResource.IsEmpty())
+		{
+			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
+				BaseContainerTools.CreateInstanceFromContainer(
+					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()
+				)
+			);
+			
+			if (gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
 			{
-				CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
-					BaseContainerTools.CreateInstanceFromContainer(
-						BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()
-					)
-				);
-				
-				if (gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
-				{
-					iconPath = gearConfig.m_FactionIcon;
-				}
+				iconPath = gearConfig.m_FactionIcon;
 			}
 		}
 		

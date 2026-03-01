@@ -1,4 +1,4 @@
-class CRF_SpectatorCameraClass : SCR_ManualCamera
+class CRF_SpectatorCameraClass : SCR_ManualCameraClass
 {
 }
 
