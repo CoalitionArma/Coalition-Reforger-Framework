@@ -6,6 +6,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_AirdropManager "{685355B93E7507C0}" {
   }
   CRF_BattleRoyaleComponent "{686F1BAC9584AE29}" {
+   Enabled 0
    m_iInitialDelay 150
    m_aZoneSequences {
     CRF_BattleRoyaleZoneData "{686F1BAC976E31CF}" {
@@ -847,4 +848,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
+}
+CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ coords 2388.882 2.222 3253.615
+ m_MarkerColor 0.497 0 0 1
+ m_sQuadName "warning"
+ m_fWorldSize 220
+ m_sDescription "Converge Here"
+ m_sMissionMarkerDescription "CONVERGE HERE"
 }
