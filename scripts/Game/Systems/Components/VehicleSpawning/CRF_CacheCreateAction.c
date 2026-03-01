@@ -13,7 +13,7 @@ class CRF_CacheCreateAction: ScriptedUserAction
 	{
 		// Safely get RplIds - prevent crashes if entities don't have RplComponent
 		RplId truckRplId;
-		if (!CRF_ReplicationHelpers.GetRplId(m_Truck, truckRplId))
+		if (!CRF_ReplicationHelper.GetRplId(m_Truck, truckRplId))
 		{
 			Print("[CRF_CacheCreateAction] ERROR: Truck entity has no RplComponent", LogLevel.ERROR);
 			return;
@@ -27,7 +27,7 @@ class CRF_CacheCreateAction: ScriptedUserAction
 		}
 		
 		RplId playerRplId;
-		if (!CRF_ReplicationHelpers.GetRplId(controlledEntity, playerRplId))
+		if (!CRF_ReplicationHelper.GetRplId(controlledEntity, playerRplId))
 		{
 			Print("[CRF_CacheCreateAction] ERROR: Player entity has no RplComponent", LogLevel.ERROR);
 			return;

@@ -1,4 +1,6 @@
-modded class CRF_GearscriptManager
+class CRF_VehicleGearscriptManager : ScriptComponentClass {}
+
+class CRF_VehicleGearscriptManager : ScriptComponent
 {
 	protected SCR_EntityCatalogManagerComponent m_CatalogManager; // PERFORMANCE OPTIMIZATION
 	ref array<IEntity> m_VehiclesInQueue = {};

@@ -669,7 +669,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		else
 		{
 		// If no tracked weapon, use utility to determine the weapon
-		m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
+		m_sWeaponName = CRF_DamageHelper.GetWeaponName(instiContext);
 		
 		// If we still don't have a weapon name, try the killer's current weapon as a last resort
 		if (m_sWeaponName == "Unknown Weapon")
@@ -701,7 +701,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Append damage type to weapon name if available
 		if (damageType > 0)
 		{
-			string damageTypeStr = CRF_DamageUtility.GetDamageTypeString(damageType);
+			string damageTypeStr = CRF_DamageHelper.GetDamageTypeString(damageType);
 			m_sWeaponName = m_sWeaponName + " (" + damageTypeStr + ")";
 		}
 		
@@ -783,7 +783,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			else
 			{
 				// Use the damage type string from utility class
-				weaponName = CRF_DamageUtility.GetDamageTypeString(damageType);
+				weaponName = CRF_DamageHelper.GetDamageTypeString(damageType);
 			}
 		}
 		

@@ -1,9 +1,9 @@
 //------------------------------------------------------------------------------------------------
-//! CRF_ReplicationHelpers
+//! CRF_ReplicationHelper
 //! Utility class providing safe wrappers for common replication operations
 //! These helpers prevent null pointer dereferences and enforce best practices
 //------------------------------------------------------------------------------------------------
-class CRF_ReplicationHelpers
+class CRF_ReplicationHelper
 {
 	//------------------------------------------------------------------------------------------------
 	//! Safely get RplId from an entity
@@ -141,7 +141,7 @@ class CRF_ReplicationHelpers
 		if (!entity)
 		{
 			if (printWarnings)
-				Print("[CRF_ReplicationHelpers] WARNING: Null entity passed to ValidateReplicationSetup", LogLevel.WARNING);
+				Print("[CRF_ReplicationHelper] WARNING: Null entity passed to ValidateReplicationSetup", LogLevel.WARNING);
 			return false;
 		}
 		
@@ -151,7 +151,7 @@ class CRF_ReplicationHelpers
 			if (printWarnings)
 			{
 				string entityName = entity.GetName();
-				Print(string.Format("[CRF_ReplicationHelpers] WARNING: Entity '%1' has no RplComponent but may require replication", entityName), LogLevel.WARNING);
+				Print(string.Format("[CRF_ReplicationHelper] WARNING: Entity '%1' has no RplComponent but may require replication", entityName), LogLevel.WARNING);
 			}
 			return false;
 		}
@@ -160,7 +160,7 @@ class CRF_ReplicationHelpers
 		if (!rplId.IsValid())
 		{
 			if (printWarnings)
-				Print(string.Format("[CRF_ReplicationHelpers] WARNING: Entity '%1' has RplComponent but invalid RplId", entity.GetName()), LogLevel.WARNING);
+				Print(string.Format("[CRF_ReplicationHelper] WARNING: Entity '%1' has RplComponent but invalid RplId", entity.GetName()), LogLevel.WARNING);
 			return false;
 		}
 		
