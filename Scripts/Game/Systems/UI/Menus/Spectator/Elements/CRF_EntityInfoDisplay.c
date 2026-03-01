@@ -168,9 +168,26 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				BaseDamageEffect fatalDamageEffect = charDmg.GetFatalDamageEffect();
 				
 				if (fatalDamageEffect)
-				{	
-					bloodStateText = string.Format("KIA - Killed By: %1", GetGame().GetPlayerManager().GetPlayerName(fatalDamageEffect.GetInstigator().GetInstigatorPlayerID()));
-					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(charDmg.GetFatalDamageEffect().GetDamageType());
+				{
+					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(fatalDamageEffect.GetDamageType());
+					
+					// Instigator can be null for environmental kills (falls, fire, etc.) — guard before chaining
+					Instigator instigator = fatalDamageEffect.GetInstigator();
+					if (instigator)
+					{
+						int killerPlayerId = instigator.GetInstigatorPlayerID();
+						string killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+						
+						// GetPlayerName returns empty string for AI / non-player instigators
+						if (killerName.IsEmpty())
+							bloodStateText = "KIA - Killed By: AI";
+						else
+							bloodStateText = string.Format("KIA - Killed By: %1", killerName);
+					}
+					else
+					{
+						bloodStateText = "KIA";
+					};
 				};
 			} else
 				isBleeding = charDmg.IsBleeding();
