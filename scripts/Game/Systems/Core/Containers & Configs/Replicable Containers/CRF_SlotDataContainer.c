@@ -327,7 +327,7 @@ class CRF_SlotDataContainer
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
-		snapshot.EncodeInt(packet);
+		snapshot.DecodeInt(packet);
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
 	    return true;

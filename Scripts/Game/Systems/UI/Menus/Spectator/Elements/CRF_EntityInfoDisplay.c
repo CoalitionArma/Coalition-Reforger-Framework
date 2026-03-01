@@ -120,6 +120,9 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		// Blood volume: prefer ACE blood hit zone (tracks bleeding), fall back to vanilla health
 		float bloodScaled = 1.0;
 		bool isBleeding = false;
+		bool isDead = false;
+		bool isUnconscious = false;
+		string damageStateText = "";
 		string bloodStateText = "";
 		if (charDmg)
 		{
@@ -155,8 +158,39 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				bloodScaled = charDmg.GetHealthScaled();
 				bloodStateText = "Healthy";
 			}
-
-			isBleeding = charDmg.IsBleeding();
+			
+			isDead = !CRF_DamageUtility.CheckIfEntityAlive(m_eSpecEntity);
+			
+			if (isDead)
+			{
+				bloodScaled = 0;
+				
+				BaseDamageEffect fatalDamageEffect = charDmg.GetFatalDamageEffect();
+				
+				if (fatalDamageEffect)
+				{
+					damageStateText = CRF_DamageUtility.GetCauseOfDeathString(fatalDamageEffect.GetDamageType());
+					
+					// Instigator can be null for environmental kills (falls, fire, etc.) — guard before chaining
+					Instigator instigator = fatalDamageEffect.GetInstigator();
+					if (instigator)
+					{
+						int killerPlayerId = instigator.GetInstigatorPlayerID();
+						string killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+						
+						// GetPlayerName returns empty string for AI / non-player instigators
+						if (killerName.IsEmpty())
+							bloodStateText = "KIA - Killed By: AI";
+						else
+							bloodStateText = string.Format("KIA - Killed By: %1", killerName);
+					}
+					else
+					{
+						bloodStateText = "KIA";
+					};
+				};
+			} else
+				isBleeding = charDmg.IsBleeding();
 		}
 		
 		// --- Blood state label ---
@@ -176,18 +210,19 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 			barColor = Color.FromRGBA(220, 180, 20, 255);   // yellow — Class I/II
 		else if (bloodScaled > 0.25)
 			barColor = Color.FromRGBA(210, 100, 20, 255);   // orange — Class III
-		else
+		else if (bloodScaled > 0)
 			barColor = Color.FromRGBA(200, 30, 30, 255);    // red    — Class IV / fatal
+		else
+			barColor = Color.FromRGBA(80, 80, 80, 255);	 // grey   — Dead
 
 		m_wEntityHealthSlider.SetColor(barColor);
 		
 		// --- Bleeding / unconscious indicator ---
-		// Check if the spectated character is unconscious and get their resilience %
-		bool isUnconscious = false;
-		string unconsciousText = "";
 		SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
 			m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
-		if (ctrl && ctrl.IsUnconscious())
+
+		// Check if the spectated character is unconscious and get their resilience %
+		if (ctrl && ctrl.IsUnconscious() && !isDead)
 		{
 			isUnconscious = true;
 			if (charDmg)
@@ -195,23 +230,29 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				SCR_CharacterResilienceHitZone resHz = SCR_CharacterResilienceHitZone.Cast(
 					charDmg.GetResilienceHitZone());
 				if (resHz)
-					unconsciousText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
+					damageStateText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
 				else
-					unconsciousText = "UNCON";
+					damageStateText = "UNCON";
 			}
 			else
-				unconsciousText = "UNCON";
+				damageStateText = "UNCON";
 		}
-
-		if (isUnconscious && isBleeding)
+		
+		if (isDead)
+		{
+			m_wEntityDamageType.SetText(damageStateText);
+			m_wEntityDamageType.SetColor(new Color(0.5, 0.5, 0.5, 1.0));
+			return;
+		}
+		else if (isUnconscious && isBleeding)
 		{
 			// Both — combine into one label, colour orange (bleeding is already implied as critical)
-			m_wEntityDamageType.SetText(unconsciousText + " | BLEEDING");
+			m_wEntityDamageType.SetText(damageStateText + " | BLEEDING");
 			m_wEntityDamageType.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
 		}
 		else if (isUnconscious)
 		{
-			m_wEntityDamageType.SetText(unconsciousText);
+			m_wEntityDamageType.SetText(damageStateText);
 			m_wEntityDamageType.SetColor(new Color(1.0, 0.5, 0.0, 1.0));
 		}
 		else if (isBleeding)

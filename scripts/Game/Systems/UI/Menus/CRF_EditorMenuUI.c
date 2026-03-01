@@ -61,6 +61,10 @@ modded class EditorMenuUI
 	{
 		super.OnMenuClose();
 		
+		// Always remove the click handler to prevent double-registration on re-open
+		if (m_ButtonComponent)
+			m_ButtonComponent.m_OnClicked.Remove(ToggleListen);
+		
 		if (!CRF_Gamemode.GetInstance())
 			return;
 		
