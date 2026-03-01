@@ -207,6 +207,33 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+		// Enable frame events for batch processing
+		SetEventMask(EntityEvent.FRAME);
+	}
+
+	//===================================================================================
+	// FRAME UPDATES
+	//===================================================================================
+
+	/**
+	 * Frame update for batch processing player initializations
+	 * More reliable than CallLater for time-critical operations
+	 */
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		// Only process if we have pending initializations
+		if (!m_bProcessingInitializations || m_aPendingPlayerInitializations.IsEmpty())
+			return;
+
+		// Accumulate time
+		m_fBatchTimer += timeSlice * 1000; // Convert to milliseconds
+
+		// Check if enough time has passed for next batch
+		if (m_fBatchTimer >= BATCH_INTERVAL_MS)
+		{
+			ProcessPlayerBatch();
+			m_fBatchTimer = 0.0; // Reset timer
+		}
 	}
 	
 	//===================================================================================
