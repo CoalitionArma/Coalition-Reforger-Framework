@@ -713,7 +713,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		);
 		
 		// If the character is alive and not a spectator, let spectators spectate them
-		if (CheckIfEntityAlive(entity) && !CRF_GamemodeManager.IsSpectator(entity))
+		if (!CRF_GamemodeManager.IsSpectator(entity))
 		{
 			// Give the icon a reference to this menu so its click callbacks can call SelectSpecCursorFPP/TPP directly
 			spectatorIcon.SetSpectatorMenu(this);
@@ -735,21 +735,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_aSpectatorIcons.Insert(spectatorIcon);
 		m_aSpectatorWidgets.Insert(spectatorIconWidget);
 	};
-	
-	/**
-	 * Check if the provided entity is considered "alive"
-	 * @param entity - Entity to check
-	 */
-	protected bool CheckIfEntityAlive(IEntity entity)
-	{
-		SCR_CharacterControllerComponent controllerComponent = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
-	
-		// If the character is a valid character and is not dead then return that this guy ain't dead
-		if (controllerComponent && !controllerComponent.IsDead())
-			return true;
-		else 
-			return false;
-	}
 	
 	//=================================================================================================
 	// GROUP NATO ICON METHODS

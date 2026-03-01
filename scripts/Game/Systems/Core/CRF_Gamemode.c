@@ -635,7 +635,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		if(slotID != -1)
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-
+		
 		// Get death position for spectator camera initialization
 		vector deathPosition[4];
 		entity.GetWorldTransform(deathPosition);

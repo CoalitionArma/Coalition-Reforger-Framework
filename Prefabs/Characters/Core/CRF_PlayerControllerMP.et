@@ -1,6 +1,8 @@
 SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerControllerMP.et" {
  ID "1A9BA6BEFA06E3B1"
  components {
+  CRF_ParachutePlayerComponent "{68A90AB4BC5E81E4}" {
+  }
   CRF_PlayerControllerManager "{65654A2A31C3BDEA}" {
    components {
     CRF_CameraManager "{686A3E83F64B59B5}" {
@@ -12,6 +14,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
    }
   }
   ParachuteComponent "{65932336581E53D0}" {
+   Enabled 0
    m_fHardLandingVelocity 50
    m_fDeathLandingVelocity 100
    m_bBreakLegs 0

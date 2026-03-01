@@ -1,0 +1,162 @@
+$grp GameEntity {
+ opftracker {
+  coords 12806.519 51.844 9761.522
+ }
+ blutracker {
+  coords 12800.287 51.844 9762.027
+ }
+}
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 12834.464 39.732 9858.2
+}
+$grp GenericEntity : "{95544A428439B73E}Prefabs/Weapons/Magazines/2B9/Magazine__82mm_2B9_HE.et" {
+ {
+  coords 12859.822 40.033 9836.102
+ }
+ {
+  coords 12857.077 40.056 9839.185
+ }
+ {
+  coords 12857.655 40.055 9839.135
+ }
+ {
+  coords 12858.339 40.055 9838.985
+ }
+ {
+  coords 12858.448 40.059 9839.597
+ }
+ {
+  coords 12857.784 40.06 9839.603
+ }
+ {
+  coords 12856.708 40.061 9839.795
+ }
+ {
+  coords 12857.09 40.063 9840.182
+ }
+ {
+  coords 12857.922 40.062 9840.038
+ }
+ {
+  coords 11515.077 47.569 10095.481
+ }
+ {
+  coords 11514.555 47.597 10096.092
+ }
+ {
+  coords 11515.234 47.594 10096.016
+ }
+ {
+  coords 11514.393 47.572 10095.54
+ }
+ {
+  coords 11513.91 47.596 10096.067
+ }
+ {
+  coords 11514.234 47.611 10096.544
+ }
+ {
+  coords 11513.679 47.57 10095.495
+ }
+ {
+  coords 11514.444 47.547 10095
+ }
+}
+$grp Vehicle : "{A78D786EFFDDC8FD}Prefabs/Vehicles/Wheeled/2B9/TF_Wheeled_2B9.et" {
+ TF_Wheeled_2B1 {
+  coords 12858.385 40.044 9836.993
+  angles 0 -89 0
+ }
+ TF_Wheeled_2B2 {
+  coords 11515.049 47.656 10097.998
+  angles 0 117.409 0
+ }
+}
+$grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_fVehicleFacingOffset 180
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "BRDM"
+      m_sVehiclePrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{68B4206CC95534BB}" {
+      m_sVehicleName "T72A"
+      m_sVehiclePrefab "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{68B4206CF76D2AA5}" {
+      m_sVehicleName "BTR"
+      m_sVehiclePrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+   SCR_ResourceComponent "{68B4206CAB6F5ADC}" {
+    m_aContainers {
+     SCR_ResourceContainerVirtual "{68B4206CAA961823}" {
+      m_eResourceRights ALL
+      m_eStorageType STORED
+      m_fResourceValueCurrent 1000
+      m_fResourceValueMax 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 10
+      m_fResourceGainTickrate 60
+     }
+    }
+   }
+  }
+  coords 11545.964 45.5 10084.93
+  angles 0 -84 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_fVehicleFacingOffset 180
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "BRDM"
+      m_sVehiclePrefab "{442939C9617DF228}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_FIA.et"
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{68B4206CC95534BB}" {
+      m_sVehicleName "T72A"
+      m_sVehiclePrefab "{2B9DB09AC8BEA673}Prefabs/Vehicles/Tracked/T-72A/T72A_FIA.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{68B4206CF76D2AA5}" {
+      m_sVehicleName "BTR"
+      m_sVehiclePrefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+   SCR_ResourceComponent "{68B4206CAB6F5ADC}" {
+    m_aContainers {
+     SCR_ResourceContainerVirtual "{68B4206CAA961823}" {
+      m_eResourceRights ALL
+      m_eStorageType STORED
+      m_fResourceValueCurrent 1000
+      m_fResourceValueMax 1000
+      m_bEnableResourceGain 1
+      m_fResourceGain 10
+      m_fResourceGainTickrate 60
+     }
+    }
+   }
+  }
+  coords 12810.563 42.29 9858.349
+  angles -7.404 91.715 -5.533
+ }
+}
