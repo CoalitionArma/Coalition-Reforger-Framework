@@ -9,7 +9,7 @@ class CRF_SlottingManager : ScriptComponent
 	protected int m_iLatestSlotID;
 	
 	// Invoker for slot updates
-	protected ref ScriptInvoker m_OnSlottingUpdate;
+	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
 	
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
@@ -17,28 +17,11 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
-	protected static CRF_SlottingManager m_sInstance;
-	
 	// Resource caching for optimized spawning
 	protected ref map<ResourceName, Resource> m_mCachedResources = new map<ResourceName, Resource>();
 	
 	// Mass initialization flag for optimizing collision checks
 	protected bool m_bMassInitializationInProgress = false;
-	
-	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
-		m_OnSlottingUpdate = new ScriptInvoker();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// INITIALIZATION
-	//------------------------------------------------------------------------------------------------
-	static CRF_SlottingManager GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -192,7 +175,7 @@ class CRF_SlottingManager : ScriptComponent
 			if (!factionKey.IsEmpty() && slotData.GetSlotFactionKey() != factionKey)
 				continue;
 			
-			SCR_AIGroup group = GetGroupFromRplId(slotData.GetSlotCurrentGroup());
+			SCR_AIGroup group = CRF_EntityHelper.GetGroupFromRplId(slotData.GetSlotCurrentGroup());
 			if (!group)
 				continue;
 				
@@ -228,34 +211,6 @@ class CRF_SlottingManager : ScriptComponent
 			return false;
 			
 		return true;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Helper method to get group from RplId
-	SCR_AIGroup GetGroupFromRplId(RplId groupId)
-	{
-		if (groupId == RplId.Invalid())
-			return null;
-			
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(groupId));
-		if (!rplComp)
-			return null;
-			
-		return SCR_AIGroup.Cast(rplComp.GetEntity());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Helper method to get character from RplId
-	static SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
-	{
-		if (charId == RplId.Invalid())
-			return null;
-			
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(charId));
-		if (!rplComp)
-			return null;
-			
-		return SCR_ChimeraCharacter.Cast(rplComp.GetEntity());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -320,18 +275,18 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 			
 		RplId groupId = slotData.GetSlotCurrentGroup();
-		return GetGroupFromRplId(groupId);
+		return CRF_EntityHelper.GetGroupFromRplId(groupId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter GetPlayerSlotCharacter(int playerId)
+	CRF_PlayerCharacter GetPlayerSlotCharacter(int playerId)
 	{
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
 		if (!slotData)
 			return null;
 			
 		RplId charId = slotData.GetSlotCurrentCharacter();
-		return GetCharacterFromRplId(charId);
+		return CRF_PlayerCharacter.Cast(CRF_EntityHelper.GetCharacterFromRplId(charId));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -496,7 +451,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
+	CRF_PlayerCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
 	{
 		int slotId = GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -542,7 +497,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 		}
 		
-		SCR_ChimeraCharacter playerCharacter = SCR_ChimeraCharacter.Cast(
+		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
 			GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams)
 		);
 		
@@ -557,14 +512,6 @@ class CRF_SlottingManager : ScriptComponent
 		RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (charRplComp)
 			UpdateSlotCharacter(slotId, charRplComp.Id());
-		
-		// Set playable flag if component exists
-		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(
-			playerCharacter.FindComponent(CRF_PlayableCharacter)
-		);
-		
-		if (playableCharComp)
-			playableCharComp.SetIsSlotSpawned();
 		
 		return playerCharacter;
 	}
@@ -676,6 +623,28 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Assign player to their slotted group
+	* @param playerId ID of the player to assign
+	*/
+	void AssignPlayerToGroup(int playerId)
+	{
+		SCR_AIGroup group = GetPlayerSlotGroup(playerId);
+		if (!group)
+			return;
+			
+		int groupId = group.GetGroupID();
+		if (groupId == -1)
+			return;
+			
+		SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
+		
+		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
+		if (groupComponent)
+			groupComponent.RequestJoinGroup(groupId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// NEW CLIENT-SIDE METHODS: Receive targeted RPC slot updates
 	//------------------------------------------------------------------------------------------------
 	
@@ -747,6 +716,7 @@ class CRF_SlottingManager : ScriptComponent
 		return res;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Clear all cached resources
 	 * Call this when unloading mission or changing scenarios
@@ -771,6 +741,7 @@ class CRF_SlottingManager : ScriptComponent
 		m_bMassInitializationInProgress = inProgress;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Check if mass initialization is currently in progress
 	 * @return True if batch spawning is active
@@ -811,5 +782,18 @@ class CRF_SlottingManager : ScriptComponent
 		}
 
 		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_SlottingManager m_sInstance;
+	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_SlottingManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

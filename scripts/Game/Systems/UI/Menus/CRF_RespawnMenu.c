@@ -484,12 +484,12 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		// Format the string for scripted markers
 		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
 		
-		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
-				if (!gameModePlayerComponent) 
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+				if (!playerScriptedMarkerManager) 
 					return;
 		
 		// Create marker		
-		gameModePlayerComponent.AddScriptedMarker("Static Marker",
+		playerScriptedMarkerManager.AddScriptedMarker("Static Marker",
 		 worldPosFormatted,
 		 1,
 		 name,
@@ -514,12 +514,12 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		// Format the string for scripted markers
 		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
 		
-		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
-				if (!gameModePlayerComponent) 
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+				if (!playerScriptedMarkerManager) 
 					return;
 		
 		// Remove marker		
-		gameModePlayerComponent.RemoveScriptedMarker("Static Marker",
+		playerScriptedMarkerManager.RemoveScriptedMarker("Static Marker",
 		worldPosFormatted,
 		 1,
 		 name,

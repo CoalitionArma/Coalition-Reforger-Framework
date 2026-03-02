@@ -11,8 +11,8 @@ modded class SCR_EditorManagerEntity
 		}
 
 		// Spectators and moderators always get unlimited editor access
-		bool isSpectator = CRF_GamemodeManager.IsSpectator();
-		bool isModerator = CRF_GamemodeManager.GetInstance() && CRF_GamemodeManager.GetInstance().IsModerator();
+		bool isSpectator = CRF_EntityHelper.IsSpectator();
+		bool isModerator = CRF_PermissionManager.GetInstance() && CRF_PermissionManager.GetInstance().IsModerator();
 		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
 		
 		if (isSpectator || isModerator || isAdmin)
@@ -140,18 +140,7 @@ modded class SCR_EditorManagerEntity
 		// Verify gamemode exists and check player permissions
 		if (gamemode)
 		{
-			// Check if local entity is a playable character
-			if (SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter))
-			{
-				CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(
-					SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter));
-					
-				// Return if player is not spectating
-				if (!CRF_GamemodeManager.IsSpectator())
-					return;
-			}
-			// Return if not a playable character and not spectating
-			else if (!CRF_GamemodeManager.IsSpectator())
+			 if (!CRF_EntityHelper.IsSpectator())
 				return;
 		}
 
@@ -179,11 +168,11 @@ modded class SCR_EditorManagerEntity
 					return;
 				
 				// Initialize spectator camera if player is spectating
-				bool isSpectator = CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalMainEntity());
+				bool isSpectator = CRF_EntityHelper.IsSpectator(SCR_PlayerController.GetLocalMainEntity());
 				bool isSameEntity = SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity();
 				
 				if (isSpectator && isSameEntity)
-					GetGame().GetCallqueue().CallLater(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, 500, false, SCR_PlayerController.GetLocalPlayerId());
+					GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer, 200, false, SCR_PlayerController.GetLocalPlayerId());
 				
 				break;
 			}

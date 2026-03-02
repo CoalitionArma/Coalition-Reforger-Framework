@@ -157,7 +157,7 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 		if (!m_polyZoneEffect)
 			return;
 		
-		if (CRF_GamemodeManager.IsSpectator(ent))
+		if (CRF_EntityHelper.IsSpectator(ent))
 			return;
 		
 		// Allow Admins to teleport out of the game borders during safestart

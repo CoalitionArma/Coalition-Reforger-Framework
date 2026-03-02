@@ -213,7 +213,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// If already following someone, restart the rails with the new mode
 		if (m_eSpecEntity && m_bFrameEventRegistered)
 		{
-			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			CRF_PlayerCameraManager camManager = CRF_PlayerCameraManager.GetInstance();
 			camManager.SetCameraOnRailsEntity(m_eSpecEntity, m_bTPPMode);
 		}
 	}
@@ -293,7 +293,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void UpdateCompass()
 	{
 		// Get camera yaw angle (double negation cancels — equivalent to raw [0] value)
-		float yaw = CRF_CameraManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
+		float yaw = CRF_PlayerCameraManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
 		
 		// Normalise to 0-360
 		yaw = yaw - 360 * Math.Floor(yaw / 360);
@@ -433,7 +433,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 */
 	protected void UpdateSpectatorCamera(float tDelta)
 	{
-		CRF_CameraManager cameraManager = CRF_CameraManager.GetInstance();
+		CRF_PlayerCameraManager cameraManager = CRF_PlayerCameraManager.GetInstance();
 		
 		if (m_eSpecEntity)
 		{
@@ -447,7 +447,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				im.GetActionValue("ManualCameraMoveVertical") != 0 || 
 				im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || 
 				(!m_bTPPMode && im.GetActionValue("ManualCameraRotate") != 0) || 
-				CRF_GamemodeManager.IsSpectator(m_eSpecEntity);
+				CRF_EntityHelper.IsSpectator(m_eSpecEntity);
 				
 			if (isManualControl)
 			{
@@ -488,10 +488,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
 			
-			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			if (!CRF_EntityHelper.IsSpectator(specEntity))
 				return;
 			
-			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			CRF_PlayerCameraManager camManager = CRF_PlayerCameraManager.GetInstance();
 			camManager.SetCameraOnRailsEntity(m_eSpecEntity, m_bTPPMode);
 			
 			m_bFrameEventRegistered = true;
@@ -507,10 +507,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
 			
-			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			if (!CRF_EntityHelper.IsSpectator(specEntity))
 				return;
 			
-			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+			CRF_PlayerCameraManager camManager = CRF_PlayerCameraManager.GetInstance();
 			camManager.SetCameraOnRailsEntity(null);
 			
 			m_bFrameEventRegistered = false;
@@ -624,7 +624,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			{
 				IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
 				
-				if (playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+				if (playerEntity && CRF_EntityHelper.IsSpectator(playerEntity) && playerEntity != localMainEnt)
 				{
 					RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
 					comparisonRplIds.Insert(playerRplId);
@@ -713,7 +713,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		);
 		
 		// If the character is alive and not a spectator, let spectators spectate them
-		if (!CRF_GamemodeManager.IsSpectator(entity))
+		if (!CRF_EntityHelper.IsSpectator(entity))
 		{
 			// Give the icon a reference to this menu so its click callbacks can call SelectSpecCursorFPP/TPP directly
 			spectatorIcon.SetSpectatorMenu(this);
@@ -946,7 +946,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		}
 		
 		// Create a new channel
-		CRF_RplToAuthorityManager.GetInstance().CreateChannel(localPlayerId);
+		CRF_PlayerRplToAuthorityManager.GetInstance().CreateChannel(localPlayerId);
 		
 		// Schedule radio frequency update after channel creation
 		// Use a longer delay to allow server replication and channel assignment to complete
@@ -1121,12 +1121,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			// Request to join non-default channel via RPC
 			Print(string.Format("[VON] Client %1 requesting to join channel %2", localPlayerId, channelId), LogLevel.NORMAL);
-			CRF_RplToAuthorityManager.GetInstance().RequestToJoinChannel(channelId, localPlayerId);
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestToJoinChannel(channelId, localPlayerId);
 		}
 		else
 		{
 			// Join default channel directly
-			CRF_RplToAuthorityManager.GetInstance().JoinChannel(localPlayerId, channelId);
+			CRF_PlayerRplToAuthorityManager.GetInstance().JoinChannel(localPlayerId, channelId);
 		}
 		
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -1174,7 +1174,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+		if (!CRF_EntityHelper.IsSpectator(specEntity))
 			return;
 		
 		// Toggle off if already following this entity in TPP mode
@@ -1190,7 +1190,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_eSpecEntity = entity;
 		m_bFPPEntityValidityCheck = true;
 		
-		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+		CRF_PlayerCameraManager camManager = CRF_PlayerCameraManager.GetInstance();
 		camManager.SetCameraOnRailsEntity(m_eSpecEntity, true);
 		m_bFrameEventRegistered = true;
 	}
@@ -1207,7 +1207,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+		if (!CRF_EntityHelper.IsSpectator(specEntity))
 			return;
 		
 		// Toggle off if already following this entity in FPP mode
@@ -1223,7 +1223,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_eSpecEntity = entity;
 		m_bFPPEntityValidityCheck = true;
 		
-		CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
+		CRF_PlayerCameraManager camManager = CRF_PlayerCameraManager.GetInstance();
 		camManager.SetCameraOnRailsEntity(m_eSpecEntity, false);
 		m_bFrameEventRegistered = true;
 	}
@@ -1364,25 +1364,24 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Get required managers
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
 		
 		// Initialize slot counters
 		InitSlots();
 		
 		// Update faction UI elements
-		UpdateFactionUI("BLUFOR", gearscriptManager, m_wRoot.FindAnyWidget("BLUButton"), 
+		UpdateFactionUI("BLUFOR", m_wRoot.FindAnyWidget("BLUButton"), 
 			m_wRoot.FindAnyWidget("BLUFlag"), m_wRoot.FindAnyWidget("BLURatio"), 
 			m_iAliveBluforSlots, m_iBluforSlots);
 			
-		UpdateFactionUI("OPFOR", gearscriptManager, m_wRoot.FindAnyWidget("OPFButton"), 
+		UpdateFactionUI("OPFOR", m_wRoot.FindAnyWidget("OPFButton"), 
 			m_wRoot.FindAnyWidget("OPFFlag"), m_wRoot.FindAnyWidget("OPFRatio"), 
 			m_iAliveOpforSlots, m_iOpforSlots);
-			
-		UpdateFactionUI("INDFOR", gearscriptManager, m_wRoot.FindAnyWidget("INDButton"), 
+		
+		UpdateFactionUI("INDFOR", m_wRoot.FindAnyWidget("INDButton"), 
 			m_wRoot.FindAnyWidget("INDFlag"), m_wRoot.FindAnyWidget("INDRatio"), 
 			m_iAliveIndforSlots, m_iIndforSlots);
 			
-		UpdateFactionUI("CIV", gearscriptManager, m_wRoot.FindAnyWidget("CIVButton"), 
+		UpdateFactionUI("CIV", m_wRoot.FindAnyWidget("CIVButton"), 
 			m_wRoot.FindAnyWidget("CIVFlag"), m_wRoot.FindAnyWidget("CIVRatio"), 
 			m_iAliveCivSlots, m_iCivSlots);
 		
@@ -1494,14 +1493,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	/**
 	 * Helper method to update a single faction's UI elements
 	 * @param factionKey - The faction key (e.g., "BLUFOR", "OPFOR")
-	 * @param gearscriptManager - Reference to the gearscript manager
 	 * @param buttonWidget - Button widget for this faction
 	 * @param flagWidget - Flag image widget for this faction
 	 * @param ratioWidget - Text widget showing player count ratio
 	 * @param aliveCount - Number of alive players in faction
 	 * @param totalCount - Total number of players in faction
 	 */
-	protected void UpdateFactionUI(string factionKey, CRF_GearscriptManager gearscriptManager, 
+	protected void UpdateFactionUI(string factionKey, 
 		Widget buttonWidget, Widget flagWidget, Widget ratioWidget, int aliveCount, int totalCount)
 	{
 		// Skip if faction is not valid
@@ -1516,21 +1514,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		ResourceName iconPath;
 		
 		// Try to get icon from gearscript first
-		if (gearscriptManager)
-		{	
-			ResourceName gearScriptResource = gearscriptManager.GetGearScriptResource(factionKey);
-			if (!gearScriptResource.IsEmpty())
+		ResourceName gearScriptResource = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
+		if (!gearScriptResource.IsEmpty())
+		{
+			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
+				BaseContainerTools.CreateInstanceFromContainer(
+					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()
+				)
+			);
+			
+			if (gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
 			{
-				CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
-					BaseContainerTools.CreateInstanceFromContainer(
-						BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()
-					)
-				);
-				
-				if (gearConfig && !gearConfig.m_FactionIcon.IsEmpty())
-				{
-					iconPath = gearConfig.m_FactionIcon;
-				}
+				iconPath = gearConfig.m_FactionIcon;
 			}
 		}
 		
@@ -1591,7 +1586,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		else
 		{
 			int playerId = SCR_PlayerController.GetLocalPlayerId();
-			CRF_RplToAuthorityManager.GetInstance().MoveSpecCamToSlot(selectedComponent.m_iSlotId, playerId);
+			CRF_PlayerRplToAuthorityManager.GetInstance().MoveSpecCamToSlot(selectedComponent.m_iSlotId, playerId);
 		}
 	}
 	
@@ -2193,7 +2188,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void UpdateTimer()
 	{	
 		// Get current mission time
-		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		m_sServerWorldTime = CRF_GameTimerManager.GetInstance().GetServerWorldTime();
 		
 		// Skip update if in safestart, time is empty, or hasn't changed
 		if (m_sServerWorldTime == "N/A" ||

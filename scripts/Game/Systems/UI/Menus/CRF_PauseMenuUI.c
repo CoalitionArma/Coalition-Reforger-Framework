@@ -21,10 +21,10 @@ class CRF_PauseMenuUI: PauseMenuUI
 		
 		// Check if the current player has admin permissions
 		bool hasAdminAccess = false;
-		CRF_GamemodeManager gamemodeManager = CRF_GamemodeManager.GetInstance();
+		CRF_PermissionManager permissionManager = CRF_PermissionManager.GetInstance();
 		
 		// Check admin/moderator permissions and required game instances
-		if (SCR_Global.IsAdmin() || (gamemodeManager && gamemodeManager.IsModerator() && CRF_Gamemode.GetInstance()))
+		if (SCR_Global.IsAdmin() || (permissionManager && permissionManager.IsModerator() && CRF_Gamemode.GetInstance()))
 			hasAdminAccess = true;
 		
 		// Set visibility based on permissions

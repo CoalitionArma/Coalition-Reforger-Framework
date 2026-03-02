@@ -49,8 +49,8 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 			case TROWABLE_SATCHEL_INDFOR : {satchelResource = SATCHEL_INDFOR; break;}
 		};
 		
-		CRF_RplToAuthorityManager.GetInstance().AddItem(SCR_PlayerController.GetLocalPlayerId(), satchelResource, false);
-		CRF_RplToAuthorityManager.GetInstance().RemoveItem(SCR_PlayerController.GetLocalPlayerId(), satchelRplComp.Id(), false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(SCR_PlayerController.GetLocalPlayerId(), satchelResource, false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RemoveItem(SCR_PlayerController.GetLocalPlayerId(), satchelRplComp.Id(), false);
 	}
 	
 	//------------------------------------------------------------------------------------------------

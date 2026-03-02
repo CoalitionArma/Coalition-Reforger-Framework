@@ -46,7 +46,7 @@ modded class SCR_InventoryStorageManagerComponent
 			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Skip locking for spectator entities.
-		if (CRF_GamemodeManager.IsSpectator(ownerEntity))
+		if (CRF_EntityHelper.IsSpectator(ownerEntity))
 			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Skip locking during safestart — players can still adjust gear then.
@@ -82,8 +82,8 @@ modded class SCR_InventoryStorageManagerComponent
 			return false;
 
 		// Resolve the gearscript manager and the local player's faction.
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
-		if (!gearscriptManager)
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
 			return false;
 
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
@@ -92,7 +92,7 @@ modded class SCR_InventoryStorageManagerComponent
 			return false;
 
 		// Load the gearscript config for this faction.
-		ResourceName gearScriptResource = gearscriptManager.GetGearScriptResource(playerFaction.GetFactionKey());
+		ResourceName gearScriptResource = gamemode.GetGearScriptResource(playerFaction.GetFactionKey());
 		if (gearScriptResource.IsEmpty())
 			return false;
 

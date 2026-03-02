@@ -26,7 +26,7 @@ modded class SCR_NTTextBase : SCR_NTElementBase
 		if (data.m_Entity)
 		{
 			// Hide the text widget for spectator entities
-			if (CRF_GamemodeManager.IsSpectator(data.m_Entity))
+			if (CRF_EntityHelper.IsSpectator(data.m_Entity))
 			{
 				tWidget.SetVisible(false);
 			}

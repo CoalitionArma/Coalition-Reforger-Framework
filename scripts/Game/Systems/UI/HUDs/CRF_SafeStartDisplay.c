@@ -297,7 +297,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 		}
 		else
 		{
-			m_wTimerText.SetText(CRF_GamemodeManager.GetInstance().GetServerWorldTime());
+			m_wTimerText.SetText(CRF_GameTimerManager.GetInstance().GetServerWorldTime());
 		}
 	}
 
@@ -327,7 +327,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 	 */
 	protected void StartMission()
 	{
-		CRF_PlayerControllerManager.GetInstance().DisplayTitleCard();
+		CRF_PlayerMenuManager.GetInstance().DisplayTitleCard();
 		// Hide timer elements
 		m_wTimerDescription.SetOpacity(0);
 		m_wTimerText.SetOpacity(0);

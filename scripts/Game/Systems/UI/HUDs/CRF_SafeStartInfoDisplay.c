@@ -75,7 +75,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 				if (playerFaction)
 				{
 					IEntity playerEntity = SCR_PlayerController.GetLocalControlledEntity();
-					if (playerEntity && !CRF_GamemodeManager.IsSpectator(playerEntity))
+					if (playerEntity && !CRF_EntityHelper.IsSpectator(playerEntity))
 					{
 						LoadMissionData();
 						m_bDataLoaded = true;

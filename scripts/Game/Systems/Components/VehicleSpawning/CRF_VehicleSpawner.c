@@ -61,7 +61,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		if (m_RespawnManager)
 			m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
-		CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
+		CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(this);
 		SetEventMask(EntityEvent.FRAME);
 	}
 	
@@ -77,7 +77,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		
 		if (m_bWaitingToRespawn && m_fTimer <= 0)
 		{
-			CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
+			CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(this);
 			m_bWaitingToRespawn = false;
 		}
 	}
