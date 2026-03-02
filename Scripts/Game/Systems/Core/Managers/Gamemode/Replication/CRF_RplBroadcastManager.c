@@ -29,25 +29,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
-	protected static CRF_RplBroadcastManager m_sInstance;
 	
 	// Batching system for slot updates
 	protected ref array<ref CRF_SlotUpdateBatch> m_aPendingSlotUpdates = new array<ref CRF_SlotUpdateBatch>();
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
-	
-	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Get singleton instance of the broadcast manager
-	//------------------------------------------------------------------------------------------------
-	static CRF_RplBroadcastManager GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -2197,5 +2183,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_BroadcastVehiclePosUpdate(vector pos, int playerId)
 	{
 		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_RplBroadcastManager m_sInstance;
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_RplBroadcastManager GetInstance()
+	{
+		return m_sInstance;
 	}
 };

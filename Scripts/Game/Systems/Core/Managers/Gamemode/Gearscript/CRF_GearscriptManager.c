@@ -8,20 +8,6 @@ class CRF_GearscriptManager : ScriptComponent
 	protected ref set<IEntity> m_sEntitiesBeingGeared = new set<IEntity>();
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get singleton instance of the GearscriptManager
-	 * @return Current instance or null if not found
-	 */
-	static CRF_GearscriptManager GetInstance()
-	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-		
-		return CRF_GearscriptManager.Cast(gameMode.FindComponent(CRF_GearscriptManager));
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -755,5 +741,18 @@ class CRF_GearscriptManager : ScriptComponent
 			if (item)
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_GearscriptManager m_sInstance;
+	void CRF_GearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_GearscriptManager GetInstance()
+	{
+		return m_sInstance;
 	}
 };

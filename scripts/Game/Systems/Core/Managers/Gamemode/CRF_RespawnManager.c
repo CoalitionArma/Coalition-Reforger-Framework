@@ -47,22 +47,8 @@ class CRF_RespawnManager : ScriptComponent
 	
 	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
 	
-	protected static CRF_RespawnManager m_sInstance;
-	
 	protected bool m_bNeedsRespawn = false;
 	protected bool m_bRespawnInit = false;
-
-	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Singleton accessor
-	static CRF_RespawnManager GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	array<IEntity> GetTempGroupSpawnPoints()
@@ -941,5 +927,18 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
 		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_RespawnManager m_sInstance;
+	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_RespawnManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

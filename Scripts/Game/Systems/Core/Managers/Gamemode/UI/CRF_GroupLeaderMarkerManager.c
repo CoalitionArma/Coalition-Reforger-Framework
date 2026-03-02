@@ -87,17 +87,10 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected float m_fUpdateTimer = 0.0;
 	protected float m_fUpdateInterval = 1.0; // Check every second
 	
-	protected static CRF_GroupLeaderMarkerManager m_sInstance;
-	
 	//===================================================================================
 	// INITIALIZATION
 	//===================================================================================
-	
-	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
+
 	/**
 	 * Initialize the manager
 	 */
@@ -973,19 +966,6 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//===================================================================================
-	// STATIC ACCESS
-	//===================================================================================
-	
-	/**
-	 * Get the instance of the group leader marker manager
-	 * @return Manager instance or null
-	 */
-	static CRF_GroupLeaderMarkerManager GetInstance()
-	{
-		return m_sInstance;
-	}
-	
-	//===================================================================================
 	// CLEANUP
 	//===================================================================================
 	
@@ -1013,5 +993,22 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Clear server tracking
 		if (Replication.IsServer())
 			m_mServerGroupLeaders.Clear();
+	}
+	
+	//===================================================================================
+	// STATIC ACCESS
+	//===================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_GroupLeaderMarkerManager m_sInstance;
+	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_GroupLeaderMarkerManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

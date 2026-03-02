@@ -9,10 +9,8 @@
  * - Radio setup and audio controls
  * - Map markers and gameplay indicators
  */
-[ComponentEditorProps(category: "Player Controller Components", description: "")]
 class CRF_PlayerControllerManagerClass : ScriptComponentClass
 {
-
 }
 
 class CRF_PlayerControllerManager : ScriptComponent

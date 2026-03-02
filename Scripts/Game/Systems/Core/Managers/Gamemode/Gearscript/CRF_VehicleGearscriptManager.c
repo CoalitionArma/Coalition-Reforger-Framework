@@ -13,20 +13,6 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	protected ref map<ResourceName, ref Resource> m_mResourceCache = new map<ResourceName, ref Resource>();
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get singleton instance of the VehicleGearscriptManager
-	 * @return Current instance or null if not found
-	 */
-	static CRF_VehicleGearscriptManager GetInstance()
-	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-		
-		return CRF_VehicleGearscriptManager.Cast(gameMode.FindComponent(CRF_VehicleGearscriptManager));
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -1283,5 +1269,18 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			if (!spawner.m_bShouldAddAmmo)
 				vehicle.m_bShouldAddAmmo = false;
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_VehicleGearscriptManager m_sInstance;
+	void CRF_VehicleGearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_VehicleGearscriptManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

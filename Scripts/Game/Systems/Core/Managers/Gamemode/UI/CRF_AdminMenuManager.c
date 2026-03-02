@@ -90,23 +90,6 @@ class CRF_AdminMenuManager : ScriptComponent
 	// Array of admin actions
 	private ref array<ref CRF_AdminActionLog> m_mAdminActions = new array<ref CRF_AdminActionLog>();
 	
-	protected static CRF_AdminMenuManager m_sInstance;
-	
-	void CRF_AdminMenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Returns the instance of CRF_AdminMenuManager from the current game mode
-	* @return CRF_AdminMenuManager instance or null if not found
-	*/
-	static CRF_AdminMenuManager GetInstance()
-	{
-		return m_sInstance;
-	}
-	
 	/**
 	* Creates a formatted timestamp string from current system time
 	* @return Formatted timestamp in HH:MM:SS format
@@ -290,5 +273,18 @@ class CRF_AdminMenuManager : ScriptComponent
 	bool TicketExists(int ticketID)
 	{		
 		return m_mTickets.Contains(ticketID);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_AdminMenuManager m_sInstance;
+	void CRF_AdminMenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_AdminMenuManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

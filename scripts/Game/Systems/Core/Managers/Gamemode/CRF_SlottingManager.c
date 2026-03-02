@@ -9,7 +9,7 @@ class CRF_SlottingManager : ScriptComponent
 	protected int m_iLatestSlotID;
 	
 	// Invoker for slot updates
-	protected ref ScriptInvoker m_OnSlottingUpdate;
+	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
 	
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
@@ -17,28 +17,11 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
-	protected static CRF_SlottingManager m_sInstance;
-	
 	// Resource caching for optimized spawning
 	protected ref map<ResourceName, Resource> m_mCachedResources = new map<ResourceName, Resource>();
 	
 	// Mass initialization flag for optimizing collision checks
 	protected bool m_bMassInitializationInProgress = false;
-	
-	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
-		m_OnSlottingUpdate = new ScriptInvoker();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// INITIALIZATION
-	//------------------------------------------------------------------------------------------------
-	static CRF_SlottingManager GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -797,5 +780,18 @@ class CRF_SlottingManager : ScriptComponent
 		}
 
 		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_SlottingManager m_sInstance;
+	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_SlottingManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

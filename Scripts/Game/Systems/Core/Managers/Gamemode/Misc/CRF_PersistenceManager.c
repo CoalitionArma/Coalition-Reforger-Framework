@@ -7,9 +7,7 @@ class CRF_PersistenceManagerClass: ScriptComponentClass
 };
 
 class CRF_PersistenceManager : ScriptComponent
-{
-	protected static CRF_PersistenceManager s_Instance;
-	
+{	
 	[Attribute("300", UIWidgets.EditBox, "Auto-save interval in seconds (0 = disabled)")]
 	protected float m_fAutoSaveInterval;
 	
@@ -29,12 +27,6 @@ class CRF_PersistenceManager : ScriptComponent
 	protected bool m_bInitialized = false;
 	protected bool m_bFirstAutoSaveDone = false;
 	protected int m_iSaveCounter = 0;
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_PersistenceManager GetInstance()
-	{
-		return s_Instance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -477,5 +469,18 @@ class CRF_PersistenceManager : ScriptComponent
 			gameMode.GetOnGameEnd().Remove(OnGameEnd);
 			gameMode.GetOnGameStart().Remove(OnGameStart);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_PersistenceManager m_sInstance;
+	void CRF_PersistenceManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_PersistenceManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }
