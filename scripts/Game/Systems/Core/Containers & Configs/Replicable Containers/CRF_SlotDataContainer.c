@@ -220,6 +220,12 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	CRF_EGearRole GetSlotRole()
+	{
+		return m_SlotRole;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	string GetSlotName() 
 	{
 		string customSlottingName = GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
