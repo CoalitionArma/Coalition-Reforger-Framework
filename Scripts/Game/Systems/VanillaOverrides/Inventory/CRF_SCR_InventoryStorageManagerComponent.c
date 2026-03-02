@@ -24,40 +24,44 @@ modded class SCR_InventoryStorageManagerComponent
 	 *  3. The owner is not a spectator.
 	 *  4. Safestart has ended.
 	 *  5. The item's prefab is listed in the faction gearscript clothing config.
+	 *
+	 * Note: TryRemoveItemFromStorage is proto external and cannot be overridden in script.
+	 * TryRemoveItemFromInventory is the scripted entry-point that the inventory UI calls,
+	 * and it internally calls TryRemoveItemFromStorage — so this is the correct intercept point.
 	 */
-	override bool TryRemoveItemFromStorage(IEntity item, BaseInventoryStorageComponent storage, bool updateQuickbar = false)
+	override bool TryRemoveItemFromInventory(IEntity pItem, BaseInventoryStorageComponent storage = null, InventoryOperationCallback cb = null)
 	{
 		// Authority (server) always bypasses the lock so gearscript can re-equip freely.
 		if (Replication.IsServer())
-			return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Only apply the lock when the owner of this manager is the locally controlled character.
 		IEntity ownerEntity = GetOwner();
 		if (!ownerEntity)
-			return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Skip if the owner is not the local player's controlled entity (e.g. looting a body).
 		IEntity localEntity = SCR_PlayerController.GetLocalMainEntity();
 		if (ownerEntity != localEntity)
-			return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Skip locking for spectator entities.
 		if (CRF_GamemodeManager.IsSpectator(ownerEntity))
-			return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Skip locking during safestart — players can still adjust gear then.
 		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
 		if (!safestart || safestart.GetSafestartStatus())
-			return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+			return super.TryRemoveItemFromInventory(pItem, storage, cb);
 
 		// Block removal if the item is a gearscript-assigned clothing piece.
-		if (IsGearscriptClothingPiece(item, ownerEntity))
+		if (IsGearscriptClothingPiece(pItem, ownerEntity))
 		{
-			Print("[CRF] Uniform lock: blocked removal of gearscript clothing " + item.GetPrefabData().GetPrefabName(), LogLevel.DEBUG);
+			Print("[CRF] Uniform lock: blocked removal of gearscript clothing " + pItem.GetPrefabData().GetPrefabName(), LogLevel.DEBUG);
 			return false;
 		}
 
-		return super.TryRemoveItemFromStorage(item, storage, updateQuickbar);
+		return super.TryRemoveItemFromInventory(pItem, storage, cb);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -117,8 +121,7 @@ modded class SCR_InventoryStorageManagerComponent
 		if (!slotData)
 			return false;
 
-		// m_SlotRole is directly stored on the container — no resource round-trip needed.
-		CRF_EGearRole playerRole = slotData.m_SlotRole;
+		CRF_EGearRole playerRole = slotData.GetSlotRole();
 
 		foreach (CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
 		{
