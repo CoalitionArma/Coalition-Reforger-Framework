@@ -157,11 +157,11 @@ class CRF_CameraManager : ScriptComponent
 		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
 		// Use provided death position if available
-		if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+		if (CRF_EntityHelper.IsValidSpawnVector(cameraPos[3])) {
 			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
 		}
 		// Use stored camera position if available
-		else if (CRF_GamemodeManager.IsValidSpawnVector(m_vStoredCameraPos[3])) {
+		else if (CRF_EntityHelper.IsValidSpawnVector(m_vStoredCameraPos[3])) {
 			cameraPos = m_vStoredCameraPos;
 		} 
 		// Fallback to generic spawn position

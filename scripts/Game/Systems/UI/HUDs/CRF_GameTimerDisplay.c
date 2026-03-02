@@ -158,7 +158,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Get current mission time
-		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		m_sServerWorldTime = CRF_GameTimerManager.GetInstance().GetServerWorldTime();
 		
 		// Handle invalid time or end of mission
 		if (m_sServerWorldTime == "N/A") 

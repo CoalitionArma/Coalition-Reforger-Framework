@@ -1854,7 +1854,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	void GamemodeMenuUpdate()
 	{	
 		// Get current mission time
-		string m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		string m_sServerWorldTime = CRF_GameTimerManager.GetInstance().GetServerWorldTime();
 		
 		// Grab timer
 		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");

@@ -24,7 +24,7 @@ class CRF_SlotUpdateBatch
 class CRF_RplBroadcastManager : ScriptComponent
 {
 	// Manager references
-	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_PermissionManager m_PermissionManager;
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
@@ -62,8 +62,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected void InitializeManagerReferences()
 	{
 		// Cache all manager references to avoid repeated GetInstance() calls
-		if (!m_GamemodeManager)
-			m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!m_PermissionManager)
+			m_PermissionManager = CRF_PermissionManager.GetInstance();
 		if (!m_RespawnManager)
 			m_RespawnManager = CRF_RespawnManager.GetInstance();
 		if (!m_MenuManager)
@@ -1093,7 +1093,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendAdminMessage(string data, int playerID, bool ticketExists)
 	{
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_PermissionManager.IsModerator())
 			return;
 		
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
@@ -1102,7 +1102,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return;
 
 		// If it's an admin just show the message in chat
-		if (SCR_Global.IsAdmin(playerID) || m_GamemodeManager.IsModerator(playerID))
+		if (SCR_Global.IsAdmin(playerID) || m_PermissionManager.IsModerator(playerID))
 		{
 			// Don't double show message
 			if (GetGame().GetPlayerController().GetPlayerId() == playerID)
@@ -1196,7 +1196,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (logAction)
 			LogAdminAction(string.Format("%1 closed %2's ticket", adminName, playerName), -1, false);
 		
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_PermissionManager.IsModerator())
 			return;
 		
 		SCR_ChatComponent chatComponent = GetLocalChatComponent();
@@ -1217,7 +1217,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (logAction)
 			LogAdminAction(string.Format("%1 assigned to %2's ticket", adminName, playerName), -1, false);
 		
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_PermissionManager.IsModerator())
 			return;
 		
 		SCR_ChatComponent chatComponent = GetLocalChatComponent();
@@ -1231,7 +1231,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_RefreshAdminMenuLists()
 	{
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_PermissionManager.IsModerator())
 			return;
 		
 		m_AdminMenuManager.GetInstance().RefreshLists();
@@ -1335,7 +1335,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
 		// Add the log to the admin menu logs
-		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
+		if (SCR_Global.IsAdmin() || m_PermissionManager.IsModerator())
 		{	
 			m_AdminMenuManager.StoreAdminLogs(data);
 		}
@@ -1360,7 +1360,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_BroadcastAdminChatMessage(string message)
 	{
 		// Only show to admins and moderators
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_PermissionManager.IsModerator())
 			return;
 		
 		SCR_ChatComponent chatComponent = GetLocalChatComponent();

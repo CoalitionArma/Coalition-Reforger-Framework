@@ -125,10 +125,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_PermissionManager m_PermissionManager
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	protected CRF_GarbageManager m_GarbageManager
 	
 	protected static CRF_Gamemode m_sInstance;
 	
@@ -203,10 +205,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Initialize all manager references
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_PermissionManager = CRF_PermissionManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+		m_GarbageManager = CRF_GarbageManager.GetInstance();
 		
 		// Enable frame events for batch processing
 		SetEventMask(EntityEvent.FRAME);
@@ -392,7 +396,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
@@ -413,17 +417,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Check if player is a moderator/donator and set privileges
 		if (!playerGUID.IsEmpty()) {
 			if (CRF_ModeratorConfig.IsModerator(playerGUID))
-				m_GamemodeManager.SetPlayerStatus(iPlayerID, "mod");
+				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
 			
 			if (CRF_DonatorConfig.IsDonator(playerGUID))
-				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
+				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
 		}
 		if (!playerGUID.IsEmpty()) {
 			if (CRF_ModeratorConfig.IsModerator(playerGUID))
-				m_GamemodeManager.SetPlayerStatus(iPlayerID, "mod");
+				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
 			
 			if (CRF_DonatorConfig.IsDonator(playerGUID))
-				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
+				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
 		}
 	}
 	
@@ -477,7 +481,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
 				{
 					// Schedule re-initialization to fix race condition
-					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR[0], CRF_GamemodeManager.ZERO_SPAWN_VECTOR[1], CRF_GamemodeManager.ZERO_SPAWN_VECTOR[2], CRF_GamemodeManager.ZERO_SPAWN_VECTOR[3]);
+					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR[0], CRF_EntityHelper.ZERO_SPAWN_VECTOR[1], CRF_EntityHelper.ZERO_SPAWN_VECTOR[2], CRF_EntityHelper.ZERO_SPAWN_VECTOR[3]);
 				}
 			}
 		}
@@ -526,6 +530,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
+		
+		m_GarbageManager.m_aDeadBodies.Insert(entity);
 		
 		// Note: The base game's data collector is automatically triggered by super.OnControllableDestroyed()
 		// Our modded CRF_SCR_DataCollectorComponent.OnPlayerKilled() hooks into this and calls the logging manager
@@ -680,7 +686,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			// Initialize the player immediately
 			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+				m_GamemodeManager.InitilizePlayer(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 		}
 	}
 	

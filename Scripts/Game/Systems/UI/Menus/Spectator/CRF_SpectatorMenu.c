@@ -2188,7 +2188,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void UpdateTimer()
 	{	
 		// Get current mission time
-		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		m_sServerWorldTime = CRF_GameTimerManager.GetInstance().GetServerWorldTime();
 		
 		// Skip update if in safestart, time is empty, or hasn't changed
 		if (m_sServerWorldTime == "N/A" ||

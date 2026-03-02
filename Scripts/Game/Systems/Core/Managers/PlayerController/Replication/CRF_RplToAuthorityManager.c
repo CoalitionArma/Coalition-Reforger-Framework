@@ -11,7 +11,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_RespawnManager m_RespawnManager;
-	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_PermissionManager m_PermissionManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
@@ -53,7 +53,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
-		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_PermissionManager = CRF_PermissionManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
@@ -208,7 +208,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
-		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
+		if (SCR_Global.IsAdmin() || m_PermissionManager.IsModerator())
 			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, adminID, logAction); 
 	}
 	
@@ -667,7 +667,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.SendAdminMessage(data, playerID, ticketExists);
 		
 		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
-		if (!SCR_Global.IsAdmin(playerID) && !m_GamemodeManager.IsModerator(playerID))
+		if (!SCR_Global.IsAdmin(playerID) && !m_PermissionManager.IsModerator(playerID))
 			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
 	}	
 	
@@ -787,7 +787,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_RespawnPlayer", bytes);
 		
 		vector overrideLocation[4];
-		overrideLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		overrideLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
 		
 		m_RespawnManager.RespawnPlayer(playerId, overrideLocation, -1, SpawnRplID);
 	}
@@ -1254,12 +1254,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_UpdateTimer", CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		
 		// Get current end time
-		int currentEndTime = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds;
+		int currentEndTime = CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds;
 		if ((currentEndTime + delta) < 0 || m_SafestartManager.GetSafestartStatus())
 			return;
 
 		// Set the new time, broadcast is handled by rplprop
-		CRF_SafestartManager.GetInstance().m_iTimeMissionEnds = currentEndTime + delta;
+		CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds = currentEndTime + delta;
 		
 		string logMessage = string.Format("Game timer adjusted by %1 mins", delta/60000);
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
@@ -1747,7 +1747,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_CleanUpBodies", 0);
 		
-		CRF_GamemodeManager.GetInstance().CleanUpBodies();
+		CRF_GarbageManager.GetInstance().CleanUpBodies();
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1951,7 +1951,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		IEntity polyzone;
 		cursorWorldPos[1] = SCR_TerrainHelper.GetTerrainY(cursorWorldPos);
-		foreach (IEntity zone: CRF_GamemodeManager.GetInstance().GetForwardDeployZones())
+		foreach (IEntity zone: CRF_ForwardDeployManager.GetInstance().GetForwardDeployZones())
 		{
 			CRF_PolyZone zoneComp = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
 			if (!zoneComp)
@@ -2033,11 +2033,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 					if (teleportedVehicles.Contains(vehicle))
 						continue;
 					teleportedVehicles.Insert(vehicle);
-					CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
+					CRF_ForwardDeployManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
 					continue;
 				}
 			}
-			CRF_GamemodeManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
+			CRF_ForwardDeployManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
 		}
 	}
 	

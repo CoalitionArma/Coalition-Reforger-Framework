@@ -13,9 +13,6 @@ class CRF_SafestartManager : ScriptComponent
 	[RplProp()]
 	protected bool m_bKillRedundantUnitsBool;
 
-	int m_iTimeSafeStartBegan;
-	[RplProp()]
-	int m_iTimeMissionEnds;
 	[RplProp()]
 	int m_iSafeStartTimeRemaining;
 	
@@ -39,31 +36,16 @@ class CRF_SafestartManager : ScriptComponent
 	protected CRF_LoggingManager m_Logging;
 	
 	protected CRF_Gamemode m_Gamemode;
-	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_GameTimerManager m_GameTimerManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
-	
-	protected static CRF_SafestartManager m_sInstance;
 	
 	protected bool m_bInitComplete = false;
 	protected bool m_bUpdatedServerWorldTime = false;
 	protected bool m_bUpdatePlayedFactions = false;
 	protected bool m_bActivateSafeStartEHs = false;
-	protected bool m_bCheckPlayersAlive = false;
 	protected bool m_bUpdateMissionEndTimer = false;
 	protected bool m_bCheckStartCountdown = false;
-	
-	
-	void CRF_SafestartManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	static CRF_SafestartManager GetInstance()
-	{
-		return m_sInstance;
-	}
 
 	//------------------------------------------------------------------------------------------------
 	// Init method
@@ -77,7 +59,7 @@ class CRF_SafestartManager : ScriptComponent
 		
 		// Get all instances we need for this manager.
 		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_GameTimerManager = CRF_GameTimerManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 
@@ -85,13 +67,61 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			// Initialize server components
 			m_Logging = CRF_LoggingManager.Cast(m_Gamemode.FindComponent(CRF_LoggingManager));
-			SetEventMask(owner, EntityEvent.FIXEDFRAME);
-		}
+			SetEventMask(GetGame().GetGameMode(), EntityEvent.FIXEDFRAME);
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetSafestartStatus()
+	{
+		return m_bSafeStartEnabled;
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetCountdownMode()
+	{
+		return m_bCountdownMode;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetSafeStartTimeRemaining()
+	{
+		return m_iSafeStartTimeRemaining;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetFormattedSafeStartTimeRemaining()
+	{
+		if (m_iSafeStartTimeRemaining <= 0)
+			return "00:00";
+			
+		int minutes = m_iSafeStartTimeRemaining / 60;
+		int seconds = m_iSafeStartTimeRemaining % 60;
+		
+		return string.Format("%1:%2", minutes.ToString(2), seconds.ToString(2));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void OnSafeStartChange()
+	{
+		m_OnSafeStartChange.Invoke(m_bSafeStartEnabled);
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	TStringArray GetWhosReady() {
+		return m_aFactionsStatusArray;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AddSafestartZone(IEntity entity)
+	{
+		m_aSafestartZones.Insert(entity);
 	}
 	
 	float m_fUpdateBuffer = 0;
 	float m_fMediumUpdateBuffer = 0;
 	float m_fLongUpdateBuffer = 0;
+	//------------------------------------------------------------------------------------------------
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeSlice);
@@ -109,10 +139,10 @@ class CRF_SafestartManager : ScriptComponent
 				}
 			
 			if (m_bUpdatedServerWorldTime)
-				m_GamemodeManager.UpdateServerWorldTime();
+				m_GameTimerManager.UpdateServerWorldTime();
 			
 			if (m_bUpdateMissionEndTimer)
-				m_GamemodeManager.UpdateMissionEndTimer();
+				m_GameTimerManager.UpdateMissionEndTimer();
 			
 			// Handle countdown mode (time limit based) - Update every second
 			if (m_bCountdownMode && m_bSafeStartEnabled)
@@ -143,20 +173,9 @@ class CRF_SafestartManager : ScriptComponent
 			if (m_bUpdatePlayedFactions)
 				UpdatePlayedFactions();
 			
-			if (m_bCheckPlayersAlive)
-				CheckPlayersAlive(CRF_Gamemode.GetInstance());
 			m_fLongUpdateBuffer = 0;	
 		}
 		m_fLongUpdateBuffer += timeSlice;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Ready Up functions
-	//------------------------------------------------------------------------------------------------
-
-	//------------------------------------------------------------------------------------------------
-	TStringArray GetWhosReady() {
-		return m_aFactionsStatusArray;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -547,43 +566,6 @@ class CRF_SafestartManager : ScriptComponent
 		
 		return readyFactionsCount;
 	}
-	
-
-	//------------------------------------------------------------------------------------------------
-	bool GetSafestartStatus()
-	{
-		return m_bSafeStartEnabled;
-	};
-	
-	//------------------------------------------------------------------------------------------------
-	bool GetCountdownMode()
-	{
-		return m_bCountdownMode;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	int GetSafeStartTimeRemaining()
-	{
-		return m_iSafeStartTimeRemaining;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	string GetFormattedSafeStartTimeRemaining()
-	{
-		if (m_iSafeStartTimeRemaining <= 0)
-			return "00:00";
-			
-		int minutes = m_iSafeStartTimeRemaining / 60;
-		int seconds = m_iSafeStartTimeRemaining % 60;
-		
-		return string.Format("%1:%2", minutes.ToString(2), seconds.ToString(2));
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void OnSafeStartChange()
-	{
-		m_OnSafeStartChange.Invoke(m_bSafeStartEnabled);
-	};
 
 	//Call from server
 	//------------------------------------------------------------------------------------------------
@@ -593,8 +575,11 @@ class CRF_SafestartManager : ScriptComponent
 		{ // Turn on safestart
 			if (m_bSafeStartEnabled)
 				return;
+			
+			//if (GetEventMask() != EntityEvent.FIXEDFRAME)
+				//SetEventMask(GetGame().GetGameMode(), EntityEvent.FIXEDFRAME);
 
-			m_iTimeSafeStartBegan = GetGame().GetWorld().GetWorldTime();
+			CRF_GameTimerManager.GetInstance().m_iTimeSafeStartBegan = GetGame().GetWorld().GetWorldTime();
 			m_bSafeStartEnabled = true;
 			
 			// Check if using countdown mode (boolean enabled AND time limit > 0)
@@ -610,8 +595,6 @@ class CRF_SafestartManager : ScriptComponent
 			}
 
 			m_bUpdateMissionEndTimer = false;
-			m_bCheckPlayersAlive = false;
-
 			m_bUpdatedServerWorldTime = true;
 			
 			SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
@@ -626,7 +609,7 @@ class CRF_SafestartManager : ScriptComponent
 		} else { // Turn off safestart
 			if (!m_bSafeStartEnabled)
 				return;
-
+			
 			UpdatePlayedFactions();
 
 			m_bKillRedundantUnitsBool = true;
@@ -644,13 +627,12 @@ class CRF_SafestartManager : ScriptComponent
 			m_bUpdatePlayedFactions = false;
 			
 			CRF_Gamemode gm = CRF_Gamemode.GetInstance();
-			m_bCheckPlayersAlive = true;
 
 			if (m_Gamemode.m_iTimeLimitMinutes > 0) {
-				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_Gamemode.m_iTimeLimitMinutes * 60000);
+				CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_Gamemode.m_iTimeLimitMinutes * 60000);
 				m_bUpdateMissionEndTimer = true;
 			} else {
-				m_GamemodeManager.SetServerWorldTime("N/A");
+				m_GameTimerManager.SetServerWorldTime("N/A");
 			};
 
 			Replication.BumpMe();//Broadcast change
@@ -674,10 +656,13 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 			
 			DeleteAllSafestartZones();
-			CRF_GamemodeManager.GetInstance().DeleteAllForwardDeployZones();
+			CRF_ForwardDeployManager.GetInstance().DeleteAllForwardDeployZones();
+			
+			//ClearEventMask(GetGame().GetGameMode(), EntityEvent.FIXEDFRAME);
 		}
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	void DeleteTempGroupSpawnPoints()
 	{
 		array<IEntity> tempSpawns = CRF_RespawnManager.GetInstance().GetTempGroupSpawnPoints();
@@ -687,44 +672,11 @@ class CRF_SafestartManager : ScriptComponent
 		
 		CRF_RespawnManager.GetInstance().ClearTempGroupSpawnPoints();
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	void AddSafestartZone(IEntity entity)
-	{
-		m_aSafestartZones.Insert(entity);
-	}
 
 	//------------------------------------------------------------------------------------------------
 	void DelayChangeSafeStartDisabled() {
 		m_bSafeStartEnabled = false;
 		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
-	};
-
-	//------------------------------------------------------------------------------------------------
-	void CheckPlayersAlive(CRF_Gamemode gm)
-	{
-		string message;
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
-		foreach (SCR_Faction faction : m_aPlayedFactionsArray)
-		{
-			FactionKey factionKey = faction.GetFactionKey();
-			int factionTickets;
-			if (respawnManager) {
-				factionTickets = respawnManager.GetFactionTickets(factionKey);
-			} else {
-				factionTickets = 0;
-			}
-			
-			switch (true) {
-				case(factionKey == "BLUFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[0] != "N/A") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "OPFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[1] != "N/A") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "INDFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[2] != "N/A") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(factionKey == "CIV" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[3] != "N/A") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-			};
-		};
-
-		if (!message.IsEmpty())
-			m_RplBroadcastManager.PopUpNotification(20, message);
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -741,7 +693,6 @@ class CRF_SafestartManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	// SafeStart EHs
-	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	/**
 	* Activates safe start event handlers for all AI and player-controlled entities.
@@ -852,5 +803,18 @@ class CRF_SafestartManager : ScriptComponent
 
 		// Get grenade and delete it
 		delete entity;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_SafestartManager m_sInstance;
+	void CRF_SafestartManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static CRF_SafestartManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

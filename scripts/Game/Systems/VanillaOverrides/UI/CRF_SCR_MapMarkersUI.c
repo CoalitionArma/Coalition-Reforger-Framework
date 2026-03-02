@@ -30,7 +30,7 @@ modded class SCR_PlayerControllerCommandingComponent
 		if (!playerGroup.IsPlayerLeader(playerId) || !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
-		if (!gamemodeManager.IsForwardDeployActive(playerGroup.GetFaction().GetFactionKey()))
+		if (!CRF_ForwardDeployManager.GetInstance().IsForwardDeployActive(playerGroup.GetFaction().GetFactionKey()))
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
 		SCR_MapMarkerMenuEntry menuEntry = new SCR_MapMarkerMenuEntry();

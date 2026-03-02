@@ -12,7 +12,7 @@ modded class SCR_EditorManagerEntity
 
 		// Spectators and moderators always get unlimited editor access
 		bool isSpectator = CRF_EntityHelper.IsSpectator();
-		bool isModerator = CRF_GamemodeManager.GetInstance() && CRF_GamemodeManager.GetInstance().IsModerator();
+		bool isModerator = CRF_PermissionManager.GetInstance() && CRF_PermissionManager.GetInstance().IsModerator();
 		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
 		
 		if (isSpectator || isModerator || isAdmin)

@@ -28,33 +28,11 @@ class CRF_PlayerControllerManager : ScriptComponent
 	
 	// Game Systems
 	protected CRF_Gamemode m_Gamemode;                      // Reference to the active gamemode
-	protected CRF_GamemodeManager m_GamemodeManager;        // Reference to the gamemode manager
 	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;  // Network authority manager
 	protected CRF_CameraManager m_CameraManager;                  // Reference to the local camera manager
 	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
-	
-	protected static CRF_PlayerControllerManager m_sInstance;
-
-	//------------------------------------------------------------------------------------------------
-	// STATIC ACCESSORS
-	//------------------------------------------------------------------------------------------------
-
-	/**
-	 * Returns the instance of this component from the player controller
-	 * @return CRF_PlayerControllerManager - The player controller component instance or null if unavailable
-	 */
-	
-	void CRF_PlayerControllerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	static CRF_PlayerControllerManager GetInstance()
-	{
-		return m_sInstance;
-	}
 
 	//------------------------------------------------------------------------------------------------
 	// INITIALIZATION
@@ -72,7 +50,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 		// Get references to required systems
 		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_CameraManager = CRF_CameraManager.GetInstance();
 
@@ -423,6 +400,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	// ADMIN MESSAGING SYSTEM
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Registers chat commands for admin messaging
 	 */
@@ -452,6 +430,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		invoker7.Insert(ReportBug);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	 /**
 	 * Reports bugs to github
 	 * @param panel - Chat panel
@@ -479,6 +458,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_RplToAuthorityManager.ReportBug(data, playerID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Sends an admin message from the player to server
 	 * @param panel - Chat panel
@@ -506,6 +486,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_RplToAuthorityManager.SendAdminMessage(data, playerID);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Allows admins to reply to specific players
 	 * @param panel - Chat panel
@@ -514,7 +495,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
 		// Verify sender is admin or moderator
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+		if (!SCR_Global.IsAdmin() && !CRF_PermissionManager.GetInstance().IsModerator())
 			return;
 		
 		// Parse player ID and message from input
@@ -580,6 +561,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	// GAMEMODE CONTROLS
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Toggles ready state for player's side/faction
 	 * Only faction leaders can toggle ready state
@@ -611,6 +593,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Admin command to force ready state for all sides
 	 */
@@ -624,6 +607,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 			true);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Teleports a player to another player's location
 	 * @param playerId1 - Player to teleport
@@ -641,6 +625,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Callback for advancing gamemode state with optional faction winner parameter
 	 * Usage: /aar [faction]
@@ -745,6 +730,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Callback for triggering a manual mission save
 	 * Usage: /save [save name]
@@ -797,6 +783,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		return m_aScriptedMarkers;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Adds a scripted marker on the user's map
 	 * @param markerEntityName - Name of entity to track (or "Static Marker" for static position)
@@ -819,6 +806,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 			markerColor.ToString()));
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Removes a specific scripted marker
 	 * @param markerEntityName - Name of entity tracked
@@ -841,6 +829,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 			markerColor.ToString()));
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Removes all scripted markers
 	 */
@@ -849,6 +838,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_aScriptedMarkers.Clear();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
 	{
 		RemoveALLScriptedMarkers();
@@ -893,6 +883,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void DisplayTitleCard()
 	{
 		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
@@ -901,10 +892,23 @@ class CRF_PlayerControllerManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(RemoveWidget, 4000, false, titleCard);
 	}
 	
-		
+	//------------------------------------------------------------------------------------------------
 	static void RemoveWidget(Widget widget)
 	{
 		if (widget)
 			widget.RemoveFromHierarchy();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_PlayerControllerManager m_sInstance;
+	void CRF_PlayerControllerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_PlayerControllerManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

@@ -5,15 +5,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// Time it takes for players to Init
 	static const int PLAYER_INITILIZATION_TIME = 250;
 	
-	[RplProp()]
-	ref array<int> m_aModerators = {}; 
-	
-	[RplProp()]
-	ref array<int> m_aDonators = {};
-	
-	[RplProp()]
-	protected string m_sServerWorldTime;
-	
 	// Internal flag to prevent redundant replication updates
 	protected bool m_bSuppressReplication = false;
 	
@@ -25,105 +16,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
-	protected static CRF_GamemodeManager m_sInstance;
-	
-	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
-	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
-	
-	ref array<IEntity> m_aDeadBodies = {};
-	protected ref array<IEntity> m_aForwardDeployZones = {};
-	protected ref array<ref CRF_ForwardDeployRequest> m_aForwardDeployRequests = {};
-	
-	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
-	{
-		m_sInstance = this;
-	}
-	
-	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
-	{
-		super.OnControllableDestroyed(instigatorContextData);
-		#ifdef WORKBENCH
-		#else
-		if (!System.IsConsoleApp())
-			return;
-		#endif
-		
-		m_aDeadBodies.Insert(instigatorContextData.GetVictimEntity());
-	}
-	
-	void CleanUpBodies()
-	{
-		array<IEntity> bodiesToRemove = new array<IEntity>();
-		bodiesToRemove.Reserve(m_aDeadBodies.Count()); // Pre-allocate capacity for performance
-		
-		foreach (IEntity body: m_aDeadBodies)
-		{
-			if (!body)
-				continue;
-			
-			if (!GetGame().GetWorld().QueryEntitiesBySphere(body.GetOrigin(), 30, CleanUpBodyCallback, null))
-				continue;
-
-			bodiesToRemove.Insert(body);
-		}
-		
-		int delay = 1;
-		foreach (IEntity body: bodiesToRemove)
-		{
-			m_aDeadBodies.RemoveItem(body);
-			//Lets not delete 100s of entities in one frame now
-			GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100 * delay, false, body);
-			delay++;
-		}
-	}
-	
-	bool CleanUpBodyCallback(IEntity entity)
-	{
-		if (ChimeraCharacter.Cast(entity))
-		{
-			//Is this character dead
-			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
-			if (damageManager)
-			{
-				if (damageManager.GetState() == EDamageState.DESTROYED)
-					return true;
-				else
-					return false;
-			}
-		}
-			
-		return true;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Get the spectator resource name
-	* @param vectorToCheck vector to check
-	* @return ResourceName of the spectator entity
-	*/
-	static bool IsValidSpawnVector(vector vectorToCheck)
-	{	
-		bool finalcheck = false;
-		bool zeroCheck = (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
-		bool tenCheck = (vector.Distance("0 10000 0", vectorToCheck) > 5);
-		bool negCheck = (vectorToCheck[1] >= 0);
-		
-		if (zeroCheck && tenCheck && negCheck)
-			finalcheck = true;
-		
-		return finalcheck;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Get the instance of the GamemodeManager from the current game mode
-	* @return Instance of the GamemodeManager, null if not found
-	*/
-	static CRF_GamemodeManager GetInstance()
-	{
-		return m_sInstance;
-	}
-	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{	
@@ -131,29 +23,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Initialize all required manager references
 		InitializeManagers();
 		LoadConfigurations();
-	}
-	
-	//Needed so when we teleport players/vehicles the aren't spawning on top of each other.
-	float m_fBuffer = 0;
-	override void EOnFrame(IEntity owner, float timeSlice)
-	{
-	    super.EOnFrame(owner, timeSlice);
-	    m_fBuffer += timeSlice;
-	    if (m_fBuffer > 0.1)
-	    {
-	        m_fBuffer = 0;
-	        if (m_aForwardDeployRequests.Count() > 0)
-	        {
-	            CRF_ForwardDeployRequest request = m_aForwardDeployRequests.Get(0);
-	            if (request)
-	            {
-	                PerformForwardDeploy(request.m_iPlayerId, request.m_vTransform);
-	                m_aForwardDeployRequests.RemoveOrdered(0);
-	            }
-	        }
-	        if (m_aForwardDeployRequests.Count() == 0)
-	            ClearEventMask(owner, EntityEvent.FRAME);
-	    }
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -199,11 +68,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	/**
 	* Initialize a player into the game either as a playable character or spectator
 	* @param playerId ID of the player to initialize
-	* @param spawnLocation Location to spawn the player (Use "CRF_GamemodeManager.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
+	* @param spawnLocation Location to spawn the player (Use "CRF_EntityHelper.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
 	*/
 	void InitilizePlayer(int playerId, vector spawnLocation[4])
 	{
-		if (!IsValidSpawnVector(spawnLocation[3]) && spawnLocation != ZERO_SPAWN_VECTOR)
+		if (!CRF_EntityHelper.IsValidSpawnVector(spawnLocation[3]) && spawnLocation != CRF_EntityHelper.ZERO_SPAWN_VECTOR)
 		{
 			Print(string.Format("[CRF ERROR]: %1 DOESN'T HAVE VALID SPAWN VECTOR!", playerId), LogLevel.ERROR);
 			return;
@@ -224,7 +93,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			playerCharacter = CreateSpectatorEntity(CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
@@ -528,324 +397,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// TIME MANAGEMENT
-	//------------------------------------------------------------------------------------------------
-	
-	/**
-	* Get the current server world time string
-	* @return Formatted server time string
-	*/
-	string GetServerWorldTime()
+	protected static CRF_GamemodeManager m_sInstance;
+	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
 	{
-		return m_sServerWorldTime;
+		m_sInstance = this;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Set the server world time
-	* @param input Time string to set
-	*/
-	void SetServerWorldTime(string input)
+	static CRF_GamemodeManager GetInstance()
 	{
-		SetServerWorldTimeSilent(input);
-		if (!m_bSuppressReplication)
-			Replication.BumpMe();
+		return m_sInstance;
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Set the server world time without triggering replication
-	* @param input Time string to set
-	*/
-	protected void SetServerWorldTimeSilent(string input)
-	{
-		m_sServerWorldTime = input;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Update the server world time based on safestart time
-	*/
-	void UpdateServerWorldTime()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_SafestartManager.m_iTimeSafeStartBegan - currentTime;
-		int totalSeconds = (millis * 0.001);
-
-		SetServerWorldTimeSilent(SCR_FormatHelper.FormatTime(totalSeconds));
-		if (!m_bSuppressReplication)
-			Replication.BumpMe();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Update mission end timer and handle expiration
-	*/
-	void UpdateMissionEndTimer()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;
-		int totalSeconds = (millis * 0.001);
-
-		SetServerWorldTimeSilent(SCR_FormatHelper.FormatTime(totalSeconds));
-
-		if (totalSeconds == 0) {
-			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
-			SetServerWorldTimeSilent("Mission Time Expired!");
-		}
-
-		if (!m_bSuppressReplication)
-			Replication.BumpMe();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// MODERATOR MANAGEMENT
-	//------------------------------------------------------------------------------------------------
-	
-	/**
-	* Set a player status
-	* @param playerId ID of the player to set as moderator or donator
-	*/
-	void SetPlayerStatus(int playerId, string role)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
-			return;
-		
-		bool statusChanged = false;
-		switch (role) {
-			case "mod": {
-				m_aModerators.Insert(playerId);
-				statusChanged = true;
-				break;
-			}
-			case "don": {
-				m_aDonators.Insert(playerId);
-				statusChanged = true;
-				break;
-			}
-		}
-			
-		if (statusChanged && !m_bSuppressReplication)
-			Replication.BumpMe();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Set multiple player statuses in a batch to optimize replication
-	* @param playerStatuses Array of player status updates {playerId, role}
-	*/
-	void BatchSetPlayerStatus(array<ref array<string>> playerStatuses)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		bool anyChanged = false;
-		m_bSuppressReplication = true;
-		
-		foreach (ref array<string> statusUpdate : playerStatuses)
-		{
-			if (statusUpdate.Count() < 2)
-				continue;
-				
-			int playerId = statusUpdate[0].ToInt();
-			string role = statusUpdate[1];
-			
-			if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
-				continue;
-				
-			switch (role) {
-				case "mod": {
-					m_aModerators.Insert(playerId);
-					anyChanged = true;
-					break;
-				}
-				case "don": {
-					m_aDonators.Insert(playerId);
-					anyChanged = true;
-					break;
-				}
-			}
-		}
-		
-		m_bSuppressReplication = false;
-		if (anyChanged)
-			Replication.BumpMe();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Batch update multiple gamemode properties to minimize replication calls
-	* @param newWorldTime Optional new world time string  
-	* @param playerStatuses Optional array of player status updates
-	*/
-	void BatchUpdateGamemodeState(string newWorldTime = "", array<ref array<string>> playerStatuses = null)
-	{
-		if (!Replication.IsServer())
-			return;
-			
-		bool anyChanged = false;
-		m_bSuppressReplication = true;
-		
-		// Update world time if provided
-		if (newWorldTime != "" && newWorldTime != m_sServerWorldTime)
-		{
-			SetServerWorldTimeSilent(newWorldTime);
-			anyChanged = true;
-		}
-		
-		// Update player statuses if provided
-		if (playerStatuses)
-		{
-			foreach (ref array<string> statusUpdate : playerStatuses)
-			{
-				if (statusUpdate.Count() < 2)
-					continue;
-					
-				int playerId = statusUpdate[0].ToInt();
-				string role = statusUpdate[1];
-				
-				if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
-					continue;
-					
-				switch (role) {
-					case "mod": {
-						m_aModerators.Insert(playerId);
-						anyChanged = true;
-						break;
-					}
-					case "don": {
-						m_aDonators.Insert(playerId);
-						anyChanged = true;
-						break;
-					}
-				}
-			}
-		}
-		
-		m_bSuppressReplication = false;
-		if (anyChanged)
-			Replication.BumpMe();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if a given player is a moderator
-	* @param playerId ID of the player to check
-	* @return True if player is a moderator, false otherwise
-	*/
-	bool IsModerator(int playerId)
-	{
-		return m_aModerators.Contains(playerId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if local player is a moderator
-	* @return True if local player is a moderator, false otherwise
-	*/
-	bool IsModerator()
-	{
-		return m_aModerators.Contains(SCR_PlayerController.GetLocalPlayerId());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if local player is a donator
-	* NOTE: Not used in game mode. Added for future uses.
-	* @return True if local player is a donator, false otherwise
-	*/
-	bool IsDonator()
-	{
-		return m_aDonators.Contains(SCR_PlayerController.GetLocalPlayerId());
-	}
-	
-	bool IsDonator(int playerId)
-	{
-		return m_aDonators.Contains(playerId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void AddForwardDeployZone(IEntity entity)
-	{
-		m_aForwardDeployZones.Insert(entity);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	array<IEntity> GetForwardDeployZones()
-	{
-		return m_aForwardDeployZones;
-	}
-	
-		
-	//------------------------------------------------------------------------------------------------
-	void DeleteAllForwardDeployZones()
-	{
-		foreach(IEntity zone : m_aForwardDeployZones)
-		{
-			if(zone)
-				SCR_EntityHelper.DeleteEntityAndChildren(zone);
-		}
-		
-		m_aForwardDeployZones.Clear();
-	}
-	
-	void CreateForwardDeployRequest(int playerId, vector transform)
-	{
-		ref CRF_ForwardDeployRequest request = new CRF_ForwardDeployRequest();
-		request.m_iPlayerId = playerId;
-		request.m_vTransform = transform;
-		m_aForwardDeployRequests.Insert(request);
-		SetEventMask(GetOwner(), EntityEvent.FRAME);
-	}
-	
-	void PerformForwardDeploy(int playerId, vector transform)
-	{
-		vector initialSpawnLocation;
-		SCR_WorldTools.FindEmptyTerrainPosition(initialSpawnLocation, transform, 10);
-		vector params[4];
-		params[3] = initialSpawnLocation;
-		SCR_TerrainHelper.OrientToTerrain(params, GetGame().GetWorld(), true);
-		vector finalSpawnLocation;
-		SCR_TerrainHelper.SnapToGeometry(finalSpawnLocation, params[3], null);
-		params[3] = finalSpawnLocation;
-		SCR_Global.TeleportPlayer(playerId, finalSpawnLocation, SCR_EPlayerTeleportedReason.NONE);
-		CRF_RplBroadcastManager.GetInstance().BroadcastVehiclePosUpdate(finalSpawnLocation, playerId);
-	}
-	
-	/*
-	* Checks if there are any forward deploy zones active for this faction.
-	* These are deleted and then removed from m_aVisibleForFactions on safestart ending.
-	* @param factionKey is the faction of the group you are checking.
-	* @return True if there is an active forward deploy zone.
-	*/
-	bool IsForwardDeployActive(string factionKey)
-	{
-		if (m_aForwardDeployZones.Count() == 0)
-			return false;
-		
-		bool isActive = false;
-		foreach (IEntity zone: m_aForwardDeployZones)
-		{
-			CRF_PolyZone polyZone = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
-			if (!polyZone)
-				continue;
-
-			if(!polyZone.m_aVisibleForFactions.Contains(factionKey))
-				continue;
-			
-			isActive = true;
-			break;
-		}
-		
-		return isActive;
-	}
-}
-
-class CRF_ForwardDeployRequest
-{
-	int m_iPlayerId;
-	vector m_vTransform;
 }

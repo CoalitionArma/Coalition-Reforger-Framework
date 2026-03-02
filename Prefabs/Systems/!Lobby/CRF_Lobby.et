@@ -8,6 +8,12 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
+    CRF_ForwardDeployManager "{68C4424EC250E62B}" {
+    }
+    CRF_GameTimerManager "{68C34EF052F2A86D}" {
+    }
+    CRF_GarbageManager "{68C34EF0274E751C}" {
+    }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
     }
     CRF_GroupLeaderMarkerManager "{686A3E86B81A4662}" {
@@ -17,6 +23,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_MenuManager "{652A3313EB733550}" {
     }
     CRF_MissionValidatorManager "{686A3E855DC73533}" {
+    }
+    CRF_PermissionManager "{68C34EF02CB41BD0}" {
     }
     CRF_RespawnManager "{652A331316B363A2}" {
     }

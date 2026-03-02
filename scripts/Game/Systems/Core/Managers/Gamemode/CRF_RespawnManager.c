@@ -141,7 +141,7 @@ class CRF_RespawnManager : ScriptComponent
 		
 		// Check if we're within the cutoff window
 		int currentTime = GetGame().GetWorld().GetWorldTime();
-		int missionEndTime = m_SafestartManager.m_iTimeMissionEnds;
+		int missionEndTime = CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds;
 		int cutoffTime = missionEndTime - (m_Gamemode.m_iRespawnCutoffMinutes * 60000);
 		
 		// If current time is past the cutoff, disable respawns
@@ -746,7 +746,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector overrideSpawnLocation[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
+	void RespawnPlayer(int playerId, vector overrideSpawnLocation[4] = CRF_EntityHelper.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
@@ -800,7 +800,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
-			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			m_GamemodeManager.InitilizePlayer(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 			return;
 		}
 		
@@ -813,7 +813,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void FindSpawnPointLocation(FactionKey factionKey, out vector spawnPointLocation[4])
 	{
-		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
 		
 		foreach (IEntity spawnPoint : m_aRespawnPoints)
 		{
@@ -838,7 +838,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void FindInitalSpawnLocation(FactionKey factionKey, SCR_AIGroup group, out vector spawnPointLocation[4])
 	{
-		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
 		
 		foreach (IEntity spawnPoint : m_aTempGroupSpawnPoints)
 		{
@@ -865,10 +865,10 @@ class CRF_RespawnManager : ScriptComponent
 			break;
 		}
 		
-		if (spawnPointLocation[0] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[0]
-		 && spawnPointLocation[1] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[1]
-		 && spawnPointLocation[2] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[2]
-		 && spawnPointLocation[3] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[3])
+		if (spawnPointLocation[0] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[0]
+		 && spawnPointLocation[1] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[1]
+		 && spawnPointLocation[2] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[2]
+		 && spawnPointLocation[3] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[3])
 			FindSpawnPointLocation(factionKey, spawnPointLocation);
 	}
 	

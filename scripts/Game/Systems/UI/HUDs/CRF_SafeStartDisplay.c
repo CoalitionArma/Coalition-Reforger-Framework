@@ -297,7 +297,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 		}
 		else
 		{
-			m_wTimerText.SetText(CRF_GamemodeManager.GetInstance().GetServerWorldTime());
+			m_wTimerText.SetText(CRF_GameTimerManager.GetInstance().GetServerWorldTime());
 		}
 	}
 

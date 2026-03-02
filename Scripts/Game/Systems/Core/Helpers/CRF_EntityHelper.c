@@ -2,6 +2,9 @@ class CRF_EntityHelper
 {	
 	// Spectator resource to use
 	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+	
+	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
+	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
 
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -11,6 +14,25 @@ class CRF_EntityHelper
 	static ResourceName GetSpectatorResource()
 	{
 		return SPECTATOR_RESOURCE;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Get the spectator resource name
+	* @param vectorToCheck vector to check
+	* @return if the vector was valid
+	*/
+	static bool IsValidSpawnVector(vector vectorToCheck)
+	{	
+		bool finalcheck = false;
+		bool zeroCheck = (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
+		bool tenCheck = (vector.Distance("0 10000 0", vectorToCheck) > 5);
+		bool negCheck = (vectorToCheck[1] >= 0);
+		
+		if (zeroCheck && tenCheck && negCheck)
+			finalcheck = true;
+		
+		return finalcheck;
 	}
 	
 	//------------------------------------------------------------------------------------------------
