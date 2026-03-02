@@ -113,8 +113,6 @@ modded class SCR_EditorManagerEntity
 		// Handle editor opening - close all CRF menus
 		if (type == EEditorEventOperation.OPEN)
 		{	
-			CRF_CameraManager.GetInstance().UpdateStoredCameraPos();
-			
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);

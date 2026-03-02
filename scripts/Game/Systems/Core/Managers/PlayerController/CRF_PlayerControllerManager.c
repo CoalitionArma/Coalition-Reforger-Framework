@@ -893,34 +893,10 @@ class CRF_PlayerControllerManager : ScriptComponent
 		}
 	}
 	
-	string SanitizeMissionName(string fullName)
-	{
-	    array<string> parts = {};
-		
-	    fullName.Split(" ", parts, true);
-	
-	    // Remove the first two tokens like "CRF" and "CO50"/"COTVT55"
-	    if (parts.Count() > 2)
-	    {
-	        string cleanName;
-	        for (int i = 2; i < parts.Count(); i++)
-	        {
-	            if (i > 2)
-	                cleanName += " ";
-	            cleanName += parts[i];
-	        }
-			cleanName.ToUpper();
-	        return cleanName;
-	    }
-	
-		fullName.ToUpper();
-	    return fullName; // fallback if unexpected format
-	}
-	
 	void DisplayTitleCard()
 	{
 		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
-		TextWidget.Cast(titleCard.FindAnyWidget("TitleText")).SetText(SanitizeMissionName(GetGame().GetMissionName()));
+		TextWidget.Cast(titleCard.FindAnyWidget("TitleText")).SetText(CRF_MissionHelper.SanitizeMissionName(GetGame().GetMissionName()));
 		AudioSystem.PlaySound("{932C08A5A988F96A}Sounds/Intro/cinematicBoom.wav");
 		GetGame().GetCallqueue().CallLater(RemoveWidget, 4000, false, titleCard);
 	}
