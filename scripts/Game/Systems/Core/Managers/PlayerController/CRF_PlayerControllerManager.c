@@ -29,7 +29,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 	// Game Systems
 	protected CRF_Gamemode m_Gamemode;                      // Reference to the active gamemode
 	protected CRF_GamemodeManager m_GamemodeManager;        // Reference to the gamemode manager
-	protected CRF_SlottingManager m_SlottingManager;		 // Reference to the slotting manager
 	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;  // Network authority manager
 	protected CRF_CameraManager m_CameraManager;                  // Reference to the local camera manager
 	
@@ -74,7 +73,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		// Get references to required systems
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
-		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_CameraManager = CRF_CameraManager.GetInstance();
 
@@ -98,7 +96,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizePlayerClient(RplId playerCharID)
 	{
 		// Get player character
-		IEntity playerCharacter = m_SlottingManager.GetCharacterFromRplId(playerCharID);
+		IEntity playerCharacter = CRF_EntityHelper.GetCharacterFromRplId(playerCharID);
 		
 		// if we cant get the player character or it's null, wait another full initilization time before attempting again
 		if (!playerCharacter || !SCR_ChimeraCharacter.Cast(playerCharacter))
@@ -120,7 +118,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 				SetupRadioFrequency();
 		}; 
 		
-		if (playerCharacter.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
+		if (playerCharacter.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
 			InitilizeLocalSpectator(playerCharacter);
 		else
 			InitilizeLocalCharacter();
@@ -232,7 +230,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	{
 		// Get player's entity
 		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
-		if (!entity || CRF_GamemodeManager.IsSpectator(entity))
+		if (!entity || CRF_EntityHelper.IsSpectator(entity))
 			return;
 
 		// Find radio in inventory

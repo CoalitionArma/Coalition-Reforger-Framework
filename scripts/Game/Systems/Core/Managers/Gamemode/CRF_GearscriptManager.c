@@ -145,7 +145,7 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 		
 		// Prepare spawn parameters
-		EntitySpawnParams spawnParams = CRF_EntityHelper.CreateSpawnParams(entity);
+		EntitySpawnParams spawnParams = CRF_EntityHelper.CreateSpawnParams(entity.GetOrigin());
 		
 		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);

@@ -4,59 +4,72 @@ GameEntity : "{6F0C6CF6F10B4148}Prefabs/Characters/Core/CharacterHead_Base.et" {
   MeshObject "{529C8934211B4893}" {
    Object "{558B6EC82FED813A}Assets/Characters/Heads/Head_Asian_02/Head_Asian_02.xob"
    Materials {
-    MaterialAssignClass "{64DF141180A051F3}" {
+    MaterialAssignClass "{68C34EC2C7732ECA}" {
      SourceMaterial "Eye"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051D6}" {
+    MaterialAssignClass "{68C34EC2C7732F27}" {
      SourceMaterial "Eye_Occlusion"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051D0}" {
+    MaterialAssignClass "{68C34EC2C7732F24}" {
      SourceMaterial "Eye_Occlusion_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051DB}" {
+    MaterialAssignClass "{68C34EC2C7732F22}" {
+     SourceMaterial "Eye_Reflection"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{68C34EC2C7732F21}" {
+     SourceMaterial "Eye_Reflection_Wound"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{68C34EC2C7732F2D}" {
      SourceMaterial "Eye_Water"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051C6}" {
+    MaterialAssignClass "{68C34EC2C7732F2C}" {
      SourceMaterial "Eye_Water_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051CF}" {
+    MaterialAssignClass "{68C34EC2C7732F2A}" {
      SourceMaterial "Eye_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A051CA}" {
+    MaterialAssignClass "{68C34EC2C7732F28}" {
      SourceMaterial "Eyelashes"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E36}" {
+    MaterialAssignClass "{68C34EC2C7732F16}" {
      SourceMaterial "Eyelashes_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E31}" {
+    MaterialAssignClass "{68C34EC2C7732F14}" {
      SourceMaterial "Head_Asian_02"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E3D}" {
+    MaterialAssignClass "{68C34EC2C7732F12}" {
      SourceMaterial "Head_Asian_02_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E27}" {
+    MaterialAssignClass "{68C34EC2C7732F10}" {
      SourceMaterial "Neck"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E22}" {
+    MaterialAssignClass "{68C34EC2C7732F1E}" {
      SourceMaterial "Neck_wound"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{64DF141180A06E2E}" {
+    MaterialAssignClass "{68C34EC2C7732F1C}" {
      SourceMaterial "default_black"
      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
     }
    }
+   CastShadow 0
+   CastFarShadow 0
+   RainOccluder 0
+   WetnessOccluder 0
+   ReceiveLight 0
   }
  }
 }

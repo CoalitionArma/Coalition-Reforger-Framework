@@ -1,10 +1,7 @@
 class CRF_GamemodeManagerClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_GamemodeManager : SCR_BaseGameModeComponent
-{
-	// Spectator resource to use
-	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
-	
+{	
 	// Time it takes for players to Init
 	static const int PLAYER_INITILIZATION_TIME = 250;
 	
@@ -119,16 +116,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	* Get the spectator resource name
-	* @return ResourceName of the spectator entity
-	*/
-	static ResourceName GetSpectatorResource()
-	{
-		return SPECTATOR_RESOURCE;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
 	* Get the instance of the GamemodeManager from the current game mode
 	* @return Instance of the GamemodeManager, null if not found
 	*/
@@ -205,41 +192,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SPECTATOR MANAGEMENT
-	//------------------------------------------------------------------------------------------------
-	
-	/**
-	* Check if a given entity is a spectator
-	* @param entity Entity to check
-	* @return True if entity is a spectator, false otherwise
-	*/
-	static bool IsSpectator(IEntity entity)
-	{
-		if (!entity)
-			return false;
-		
-		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if the local player is a spectator
-	* @return True if local player is a spectator, false otherwise
-	*/
-	static bool IsSpectator()
-	{
-		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
-			return true;
-		
-		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
-			return true;
-
-		return false;
-	}
-
-	//------------------------------------------------------------------------------------------------
 	// PLAYER INITIALIZATION
 	//------------------------------------------------------------------------------------------------
 	
@@ -274,7 +226,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			// SPECTATOR PATH: Create initial entity for spectators
 			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 	
-			
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);
@@ -298,6 +249,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		if (playerCharacter)
 		{
+			DisableAI(playerCharacter);
 			AssignFactionToPlayer(playerController, faction);
 			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
@@ -343,7 +295,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		
 		// If player is still controlling the initial entity, retry the assignment
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource() && (playerCharacter.GetPrefabData().GetPrefabName() != GetSpectatorResource()))
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource() && (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource()))
 		{
 			// Force reassign the character
 			AssignCharacterToPlayer(playerController, playerCharacter);
@@ -354,7 +306,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		}
 		
 		// Assignment successful, complete initialization
-		if (playerCharacter.GetPrefabData().GetPrefabName() != GetSpectatorResource())
+		if (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource())
 			AssignPlayerToGroup(playerId);
 		
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
@@ -369,13 +321,57 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	protected SCR_ChimeraCharacter CreateSpectatorEntity(vector spawnLocation[4])
 	{
-		// Setup spawn parameters
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform = spawnLocation;
+		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
+		SCR_ChimeraCharacter spec = SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
 		
-		Resource spectatorRes = Resource.Load(GetSpectatorResource());
-		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), spawnParams));
+		if (!spec)
+			return spec;
+		
+		Physics physics = spec.GetPhysics();
+		if (!physics)
+			return spec;
+		
+		physics.EnableGravity(false);
+		physics.SetMass(0);
+		physics.SetDamping(1, 1);
+		physics.ChangeSimulationState(SimulationState.NONE);
+		physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
+		
+		int numGeoms = physics.GetNumGeoms();
+		for (int i = 0; i < numGeoms; i++) // Fixed: was i <= numGeoms (off-by-one error)
+		{
+			physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
+		}
+
+		return spec;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void DisableAI(IEntity character)
+	{
+		AIControlComponent aiComponent = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
+		if (!aiComponent)
+			return;
+		
+		AIAgent agent = aiComponent.GetAIAgent();
+		if (!agent)
+			return;
+		
+		agent.DeactivateAI();
+		
+		// Double-check deactivation next frame
+		GetGame().GetCallqueue().Call(DisableAIWrap, aiComponent);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void DisableAIWrap(AIControlComponent aiComponent)
+	{
+		if (!aiComponent)
+			return;
+		
+		AIAgent agent = aiComponent.GetAIAgent();
+		if (agent)
+			agent.DeactivateAI();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -496,7 +492,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		// Check if old entity is an initial entity (spawned at 1000m)
 		string oldPrefab = oldEntity.GetPrefabData().GetPrefabName();
-		if (oldPrefab == SPECTATOR_RESOURCE || oldPrefab.Contains("InitialEntity"))
+		if (oldPrefab == CRF_EntityHelper.GetSpectatorResource() || oldPrefab.Contains("InitialEntity"))
 		{
 			// Log deletion for debugging
 			Print(string.Format("[CRF] Deleting ghost initial entity for player %1 at position %2", 

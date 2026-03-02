@@ -207,6 +207,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+		
 		// Enable frame events for batch processing
 		SetEventMask(EntityEvent.FRAME);
 	}
@@ -467,7 +468,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 			
 		// Handle initial entity race condition fix
-		if (character.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
+		if (character.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
 		{
 			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
 			if (playerId > 0 && m_GamemodeState == CRF_EGamemodeState.GAME)
@@ -539,7 +540,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		// Determine delay time for respawn/spectator
 		int delay = 2000;
-		if (CRF_GamemodeManager.IsSpectator(entity))
+		if (CRF_EntityHelper.IsSpectator(entity))
 			delay = 0;
 		
 		// Get player faction
@@ -551,7 +552,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		// Handle respawn if enabled, tickets available, and within time window
 		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
-			!CRF_GamemodeManager.IsSpectator(entity) && 
+			!CRF_EntityHelper.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
 			m_RespawnManager.IsRespawnTimeAllowed() &&

@@ -33,7 +33,7 @@ class CRF_CharacterLoading: ChimeraMenuBase
 		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
 		
 		// If we have a valid main entity OR the menu has been up for more than 5 seconds;
-		if ((mainEntity && !CRF_GamemodeManager.IsSpectator(mainEntity)) || m_bFailsafeActive)
+		if ((mainEntity && !CRF_EntityHelper.IsSpectator(mainEntity)) || m_bFailsafeActive)
 			GetGame().GetMenuManager().CloseMenu(this);
 	}
 	

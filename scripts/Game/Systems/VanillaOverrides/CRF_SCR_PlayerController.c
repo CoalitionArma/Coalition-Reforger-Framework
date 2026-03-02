@@ -100,7 +100,7 @@ modded class SCR_PlayerController
 	override void UpdateSettings()
 	{
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		if (CRF_GamemodeManager.IsSpectator(GetControlledEntity()))
+		if (CRF_EntityHelper.IsSpectator(GetControlledEntity()))
 			return;
 		
 		//Still trying to update with a spectator radio. No clue why this happens as theres the check above by whatever.

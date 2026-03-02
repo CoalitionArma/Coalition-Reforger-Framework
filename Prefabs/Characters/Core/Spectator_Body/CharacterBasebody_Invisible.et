@@ -25,6 +25,11 @@ GenericEntity {
     4 0.8 0.1 0.1 0.1
    }
    PixelSizeScale 2
+   CastShadow 0
+   CastFarShadow 0
+   RainOccluder 0
+   WetnessOccluder 0
+   ReceiveLight 0
   }
  }
  coords -18.369 1 8.297

@@ -49,14 +49,15 @@ class CRF_CameraManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	/*!
 	 * Updates stored camera position for persistence between sessions
-	 * @param cameraPosToStore - Array of 4 vectors representing camera transform
 	 */
-	void UpdateStoredCameraPos(vector cameraPosToStoreOne, vector cameraPosToStoreTwo, vector cameraPosToStoreThree, vector cameraPosToStoreFour)
+	void UpdateStoredCameraPos()
 	{
-		m_vStoredCameraPos[0] = cameraPosToStoreOne;
-		m_vStoredCameraPos[1] = cameraPosToStoreTwo;
-		m_vStoredCameraPos[2] = cameraPosToStoreThree;
-		m_vStoredCameraPos[3] = cameraPosToStoreFour;
+		if (m_eCamera)
+		{
+			vector cameraPos[4];
+			m_eCamera.GetWorldTransform(cameraPos);
+			m_vStoredCameraPos = cameraPos;
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -167,21 +168,19 @@ class CRF_CameraManager : ScriptComponent
 		else {
 			cameraPos[3] = CRF_Gamemode.GetInstance().GetGenericSpawn();
 		}
-			
-		// Set up camera entity
-		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
-		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
-		cameraSpawnParams.Transform = cameraPos;
 
 		// Spawn or reposition camera
 		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
+			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
 		else
 			m_eCamera.SetWorldTransform(cameraPos);
 		
 		// Level camera horizon
 		vector mat = m_eCamera.GetAngles();
 		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+		
+		if (!CVON_VONGameModeComponent.GetInstance())
+			CRF_SpectatorCamera.Cast(m_eCamera).AttatchSpectatorToCamera(m_eCamera);
 		
 		// Switch to spectator camera
 		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));

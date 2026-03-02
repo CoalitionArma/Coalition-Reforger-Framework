@@ -447,7 +447,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				im.GetActionValue("ManualCameraMoveVertical") != 0 || 
 				im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || 
 				(!m_bTPPMode && im.GetActionValue("ManualCameraRotate") != 0) || 
-				CRF_GamemodeManager.IsSpectator(m_eSpecEntity);
+				CRF_EntityHelper.IsSpectator(m_eSpecEntity);
 				
 			if (isManualControl)
 			{
@@ -488,7 +488,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
 			
-			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			if (!CRF_EntityHelper.IsSpectator(specEntity))
 				return;
 			
 			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
@@ -507,7 +507,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
 			
-			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+			if (!CRF_EntityHelper.IsSpectator(specEntity))
 				return;
 			
 			CRF_CameraManager camManager = CRF_CameraManager.GetInstance();
@@ -624,7 +624,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			{
 				IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
 				
-				if (playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+				if (playerEntity && CRF_EntityHelper.IsSpectator(playerEntity) && playerEntity != localMainEnt)
 				{
 					RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
 					comparisonRplIds.Insert(playerRplId);
@@ -713,7 +713,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		);
 		
 		// If the character is alive and not a spectator, let spectators spectate them
-		if (!CRF_GamemodeManager.IsSpectator(entity))
+		if (!CRF_EntityHelper.IsSpectator(entity))
 		{
 			// Give the icon a reference to this menu so its click callbacks can call SelectSpecCursorFPP/TPP directly
 			spectatorIcon.SetSpectatorMenu(this);
@@ -1174,7 +1174,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+		if (!CRF_EntityHelper.IsSpectator(specEntity))
 			return;
 		
 		// Toggle off if already following this entity in TPP mode
@@ -1207,7 +1207,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (!CRF_GamemodeManager.IsSpectator(specEntity))
+		if (!CRF_EntityHelper.IsSpectator(specEntity))
 			return;
 		
 		// Toggle off if already following this entity in FPP mode

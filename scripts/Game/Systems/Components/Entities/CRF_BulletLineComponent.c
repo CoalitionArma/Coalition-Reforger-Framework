@@ -39,7 +39,7 @@ class CRF_BulletLineComponent: ScriptComponent
 //	float m_fTimeBuffer = 1;
 //	override void EOnFrame(IEntity owner, float timeSlice)
 //	{
-//		if (!m_PlayerController.m_bIsBulletTrackingEnabled || !CRF_GamemodeManager.IsSpectator(m_PlayerController.GetControlledEntity()))
+//		if (!m_PlayerController.m_bIsBulletTrackingEnabled || !CRF_EntityHelper.IsSpectator()(m_PlayerController.GetControlledEntity()))
 //			return;
 //		vector origin = owner.GetOrigin();
 //		if (origin == "0 0 0")
@@ -102,7 +102,7 @@ class CRF_BulletLineComponent: ScriptComponent
 //		if (!GetGame().GetPlayerController())
 //			return;
 //		
-//		if (!SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled || !CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
+//		if (!SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled || !CRF_EntityHelper.IsSpectator()(SCR_PlayerController.GetLocalControlledEntity()))
 //			return;
 //		
 //		Shape line;

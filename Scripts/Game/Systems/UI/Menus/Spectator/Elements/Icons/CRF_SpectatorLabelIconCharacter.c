@@ -175,7 +175,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		if (!m_EditableCharacterComponent)
 			return;
 			
-		if (CRF_GamemodeManager.IsSpectator(m_EditableCharacterComponent.GetOwner()))
+		if (CRF_EntityHelper.IsSpectator(m_EditableCharacterComponent.GetOwner()))
 		{
 			// Apply spectator-specific settings
 			m_fMaxIconSize = 20;

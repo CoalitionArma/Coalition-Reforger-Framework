@@ -531,7 +531,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
 				continue;
 				
-			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+			if (CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
 			
 			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
@@ -1066,7 +1066,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 
 			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
-				CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+				CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				playerList.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 			}
@@ -2015,7 +2015,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
 				continue;
 				
-			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+			if (CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
 			
 			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());

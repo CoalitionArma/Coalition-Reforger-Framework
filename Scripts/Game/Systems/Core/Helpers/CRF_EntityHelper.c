@@ -1,18 +1,73 @@
 class CRF_EntityHelper
 {	
+	// Spectator resource to use
+	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Get the spectator resource name
+	* @return ResourceName of the spectator entity
+	*/
+	static ResourceName GetSpectatorResource()
+	{
+		return SPECTATOR_RESOURCE;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Create spawn parameters for entity
-	 * @param entity Entity to create parameters for
+	 * @param entityPos Entity position to set parameters
 	 * @return Spawn parameters
 	 */
-	static EntitySpawnParams CreateSpawnParams(IEntity entity)
+	static EntitySpawnParams CreateSpawnParams(vector entityPos[4])
 	{	
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = entity.GetOrigin();
+		spawnParams.Transform = entityPos;
 		return spawnParams;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	// alt version for only needing one vector in the matrix
+	static EntitySpawnParams CreateSpawnParams(vector entityPos)
+	{	
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = entityPos;
+		return spawnParams;
+	}
+	
+	/**
+	* Check if a given entity is a spectator
+	* @param entity Entity to check
+	* @return True if entity is a spectator, false otherwise
+	*/
+	static bool IsSpectator(IEntity entity)
+	{
+		if (!entity)
+			return false;
+		
+		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Check if the local player is a spectator
+	* @return True if local player is a spectator, false otherwise
+	*/
+	static bool IsSpectator()
+	{
+		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+			return true;
+		
+		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+			return true;
+
+		return false;
+	}
+
 	
 	//------------------------------------------------------------------------------------------------
 	/**

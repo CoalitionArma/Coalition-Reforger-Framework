@@ -192,7 +192,7 @@ class CRF_SlottingManager : ScriptComponent
 			if (!factionKey.IsEmpty() && slotData.GetSlotFactionKey() != factionKey)
 				continue;
 			
-			SCR_AIGroup group = GetGroupFromRplId(slotData.GetSlotCurrentGroup());
+			SCR_AIGroup group = CRF_EntityHelper.GetGroupFromRplId(slotData.GetSlotCurrentGroup());
 			if (!group)
 				continue;
 				
@@ -228,34 +228,6 @@ class CRF_SlottingManager : ScriptComponent
 			return false;
 			
 		return true;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Helper method to get group from RplId
-	SCR_AIGroup GetGroupFromRplId(RplId groupId)
-	{
-		if (groupId == RplId.Invalid())
-			return null;
-			
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(groupId));
-		if (!rplComp)
-			return null;
-			
-		return SCR_AIGroup.Cast(rplComp.GetEntity());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Helper method to get character from RplId
-	static SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
-	{
-		if (charId == RplId.Invalid())
-			return null;
-			
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(charId));
-		if (!rplComp)
-			return null;
-			
-		return SCR_ChimeraCharacter.Cast(rplComp.GetEntity());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -320,7 +292,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 			
 		RplId groupId = slotData.GetSlotCurrentGroup();
-		return GetGroupFromRplId(groupId);
+		return CRF_EntityHelper.GetGroupFromRplId(groupId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -331,7 +303,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 			
 		RplId charId = slotData.GetSlotCurrentCharacter();
-		return GetCharacterFromRplId(charId);
+		return CRF_EntityHelper.GetCharacterFromRplId(charId);
 	}
 	
 	//------------------------------------------------------------------------------------------------

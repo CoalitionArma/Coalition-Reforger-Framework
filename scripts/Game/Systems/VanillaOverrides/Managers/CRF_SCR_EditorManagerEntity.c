@@ -11,7 +11,7 @@ modded class SCR_EditorManagerEntity
 		}
 
 		// Spectators and moderators always get unlimited editor access
-		bool isSpectator = CRF_GamemodeManager.IsSpectator();
+		bool isSpectator = CRF_EntityHelper.IsSpectator();
 		bool isModerator = CRF_GamemodeManager.GetInstance() && CRF_GamemodeManager.GetInstance().IsModerator();
 		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
 		
@@ -113,6 +113,8 @@ modded class SCR_EditorManagerEntity
 		// Handle editor opening - close all CRF menus
 		if (type == EEditorEventOperation.OPEN)
 		{	
+			CRF_CameraManager.GetInstance().UpdateStoredCameraPos();
+			
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
 			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
@@ -140,7 +142,7 @@ modded class SCR_EditorManagerEntity
 		// Verify gamemode exists and check player permissions
 		if (gamemode)
 		{
-			 if (!CRF_GamemodeManager.IsSpectator())
+			 if (!CRF_EntityHelper.IsSpectator())
 				return;
 		}
 
@@ -168,11 +170,11 @@ modded class SCR_EditorManagerEntity
 					return;
 				
 				// Initialize spectator camera if player is spectating
-				bool isSpectator = CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalMainEntity());
+				bool isSpectator = CRF_EntityHelper.IsSpectator(SCR_PlayerController.GetLocalMainEntity());
 				bool isSameEntity = SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity();
 				
 				if (isSpectator && isSameEntity)
-					GetGame().GetCallqueue().CallLater(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, 500, false, SCR_PlayerController.GetLocalPlayerId());
+					GetGame().GetCallqueue().CallLater(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, 200, false, SCR_PlayerController.GetLocalPlayerId());
 				
 				break;
 			}
