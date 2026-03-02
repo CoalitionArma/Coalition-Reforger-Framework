@@ -239,7 +239,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	 */
 	void AdvanceMenu()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
 	}
 	
 	/**

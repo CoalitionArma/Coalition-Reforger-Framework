@@ -198,7 +198,7 @@ class CRF_MenuManager : ScriptComponent
 	void RequestToJoinChannel(int channel, int requestId)
 	{
 		// This method is now called on the server side
-		// The logic has been moved to CRF_RplToAuthorityManager.RpcAsk_RequestToJoinChannel
+		// The logic has been moved to CRF_PlayerRplToAuthorityManager.RpcAsk_RequestToJoinChannel
 		// to handle the request properly in the client-server architecture
 		Print(string.Format("[VON] RequestToJoinChannel called on server: channel=%1, requestId=%2", channel, requestId), LogLevel.NORMAL);
 	}
@@ -211,7 +211,7 @@ class CRF_MenuManager : ScriptComponent
 			return;
 			
 		// Join the requester to the channel
-		CRF_RplToAuthorityManager.GetInstance().JoinChannel(comp.m_iPlayerId, comp.m_iChannelId);
+		CRF_PlayerRplToAuthorityManager.GetInstance().JoinChannel(comp.m_iPlayerId, comp.m_iChannelId);
 		
 		// Send acceptance notification with sound to the requester
 		CRF_RplBroadcastManager.GetInstance().NotifyRequestAccepted(comp.m_iPlayerId);

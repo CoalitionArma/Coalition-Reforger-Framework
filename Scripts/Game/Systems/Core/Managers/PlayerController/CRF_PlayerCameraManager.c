@@ -1,13 +1,13 @@
-class CRF_CameraManagerClass : ScriptComponentClass
+class CRF_PlayerCameraManagerClass : ScriptComponentClass
 {
 }
 
-class CRF_CameraManager : ScriptComponent
+class CRF_PlayerCameraManager : ScriptComponent
 {
 	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
 	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
 	
-	protected static CRF_CameraManager m_sInstance;
+	protected static CRF_PlayerCameraManager m_sInstance;
 	
 	protected bool m_bCameraOnRails;
 	protected bool m_bTPPMode = false; // True = third-person, false = first-person (helmet cam)
@@ -29,15 +29,15 @@ class CRF_CameraManager : ScriptComponent
 
 	/**
 	 * Returns the instance of this component from the player controller
-	 * @return CRF_CameraManager - The camera manager component instance or null if unavailable
+	 * @return CRF_PlayerCameraManager - The camera manager component instance or null if unavailable
 	 */
 	
-	void CRF_CameraManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	void CRF_PlayerCameraManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
 	
-	static CRF_CameraManager GetInstance()
+	static CRF_PlayerCameraManager GetInstance()
 	{
 		return m_sInstance;
 	}
@@ -154,7 +154,7 @@ class CRF_CameraManager : ScriptComponent
 	void InitilizeSpecCamera()
 	{
 		vector cameraPos[4];
-		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
+		cameraPos = CRF_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
 		// Use provided death position if available
 		if (CRF_EntityHelper.IsValidSpawnVector(cameraPos[3])) {

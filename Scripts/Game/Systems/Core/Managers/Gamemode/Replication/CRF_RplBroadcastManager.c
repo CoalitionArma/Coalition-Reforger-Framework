@@ -1732,10 +1732,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			Print("[CRF_RplBroadcastManager] Set destroyed status for: " + mcomIdentifier);
 			
 			// Clear all markers and refresh with proper destroyed state
-			CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-			if (playerControllerManager)
+			CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+			if (playerScriptedMarkerManager)
 			{
-				playerControllerManager.RemoveALLScriptedMarkers();
+				playerScriptedMarkerManager.RemoveALLScriptedMarkers();
 				Print("[CRF_RplBroadcastManager] Removed all map markers for MCOM destruction: " + mcomIdentifier);
 				
 				// Immediately refresh markers with proper destroyed status

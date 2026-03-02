@@ -33,7 +33,7 @@ class CRF_CacheCreateAction: ScriptedUserAction
 			return;
 		}
 		
-		CRF_RplToAuthorityManager.GetInstance().CreateCache(truckRplId, playerRplId);
+		CRF_PlayerRplToAuthorityManager.GetInstance().CreateCache(truckRplId, playerRplId);
 	}
 	
 	override bool GetActionNameScript(out string outName)

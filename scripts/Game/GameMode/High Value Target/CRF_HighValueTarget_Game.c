@@ -482,8 +482,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bEnableTransponderMarker)
 			return;
 		
-		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
-		if (!gameModePlayerComponent) 
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!playerScriptedMarkerManager) 
 			return;
 		
 		if (m_filterFaction)
@@ -509,7 +509,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 			}
 			
-			gameModePlayerComponent.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+			playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 		}
 	}
 	
@@ -581,7 +581,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_aHVTEntries || m_aHVTEntries.Count() == 0)
 			return;
 		
-		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
 		
 		// Use min of both arrays to prevent index out of bounds
 		int iterCount = Math.Min(m_aHVTEntries.Count(), m_aHvtPositions.Count());
@@ -596,19 +596,19 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Zero position means HVT is dead - remove marker
 			if (newPos == vector.Zero)
 			{
-				if (gameModePlayerComponent && m_bEnableTransponderMarker)
+				if (playerScriptedMarkerManager && m_bEnableTransponderMarker)
 				{
-					gameModePlayerComponent.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+					playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 					m_sRemovedMarkerIndices.Insert(i);
 				}
 				continue;
 			}
 			
 			// Non-zero position - check if marker was previously removed and needs re-creation
-			if (m_sRemovedMarkerIndices.Contains(i) && gameModePlayerComponent && m_bEnableTransponderMarker)
+			if (m_sRemovedMarkerIndices.Contains(i) && playerScriptedMarkerManager && m_bEnableTransponderMarker)
 			{
-				gameModePlayerComponent.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
-				gameModePlayerComponent.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+				playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+				playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 				m_sRemovedMarkerIndices.Remove(i);
 			}
 			

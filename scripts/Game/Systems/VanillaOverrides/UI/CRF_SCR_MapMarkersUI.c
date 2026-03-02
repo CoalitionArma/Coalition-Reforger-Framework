@@ -44,7 +44,7 @@ modded class SCR_PlayerControllerCommandingComponent
 	
 	void ShareMapMarkers()
 	{
-		CRF_RplToAuthorityManager.GetInstance().ShareMapMarkers();
+		CRF_PlayerRplToAuthorityManager.GetInstance().ShareMapMarkers();
 	}
 	
 	void CheckIfValidSpawn()
@@ -55,6 +55,6 @@ modded class SCR_PlayerControllerCommandingComponent
 	        return;
 	    
 	    string factionKey = faction.GetFactionKey();
-	    CRF_RplToAuthorityManager.GetInstance().RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
+	    CRF_PlayerRplToAuthorityManager.GetInstance().RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
 	}
 }

@@ -151,11 +151,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// STATIC METHODS
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Returns the singleton instance of the CRF_Gamemode
 	 * @return CRF_Gamemode instance or null if not available
 	 */
-	
 	void CRF_Gamemode(IEntitySource src, IEntity parent)
 	{
 		m_sInstance = this;
@@ -163,6 +163,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_OnStateChanged = new ScriptInvoker();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static CRF_Gamemode GetInstance()
 	{
 		return m_sInstance;
@@ -184,6 +185,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// INITIALIZATION AND SETUP
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Initialize the gamemode and all required manager instances
 	 * @param owner The entity that owns this component
@@ -220,6 +222,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// FRAME UPDATES
 	//===================================================================================
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Frame update for batch processing player initializations
 	 * More reliable than CallLater for time-critical operations
@@ -245,6 +248,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// STATE MANAGEMENT
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Progress to the next slotting state
 	 * Updates all slotting UI and synchronizes across network
@@ -260,6 +264,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			broadcastManager.NotifySlottingPhaseChanged();
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Progress to the next gamemode state
 	 * @param overriden Set to true to allow advancing from AAR or GAME states
@@ -285,6 +290,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		OnGamemodeStateChanged();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Handle gamemode state changes
 	 * Triggers UI updates and state-specific logic
@@ -335,11 +341,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}	
 		}
 		
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (playerControllerComp)
-			playerControllerComp.OpenCurrentStateMenu();
+		CRF_PlayerMenuManager playerMenuManager = CRF_PlayerMenuManager.GetInstance();
+		if (playerMenuManager)
+			playerMenuManager.OpenCurrentStateMenu();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
 	{
 		string name = GetGame().GetPlayerManager().GetPlayerName(player);
@@ -374,6 +381,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// PLAYER MANAGEMENT
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Handle player data received from network
 	 * @param playerData Player statistics and progress data
@@ -384,6 +392,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_PlayerData.CalculateStatsChange();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Process player connection after authentication
 	 * @param iPlayerID ID of the connecting player
@@ -458,6 +467,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// ENTITY MANAGEMENT
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Process entity spawning for players
 	 * @param entity The spawned entity
@@ -516,6 +526,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Process entity death/destruction for players
 	 * Handles respawn and spectator logic
@@ -591,6 +602,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3], true);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	* Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
 	* @param playerId ID of the player to initialize
@@ -611,6 +623,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GamemodeManager.InitilizePlayer(playerId, location);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateGearscriptResource(string factionKey, string resource)
 	{
 		switch (factionKey)
@@ -627,6 +640,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// STAGGERED PLAYER INITIALIZATION SYSTEM
 	//===================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Queue a player for staggered initialization
 	 * Prevents server overload by batching player spawns
@@ -654,6 +668,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Process a batch of pending player initializations
 	 * Called by EOnFrame when timer interval is reached
@@ -690,6 +705,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Clear all pending player initializations
 	 * Used when resetting game state
@@ -703,6 +719,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			m_SlottingManager.SetMassInitializationInProgress(false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Check if a player is waiting in the initialization queue
 	 * @param playerId Player to check
@@ -720,6 +737,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool DoesFactionShareMarker(string factionKey)
 	{
 		switch (factionKey)
@@ -736,6 +754,7 @@ class CRF_Gamemode : SCR_BaseGameMode
     	return true;
  	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool IsSideBFTEnabled(string factionKey)
 	{
 		switch(factionKey)

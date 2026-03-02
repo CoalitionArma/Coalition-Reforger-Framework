@@ -1,4 +1,8 @@
-modded class SCR_PlayerController
+class CRF_PlayerControllerClass : SCR_PlayerControllerClass
+{
+}
+
+class CRF_PlayerController : SCR_PlayerController
 {
 	bool m_bIsListeningToSpec = false;
 	vector m_vPlayersLastDeath[4];
@@ -76,12 +80,12 @@ modded class SCR_PlayerController
 		};
 
 		// Get the CRF player controller comp
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
+		CRF_PlayerSettingsManager playerSettingsManager = CRF_PlayerSettingsManager.GetInstance();
 		
 		// Can't do things if the pc comp doesnt exist
-		if (playerControllerComp)
+		if (playerSettingsManager)
 			// Reset settings to previously stored values
-			playerControllerComp.ResetSettingsToStoredValues();
+			playerSettingsManager.ResetSettingsToStoredValues();
 		
 		super.DisconnectFromGame();
 	}

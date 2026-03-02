@@ -76,7 +76,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		GetGame().GetWorld().QueryEntitiesBySphere(SCR_PlayerController.GetLocalControlledEntity().GetOrigin(), 50, FindTruckCallback, null);
 		string factionKey = SCR_FactionManager.SGetLocalPlayerFaction().GetFactionKey();
 		ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
-		CRF_RplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_Truck.FindComponent(RplComponent)).Id());
+		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_Truck.FindComponent(RplComponent)).Id());
 		foreach (IEntity truck: m_aTrucks)
 		{
 			DrawTruck(truck, manager, CRF_VehicleGearscriptManager.GetInstance().IsSupplyTruck(truck, factionKey), factionKey).m_OnClicked.Insert(SelectItem);
@@ -91,7 +91,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		if (m_bSupplyEnabled)
 		{
 			int supplies = CRF_VehicleGearscriptManager.GetInstance().GetTruckResupplyCost(truck.GetPrefabData().GetPrefabName());
-			CRF_RplToAuthorityManager.GetInstance().RequestVehicleSupplies(RplComponent.Cast(truck.FindComponent(RplComponent)).Id());
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestVehicleSupplies(RplComponent.Cast(truck.FindComponent(RplComponent)).Id());
 			GetGame().GetCallqueue().CallLater(RequestCurrentVehicleSupply, 500, false, truck, item, supplies);
 		}
 		else
@@ -214,7 +214,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		}
 		
 
-		CRF_RplToAuthorityManager.GetInstance().RearmVehicle(itemButton.m_iEntityId, supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_Truck.FindComponent(RplComponent)).Id());
+		CRF_PlayerRplToAuthorityManager.GetInstance().RearmVehicle(itemButton.m_iEntityId, supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_Truck.FindComponent(RplComponent)).Id());
 		AddNotification(itemButton.m_iEntityId);
 		GetGame().GetCallqueue().CallLater(InitMenu, 100, false);
 	}

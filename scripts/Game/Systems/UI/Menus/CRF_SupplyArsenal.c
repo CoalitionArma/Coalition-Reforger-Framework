@@ -53,7 +53,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	{
 		m_SupplyArsnealComponent = CRF_SupplyArsenalComponent.Cast(m_ArsenalPoint.FindComponent(CRF_SupplyArsenalComponent));
 		m_bSupplyEnabled = SCR_ResourceSystemHelper.IsGlobalResourceTypeEnabled(EResourceType.SUPPLIES) && m_SupplyArsnealComponent.m_bSupplyEnabled;
-		CRF_RplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
+		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
 	}
 	
 	override void OnMenuUpdate(float tDelta)
@@ -766,7 +766,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		IEntity truck = GetNearestVehicle();
 		if (!truck)
 			return;
-		CRF_RplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
 		AddNotification(TextWidget.Cast(itemButton.m_wButtonRoot.FindAnyWidget("ArsenalItemText")).GetText(), m_wEditBox.GetText().ToInt());
 	}
 	

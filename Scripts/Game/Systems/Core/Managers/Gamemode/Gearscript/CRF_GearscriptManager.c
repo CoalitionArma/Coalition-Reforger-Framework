@@ -187,7 +187,7 @@ class CRF_GearscriptManager : ScriptComponent
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
 		{
-			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			// Cache groups manager reference - PERFORMANCE OPTIMIZATION
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 			

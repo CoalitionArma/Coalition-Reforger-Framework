@@ -172,7 +172,7 @@ modded class SCR_EditorManagerEntity
 				bool isSameEntity = SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity();
 				
 				if (isSpectator && isSameEntity)
-					GetGame().GetCallqueue().CallLater(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, 200, false, SCR_PlayerController.GetLocalPlayerId());
+					GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer, 200, false, SCR_PlayerController.GetLocalPlayerId());
 				
 				break;
 			}

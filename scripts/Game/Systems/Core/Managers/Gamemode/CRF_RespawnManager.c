@@ -436,7 +436,7 @@ class CRF_RespawnManager : ScriptComponent
 					if (!isGameInAARState)
 					{
 						GetGame().GetMenuManager().CloseAllMenus();
-						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+						CRF_PlayerRplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
 						
 						// Set menu state back to default
 						m_SelectedSpawnRplID = -1;

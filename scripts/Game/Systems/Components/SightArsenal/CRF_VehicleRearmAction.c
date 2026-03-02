@@ -17,7 +17,7 @@ class CRF_VehicleRearmAction: ScriptedUserAction
 		if (!rplComp)
 			return;
 		
-		CRF_RplToAuthorityManager.GetInstance().RequestSupplyUpdate(rplComp.Id());
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestSupplyUpdate(rplComp.Id());
 	}
 	
 	override bool CanBePerformedScript(IEntity user)

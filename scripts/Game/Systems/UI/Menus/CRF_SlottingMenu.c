@@ -435,7 +435,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			return;
 		
 		// Request phase advancement through RPL system
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceSlottingPhase();
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestAdvanceSlottingPhase();
 	}
 	
 	/**
@@ -448,7 +448,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
 		
 		// Request server to initialize the local player
-		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	/**
@@ -966,7 +966,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		int selectedSlotId = m_cSlotListBoxComponent.GetCRFElementComponent(
 			m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId;
 		// Use batched RPC to remove player from slot
-		CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(selectedSlotId, 0);
+		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(selectedSlotId, 0);
 	}
 	
 	/**
@@ -1001,25 +1001,25 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// If group is currently private (locked), unlock it
 		if(aiGroup.IsPrivate())
 		{
-			CRF_RplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, false);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, false);
 			
 			// Unlock all slots in group using batched updates
 			foreach(int slotId : slotsInGroup)
 			{
 				// Use batched RPC to unlock slot
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, false);
+				CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, false);
 			}
 		}
 		// If group is currently unlocked, lock it
 		else
 		{
-			CRF_RplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, true);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, true);
 			
 			// Lock all slots in group using batched updates
 			foreach(int slotId : slotsInGroup)
 			{
 				// Use batched RPC: lock slot and remove player in one call
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, true);
+				CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, true);
 			}
 		}
 	}
@@ -1050,10 +1050,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Toggle slot lock state using batched updates
 		if(isCurrentlyLocked)
 			// Use batched RPC to unlock slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, false);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, false);
 		else
 			// Use batched RPC to lock slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, true);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, true);
 	}
 	
 	/**
@@ -1072,7 +1072,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	void AdvanceMenu()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
 	}
 	
 	/**
@@ -1461,7 +1461,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		if (currentPlayerId == m_iSelectedplayerId)
 		{
 			// remove player from slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
 			m_iSelectedplayerId = 0;
 			m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 		} 
@@ -1473,11 +1473,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			{
 				int currentSlotId = slottingManager.GetPlayerSlotID(m_iSelectedplayerId);
 				// remove player from current slot
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
+				CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
 			}
 			
 			// Move player to the new slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, m_iSelectedplayerId);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, m_iSelectedplayerId);
 			
 			// Reset selection
 			m_iSelectedplayerId = 0;
@@ -1503,7 +1503,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		if (currentPlayerId == localPlayerId)
 		{
 			// remove player from slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
 		} 
 		// If slot is empty, move player to this slot
 		else if (currentPlayerId == 0) 
@@ -1513,11 +1513,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			{
 				int currentSlotId = slottingManager.GetPlayerSlotID(localPlayerId);
 				// remove player from current slot
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
+				CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
 			}
 			
 			// Move player to the new slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, localPlayerId);
+			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, localPlayerId);
 		}
 	}
 	

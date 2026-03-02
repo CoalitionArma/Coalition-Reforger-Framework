@@ -3,9 +3,9 @@
 // Using individual parameters instead of complex serialization to match Enfusion's simpler RPC pattern
 //------------------------------------------------------------------------------------------------
 
-class CRF_RplToAuthorityManagerClass : ScriptComponentClass {}
+class CRF_PlayerRplToAuthorityManagerClass : ScriptComponentClass {}
 
-class CRF_RplToAuthorityManager : ScriptComponent
+class CRF_PlayerRplToAuthorityManager : ScriptComponent
 {	
 	// Manager references
 	protected CRF_Gamemode m_Gamemode;
@@ -21,16 +21,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected SCR_MapMarkerManagerComponent m_MapMarkerManager;
 	
-	protected static CRF_RplToAuthorityManager m_sInstance;
+	protected static CRF_PlayerRplToAuthorityManager m_sInstance;
 	
-	void CRF_RplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	void CRF_PlayerRplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Returns the instance of the RplToAuthorityManager
-	static CRF_RplToAuthorityManager GetInstance()
+	// Returns the instance of the PlayerRplToAuthorityManager
+	static CRF_PlayerRplToAuthorityManager GetInstance()
 	{
 		return m_sInstance;
 	}
@@ -100,13 +100,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
 	{
-		Print("[CRF_RplToAuthorityManager] ToggleRushMCOMPlanted() called on client: " + mcomIdentifier + ", planted: " + togglePlanted + " - sending RPC");
+		Print("[CRF_PlayerRplToAuthorityManager] ToggleRushMCOMPlanted() called on client: " + mcomIdentifier + ", planted: " + togglePlanted + " - sending RPC");
 		Rpc(RpcAsk_ToggleRushMCOMPlanted, mcomIdentifier, togglePlanted); 
 	}
 	
 	void StartRushPlantingSound()
 	{
-		Print("[CRF_RplToAuthorityManager] StartRushPlantingSound() called on client - sending RPC");
+		Print("[CRF_PlayerRplToAuthorityManager] StartRushPlantingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StartRushPlantingSound); 
 	}
 	
@@ -127,7 +127,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void StopRushBombTickingSound()
 	{
-		Print("[CRF_RplToAuthorityManager] StopRushBombTickingSound() called on client - sending RPC");
+		Print("[CRF_PlayerRplToAuthorityManager] StopRushBombTickingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StopRushBombTickingSound); 
 	}
 	
@@ -461,7 +461,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_ToggleRushMCOMPlanted", bytes);
 		
-		Print("[CRF_RplToAuthorityManager] RpcAsk_ToggleRushMCOMPlanted received: " + mcomIdentifier + ", planted: " + togglePlanted);
+		Print("[CRF_PlayerRplToAuthorityManager] RpcAsk_ToggleRushMCOMPlanted received: " + mcomIdentifier + ", planted: " + togglePlanted);
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
@@ -473,7 +473,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_StartRushPlantingSound", 0);
 		
-		Print("[CRF_RplToAuthorityManager] RpcAsk_StartRushPlantingSound received on server");
+		Print("[CRF_PlayerRplToAuthorityManager] RpcAsk_StartRushPlantingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 			rushGamemode.PlayPlantingSound();
@@ -524,16 +524,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_StopRushBombTickingSound", 0);
 		
-		Print("[CRF_RplToAuthorityManager] RpcAsk_StopRushBombTickingSound received on server");
+		Print("[CRF_PlayerRplToAuthorityManager] RpcAsk_StopRushBombTickingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 		{
-			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.StopBombTickingSound()");
+			Print("[CRF_PlayerRplToAuthorityManager] Calling rushGamemode.StopBombTickingSound()");
 			rushGamemode.StopBombTickingSound();
 		}
 		else
 		{
-			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
+			Print("[CRF_PlayerRplToAuthorityManager] Rush gamemode manager not found!");
 		}
 	}
 
@@ -569,7 +569,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 		else
 		{
-			Print("[CRF_RplToAuthorityManager] Persistence manager not available", LogLevel.ERROR);
+			Print("[CRF_PlayerRplToAuthorityManager] Persistence manager not available", LogLevel.ERROR);
 		}
 	}
 
@@ -1109,7 +1109,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			if (resourceSpawned.FindComponent(CVON_RadioComponent))
 			{
 				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-				SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+				CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 				SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 				GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
 				GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
@@ -1381,7 +1381,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 					invManager.TrySpawnPrefabToStorage(items[i]);
 			}
 		}
-		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 		GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
 		GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
@@ -1969,7 +1969,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		if (!polyzone)
 		{
-			SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+			CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
 			return;
 		}
 		
@@ -1981,7 +1981,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_AIGroup playerGroup = groupMan.GetPlayerGroup(playerId);
 		if (!playerGroup)
 		{
-		    SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+		    CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
 		    return;
 		}
 		playerGroup.GetAgents(players);
@@ -2083,7 +2083,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			if (playerFaction.GetFactionKey() != factionKey)
 				continue;
 			
-			SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
+			CRF_PlayerController pc = CRF_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
 			if (!pc)
 				continue;
 			
@@ -2155,7 +2155,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			if (!otherPlayerFaction || otherPlayerFaction != sharingPlayerFaction)
 				continue;
 			
-			SCR_PlayerController otherController = SCR_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
+			CRF_PlayerController otherController = CRF_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
 			if (!otherController)
 				continue;
 				
@@ -2205,7 +2205,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!pm)
 			return;
 		
-		SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(playerId));
+		CRF_PlayerController pc = CRF_PlayerController.Cast(pm.GetPlayerController(playerId));
 		if (!pc)
 			return;
 		

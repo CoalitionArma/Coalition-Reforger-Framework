@@ -10,7 +10,7 @@ modded class SCR_InventoryMenuUI
 		// If the item is from an arsenal
 		if (MoveItemToStorageSlot_VirtualArsenal()) {
 			// Grab item and player information
-			CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
+			CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 			CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
 
 			if (!sm || !rplManager)

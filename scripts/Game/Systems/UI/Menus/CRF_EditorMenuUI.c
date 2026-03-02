@@ -1,7 +1,7 @@
 modded class EditorMenuUI
 {
 	
-	SCR_PlayerController m_PlayerController;
+	CRF_PlayerController m_PlayerController;
 	SCR_ButtonComponent m_ButtonComponent;
 	SCR_ButtonComponent m_CleanUpBodiesButton;
 	Widget m_wCrossWidget;
@@ -10,7 +10,7 @@ modded class EditorMenuUI
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
-		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		m_PlayerController = CRF_PlayerController.Cast(GetGame().GetPlayerController());
 		m_ButtonComponent = SCR_ButtonComponent.Cast(GetRootWidget().FindAnyWidget("ListenButton").FindHandler(SCR_ButtonComponent));
 		m_wCrossWidget = GetRootWidget().FindAnyWidget("ListeningCross");
 		m_ButtonComponent.m_OnClicked.Insert(ToggleListen);
@@ -25,7 +25,7 @@ modded class EditorMenuUI
 	void CleanUpBodies()
 	{
 		CloseConfirmAction();
-		CRF_RplToAuthorityManager.GetInstance().CleanUpBodies();
+		CRF_PlayerRplToAuthorityManager.GetInstance().CleanUpBodies();
 	}
 	
 	void ConfirmAction()
@@ -69,7 +69,7 @@ modded class EditorMenuUI
 			return;
 		
 		m_PlayerController.m_bIsListeningToSpec = false;
-		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
 		CloseConfirmAction();
 	}
 	
@@ -79,6 +79,6 @@ modded class EditorMenuUI
 			return;
 		
 		m_PlayerController.m_bIsListeningToSpec = !m_PlayerController.m_bIsListeningToSpec;
-		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerController.m_bIsListeningToSpec);
+		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerController.m_bIsListeningToSpec);
 	}
 }
