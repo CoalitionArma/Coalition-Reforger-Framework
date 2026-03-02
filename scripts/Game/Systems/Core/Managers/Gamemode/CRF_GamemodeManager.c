@@ -10,11 +10,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	static ref CRF_GearScriptRolesConfig m_RolesConfig;
 	
-	protected CRF_Gamemode m_Gamemode;
 	protected CRF_SlottingManager m_SlottingManager;
-	protected CRF_SafestartManager m_SafestartManager;
-	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
-	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -53,11 +49,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	protected void InitializeManagers()
 	{
-		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
-		m_SafestartManager = CRF_SafestartManager.GetInstance();
-		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
-		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -97,7 +89,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
-			RemovePlayerFromCurrentGroup(playerId);
+			CRF_PlayerHelper.RemovePlayerFromCurrentGroup(playerId);
 		} 
 		else 
 		{
@@ -118,7 +110,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			playerCharacter.DisableAI();
-			AssignFactionToPlayer(playerController, faction);
+			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
 			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
 	}
@@ -139,8 +131,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Validate that the character still exists
 		if (!playerCharacter)
 			return;
+		
+		// Delete the old initial entity BEFORE assigning new character
+		// This prevents "ghost" entities
+		DeleteOldInitialEntity(playerController, playerCharacter);
 			
-		AssignCharacterToPlayer(playerController, playerCharacter);
+		CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 		
 		// Wait a frame for the entity assignment to take effect, then verify success
 		GetGame().GetCallqueue().Call(VerifyCharacterAssignment, playerId, playerController, playerCharacter);
@@ -165,8 +161,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// If player is still controlling the initial entity, retry the assignment
 		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource() && (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource()))
 		{
+			// Delete the old initial entity BEFORE assigning new character
+			// This prevents "ghost" entities
+			DeleteOldInitialEntity(playerController, playerCharacter);
+			
 			// Force reassign the character
-			AssignCharacterToPlayer(playerController, playerCharacter);
+			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
 			// Schedule another verification attempt
 			GetGame().GetCallqueue().CallLater(VerifyCharacterAssignment, 100, false, playerId, playerController, playerCharacter);
@@ -175,36 +175,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		// Assignment successful, complete initialization
 		if (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource())
-			AssignPlayerToGroup(playerId);
+			m_SlottingManager.AssignPlayerToGroup(playerId);
 		
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 
 		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Create a spectator entity in the world
-	* @return The created spectator character
-	*/
-	protected CRF_PlayerCharacter CreateSpectatorEntity(vector spawnLocation[4])
-	{
-		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
-		
-		return spec;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Remove player from their current group if any
-	* @param playerId ID of the player to remove from group
-	*/
-	protected void RemovePlayerFromCurrentGroup(int playerId)
-	{
-		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
-		if (currentGroup)
-			currentGroup.RemovePlayer(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -243,42 +218,18 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 		return playerCharacter;
 	}
-
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Assign faction to player controller
-	* @param playerController Player controller to assign faction to
-	* @param faction Faction to assign
-	*/
-	protected void AssignFactionToPlayer(SCR_PlayerController playerController, Faction faction)
-	{
-		if (!faction || !playerController)
-			return;
-			
-		SCR_PlayerFactionAffiliationComponent affiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(
-			playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
-		);
-		
-		if (affiliationComponent)
-			affiliationComponent.RequestFaction(faction);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	* Assign character entity to player controller
-	* @param playerController Player controller to assign character to
-	* @param character Character to assign
+	* Create a spectator entity in the world
+	* @return The created spectator character
 	*/
-	protected void AssignCharacterToPlayer(SCR_PlayerController playerController, SCR_ChimeraCharacter character)
+	protected CRF_PlayerCharacter CreateSpectatorEntity(vector spawnLocation[4])
 	{
-		if (!character || !playerController)
-			return;
+		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
+		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
 		
-		// Delete the old initial entity BEFORE assigning new character
-		// This prevents "ghost" entities
-		DeleteOldInitialEntity(playerController, character);
-		
-		playerController.SetInitialMainEntity(character);
+		return spec;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -309,28 +260,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			// Delete immediately to prevent replication
 			SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
 		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Assign player to their slotted group
-	* @param playerId ID of the player to assign
-	*/
-	protected void AssignPlayerToGroup(int playerId)
-	{
-		SCR_AIGroup group = m_SlottingManager.GetPlayerSlotGroup(playerId);
-		if (!group)
-			return;
-			
-		int groupId = group.GetGroupID();
-		if (groupId == -1)
-			return;
-			
-		m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
-		
-		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
-		if (groupComponent)
-			groupComponent.RequestJoinGroup(groupId);
 	}
 	
 	//------------------------------------------------------------------------------------------------

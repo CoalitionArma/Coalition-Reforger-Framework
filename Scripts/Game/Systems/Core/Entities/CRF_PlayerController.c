@@ -4,16 +4,9 @@ class CRF_PlayerControllerClass : SCR_PlayerControllerClass
 
 class CRF_PlayerController : SCR_PlayerController
 {
-	bool m_bIsListeningToSpec = false;
 	vector m_vPlayersLastDeath[4];
-	CRF_BandwidthTelemetryManager m_TelemetryManager;
 	
-	override void EOnInit(IEntity owner)
-	{
-		super.EOnInit(owner);
-		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
 		super.OnControlledEntityChanged(from, to);
@@ -51,6 +44,7 @@ class CRF_PlayerController : SCR_PlayerController
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Called when the player controller updates (typically whenever a player joins/rejoins)
 	 */
@@ -65,6 +59,7 @@ class CRF_PlayerController : SCR_PlayerController
 		CRF_PlayerControllerManager.GetInstance().InitilizePlayerControllerComp();
 	}
 
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Called when the player disconnects from the game
 	 * Ensures settings are reset to their stored values
@@ -90,17 +85,7 @@ class CRF_PlayerController : SCR_PlayerController
 		super.DisconnectFromGame();
 	}
 	
-	void InitializeRadioFromServer()
-	{
-		Rpc(RpcDo_InitializeRadioFromServer);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_InitializeRadioFromServer()
-	{
-		GetGame().GetCallqueue().CallLater(InitializeRadios, 500, false, GetLocalControlledEntity());
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	override void UpdateSettings()
 	{
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -138,99 +123,5 @@ class CRF_PlayerController : SCR_PlayerController
 			setting.m_iVolume = radioComp.m_iVolume;
 			m_aRadioSettings.Insert(setting);
 		}
-	}
-	
-	void ForwardDeployRequestRejected()
-	{
-		Rpc(RpcDo_ForwardDeployRequestRejected);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_ForwardDeployRequestRejected()
-	{
-		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
-	}
-	
-	void TeleportLocalPlayer(vector location)
-	{
-		Rpc(RpcDo_TeleportLocalPlayer, location);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_TeleportLocalPlayer(vector location)
-	{
-		SCR_Global.TeleportPlayer(GetPlayerId(), location);
-	}
-	
-	void SharerMarkerGlobal(int markerUID)
-	{
-		Rpc(RpcDo_SharerMarkerGlobal, markerUID);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_SharerMarkerGlobal(int markerUID)
-	{
-		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
-		if (!mapMarkersMan)
-			return;
-		
-		bool markersUpdated = false;
-		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
-		{
-			if (marker.GetMarkerID() == markerUID && !marker.m_bIsShared)
-			{
-				marker.m_bIsShared = true;
-				markersUpdated = true;
-			}
-		}
-		
-		// Only update visibility if any markers were actually changed
-		if (markersUpdated)
-			mapMarkersMan.UpdateAllMarkerVisibilities();
-	}
-	
-	void ShareMarker(array<int> markerUIDs)
-	{
-		Rpc(RpcDo_ShareMarker, markerUIDs);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-    protected void RpcDo_ShareMarker(array<int> markerUIDs)
-    {	
-		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
-		if (!mapMarkersMan)
-			return;
-		
-		bool markersUpdated = false;
-		foreach (SCR_MapMarkerBase marker: mapMarkersMan.GetStaticMarkers())
-		{
-			if (markerUIDs.Contains(marker.GetMarkerID()) && !marker.m_bIsShared)
-			{
-				marker.m_bIsShared = true;
-				markersUpdated = true;
-			}
-		}
-		
-		// Only update visibility if any markers were actually changed
-		if (markersUpdated)
-			mapMarkersMan.UpdateAllMarkerVisibilities();
-    }
-	
-	void RefreshGlobalMarkers(array<int> markers)
-	{
-		Rpc(RpcDo_RefreshGlobalMarkers, markers);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_RefreshGlobalMarkers(array<int> markers)
-	{
-		int bytes = 0;
-		bytes += m_TelemetryManager.EstimateSize_IntArray(markers);
-		m_TelemetryManager.LogRPC("RpcDo_RefreshGlobalMarkers", bytes);
-		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
-		if (!mapMarkerManager)
-			return;
-		
-		mapMarkerManager.RefreshGlobalMarkers(markers);
 	}
 }

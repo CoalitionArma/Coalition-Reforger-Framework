@@ -1,6 +1,30 @@
 CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerControllerMP.et" {
  ID "1A9BA6BEFA06E3B1"
  components {
+  CRF_ParachutePlayerComponent "{68A90AB4BC5E81E4}" {
+  }
+  CRF_PlayerControllerManager "{65654A2A31C3BDEA}" {
+   components {
+    CRF_PlayerCameraManager "{68C4425E85C0BE04}" {
+    }
+    CRF_PlayerChatCommandManager "{68C4425E800CB3F6}" {
+    }
+    CRF_PlayerKeybindManager "{68C4425E8D77A8DA}" {
+    }
+    CRF_PlayerMenuManager "{68C4425E8FB6F16D}" {
+    }
+    CRF_PlayerPolyZoneManager "{68C4425E89BF5FE0}" {
+    }
+    CRF_PlayerRplToAuthorityManager "{68C4425EB437D844}" {
+    }
+    CRF_PlayerRplToOwnerManager "{68C5417AC359912D}" {
+    }
+    CRF_PlayerScriptedMarkerManager "{68C4425EB38E4BFD}" {
+    }
+    CRF_PlayerSettingsManager "{68C4425EBD7FF268}" {
+    }
+   }
+  }
   ParachuteComponent "{65932336581E53D0}" {
    Enabled 0
    m_fHardLandingVelocity 50
@@ -74,28 +98,6 @@ CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     }
     SCR_SpawnPointRespawnRequestComponent "{5CD2D126BE7315B8}" {
      Enabled 0
-    }
-   }
-  }
-  CRF_ParachutePlayerComponent "{68A90AB4BC5E81E4}" {
-  }
-  CRF_PlayerControllerManager "{65654A2A31C3BDEA}" {
-   components {
-    CRF_PlayerCameraManager "{68C4425E85C0BE04}" {
-    }
-    CRF_PlayerChatCommandManager "{68C4425E800CB3F6}" {
-    }
-    CRF_PlayerKeybindManager "{68C4425E8D77A8DA}" {
-    }
-    CRF_PlayerMenuManager "{68C4425E8FB6F16D}" {
-    }
-    CRF_PlayerPolyZoneManager "{68C4425E89BF5FE0}" {
-    }
-    CRF_PlayerRplToAuthorityManager "{68C4425EB437D844}" {
-    }
-    CRF_PlayerScriptedMarkerManager "{68C4425EB38E4BFD}" {
-    }
-    CRF_PlayerSettingsManager "{68C4425EBD7FF268}" {
     }
    }
   }

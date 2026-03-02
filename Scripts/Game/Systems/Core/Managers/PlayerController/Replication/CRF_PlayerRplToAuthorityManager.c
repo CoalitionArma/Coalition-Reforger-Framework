@@ -1113,7 +1113,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 				SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 				GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
 				GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
-				pc.InitializeRadioFromServer();
+				CRF_PlayerRplToOwnerManager.GetInstance().InitializeRadioFromServer();
 			
 			}
 	}
@@ -1385,7 +1385,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 		GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
 		GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
-		pc.InitializeRadioFromServer();
+		CRF_PlayerRplToOwnerManager.GetInstance().InitializeRadioFromServer();
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1969,7 +1969,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		if (!polyzone)
 		{
-			CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+			CRF_PlayerRplToOwnerManager.GetInstance().ForwardDeployRequestRejected();
 			return;
 		}
 		
@@ -1981,7 +1981,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		SCR_AIGroup playerGroup = groupMan.GetPlayerGroup(playerId);
 		if (!playerGroup)
 		{
-		    CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).ForwardDeployRequestRejected();
+		    CRF_PlayerRplToOwnerManager.GetInstance().ForwardDeployRequestRejected();
 		    return;
 		}
 		playerGroup.GetAgents(players);
@@ -2083,11 +2083,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			if (playerFaction.GetFactionKey() != factionKey)
 				continue;
 			
-			CRF_PlayerController pc = CRF_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
-			if (!pc)
+			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+			if (!rplToOwnerManager)
 				continue;
 			
-			pc.SharerMarkerGlobal(markerUID);
+			rplToOwnerManager.SharerMarkerGlobal(markerUID);
 			array<int> tempMarkerArray = {};
 			tempMarkerArray.Insert(markerUID);
 			m_MapMarkerManager.UpdateSharedMarkers(tempMarkerArray, otherPlayerId);
@@ -2155,11 +2155,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			if (!otherPlayerFaction || otherPlayerFaction != sharingPlayerFaction)
 				continue;
 			
-			CRF_PlayerController otherController = CRF_PlayerController.Cast(pm.GetPlayerController(otherPlayerId));
-			if (!otherController)
+			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+			if (!rplToOwnerManager)
 				continue;
 				
-			otherController.ShareMarker(markerUIDs);
+			rplToOwnerManager.ShareMarker(markerUIDs);
 			m_MapMarkerManager.UpdateSharedMarkers(markerUIDs, otherPlayerId);
 		}
 	}
@@ -2205,11 +2205,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!pm)
 			return;
 		
-		CRF_PlayerController pc = CRF_PlayerController.Cast(pm.GetPlayerController(playerId));
-		if (!pc)
+		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!rplToOwnerManager)
 			return;
 		
-		pc.RefreshGlobalMarkers(globalMarkers);
+		rplToOwnerManager.RefreshGlobalMarkers(globalMarkers);
 	}
 	
 	void RequestSupplyUpdate(RplId supplyArsenalId)

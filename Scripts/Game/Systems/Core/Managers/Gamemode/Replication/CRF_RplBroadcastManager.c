@@ -975,7 +975,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		}
 	}
 	
-	
 	//================================================================================================
 	// CLIENT RPC HANDLERS
 	// These methods execute on client machines when receiving server RPCs

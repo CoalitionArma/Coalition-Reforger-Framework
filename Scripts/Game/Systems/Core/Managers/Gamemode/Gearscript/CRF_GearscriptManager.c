@@ -188,15 +188,17 @@ class CRF_GearscriptManager : ScriptComponent
 		if (playerId > 0)
 		{
 			CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
 			// Cache groups manager reference - PERFORMANCE OPTIMIZATION
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 			
 			if (groupsMan)
 				groupsMan.TuneFreqDelayWithPresets(playerId, entity);
-			if (pc)
+			
+			if (rplToOwnerManager && pc)
 			{
 				pc.InitializeRadios(entity);
-				pc.InitializeRadioFromServer();
+				rplToOwnerManager.InitializeRadioFromServer();
 			}
 		}
 		

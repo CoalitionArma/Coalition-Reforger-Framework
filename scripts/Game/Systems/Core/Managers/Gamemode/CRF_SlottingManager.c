@@ -640,6 +640,28 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Assign player to their slotted group
+	* @param playerId ID of the player to assign
+	*/
+	void AssignPlayerToGroup(int playerId)
+	{
+		SCR_AIGroup group = GetPlayerSlotGroup(playerId);
+		if (!group)
+			return;
+			
+		int groupId = group.GetGroupID();
+		if (groupId == -1)
+			return;
+			
+		SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
+		
+		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
+		if (groupComponent)
+			groupComponent.RequestJoinGroup(groupId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// NEW CLIENT-SIDE METHODS: Receive targeted RPC slot updates
 	//------------------------------------------------------------------------------------------------
 	

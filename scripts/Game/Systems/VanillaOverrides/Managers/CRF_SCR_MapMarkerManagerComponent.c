@@ -54,8 +54,8 @@ modded class SCR_MapMarkerManagerComponent
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
-		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		if (!pc)
+		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!rplToOwnerManager)
 			return;
 		
 		array<int> markers = m_MarkersSharedReference.Get(playerId);
@@ -68,7 +68,7 @@ modded class SCR_MapMarkerManagerComponent
 		if (markers.Count() == 0)
 			return;
 
-		pc.ShareMarker(markers);
+		rplToOwnerManager.ShareMarker(markers);
 	}
 	
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
