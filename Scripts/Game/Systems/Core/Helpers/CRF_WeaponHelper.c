@@ -115,7 +115,7 @@ class CRF_WeaponHelper
 		
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
-			SCR_ChimeraCharacter.Cast(entity).SelectPrimaryWeapon();
+			CRF_GearscriptCharacter.Cast(entity).SelectPrimaryWeapon();
 		else
 			charController.SelectWeapon(weapon);
 	}

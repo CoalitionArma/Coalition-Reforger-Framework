@@ -495,35 +495,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 			}
 		}
-		
-		// Apply gearscript/identity if in play mode and are initilizing a gearscript character
-		if (GetGame().InPlayMode() && character.GetPrefabData() && CRF_RoleHelper.IsValidGearscriptResource(character.GetPrefabData().GetPrefabName()))
-		{	
-			// Ensure gearscript manager is available
-			if (!m_GearscriptManager)
-				m_GearscriptManager = CRF_GearscriptManager.GetInstance();
-			
-			// Schedule gearscript identity setup with appropriate delay
-			GetGame().GetCallqueue().Call(
-				m_GearscriptManager.SetEntityIdentity, 
-				character
-			);
-		
-			// Apply gearscript if not on client
-			if (RplSession.Mode() != RplMode.Client)
-			{
-				// Ensure gearscript manager is available
-				if (!m_GearscriptManager)
-					m_GearscriptManager = CRF_GearscriptManager.GetInstance();
-				
-				// Schedule gear setup with appropriate delay
-				GetGame().GetCallqueue().Call(
-					m_GearscriptManager.SetEntityGear, 
-					character, 
-					character.GetPrefabData().GetPrefabName()
-				);
-			};
-		}
 	}
 
 	//------------------------------------------------------------------------------------------------
