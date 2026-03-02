@@ -85,7 +85,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerController)
 			return;
 			
-		SCR_ChimeraCharacter playerCharacter = null;
+		CRF_PlayerCharacter playerCharacter = null;
 		Faction faction = null;
 		bool alreadyCreated;
 		
@@ -98,7 +98,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);
-			DisableDamageForSpectator(playerCharacter);
 		} 
 		else 
 		{
@@ -118,7 +117,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		if (playerCharacter)
 		{
-			DisableAI(playerCharacter);
+			playerCharacter.DisableAI();
 			AssignFactionToPlayer(playerController, faction);
 			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
@@ -188,59 +187,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Create a spectator entity in the world
 	* @return The created spectator character
 	*/
-	protected SCR_ChimeraCharacter CreateSpectatorEntity(vector spawnLocation[4])
+	protected CRF_PlayerCharacter CreateSpectatorEntity(vector spawnLocation[4])
 	{
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		SCR_ChimeraCharacter spec = SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
+		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
 		
-		if (!spec)
-			return spec;
-		
-		Physics physics = spec.GetPhysics();
-		if (!physics)
-			return spec;
-		
-		physics.EnableGravity(false);
-		physics.SetMass(0);
-		physics.SetDamping(1, 1);
-		physics.ChangeSimulationState(SimulationState.NONE);
-		physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
-		
-		int numGeoms = physics.GetNumGeoms();
-		for (int i = 0; i < numGeoms; i++) // Fixed: was i <= numGeoms (off-by-one error)
-		{
-			physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
-		}
-
 		return spec;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void DisableAI(IEntity character)
-	{
-		AIControlComponent aiComponent = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
-		if (!aiComponent)
-			return;
-		
-		AIAgent agent = aiComponent.GetAIAgent();
-		if (!agent)
-			return;
-		
-		agent.DeactivateAI();
-		
-		// Double-check deactivation next frame
-		GetGame().GetCallqueue().Call(DisableAIWrap, aiComponent);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void DisableAIWrap(AIControlComponent aiComponent)
-	{
-		if (!aiComponent)
-			return;
-		
-		AIAgent agent = aiComponent.GetAIAgent();
-		if (agent)
-			agent.DeactivateAI();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -257,30 +209,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	* Disable damage handling for spectator character
-	* @param character Character to disable damage for
-	*/
-	protected void DisableDamageForSpectator(SCR_ChimeraCharacter character)
-	{
-		if (!character)
-			return;
-			
-		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(character.FindComponent(SCR_CharacterDamageManagerComponent)); 
-		if (damManager)
-			damManager.EnableDamageHandling(false);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
 	* Get existing character or create a new one for playable roles
 	* @param playerId ID of the player
 	* @param overrideLocation Optional spawn location
 	* @return The character entity
 	*/
-	protected SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation[4], out bool alreadyCreated)
+	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation[4], out bool alreadyCreated)
 	{
 		alreadyCreated = true;
-		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
+		CRF_PlayerCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
 		
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
 		{

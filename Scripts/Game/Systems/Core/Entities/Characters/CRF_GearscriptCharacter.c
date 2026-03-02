@@ -1,12 +1,16 @@
-class CRF_GearscriptCharacterClass : SCR_ChimeraCharacterClass
+class CRF_GearscriptCharacterClass : CRF_PlayerCharacterClass
 {
 }
 
-class CRF_GearscriptCharacter : SCR_ChimeraCharacter
+class CRF_GearscriptCharacter : CRF_PlayerCharacter
 {
+	//------------------------------------------------------------------------------------------------
+	// INITIALIZATION
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
+		super.EOnInit(owner);
+		
 		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
 		
 		if (!GetGame().InPlayMode() || !gearscriptManager)
@@ -29,6 +33,8 @@ class CRF_GearscriptCharacter : SCR_ChimeraCharacter
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// GEARSCRIPT WEAPON SELECTION
+	//------------------------------------------------------------------------------------------------	
 	void SelectPrimaryWeapon()
 	{
 		Rpc(RpcDo_SelectPrimaryWeapon);

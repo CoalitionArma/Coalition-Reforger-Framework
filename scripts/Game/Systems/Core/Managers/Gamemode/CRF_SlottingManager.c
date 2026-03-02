@@ -296,14 +296,14 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter GetPlayerSlotCharacter(int playerId)
+	CRF_PlayerCharacter GetPlayerSlotCharacter(int playerId)
 	{
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
 		if (!slotData)
 			return null;
 			
 		RplId charId = slotData.GetSlotCurrentCharacter();
-		return CRF_EntityHelper.GetCharacterFromRplId(charId);
+		return CRF_PlayerCharacter.Cast(CRF_EntityHelper.GetCharacterFromRplId(charId));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -468,7 +468,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
+	CRF_PlayerCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
 	{
 		int slotId = GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -514,7 +514,7 @@ class CRF_SlottingManager : ScriptComponent
 			return null;
 		}
 		
-		SCR_ChimeraCharacter playerCharacter = SCR_ChimeraCharacter.Cast(
+		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
 			GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams)
 		);
 		
