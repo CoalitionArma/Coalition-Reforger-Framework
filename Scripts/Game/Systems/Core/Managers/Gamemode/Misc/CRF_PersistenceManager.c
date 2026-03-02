@@ -37,7 +37,7 @@ class CRF_PersistenceManager : ScriptComponent
 		if (!Replication.IsServer())
 			return;
 		
-		s_Instance = this;
+		m_sInstance = this;
 		
 		// Check if persistence is enabled in mission header
 		SCR_MissionHeader missionHeader = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
@@ -459,8 +459,8 @@ class CRF_PersistenceManager : ScriptComponent
 	{
 		super.OnDelete(owner);
 		
-		if (s_Instance == this)
-			s_Instance = null;
+		if (m_sInstance == this)
+			m_sInstance = null;
 		
 		// Unhook from game mode events
 		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());

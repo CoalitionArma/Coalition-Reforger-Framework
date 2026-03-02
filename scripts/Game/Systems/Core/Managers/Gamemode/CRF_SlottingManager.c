@@ -716,6 +716,7 @@ class CRF_SlottingManager : ScriptComponent
 		return res;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Clear all cached resources
 	 * Call this when unloading mission or changing scenarios
@@ -740,6 +741,7 @@ class CRF_SlottingManager : ScriptComponent
 		m_bMassInitializationInProgress = inProgress;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Check if mass initialization is currently in progress
 	 * @return True if batch spawning is active
