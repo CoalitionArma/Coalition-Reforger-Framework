@@ -49,7 +49,7 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_InitializeRadioFromServer()
+	protected void RpcDo_InitializeRadioFromServer()
 	{
 		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(SCR_PlayerController.GetLocalPlayerId()));
 		
@@ -59,21 +59,21 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_ForwardDeployRequestRejected()
+	protected void RpcDo_ForwardDeployRequestRejected()
 	{
 		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_TeleportLocalPlayer(vector location)
+	protected void RpcDo_TeleportLocalPlayer(vector location)
 	{
 		SCR_Global.TeleportPlayer(SCR_PlayerController.GetLocalPlayerId(), location);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_SharerMarkerGlobal(int markerUID)
+	protected void RpcDo_SharerMarkerGlobal(int markerUID)
 	{
 		SCR_MapMarkerManagerComponent mapMarkersMan = SCR_MapMarkerManagerComponent.GetInstance();
 		if (!mapMarkersMan)
@@ -119,7 +119,7 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RpcDo_RefreshGlobalMarkers(array<int> markers)
+	protected void RpcDo_RefreshGlobalMarkers(array<int> markers)
 	{
 		CRF_BandwidthTelemetryManager telemManager = CRF_BandwidthTelemetryManager.GetInstance();
 		

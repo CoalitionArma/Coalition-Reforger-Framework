@@ -1486,14 +1486,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	protected void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
 	{
 		invManager.TryReplaceItem(newItem, invComponent, slotId);
 		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, playerId, player);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	protected void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
 	{
 		for (int i = 0; i < items.Count(); i++)
 		{
@@ -1528,7 +1528,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
+	protected void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
 	{
 		// Telemetry: 2 ints + string + 2 ResourceName arrays + int array + bool
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
@@ -1616,7 +1616,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
+	protected void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
 	array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, CRF_EGearRole role)
 	{
 		EntitySpawnParams params = new EntitySpawnParams();
@@ -1857,7 +1857,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleWaveRespawn()
+	protected void RpcAsk_ToggleWaveRespawn()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_ToggleWaveRespawn", 0);
@@ -1867,7 +1867,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleRespawn()
+	protected void RpcAsk_ToggleRespawn()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_ToggleRespawn", 0);
@@ -1877,7 +1877,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SetRespawnTime(int seconds)
+	protected void RpcAsk_SetRespawnTime(int seconds)
 	{
 		// Telemetry: int
 		LogTelemetry("RpcAsk_SetRespawnTime", CRF_BandwidthTelemetryManager.EstimateSize_Int());
@@ -1887,7 +1887,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CleanUpBodies()
+	protected void RpcAsk_CleanUpBodies()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_CleanUpBodies", 0);
@@ -1897,7 +1897,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
+	protected void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
 	{
 		// Telemetry: 3 RplIds + ResourceName + int + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 3;
@@ -1943,7 +1943,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_UpdateSupplyArsneal(RplId supplyArsenalId)
+	protected void RpcAsk_UpdateSupplyArsneal(RplId supplyArsenalId)
 	{
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_UpdateSupplyArsneal", CRF_BandwidthTelemetryManager.EstimateSize_RplId());
@@ -1956,7 +1956,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
+	protected void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
 	{
 		// Get slot data from the slotting manager
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
@@ -1977,7 +1977,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CreateCache(RplId truckId, RplId playerId)
+	protected void RpcAsk_CreateCache(RplId truckId, RplId playerId)
 	{
 		// Telemetry: 2 RplIds
 		LogTelemetry("RpcAsk_CreateCache", CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2);
@@ -2010,7 +2010,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	vector GetSpawn(IEntity player)
+	protected vector GetSpawn(IEntity player)
 	{
 		if (!player)
 			return "0 0 0";
@@ -2028,7 +2028,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void CreateCacheDelay(IEntity cache, array<IEntity> items)
+	protected void CreateCacheDelay(IEntity cache, array<IEntity> items)
 	{
 		SCR_InventoryStorageManagerComponent invComp = SCR_InventoryStorageManagerComponent.Cast(cache.FindComponent(SCR_InventoryStorageManagerComponent));
 		
@@ -2044,7 +2044,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestVehicleSupplies(RplId truckId)
+	protected void RpcAsk_RequestVehicleSupplies(RplId truckId)
 	{
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_RequestVehicleSupplies", CRF_BandwidthTelemetryManager.EstimateSize_RplId());
@@ -2059,7 +2059,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
+	protected void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
 	{
 		// Telemetry: 2 RplIds + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2;
@@ -2100,7 +2100,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
+	protected void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
 		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		IEntity polyzone;
@@ -2197,7 +2197,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
+	protected void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
 	{
 		array<int> playerIds = {};
 		PlayerManager pm = GetGame().GetPlayerManager();
@@ -2242,7 +2242,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
+	protected void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
 	{
 		PlayerManager pm = GetGame().GetPlayerManager();
 		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
@@ -2295,7 +2295,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
+	protected void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
 	{
 		int bytes = m_TelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_RequestGlobalMarkerRefresh", bytes);
@@ -2339,7 +2339,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
+	protected void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
 	{
 		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
 		

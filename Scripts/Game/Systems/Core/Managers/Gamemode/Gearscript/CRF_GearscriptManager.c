@@ -103,7 +103,7 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
+	protected void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
 	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
 	{
 		// If entity was deleted or snapped up by the slotting manager

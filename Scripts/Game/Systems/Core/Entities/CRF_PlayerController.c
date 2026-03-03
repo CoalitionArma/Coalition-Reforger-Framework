@@ -4,6 +4,7 @@ class CRF_PlayerControllerClass : SCR_PlayerControllerClass
 
 class CRF_PlayerController : SCR_PlayerController
 {	
+	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 ENTITY UPDATES
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -17,9 +18,10 @@ class CRF_PlayerController : SCR_PlayerController
 			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
 			if (charController.IsDead())
 			{
-				
-			}
-				from.GetTransform(m_vPlayersLastDeath);
+				vector mat[4];
+				from.GetTransform(mat);
+				CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
+			};
 		}
 		
 		if (!Replication.IsServer())
