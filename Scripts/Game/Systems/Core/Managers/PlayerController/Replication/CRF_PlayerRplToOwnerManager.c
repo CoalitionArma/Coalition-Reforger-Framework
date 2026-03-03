@@ -2,6 +2,11 @@ class CRF_PlayerRplToOwnerManagerClass : ScriptComponentClass {}
 
 class CRF_PlayerRplToOwnerManager : ScriptComponent
 {	
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 LOCAL REPLICATION ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	void InitializeRadioFromServer()
 	{
@@ -20,21 +25,29 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		Rpc(RpcDo_TeleportLocalPlayer, location);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	void SharerMarkerGlobal(int markerUID)
 	{
 		Rpc(RpcDo_SharerMarkerGlobal, markerUID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ShareMarker(array<int> markerUIDs)
 	{
 		Rpc(RpcDo_ShareMarker, markerUIDs);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RefreshGlobalMarkers(array<int> markers)
 	{
 		Rpc(RpcDo_RefreshGlobalMarkers, markers);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 REPLICATION METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_InitializeRadioFromServer()
 	{
@@ -44,18 +57,21 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, pc.GetLocalControlledEntity());
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_ForwardDeployRequestRejected()
 	{
 		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_TeleportLocalPlayer(vector location)
 	{
 		SCR_Global.TeleportPlayer(SCR_PlayerController.GetLocalPlayerId(), location);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_SharerMarkerGlobal(int markerUID)
 	{
@@ -78,6 +94,7 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 			mapMarkersMan.UpdateAllMarkerVisibilities();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
     protected void RpcDo_ShareMarker(array<int> markerUIDs)
     {	
@@ -100,6 +117,7 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 			mapMarkersMan.UpdateAllMarkerVisibilities();
     }
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_RefreshGlobalMarkers(array<int> markers)
 	{
@@ -114,6 +132,10 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		
 		mapMarkerManager.RefreshGlobalMarkers(markers);
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_PlayerRplToOwnerManager m_sInstance;
