@@ -187,4 +187,78 @@ class CRF_ClothingHelper
 
 		return clothingIDs;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Returns true if the item's prefab is listed as a clothing piece in the
+	 *        faction gearscript assigned to the local player's faction and role.
+	 *
+	 * Checks both m_DefaultClothing (faction-wide) and m_RolesToSetCustomSettings
+	 * (role-specific overrides) so custom role uniforms are also covered.
+	 *
+	 * @param item      The item the player is trying to remove.
+	 * @return True if removal should be blocked.
+	 */
+	static bool IsGearscriptClothingPiece(IEntity item)
+	{
+		if (!item)
+			return false;
+
+		// Resolve the gearscript manager and the local player's faction.
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
+			return false;
+
+		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
+		foreach (string factionKey : factionKeys)
+		{
+			// Load the gearscript config for this faction.
+			ResourceName gearScriptResource = gamemode.GetGearScriptResource(factionKey);
+			if (gearScriptResource.IsEmpty())
+				return false;
+	
+			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
+				BaseContainerTools.CreateInstanceFromContainer(
+					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
+			if (!gearConfig)
+				return false;
+	
+			ResourceName itemPrefab = item.GetPrefabData().GetPrefabName();
+	
+			// --- Check default (faction-wide) clothing ---
+			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
+			{
+				if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+					return true;
+			}
+	
+			// --- Check custom role clothing ---
+			// Determine the local player's role directly from their slot data.
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			if (!slottingManager)
+				return false;
+	
+			CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(localPlayerId);
+			if (!slotData)
+				return false;
+	
+			CRF_EGearRole playerRole = slotData.GetSlotRole();
+	
+			foreach (CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
+			{
+				if (customGear.m_Role != playerRole)
+					continue;
+	
+				foreach (CRF_Clothing clothing : customGear.m_Clothing)
+				{
+					if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+						return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
