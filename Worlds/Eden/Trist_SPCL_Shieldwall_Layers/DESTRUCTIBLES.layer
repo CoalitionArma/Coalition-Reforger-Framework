@@ -1,0 +1,1939 @@
+$grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden/WoodenWall_01/WoodenWall_01_weathered_4m.et" {
+ {
+  components {
+   Persistence "{68C612F02719146B}" {
+   }
+   RplComponent "{68C612F0EA156982}" {
+   }
+  }
+  coords 9792.201 0.309 5252.154
+  angles 0 69.584 0.862
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   Persistence "{68C612F011C15D42}" {
+   }
+   RplComponent "{68C612F0E7C92718}" {
+   }
+  }
+  coords 9790.372 0.488 5229.157
+  angles 0 137.694 0
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6C7753F1349A54FA}Assets/Structures/Walls/Wooden/WoodenWall_02_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AB29A19E7FC813D}" {
+    }
+    SCR_ParticleSpawnable "{5AB29A19E52CF9CB}" {
+    }
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   Persistence "{68C612F0121CE119}" {
+   }
+   RplComponent "{68C612F0DB4C3738}" {
+   }
+  }
+  coords 9794.015 0.258 5236.148
+  angles 0 112.627 0
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6C7753F1349A54FA}Assets/Structures/Walls/Wooden/WoodenWall_02_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AB29A19E7FC813D}" {
+    }
+    SCR_ParticleSpawnable "{5AB29A19E52CF9CB}" {
+    }
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0DC7ADE4A}" {
+   }
+  }
+  coords 9792.488 0.378 5232.487
+  angles 0 122.628 0
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6C7753F1349A54FA}Assets/Structures/Walls/Wooden/WoodenWall_02_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AB29A19E7FC813D}" {
+    }
+    SCR_ParticleSpawnable "{5AB29A19E52CF9CB}" {
+    }
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0DE9664C9}" {
+   }
+  }
+  coords 9793.62 0.28 5248.431
+  angles -0.169 80.918 0.845
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6C7753F1349A54FA}Assets/Structures/Walls/Wooden/WoodenWall_02_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AB29A19E7FC813D}" {
+    }
+    SCR_ParticleSpawnable "{5AB29A19E52CF9CB}" {
+    }
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0D33E3D63}" {
+   }
+  }
+  coords 9794.304 0.217 5244.625
+  angles -0.271 87.896 0.818
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6C7753F1349A54FA}Assets/Structures/Walls/Wooden/WoodenWall_02_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AB29A19E7FC813D}" {
+    }
+    SCR_ParticleSpawnable "{5AB29A19E52CF9CB}" {
+    }
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0D5ECC25A}" {
+   }
+  }
+  coords 9592.375 0.201 5204.976
+  angles -0.4 97.285 0.763
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0D6066373}" {
+   }
+  }
+  coords 9592.755 0.255 5208.987
+  angles -0.372 95.183 0.777
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0C8F5DD5B}" {
+   }
+  }
+  coords 9592.589 0.312 5212.937
+  angles -0.268 87.685 0.819
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0CD2ECFC0}" {
+   }
+  }
+  coords 9592.246 0.272 5221.026
+  angles -0.268 87.685 0.819
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0CE35F83D}" {
+   }
+  }
+  coords 9591.01 0.196 5224.549
+  angles 0.002 69.445 3.536
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0C09A285C}" {
+   }
+  }
+  coords 9589.604 0.254 5228.336
+  angles 0.002 69.445 5.12
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0C2CDCCDF}" {
+   }
+  }
+  coords 9454.097 16.677 5355.117
+  angles -0.417 98.465 0.754
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0C76E7648}" {
+   }
+  }
+  coords 9454.913 16.258 5360.564
+  angles -0.417 98.465 0.754
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03949ED70}" {
+   }
+  }
+  coords 9397.311 5.998 5370.874
+  angles -0.417 98.465 0.754
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03A127E4E}" {
+   }
+  }
+  coords 9396.77 5.862 5367.244
+  angles -0.417 98.465 0.754
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03A127E4E}" {
+   }
+  }
+  coords 9440.275 11.124 5357.435
+  angles -0.576 100.09 -0.66
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03A127E4E}" {
+   }
+  }
+  coords 9441.544 11.098 5364.567
+  angles -0.576 100.09 -0.66
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03A127E4E}" {
+   }
+  }
+  coords 9440.937 11.098 5361.155
+  angles -0.576 100.09 -0.66
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F03A127E4E}" {
+   }
+  }
+  coords 9439.605 11.122 5353.663
+  angles -0.387 100.099 -1.719
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   RplComponent "{68C612F0D5ECC25A}" {
+   }
+  }
+  coords 9591.85 0.11 5200.872
+  angles -0.4 97.285 0.763
+  placement none
+  MaxHealth 3500
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+}
