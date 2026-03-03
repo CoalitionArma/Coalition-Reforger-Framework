@@ -1,0 +1,291 @@
+GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{910AB3BC20ED9A93}Sounds/Weapons/Launchers/M72A3_LAW/Weapons_Launchers_M72A3_LAW_Shot.acp" "{B359BCB5C00F9FFC}Sounds/Weapons/Launchers/RPG7/Weapons_Launchers_RPG7_Handling.acp" "{BE75864A922B37C0}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Launcher.acp" "{98E0914D023CFBCC}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Launcher.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{06D3A8F7F0A920C2}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Launcher.acp" "{C45C3238BFA3D3A9}Sounds/Weapons/Launchers/FIM92_Stinger/Weapons_Launchers_FIM92_Stinger_Lock.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{B7D433C2313590DF}Assets/Weapons/Launchers/FGM148_Javelin/Javelin_Launcher.xob"
+  }
+  RigidBody "{68C57A5B2C8055D8}" {
+   SimState None
+   ModelGeometry 1
+  }
+  SCR_MeleeWeaponProperties "{68C57A5B2C8055D6}" {
+   m_fDamage 45
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB047B845168}" {
+     Name "#WCS-Weapon_FGM148_Name"
+     Description "#WCS-Weapon_FGM148_Description"
+     m_bShowWeaponName 1
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{68C57A5B2C8055CB}" {
+     Weight 22.3
+     SizeSetupStrategy Manual
+     ItemDimensions 35 35 35
+     ItemVolume 3000000
+     RestingAdditiveRotationLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960DAA53DDFC}" {
+     IkSettings {
+      ItemIKSettings "{5284960DA9B88634}" {
+      }
+      ItemIKSettings "{5284960DA9EA45EA}" {
+       IkSettingsProne 0x7 0
+      }
+      ItemIKSettings "{5284960DA87282B4}" {
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
+      }
+      ItemIKSettings "{5526E345D0462B03}" {
+       MovementSpeedRange 0 5
+       IkSettingsStand 0x4 0
+       IkSettingsCrouch 0x4 0
+       IkSettingsProne 0x4 0
+      }
+     }
+     AnimationInstance "{733AB64B4C011C47}Anims/workspaces/player/player_main_Javelin.asi"
+     AnimationIKPose "{263B16EBBC33A5B4}Assets/Weapons/Launchers/FGM148_Javelin/anim/p_javelin_ik.anm"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68C57A5B2C8055C0}" {
+      CameraPreset Right
+      CameraDistanceToItem 1.8
+      FOV 22
+      AnimationInstance "{C6CE144E13008635}anims/workspaces/player/player_inventory_launcher.asi"
+     }
+    }
+   }
+  }
+  SCR_WeaponBlastComponent "{624C97444AC1B357}" {
+   m_aBlastEffects {
+    SCR_WeaponBlastEffect "{68C57A5B2C8055C3}" {
+     m_eDamageType COLLISION
+     m_DamageEffect SCR_ExplosionDamageEffect "{68C57A5B2C8055C4}" {
+     }
+     m_fDamageValue 200
+     m_aDistanceDamageFalloff {
+      0 1 0.151 0.942 0.394 0.32 1 0
+     }
+     m_aAngleDamageFalloff {
+      0 0 0.436 0.391 0.699 0.958 1 1
+     }
+    }
+    SCR_WeaponBlastEffect "{68C57A5B2C8055C5}" {
+     m_eDamageType EXPLOSIVE
+     m_DamageEffect SCR_BackBlastDamageEffect "{68C57A5B2C8055C6}" {
+      m_fResilienceDamageValueMultiplier 5
+     }
+     m_fDamageValue 3
+     m_aDistanceDamageFalloff {
+      0 1 0.305 0.958 0.569 0.255 1 0
+     }
+     m_aAngleDamageFalloff {
+      0 0 0.335 0.673 0.526 0.926 1 1
+     }
+    }
+   }
+   m_fBlastConeAngle 15
+   m_BlastOrigin PointInfo "{68C57A5B2C8055C7}" {
+    Offset -0.0273 -0.1508 -0.5418
+    Angles -20 180 0
+   }
+  }
+  WCS_Armament_HandheldWeaponStationComponent "{68C57A5B2C8055F8}" {
+   components {
+    WCS_Armament_InfraredMissileHandheldWeaponStationModuleComponent "{68C57A5B2C8055F9}" {
+     m_fMaxLockDistance 9223372036854775808.000
+     m_iEmitterCategory 0
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{B502E4DC8A9E835E}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      PivotID "eye"
+      Offset 0 0 0.0725
+      ChildPivotID "snap_weapon"
+      Prefab "{C2C918A9A10DA20B}Prefabs/Weapons/Launchers/FGM148_Javelin/Optic_Javelin/Optic_Javelin_Day.et"
+     }
+     AttachmentType AttachmentOptics "{68C57A5B2C8055FD}" {
+     }
+    }
+    SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
+     components {
+      MuzzleEffectComponent "{50F65D04EE343E7E}" {
+       ParticleEffect "{CB259340B7C9C3E2}Particles/Weapon/Muzzle_M72LAW_01.ptc"
+       EffectPosition EntitySlotInfo "{50F65D04CCCEB691}" {
+        PivotID "missile"
+        Offset 0 0.4445 0
+        Angles 90 0.2984 -180
+       }
+      }
+      MuzzleEffectComponent "{68C57A5B2C8055F1}" {
+       ParticleEffect "{1E7A6380983F610C}Particles/Weapon/Muzzle_FGM148_Javelin_Back.ptc"
+       EffectPosition EntitySlotInfo "{52C8A8C1586FF1B3}" {
+        PivotID "missile"
+        Offset 0 -0.731 0
+        Angles 90 0.4476 179.1048
+       }
+      }
+     }
+     MuzzleType RPGMuzzle
+     MuzzleEndPositions {
+      PointInfo "{50F65D0428599966}" {
+       PivotID "missile"
+       Offset 0 0.4427 0
+       Angles 90 -178.38902 -89.1455
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{50F65D0454F95B2D}" {
+       PivotID "missile"
+       Offset 0 0.0286 0
+       Angles 90 -178.38902 -89.1455
+      }
+     }
+     FireModes {
+      BaseFireMode "{68C57A5B2C8055E7}" {
+       MaxBurst 1
+       MaxSalvo 1
+       UIName "Single"
+      }
+     }
+     DispersionRange 85
+     WeaponAimModifiers {
+      SwayWeaponAimModifier "{521AE9A3284CB1B0}" {
+       "ADS Multiplier" 0
+      }
+      RecoilWeaponAimModifier "{68C57A5B2C80559A}" {
+       LinearData RecoilData "{68C57A5B2C80559B}" {
+        "Curve X" {
+         0 0.5 0.058 0.738 0.324 0.452 0.659 0.498 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.06 0.748 0.317 0.452 0.631 0.495 1 0.5
+        }
+        "Curve Z" {
+         0 0.498 0.064 0.8 0.324 0.348 0.646 0.498 1 0.5
+        }
+        "Curve Time Scale" 1.45
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -0.005 -0.01 -0.04
+        "Curve Maxs" 0.005 0.015 -0.02
+       }
+       AngularData RecoilData "{68C57A5B2C80559D}" {
+        "Curve X" {
+         0 0.5 0.121 0.597 0.651 0.502 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.063 0.849 0.32 0.231 0.692 0.495 1 0.5
+        }
+        "Curve Z" {
+         0 0.5 0.058 0.363 0.319 0.578 0.654 0.498 1 0.5
+        }
+        "Curve Time Scale" 1.45
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -0.01 -1.5 -8
+        "Curve Maxs" 0.01 -0.5 -2
+       }
+       TurnOffsetData RecoilData "{68C57A5B2C80559E}" {
+        "Curve X" {
+         0.73 0.765 0.899 0.441
+        }
+        "Curve Y" {
+         0.501 0.725 0.878 0.343
+        }
+        "Curve Z" {
+         0.397 0.708 0.859 0.262
+        }
+        "Curve Time Scale" 5.925
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" 1 7.5 270
+        "Curve Maxs" 1 7.5 275
+        "Base Recoil Scale" 7.577
+        "Move Recoil Scale" 0.494
+       }
+      }
+      ZeroingWeaponAimModifier "{68C57A5B2C80559F}" {
+      }
+     }
+     UIInfo MuzzleUIInfo "{50F65D05B8374621}" {
+      m_MagIndicator SCR_MagazineIndicatorConfiguration "{5660B15A4287B00B}" : "{650F378E6751CC17}Configs/WeaponInfo/MagazineIndicators/rocket_m72a3.conf" {
+      }
+     }
+     Disposable 1
+     NeedsSetup 0
+     AllowWeaponDeployment 0
+     ProjectilePosition InventoryStorageSlot "{51070C3B47428343}" {
+      PivotID "missile"
+      Offset 0 0 0
+      Angles 90 0.2984 -180
+      ChildPivotID ""
+      InspectionWidgetOffset 0 0 0
+     }
+     AmmoTemplate "{550AEC277DBCCB33}Prefabs/Weapons/Ammo/Ammo_Missile_FGM-148.et"
+     ProjectileVisible 1
+     m_bCanBeReloaded 0
+    }
+    ScriptedSightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      PivotID "eye"
+     }
+     SightsRanges {
+      SightRangeInfo "{68C57A5B2C805596}" {
+       Range 0 500
+      }
+     }
+     SightsFOVInfo ScriptedSightsFOVInfo "{68C57A5B2C805597}" {
+     }
+     SightsPointFront PointInfo "{68C57A5B2C805589}" {
+      PivotID "eye"
+      Offset 0 0 0.3239
+     }
+     SightsPointRear PointInfo "{68C57A5B2C80558A}" {
+      PivotID "eye"
+      Offset 0 0 0.0684
+     }
+     SightsSwitchSkip 1
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{74E05960794E4D0D}Assets/Weapons/Launchers/workspaces/JAVELIN.agr"
+     AnimInstance "{DE77375D43636441}Assets/Weapons/Launchers/workspaces/JAVELIN_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{68C57A5B2C80558E}" {
+      AnimGraph "{74E05960794E4D0D}Assets/Weapons/Launchers/workspaces/JAVELIN.agr"
+      AnimInstance "{2529A66CDB6200AD}Assets/Weapons/Launchers/workspaces/JAVELIN_player.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+   obstructionTestAddedLength 0.15
+   SoundInt 1050300
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#WCS-Weapon_FIM92_Name"
+    Description "#WCS-Weapon_FIM92_Description"
+    Icon ""
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      Offset 0 0.0566 0.0544
+     }
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{68C57A5B2C8055BE}" {
+      PivotID "w_safety"
+     }
+     Radius 0.05
+    }
+   }
+  }
+ }
+}

@@ -55,6 +55,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "The Enemy can come from the South to Northwest of Gorqan, prepare you defnese accordingly."\
    ""\
    "To use the javelins treat them like stingers, aim down sights, put target on crosshair, hold left control (default keybind), wait for tone, then fire."\
+   ""\
+   "The Javelins also have a known bug where they won't lock on to anythings just swap to your primary weapon and swap back do this until you see it say Top Attack near your Javelins ammo count."\
    ""
    m_aFactionKeys +{
    }
