@@ -5,11 +5,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// Time it takes for players to Init
 	static const int PLAYER_INITILIZATION_TIME = 250;
 	
-	// Internal flag to prevent redundant replication updates
-	protected bool m_bSuppressReplication = false;
-	
-	static ref CRF_GearScriptRolesConfig m_RolesConfig;
-	
 	protected CRF_SlottingManager m_SlottingManager;
 	
 	//------------------------------------------------------------------------------------------------
@@ -17,38 +12,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{	
 		super.OnPostInit(owner);
 		// Initialize all required manager references
-		InitializeManagers();
-		LoadConfigurations();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load necessary configurations for gearscript
-	 */
-	protected void LoadConfigurations()
-	{
-		ResourceName rolesConfigPath;
-		if (!CVON_VONGameModeComponent.GetInstance())
-			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
-		else
-			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
-		
-		m_RolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_GearScriptRolesConfig RolesConfig()
-	{
-		return m_RolesConfig;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	* Initialize all manager references needed for this component
-	*/
-	protected void InitializeManagers()
-	{
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 	}
 	
