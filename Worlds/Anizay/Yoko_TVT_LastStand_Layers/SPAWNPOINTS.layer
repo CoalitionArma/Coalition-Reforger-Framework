@@ -2,5 +2,6 @@ GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUF
  coords 6392.267 216.844 2300.95
 }
 GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
- coords 5128.239 207.219 1808.422
+ coords 4079.285 217.029 1120.241
+ angles 0 101.05 0
 }
