@@ -24,7 +24,7 @@ $grp PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsMissionMaking/PolyZone/Forw
   }
  }
  {
-  coords 6657.095 173.503 997.281
+  coords 6329.313 122.568 329.081
   Points {
    ShapePoint "{68C57A566E45711F}" {
     Position 14.102 0 -81.102
@@ -84,13 +84,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position 665.124 -80.42 312.424
   }
   ShapePoint "{68AEF9C4501B7D1F}" {
-   Position 899.66 -15.168 -489.232
+   Position 772.407 -15.168 -458.467
   }
   ShapePoint "{68AEF9C45D53A11D}" {
-   Position 498.285 -119.899 -1633.425
+   Position 604.503 -119.899 -1710.075
   }
   ShapePoint "{68AEF9C45E3CC85B}" {
-   Position -166.384 -165.361 -1791.928
+   Position -50.398 -165.361 -2429.418
   }
  }
 }
