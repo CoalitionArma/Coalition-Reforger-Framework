@@ -1,3 +1,12 @@
+modded class SCR_BaseGameMode
+{
+	void SetGameState(SCR_EGameModeState state)
+	{
+		m_eGameState = state;
+		Replication.BumpMe();
+	}
+}
+
 //------------------------------------------------------------------------------------
 // CRF_GamemodeClass: Base class definition for the Coalition Reforger Framework Gamemode
 //------------------------------------------------------------------------------------
@@ -12,14 +21,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//===================================================================================
 	// ATTRIBUTES AND PROPERTIES
 	//===================================================================================
-	
-	// Game State Properties
-	//------------------------------------------------------------------------------------
-	[RplProp(onRplName: "OnGamemodeStateChanged")]
-	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
-
-	[RplProp()]
-	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
 	// Attributes Set By Plugins
 	//------------------------------------------------------------------------------------
@@ -121,9 +122,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 	
+	// Game State Properties
+	//------------------------------------------------------------------------------------
+	[RplProp(onRplName: "OnGamemodeStateChanged")]
+	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
+
+	[RplProp()]
+	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
+	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
-	protected ref ScriptInvoker m_OnStateChanged;
+	protected ref ScriptInvoker m_OnStateChanged = new ScriptInvoker();
 	protected static ref SCR_PlayerData m_PlayerData;
 	
 	protected CRF_RespawnManager m_RespawnManager;
@@ -134,8 +143,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
 	protected CRF_GarbageManager m_GarbageManager
-	
-	protected static CRF_Gamemode m_sInstance;
 	
 	[RplProp()]
 	protected vector m_vGenericSpawn;
@@ -149,28 +156,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
-
-	//===================================================================================
-	// STATIC METHODS
-	//===================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Returns the singleton instance of the CRF_Gamemode
-	 * @return CRF_Gamemode instance or null if not available
-	 */
-	void CRF_Gamemode(IEntitySource src, IEntity parent)
-	{
-		m_sInstance = this;
-		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
-		m_OnStateChanged = new ScriptInvoker();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_Gamemode GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	vector GetGenericSpawn()
@@ -597,19 +582,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GamemodeManager.InitilizePlayer(playerId, location);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void UpdateGearscriptResource(string factionKey, string resource)
-	{
-		switch (factionKey)
-		{
-			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
-			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
-			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
-			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
-		}
-		Replication.BumpMe();
-	}
-	
 	//===================================================================================
 	// STAGGERED PLAYER INITIALIZATION SYSTEM
 	//===================================================================================
@@ -712,20 +684,30 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void UpdateGearscriptResource(string factionKey, string resource)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
+			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
+			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
+			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
+		}
+		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	bool DoesFactionShareMarker(string factionKey)
 	{
 		switch (factionKey)
 		{
-			case "BLUFOR": 
-				return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "OPFOR": 
-				return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "INDFOR": 
-				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "CIV": 
-				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-    	 }
-    	return true;
+			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "CIV": 		return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+    		 }
+		
+    		return true;
  	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -733,19 +715,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		switch(factionKey)
 		{
-			case "BLUFOR":
-				return m_BLUFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "OPFOR":
-				return m_OPFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "INDFOR":
-				return m_INDFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "CIV":
-				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
-				break;
+			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableBFT;
+			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableBFT;
+			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableBFT;
+			case "CIV":		return m_CIVILIANGearScriptSettings.m_bEnableBFT;
 		}
+		
    		return true;
 	}
 	
@@ -793,14 +768,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		return m_CIVILIANGearScriptSettings;
 	}
-}
-
-modded class SCR_BaseGameMode
-{
-	void SetGameState(SCR_EGameModeState state)
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_Gamemode m_sInstance;
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
 	{
-		m_eGameState = state;
-		Replication.BumpMe();
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_Gamemode GetInstance()
+	{
+		return m_sInstance;
 	}
 }
-

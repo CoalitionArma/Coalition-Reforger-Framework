@@ -19,7 +19,6 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	int m_iCIVTickets;
 	
-	
 	//Respawn variables
 	[RplProp()] bool m_bCurrentRespawnEnabled;
 	[RplProp()] bool m_bCurrentWaveRespawn;
