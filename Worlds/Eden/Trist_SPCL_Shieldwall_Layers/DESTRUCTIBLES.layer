@@ -9,7 +9,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9792.201 0.309 5252.154
   angles 0 69.584 0.862
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -102,7 +102,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9790.372 0.488 5229.157
   angles 0 137.694 0
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -199,7 +199,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9794.015 0.258 5236.148
   angles 0 112.627 0
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -294,7 +294,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9792.488 0.378 5232.487
   angles 0 122.628 0
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -389,7 +389,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9793.62 0.28 5248.431
   angles -0.169 80.918 0.845
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -484,7 +484,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9794.304 0.217 5244.625
   angles -0.271 87.896 0.818
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -579,7 +579,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9592.375 0.201 5204.976
   angles -0.4 97.285 0.763
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -670,7 +670,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9592.755 0.255 5208.987
   angles -0.372 95.183 0.777
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -761,7 +761,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9592.589 0.312 5212.937
   angles -0.268 87.685 0.819
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -852,7 +852,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9592.246 0.272 5221.026
   angles -0.268 87.685 0.819
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -943,7 +943,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9591.01 0.196 5224.549
   angles 0.002 69.445 3.536
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1034,7 +1034,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9589.604 0.254 5228.336
   angles 0.002 69.445 5.12
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1125,7 +1125,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9454.097 16.677 5355.117
   angles -0.417 98.465 0.754
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1216,7 +1216,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9454.913 16.258 5360.564
   angles -0.417 98.465 0.754
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1307,7 +1307,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9397.311 5.998 5370.874
   angles -0.417 98.465 0.754
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1398,7 +1398,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9396.77 5.862 5367.244
   angles -0.417 98.465 0.754
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1489,7 +1489,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9440.275 11.124 5357.435
   angles -0.576 100.09 -0.66
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1580,7 +1580,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9441.544 11.098 5364.567
   angles -0.576 100.09 -0.66
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1671,7 +1671,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9440.937 11.098 5361.155
   angles -0.576 100.09 -0.66
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1762,7 +1762,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9439.605 11.122 5353.663
   angles -0.387 100.099 -1.719
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
@@ -1853,7 +1853,7 @@ $grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden
   coords 9591.85 0.11 5200.872
   angles -0.4 97.285 0.763
   placement none
-  MaxHealth 3500
+  MaxHealth 5000
   "Melee multiplier" 5
   DamagePhases {
    SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {

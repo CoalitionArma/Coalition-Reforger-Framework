@@ -1,6 +1,8 @@
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{68C5252932560F2B}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
    m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
    m_iMCOMTimer 15
    m_iMCOMsPerZone 1
@@ -111,7 +113,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68C6E71CEC3BCE07}" {
+  CRF_SlottingGroup "{68C6E7176F6A8CAA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -129,20 +131,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
     RIFLEMAN
     RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C6E71CEC3BCC0E}" {
+  CRF_SlottingGroup "{68C6E7176F6A82F6}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,21 +163,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
     RIFLEMAN
     RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
    }
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68C6E71CEC3BCD8B}" {
+  CRF_SlottingGroup "{68C6E7176F6A8043}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,20 +195,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
     RIFLEMAN
     RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C6E71CEC3BC2FD}" {
+  CRF_SlottingGroup "{68C6E7176F6A8150}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -225,16 +227,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
     RIFLEMAN
     RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
    }
   }
  }
@@ -311,10 +313,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -461.252 2.854 -82.694
   }
   ShapePoint "{68C612F4777CE75B}" {
-   Position -428.445 -21.969 176.975
+   Position -431.15 -20.499 141.478
   }
   ShapePoint "{68C612F4762F8F67}" {
-   Position 648.949 -39.941 72.679
+   Position 646.244 -37.627 37.182
   }
   ShapePoint "{68C612F46941ABC7}" {
    Position 626.729 -43.245 -218.909
