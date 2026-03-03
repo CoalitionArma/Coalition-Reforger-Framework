@@ -11,8 +11,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Heavy Wet Fog"
-     m_iStartingHour 6
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 5
+     m_iStartingMinutes 45
     }
    }
    m_bRandomWeatherChanges 1
@@ -32,25 +33,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "US Marines are surround in Gorqan, they are making a last stand hold against MEC. MEC is using the \"sandstorm\" that is currently active to provide coverage for their assault."\
+   m_sTextData "US Marines are surrounded in Gorqan, they are making a last stand hold against MEC."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: 1x Weapons Team and 1x STYKER MGS"\
+   "BLUFOR Assets: 1x MMG Team, 1x HAT Team (Javelin) and 1x Sniper Team"\
    ""\
-   "OPFOR Composition: Motorized Infatry Platoon"\
-   "OPFOR Assets: 2x BTR70"\
+   "OPFOR Composition: Motorized Infatry Company"\
+   "OPFOR Assets: 2x BMP-3"\
    ""\
-   "Time: 6:00 am"\
+   "Time: 5:45 am"\
    ""\
-   "Weather: Heavy Wet Fog"
+   "Weather: Cloudy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Defend both bomsites."\
+   m_sTextData "Defend both bombsites."\
    ""\
+   "The Enemy can come from the South to Northwest of Gorqan, prepare you defnese accordingly."\
+   ""\
+   "To use the javelins treat them like stingers, aim down sights, put target on crosshair, hold left control (default keybind), wait for tone, then fire."\
    ""
    m_aFactionKeys +{
    }
@@ -65,7 +69,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
-   m_sTextData "Destroy both Bomsites."
+   m_sTextData "Destroy both Bombsites."\
+   ""\
+   "You have been given multpile forward deploy zones to give your team different angles of attack."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -78,12 +84,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 3
+ m_iFactionOneRatio 1
  m_iFactionTwoRatio 4
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{68C5174E043F340F}" {
+  CRF_SlottingGroup "{68C57A5E77B90C31}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -91,7 +97,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68C5174E043F3526}" {
+  CRF_SlottingGroup "{68C57A5E77B90DD9}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -106,7 +112,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F3644}" {
+  CRF_SlottingGroup "{68C57A5E77B90E71}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -121,33 +127,49 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F36DD}" {
-   m_sCallsign "Weapons Team"
+  CRF_SlottingGroup "{68C57A5E77B90EF1}" {
+   m_sCallsign "MMG Team"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
     MEDIUM_MACHINEGUN
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68C5174E043F36B6}" {
+  CRF_SlottingGroup "{68C57A5E77B90F78}" {
    m_sCallsign "HAT"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     HEAVY_ANTITANK
-    ASSISTANT_HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    HEAVY_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{68C57A5E77B90FDF}" {
+   m_sCallsign "Sniper Team"
+   m_FlagType SNIPER
+   m_aSlots {
+    SNIPER
+    SPOTTER
    }
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{68C5174E043F3782}" {
+  CRF_SlottingGroup "{68C57A5E77B90145}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68C57A5E77B901D4}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -155,7 +177,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68C5174E043F086E}" {
+  CRF_SlottingGroup "{68C57A5E77B901A8}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -170,7 +192,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F08C3}" {
+  CRF_SlottingGroup "{68C57A5E77B90207}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -185,7 +207,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F095B}" {
+  CRF_SlottingGroup "{68C57A5E77B9029B}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -200,8 +222,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F0930}" {
-   m_sCallsign "1-4"
+  CRF_SlottingGroup "{68C57A5E77B9036A}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68C57A5E77B903D4}" {
+   m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -215,20 +245,52 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F0994}" {
-   m_sCallsign "BTR 1"
-   m_FlagType ARMORED
+  CRF_SlottingGroup "{68C57A5E77B903A9}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
    m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C5174E043F0A70}" {
-   m_sCallsign "BTR 2"
+  CRF_SlottingGroup "{68C57A5E77B9040D}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68C57A5E77B90499}" {
+   m_sCallsign "Crew 1"
    m_FlagType ARMORED
    m_aSlots {
     VEHICLE_LEAD
     VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+  }
+  CRF_SlottingGroup "{68C57A5E77B90578}" {
+   m_sCallsign "Crew 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
    }
   }
  }
