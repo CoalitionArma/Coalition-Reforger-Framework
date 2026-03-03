@@ -99,7 +99,7 @@ GenericEntity : "{9064206CBDE9CD95}Prefabs/Weapons/Core/Launcher_Base.et" {
   WCS_Armament_HandheldWeaponStationComponent "{68C57A5B2C8055F8}" {
    components {
     WCS_Armament_InfraredMissileHandheldWeaponStationModuleComponent "{68C57A5B2C8055F9}" {
-     m_fMaxLockDistance 9223372036854775808.000
+     m_fMaxLockDistance 500
      m_iEmitterCategory 0
     }
    }
