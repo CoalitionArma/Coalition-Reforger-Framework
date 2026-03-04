@@ -5,6 +5,7 @@ modded class SCR_VONController
 	CRF_MenuManager m_CRFMenuManager;
 	CRF_RespawnManager m_RespawnManager;
 	CRF_SlottingManager m_SlottingManager;
+	CRF_Gamemode m_Gamemode;
 	
 	//Stores the local player controller for frame checks, saves frame time having a pointer to it.
 	SCR_PlayerController m_PlayerController;
@@ -15,6 +16,7 @@ modded class SCR_VONController
 		m_CRFMenuManager = CRF_MenuManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		
 		if (!Replication.IsServer())
 			m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
@@ -176,10 +178,16 @@ modded class SCR_VONController
 			if (!m_RespawnManager)
 				m_RespawnManager = CRF_RespawnManager.GetInstance();
 			
+			if (!m_Gamemode)
+				m_Gamemode = CRF_Gamemode.GetInstance();
+			
+			if (!m_Gamemode)
+				return;
+			
 			//Mutes spectator audio coming in if its from another player not in our faction
 			if (m_RespawnManager)
 			{
-				if (m_RespawnManager.m_bCurrentRespawnEnabled)
+				if (m_RespawnManager.m_bCurrentRespawnEnabled && m_Gamemode.m_bSeperateSpectatorsByFaction)
 				{
 					Faction otherFaction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 					Faction localFaction = m_SlottingManager.GetPlayerSlotFaction(m_PlayerController.GetPlayerId());
