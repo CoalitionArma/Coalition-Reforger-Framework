@@ -25,7 +25,7 @@ class CRF_SightArsenalAction: ScriptedUserAction
 			m_GearScriptContainer = m_Gamemode.GetGearScriptSettings(m_PlayerFaction.GetFactionKey());
 		}
 		
-		if (!m_GearScriptContainer.m_bEnableSightArsenal ||!m_SafeStartManager.GetSafestartStatus())
+		if ((!m_GearScriptContainer.m_bEnableSightArsenal ||!m_SafeStartManager.GetSafestartStatus()) && CRF_PlayerController.IsGracePeriodOver())
 			return false;
 		else	
 			return true;

@@ -19,7 +19,7 @@ modded class CVON_VONGameModeComponent
 			m_sListeningPlayers = new set<int>;
 		
 		if (!input)
-			m_sListeningPlayers.Remove(playerId);
+			m_sListeningPlayers.RemoveItem(playerId);
 		else
 			m_sListeningPlayers.Insert(playerId);
 		
@@ -39,7 +39,7 @@ modded class CVON_VONGameModeComponent
 		if (isListening)
 			m_sListeningPlayers.Insert(playerId);
 		else
-			m_sListeningPlayers.Remove(playerId);
+			m_sListeningPlayers.RemoveItem(playerId);
 	}
 	
 	// Helper: Check if player is listening
