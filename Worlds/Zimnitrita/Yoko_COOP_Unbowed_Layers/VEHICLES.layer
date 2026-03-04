@@ -1,0 +1,16 @@
+GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "UH60"
+     m_sVehiclePrefab "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+     m_eCostType USES
+     m_iCost 10
+    }
+   }
+  }
+ }
+ coords 10486.299 20.389 4829.134
+ angles 0 0 0
+}

@@ -1,0 +1,26 @@
+$grp SCR_BaseTriggerEntity {
+ mcom_a_trigger {
+  coords 11234.647 10.719 7048.353
+  angles 0 -150.697 0
+ }
+ mcom_c_trigger {
+  coords 12240.009 32.003 8670.133
+  angles 0 -150.697 0
+ }
+ mcom_b_trigger {
+  coords 11278.336 21.439 6768.745
+  angles 0 -130.915 0
+ }
+ mcom_d_trigger {
+  coords 11862.921 6.909 8780.383
+  angles 0 -71.66 0
+ }
+ mcom_e_trigger {
+  coords 11740.771 53.909 9598.21
+  angles 0 -177.793 0
+ }
+ mcom_f_trigger {
+  coords 12438.274 51.813 9729.504
+  angles 0 41.649 0
+ }
+}
