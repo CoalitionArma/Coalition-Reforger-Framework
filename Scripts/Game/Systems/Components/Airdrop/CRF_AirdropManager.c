@@ -160,17 +160,17 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	}
 	
 	float m_fParachuteCheck = 0;
-	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		if (!m_aFlightObjects)
 		{
-			ClearEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
+			ClearEventMask(GetOwner(), EntityEvent.FRAME);
 			return;
 		}
 		
 		if (m_aFlightObjects.Count() == 0)
 		{
-			ClearEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
+			ClearEventMask(GetOwner(), EntityEvent.FRAME);
 			return;
 		}
 		
@@ -189,6 +189,15 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 				PlayerManager pm = GetGame().GetPlayerManager();
 				foreach (int i, IEntity player: flight.m_PlayersInPlane)
 				{
+					//Remove player if it's null
+					//How????
+					//Idk
+					if (!player)
+					{
+						flight.m_PlayersInPlane.Remove(i);
+						continue;
+					}
+					
 					int playerId = pm.GetPlayerIdFromControlledEntity(player);
 					if (playerId <= 0)
 						continue;
@@ -324,7 +333,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	void RegisterFlight(CRF_AirdropFlight flight)
 	{
 		m_aFlightObjects.Insert(flight);
-		SetEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
+		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
 }
 
