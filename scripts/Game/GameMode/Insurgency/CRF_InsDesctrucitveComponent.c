@@ -25,28 +25,31 @@ class CRF_InsDestructiveComponent: ScriptComponent
     {
         super.OnPostInit(owner);
 
-        // Only server should register objectives and listen for destruction
-        if (!GetGame().InPlayMode() || !Replication.IsServer())
-            return;
-
-        // Get the multi-phase destruction component
-        m_DestructionComponent = SCR_DestructionMultiPhaseComponent.Cast(owner.FindComponent(SCR_DestructionMultiPhaseComponent));
-        
-        if (!m_DestructionComponent)
-        {
-            Print("CRF_InsDestructiveComponent: No SCR_DestructionMultiPhaseComponent found on entity!", LogLevel.WARNING);
-            return;
-        }
-        
-        // Subscribe to the damage state changed event
-        m_DestructionComponent.GetOnDamageStateChanged().Insert(OnDamageStateChanged);
-
-        if(CRF_InsurgencyGamemodeManager.GetInstance())
-            CRF_InsurgencyGamemodeManager.GetInstance().RegisterCacheObjective(owner);
-            
-        // Set initial active state
-        SetCacheActive(m_bStartActive);
-		GetGame().GetCallqueue().CallLater(UpdateCacheMarker, 1000, true);
+	    if (!GetGame().InPlayMode())
+	        return;
+	
+	    // Server-only: register objective and subscribe to destruction
+	    if (Replication.IsServer())
+	    {
+	        m_DestructionComponent = SCR_DestructionMultiPhaseComponent.Cast(owner.FindComponent(SCR_DestructionMultiPhaseComponent));
+	        
+	        if (!m_DestructionComponent)
+	        {
+	            Print("CRF_InsDestructiveComponent: No SCR_DestructionMultiPhaseComponent found!", LogLevel.WARNING);
+	            return;
+	        }
+	        
+	        m_DestructionComponent.GetOnDamageStateChanged().Insert(OnDamageStateChanged);
+	
+	        if (CRF_InsurgencyGamemodeManager.GetInstance())
+	            CRF_InsurgencyGamemodeManager.GetInstance().RegisterCacheObjective(owner);
+	            
+	        SetCacheActive(m_bStartActive);
+	    }
+	
+	    // Client-only: start marker polling (not on dedicated server)
+	    if (!RplSession.Mode() == RplMode.Dedicated)
+	        GetGame().GetCallqueue().CallLater(UpdateCacheMarker, 1000, true);
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
