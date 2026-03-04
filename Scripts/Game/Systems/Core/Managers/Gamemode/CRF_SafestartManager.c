@@ -2,6 +2,11 @@ class CRF_SafestartManagerClass : ScriptComponentClass {}
 
 class CRF_SafestartManager : ScriptComponent
 {
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_bSafeStartEnabled = false;
 	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
@@ -47,8 +52,11 @@ class CRF_SafestartManager : ScriptComponent
 	protected bool m_bUpdateMissionEndTimer = false;
 	protected bool m_bCheckStartCountdown = false;
 
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITIALIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
+
 	//------------------------------------------------------------------------------------------------
-	// Init method
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -70,6 +78,10 @@ class CRF_SafestartManager : ScriptComponent
 			SetEventMask(GetGame().GetGameMode(), EntityEvent.FIXEDFRAME);
 		};
 	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GETTERS/MISC METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	bool GetSafestartStatus()
@@ -111,12 +123,39 @@ class CRF_SafestartManager : ScriptComponent
 	TStringArray GetWhosReady() {
 		return m_aFactionsStatusArray;
 	}
+
+	//------------------------------------------------------------------------------------------------
+	void DeleteTempGroupSpawnPoints()
+	{
+		array<IEntity> tempSpawns = CRF_RespawnManager.GetInstance().GetTempGroupSpawnPoints();
 	
+		foreach (IEntity tempSpawn : tempSpawns)
+			SCR_EntityHelper.DeleteEntityAndChildren(tempSpawn);
+		
+		CRF_RespawnManager.GetInstance().ClearTempGroupSpawnPoints();
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void AddSafestartZone(IEntity entity)
 	{
 		m_aSafestartZones.Insert(entity);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void DeleteAllSafestartZones()
+	{
+		foreach(IEntity zone : m_aSafestartZones)
+		{
+			if(zone)
+				SCR_EntityHelper.DeleteEntityAndChildren(zone);
+		}
+		
+		m_aSafestartZones.Clear()
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME HANDLER
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	float m_fUpdateBuffer = 0;
 	float m_fMediumUpdateBuffer = 0;
@@ -177,6 +216,10 @@ class CRF_SafestartManager : ScriptComponent
 		}
 		m_fLongUpdateBuffer += timeSlice;
 	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ONFRAME METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayedFactions()
@@ -261,103 +304,6 @@ class CRF_SafestartManager : ScriptComponent
 		Replication.BumpMe();
 	}
 
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void ToggleSideReady(FactionKey setReady, string playerName, bool adminForced) {
-		if (!GetSafestartStatus())
-			return;
-		
-		string message;
-
-		// Handle admin force ready/unready all factions
-		if (adminForced) {
-			bool newReadyState = !m_bAdminForcedReady;
-			m_bAdminForcedReady = newReadyState;
-
-			// Set all factions to the same ready state
-			m_bBluforReady = newReadyState;
-			m_bOpforReady = newReadyState;
-			m_bIndforReady = newReadyState;
-			m_bCivReady = newReadyState;
-
-			string actionText;
-			if (newReadyState) {
-				actionText = "Force Readied";
-			} else {
-				actionText = "Force Unreadied";
-			}
-
-			message = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
-
-			Replication.BumpMe();
-			m_RplBroadcastManager.PopUpNotification(3.25, message);
-			
-			UpdatePlayedFactions();
-			m_bCheckStartCountdown = true;
-			return;
-		}
-
-		// If admin forced ready is active, don't allow individual faction changes
-		if (m_bAdminForcedReady)
-			return;
-
-		// Toggle faction ready status
-		bool newStatus = false;
-		string messageKey = "";
-
-		// Update faction status and prepare message
-		switch (setReady) {
-			case "BLUFOR": {
-				m_bBluforReady = !m_bBluforReady;
-				newStatus = m_bBluforReady;
-				if (newStatus) {
-					messageKey = "[CRF] : BLUFOR READY";
-				} else {
-					messageKey = "[CRF] : BLUFOR NOT READY";
-				}
-				break;
-			}
-			case "OPFOR": {
-				m_bOpforReady = !m_bOpforReady;
-				newStatus = m_bOpforReady;
-				if (newStatus) {
-					messageKey = "[CRF] : OPFOR READY";
-				} else {
-					messageKey = "[CRF] : OPFOR NOT READY";
-				}
-				break;
-			}
-			case "INDFOR": {
-				m_bIndforReady = !m_bIndforReady;
-				newStatus = m_bIndforReady;
-				if (newStatus) {
-					messageKey = "[CRF] : INDFOR READY";
-				} else {
-					messageKey = "[CRF] : INDFOR NOT READY";
-				}
-				break;
-			}
-			case "CIV": {
-				m_bCivReady = !m_bCivReady;
-				newStatus = m_bCivReady;
-				if (newStatus) {
-					messageKey = "[CRF] : CIV READY";
-				} else {
-					messageKey = "[CRF] : CIV NOT READY";
-				}
-				break;
-			}
-		}
-
-		message = string.Format("%1 - %2", messageKey, playerName);
-		
-		m_RplBroadcastManager.PopUpNotification(3.25, message, "Any leader can toggle ready to cancel the countdown");
-		
-		UpdatePlayedFactions();
-		m_bCheckStartCountdown = true;
-	};
-
-	//Call from server
 	//------------------------------------------------------------------------------------------------
 	protected void CheckStartCountDown()
 	{
@@ -409,7 +355,6 @@ class CRF_SafestartManager : ScriptComponent
 		}
 	};
 	
-	//Call from server
 	//------------------------------------------------------------------------------------------------
 	protected void CheckCountdownMode()
 	{
@@ -567,7 +512,105 @@ class CRF_SafestartManager : ScriptComponent
 		return readyFactionsCount;
 	}
 
-	//Call from server
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 PRIMARY SAFESTART METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	void ToggleSideReady(FactionKey setReady, string playerName, bool adminForced) {
+		if (!GetSafestartStatus())
+			return;
+		
+		string message;
+
+		// Handle admin force ready/unready all factions
+		if (adminForced) {
+			bool newReadyState = !m_bAdminForcedReady;
+			m_bAdminForcedReady = newReadyState;
+
+			// Set all factions to the same ready state
+			m_bBluforReady = newReadyState;
+			m_bOpforReady = newReadyState;
+			m_bIndforReady = newReadyState;
+			m_bCivReady = newReadyState;
+
+			string actionText;
+			if (newReadyState) {
+				actionText = "Force Readied";
+			} else {
+				actionText = "Force Unreadied";
+			}
+
+			message = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
+
+			Replication.BumpMe();
+			m_RplBroadcastManager.PopUpNotification(3.25, message);
+			
+			UpdatePlayedFactions();
+			m_bCheckStartCountdown = true;
+			return;
+		}
+
+		// If admin forced ready is active, don't allow individual faction changes
+		if (m_bAdminForcedReady)
+			return;
+
+		// Toggle faction ready status
+		bool newStatus = false;
+		string messageKey = "";
+
+		// Update faction status and prepare message
+		switch (setReady) {
+			case "BLUFOR": {
+				m_bBluforReady = !m_bBluforReady;
+				newStatus = m_bBluforReady;
+				if (newStatus) {
+					messageKey = "[CRF] : BLUFOR READY";
+				} else {
+					messageKey = "[CRF] : BLUFOR NOT READY";
+				}
+				break;
+			}
+			case "OPFOR": {
+				m_bOpforReady = !m_bOpforReady;
+				newStatus = m_bOpforReady;
+				if (newStatus) {
+					messageKey = "[CRF] : OPFOR READY";
+				} else {
+					messageKey = "[CRF] : OPFOR NOT READY";
+				}
+				break;
+			}
+			case "INDFOR": {
+				m_bIndforReady = !m_bIndforReady;
+				newStatus = m_bIndforReady;
+				if (newStatus) {
+					messageKey = "[CRF] : INDFOR READY";
+				} else {
+					messageKey = "[CRF] : INDFOR NOT READY";
+				}
+				break;
+			}
+			case "CIV": {
+				m_bCivReady = !m_bCivReady;
+				newStatus = m_bCivReady;
+				if (newStatus) {
+					messageKey = "[CRF] : CIV READY";
+				} else {
+					messageKey = "[CRF] : CIV NOT READY";
+				}
+				break;
+			}
+		}
+
+		message = string.Format("%1 - %2", messageKey, playerName);
+		
+		m_RplBroadcastManager.PopUpNotification(3.25, message, "Any leader can toggle ready to cancel the countdown");
+		
+		UpdatePlayedFactions();
+		m_bCheckStartCountdown = true;
+	};
+
 	//------------------------------------------------------------------------------------------------
 	protected void ToggleSafeStartServer(bool status)
 	{
@@ -661,38 +704,17 @@ class CRF_SafestartManager : ScriptComponent
 			//ClearEventMask(GetGame().GetGameMode(), EntityEvent.FIXEDFRAME);
 		}
 	};
-	
-	//------------------------------------------------------------------------------------------------
-	void DeleteTempGroupSpawnPoints()
-	{
-		array<IEntity> tempSpawns = CRF_RespawnManager.GetInstance().GetTempGroupSpawnPoints();
-	
-		foreach (IEntity tempSpawn : tempSpawns)
-			SCR_EntityHelper.DeleteEntityAndChildren(tempSpawn);
-		
-		CRF_RespawnManager.GetInstance().ClearTempGroupSpawnPoints();
-	}
 
 	//------------------------------------------------------------------------------------------------
-	void DelayChangeSafeStartDisabled() {
+	protected void DelayChangeSafeStartDisabled() {
 		m_bSafeStartEnabled = false;
 		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 	};
-	
-	//------------------------------------------------------------------------------------------------
-	void DeleteAllSafestartZones()
-	{
-		foreach(IEntity zone : m_aSafestartZones)
-		{
-			if(zone)
-				SCR_EntityHelper.DeleteEntityAndChildren(zone);
-		}
-		
-		m_aSafestartZones.Clear()
-	}
 
-	//------------------------------------------------------------------------------------------------
-	// SafeStart EHs
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 EVENT HANDLERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	* Activates safe start event handlers for all AI and player-controlled entities.
@@ -804,6 +826,10 @@ class CRF_SafestartManager : ScriptComponent
 		// Get grenade and delete it
 		delete entity;
 	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_SafestartManager m_sInstance;
