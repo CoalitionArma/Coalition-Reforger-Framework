@@ -1,26 +1,33 @@
 $grp SCR_BaseTriggerEntity {
  mcom_a_trigger {
-  coords 11234.647 10.719 7048.353
-  angles 0 -150.697 0
+  coords 10990.427 6.844 5685.09
+  angles 0 -48.533 0
  }
  mcom_c_trigger {
-  coords 12240.009 32.003 8670.133
-  angles 0 -150.697 0
+  coords 11242.824 10.722 7040.811
+  angles 0 148.056 0
  }
  mcom_b_trigger {
-  coords 11278.336 21.439 6768.745
-  angles 0 -130.915 0
+  coords 11173.539 30.315 5684.107
+  angles 0 -90.973 0
  }
  mcom_d_trigger {
-  coords 11862.921 6.909 8780.383
-  angles 0 -71.66 0
+  coords 11591.87 2.848 7977.787
+  angles 0 -2.716 0
  }
  mcom_e_trigger {
-  coords 11740.771 53.909 9598.21
-  angles 0 -177.793 0
+  coords 11862.197 6.909 8781.662
+  angles 0 3.383 0
  }
  mcom_f_trigger {
-  coords 12438.274 51.813 9729.504
-  angles 0 41.649 0
+  coords 12247.872 32.454 8671.107
+  angles 0 22.1 0
  }
+}
+StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
+ coords 10113.301 0 758.802
+ angles 0 -48.332 0
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 10175.178 0.937 687.622
 }

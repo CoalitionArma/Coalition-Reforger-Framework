@@ -1,6 +1,9 @@
 GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
  components {
   CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 1
+   m_fSpawnDistance 9
+   m_bEnableSpawnVisuals 1
    m_aVehicles {
     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
      m_sVehicleName "UH60"
@@ -11,6 +14,32 @@ GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/Veh
    }
   }
  }
- coords 10486.299 20.389 4829.134
- angles 0 0 0
+ coords 10120.513 3.57 752.102
+ angles 0 134.294 0
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 5
+   m_fSpawnSpacing 8
+   m_fVehicleFacingOffset 180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "RHIB M134"
+     m_sVehiclePrefab "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+     m_eCostType USES
+     m_iCost 6
+    }
+    CRF_VehicleDepotVehicle "{68C959D4292E01A3}" {
+     m_sVehicleName "RHIB Transport"
+     m_sVehiclePrefab "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+     m_eCostType USES
+     m_iCost 12
+    }
+   }
+  }
+ }
+ coords 10184.221 1.236 691.747
+ angles 0 -113.217 0
 }
