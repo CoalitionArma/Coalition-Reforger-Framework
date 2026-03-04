@@ -103,7 +103,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	 TICKET GETTERS
+//	 GETTERS
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
@@ -305,49 +305,8 @@ class CRF_RespawnManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 TIMER METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
-
-	//------------------------------------------------------------------------------------------------
-	void WaveRespawnTimer()
-	{
-		// Client-side: Just update local timer display
-		if (!Replication.IsServer())
-		{
-			// Timer value already updated via replication
-			// Update local display time if needed
-			if (m_iRespawnWaveCurrentTime == 0)
-			{
-				m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
-			}
-			return;
-		}
-		
-		// Server-side: Update timer and trigger replication
-		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			return;
-
-		m_iRespawnWaveCurrentTime--;
-		
-		if (m_iRespawnWaveCurrentTime == 0)
-		{
-			m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
-			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
-			RespawnAllVehicles();
-		}
-		
-		if (!m_bSuppressReplication)
-			Replication.BumpMe();
-	}
 	
 	//------------------------------------------------------------------------------------------------
-	void CloseSlottingMenu()
-	{
-		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-		if (topMenu && topMenu.IsInherited(CRF_SlottingMenu))
-		{
-			GetGame().GetMenuManager().CloseMenu(topMenu);
-		}
-	}
-	
 	float m_fUpdateBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
@@ -379,6 +338,38 @@ class CRF_RespawnManager : ScriptComponent
 		#endif
 		if (m_fRespawnTimer > 0 || m_bNeedsRespawn)
 			RespawnTimer(timeSlice);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void WaveRespawnTimer()
+	{
+		// Client-side: Just update local timer display
+		if (!Replication.IsServer())
+		{
+			// Timer value already updated via replication
+			// Update local display time if needed
+			if (m_iRespawnWaveCurrentTime == 0)
+			{
+				m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+			}
+			return;
+		}
+		
+		// Server-side: Update timer and trigger replication
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+			return;
+
+		m_iRespawnWaveCurrentTime--;
+		
+		if (m_iRespawnWaveCurrentTime == 0)
+		{
+			m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+			RespawnAllVehicles();
+		}
+		
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -475,6 +466,20 @@ class CRF_RespawnManager : ScriptComponent
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void CloseSlottingMenu()
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu && topMenu.IsInherited(CRF_SlottingMenu))
+		{
+			GetGame().GetMenuManager().CloseMenu(topMenu);
+		}
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RESPAWN POINT METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	void RegisterRespawnPoint(IEntity respawnPoint)
@@ -582,6 +587,68 @@ class CRF_RespawnManager : ScriptComponent
 		}
 		
 		return RplIDs;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void FindSpawnPointLocation(FactionKey factionKey, out vector spawnPointLocation[4])
+	{
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
+		
+		foreach (IEntity spawnPoint : m_aRespawnPoints)
+		{
+			if (!spawnPoint)
+				continue;
+
+			CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
+			if (!respawnComponent)
+				continue;
+
+			if (respawnComponent.m_sRespawnPointFaction != factionKey)
+				continue;
+
+			if (!respawnComponent.m_bActiveRespawnPoint)
+				continue;
+
+			spawnPoint.GetWorldTransform(spawnPointLocation);
+			break;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void FindInitalSpawnLocation(FactionKey factionKey, SCR_AIGroup group, out vector spawnPointLocation[4])
+	{
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
+		
+		foreach (IEntity spawnPoint : m_aTempGroupSpawnPoints)
+		{
+			if (!spawnPoint)
+				continue;
+
+			CRF_TempSpawnPointComponent tempSpawnComponent = CRF_TempSpawnPointComponent.Cast(spawnPoint.FindComponent(CRF_TempSpawnPointComponent));
+			if (!tempSpawnComponent)
+				continue;
+
+			if (tempSpawnComponent.m_sSpawnPointFaction != factionKey)
+				continue;
+			
+			string company, platoon, squad, character, format;
+			group.GetCallsigns(company, platoon, squad, character, format);
+			
+			Print(tempSpawnComponent.m_sCallsignOfGroupToSpawn);
+			Print(squad);
+
+			if (tempSpawnComponent.m_sCallsignOfGroupToSpawn != squad)
+				continue;
+
+			spawnPoint.GetWorldTransform(spawnPointLocation);
+			break;
+		}
+		
+		if (spawnPointLocation[0] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[0]
+		 && spawnPointLocation[1] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[1]
+		 && spawnPointLocation[2] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[2]
+		 && spawnPointLocation[3] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[3])
+			FindSpawnPointLocation(factionKey, spawnPointLocation);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -823,67 +890,9 @@ class CRF_RespawnManager : ScriptComponent
 		m_GamemodeManager.InitilizePlayer(playerId, spawnLocation);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void FindSpawnPointLocation(FactionKey factionKey, out vector spawnPointLocation[4])
-	{
-		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
-		
-		foreach (IEntity spawnPoint : m_aRespawnPoints)
-		{
-			if (!spawnPoint)
-				continue;
-
-			CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
-			if (!respawnComponent)
-				continue;
-
-			if (respawnComponent.m_sRespawnPointFaction != factionKey)
-				continue;
-
-			if (!respawnComponent.m_bActiveRespawnPoint)
-				continue;
-
-			spawnPoint.GetWorldTransform(spawnPointLocation);
-			break;
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void FindInitalSpawnLocation(FactionKey factionKey, SCR_AIGroup group, out vector spawnPointLocation[4])
-	{
-		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
-		
-		foreach (IEntity spawnPoint : m_aTempGroupSpawnPoints)
-		{
-			if (!spawnPoint)
-				continue;
-
-			CRF_TempSpawnPointComponent tempSpawnComponent = CRF_TempSpawnPointComponent.Cast(spawnPoint.FindComponent(CRF_TempSpawnPointComponent));
-			if (!tempSpawnComponent)
-				continue;
-
-			if (tempSpawnComponent.m_sSpawnPointFaction != factionKey)
-				continue;
-			
-			string company, platoon, squad, character, format;
-			group.GetCallsigns(company, platoon, squad, character, format);
-			
-			Print(tempSpawnComponent.m_sCallsignOfGroupToSpawn);
-			Print(squad);
-
-			if (tempSpawnComponent.m_sCallsignOfGroupToSpawn != squad)
-				continue;
-
-			spawnPoint.GetWorldTransform(spawnPointLocation);
-			break;
-		}
-		
-		if (spawnPointLocation[0] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[0]
-		 && spawnPointLocation[1] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[1]
-		 && spawnPointLocation[2] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[2]
-		 && spawnPointLocation[3] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[3])
-			FindSpawnPointLocation(factionKey, spawnPointLocation);
-	}
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GETTERS/INVOKERS/MIISC
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker OnRespawnPointStateChanged()
@@ -891,6 +900,7 @@ class CRF_RespawnManager : ScriptComponent
 		return m_OnRespawnPointStateChanged;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Getter for the current wave timer
 	 */
@@ -899,6 +909,7 @@ class CRF_RespawnManager : ScriptComponent
 		return m_iRespawnWaveCurrentTime;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Helper for converting Spawnpoint RplID to Entity
 	 */
@@ -911,6 +922,7 @@ class CRF_RespawnManager : ScriptComponent
 		return rplComp.GetEntity();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	 * Helper for converting Spawnpoint Entity to RplID
 	 */
@@ -922,20 +934,20 @@ class CRF_RespawnManager : ScriptComponent
 		
 		return rplComp.Id();
 	}
-	
-	//Vehicle respawn logic
+
 	//------------------------------------------------------------------------------------------------
-	
 	int InsertVehicle(CRF_VehicleSpawner spawner)
 	{
 		return m_aVehicleSpawners.Insert(spawner);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	array<CRF_VehicleSpawner> GetVehicleSpawners()
 	{
 		return m_aVehicleSpawners;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleRespawnWave()
 	{
 		m_bCurrentWaveRespawn = !m_bCurrentWaveRespawn;
@@ -943,6 +955,7 @@ class CRF_RespawnManager : ScriptComponent
 		Replication.BumpMe();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void SetRespawnTime(int seconds)
 	{
 		m_iCurrentTimeToRespawn = seconds;
@@ -950,6 +963,7 @@ class CRF_RespawnManager : ScriptComponent
 		Replication.BumpMe();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleRespawn()
 	{
 		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;

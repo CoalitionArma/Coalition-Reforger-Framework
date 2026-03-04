@@ -23,6 +23,10 @@ class CRF_SlotUpdateBatch
 //------------------------------------------------------------------------------------------------
 class CRF_RplBroadcastManager : ScriptComponent
 {
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	// Manager references
 	protected CRF_PermissionManager m_PermissionManager;
 	protected CRF_RespawnManager m_RespawnManager;
@@ -35,6 +39,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITIALIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
@@ -44,25 +52,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Initialize references to other manager systems
-	//------------------------------------------------------------------------------------------------
 	protected void InitializeManagerReferences()
 	{
 		// Cache all manager references to avoid repeated GetInstance() calls
-		if (!m_PermissionManager)
-			m_PermissionManager = CRF_PermissionManager.GetInstance();
-		if (!m_RespawnManager)
-			m_RespawnManager = CRF_RespawnManager.GetInstance();
-		if (!m_MenuManager)
-			m_MenuManager = CRF_MenuManager.GetInstance();
-		if (!m_AdminMenuManager)
-			m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
-		if (!m_TelemetryManager)
-			m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+		m_PermissionManager = CRF_PermissionManager.GetInstance();
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
+		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 TELEMETRY
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	// Log RPC call to telemetry system (server-side only)
-	//------------------------------------------------------------------------------------------------
 	protected void LogTelemetry(string rpcName, int estimatedBytes)
 	{
 		if (!Replication.IsServer())
@@ -76,14 +81,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
 	}
 	
-	//================================================================================================
-	// BATCHING SYSTEM
-	// Collects multiple slot updates and sends them together to reduce RPC overhead
-	//================================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 BATCHING METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	// Queue a slot update for batching
-	//------------------------------------------------------------------------------------------------
 	protected void QueueSlotUpdate(CRF_SlotUpdateBatch batch)
 	{
 		if (!Replication.IsServer())
@@ -113,7 +116,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Flush all pending slot updates
-	//------------------------------------------------------------------------------------------------
 	protected void FlushSlotUpdates()
 	{
 		if (!Replication.IsServer())
@@ -161,7 +163,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Internal methods that actually send the RPCs (called by flush or immediate mode)
-	//------------------------------------------------------------------------------------------------
 	protected void SendSlotPlayerIdUpdate(int slotId, int playerId)
 	{
 		LogTelemetry("UpdateSlotPlayerIdDelta", 8);
@@ -172,6 +173,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SendSlotCharacterUpdate(int slotId, RplId characterId)
 	{
 		LogTelemetry("UpdateSlotCharacterDelta", 8);
@@ -182,6 +184,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SendSlotGroupUpdate(int slotId, RplId groupId)
 	{
 		LogTelemetry("UpdateSlotGroupDelta", 8);
@@ -192,6 +195,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SendSlotLockedUpdate(int slotId, bool isLocked)
 	{
 		LogTelemetry("UpdateSlotLockedDelta", 5);
@@ -202,6 +206,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SendSlotDeathUpdate(int slotId, bool isDead)
 	{
 		LogTelemetry("UpdateSlotDeathDelta", 5);
@@ -212,6 +217,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SendSlotRoleUpdate(int slotId, CRF_EGearRole role)
 	{
 		LogTelemetry("UpdateSlotRoleDelta", 8);
@@ -224,7 +230,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Enable/disable batching (useful for debugging or critical updates)
-	//------------------------------------------------------------------------------------------------
 	void SetBatchingEnabled(bool enabled)
 	{
 		m_bBatchingEnabled = enabled;
@@ -234,15 +239,15 @@ class CRF_RplBroadcastManager : ScriptComponent
 			FlushSlotUpdates();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool IsBatchingEnabled()
 	{
 		return m_bBatchingEnabled;
 	}
 	
-	//================================================================================================
-	// AUTHORITY BROADCAST METHODS
-	// These methods execute on the server to send data to clients
-	//================================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 AUTHORITY REPLICATION ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	void PopUpNotification(float life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
@@ -373,6 +378,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		};
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void BroadcastMessage(string message)
 	{
 		// Telemetry: string
@@ -842,7 +848,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot player ID only (~8 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotPlayerIdDelta(int slotId, int playerId)
 	{
 		if (!Replication.IsServer())
@@ -862,7 +867,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot character only (~8 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotCharacterDelta(int slotId, RplId characterId)
 	{
 		if (!Replication.IsServer())
@@ -882,7 +886,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot group only (~8 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotGroupDelta(int slotId, RplId groupId)
 	{
 		if (!Replication.IsServer())
@@ -902,7 +905,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot locked state only (~5 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedDelta(int slotId, bool isLocked)
 	{
 		if (!Replication.IsServer())
@@ -922,7 +924,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot locked state only (~5 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotDeathDelta(int slotId, bool isDead)
 	{
 		if (!Replication.IsServer())
@@ -943,7 +944,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Update slot role (~8 bytes)
-	//------------------------------------------------------------------------------------------------
 	void UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
 	{
 		if (!Replication.IsServer())
@@ -968,7 +968,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Helper method to get chat component
-	//------------------------------------------------------------------------------------------------
 	protected SCR_ChatComponent GetLocalChatComponent()
 	{
 		PlayerController playerController = GetGame().GetPlayerController();
@@ -980,7 +979,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Check if current player matches target player ID
-	//------------------------------------------------------------------------------------------------
 	protected bool IsLocalPlayer(int playerId)
 	{
 		return SCR_PlayerController.GetLocalPlayerId() == playerId;
@@ -988,7 +986,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Find MCOM entity at specified position
-	//------------------------------------------------------------------------------------------------
 	protected IEntity FindMCOMEntityAtPosition(vector position)
 	{
 		Print("[CRF_RplBroadcastManager] FindMCOMEntityAtPosition: Looking for MCOM at " + position);
@@ -1063,6 +1060,70 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Print("[CRF_RplBroadcastManager] No MCOM entity found at position " + position);
 		return null;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotData(CRF_SlotDataContainer slotData)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Estimate bandwidth: slot data (~64 bytes avg)
+		LogTelemetry("UpdateSlotData", 64);
+		
+		RpcDo_UpdateSlotData(slotData);
+		Rpc(RpcDo_UpdateSlotData, slotData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Remove slot from all clients
+	void RemoveSlot(int slotId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: Just slotId (4 bytes)
+		LogTelemetry("RemoveSlot", 4);
+		
+		RpcDo_RemoveSlot(slotId);
+		Rpc(RpcDo_RemoveSlot, slotId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
+	void NotifySlottingPhaseChanged()
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: No parameters (0 bytes, just RPC overhead)
+		LogTelemetry("NotifySlottingPhaseChanged", 0);
+		
+		#ifdef WORKBENCH
+		RpcDo_NotifySlottingPhaseChanged();
+		#else
+		Rpc(RpcDo_NotifySlottingPhaseChanged);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void BroadcastOutro()
+	{
+		#ifdef WORKBENCH
+		RpcDo_BroadcastOutro();
+		#else
+		Rpc(RpcDo_BroadcastOutro);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void BroadcastVehiclePosUpdate(vector pos, int playerId)
+	{
+		Rpc(RpcDo_BroadcastVehiclePosUpdate, pos, playerId);
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 REPLICATION METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -1506,28 +1567,32 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-	// Play acceptance sound using UI sound system - more reliable
-	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		// Play acceptance sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		
+		// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+		SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+		if (popupNotification)
+			popupNotification.PopupMsg("Request Accepted", 3.0);
+	}	
 	
-	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
-	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
-	if (popupNotification)
-		popupNotification.PopupMsg("Request Accepted", 3.0);
-}	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_NotifyRequestDenied(int requesterId)
 	{
 		if (!IsLocalPlayer(requesterId))
 			return;
 			
-	// Play denial sound using UI sound system - more reliable
-	SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		// Play denial sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		
+		// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
+		SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
+		if (popupNotification)
+			popupNotification.PopupMsg("Request Denied", 3.0);
+	}	
 	
-	// Show notification - PERFORMANCE OPTIMIZATION: cache GetInstance()
-	SCR_PopUpNotification popupNotification = SCR_PopUpNotification.GetInstance();
-	if (popupNotification)
-		popupNotification.PopupMsg("Request Denied", 3.0);
-}	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TestTargetedBroadcast(int targetPlayerId, int testValue)
 	{
@@ -1838,12 +1903,14 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Print(string.Format("[VON] Successfully created join request popup for %1", requesterName), LogLevel.NORMAL);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_BroadcastMessage(string message)
 	{
 		SCR_PopUpNotification.GetInstance().PopupMsg(message);
 	}	
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_MoveSpecCamToSlot(vector slotPos, int targetPlayerId)
 	{		
@@ -1879,7 +1946,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// GunGame: Update player stats on all clients
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
 	{
@@ -1890,7 +1956,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// FactionManager: Update SR channels on all clients
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_UpdateFactionChannelsSR(string factionId, array<string> channels)
 	{
@@ -1901,7 +1966,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// FactionManager: Update LR channels on all clients
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_UpdateFactionChannelsLR(string factionId, array<string> channels)
 	{
@@ -1912,47 +1976,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// GearscriptManager: Add vehicle supply cost on all clients
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
 	{
 		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
 		if (vehicleGearscriptManager)
 			vehicleGearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
-	}
-	
-	//================================================================================================
-	// SLOTTING MANAGER BROADCAST METHODS
-	// Delta-based slot updates to replace array replication (98% bandwidth reduction)
-	//================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update single slot data on all clients (LEGACY - USE DELTA UPDATES INSTEAD)
-	// 
-	// ⚠️ PERFORMANCE WARNING: This method sends ~64 bytes per call
-	// ⚠️ Use UpdateSlot*Delta() methods instead for 90%+ bandwidth savings:
-	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 64)
-	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 64)
-	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 64)
-	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 64)
-	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 64)
-	//
-	// Only use UpdateSlotData() for:
-	//   - Creating new slots (all fields are new)
-	//   - JIP sync (initial state transmission)
-	//
-	// Bandwidth: ~64 bytes vs 8-40 bytes for delta updates
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotData(CRF_SlotDataContainer slotData)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		// Estimate bandwidth: slot data (~64 bytes avg)
-		LogTelemetry("UpdateSlotData", 64);
-		
-		RpcDo_UpdateSlotData(slotData);
-		Rpc(RpcDo_UpdateSlotData, slotData);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2096,45 +2125,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Remove slot from all clients
-	//------------------------------------------------------------------------------------------------
-	void RemoveSlot(int slotId)
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		// Bandwidth: Just slotId (4 bytes)
-		LogTelemetry("RemoveSlot", 4);
-		
-		RpcDo_RemoveSlot(slotId);
-		Rpc(RpcDo_RemoveSlot, slotId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_RemoveSlot(int slotId)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 			slottingManager.RemoveSlotClient(slotId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
-	//------------------------------------------------------------------------------------------------
-	void NotifySlottingPhaseChanged()
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		// Bandwidth: No parameters (0 bytes, just RPC overhead)
-		LogTelemetry("NotifySlottingPhaseChanged", 0);
-		
-		#ifdef WORKBENCH
-		RpcDo_NotifySlottingPhaseChanged();
-		#else
-		Rpc(RpcDo_NotifySlottingPhaseChanged);
-		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2153,15 +2149,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Print("[CRF_RplBroadcastManager] Slotting phase changed - UI updated", LogLevel.VERBOSE);
 	}
 	
-	void BroadcastOutro()
-	{
-		#ifdef WORKBENCH
-		RpcDo_BroadcastOutro();
-		#else
-		Rpc(RpcDo_BroadcastOutro);
-		#endif
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_BroadcastOutro()
 	{
@@ -2169,21 +2157,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(OpenOutro, 2831, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void OpenOutro()
 	{
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_Outro);
 	}
 	
-	void BroadcastVehiclePosUpdate(vector pos, int playerId)
-	{
-		Rpc(RpcDo_BroadcastVehiclePosUpdate, pos, playerId);
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_BroadcastVehiclePosUpdate(vector pos, int playerId)
 	{
 		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_RplBroadcastManager m_sInstance;
