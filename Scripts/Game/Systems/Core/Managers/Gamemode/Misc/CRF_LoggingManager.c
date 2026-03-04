@@ -80,6 +80,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private FactionKey m_sWinningFaction = "";
 	private string m_sWinnerMethod = ""; // "automatic", "manual", "timeout", "inconclusive"
 	private bool m_bWinnerDetermined = false;
+	private bool m_bWinnerLogged = false;
 	
 	// Singleton instance
 	private static CRF_LoggingManager s_Instance;
@@ -259,6 +260,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			case CRF_EGamemodeState.AAR:
 			{
 				LogMissionEvent("ended");
+				// Log the winning faction at AAR time so it is always captured
+				// before the file handle is closed, regardless of whether
+				// SetWinningFaction was called before or after this transition.
+				if (m_bWinnerDetermined)
+					LogWinner();
 				break;
 			}
 		}
@@ -873,11 +879,16 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	/**
-	 * Private method to write winner information to log file
+	 * Private method to write winner information to log file.
+	 * Will only write once even if called multiple times (e.g. from
+	 * SetWinningFaction and again from the AAR state transition).
 	 */
 	protected void LogWinner()
 	{
 		if (!m_LogFileHandle)
+			return;
+		
+		if (m_bWinnerLogged)
 			return;
 		
 		// Format: mission_winner,FACTION,METHOD,MISSION_NAME
@@ -885,5 +896,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			SEPARATOR, m_sWinningFaction, m_sWinnerMethod, m_sMissionName);
 		
 		m_LogFileHandle.WriteLine(winnerLine);
+		m_bWinnerLogged = true;
 	}
 }
