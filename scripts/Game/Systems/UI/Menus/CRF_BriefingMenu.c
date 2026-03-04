@@ -2,10 +2,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 {
 	//--- UI Widgets ---
 	protected Widget m_wRoot;                                  // Root widget of the menu
-	protected ImageWidget m_wPreview;                         // Preview phase indicator
-	protected ImageWidget m_wSlotting;                        // Slotting phase indicator 
-	protected ImageWidget m_wGame;                            // Game phase indicator
-	protected ImageWidget m_wAAR;                             // After Action Report phase indicator
 	protected ButtonWidget m_wBackButton;                     // Back button for description navigation
 	
 	//--- Components and Managers ---
@@ -22,7 +18,13 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
 	
 	//--- MENU LIFECYCLE METHODS ---
-	
+
+	//--- Modular display components ---
+	protected CRF_MissionInfoDisplay       m_MissionInfoDisplay;
+	protected CRF_TimeDisplay              m_TimeDisplay;
+	protected CRF_PhaseIndicatorDisplay    m_PhaseIndicatorDisplay;
+	protected CRF_PlayerStatusListDisplay  m_PlayerStatusListDisplay;
+
 	/**
 	 * Initializes the menu when it's opened
 	 */
@@ -54,7 +56,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		
 		// Setup player and description lists
 		SetupListComponents();
-		
+
+		// --- Modular: player status list ---
+		Widget playerListRoot = m_wRoot.FindAnyWidget("PlayerListDisplay");
+		if (playerListRoot)
+		{
+			m_PlayerStatusListDisplay = CRF_PlayerStatusListDisplay.Cast(playerListRoot.FindHandler(CRF_PlayerStatusListDisplay));
+			if (m_PlayerStatusListDisplay)
+				m_PlayerStatusListDisplay.Init(m_cPlayerListBoxComponent, m_VONController);
+		}
+
 		// Initialize description section
 		DescriptionInit();
 		
@@ -96,19 +107,28 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
-		
-		// Set mission text with author information
-		UpdateMissionText();
-		
-		// Set weather text
-		UpdateWeatherText();
-		
-		// Get phase indicator widgets
-		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
-		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
-		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
-		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
-		
+
+		// --- Modular: mission info (name, author, weather) ---
+		Widget missionInfoRoot = m_wRoot.FindAnyWidget("MissionInfo");
+		if (missionInfoRoot)
+		{
+			m_MissionInfoDisplay = CRF_MissionInfoDisplay.Cast(missionInfoRoot.FindHandler(CRF_MissionInfoDisplay));
+			if (m_MissionInfoDisplay)
+				m_MissionInfoDisplay.Populate();
+		}
+
+		// Inline fallback — runs when the layout has no MissionInfo component root
+		if (!m_MissionInfoDisplay)
+		{
+			UpdateMissionText();
+			UpdateWeatherText();
+		}
+
+		// --- Modular: time display ---
+		Widget timeDisplayRoot = m_wRoot.FindAnyWidget("TimeDisplay");
+		if (timeDisplayRoot)
+			m_TimeDisplay = CRF_TimeDisplay.Cast(timeDisplayRoot.FindHandler(CRF_TimeDisplay));
+
 		// Initialize back button
 		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
 		m_wBackButton.SetOpacity(0);
@@ -152,20 +172,31 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	 */
 	protected void SetupPhaseIndicators()
 	{
-		// Get phase indicator widgets
-		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
-		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
-		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
-		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
-		
-		// Highlight the current phase
-		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
-		switch(gameState)
+		// --- Modular: phase indicator ---
+		Widget phaseRoot = m_wRoot.FindAnyWidget("PhaseIndicator");
+		if (phaseRoot)
 		{
-			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
-			case 1: {m_wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
-			case 2: {m_wGame.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
-			case 3: {m_wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			m_PhaseIndicatorDisplay = CRF_PhaseIndicatorDisplay.Cast(phaseRoot.FindHandler(CRF_PhaseIndicatorDisplay));
+			if (m_PhaseIndicatorDisplay)
+			{
+				m_PhaseIndicatorDisplay.UpdatePhaseIndicator();
+				return;
+			}
+		}
+
+		// Inline fallback — uses local vars, no class-field dependency
+		ImageWidget wPreview  = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
+		ImageWidget wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
+		ImageWidget wGame     = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
+		ImageWidget wAAR      = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
+
+		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState;
+		switch (gameState)
+		{
+			case 0: if (wPreview)  wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255));  break;
+			case 1: if (wSlotting) wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;
+			case 2: if (wGame)     wGame.SetColor(Color.FromRGBA(122, 0, 0, 255));     break;
+			case 3: if (wAAR)      wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255));      break;
 		}
 	}
 	
@@ -255,10 +286,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			GetGame().GetInputManager().ActivateContext("MapContext");
 		
 		// Update time display
-		UpdateTimeDisplay();
+		if (m_TimeDisplay)
+			m_TimeDisplay.UpdateTimeDisplay();
+		else
+			UpdateTimeDisplay();
 		
 		// Update player list
-		UpdatePlayerList();
+		if (m_PlayerStatusListDisplay)
+			m_PlayerStatusListDisplay.UpdatePlayerList(0);
+		else
+			UpdatePlayerList();
 		
 		// Check for admin privileges
 		CheckAdminPrivileges();

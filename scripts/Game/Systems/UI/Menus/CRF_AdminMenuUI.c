@@ -78,7 +78,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected ref CRF_GearScriptConfigStruct m_gearsetlist;
 	
 	protected bool m_bGameModeMenuOpen = false;
-	
+
+	// Modular display components
+	protected CRF_AdminActionLogDisplay m_ActionLogDisplay;
+	protected CRF_AdminGamemodePanel    m_AdminGamemodePanel;
+
 	//-----------------------------------------------------------------------------
 	// General UI Methods
 	//-----------------------------------------------------------------------------
@@ -101,6 +105,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Setup menu roots
 		m_wRoot = GetRootWidget();
 
+		// --- Modular: admin action log sidebar ---
+		Widget actionLogRoot = m_wRoot.FindAnyWidget("AdminActionLogDisplay");
+		if (actionLogRoot)
+			m_ActionLogDisplay = CRF_AdminActionLogDisplay.Cast(actionLogRoot.FindHandler(CRF_AdminActionLogDisplay));
+
 		// Set up menu navigation buttons
 		InitializeMenuButtons();
 
@@ -108,7 +117,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		InitializeChat();
 		
 		// Populate Admin Logs
-		PopulateAdminActionsList();
+		if (m_ActionLogDisplay)
+			m_ActionLogDisplay.Populate();
+		else
+			PopulateAdminActionsList();
 		
 		// Delay opening of initial menu
 		GetGame().GetCallqueue().Call(DelayedMenuInitialization);
@@ -346,6 +358,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (m_wMenuContent)
 			delete m_wMenuContent;
 
+		// Clear modular panel component — its widget tree was just deleted
+		m_AdminGamemodePanel = null;
+
 		// Clear data collections
 		m_outGroups.Clear();
 		m_spawnPoints.Clear();
@@ -432,7 +447,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (m_fUpdateBuffer >= 1)
 		{
 			if (m_bGameModeMenuOpen)
-				GamemodeMenuUpdate();
+			{
+				if (m_AdminGamemodePanel)
+					m_AdminGamemodePanel.Update();
+				else
+					GamemodeMenuUpdate();
+			}
 			m_fUpdateBuffer = 0;
 		}
 		m_fUpdateBuffer += tDelta;
@@ -1629,6 +1649,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		m_bGameModeMenuOpen = true;
+
+		// --- Modular: gamemode panel live-update component ---
+		Widget gamemodeComponentRoot = m_wMenuContent.FindAnyWidget("AdminGamemodePanel");
+		if (gamemodeComponentRoot)
+		{
+			m_AdminGamemodePanel = CRF_AdminGamemodePanel.Cast(gamemodeComponentRoot.FindHandler(CRF_AdminGamemodePanel));
+			if (m_AdminGamemodePanel)
+				m_AdminGamemodePanel.Init(m_wMenuContent);
+		}
+
 		// Load Menu Sections
 		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
 		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
@@ -1715,7 +1745,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		UpdateMenuTitle("Gamemode Settings");
 		
 		// Update menu data
-		GamemodeMenuUpdate();
+		if (m_AdminGamemodePanel)
+			m_AdminGamemodePanel.Update();
+		else
+			GamemodeMenuUpdate();
 		
 		//Toggle Respawn Wave Button
 		SCR_ButtonTextComponent toggleWaveRespawn = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("RespawnWaveButton").FindHandler(SCR_ButtonTextComponent));

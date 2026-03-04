@@ -25,6 +25,12 @@ class CRF_AARMenu: ChimeraMenuBase
 	protected CRF_ListboxComponent m_cSlotListBoxComponent;
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent;
 	protected SCR_PlayerController m_PlayerController;
+
+	//----------------------------------------
+	// Modular UI Elements
+	//----------------------------------------
+	protected CRF_MissionInfoDisplay m_MissionInfoDisplay; // Mission name / author / weather
+	protected CRF_TimeDisplay        m_TimeDisplay;        // Live in-game clock
 	
 	//----------------------------------------
 	// Faction & Slot Data
@@ -141,6 +147,15 @@ class CRF_AARMenu: ChimeraMenuBase
 		// Initialize list components
 		m_cPlayerListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("PlayerList")).FindHandler(SCR_ListBoxComponent));
 		m_cSlotListBoxComponent = CRF_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(CRF_ListboxComponent));
+
+		// --- Bind shared modular UI elements ---
+		Widget wMissionInfo = m_wRoot.FindAnyWidget("MissionInfo");
+		if (wMissionInfo)
+			m_MissionInfoDisplay = CRF_MissionInfoDisplay.Cast(wMissionInfo.FindHandler(CRF_MissionInfoDisplay));
+
+		Widget wTimeDisplay = m_wRoot.FindAnyWidget("TimeDisplay");
+		if (wTimeDisplay)
+			m_TimeDisplay = CRF_TimeDisplay.Cast(wTimeDisplay.FindHandler(CRF_TimeDisplay));
 	}
 	
 	/**
@@ -159,10 +174,18 @@ class CRF_AARMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Set up mission information displays
+	 * Set up mission information displays.
+	 * Delegates to CRF_MissionInfoDisplay when the component is bound; falls back
+	 * to inline logic for layouts that have not yet been updated.
 	 */
 	protected void SetupMissionInfo()
 	{
+		if (m_MissionInfoDisplay)
+		{
+			m_MissionInfoDisplay.Populate();
+			return;
+		}
+
 		TextWidget missionText = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionText"));
 		
 		// Set mission name
@@ -281,10 +304,17 @@ class CRF_AARMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Update the time display
+	 * Update the time display.
+	 * Delegates to CRF_TimeDisplay when the component is bound.
 	 */
 	protected void UpdateTimeDisplay()
 	{
+		if (m_TimeDisplay)
+		{
+			m_TimeDisplay.UpdateTimeDisplay();
+			return;
+		}
+
 		TimeContainer timeContainer = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager().GetTime();
 		int hours = timeContainer.m_iHours;
 		int minutes = timeContainer.m_iMinutes;

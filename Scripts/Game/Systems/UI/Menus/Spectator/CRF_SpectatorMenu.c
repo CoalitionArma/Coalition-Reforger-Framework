@@ -71,7 +71,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
-	// Ticket elements
+	// Ticket elements (legacy — kept for inline fallback)
 	protected CRF_RespawnManager m_RespawnManager;
 	protected Widget m_wBLUFORTickets;
 	protected TextWidget m_wBLUFORTicketsText;
@@ -85,6 +85,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected Widget m_wCIVTickets;
 	protected TextWidget m_wCIVTicketsText;
 	protected bool m_bCIVTicketsActive;
+
+	// Modular display components
+	protected CRF_TicketDisplay        m_TicketDisplay;
+	protected CRF_MissionTimerDisplay  m_MissionTimerDisplay;
 	
 	protected bool m_bWarningDismissed = false;
 	
@@ -136,6 +140,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wOPFORTickets = m_wRoot.FindAnyWidget("OPFORTickets");
 		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
 		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
+
+		// --- Modular: ticket display ---
+		Widget ticketDisplayRoot = m_wRoot.FindAnyWidget("TicketDisplay");
+		if (ticketDisplayRoot)
+			m_TicketDisplay = CRF_TicketDisplay.Cast(ticketDisplayRoot.FindHandler(CRF_TicketDisplay));
+
+		// --- Modular: mission timer ---
+		Widget missionTimerRoot = m_wRoot.FindAnyWidget("MissionTimerDisplay");
+		if (missionTimerRoot)
+		{
+			m_MissionTimerDisplay = CRF_MissionTimerDisplay.Cast(missionTimerRoot.FindHandler(CRF_MissionTimerDisplay));
+			if (m_MissionTimerDisplay)
+				m_MissionTimerDisplay.Init(SCR_PopUpNotification.GetInstance());
+		}
 		
 		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
 		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
@@ -349,7 +367,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		UpdateIcons();
 		
 		//Hmm I wonder if this updates tickets
-		UpdateTickets();
+		if (m_TicketDisplay)
+			m_TicketDisplay.UpdateTickets();
+		else
+			UpdateTickets();
 		
 		// Update chat if available
 		if (m_ChatPanel)
@@ -359,7 +380,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent));
 		sender.SetKillFeedTypeDeadLocal();
 		
-		UpdateTimer();
+		if (m_MissionTimerDisplay)
+			m_MissionTimerDisplay.UpdateTimer();
+		else
+			UpdateTimer();
 		
 		if (m_fUpdateBuffer >= 1)
 		{
