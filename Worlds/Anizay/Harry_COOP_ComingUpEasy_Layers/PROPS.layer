@@ -1,0 +1,39 @@
+SCR_ChimeraCharacter : "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et" {
+ components {
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHealthHitZone Health {
+     MaxHealth 0
+    }
+   }
+  }
+ }
+ coords 2441.396 169.808 1109.528
+ angles 0 -28.307 0
+}
+SCR_ChimeraCharacter : "{8C7093AF368F496A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1.et" {
+ components {
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHealthHitZone Health {
+     MaxHealth 0
+    }
+   }
+  }
+ }
+ coords 2446.088 169.808 1114.304
+ angles 0 -4.566 0
+}
+SCR_ChimeraCharacter : "{E024A74F8A4BC644}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_1.et" {
+ components {
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHealthHitZone Health {
+     MaxHealth 0
+    }
+   }
+  }
+ }
+ coords 2444.693 169.781 1111.188
+ angles 0 -82.054 0
+}

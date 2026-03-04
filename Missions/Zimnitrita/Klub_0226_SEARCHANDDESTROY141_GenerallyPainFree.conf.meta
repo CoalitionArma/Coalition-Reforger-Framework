@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{1869EB09EB71E849}Missions/Zimnitrita/Klub_0226_SEARCHANDDESTROY141_GenerallyPainFree.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

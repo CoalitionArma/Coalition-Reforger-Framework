@@ -22,8 +22,8 @@ modded class SCR_MapMarkerManagerComponent
 	
 	void RequestGlobalMarkersRefresh()
 	{
-		if (CRF_RplToAuthorityManager.GetInstance())
-			CRF_RplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
+		if (CRF_PlayerRplToAuthorityManager.GetInstance())
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
 	}
 	
 	//Method used for JIPs to get markers placed during safestart
@@ -54,8 +54,8 @@ modded class SCR_MapMarkerManagerComponent
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
-		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		if (!pc)
+		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!rplToOwnerManager)
 			return;
 		
 		array<int> markers = m_MarkersSharedReference.Get(playerId);
@@ -68,7 +68,7 @@ modded class SCR_MapMarkerManagerComponent
 		if (markers.Count() == 0)
 			return;
 
-		pc.ShareMarker(markers);
+		rplToOwnerManager.ShareMarker(markers);
 	}
 	
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
@@ -91,9 +91,9 @@ modded class SCR_MapMarkerManagerComponent
 			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 			if (safestartMan && gamemode && playerFaction)
 				if (safestartMan.GetSafestartStatus() && marker.GetMarkerOwnerID() == playerId)
-					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+					CRF_PlayerRplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
 				else if (!gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()) && marker.GetMarkerOwnerID() == playerId)
-					CRF_RplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+					CRF_PlayerRplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
 		}
 		
 		super.OnAddSynchedMarker(marker);

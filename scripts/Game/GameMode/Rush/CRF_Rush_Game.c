@@ -328,10 +328,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// If markers are not hidden, ensure this player gets the current zone markers
 		if (!m_bHideMapMarkers)
 		{
-			CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-			if (playerControllerManager)
+			CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+			if (playerScriptedMarkerManager)
 			{
-				array<string> currentMarkers = playerControllerManager.GetScriptedMarkersArray();
+				array<string> currentMarkers = playerScriptedMarkerManager.GetScriptedMarkersArray();
 				if (currentMarkers && currentMarkers.Count() > 0)
 				{
 					// Player should see existing markers
@@ -887,8 +887,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void AddAllMCOMMarkers()
 	{
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerManager)
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!playerScriptedMarkerManager)
 		{
 			return;
 		}
@@ -941,12 +941,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				}
 				
 				// Add the marker with appropriate color
-				playerControllerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, markerColor);
+				playerScriptedMarkerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, markerColor);
 			}
 		}
 		
 		// Check how many markers are stored
-		array<string> storedMarkers = playerControllerManager.GetScriptedMarkersArray();
+		array<string> storedMarkers = playerScriptedMarkerManager.GetScriptedMarkersArray();
 	}
 	
 	/**
@@ -1028,8 +1028,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void UpdateActiveZoneMarkers()
 	{
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerManager || m_bHideMapMarkers) 
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!playerScriptedMarkerManager || m_bHideMapMarkers) 
 			return;
 		
 		// Remove all existing MCOM markers
@@ -1071,7 +1071,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				string markerName = string.Format("MCOM %1", markerLetter);
 				
 				// Add marker with red color for active zone
-				playerControllerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, ARGB(255, 255, 0, 0));
+				playerScriptedMarkerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, ARGB(255, 255, 0, 0));
 			}
 		}
 	}
@@ -1081,13 +1081,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void RemoveAllMCOMMarkers()
 	{
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerManager) 
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!playerScriptedMarkerManager) 
 			return;
 		
 		// Clear all markers and re-add non-MCOM markers if needed
 		// This is more reliable than trying to match exact position strings
-		playerControllerManager.RemoveALLScriptedMarkers();
+		playerScriptedMarkerManager.RemoveALLScriptedMarkers();
 	}
 	
 	/**
@@ -1098,9 +1098,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		// Notify all players that markers have been updated
 		// This will trigger the client-side map marker system to refresh
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-		if (playerControllerManager)
-			array<string> markers = playerControllerManager.GetScriptedMarkersArray();
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (playerScriptedMarkerManager)
+			array<string> markers = playerScriptedMarkerManager.GetScriptedMarkersArray();
 	}
 	
 	/**
@@ -3061,8 +3061,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (m_bHideMapMarkers)
 			return;
 		
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerManager)
+		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!playerScriptedMarkerManager)
 			return;
 		
 		// Get trigger name and position for this MCOM
@@ -3094,10 +3094,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// Remove existing marker first
-		playerControllerManager.RemoveALLScriptedMarkers();
+		playerScriptedMarkerManager.RemoveALLScriptedMarkers();
 		
 		// Add updated marker with planted status
-		playerControllerManager.AddScriptedMarker("Static Marker", posStr, 1, markerText, iconPath, 50, markerColor);
+		playerScriptedMarkerManager.AddScriptedMarker("Static Marker", posStr, 1, markerText, iconPath, 50, markerColor);
 		
 		// Re-add other active zone markers
 		GetGame().GetCallqueue().CallLater(UpdateActiveZoneMarkers, 100, false);

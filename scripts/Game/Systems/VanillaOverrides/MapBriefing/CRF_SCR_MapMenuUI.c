@@ -64,11 +64,7 @@ modded class SCR_MapMenuUI
 		if (!playerFaction)
 			return;
 		
-		CRF_GearscriptManager gearscriptMan = CRF_GearscriptManager.GetInstance();
-		if (!gearscriptMan)
-			return;
-		
-		CRF_GearScriptContainer	gearScriptCon = gearscriptMan.GetGearScriptSettings(playerFaction.GetFactionKey());
+		CRF_GearScriptContainer	gearScriptCon = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
 		if (!gearScriptCon)
 			return;
 		

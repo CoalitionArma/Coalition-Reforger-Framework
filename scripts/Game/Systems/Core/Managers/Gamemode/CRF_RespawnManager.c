@@ -47,22 +47,8 @@ class CRF_RespawnManager : ScriptComponent
 	
 	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
 	
-	protected static CRF_RespawnManager m_sInstance;
-	
 	protected bool m_bNeedsRespawn = false;
 	protected bool m_bRespawnInit = false;
-
-	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Singleton accessor
-	static CRF_RespawnManager GetInstance()
-	{
-		return m_sInstance;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	array<IEntity> GetTempGroupSpawnPoints()
@@ -141,7 +127,7 @@ class CRF_RespawnManager : ScriptComponent
 		
 		// Check if we're within the cutoff window
 		int currentTime = GetGame().GetWorld().GetWorldTime();
-		int missionEndTime = m_SafestartManager.m_iTimeMissionEnds;
+		int missionEndTime = CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds;
 		int cutoffTime = missionEndTime - (m_Gamemode.m_iRespawnCutoffMinutes * 60000);
 		
 		// If current time is past the cutoff, disable respawns
@@ -436,7 +422,7 @@ class CRF_RespawnManager : ScriptComponent
 					if (!isGameInAARState)
 					{
 						GetGame().GetMenuManager().CloseAllMenus();
-						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+						CRF_PlayerRplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
 						
 						// Set menu state back to default
 						m_SelectedSpawnRplID = -1;
@@ -491,7 +477,7 @@ class CRF_RespawnManager : ScriptComponent
 		// Broadcast UI updates to clients
 		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
 		
-		m_Gamemode.GetAOCenter();
+		m_Gamemode.UpdateGenericSpawn();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -693,7 +679,7 @@ class CRF_RespawnManager : ScriptComponent
 				//Is the vehicle non existant anymore
 				if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
 				{
-					CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+					CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 					continue;
 				}
 				
@@ -706,7 +692,7 @@ class CRF_RespawnManager : ScriptComponent
 					continue;
 				
 				//Vehicle is destroyed respawn it.
-				CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+				CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 				continue;
 			}
 		}
@@ -727,7 +713,7 @@ class CRF_RespawnManager : ScriptComponent
 			//Is the vehicle non existant anymore
 			if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
 			{
-				CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+				CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 				continue;
 			}
 			
@@ -740,13 +726,13 @@ class CRF_RespawnManager : ScriptComponent
 				continue;
 			
 			//Vehicle is destroyed respawn it.
-			CRF_GearscriptManager.GetInstance().SpawnVehicle(vehicle);
+			CRF_VehicleGearscriptManager.GetInstance().SpawnVehicle(vehicle);
 			continue;
 		}
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector overrideSpawnLocation[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
+	void RespawnPlayer(int playerId, vector overrideSpawnLocation[4] = CRF_EntityHelper.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
@@ -776,7 +762,7 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		// Check if the respawn menu provided a spawn point
-		if (SpawnRplID != -1 && !CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
+		if (SpawnRplID != -1)
 		{
 			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(SpawnRplID));
 			if (rplComp)
@@ -793,15 +779,14 @@ class CRF_RespawnManager : ScriptComponent
 		}
 		
 		// Use provided spawn location or fall back to factions default spawn
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]))
-			FindSpawnPointLocation(factionKey, spawnLocation);
+		FindSpawnPointLocation(factionKey, spawnLocation);
 		
 
 		// If no spawn location found, enter spectator mode
-		if (!CRF_GamemodeManager.IsValidSpawnVector(spawnLocation[3]) || GetFactionSpawnpoints(factionKey).IsEmpty())
+		if (GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
-			m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			m_GamemodeManager.InitilizePlayer(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 			return;
 		}
 		
@@ -814,7 +799,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void FindSpawnPointLocation(FactionKey factionKey, out vector spawnPointLocation[4])
 	{
-		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
 		
 		foreach (IEntity spawnPoint : m_aRespawnPoints)
 		{
@@ -839,7 +824,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void FindInitalSpawnLocation(FactionKey factionKey, SCR_AIGroup group, out vector spawnPointLocation[4])
 	{
-		spawnPointLocation = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+		spawnPointLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
 		
 		foreach (IEntity spawnPoint : m_aTempGroupSpawnPoints)
 		{
@@ -866,10 +851,10 @@ class CRF_RespawnManager : ScriptComponent
 			break;
 		}
 		
-		if (spawnPointLocation[0] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[0]
-		 && spawnPointLocation[1] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[1]
-		 && spawnPointLocation[2] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[2]
-		 && spawnPointLocation[3] == CRF_GamemodeManager.ZERO_SPAWN_VECTOR[3])
+		if (spawnPointLocation[0] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[0]
+		 && spawnPointLocation[1] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[1]
+		 && spawnPointLocation[2] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[2]
+		 && spawnPointLocation[3] == CRF_EntityHelper.ZERO_SPAWN_VECTOR[3])
 			FindSpawnPointLocation(factionKey, spawnPointLocation);
 	}
 	
@@ -942,5 +927,18 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
 		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_RespawnManager m_sInstance;
+	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_RespawnManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

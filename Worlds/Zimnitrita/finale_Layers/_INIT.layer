@@ -1,0 +1,571 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{FA02CD1FDA9A7EE4}World/Data/BTRLikeZimnitrita.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{118D26584E97D8E6}World/Data/LowResZimnitrita.nmn"
+    }
+   }
+  }
+ }
+ coords 8185.97 48.16 8212.53
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_FrontlineGamemodeManager "{68B4206FAD25CA6B}" {
+   m_BluforSide "BLUFOR"
+   m_sBluforSideNickname "ZFR"
+   m_OpforSide "OPFOR"
+   m_sOpforSideNickname "ZWC"
+   m_aZoneObjectNames {
+    "zonea"
+    "zoneb"
+    "zonec"
+    "zoned"
+    "zonee"
+   }
+   m_iZoneCaptureTime 120
+   m_iZoneUnlockTime 300
+   m_iMinNumberOfPlayersNeeded 10
+   m_iInitialTime 600
+  }
+  CRF_HighValueTargetGamemodeManager "{68B4206C32BEB013}" {
+   m_timeBetweenPings 180
+   m_aHVTEntries {
+    CRF_HVTEntry "{68B4206C279F5B28}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{C62B8D48AAA03249}Prefabs/Characters/!GS_Characters/Leadership/CRF_PL.et"
+     m_eFaction BLUFOR
+     m_sTransponderEntityName "blutracker"
+     m_sMarkerText "Commander"
+    }
+    CRF_HVTEntry "{68B4206C26D6C682}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{C62B8D48AAA03249}Prefabs/Characters/!GS_Characters/Leadership/CRF_PL.et"
+     m_eFaction OPFOR
+     m_sTransponderEntityName "opftracker"
+     m_sMarkerText "Commander"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 5
+     m_iStartingMinutes 10
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 70
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Frontline andruhanov"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Frontline andruhanov"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Respawns happen after each point is captured"\
+   ""\
+   "Please note that BLUFOR has solid color vehicles but OPFOR has camoflauged vehicles"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{68B42060157F4FFB}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F4EE1}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F4157}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F41D2}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F404C}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F40C1}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F4351}" {
+   m_sCallsign "IFV A"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F43E3}" {
+   m_sCallsign "IFV B"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F427A}" {
+   m_sCallsign "MTR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68B42060157F4551}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F45E5}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F446F}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F44E8}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F4772}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F47FB}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F478F}" {
+   m_sCallsign "IFV A"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F4618}" {
+   m_sCallsign "IFV B"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{68B42060157F46B5}" {
+   m_sCallsign "MTR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZWC_CAMPAIGN.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "68B42064A867F8D7" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity zoned : "{4EBC47B8D0D10809}Prefabs/Structures/Frontline/FlagPole_Zone_D.et" {
+ coords 12329.468 46.263 9507.713
+}
+GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
+ coords 12315.959 29.718 10293.483
+}
+GenericEntity zonec : "{73886280A5BD813E}Prefabs/Structures/Frontline/FlagPole_Zone_C.et" {
+ coords 12260.657 45.423 9864.277
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 11531.858 47.037 10092.128
+ Points {
+  ShapePoint "{68B420615C9F0C7D}" {
+   Position -43.464 0 67.151
+  }
+  ShapePoint "{68B42061520E5FF2}" {
+   Position 46.766 0 53.515
+  }
+  ShapePoint "{68B420615176AC5F}" {
+   Position 26.1 0 -73.411
+  }
+  ShapePoint "{68B4206151A19D08}" {
+   Position -66.161 0 -48.302
+  }
+ }
+}
+GenericEntity zoneb : "{96142E79A9581655}Prefabs/Structures/Frontline/FlagPole_Zone_B.et" {
+ coords 11979.337 42.829 9785.063
+}
+GenericEntity zonee : "{AB200B41DC349F62}Prefabs/Structures/Frontline/FlagPole_Zone_E.et" {
+ coords 12726.851 53.256 9653.087
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 12835.105 39.615 9860.892
+ Points {
+  ShapePoint "{68B420612CAC17CA}" {
+   Position -46.721 0 50.274
+  }
+  ShapePoint "{68B4206123C413BB}" {
+   Position 65.997 0 51.214
+  }
+  ShapePoint "{68B42061221CB9A5}" {
+   Position 61.718 0 -83.43
+  }
+  ShapePoint "{68B42061214A8938}" {
+   Position -46.193 0 -82.369
+  }
+ }
+}
+GenericEntity zonea : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
+ coords 11617.796 45.464 9644.932
+}
+$grp GenericEntity : "{FEFE7B425EA72746}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_Conflict_US_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 11607.895 44.124 9637.71
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 12721.075 51.812 9661.608
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 12322.73 44.282 9521.279
+  angles 0 80 0
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{658A80EFA3FCE805}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 11986.291 41.625 9805.428
+  {
+   GenericEntity {
+    ID "658A80EF7B5DB712"
+    {
+     GenericEntity {
+      ID "658A80E85AA7CBCE"
+      components {
+       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+        m_bAnyFactionCanUse 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

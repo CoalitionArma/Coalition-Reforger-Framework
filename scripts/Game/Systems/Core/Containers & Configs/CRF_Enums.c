@@ -1,7 +1,7 @@
 /*
 	HOW TO ADD A ROLE 101:
-	Step 1 - Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
-		CRF_GS_BLUFOR_AAR_P
+	Step 1 - Create the specified role prefab in Prefabs\Characters\!GS_Characters folder and name it with the method: CRF_GS_(Role)_P, ie: 
+		CRF_GS_AAR_P
 
 	Step 2 -  Create a role in all caps with spaces having underscores in the bellow enum class CRF_EGearRole, ie:
 		ASSISTANT_AUTOMATIC_RIFLEMAN
@@ -10,7 +10,7 @@
 		Configs\Gearscripts\CRF_Global_Roles_Config.conf
 
 		- Add a new item into the RoleConfigs array, Set the role with the role you created in step 2
-		- Add the prerequisite prefabs you made in step 1
+		- Add the prerequisite prefab you made in step 1
 		- Add whatever weapons/gear you want for your new role
 		
 	There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
@@ -69,64 +69,6 @@ enum CRF_EGearRole
 	//-------------------------------------------- OTHER -------------------------------------------------
 	ZEUS,
 	VIP
-}
-
-//------------------------------------------------------------------------------------
-// Role helper class for the above Enums
-//------------------------------------------------------------------------------------
-
-class CRF_RoleHelper
-{	
-	//------------------------------------------------------------------------------------------------
-	static CRF_EGearRole ResourceToRole(ResourceName roleResource)
-	{
-		foreach(CRF_RoleConfig roleConfig : CRF_GamemodeManager.RolesConfig().m_RoleConfigs)
-			if (roleConfig.m_RoleResource == roleResource)
-				return roleConfig.m_Role;
-		
-		return CRF_EGearRole.RIFLEMAN;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	static ResourceName RoleToResource(CRF_EGearRole role)
-	{
-		CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
-		
-		return roleConfig.m_RoleResource;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static bool IsValidGearscriptResource(ResourceName resource)
-	{
-		return resource.Contains("!GS_Characters");
-	};
-	
-	// Pulled from the respawn manager, need to find a better solution eventually^tm.
-	//------------------------------------------------------------------------------------------------
-	static bool IsSquadLeaderRole(IEntity entity)
-	{
-		ref TIntArray roles = {CRF_EGearRole.COMPANY_COMMANDER, CRF_EGearRole.PLATOON_LEADER, CRF_EGearRole.MEDICAL_OFFICER, CRF_EGearRole.SQUAD_LEAD, CRF_EGearRole.VEHICLE_LEAD, CRF_EGearRole.INDIRECT_LEAD, CRF_EGearRole.LOGI_LEAD};
-		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-		if (!IsValidGearscriptResource(prefab))
-			return false;
-
-		CRF_EGearRole role = ResourceToRole(prefab);
-
-		return roles.Contains(role);
-	}
-
-	// Pulled from the respawn manager, need to find a better solution eventually^tm.
-	//------------------------------------------------------------------------------------------------
-	static bool IsTeamLeaderRole(IEntity entity)
-	{
-		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-		if (!IsValidGearscriptResource(prefab))
-			return false;
-
-		CRF_EGearRole role = ResourceToRole(prefab);
-
-		return (role == CRF_EGearRole.TEAM_LEAD);
-	}
 }
 
 //------------------------------------------------------------------------------------------------

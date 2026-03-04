@@ -30,7 +30,7 @@ class CRF_PlantBombAction : ScriptedUserAction
 		else
 			sitePlanted = "SiteB";
 		
-		CRF_RplToAuthorityManager.GetInstance().ToggleBombPlanted(sitePlanted, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleBombPlanted(sitePlanted, true);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

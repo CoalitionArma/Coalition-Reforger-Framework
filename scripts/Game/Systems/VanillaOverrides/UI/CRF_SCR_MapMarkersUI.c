@@ -6,6 +6,11 @@ modded class SCR_PlayerControllerCommandingComponent
 		{
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		}
+		
+		//Buh...
+		CRF_GamemodeManager gamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!gamemodeManager)
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
 
 		SCR_MapMarkerMenuEntry shareMenuEntry = new SCR_MapMarkerMenuEntry();
 		shareMenuEntry.SetName("Share Map Markers");
@@ -25,6 +30,9 @@ modded class SCR_PlayerControllerCommandingComponent
 		if (!playerGroup.IsPlayerLeader(playerId) || !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
+		if (!CRF_ForwardDeployManager.GetInstance().IsForwardDeployActive(playerGroup.GetFaction().GetFactionKey()))
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+		
 		SCR_MapMarkerMenuEntry menuEntry = new SCR_MapMarkerMenuEntry();
 		menuEntry.SetName("Forward Deploy Element");
 		menuEntry.GetOnPerform().Insert(CheckIfValidSpawn);
@@ -36,7 +44,7 @@ modded class SCR_PlayerControllerCommandingComponent
 	
 	void ShareMapMarkers()
 	{
-		CRF_RplToAuthorityManager.GetInstance().ShareMapMarkers();
+		CRF_PlayerRplToAuthorityManager.GetInstance().ShareMapMarkers();
 	}
 	
 	void CheckIfValidSpawn()
@@ -47,6 +55,6 @@ modded class SCR_PlayerControllerCommandingComponent
 	        return;
 	    
 	    string factionKey = faction.GetFactionKey();
-	    CRF_RplToAuthorityManager.GetInstance().RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
+	    CRF_PlayerRplToAuthorityManager.GetInstance().RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
 	}
 }

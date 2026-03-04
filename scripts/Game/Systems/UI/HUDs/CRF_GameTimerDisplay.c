@@ -132,7 +132,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		// Skip update if essential components are missing or player is spectating
 		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity || 
 			!SCR_PlayerController.GetLocalControlledEntity() || 
-			CRF_GamemodeManager.IsSpectator()) 
+			CRF_EntityHelper.IsSpectator()) 
 		{
 			return;
 		}
@@ -158,7 +158,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Get current mission time
-		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		m_sServerWorldTime = CRF_GameTimerManager.GetInstance().GetServerWorldTime();
 		
 		// Handle invalid time or end of mission
 		if (m_sServerWorldTime == "N/A") 

@@ -1,7 +1,7 @@
 modded class EditorMenuUI
 {
 	
-	SCR_PlayerController m_PlayerController;
+	CRF_PlayerControllerManager m_PlayerControllerManager;
 	SCR_ButtonComponent m_ButtonComponent;
 	SCR_ButtonComponent m_CleanUpBodiesButton;
 	Widget m_wCrossWidget;
@@ -10,7 +10,7 @@ modded class EditorMenuUI
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
-		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		m_PlayerControllerManager = CRF_PlayerControllerManager.GetInstance();
 		m_ButtonComponent = SCR_ButtonComponent.Cast(GetRootWidget().FindAnyWidget("ListenButton").FindHandler(SCR_ButtonComponent));
 		m_wCrossWidget = GetRootWidget().FindAnyWidget("ListeningCross");
 		m_ButtonComponent.m_OnClicked.Insert(ToggleListen);
@@ -25,7 +25,7 @@ modded class EditorMenuUI
 	void CleanUpBodies()
 	{
 		CloseConfirmAction();
-		CRF_RplToAuthorityManager.GetInstance().CleanUpBodies();
+		CRF_PlayerRplToAuthorityManager.GetInstance().CleanUpBodies();
 	}
 	
 	void ConfirmAction()
@@ -51,7 +51,7 @@ modded class EditorMenuUI
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
-		if (!m_PlayerController.m_bIsListeningToSpec)
+		if (!m_PlayerControllerManager.m_bIsListeningToSpec)
 			m_wCrossWidget.SetVisible(true);
 		else
 			m_wCrossWidget.SetVisible(false);
@@ -61,11 +61,15 @@ modded class EditorMenuUI
 	{
 		super.OnMenuClose();
 		
+		// Always remove the click handler to prevent double-registration on re-open
+		if (m_ButtonComponent)
+			m_ButtonComponent.m_OnClicked.Remove(ToggleListen);
+		
 		if (!CRF_Gamemode.GetInstance())
 			return;
 		
-		m_PlayerController.m_bIsListeningToSpec = false;
-		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
+		m_PlayerControllerManager.m_bIsListeningToSpec = false;
+		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
 		CloseConfirmAction();
 	}
 	
@@ -74,7 +78,7 @@ modded class EditorMenuUI
 		if (!CRF_Gamemode.GetInstance())
 			return;
 		
-		m_PlayerController.m_bIsListeningToSpec = !m_PlayerController.m_bIsListeningToSpec;
-		CRF_RplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerController.m_bIsListeningToSpec);
+		m_PlayerControllerManager.m_bIsListeningToSpec = !m_PlayerControllerManager.m_bIsListeningToSpec;
+		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerControllerManager.m_bIsListeningToSpec);
 	}
 }

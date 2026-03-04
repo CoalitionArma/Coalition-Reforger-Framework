@@ -11,7 +11,7 @@ modded class SCR_MapEntity
 		if (SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()))
 			if (m_sFactionKey != SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() && SCR_PlayerController.GetLocalControlledEntity())
 			{
-				if (CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
+				if (CRF_EntityHelper.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
 					return;
 			
 				m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();

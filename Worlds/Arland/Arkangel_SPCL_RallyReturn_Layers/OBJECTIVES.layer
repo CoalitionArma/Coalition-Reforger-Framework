@@ -1,0 +1,13 @@
+SCR_BaseTriggerEntity killbox : "{B7AB0899A91A985D}Prefabs/Systems/ScenarioFramework/Triggers/Trigger_Base.et" {
+ coords 1516.933 0 1811.99
+ TriggerShapeType Sphere
+ SphereRadius 21.9
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		DamageManagerComponent dmg = DamageManagerComponent.Cast(ent.FindComponent(DamageManagerComponent));"\
+ "        if (dmg)"\
+ "            dmg.SetHealthScaled(0);"\
+ "    "\
+ "	"
+}

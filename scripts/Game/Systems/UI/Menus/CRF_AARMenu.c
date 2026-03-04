@@ -336,7 +336,7 @@ class CRF_AARMenu: ChimeraMenuBase
 				// Set color based on player status
 				if(SCR_Global.IsAdmin(playerId))
 					comp.SetColor(Color.Red);
-				else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
+				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
 				else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
 					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
@@ -346,7 +346,7 @@ class CRF_AARMenu: ChimeraMenuBase
 				// Set color based on player status
 				if(SCR_Global.IsAdmin(playerId))
 					comp.SetColor(Color.Red);
-				else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
+				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
 			}
 		}

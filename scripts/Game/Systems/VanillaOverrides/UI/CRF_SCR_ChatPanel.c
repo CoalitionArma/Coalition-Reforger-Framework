@@ -118,7 +118,7 @@ modded class SCR_ChatPanel : SCR_ScriptedWidgetComponent
 		}
 
 		// Check if chat is disabled, a rcon command or a message from staff
-		if (!CRF_Gamemode.GetInstance().m_bDisableChat || message.StartsWith("#") || SCR_Global.IsAdmin(senderID) || CRF_GamemodeManager.GetInstance().IsModerator(senderID))
+		if (!CRF_Gamemode.GetInstance().m_bDisableChat || message.StartsWith("#") || SCR_Global.IsAdmin(senderID) || CRF_PermissionManager.GetInstance().IsModerator(senderID))
 		{
 			if (!m_ActiveChannel.IsAvailable(chatComponent))
 			{

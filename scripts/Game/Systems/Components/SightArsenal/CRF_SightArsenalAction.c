@@ -1,6 +1,6 @@
 class CRF_SightArsenalAction: ScriptedUserAction
 {
-	CRF_GearscriptManager m_GearScriptManager;
+	CRF_Gamemode m_Gamemode;
 	CRF_SafestartManager m_SafeStartManager;
 	Faction m_PlayerFaction;
 	ref CRF_GearScriptContainer m_GearScriptContainer
@@ -8,7 +8,7 @@ class CRF_SightArsenalAction: ScriptedUserAction
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
 		m_SafeStartManager = CRF_SafestartManager.GetInstance();
-		m_GearScriptManager = CRF_GearscriptManager.GetInstance();
+		m_Gamemode = CRF_Gamemode.GetInstance();
 	}
 	
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
@@ -22,7 +22,7 @@ class CRF_SightArsenalAction: ScriptedUserAction
 		if (m_PlayerFaction != SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()))
 		{
 			m_PlayerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
-			m_GearScriptContainer = m_GearScriptManager.GetGearScriptSettings(m_PlayerFaction.GetFactionKey());
+			m_GearScriptContainer = m_Gamemode.GetGearScriptSettings(m_PlayerFaction.GetFactionKey());
 		}
 		
 		if (!m_GearScriptContainer.m_bEnableSightArsenal ||!m_SafeStartManager.GetSafestartStatus())

@@ -34,7 +34,7 @@ modded class SCR_MapMarkersUI
 	void LoadStoredMarkers()
 	{
 		// Get stored marker data from player controller
-		array<string> markerDataArray = CRF_PlayerControllerManager.GetInstance().GetScriptedMarkersArray();
+		array<string> markerDataArray = CRF_PlayerScriptedMarkerManager.GetInstance().GetScriptedMarkersArray();
 		
 		// If game is running, remove this function from call queue
 		if(SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())

@@ -1,0 +1,28 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 12661.16 191.016 4690.106
+  m_MarkerColor 0.687 0.007 0.007 1
+  m_sQuadName "cross-2"
+  m_fWorldSize 150
+  m_sDescription "BOMB SITE A"
+ }
+ {
+  coords 12470.181 173.86 4542.568
+  m_MarkerColor 0.687 0.007 0.007 1
+  m_sQuadName "cross-2"
+  m_fWorldSize 175
+  m_sDescription "BOMB SITE B"
+ }
+}
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 12469.815 173.85 4542.478
+  m_sQuadName "objective-marker-2"
+  m_sDescription "BOMB SITE B"
+ }
+ {
+  coords 12661.172 191.019 4690.191
+  m_sQuadName "objective-marker-2"
+  m_sDescription "BOMB SITE A"
+ }
+}

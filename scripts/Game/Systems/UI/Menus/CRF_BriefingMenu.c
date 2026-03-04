@@ -239,7 +239,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	 */
 	void AdvanceMenu()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
 	}
 	
 	/**
@@ -353,13 +353,13 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			return;
 		}
 
-		if (CRF_GamemodeManager.GetInstance().IsModerator(playerId))
+		if (CRF_PermissionManager.GetInstance().IsModerator(playerId))
 		{
 			comp.SetColor(Color.Yellow);
 			return;
 		}
 		
-		if (CRF_GamemodeManager.GetInstance().IsDonator(playerId))
+		if (CRF_PermissionManager.GetInstance().IsDonator(playerId))
 		{
 			comp.SetColor(Color.Violet);
 			return;
