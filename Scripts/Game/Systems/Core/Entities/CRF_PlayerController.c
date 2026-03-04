@@ -7,7 +7,7 @@ class CRF_PlayerController : SCR_PlayerController
 	vector m_vPlayersLastDeath[4];
 	
 	//Grace period from respawn to use mini arsenal in ms
-	static float GRACE_PERIOD_TIME = 10000;
+	static float GRACE_PERIOD_TIME = 60000;
 	
 	//Last time this character was respawned.
 	float m_fTimeOfLastRespawn;
