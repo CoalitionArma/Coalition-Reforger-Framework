@@ -51,7 +51,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
-		if (!m_SafeStart.GetSafestartStatus())
+		if (!m_SafeStart.GetSafestartStatus() && CRF_PlayerController.IsGracePeriodOver())
 			Close();
 		if (m_fArsenalTimeout > 0)
 			m_fArsenalTimeout -= tDelta;
