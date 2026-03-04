@@ -6,6 +6,31 @@ class CRF_PlayerController : SCR_PlayerController
 {
 	vector m_vPlayersLastDeath[4];
 	
+	//Grace period from respawn to use mini arsenal in ms
+	static float GRACE_PERIOD_TIME = 10000;
+	
+	//Last time this character was respawned.
+	float m_fTimeOfLastRespawn;
+	
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks to see if grace period is up for a respawn to use the mini arsenal
+	 * @return if the grace period is over and we have to hide the mini arsenal
+	 */
+	static bool IsGracePeriodOver()
+	{
+		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerController());
+		if (!pc)
+			return false;
+
+		float timeElapesed = GetGame().GetWorld().GetWorldTime() - pc.m_fTimeOfLastRespawn;
+		if (timeElapesed > GRACE_PERIOD_TIME)
+			return true;
+		else 
+			return false;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
@@ -19,6 +44,7 @@ class CRF_PlayerController : SCR_PlayerController
 		
 		if (!Replication.IsServer())
 		{
+			m_fTimeOfLastRespawn = GetGame().GetWorld().GetWorldTime();
 			SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 			//Let the entity init before we update global markers (For faction check purposes)
 			if (mapMarkerManager)
