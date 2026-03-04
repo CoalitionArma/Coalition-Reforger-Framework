@@ -97,7 +97,7 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
   coords 1577.017 141.717 7871.433
   Points {
    ShapePoint "{68A80E018B6423C6}" {
-    Position 99.974 -0 -263.743
+    Position 99.974 0 -263.743
    }
    ShapePoint "{68A80E018A4DDA6C}" {
     Position 66.152 0 -220.934
@@ -133,7 +133,7 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
     Position 203.595 0 27.543
    }
    ShapePoint "{68A80E01854064FD}" {
-    Position 241.204 -0 35.914
+    Position 241.204 0 35.914
    }
    ShapePoint "{68A80E01849AB435}" {
     Position 266.397 0 34.451
@@ -157,13 +157,16 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
     Position 261.378 0 -215.399
    }
    ShapePoint "{68A80E007A06B17F}" {
-    Position 214.886 -0 -278.048
+    Position 214.886 0 -278.048
    }
    ShapePoint "{68A80E007A7938F2}" {
     Position 168.34 0 -292.257
    }
    ShapePoint "{68A80E0079BC70B3}" {
     Position 122.93 0 -279.188
+   }
+   ShapePoint "{68C80AAB3B744C97}" {
+    Position 100.003 0 -263.743
    }
   }
   IsClosed 0
@@ -243,6 +246,9 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
    }
    ShapePoint "{68A80E00350BAE72}" {
     Position 108.069 0 -206.489
+   }
+   ShapePoint "{68C80AAB2FDBD209}" {
+    Position 113.017 0 -181.278
    }
   }
   IsClosed 0

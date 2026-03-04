@@ -26,10 +26,15 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	{
 		super.OnPostInit(owner);
 		
-		// Cache reference to insurgency gamemode
-		if (Replication.IsClient() || Replication.IsServer())
-			m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
+		// Cache gamemode reference on both server and client
+		m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
+		
+		// Client-only: apply visibility immediately on join, then start polling
+		if (Replication.IsClient())
+		{
+			UpdateZoneMarker();
 			GetGame().GetCallqueue().CallLater(UpdateZoneMarker, 1000, true);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -86,7 +91,6 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		if (!m_InsurgencyGamemode)
 			return false;
 		
-		// Get player's faction
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		if (!playerController)
 			return false;
@@ -115,7 +119,6 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		if (!m_InsurgencyGamemode)
 			return false;
 		
-		// Get player's faction
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		if (!playerController)
 			return false;
@@ -135,10 +138,11 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Client-only: poll and update search area map marker
 	protected void UpdateZoneMarker()
 	{
-    	CRF_PlayerControllerManager pcm = CRF_PlayerControllerManager.GetInstance();
-    	if (!pcm)
+    	CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+    	if (!psmm)
         	return;
     
     	bool shouldShow = IsCurrentVisibility();
@@ -149,7 +153,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
         	vector pos = owner.GetOrigin();
 			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
 
-	        pcm.AddScriptedMarker("Static Marker", posStr, 1000,
+	        psmm.AddScriptedMarker("Static Marker", posStr, 1000,
 	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
 	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
         	m_bMarkerActive = true;
@@ -160,13 +164,14 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
         	vector pos = owner.GetOrigin();
 			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
 
-	        pcm.RemoveScriptedMarker("Static Marker", posStr, 1000,
+	        psmm.RemoveScriptedMarker("Static Marker", posStr, 1000,
 	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
 	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
         	m_bMarkerActive = false;
     	}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
     	GetGame().GetCallqueue().Remove(UpdateZoneMarker);
