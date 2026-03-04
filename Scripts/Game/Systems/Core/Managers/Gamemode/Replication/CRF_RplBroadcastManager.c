@@ -2175,6 +2175,107 @@ class CRF_RplBroadcastManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	// EVENT LOG FEED — server broadcasts formatted event strings to all clients
+	//------------------------------------------------------------------------------------------------
+
+	/**
+	 * Broadcast a single new event entry to every connected client.
+	 * Called by CRF_EventLogManager whenever a new event is captured.
+	 * @param entry  Fully-formatted event string (timestamp + description)
+	 */
+	void BroadcastEventLogEntry(string entry)
+	{
+		// Telemetry: string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(entry);
+		LogTelemetry("BroadcastEventLogEntry", bytes);
+
+		Rpc(RpcDo_BroadcastEventLogEntry, entry);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_BroadcastEventLogEntry(string entry)
+	{
+		// Deliver to the spectator menu's event log display if it is open
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (!topMenu || !topMenu.IsInherited(CRF_SpectatorMenu))
+			return;
+
+		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(topMenu);
+		if (specMenu)
+			specMenu.AppendEventLogEntry(entry);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Send the full history buffer to a single player who just opened the spectator menu.
+	 * Sends individual entries one-by-one so the per-entry RPC handler already handles ordering.
+	 * @param targetPlayerId  The player to receive the catch-up dump
+	 * @param history         Array of formatted event strings (oldest first)
+	 */
+	void BroadcastEventLogHistory(int targetPlayerId, notnull array<string> history)
+	{
+		foreach (string entry : history)
+		{
+			// Telemetry: int + string
+			int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+			bytes    += CRF_BandwidthTelemetryManager.EstimateSize_String(entry);
+			LogTelemetry("BroadcastEventLogHistory", bytes);
+
+			#ifdef WORKBENCH
+			RpcDo_BroadcastEventLogHistoryEntry(targetPlayerId, entry);
+			#else
+			Rpc(RpcDo_BroadcastEventLogHistoryEntry, targetPlayerId, entry);
+			#endif
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_BroadcastEventLogHistoryEntry(int targetPlayerId, string entry)
+	{
+		// Only the targeted player processes history
+		if (!IsLocalPlayer(targetPlayerId))
+			return;
+
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (!topMenu || !topMenu.IsInherited(CRF_SpectatorMenu))
+			return;
+
+		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(topMenu);
+		if (specMenu)
+			specMenu.AppendEventLogEntry(entry);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Request the server to send the event log history to the local player.
+	 * Called by CRF_SpectatorMenu on open.
+	 * @param requestingPlayerId  Local player's ID
+	 */
+	void RequestEventLogHistory(int requestingPlayerId)
+	{
+		// Telemetry: int
+		LogTelemetry("RequestEventLogHistory", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+
+		#ifdef WORKBENCH
+		RpcDo_RequestEventLogHistory(requestingPlayerId);
+		#else
+		Rpc(RpcDo_RequestEventLogHistory, requestingPlayerId);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestEventLogHistory(int requestingPlayerId)
+	{
+		CRF_EventLogManager elm = CRF_EventLogManager.GetInstance();
+		if (elm)
+			elm.SendHistoryToPlayer(requestingPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected static CRF_RplBroadcastManager m_sInstance;
 	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
 	{

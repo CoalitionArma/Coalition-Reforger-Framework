@@ -184,14 +184,14 @@ FrameWidgetClass {
    Name "ChatHud"
    Slot FrameWidgetSlot "{58731DB272499DED}" {
     Anchor 0 0 1 1
-    PositionX 1.28
-    OffsetLeft 1.28
-    PositionY 11.09
-    OffsetTop 11.09
+    PositionX 0.741
+    OffsetLeft 0.741
+    PositionY -2.378
+    OffsetTop -2.378
     SizeX 0
-    OffsetRight -1.28
+    OffsetRight -0.74
     SizeY 0
-    OffsetBottom -11.09
+    OffsetBottom 2.378
    }
    {
     OverlayWidgetClass "{585F053862A9FD1C}" {
@@ -1320,6 +1320,131 @@ FrameWidgetClass {
     OffsetRight -175
     SizeY 90
     OffsetBottom 20
+   }
+  }
+  FrameWidgetClass "{68C847D0E8A1BC59}" {
+   Name "GlobalEventLog"
+   Slot FrameWidgetSlot "{68C847D0E8A1BC51}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -776
+    OffsetLeft -776
+    PositionY -338
+    OffsetTop -338
+    SizeX 500
+    OffsetRight 276
+    SizeY 500
+    OffsetBottom -162
+   }
+   Clipping False
+   components {
+    CRF_GlobalEventLogDisplay "{68C847D0E8A1BC42}" {
+    }
+   }
+   {
+    ImageWidgetClass "{68C847D0E8A1BC41}" {
+     Name "SliderBGB"
+     Slot FrameWidgetSlot "{68C847D0E8A1BC3A}" {
+      Anchor 0 0 1 1
+      PositionX 125
+      OffsetLeft 125
+      PositionY -27
+      OffsetTop -27
+      SizeX -241
+      OffsetRight 116
+      SizeY -469
+      OffsetBottom 496
+     }
+     Color 0.133 0.133 0.133 0.353
+     Texture "{123C22FEC78BBCF7}UI/Images/UIElements/tab.edds"
+     Size 640 360
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{68C847D0E8A1BC34}" {
+     Name "ArrowB"
+     Slot FrameWidgetSlot "{68C847D0E8A1BC29}" {
+      Anchor 0 0 1 1
+      PositionX 226
+      OffsetLeft 226
+      PositionY -36
+      OffsetTop -36
+      SizeX -440
+      OffsetRight 214
+      SizeY -448
+      OffsetBottom 484
+     }
+     Color 1 1 1 0.353
+     Rotation 180
+     Texture "{D45AE7F19DBF4021}UI/Textures/InventoryIcons/Medical/lines_UI.edds"
+     Size 64 64
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{68C847D0E8A1BC1E}" {
+     Name "EventLogBG"
+     Slot FrameWidgetSlot "{68C847D0E8A1BC13}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.4
+     Color 0.047 0.047 0.047 1
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    TextWidgetClass "{68C847D0E8A1BC09}" {
+     Name "EventLogTitle"
+     Slot FrameWidgetSlot "{68C847D0E8A1BC02}" {
+      Anchor 0 0 1 0
+      PositionX 3
+      OffsetLeft 3
+      PositionY 4
+      OffsetTop 4
+      SizeX 0
+      OffsetRight -3
+      SizeY 20
+      OffsetBottom -24
+     }
+     Color 1 1 1 0.6
+     Text "EVENT LOG"
+     "Font Size" 160
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{68C847D0E8A1BCFE}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 2
+      ShadowSize 12
+      ShadowColor 0 0 0 0.7
+      ShadowOffset 0 0
+     }
+    }
+    ScrollLayoutWidgetClass "{68C847D0E8A1BCEB}" {
+     Name "EventLogScrollPanel"
+     Slot FrameWidgetSlot "{68C847D0E8A1BCEC}" {
+      Anchor 0 0 1 1
+      PositionX 3
+      OffsetLeft 3
+      PositionY -20
+      OffsetTop -20
+      SizeX 0
+      OffsetRight -3
+      SizeY 20
+      OffsetBottom 0
+     }
+     {
+      VerticalLayoutWidgetClass "{68C847D0E8A1BCE6}" {
+       Name "EventLogList"
+       Slot LayoutSlot "{68C847D0E8A1BCDE}" {
+       }
+      }
+     }
+    }
    }
   }
  }

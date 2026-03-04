@@ -16,6 +16,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
+	protected FrameWidget m_wFrameEventLog;                  // Frame for the event log feed (slides up from bottom)
 	protected FrameWidget m_wSlotWarning;                  	 // Frame for displaying the button to open slotting
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
@@ -89,6 +90,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bWarningDismissed = false;
 	
 	protected CRF_EntityInfoDisplay m_EntityInfoDisplay;
+
+	// Global event log feed (kills, uncons, mission events)
+	protected CRF_GlobalEventLogDisplay m_EventLogDisplay;
 	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
@@ -156,6 +160,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		Widget entityInfoDisplay = m_wRoot.FindAnyWidget("EntityInfoDisplay");
 		m_EntityInfoDisplay = CRF_EntityInfoDisplay.Cast(entityInfoDisplay.FindHandler(CRF_EntityInfoDisplay));
 		
+		// Bind global event log display component and request catch-up history from server
+		Widget wEventLog = m_wRoot.FindAnyWidget("GlobalEventLog");
+		if (wEventLog)
+		{
+			m_EventLogDisplay = CRF_GlobalEventLogDisplay.Cast(wEventLog.FindHandler(CRF_GlobalEventLogDisplay));
+			if (m_EventLogDisplay)
+			{
+				int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+				if (broadcastManager && localPlayerId > 0)
+					broadcastManager.RequestEventLogHistory(localPlayerId);
+			}
+		}
+		
 		// Initialize VON (Voice Over Network)
 		if (!CVON_VONGameModeComponent.GetInstance())
 			InitVON();
@@ -179,7 +197,19 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	{
 		m_bWarningDismissed = true;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Called by CRF_RplBroadcastManager RPCs to push a new event entry into the feed.
+	 * Safe to call even when the event log widget is not present in the current layout.
+	 * @param entry  Fully-formatted event string from the server
+	 */
+	void AppendEventLogEntry(string entry)
+	{
+		if (m_EventLogDisplay)
+			m_EventLogDisplay.AppendEntry(entry);
+	}
+
 	/**
 	 * Registers all action listeners for the menu
 	 */
@@ -252,6 +282,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wSlotSelector = m_wRoot.FindAnyWidget("SlotSelector");
 		m_wFrameChannels = FrameWidget.Cast(m_wRoot.FindAnyWidget("VONSlots"));
 		m_wFrameGameInfo = FrameWidget.Cast(m_wRoot.FindAnyWidget("GameInfo"));
+		m_wFrameEventLog = FrameWidget.Cast(m_wRoot.FindAnyWidget("GlobalEventLog"));
 		
 		// Register faction button click handlers
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wBluforButton).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionBlufor);
@@ -922,6 +953,56 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			FrameSlot.SetPosX(m_wFrameGameInfo, leftGameInfoX);
 			m_wRoot.FindAnyWidget("SliderBGLL").SetVisible(true);
 			m_wRoot.FindAnyWidget("ArrowLL").SetVisible(true);
+		}
+		
+		// Update event log panel visibility (slides up from bottom-center).
+		//
+		// Layout (Anchor 0.5 1 0.5 1):
+		//   Frame left  screen X = sX*0.5 + GetPosX()     (GetPosX returns OffsetLeft)
+		//   Frame width = 500px  (OffsetLeft -776, OffsetRight 276 → width 500)
+		//   SliderBGB (tab): OffsetLeft 125, OffsetRight 116 inside the 500-wide frame.
+		//   Tab overhang above frame top: SliderBGB OffsetTop -27.
+		//
+		// Hidden floor: OffsetTop -338.  Shown ceiling: -338 - 500 = -838.
+		if (m_wFrameEventLog)
+		{
+			float eventLogPosX = FrameSlot.GetPosX(m_wFrameEventLog);
+			float eventLogPosY = FrameSlot.GetPosY(m_wFrameEventLog);
+			
+			// Frame left edge in screen space (anchor is sX*0.5, OffsetLeft is signed)
+			// Frame width = 500px (OffsetLeft -776, OffsetRight 276 → 276-(-776)=... → 500 by layout)
+			float frameLeft  = sX * 0.5 + eventLogPosX;
+			
+			// Tab is SliderBGB: OffsetLeft 125, OffsetRight 116 inside the 500px frame
+			float tabLeft   = frameLeft + 125;
+			float tabRight  = frameLeft + 500 - 116; // frameLeft + 384
+			
+			// Tab overhangs 27px above the frame's top edge; allow 27px below too for easy targeting
+			float tabTop    = sY + eventLogPosY - 27;
+			float tabBottom = sY + eventLogPosY + 27;
+			
+			if (x >= tabLeft && x <= tabRight && y >= tabTop && y <= tabBottom)
+			{
+				// Slide panel up
+				eventLogPosY -= tDelta * 2400.0;
+				if (eventLogPosY < -838)
+					eventLogPosY = -838;
+				
+				FrameSlot.SetPosY(m_wFrameEventLog, eventLogPosY);
+				m_wRoot.FindAnyWidget("SliderBGB").SetVisible(false);
+				m_wRoot.FindAnyWidget("ArrowB").SetVisible(false);
+			}
+			else
+			{
+				// Slide panel back down
+				eventLogPosY += tDelta * 2400.0;
+				if (eventLogPosY > -338)
+					eventLogPosY = -338;
+				
+				FrameSlot.SetPosY(m_wFrameEventLog, eventLogPosY);
+				m_wRoot.FindAnyWidget("SliderBGB").SetVisible(true);
+				m_wRoot.FindAnyWidget("ArrowB").SetVisible(true);
+			}
 		}
 	}
 	

@@ -159,6 +159,11 @@ modded class SCR_DataCollectorComponent
 		// Logging player kill to file
 		if (LM)
 			LM.LogPlayerKill(instigatorContextData);
+
+		// Broadcast kill event to the spectator event feed
+		CRF_EventLogManager elm = CRF_EventLogManager.GetInstance();
+		if (elm)
+			elm.OnPlayerKilled(instigatorContextData);
 		
 		if (instigatorContextData.GetVictimPlayerID() <= 0) {
 			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);
