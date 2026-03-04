@@ -1,0 +1,154 @@
+$grp SCR_FactionControlTriggerEntity {
+ supply {
+  coords 14979.932 52.684 5302.23
+  userScript "	bool msg_sent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 75
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		if (msg_sent == false)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"INDFOR have taken Varpadany\", 15);"\
+  "			CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "			respawnManager.RespawnAllSides();"\
+  "			msg_sent = true;"\
+  "		}"\
+  "	"
+  m_aOwnerFactionKeys {
+   "INDFOR"
+  }
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+ }
+ military {
+  coords 15487.633 52.125 4503.803
+  userScript "	bool msg_sent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 100
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		if (msg_sent == false)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"INDFOR have taken the military base\", 15);"\
+  "			msg_sent = true;"\
+  "		}"\
+  "	"
+  m_aOwnerFactionKeys {
+   "INDFOR"
+  }
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+ }
+}
+GenericEntity : "{962EB289CF844AA2}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_06.et" {
+ coords 14977.503 52.723 5302.761
+ angles 0 29.642 0
+ {
+  GenericEntity {
+   ID "5D45393949376AB5"
+   {
+    GenericEntity {
+     ID "5D4539397A9246E8"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 400
+         m_bEnableResourceGain 1
+         m_fResourceGain 0.3
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D4539397A9246EE"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 400
+         m_bEnableResourceGain 1
+         m_fResourceGain 0.3
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{D4DDD345A352E97B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_US_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D150EC47E}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 15454.306 52.125 4488.327
+ angles 0 164.102 0
+ {
+  GenericEntity {
+   ID "5D3706BE0D29BB11"
+   components {
+    SCR_MilitaryBaseAreaMeshComponent "{5CB0DBC6ABC24251}" {
+     Enabled 0
+    }
+    SCR_MilitaryBaseComponent "{5CB0DBC6A4CEAB7F}" {
+     Enabled 0
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D3706BEFB667678"
+     components {
+      SCR_CapturePointAreaMeshComponent "{5CB66A11876D0205}" {
+       Enabled 0
+      }
+      SCR_SeizingComponent "{5CB66A118D01098D}" {
+       Enabled 0
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D2F37FC42AB"
+   {
+    GenericEntity {
+     ID "5D371AC8D914191C"
+     components {
+      SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+       m_bAnyFactionCanUse 1
+      }
+      SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+       "faction affiliation" "BLUFOR"
+      }
+     }
+    }
+   }
+  }
+  SCR_SpawnPoint {
+   ID "5D8AF9E44A46E605"
+   components {
+    SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+     Enabled 0
+    }
+    SCR_SpawnPointAreaMeshComponent "{56C25DC99E04349A}" {
+     Enabled 0
+    }
+   }
+   m_bSpawnPointEnabled 0
+  }
+ }
+}
