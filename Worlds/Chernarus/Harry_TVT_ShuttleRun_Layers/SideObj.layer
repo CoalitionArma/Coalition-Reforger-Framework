@@ -1,0 +1,694 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4827.852 254.353 6720.749
+  m_rVehicle "{A78D786EFFDDC8FD}Prefabs/Vehicles/Wheeled/2B9/TF_Wheeled_2B9.et"
+  m_sFactionKey "SPEC"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4836.872 254.068 6722.357
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "SPEC"
+  m_bShouldRespawnOnSideRespawn 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CE1D6365F50}" {
+    m_Prefab "{95544A428439B73E}Prefabs/Weapons/Magazines/2B9/Magazine__82mm_2B9_HE.et"
+    m_iAmountOfItemSupplyTruck 15
+    m_iAmountOfItemRegularVehicle 15
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CE0097B6343}" {
+    m_Prefab "{AE998243157183A5}Prefabs/Weapons/Magazines/2B9/Magazine__82mm_2B9_Smoke.et"
+    m_iAmountOfItemSupplyTruck 10
+    m_iAmountOfItemRegularVehicle 10
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68AF7CE50FC6D95C}" {
+    m_Prefab "{DD96BA1FF0C2E5CD}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_USSR_2B9.et"
+    m_iAmountOfItemSupplyTruck 4
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
+ }
+ {
+  coords 4827.529 254.358 6713.412
+  m_rVehicle "{A78D786EFFDDC8FD}Prefabs/Vehicles/Wheeled/2B9/TF_Wheeled_2B9.et"
+  m_sFactionKey "SPEC"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2557.939 300.373 6462.345
+  angles 0 -86.502 0
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
+  m_sFactionKey "CIV"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4965.531 310.615 5611.484
+  angles 0 36.541 0
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
+  m_sFactionKey "CIV"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2697.743 242.109 5920.48
+  angles 0 -35.842 0
+  m_rVehicle "{160AB3157C856426}Prefabs/Vehicles/Helicopters/KA-27/KA-27PV_Marines_UPK23-UB1657.et"
+  m_sFactionKey "CIV"
+ }
+}
+PolylineShapeEntity {
+ coords 2690.275 240.533 5935.51
+ angles 3.564 -26.858 -6.78
+ Points {
+  ShapePoint "{68AF7CE4C958937D}" {
+   Position -12.315 0 6.362
+  }
+  ShapePoint "{68AF7CE4C84A3611}" {
+   Position 15.912 0 7.266
+  }
+  ShapePoint "{68AF7CE4CF571C24}" {
+   Position 17.837 0 -37.635
+  }
+  ShapePoint "{68AF7CE4CDA6503E}" {
+   Position -16.075 0 -37.984
+  }
+  ShapePoint "{68AF7CE4CCA28013}" {
+   Position -19.175 0 4.894
+  }
+ }
+ LineColor 0 0 0 0
+ {
+  WallGeneratorEntity : "{DC02082051FDEC54}Prefabs/WEGenerators/Walls/Net/WG_NetFence_USSR_01_poles.et" {
+   Flags 0x100003 0
+   coords 0 0 0
+   m_iSeed 20274
+   {
+    $grp SCR_DestructibleEntity : "{2CA940B210EDA36E}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_6m_V2.et" {
+     {
+      coords -11.203 0.576 6.468
+      angles 0.8 -2.055 -1.791
+     }
+     {
+      coords -5.349 -0.04 6.626
+      angles 0.88 -1.842 -0.028
+     }
+     {
+      coords 0.5 -0.733 6.773
+      angles 0.88 -1.842 -0.028
+     }
+     {
+      coords 6.418 -0.855 6.955
+      angles 1.717 -1.967 -0.94
+     }
+     {
+      coords 12.435 -0.713 7.242
+      angles 0.19 83.789 1.747
+     }
+     {
+      coords 13.138 -0.401 1.351
+      angles 0.972 83.708 0.77
+     }
+     {
+      coords 13.818 -0.248 -4.543
+      angles 0 83.625 0
+     }
+     {
+      coords 14.488 -0.167 -10.442
+      angles -0.099 83.548 -0.878
+     }
+     {
+      coords 15.154 -0.108 -16.339
+      angles 0 83.625 0
+     }
+     {
+      coords 15.81 -0.113 -22.238
+      angles 0 83.625 0
+     }
+     {
+      coords 16.466 -0.075 -28.128
+      angles 0.877 83.614 -0.106
+     }
+     {
+      coords 17.215 -0.063 -34.098
+      angles 0 173.055 0
+     }
+     {
+      coords 11.353 0.134 -34.807
+      angles 0.116 172.971 0.876
+     }
+     {
+      coords 5.49 0.356 -35.507
+      angles 0.877 173.064 -0.107
+     }
+     {
+      coords -0.377 0.562 -36.208
+      angles 0.877 173.064 -0.107
+     }
+     {
+      coords -6.239 0.807 -36.906
+      angles 0.765 173.139 -0.985
+     }
+     {
+      coords -12.163 1.118 -37.684
+      angles 1.017 -99.259 0.723
+     }
+     {
+      coords -13.093 1.223 -31.839
+      angles 1.017 -99.259 0.723
+     }
+     {
+      coords -14.019 1.373 -25.987
+      angles 0.142 -99.284 0.872
+     }
+     {
+      coords -14.941 1.525 -20.14
+      angles 1.163 -99.323 1.597
+     }
+     {
+      coords -15.87 1.621 -14.297
+      angles -0.729 -99.314 1.021
+     }
+     {
+      coords -16.812 1.63 -8.457
+      angles -1.598 -99.348 1.171
+     }
+     {
+      coords -17.755 1.584 -2.624
+      angles -2.464 -99.386 1.321
+     }
+    }
+    SCR_DestructibleEntity : "{A786DACFAA0BE670}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_D_start.et" {
+     coords -12.215 0.672 6.438
+     angles 0.8 -2.055 -1.791
+    }
+    SCR_DestructibleEntity : "{D7BDCA21659E98D8}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_D_end.et" {
+     coords -18.727 1.482 3.304
+     angles -2.464 -99.386 1.321
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+ coords 4792.635 255.509 6686.798
+ angles 1.86 8.519 5.688
+}
+$grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUS_01.et" {
+ {
+  coords 4827.958 254.383 6712.139
+ }
+ {
+  coords 4827.904 254.383 6721.169
+ }
+}
+GenericEntity : "{22BAB94CDC250B13}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/ExplosivesCache.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{65753B3B22963A12}" {
+     SlotTemplate EquipmentStorageSlot helmet {
+      Prefab "{8951045BFE8BC8E4}Prefabs/Characters/HeadGear/FPV_Goggles.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{65753B3B22963A1B}" {
+     SlotTemplate EquipmentStorageSlot shirt {
+      Prefab "{E2434ED1318D8476}Prefabs/Characters/Items/DroneController.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{65753B3B229639C6}" {
+     SlotTemplate EquipmentStorageSlot light {
+      Prefab "{1602B2595AC224FB}Prefabs/Drones/FPVBase/FPVBattery.et"
+     }
+    }
+    MultiSlotConfiguration "{68AF7CED785CB252}" {
+     SlotTemplate EquipmentStorageSlot FPV {
+      Prefab "{5C91869F5F0CBBA9}Prefabs/Drones/FPVBase/FPVPlaceHolderRPG.et"
+     }
+     NumSlots 3
+    }
+    MultiSlotConfiguration "{68AF7CED55D41FC4}" {
+     SlotTemplate EquipmentStorageSlot Reg {
+      Prefab "{2A283EA7BADDBD28}Prefabs/Drones/FPVBase/FPVBase.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68AF7CEC38CBF07F}" {
+     SlotTemplate EquipmentStorageSlot command {
+      Prefab "{6356BFD802DEB290}Prefabs/Characters/Items/DroneCommandStation.et"
+     }
+     NumSlots 1
+    }
+   }
+  }
+ }
+ coords 4075.774 324.23 6354.532
+}
+GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
+ coords 4823.459 253.946 6702.065
+ angles 0 177.065 0
+}
+GenericEntity : "{3CD490132ECE6645}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_03.et" {
+ coords 4787.11 256.118 6686.484
+ angles 0 -146.976 0
+}
+$grp GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ {
+  coords 4805.298 254.981 6715.276
+ }
+ {
+  coords 2663.015 239.842 5921.446
+  angles 1.807 0.36 -2.671
+  {
+   GenericEntity {
+    ID "5D088D25691EE976"
+    coords -0.605 -0.008 -3.322
+    angles 0.53 19.811 1.148
+   }
+   GenericEntity {
+    ID "5D371AC8408F65B6"
+    coords 0 0 0
+    angles 1.863 -178.831 -2.632
+   }
+   GenericEntity {
+    ID "5D088D25691EE908"
+    coords 1.449 -0.007 3.263
+    angles -0.669 -48.972 -0.59
+    {
+     DecalEntity {
+      ID "56E0B29E01E2AC90"
+      coords 0 0 0
+      angles 0 -28.841 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D088D25691EE964"
+    coords -0.475 -0.002 -2.884
+    angles 0.967 -85.511 -0.815
+    {
+     DecalEntity {
+      ID "56DEFDB4A9499F9B"
+      coords 0 0 0
+      angles 0 3.306 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D088D25691EE881"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5D088D0C0D2DE29E"
+    coords 1.432 -0.047 -3.862
+    angles 0.549 18.851 1.138
+   }
+   GenericEntity {
+    ID "5DCAAA1BE0ED70D1"
+    coords 2.697 0 -0.086
+    angles 0 -36.655 0
+   }
+   GenericEntity {
+    ID "5DCAAA1BE0ED7135"
+    coords -2.787 0.042 -1.856
+    angles -0.228 14.46 0.864
+   }
+   GenericEntity {
+    ID "5D088D25691EE925"
+    coords -4.42 0.073 -1.046
+    angles 0.533 -17.695 1.707
+    {
+     DecalEntity {
+      ID "56DF08929A14FB98"
+      coords 0 0 0
+      angles 0 -54.228 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D088D25691EE932"
+    coords -5.858 0.118 -1.776
+    angles 0.993 -34.095 1.487
+    {
+     DecalEntity {
+      ID "56DF08929A14FB98"
+      coords 0 0 0
+      angles 0 -37.824 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5D088D0C0D2DE2B9"
+    coords -2.331 -0.107 6.196
+    angles 2.768 -92.215 2.597
+   }
+   GenericEntity {
+    ID "5D088D0C0D2DE2E9"
+    coords 4.03 -0.003 6.067
+    angles -3.033 -76.049 1.066
+   }
+  }
+ }
+}
+$grp GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ {
+  coords 4821.762 254.103 6713.067
+  angles -0.022 -91.772 -0.818
+ }
+ {
+  coords 4821.478 254.199 6722.253
+  angles 0.867 -91.786 -0.923
+ }
+}
+GenericEntity : "{8E49E48C2BD0BFE3}Prefabs/Compositions/Slotted/SlotFlatSmall/AmmoStorage_S_FIA_01.et" {
+ coords 4079.271 323.77 6356.584
+ angles 0 -116.218 0
+ {
+  GenericEntity {
+   ID "5D1ED91AAC33FFF0"
+   {
+    GenericEntity {
+     ID "5D371ACA25245B28"
+     components {
+      MeshObject "{56F2C6D1431AD85A}" {
+       Enabled 0
+      }
+      SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+       Enabled 0
+      }
+      UniversalInventoryStorageComponent "{56F2C6D15FE6C4CE}" {
+       Enabled 0
+       MultiSlots {
+        MultiSlotConfiguration "{68AF7CEF3193394B}" {
+         SlotTemplate EquipmentStorageSlot Headset {
+          Prefab "{8951045BFE8BC8E4}Prefabs/Characters/HeadGear/FPV_Goggles.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF08CB3825}" {
+         SlotTemplate EquipmentStorageSlot Controller {
+          Prefab "{E2434ED1318D8476}Prefabs/Characters/Items/DroneController.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF468D4581}" {
+         SlotTemplate EquipmentStorageSlot FPV {
+          Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+         }
+         NumSlots 2
+        }
+        MultiSlotConfiguration "{68AF7CEFAD7AE273}" {
+         SlotTemplate EquipmentStorageSlot Regular {
+          Prefab "{2A283EA7BADDBD28}Prefabs/Drones/FPVBase/FPVBase.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF9F2C2146}" {
+         SlotTemplate EquipmentStorageSlot Battery {
+          Prefab "{1602B2595AC224FB}Prefabs/Drones/FPVBase/FPVBattery.et"
+         }
+         NumSlots 1
+        }
+       }
+      }
+      ActionsManagerComponent "{56F2C6D1431ADB12}" {
+       ActionContexts {
+        UserActionContext "{68AF7CEEA39D46D8}" {
+         ContextName "Open"
+         Position PointInfo "{68AF7CEEAA4B1D9C}" {
+          Offset 0 0.8826 0
+         }
+        }
+       }
+       additionalActions {
+        SCR_OpenStorageAction "{58EE8EA3E900BE40}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1ED91AAC33FEC9"
+   {
+    GenericEntity {
+     ID "5D371ACA12DB6B57"
+     components {
+      MeshObject "{56F2C6D1431AD85A}" {
+       Enabled 0
+      }
+      SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+       Enabled 0
+      }
+      UniversalInventoryStorageComponent "{56F2C6D15FE6C4CE}" {
+       Enabled 0
+       MultiSlots {
+        MultiSlotConfiguration "{68AF7CEF3193394B}" {
+         SlotTemplate EquipmentStorageSlot Headset {
+          Prefab "{8951045BFE8BC8E4}Prefabs/Characters/HeadGear/FPV_Goggles.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF08CB3825}" {
+         SlotTemplate EquipmentStorageSlot Controller {
+          Prefab "{E2434ED1318D8476}Prefabs/Characters/Items/DroneController.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF468D4581}" {
+         SlotTemplate EquipmentStorageSlot FPV {
+          Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+         }
+         NumSlots 2
+        }
+        MultiSlotConfiguration "{68AF7CEFAD7AE273}" {
+         SlotTemplate EquipmentStorageSlot Regular {
+          Prefab "{2A283EA7BADDBD28}Prefabs/Drones/FPVBase/FPVBase.et"
+         }
+         NumSlots 1
+        }
+        MultiSlotConfiguration "{68AF7CEF9F2C2146}" {
+         SlotTemplate EquipmentStorageSlot Battery {
+          Prefab "{1602B2595AC224FB}Prefabs/Drones/FPVBase/FPVBattery.et"
+         }
+         NumSlots 1
+        }
+       }
+      }
+      ActionsManagerComponent "{56F2C6D1431ADB12}" {
+       ActionContexts {
+        UserActionContext "{68AF7CEEA39D46D8}" {
+         ContextName "Open"
+         Position PointInfo "{68AF7CEEAA4B1D9C}" {
+          Offset 0 0.8725 0
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+StaticModelEntity : "{A984D376401A88ED}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Utility/E_Helipad_Lights_USSR_01.et" {
+ coords 2698.527 1.742 5919.923
+ angles 0 -35.834 0
+ {
+  GenericEntity {
+   ID "5D1EB45A4E161DE0"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords -0.024 -1.286 0.092
+     angles -3.066 -0.305 5.702
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DE9"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords 0.022 0.566 0.025
+     angles -3.175 -0.477 6.969
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DEA"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords 0.027 -0.803 0.057
+     angles 2.582 -0.379 -6.814
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DEB"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords -0.034 -0.427 0.048
+     angles -1.812 -0.339 7.057
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DED"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords -0.031 -0.144 0.048
+     angles 2.792 -0.303 -5.841
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DEE"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords -0.026 0.006 0.073
+     angles 8.243 0.36 1.838
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DEF"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords 0.025 -0.766 0.058
+     angles 5.947 0.308 2.556
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45A4E161DF5"
+   {
+    GenericEntity {
+     ID "5A26B380A63C2147"
+     coords -0.027 0.242 0.072
+     angles 2.393 -0.294 -6.015
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E92E7227A7E45AB"
+   coords 0.001 0.011 0.251
+   angles 2.368 -0.294 -6.024
+  }
+ }
+}
+$grp GenericEntity : "{B51CE80A9EEF7E00}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_01.et" {
+ {
+  coords 4833.939 253.65 6705.03
+  angles 0 178.358 0
+  {
+   GameEntity {
+    ID "58ECA7C4B7DD8A9A"
+    coords -0.67 1.188 1.066
+   }
+   GenericEntity {
+    ID "58ECA7C4B7DDA478"
+    coords -0.071 -0.1 0.8
+   }
+   GenericEntity {
+    ID "58ECA7C4B7DD1C64"
+    coords 1.771 -0.1 0.875
+   }
+   GenericEntity {
+    ID "58ECA7C4B7DDA477"
+    coords -1.295 -0.1 0.346
+    angles 0 91.835 0
+   }
+   GenericEntity {
+    ID "58ECA7C4B7DDA475"
+    coords -1.291 -0.1 -0.792
+    angles 0 88.623 0
+   }
+   StaticModelEntity {
+    ID "58ECA7C4B7DD1C66"
+    coords 0.889 -0.1 1.146
+   }
+   StaticModelEntity {
+    ID "58ECA7C4B7DDA476"
+    coords -1.107 -0.1 -0.498
+    angles 0 90 0
+   }
+  }
+ }
+ {
+  coords 4796.921 254.731 6688.638
+  angles 0 169.453 0
+ }
+}
+GenericEntity : "{D948DCEA222BF12E}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_02.et" {
+ coords 4829.596 253.619 6704.177
+ angles 0 3.274 0
+ {
+  GameEntity {
+   ID "59B6901FC8C71E8C"
+   coords 1.823 1.272 -0.31
+  }
+  GenericEntity {
+   ID "59A2EDE55B810E95"
+   coords -1.526 0 -0.375
+   angles 0 179.623 0
+   {
+    GenericEntity {
+     ID "59A2EA8548F2D78C"
+     coords -0.322 0.71 0.08
+     angles 0 -5.501 0
+    }
+    GenericEntity {
+     ID "59A2EA8548F2D78F"
+     coords 0.701 0.47 0.043
+     angles 0 169.405 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59A2DAE3F37E9388"
+   coords 1.817 0 -0.076
+   angles 0 -15.497 0
+  }
+  GenericEntity {
+   ID "59A2DAE3F37E938E"
+   coords 0.059 0 -0.382
+   angles 0 179.093 0
+  }
+  StaticModelEntity {
+   ID "59A2DAE3F37E5087"
+   coords -0.567 0 -0.443
+   angles 0 -6.35 0
+  }
+  StaticModelEntity {
+   ID "59A2DAE3F37E5088"
+   coords 0.968 0 0.372
+   angles 0 -11.792 0
+  }
+  StaticModelEntity {
+   ID "59A2DAE3F37E16DE"
+   coords -1.268 0 0.11
+   angles 0 9.695 0
+  }
+  StaticModelEntity {
+   ID "59A2DAE3F37E16DF"
+   coords 1.483 0 -0.302
+   angles 0 -11.536 0
+  }
+ }
+}
+GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ coords 4782.174 256.575 6687.921
+ angles 0 -173.312 0
+}
+GenericEntity : "{E249C09D69AAE6C8}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_02.et" {
+ coords 4826.341 254.579 6729.935
+}

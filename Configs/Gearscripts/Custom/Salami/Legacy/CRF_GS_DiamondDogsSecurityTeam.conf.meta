@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E4C04C01B99C8025}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogsSecurityTeam.conf"
+ Name "{E4C04C01B99C8025}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_DiamondDogsSecurityTeam.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{55E059EFC4E71234}Configs/Gearscripts/Custom/Salami/CRF_GS_ModernRussian.conf"
+ Name "{55E059EFC4E71234}Configs/Gearscripts/Custom/Salami/Legacy/CRF_GS_ModernRussian.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,0 +1,286 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 4471.058 212.616 1290.248
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+     m_iStartingMinutes 28
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 30
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 90
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 0
+ m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Insurgents have kidnapped a VIP who was touring the Akhund pyramids. Blufor is rerouting the nearest local force to mount a rescue attempt. "\
+   ""\
+   "BLUFOR Composition: Motorized Inf"\
+   "BLUFOR Assets: 1x Armed Humvee per squad, Indirect Team"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time: 90 minutes"\
+   "Weather: Day Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Get to the Akhund area, and search for the VIP. Get him to the nearest FOB alive."\
+   ""\
+   "MM notes:"\
+   "Indirect team will get an m777, and a mortar. The mortar has PGMs to use in conjuction with the FO SOFLAM. Consider both weapons when deploying. "
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey ""
+ m_sFactionTwoKey ""
+ m_BluforSlots {
+  CRF_SlottingGroup "{68B8F5C9136A842C}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7AA0}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    FORWARD_OBSERVER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A79DE}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7939}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7804}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7F9A}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    FORWARD_OBSERVER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7F29}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7E49}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7DF0}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7D0E}" {
+   m_sCallsign "Mortar"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{68B8F5C9136A7C9F}" {
+   m_sCallsign "Zeus"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68B8F5C9136A73DA}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 25
+ m_iOPFORTickets -1
+ m_iINDFORTickets 100
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D45EEC92AAD87C87}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags_SOFLAM.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{D45EEC92AAD87C87}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_UCP_sandbags_SOFLAM.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{DBA9B537AA307428}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgent_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "68B8F5CB30870E21" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

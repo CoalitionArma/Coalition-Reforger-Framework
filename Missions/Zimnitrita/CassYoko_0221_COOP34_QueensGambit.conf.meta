@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{9A07574562A10588}Missions/Zimnitrita/CassYoko_0221_COOP34_QueensGambit.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

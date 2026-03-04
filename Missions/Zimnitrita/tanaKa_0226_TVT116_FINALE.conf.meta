@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{870CD2556BA86D6C}Missions/Zimnitrita/tanaKa_0226_TVT116_FINALE.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

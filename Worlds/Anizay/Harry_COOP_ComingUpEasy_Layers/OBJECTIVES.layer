@@ -1,0 +1,149 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 3659.177 190.466 1487.331
+  angles 0 78.863 0
+  m_rVehicle "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 3667.154 190.467 1453.75
+  angles 0 78.863 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1398.025 127.206 5464.228
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.04 126.478 5458.762
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.056 125.578 5452.922
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.072 124.666 5447.071
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.086 123.885 5442.051
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1395.276 130.658 5496.051
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1394.854 129.721 5484.754
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1394.635 129.113 5478.908
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1395.072 130.315 5490.59
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+$grp DecalEntity : "{1DC3A792132D86CB}Prefabs/Decals/Blood/BloodStain_Large_02.et" {
+ {
+  coords 2446.642 0.151 1114.596
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2440.957 0.151 1109.246
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2444.035 0.125 1111.479
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2446.69 0.151 1110.976
+  angles -90 -180 -180
+  scale 1.5
+ }
+}
+$grp DecalEntity : "{71979372AFE909E5}Prefabs/Decals/Blood/BloodStain_Large_01.et" {
+ {
+  coords 2445.581 0.151 1114.15
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2441.963 0.151 1109.514
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2445.261 0.151 1111.016
+  angles -90 -180 -180
+  scale 1.5
+ }
+ {
+  coords 2446.589 0.151 1113.644
+  angles -90 -180 -180
+  scale 1.5
+ }
+}
+$grp DecalEntity : "{CCE57C4C9C0E5009}Prefabs/Decals/Blood/BloodStain_Small_01.et" {
+ {
+  coords 2441.243 0.151 1110.02
+  angles -90 -180 -180
+  scale 0.8
+ }
+ {
+  coords 2441.93 0.151 1108.818
+  angles -90 -180 -180
+  scale 0.8
+ }
+ {
+  coords 2444.438 0.151 1110.545
+  angles -90 -180 -180
+  scale 0.8
+ }
+ {
+  coords 2446.138 0.152 1110.568
+  angles -90 0 -57.338
+  scale 0.8
+ }
+ {
+  coords 2446.776 0.151 1110.308
+  angles -90 -180 -180
+  scale 0.8
+ }
+ {
+  coords 2445.835 0.152 1111.125
+  angles -90 0 68.825
+  scale 0.8
+ }
+ {
+  coords 2446.075 0.151 1110.978
+  angles -90 -180 -180
+  scale 0.8
+ }
+}

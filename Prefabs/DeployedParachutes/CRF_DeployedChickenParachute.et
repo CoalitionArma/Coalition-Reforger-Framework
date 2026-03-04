@@ -1,0 +1,52 @@
+CRF_ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" {
+ ID "68A904A07749F859"
+ components {
+  MeshObject "{4B42E716914465B9}" {
+   Object "{0183C3070DFDAD41}assets/ChickenGlider/ChickenGlider.xob"
+   PixelSizeScale 1
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Layers 0x4040 0
+   Mass 40
+   CenterOfMass 0 1.862 0
+   LinearDamping 0.5
+   AngularDamping 0.1
+   SimState Simulation
+   ResponseIndex "Normal"
+  }
+  SCR_BaseCompartmentManagerComponent "{2CD4A765A7D52986}" {
+   CompartmentSlots {
+    CargoCompartmentSlot test {
+     CompartmentAction SCR_GetInUserAction "{68A90AB9B372D6C7}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+     }
+     GetOutAction SCR_GetOutAction "{68A90AB9B372D6E8}" {
+      ParentContextList {
+       "door_rear_int"
+      }
+     }
+     JumpOutAction SCR_JumpOutAction "{68A90AB9B372D647}" {
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{68A90AB9B372D699}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "68A90AB9B372D65F" {
+      PivotID "passenger_l02_idle"
+      Offset 0 0.674 0
+     }
+     ForcedFreeLook 1
+     SkipCharacterDoorAnimationsFromSeat 1
+     DoorInfoList {
+      0
+     }
+     ContextName "passenger_l02"
+    }
+   }
+  }
+ }
+ coords 0 3 0
+}
