@@ -211,15 +211,14 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				Print(string.Format("[CRF_GamemodeManager] ERROR: Failed to spawn character for player %1", playerId), LogLevel.ERROR);
 				return null;
 			}
-			
-			// Notify data collector about the spawn
-			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-			if (dc)
-			{
-				// Use our custom notification method since we don't use the spawn request system
-				dc.NotifyPlayerSpawned(playerId, playerCharacter);
-			}
 		}
+		
+		// Always notify the data collector when a player is initialized into a character,
+		// whether newly spawned or reusing an existing entity (e.g. first initialization at game start).
+		// This ensures distance tracking modules attach their CompartmentEntered/Left invokers.
+		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+		if (dc)
+			dc.NotifyPlayerSpawned(playerId, playerCharacter);
 			
 		return playerCharacter;
 	}
