@@ -48,8 +48,9 @@ modded class SCR_InventoryMenuUI
 		if (!container)
 			return;
 		
-		if (!container.m_bEnableMiniArsenal || !m_SafeStartManager.GetSafestartStatus())
+		if ((!container.m_bEnableMiniArsenal || !m_SafeStartManager.GetSafestartStatus()) && CRF_PlayerController.IsGracePeriodOver())
 			GetRootWidget().FindWidget("MiniArsenal").SetVisible(false);
+			
 		
 	}
 	

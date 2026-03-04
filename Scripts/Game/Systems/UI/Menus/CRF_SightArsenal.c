@@ -45,7 +45,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
-		if (!m_SafeStart.GetSafestartStatus())
+		if (!m_SafeStart.GetSafestartStatus() && CRF_PlayerController.IsGracePeriodOver())
 			Close();
 		if (!m_SightSlot)
 		{

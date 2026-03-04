@@ -3,6 +3,7 @@ class CRF_BugReportConfig
 	static ref CRF_BugReportConfigStruct m_config;
 	static string m_configFilePath = "$profile:CRF_BugReportConfig.json";
 
+	//------------------------------------------------------------------------------------------------
 	static bool LoadConfig()
 	{		
 		SCR_JsonLoadContext configLoadContext = new SCR_JsonLoadContext();
@@ -30,6 +31,7 @@ class CRF_BugReportConfig
 		return true;
 	};
 
+	//------------------------------------------------------------------------------------------------
 	static bool SaveConfig()
 	{
 		SCR_JsonSaveContext configSaveContext = new SCR_JsonSaveContext();
@@ -41,6 +43,7 @@ class CRF_BugReportConfig
 		return true;
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	static string GetToken()
 	{
 		if (!m_config)
@@ -49,6 +52,7 @@ class CRF_BugReportConfig
 		return m_config.m_mBugReports.Get("token");
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	static string GetRepo()
 	{
 		if (!m_config)
@@ -62,6 +66,7 @@ class CRF_BugReportConfigStruct
 {
 	ref map<string, string> m_mBugReports;
 	
+	//------------------------------------------------------------------------------------------------
 	void SetDefaultValue()
 	{
 		m_mBugReports = new map<string, string>();

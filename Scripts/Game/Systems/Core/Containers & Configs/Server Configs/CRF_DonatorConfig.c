@@ -3,6 +3,7 @@ class CRF_DonatorConfig
 	static ref CRF_DonatorConfigStruct m_config;
 	static string m_configFilePath = "$profile:CRF_DonatorConfig.json";
 
+	//------------------------------------------------------------------------------------------------
 	static bool LoadConfig()
 	{		
 		SCR_JsonLoadContext configLoadContext = new SCR_JsonLoadContext();
@@ -30,6 +31,7 @@ class CRF_DonatorConfig
 		return true;
 	};
 
+	//------------------------------------------------------------------------------------------------
 	static bool SaveConfig()
 	{
 		SCR_JsonSaveContext configSaveContext = new SCR_JsonSaveContext();
@@ -41,6 +43,7 @@ class CRF_DonatorConfig
 		return true;
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	static bool IsDonator(string identityId)
 	{
 		if (!m_config)
@@ -58,6 +61,7 @@ class CRF_DonatorConfigStruct
 {
 	ref map<string, string> m_mDonators;
 	
+	//------------------------------------------------------------------------------------------------
 	void SetDefaultValue()
 	{
 		m_mDonators = new map<string, string>();
