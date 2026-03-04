@@ -550,6 +550,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// Track a weapon used on a specific player
 	void TrackWeaponUsed(int victimId, string weaponName, int damageType = 0)
 	{
+		// Only track for real players — AI all share key "0" which causes cross-contamination
 		if (victimId <= 0 || weaponName.IsEmpty())
 			return;
 		
@@ -565,6 +566,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
+	// NOTE: m_sKillerName, m_sVictimName etc. are instance-level fields shared across calls.
+	// On a dedicated server events are processed on the main thread sequentially, so this is
+	// safe in practice, but a future refactor should make these local variables to be explicit.
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)
@@ -701,6 +705,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	if (!killerCharEntity)
 		killerCharEntity = killerEntity; // AI or vehicle — killerEntity is already the agent
 	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerCharEntity.GetOrigin());
+	int m_iRangeMeters = m_fRange.ToString().ToInt(); // round to whole metres; avoids locale decimal-separator breaking CSV
 	
 	// Time
 	m_fTotalTime = m_World.GetWorldTime();
@@ -717,7 +722,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Log to file
 		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + 
 		                         m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + 
-		                         m_fRange + SEPARATOR + m_sTime);
+		                         m_iRangeMeters + SEPARATOR + m_sTime);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown
