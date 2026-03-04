@@ -3,6 +3,7 @@ class CRF_ModeratorConfig
 	static ref CRF_ModeratorConfigStruct m_config;
 	static string m_configFilePath = "$profile:CRF_ModeratorConfig.json";
 
+	//------------------------------------------------------------------------------------------------
 	static bool LoadConfig()
 	{		
 		SCR_JsonLoadContext configLoadContext = new SCR_JsonLoadContext();
@@ -30,6 +31,7 @@ class CRF_ModeratorConfig
 		return true;
 	};
 
+	//------------------------------------------------------------------------------------------------
 	static bool SaveConfig()
 	{
 		SCR_JsonSaveContext configSaveContext = new SCR_JsonSaveContext();
@@ -41,6 +43,7 @@ class CRF_ModeratorConfig
 		return true;
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	static bool IsModerator(string identityId)
 	{
 		if (!m_config)
@@ -58,6 +61,7 @@ class CRF_ModeratorConfigStruct
 {
 	ref map<string, string> m_mModerators;
 	
+	//------------------------------------------------------------------------------------------------
 	void SetDefaultValue()
 	{
 		m_mModerators = new map<string, string>();

@@ -83,6 +83,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return res;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets Supply values for the inputed items
+	 * @param items the array of resource names you want the supply counts for
+	 * @return an array of ints representing the supply values in the same order as the items put in
+	 */
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
 		// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
@@ -134,6 +140,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return itemSupply;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Frame logic for vehicles getting the closest available faction to fill their inventory with that factiosn gear
+	 */
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -165,6 +175,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		super.EOnFrame(owner, timeSlice);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Used in EOnFrame to check local entities around a vehicle to get the closest faction entity near it
+	 * @param vehicle the vehicle we are checking for
+	 * @return bool if it was succesful or not
+	 */
 	bool FindFactionByClosestPlayer(IEntity vehicle)
 	{	
 		float closestPlayerDistance;
@@ -228,6 +244,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return true;
 	}	
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets the total supply value of all items combined in the vehilce
+	 * @param truck the truck you want to check
+	 * @return the total supply value of the items in the truck
+	 */
 	int GetSuppliesInTruck(IEntity truck)
 	{
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
@@ -398,6 +420,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks to see if the inputed vehicle is a supply truck
+	 * @param truck the truck we are checking
+	 * @param factionKey what faction we check to see if this truck is in their supply truck array
+	 * @return an array of ints representing the supply values in the same order as the items put in
+	 */
 	bool IsSupplyTruck(IEntity truck, string factionKey)
 	{
 		ref CRF_GearScriptContainer gsContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
@@ -1228,6 +1257,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Used as a bridge to spawn the vehicle and register it in this manager from the vehicle spawner
+	 * @param spawner the vehicle spawner that spawned this vehicle
+	 * @return fuckall
+	 */
 	void SpawnVehicle(CRF_VehicleSpawner spawner)
 	{
 		if (!spawner.m_sFactionKey)
@@ -1249,9 +1284,16 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		params.TransformMode = ETransformMode.WORLD;
 		spawner.GetTransform(params.Transform);
 		IEntity vehicle = GetGame().SpawnEntityPrefab(Resource.Load(spawner.m_rVehicle), GetGame().GetWorld(), params);
-		GetGame().GetCallqueue().CallLater(SetVehicle, 1000, false, vehicle, spawner);
+		SetVehicle(vehicle, spawner);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Sets the vehicle in the vehicle spawner for internal tracking purposes
+	 * @param vehicleEntity the newly spawned vehicle to register in the spawner
+	 * @param spawner the vehicle spawner we are registering this vehicle in
+	 * @return an array of ints representing the supply values in the same order as the items put in
+	 */
 	void SetVehicle(IEntity vehicleEntity, CRF_VehicleSpawner spawner)
 	{
 		spawner.m_eVehicle = vehicleEntity;
