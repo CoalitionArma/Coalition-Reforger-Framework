@@ -7,6 +7,10 @@ class CRF_GearscriptManager : ScriptComponent
 	// Track entities currently having gear applied to prevent race conditions
 	protected ref set<IEntity> m_sEntitiesBeingGeared = new set<IEntity>();
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITILIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
@@ -43,24 +47,9 @@ class CRF_GearscriptManager : ScriptComponent
 			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Validate that entity has all required components
-	 * @param entity Entity to validate
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @return True if all components are present
-	 */
-	protected bool ValidateComponents(IEntity entity, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
-	{
-		if (!inventory || !inventoryManager)
-		{
-			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE REQUIRED COMPONENTS!", entity), LogLevel.ERROR);
-			return false;
-		}
-		
-		return true;
-	}
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 APPLYING GEAR METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -96,8 +85,11 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
 
-		if (!ValidateComponents(entity, inventory, inventoryManager))
+		if (!inventory || !inventoryManager)
+		{
+			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE REQUIRED COMPONENTS!", entity), LogLevel.ERROR);
 			return;
+		}
 
 		// Mark entity as being geared
 		m_sEntitiesBeingGeared.Insert(entity);
@@ -111,7 +103,7 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
+	protected void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
 	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
 	{
 		// If entity was deleted or snapped up by the slotting manager
@@ -204,6 +196,10 @@ class CRF_GearscriptManager : ScriptComponent
 			m_sEntitiesBeingGeared.RemoveItem(entity);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 IDENTITY METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Set identity for an entity
@@ -281,6 +277,10 @@ class CRF_GearscriptManager : ScriptComponent
 	        identityComp.CommitChanges();
 		};
     }
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GEAR METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -742,6 +742,10 @@ class CRF_GearscriptManager : ScriptComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_GearscriptManager m_sInstance;
