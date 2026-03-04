@@ -22,9 +22,10 @@ class CRF_ObjectSpawner: BaseGameTriggerEntity
 		if (!System.IsConsoleApp())
 			return;
 		#endif
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		this.GetTransform(params.Transform);
+		vector entityLocation[4];
+		this.GetTransform(entityLocation);
+		EntitySpawnParams params = CRF_EntityHelper.CreateSpawnParams(entityLocation);
+		
 		m_eObject = GetGame().SpawnEntityPrefab(Resource.Load(m_rObject), GetGame().GetWorld(), params);
 	}
 	
@@ -38,7 +39,7 @@ class CRF_ObjectSpawner: BaseGameTriggerEntity
 	
 	override event void _WB_SetTransform(inout vector mat[4], IEntitySource src)
 	{
-		if(m_eObject)
+		if (m_eObject)
 		{
 			vector pos[4];
 			this.GetTransform(pos);
