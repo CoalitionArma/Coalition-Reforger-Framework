@@ -13,4 +13,16 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
+ {
+  coords 15793.521 138.624 8801.734
+  angles 0 -162.924 0
+  m_rVehicle "{DE3DC460D31C0A75}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M43_LargeRing.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 12807.957 11.751 351.765
+  angles 0 38.679 0
+  m_rVehicle "{CAFC60B978E375E2}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_3M16_LargeRing.et"
+  m_sFactionKey "INDFOR"
+ }
 }

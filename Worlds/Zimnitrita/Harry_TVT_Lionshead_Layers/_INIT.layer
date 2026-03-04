@@ -32,10 +32,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "ION has been contracted to push the new American force out of Varpadany before they can get fully set up. "\
    ""\
    "BLUFOR Composition: Modern US Defending"\
-   "BLUFOR Assets: Entrenchment"\
+   "BLUFOR Assets: Entrenchment, 1x Mine laying MRLS"\
    ""\
    "INDFOR Composition: Modern ION Attacking"\
-   "INDFOR Assets: Sniper team, Drone team"\
+   "INDFOR Assets: Sniper team, Drone team, 1x Smoke MRLS"\
    ""\
    "Time: 60 min"\
    "Weather: Day Foggy"
@@ -48,7 +48,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Defend the objectives in order. After Varpadany has fallen, you will receive a respawn wave. "\
    ""\
    "Mission Maker Notes:"\
-   "Your main advantage is the ability to build. You are allowed to build everything in the build menu except for the mk-19. You start with limited supply, but Varpadany will have some, and generates more the longer you hold it. "
+   "Your main advantage is the ability to build. You are allowed to build everything in the build menu except for the mk-19. You start with limited supply, but Varpadany will have some, and generates more the longer you hold it. You can access your MRLS through the teleport pole."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -65,7 +65,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Attack the objectives in order. After you capture Varpadany both sides will receive a respawn wave. "\
    ""\
    "Mission Maker Notes:"\
-   "The enemy is allowed full use of the building menu. "
+   "The enemy is allowed full use of the building menu. You can access your MRLS through the teleport pole. Note that the enemy will be able to deploy AP mines as they want, and are able to accurately target with their MRLS."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
