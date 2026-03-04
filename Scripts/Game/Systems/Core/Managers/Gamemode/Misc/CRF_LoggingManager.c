@@ -688,10 +688,19 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 	}
 	
-	// Range
+	// Range — measure from the killer's character position.
+	// GetKillerEntity() may return the projectile entity (bullet/rocket), not the shooter,
+	// which causes bogus 10 000 m+ distances when the projectile is at world origin on impact.
+	// Use the killer's controlled character when we have a valid player ID, falling back to
+	// killerEntity only for AI / vehicle kills.
 	if (!killerEntity)
 		return;
-	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerEntity.GetOrigin());
+	IEntity killerCharEntity = null;
+	if (killerId > 0)
+		killerCharEntity = m_PlayerManager.GetPlayerControlledEntity(killerId);
+	if (!killerCharEntity)
+		killerCharEntity = killerEntity; // AI or vehicle — killerEntity is already the agent
+	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerCharEntity.GetOrigin());
 	
 	// Time
 	m_fTotalTime = m_World.GetWorldTime();
