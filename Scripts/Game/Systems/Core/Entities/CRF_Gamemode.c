@@ -94,6 +94,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// Advanced Gamemode Settings
 	//------------------------------------------------------------------------------------
+	[Attribute("false", "auto", "Enable players being able to swap their clothes on the fly", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bEnableClothesSwapping;
+	
 	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableAICrouching;
 	
