@@ -39,7 +39,7 @@ class CRF_GearscriptCharacter : CRF_PlayerCharacter
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! RPC up to the owner to select the primary wepaon (should only be executed on characters that a player is controling)
+	//! RPC up to the owner to select the primary weapon (should only be executed on characters that a player is controlling)
 	void SelectPrimaryWeapon()
 	{
 		Rpc(RpcDo_SelectPrimaryWeapon);
@@ -53,35 +53,7 @@ class CRF_GearscriptCharacter : CRF_PlayerCharacter
 		if (!entity)
 			return;
 		
-		if (!ChimeraCharacter.Cast(entity))
-			return;
-		
-		BaseWeaponManagerComponent weaponMan = ChimeraCharacter.Cast(entity).GetWeaponManager();
-		if (!weaponMan)
-			return;
-		
-		CharacterControllerComponent charController = ChimeraCharacter.Cast(entity).GetCharacterController();
-		if (!charController)
-			return;
-		
-		array<WeaponSlotComponent> outSlots = {};
-		weaponMan.GetWeaponsSlots(outSlots);
-		WeaponSlotComponent weapon;
-		foreach (WeaponSlotComponent outSlot: outSlots)
-		{
-			if (!outSlot.GetWeaponEntity())
-				continue;
-			
-			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
-				continue;
-			
-			weapon = outSlot;
-			break;
-		}
-		
-		if (!weapon)
-			return;
-
-		charController.SelectWeapon(weapon);
+		// Use the shared weapon selection logic from helper
+		CRF_WeaponHelper.SelectPrimaryWeaponForEntity(entity);
 	}
 }
