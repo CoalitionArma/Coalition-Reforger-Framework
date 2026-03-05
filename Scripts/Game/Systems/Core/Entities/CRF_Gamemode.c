@@ -1,3 +1,12 @@
+modded class SCR_BaseGameMode
+{
+	void SetGameState(SCR_EGameModeState state)
+	{
+		m_eGameState = state;
+		Replication.BumpMe();
+	}
+}
+
 //------------------------------------------------------------------------------------
 // CRF_GamemodeClass: Base class definition for the Coalition Reforger Framework Gamemode
 //------------------------------------------------------------------------------------
@@ -9,17 +18,10 @@ class CRF_GamemodeClass : SCR_BaseGameModeClass {}
 //------------------------------------------------------------------------------------
 class CRF_Gamemode : SCR_BaseGameMode
 {
-	//===================================================================================
-	// ATTRIBUTES AND PROPERTIES
-	//===================================================================================
 	
-	// Game State Properties
-	//------------------------------------------------------------------------------------
-	[RplProp(onRplName: "OnGamemodeStateChanged")]
-	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
-
-	[RplProp()]
-	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ATTRIBUTES
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	// Attributes Set By Plugins
 	//------------------------------------------------------------------------------------
@@ -28,6 +30,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
+	
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bSeperateSpectatorsByFaction;
 
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
@@ -94,6 +99,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// Advanced Gamemode Settings
 	//------------------------------------------------------------------------------------
+	[Attribute("false", "auto", "Enable players being able to swap their clothes on the fly", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bEnableClothesSwapping;
+	
 	[Attribute("0", "auto", "Disables AI Crouching", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableAICrouching;
 	
@@ -118,9 +126,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	// Game State Properties
+	//------------------------------------------------------------------------------------
+	[RplProp(onRplName: "OnGamemodeStateChanged")]
+	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
+
+	[RplProp()]
+	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
+	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
-	protected ref ScriptInvoker m_OnStateChanged;
+	protected ref ScriptInvoker m_OnStateChanged = new ScriptInvoker();
 	protected static ref SCR_PlayerData m_PlayerData;
 	
 	protected CRF_RespawnManager m_RespawnManager;
@@ -130,9 +150,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
-	protected CRF_GarbageManager m_GarbageManager
-	
-	protected static CRF_Gamemode m_sInstance;
+	protected CRF_GarbageManager m_GarbageManager;
 	
 	[RplProp()]
 	protected vector m_vGenericSpawn;
@@ -147,49 +165,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
-	//===================================================================================
-	// STATIC METHODS
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 INITIALIZATION AND SETUP
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Returns the singleton instance of the CRF_Gamemode
-	 * @return CRF_Gamemode instance or null if not available
-	 */
-	void CRF_Gamemode(IEntitySource src, IEntity parent)
-	{
-		m_sInstance = this;
-		// Initialize ScriptInvoker to avoid null checks - PERFORMANCE OPTIMIZATION
-		m_OnStateChanged = new ScriptInvoker();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_Gamemode GetInstance()
-	{
-		return m_sInstance;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	vector GetGenericSpawn()
-	{
-		return m_vGenericSpawn;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	ScriptInvoker GetOnStateChanged()
-	{
-		return m_OnStateChanged;
-	}
-
-	//===================================================================================
-	// INITIALIZATION AND SETUP
-	//===================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initialize the gamemode and all required manager instances
-	 * @param owner The entity that owns this component
-	 */
+	//! Initialize the gamemode and all required manager instances
+	//! \param[in] owner The entity that owns this component
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
@@ -218,15 +200,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		SetEventMask(EntityEvent.FRAME);
 	}
 
-	//===================================================================================
-	// FRAME UPDATES
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME UPDATES
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Frame update for batch processing player initializations
-	 * More reliable than CallLater for time-critical operations
-	 */
+	//! Frame update for batch processing player initializations
+	//! More reliable than CallLater for time-critical operations
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		// Only process if we have pending initializations
@@ -244,15 +224,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 	
-	//===================================================================================
-	// STATE MANAGEMENT
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATE MANAGEMENT
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Progress to the next slotting state
-	 * Updates all slotting UI and synchronizes across network
-	 */
+	//! Progress to the next slotting state
+	//! Updates all slotting UI and synchronizes across network
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
@@ -265,10 +243,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Progress to the next gamemode state
-	 * @param overriden Set to true to allow advancing from AAR or GAME states
-	 */
+	//! Progress to the next gamemode state
+	//! \param[in] overriden Set to true to allow advancing from AAR or GAME states
 	void AdvanceGamemodeState(bool overriden = false)
 	{
 		// Prevent advancing from AAR or GAME unless explicitly overridden
@@ -291,10 +267,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle gamemode state changes
-	 * Triggers UI updates and state-specific logic
-	 */
+	//! Handle gamemode state changes
+	//! Triggers UI updates and state-specific logic
 	protected void OnGamemodeStateChanged()
 	{
 		// Server-side state change handling
@@ -377,15 +351,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 	
-	//===================================================================================
-	// PLAYER MANAGEMENT
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 PLAYER MANAGEMENT
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle player data received from network
-	 * @param playerData Player statistics and progress data
-	 */
+	//! Handle player data received from network
+	//! \param[in] playerData Player statistics and progress data
 	protected void OnDataReceived(SCR_PlayerData playerData)
 	{
 		m_PlayerData = playerData;
@@ -393,10 +365,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process player connection after authentication
-	 * @param iPlayerID ID of the connecting player
-	 */
+	//! Process player connection after authentication
+	//! \param[in] iPlayerID ID of the connecting player
 	protected override void OnPlayerAuditSuccess(int iPlayerID)
 	{
 		super.OnPlayerAuditSuccess(iPlayerID);
@@ -442,10 +412,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-		Called after a player is disconnected.
-		\param playerId PlayerId of disconnected player.
-	*/
+	//! Called after a player is disconnected.
 	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
@@ -463,15 +430,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
 	}
 	
-	//===================================================================================
-	// ENTITY MANAGEMENT
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ENTITY MANAGEMENT
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process entity spawning for players
-	 * @param entity The spawned entity
-	 */
+	//! Process entity spawning for players
+	//! \param[in] entity The spawned entity
 	protected override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
@@ -498,13 +463,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process entity death/destruction for players
-	 * Handles respawn and spectator logic
-	 * @param entity The destroyed entity
-	 * @param killerEntity The entity that caused the destruction
-	 * @param instigator The instigator context
-	 */
+	//! Process entity death/destruction for players
+	//! Handles respawn and spectator logic
+	//! \param[in] entity The destroyed entity
+	//! \param[in] killerEntity The entity that caused the destruction
+	//! \param[in] instigator The instigator context
 	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
 	{
 		super.OnControllableDestroyed(entity, killerEntity, instigator);
@@ -574,14 +537,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
-	* @param playerId ID of the player to initialize
-	* @param locationZero Position 0 in the world vector to spawn the player
-	* @param locationOne Position 1 in the world vector to spawn the player
-	* @param locationTwo Position 2 in the world vector to spawn the player
-	* @param locationThree Position 3 in the world vector to spawn the player
-	*/
+	//! Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
+	//! \param[in] playerId ID of the player to initialize
+	//! \param[in] locationZero Position 0 in the world vector to spawn the player
+	//! \param[in] locationOne Position 1 in the world vector to spawn the player
+	//! \param[in] locationTwo Position 2 in the world vector to spawn the player
+	//! \param[in] locationThree Position 3 in the world vector to spawn the player
 	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
 	{
 		vector location[4];
@@ -594,29 +555,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GamemodeManager.InitilizePlayer(playerId, location);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void UpdateGearscriptResource(string factionKey, string resource)
-	{
-		switch (factionKey)
-		{
-			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
-			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
-			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
-			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
-		}
-		Replication.BumpMe();
-	}
-	
-	//===================================================================================
-	// STAGGERED PLAYER INITIALIZATION SYSTEM
-	//===================================================================================
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STAGGERED PLAYER INITIALIZATION SYSTEM
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Queue a player for staggered initialization
-	 * Prevents server overload by batching player spawns
-	 * @param playerId ID of the player to initialize
-	 */
+	//! Queue a player for staggered initialization
+	//! Prevents server overload by batching player spawns
+	//! \param[in] playerId ID of the player to initialize
 	void QueuePlayerInitialization(int playerId)
 	{
 		// Don't queue if already pending
@@ -640,11 +586,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process a batch of pending player initializations
-	 * Called by EOnFrame when timer interval is reached
-	 * Spawns players in small groups to distribute server load
-	 */
+	//! Process a batch of pending player initializations
+	//! Called by EOnFrame when timer interval is reached
+	//! Spawns players in small groups to distribute server load
 	protected void ProcessPlayerBatch()
 	{
 		if (m_aPendingPlayerInitializations.IsEmpty())
@@ -677,10 +621,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Clear all pending player initializations
-	 * Used when resetting game state
-	 */
+	//! Clear all pending player initializations
+	//! Used when resetting game state
 	void ClearPlayerInitializationQueue()
 	{
 		m_aPendingPlayerInitializations.Clear();
@@ -691,14 +633,28 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if a player is waiting in the initialization queue
-	 * @param playerId Player to check
-	 * @return True if player is queued for initialization
-	 */
+	//! Check if a player is waiting in the initialization queue
+	//! \param[in] playerId Player to check
+	//! \return True if player is queued for initialization
 	bool IsPlayerQueuedForInitialization(int playerId)
 	{
 		return m_aPendingPlayerInitializations.Contains(playerId);
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GETTERS/UPDATERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	vector GetGenericSpawn()
+	{
+		return m_vGenericSpawn;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnStateChanged()
+	{
+		return m_OnStateChanged;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -709,20 +665,30 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void UpdateGearscriptResource(string factionKey, string resource)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
+			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
+			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
+			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
+		}
+		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	bool DoesFactionShareMarker(string factionKey)
 	{
 		switch (factionKey)
 		{
-			case "BLUFOR": 
-				return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "OPFOR": 
-				return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "INDFOR": 
-				return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "CIV": 
-				return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-    	 }
-    	return true;
+			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
+			case "CIV": 		return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+    		 }
+		
+    		return true;
  	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -730,28 +696,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		switch(factionKey)
 		{
-			case "BLUFOR":
-				return m_BLUFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "OPFOR":
-				return m_OPFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "INDFOR":
-				return m_INDFORGearScriptSettings.m_bEnableBFT;
-				break;
-			case "CIV":
-				return m_CIVILIANGearScriptSettings.m_bEnableBFT;
-				break;
+			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableBFT;
+			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableBFT;
+			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableBFT;
+			case "CIV":		return m_CIVILIANGearScriptSettings.m_bEnableBFT;
 		}
+		
    		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get gearscript resource for a faction
-	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
-	 * @return ResourceName for the gearscript or empty string if not found
-	 */
+	//! Get gearscript resource for a faction
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, etc.)
+	//! \return ResourceName for the gearscript or empty string if not found
 	ResourceName GetGearScriptResource(FactionKey factionKey)
 	{
 		CRF_GearScriptContainer container = GetGearScriptSettings(factionKey);
@@ -773,11 +730,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get gearscript container for a faction
-	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
-	 * @return The gearscript container or null if not found
-	 */
+	//! Get gearscript container for a faction
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, etc.)
+	//! \return The gearscript container or null if not found
 	CRF_GearScriptContainer GetGearScriptSettings(FactionKey factionKey)
 	{
 		switch (factionKey)
@@ -790,14 +745,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		return m_CIVILIANGearScriptSettings;
 	}
-}
-
-modded class SCR_BaseGameMode
-{
-	void SetGameState(SCR_EGameModeState state)
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_Gamemode m_sInstance;
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
 	{
-		m_eGameState = state;
-		Replication.BumpMe();
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_Gamemode GetInstance()
+	{
+		return m_sInstance;
 	}
 }
-

@@ -4,6 +4,10 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 {	
 	protected CRF_PlayerRplToAuthorityManager m_PlayerRplToAuthorityManager;
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITIALIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{	
@@ -14,9 +18,7 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Registers chat commands for admin messaging
-	 */
+	//! Registers chat commands for admin messaging
 	void AddMsgAction()
 	{
 		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
@@ -43,12 +45,14 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		invoker7.Insert(ReportBug);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 BUG REPORT METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	 /**
-	 * Reports bugs to github
-	 * @param panel - Chat panel
-	 * @param data - Message content
-	 */
+	//! Reports bugs to github
+	//! \param[in] panel - Chat panel
+	//! \param[in] data - Message content
 	void ReportBug(SCR_ChatPanel panel, string data)
 	{
 		PlayerController pc = GetGame().GetPlayerController();
@@ -71,12 +75,14 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		m_PlayerRplToAuthorityManager.ReportBug(data, playerID);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ADMIN MESSAGING METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Sends an admin message from the player to server
-	 * @param panel - Chat panel
-	 * @param data - Message content
-	 */
+	//! Sends an admin message from the player to server
+	//! \param[in] panel - Chat panel
+	//! \param[in] data - Message content
 	void SendAdminMessage(SCR_ChatPanel panel, string data)
 	{
 		PlayerController pc = GetGame().GetPlayerController();
@@ -100,11 +106,9 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Allows admins to reply to specific players
-	 * @param panel - Chat panel
-	 * @param data - Message including player ID and content
-	 */
+	//! Allows admins to reply to specific players
+	//! \param[in] panel - Chat panel
+	//! \param[in] data - Message including player ID and content
 	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
 		// Verify sender is admin or moderator
@@ -170,12 +174,14 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		m_PlayerRplToAuthorityManager.ReplyAdminMessage(toSend, playerId, adminID, true);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GAMEMODE STATE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Callback for advancing gamemode state with optional faction winner parameter
-	 * Usage: /aar [faction]
-	 * Examples: /aar, /aar blufor, /aar blu, /aar opfor, /aar opf, /aar indfor, /aar ind, /aar civ
-	 */
+	//! Callback for advancing gamemode state with optional faction winner parameter
+	//! Usage: /aar [faction]
+	//! Examples: /aar, /aar blufor, /aar blu, /aar opfor, /aar opf, /aar indfor, /aar ind, /aar civ
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
 		// Check if admin privileges are required
@@ -275,12 +281,14 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		}
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 SAVE MISSION METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Callback for triggering a manual mission save
-	 * Usage: /save [save name]
-	 * Examples: /save, /save After Attack, /save Checkpoint 1
-	 */
+	//! Callback for triggering a manual mission save
+	//! Usage: /save [save name]
+	//! Examples: /save, /save After Attack, /save Checkpoint 1
 	void SaveMission_Callback(SCR_ChatPanel panel, string data)
 	{
 		// Check if admin privileges are required
@@ -314,6 +322,10 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		// Request save from server via RPC
 		m_PlayerRplToAuthorityManager.RequestMissionSave(saveName);
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_PlayerChatCommandManager m_sInstance;

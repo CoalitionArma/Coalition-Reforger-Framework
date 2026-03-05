@@ -1,16 +1,14 @@
 class CRF_ClothingHelper
 {	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Update clothing in a specific slot
-	 * @param clothingArray Clothing options
-	 * @param slotInt Slot to update
-	 * @param role Role identifier
-	 * @param deletePreviousItems Whether to delete previous items
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Update clothing in a specific slot
+	//! \param[in] clothingArray Clothing options
+	//! \param[in] slotInt Slot to update
+	//! \param[in] role Role identifier
+	//! \param[in] deletePreviousItems Whether to delete previous items
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void UpdateClothingSlot(array<ResourceName> clothingArray, int slotInt, CRF_EGearRole role, bool deletePreviousItems, 
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -42,13 +40,11 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Process previous clothing before replacement
-	 * @param previousClothing Previous clothing entity
-	 * @param removedItems Array to store removed items
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Process previous clothing before replacement
+	//! \param[in] previousClothing Previous clothing entity
+	//! \param[out] removedItems Array to store removed items
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void ProcessPreviousClothing(IEntity previousClothing, out array<IEntity> removedItems, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -82,14 +78,12 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Spawn new clothing
-	 * @param clothingResource Clothing resource to spawn
-	 * @param slotInt Slot to place in
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Spawn new clothing
+	//! \param[in] clothingResource Clothing resource to spawn
+	//! \param[in] slotInt Slot to place in
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void SpawnClothing(ResourceName clothingResource, int slotInt, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -104,13 +98,11 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Determine appropriate clothing slots for an item
-	 * @param item Item to filter
-	 * @param role Role identifier
-	 * @param isThrowable Whether item is a throwable
-	 * @return Array of appropriate clothing slot IDs
-	 */
+	//! Determine appropriate clothing slots for an item
+	//! \param[in] item Item to filter
+	//! \param[in] role Role identifier
+	//! \param[in] isThrowable Whether item is a throwable
+	//! \return Array of appropriate clothing slot IDs
 	static TIntArray FilterItemToClothing(IEntity item, CRF_EGearRole role = 0, bool isThrowable = false)
 	{
 		array<int> clothingIDs = {};
@@ -186,5 +178,73 @@ class CRF_ClothingHelper
 		}
 
 		return clothingIDs;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns true if the item's prefab is listed as a clothing piece in the faction gearscript assigned to the local player's faction and role.
+	//! Checks both m_DefaultClothing (faction-wide) and m_RolesToSetCustomSettings (role-specific overrides) so custom role uniforms are also covered.
+	//! \param[in] item The item the player is trying to remove.
+	//! \return True if removal should be blocked.
+	static bool IsGearscriptClothingPiece(IEntity item)
+	{
+		if (!item)
+			return false;
+
+		// Resolve the gearscript manager and the local player's faction.
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
+			return false;
+
+		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
+		foreach (string factionKey : factionKeys)
+		{
+			// Load the gearscript config for this faction.
+			ResourceName gearScriptResource = gamemode.GetGearScriptResource(factionKey);
+			if (gearScriptResource.IsEmpty())
+				return false;
+	
+			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
+				BaseContainerTools.CreateInstanceFromContainer(
+					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
+			if (!gearConfig)
+				return false;
+	
+			ResourceName itemPrefab = item.GetPrefabData().GetPrefabName();
+	
+			// --- Check default (faction-wide) clothing ---
+			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
+			{
+				if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+					return true;
+			}
+	
+			// --- Check custom role clothing ---
+			// Determine the local player's role directly from their slot data.
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			if (!slottingManager)
+				return false;
+	
+			CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(localPlayerId);
+			if (!slotData)
+				return false;
+	
+			CRF_EGearRole playerRole = slotData.GetSlotRole();
+	
+			foreach (CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
+			{
+				if (customGear.m_Role != playerRole)
+					continue;
+	
+				foreach (CRF_Clothing clothing : customGear.m_Clothing)
+				{
+					if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+						return true;
+				}
+			}
+		}
+
+		return false;
 	}
 }

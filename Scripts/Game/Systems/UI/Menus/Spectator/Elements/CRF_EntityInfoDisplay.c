@@ -7,8 +7,6 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 	protected TextWidget    m_wEntityDamageType;     // "BLEEDING" indicator (right side of status row)
 	protected SliderWidget  m_wEntityHealthSlider;
 	
-	protected IEntity m_eSpecEntity;
-	
 	//------------------------------------------------------------------------------------------------
 	override void HandlerAttached(Widget w)
 	{
@@ -27,13 +25,13 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 	 * Displays: player name, role name, faction-colored health bar.
 	 * Hidden automatically when not following anyone.
 	 */
-	void UpdateEntityInfoDisplay(IEntity m_eSpecEntity)
+	void UpdateEntityInfoDisplay(IEntity specEntity)
 	{
 		if (!m_wEntityInfoDisplay)
 			return;
 
 		// Hide the HUD if we are not following anyone
-		if (!m_eSpecEntity)
+		if (!specEntity)
 		{
 			m_wEntityInfoDisplay.SetVisible(false);
 			return;
@@ -42,7 +40,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		m_wEntityInfoDisplay.SetVisible(true);
 
 		string playerName = "";
-		RplComponent rpl = RplComponent.Cast(m_eSpecEntity.FindComponent(RplComponent));
+		RplComponent rpl = RplComponent.Cast(specEntity.FindComponent(RplComponent));
 		if (rpl)
 		{
 			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
@@ -89,7 +87,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		}
 
 		// Append vehicle info if the character is inside one
-		IEntity vehicle = SCR_CompartmentAccessComponent.GetVehicleIn(m_eSpecEntity);
+		IEntity vehicle = SCR_CompartmentAccessComponent.GetVehicleIn(specEntity);
 		if (vehicle)
 		{
 			SCR_EditableVehicleComponent editableVehicle = SCR_EditableVehicleComponent.Cast(vehicle.FindComponent(SCR_EditableVehicleComponent));
@@ -115,7 +113,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 
 		// --- ACE Medical status (blood volume bar + blood state + bleeding indicator) ---
 		SCR_CharacterDamageManagerComponent charDmg = SCR_CharacterDamageManagerComponent.Cast(
-			m_eSpecEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+			specEntity.FindComponent(SCR_CharacterDamageManagerComponent));
 
 		// Blood volume: prefer ACE blood hit zone (tracks bleeding), fall back to vanilla health
 		float bloodScaled = 1.0;
@@ -126,7 +124,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		string bloodStateText = "";
 		if (charDmg)
 		{
-			SCR_CharacterBloodHitZone bloodHZ = SCR_CharacterBloodHitZone.Cast(charDmg.GetBloodHitZone());
+			SCR_CharacterBloodHitZone bloodHZ = charDmg.GetBloodHitZone();
 			if (bloodHZ)
 			{
 				bloodScaled = bloodHZ.GetHealthScaled();
@@ -159,7 +157,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				bloodStateText = "Healthy";
 			}
 			
-			isDead = !CRF_DamageHelper.CheckIfEntityAlive(m_eSpecEntity);
+			isDead = !CRF_DamageHelper.CheckIfEntityAlive(specEntity);
 			
 			if (isDead)
 			{
@@ -219,7 +217,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		
 		// --- Bleeding / unconscious indicator ---
 		SCR_CharacterControllerComponent ctrl = SCR_CharacterControllerComponent.Cast(
-			m_eSpecEntity.FindComponent(SCR_CharacterControllerComponent));
+			specEntity.FindComponent(SCR_CharacterControllerComponent));
 
 		// Check if the spectated character is unconscious and get their resilience %
 		if (ctrl && ctrl.IsUnconscious() && !isDead)
@@ -227,8 +225,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 			isUnconscious = true;
 			if (charDmg)
 			{
-				SCR_CharacterResilienceHitZone resHz = SCR_CharacterResilienceHitZone.Cast(
-					charDmg.GetResilienceHitZone());
+				SCR_CharacterResilienceHitZone resHz = charDmg.GetResilienceHitZone();
 				if (resHz)
 					damageStateText = "UNCON " + Math.Round(resHz.GetHealthScaled() * 100) + "%";
 				else

@@ -7,21 +7,17 @@ class CRF_EntityHelper
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Get the spectator resource name
-	* @return ResourceName of the spectator entity
-	*/
+	//! Get the spectator resource name
+	//! \return ResourceName of the spectator entity
 	static ResourceName GetSpectatorResource()
 	{
 		return SPECTATOR_RESOURCE;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Get the spectator resource name
-	* @param vectorToCheck vector to check
-	* @return if the vector was valid
-	*/
+	//! Validate the proveied vector to ensure we arent spawning in a state that would cause errors or crashes
+	//! \param[in] vectorToCheck vector to check
+	//! \return true if the vector was valid
 	static bool IsValidSpawnVector(vector vectorToCheck)
 	{	
 		bool finalcheck = false;
@@ -36,11 +32,9 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Create spawn parameters for entity
-	 * @param entityPos Entity position to set parameters
-	 * @return Spawn parameters
-	 */
+	//! Create spawn parameters for entity
+	//! \param[in] entityPos Entity position to set parameters
+	//! \return Spawn parameters
 	static EntitySpawnParams CreateSpawnParams(vector entityPos[4])
 	{	
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -50,7 +44,9 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// alt version for only needing one vector in the matrix
+	//! Create spawn parameters for entity (This one only needs one vector in the matrix)
+	//! \param[in] entityPos Entity position to set parameters
+	//! \return Spawn parameters
 	static EntitySpawnParams CreateSpawnParams(vector entityPos)
 	{	
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -59,11 +55,10 @@ class CRF_EntityHelper
 		return spawnParams;
 	}
 	
-	/**
-	* Check if a given entity is a spectator
-	* @param entity Entity to check
-	* @return True if entity is a spectator, false otherwise
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Check if a given entity is a spectator
+	//! \param[in] entity Entity to check
+	//! \return True if entity is a spectator, false otherwise
 	static bool IsSpectator(IEntity entity)
 	{
 		if (!entity)
@@ -73,10 +68,8 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if the local player is a spectator
-	* @return True if local player is a spectator, false otherwise
-	*/
+	//! Check if the local player is a spectator
+	//! \return True if local player is a spectator, false otherwise
 	static bool IsSpectator()
 	{
 		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
@@ -92,11 +85,9 @@ class CRF_EntityHelper
 
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Determine faction key from faction affiliation comp
-	 * @param entity Entity to pull the faction comp of
-	 * @return Faction key or empty string if not found
-	 */
+	//! Determine faction key from faction affiliation comp of the provided entity
+	//! \param[in] entity Entity to pull the faction comp of
+	//! \return Faction key or empty string if not found
 	static FactionKey DetermineFactionKey(IEntity entity)
 	{
 		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
@@ -108,7 +99,7 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method to get group from RplId
+	//! Helper method to get group from RplId
 	static SCR_AIGroup GetGroupFromRplId(RplId groupId)
 	{
 		if (groupId == RplId.Invalid())
@@ -122,7 +113,7 @@ class CRF_EntityHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// Helper method to get character from RplId
+	//! Helper method to get character from RplId
 	static SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
 	{
 		if (charId == RplId.Invalid())
