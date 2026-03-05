@@ -1,3 +1,4 @@
+/*
 modded class LM_SuppressionScreenEffect
 {
 	//------------------------------------------------------------------------------------------------
@@ -44,3 +45,4 @@ modded class LM_SuppressionScreenEffect
 		}
 	}
 }
+*/
