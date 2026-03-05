@@ -1,14 +1,12 @@
 modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageManagerComponent
 {
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	/**
-	 * Callback triggered when an item is added to storage
-	 * This is executed locally after the server completes an Insert/Move operation
-	 * Contains special handling for radio equipment based on faction
-	 * 
-	 * @param storageOwner The storage component that owns the item
-	 * @param item The item entity that was added
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Callback triggered when an item is added to storage
+	//! This is executed locally after the server completes an Insert/Move operation
+	//! Contains special handling for radio equipment based on faction
+	//! 
+	//! \param[in] storageOwner The storage component that owns the item
+	//! \param[in] item The item entity that was added
 	override protected void OnItemAdded(BaseInventoryStorageComponent storageOwner, IEntity item)
 	{		
 		// Call the parent implementation first
@@ -67,17 +65,15 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 		
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	/**
-	 * Attempts to insert an item into storage with various fallback options
-	 * Custom implementation for the framework with additional storage handling
-	 * 
-	 * @param pItem The item to insert
-	 * @param pStorageTo Target storage (if null, best storage will be determined)
-	 * @param pStorageFrom Source storage (null if from ground)
-	 * @param cb Callback for operation completion
-	 * @param playSound Whether to play sound effects
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Attempts to insert an item into storage with various fallback options
+	//! Custom implementation for the framework with additional storage handling
+	//! 
+	//! \param[in] pItem The item to insert
+	//! \param[in] pStorageTo Target storage (if null, best storage will be determined)
+	//! \param[in] pStorageFrom Source storage (null if from ground)
+	//! \param[in] cb Callback for operation completion
+	//! \param[in] playSound Whether to play sound effects
 	void InsertItemCRF(IEntity pItem, BaseInventoryStorageComponent pStorageTo = null, BaseInventoryStorageComponent pStorageFrom = null, SCR_InvCallBack cb = null, bool playSound = true)
 	{
 		// Early exit checks
@@ -251,7 +247,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 		SetInventoryLocked(false);
 	}
 
-	
+	//------------------------------------------------------------------------------------------------
 	//For the GunGame Gamemode to prevent players from picking up weapons
 	override void EquipItem(EquipedWeaponStorageComponent weaponStorage, IEntity weapon)
 	{
@@ -260,6 +256,8 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 		
 		super.EquipItem(weaponStorage, weapon);
 	}
+
+	//------------------------------------------------------------------------------------------------
 	override void InsertItem( IEntity pItem, BaseInventoryStorageComponent pStorageTo = null, BaseInventoryStorageComponent pStorageFrom = null, SCR_InvCallBack cb = null  )
 	{
 		if (GetGame().GetGameMode().FindComponent(CRF_GunGame))

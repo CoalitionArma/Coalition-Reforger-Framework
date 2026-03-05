@@ -4,8 +4,7 @@ modded class SCR_VoNComponent
 	protected CRF_MenuManager m_MenuManager;
 	
 	//------------------------------------------------------------------------------------------------
-	// Constructor - Initializes component and gets required manager instances
-	//------------------------------------------------------------------------------------------------
+	//! Constructor - Initializes component and gets required manager instances
 	void SCR_VoNComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		// Get singleton instances needed for voice functionality
@@ -14,8 +13,7 @@ modded class SCR_VoNComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Called when the local player activates their microphone
-	//------------------------------------------------------------------------------------------------
+	//! Called when the local player activates their microphone
 	override protected event void OnCapture(BaseTransceiver transmitter)
 	{
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -59,8 +57,7 @@ modded class SCR_VoNComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Called when receiving voice from another player
-	//------------------------------------------------------------------------------------------------
+	//! Called when receiving voice from another player
 //	override protected event void OnReceive(int playerId, BaseTransceiver receiver, int frequency, float quality)
 //	{
 //		if (!CVON_VONGameModeComponent.GetInstance())
@@ -91,8 +88,7 @@ modded class SCR_VoNComponent
 //	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Adds a player to the list of currently talking players
-	//------------------------------------------------------------------------------------------------
+	//! Adds a player to the list of currently talking players
 	protected void AddPlayerTalking(int playerId)
 	{		
 		// Only add if not already in the list (important as OnReceive runs every frame)
@@ -108,8 +104,7 @@ modded class SCR_VoNComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Removes a player from the list of talking players after timeout
-	//------------------------------------------------------------------------------------------------
+	//! Removes a player from the list of talking players after timeout
 	protected void RemovePlayerTalking(int playerId)
 	{		
 		// Find player's position in the array
@@ -124,10 +119,9 @@ modded class SCR_VoNComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Checks if direct speech from a player should be filtered in spectator mode
-	// @param playerId - The ID of the player whose speech is being received
-	// @return True if the speech should be blocked, false if it should be allowed
-	//------------------------------------------------------------------------------------------------
+	//! Checks if direct speech from a player should be filtered in spectator mode
+	//! \param[in] playerId - The ID of the player whose speech is being received
+	//! \return True if the speech should be blocked, false if it should be allowed
 	protected bool IsSpectatorDirectSpeechFiltered(int playerId)
 	{
 		// Only filter in spectator mode (non-game states)
@@ -156,10 +150,9 @@ modded class SCR_VoNComponent
 	//===================================================================================
 	// CLEANUP
 	//===================================================================================
-	
-	/**
-	 * Clean up when component is deleted
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! Clean up when component is deleted
 	void OnDelete(IEntity owner)
 	{
 		// Cancel any pending CallLater callbacks to prevent memory leaks

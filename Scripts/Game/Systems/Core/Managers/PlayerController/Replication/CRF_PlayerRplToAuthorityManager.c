@@ -41,7 +41,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Initializes all manager references needed by this component
+	//! Initializes all manager references needed by this component
 	protected void InitializeManagerReferences()
 	{
 		m_Gamemode = CRF_Gamemode.GetInstance();
@@ -63,8 +63,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Log RPC call to telemetry system (server-side only)
-	//------------------------------------------------------------------------------------------------
+	//! Log RPC call to telemetry system (server-side only)
 	protected void LogTelemetry(string rpcName, int estimatedBytes)
 	{
 		if (!Replication.IsServer())
