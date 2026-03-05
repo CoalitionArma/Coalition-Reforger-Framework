@@ -1,0 +1,54 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  CRF_ParachuteBackpackComponent "{68A904A00C1F40B4}" {
+   m_ParachutePrefab "{E95CAF01F817549F}Prefabs/DeployedParachutes/CRF_DeployedParachute.et"
+  }
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Chicken Parachute Backpack"
+     Description "A chicken what slows your fall"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 1
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 500
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      PreviewModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 8000
+   MaxItemSize 20 20 20
+   m_fMaxWeight 40
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   WornModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"
+   ItemModel "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+   SoundInt 830
+   DeflatedModel "{612FEDC4900077AB}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_Inflated.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{68A904A0026468C0}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1281 0.0436
+     }
+    }
+   }
+  }
+ }
+}

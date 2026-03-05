@@ -1,0 +1,14 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
+ {
+  coords 12734.666 51.812 9670.745
+ }
+ {
+  coords 12311.03 44.28 9519.311
+ }
+ {
+  coords 11998.991 41.625 9801.975
+ }
+ {
+  coords 11629.357 44.125 9639.638
+ }
+}

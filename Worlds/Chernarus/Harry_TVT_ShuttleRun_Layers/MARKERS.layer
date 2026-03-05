@@ -1,0 +1,32 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 4824.006 256.762 6755.13
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "POI Bravo"
+ }
+ {
+  coords 2520.852 288.044 6336.112
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "NAI Charlie"
+ }
+ {
+  coords 4066.994 325.543 6349.184
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "POI Delta"
+ }
+ {
+  coords 4950.996 315.701 5596.875
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "NAI Echo"
+ }
+ {
+  coords 2679.703 240.25 5939.467
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "POI Foxtrot"
+ }
+}
