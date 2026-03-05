@@ -1,9 +1,9 @@
-/*modded class LM_SuppressionScreenEffect
+/*
+modded class LM_SuppressionScreenEffect
 {
-	/**
-	 * Checks if the local player entity is valid and not in spectator mode
-	 * @return True if the player exists and is not a spectator
-	 
+	//------------------------------------------------------------------------------------------------
+	//! Checks if the local player entity is valid and not in spectator mode
+	//! \return True if the player exists and is not a spectator
 	private bool IsValidLocalPlayer()
 	{
 		// Check if player controller exists
@@ -16,16 +16,15 @@
 			return false;
 			
 		// Check if the player is not a spectator
-		if (CRF_EntityHelper.IsSpectator()(localEntity))
+		if (CRF_EntityHelper.IsSpectator(localEntity))
 			return false;
 			
 		return true;
 	}
 	
-	/**
-	 * Override: Gets the current suppression amount for the local player
-	 * @return Suppression amount or 0 if player is invalid or spectating
-	 
+	//------------------------------------------------------------------------------------------------
+	//! Override: Gets the current suppression amount for the local player
+	//! \return Suppression amount or 0 if player is invalid or spectating
 	override private float GetSuppressionAmount()
 	{
 		if (IsValidLocalPlayer())
@@ -35,10 +34,9 @@
 		return 0;
 	}
 	
-	/**
-	 * Override: Handles suppression flinch effect
-	 * Only applies the effect if player is valid and not spectating
-	 
+	//------------------------------------------------------------------------------------------------
+	//! Override: Handles suppression flinch effect
+	//! Only applies the effect if player is valid and not spectating
 	override private void OnSuppressionFlinch()
 	{
 		if (IsValidLocalPlayer())
@@ -46,4 +44,5 @@
 			FlinchEffect();
 		}
 	}
-}*/
+}
+*/

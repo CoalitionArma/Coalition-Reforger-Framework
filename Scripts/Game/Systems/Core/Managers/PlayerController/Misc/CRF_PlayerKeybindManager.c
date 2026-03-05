@@ -32,11 +32,9 @@ class CRF_PlayerKeybindManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Opens the slotting menu for player assignment
-	 * @param value - Input value (1.0 for pressed)
-	 * @param reason - Trigger reason
-	 */
+	//! Opens the slotting menu for player assignment
+	//! \param[in] value - Input value (1.0 for pressed)
+	//! \param[in] reason - Trigger reason
 	protected void OpenSlottingMenu(float value = 0.0, EActionTrigger reason = 0)
 	{
 		if (value != 1)
@@ -50,10 +48,8 @@ class CRF_PlayerKeybindManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Toggles ready state for player's side/faction
-	 * Only faction leaders can toggle ready state
-	 */
+	//! Toggles ready state for player's side/faction
+	//! Only faction leaders can toggle ready state
 	protected void ToggleSideReady()
 	{
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
@@ -82,9 +78,7 @@ class CRF_PlayerKeybindManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Admin command to force ready state for all sides
-	 */
+	//! Admin command to force ready state for all sides
 	protected void AdminForceReady()
 	{
 		if (!SCR_Global.IsAdmin())

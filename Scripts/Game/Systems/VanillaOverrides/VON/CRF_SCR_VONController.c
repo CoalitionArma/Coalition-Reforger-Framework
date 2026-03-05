@@ -2,6 +2,7 @@ modded class SCR_VONController
 {
 	SCR_FactionManager m_FactionManager;
 	
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -9,6 +10,7 @@ modded class SCR_VONController
 			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager().FindComponent(SCR_FactionManager));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
 	{
 		if (transmitType != CVON_EVONTransmitType.DIRECT && m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC")
@@ -17,12 +19,12 @@ modded class SCR_VONController
 	}
 	//------------------------------------------------------------------------------------------------
 	//! Public wrapper for the protected ResetVON method to allow external systems to reset VON
-	//------------------------------------------------------------------------------------------------
 	void PublicResetVON()
 	{
 		ResetVON();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override protected bool ActivateVON(notnull SCR_VONEntry entry, EVONTransmitType transmitType = EVONTransmitType.NONE)
 	{
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -34,11 +36,9 @@ modded class SCR_VONController
 	
 	//------------------------------------------------------------------------------------------------
 	//! Set transmission method depending on entry type when starting VON transmit
-	//! @param entry The VON entry to set as active transmitter
-	//------------------------------------------------------------------------------------------------
+	//! \param[in] entry The VON entry to set as active transmitter
 	override protected void SetActiveTransmit(notnull SCR_VONEntry entry)
 	{        
-		
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
 			// Early return if VON component is not available

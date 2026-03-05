@@ -4,23 +4,19 @@ class CRF_PlayerControllerClass : SCR_PlayerControllerClass
 
 class CRF_PlayerController : SCR_PlayerController
 {	
-	
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 ENTITY UPDATES
-//=============================================================================================================================================================================================================================================================================================================================================================
-	
 	//Grace period from respawn to use mini arsenal in ms
 	static float GRACE_PERIOD_TIME = 60000;
 	
 	//Last time this character was respawned.
 	float m_fTimeOfLastRespawn;
-	
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ENTITY UPDATES
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks to see if grace period is up for a respawn to use the mini arsenal
-	 * @return if the grace period is over and we have to hide the mini arsenal
-	 */
+	//! Checks to see if grace period is up for a respawn to use the mini arsenal
+	//! \return if the grace period is over and we have to hide the mini arsenal
 	static bool IsGracePeriodOver()
 	{
 		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerController());
@@ -82,9 +78,7 @@ class CRF_PlayerController : SCR_PlayerController
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Called when the player controller updates (typically whenever a player joins/rejoins)
-	 */
+	//! Called when the player controller updates (typically whenever a player joins/rejoins)
 	override protected void UpdateLocalPlayerController()
 	{
 		
@@ -97,10 +91,8 @@ class CRF_PlayerController : SCR_PlayerController
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Called when the player disconnects from the game
-	 * Ensures settings are reset to their stored values
-	 */
+	//! Called when the player disconnects from the game
+	//! Ensures settings are reset to their stored values
 	override void DisconnectFromGame()
 	{
 		// Check if gamemode instance exists, if not, exit early

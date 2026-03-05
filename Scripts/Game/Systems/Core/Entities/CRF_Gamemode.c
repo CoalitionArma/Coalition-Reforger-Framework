@@ -170,10 +170,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initialize the gamemode and all required manager instances
-	 * @param owner The entity that owns this component
-	 */
+	//! Initialize the gamemode and all required manager instances
+	//! \param[in] owner The entity that owns this component
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
@@ -207,10 +205,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Frame update for batch processing player initializations
-	 * More reliable than CallLater for time-critical operations
-	 */
+	//! Frame update for batch processing player initializations
+	//! More reliable than CallLater for time-critical operations
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		// Only process if we have pending initializations
@@ -233,10 +229,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Progress to the next slotting state
-	 * Updates all slotting UI and synchronizes across network
-	 */
+	//! Progress to the next slotting state
+	//! Updates all slotting UI and synchronizes across network
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
@@ -249,10 +243,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Progress to the next gamemode state
-	 * @param overriden Set to true to allow advancing from AAR or GAME states
-	 */
+	//! Progress to the next gamemode state
+	//! \param[in] overriden Set to true to allow advancing from AAR or GAME states
 	void AdvanceGamemodeState(bool overriden = false)
 	{
 		// Prevent advancing from AAR or GAME unless explicitly overridden
@@ -275,10 +267,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle gamemode state changes
-	 * Triggers UI updates and state-specific logic
-	 */
+	//! Handle gamemode state changes
+	//! Triggers UI updates and state-specific logic
 	protected void OnGamemodeStateChanged()
 	{
 		// Server-side state change handling
@@ -366,10 +356,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle player data received from network
-	 * @param playerData Player statistics and progress data
-	 */
+	//! Handle player data received from network
+	//! \param[in] playerData Player statistics and progress data
 	protected void OnDataReceived(SCR_PlayerData playerData)
 	{
 		m_PlayerData = playerData;
@@ -377,10 +365,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process player connection after authentication
-	 * @param iPlayerID ID of the connecting player
-	 */
+	//! Process player connection after authentication
+	//! \param[in] iPlayerID ID of the connecting player
 	protected override void OnPlayerAuditSuccess(int iPlayerID)
 	{
 		super.OnPlayerAuditSuccess(iPlayerID);
@@ -426,10 +412,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-		Called after a player is disconnected.
-		\param playerId PlayerId of disconnected player.
-	*/
+	//! Called after a player is disconnected.
 	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
@@ -452,10 +435,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process entity spawning for players
-	 * @param entity The spawned entity
-	 */
+	//! Process entity spawning for players
+	//! \param[in] entity The spawned entity
 	protected override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
@@ -482,13 +463,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process entity death/destruction for players
-	 * Handles respawn and spectator logic
-	 * @param entity The destroyed entity
-	 * @param killerEntity The entity that caused the destruction
-	 * @param instigator The instigator context
-	 */
+	//! Process entity death/destruction for players
+	//! Handles respawn and spectator logic
+	//! \param[in] entity The destroyed entity
+	//! \param[in] killerEntity The entity that caused the destruction
+	//! \param[in] instigator The instigator context
 	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
 	{
 		super.OnControllableDestroyed(entity, killerEntity, instigator);
@@ -558,14 +537,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
-	* @param playerId ID of the player to initialize
-	* @param locationZero Position 0 in the world vector to spawn the player
-	* @param locationOne Position 1 in the world vector to spawn the player
-	* @param locationTwo Position 2 in the world vector to spawn the player
-	* @param locationThree Position 3 in the world vector to spawn the player
-	*/
+	//! Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
+	//! \param[in] playerId ID of the player to initialize
+	//! \param[in] locationZero Position 0 in the world vector to spawn the player
+	//! \param[in] locationOne Position 1 in the world vector to spawn the player
+	//! \param[in] locationTwo Position 2 in the world vector to spawn the player
+	//! \param[in] locationThree Position 3 in the world vector to spawn the player
 	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
 	{
 		vector location[4];
@@ -583,11 +560,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Queue a player for staggered initialization
-	 * Prevents server overload by batching player spawns
-	 * @param playerId ID of the player to initialize
-	 */
+	//! Queue a player for staggered initialization
+	//! Prevents server overload by batching player spawns
+	//! \param[in] playerId ID of the player to initialize
 	void QueuePlayerInitialization(int playerId)
 	{
 		// Don't queue if already pending
@@ -611,11 +586,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Process a batch of pending player initializations
-	 * Called by EOnFrame when timer interval is reached
-	 * Spawns players in small groups to distribute server load
-	 */
+	//! Process a batch of pending player initializations
+	//! Called by EOnFrame when timer interval is reached
+	//! Spawns players in small groups to distribute server load
 	protected void ProcessPlayerBatch()
 	{
 		if (m_aPendingPlayerInitializations.IsEmpty())
@@ -648,10 +621,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Clear all pending player initializations
-	 * Used when resetting game state
-	 */
+	//! Clear all pending player initializations
+	//! Used when resetting game state
 	void ClearPlayerInitializationQueue()
 	{
 		m_aPendingPlayerInitializations.Clear();
@@ -662,11 +633,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if a player is waiting in the initialization queue
-	 * @param playerId Player to check
-	 * @return True if player is queued for initialization
-	 */
+	//! Check if a player is waiting in the initialization queue
+	//! \param[in] playerId Player to check
+	//! \return True if player is queued for initialization
 	bool IsPlayerQueuedForInitialization(int playerId)
 	{
 		return m_aPendingPlayerInitializations.Contains(playerId);
@@ -737,11 +706,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get gearscript resource for a faction
-	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
-	 * @return ResourceName for the gearscript or empty string if not found
-	 */
+	//! Get gearscript resource for a faction
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, etc.)
+	//! \return ResourceName for the gearscript or empty string if not found
 	ResourceName GetGearScriptResource(FactionKey factionKey)
 	{
 		CRF_GearScriptContainer container = GetGearScriptSettings(factionKey);
@@ -763,11 +730,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get gearscript container for a faction
-	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
-	 * @return The gearscript container or null if not found
-	 */
+	//! Get gearscript container for a faction
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, etc.)
+	//! \return The gearscript container or null if not found
 	CRF_GearScriptContainer GetGearScriptSettings(FactionKey factionKey)
 	{
 		switch (factionKey)

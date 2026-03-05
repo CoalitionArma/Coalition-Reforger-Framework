@@ -54,11 +54,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load vehicle gear script config from resource
-	 * @param resourceName Resource to load
-	 * @return Loaded config or null if failed
-	 */
+	//! Load vehicle gear script config from resource
+	//! \param[in] resourceName Resource to load
+	//! \return Loaded config or null if failed
 	protected CRF_VehicleGearscriptConfig LoadVehicleGearScriptConfig(ResourceName resourceName)
 	{
 		return CRF_VehicleGearscriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
@@ -66,11 +64,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Get cached resource to avoid repeated Resource.Load() calls
-	 * @param resourceName Resource to load/retrieve from cache
-	 * @return Cached or newly loaded resource
-	 */
+	//! Get cached resource to avoid repeated Resource.Load() calls
+	//! \param[in] resourceName Resource to load/retrieve from cache
+	//! \return Cached or newly loaded resource
 	protected Resource GetCachedResource(ResourceName resourceName)
 	{
 		if (m_mResourceCache.Contains(resourceName))
@@ -84,11 +80,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Gets Supply values for the inputed items
-	 * @param items the array of resource names you want the supply counts for
-	 * @return an array of ints representing the supply values in the same order as the items put in
-	 */
+	//! Gets Supply values for the inputed items
+	//! \param[in] items the array of resource names you want the supply counts for
+	//! \return an array of ints representing the supply values in the same order as the items put in
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
 		// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
@@ -141,9 +135,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Frame logic for vehicles getting the closest available faction to fill their inventory with that factiosn gear
-	 */
+	//! Frame logic for vehicles getting the closest available faction to fill their inventory with that factiosn gear
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -176,11 +168,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Used in EOnFrame to check local entities around a vehicle to get the closest faction entity near it
-	 * @param vehicle the vehicle we are checking for
-	 * @return bool if it was succesful or not
-	 */
+	//! Used in EOnFrame to check local entities around a vehicle to get the closest faction entity near it
+	//! \param[in] vehicle the vehicle we are checking for
+	//! \return bool if it was succesful or not
 	bool FindFactionByClosestPlayer(IEntity vehicle)
 	{	
 		float closestPlayerDistance;
@@ -245,11 +235,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}	
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Gets the total supply value of all items combined in the vehilce
-	 * @param truck the truck you want to check
-	 * @return the total supply value of the items in the truck
-	 */
+	//! Gets the total supply value of all items combined in the vehilce
+	//! \param[in] truck the truck you want to check
+	//! \return the total supply value of the items in the truck
 	int GetSuppliesInTruck(IEntity truck)
 	{
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
@@ -278,7 +266,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		int suppliesNeeded = 0;
 		for (int i = 0; i < supplies.Count(); i++)
 		{
-			suppliesNeeded += supplies[i] * amountOfItem[i];
+			suppliesNeeded += supplies[i]//! amountOfItem[i];
 		}
 		
 		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
@@ -335,16 +323,14 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Set gear for a vehicle entity based on its faction key
-	 *
-	 * Attempts to find the correct faction for the vehicle. If no faction is provided,
-	 * it searches for the closest player within 200m to determine the faction. Then,
-	 * it applies the appropriate gear loadout to the vehicle, checking if it's a supply truck.
-	 *
-	 * @param vehicle The vehicle entity to equip with gear
-	 * @param factionKey The key identifying the faction to use for gear configuration
-	 */
+	//! Set gear for a vehicle entity based on its faction key
+	//!
+	//! Attempts to find the correct faction for the vehicle. If no faction is provided,
+	//! it searches for the closest player within 200m to determine the faction. Then,
+	//! it applies the appropriate gear loadout to the vehicle, checking if it's a supply truck.
+	//!
+	//! \param[in] vehicle The vehicle entity to equip with gear
+	//! \param[in] factionKey The key identifying the faction to use for gear configuration
 	void SetVehicleGear(IEntity vehicle, string factionKey)
 	{
 		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
@@ -421,12 +407,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks to see if the inputed vehicle is a supply truck
-	 * @param truck the truck we are checking
-	 * @param factionKey what faction we check to see if this truck is in their supply truck array
-	 * @return an array of ints representing the supply values in the same order as the items put in
-	 */
+	//! Checks to see if the inputed vehicle is a supply truck
+	//! \param[in] truck the truck we are checking
+	//! \param[in] factionKey what faction we check to see if this truck is in their supply truck array
+	//! \return an array of ints representing the supply values in the same order as the items put in
 	bool IsSupplyTruck(IEntity truck, string factionKey)
 	{
 		ref CRF_GearScriptContainer gsContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
@@ -434,18 +418,16 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Configures a truck’s inventory and equipment loadout
-	 *
-	 * Clears existing inventory, applies the configured loadout, and spawns weapons,
-	 * magazines, grenades, smoke, and additional faction-specific items. Handles both
-	 * supply trucks and regular vehicles.
-	 *
-	 * @param truck The truck entity to configure
-	 * @param faction The faction object used to determine loadout
-	 * @param gsContainer The gear script container holding loadout data
-	 * @param isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
-	 */
+	//! Configures a truck’s inventory and equipment loadout
+	//!
+	//! Clears existing inventory, applies the configured loadout, and spawns weapons,
+	//! magazines, grenades, smoke, and additional faction-specific items. Handles both
+	//! supply trucks and regular vehicles.
+	//!
+	//! \param[in] truck The truck entity to configure
+	//! \param[in] faction The faction object used to determine loadout
+	//! \param[in] gsContainer The gear script container holding loadout data
+	//! \param[in] isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
 	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
 	{
 		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
@@ -636,14 +618,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Removes all existing items from a truck’s inventory
-	 *
-	 * Iterates through the truck’s inventory storage manager and deletes all entities found.
-	 *
-	 * @param truck The truck whose inventory will be cleared
-	 * @param invManager The truck’s inventory storage manager component
-	 */
+	//! Removes all existing items from a truck’s inventory
+	//!
+	//! Iterates through the truck’s inventory storage manager and deletes all entities found.
+	//!
+	//! \param[in] truck The truck whose inventory will be cleared
+	//! \param[in] invManager The truck’s inventory storage manager component
 	void ClearTruckGear(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
 	{
 		array<IEntity> items = {};
@@ -658,16 +638,14 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Applies a predefined loadout to a truck, including turret weapons and ammo
-	 *
-	 * Loads the correct vehicle loadout (either overridden or default), then spawns
-	 * ammunition into the truck’s storage.
-	 *
-	 * @param truck The truck entity to configure
-	 * @param invManager The truck’s inventory storage manager component
-	 * @param gsContainer The gear script container holding vehicle loadout data
-	 */
+	//! Applies a predefined loadout to a truck, including turret weapons and ammo
+	//!
+	//! Loads the correct vehicle loadout (either overridden or default), then spawns
+	//! ammunition into the truck’s storage.
+	//!
+	//! \param[in] truck The truck entity to configure
+	//! \param[in] invManager The truck’s inventory storage manager component
+	//! \param[in] gsContainer The gear script container holding vehicle loadout data
 	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer, string factionKey, bool isSupply)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
@@ -747,18 +725,16 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Spawns magazines into a vehicle’s inventory
-	 *
-	 * Loops until the requested amount of ammunition is added, distributing across
-	 * multiple magazine types.
-	 *
-	 * @param amountToSpawn Total number of bullets to distribute
-	 * @param magazineCounts Array of magazine capacities
-	 * @param magazinesToAdd Array of magazine resource names
-	 * @param invManager Vehicle’s inventory storage manager component
-	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
-	 */
+	//! Spawns magazines into a vehicle’s inventory
+	//!
+	//! Loops until the requested amount of ammunition is added, distributing across
+	//! multiple magazine types.
+	//!
+	//! \param[in] amountToSpawn Total number of bullets to distribute
+	//! \param[in] magazineCounts Array of magazine capacities
+	//! \param[in] magazinesToAdd Array of magazine resource names
+	//! \param[in] invManager Vehicle’s inventory storage manager component
+	//! \param[in] isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	int SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
 		int suppliesNeeded = 0;
@@ -787,7 +763,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
 			for (int i = 0; i < supplies.Count(); i++)
 			{
-				suppliesNeeded += supplies[i] * magazinesAdded[i];
+				suppliesNeeded += supplies[i]//! magazinesAdded[i];
 			}
 		}
 		
@@ -795,16 +771,14 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Spawns items (e.g., grenades, disposable launchers) into a vehicle’s inventory
-	 *
-	 * Iterates through provided items and spawns them until the requested amount is added.
-	 *
-	 * @param amountToSpawn Number of items to spawn
-	 * @param itemsToSpawn Array of item resource names
-	 * @param invManager Vehicle’s inventory storage manager component
-	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
-	 */
+	//! Spawns items (e.g., grenades, disposable launchers) into a vehicle’s inventory
+	//!
+	//! Iterates through provided items and spawns them until the requested amount is added.
+	//!
+	//! \param[in] amountToSpawn Number of items to spawn
+	//! \param[in] itemsToSpawn Array of item resource names
+	//! \param[in] invManager Vehicle’s inventory storage manager component
+	//! \param[in] isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	int SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
 		int suppliesNeeded = 0;
@@ -833,7 +807,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			array<int> supplies = GetSupplyValuesForItems(itemsToSpawn);
 			for (int i = 0; i < supplies.Count(); i++)
 			{
-				suppliesNeeded += supplies[i] * itemsAdded[i];
+				suppliesNeeded += supplies[i]//! itemsAdded[i];
 			}
 		}
 		
@@ -841,25 +815,23 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Check if vehicle supply cost has been calculated
+	//! Check if vehicle supply cost has been calculated
 	bool HasSupplyBeenCalculated(ResourceName resource)
 	{
 		return m_mVehicleSupplyCosts.Contains(resource);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Gets the number of bullets allocated to a weapon type for a vehicle
-	 *
-	 * Looks up overrides or defaults in the vehicle gear script configuration,
-	 * based on a weapon type index.
-	 *
-	 * @param vehicle The vehicle entity
-	 * @param index The weapon type index
-	 * @param vehicleGearScript The vehicle gear script configuration
-	 * @param gearContainer The gear script container holding overrides
-	 * @return The number of bullets to allocate
-	 */
+	//! Gets the number of bullets allocated to a weapon type for a vehicle
+	//!
+	//! Looks up overrides or defaults in the vehicle gear script configuration,
+	//! based on a weapon type index.
+	//!
+	//! \param[in] vehicle The vehicle entity
+	//! \param[in] index The weapon type index
+	//! \param[in] vehicleGearScript The vehicle gear script configuration
+	//! \param[in] gearContainer The gear script container holding overrides
+	//! \return The number of bullets to allocate
 	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
 	{
 		array<ref CRF_VehicleGearscriptOverride> gearOverides = {};
@@ -898,15 +870,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Determines if an item is a grenade or smoke grenade
-	 *
-	 * Inspects the item’s components to identify if it is a grenade, and whether it is smoke.
-	 *
-	 * @param item The resource name of the item to check
-	 * @param isGrenade Outputs true if the item is a grenade
-	 * @param isSmoke Outputs true if the item is a smoke grenade
-	 */
+	//! Determines if an item is a grenade or smoke grenade
+	//!
+	//! Inspects the item’s components to identify if it is a grenade, and whether it is smoke.
+	//!
+	//! \param[in] item The resource name of the item to check
+	//! \param[in] isGrenade Outputs true if the item is a grenade
+	//! \param[in] isSmoke Outputs true if the item is a smoke grenade
 	void IsItemGrenade(ResourceName item, out bool isGrenade = false, out bool isSmoke = false)
 	{
 		Resource itemLoaded = GetCachedResource(item);
@@ -935,14 +905,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks if a weapon is disposable
-	 *
-	 * Loads the weapon prefab and inspects components to determine if it is marked as disposable.
-	 *
-	 * @param weapon The resource name of the weapon to check
-	 * @return true if the weapon is disposable, false otherwise
-	 */
+	//! Checks if a weapon is disposable
+	//!
+	//! Loads the weapon prefab and inspects components to determine if it is marked as disposable.
+	//!
+	//! \param[in] weapon The resource name of the weapon to check
+	//! \return true if the weapon is disposable, false otherwise
 	bool IsWeaponDisposable(ResourceName weapon)
 	{
 		Resource weaponLoaded = GetCachedResource(weapon);
@@ -975,14 +943,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Gets the maximum ammo count of a magazine resource
-	 *
-	 * Loads the magazine prefab and extracts its MaxAmmo property from the MagazineComponent.
-	 *
-	 * @param resource The magazine resource name
-	 * @return The maximum number of bullets in the magazine, or 0 if not found
-	 */
+	//! Gets the maximum ammo count of a magazine resource
+	//!
+	//! Loads the magazine prefab and extracts its MaxAmmo property from the MagazineComponent.
+	//!
+	//! \param[in] resource The magazine resource name
+	//! \return The maximum number of bullets in the magazine, or 0 if not found
 	int GetMagazineCount(ResourceName resource)
 	{
 		Resource magazine = GetCachedResource(resource);
@@ -1007,15 +973,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Retrieves a list of standard weapons by index from the gear script config
-	 *
-	 * Uses an index to map to weapon categories such as rifles, carbines, pistols, etc.
-	 *
-	 * @param index The weapon category index
-	 * @param gearSriptConfig The gear script configuration to use
-	 * @return Array of weapon class references
-	 */
+	//! Retrieves a list of standard weapons by index from the gear script config
+	//!
+	//! Uses an index to map to weapon categories such as rifles, carbines, pistols, etc.
+	//!
+	//! \param[in] index The weapon category index
+	//! \param[in] gearSriptConfig The gear script configuration to use
+	//! \return Array of weapon class references
 	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		array<ref CRF_Weapon_Class> weapons = {};
@@ -1051,15 +1015,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Retrieves a specific special weapon by index
-	 *
-	 * Uses an index to fetch special weapons such as ARs, MMGs, HMGs, AT, MAT, HAT, and AA.
-	 *
-	 * @param index The weapon type index
-	 * @param gearSriptConfig The gear script configuration to use
-	 * @return A special weapon class reference
-	 */
+	//! Retrieves a specific special weapon by index
+	//!
+	//! Uses an index to fetch special weapons such as ARs, MMGs, HMGs, AT, MAT, HAT, and AA.
+	//!
+	//! \param[in] index The weapon type index
+	//! \param[in] gearSriptConfig The gear script configuration to use
+	//! \return A special weapon class reference
 	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		CRF_Spec_Weapon_Class weapon;
@@ -1099,14 +1061,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks if a grenade launcher round is a high-explosive (HE) type
-	 *
-	 * Loads the grenade launcher resource and inspects its components for a collision component(Only explosives have this enabled).
-	 *
-	 * @param glToCheck Resource name of the grenade launcher round
-	 * @return true if the round is HE, false otherwise
-	 */
+	//! Checks if a grenade launcher round is a high-explosive (HE) type
+	//!
+	//! Loads the grenade launcher resource and inspects its components for a collision component(Only explosives have this enabled).
+	//!
+	//! \param[in] glToCheck Resource name of the grenade launcher round
+	//! \return true if the round is HE, false otherwise
 	bool IsGLHE(ResourceName glToCheck)
 	{
 		Resource glLoaded = GetCachedResource(glToCheck);
@@ -1132,15 +1092,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks if a magazine belongs to a given special weapon
-	 *
-	 * Compares magazine wells between a weapon and magazine to determine compatibility.
-	 *
-	 * @param weaponToCheck The special weapon to check against
-	 * @param magazineToCheck The magazine resource name to check
-	 * @return true if the magazine is valid for the weapon, false otherwise
-	 */
+	//! Checks if a magazine belongs to a given special weapon
+	//!
+	//! Compares magazine wells between a weapon and magazine to determine compatibility.
+	//!
+	//! \param[in] weaponToCheck The special weapon to check against
+	//! \param[in] magazineToCheck The magazine resource name to check
+	//! \return true if the magazine is valid for the weapon, false otherwise
 	bool IsSpecRegularMagazine(CRF_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
@@ -1195,15 +1153,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Checks if a magazine is compatible with a set of weapons
-	 *
-	 * Compares magazine wells between a magazine and each weapon in the array.
-	 *
-	 * @param weaponsToCheck Array of weapons to check against
-	 * @param magazineToCheck The magazine resource name to check
-	 * @return true if the magazine is compatible, false otherwise
-	 */
+	//! Checks if a magazine is compatible with a set of weapons
+	//!
+	//! Compares magazine wells between a magazine and each weapon in the array.
+	//!
+	//! \param[in] weaponsToCheck Array of weapons to check against
+	//! \param[in] magazineToCheck The magazine resource name to check
+	//! \return true if the magazine is compatible, false otherwise
 	bool IsRegularMagazine(array<ref CRF_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
@@ -1258,11 +1214,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Used as a bridge to spawn the vehicle and register it in this manager from the vehicle spawner
-	 * @param spawner the vehicle spawner that spawned this vehicle
-	 * @return fuckall
-	 */
+	//! Used as a bridge to spawn the vehicle and register it in this manager from the vehicle spawner
+	//! \param[in] spawner the vehicle spawner that spawned this vehicle
+	//! \return fuckall
 	void SpawnVehicle(CRF_VehicleSpawner spawner)
 	{
 		if (!spawner.m_sFactionKey)
@@ -1288,12 +1242,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Sets the vehicle in the vehicle spawner for internal tracking purposes
-	 * @param vehicleEntity the newly spawned vehicle to register in the spawner
-	 * @param spawner the vehicle spawner we are registering this vehicle in
-	 * @return an array of ints representing the supply values in the same order as the items put in
-	 */
+	//! Sets the vehicle in the vehicle spawner for internal tracking purposes
+	//! \param[in] vehicleEntity the newly spawned vehicle to register in the spawner
+	//! \param[in] spawner the vehicle spawner we are registering this vehicle in
+	//! \return an array of ints representing the supply values in the same order as the items put in
 	void SetVehicle(IEntity vehicleEntity, CRF_VehicleSpawner spawner)
 	{
 		spawner.m_eVehicle = vehicleEntity;
