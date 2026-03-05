@@ -178,6 +178,9 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
     m_cPolygonColor 0 0 0 1
     m_cPolygonBorderColor 0 0 0 1
     m_bLineMode 1
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
     m_iVisibleDuringPhase 2
     m_Image "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
    }

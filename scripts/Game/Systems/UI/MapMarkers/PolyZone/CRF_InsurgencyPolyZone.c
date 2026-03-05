@@ -21,15 +21,20 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	protected bool m_bMarkerActive = false;
 	protected static const int ZONE_MARKER_COLOR = ARGB(255, 255, 165, 0);
 	
+	protected string m_sMarkerPosStr;
+	protected string m_sMarkerLabel;
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 		
-		// Cache gamemode reference on both server and client
 		m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
 		
-		// Client-only: apply visibility immediately on join, then start polling
+		vector pos = owner.GetOrigin();
+		m_sMarkerPosStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+		m_sMarkerLabel  = string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase);
+		
 		if (Replication.IsClient())
 		{
 			UpdateZoneMarker();
@@ -38,168 +43,142 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Override visibility check to include phase-based logic with delayed reveal
-	 * @return True if zone should be visible to current player
-	 */
 	override bool IsCurrentVisibility()
 	{
-		// First check base visibility (faction filters, gamemode state filters)
 		if (!super.IsCurrentVisibility())
 			return false;
 		
-		// Get insurgency gamemode instance
 		if (!m_InsurgencyGamemode)
 			m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
 		
 		if (!m_InsurgencyGamemode)
-			return false; // Gamemode not ready yet
+			return false;
 		
-		// CRITICAL: Defenders should NEVER see search area zones
-		if (IsVisibleForDefendingTeam())
+		if (IsCurrentPlayerDefender())
 			return false;
 		
 		int currentPhase = m_InsurgencyGamemode.GetCurrentPhase();
 		
-		// Check if this zone's phase is active
-		bool isPhaseActive = (currentPhase == m_iVisibleDuringPhase);
+		bool isPhaseActive   = (currentPhase == m_iVisibleDuringPhase);
 		bool isPhaseComplete = (currentPhase > m_iVisibleDuringPhase);
 		
-		// If phase is complete and we should show to all teams, show it (but still only attackers due to check above)
 		if (isPhaseComplete && m_bShowToAllWhenPhaseComplete)
-			return IsVisibleForPlayerTeam();
+			return IsCurrentPlayerAttacker();
 		
-		// If phase isn't active, hide the zone
 		if (!isPhaseActive)
 			return false;
 		
-		// Phase is active - check if zones are revealed yet to attackers
 		if (!m_InsurgencyGamemode.AreCurrentPhaseZonesRevealed())
-			return false; // Not revealed yet - hide from everyone
+			return false;
 		
-		// Zones revealed - show to attacking team only
-		return IsVisibleForPlayerTeam();
+		return IsCurrentPlayerAttacker();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if current player's team should see this zone (attacking team)
-	 * @return True if player's team matches visibility settings
-	 */
-	protected bool IsVisibleForPlayerTeam()
-	{	
-		if (!m_InsurgencyGamemode)
-			return false;
-		
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		if (!playerController)
-			return false;
-		
-		SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
-			playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
-		if (!factionComp)
-			return false;
-		
-		Faction playerFaction = factionComp.GetAffiliatedFaction();
-		if (!playerFaction)
-			return false;
-		
-		FactionKey playerFactionKey = playerFaction.GetFactionKey();
-		
-		return (playerFactionKey == m_InsurgencyGamemode.m_AttackingSide);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if current player is on defending team
-	 * @return True if player is defender
-	 */
-	protected bool IsVisibleForDefendingTeam()
+	protected bool IsCurrentPlayerAttacker()
 	{
 		if (!m_InsurgencyGamemode)
 			return false;
 		
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		if (!playerController)
+		FactionKey key = GetLocalPlayerFactionKey();
+		if (key.IsEmpty())
 			return false;
 		
-		SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
-			playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
-		if (!factionComp)
-			return false;
-		
-		Faction playerFaction = factionComp.GetAffiliatedFaction();
-		if (!playerFaction)
-			return false;
-		
-		FactionKey playerFactionKey = playerFaction.GetFactionKey();
-		
-		return (playerFactionKey == m_InsurgencyGamemode.m_DefendingSide);
+		return (key == m_InsurgencyGamemode.m_AttackingSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Client-only: poll and update search area map marker
+	protected bool IsCurrentPlayerDefender()
+	{
+		if (!m_InsurgencyGamemode)
+			return false;
+		
+		FactionKey key = GetLocalPlayerFactionKey();
+		if (key.IsEmpty())
+			return false;
+		
+		return (key == m_InsurgencyGamemode.m_DefendingSide);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/*!
+	 * Get the local player's faction key via SCR_FactionManager.
+	 * GetGame().GetPlayerController() returns null in component context on clients;
+	 * SCR_FactionManager.GetLocalPlayerFaction() is the correct client-safe path.
+	 */
+	protected FactionKey GetLocalPlayerFactionKey()
+	{
+		SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMgr)
+			return string.Empty;
+		
+		Faction playerFaction = factionMgr.GetLocalPlayerFaction();
+		if (!playerFaction)
+			return string.Empty;
+		
+		return playerFaction.GetFactionKey();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Client-only: poll and update search area map marker.
 	protected void UpdateZoneMarker()
 	{
-    	CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
-    	if (!psmm)
-        	return;
-    
-    	bool shouldShow = IsCurrentVisibility();
-    	
-    	if (shouldShow && !m_bMarkerActive)
-    	{
-			IEntity owner = GetOwner();
-        	vector pos = owner.GetOrigin();
-			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
-
-	        psmm.AddScriptedMarker("Static Marker", posStr, 1000,
-	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
-	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
-        	m_bMarkerActive = true;
-    	}
-    	else if (!shouldShow && m_bMarkerActive)
-    	{
-			IEntity owner = GetOwner();
-        	vector pos = owner.GetOrigin();
-			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
-
-	        psmm.RemoveScriptedMarker("Static Marker", posStr, 1000,
-	            string.Format("Search Area (Phase %1)", m_iVisibleDuringPhase),
-	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
-        	m_bMarkerActive = false;
-    	}
+		if (!m_InsurgencyGamemode)
+		{
+			m_InsurgencyGamemode = CRF_InsurgencyGamemodeManager.GetInstance();
+			if (!m_InsurgencyGamemode)
+				return;
+		}
+		
+		CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		if (!psmm)
+			return;
+		
+		bool shouldShow = IsCurrentVisibility();
+		
+		if (shouldShow && !m_bMarkerActive)
+		{
+			psmm.AddScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+				m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+			m_bMarkerActive = true;
+		}
+		else if (!shouldShow && m_bMarkerActive)
+		{
+			psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+				m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+			m_bMarkerActive = false;
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
-    	GetGame().GetCallqueue().Remove(UpdateZoneMarker);
-    	super.OnDelete(owner);
+		GetGame().GetCallqueue().Remove(UpdateZoneMarker);
+		
+		if (m_bMarkerActive)
+		{
+			CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+			if (psmm)
+				psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+					m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+			m_bMarkerActive = false;
+		}
+		
+		super.OnDelete(owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Get the phase this zone is visible during
-	 * @return Phase number
-	 */
 	int GetVisiblePhase()
 	{
 		return m_iVisibleDuringPhase;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if zone should be visible during a specific phase
-	 * @param phase Phase number to check
-	 * @return True if zone is visible during that phase
-	 */
 	bool IsVisibleDuringPhase(int phase)
 	{
 		if (phase == m_iVisibleDuringPhase)
 			return true;
 		
-		// Also visible if phase is complete and flag is set
 		if (phase > m_iVisibleDuringPhase && m_bShowToAllWhenPhaseComplete)
 			return true;
 		

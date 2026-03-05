@@ -99,6 +99,20 @@ $grp GenericEntity : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints
   coords 2372.006 125.435 5043.972
  }
 }
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 2608.56 99.31 3682.46
+  m_rVehicle "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2578.633 97.71 3659.948
+  m_rVehicle "{25036EB0B7E1CF55}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_gunship_kord_HEDP_less_rockets.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 999999
+ }
+}
 $grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPointsGroups/INDFOR_InitalGroupSpawn.et" {
  {
   components {

@@ -33,6 +33,14 @@ Vehicle : "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et
    }
   }
   SCR_UniversalInventoryStorageComponent "{5D7E924E84B181BC}" {
+   MultiSlots {
+    MultiSlotConfiguration "{68CA0D1120421516}" {
+     SlotTemplate InventoryStorageSlot atgm {
+      Prefab "{45F4B2454AD30244}Prefabs/Weapons/HeavyWeapons/9K135/Launcher_9K135.et"
+     }
+     NumSlots 4
+    }
+   }
    m_fMaxWeight 4000
    m_aSlotsToShow {
    }

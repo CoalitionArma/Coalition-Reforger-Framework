@@ -16,12 +16,15 @@ class CRF_InsDestructiveComponent: ScriptComponent
     protected SCR_DestructionMultiPhaseComponent m_DestructionComponent;
     protected bool m_bIsActive;
 	
-    // Replicated so clients can react to visibility and destruction state
     [RplProp(onRplName: "OnActiveStateReplicated")]
     protected bool m_bIsActiveReplicated = false;
     
     [RplProp(onRplName: "OnDestroyedStateReplicated")]
     protected bool m_bIsDestroyedReplicated = false;
+	
+	// FIX: Cache stable marker identity strings at init (same pattern as PolyZone fix)
+	protected string m_sMarkerPosStr;
+	protected string m_sMarkerLabel;
 	
 	protected bool m_bDefenderMarkerActive = false;
 	protected bool m_bSiteDestroyed = false;
@@ -34,6 +37,11 @@ class CRF_InsDestructiveComponent: ScriptComponent
 
 	    if (!GetGame().InPlayMode())
 	        return;
+	
+		// Pre-compute stable marker identity strings
+		vector pos = owner.GetOrigin();
+		m_sMarkerPosStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+		m_sMarkerLabel  = string.Format("Cache (Phase %1)", m_iCachePhase);
 	
 	    if (Replication.IsServer())
 	    {
@@ -50,15 +58,11 @@ class CRF_InsDestructiveComponent: ScriptComponent
 	        if (CRF_InsurgencyGamemodeManager.GetInstance())
 	            CRF_InsurgencyGamemodeManager.GetInstance().RegisterCacheObjective(owner);
 	        
-	        // Defer SetCacheActive until RplComponent is ready so clients receive the initial state
 	        GetGame().GetCallqueue().CallLater(InitialActivationDeferred, 100, false);
 	    }
 	
-	    // Client-only: apply already-replicated state immediately on join, then start marker polling
 	    if (Replication.IsClient())
 	    {
-	        // [RplProp()] values are already populated by the time OnPostInit runs on the client,
-	        // so we can apply visibility directly without waiting for the callback
 	        ApplyCacheVisibility(m_bIsActiveReplicated);
 	        m_bSiteDestroyed = m_bIsDestroyedReplicated;
 	        GetGame().GetCallqueue().CallLater(UpdateCacheMarker, 1000, true);
@@ -66,7 +70,6 @@ class CRF_InsDestructiveComponent: ScriptComponent
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Server-only: deferred initial activation, retries until RplId is valid
     protected void InitialActivationDeferred()
     {
         IEntity owner = GetOwner();
@@ -76,7 +79,6 @@ class CRF_InsDestructiveComponent: ScriptComponent
         RplComponent rplComp = RplComponent.Cast(owner.FindComponent(RplComponent));
         if (!rplComp || rplComp.Id() == RplId.Invalid())
         {
-            // Not ready yet, keep retrying
             GetGame().GetCallqueue().CallLater(InitialActivationDeferred, 100, false);
             return;
         }
@@ -110,7 +112,6 @@ class CRF_InsDestructiveComponent: ScriptComponent
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Server-only: set active state and replicate to clients
     void SetCacheActive(bool active)
     {
         m_bIsActive = active;
@@ -120,23 +121,22 @@ class CRF_InsDestructiveComponent: ScriptComponent
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Called on client when m_bIsActiveReplicated is received
     protected void OnActiveStateReplicated()
     {
         ApplyCacheVisibility(m_bIsActiveReplicated);
-    }
-    
-    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Called on client when m_bIsDestroyedReplicated is received
-    protected void OnDestroyedStateReplicated()
-    {
-        m_bSiteDestroyed = m_bIsDestroyedReplicated;
-        // Force marker update immediately rather than waiting for next poll
+        // FIX: Also force a marker update immediately when active state changes so the
+        //      defender marker appears/disappears without waiting for the next poll tick.
         UpdateCacheMarker();
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Shared: apply entity visibility flags, safe to call on any context
+    protected void OnDestroyedStateReplicated()
+    {
+        m_bSiteDestroyed = m_bIsDestroyedReplicated;
+        UpdateCacheMarker();
+    }
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     protected void ApplyCacheVisibility(bool active)
     {
         IEntity owner = GetOwner();
@@ -158,54 +158,44 @@ class CRF_InsDestructiveComponent: ScriptComponent
     }
 	
 	//------------------------------------------------------------------------------------------------
-    //! Client-only: poll and update defender map marker
+    //! Client-only: poll and update defender map marker.
 	protected void UpdateCacheMarker()
 	{
 	    CRF_InsurgencyGamemodeManager ins = CRF_InsurgencyGamemodeManager.GetInstance();
 	    if (!ins)
 	        return;
 	    
-	    SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-	    if (!playerController)
+	    // Use SCR_FactionManager instead of GetPlayerController() which returns null
+	    // in component context on clients connected to a dedicated server.
+	    SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+	    if (!factionMgr)
 	        return;
 	    
-	    SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
-	        playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
-	    if (!factionComp)
-	        return;
-	    
-	    Faction playerFaction = factionComp.GetAffiliatedFaction();
+	    Faction playerFaction = factionMgr.GetLocalPlayerFaction();
 	    if (!playerFaction)
 	        return;
-	    
-	    bool isDefender = (playerFaction.GetFactionKey() == ins.m_DefendingSide);
+		
+		FactionKey playerFactionKey = playerFaction.GetFactionKey();
+		bool isDefender = (playerFactionKey == ins.m_DefendingSide);
 	    bool isPhaseActive = (ins.GetCurrentPhase() == m_iCachePhase);
-    	bool shouldShow = isDefender && isPhaseActive && !IsCacheDestroyed();
+	
+		// FIX: Respect the m_bShowMarkerForDefenders attribute - was ignored before.
+    	bool shouldShow = m_bShowMarkerForDefenders && isDefender && isPhaseActive && m_bIsActiveReplicated && !IsCacheDestroyed();
 		
-		IEntity owner = GetOwner();
 		CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
-		
-		if (!owner || !psmm)
+		if (!psmm)
 			return;
 		
 	    if (shouldShow && !m_bDefenderMarkerActive)
 	    {
-			vector pos = owner.GetOrigin();
-			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
-			
-	        psmm.AddScriptedMarker("Static Marker", posStr, 1000,
-	            string.Format("Cache (Phase %1)", m_iCachePhase),
-	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+	        psmm.AddScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+	            m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
 	        m_bDefenderMarkerActive = true;
 	    }
 	    else if (!shouldShow && m_bDefenderMarkerActive)
 	    {
-			vector pos = owner.GetOrigin();
-			string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
-			
-	        psmm.RemoveScriptedMarker("Static Marker", posStr, 1000,
-	            string.Format("Cache (Phase %1)", m_iCachePhase),
-	            m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+	        psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+	            m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
 	        m_bDefenderMarkerActive = false;
 	    }
 	}
@@ -228,19 +218,14 @@ class CRF_InsDestructiveComponent: ScriptComponent
         GetGame().GetCallqueue().Remove(UpdateCacheMarker);
         GetGame().GetCallqueue().Remove(InitialActivationDeferred);
 		
-        // Client-only marker cleanup
         if (Replication.IsClient() && m_bDefenderMarkerActive)
         {
-            vector pos = owner.GetOrigin();
-            string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
             CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
             if (psmm)
-                psmm.RemoveScriptedMarker("Static Marker", posStr, 1000,
-                    string.Format("Cache (Phase %1)", m_iCachePhase),
-                    m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
+                psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
+                    m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));
         }
 		
-        // Server-only cleanup
         if (m_DestructionComponent)
             m_DestructionComponent.GetOnDamageStateChanged().Remove(OnDamageStateChanged);
 		
@@ -248,7 +233,6 @@ class CRF_InsDestructiveComponent: ScriptComponent
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //! Works on both server and client - server uses destruction component, client uses replicated bool
     bool IsCacheDestroyed()
     {
         if (Replication.IsClient())

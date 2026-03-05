@@ -102,9 +102,9 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 1749.814 140.628 7734.129
   angles 0 166.945 0
-  m_rVehicle "{FBD9E898478968DF}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA_9k135_Inv.et"
   m_bShouldRespawnOnSideRespawn 0
-  m_iRespawnTimer 99999
+  m_iRespawnTimer 9999999
+  m_bShouldAddAmmo 1
  }
 }
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
