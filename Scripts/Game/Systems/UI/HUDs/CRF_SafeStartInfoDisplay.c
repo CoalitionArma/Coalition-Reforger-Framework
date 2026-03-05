@@ -315,7 +315,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		
 		// Espionage
 		string espionageStatus;
-		if (m_Gamemode.m_bAllowEspionage)
+		if (m_Gamemode.m_bMissionAllowsEspionage)
 			espionageStatus = "On";
 		else
 			espionageStatus = "Off";

@@ -2,7 +2,7 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
  ID "511E9C6ADE70F798"
  components {
   CRF_ParachuteBackpackComponent "{68A904A00C1F40B4}" {
-   m_ParachutePrefab "{E95CAF01F817549F}Prefabs/DeployedParachutes/CRF_DeployedParachute.et"
+   m_ParachutePrefab "{E95CAF01F817549F}Prefabs/DeployedParachutes/CRF_DeployedChickenParachute.et"
   }
   MeshObject "{511E9C6ADE70F7BD}" {
    Object "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"

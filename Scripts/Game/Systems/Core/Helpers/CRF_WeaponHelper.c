@@ -65,14 +65,33 @@ class CRF_WeaponHelper
 		}
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
-		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
-		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+		GetGame().GetCallqueue().Call(AddAttachments, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().Call(SelectWeapon, inventory.GetOwner()); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Have the character or player actually select and hold the wepaon
+	//! Have the character or player actually select and hold the weapon
 	//! \param[in] entity Entity to force weapon selection on
 	static void SelectWeapon(IEntity entity)
+	{
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+		{
+			// For player-controlled entities, use RPC to execute on client
+			CRF_GearscriptCharacter.Cast(entity).SelectPrimaryWeapon();
+		}
+		else
+		{
+			// For AI, select directly
+			SelectPrimaryWeaponForEntity(entity);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Shared weapon selection logic - finds and selects the primary weapon
+	//! Prioritizes: Primary weapon (rifle with magazine) > Fallback weapon (sidearm) > Skip explosives/grenades
+	//! \param[in] entity Entity to select weapon for
+	static void SelectPrimaryWeaponForEntity(IEntity entity)
 	{
 		if (!ChimeraCharacter.Cast(entity))
 			return;
@@ -87,27 +106,52 @@ class CRF_WeaponHelper
 		
 		array<WeaponSlotComponent> outSlots = {};
 		weaponMan.GetWeaponsSlots(outSlots);
-		WeaponSlotComponent weapon;
+		WeaponSlotComponent primaryWeapon;
+		WeaponSlotComponent fallbackWeapon;
+		
+		// First pass: Look for a primary weapon (rifle/gun with magazine)
 		foreach (WeaponSlotComponent outSlot: outSlots)
 		{
 			if (!outSlot.GetWeaponEntity())
 				continue;
 			
-			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
+			IEntity weaponEntity = outSlot.GetWeaponEntity();
+			
+			// Skip grenades
+			if (weaponEntity.FindComponent(GrenadeMoveComponent))
 				continue;
 			
-			weapon = outSlot;
-			break;
+			// Skip explosives/demo charges (they have ExplosiveChargeComponent)
+			if (weaponEntity.FindComponent(SCR_ExplosiveChargeComponent))
+				continue;
+			
+			// Check if it's a firearm with magazine (primary weapon)
+			BaseMuzzleComponent muzzle = BaseMuzzleComponent.Cast(weaponEntity.FindComponent(BaseMuzzleComponent));
+			if (muzzle)
+			{
+				BaseMagazineComponent magazine = muzzle.GetMagazine();
+				if (magazine)
+				{
+					// Found a primary weapon with magazine
+					primaryWeapon = outSlot;
+					break;
+				}
+			}
+			
+			// Store as fallback if no primary found yet
+			if (!fallbackWeapon)
+				fallbackWeapon = outSlot;
 		}
+		
+		// Use primary weapon if found, otherwise use fallback (sidearm, etc.)
+		WeaponSlotComponent weapon = primaryWeapon;
+		if (!weapon)
+			weapon = fallbackWeapon;
 		
 		if (!weapon)
 			return;
-		
-		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
-		if (playerId > 0)
-			CRF_GearscriptCharacter.Cast(entity).SelectPrimaryWeapon();
-		else
-			charController.SelectWeapon(weapon);
+
+		charController.SelectWeapon(weapon);
 	}
 	
 	//------------------------------------------------------------------------------------------------
