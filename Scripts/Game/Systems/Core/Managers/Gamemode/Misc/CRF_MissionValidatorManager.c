@@ -72,6 +72,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	// VALIDATION LOGIC
 	//------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	//! Main validation function
 	void ValidateMission()
 	{
@@ -121,6 +122,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	// VALIDATION CHECKS
 	//------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate gamemode entity and core components
 	protected void ValidateGamemodeEntity()
 	{
@@ -204,6 +206,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			AddInfo("[OK] CIV Spawn point found");
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate faction setup
 	protected void ValidateFactions()
 	{
@@ -228,6 +231,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate spawn markers
 	protected void ValidateSpawnMarkers()
 	{
@@ -259,6 +263,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			AddInfo(string.Format("[OK] Found %1 CIVILIAN spawn marker(s)", civMarkers));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate safestart zones
 	protected void ValidateSafezones()
 	{
@@ -290,6 +295,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			AddInfo(string.Format("[OK] Found %1 CIVILIAN safestart boundary/boundaries", civZones));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate CVON setup
 	protected void ValidateCVONSetup()
 	{
@@ -318,6 +324,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			AddInfo("[OK] CVON component found");
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate slotting setup
 	protected void ValidateSlottingSetup()
 	{
@@ -369,6 +376,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Validate special gamemode requirements
 	protected void ValidateSpecialGamemodeRequirements()
 	{
@@ -459,6 +467,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	// HELPER FUNCTIONS
 	//------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	//! Count entities with a specific name
 	protected int CountEntitiesWithName(string entityName)
 	{
@@ -476,24 +485,28 @@ class CRF_MissionValidatorManager : ScriptComponent
 		return count;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Add a critical error
 	protected void AddCriticalError(string message)
 	{
 		m_aCriticalErrors.Insert(message);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Add a warning
 	protected void AddWarning(string message)
 	{
 		m_aWarnings.Insert(message);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Add an info message
 	protected void AddInfo(string message)
 	{
 		m_aInfoMessages.Insert(message);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Display all validation results
 	protected void DisplayValidationResults()
 	{
@@ -520,6 +533,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	// PUBLIC API
 	//------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	//! Manually trigger validation
 	void TriggerValidation()
 	{
@@ -527,24 +541,28 @@ class CRF_MissionValidatorManager : ScriptComponent
 			ValidateMission();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Check if validation passed without critical errors
 	bool IsValid()
 	{
 		return m_aCriticalErrors.Count() == 0;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Get critical errors
 	array<string> GetCriticalErrors()
 	{
 		return m_aCriticalErrors;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Get warnings
 	array<string> GetWarnings()
 	{
 		return m_aWarnings;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Get info messages
 	array<string> GetInfoMessages()
 	{
@@ -555,6 +573,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	// WORKBENCH OUTPUT
 	//------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	//! Show enhanced validation output in Workbench
 	protected void ShowWorkbenchOutput()
 	{
@@ -640,6 +659,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		Print("", LogLevel.NORMAL);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Try to show HUD notification (called repeatedly until player is ready)
 	protected void TryShowHudNotification()
 	{

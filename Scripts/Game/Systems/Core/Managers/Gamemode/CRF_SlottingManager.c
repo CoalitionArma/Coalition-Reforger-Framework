@@ -407,7 +407,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method to check if a group is empty
+	//! Helper method to check if a group is empty
 	protected bool IsEmptyGroup(SCR_AIGroup group)
 	{
 		if (!group)
@@ -637,10 +637,8 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Assign player to their slotted group
-	* @param playerId ID of the player to assign
-	*/
+	//! Assign player to their slotted group
+	//! \param[in] playerId ID of the player to assign
 	void AssignPlayerToGroup(int playerId)
 	{
 		SCR_AIGroup group = GetPlayerSlotGroup(playerId);
@@ -686,12 +684,10 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Get a cached resource or load and cache it if not already cached
-	 * Reduces repeated Resource.Load() calls during mass spawning
-	 * @param resourceName The resource path to load
-	 * @return The loaded resource or null if invalid
-	 */
+	//! Get a cached resource or load and cache it if not already cached
+	//! Reduces repeated Resource.Load() calls during mass spawning
+	//! \param[in] resourceName The resource path to load
+	//! \return The loaded resource or null if invalid
 	Resource GetCachedResource(ResourceName resourceName)
 	{
 		if (resourceName.IsEmpty())
@@ -711,10 +707,8 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Clear all cached resources
-	 * Call this when unloading mission or changing scenarios
-	 */
+	//! Clear all cached resources
+	//! Call this when unloading mission or changing scenarios
 	void ClearResourceCache()
 	{
 		m_mCachedResources.Clear();
@@ -726,21 +720,17 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Set the mass initialization flag
-	 * Used to optimize collision checks during batch player spawning
-	 * @param inProgress True when batch spawning is active
-	 */
+	//! Set the mass initialization flag
+	//! Used to optimize collision checks during batch player spawning
+	//! \param[in] inProgress True when batch spawning is active
 	void SetMassInitializationInProgress(bool inProgress)
 	{
 		m_bMassInitializationInProgress = inProgress;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if mass initialization is currently in progress
-	 * @return True if batch spawning is active
-	 */
+	//! Check if mass initialization is currently in progress
+	//! \return True if batch spawning is active
 	bool IsMassInitializationInProgress()
 	{
 		return m_bMassInitializationInProgress;
@@ -751,9 +741,8 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Client-side: Update single slot from RPC (called by CRF_RplBroadcastManager)
-	// Only updates if data actually changed (prevents unnecessary UI rebuilds)
-	//------------------------------------------------------------------------------------------------
+	//! Client-side: Update single slot from RPC (called by CRF_RplBroadcastManager)
+	//! Only updates if data actually changed (prevents unnecessary UI rebuilds)
 	void UpdateSlotDataClient(CRF_SlotDataContainer slotData)
 	{
 		if (Replication.IsServer())
@@ -775,8 +764,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Client-side: Remove slot from RPC (called by CRF_RplBroadcastManager)
-	//------------------------------------------------------------------------------------------------
+	//! Client-side: Remove slot from RPC (called by CRF_RplBroadcastManager)
 	void RemoveSlotClient(int slotId)
 	{
 		if (Replication.IsServer())

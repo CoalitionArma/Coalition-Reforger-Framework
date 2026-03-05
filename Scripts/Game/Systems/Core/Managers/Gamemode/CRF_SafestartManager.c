@@ -716,10 +716,8 @@ class CRF_SafestartManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Activates safe start event handlers for all AI and player-controlled entities.
-	* Disables damage and weapon functionality during the safe start period.
-	*/
+	//! Activates safe start event handlers for all AI and player-controlled entities.
+	//! Disables damage and weapon functionality during the safe start period.
 	protected void ActivateSafeStartEHs(SCR_AIWorld aiWorld)
 	{
 		// Apply safe start to AI-controlled entities
@@ -749,10 +747,8 @@ class CRF_SafestartManager : ScriptComponent
 	};
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Deactivates all safe start event handlers and re-enables combat functionality
-	* for all entities that had safe start restrictions applied.
-	*/
+	//! Deactivates all safe start event handlers and re-enables combat functionality
+	//! for all entities that had safe start restrictions applied.
 	protected void DeactivateSafeStartEHs()
 	{
 		foreach (IEntity controlledEntity, bool hasHandlers : m_mEntitiesWithEHsMap)

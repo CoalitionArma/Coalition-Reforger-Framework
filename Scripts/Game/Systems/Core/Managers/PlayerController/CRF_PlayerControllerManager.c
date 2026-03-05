@@ -26,10 +26,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initializes the player controller component
-	 * Sets up input listeners and schedules initial setup calls
-	 */
+	//! Initializes the player controller component
+	//! Sets up input listeners and schedules initial setup calls
 	void InitilizePlayerControllerComp()
 	{
 		// Skip initialization on dedicated servers or in editor
@@ -51,11 +49,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initializes the player client
-	 * Cleans up previous camera, closes menus, and sets up player-specific settings
-	 * @param playerCharacter - The spectator entity the server created and set to this player
-	 */
+	//! Initializes the player client
+	//! Cleans up previous camera, closes menus, and sets up player-specific settings
+	//! \param[in] playerCharacter - The spectator entity the server created and set to this player
 	void InitilizePlayerClient(RplId playerCharID)
 	{
 		// Get player character
@@ -88,10 +84,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initilizes players if they have a valid spectator entity
-	 * @param playerCharacter - The spectator entity the server created and set to this player
-	 */
+	//! Initilizes players if they have a valid spectator entity
+	//! \param[in] playerCharacter - The spectator entity the server created and set to this player
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
 		m_CameraManager.InitilizeSpecCamera();
@@ -112,9 +106,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initilizes players if they have a valid slotted character
-	 */
+	//! Initilizes players if they have a valid slotted character
 	void InitilizeLocalCharacter()
 	{
 		// Clean up previous camera if exists

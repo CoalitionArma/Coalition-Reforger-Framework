@@ -10,6 +10,7 @@ class CRF_TicketMessageData
 	// REPLICATION STUFF
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_TicketMessageData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{	
 		snapshot.SerializeString(instance.sender);
@@ -19,6 +20,7 @@ class CRF_TicketMessageData
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_TicketMessageData instance)
 	{
 		snapshot.SerializeString(instance.sender);
@@ -28,6 +30,7 @@ class CRF_TicketMessageData
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
 		snapshot.EncodeString(packet); // sender
@@ -35,6 +38,7 @@ class CRF_TicketMessageData
 		snapshot.EncodeString(packet); // timestamp
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.DecodeString(packet); // sender
@@ -44,6 +48,7 @@ class CRF_TicketMessageData
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
 		if (!lhs.CompareStringSnapshots(rhs)) return false;  // sender
@@ -52,6 +57,7 @@ class CRF_TicketMessageData
 	    return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_TicketMessageData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
 		return snapshot.CompareString(instance.sender)
@@ -72,6 +78,7 @@ class CRF_Ticket
 	int adminID; // Admin assigned to the ticket
 	ref array<ref CRF_TicketMessageData> messages = new array<ref CRF_TicketMessageData>(); // Array of messages from the player since they asked for help
 	
+	//------------------------------------------------------------------------------------------------
 	void AddMessage(string sender, string msg)
 	{	
 		CRF_TicketMessageData message = new CRF_TicketMessageData;
@@ -90,10 +97,9 @@ class CRF_AdminMenuManager : ScriptComponent
 	// Array of admin actions
 	private ref array<ref CRF_AdminActionLog> m_mAdminActions = new array<ref CRF_AdminActionLog>();
 	
-	/**
-	* Creates a formatted timestamp string from current system time
-	* @return Formatted timestamp in HH:MM:SS format
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Creates a formatted timestamp string from current system time
+	//! \return Formatted timestamp in HH:MM:SS format
 	static string GetFormattedTimestamp()
 	{
 		int hour = 0;
@@ -107,10 +113,9 @@ class CRF_AdminMenuManager : ScriptComponent
 		return string.Format("%1:%2:%3", hour.ToString(2), minute.ToString(2), second.ToString(2));
 	}
 	
-	/**
-	* Stores admin logs for UI
-	* @param data Description of the action
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Stores admin logs for UI
+	//! \param[in] data Description of the action
 	void StoreAdminLogs(string data)
 	{
 		// Create new log
@@ -123,21 +128,19 @@ class CRF_AdminMenuManager : ScriptComponent
 		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
-	/**
-	* Returns list of actions taken by admins this mission
-	* @return Array of admin action logs
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Returns list of actions taken by admins this mission
+	//! \return Array of admin action logs
 	array<ref CRF_AdminActionLog> GetAdminActionLogs()
 	{
 		return m_mAdminActions;
 	}
 
-	/**
-	* Creates new ticket or adds new message to existing ticket
-	* @param ticketID ID of the ticket (ID of the player that initially opened the ticket)
-	* @param senderID ID of the player sending the message
-	* @param data Text in the message
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Creates new ticket or adds new message to existing ticket
+	//! \param[in] ticketID ID of the ticket (ID of the player that initially opened the ticket)
+	//! \param[in] senderID ID of the player sending the message
+	//! \param[in] data Text in the message
 	void NewTicketMessage(int ticketID, int senderID, string data)
 	{
 		// Get name of player sending the admin message
@@ -169,11 +172,10 @@ class CRF_AdminMenuManager : ScriptComponent
 		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 		
-	/**
-	* Keeps track of the admin that helping with this ticket
-	* @param ticketID ID of the ticket (ID of the player that initially opened the ticket)
-	* @param admin ID of the admin that will be helping the player
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Keeps track of the admin that helping with this ticket
+	//! \param[in] ticketID ID of the ticket (ID of the player that initially opened the ticket)
+	//! \param[in] admin ID of the admin that will be helping the player
 	void AssignAdminTicket(int ticketID, int adminID)
 	{
 		CRF_Ticket ticket;
@@ -195,10 +197,9 @@ class CRF_AdminMenuManager : ScriptComponent
 		CRF_RplBroadcastManager.GetInstance().NotifiyTicketAssigned(ticketID, adminID, true);
 	}
 	
-	/**
-	* Returns a list of current open tickets
-	* @return Array of player IDs with open tickets
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Returns a list of current open tickets
+	//! \return Array of player IDs with open tickets
 	array<int> GetOpenTickets()
 	{
 		array<int> ticketIDs = {};
@@ -212,11 +213,10 @@ class CRF_AdminMenuManager : ScriptComponent
 		return ticketIDs;
 	}
 	
-	/**
-	* Returns list of messages from a ticket
-	* @param playerID ID of the player whose ticket messages to retrieve
-	* @return Array of ticket messages or null if no ticket found
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Returns list of messages from a ticket
+	//! \param[in] playerID ID of the player whose ticket messages to retrieve
+	//! \return Array of ticket messages or null if no ticket found
 	array<ref CRF_TicketMessageData> GetTicketMessages(int playerID)
 	{
 		CRF_Ticket ticket;
@@ -228,10 +228,9 @@ class CRF_AdminMenuManager : ScriptComponent
 		return null;
 	}
 	
-	/**
-	* Close a ticket
-	* @param ticketID ID of the ticket to close
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Close a ticket
+	//! \param[in] ticketID ID of the ticket to close
 	void CloseTicket(int ticketID)
 	{		
 		// Remove the ticket from the map
@@ -241,9 +240,8 @@ class CRF_AdminMenuManager : ScriptComponent
 		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
-	/**
-	* Refreshes the lists on new message and new log being added
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Refreshes the lists on new message and new log being added
 	void RefreshLists()
 	{		
 		// Check if the top menu is the admin menu
@@ -265,11 +263,10 @@ class CRF_AdminMenuManager : ScriptComponent
 		adminMenu.PopulateAdminActionsList();
 	}
 
-	/**
-	* Check if a ticket exists for the given ID
-	* @param ticketID ID of the ticket to check
-	* @return True if ticket exists, false otherwise
-	*/
+	//------------------------------------------------------------------------------------------------
+	//! Check if a ticket exists for the given ID
+	//! \param[in] ticketID ID of the ticket to check
+	//! \return True if ticket exists, false otherwise
 	bool TicketExists(int ticketID)
 	{		
 		return m_mTickets.Contains(ticketID);

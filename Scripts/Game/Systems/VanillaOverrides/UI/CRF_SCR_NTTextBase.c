@@ -3,13 +3,10 @@
 modded class SCR_NTTextBase : SCR_NTElementBase
 {
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Overrides the base method to customize text widget behavior.
-	 * This method is called to set default properties for the nametag element.
-	 * 
-	 * @param data The nametag data containing element information
-	 * @param index The index of the element in the nametag elements array
-	 */
+	//! Overrides the base method to customize text widget behavior.
+	//! This method is called to set default properties for the nametag element.
+	//! \param[in] data The nametag data containing element information
+	//! \param[in] index The index of the element in the nametag elements array
 	override void SetDefaults(SCR_NameTagData data, int index)
 	{
 		// Call the parent implementation first
