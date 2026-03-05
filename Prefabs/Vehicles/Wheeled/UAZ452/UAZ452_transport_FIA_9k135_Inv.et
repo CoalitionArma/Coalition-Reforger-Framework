@@ -1,0 +1,63 @@
+Vehicle : "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{68A83ECE2B265E95}" {
+     SourceMaterial "uaz452_body"
+     AssignedMaterial "{001F059E3F2BC4E4}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_body_FIA.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{6596EE51EB5C6FB7}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_r01 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{6596EE51EE2C960C}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{0872A6E30956EE67}UI/Textures/EditorPreviews/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.edds"
+    m_sFaction "FIA"
+    m_aAutoLabels {
+     FACTION_FIA SIZE_M VEHICLE_CAR
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5D7E924E84B181BC}" {
+   MultiSlots {
+    MultiSlotConfiguration "{68CA0D1120421516}" {
+     SlotTemplate InventoryStorageSlot atgm {
+      Prefab "{45F4B2454AD30244}Prefabs/Weapons/HeavyWeapons/9K135/Launcher_9K135.et"
+     }
+     NumSlots 4
+    }
+   }
+   m_fMaxWeight 4000
+   m_aSlotsToShow {
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "FIA"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo RearCargo {
+     Prefab "{DB1589050FFF4F16}Prefabs/Vehicles/Wheeled/UAZ452/VehParts/VehPart_UAZ452_FIA_rearCargo_van.et"
+    }
+    EntitySlotInfo FIA_CoatOfArms_decal {
+     Prefab "{47EB752F227397D2}Prefabs/Vehicles/Wheeled/UAZ452/VehParts/UAZ452_FIA_CoatOfArms_decal.et"
+     InheritParentSkeleton 1
+    }
+   }
+  }
+ }
+}

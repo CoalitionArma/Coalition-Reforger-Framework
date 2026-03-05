@@ -9,6 +9,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
+	// Time it takes for players to Init
+	static const int PLAYER_INITILIZATION_TIME = 250;
+	
 	// UI and Display
 	string m_sHintText = "Type Here";      // Text displayed for hints to player
 	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
@@ -58,10 +61,10 @@ class CRF_PlayerControllerManager : ScriptComponent
 		IEntity playerCharacter = CRF_EntityHelper.GetCharacterFromRplId(playerCharID);
 		
 		// if we cant get the player character or it's null, wait another full initilization time before attempting again
-		if (!playerCharacter || !SCR_ChimeraCharacter.Cast(playerCharacter))
+		if (!playerCharacter || !m_CameraManager || !m_PlayerRplToAuthorityManager || !SCR_ChimeraCharacter.Cast(playerCharacter))
 		{
 			// Schedule another verification attempt
-			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerCharID);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, PLAYER_INITILIZATION_TIME, false, playerCharID);
 			return;
 		};
 		
@@ -113,16 +116,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (m_CameraManager.m_eCamera)
 			delete m_CameraManager.m_eCamera;
 		
-		// Notify data collector about player spawn for movement tracking and stats
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		IEntity localPlayerEntity = SCR_PlayerController.GetLocalMainEntity();
-		
-		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-		if (dataCollector && localPlayerEntity)
-			dataCollector.NotifyPlayerSpawned(localPlayerId, localPlayerEntity);
-		
 		// Originally added for data collector
-		m_Gamemode.GetOnPlayerSpawned().Invoke(localPlayerId, localPlayerEntity);
+		m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
 		
 		// Reset Stored Pos
 		GetGame().GetCallqueue().CallLater(m_CameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);

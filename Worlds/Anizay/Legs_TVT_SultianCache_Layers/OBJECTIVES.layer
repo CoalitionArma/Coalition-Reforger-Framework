@@ -1,0 +1,22 @@
+$grp GenericEntity : "{53689CA6A0F0AAA4}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/Ins_cacheHuntObj.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 500
+   }
+  }
+  coords 2617.322 139.698 7362.874
+ }
+ {
+  components {
+   CRF_InsDestructiveComponent "{68A80E000A223702}" {
+    m_iCachePhase 1
+    m_bStartActive 1
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 500
+   }
+  }
+  coords 1781.825 141.653 7718.16
+ }
+}

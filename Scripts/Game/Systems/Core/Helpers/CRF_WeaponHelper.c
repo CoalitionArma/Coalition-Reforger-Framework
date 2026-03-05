@@ -65,8 +65,8 @@ class CRF_WeaponHelper
 		}
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
-		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
-		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+		GetGame().GetCallqueue().Call(AddAttachments, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().Call(SelectWeapon, inventory.GetOwner()); 
 	}
 	
 	//------------------------------------------------------------------------------------------------

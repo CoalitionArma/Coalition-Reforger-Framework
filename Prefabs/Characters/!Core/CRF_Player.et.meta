@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D7EB93B0550FD158}Prefabs/Characters/Core/CRF_Character_Base.et"
+ Name "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

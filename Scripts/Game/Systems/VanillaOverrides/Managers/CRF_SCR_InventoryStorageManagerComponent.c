@@ -17,7 +17,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			return;
 		
 		// Skip radio validation if espionage is allowed and not in client mode
-		if (CRF_Gamemode.GetInstance() && RplSession.Mode() != RplMode.Client && CRF_Gamemode.GetInstance().m_bAllowEspionage)
+		if (CRF_Gamemode.GetInstance() && RplSession.Mode() != RplMode.Client && CRF_Gamemode.GetInstance().m_bMissionAllowsEspionage)
 			return;
 
 		// Check if the item is a radio

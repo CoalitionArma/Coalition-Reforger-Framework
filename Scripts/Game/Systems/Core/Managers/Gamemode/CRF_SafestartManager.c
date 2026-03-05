@@ -170,10 +170,10 @@ class CRF_SafestartManager : ScriptComponent
 			if (!m_bInitComplete)
 				if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 				{
-					m_bSafeStartEnabled = !m_Gamemode.m_bSafestartInstantlyEnabled;
+					m_bSafeStartEnabled = !m_Gamemode.m_bSafestartEnabledOnMissionStart;
 					Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 			
-					GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartInstantlyEnabled);
+					GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartEnabledOnMissionStart);
 					m_bInitComplete = true;
 				}
 			

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+ Name "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
