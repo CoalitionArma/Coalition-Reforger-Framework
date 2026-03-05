@@ -267,7 +267,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		foreach (int playerId: players)
 		{	
 			Faction playerFaction = factionMan.GetPlayerFaction(playerId);
-			PlayerController playerController = GetGame().GetPlayerManager().GetPlayerController(playerId);
+			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			if (!playerFaction)
 				continue;
 			
@@ -288,7 +288,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			else
 				joes.Insert(playerId);
 			
-			GetGame().GetCallqueue().CallLater(AssignFactionToPlayer, 100, false, playerController, indfor);
+			GetGame().GetCallqueue().CallLater(CRF_PlayerHelper.AssignFactionToPlayer, 100, false, playerController, indfor);
 			GetGame().GetCallqueue().CallLater(SpawnEntity, 300, false, roleConfig, indParams, playerController);
 		}
 		
@@ -356,16 +356,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		newMarker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.ORANGE);
 		newMarker.SetWorldPos(m_vExtractionLocation[3][0], m_vExtractionLocation[3][2]);
 		markerMan.InsertStaticMarker(newMarker, false, true);
-	}
-	
-	void AssignFactionToPlayer(PlayerController playerController, Faction faction)
-	{
-		SCR_PlayerFactionAffiliationComponent affiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(
-				playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
-			);
-			
-		if (affiliationComponent)
-			affiliationComponent.RequestFaction(faction);
 	}
 	
 	void SpawnEntity(CRF_RoleConfig roleConfig, EntitySpawnParams indParams, PlayerController playerController)

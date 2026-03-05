@@ -498,18 +498,6 @@ class CRF_SlottingManager : ScriptComponent
 		if (charRplComp)
 			UpdateSlotCharacter(slotId, charRplComp.Id());
 		
-		// Set PlayerController faction BEFORE RequestSpawn so that SCR_PossessSpawnHandlerComponent.OnFinalizeDone_S
-		// doesn't overwrite it with the prefab's default faction
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		if (playerController)
-		{
-			SCR_PlayerFactionAffiliationComponent playerFactionComp = SCR_PlayerFactionAffiliationComponent.Cast(
-				playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
-			);
-			if (playerFactionComp)
-				playerFactionComp.SetAffiliatedFaction(GetPlayerSlotFaction(playerId));
-		}
-		
 		// Route entity assignment through the base game SCR_SpawnRequestComponent pipeline so that
 		// all data components (SCR_RespawnSystemComponent, SCR_DataCollectorComponent,
 		// SCR_SpawnLockComponent, PreparePlayerEntity_S on all SCR_BaseGameModeComponents, etc.)
@@ -529,6 +517,8 @@ class CRF_SlottingManager : ScriptComponent
 		{
 			// Fallback: SCR_RespawnComponent not yet available (e.g. very early init), assign directly
 			Print(string.Format("[CRF_SlottingManager] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
+			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			
 			if (playerController)
 				playerController.SetInitialMainEntity(playerCharacter);
 		}

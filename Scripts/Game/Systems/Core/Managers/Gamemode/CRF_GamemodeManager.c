@@ -7,12 +7,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	// Time it takes for players to Init
-	static const int PLAYER_INITILIZATION_TIME = 250;
-	
-	// Internal flag to prevent redundant replication updates
-	protected bool m_bSuppressReplication = false;
-	
 	static ref CRF_GearScriptRolesConfig m_RolesConfig;
 	
 	protected CRF_SlottingManager m_SlottingManager;
@@ -109,8 +103,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			playerCharacter.DisableAI();
-			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
-			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
+			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter);
 		};
 	}
 	
@@ -139,7 +132,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (playerRplComp)
-			GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
+			CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -165,10 +158,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				return null;
 			}
 		}
-		
-		// NOTE: SCR_DataCollectorComponent.OnPlayerSpawnFinalize_S is now called automatically
-		// by the base game pipeline when RequestSpawn completes in SpawnPlayableEntity.
-		// The previous manual dc.NotifyPlayerSpawned() call here is no longer needed.
 			
 		return playerCharacter;
 	}
