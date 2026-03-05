@@ -261,15 +261,76 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Register create channel button click handler
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("CreateChannel")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(CreateChannel);
+		
+		// Apply faction restrictions if enabled
+		ApplyFactionRestrictions();
+	}
+	
+	/**
+	 * Applies faction-based spectator restrictions to UI elements
+	 * Disables faction buttons that the spectator is not allowed to view
+	 */
+	protected void ApplyFactionRestrictions()
+	{
+		// Only apply restrictions if the setting is enabled
+		if (!m_Gamemode || !m_Gamemode.m_bHideOtherSpectatorFactions)
+			return;
+		
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Faction localPlayerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(localPlayerId);
+		
+		// If player has no faction, don't restrict anything
+		if (!localPlayerFaction)
+			return;
+		
+		string localFactionKey = localPlayerFaction.GetFactionKey();
+		
+		// Disable faction buttons that don't match the player's faction
+		if (localFactionKey != "BLUFOR" && m_wBluforButton)
+			m_wBluforButton.SetEnabled(false);
+		
+		if (localFactionKey != "OPFOR" && m_wOpforButton)
+			m_wOpforButton.SetEnabled(false);
+		
+		if (localFactionKey != "INDFOR" && m_wIndforButton)
+			m_wIndforButton.SetEnabled(false);
+		
+		if (localFactionKey != "CIV" && m_wCivButton)
+			m_wCivButton.SetEnabled(false);
 	}
 	
 	/**
 	 * Select default faction based on availability
+	 * When faction restrictions are enabled, automatically selects the player's own faction
 	 */
 	protected void SelectDefaultFaction()
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
+		// If faction restrictions are enabled, select the player's own faction
+		if (m_Gamemode && m_Gamemode.m_bHideOtherSpectatorFactions)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			Faction localPlayerFaction = slottingManager.GetPlayerSlotFaction(localPlayerId);
+			
+			if (localPlayerFaction)
+			{
+				string localFactionKey = localPlayerFaction.GetFactionKey();
+				
+				if (localFactionKey == "BLUFOR" && slottingManager.IsFactionValid("BLUFOR"))
+					SelectFactionBlufor();
+				else if (localFactionKey == "OPFOR" && slottingManager.IsFactionValid("OPFOR"))
+					SelectFactionOpfor();
+				else if (localFactionKey == "INDFOR" && slottingManager.IsFactionValid("INDFOR"))
+					SelectFactionIndfor();
+				else if (localFactionKey == "CIV" && slottingManager.IsFactionValid("CIV"))
+					SelectFactionCiv();
+				
+				return;
+			}
+		}
+		
+		// Default behavior: select first valid faction
 		if(slottingManager.IsFactionValid("BLUFOR"))
 			SelectFactionBlufor();
 		else if(slottingManager.IsFactionValid("OPFOR"))
@@ -692,6 +753,36 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	}
 	
 	/**
+	 * Checks if an entity's icon should be shown based on faction restrictions
+	 * @param entity - The entity to check
+	 * @return true if the icon should be shown, false otherwise
+	 */
+	protected bool ShouldShowEntityIcon(IEntity entity)
+	{
+		if (!entity)
+			return false;
+		
+		// Get the local spectator's faction
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Faction localPlayerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(localPlayerId);
+		
+		if (!localPlayerFaction)
+			return true; // If local player has no faction, show all icons
+		
+		// Get the entity's faction
+		FactionAffiliationComponent factionComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
+		if (!factionComp)
+			return true; // If entity has no faction component, show it
+		
+		Faction entityFaction = factionComp.GetAffiliatedFaction();
+		if (!entityFaction)
+			return true; // If entity has no faction, show it
+		
+		// Only show entities from the same faction
+		return (entityFaction == localPlayerFaction);
+	}
+	
+	/**
 	 * Set the icon for the provided entity
 	 * @param entity - Entity to pass along to the icon
 	 * @param entityId - EntityId to use to insert into the icon arrays
@@ -701,6 +792,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Skip if icon already exists
 		if (m_aEntityIcons.Contains(entityId))
 			return;
+		
+		// Check faction restrictions - hide icons from other factions if enabled
+		if (m_Gamemode && m_Gamemode.m_bHideOtherSpectatorFactions)
+		{
+			if (!ShouldShowEntityIcon(entity))
+				return;
+		}
 		
 		// Create new spectator icon
 		Widget spectatorIconWidget = GetGame().GetWorkspace().CreateWidgets(
@@ -791,6 +889,32 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	}
 	
 	/**
+	 * Checks if a group's icon should be shown based on faction restrictions
+	 * @param group - The group to check
+	 * @return true if the icon should be shown, false otherwise
+	 */
+	protected bool ShouldShowGroupIcon(SCR_AIGroup group)
+	{
+		if (!group)
+			return false;
+		
+		// Get the local spectator's faction
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Faction localPlayerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(localPlayerId);
+		
+		if (!localPlayerFaction)
+			return true; // If local player has no faction, show all group icons
+		
+		// Get the group's faction
+		Faction groupFaction = group.GetFaction();
+		if (!groupFaction)
+			return true; // If group has no faction, show it
+		
+		// Only show groups from the same faction
+		return (groupFaction == localPlayerFaction);
+	}
+	
+	/**
 	 * Creates a floating NATO group icon for the specified group
 	 * @param group - The SCR_AIGroup to create an icon for
 	 * @param groupId - The group's unique ID
@@ -800,6 +924,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Skip if icon already exists for this group
 		if (m_aGroupIconIds.Contains(groupId))
 			return;
+		
+		// Check faction restrictions - hide group icons from other factions if enabled
+		if (m_Gamemode && m_Gamemode.m_bHideOtherSpectatorFactions)
+		{
+			if (!ShouldShowGroupIcon(group))
+				return;
+		}
 		
 		// Create new group icon widget
 		Widget groupIconWidget = GetGame().GetWorkspace().CreateWidgets(
@@ -1576,6 +1707,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(selectedComponent.m_iSlotId);
 		if (!slotData)
 			return;
+		
+		// Check if faction-based spectator restriction is enabled
+		if (m_Gamemode && m_Gamemode.m_bHideOtherSpectatorFactions)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			Faction localPlayerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(localPlayerId);
+			Faction targetFaction = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey());
+			
+			// Prevent spectating players from other factions
+			if (localPlayerFaction && targetFaction && localPlayerFaction != targetFaction)
+				return;
+		}
 		
 		// Find the entity associated with the slot and set it as the spectator target
 		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.GetSlotCurrentCharacter()));
