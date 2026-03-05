@@ -1,12 +1,9 @@
-/*
-* Damage helper class for COALITION games
-* Helper functions for working with damage events and weapon tracking
-*/
-
 class CRF_DamageHelper
 {
 	//------------------------------------------------------------------------------------------------
-	// Convert damage type to human readable string
+	//! Convert damage type to human readable string
+	//! \param[in] damageType EDamageType enum to parse
+	//! \return string of damage type
 	static string GetDamageTypeString(int damageType)
 	{
 		switch (damageType)
@@ -31,13 +28,16 @@ class CRF_DamageHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// Convert damage type to a cause-of-death display string for the spectator panel.
-	// Kinetic: "Velocity Wound / Gunshot"
-	// Explosive / Fragmentation: "Explosive / Fragmentation"
-	// Melee: "Melee"
-	// Fire / Incendiary: "Burned Alive"
-	// Bleeding: "Bled Out"
-	// Everything else falls back to the generic string.
+	//! Convert damage type to a cause-of-death display string for the spectator panel.
+	//! Kinetic: "Velocity Wound / Gunshot"
+	//! Explosive / Fragmentation: "Explosive / Fragmentation"
+	//! Melee: "Melee"
+	//! Fire / Incendiary: "Burned Alive"
+	//! Bleeding: "Bled Out"
+	//! Everything else falls back to the generic string.
+	//!
+	//! \param[in] damageType EDamageType enum to parse
+	//! \return string of death type
 	static string GetCauseOfDeathString(int damageType)
 	{
 		switch (damageType)
@@ -57,10 +57,10 @@ class CRF_DamageHelper
 		return "";
 	}
 	
-	/**
-	 * Check if the provided entity is considered "alive"
-	 * @param entity - Entity to check
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Check if the provided entity is considered "alive"
+	//! \param[in] entity Entity to check
+	//! \return bool if entity is alive
 	static bool CheckIfEntityAlive(IEntity entity)
 	{
 		// Get ChimeraCharacter so we can pull the controller
@@ -79,7 +79,9 @@ class CRF_DamageHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Try to get a descriptive name for the weapon that caused the damage
+	//! Try to get a descriptive name for the weapon that caused the damage
+	//! \param[in] instiContext instigator context data to parse
+	//! \return string of weapon name
 	static string GetWeaponName(SCR_InstigatorContextData instiContext)
 	{
 		// Check for direct weapon reference

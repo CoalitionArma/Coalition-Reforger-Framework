@@ -1,7 +1,7 @@
 /*
-* Bandwidth Telemetry Manager
-* Tracks and logs RPC bandwidth usage for performance monitoring
-* Server-side only
+//! Bandwidth Telemetry Manager
+//! Tracks and logs RPC bandwidth usage for performance monitoring
+//! Server-side only
 */
 
 [ComponentEditorProps(category: "CRF Bandwidth Telemetry", description: "Tracks RPC bandwidth usage for performance monitoring")]
@@ -21,6 +21,7 @@ class CRF_RPCTelemetryData
 	float m_fFirstCallTime;
 	float m_fLastCallTime;
 	
+	//------------------------------------------------------------------------------------------------
 	void CRF_RPCTelemetryData(string rpcName, int bytes)
 	{
 		m_sRPCName = rpcName;
@@ -32,6 +33,7 @@ class CRF_RPCTelemetryData
 		m_fLastCallTime = m_fFirstCallTime;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void AddCall(int bytes)
 	{
 		m_iCallCount++;
@@ -45,6 +47,7 @@ class CRF_RPCTelemetryData
 		m_fLastCallTime = System.GetTickCount();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	int GetAverageBytes()
 	{
 		if (m_iCallCount == 0)
@@ -120,7 +123,7 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Print telemetry summary to console
+	//! Print telemetry summary to console
 	protected void PrintTelemetrySummary()
 	{
 		if (m_mTelemetryData.Count() == 0)
@@ -193,7 +196,7 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Log an RPC call with estimated byte size
+	//! Log an RPC call with estimated byte size
 	void LogRPC(string rpcName, int estimatedBytes)
 	{
 		// Only run on server
@@ -223,7 +226,7 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Reset telemetry data (useful for testing)
+	//! Reset telemetry data (useful for testing)
 	void ResetTelemetry()
 	{
 		if (!Replication.IsServer())
@@ -238,14 +241,14 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Get total bytes transmitted
+	//! Get total bytes transmitted
 	int GetTotalBytesTransmitted()
 	{
 		return m_iTotalBytesTransmitted;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Get total RPC calls
+	//! Get total RPC calls
 	int GetTotalRPCCalls()
 	{
 		return m_iTotalRPCCalls;

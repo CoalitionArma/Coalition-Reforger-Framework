@@ -24,11 +24,9 @@ class CRF_GearscriptManager : ScriptComponent
 	}	
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load gear script config from resource
-	 * @param resourceName Resource to load
-	 * @return Loaded config or null if failed
-	 */
+	//! Load gear script config from resource
+	//! \param[in] resourceName Resource to load
+	//! \return Loaded config or null if failed
 	CRF_GearScriptConfig LoadGearScriptConfig(ResourceName resourceName)
 	{
 		return CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
@@ -36,11 +34,9 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load gear script config from resource
-	 * @param resourceName Resource to load
-	 * @return Loaded config or null if failed
-	 */
+	//! Load gear script config from resource
+	//! \param[in] resourceName Resource to load
+	//! \return Loaded config or null if failed
 	CRF_CharacterIdentity LoadIdentityConfig(ResourceName resourceName)
 	{
 		return CRF_CharacterIdentity.Cast(BaseContainerTools.CreateInstanceFromContainer(
@@ -52,11 +48,9 @@ class CRF_GearscriptManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Set gear for an entity based on its resource name
-	 * @param entity The entity to equip
-	 * @param resourceNameToScan Resource name containing faction info
-	 */
+	//! Set gear for an entity based on its resource name
+	//! \param[in] entity The entity to equip
+	//! \param[in] resourceNameToScan Resource name containing faction info
 	void SetEntityGear(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!entity)
@@ -133,17 +127,15 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Consolidated gear application callback - PERFORMANCE OPTIMIZATION
-	 * Applies weapons and inventory items in a single callback to reduce CallQueue overhead
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param gearScriptSettings Gearscript settings
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @param entity Entity being equipped
-	 */
+	//! Consolidated gear application callback - PERFORMANCE OPTIMIZATION
+	//! Applies weapons and inventory items in a single callback to reduce CallQueue overhead
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] gearScriptSettings Gearscript settings
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] entity Entity being equipped
 	protected void ApplyGearConsolidated(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
 	{
@@ -186,10 +178,8 @@ class CRF_GearscriptManager : ScriptComponent
 	}	
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Mark entity as finished being geared, allowing future gearscript operations
-	 * @param entity Entity that finished being geared
-	 */
+	//! Mark entity as finished being geared, allowing future gearscript operations
+	//! \param[in] entity Entity that finished being geared
 	protected void FinishGearingEntity(IEntity entity)
 	{
 		if (entity && m_sEntitiesBeingGeared.Contains(entity))
@@ -200,11 +190,9 @@ class CRF_GearscriptManager : ScriptComponent
 //	 IDENTITY METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Set identity for an entity
-	 * @param entity The entity to equip
-	 */
+	//------------------------------------------------------------------------------------------------	
+	//! Set identity for an entity
+	//! \param[in] entity The entity to equip
 	void SetEntityIdentity(IEntity entity)
 	{
 		if (!entity)
@@ -230,11 +218,9 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply clothing to entity based on config
-	 * @param gearConfig Gear configuration
-	 * @param entity Entity to apply randomized head/body to from the identity config of the gear config
-	 */
+	//! Apply clothing to entity based on config
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] entity Entity to apply randomized head/body to from the identity config of the gear config
     protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
     {
 		CRF_Character_Visual_Identity gsVisIdentity;
@@ -283,14 +269,12 @@ class CRF_GearscriptManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply clothing to entity based on config
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Apply clothing to entity based on config
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ApplyClothing(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -320,15 +304,13 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply weapons to entity based on config
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param gearScriptSettings Gearscript settings
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Apply weapons to entity based on config
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] gearScriptSettings Gearscript settings
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ApplyWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -345,15 +327,13 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply custom weapons based on role
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @return True if custom weapons were applied
-	 */
+	//! Apply custom weapons based on role
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \return True if custom weapons were applied
 	protected bool ApplyCustomWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -408,14 +388,12 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply default weapons based on role
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Apply default weapons based on role
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ApplyDefaultWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -516,14 +494,12 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply default magazines based on role
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Apply default magazines based on role
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ApplyDefaultMagazines(array<CRF_Weapon_Class> weaponsSelected, CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams,
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -610,15 +586,13 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply inventory items based on role and config
-	 * @param gearConfig Gear configuration
-	 * @param role Role identifier
-	 * @param gearScriptSettings Gearscript settings
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Apply inventory items based on role and config
+	//! \param[in] gearConfig Gear configuration
+	//! \param[in] role Role identifier
+	//! \param[in] gearScriptSettings Gearscript settings
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ApplyInventoryItems(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -685,11 +659,9 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Clear all gear from an entity
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Clear all gear from an entity
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	protected void ClearEntityGear(SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		array<IEntity> items = {};
@@ -730,10 +702,8 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Delete remaining non-weapon items after weapon cleanup
-	 * @param items Array of items to delete
-	 */
+	//! Delete remaining non-weapon items after weapon cleanup
+	//! \param[in] items Array of items to delete
 	protected void DeleteRemainingItems(array<IEntity> items)
 	{
 		foreach (IEntity item : items)
