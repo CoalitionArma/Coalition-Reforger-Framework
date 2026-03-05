@@ -12,8 +12,8 @@ $grp SCR_BaseTriggerEntity {
   angles 0 -90.973 0
  }
  mcom_d_trigger {
-  coords 11591.87 2.848 7977.787
-  angles 0 -2.716 0
+  coords 11492.589 23.911 6899.354
+  angles 0 -41.799 0
  }
  mcom_e_trigger {
   coords 11862.197 6.909 8781.662
@@ -27,7 +27,4 @@ $grp SCR_BaseTriggerEntity {
 StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
  coords 10113.301 0 758.802
  angles 0 -48.332 0
-}
-GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 10175.178 0.937 687.622
 }

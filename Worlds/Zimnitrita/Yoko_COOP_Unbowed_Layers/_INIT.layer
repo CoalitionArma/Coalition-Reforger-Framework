@@ -79,7 +79,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68C959D5985AE9F1}" {
+  CRF_SlottingGroup "{68CB17D924C35A12}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -87,7 +87,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68C959D5985AEA9C}" {
+  CRF_SlottingGroup "{68CB17D924C35B03}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -98,11 +98,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
     TEAM_LEAD
     HEAVY_ANTITANK
-    HEAVY_ANTITANK
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C959D5985AEB37}" {
+  CRF_SlottingGroup "{68CB17D924C35BBF}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -113,21 +113,26 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
     TEAM_LEAD
     HEAVY_ANTITANK
-    HEAVY_ANTITANK
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C959D5985AEBBE}" {
-   m_sCallsign "HAT"
-   m_FlagType MACHINEGUN
+  CRF_SlottingGroup "{68CB17D924C35C00}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    SNIPER
-    SPOTTER
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    HEAVY_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68C959D5985AEC08}" {
+  CRF_SlottingGroup "{68CB17D924C35C95}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -136,7 +141,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68C959D5985AECEE}" {
+  CRF_SlottingGroup "{68CB17D924C35D6D}" {
    m_sCallsign "HELI 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -145,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68C959D5985AED7F}" {
+  CRF_SlottingGroup "{68CB17D924C35DF9}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
