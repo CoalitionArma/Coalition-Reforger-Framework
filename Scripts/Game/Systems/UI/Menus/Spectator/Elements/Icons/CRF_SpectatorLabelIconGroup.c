@@ -22,10 +22,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 6.0;
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MAX = 65.0;
 	
-	// Maximum distance the group icon can be from the group leader
-	// If the centroid calculation results in a position further than this from the leader,
+	// Maximum distance the group icon can be from the group's median position (core group)
+	// If the centroid calculation results in a position further than this from the median,
 	// the icon will be clamped to this distance to prevent it from appearing too far away
-	protected static const float MAX_CENTROID_DISTANCE_FROM_LEADER = 150.0;
+	protected static const float MAX_CENTROID_DISTANCE_FROM_MEDIAN = 150.0;
 	
 	// Fade-out when the camera is very close to the group — individual character icons
 	// are clearly visible at short range, so the group symbol becomes redundant noise.
@@ -328,24 +328,134 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		
 		centroid = centroid * (1.0 / aliveCount);
 		
-		// Clamp the centroid to maximum distance from the group leader
-		// This prevents the icon from appearing too far away when members are spread out
-		IEntity leaderEntity = m_Group.GetLeaderEntity();
-		if (leaderEntity)
+		// Clamp outliers: if any individual member pulls the centroid too far from the main group,
+		// limit the centroid's deviation. This prevents the icon from appearing in dead space when
+		// the leader or a single member is separated from the bulk of the squad.
+		//
+		// Strategy: Calculate the median position to find where the "core group" actually is,
+		// then clamp the centroid to stay within MAX_CENTROID_DISTANCE_FROM_LEADER of that core.
+		
+		vector medianPosition = CalculateMedianPosition(groupRplId);
+		if (medianPosition != vector.Zero)
 		{
-			vector leaderPos = leaderEntity.GetOrigin();
-			vector centroidToLeader = centroid - leaderPos;
-			float distanceToLeader = centroidToLeader.Length();
+			vector centroidToMedian = centroid - medianPosition;
+			float distanceToMedian = centroidToMedian.Length();
 			
-			// If centroid is too far from leader, clamp it to the maximum distance
-			if (distanceToLeader > MAX_CENTROID_DISTANCE_FROM_LEADER)
+			// If centroid is too far from the median (core group), clamp it
+			if (distanceToMedian > MAX_CENTROID_DISTANCE_FROM_MEDIAN)
 			{
-				vector direction = centroidToLeader.Normalized();
-				centroid = leaderPos + (direction * MAX_CENTROID_DISTANCE_FROM_LEADER);
+				vector direction = centroidToMedian.Normalized();
+				centroid = medianPosition + (direction * MAX_CENTROID_DISTANCE_FROM_MEDIAN);
 			}
 		}
 		
 		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Calculate the median position of the group to identify where the "core" of the group is.
+	// This is more robust than using just the leader's position, especially when the leader
+	// is separated, dead, or respawning far from the main group.
+	//------------------------------------------------------------------------------------------------
+	protected vector CalculateMedianPosition(RplId groupRplId)
+	{
+		array<vector> positions = {};
+		
+		// Collect all alive member positions
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+		{
+			map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+			if (slotMap)
+			{
+				foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+				{
+					if (!slotData || slotData.GetSlotCurrentGroup() != groupRplId)
+						continue;
+					
+					RplId charRplId = slotData.GetSlotCurrentCharacter();
+					if (charRplId == RplId.Invalid())
+						continue;
+					
+					RplComponent charRpl = RplComponent.Cast(Replication.FindItem(charRplId));
+					if (!charRpl)
+						continue;
+					
+					IEntity entity = charRpl.GetEntity();
+					if (!entity)
+						continue;
+					
+					SCR_CharacterControllerComponent controller = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
+					if (controller && controller.IsDead())
+						continue;
+					
+					positions.Insert(entity.GetOrigin());
+				}
+			}
+		}
+		
+		// Add AI members
+		array<AIAgent> agents = {};
+		m_Group.GetAgents(agents);
+		
+		foreach (AIAgent agent : agents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+			
+			ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+			if (!character)
+				continue;
+			
+			CharacterControllerComponent controller = character.GetCharacterController();
+			if (!controller || controller.GetLifeState() == ECharacterLifeState.DEAD)
+				continue;
+			
+			// Avoid duplicates
+			bool alreadyCounted = false;
+			RplComponent entityRpl = RplComponent.Cast(entity.FindComponent(RplComponent));
+			if (entityRpl && slottingManager)
+			{
+				CRF_SlotDataContainer slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
+				if (slotData && slotData.GetSlotCurrentGroup() == groupRplId)
+					alreadyCounted = true;
+			}
+			
+			if (!alreadyCounted)
+				positions.Insert(entity.GetOrigin());
+		}
+		
+		if (positions.IsEmpty())
+			return vector.Zero;
+		
+		// Calculate median by taking the middle value when sorted by distance from origin
+		// For simplicity, we'll approximate by finding the position closest to the average
+		// (a true median would require sorting in 3D space, which is complex)
+		
+		// Calculate the average first
+		vector sum = vector.Zero;
+		foreach (vector pos : positions)
+		{
+			sum = sum + pos;
+		}
+		vector average = sum * (1.0 / positions.Count());
+		
+		// Find the position closest to the average (this approximates the median/center of mass)
+		vector closestToAverage = positions[0];
+		float minDistance = vector.Distance(average, closestToAverage);
+		
+		foreach (vector pos : positions)
+		{
+			float distance = vector.Distance(average, pos);
+			if (distance < minDistance)
+			{
+				minDistance = distance;
+				closestToAverage = pos;
+			}
+		}
+		
+		return closestToAverage;
 	}
 	
 	//------------------------------------------------------------------------------------------------
