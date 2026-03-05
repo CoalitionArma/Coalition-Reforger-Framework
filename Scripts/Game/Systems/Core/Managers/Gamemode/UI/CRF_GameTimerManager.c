@@ -14,20 +14,16 @@ class CRF_GameTimerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Get the current server world time string
-	* @return Formatted server time string
-	*/
+	//! Get the current server world time string
+	//! \return Formatted server time string
 	string GetServerWorldTime()
 	{
 		return m_sServerWorldTime;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Set the server world time
-	* @param input Time string to set
-	*/
+	//! Set the server world time
+	//! \param[in] input Time string to set
 	void SetServerWorldTime(string input)
 	{
 		m_sServerWorldTime = input;
@@ -35,9 +31,7 @@ class CRF_GameTimerManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Update the server world time based on safestart time
-	*/
+	//! Update the server world time based on safestart time
 	void UpdateServerWorldTime()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
@@ -50,9 +44,7 @@ class CRF_GameTimerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Update mission end timer and handle expiration
-	*/
+	//! Update mission end timer and handle expiration
 	void UpdateMissionEndTimer()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();

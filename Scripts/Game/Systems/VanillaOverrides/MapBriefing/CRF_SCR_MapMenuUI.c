@@ -1,8 +1,8 @@
-/**
- * Custom Map Menu UI class for the Coalition Reforger Framework
- * Extends the default map menu to provide mission description functionality
- * This class initializes the mission description list when clients open their map
- */
+
+//! Custom Map Menu UI class for the Coalition Reforger Framework
+//! Extends the default map menu to provide mission description functionality
+//! This class initializes the mission description list when clients open their map
+
 modded class SCR_MapMenuUI
 {
 	//----------------------------------------
@@ -22,10 +22,9 @@ modded class SCR_MapMenuUI
 	// Menu Lifecycle Methods
 	//----------------------------------------
 
-	/**
-	 * Called when the map menu is opened
-	 * Initializes mission description functionality only on first open
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Called when the map menu is opened
+	//! Initializes mission description functionality only on first open
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
@@ -109,6 +108,7 @@ modded class SCR_MapMenuUI
 		m_aPlayerIcons.Insert(icon);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
@@ -119,6 +119,7 @@ modded class SCR_MapMenuUI
         UpdatePlayerIcons();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdatePlayerIcons()
 	{
 		foreach (CRF_PlayerIcon icon: m_aPlayerIcons)
@@ -139,10 +140,9 @@ modded class SCR_MapMenuUI
 		}
 	}
 
-	/**
-	 * Called when the map menu is closed
-	 * Cleanup mission description components
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Called when the map menu is closed
+	//! Cleanup mission description components
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
@@ -162,9 +162,8 @@ modded class SCR_MapMenuUI
 	// Mission Description Methods
 	//----------------------------------------
 
-	/**
-	 * Initialize mission description components and populate the list
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Initialize mission description components and populate the list
 	protected void InitializeMissionDescriptions()
 	{
 		// Find the MissionDescription widget in the map menu layout
@@ -195,10 +194,9 @@ modded class SCR_MapMenuUI
 		DescriptionInit();
 	}
 
-	/**
-	 * Initialize the mission description section
-	 * Populates the list with mission descriptors relevant to the player's faction
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Initialize the mission description section
+	//! Populates the list with mission descriptors relevant to the player's faction
 	void DescriptionInit()
 	{
 		if (!m_cMissionDescriptionListBoxComponent || !m_Gamemode) {
@@ -281,10 +279,9 @@ modded class SCR_MapMenuUI
 		m_cMissionDescriptionListBoxComponent.m_OnChanged.Insert(DescriptionSelected);
 	}
 
-	/**
-	 * Handles selection of a description item
-	 * Shows the selected description text and enables navigation
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Handles selection of a description item
+	//! Shows the selected description text and enables navigation
 	void DescriptionSelected()
 	{
 		if (!m_cMissionDescriptionListBoxComponent || !m_aActiveDescriptors) {

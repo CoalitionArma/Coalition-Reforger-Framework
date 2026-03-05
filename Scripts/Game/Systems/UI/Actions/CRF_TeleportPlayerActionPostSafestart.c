@@ -11,11 +11,9 @@ class CRF_TeleportPlayerActionPostSafestart : ScriptedUserAction
 	ResourceName m_sGearscriptToSet;
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Execute the teleport action when the player activates it
-	 * @param pOwnerEntity The entity that owns this action (the object being interacted with)
-	 * @param pUserEntity The player entity performing the action
-	 */
+	//! Execute the teleport action when the player activates it
+	//! \param[in] pOwnerEntity The entity that owns this action (the object being interacted with)
+	//! \param[in] pUserEntity The player entity performing the action
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
 		super.PerformAction(pOwnerEntity, pUserEntity);
@@ -73,25 +71,22 @@ class CRF_TeleportPlayerActionPostSafestart : ScriptedUserAction
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Indicates that this action only affects the local player and doesn't need to be synchronized
-	 * @return Always returns true since teleportation is handled locally
-	 */
+	//! Indicates that this action only affects the local player and doesn't need to be synchronized
+	//! \return Always returns true since teleportation is handled locally
 	override bool HasLocalEffectOnlyScript()
 	{
 		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Indicates whether this action should be broadcast to other clients
-	 * @return Always returns false since teleportation is handled locally
-	 */
+	//! Indicates whether this action should be broadcast to other clients
+	//! \return Always returns false since teleportation is handled locally
 	override bool CanBroadcastScript()
 	{
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownScript(IEntity user)
 	{
 		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())

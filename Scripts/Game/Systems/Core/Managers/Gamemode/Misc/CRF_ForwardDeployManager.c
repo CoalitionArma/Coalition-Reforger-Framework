@@ -97,12 +97,10 @@ class CRF_ForwardDeployManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/*
-	* Checks if there are any forward deploy zones active for this faction.
-	* These are deleted and then removed from m_aVisibleForFactions on safestart ending.
-	* @param factionKey is the faction of the group you are checking.
-	* @return True if there is an active forward deploy zone.
-	*/
+	//! Checks if there are any forward deploy zones active for this faction.
+	//! These are deleted and then removed from m_aVisibleForFactions on safestart ending.
+	//! \param[in] factionKey is the faction of the group you are checking.
+	//! \return True if there is an active forward deploy zone.
 	bool IsForwardDeployActive(string factionKey)
 	{
 		if (m_aForwardDeployZones.Count() == 0)

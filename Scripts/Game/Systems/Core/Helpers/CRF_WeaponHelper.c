@@ -2,28 +2,20 @@ class CRF_WeaponHelper
 {	
 	const static ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	
-	//-----------------------------------------------------
-	//- WEAPONS
-	//-----------------------------------------------------
-	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Check if an entity is a throwable weapon
-	 * @param entity Entity to check
-	 * @return True if entity is a throwable weapon
-	 */
+	//! Check if an entity is a throwable weapon
+	//! \param[in] entity Entity to check
+	//! \return True if entity is a throwable weapon
 	static bool IsThrowableWeapon(IEntity entity)
 	{
 		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
 		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
 	}	
-	
+
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Select a random weapon from an array
-	 * @param weaponArray Array of weapon options
-	 * @return Randomly selected weapon or null if array is empty
-	 */
+	//! Select a random weapon from an array
+	//! \param[in] weaponArray Array of weapon options
+	//! \return Randomly selected weapon or null if array is empty
 	static CRF_Weapon_Class SelectRandomWeapon(array<ref CRF_Weapon_Class> weaponArray)
 	{
 		if (!weaponArray || weaponArray.IsEmpty())
@@ -33,12 +25,10 @@ class CRF_WeaponHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Find a weapon by its resource name
-	 * @param weaponManager Weapon manager component
-	 * @param weaponResource Weapon resource to find
-	 * @return Found weapon entity or null
-	 */
+	//! Find a weapon by its resource name
+	//! \param[in] weaponManager Weapon manager component
+	//! \param[in] weaponResource Weapon resource to find
+	//! \return Found weapon entity or null
 	static IEntity FindWeaponByResource(BaseWeaponManagerComponent weaponManager, ResourceName weaponResource)
 	{
 		array<IEntity> outWeapons = {};
@@ -54,14 +44,12 @@ class CRF_WeaponHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Spawn a weapon and its attachments
-	 * @param weaponResource Weapon resource to spawn
-	 * @param attachmentResources Attachments to add
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Spawn a weapon and its attachments
+	//! \param[in] weaponResource Weapon resource to spawn
+	//! \param[in] attachmentResources Attachments to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void SpawnWeapon(ResourceName weaponResource, array<ResourceName> attachmentResources, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -82,6 +70,8 @@ class CRF_WeaponHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Have the character or player actually select and hold the wepaon
+	//! \param[in] entity Entity to force weapon selection on
 	static void SelectWeapon(IEntity entity)
 	{
 		if (!ChimeraCharacter.Cast(entity))
@@ -120,18 +110,12 @@ class CRF_WeaponHelper
 			charController.SelectWeapon(weapon);
 	}
 	
-	//-----------------------------------------------------
-	//- ATTACHMENTS
-	//-----------------------------------------------------
-	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Add attachments to a weapon
-	 * @param weaponResource Weapon resource
-	 * @param attachmentResources Attachments to add
-	 * @param spawnParams Spawn parameters
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Add attachments to a weapon
+	//! \param[in] weaponResource Weapon resource
+	//! \param[in] attachmentResources Attachments to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventoryManager Inventory manager component
 	static void AddAttachments(ResourceName weaponResource, array<ResourceName> attachmentResources, 
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -160,14 +144,12 @@ class CRF_WeaponHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Add a single attachment to a weapon
-	 * @param attachmentResource Attachment resource to add
-	 * @param weapon Weapon to add attachment to
-	 * @param attachmentSlots Available attachment slots
-	 * @param spawnParams Spawn parameters
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Add a single attachment to a weapon
+	//! \param[in] attachmentResource Attachment resource to add
+	//! \param[in] weapon Weapon to add attachment to
+	//! \param[in] attachmentSlots Available attachment slots
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventoryManager Inventory manager component
 	static void AddAttachmentToWeapon(ResourceName attachmentResource, IEntity weapon, array<AttachmentSlotComponent> attachmentSlots, 
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -203,18 +185,12 @@ class CRF_WeaponHelper
 		}
 	}
 	
-	//-----------------------------------------------------
-	//- MAGAZINES
-	//-----------------------------------------------------
-	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief add a weapons magazines
-	 * @param magazineArray Magazines to add
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Add a weapons magazines
+	//! \param[in] magazineArray Magazines to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void AddMagazines(array<ref CRF_Magazine_Class> magazineArray, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -232,11 +208,9 @@ class CRF_WeaponHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Find the appropriate magazine array for the weapon type based off the slected weapons in ApplyDefaultWeapons
-	 * @param weaponsSelected Weapons we selected when initilizing the role
-	 * @param weaponType the weapon array we are comparing it to 
-	 */
+	//! Find the appropriate magazine array for the weapon type based off the slected weapons in ApplyDefaultWeapons
+	//! \param[in] weaponsSelected Weapons we selected when initilizing the role
+	//! \param[in] weaponType the weapon array we are comparing it to 
 	static array<ref CRF_Magazine_Class> FindMagArrayForWeaponsSelected(array<CRF_Weapon_Class> weaponsSelected, array<ref CRF_Weapon_Class> weaponType, out CRF_Weapon_Class selectedWeapon)
 	{	
 		foreach (CRF_Weapon_Class weaponSelected : weaponsSelected)
@@ -257,11 +231,9 @@ class CRF_WeaponHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Convert specialized magazine array to standard magazine array
-	 * @param specMagazineArray Array of specialized magazines
-	 * @return Converted magazine array
-	 */
+	//! Convert specialized magazine array to standard magazine array
+	//! \param[in] specMagazineArray Array of specialized magazines
+	//! \return Converted magazine array
 	static array<ref CRF_Magazine_Class> ConvertSpecMagArrayIntoMagArray(array<ref CRF_Spec_Magazine_Class> specMagazineArray, bool isAssistant)
 	{
 		array<ref CRF_Magazine_Class> tempArray = {};

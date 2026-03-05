@@ -9,7 +9,8 @@ modded class SCR_VONController
 	
 	//Stores the local player controller for frame checks, saves frame time having a pointer to it.
 	SCR_PlayerController m_PlayerController;
-		
+	
+	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
@@ -22,7 +23,8 @@ modded class SCR_VONController
 			m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 	}
     
-    // Only update when something actually changes
+	//------------------------------------------------------------------------------------------------
+    //! Only update when something actually changes
     void UpdateSpectatorChecksIfNeeded()
     {
         if (!m_CRFMenuManager)
@@ -36,7 +38,8 @@ modded class SCR_VONController
         }
     }
     
-    // Cache individual player spectator status - update on demand
+	//------------------------------------------------------------------------------------------------
+    //! Cache individual player spectator status - update on demand
     bool SpectatorCheck(int playerId)
     {
         // Check if we have cached data
@@ -49,6 +52,7 @@ modded class SCR_VONController
         return result;
     }
     
+	//------------------------------------------------------------------------------------------------
     bool CalculateSpectatorStatus(int playerId)
     {
         bool isPlayerAndClientSpec = IsOtherPlayerSpectator(playerId);
@@ -56,6 +60,7 @@ modded class SCR_VONController
         return isPlayerAndClientSpec && inSameChannel;
     }
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSpectatorChecks()
 	{
 		m_SpectatorChecks.Clear();
@@ -73,6 +78,7 @@ modded class SCR_VONController
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool IsOtherPlayerSpectator(int playerId)
 	{
 		if (playerId == 0)
@@ -87,6 +93,7 @@ modded class SCR_VONController
 		return isOtherPlayerSpec;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool InSameChannel(int playerId)
 	{
 		if (!m_CRFMenuManager)
@@ -104,7 +111,8 @@ modded class SCR_VONController
 		else
 			return false;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
 	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
 	{
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -115,6 +123,7 @@ modded class SCR_VONController
 		super.ActivateCVON(transmitType);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override bool ShouldMuffleAudio(IEntity senderEntity, int playerId = 0, out int loweredDecibles = 0)
 	{
 		if (SpectatorCheck(playerId))
@@ -164,6 +173,7 @@ modded class SCR_VONController
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void ComputeSpectatorLR(int playerId, out float outLeft = 1, out float outRight = 1, out int silencedDecibels = 0)
 	{
 		if (CRF_Gamemode.GetInstance() && CRF_Gamemode.GetInstance().m_bIsInEndCredits)
@@ -207,6 +217,7 @@ modded class SCR_VONController
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	float m_fSpecCheckBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
@@ -431,6 +442,7 @@ modded class SCR_VONController
 		else m_fVONSaveBuffer += timeSlice;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void ComputeStereoLR(
 	    IEntity listener,
 	    vector  sourcePos,
