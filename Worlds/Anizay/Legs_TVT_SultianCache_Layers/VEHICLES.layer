@@ -16,7 +16,6 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
   m_bShouldRespawnOnSideRespawn 0
   m_iRespawnTimer 999999
-  m_iTicketsPerRespawn 0
  }
  {
   coords 1761.027 139.647 7764.874
@@ -100,11 +99,26 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
  }
  {
-  coords 1749.814 140.628 7734.129
-  angles 0 166.945 0
-  m_bShouldRespawnOnSideRespawn 0
+  coords 1748.246 140.888 7729.734
+  angles 0 -175.431 0
+  m_rVehicle "{FBD9E898478968DF}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA_9k135_Inv.et"
   m_iRespawnTimer 9999999
   m_bShouldAddAmmo 1
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68CA24A4613BBAA3}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{68CA24A45ECF57C7}" {
+    m_VehicleAmmoType HMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68CA24A25C4D02AE}" {
+    m_Prefab "{B0A890995104A02D}Prefabs/Weapons/Tripods/9K135/Part_9K135_Launcher.et"
+    m_iAmountOfItemSupplyTruck 3
+    m_iAmountOfItemRegularVehicle 3
+   }
+  }
  }
 }
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {

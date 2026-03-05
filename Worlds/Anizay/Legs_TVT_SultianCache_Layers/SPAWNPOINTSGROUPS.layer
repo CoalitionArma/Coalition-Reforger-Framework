@@ -123,12 +123,17 @@ $grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints
   coords 1760.607 140.307 7754.867
  }
  {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "Cell 1"
+   }
+  }
   coords 1771.856 140.362 7754.819
  }
  {
   components {
    CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
-    m_sCallsignOfGroupToSpawn "1-2"
+    m_sCallsignOfGroupToSpawn "Cell 2"
    }
   }
   coords 1772.022 140.467 7750.207
@@ -136,7 +141,7 @@ $grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints
  {
   components {
    CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
-    m_sCallsignOfGroupToSpawn "2-1"
+    m_sCallsignOfGroupToSpawn "Cell 3"
    }
   }
   coords 1767.461 140.71 7744.634
@@ -144,7 +149,7 @@ $grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints
  {
   components {
    CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
-    m_sCallsignOfGroupToSpawn "2-2"
+    m_sCallsignOfGroupToSpawn "Cell 4"
    }
   }
   coords 1778.876 140.764 7744.529
