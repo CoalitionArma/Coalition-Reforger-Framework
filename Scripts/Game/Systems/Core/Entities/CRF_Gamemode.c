@@ -30,12 +30,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
-	
-	[Attribute("0", UIWidgets.Hidden)]
-	bool m_bSeperateSpectatorsByFaction;
-	
-	[Attribute("0", UIWidgets.Hidden)]
-	bool m_bHideOtherSpectatorFactions;
 
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
@@ -46,14 +40,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("45", UIWidgets.Hidden)]
 	int m_iTimeLimitMinutes;
 	
-	[Attribute("false", UIWidgets.Hidden)]
-	bool m_bAllowEspionage;
-	
 	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bLockUnusedSlots;
-
-	[Attribute("true", UIWidgets.Hidden)]
-	bool m_bSafestartInstantlyEnabled;
 	
 	[Attribute("false", UIWidgets.Hidden)]
 	bool m_bUseSafestartTimeLimit;
@@ -102,6 +90,18 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// Advanced Gamemode Settings
 	//------------------------------------------------------------------------------------
+	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bMissionAllowsEspionage;
+	
+	[Attribute("false", "auto", "Separates spectator VON by faction - spectators can only hear their faction's voice chat", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bSeperateSpectatorsByFaction;
+	
+	[Attribute("false", "auto", "Hides other factions in spectator menu - spectators can only see and spectate players from their own faction", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bHideOtherSpectatorFactions;
+
+	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode Settings - Advanced")]
+	bool m_bSafestartEnabledOnMissionStart;
+	
 	[Attribute("false", "auto", "Enable players being able to swap their clothes on the fly", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bEnableClothesSwapping;
 	

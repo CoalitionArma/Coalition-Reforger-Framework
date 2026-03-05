@@ -11,18 +11,6 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 {	
 	[Attribute("45", "auto", "Mission Time (Minutes) (set to -1 to disable)", category: "CRF Mission Settings - General")]
 	protected int m_iMissionTimeLimit;
-
-	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Settings - General")]
-	protected bool m_bMissionAllowsEspionage;
-	
-	[Attribute("false", "auto", "Separates spectator VON by faction - spectators can only hear their faction's voice chat", category: "CRF Mission Settings - General")]
-	protected bool m_bSeperateSpectatorsByFaction;
-	
-	[Attribute("false", "auto", "Hides other factions in spectator menu - spectators can only see and spectate players from their own faction", category: "CRF Mission Settings - General")]
-	protected bool m_bHideOtherSpectatorFactions;
-
-	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Settings - Safestart")]
-	protected bool m_bSafestartEnabledOnMissionStart;
 	
 	[Attribute("false", "auto", "Enable safestart time limit countdown (forces mission start after time expires)", category: "CRF Mission Settings - Safestart")]
 	protected bool m_bUseSafestartTimeLimit;
@@ -77,15 +65,11 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		
 		//Gamemode
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
-		m_bMissionAllowsEspionage = gamemode.m_bAllowEspionage;
-		m_bSeperateSpectatorsByFaction = gamemode.m_bSeperateSpectatorsByFaction;
-		m_bHideOtherSpectatorFactions = gamemode.m_bHideOtherSpectatorFactions;
 		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
 		m_iRespawnCutoffMinutes = gamemode.m_iRespawnCutoffMinutes;
-		m_bSafestartEnabledOnMissionStart = gamemode.m_bSafestartInstantlyEnabled;
 		m_bUseSafestartTimeLimit = gamemode.m_bUseSafestartTimeLimit;
 		m_iSafestartTimeLimit = gamemode.m_iSafestartTimeLimit;
 		
@@ -139,15 +123,11 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		
 		//Gamemode
 		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
-		api.SetVariableValue(entitySource, null, "m_bAllowEspionage", m_bMissionAllowsEspionage.ToString());
-		api.SetVariableValue(entitySource, null, "m_bSeperateSpectatorsByFaction", m_bSeperateSpectatorsByFaction.ToString());
-		api.SetVariableValue(entitySource, null, "m_bHideOtherSpectatorFactions", m_bHideOtherSpectatorFactions.ToString());
 		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iRespawnCutoffMinutes", m_iRespawnCutoffMinutes.ToString());
-		api.SetVariableValue(entitySource, null, "m_bSafestartInstantlyEnabled", m_bSafestartEnabledOnMissionStart.ToString());
 		api.SetVariableValue(entitySource, null, "m_bUseSafestartTimeLimit", m_bUseSafestartTimeLimit.ToString());
 		api.SetVariableValue(entitySource, null, "m_iSafestartTimeLimit", m_iSafestartTimeLimit.ToString());	
 		
