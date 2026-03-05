@@ -1,5 +1,16 @@
 FrameWidgetClass {
  {
+  OverlayWidgetClass "{68503B7535B4C114}" {
+   Prefab "{68503B7535B4C114}"
+   {
+    ImageWidgetClass "{68503B75751ADACA}" {
+     Prefab "{68503B75751ADACA}"
+    }
+    ImageWidgetClass "{6853047AFC9B283C}" {
+     Prefab "{6853047AFC9B283C}"
+    }
+   }
+  }
   ImageWidgetClass "{5E101C4F4DF051FE}" {
    Prefab "{5E101C4F4DF051FE}"
    Color 0.0725 0.0683 0.0683 1

@@ -16,7 +16,8 @@ FrameWidgetClass {
   SCR_CustomArrayEditableEntityUIComponent "{597EB0ABB0CD1F76}" {
    m_bShowOffScreen 1
    m_sIconWidgetNames {
-    "StaticIcon" "PulseWidget"
+    "StaticIcon"
+    "PulseWidget"
    }
    m_bColorWidget 1
   }

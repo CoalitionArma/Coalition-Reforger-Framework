@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F73B5DD118343D2A}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Kolobok_Parachute.et"
+ Name "{F73B5DD118343D2A}Prefabs/Items/Equipment/Backpacks/Parachute/CRF_Backpack_Kolobok_Parachute.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
