@@ -388,16 +388,31 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		
 		int playerId = playerController.GetPlayerId();
 		
-		playerController.SetInitialMainEntity(entity);
+		// Route assignment through the base game SCR_SpawnRequestComponent pipeline so that
+		// SCR_DataCollectorComponent.OnPlayerSpawnFinalize_S and all other data components
+		// are properly notified, consistent with the main CRF spawn flow.
+		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
+			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
+		);
+		
+		if (respawnComponent)
+		{
+			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(entity);
+			if (!respawnComponent.RequestSpawn(spawnData))
+				Print(string.Format("[CRF_Raid] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
+		}
+		else
+		{
+			// Fallback
+			Print(string.Format("[CRF_Raid] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
+			playerController.SetInitialMainEntity(entity);
+		}
+		
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
 		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerId, playerRplComp.Id());
 		
-		// Notify data collector about the spawn
-		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-		if (dc)
-		{
-			dc.NotifyPlayerSpawned(playerId, entity);
-		}
+		// NOTE: SCR_DataCollectorComponent.OnPlayerSpawnFinalize_S is now called automatically
+		// by the base game pipeline when RequestSpawn completes — manual NotifyPlayerSpawned removed.
 	}
 	
 	void AssignPlayerToGroup(int groupId, int playerId, RplId groupRplId)
