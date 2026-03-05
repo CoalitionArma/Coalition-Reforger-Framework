@@ -15,8 +15,11 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Mission Settings - General")]
 	protected bool m_bMissionAllowsEspionage;
 	
-	[Attribute("false", "auto", "Seperates the spectator chat so only players in the same faction can hear each other", category: "CRF Mission Settings - General")]
+	[Attribute("false", "auto", "Separates spectator VON by faction - spectators can only hear their faction's voice chat", category: "CRF Mission Settings - General")]
 	protected bool m_bSeperateSpectatorsByFaction;
+	
+	[Attribute("false", "auto", "Hides other factions in spectator menu - spectators can only see and spectate players from their own faction", category: "CRF Mission Settings - General")]
+	protected bool m_bHideOtherSpectatorFactions;
 
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Mission Settings - Safestart")]
 	protected bool m_bSafestartEnabledOnMissionStart;
@@ -76,6 +79,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
 		m_bMissionAllowsEspionage = gamemode.m_bAllowEspionage;
 		m_bSeperateSpectatorsByFaction = gamemode.m_bSeperateSpectatorsByFaction;
+		m_bHideOtherSpectatorFactions = gamemode.m_bHideOtherSpectatorFactions;
 		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
@@ -137,6 +141,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
 		api.SetVariableValue(entitySource, null, "m_bAllowEspionage", m_bMissionAllowsEspionage.ToString());
 		api.SetVariableValue(entitySource, null, "m_bSeperateSpectatorsByFaction", m_bSeperateSpectatorsByFaction.ToString());
+		api.SetVariableValue(entitySource, null, "m_bHideOtherSpectatorFactions", m_bHideOtherSpectatorFactions.ToString());
 		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());

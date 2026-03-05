@@ -33,6 +33,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bSeperateSpectatorsByFaction;
+	
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bHideOtherSpectatorFactions;
 
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
