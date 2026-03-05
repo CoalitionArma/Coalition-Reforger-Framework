@@ -167,13 +167,47 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	override void Update()
 	{
 		if (!m_Group)
+		{
+			Print("[CRF_SpectatorLabelIconGroup] No group assigned!", LogLevel.WARNING);
 			return;
+		}
 		
-		// Get the group leader entity
-		IEntity leaderEntity = m_Group.GetLeaderEntity();
+		// Get the group leader's player ID
+		int leaderID = m_Group.GetLeaderID();
+		if (leaderID <= 0)
+		{
+			// No valid leader ID, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 has no valid leader ID", m_Group.GetCustomName()), LogLevel.WARNING);
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		// Get the leader entity from the player manager
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+		{
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		IEntity leaderEntity = playerManager.GetPlayerControlledEntity(leaderID);
 		if (!leaderEntity)
 		{
-			// No leader, hide
+			// No leader entity, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader (ID: %2) has no entity", m_Group.GetCustomName(), leaderID), LogLevel.WARNING);
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		// Check if leader is alive - hide icon if leader is dead
+		SCR_CharacterControllerComponent controller = SCR_CharacterControllerComponent.Cast(leaderEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (controller && controller.IsDead())
+		{
+			// Leader is dead, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader is dead", m_Group.GetCustomName()), LogLevel.NORMAL);
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
@@ -181,6 +215,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		
 		// Get leader position
 		vector leaderPosition = leaderEntity.GetOrigin();
+		Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader at %2", m_Group.GetCustomName(), leaderPosition.ToString()), LogLevel.VERBOSE);
 		
 		// Calculate distance from camera to the leader position (before height offset)
 		vector cameraPosition = GetGame().GetCameraManager().CurrentCamera().GetOrigin();
