@@ -4,10 +4,12 @@ class CRF_PlayerCameraManagerClass : ScriptComponentClass
 
 class CRF_PlayerCameraManager : ScriptComponent
 {
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
 	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
-	
-	protected static CRF_PlayerCameraManager m_sInstance;
 	
 	protected bool m_bCameraOnRails;
 	protected bool m_bTPPMode = false; // True = third-person, false = first-person (helmet cam)
@@ -23,28 +25,47 @@ class CRF_PlayerCameraManager : ScriptComponent
 	protected float m_vCameraOrbitHeight;
 	protected PolylineShapeEntity m_CameraPolyLine;
 	
-	//------------------------------------------------------------------------------------------------
-	// STATIC ACCESSORS
-	//------------------------------------------------------------------------------------------------
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 UPDATE AND INITIALIZE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 
-	/**
-	 * Returns the instance of this component from the player controller
-	 * @return CRF_PlayerCameraManager - The camera manager component instance or null if unavailable
+	//------------------------------------------------------------------------------------------------
+	/*!
+	 * Initilizes players if they have a valid spectator entity
 	 */
-	
-	void CRF_PlayerCameraManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	void InitilizeSpecCamera()
 	{
-		m_sInstance = this;
-	}
-	
-	static CRF_PlayerCameraManager GetInstance()
-	{
-		return m_sInstance;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// METHODS
-	//------------------------------------------------------------------------------------------------
+		vector cameraPos[4] = CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath;
+		
+		// Use provided death position if available
+		if (CRF_EntityHelper.IsValidSpawnVector(cameraPos[3])) {
+			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
+		}
+		// Use stored camera position if available
+		else if (CRF_EntityHelper.IsValidSpawnVector(m_vStoredCameraPos[3])) {
+			cameraPos = m_vStoredCameraPos;
+		} 
+		// Fallback to generic spawn position
+		else {
+			cameraPos[3] = CRF_Gamemode.GetInstance().GetGenericSpawn();
+		}
+
+		// Spawn or reposition camera
+		if (!m_eCamera)
+			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
+		else
+			m_eCamera.SetWorldTransform(cameraPos);
+		
+		// Level camera horizon
+		vector mat = m_eCamera.GetAngles();
+		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+		
+		if (!CVON_VONGameModeComponent.GetInstance())
+			CRF_SpectatorCamera.Cast(m_eCamera).AttatchSpectatorToCamera(m_eCamera);
+		
+		// Switch to spectator camera
+		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	/*!
@@ -59,6 +80,10 @@ class CRF_PlayerCameraManager : ScriptComponent
 			m_vStoredCameraPos = cameraPos;
 		};
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 CAMERA ON RAILS SETTER METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	void SetCameraOnRailsEntity(IEntity entity, bool tpp = false)
@@ -122,6 +147,10 @@ class CRF_PlayerCameraManager : ScriptComponent
 		m_fOrbitRadius     = 4.0;
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME UPDATE
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -147,44 +176,9 @@ class CRF_PlayerCameraManager : ScriptComponent
 		};
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	/*!
-	 * Initilizes players if they have a valid spectator entity
-	 */
-	void InitilizeSpecCamera()
-	{
-		vector cameraPos[4];
-		cameraPos = CRF_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
-		
-		// Use provided death position if available
-		if (CRF_EntityHelper.IsValidSpawnVector(cameraPos[3])) {
-			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
-		}
-		// Use stored camera position if available
-		else if (CRF_EntityHelper.IsValidSpawnVector(m_vStoredCameraPos[3])) {
-			cameraPos = m_vStoredCameraPos;
-		} 
-		// Fallback to generic spawn position
-		else {
-			cameraPos[3] = CRF_Gamemode.GetInstance().GetGenericSpawn();
-		}
-
-		// Spawn or reposition camera
-		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
-		else
-			m_eCamera.SetWorldTransform(cameraPos);
-		
-		// Level camera horizon
-		vector mat = m_eCamera.GetAngles();
-		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
-		
-		if (!CVON_VONGameModeComponent.GetInstance())
-			CRF_SpectatorCamera.Cast(m_eCamera).AttatchSpectatorToCamera(m_eCamera);
-		
-		// Switch to spectator camera
-		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
-	};
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME UPDATE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	protected void FrameUpdateEntity()
@@ -293,5 +287,22 @@ class CRF_PlayerCameraManager : ScriptComponent
 	protected void FrameUpdatePolyline()
 	{
 	
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_PlayerCameraManager m_sInstance;
+	void CRF_PlayerCameraManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_PlayerCameraManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }
