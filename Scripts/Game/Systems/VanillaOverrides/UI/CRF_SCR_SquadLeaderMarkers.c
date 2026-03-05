@@ -1,7 +1,8 @@
 
 modded class SCR_MapMarkerSquadLeader
 {
-	/** DEPRICATED
+	/*
+	 DEPRICATED
 	override void OnPlayerIdUpdate()
 	{
 		// Get the reference to the player controller from the game
@@ -15,11 +16,10 @@ modded class SCR_MapMarkerSquadLeader
 		if (m_Group && m_Group.m_bBlueForceTrackerEnabled)
 			SetLocalVisible(true);
 	}
-	*/
 	
-	/**
-	 * Override method called when player ID is updated.
-	 * Makes the squad leader marker visible to the local player.
+	
+	//! Override method called when player ID is updated.
+	//! Makes the squad leader marker visible to the local player.
 	*/
 	
 	//------------------------------------------------------------------------------------------------

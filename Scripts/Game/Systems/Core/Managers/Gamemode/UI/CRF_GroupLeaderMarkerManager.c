@@ -8,9 +8,7 @@
 //	 DATA STRUCTURES
 //=============================================================================================================================================================================================================================================================================================================================================================
 
-/**
- * Data structure to hold marker information for a group leader
- */
+//! Data structure to hold marker information for a group leader
 class CRF_GroupLeaderMarkerData
 {
 	Widget m_wMarkerRoot;
@@ -20,6 +18,7 @@ class CRF_GroupLeaderMarkerData
 	vector m_vWorldPosition;
 	bool m_bIsVisible;
 	
+	//------------------------------------------------------------------------------------------------
 	void CRF_GroupLeaderMarkerData()
 	{
 		m_sGroupName = "";
@@ -27,6 +26,7 @@ class CRF_GroupLeaderMarkerData
 		m_bIsVisible = false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void Cleanup()
 	{
 		if (m_wMarkerRoot)
@@ -92,9 +92,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initialize the manager
-	 */
+	//! Initialize the manager
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -134,9 +132,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initialize client-side UI elements
-	 */
+	//! Initialize client-side UI elements
 	protected void InitializeClientUI()
 	{
 		m_bIsInitialized = true;
@@ -157,9 +153,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Frame update for periodic checks and marker positioning
-	 */
+	//! Frame update for periodic checks and marker positioning
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		// Server-side update logic
@@ -197,10 +191,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle safestart state changes on server
-	 * @param safestartActive New safestart state
-	 */
+	//! Handle safestart state changes on server
+	//! \param[in] safestartActive New safestart state
 	protected void OnSafestartChangedServer(bool safestartActive)
 	{
 		m_bSafestartActive = safestartActive;
@@ -219,9 +211,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update server-side group leader tracking and broadcast changes
-	 */
+	//! Update server-side group leader tracking and broadcast changes
 	protected void UpdateServerGroupLeaderTracking()
 	{
 		if (!m_bSafestartActive || !m_GroupsManager)
@@ -277,11 +267,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if a player is a group leader
-	 * @param playerId Player ID to check
-	 * @return True if player is a group leader
-	 */
+	//! Check if a player is a group leader
+	//! \param[in] playerId Player ID to check
+	//! \return True if player is a group leader
 	protected bool IsPlayerGroupLeader(int playerId)
 	{
 		// Get player's controlled entity
@@ -298,11 +286,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Get the group name for a player
-	 * @param playerId Player ID
-	 * @return Group name or empty string
-	 */
+	//! Get the group name for a player
+	//! \param[in] playerId Player ID
+	//! \return Group name or empty string
 	protected string GetPlayerGroupName(int playerId)
 	{
 		SCR_AIGroup group = m_GroupsManager.GetPlayerGroup(playerId);
@@ -322,11 +308,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Broadcast creation of a new marker to all clients
-	 * @param playerId Player ID for the marker
-	 * @param groupName Group name to display
-	 */
+	//! Broadcast creation of a new marker to all clients
+	//! \param[in] playerId Player ID for the marker
+	//! \param[in] groupName Group name to display
 	protected void BroadcastCreateMarker(int playerId, string groupName)
 	{
 		if (!m_BroadcastManager)
@@ -336,10 +320,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Broadcast removal of a marker to all clients
-	 * @param playerId Player ID to remove marker for
-	 */
+	//! Broadcast removal of a marker to all clients
+	//! \param[in] playerId Player ID to remove marker for
 	protected void BroadcastRemoveMarker(int playerId)
 	{
 		if (!m_BroadcastManager)
@@ -349,9 +331,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Broadcast clearing of all markers to all clients
-	 */
+	//! Broadcast clearing of all markers to all clients
 	protected void BroadcastClearAllMarkers()
 	{
 		if (!m_BroadcastManager)
@@ -361,10 +341,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Send current marker state to a specific client (for late joiners)
-	 * @param playerId Player ID requesting the state
-	 */
+	//! Send current marker state to a specific client (for late joiners)
+	//! \param[in] playerId Player ID requesting the state
 	void SendCurrentStateToClient(int playerId)
 	{
 		if (!Replication.IsServer() || !m_BroadcastManager)
@@ -385,10 +363,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Handle safestart state changes on client
-	 * @param safestartActive New safestart state
-	 */
+	//! Handle safestart state changes on client
+	//! \param[in] safestartActive New safestart state
 	protected void OnSafestartChangedClient(bool safestartActive)
 	{
 		m_bSafestartActive = safestartActive;
@@ -407,11 +383,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Create a marker for a player (client-side RPC handler)
-	 * @param playerId Player ID
-	 * @param groupName Group name to display
-	 */
+	//! Create a marker for a player (client-side RPC handler)
+	//! \param[in] playerId Player ID
+	//! \param[in] groupName Group name to display
 	void CreateMarkerForPlayerRPC(int playerId, string groupName)
 	{
 		if (Replication.IsServer())
@@ -456,10 +430,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Remove marker for a player (client-side RPC handler)
-	 * @param playerId Player ID
-	 */
+	//! Remove marker for a player (client-side RPC handler)
+	//! \param[in] playerId Player ID
 	void RemoveMarkerForPlayerRPC(int playerId)
 	{
 		if (Replication.IsServer())
@@ -469,9 +441,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Clear all markers (client-side RPC handler)
-	 */
+	//! Clear all markers (client-side RPC handler)
 	void ClearAllMarkersRPC()
 	{
 		if (Replication.IsServer())
@@ -485,9 +455,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update positions for all visible markers
-	 */
+	//! Update positions for all visible markers
 	protected void UpdateMarkerPositions()
 	{
 		// Safety guard - should never run on server
@@ -503,9 +471,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update group leader markers based on current state (client-side)
-	 */
+	//! Update group leader markers based on current state (client-side)
 	protected void UpdateGroupLeaderMarkers()
 	{
 		if (!m_GroupsManager || !m_bSafestartActive)
@@ -583,11 +549,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if a player should have a group leader marker (client-side)
-	 * @param playerId Player ID to check
-	 * @return True if player should have a marker
-	 */
+	//! Check if a player should have a group leader marker (client-side)
+	//! \param[in] playerId Player ID to check
+	//! \return True if player should have a marker
 	protected bool ShouldPlayerHaveMarker(int playerId)
 	{
 		if (!m_bSafestartActive)
@@ -619,11 +583,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Check if a player belongs to a friendly faction
-	 * @param playerId Player ID to check
-	 * @return True if player is friendly to local player
-	 */
+	//! Check if a player belongs to a friendly faction
+	//! \param[in] playerId Player ID to check
+	//! \return True if player is friendly to local player
 	protected bool IsPlayerFriendly(int playerId)
 	{
 		// Get local player's faction
@@ -660,10 +622,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Create a new marker for a player (client-side)
-	 * @param playerId Player ID
-	 */
+	//! Create a new marker for a player (client-side)
+	//! \param[in] playerId Player ID
 	protected void CreateMarkerForPlayer(int playerId)
 	{
 		// Check if marker already exists
@@ -703,10 +663,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update marker text and color for a specific player (client-side)
-	 * @param playerId Player ID
-	 */
+	//! Update marker text and color for a specific player (client-side)
+	//! \param[in] playerId Player ID
 	protected void UpdateMarkerForPlayer(int playerId)
 	{
 		if (!m_mPlayerMarkers.Contains(playerId))
@@ -738,11 +696,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Get color for a group based on its name
-	 * @param groupName Group name to check
-	 * @return Color for the group
-	 */
+	//! Get color for a group based on its name
+	//! \param[in] groupName Group name to check
+	//! \return Color for the group
 	protected Color GetGroupColor(string groupName)
 	{
 		// Convert to uppercase for consistent comparison
@@ -770,12 +726,10 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Create the marker widget structure
-	 * @param parent Parent widget to attach to
-	 * @param markerData Marker data to populate
-	 * @return Created marker root widget
-	 */
+	//! Create the marker widget structure
+	//! \param[in] parent Parent widget to attach to
+	//! \param[in] markerData Marker data to populate
+	//! \return Created marker root widget
 	protected Widget CreateMarkerWidget(Widget parent, CRF_GroupLeaderMarkerData markerData)
 	{
 		// Create root frame widget
@@ -826,10 +780,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update marker background size to fit text
-	 * @param markerData Marker data
-	 */
+	//! Update marker background size to fit text
+	//! \param[in] markerData Marker data
 	protected void UpdateMarkerBackgroundSize(CRF_GroupLeaderMarkerData markerData)
 	{
 		if (!markerData.m_wMarkerBackground || !markerData.m_wMarkerText)
@@ -844,11 +796,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update marker display position and visibility
-	 * @param playerId Player ID
-	 * @param markerData Marker data
-	 */
+	//! Update marker display position and visibility
+	//! \param[in] playerId Player ID
+	//! \param[in] markerData Marker data
 	protected void UpdateMarkerDisplay(int playerId, CRF_GroupLeaderMarkerData markerData)
 	{
 		// Get player entity
@@ -924,11 +874,9 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Update world position for marker
-	 * @param playerEntity Player entity
-	 * @param markerData Marker data
-	 */
+	//! Update world position for marker
+	//! \param[in] playerEntity Player entity
+	//! \param[in] markerData Marker data
 	protected void UpdateWorldPosition(IEntity playerEntity, CRF_GroupLeaderMarkerData markerData)
 	{
 		if (!playerEntity)
@@ -957,10 +905,8 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Remove marker for a specific player
-	 * @param playerId Player ID
-	 */
+	//! Remove marker for a specific player
+	//! \param[in] playerId Player ID
 	protected void RemoveMarkerForPlayer(int playerId)
 	{
 		if (!m_mPlayerMarkers.Contains(playerId))
@@ -977,9 +923,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Remove all markers
-	 */
+	//! Remove all markers
 	protected void RemoveAllMarkers()
 	{
 		// Cleanup all marker widgets first (without deleting the objects yet)
@@ -998,9 +942,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Clean up when component is deleted
-	 */
+	//! Clean up when component is deleted
 	override void OnDelete(IEntity owner)
 	{
 		// Cancel any pending CallLater callbacks to prevent memory leaks

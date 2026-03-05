@@ -1,10 +1,8 @@
 class CRF_InitializationHelper
 {
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Sets up radio frequencies based on player group
-	 * Configures both group and platoon frequencies
-	 */
+	//! Sets up radio frequencies based on player group
+	//! Configures both group and platoon frequencies
 	static void SetupRadioFrequency()
 	{
 		// Get player's entity

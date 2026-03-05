@@ -20,6 +20,7 @@ class CRF_SpectatorCharacter : CRF_PlayerCharacter
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Does what it says, disables all physics and damage on the character so spectators dont cause issues
 	protected void DisablePhysicsAndDamage()
 	{
 		// - Physics Handling	

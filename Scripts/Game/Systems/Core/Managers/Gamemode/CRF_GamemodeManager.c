@@ -27,9 +27,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load necessary configurations for gearscript
-	 */
+	//! Load necessary configurations for gearscript
 	protected void LoadConfigurations()
 	{
 		ResourceName rolesConfigPath;
@@ -49,9 +47,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Initialize all manager references needed for this component
-	*/
+	//! Initialize all manager references needed for this component
 	protected void InitializeManagers()
 	{
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
@@ -62,11 +58,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Initialize a player into the game either as a playable character or spectator
-	* @param playerId ID of the player to initialize
-	* @param spawnLocation Location to spawn the player (Use "CRF_EntityHelper.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
-	*/
+	//! Initialize a player into the game either as a playable character or spectator
+	//! \param[in] playerId ID of the player to initialize
+	//! \param[in] spawnLocation Location to spawn the player (Use "CRF_EntityHelper.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
 	void InitilizePlayer(int playerId, vector spawnLocation[4])
 	{
 		if (!CRF_EntityHelper.IsValidSpawnVector(spawnLocation[3]) && spawnLocation != CRF_EntityHelper.ZERO_SPAWN_VECTOR)
@@ -121,12 +115,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Assign the player to the set entity
-	* @param playerId ID of the player
-	* @param playerController controller of the player
-	* @param playerCharacter entity the player will take
-	*/
+	//! Assign the player to the set entity
+	//! \param[in] playerId ID of the player
+	//! \param[in] playerController controller of the player
+	//! \param[in] playerCharacter entity the player will take
 	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter)
 	{
 		// Validate that player is still connected before proceeding
@@ -148,12 +140,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Verify that character assignment was successful and complete initialization
-	* @param playerId ID of the player
-	* @param playerController controller of the player
-	* @param playerCharacter entity the player should control
-	*/
+	//! Verify that character assignment was successful and complete initialization
+	//! \param[in] playerId ID of the player
+	//! \param[in] playerController controller of the player
+	//! \param[in] playerCharacter entity the player should control
 	protected void VerifyCharacterAssignment(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter)
 	{
 		// Validate that player is still connected
@@ -188,12 +178,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Get existing character or create a new one for playable roles
-	* @param playerId ID of the player
-	* @param overrideLocation Optional spawn location
-	* @return The character entity
-	*/
+	//! Get existing character or create a new one for playable roles
+	//! \param[in] playerId ID of the player
+	//! \param[in] overrideLocation Optional spawn location
+	//! \return The character entity
 	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation[4], out bool alreadyCreated)
 	{
 		alreadyCreated = true;
@@ -228,10 +216,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Create a spectator entity in the world
-	* @return The created spectator character
-	*/
+	//! Create a spectator entity in the world
+	//! \return The created spectator character
 	protected CRF_PlayerCharacter CreateSpectatorEntity(vector spawnLocation[4])
 	{
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
@@ -241,11 +227,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Delete old initial entity if it exists (prevents ghost entities)
-	* @param playerController Player controller to check
-	* @param newCharacter The new character being assigned (don't delete this one)
-	*/
+	//! Delete old initial entity if it exists (prevents ghost entities)
+	//! \param[in] playerController Player controller to check
+	//! \param[in] newCharacter The new character being assigned (don't delete this one)
 	static void DeleteOldInitialEntity(SCR_PlayerController playerController, IEntity newCharacter)
 	{
 		if (!playerController)

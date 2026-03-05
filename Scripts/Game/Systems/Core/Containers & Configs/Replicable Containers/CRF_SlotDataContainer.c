@@ -4,7 +4,6 @@ class CRF_SlotDataContainer
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	
 	protected int m_iSlotId;
 	protected int m_iSlotCurrentPlayerId;
 	protected CRF_EGearRole m_SlotRole;
@@ -22,13 +21,9 @@ class CRF_SlotDataContainer
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Replaces or sets the internal CRF_SlotDataContainer record for the slot.
-	 * If newData is non-null, the slot's data is updated with the provided instance.
-	 *
-	 * @param slotID: ID of the slot whose data should be updated.
-	 * @param newData: Pointer/reference to the new CRF_SlotDataContainer to apply.
-	 */
+	//! Replaces or sets the internal CRF_SlotDataContainer record for the slot.
+	//! If newSlotData is non-null, the slot's data is updated with the provided instance.
+	//! \param[in] newSlotData: Pointer/reference to the new CRF_SlotDataContainer to apply.
 	void DataUpdate(CRF_SlotDataContainer newSlotData = null)
 	{	
 		if(newSlotData)	
@@ -265,11 +260,9 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Apply custom weapons based on role
-	 * @param faction Faction to pull GS
-	 * @param role Role identifier
-	 */
+	//! Apply custom weapons based on role
+	//! \param[in] faction Faction to pull GS
+	//! \param[in] role Role identifier
 	protected string GetCustomRoleName(FactionKey factionKey, CRF_EGearRole role)
 	{
 		// Get gearscript resources
@@ -312,6 +305,7 @@ class CRF_SlotDataContainer
 		writer.WriteBool(m_bIsDeadSlot);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void Load(ScriptBitReader reader)
 	{
 		reader.ReadInt(m_iSlotId);
@@ -324,6 +318,7 @@ class CRF_SlotDataContainer
 		reader.ReadBool(m_bIsDeadSlot);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
@@ -337,6 +332,7 @@ class CRF_SlotDataContainer
 	    return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotDataContainer instance)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
@@ -350,6 +346,7 @@ class CRF_SlotDataContainer
 	    return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
 		snapshot.EncodeInt(packet);
@@ -362,6 +359,7 @@ class CRF_SlotDataContainer
 		snapshot.EncodeBool(packet);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.DecodeInt(packet);
@@ -375,6 +373,7 @@ class CRF_SlotDataContainer
 	    return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
 	    return lhs.CompareSnapshots(rhs, 4)
@@ -387,6 +386,7 @@ class CRF_SlotDataContainer
 		&& lhs.CompareSnapshots(rhs, 4);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_SlotDataContainer instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
 	    return snapshot.Compare(instance.m_iSlotId, 4)
