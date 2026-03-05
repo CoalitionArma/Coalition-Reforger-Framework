@@ -1,5 +1,5 @@
 /**
- * UI component that displays a floating NATO group icon above a group's average position
+ * UI component that displays a floating NATO group icon above the group leader's position
  * in spectator mode. Shows the group's NATO symbol shape and name label.
  */
 class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
@@ -22,10 +22,12 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 6.0;
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MAX = 65.0;
 	
+	/*
 	// Maximum distance the group icon can be from the group's median position (core group)
 	// If the centroid calculation results in a position further than this from the median,
 	// the icon will be clamped to this distance to prevent it from appearing too far away
 	protected static const float MAX_CENTROID_DISTANCE_FROM_MEDIAN = 150.0;
+	*/
 	
 	// Fade-out when the camera is very close to the group — individual character icons
 	// are clearly visible at short range, so the group symbol becomes redundant noise.
@@ -152,47 +154,48 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Override SetEntity - groups don't track a single entity
+	// Override SetEntity - groups track the leader entity
 	//------------------------------------------------------------------------------------------------
 	override void SetEntity(IEntity entity, string boneName)
 	{
-		// Groups don't track a single entity directly
-		// World position is calculated from group member centroids
+		// Icon position is calculated from the group leader each frame in Update()
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Override Update to calculate group centroid position
+	// Override Update to position icon at group leader
 	//------------------------------------------------------------------------------------------------
 	override void Update()
 	{
 		if (!m_Group)
 			return;
 		
-		// Calculate group centroid from alive members
-		vector centroid;
-		int aliveCount;
-		if (!CalculateGroupCentroid(centroid, aliveCount))
+		// Get the group leader entity
+		IEntity leaderEntity = m_Group.GetLeaderEntity();
+		if (!leaderEntity)
 		{
-			// No alive members, hide
+			// No leader, hide
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
 		}
 		
-		// Calculate distance from camera to the raw centroid (before height offset)
+		// Get leader position
+		vector leaderPosition = leaderEntity.GetOrigin();
+		
+		// Calculate distance from camera to the leader position (before height offset)
 		vector cameraPosition = GetGame().GetCameraManager().CurrentCamera().GetOrigin();
-		m_fDistanceToIcon = vector.Distance(cameraPosition, centroid);
+		m_fDistanceToIcon = vector.Distance(cameraPosition, leaderPosition);
 		
 		// Scale the height offset with distance so the icon floats higher when zoomed out
 		float distanceFraction = Math.Clamp(m_fDistanceToIcon / m_fMaxIconDistance, 0.0, 1.0);
 		float heightOffset = GROUP_ICON_HEIGHT_OFFSET_MIN + (GROUP_ICON_HEIGHT_OFFSET_MAX - GROUP_ICON_HEIGHT_OFFSET_MIN) * distanceFraction;
 		
-		// Cache the raw centroid for line drawing before applying the icon height offset
-		m_vRawCentroid = centroid;
+		// Cache the raw position for line drawing before applying the icon height offset
+		m_vRawCentroid = leaderPosition;
 		
-		// Raise the icon above the centroid by the distance-scaled offset
-		centroid[1] = centroid[1] + heightOffset;
-		m_vWorldPosition = centroid;
+		// Raise the icon above the leader by the distance-scaled offset
+		leaderPosition[1] = leaderPosition[1] + heightOffset;
+		m_vWorldPosition = leaderPosition;
 		
 		// Project 3D world position to 2D screen coordinates
 		vector screenPosition = GetGame().GetWorkspace().ProjWorldToScreen(m_vWorldPosition, GetGame().GetWorld());
@@ -235,11 +238,13 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		}
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	// Calculate the centroid position from alive group members.
 	// Uses the slot map to find player-controlled characters, because human players are not
 	// returned by SCR_AIGroup.GetAgents() (which only yields AI agents).
 	// Also falls back to GetAgents() for any pure-AI members.
+	// NOTE: THIS SHIT IS NOT PERFORMANT. THE BEST CASE SCENARIO WOULD BE TO SET IT TO THE LEADER EACH FRAME WHICH IS WHAT WE'RE DOING NOW.
 	//------------------------------------------------------------------------------------------------
 	protected bool CalculateGroupCentroid(out vector centroid, out int aliveCount)
 	{
@@ -351,7 +356,9 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		
 		return true;
 	}
+	*/
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	// Calculate the median position of the group to identify where the "core" of the group is.
 	// This is more robust than using just the leader's position, especially when the leader
@@ -457,6 +464,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		
 		return closestToAverage;
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	// Update the label - refresh group name (may change during play)
