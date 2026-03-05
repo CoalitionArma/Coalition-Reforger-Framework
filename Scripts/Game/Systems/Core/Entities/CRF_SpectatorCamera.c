@@ -4,7 +4,13 @@ class CRF_SpectatorCameraClass : SCR_ManualCameraClass
 
 class CRF_SpectatorCamera : SCR_ManualCamera
 {
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 SPECTATOR ENTITY METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
+	//! Attatch the spectator entity to the current active camera entity, note that AttachEntity method will keep the entity offset so we need to teleport the entity then execute
+	//! \param[in] camera Camera entity to attatch the current spectator too
 	void AttatchSpectatorToCamera(IEntity camera)
 	{
 		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
@@ -30,12 +36,14 @@ class CRF_SpectatorCamera : SCR_ManualCamera
 		cameraPoint.AttachEntity(playerEntity);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 OVERRIDE FOR SPEC MENU
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Determine if camera control is disabled by menu
-	 * Modified to allow camera control in spectator menu
-	 * @return True if camera should be disabled, false otherwise
-	 */
+	//! Determine if camera control is disabled by menu
+	//! Modified to allow camera control in spectator menu
+	//! \return True if camera should be disabled, false otherwise
 	override protected bool IsDisabledByMenu()
 	{
 		MenuManager menuManager = GetGame().GetMenuManager();

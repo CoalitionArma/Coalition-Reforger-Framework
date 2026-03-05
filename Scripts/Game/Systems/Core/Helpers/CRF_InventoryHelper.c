@@ -1,11 +1,9 @@
 class CRF_InventoryHelper
 {
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Check if an item is explosive or a special tool
-	 * @param item Item to check
-	 * @return True if item is explosive or tool
-	 */
+	//! Check if an item is explosive or a special tool
+	//! \param[in] item Item to check
+	//! \return True if item is explosive or tool
 	static bool IsExplosiveOrTool(IEntity item)
 	{
 		return SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent)) || 
@@ -16,15 +14,13 @@ class CRF_InventoryHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Add inventory item
-	 * @param item Item resource to add
-	 * @param itemAmount Number of items to add
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @param role Role identifier
-	 */
+	//! Add inventory item
+	//! \param[in] item Item resource to add
+	//! \param[in] itemAmount Number of items to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] role Role identifier
 	static void AddInventoryItem(ResourceName item, int itemAmount, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, 
 		CRF_EGearRole role = 0)
@@ -73,13 +69,11 @@ class CRF_InventoryHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Insert an inventory item into appropriate storage
-	 * @param item Item to insert
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @param role Role identifier
-	 */
+	//! Insert an inventory item into appropriate storage
+	//! \param[in] item Item to insert
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] role Role identifier
 	static void InsertInventoryItem(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
 		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0)
 	{
@@ -104,14 +98,12 @@ class CRF_InventoryHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Try to insert item into specific clothing slots
-	 * @param item Item to insert
-	 * @param clothingIDs Clothing slots to try
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @return True if insertion succeeded
-	 */
+	//! Try to insert item into specific clothing slots
+	//! \param[in] item Item to insert
+	//! \param[in] clothingIDs Clothing slots to try
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \return true if insertion succeeded
 	static bool TryInsertIntoSpecificClothing(IEntity item, TIntArray clothingIDs, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{

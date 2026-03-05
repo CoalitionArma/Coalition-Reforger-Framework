@@ -1,7 +1,7 @@
 /*
-* Bandwidth Telemetry Manager
-* Tracks and logs RPC bandwidth usage for performance monitoring
-* Server-side only
+//! Bandwidth Telemetry Manager
+//! Tracks and logs RPC bandwidth usage for performance monitoring
+//! Server-side only
 */
 
 [ComponentEditorProps(category: "CRF Bandwidth Telemetry", description: "Tracks RPC bandwidth usage for performance monitoring")]
@@ -21,6 +21,7 @@ class CRF_RPCTelemetryData
 	float m_fFirstCallTime;
 	float m_fLastCallTime;
 	
+	//------------------------------------------------------------------------------------------------
 	void CRF_RPCTelemetryData(string rpcName, int bytes)
 	{
 		m_sRPCName = rpcName;
@@ -32,6 +33,7 @@ class CRF_RPCTelemetryData
 		m_fLastCallTime = m_fFirstCallTime;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void AddCall(int bytes)
 	{
 		m_iCallCount++;
@@ -45,6 +47,7 @@ class CRF_RPCTelemetryData
 		m_fLastCallTime = System.GetTickCount();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	int GetAverageBytes()
 	{
 		if (m_iCallCount == 0)
@@ -56,6 +59,10 @@ class CRF_RPCTelemetryData
 //------------------------------------------------------------------------------------------------
 class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 {
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ATTRIBUTES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	[Attribute("1", UIWidgets.CheckBox, "Enable bandwidth telemetry logging")]
 	protected bool m_bEnableTelemetry;
 	
@@ -65,24 +72,18 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.CheckBox, "Log individual RPC calls (verbose)")]
 	protected bool m_bLogIndividualCalls;
 	
-	protected static CRF_BandwidthTelemetryManager s_Instance;
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	protected ref map<string, ref CRF_RPCTelemetryData> m_mTelemetryData = new map<string, ref CRF_RPCTelemetryData>();
 	protected float m_fLastSummaryTime;
 	protected int m_iTotalRPCCalls;
 	protected int m_iTotalBytesTransmitted;
 	
-	//------------------------------------------------------------------------------------------------
-	void CRF_BandwidthTelemetryManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		s_Instance = this;
-		m_fLastSummaryTime = System.GetTickCount();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_BandwidthTelemetryManager GetInstance()
-	{
-		return s_Instance;
-	}
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITIALIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -103,6 +104,10 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 		}
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ON FRAME METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -118,37 +123,7 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Log an RPC call with estimated byte size
-	void LogRPC(string rpcName, int estimatedBytes)
-	{
-		// Only run on server
-		if (!Replication.IsServer() || !m_bEnableTelemetry)
-			return;
-		
-		m_iTotalRPCCalls++;
-		m_iTotalBytesTransmitted += estimatedBytes;
-		
-		// Log individual call if verbose mode enabled
-		if (m_bLogIndividualCalls)
-		{
-			Print(string.Format("[CRF_BandwidthTelemetry] RPC: %1 | Size: %2 bytes", rpcName, estimatedBytes), LogLevel.VERBOSE);
-		}
-		
-		// Update telemetry data
-		CRF_RPCTelemetryData data = m_mTelemetryData.Get(rpcName);
-		if (!data)
-		{
-			data = new CRF_RPCTelemetryData(rpcName, estimatedBytes);
-			m_mTelemetryData.Set(rpcName, data);
-		}
-		else
-		{
-			data.AddCall(estimatedBytes);
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Print telemetry summary to console
+	//! Print telemetry summary to console
 	protected void PrintTelemetrySummary()
 	{
 		if (m_mTelemetryData.Count() == 0)
@@ -216,8 +191,42 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 		Print("========================================", LogLevel.NORMAL);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 TELEMETRY METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	// Reset telemetry data (useful for testing)
+	//! Log an RPC call with estimated byte size
+	void LogRPC(string rpcName, int estimatedBytes)
+	{
+		// Only run on server
+		if (!Replication.IsServer() || !m_bEnableTelemetry)
+			return;
+		
+		m_iTotalRPCCalls++;
+		m_iTotalBytesTransmitted += estimatedBytes;
+		
+		// Log individual call if verbose mode enabled
+		if (m_bLogIndividualCalls)
+		{
+			Print(string.Format("[CRF_BandwidthTelemetry] RPC: %1 | Size: %2 bytes", rpcName, estimatedBytes), LogLevel.VERBOSE);
+		}
+		
+		// Update telemetry data
+		CRF_RPCTelemetryData data = m_mTelemetryData.Get(rpcName);
+		if (!data)
+		{
+			data = new CRF_RPCTelemetryData(rpcName, estimatedBytes);
+			m_mTelemetryData.Set(rpcName, data);
+		}
+		else
+		{
+			data.AddCall(estimatedBytes);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Reset telemetry data (useful for testing)
 	void ResetTelemetry()
 	{
 		if (!Replication.IsServer())
@@ -232,36 +241,42 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Get total bytes transmitted
+	//! Get total bytes transmitted
 	int GetTotalBytesTransmitted()
 	{
 		return m_iTotalBytesTransmitted;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Get total RPC calls
+	//! Get total RPC calls
 	int GetTotalRPCCalls()
 	{
 		return m_iTotalRPCCalls;
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ESTIMATE SIZE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	// Estimate size of common data types
 	static int EstimateSize_Int()
 	{
 		return 4; // 4 bytes
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_Float()
 	{
 		return 4; // 4 bytes
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_Bool()
 	{
 		return 1; // 1 byte
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_String(string str)
 	{
 		if (str.IsEmpty())
@@ -269,21 +284,25 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 		return 2 + str.Length(); // Length prefix + characters
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_Vector()
 	{
 		return 12; // 3 floats × 4 bytes
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_RplId()
 	{
 		return 4; // Replication ID
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_ResourceName(ResourceName resource)
 	{
 		return EstimateSize_String(resource);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_StringArray(array<string> arr)
 	{
 		if (!arr)
@@ -297,11 +316,30 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 		return size;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static int EstimateSize_IntArray(array<int> arr)
 	{
 		if (!arr)
 			return 4; // Array length
 			
 		return 4 + (arr.Count() * 4); // Length + data
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_BandwidthTelemetryManager m_sInstance;
+	void CRF_BandwidthTelemetryManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+		m_fLastSummaryTime = System.GetTickCount();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_BandwidthTelemetryManager GetInstance()
+	{
+		return m_sInstance;
 	}
 }

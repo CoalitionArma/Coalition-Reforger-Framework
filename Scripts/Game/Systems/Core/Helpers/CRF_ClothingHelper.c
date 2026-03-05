@@ -1,16 +1,14 @@
 class CRF_ClothingHelper
 {	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Update clothing in a specific slot
-	 * @param clothingArray Clothing options
-	 * @param slotInt Slot to update
-	 * @param role Role identifier
-	 * @param deletePreviousItems Whether to delete previous items
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Update clothing in a specific slot
+	//! \param[in] clothingArray Clothing options
+	//! \param[in] slotInt Slot to update
+	//! \param[in] role Role identifier
+	//! \param[in] deletePreviousItems Whether to delete previous items
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void UpdateClothingSlot(array<ResourceName> clothingArray, int slotInt, CRF_EGearRole role, bool deletePreviousItems, 
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -42,13 +40,11 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Process previous clothing before replacement
-	 * @param previousClothing Previous clothing entity
-	 * @param removedItems Array to store removed items
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Process previous clothing before replacement
+	//! \param[in] previousClothing Previous clothing entity
+	//! \param[out] removedItems Array to store removed items
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void ProcessPreviousClothing(IEntity previousClothing, out array<IEntity> removedItems, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -82,14 +78,12 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Spawn new clothing
-	 * @param clothingResource Clothing resource to spawn
-	 * @param slotInt Slot to place in
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 */
+	//! Spawn new clothing
+	//! \param[in] clothingResource Clothing resource to spawn
+	//! \param[in] slotInt Slot to place in
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
 	static void SpawnClothing(ResourceName clothingResource, int slotInt, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
@@ -104,13 +98,11 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Determine appropriate clothing slots for an item
-	 * @param item Item to filter
-	 * @param role Role identifier
-	 * @param isThrowable Whether item is a throwable
-	 * @return Array of appropriate clothing slot IDs
-	 */
+	//! Determine appropriate clothing slots for an item
+	//! \param[in] item Item to filter
+	//! \param[in] role Role identifier
+	//! \param[in] isThrowable Whether item is a throwable
+	//! \return Array of appropriate clothing slot IDs
 	static TIntArray FilterItemToClothing(IEntity item, CRF_EGearRole role = 0, bool isThrowable = false)
 	{
 		array<int> clothingIDs = {};
@@ -189,16 +181,10 @@ class CRF_ClothingHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Returns true if the item's prefab is listed as a clothing piece in the
-	 *        faction gearscript assigned to the local player's faction and role.
-	 *
-	 * Checks both m_DefaultClothing (faction-wide) and m_RolesToSetCustomSettings
-	 * (role-specific overrides) so custom role uniforms are also covered.
-	 *
-	 * @param item      The item the player is trying to remove.
-	 * @return True if removal should be blocked.
-	 */
+	//! Returns true if the item's prefab is listed as a clothing piece in the faction gearscript assigned to the local player's faction and role.
+	//! Checks both m_DefaultClothing (faction-wide) and m_RolesToSetCustomSettings (role-specific overrides) so custom role uniforms are also covered.
+	//! \param[in] item The item the player is trying to remove.
+	//! \return True if removal should be blocked.
 	static bool IsGearscriptClothingPiece(IEntity item)
 	{
 		if (!item)
