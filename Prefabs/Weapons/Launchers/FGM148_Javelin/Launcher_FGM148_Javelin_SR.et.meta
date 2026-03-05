@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A063F9498A080A26}Prefabs/Weapons/Launchers/FGM148_Javelin/Launcher_FGM148_Javelin_LR.et"
+ Name "{A063F9498A080A26}Prefabs/Weapons/Launchers/FGM148_Javelin/Launcher_FGM148_Javelin_SR.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/DrawLinePrefab.et"
+ Name "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

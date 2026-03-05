@@ -91,7 +91,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   }
  }
  coords 0 0 0
- PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/CRF_PlayerControllerMP.et"
+ PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/!Core/CRF_PlayerController.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
  m_eGME_GlobalAISkill VETERAN
@@ -400,40 +400,40 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
       VisualIdentityArray {
        VisualIdentity "{570CE64C784286B5}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC06CAAD480}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC05A2BFCE8}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CE64C790A3C7D}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC037CCBCD3}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC1C8B17A43}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570EDB838B8AC563}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{588508C19AA51746}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{588508C199AD5966}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
        }
       }
      }

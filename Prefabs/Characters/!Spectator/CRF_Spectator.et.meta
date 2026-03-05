@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"
+ Name "{59886ECB7BBAF5BC}Prefabs/Characters/!Spectator/CRF_Spectator.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
