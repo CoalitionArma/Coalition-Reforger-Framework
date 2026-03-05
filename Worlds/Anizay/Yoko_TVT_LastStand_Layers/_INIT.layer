@@ -36,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "US Marines are surrounded in Gorqan, they are making a last stand hold against MEC."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
-   "BLUFOR Assets: Squad Integrated Javelins, 1x MMG Team, and 1x Sniper Team"\
+   "BLUFOR Assets: Squad Integrated Javelins, 1x MMG Team"\
    ""\
    "OPFOR Composition: Motorized Infantry Company"\
    "OPFOR Assets: 1x BTR70 per PLT, 1x BMP-3 and 1x T72A"\
