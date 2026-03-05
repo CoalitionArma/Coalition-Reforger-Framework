@@ -7,6 +7,10 @@ class CRF_PlayerRplToAuthorityManagerClass : ScriptComponentClass {}
 
 class CRF_PlayerRplToAuthorityManager : ScriptComponent
 {	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	// Manager references
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_MenuManager m_MenuManager;
@@ -21,19 +25,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected SCR_MapMarkerManagerComponent m_MapMarkerManager;
 	
-	protected static CRF_PlayerRplToAuthorityManager m_sInstance;
-	
-	void CRF_PlayerRplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// Returns the instance of the PlayerRplToAuthorityManager
-	static CRF_PlayerRplToAuthorityManager GetInstance()
-	{
-		return m_sInstance;
-	}
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MANAGER INITIALIZATION
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -64,6 +58,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 TELEMETRY
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
 	// Log RPC call to telemetry system (server-side only)
 	//------------------------------------------------------------------------------------------------
@@ -79,266 +77,306 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	// CLIENT-SIDE METHODS - These send RPCs from client to server
-	//------------------------------------------------------------------------------------------------
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 CLIENT REPLICATION ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestInitilizePlayer(int playerId)
 	{
 		Rpc(RpcAsk_RequestInitilizePlayer, playerId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleSideReady(string setReady, string playerName, bool adminForced)
 	{
 		Rpc(RpcAsk_ToggleSideReady, setReady, playerName, adminForced); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
 		Rpc(RpcAsk_ToggleBombPlanted, sitePlanted, togglePlanted); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
 	{
 		Print("[CRF_PlayerRplToAuthorityManager] ToggleRushMCOMPlanted() called on client: " + mcomIdentifier + ", planted: " + togglePlanted + " - sending RPC");
 		Rpc(RpcAsk_ToggleRushMCOMPlanted, mcomIdentifier, togglePlanted); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void StartRushPlantingSound()
 	{
 		Print("[CRF_PlayerRplToAuthorityManager] StartRushPlantingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StartRushPlantingSound); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void StopRushPlantingSound()
 	{
 		Rpc(RpcAsk_StopRushPlantingSound); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void StartRushDefuseSound()
 	{
 		Rpc(RpcAsk_StartRushDefuseSound); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void StopRushDefuseSound()
 	{
 		Rpc(RpcAsk_StopRushDefuseSound); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void StopRushBombTickingSound()
 	{
 		Print("[CRF_PlayerRplToAuthorityManager] StopRushBombTickingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StopRushBombTickingSound); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestAdvanceGamemodeState(bool overriden)
 	{
 		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestMissionSave(string saveName)
 	{
 		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestMissionSave, saveName);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestAdvanceSlottingPhase()
 	{
 		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestAdvanceSlottingPhase); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotPlayerID(int slotId, int playerId)
 	{
 		Rpc(RpcAsk_UpdateSlotPlayerID, slotId, playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedState(int slotId, bool input)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotLockedState, slotId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateGroupLockedState(RplId groupRplId, bool input)
 	{
 		// Group locking is not part of slot batching, use direct RPC
 		Rpc(RpcAsk_UpdateGroupLockedState, groupRplId, input); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotDeathState(int slotId, bool input)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotDeathState, slotId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotRole(int slotId, CRF_EGearRole role)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotRole, slotId, role);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotGroup, slotId, groupRplId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotCharacter(int slotId, RplId charId)
 	{
 		// Direct manager call if BatchUpdateSlot unavailable
 		Rpc(RpcAsk_UpdateSlotCharacter, slotId, charId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ReportBug(string data, int playerID)
 	{
 		Rpc(RpcAsk_ReportBug, data, playerID);
 	}
 	
-	// Admin messaging functions
+	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data, int playerID)
 	{
 		Rpc(RpcAsk_SendAdminMessage, data, playerID); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ReportSettingsViolation(int playerId, string violationType)
 	{
 		Rpc(RpcAsk_ReportSettingsViolation, playerId, violationType);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if (SCR_Global.IsAdmin() || m_PermissionManager.IsModerator())
 			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, adminID, logAction); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		Rpc(RpcAsk_CloseAdminTicket, ticketID, adminID, logAction); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		Rpc(RpcAsk_AssignAdminTicket, ticketID, adminID, logAction); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void GetOpenTickets(int playerID)
 	{
 		Rpc(RpcAsk_GetOpenTickets, playerID); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void GetTicketMessages(int playerID, int ticketID)
 	{
 		Rpc(RpcAsk_GetTicketMessages, playerID, ticketID); 
 	}
 	
-	// Player management functions
+	//------------------------------------------------------------------------------------------------
 	void RespawnPlayer(int playerId, RplId SpawnRplID)
 	{
 		Rpc(RpcAsk_RespawnPlayer, playerId, SpawnRplID); 
 	}	
 	
-	// VON channel management
+	//------------------------------------------------------------------------------------------------
 	void RequestToJoinChannel(int channel, int requestId)
 	{
 		Rpc(RpcAsk_RequestToJoinChannel, channel, requestId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void CheckVONRegister(int playerId)
 	{
 		Rpc(RpcAsk_CheckVONRegister, playerId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void CreateChannel(int playerId)
 	{
 		Rpc(RpcAsk_CreateChannel, playerId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void JoinChannel(int playerId, int channel)
 	{
 		Rpc(RpcAsk_JoinChannel, playerId, channel); 
 	}
 	
-	// Group and spawn management
+	//------------------------------------------------------------------------------------------------
 	void SpawnOnGroup(int playerId, vector spawnLocation, int groupID, bool logAction)
 	{
 		Rpc(RpcAsk_SpawnOnGroup, playerId, spawnLocation, groupID, logAction); 
 	}
 	
-	// Vehicle depot management
+	//------------------------------------------------------------------------------------------------
 	void RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
 		Rpc(RpcAsk_RequestVehicleDepotInteraction, playerId, vehicleIndex, depotRplId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RespawnFaction(FactionKey faction, bool logAction)
 	{
 		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
 	}
 	
-	// Equipment management
+	//------------------------------------------------------------------------------------------------
 	void ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
 		Rpc(RpcAsk_ResetGear, playerId, prefab, logAction); 
 	}
 	
-	// Equipment management
+	//------------------------------------------------------------------------------------------------
 	void UpdateGearSet(string faction, ResourceName path)
 	{
 		Rpc(RpcAsk_UpdateGearSet, faction, path); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void AddItem(int playerId, string prefab, bool logAction)
 	{
 		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RemoveItem(int playerId, RplId entityID, bool logAction)
 	{
 		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction); 
 	}
 	
-	// Admin functions
+	//------------------------------------------------------------------------------------------------
 	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
 		Rpc(RpcAsk_TeleportPlayers, playerId1, playerId2, logAction); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void SendHint(string data, int playerId = -1, string factionKey = "")
 	{
 		Rpc(RpcAsk_SendHint, data, playerId, factionKey); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void Heal(int playerId, bool logAction, bool isVehicle = false)
 	{
 		Rpc(RpcAsk_Heal, playerId, logAction, isVehicle); 
 	}
-		
+	
+	//------------------------------------------------------------------------------------------------
 	void LogAdminAction(string data, int playerId, bool sendToPlayer) 
 	{
 		Rpc(RpcAsk_LogAdminAction, data, playerId, sendToPlayer); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateTimer(int delta) 
 	{
 		Rpc(RpcAsk_UpdateTimer, delta); 
 	}	
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateTicket(string action, FactionKey faction, int delta) 
 	{
 		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void MiniArsenalRequestNewItem(int playerId, string resourceName, int slotId)
 	{
 		Rpc(RpcAsk_MiniArsenalRequestNewItem, playerId, resourceName, slotId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void MiniArsenalRequestNewWeapon(int playerId, string weapon, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
 	{
 		Rpc(RpcAsk_MiniArsenalRequestNewWeapon, playerId, weapon, attachments, magazines, magazineCounts, isPistol);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
 	{
 		// Convert to indices before sending for bandwidth optimization
@@ -356,70 +394,124 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_SightArsenalRequestNewSight_Optimized, playerId, sightIndex, sightType);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void TogglePlayerListening(int playerId, bool input)
 	{
 		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleWaveRespawn()
 	{
 		Rpc(RpcAsk_ToggleWaveRespawn);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ToggleRespawn()
 	{
 		Rpc(RpcAsk_ToggleRespawn);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void SetRespawnTime(int seconds)
 	{
 		Rpc(RpcAsk_SetRespawnTime, seconds);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void CleanUpBodies()
 	{
 		Rpc(RpcAsk_CleanUpBodies);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void AddItemToTruck(RplId truckId, ResourceName resource, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
 	{
 		Rpc(RpcAsk_AddItemToTruck, truckId, resource, amount, supplyItems, supplyCounts, supplyArsenalId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSupplyArsneal(RplId supplyArsnealId)
 	{
 		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void CreateCache(RplId truckId, RplId playerId)
 	{
 		Rpc(RpcAsk_CreateCache, truckId, playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestVehicleSupplies(RplId truckId)
 	{
 		Rpc(RpcAsk_RequestVehicleSupplies, truckId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
 	{
 		Rpc(RpcAsk_RearmVehicle, truckId, supplyItems, supplyCounts, rearmTruckId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void MoveSpecCamToSlot(int slotID, int playerID)
 	{
 		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
-	//------------------------------------------------------------------------------------------------
+	void SharerMapMarkerGlobal(int markerUID, int playerId)
+	{
+		Faction playerFaction = SCR_FactionManager.SGetLocalPlayerFaction();
+		if (!playerFaction)
+			return;
+		
+		Rpc(RpcAsk_ShareMapMarkerGlobal, markerUID, playerFaction.GetFactionKey(), playerId);
+	}
 	
+	//------------------------------------------------------------------------------------------------
+	void ShareMapMarkers()
+	{
+		if (!m_MapMarkerManager)
+			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		
+		if (!m_MapMarkerManager)
+			return;
+		
+		array<int> markerUIDs = {};
+		foreach (SCR_MapMarkerBase marker: m_MapMarkerManager.GetStaticMarkers())
+		{
+			if (marker.m_bIsShared)
+				markerUIDs.Insert(marker.GetMarkerID());
+		}
+		
+		Rpc(RpcAsk_ShareMapMarkers,markerUIDs, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RequestGlobalMarkerRefresh()
+	{
+		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RequestSupplyUpdate(RplId supplyArsenalId)
+	{
+		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 REPLICATION METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestInitilizePlayer(int playerId)
 	{
@@ -430,6 +522,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_Gamemode.QueuePlayerInitialization(playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleSideReady(string setReady, string playerName, bool adminForced)
 	{
@@ -442,6 +535,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SafestartManager.ToggleSideReady(setReady, playerName, adminForced);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
@@ -453,6 +547,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager)).ToggleBombPlanted(sitePlanted, togglePlanted);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
 	{
@@ -467,6 +562,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StartRushPlantingSound()
 	{
@@ -479,6 +575,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			rushGamemode.PlayPlantingSound();
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StopRushPlantingSound()
 	{
@@ -492,6 +589,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StartRushDefuseSound()
 	{
@@ -505,6 +603,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StopRushDefuseSound()
 	{
@@ -518,6 +617,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StopRushBombTickingSound()
 	{
@@ -537,6 +637,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden)
 	{
@@ -546,6 +647,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_Gamemode.AdvanceGamemodeState(overriden);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestAdvanceSlottingPhase()
 	{
@@ -555,6 +657,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_Gamemode.AdvanceSlottingState();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestMissionSave(string saveName)
 	{
@@ -573,6 +676,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotPlayerID(int slotId, int playerId)
 	{
@@ -582,6 +686,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotPlayerID(slotId, playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotLockedState(int slotId, bool input)
 	{
@@ -593,6 +698,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotLockedState(slotId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_UpdateGroupLockedState(RplId groupRplId, bool input)
 	{
@@ -610,6 +716,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			group.SetPrivate(input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotDeathState(int slotId, bool input)
 	{
@@ -621,6 +728,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotDeathState(slotId, input); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotRole(int slotId, CRF_EGearRole role)
 	{
@@ -632,6 +740,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotRole(slotId, role); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
@@ -643,6 +752,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotGroup(slotId, groupRplId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotCharacter(int slotId, RplId charId)
 	{
@@ -654,6 +764,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager.UpdateSlotCharacter(slotId, charId); 
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SendAdminMessage(string data, int playerID)
 	{
@@ -671,6 +782,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
 	}	
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReportBug(string data, int playerID)
 	{
@@ -725,6 +837,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		restContext.POST(null, repo, payload);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
@@ -741,6 +854,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
@@ -755,6 +869,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, true);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
@@ -766,18 +881,21 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_AdminMenuManager.AssignAdminTicket(ticketID, adminID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_GetOpenTickets(int playerID)
 	{
 		m_RplBroadcastManager.GetOpenTickets(playerID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_GetTicketMessages(int playerID, int ticketID)
 	{
 		m_RplBroadcastManager.GetTicketMessages(playerID, ticketID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnPlayer(int playerId, RplId SpawnRplID)
 	{
@@ -792,6 +910,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RespawnManager.RespawnPlayer(playerId, overrideLocation, -1, SpawnRplID);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestToJoinChannel(int channel, int requestId)
 	{
@@ -840,6 +959,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CheckVONRegister(int playerId)
 	{
@@ -853,6 +973,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CreateChannel(int playerId)
 	{
@@ -865,6 +986,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		int channelIndex = m_MenuManager.CreateChannel(uniqueChannelName, playerId);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_JoinChannel(int playerId, int channel)
 	{
@@ -874,6 +996,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_MenuManager.AddPlayerToChannel(playerId, channel, false);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SpawnOnGroup(int playerId, vector spawnLocation[4], int groupID, bool logAction)
 	{
@@ -897,6 +1020,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
@@ -929,7 +1053,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		depotComponent.SpawnVehicle(playerId, vehicleIndex);
 	}
 
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
 	{
@@ -947,6 +1071,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
@@ -995,6 +1120,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
 	{
@@ -1040,6 +1166,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void UpdateGearSetQueue(array<IEntity> entities, int lastIndex = 0)
 	{
 		if (lastIndex >= entities.Count())
@@ -1067,7 +1194,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex + 1);
 	}
 	
-
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AddItem(int playerId, string prefab, bool logAction)
 	{
@@ -1118,6 +1245,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RemoveItem(int playerId, RplId entityID, bool logAction)
 	{
@@ -1151,6 +1279,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
@@ -1162,6 +1291,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.TeleportPlayers(playerId1, playerId2, logAction);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SendHint(string data, int playerId, string factionKey)
 	{
@@ -1174,6 +1304,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.SendHint(data, playerId, factionKey);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_Heal(int playerId, bool logAction, bool isVehicle)
 	{
@@ -1208,6 +1339,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
@@ -1220,6 +1352,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReportSettingsViolation(int playerId, string violationType)
 	{
@@ -1247,6 +1380,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Print(message, LogLevel.WARNING);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateTimer(int delta)
 	{
@@ -1265,6 +1399,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateTicket(string action, FactionKey faction, int delta)
 	{
@@ -1283,6 +1418,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)
 	{
@@ -1349,13 +1485,15 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, playerId, player);
 	}
 	
-	void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	//------------------------------------------------------------------------------------------------
+	protected void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
 	{
 		invManager.TryReplaceItem(newItem, invComponent, slotId);
 		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, playerId, player);
 	}
 	
-	void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	//------------------------------------------------------------------------------------------------
+	protected void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
 	{
 		for (int i = 0; i < items.Count(); i++)
 		{
@@ -1388,8 +1526,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_PlayerRplToOwnerManager.GetInstance().InitializeRadioFromServer();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
+	protected void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
 	{
 		// Telemetry: 2 ints + string + 2 ResourceName arrays + int array + bool
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
@@ -1476,7 +1615,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, storageMan, storageComp, newWeapon, attachments, magazines, magazineCounts, role);
 	}
 	
-	void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
+	//------------------------------------------------------------------------------------------------
+	protected void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
 	array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, CRF_EGearRole role)
 	{
 		EntitySpawnParams params = new EntitySpawnParams();
@@ -1703,6 +1843,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
     
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
 	{
@@ -1714,8 +1855,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleWaveRespawn()
+	protected void RpcAsk_ToggleWaveRespawn()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_ToggleWaveRespawn", 0);
@@ -1723,8 +1865,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RespawnManager.GetInstance().ToggleRespawnWave();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleRespawn()
+	protected void RpcAsk_ToggleRespawn()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_ToggleRespawn", 0);
@@ -1732,8 +1875,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RespawnManager.GetInstance().ToggleRespawn();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SetRespawnTime(int seconds)
+	protected void RpcAsk_SetRespawnTime(int seconds)
 	{
 		// Telemetry: int
 		LogTelemetry("RpcAsk_SetRespawnTime", CRF_BandwidthTelemetryManager.EstimateSize_Int());
@@ -1741,8 +1885,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CleanUpBodies()
+	protected void RpcAsk_CleanUpBodies()
 	{
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_CleanUpBodies", 0);
@@ -1750,8 +1895,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_GarbageManager.GetInstance().CleanUpBodies();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
+	protected void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
 	{
 		// Telemetry: 3 RplIds + ResourceName + int + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 3;
@@ -1795,8 +1941,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_UpdateSupplyArsneal(RplId supplyArsenalId)
+	protected void RpcAsk_UpdateSupplyArsneal(RplId supplyArsenalId)
 	{
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_UpdateSupplyArsneal", CRF_BandwidthTelemetryManager.EstimateSize_RplId());
@@ -1807,8 +1954,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		supplyComp.UpdateCurrentSupply();
 	}	
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
+	protected void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
 	{
 		// Get slot data from the slotting manager
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
@@ -1827,8 +1975,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.MoveSpecCamToSlot(slotPos, playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CreateCache(RplId truckId, RplId playerId)
+	protected void RpcAsk_CreateCache(RplId truckId, RplId playerId)
 	{
 		// Telemetry: 2 RplIds
 		LogTelemetry("RpcAsk_CreateCache", CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2);
@@ -1860,7 +2009,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(CreateCacheDelay, 100, false, cache, items);
 	}
 	
-	vector GetSpawn(IEntity player)
+	//------------------------------------------------------------------------------------------------
+	protected vector GetSpawn(IEntity player)
 	{
 		if (!player)
 			return "0 0 0";
@@ -1877,7 +2027,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		return behindPos;
 	}
 	
-	void CreateCacheDelay(IEntity cache, array<IEntity> items)
+	//------------------------------------------------------------------------------------------------
+	protected void CreateCacheDelay(IEntity cache, array<IEntity> items)
 	{
 		SCR_InventoryStorageManagerComponent invComp = SCR_InventoryStorageManagerComponent.Cast(cache.FindComponent(SCR_InventoryStorageManagerComponent));
 		
@@ -1891,8 +2042,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestVehicleSupplies(RplId truckId)
+	protected void RpcAsk_RequestVehicleSupplies(RplId truckId)
 	{
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_RequestVehicleSupplies", CRF_BandwidthTelemetryManager.EstimateSize_RplId());
@@ -1905,8 +2057,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
+	protected void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
 	{
 		// Telemetry: 2 RplIds + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2;
@@ -1945,8 +2098,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
+	protected void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
 	{
 		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
 		IEntity polyzone;
@@ -2041,17 +2195,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
-	void SharerMapMarkerGlobal(int markerUID, int playerId)
-	{
-		Faction playerFaction = SCR_FactionManager.SGetLocalPlayerFaction();
-		if (!playerFaction)
-			return;
-		
-		Rpc(RpcAsk_ShareMapMarkerGlobal, markerUID, playerFaction.GetFactionKey(), playerId);
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
+	protected void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
 	{
 		array<int> playerIds = {};
 		PlayerManager pm = GetGame().GetPlayerManager();
@@ -2094,26 +2240,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
-	void ShareMapMarkers()
-	{
-		if (!m_MapMarkerManager)
-			m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
-		
-		if (!m_MapMarkerManager)
-			return;
-		
-		array<int> markerUIDs = {};
-		foreach (SCR_MapMarkerBase marker: m_MapMarkerManager.GetStaticMarkers())
-		{
-			if (marker.m_bIsShared)
-				markerUIDs.Insert(marker.GetMarkerID());
-		}
-		
-		Rpc(RpcAsk_ShareMapMarkers,markerUIDs, SCR_PlayerController.GetLocalPlayerId());
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
+	protected void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
 	{
 		PlayerManager pm = GetGame().GetPlayerManager();
 		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
@@ -2164,13 +2293,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
-	void RequestGlobalMarkerRefresh()
-	{
-		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
+	protected void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
 	{
 		int bytes = m_TelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_RequestGlobalMarkerRefresh", bytes);
@@ -2212,13 +2337,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		rplToOwnerManager.RefreshGlobalMarkers(globalMarkers);
 	}
 	
-	void RequestSupplyUpdate(RplId supplyArsenalId)
-	{
-		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
-	}
-	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
+	protected void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
 	{
 		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
 		
@@ -2226,5 +2347,22 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!supplyComp)
 			return;
 		supplyComp.UpdateCurrentSupply();
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_PlayerRplToAuthorityManager m_sInstance;
+	void CRF_PlayerRplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_PlayerRplToAuthorityManager GetInstance()
+	{
+		return m_sInstance;
 	}
 };
