@@ -64,7 +64,7 @@ GenericEntity : "{962EB289CF844AA2}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
          m_fResourceValueCurrent 0
          m_fResourceValueMax 400
          m_bEnableResourceGain 1
-         m_fResourceGain 0.3
+         m_fResourceGain 0.6
         }
        }
       }
@@ -79,11 +79,12 @@ GenericEntity : "{962EB289CF844AA2}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
          m_fResourceValueCurrent 0
          m_fResourceValueMax 400
          m_bEnableResourceGain 1
-         m_fResourceGain 0.3
+         m_fResourceGain 0.6
         }
        }
       }
      }
+     coords -1.26 -0.001 0.099
     }
    }
   }
