@@ -2,12 +2,11 @@
 //! CRF_ReplicationHelper
 //! Utility class providing safe wrappers for common replication operations
 //! These helpers prevent null pointer dereferences and enforce best practices
-//------------------------------------------------------------------------------------------------
 class CRF_ReplicationHelper
 {
 	//------------------------------------------------------------------------------------------------
 	//! Safely get RplId from an entity
-	//! \param entity The entity to get RplId from
+	//! \param[in] entity The entity to get RplId from
 	//! \param[out] outRplId The resulting RplId (only valid if function returns true)
 	//! \return True if entity has RplComponent and RplId was retrieved, false otherwise
 	static bool GetRplId(IEntity entity, out RplId outRplId)
@@ -25,7 +24,7 @@ class CRF_ReplicationHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Safely get entity from RplId
-	//! \param rplId The RplId to look up
+	//! \param[in] rplId The RplId to look up
 	//! \return The entity if found and valid, null otherwise
 	static IEntity GetEntityFromRplId(RplId rplId)
 	{
@@ -41,7 +40,7 @@ class CRF_ReplicationHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Safely get RplComponent from entity
-	//! \param entity The entity to get RplComponent from
+	//! \param[in] entity The entity to get RplComponent from
 	//! \return The RplComponent if found, null otherwise
 	static RplComponent GetRplComponent(IEntity entity)
 	{
@@ -53,7 +52,7 @@ class CRF_ReplicationHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Check if entity is authority (server-side)
-	//! \param entity The entity to check
+	//! \param[in] entity The entity to check
 	//! \return True if entity is authority, false if proxy or invalid
 	static bool IsAuthority(IEntity entity)
 	{
@@ -66,7 +65,7 @@ class CRF_ReplicationHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Check if entity is proxy (client-side)
-	//! \param entity The entity to check  
+	//! \param[in] entity The entity to check  
 	//! \return True if entity is proxy, false if authority or invalid
 	static bool IsProxy(IEntity entity)
 	{
@@ -93,7 +92,7 @@ class CRF_ReplicationHelper
 	//------------------------------------------------------------------------------------------------
 	//! Get multiple entities from array of RplIds
 	//! Skips invalid or non-existent entities
-	//! \param rplIds Array of RplIds to look up
+	//! \param[in] rplIds Array of RplIds to look up
 	//! \param[out] outEntities Array to fill with found entities
 	//! \return Number of entities successfully retrieved
 	static int GetEntitiesFromRplIds(notnull array<RplId> rplIds, out notnull array<IEntity> outEntities)
@@ -113,7 +112,7 @@ class CRF_ReplicationHelper
 	//------------------------------------------------------------------------------------------------
 	//! Get multiple RplIds from array of entities
 	//! Skips entities without RplComponent
-	//! \param entities Array of entities to get RplIds from
+	//! \param[in] entities Array of entities to get RplIds from
 	//! \param[out] outRplIds Array to fill with found RplIds
 	//! \return Number of RplIds successfully retrieved
 	static int GetRplIdsFromEntities(notnull array<IEntity> entities, out notnull array<RplId> outRplIds)
@@ -133,8 +132,8 @@ class CRF_ReplicationHelper
 	//------------------------------------------------------------------------------------------------
 	//! Validate that an entity has proper replication setup
 	//! Useful for debugging and prefab validation
-	//! \param entity The entity to validate
-	//! \param printWarnings Whether to print warnings for validation failures
+	//! \param[in] entity The entity to validate
+	//! \param[in] printWarnings Whether to print warnings for validation failures
 	//! \return True if entity has valid RplComponent, false otherwise
 	static bool ValidateReplicationSetup(IEntity entity, bool printWarnings = true)
 	{

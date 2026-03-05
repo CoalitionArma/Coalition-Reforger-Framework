@@ -7,9 +7,7 @@ class CRF_PlayerMenuManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Opens appropriate menu based on current gamemode state
-	 */
+	//! Opens appropriate menu based on current gamemode state
 	void OpenCurrentStateMenu()
 	{	
 		// Initialize references first
@@ -51,9 +49,7 @@ class CRF_PlayerMenuManager : ScriptComponent
 	}	
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Opens the slotting menu for player assignment
-	 */
+	//! Opens the slotting menu for player assignment
 	void OpenSlottingMenu()
 	{
 		// Check if appropriate menu is already open

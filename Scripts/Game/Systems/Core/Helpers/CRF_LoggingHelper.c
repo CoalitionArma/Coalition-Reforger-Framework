@@ -1,12 +1,10 @@
 class CRF_LoggingHelper
 {
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Log item error
-	 * @param item Item that failed to insert
-	 * @param entity Entity that the item was being added to
-	 * @param itemType type of item to display (default is "ITEM")
-	 */
+	//! Log item error
+	//! \param[in] item Item that failed to insert
+	//! \param[in] entity Entity that the item was being added to
+	//! \param[in] itemType type of item to display (default is "ITEM")
 	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM")
 	{
 		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
