@@ -1,0 +1,362 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{68C5252932560F2B}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
+   m_iMCOMTimer 15
+   m_iMCOMsPerZone 1
+   m_bEnableDynamicRespawns 1
+   m_aZoneRespawnConfigs {
+    CRF_Rush_ZoneRespawnConfig "{68C525291305E6AA}" {
+     m_sZoneName "Zone1"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{68C612F273C23287}" {
+       m_sMarkerEntityName "Blu_Z1Spawn"
+      }
+     }
+    }
+    CRF_Rush_ZoneRespawnConfig "{68C52533C878287A}" {
+     m_sZoneName "Zone2"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{68C612F58E28A0C8}" {
+       m_sMarkerEntityName "Blu_Z2Spawn"
+      }
+     }
+    }
+    CRF_Rush_ZoneRespawnConfig "{68C612F59B24EAA5}" {
+     m_sZoneName "Zone3"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{68C612F583194421}" {
+       m_sMarkerEntityName "Blu_Z3Spawn"
+      }
+      CRF_Rush_RespawnPointEntry "{68C6129C835E9C40}" {
+       m_sMarkerEntityName "Opf_Z3Spawn"
+       m_eFaction "OPFOR"
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear Fog"
+     m_iStartingHour 5
+     m_iStartingMinutes 15
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_bDateOverride 1
+   m_iMonth 6
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 120
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 25
+ m_bAllowEspionage 0
+ m_bLockUnusedSlots 1
+ m_bSafestartInstantlyEnabled 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 2
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "The horde has come to destroy the technology of the ancients."\
+   ""\
+   "(Backcapping is for losers)"\
+   ""\
+   "New Melee Mechanics:"\
+   "- One Handed Weapons + Shields"\
+   "- Two Handed Weapons"\
+   "- Light Attack (Left Click) "\
+   "- Heavy Attack (Middle Click)"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{68C6E70BF0CD1FA0}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68C6E70BF0CD12B8}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{68C6E70BF0CD11F6}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{68C6E70BF0CD172A}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{F445E0C2E196905C}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeBLU.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{5B952CF7ECE971B4}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeOPF.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "68C52506B74C53AB" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 9929.586 0.53 5208.146
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 9645.705 21.567 5303.881
+ Points {
+  ShapePoint "{68C612F475A15521}" {
+   Position -461.252 2.854 -82.694
+  }
+  ShapePoint "{68C612F4777CE75B}" {
+   Position -431.15 -20.499 141.478
+  }
+  ShapePoint "{68C612F4762F8F67}" {
+   Position 646.244 -37.627 37.182
+  }
+  ShapePoint "{68C612F46941ABC7}" {
+   Position 626.729 -43.245 -218.909
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 9763.572 6.811 5247.613
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 9780.692 5.847 5241.013
+ Points {
+  ShapePoint "{68C612AB6EF33E2D}" {
+   Position -79.513 8.21 -33.854
+  }
+  ShapePoint "{68C612AB604E48C5}" {
+   Position -78.613 11.245 33.773
+  }
+  ShapePoint "{68C612AB60CE1C04}" {
+   Position 33.923 -3.184 33.941
+  }
+  ShapePoint "{68C612AB63FEB173}" {
+   Position 17.876 -3.924 -33.17
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 9928.63 0.345 5209.598
+ Points {
+  ShapePoint "{68C612AB54E0BCC2}" {
+   Position -44.907 -1.855 -33.925
+  }
+  ShapePoint "{68C612AB57BFDCC4}" {
+   Position -24.604 -4.791 54.647
+  }
+  ShapePoint "{68C612AB5686EE9B}" {
+   Position 54.847 -7.047 32.226
+  }
+  ShapePoint "{68C612AB490B6C34}" {
+   Position 35.435 -4.826 -54.316
+  }
+ }
+}
