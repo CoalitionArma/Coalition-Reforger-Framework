@@ -8,6 +8,12 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
+    CRF_ForwardDeployManager "{68C4424EC250E62B}" {
+    }
+    CRF_GameTimerManager "{68C34EF052F2A86D}" {
+    }
+    CRF_GarbageManager "{68C34EF0274E751C}" {
+    }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
     }
     CRF_GroupLeaderMarkerManager "{686A3E86B81A4662}" {
@@ -18,6 +24,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
     CRF_MissionValidatorManager "{686A3E855DC73533}" {
     }
+    CRF_PermissionManager "{68C34EF02CB41BD0}" {
+    }
     CRF_RespawnManager "{652A331316B363A2}" {
     }
     CRF_RplBroadcastManager "{652A33130A1A6D5C}" {
@@ -25,6 +33,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_SafestartManager "{652A33131ACE2DC1}" {
     }
     CRF_SlottingManager "{6535438600F2A9C0}" {
+    }
+    CRF_VehicleGearscriptManager "{68C32757EC663DF4}" {
     }
    }
   }
@@ -386,40 +396,40 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
       VisualIdentityArray {
        VisualIdentity "{570CE64C784286B5}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC06CAAD480}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC05A2BFCE8}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CE64C790A3C7D}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC037CCBCD3}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570CFDC1C8B17A43}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{570EDB838B8AC563}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{588508C19AA51746}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
        VisualIdentity "{588508C199AD5966}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Body/CharacterBasebody_Invisible.et"
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Core/Spectator_Body/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Core/Spectator_Body/CharacterBasebody_Invisible.et"
        }
       }
      }
