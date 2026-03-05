@@ -22,6 +22,11 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 6.0;
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MAX = 65.0;
 	
+	// Maximum distance the group icon can be from the group leader
+	// If the centroid calculation results in a position further than this from the leader,
+	// the icon will be clamped to this distance to prevent it from appearing too far away
+	protected static const float MAX_CENTROID_DISTANCE_FROM_LEADER = 150.0;
+	
 	// Fade-out when the camera is very close to the group — individual character icons
 	// are clearly visible at short range, so the group symbol becomes redundant noise.
 	protected static const float GROUP_ICON_FADE_START = 20.0; 
@@ -322,6 +327,24 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 			return false;
 		
 		centroid = centroid * (1.0 / aliveCount);
+		
+		// Clamp the centroid to maximum distance from the group leader
+		// This prevents the icon from appearing too far away when members are spread out
+		IEntity leaderEntity = m_Group.GetLeaderEntity();
+		if (leaderEntity)
+		{
+			vector leaderPos = leaderEntity.GetOrigin();
+			vector centroidToLeader = centroid - leaderPos;
+			float distanceToLeader = centroidToLeader.Length();
+			
+			// If centroid is too far from leader, clamp it to the maximum distance
+			if (distanceToLeader > MAX_CENTROID_DISTANCE_FROM_LEADER)
+			{
+				vector direction = centroidToLeader.Normalized();
+				centroid = leaderPos + (direction * MAX_CENTROID_DISTANCE_FROM_LEADER);
+			}
+		}
+		
 		return true;
 	}
 	
