@@ -457,7 +457,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					if (weapons.Count() == 0)
 						continue;
 					// Pre-allocate based on weapons and typical magazine counts
-					int estimatedMagazines = weapons.Count()//! 2; // Estimate 2 magazine types per weapon
+					int estimatedMagazines = weapons.Count() * 2; // Estimate 2 magazine types per weapon
 					magazinesToAdd.Reserve(estimatedMagazines);
 					magazineCounts.Reserve(estimatedMagazines);
 					foreach (CRF_Weapon_Class weapon: weapons)

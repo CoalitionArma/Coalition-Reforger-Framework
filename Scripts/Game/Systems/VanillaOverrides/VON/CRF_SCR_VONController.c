@@ -1,7 +1,7 @@
 modded class SCR_VONController
 {
 	SCR_FactionManager m_FactionManager;
-	\
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{

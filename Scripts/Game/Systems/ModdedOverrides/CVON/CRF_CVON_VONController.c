@@ -157,7 +157,7 @@ modded class SCR_VONController
 		
 		if (senderBuilding != receiverBuilding)
 		{
-			loweredDecibles = CVON_DB_ATTEN_BUILDING//! 2;
+			loweredDecibles = CVON_DB_ATTEN_BUILDING * 2;
 			return true;
 		}
 		float top;
