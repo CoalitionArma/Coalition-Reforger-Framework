@@ -22,6 +22,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
       CRF_Rush_RespawnPointEntry "{68C612F58E28A0C8}" {
        m_sMarkerEntityName "Blu_Z2Spawn"
       }
+      CRF_Rush_RespawnPointEntry "{68CC283C7387D936}" {
+       m_sMarkerEntityName "Opf_Z2Spawn"
+       m_eFaction "OPFOR"
+      }
      }
     }
     CRF_Rush_ZoneRespawnConfig "{68C612F59B24EAA5}" {
@@ -58,9 +62,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iTimeToRespawn 120
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 25
- m_bAllowEspionage 0
  m_bLockUnusedSlots 1
- m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 2
  m_aMissionDescriptors {
