@@ -219,30 +219,6 @@ class CRF_ClothingHelper
 				if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
 					return true;
 			}
-	
-			// --- Check custom role clothing ---
-			// Determine the local player's role directly from their slot data.
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-			if (!slottingManager)
-				return false;
-	
-			CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(localPlayerId);
-			if (!slotData)
-				return false;
-	
-			CRF_EGearRole playerRole = slotData.GetSlotRole();
-	
-			foreach (CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
-			{
-				if (customGear.m_Role != playerRole)
-					continue;
-	
-				foreach (CRF_Clothing clothing : customGear.m_Clothing)
-				{
-					if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
-						return true;
-				}
-			}
 		}
 
 		return false;
