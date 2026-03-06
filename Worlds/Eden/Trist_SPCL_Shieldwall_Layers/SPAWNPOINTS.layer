@@ -8,7 +8,10 @@ $grp GameEntity {
  Blu_Z3Spawn {
   coords 9337.536 1.26 5378.479
  }
- opf_Z2Spawn {
+ Opf_Z3Spawn {
   coords 9632.021 22.281 5257.522
+ }
+ Opf_Z2Spawn {
+  coords 9750.52 11.566 5321.34
  }
 }
