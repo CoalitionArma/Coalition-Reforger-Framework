@@ -510,8 +510,40 @@ class CRF_SlottingManager : ScriptComponent
 		if (respawnComponent)
 		{
 			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(playerCharacter);
-			if (!respawnComponent.RequestSpawn(spawnData))
-				Print(string.Format("[CRF_SlottingManager] WARNING: RequestSpawn failed for player %1, entity %2", playerId, playerCharacter), LogLevel.WARNING);
+			
+			// Verify the possess spawn handler exists before attempting RequestSpawn
+			// This prevents "GameMode does not support this method of spawning" errors
+			// during early initialization when handler components may not be fully registered
+			bool canUseRequestSpawn = false;
+			
+			// Try to get the request component for PossessSpawnData type
+			array<GenericComponent> components = {};
+			respawnComponent.FindComponents(SCR_SpawnRequestComponent, components);
+			
+			foreach (GenericComponent comp : components)
+			{
+				SCR_SpawnRequestComponent requestComp = SCR_SpawnRequestComponent.Cast(comp);
+				if (requestComp && requestComp.GetDataType() == SCR_PossessSpawnData && requestComp.GetHandlerComponent())
+				{
+					canUseRequestSpawn = true;
+					break;
+				}
+			}
+			
+			if (canUseRequestSpawn)
+			{
+				if (!respawnComponent.RequestSpawn(spawnData))
+					Print(string.Format("[CRF_SlottingManager] WARNING: RequestSpawn failed for player %1, entity %2", playerId, playerCharacter), LogLevel.WARNING);
+			}
+			else
+			{
+				// Handler not ready yet - use direct assignment as fallback
+				Print(string.Format("[CRF_SlottingManager] INFO: SCR_PossessSpawnHandlerComponent not ready for player %1 — using direct assignment", playerId), LogLevel.NORMAL);
+				SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+				
+				if (playerController)
+					playerController.SetInitialMainEntity(playerCharacter);
+			}
 		}
 		else
 		{
