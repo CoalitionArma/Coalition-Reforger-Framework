@@ -1,13 +1,14 @@
 /*
-* Logging component for COALITION games
-* Component overrides base game mode so it always runs
-*
-* Note that write files are formatted as CSV
-* for parsing by an external program
-* which splits strings via commas
-*
-* Server only
+//! Logging component for COALITION games
+//! Component overrides base game mode so it always runs
+//!
+//! Note that write files are formatted as CSV
+//! for parsing by an external program
+//! which splits strings via commas
+//!
+//! Server only
 */
+
 [ComponentEditorProps(category: "CRF Logging Component", description: "Handles logging for server events")]
 class CRF_LoggingManagerClass: SCR_BaseGameModeComponentClass
 {
@@ -85,7 +86,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private static CRF_LoggingManager s_Instance;
 	
 	//------------------------------------------------------------------------------------------------
-	// Constructor
+	//! Constructor
 	void CRF_LoggingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		if (!s_Instance)
@@ -105,21 +106,21 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Singleton instance getter
+	//! Singleton instance getter
 	static CRF_LoggingManager GetInstance()
 	{
 		return s_Instance;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Return the file handle for external use
+	//! Return the file handle for external use
 	FileHandle GetLogFileHandle()
 	{
 		return m_LogFileHandle;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Component initialization
+	//! Component initialization
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -152,7 +153,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Initialize logging system
+	//! Initialize logging system
 	private void InitializeLogging()
 	{
 		// Avoids NPEs on player disconnect
@@ -187,7 +188,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Handle player connection events
+	//! Handle player connection events
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
@@ -209,7 +210,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Handle player disconnection events
+	//! Handle player disconnection events
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
@@ -229,7 +230,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Handle gamemode state changes
+	//! Handle gamemode state changes
 	void OnGamemodeStateChanged()
 	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
@@ -265,7 +266,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Handle game mode end
+	//! Handle game mode end
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
@@ -282,7 +283,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Method called from safestart to annotate game start
+	//! Method called from safestart to annotate game start
 	void GameStarted()
 	{
 		if (RplSession.Mode() != RplMode.Dedicated)
@@ -298,7 +299,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method to update player count
+	//! Helper method to update player count
 	private void UpdatePlayerCount()
 	{
 		if (!m_PlayerManager)
@@ -386,7 +387,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method to log mission events with consistent format
+	//! Helper method to log mission events with consistent format
 	private void LogMissionEvent(string eventType)
 	{
 		if (!m_LogFileHandle)
@@ -425,7 +426,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Logs the ORBAT (Order of Battle) for the mission
+	//! Logs the ORBAT (Order of Battle) for the mission
 	private void LogORBAT()
 	{
 		if (!m_LogFileHandle)
@@ -547,9 +548,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Track a weapon used on a specific player
+	//! Track a weapon used on a specific player
 	void TrackWeaponUsed(int victimId, string weaponName, int damageType = 0)
 	{
+		// Only track for real players — AI all share key "0" which causes cross-contamination
 		if (victimId <= 0 || weaponName.IsEmpty())
 			return;
 		
@@ -565,6 +567,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
+	// NOTE: m_sKillerName, m_sVictimName etc. are instance-level fields shared across calls.
+	// On a dedicated server events are processed on the main thread sequentially, so this is
+	// safe in practice, but a future refactor should make these local variables to be explicit.
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)
@@ -688,10 +693,20 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 	}
 	
-	// Range
+	// Range — measure from the killer's character position.
+	// GetKillerEntity() may return the projectile entity (bullet/rocket), not the shooter,
+	// which causes bogus 10 000 m+ distances when the projectile is at world origin on impact.
+	// Use the killer's controlled character when we have a valid player ID, falling back to
+	// killerEntity only for AI / vehicle kills.
 	if (!killerEntity)
 		return;
-	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerEntity.GetOrigin());
+	IEntity killerCharEntity = null;
+	if (killerId > 0)
+		killerCharEntity = m_PlayerManager.GetPlayerControlledEntity(killerId);
+	if (!killerCharEntity)
+		killerCharEntity = killerEntity; // AI or vehicle — killerEntity is already the agent
+	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerCharEntity.GetOrigin());
+	int m_iRangeMeters = m_fRange.ToString().ToInt(); // round to whole metres; avoids locale decimal-separator breaking CSV
 	
 	// Time
 	m_fTotalTime = m_World.GetWorldTime();
@@ -708,7 +723,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Log to file
 		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + 
 		                         m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + 
-		                         m_fRange + SEPARATOR + m_sTime);
+		                         m_iRangeMeters + SEPARATOR + m_sTime);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown
@@ -727,8 +742,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Called when player takes significant damage - can be used to track weapons that cause damage
-	// This needs to be called from damage handling events in the game
+	//! Called when player takes significant damage - can be used to track weapons that cause damage
+	//! This needs to be called from damage handling events in the game
 	void PlayerTookDamage(int victimId, IEntity killerEntity, int damageType)
 	{
 		if (victimId <= 0)
@@ -792,7 +807,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Public method to log the ORBAT at any time
+	//! Public method to log the ORBAT at any time
 	void LogCurrentORBAT()
 	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
@@ -808,11 +823,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// FACTION WINNER LOGGING SYSTEM
 	//------------------------------------------------------------------------------------------------
 	
-	/**
-	 * Set the winning faction for this mission
-	 * @param factionKey The faction key that won (BLUFOR, OPFOR, INDFOR, CIV)
-	 * @param method The method used to determine the winner (manual, automatic, timeout, etc.)
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Set the winning faction for this mission
+	//! \param[in] factionKey The faction key that won (BLUFOR, OPFOR, INDFOR, CIV)
+	//! \param[in] method The method used to determine the winner (manual, automatic, timeout, etc.)
 	void SetWinningFaction(FactionKey factionKey, string method = "manual")
 	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
@@ -845,36 +859,32 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		Print(string.Format("[CRF_LoggingManager] Winner set: %1 (method: %2)", factionKey, method), LogLevel.NORMAL);
 	}
 	
-	/**
-	 * Get the currently determined winning faction
-	 * @return FactionKey of the winning faction, empty string if not determined
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Get the currently determined winning faction
+	//! \return FactionKey of the winning faction, empty string if not determined
 	FactionKey GetWinningFaction()
 	{
 		return m_sWinningFaction;
 	}
 	
-	/**
-	 * Check if a winner has been determined
-	 * @return true if winner has been set, false otherwise
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Check if a winner has been determined
+	//! \return true if winner has been set, false otherwise
 	bool IsWinnerDetermined()
 	{
 		return m_bWinnerDetermined;
 	}
 	
-	/**
-	 * Get the method used to determine the winner
-	 * @return string describing how the winner was determined
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Get the method used to determine the winner
+	//! \return string describing how the winner was determined
 	string GetWinnerMethod()
 	{
 		return m_sWinnerMethod;
 	}
 	
-	/**
-	 * Private method to write winner information to log file
-	 */
+	//------------------------------------------------------------------------------------------------
+	//! Private method to write winner information to log file
 	protected void LogWinner()
 	{
 		if (!m_LogFileHandle)

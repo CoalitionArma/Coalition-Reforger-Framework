@@ -19,6 +19,9 @@ CRF_SpectatorCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.
    AllowRagdollEffectorsFromDamage 0
    m_fDrowningDuration 1000000000
   }
+  FactionAffiliationComponent "{633B2131A597C43C}" {
+   "faction affiliation" "SPEC"
+  }
   MeshObject "{520EA1D2F659C81F}" {
    Materials {
     MaterialAssignClass "{65AB3C7F849E4B47}" {
@@ -145,8 +148,8 @@ CRF_SpectatorCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
    Identity Identity "{5584CBC6363C648B}" {
     VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Head "{2FC2A1CE68435471}Prefabs/Characters/!Core/Spectator/Body/Head_Invisible.et"
-     Body "{E25DCEC549E17067}Prefabs/Characters/!Core/Spectator/Body/CharacterBasebody_Invisible.et"
+     Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+     Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
     }
     SoundIdentity SoundIdentity "{56E6D945D8F79290}" {
      VoiceID 0
@@ -169,9 +172,6 @@ CRF_SpectatorCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.
      Buoyancy 0
     }
    }
-  }
-  FactionAffiliationComponent "{633B2131A597C43C}" {
-   "faction affiliation" "SPEC"
   }
  }
  Flags 0 0x3

@@ -1,8 +1,8 @@
  /*
- * CRF_SCR_CharacterDamageManagerComponent
- * Tracks damage events for weapon logging to fix issues with incorrect weapons being reported.
- * Also broadcasts cause-of-death damage type to all clients when a player dies.
- */
+//! CRF_SCR_CharacterDamageManagerComponent
+//! Tracks damage events for weapon logging to fix issues with incorrect weapons being reported.
+//! Also broadcasts cause-of-death damage type to all clients when a player dies.
+*/
 modded class SCR_CharacterDamageManagerComponent
 {
 	protected ref BaseDamageEffect m_eFatalDamageEffect;

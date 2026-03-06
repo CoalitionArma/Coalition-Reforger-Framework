@@ -1,6 +1,6 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(name: "Gear Script Config Generator", description: "Generates a list of all .conf gear configs recursively", shortcut: "", wbModules: { "ScriptEditor", "ResourceManager" })]
-/* 
+/*
 	This Workbench plugin automatically scans your "Configs/GearScripts/Standard/*" folder for all ".conf"
 	gear configuration files and generates a JSON index mapping each gearset name to its config file path for use in the admin menu.  
 
@@ -17,7 +17,8 @@ class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 		GenerateIndex();
 	}
 
-	// Search for config files
+	//------------------------------------------------------------------------------------------------
+	//! Search for config files
 	void GenerateIndex()
 	{
 		m_config = new ConfigStruct();
@@ -42,7 +43,8 @@ class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 		SaveConfig();
 	}
 
-	// Write config list to json file
+	//------------------------------------------------------------------------------------------------
+	//! Write config list to json file
 	static void SaveConfig()
 	{
 		SCR_JsonSaveContext ctx = new SCR_JsonSaveContext();
@@ -52,7 +54,8 @@ class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 		Print("Saved to Configs/GearScripts/GearScriptsConfigList.json");
 	}
 	
-	// This method is executed every time some new resource is registered
+	//------------------------------------------------------------------------------------------------
+	//! This method is executed every time some new resource is registered
 	override void OnRegisterResource(string absFileName, BaseContainer metaFile)
 	{
 		if (!absFileName.Contains("Configs") && !absFileName.Contains("GearScripts") && !absFileName.Contains("Standard"))

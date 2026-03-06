@@ -30,9 +30,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/*!
-	 * Initilizes players if they have a valid spectator entity
-	 */
+	//! Initilizes players if they have a valid spectator entity
 	void InitilizeSpecCamera()
 	{
 		vector cameraPos[4] = CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath;
@@ -53,8 +51,6 @@ class CRF_PlayerCameraManager : ScriptComponent
 		// Spawn or reposition camera
 		if (!m_eCamera)
 			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
-		else
-			m_eCamera.SetWorldTransform(cameraPos);
 		
 		// Level camera horizon
 		vector mat = m_eCamera.GetAngles();
@@ -68,9 +64,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-	 * Updates stored camera position for persistence between sessions
-	 */
+	//! Updates stored camera position for persistence between sessions
 	void UpdateStoredCameraPos()
 	{
 		if (m_eCamera)
@@ -206,14 +200,12 @@ class CRF_PlayerCameraManager : ScriptComponent
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-	 * Third-person orbit camera: orbits around the entity using mouse look input.
-	 * Rotation only occurs while RMB (ManualCameraRotate) is held.
-	 * ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
-	 * Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
-	 * Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
-	 * Radius is clamped 1.5–20 meters.
-	 */
+	//! Third-person orbit camera: orbits around the entity using mouse look input.
+	//! Rotation only occurs while RMB (ManualCameraRotate) is held.
+	//! ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
+	//! Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
+	//! Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
+	//! Radius is clamped 1.5–20 meters.
 	protected void FrameUpdateEntityTPP(float timeSlice)
 	{
 		if (!m_eCameraEntity || !m_eCamera)

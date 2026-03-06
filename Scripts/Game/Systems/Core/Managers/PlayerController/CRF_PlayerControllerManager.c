@@ -9,6 +9,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
+	// Time it takes for players to Init
+	static const int PLAYER_INITILIZATION_TIME = 250;
+	
 	// UI and Display
 	string m_sHintText = "Type Here";      // Text displayed for hints to player
 	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
@@ -26,10 +29,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initializes the player controller component
-	 * Sets up input listeners and schedules initial setup calls
-	 */
+	//! Initializes the player controller component
+	//! Sets up input listeners and schedules initial setup calls
 	void InitilizePlayerControllerComp()
 	{
 		// Skip initialization on dedicated servers or in editor
@@ -51,21 +52,19 @@ class CRF_PlayerControllerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initializes the player client
-	 * Cleans up previous camera, closes menus, and sets up player-specific settings
-	 * @param playerCharacter - The spectator entity the server created and set to this player
-	 */
+	//! Initializes the player client
+	//! Cleans up previous camera, closes menus, and sets up player-specific settings
+	//! \param[in] playerCharacter - The spectator entity the server created and set to this player
 	void InitilizePlayerClient(RplId playerCharID)
 	{
 		// Get player character
 		IEntity playerCharacter = CRF_EntityHelper.GetCharacterFromRplId(playerCharID);
 		
 		// if we cant get the player character or it's null, wait another full initilization time before attempting again
-		if (!playerCharacter || !SCR_ChimeraCharacter.Cast(playerCharacter))
+		if (!playerCharacter || !m_CameraManager || !m_PlayerRplToAuthorityManager || !SCR_ChimeraCharacter.Cast(playerCharacter))
 		{
 			// Schedule another verification attempt
-			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerCharID);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, PLAYER_INITILIZATION_TIME, false, playerCharID);
 			return;
 		};
 		
@@ -88,10 +87,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initilizes players if they have a valid spectator entity
-	 * @param playerCharacter - The spectator entity the server created and set to this player
-	 */
+	//! Initilizes players if they have a valid spectator entity
+	//! \param[in] playerCharacter - The spectator entity the server created and set to this player
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
 		m_CameraManager.InitilizeSpecCamera();
@@ -112,25 +109,15 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Initilizes players if they have a valid slotted character
-	 */
+	//! Initilizes players if they have a valid slotted character
 	void InitilizeLocalCharacter()
 	{
 		// Clean up previous camera if exists
 		if (m_CameraManager.m_eCamera)
 			delete m_CameraManager.m_eCamera;
 		
-		// Notify data collector about player spawn for movement tracking and stats
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		IEntity localPlayerEntity = SCR_PlayerController.GetLocalMainEntity();
-		
-		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-		if (dataCollector && localPlayerEntity)
-			dataCollector.NotifyPlayerSpawned(localPlayerId, localPlayerEntity);
-		
 		// Originally added for data collector
-		m_Gamemode.GetOnPlayerSpawned().Invoke(localPlayerId, localPlayerEntity);
+		m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
 		
 		// Reset Stored Pos
 		GetGame().GetCallqueue().CallLater(m_CameraManager.UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);

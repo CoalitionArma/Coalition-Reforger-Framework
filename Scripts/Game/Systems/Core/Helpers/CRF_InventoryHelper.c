@@ -1,30 +1,46 @@
 class CRF_InventoryHelper
 {
+	const static ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Check if an item is explosive or a special tool
-	 * @param item Item to check
-	 * @return True if item is explosive or tool
-	 */
-	static bool IsExplosiveOrTool(IEntity item)
+	//! Check if an item is a explosive
+	//! \param[in] item Item to check
+	//! \return True if item is explosive or tool
+	static bool IsExplosive(IEntity item)
 	{
 		return SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent)) || 
 			   SCR_ExplosiveChargeComponent.Cast(item.FindComponent(SCR_ExplosiveChargeComponent)) ||
-			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent)) ||
-			   SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
+			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if an item is a special tool
+	//! \param[in] item Item to check
+	//! \return True if item is explosive or tool
+	static bool IsTool(IEntity item)
+	{
+		return SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
 			   SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Add inventory item
-	 * @param item Item resource to add
-	 * @param itemAmount Number of items to add
-	 * @param spawnParams Spawn parameters
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @param role Role identifier
-	 */
+	//! Check if an entity is a throwable weapon
+	//! \param[in] entity Entity to check
+	//! \return True if entity is a throwable weapon
+	static bool IsThrowable(IEntity entity)
+	{
+		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
+		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	//! Add inventory item
+	//! \param[in] item Item resource to add
+	//! \param[in] itemAmount Number of items to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] role Role identifier
 	static void AddInventoryItem(ResourceName item, int itemAmount, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, 
 		CRF_EGearRole role = 0)
@@ -39,7 +55,7 @@ class CRF_InventoryHelper
 			if (!resourceSpawned)
 				continue;
 
-			bool isThrowable = CRF_WeaponHelper.IsThrowableWeapon(resourceSpawned);
+			bool isThrowable = CRF_InventoryHelper.IsThrowable(resourceSpawned);
 			
 			// Special handling for throwables
 			if (isThrowable)
@@ -73,20 +89,18 @@ class CRF_InventoryHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Insert an inventory item into appropriate storage
-	 * @param item Item to insert
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @param role Role identifier
-	 */
+	//! Insert an inventory item into appropriate storage
+	//! \param[in] item Item to insert
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] role Role identifier
 	static void InsertInventoryItem(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
 		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0)
 	{
 		if (!item)
 			return;
 
-		TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(item, role, CRF_WeaponHelper.IsThrowableWeapon(item));
+		TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(item, role, IsThrowable(item));
 
 		// Try inserting into appropriate clothing first
 		bool inserted = TryInsertIntoSpecificClothing(item, clothingIDs, inventory, inventoryManager);
@@ -104,14 +118,12 @@ class CRF_InventoryHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Try to insert item into specific clothing slots
-	 * @param item Item to insert
-	 * @param clothingIDs Clothing slots to try
-	 * @param inventory Inventory component
-	 * @param inventoryManager Inventory manager component
-	 * @return True if insertion succeeded
-	 */
+	//! Try to insert item into specific clothing slots
+	//! \param[in] item Item to insert
+	//! \param[in] clothingIDs Clothing slots to try
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \return true if insertion succeeded
 	static bool TryInsertIntoSpecificClothing(IEntity item, TIntArray clothingIDs, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{

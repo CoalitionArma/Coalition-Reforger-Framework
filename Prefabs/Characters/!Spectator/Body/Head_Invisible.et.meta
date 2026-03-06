@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2FC2A1CE68435471}Prefabs/Characters/Core/Body/Head_Invisible.et"
+ Name "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

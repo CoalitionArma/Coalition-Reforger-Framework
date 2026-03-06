@@ -1,5 +1,5 @@
 /**
- * UI component that displays a floating NATO group icon above a group's average position
+ * UI component that displays a floating NATO group icon above the group leader's position
  * in spectator mode. Shows the group's NATO symbol shape and name label.
  */
 class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
@@ -21,6 +21,13 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	// Group display settings
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MIN = 6.0;
 	protected static const float GROUP_ICON_HEIGHT_OFFSET_MAX = 65.0;
+	
+	/*
+	// Maximum distance the group icon can be from the group's median position (core group)
+	// If the centroid calculation results in a position further than this from the median,
+	// the icon will be clamped to this distance to prevent it from appearing too far away
+	protected static const float MAX_CENTROID_DISTANCE_FROM_MEDIAN = 150.0;
+	*/
 	
 	// Fade-out when the camera is very close to the group — individual character icons
 	// are clearly visible at short range, so the group symbol becomes redundant noise.
@@ -147,47 +154,83 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Override SetEntity - groups don't track a single entity
+	// Override SetEntity - groups track the leader entity
 	//------------------------------------------------------------------------------------------------
 	override void SetEntity(IEntity entity, string boneName)
 	{
-		// Groups don't track a single entity directly
-		// World position is calculated from group member centroids
+		// Icon position is calculated from the group leader each frame in Update()
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Override Update to calculate group centroid position
+	// Override Update to position icon at group leader
 	//------------------------------------------------------------------------------------------------
 	override void Update()
 	{
 		if (!m_Group)
-			return;
-		
-		// Calculate group centroid from alive members
-		vector centroid;
-		int aliveCount;
-		if (!CalculateGroupCentroid(centroid, aliveCount))
 		{
-			// No alive members, hide
+			Print("[CRF_SpectatorLabelIconGroup] No group assigned!", LogLevel.WARNING);
+			return;
+		}
+		
+		// Get the group leader's player ID
+		int leaderID = m_Group.GetLeaderID();
+		if (leaderID <= 0)
+		{
+			// No valid leader ID, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 has no valid leader ID", m_Group.GetCustomName()), LogLevel.WARNING);
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
 		}
 		
-		// Calculate distance from camera to the raw centroid (before height offset)
+		// Get the leader entity from the player manager
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+		{
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		IEntity leaderEntity = playerManager.GetPlayerControlledEntity(leaderID);
+		if (!leaderEntity)
+		{
+			// No leader entity, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader (ID: %2) has no entity", m_Group.GetCustomName(), leaderID), LogLevel.WARNING);
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		// Check if leader is alive - hide icon if leader is dead
+		SCR_CharacterControllerComponent controller = SCR_CharacterControllerComponent.Cast(leaderEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (controller && controller.IsDead())
+		{
+			// Leader is dead, hide
+			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader is dead", m_Group.GetCustomName()), LogLevel.NORMAL);
+			if (m_wRoot)
+				m_wRoot.SetOpacity(0.0);
+			return;
+		}
+		
+		// Get leader position
+		vector leaderPosition = leaderEntity.GetOrigin();
+		Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader at %2", m_Group.GetCustomName(), leaderPosition.ToString()), LogLevel.VERBOSE);
+		
+		// Calculate distance from camera to the leader position (before height offset)
 		vector cameraPosition = GetGame().GetCameraManager().CurrentCamera().GetOrigin();
-		m_fDistanceToIcon = vector.Distance(cameraPosition, centroid);
+		m_fDistanceToIcon = vector.Distance(cameraPosition, leaderPosition);
 		
 		// Scale the height offset with distance so the icon floats higher when zoomed out
 		float distanceFraction = Math.Clamp(m_fDistanceToIcon / m_fMaxIconDistance, 0.0, 1.0);
 		float heightOffset = GROUP_ICON_HEIGHT_OFFSET_MIN + (GROUP_ICON_HEIGHT_OFFSET_MAX - GROUP_ICON_HEIGHT_OFFSET_MIN) * distanceFraction;
 		
-		// Cache the raw centroid for line drawing before applying the icon height offset
-		m_vRawCentroid = centroid;
+		// Cache the raw position for line drawing before applying the icon height offset
+		m_vRawCentroid = leaderPosition;
 		
-		// Raise the icon above the centroid by the distance-scaled offset
-		centroid[1] = centroid[1] + heightOffset;
-		m_vWorldPosition = centroid;
+		// Raise the icon above the leader by the distance-scaled offset
+		leaderPosition[1] = leaderPosition[1] + heightOffset;
+		m_vWorldPosition = leaderPosition;
 		
 		// Project 3D world position to 2D screen coordinates
 		vector screenPosition = GetGame().GetWorkspace().ProjWorldToScreen(m_vWorldPosition, GetGame().GetWorld());
@@ -230,11 +273,13 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		}
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	// Calculate the centroid position from alive group members.
 	// Uses the slot map to find player-controlled characters, because human players are not
 	// returned by SCR_AIGroup.GetAgents() (which only yields AI agents).
 	// Also falls back to GetAgents() for any pure-AI members.
+	// NOTE: THIS SHIT IS NOT PERFORMANT. THE BEST CASE SCENARIO WOULD BE TO SET IT TO THE LEADER EACH FRAME WHICH IS WHAT WE'RE DOING NOW.
 	//------------------------------------------------------------------------------------------------
 	protected bool CalculateGroupCentroid(out vector centroid, out int aliveCount)
 	{
@@ -322,8 +367,139 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 			return false;
 		
 		centroid = centroid * (1.0 / aliveCount);
+		
+		// Clamp outliers: if any individual member pulls the centroid too far from the main group,
+		// limit the centroid's deviation. This prevents the icon from appearing in dead space when
+		// the leader or a single member is separated from the bulk of the squad.
+		//
+		// Strategy: Calculate the median position to find where the "core group" actually is,
+		// then clamp the centroid to stay within MAX_CENTROID_DISTANCE_FROM_LEADER of that core.
+		
+		vector medianPosition = CalculateMedianPosition(groupRplId);
+		if (medianPosition != vector.Zero)
+		{
+			vector centroidToMedian = centroid - medianPosition;
+			float distanceToMedian = centroidToMedian.Length();
+			
+			// If centroid is too far from the median (core group), clamp it
+			if (distanceToMedian > MAX_CENTROID_DISTANCE_FROM_MEDIAN)
+			{
+				vector direction = centroidToMedian.Normalized();
+				centroid = medianPosition + (direction * MAX_CENTROID_DISTANCE_FROM_MEDIAN);
+			}
+		}
+		
 		return true;
 	}
+	*/
+	
+	/*
+	//------------------------------------------------------------------------------------------------
+	// Calculate the median position of the group to identify where the "core" of the group is.
+	// This is more robust than using just the leader's position, especially when the leader
+	// is separated, dead, or respawning far from the main group.
+	//------------------------------------------------------------------------------------------------
+	protected vector CalculateMedianPosition(RplId groupRplId)
+	{
+		array<vector> positions = {};
+		
+		// Collect all alive member positions
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+		{
+			map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+			if (slotMap)
+			{
+				foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+				{
+					if (!slotData || slotData.GetSlotCurrentGroup() != groupRplId)
+						continue;
+					
+					RplId charRplId = slotData.GetSlotCurrentCharacter();
+					if (charRplId == RplId.Invalid())
+						continue;
+					
+					RplComponent charRpl = RplComponent.Cast(Replication.FindItem(charRplId));
+					if (!charRpl)
+						continue;
+					
+					IEntity entity = charRpl.GetEntity();
+					if (!entity)
+						continue;
+					
+					SCR_CharacterControllerComponent controller = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
+					if (controller && controller.IsDead())
+						continue;
+					
+					positions.Insert(entity.GetOrigin());
+				}
+			}
+		}
+		
+		// Add AI members
+		array<AIAgent> agents = {};
+		m_Group.GetAgents(agents);
+		
+		foreach (AIAgent agent : agents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+			
+			ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+			if (!character)
+				continue;
+			
+			CharacterControllerComponent controller = character.GetCharacterController();
+			if (!controller || controller.GetLifeState() == ECharacterLifeState.DEAD)
+				continue;
+			
+			// Avoid duplicates
+			bool alreadyCounted = false;
+			RplComponent entityRpl = RplComponent.Cast(entity.FindComponent(RplComponent));
+			if (entityRpl && slottingManager)
+			{
+				CRF_SlotDataContainer slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
+				if (slotData && slotData.GetSlotCurrentGroup() == groupRplId)
+					alreadyCounted = true;
+			}
+			
+			if (!alreadyCounted)
+				positions.Insert(entity.GetOrigin());
+		}
+		
+		if (positions.IsEmpty())
+			return vector.Zero;
+		
+		// Calculate median by taking the middle value when sorted by distance from origin
+		// For simplicity, we'll approximate by finding the position closest to the average
+		// (a true median would require sorting in 3D space, which is complex)
+		
+		// Calculate the average first
+		vector sum = vector.Zero;
+		foreach (vector pos : positions)
+		{
+			sum = sum + pos;
+		}
+		vector average = sum * (1.0 / positions.Count());
+		
+		// Find the position closest to the average (this approximates the median/center of mass)
+		vector closestToAverage = positions[0];
+		float minDistance = vector.Distance(average, closestToAverage);
+		
+		foreach (vector pos : positions)
+		{
+			float distance = vector.Distance(average, pos);
+			if (distance < minDistance)
+			{
+				minDistance = distance;
+				closestToAverage = pos;
+			}
+		}
+		
+		return closestToAverage;
+	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	// Update the label - refresh group name (may change during play)

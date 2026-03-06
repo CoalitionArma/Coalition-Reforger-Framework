@@ -11,6 +11,7 @@ class CRF_SlotUpdateBatch
 	RplId m_RplIdValue;
 	bool m_bBoolValue;
 	
+	//------------------------------------------------------------------------------------------------
 	void CRF_SlotUpdateBatch(int slotId, CRF_ESlotUpdateField fieldType)
 	{
 		m_iSlotId = slotId;
@@ -51,7 +52,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Initialize references to other manager systems
+	//! Initialize references to other manager systems
 	protected void InitializeManagerReferences()
 	{
 		// Cache all manager references to avoid repeated GetInstance() calls
@@ -67,7 +68,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Log RPC call to telemetry system (server-side only)
+	//! Log RPC call to telemetry system (server-side only)
 	protected void LogTelemetry(string rpcName, int estimatedBytes)
 	{
 		if (!Replication.IsServer())
@@ -86,7 +87,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Queue a slot update for batching
+	//! Queue a slot update for batching
 	protected void QueueSlotUpdate(CRF_SlotUpdateBatch batch)
 	{
 		if (!Replication.IsServer())
@@ -115,7 +116,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Flush all pending slot updates
+	//! Flush all pending slot updates
 	protected void FlushSlotUpdates()
 	{
 		if (!Replication.IsServer())
@@ -162,7 +163,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Internal methods that actually send the RPCs (called by flush or immediate mode)
 	protected void SendSlotPlayerIdUpdate(int slotId, int playerId)
 	{
 		LogTelemetry("UpdateSlotPlayerIdDelta", 8);
@@ -229,7 +229,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Enable/disable batching (useful for debugging or critical updates)
+	//! Enable/disable batching (useful for debugging or critical updates)
 	void SetBatchingEnabled(bool enabled)
 	{
 		m_bBatchingEnabled = enabled;
@@ -774,8 +774,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// GunGame: Update player stats
-	//------------------------------------------------------------------------------------------------
+	//! GunGame: Update player stats
 	void UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
 	{
 		// Telemetry: 4 ints = 16 bytes
@@ -789,8 +788,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// FactionManager: Update SR radio channels
-	//------------------------------------------------------------------------------------------------
+	//! FactionManager: Update SR radio channels
 	void UpdateFactionChannelsSR(string factionId, array<string> channels)
 	{
 		// Telemetry: factionId string + array of strings
@@ -806,8 +804,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// FactionManager: Update LR radio channels
-	//------------------------------------------------------------------------------------------------
+	//! FactionManager: Update LR radio channels
 	void UpdateFactionChannelsLR(string factionId, array<string> channels)
 	{
 		// Telemetry: factionId string + array of strings
@@ -823,8 +820,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// GearscriptManager: Add vehicle supply cost
-	//------------------------------------------------------------------------------------------------
+	//! GearscriptManager: Add vehicle supply cost
 	void AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
 	{
 		// Telemetry: ResourceName string + int
@@ -847,7 +843,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot player ID only (~8 bytes)
+	//! SlottingManager: Update slot player ID only (~8 bytes)
 	void UpdateSlotPlayerIdDelta(int slotId, int playerId)
 	{
 		if (!Replication.IsServer())
@@ -866,7 +862,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot character only (~8 bytes)
+	//! SlottingManager: Update slot character only (~8 bytes)
 	void UpdateSlotCharacterDelta(int slotId, RplId characterId)
 	{
 		if (!Replication.IsServer())
@@ -885,7 +881,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot group only (~8 bytes)
+	//! SlottingManager: Update slot group only (~8 bytes)
 	void UpdateSlotGroupDelta(int slotId, RplId groupId)
 	{
 		if (!Replication.IsServer())
@@ -904,7 +900,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot locked state only (~5 bytes)
+	//! SlottingManager: Update slot locked state only (~5 bytes)
 	void UpdateSlotLockedDelta(int slotId, bool isLocked)
 	{
 		if (!Replication.IsServer())
@@ -923,7 +919,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot locked state only (~5 bytes)
+	//! SlottingManager: Update slot locked state only (~5 bytes)
 	void UpdateSlotDeathDelta(int slotId, bool isDead)
 	{
 		if (!Replication.IsServer())
@@ -943,7 +939,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update slot role (~8 bytes)
+	//! SlottingManager: Update slot role (~8 bytes)
 	void UpdateSlotRoleDelta(int slotId, CRF_EGearRole role)
 	{
 		if (!Replication.IsServer())
@@ -967,7 +963,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method to get chat component
+	//! Helper method to get chat component
 	protected SCR_ChatComponent GetLocalChatComponent()
 	{
 		PlayerController playerController = GetGame().GetPlayerController();
@@ -978,14 +974,14 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Check if current player matches target player ID
+	//! Check if current player matches target player ID
 	protected bool IsLocalPlayer(int playerId)
 	{
 		return SCR_PlayerController.GetLocalPlayerId() == playerId;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Find MCOM entity at specified position
+	//! Find MCOM entity at specified position
 	protected IEntity FindMCOMEntityAtPosition(vector position)
 	{
 		Print("[CRF_RplBroadcastManager] FindMCOMEntityAtPosition: Looking for MCOM at " + position);
@@ -1075,7 +1071,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Remove slot from all clients
+	//! SlottingManager: Remove slot from all clients
 	void RemoveSlot(int slotId)
 	{
 		if (!Replication.IsServer())
@@ -1089,7 +1085,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
+	//! SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
 	void NotifySlottingPhaseChanged()
 	{
 		if (!Replication.IsServer())

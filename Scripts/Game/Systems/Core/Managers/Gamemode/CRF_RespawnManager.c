@@ -114,10 +114,8 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if respawns are allowed based on time cutoff setting
-	* @return True if respawns are allowed, false if past the cutoff time
-	*/
+	//! Check if respawns are allowed based on time cutoff setting
+	//! \return True if respawns are allowed, false if past the cutoff time
 	bool IsRespawnTimeAllowed()
 	{
 		// No cutoff configured (0 = never disable)
@@ -175,13 +173,11 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Subtract tickets silently without triggering replication
-	* @param faction Faction to subtract tickets from
-	* @param amount Number of tickets to subtract
-	* @param force Force subtraction even during safestart
-	* @return True if tickets were actually subtracted
-	*/
+	//! Subtract tickets silently without triggering replication
+	//! \param[in] faction Faction to subtract tickets from
+	//! \param[in] amount Number of tickets to subtract
+	//! \param[in] force Force subtraction even during safestart
+	//! \return True if tickets were actually subtracted
 	protected bool SubtractTicketSilent(FactionKey faction, int amount, bool force = false)
 	{
 		// Don't subtract tickets during safestart
@@ -215,13 +211,11 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Add tickets silently without triggering replication
-	* @param faction Faction to add tickets to
-	* @param amount Number of tickets to add
-	* @param force Force addition even during safestart
-	* @return True if tickets were actually added
-	*/
+	//! Add tickets silently without triggering replication
+	//! \param[in] faction Faction to add tickets to
+	//! \param[in] amount Number of tickets to add
+	//! \param[in] force Force addition even during safestart
+	//! \return True if tickets were actually added
 	protected bool AddTicketSilent(FactionKey faction, int amount, bool force = false)
 	{
 		// Don't add tickets during safestart
@@ -247,10 +241,8 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Batch subtract tickets for multiple operations to minimize replication calls
-	* @param ticketChanges Array of ticket changes {faction, amount, force}
-	*/
+	//! Batch subtract tickets for multiple operations to minimize replication calls
+	//! \param[in] ticketChanges Array of ticket changes {faction, amount, force}
 	void BatchSubtractTickets(array<ref array<string>> ticketChanges)
 	{
 		bool anyChanged = false;
@@ -275,10 +267,8 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Batch add tickets for multiple operations to minimize replication calls
-	* @param ticketChanges Array of ticket changes {faction, amount, force}
-	*/
+	//! Batch add tickets for multiple operations to minimize replication calls
+	//! \param[in] ticketChanges Array of ticket changes {faction, amount, force}
 	void BatchAddTickets(array<ref array<string>> ticketChanges)
 	{
 		bool anyChanged = false;
@@ -754,6 +744,7 @@ class CRF_RespawnManager : ScriptComponent
 		RespawnSideVehicles(faction);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RespawnAllVehicles()
 	{
 		//Makes my life 20x easier
@@ -792,6 +783,7 @@ class CRF_RespawnManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void RespawnSideVehicles(FactionKey faction)
 	{
 		//Vehicle respawn logic (without additional ticket operations)
@@ -901,18 +893,14 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Getter for the current wave timer
-	 */
+	//! Getter for the current wave timer
 	int GetCurrentWaveTimer()
 	{
 		return m_iRespawnWaveCurrentTime;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Helper for converting Spawnpoint RplID to Entity
-	 */
+	//! Helper for converting Spawnpoint RplID to Entity
 	IEntity GetSpawnEntityFromRplID(RplId rplID)
 	{
 		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplID));
@@ -923,9 +911,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Helper for converting Spawnpoint Entity to RplID
-	 */
+	//! Helper for converting Spawnpoint Entity to RplID
 	RplId GetSpawnRplIDFromEntity(IEntity point)
 	{
 		RplComponent rplComp = RplComponent.Cast(point.FindComponent(RplComponent));

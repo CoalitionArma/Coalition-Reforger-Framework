@@ -1,0 +1,34 @@
+Turret : "{EDF8022210EE108D}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/TIGR_Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Materials {
+    MaterialAssignClass "{689D7E4177031919}" {
+     SourceMaterial "Turret"
+     AssignedMaterial "{31EB9BA2932689A9}Assets/Vehicles/Wheeled/GAZ_TIGR_233014/Data/Turret_Gunner/TIGR_Turret_Gunner.emat"
+    }
+   }
+  }
+  RigidBody "{51ACD09C423F175F}" {
+   Kinematic 1
+  }
+  SCR_TurretControllerComponent "{51ACD09C61C183E4}" {
+   ApplyControls 1
+   HasMoveableBase 0
+  }
+  TF_WeaponRecoilComponent "{655123EE18905F3D}" {
+   m_fImpulse 100
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+   }
+   WeaponTemplate "{758AFC3A2AD1DB4E}Prefabs/Vehicles/Wheeled/TIGR/VehParts/Turrets/Weapons/6U16/KORD_Heli.et"
+  }
+  BaseItemAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{238AF4F8D81D6179}Assets/Weapons/HeavyWeapons/workspaces/KORD_TIGR.agr"
+    AnimInstance "{078E3200A0F6E216}Assets/Weapons/HeavyWeapons/workspaces/KORD_Player_TIGR.asi"
+   }
+  }
+ }
+}

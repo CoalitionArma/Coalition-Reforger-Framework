@@ -170,10 +170,10 @@ class CRF_SafestartManager : ScriptComponent
 			if (!m_bInitComplete)
 				if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 				{
-					m_bSafeStartEnabled = !m_Gamemode.m_bSafestartInstantlyEnabled;
+					m_bSafeStartEnabled = !m_Gamemode.m_bSafestartEnabledOnMissionStart;
 					Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 			
-					GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartInstantlyEnabled);
+					GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartEnabledOnMissionStart);
 					m_bInitComplete = true;
 				}
 			
@@ -716,10 +716,8 @@ class CRF_SafestartManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Activates safe start event handlers for all AI and player-controlled entities.
-	* Disables damage and weapon functionality during the safe start period.
-	*/
+	//! Activates safe start event handlers for all AI and player-controlled entities.
+	//! Disables damage and weapon functionality during the safe start period.
 	protected void ActivateSafeStartEHs(SCR_AIWorld aiWorld)
 	{
 		// Apply safe start to AI-controlled entities
@@ -749,10 +747,8 @@ class CRF_SafestartManager : ScriptComponent
 	};
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Deactivates all safe start event handlers and re-enables combat functionality
-	* for all entities that had safe start restrictions applied.
-	*/
+	//! Deactivates all safe start event handlers and re-enables combat functionality
+	//! for all entities that had safe start restrictions applied.
 	protected void DeactivateSafeStartEHs()
 	{
 		foreach (IEntity controlledEntity, bool hasHandlers : m_mEntitiesWithEHsMap)

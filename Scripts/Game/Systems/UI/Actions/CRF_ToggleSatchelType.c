@@ -11,9 +11,7 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 	protected IEntity m_iSatchelEntity;
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Called when object is initialized and registered to actions manager
-	 */
+	//! Called when object is initialized and registered to actions manager
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
 		super.Init(pOwnerEntity, pManagerComponent);
@@ -21,11 +19,9 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Execute the satchel toggle action when the player activates it
-	 * @param pOwnerEntity The entity that owns this action (the object being interacted with)
-	 * @param pUserEntity The player entity performing the action
-	 */
+	//! Execute the satchel toggle action when the player activates it
+	//! \param[in] pOwnerEntity The entity that owns this action (the object being interacted with)
+	//! \param[in] pUserEntity The player entity performing the action
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
 		super.PerformAction(pOwnerEntity, pUserEntity);
@@ -54,10 +50,8 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * If overridden and true is returned, outName is returned when BaseUserAction.GetActionName is called.
-	 * If not overridden or false is returned the default value from UIInfo is taken (or empty string if no UI info exists)
-	 */
+	//! If overridden and true is returned, outName is returned when BaseUserAction.GetActionName is called.
+	//! If not overridden or false is returned the default value from UIInfo is taken (or empty string if no UI info exists)
 	override bool GetActionNameScript(out string outName) 
 	{ 
 		if (!m_iSatchelEntity)
@@ -79,18 +73,14 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Indicates that this action only affects the local player and doesn't need to be synchronized
-	 */
+	//! Indicates that this action only affects the local player and doesn't need to be synchronized
 	override bool HasLocalEffectOnlyScript()
 	{
 		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Indicates whether this action should be broadcast to other clients
-	 */
+	//! Indicates whether this action should be broadcast to other clients
 	override bool CanBroadcastScript()
 	{
 		return false;

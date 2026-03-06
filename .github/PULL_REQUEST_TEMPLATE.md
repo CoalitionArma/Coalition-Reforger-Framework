@@ -1,4 +1,6 @@
 Mission Pull Request Template
+PR NAME:
+New Mission | *Author* *MODE**PLAYERCOUNT* *name*
 
 This Pull Request will:
 
@@ -56,6 +58,10 @@ CIV Assets:
 **Any Technical testing needed? Triggers? Scripts?:**
 
 <enter text here>
+
+**Links to Added Mods**
+
+<enter name link and purpose here>
 
 **Design concept/thoughts:**
 
