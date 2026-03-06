@@ -78,7 +78,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = CreateSpectatorEntity(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
@@ -127,9 +127,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerCharacter)
 			return;
 		
-		// NOTE: DeleteOldInitialEntity is now called in InitilizePlayer BEFORE spawning
-		// No need to call it here again
-		
 		// Assign player to group
 		if (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource())
 			m_SlottingManager.AssignPlayerToGroup(playerId);
@@ -175,10 +172,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] playerId ID of the player
 	//! \param[in] spawnLocation Location to spawn the spectator
 	//! \return The created spectator character
-	protected CRF_PlayerCharacter CreateSpectatorEntity(int playerId, vector spawnLocation[4])
+	protected CRF_PlayerCharacter GetOrCreateSpectatorEntity(int playerId, SCR_PlayerController playerController, vector spawnLocation[4])
 	{
+		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(playerController.GetMainEntity());
+		if (spec && CRF_EntityHelper.IsSpectator(spec))
+		{
+			if (!CRF_DamageHelper.CheckIfEntityAlive(spec))
+				SCR_EntityHelper.DeleteEntityAndChildren(spec);
+			else
+				return spec;
+		}
+		
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
+		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
 		
 		if (!spec)
 			return null;
@@ -198,9 +204,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			// Fallback for very early init
 			Print(string.Format("[CRF_GamemodeManager] WARNING: No SCR_RespawnComponent for spectator player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
-			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-			if (playerController)
-				playerController.SetInitialMainEntity(spec);
+			playerController.SetInitialMainEntity(spec);
 		}
 		
 		return spec;
@@ -216,8 +220,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			return;
 		
 		// Check if old entity is an initial entity (spectator prefab)
-		string oldPrefab = oldEntity.GetPrefabData().GetPrefabName();
-		if (oldPrefab == CRF_EntityHelper.GetSpectatorResource())
+		if (CRF_EntityHelper.IsSpectator(oldEntity))
 		{
 			// Log deletion for debugging
 			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(oldEntity);

@@ -23,7 +23,7 @@ class CRF_EntityHelper
 	{	
 		bool finalcheck = false;
 		bool zeroCheck = (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
-		bool tenCheck = (vector.Distance("0 500 0", vectorToCheck) > 5);
+		bool tenCheck = (vector.Distance("0 0 0", vectorToCheck) > 5);
 		bool negCheck = (vectorToCheck[1] >= 0);
 		
 		if (zeroCheck && tenCheck && negCheck)
