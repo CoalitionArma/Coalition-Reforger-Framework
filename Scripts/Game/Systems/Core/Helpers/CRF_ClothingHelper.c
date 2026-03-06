@@ -119,7 +119,9 @@ class CRF_ClothingHelper
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
 		
-		bool isExplosive = CRF_InventoryHelper.IsExplosiveOrTool(item);
+		bool isExplosive = (CRF_InventoryHelper.IsExplosive(item));
+		
+		bool isTool = (CRF_InventoryHelper.IsTool(item));
 
 		// Magazines and throwables go in backpack, vest, armor, primarily
 		if (isMagazine)
@@ -168,7 +170,7 @@ class CRF_ClothingHelper
 		}
 
 		// Explosives/Medical items go in backpack, vest primarily
-		if (isExplosive || isMedical)
+		if (isExplosive || isMedical || isTool)
 		{
 			clothingIDs = {
 				CRF_EGearscriptClothing.BACKPACK,

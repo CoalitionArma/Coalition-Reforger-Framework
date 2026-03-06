@@ -1,17 +1,37 @@
 class CRF_InventoryHelper
 {
+	const static ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
+	
 	//------------------------------------------------------------------------------------------------
-	//! Check if an item is explosive or a special tool
+	//! Check if an item is a explosive
 	//! \param[in] item Item to check
 	//! \return True if item is explosive or tool
-	static bool IsExplosiveOrTool(IEntity item)
+	static bool IsExplosive(IEntity item)
 	{
 		return SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent)) || 
 			   SCR_ExplosiveChargeComponent.Cast(item.FindComponent(SCR_ExplosiveChargeComponent)) ||
-			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent)) ||
-			   SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
+			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if an item is a special tool
+	//! \param[in] item Item to check
+	//! \return True if item is explosive or tool
+	static bool IsTool(IEntity item)
+	{
+		return SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
 			   SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if an entity is a throwable weapon
+	//! \param[in] entity Entity to check
+	//! \return True if entity is a throwable weapon
+	static bool IsThrowable(IEntity entity)
+	{
+		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
+		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
+	}	
 	
 	//------------------------------------------------------------------------------------------------
 	//! Add inventory item
@@ -35,7 +55,7 @@ class CRF_InventoryHelper
 			if (!resourceSpawned)
 				continue;
 
-			bool isThrowable = CRF_WeaponHelper.IsThrowableWeapon(resourceSpawned);
+			bool isThrowable = CRF_InventoryHelper.IsThrowable(resourceSpawned);
 			
 			// Special handling for throwables
 			if (isThrowable)
@@ -80,7 +100,7 @@ class CRF_InventoryHelper
 		if (!item)
 			return;
 
-		TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(item, role, CRF_WeaponHelper.IsThrowableWeapon(item));
+		TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(item, role, IsThrowable(item));
 
 		// Try inserting into appropriate clothing first
 		bool inserted = TryInsertIntoSpecificClothing(item, clothingIDs, inventory, inventoryManager);
