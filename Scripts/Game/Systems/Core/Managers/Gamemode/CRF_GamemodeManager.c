@@ -91,11 +91,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 			
-			// If character already existed (respawn case), clean up any old initial/spectator entity
-			if (alreadyCreated)
-			{
-				DeleteOldInitialEntity(playerController, playerCharacter);
-			}
+			// ALWAYS clean up old spectator/initial entities when assigning a new playable character
+			// This prevents ghost spectator entities from accumulating when transitioning from spectator mode
+			// DeleteOldInitialEntity has built-in safety checks to avoid deleting wrong entities
+			DeleteOldInitialEntity(playerController, playerCharacter);
 			
 			CRF_MenuManager.GetInstance().RemovePlayerFromAnyChannel(playerId, false);
 		}
