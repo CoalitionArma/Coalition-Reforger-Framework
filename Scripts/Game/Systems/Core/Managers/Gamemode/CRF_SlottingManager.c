@@ -19,7 +19,6 @@ class CRF_SlottingManager : ScriptComponent
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
-	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
 	// Resource caching for optimized spawning
@@ -39,7 +38,6 @@ class CRF_SlottingManager : ScriptComponent
 
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		
 		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.

@@ -19,7 +19,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
-	protected CRF_GearscriptManager m_GearscriptManager;
+	protected CRF_GearscriptSystem m_GearscriptSystem;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
@@ -51,7 +51,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_GearscriptSystem = CRF_GearscriptSystem.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
@@ -1092,7 +1092,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 		// Schedule gear setup with appropriate delay
 		GetGame().GetCallqueue().Call(
-			m_GearscriptManager.SetEntityGear, 
+			m_GearscriptSystem.SetEntityGear, 
 			entity, 
 			prefab
 		);
@@ -1187,7 +1187,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			//m_RplBroadcastManager.HolsterGun(playerId);
 		}
 		
-		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);
+		m_GearscriptSystem.SetEntityGear(entity, prefab);
 		
 		// Queue next entity
 		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex + 1);

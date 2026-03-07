@@ -150,7 +150,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_PermissionManager m_PermissionManager
 	protected CRF_SlottingManager m_SlottingManager;
-	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
 	protected CRF_GarbageManager m_GarbageManager;
@@ -194,7 +193,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_PermissionManager = CRF_PermissionManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
 		m_GarbageManager = CRF_GarbageManager.GetInstance();

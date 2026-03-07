@@ -1,6 +1,4 @@
-class CRF_GearscriptManagerClass : ScriptComponentClass {}
-
-class CRF_GearscriptManager : ScriptComponent
+class CRF_GearscriptSystem : GameSystem
 {
 	protected CRF_Gamemode m_Gamemode;
 	
@@ -12,9 +10,9 @@ class CRF_GearscriptManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnPostInit(IEntity owner)
+	override protected void OnInit()
 	{
-		super.OnPostInit(owner);
+		super.OnInit();
 	
 		// Only run on in-game post init
 		if (!GetGame().InPlayMode())
@@ -223,8 +221,6 @@ class CRF_GearscriptManager : ScriptComponent
 	//! \param[in] entity Entity to apply randomized head/body to from the identity config of the gear config
     protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
     {
-		CRF_Character_Visual_Identity gsVisIdentity;
-		CRF_Character_Sound_Identity gsSndIdentity;
         SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
 		
 		if (!identityComp)
@@ -720,15 +716,11 @@ class CRF_GearscriptManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	protected static CRF_GearscriptManager m_sInstance;
-	void CRF_GearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	static CRF_GearscriptSystem GetInstance()
 	{
-		m_sInstance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_GearscriptManager GetInstance()
-	{
-		return m_sInstance;
+		World world = GetGame().GetWorld();
+		if (!world)
+			return null;
+		return CRF_GearscriptSystem.Cast(world.FindSystem(CRF_GearscriptSystem));
 	}
 };

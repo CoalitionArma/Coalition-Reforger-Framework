@@ -13,14 +13,14 @@ class CRF_GearscriptCharacter : CRF_PlayerCharacter
 	{
 		super.EOnInit(owner);
 		
-		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+		CRF_GearscriptSystem gearscriptSystem = CRF_GearscriptSystem.GetInstance();
 		
-		if (!GetGame().InPlayMode() || !gearscriptManager)
+		if (!GetGame().InPlayMode() || !gearscriptSystem)
 			return;
 		
 		// Schedule gearscript identity setup with appropriate delay
 		GetGame().GetCallqueue().Call(
-			gearscriptManager.SetEntityIdentity, 
+			gearscriptSystem.SetEntityIdentity, 
 			owner
 		);
 	
@@ -28,7 +28,7 @@ class CRF_GearscriptCharacter : CRF_PlayerCharacter
 		if (RplSession.Mode() != RplMode.Client)
 			// Schedule gear setup with appropriate delay
 			GetGame().GetCallqueue().Call(
-				gearscriptManager.SetEntityGear, 
+				gearscriptSystem.SetEntityGear, 
 				owner, 
 				owner.GetPrefabData().GetPrefabName()
 			);

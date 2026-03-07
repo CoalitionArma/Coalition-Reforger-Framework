@@ -272,7 +272,7 @@ class CRF_SlotDataContainer
 			return string.Empty;
 
 		// Load gearscript config
-		CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gearScriptResourceName);
+		CRF_GearScriptConfig gearConfig = CRF_GearscriptSystem.GetInstance().LoadGearScriptConfig(gearScriptResourceName);
 		
 		if (!gearConfig)
 			return string.Empty;
