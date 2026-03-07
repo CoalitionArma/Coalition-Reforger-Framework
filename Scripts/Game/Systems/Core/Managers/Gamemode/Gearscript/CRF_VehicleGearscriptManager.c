@@ -333,6 +333,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] factionKey The key identifying the faction to use for gear configuration
 	void SetVehicleGear(IEntity vehicle, string factionKey)
 	{
+		// Check if vehicle still exists (prevents crash when vehicle is deleted during queued operation)
+		if (!vehicle)
+			return;
+		
 		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
 		ChimeraGame game = GetGame();
 		
@@ -430,7 +434,11 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
 	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
 	{
-		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptSystem.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
+		// Check if truck still exists (prevents crash when vehicle is deleted)
+		if (!truck)
+			return;
+		
+		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
 		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
@@ -703,8 +711,27 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				{
 					if (!calculateSupplies)
 						suppliesNeeded += mag.GetMaxAmmoCount();
+					
+					// Check magazine capacity vs required ammo
 					if (mag.GetMaxAmmoCount() < bulletsToAdd)
-						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
+					{
+						string errorMsg = string.Format("Magazine '%1' has insufficient max ammo for gearscript. Current: %2 | Required: %3", 
+							WidgetManager.Translate(mag.GetUIInfo().GetName()), 
+							mag.GetMaxAmmoCount(), 
+							bulletsToAdd);
+						
+						// Use MissionValidatorManager in Workbench, fallback to Print in game
+						#ifdef WORKBENCH
+						CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
+						if (validator)
+							validator.AddWarning("[VEHICLE GEARSCRIPT] " + errorMsg);
+						else
+							Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+						#else
+						Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+						#endif
+					}
+					
 					mag.SetAmmoCount(bulletsToAdd);
 					continue;
 				}

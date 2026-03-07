@@ -10,9 +10,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// Time it takes for players to Init
 	static const int PLAYER_INITILIZATION_TIME = 250;
 	
-	// Internal flag to prevent redundant replication updates
-	protected bool m_bSuppressReplication = false;
-	
 	static ref CRF_GearScriptRolesConfig m_RolesConfig;
 	
 	protected CRF_SlottingManager m_SlottingManager;
@@ -84,7 +81,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = GetOrCreateSpectatorEntity(playerController, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
@@ -140,46 +137,14 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 		CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 		
-		// Wait a frame for the entity assignment to take effect, then verify success
-		GetGame().GetCallqueue().Call(VerifyCharacterAssignment, playerId, playerController, playerCharacter);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Verify that character assignment was successful and complete initialization
-	//! \param[in] playerId ID of the player
-	//! \param[in] playerController controller of the player
-	//! \param[in] playerCharacter entity the player should control
-	protected void VerifyCharacterAssignment(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter)
-	{
-		// Validate that player is still connected
-		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
-			return;
-			
-		// Check if character assignment was successful
-		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		
-		// If player is still controlling the initial entity, retry the assignment
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource() && (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource()))
-		{
-			// Delete the old initial entity BEFORE assigning new character
-			// This prevents "ghost" entities
-			DeleteOldInitialEntity(playerController, playerCharacter);
-			
-			// Force reassign the character
-			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
-			
-			// Schedule another verification attempt
-			GetGame().GetCallqueue().CallLater(VerifyCharacterAssignment, 100, false, playerId, playerController, playerCharacter);
-			return;
-		}
-		
-		// Assignment successful, complete initialization
+		// Assign player to group (only for non-spectators)
 		if (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource())
 			m_SlottingManager.AssignPlayerToGroup(playerId);
 		
+		// Broadcast player initialization
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
-
-		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
+		if (playerRplComp)
+			GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -205,13 +170,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				return null;
 			}
 		}
-		
-		// Always notify the data collector when a player is initialized into a character,
-		// whether newly spawned or reusing an existing entity (e.g. first initialization at game start).
-		// This ensures distance tracking modules attach their CompartmentEntered/Left invokers.
-		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-		if (dc)
-			dc.NotifyPlayerSpawned(playerId, playerCharacter);
 			
 		return playerCharacter;
 	}
@@ -222,8 +180,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! Create a spectator entity in the world
+	//! \param[in] playerId ID of the player
+	//! \param[in] spawnLocation Location to spawn the spectator
 	//! \return The created spectator character
-	protected CRF_PlayerCharacter GetOrCreateSpectatorEntity(SCR_PlayerController playerController, vector spawnLocation[4])
+	protected CRF_PlayerCharacter GetOrCreateSpectatorEntity(int playerId, SCR_PlayerController playerController, vector spawnLocation[4])
 	{
 		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(playerController.GetMainEntity());
 		if (spec && CRF_EntityHelper.IsSpectator(spec))
@@ -231,13 +191,85 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			if (!CRF_DamageHelper.CheckIfEntityAlive(spec))
 				SCR_EntityHelper.DeleteEntityAndChildren(spec);
 			else
+			{
+				Print(string.Format("[CRF_GamemodeManager] Player %1 already has spectator entity, returning existing", playerId), LogLevel.NORMAL);
 				return spec;
+			}
 		}
+		
+		Print(string.Format("[CRF_GamemodeManager] Creating new spectator entity for player %1", playerId), LogLevel.NORMAL);
 		
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
 		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
 		
+		if (!spec)
+		{
+			Print(string.Format("[CRF_GamemodeManager] ERROR: Failed to spawn spectator entity for player %1", playerId), LogLevel.ERROR);
+			return null;
+		}
+		
+		Print(string.Format("[CRF_GamemodeManager] Spectator entity spawned successfully for player %1, attempting assignment", playerId), LogLevel.NORMAL);
+		
+		// Route spectator assignment through the base game pipeline, same as playable characters
+		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
+			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
+		);
+		
+		if (respawnComponent)
+		{
+			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(spec);
+			
+			// Check if handler is available before using RequestSpawn
+			// This prevents NULL pointer errors during early initialization
+			bool canUseRequestSpawn = false;
+			
+			array<GenericComponent> components = {};
+			respawnComponent.FindComponents(SCR_SpawnRequestComponent, components);
+			
+			foreach (GenericComponent comp : components)
+			{
+				SCR_SpawnRequestComponent requestComp = SCR_SpawnRequestComponent.Cast(comp);
+				if (requestComp && requestComp.GetDataType() == SCR_PossessSpawnData && requestComp.GetHandlerComponent())
+				{
+					canUseRequestSpawn = true;
+					break;
+				}
+			}
+			
+			if (canUseRequestSpawn)
+			{
+				Print(string.Format("[CRF_GamemodeManager] Using RequestSpawn pipeline for spectator player %1", playerId), LogLevel.NORMAL);
+				if (!respawnComponent.RequestSpawn(spawnData))
+					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for spectator, player %1", playerId), LogLevel.WARNING);
+			}
+			else
+			{
+				// Handler not ready - use direct assignment
+				Print(string.Format("[CRF_GamemodeManager] Handler not ready for spectator player %1 — using SetInitialMainEntity", playerId), LogLevel.NORMAL);
+				playerController.SetInitialMainEntity(spec);
+			}
+		}
+		else
+		{
+			// Fallback for very early init
+			Print(string.Format("[CRF_GamemodeManager] No SCR_RespawnComponent for spectator player %1 — using SetInitialMainEntity", playerId), LogLevel.WARNING);
+			playerController.SetInitialMainEntity(spec);
+		}
+		
 		return spec;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Delete old initial entity if it exists (prevents ghost entities)
+	//! \param[in] playerController The player controller
+	//! \param[in] newCharacter The new character being assigned (don't delete this one)
+	static void DeleteOldInitialEntity(SCR_PlayerController playerController, IEntity newCharacter)
+	{
+		if (!playerController || !newCharacter)
+			return;
+			
+		IEntity oldEntity = playerController.GetMainEntity();
+		DeleteOldInitialEntity(oldEntity, newCharacter);
 	}
 	
 	//------------------------------------------------------------------------------------------------

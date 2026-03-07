@@ -2,9 +2,6 @@ class CRF_GearscriptSystem : GameSystem
 {
 	protected CRF_Gamemode m_Gamemode;
 	
-	// Track entities currently having gear applied to prevent race conditions
-	protected ref set<IEntity> m_sEntitiesBeingGeared = new set<IEntity>();
-	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITILIZATION
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -54,13 +51,6 @@ class CRF_GearscriptSystem : GameSystem
 		if (!entity)
 			return;
 
-		// Prevent multiple simultaneous gearscript operations on same entity (fixes MuzzleInMagComponent crash)
-		if (m_sEntitiesBeingGeared.Contains(entity))
-		{
-			Print(string.Format("CRF GEARSCRIPT: Entity %1 is already being geared, skipping to prevent race condition", entity), LogLevel.WARNING);
-			return;
-		}
-
 		// Determine faction from resource name
 		FactionKey factionKey = CRF_EntityHelper.DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
@@ -79,73 +69,36 @@ class CRF_GearscriptSystem : GameSystem
 
 		if (!inventory || !inventoryManager)
 		{
-			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE REQUIRED COMPONENTS!", entity), LogLevel.ERROR);
+			string errorMsg = string.Format("Entity %1 is missing required inventory components (SCR_CharacterInventoryStorageComponent or SCR_InventoryStorageManagerComponent)", entity);
+			
+			// Use MissionValidatorManager in Workbench, fallback to Print in game
+			#ifdef WORKBENCH
+			CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
+			if (validator)
+				validator.AddCriticalError("[GEARSCRIPT] " + errorMsg);
+			else
+				Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#else
+			Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#endif
+			
 			return;
 		}
-
-		// Mark entity as being geared
-		m_sEntitiesBeingGeared.Insert(entity);
 
 		// Get role and clear entity
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		 ClearEntityGear(inventory, inventoryManager);
 
-		//Delay so when we clear gear, the client has enough time to actually clear it before getting new gear. This prevents animation bugs.
-		GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, role, inventory, inventoryManager, gearScriptSettings);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
-	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
-	{
-		// If entity was deleted or snapped up by the slotting manager
-		if(!entity)
-		{
-			// Clean up tracking set
-			m_sEntitiesBeingGeared.RemoveItem(entity);
-			return;
-		}
-		
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
-		if (!gearConfig)
-		{
-			m_sEntitiesBeingGeared.RemoveItem(entity);
-			return;
-		}
 		
 		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CRF_EntityHelper.CreateSpawnParams(entity.GetOrigin());
 		
-		// Apply gear - OPTIMIZED: Consolidate CallLater calls to reduce scheduling overhead
+		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
-		// Use single consolidated callback instead of multiple separate ones
-		GetGame().GetCallqueue().CallLater(ApplyGearConsolidated, 500, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager, entity);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Consolidated gear application callback - PERFORMANCE OPTIMIZATION
-	//! Applies weapons and inventory items in a single callback to reduce CallQueue overhead
-	//! \param[in] gearConfig Gear configuration
-	//! \param[in] role Role identifier
-	//! \param[in] gearScriptSettings Gearscript settings
-	//! \param[in] spawnParams Spawn parameters
-	//! \param[in] inventory Inventory component
-	//! \param[in] inventoryManager Inventory manager component
-	//! \param[in] entity Entity being equipped
-	protected void ApplyGearConsolidated(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
-		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
-	{
-		if (!inventory || !inventoryManager || !entity)
-		{
-			// Clean up tracking set if entity is invalid
-			if (entity)
-				m_sEntitiesBeingGeared.RemoveItem(entity);
-			return;
-		}
-		
-		// Apply weapons (originally 375ms delay, now immediate in this consolidated callback at 500ms)
+		// Apply weapons
 		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		
 		// Apply inventory items
@@ -169,20 +122,7 @@ class CRF_GearscriptSystem : GameSystem
 				rplToOwnerManager.InitializeRadioFromServer();
 			}
 		}
-		
-		// CRITICAL: Mark entity as fully geared after ALL operations complete (including weapon attachment delays)
-		// Wait for attachment delay (1000ms from SpawnWeapon) + safety margin
-		GetGame().GetCallqueue().CallLater(FinishGearingEntity, 1200, false, entity);
 	}	
-	
-	//------------------------------------------------------------------------------------------------
-	//! Mark entity as finished being geared, allowing future gearscript operations
-	//! \param[in] entity Entity that finished being geared
-	protected void FinishGearingEntity(IEntity entity)
-	{
-		if (entity && m_sEntitiesBeingGeared.Contains(entity))
-			m_sEntitiesBeingGeared.RemoveItem(entity);
-	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 IDENTITY METHODS
@@ -211,27 +151,16 @@ class CRF_GearscriptSystem : GameSystem
 		if (!gearConfig)
 			return;
 		
-		// Apply gear
-		SetIdentity(gearConfig, entity)
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Apply clothing to entity based on config
-	//! \param[in] gearConfig Gear configuration
-	//! \param[in] entity Entity to apply randomized head/body to from the identity config of the gear config
-    protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
-    {
-        SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
-		
+		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
 		if (!identityComp)
 			return;
 		
-		// Get both sound and visual identities from the identity comp
-        VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();
+		// Get both sound and visual identities from the identity identityComp
+		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();
 		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
 		if (!visIdentity || !sndIdentity)
 			return;
-		
+			
 		CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
 		
 		if (gsCharIdentity)
@@ -240,10 +169,8 @@ class CRF_GearscriptSystem : GameSystem
 			CRF_Character_Sound_Identity gsSndIdentity;
 			
 			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
-				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();
-			
-			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
-				gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
+				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
+					gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
 			
 			if (gsVisIdentity)
 			{
@@ -696,7 +623,7 @@ class CRF_GearscriptSystem : GameSystem
 		// Small delay before deleting other items to ensure weapon cleanup is complete
 		// This prevents race conditions with MuzzleInMagComponent projectile attachment
 		if (!otherItems.IsEmpty())
-			GetGame().GetCallqueue().CallLater(DeleteRemainingItems, 50, false, otherItems);
+			GetGame().GetCallqueue().Call(DeleteRemainingItems, otherItems);
 	}
 	
 	//------------------------------------------------------------------------------------------------

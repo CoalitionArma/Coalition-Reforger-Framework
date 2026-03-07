@@ -395,6 +395,25 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Count how many players are slotted in a specific faction
+	//! This counts SLOTTED players, not spawned players
+	//! \param[in] factionKey The faction key to count (e.g. "BLUFOR", "OPFOR", "INDFOR", "CIV")
+	//! \return Number of players slotted in that faction
+	int GetSlottedPlayerCountByFaction(FactionKey factionKey)
+	{
+		int count = 0;
+		
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		{
+			// Check if slot has a player and matches the faction
+			if (slotData.GetSlotCurrentPlayerId() > 0 && slotData.GetSlotFactionKey() == factionKey)
+				count++;
+		}
+		
+		return count;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	bool IsPlayerConsideredDead(int playerId)
 	{
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
@@ -495,6 +514,63 @@ class CRF_SlottingManager : ScriptComponent
 		RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (charRplComp)
 			UpdateSlotCharacter(slotId, charRplComp.Id());
+		
+		// Route entity assignment through the base game SCR_SpawnRequestComponent pipeline so that
+		// all data components (SCR_RespawnSystemComponent, SCR_DataCollectorComponent,
+		// SCR_SpawnLockComponent, PreparePlayerEntity_S on all SCR_BaseGameModeComponents, etc.)
+		// are properly notified — identical to how the Editor's SpawnEntityResource assigns a
+		// player character via SCR_PossessSpawnData.
+		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
+			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
+		);
+		
+		if (respawnComponent)
+		{
+			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(playerCharacter);
+			
+			// Verify the possess spawn handler exists before attempting RequestSpawn
+			// This prevents "GameMode does not support this method of spawning" errors
+			// during early initialization when handler components may not be fully registered
+			bool canUseRequestSpawn = false;
+			
+			// Try to get the request component for PossessSpawnData type
+			array<GenericComponent> components = {};
+			respawnComponent.FindComponents(SCR_SpawnRequestComponent, components);
+			
+			foreach (GenericComponent comp : components)
+			{
+				SCR_SpawnRequestComponent requestComp = SCR_SpawnRequestComponent.Cast(comp);
+				if (requestComp && requestComp.GetDataType() == SCR_PossessSpawnData && requestComp.GetHandlerComponent())
+				{
+					canUseRequestSpawn = true;
+					break;
+				}
+			}
+			
+			if (canUseRequestSpawn)
+			{
+				if (!respawnComponent.RequestSpawn(spawnData))
+					Print(string.Format("[CRF_SlottingManager] WARNING: RequestSpawn failed for player %1, entity %2", playerId, playerCharacter), LogLevel.WARNING);
+			}
+			else
+			{
+				// Handler not ready yet - use direct assignment as fallback
+				Print(string.Format("[CRF_SlottingManager] INFO: SCR_PossessSpawnHandlerComponent not ready for player %1 — using direct assignment", playerId), LogLevel.NORMAL);
+				SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+				
+				if (playerController)
+					playerController.SetInitialMainEntity(playerCharacter);
+			}
+		}
+		else
+		{
+			// Fallback: SCR_RespawnComponent not yet available (e.g. very early init), assign directly
+			Print(string.Format("[CRF_SlottingManager] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
+			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			
+			if (playerController)
+				playerController.SetInitialMainEntity(playerCharacter);
+		}
 		
 		return playerCharacter;
 	}
