@@ -181,15 +181,23 @@ class CRF_GearScriptConfig
 class CRF_GearScriptRolesConfig
 {		
 	[Attribute()]
-	protected ref array<ref CRF_RoleConfig> m_RoleConfigs;
+	ref array<ref CRF_RoleConfig> m_RoleConfigs;
 	
-	protected ref map<CRF_EGearRole, CRF_RoleConfig> m_RoleConfigsMap = new map<CRF_EGearRole, CRF_RoleConfig>;
+	ref map<CRF_EGearRole, CRF_RoleConfig> m_RoleConfigsMap = new map<CRF_EGearRole, CRF_RoleConfig>;
 	
+	//------------------------------------------------------------------------------------------------
 	CRF_RoleConfig FindRoleConfig(CRF_EGearRole role)
 	{
 		return m_RoleConfigsMap.Get(role);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	array<ref CRF_RoleConfig> GetRoleConfigs()
+	{
+		return m_RoleConfigs;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void CRF_GearScriptRolesConfig()
 	{
 		foreach(CRF_RoleConfig roleConfig : m_RoleConfigs)
@@ -240,25 +248,25 @@ class CRF_RoleConfig
 class CRF_Role_Custom_Gear
 {	
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
-	protected CRF_EGearRole m_Role;
+	CRF_EGearRole m_Role;
 	
 	[Attribute()]
-	protected string m_sRoleName;
+	string m_sRoleName;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Weapon_Class> m_PrimaryWeapon;
+	ref array<ref CRF_Weapon_Class> m_PrimaryWeapon;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Weapon_Class> m_SecondaryWeapon;
+	ref array<ref CRF_Weapon_Class> m_SecondaryWeapon;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Weapon_Class> m_Pistols;
+	ref array<ref CRF_Weapon_Class> m_Pistols;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Clothing> m_Clothing;
+	ref array<ref CRF_Clothing> m_Clothing;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -268,10 +276,10 @@ class CRF_Role_Custom_Gear
 class CRF_Base_Weapon_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ResourceName m_Weapon;
+	ResourceName m_Weapon;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ref array<ResourceName> m_Attachments;
+	ref array<ResourceName> m_Attachments;
 }
 
 
@@ -279,7 +287,7 @@ class CRF_Base_Weapon_Class
 class CRF_Weapon_Class : CRF_Base_Weapon_Class
 {	
 	[Attribute()]
-	protected ref array<ref CRF_Magazine_Class> m_MagazineArray;
+	ref array<ref CRF_Magazine_Class> m_MagazineArray;
 }
 
 
@@ -287,7 +295,7 @@ class CRF_Weapon_Class : CRF_Base_Weapon_Class
 class CRF_Spec_Weapon_Class : CRF_Base_Weapon_Class
 {
 	[Attribute()]
-	protected ref array<ref CRF_Spec_Magazine_Class> m_MagazineArray;
+	ref array<ref CRF_Spec_Magazine_Class> m_MagazineArray;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -298,10 +306,10 @@ class CRF_Spec_Weapon_Class : CRF_Base_Weapon_Class
 class CRF_Magazine_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ResourceName m_Magazine;
+	ResourceName m_Magazine;
 	
 	[Attribute()]
-	protected int m_MagazineCount;
+	int m_MagazineCount;
 }
 
 
@@ -309,7 +317,7 @@ class CRF_Magazine_Class
 class CRF_Spec_Magazine_Class : CRF_Magazine_Class
 {	
 	[Attribute()]
-	protected int m_AssistantMagazineCount;
+	int m_AssistantMagazineCount;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -320,10 +328,10 @@ class CRF_Spec_Magazine_Class : CRF_Magazine_Class
 class CRF_Inventory_Item
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ResourceName m_sItemPrefab;
+	ResourceName m_sItemPrefab;
 	
 	[Attribute("")] 
-	protected int m_iItemCount;
+	int m_iItemCount;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -334,10 +342,10 @@ class CRF_Inventory_Item
 class CRF_Clothing
 {
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptClothing))]
-	protected CRF_EGearscriptClothing m_iClothingType;
+	CRF_EGearscriptClothing m_iClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ref array<ResourceName> m_ClothingPrefabs;
+	ref array<ResourceName> m_ClothingPrefabs;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -348,12 +356,11 @@ class CRF_Clothing
 class CRF_CharacterIdentity
 {	
 	[Attribute()]
-	protected ref array<ref CRF_Character_Visual_Identity> m_VisualIdentityArray;
+	ref array<ref CRF_Character_Visual_Identity> m_VisualIdentityArray;
 	
 	[Attribute()]
-	protected ref array<ref CRF_Character_Sound_Identity> m_SoundIdentityArray;
+	ref array<ref CRF_Character_Sound_Identity> m_SoundIdentityArray;
 }
-
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 VISUAL IDENTITY CONFIG
@@ -363,22 +370,10 @@ class CRF_CharacterIdentity
 class CRF_Character_Visual_Identity
 {	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ResourceName m_Head;
+	ResourceName m_Head;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	protected ResourceName m_Body;
-	
-	//------------------------------------------------------------------------------------------------
-	void GetHead()
-	{
-		return m_Head;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void GetBody()
-	{
-		return m_Body;
-	}
+	ResourceName m_Body;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -389,22 +384,10 @@ class CRF_Character_Visual_Identity
 class CRF_Character_Sound_Identity
 {	
 	[Attribute()]
-	protected int m_VoiceID;
+	int m_VoiceID;
 	
 	[Attribute()]
-	protected float m_VoicePitch;
-	
-	//------------------------------------------------------------------------------------------------
-	void GetVoiceID()
-	{
-		return m_aSights;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void GetVoicePitch()
-	{
-		return m_aSights;
-	}
+	float m_VoicePitch;
 }
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -415,11 +398,5 @@ class CRF_Character_Sound_Identity
 class CRF_SightArsenalConfig
 {	
 	[Attribute()]
-	protected ref array<ResourceName> m_aSights;
-	
-	//------------------------------------------------------------------------------------------------
-	void GetSights()
-	{
-		return m_aSights;
-	}
+	ref array<ResourceName> m_aSights;
 }
