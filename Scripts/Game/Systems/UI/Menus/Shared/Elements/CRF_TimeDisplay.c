@@ -37,8 +37,13 @@ class CRF_TimeDisplay : SCR_ScriptedWidgetComponent
 			.GetTimeAndWeatherManager()
 			.GetTime();
 
-		string hours   = (time.m_iHours   < 10) ? "0" + time.m_iHours.ToString()   : time.m_iHours.ToString();
-		string minutes = (time.m_iMinutes < 10) ? "0" + time.m_iMinutes.ToString() : time.m_iMinutes.ToString();
+		string hours = time.m_iHours.ToString();
+		if (time.m_iHours < 10)
+			hours = "0" + hours;
+		
+		string minutes = time.m_iMinutes.ToString();
+		if (time.m_iMinutes < 10)
+			minutes = "0" + minutes;
 
 		m_wTimeText.SetText("Time: " + hours + ":" + minutes);
 	}

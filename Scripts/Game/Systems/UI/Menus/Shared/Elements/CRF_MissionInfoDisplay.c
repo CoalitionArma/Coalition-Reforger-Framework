@@ -37,15 +37,15 @@ class CRF_MissionInfoDisplay : SCR_ScriptedWidgetComponent
 
 		// --- Mission name & author ---
 		string missionName = GetGame().GetMissionName();
-		if (missionName.IsEmpty())
-			missionName = "Unknown Mission";
+	if (missionName.IsEmpty())
+		missionName = "Unknown Mission";
 
-		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
-		string author = header ? header.m_sAuthor : "Unknown";
+	SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+	string author = "Unknown";
+	if (header)
+		author = header.m_sAuthor;
 
-		m_wMissionText.SetText(missionName + " | By " + author);
-
-		// --- Weather ---
+	m_wMissionText.SetText(missionName + " | By " + author);		// --- Weather ---
 		string weatherName = ChimeraWorld.CastFrom(GetGame().GetWorld())
 			.GetTimeAndWeatherManager()
 			.GetCurrentWeatherState()

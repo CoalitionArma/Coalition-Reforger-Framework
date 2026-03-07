@@ -58,7 +58,7 @@ class CRF_PhaseIndicatorDisplay : SCR_ScriptedWidgetComponent
 
 		switch (gamemode.m_GamemodeState)
 		{
-			case CRF_EGamemodeState.PREVIEW:  m_wPreview.SetColor(COLOR_ACTIVE);  break;
+			case CRF_EGamemodeState.BRIEFING: m_wPreview.SetColor(COLOR_ACTIVE);  break;
 			case CRF_EGamemodeState.SLOTTING: m_wSlotting.SetColor(COLOR_ACTIVE); break;
 			case CRF_EGamemodeState.GAME:     m_wGame.SetColor(COLOR_ACTIVE);     break;
 			case CRF_EGamemodeState.AAR:      m_wAAR.SetColor(COLOR_ACTIVE);      break;
