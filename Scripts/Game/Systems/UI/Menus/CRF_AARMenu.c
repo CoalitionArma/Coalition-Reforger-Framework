@@ -29,8 +29,9 @@ class CRF_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 	// Modular UI Elements
 	//----------------------------------------
-	protected CRF_MissionInfoDisplay m_MissionInfoDisplay; // Mission name / author / weather
-	protected CRF_TimeDisplay        m_TimeDisplay;        // Live in-game clock
+	protected CRF_MissionInfoDisplay       m_MissionInfoDisplay;       // Mission name / author / weather
+	protected CRF_TimeDisplay              m_TimeDisplay;              // Live in-game clock
+	protected ref CRF_PlayerStatusListDisplay m_PlayerStatusListDisplay; // Player list with status colors
 	
 	//----------------------------------------
 	// Faction & Slot Data
@@ -156,6 +157,19 @@ class CRF_AARMenu: ChimeraMenuBase
 		Widget wTimeDisplay = m_wRoot.FindAnyWidget("TimeDisplay");
 		if (wTimeDisplay)
 			m_TimeDisplay = CRF_TimeDisplay.Cast(wTimeDisplay.FindHandler(CRF_TimeDisplay));
+		
+		// Initialize player status list display
+		SCR_VONController vonController = SCR_VONController.Cast(m_PlayerController.FindComponent(SCR_VONController));
+		if (m_cPlayerListBoxComponent)
+		{
+			m_PlayerStatusListDisplay = new CRF_PlayerStatusListDisplay();
+			Widget playerListWidget = m_wRoot.FindAnyWidget("PlayerList");
+			if (playerListWidget)
+			{
+				m_PlayerStatusListDisplay.HandlerAttached(playerListWidget);
+				m_PlayerStatusListDisplay.Init(m_cPlayerListBoxComponent, vonController);
+			}
+		}
 	}
 	
 	/**
@@ -345,39 +359,49 @@ class CRF_AARMenu: ChimeraMenuBase
 	
 	/**
 	 * Update the player list with current players
+	 * Delegates to CRF_PlayerStatusListDisplay for rendering
 	 */
 	protected void UpdatePlayerList(float tDelta)
 	{
-		ref array<int> playerIds = {};
-		
-		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
-		m_cPlayerListBoxComponent.Clear();
-		
-		foreach(int playerId : playerIds)
+		// Use modular component if available
+		if (m_PlayerStatusListDisplay)
 		{
-			if(!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
-				continue;
-				
-			int index = m_cPlayerListBoxComponent.AddItem(GetGame().GetPlayerManager().GetPlayerName(playerId), null, "{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout");
-			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
+			m_PlayerStatusListDisplay.UpdatePlayerList(-1); // -1 means no selection highlighting
+		}
+		else
+		{
+			// Fallback to manual implementation
+			ref array<int> playerIds = {};
 			
-			if (!CVON_VONGameModeComponent.GetInstance())
+			GetGame().GetPlayerManager().GetAllPlayers(playerIds);
+			m_cPlayerListBoxComponent.Clear();
+			
+			foreach(int playerId : playerIds)
 			{
-				// Set color based on player status
-				if(SCR_Global.IsAdmin(playerId))
-					comp.SetColor(Color.Red);
-				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
-					comp.SetColor(Color.Yellow);
-				else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
-					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
-			}
-			else
-			{
-				// Set color based on player status
-				if(SCR_Global.IsAdmin(playerId))
-					comp.SetColor(Color.Red);
-				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
-					comp.SetColor(Color.Yellow);
+				if(!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+					continue;
+					
+				int index = m_cPlayerListBoxComponent.AddItem(GetGame().GetPlayerManager().GetPlayerName(playerId), null, "{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout");
+				SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
+				
+				if (!CVON_VONGameModeComponent.GetInstance())
+				{
+					// Set color based on player status
+					if(SCR_Global.IsAdmin(playerId))
+						comp.SetColor(Color.Red);
+					else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
+						comp.SetColor(Color.Yellow);
+					else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
+						comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
+				}
+				else
+				{
+					// Set color based on player status
+					if(SCR_Global.IsAdmin(playerId))
+						comp.SetColor(Color.Red);
+					else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
+						comp.SetColor(Color.Yellow);
+				}
 			}
 		}
 		
