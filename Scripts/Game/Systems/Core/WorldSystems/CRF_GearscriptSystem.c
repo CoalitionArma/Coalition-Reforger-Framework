@@ -90,9 +90,9 @@ class CRF_GearscriptSystem : GameSystem
 			if (validator)
 				validator.AddCriticalError("[GEARSCRIPT] " + errorMsg);
 			else
-				Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+				Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.FATAL);
 			#else
-			Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.FATAL);
 			#endif
 			
 			return;
