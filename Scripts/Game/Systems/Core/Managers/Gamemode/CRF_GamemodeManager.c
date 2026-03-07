@@ -84,7 +84,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = CreateSpectatorEntity(CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+			playerCharacter = CreateSpectatorEntity(playerController, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
@@ -222,8 +222,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! Create a spectator entity in the world
+	//! \param[in] playerController The player controller to check for existing spectator
+	//! \param[in] spawnLocation Location to spawn the spectator
 	//! \return The created spectator character
-	protected CRF_PlayerCharacter CreateSpectatorEntity(vector spawnLocation[4])
+	protected CRF_PlayerCharacter CreateSpectatorEntity(SCR_PlayerController playerController, vector spawnLocation[4])
 	{
 		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(playerController.GetMainEntity());
 		if (spec && CRF_EntityHelper.IsSpectator(spec))
@@ -235,7 +237,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		}
 		
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
+		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
+		
+		// Assign spectator to player immediately using direct assignment
+		// Spectators don't need the full spawn pipeline
+		if (spec)
+			playerController.SetInitialMainEntity(spec);
 		
 		return spec;
 	}
