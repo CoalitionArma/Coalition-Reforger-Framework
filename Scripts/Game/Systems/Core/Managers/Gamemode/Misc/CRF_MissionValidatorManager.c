@@ -86,11 +86,11 @@ class CRF_MissionValidatorManager : ScriptComponent
 		m_aWarnings.Clear();
 		m_aInfoMessages.Clear();
 		
-		// Run all validation checks
+		//! Run all validation checks
 		ValidateGamemodeEntity();
 		ValidateFactions();
 		
-		// Semms like they arent pulling the entities names, so these are being shelved so mission makers dont get yelled at.
+		//! Semms like they arent pulling the entities names, so these are being shelved so mission makers dont get yelled at.
 		//ValidateSpawnMarkers();
 		//ValidateSafezones();
 		
@@ -98,16 +98,16 @@ class CRF_MissionValidatorManager : ScriptComponent
 		ValidateSlottingSetup();
 		ValidateSpecialGamemodeRequirements();
 		
-		// Display results
+		//! Display results
 		DisplayValidationResults();
 		
-		// Show enhanced output in Workbench
+		//! Show enhanced output in Workbench
 		#ifdef WORKBENCH
 		if (m_bShowWorkbenchUI)
 		{
 			ShowWorkbenchOutput();
 			
-			// Queue HUD notification for when player spawns
+			//! Queue HUD notification for when player spawns
 			if (m_aCriticalErrors.Count() > 0)
 			{
 				GetGame().GetCallqueue().CallLater(TryShowHudNotification, 2000, true);
@@ -117,7 +117,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		
 		m_bValidationComplete = true;
 		
-		// Block mission if critical errors and blocking enabled
+		//! Block mission if critical errors and blocking enabled
 		if (m_bBlockOnCriticalErrors && m_aCriticalErrors.Count() > 0)
 		{
 			Print("[CRF Mission Validator] CRITICAL ERRORS FOUND - Mission may not function correctly!", LogLevel.ERROR);
@@ -134,7 +134,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	{
 		IEntity gamemodeEntity = GetOwner();
 		
-		// Check for required manager components
+		//! Check for required manager components
 		if (!gamemodeEntity.FindComponent(CRF_GamemodeManager))
 			AddWarning("Missing CRF_GamemodeManager component");
 		else
@@ -155,11 +155,11 @@ class CRF_MissionValidatorManager : ScriptComponent
 		else
 			AddInfo("[OK] CRF_RespawnManager component found");
 		
-		// Check for CRF_Gamemode component and validate slot ratio
+		//! Check for CRF_Gamemode component and validate slot ratio
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		if (gamemode)
 		{
-			// Validate faction ratios
+			//! Validate faction ratios
 			if (gamemode.m_iFactionOneRatio <= 0 && gamemode.m_iFactionTwoRatio <= 0)
 				AddCriticalError("(If TVT) At least one Faction Ratio must be greater than 0!");
 			else if (gamemode.m_iFactionOneRatio <= 0)
@@ -170,30 +170,30 @@ class CRF_MissionValidatorManager : ScriptComponent
 				AddInfo(string.Format("[OK] Faction ratios set to %1:%2", gamemode.m_iFactionOneRatio, gamemode.m_iFactionTwoRatio));
 		}
 		
-		// Check for AIWorld entity
+		//! Check for AIWorld entity
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (!aiWorld)
 			AddCriticalError("Missing SCR_AIWorld entity in world! AI will not function.");
 		else
 			AddInfo("[OK] SCR_AIWorld entity found");
 		
-		// Check for Map Entity
+		//! Check for Map Entity
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
 		if (!mapEntity)
 			AddCriticalError("Missing SCR_MapEntity in world! Map UI will not function.");
 		else
 			AddInfo("[OK] SCR_MapEntity found");
 		
-		// Check for spawn points
+		//! Check for spawn points
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		
-		// BLUFOR spawn point check
+		//! BLUFOR spawn point check
 		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BluforSlots || !gamemode.m_BluforSlots.IsEmpty()))
 			AddCriticalError("Missing BLUFOR Spawn Point(s) in the world! the BLUFOR Faction will not function");
 		else
 			AddInfo("[OK] BLUFOR Spawn point found");
 		
-		// OPFOR spawn point check
+		//! OPFOR spawn point check
 		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty() && (!gamemode.m_OpforSlots || !gamemode.m_OpforSlots.IsEmpty()))
 			AddCriticalError("Missing OPFOR Spawn Point(s) in the world! the OPFOR Faction will not function");
 		else

@@ -85,7 +85,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return an array of ints representing the supply values in the same order as the items put in
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
-		// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
+		//! Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
 		array<int> itemSupply = new array<int>();
 		itemSupply.Reserve(items.Count());
 		
@@ -102,11 +102,11 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		
 		factionManager.GetFactionsList(factions);
 		
-		// Pre-allocate catalogs array - PERFORMANCE OPTIMIZATION
+		//! Pre-allocate catalogs array - PERFORMANCE OPTIMIZATION
 		array<ref SCR_EntityCatalog> itemCatalogs = new array<ref SCR_EntityCatalog>();
 		itemCatalogs.Reserve(factions.Count());
 		
-		// Use cached catalog manager - PERFORMANCE OPTIMIZATION
+		//! Use cached catalog manager - PERFORMANCE OPTIMIZATION
 		if (!m_CatalogManager)
 			m_CatalogManager = SCR_EntityCatalogManagerComponent.GetInstance();
 		
@@ -141,7 +141,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	{
 		if (m_fUpdateBuffer >= 5)
 		{
-			// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
+			//! Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
 			array<IEntity> vehiclesToRemove = new array<IEntity>();
 			vehiclesToRemove.Reserve(m_VehiclesInQueue.Count());
 			
@@ -177,7 +177,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		IEntity closestPlayer;
 		string factionKey = "";
 		
-		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
+		//! Cache GetGame() reference - PERFORMANCE OPTIMIZATION
 		ArmaReforgerScripted game = GetGame();
 		if (!game)
 			return false;
