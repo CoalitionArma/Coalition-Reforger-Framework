@@ -7,6 +7,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
+	// Time it takes for players to Init
+	static const int PLAYER_INITILIZATION_TIME = 250;
+	
 	static ref CRF_GearScriptRolesConfig m_RolesConfig;
 	
 	protected CRF_SlottingManager m_SlottingManager;
@@ -108,7 +111,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			playerCharacter.DisableAI();
-			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter);
+			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
 	}
 	
@@ -127,13 +131,20 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerCharacter)
 			return;
 		
-		// Assign player to group
+		// Delete the old initial entity BEFORE assigning new character
+		// This prevents "ghost" entities
+		DeleteOldInitialEntity(playerController, playerCharacter);
+			
+		CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
+		
+		// Assign player to group (only for non-spectators)
 		if (playerCharacter.GetPrefabData().GetPrefabName() != CRF_EntityHelper.GetSpectatorResource())
 			m_SlottingManager.AssignPlayerToGroup(playerId);
 		
+		// Broadcast player initialization
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (playerRplComp)
-			CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, playerRplComp.Id());
+			GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -246,6 +257,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		}
 		
 		return spec;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Delete old initial entity if it exists (prevents ghost entities)
+	//! \param[in] playerController The player controller
+	//! \param[in] newCharacter The new character being assigned (don't delete this one)
+	static void DeleteOldInitialEntity(SCR_PlayerController playerController, IEntity newCharacter)
+	{
+		if (!playerController || !newCharacter)
+			return;
+			
+		IEntity oldEntity = playerController.GetMainEntity();
+		DeleteOldInitialEntity(oldEntity, newCharacter);
 	}
 	
 	//------------------------------------------------------------------------------------------------
