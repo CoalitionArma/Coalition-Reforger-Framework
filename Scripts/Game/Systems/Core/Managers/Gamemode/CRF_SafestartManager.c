@@ -252,18 +252,10 @@ class CRF_SafestartManager : ScriptComponent
 		// Process each faction
 		foreach (SCR_Faction faction : factionArray)
 		{
+			// Skip factions with no players or not matching our supported faction keys
 			string factionKey = faction.GetFactionKey();
-			
-			// Only process supported faction keys
-			if (factionKey != "BLUFOR" && factionKey != "OPFOR" && 
-			    factionKey != "INDFOR" && factionKey != "CIV")
-				continue;
-			
-			// Check if faction has SLOTTED players (not just spawned ones)
-			// This fixes the issue where factions with slotted but unspawned players weren't showing
-			int slottedPlayerCount = m_SlottingManager.GetSlottedPlayerCountByFaction(factionKey);
-			
-			if (slottedPlayerCount == 0)
+			if (faction.GetPlayerCount() == 0 || (factionKey != "BLUFOR" && factionKey != "OPFOR" &&
+				factionKey != "INDFOR" && factionKey != "CIV"))
 				continue;
 
 			// Add to active factions list

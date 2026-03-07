@@ -397,25 +397,6 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Count how many players are slotted in a specific faction
-	//! This counts SLOTTED players, not spawned players
-	//! \param[in] factionKey The faction key to count (e.g. "BLUFOR", "OPFOR", "INDFOR", "CIV")
-	//! \return Number of players slotted in that faction
-	int GetSlottedPlayerCountByFaction(FactionKey factionKey)
-	{
-		int count = 0;
-		
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
-		{
-			// Check if slot has a player and matches the faction
-			if (slotData.GetSlotCurrentPlayerId() > 0 && slotData.GetSlotFactionKey() == factionKey)
-				count++;
-		}
-		
-		return count;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	bool IsPlayerConsideredDead(int playerId)
 	{
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
