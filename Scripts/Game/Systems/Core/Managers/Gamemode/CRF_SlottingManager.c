@@ -1,3 +1,27 @@
+//=============================================================================================================================================================================================================================================================================================================================================================
+// Supporting classes for efficient slot management
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+// Statistics for a faction's slots
+class CRF_FactionSlotStats
+{
+	int m_iTotalSlots = 0;
+	int m_iTakenSlots = 0;
+	int m_iLockedSlots = 0;
+	int m_iDeadSlots = 0;
+}
+
+// Typed invoker classes for specific slot events
+// Note: Using ScriptInvoker directly since Enforce doesn't support typed func pointers well
+class ScriptInvoker_SlotPlayerChanged : ScriptInvoker {}
+class ScriptInvoker_SlotLockedChanged : ScriptInvoker {}
+class ScriptInvoker_SlotDeathChanged : ScriptInvoker {}
+class ScriptInvoker_FactionStatsChanged : ScriptInvoker {}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+// Main SlottingManager class
+//=============================================================================================================================================================================================================================================================================================================================================================
+
 class CRF_SlottingManagerClass : ScriptComponentClass {}
 
 class CRF_SlottingManager : ScriptComponent
@@ -10,11 +34,28 @@ class CRF_SlottingManager : ScriptComponent
 	// Slot data storage - uses ID-based system where IDs are generated in AddSlot
 	protected ref map<int, ref CRF_SlotDataContainer> m_mSlotsMap = new map<int, ref CRF_SlotDataContainer>;
 	
+	// Indexed lookups for O(1) access
+	protected ref map<int, ref array<int>> m_mGroupToSlots = new map<int, ref array<int>>;
+	protected ref map<string, ref array<int>> m_mFactionToSlots = new map<string, ref array<int>>;
+	protected ref map<int, int> m_mPlayerToSlot = new map<int, int>;
+	
+	// Cached faction statistics
+	protected ref map<string, ref CRF_FactionSlotStats> m_mFactionStats = new map<string, ref CRF_FactionSlotStats>;
+	
+	// Batch update system
+	protected ref array<int> m_aPendingSlotUpdates = new array<int>;
+	protected bool m_bHasPendingUpdates = false;
+	protected bool m_bFlushTimerActive = false;  // Track if timer is running
+	
 	// Latest Slot ID used
 	protected int m_iLatestSlotID;
 	
-	// Invoker for slot updates
+	// Invokers for slot updates - more granular events
 	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
+	protected ref ScriptInvoker_SlotPlayerChanged m_OnSlotPlayerChanged;
+	protected ref ScriptInvoker_SlotLockedChanged m_OnSlotLockedChanged;
+	protected ref ScriptInvoker_SlotDeathChanged m_OnSlotDeathChanged;
+	protected ref ScriptInvoker_FactionStatsChanged m_OnFactionStatsChanged;
 	
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
@@ -42,8 +83,25 @@ class CRF_SlottingManager : ScriptComponent
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		
+		// Initialize faction stats
+		InitializeFactionStats();
+		
 		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
 		GetGame().GetCallqueue().Call(InitilizeSlots);
+		
+		// Batch timer is created on-demand in MarkSlotDirty() instead of running constantly
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Initialize faction statistics tracking
+	protected void InitializeFactionStats()
+	{
+		array<string> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		foreach (string factionKey : factionKeys)
+		{
+			if (!m_mFactionStats.Contains(factionKey))
+				m_mFactionStats.Insert(factionKey, new CRF_FactionSlotStats());
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -53,6 +111,9 @@ class CRF_SlottingManager : ScriptComponent
 		InitilizeSlotsForFaction("OPFOR", m_Gamemode.m_OpforSlots);
 		InitilizeSlotsForFaction("INDFOR", m_Gamemode.m_IndforSlots);
 		InitilizeSlotsForFaction("CIV", m_Gamemode.m_CivSlots);
+		
+		// Build indices after all slots are initialized
+		RebuildAllIndices();
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -102,8 +163,42 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (slotData)
 		{
+			// Track old value for delta updates and stats
+			int oldPlayerId = slotData.GetSlotCurrentPlayerId();
+			string factionKey = slotData.GetSlotFactionKey();
+			
+			// Update the slot data
 			slotData.SetSlotCurrentPlayerId(playerId);
-			m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
+			
+			// Update player-to-slot index
+			if (oldPlayerId > 0)
+				m_mPlayerToSlot.Remove(oldPlayerId);
+			if (playerId > 0)
+				m_mPlayerToSlot.Set(playerId, slotId);
+			
+			// Update faction statistics incrementally
+			CRF_FactionSlotStats stats = m_mFactionStats.Get(factionKey);
+			if (stats)
+			{
+				if (oldPlayerId > 0)
+					stats.m_iTakenSlots--;
+				if (playerId > 0)
+					stats.m_iTakenSlots++;
+				
+				// Notify faction stats listeners
+				if (m_OnFactionStatsChanged)
+					m_OnFactionStatsChanged.Invoke(factionKey, stats);
+			}
+			
+			// Mark for batched update instead of immediate RPC
+			MarkSlotDirty(slotId);
+			
+			// Fire specific event for player change
+			if (m_OnSlotPlayerChanged)
+				m_OnSlotPlayerChanged.Invoke(slotId, oldPlayerId, playerId);
+			
+			// Legacy broad update invoker
+			m_OnSlottingUpdate.Invoke();
 		};
 	}
 	
@@ -114,11 +209,35 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (slotData)
 		{
+			// Track old state for stats
+			bool wasLocked = slotData.GetIsLockedSlot();
+			string factionKey = slotData.GetSlotFactionKey();
+			
 			slotData.SetIsLockedSlot(isLocked);
 			if (isLocked)
 				slotData.SetSlotCurrentPlayerId(0);
 			
-			m_RplBroadcastManager.UpdateSlotLockedDelta(slotId, isLocked);
+			// Update faction statistics
+			CRF_FactionSlotStats stats = m_mFactionStats.Get(factionKey);
+			if (stats)
+			{
+				if (wasLocked && !isLocked)
+					stats.m_iLockedSlots--;
+				else if (!wasLocked && isLocked)
+					stats.m_iLockedSlots++;
+				
+				if (m_OnFactionStatsChanged)
+					m_OnFactionStatsChanged.Invoke(factionKey, stats);
+			}
+			
+			// Mark for batched update
+			MarkSlotDirty(slotId);
+			
+			// Fire specific event
+			if (m_OnSlotLockedChanged)
+				m_OnSlotLockedChanged.Invoke(slotId, isLocked);
+			
+			m_OnSlottingUpdate.Invoke();
 		};
 	}
 	
@@ -129,8 +248,33 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (slotData)
 		{
+			// Track old state for stats
+			bool wasDead = slotData.GetIsDeadSlot();
+			string factionKey = slotData.GetSlotFactionKey();
+			
 			slotData.SetIsDeadSlot(input);
-			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
+			
+			// Update faction statistics
+			CRF_FactionSlotStats stats = m_mFactionStats.Get(factionKey);
+			if (stats)
+			{
+				if (wasDead && !input)
+					stats.m_iDeadSlots--;
+				else if (!wasDead && input)
+					stats.m_iDeadSlots++;
+				
+				if (m_OnFactionStatsChanged)
+					m_OnFactionStatsChanged.Invoke(factionKey, stats);
+			}
+			
+			// Mark for batched update
+			MarkSlotDirty(slotId);
+			
+			// Fire specific event
+			if (m_OnSlotDeathChanged)
+				m_OnSlotDeathChanged.Invoke(slotId, input);
+			
+			m_OnSlottingUpdate.Invoke();
 		};
 	}
 
@@ -142,6 +286,39 @@ class CRF_SlottingManager : ScriptComponent
 	ScriptInvoker GetOnSlottingUpdate()
 	{
 		return m_OnSlottingUpdate;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Specific event invokers
+	ScriptInvoker_SlotPlayerChanged GetOnSlotPlayerChanged()
+	{
+		if (!m_OnSlotPlayerChanged)
+			m_OnSlotPlayerChanged = new ScriptInvoker_SlotPlayerChanged();
+		return m_OnSlotPlayerChanged;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker_SlotLockedChanged GetOnSlotLockedChanged()
+	{
+		if (!m_OnSlotLockedChanged)
+			m_OnSlotLockedChanged = new ScriptInvoker_SlotLockedChanged();
+		return m_OnSlotLockedChanged;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker_SlotDeathChanged GetOnSlotDeathChanged()
+	{
+		if (!m_OnSlotDeathChanged)
+			m_OnSlotDeathChanged = new ScriptInvoker_SlotDeathChanged();
+		return m_OnSlotDeathChanged;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker_FactionStatsChanged GetOnFactionStatsChanged()
+	{
+		if (!m_OnFactionStatsChanged)
+			m_OnFactionStatsChanged = new ScriptInvoker_FactionStatsChanged();
+		return m_OnFactionStatsChanged;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -167,6 +344,154 @@ class CRF_SlottingManager : ScriptComponent
 		}
 		
 		return slotIds;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Get faction statistics - O(1) instead of O(n)
+	CRF_FactionSlotStats GetFactionStats(string factionKey)
+	{
+		return m_mFactionStats.Get(factionKey);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Get slots for specific faction - O(1) lookup
+	array<int> GetSlotsForFaction(string factionKey)
+	{
+		array<int> slots = m_mFactionToSlots.Get(factionKey);
+		if (!slots)
+			return new array<int>();
+		return slots;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Get slot ID for player - O(1) lookup
+	int GetSlotForPlayer(int playerId)
+	{
+		if (m_mPlayerToSlot.Contains(playerId))
+			return m_mPlayerToSlot.Get(playerId);
+		return -1;
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 Index Management
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	// Rebuilds all indices - should only be called during initialization or after mass changes
+	protected void RebuildAllIndices()
+	{
+		// Clear existing indices
+		m_mGroupToSlots.Clear();
+		m_mFactionToSlots.Clear();
+		m_mPlayerToSlot.Clear();
+		
+		// Reset faction stats
+		foreach (string key, CRF_FactionSlotStats stats : m_mFactionStats)
+		{
+			stats.m_iTotalSlots = 0;
+			stats.m_iTakenSlots = 0;
+			stats.m_iLockedSlots = 0;
+			stats.m_iDeadSlots = 0;
+		}
+		
+		// Build indices from current slot data
+		foreach (int slotId, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		{
+			// Add to faction index
+			string factionKey = slotData.GetSlotFactionKey();
+			if (!m_mFactionToSlots.Contains(factionKey))
+				m_mFactionToSlots.Insert(factionKey, new array<int>());
+			m_mFactionToSlots.Get(factionKey).Insert(slotId);
+			
+			// Add to group index
+			int groupId = slotData.GetSlotCurrentGroup();
+			if (groupId != RplId.Invalid())
+			{
+				if (!m_mGroupToSlots.Contains(groupId))
+					m_mGroupToSlots.Insert(groupId, new array<int>());
+				m_mGroupToSlots.Get(groupId).Insert(slotId);
+			}
+			
+			// Add to player index and update stats
+			int playerId = slotData.GetSlotCurrentPlayerId();
+			if (playerId > 0)
+				m_mPlayerToSlot.Set(playerId, slotId);
+			
+			// Update faction stats
+			CRF_FactionSlotStats stats = m_mFactionStats.Get(factionKey);
+			if (stats)
+			{
+				if (!slotData.GetIsLockedSlot())
+					stats.m_iTotalSlots++;
+				if (playerId > 0)
+					stats.m_iTakenSlots++;
+				if (slotData.GetIsLockedSlot())
+					stats.m_iLockedSlots++;
+				if (slotData.GetIsDeadSlot())
+					stats.m_iDeadSlots++;
+			}
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Mark slot as needing update for batch processing
+	// Creates timer on-demand instead of running constantly
+	protected void MarkSlotDirty(int slotId)
+	{
+		if (!m_aPendingSlotUpdates.Contains(slotId))
+		{
+			m_aPendingSlotUpdates.Insert(slotId);
+			m_bHasPendingUpdates = true;
+			
+			// Only start timer if not already running
+			if (!m_bFlushTimerActive)
+			{
+				m_bFlushTimerActive = true;
+				GetGame().GetCallqueue().CallLater(FlushPendingUpdates, 100, false);
+			}
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Flush all pending slot updates in a single batch RPC
+	// Timer automatically stops after flush (on-demand pattern)
+	protected void FlushPendingUpdates()
+	{
+		// Reset timer flag
+		m_bFlushTimerActive = false;
+		
+		if (!m_bHasPendingUpdates || m_aPendingSlotUpdates.IsEmpty())
+			return;
+		
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+		
+		// Send batch update to clients
+		SendBatchedSlotUpdate(m_aPendingSlotUpdates);
+		
+		// Clear pending updates
+		m_aPendingSlotUpdates.Clear();
+		m_bHasPendingUpdates = false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Send multiple slot updates using the RplBroadcastManager's batching system
+	// The RplBroadcastManager will automatically queue these updates and send them
+	// in an optimized batch when its flush timer triggers
+	protected void SendBatchedSlotUpdate(array<int> slotIds)
+	{
+		foreach (int slotId : slotIds)
+		{
+			CRF_SlotDataContainer slotData = GetSlotData(slotId);
+			if (!slotData)
+				continue;
+			
+			// Queue all properties that might have changed through the broadcast manager
+			// The broadcast manager handles batching and network serialization
+			m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, slotData.GetSlotCurrentPlayerId());
+			m_RplBroadcastManager.UpdateSlotLockedDelta(slotId, slotData.GetIsLockedSlot());
+			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, slotData.GetIsDeadSlot());
+		}
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -236,16 +561,24 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	array<int> GetAllSlotIDsForGroup(RplId rplId)
 	{
-		array<int> outputArray = {};
+		// Use index for O(1) lookup instead of O(n) iteration
+		array<int> slots = m_mGroupToSlots.Get(rplId);
+		if (slots)
+		{
+			array<int> sortedSlots = {};
+			sortedSlots.Copy(slots);
+			sortedSlots.Sort();
+			return sortedSlots;
+		}
 		
+		// Fallback to old method if index not available
+		array<int> outputArray = {};
 		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
 		{
 			if (slotData.GetSlotCurrentGroup() == rplId)
 				outputArray.Insert(slotID);
 		}
-		
 		outputArray.Sort();
-		
 		return outputArray;
 	}
 
@@ -818,7 +1151,7 @@ class CRF_SlottingManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! Client-side: Update single slot from RPC (called by CRF_RplBroadcastManager)
-	//! Only updates if data actually changed (prevents unnecessary UI rebuilds)
+	//! Only updates if data actually changed to prevent unnecessary UI rebuilds
 	void UpdateSlotDataClient(CRF_SlotDataContainer slotData)
 	{
 		if (Replication.IsServer())

@@ -53,6 +53,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	protected int m_LocalSlottingState;         // Local copy of slotting state
 	
 	//---------------------------------------------------------------------
+	// UI Element Caching
+	//---------------------------------------------------------------------
+	protected ref map<int, SCR_ListBoxElementComponent> m_mSlotElements;     // Cache of UI elements by slot ID
+	protected ref map<int, string> m_mPlayerNames;                           // Cache of player names by player ID
+	protected ref array<int> m_aVisibleSlotIds;                              // Cache of currently visible slot IDs
+	
+	//---------------------------------------------------------------------
 	// Faction Resources
 	//---------------------------------------------------------------------
 	ResourceName m_rBluforIcon;                 // BLUFOR faction icon resource
@@ -97,8 +104,28 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Initialize and update slots
 		UpdateSlots();
 		
-		// Register for slot updates
-		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		// Register for specific slot update events for delta updates
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		
+		// Subscribe to specific typed events for targeted updates
+		ScriptInvoker_SlotPlayerChanged onPlayerChanged = slottingMgr.GetOnSlotPlayerChanged();
+		if (onPlayerChanged)
+			onPlayerChanged.Insert(OnSlotPlayerChanged);
+			
+		ScriptInvoker_SlotLockedChanged onLockedChanged = slottingMgr.GetOnSlotLockedChanged();
+		if (onLockedChanged)
+			onLockedChanged.Insert(OnSlotLockedChanged);
+			
+		ScriptInvoker_SlotDeathChanged onDeathChanged = slottingMgr.GetOnSlotDeathChanged();
+		if (onDeathChanged)
+			onDeathChanged.Insert(OnSlotDeathChanged);
+			
+		ScriptInvoker_FactionStatsChanged onStatsChanged = slottingMgr.GetOnFactionStatsChanged();
+		if (onStatsChanged)
+			onStatsChanged.Insert(OnFactionStatsChanged);
+		
+		// Keep the broad update as fallback for now
+		slottingMgr.GetOnSlottingUpdate().Insert(UpdateSlots);
 		
 		// Setup faction button event handlers
 		SetupFactionButtons();			
@@ -411,8 +438,28 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 		
-		// Unregister from slot updates to prevent memory leaks
-		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
+		// Unregister from specific event listeners
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		
+		// Unsubscribe from specific typed events
+		ScriptInvoker_SlotPlayerChanged onPlayerChanged = slottingMgr.GetOnSlotPlayerChanged();
+		if (onPlayerChanged)
+			onPlayerChanged.Remove(OnSlotPlayerChanged);
+			
+		ScriptInvoker_SlotLockedChanged onLockedChanged = slottingMgr.GetOnSlotLockedChanged();
+		if (onLockedChanged)
+			onLockedChanged.Remove(OnSlotLockedChanged);
+			
+		ScriptInvoker_SlotDeathChanged onDeathChanged = slottingMgr.GetOnSlotDeathChanged();
+		if (onDeathChanged)
+			onDeathChanged.Remove(OnSlotDeathChanged);
+			
+		ScriptInvoker_FactionStatsChanged onStatsChanged = slottingMgr.GetOnFactionStatsChanged();
+		if (onStatsChanged)
+			onStatsChanged.Remove(OnFactionStatsChanged);
+		
+		// Unregister from broad update callback
+		slottingMgr.GetOnSlottingUpdate().Remove(UpdateSlots);
 		
 		// Remove all input action listeners
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -564,72 +611,86 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	
 	/**
 	 * Initializes slot counts for all factions
-	 * Counts total and taken slots per faction
+	 * Uses cached statistics from SlottingManager instead of iterating all slots
 	 */
 	void InitSlots()
 	{	
-		// Reset slot counters
-		m_iBluforSlots = 0;
-		m_iOpforSlots = 0;
-		m_iIndforSlots = 0;
-		m_iCivSlots = 0;
-		m_iTakenBluforSlots = 0;
-		m_iTakenOpforSlots = 0;
-		m_iTakenIndforSlots = 0;
-		m_iTakenCivSlots = 0;
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
 		
-		// Get all slot data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		// Get cached statistics from manager (O(1) lookups instead of O(n) iteration)
+		CRF_FactionSlotStats bluforStats = slottingMgr.GetFactionStats("BLUFOR");
+		if (bluforStats)
+		{
+			m_iBluforSlots = bluforStats.m_iTotalSlots;
+			m_iTakenBluforSlots = bluforStats.m_iTakenSlots;
+		}
+		else
+		{
+			m_iBluforSlots = 0;
+			m_iTakenBluforSlots = 0;
+		}
 		
-		// Count slots for each faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
-		{			
-			// Skip locked or dead slots
-			if(slotData.GetIsLockedSlot())
-				continue;
-			
-			// Increment appropriate faction counter
-			switch(slotData.GetSlotFactionKey())
-			{
-				case "BLUFOR":
-					m_iBluforSlots++;
-					if(slotData.GetSlotCurrentPlayerId() > 0) 
-						m_iTakenBluforSlots++;
-					break;
-					
-				case "OPFOR":
-					m_iOpforSlots++;
-					if(slotData.GetSlotCurrentPlayerId() > 0) 
-						m_iTakenOpforSlots++;
-					break;
-					
-				case "INDFOR":
-					m_iIndforSlots++;
-					if(slotData.GetSlotCurrentPlayerId() > 0) 
-						m_iTakenIndforSlots++;
-					break;
-					
-				case "CIV":
-					m_iCivSlots++;
-					if(slotData.GetSlotCurrentPlayerId() > 0) 
-						m_iTakenCivSlots++;
-					break;
-			}
+		CRF_FactionSlotStats opforStats = slottingMgr.GetFactionStats("OPFOR");
+		if (opforStats)
+		{
+			m_iOpforSlots = opforStats.m_iTotalSlots;
+			m_iTakenOpforSlots = opforStats.m_iTakenSlots;
+		}
+		else
+		{
+			m_iOpforSlots = 0;
+			m_iTakenOpforSlots = 0;
+		}
+		
+		CRF_FactionSlotStats indforStats = slottingMgr.GetFactionStats("INDFOR");
+		if (indforStats)
+		{
+			m_iIndforSlots = indforStats.m_iTotalSlots;
+			m_iTakenIndforSlots = indforStats.m_iTakenSlots;
+		}
+		else
+		{
+			m_iIndforSlots = 0;
+			m_iTakenIndforSlots = 0;
+		}
+		
+		CRF_FactionSlotStats civStats = slottingMgr.GetFactionStats("CIV");
+		if (civStats)
+		{
+			m_iCivSlots = civStats.m_iTotalSlots;
+			m_iTakenCivSlots = civStats.m_iTakenSlots;
+		}
+		else
+		{
+			m_iCivSlots = 0;
+			m_iTakenCivSlots = 0;
 		}
 	}
 	
 	/**
 	 * Updates the slot display UI with current data
 	 * Shows available slots for the selected faction
+	 * Uses indexed faction slot lookup instead of iterating all slots
 	 */
 	void UpdateSlots()
 	{
-		// Re-initialize slot counts
+		// Re-initialize slot counts (now uses cached stats)
 		InitSlots();
 		
 		// Clear existing UI lists
 		m_cSlotListBoxComponent.Clear();
 		m_cOrbatListBoxComponent.Clear();
+		
+		// Clear cached elements
+		if (!m_mSlotElements)
+			m_mSlotElements = new map<int, SCR_ListBoxElementComponent>();
+		else
+			m_mSlotElements.Clear();
+			
+		if (!m_aVisibleSlotIds)
+			m_aVisibleSlotIds = new array<int>();
+		else
+			m_aVisibleSlotIds.Clear();
 		
 		// Exit if no faction is selected
 		if(!m_fSelectedFaction)
@@ -638,19 +699,262 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Update UI border colors to match selected faction
 		UpdateUIBorderColors();
 		
-		// Get slot data and groups for the selected faction
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		// Get groups for the selected faction
 		array<SCR_AIGroup> groups = GetPlayableGroupsForSelectedFaction();
+		
+		// Get only slots for this faction instead of all slots
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		array<int> factionSlotIds = slottingMgr.GetSlotsForFaction(m_fSelectedFaction.GetFactionKey());
+		
+		// Build a map for fast slot lookup
+		map<int, ref CRF_SlotDataContainer> slotMap = new map<int, ref CRF_SlotDataContainer>();
+		if (factionSlotIds)
+		{
+			foreach (int slotId : factionSlotIds)
+			{
+				CRF_SlotDataContainer slotData = slottingMgr.GetSlotData(slotId);
+				if (slotData)
+					slotMap.Set(slotId, slotData);
+			}
+		}
 		
 		// Populate UI with groups and slots
 		PopulateGroupsAndSlots(groups, slotMap);
 		
 		// Reset selected player if they are now in a slot
-		if(CRF_SlottingManager.GetInstance().IsPlayerInASlot(m_iSelectedplayerId))
+		if(slottingMgr.IsPlayerInASlot(m_iSelectedplayerId))
 			m_iSelectedplayerId = 0;
 		
 		// Update unslotted players list
 		UpdateUnslottedPlayersList();
+	}
+	
+	//---------------------------------------------------------------------
+	// Delta-based Update Methods
+	//---------------------------------------------------------------------
+	
+	/**
+	 * Updates a single slot when its player assignment changes
+	 * Only updates the affected slot instead of full rebuild
+	 * @param slotId - ID of the slot that changed
+	 * @param oldPlayerId - Previous player ID (0 if empty)
+	 * @param newPlayerId - New player ID (0 if empty)
+	 */
+	protected void OnSlotPlayerChanged(int slotId, int oldPlayerId, int newPlayerId)
+	{
+		// Check if slot belongs to currently selected faction
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		CRF_SlotDataContainer slotData = slottingMgr.GetSlotData(slotId);
+		if (!slotData)
+			return;
+			
+		// If not our faction, ignore (not visible)
+		if (!m_fSelectedFaction || slotData.GetSlotFactionKey() != m_fSelectedFaction.GetFactionKey())
+			return;
+		
+		// Only update if this slot is currently visible
+		if (!m_aVisibleSlotIds || !m_aVisibleSlotIds.Contains(slotId))
+		{
+			// Slot should be visible but isn't in cache - do full rebuild
+			UpdateSlots();
+			return;
+		}
+			
+		// Get the cached UI element for this slot
+		CRF_ListBoxElementComponent slotElement = CRF_ListBoxElementComponent.Cast(m_mSlotElements.Get(slotId));
+		if (!slotElement)
+		{
+			// Element not in cache, do full update
+			UpdateSlots();
+			return;
+		}
+		
+		// Update player name display
+		string playerName = "";
+		Widget disconnectWidget = null;
+		
+		if (newPlayerId > 0)
+		{
+			// Get cached player name
+			playerName = GetCachedPlayerName(newPlayerId);
+			
+			// Update disconnect indicator visibility
+			disconnectWidget = slotElement.GetDisconnectWidget();
+			if (disconnectWidget)
+			{
+				bool isConnected = GetGame().GetPlayerManager().IsPlayerConnected(newPlayerId);
+				disconnectWidget.SetVisible(!isConnected);
+			}
+		}
+		else
+		{
+			// Slot is now empty
+			playerName = "";
+			
+			// Hide disconnect widget
+			disconnectWidget = slotElement.GetDisconnectWidget();
+			if (disconnectWidget)
+				disconnectWidget.SetVisible(false);
+		}
+		
+		// Update the player text on the UI element
+		slotElement.SetPlayerText(playerName);
+		
+		// Update faction stats display (lightweight)
+		OnFactionStatsChanged(slotData.GetSlotFactionKey());
+		
+		// Update unslotted players list if needed
+		UpdateUnslottedPlayersList();
+	}
+	
+	/**
+	 * Updates a single slot when its locked state changes
+	 * Only updates the affected slot instead of full rebuild
+	 * @param slotId - ID of the slot that changed
+	 * @param isLocked - New locked state
+	 */
+	protected void OnSlotLockedChanged(int slotId, bool isLocked)
+	{
+		bool isAdmin = SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId());
+		
+		// Get slot data to check visibility rules
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		CRF_SlotDataContainer slotData = slottingMgr.GetSlotData(slotId);
+		if (!slotData)
+			return;
+		
+		// If not our faction, ignore
+		if (!m_fSelectedFaction || slotData.GetSlotFactionKey() != m_fSelectedFaction.GetFactionKey())
+			return;
+		
+		// Non-admins can't see empty locked slots - need full rebuild to hide/show
+		if (!isAdmin && isLocked && slotData.GetSlotCurrentPlayerId() <= 0)
+		{
+			UpdateSlots(); // Full rebuild to remove slot from view
+			return;
+		}
+		
+		// If unlocking a slot that non-admins couldn't see, need full rebuild to show it
+		if (!isAdmin && !isLocked)
+		{
+			UpdateSlots(); // Full rebuild to add slot to view
+			return;
+		}
+		
+		// For admins or taken locked slots, just update the lock icon
+		CRF_ListBoxElementComponent slotElement = CRF_ListBoxElementComponent.Cast(m_mSlotElements.Get(slotId));
+		if (!slotElement)
+		{
+			// Not visible or not cached - might need rebuild
+			if (m_aVisibleSlotIds && m_aVisibleSlotIds.Contains(slotId))
+			{
+				UpdateSlots(); // Should be visible but not cached
+			}
+			return;
+		}
+		
+		// Update lock icon for admins
+		if (isAdmin)
+		{
+			if (isLocked)
+			{
+				slotElement.SetLockImage("{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds", "lockimage");
+			}
+			else
+			{
+				// Clear lock image by setting empty resource
+				slotElement.SetLockImage("", "");
+			}
+		}
+		
+		// Update faction stats display
+		OnFactionStatsChanged(slotData.GetSlotFactionKey());
+	}
+	
+	/**
+	 * Updates a single slot when player death state changes
+	 * Only updates the affected slot instead of full rebuild
+	 * @param slotId - ID of the slot that changed
+	 * @param isDead - New death state
+	 */
+	protected void OnSlotDeathChanged(int slotId, bool isDead)
+	{
+		// Get slot data
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		CRF_SlotDataContainer slotData = slottingMgr.GetSlotData(slotId);
+		if (!slotData)
+			return;
+		
+		// If not our faction, ignore
+		if (!m_fSelectedFaction || slotData.GetSlotFactionKey() != m_fSelectedFaction.GetFactionKey())
+			return;
+		
+		// Dead slots are hidden from the slot list, so this requires a rebuild
+		// (Dead players are tracked separately in group stats but not shown in slot UI)
+		if (isDead)
+		{
+			// Slot should be removed from view
+			UpdateSlots();
+			return;
+		}
+		
+		// If un-dead (respawn?), the slot should reappear
+		UpdateSlots();
+		
+		// Note: Could optimize this further by removing/adding just this element
+		// but slot list order matters, so safest to rebuild for now
+		
+		// Update faction stats
+		OnFactionStatsChanged(slotData.GetSlotFactionKey());
+	}
+	
+	/**
+	 * Updates faction statistics display when stats change
+	 * Only updates stat displays instead of full rebuild
+	 * @param factionKey - Key of the faction whose stats changed
+	 */
+	protected void OnFactionStatsChanged(string factionKey)
+	{
+		// Update the cached slot counts
+		InitSlots();
+		
+		// Update faction button displays if needed
+		// The faction buttons show taken/total slots
+		// This is a lightweight update compared to full rebuild
+		SetupRatioDisplay();
+	}
+	
+	/**
+	 * Gets a cached player name or fetches it if not cached
+	 * @param playerId - ID of the player
+	 * @return Player name string
+	 */
+	protected string GetCachedPlayerName(int playerId)
+	{
+		if (!m_mPlayerNames)
+			m_mPlayerNames = new map<int, string>();
+			
+		string cachedName = m_mPlayerNames.Get(playerId);
+		if (!cachedName.IsEmpty())
+			return cachedName;
+			
+		// Fetch and cache the name
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		m_mPlayerNames.Set(playerId, playerName);
+		return playerName;
+	}
+	
+	/**
+	 * Clears all UI element caches
+	 * Should be called when doing a full UI rebuild
+	 */
+	protected void ClearUICache()
+	{
+		if (m_mSlotElements)
+			m_mSlotElements.Clear();
+		if (m_aVisibleSlotIds)
+			m_aVisibleSlotIds.Clear();
+		// Don't clear player name cache - names don't change
 	}
 	
 	/**
@@ -792,6 +1096,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
 				slotStored.Insert(slotId);
 				
+				// Cache the slot element and mark as visible
+				SCR_ListBoxElementComponent slotElement = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
+				if (slotElement)
+				{
+					m_mSlotElements.Set(slotId, slotElement);
+					m_aVisibleSlotIds.Insert(slotId);
+				}
+				
 				// Count players
 				if (slotData.GetSlotCurrentPlayerId() >= 0)
 					playersInGroup++;
@@ -799,7 +1111,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				// Set player text if slot is taken
 				if (slotData.GetSlotCurrentPlayerId() > 0)
 				{
-					string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
+					// Use cached player name
+					string playerName = GetCachedPlayerName(slotData.GetSlotCurrentPlayerId());
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
 					
 					// Show disconnect indicator if player not connected
