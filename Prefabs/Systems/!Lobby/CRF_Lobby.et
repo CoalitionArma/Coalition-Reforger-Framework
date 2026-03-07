@@ -69,6 +69,10 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    m_iKillFeedType DISABLED
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   components {
+    SCR_PossessSpawnHandlerComponent "{5CD2D126BEF315B9}" {
+    }
+   }
    m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
    }
    m_sLoadingLayout ""
