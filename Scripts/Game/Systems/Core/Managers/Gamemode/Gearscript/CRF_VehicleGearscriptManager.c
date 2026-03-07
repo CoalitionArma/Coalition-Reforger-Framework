@@ -333,6 +333,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] factionKey The key identifying the faction to use for gear configuration
 	void SetVehicleGear(IEntity vehicle, string factionKey)
 	{
+		// Check if vehicle still exists (prevents crash when vehicle is deleted during queued operation)
+		if (!vehicle)
+			return;
+		
 		// Cache GetGame() reference - PERFORMANCE OPTIMIZATION
 		ChimeraGame game = GetGame();
 		
@@ -430,6 +434,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
 	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
 	{
+		// Check if truck still exists (prevents crash when vehicle is deleted)
+		if (!truck)
+			return;
+		
 		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
 		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
