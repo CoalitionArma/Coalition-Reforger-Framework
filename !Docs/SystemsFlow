@@ -1,0 +1,626 @@
+# Coalition Reforger Framework (CRF) - Complete Systems Flowchart
+
+## Main System Architecture
+
+```mermaid
+graph TB
+    subgraph "GAME ENTRY POINT"
+        GAME[Game Start] --> GAMEMODE[CRF_Gamemode]
+    end
+    
+    subgraph "CORE MANAGERS"
+        GAMEMODE --> GM[CRF_GamemodeManager]
+        GAMEMODE --> SM[CRF_SlottingManager]
+        GAMEMODE --> RM[CRF_RespawnManager]
+        GAMEMODE --> SSM[CRF_SafestartManager]
+        GAMEMODE --> GSM[CRF_GearscriptManager]
+        GAMEMODE --> RBM[CRF_RplBroadcastManager]
+        GAMEMODE --> PM[CRF_PermissionManager]
+        GAMEMODE --> LM[CRF_LoggingManager]
+        GAMEMODE --> GRBM[CRF_GarbageManager]
+    end
+    
+    subgraph "PLAYER SYSTEMS"
+        PC[Player Connects] --> GM
+        GM --> PI[Player Initialization]
+        PI --> |Spectator| SPEC[Create Spectator Entity]
+        PI --> |Slotted| SLOT[Create Playable Character]
+        SLOT --> GSM
+        GSM --> GEAR[Apply Gearscript]
+        GEAR --> DONE[Player Ready]
+    end
+    
+    subgraph "GAME STATES"
+        STATE[Game State Manager] --> BRIEFING[BRIEFING Phase]
+        BRIEFING --> SLOTTING[SLOTTING Phase]
+        SLOTTING --> GAME[GAME Phase]
+        GAME --> AAR[AAR Phase]
+    end
+```
+
+---
+
+## Detailed System Breakdown
+
+### 1. Core Gamemode System
+
+```mermaid
+graph LR
+    subgraph "CRF_Gamemode Entity"
+        INIT[EOnInit] --> MANAGERS[Initialize Managers]
+        MANAGERS --> CONFIG[Load Configurations]
+        CONFIG --> PLAYER_INIT[Player Init System]
+        
+        MANAGERS --> GM[GamemodeManager]
+        MANAGERS --> SM[SlottingManager]
+        MANAGERS --> RM[RespawnManager]
+        MANAGERS --> SSM[SafestartManager]
+        MANAGERS --> GSM[GearscriptManager]
+        MANAGERS --> RBM[RplBroadcastManager]
+        MANAGERS --> PM[PermissionManager]
+        MANAGERS --> LM[LoggingManager]
+        MANAGERS --> GRBM[GarbageManager]
+    end
+```
+
+---
+
+### 2. Player Initialization Flow
+
+```mermaid
+flowchart TD
+    START[Player Connects] --> GET_CONTROLLER[Get PlayerController]
+    GET_CONTROLLER --> CHECK_SLOT{Player in Slot?}
+    
+    CHECK_SLOT -->|No| SPECTATOR[Spectator Path]
+    CHECK_SLOT -->|Yes| PLAYABLE[Playable Character Path]
+    
+    subgraph "Spectator Path"
+        SPECTATOR --> CREATE_SPEC[CreateSpectatorEntity]
+        CREATE_SPEC --> CHECK_EXISTING{Existing Spectator?}
+        CHECK_EXISTING -->|Yes| REUSE[Reuse Existing]
+        CHECK_EXISTING -->|No| SPAWN_SPEC[Spawn New Spectator]
+        SPAWN_SPEC --> ASSIGN_SPEC[SetInitialMainEntity]
+        REUSE --> ASSIGN_SPEC
+        ASSIGN_SPEC --> SPEC_FACTION[Assign SPEC Faction]
+    end
+    
+    subgraph "Playable Character Path"
+        PLAYABLE --> CAPTURE_OLD[Capture Old Entity]
+        CAPTURE_OLD --> GET_OR_CREATE[GetOrCreatePlayableCharacter]
+        GET_OR_CREATE --> CHECK_EXISTS{Character Exists?}
+        CHECK_EXISTS -->|Yes| REUSE_CHAR[Reuse Character]
+        CHECK_EXISTS -->|No| SPAWN_CHAR[SpawnPlayableEntity]
+        SPAWN_CHAR --> APPLY_GEAR[Apply Gearscript]
+        REUSE_CHAR --> NOTIFY_DC[Notify DataCollector]
+        APPLY_GEAR --> NOTIFY_DC
+        NOTIFY_DC --> DELETE_OLD[Delete Old Entity]
+        DELETE_OLD --> ASSIGN_FACTION[Assign Faction]
+    end
+    
+    SPEC_FACTION --> INITIALIZE[InitializePlayerCharacter]
+    ASSIGN_FACTION --> INITIALIZE
+    INITIALIZE --> VERIFY[VerifyCharacterAssignment]
+    VERIFY --> CHECK_SUCCESS{Assignment OK?}
+    CHECK_SUCCESS -->|No| RETRY[Retry Assignment]
+    RETRY --> VERIFY
+    CHECK_SUCCESS -->|Yes| ASSIGN_GROUP[Assign to Group]
+    ASSIGN_GROUP --> BROADCAST[Broadcast Player Ready]
+    BROADCAST --> END[Player Initialized]
+```
+
+---
+
+### 3. Slotting System
+
+```mermaid
+flowchart TD
+    START[SlottingManager Init] --> INIT_SLOTS[Initialize Slots]
+    
+    subgraph "Slot Initialization"
+        INIT_SLOTS --> BLUFOR[Initialize BLUFOR Slots]
+        INIT_SLOTS --> OPFOR[Initialize OPFOR Slots]
+        INIT_SLOTS --> INDFOR[Initialize INDFOR Slots]
+        INIT_SLOTS --> CIV[Initialize CIV Slots]
+        
+        BLUFOR --> CREATE_SLOTS[Create Slot Data Containers]
+        OPFOR --> CREATE_SLOTS
+        INDFOR --> CREATE_SLOTS
+        CIV --> CREATE_SLOTS
+    end
+    
+    CREATE_SLOTS --> SLOT_MAP[Store in m_mSlotsMap]
+    
+    subgraph "Player Slot Assignment"
+        PLAYER_ACTION[Player Selects Slot] --> CHECK_PERM{Has Permission?}
+        CHECK_PERM -->|No| DENY[Deny Request]
+        CHECK_PERM -->|Yes| CHECK_STATE{Slotting State OK?}
+        CHECK_STATE -->|No| DENY
+        CHECK_STATE -->|Yes| CHECK_OCCUPIED{Slot Available?}
+        CHECK_OCCUPIED -->|No| DENY
+        CHECK_OCCUPIED -->|Yes| ASSIGN[Assign Player to Slot]
+        ASSIGN --> SPAWN[SpawnPlayableEntity]
+        SPAWN --> UPDATE_UI[Update Slotting UI]
+    end
+    
+    subgraph "Slot States"
+        LOCKED[LOCKED - No Changes]
+        LEADERS[LEADERSANDMEDICS - Priority Only]
+        EVERYONE[EVERYONE - All Roles Open]
+    end
+```
+
+---
+
+### 4. Gearscript System
+
+```mermaid
+flowchart TD
+    START[SetEntityGear Called] --> CHECK_RACING{Already Being Geared?}
+    CHECK_RACING -->|Yes| SKIP[Skip - Race Condition]
+    CHECK_RACING -->|No| MARK[Mark as Being Geared]
+    
+    MARK --> GET_FACTION[Determine Faction]
+    GET_FACTION --> GET_CONFIG[Load Gearscript Config]
+    GET_CONFIG --> CLEAR[Clear Existing Gear]
+    CLEAR --> DELAY[500ms Delay]
+    
+    DELAY --> APPLY_CLOTHING[Apply Clothing]
+    APPLY_CLOTHING --> WAIT[500ms Wait]
+    
+    WAIT --> CONSOLIDATED[ApplyGearConsolidated]
+    
+    subgraph "Consolidated Gear Application"
+        CONSOLIDATED --> WEAPONS[Apply Weapons]
+        CONSOLIDATED --> ITEMS[Apply Inventory Items]
+        CONSOLIDATED --> RADIOS[Initialize Radios]
+        
+        WEAPONS --> CHECK_CUSTOM{Custom Weapons?}
+        CHECK_CUSTOM -->|Yes| CUSTOM_WEP[Apply Custom Weapons]
+        CHECK_CUSTOM -->|No| DEFAULT_WEP[Apply Default Weapons]
+        
+        DEFAULT_WEP --> SELECT_WEP[Select Weapons by Role]
+        SELECT_WEP --> SPAWN_WEP[Spawn Weapons]
+        SPAWN_WEP --> ADD_MAGS[Add Magazines]
+        
+        CUSTOM_WEP --> SPAWN_CUSTOM[Spawn Custom Loadout]
+        SPAWN_CUSTOM --> ADD_MAGS
+        
+        ITEMS --> DEFAULT_ITEMS[Default Inventory Items]
+        ITEMS --> MEDICAL[Medical Items]
+        ITEMS --> ROLE_ITEMS[Role-Specific Items]
+        
+        DEFAULT_ITEMS --> RADIOS
+        MEDICAL --> RADIOS
+        ROLE_ITEMS --> RADIOS
+    end
+    
+    RADIOS --> ATTACH_DELAY[1200ms Attachment Delay]
+    ATTACH_DELAY --> FINISH[Mark Gearing Complete]
+    FINISH --> READY[Entity Ready]
+```
+
+---
+
+### 5. Safestart System
+
+```mermaid
+flowchart TD
+    START[SafestartManager Init] --> FRAME[Fixed Frame Updates]
+    
+    FRAME --> CHECK_INIT{Init Complete?}
+    CHECK_INIT -->|No| UPDATE_FACTIONS[Update Played Factions]
+    CHECK_INIT -->|Yes| CHECK_ACTIVE{Safestart Active?}
+    
+    UPDATE_FACTIONS --> COUNT_PLAYERS[Count Slotted Players by Faction]
+    COUNT_PLAYERS --> READY_CHECK[Check Faction Ready Status]
+    
+    CHECK_ACTIVE -->|Yes| COUNTDOWN{Countdown Mode?}
+    CHECK_ACTIVE -->|No| FRAME
+    
+    COUNTDOWN -->|Yes| TIME_COUNTDOWN[Decrement Timer]
+    COUNTDOWN -->|No| READY_COUNTDOWN[Check All Factions Ready]
+    
+    TIME_COUNTDOWN --> ZERO{Timer = 0?}
+    ZERO -->|Yes| END_SAFESTART[End Safestart]
+    ZERO -->|No| FRAME
+    
+    READY_COUNTDOWN --> ALL_READY{All Ready?}
+    ALL_READY -->|Yes| END_SAFESTART
+    ALL_READY -->|No| FRAME
+    
+    subgraph "Safestart Effects"
+        END_SAFESTART --> REMOVE_GOD[Remove God Mode]
+        END_SAFESTART --> KILL_UNITS[Kill Redundant Units]
+        END_SAFESTART --> START_TIMER[Start Game Timer]
+        END_SAFESTART --> BROADCAST[Broadcast to Clients]
+    end
+    
+    BROADCAST --> GAME_START[Game Phase Active]
+```
+
+---
+
+### 6. Respawn System
+
+```mermaid
+flowchart TD
+    START[Player Dies] --> MARK_DEAD[Mark Player as Dead]
+    MARK_DEAD --> CHECK_TICKETS{Faction Has Tickets?}
+    
+    CHECK_TICKETS -->|No| PERMANENT_DEAD[Spectator Only]
+    CHECK_TICKETS -->|Yes| DECREMENT[Decrement Ticket]
+    
+    DECREMENT --> WAVE_SYSTEM{Wave Respawn?}
+    WAVE_SYSTEM -->|Yes| WAIT_WAVE[Wait for Respawn Wave]
+    WAVE_SYSTEM -->|No| INSTANT[Instant Respawn Available]
+    
+    WAIT_WAVE --> WAVE_TIMER{Wave Timer Ready?}
+    WAVE_TIMER -->|No| WAIT_WAVE
+    WAVE_TIMER -->|Yes| PROCESS_WAVE[Process Respawn Wave]
+    
+    PROCESS_WAVE --> BATCH[Batch All Waiting Players]
+    BATCH --> RESPAWN_EACH[Respawn Each Player]
+    
+    INSTANT --> PLAYER_REQUEST[Player Requests Respawn]
+    PLAYER_REQUEST --> RESPAWN_EACH
+    
+    subgraph "Respawn Process"
+        RESPAWN_EACH --> FIND_POINT[Find Respawn Point]
+        FIND_POINT --> GET_SLOT[Get Player Slot]
+        GET_SLOT --> SPAWN_NEW[Spawn New Character]
+        SPAWN_NEW --> APPLY_GEAR[Apply Gearscript]
+        APPLY_GEAR --> ASSIGN_PLAYER[Assign to Player]
+    end
+    
+    ASSIGN_PLAYER --> BACK_IN_GAME[Player Respawned]
+```
+
+---
+
+### 7. Network Replication System
+
+```mermaid
+flowchart LR
+    subgraph "Server Authority"
+        SERVER[Server] --> RPC_BROADCAST[Broadcast RPCs]
+        SERVER --> STATE_SYNC[State Synchronization]
+        SERVER --> SLOT_UPDATES[Slot Updates]
+    end
+    
+    subgraph "Replication Manager"
+        RPC_BROADCAST --> RBM[RplBroadcastManager]
+        RBM --> BATCH[Batch System]
+        BATCH --> COMPRESS[Compress Data]
+        COMPRESS --> TELEMETRY[Bandwidth Telemetry]
+    end
+    
+    subgraph "Client Reception"
+        TELEMETRY --> CLIENTS[All Clients]
+        CLIENTS --> UPDATE_UI[Update UI]
+        CLIENTS --> UPDATE_STATE[Update Local State]
+        CLIENTS --> PLAY_EFFECTS[Play Effects]
+    end
+    
+    subgraph "Client to Server"
+        CLIENT_ACTION[Client Action] --> VALIDATE[Validate Permission]
+        VALIDATE --> RPC_SERVER[RPC to Server]
+        RPC_SERVER --> AUTHORITY[Process on Server]
+        AUTHORITY --> BROADCAST_RESULT[Broadcast Result]
+    end
+```
+
+---
+
+### 8. Permission System
+
+```mermaid
+flowchart TD
+    START[Permission Check] --> CHECK_ADMIN{Is Admin?}
+    CHECK_ADMIN -->|Yes| GRANT[Grant Permission]
+    CHECK_ADMIN -->|No| CHECK_MODERATOR{Is Moderator?}
+    
+    CHECK_MODERATOR -->|Yes| CHECK_MOD_PERM{Has Mod Permission?}
+    CHECK_MODERATOR -->|No| CHECK_DONATOR{Is Donator?}
+    
+    CHECK_MOD_PERM -->|Yes| GRANT
+    CHECK_MOD_PERM -->|No| DENY[Deny Permission]
+    
+    CHECK_DONATOR -->|Yes| CHECK_DON_PERM{Has Donator Perk?}
+    CHECK_DONATOR -->|No| CHECK_BASE{Has Base Permission?}
+    
+    CHECK_DON_PERM -->|Yes| GRANT
+    CHECK_DON_PERM -->|No| DENY
+    
+    CHECK_BASE -->|Yes| GRANT
+    CHECK_BASE -->|No| DENY
+    
+    subgraph "Permission Types"
+        ADMIN_PERMS[Admin: Full Control]
+        MOD_PERMS[Moderator: Limited Admin]
+        DONATOR_PERMS[Donator: Priority Slots]
+        BASE_PERMS[Base: Standard Access]
+    end
+```
+
+---
+
+### 9. UI Menu System
+
+```mermaid
+flowchart TD
+    START[Menu System] --> CHECK_STATE{Game State}
+    
+    CHECK_STATE -->|BRIEFING| BRIEFING_MENU[CRF_BriefingMenu]
+    CHECK_STATE -->|SLOTTING| SLOTTING_MENU[CRF_SlottingMenu]
+    CHECK_STATE -->|GAME| GAME_MENUS[Game Phase Menus]
+    CHECK_STATE -->|AAR| AAR_MENU[CRF_AARMenu]
+    
+    subgraph "Briefing Menu"
+        BRIEFING_MENU --> MISSION_INFO[Display Mission Info]
+        BRIEFING_MENU --> WEATHER[Show Weather]
+        BRIEFING_MENU --> ADVANCE_BTN[Advance to Slotting Button]
+    end
+    
+    subgraph "Slotting Menu"
+        SLOTTING_MENU --> FACTION_TABS[Faction Tabs]
+        SLOTTING_MENU --> SLOT_LIST[Slot List Display]
+        SLOTTING_MENU --> SLOT_ACTION[Slot Selection Actions]
+        SLOT_ACTION --> REQUEST_SLOT[Request Slot from Server]
+    end
+    
+    subgraph "Game Phase Menus"
+        GAME_MENUS --> SPECTATOR{Is Spectator?}
+        SPECTATOR -->|Yes| SPEC_MENU[Spectator Menu]
+        SPECTATOR -->|No| MAP_MENU[Map & Markers]
+        
+        SPEC_MENU --> PLAYER_LIST[Player List]
+        SPEC_MENU --> VON_CHANNELS[VON Channels]
+        
+        MAP_MENU --> RESPAWN_UI[Respawn Interface]
+    end
+    
+    subgraph "Admin Menu"
+        ADMIN_OPEN[Admin Menu] --> PHASE_CONTROL[Phase Control]
+        ADMIN_OPEN --> PLAYER_MGMT[Player Management]
+        ADMIN_OPEN --> TICKET_MGMT[Ticket Management]
+        ADMIN_OPEN --> SPAWN_TOOLS[Spawn Tools]
+    end
+```
+
+---
+
+### 10. Component Systems
+
+```mermaid
+graph TB
+    subgraph "Additional Systems"
+        VEHICLE_DEPOT[Vehicle Depot System]
+        VEHICLE_SPAWN[Vehicle Spawning]
+        FORWARD_DEPLOY[Forward Deploy Manager]
+        AIRDROP[Airdrop System]
+        PARACHUTE[Parachute System]
+        NUKE[Nuke System]
+        BUILDING[Building System]
+        SIGHT_ARSENAL[Sight Arsenal]
+        BATTLE_ROYALE[Battle Royale Mode]
+    end
+    
+    subgraph "Mission Validators"
+        VALIDATOR[Mission Validator Manager]
+        VALIDATOR --> CHECK_ENTITIES[Check Required Entities]
+        VALIDATOR --> CHECK_COMPONENTS[Check Components]
+        VALIDATOR --> CHECK_CONFIG[Validate Configurations]
+    end
+    
+    subgraph "Telemetry & Logging"
+        BANDWIDTH[Bandwidth Telemetry]
+        LOGGING[Event Logging]
+        DEBUG[Debug System]
+        LOGGING --> FILE_OUTPUT[Log File Output]
+        LOGGING --> BACKEND[Backend API Integration]
+    end
+    
+    subgraph "Game Timer System"
+        TIMER_MGR[GameTimerManager]
+        TIMER_MGR --> MISSION_TIME[Mission Timer]
+        TIMER_MGR --> SAFESTART_TIME[Safestart Timer]
+        TIMER_MGR --> AAR_TIME[AAR Timer]
+    end
+```
+
+---
+
+### 11. Garbage Collection System
+
+```mermaid
+flowchart TD
+    START[GarbageManager] --> FRAME_CHECK[Frame Check]
+    FRAME_CHECK --> SCAN[Scan for Dead Entities]
+    
+    SCAN --> CHECK_DISTANCE{Player Nearby?}
+    CHECK_DISTANCE -->|Yes| SKIP[Skip - Keep Visible]
+    CHECK_DISTANCE -->|No| CHECK_TIME{Cleanup Time Elapsed?}
+    
+    CHECK_TIME -->|No| WAIT[Wait Longer]
+    CHECK_TIME -->|Yes| CHECK_IMPORTANT{Important Entity?}
+    
+    CHECK_IMPORTANT -->|Yes| DELAY_CLEANUP[Delay Cleanup]
+    CHECK_IMPORTANT -->|No| DELETE[Delete Entity]
+    
+    DELETE --> CLEAR_REFS[Clear References]
+    CLEAR_REFS --> LOG[Log Deletion]
+    
+    subgraph "Cleanup Categories"
+        DEAD_BODIES[Dead Characters]
+        DESTROYED_VEHICLES[Destroyed Vehicles]
+        ABANDONED_ITEMS[Abandoned Items]
+        DEBRIS[Map Debris]
+    end
+```
+
+---
+
+### 12. Logging System
+
+```mermaid
+flowchart TD
+    START[Event Occurs] --> DETERMINE_TYPE{Event Type}
+    
+    DETERMINE_TYPE -->|Player| PLAYER_EVENT[Player Event]
+    DETERMINE_TYPE -->|Combat| COMBAT_EVENT[Combat Event]
+    DETERMINE_TYPE -->|Vehicle| VEHICLE_EVENT[Vehicle Event]
+    DETERMINE_TYPE -->|Admin| ADMIN_EVENT[Admin Event]
+    
+    subgraph "Player Events"
+        PLAYER_EVENT --> CONNECT[Connect/Disconnect]
+        PLAYER_EVENT --> SLOT_CHANGE[Slot Changes]
+        PLAYER_EVENT --> SPAWN[Spawn/Respawn]
+        PLAYER_EVENT --> DEATH[Death]
+    end
+    
+    subgraph "Combat Events"
+        COMBAT_EVENT --> DAMAGE[Damage Dealt]
+        COMBAT_EVENT --> KILL[Player Kill]
+        COMBAT_EVENT --> TEAMKILL[Team Kill]
+    end
+    
+    subgraph "Logging Output"
+        CONNECT --> FORMAT[Format Log Entry]
+        SLOT_CHANGE --> FORMAT
+        SPAWN --> FORMAT
+        DEATH --> FORMAT
+        DAMAGE --> FORMAT
+        KILL --> FORMAT
+        TEAMKILL --> FORMAT
+        VEHICLE_EVENT --> FORMAT
+        ADMIN_EVENT --> FORMAT
+        
+        FORMAT --> FILE[Write to Log File]
+        FORMAT --> BACKEND_API[Backend API Call]
+        FORMAT --> CONSOLE[Console Output]
+    end
+```
+
+---
+
+## System Interaction Summary
+
+### Manager Dependencies
+
+```mermaid
+graph TD
+    GAMEMODE[CRF_Gamemode] --> |Manages| GM[GamemodeManager]
+    GAMEMODE --> |Manages| SM[SlottingManager]
+    GAMEMODE --> |Manages| RM[RespawnManager]
+    
+    GM --> |Uses| SM
+    GM --> |Uses| GSM[GearscriptManager]
+    
+    SM --> |Uses| GM
+    SM --> |Uses| GSM
+    SM --> |Uses| RBM[RplBroadcastManager]
+    
+    RM --> |Uses| GM
+    RM --> |Uses| SM
+    RM --> |Uses| SSM[SafestartManager]
+    
+    SSM --> |Uses| SM
+    SSM --> |Uses| GTM[GameTimerManager]
+    
+    RBM --> |Uses| PM[PermissionManager]
+    RBM --> |Uses| RM
+    RBM --> |Uses| SM
+    
+    GSM --> |Uses| GAMEMODE
+    
+    LM[LoggingManager] --> |Monitors| ALL[All Systems]
+```
+
+---
+
+## Key Data Flow Paths
+
+### 1. Player Join Flow
+```
+Player Connects
+    → PlayerController Created
+    → GamemodeManager.InitializePlayer()
+    → Check Slot Status
+    → Create Spectator OR Spawn Character
+    → Apply Gearscript (if slotted)
+    → Assign to Faction
+    → Assign to Group
+    → Broadcast Player Ready
+```
+
+### 2. Slot Selection Flow
+```
+Player Clicks Slot
+    → Client sends RPC to Server
+    → PermissionManager validates
+    → SlottingManager checks availability
+    → Assign player to slot
+    → Spawn new character entity
+    → GearscriptManager applies loadout
+    → Update UI for all clients
+    → Log event
+```
+
+### 3. Game Phase Transition Flow
+```
+Admin/Timer triggers phase change
+    → Server updates game state
+    → Broadcast RPC to all clients
+    → Clients update UI
+    → Activate/deactivate systems per phase
+    → Log transition
+```
+
+### 4. Respawn Flow
+```
+Player dies
+    → Mark player as dead
+    → Check respawn tickets
+    → Add to respawn queue (if wave)
+    → Wait for wave timer OR player request
+    → Find respawn point
+    → Spawn new character
+    → Apply gearscript
+    → Assign to player
+    → Delete old corpse (via GarbageManager)
+```
+
+---
+
+## Performance Optimizations
+
+### Batching Systems
+- **Slot Updates**: Batched and flushed every 100ms
+- **RPC Calls**: Compressed and rate-limited
+- **Gearscript**: Staggered application with delays
+- **Player Initialization**: Batch processing (8 players per 150ms)
+
+### Caching
+- **Resource Caching**: Gearscript resources cached in memory
+- **Manager References**: Singleton pattern with cached instances
+- **Component Lookups**: Cached component references
+
+### Race Condition Prevention
+- **Gearscript Lock**: Entities marked during gearing to prevent double-application
+- **Slot Assignment**: Server-authoritative with validation
+- **Respawn Queue**: Sequential processing to avoid entity conflicts
+
+---
+
+## Summary
+
+The CRF framework is a sophisticated, modular system with clearly separated concerns:
+
+1. **Core Gamemode** orchestrates all managers
+2. **Managers** handle specific domains (slotting, respawn, gear, etc.)
+3. **Network Layer** handles all client-server communication
+4. **UI Layer** provides player interface
+5. **Utility Systems** handle cleanup, logging, and validation
+
+All systems communicate through well-defined interfaces and use event-driven architecture with invokers for loose coupling.
