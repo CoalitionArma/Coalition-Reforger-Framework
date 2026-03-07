@@ -167,10 +167,10 @@ class CRF_GearScriptConfig
 	ref array<ref CRF_Inventory_Item> m_DefaultInventoryItems;
 	
 	[Attribute(category: "CRF Gearscript - Faction Medical Gear")]
-	ref array<ref CRF_Inventory_Item>  m_InfantryMedicalItems;
+	ref array<ref CRF_Inventory_Item>  m_BasicMedicalItems;
 	
 	[Attribute(category: "CRF Gearscript - Faction Medical Gear")]
-	ref array<ref CRF_Inventory_Item>  m_MedicMedicalItems;
+	ref array<ref CRF_Inventory_Item>  m_AdvancedMedicalItems;
 	
 	[Attribute(category: "CRF Gearscript - Custom Role Settings")]
 	ref array<ref CRF_Role_Custom_Gear> m_RolesToSetCustomSettings;

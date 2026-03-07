@@ -581,14 +581,14 @@ class CRF_GearscriptSystem : GameSystem
 					break;
 
 				case CRF_EGearscriptItems.MEDIC_ITEMS:
-					foreach (CRF_Inventory_Item item : gearConfig.m_MedicMedicalItems)
+					foreach (CRF_Inventory_Item item : gearConfig.m_AdvancedMedicalItems)
 						CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 					break;
 			}
 		}
 		
 		// Default medical items
-		foreach (CRF_Inventory_Item item : gearConfig.m_InfantryMedicalItems)
+		foreach (CRF_Inventory_Item item : gearConfig.m_BasicMedicalItems)
 			CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 		
 		// Default inventory items

@@ -219,13 +219,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			}	
 		}
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_InfantryMedicalItems)
+		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_BasicMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
 		}
 
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_MedicMedicalItems)
+		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_AdvancedMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
 		}

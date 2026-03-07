@@ -7,7 +7,9 @@ class CRF_LoggingHelper
 	//! \param[in] itemType type of item to display (default is "ITEM")
 	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM")
 	{
-		Print(string.Format("[CRF GEARSCRIPT ERROR] : UNABLE TO INSERT %1: %2 \n INTO ENTITY: %3 \n\n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, item.GetPrefabData().GetPrefabName(), entity.GetPrefabData().GetPrefabName()), LogLevel.FATAL);
+		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(item.GetPrefabData().GetPrefabName()), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+		
+		Debug.Error(error);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -17,6 +19,20 @@ class CRF_LoggingHelper
 	//! \param[in] itemType type of item to display (default is "ITEM")
 	static void LogItemError(ResourceName itemResource, IEntity entity, string itemType = "ITEM")
 	{
-		Print(string.Format("[CRF GEARSCRIPT ERROR] : UNABLE TO INSERT %1: %2 \n INTO ENTITY: %3 \n\n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, itemResource, entity.GetPrefabData().GetPrefabName()), LogLevel.FATAL);
+		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(itemResource), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+		
+		Debug.Error(error);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Sanitize Resource Name of its path and extension
+	//! \param[in] resName Resource name to sanitize and strip (kinky)
+	static string SanitizeResourceName(ResourceName resName)
+	{
+		resName = FilePath.StripPath(resName);
+		resName = FilePath.StripExtension(resName);
+		resName.ToUpper();
+		
+		return resName;
 	}
 }
