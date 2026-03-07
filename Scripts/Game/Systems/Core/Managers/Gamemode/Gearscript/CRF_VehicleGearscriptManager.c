@@ -438,7 +438,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		if (!truck)
 			return;
 		
-		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
+		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptSystem.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
 		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
