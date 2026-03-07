@@ -498,31 +498,6 @@ class CRF_SlottingManager : ScriptComponent
 		if (charRplComp)
 			UpdateSlotCharacter(slotId, charRplComp.Id());
 		
-		// Route entity assignment through the base game SCR_SpawnRequestComponent pipeline so that
-		// all data components (SCR_RespawnSystemComponent, SCR_DataCollectorComponent,
-		// SCR_SpawnLockComponent, PreparePlayerEntity_S on all SCR_BaseGameModeComponents, etc.)
-		// are properly notified — identical to how the Editor's SpawnEntityResource assigns a
-		// player character via SCR_PossessSpawnData.
-		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
-			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
-		);
-		
-		if (respawnComponent)
-		{
-			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(playerCharacter);
-			if (!respawnComponent.RequestSpawn(spawnData))
-				Print(string.Format("[CRF_SlottingManager] WARNING: RequestSpawn failed for player %1, entity %2", playerId, playerCharacter), LogLevel.WARNING);
-		}
-		else
-		{
-			// Fallback: SCR_RespawnComponent not yet available (e.g. very early init), assign directly
-			Print(string.Format("[CRF_SlottingManager] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
-			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-			
-			if (playerController)
-				playerController.SetInitialMainEntity(playerCharacter);
-		}
-		
 		return playerCharacter;
 	}
 	

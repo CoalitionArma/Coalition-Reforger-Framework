@@ -1,4 +1,4 @@
-CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.et" {
+CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Character_Base.et" {
  ID "520EC961A090B1EE"
  components {
   SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
@@ -21,8 +21,6 @@ CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
    DefaultWeaponIndex 0
-  }
-  FactionAffiliationComponent "{520EC961FB0A2E90}" {
   }
   SCR_CharacterRankComponent "{528E6D4286AA2D8F}" {
    m_iRank CAPTAIN
@@ -48,7 +46,6 @@ CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player
    WeaponSlotIndex 1
   }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
-   Override 1
    Identity Identity "{5584CBC6363C648B}" {
     Name "Patman"
     Alias "Was"
@@ -76,6 +73,8 @@ CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player
     LoadoutSlotInfo Vest {
     }
    }
+  }
+  FactionAffiliationComponent "{520EC961FB0A2E90}" {
   }
  }
  coords 0 0 0

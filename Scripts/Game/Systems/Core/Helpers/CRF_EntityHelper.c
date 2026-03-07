@@ -4,7 +4,6 @@ class CRF_EntityHelper
 	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/!Spectator/CRF_Spectator.et";
 	
 	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
-	// Spectators spawn at 500m altitude to avoid ground collisions
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
 
 	//------------------------------------------------------------------------------------------------
