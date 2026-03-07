@@ -197,8 +197,8 @@ class CRF_ClothingHelper
 		if (!gamemode)
 			return false;
 
+		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.HEADGEAR, CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS, CRF_EGearscriptClothing.VEST, CRF_EGearscriptClothing.ARMOREDVEST};
 		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		
 		foreach (string factionKey : factionKeys)
 		{
@@ -218,7 +218,7 @@ class CRF_ClothingHelper
 			// --- Check default (faction-wide) clothing ---
 			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
 			{
-				if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+				if (restrictedClothing.Contains(clothing.m_iClothingType) && clothing.m_ClothingPrefabs.Contains(itemPrefab))
 					return true;
 			}
 		}

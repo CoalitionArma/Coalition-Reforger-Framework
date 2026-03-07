@@ -213,20 +213,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		// Apply gear
-		SetIdentity(gearConfig, entity)
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Apply clothing to entity based on config
-	//! \param[in] gearConfig Gear configuration
-	//! \param[in] entity Entity to apply randomized head/body to from the identity config of the gear config
-    protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
-    {
-		CRF_Character_Visual_Identity gsVisIdentity;
-		CRF_Character_Sound_Identity gsSndIdentity;
         SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
-		
 		if (!identityComp)
 			return;
 		
@@ -235,14 +222,17 @@ class CRF_GearscriptManager : ScriptComponent
 		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
 		if (!visIdentity || !sndIdentity)
 			return;
+			
+		CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
 		
-	CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
-	
-	if (gsCharIdentity)
-	{
-		if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
-			gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
-				gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
+		if (gsCharIdentity)
+		{
+			CRF_Character_Visual_Identity gsVisIdentity;
+			CRF_Character_Sound_Identity gsSndIdentity;
+			
+			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
+				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
+					gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
 			
 			if (gsVisIdentity)
 			{
