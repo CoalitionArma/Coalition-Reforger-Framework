@@ -40,6 +40,9 @@ class CRF_MissionValidatorManager : ScriptComponent
 	protected bool m_bValidationComplete = false;
 	protected bool m_bHudNotificationShown = false;
 	
+	// Singleton instance
+	protected static CRF_MissionValidatorManager s_Instance;
+	
 	//------------------------------------------------------------------------------------
 	// INITIALIZATION
 	//------------------------------------------------------------------------------------
@@ -47,6 +50,9 @@ class CRF_MissionValidatorManager : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
+		
+		// Set singleton instance
+		s_Instance = this;
 		
 		// Only run on server
 		if (!Replication.IsServer())
@@ -487,23 +493,30 @@ class CRF_MissionValidatorManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! Add a critical error
-	protected void AddCriticalError(string message)
+	void AddCriticalError(string message)
 	{
 		m_aCriticalErrors.Insert(message);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Add a warning
-	protected void AddWarning(string message)
+	void AddWarning(string message)
 	{
 		m_aWarnings.Insert(message);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Add an info message
-	protected void AddInfo(string message)
+	void AddInfo(string message)
 	{
 		m_aInfoMessages.Insert(message);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Get singleton instance
+	static CRF_MissionValidatorManager GetInstance()
+	{
+		return s_Instance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -711,8 +711,27 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				{
 					if (!calculateSupplies)
 						suppliesNeeded += mag.GetMaxAmmoCount();
+					
+					// Check magazine capacity vs required ammo
 					if (mag.GetMaxAmmoCount() < bulletsToAdd)
-						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
+					{
+						string errorMsg = string.Format("Magazine '%1' has insufficient max ammo for gearscript. Current: %2 | Required: %3", 
+							WidgetManager.Translate(mag.GetUIInfo().GetName()), 
+							mag.GetMaxAmmoCount(), 
+							bulletsToAdd);
+						
+						// Use MissionValidatorManager in Workbench, fallback to Print in game
+						#ifdef WORKBENCH
+						CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
+						if (validator)
+							validator.AddWarning("[VEHICLE GEARSCRIPT] " + errorMsg);
+						else
+							Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+						#else
+						Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+						#endif
+					}
+					
 					mag.SetAmmoCount(bulletsToAdd);
 					continue;
 				}

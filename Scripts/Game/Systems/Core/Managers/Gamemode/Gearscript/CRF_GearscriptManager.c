@@ -71,7 +71,19 @@ class CRF_GearscriptManager : ScriptComponent
 
 		if (!inventory || !inventoryManager)
 		{
-			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE REQUIRED COMPONENTS!", entity), LogLevel.ERROR);
+			string errorMsg = string.Format("Entity %1 is missing required inventory components (SCR_CharacterInventoryStorageComponent or SCR_InventoryStorageManagerComponent)", entity);
+			
+			// Use MissionValidatorManager in Workbench, fallback to Print in game
+			#ifdef WORKBENCH
+			CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
+			if (validator)
+				validator.AddCriticalError("[GEARSCRIPT] " + errorMsg);
+			else
+				Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#else
+			Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#endif
+			
 			return;
 		}
 
