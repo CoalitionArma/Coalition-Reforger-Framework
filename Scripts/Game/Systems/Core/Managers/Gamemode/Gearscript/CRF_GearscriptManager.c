@@ -150,14 +150,17 @@ class CRF_GearscriptManager : ScriptComponent
 		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
 		if (!visIdentity || !sndIdentity)
 			return;
+			
+		CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
 		
-	CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
-	
-	if (gsCharIdentity)
-	{
-		if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
-			gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
-				gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
+		if (gsCharIdentity)
+		{
+			CRF_Character_Visual_Identity gsVisIdentity;
+			CRF_Character_Sound_Identity gsSndIdentity;
+			
+			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
+				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
+					gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
 			
 			if (gsVisIdentity)
 			{
