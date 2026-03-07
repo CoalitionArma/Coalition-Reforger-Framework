@@ -1,0 +1,33 @@
+GenericEntity : "{CD099B14F4C0111F}Prefabs/Weapons/Core/KORD_Vehicle_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  TurretComponent "{62B055D5EBACE5DA}" {
+   ikTargets {
+    AnimationIKTargetInfo "{62B055D105CC9426}" {
+     PositionInfo PointInfo "{609096442AD20C5B}" {
+      Offset -0.0317 -0.1501 -0.6819
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{62B055D08026FF14}" {
+   Slots {
+    EntitySlotInfo Dovetail {
+    }
+    EntitySlotInfo Magazine_Casings {
+     Enabled 0
+    }
+    EntitySlotInfo Magazine_Belt {
+     Enabled 0
+    }
+    EntitySlotInfo NSV {
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#TF-Vehicle-Weapons-KORD"
+   }
+  }
+ }
+}

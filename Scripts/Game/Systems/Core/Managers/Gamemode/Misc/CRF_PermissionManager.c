@@ -8,53 +8,51 @@ class CRF_PermissionManager : ScriptComponent
 	[RplProp()]
 	ref array<int> m_aDonators = {};
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 PERMISSION GETTERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if a given player is a moderator
-	* @param playerId ID of the player to check
-	* @return True if player is a moderator, false otherwise
-	*/
+	//! Check if a given player is a moderator
+	//! \param[in] playerId ID of the player to check
+	//! \return True if player is a moderator, false otherwise
 	bool IsModerator(int playerId)
 	{
 		return m_aModerators.Contains(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if local player is a moderator
-	* @return True if local player is a moderator, false otherwise
-	*/
+	//! Check if local player is a moderator
+	//! \return True if local player is a moderator, false otherwise
 	bool IsModerator()
 	{
 		return m_aModerators.Contains(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if local player is a donator
-	* @param playerId ID of the player to check
-	* @return True if local player is a donator, false otherwise
-	*/
+	//! Check if local player is a donator
+	//! \param[in] playerId ID of the player to check
+	//! \return True if local player is a donator, false otherwise
 	bool IsDonator(int playerId)
 	{
 		return m_aDonators.Contains(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Check if local player is a donator
-	* @return True if local player is a donator, false otherwise
-	*/
+	//! Check if local player is a donator
+	//! \return True if local player is a donator, false otherwise
 	bool IsDonator()
 	{
 		return m_aDonators.Contains(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATUS UPDATE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	//------------------------------------------------------------------------------------------------
-	/**
-	* Set a player status
-	* @param playerId ID of the player to set as moderator or donator
-	*/
+	//! Set a player status
+	//! \param[in] playerId ID of the player to set as moderator or donator
 	void SetPlayerStatus(int playerId, string role)
 	{
 		if (!Replication.IsServer())
@@ -80,6 +78,10 @@ class CRF_PermissionManager : ScriptComponent
 		if (statusChanged)
 			Replication.BumpMe();
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	static protected CRF_PermissionManager m_sInstance;
