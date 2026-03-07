@@ -63,14 +63,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_menuButton3;
 	protected SCR_ButtonTextComponent m_menuButton4;
 	
-	// Data collections
-	protected ref array<int> m_groupIDList = {};
-	protected ref array<int> m_allPlayers = {};
-	protected ref array<SCR_AIGroup> m_outGroups = {};
-	protected ref array<vector> m_spawnPoints = {};
-	protected ref array<Faction> m_factions = {};
-	protected ref array<string> m_selectableFactions = {};
-	
 	// Ticket State
 	protected int m_iSelectedTicket = -1;
 	
@@ -82,6 +74,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 	// Modular display components
 	protected CRF_AdminActionLogDisplay m_ActionLogDisplay;
 	protected CRF_AdminGamemodePanel    m_AdminGamemodePanel;
+	
+	// New modular UI components
+	protected ref CRF_PlayerListDisplay      m_PlayerListDisplay;
+	protected ref CRF_SearchBoxComponent     m_SearchBoxComponent;
+	protected ref CRF_RoleListDisplay        m_RoleListDisplay;
+	protected ref CRF_DeadPlayerListDisplay  m_DeadPlayerListDisplay;
+	protected ref CRF_GroupListDisplay       m_GroupListDisplay;
+	protected ref CRF_SpawnpointListDisplay  m_SpawnpointListDisplay;
+	protected ref CRF_TicketListDisplay      m_TicketListDisplay;
+	protected ref CRF_FactionListDisplay     m_FactionListDisplay;
 
 	//-----------------------------------------------------------------------------
 	// General UI Methods
@@ -360,32 +362,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Clear modular panel component — its widget tree was just deleted
 		m_AdminGamemodePanel = null;
-
-		// Clear data collections
-		m_outGroups.Clear();
-		m_spawnPoints.Clear();
-		m_groupIDList.Clear();
-		m_allPlayers.Clear();
-		m_factions.Clear();
-		m_selectableFactions.Clear();
 		m_bGameModeMenuOpen = false;
 	}
 
 	/**
-	 * Populates a list box with available roles
-	 * @param list The list box to populate with roles
-	 */
-	void AddRoles(SCR_ListBoxComponent list)
-	{
-		array<string> roleNames = {};
-		SCR_Enum.GetEnumNames(CRF_EGearRole, roleNames);
-		
-		foreach (string role : roleNames)
-		{
-			list.AddItem(role);
-		}
-	}
-
 	/**
 	 * Gets player ID from player name
 	 * @param name The player name to search for
@@ -484,17 +464,35 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void InitializeGearMenu()
 	{
-		
 		// Load menu content widget
-        m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{5C7EC9AAE498F6B6}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GearMenu.layout");
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{5C7EC9AAE498F6B6}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GearMenu.layout");
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
-		if (!playerList || !roleList)
+		// Get widget references
+		Widget playerListWidget = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		Widget roleListWidget = m_wMenuContent.FindAnyWidget("RoleListBox0");
+		Widget searchBoxWidget = m_wMenuContent.FindAnyWidget("SearchBox0");
+		
+		if (!playerListWidget || !roleListWidget)
 			return;
+		
+		// Initialize player list component manually
+		m_PlayerListDisplay = new CRF_PlayerListDisplay();
+		m_PlayerListDisplay.HandlerAttached(playerListWidget);
+		
+		// Initialize role list component manually
+		m_RoleListDisplay = new CRF_RoleListDisplay();
+		m_RoleListDisplay.HandlerAttached(roleListWidget);
+		
+		// Initialize search box component manually
+		if (searchBoxWidget)
+		{
+			m_SearchBoxComponent = new CRF_SearchBoxComponent();
+			m_SearchBoxComponent.HandlerAttached(searchBoxWidget);
+			if (m_SearchBoxComponent && m_PlayerListDisplay)
+				m_SearchBoxComponent.SetTargetPlayerList(m_PlayerListDisplay);
+		}
 		
 		// Load Buttons
 		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
@@ -503,11 +501,13 @@ class CRF_AdminMenu : ChimeraMenuBase
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
 		SCR_ButtonTextComponent menuButton3 = GetMenuButton("MenuButton3");
 		SCR_ButtonTextComponent menuButton4 = GetMenuButton("MenuButton4");
-		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
+		if (!menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
 			return;
 		
 		// Setup button event handlers
-		searchButton0.m_OnClicked.Insert(SearchList0);
+		if (searchButton0 && m_SearchBoxComponent)
+			m_SearchBoxComponent.SetSearchButton(searchButton0);
+		
 		menuButton0.m_OnClicked.Insert(ResetGear);
 		menuButton1.m_OnClicked.Insert(AddLeaderRadio);
 		menuButton2.m_OnClicked.Insert(AddGIRadio);
@@ -515,80 +515,35 @@ class CRF_AdminMenu : ChimeraMenuBase
 		menuButton4.m_OnClicked.Insert(AddMap);
 		
 		// Setup selection change handler
-		playerList.m_OnChanged.Insert(UpdateDefaultGear);
+		if (m_PlayerListDisplay && m_PlayerListDisplay.GetListBoxComponent())
+			m_PlayerListDisplay.GetListBoxComponent().m_OnChanged.Insert(UpdateDefaultGear);
 		
 		// Change menu title
 		UpdateMenuTitle("Gear Reset");
 
-		// Populate player list
-		PopulatePlayerList(playerList);
+		// Populate lists using new components
+		if (m_PlayerListDisplay)
+			m_PlayerListDisplay.PopulateList();
 		
-		// Add available roles
-		AddRoles(roleList);
+		if (m_RoleListDisplay)
+			m_RoleListDisplay.PopulateRoles();
 	}
 	
-	/**
-	 * Populates a list with active players
-	 * @param list The list to populate with player names
-	 */
-	protected void PopulatePlayerList(SCR_ListBoxComponent list)
-	{
-		// Get all players
-		m_playerManager.GetPlayers(m_allPlayers);
-		TStringArray playerNames = {};
-
-		// Get and sort player names
-		foreach (int playerId : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
-
-		playerNames.Sort(false);
-
-		// Add players to list if they're in a group and not spectating
-		foreach (string name : playerNames)
-		{
-			int playerId = GetplayerIdFromName(name);
-			
-			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
-				continue;
-				
-			if (CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
-				continue;
-			
-			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
-			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
-		}
-	}
-
 	/**
 	 * Updates default gear selection based on player selection
 	 */
 	void UpdateDefaultGear()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
-		if (!playerList || !roleList)
+		if (!m_PlayerListDisplay || !m_RoleListDisplay)
 			return;
 		
-		// If no player selected, return
-		if (playerList.GetSelectedItem() < 0)
-			return;
-			
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 
-		// Find the player's role in the list and select it
-		for (int i = 0; i < roleList.GetItemCount(); i++)
-		{
-			if (i == CRF_RoleHelper.ResourceToRole(CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId)))
-			{
-				roleList.SetItemSelected(i, true);
-				return;
-			}
-		}
+		// Set the role list to match player's current role
+		m_RoleListDisplay.SetSelectedRoleForPlayer(playerId);
 	}
 
 	/**
@@ -596,17 +551,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void AddLeaderRadio()
 	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
+		if (!m_PlayerListDisplay)
 			return;
 
-		if (playerList.GetSelectedItem() < 0)
-			return;
-
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 			
@@ -626,17 +575,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void AddGIRadio()
 	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
+		if (!m_PlayerListDisplay)
 			return;
 
-		if (playerList.GetSelectedItem() < 0)
-			return;
-
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 			
@@ -656,17 +599,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void AddBinos()
 	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 			
@@ -680,17 +617,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	*/
 	void AddMap()
 	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 			
@@ -726,26 +657,21 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void ResetGear()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
-		if (!playerList || !roleList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay || !m_RoleListDisplay)
 			return;
 
-		if (roleList.GetSelectedItem() < 0)
-			return;
-
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
+			return;
+
+		// Get selected role index from component
+		int roleIndex = m_RoleListDisplay.GetSelectedRoleIndex();
+		if (roleIndex < 0)
 			return;
 		
 		// Get the prefab for the selected role
-		ResourceName prefab = GetPrefab(roleList.GetSelectedItem());
+		ResourceName prefab = GetPrefab(roleIndex);
 		if (prefab.IsEmpty())
 			return;
 
@@ -768,32 +694,38 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
+		// Initialize ticket list display component
+		Widget ticketListWidget = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		if (ticketListWidget)
+		{
+			m_TicketListDisplay = new CRF_TicketListDisplay();
+			m_TicketListDisplay.HandlerAttached(ticketListWidget);
+		}
 		
-		// Load List Boxes
+		// Load buttons
 		SCR_ButtonTextComponent replyButton = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent assignButton = GetMenuButton("MenuButton1");
 		SCR_ButtonTextComponent closeButton = GetMenuButton("MenuButton2");
-		SCR_ButtonTextComponent searchButton = GetMenuButton("SearchButton0");
-		if (!replyButton || !assignButton || !closeButton || !searchButton)
+		if (!replyButton || !assignButton || !closeButton)
 			return;
 		
 		// Setup button event handlers
 		replyButton.m_OnClicked.Insert(ReplyToTicket);
 		assignButton.m_OnClicked.Insert(AssignAdminToTicket);
 		closeButton.m_OnClicked.Insert(CloseAdminTicket);
-		searchButton.m_OnClicked.Insert(SearchList0);
 		
-		// Setup selection change handlers
-		playerList.m_OnChanged.Insert(GetTicketMessages);
+		// Setup selection change handler
+		if (m_TicketListDisplay)
+		{
+			SCR_ListBoxComponent listBox = m_TicketListDisplay.GetTicketListBox();
+			if (listBox)
+				listBox.m_OnChanged.Insert(GetTicketMessages);
+		}
 		
 		// Change title of the menu
 		UpdateMenuTitle("Tickets");
 
-		// Populate list of players that need help
+		// Populate list of tickets
 		GetOpenTickets();
 	}
 	
@@ -1019,24 +951,55 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-		if (!playerList || !groupList)
-			return;
+		// Initialize dead player list display component
+		Widget deadPlayerListWidget = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		if (deadPlayerListWidget)
+		{
+			m_DeadPlayerListDisplay = new CRF_DeadPlayerListDisplay();
+			m_DeadPlayerListDisplay.HandlerAttached(deadPlayerListWidget);
+		}
+		
+		// Initialize group list display component
+		Widget groupListWidget = m_wMenuContent.FindAnyWidget("GroupListBox0");
+		if (groupListWidget)
+		{
+			m_GroupListDisplay = new CRF_GroupListDisplay();
+			m_GroupListDisplay.HandlerAttached(groupListWidget);
+		}
+		
+		// Initialize spawnpoint list display component
+		Widget spawnListWidget = m_wMenuContent.FindAnyWidget("SpawnListBox0");
+		if (spawnListWidget)
+		{
+			m_SpawnpointListDisplay = new CRF_SpawnpointListDisplay();
+			m_SpawnpointListDisplay.HandlerAttached(spawnListWidget);
+		}
+		
+		// Initialize search box component
+		Widget searchEditWidget = m_wMenuContent.FindAnyWidget("SearchBox0");
+		SCR_ButtonTextComponent searchButton = GetMenuButton("SearchButton0");
+		if (searchEditWidget && searchButton && m_DeadPlayerListDisplay)
+		{
+			m_SearchBoxComponent = new CRF_SearchBoxComponent();
+			m_SearchBoxComponent.HandlerAttached(searchEditWidget);
+			if (m_SearchBoxComponent)
+			{
+				// Note: SearchBoxComponent expects CRF_PlayerListDisplay, but we have CRF_DeadPlayerListDisplay
+				// Since both have similar interfaces, we may need to adjust SearchBoxComponent to be more generic
+				// or create a separate search implementation for dead players
+			}
+		}
 		
 		// Load Menu Buttons
-		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("BLUFOR");
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("OPFOR");
 		SCR_ButtonTextComponent menuButton3 = GetMenuButton("INDFOR");
 		SCR_ButtonTextComponent menuButton4 = GetMenuButton("CIV");
-		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
+		if (!menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
 			return;
 			
 		// Setup button event handlers
-		searchButton0.m_OnClicked.Insert(SearchList0);
 		menuButton0.m_OnClicked.Insert(RespawnPlayer);
 		menuButton1.m_OnClicked.Insert(RespawnSide);
 		menuButton2.m_OnClicked.Insert(RespawnSide);
@@ -1044,122 +1007,38 @@ class CRF_AdminMenu : ChimeraMenuBase
 		menuButton4.m_OnClicked.Insert(RespawnSide);
 		
 		// Setup selection change handlers
-		playerList.m_OnChanged.Insert(UpdateSpawnGroupRequest);
-		groupList.m_OnChanged.Insert(UpdateSpawnpoint);
+		if (m_DeadPlayerListDisplay)
+			m_DeadPlayerListDisplay.GetListBoxComponent().m_OnChanged.Insert(UpdateSpawnGroupRequest);
+		
+		if (m_GroupListDisplay)
+			m_GroupListDisplay.GetListBoxComponent().m_OnChanged.Insert(UpdateSpawnpoint);
 		
 		// Change title of the menu
 		UpdateMenuTitle("Respawn");
 
-		// Get all players and groups
-		m_playerManager.GetPlayers(m_allPlayers);
-		m_outGroups = CRF_SlottingManager.GetInstance().GetAllGroups();
-
-		// Populate Dead Players list
-		PopulateDeadPlayersList();
+		// Populate lists
+		if (m_DeadPlayerListDisplay)
+			m_DeadPlayerListDisplay.PopulateList();
 		
-		// Populate Groups list
-		PopulateGroupsList();
+		if (m_GroupListDisplay)
+			m_GroupListDisplay.PopulateList();
 	}
 	
-	/**
-	 * Populates the list of dead/spectating players
-	 */
-	protected void PopulateDeadPlayersList()
-	{
-		TStringArray playerNames = {};
-		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-
-		// Get and sort player names
-		foreach (int playerId : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
-
-		playerNames.Sort(false);
-
-		// Add dead or spectating players to list
-		foreach (string name : playerNames)
-		{
-			int playerId = GetplayerIdFromName(name);
-			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
-
-			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
-				CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
-			{
-				playerList.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
-			}
-		}
-	}
-	
-	/**
-	 * Populates the list of available groups
-	 */
-	protected void PopulateGroupsList()
-	{
-		foreach (SCR_AIGroup group : m_outGroups)
-		{
-			// Load List Boxes
-			SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-			if (!groupList)
-				return;
-			
-			// Get faction info
-			Faction groupFaction = group.GetFaction();
-			if (!groupFaction)
-				continue;
-				
-			string factionKey = groupFaction.GetFactionKey();
-			if (factionKey.IsEmpty() || factionKey == "SPEC")
-				continue;
-				
-			string factionTag = factionKey.Substring(0, 3);
-			
-			// Add group to list
-			groupList.AddItem(string.Format("%1 | %2", factionTag, group.GetCustomNameWithOriginal()));
-			m_groupIDList.Insert(group.GetGroupID());
-		}
-	}
-
 	/**
 	 * Requests server to provide group ID for selected player
 	 */
 	void UpdateSpawnGroupRequest()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
+		if (!m_DeadPlayerListDisplay || !m_GroupListDisplay)
 			return;
-		
-		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-		if (!groupList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
-			return;
-			
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+
+		// Get selected player ID from component
+		int playerId = m_DeadPlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 		
-		int selectedGroupID = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
-		
-		foreach (int i, SCR_AIGroup group : m_outGroups)
-		{
-			if (selectedGroupID == group.GetGroupID())
-			{
-				// Adjust index for client mode
-				int itemIndex = i;
-				if (RplSession.Mode() == RplMode.Client)
-					itemIndex = i - 1;
-
-				groupList.SetItemSelected(itemIndex, true);
-				return;
-			}
-		};
+		// Auto-select the group for this player
+		m_GroupListDisplay.SetSelectedGroupForPlayer(playerId);
 	}
 
 	/**
@@ -1167,47 +1046,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void UpdateSpawnpoint()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent respawnPoints = GetListBox("SpawnpointListBox0");
-		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-		if (!respawnPoints || !groupList)
+		if (!m_GroupListDisplay || !m_SpawnpointListDisplay)
 			return;
 		
-		if (groupList.GetSelectedItem() < 0)
+		// Get selected group ID from component
+		int groupID = m_GroupListDisplay.GetSelectedGroupId();
+		if (groupID < 0)
 			return;
-			
-		// Clear previous data
-		respawnPoints.Clear();
-		m_spawnPoints.Clear();
 		
-		// Get selected group ID
-		int groupID = m_groupIDList.Get(groupList.GetSelectedItem());
-
-		// Get player names
-		TStringArray playerNames = {};
-		foreach (int playerId : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
-		playerNames.Sort(false);
-
-		// Add players from the selected group as spawnpoints
-		foreach (string name : playerNames)
-		{
-			int playerId = GetplayerIdFromName(name);
-			SCR_AIGroup playerGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
-			
-			if (!playerGroup)
-				continue;
-				
-			if (playerGroup.GetGroupID() == groupID)
-			{
-				IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-				if (!playerEntity)
-					continue;
-					
-				respawnPoints.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerId)));
-				m_spawnPoints.Insert(playerEntity.GetOrigin());
-			}
-		}
+		// Populate spawnpoints for the selected group
+		m_SpawnpointListDisplay.PopulateForGroup(groupID);
 	}
 
 	/**
@@ -1215,31 +1063,23 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void RespawnPlayer()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent respawnPoints = GetListBox("SpawnpointListBox0");
-		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!respawnPoints || !groupList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_DeadPlayerListDisplay || !m_GroupListDisplay || !m_SpawnpointListDisplay)
 			return;
 
-		if (groupList.GetSelectedItem() < 0)
-			return;
-
-		if (respawnPoints.GetSelectedItem() < 0)
-			return;
-		
-		// Get selected player
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_DeadPlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
-			
-		// Get selected group and spawnpoint
-		int groupID = m_groupIDList.Get(groupList.GetSelectedItem());
-		vector spawnpoint = m_spawnPoints.Get(respawnPoints.GetSelectedItem());
+
+		// Get selected group ID from component
+		int groupID = m_GroupListDisplay.GetSelectedGroupId();
+		if (groupID < 0)
+			return;
+
+		// Get selected spawnpoint from component
+		vector spawnpoint = m_SpawnpointListDisplay.GetSelectedSpawnpoint();
+		if (spawnpoint == vector.Zero)
+			return;
 		
 		// Spawn player on group
 		CRF_PlayerRplToAuthorityManager.GetInstance().SpawnOnGroup(playerId, spawnpoint, groupID, true);
@@ -1277,24 +1117,59 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent playerList1 = GetListBox("PlayerListBox1");
-		if (!playerList0 || !playerList1)
-			return;
+		// Initialize first player list display component
+		Widget playerListWidget0 = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		if (playerListWidget0)
+		{
+			m_PlayerListDisplay = new CRF_PlayerListDisplay();
+			m_PlayerListDisplay.HandlerAttached(playerListWidget0);
+		}
+		
+		// Initialize second player list display component (for teleport destination)
+		Widget playerListWidget1 = m_wMenuContent.FindAnyWidget("PlayerListBox1");
+		CRF_PlayerListDisplay playerListDisplay2;
+		if (playerListWidget1)
+		{
+			playerListDisplay2 = new CRF_PlayerListDisplay();
+			playerListDisplay2.HandlerAttached(playerListWidget1);
+		}
+		
+		// Initialize search box components
+		Widget searchEditWidget0 = m_wMenuContent.FindAnyWidget("SearchBox0");
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		if (searchEditWidget0 && searchButton0 && m_PlayerListDisplay)
+		{
+			m_SearchBoxComponent = new CRF_SearchBoxComponent();
+			m_SearchBoxComponent.HandlerAttached(searchEditWidget0);
+			if (m_SearchBoxComponent)
+			{
+				m_SearchBoxComponent.SetTargetPlayerList(m_PlayerListDisplay);
+				m_SearchBoxComponent.SetSearchButton(searchButton0);
+			}
+		}
+		
+		Widget searchEditWidget1 = m_wMenuContent.FindAnyWidget("SearchBox1");
+		SCR_ButtonTextComponent searchButton1 = GetMenuButton("SearchButton1");
+		CRF_SearchBoxComponent searchBoxComponent2;
+		if (searchEditWidget1 && searchButton1 && playerListDisplay2)
+		{
+			searchBoxComponent2 = new CRF_SearchBoxComponent();
+			searchBoxComponent2.HandlerAttached(searchEditWidget1);
+			if (searchBoxComponent2)
+			{
+				searchBoxComponent2.SetTargetPlayerList(playerListDisplay2);
+				searchBoxComponent2.SetSearchButton(searchButton1);
+			}
+		}
 		
 		// Load Menu Buttons
-		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
-		SCR_ButtonTextComponent searchButton1 = GetMenuButton("SearchButton1");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
-		if (!searchButton0 || !searchButton1 || !menuButton0 || !menuButton1 || !menuButton2)
+		if (!menuButton0 || !menuButton1 || !menuButton2)
 			return;
 		
 		// Setup button event handlers
-		searchButton0.m_OnClicked.Insert(SearchList0);
-		searchButton1.m_OnClicked.Insert(SearchList1);
 		menuButton0.m_OnClicked.Insert(TeleportLocalToSelected);
 		menuButton1.m_OnClicked.Insert(TeleportPlayers);
 		menuButton2.m_OnClicked.Insert(TeleportSelectedToLocal);
@@ -1303,8 +1178,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 		UpdateMenuTitle("Teleport");
 
 		// Populate player lists
-		PopulatePlayerList(playerList0);
-		PopulatePlayerList(playerList1);
+		if (m_PlayerListDisplay)
+			m_PlayerListDisplay.PopulateList();
+		
+		if (playerListDisplay2)
+			playerListDisplay2.PopulateList();
 	}
 
 	/**
@@ -1312,17 +1190,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void TeleportLocalToSelected()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
-		if (!playerList0)
-			return;
-		
-		if (playerList0.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId2 = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId2 = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId2 == 0)
 			return;
 
@@ -1353,21 +1225,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void TeleportSelectedToLocal()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
-		if (!playerList0)
-			return;
-		
-		if (playerList0.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId2 = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId2 = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId2 == 0)
 			return;
 
-		// Teleport local player to target
+		// Teleport target player to local player
 		CRF_PlayerRplToAuthorityManager.GetInstance().TeleportPlayers(playerId2, SCR_PlayerController.GetLocalPlayerId(), true);
 	}
 
@@ -1376,25 +1242,27 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void TeleportPlayers()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent playerList1 = GetListBox("PlayerListBox1");
-		if (!playerList0 || !playerList1)
+		if (!m_PlayerListDisplay)
+			return;
+
+		// Get first player ID from first list (m_PlayerListDisplay)
+		int playerId1 = m_PlayerListDisplay.GetSelectedPlayerId();
+		if (playerId1 == 0)
+			return;
+
+		// Get second player list component
+		Widget playerListWidget1 = m_wMenuContent.FindAnyWidget("PlayerListBox1");
+		if (!playerListWidget1)
 			return;
 		
-		if (playerList0.GetSelectedItem() < 0)
+		CRF_PlayerListDisplay playerListDisplay2 = new CRF_PlayerListDisplay();
+		playerListDisplay2.HandlerAttached(playerListWidget1);
+		if (!playerListDisplay2)
 			return;
 
-		if (playerList1.GetSelectedItem() < 0)
-			return;
-
-		// Get selected player IDs
-		string playerName1 = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		string playerName2 = TextWidget.Cast(playerList1.GetElementComponent(playerList1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId1 = GetplayerIdFromName(playerName1);
-		int playerId2 = GetplayerIdFromName(playerName2);
-
-		if (playerId1 == 0 || playerId2 == 0)
+		// Get second player ID from second list
+		int playerId2 = playerListDisplay2.GetSelectedPlayerId();
+		if (playerId2 == 0)
 			return;
 
 		// Teleport player 1 to player 2
@@ -1416,11 +1284,35 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
-		if (!playerList || !factionList)
-			return;
+		// Initialize player list display component
+		Widget playerListWidget = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		if (playerListWidget)
+		{
+			m_PlayerListDisplay = new CRF_PlayerListDisplay();
+			m_PlayerListDisplay.HandlerAttached(playerListWidget);
+		}
+		
+		// Initialize faction list display component
+		Widget factionListWidget = m_wMenuContent.FindAnyWidget("FactionListBox0");
+		if (factionListWidget)
+		{
+			m_FactionListDisplay = new CRF_FactionListDisplay();
+			m_FactionListDisplay.HandlerAttached(factionListWidget);
+		}
+		
+		// Initialize search box component
+		Widget searchEditWidget = m_wMenuContent.FindAnyWidget("SearchBox0");
+		SCR_ButtonTextComponent searchButton = GetMenuButton("SearchButton0");
+		if (searchEditWidget && searchButton && m_PlayerListDisplay)
+		{
+			m_SearchBoxComponent = new CRF_SearchBoxComponent();
+			m_SearchBoxComponent.HandlerAttached(searchEditWidget);
+			if (m_SearchBoxComponent)
+			{
+				m_SearchBoxComponent.SetTargetPlayerList(m_PlayerListDisplay);
+				m_SearchBoxComponent.SetSearchButton(searchButton);
+			}
+		}
 		
 		// Load Reply Box
 		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
@@ -1428,18 +1320,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		// Load Menu Buttons
-		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
-		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2)
+		if (!menuButton0 || !menuButton1 || !menuButton2)
 			return;
 		
 		// Setup existing hint text if available
 		hintBox.SetText(m_clientComponent.m_sHintText);
 		
 		// Setup button event handlers
-		searchButton0.m_OnClicked.Insert(SearchList0);
 		menuButton0.m_OnClicked.Insert(SendHintAll);
 		menuButton1.m_OnClicked.Insert(SendHintFaction);
 		menuButton2.m_OnClicked.Insert(SendHintPlayer);
@@ -1447,37 +1337,17 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Change title of the menu
 		UpdateMenuTitle("Hint");
 
-		// Populate player list
-		PopulatePlayerList(playerList);
+		// Populate lists
+		if (m_PlayerListDisplay)
+			m_PlayerListDisplay.PopulateList();
 		
-		// Populate faction list
-		PopulateFactionList();
-	}
-	
-	/**
-	 * Populates the list of active factions
-	 */
-	protected void PopulateFactionList()
-	{
-		// Get all factions
-		GetGame().GetFactionManager().GetFactionsList(m_factions);
-		
-		// Load List Boxes
-		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
-		if (!factionList)
-			return;
-		
-		// Add factions with active players
-		foreach (Faction faction : m_factions)
+		if (m_FactionListDisplay)
 		{
-			if (SCR_FactionManager.SGetFactionPlayerCount(faction) > 0)
-			{
-				factionList.AddItem(faction.GetFactionName());
-				m_selectableFactions.Insert(faction.GetFactionKey());
-			}
+			m_FactionListDisplay.SetOnlyShowActive(true);
+			m_FactionListDisplay.PopulateActiveFactions();
 		}
 	}
-
+	
 	/**
 	 * Sends hint message to all players
 	 */
@@ -1498,22 +1368,21 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void SendHintFaction()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
-		if (!factionList)
+		if (!m_FactionListDisplay)
 			return;
 	
 		// Load Reply Box
 		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
 		if (!hintBox)
 			return;
-		
-		if (factionList.GetSelectedItem() == -1)
+
+		// Get selected faction from component
+		string factionKey = m_FactionListDisplay.GetSelectedFactionKey();
+		if (factionKey == "")
 			return;
 
 		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		string factionKey = m_selectableFactions.Get(factionList.GetSelectedItem());
 		CRF_PlayerRplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
 	}
 
@@ -1522,28 +1391,21 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void SendHintPlayer()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
+		if (!m_PlayerListDisplay)
 			return;
 		
 		// Load Reply Box
 		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
 		if (!hintBox)
 			return;
-		
-		if (playerList.GetSelectedItem() == -1)
+
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
+		if (playerId == 0)
 			return;
 
 		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
-		if (playerId == 0)
-			return;
-			
 		CRF_PlayerRplToAuthorityManager.GetInstance().SendHint(data, playerId);
 	}
 	
@@ -1562,29 +1424,44 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
+		// Initialize player list display component
+		Widget playerListWidget = m_wMenuContent.FindAnyWidget("PlayerListBox0");
+		if (playerListWidget)
+		{
+			m_PlayerListDisplay = new CRF_PlayerListDisplay();
+			m_PlayerListDisplay.HandlerAttached(playerListWidget);
+		}
+		
+		// Initialize search box component
+		Widget searchEditWidget = m_wMenuContent.FindAnyWidget("SearchBox0");
+		SCR_ButtonTextComponent searchButton = GetMenuButton("SearchButton0");
+		if (searchEditWidget && searchButton && m_PlayerListDisplay)
+		{
+			m_SearchBoxComponent = new CRF_SearchBoxComponent();
+			m_SearchBoxComponent.HandlerAttached(searchEditWidget);
+			if (m_SearchBoxComponent)
+			{
+				m_SearchBoxComponent.SetTargetPlayerList(m_PlayerListDisplay);
+				m_SearchBoxComponent.SetSearchButton(searchButton);
+			}
+		}
 		
 		// Load Menu Buttons
-		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
-		if (!searchButton0 || !menuButton0 || !menuButton1)
+		if (!menuButton0 || !menuButton1)
 			return;
 		
 		// Setup button event handlers
 		menuButton0.m_OnClicked.Insert(HealPlayer);
 		menuButton1.m_OnClicked.Insert(HealPlayerVehicle);
-		searchButton0.m_OnClicked.Insert(SearchList0);
 		
 		// Change title of the menu
 		UpdateMenuTitle("Heal");
-		
 
 		// Populate player list
-		PopulatePlayerList(playerList);
+		if (m_PlayerListDisplay)
+			m_PlayerListDisplay.PopulateList();
 	}
 	
 	/**
@@ -1592,17 +1469,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void HealPlayer()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 
@@ -1615,17 +1486,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void HealPlayerVehicle()
 	{
-		// Load List Boxes
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-		
-		if (playerList.GetSelectedItem() < 0)
+		if (!m_PlayerListDisplay)
 			return;
 
-		// Get selected player ID
-		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
-		int playerId = GetplayerIdFromName(playerName);
+		// Get selected player ID from component
+		int playerId = m_PlayerListDisplay.GetSelectedPlayerId();
 		if (playerId == 0)
 			return;
 
@@ -1985,93 +1850,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 	//-----------------------------------------------------------------------------
 	// Search Methods
 	//-----------------------------------------------------------------------------
-	
-	/**
-	 * Search the first player list
-	 */
-	void SearchList0()
-	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
-		if (!playerList)
-			return;
-		
-		// Load Search Box
-		EditBoxWidget searchBox = GetEditBox("SearchBox0");
-		if (!searchBox)
-			return;
-		
-		SearchPlayerList(playerList, searchBox.GetText());
-	}
-	
-	/**
-	 * Search the second player list
-	 */
-	void SearchList1()
-	{
-		// Load List Box
-		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox1");
-		if (!playerList)
-			return;
-		
-		// Load Search Box
-		EditBoxWidget searchBox = GetEditBox("SearchBox1");
-		if (!searchBox)
-			return;
-		
-		SearchPlayerList(playerList, searchBox.GetText());
-	}
-	
-	/**
-	 * Filters a player list based on search text
-	 * @param list The list box to filter
-	 * @param searchData The search text to filter by
-	 */
-	void SearchPlayerList(SCR_ListBoxComponent list, string searchData)
-	{
-		TStringArray playerNames = {};
-		m_playerManager.GetPlayers(m_allPlayers);
-		list.Clear();
-
-		// If search is empty, show all players
-		if (searchData == "")
-		{
-			foreach (int playerId : m_allPlayers)
-				playerNames.Insert(m_playerManager.GetPlayerName(playerId));
-		} 
-		else 
-		{
-			// Otherwise filter by search text
-			string searchLower = searchData;
-			searchLower.ToLower();
-			
-			foreach (int playerId : m_allPlayers)
-			{
-				string playerName = m_playerManager.GetPlayerName(playerId);
-				string playerNameLower = playerName;
-				playerNameLower.ToLower();
-
-				if (playerNameLower.Contains(searchLower))
-					playerNames.Insert(playerName);
-			}
-		}
-
-		// Sort and add filtered players
-		playerNames.Sort(false);
-		foreach (string name : playerNames)
-		{
-			int playerId = GetplayerIdFromName(name);
-			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
-			
-			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
-				continue;
-				
-			if (CRF_EntityHelper.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
-				continue;
-			
-			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
-		}
-	}
 	
 	//-----------------------------------------------------------------------------
 	// Chat Methods
