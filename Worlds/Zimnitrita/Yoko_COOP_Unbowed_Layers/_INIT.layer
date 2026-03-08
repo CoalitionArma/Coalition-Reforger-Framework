@@ -79,15 +79,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68CB17D924C35A12}" {
+  CRF_SlottingGroup "{68D12A17A3906AE4}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    JTAC
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35B03}" {
+  CRF_SlottingGroup "{68D12A17A3906B95}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -102,7 +103,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35BBF}" {
+  CRF_SlottingGroup "{68D12A17A3906C3D}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -117,7 +118,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35C00}" {
+  CRF_SlottingGroup "{68D12A17A3906CB9}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -132,7 +133,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35C95}" {
+  CRF_SlottingGroup "{68D12A17A3906D05}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -141,7 +142,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35D6D}" {
+  CRF_SlottingGroup "{68D12A17A3906DE6}" {
    m_sCallsign "HELI 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -150,7 +151,18 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68CB17D924C35DF9}" {
+  CRF_SlottingGroup "{68D12A17A3906E7B}" {
+   m_sCallsign "M777"
+   m_FlagType MORTAR
+   m_aSlots {
+    SQUAD_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{68D12A17A3906ED8}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
