@@ -221,10 +221,17 @@ class CRF_SlottingManager : ScriptComponent
 			CRF_FactionSlotStats stats = m_mFactionStats.Get(factionKey);
 			if (stats)
 			{
+				// Update locked count
 				if (wasLocked && !isLocked)
 					stats.m_iLockedSlots--;
 				else if (!wasLocked && isLocked)
 					stats.m_iLockedSlots++;
+				
+				// Update total available slots (locked slots don't count as available)
+				if (wasLocked && !isLocked)
+					stats.m_iTotalSlots++;  // Slot became available
+				else if (!wasLocked && isLocked)
+					stats.m_iTotalSlots--;  // Slot became unavailable
 				
 				if (m_OnFactionStatsChanged)
 					m_OnFactionStatsChanged.Invoke(factionKey, stats);

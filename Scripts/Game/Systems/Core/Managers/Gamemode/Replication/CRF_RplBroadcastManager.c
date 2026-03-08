@@ -2089,8 +2089,34 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
+			// Track old state for stats update
+			bool wasLocked = slotData.GetIsLockedSlot();
+			string factionKey = slotData.GetSlotFactionKey();
+			
 			slotData.SetIsLockedSlot(isLocked);
 			slotData.GetOnDataUpdate().Invoke();
+			
+			// Update faction statistics on client
+			CRF_FactionSlotStats stats = slottingManager.GetFactionStats(factionKey);
+			if (stats)
+			{
+				// Update locked count
+				if (wasLocked && !isLocked)
+					stats.m_iLockedSlots--;
+				else if (!wasLocked && isLocked)
+					stats.m_iLockedSlots++;
+				
+				// Update total available slots (locked slots don't count as available)
+				if (wasLocked && !isLocked)
+					stats.m_iTotalSlots++;  // Slot became available
+				else if (!wasLocked && isLocked)
+					stats.m_iTotalSlots--;  // Slot became unavailable
+				
+				// Fire faction stats changed invoker for UI update
+				ScriptInvoker_FactionStatsChanged onStatsChanged = slottingManager.GetOnFactionStatsChanged();
+				if (onStatsChanged)
+					onStatsChanged.Invoke(factionKey, stats);
+			}
 			
 			// Trigger global slotting update for UI refresh
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();

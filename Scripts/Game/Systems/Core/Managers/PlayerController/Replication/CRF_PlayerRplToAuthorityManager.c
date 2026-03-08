@@ -682,6 +682,19 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		// Telemetry: 2 ints
 		LogTelemetry("RpcAsk_UpdateSlotPlayerID", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
 		
+		// Server-side validation: Non-admins cannot take locked slots
+		if (playerId > 0)  // Only validate when taking a slot (not unslotting)
+		{
+			CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
+			if (slotData && slotData.GetIsLockedSlot())
+			{
+				// Block non-admins from taking locked slots
+				// playerId is the player being assigned (when self-slotting, it's the requesting player)
+				if (!SCR_Global.IsAdmin(playerId))
+					return;
+			}
+		}
+		
 		m_SlottingManager.UpdateSlotPlayerID(slotId, playerId);
 	}
 	
@@ -712,7 +725,16 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			
 		SCR_AIGroup group = SCR_AIGroup.Cast(rplComponent.GetEntity());
 		if (group)
+		{
 			group.SetPrivate(input);
+			
+			// Update locked state for all slots in this group
+			array<int> groupSlots = m_SlottingManager.GetAllSlotIDsForGroup(groupRplId);
+			foreach (int slotId : groupSlots)
+			{
+				m_SlottingManager.UpdateSlotLockedState(slotId, input);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

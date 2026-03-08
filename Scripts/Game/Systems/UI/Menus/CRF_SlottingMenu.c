@@ -256,6 +256,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		m_wRoot.FindAnyWidget("SlottingPhases").SetOpacity(0);
 		FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(0);
 		
+		// Disable ratio boxes for non-admins to prevent accidental changes
+		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
+		EditBoxWidget ratioBox1 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox1"));
+		EditBoxWidget ratioBox2 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox2"));
+		if (ratioBox1)
+			ratioBox1.SetEnabled(isAdmin);
+		if (ratioBox2)
+			ratioBox2.SetEnabled(isAdmin);
+		
 		// If in game state, enable game button
 		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			gameButton.SetEnabled(true);
@@ -922,6 +931,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// The faction buttons show taken/total slots
 		// This is a lightweight update compared to full rebuild
 		SetupRatioDisplay();
+		
+		// Update the faction slot count displays
+		UpdateFactionSlotCounts();
 	}
 	
 	/**
@@ -1077,22 +1089,19 @@ class CRF_SlottingMenu: ChimeraMenuBase
 					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
 					continue;
 				
-				// Skip locked slots for non-admins
+				// Skip locked slots for non-admins (only if empty)
 				if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
 					continue;
 				
-				// Track dead slots but don't display them
-				if (slotData.GetIsDeadSlot())
-				{
+				// Track dead players in group for display purposes
+				if (slotData.GetIsDeadSlot() && slotData.GetSlotCurrentPlayerId() > 0)
 					deadPlayersInGroup++;
-					continue;
-				}
 				
-				// Skip dead empty slots
-				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+				// Skip empty dead slots (player was dead, now disconnected)
+				if (slotData.GetSlotCurrentPlayerId() <= 0 && slotData.GetIsDeadSlot())
 					continue;
 				
-				// Add slot to UI
+				// Add slot to UI (including dead slots with players)
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
 				slotStored.Insert(slotId);
 				
@@ -1579,19 +1588,43 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	private void UpdateRatioCalculation(int playerCount)
 	{
-		// Get ratio values from UI
-		int leftRatio = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox1")).GetText().ToInt();
-		int rightRatio = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox2")).GetText().ToInt();
+		// Get ratio widgets with null checks
+		EditBoxWidget ratioBox1 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox1"));
+		EditBoxWidget ratioBox2 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("RatioBox2"));
+		
+		int leftRatio, rightRatio;
+		
+		// If widgets don't exist (dedicated server), use gamemode values directly
+		if (!ratioBox1 || !ratioBox2)
+		{
+			leftRatio = m_Gamemode.m_iFactionOneRatio;
+			rightRatio = m_Gamemode.m_iFactionTwoRatio;
+		}
+		else
+		{
+			// Read from EditBoxes and update gamemode values
+			leftRatio = ratioBox1.GetText().ToInt();
+			rightRatio = ratioBox2.GetText().ToInt();
+			
+			// Update gamemode values when changed by admin
+			if (leftRatio > 0 && rightRatio > 0)
+			{
+				m_Gamemode.m_iFactionOneRatio = leftRatio;
+				m_Gamemode.m_iFactionTwoRatio = rightRatio;
+			}
+		}
 		
 		// Avoid division by zero
-		if(leftRatio + rightRatio == 0)
+		if (leftRatio + rightRatio == 0)
 			return;
 		
 		// Calculate and display actual player counts based on ratio
 		int leftPlayers = Math.Round(playerCount / (leftRatio + rightRatio) * leftRatio);
 		int rightPlayers = Math.Round(playerCount / (leftRatio + rightRatio) * rightRatio);
 		
-		TextWidget.Cast(m_wRoot.FindAnyWidget("Final")).SetText(leftPlayers.ToString() + " : " + rightPlayers.ToString());
+		TextWidget finalWidget = TextWidget.Cast(m_wRoot.FindAnyWidget("Final"));
+		if (finalWidget)
+			finalWidget.SetText(leftPlayers.ToString() + " : " + rightPlayers.ToString());
 	}
 	
 	/**
@@ -1770,6 +1803,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		int currentPlayerId = slottingManager.GetSlotData(slotId).GetSlotCurrentPlayerId();
 		
+		// Admins can assign players to locked slots (no restriction)
+		
 		// If selected player is already in this slot, unslot them
 		if (currentPlayerId == m_iSelectedplayerId)
 		{
@@ -1807,6 +1842,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	private void HandlePlayerSlotSelection(int slotId, CRF_SlottingManager slottingManager, int localPlayerId)
 	{
 		int currentPlayerId = slottingManager.GetSlotData(slotId).GetSlotCurrentPlayerId();
+		bool isAdmin = SCR_Global.IsAdmin(localPlayerId);
+		
+		// Non-admins cannot select locked slots (even if empty)
+		if (!isAdmin && slottingManager.GetSlotData(slotId).GetIsLockedSlot())
+			return;
 		
 		// Skip if slot is already taken by someone else
 		if (currentPlayerId != 0 && currentPlayerId != localPlayerId)
