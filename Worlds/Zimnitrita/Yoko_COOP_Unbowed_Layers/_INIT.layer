@@ -9,8 +9,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Overcast"
-     m_iStartingHour 12
+     m_sWeatherPresetName "Light Rain"
+     m_iStartingHour 4
      m_iStartingMinutes 0
     }
    }
@@ -164,7 +164,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+  m_rGearScript "{7E848A03C000BA98}Configs/Gearscripts/Custom/Yoko/CRF_GS_Modern_GreenBeret_Yoko.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -172,7 +172,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{FA82A9F5101BF159}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUS_2000s.conf"
+  m_rGearScript "{4E686A7B35B6559B}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUSMilitia.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

@@ -24,7 +24,3 @@ $grp SCR_BaseTriggerEntity {
   angles 0 22.1 0
  }
 }
-StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
- coords 10113.301 0 758.802
- angles 0 -48.332 0
-}
