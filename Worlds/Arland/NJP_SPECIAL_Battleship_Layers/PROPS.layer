@@ -1,0 +1,182 @@
+$grp StaticModelEntity : "{35E14C4C60C4A4F3}Prefabs/Structures/Agriculture/WeightStation/WeightStation_01/BuildingAddons/WeightStation_01_platform.et" {
+ {
+  coords 116.676 3.086 280.271
+  angles 0 -20.602 0
+  scale 7.29
+ }
+ {
+  coords 202.264 3.086 636.966
+  angles 0 1.679 0
+  scale 7.29
+ }
+ {
+  coords 335.497 3.086 44.335
+  angles 0 1.679 0
+  scale 7.29
+ }
+ {
+  coords 564.349 3.086 447.399
+  angles 0 1.679 0
+  scale 7.29
+ }
+ {
+  coords -175.839 3.086 461.838
+  angles 0 1.679 0
+  scale 7.29
+ }
+ {
+  coords -143.027 3.086 -180.562
+  angles 0 1.679 0
+  scale 7.29
+ }
+ {
+  coords 4098.033 3.086 102.331
+  angles 0 159.398 0
+  scale 7.29
+ }
+ {
+  coords 4012.444 3.086 -254.363
+  angles 0 -178.321 0
+  scale 7.29
+ }
+ {
+  coords 3879.211 3.086 338.267
+  angles 0 -178.321 0
+  scale 7.29
+ }
+ {
+  coords 3650.358 3.086 -64.797
+  angles 0 -178.321 0
+  scale 7.29
+ }
+ {
+  coords 4390.546 3.086 -79.236
+  angles 0 -178.321 0
+  scale 7.29
+ }
+ {
+  coords 4357.733 3.086 563.164
+  angles 0 -178.321 0
+  scale 7.29
+ }
+}
+$grp GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01/BoatWreck_01.et" {
+ {
+  coords 118.378 -12.946 275.946
+  angles 0 -18.989 0
+  scale 31.704
+ }
+ {
+  coords 202.199 -12.946 632.318
+  angles 0 3.292 0
+  scale 31.704
+ }
+ {
+  coords 335.432 -12.946 39.687
+  angles 0 3.292 0
+  scale 31.704
+ }
+ {
+  coords 564.284 -12.946 442.751
+  angles 0 3.292 0
+  scale 31.704
+ }
+ {
+  coords -175.904 -12.946 457.19
+  angles 0 3.292 0
+  scale 31.704
+ }
+ {
+  coords -143.092 -12.946 -185.21
+  angles 0 3.292 0
+  scale 31.704
+ }
+ {
+  coords 4096.328 -12.946 106.656
+  angles 0 161.011 0
+  scale 31.704
+ }
+ {
+  coords 4012.509 -12.946 -249.715
+  angles 0 -176.708 0
+  scale 31.704
+ }
+ {
+  coords 3879.276 -12.946 342.915
+  angles 0 -176.708 0
+  scale 31.704
+ }
+ {
+  coords 3650.423 -12.946 -60.148
+  angles 0 -176.708 0
+  scale 31.704
+ }
+ {
+  coords 4390.61 -12.946 -74.588
+  angles 0 -176.708 0
+  scale 31.704
+ }
+ {
+  coords 4357.799 -12.946 567.812
+  angles 0 -176.708 0
+  scale 31.704
+ }
+}
+$grp GenericEntity : "{651E545B53BBD034}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_USSR.et" {
+ {
+  coords 3897.444 -115.271 335.664
+  angles 0 -180 0
+  scale 45
+ }
+ {
+  coords 4116.351 -115.271 104.166
+  angles 0 -180 0
+  scale 45
+ }
+ {
+  coords 4408.435 -115.271 -87.419
+  angles 0 -180 0
+  scale 45
+ }
+ {
+  coords 4029.858 -115.271 -261.697
+  angles 0 -180 0
+  scale 45
+ }
+ {
+  coords 3667.965 -115.271 -69.615
+  angles 0 -180 0
+  scale 45
+ }
+ {
+  coords 4375.164 -115.271 558.616
+  angles 0 -180 0
+  scale 45
+ }
+}
+$grp GenericEntity : "{E55FC02F8C1518A2}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_US.et" {
+ {
+  coords 98.869 -106.948 281.051
+  scale 43.32
+ }
+ {
+  coords 186.35 -106.948 641.453
+  scale 43.32
+ }
+ {
+  coords 318.801 -106.948 49.311
+  scale 43.32
+ }
+ {
+  coords 547.704 -106.948 450.417
+  scale 43.32
+ }
+ {
+  coords -192.648 -106.948 467.73
+  scale 43.32
+ }
+ {
+  coords -159.816 -106.948 -175.529
+  scale 43.32
+ }
+}

@@ -1,0 +1,100 @@
+$grp GenericEntity : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPointsGroups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 561.81 5.06 451.686
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 2"
+   }
+  }
+  coords 333.184 5.06 50.553
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 3"
+   }
+  }
+  coords 199.459 5.06 640.937
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 4"
+   }
+  }
+  coords 112.127 5.06 285.401
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 5"
+   }
+  }
+  coords -145.859 5.06 -173.473
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 6"
+   }
+  }
+  coords -179.358 5.06 464.042
+ }
+}
+$grp GenericEntity : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPointsGroups/OPFOR_InitalGroupSpawn.et" {
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 3881.924 4.763 334.233
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 3652.728 4.763 -69.108
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 4102.88 4.763 99.291
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 4016.175 4.763 -259.486
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 4393.321 4.763 -83.961
+ }
+ {
+  components {
+   CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+    m_sCallsignOfGroupToSpawn "SHIP 1"
+   }
+  }
+  coords 4359.677 4.763 558.362
+ }
+}

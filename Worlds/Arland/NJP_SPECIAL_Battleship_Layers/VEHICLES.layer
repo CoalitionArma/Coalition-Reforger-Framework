@@ -1,0 +1,542 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 115.153 4.207 254.457
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 112.358 4.157 261.612
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 109.792 4.161 268.591
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 125.457 4.042 278.612
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 121.669 4.097 284.424
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 118.371 4.082 291.434
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 96.257 4.175 306.525
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 98.489 4.149 300.905
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 100.785 4.217 294.851
+  angles 0 69.429 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 209.76 4.042 632.101
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 193.323 4.175 669.001
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 191.465 4.161 628.768
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 193.258 4.149 662.954
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 193.087 4.217 656.482
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 191.194 4.157 621.337
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 208.459 4.097 638.915
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 208.065 4.082 646.652
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 191.067 4.207 613.656
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 553.549 4.161 439.201
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 555.343 4.149 473.387
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 555.172 4.217 466.915
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 553.279 4.157 431.77
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 570.543 4.097 449.348
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 570.15 4.082 457.085
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 553.151 4.207 424.089
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -135.532 4.042 -185.427
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -153.827 4.161 -188.76
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -151.969 4.175 -148.527
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -168.344 4.042 456.973
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -184.781 4.175 493.873
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 342.993 4.042 39.47
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -186.639 4.161 453.64
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -184.845 4.149 487.826
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -185.016 4.217 481.354
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -186.909 4.157 446.209
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -169.645 4.097 463.787
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -170.038 4.082 471.524
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -187.037 4.207 438.528
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -152.033 4.149 -154.574
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -152.204 4.217 -161.046
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -154.097 4.157 -196.191
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -136.833 4.097 -178.613
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 326.491 4.149 70.323
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 341.692 4.097 46.284
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 326.32 4.217 63.851
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 324.427 4.157 28.706
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 571.844 4.042 442.534
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 324.698 4.161 36.137
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 326.556 4.175 76.37
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -137.226 4.082 -170.876
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords -154.225 4.207 -203.872
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 341.298 4.082 54.021
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 324.3 4.207 21.025
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 555.407 4.175 479.434
+  angles 0 91.71 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3644.163 4.097 -66.746
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3644.556 4.082 -74.483
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3661.555 4.207 -41.487
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4350.238 4.042 568.029
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4368.533 4.161 571.362
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4366.676 4.175 531.129
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4383.051 4.042 -74.37
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4399.487 4.175 -111.27
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3871.714 4.042 343.132
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4401.347 4.161 -71.038
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4399.552 4.149 -105.223
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4399.724 4.217 -98.752
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4021.385 4.175 -286.398
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4023.242 4.161 -246.166
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4021.45 4.149 -280.352
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4021.619 4.217 -273.879
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4023.513 4.157 -238.735
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4006.248 4.097 -256.313
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4006.641 4.082 -264.049
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4023.639 4.207 -231.054
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3661.159 4.161 -56.599
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3659.366 4.149 -90.785
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3659.534 4.217 -84.313
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3661.429 4.157 -49.168
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4099.554 4.207 128.146
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4102.35 4.157 120.99
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4104.915 4.161 114.011
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4089.25 4.042 103.991
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4093.037 4.097 98.178
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4096.336 4.082 91.168
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4118.449 4.175 76.077
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4116.219 4.149 81.697
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4113.922 4.217 87.751
+  angles 0 -110.571 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4004.949 4.042 -249.499
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4401.615 4.157 -63.606
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4384.353 4.097 -81.184
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4384.745 4.082 -88.922
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4401.744 4.207 -55.926
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4366.74 4.149 537.176
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4366.911 4.217 543.648
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4368.804 4.157 578.793
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4351.54 4.097 561.215
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3888.217 4.149 312.279
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3873.014 4.097 336.318
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3888.388 4.217 318.751
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3890.282 4.157 353.896
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3642.865 4.042 -59.932
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3890.01 4.161 346.465
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3888.152 4.175 306.232
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4351.934 4.082 553.478
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 4368.933 4.207 586.474
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3873.409 4.082 328.581
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3890.409 4.207 361.577
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+ {
+  coords 3659.301 4.175 -96.832
+  angles 0 -88.29 0
+  m_rVehicle "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et"
+ }
+}

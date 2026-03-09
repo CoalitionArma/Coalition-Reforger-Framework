@@ -491,7 +491,7 @@ class CRF_SlottingManager : ScriptComponent
 		spawnParams.Transform[3] = surface;
 		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
 		
-		GetSafeSpawnTransform(spawnParams.Transform, 12, spawnParams.Transform);
+		GetSafeSpawnTransform(spawnParams.Transform, 6, spawnParams.Transform);
 		
 		// Spawn the character using cached resource
 		Resource resource = GetCachedResource(resourceName);
