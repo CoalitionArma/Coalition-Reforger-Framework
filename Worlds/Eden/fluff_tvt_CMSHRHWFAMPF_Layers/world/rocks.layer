@@ -1,0 +1,152 @@
+SCR_IndestructibleEnvironmentalEntity : "{1BA4712EED0CB208}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteStone_03.et" {
+ components {
+  MeshObject "{5512A6BD6A68FC9C}" {
+   Materials {
+    MaterialAssignClass "{68D37942BB1A48B1}" {
+     SourceMaterial "Common/Materials/Game/stone"
+     AssignedMaterial "{381130A196CEE32C}Assets/Rocks/Granite/Data/GraniteSurfaceStone_02_Forest.emat"
+    }
+   }
+  }
+ }
+ coords 10083.288 -1.849 2738.868
+ angles 48.391 -0.573 -88.581
+ scale 5.607
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{2744DB5B79E2F462}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteCliff_03/GraniteCliff_03.et" {
+ {
+  coords 9829.854 231.119 2290.154
+  angles 31.186 -97.561 0
+  scale 2.1
+ }
+ {
+  coords 10106.251 267.472 2776.302
+  angles 26.287 -47.009 0
+  scale 1.25
+ }
+ {
+  coords 10117.227 272.894 2787.75
+  angles 28.551 -66.825 0
+  scale 0.728
+ }
+ {
+  coords 9959.802 267.635 2863.912
+  angles 35.056 129.952 -70.306
+  scale 0.35
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{3583AB98E185C249}PrefabLibrary/DefaultLibrary/Rocks/Granite/Granite_Stone_02/Granite_ForestStone_02.et" {
+ coords 9971.87 -0 2935.806
+ angles -10.012 -60.038 -22.606
+ scale 1.891
+}
+SCR_IndestructibleEnvironmentalEntity : "{38CC50480D29CCFD}PrefabLibrary/DefaultLibrary/Rocks/Granite/Granite_Boulder_01/Granite_Boulder_01.et" {
+ coords 10119.933 -0.001 2795.719
+ angles -12.728 121.765 30.175
+ scale 1.688
+}
+SCR_IndestructibleEnvironmentalEntity : "{4DD0E6B6AAA4AD73}PrefabLibrary/DefaultLibrary/Rocks/Granite/Granite_Boulder_02/Granite_Boulder_02_Fucus.et" {
+ coords 9962.305 0.734 2871.377
+ angles 44.736 -15.775 111.02
+}
+SCR_IndestructibleEnvironmentalEntity : "{5319623605F39941}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteCliff_03/GraniteCliff_03_Fucus.et" {
+ components {
+  MeshObject "{5512A6BD22B1B833}" {
+   Materials {
+    MaterialAssignClass "{565C9C93E009E6E9}" {
+     SourceMaterial "GraniteCliff_03"
+     AssignedMaterial "{E3D172BBA885613F}Assets/Rocks/Granite/Data/GraniteCliff_03.emat"
+    }
+    MaterialAssignClass "{565C9C93E009E601}" {
+     SourceMaterial "GraniteCliff_03_MLOD"
+     AssignedMaterial "{63464017B17BA928}Assets/Rocks/Granite/Data/Granite_MLOD.emat"
+    }
+   }
+  }
+ }
+ coords 10066.81 272.507 2740.159
+ angles 30.474 -54.661 0
+}
+SCR_IndestructibleEnvironmentalEntity : "{7D1705F41BA14E61}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteRock_01/GraniteRock_01.et" {
+ coords 10077.828 289.979 2716.565
+ angles 24.109 -63.358 0
+ scale 1.12
+}
+SCR_IndestructibleEnvironmentalEntity : "{845121AC14BBF7FB}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteRock_03/GraniteRock_03_Forest.et" {
+ coords 10084.454 275.071 2765.691
+ angles 5.36 57.687 -47.579
+}
+SCR_IndestructibleEnvironmentalEntity : "{8A55402FF5405146}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteSurfaceStone_02/GraniteSurfaceStone_02_Forest.et" {
+ coords 10073.357 289.447 2725.793
+ angles 32.684 0.913 -47.66
+ scale 1.44
+}
+SCR_IndestructibleEnvironmentalEntity : "{A071678C03AE3769}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteSurfaceStone_01/GraniteSurfaceStone_01_Forest.et" {
+ coords 10080.293 280.336 2751.047
+ angles -41.979 -54.994 3.757
+ scale 1.373
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{AE8CA342C9C3EC27}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteCliff_01/GraniteCliff_01.et" {
+ {
+  coords 9687.046 220.076 2332.02
+  angles 45.447 -156.798 0
+  scale 1.49
+ }
+ {
+  coords 10077.098 268.33 2776.939
+  angles 57.849 -27.971 0
+  scale 0.43
+ }
+ {
+  coords 10115.194 270.905 2791.669
+  angles 23.723 -54.518 -9.697
+  scale 0.49
+ }
+ {
+  coords 9963.437 267 2875.215
+  angles 48.55 85.932 18.256
+  scale 0.496
+ }
+ {
+  coords 9959.09 270.766 2917.395
+  angles -21.694 -56.725 -70.587
+  scale 0.645
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{C2D897A275076309}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteCliff_02/GraniteCliff_02.et" {
+ {
+  coords 9822.729 220.13 2247.134
+  angles 34.492 -98.63 0
+  scale 2.15
+ }
+ {
+  coords 10070.135 264.655 2774.585
+  angles 50.939 -45.15 -17.62
+  scale 0.522
+ }
+ {
+  coords 9965.368 271.811 2930.121
+  angles 31.232 146.247 -79.673
+  scale 0.29
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{DEA30A575C1BCF46}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteSurfaceStone_03.et" {
+ coords 10073.009 271.581 2761.742
+ angles -38.795 -44.252 -11.47
+ scale 0.977
+}
+SCR_IndestructibleEnvironmentalEntity : "{E3972F6F29774671}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteSurfaceStone_04.et" {
+ coords 10091.73 276.033 2769.494
+ angles -4.056 -105.862 43.978
+ scale 1.492
+}
+SCR_IndestructibleEnvironmentalEntity : "{F4DF7DEDAB805624}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteRock_03/GraniteRock_03.et" {
+ coords 10073.493 265.678 2775.633
+ angles -22.738 -29.982 -18.427
+ scale 0.584
+}
+SCR_IndestructibleEnvironmentalEntity : "{FC2FFB6EB18CBA53}PrefabLibrary/DefaultLibrary/Rocks/Granite/Granite_Stone_01/Granite_BeachStone_01.et" {
+ coords 10074.398 -3.254 2717.297
+ angles 2.292 -44.235 -4.328
+ scale 2.901
+}
