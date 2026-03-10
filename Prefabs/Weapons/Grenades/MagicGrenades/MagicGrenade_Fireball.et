@@ -14,7 +14,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
      SoundEvent "SOUND_EXPLOSION"
     }
    }
-   TIMER 0.5
+   TIMER 0.75
   }
   GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
    InitSpeed 30
