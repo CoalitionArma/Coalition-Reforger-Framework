@@ -9,7 +9,7 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
     SpawnPrefabEffect "{68CB46189E0B8444}" {
      TriggerOnce 1
      AttachToParent 1
-     EffectPrefab "{5A048729A4D9740C}Prefabs/Weapons/Grenades/MagicGrenades/Damage_PoisonArea.et"
+     EffectPrefab "{5A048729A4D9740C}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/Damage_PoisonArea.et"
     }
    }
    TIMER 4
@@ -20,8 +20,8 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
   InventoryItemComponent "{51FAA3E3CF6F087A}" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
     ItemDisplayName WeaponUIInfo "{68CB46189E0B8454}" {
-     Name "#AR-Weapon_M18Green_Name"
-     Description "#AR-Weapon_M18Green_Description"
+     Name "Toxic Grenade"
+     Description "Knocks out and quickly toxifies players!"
     }
    }
   }

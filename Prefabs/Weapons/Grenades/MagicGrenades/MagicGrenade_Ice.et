@@ -9,7 +9,7 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
     SpawnPrefabEffect "{68CB4616BF93B341}" {
      TriggerOnce 1
      AttachToParent 1
-     EffectPrefab "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/DamageArea_Ice.et"
+     EffectPrefab "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/DamageArea_Ice.et"
     }
    }
    TIMER 4
@@ -20,8 +20,8 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
   InventoryItemComponent "{51FAA3E3CF6F087A}" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
     ItemDisplayName WeaponUIInfo "{68CB4616BF93B353}" {
-     Name "#AR-Weapon_M18Green_Name"
-     Description "#AR-Weapon_M18Green_Description"
+     Name "Ice Grenade"
+     Description "Slows all players inside!"
     }
    }
   }
