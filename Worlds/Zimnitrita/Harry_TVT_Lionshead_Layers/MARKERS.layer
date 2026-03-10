@@ -211,6 +211,126 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_fWorldSize 135
   m_sDescription "Minefield"
  }
+ {
+  coords 16099.808 0.663 4564.155
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16088.793 17.721 4479.538
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16169.207 4.468 4426.217
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16168.955 10.551 4341.772
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16226.495 7.594 4292.094
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16190.88 14.105 4220.381
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16253.35 5.29 4132.32
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16192.868 17.328 4049.593
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16256.406 8.865 3970.343
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16216.988 13.527 3863.671
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16261.559 10.142 3819.501
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16214.102 10.724 3732.614
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16253.803 7.687 3677.02
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16209.108 11.48 3603.421
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16227.947 9.214 3542.715
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
 }
 CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
  coords 15799.495 138.625 8800.985
