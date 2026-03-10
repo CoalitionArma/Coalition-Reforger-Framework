@@ -1,0 +1,12 @@
+MatPBRBasic {
+ Color 0.526 0.379 0.003 1
+ Emissive 0.551 0.306 0 1
+ EmissiveLV 7
+ CastShadow 1
+ ReceiveShadow 1
+ SpecularMul 3.79
+ RoughnessScale 0.714
+ MetalnessScale 4.615
+ BCRMap "{85879AB6F928667C}Assets/Weapons/Grenades/M67/Data/M67_BCR.edds"
+ NMOMap "{BD5F2124205F34E2}Assets/Weapons/Grenades/M67/Data/M67_NMO.edds"
+}

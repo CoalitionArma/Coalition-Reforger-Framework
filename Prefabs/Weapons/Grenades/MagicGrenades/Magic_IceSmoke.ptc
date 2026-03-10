@@ -1,0 +1,219 @@
+EffectDef {
+ Version 2
+ Emitters {
+  EmitterDef Light {
+   ShapeType Sphere
+   ShapeSize 3 3 3
+   MaxNum 1
+   BirthRate 1000
+   Offset 0 -1.45 0
+   Angles 90 0 0
+   LocalTransform 0
+   Material "{C44A3E85876EEA2F}Particles/_Materials/Fire/Glow_Base_01.emat"
+   SizeMultiplier 0.01
+   RandomRotDir 0
+   Velocity 0
+   AnimOnce 0
+   AnimFPS 69.2
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 15
+   LifetimeRND 0
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.045 0.5 0.703 0.321 1 0
+   }
+   Size {
+    0 0.311 1 1
+   }
+   EmittingTime 45
+   Repeat 0
+   EnableLight 1
+   MaxLV 7
+   RelativeLV 1
+   LightIntensityResponse 10.549
+  }
+  EmitterDef explosion {
+   ShapeType Box
+   ShapeSize 8 1 8
+   ConeAngle 360 0 353.7
+   MaxNum 15
+   BirthRate 3
+   Angles 90 0 0
+   LocalTransform 1
+   Material "{2ECFAFA31C2E1462}Particles/_Materials/Water_Dots_01.emat"
+   SizeMultiplier 2
+   SizeRND 2
+   RotMultiplier 0.7
+   RotRND 0.7
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0
+   VelocityRND 0
+   GravityMultiply 0.02
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Lifetime 5
+   LifetimeRND 1
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 45
+   Repeat 0
+  }
+  EmitterDef explosion_2 {
+   ShapeSize 8 1 8
+   ConeAngle 360 0 180
+   MaxNum 30
+   BirthRate 30
+   Material "{2ECFAFA31C2E1462}Particles/_Materials/Water_Dots_01.emat"
+   SizeMultiplier 2
+   SizeRND 2
+   RotMultiplier 0.7
+   RotRND 0.7
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 7
+   VelocityRND 0
+   GravityMultiply 0.405
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Lifetime 1
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 0.5
+   Repeat 0
+  }
+  EmitterDef snowflor {
+   ShapeType Box
+   ShapeSize 8 9 8
+   ConeAngle 360 0 353.7
+   MaxNum 15
+   BirthRate 5
+   Offset 0 0.1 0
+   Angles 90 0 0
+   Material "{959B2BA2112FB9C5}Particles/_Materials/Smoke_loop_dense_01.emat"
+   SizeMultiplier 5
+   SizeRND 3
+   RotMultiplier 0.7
+   RotRND 0.7
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity -0.1
+   VelocityRND 0
+   GravityMultiply 0.01
+   EnableCollisions 1
+   NormalRestitution 0
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 45
+   Repeat 0
+   MaxLV 4
+  }
+  EmitterDef snowflor_2 {
+   ShapeSize 8 1 8
+   ConeAngle 360 0 180
+   MaxNum 1
+   BirthRate 1
+   Offset 0 0.1 0
+   Material "{959B2BA2112FB9C5}Particles/_Materials/Smoke_loop_dense_01.emat"
+   SizeMultiplier 30
+   RotMultiplier 0.7
+   RotRND 0.7
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0.3
+   VelocityRND 0
+   GravityMultiply 0.01
+   EnableCollisions 1
+   NormalRestitution 0
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Lifetime 28.1
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 1
+   Repeat 0
+   MaxLV 4
+  }
+  EmitterDef explosion_4 {
+   ShapeType Sphere
+   ShapeSize 15 15 15
+   ConeAngle 360 0 353.7
+   MaxNum 25
+   BirthRateRND 2.7
+   Angles 90 0 0
+   LocalTransform 1
+   Material "{38135A592D5D0004}Particles/_Materials/White_dots.emat"
+   StretchMultiplier 8
+   SizeMultiplier 2.4
+   SizeRND 3
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0.05
+   VelocityRND 0.05
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Lifetime 7.5
+   LifetimeRND 0.625
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 45
+   Repeat 0
+  }
+ }
+ MinFPS 60
+ CollisionPreset "{5DC8DBF6E2ACBAF5}"
+ LightOffset 0 3 0
+ LightClipEV -16
+ LightRadius 30
+ CastShadow 1
+}
