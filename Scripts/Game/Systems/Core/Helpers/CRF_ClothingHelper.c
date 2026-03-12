@@ -119,7 +119,9 @@ class CRF_ClothingHelper
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
 		
-		bool isExplosive = CRF_InventoryHelper.IsExplosiveOrTool(item);
+		bool isExplosive = (CRF_InventoryHelper.IsExplosive(item));
+		
+		bool isTool = (CRF_InventoryHelper.IsTool(item));
 
 		// Magazines and throwables go in backpack, vest, armor, primarily
 		if (isMagazine)
@@ -168,7 +170,7 @@ class CRF_ClothingHelper
 		}
 
 		// Explosives/Medical items go in backpack, vest primarily
-		if (isExplosive || isMedical)
+		if (isExplosive || isMedical || isTool)
 		{
 			clothingIDs = {
 				CRF_EGearscriptClothing.BACKPACK,
@@ -195,8 +197,8 @@ class CRF_ClothingHelper
 		if (!gamemode)
 			return false;
 
+		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS};
 		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		
 		foreach (string factionKey : factionKeys)
 		{
@@ -216,32 +218,8 @@ class CRF_ClothingHelper
 			// --- Check default (faction-wide) clothing ---
 			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
 			{
-				if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
+				if (restrictedClothing.Contains(clothing.m_iClothingType) && clothing.m_ClothingPrefabs.Contains(itemPrefab))
 					return true;
-			}
-	
-			// --- Check custom role clothing ---
-			// Determine the local player's role directly from their slot data.
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-			if (!slottingManager)
-				return false;
-	
-			CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(localPlayerId);
-			if (!slotData)
-				return false;
-	
-			CRF_EGearRole playerRole = slotData.GetSlotRole();
-	
-			foreach (CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
-			{
-				if (customGear.m_Role != playerRole)
-					continue;
-	
-				foreach (CRF_Clothing clothing : customGear.m_Clothing)
-				{
-					if (clothing.m_ClothingPrefabs.Contains(itemPrefab))
-						return true;
-				}
 			}
 		}
 

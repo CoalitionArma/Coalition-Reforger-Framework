@@ -1,17 +1,5 @@
 class CRF_WeaponHelper
 {	
-	const static ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
-	
-	//------------------------------------------------------------------------------------------------
-	//! Check if an entity is a throwable weapon
-	//! \param[in] entity Entity to check
-	//! \return True if entity is a throwable weapon
-	static bool IsThrowableWeapon(IEntity entity)
-	{
-		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
-		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
-	}	
-
 	//------------------------------------------------------------------------------------------------
 	//! Select a random weapon from an array
 	//! \param[in] weaponArray Array of weapon options

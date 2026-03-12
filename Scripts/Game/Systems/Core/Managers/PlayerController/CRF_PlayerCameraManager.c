@@ -51,8 +51,6 @@ class CRF_PlayerCameraManager : ScriptComponent
 		// Spawn or reposition camera
 		if (!m_eCamera)
 			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
-		else
-			m_eCamera.SetWorldTransform(cameraPos);
 		
 		// Level camera horizon
 		vector mat = m_eCamera.GetAngles();

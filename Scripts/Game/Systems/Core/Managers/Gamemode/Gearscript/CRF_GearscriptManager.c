@@ -71,7 +71,19 @@ class CRF_GearscriptManager : ScriptComponent
 
 		if (!inventory || !inventoryManager)
 		{
-			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE REQUIRED COMPONENTS!", entity), LogLevel.ERROR);
+			string errorMsg = string.Format("Entity %1 is missing required inventory components (SCR_CharacterInventoryStorageComponent or SCR_InventoryStorageManagerComponent)", entity);
+			
+			// Use MissionValidatorManager in Workbench, fallback to Print in game
+			#ifdef WORKBENCH
+			CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
+			if (validator)
+				validator.AddCriticalError("[GEARSCRIPT] " + errorMsg);
+			else
+				Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#else
+			Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
+			#endif
+			
 			return;
 		}
 
@@ -88,30 +100,10 @@ class CRF_GearscriptManager : ScriptComponent
 		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
-		// Use single consolidated callback instead of multiple separate ones
-		GetGame().GetCallqueue().Call(ApplyGearConsolidated, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager, entity);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Consolidated gear application callback - PERFORMANCE OPTIMIZATION
-	//! Applies weapons and inventory items in a single callback to reduce CallQueue overhead
-	//! \param[in] gearConfig Gear configuration
-	//! \param[in] role Role identifier
-	//! \param[in] gearScriptSettings Gearscript settings
-	//! \param[in] spawnParams Spawn parameters
-	//! \param[in] inventory Inventory component
-	//! \param[in] inventoryManager Inventory manager component
-	//! \param[in] entity Entity being equipped
-	protected void ApplyGearConsolidated(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
-		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, IEntity entity)
-	{
-		if (!inventory || !inventoryManager || !entity)
-			return;
-		
-		// Apply weapons (originally 375ms delay, now immediate in this consolidated callback at 500ms)
+		// Apply weapons
 		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		
-		// Apply inventory items (originally 250ms delay, now immediate in this consolidated callback at 500ms)
+		// Apply inventory items
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		
 		// Initialize radios for player
@@ -161,39 +153,26 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		// Apply gear
-		SetIdentity(gearConfig, entity);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Apply clothing to entity based on config
-	//! \param[in] gearConfig Gear configuration
-	//! \param[in] entity Entity to apply randomized head/body to from the identity config of the gear config
-    protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
-    {
-		CRF_Character_Visual_Identity gsVisIdentity;
-		CRF_Character_Sound_Identity gsSndIdentity;
 		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
-		
 		if (!identityComp)
 			return;
 		
 		// Get both sound and visual identities from the identity identityComp
 		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();
 		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
-		
 		if (!visIdentity || !sndIdentity)
 			return;
-		
+			
 		CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
 		
 		if (gsCharIdentity)
 		{
-			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
-				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();
+			CRF_Character_Visual_Identity gsVisIdentity;
+			CRF_Character_Sound_Identity gsSndIdentity;
 			
-			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
-				gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
+			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
+				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
+					gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
 			
 			if (gsVisIdentity)
 			{
