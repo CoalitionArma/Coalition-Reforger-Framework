@@ -21,9 +21,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 60
- m_bAllowEspionage 0
  m_bLockUnusedSlots 1
- m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
@@ -32,10 +30,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "ION has been contracted to push the new American force out of Varpadany before they can get fully set up. "\
    ""\
    "BLUFOR Composition: Modern US Defending"\
-   "BLUFOR Assets: Entrenchment, 1x Mine laying MRLS"\
+   "BLUFOR Assets: Entrenchment, 1x Mine laying MRLS (large brake ring)"\
    ""\
    "INDFOR Composition: Modern ION Attacking"\
-   "INDFOR Assets: Sniper team, Drone team, 1x Smoke MRLS"\
+   "INDFOR Assets: Sniper team, Drone team, 1x Smoke MRLS (large brake ring)"\
    ""\
    "Time: 60 min"\
    "Weather: Day Foggy"
