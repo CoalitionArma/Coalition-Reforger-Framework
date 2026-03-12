@@ -50,7 +50,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "A major terrorist group called Oathbreakers has forcibly take over the canal south of the main city in Zimnitrita. TFO is being deployed to take care of the threat."\
    ""\
    "BLUFOR Composition: Amphilbous Infantry Platoon"\
-   "BLUFOR Assets: UH60 Armed and RHIBs"\
+   "BLUFOR Assets: OH58D (Armed) and RHIBs (Unarmed and Armed)"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
@@ -96,15 +96,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68D63A13BA5ED44D}" {
+  CRF_SlottingGroup "{68D9546BBBF84A28}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    JTAC
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED562}" {
+  CRF_SlottingGroup "{68D9546BBBF84BC8}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -119,7 +120,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED589}" {
+  CRF_SlottingGroup "{68D9546BBBF84C6E}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -134,7 +135,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED667}" {
+  CRF_SlottingGroup "{68D9546BBBF84CF5}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED6F1}" {
+  CRF_SlottingGroup "{68D9546BBBF84D45}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -164,16 +165,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED74C}" {
+  CRF_SlottingGroup "{68D9546BBBF84DD0}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
     PILOT
-    CREW_CHIEF
-    CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68D63A13BA5ED7D3}" {
+  CRF_SlottingGroup "{68D9546BBBF84DA6}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
