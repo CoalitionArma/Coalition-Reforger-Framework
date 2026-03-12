@@ -1,0 +1,62 @@
+GenericEntity : "{84A36EE34ADF0944}Prefabs/Weapons/Rifles/XM7/Rifle_XM7_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{68C76E61F6578A59}" {
+     SourceMaterial "sig_xm7_01"
+     AssignedMaterial "{81BE604339FB5B57}Assets/Weapons/Rifles/XM7/Data/sig_xm7_01_blk.emat"
+    }
+    MaterialAssignClass "{68C76E61F6578A5F}" {
+     SourceMaterial "sig_xm7_02"
+     AssignedMaterial "{C14E41668FE7D910}Assets/Weapons/Rifles/XM7/Data/sig_xm7_02_BLK.emat"
+    }
+    MaterialAssignClass "{68C76E61F6578A51}" {
+     SourceMaterial "sig_xm7_03"
+     AssignedMaterial "{3F4E01237AB5B55C}Assets/Weapons/Rifles/XM7/Data/sig_xm7_03_BLK.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07CFF6712A}" {
+     Name "#WCS-Weapon_XM7_Name - #WCS-Camo_Black"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{65E2E3F3AC909464}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot BayonetSlot {
+     }
+    }
+    AttachmentSlotComponent "{65E6264D7529E8E2}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot right_picatinny {
+     }
+    }
+    AttachmentSlotComponent "{68C76E6002AF79B3}" {
+     AttachmentSlot InventoryStorageSlot m203 {
+      PivotID "barrel_muzzle"
+      Offset 0 0.0002 -0.3623
+      Prefab "{AAD55E46E75D3E1E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_SU253.et"
+     }
+     AttachmentType AttachmentUnderBarrelM203 "{68C76E601B36B7A6}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{65E2E3F3AC900356}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+       }
+      }
+     }
+     MagazineTemplate "{4D123D36807EC441}Prefabs/Weapons/Magazines/68x51_XM7_20rnd/Magazine_68x51_XM7_20rnd_4Ball_1Tracer_XM1186_XM1185.et"
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#WCS-Weapon_XM7_Name - #WCS-Camo_Black"
+   }
+  }
+ }
+ coords 0 0.017 0.008
+}
