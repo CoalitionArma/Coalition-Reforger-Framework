@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "Mission: Situation"
    m_sTextData "A major terrorist group called Oathbreakers has forcibly take over the canal south of the main city in Zimnitrita. TFO is being deployed to take care of the threat."\
    ""\
-   "BLUFOR Composition: Amphilbous Infantry Platoon"\
+   "BLUFOR Composition: Amphibious Infantry Platoon"\
    "BLUFOR Assets: OH58D (Armed) and RHIBs (Unarmed and Armed)"\
    ""\
    "OPFOR Composition: Unknown"\
