@@ -180,40 +180,30 @@ class CRF_WeaponHelper
 	//! \param[in] attachmentResource Attachment resource to add
 	//! \param[in] weapon Weapon to add attachment to
 	//! \param[in] attachmentSlots Available attachment slots
-	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] spawnParams Spawn parameters (unused - kept for compatibility)
 	//! \param[in] inventoryManager Inventory manager component
 	static void AddAttachmentToWeapon(ResourceName attachmentResource, IEntity weapon, array<AttachmentSlotComponent> attachmentSlots, 
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		AttachmentSlotComponent verifyAttachmentSlot = null;
-		
 		if (!Resource.Load(attachmentResource).IsValid())
 			return;
 		
-		IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachmentResource), GetGame().GetWorld(), spawnParams);
 		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
 		if (!weaponStorageComp)
 			return;
 
-		IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
+		// Use TrySpawnPrefabToStorage to spawn attachment directly into the weapon's storage
+		// This ensures the attachment slots are ready and handles replication properly
+		bool spawned = inventoryManager.TrySpawnPrefabToStorage(
+			attachmentResource,
+			weaponStorageComp,  // Spawn directly into weapon storage
+			-1,                 // Auto-select slot
+			EStoragePurpose.PURPOSE_ANY
+		);
 		
-		foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
+		if (!spawned)
 		{
-			if (attachmentSlot.CanSetAttachment(attachmentSpawned))
-			{
-				if (oldSight)
-				delete oldSight;
-			
-				inventoryManager.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
-				verifyAttachmentSlot = attachmentSlot;
-				break;
-			}
-		}
-
-		if (verifyAttachmentSlot == null)
-		{
-			CRF_LoggingHelper.LogItemError(attachmentSpawned, weapon, "ATTACHMENT");
-			delete attachmentSpawned;
+			CRF_LoggingHelper.LogItemError(null, weapon, "Failed to spawn attachment: " + attachmentResource);
 		}
 	}
 	

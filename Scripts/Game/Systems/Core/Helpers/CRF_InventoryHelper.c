@@ -37,7 +37,7 @@ class CRF_InventoryHelper
 	//! Add inventory item
 	//! \param[in] item Item resource to add
 	//! \param[in] itemAmount Number of items to add
-	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] spawnParams Spawn parameters (unused - kept for compatibility)
 	//! \param[in] inventory Inventory component
 	//! \param[in] inventoryManager Inventory manager component
 	//! \param[in] role Role identifier
@@ -50,41 +50,19 @@ class CRF_InventoryHelper
 
 		for (int i = 1; i <= itemAmount; i++)
 		{
-			IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
-
-			if (!resourceSpawned)
-				continue;
-
-			bool isThrowable = CRF_InventoryHelper.IsThrowable(resourceSpawned);
+			// Use TrySpawnPrefabToStorage for proper replication and attachment slot readiness
+			// This method handles spawning AND insertion atomically, ensuring all components are ready
+			bool spawned = inventoryManager.TrySpawnPrefabToStorage(
+				item, 
+				null,  // Let the system find the best storage automatically
+				-1,    // Auto-select slot
+				EStoragePurpose.PURPOSE_ANY  // Allow any storage type
+			);
 			
-			// Special handling for throwables
-			if (isThrowable)
+			if (!spawned)
 			{
-				// Delete the pre-spawned entity first to avoid duplicate projectile attachment issues
-				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-				
-				// Now spawn directly to storage - this prevents MuzzleInMagComponent conflicts
-				bool spawned = inventoryManager.TrySpawnPrefabToStorage(item, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
-				if (!spawned)
-				{
-					// If direct spawn failed, try spawning again and inserting manually
-					resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
-					if (resourceSpawned)
-						InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role);
-				}
-				
-				continue;
+				CRF_LoggingHelper.LogItemError(null, inventoryManager.GetOwner(), "Failed to spawn: " + item);
 			}
-
-			// Try to equip attachable equipment
-			if (inventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
-			{
-				inventoryManager.TryInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
-				continue;
-			}
-
-			// Regular inventory insertion
-			InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role);
 		}
 	}
 
