@@ -1,0 +1,14 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5053.687 3.639 7056.539
+  angles 0 -46.33 0
+  m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_2 {
+  coords 5059.302 3.472 7051.106
+  angles 0 -46.33 0
+  m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
+  m_sFactionKey "OPFOR"
+ }
+}
