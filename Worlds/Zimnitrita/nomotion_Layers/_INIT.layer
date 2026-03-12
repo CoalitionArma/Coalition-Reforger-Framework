@@ -80,7 +80,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Choose a defensible location and fortify area. You may attempt to negotiate with the encroaching enemy as we believe they want the hostage kept alive. If negotiations fail, you may attempt to leave the area and extract to the ship off the coast once 15minutes remain in the mission."\
+   m_sTextData "Choose a defensible location, forward deploy to that area, and fortify it. You may attempt to negotiate with the encroaching enemy as we believe they want the hostage kept alive. If negotiations fail, you may attempt to leave the area and extract to the island off the coast once 15minutes remain in the mission."\
    ""\
    "Do not kill the hostage at any cost. You must successfully defend him from encroaching forces or extract with him."\
    ""\
@@ -98,7 +98,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "N/A"
+   m_sTextData "There are numerous possible outcomes to this mission:"\
+   ""\
+   "HVI killed - no sides extract - both sides fail"\
+   "HVI killed - both sides extract - draw"\
+   "HVI killed - one side extracts - extraction victory"\
+   "HVI traded - draw"\
+   "HVI extracted - extraction victory"\
+   ""\
+   "The only true victory is one where the HVI is extracted and either both sides extract or one side is eliminated prior to extraction."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -109,7 +117,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68D835A4D949C552}" {
+  CRF_SlottingGroup "{68D835AEAEAC2ED9}" {
    m_sCallsign "COMMAND"
    m_FlagType SIGNAL
    m_aSlots {
@@ -118,7 +126,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     JTAC
    }
   }
-  CRF_SlottingGroup "{68D835A4D949C64E}" {
+  CRF_SlottingGroup "{68D835AEAEAC21BB}" {
    m_sCallsign "ODA11"
    m_FlagType INFANTRY
    m_aSlots {
@@ -133,7 +141,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835A4D949C6A8}" {
+  CRF_SlottingGroup "{68D835AEAEAC2013}" {
    m_sCallsign "ODA12"
    m_FlagType INFANTRY
    m_aSlots {
@@ -148,7 +156,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835A4D949F938}" {
+  CRF_SlottingGroup "{68D835AEAEAC2099}" {
    m_sCallsign "ODA13"
    m_FlagType INFANTRY
    m_aSlots {
@@ -163,7 +171,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835A4D949F9CE}" {
+  CRF_SlottingGroup "{68D835AEAEAC232E}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -171,7 +179,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68D835A4D949F86C}" {
+  CRF_SlottingGroup "{68D835AEAEAC23C4}" {
    m_sCallsign "HELI 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -179,7 +187,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68D835A4D949F805}" {
+  CRF_SlottingGroup "{68D835AEAEAC225D}" {
    m_sCallsign "HELI 3"
    m_FlagType HELICOPER
    m_aSlots {
@@ -189,7 +197,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68D835A4D949FB23}" {
+  CRF_SlottingGroup "{68D835AEAEAC2573}" {
    m_sCallsign "CELL LEAD"
    m_FlagType SIGNAL
    m_aSlots {
@@ -197,7 +205,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68D835A4D949FBC6}" {
+  CRF_SlottingGroup "{68D835AEAEAC250C}" {
    m_sCallsign "CELL 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -211,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835A4D949FA41}" {
+  CRF_SlottingGroup "{68D835AEAEAC2593}" {
    m_sCallsign "CELL 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -225,7 +233,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835A4D949FAD7}" {
+  CRF_SlottingGroup "{68D835AEAEAC2423}" {
    m_sCallsign "CELL 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -239,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835A4D949FD6E}" {
+  CRF_SlottingGroup "{68D835AEAEAC24AA}" {
    m_sCallsign "CELL 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -253,8 +261,22 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835A4D949FDFD}" {
+  CRF_SlottingGroup "{68D835AEAEAC2733}" {
    m_sCallsign "CELL 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68D835AEAEAC27C0}" {
+   m_sCallsign "CELL 6"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -269,7 +291,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{68D835A4D949FC67}" {
+  CRF_SlottingGroup "{68D835AEAEAC262D}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {

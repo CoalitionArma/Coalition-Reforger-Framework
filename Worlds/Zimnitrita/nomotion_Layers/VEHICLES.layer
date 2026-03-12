@@ -2,6 +2,14 @@ Vehicle MH47G_Block1 : "{03300A0463827C4B}Prefabs/Vehicles/Helicopters/H47/MH47G
  coords 14119.438 50.906 12123.294
  angles 0 151 0
 }
+$grp Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ UAZ469_PKM1 {
+  coords 14790.143 59.344 2398.073
+ }
+ UAZ469_PKM2 {
+  coords 14798.52 59.344 2392.578
+ }
+}
 $grp Vehicle : "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" {
  S105_randomized1 {
   coords 11899.614 4.828 941.957
@@ -82,6 +90,20 @@ $grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transpo
   angles 0 -35.355 0
  }
 }
+$grp Vehicle : "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et" {
+ RHIB_Transport1 {
+  coords 12159.335 0 3157.352
+  angles -9.694 -123.246 -2.643
+ }
+ RHIB_Transport2 {
+  coords 12167.772 0 3155.507
+  angles -9.694 -123.246 -2.643
+ }
+ RHIB_Transport3 {
+  coords 12176.578 0 3153.187
+  angles -9.694 -123.246 -2.643
+ }
+}
 $grp Vehicle : "{AF950919C81D91B4}Prefabs/Vehicles/Helicopters/AH6M/MH6M.et" {
  MH6M1 {
   coords 14166.975 50.906 12152.646
@@ -106,12 +128,4 @@ Vehicle UAZ469_FIA_uncovered1 : "{E28501E93F8EFDC0}Prefabs/Vehicles/Wheeled/UAZ4
 Vehicle AH6M_base1 : "{F5763805919D0553}Prefabs/Vehicles/Helicopters/AH6M/AH6M_base.et" {
  coords 14183.28 50.906 12162.355
  angles 0 148 0
-}
-$grp Vehicle : "{F7E9AA0C813EABDA}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_FIA.et" {
- UAZ469_FIA2 {
-  coords 14795.198 59.344 2394.701
- }
- UAZ469_FIA1 {
-  coords 14788.704 59.343 2398.401
- }
 }
