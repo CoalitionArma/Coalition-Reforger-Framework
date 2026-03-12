@@ -310,6 +310,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
+  m_bEnableMagnifiedOptics 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{5517B3F933C158EF}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_EuroInsurgents.conf"
@@ -318,6 +319,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
+  m_bEnableSightArsenal 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
