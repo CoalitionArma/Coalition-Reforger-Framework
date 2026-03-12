@@ -197,7 +197,7 @@ class CRF_ClothingHelper
 		if (!gamemode)
 			return false;
 
-		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.HEADGEAR, CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS, CRF_EGearscriptClothing.VEST, CRF_EGearscriptClothing.ARMOREDVEST};
+		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS};
 		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
 		
 		foreach (string factionKey : factionKeys)
