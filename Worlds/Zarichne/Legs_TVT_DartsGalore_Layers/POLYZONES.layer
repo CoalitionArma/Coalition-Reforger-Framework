@@ -17,6 +17,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
 }
 $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_PhaseZoneLine/Ins_PhaseZoneLinePrefab.et" {
  {
+  components {
+   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
   coords 2547.914 29.121 2532.143
   Points {
    ShapePoint "{68D83EE5FC322651}" {
@@ -93,6 +100,9 @@ $grp PolylineShapeEntity : "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_
  {
   components {
    CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
     m_iVisibleDuringPhase 2
    }
   }

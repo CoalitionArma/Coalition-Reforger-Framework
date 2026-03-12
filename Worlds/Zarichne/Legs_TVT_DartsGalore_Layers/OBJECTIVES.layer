@@ -4,6 +4,12 @@ $grp GenericEntity : "{53689CA6A0F0AAA4}Prefabs/Props/Military/SupplyBox/SupplyS
   angles 0 28.151 0
  }
  {
+  components {
+   CRF_InsDestructiveComponent "{68A80E000A223702}" {
+    m_iCachePhase 2
+    m_bStartActive 0
+   }
+  }
   coords 2299.314 3.444 2069.377
   angles 0 61.493 0
  }
