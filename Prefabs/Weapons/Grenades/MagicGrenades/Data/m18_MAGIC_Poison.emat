@@ -1,0 +1,7 @@
+MatPBRBasic {
+ Color 0 0.51 0.129 1
+ Emissive 0.024 0.52 0 1
+ EmissiveLV 3.473
+ BCRMap "{6BEDB3D517194F67}Assets/Weapons/Grenades/M18/Data/M18_green_BCR.edds"
+ NMOMap "{53350847CE6E1DF9}Assets/Weapons/Grenades/M18/Data/M18_green_NMO.edds"
+}

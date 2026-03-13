@@ -1,0 +1,58 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{973E2C17FD7C51CA}Prefabs/Weapons/Grenades/MagicGrenades/Magic_PosionSmoke.ptc"
+    }
+    SpawnPrefabEffect "{68CB46189E0B8444}" {
+     TriggerOnce 1
+     AttachToParent 1
+     EffectPrefab "{5A048729A4D9740C}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/Damage_PoisonArea.et"
+    }
+   }
+   TIMER 4
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   TimeToLive 60
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68CB46189E0B8454}" {
+     Name "Toxic Grenade"
+     Description "Knocks out and quickly toxifies players!"
+    }
+   }
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{68CB46189E0B8459}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{590160E11985E287}Prefabs/Weapons/Grenades/MagicGrenades/Data/m18_MAGIC_Poison.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Green_Name"
+     Description "#AR-Weapon_M18Green_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68CB46189E0B8460}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    m_sAmmoType "#AR-AmmoType_M18Green"
+   }
+  }
+ }
+ coords 2.982 3.707 -1.472
+}
