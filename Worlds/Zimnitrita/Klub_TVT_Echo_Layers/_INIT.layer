@@ -43,12 +43,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "MEC forces have been stationed at the Western dam defending it from an onslaught of Russian commandos whom have been tasked to level the dam itself. While the MEC are weary and running out of supplies, the opposing side is said to be amassing the last of their forces in the region. Intel suggests that the Russian forces are unable to communicate over long ranges with the artillery support necessary to cause the breach, thus, MEC forces are to defend the surrounding territory and restrict access to the MCOM radios, otherwise the local ecosystems will collapse.  "\
+   m_sTextData "MEC forces have been stationed at the Western dam defending it from an onslaught of Russian forces whom have been tasked to level the dam itself. While the MEC are weary and running out of supplies, the opposing side is said to be amassing the last of their forces in the region. Intel suggests that the Russian forces are unable to communicate over long ranges with the artillery support necessary to cause the breach, thus, MEC forces are to defend the surrounding territory and restrict access to the MCOM radios, otherwise the local ecosystems will collapse.  "\
    ""\
-   "BLUFOR Composition: Infantry"\
+   "BLUFOR Composition: MEC Infantry"\
    "BLUFOR Assets: MMG, MAT"\
    ""\
-   "OPFOR Composition: Mech. Infantry"\
+   "OPFOR Composition: USSR 2000s Mech. Infantry"\
    "OPFOR Assets: MMG, Gun Trucks"\
    ""\
    "Time: Afternoon"\
