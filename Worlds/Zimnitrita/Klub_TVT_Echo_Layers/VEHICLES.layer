@@ -36,3 +36,21 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "OPFOR"
  }
 }
+$grp GenericEntity : "{21F7E55C8EBF7877}Prefabs/Props/Military/RoadBlocks/Roadblock ConcreteBlock 2.et" {
+ {
+  coords 2533.784 0.059 6904.49
+  angles 0 120 0
+ }
+ {
+  coords 2532.916 0.106 6909.577
+  angles 0 120 0
+ }
+ {
+  coords 2529.449 0.166 6911.323
+  angles 0 120 0
+ }
+ {
+  coords 2524.933 0.146 6913.794
+  angles 0 120 0
+ }
+}

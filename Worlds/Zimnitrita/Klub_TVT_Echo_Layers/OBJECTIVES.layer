@@ -32,6 +32,40 @@ $grp SCR_BaseTriggerEntity {
  }
  mcom_d_trigger {
   coords 2392.053 153.241 7002.24
+  {
+   GenericEntity box4 : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+    coords -0.007 0 -0.026
+    userScript "	vector position;"
+    destructor ""\
+    "		{"\
+    "		array<vector> positions = "\
+    "			{"\
+    "			\"2541 153 6905\","\
+    "			\"2474 153 6943\","\
+    "			\"2392 154 7001\","\
+    "			\"2341 153 7044\","\
+    "			\"2274 153 7109\"	"\
+    "			};"\
+    "			"\
+    "			for (int i = 0; i < positions.Count(); i++)"\
+    "				{"\
+    "				int delay = i * 1000;"\
+    "				GetGame().GetCallqueue().CallLater(SpawnBarrageAtPosition, delay, false, positions[i]);"\
+    "				}"\
+    "		}"\
+    "		"\
+    "		{"\
+    "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController();"\
+    "		controller.SetStrikeCount(100);"\
+    "		controller.SetStrikeRadius(40);"\
+    "		controller.SetProjectileSpawnHeight(800);"\
+    "		controller.SetProjectilePrefab(\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\");"\
+    "		controller.SetNotificationMessage(\"DANGER! Heavy artillery incoming!\");"\
+    "		controller.TriggerStrikes(position);"\
+    "		}"\
+    "	"
+   }
+  }
  }
  mcom_b_trigger {
   coords 3323.939 44.336 7689.216

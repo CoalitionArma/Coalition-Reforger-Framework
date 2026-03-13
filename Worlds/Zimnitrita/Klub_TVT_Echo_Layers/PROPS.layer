@@ -296538,7 +296538,7 @@ StaticModelEntity : "{01E409EF2B75692E}Prefabs/Structures/Infrastructure/Towers/
  coords 2323.065 119.168 7122.455
 }
 GenericEntity : "{21F7E55C8EBF7877}Prefabs/Props/Military/RoadBlocks/Roadblock ConcreteBlock 2.et" {
- coords 2536.641 0.058 6907.869
+ coords 2535.791 0.074 6908.36
  angles 0 120 0
 }
 SCR_DestructibleBuildingEntity : "{23764D9776ABBFC4}Prefabs/Structures/Military/Fortifications/Bunker_SPS/Bunker_SPS_covered.et" {
@@ -296583,6 +296583,14 @@ $grp StaticModelEntity : "{4241A59E64C29DC1}Prefabs/Structures/Military/BunkerLi
  {
   coords 2432.359 153.241 6975.563
   angles 0 90 0
+ }
+ {
+  coords 2459.269 153.241 6953.117
+  angles 0 124.067 0
+ }
+ {
+  coords 2292.017 153.241 7091.824
+  angles 0 -43.916 0
  }
 }
 GenericEntity : "{491830038127E977}Prefabs/Props/construction/set01/Generator_light_01.et" {
@@ -296631,8 +296639,8 @@ $grp StaticModelEntity : "{9F9516E7AFB67010}Prefabs/Structures/Debris/DebrisPile
  {
   coords 2415.553 156.717 6980.142
  }
- mound {
-  coords 2275.48 155.916 7104.919
+ {
+  coords 2322.221 155.916 7065.412
   userScript "	// code here"\
   ""
  }
@@ -296671,6 +296679,212 @@ $grp GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_To
   coords 2503.066 29.805 6924.985
   angles 0 78.129 0
  }
+}
+$grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+ {
+  coords 2443.865 153.241 6963.678
+  angles 0 -144.402 0
+ }
+ {
+  coords 2398.392 153.241 7000.598
+  angles 0 -51.913 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2388.64 153.241 7007.825
+  angles 0 -51.913 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2426.009 153.696 6985.205
+  angles 0 36.076 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2280.774 153.241 7102.93
+  angles 0 -135.228 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2274.924 153.241 7108.673
+  angles 0 -135.228 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2293.603 153.696 7101.058
+  angles 0 -135.228 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2283.458 153.696 7089.606
+  angles 0 -135.228 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2291.433 153.241 7100.314
+  angles 0 135.4 0
+ }
+ {
+  coords 2284.228 153.241 7091.651
+  angles 0 135.4 0
+ }
+ {
+  coords 2296.826 153.241 7086.89
+  angles 0 47.053 0
+ }
+ {
+  coords 2304.388 153.241 7078.996
+  angles 0 47.354 0
+ }
+ {
+  coords 2478.758 153.241 6940.627
+  angles 0 33.016 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2466.182 153.241 6955.396
+  angles 0 -56.356 0
+ }
+ {
+  coords 2466.519 153.696 6957.555
+  angles 0 33.016 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2458.92 153.696 6944.276
+  angles 0 33.016 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2460.893 153.241 6945.447
+  angles 0 -56.356 0
+ }
+ {
+  coords 2452.877 153.241 6957.491
+  angles 0 -144.704 0
+ }
+ {
+  coords 2471.861 153.241 6945.057
+  angles 0 33.016 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+ {
+  coords 2402.121 153.241 6993.647
+  angles 0 39.072 0
+  {
+   $grp GenericEntity : "{D4D7019BD3AFE708}PrefabsEditable/Auto/ConflictRHS/E_SandbagWallSolidPlastic_S_USMC_01.et" {
+    {
+     coords -2.739 0 -0.041
+    }
+    {
+     coords -5.438 0 -0.028
+    }
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{DAC148D18C3835B9}Prefabs/Structures/Military/Bunkers/ShelterMilitary_E_01/ShelterMilitary_E_01_long.et" {
+ coords 2372.585 38.96 7017.359
+ angles 0 -48.126 0
 }
 SCR_DestructibleBuildingEntity : "{DC41ABA09A6A2177}Prefabs/Structures/Military/Fortifications/Bunker_SPS/Bunker_SPS2M_covered.et" {
  coords 3457 87.809 7988.505
