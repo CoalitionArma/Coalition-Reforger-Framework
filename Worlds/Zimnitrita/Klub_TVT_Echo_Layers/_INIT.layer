@@ -4,8 +4,9 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{68D377B5EF81100A}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
    m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
-   m_iMCOMTimer 5
    m_iNumberOfZones 2
    m_bEnableDynamicRespawns 1
    m_aZoneRespawnConfigs {
@@ -35,24 +36,80 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 45
- m_bLockUnusedSlots 0
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
- m_iFactionOneRatio 0
- m_iFactionTwoRatio 0
- m_sFactionOneKey ""
- m_sFactionTwoKey ""
- m_BluforSlots {
-  CRF_SlottingGroup "{68D377A57050D868}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
+ m_iTimeLimitMinutes 85
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "MEC forces have been stationed at the Western dam defending it from an onslaught of Russian commandos whom have been tasked to level the dam itself. While the MEC are weary and running out of supplies, the opposing side is said to be amassing the last of their forces in the region. Intel suggests that the Russian forces are unable to communicate over long ranges with the artillery support necessary to cause the breach, thus, MEC forces are to defend the surrounding territory and restrict access to the MCOM radios, otherwise the local ecosystems will collapse.  "\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: MMG, MAT"\
+   ""\
+   "OPFOR Composition: Mech. Infantry"\
+   "OPFOR Assets: MMG, Gun Trucks"\
+   ""\
+   "Time: Afternoon"\
+   ""\
+   "Weather: Overcast"\
+   ""
+   m_aFactionKeys {
    }
+   m_bShowForAnyFaction 1
   }
-  CRF_SlottingGroup "{68D377A57050DB70}" {
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Defend the MCOM Radios from OPFOR."\
+   ""\
+   "This terrain is open and hilly. Due to low supply, you do not have access to entrenching tools, utilize the terrain to your advantage to stunt OPFOR's attack."\
+   ""\
+   "MCOMA & MCOMB: Deliver HE Arty strikes to the East/West sides, respectively, of the dam."\
+   ""\
+   "MCOMC: Delivers Smoke Arty strikes to the East side of the dam."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Your mission is simple. Gain access to the MCOM radios and call for fire support on the dam. "\
+   ""\
+   "This terrain is open and hilly. Chances are that contact will be heavy once met. Plan accordingly. "\
+   ""\
+   "(Note: Destroying the MCOMs will call in an artillery barrage on the dam"\
+   "MCOMA & MCOMB: Deliver HE Arty strikes to the East/West sides, respectively, of the dam."\
+   ""\
+   "MCOMC: Delivers Smoke Arty strikes to the East side of the dam.)"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "Administration"
+   m_sTextData ""
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    ""
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 3
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{68DA124B07002EB5}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -60,7 +117,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68D377A57050DACA}" {
+  CRF_SlottingGroup "{68DA124B070029DB}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -72,10 +129,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
-    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050DA4C}" {
+  CRF_SlottingGroup "{68DA124B0700288A}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -87,10 +143,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
-    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D5DA}" {
+  CRF_SlottingGroup "{68DA124B0700280C}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -102,19 +157,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
-    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D533}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D49F}" {
-   m_sCallsign "2-1"
+  CRF_SlottingGroup "{68DA124B07002B8C}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -125,40 +171,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
-    GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D4EF}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D47D}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D7D7}" {
+  CRF_SlottingGroup "{68DA124B07002B0E}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -170,7 +185,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68D377A57050D727}" {
+  CRF_SlottingGroup "{68DA124B07002A86}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -180,36 +195,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
     MEDIUM_ANTITANK
     ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D6BA}" {
-   m_sCallsign "HELI 1"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D61B}" {
-   m_sCallsign "IFV 1"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_GUNNER
-    VEHICLE_DRIVER
    }
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68D377A57050D674}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D1D0}" {
+  CRF_SlottingGroup "{68DA124B070025A6}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -217,7 +207,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68D377A57050D132}" {
+  CRF_SlottingGroup "{68DA124B07002537}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -226,13 +216,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D081}" {
+  CRF_SlottingGroup "{68DA124B070024DB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -241,13 +232,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D0E7}" {
+  CRF_SlottingGroup "{68DA124B07002451}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -256,22 +248,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D07E}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D3A6}" {
-   m_sCallsign "2-1"
+  CRF_SlottingGroup "{68DA124B070027C0}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -279,44 +264,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68D377A57050D330}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D297}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050D2EB}" {
-   m_sCallsign "MMG"
+  CRF_SlottingGroup "{68DA124B07002749}" {
+   m_sCallsign "MMG 1"
    m_FlagType MACHINEGUN
    m_aSlots {
     SQUAD_LEAD
@@ -327,345 +283,30 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68D377A57050D24C}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
+  CRF_SlottingGroup "{68DA124B070026D1}" {
+   m_sCallsign "MMG 2"
+   m_FlagType MACHINEGUN
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68D377A570502DDA}" {
-   m_sCallsign "HELI 1"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502D06}" {
-   m_sCallsign "IFV 1"
+  CRF_SlottingGroup "{68DA124B07002626}" {
+   m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
-    VEHICLE_LEAD
     VEHICLE_GUNNER
     VEHICLE_DRIVER
    }
   }
- }
- m_IndforSlots {
-  CRF_SlottingGroup "{68D377A570502C91}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502CFB}" {
-   m_sCallsign "1PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502C59}" {
-   m_sCallsign "1-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502FBD}" {
-   m_sCallsign "1-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502F08}" {
-   m_sCallsign "1-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502E8B}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502EEB}" {
-   m_sCallsign "2-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502E43}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A5705029DA}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502934}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050288B}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{68D377A5705028E6}" {
-   m_sCallsign "HELI 1"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502847}" {
-   m_sCallsign "IFV 1"
+  CRF_SlottingGroup "{68DA124B070021B1}" {
+   m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_GUNNER
-    VEHICLE_DRIVER
-   }
-  }
- }
- m_CivSlots {
-  CRF_SlottingGroup "{68D377A570502BD4}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502B35}" {
-   m_sCallsign "1PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502A88}" {
-   m_sCallsign "1-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502AE0}" {
-   m_sCallsign "1-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502A7B}" {
-   m_sCallsign "1-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A5705025D4}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050253A}" {
-   m_sCallsign "2-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050248A}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A5705024EF}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502476}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-  }
-  CRF_SlottingGroup "{68D377A5705027CB}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{68D377A570502725}" {
-   m_sCallsign "HELI 1"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
-   }
-  }
-  CRF_SlottingGroup "{68D377A57050268C}" {
-   m_sCallsign "IFV 1"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
     VEHICLE_GUNNER
     VEHICLE_DRIVER
    }
@@ -676,28 +317,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{B1024A9AA980F79B}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEC.conf"
+  m_rGearScript "{5D57FD36F9393700}Configs/Gearscripts/Custom/Klub/CRF_GS_MEC_Echo.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{FA82A9F5101BF159}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUS_2000s.conf"
+  m_rGearScript "{C558163D2C19CAAD}Configs/Gearscripts/Custom/Klub/CRF_GS_RUS_2000s_Echo.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
-  m_bEnableShareableMarkers 1
-  m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
@@ -713,9 +354,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
      m_aFriendlyFactionsIds {
-      "BLUFOR"
-      "OPFOR"
-      "INDFOR"
      }
     }
     SCR_Faction "{628B22E9B4056C88}" {
@@ -732,5 +370,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
    }
   }
+ }
+}
+$grp GameEntity {
+ Mortar1 {
+  coords 2287.282 153.241 7091.84
+ }
+ Mortar2 {
+  coords 2460.465 153.241 6951.534
+ }
+ Mortar3 {
+  coords 2223.814 171.068 7161.432
  }
 }

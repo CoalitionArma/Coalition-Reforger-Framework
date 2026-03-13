@@ -296610,12 +296610,6 @@ $grp GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469
 GenericEntity : "{6E4573A4C194631F}Prefabs/Props/Military/RoadBlocks/Roadblock ConcreteBlock.et" {
  coords 2537.258 0.021 6904.294
 }
-Vehicle ZU1 : "{7074F90B76716748}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_AATeam.et" {
- coords 2285.567 153.241 7100.399
- destructor ""\
- "		/* code here */"\
- "	"
-}
 StaticModelEntity : "{724B6DFEE51116AA}Prefabs/Structures/Ruins/Barn_Ruin_01/Dst/Barn_Ruin_01_V1_Ruin.et" {
  coords 3411.912 97.708 7980.978
  angles 0 -66.859 0
@@ -296660,15 +296654,84 @@ $grp SCR_DestructibleBuildingEntity : "{A67AB8173DD14448}PrefabLibrary/DefaultLi
   coords 3452.062 90.496 8038.726
  }
 }
-SCR_DestructibleBuildingEntity : "{A6CCEBBD4B24A35F}Prefabs/Structures/Agriculture/WaterTowers/WaterTower_01/WaterTower_01.et" {
- coords 2239.773 0 7121.022
-}
 $grp GenericEntity : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
- {
+ box1 {
   coords 3366.861 98.616 7923.475
+  userScript "	vector position;"
+  destructor ""\
+  "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+  "			15,"\
+  "			15,"\
+  "			1.0,"\
+  "			0.1,"\
+  "			\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\","\
+  "			500.0,"\
+  "			true,"\
+  "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+  "			2.0,"\
+  "			true,"\
+  "			\"Artillery bombardment incoming!\","\
+  "			false"\
+  "		);"\
+  "		"\
+  "		controller.TriggerStrikes(position);"\
+  "	"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		position = GetWorld().FindEntityByName(\"Mortar1\").GetOrigin();"\
+  "	"
  }
- {
+ box2 {
   coords 3470.745 88.759 8029.258
+  userScript "	vector position;"
+  destructor ""\
+  "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+  "			15,"\
+  "			15,"\
+  "			1.0,"\
+  "			0.1,"\
+  "			\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\","\
+  "			500.0,"\
+  "			true,"\
+  "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+  "			2.0,"\
+  "			true,"\
+  "			\"Artillery bombardment incoming!\","\
+  "			false"\
+  "		);"\
+  "		"\
+  "		controller.TriggerStrikes(position);"\
+  "	"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		position = GetWorld().FindEntityByName(\"Mortar2\").GetOrigin();"\
+  "	"
+ }
+ box3 {
+  coords 2555.64 130.094 7044.488
+  userScript "	vector position;"
+  destructor ""\
+  "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+  "			15,"\
+  "			35,"\
+  "			2.0,"\
+  "			0.1,"\
+  "			\"{A544A2C131DE2C64}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_Smoke_D832DU.et\","\
+  "			500.0,"\
+  "			true,"\
+  "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+  "			2.0,"\
+  "			true,"\
+  "			\"Artillery bombardment incoming!\","\
+  "			false"\
+  "		);"\
+  "		"\
+  "		controller.TriggerStrikes(position);"\
+  "	"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		position = GetWorld().FindEntityByName(\"Mortar3\").GetOrigin();"\
+  "	"
  }
 }
 SCR_DestructibleBuildingEntity : "{BC1A8F83575CB1E9}Prefabs/Structures/Ruins/Church_Ruin_01/Church_Ruin_01_base.et" {

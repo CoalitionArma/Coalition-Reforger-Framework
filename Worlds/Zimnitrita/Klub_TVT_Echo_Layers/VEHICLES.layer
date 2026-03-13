@@ -1,14 +1,38 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 5053.687 3.639 7056.539
+  coords 5051.968 3.639 7054.738
   angles 0 -46.33 0
   m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
   m_sFactionKey "OPFOR"
  }
  CRF_VehicleSpawner_2 {
-  coords 5059.302 3.472 7051.106
+  coords 5055.147 3.472 7058.219
   angles 0 -46.33 0
   m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_3 {
+  coords 5057.5 3.482 7049.594
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_4 {
+  coords 5060.627 3.476 7053.052
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_5 {
+  coords 5064.806 3.288 7043.208
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_6 {
+  coords 5067.651 3.279 7047.042
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
   m_sFactionKey "OPFOR"
  }
 }
