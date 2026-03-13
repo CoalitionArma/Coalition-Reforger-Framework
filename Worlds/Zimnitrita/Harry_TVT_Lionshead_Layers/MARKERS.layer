@@ -1,0 +1,343 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 14976.101 52.758 5303.581
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "Supply at Varpadany"
+ }
+ {
+  coords 15490.752 52.125 4504.957
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "Varpadany Military Base"
+ }
+ {
+  coords 14483.964 62.125 5765.381
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14370.185 55.801 5611.92
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14454.783 55.612 5481.396
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14349.932 45.501 5349.122
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14432.955 40.546 5255.508
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14343.533 20.692 5102.486
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14453.391 30.628 4977.997
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14361.466 32.542 4902.069
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14442.984 44.515 4805.875
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14361.078 47.533 4714.234
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14472.098 51.686 4576.643
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14402.104 51.643 4467.864
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14547.738 51.685 4396.07
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14622.017 57.386 4276.592
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14761.979 53.441 4220.646
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 14874.903 53.439 4175.223
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15016.729 53.437 4199.382
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15148.5 53.44 4132.554
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15266.175 53.438 4157.932
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15345.361 53.437 4107.073
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15441.242 53.436 4147.881
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15545.258 53.438 4070.098
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15660.497 53.44 4107.195
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15752.392 53.437 4023.634
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 15889.767 52.837 4066.249
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16099.808 0.663 4564.155
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16088.793 17.721 4479.538
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16169.207 4.468 4426.217
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16168.955 10.551 4341.772
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16226.495 7.594 4292.094
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16190.88 14.105 4220.381
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16253.35 5.29 4132.32
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16192.868 17.328 4049.593
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16256.406 8.865 3970.343
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16216.988 13.527 3863.671
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16261.559 10.142 3819.501
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16214.102 10.724 3732.614
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16253.803 7.687 3677.02
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16209.108 11.48 3603.421
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+ {
+  coords 16227.947 9.214 3542.715
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 135
+  m_sDescription "Minefield"
+ }
+}
+CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ coords 15799.495 138.625 8800.985
+ angles 0 0 0
+ m_sDescription "Smoke MRLS Location"
+}
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 12798.524 11.843 332.743
+ m_sDescription "Mine MRLS Location"
+}

@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 12178.768 2.574 3178.877
+  angles 0 0 90
+  m_sDescription "BOATS"
+  m_bUseWorldScale 0
+ }
+ {
+  coords 10157.074 0.939 719.071
+  angles 0 0 90
+  m_sDescription "EXTRACT"
+  m_bUseWorldScale 0
+ }
+}
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 14268.08 50.906 11955.614
+ angles 0 0 90
+ m_sDescription "EXTRACT"
+ m_bUseWorldScale 0
+}
