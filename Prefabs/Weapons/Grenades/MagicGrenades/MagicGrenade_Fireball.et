@@ -26,7 +26,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
   InventoryItemComponent "{51FAA3E3CF6F087A}" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
     ItemDisplayName WeaponUIInfo "{68CA4DA3387A8130}" {
-     Name "Lightning Grenade"
+     Name "Fireball Grenade"
      Description "Unleashes a painful arc of power!"
     }
     ItemPhysAttributes ItemPhysicalAttributes "{56CA88CA367A150F}" {
