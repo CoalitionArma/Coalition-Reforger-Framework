@@ -1,0 +1,132 @@
+$grp SCR_BaseTriggerEntity {
+ mcom_a_trigger {
+  coords 3366.411 98.817 7922.998
+  {
+   GenericEntity box1 : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+    coords 0.45 -0.201 0.477
+    userScript "	vector position;"
+    destructor ""\
+    "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+    "			15,"\
+    "			15,"\
+    "			1.0,"\
+    "			0.1,"\
+    "			\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\","\
+    "			500.0,"\
+    "			true,"\
+    "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+    "			2.0,"\
+    "			true,"\
+    "			\"Artillery bombardment incoming!\","\
+    "			false"\
+    "		);"\
+    "		"\
+    "		controller.TriggerStrikes(position);"\
+    "	"
+    EOnInit ""\
+    "		super.EOnInit(owner);"\
+    "		position = GetWorld().FindEntityByName(\"Mortar1\").GetOrigin();"\
+    "	"
+   }
+  }
+ }
+ mcom_d_trigger {
+  coords 2392.053 153.241 7002.24
+  {
+   GenericEntity box4 : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+    coords -0.007 0 -0.026
+    userScript "	vector position;"
+    destructor ""\
+    "		{"\
+    "		array<vector> positions = "\
+    "			{"\
+    "			\"2541 153 6905\","\
+    "			\"2474 153 6943\","\
+    "			\"2392 154 7001\","\
+    "			\"2341 153 7044\","\
+    "			\"2274 153 7109\"	"\
+    "			};"\
+    "			"\
+    "			for (int i = 0; i < positions.Count(); i++)"\
+    "				{"\
+    "				int delay = i * 1000;"\
+    "				GetGame().GetCallqueue().CallLater(SpawnBarrageAtPosition, delay, false, positions[i]);"\
+    "				}"\
+    "		}"\
+    "		"\
+    "		{"\
+    "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController();"\
+    "		controller.SetStrikeCount(100);"\
+    "		controller.SetStrikeRadius(40);"\
+    "		controller.SetProjectileSpawnHeight(800);"\
+    "		controller.SetProjectilePrefab(\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\");"\
+    "		controller.SetNotificationMessage(\"DANGER! Heavy artillery incoming!\");"\
+    "		controller.TriggerStrikes(position);"\
+    "		}"\
+    "	"
+   }
+  }
+ }
+ mcom_b_trigger {
+  coords 3323.939 44.336 7689.216
+  {
+   GenericEntity box2 : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+    coords -0.112 0.228 0.64
+    userScript "	vector position;"
+    destructor ""\
+    "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+    "			15,"\
+    "			15,"\
+    "			1.0,"\
+    "			0.1,"\
+    "			\"{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et\","\
+    "			500.0,"\
+    "			true,"\
+    "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+    "			2.0,"\
+    "			true,"\
+    "			\"Artillery bombardment incoming!\","\
+    "			false"\
+    "		);"\
+    "		"\
+    "		controller.TriggerStrikes(position);"\
+    "	"
+    EOnInit ""\
+    "		super.EOnInit(owner);"\
+    "		position = GetWorld().FindEntityByName(\"Mortar2\").GetOrigin();"\
+    "	"
+   }
+  }
+ }
+ mcom_c_trigger {
+  coords 2555.651 130.094 7044.472
+  {
+   GenericEntity box3 : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+    coords -0.011 0 0.016
+    userScript "	vector position;"
+    destructor ""\
+    "		CRF_MortarStrikeController controller = new CRF_MortarStrikeController("\
+    "			15,"\
+    "			35,"\
+    "			2.0,"\
+    "			0.1,"\
+    "			\"{A544A2C131DE2C64}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_Smoke_D832DU.et\","\
+    "			500.0,"\
+    "			true,"\
+    "			\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\","\
+    "			2.0,"\
+    "			true,"\
+    "			\"Artillery bombardment incoming!\","\
+    "			false"\
+    "		);"\
+    "		"\
+    "		controller.TriggerStrikes(position);"\
+    "	"
+    EOnInit ""\
+    "		super.EOnInit(owner);"\
+    "		position = GetWorld().FindEntityByName(\"Mortar3\").GetOrigin();"\
+    "	"
+   }
+  }
+ }
+}
