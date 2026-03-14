@@ -1,0 +1,26 @@
+GenericEntity : "{A19A22F731C8C3E6}Prefabs/Systems/DamageAreas/DamageArea_Kolguyev_Poisonous_Lake.et" {
+ ID "6646D262F297B9DB"
+ components {
+  SCR_DamageAreaComponent "{6646D2612811A3C6}" {
+   DamageAreas {
+    SCR_DotDamageArea "{6646DB3FF2DCC4EC}" {
+     "Area shape" DamageAreaShapeSphere "{68C9569BF41138E4}" {
+      Radius 7
+     }
+     m_eDamageType FIRE
+     m_bRemoveEffectWhenLeavingTheArea 1
+     m_eHitZoneSelectionMode RANDOM_PHYSICAL
+     m_fDotDamage 3
+     m_fEffectDuration 3
+     m_eDotDamageType FIRE
+    }
+   }
+  }
+  RplComponent "{6646D2611F84EA1D}" {
+   "Self Insert" 0
+   "Rpl State Override" Runtime
+   AutoHierarchy 1
+  }
+ }
+ coords 1230.688 38 2827.972
+}
