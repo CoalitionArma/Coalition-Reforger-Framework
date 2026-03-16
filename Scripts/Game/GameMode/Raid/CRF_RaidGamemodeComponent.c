@@ -396,6 +396,13 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			// Fallback
 			Print(string.Format("[CRF_Raid] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
 			playerController.SetInitialMainEntity(entity);
+			
+			// Manually notify data collector since RequestSpawn pipeline was bypassed
+			SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
+				GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
+			);
+			if (dataCollector)
+				dataCollector.NotifyPlayerSpawned(playerId, entity);
 		}
 		
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
