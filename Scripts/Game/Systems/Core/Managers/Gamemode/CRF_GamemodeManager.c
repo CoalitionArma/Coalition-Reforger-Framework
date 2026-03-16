@@ -247,6 +247,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 				// Handler not ready - use direct assignment
 				Print(string.Format("[CRF_GamemodeManager] Handler not ready for spectator player %1 — using SetInitialMainEntity", playerId), LogLevel.NORMAL);
 				playerController.SetInitialMainEntity(spec);
+				
+				// Note: No NotifyPlayerSpawned for spectators - we don't track spectator data
 			}
 		}
 		else
@@ -254,6 +256,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			// Fallback for very early init
 			Print(string.Format("[CRF_GamemodeManager] No SCR_RespawnComponent for spectator player %1 — using SetInitialMainEntity", playerId), LogLevel.WARNING);
 			playerController.SetInitialMainEntity(spec);
+			
+			// Note: No NotifyPlayerSpawned for spectators - we don't track spectator data
 		}
 		
 		return spec;
