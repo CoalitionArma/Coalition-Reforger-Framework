@@ -1,0 +1,15 @@
+$grp SCR_BaseTriggerEntity {
+ VIP1_Trigger {
+  editor EntityEditorProps "{68E0B01D3280B0E8}" {
+  }
+  coords 9994.087 44.373 940.702
+ }
+ VIP2_Trigger {
+  editor EntityEditorProps "{68DEDD7B3795BF0A}" {
+  }
+  coords 9995.698 44.453 935.169
+ }
+ VIP3_Trigger {
+  coords 9995.259 44.553 946.067
+ }
+}
