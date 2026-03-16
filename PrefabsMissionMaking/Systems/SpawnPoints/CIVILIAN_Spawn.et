@@ -1,9 +1,6 @@
-GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+CRF_StaticSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
  ID "50C6D20663830070"
  components {
-  CRF_RespawnPointComponent "{645A31042C357FC9}" {
-   m_sRespawnPointFaction "CIV"
-  }
   MeshObject "{645911A168BE4336}" {
    Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
   }
@@ -12,7 +9,7 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    ResponseIndex "NoCollision"
    ModelGeometry 1
   }
-  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" {
    EnableDamage 0
    m_fBaseHealth 100000
    m_DestroySpawnObjects {
@@ -74,11 +71,15 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
     }
    }
   }
-  RplComponent "{649042617FD38925}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  RplComponent "{649042617FD38925}" {
    Streamable Disabled
   }
  }
  coords 0 0 0
+ m_bIsDefaultSpawn 1
+ m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4D22A22580}" {
+  m_iSpawnPointFaction CIV
+ }
  {
   CRF_ManualMarker : "{CC041EDE06E4A0C3}PrefabsMissionMaking/Markers/SpawnMarkers/CIVILIAN_SpawnMarker.et" {
    ID "68682AC1B261B1FF"

@@ -2,7 +2,6 @@ class CRF_SlottingManagerClass : ScriptComponentClass {}
 
 class CRF_SlottingManager : ScriptComponent
 {
-
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -21,12 +20,8 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
-	
-	// Resource caching for optimized spawning
-	protected ref map<ResourceName, Resource> m_mCachedResources = new map<ResourceName, Resource>();
-	
-	// Mass initialization flag for optimizing collision checks
-	protected bool m_bMassInitializationInProgress = false;
+	protected CRF_RespawnManager m_RespawnManager;
+	protected ref CRF_ResourceCache m_ResourceCache;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -41,6 +36,9 @@ class CRF_SlottingManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_ResourceCache = new CRF_ResourceCache;
+		m_ResourceCache.PreLoadSlottingResources();
 		
 		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
 		GetGame().GetCallqueue().Call(InitilizeSlots);
@@ -455,7 +453,7 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_PlayerCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
+	CRF_PlayerCharacter SpawnPlayableEntity(int playerId, int spawnPointID = -1)
 	{
 		int slotId = GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -465,44 +463,25 @@ class CRF_SlottingManager : ScriptComponent
 		if (resourceName.IsEmpty())
 			return null;
 		
-		vector playerSlotVector[4];
-		CRF_RespawnManager.GetInstance().FindInitalSpawnLocation(GetPlayerSlotFaction(playerId).GetFactionKey(), GetPlayerSlotGroup(playerId), playerSlotVector);
-
+		CRF_SpawnPointContainer spawnPointData;
+		
+		if (spawnPointID == -1)
+			spawnPointData = m_RespawnManager.FindInitalSpawnpoint(GetPlayerSlotFaction(playerId).GetFactionKey(), GetPlayerSlotGroup(playerId));
+		else
+			spawnPointData = m_RespawnManager.GetSpawnPoint(spawnPointID);
+		
 		// Setup spawn parameters
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		
-		if (overrideLocation[3] != vector.Zero)
-		{	
-			foreach (int i, vector vec : overrideLocation)
-			{
-				if (overrideLocation[i] == vector.Zero)
-					overrideLocation[i] = playerSlotVector[i];
-			}
-			
-			spawnParams.Transform[3] = overrideLocation[3];
-		} else {
-			spawnParams.Transform = playerSlotVector;
-		}
-
-		spawnParams.Transform[3][1] + spawnParams.Transform[3][1] + 0.5; //Go up 1 incase theres some weird slope, floor issue
-		vector surface;
-		SCR_TerrainHelper.SnapToGeometry(surface, spawnParams.Transform[3], {}, GetGame().GetWorld());
-		spawnParams.Transform[3] = surface;
-		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
+		IEntity spawnPointEnt = CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity());
+		if (spawnPointEnt)
+			spawnPointEnt.GetWorldTransform(spawnParams.Transform);
 		
-		GetSafeSpawnTransform(spawnParams.Transform, 12, spawnParams.Transform);
-		
-		// Spawn the character using cached resource
-		Resource resource = GetCachedResource(resourceName);
-		if (!resource)
-		{
-			Print(string.Format("[CRF_SlottingManager] Failed to load resource: %1", resourceName), LogLevel.ERROR);
-			return null;
-		}
+		GetSafeSpawnTransform(spawnPointData, spawnParams.Transform, spawnParams.Transform);
 		
 		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
-			GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams)
+			GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(resourceName), GetGame().GetWorld(), spawnParams)
 		);
 		
 		if (!playerCharacter)
@@ -596,7 +575,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void GetSafeSpawnTransform(vector baseTransform[4], float radius, out vector trasnformOut[4])
+	void GetSafeSpawnTransform(CRF_SpawnPointContainer spawnPointData, vector baseTransform[4], out vector trasnformOut[4])
 	{
 		// Base Enfusion spawn already handles position validation
 		// Simply apply a small random offset for player spacing during mass spawns
@@ -604,15 +583,17 @@ class CRF_SlottingManager : ScriptComponent
 		
 		// Add random offset to prevent exact position overlap
 		float angle = Math.RandomFloat01() * Math.PI2;
-		float dist = Math.RandomFloat01() * radius;
+		float dist = Math.RandomFloat01() * spawnPointData.GetSpawnPointRadius();
 		vector offset = Vector(Math.Cos(angle) * dist, 0, Math.Sin(angle) * dist);
 		
 		outTransform[3] = baseTransform[3] + offset;
 		
-		// Snap to terrain geometry
 		vector surface;
-		SCR_TerrainHelper.SnapToGeometry(surface, outTransform[3], {}, GetGame().GetWorld());
-		if (surface != vector.Zero)
+		// Snap to terrain geometry
+		if (spawnPointData.GetIfSpawnPointSafetyCheck())
+			SCR_TerrainHelper.SnapToGeometry(surface, outTransform[3], {}, GetGame().GetWorld());
+		
+		if (surface != vector.Zero && spawnPointData.GetIfSpawnPointConformsToTerrain())
 		{
 			outTransform[3] = surface;
 			SCR_TerrainHelper.OrientToTerrain(outTransform);
@@ -681,7 +662,7 @@ class CRF_SlottingManager : ScriptComponent
 			
 			foreach(CRF_EGearRole role : slotGroup.m_aSlots)
 			{
-				CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+				CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 				
 				if (!roleConfig || !rolesConfig)
@@ -771,63 +752,6 @@ class CRF_SlottingManager : ScriptComponent
 			if (IsEmptyGroup(group))
 				group.SetPrivate(true);
 		}
-	}
-	
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 RESOURCE CACHING
-//=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	//! Get a cached resource or load and cache it if not already cached
-	//! Reduces repeated Resource.Load() calls during mass spawning
-	//! \param[in] resourceName The resource path to load
-	//! \return The loaded resource or null if invalid
-	Resource GetCachedResource(ResourceName resourceName)
-	{
-		if (resourceName.IsEmpty())
-			return null;
-		
-		Resource res = m_mCachedResources.Get(resourceName);
-		if (!res)
-		{
-			res = Resource.Load(resourceName);
-			if (res)
-			{
-				m_mCachedResources.Set(resourceName, res);
-				Print(string.Format("[CRF_SlottingManager] Cached resource: %1", resourceName), LogLevel.VERBOSE);
-			}
-		}
-		return res;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Clear all cached resources
-	//! Call this when unloading mission or changing scenarios
-	void ClearResourceCache()
-	{
-		m_mCachedResources.Clear();
-		Print("[CRF_SlottingManager] Resource cache cleared", LogLevel.VERBOSE);
-	}
-	
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 MASS INITIALIZATION
-//=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	//! Set the mass initialization flag
-	//! Used to optimize collision checks during batch player spawning
-	//! \param[in] inProgress True when batch spawning is active
-	void SetMassInitializationInProgress(bool inProgress)
-	{
-		m_bMassInitializationInProgress = inProgress;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Check if mass initialization is currently in progress
-	//! \return True if batch spawning is active
-	bool IsMassInitializationInProgress()
-	{
-		return m_bMassInitializationInProgress;
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

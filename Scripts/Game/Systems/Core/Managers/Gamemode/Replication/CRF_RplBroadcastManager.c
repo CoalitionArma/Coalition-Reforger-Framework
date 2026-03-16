@@ -459,21 +459,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Rpc(RpcDo_BroadcastAdminChatMessage, message);
 		#endif
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SendRespawnScreenUpdate(RplId rplID, bool active)
-	{
-		// Telemetry: RplId + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("SendRespawnScreenUpdate", bytes);
-		
-		#ifdef WORKBENCH
-		RpcDo_SendRespawnScreenUpdate(rplID, active);
-		#else
-		Rpc(RpcDo_SendRespawnScreenUpdate, rplID, active);
-		#endif
-	}	
 
 	//------------------------------------------------------------------------------------------------
 	void SendRespawnScreen(int playerId)
@@ -1085,6 +1070,32 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void UpdateSpawnPointData(CRF_SpawnPointContainer spawnPointData)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Estimate bandwidth: slot data (~32 bytes avg)
+		LogTelemetry("UpdateSpawnPointData", 32);
+		
+		RpcDo_UpdateSpawnPointData(spawnPointData);
+		Rpc(RpcDo_UpdateSpawnPointData, spawnPointData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RemoveSpawnPoint(int spawnPointId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: Just spawnPointId (4 bytes)
+		LogTelemetry("RemoveSpawnPoint", 4);
+		
+		RpcDo_RemoveSpawnPoint(spawnPointId);
+		Rpc(RpcDo_RemoveSpawnPoint, spawnPointId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
 	void NotifySlottingPhaseChanged()
 	{
@@ -1411,13 +1422,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Show message in admin chat (similar to /a messages)
 		chatComponent.ShowMessage(message);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_SendRespawnScreenUpdate(RplId rplID, bool active)
-	{
-		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Invoke(rplID, active);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2127,6 +2131,24 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 			slottingManager.RemoveSlotClient(slotId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSpawnPointData(CRF_SpawnPointContainer spawnPointData)
+	{
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+			respawnManager.UpdateSpawnPointDataClient(spawnPointData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_RemoveSpawnPoint(int spawnPointId)
+	{
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+			respawnManager.RemoveSpawnPointClient(spawnPointId);
 	}
 	
 	//------------------------------------------------------------------------------------------------

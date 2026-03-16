@@ -1,4 +1,4 @@
-Vehicle {
+CRF_VehicleSpawnPoint {
  ID "66B4D32793E9820A"
  components {
   EventHandlerManagerComponent "{66B4D32790D82502}" {
@@ -283,11 +283,6 @@ Vehicle {
      "Transmitting Range" 2000
     }
    }
-  }
-  CRF_RespawnPointComponent "{66B4D3273CF397E9}" {
-   m_sRespawnPointFaction "BLUFOR"
-   m_sRespawnPointName "MSP"
-   m_bIsDefaultRespawn 1
   }
   ChimeraAIPathfindingComponent "{66B4D32790D81022}" {
    NavmeshProject "BTRlike"
@@ -3118,4 +3113,8 @@ Vehicle {
  }
  coords 0 0 0
  m_eVehicleType COMM_TRUCK
+ m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4E98816EA5}" {
+  m_sSpawnPointName "MSP"
+  m_iSpawnPointRadius 6
+ }
 }

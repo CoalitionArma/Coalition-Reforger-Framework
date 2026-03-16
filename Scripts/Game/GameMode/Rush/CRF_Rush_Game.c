@@ -3564,22 +3564,23 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Get the first respawn flag for this faction
-			array<IEntity> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
+			array<CRF_SpawnPointContainer> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
 			if (!factionSpawns || factionSpawns.IsEmpty())
 			{
 				Print(string.Format("[CRF_Rush] No spawns found for faction %1", entry.m_eFaction), LogLevel.WARNING);
 				continue;
 			}
 			
-			IEntity respawnFlag = factionSpawns[0];
+			CRF_SpawnPointContainer respawnFlag = factionSpawns[0];
 			
 			// Get marker position and orientation
 			vector markerPos = markerEntity.GetOrigin();
 			vector markerAngles = markerEntity.GetAngles();
 			
+			IEntity respawnFlagEnt = CRF_EntityHelper.GetEntityFromRplId(respawnFlag.GetSpawnPointEntity());
 			// Move respawn flag (Note: visual flag mesh may not update immediately)
-			respawnFlag.SetOrigin(markerPos);
-			respawnFlag.SetAngles(markerAngles);
+			respawnFlagEnt.SetOrigin(markerPos);
+			respawnFlagEnt.SetAngles(markerAngles);
 			
 			Print(string.Format("[CRF_Rush] Teleported %1 respawn flag to zone %2 at %3", entry.m_eFaction, zoneNumber, markerPos));
 		}

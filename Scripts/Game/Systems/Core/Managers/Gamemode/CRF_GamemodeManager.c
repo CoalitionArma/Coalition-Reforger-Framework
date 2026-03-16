@@ -10,7 +10,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// Time it takes for players to Init
 	static const int PLAYER_INITILIZATION_TIME = 250;
 	
-	static ref CRF_GearScriptRolesConfig m_RolesConfig;
+	static ref CRF_RolesConfig m_RolesConfig;
 	
 	protected CRF_SlottingManager m_SlottingManager;
 	
@@ -33,12 +33,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		else
 			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
 		
-		m_RolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+		m_RolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static CRF_GearScriptRolesConfig RolesConfig()
+	static CRF_RolesConfig RolesConfig()
 	{
 		return m_RolesConfig;
 	}
@@ -57,15 +57,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	//! Initialize a player into the game either as a playable character or spectator
 	//! \param[in] playerId ID of the player to initialize
-	//! \param[in] spawnLocation Location to spawn the player (Use "CRF_EntityHelper.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
-	void InitilizePlayer(int playerId, vector spawnLocation[4])
-	{
-		if (!CRF_EntityHelper.IsValidSpawnVector(spawnLocation[3]) && spawnLocation != CRF_EntityHelper.ZERO_SPAWN_VECTOR)
-		{
-			Print(string.Format("[CRF ERROR]: %1 DOESN'T HAVE VALID SPAWN VECTOR!", playerId), LogLevel.ERROR);
-			return;
-		};
-		
+	//! \param[in] spawnPointID the ID of the spawn point we want to spawn this player at (either set manually with the respawn screen or automatic if -1;
+	void InitilizePlayer(int playerId, int spawnPointID = -1)
+	{	
 		if (playerId <= 0)
 			return;
 		
@@ -97,7 +91,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			// After that, GetMainEntity() will return the NEW entity, not the old spectator
 			IEntity oldEntityToDelete = playerController.GetMainEntity();
 			
-			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
+			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 			
 			// ALWAYS clean up old spectator/initial entities when assigning a new playable character
@@ -150,9 +144,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	//! Get existing character or create a new one for playable roles
 	//! \param[in] playerId ID of the player
-	//! \param[in] overrideLocation Optional spawn location
+	//! \param[in] spawnPointID Optional spawn location
 	//! \return The character entity
-	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation[4], out bool alreadyCreated)
+	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, int spawnPointID, out bool alreadyCreated)
 	{
 		alreadyCreated = true;
 		CRF_PlayerCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
@@ -162,7 +156,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			alreadyCreated = false;
 			
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
-			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, spawnPointID);
 			
 			if (!playerCharacter)
 			{

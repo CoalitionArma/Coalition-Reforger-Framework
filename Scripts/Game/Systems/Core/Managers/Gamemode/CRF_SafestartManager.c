@@ -125,17 +125,6 @@ class CRF_SafestartManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void DeleteTempGroupSpawnPoints()
-	{
-		array<IEntity> tempSpawns = CRF_RespawnManager.GetInstance().GetTempGroupSpawnPoints();
-	
-		foreach (IEntity tempSpawn : tempSpawns)
-			SCR_EntityHelper.DeleteEntityAndChildren(tempSpawn);
-		
-		CRF_RespawnManager.GetInstance().ClearTempGroupSpawnPoints();
-	}
-
-	//------------------------------------------------------------------------------------------------
 	void AddSafestartZone(IEntity entity)
 	{
 		m_aSafestartZones.Insert(entity);
@@ -698,7 +687,7 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 1500);
 			
 			// Delete Temp Group Spawn Points
-			GetGame().GetCallqueue().CallLater(DeleteTempGroupSpawnPoints, 8500);
+			GetGame().GetCallqueue().CallLater(CRF_RespawnManager.GetInstance().ClearGroupSpawnPoints, 8500);
 			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);

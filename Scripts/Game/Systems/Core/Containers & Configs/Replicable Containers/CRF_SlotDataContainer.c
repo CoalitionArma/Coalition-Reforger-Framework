@@ -322,28 +322,28 @@ class CRF_SlotDataContainer
 	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(instance.m_SlotRole, 4);
 		snapshot.SerializeBytes(instance.m_SlotFaction, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
-	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotDataContainer instance)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(instance.m_SlotRole, 4);
 		snapshot.SerializeBytes(instance.m_SlotFaction, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
-	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ class CRF_SlotDataContainer
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
