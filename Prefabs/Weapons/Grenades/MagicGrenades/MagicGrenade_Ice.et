@@ -4,7 +4,7 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
   TimerTriggerComponent "{5934C8C5C9FDF999}" {
    PROJECTILE_EFFECTS {
     SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
-     ParticleEffect "{C41F723A0F0C939D}Prefabs/Weapons/Grenades/MagicGrenades/Explosion_RGD5_MAGIC_ICE2.ptc"
+     ParticleEffect "{D35993DABB4A6436}Prefabs/Weapons/Grenades/MagicGrenades/Magic_ToxicCold.ptc"
     }
     SpawnPrefabEffect "{68CB4616BF93B341}" {
      TriggerOnce 1
