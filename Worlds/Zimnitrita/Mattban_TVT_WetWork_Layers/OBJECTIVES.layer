@@ -1,15 +1,12 @@
-$grp SCR_BaseTriggerEntity {
- VIP1_Trigger {
-  editor EntityEditorProps "{68E0B01D3280B0E8}" {
-  }
-  coords 9994.087 44.373 940.702
+$grp GameEntity {
+ GameEntityVip1 {
+  coords 9978.016 44.524 928.96
+  scale 0.73
  }
- VIP2_Trigger {
-  editor EntityEditorProps "{68DEDD7B3795BF0A}" {
-  }
-  coords 9995.698 44.453 935.169
+ GameEntityVip2 {
+  coords 9995.051 44.586 934.996
  }
- VIP3_Trigger {
-  coords 9995.259 44.553 946.067
+ GameEntityVip3 {
+  coords 9994.698 41.864 934.836
  }
 }
