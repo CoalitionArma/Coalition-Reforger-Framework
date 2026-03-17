@@ -30,11 +30,7 @@ class CRF_BaseContainerCustomTitleResourceFields : BaseContainerCustomTitle
 		{
 			ResourceName tempResourceName;
 			if (source.Get(m_aPropertyNames[i], tempResourceName))
-			{
-				string temptitle = FilePath.StripPath(tempResourceName);
-				title = FilePath.StripExtension(temptitle);
-				title.ToUpper()
-			};
+				title = CRF_LoggingHelper.SanitizeResourceName(tempResourceName);
 
 			arguments[i] = title;
 		}
