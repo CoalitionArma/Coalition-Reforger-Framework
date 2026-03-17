@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{973E2C17FD7C51CA}Prefabs/Weapons/Grenades/MagicGrenades/Smoke_grenade_M18_MAGIC_Poison.ptc"
+ Name "{558BD3F4E6313147}Prefabs/Weapons/Grenades/MagicGrenades/Magic_ToxicSmoke.ptc"
  Configurations {
   PTCResourceClass PC : "{4B4500E061CCD624}Configs/System/ResourceTypes/PC/ParticleEffect.conf" {
   }
