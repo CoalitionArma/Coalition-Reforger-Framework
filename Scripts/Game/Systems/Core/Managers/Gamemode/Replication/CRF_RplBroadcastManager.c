@@ -1043,7 +1043,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void UpdateSlotData(CRF_SlotDataContainer slotData)
+	void UpdateSlotData(CRF_SlotData slotData)
 	{
 		if (!Replication.IsServer())
 			return;
@@ -1070,7 +1070,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void UpdateSpawnPointData(CRF_SpawnPointContainer spawnPointData)
+	void UpdateSpawnPointData(CRF_SpawnPointData spawnPointData)
 	{
 		if (!Replication.IsServer())
 			return;
@@ -1986,7 +1986,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotData(CRF_SlotDataContainer slotData)
+	void RpcDo_UpdateSlotData(CRF_SlotData slotData)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
@@ -2006,7 +2006,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetSlotCurrentPlayerId(playerId);
@@ -2027,7 +2027,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetSlotCurrentCharacter(characterId);
@@ -2048,7 +2048,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetSlotCurrentGroup(groupId);
@@ -2069,7 +2069,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetSlotRole(role);
@@ -2090,7 +2090,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetIsLockedSlot(isLocked);
@@ -2111,7 +2111,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!slottingManager)
 			return;
 		
-		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetIsDeadSlot(isDead);
@@ -2135,7 +2135,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSpawnPointData(CRF_SpawnPointContainer spawnPointData)
+	void RpcDo_UpdateSpawnPointData(CRF_SpawnPointData spawnPointData)
 	{
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		if (respawnManager)

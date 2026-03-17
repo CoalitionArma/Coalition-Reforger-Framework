@@ -8,7 +8,7 @@ class CRF_VehicleSpawnPoint: Vehicle
 	bool m_bIsDefaultSpawn;
 	
 	[Attribute(category: "CRF Spawn Point Settings")]
-	ref CRF_SpawnPointContainer m_SpawnPointSettings;
+	ref CRF_SpawnPointData m_SpawnPointSettings;
 	
 	protected int m_iLocallyStoredId;
 	

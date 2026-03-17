@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
-class CRF_SpawnPointContainer
+class CRF_SpawnPointData
 {	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 ATTRIBUTES SET MANUALLY
@@ -40,10 +40,10 @@ class CRF_SpawnPointContainer
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Replaces or sets the internal CRF_SpawnPointContainer record for the id.
+	//! Replaces or sets the internal CRF_SpawnPointData record for the id.
 	//! If newSpawnData is non-null, the spawns data is updated with the provided instance.
-	//! \param[in] newSpawnData: Pointer/reference to the new CRF_SpawnPointContainer to apply.
-	void DataUpdate(CRF_SpawnPointContainer newSpawnData = null)
+	//! \param[in] newSpawnData: Pointer/reference to the new CRF_SpawnPointData to apply.
+	void DataUpdate(CRF_SpawnPointData newSpawnData = null)
 	{	
 		if(newSpawnData)	
 		{
@@ -199,7 +199,7 @@ class CRF_SpawnPointContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Extract(CRF_SpawnPointContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	static bool Extract(CRF_SpawnPointData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.SerializeBytes(instance.m_bSpawnPointActive, 4);
 		snapshot.SerializeString(instance.m_sSpawnPointName);
@@ -210,7 +210,7 @@ class CRF_SpawnPointContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SpawnPointContainer instance)
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SpawnPointData instance)
 	{
 		snapshot.SerializeBytes(instance.m_bSpawnPointActive, 4);
 		snapshot.SerializeString(instance.m_sSpawnPointName);
@@ -252,7 +252,7 @@ class CRF_SpawnPointContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool PropCompare(CRF_SpawnPointContainer instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	static bool PropCompare(CRF_SpawnPointData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
 	    return snapshot.Compare(instance.m_bSpawnPointActive, 4)
 		&& snapshot.CompareString(instance.m_sSpawnPointName)

@@ -14,10 +14,10 @@ class CRF_MissionHelper {
 
 		foreach(int i, FactionKey factionKey : facKey)
 		{
-			array<CRF_SpawnPointContainer> spawnPointDataArray = respawnMan.GetFactionSpawnpoints(factionKey);
+			array<CRF_SpawnPointData> spawnPointDataArray = respawnMan.GetFactionSpawnpoints(factionKey);
 			if (spawnPointDataArray && !spawnPointDataArray.IsEmpty())
 			{
-				CRF_SpawnPointContainer spawnPointData = spawnPointDataArray.Get(0);
+				CRF_SpawnPointData spawnPointData = spawnPointDataArray.Get(0);
 			
 				if (spawnPointData.GetSpawnPointEntity() != RplId.Invalid())
 				{

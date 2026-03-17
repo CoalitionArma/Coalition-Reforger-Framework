@@ -1097,7 +1097,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
 		
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
-		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = m_SlottingManager.GetSlotData(slotId);
 		
 		// Use delta updates for individual field changes (90%+ bandwidth savings)
 		slotData.SetSlotRole(role);
@@ -1954,7 +1954,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
 	{
 		// Get slot data from the slotting manager
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
 		if (!slotData)
 			return;
 		

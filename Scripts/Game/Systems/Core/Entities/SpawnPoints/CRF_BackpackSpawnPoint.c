@@ -8,5 +8,5 @@ class CRF_BackpackSpawnPoint: GenericEntity
 	bool m_bIsDefaultSpawn;
 	
 	[Attribute(category: "CRF SpawnPoint Settings")]
-	ref CRF_SpawnPointContainer m_SpawnPointSettings;
+	ref CRF_SpawnPointData m_SpawnPointSettings;
 };

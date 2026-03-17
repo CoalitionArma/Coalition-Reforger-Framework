@@ -1,4 +1,4 @@
-class CRF_SlotDataContainer
+class CRF_SlotData
 {		
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
@@ -21,10 +21,10 @@ class CRF_SlotDataContainer
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Replaces or sets the internal CRF_SlotDataContainer record for the slot.
+	//! Replaces or sets the internal CRF_SlotData record for the slot.
 	//! If newSlotData is non-null, the slot's data is updated with the provided instance.
-	//! \param[in] newSlotData: Pointer/reference to the new CRF_SlotDataContainer to apply.
-	void DataUpdate(CRF_SlotDataContainer newSlotData = null)
+	//! \param[in] newSlotData: Pointer/reference to the new CRF_SlotData to apply.
+	void DataUpdate(CRF_SlotData newSlotData = null)
 	{	
 		if(newSlotData)	
 		{
@@ -319,7 +319,7 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	static bool Extract(CRF_SlotData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
 		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
@@ -333,7 +333,7 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotDataContainer instance)
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData instance)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
 		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
@@ -387,7 +387,7 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool PropCompare(CRF_SlotDataContainer instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	static bool PropCompare(CRF_SlotData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
 	    return snapshot.Compare(instance.m_iSlotId, 4)
 		&& snapshot.Compare(instance.m_iSlotCurrentPlayerId, 4)

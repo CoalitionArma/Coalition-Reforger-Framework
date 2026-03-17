@@ -33,12 +33,12 @@ class CRF_RespawnManager : ScriptComponent
 	
 	// Store state for UI selection
 	bool m_RespawnConfirmed = false;
-	CRF_SpawnPointContainer m_SelectedSpawnPoint;
+	CRF_SpawnPointData m_SelectedSpawnPoint;
 	
 	//For vehicle respawning, only tracked on the server
 	protected ref array<CRF_VehicleSpawner> m_aVehicleSpawners = {};
 	
-	protected ref map<int, ref CRF_SpawnPointContainer> m_mSpawnPointMap = new map<int, ref CRF_SpawnPointContainer>;
+	protected ref map<int, ref CRF_SpawnPointData> m_mSpawnPointMap = new map<int, ref CRF_SpawnPointData>;
 	
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
@@ -151,7 +151,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ClearGroupSpawnPoints()
 	{
-		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
+		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 			if (spawnPointData.GetIsTempSpawnPoint())
 				UnRegisterRespawnPoint(spawnPointId);
 	}
@@ -466,13 +466,13 @@ class CRF_RespawnManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	CRF_SpawnPointContainer GetSpawnPoint(int spawnPointId)
+	CRF_SpawnPointData GetSpawnPoint(int spawnPointId)
 	{
 		return m_mSpawnPointMap.Get(spawnPointId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RegisterRespawnPoint(CRF_SpawnPointContainer spawnPointData, GenericEntity spawnPointEntity)
+	void RegisterRespawnPoint(CRF_SpawnPointData spawnPointData, GenericEntity spawnPointEntity)
 	{
 		if (!spawnPointEntity || !spawnPointData)
 			return;
@@ -506,7 +506,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (spawnPointId <= 0)
 			return;
 		
-		CRF_SpawnPointContainer spawnPointData = GetSpawnPoint(spawnPointId);
+		CRF_SpawnPointData spawnPointData = GetSpawnPoint(spawnPointId);
 		
 		if (spawnPointData.GetIsTempSpawnPoint())
 			SCR_EntityHelper.DeleteEntityAndChildren(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()));
@@ -516,11 +516,11 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	array<CRF_SpawnPointContainer> GetFactionSpawnpoints(FactionKey factionKey)
+	array<CRF_SpawnPointData> GetFactionSpawnpoints(FactionKey factionKey)
 	{
-		array<CRF_SpawnPointContainer> sideSpawnPoints = {};
+		array<CRF_SpawnPointData> sideSpawnPoints = {};
 
-		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
+		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 		{
 			if (!spawnPointData 
 				|| !spawnPointData.GetIsActiveSpawnPoint() 
@@ -539,14 +539,14 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_SpawnPointContainer FindInitalSpawnpoint(FactionKey factionKey, SCR_AIGroup group)
+	CRF_SpawnPointData FindInitalSpawnpoint(FactionKey factionKey, SCR_AIGroup group)
 	{	
 		string company, platoon, squad, character, format;
 
 		if (group)
 			group.GetCallsigns(company, platoon, squad, character, format);
 
-		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
+		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 		{
 			if (!spawnPointData 
 				|| !spawnPointData.GetIsActiveSpawnPoint() 
@@ -563,7 +563,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	bool IsDefaultSpawn(CRF_SpawnPointContainer spawnPointData)
+	bool IsDefaultSpawn(CRF_SpawnPointData spawnPointData)
 	{
 		IEntity entity = CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity());
 		
@@ -861,13 +861,13 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	//! Client-side: Update single slot from RPC (called by CRF_RplBroadcastManager)
 	//! Only updates if data actually changed (prevents unnecessary UI rebuilds)
-	void UpdateSpawnPointDataClient(CRF_SpawnPointContainer spawnPointData)
+	void UpdateSpawnPointDataClient(CRF_SpawnPointData spawnPointData)
 	{
 		if (Replication.IsServer())
 			return;  // Server doesn't receive these, only sends
 		
 		int spawnPointId = spawnPointData.GetSpawnPointId();
-		CRF_SpawnPointContainer oldSpawnPointData = m_mSpawnPointMap.Get(spawnPointId);
+		CRF_SpawnPointData oldSpawnPointData = m_mSpawnPointMap.Get(spawnPointId);
 
 		if(!oldSpawnPointData)
 			m_mSpawnPointMap.Set(spawnPointId, spawnPointData);
@@ -882,7 +882,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (Replication.IsServer())
 			return;
 		
-		CRF_SpawnPointContainer spawnPointData = GetSpawnPoint(spawnPointId);
+		CRF_SpawnPointData spawnPointData = GetSpawnPoint(spawnPointId);
 		spawnPointData.SetSpawnPointActive(false);
 		spawnPointData.ForceDataUpdate();
 		
@@ -899,7 +899,7 @@ class CRF_RespawnManager : ScriptComponent
 		// Save spawnPointData
 		int spawnPointCount = m_mSpawnPointMap.Count();
 		writer.WriteInt(spawnPointCount);
-		foreach (int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
+		foreach (int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 		{
 			spawnPointData.Save(writer);
 		}
@@ -915,7 +915,7 @@ class CRF_RespawnManager : ScriptComponent
 		reader.ReadInt(spawnPointCount);
 		for (int i = 0; i < spawnPointCount; i++)
 		{
-			CRF_SpawnPointContainer spawnPointData = new CRF_SpawnPointContainer();
+			CRF_SpawnPointData spawnPointData = new CRF_SpawnPointData();
 			spawnPointData.Load(reader);
 			UpdateSpawnPointDataClient(spawnPointData);
 		}

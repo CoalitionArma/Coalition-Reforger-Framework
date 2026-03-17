@@ -3564,14 +3564,14 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Get the first respawn flag for this faction
-			array<CRF_SpawnPointContainer> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
+			array<CRF_SpawnPointData> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
 			if (!factionSpawns || factionSpawns.IsEmpty())
 			{
 				Print(string.Format("[CRF_Rush] No spawns found for faction %1", entry.m_eFaction), LogLevel.WARNING);
 				continue;
 			}
 			
-			CRF_SpawnPointContainer respawnFlag = factionSpawns[0];
+			CRF_SpawnPointData respawnFlag = factionSpawns[0];
 			
 			// Get marker position and orientation
 			vector markerPos = markerEntity.GetOrigin();

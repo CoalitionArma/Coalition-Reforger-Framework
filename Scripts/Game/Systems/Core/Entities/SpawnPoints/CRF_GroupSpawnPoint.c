@@ -8,7 +8,7 @@ class CRF_GroupSpawnPoint: GenericEntity
 	string m_sCallsignOfGroupToSpawn;
 	
 	[Attribute(category: "CRF Spawn Point Settings")]
-	ref CRF_SpawnPointContainer m_SpawnPointSettings;
+	ref CRF_SpawnPointData m_SpawnPointSettings;
 	
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)

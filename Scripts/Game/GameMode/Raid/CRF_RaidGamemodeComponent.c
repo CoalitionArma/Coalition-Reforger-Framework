@@ -150,7 +150,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		int attackersSlotted = 0;
 		int attackersDead = 0;
-		foreach (int slotId, CRF_SlotDataContainer slotContainer: m_SlottingManager.GetSlotMap())
+		foreach (int slotId, CRF_SlotData slotContainer: m_SlottingManager.GetSlotMap())
 		{
 			if (slotContainer.GetSlotCurrentPlayerId() == 0)
 				continue;
@@ -417,7 +417,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
 		if (groupComponent)
 			groupComponent.RequestJoinGroup(groupId);
-		CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
+		CRF_SlotData currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
 		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
 		
