@@ -3586,7 +3586,7 @@ CRF_VehicleSpawnPoint {
  }
  coords 0 0 0
  m_eVehicleType COMM_TRUCK
- m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4EBA0A10D2}" {
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4EBA0A10D2}" {
   m_sSpawnPointName "MSP"
   m_iSpawnPointFaction INDFOR
   m_iSpawnPointRadius 6

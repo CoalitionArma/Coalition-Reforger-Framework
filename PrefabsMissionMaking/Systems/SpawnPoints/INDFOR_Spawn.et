@@ -79,7 +79,7 @@ CRF_StaticSpawnPoint {
  Flags 0x400 0
  coords 0 0 0
  m_bIsDefaultSpawn 1
- m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4D5731D7D9}" {
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5731D7D9}" {
   m_iSpawnPointFaction INDFOR
   m_iSpawnPointRadius 16
  }

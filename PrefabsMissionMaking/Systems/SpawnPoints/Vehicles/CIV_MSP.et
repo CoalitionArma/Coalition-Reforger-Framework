@@ -3592,7 +3592,7 @@ CRF_VehicleSpawnPoint {
  }
  coords 0 0.273 0
  m_eVehicleType SUPPLY_TRUCK
- m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4EB6AA6479}" {
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4EB6AA6479}" {
   m_sSpawnPointName "MSP"
   m_iSpawnPointFaction CIV
   m_iSpawnPointRadius 6

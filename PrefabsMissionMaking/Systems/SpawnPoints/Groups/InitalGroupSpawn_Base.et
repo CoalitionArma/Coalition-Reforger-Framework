@@ -30,7 +30,7 @@ CRF_GroupSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.e
   }
  }
  coords 0 -1.175 0
- m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4ED9EB427A}" {
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4ED9EB427A}" {
   m_sSpawnPointName "N/A"
   m_iSpawnPointRadius 5
  }
