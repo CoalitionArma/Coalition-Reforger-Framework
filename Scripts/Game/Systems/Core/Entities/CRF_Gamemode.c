@@ -378,7 +378,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+		m_GamemodeManager.InitilizePlayer(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
@@ -459,7 +459,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
 				{
 					// Schedule re-initialization to fix race condition
-					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR[0], CRF_EntityHelper.ZERO_SPAWN_VECTOR[1], CRF_EntityHelper.ZERO_SPAWN_VECTOR[2], CRF_EntityHelper.ZERO_SPAWN_VECTOR[3]);
+					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId);
 				}
 			}
 		}
@@ -518,9 +518,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(
-				m_RplBroadcastManager.SendRespawnScreen, 
-				(delay + 150), 
-				false, 
+				m_RplBroadcastManager.SendRespawnScreen,
+				(delay + 150),
+				false,
 				playerId
 			);
 		}
@@ -531,31 +531,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if(slotID != -1)
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		
-		// Get death position for spectator camera initialization
-		vector deathPosition[4];
-		entity.GetWorldTransform(deathPosition);
-
 		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3], true);
+		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
-	//! \param[in] playerId ID of the player to initialize
-	//! \param[in] locationZero Position 0 in the world vector to spawn the player
-	//! \param[in] locationOne Position 1 in the world vector to spawn the player
-	//! \param[in] locationTwo Position 2 in the world vector to spawn the player
-	//! \param[in] locationThree Position 3 in the world vector to spawn the player
-	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
+	//! For some godforsaken reason, removing this and directly calling "m_GamemodeManager.InitilizePlayer" in the call later doesnt work.
+	protected void OnControllableInitilizePlayerDelayed(int playerId)
 	{
-		vector location[4];
-		
-		location[0] = locationZero;
-		location[1] = locationOne;
-		location[2] = locationTwo;
-		location[3] = locationThree;
-		
-		m_GamemodeManager.InitilizePlayer(playerId, location);
+		m_GamemodeManager.InitilizePlayer(playerId);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -579,12 +563,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{
 			m_bProcessingInitializations = true;
 			m_fBatchTimer = 0.0; // Reset timer
-			
-			// Notify slotting manager that mass initialization is starting
-			if (m_SlottingManager)
-				m_SlottingManager.SetMassInitializationInProgress(true);
-			
-			//Print(string.Format("[CRF] Starting batch initialization for %1 players", m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
 		}
 	}
 	
@@ -597,12 +575,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (m_aPendingPlayerInitializations.IsEmpty())
 		{
 			m_bProcessingInitializations = false;
-			
-			// Notify slotting manager that mass initialization is complete
-			if (m_SlottingManager)
-				m_SlottingManager.SetMassInitializationInProgress(false);
-			
-			Print("[CRF] Player initialization queue complete", LogLevel.NORMAL);
 			return;
 		}
 		
@@ -619,7 +591,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			// Initialize the player immediately
 			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+				m_GamemodeManager.InitilizePlayer(playerId);
 		}
 	}
 	
@@ -630,9 +602,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		m_aPendingPlayerInitializations.Clear();
 		m_bProcessingInitializations = false;
-		
-		if (m_SlottingManager)
-			m_SlottingManager.SetMassInitializationInProgress(false);
 	}
 	
 	//------------------------------------------------------------------------------------------------

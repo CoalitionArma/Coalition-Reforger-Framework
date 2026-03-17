@@ -39,7 +39,7 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		comp.SetData(data);
 		
 		// Get slot data and configure role image and color
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
 		comp.SetRoleImage(slotData.GetSlotIconResource(), "roleimage");
 		
 		// Set the role color based on faction
@@ -113,7 +113,7 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
 		// Get slot data
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
 		
 		// Configure basic properties
 		comp.SetRoleText(slotData.GetSlotName());

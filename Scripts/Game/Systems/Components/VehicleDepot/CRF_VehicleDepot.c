@@ -380,7 +380,7 @@ class CRF_VehicleDepot : ScriptComponent
 			return false;
 			
 		// Get player's slot data to check their role
-		CRF_SlotDataContainer slotData = m_SlottingManager.GetPlayerSlotData(playerId);
+		CRF_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
 		if (!slotData)
 			return false;
 			

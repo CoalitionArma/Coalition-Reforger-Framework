@@ -503,7 +503,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 				array<int> slotsInGroup = slottingManager.GetAllSlotIDsForGroup(groupId);
 				foreach (int slotId : slotsInGroup)
 				{
-					CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+					CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 					if (slotData && slotData.GetSlotCurrentPlayerId() > 0)
 						groupPlayerCount++;
 				}
@@ -518,7 +518,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 				// Process each slot
 				foreach (int slotId : slotsInGroup)
 				{
-					CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+					CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 					if (!slotData)
 						continue;
 					
