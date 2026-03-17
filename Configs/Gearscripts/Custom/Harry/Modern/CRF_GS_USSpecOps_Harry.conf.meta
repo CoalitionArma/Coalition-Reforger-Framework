@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3107D6E5154FC5D2}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_USSpecOps_Harry.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

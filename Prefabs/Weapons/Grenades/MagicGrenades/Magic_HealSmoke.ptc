@@ -1,0 +1,213 @@
+EffectDef {
+ Version 2
+ Emitters {
+  EmitterDef smoke_01 {
+   ShapeType Point
+   ShapeSize 0 0 0.2
+   ConeAngle 360 0 120
+   MaxNum 100
+   BirthRate 7
+   BirthRateRND 0
+   BirthRateVel 7
+   Offset 0 0 0
+   LodMin 0
+   LodMax 1
+   Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
+   StretchMultiplier 0
+   SizeMultiplier 32.5
+   SizeRND 3
+   RotMultiplier 15
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   FlipU Random
+   Velocity 0
+   VelocityRND 0.2
+   VelAffect 0.2
+   AirResistance 0.1
+   AirResistanceRND 0
+   WindInfluence 0.25
+   ParentVelRelToAir 0.05
+   GravityMultiplyRND 0
+   Spring 0
+   AnimOnce 1
+   AnimFPS 25
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 5
+   LifetimeRND 0
+   LifetimeVelFactor 1
+   Color {
+    0 1 0.2 0.6 1 1 0.2 0.6
+   }
+   Alpha {
+    0 0.407 0.029 1 1 0
+   }
+   RotationSpeed {
+    0 1 1 1
+   }
+   Size {
+    0 0 1 0.644
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 0.35 0.7 0.35 1 0.25 0.55 0.7 0.95 0.15 0.4 1 0.85 0.08 0.3
+   }
+   AlphaMast {
+    0 0 0.055 1 0.821 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 0 0.028 0.363 1 0
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+  EmitterDef smoke_viral {
+   ShapeType Sphere
+   ShapeSize 18 18 18
+   ConeAngle 360 0 120
+   MaxNum 30
+   BirthRate 5
+   BirthRateRND 8
+   BirthRateVel 7
+   Offset 0 0 0
+   LodMin 0
+   LodMax 1
+   Material "{D9FC42124DBB8845}Particles/_Materials/Fire/Base_Sparks_06.emat"
+   SizeMultiplier 1.5
+   SizeRND 0.5
+   RotMultiplier 15
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   FlipU Random
+   Velocity 0
+   VelocityRND 0.2
+   VelAffect 0.2
+   AirResistance 0.1
+   AirResistanceRND 0
+   WindInfluence 0.25
+   ParentVelRelToAir 0.05
+   GravityMultiply -0.052
+   GravityMultiplyRND 0
+   Spring 0
+   AnimOnce 1
+   AnimFPS 25
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 5
+   LifetimeRND 0
+   LifetimeVelFactor 1
+   Color {
+    0 1 0.85 0.88 1 1 0.85 0.88
+   }
+   Alpha {
+    0 0.407 0.029 1 1 0
+   }
+   RotationSpeed {
+    0 1 1 1
+   }
+   Size {
+    0 0 1 0.644
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 0.92 0.94 0.35 1 0.78 0.82 0.7 0.95 0.6 0.68 1 0.88 0.45 0.55
+   }
+   AlphaMast {
+    0 0 0.055 1 0.821 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 0 0.028 0.363 1 0
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+  EmitterDef smoke_viral2 {
+   ShapeType Point
+   ShapeSize 0 0 0.2
+   ConeAngle 180 0 120
+   MaxNum 3
+   BirthRate 1
+   BirthRateRND 0
+   BirthRateVel 7
+   Offset 0 0 0
+   LodMin 0
+   LodMax 1
+   Material "{EC21EF39434B038E}Particles/_Materials/Sparks_multiple.emat"
+   StretchMultiplier 1
+   SizeMultiplier 8.1
+   SizeRND 5
+   RotMultiplier 15
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   FlipU Random
+   Velocity 0
+   VelocityRND 0.2
+   VelAffect 0.2
+   AirResistance 0.1
+   AirResistanceRND 0
+   ParentVelRelToAir 0.05
+   Spring 0
+   AnimOnce 1
+   AnimFPS 25
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 9
+   LifetimeRND 2
+   LifetimeVelFactor 1.832
+   Color {
+    0 1 0.85 0.88 1 1 0.85 0.88
+   }
+   Alpha {
+    0 0.407 0.029 1 1 0
+   }
+   RotationSpeed {
+    0 1 1 1
+   }
+   Size {
+    0 0 1 0.644
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 0.92 0.94 0.35 1 0.78 0.82 0.7 0.95 0.6 0.68 1 0.88 0.45 0.55
+   }
+   AlphaMast {
+    0 0.407 0.029 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 0 0.028 0.363 1 0
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+ }
+}

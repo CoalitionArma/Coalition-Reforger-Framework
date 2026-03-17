@@ -1,0 +1,70 @@
+GenericEntity : "{A19A22F731C8C3E6}Prefabs/Systems/DamageAreas/DamageArea_Kolguyev_Poisonous_Lake.et" {
+ ID "6646D262F297B9DB"
+ components {
+  SCR_DamageAreaComponent "{6646D2612811A3C6}" {
+   Enabled 0
+   DamageAreas {
+    SCR_DotDamageArea "{6646DB3FF2DCC4EC}" {
+     m_bRegisterAutomatically 0
+    }
+   }
+  }
+  SCR_DamageAreaComponent "{68D0D1CDF3934022}" {
+   DamageAreas {
+    CRF_DotDamageArea "{68D0D1D0DBA1F414}" {
+     "Area shape" DamageAreaShapeSphere "{68D0D1D0DDE031DF}" {
+      Radius 7
+     }
+     m_eDamageType HEALING
+     m_DamageEffect CRF_HealingDamageEffect "{68D0D1D0D3357780}" {
+      m_iHealingTarget "All Physical"
+     }
+     m_bRemoveEffectWhenLeavingTheArea 1
+     m_eHitZoneSelectionMode RANDOM_PHYSICAL
+     m_CustomHitZoneSelector SCR_CharacterHitZoneSelector "{68D0D1D0D6CB360F}" {
+      m_bAbortWhenNoCompatibleHitZones 0
+     }
+     m_fDotDamage 5
+     m_fEffectDuration 8
+    }
+    CRF_DotDamageArea "{68D0D1DE71F1775E}" {
+     "Area shape" DamageAreaShapeSphere "{68D0D1DE71F177E0}" {
+      Radius 6
+     }
+     m_eDamageType HEALING
+     m_DamageEffect CRF_HealingDamageEffect "{68D0D1DE71F177E4}" {
+      m_iHealingTarget Blood
+     }
+     m_bRemoveEffectWhenLeavingTheArea 1
+     m_eHitZoneSelectionMode RANDOM
+     m_CustomHitZoneSelector SCR_CharacterHitZoneSelector "{68D0D1DE71F177E6}" {
+      m_bAbortWhenNoCompatibleHitZones 0
+     }
+     m_fDotDamage 100
+     m_fEffectDuration 8
+    }
+    CRF_DotDamageArea "{68D11162D662AAF5}" {
+     "Area shape" DamageAreaShapeSphere "{68D11162D662AB4D}" {
+      Radius 6
+     }
+     m_eDamageType HEALING
+     m_DamageEffect CRF_HealingDamageEffect "{68D11162D662AB50}" {
+      m_iHealingTarget Resilience
+     }
+     m_bRemoveEffectWhenLeavingTheArea 1
+     m_CustomHitZoneSelector SCR_CharacterHitZoneSelector "{68D11162D662AB55}" {
+      m_bAbortWhenNoCompatibleHitZones 0
+     }
+     m_fDotDamage 10
+     m_fEffectDuration 8
+    }
+   }
+  }
+  RplComponent "{6646D2611F84EA1D}" {
+   "Self Insert" 0
+   "Rpl State Override" Runtime
+   AutoHierarchy 1
+  }
+ }
+ coords 1230.688 38 2827.972
+}

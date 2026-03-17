@@ -1,0 +1,26 @@
+GenericEntity {
+ ID "68CA2CD6B5FDF025"
+ components {
+  SCR_DamageAreaComponent "{68CA2CD6B5FDF02E}" {
+   DamageAreas {
+    CRF_AreaDamageArea "{68CB4604057BE9D9}" {
+     "Area shape" DamageAreaShapeSphere "{68CB46040692D728}" {
+      Radius 6
+     }
+     m_eDamageType 2147483647
+     m_DamageEffect CRF_AreaSlowEffect "{68D0D1CBDF5F1EB3}" {
+      m_fSpecialCollisionMaxSpeedLimitScaled 0.525
+     }
+     m_eHitZoneSelectionMode RANDOM_PHYSICAL
+     m_CustomHitZoneSelector SCR_CharacterHitZoneSelector "{68D0D1CBCBF39137}" {
+     }
+    }
+   }
+  }
+  RplComponent "{68CA2CD6B5FDF038}" {
+   "Rpl State Override" Runtime
+   AutoHierarchy 1
+  }
+ }
+ Flags 0x400 0
+}

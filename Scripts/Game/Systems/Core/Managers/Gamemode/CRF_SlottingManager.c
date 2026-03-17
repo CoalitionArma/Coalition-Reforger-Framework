@@ -561,7 +561,16 @@ class CRF_SlottingManager : ScriptComponent
 				SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 				
 				if (playerController)
+				{
 					playerController.SetInitialMainEntity(playerCharacter);
+					
+					// Manually notify data collector since RequestSpawn pipeline was bypassed
+					SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
+						GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
+					);
+					if (dataCollector)
+						dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
+				}
 			}
 		}
 		else
@@ -571,7 +580,16 @@ class CRF_SlottingManager : ScriptComponent
 			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			
 			if (playerController)
+			{
 				playerController.SetInitialMainEntity(playerCharacter);
+				
+				// Manually notify data collector since RequestSpawn pipeline was bypassed
+				SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
+					GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
+				);
+				if (dataCollector)
+					dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
+			}
 		}
 		
 		return playerCharacter;
