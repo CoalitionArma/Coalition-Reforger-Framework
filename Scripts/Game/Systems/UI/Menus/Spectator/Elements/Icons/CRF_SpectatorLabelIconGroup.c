@@ -297,10 +297,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 		{
-			map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+			map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
 			if (slotMap)
 			{
-				foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+				foreach (int slotId, CRF_SlotData slotData : slotMap)
 				{
 					if (!slotData || slotData.GetSlotCurrentGroup() != groupRplId)
 						continue;
@@ -351,7 +351,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 			RplComponent entityRpl = RplComponent.Cast(entity.FindComponent(RplComponent));
 			if (entityRpl && slottingManager)
 			{
-				CRF_SlotDataContainer slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
+				CRF_SlotData slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
 				if (slotData && slotData.GetSlotCurrentGroup() == groupRplId)
 					alreadyCounted = true;
 			}
@@ -407,10 +407,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 		{
-			map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+			map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
 			if (slotMap)
 			{
-				foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+				foreach (int slotId, CRF_SlotData slotData : slotMap)
 				{
 					if (!slotData || slotData.GetSlotCurrentGroup() != groupRplId)
 						continue;
@@ -459,7 +459,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 			RplComponent entityRpl = RplComponent.Cast(entity.FindComponent(RplComponent));
 			if (entityRpl && slottingManager)
 			{
-				CRF_SlotDataContainer slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
+				CRF_SlotData slotData = slottingManager.GetSlotDataFromCharacter(entityRpl.Id());
 				if (slotData && slotData.GetSlotCurrentGroup() == groupRplId)
 					alreadyCounted = true;
 			}

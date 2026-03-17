@@ -335,7 +335,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		}
 		
 		// Check if any slots exist
-		map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
 		
 		if (!slotMap || slotMap.IsEmpty())
 		{
@@ -352,7 +352,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			int indforSlots = 0;
 			int civSlots = 0;
 			
-			foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach (int slotId, CRF_SlotData slotData : slotMap)
 			{
 				string factionKey = slotData.GetSlotFactionKey();
 				
