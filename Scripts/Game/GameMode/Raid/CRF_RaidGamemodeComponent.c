@@ -150,7 +150,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		int attackersSlotted = 0;
 		int attackersDead = 0;
-		foreach (int slotId, CRF_SlotDataContainer slotContainer: m_SlottingManager.GetSlotMap())
+		foreach (int slotId, CRF_SlotData slotContainer: m_SlottingManager.GetSlotMap())
 		{
 			if (slotContainer.GetSlotCurrentPlayerId() == 0)
 				continue;
@@ -252,7 +252,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		
 		//Below is to sort and respawn the dead attackers into independent faction
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 		PlayerManager playerMan = GetGame().GetPlayerManager();
 		Faction indfor = factionMan.GetFactionByKey(m_sIndependentFaction);
 		ref array<int> players = {};
@@ -396,6 +396,13 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			// Fallback
 			Print(string.Format("[CRF_Raid] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
 			playerController.SetInitialMainEntity(entity);
+			
+			// Manually notify data collector since RequestSpawn pipeline was bypassed
+			SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
+				GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
+			);
+			if (dataCollector)
+				dataCollector.NotifyPlayerSpawned(playerId, entity);
 		}
 		
 		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
@@ -410,7 +417,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
 		if (groupComponent)
 			groupComponent.RequestJoinGroup(groupId);
-		CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
+		CRF_SlotData currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
 		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
 		

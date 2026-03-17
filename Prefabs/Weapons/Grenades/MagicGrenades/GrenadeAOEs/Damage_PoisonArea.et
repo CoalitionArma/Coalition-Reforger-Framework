@@ -5,12 +5,12 @@ GenericEntity : "{A19A22F731C8C3E6}Prefabs/Systems/DamageAreas/DamageArea_Kolguy
    DamageAreas {
     SCR_DotDamageArea "{6646DB3FF2DCC4EC}" {
      "Area shape" DamageAreaShapeSphere "{68C9569BF41138E4}" {
-      Radius 7
+      Radius 6.5
      }
      m_eDamageType FIRE
      m_bRemoveEffectWhenLeavingTheArea 1
      m_eHitZoneSelectionMode RANDOM_PHYSICAL
-     m_fDotDamage 3
+     m_fDotDamage 1.5
      m_fEffectDuration 3
      m_eDotDamageType FIRE
     }

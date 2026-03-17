@@ -236,7 +236,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		if (!rplComponent)
 			return;
 			
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rplComponent.Id());
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rplComponent.Id());
 		
 		string displayName = "";
 		

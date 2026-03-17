@@ -383,7 +383,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			if (slottingManager)
 			{
 				// Get player's slot data to determine role
-				CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(playerId);
+				CRF_SlotData slotData = slottingManager.GetPlayerSlotData(playerId);
 				if (slotData)
 				{
 					// Get player role from slot resource

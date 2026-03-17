@@ -7,12 +7,9 @@ class CRF_LoggingHelper
 	//! \param[in] itemType type of item to display (default is "ITEM")
 	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM")
 	{
-		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: UNABLE TO INSERT %1: %2", itemType, item.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: INTO ENTITY: %1", entity.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
-		Print(" ", LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType), LogLevel.ERROR);
-		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
+		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(item.GetPrefabData().GetPrefabName()), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+		
+		Debug.Error(error);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -22,11 +19,21 @@ class CRF_LoggingHelper
 	//! \param[in] itemType type of item to display (default is "ITEM")
 	static void LogItemError(ResourceName itemResource, IEntity entity, string itemType = "ITEM")
 	{
-		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: UNABLE TO INSERT %1: %2", itemType, itemResource), LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: INTO ENTITY: %1", entity.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
-		Print(" ", LogLevel.ERROR);
-		Print(string.Format("CRF ERROR: NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType), LogLevel.ERROR);
-		Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
+		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(itemResource), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+		
+		Debug.Error(error);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Sanitize Resource Name of its path and extension
+	//! \param[in] resName Resource name to sanitize and strip (kinky)
+	//! \return sanatized string in uppercase
+	static string SanitizeResourceName(ResourceName resName)
+	{
+		resName = FilePath.StripPath(resName);
+		resName = FilePath.StripExtension(resName);
+		resName.ToUpper();
+
+		return resName;
 	}
 }

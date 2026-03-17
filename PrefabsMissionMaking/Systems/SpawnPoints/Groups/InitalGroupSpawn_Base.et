@@ -1,8 +1,6 @@
-GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+CRF_GroupSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
  ID "50C6D20663830070"
  components {
-  CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
-  }
   MeshObject "{68624CBAAD83E72A}" {
    Object "{85E21F4FAEF9C8E3}system/wbdata/MaterialEditor/MaterialCube.xob"
    Materials {
@@ -28,8 +26,12 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
   }
   SCR_HorizontalAlignComponent "{68624CBAAD83E71C}" {
   }
-  RplComponent "{649042617FEE1ECC}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  RplComponent "{649042617FEE1ECC}" {
   }
  }
  coords 0 -1.175 0
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4ED9EB427A}" {
+  m_sSpawnPointName "N/A"
+  m_iSpawnPointRadius 5
+ }
 }
