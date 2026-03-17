@@ -81,6 +81,7 @@ CRF_StaticSpawnPoint {
  m_bIsDefaultSpawn 1
  m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4D5731D7D9}" {
   m_iSpawnPointFaction INDFOR
+  m_iSpawnPointRadius 16
  }
  {
   CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {

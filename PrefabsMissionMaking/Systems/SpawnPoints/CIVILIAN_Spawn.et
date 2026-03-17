@@ -81,6 +81,7 @@ CRF_StaticSpawnPoint {
  m_bIsDefaultSpawn 1
  m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4D22A22580}" {
   m_iSpawnPointFaction CIV
+  m_iSpawnPointRadius 16
  }
  {
   CRF_ManualMarker : "{CC041EDE06E4A0C3}PrefabsMissionMaking/Markers/SpawnMarkers/CIVILIAN_SpawnMarker.et" {

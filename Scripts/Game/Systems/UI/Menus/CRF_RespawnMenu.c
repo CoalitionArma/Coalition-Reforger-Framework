@@ -79,11 +79,12 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected void PopulateListBox()
 	{
 		m_aSpawnPoints.Clear();
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
-		array<CRF_SpawnPointContainer> factionRespawnPoints = CRF_RespawnManager.GetInstance().GetFactionSpawnpoints(m_factionKey);
+		array<CRF_SpawnPointContainer> factionRespawnPoints = respawnManager.GetFactionSpawnpoints(m_factionKey);
 
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
 		int index = 0;
@@ -105,7 +106,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(spawnPointData.GetSpawnPointName());
 			
-			if (CRF_RespawnManager.GetInstance().IsDefaultSpawn(spawnPointData))
+			if (index == 0)
 			{
 				m_wSpawnListBox.SetItemSelected(index, true, true, true);
 				GetGame().GetCallqueue().CallLater(UpdateSpawnSelection, 500, false);

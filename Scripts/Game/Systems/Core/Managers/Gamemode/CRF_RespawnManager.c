@@ -357,15 +357,17 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RespawnTimer(float timeSlice)
 	{
-		int tickets = GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
-		if ((tickets <= 0 && tickets != -1) || !m_bCurrentRespawnEnabled || !IsRespawnTimeAllowed())
+		string factionKey = m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
+		int tickets = GetFactionTickets(factionKey);
+		if ((tickets <= 0 && tickets != -1) || !m_bCurrentRespawnEnabled || !IsRespawnTimeAllowed() || GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 			m_fRespawnTimer = 0;
 			m_SelectedSpawnPoint = null;
 			m_RespawnConfirmed = false; 
 			m_bNeedsRespawn = false;
+			
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 			return;
 		}
 		

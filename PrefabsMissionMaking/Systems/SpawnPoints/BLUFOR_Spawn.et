@@ -80,7 +80,7 @@ CRF_StaticSpawnPoint {
  coords 0 0 0
  m_bIsDefaultSpawn 1
  m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4C4DE26D17}" {
-  m_iSpawnPointRadius 10
+  m_iSpawnPointRadius 16
  }
  {
   CRF_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
