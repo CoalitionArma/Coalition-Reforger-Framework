@@ -24,15 +24,4 @@ class CRF_GroupSpawnPoint: GenericEntity
 		if(CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().RegisterRespawnPoint(m_SpawnPointSettings, this);
 	};
-	
-	//------------------------------------------------------------------------------------------------
-	void ~CRF_GroupSpawnPoint()
-	{
-		// Only server should unregister respawn points
-		if (!GetGame().InPlayMode() || !Replication.IsServer())
-			return;
-		
-		if (CRF_RespawnManager.GetInstance())
-			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(this);
-	}
 };

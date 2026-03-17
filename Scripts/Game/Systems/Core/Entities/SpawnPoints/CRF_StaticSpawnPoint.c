@@ -10,6 +10,8 @@ class CRF_StaticSpawnPoint: GenericEntity
 	[Attribute(category: "CRF Spawn Point Settings")]
 	ref CRF_SpawnPointContainer m_SpawnPointSettings;
 	
+	protected int m_iLocallyStoredId;
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
@@ -24,6 +26,18 @@ class CRF_StaticSpawnPoint: GenericEntity
 	};
 	
 	//------------------------------------------------------------------------------------------------
+	int GetLocalSpawnPointId()
+	{
+		return m_iLocallyStoredId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetLocalSpawnPointId(int spawnPointId)
+	{
+		m_iLocallyStoredId = spawnPointId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void ~CRF_StaticSpawnPoint()
 	{
 		// Only server should unregister respawn points
@@ -31,6 +45,6 @@ class CRF_StaticSpawnPoint: GenericEntity
 			return;
 		
 		if (CRF_RespawnManager.GetInstance())
-			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(this);
+			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(m_iLocallyStoredId);
 	}
 };

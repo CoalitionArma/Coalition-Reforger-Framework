@@ -37,11 +37,15 @@ class CRF_SlottingManager : ScriptComponent
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
-		m_ResourceCache = new CRF_ResourceCache;
-		m_ResourceCache.PreLoadSlottingResources();
 		
 		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
 		GetGame().GetCallqueue().Call(InitilizeSlots);
+		
+		if (RplSession.Mode() != RplMode.Client)
+		{
+			m_ResourceCache = new CRF_ResourceCache;
+			GetGame().GetCallqueue().Call(m_ResourceCache.PreLoadSlottingResources);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

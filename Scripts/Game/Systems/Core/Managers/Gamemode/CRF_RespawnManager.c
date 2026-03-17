@@ -153,7 +153,7 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
 			if (spawnPointData.GetIsTempSpawnPoint())
-				SCR_EntityHelper.DeleteEntityAndChildren(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()));
+				UnRegisterRespawnPoint(spawnPointId);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -464,6 +464,12 @@ class CRF_RespawnManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
+	CRF_SpawnPointContainer GetSpawnPoint(int spawnPointId)
+	{
+		return m_mSpawnPointMap.Get(spawnPointId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void RegisterRespawnPoint(CRF_SpawnPointContainer spawnPointData, GenericEntity spawnPointEntity)
 	{
 		if (!spawnPointEntity || !spawnPointData)
@@ -478,7 +484,7 @@ class CRF_RespawnManager : ScriptComponent
 		{
 			GetGame().GetCallqueue().CallLater(RegisterRespawnPoint, 100, false, spawnPointData, spawnPointEntity);
 			return;
-		}
+		};
 		
 		m_iLatestSpawnPointID++;
 		
@@ -487,42 +493,31 @@ class CRF_RespawnManager : ScriptComponent
 		
 		m_mSpawnPointMap.Set(m_iLatestSpawnPointID, spawnPointData);
 		m_RplBroadcastManager.UpdateSpawnPointData(spawnPointData);
+		SetSpawnId(spawnPointEntity, m_iLatestSpawnPointID);
 		
 		m_Gamemode.UpdateGenericSpawn();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void UnRegisterRespawnPoint(GenericEntity spawnPointEntity)
-	{
-		RplComponent rplComp = RplComponent.Cast(spawnPointEntity.FindComponent(RplComponent));
-		if (!rplComp)
+	void UnRegisterRespawnPoint(int spawnPointId)
+	{	
+		if (spawnPointId <= 0)
 			return;
 		
-		int respawnPointID;
-		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
-		{
-			if (spawnPointData.GetSpawnPointEntity() == rplComp.Id())
-			{
-				respawnPointID = spawnPointData.GetSpawnPointId();
-				break;
-			}
-		}
-			
-		m_mSpawnPointMap.RemoveElement(respawnPointID);
-		m_RplBroadcastManager.RemoveSpawnPoint(respawnPointID);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	CRF_SpawnPointContainer GetSpawnPoint(int spawnPointId)
-	{
-		return m_mSpawnPointMap.Get(spawnPointId);
+		CRF_SpawnPointContainer spawnPointData = GetSpawnPoint(spawnPointId);
+		
+		if (spawnPointData.GetIsTempSpawnPoint())
+			SCR_EntityHelper.DeleteEntityAndChildren(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()));
+		
+		m_mSpawnPointMap.RemoveElement(spawnPointId);
+		m_RplBroadcastManager.RemoveSpawnPoint(spawnPointId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	array<CRF_SpawnPointContainer> GetFactionSpawnpoints(FactionKey factionKey)
 	{
 		array<CRF_SpawnPointContainer> sideSpawnPoints = {};
-		
+
 		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
 		{
 			if (!spawnPointData 
@@ -537,7 +532,7 @@ class CRF_RespawnManager : ScriptComponent
 			else
 				sideSpawnPoints.Insert(spawnPointData);
 		}
-		
+
 		return sideSpawnPoints;
 	}
 	
@@ -545,13 +540,12 @@ class CRF_RespawnManager : ScriptComponent
 	CRF_SpawnPointContainer FindInitalSpawnpoint(FactionKey factionKey, SCR_AIGroup group)
 	{	
 		string company, platoon, squad, character, format;
-		
+
 		if (group)
 			group.GetCallsigns(company, platoon, squad, character, format);
-		
+
 		foreach(int spawnPointId, CRF_SpawnPointContainer spawnPointData : m_mSpawnPointMap)
 		{
-			
 			if (!spawnPointData 
 				|| !spawnPointData.GetIsActiveSpawnPoint() 
 				|| !spawnPointData.GetIsTempSpawnPoint() 
@@ -584,6 +578,18 @@ class CRF_RespawnManager : ScriptComponent
 			return true;
 		
 		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSpawnId(GenericEntity spawnPointEntity, int spawnPointId)
+	{		
+		CRF_StaticSpawnPoint staticSpawn = CRF_StaticSpawnPoint.Cast(spawnPointEntity);
+		if (staticSpawn)
+			staticSpawn.SetLocalSpawnPointId(spawnPointId);
+		
+		CRF_VehicleSpawnPoint vehSpawn = CRF_VehicleSpawnPoint.Cast(spawnPointEntity);
+		if (vehSpawn)
+			vehSpawn.SetLocalSpawnPointId(spawnPointId);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -865,8 +871,6 @@ class CRF_RespawnManager : ScriptComponent
 			m_mSpawnPointMap.Set(spawnPointId, spawnPointData);
 		else
 			oldSpawnPointData.DataUpdate(spawnPointData);
-		
-		Print(string.Format("[CRF_SlottingManager] Client received slot %1 update", spawnPointId), LogLevel.VERBOSE);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -877,8 +881,6 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 		
 		m_mSpawnPointMap.Remove(spawnPointId);
-		
-		Print(string.Format("[CRF_SlottingManager] Client removed slot %1", spawnPointId), LogLevel.VERBOSE);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

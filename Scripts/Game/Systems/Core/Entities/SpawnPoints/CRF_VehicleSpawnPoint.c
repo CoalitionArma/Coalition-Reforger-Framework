@@ -10,6 +10,8 @@ class CRF_VehicleSpawnPoint: Vehicle
 	[Attribute(category: "CRF Spawn Point Settings")]
 	ref CRF_SpawnPointContainer m_SpawnPointSettings;
 	
+	protected int m_iLocallyStoredId;
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
@@ -24,6 +26,18 @@ class CRF_VehicleSpawnPoint: Vehicle
 	};
 	
 	//------------------------------------------------------------------------------------------------
+	int GetLocalSpawnPointId()
+	{
+		return m_iLocallyStoredId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetLocalSpawnPointId(int spawnPointId)
+	{
+		m_iLocallyStoredId = spawnPointId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void ~CRF_VehicleSpawnPoint()
 	{
 		// Only server should unregister respawn points
@@ -31,6 +45,6 @@ class CRF_VehicleSpawnPoint: Vehicle
 			return;
 		
 		if (CRF_RespawnManager.GetInstance())
-			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(this);
+			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(m_iLocallyStoredId);
 	}
 };
