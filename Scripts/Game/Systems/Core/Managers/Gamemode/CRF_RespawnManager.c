@@ -509,7 +509,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (spawnPointData.GetIsTempSpawnPoint())
 			SCR_EntityHelper.DeleteEntityAndChildren(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()));
 		
-		m_mSpawnPointMap.RemoveElement(spawnPointId);
+		m_mSpawnPointMap.Remove(spawnPointId);
 		m_RplBroadcastManager.RemoveSpawnPoint(spawnPointId);
 	}
 	
@@ -879,6 +879,10 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		if (Replication.IsServer())
 			return;
+		
+		CRF_SpawnPointContainer spawnPointData = GetSpawnPoint(spawnPointId);
+		spawnPointData.SetSpawnPointActive(false);
+		spawnPointData.ForceDataUpdate();
 		
 		m_mSpawnPointMap.Remove(spawnPointId);
 	}

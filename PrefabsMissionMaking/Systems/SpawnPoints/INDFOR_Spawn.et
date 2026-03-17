@@ -1,4 +1,4 @@
-CRF_StaticSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+CRF_StaticSpawnPoint {
  ID "50C6D20663830070"
  components {
   MeshObject "{645911A16DDD1233}" {
@@ -10,6 +10,7 @@ CRF_StaticSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.
    ModelGeometry 1
   }
   SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" {
+   Enabled 0
    EnableDamage 0
    m_fBaseHealth 100000
    m_DestroySpawnObjects {
@@ -75,6 +76,7 @@ CRF_StaticSpawnPoint : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.
    Streamable Disabled
   }
  }
+ Flags 0x400 0
  coords 0 0 0
  m_bIsDefaultSpawn 1
  m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4D5731D7D9}" {

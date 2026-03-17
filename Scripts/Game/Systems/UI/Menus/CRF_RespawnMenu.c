@@ -11,6 +11,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected OverlayWidget m_wSpawnListRoot;
 	protected SCR_ListBoxComponent m_wSpawnListBox;
 	protected SCR_ButtonTextComponent m_bConfirmSpawnButton;
+	protected ref array<CRF_SpawnPointContainer> m_aSpawnPoints = {};
 	protected ref map<string, vector> m_MapMarkers = new map<string, vector>;
 	protected FactionKey m_factionKey;
 	
@@ -77,6 +78,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	
 	protected void PopulateListBox()
 	{
+		m_aSpawnPoints.Clear();
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
@@ -88,8 +90,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		foreach(CRF_SpawnPointContainer spawnPointData : factionRespawnPoints)
 		{ 
 			IEntity point = CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity());
-			if (!point)
+			if (!point || !spawnPointData.GetIsActiveSpawnPoint())
 				continue;
+			
+			m_aSpawnPoints.Insert(spawnPointData);
 			
 			vector worldPos = point.GetOrigin();
 			
@@ -371,11 +375,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (!rm)
 			return;
 		
-		// Grab rplIDs for player faction
-		array<CRF_SpawnPointContainer> factionRespawnPoints = rm.GetFactionSpawnpoints(m_factionKey);
-		
 		// Grab the entity from the rplID
-		CRF_SpawnPointContainer spawnPointData = factionRespawnPoints[m_wSpawnListBox.GetSelectedItem()];
+		CRF_SpawnPointContainer spawnPointData = m_aSpawnPoints[m_wSpawnListBox.GetSelectedItem()];
 		IEntity point = CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity());
 		
 		// Pan the map to the spawn point

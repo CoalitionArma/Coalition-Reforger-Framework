@@ -1,11 +1,3 @@
-CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
- coords 1222.497 40.917 2857.672
- m_SpawnPointSettings CRF_SpawnPointContainer "{68E15E4ED9EB427A}" {
-  m_iSpawnPointRadius 4
-  m_bSpawnPointSafetyCheck 0
-  m_bSpawnPointConformsToTerrain 0
- }
-}
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 1225.781 38.174 2813.078
 }
