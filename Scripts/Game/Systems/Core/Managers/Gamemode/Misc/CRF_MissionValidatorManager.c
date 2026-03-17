@@ -24,7 +24,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	[Attribute(defvalue: "0", desc: "Block mission start if critical errors found?")]
 	bool m_bBlockOnCriticalErrors;
 	
-	[Attribute(defvalue: "5.0", desc: "Validation delay after mission start (seconds)", params: "0 30 0.1")]
+	[Attribute(defvalue: "0.5", desc: "Validation delay after mission start (seconds)", params: "0 30 0.1")]
 	float m_fValidationDelay;
 	
 	[Attribute(defvalue: "1", desc: "Show UI popup in Workbench mode?")]
@@ -104,15 +104,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		// Show enhanced output in Workbench
 		#ifdef WORKBENCH
 		if (m_bShowWorkbenchUI)
-		{
 			ShowWorkbenchOutput();
-			
-			// Queue HUD notification for when player spawns
-			if (m_aCriticalErrors.Count() > 0)
-			{
-				GetGame().GetCallqueue().CallLater(TryShowHudNotification, 2000, true);
-			}
-		}
 		#endif
 		
 		m_bValidationComplete = true;
@@ -596,6 +588,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		Print("================================================================", LogLevel.NORMAL);
 		Print("", LogLevel.NORMAL);
 		
+		string errorStr = "[MISSION VALIDATION ERROR] \n\n";
 		int errorCount = m_aCriticalErrors.Count();
 		int warningCount = m_aWarnings.Count();
 		
@@ -667,45 +660,13 @@ class CRF_MissionValidatorManager : ScriptComponent
 		{
 			PrintFormat("[X] MISSION HAS ERRORS - %1 errors, %2 warnings", errorCount, warningCount);
 			Print("    Fix critical errors before deploying this mission!", LogLevel.NORMAL);
+			
+			foreach (string error : m_aCriticalErrors)
+				errorStr = errorStr + " \n " + error;
+			
+			Debug.Error(errorStr);
 		}
 		Print("================================================================", LogLevel.NORMAL);
 		Print("", LogLevel.NORMAL);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Try to show HUD notification (called repeatedly until player is ready)
-	protected void TryShowHudNotification()
-	{
-		// Already shown, stop trying
-		if (m_bHudNotificationShown)
-		{
-			GetGame().GetCallqueue().Remove(TryShowHudNotification);
-			return;
-		}
-		
-		// Check if gamemode is in GAME state
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (!gamemode || gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			return;
-		
-		// Check if player is in game
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
-		
-		// Check if player has spawned
-		IEntity controlledEntity = pc.GetControlledEntity();
-		if (!controlledEntity)
-			return;
-		
-		// Player is ready and game state is GAME, show notification
-		SCR_HintManagerComponent hintManager = SCR_HintManagerComponent.GetInstance();
-		if (hintManager)
-		{
-			string message = string.Format("MISSION VALIDATION FAILED - %1 CRITICAL ERRORS - CHECK CONSOLE!", m_aCriticalErrors.Count());
-			hintManager.ShowCustomHint(message, "Mission Validator", 10);
-			m_bHudNotificationShown = true;
-			GetGame().GetCallqueue().Remove(TryShowHudNotification);
-		}
 	}
 }
