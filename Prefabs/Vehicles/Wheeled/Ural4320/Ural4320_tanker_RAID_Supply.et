@@ -1,10 +1,6 @@
 Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
  ID "0000000000000001"
  components {
-  CRF_RaidItemComponent "{668333D5C779FEC4}" {
-   m_iPointsEarnedWhenDestroyed 20
-   m_sItemName "URAL Tanker"
-  }
   SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {
    m_bIsLocked 1
   }
@@ -28,19 +24,13 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     }
    }
   }
-  SCR_ResourceComponent "{668333D5CB9CF5A8}" {
-   m_aConsumers {
-    SCR_ResourceConsumer "{5DB8993B0366B26B}" : "{4126DC9D9F44E513}Configs/Resources/Supplies/Consumers/Consumer_VehicleLoad.conf" {
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     m_fInitialFuelTankState 0
     }
-    SCR_ResourceConsumer "{5DB8993B03A066A2}" : "{3FF0B8C036F14239}Configs/Resources/Supplies/Consumers/Consumer_VehicleUnload.conf" {
-    }
-    SCR_ResourceConsumer "{5E4ECC57D4C9901B}" : "{2AAF7114BB83B5E8}Configs/Resources/Supplies/Consumers/Generic/Consumer_Vehicle.conf" {
-    }
-   }
-   m_aGenerators {
-    SCR_ResourceGenerator "{5DB8993B05D04F60}" : "{48782547A13061E2}Configs/Resources/Supplies/Generators/Generator_VehicleLoad.conf" {
-    }
-    SCR_ResourceGenerator "{5DB8993B04B1456D}" : "{F8496BD9E1CE43B3}Configs/Resources/Supplies/Generators/Generator_VehicleUnload.conf" {
+    SCR_FuelNode "{5628CA84B129D4CE}" {
+     m_fInitialFuelTankState 0
     }
    }
   }
@@ -50,7 +40,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
      SlotTemplate InventoryStorageSlot Bandages {
      }
     }
-    MultiSlotConfiguration "{668333D5CB9CF5CC}" {
+    MultiSlotConfiguration "{68E14E9AFF40E4B5}" {
      SlotTemplate InventoryStorageSlot jerrycan {
       Prefab "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et"
      }

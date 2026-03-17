@@ -1,0 +1,341 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 887.401 20.695 2767.882
+  angles 0 -89.54 0
+  m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 691.312 20.625 2711.503
+  angles 0 -89.54 0
+  m_rVehicle "{D784743477DB8E1E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
+GenericEntity supply_tracker : "{0037D9DD160A9044}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_Supplies_US.et" {
+ components {
+  SCR_ResourceComponent "{5E3298BE225F0743}" {
+   m_aConsumers {
+    SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+     m_fResourceRange 300
+    }
+   }
+  }
+ }
+ coords 849.473 20.656 2759.521
+ angles 0 -85.371 0
+}
+$grp SCR_DestructibleBuildingEntity : "{5CC8525A69118B0C}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_01/FuelTank_01_orange.et" {
+ {
+  coords 882.572 0 2791.931
+ }
+ {
+  coords 888.603 0.014 2791.705
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 810.292 20.656 2704.575
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 808.893 20.656 2702.858
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 855.958 20.647 2787.57
+  angles 0 88.936 0
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 855.902 20.625 2788.868
+  angles 0 88.936 0
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 20
+      m_fResourceValueMax 20
+     }
+    }
+   }
+  }
+  coords 882.305 20.594 2791.757
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 20
+      m_fResourceValueMax 20
+     }
+    }
+   }
+  }
+  coords 888.614 20.571 2791.45
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 20
+      m_fResourceValueMax 20
+     }
+    }
+   }
+  }
+  coords 889.051 20.301 2767.971
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 40
+      m_fResourceValueMax 40
+     }
+    }
+   }
+  }
+  coords 693.09 20.629 2711.592
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 716.91 20.736 2748.27
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 40
+      m_fResourceValueMax 40
+     }
+    }
+   }
+  }
+  coords 866.644 20.656 2776.603
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 750.111 20.563 2707.083
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 750.85 20.562 2704.852
+ }
+ {
+  components {
+   SoundComponent "{658806598565AF90}" {
+    Enabled 0
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageThreshold 100
+     }
+    }
+   }
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 10
+      m_fResourceValueMax 10
+     }
+    }
+   }
+  }
+  coords 748.594 20.562 2705.532
+ }
+}
+GenericEntity : "{EA3F58CE2AF832FD}Prefabs/Destructible/RedBarrel/GMFX_RedBarrel.et" {
+ coords 883.763 20.621 2745.257
+}
+GenericEntity : "{FFCDFB1375A99125}Prefabs/Destructible/GMFX_Destructible_RPL5_01_generator.et" {
+ coords 866.257 20.656 2776.471
+ angles 0 -90.198 0
+}
