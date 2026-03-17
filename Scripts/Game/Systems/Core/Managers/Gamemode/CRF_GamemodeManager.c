@@ -75,14 +75,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController);
 	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			CRF_PlayerHelper.RemovePlayerFromCurrentGroup(playerId);
-		} 
-		else 
-		{
+		} else {
 			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
 			// This optimization eliminates 50% of entity spawns (no temporary initial entities)
 			
@@ -175,9 +173,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	//! Create a spectator entity in the world
 	//! \param[in] playerId ID of the player
-	//! \param[in] spawnLocation Location to spawn the spectator
 	//! \return The created spectator character
-	protected CRF_PlayerCharacter GetOrCreateSpectatorEntity(int playerId, SCR_PlayerController playerController, vector spawnLocation[4])
+	protected CRF_PlayerCharacter GetOrCreateSpectatorEntity(int playerId, SCR_PlayerController playerController)
 	{
 		CRF_PlayerCharacter spec = CRF_PlayerCharacter.Cast(playerController.GetMainEntity());
 		if (spec && CRF_EntityHelper.IsSpectator(spec))
@@ -194,7 +191,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		Print(string.Format("[CRF_GamemodeManager] Creating new spectator entity for player %1", playerId), LogLevel.NORMAL);
 		
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(spawnLocation)));
+		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(CRF_EntityHelper.ZERO_SPAWN_VECTOR)));
 		
 		if (!spec)
 		{

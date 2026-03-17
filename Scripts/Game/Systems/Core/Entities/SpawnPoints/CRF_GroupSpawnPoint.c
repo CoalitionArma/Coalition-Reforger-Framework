@@ -21,7 +21,7 @@ class CRF_GroupSpawnPoint: GenericEntity
 		
 		m_SpawnPointSettings.SetSpawnPointToTemp();
 		
-		if(CRF_RespawnManager.GetInstance())
+		if (CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().RegisterRespawnPoint(m_SpawnPointSettings, this);
 	};
 };

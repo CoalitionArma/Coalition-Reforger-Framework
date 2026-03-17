@@ -21,7 +21,7 @@ class CRF_VehicleSpawnPoint: Vehicle
 		if (!GetGame().InPlayMode() || !Replication.IsServer())
 			return;
 		
-		if(CRF_RespawnManager.GetInstance())
+		if (CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().RegisterRespawnPoint(m_SpawnPointSettings, this);
 	};
 	

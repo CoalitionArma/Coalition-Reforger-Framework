@@ -459,7 +459,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
 				{
 					// Schedule re-initialization to fix race condition
-					GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, playerId);
+					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId);
 				}
 			}
 		}
@@ -518,9 +518,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(
-				m_RplBroadcastManager.SendRespawnScreen, 
-				(delay + 150), 
-				false, 
+				m_RplBroadcastManager.SendRespawnScreen,
+				(delay + 150),
+				false,
 				playerId
 			);
 		}
@@ -531,12 +531,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if(slotID != -1)
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		
-		// Get death position for spectator camera initialization
-		vector deathPosition[4];
-		entity.GetWorldTransform(deathPosition);
-
 		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, delay, false, playerId);
+		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! For some godforsaken reason, removing this and directly calling "m_GamemodeManager.InitilizePlayer" in the call later doesnt work.
+	protected void OnControllableInitilizePlayerDelayed(int playerId)
+	{
+		m_GamemodeManager.InitilizePlayer(playerId);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

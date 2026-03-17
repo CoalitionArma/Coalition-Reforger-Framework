@@ -151,8 +151,8 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ClearGroupSpawnPoints()
 	{
-		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
-			if (spawnPointData.GetIsTempSpawnPoint())
+		foreach (int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
+			if (spawnPointData && spawnPointData.GetIsTempSpawnPoint())
 				UnRegisterRespawnPoint(spawnPointId);
 	}
 
@@ -573,10 +573,6 @@ class CRF_RespawnManager : ScriptComponent
 		
 		CRF_VehicleSpawnPoint vehSpawn = CRF_VehicleSpawnPoint.Cast(entity);
 		if (vehSpawn && vehSpawn.m_bIsDefaultSpawn)
-			return true;
-		
-		CRF_BackpackSpawnPoint backpackSpawn = CRF_BackpackSpawnPoint.Cast(entity);
-		if (backpackSpawn && backpackSpawn.m_bIsDefaultSpawn)
 			return true;
 		
 		return false;
