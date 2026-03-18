@@ -438,31 +438,50 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Process entity spawning for players
-	//! \param[in] entity The spawned entity
-	protected override void OnControllableSpawned(IEntity entity)
+	//! Default player kill behaviour. Called when a player is killed (and HandlePlayerKilled returns true).
+	protected override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
-		super.OnControllableSpawned(entity);
+		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
-		
-		if (!character)
+		// Skip processing on client
+		if (RplSession.Mode() == RplMode.Client)
 			return;
-			
-		// Handle initial entity race condition fix
-		if (character.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
+
+		// Get player faction
+		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+		FactionKey factionKey;
+		
+		if (faction)
+			factionKey = faction.GetFactionKey();
+
+		// Handle respawn if enabled, tickets available, and within time window
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
+			!CRF_EntityHelper.IsSpectator(playerEntity) && 
+			m_GamemodeState != CRF_EGamemodeState.AAR && 
+			m_RespawnManager.TicketsRemaining(factionKey) &&
+			m_RespawnManager.IsRespawnTimeAllowed() &&
+			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
+			!factionKey.IsEmpty())
 		{
-			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
-			if (playerId > 0 && m_GamemodeState == CRF_EGamemodeState.GAME)
-			{
-				// Check if player should have a proper character instead of initial entity
-				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
-				{
-					// Schedule re-initialization to fix race condition
-					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId);
-				}
-			}
+			// Deduct ticket
+			m_RespawnManager.SubtractTicket(factionKey, 1);
+
+			// Display respawn screen
+			GetGame().GetCallqueue().CallLater(
+				m_RplBroadcastManager.SendRespawnScreen,
+				(CRF_GamemodeManager.PLAYER_INITILIZATION_TIME + 75),
+				false,
+				playerId
+			);
 		}
+		
+		// Update slot death state so player gets put into spec
+		int slotID = m_SlottingManager.GetCharacterSlotID(playerEntity);
+		if (slotID != -1)
+			m_SlottingManager.UpdateSlotDeathState(slotID, true);
+		
+		// Move player to spectator
+		m_GamemodeManager.InitilizePlayer(playerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -479,67 +498,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
-		m_GarbageManager.m_aDeadBodies.Insert(entity);
-		
-		// Note: The base game's data collector is automatically triggered by super.OnControllableDestroyed()
-		// Our modded CRF_SCR_DataCollectorComponent.OnPlayerKilled() hooks into this and calls the logging manager
-		
-		// Create instigator context for tracking kill details
-		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-		int playerId = instigatorContextData.GetVictimPlayerID();
-		
-		// Return if not a player character
-		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
-			return;
-
-		// Determine delay time for respawn/spectator
-		int delay = 2000;
-		if (CRF_EntityHelper.IsSpectator(entity))
-			delay = 0;
-		
-		// Get player faction
-		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
-		FactionKey factionKey;
-		
-		if (faction)
-			factionKey = faction.GetFactionKey();
-
-		// Handle respawn if enabled, tickets available, and within time window
-		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
-			!CRF_EntityHelper.IsSpectator(entity) && 
-			m_GamemodeState != CRF_EGamemodeState.AAR && 
-			m_RespawnManager.TicketsRemaining(factionKey) &&
-			m_RespawnManager.IsRespawnTimeAllowed() &&
-			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
-			!factionKey.IsEmpty())
-		{
-			// Deduct ticket
-			m_RespawnManager.SubtractTicket(factionKey, 1);
-
-			// Display respawn screen
-			GetGame().GetCallqueue().CallLater(
-				m_RplBroadcastManager.SendRespawnScreen,
-				(delay + 150),
-				false,
-				playerId
-			);
-		}
-		
-		// Update slot death state so player gets put into spec
-		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-		
-		if(slotID != -1)
-			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-		
-		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! For some godforsaken reason, removing this and directly calling "m_GamemodeManager.InitilizePlayer" in the call later doesnt work.
-	protected void OnControllableInitilizePlayerDelayed(int playerId)
-	{
-		m_GamemodeManager.InitilizePlayer(playerId);
+		if (CRF_GearscriptCharacter.Cast(entity))
+			m_GarbageManager.m_aDeadBodies.Insert(entity);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

@@ -104,7 +104,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			playerCharacter.DisableAI();
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
-			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
 	}
 	
@@ -191,7 +191,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		Print(string.Format("[CRF_GamemodeManager] Creating new spectator entity for player %1", playerId), LogLevel.NORMAL);
 		
 		Resource spectatorRes = Resource.Load(CRF_EntityHelper.GetSpectatorResource());
-		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(CRF_EntityHelper.ZERO_SPAWN_VECTOR)));
+		EntitySpawnParams spawnParams = CRF_EntityHelper.CreateSpawnParams(CRF_Gamemode.GetInstance().GetGenericSpawn());
+		spec = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), spawnParams));
 		
 		if (!spec)
 		{

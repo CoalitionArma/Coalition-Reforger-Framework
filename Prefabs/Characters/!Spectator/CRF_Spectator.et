@@ -154,6 +154,9 @@ CRF_SpectatorCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.
     SoundIdentity SoundIdentity "{56E6D945D8F79290}" {
      VoiceID 0
     }
+    Name ""
+    Alias ""
+    Surname ""
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
