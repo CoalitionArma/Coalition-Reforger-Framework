@@ -1,6 +1,3 @@
-SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
- coords 10188.744 0 717.211
-}
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  components {
   NavmeshWorldComponent "{5584F30E67F617AD}" {
