@@ -1,25 +1,54 @@
-GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
- components {
-  CRF_VehicleDepot "{664C7C2465880153}" {
-   m_iSpawnPointCount 1
-   m_fSpawnDistance 9
-   m_bEnableSpawnVisuals 1
-   m_aVehicles {
-    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
-     m_sVehicleName "OH-58D"
-     m_sVehiclePrefab "{649D8FA8C2886E28}Prefabs/Vehicles/Helicopters/OH58D/58D_Kiowa.et"
-     m_eCostType USES
-     m_iCost 10
+$grp GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_iSpawnPointCount 1
+    m_fSpawnDistance 9
+    m_fVehicleFacingOffset 90
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "OH-58D"
+      m_sVehiclePrefab "{649D8FA8C2886E28}Prefabs/Vehicles/Helicopters/OH58D/58D_Kiowa.et"
+      m_eCostType USES
+      m_iCost 10
+     }
     }
    }
   }
+  coords 10158.011 1.24 721.744
+  angles 0 -53.953 0
  }
- coords 10120.513 3.57 752.102
- angles 0 134.294 0
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_iSpawnPointCount 1
+    m_fSpawnDistance 9
+    m_fVehicleFacingOffset 90
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "UH60"
+      m_sVehiclePrefab "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+      m_eCostType USES
+      m_iCost 10
+     }
+    }
+   }
+  }
+  coords 10163.494 1.334 741.057
+  angles 0 -54.103 0
+ }
 }
-StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
- coords 10113.301 0 758.802
- angles 0 -48.332 0
+$grp StaticModelEntity : "{472BE7BF1240C1CE}Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_US_01.et" {
+ {
+  coords 10165.847 0.135 716.439
+  angles 0 37.074 0
+ }
+ {
+  coords 10170.521 0.531 734.816
+  angles 0 37.074 0
+ }
 }
 GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
  components {
@@ -33,7 +62,7 @@ GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/Veh
      m_sVehicleName "RHIB M134"
      m_sVehiclePrefab "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
      m_eCostType USES
-     m_iCost 6
+     m_iCost 4
     }
     CRF_VehicleDepotVehicle "{68C959D4292E01A3}" {
      m_sVehicleName "RHIB Transport"
