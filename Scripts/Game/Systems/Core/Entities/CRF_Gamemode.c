@@ -469,7 +469,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(
 				m_RplBroadcastManager.SendRespawnScreen,
-				(CRF_GamemodeManager.PLAYER_INITILIZATION_TIME + 75),
+				75,
 				false,
 				playerId
 			);
