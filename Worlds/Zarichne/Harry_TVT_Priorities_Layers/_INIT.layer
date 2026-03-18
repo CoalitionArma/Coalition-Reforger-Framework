@@ -58,6 +58,19 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "Raid Targets"
+   m_sTextData "- Supply Crates"\
+   "- Yellow fuel silos"\
+   "- Fuel Tanker"\
+   "- Command vic"\
+   "- Generator"
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Recon Safestart"
    m_sTextData "You may not move more than 200m from your spawn during safestart. Do not fire at anyone until safestart is over. You are a forward recon element sent to observer the enemy position before the attack."
    m_aFactionKeys {
@@ -65,7 +78,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  CRF_MissionDescriptor "{68E14E97BD183704}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Be an obstacle to opfor and blufor in their fight. "
    m_aFactionKeys {
@@ -73,7 +86,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E14E97BD183704}" {
+  CRF_MissionDescriptor "{68E14E98A4A8A303}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -83,7 +96,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E14E98A4A8A303}" {
+  CRF_MissionDescriptor "{68E574F60C4DD057}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {

@@ -1,9 +1,3 @@
-CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
- coords 139.67 44.686 3450.066
- angles 0 0 0
- m_MarkerColor 0.502 0 0 1
- m_sDescription "OPFOR Extract"
-}
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  coords 682.137 349.44 2806.613
  Points {
