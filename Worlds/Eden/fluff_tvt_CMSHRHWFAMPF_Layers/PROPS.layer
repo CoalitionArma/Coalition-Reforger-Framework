@@ -1,0 +1,22 @@
+SCR_DestructibleEntity : "{08D1D9ACACDA695A}Prefabs/Structures/Signs/SignLarge_02/SignLarge_02_Patman.et" {
+ coords 10056.171 273.052 2479.627
+ angles 0 -105.607 0
+}
+SCR_IndestructibleEnvironmentalEntity : "{1FFB6B5828D2B35F}Prefabs/Rocks/Granite/GraniteRock_03.et" {
+ coords 10261.167 258.527 2579.094
+ angles 0 86.623 0
+ scale 0.16
+}
+GenericEntity : "{4A451023CA3A9092}Prefabs/Structures/Signs/Large/SignLarge_01_consultChart.et" {
+ coords 10054.177 273.717 2482.049
+ angles 0 -145.452 0
+}
+SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Granite/GraniteRock_01.et" {
+ coords 10261.532 257.998 2581.115
+ scale 0.26
+}
+SCR_IndestructibleEnvironmentalEntity : "{DF692A1784D6B324}Prefabs/Rocks/Granite/GraniteRock_01_V2.et" {
+ coords 10260.674 258.424 2578.513
+ angles 0 -79.518 -56.819
+ scale 0.187
+}
