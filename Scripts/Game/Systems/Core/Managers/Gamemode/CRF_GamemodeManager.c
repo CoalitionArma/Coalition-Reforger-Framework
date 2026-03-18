@@ -6,12 +6,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	// Time it takes for players to Init
-	static const int PLAYER_INITILIZATION_TIME = 250;
-	
-	static ref CRF_RolesConfig m_RolesConfig;
-	
 	protected ref CRF_ResourceCache m_ResourceCache;
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
@@ -25,7 +19,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	override void OnPostInit(IEntity owner)
 	{	
 		super.OnPostInit(owner);
-		LoadConfigurations();
 		
 		if (RplSession.Mode() != RplMode.Client)
 		{
@@ -33,28 +26,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			InitializeManagers();
 		
 			m_ResourceCache = new CRF_ResourceCache;
-			GetGame().GetCallqueue().Call(m_ResourceCache.PreLoadSlottingResources);
+			GetGame().GetCallqueue().Call(m_ResourceCache.PreLoadCharacterResources);
 		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Load necessary configurations for gearscript
-	protected void LoadConfigurations()
-	{
-		ResourceName rolesConfigPath;
-		if (!CVON_VONGameModeComponent.GetInstance())
-			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
-		else
-			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
-		
-		m_RolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_RolesConfig RolesConfig()
-	{
-		return m_RolesConfig;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -109,7 +82,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			m_MenuManager.RemovePlayerFromAnyChannel(playerId, false);
 		}
 		
-		if (playerCharacter)
+		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
+		if (playerCharacter && playerRplComp)
 		{
 			playerCharacter.DisableAI();
 			DeleteOldInitialEntity(playerController, playerCharacter);
@@ -117,11 +91,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
-				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, PLAYER_INITILIZATION_TIME, false, playerId);
-			
-			RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
-			if (playerRplComp)
-				GetGame().GetCallqueue().CallLater(m_RplBroadcastManager.InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
+				GetGame().GetCallqueue().Call(AssignPlayerToGroup, playerId);
+
+			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 		};
 	}
 	
@@ -200,7 +172,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	 SPECTATOR ENTITY HELPERS
+//	 SPECTATOR CHARACTER HELPERS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
@@ -245,21 +217,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		// Check if old entity is an initial entity (spectator prefab)
 		if (CRF_EntityHelper.IsSpectator(oldEntity))
-		{
-			// Log deletion for debugging
-			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(oldEntity);
-			Print(string.Format("[CRF] Deleting ghost spectator entity for player %1 at position %2", 
-				playerId, 
-				oldEntity.GetOrigin()), 
-				LogLevel.VERBOSE);
-			
-			// Delete immediately to prevent replication
 			SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
-		}
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	 ENTITY SPAWNING HELPERS
+//	 PLAYER INIT HELPERS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------

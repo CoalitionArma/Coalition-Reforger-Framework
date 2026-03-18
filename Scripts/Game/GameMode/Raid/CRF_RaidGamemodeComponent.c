@@ -252,7 +252,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		
 		//Below is to sort and respawn the dead attackers into independent faction
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
 		PlayerManager playerMan = GetGame().GetPlayerManager();
 		Faction indfor = factionMan.GetFactionByKey(m_sIndependentFaction);
 		ref array<int> players = {};

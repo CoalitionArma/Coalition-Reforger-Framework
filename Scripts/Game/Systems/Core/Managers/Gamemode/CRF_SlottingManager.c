@@ -479,7 +479,7 @@ class CRF_SlottingManager : ScriptComponent
 			
 			foreach(CRF_EGearRole role : slotGroup.m_aSlots)
 			{
-				CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+				CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
 				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 				
 				if (!roleConfig || !rolesConfig)

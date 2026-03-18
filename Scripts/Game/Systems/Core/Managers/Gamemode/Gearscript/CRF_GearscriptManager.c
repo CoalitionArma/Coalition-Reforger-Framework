@@ -2,6 +2,8 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 
 class CRF_GearscriptManager : ScriptComponent
 {
+	static ref CRF_RolesConfig m_RolesConfig;
+	
 	protected CRF_Gamemode m_Gamemode;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -17,8 +19,29 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!GetGame().InPlayMode())
 			return;
 		
+		LoadRoleConfig();
 		m_Gamemode = CRF_Gamemode.GetInstance();
-	}	
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_RolesConfig GetRolesConfig()
+	{
+		return m_RolesConfig;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Load necessary configurations for gearscript
+	protected void LoadRoleConfig()
+	{
+		ResourceName rolesConfigPath;
+		if (!CVON_VONGameModeComponent.GetInstance())
+			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		else
+			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
+		
+		m_RolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Load gear script config from resource
@@ -327,7 +350,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		array<CRF_Weapon_Class> weaponsSelected = {};
 		
 		foreach (CRF_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
@@ -433,7 +456,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		bool isAssistant = (rolesConfig.m_SlottingType == CRF_ESlotType.ASSISTANT || rolesConfig.m_SlottingType == CRF_ESlotType.SPECIALTY_ASSISTANT);
 		
 		foreach (CRF_EGearscriptMagazines roleMags : rolesConfig.m_aMagazines)
@@ -538,7 +561,7 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 		
 		// Then apply default gear
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		
 		foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
 		{

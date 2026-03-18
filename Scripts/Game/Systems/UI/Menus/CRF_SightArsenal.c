@@ -128,7 +128,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	array<ResourceName> GetDefaultAttachments()
 	{
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		array<ResourceName> attachmentsToAdd = {};
 		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterControllerComponent));
 		string currentWeapon = charController.GetWeaponManagerComponent().GetCurrentWeapon().GetOwner().GetPrefabData().GetPrefabName();

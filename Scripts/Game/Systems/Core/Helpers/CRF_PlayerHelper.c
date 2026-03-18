@@ -29,8 +29,8 @@ class CRF_PlayerHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Assign character entity to player controller
-	//! \param[in] playerId ID of the player to assign the character to
-	//! \param[in] character Character to assign
+	//! \param[in] playerController Player Controller to assign character to
+	//! \param[in] character Character to assign to player
 	static void AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
 	{
 		int playerId = playerController.GetPlayerId();
@@ -66,7 +66,7 @@ class CRF_PlayerHelper
 			if (canUseRequestSpawn)
 			{
 				if (!respawnComponent.RequestSpawn(spawnData))
-					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for spectator, player %1", playerId), LogLevel.WARNING);
+					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
 			} else
 				playerController.SetInitialMainEntity(character);
 		}

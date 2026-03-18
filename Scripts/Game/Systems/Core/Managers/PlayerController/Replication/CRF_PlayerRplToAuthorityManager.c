@@ -1093,7 +1093,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			prefab
 		);
 		
-		CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
 		
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
