@@ -9,30 +9,158 @@ $grp CRF_VehicleSpawner {
  {
   coords 691.312 20.625 2711.503
   angles 0 -89.54 0
-  m_rVehicle "{D784743477DB8E1E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID.et"
+  m_rVehicle "{50E833EA0EB81931}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID_Supply.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
 }
-GenericEntity supply_tracker : "{0037D9DD160A9044}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_Supplies_US.et" {
+SCR_BaseTriggerEntity supply_query {
  components {
-  SCR_ResourceComponent "{5E3298BE225F0743}" {
-   m_aConsumers {
-    SCR_ResourceConsumer "{5E3298A9D628A54F}" {
-     m_fResourceRange 300
-    }
-   }
+  RplComponent "{68E50B5B44EDD539}" {
   }
  }
- coords 849.473 20.656 2759.521
- angles 0 -85.371 0
+ coords 843.449 20.656 2760.258
+ userScript "	protected ref array<RplId> m_aSupplyItems = {};"\
+ "	protected ref array<int> m_aSupplyCounts = {};"\
+ "	"\
+ "	// Log initial supply on first query"\
+ "	protected bool bSupplyLogged = false;"\
+ "	protected float fLastSupply = 0;"\
+ "	protected float currentSupply = 0;"\
+ "	protected float maxSupply = 0;"\
+ "	protected float supplyThreshold = 50;"\
+ "	protected float destroyedSupply = 0;"\
+ "	protected float supplyPercent = 0;"\
+ "	"\
+ "	void DeleteWidget(Widget widget)"\
+ "	{"\
+ "    	if (widget)"\
+ "    	{"\
+ "        	AnimateWidget.Opacity(widget, 0, 0.5);"\
+ "        	GetGame().GetCallqueue().CallLater(DeleteWidgetDelay, 500, false, widget);"\
+ "    	}"\
+ "	}"\
+ ""\
+ "	void DeleteWidgetDelay(Widget widget)"\
+ "	{"\
+ "	    if (widget)"\
+ "        	delete widget;"\
+ "	}"\
+ "	"\
+ "	float UpdateCurrentSupply()"\
+ "	{"\
+ "		// Rebuild inventory arrays"\
+ "		m_aSupplyItems.Clear();"\
+ "		m_aSupplyCounts.Clear();"\
+ "		GetGame().GetWorld().QueryEntitiesBySphere(this.GetOrigin(), 200, FindSupplyCallback, null);"\
+ "		"\
+ "		// Calculate new total"\
+ "		int newTotal = 0;"\
+ "		foreach (int count: m_aSupplyCounts)"\
+ "		{"\
+ "			newTotal += count;"\
+ "		}"\
+ "		"\
+ "		return newTotal;"\
+ "	}"\
+ "	"\
+ "	bool FindSupplyCallback(IEntity entity)"\
+ "	{"\
+ "		if (!entity.FindComponent(SCR_ResourceComponent))"\
+ "			return true;"\
+ "		"\
+ "		SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);"\
+ "		float storedResources = 0;"\
+ "		"\
+ "		SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);"\
+ "			"\
+ "		if (!consumer)"\
+ "			consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);"\
+ "		"\
+ "		if (!consumer)"\
+ "			return true;"\
+ "		"\
+ "		storedResources = consumer.GetAggregatedResourceValue();"\
+ "		"\
+ "		// Safely get RplComponent - entity might not be replicated"\
+ "		RplComponent rplComp = RplComponent.Cast(entity.FindComponent(RplComponent));"\
+ "		if (!rplComp)"\
+ "			return true;"\
+ "			"\
+ "		m_aSupplyItems.Insert(rplComp.Id());"\
+ "		m_aSupplyCounts.Insert((int)storedResources);"\
+ "			"\
+ "		return true;"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		"\
+ "		currentSupply = 0;"\
+ "		currentSupply = UpdateCurrentSupply();"\
+ "		"\
+ "		if (!bSupplyLogged && maxSupply == 0)"\
+ "		{"\
+ "			if(currentSupply == 0)"\
+ "			{"\
+ "				return;"\
+ "			}"\
+ "			"\
+ "			Print(\"FOB Supply Depot Total: \" + currentSupply.ToString());"\
+ "			maxSupply = currentSupply;"\
+ "			bSupplyLogged = true;"\
+ "		}"\
+ "		"\
+ "	"
+ TriggerShapeType Sphere
+ SphereRadius 200
+ DrawShape 1
+ TriggerActivationType "Every query"
+ PeriodicQueries 1
+ UpdatePeriod 5
+ OnActivate ""\
+ "		super.OnActivate(ent);"\
+ "		"\
+ "		if (Replication.IsServer())"\
+ "			return;"\
+ ""\
+ "		// Check if game world exists"\
+ "		if (!GetGame() || !GetGame().GetWorld())"\
+ "			return;"\
+ "		"\
+ "		currentSupply = 0;"\
+ "		currentSupply = UpdateCurrentSupply();"\
+ "		"\
+ "		destroyedSupply = maxSupply - currentSupply;"\
+ "		supplyPercent = (destroyedSupply / maxSupply) * 100;"\
+ "		"\
+ "		// Only proceed if supply has changed"\
+ "		if (destroyedSupply == fLastSupply)"\
+ "			return;"\
+ "		"\
+ "		fLastSupply = destroyedSupply;"\
+ "		"\
+ "		// Create and show progress bar"\
+ "		Widget supplyWidget = GetGame().GetWorkspace().CreateWidgets(\"{66DCB94B8F932419}UI/layouts/HUD/Raid/RaidPopUp.layout\");"\
+ "		supplyWidget.SetOpacity(0);"\
+ "		AnimateWidget.StopAllAnimations(supplyWidget);"\
+ "		AnimateWidget.Opacity(supplyWidget, 1, 0.5);"\
+ "		TextWidget.Cast(supplyWidget.FindWidget(\"TotalAdded\")).SetText(Math.Round(supplyPercent).ToString() + \"/\" + supplyThreshold.ToString()+\"%\");"\
+ "		ProgressBarWidget.Cast(supplyWidget.FindWidget(\"Progress\")).SetCurrent(supplyPercent*100/supplyThreshold);"\
+ "		GetGame().GetCallqueue().CallLater(DeleteWidget, 5000, false, supplyWidget);"\
+ "		"\
+ "		// Check if threshold met"\
+ "		if (supplyPercent >= supplyThreshold)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR has successfully raided the BLU FOB!\");"\
+ "		}"\
+ "	"
 }
 $grp SCR_DestructibleBuildingEntity : "{5CC8525A69118B0C}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_01/FuelTank_01_orange.et" {
  {
   coords 882.572 0 2791.931
  }
  {
-  coords 888.603 0.014 2791.705
+  coords 824.821 0 2762.17
  }
 }
 $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
@@ -52,9 +180,14 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 10
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
-  coords 810.292 20.656 2704.575
+  coords 817.812 20.708 2710.095
  }
  {
   components {
@@ -73,6 +206,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 10
       m_fResourceValueMax 10
+     }
+    }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
      }
     }
    }
@@ -95,9 +233,14 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 10
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
-  coords 855.958 20.647 2787.57
+  coords 852.88 20.656 2757.897
   angles 0 88.936 0
  }
  {
@@ -117,6 +260,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 10
       m_fResourceValueMax 10
+     }
+    }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
      }
     }
    }
@@ -143,6 +291,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 20
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
   coords 882.305 20.594 2791.757
@@ -166,9 +319,14 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 20
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
-  coords 888.614 20.571 2791.45
+  coords 824.832 20.656 2761.915
  }
  {
   components {
@@ -187,6 +345,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 20
       m_fResourceValueMax 20
+     }
+    }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
      }
     }
    }
@@ -212,9 +375,14 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 40
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
-  coords 693.09 20.629 2711.592
+  coords 689.146 19.75 2711.592
  }
  {
   components {
@@ -233,6 +401,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 10
       m_fResourceValueMax 10
+     }
+    }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
      }
     }
    }
@@ -254,31 +427,13 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
    SCR_ResourceComponent "{5D247A59598D71AE}" {
     m_aContainers {
      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-      m_fResourceValueCurrent 40
-      m_fResourceValueMax 40
-     }
-    }
-   }
-  }
-  coords 866.644 20.656 2776.603
- }
- {
-  components {
-   SoundComponent "{658806598565AF90}" {
-    Enabled 0
-   }
-   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-    "Additional hit zones" {
-     SCR_HitZone Default {
-      DamageThreshold 100
-     }
-    }
-   }
-   SCR_ResourceComponent "{5D247A59598D71AE}" {
-    m_aContainers {
-     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
       m_fResourceValueCurrent 10
       m_fResourceValueMax 10
+     }
+    }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
      }
     }
    }
@@ -304,6 +459,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 10
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
   coords 750.85 20.562 2704.852
@@ -327,6 +487,11 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
       m_fResourceValueMax 10
      }
     }
+    m_aGenerators {
+     SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+      m_fStorageRange 0
+     }
+    }
    }
   }
   coords 748.594 20.562 2705.532
@@ -336,6 +501,54 @@ GenericEntity : "{EA3F58CE2AF832FD}Prefabs/Destructible/RedBarrel/GMFX_RedBarrel
  coords 883.763 20.621 2745.257
 }
 GenericEntity : "{FFCDFB1375A99125}Prefabs/Destructible/GMFX_Destructible_RPL5_01_generator.et" {
+ components {
+  SCR_ResourceComponent "{68E3599391FF2E50}" {
+   m_aContainers {
+    SCR_ResourceContainer "{68E35993965278DF}" {
+     m_eResourceRights ALL
+     m_eStorageType STORED
+     m_fResourceValueCurrent 40
+     m_fResourceValueMax 40
+     m_fResourceGainTickrate 1
+     m_fResourceDecay 34
+     m_fResourceDecayTickrate 60
+     m_fResourceDecayTimeout 1200
+     m_eOnEmptyBehavior DELETE
+    }
+   }
+   m_aConsumers {
+    SCR_ResourceConsumer "{68E35993F34B6FA1}" {
+     m_eResourceRights SELF
+     m_ContainerQueue SCR_ResourceConsumerContainerQueue "{5D3CDAE7127485AE}" {
+      m_StoragePolicies {
+       SCR_ResourceConsumerStoragePolicyGeneric "{5DB893A6144CDA2A}" {
+        m_StorageQueue SCR_ResourceConsumerContainerStorageQueue "{68E359822AA40B5C}" {
+        }
+       }
+      }
+     }
+    }
+   }
+   m_aGenerators {
+    SCR_ResourceGenerator "{68E35993F94E9AE1}" {
+     m_eResourceRights ALL
+     m_eIdentifier DEFAULT_STORAGE
+     m_bIsIgnoringItself 1
+     m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{68E35982362A49FA}" {
+      m_StoragePolicies {
+       SCR_ResourceGeneratorStoragePolicy "{5DB893A6025B8913}" {
+       }
+      }
+     }
+     m_aActions {
+      SCR_ResourceGeneratorActionStore "{5DB893A68E13BDD6}" {
+      }
+     }
+    }
+   }
+   m_eDebugVisualizationFlags -14
+  }
+ }
  coords 866.257 20.656 2776.471
  angles 0 -90.198 0
 }

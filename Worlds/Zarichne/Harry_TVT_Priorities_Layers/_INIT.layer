@@ -11,7 +11,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Rainy"
      m_iStartingHour 2
-     m_iStartingMinutes 7
+     m_iStartingMinutes 12
     }
    }
    m_bRandomWeatherChanges 1
@@ -45,33 +45,19 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Prevent your assets from being destroyed, and eliminate the enemy. If the enemy destroys enough materiel, or losses enough manpower to trigger a retreat, you will receive a respawn and counterattack them on route to their extract. "
+   m_sTextData "Prevent your assets from being destroyed, and eliminate the enemy. The enemy only needs to destroy 50% of the available supply to be successful. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Attack the blufor base, and destroy enough materiel to trigger the second phase. If you drop to 40% of your current manpower, a retreat will be triggered. Either of these conditions will trigger the second phase of the mission where you need to get to your marked extract. "\
-   ""\
-   "Any dead opfor will join the indfor team, who are a 3rd party militia hoping to get some supply out of the chaos. "
+   m_sTextData "Attack the blufor base, and destroy at least 50% of the available supply. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTitle "RAID Targers"
-   m_sTextData "2x Munitions Dumps"\
-   "1x Generator"\
-   "2x Fuel silo"\
-   "1x Fuel Truck"\
-   "1x Command Truck"
-   m_aFactionKeys {
-    "OPFOR"
-   }
-   m_bShowForAnyFaction 0
-  }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Recon Safestart"
    m_sTextData "You may not move more than 200m from your spawn during safestart. Do not fire at anyone until safestart is over. You are a forward recon element sent to observer the enemy position before the attack."
    m_aFactionKeys {
@@ -79,10 +65,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E14E97BD183704}" {
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Be an obstacle to opfor and blufor in their fight. "
    m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{68E14E97BD183704}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
     "INDFOR"
    }
    m_bShowForAnyFaction 0
@@ -98,12 +94,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 1
+ m_iFactionOneRatio 2
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68E14E9E57A8649F}" {
+  CRF_SlottingGroup "{68E54D2935237F55}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -112,7 +108,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86731}" {
+  CRF_SlottingGroup "{68E54D2935237CEC}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -126,7 +122,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86613}" {
+  CRF_SlottingGroup "{68E54D2935237353}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -140,7 +136,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86958}" {
+  CRF_SlottingGroup "{68E54D2935237292}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -154,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A868E9}" {
+  CRF_SlottingGroup "{68E54D293523718A}" {
    m_sCallsign "HMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -164,7 +160,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_HEAVY_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A8682E}" {
+  CRF_SlottingGroup "{68E54D29352370D9}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {
@@ -177,7 +173,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68E14E9E57A86D8F}" {
+  CRF_SlottingGroup "{68E54D29352376EF}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -185,7 +181,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86D29}" {
+  CRF_SlottingGroup "{68E54D2935237613}" {
    m_sCallsign "Recon"
    m_FlagType SNIPER
    m_aSlots {
@@ -193,7 +189,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86C46}" {
+  CRF_SlottingGroup "{68E54D29352375A0}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -202,7 +198,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86FE1}" {
+  CRF_SlottingGroup "{68E54D293523752E}" {
    m_sCallsign "Rifle 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -216,7 +212,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86EDF}" {
+  CRF_SlottingGroup "{68E54D293523746E}" {
    m_sCallsign "Rifle 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -230,7 +226,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A86E1B}" {
+  CRF_SlottingGroup "{68E54D2935236BBE}" {
    m_sCallsign "LMG 1"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -242,7 +238,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A871A4}" {
+  CRF_SlottingGroup "{68E54D2935236AF7}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -251,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A870C7}" {
+  CRF_SlottingGroup "{68E54D2935236A2B}" {
    m_sCallsign "Rifle 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -265,7 +261,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A87011}" {
+  CRF_SlottingGroup "{68E54D293523694A}" {
    m_sCallsign "Rifle 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -279,7 +275,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A87353}" {
+  CRF_SlottingGroup "{68E54D293523689F}" {
    m_sCallsign "LMG 2"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -291,7 +287,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68E14E9E57A872E2}" {
+  CRF_SlottingGroup "{68E54D2935236FC6}" {
    m_sCallsign "MMG"
    m_FlagType INFANTRY
    m_aSlots {
