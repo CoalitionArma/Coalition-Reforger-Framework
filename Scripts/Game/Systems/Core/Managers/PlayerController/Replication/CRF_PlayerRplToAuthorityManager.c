@@ -903,7 +903,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_RespawnPlayer", bytes);
 		
-		m_RespawnManager.RespawnPlayer(playerId);
+		m_RespawnManager.RespawnPlayer(playerId, spawnPointID);
 	}
 	
 	//------------------------------------------------------------------------------------------------
