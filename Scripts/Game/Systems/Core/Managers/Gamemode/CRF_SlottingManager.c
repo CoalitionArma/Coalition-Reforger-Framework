@@ -16,12 +16,7 @@ class CRF_SlottingManager : ScriptComponent
 	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
 	
 	// References to other managers
-	protected CRF_Gamemode m_Gamemode;
-	protected CRF_GamemodeManager m_GamemodeManager;
-	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
-	protected CRF_RespawnManager m_RespawnManager;
-	protected ref CRF_ResourceCache m_ResourceCache;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -32,29 +27,21 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		super.OnPostInit(owner);
 
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
-		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		
 		// Need to call next frame due to race conditions if the faction manager hasn't fully initilized.
 		GetGame().GetCallqueue().Call(InitilizeSlots);
-		
-		if (RplSession.Mode() != RplMode.Client)
-		{
-			m_ResourceCache = new CRF_ResourceCache;
-			GetGame().GetCallqueue().Call(m_ResourceCache.PreLoadSlottingResources);
-		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected void InitilizeSlots()
 	{
-		InitilizeSlotsForFaction("BLUFOR", m_Gamemode.m_BluforSlots);
-		InitilizeSlotsForFaction("OPFOR", m_Gamemode.m_OpforSlots);
-		InitilizeSlotsForFaction("INDFOR", m_Gamemode.m_IndforSlots);
-		InitilizeSlotsForFaction("CIV", m_Gamemode.m_CivSlots);
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		
+		InitilizeSlotsForFaction("BLUFOR", gamemode.m_BluforSlots);
+		InitilizeSlotsForFaction("OPFOR", gamemode.m_OpforSlots);
+		InitilizeSlotsForFaction("INDFOR", gamemode.m_IndforSlots);
+		InitilizeSlotsForFaction("CIV", gamemode.m_CivSlots);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -375,6 +362,26 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
+	//! Count how many players are slotted in a specific faction
+	//! This counts SLOTTED players, not spawned players
+	//! \param[in] factionKey The faction key to count (e.g. "BLUFOR", "OPFOR", "INDFOR", "CIV")
+	//! \return Number of players slotted in that faction
+	int GetSlottedPlayerCountByFaction(FactionKey factionKey)
+	{
+		int count = 0;
+		
+		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		{
+			// Check if slot has a player and matches the faction
+			if (slotData.GetSlotCurrentPlayerId() > 0 && slotData.GetSlotFactionKey() == factionKey)
+				count++;
+		}
+		
+		return count;
+	}
+	
+	
+	//------------------------------------------------------------------------------------------------
 	bool IsFactionValid(FactionKey factionKey)
 	{
 		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
@@ -396,25 +403,6 @@ class CRF_SlottingManager : ScriptComponent
 		}
 		
 		return false;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Count how many players are slotted in a specific faction
-	//! This counts SLOTTED players, not spawned players
-	//! \param[in] factionKey The faction key to count (e.g. "BLUFOR", "OPFOR", "INDFOR", "CIV")
-	//! \return Number of players slotted in that faction
-	int GetSlottedPlayerCountByFaction(FactionKey factionKey)
-	{
-		int count = 0;
-		
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
-		{
-			// Check if slot has a player and matches the faction
-			if (slotData.GetSlotCurrentPlayerId() > 0 && slotData.GetSlotFactionKey() == factionKey)
-				count++;
-		}
-		
-		return count;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -450,181 +438,6 @@ class CRF_SlottingManager : ScriptComponent
 		}
 		
 		return true;
-	}
-
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 CHARACTER INITIALIZATION
-//=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	CRF_PlayerCharacter SpawnPlayableEntity(int playerId, int spawnPointID = -1)
-	{
-		int slotId = GetPlayerSlotID(playerId);
-		if (slotId < 0)
-			return null;
-			
-		ResourceName resourceName = GetPlayerSlotResource(playerId);
-		if (resourceName.IsEmpty())
-			return null;
-		
-		CRF_SpawnPointData spawnPointData;
-		
-		if (spawnPointID == -1)
-			spawnPointData = m_RespawnManager.FindInitalSpawnpoint(GetPlayerSlotFaction(playerId).GetFactionKey(), GetPlayerSlotGroup(playerId));
-		else
-			spawnPointData = m_RespawnManager.GetSpawnPoint(spawnPointID);
-		
-		// Setup spawn parameters
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		
-		IEntity spawnPointEnt = CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity());
-		if (spawnPointEnt)
-			spawnPointEnt.GetWorldTransform(spawnParams.Transform);
-		
-		GetSafeSpawnTransform(spawnPointData, spawnParams.Transform, spawnParams.Transform);
-		
-		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
-			GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(resourceName), GetGame().GetWorld(), spawnParams)
-		);
-		
-		if (!playerCharacter)
-			return null;
-		
-		// Update character faction
-		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(playerCharacter.FindComponent(FactionAffiliationComponent));
-		facComp.SetAffiliatedFaction(GetPlayerSlotFaction(playerId));
-	
-		// Update slot data
-		RplComponent charRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
-		if (charRplComp)
-			UpdateSlotCharacter(slotId, charRplComp.Id());
-		
-		// Route entity assignment through the base game SCR_SpawnRequestComponent pipeline so that
-		// all data components (SCR_RespawnSystemComponent, SCR_DataCollectorComponent,
-		// SCR_SpawnLockComponent, PreparePlayerEntity_S on all SCR_BaseGameModeComponents, etc.)
-		// are properly notified — identical to how the Editor's SpawnEntityResource assigns a
-		// player character via SCR_PossessSpawnData.
-		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
-			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
-		);
-		
-		if (respawnComponent)
-		{
-			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(playerCharacter);
-			
-			// Verify the possess spawn handler exists before attempting RequestSpawn
-			// This prevents "GameMode does not support this method of spawning" errors
-			// during early initialization when handler components may not be fully registered
-			bool canUseRequestSpawn = false;
-			
-			// Try to get the request component for PossessSpawnData type
-			array<GenericComponent> components = {};
-			respawnComponent.FindComponents(SCR_SpawnRequestComponent, components);
-			
-			foreach (GenericComponent comp : components)
-			{
-				SCR_SpawnRequestComponent requestComp = SCR_SpawnRequestComponent.Cast(comp);
-				if (requestComp && requestComp.GetDataType() == SCR_PossessSpawnData && requestComp.GetHandlerComponent())
-				{
-					canUseRequestSpawn = true;
-					break;
-				}
-			}
-			
-			if (canUseRequestSpawn)
-			{
-				if (!respawnComponent.RequestSpawn(spawnData))
-					Print(string.Format("[CRF_SlottingManager] WARNING: RequestSpawn failed for player %1, entity %2", playerId, playerCharacter), LogLevel.WARNING);
-			}
-			else
-			{
-				// Handler not ready yet - use direct assignment as fallback
-				Print(string.Format("[CRF_SlottingManager] INFO: SCR_PossessSpawnHandlerComponent not ready for player %1 — using direct assignment", playerId), LogLevel.NORMAL);
-				SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-				
-				if (playerController)
-				{
-					playerController.SetInitialMainEntity(playerCharacter);
-					
-					// Manually notify data collector since RequestSpawn pipeline was bypassed
-					SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
-						GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
-					);
-					if (dataCollector)
-						dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
-				}
-			}
-		}
-		else
-		{
-			// Fallback: SCR_RespawnComponent not yet available (e.g. very early init), assign directly
-			Print(string.Format("[CRF_SlottingManager] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
-			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-			
-			if (playerController)
-			{
-				playerController.SetInitialMainEntity(playerCharacter);
-				
-				// Manually notify data collector since RequestSpawn pipeline was bypassed
-				SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
-					GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
-				);
-				if (dataCollector)
-					dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
-			}
-		}
-		
-		return playerCharacter;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void GetSafeSpawnTransform(CRF_SpawnPointData spawnPointData, vector baseTransform[4], out vector trasnformOut[4])
-	{
-		// Base Enfusion spawn already handles position validation
-		// Simply apply a small random offset for player spacing during mass spawns
-		vector outTransform[4] = baseTransform;
-		
-		// Add random offset to prevent exact position overlap
-		float angle = Math.RandomFloat01() * Math.PI2;
-		float dist = Math.RandomFloat01() * spawnPointData.GetSpawnPointRadius();
-		vector offset = Vector(Math.Cos(angle) * dist, 0, Math.Sin(angle) * dist);
-		
-		outTransform[3] = baseTransform[3] + offset;
-		
-		vector surface;
-		// Snap to terrain geometry
-		if (spawnPointData.GetIfSpawnPointSafetyCheck())
-			SCR_TerrainHelper.SnapToGeometry(surface, outTransform[3], {}, GetGame().GetWorld());
-		
-		if (surface != vector.Zero && spawnPointData.GetIfSpawnPointConformsToTerrain())
-		{
-			outTransform[3] = surface;
-			SCR_TerrainHelper.OrientToTerrain(outTransform);
-		}
-		
-		trasnformOut = outTransform;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void CleanupCharacterFromSlot(CRF_SlotData slotData)
-	{
-		if (!slotData)
-			return;
-			
-		RplId charId = slotData.GetSlotCurrentCharacter();
-		if (charId == RplId.Invalid())
-			return;
-			
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(charId));
-		if (!rplComp)
-			return;
-			
-		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(rplComp.GetEntity());
-		if (character)
-			SCR_EntityHelper.DeleteEntityAndChildren(character);
-			
-		slotData.SetSlotCurrentCharacter(RplId.Invalid());
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -666,7 +479,7 @@ class CRF_SlottingManager : ScriptComponent
 			
 			foreach(CRF_EGearRole role : slotGroup.m_aSlots)
 			{
-				CRF_RolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+				CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
 				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 				
 				if (!roleConfig || !rolesConfig)
@@ -716,26 +529,6 @@ class CRF_SlottingManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	//! Assign player to their slotted group
-	//! \param[in] playerId ID of the player to assign
-	void AssignPlayerToGroup(int playerId)
-	{
-		SCR_AIGroup group = GetPlayerSlotGroup(playerId);
-		if (!group)
-			return;
-			
-		int groupId = group.GetGroupID();
-		if (groupId == -1)
-			return;
-			
-		SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
-		
-		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
-		if (groupComponent)
-			groupComponent.RequestJoinGroup(groupId);
-	}
-
-	//------------------------------------------------------------------------------------------------
 	void LockAllOpenSlots()
 	{
 		// Lock all empty slots
@@ -756,6 +549,27 @@ class CRF_SlottingManager : ScriptComponent
 			if (IsEmptyGroup(group))
 				group.SetPrivate(true);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void CleanupCharacterFromSlot(CRF_SlotData slotData)
+	{
+		if (!slotData)
+			return;
+			
+		RplId charId = slotData.GetSlotCurrentCharacter();
+		if (charId == RplId.Invalid())
+			return;
+			
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(charId));
+		if (!rplComp)
+			return;
+			
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(rplComp.GetEntity());
+		if (character)
+			SCR_EntityHelper.DeleteEntityAndChildren(character);
+			
+		slotData.SetSlotCurrentCharacter(RplId.Invalid());
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

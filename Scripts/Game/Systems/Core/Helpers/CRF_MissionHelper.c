@@ -52,7 +52,10 @@ class CRF_MissionHelper {
 		if (count == 0)
 			return "0 0 0";   // no data
 
-		return sum / count;
+		vector center = sum/count;
+		center[1] = center[1] + 225;
+		
+		return center;
 	}
 
 	//------------------------------------------------------------------------------------------------

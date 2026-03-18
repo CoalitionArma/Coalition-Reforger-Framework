@@ -9,9 +9,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	// Time it takes for players to Init
-	static const int PLAYER_INITILIZATION_TIME = 250;
-	
 	// UI and Display
 	string m_sHintText = "Type Here";      // Text displayed for hints to player
 	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
@@ -64,7 +61,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (!playerCharacter || !m_CameraManager || !m_PlayerRplToAuthorityManager || !SCR_ChimeraCharacter.Cast(playerCharacter))
 		{
 			// Schedule another verification attempt
-			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, PLAYER_INITILIZATION_TIME, false, playerCharID);
+			GetGame().GetCallqueue().Call(InitilizePlayerClient, playerCharID);
 			return;
 		};
 		
@@ -80,7 +77,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 				CRF_InitializationHelper.SetupRadioFrequency();
 		}; 
 		
-		if (playerCharacter.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
+		if (CRF_EntityHelper.IsSpectator(playerCharacter))
 			InitilizeLocalSpectator(playerCharacter);
 		else
 			InitilizeLocalCharacter();

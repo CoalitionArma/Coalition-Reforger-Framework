@@ -428,7 +428,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 									factionName = gearConfig.m_FactionName;
 								
 								// Get role configuration for binoculars
-								CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(playerRole);
+								CRF_RoleConfig roleConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(playerRole);
 								if (roleConfig)
 								{
 									// Check for binoculars (leadership/assistant get them)
