@@ -34,6 +34,36 @@ class CRF_InventoryHelper
 	}	
 	
 	//------------------------------------------------------------------------------------------------
+	//! Check if a prefab is a throwable weapon by inspecting its weapon type
+	//! \param[in] prefab Prefab resource name
+	//! \return True if prefab is a throwable (grenade)
+	static bool IsThrowableFromPrefab(ResourceName prefab)
+	{
+		if (prefab.IsEmpty())
+			return false;
+			
+		Resource resource = Resource.Load(prefab);
+		if (!resource || !resource.IsValid())
+			return false;
+			
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(resource);
+		if (!entitySource)
+			return false;
+			
+		IEntityComponentSource componentSource = SCR_BaseContainerTools.FindComponentSource(entitySource, "WeaponComponent");
+		if (!componentSource)
+			return false;
+			
+		int weaponType;
+		if (componentSource.Get("WeaponType", weaponType))
+		{
+			return WEAPON_TYPES_THROWABLE.Contains(weaponType);
+		}
+		
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! Add inventory item
 	//! \param[in] item Item resource to add
 	//! \param[in] itemAmount Number of items to add
@@ -48,20 +78,48 @@ class CRF_InventoryHelper
 		if (item.IsEmpty() || itemAmount <= 0)
 			return;
 
+		// Check if this is a throwable (grenade) - they prefer quick slot but can go elsewhere
+		bool isThrowable = IsThrowableFromPrefab(item);
+		
 		for (int i = 1; i <= itemAmount; i++)
 		{
-			// Use TrySpawnPrefabToStorage for proper replication and attachment slot readiness
-			// This method handles spawning AND insertion atomically, ensuring all components are ready
-			bool spawned = inventoryManager.TrySpawnPrefabToStorage(
-				item, 
-				null,  // Let the system find the best storage automatically
-				-1,    // Auto-select slot
-				EStoragePurpose.PURPOSE_ANY  // Allow any storage type
-			);
+			bool spawned = false;
+			
+			// For throwables, try gadget slot first, then fallback to any available storage
+			if (isThrowable)
+			{
+				spawned = inventoryManager.TrySpawnPrefabToStorage(
+					item, 
+					null,
+					-1,
+					EStoragePurpose.PURPOSE_GADGET_PROXY
+				);
+				
+				// If quick slot full, try any available storage
+				if (!spawned)
+				{
+					spawned = inventoryManager.TrySpawnPrefabToStorage(
+						item, 
+						null,
+						-1,
+						EStoragePurpose.PURPOSE_ANY
+					);
+				}
+			}
+			else
+			{
+				// Non-throwables use automatic placement
+				spawned = inventoryManager.TrySpawnPrefabToStorage(
+					item, 
+					null,
+					-1,
+					EStoragePurpose.PURPOSE_ANY
+				);
+			}
 			
 			if (!spawned)
 			{
-				CRF_LoggingHelper.LogItemError(null, inventoryManager.GetOwner(), "Failed to spawn: " + item);
+				CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner(), "ITEM");
 			}
 		}
 	}
