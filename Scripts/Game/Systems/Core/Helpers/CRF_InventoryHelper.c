@@ -64,6 +64,70 @@ class CRF_InventoryHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Check if a prefab is a weapon (non-throwable) by inspecting its components
+	//! \param[in] prefab Prefab resource name
+	//! \return True if prefab is a weapon that should go in weapon slots
+	static bool IsWeaponFromPrefab(ResourceName prefab)
+	{
+		if (prefab.IsEmpty())
+			return false;
+			
+		Resource resource = Resource.Load(prefab);
+		if (!resource || !resource.IsValid())
+			return false;
+			
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(resource);
+		if (!entitySource)
+			return false;
+			
+		IEntityComponentSource weaponSource = SCR_BaseContainerTools.FindComponentSource(entitySource, "WeaponComponent");
+		if (!weaponSource)
+			return false;
+			
+		// Exclude throwables - they go in gadget slots instead
+		int weaponType;
+		if (weaponSource.Get("WeaponType", weaponType))
+		{
+			return !WEAPON_TYPES_THROWABLE.Contains(weaponType);
+		}
+		
+		return true; // Has WeaponComponent but no specific type
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if a prefab is a gadget or tool by inspecting its components
+	//! \param[in] prefab Prefab resource name
+	//! \return True if prefab is a gadget/tool that should go in gadget slots
+	static bool IsGadgetFromPrefab(ResourceName prefab)
+	{
+		if (prefab.IsEmpty())
+			return false;
+			
+		Resource resource = Resource.Load(prefab);
+		if (!resource || !resource.IsValid())
+			return false;
+			
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(resource);
+		if (!entitySource)
+			return false;
+			
+		// Check for various gadget-related components
+		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_GadgetComponent"))
+			return true;
+		
+		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_ConsumableItemComponent"))
+			return true;
+			
+		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_RepairSupportStationComponent"))
+			return true;
+			
+		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_HealSupportStationComponent"))
+			return true;
+		
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! Add inventory item
 	//! \param[in] item Item resource to add
 	//! \param[in] itemAmount Number of items to add
@@ -78,48 +142,66 @@ class CRF_InventoryHelper
 		if (item.IsEmpty() || itemAmount <= 0)
 			return;
 
-		// Check if this is a throwable (grenade) - they prefer quick slot but can go elsewhere
+		// Determine item type to use appropriate storage priority
 		bool isThrowable = IsThrowableFromPrefab(item);
+		bool isWeapon = !isThrowable && IsWeaponFromPrefab(item);
+		bool isGadget = !isThrowable && !isWeapon && IsGadgetFromPrefab(item);
 		
 		for (int i = 1; i <= itemAmount; i++)
 		{
 			bool spawned = false;
+			IEntity spawnedEntity;
 			
-			// For throwables, try gadget slot first, then fallback to any available storage
-			if (isThrowable)
+			// Try type-specific storage first for weapons and gadgets
+			if (isWeapon)
 			{
+				// Weapons: try weapon slots first
+				spawned = inventoryManager.TrySpawnPrefabToStorage(
+					item, 
+					null,
+					-1,
+					EStoragePurpose.PURPOSE_WEAPON_PROXY
+				);
+			}
+			else if (isThrowable || isGadget)
+			{
+				// Throwables and gadgets: try gadget slots first
 				spawned = inventoryManager.TrySpawnPrefabToStorage(
 					item, 
 					null,
 					-1,
 					EStoragePurpose.PURPOSE_GADGET_PROXY
 				);
-				
-				// If quick slot full, try any available storage
-				if (!spawned)
-				{
-					spawned = inventoryManager.TrySpawnPrefabToStorage(
-						item, 
-						null,
-						-1,
-						EStoragePurpose.PURPOSE_ANY
-					);
-				}
-			}
-			else
-			{
-				// Non-throwables use automatic placement
-				spawned = inventoryManager.TrySpawnPrefabToStorage(
-					item, 
-					null,
-					-1,
-					EStoragePurpose.PURPOSE_ANY
-				);
 			}
 			
+			// If not spawned in specific slots, spawn item and use FilterItemToClothing for distribution
 			if (!spawned)
 			{
-				CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner(), "ITEM");
+				spawnedEntity = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
+				
+				if (spawnedEntity)
+				{
+					// Use FilterItemToClothing to intelligently distribute to appropriate clothing
+					TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(spawnedEntity, role, isThrowable);
+					
+					// Try inserting into appropriate clothing
+					bool inserted = TryInsertIntoSpecificClothing(spawnedEntity, clothingIDs, inventory, inventoryManager);
+					
+					// If still not inserted, try general insertion
+					if (!inserted)
+						inventoryManager.TryInsertItem(spawnedEntity);
+					
+					// Check if insertion succeeded
+					if (!inventoryManager.Contains(spawnedEntity))
+					{
+						CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner(), "ITEM");
+						SCR_EntityHelper.DeleteEntityAndChildren(spawnedEntity);
+					}
+				}
+				else
+				{
+					CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner(), "ITEM");
+				}
 			}
 		}
 	}
