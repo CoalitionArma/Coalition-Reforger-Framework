@@ -11,6 +11,11 @@ GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/
     }
    }
   }
+  CRF_InsDestructiveComponent "{68A619F1A1CD5F81}" {
+   Enabled 0
+   m_iCachePhase 2
+   m_Image "{E65174B46D8AA4D5}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Defend.edds"
+  }
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
    Enabled 1
    "Additional hit zones" {

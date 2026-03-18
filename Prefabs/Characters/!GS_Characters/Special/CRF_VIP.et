@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{D7EB93B0550FD158}Prefabs/Characters/Core/CRF_Character_Base.et" {
+CRF_GearscriptCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.et" {
  ID "520EC961A090B1EE"
  components {
   SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
@@ -18,8 +18,6 @@ SCR_ChimeraCharacter : "{D7EB93B0550FD158}Prefabs/Characters/Core/CRF_Character_
      }
     }
    }
-  }
-  CRF_PlayableCharacter "{686470C2F6513803}" {
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
    DefaultWeaponIndex 0
@@ -52,6 +50,7 @@ SCR_ChimeraCharacter : "{D7EB93B0550FD158}Prefabs/Characters/Core/CRF_Character_
    WeaponSlotIndex 1
   }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Override 1
    Identity Identity "{5584CBC6363C648B}" {
     Name "Patman"
     Alias "Was"

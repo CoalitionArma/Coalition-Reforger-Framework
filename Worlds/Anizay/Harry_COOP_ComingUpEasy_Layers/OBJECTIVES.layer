@@ -1,0 +1,68 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 3659.177 190.466 1487.331
+  angles 0 78.863 0
+  m_rVehicle "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 3667.154 190.467 1453.75
+  angles 0 78.863 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+ }
+ {
+  coords 1398.025 127.206 5464.228
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.04 126.478 5458.762
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.056 125.578 5452.922
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.072 124.666 5447.071
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1398.086 123.885 5442.051
+  angles 0 89.84 0
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1395.276 130.658 5496.051
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1394.854 129.721 5484.754
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1394.635 129.113 5478.908
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1395.072 130.315 5490.59
+  angles 0 92.138 0
+  m_rVehicle "{90F1EA23AB2B0D69}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

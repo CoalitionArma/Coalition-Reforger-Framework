@@ -1,4 +1,4 @@
-GenericEntity : "{8C3C62C58D2DBEDA}Prefabs/Weapons/Warheads/RPG/Warhead_HEAT.et" {
+GenericEntity : "{8C3C62C58D2DBEDA}Prefabs/Weapons/Warheads/Warhead_HEAT.et" {
  ID "9D9BE68EA2672F76"
  components {
   BaseTriggerComponent "{55129E81CBAA1390}" {

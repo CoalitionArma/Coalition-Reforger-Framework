@@ -1,0 +1,58 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{D35993DABB4A6436}Prefabs/Weapons/Grenades/MagicGrenades/Magic_ColdSmoke.ptc"
+    }
+    SpawnPrefabEffect "{68CB4616BF93B341}" {
+     TriggerOnce 1
+     AttachToParent 1
+     EffectPrefab "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/DamageArea_Ice.et"
+    }
+   }
+   TIMER 4
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   TimeToLive 30
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68CB4616BF93B353}" {
+     Name "Ice Grenade"
+     Description "Slows all players inside!"
+    }
+   }
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{68CB4616F898CD67}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{28BDBC8C6390D7FE}Prefabs/Weapons/Grenades/MagicGrenades/Data/m18_MAGIC_ICE.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Green_Name"
+     Description "#AR-Weapon_M18Green_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68CB4616BF93B35D}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    m_sAmmoType "#AR-AmmoType_M18Green"
+   }
+  }
+ }
+ coords 2.982 3.707 -1.472
+}

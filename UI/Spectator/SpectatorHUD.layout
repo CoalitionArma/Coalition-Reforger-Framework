@@ -1265,7 +1265,6 @@ FrameWidgetClass {
       }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
-       "Is Visible" 0
       }
      }
     }
@@ -1597,6 +1596,55 @@ FrameWidgetClass {
      Size 64 64
      "Transition width" 0.71
      Progress 0.5
+    }
+   }
+  }
+  ScaleWidgetClass "{68B43878917A5827}" : "{80CE24AD6D65F26C}UI/layouts/Menus/Spectator/Elements/EntityInfoDisplay.layout" {
+   Name "EntityInfoDisplay"
+   Slot FrameWidgetSlot "{68B4386FF0862A5A}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -175
+    OffsetLeft -175
+    PositionY -110
+    OffsetTop -110
+    SizeX 350
+    OffsetRight -175
+    SizeY 90
+    OffsetBottom 20
+   }
+   {
+    FrameWidgetClass "{68B4386F22E954D9}" {
+     Prefab "{68B4386F22E954D9}"
+     {
+      ImageWidgetClass "{68B4386F2B93A280}" {
+       Prefab "{68B4386F2B93A280}"
+      }
+      VerticalLayoutWidgetClass "{68B4386142F725B6}" {
+       Prefab "{68B4386142F725B6}"
+       {
+        TextWidgetClass "{68B4386F74A20FAF}" {
+         Prefab "{68B4386F74A20FAF}"
+        }
+        TextWidgetClass "{68B4386017BABB0A}" {
+         Prefab "{68B4386017BABB0A}"
+        }
+        HorizontalLayoutWidgetClass "{68B43863815C8A4B}" {
+         Prefab "{68B43863815C8A4B}"
+         {
+          TextWidgetClass "{68B4386049A85C9C}" {
+           Prefab "{68B4386049A85C9C}"
+          }
+          TextWidgetClass "{68B43863AE17F1F1}" {
+           Prefab "{68B43863AE17F1F1}"
+          }
+         }
+        }
+        SliderWidgetClass "{68B438635C75B6D2}" {
+         Prefab "{68B438635C75B6D2}"
+        }
+       }
+      }
+     }
     }
    }
   }

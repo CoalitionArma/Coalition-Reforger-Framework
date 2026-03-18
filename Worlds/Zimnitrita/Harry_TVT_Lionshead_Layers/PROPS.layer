@@ -1,0 +1,47 @@
+GenericEntity : "{962EB289CF844AA2}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_06.et" {
+ coords 15523.96 52.125 4423.447
+ angles 0 -8.924 0
+ {
+  GenericEntity {
+   ID "5D45393949376AB5"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_fResourceValueCurrent 100
+       m_fResourceValueMax 500
+      }
+     }
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D4539397A9246E8"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 1000
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D4539397A9246EE"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 1000
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
