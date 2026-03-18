@@ -1,0 +1,137 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5051.968 3.639 7054.738
+  angles 0 -46.33 0
+  m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_2 {
+  coords 5055.147 3.472 7058.219
+  angles 0 -46.33 0
+  m_rVehicle "{BD747CCB03889592}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_NoFuel.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_3 {
+  coords 5057.5 3.482 7049.594
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_4 {
+  coords 5060.627 3.476 7053.052
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_5 {
+  coords 5064.806 3.288 7043.208
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+ CRF_VehicleSpawner_6 {
+  coords 5067.651 3.279 7047.042
+  angles 0 -46.33 0
+  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_sFactionKey "OPFOR"
+ }
+}
+$grp GenericEntity : "{21F7E55C8EBF7877}Prefabs/Props/Military/RoadBlocks/Roadblock ConcreteBlock 2.et" {
+ {
+  coords 2533.784 0.059 6904.49
+  angles 0 120 0
+ }
+ {
+  coords 2532.916 0.106 6909.577
+  angles 0 120 0
+ }
+ {
+  coords 2529.449 0.166 6911.323
+  angles 0 120 0
+ }
+ {
+  coords 2524.933 0.146 6913.794
+  angles 0 120 0
+ }
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3334.943 52.324 7776.33
+  angles -4.075 -134.343 -2.886
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_iRespawnTimer 99999
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA61348F99856B}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA6134AB07D928}" {
+    m_Prefab "{4CD3159446EC131B}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_APIT.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 14
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68DA6134371CFE6B}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 60
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68DA6122E2A459DB}" {
+    m_Prefab "{062E2F1D7F6739D6}Prefabs/Items/Equipment/Accessories/ETool_MPL50/ETool_MPL50_FreeRoamBuilding_Gadget.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
+ }
+ {
+  coords 3326.815 52.208 7778.052
+  angles -4.718 -134.325 -1.632
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_iRespawnTimer 99999
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{68DA613A00766171}" {
+   m_iAmountofAutoCannonAmmo 0
+  }
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA6134371CFE6B}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 60
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68DA613C2CD16C8C}" {
+    m_Prefab "{144AA3DABB80974C}Prefabs/Weapons/Tripods/9K135/Part_9K135TB_Launcher.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 3
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68DA613C073BC94E}" {
+    m_Prefab "{B0A890995104A02D}Prefabs/Weapons/Tripods/9K135/Part_9K135_Launcher.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68DA6122F6BAA733}" {
+    m_Prefab "{062E2F1D7F6739D6}Prefabs/Items/Equipment/Accessories/ETool_MPL50/ETool_MPL50_FreeRoamBuilding_Gadget.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
+ }
+}

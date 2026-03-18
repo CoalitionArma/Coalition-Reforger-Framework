@@ -1,0 +1,246 @@
+EffectDef {
+ Version 2
+ Emitters {
+  EmitterDef Light {
+   ShapeType Sphere
+   ShapeSize 3 3 3
+   MaxNum 1
+   BirthRate 1000
+   Offset 0 1.5 1.5
+   Angles 0 0 0
+   LocalTransform 0
+   Material "{77ED367ABC13B69F}Particles/_Materials/Fire/FireBurn_anim_01_Strong_Blurred.emat"
+   SizeMultiplier 0.01
+   RandomRotDir 0
+   RandomAngle 1
+   Velocity 0
+   AnimOnce 0
+   AnimFPS 80
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.045 0.5 0.703 0.321 1 0
+   }
+   Size {
+    0 0.311 1 1
+   }
+   EmittingTime 0.6
+   Repeat 0
+   EnableLight 1
+   MaxLV 7
+   RelativeLV 1
+   LightColorMast {
+    0 1 0.569 0.155
+   }
+   LightIntensityMast {
+    0.106 0 0.291 1 0.61 1 0.831 0 1 0
+   }
+   LightIntensityResponse 10
+  }
+  EmitterDef explosion {
+   ShapeType Point
+   ShapeSize 1 1 1
+   ConeAngle 360 0 180
+   MaxNum 33
+   BirthRate 100
+   Offset 0 0.3 0
+   Material "{2ECFAFA31C2E1462}Particles/_Materials/Water_Dots_01.emat"
+   SizeMultiplier 3
+   SizeRND 3
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0
+   VelocityRND 0
+   AnimOnce 0
+   AnimFPS 350
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0.025
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 0.05
+   Repeat 0
+  }
+  EmitterDef BASE {
+   ShapeType Point
+   ShapeSize 1 1 1
+   ConeAngle 360 0 180
+   MaxNum 1
+   BirthRate 1
+   Offset 0 0.3 0
+   Material "{91B425EA62ED7DF2}Particles/_Materials/Glow_Flare.emat"
+   SizeMultiplier 0.2
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0
+   VelocityRND 0
+   AnimOnce 0
+   AnimFPS 350
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0.025
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 0.05
+   Repeat 0
+  }
+  EmitterDef BASE_3 {
+   ShapeType Point
+   ShapeSize 1 1 1
+   ConeAngle 360 0 180
+   MaxNum 1
+   BirthRate 1
+   Material "{9D9B1AAA0DAD33A6}Particles/_Materials/Fire/Flame_Loop_01.emat"
+   SizeMultiplier 10.6
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 0
+   VelocityRND 0
+   AnimOnce 0
+   AnimFPS 350
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0.025
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 0.05
+   Repeat 0
+  }
+  EmitterDef explosion_4 {
+   ShapeType Point
+   ShapeSize 1 1 1
+   ConeAngle 360 0 180
+   MaxNum 33
+   BirthRate 25
+   Offset 0 0.3 0
+   Material "{2ECFAFA31C2E1462}Particles/_Materials/Water_Dots_01.emat"
+   StretchMultiplier 2.1
+   SizeMultiplier 2.4
+   SizeRND 3
+   RandomRotDir 0
+   VelAngle 0
+   RandomAngle 1
+   Velocity 1.1
+   VelocityRND 2
+   VelAffect 2.03
+   AnimOnce 0
+   AnimFPS 350
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0.025
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.258 0.585 0.8364 0.5099 1 0
+   }
+   Size {
+    0 0 1 1
+   }
+   EmittingTime 0.3
+   Repeat 0
+  }
+  EmitterDef glow {
+   ShapeType Point
+   ShapeSize 0.05 0.05 0.05
+   Offset 0 0.25 0
+   Angles 0 0 0
+   LocalTransform 0
+   Material "{6E033C070B32B17C}Particles/_Materials/Fire/Explosion_Base_03.emat"
+   SizeMultiplier 8.3
+   SizeRND 3
+   RandomRotDir 0
+   RandomAngle 1
+   Velocity 0
+   AnimOnce 0
+   RandomFrame 1
+   Lifetime 0.5
+   LifetimeRND 0
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0.7923 0.4477 0.5308 1 0
+   }
+   Size {
+    0 0.05 1 1
+   }
+   EmittingTime 0.001
+   Repeat 0
+  }
+  EmitterDef sparks {
+   ConeAngle 360 75 180
+   MaxNum 250
+   BirthRate 60
+   LodMin 0
+   LodMax 1
+   Material "{2DF4058A4066E031}Particles/_Materials/Fire/Base_Sparks_07.emat"
+   StretchMultiplier 1.5
+   SizeMultiplier 0.02
+   SizeRND 0
+   ScaleX 0.25
+   ScaleY 0.5
+   CenterY 0
+   BillboardingType Full
+   VelAngle 1
+   RandomAngle 0
+   VelocityRND 25
+   VelAffect 0.33
+   AirResistance 1.4
+   AirResistanceRND 15.75
+   GravityMultiply -0.22
+   EnableCollisions 1
+   NormalRestitution 0.418
+   TagentialRestitution 0.359
+   Friction 0.765
+   RandomFrame 1
+   Lifetime 0.3
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 1 1 0
+   }
+   EmittingTime 0.5
+   Repeat 0
+  }
+ }
+ MinFPS 60
+ CollisionPreset "{5DC8DBF6E2ACBAF5}"
+ LightOffset 0 3 0
+ LightClipEV -16
+ LightRadius 30
+ CastShadow 1
+}

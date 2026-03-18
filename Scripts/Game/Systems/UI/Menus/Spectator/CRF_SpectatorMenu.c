@@ -648,11 +648,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// ALL SLOT-BASED CHARACTERS
 		//------------------------------------------------------------------------------------------------
 		
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		if (slotMap && !slotMap.IsEmpty())
 		{
-			foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach (int slotId, CRF_SlotData slotData : slotMap)
 			{		
 				RplId slotRplId = slotData.GetSlotCurrentCharacter();
 				
@@ -1173,7 +1173,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 				if (slottingManager)
 				{
-					CRF_SlotDataContainer playerSlotData = slottingManager.GetPlayerSlotData(playerId);
+					CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(playerId);
 					if (playerSlotData && !playerSlotData.GetIsDeadSlot())
 						continue; // Skip alive players
 				}
@@ -1434,10 +1434,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void InitSlots()
 	{
 		// Get all slots from the slotting manager
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Process each slot to count by faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		foreach (int slotId, CRF_SlotData slotData : slotMap)
 		{
 			// Skip locked or empty slots
 			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
@@ -1517,7 +1517,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_iAliveCivSlots, m_iCivSlots);
 		
 		// Get slot and group data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		array<SCR_AIGroup> factionGroups = {};
 		
@@ -1562,7 +1562,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 			
 			// Process all slots in this group
-			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotData slotData : slotMap)
 			{	
 				// Skip slots that don't belong to this group/faction
 				if (slotData.GetSlotCurrentGroup() != groupId || 
@@ -1704,7 +1704,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		// Get slot data from the slotting manager
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(selectedComponent.m_iSlotId);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(selectedComponent.m_iSlotId);
 		if (!slotData)
 			return;
 		

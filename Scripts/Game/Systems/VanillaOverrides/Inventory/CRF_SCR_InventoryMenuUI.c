@@ -22,7 +22,7 @@ modded class SCR_InventoryMenuUI
 			RplComponent rplComponent = RplComponent.Cast(m_Player.FindComponent(RplComponent));
 			if (!rplComponent)
 				return;
-			CRF_SlotDataContainer slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
+			CRF_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
 			
 			// Log to admin menu
 			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false);
