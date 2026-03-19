@@ -22,7 +22,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 50
+ m_iTimeLimitMinutes 40
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
@@ -37,7 +37,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "OPFOR Composition: Inf"\
    "OPFOR Assets: Recon, MMG, PL combat engi, integrated Demo"\
    ""\
-   "Time: 50 min"\
+   "Time: 40 min"\
    "Weather: Rainy Dawn"
    m_aFactionKeys {
    }
