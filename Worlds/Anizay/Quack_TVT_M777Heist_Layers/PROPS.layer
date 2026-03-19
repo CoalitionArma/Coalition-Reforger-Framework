@@ -1,0 +1,220 @@
+GenericEntity Mine_Box : "{159BADC74896B7D6}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Explosives_01_USSR.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   Enabled 1
+  }
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{68DD64C76F02F910}" {
+     SlotTemplate EquipmentStorageSlot AT_Mines {
+      Prefab "{D6EF54367CECE1D9}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{68DD64C4A77532E9}" {
+     SlotTemplate EquipmentStorageSlot Smoke_Grenades {
+      Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+     }
+     NumSlots 20
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
+ coords 9606.339 36.787 1298.962
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ components {
+  Persistence "{68E172CC931C4F36}" {
+  }
+  SCR_SoundDataComponent "{68E172CCB93870F6}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{68E172CCB059E950}" {
+   Attributes SCR_ItemAttributeCollection "{68E172CCF777FF29}" {
+    ItemDisplayName SCR_InventoryUIInfo "{68E172CC07C7DF01}" {
+     Name "#AR-Ammobox_Name"
+     Description "#AR-Ammobox_Name"
+     m_aItemHints {
+      SCR_SupplyAvailableItemHintUIInfo "{68E172CC20141731}" {
+       Name "#AR-Item_SupplyConsumer_Hint1"
+       Icon "{8EB808BFA227C080}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesStored.edds"
+       m_bHideInArsenal 1
+      }
+     }
+    }
+   }
+   MultiSlots {
+    MultiSlotConfiguration "{68E172CC78E490C5}" {
+     SlotTemplate EquipmentStorageSlot RPG75 {
+      Prefab "{7C45EC94C698246B}Prefabs/Weapons/Launchers/RPG75/Launcher_RPG75.et"
+     }
+     NumSlots 6
+    }
+   }
+  }
+  ActionsManagerComponent "{68E172CCB6BE0C74}" {
+   ActionContexts {
+    UserActionContext "{68E172CD94ABEFA5}" {
+     ContextName "default"
+     Position PointInfo "{68E172CD89373A9D}" {
+      Offset 0.0147 1.1722 -2.0807
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{68E172CDD167E8F0}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo SCR_ActionUIInfo "{68E172CDF514300D}" {
+      Name "#AR-Inventory_OpenStorage"
+     }
+     Duration 0.8
+    }
+   }
+  }
+  RplComponent "{68E172CC977112EB}" {
+  }
+ }
+ coords 8087.874 106.593 1646.095
+ angles 12.521 -23.332 -7.136
+}
+$grp GenericEntity : "{25C8B889A777399D}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_red.et" {
+ INDFOR_DropOff_1 {
+  coords 10156.632 24.733 1081.861
+  {
+   $grp GenericEntity : "{25C8B889A777399D}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_red.et" {
+    INDFOR_DropOff_2 {
+     coords -2.144 0.002 -1.902
+    }
+    INDFOR_DropOff_3 {
+     coords -5.158 -0.003 -4.485
+    }
+    INDFOR_DropOff_4 {
+     coords -2.603 -0.13 3.601
+    }
+    INDFOR_DropOff_5 {
+     coords -8.286 -0.139 -1.17
+    }
+    INDFOR_DropOff_6 {
+     coords -6.366 -0.406 8.178
+    }
+    INDFOR_DropOff_7 {
+     coords -12.156 -0.371 3.077
+    }
+   }
+  }
+ }
+ BLUFOR_DropOff_1 {
+  coords 6643.838 220.512 2433.827
+  {
+   $grp GenericEntity : "{25C8B889A777399D}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_red.et" {
+    BLUFOR_DropOff_2 {
+     coords -4.657 -0.526 -0.072
+    }
+    BLUFOR_DropOff_3 {
+     coords -9.956 -0.92 0.233
+    }
+    BLUFOR_DropOff_4 {
+     coords 0.29 0.016 4.551
+    }
+    BLUFOR_DropOff_5 {
+     coords -9.626 -0.618 5.311
+    }
+    BLUFOR_DropOff_6 {
+     coords 0.805 0.226 9.614
+    }
+    BLUFOR_DropOff_7 {
+     coords -9.026 -0.362 9.882
+    }
+    BLUFOR_DropOff_8 {
+     coords 1.041 0.377 14.526
+    }
+    BLUFOR_DropOff_9 {
+     coords -8.631 -0.14 15.258
+    }
+   }
+  }
+ }
+}
+GenericEntity NSV_Box : "{CD62E36CFDCB8FD8}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Equipment_01_USSR.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   Enabled 1
+  }
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{68DD64D40B53FEEE}" {
+     SlotTemplate EquipmentStorageSlot NSV_Tripod {
+      Prefab "{184DFCEFE574E776}Prefabs/Items/Equipment/Tripods/6T7/Part_NSV_Tripod.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68DD64D43DAF3DC4}" {
+     SlotTemplate EquipmentStorageSlot NSV_Barrel {
+      Prefab "{184DFCEFE574E775}Prefabs/Items/Equipment/Tripods/6T7/Part_NSV_Gun.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68DD64CB4A22131F}" {
+     SlotTemplate EquipmentStorageSlot NSV_Ammo {
+      Prefab "{4CD3159446EC131B}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_APIT.et"
+     }
+     NumSlots 3
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
+ coords 8880.209 134.292 2404.357
+ angles 0 179.775 0
+}
+GenericEntity : "{F9B96527E16549AB}Prefabs/Props/Wrecks/M998_wreck/M998_wreck_static.et" {
+ coords 6708.309 224.079 2516.95
+ angles 0 142.299 0
+ {
+  $grp GenericEntity : "{6BE5C753730DBFED}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck_static.et" {
+   {
+    coords -1.739 0.046 -10.605
+    angles 0 10.113 0
+   }
+   {
+    coords -5.643 1.371 -35.067
+    angles 0 2.765 0
+   }
+  }
+  $grp ParticleEffectEntity : "{E931C0A6240D4D27}Prefabs/Particles/Smoke/Smoke_Smokestack_Medium.et" {
+   Smoke_car_1 {
+    coords 0.165 -0.018 -0.767
+    angles 0 -142.299 0
+   }
+   Smoke_car_2 {
+    coords -2.702 1.119 -9.324
+    angles 0 -142.299 0
+   }
+   Smoke_car_3 {
+    coords -6.319 2.522 -31.558
+    angles 0 -142.299 0
+   }
+  }
+ }
+}

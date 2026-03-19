@@ -1,0 +1,114 @@
+$grp CRF_VehicleSpawner {
+ INDFOR_Truck_1 {
+  coords 10107.404 31.441 939.615
+  m_rVehicle "{24EEBE92009A35EB}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_Teleport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ US_Truck_1 {
+  coords 6391.821 216.995 2313.309
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ US_Truck_2 {
+  coords 6397.386 216.817 2313.721
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ US_Truck_3 {
+  coords 6402.534 216.89 2313.901
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ US_Truck_4 {
+  coords 6407.854 216.937 2314.889
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ Stolen_Truck_1 {
+  coords 9561.495 38.945 1423.191
+  angles 0 154.451 0
+  m_rVehicle "{0C67DEAC0F126688}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_Fueless.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{68E172DA2DBE64AB}" {
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68E172DA24C5B90A}" {
+    m_Prefab "{EA8B40221D8E68B1}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_HE.et"
+    m_iAmountOfItemRegularVehicle 6
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68E172DA579E19A7}" {
+    m_Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+    m_iAmountOfItemRegularVehicle 8
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68E172D8DE317203}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemRegularVehicle 78
+   }
+  }
+ }
+ Stolen_Truck_2 {
+  coords 9483.205 41.234 1641.487
+  angles 0 -150.666 0
+  m_rVehicle "{0C67DEAC0F126688}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_Fueless.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{68E172DA2DBE64AB}" {
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68E172DA24C5B90A}" {
+    m_Prefab "{EA8B40221D8E68B1}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_HE.et"
+    m_iAmountOfItemRegularVehicle 6
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68E172DA579E19A7}" {
+    m_Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+    m_iAmountOfItemRegularVehicle 8
+   }
+   CRF_VehicleGearScriptAdditionalItem "{68E172D8DE317203}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemRegularVehicle 78
+   }
+  }
+ }
+ HMMWV_M2_1 {
+  coords 6374.511 217.736 2310.762
+  angles 0 86.471 0
+  m_rVehicle "{533820E8979A44A9}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ HMMWV_M2_2 {
+  coords 6374.355 217.895 2314.225
+  angles 0 83.047 0
+  m_rVehicle "{533820E8979A44A9}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB_Tan.et"
+  m_sFactionKey "BLUFOR"
+ }
+ M777_1 {
+  coords 9555.04 40.068 1431.428
+  angles 0 -68.09 0
+  m_rVehicle "{B18FC222C52E5C95}Prefabs/Vehicles/M777/M777_transport_desert.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 27000
+  m_bShouldAddAmmo 0
+ }
+ M777_2 {
+  coords 9486.489 42.576 1651.034
+  angles 0 -3.121 0
+  m_rVehicle "{B18FC222C52E5C95}Prefabs/Vehicles/M777/M777_transport_desert.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 2700
+  m_bShouldAddAmmo 0
+ }
+ INDFOR_Truck_2 {
+  coords 10116.249 31.259 939.094
+  m_rVehicle "{DC82130433B78B98}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_Teleport2.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
