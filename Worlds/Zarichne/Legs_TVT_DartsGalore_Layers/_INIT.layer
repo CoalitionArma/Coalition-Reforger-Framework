@@ -358,7 +358,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+  m_rGearScript "{3B9E2AB0CA235973}Configs/Gearscripts/Standard/Modern/CRF_GS_RHS_AFRF_Modern_Day.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -366,7 +366,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF_Modern_Day.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -382,7 +382,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "68E622754AE842EA" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
