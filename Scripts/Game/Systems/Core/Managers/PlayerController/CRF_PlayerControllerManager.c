@@ -39,8 +39,13 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_PlayerRplToAuthorityManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		m_CameraManager = CRF_PlayerCameraManager.GetInstance();
 		
-		GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
-		GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitAudioLock);
+		// Only lock FPS and audio if not in active game (prevents locking for JIP players)
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+		{
+			GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
+			GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitAudioLock);
+		}
+		
 		GetGame().GetCallqueue().Call(CRF_PlayerMenuManager.GetInstance().OpenCurrentStateMenu);
 	}
 	

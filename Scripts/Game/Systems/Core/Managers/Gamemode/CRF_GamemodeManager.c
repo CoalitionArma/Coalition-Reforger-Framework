@@ -87,8 +87,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			playerCharacter.DisableAI();
 			DeleteOldInitialEntity(playerController, playerCharacter);
-			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
+			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
 				GetGame().GetCallqueue().Call(AssignPlayerToGroup, playerId);
