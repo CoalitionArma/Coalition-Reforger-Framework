@@ -4,15 +4,12 @@ class CRF_ResourceCache
 	protected ref map<ResourceName, Resource> m_mCachedResources = new map<ResourceName, Resource>();
 	
 	//------------------------------------------------------------------------------------------------
-	void PreLoadSlottingResources()
+	void PreLoadCharacterResources()
 	{
-		CRF_GamemodeManager gamemodeManager = CRF_GamemodeManager.GetInstance();
-		if (!gamemodeManager || !GetGame().InPlayMode())
+		if (!GetGame().InPlayMode())
 			return;
 		
-		CRF_RolesConfig rolesConfig = gamemodeManager.RolesConfig();
-		
-		foreach(CRF_EGearRole role, CRF_RoleConfig roleConfig : rolesConfig.GetRoleConfigMap())
+		foreach(CRF_EGearRole role, CRF_RoleConfig roleConfig : CRF_GearscriptManager.GetRolesConfig().GetRoleConfigMap())
 			LoadResource(roleConfig.m_RoleResource);
 	}
 

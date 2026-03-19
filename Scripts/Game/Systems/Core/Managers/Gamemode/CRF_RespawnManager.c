@@ -49,7 +49,7 @@ class CRF_RespawnManager : ScriptComponent
 	protected bool m_bNeedsRespawn = false;
 	protected bool m_bRespawnInit = false;
 	
-	// Latest Slot ID used
+	// Latest Spawn ID used
 	protected int m_iLatestSpawnPointID;
 
 //=============================================================================================================================================================================================================================================================================================================================================================

@@ -14,9 +14,6 @@ class CRF_SpectatorCharacter : CRF_PlayerCharacter
 		super.EOnInit(owner);
 		
 		GetGame().GetCallqueue().Call(DisablePhysicsAndDamage);
-		
-		if (RplSession.Mode() != RplMode.Client)
-			owner.SetOrigin("0 500 0")
 	}
 	
 	//------------------------------------------------------------------------------------------------

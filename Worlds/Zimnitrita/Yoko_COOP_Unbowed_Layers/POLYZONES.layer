@@ -1,0 +1,17 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 10161.642 0.938 722.291
+ Points {
+  ShapePoint "{68CB17D84BDA685F}" {
+   Position 327.007 0 -73.608
+  }
+  ShapePoint "{68CB17D84F8062C8}" {
+   Position 89.693 0 194.528
+  }
+  ShapePoint "{68CB17D8717B5259}" {
+   Position -115.505 0 27.168
+  }
+  ShapePoint "{68CB17D872116585}" {
+   Position -69.577 0 -129.364
+  }
+ }
+}

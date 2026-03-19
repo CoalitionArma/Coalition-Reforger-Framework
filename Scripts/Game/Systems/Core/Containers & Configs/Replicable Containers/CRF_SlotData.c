@@ -235,7 +235,7 @@ class CRF_SlotData
 		string customSlottingName = GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
 		
 		if (customSlottingName.IsEmpty())
-			return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_sRoleName;
+			return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_sRoleName;
 		else
 			return customSlottingName;
 	}
@@ -243,19 +243,19 @@ class CRF_SlotData
 	//------------------------------------------------------------------------------------------------
 	CRF_ESlotType GetSlotType() 
 	{
-		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_SlottingType;
+		return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_SlottingType;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotIconResource() 
 	{
-		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_RoleIcon;
+		return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_RoleIcon;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotResource() 
 	{
-		ref CRF_RoleConfig config = CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole);	
+		ref CRF_RoleConfig config = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole);	
 		return config.m_RoleResource;
 	}
 	

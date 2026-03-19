@@ -114,7 +114,7 @@ class CRF_ClothingHelper
 		bool isPistolAmmo = InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && 
 							InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO;
 		
-		bool isMedical = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
+		bool isMedical = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
 						SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
