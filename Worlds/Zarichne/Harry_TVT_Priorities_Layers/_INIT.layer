@@ -90,9 +90,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
-    "BLUFOR"
-    "OPFOR"
-    "INDFOR"
    }
    m_bShowForAnyFaction 0
   }
@@ -100,9 +97,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
-    "BLUFOR"
-    "OPFOR"
-    "INDFOR"
    }
    m_bShowForAnyFaction 0
   }
