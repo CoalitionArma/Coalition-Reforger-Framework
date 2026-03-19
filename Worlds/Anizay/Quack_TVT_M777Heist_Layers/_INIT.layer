@@ -30,10 +30,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "An American Artillery battery has been ambushed by INDFOR and lost two of its guns. US forces head to the town of Murabat to retrieve them."\
    ""\
    "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets: Trucks, M2 HMMWVs"\
+   "BLUFOR Assets: Trucks, M2 HMMWVs, MMG Team"\
    ""\
    "OPFOR Composition: Infantry"\
-   "OPFOR Assets: 2x M777, AT Mines, Special equipment"\
+   "OPFOR Assets: 2x M777, Recon Team, AT Mines, Special equipment"\
    ""\
    "Time:"\
    ""\
