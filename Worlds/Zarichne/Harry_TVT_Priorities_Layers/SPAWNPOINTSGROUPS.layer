@@ -1,0 +1,8 @@
+GenericEntity : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPointsGroups/OPFOR_InitalGroupSpawn.et" {
+ components {
+  CRF_TempSpawnPointComponent "{68624CB8C78D671C}" {
+   m_sCallsignOfGroupToSpawn "Recon"
+  }
+ }
+ coords 480.456 13.403 3077.098
+}
