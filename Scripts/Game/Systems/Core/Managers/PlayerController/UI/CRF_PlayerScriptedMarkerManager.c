@@ -4,6 +4,9 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 {	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
+	
+	// Invoker for marker updates
+	protected ref ScriptInvoker m_OnMarkerUpdate;
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MARKER MAP MANAGEMENT
@@ -16,6 +19,22 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 	{
 		return m_aScriptedMarkers;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnMarkerUpdate()
+	{
+		if (!m_OnMarkerUpdate)
+			m_OnMarkerUpdate = new ScriptInvoker();
+
+		return m_OnMarkerUpdate;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ForceMarkerUpdate()
+	{
+		if (m_OnMarkerUpdate)
+			m_OnMarkerUpdate.Invoke();
+	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Adds a scripted marker on the user's map
@@ -26,7 +45,7 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 	//! \param[in] markerImage - Image resource path
 	//! \param[in] zOrder - Display order/priority
 	//! \param[in] markerColor - ARGB color value
-	void AddScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	void AddScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, ResourceName markerImage, int zOrder, int markerColor)
 	{
 		m_aScriptedMarkers.Insert(string.Format("%1||%2||%3||%4||%5||%6||%7", 
 			markerEntityName, 
@@ -36,6 +55,8 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 			markerImage, 
 			zOrder.ToString(), 
 			markerColor.ToString()));
+		
+		ForceMarkerUpdate();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -47,7 +68,7 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 	//! \param[in] markerImage - Image resource path
 	//! \param[in] zOrder - Display order/priority
 	//! \param[in] markerColor - ARGB color value
-	void RemoveScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	void RemoveScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, ResourceName markerImage, int zOrder, int markerColor)
 	{
 		m_aScriptedMarkers.RemoveItemOrdered(string.Format("%1||%2||%3||%4||%5||%6||%7", 
 			markerEntityName, 
@@ -57,6 +78,8 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 			markerImage, 
 			zOrder.ToString(), 
 			markerColor.ToString()));
+		
+		ForceMarkerUpdate();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -64,6 +87,7 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 	void RemoveALLScriptedMarkers()
 	{
 		m_aScriptedMarkers.Clear();
+		ForceMarkerUpdate();
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

@@ -11,7 +11,7 @@ class CRF_GearScriptContainer
 	[Attribute("", UIWidgets.Hidden)]
 	ResourceName m_rGearScript;
 	
-	[Attribute("true", UIWidgets.Hidden)]
+	[Attribute("false", UIWidgets.Hidden)]
 	bool m_bEnableShareableMarkers;
   
  	[Attribute("true", UIWidgets.Hidden)]
@@ -65,9 +65,6 @@ class CRF_GearScriptContainer
 	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableMagnifiedOptics;
 	
-	[Attribute("false", UIWidgets.CheckBox)]
-	bool m_bEnableIndividualBFT;
-	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rShortRangeRadioPrefab;
 	
@@ -95,7 +92,7 @@ class CRF_SimplifiedGearScriptContainer
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableRTORadios;
 	
-	[Attribute("true", UIWidgets.CheckBox)]
+	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableShareableMarkers;
   
  	[Attribute("true", UIWidgets.CheckBox)]

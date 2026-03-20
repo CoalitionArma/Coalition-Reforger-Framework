@@ -1,7 +1,6 @@
 modded class SCR_GroupsManagerComponent
 {
 	//------------------------------------------------------------------------------------------------
-	//!
 	//! \param[in] playerID
 	//! \param[in] previousGroupID
 	//! \param[in] newGroupID
