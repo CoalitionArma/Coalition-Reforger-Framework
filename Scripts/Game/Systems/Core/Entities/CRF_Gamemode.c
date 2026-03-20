@@ -4,6 +4,14 @@ modded class SCR_BaseGameMode
 	{
 		m_eGameState = state;
 		Replication.BumpMe();
+		// Explicitly raise the event on the authority, mirroring SCR_BaseGameMode.StartGameMode()
+		// and EndGameMode(). The [RplProp onRplName] callback only fires automatically on proxy
+		// (client) nodes when they receive the replicated value, never on the authority itself.
+		// Without this, OnGameModeStart() and OnGameModeEnd() are never called on the server or
+		// in Workbench (where there are no proxy nodes to receive the replication), which means
+		// SCR_DataCollectorComponent.StartDataCollectorSession() never runs and the EntityEvent.FRAME
+		// flag is never set — breaking stat tracking and the ENABLE_DIAG debug menu.
+		OnGameStateChanged();
 	}
 }
 

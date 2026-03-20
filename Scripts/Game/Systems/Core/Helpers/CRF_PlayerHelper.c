@@ -28,14 +28,16 @@ class CRF_PlayerHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Assign character entity to player controller
+	//! Assign character entity to player controller.
 	//! \param[in] playerController Player Controller to assign character to
 	//! \param[in] character Character to assign to player
-	static void AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
+	//! \return True if RequestSpawn was used (OnPlayerSpawnFinalize_S will notify data-collector modules),
+	//!         false if SetInitialMainEntity was used (caller must call NotifyPlayerSpawned manually).
+	static bool AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
 	{
 		int playerId = playerController.GetPlayerId();
 		if (playerId <= 0)
-			return;
+			return false;
 		
 		// Route spectator assignment through the base game pipeline, same as playable characters
 		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
@@ -67,6 +69,7 @@ class CRF_PlayerHelper
 			{
 				if (!respawnComponent.RequestSpawn(spawnData))
 					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
+				return true;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
 			} else
 				playerController.SetInitialMainEntity(character);
 		}
@@ -76,5 +79,7 @@ class CRF_PlayerHelper
 			Print(string.Format("[CRF_GamemodeManager] No SCR_RespawnComponent for player %1 — using SetInitialMainEntity", playerId), LogLevel.WARNING);
 			playerController.SetInitialMainEntity(character);
 		}
+
+		return false;  // Caller must call NotifyPlayerSpawned
 	}
 }
