@@ -16,10 +16,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 	protected TextWidget m_wRespawnValue;
 	protected TextWidget m_wEspionageValue;
 	
-	// Markers
-	protected TextWidget m_wBlueForceTrackerValue;
-	protected TextWidget m_wUnitMapMarkersValue;
-	
 	// Equipment
 	protected TextWidget m_wFactionNameValue;
 	protected TextWidget m_wRadiosValue;
@@ -121,10 +117,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		m_wRespawnValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RespawnValue"));
 		m_wEspionageValue = TextWidget.Cast(m_wRoot.FindAnyWidget("EspionageValue"));
 		
-		// Get markers widgets
-		m_wBlueForceTrackerValue = TextWidget.Cast(m_wRoot.FindAnyWidget("BlueForceTrackerValue"));
-		m_wUnitMapMarkersValue = TextWidget.Cast(m_wRoot.FindAnyWidget("UnitMapMarkersValue"));
-		
 		// Get equipment widgets
 		m_wFactionNameValue = TextWidget.Cast(m_wRoot.FindAnyWidget("FactionNameValue"));
 		m_wRadiosValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RadiosValue"));
@@ -146,8 +138,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		return m_wSafeStartInfoPanel && m_wMissionTitleValue && m_wMissionAuthorValue && 
 		       m_wMissionTypeValue && m_wSideRatiosValue && m_wSafeStartHardLimitValue && 
 		       m_wMissionLengthValue && m_wJIPAfterSafestartValue && m_wRespawnValue && 
-		       m_wEspionageValue && m_wBlueForceTrackerValue && m_wUnitMapMarkersValue && 
-		       m_wFactionNameValue && m_wRadiosValue && m_wMapValue;
+		       m_wEspionageValue && m_wFactionNameValue && m_wRadiosValue && m_wMapValue;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -161,9 +152,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		
 		// Load mission info
 		LoadMissionInfo();
-		
-		// Load markers info
-		//LoadMarkersInfo();
 		
 		// Load equipment info
 		LoadEquipmentInfo();
@@ -321,45 +309,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			espionageStatus = "Off";
 		m_wEspionageValue.SetText(espionageStatus);
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Loads markers configuration information
-	 */
-	/*
-	protected void LoadMarkersInfo()
-	{
-		// Get player's faction for checking BFT and marker settings
-		string bftStatus = "Off"; // Default
-		string globalMarkersStatus = "On"; // Default to On
-		
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		if (playerController)
-		{
-			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-			if (factionManager)
-			{
-				Faction playerFaction = factionManager.GetPlayerFaction(playerController.GetPlayerId());
-				if (playerFaction)
-				{
-					string factionKey = playerFaction.GetFactionKey();
-					
-					// Blue Force Tracker - Check if BFT is enabled for player's faction
-					if (CRF_LooterGamemodeComponent.GetInstance() && CRF_LooterGamemodeComponent.GetInstance().IsBFTEnabled())
-						bftStatus = "On";
-					
-					// Global Markers - Inverse of shareable markers setting
-					// If shareable markers are enabled for this faction, global markers are OFF
-					if (m_Gamemode.DoesFactionShareMarker(factionKey))
-						globalMarkersStatus = "Off";
-				}
-			}
-		}
-		
-		m_wBlueForceTrackerValue.SetText(string.Format("Blue Force Tracker: %1", bftStatus));
-		m_wUnitMapMarkersValue.SetText(string.Format("Global Markers: %1", globalMarkersStatus));
-	}
-	*/
 	
 	//------------------------------------------------------------------------------------------------
 	/**

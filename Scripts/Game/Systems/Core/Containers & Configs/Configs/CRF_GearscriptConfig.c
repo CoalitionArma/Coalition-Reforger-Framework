@@ -11,8 +11,8 @@ class CRF_GearScriptContainer
 	[Attribute("", UIWidgets.Hidden)]
 	ResourceName m_rGearScript;
 	
-	//[Attribute("false", UIWidgets.Hidden)]
-	//bool m_bEnableShareableMarkers;
+	[Attribute("false", UIWidgets.Hidden)]
+	bool m_bEnableShareableMarkers;
   
  	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bEnableBFT;
@@ -92,8 +92,8 @@ class CRF_SimplifiedGearScriptContainer
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableRTORadios;
 	
-	//[Attribute("false", UIWidgets.CheckBox)]
-	//bool m_bEnableShareableMarkers;
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bEnableShareableMarkers;
   
  	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableBFT;

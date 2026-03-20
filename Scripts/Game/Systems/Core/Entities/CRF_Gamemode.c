@@ -609,7 +609,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 	}
 	
-	/*
 	//------------------------------------------------------------------------------------------------
 	bool DoesFactionShareMarker(string factionKey)
 	{
@@ -623,7 +622,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
     		return true;
  	}
-	*/
 	
 	//------------------------------------------------------------------------------------------------
 	//! Get gearscript resource for a faction

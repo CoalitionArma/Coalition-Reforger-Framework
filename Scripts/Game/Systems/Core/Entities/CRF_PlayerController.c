@@ -48,13 +48,11 @@ class CRF_PlayerController : SCR_PlayerController
 		if (!Replication.IsServer())
 		{
 			m_fTimeOfLastRespawn = GetGame().GetWorld().GetWorldTime();
-			
-			/*
+	
 			SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 			//Let the entity init before we update global markers (For faction check purposes)
 			if (mapMarkerManager)
 				GetGame().GetCallqueue().CallLater(mapMarkerManager.RequestGlobalMarkersRefresh, 1000, false);
-			*/
 			
 			if (from)
 			{

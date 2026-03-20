@@ -25,7 +25,6 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		Rpc(RpcDo_TeleportLocalPlayer, location);
 	}
 
-	/*
 	//------------------------------------------------------------------------------------------------
 	void SharerMarkerGlobal(int markerUID)
 	{
@@ -43,7 +42,6 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	{
 		Rpc(RpcDo_RefreshGlobalMarkers, markers);
 	}
-	*/
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
@@ -73,7 +71,6 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		SCR_Global.TeleportPlayer(SCR_PlayerController.GetLocalPlayerId(), location);
 	}
 	
-	/*
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	protected void RpcDo_SharerMarkerGlobal(int markerUID)
@@ -135,7 +132,6 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		
 		mapMarkerManager.RefreshGlobalMarkers(markers);
 	}
-	*/
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
