@@ -102,29 +102,56 @@ class CRF_InventoryHelper
 	{
 		if (prefab.IsEmpty())
 			return false;
-			
+
 		Resource resource = Resource.Load(prefab);
 		if (!resource || !resource.IsValid())
 			return false;
-			
+
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(resource);
 		if (!entitySource)
 			return false;
-			
+
 		// Check for various gadget-related components
 		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_GadgetComponent"))
 			return true;
-		
+
 		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_ConsumableItemComponent"))
 			return true;
-			
+
 		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_RepairSupportStationComponent"))
 			return true;
-			
+
 		if (SCR_BaseContainerTools.FindComponentSource(entitySource, "SCR_HealSupportStationComponent"))
 			return true;
-		
+
 		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Check if a prefab is a clothing/loadout item by inspecting its components
+	//! \param[in] prefab Prefab resource name
+	//! \return True if prefab is a clothing item that should be equipped (armbands, etc.)
+	static bool IsClothingFromPrefab(ResourceName prefab)
+	{
+		if (prefab.IsEmpty())
+			return false;
+
+		Resource resource = Resource.Load(prefab);
+		if (!resource || !resource.IsValid())
+			return false;
+
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(resource);
+		if (!entitySource)
+			return false;
+
+		// Check for BaseLoadoutClothComponent which indicates equippable clothing
+		IEntityComponentSource clothSource = SCR_BaseContainerTools.FindComponentSource(entitySource, "BaseLoadoutClothComponent");
+		if (!clothSource)
+			return false;
+
+		// If it has a cloth component with an AreaType, it should be auto-equipped (e.g., armbands)
+		IEntityComponentSource areaTypeSource = clothSource.GetObject("AreaType");
+		return areaTypeSource != null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -146,18 +173,19 @@ class CRF_InventoryHelper
 		bool isThrowable = IsThrowableFromPrefab(item);
 		bool isWeapon = !isThrowable && IsWeaponFromPrefab(item);
 		bool isGadget = !isThrowable && !isWeapon && IsGadgetFromPrefab(item);
-		
+		bool isClothing = !isThrowable && !isWeapon && !isGadget && IsClothingFromPrefab(item);
+
 		for (int i = 1; i <= itemAmount; i++)
 		{
 			bool spawned = false;
 			IEntity spawnedEntity;
-			
+
 			// Try type-specific storage first for weapons and gadgets
 			if (isWeapon)
 			{
 				// Weapons: try weapon slots first
 				spawned = inventoryManager.TrySpawnPrefabToStorage(
-					item, 
+					item,
 					null,
 					-1,
 					EStoragePurpose.PURPOSE_WEAPON_PROXY
@@ -167,30 +195,40 @@ class CRF_InventoryHelper
 			{
 				// Throwables and gadgets: try gadget slots first
 				spawned = inventoryManager.TrySpawnPrefabToStorage(
-					item, 
+					item,
 					null,
 					-1,
 					EStoragePurpose.PURPOSE_GADGET_PROXY
 				);
 			}
-			
+			else if (isClothing)
+			{
+				// Clothing items (armbands, etc): use PURPOSE_ANY to trigger auto-equip logic
+				spawned = inventoryManager.TrySpawnPrefabToStorage(
+					item,
+					null,
+					-1,
+					EStoragePurpose.PURPOSE_ANY
+				);
+			}
+
 			// If not spawned in specific slots, spawn item and use FilterItemToClothing for distribution
-			if (!spawned)
+			if (!spawned && !spawnedEntity)
 			{
 				spawnedEntity = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), spawnParams);
-				
+
 				if (spawnedEntity)
 				{
 					// Use FilterItemToClothing to intelligently distribute to appropriate clothing
 					TIntArray clothingIDs = CRF_ClothingHelper.FilterItemToClothing(spawnedEntity, role, isThrowable);
-					
+
 					// Try inserting into appropriate clothing
 					bool inserted = TryInsertIntoSpecificClothing(spawnedEntity, clothingIDs, inventory, inventoryManager);
-					
+
 					// If still not inserted, try general insertion
 					if (!inserted)
 						inventoryManager.TryInsertItem(spawnedEntity);
-					
+
 					// Check if insertion succeeded
 					if (!inventoryManager.Contains(spawnedEntity))
 					{
