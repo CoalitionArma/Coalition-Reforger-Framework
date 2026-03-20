@@ -2,7 +2,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
  ID "0000000000000001"
  components {
   CRF_RaidItemComponent "{668333D5C779FEC4}" {
-   m_iPointsEarnedWhenDestroyed 5
+   m_iPointsEarnedWhenDestroyed 20
    m_sItemName "URAL Tanker"
   }
   SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {

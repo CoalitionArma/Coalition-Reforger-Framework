@@ -378,7 +378,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+		m_GamemodeManager.InitilizePlayer(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
@@ -438,31 +438,50 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Process entity spawning for players
-	//! \param[in] entity The spawned entity
-	protected override void OnControllableSpawned(IEntity entity)
+	//! Default player kill behaviour. Called when a player is killed (and HandlePlayerKilled returns true).
+	protected override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
-		super.OnControllableSpawned(entity);
+		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
-		
-		if (!character)
+		// Skip processing on client
+		if (RplSession.Mode() == RplMode.Client)
 			return;
-			
-		// Handle initial entity race condition fix
-		if (character.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
+
+		// Get player faction
+		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+		FactionKey factionKey;
+		
+		if (faction)
+			factionKey = faction.GetFactionKey();
+
+		// Handle respawn if enabled, tickets available, and within time window
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
+			!CRF_EntityHelper.IsSpectator(playerEntity) && 
+			m_GamemodeState != CRF_EGamemodeState.AAR && 
+			m_RespawnManager.TicketsRemaining(factionKey) &&
+			m_RespawnManager.IsRespawnTimeAllowed() &&
+			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
+			!factionKey.IsEmpty())
 		{
-			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
-			if (playerId > 0 && m_GamemodeState == CRF_EGamemodeState.GAME)
-			{
-				// Check if player should have a proper character instead of initial entity
-				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
-				{
-					// Schedule re-initialization to fix race condition
-					GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, 500, false, playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR[0], CRF_EntityHelper.ZERO_SPAWN_VECTOR[1], CRF_EntityHelper.ZERO_SPAWN_VECTOR[2], CRF_EntityHelper.ZERO_SPAWN_VECTOR[3]);
-				}
-			}
+			// Deduct ticket
+			m_RespawnManager.SubtractTicket(factionKey, 1);
+
+			// Display respawn screen
+			GetGame().GetCallqueue().CallLater(
+				m_RplBroadcastManager.SendRespawnScreen,
+				75,
+				false,
+				playerId
+			);
 		}
+		
+		// Update slot death state so player gets put into spec
+		int slotID = m_SlottingManager.GetCharacterSlotID(playerEntity);
+		if (slotID != -1)
+			m_SlottingManager.UpdateSlotDeathState(slotID, true);
+		
+		// Move player to spectator
+		m_GamemodeManager.InitilizePlayer(playerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -479,83 +498,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
-		m_GarbageManager.m_aDeadBodies.Insert(entity);
-		
-		// Note: The base game's data collector is automatically triggered by super.OnControllableDestroyed()
-		// Our modded CRF_SCR_DataCollectorComponent.OnPlayerKilled() hooks into this and calls the logging manager
-		
-		// Create instigator context for tracking kill details
-		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-		int playerId = instigatorContextData.GetVictimPlayerID();
-		
-		// Return if not a player character
-		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
-			return;
-
-		// Determine delay time for respawn/spectator
-		int delay = 2000;
-		if (CRF_EntityHelper.IsSpectator(entity))
-			delay = 0;
-		
-		// Get player faction
-		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
-		FactionKey factionKey;
-		
-		if (faction)
-			factionKey = faction.GetFactionKey();
-
-		// Handle respawn if enabled, tickets available, and within time window
-		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
-			!CRF_EntityHelper.IsSpectator(entity) && 
-			m_GamemodeState != CRF_EGamemodeState.AAR && 
-			m_RespawnManager.TicketsRemaining(factionKey) &&
-			m_RespawnManager.IsRespawnTimeAllowed() &&
-			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
-			!factionKey.IsEmpty())
-		{
-			// Deduct ticket
-			m_RespawnManager.SubtractTicket(factionKey, 1);
-
-			// Display respawn screen
-			GetGame().GetCallqueue().CallLater(
-				m_RplBroadcastManager.SendRespawnScreen, 
-				(delay + 150), 
-				false, 
-				playerId
-			);
-		}
-		
-		// Update slot death state so player gets put into spec
-		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-		
-		if(slotID != -1)
-			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-		
-		// Get death position for spectator camera initialization
-		vector deathPosition[4];
-		entity.GetWorldTransform(deathPosition);
-
-		// Move player to spectator
-		GetGame().GetCallqueue().CallLater(OnControllableInitilizePlayerDelayed, delay, false, playerId, deathPosition[0], deathPosition[1], deathPosition[2], deathPosition[3], true);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Can't use static vectors in callLater, so we just use this container method to act as a holder for the call later  
-	//! \param[in] playerId ID of the player to initialize
-	//! \param[in] locationZero Position 0 in the world vector to spawn the player
-	//! \param[in] locationOne Position 1 in the world vector to spawn the player
-	//! \param[in] locationTwo Position 2 in the world vector to spawn the player
-	//! \param[in] locationThree Position 3 in the world vector to spawn the player
-	void OnControllableInitilizePlayerDelayed(int playerId, vector locationZero, vector locationOne, vector locationTwo, vector locationThree)
-	{
-		vector location[4];
-		
-		location[0] = locationZero;
-		location[1] = locationOne;
-		location[2] = locationTwo;
-		location[3] = locationThree;
-		
-		m_GamemodeManager.InitilizePlayer(playerId, location);
+		if (CRF_GearscriptCharacter.Cast(entity))
+			m_GarbageManager.m_aDeadBodies.Insert(entity);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -579,12 +523,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{
 			m_bProcessingInitializations = true;
 			m_fBatchTimer = 0.0; // Reset timer
-			
-			// Notify slotting manager that mass initialization is starting
-			if (m_SlottingManager)
-				m_SlottingManager.SetMassInitializationInProgress(true);
-			
-			//Print(string.Format("[CRF] Starting batch initialization for %1 players", m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
 		}
 	}
 	
@@ -597,12 +535,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (m_aPendingPlayerInitializations.IsEmpty())
 		{
 			m_bProcessingInitializations = false;
-			
-			// Notify slotting manager that mass initialization is complete
-			if (m_SlottingManager)
-				m_SlottingManager.SetMassInitializationInProgress(false);
-			
-			Print("[CRF] Player initialization queue complete", LogLevel.NORMAL);
 			return;
 		}
 		
@@ -619,7 +551,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			// Initialize the player immediately
 			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(playerId, CRF_EntityHelper.ZERO_SPAWN_VECTOR);
+				m_GamemodeManager.InitilizePlayer(playerId);
 		}
 	}
 	
@@ -630,9 +562,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		m_aPendingPlayerInitializations.Clear();
 		m_bProcessingInitializations = false;
-		
-		if (m_SlottingManager)
-			m_SlottingManager.SetMassInitializationInProgress(false);
 	}
 	
 	//------------------------------------------------------------------------------------------------

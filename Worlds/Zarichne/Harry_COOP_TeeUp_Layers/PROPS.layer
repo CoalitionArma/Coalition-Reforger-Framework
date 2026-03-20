@@ -1,0 +1,64 @@
+$grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUS_01.et" {
+ {
+  coords 2067.5 17.11 743.098
+  angles 0 8.097 0
+ }
+ {
+  coords 1932.162 16.891 1188.349
+  angles 0 8.097 0
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 1420.555 20.625 1445.418
+  angles 0 89.634 0
+ }
+ {
+  coords 1409.729 20.625 1439.807
+  angles 0 89.634 0
+ }
+ {
+  coords 1420.06 20.625 1432.342
+  angles 0 89.634 0
+ }
+}
+GenericEntity : "{4757ED104D5989CE}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3.et" {
+ coords 1996.995 11.681 1494.875
+}
+GenericEntity : "{7A63C828383500F9}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V5.et" {
+ coords 1994.899 11.681 1496.805
+ angles 0 -27.937 0
+}
+$grp GenericEntity : "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et" {
+ {
+  coords 2066.476 17.068 744.325
+  angles 0 11.075 0
+ }
+ {
+  coords 1932.27 16.883 1189.462
+  angles 0 11.075 0
+ }
+}
+GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ coords 1995.268 11.681 1495.665
+ angles 0 -17.215 0
+}
+$grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1.et" {
+ {
+  coords 1996.297 11.681 1496.75
+  angles 0 -16.055 0
+ }
+ {
+  coords 1994.675 11.681 1494.346
+ }
+}
+$grp GenericEntity : "{FFCDFB1375A99125}Prefabs/Destructible/GMFX_Destructible_RPL5_01_generator.et" {
+ {
+  coords 2059.811 18.304 747.141
+  angles 3.175 8.88 8.574
+ }
+ {
+  coords 1924.473 15.705 1192.392
+  angles -1.197 9.172 -3.814
+ }
+}

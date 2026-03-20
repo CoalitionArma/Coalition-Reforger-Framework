@@ -43,7 +43,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		RplComponent rpl = RplComponent.Cast(specEntity.FindComponent(RplComponent));
 		if (rpl)
 		{
-			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
 			int playerId = 0;
 			if (slotData)
 				playerId = slotData.GetSlotCurrentPlayerId();
@@ -64,7 +64,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		string roleName = "";
 		if (rpl)
 		{
-			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
 			if (slotData)
 			{
 				roleName = slotData.GetSlotName();
@@ -188,7 +188,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 								RplComponent killerRpl = RplComponent.Cast(killerEntity.FindComponent(RplComponent));
 								if (killerRpl)
 								{
-									CRF_SlotDataContainer killerSlotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(killerRpl.Id());
+									CRF_SlotData killerSlotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(killerRpl.Id());
 									if (killerSlotData)
 										killerPlayerId = killerSlotData.GetSlotCurrentPlayerId();
 								}

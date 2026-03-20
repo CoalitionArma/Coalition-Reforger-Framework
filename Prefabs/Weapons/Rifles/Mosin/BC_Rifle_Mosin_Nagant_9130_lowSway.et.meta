@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{9D19E4E19CD0720F}Prefabs/Weapons/Rifles/Mosin/BC_Rifle_Mosin_Nagant_9130_lowSway.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

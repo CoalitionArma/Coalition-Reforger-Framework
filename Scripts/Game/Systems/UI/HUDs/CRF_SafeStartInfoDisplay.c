@@ -383,7 +383,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			if (slottingManager)
 			{
 				// Get player's slot data to determine role
-				CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(playerId);
+				CRF_SlotData slotData = slottingManager.GetPlayerSlotData(playerId);
 				if (slotData)
 				{
 					// Get player role from slot resource
@@ -428,7 +428,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 									factionName = gearConfig.m_FactionName;
 								
 								// Get role configuration for binoculars
-								CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(playerRole);
+								CRF_RoleConfig roleConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(playerRole);
 								if (roleConfig)
 								{
 									// Check for binoculars (leadership/assistant get them)

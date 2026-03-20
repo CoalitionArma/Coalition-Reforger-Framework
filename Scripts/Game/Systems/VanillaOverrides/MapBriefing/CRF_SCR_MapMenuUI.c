@@ -147,6 +147,13 @@ modded class SCR_MapMenuUI
 	{
 		super.OnMenuClose();
 
+		// Hide the MissionDescription widget to prevent it from staying on HUD
+		Widget missionDescriptionWidget = GetRootWidget().FindAnyWidget("MissionDescription");
+		if (missionDescriptionWidget)
+		{
+			missionDescriptionWidget.SetVisible(false);
+		}
+
 		// Clear mission description data
 		if (m_cMissionDescriptionListBoxComponent) {
 			m_cMissionDescriptionListBoxComponent.Clear();

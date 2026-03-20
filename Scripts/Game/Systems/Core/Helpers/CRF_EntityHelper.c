@@ -16,6 +16,34 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Check if a given entity is a spectator
+	//! \param[in] entity Entity to check
+	//! \return True if entity is a spectator, false otherwise
+	static bool IsSpectator(IEntity entity)
+	{
+		if (!entity)
+			return false;
+		
+		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if the local player is a spectator
+	//! \return True if local player is a spectator, false otherwise
+	static bool IsSpectator()
+	{
+		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+			return true;
+		
+		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+			return true;
+
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! Validate the proveied vector to ensure we arent spawning in a state that would cause errors or crashes
 	//! \param[in] vectorToCheck vector to check
 	//! \return true if the vector was valid
@@ -57,35 +85,6 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Check if a given entity is a spectator
-	//! \param[in] entity Entity to check
-	//! \return True if entity is a spectator, false otherwise
-	static bool IsSpectator(IEntity entity)
-	{
-		if (!entity)
-			return false;
-		
-		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Check if the local player is a spectator
-	//! \return True if local player is a spectator, false otherwise
-	static bool IsSpectator()
-	{
-		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
-			return true;
-		
-		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
-			return true;
-
-		return false;
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
 	//! Determine faction key from faction affiliation comp of the provided entity
 	//! \param[in] entity Entity to pull the faction comp of
 	//! \return Faction key or empty string if not found
@@ -100,30 +99,30 @@ class CRF_EntityHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Helper method to get group from RplId
-	static SCR_AIGroup GetGroupFromRplId(RplId groupId)
+	//! Helper method to get entity from RplId
+	static IEntity GetEntityFromRplId(RplId entityId)
 	{
-		if (groupId == RplId.Invalid())
+		if (entityId == RplId.Invalid())
 			return null;
 
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(groupId));
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityId));
 		if (!rplComp)
 			return null;
 
-		return SCR_AIGroup.Cast(rplComp.GetEntity());
+		return rplComp.GetEntity();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Helper method to get group from RplId
+	static SCR_AIGroup GetGroupFromRplId(RplId groupId)
+	{
+		return SCR_AIGroup.Cast(GetEntityFromRplId(groupId));
 	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Helper method to get character from RplId
 	static SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
 	{
-		if (charId == RplId.Invalid())
-			return null;
-
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(charId));
-		if (!rplComp)
-			return null;
-
-		return SCR_ChimeraCharacter.Cast(rplComp.GetEntity());
+		return SCR_ChimeraCharacter.Cast(GetEntityFromRplId(charId));
 	}
 }

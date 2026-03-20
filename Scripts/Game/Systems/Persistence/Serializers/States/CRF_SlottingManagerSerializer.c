@@ -22,7 +22,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 			return ESerializeResult.DEFAULT;
 
 		// Get the slots map
-		map<int, ref CRF_SlotDataContainer> slotsMap = slottingManager.GetSlotMap();
+		map<int, ref CRF_SlotData> slotsMap = slottingManager.GetSlotMap();
 		if (!slotsMap || slotsMap.Count() == 0)
 			return ESerializeResult.DEFAULT;
 
@@ -34,7 +34,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 
 		// Serialize each slot
 		int savedSlots = 0;
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotsMap)
+		foreach (int slotId, CRF_SlotData slotData : slotsMap)
 		{
 			if (!slotData)
 				continue;
@@ -86,7 +86,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		// It will be recalculated based on the highest slot ID when slots are restored
 
 		// Get the slots map
-		map<int, ref CRF_SlotDataContainer> slotsMap = slottingManager.GetSlotMap();
+		map<int, ref CRF_SlotData> slotsMap = slottingManager.GetSlotMap();
 		if (!slotsMap)
 			return false;
 
@@ -105,7 +105,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		
 		// Alternative approach: iterate through existing slots and try to read their data
 		int restoredSlots = 0;
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotsMap)
+		foreach (int slotId, CRF_SlotData slotData : slotsMap)
 		{
 			if (!slotData)
 				continue;

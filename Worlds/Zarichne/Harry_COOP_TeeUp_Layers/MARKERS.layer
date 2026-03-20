@@ -1,0 +1,53 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 2055.647 18.292 740.773
+  m_sQuadName "destroy-2"
+  m_sDescription "Radar Array"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 1937.948 16.521 1190.213
+  m_sQuadName "destroy-2"
+  m_sDescription "Radar Array"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 1640.341 16.675 1508.771
+  m_sQuadName "objective-marker-2"
+  m_sDescription "LOA"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 1416.626 20.656 1439.759
+  m_MarkerColor 0.502 0.376 0 1
+  m_sQuadName "destroy"
+  m_sDescription "Mortars"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 1561.685 16.187 1580.347
+  m_MarkerColor 0.502 0.376 0 1
+  m_sQuadName "destroy"
+  m_sDescription "Vehicle Depot"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 1994.483 11.681 1495.214
+  m_MarkerColor 0.502 0.376 0 1
+  m_sQuadName "destroy"
+  m_sDescription "Munitions Depot"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+}
