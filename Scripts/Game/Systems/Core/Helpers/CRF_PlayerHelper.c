@@ -28,16 +28,16 @@ class CRF_PlayerHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Assign character entity to player controller.
+	//! Assign character entity to player controller and ensure data-collector modules are notified.
+	//! Uses RequestSpawn when available (OnPlayerSpawnFinalize_S notifies modules automatically);
+	//! falls back to SetInitialMainEntity and notifies modules directly.
 	//! \param[in] playerController Player Controller to assign character to
 	//! \param[in] character Character to assign to player
-	//! \return True if RequestSpawn was used (OnPlayerSpawnFinalize_S will notify data-collector modules),
-	//!         false if SetInitialMainEntity was used (caller must call NotifyPlayerSpawned manually).
-	static bool AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
+	static void AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
 	{
 		int playerId = playerController.GetPlayerId();
 		if (playerId <= 0)
-			return false;
+			return;
 		
 		// Route spectator assignment through the base game pipeline, same as playable characters
 		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
@@ -69,7 +69,7 @@ class CRF_PlayerHelper
 			{
 				if (!respawnComponent.RequestSpawn(spawnData))
 					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
-				return true;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
+				return;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
 			} else
 				playerController.SetInitialMainEntity(character);
 		}
@@ -80,6 +80,11 @@ class CRF_PlayerHelper
 			playerController.SetInitialMainEntity(character);
 		}
 
-		return false;  // Caller must call NotifyPlayerSpawned
+		// SetInitialMainEntity was used — OnPlayerSpawnFinalize_S will not fire, so notify modules now.
+		SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
+			GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
+		);
+		if (dataCollector)
+			dataCollector.NotifyPlayerSpawned(playerId, character);
 	}
 }
