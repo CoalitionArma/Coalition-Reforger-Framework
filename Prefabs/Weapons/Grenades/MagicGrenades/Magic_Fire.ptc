@@ -114,7 +114,7 @@ EffectDef {
    MaxNum 1
    BirthRate 1
    Material "{9D9B1AAA0DAD33A6}Particles/_Materials/Fire/Flame_Loop_01.emat"
-   SizeMultiplier 5.3
+   SizeMultiplier 10.6
    RandomRotDir 0
    VelAngle 0
    RandomAngle 1
@@ -179,7 +179,7 @@ EffectDef {
    Angles 0 0 0
    LocalTransform 0
    Material "{6E033C070B32B17C}Particles/_Materials/Fire/Explosion_Base_03.emat"
-   SizeMultiplier 3
+   SizeMultiplier 8.3
    SizeRND 3
    RandomRotDir 0
    RandomAngle 1

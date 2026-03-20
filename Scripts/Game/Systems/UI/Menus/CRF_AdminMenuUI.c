@@ -67,7 +67,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected ref array<int> m_groupIDList = {};
 	protected ref array<int> m_allPlayers = {};
 	protected ref array<SCR_AIGroup> m_outGroups = {};
-	protected ref array<vector> m_spawnPoints = {};
+	protected ref array<int> m_spawnPoints = {};
 	protected ref array<Faction> m_factions = {};
 	protected ref array<string> m_selectableFactions = {};
 	
@@ -1180,12 +1180,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 				
 			if (playerGroup.GetGroupID() == groupID)
 			{
-				IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-				if (!playerEntity)
-					continue;
-					
 				respawnPoints.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerId)));
-				m_spawnPoints.Insert(playerEntity.GetOrigin());
+				m_spawnPoints.Insert(playerId);
 			}
 		}
 	}
@@ -1219,7 +1215,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get selected group and spawnpoint
 		int groupID = m_groupIDList.Get(groupList.GetSelectedItem());
-		vector spawnpoint = m_spawnPoints.Get(respawnPoints.GetSelectedItem());
+		int spawnpoint = m_spawnPoints.Get(respawnPoints.GetSelectedItem());
 		
 		// Spawn player on group
 		CRF_PlayerRplToAuthorityManager.GetInstance().SpawnOnGroup(playerId, spawnpoint, groupID, true);

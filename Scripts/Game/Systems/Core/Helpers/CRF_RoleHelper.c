@@ -3,7 +3,7 @@ class CRF_RoleHelper
 	//------------------------------------------------------------------------------------------------
 	static CRF_EGearRole ResourceToRole(ResourceName roleResource)
 	{
-		foreach(CRF_RoleConfig roleConfig : CRF_GamemodeManager.RolesConfig().m_RoleConfigs)
+		foreach(CRF_RoleConfig roleConfig : CRF_GearscriptManager.GetRolesConfig().m_RoleConfigs)
 			if (roleConfig.m_RoleResource == roleResource)
 				return roleConfig.m_Role;
 
@@ -13,7 +13,7 @@ class CRF_RoleHelper
 	//------------------------------------------------------------------------------------------------
 	static ResourceName RoleToResource(CRF_EGearRole role)
 	{
-		CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig roleConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 
 		return roleConfig.m_RoleResource;
 	}

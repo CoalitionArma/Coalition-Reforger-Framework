@@ -1,4 +1,4 @@
-class CRF_SlotDataContainer
+class CRF_SlotData
 {		
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
@@ -21,10 +21,10 @@ class CRF_SlotDataContainer
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Replaces or sets the internal CRF_SlotDataContainer record for the slot.
+	//! Replaces or sets the internal CRF_SlotData record for the slot.
 	//! If newSlotData is non-null, the slot's data is updated with the provided instance.
-	//! \param[in] newSlotData: Pointer/reference to the new CRF_SlotDataContainer to apply.
-	void DataUpdate(CRF_SlotDataContainer newSlotData = null)
+	//! \param[in] newSlotData: Pointer/reference to the new CRF_SlotData to apply.
+	void DataUpdate(CRF_SlotData newSlotData = null)
 	{	
 		if(newSlotData)	
 		{
@@ -235,7 +235,7 @@ class CRF_SlotDataContainer
 		string customSlottingName = GetCustomRoleName(GetSlotFactionKey(), m_SlotRole);
 		
 		if (customSlottingName.IsEmpty())
-			return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_sRoleName;
+			return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_sRoleName;
 		else
 			return customSlottingName;
 	}
@@ -243,19 +243,19 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	CRF_ESlotType GetSlotType() 
 	{
-		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_SlottingType;
+		return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_SlottingType;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotIconResource() 
 	{
-		return CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole).m_RoleIcon;
+		return CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole).m_RoleIcon;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotResource() 
 	{
-		ref CRF_RoleConfig config = CRF_GamemodeManager.RolesConfig().FindRoleConfig(m_SlotRole);	
+		ref CRF_RoleConfig config = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(m_SlotRole);	
 		return config.m_RoleResource;
 	}
 	
@@ -319,31 +319,31 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	static bool Extract(CRF_SlotData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(instance.m_SlotRole, 4);
 		snapshot.SerializeBytes(instance.m_SlotFaction, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
-	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotDataContainer instance)
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData instance)
 	{
 		snapshot.SerializeBytes(instance.m_iSlotId, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(instance.m_SlotRole, 4);
 		snapshot.SerializeBytes(instance.m_SlotFaction, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
-	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
-	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ class CRF_SlotDataContainer
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
-	    return true;
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -387,7 +387,7 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static bool PropCompare(CRF_SlotDataContainer instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	static bool PropCompare(CRF_SlotData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
 	    return snapshot.Compare(instance.m_iSlotId, 4)
 		&& snapshot.Compare(instance.m_iSlotCurrentPlayerId, 4)
