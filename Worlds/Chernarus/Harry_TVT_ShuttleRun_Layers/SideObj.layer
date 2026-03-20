@@ -82,6 +82,17 @@ GenericEntity : "{22BAB94CDC250B13}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      }
      NumSlots 1
     }
+    MultiSlotConfiguration "{68E8F1F86296F846}" {
+     SlotTemplate EquipmentStorageSlot dropper {
+      Prefab "{55C5BEE65087F7CD}Prefabs/Drones/DJIBase/DJIRGD5Dropper.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68E8F1F85B075AE0}" {
+     SlotTemplate EquipmentStorageSlot dropperbattery {
+      Prefab "{EF1E4AA6DCD2D982}Prefabs/Drones/DJIBase/DJIBattery.et"
+     }
+    }
    }
   }
  }
