@@ -92,6 +92,7 @@ GenericEntity : "{22BAB94CDC250B13}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      SlotTemplate EquipmentStorageSlot dropperbattery {
       Prefab "{EF1E4AA6DCD2D982}Prefabs/Drones/DJIBase/DJIBattery.et"
      }
+     NumSlots 2
     }
    }
   }
