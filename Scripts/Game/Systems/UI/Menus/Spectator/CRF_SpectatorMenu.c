@@ -59,6 +59,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bFrameEventRegistered = false;          // Flag to track if frame event is registered
 	protected bool m_bTPPMode = false;                       // True = third-person camera, false = first-person (helmet cam)
 	
+	// Last kill world position, updated by OnKillfeedNotification, used by Action_TeleportToKill
+	protected vector m_vLastKillPosition = vector.Zero;
+
 	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
 	
 	// Main timer elements
@@ -173,6 +176,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+
+		// Subscribe to notification events to track kill locations for R-key teleport
+		SCR_NotificationsComponent notifComp = SCR_NotificationsComponent.GetInstance();
+		if (notifComp)
+			notifComp.GetOnNotification().Insert(OnKillfeedNotification);
 	}
 	
 	void DismissSlottingWarning()
@@ -199,6 +207,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		inputManager.AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 		inputManager.AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		inputManager.AddActionListener("CRF_SpecToggleCamMode", EActionTrigger.DOWN, ToggleCameraMode);
+		inputManager.AddActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
 	}
 	
 	/**
@@ -1794,6 +1803,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			inputManager.RemoveActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 			inputManager.RemoveActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 			inputManager.RemoveActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+			inputManager.RemoveActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
 		}
 		
 		ForceNVGsOff();
@@ -1821,6 +1831,55 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		ArmaReforgerScripted.OpenPlayerList();
 	}
 	
+	/**
+	 * Called when any notification is received locally.
+	 * For killfeed notifications, resolves and stores the victim's world position
+	 * so Action_TeleportToKill can jump to it.
+	 */
+	protected void OnKillfeedNotification(SCR_NotificationData data)
+	{
+		int id = data.GetID();
+		if (id != ENotification.PLAYER_DIED &&
+			id != ENotification.PLAYER_KILLED_PLAYER &&
+			id != ENotification.AI_KILLED_PLAYER &&
+			id != ENotification.POSSESSED_AI_DIED &&
+			id != ENotification.POSSESSED_AI_KILLED_PLAYER &&
+			id != ENotification.POSSESSED_AI_KILLED_POSSESSED_AI &&
+			id != ENotification.AI_KILLED_POSSESSED_AI)
+			return;
+
+		// Force the display data to resolve the entity position into the notification data
+		SCR_NotificationDisplayData displayData = data.GetDisplayData();
+		if (displayData)
+			displayData.SetPosition(data);
+
+		vector pos;
+		data.GetPosition(pos);
+		if (pos != vector.Zero)
+			m_vLastKillPosition = pos;
+	}
+
+	/**
+	 * Teleports the spectator camera to the location of the most recent killfeed event.
+	 * Mirrors the Zeus "R" shortcut for jumping to kill events.
+	 * If currently following a player, detaches first so the free-cam teleport takes effect.
+	 */
+	void Action_TeleportToKill()
+	{
+		if (m_vLastKillPosition == vector.Zero)
+			return;
+
+		// Detach from any followed entity so the teleport takes effect
+		if (m_eSpecEntity)
+		{
+			m_eSpecEntity = null;
+			m_bFPPEntityValidityCheck = false;
+			UnregisterFrameEvent();
+		}
+
+		MoveCamera(m_vLastKillPosition);
+	}
+
 	/**
 	 * Teleports the camera to the position under the cursor
 	 * Triggered by the manual camera teleport action

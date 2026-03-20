@@ -1,7 +1,8 @@
 modded class SCR_NotificationsComponent
 {
 	//----------------------------------------------------------------
-	// Check if current player has unlimited editor access
+	// Returns true only when the local player is actively using the unlimited editor (zeus open).
+	// Admin spectators (editor closed) are NOT considered to be in this state.
 	//----------------------------------------------------------------
 	private static bool IsLocalPlayerUnlimitedEditor()
 	{
@@ -9,7 +10,7 @@ modded class SCR_NotificationsComponent
 		if (!editorManager)
 			return false;
 			
-		return !editorManager.IsLimited() && !editorManager.IsOpened();
+		return !editorManager.IsLimited() && editorManager.IsOpened();
 	}
 	
 	//----------------------------------------------------------------
@@ -28,7 +29,7 @@ modded class SCR_NotificationsComponent
 		// Block killfeed notifications for unlimited editor users
 		if (IsKillfeedNotification(notificationID) && IsLocalPlayerUnlimitedEditor())
 			return false;
-			
+		
 		return super.SendLocal(notificationID, position, param1, param2, param3, param4, param5, param6);
 	}
 	
