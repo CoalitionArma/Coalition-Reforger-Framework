@@ -149,7 +149,7 @@ modded class SCR_EditorManagerEntity
 			return;
 			
 		// Open appropriate menu based on gamemode state
-		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
+		switch (gamemode.m_GamemodeState)
 		{
 			case CRF_EGamemodeState.BRIEFING: 
 			{

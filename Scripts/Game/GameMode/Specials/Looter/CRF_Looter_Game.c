@@ -275,8 +275,12 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute(desc: "Misc loot entries (multiple random items)", category: "Loot Tables")]
 	ref array<ref CRF_MiscLootEntry> m_aMiscEntries;
 	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableIndividualBFT;
+	
 	protected bool m_bSpawnLootBatch = false;
 
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -298,6 +302,7 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	}
 	
 	float m_fUpdateBuffer = 0;
+	//------------------------------------------------------------------------------------------------
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		if (m_fUpdateBuffer > 0.01)
@@ -308,6 +313,12 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		}
 		m_fUpdateBuffer += timeSlice;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool IsBFTEnabled()
+	{
+   		return m_bEnableIndividualBFT;
+	}
 
 	// Storage for paced spawning
 	protected ref array<ref CRF_BaseLootEntry> m_aAllLootEntries;
@@ -315,7 +326,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	protected float m_fTotalWeight;
 	protected int m_iCurrentSpawnIndex = 1;
 	
-	// Main spawning function - builds combined loot pool and starts paced spawning
+	//------------------------------------------------------------------------------------------------
+	//! Main spawning function - builds combined loot pool and starts paced spawning
 	protected void SpawnLoot()
 	{
 		// Build combined loot pool from all categories
@@ -353,7 +365,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		m_bSpawnLootBatch = true;
 	}
 	
-	// Spawn loot in small batches to prevent hitches
+	//------------------------------------------------------------------------------------------------
+	//! Spawn loot in small batches to prevent hitches
 	protected void SpawnLootBatch()
 	{
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -392,7 +405,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		}
 	}
 
-	// Weighted random selection helper
+	//------------------------------------------------------------------------------------------------
+	//! Weighted random selection helper
 	protected int WeightedRandomIndex(array<float> weights, float totalWeight)
 	{
 		float roll = Math.RandomFloat01() * totalWeight;
@@ -406,7 +420,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		return -1;
 	}
 
-	// DEBUG OUTPUT - Print drop chances for all loot entries
+	//------------------------------------------------------------------------------------------------
+	//! DEBUG OUTPUT - Print drop chances for all loot entries
 	protected void PrintDropChances(array<ref CRF_BaseLootEntry> allLootEntries)
 	{
 		float totalWeight = 0;
@@ -458,5 +473,18 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		}
 		
 		Print("=== END LOOT DROP CHANCES ===");
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_LooterGamemodeComponent m_sInstance;
+	void CRF_LooterGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_LooterGamemodeComponent GetInstance()
+	{
+		return m_sInstance;
 	}
 }
