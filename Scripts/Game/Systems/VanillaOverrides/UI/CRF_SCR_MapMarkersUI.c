@@ -12,12 +12,14 @@ modded class SCR_PlayerControllerCommandingComponent
 		if (!gamemodeManager)
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 
+		/*
 		SCR_MapMarkerMenuEntry shareMenuEntry = new SCR_MapMarkerMenuEntry();
 		shareMenuEntry.SetName("Share Map Markers");
 		shareMenuEntry.GetOnPerform().Insert(ShareMapMarkers);
 		shareMenuEntry.SetIcon("{F7E8D4834A3AFF2F}UI/Imagesets/Conflict/conflict-icons-bw.imageset", "FrequencyBig");
 		
 		m_MapContextualMenu.InsertCustomRadialEntry(shareMenuEntry, parentCategory);
+		*/
 		
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
 		SCR_AIGroup playerGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
@@ -42,10 +44,12 @@ modded class SCR_PlayerControllerCommandingComponent
 		return super.AddElementsFromCategoryToMap(category, parentCategory);
 	}
 	
+	/*
 	void ShareMapMarkers()
 	{
 		CRF_PlayerRplToAuthorityManager.GetInstance().ShareMapMarkers();
 	}
+	*/
 	
 	void CheckIfValidSpawn()
 	{

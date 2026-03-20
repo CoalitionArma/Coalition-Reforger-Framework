@@ -1,5 +1,6 @@
 modded class SCR_MapMarkersUI
 {
+	protected CRF_PlayerScriptedMarkerManager m_PlayerScriptedMarkerManager;
 	// Map entity reference
 	static SCR_MapEntity m_MapEntity;
 	// Flag to track if the map is currently open
@@ -18,7 +19,9 @@ modded class SCR_MapMarkersUI
 	{
 		super.OnMapOpen(config);
 		
-		if (!CRF_Gamemode.GetInstance())
+		m_PlayerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		
+		if (!CRF_Gamemode.GetInstance() || !m_PlayerScriptedMarkerManager)
 			return;
 		
 		// Update map open status
@@ -27,6 +30,7 @@ modded class SCR_MapMarkersUI
 		
 		// Schedule marker initialization
 		GetGame().GetCallqueue().Call(LoadStoredMarkers);
+		m_PlayerScriptedMarkerManager.GetOnMarkerUpdate().Insert(LoadStoredMarkers);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -34,20 +38,11 @@ modded class SCR_MapMarkersUI
 	void LoadStoredMarkers()
 	{
 		// Get stored marker data from player controller
-		array<string> markerDataArray = CRF_PlayerScriptedMarkerManager.GetInstance().GetScriptedMarkersArray();
-		
-		// If game is running, remove this function from call queue
-		if(SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
-			GetGame().GetCallqueue().Remove(LoadStoredMarkers);
+		array<string> markerDataArray = m_PlayerScriptedMarkerManager.GetScriptedMarkersArray();
 		
 		// Return if no markers to display
-		if(!markerDataArray)
+		if(!markerDataArray || markerDataArray.IsEmpty())
 			return;
-			
-		if(markerDataArray.IsEmpty())
-			return;
-		
-		// Remove function from call queue since we're processing markers now
 		
 		// Clean up any existing markers
 		CleanupExistingMarkers();

@@ -45,6 +45,7 @@ void GrassCheck()
 	}
 }
 
+/*
 void GammaBrightnessCheck()
 {
 	// Default values for gamma, brightness, and contrast
@@ -104,7 +105,7 @@ void GammaBrightnessCheck()
 		}
 	}
 }
-
+*/
 
 modded class SCR_BaseGameMode : BaseGameMode
 {

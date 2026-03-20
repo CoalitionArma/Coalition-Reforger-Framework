@@ -1,3 +1,4 @@
+/*
 modded class SCR_MapMarkerBase
 {
 	bool m_bIsShared = false;
@@ -119,3 +120,4 @@ modded class SCR_MapMarkerBase
 			&& snapshot.Compare(instance.m_Timestamp, 8);
 	}
 }
+*/

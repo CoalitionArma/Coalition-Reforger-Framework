@@ -1,3 +1,4 @@
+/*
 // Prevents map markers from being deleted when a player disconnects
 modded class SCR_MapMarkerManagerComponent
 {
@@ -145,3 +146,4 @@ modded class SCR_MapMarkerManagerComponent
 		return;
 	}
 }
+*/

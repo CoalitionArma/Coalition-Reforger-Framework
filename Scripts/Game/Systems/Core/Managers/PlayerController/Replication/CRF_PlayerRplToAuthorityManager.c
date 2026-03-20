@@ -465,6 +465,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	void SharerMapMarkerGlobal(int markerUID, int playerId)
 	{
@@ -499,6 +500,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	void RequestSupplyUpdate(RplId supplyArsenalId)
@@ -2190,6 +2192,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
@@ -2331,6 +2334,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		rplToOwnerManager.RefreshGlobalMarkers(globalMarkers);
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

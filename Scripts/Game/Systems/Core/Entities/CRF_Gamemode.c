@@ -609,6 +609,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	bool DoesFactionShareMarker(string factionKey)
 	{
@@ -622,20 +623,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
     		return true;
  	}
-	
-	//------------------------------------------------------------------------------------------------
-	bool IsSideBFTEnabled(string factionKey)
-	{
-		switch(factionKey)
-		{
-			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableBFT;
-			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableBFT;
-			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableBFT;
-			case "CIV":		return m_CIVILIANGearScriptSettings.m_bEnableBFT;
-		}
-		
-   		return true;
-	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	//! Get gearscript resource for a faction

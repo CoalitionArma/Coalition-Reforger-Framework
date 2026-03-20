@@ -1,3 +1,4 @@
+/*
 modded class SCR_MapEntity
 {
 	string m_sFactionKey = "";
@@ -30,5 +31,5 @@ modded class SCR_MapEntity
 				return;
 			}
 	}
-
 }
+*/

@@ -163,7 +163,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		LoadMissionInfo();
 		
 		// Load markers info
-		LoadMarkersInfo();
+		//LoadMarkersInfo();
 		
 		// Load equipment info
 		LoadEquipmentInfo();
@@ -326,6 +326,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 	/**
 	 * Loads markers configuration information
 	 */
+	/*
 	protected void LoadMarkersInfo()
 	{
 		// Get player's faction for checking BFT and marker settings
@@ -344,7 +345,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 					string factionKey = playerFaction.GetFactionKey();
 					
 					// Blue Force Tracker - Check if BFT is enabled for player's faction
-					if (m_Gamemode.IsSideBFTEnabled(factionKey))
+					if (CRF_LooterGamemodeComponent.GetInstance() && CRF_LooterGamemodeComponent.GetInstance().IsBFTEnabled())
 						bftStatus = "On";
 					
 					// Global Markers - Inverse of shareable markers setting
@@ -358,6 +359,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		m_wBlueForceTrackerValue.SetText(string.Format("Blue Force Tracker: %1", bftStatus));
 		m_wUnitMapMarkersValue.SetText(string.Format("Global Markers: %1", globalMarkersStatus));
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	/**
