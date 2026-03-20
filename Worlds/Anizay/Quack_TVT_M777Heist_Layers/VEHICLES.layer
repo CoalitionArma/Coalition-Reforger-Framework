@@ -41,7 +41,7 @@ $grp CRF_VehicleSpawner {
     m_iAmountOfItemRegularVehicle 6
    }
    CRF_VehicleGearScriptAdditionalItem "{68E172DA579E19A7}" {
-    m_Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+    m_Prefab "{4EADF10C9D5CD954}Prefabs/Weapons/Ammo/Propellant/Charge_4.et"
     m_iAmountOfItemRegularVehicle 8
    }
    CRF_VehicleGearScriptAdditionalItem "{68E172D8DE317203}" {
@@ -65,7 +65,7 @@ $grp CRF_VehicleSpawner {
     m_iAmountOfItemRegularVehicle 6
    }
    CRF_VehicleGearScriptAdditionalItem "{68E172DA579E19A7}" {
-    m_Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+    m_Prefab "{AB31BDF591B94E3F}Prefabs/Weapons/Ammo/Propellant/Charge_5.et"
     m_iAmountOfItemRegularVehicle 8
    }
    CRF_VehicleGearScriptAdditionalItem "{68E172D8DE317203}" {

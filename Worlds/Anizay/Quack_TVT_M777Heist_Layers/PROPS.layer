@@ -1,37 +1,3 @@
-GenericEntity Mine_Box : "{159BADC74896B7D6}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Explosives_01_USSR.et" {
- components {
-  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
-   Enabled 1
-  }
-  SCR_SoundDataComponent "{5C53391603B5CF41}" {
-   Enabled 1
-  }
-  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-   Enabled 1
-   MultiSlots {
-    MultiSlotConfiguration "{68DD64C76F02F910}" {
-     SlotTemplate EquipmentStorageSlot AT_Mines {
-      Prefab "{D6EF54367CECE1D9}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M.et"
-     }
-     NumSlots 8
-    }
-    MultiSlotConfiguration "{68DD64C4A77532E9}" {
-     SlotTemplate EquipmentStorageSlot Smoke_Grenades {
-      Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
-     }
-     NumSlots 20
-    }
-   }
-  }
-  ActionsManagerComponent "{5476B36C403D4CC0}" {
-   Enabled 1
-  }
-  RplComponent "{5476B36C54387F41}" {
-   Enabled 1
-  }
- }
- coords 9606.339 36.787 1298.962
-}
 GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
  components {
   Persistence "{68E172CC931C4F36}" {
@@ -174,7 +140,7 @@ GenericEntity NSV_Box : "{CD62E36CFDCB8FD8}Prefabs/Props/Military/AmmoBoxes/USSR
      SlotTemplate EquipmentStorageSlot NSV_Ammo {
       Prefab "{4CD3159446EC131B}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_APIT.et"
      }
-     NumSlots 3
+     NumSlots 1
     }
    }
   }
