@@ -3,6 +3,9 @@ class CRF_PolyZoneMeshComponentClass : ScriptComponentClass
 
 class CRF_PolyZoneMeshComponent : ScriptComponent
 {
+	[Attribute("true", category: "Virtual Area")]
+	protected bool m_bFactionMeshCheck;
+	
 	[Attribute("10", category: "Virtual Area")]
 	protected float m_fHeight;
 	
@@ -23,9 +26,12 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 		m_eShapeEntity = ShapeEntity.Cast(owner.GetParent());
 		GenerateAreaMesh();
 		
-		CRF_PolyZone polyZone = CRF_PolyZone.Cast(m_eShapeEntity.FindComponent(CRF_PolyZone));
-		if (polyZone && GetGame().InPlayMode())
-			GetGame().GetCallqueue().CallLater(polyZone.RegisterMeshComp, 1000, false, this); //Tried a basic .GetCallqueue().Call(), but it needs more of a delay for the player controller to init
+		if (m_bFactionMeshCheck)
+		{
+			CRF_PolyZone polyZone = CRF_PolyZone.Cast(m_eShapeEntity.FindComponent(CRF_PolyZone));
+			if (polyZone && GetGame().InPlayMode())
+				GetGame().GetCallqueue().CallLater(polyZone.RegisterMeshComp, 1000, false, this); //Tried a basic .GetCallqueue().Call(), but it needs more of a delay for the player controller to init
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
