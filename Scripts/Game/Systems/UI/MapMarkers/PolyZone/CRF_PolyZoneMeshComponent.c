@@ -5,6 +5,7 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 {
 	[Attribute("10", category: "Virtual Area")]
 	protected float m_fHeight;
+	
 	[Attribute("10", category: "Virtual Area")]
 	protected float m_fUndergroundHeight;
 	
@@ -15,60 +16,36 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 	protected bool m_bStretchMaterial;
 	
 	ShapeEntity m_eShapeEntity;
-	protected CRF_PlayerController m_LocalPlayerController;	
-	protected CRF_PolyZoneTrigger m_PolyZoneTrigger;
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
-		SetEventMask(owner, EntityEvent.INIT);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void EOnInit(IEntity owner)
-	{
 		m_eShapeEntity = ShapeEntity.Cast(owner.GetParent());
-		m_PolyZoneTrigger = CRF_PolyZoneTrigger.Cast(owner);
+		GenerateAreaMesh();
 		
-		if (GetGame().InPlayMode())
-			CheckIfPlayerControllerValid();
-		else
-			GenerateAreaMesh();
+		CRF_PolyZone polyZone = CRF_PolyZone.Cast(m_eShapeEntity.FindComponent(CRF_PolyZone));
+		if (polyZone && GetGame().InPlayMode())
+			GetGame().GetCallqueue().CallLater(polyZone.RegisterMeshComp, 1000, false, this); //Tried a basic .GetCallqueue().Call(), but it needs more of a delay for the player controller to init
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void CheckIfPlayerControllerValid()
-	{
-		m_LocalPlayerController = CRF_PlayerController.Cast(GetGame().GetPlayerController());
-		
-		if (m_LocalPlayerController)
-		{
-			m_LocalPlayerController.m_OnControlledEntityChanged.Insert(UpdateAreaMeshBasedOffFaction);
-			GenerateAreaMesh();
-		} else
-			GetGame().GetCallqueue().Call(CheckIfPlayerControllerValid);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void GenerateAreaMesh()
+	void GenerateAreaMesh(bool visibility = true)
 	{	
-		if (!m_PolyZoneTrigger)
-			m_PolyZoneTrigger = CRF_PolyZoneTrigger.Cast(GetOwner());
+		IEntity owner = GetOwner();
 		
 		array<vector> positions = new array<vector>();
 		m_eShapeEntity.GetPointsPositions(positions);
-		BaseWorld world = m_PolyZoneTrigger.GetWorld();
+		BaseWorld world = owner.GetWorld();
 		vector worldPos;
 		foreach (int i, vector pos: positions)
 		{
-			worldPos = m_PolyZoneTrigger.CoordToParent(pos);
+			worldPos = owner.CoordToParent(pos);
 			worldPos[1] = Math.Max(world.GetSurfaceY(worldPos[0], worldPos[2]) - m_fUndergroundHeight, -m_fUndergroundHeight);
-			positions[i] = m_PolyZoneTrigger.CoordToLocal(worldPos);
+			positions[i] = owner.CoordToLocal(worldPos);
 		}
 		
 		ResourceName meshMat = m_Material;
-		Faction localCharFaction = CRF_PlayerController.GetLocalMainEntityFaction();
-		if (m_LocalPlayerController && localCharFaction && m_PolyZoneTrigger.m_aFactionKey.Contains(localCharFaction.GetFactionKey()))
+		if (!visibility)
 			meshMat = "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat";
 		
 		Resource res = SCR_Shape.CreateAreaMesh(positions, m_fHeight + m_fUndergroundHeight, meshMat, m_bStretchMaterial);
@@ -79,14 +56,8 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 		MeshObject meshObject = res.GetResource().ToMeshObject();
 		if (meshObject)
 		{
-			m_PolyZoneTrigger.SetObject(meshObject, "");
+			owner.SetObject(meshObject, "");
 		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateAreaMeshBasedOffFaction(IEntity from, IEntity to)
-	{
-		GenerateAreaMesh();
 	}
 	
 	//------------------------------------------------------------------------------------------------
