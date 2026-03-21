@@ -6,31 +6,33 @@ class CRF_PolyZoneClass: ScriptComponentClass
 [ComponentEditorProps(icon: HYBRID_COMPONENT_ICON)]
 class CRF_PolyZone : ScriptComponent
 {
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ATTRIBUTES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
 	[Attribute("{B8793707B56B2F9F}UI/Map/PolyMapMarkerBase.layout", params: "layout")]
 	protected ResourceName m_sPolyMarkerLayout;
 	
 	[Attribute("{E362BE45DB490A07}UI/data/Zone.edds", UIWidgets.ResourcePickerThumbnail, desc: "", params: "edds")]
 	ResourceName m_mPolygonTexture;
+	
 	[Attribute("1 1 1 1", UIWidgets.ColorPicker, desc: "")]
 	ref Color m_cPolygonColor;
+	
 	[Attribute("0.01", UIWidgets.Slider, desc: "", params: "0.001 4 0.01")]
 	float m_fPolygonUVScale;
 	
 	[Attribute("{8D8EB58699FBC40B}UI/data/ZoneBorder.edds", UIWidgets.ResourcePickerThumbnail, desc: "", params: "edds")]
 	ResourceName m_mPolygonTextureBorder;
+	
 	[Attribute("1 1 1 1", UIWidgets.ColorPicker, desc: "")]
 	ref Color m_cPolygonBorderColor;
+	
 	[Attribute("0.1", UIWidgets.Slider, desc: "", params: "0.001 40 0.01")]
 	float m_fPolygonBorderUVScale;
+	
 	[Attribute("15", UIWidgets.Slider, desc: "", params: "1 100 0.1")]
 	float m_fPolygonBorderWidth;
-	
-	protected ref SharedItemRef m_TextureSharedItem;
-	protected ref SharedItemRef m_TextureBorderSharedItem;
-	ShapeEntity m_ePolylineShapeEntity;
-	SCR_MapEntity m_MapEntity;
-	ref array<float> m_aPolygon;
-	ref array<float> m_aPolygonTrigger;
 	
 	[Attribute("0")]
 	bool m_bIsSafestartBorder;
@@ -46,39 +48,33 @@ class CRF_PolyZone : ScriptComponent
 	
 	[Attribute("")]
 	ref array<FactionKey> m_aVisibleForFactions;
+	
 	[Attribute("0", UIWidgets.ComboBox, "", "", ParamEnumArray.FromEnum(CRF_EGamemodeState))]
 	ref array<CRF_EGamemodeState> m_aHideOnGameModeStates;
 	
-	bool IsCurrentVisibility()
-	{
-		CRF_Gamemode gameMode = CRF_Gamemode.GetInstance();
-		if (!gameMode)
-			return true;
-		
-		if (m_aHideOnGameModeStates.Contains(gameMode.m_GamemodeState))
-			return false;
-		
-		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		if (!factionManager)
-			return true; // Somehow manager lost, show marker
-		
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		if (!playerController)
-			return true; // Somehow player controller lost, show marker
-		
-		SCR_PlayerFactionAffiliationComponent playerFactionAffiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
-		if (!playerFactionAffiliationComponent)
-			return true; // Somehow player faction component lost, show marker
-		
-		Faction faction = playerFactionAffiliationComponent.GetAffiliatedFaction();
-		FactionKey factionKey = "";
-		if (faction)
-			factionKey = faction.GetFactionKey();
-		
-		// Check is player faction in visibility list
-		return m_aVisibleForFactions.Contains(factionKey);
-	}
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
 	
+	protected ref SharedItemRef m_TextureSharedItem;
+	protected ref SharedItemRef m_TextureBorderSharedItem;
+	ShapeEntity m_ePolylineShapeEntity;
+	SCR_MapEntity m_MapEntity;
+	ref array<float> m_aPolygon;
+	ref array<float> m_aPolygonTrigger;
+	
+	CanvasWidget m_wCanvasWidget;
+	protected ref PolygonDrawCommand m_DrawPolygon = new PolygonDrawCommand();
+	protected ref LineDrawCommand m_LinePolygon = new LineDrawCommand();
+	protected ref array<ref CanvasWidgetCommand> m_MapDrawCommands = { m_DrawPolygon, m_LinePolygon };
+	
+	protected CRF_PolyZoneMeshComponent m_PolyZoneMeshComponent;
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 OVERRIDES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		m_MapEntity = SCR_MapEntity.GetMapInstance();
@@ -108,6 +104,77 @@ class CRF_PolyZone : ScriptComponent
 			CRF_ForwardDeployManager.GetInstance().AddForwardDeployZone(owner);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	override void EOnPostFrame(IEntity owner, float timeSlice)
+	{
+		m_DrawPolygon.m_Vertices = new array<float>();
+		m_LinePolygon.m_Vertices = new array<float>();
+		float screenXold, screenYold;
+		for (int i = 0; i < m_aPolygon.Count(); i += 2)
+		{
+			float screenX, screenY;
+			m_MapEntity.WorldToScreen(m_aPolygon[i], m_aPolygon[i+1], screenX, screenY, true);
+			if ((Math.AbsFloat(screenXold - screenX) + Math.AbsFloat(screenYold - screenY)) < 2.1)
+			{
+				continue;
+			}
+			if (m_bReversed && (i == 0 || i == 2))
+			{
+				screenX += 0.1;
+			}
+			screenXold = screenX;
+			screenYold = screenY;
+						
+			m_DrawPolygon.m_Vertices.Insert(screenX);
+			m_DrawPolygon.m_Vertices.Insert(screenY);
+			if (!m_bReversed || i > 10)
+			{
+				m_LinePolygon.m_Vertices.Insert(screenX);
+				m_LinePolygon.m_Vertices.Insert(screenY);
+			}
+		}
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MESH UPDATERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	void RegisterMeshComp(CRF_PolyZoneMeshComponent comp)
+	{
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if (!comp || !playerController)
+			return;
+		
+		SCR_PlayerFactionAffiliationComponent playerFactionAffiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
+		if (!playerFactionAffiliationComponent)
+			return;
+		
+		m_PolyZoneMeshComponent = comp;
+		playerFactionAffiliationComponent.GetOnFactionChanged().Insert(OnFactionChanged);
+		UpdateAreaMesh(playerFactionAffiliationComponent.GetAffiliatedFactionKey());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void OnFactionChanged(FactionAffiliationComponent owner, Faction previousFaction, Faction newFaction)
+	{
+		UpdateAreaMesh(newFaction.GetFactionKey());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateAreaMesh(FactionKey facKey)
+	{
+		if (!m_PolyZoneMeshComponent)
+			return;
+		
+		m_PolyZoneMeshComponent.GenerateAreaMesh((IsCurrentVisibility() && facKey != "SPEC"));
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MAP MARKERS/POLYGONS UPDATERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
 	void UpdatePolygon()
 	{
 		// Check if polyline shape entity is valid
@@ -158,15 +225,7 @@ class CRF_PolyZone : ScriptComponent
 		SCR_Math2D.Get2DPolygon(outPoints, m_aPolygon);
 	}
 	
-	bool IsInsidePolygon(vector position)
-	{
-		return Math2D.IsPointInPolygon(m_aPolygonTrigger, position[0], position[2]);
-	}
-	
-	CanvasWidget m_wCanvasWidget;
-	protected ref PolygonDrawCommand m_DrawPolygon = new PolygonDrawCommand();
-	protected ref LineDrawCommand m_LinePolygon = new LineDrawCommand();
-	protected ref array<ref CanvasWidgetCommand> m_MapDrawCommands = { m_DrawPolygon, m_LinePolygon };
+	//------------------------------------------------------------------------------------------------
 	void CreateMapWidget(MapConfiguration mapConfig)
 	{
 		if (m_bLineMode)
@@ -212,39 +271,51 @@ class CRF_PolyZone : ScriptComponent
 		SetEventMask(GetOwner(), EntityEvent.POSTFRAME);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void DeleteMapWidget(MapConfiguration mapConfig)
 	{
 		//GetGame().GetCallqueue().Remove(Update);
 		ClearEventMask(GetOwner(), EntityEvent.POSTFRAME);
 	}
 	
-	override void EOnPostFrame(IEntity owner, float timeSlice)
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 GENERAL CHECKERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------	
+	bool IsCurrentVisibility()
 	{
-		m_DrawPolygon.m_Vertices = new array<float>();
-		m_LinePolygon.m_Vertices = new array<float>();
-		float screenXold, screenYold;
-		for (int i = 0; i < m_aPolygon.Count(); i += 2)
-		{
-			float screenX, screenY;
-			m_MapEntity.WorldToScreen(m_aPolygon[i], m_aPolygon[i+1], screenX, screenY, true);
-			if ((Math.AbsFloat(screenXold - screenX) + Math.AbsFloat(screenYold - screenY)) < 2.1)
-			{
-				continue;
-			}
-			if (m_bReversed && (i == 0 || i == 2))
-			{
-				screenX += 0.1;
-			}
-			screenXold = screenX;
-			screenYold = screenY;
-						
-			m_DrawPolygon.m_Vertices.Insert(screenX);
-			m_DrawPolygon.m_Vertices.Insert(screenY);
-			if (!m_bReversed || i > 10)
-			{
-				m_LinePolygon.m_Vertices.Insert(screenX);
-				m_LinePolygon.m_Vertices.Insert(screenY);
-			}
-		}
+		CRF_Gamemode gameMode = CRF_Gamemode.GetInstance();
+		if (!gameMode)
+			return true;
+		
+		if (m_aHideOnGameModeStates.Contains(gameMode.m_GamemodeState))
+			return false;
+		
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionManager)
+			return true; // Somehow manager lost, show marker
+		
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if (!playerController)
+			return true; // Somehow player controller lost, show marker
+		
+		SCR_PlayerFactionAffiliationComponent playerFactionAffiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent));
+		if (!playerFactionAffiliationComponent)
+			return true; // Somehow player faction component lost, show marker
+		
+		Faction faction = playerFactionAffiliationComponent.GetAffiliatedFaction();
+		FactionKey factionKey = "";
+		if (faction)
+			factionKey = faction.GetFactionKey();
+		
+		// Check is player faction in visibility list
+		return m_aVisibleForFactions.Contains(factionKey);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool IsInsidePolygon(vector position)
+	{
+		return Math2D.IsPointInPolygon(m_aPolygonTrigger, position[0], position[2]);
 	}
 }
