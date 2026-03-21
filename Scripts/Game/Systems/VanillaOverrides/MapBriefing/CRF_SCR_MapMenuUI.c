@@ -103,6 +103,7 @@ modded class SCR_MapMenuUI
 		m_wBackButton = ButtonWidget.Cast(missionDescriptionWidget.FindAnyWidget("BackButton"));
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(0);
+			m_wBackButton.SetEnabled(false);
 		}
 
 		// Initialize the mission description list
@@ -132,6 +133,7 @@ modded class SCR_MapMenuUI
 		// Reset back button
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(0);
+			m_wBackButton.SetEnabled(false);
 			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 			if (backButton) {
 				backButton.m_OnClicked.Clear();
@@ -224,6 +226,7 @@ modded class SCR_MapMenuUI
 		// Show back button
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(1);
+			m_wBackButton.SetEnabled(true);
 			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 			if (backButton) {
 				backButton.m_OnClicked.Insert(DescriptionInit);
