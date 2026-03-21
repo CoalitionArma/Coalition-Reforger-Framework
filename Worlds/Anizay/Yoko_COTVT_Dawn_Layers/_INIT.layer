@@ -27,7 +27,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "The local military has recently been very aggressive and taken over Anizay Proper and the sorrunding towns. US Forces are being deployed to take the towns back."\
+   m_sTextData "The local military has recently been very aggressive and taken over Anizay Proper and the surrounding towns. US Forces are being deployed to take the towns back."\
+   ""\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 4x STYKER Dragoon"\
