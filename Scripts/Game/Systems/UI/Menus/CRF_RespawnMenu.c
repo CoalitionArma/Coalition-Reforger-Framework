@@ -136,12 +136,19 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void OnSpawnpointStateChanged()
 	{	
+		// Unsubscribe all existing spawn point data listeners before rebuilding
+		// to prevent the handler accumulating on each data object across calls.
+		foreach (CRF_SpawnPointData spawnPointData : m_aSpawnPoints)
+			spawnPointData.GetOnDataUpdate().Remove(OnSpawnpointStateChanged);
+
 		m_wSpawnListBox.Clear();
-		
-		// clear list update event handlers 
 		m_wSpawnListBox.m_OnChanged.Remove(UpdateSpawnSelection);
 		
 		PopulateListBox();
+
+		// Reopen map once so new markers are visible — one refresh rather than one per marker.
+		if (m_MapEntity && m_MapEntity.IsOpen())
+			GetGame().GetCallqueue().CallLater(OpenMapWithConfig, 50, false);
 	}
 	
 	/**
@@ -448,11 +455,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Track marker for deletion later
 		m_MapMarkers.Insert(name, worldPos);
-		
-		// Refresh the markers on the map
-		MapMarkersUIRefresh();
 	}
-	
+
 	/**
 	 * Removes the marker on the map for the respawn point
 	 * @param Nickname of the respawn point
@@ -478,32 +482,23 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Untrack marker
 		m_MapMarkers.Remove(name);
-		
-		MapMarkersUIRefresh();
-	}	
+	}
 	
 	/**
-	 * Removes all the tracked markers
+	 * Removes all the tracked markers without triggering a map refresh (used on close).
 	 */
 	protected void RemoveAllSpawnPointMarker()
 	{
-		foreach(string name, vector worldPos: m_MapMarkers)
-		{ 		
-			RemoveSpawnPointMarker(name, worldPos);
-		}		
-	}
-	
-	/**
-	 * Refreshes the markers on the map
-	 */
-	protected void MapMarkersUIRefresh()
-	{
-		m_MapEntity = SCR_MapEntity.GetMapInstance();
-		if (!m_MapEntity) 
-			return;
-
-		// Better way of doign this?
-		m_MapEntity.CloseMap();
-		OpenMapWithConfig();
-	}
+		CRF_PlayerScriptedMarkerManager psm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		foreach (string name, vector worldPos : m_MapMarkers)
+		{
+			if (!psm)
+				break;
+			string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
+			psm.RemoveScriptedMarker("Static Marker",
+				worldPosFormatted, 1, name,
+				"{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds",
+				50, ARGB(255, 0, 0, 225));
+		}
+		m_MapMarkers.Clear();
 }
