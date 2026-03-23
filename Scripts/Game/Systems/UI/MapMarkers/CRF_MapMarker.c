@@ -37,6 +37,10 @@ modded class SCR_MapMarkersUI
 	// Loads and creates markers from player's stored data
 	void LoadStoredMarkers()
 	{
+		// Do not create widgets when the map is not open
+		if (!m_bIsMapOpen)
+			return;
+		
 		// Get stored marker data from player controller
 		array<string> markerDataArray = m_PlayerScriptedMarkerManager.GetScriptedMarkersArray();
 		
@@ -109,6 +113,17 @@ modded class SCR_MapMarkersUI
 	override protected void OnMapClose(MapConfiguration config)
 	{
 		m_bIsMapOpen = false;
+		
+		// Remove the marker update listener so updates don't create widgets after map close
+		if (m_PlayerScriptedMarkerManager)
+			m_PlayerScriptedMarkerManager.GetOnMarkerUpdate().Remove(LoadStoredMarkers);
+		
+		// Cancel any pending deferred LoadStoredMarkers call
+		GetGame().GetCallqueue().Remove(LoadStoredMarkers);
+		
+		// Clean up marker widgets before parent is destroyed
+		CleanupExistingMarkers();
+		
 		super.OnMapClose(config);
 	}
 	
