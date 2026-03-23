@@ -501,4 +501,5 @@ class CRF_RespawnMenu: ChimeraMenuBase
 				50, ARGB(255, 0, 0, 225));
 		}
 		m_MapMarkers.Clear();
+	}
 }
