@@ -52,7 +52,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "OPFOR Objectives"
    m_sTextData "Read your Admin Tab"\
    ""\
-   "Make it to the airfield with as much of your force alive as possible."
+   "Make it to the airfield with as much of your force alive as possible."\
+   ""\
+   "Expect contact almost immediately after leaving spawn."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
