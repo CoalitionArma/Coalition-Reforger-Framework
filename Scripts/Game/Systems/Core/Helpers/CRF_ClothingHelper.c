@@ -31,7 +31,7 @@ class CRF_ClothingHelper
 			if (slotInt == 123456789)
 				slotInt = -1;
 			
-			bool spawned = inventoryManager.TrySpawnPrefabToStorage(clothing, null, slotInt);
+			bool spawned = inventoryManager.TrySpawnPrefabToStorage(clothing, inventory, slotInt);
 			if (!spawned)
 				CRF_LoggingHelper.LogItemError(clothing, inventoryManager.GetOwner(), "CLOTHING");
 		}
