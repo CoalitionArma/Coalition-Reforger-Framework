@@ -208,28 +208,6 @@ class CRF_WeaponHelper
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Add a weapons magazines
-	//! \param[in] magazineArray Magazines to add
-	//! \param[in] spawnParams Spawn parameters
-	//! \param[in] inventory Inventory component
-	//! \param[in] inventoryManager Inventory manager component
-	static void AddMagazines(array<ref CRF_Magazine_Class> magazineArray, EntitySpawnParams spawnParams, 
-		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
-	{
-		// Add magazines
-		if (magazineArray != null)
-		{
-			foreach (CRF_Magazine_Class magazine : magazineArray)
-			{
-				if (magazine != null)
-				{
-					CRF_InventoryHelper.AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, spawnParams, inventory, inventoryManager);
-				}
-			}
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	//! Find the appropriate magazine array for the weapon type based off the slected weapons in ApplyDefaultWeapons
 	//! \param[in] weaponsSelected Weapons we selected when initilizing the role
 	//! \param[in] weaponType the weapon array we are comparing it to 

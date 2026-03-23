@@ -242,7 +242,7 @@ class CRF_Inventory_Item
 [BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EGearscriptClothing, "m_iClothingType")]
 class CRF_Clothing
 {
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptClothing))]
+	[Attribute("123456789", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptClothing))]
 	CRF_EGearscriptClothing m_iClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
