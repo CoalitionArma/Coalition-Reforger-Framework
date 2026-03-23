@@ -39,6 +39,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	// - All players within a zones range
 	ref array<SCR_ChimeraCharacter> m_aAllPlayersWithinZoneRange = new array<SCR_ChimeraCharacter>;
 	
+	// Cache of zone name -> entity, populated once at init to avoid FindEntityByName every tick
+	protected ref map<string, IEntity> m_mZoneEntityCache = new map<string, IEntity>();
+	
 	// RPC-based state management - no more BumpMe needed
 	protected string m_sHudMessage;
 	protected string m_sRadioSoundString;
@@ -116,6 +119,8 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		// Server-only initialization
 		if (RplSession.Mode() == RplMode.Client)
 			return;
+		
+		CacheZoneEntities();
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -209,6 +214,18 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
+	protected void CacheZoneEntities()
+	{
+		m_mZoneEntityCache.Clear();
+		foreach (string zoneName : m_aZoneObjectNames)
+		{
+			IEntity zone = GetGame().GetWorld().FindEntityByName(zoneName);
+			if (zone)
+				m_mZoneEntityCache.Insert(zoneName, zone);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void CheckAddInitialMarkers()
 	{
 		// Create markers on each bomb site
@@ -290,7 +307,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_aAllPlayersWithinZoneRange.Clear();
 			
-			IEntity zone = GetGame().GetWorld().FindEntityByName(zoneName);
+			IEntity zone = m_mZoneEntityCache.Get(zoneName);
 			
 			if(!zone)
 				continue;

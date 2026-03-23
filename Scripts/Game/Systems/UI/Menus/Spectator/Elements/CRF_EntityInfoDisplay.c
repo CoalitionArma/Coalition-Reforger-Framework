@@ -43,7 +43,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		RplComponent rpl = RplComponent.Cast(specEntity.FindComponent(RplComponent));
 		if (rpl)
 		{
-			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
 			int playerId = 0;
 			if (slotData)
 				playerId = slotData.GetSlotCurrentPlayerId();
@@ -64,7 +64,7 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 		string roleName = "";
 		if (rpl)
 		{
-			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
 			if (slotData)
 			{
 				roleName = slotData.GetSlotName();
@@ -173,10 +173,33 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 					Instigator instigator = fatalDamageEffect.GetInstigator();
 					if (instigator)
 					{
-						int killerPlayerId = instigator.GetInstigatorPlayerID();
-						string killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+						int killerPlayerId = -1;
+						string killerName = "";
 						
-						// GetPlayerName returns empty string for AI / non-player instigators
+						// First try to get player ID from instigator directly (works for old system)
+						killerPlayerId = instigator.GetInstigatorPlayerID();
+						
+						// If that doesn't work, try to get it from the instigator's entity via SlottingManager (new spawning system)
+						if (killerPlayerId <= 0)
+						{
+							IEntity killerEntity = instigator.GetInstigatorEntity();
+							if (killerEntity)
+							{
+								RplComponent killerRpl = RplComponent.Cast(killerEntity.FindComponent(RplComponent));
+								if (killerRpl)
+								{
+									CRF_SlotData killerSlotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(killerRpl.Id());
+									if (killerSlotData)
+										killerPlayerId = killerSlotData.GetSlotCurrentPlayerId();
+								}
+							}
+						}
+						
+						// Get the killer's name if we have a valid player ID
+						if (killerPlayerId > 0)
+							killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+						
+						// Display the result
 						if (killerName.IsEmpty())
 							bloodStateText = "KIA - Killed By: AI";
 						else

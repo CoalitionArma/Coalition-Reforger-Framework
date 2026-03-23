@@ -91,9 +91,9 @@ $grp SCR_DestructibleBuildingEntity : "{034A45B0D41025B9}Prefabs/Structures/Cult
 }
 $grp SCR_DestructibleBuildingEntity : "{07B7B618E3DEFBBF}Prefabs/Structures/Cultural/Castles/Castle_01_InnerWall_02.et" {
  {
-  coords 9435.4 4.419 5333.204
+  coords 9435.638 5.668 5335.895
   angles 0 -78.793 0
-  scale 1.43
+  scale 1.316
  }
  {
   coords 9776.048 -1.031 5272.543
@@ -205,6 +205,22 @@ $grp SCR_DestructibleBuildingEntity : "{1321E90FE0CF8C3C}Prefabs/Structures/Cult
   angles 0 -76.955 0
   scale 4.602
  }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    ClutterOccluder 1
+    ClutterOccluderClipPlane 10
+   }
+  }
+  coords 9752.218 -12.334 5422.699
+  angles -1.77 83.871 -6.62
+  scale 2.14
+ }
+}
+StaticModelEntity : "{19825AC4E9EBF34A}Prefabs/Structures/BuildingParts/Entry/Doorstep_02_Stairs.et" {
+ coords 9567.519 12.757 5204.899
+ angles 0 59.819 0
+ scale 1.34
 }
 $grp SCR_DestructibleBuildingEntity : "{1A6F379C9755CB88}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_03/FishermanShed_E_03_green.et" {
  {
@@ -219,6 +235,44 @@ $grp SCR_DestructibleBuildingEntity : "{1A6F379C9755CB88}Prefabs/Structures/Infr
 SCR_DestructibleBuildingEntity : "{1FFA94F4319C780D}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_01/FishermanShed_01_V1.et" {
  coords 9350.467 -0.327 5343.115
  angles 0 -64.892 0
+}
+$grp SCR_DestructibleEntity : "{20304FC74D23C37F}Prefabs/Structures/Walls/Stone/StoneWall_01/StoneWall_01_4m_A.et" {
+ {
+  coords 9564.286 -2.111 5202.611
+  angles 0 100.411 0
+  scale 3.93
+  placement none
+ }
+ {
+  coords 9581.617 -1.863 5211.53
+  angles 0 148.488 0
+  scale 3.93
+  placement none
+ }
+ {
+  coords 9572.85 -0.357 5223.097
+  angles -0.456 11.954 -0.083
+  scale 3.026
+  placement none
+ }
+ {
+  coords 9564.563 -3.838 5237.023
+  angles -1.513 92.328 -0.206
+  scale 3.498
+  placement none
+ }
+ {
+  coords 9587.335 -1.344 5211.659
+  angles -1.511 92.682 2.347
+  scale 3.622
+  placement none
+ }
+ {
+  coords 9583.875 -0.337 5220.414
+  angles -0.045 -82.802 0.461
+  scale 3.026
+  placement none
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{2B165B5BF9FE270D}Prefabs/Structures/Infrastructure/Naval/Sheds/BoatShed_01/BoatShed_01.et" {
  {
@@ -377,6 +431,28 @@ $grp GenericEntity : "{32654927F2657E8A}Prefabs/Props/Forest/WoodPile/WoodLog_01
   angles -15.284 -49.134 3.461
  }
 }
+$grp StaticModelEntity : "{33A67D671F059565}Prefabs/Structures/BuildingParts/Entry/Doorstep_01_Stairs.et" {
+ {
+  coords 9439.058 7.661 5353.621
+  angles 0 -80.175 0
+  scale 1.24
+ }
+ {
+  coords 9440.586 7.646 5362.442
+  angles 0 -80.175 0
+  scale 1.24
+ }
+ {
+  coords 9396.046 7.044 5363.482
+  angles 0 -80.175 0
+  scale 1.24
+ }
+ {
+  coords 9397.327 7.044 5370.877
+  angles 0 -80.175 0
+  scale 1.24
+ }
+}
 $grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Granite/GraniteCliff_01.et" {
  {
   coords 9838.52 -21.28 5365.074
@@ -433,6 +509,42 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Gr
   angles 0.427 -166.417 101.955
   scale 2.313
  }
+ {
+  coords 9597.915 23.244 5191.158
+  angles -10.001 -162.678 -92.903
+  scale 2.299
+ }
+ {
+  coords 9642.763 23.567 5174.54
+  angles 19.839 88.461 125.656
+  scale 3.793
+ }
+}
+$grp SCR_DestructibleEntity : "{3F75E66A286B57A5}PrefabLibrary/DefaultLibrary/Walls/Stone/StoneWall_01_end.et" {
+ {
+  coords 9564.504 -4.549 5203.63
+  angles 0 -23.077 -1.543
+  scale 5.623
+  placement none
+ }
+ {
+  coords 9575.445 0.875 5221.877
+  angles -3.949 91.507 -2.648
+  scale 2.173
+  placement none
+ }
+ {
+  coords 9563.521 0.302 5224.189
+  angles -2.625 99.016 -9.31
+  scale 2.65
+  placement none
+ }
+ {
+  coords 9585.306 0.214 5215.838
+  angles -4.099 -2.771 4.112
+  scale 1.117
+  placement none
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{47DA19EDF2754DE0}Prefabs/Structures/Cultural/Castles/Castle_01_Pillar.et" {
  {
@@ -466,9 +578,14 @@ $grp SCR_DestructibleBuildingEntity : "{47DA19EDF2754DE0}Prefabs/Structures/Cult
   scale 0.48
  }
  {
-  coords 9591.942 11.633 5216.161
-  angles 0 -87.185 0
+  coords 9592.287 11.633 5216.981
+  angles 0 -86.658 0
   scale 0.48
+ }
+ {
+  coords 9590.759 12.843 5228.296
+  angles 0 -86.658 0
+  scale 1.512
  }
 }
 $grp GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01/BoatWreck_01.et" {
@@ -536,6 +653,16 @@ $grp SCR_DestructibleBuildingEntity : "{4E17F87F82BEAC96}Prefabs/Structures/Infr
  {
   coords 9320.993 1.783 5351.485
   angles 0 -10.926 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{4EEE140BBF69CAB3}Prefabs/Structures/Culture/Castle/Castle Wooden Stairs.et" {
+ {
+  coords 9440.885 4.496 5322.898
+  angles 0 -76.183 0
+ }
+ {
+  coords 9451.773 3.91 5394.355
+  angles 0 101.602 0
  }
 }
 $grp GenericEntity : "{69E0D47D45DCE55A}Prefabs/Props/Military/FlagHolder_USSR_01/FlagHolder_USSR_01.et" {
@@ -705,14 +832,6 @@ $grp GenericEntity : "{69E0D47D45DCE55A}Prefabs/Props/Military/FlagHolder_USSR_0
     EnableDamage 0
    }
   }
-  coords 9449.597 4.248 5370.969
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-    EnableDamage 0
-   }
-  }
   coords 9448.116 4.618 5356.944
   {
    GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
@@ -809,7 +928,7 @@ $grp GenericEntity : "{69E0D47D45DCE55A}Prefabs/Props/Military/FlagHolder_USSR_0
     EnableDamage 0
    }
   }
-  coords 9582.035 10.664 5214.043
+  coords 9586.142 12.865 5210.366
   {
    GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
     components {
@@ -867,6 +986,38 @@ $grp GenericEntity : "{69E0D47D45DCE55A}Prefabs/Props/Military/FlagHolder_USSR_0
    }
   }
  }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    EnableDamage 0
+   }
+  }
+  coords 9583.397 13.468 5220.756
+  {
+   GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+    components {
+     SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+      m_aLightData {
+       SCR_BaseLightData "{68C52507145E3C19}" {
+        m_eLightType POINT
+        m_vLightOffset 0 1 0
+        m_vLightColor 0.711 0.401 0.055
+        m_fRadius 25
+        m_fIntensityClipEV 0.2
+        m_vFlareOffset 0 1 0
+        m_eLightFlags -2147483647
+       }
+      }
+      m_bGradualLightning 1
+      m_fLV 8
+      m_fDistanceAttenuation 1
+      m_eInitialLightState LIT
+     }
+    }
+    coords -0.02 1.792 -0.036
+   }
+  }
+ }
 }
 $grp GenericEntity : "{6B8645CB96D29795}Prefabs/Props/Military/DeskFlags_01/DeskFlags_01_base.et" {
  {
@@ -907,7 +1058,7 @@ $grp GenericEntity : "{6B8645CB96D29795}Prefabs/Props/Military/DeskFlags_01/Desk
 }
 $grp SCR_DestructibleBuildingEntity : "{6BE382F85F1A7491}Prefabs/Structures/Cultural/Castles/Castle_01_InnerWall_01.et" {
  {
-  coords 9444.913 4.798 5387.158
+  coords 9444.862 4.78 5386.932
   angles 0 102.641 0
   scale 1.53
  }
@@ -923,6 +1074,53 @@ $grp SCR_DestructibleBuildingEntity : "{6BE382F85F1A7491}Prefabs/Structures/Cult
 SCR_DestructibleBuildingEntity : "{6D9DDD1D4910AC4F}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_USSR_1L01_Wood.et" {
  coords 9326.752 0.624 5415.458
  angles 0 -129.774 0
+}
+$grp StaticModelEntity : "{7022F1A36DC9510C}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareWide.et" {
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00F3EB5805}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9569.285 12.213 5196.33
+  angles 0 -17.842 -90
+  scale 4.509
+ }
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00F3EB5805}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9564.082 12.13 5196.471
+  angles 0 13.358 -90
+  scale 3.922
+ }
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00F3EB5805}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9570.167 12.13 5200.606
+  angles 0 41.058 -90
+  scale 4.509
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{788F0C1721D815B9}Prefabs/Structures/Cultural/Castles/Castle_01_Bridge_wide.et" {
  {
@@ -943,7 +1141,7 @@ $grp SCR_DestructibleBuildingEntity : "{788F0C1721D815B9}Prefabs/Structures/Cult
 }
 $grp SCR_DestructibleBuildingEntity : "{92F8DAE5E56CA22E}Prefabs/Structures/Cultural/Castles/Castle_01_OuterWall_01.et" {
  {
-  coords 9451.458 10.915 5330.199
+  coords 9451.525 10.938 5330.563
   angles 0 -79.517 0
  }
  {
@@ -959,6 +1157,196 @@ $grp SCR_DestructibleBuildingEntity : "{92F8DAE5E56CA22E}Prefabs/Structures/Cult
  {
   coords 9457.25 9.425 5361.5
   angles 0 -79.517 0
+ }
+}
+$grp SCR_DestructibleEntity : "{98E2BC3984C32962}Prefabs/Structures/Walls/Wooden/WoodenWall_01/WoodenWall_01_weathered_4m.et" {
+ {
+  components {
+   ClimbingDataComponent "{68DA0C09A1FD1E6C}" {
+    CanClimbOver 0
+   }
+   RplComponent "{68C612F0CD2ECFC0}" {
+   }
+  }
+  coords 9592.204 0.042 5225.711
+  angles -0.207 86.392 16.192
+  placement none
+  MaxHealth 5000
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
+ }
+ {
+  components {
+   ClimbingDataComponent "{68DA0C09BC30DBDC}" {
+    CanClimbOver 0
+   }
+   RplComponent "{68C612F0CD2ECFC0}" {
+   }
+  }
+  coords 9592.057 0.136 5229.324
+  angles 2.249 86.784 25.453
+  placement none
+  MaxHealth 5000
+  "Melee multiplier" 5
+  DamagePhases {
+   SCR_BaseDestructionPhase "{68C52503E19C1BD7}" {
+    Threshold 0.75
+    m_sPhaseModel "{C951985827BAFA41}Assets/Structures/Walls/Wooden/WoodenWall_02_4m_B.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C52503B4FDDF8F}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C525014F3BBD72}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+   SCR_BaseDestructionPhase "{68C5250119CC8804}" {
+    Threshold 0.25
+    m_sPhaseModel "{6510D006FB5422DB}Assets/Structures/Walls/Wooden/WoodenWall_01_4m_D.xob"
+    m_aPhaseDestroySpawnObjects {
+     SCR_DebrisSpawnable "{68C5250119CC8683}" {
+      m_ModelPrefabs {
+       "{BDC8B3F76992D964}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_29_dst.xob"
+       "{B83D703082C023D2}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_28_dst.xob"
+       "{85B1A2D79E4EE60C}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_25_dst.xob"
+       "{9266ADC833050CD4}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_21_dst.xob"
+       "{998D2A47E5A0F9B8}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_23_dst.xob"
+       "{F8CD511534DCA195}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_18_dst.xob"
+       "{FD3892D2DF8E5B23}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_19_dst.xob"
+       "{CB5FC7BA15A56B91}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_16_dst.xob"
+       "{C54183F22852644B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_15_dst.xob"
+       "{D7634F2A6E4B7425}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_10_dst.xob"
+       "{D2968CED85198E93}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_11_dst.xob"
+       "{3B41C3B7DD000807}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_05_dst.xob"
+       "{30AA44380BA5FD6B}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_07_dst.xob"
+       "{2C96CCA8704BE2DF}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_01_dst.xob"
+       "{228888E04DBCED05}Assets/Structures/Walls/Wooden/Dst/WoodenWall_01/WoodenWall_01_8m_02_dst.xob"
+      }
+      m_fMass 20
+      m_fMaxDamageToSpeedMultiplier 10
+      m_fRandomVelocityAngular 60
+      m_eMaterialSoundType WOOD_PLANK_SMALL
+     }
+     SCR_ParticleSpawnable "{68C52501567B4EC6}" {
+      m_vOffsetPosition 2 1 0
+      m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+      m_bDirectional 0
+     }
+    }
+   }
+  }
+  LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+   m_aPhaseDestroySpawnObjects {
+    SCR_PrefabSpawnable "{68C5250E387F6424}" {
+     m_vOffsetPosition 1.9 -1 0
+     m_Prefabs {
+      "{720E5074722834BF}PrefabLibrary/DefaultLibrary/Structures/Ruins/HouseRuin_01_WoodPile.et"
+     }
+    }
+    SCR_PrefabSpawnable "{68C5250E77D51ED1}" {
+     m_vOffsetPosition 0.5 0 0
+     m_vOffsetRotation 0 -1 0
+     m_Prefabs {
+      "{347E746D9CC6FDFC}Prefabs/Structures/Walls/Wooden/Rural_01/WoodenRural_01_Dam_fd_fd.et"
+     }
+     m_fRandomVelocityLinear 15
+     m_fRandomVelocityAngular 20
+    }
+   }
+  }
  }
 }
 $grp StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
@@ -1337,6 +1725,53 @@ $grp StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification
   scale 2.01
  }
 }
+$grp StaticModelEntity : "{B08DF585ECD2CF4D}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareNarrow.et" {
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00FE8538C5}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9583.009 12.271 5198.098
+  angles 0 -85.957 -90
+  scale 4.03
+ }
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00FE8538C5}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9582.091 12.387 5226.232
+  angles -0.321 -171.34 -90.914
+  scale 5.136
+ }
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{68DA0C00FE8538C5}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{003244BB00581E05}Common/Materials/default_MatTerrainObj_TerrShadows.emat"
+     }
+    }
+   }
+  }
+  coords 9574.485 11.641 5219.825
+  angles -23.22 -170.88 -90.413
+  scale 3.28
+ }
+}
 SCR_DestructibleBuildingEntity : "{B484E37C0F973EC9}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_01/FishermanShed_01_base.et" {
  coords 9348.42 0.338 5353.087
  angles 0 -95.673 0
@@ -1425,6 +1860,12 @@ $grp DecalEntity : "{BCF98BBA87A30CEE}Prefabs/Decals/Dirt/Decal_Dirt_Crossroad_0
   ClutterOccluder 1
  }
 }
+SCR_DestructibleEntity : "{D20D9BCDE674CD27}PrefabLibrary/DefaultLibrary/Walls/Stone/StoneWall_02_4m_v2.et" {
+ coords 9580.829 0.619 5211.626
+ angles 0 -2.995 0.406
+ scale 1.939
+ placement none
+}
 $grp SCR_DestructibleBuildingEntity : "{DECF116069DCCC2B}Prefabs/Structures/Cultural/Castles/Castle_01_Tower.et" {
  {
   coords 9380.172 -8.059 5346.258
@@ -1438,6 +1879,12 @@ $grp SCR_DestructibleBuildingEntity : "{DECF116069DCCC2B}Prefabs/Structures/Cult
 SCR_IndestructibleEnvironmentalEntity : "{DF692A1784D6B324}Prefabs/Rocks/Granite/GraniteRock_01_V2.et" {
  coords 9380.411 -6.96 5507.056
  scale 5.04
+}
+SCR_DestructibleEntity : "{EEE23553967B32A8}Prefabs/Structures/Walls/Stone/StoneWall_01/StoneWall_01_8m.et" {
+ coords 9590.515 -5.671 5232.691
+ angles 0.402 -175.131 -3.305
+ scale 3.517
+ placement none
 }
 SCR_IndestructibleEnvironmentalEntity : "{FA6727A124372434}Prefabs/Rocks/Granite/GraniteRock_02.et" {
  coords 9342.788 -6.95 5218.107

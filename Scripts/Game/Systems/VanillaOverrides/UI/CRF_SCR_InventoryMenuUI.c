@@ -1,16 +1,5 @@
 modded class SCR_InventoryMenuUI
-{
-	//To disable picking up weapons in Gun Game
-	override void OnMenuOpen()
-	{
-		if (GetGame().GetGameMode().FindComponent(CRF_GunGame))
-		{
-			Close();
-			return;
-		}
-		super.OnMenuOpen();
-	}
-	
+{	
 	//------------------------------------------------------------------------------------------------
 	override protected void OpenAsNewContainer()
 	{
@@ -29,7 +18,7 @@ modded class SCR_InventoryMenuUI
 				{
 					
 					int playerId = SCR_PlayerController.GetLocalPlayerId();
-					CRF_SlotDataContainer slotData = slottingMan.GetPlayerSlotData(playerId);
+					CRF_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
 					CRF_ESlotType slotType = slotData.GetSlotType();
 					if (slotType != CRF_ESlotType.TEAM_LEADER && slotType != CRF_ESlotType.SQUAD_LEADER && slotType != CRF_ESlotType.MEDIC)
 						return;
@@ -58,7 +47,7 @@ modded class SCR_InventoryMenuUI
 				{
 					
 					int playerId = SCR_PlayerController.GetLocalPlayerId();
-					CRF_SlotDataContainer slotData = slottingMan.GetPlayerSlotData(playerId);
+					CRF_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
 					CRF_ESlotType slotType = slotData.GetSlotType();
 					if (slotType != CRF_ESlotType.TEAM_LEADER && slotType != CRF_ESlotType.SQUAD_LEADER && slotType != CRF_ESlotType.MEDIC)
 						return;

@@ -24,7 +24,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	[Attribute(defvalue: "0", desc: "Block mission start if critical errors found?")]
 	bool m_bBlockOnCriticalErrors;
 	
-	[Attribute(defvalue: "5.0", desc: "Validation delay after mission start (seconds)", params: "0 30 0.1")]
+	[Attribute(defvalue: "0.5", desc: "Validation delay after mission start (seconds)", params: "0 30 0.1")]
 	float m_fValidationDelay;
 	
 	[Attribute(defvalue: "1", desc: "Show UI popup in Workbench mode?")]
@@ -86,11 +86,11 @@ class CRF_MissionValidatorManager : ScriptComponent
 		m_aWarnings.Clear();
 		m_aInfoMessages.Clear();
 		
-		//! Run all validation checks
+		// Run all validation checks
 		ValidateGamemodeEntity();
 		ValidateFactions();
 		
-		//! Semms like they arent pulling the entities names, so these are being shelved so mission makers dont get yelled at.
+		// Semms like they arent pulling the entities names, so these are being shelved so mission makers dont get yelled at.
 		//ValidateSpawnMarkers();
 		//ValidateSafezones();
 		
@@ -98,26 +98,18 @@ class CRF_MissionValidatorManager : ScriptComponent
 		ValidateSlottingSetup();
 		ValidateSpecialGamemodeRequirements();
 		
-		//! Display results
+		// Display results
 		DisplayValidationResults();
 		
-		//! Show enhanced output in Workbench
+		// Show enhanced output in Workbench
 		#ifdef WORKBENCH
 		if (m_bShowWorkbenchUI)
-		{
 			ShowWorkbenchOutput();
-			
-			//! Queue HUD notification for when player spawns
-			if (m_aCriticalErrors.Count() > 0)
-			{
-				GetGame().GetCallqueue().CallLater(TryShowHudNotification, 2000, true);
-			}
-		}
 		#endif
 		
 		m_bValidationComplete = true;
 		
-		//! Block mission if critical errors and blocking enabled
+		// Block mission if critical errors and blocking enabled
 		if (m_bBlockOnCriticalErrors && m_aCriticalErrors.Count() > 0)
 		{
 			Print("[CRF Mission Validator] CRITICAL ERRORS FOUND - Mission may not function correctly!", LogLevel.ERROR);
@@ -134,7 +126,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	{
 		IEntity gamemodeEntity = GetOwner();
 		
-		//! Check for required manager components
+		// Check for required manager components
 		if (!gamemodeEntity.FindComponent(CRF_GamemodeManager))
 			AddWarning("Missing CRF_GamemodeManager component");
 		else
@@ -155,11 +147,11 @@ class CRF_MissionValidatorManager : ScriptComponent
 		else
 			AddInfo("[OK] CRF_RespawnManager component found");
 		
-		//! Check for CRF_Gamemode component and validate slot ratio
+		// Check for CRF_Gamemode component and validate slot ratio
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		if (gamemode)
 		{
-			//! Validate faction ratios
+			// Validate faction ratios
 			if (gamemode.m_iFactionOneRatio <= 0 && gamemode.m_iFactionTwoRatio <= 0)
 				AddCriticalError("(If TVT) At least one Faction Ratio must be greater than 0!");
 			else if (gamemode.m_iFactionOneRatio <= 0)
@@ -170,30 +162,30 @@ class CRF_MissionValidatorManager : ScriptComponent
 				AddInfo(string.Format("[OK] Faction ratios set to %1:%2", gamemode.m_iFactionOneRatio, gamemode.m_iFactionTwoRatio));
 		}
 		
-		//! Check for AIWorld entity
+		// Check for AIWorld entity
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (!aiWorld)
 			AddCriticalError("Missing SCR_AIWorld entity in world! AI will not function.");
 		else
 			AddInfo("[OK] SCR_AIWorld entity found");
 		
-		//! Check for Map Entity
+		// Check for Map Entity
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
 		if (!mapEntity)
 			AddCriticalError("Missing SCR_MapEntity in world! Map UI will not function.");
 		else
 			AddInfo("[OK] SCR_MapEntity found");
 		
-		//! Check for spawn points
+		// Check for spawn points
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		
-		//! BLUFOR spawn point check
+		// BLUFOR spawn point check
 		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BluforSlots || !gamemode.m_BluforSlots.IsEmpty()))
 			AddCriticalError("Missing BLUFOR Spawn Point(s) in the world! the BLUFOR Faction will not function");
 		else
 			AddInfo("[OK] BLUFOR Spawn point found");
 		
-		//! OPFOR spawn point check
+		// OPFOR spawn point check
 		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty() && (!gamemode.m_OpforSlots || !gamemode.m_OpforSlots.IsEmpty()))
 			AddCriticalError("Missing OPFOR Spawn Point(s) in the world! the OPFOR Faction will not function");
 		else
@@ -343,7 +335,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		}
 		
 		// Check if any slots exist
-		map<int, ref CRF_SlotDataContainer> slotMap = slottingManager.GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
 		
 		if (!slotMap || slotMap.IsEmpty())
 		{
@@ -360,7 +352,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			int indforSlots = 0;
 			int civSlots = 0;
 			
-			foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach (int slotId, CRF_SlotData slotData : slotMap)
 			{
 				string factionKey = slotData.GetSlotFactionKey();
 				
@@ -596,6 +588,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		Print("================================================================", LogLevel.NORMAL);
 		Print("", LogLevel.NORMAL);
 		
+		string errorStr = "[MISSION VALIDATION ERROR] \n\n";
 		int errorCount = m_aCriticalErrors.Count();
 		int warningCount = m_aWarnings.Count();
 		
@@ -667,45 +660,13 @@ class CRF_MissionValidatorManager : ScriptComponent
 		{
 			PrintFormat("[X] MISSION HAS ERRORS - %1 errors, %2 warnings", errorCount, warningCount);
 			Print("    Fix critical errors before deploying this mission!", LogLevel.NORMAL);
+			
+			foreach (string error : m_aCriticalErrors)
+				errorStr = errorStr + " \n " + error;
+			
+			Debug.Error(errorStr);
 		}
 		Print("================================================================", LogLevel.NORMAL);
 		Print("", LogLevel.NORMAL);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Try to show HUD notification (called repeatedly until player is ready)
-	protected void TryShowHudNotification()
-	{
-		// Already shown, stop trying
-		if (m_bHudNotificationShown)
-		{
-			GetGame().GetCallqueue().Remove(TryShowHudNotification);
-			return;
-		}
-		
-		// Check if gamemode is in GAME state
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (!gamemode || gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			return;
-		
-		// Check if player is in game
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
-		
-		// Check if player has spawned
-		IEntity controlledEntity = pc.GetControlledEntity();
-		if (!controlledEntity)
-			return;
-		
-		// Player is ready and game state is GAME, show notification
-		SCR_HintManagerComponent hintManager = SCR_HintManagerComponent.GetInstance();
-		if (hintManager)
-		{
-			string message = string.Format("MISSION VALIDATION FAILED - %1 CRITICAL ERRORS - CHECK CONSOLE!", m_aCriticalErrors.Count());
-			hintManager.ShowCustomHint(message, "Mission Validator", 10);
-			m_bHudNotificationShown = true;
-			GetGame().GetCallqueue().Remove(TryShowHudNotification);
-		}
 	}
 }

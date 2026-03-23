@@ -114,7 +114,7 @@ class CRF_ClothingHelper
 		bool isPistolAmmo = InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && 
 							InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO;
 		
-		bool isMedical = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
+		bool isMedical = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
 						SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
@@ -197,7 +197,7 @@ class CRF_ClothingHelper
 		if (!gamemode)
 			return false;
 
-		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.HEADGEAR, CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS, CRF_EGearscriptClothing.VEST, CRF_EGearscriptClothing.ARMOREDVEST};
+		array<CRF_EGearscriptClothing> restrictedClothing = {CRF_EGearscriptClothing.SHIRT, CRF_EGearscriptClothing.PANTS, CRF_EGearscriptClothing.BOOTS};
 		TStringArray factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
 		
 		foreach (string factionKey : factionKeys)

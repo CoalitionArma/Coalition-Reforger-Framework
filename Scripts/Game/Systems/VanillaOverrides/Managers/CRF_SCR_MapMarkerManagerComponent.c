@@ -1,3 +1,4 @@
+
 // Prevents map markers from being deleted when a player disconnects
 modded class SCR_MapMarkerManagerComponent
 {
@@ -92,8 +93,8 @@ modded class SCR_MapMarkerManagerComponent
 			if (safestartMan && gamemode && playerFaction)
 				if (safestartMan.GetSafestartStatus() && marker.GetMarkerOwnerID() == playerId)
 					CRF_PlayerRplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
-				else if (!gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()) && marker.GetMarkerOwnerID() == playerId)
-					CRF_PlayerRplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
+				else if (gamemode.DoesFactionShareMarker(playerFaction.GetFactionKey()) && marker.GetMarkerOwnerID() == playerId)
+				    CRF_PlayerRplToAuthorityManager.GetInstance().SharerMapMarkerGlobal(marker.GetMarkerID(), playerId);
 		}
 		
 		super.OnAddSynchedMarker(marker);

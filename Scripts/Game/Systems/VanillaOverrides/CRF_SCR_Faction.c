@@ -3,11 +3,13 @@ modded class SCR_Faction
 	ref array<string> m_aActiveSRChannels = {};
 	ref array<string> m_aActiveLRChannels = {};
 	
+	//------------------------------------------------------------------------------------------------
 	array<ref SCR_EntityCatalog> GetEntityCatalogs()
 	{
 		return m_aEntityCatalogs;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static string NormalizeCallsign(string callsign)
 	{
 		ref array<string> callsignSplit = {};
@@ -28,8 +30,9 @@ modded class SCR_Faction
 		return newCallsign;
 	}
 		
-	//Auto loads all the frequencies this factions needs to automate handing them out.
-	//Compares to the freqconfig, if no SR is defined it uses the group name, if no LR is defined it defaults to the first one and barks an error.
+	//------------------------------------------------------------------------------------------------
+	//! Auto loads all the frequencies this factions needs to automate handing them out.
+	//! Compares to the freqconfig, if no SR is defined it uses the group name, if no LR is defined it defaults to the first one and barks an error.
 	override void Init(IEntity owner)
 	{
 		super.Init(owner);
@@ -38,6 +41,7 @@ modded class SCR_Faction
 		GetGame().GetCallqueue().CallLater(InitializeFactionChannels, 2000 , false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void InitializeFactionChannels()
 	{
 		#ifdef WORKBENCH
@@ -108,11 +112,13 @@ modded class SCR_Faction
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelLR(GetFactionKey(), m_aActiveLRChannels);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void GenerateSR(string freq)
 	{
 		m_aActiveSRChannels.Insert(freq);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool CheckContainer(CVON_GroupFrequencyContainer container, string name, string groupName)
 	{
 		if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(name)) && !NormalizeCallsign(name).Contains(NormalizeCallsign(groupName)))
