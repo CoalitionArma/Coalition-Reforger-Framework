@@ -160,6 +160,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	}
 	
 	float m_fParachuteCheck = 0;
+	float m_fBroadcastTimer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		if (!m_aFlightObjects)
@@ -182,6 +183,16 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		}
 		else
 			m_fParachuteCheck += timeSlice;
+		
+		// Throttle position broadcast to ~15 Hz instead of every frame
+		bool broadcastPosition = false;
+		if (m_fBroadcastTimer >= 0.067)
+		{
+			broadcastPosition = true;
+			m_fBroadcastTimer = 0;
+		}
+		else
+			m_fBroadcastTimer += timeSlice;
 		foreach (CRF_AirdropFlight flight: m_aFlightObjects)
 		{
 			if (checkDeployParachutes)
@@ -248,7 +259,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	        plane.SetWorldTransform(transform);
 			plane.Update();
 			plane.OnTransformReset();
-			Rpc(RpcDo_BroadcastPositionUpdate, flight.m_RplId, transform);
+			if (broadcastPosition)
+				Rpc(RpcDo_BroadcastPositionUpdate, flight.m_RplId, transform);
 		}
 	}
 	
@@ -314,7 +326,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	[RplRpc(RplChannel.Unreliable, RplRcver.Broadcast)]
 	void RpcDo_BroadcastPositionUpdate(RplId planeId, vector transform[4])
 	{
 		if (!Replication.FindItem(planeId))
