@@ -23,6 +23,10 @@ class CRF_GearscriptManager : ScriptComponent
 		LoadRoleConfig();
 		m_ResourceCache = new CRF_ResourceCache;
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		
+		#ifdef WORKBENCH
+			GetGame().GetCallqueue().CallLater(DEBUG_SpawnAllRoleCharacters, 250, false);
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -744,6 +748,60 @@ class CRF_GearscriptManager : ScriptComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 DEBUGGING METHODS (ONLY CALLED IN WORKBENCH)
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	#ifdef WORKBENCH
+	//------------------------------------------------------------------------------------------------
+	protected void DEBUG_SpawnAllRoleCharacters()
+	{
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		// Setup Faction/Role Arrays
+		array<FactionKey> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		array<ref CRF_RoleConfig> roleArray = m_RolesConfig.GetRoleConfigArray();
+		RandomGenerator rng = new RandomGenerator;
+		
+		foreach (FactionKey factionKey : factionKeys)
+		{
+			CRF_SpawnPointData initialSpawnData = respawnManager.FindInitalFactionSpawnpoint(factionKey);
+			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+			
+			if (initialSpawnData && faction)
+			{
+				IEntity spawnPointEnt = CRF_EntityHelper.GetEntityFromRplId(initialSpawnData.GetSpawnPointEntity());
+				if (spawnPointEnt)
+				{
+					EntitySpawnParams spawnParams = new EntitySpawnParams();
+					spawnParams.TransformMode = ETransformMode.WORLD;
+					spawnPointEnt.GetWorldTransform(spawnParams.Transform);
+					
+					foreach (ref CRF_RoleConfig roleConfig : roleArray)
+						GetGame().GetCallqueue().CallLater(DEBUG_SpawnThenDeleteCharacter, rng.RandInt(500, 12000), false, spawnParams, roleConfig.m_RoleResource, faction);
+				};
+			};
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void DEBUG_SpawnThenDeleteCharacter(EntitySpawnParams spawnParams, ResourceName characterResource, Faction faction)
+	{
+		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
+			GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(characterResource), GetGame().GetWorld(), spawnParams)
+		);
+		
+		if (!playerCharacter)
+			return;
+		
+		// Update character faction
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(playerCharacter.FindComponent(FactionAffiliationComponent));
+		facComp.SetAffiliatedFaction(faction);
+		
+		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 250, false, playerCharacter);
+	}
+	#endif
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
