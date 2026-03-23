@@ -1205,6 +1205,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				componentSource.Get("MagazineWell", magazineWell);
 	    }
 		
+		if (!magazineWell)
+			return false;
+		
 		foreach (CRF_Weapon_Class weapon: weaponsToCheck)
 		{
 			Resource weaponLoaded = GetCachedResource(weapon.m_Weapon);
@@ -1230,6 +1233,8 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					
 					BaseMagazineWell weaponMagazineWell;
 					attachmentComponent.Get("MagazineWell", weaponMagazineWell);
+					if (!weaponMagazineWell)
+						continue;
 					if (magazineWell.Type() == weaponMagazineWell.Type())
 						return true;
 					else
