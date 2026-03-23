@@ -135,7 +135,7 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
-			//! Cache groups manager reference - PERFORMANCE OPTIMIZATION
+			// Cache groups manager reference - PERFORMANCE OPTIMIZATION
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 			
 			if (groupsMan)
