@@ -203,7 +203,7 @@ class CRF_WeaponHelper
 		
 		if (!spawned)
 		{
-			CRF_LoggingHelper.LogItemError(null, weapon, "Failed to spawn attachment: " + attachmentResource);
+			CRF_LoggingHelper.LogItemError(attachmentResource, weapon, "ATTATCHMENT");
 		}
 	}
 	
