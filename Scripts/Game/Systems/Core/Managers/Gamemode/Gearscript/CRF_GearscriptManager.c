@@ -76,19 +76,19 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!entity)
 			return;
 
-		//! Determine faction from resource name
+		// Determine faction from resource name
 		FactionKey factionKey = CRF_EntityHelper.DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
 			return;
 
-		//! Get gearscript resources
+		// Get gearscript resources
 		ResourceName gearScriptResourceName = m_Gamemode.GetGearScriptResource(factionKey);
 		CRF_GearScriptContainer gearScriptSettings = m_Gamemode.GetGearScriptSettings(factionKey);
 
 		if (gearScriptResourceName.IsEmpty() || !gearScriptSettings)
 			return;
 
-		//! Get required components
+		// Get required components
 		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
 
@@ -96,7 +96,7 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			string errorMsg = string.Format("Entity %1 is missing required inventory components (SCR_CharacterInventoryStorageComponent or SCR_InventoryStorageManagerComponent)", entity);
 			
-			//! Use MissionValidatorManager in Workbench, fallback to Print in game
+			// Use MissionValidatorManager in Workbench, fallback to Print in game
 			#ifdef WORKBENCH
 			CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
 			if (validator)
@@ -110,26 +110,26 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 		}
 
-		//! Get role and clear entity
+		// Get role and clear entity
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		 ClearEntityGear(inventory, inventoryManager);
 
-		//! Load gearscript config
+		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		
-		//! Prepare spawn parameters
+		// Prepare spawn parameters
 		EntitySpawnParams spawnParams = CRF_EntityHelper.CreateSpawnParams(entity.GetOrigin());
 		
-		//! Apply gear
+		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
-		//! Apply weapons
+		// Apply weapons
 		ApplyWeapons(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		
-		//! Apply inventory items
+		// Apply inventory items
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		
-		//! Initialize radios for player
+		// Initialize radios for player
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
 		{
@@ -161,17 +161,17 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!entity)
 			return;
 
-		//! Determine faction from resource name
+		// Determine faction from resource name
 		FactionKey factionKey = CRF_EntityHelper.DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
 			return;
 
-		//! Get gearscript resources
+		// Get gearscript resources
 		ResourceName gearScriptResourceName = m_Gamemode.GetGearScriptResource(factionKey);
 		if (gearScriptResourceName.IsEmpty())
 			return;
 
-		//! Load gearscript config
+		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
 			return;
@@ -180,7 +180,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!identityComp)
 			return;
 		
-		//! Get both sound and visual identities from the identity identityComp
+		// Get both sound and visual identities from the identity identityComp
 		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();
 		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
 		if (!visIdentity || !sndIdentity)
@@ -209,7 +209,7 @@ class CRF_GearscriptManager : ScriptComponent
 				sndIdentity.SetPitch(gsSndIdentity.m_VoicePitch);
 			};
 			
-			//! Commit all changes to the identity comp
+			// Commit all changes to the identity comp
 	        identityComp.CommitChanges();
 		};
     }
@@ -228,7 +228,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyClothing(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		//! Apply default faction clothing
+		// Apply default faction clothing
 		if (gearConfig)
 		{
 			foreach (CRF_Clothing clothing : gearConfig.m_DefaultClothing)
@@ -237,7 +237,7 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 		}
 		
-		//! Apply custom clothing if available
+		// Apply custom clothing if available
 		if (gearConfig)
 		{
 			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_RolesToSetCustomSettings)
@@ -269,7 +269,7 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		bool customWeaponsSet = ApplyCustomWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
-		//! Apply default weapons if no custom weapons were set
+		// Apply default weapons if no custom weapons were set
 		if (!customWeaponsSet)
 		{
 			ApplyDefaultWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
@@ -321,7 +321,7 @@ class CRF_GearscriptManager : ScriptComponent
 				};
 			}
 			
-			//! Pistol
+			// Pistol
 			if (!customGear.m_Pistols.IsEmpty())
 			{
 				CRF_Weapon_Class pistol = CRF_WeaponHelper.SelectRandomWeapon(customGear.m_Pistols);
@@ -364,7 +364,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if(gearConfig.m_Rifles && !gearConfig.m_Rifles.IsEmpty())
 					{
 						weapon = CRF_WeaponHelper.SelectRandomWeapon(gearConfig.m_Rifles);
-						weaponsSelected.Insert(weapon); //! Need to store the weapon we selected for magazines
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 				
@@ -372,7 +372,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if(gearConfig.m_RifleUGLs && !gearConfig.m_RifleUGLs.IsEmpty())
 					{
 						weapon = CRF_WeaponHelper.SelectRandomWeapon(gearConfig.m_RifleUGLs);
-						weaponsSelected.Insert(weapon); //! Need to store the weapon we selected for magazines
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 				
@@ -380,7 +380,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if(gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty())
 					{
 						weapon = CRF_WeaponHelper.SelectRandomWeapon(gearConfig.m_Carbines);
-						weaponsSelected.Insert(weapon); //! Need to store the weapon we selected for magazines
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 
@@ -388,7 +388,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if(gearConfig.m_Pistols && !gearConfig.m_Pistols.IsEmpty())
 					{
 						weapon = CRF_WeaponHelper.SelectRandomWeapon(gearConfig.m_Pistols);
-						weaponsSelected.Insert(weapon); //! Need to store the weapon we selected for magazines
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
 					};
 					break;
 
