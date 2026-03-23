@@ -1621,10 +1621,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		foreach (int magazineCount: magazineCounts)
 		{
 			for (int i = 0; i < magazineCount; i++)
-			{
-				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
-				CRF_InventoryHelper.InsertInventoryItem(newMagazine, storageComp, storageMan, role);
-			}
+				CRF_GearscriptManager.GetInstance().AddInventoryItem(magazines[currentMagazine], 1, params, storageComp, storageMan, role);
+			
 			currentMagazine++;
 		}
 		

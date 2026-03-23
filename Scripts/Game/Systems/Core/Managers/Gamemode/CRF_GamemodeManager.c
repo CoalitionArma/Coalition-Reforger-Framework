@@ -156,7 +156,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		CRF_SpawnPointData spawnPointData;
 		
 		if (spawnPointID == -1)
-			spawnPointData = m_RespawnManager.FindInitalSpawnpoint(m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey(), m_SlottingManager.GetPlayerSlotGroup(playerId));
+			spawnPointData = m_RespawnManager.FindInitalFactionSpawnpoint(m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey(), m_SlottingManager.GetPlayerSlotGroup(playerId));
 		else
 			spawnPointData = m_RespawnManager.GetSpawnPoint(spawnPointID);
 		
