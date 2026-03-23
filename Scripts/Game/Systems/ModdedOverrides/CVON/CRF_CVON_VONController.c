@@ -430,13 +430,8 @@ modded class SCR_VONController
 			m_bHasBroadcasted = true;
 		}
 		
-		// Throttle VONServerData.json reads to once per second; VONData.json writes are
-		// already gated by the dirty flag inside WriteJSON.
-		m_fServerDataBuffer += timeSlice;
-		bool checkServerData = (m_fServerDataBuffer >= 1.0);
-		if (checkServerData)
-			m_fServerDataBuffer = 0;
-		WriteJSON(checkServerData);
+		// WriteJSON runs every tick; the dirty flag inside skips SaveToFile when nothing changed.
+		WriteJSON();
 	}
 	
 	//------------------------------------------------------------------------------------------------
