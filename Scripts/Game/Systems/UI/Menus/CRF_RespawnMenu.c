@@ -35,6 +35,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		super.OnMenuOpen();
 		
+		CRF_RespawnManager.GetInstance().GetOnSpawnPointsUpdated().Insert(OnSpawnpointStateChanged);
+		
 		// Set up Respawn Selection
 		InitializeSpawnpointSelection();
 		
@@ -47,7 +49,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Set up chat panel
 		InitializeChatPanel();
-		
 	}
 	
 	/**
@@ -85,7 +86,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
 		array<CRF_SpawnPointData> factionRespawnPoints = respawnManager.GetFactionSpawnpoints(m_factionKey);
-
+		
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
 		int index = 0;
 		foreach(CRF_SpawnPointData spawnPointData : factionRespawnPoints)
@@ -100,8 +101,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			
 			// Create map marker
 			CreateSpawnPointMarker(spawnPointData.GetSpawnPointName(), worldPos);
-			
-			spawnPointData.GetOnDataUpdate().Insert(OnSpawnpointStateChanged);
 			
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(spawnPointData.GetSpawnPointName());
@@ -136,12 +135,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void OnSpawnpointStateChanged()
 	{	
+		RemoveAllSpawnPointMarker();
 		m_wSpawnListBox.Clear();
 		
-		// clear list update event handlers 
-		m_wSpawnListBox.m_OnChanged.Remove(UpdateSpawnSelection);
-		
-		PopulateListBox();
+		GetGame().GetCallqueue().Call(PopulateListBox);
 	}
 	
 	/**
@@ -185,6 +182,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
+		
+		CRF_RespawnManager.GetInstance().GetOnSpawnPointsUpdated().Remove(OnSpawnpointStateChanged);
 		
 		// Remove input handlers
 		UnregisterInputHandlers();
@@ -448,62 +447,24 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Track marker for deletion later
 		m_MapMarkers.Insert(name, worldPos);
-		
-		// Refresh the markers on the map
-		MapMarkersUIRefresh();
 	}
 	
 	/**
-	 * Removes the marker on the map for the respawn point
-	 * @param Nickname of the respawn point
-	 * @param World position of the respawn point
-	 */
-	protected void RemoveSpawnPointMarker(string name, vector worldPos)
-	{
-		// Format the string for scripted markers
-		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
-		
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
-				if (!playerScriptedMarkerManager) 
-					return;
-		
-		// Remove marker		
-		playerScriptedMarkerManager.RemoveScriptedMarker("Static Marker",
-		worldPosFormatted,
-		 1,
-		 name,
-		 "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds",
-		 50,
-		 ARGB(255, 0, 0, 225));
-		
-		// Untrack marker
-		m_MapMarkers.Remove(name);
-		
-		MapMarkersUIRefresh();
-	}	
-	
-	/**
-	 * Removes all the tracked markers
+	 * Removes all the tracked markers without triggering a map refresh (used on close).
 	 */
 	protected void RemoveAllSpawnPointMarker()
 	{
-		foreach(string name, vector worldPos: m_MapMarkers)
-		{ 		
-			RemoveSpawnPointMarker(name, worldPos);
-		}		
-	}
-	
-	/**
-	 * Refreshes the markers on the map
-	 */
-	protected void MapMarkersUIRefresh()
-	{
-		m_MapEntity = SCR_MapEntity.GetMapInstance();
-		if (!m_MapEntity) 
-			return;
-
-		// Better way of doign this?
-		m_MapEntity.CloseMap();
-		OpenMapWithConfig();
+		CRF_PlayerScriptedMarkerManager psm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		foreach (string name, vector worldPos : m_MapMarkers)
+		{
+			if (!psm)
+				break;
+			string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
+			psm.RemoveScriptedMarker("Static Marker",
+				worldPosFormatted, 1, name,
+				"{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds",
+				50, ARGB(255, 0, 0, 225));
+		}
+		m_MapMarkers.Clear();
 	}
 }

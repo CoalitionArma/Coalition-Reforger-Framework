@@ -5,35 +5,63 @@ class CRF_PlayerPolyZoneManagerClass: ScriptComponentClass
 class CRF_PlayerPolyZoneManager: ScriptComponent
 {
 	protected CRF_PolyZoneHUD m_PolyZoneHUD;
-			
+	protected ref array<int> m_aLastSentEffectIds = {};
+	protected ref array<int> m_aLastSentEffectTypes = {};
+	
+	// Returns true if the new container differs from the last sent one (by id/type — not time)
+	protected bool EffectsChanged(CRF_EffectsContainer effectsContainer)
+	{
+		if (effectsContainer.m_aEffects.Count() != m_aLastSentEffectIds.Count())
+			return true;
+		for (int i = 0; i < effectsContainer.m_aEffects.Count(); i++)
+		{
+			if (effectsContainer.m_aEffects[i].m_iId != m_aLastSentEffectIds[i])
+				return true;
+			if (effectsContainer.m_aEffects[i].m_iType != m_aLastSentEffectTypes[i])
+				return true;
+		}
+		return false;
+	}
+	
+	protected void CacheLastSentEffects(CRF_EffectsContainer effectsContainer)
+	{
+		m_aLastSentEffectIds.Clear();
+		m_aLastSentEffectTypes.Clear();
+		foreach (CRF_EffectContainer effect : effectsContainer.m_aEffects)
+		{
+			m_aLastSentEffectIds.Insert(effect.m_iId);
+			m_aLastSentEffectTypes.Insert(effect.m_iType);
+		}
+	}
+		
 	void UpdatePlayerHUD(IEntity owner)
 	{
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(owner);
 		if (!playerController)
 			return;
 		
-		IEntity character = playerController.GetControlledEntity();
-		if (!character)
-		{
-			Rpc(ShowEffects, new CRF_EffectsContainer());
-			return;
-		}
-		
-		CRF_PolyZoneEffectHandler polyZoneEffectHandler = CRF_PolyZoneEffectHandler.Cast(character.FindComponent(CRF_PolyZoneEffectHandler));
-		if (!polyZoneEffectHandler)
-		{
-			Rpc(ShowEffects, new CRF_EffectsContainer());
-			return;
-		}
-		
-		// compress effects
+		// Build the container for the current state (empty if no character / no handler)
 		CRF_EffectsContainer effectsContainer = new CRF_EffectsContainer();
-		foreach (CRF_PolyZoneTrigger trigger, CRF_PolyZoneEffect effect : polyZoneEffectHandler.m_mapPolyZoneEffects)
+		
+		IEntity character = playerController.GetControlledEntity();
+		if (character)
 		{
-			effectsContainer.m_aEffects.Insert(effect.GetEffectContainer());
+			CRF_PolyZoneEffectHandler polyZoneEffectHandler = CRF_PolyZoneEffectHandler.Cast(character.FindComponent(CRF_PolyZoneEffectHandler));
+			if (polyZoneEffectHandler)
+			{
+				foreach (CRF_PolyZoneTrigger trigger, CRF_PolyZoneEffect effect : polyZoneEffectHandler.m_mapPolyZoneEffects)
+				{
+					effectsContainer.m_aEffects.Insert(effect.GetEffectContainer());
+				}
+			}
 		}
-		// Update on client side
-		Rpc(ShowEffects, effectsContainer)
+		
+		// Only send RPC when the set of active effects has actually changed
+		if (!EffectsChanged(effectsContainer))
+			return;
+		
+		CacheLastSentEffects(effectsContainer);
+		Rpc(ShowEffects, effectsContainer);
 	}
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	protected void ShowEffects(CRF_EffectsContainer effectsContainer)
