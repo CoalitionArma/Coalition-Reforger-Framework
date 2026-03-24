@@ -125,6 +125,37 @@ class CRF_SafestartManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	// Persistence restore helpers — called only by CRF_SafestartSerializer
+	//------------------------------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	void SetSafeStartEnabledForPersistence(bool val)
+	{
+		m_bSafeStartEnabled = val;
+		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetSafeStartTimeRemainingForPersistence(int val)
+	{
+		m_iSafeStartTimeRemaining = val;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetCountdownModeForPersistence(bool val)
+	{
+		m_bCountdownMode = val;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Mark init as complete to prevent the frame-handler from re-running its one-shot startup
+	// logic after persistence has already restored a valid in-progress game state.
+	void SetInitCompleteForPersistence(bool val)
+	{
+		m_bInitComplete = val;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void AddSafestartZone(IEntity entity)
 	{
 		m_aSafestartZones.Insert(entity);

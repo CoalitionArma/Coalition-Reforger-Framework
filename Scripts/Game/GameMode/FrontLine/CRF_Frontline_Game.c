@@ -102,6 +102,16 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	// Persistence restore helper — called only by CRF_FrontlineSerializer
+	void RestoreZonesStatusForPersistence(array<string> statuses)
+	{
+		for (int i = 0; i < statuses.Count() && i < m_aZonesStatus.Count(); i++)
+			m_aZonesStatus.Set(i, statuses[i]);
+
+		UpdateClients();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);

@@ -1,13 +1,13 @@
 //------------------------------------------------------------------------------------------------
 // State data for CRF Gamemode
-// TODO: Uncomment when gamemode persistence is ready
-/*
 class CRF_GamemodeStateData : PersistentState
 {
 }
 
 //------------------------------------------------------------------------------------------------
-// Serializer for CRF Gamemode system state
+// Serializer for CRF Gamemode system state.
+// Restores m_GamemodeState and m_SlottingState so a reloaded mission resumes at the correct
+// phase rather than rewinding to BRIEFING/SLOTTING.
 class CRF_GamemodeSerializer : ScriptedStateSerializer
 {
 	//------------------------------------------------------------------------------------------------
@@ -23,16 +23,16 @@ class CRF_GamemodeSerializer : ScriptedStateSerializer
 		if (!gamemode)
 			return ESerializeResult.DEFAULT;
 
-		// Save gamemode state
-		context.WriteValue("version", 1);
-		context.WriteValueDefault("gamemodeState", gamemode.m_GamemodeState, CRF_EGamemodeState.BRIEFING);
-		
-		// Note: Safestart state and mission time are managed by separate systems
-		// and should be serialized by their own serializers
-		
-		// Save any other critical gamemode data
-		// context.WriteValue("customData", gamemode.m_CustomData);
+		// Skip saving if the game hasn't started yet — nothing meaningful to restore
+		if (gamemode.m_GamemodeState == CRF_EGamemodeState.BRIEFING)
+			return ESerializeResult.DEFAULT;
 
+		context.WriteValue("version", 1);
+		context.WriteValue("gamemodeState", gamemode.m_GamemodeState);
+		context.WriteValue("slottingState",  gamemode.m_SlottingState);
+
+		Print(string.Format("[CRF_GamemodeSerializer] Serialized state=%1 slotting=%2",
+			gamemode.m_GamemodeState, gamemode.m_SlottingState), LogLevel.NORMAL);
 		return ESerializeResult.OK;
 	}
 
@@ -47,15 +47,22 @@ class CRF_GamemodeSerializer : ScriptedStateSerializer
 		if (!gamemode)
 			return false;
 
-		// Load gamemode state
-		CRF_EGamemodeState state;
-		
-		context.ReadValueDefault("gamemodeState", state, CRF_EGamemodeState.BRIEFING);
-		
-		// Restore gamemode state
-		gamemode.m_GamemodeState = state;
+		// Restore raw values directly — do NOT call AdvanceGamemodeState() as that
+		// triggers side-effects (vehicle spawns, data collector calls, etc.) that should
+		// only fire during live gameplay, not on save reload.
+		int gamemodeState;
+		if (context.ReadValue("gamemodeState", gamemodeState))
+			gamemode.m_GamemodeState = gamemodeState;
 
+		int slottingState;
+		if (context.ReadValue("slottingState", slottingState))
+			gamemode.m_SlottingState = slottingState;
+
+		// Bump replication so clients receive the restored values
+		Replication.BumpMe();
+
+		Print(string.Format("[CRF_GamemodeSerializer] Restored state=%1 slotting=%2",
+			gamemode.m_GamemodeState, gamemode.m_SlottingState), LogLevel.NORMAL);
 		return true;
 	}
 }
-*/

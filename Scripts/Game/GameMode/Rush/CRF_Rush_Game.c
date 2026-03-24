@@ -3599,4 +3599,45 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return m_aMCOMEntities[zoneIndex][mcomIndex];
 		return null;
 	}
+
+	//================================================================================================
+	// PERSISTENCE HELPERS — called only by CRF_RushSerializer
+	//================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	int GetCurrentZone()
+	{
+		return m_iCurrentZone;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetCurrentZoneForPersistence(int zone)
+	{
+		m_iCurrentZone = zone;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Returns true if the MCOM identified by mcomIdentifier (e.g. "MCOMA") was recorded as
+	// destroyed in the dynamic tracking arrays or legacy bools.
+	bool IsMCOMDestroyedByIdentifier(string mcomIdentifier)
+	{
+		int zoneIndex, mcomIndex;
+		if (ParseMCOMIdentifier(mcomIdentifier, zoneIndex, mcomIndex))
+		{
+			if (m_aMCOMDestroyed && zoneIndex < m_aMCOMDestroyed.Count() && mcomIndex < m_aMCOMDestroyed[zoneIndex].Count())
+				return m_aMCOMDestroyed[zoneIndex][mcomIndex];
+		}
+
+		// Fallback to legacy bools
+		switch (mcomIdentifier)
+		{
+			case "MCOMA": return m_bZone1Alpha;
+			case "MCOMB": return m_bZone1Beta;
+			case "MCOMC": return m_bZone2Alpha;
+			case "MCOMD": return m_bZone2Beta;
+			case "MCOME": return m_bZone3Alpha;
+			case "MCOMF": return m_bZone3Beta;
+		}
+		return false;
+	}
 }
