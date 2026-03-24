@@ -1,440 +1,201 @@
 class CRF_RaidGamemodeComponentClass: SCR_BaseGameModeComponentClass
 {
 }
-
+ 
 class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 {
-	static CRF_RaidGamemodeComponent m_sInstance;
-	
-	[Attribute("100")] int m_iPointsToWin;
-	[Attribute("30")] int m_iPercentToExtract;
-	[Attribute("50")] float m_fPercentAttackersRetreat;
-	[Attribute("OPFOR")] string m_sDefendingSide;
-	[Attribute("BLUFOR")] string m_sAttackingSide;
-	[Attribute("INDFOR")] string m_sIndependentFaction;
-	
-	[RplProp()] int m_iPointsDestroyed = 0;
-	
-	CRF_SlottingManager m_SlottingManager;
-	int m_iCurrentPhase = 1;
-	int m_iBluforSlotted = 0;
-	int m_iBLUFORAtExtract = 0;
-	bool m_bBroadcastedEndMessage = false;
-	
-	vector m_vExtractionLocation[4];
-	
-	//Client Values
-	Widget m_wCurrentAlert;
-	int m_iWidgetChange = 0;
-	
+	// ------------------------------------------------------------------ attrs
+	[Attribute("50", UIWidgets.EditBox, "Percentage of total supply that must be destroyed to trigger an attacker victory.")]
+	float m_fWinThresholdPercent;
+ 
+	[Attribute("BLUFOR", UIWidgets.EditBox, "Faction key of the attacking side.")]
+	string m_sAttackingSide;
+ 
+	[Attribute("OPFOR", UIWidgets.EditBox, "Faction key of the defending side.")]
+	string m_sDefendingSide;
+ 
+	// ----------------------------------------------------------------- state
+	protected static CRF_RaidGamemodeComponent m_sInstance;
+ 
+	// Registered items — populated during EOnInit across all RaidItemComponents
+	protected ref array<CRF_RaidItemComponent> m_aRegisteredItems = {};
+ 
+	// Supply totals — m_iTotalSupply is finalized on the first destruction event
+	protected int  m_iTotalSupply		= 0;
+	protected int  m_iDestroyedSupply	= 0;
+	protected bool m_bTotalsReady		= false;
+	protected bool m_bVictoryTriggered	= false;
+ 
+	// Client-side HUD state
+	protected Widget m_wCurrentAlert;
+	protected int    m_iWidgetGeneration = 0;   // used to cancel stale fade callbacks
+ 
+	// --------------------------------------------------------------- ctor/dtor
 	void CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+ 
 	void ~CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
-		if (!GetGame().GetWorld())
+		if (!GetGame() || !GetGame().GetWorld())
 			return;
-		//Cleans it up on scernario reload if it's still there
+ 
 		if (m_wCurrentAlert)
 			delete m_wCurrentAlert;
 	}
-	
+ 
+	// ---------------------------------------------------------------- static
 	static CRF_RaidGamemodeComponent GetInstance()
 	{
 		return m_sInstance;
 	}
-	
+ 
+	// --------------------------------------------------------------- init
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		#ifdef WORKBENCH
-		#else
+ 
+		#ifndef WORKBENCH
 		if (!System.IsConsoleApp())
 			return;
 		#endif
-		SetEventMask(owner, EntityEvent.INIT | EntityEvent.FRAME);
+ 
+		SetEventMask(owner, EntityEvent.INIT);
 	}
-	
+ 
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		// Supply total is finalized lazily on the first destruction event,
+		// so there is nothing to schedule here.
 	}
-	
+ 
+	// ---------------------------------------------------------- registration api
+	// Called by each CRF_RaidItemComponent during its own EOnInit.
+	void RegisterRaidItem(CRF_RaidItemComponent item)
+	{
+		if (!item)
+			return;
+ 
+		m_aRegisteredItems.Insert(item);
+	}
+ 
+	// ---------------------------------------------------------- supply totalling
+	// Called once, on the first destruction event, to lock in the total.
+	// By the time a player can destroy anything the scenario is fully loaded,
+	// so every item will have already called RegisterRaidItem().
+	protected void FinalizeSupplyTotal()
+	{
+		m_iTotalSupply = 0;
+		foreach (CRF_RaidItemComponent item : m_aRegisteredItems)
+		{
+			if (item)
+				m_iTotalSupply += item.GetSupplyValue();
+		}
+ 
+		m_bTotalsReady = true;
+		Print(string.Format("[CRF_Raid] Supply pool finalized on first destruction: %1 total supply across %2 registered items.",
+			m_iTotalSupply, m_aRegisteredItems.Count()));
+	}
+ 
+	// ----------------------------------------------------------- destruction api
+	// Called by CRF_RaidItemComponent when its entity reaches EDamageState.DESTROYED.
+	void OnItemDestroyed(CRF_RaidItemComponent item)
+	{
+		if (!item || m_bVictoryTriggered)
+			return;
+ 
+		// Finalize the supply total on the very first destruction if not yet done.
+		// This is more reliable than a fixed startup delay on slow-loading servers.
+		if (!m_bTotalsReady)
+			FinalizeSupplyTotal();
+ 
+		m_iDestroyedSupply += item.GetSupplyValue();
+ 
+		if (m_iTotalSupply == 0)
+		{
+			Print("[CRF_Raid] WARNING: Total supply is 0 after finalization — check that RaidItemComponents registered correctly.", LogLevel.WARNING);
+			return;
+		}
+ 
+		float destroyedPercent = (float)m_iDestroyedSupply / (float)m_iTotalSupply * 100.0;
+ 
+		// Broadcast HUD update to all clients
+		Rpc(RpcDo_ShowDestructionUpdate, destroyedPercent);
+ 
+		// Check win condition
+		if (destroyedPercent >= m_fWinThresholdPercent && !m_bVictoryTriggered)
+		{
+			m_bVictoryTriggered = true;
+			Rpc(RpcDo_BroadcastMessage, string.Format("Attackers have destroyed enough equipment! %1%% destroyed — attacker victory!",
+				Math.Round(destroyedPercent).ToString()));
+		}
+	}
+ 
+	// ---------------------------------------------------------------- RPCs
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastMessage(string message)
+	protected void RpcDo_BroadcastMessage(string message)
 	{
 		SCR_PopUpNotification.GetInstance().PopupMsg(message);
 	}
-	
-	float m_fExtractionBuffer = 0;
-	override void EOnFrame(IEntity owner, float timeSlice)
-	{
-		super.EOnFrame(owner, timeSlice);
-		if (m_iCurrentPhase != 2)
-			return;
-		
-		if (m_fExtractionBuffer < 10)
-		{
-			m_fExtractionBuffer += 10;
-			return;
-		}
-		
-		m_fExtractionBuffer = 0;
-		if (CheckExtraction() && !m_bBroadcastedEndMessage)
-		{
-			Rpc(RpcDo_BroadcastMessage, "Attackers have extracted, Attacking victory!");
-			m_bBroadcastedEndMessage = true;
-		}
-	}
-	
-	bool CheckExtraction()
-	{
-		m_iBLUFORAtExtract = 0;
-		GetGame().GetWorld().QueryEntitiesBySphere(m_vExtractionLocation[3], 100, CheckExtractEntities);
-		if (m_iBLUFORAtExtract/m_iBluforSlotted * 100 > m_iPercentToExtract)
-			return true;
-		else
-			return false;
-	}
-	
-	bool CheckExtractEntities(IEntity entity)
-	{
-		if (ChimeraCharacter.Cast(entity))
-		{
-			if (FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent)).GetDefaultFactionKey() != m_sAttackingSide)
-				return true;
-			//Is this character dead
-			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
-			if (damageManager)
-			{
-				if (damageManager.GetState() == EDamageState.DESTROYED)
-					return true;
-				else
-					m_iBLUFORAtExtract++;
-			}
-		}
-			
-		return true;
-	}
-	
-	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
-	{
-		super.OnPlayerKilled(instigatorContextData);
-		#ifdef WORKBENCH
-		#else
-		if (!System.IsConsoleApp())
-			return;
-		#endif
-		if (m_iCurrentPhase == 2)
-			return;
-		
-		//Quick delay so we can make sure the players slot dead state is updated.
-		GetGame().GetCallqueue().CallLater(CheckAttackersDelay, 250, false);
-	}
-	
-	void CheckAttackersDelay()
-	{
-		if (IsAttackersBelowThreshold() && m_iCurrentPhase != 2)
-		{
-			Rpc(RpcDo_BroadcastMessage, "Attackers have taken too many casualties! They are retreating!");
-			NextPhase();
-		}	
-			
-	}
-	
-	//Checks to see if side is below percentage.
-	bool IsAttackersBelowThreshold()
-	{
-		int attackersSlotted = 0;
-		int attackersDead = 0;
-		foreach (int slotId, CRF_SlotData slotContainer: m_SlottingManager.GetSlotMap())
-		{
-			if (slotContainer.GetSlotCurrentPlayerId() == 0)
-				continue;
-			
-			if (slotContainer.GetSlotFactionKey() != m_sAttackingSide)
-				continue;
-			
-			attackersSlotted++;
-			if (slotContainer.GetIsDeadSlot())
-				attackersDead++;
-		}
-		
-		//No 0 division
-		if (attackersSlotted == 0 || attackersDead == 0)
-			return false;
-		
-		if ((attackersDead/attackersSlotted) * 10 < m_fPercentAttackersRetreat)
-			return true;
-		
-		return false;
-	}
-	
-	void OnObjectDestroyed(int pointsDestroyed)
-	{
-		m_iPointsDestroyed += pointsDestroyed;
-		PointsCheck();
-		Replication.BumpMe();
-		float percent = (float)m_iPointsDestroyed/(float)m_iPointsToWin * 100;
-		Rpc(RpcDo_DrawPointUpdate, pointsDestroyed, percent);
-	}
-	
+ 
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_DrawPointUpdate(int pointsAdded, float currentPercent)
+	protected void RpcDo_ShowDestructionUpdate(float destroyedPercent)
 	{
+		// Clean up any existing alert widget
 		if (m_wCurrentAlert)
+		{
+			AnimateWidget.StopAllAnimations(m_wCurrentAlert);
 			delete m_wCurrentAlert;
-		
-		m_iWidgetChange++;
+		}
+ 
+		m_iWidgetGeneration++;
+		int thisGeneration = m_iWidgetGeneration;
+ 
 		m_wCurrentAlert = GetGame().GetWorkspace().CreateWidgets("{66DCB94B8F932419}UI/layouts/HUD/Raid/RaidPopUp.layout");
+		if (!m_wCurrentAlert)
+			return;
+ 
 		m_wCurrentAlert.SetOpacity(0);
-		AnimateWidget.StopAllAnimations(m_wCurrentAlert);
-		AnimateWidget.Opacity(m_wCurrentAlert, 1, 1);
-		TextWidget.Cast(m_wCurrentAlert.FindWidget("TotalAdded")).SetText("+ " + pointsAdded.ToString());
-		Print(currentPercent);
-		ProgressBarWidget.Cast(m_wCurrentAlert.FindWidget("Progress")).SetCurrent(currentPercent);
-		GetGame().GetCallqueue().CallLater(AnimatePointUpdateFade, 2000, false, m_iWidgetChange);
+		AnimateWidget.Opacity(m_wCurrentAlert, 1, 0.5);
+ 
+		// "X% / Y%" label
+		TextWidget labelWidget = TextWidget.Cast(m_wCurrentAlert.FindWidget("TotalAdded"));
+		if (labelWidget)
+			labelWidget.SetText(string.Format("%1%% / %2%%",
+				Math.Round(destroyedPercent).ToString(),
+				Math.Round(m_fWinThresholdPercent).ToString()));
+ 
+		// Progress bar scaled so 100% full = win threshold reached
+		ProgressBarWidget progressWidget = ProgressBarWidget.Cast(m_wCurrentAlert.FindWidget("Progress"));
+		if (progressWidget)
+		{
+			float barPercent = destroyedPercent / m_fWinThresholdPercent * 100.0;
+			progressWidget.SetCurrent(Math.Clamp(barPercent, 0, 100));
+		}
+ 
+		// Fade out after 5 seconds, but only if no newer alert has appeared
+		GetGame().GetCallqueue().CallLater(FadeAlert, 5000, false, thisGeneration);
 	}
-	
-	void AnimatePointUpdateFade(int widgetChange)
+ 
+	// --------------------------------------------------------------- helpers
+	protected void FadeAlert(int generation)
 	{
-		if (widgetChange != m_iWidgetChange)
+		// A newer alert has since been shown — let that one manage its own fade
+		if (generation != m_iWidgetGeneration || !m_wCurrentAlert)
 			return;
-		
-		AnimateWidget.Opacity(m_wCurrentAlert, 0, 3);
+ 
+		AnimateWidget.Opacity(m_wCurrentAlert, 0, 1.0);
+		GetGame().GetCallqueue().CallLater(DeleteAlert, 1100, false, generation);
 	}
-	
-	void PointsCheck()
+ 
+	protected void DeleteAlert(int generation)
 	{
-		if (m_iPointsDestroyed >= m_iPointsToWin && m_iCurrentPhase != 2)
-		{
-			NextPhase();
-			Rpc(RpcDo_BroadcastMessage, "Attackers have destroyed enough equipment, they are beginning their retrograde!");
-		}	
-	}
-	
-	string GetRespawnResourceName(string side)
-	{
-		string resourceName;
-		switch (side)
-		{
-			case "BLUFOR": {resourceName = "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et"; break;}
-			case "OPFOR": {resourceName = "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et"; break;}
-			case "INDFOR": {resourceName = "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et"; break;}
-			default: {resourceName = "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et"; break;}
-		}
-		return resourceName;
-	}
-	
-	void DelayRespawn(string side)
-	{
-		CRF_RespawnManager.GetInstance().RespawnSide(side);
-	}
-	
-	void NextPhase()
-	{
-		m_iCurrentPhase = 2;
-		CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();
-		IEntity defendersRespawn = GetGame().GetWorld().FindEntityByName("DefenderRespawn");
-		EntitySpawnParams params = new EntitySpawnParams();
-		//Respawns the defenders
-		if (!defendersRespawn)
-			Print("[CRF RAID ERROR] NO DEFENDER RESPAWN LOCATION");
-		else
-		{
-			defendersRespawn.GetTransform(params.Transform);
-			GetGame().SpawnEntityPrefab(Resource.Load(GetRespawnResourceName(m_sDefendingSide)), null, params);
-			GetGame().GetCallqueue().CallLater(DelayRespawn, 1000, false, m_sDefendingSide);
-		}
-		
-		//Below is to sort and respawn the dead attackers into independent faction
-		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
-		PlayerManager playerMan = GetGame().GetPlayerManager();
-		Faction indfor = factionMan.GetFactionByKey(m_sIndependentFaction);
-		ref array<int> players = {};
-		ref array<int> leaders = {};
-		ref array<int> joes = {};
-		
-		
-		playerMan.GetPlayers(players);
-		ChooseRetrograde();
-		EntitySpawnParams indParams = new EntitySpawnParams();
-		indParams.Transform = m_vExtractionLocation;
-		foreach (int playerId: players)
-		{	
-			Faction playerFaction = factionMan.GetPlayerFaction(playerId);
-			SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-			if (!playerFaction)
-				continue;
-			
-			if (!m_SlottingManager.GetPlayerSlotFaction(playerId))
-				continue;
-			
-			//How many blufor are slotted when we switch phases, used for extraction logic.
-			if (m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() == m_sAttackingSide)
-				m_iBluforSlotted++;
-			
-			if (m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() != m_sAttackingSide || !m_SlottingManager.GetPlayerSlotData(playerId).GetIsDeadSlot())
-				continue;
-			
-			CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(m_SlottingManager.GetPlayerSlotResource(playerId));
-			CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
-			if (roleConfig.m_SlottingType == CRF_ESlotType.SQUAD_LEADER || roleConfig.m_SlottingType == CRF_ESlotType.TEAM_LEADER)
-				leaders.Insert(playerId);
-			else
-				joes.Insert(playerId);
-			
-			GetGame().GetCallqueue().CallLater(CRF_PlayerHelper.AssignFactionToPlayer, 100, false, playerController, indfor);
-			GetGame().GetCallqueue().CallLater(SpawnEntity, 300, false, roleConfig, indParams, playerController);
-		}
-		
-		int joeSize = joes.Count();
-		int amountOfSquads = 1;
-		if (joeSize > 0)
-			amountOfSquads = Math.Ceil(joeSize / 8.0);
-		ref array<SCR_AIGroup> groups = {};
-		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-		//Create the groups for indfor players
-		for (int i = 0; i < amountOfSquads; i++)
-		{
-			SCR_AIGroup newGroup = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(indfor);
-			newGroup.SetFaction(indfor);
-			newGroup.SetGroupFlag(CRF_EFlagType.INFANTRY, true);
-			newGroup.SetCanDeleteIfNoPlayer(false);
-			newGroup.SetDeleteWhenEmpty(false);
-			newGroup.SetMaxMembers(15);
-			groups.Insert(newGroup);
-		}
-		
-		GetGame().GetCallqueue().CallLater(SCR_Faction.Cast(indfor).InitializeFactionChannels, 200, false);
-		
-		for (int i = 0; i < joeSize; i++)
-		{
-			int index = i % amountOfSquads;
-			SCR_AIGroup group = groups.Get(index);
-			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
-			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 700, false, group.GetGroupID(), joes.Get(i), groupId);
-		}
-		
-		for (int i = 0; i < leaders.Count(); i++)
-		{
-			int index = i % amountOfSquads;
-			SCR_AIGroup group = groups.Get(index);
-			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
-			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 700, false, group.GetGroupID(), leaders.Get(i), groupId);
-		}
-		
-	}
-	
-	void ChooseRetrograde()
-	{
-		int amountOfExtractions = 0;
-		for (int i = 1; GetGame().GetWorld().FindEntityByName("Extraction" + i.ToString()) != null; i++)
-  			amountOfExtractions++;
-		
-		if (amountOfExtractions == 0)
-		{
-			Print("[CRF_RAID ERROR] NO EXTRACTIONS DEFINED");
+		if (generation != m_iWidgetGeneration || !m_wCurrentAlert)
 			return;
-		}
-		
-		RandomGenerator randomGen = new RandomGenerator();
-  		randomGen.SetSeed(System.GetTickCount());
-  		int selectedExtract = randomGen.RandInt(1, amountOfExtractions);
-		
-		GetGame().GetWorld().FindEntityByName("Extraction" + selectedExtract.ToString()).GetTransform(m_vExtractionLocation);
-		
-		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
-		SCR_MapMarkerBase newMarker = new SCR_MapMarkerBase();
-		newMarker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
-		newMarker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);
-		newMarker.SetCustomText("Extraction");
-		newMarker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.ORANGE);
-		newMarker.SetWorldPos(m_vExtractionLocation[3][0], m_vExtractionLocation[3][2]);
-		markerMan.InsertStaticMarker(newMarker, false, true);
-	}
-	
-	void SpawnEntity(CRF_RoleConfig roleConfig, EntitySpawnParams indParams, PlayerController playerController)
-	{
-		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(roleConfig.m_RoleResource), null, indParams);
-		
-		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(newEntity.FindComponent(FactionAffiliationComponent));
-		facComp.SetAffiliatedFactionByKey("INDFOR");
-		
-		GetGame().GetCallqueue().CallLater(AssignPlayerToCharacter, 250, false, SCR_PlayerController.Cast(playerController), newEntity);
-	}
-	
-	void AssignPlayerToCharacter(SCR_PlayerController playerController, IEntity entity)
-	{
-		if (!playerController || !entity)
-		{
-			Print("[CRF_Raid] ERROR: AssignPlayerToCharacter called with null parameters", LogLevel.ERROR);
-			return;
-		}
-		
-		int playerId = playerController.GetPlayerId();
-		
-		// Route assignment through the base game SCR_SpawnRequestComponent pipeline so that
-		// SCR_DataCollectorComponent.OnPlayerSpawnFinalize_S and all other data components
-		// are properly notified, consistent with the main CRF spawn flow.
-		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
-			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
-		);
-		
-		if (respawnComponent)
-		{
-			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(entity);
-			if (!respawnComponent.RequestSpawn(spawnData))
-				Print(string.Format("[CRF_Raid] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
-		}
-		else
-		{
-			// Fallback
-			Print(string.Format("[CRF_Raid] WARNING: No SCR_RespawnComponent for player %1 — falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
-			playerController.SetInitialMainEntity(entity);
-			
-			// Manually notify data collector since RequestSpawn pipeline was bypassed
-			SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(
-				GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent)
-			);
-			if (dataCollector)
-				dataCollector.NotifyPlayerSpawned(playerId, entity);
-		}
-		
-		RplComponent playerRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
-		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerId, playerRplComp.Id());
-		
-		// NOTE: SCR_DataCollectorComponent.OnPlayerSpawnFinalize_S is now called automatically
-		// by the base game pipeline when RequestSpawn completes — manual NotifyPlayerSpawned removed.
-	}
-	
-	void AssignPlayerToGroup(int groupId, int playerId, RplId groupRplId)
-	{
-		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
-		if (groupComponent)
-			groupComponent.RequestJoinGroup(groupId);
-		CRF_SlotData currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
-		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
-		
-		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(character.GetPrefabData().GetPrefabName());
-		
-		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
-		currentData.SetSlotFactionKey(m_sIndependentFaction);
-		currentData.SetSlotCurrentPlayerId(playerId);
-		currentData.SetSlotCurrentGroup(groupRplId);
-		currentData.SetSlotCurrentCharacter(characterRplId);
-		currentData.SetSlotRole(role);
-		
-		// Use optimized delta updates instead of full container broadcast
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
-		broadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
-		broadcastManager.UpdateSlotGroupDelta(slotId, groupRplId);
-		broadcastManager.UpdateSlotCharacterDelta(slotId, characterRplId);
-		broadcastManager.UpdateSlotRoleDelta(slotId, role);
+ 
+		delete m_wCurrentAlert;
+		m_wCurrentAlert = null;
 	}
 }
