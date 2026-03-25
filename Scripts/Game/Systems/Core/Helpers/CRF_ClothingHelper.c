@@ -22,19 +22,29 @@ class CRF_ClothingHelper
 		ResourceName clothing = clothingArray.GetRandomElement();
 
 		// Process previous clothing and its contents
-		if (previousClothing != null)
+		if (previousClothing)
 			ProcessPreviousClothing(previousClothing, removedItems, inventory, inventoryManager);
 
 		// Add new clothing if exists
 		if (!clothing.IsEmpty())
-			SpawnClothing(clothing, slotInt, spawnParams, inventory, inventoryManager);
+		{
+			if (slotInt == 123456789)
+				slotInt = -1;
+			
+			bool spawned = inventoryManager.TrySpawnPrefabToStorage(clothing, inventory, slotInt);
+			if (!spawned)
+				CRF_LoggingHelper.LogItemError(clothing, inventoryManager.GetOwner(), "CLOTHING");
+		}
 
 		// Handle previously removed items
 		foreach (IEntity oldItem : removedItems)
 		{
 			if (!deletePreviousItems)
-				CRF_InventoryHelper.InsertInventoryItem(oldItem, inventory, inventoryManager, role);
-			else 
+			{
+				bool inserted = inventoryManager.TryInsertItemInStorage(oldItem, inventory, slotInt);
+				if (!inserted)
+					inventoryManager.TryInsertItemInStorage(oldItem, inventory);
+			} else 
 				SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
 		}
 	}
@@ -75,111 +85,6 @@ class CRF_ClothingHelper
 
 		inventoryManager.TryRemoveItemFromStorage(previousClothing, inventory);
 		SCR_EntityHelper.DeleteEntityAndChildren(previousClothing);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Spawn new clothing
-	//! \param[in] clothingResource Clothing resource to spawn
-	//! \param[in] slotInt Slot to place in
-	//! \param[in] spawnParams Spawn parameters
-	//! \param[in] inventory Inventory component
-	//! \param[in] inventoryManager Inventory manager component
-	static void SpawnClothing(ResourceName clothingResource, int slotInt, EntitySpawnParams spawnParams, 
-		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
-	{
-		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothingResource), GetGame().GetWorld(), spawnParams);
-		inventoryManager.TryReplaceItem(resourceSpawned, inventory, slotInt);
-
-		if (!inventoryManager.Contains(resourceSpawned))
-		{
-			CRF_LoggingHelper.LogItemError(resourceSpawned, inventoryManager.GetOwner(), "CLOTHING");
-			SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Determine appropriate clothing slots for an item
-	//! \param[in] item Item to filter
-	//! \param[in] role Role identifier
-	//! \param[in] isThrowable Whether item is a throwable
-	//! \return Array of appropriate clothing slot IDs
-	static TIntArray FilterItemToClothing(IEntity item, CRF_EGearRole role = 0, bool isThrowable = false)
-	{
-		array<int> clothingIDs = {};
-
-		// Determine item type
-		bool isMagazine = MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || 
-						  InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent));
-		
-		bool isPistolAmmo = InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && 
-							InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO;
-		
-		bool isMedical = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
-						SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
-		
-		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
-		
-		bool isExplosive = (CRF_InventoryHelper.IsExplosive(item));
-		
-		bool isTool = (CRF_InventoryHelper.IsTool(item));
-
-		// Magazines and throwables go in backpack, vest, armor, primarily
-		if (isMagazine)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.BACKPACK,
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST,
-				CRF_EGearscriptClothing.PANTS, 
-				CRF_EGearscriptClothing.SHIRT
-			};
-		}
-		// Non-magazines go in shirt, pants, vest primarily
-		else
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.SHIRT, 
-				CRF_EGearscriptClothing.PANTS, 
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST, 
-				CRF_EGearscriptClothing.BACKPACK
-			};
-		}
-
-		// Pistol ammo and throwables go in pants, vest primarily
-		if (isPistolAmmo || isThrowable)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.PANTS, 
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST, 
-				CRF_EGearscriptClothing.BACKPACK
-			};
-		}
-
-		// Radios go in pants, shirt, vest primarily
-		if (isRadio)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.PANTS, 
-				CRF_EGearscriptClothing.SHIRT, 
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST, 
-				CRF_EGearscriptClothing.BACKPACK
-			};
-		}
-
-		// Explosives/Medical items go in backpack, vest primarily
-		if (isExplosive || isMedical || isTool)
-		{
-			clothingIDs = {
-				CRF_EGearscriptClothing.BACKPACK,
-				CRF_EGearscriptClothing.VEST, 
-				CRF_EGearscriptClothing.ARMOREDVEST
-			};
-		}
-
-		return clothingIDs;
 	}
 	
 	//------------------------------------------------------------------------------------------------

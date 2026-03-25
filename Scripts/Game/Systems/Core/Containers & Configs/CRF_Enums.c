@@ -90,6 +90,7 @@ enum CRF_ESlotUpdateField
 
 enum CRF_EGearscriptClothing
 {
+	UNDEFINED = 123456789,
 	HEADGEAR = 0,
 	SHIRT,
 	ARMOREDVEST,
