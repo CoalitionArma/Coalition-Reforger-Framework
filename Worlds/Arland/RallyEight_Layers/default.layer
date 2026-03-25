@@ -1,0 +1,33 @@
+$grp GameEntity {
+ rally_start {
+  coords 1226.118 39 2207.841
+ }
+ rally_cp1 {
+  coords 951.489 39 2601.362
+ }
+ rally_finish {
+  coords 912.753 39 2884.237
+ }
+ rally_cp2 {
+  coords 1224.103 39.001 2720.395
+ }
+ rally_cp3 {
+  coords 1756.542 38.999 2865.057
+ }
+ rally_cp4 {
+  coords 1716.46 39 2937.221
+ }
+ rally_cp5 {
+  coords 1254.176 37.656 2846.928
+ }
+ rally_cp6 {
+  coords 991.874 38.999 2780.698
+ }
+}
+Vehicle S105_rally1 : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ coords 1306.662 39.01 2095.458
+ angles 0 -33 0
+}
+CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 1312.576 39 2089.153
+}
