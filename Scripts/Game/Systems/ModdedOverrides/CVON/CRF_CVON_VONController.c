@@ -430,13 +430,8 @@ modded class SCR_VONController
 			m_bHasBroadcasted = true;
 		}
 		
-		//Our plugin only checks every 50ms
-		if (m_fVONSaveBuffer >= 0.05)
-		{
-			WriteJSON();
-			m_fVONSaveBuffer = 0;
-		}
-		else m_fVONSaveBuffer += timeSlice;
+		// WriteJSON runs every tick; the dirty flag inside skips SaveToFile when nothing changed.
+		WriteJSON();
 	}
 	
 	//------------------------------------------------------------------------------------------------
