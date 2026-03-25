@@ -1,0 +1,98 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 10799.662 166.642 11036.688
+  angles 0 95.017 0
+  m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 10799.179 165.962 11028.243
+  angles 0 94.652 0
+  m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 10798.119 165.195 11020.089
+  angles 0 97.618 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10798.046 164.505 11014.545
+  angles 0 97.618 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10797.152 163.819 11009.053
+  angles 0 102.197 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10795.833 163.134 11003.32
+  angles 0 102.238 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11760.96 155.19 12562.5
+  angles 0 24.816 0
+  m_rVehicle "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11765.728 154.892 12560.088
+  angles 0 24.816 0
+  m_rVehicle "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11774.161 154.271 12555.685
+  angles 0 31.09 0
+  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11778.188 154.002 12552.904
+  angles 0 28.824 0
+  m_rVehicle "{543799AC5C52989C}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_beige.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11782.425 153.723 12550.272
+  angles 0 27.768 0
+  m_rVehicle "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11786.668 153.429 12547.488
+  angles 0 28.223 0
+  m_rVehicle "{23B8C20ACAEC164B}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_white.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11790.758 153.185 12544.895
+  angles 0 31.365 0
+  m_rVehicle "{11A28C90DB40318D}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_red.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 11770.596 154.547 12558.113
+  angles 0 32.894 0
+  m_rVehicle "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+}
