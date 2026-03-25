@@ -256,9 +256,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, RplId SpawnRplID)
+	void RespawnPlayer(int playerId, int spawnPointID)
 	{
-		Rpc(RpcAsk_RespawnPlayer, playerId, SpawnRplID); 
+		Rpc(RpcAsk_RespawnPlayer, playerId, spawnPointID); 
 	}	
 	
 	//------------------------------------------------------------------------------------------------
@@ -286,9 +286,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SpawnOnGroup(int playerId, vector spawnLocation, int groupID, bool logAction)
+	void SpawnOnGroup(int playerId, int playerIDToSpawnOn, int groupID, bool logAction)
 	{
-		Rpc(RpcAsk_SpawnOnGroup, playerId, spawnLocation, groupID, logAction); 
+		Rpc(RpcAsk_SpawnOnGroup, playerId, playerIDToSpawnOn, groupID, logAction); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -896,17 +896,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RespawnPlayer(int playerId, RplId SpawnRplID)
+	protected void RpcAsk_RespawnPlayer(int playerId, int spawnPointID)
 	{
-		// Telemetry: int + RplId
+		// Telemetry: int + int
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_RplId();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_RespawnPlayer", bytes);
 		
-		vector overrideLocation[4];
-		overrideLocation = CRF_EntityHelper.ZERO_SPAWN_VECTOR;
-		
-		m_RespawnManager.RespawnPlayer(playerId, overrideLocation, -1, SpawnRplID);
+		m_RespawnManager.RespawnPlayer(playerId, spawnPointID);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -997,15 +994,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SpawnOnGroup(int playerId, vector spawnLocation[4], int groupID, bool logAction)
+	protected void RpcAsk_SpawnOnGroup(int playerId, int playerIDToSpawnOn, int groupID, bool logAction)
 	{
-		// Telemetry: 2 ints + vector[4] + bool (vector array = 4 vectors * 12 bytes = 48)
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
-		bytes += 48; // vector[4]
+		// Telemetry: 3 ints + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 3;
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_SpawnOnGroup", bytes);
 		
-		m_RespawnManager.RespawnPlayer(playerId, spawnLocation, groupID);
+		m_RespawnManager.RespawnPlayer(playerId);
 
 		if (logAction)
 		{
@@ -1097,11 +1093,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			prefab
 		);
 		
-		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
 		
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
-		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
+		CRF_SlotData slotData = m_SlottingManager.GetSlotData(slotId);
 		
 		// Use delta updates for individual field changes (90%+ bandwidth savings)
 		slotData.SetSlotRole(role);
@@ -1625,10 +1621,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		foreach (int magazineCount: magazineCounts)
 		{
 			for (int i = 0; i < magazineCount; i++)
-			{
-				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
-				CRF_InventoryHelper.InsertInventoryItem(newMagazine, storageComp, storageMan, role);
-			}
+				CRF_GearscriptManager.GetInstance().AddInventoryItem(magazines[currentMagazine], 1, params, storageComp, storageMan, role);
+			
 			currentMagazine++;
 		}
 		
@@ -1958,7 +1952,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
 	{
 		// Get slot data from the slotting manager
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
 		if (!slotData)
 			return;
 		

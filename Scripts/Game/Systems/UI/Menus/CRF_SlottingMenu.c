@@ -579,10 +579,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		m_iTakenCivSlots = 0;
 		
 		// Get all slot data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots for each faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		foreach (int slotId, CRF_SlotData slotData : slotMap)
 		{			
 			// Skip locked or dead slots
 			if(slotData.GetIsLockedSlot())
@@ -639,7 +639,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		UpdateUIBorderColors();
 		
 		// Get slot data and groups for the selected faction
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> groups = GetPlayableGroupsForSelectedFaction();
 		
 		// Populate UI with groups and slots
@@ -683,7 +683,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 * @param groups - Array of groups to display
 	 * @param slotMap - Array of all slot data
 	 */
-	private void PopulateGroupsAndSlots(array<SCR_AIGroup> groups, map<int, ref CRF_SlotDataContainer> slotMap)
+	private void PopulateGroupsAndSlots(array<SCR_AIGroup> groups, map<int, ref CRF_SlotData> slotMap)
 	{
 		bool isAdmin = SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId());
 		
@@ -752,7 +752,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 * @param deadPlayersInGroup - Counter for dead players in group
 	 * @param isAdmin - Whether current player is admin
 	 */
-	private void AddSlotsToGroup(SCR_AIGroup group, map<int, ref CRF_SlotDataContainer> slotMap, 
+	private void AddSlotsToGroup(SCR_AIGroup group, map<int, ref CRF_SlotData> slotMap, 
 		int groupIndex, int orbatGroupIndex, out int leadersInGroup, out int playersInGroup, 
 		out int deadPlayersInGroup, bool isAdmin)
 	{
@@ -764,7 +764,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		foreach (int id: slottingManager.GetAllSlotIDsForGroup(groupId))
 		{
 			ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
-			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotData slotData : slotMap)
 			{	
 				if (slotData.GetSlotResource() != prefab || slotStored.Contains(slotId))
 					continue;
@@ -838,7 +838,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 * @param orbatGroupIndex - UI index of group in orbat view
 	 * @param leadersInGroup - Counter for leaders in group
 	 */
-	private void AddLeaderToOrbat(CRF_SlotDataContainer slotData, int slotId, int orbatGroupIndex, int leadersInGroup)
+	private void AddLeaderToOrbat(CRF_SlotData slotData, int slotId, int orbatGroupIndex, int leadersInGroup)
 	{
 		int orbatIndex = m_cOrbatListBoxComponent.AddItemSlot(null, slotId, 
 			"{BD36FFAE9AB69175}UI/Listbox/PlayerSlotListboxOrbatElementNonAdmin.layout");
@@ -870,7 +870,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 * @param slotIndex - UI index of the slot
 	 * @param slotData - Slot data
 	 */
-	private void SetupAdminSlotControls(int slotIndex, CRF_SlotDataContainer slotData)
+	private void SetupAdminSlotControls(int slotIndex, CRF_SlotData slotData)
 	{
 		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetLockButton().m_OnClicked.Insert(LockSlotDelay);
 		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetKickButton().m_OnClicked.Insert(KickSlotDelay);

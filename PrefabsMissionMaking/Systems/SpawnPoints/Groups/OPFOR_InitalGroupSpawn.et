@@ -1,0 +1,6 @@
+CRF_GroupSpawnPoint : "{50222B91DD5AF770}PrefabsMissionMaking/Systems/SpawnPoints/Groups/InitalGroupSpawn_Base.et" {
+ ID "50C6D20663830070"
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4ED9EB427A}" {
+  m_iSpawnPointFaction OPFOR
+ }
+}

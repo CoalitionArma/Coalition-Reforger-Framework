@@ -59,6 +59,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bFrameEventRegistered = false;          // Flag to track if frame event is registered
 	protected bool m_bTPPMode = false;                       // True = third-person camera, false = first-person (helmet cam)
 	
+	// Last kill world position, updated by OnKillfeedNotification, used by Action_TeleportToKill
+	protected vector m_vLastKillPosition = vector.Zero;
+
 	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
 	
 	// Main timer elements
@@ -173,6 +176,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+
+		// Subscribe to notification events to track kill locations for R-key teleport
+		SCR_NotificationsComponent notifComp = SCR_NotificationsComponent.GetInstance();
+		if (notifComp)
+			notifComp.GetOnNotification().Insert(OnKillfeedNotification);
 	}
 	
 	void DismissSlottingWarning()
@@ -199,6 +207,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		inputManager.AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 		inputManager.AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		inputManager.AddActionListener("CRF_SpecToggleCamMode", EActionTrigger.DOWN, ToggleCameraMode);
+		inputManager.AddActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
 	}
 	
 	/**
@@ -648,11 +657,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// ALL SLOT-BASED CHARACTERS
 		//------------------------------------------------------------------------------------------------
 		
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		if (slotMap && !slotMap.IsEmpty())
 		{
-			foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach (int slotId, CRF_SlotData slotData : slotMap)
 			{		
 				RplId slotRplId = slotData.GetSlotCurrentCharacter();
 				
@@ -1173,7 +1182,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 				if (slottingManager)
 				{
-					CRF_SlotDataContainer playerSlotData = slottingManager.GetPlayerSlotData(playerId);
+					CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(playerId);
 					if (playerSlotData && !playerSlotData.GetIsDeadSlot())
 						continue; // Skip alive players
 				}
@@ -1434,10 +1443,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void InitSlots()
 	{
 		// Get all slots from the slotting manager
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Process each slot to count by faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		foreach (int slotId, CRF_SlotData slotData : slotMap)
 		{
 			// Skip locked or empty slots
 			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
@@ -1517,7 +1526,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_iAliveCivSlots, m_iCivSlots);
 		
 		// Get slot and group data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		array<SCR_AIGroup> factionGroups = {};
 		
@@ -1562,7 +1571,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 			
 			// Process all slots in this group
-			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotData slotData : slotMap)
 			{	
 				// Skip slots that don't belong to this group/faction
 				if (slotData.GetSlotCurrentGroup() != groupId || 
@@ -1704,7 +1713,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return;
 		
 		// Get slot data from the slotting manager
-		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(selectedComponent.m_iSlotId);
+		CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotData(selectedComponent.m_iSlotId);
 		if (!slotData)
 			return;
 		
@@ -1794,6 +1803,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			inputManager.RemoveActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 			inputManager.RemoveActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 			inputManager.RemoveActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+			inputManager.RemoveActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
 		}
 		
 		ForceNVGsOff();
@@ -1821,6 +1831,55 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		ArmaReforgerScripted.OpenPlayerList();
 	}
 	
+	/**
+	 * Called when any notification is received locally.
+	 * For killfeed notifications, resolves and stores the victim's world position
+	 * so Action_TeleportToKill can jump to it.
+	 */
+	protected void OnKillfeedNotification(SCR_NotificationData data)
+	{
+		int id = data.GetID();
+		if (id != ENotification.PLAYER_DIED &&
+			id != ENotification.PLAYER_KILLED_PLAYER &&
+			id != ENotification.AI_KILLED_PLAYER &&
+			id != ENotification.POSSESSED_AI_DIED &&
+			id != ENotification.POSSESSED_AI_KILLED_PLAYER &&
+			id != ENotification.POSSESSED_AI_KILLED_POSSESSED_AI &&
+			id != ENotification.AI_KILLED_POSSESSED_AI)
+			return;
+
+		// Force the display data to resolve the entity position into the notification data
+		SCR_NotificationDisplayData displayData = data.GetDisplayData();
+		if (displayData)
+			displayData.SetPosition(data);
+
+		vector pos;
+		data.GetPosition(pos);
+		if (pos != vector.Zero)
+			m_vLastKillPosition = pos;
+	}
+
+	/**
+	 * Teleports the spectator camera to the location of the most recent killfeed event.
+	 * Mirrors the Zeus "R" shortcut for jumping to kill events.
+	 * If currently following a player, detaches first so the free-cam teleport takes effect.
+	 */
+	void Action_TeleportToKill()
+	{
+		if (m_vLastKillPosition == vector.Zero)
+			return;
+
+		// Detach from any followed entity so the teleport takes effect
+		if (m_eSpecEntity)
+		{
+			m_eSpecEntity = null;
+			m_bFPPEntityValidityCheck = false;
+			UnregisterFrameEvent();
+		}
+
+		MoveCamera(m_vLastKillPosition);
+	}
+
 	/**
 	 * Teleports the camera to the position under the cursor
 	 * Triggered by the manual camera teleport action

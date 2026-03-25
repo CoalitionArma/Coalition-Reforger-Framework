@@ -111,6 +111,129 @@ $grp CRF_VehicleSpawner {
   }
  }
 }
+PolylineShapeEntity {
+ coords 2696.678 242.294 5917.147
+ Points {
+  ShapePoint "{68E8D7CBA131E153}" {
+   Position -17.835 0 8.251
+  }
+  ShapePoint "{68E8D7CBA1E3BECA}" {
+   Position 2.218 0 -24.388
+  }
+  ShapePoint "{68E8D7CBA059828E}" {
+   Position 26.853 0 -4.083
+  }
+  ShapePoint "{68E8D7CBA71BDF2F}" {
+   Position 4.43 0 28.733
+  }
+  ShapePoint "{68E8D7CBA63F4A3C}" {
+   Position -16.679 0 10.154
+  }
+ }
+ LineColor 0 0 0 0
+ {
+  WallGeneratorEntity : "{DC02082051FDEC54}Prefabs/WEGenerators/Walls/Net/WG_NetFence_USSR_01_poles.et" {
+   Flags 0x100003 0
+   m_iSeed 17525
+   {
+    $grp SCR_DestructibleEntity : "{2CA940B210EDA36E}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_6m_V2.et" {
+     {
+      coords -17.302 -2.457 7.382
+      angles 0 58.434 0
+     }
+     {
+      coords -14.21 -2.693 2.35
+      angles 0 58.434 0
+     }
+     {
+      coords -11.119 -2.984 -2.682
+      angles 0 58.434 0
+     }
+     {
+      coords -8.027 -3.368 -7.713
+      angles 0 58.434 0
+     }
+     {
+      coords -4.936 -3.792 -12.745
+      angles 0 58.434 0
+     }
+     {
+      coords -1.844 -4.202 -17.777
+      angles 0 58.434 0
+     }
+     {
+      coords 1.225 -4.589 -22.924
+      angles 0 -36.322 0
+     }
+     {
+      coords 5.973 -4.134 -19.434
+      angles 0 -36.322 0
+     }
+     {
+      coords 10.721 -3.615 -15.943
+      angles 0 -36.322 0
+     }
+     {
+      coords 15.469 -3.095 -12.452
+      angles 0 -36.322 0
+     }
+     {
+      coords 20.218 -2.629 -8.962
+      angles 0 -36.322 0
+     }
+     {
+      coords 25.071 -1.994 -5.492
+      angles 0 -121.093 0
+     }
+     {
+      coords 22.019 -1.663 -0.431
+      angles 0 -121.093 0
+     }
+     {
+      coords 18.967 -1.4 4.63
+      angles 0 -121.093 0
+     }
+     {
+      coords 15.914 -1.094 9.691
+      angles 0 -121.093 0
+     }
+     {
+      coords 12.862 -0.831 14.753
+      angles 0 -121.093 0
+     }
+     {
+      coords 9.81 -0.595 19.814
+      angles 0 -121.093 0
+     }
+     {
+      coords 6.784 -0.388 24.986
+      angles 0 -212.3 0
+     }
+     {
+      coords 1.796 -1.008 21.833
+      angles 0 -212.3 0
+     }
+     {
+      coords -3.192 -1.532 18.68
+      angles 0 -212.3 0
+     }
+     {
+      coords -8.18 -1.937 15.527
+      angles 0 -212.3 0
+     }
+    }
+    SCR_DestructibleEntity : "{A786DACFAA0BE670}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_D_start.et" {
+     coords -17.835 -2.416 8.251
+     angles 0 58.434 0
+    }
+    SCR_DestructibleEntity : "{D7BDCA21659E98D8}Prefabs/Structures/Walls/BarbedWire/NetFence_USSR_01/NetFence_USSR_01_D_end.et" {
+     coords -13.248 -2.194 12.323
+     angles 0 -212.3 0
+    }
+   }
+  }
+ }
+}
 GenericEntity : "{07D58C64654F71A3}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_03.et" {
  coords 4030.051 352.925 5773.485
  angles 0 119.88 0
@@ -1610,7 +1733,7 @@ $grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSma
  }
 }
 GenericEntity : "{7C85836D444E3797}Prefabs/Compositions/Slotted/SlotRoadMedium/Checkpoint_M_USSR_01.et" {
- coords 2688.465 228.456 5797.821
+ coords 2688.939 232.694 5835.902
  angles -6.215 178.413 1.062
 }
 $grp GenericEntity : "{805AE0C6C4485211}PrefabsEditable/Auto/Structures/Signs/Military/E_Sign_Warning_USSR_01.et" {
@@ -1679,6 +1802,16 @@ $grp GenericEntity : "{9483333BFD9E2D0F}Prefabs/Compositions/Slotted/SlotRoadSma
   angles 0 93.941 0
  }
 }
+$grp GenericEntity : "{9ED4F47C1B34DA47}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/USSR_Attacking_Box.et" {
+ {
+  coords 4011.032 352.725 5756.59
+  angles 5.344 0.251 2.695
+ }
+ {
+  coords 3579.398 345.083 6247.008
+  angles -7.884 1.29 -5.482
+ }
+}
 $grp GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_USSR_01.et" {
  {
   coords 3573.068 343.638 6252.633
@@ -1689,9 +1822,23 @@ $grp GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLar
   angles -5.556 131.577 2.224
  }
  {
-  coords 2635.565 241.789 5942.972
-  angles 0 -29.312 0
+  coords 2638.706 241.754 5938.708
+  angles 0 -32.276 0
  }
+}
+GenericEntity : "{DDE8710EA3DEC5FD}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_Ammo_USSR.et" {
+ components {
+  ActionsManagerComponent "{5E3298BE3694CAAB}" {
+   additionalActions {
+    SCR_OpenStorageAction "{5E3298927B14D0F9}" {
+     UIInfo UIInfo "{5D247A59598D707A}" {
+      Name "BM21 HE Large Brake Ring"
+     }
+    }
+   }
+  }
+ }
+ coords 4828.114 254.368 6723.328
 }
 $grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
  {
@@ -1701,10 +1848,6 @@ $grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSma
  {
   coords 3687.631 382.64 6066.709
   angles 0 -31.753 0
- }
- {
-  coords 2698.656 234.175 5853.209
-  angles 0 171.827 0
  }
  {
   coords 3606.17 312.444 5690.005
