@@ -2222,7 +2222,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			if (playerFaction.GetFactionKey() != factionKey)
 				continue;
 			
-			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+			PlayerController otherPc = pm.GetPlayerController(otherPlayerId);
+			if (!otherPc)
+				continue;
+			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.Cast(otherPc.FindComponent(CRF_PlayerRplToOwnerManager));
 			if (!rplToOwnerManager)
 				continue;
 			
@@ -2277,7 +2280,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			if (!otherPlayerFaction || otherPlayerFaction != sharingPlayerFaction)
 				continue;
 			
-			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+			PlayerController otherPc = pm.GetPlayerController(otherPlayerId);
+			if (!otherPc)
+				continue;
+			CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.Cast(otherPc.FindComponent(CRF_PlayerRplToOwnerManager));
 			if (!rplToOwnerManager)
 				continue;
 				
@@ -2319,11 +2325,13 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		
 		PlayerManager pm = GetGame().GetPlayerManager();
-		//huh
 		if (!pm)
 			return;
 		
-		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+		PlayerController pc = pm.GetPlayerController(playerId);
+		if (!pc)
+			return;
+		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.Cast(pc.FindComponent(CRF_PlayerRplToOwnerManager));
 		if (!rplToOwnerManager)
 			return;
 		

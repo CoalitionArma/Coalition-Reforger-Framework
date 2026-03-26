@@ -55,9 +55,6 @@ modded class SCR_MapMarkerManagerComponent
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
-		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.GetInstance();
-		if (!rplToOwnerManager)
-			return;
 		
 		array<int> markers = m_MarkersSharedReference.Get(playerId);
 		if (!markers)
@@ -67,6 +64,13 @@ modded class SCR_MapMarkerManagerComponent
 		}
 		
 		if (markers.Count() == 0)
+			return;
+
+		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
+		if (!pc)
+			return;
+		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.Cast(pc.FindComponent(CRF_PlayerRplToOwnerManager));
+		if (!rplToOwnerManager)
 			return;
 
 		rplToOwnerManager.ShareMarker(markers);
@@ -116,6 +120,9 @@ modded class SCR_MapMarkerManagerComponent
 		bool shareableMarkersEnabled = gamemode && localFaction && gamemode.DoesFactionShareMarker(localFaction.GetFactionKey());
 		if (!shareableMarkersEnabled)
 		{
+			// m_bIsShared must be true before calling SetVisible, otherwise the
+			// SCR_MapMarkerBase.SetVisible override force-hides the widget
+			marker.m_bIsShared = true;
 			marker.SetVisible(true);
 			return;
 		}
@@ -135,6 +142,12 @@ modded class SCR_MapMarkerManagerComponent
 		m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		
 		foreach (SCR_MapMarkerBase marker: m_aStaticMarkers)
+		{
+			UpdateMarkerVisibility(marker);
+		}
+		
+		// Also update markers that are temporarily in the disabled list (out-of-frame)
+		foreach (SCR_MapMarkerBase marker: m_aDisabledMarkers)
 		{
 			UpdateMarkerVisibility(marker);
 		}
