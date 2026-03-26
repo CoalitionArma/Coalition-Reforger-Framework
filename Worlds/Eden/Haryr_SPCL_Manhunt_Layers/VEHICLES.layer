@@ -1,0 +1,80 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 7709.197 13.01 8121.533
+  angles 0 -131.61 0
+  m_rVehicle "{7F0CE77CBE1A1F65}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7719.458 12.969 8110.478
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7716.578 12.969 8106.585
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7713.485 12.969 8102.932
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7710.099 12.969 8099.333
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7706.734 12.969 8095.598
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7703.547 12.969 8091.942
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7699.884 12.969 8087.564
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7696.768 12.969 8083.723
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7693.335 12.969 8080.013
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7690.138 12.969 8076.357
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7686.979 12.969 8072.95
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7683.693 12.968 8069.059
+  angles 0 -48.668 0
+  m_rVehicle "{530F3A12ABA1CD7A}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

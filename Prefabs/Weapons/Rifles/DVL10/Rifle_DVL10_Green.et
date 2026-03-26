@@ -1,0 +1,36 @@
+GenericEntity : "{1EEEB319B0DF42FE}Prefabs/Weapons/Rifles/DVL10/Rifle_DVL10_base.et" {
+ ID "525494E72B1E90FD"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{68EEF8E1A041E87C}" {
+     SourceMaterial "DVL10"
+     AssignedMaterial "{A7BAF7D2B1180C95}Assets/Weapons/Rifles/DVL10/Data/DVL10_Green.emat"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    WCS_WeaponCaseEjectionComponent "{60B4EA76EB15F6E0}" {
+     m_particle "{C73F66594F2648A1}Particles/Weapon/Casing_762x51_DVL.ptc"
+     m_animEvent "CaseEject"
+     m_bFrameEvent 1
+     m_pivotID PointInfo "{68EEF8E11843C08A}" {
+      PivotID "barrel_chamber"
+      Offset 0.0137 -0.0064 -0.059
+      Angles 0 90 0
+     }
+     ACTION_TO_PERFORM SPAWN_PARTICLE
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+     }
+    }
+   }
+  }
+ }
+}
