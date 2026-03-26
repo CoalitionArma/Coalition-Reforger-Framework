@@ -142,6 +142,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	static const ResourceName SMOKE_CP_A   = "{1D8922C3FE426E4E}Prefabs/Systems/Smoke/Wrapper_Smoke_Yellow.et";
 	static const ResourceName SMOKE_CP_B   = "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et";
 
+	[Attribute("5", UIWidgets.EditBox, "Distance in metres to offset smoke markers sideways from the checkpoint centre, to keep them off the road.")]
+	protected float m_fSmokeOffsetDistance;
+
 	//===================================================================================
 	// REPLICATED STATE
 	//===================================================================================
@@ -301,9 +304,23 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			else
 				prefab = SMOKE_CP_B;         // purple — even intermediate CPs
 
+			// Compute a world-space side offset so the smoke sits beside the road.
+			// Direction is derived from the course heading at this checkpoint:
+			// use the vector toward the next checkpoint (or from the previous one at the finish).
+			vector cpPos = m_aCheckpointPositions[i];
+			vector heading;
+			if (i < last)
+				heading = (m_aCheckpointPositions[i + 1] - cpPos).Normalized();
+			else
+				heading = (cpPos - m_aCheckpointPositions[i - 1]).Normalized();
+
+			// Right-hand perpendicular in the horizontal plane: (z, 0, -x)
+			vector sideways = Vector(heading[2], 0, -heading[0]).Normalized();
+			vector smokePos = cpPos + sideways * m_fSmokeOffsetDistance;
+
 			EntitySpawnParams params = new EntitySpawnParams();
 			Math3D.MatrixIdentity4(params.Transform);
-			params.Transform[3] = m_aCheckpointPositions[i];
+			params.Transform[3] = smokePos;
 
 			IEntity smoke = GetGame().SpawnEntityPrefab(Resource.Load(prefab), null, params);
 			if (smoke)
