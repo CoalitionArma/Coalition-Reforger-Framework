@@ -53,6 +53,7 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 	// Every info contains in CRF_ManualMarker, soo ther is onle setters
 	void SetImage(ResourceName m_sImageSet, string quadName)
 	{
+		if (m_sImageSet.IsEmpty()) return;
 		if (m_sImageSet.EndsWith(".edds"))
 			m_wMarkerIcon.LoadImageTexture(0, m_sImageSet);
 		else
@@ -60,7 +61,8 @@ class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 	}
 	void SetImageGlow(ResourceName m_sImageSet, string quadName)
 	{
-		if (m_sImageSet != "") m_bHasGlow = true;
+		if (m_sImageSet.IsEmpty()) return;
+		m_bHasGlow = true;
 		if (m_sImageSet.EndsWith(".edds"))
 			m_wMarkerIconGlow.LoadImageTexture(0, m_sImageSet);
 		else
