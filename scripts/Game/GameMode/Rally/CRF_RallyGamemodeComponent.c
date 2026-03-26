@@ -132,6 +132,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	// Smoke entities spawned at each checkpoint (server-managed, replicated via world state)
 	protected ref array<IEntity> m_aSmokeEntities = {};
 
+	// Map markers created for each checkpoint at race start
+	protected ref array<ref SCR_MapMarkerBase> m_aCheckpointMarkers = {};
+
 	// First player to die during the race
 	protected int m_iFirstDeathPlayerId = -1;
 	protected string m_sFirstDeathPlayerName = "";
@@ -212,6 +215,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			GetGame().GetCallqueue().Remove(SpawnCheckpointSmokes);
 			ClearCheckpointSmokes();
+			ClearCheckpointMarkers();
 		}
 	}
 
@@ -245,6 +249,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		// Spawn smoke at each checkpoint and re-spawn every 50s (smoke TTL ~60s)
 		SpawnCheckpointSmokes();
 		GetGame().GetCallqueue().CallLater(SpawnCheckpointSmokes, 50000, true);
+
+		// Place persistent map markers for each checkpoint
+		SpawnCheckpointMarkers();
 
 		Print(string.Format("[CRF_Rally] Race initialised — %1 checkpoints, %2 lap(s), radius=%.0fm",
 			m_aCheckpointPositions.Count(), m_iLapsToComplete, m_fCheckpointRadius), LogLevel.NORMAL);
@@ -336,6 +343,61 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(ent);
 		}
 		m_aSmokeEntities.Clear();
+	}
+
+	// Places a labelled map marker at every checkpoint position.
+	// rally_start → "Start" (green flag), rally_cpN → "Checkpoint N" (orange waypoint), rally_end → "Finish" (red flag).
+	protected void SpawnCheckpointMarkers()
+	{
+		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!markerMan)
+			return;
+
+		m_aCheckpointMarkers.Clear();
+		int last = m_aCheckpointPositions.Count() - 1;
+		for (int i = 0; i <= last; i++)
+		{
+			vector pos = m_aCheckpointPositions[i];
+			SCR_MapMarkerBase marker = new SCR_MapMarkerBase();
+			marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+
+			string label;
+			if (i == 0)
+			{
+				label = "Start";
+				marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.FLAG);
+				marker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.GREEN);
+			}
+			else if (i == last)
+			{
+				label = "Finish";
+				marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.FLAG);
+				marker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.RED);
+			}
+			else
+			{
+				label = string.Format("Checkpoint %1", i);
+				marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.WAYPOINT);
+				marker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.ORANGE);
+			}
+
+			marker.SetCustomText(label);
+			marker.SetWorldPos(pos[0], pos[2]);
+			marker.m_bIsShared = true;
+			markerMan.InsertStaticMarker(marker, false, true);
+			m_aCheckpointMarkers.Insert(marker);
+		}
+	}
+
+	protected void ClearCheckpointMarkers()
+	{
+		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
+		foreach (SCR_MapMarkerBase marker : m_aCheckpointMarkers)
+		{
+			if (markerMan)
+				markerMan.RemoveStaticMarker(marker);
+		}
+		m_aCheckpointMarkers.Clear();
 	}
 
 	//===================================================================================
@@ -590,6 +652,10 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 					groupId = grp.GetID();
 			}
 
+			int deadInt = 0;
+			if (e.m_bDead)
+				deadInt = 1;
+
 			packed += string.Format("%1;%2;%3;%4;%5;%6;%7;%8",
 				e.m_iPlayerId,
 				e.m_iLapsCompleted,
@@ -597,7 +663,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				e.m_iLapStartTimeMs,
 				finishedInt,
 				groupId,
-				e.m_bDead ? 1 : 0,
+				deadInt,
 				e.m_iDeathTimeMs);
 		}
 
@@ -1153,7 +1219,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				if (fields.Count() >= 6)
 					groupId = fields[5].ToInt();
 				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
-				int  deathTime = fields.Count() >= 8 ? fields[7].ToInt() : 0;
+				int  deathTime = 0;
+				if (fields.Count() >= 8)
+					deathTime = fields[7].ToInt();
 
 				if (groupId > 0 && seenGroupIds.Contains(groupId))
 					continue;
@@ -1234,7 +1302,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				int  lapStart  = fields[3].ToInt();
 				bool finished  = fields[4].ToInt() == 1;
 				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
-				int  deathTime = fields.Count() >= 8 ? fields[7].ToInt() : 0;
+				int  deathTime = 0;
+				if (fields.Count() >= 8)
+					deathTime = fields[7].ToInt();
 
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(pid);
 				if (playerName.Length() > 14)
