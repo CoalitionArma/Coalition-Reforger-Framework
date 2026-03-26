@@ -39,6 +39,8 @@ class CRF_RallyPlayerEntry
 	float m_fBestLapTime;        // Best completed lap in seconds (-1 = none yet)
 	float m_fFinishTimeSecs;     // Total race time from start to finish in seconds (-1 = DNF / not set)
 	bool m_bFinished;
+	bool m_bDead;
+	int m_iDeathTimeMs;          // GetWorldTime() in ms when this player died (0 = not dead)
 
 	void CRF_RallyPlayerEntry(int playerId)
 	{
@@ -51,6 +53,8 @@ class CRF_RallyPlayerEntry
 		m_fBestLapTime      = -1;
 		m_fFinishTimeSecs   = -1;
 		m_bFinished         = false;
+		m_bDead             = false;
+		m_iDeathTimeMs      = 0;
 	}
 
 	// Higher progress = further ahead in the race
@@ -569,13 +573,15 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 					groupId = grp.GetID();
 			}
 
-			packed += string.Format("%1;%2;%3;%4;%5;%6",
+			packed += string.Format("%1;%2;%3;%4;%5;%6;%7;%8",
 				e.m_iPlayerId,
 				e.m_iLapsCompleted,
 				e.m_iNextCheckpoint,
 				e.m_iLapStartTimeMs,
 				finishedInt,
-				groupId);
+				groupId,
+				e.m_bDead ? 1 : 0,
+				e.m_iDeathTimeMs);
 		}
 
 		if (packed == m_sReplicatedStandings)
@@ -708,11 +714,23 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(instigatorContextData);
 
-		if (!m_bRaceActive || m_iFirstDeathPlayerId >= 0)
+		if (!m_bRaceActive)
 			return;
 
 		int victimId = instigatorContextData.GetVictimPlayerID();
 		if (victimId <= 0)
+			return;
+
+		// Mark entry as dead and freeze the death time for HUD display
+		CRF_RallyPlayerEntry entry = GetEntry(victimId);
+		if (entry && !entry.m_bDead && !entry.m_bFinished)
+		{
+			entry.m_bDead        = true;
+			entry.m_iDeathTimeMs = GetGame().GetWorld().GetWorldTime();
+			BuildAndReplicateStandings();
+		}
+
+		if (m_iFirstDeathPlayerId >= 0)
 			return;
 
 		m_iFirstDeathPlayerId = victimId;
@@ -1052,6 +1070,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		int    localPosition  = -1;
 		int    localLapStart  = 0;
 		bool   localFinished  = false;
+		bool   localDead      = false;
+		int    localDeathTime = 0;
 		int    localNextCP    = -1;
 
 		// Pre-scan to find this client's own next checkpoint (used for the CP arrow)
@@ -1108,13 +1128,15 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				if (fields.Count() < 5)
 					continue;
 
-				int  pid      = fields[0].ToInt();
-				int  laps     = fields[1].ToInt();
-				int  lapStart = fields[3].ToInt();
-				bool finished = fields[4].ToInt() == 1;
-				int  groupId  = 0;
+				int  pid       = fields[0].ToInt();
+				int  laps      = fields[1].ToInt();
+				int  lapStart  = fields[3].ToInt();
+				bool finished  = fields[4].ToInt() == 1;
+				int  groupId   = 0;
 				if (fields.Count() >= 6)
 					groupId = fields[5].ToInt();
+				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
+				int  deathTime = fields.Count() >= 8 ? fields[7].ToInt() : 0;
 
 				if (groupId > 0 && seenGroupIds.Contains(groupId))
 					continue;
@@ -1142,11 +1164,15 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 					localPosition = teamRank;
 					localLapStart = lapStart;
 					localFinished = finished;
+					localDead     = dead;
+					localDeathTime = deathTime;
 				}
 
 				string lapTag;
 				if (finished)
 					lapTag = "FIN";
+				else if (dead)
+					lapTag = "KIA";
 				else if (lapStart == 0)
 					lapTag = "WAIT";
 				else
@@ -1155,6 +1181,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				string timeStr;
 				if (finished)
 					timeStr = "---";
+				else if (dead && deathTime > 0 && lapStart > 0)
+					timeStr = FormatTime((deathTime - lapStart) * 0.001);
 				else if (lapStart == 0)
 					timeStr = "--:--.---";
 				else
@@ -1184,10 +1212,12 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				if (fields.Count() < 5)
 					continue;
 
-				int  pid      = fields[0].ToInt();
-				int  laps     = fields[1].ToInt();
-				int  lapStart = fields[3].ToInt();
-				bool finished = fields[4].ToInt() == 1;
+				int  pid       = fields[0].ToInt();
+				int  laps      = fields[1].ToInt();
+				int  lapStart  = fields[3].ToInt();
+				bool finished  = fields[4].ToInt() == 1;
+				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
+				int  deathTime = fields.Count() >= 8 ? fields[7].ToInt() : 0;
 
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(pid);
 				if (playerName.Length() > 14)
@@ -1196,6 +1226,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				string lapTag;
 				if (finished)
 					lapTag = "FIN";
+				else if (dead)
+					lapTag = "KIA";
 				else if (lapStart == 0)
 					lapTag = "WAIT";
 				else
@@ -1204,6 +1236,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				string timeStr;
 				if (finished)
 					timeStr = "---";
+				else if (dead && deathTime > 0 && lapStart > 0)
+					timeStr = FormatTime((deathTime - lapStart) * 0.001);
 				else if (lapStart == 0)
 					timeStr = "--:--.---";
 				else
@@ -1220,9 +1254,11 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 				if (pid == localPlayerId)
 				{
-					localPosition = i + 1;
-					localLapStart = lapStart;
-					localFinished = finished;
+					localPosition  = i + 1;
+					localLapStart  = lapStart;
+					localFinished  = finished;
+					localDead      = dead;
+					localDeathTime = deathTime;
 				}
 			}
 
@@ -1245,6 +1281,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			if (localFinished)
 				m_wLapTimeText.SetText("DONE");
+			else if (localDead && localDeathTime > 0 && localLapStart > 0)
+				m_wLapTimeText.SetText(FormatTime((localDeathTime - localLapStart) * 0.001));
 			else if (localLapStart > 0)
 				m_wLapTimeText.SetText(FormatTime((worldTimeMs - localLapStart) * 0.001));
 			else
@@ -1252,7 +1290,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		// CP arrow — rotate toward the next checkpoint relative to the player/vehicle heading
-		bool showArrow = !localFinished && localLapStart > 0
+		SCR_CharacterControllerComponent charCtrl = SCR_CharacterControllerComponent.Cast(localEnt.FindComponent(SCR_CharacterControllerComponent));
+		bool isPlayerAlive = !charCtrl || !charCtrl.IsDead();
+		bool showArrow = isPlayerAlive && !localFinished && localLapStart > 0
 			&& localNextCP >= 0 && localNextCP < m_aCheckpointPositions.Count();
 
 		if (showArrow)
