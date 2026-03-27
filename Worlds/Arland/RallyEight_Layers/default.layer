@@ -1,0 +1,135 @@
+$grp GameEntity {
+ rally_start {
+  coords 1226.118 39 2207.841
+ }
+ rally_cp1 {
+  coords 951.489 39 2601.362
+ }
+ rally_finish {
+  coords 3301.575 2.027 2895.308
+ }
+ rally_cp2 {
+  coords 1224.103 39.001 2720.395
+ }
+ rally_cp3 {
+  coords 1756.542 38.999 2865.057
+ }
+ rally_cp4 {
+  coords 1716.46 39 2937.221
+ }
+ rally_cp5 {
+  coords 1486.268 38.001 2939.747
+ }
+ rally_cp6 {
+  coords 1592.632 41.981 3077.011
+ }
+ rally_cp7 {
+  coords 1689.368 45.518 3154.987
+ }
+ rally_cp8 {
+  coords 1857.595 51.946 3047.927
+ }
+ rally_cp9 {
+  coords 2197.909 54.03 2815.804
+ }
+ rally_cp10 {
+  coords 2457.539 52.335 2872.204
+ }
+ rally_cp11 {
+  coords 2557.395 19.062 3086.798
+ }
+ rally_cp12 {
+  coords 2895.25 37.435 3150.114
+ }
+ rally_cp13 {
+  coords 2908.635 29.399 3024.829
+ }
+ rally_cp14 {
+  coords 3128.423 11.438 2832.478
+ }
+ rally_cp15 {
+  coords 3231.044 5.516 2847.954
+ }
+}
+PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart/CIVILIAN_SafestartBoundry.et" {
+ coords 1303.201 39 2097.346
+ Points {
+  ShapePoint "{68F415A1A61E6035}" {
+   Position -28.743 0 1.17
+  }
+  ShapePoint "{68F415A1A6A8A2E8}" {
+   Position 9.142 0 26.395
+  }
+  ShapePoint "{68F415A1A531DEED}" {
+   Position 47.232 0 -29.099
+  }
+  ShapePoint "{68F415A1A5BFEEC5}" {
+   Position 6.341 0 -45.092
+  }
+ }
+}
+$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ S105_rally1 {
+  coords 1306.662 39.01 2095.458
+  angles 0 -33 0
+ }
+ S105_rally2 {
+  coords 1302.442 39 2093.111
+  angles 0 -33 0
+ }
+ S105_rally3 {
+  coords 1311.859 39.01 2099.818
+  angles 0 -33 0
+ }
+ S105_rally4 {
+  coords 1317.266 39.01 2103.085
+  angles 0 -33 0
+ }
+ S105_rally5 {
+  coords 1298.892 39.072 2091.279
+  angles 0 -33 0
+ }
+ S105_rally6 {
+  coords 1294.971 39 2087.816
+  angles 0 -33 0
+ }
+ S105_rally7 {
+  coords 1290.716 39.01 2085.513
+  angles 0 -33 0
+ }
+ S105_rally8 {
+  coords 1285.182 39.01 2094.631
+  angles 0 -33 0
+ }
+ S105_rally9 {
+  coords 1289.294 39 2096.074
+  angles 0 -33 0
+ }
+ S105_rally10 {
+  coords 1293.686 39.01 2098.888
+  angles 0 -33 0
+ }
+ S105_rally11 {
+  coords 1297.494 39 2101.714
+  angles 0 -33 0
+ }
+ S105_rally12 {
+  coords 1300.491 39.01 2103.973
+  angles 0 -33 0
+ }
+ S105_rally13 {
+  coords 1304.38 39 2106.187
+  angles 0 -33 0
+ }
+ S105_rally14 {
+  coords 1308.232 39 2108.099
+  angles 0 -33 0
+ }
+ S105_rally15 {
+  coords 1311.832 39.01 2110.048
+  angles 0 -33 0
+ }
+}
+CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 1312.576 39 2089.153
+}

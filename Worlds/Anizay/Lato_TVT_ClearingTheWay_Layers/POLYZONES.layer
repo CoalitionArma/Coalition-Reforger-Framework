@@ -1,0 +1,114 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 4639.912 137.388 7114.383
+ Points {
+  ShapePoint "{68DF24A69153FD2F}" {
+   Position 54.99 0 170.033
+  }
+  ShapePoint "{68DF24A6902E59BC}" {
+   Position 283.826 0 400.846
+  }
+  ShapePoint "{68DF24A695A14886}" {
+   Position 588.352 0 590.681
+  }
+  ShapePoint "{68DF24A6A9D006CF}" {
+   Position 1664.396 0 588.35
+  }
+  ShapePoint "{68DF24A6AC63A1C3}" {
+   Position 2748.116 0 446.947
+  }
+  ShapePoint "{68DF24A6A101A465}" {
+   Position 3905.021 0 231.792
+  }
+  ShapePoint "{68DF24A6BA1D5265}" {
+   Position 3955.256 0 -1019.234
+  }
+  ShapePoint "{68DF24A6B7325BC5}" {
+   Position 3728.619 0 -1144.533
+  }
+  ShapePoint "{68DF24A64BD287CA}" {
+   Position 1926.851 0 -543.849
+  }
+  ShapePoint "{68DF24A64E549F08}" {
+   Position 1405.627 0 -418.147
+  }
+  ShapePoint "{68DF24A643532F06}" {
+   Position 1146.227 0 -431.53
+  }
+  ShapePoint "{68DF24A642D2133B}" {
+   Position 1026.141 0 -426.836
+  }
+  ShapePoint "{68DF24A642405AF3}" {
+   Position 903.78 0 -419.352
+  }
+  ShapePoint "{68DF24A645CB4EEA}" {
+   Position 798.798 0 -422.766
+  }
+  ShapePoint "{68DF24A647CD24F0}" {
+   Position 615.775 0 -474.807
+  }
+  ShapePoint "{68DF24A646F456DE}" {
+   Position 346.17 0 -448.685
+  }
+  ShapePoint "{68DF24A65B2E4667}" {
+   Position 86.637 -18.349 -402.656
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFOR_SafestartBoundry.et" {
+ coords 7956.491 118.188 6744.438
+ Points {
+  ShapePoint "{68DF24A62AE3B763}" {
+   Position -428.613 0 -450.842
+  }
+  ShapePoint "{68DF24A62E4BE67D}" {
+   Position -1368.647 0 -152.193
+  }
+  ShapePoint "{68DF24A6230609AB}" {
+   Position -1909.932 0 -26.519
+  }
+  ShapePoint "{68DF24A63983F0C2}" {
+   Position -2014.402 0 -42.568
+  }
+  ShapePoint "{68DF24A638FA0D75}" {
+   Position -2107.851 0 -66.596
+  }
+  ShapePoint "{68DF24A63214E872}" {
+   Position -1999.981 0 952.925
+  }
+  ShapePoint "{68DF24A63493D21A}" {
+   Position -1612.934 0 955.555
+  }
+  ShapePoint "{68DF24A7C6609E0D}" {
+   Position -1233.766 0 887.516
+  }
+  ShapePoint "{68DF24A7DDBF2074}" {
+   Position -259.309 0 716.439
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 4628.518 135.784 7007.311
+ Points {
+  ShapePoint "{68DF24A78B164E9E}" {
+   Position 88.827 0 15.404
+  }
+  ShapePoint "{68DF24A78FA37C44}" {
+   Position 79.238 0 226.86
+  }
+  ShapePoint "{68DF24A78F7F81EF}" {
+   Position 206.728 0 238.411
+  }
+  ShapePoint "{68DF24A7856E559E}" {
+   Position 184.702 0 33.727
+  }
+  ShapePoint "{68DF24A7981088E5}" {
+   Position 201.6 0 20.264
+  }
+  ShapePoint "{68DF24A79A670642}" {
+   Position 221.625 0 -205.442
+  }
+  ShapePoint "{68DF24A79FA01A63}" {
+   Position 101.659 0 -186.933
+  }
+ }
+}

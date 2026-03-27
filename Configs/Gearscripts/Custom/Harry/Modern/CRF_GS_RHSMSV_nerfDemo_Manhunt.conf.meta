@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E6B8219F940E3651}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_RHSMSV_nerfDemo_Manhunt.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
