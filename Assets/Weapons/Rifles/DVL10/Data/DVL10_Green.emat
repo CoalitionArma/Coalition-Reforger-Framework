@@ -1,0 +1,7 @@
+MatPBRBasic {
+ Color 0 0.182 0.052 1
+ Specular 0 0.182 0.052 1
+ MetalnessScale 0.483
+ BCRMap "{476F206B178BCC5B}Assets/Weapons/Rifles/DVL10/Data/DVL10_BCR.edds"
+ NMOMap "{7FB79BF9CEFC9EC5}Assets/Weapons/Rifles/DVL10/Data/DVL10_NMO.edds"
+}

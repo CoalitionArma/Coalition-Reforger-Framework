@@ -162,7 +162,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		
 		IEntitySource facManagerSource = GetFactionManager(api, entitySource);
 		
-		if (!IEntitySource)
+		if (!facManagerSource)
 			return false;		
 		
 		api.BeginEntityAction();
@@ -240,15 +240,25 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 		
 		array<ref ContainerIdPathEntry> path = {ContainerIdPathEntry("Factions", factionIndex)};
 		
+		// Valid faction keys supported by CRF
+		array<string> validFactionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
 		string finalFactionsArrayStr;
-		foreach (int f, CRF_EFactions friendlyFactionEnum : friendlyFactions)
+		int validCount = 0;
+		foreach (CRF_EFactions friendlyFactionEnum : friendlyFactions)
 		{
 			string friendlyFactionStr = SCR_Enum.GetEnumName(CRF_EFactions, friendlyFactionEnum);
 			
-			if (f == 0)
+			// Skip stale/invalid enum values that don't map to a real faction key
+			if (!validFactionKeys.Contains(friendlyFactionStr))
+				continue;
+			
+			if (validCount == 0)
 				finalFactionsArrayStr = friendlyFactionStr;
 			else	
 				finalFactionsArrayStr = finalFactionsArrayStr + ", " + friendlyFactionStr;
+			
+			validCount++;
 		}
 		
 		api.SetVariableValue(facManagerSource, path, "m_aFriendlyFactionsIds", finalFactionsArrayStr);
@@ -259,7 +269,7 @@ class CRF_MissionFactionsPlugin : WorkbenchPlugin
 	{	
 		IEntitySource facManagerSource;
 		
-		for (int i; i <= gameSource.GetNumChildren(); i++)
+		for (int i; i < gameSource.GetNumChildren(); i++)
 		{
 			facManagerSource = gameSource.GetChild(i);
 			if (SCR_FactionManager.Cast(api.SourceToEntity(facManagerSource)))

@@ -88,7 +88,7 @@ modded class SCR_VONController
 			return false;
 		
 		string otherFactionKey = m_FactionManager.GetPlayerFaction(playerId).GetFactionKey();
-		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
+		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
 		
 		return isOtherPlayerSpec;
 	}
@@ -260,9 +260,6 @@ modded class SCR_VONController
 		else
 			m_fHeadCacheBuffer += timeSlice;
 		
-		m_PlayerIdTemp.Clear();
-		m_PlayerManager.GetPlayers(m_PlayerIdTemp);
-		
     	//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
 		//This removes that container as when they reconnect they will no longer be heard.
 		//Also sound updating for maximum optimizations
@@ -433,13 +430,8 @@ modded class SCR_VONController
 			m_bHasBroadcasted = true;
 		}
 		
-		//Our plugin only checks every 50ms
-		if (m_fVONSaveBuffer >= 0.05)
-		{
-			WriteJSON();
-			m_fVONSaveBuffer = 0;
-		}
-		else m_fVONSaveBuffer += timeSlice;
+		// WriteJSON runs every tick; the dirty flag inside skips SaveToFile when nothing changed.
+		WriteJSON();
 	}
 	
 	//------------------------------------------------------------------------------------------------
