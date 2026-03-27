@@ -1,0 +1,198 @@
+FrameWidgetClass {
+ Name "rallyHUDFrame"
+ {
+  ImageWidgetClass "{4CBBF00D5B6E1A25}" {
+   Name "Background"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2A}" {
+    Anchor 1 0 1 0
+    PositionX -272
+    OffsetLeft -272
+    PositionY 161
+    OffsetTop 161
+    SizeX 270
+    OffsetRight 2
+    SizeY 272
+    OffsetBottom -433
+   }
+   Color 0 0 0 0.65
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{4CBBF00D5B6E1A29}" {
+   Name "HeaderText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2B}" {
+    Anchor 1 0 1 0
+    PositionX -272
+    OffsetLeft -272
+    PositionY 163
+    OffsetTop 163
+    SizeX 270
+    OffsetRight 2
+    SizeY 18
+    OffsetBottom -181
+   }
+   Color 1 0.78 0 1
+   Text "RALLY"
+   "Font Size" 13
+   "Min Font Size" 12
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E1A35}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{4CBBF00D5B6E1A26}" {
+   Name "PositionText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2C}" {
+    Anchor 1 0 1 0
+    PositionX -272
+    OffsetLeft -272
+    PositionY 181
+    OffsetTop 181
+    SizeX 462
+    OffsetRight -190
+    SizeY 50
+    OffsetBottom -231
+   }
+   Color 1 1 1 1
+   Text "P--"
+   "Font Size" 34
+   "Min Font Size" 28
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E1A2D}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 2
+    ShadowSize 3
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{4CBBF00D5B6E1A28}" {
+   Name "LapTimeText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2E}" {
+    Anchor 1 0 1 0
+    PositionX -204
+    OffsetLeft -204
+    PositionY 185
+    OffsetTop 185
+    SizeX 202
+    OffsetRight 2
+    SizeY 42
+    OffsetBottom -227
+   }
+   Color 0.9 0.95 1 1
+   Text "--:--.---"
+   "Font Size" 22
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E1A2F}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  ImageWidgetClass "{4CBBF00D5B6E1A32}" {
+   Name "Divider"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A33}" {
+    Anchor 1 0 1 0
+    PositionX -270
+    OffsetLeft -270
+    PositionY 230
+    OffsetTop 230
+    SizeX 270
+    OffsetRight 0
+    SizeY 1
+    OffsetBottom -231
+   }
+   Color 1 0.78 0 0.4
+  }
+  TextWidgetClass "{4CBBF00D5B6E1A27}" {
+   Name "StandingsText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A30}" {
+    Anchor 1 0 1 0
+    PositionX -272
+    OffsetLeft -272
+    PositionY 234
+    OffsetTop 234
+    SizeX 270
+    OffsetRight 2
+    SizeY 150
+    OffsetBottom -384
+   }
+   Color 0.85 0.85 0.85 1
+   Text ""
+   "Font Size" 10
+   "Min Font Size" 10
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Top
+   FontProperties FontProperties "{4CBBF00D5B6E1A31}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 0
+    ShadowSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{4CBBF00D5B6E1A36}" {
+   Name "Divider2"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A37}" {
+    Anchor 1 0 1 0
+    PositionX -270
+    OffsetLeft -270
+    PositionY 385
+    OffsetTop 385
+    SizeX 270
+    OffsetRight 0
+    SizeY 1
+    OffsetBottom -386
+   }
+   Color 1 0.78 0 0.4
+  }
+  ImageWidgetClass "{4CBBF00D5B6E1A38}" {
+   Name "CPArrowWidget"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A39}" {
+    Anchor 1 0 1 0
+    PositionX -1031
+    OffsetLeft -1031
+    PositionY 163
+    OffsetTop 163
+    SizeX 107
+    OffsetRight 924
+    SizeY 87
+    OffsetBottom -250
+   }
+   Color 1 0.78 0 1
+   Texture "{85914613C4644831}UI/Textures/RadialMenu/GroupIndicationArrow.edds"
+   "Flip Vertically" 1
+  }
+  TextWidgetClass "{4CBBF00D5B6E1A3A}" {
+   Name "CPDistanceText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A3B}" {
+    Anchor 1 0 1 0
+    PositionX -1097
+    OffsetLeft -1097
+    PositionY 234
+    OffsetTop 234
+    SizeX 232
+    OffsetRight 865
+    SizeY 24
+    OffsetBottom -258
+   }
+   Color 0.9 0.95 1 1
+   Text ""
+   "Font Size" 12
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E1A3C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+ }
+}

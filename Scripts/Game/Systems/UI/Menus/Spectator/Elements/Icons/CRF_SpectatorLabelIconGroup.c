@@ -167,17 +167,12 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 	override void Update()
 	{
 		if (!m_Group)
-		{
-			Print("[CRF_SpectatorLabelIconGroup] No group assigned!", LogLevel.WARNING);
 			return;
-		}
 		
 		// Get the group leader's player ID
 		int leaderID = m_Group.GetLeaderID();
 		if (leaderID <= 0)
 		{
-			// No valid leader ID, hide
-			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 has no valid leader ID", m_Group.GetCustomName()), LogLevel.WARNING);
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
@@ -195,8 +190,6 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		IEntity leaderEntity = playerManager.GetPlayerControlledEntity(leaderID);
 		if (!leaderEntity)
 		{
-			// No leader entity, hide
-			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader (ID: %2) has no entity", m_Group.GetCustomName(), leaderID), LogLevel.WARNING);
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
@@ -206,8 +199,6 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		SCR_CharacterControllerComponent controller = SCR_CharacterControllerComponent.Cast(leaderEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (controller && controller.IsDead())
 		{
-			// Leader is dead, hide
-			Print(string.Format("[CRF_SpectatorLabelIconGroup] Group %1 leader is dead", m_Group.GetCustomName()), LogLevel.NORMAL);
 			if (m_wRoot)
 				m_wRoot.SetOpacity(0.0);
 			return;
