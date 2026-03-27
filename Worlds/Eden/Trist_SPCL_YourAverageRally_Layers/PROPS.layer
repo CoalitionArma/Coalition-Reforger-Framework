@@ -100,6 +100,36 @@ $grp SCR_DestructibleBuildingEntity : "{0850ACA43C743E25}Prefabs/Structures/Wall
   angles -8.86 -164.334 -2.064
   scale 9.28
  }
+ {
+  coords 4784.25 -22.848 11513.998
+  angles 0 -93.52 0
+  scale 8
+ }
+ {
+  coords 4750.143 -24.133 11503.123
+  angles 0 -90.657 0
+  scale 8.32
+ }
+ {
+  coords 4745.875 -22.586 11567.209
+  angles 0 -67.254 0
+  scale 8
+ }
+ {
+  coords 4744.531 -24.714 11621.43
+  angles 7.729 71.317 -3.065
+  scale 8
+ }
+ {
+  coords 4801.834 -22.233 11457.811
+  angles 0 104.462 0
+  scale 8
+ }
+ {
+  coords 4758.57 -22.758 11444.868
+  angles 0 119.972 0
+  scale 8
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{0886FFD947F3B42D}Prefabs/Infrastructure/Tunnels/Large Tunnel 100M.et" {
  {
@@ -110,6 +140,10 @@ $grp SCR_DestructibleBuildingEntity : "{0886FFD947F3B42D}Prefabs/Infrastructure/
   angles 0 18.239 0
   scale 1.1
  }
+}
+StaticModelEntity : "{1B9CB2963758BAD4}Prefabs/Structures/Walls/Pipe/PipeRailing_01/Dst/PipeRailing_01_3m_01_Darkred.et" {
+ coords 4746.172 29.12 11425.137
+ scale 12.078
 }
 $grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
  {
@@ -176,6 +210,118 @@ $grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Wall
   coords 4831.701 -50.278 11637.682
   angles 0 90 0
   scale 20.726
+ }
+}
+$grp GenericEntity : "{24DE47095BD6BE7B}Prefabs/Props/Agriculture/Farm/HayBale_01_square_big.et" {
+ {
+  coords 4644.358 27.843 11148.226
+  angles 0 78.403 0
+  scale 1.49
+ }
+ {
+  coords 4611.931 25.654 11152.807
+  angles 0 78.403 0
+  scale 1.49
+ }
+ {
+  coords 4624.979 27.257 11150.195
+  angles 0 78.403 0
+  scale 1.49
+ }
+ {
+  coords 4581.426 24.182 11150.135
+  angles 0 78.403 0
+  scale 1.49
+ }
+ {
+  coords 4573.637 24.313 11147.819
+  angles 0 45.146 0
+  scale 1.49
+ }
+ {
+  coords 4569.07 24.313 11142.939
+  angles 0 39.259 0
+  scale 1.49
+ }
+ {
+  coords 4535.991 11.647 11040.597
+  angles 0 15.272 0
+  scale 1.49
+ }
+ {
+  coords 4534.127 11.647 11035.643
+  angles 0 35.813 0
+  scale 1.49
+ }
+ {
+  coords 4503.18 8.042 10998.444
+  angles 0 65.596 0
+  scale 1.49
+ }
+ {
+  coords 4497.038 7.987 10996.96
+  angles 0 82.634 0
+  scale 1.49
+ }
+ {
+  coords 4489.092 7.765 10999.38
+  angles 3.172 143.893 -2.312
+  scale 1.49
+ }
+ {
+  coords 4487.141 7.645 11005.589
+  angles -1.732 0.701 -1.38
+  scale 1.49
+ }
+ {
+  coords 4482.907 8.573 11011.317
+  angles 0 -22.284 0
+  scale 1.49
+ }
+ {
+  coords 4180.987 1.479 11149.888
+  angles 0 68.181 0
+  scale 1.49
+ }
+ {
+  coords 4440.047 1.481 11086.872
+  angles 0 103.125 0
+  scale 1.49
+ }
+ {
+  coords 4445.112 1.481 11084.863
+  angles 0 124.438 0
+  scale 1.49
+ }
+ {
+  coords 4449.764 1.583 11081.116
+  angles 0 136.292 0
+  scale 1.49
+ }
+ {
+  coords 4426.515 1.625 11087.068
+  angles 0 85.631 0
+  scale 1.49
+ }
+ {
+  coords 4420.706 1.625 11085.475
+  angles 0 51.065 0
+  scale 1.49
+ }
+ {
+  coords 4435.022 1.937 11051.306
+  angles 0 114.088 0
+  scale 1.49
+ }
+ {
+  coords 4430.22 1.797 11052.72
+  angles 0 102.528 0
+  scale 1.49
+ }
+ {
+  coords 4416.424 1.625 11061.708
+  angles 0 -62.93 0
+  scale 1.49
  }
 }
 $grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
@@ -397,6 +543,1170 @@ $grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/La
   DistanceAttenuation 1.5
   Dynamic 1
  }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4706.076 25.024 11283.062
+  Color 0 0.2185 1 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4708.984 24.404 11297.45
+  angles -70.509 88.503 91.382
+  Color 0.502 0 0 1
+  Radius 8.26
+  DistanceAttenuation 2.69
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4360.065 11.558 11109.173
+  Color 0.3765 0.4706 0.749 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4520.769 25.06 11031.839
+  Color 0.9373 0.8196 0.8196 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4572.801 29.75 11087.678
+  Color 0.9373 0.8196 0.8196 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4323.521 11.558 11095.63
+  Color 0.251 0.502 0 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4289.381 11.558 11134.131
+  Color 0.3921 0.1569 0.6235 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4243.585 10.438 11122.148
+  Color 0.6235 0.1569 0.1569 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4191.747 10.438 11147.239
+  Color 0.3921 0.1569 0.6235 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4123.517 9.894 10713.589
+  Color 0.6235 0.1569 0.1569 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4127.957 10.926 10767.579
+  Color 0.6235 0.1569 0.5059 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4138.667 10.926 10831.465
+  Color 0.014 0.7043 0.7043 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4140.765 13.193 10897.308
+  Color 0.6235 0.1569 0.5059 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4104.899 13.193 10929.323
+  Color 0.6235 0.1569 0.5059 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4105.249 13.193 10995.823
+  Color 0 0.7729 0.1932 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4573.073 17.474 9313.842
+  Color 0.014 0.7043 0.7043 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4770.17 33.279 9291.606
+  Color 0.6863 0.2588 0.2588 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4927.43 47.373 9184.481
+  Color 0.251 0.502 0 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4855.514 49.586 9001.892
+  Color 0.502 0 0.3765 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4736.851 69.522 8844.979
+  Color 0 0.9326 0.9326 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4602.305 91.875 8695.421
+  Color 0 0.25 1 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4396.947 70.605 8791.405
+  Color 1 0.7523 0 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4241.356 48.86 8909.938
+  Color 0 1 1 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4181.19 39.005 9023.853
+  Color 0 0.25 1 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4036.352 32.375 8988.493
+  Color 0.9942 0.0063 0.0063 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3982.151 32.742 8908.504
+  Color 0 1 0.2522 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4547.272 27.657 10041.733
+  Color 0.2588 0.6863 0.6863 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3930.889 23.404 8562.138
+  Color 0 1 0.248 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4562.43 33.563 9743.406
+  Color 0.9942 0.0063 0.0063 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4566.192 28.507 9875.822
+  Color 0.9942 0.0063 0.0063 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4547.618 27.216 10149.032
+  Color 0 0.25 1 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4554.353 21.478 10298.466
+  Color 0.9942 0.0063 0.0063 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3700.267 21.139 8536.692
+  angles -10.076 103.374 -97.712
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+  LensFlareScale 2.37
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3708.624 21.139 8495.809
+  angles -10.076 31.436 -97.712
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+  LensFlareScale 2.37
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3681.82 21.139 8503.216
+  angles -10.076 52.045 -97.712
+  Color 0.502 0 0.3765 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+  LensFlareScale 2.37
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 3679.898 21.139 8527.29
+  angles -10.076 92.021 -97.712
+  Color 0.9373 0.8196 0.8196 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+  LensFlareScale 2.37
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 31.176 11819.92
+  Color 0 0.2185 1 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 31.178 11832.517
+  Color 0 0.4783 0.9358 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 31.313 11850.973
+  Color 0.0005 0.6092 0.6092 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 32.365 11866.506
+  Color 0.0005 0.7352 0.2723 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 31.198 11882.139
+  Color 0.0004 0.3975 0.0099 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.687 31.198 11900.629
+  Color 0.9373 0.8196 0.8196 1
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4783.47 28.504 11874.743
+  angles 7.406 0 0
+  Color 0.6863 0.5804 0.2588 1
+  LV 4.91
+  Radius 11.47
+  SpotAngle 118.92
+  DistanceAttenuation 3
+  Dynamic 1
+  VolLightScale 1
+  LensFlareIndex 0
+  LensFlareScale 0.41
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4783.47 27.254 11874.821
+  angles 10.231 0 0
+  Color 0.6863 0.5804 0.2588 1
+  LV 4.91
+  Radius 11.47
+  SpotAngle 118.92
+  DistanceAttenuation 3
+  Dynamic 1
+  VolLightScale 1
+  LensFlareIndex 0
+  LensFlareScale 0.41
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4779.204 33.57 11573.075
+  angles -25.125 -67.271 102.474
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4774.065 33.57 11551.443
+  angles -21.005 -77.706 105.434
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4788.998 34.587 11595.203
+  angles -26.012 -59.065 107.193
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4795.51 33.861 11605.989
+  angles -26.012 -59.065 107.193
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4774.276 34.587 11532.359
+  angles -26.012 -97.58 107.193
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4780.392 33.57 11508.946
+  angles -25.125 -105.786 102.474
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4789.842 33.57 11488.821
+  angles -21.005 -116.221 105.434
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4762.759 33.936 11441.498
+  angles -21.003 109.279 68.557
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4768.559 36.855 11466.637
+  angles -21.003 80.547 68.557
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4792.556 36.705 11431.21
+  angles -1.618 -79.956 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4752.886 36.862 11397.231
+  angles -12.018 89.489 90.077
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4792.571 36.949 11385.149
+  angles -1.618 -79.956 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4793.765 33.24 11405.604
+  angles -1.618 -79.956 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+}
+SCR_DestructibleEntity : "{3C1CA9FE7552C3D2}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_5m.et" {
+ coords 4793.781 33.908 11398.859
+ angles 0 -0.46 -90
+ scale 14.488
+ "Collision multiplier" 0
+ "Melee multiplier" 0
+ "Kinetic multiplier" 0
 }
 $grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Granite/GraniteCliff_01.et" {
  {
@@ -405,7 +1715,7 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Gr
   scale 1.793
  }
  {
-  coords 4721.411 28.101 11196.272
+  coords 4721.184 28.101 11196.305
   angles 0 98.07 0
  }
  {
@@ -421,7 +1731,7 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Gr
   angles -2.581 -93.029 90.536
  }
  {
-  coords 4719.137 30.984 11148.685
+  coords 4719.265 30.99 11148.646
   angles -2.581 -73.165 90.536
  }
  {
@@ -442,10 +1752,39 @@ $grp SCR_DestructibleEntity : "{4AC75CCBE6704D87}Prefabs/Structures/Infrastructu
   coords 4768.413 31.788 11331.539
   angles 0 -11.024 0
   scale 7
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
  }
  {
   coords 4745.025 31.788 11308.762
   angles 0 11.92 0
+  scale 7
+ }
+ {
+  coords 4767.859 31.788 11452.615
+  angles 0 -87.975 0
+  scale 7
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
+ }
+ {
+  coords 4785.1 31.788 11424.724
+  angles 0 -65.188 0
+  scale 7
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
+ }
+ {
+  coords 4790.762 31.788 11392.433
+  angles 0 -44.597 0
+  scale 7
+ }
+ {
+  coords 4783.927 31.788 11360.799
+  angles 0 -22.03 0
   scale 7
  }
 }
@@ -454,11 +1793,17 @@ $grp SCR_DestructibleEntity : "{4CD13B27E7769662}Prefabs/Structures/Infrastructu
   coords 4771.332 30.08 11353.514
   angles 0 -114.838 0
   scale 14.533
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
  }
  {
   coords 4778.567 28.538 11385.042
   angles 0 63.594 0
   scale 14.533
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
  }
  {
   coords 4739.639 28.538 11365.713
@@ -469,11 +1814,32 @@ $grp SCR_DestructibleEntity : "{4CD13B27E7769662}Prefabs/Structures/Infrastructu
   coords 4776.98 28.411 11324.756
   angles 0 113.702 0
   scale 14.533
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
  }
  {
   coords 4737.184 28.411 11342.227
   angles 0 113.702 0
   scale 14.533
+ }
+ {
+  coords 4773.721 28.538 11408.217
+  angles 0 -81.044 0
+  scale 14.533
+  "Collision multiplier" 0
+  "Melee multiplier" 0
+  "Kinetic multiplier" 0
+ }
+ {
+  coords 4766.02 28.286 11429.926
+  angles 0 -71.744 0
+  scale 10.686
+ }
+ {
+  coords 4796.307 28.277 11419.935
+  angles 0 -71.744 0
+  scale 10.686
  }
 }
 StaticModelEntity : "{526CAAF8900F4692}Prefabs/Structures/Cultural/Churches/Church_01/Dst/Church_01_ruin.et" {
@@ -570,18 +1936,466 @@ $grp GenericEntity : "{532E2709E33FA192}Prefabs/Structures/BuildingParts/Bridges
   scale 3.79
  }
 }
-$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
- S105_rally1 {
-  coords 4752.409 27.844 11273.915
+$grp StaticModelEntity : "{5608B9078BF2AC5A}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragonsteeth_01_old_V1.et" {
+ {
+  coords 4505.167 0.104 10992.166
+  scale 3.02
  }
- S105_rally2 {
-  coords 4895.409 28.594 11776.395
+ {
+  coords 4498.872 0 10992.322
+  scale 3.02
+ }
+ {
+  coords 4484.114 0 10999.328
+  scale 3.02
+ }
+ {
+  coords 4481.244 0 11005.545
+  scale 3.02
+ }
+ {
+  coords 4444.376 0 11091.524
+  scale 3.02
+ }
+ {
+  coords 4450.502 0 11088.762
+  scale 3.02
+ }
+ {
+  coords 4420.876 0.001 11092.068
+  scale 3.02
+ }
+ {
+  coords 4430.699 0.001 11048.04
+  scale 3.02
+ }
+ {
+  coords 4580.417 0 11155.939
+  scale 3.02
+ }
+ {
+  coords 4576.077 0 11154.057
+  scale 3.02
+ }
+ {
+  coords 4566.805 0 11148.558
+  scale 3.02
+ }
+ {
+  coords 4562.461 0 11141.876
+  scale 3.02
+ }
+ {
+  coords 4540.876 0 11035.138
+  scale 3.02
+ }
+ {
+  coords 4547.139 0 11058.143
+  angles 6.956 -1.092 -8.947
+  scale 3.02
+ }
+ {
+  coords 4540.508 0.001 11051.855
+  angles 8.792 -0.483 -10.569
+  scale 3.02
+ }
+ {
+  coords 4121.336 -0.412 10699.23
+  angles -11.479 0.182 -0.913
+  scale 3.7
+ }
+ {
+  coords 4123.048 0 10694.505
+  angles -11.479 0.182 -0.913
+  scale 3.7
+ }
+ {
+  coords 4302.756 0 10722.394
+  angles -0.534 -43.213 -3.18
+  scale 3.7
+ }
+ {
+  coords 4310.875 0.122 10718.486
+  angles -0.534 -43.213 -3.18
+  scale 3.7
+ }
+ {
+  coords 4292.769 0 10693.055
+  angles -0.534 -43.213 -3.18
+  scale 3.7
+ }
+ {
+  coords 4297.603 0 10687.804
+  angles -0.534 -43.213 -3.18
+  scale 3.7
+ }
+ {
+  coords 4435.718 -0.481 10717.269
+  angles -0.534 -43.213 -3.18
+  scale 3.7
+ }
+ {
+  coords 4430.545 -0.508 10705.068
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4407.529 -0.684 10697.05
+  angles -1.479 -60.956 -2.866
+  scale 3.7
+ }
+ {
+  coords 4401.839 -0.427 10698.074
+  angles -1.393 -59.27 -2.908
+  scale 3.7
+ }
+ {
+  coords 4427.378 -0.664 10698.673
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4435.744 -0.352 10711.865
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4462.91 0 10744.651
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4400.913 0 10910.892
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4423.047 0 10927.136
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4406.876 0 10916.276
+  angles -1.564 -62.676 -2.82
+  scale 3.7
+ }
+ {
+  coords 4521.053 -0.312 10951.799
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4530.161 -0.676 10955.451
+  angles -3.105 -108.034 -0.87
+  scale 3.7
+ }
+ {
+  coords 4567.243 0 10849.568
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4574.102 0 10818.675
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4586.775 0 10739.706
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4588.233 0 10729.801
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4566.275 0.001 10731.094
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4564.527 0 10738.949
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4581.608 0 10644.994
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4577.389 0 10650.395
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4611.268 -0.002 10644.047
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4606.818 0 10634.597
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4611.837 0 10610.943
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4611.402 0 10605.689
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4583.256 0 10415.532
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4580.541 0 10420.883
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4542.445 0 9999.426
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4538.987 0.011 10003.549
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4490.224 -0.002 9610.038
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4479.851 0.001 9578.649
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4481.711 -0.001 9564.459
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4504.524 0 9511.325
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4500.244 0 9504.528
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4481.042 0 9491.399
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4485.505 0.108 9443.008
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4496.485 0.103 9439.924
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4491.613 -0.113 9439.527
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4559.606 0.234 9474.238
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4556.16 -0.023 9480.504
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4550.662 0 9486.238
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4603.794 -0.001 8685.782
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4593.772 0 8684.101
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4591.818 0 8690.009
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4597.525 0 8681.329
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4938.753 0.116 9090.252
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4936.432 0 9086.642
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4932.711 0 9081.111
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4914.744 0 9093.295
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4913.023 0 9099.097
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4911.745 0 9108.472
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4893.931 -0.001 9258.702
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4898.757 0 9252.99
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4917.571 0 9184.61
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4915.015 0.001 9189.041
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4636.027 0 9269.264
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4631.51 0 9269.603
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4419.247 0 8793.774
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4413.511 0.107 8794.275
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 4071.453 0 9008.479
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3964.297 -0.001 8604.372
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3962.193 -0.837 8598.051
+  angles -3.223 -122.184 -0.085
+  scale 3.7
+ }
+ {
+  coords 3886.52 -0.001 8419.354
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3878.515 0 8426.687
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3926.219 0.001 8422.404
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3915.867 0 8418.553
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3908.481 0 8417.021
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3898.958 0 8417.894
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3932.982 0 8437.495
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3932.939 0 8454.232
+  angles -2.665 -89.407 -1.816
+  scale 3.7
+ }
+ {
+  coords 3933.877 -0.001 8469.66
+  angles -2.665 -89.407 -1.816
+  scale 3.7
  }
 }
 StaticModelEntity : "{563E2838EE82709B}Prefabs/Structures/Cultural/Churches/Church_01/Dst/Church_01_Addon_01_Ruin_V1_reddecor.et" {
  coords 4790.948 27.71 11821.897
  angles 0 -47.381 0
  scale 1.92
+}
+$grp SCR_DestructibleEntity : "{56CF791F12BB17B0}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_terminator_low.et" {
+ {
+  coords 4756.832 26.104 11419.293
+  angles 0 -60.798 0
+  scale 23.673
+ }
+ {
+  coords 4794.937 33.739 11437.107
+  angles 2.007 179.995 89.856
+  scale 16.258
+ }
 }
 $grp GenericEntity : "{582392E334A36FEA}Prefabs/Props/Indicators/Indicator_Pointer_Flat.et" {
  {
@@ -596,6 +2410,10 @@ $grp GenericEntity : "{582392E334A36FEA}Prefabs/Props/Indicators/Indicator_Point
  {
   coords 4891.968 28.458 11777.931
  }
+}
+GenericEntity : "{630C2872BB87F44F}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Short_Pile.et" {
+ coords 4778.652 26.618 11870.449
+ angles 0 148.068 0
 }
 $grp GenericEntity : "{6720CD0D5B7B7768}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long.et" {
  {
@@ -612,6 +2430,51 @@ $grp GenericEntity : "{6720CD0D5B7B7768}Prefabs/Props/Construction/ConcretePipe/
   coords 4815.657 14.26 12038.216
   angles -3.143 -90.859 0.047
   scale 14.265
+ }
+ {
+  coords 4784.072 21.644 11572.652
+  angles 0 16.612 0
+  scale 10.89
+ }
+ {
+  coords 4786.634 21.644 11581.49
+  angles 0 22.222 0
+  scale 10.89
+ }
+ {
+  coords 4782.272 21.644 11565.065
+  angles 0 11.52 0
+  scale 10.89
+ }
+ {
+  coords 4781.359 21.644 11555.807
+  angles 0 7.458 0
+  scale 10.89
+ }
+ {
+  coords 4780.613 21.644 11545.793
+  angles 0 -2.391 0
+  scale 10.89
+ }
+ {
+  coords 4780.501 21.644 11532.87
+  angles 0 -11.796 0
+  scale 10.89
+ }
+ {
+  coords 4781.452 21.644 11521.79
+  angles 0 -21.074 0
+  scale 10.89
+ }
+ {
+  coords 4785.482 21.644 11507.014
+  angles 0 -31.182 0
+  scale 10.89
+ }
+ {
+  coords 4792.633 21.644 11491.822
+  angles 0 -32.892 0
+  scale 10.89
  }
 }
 GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck.et" {
@@ -690,13 +2553,13 @@ $grp StaticModelEntity : "{7022F1A36DC9510C}Prefabs/Structures/BuildingParts/Ent
   scale 6.38
  }
  {
-  coords 4771.752 26.795 11316.172
-  angles -6.844 0 -90
+  coords 4771.752 26.96 11316.176
+  angles -1.191 0 -90
   scale 6.38
  }
  {
-  coords 4748.43 26.795 11316.172
-  angles -6.844 0 -90
+  coords 4748.43 26.96 11316.176
+  angles -1.191 0 -90
   scale 6.38
  }
  {
@@ -719,6 +2582,21 @@ $grp StaticModelEntity : "{7022F1A36DC9510C}Prefabs/Structures/BuildingParts/Ent
   angles -6.844 -77.095 -90
   scale 6.38
  }
+ {
+  coords 4905.783 26.133 11817.291
+  angles -13.574 178.845 -90
+  scale 6.38
+ }
+ {
+  coords 4860.3 26.133 11854.153
+  angles -13.574 178.845 -90
+  scale 6.38
+ }
+ {
+  coords 4910.351 26.133 11894.369
+  angles -13.574 178.845 -90
+  scale 6.38
+ }
 }
 $grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
  {
@@ -732,6 +2610,142 @@ $grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Point
  {
   coords 4834.576 47.96 11737.846
   angles 0 0 0
+ }
+ {
+  coords 4572.538 31.088 11133.708
+  angles 0 165 0
+ }
+ {
+  coords 4495.71 12.504 10998.801
+  angles 0 -49.161 0
+ }
+ {
+  coords 4488.057 12.431 11011.766
+  angles 0 -5.187 0
+ }
+ {
+  coords 4177.357 6.67 11141.236
+  angles 0 -168.209 0
+ }
+ {
+  coords 4711.92 33.195 11074.994
+  angles 0 101.094 0
+ }
+ {
+  coords 4834.935 35.062 11058.038
+  angles 0 -65.553 0
+ }
+ {
+  coords 4436.625 7.481 11086.362
+  angles 0 -78.575 0
+ }
+ {
+  coords 4430.277 9.373 11052.689
+  angles 0 -59.924 0
+ }
+ {
+  coords 4130.38 10.523 10697.81
+  angles 0 95.881 0
+ }
+ {
+  coords 4234.014 10.707 10670.918
+  angles 0 85.977 0
+ }
+ {
+  coords 4305.952 9.826 10718.761
+  angles 0 156.353 0
+ }
+ {
+  coords 4430.284 19.726 10713.139
+  angles 0 6.97 0
+ }
+ {
+  coords 4462.337 16.368 10782.129
+  angles 0 -15.939 0
+ }
+ {
+  coords 4467.852 16.368 10755.946
+  angles 0 -10.428 0
+ }
+ {
+  coords 4423.946 16.368 10922.015
+  angles 0 74.061 0
+ }
+ {
+  coords 4537.175 20.823 10946.684
+  angles 0 158.634 0
+ }
+ {
+  coords 4491.758 20.557 9455.819
+  angles 0 92.364 0
+ }
+ {
+  coords 4556.767 20.557 9442.298
+  angles 0 -157.656 0
+ }
+ {
+  coords 4525.543 14.581 9345.471
+  angles 0 125.84 0
+ }
+ {
+  coords 4599.692 89.585 8689.026
+  angles 0 -51.414 0
+ }
+ {
+  coords 4179.09 31.445 9032.693
+  angles 0 -99.955 0
+ }
+ {
+  coords 3919.054 18.877 8427.865
+  angles 0 -105.96 0
+ }
+ {
+  coords 3963.439 21.163 8601.056
+  angles 0 -117.967 0
+ }
+ {
+  coords 3887.592 18.817 8427.775
+  angles 0 -23.716 0
+ }
+ {
+  coords 3717.943 23.708 8510.572
+  angles -66.122 -92.552 86.085
+ }
+ {
+  coords 3717.433 23.84 8515.316
+  angles -66.122 -92.552 86.085
+ }
+ {
+  coords 3716.965 23.961 8519.678
+  angles -66.122 -92.552 86.085
+ }
+ {
+  coords 3716.551 24.068 8523.53
+  angles -66.122 -92.552 86.085
+ }
+ {
+  coords 4606.99 25.639 10570.824
+  angles 0.048 -112.284 173.316
+ }
+ {
+  coords 4578.624 23.109 10544.19
+  angles 0.048 151.99 173.316
+ }
+ {
+  coords 4554.188 25.111 10293.177
+  angles -39.337 -177.114 -94.203
+ }
+ {
+  coords 4945.652 43.639 9109.84
+  angles 0 -129.061 0
+ }
+ {
+  coords 4855.982 34.552 12048.626
+  angles 0.048 -53.748 173.316
+ }
+ {
+  coords 4761.391 30.65 12056.519
+  angles 0.048 -143.4 173.316
  }
 }
 GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et" {
@@ -775,6 +2789,103 @@ $grp GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck/S105_wre
  {
   coords 4775.086 28.415 11398.408
   angles -22.039 -112.699 8.056
+ }
+}
+$grp GenericEntity : "{8FDC6AA92A0DFADC}Prefabs/Structures/Walls/Brick/BrickWall_02/dst/Brick_wall_02_2m_dst_01.et" {
+ {
+  coords 4088.441 1.495 10950.587
+  angles 0 82.16 0
+  scale 4.87
+ }
+ {
+  coords 4089.673 1.495 10939.702
+  angles 0 69.795 0
+  scale 4.87
+ }
+ {
+  coords 4093.945 1.495 10928.025
+  angles 0 56.065 0
+  scale 4.87
+ }
+ {
+  coords 4101.625 1.495 10917.629
+  angles 0 21.598 0
+  scale 4.87
+ }
+ {
+  coords 4112.623 1.495 10912.764
+  angles 0 21.598 0
+  scale 4.87
+ }
+ {
+  coords 4124.004 1.495 10907.493
+  angles 0 37.685 0
+  scale 4.87
+ }
+ {
+  coords 4134.17 1.495 10896.237
+  angles 0 78.373 0
+  scale 4.87
+ }
+ {
+  coords 4153.239 1.495 10900.551
+  angles 0 86.887 0
+  scale 4.87
+ }
+ {
+  coords 4146.987 1.495 10910.641
+  angles 0 54.389 0
+  scale 4.87
+ }
+ {
+  coords 4138.441 1.495 10919.146
+  angles 0 38.403 0
+  scale 4.87
+ }
+ {
+  coords 4154.718 1.495 10888.321
+  angles 0 93.263 0
+  scale 4.87
+ }
+ {
+  coords 4127.133 1.495 10926.59
+  angles 0 27.433 0
+  scale 4.87
+ }
+ {
+  coords 4113.882 0 10931.15
+  angles 0 26.697 0
+  scale 4.87
+ }
+ {
+  coords 4107.56 0.117 10941.752
+  angles 0 57.998 0
+  scale 4.87
+ }
+ {
+  coords 4107.241 0.117 10952.157
+  angles 0 91.309 0
+  scale 4.87
+ }
+ {
+  coords 4111.619 0.458 10727.257
+  angles 0 77.962 0
+  scale 4.87
+ }
+ {
+  coords 4114.875 0.458 10713.446
+  angles 0 60.422 0
+  scale 4.87
+ }
+ {
+  coords 4130.208 0.411 10726.924
+  angles 0 67.079 0
+  scale 4.87
+ }
+ {
+  coords 4134.78 0.411 10718.04
+  angles 0 46.758 0
+  scale 4.87
  }
 }
 StaticModelEntity : "{90DCEB97A36E555D}Prefabs/Structures/Ruins/House_Ruin_1I01/Dst/House_Ruin_1I01_V3_ruin_base.et" {
@@ -980,6 +3091,344 @@ $grp GenericEntity : "{A80F0848BFF11327}Prefabs/Structures/Infrastructure/Lamps/
    }
   }
  }
+ {
+  coords 3750.122 0 8511.129
+  angles -5.374 58.938 4.007
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3747.457 0 8530.785
+  angles 4.679 -130.106 -4.801
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3728.303 2.456 8529.89
+  angles 4.679 -130.106 -4.801
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3729.163 2.109 8510.242
+  angles -4.679 49.894 4.801
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3783.537 0.001 8508.735
+  angles -6.669 90.177 0.647
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3796.057 0.784 8530.982
+  angles 6.63 -75.893 0.974
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3832.996 0 8495.874
+  angles 6.649 -77.1 0.834
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3905.653 0 8418.253
+  angles -5.078 54.872 4.378
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4549.253 -2.078 9954.201
+  angles -5.844 125.141 -3.285
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4784.324 -5.906 11955.575
+  angles 0 8.316 0
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0.502 0 0 1
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4759.028 -4.691 11955.549
+  angles 0 82.721 0
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+     }
+    }
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{ABE5B569C2ED5B2F}Prefabs/Structures/Walls/Pipe/PipeRailing_01/Dst/PipeRailing_01_3m_01_grey.et" {
+ {
+  coords 4752.896 34.374 11400.983
+  angles 0 -25.512 0
+  scale 4.7
+ }
+ {
+  coords 4765.241 34.374 11407.008
+  angles 0 -12.141 0
+  scale 4.7
+ }
+ {
+  coords 4778.675 34.374 11409.975
+  angles 0 0.405 0
+  scale 4.7
+ }
 }
 GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck_static.et" {
  coords 4755.841 27.502 11335.125
@@ -1029,6 +3478,40 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{B6A096447B215355}Prefabs/Rocks/Gr
   scale 2.124
  }
 }
+$grp GenericEntity : "{B9F8987A84B94738}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_03/LampStreet_E_03_addon.et" {
+ {
+  coords 4813.631 28.766 12018.72
+  angles 0 -2.076 0
+  scale 3.8
+  {
+   GameEntity {
+    ID "599C83EA4EB7679B"
+    {
+     LightEntity {
+      ID "599C83EBB1001549"
+      Radius 72.48
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4834.602 26.113 11962.751
+  angles 0 87.924 0
+  scale 3.8
+  {
+   GameEntity {
+    ID "599C83EA4EB7679B"
+    {
+     LightEntity {
+      ID "599C83EBB1001549"
+      Radius 72.48
+     }
+    }
+   }
+  }
+ }
+}
 $grp SCR_DestructibleBuildingEntity : "{BD27F515C6651FE2}Prefabs/Structures/Industrial/Cranes/CoalLoader_01/CoalLoader_01_bridge_conveyorbelt_v2.et" {
  {
   coords 4774.574 -51.11 11310.25
@@ -1040,12 +3523,33 @@ $grp SCR_DestructibleBuildingEntity : "{BD27F515C6651FE2}Prefabs/Structures/Indu
   angles 0 -105.586 0
   scale 3.721
  }
+ {
+  coords 4778.574 -51.482 11442.438
+  angles 0 -44.304 0
+  scale 3.721
+ }
+ {
+  coords 4774.281 -51.294 11354.671
+  angles 0 -89.316 0
+  scale 3.721
+ }
+ {
+  coords 4772.962 -51.419 11399.256
+  angles 0 -63.14 0
+  scale 3.721
+ }
+ {
+  coords 4782.325 -51.509 11460.976
+  angles 0 -79.203 0
+  scale 3.721
+ }
+ {
+  coords 4776.182 -51.45 11421.249
+  angles 0 -74.415 0
+  scale 3.721
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{C9229E6CDC3F547C}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_4m_90_V2.et" {
- {
-  coords 4873.551 -0.3 11498.956
-  scale 8
- }
  {
   coords 4737.097 -23.914 11099.955
   angles 0 -80.098 0
@@ -1060,6 +3564,21 @@ $grp SCR_DestructibleBuildingEntity : "{C9229E6CDC3F547C}Prefabs/Structures/Wall
   coords 4727.282 -23.914 11102.722
   angles 0 -80.098 0
   scale 9.04
+ }
+ {
+  coords 4103.821 -32.529 10928.601
+  angles 0 -82.571 0
+  scale 11.88
+ }
+ {
+  coords 4141.047 -30.925 10903.405
+  angles 0 103.854 0
+  scale 11.88
+ }
+ {
+  coords 4129.333 -47.072 10708.799
+  angles 0 -88.345 0
+  scale 11.88
  }
 }
 $grp SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_Base.et" {
@@ -1098,6 +3617,14 @@ $grp SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infr
   scale 1.277
  }
 }
+SCR_DestructibleEntity : "{D19F62E1E7FEB55B}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_curve_low_90_short_cnc.et" {
+ coords 4770.11 31.754 11466.1
+ angles 0 -112.882 0
+ scale 7
+ "Collision multiplier" 0
+ "Melee multiplier" 0
+ "Kinetic multiplier" 0
+}
 GenericEntity : "{D2EB3379CBCB9B48}Prefabs/Structures/Signs/Warnings/SignFallingRocks_01_pole.et" {
  coords 4757.152 22.14 11892.347
  angles 0 11.594 0
@@ -1108,24 +3635,130 @@ SCR_IndestructibleEnvironmentalEntity : "{D5CC7A5A32C640A3}Prefabs/Rocks/Granite
  angles 0 41.077 0
  scale 1.51
 }
+$grp SCR_DestructibleBuildingEntity : "{D97095FEEDBD5613}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_PillarSmall.et" {
+ {
+  coords 4368.688 4.552 11091.092
+  angles 0 20.41 3.802
+  scale 2
+ }
+ {
+  coords 4314.454 1.476 11111.365
+  angles 0 20.41 -2.014
+  scale 2
+ }
+ {
+  coords 4277.432 1.881 11125.294
+  angles 0 20.41 0
+  scale 2
+ }
+ {
+  coords 4229.514 1.627 11140.153
+  angles 0 17.253 0
+  scale 2
+ }
+ {
+  coords 4184.01 1.526 11140.933
+  angles 0 2.355 0
+  scale 2
+ }
+ {
+  coords 4105.757 1.369 11000.932
+  angles 0 -81.372 0
+  scale 2
+ }
+ {
+  coords 4097.942 1.263 10949.431
+  angles 0 -81.372 0
+  scale 2
+ }
+ {
+  coords 4137.071 0.578 10830.443
+  angles 0 -81.372 0
+  scale 2
+ }
+ {
+  coords 4129.408 0.508 10779.942
+  angles 0 -81.372 0
+  scale 2
+ }
+ {
+  coords 4121.668 0.388 10728.941
+  angles 0 -81.372 0
+  scale 2
+ }
+ {
+  coords 3712.87 11.068 8517.109
+  angles 1.587 -6.766 13.144
+  scale 1.832
+ }
+}
 $grp SCR_IndestructibleEnvironmentalEntity : "{DF692A1784D6B324}Prefabs/Rocks/Granite/GraniteRock_01_V2.et" {
  {
   coords 4699.981 27.844 11149.572
   angles 0 79.795 0
  }
  {
-  coords 4719.728 28.81 11139.717
+  coords 4719.728 27.936 11139.717
   angles 0 79.795 0
  }
 }
-SCR_DestructibleBuildingEntity : "{E8C4D8095BADC7E4}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_8m.et" {
- coords 4768.651 7.974 11048.709
- angles 0 178.824 0
- scale 8
+$grp SCR_DestructibleBuildingEntity : "{E8C4D8095BADC7E4}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_8m.et" {
+ {
+  coords 4768.651 7.974 11048.709
+  angles 0 178.824 0
+  scale 8
+ }
+ {
+  coords 4798.717 5.746 11396.285
+  angles 0 -91.131 0
+  scale 8
+ }
+ {
+  coords 4745.919 5.746 11387.022
+  angles 0 -89.826 0
+  scale 8
+ }
+ {
+  coords 4745.752 5.746 11332.001
+  angles 0 -89.826 0
+  scale 8
+ }
+ {
+  coords 4799.226 5.746 11332.395
+  angles 0 -91.131 0
+  scale 8
+ }
+ {
+  coords 4813.064 5.675 11213.625
+  angles 0 -124.708 0
+  scale 8
+ }
+ {
+  coords 4757.418 5.905 11208.898
+  angles 0 -91.131 0
+  scale 8
+ }
+ {
+  coords 4777.068 13.278 11237.623
+  angles 0 178.869 0
+  scale 6.08
+ }
 }
 GenericEntity : "{E98385D7F126474C}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_02_static.et" {
  coords 4788.031 27.969 11327.905
  angles 0 26.947 0
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
+ {
+  coords 3899.929 -2.63 8469.637
+  angles 0 -100.867 0
+  scale 0.64
+ }
+ {
+  coords 3904.163 -2.788 8451.568
+  angles 0 -86.236 0
+  scale 0.64
+ }
 }
 GenericEntity : "{F49E9F098C6069AD}Prefabs/Props/Furniture/Toilet_01.et" {
  coords 4771.361 28.428 11746.427
@@ -1176,6 +3809,11 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{FA6727A124372434}Prefabs/Rocks/Gr
   angles 0 -83.824 0
   scale 1.48
  }
+}
+SCR_DestructibleEntity : "{FD30015A06179120}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_connector_low_high.et" {
+ coords 4797.109 36.382 11452.557
+ angles -0.793 -162.349 91.138
+ scale 7.585
 }
 $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
  {
