@@ -4,6 +4,14 @@ modded class SCR_BaseGameMode
 	{
 		m_eGameState = state;
 		Replication.BumpMe();
+		// Explicitly raise the event on the authority, mirroring SCR_BaseGameMode.StartGameMode()
+		// and EndGameMode(). The [RplProp onRplName] callback only fires automatically on proxy
+		// (client) nodes when they receive the replicated value, never on the authority itself.
+		// Without this, OnGameModeStart() and OnGameModeEnd() are never called on the server or
+		// in Workbench (where there are no proxy nodes to receive the replication), which means
+		// SCR_DataCollectorComponent.StartDataCollectorSession() never runs and the EntityEvent.FRAME
+		// flag is never set — breaking stat tracking and the ENABLE_DIAG debug menu.
+		OnGameStateChanged();
 	}
 }
 
@@ -622,20 +630,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
     		return true;
  	}
-	
-	//------------------------------------------------------------------------------------------------
-	bool IsSideBFTEnabled(string factionKey)
-	{
-		switch(factionKey)
-		{
-			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableBFT;
-			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableBFT;
-			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableBFT;
-			case "CIV":		return m_CIVILIANGearScriptSettings.m_bEnableBFT;
-		}
-		
-   		return true;
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Get gearscript resource for a faction

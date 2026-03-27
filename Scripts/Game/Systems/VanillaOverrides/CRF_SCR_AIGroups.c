@@ -14,6 +14,7 @@ modded class SCR_AIGroup
 			GetGame().GetCallqueue().CallLater(SetGarrison, 1000, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void SetGarrison()
 	{
 		array<AIAgent> agents = {};

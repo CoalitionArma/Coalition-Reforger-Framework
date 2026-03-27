@@ -109,6 +109,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		// Initialize back button
 		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
 		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
 		
 		// Initialize mission description list
 		m_cMissionDescriptionListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("DescriptionList")).FindHandler(SCR_ListBoxComponent));
@@ -451,6 +452,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Reset back button
 		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
 		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 		backButton.m_OnClicked.Clear();
 		
@@ -488,6 +490,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Show back button
 		m_wBackButton.SetOpacity(1);
+		m_wBackButton.SetEnabled(true);
 		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 		backButton.m_OnClicked.Insert(DescriptionInit);
 		

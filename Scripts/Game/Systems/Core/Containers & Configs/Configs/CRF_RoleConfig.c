@@ -6,6 +6,11 @@ class CRF_RolesConfig
 	
 	protected ref map<CRF_EGearRole, CRF_RoleConfig> m_RoleConfigsMap = new map<CRF_EGearRole, CRF_RoleConfig>;
 	
+	array<ref CRF_RoleConfig> GetRoleConfigArray()
+	{
+		return m_RoleConfigs;
+	}
+	
 	map<CRF_EGearRole,CRF_RoleConfig> GetRoleConfigMap()
 	{
 		return m_RoleConfigsMap;
