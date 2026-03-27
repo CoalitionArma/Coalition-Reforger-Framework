@@ -1,0 +1,84 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 10029.349 0 4691.209
+  angles 0 190 0
+  m_rVehicle "{DDE009B6A29873EE}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat.et"
+  m_sFactionKey "INFOR"
+ }
+ {
+  coords 10036.682 0 4689.125
+  angles 0 190 0
+  m_rVehicle "{DDE009B6A29873EE}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat.et"
+  m_sFactionKey "INFOR"
+ }
+ {
+  coords 9987.639 0 4709.88
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9994.379 0 4710.208
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9996.74 0 4700.155
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9986.007 0 4697.89
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9981.178 0 4736.858
+  angles 0 -170 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9991.339 0 4737.43
+  angles 0 -170 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9982.381 0 4758.39
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9992.95 0 4755.47
+  angles 0 -170 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10023.697 0 4763.566
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10033.399 0 4759.165
+  angles 0 190 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "INFOR"
+  m_bShouldAddAmmo 0
+ }
+}

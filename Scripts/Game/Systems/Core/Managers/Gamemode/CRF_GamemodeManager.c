@@ -88,10 +88,23 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter.DisableAI();
 			DeleteOldInitialEntity(playerController, playerCharacter);
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
-			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
+			bool requestSpawnUsed = CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
+			{
 				GetGame().GetCallqueue().Call(AssignPlayerToGroup, playerId);
+
+				// Only notify data-collector modules manually when SetInitialMainEntity was used.
+				// When RequestSpawn is used, OnPlayerSpawnFinalize_S fires automatically and
+				// delegates to NotifyPlayerSpawned — calling it twice would cause duplicate
+				// AddInvokers registrations and incorrect stat tracking.
+				if (!requestSpawnUsed)
+				{
+					SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent));
+					if (dataCollector)
+						dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
+				}
+			}
 
 			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 		};
@@ -143,7 +156,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		CRF_SpawnPointData spawnPointData;
 		
 		if (spawnPointID == -1)
-			spawnPointData = m_RespawnManager.FindInitalSpawnpoint(m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey(), m_SlottingManager.GetPlayerSlotGroup(playerId));
+			spawnPointData = m_RespawnManager.FindInitalFactionSpawnpoint(m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey(), m_SlottingManager.GetPlayerSlotGroup(playerId));
 		else
 			spawnPointData = m_RespawnManager.GetSpawnPoint(spawnPointID);
 		

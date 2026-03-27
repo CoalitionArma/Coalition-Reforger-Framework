@@ -90,6 +90,7 @@ enum CRF_ESlotUpdateField
 
 enum CRF_EGearscriptClothing
 {
+	UNDEFINED = 123456789,
 	HEADGEAR = 0,
 	SHIRT,
 	ARMOREDVEST,
@@ -180,7 +181,8 @@ modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
 	CRF_SpectatorMenu,
 	CRF_CharacterLoading,
 	CRF_GungameStart,
-	CRF_GunGameEnd
+	CRF_GunGameEnd,
+	CRF_RallyResults
 }
 
 //------------------------------------------------------------------------------------

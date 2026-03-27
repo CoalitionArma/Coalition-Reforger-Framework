@@ -51,6 +51,9 @@ class CRF_RespawnManager : ScriptComponent
 	
 	// Latest Spawn ID used
 	protected int m_iLatestSpawnPointID;
+	
+	// Invoker for data updates
+	protected ref ScriptInvoker m_OnSpawnPointsUpdate;
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -100,6 +103,26 @@ class CRF_RespawnManager : ScriptComponent
 		m_iCurrentTimeToRespawn = m_Gamemode.m_iTimeToRespawn;
 		m_bCurrentWaveRespawn = m_Gamemode.m_bWaveRespawn;
 		m_bCurrentRespawnEnabled = m_Gamemode.m_bRespawnEnabled;
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 INVOKERS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	void ForceSpawnPointsUpdated()
+	{
+		if (m_OnSpawnPointsUpdate)
+			m_OnSpawnPointsUpdate.Invoke();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnSpawnPointsUpdated()
+	{
+		if (!m_OnSpawnPointsUpdate)
+			m_OnSpawnPointsUpdate = new ScriptInvoker();
+
+		return m_OnSpawnPointsUpdate;
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -539,27 +562,33 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_SpawnPointData FindInitalSpawnpoint(FactionKey factionKey, SCR_AIGroup group)
+	CRF_SpawnPointData FindInitalFactionSpawnpoint(FactionKey factionKey, SCR_AIGroup group = null)
 	{	
-		string company, platoon, squad, character, format;
-
 		if (group)
-			group.GetCallsigns(company, platoon, squad, character, format);
-
-		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 		{
-			if (!spawnPointData 
-				|| !spawnPointData.GetIsActiveSpawnPoint() 
-				|| !spawnPointData.GetIsTempSpawnPoint() 
-				|| spawnPointData.GetSpawnPointEntity() == RplId.Invalid()
-				|| SCR_Enum.GetEnumName(CRF_EFactions, spawnPointData.GetSpawnPointFaction()) != factionKey)
-				continue;
+			string company, platoon, squad, character, format
+			group.GetCallsigns(company, platoon, squad, character, format);
+	
+			foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
+			{
+				if (!spawnPointData 
+					|| !spawnPointData.GetIsActiveSpawnPoint() 
+					|| !spawnPointData.GetIsTempSpawnPoint() 
+					|| spawnPointData.GetSpawnPointEntity() == RplId.Invalid()
+					|| SCR_Enum.GetEnumName(CRF_EFactions, spawnPointData.GetSpawnPointFaction()) != factionKey)
+					continue;
+	
+				if (CRF_GroupSpawnPoint.Cast(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity())).m_sCallsignOfGroupToSpawn == squad)
+					return spawnPointData;
+			}
+		};
+		
+		array<CRF_SpawnPointData> factionSpawnDataArray = GetFactionSpawnpoints(factionKey);
 
-			if (CRF_GroupSpawnPoint.Cast(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity())).m_sCallsignOfGroupToSpawn == squad)
-				return spawnPointData;
-		}
-
-		return GetFactionSpawnpoints(factionKey).Get(0);
+		if (!factionSpawnDataArray.IsEmpty())
+			return factionSpawnDataArray.Get(0);
+		else	
+			return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -805,7 +834,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	 GETTERS/INVOKERS/MIISC
+//	 GETTERS/MISC
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
@@ -855,7 +884,7 @@ class CRF_RespawnManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	//! Client-side: Update single slot from RPC (called by CRF_RplBroadcastManager)
+	//! Client-side: Update single spawn point from RPC (called by CRF_RplBroadcastManager)
 	//! Only updates if data actually changed (prevents unnecessary UI rebuilds)
 	void UpdateSpawnPointDataClient(CRF_SpawnPointData spawnPointData)
 	{
@@ -869,20 +898,23 @@ class CRF_RespawnManager : ScriptComponent
 			m_mSpawnPointMap.Set(spawnPointId, spawnPointData);
 		else
 			oldSpawnPointData.DataUpdate(spawnPointData);
+		
+		ForceSpawnPointsUpdated();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Client-side: Remove slot from RPC (called by CRF_RplBroadcastManager)
+	//! Client-side: Remove spawn point from RPC (called by CRF_RplBroadcastManager)
 	void RemoveSpawnPointClient(int spawnPointId)
 	{
 		if (Replication.IsServer())
-			return;
+			return;  // Server doesn't receive these, only sends
 		
 		CRF_SpawnPointData spawnPointData = GetSpawnPoint(spawnPointId);
 		spawnPointData.SetSpawnPointActive(false);
-		spawnPointData.ForceDataUpdate();
 		
 		m_mSpawnPointMap.Remove(spawnPointId);
+		
+		ForceSpawnPointsUpdated();
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

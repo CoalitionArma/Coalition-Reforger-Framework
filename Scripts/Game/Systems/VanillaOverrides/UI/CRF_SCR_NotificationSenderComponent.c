@@ -15,9 +15,9 @@ modded class SCR_NotificationSenderComponent
 	{
 		// Check if local player has unlimited editor access and suppress killfeeds
 		SCR_EditorManagerEntity editorManager = SCR_EditorManagerEntity.GetInstance();
-		if (editorManager && !editorManager.IsLimited() && !editorManager.IsOpened())
+		if (editorManager && !editorManager.IsLimited() && editorManager.IsOpened())
 		{
-			// Suppress all killfeeds for unlimited editor users when NOT in editor
+			// Suppress all killfeeds for unlimited editor users when IN editor
 			return;
 		}
 		
@@ -33,9 +33,9 @@ modded class SCR_NotificationSenderComponent
 	{
 		// Check if local player has unlimited editor access
 		SCR_EditorManagerEntity editorManager = SCR_EditorManagerEntity.GetInstance();
-		if (editorManager && !editorManager.IsLimited() && !editorManager.IsOpened())
+		if (editorManager && !editorManager.IsLimited() && editorManager.IsOpened())
 		{
-			// Keep killfeeds disabled for unlimited editor users when NOT in editor
+			// Keep killfeeds disabled for unlimited editor users when IN editor
 			m_iKillFeedType = EKillFeedType.DISABLED;
 			return;
 		}

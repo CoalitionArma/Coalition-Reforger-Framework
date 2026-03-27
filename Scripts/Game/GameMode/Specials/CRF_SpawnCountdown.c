@@ -9,6 +9,7 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 	[Attribute("{60994C0146B8931A}Sounds/GunGame/patmanParasite.wav")] ResourceName m_sIntroVoiceLine;
 	[RplProp()] float m_fGameStartTimer = m_iTimer;
 	MenuBase m_wGameStartBase;
+	protected int m_iLastReplicatedSecond = -1;
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -41,7 +42,14 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 			return;
 
 		m_fGameStartTimer -= timeSlice;
-		Replication.BumpMe();
+		
+		// Only replicate when the displayed second changes - not every frame
+		int currentSecond = Math.Floor(m_fGameStartTimer);
+		if (currentSecond != m_iLastReplicatedSecond)
+		{
+			m_iLastReplicatedSecond = currentSecond;
+			Replication.BumpMe();
+		}
 	}
 	
 	void CheckGameStartUI(float timeSlice)
