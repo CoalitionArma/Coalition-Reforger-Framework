@@ -1,0 +1,1220 @@
+$grp PolylineShapeEntity {
+ {
+  coords 4848 28.114 11155.322
+  Points {
+   ShapePoint "{68F6581BC3FCE64E}" {
+    Position -9.061 0 -39.737
+   }
+   ShapePoint "{68F6581BC2DD5967}" {
+    Position -8.682 0 43.875
+   }
+   ShapePoint "{68F6581BC5A6BA21}" {
+    Position 8.209 0 43.602
+   }
+   ShapePoint "{68F6581BC4C2E78D}" {
+    Position 8.729 0 -39.746
+   }
+  }
+  IsClosed 1
+  {
+   LakeGeneratorEntity : "{1F2254A7C9C8AA57}Prefabs/WEGenerators/Water/Lake/LG_Lake_01.et" {
+    coords 0 0.316 0
+   }
+  }
+ }
+ {
+  coords 4777.402 27.853 11078.036
+  Points {
+   ShapePoint "{68F6581BC3FCE64E}" {
+    Position -35.504 0 -25.037
+   }
+   ShapePoint "{68F6581BC2DD5967}" {
+    Position -27.472 0 23.298
+   }
+   ShapePoint "{68F6581BC5A6BA21}" {
+    Position 19.553 0 27.187
+   }
+   ShapePoint "{68F6581BC4C2E78D}" {
+    Position 20.625 0 -23.554
+   }
+  }
+  IsClosed 1
+  {
+   LakeGeneratorEntity : "{1F2254A7C9C8AA57}Prefabs/WEGenerators/Water/Lake/LG_Lake_01.et" {
+    coords 0 0.316 0
+   }
+  }
+ }
+}
+SplineShapeEntity {
+ coords 4848.752 27.844 11161.435
+}
+$grp SCR_DestructibleBuildingEntity : "{0850ACA43C743E25}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_8m_30_V2.et" {
+ {
+  coords 4785.369 -22.934 11574.625
+  angles 0 -55.005 0
+  scale 8
+ }
+ {
+  coords 4813.227 -26.252 11626.004
+  angles 5.524 -26.478 10.938
+  scale 8
+ }
+ {
+  coords 4846.591 -24.861 11231.758
+  angles 0 67.642 0
+  scale 8
+ }
+ {
+  coords 4804.201 -23.242 11279.852
+  angles 4.403 -101.962 -1.422
+  scale 8
+ }
+ {
+  coords 4738.004 -20.042 11272.531
+  angles 4.403 129.043 -1.422
+  scale 8
+ }
+ {
+  coords 4795.29 -20.998 11128.43
+  angles 0 -72.679 0
+  scale 8
+ }
+ {
+  coords 4772.419 -35.724 11098.463
+  angles -10.97 -164.23 -2.667
+  scale 9.28
+ }
+ {
+  coords 4774.585 -34.663 11109.968
+  angles -8.86 -164.334 -2.064
+  scale 9.28
+ }
+ {
+  coords 4755.56 -25.732 11145.073
+  angles 0.037 12.746 -0.486
+  scale 9.28
+ }
+ {
+  coords 4774.585 -34.663 11109.968
+  angles -8.86 -164.334 -2.064
+  scale 9.28
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{0886FFD947F3B42D}Prefabs/Infrastructure/Tunnels/Large Tunnel 100M.et" {
+ {
+  coords 4847.091 0.158 11106.607
+ }
+ {
+  coords 4712.225 0.257 11149.014
+  angles 0 18.239 0
+  scale 1.1
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 4813.211 -50.743 11963.572
+  angles 0 90 0
+  scale 27.75
+ }
+ {
+  coords 4728.895 -50.743 11963.574
+  angles 0 89.222 0
+  scale 27.75
+ }
+ {
+  coords 4813.955 -50.743 11854.439
+  angles 0 90 0
+  scale 27.75
+ }
+ {
+  coords 4728.373 -50.743 11854.441
+  angles 0 89.609 0
+  scale 27.75
+ }
+ {
+  coords 4813.955 -50.743 11744.063
+  angles 0 90 0
+  scale 27.75
+ }
+ {
+  coords 4728.373 -50.743 11744.064
+  angles 0 89.609 0
+  scale 27.75
+ }
+ {
+  coords 4915.834 -50.743 11823.88
+  angles 0 90 0
+  scale 20.726
+ }
+ {
+  coords 4915.834 -50.743 11904.914
+  angles 0 90 0
+  scale 20.726
+ }
+ {
+  coords 4904.575 -50.743 11964.815
+  angles 0 -0.051 0
+  scale 20.726
+ }
+ {
+  coords 4831.701 -50.278 11884.064
+  angles 0 90 0
+  scale 20.726
+ }
+ {
+  coords 4831.701 -50.278 11800.836
+  angles 0 90 0
+  scale 20.726
+ }
+ {
+  coords 4831.701 -50.278 11716.388
+  angles 0 90 0
+  scale 20.726
+ }
+ {
+  coords 4831.701 -50.278 11637.682
+  angles 0 90 0
+  scale 20.726
+ }
+}
+$grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4771.836 31.768 11750.171
+  Color 0 0.2185 1 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4847.082 34.165 11137.718
+  angles -87.421 73.306 116.676
+  Color 0.2588 0.6863 0.6863 1
+  LV 5.04
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4847.082 34.012 11174.574
+  angles -87.421 73.306 116.676
+  Color 0.2588 0.6863 0.6863 1
+  LV 5.04
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4723.08 34.827 11181.988
+  angles -70.509 88.503 91.382
+  Color 0.502 0 0 1
+  Radius 13.3
+  DistanceAttenuation 2.69
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4731.442 34.827 11212.725
+  angles -70.509 88.503 91.382
+  Color 0.502 0 0 1
+  Radius 8.26
+  DistanceAttenuation 2.69
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4792.016 37.116 11361.979
+  angles -1.618 -79.956 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4752.194 37.002 11329.961
+  angles -1.618 86.395 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4793.028 36.732 11323.325
+  angles -1.618 -96.955 -86.789
+  Color 0.502 0 0 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4779.204 33.57 11573.075
+  angles -25.125 -67.271 102.474
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 4789.842 33.57 11488.821
+  angles -21.005 -116.221 105.434
+  Color 0 0.2185 1 1
+  Radius 37.84
+  DistanceAttenuation 1.5
+  Dynamic 1
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{3F68EE5DCB004B10}Prefabs/Rocks/Granite/GraniteCliff_01.et" {
+ {
+  coords 4760.685 -0.597 11244.408
+  angles 0 18.709 0
+  scale 1.793
+ }
+ {
+  coords 4721.411 28.101 11196.272
+  angles 0 98.07 0
+ }
+ {
+  coords 4727.757 26.782 11178.165
+  angles 0 -63.52 0
+ }
+ {
+  coords 4715.949 28.101 11183.068
+  angles 0 -55.156 0
+ }
+ {
+  coords 4712.921 28.048 11169.1
+  angles -2.581 -93.029 90.536
+ }
+ {
+  coords 4719.137 30.984 11148.685
+  angles -2.581 -73.165 90.536
+ }
+ {
+  coords 4712.685 28.137 11169.322
+  angles -2.581 131.049 90.536
+ }
+}
+GenericEntity : "{44277710A8E45F97}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck_rusty_static.et" {
+ coords 4752.888 27.383 11801.316
+ angles 0 136.926 0
+}
+GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck.et" {
+ coords 4782.741 27.552 11871.188
+ angles 3.386 32.421 -82.717
+}
+$grp SCR_DestructibleEntity : "{4AC75CCBE6704D87}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_curve_low_33_cnc.et" {
+ {
+  coords 4768.413 31.788 11331.539
+  angles 0 -11.024 0
+  scale 7
+ }
+ {
+  coords 4745.025 31.788 11308.762
+  angles 0 11.92 0
+  scale 7
+ }
+}
+$grp SCR_DestructibleEntity : "{4CD13B27E7769662}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_3m_cnc.et" {
+ {
+  coords 4771.332 30.08 11353.514
+  angles 0 -114.838 0
+  scale 14.533
+ }
+ {
+  coords 4778.567 28.538 11385.042
+  angles 0 63.594 0
+  scale 14.533
+ }
+ {
+  coords 4739.639 28.538 11365.713
+  angles 0 63.594 0
+  scale 14.533
+ }
+ {
+  coords 4776.98 28.411 11324.756
+  angles 0 113.702 0
+  scale 14.533
+ }
+ {
+  coords 4737.184 28.411 11342.227
+  angles 0 113.702 0
+  scale 14.533
+ }
+}
+StaticModelEntity : "{526CAAF8900F4692}Prefabs/Structures/Cultural/Churches/Church_01/Dst/Church_01_ruin.et" {
+ coords 4741.425 28.626 11807.858
+ angles 0 -46.793 0
+}
+$grp GenericEntity : "{532E2709E33FA192}Prefabs/Structures/BuildingParts/Bridges/BridgeRailingConcrete_01_pole.et" {
+ {
+  coords 4771.67 26.015 11891.648
+  scale 3.79
+ }
+ {
+  coords 4756.13 26.015 11891.648
+  scale 3.79
+ }
+ {
+  coords 4786.818 26.015 11891.648
+  scale 3.79
+ }
+ {
+  coords 4786.818 26.015 11842.613
+  scale 3.79
+ }
+ {
+  coords 4771.67 26.015 11842.613
+  scale 3.79
+ }
+ {
+  coords 4756.13 26.015 11842.613
+  scale 3.79
+ }
+ {
+  coords 4786.818 26.015 11917.771
+  scale 3.79
+ }
+ {
+  coords 4756.13 26.015 11917.771
+  scale 3.79
+ }
+ {
+  coords 4771.64 26.015 11813.325
+  scale 3.79
+ }
+ {
+  coords 4758.166 28.33 11757.071
+  scale 3.79
+ }
+ {
+  coords 4785.327 28.33 11757.071
+  scale 3.79
+ }
+ {
+  coords 4771.729 28.043 11773.233
+  scale 3.79
+ }
+ {
+  coords 4787.329 33.184 11826.635
+  scale 3.79
+ }
+ {
+  coords 4770.03 33.178 11826.613
+  scale 3.79
+ }
+ {
+  coords 4753.788 33.231 11826.388
+  scale 3.79
+ }
+ {
+  coords 4770.542 33.236 11881.312
+  scale 3.79
+ }
+ {
+  coords 4785.009 33.257 11881.029
+  scale 3.79
+ }
+ {
+  coords 4756.716 33.232 11881.465
+  scale 3.79
+ }
+ {
+  coords 4777.123 28.33 11757.071
+  scale 3.79
+ }
+ {
+  coords 4766.505 28.33 11757.071
+  scale 3.79
+ }
+ {
+  coords 4762.136 28.043 11773.233
+  scale 3.79
+ }
+ {
+  coords 4781.722 28.043 11773.233
+  scale 3.79
+ }
+}
+$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ S105_rally1 {
+  coords 4752.409 27.844 11273.915
+ }
+ S105_rally2 {
+  coords 4895.409 28.594 11776.395
+ }
+}
+StaticModelEntity : "{563E2838EE82709B}Prefabs/Structures/Cultural/Churches/Church_01/Dst/Church_01_Addon_01_Ruin_V1_reddecor.et" {
+ coords 4790.948 27.71 11821.897
+ angles 0 -47.381 0
+ scale 1.92
+}
+$grp GenericEntity : "{582392E334A36FEA}Prefabs/Props/Indicators/Indicator_Pointer_Flat.et" {
+ {
+  coords 4855.722 28.458 11777.931
+ }
+ {
+  coords 4867.703 28.458 11777.931
+ }
+ {
+  coords 4879.313 28.458 11777.931
+ }
+ {
+  coords 4891.968 28.458 11777.931
+ }
+}
+$grp GenericEntity : "{6720CD0D5B7B7768}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long.et" {
+ {
+  coords 4792.761 21.644 11599.129
+  angles 0 4.839 0
+  scale 10.89
+ }
+ {
+  coords 4771.493 14.912 12016.888
+  angles 0 0.687 0
+  scale 14.265
+ }
+ {
+  coords 4815.657 14.26 12038.216
+  angles -3.143 -90.859 0.047
+  scale 14.265
+ }
+}
+GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck.et" {
+ coords 4775.506 27.716 11331.923
+ angles 0 -164.81 0
+}
+$grp StaticModelEntity : "{7022F1A36DC9510C}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareWide.et" {
+ {
+  coords 4750.057 32.329 11891.865
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.379 32.329 11891.865
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4750.057 33.03 11871.817
+  angles -4.266 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.379 33.03 11871.817
+  angles -4.266 0 -90
+  scale 6.38
+ }
+ {
+  coords 4750.057 32.299 11841.906
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.379 32.299 11841.906
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4750.057 32.269 11822.535
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.379 32.269 11822.535
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.379 32.754 11744.38
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4750.057 32.754 11744.38
+  angles 0 0 -90
+  scale 6.38
+ }
+ {
+  coords 4769.722 33.606 11767.972
+  angles -2.936 180 -90
+  scale 6.38
+ }
+ {
+  coords 4749.923 34.396 11803.222
+  angles -13.574 0 -90
+  scale 6.38
+ }
+ {
+  coords 4773.245 34.396 11803.222
+  angles -13.574 0 -90
+  scale 6.38
+ }
+ {
+  coords 4793.044 33.606 11767.972
+  angles -2.936 180 -90
+  scale 6.38
+ }
+ {
+  coords 4771.752 26.795 11316.172
+  angles -6.844 0 -90
+  scale 6.38
+ }
+ {
+  coords 4748.43 26.795 11316.172
+  angles -6.844 0 -90
+  scale 6.38
+ }
+ {
+  coords 4804.839 27.094 11088.21
+  angles -6.844 82.655 -90
+  scale 6.38
+ }
+ {
+  coords 4807.821 27.094 11065.081
+  angles -6.844 82.655 -90
+  scale 6.38
+ }
+ {
+  coords 4736.463 27.094 11077.823
+  angles -6.844 -77.095 -90
+  scale 6.38
+ }
+ {
+  coords 4731.255 27.094 11055.091
+  angles -6.844 -77.095 -90
+  scale 6.38
+ }
+}
+$grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+ {
+  coords 4765.552 34.467 11252.895
+  angles 0 -77.948 0
+ }
+ {
+  coords 4788.247 34.467 11249.594
+  angles 0 90 0
+ }
+ {
+  coords 4834.576 47.96 11737.846
+  angles 0 0 0
+ }
+}
+GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et" {
+ coords 4770.033 26.813 11844.279
+ angles 0 -150.606 0
+}
+SCR_DestructibleBuildingEntity : "{788F0C1721D815B9}Prefabs/Structures/Cultural/Castles/Castle_01_Bridge_wide.et" {
+ coords 4702.098 5.076 11129.883
+ angles 0 -80.015 0
+ scale 1.809
+}
+$grp GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck/S105_wreck.et" {
+ {
+  coords 4763.701 28.182 11381.655
+  angles 0 94.757 0
+ }
+ {
+  coords 4762.507 28.182 11385.18
+  angles 0 4.825 0
+ }
+ {
+  coords 4765.21 28.182 11384.099
+  angles 0 53.791 0
+ }
+ {
+  coords 4765.508 28.986 11382.505
+  angles -25.586 105.019 -6.61
+ }
+ {
+  coords 4764.155 29.521 11385.542
+  angles -21.335 9.555 170.894
+ }
+ {
+  coords 4778.109 28.141 11397.169
+  angles -1.386 103.521 -0.333
+ }
+ {
+  coords 4776.621 28.01 11400.105
+  angles -1.386 -51.428 -0.333
+ }
+ {
+  coords 4775.086 28.415 11398.408
+  angles -22.039 -112.699 8.056
+ }
+}
+StaticModelEntity : "{90DCEB97A36E555D}Prefabs/Structures/Ruins/House_Ruin_1I01/Dst/House_Ruin_1I01_V3_ruin_base.et" {
+ coords 4750.18 28.268 11851.489
+ angles 2.007 -29.645 13.209
+ scale 5.122
+}
+$grp SCR_DestructibleBuildingEntity : "{95AD87181C1D5044}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_4m_V2.et" {
+ {
+  coords 4843.805 -5.421 11214.932
+  angles 0 84.675 -9.703
+  scale 8
+ }
+ {
+  coords 4846.195 -3.499 11198.701
+  angles 0 -3.139 0
+  scale 8
+ }
+ {
+  coords 4846.195 -3.656 11116.349
+  angles -2.884 -3.143 0.158
+  scale 8
+ }
+ {
+  coords 4719.214 -16.222 11131.203
+  angles 10.481 -79.965 -0.812
+  scale 12.269
+ }
+ {
+  coords 4678.206 -1.377 11134.862
+  angles 1.182 8.114 -13.274
+  scale 7.949
+ }
+ {
+  coords 4688.657 5.465 11144.377
+  angles 1.182 8.114 -17.48
+  scale 7.949
+ }
+ {
+  coords 4685.255 5.302 11122.039
+  angles 1.182 8.114 -17.48
+  scale 7.949
+ }
+ {
+  coords 4846.038 4.186 11162.408
+  angles 0 -89.844 8.229
+  scale 5.824
+ }
+ {
+  coords 4846.042 3.938 11146.173
+  angles 0 90.156 8.229
+  scale 5.824
+ }
+ {
+  coords 4846.038 4.404 11142.689
+  angles 0 -89.844 8.229
+  scale 5.824
+ }
+ {
+  coords 4846.038 4.156 11126.454
+  angles 0 90.156 8.229
+  scale 5.824
+ }
+ {
+  coords 4846.038 4.111 11184.794
+  angles 0 -89.844 8.229
+  scale 5.824
+ }
+ {
+  coords 4846.038 3.863 11168.559
+  angles 0 90.156 8.229
+  scale 5.824
+ }
+ {
+  coords 4765.204 -36.261 11124.952
+  angles 0 1.749 0
+  scale 16.686
+ }
+ {
+  coords 4846.042 4.186 11162.408
+  angles 0 -89.844 8.229
+  scale 5.824
+ }
+}
+$grp GenericEntity : "{A80F0848BFF11327}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_doubleAngled.et" {
+ {
+  coords 4796.517 1.569 11777.213
+  angles -18.449 -47.95 -15.931
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4746.159 1.725 11777.345
+  angles -18.449 132.05 -15.931
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4797.125 0.261 11090.68
+  angles -18.449 -47.95 -15.931
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4746.768 0.261 11090.812
+  angles -18.449 132.05 -15.931
+  scale 2.39
+  {
+   GameEntity {
+    ID "5A42D80F681D979D"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      Color 0 0.1255 0.502 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+   GameEntity {
+    ID "5A42D80F6BF048CC"
+    {
+     LightEntity {
+      ID "5A42D21E6C98C5BF"
+      coords 0 -0.038 0.064
+      Color 0.502 0 0 1
+      Radius 40.14
+      SpotAngle 170
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck_static.et" {
+ coords 4755.841 27.502 11335.125
+ angles 0 137.628 0
+}
+$grp StaticModelEntity : "{B08DF585ECD2CF4D}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareNarrow.et" {
+ {
+  coords 4771.533 34.059 11780.811
+  angles 0 -90 -73.573
+  scale 5.403
+ }
+ {
+  coords 4771.533 28.631 11799.56
+  angles 0 -90 -73.573
+  scale 5.403
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{B6A096447B215355}Prefabs/Rocks/Granite/GraniteCliff_03.et" {
+ {
+  coords 4751.119 -2.941 11227.289
+  angles 0 114.794 0
+  scale 1.88
+ }
+ {
+  coords 4739.707 -2.941 11191.817
+  angles 0 103.593 0
+  scale 1.88
+ }
+ {
+  coords 4715.112 -2.941 11202.974
+  angles 0 123.861 0
+  scale 1.88
+ }
+ {
+  coords 4722.129 -10.998 11229.004
+  angles 0 121.092 0
+  scale 2.124
+ }
+ {
+  coords 4728.574 -10.998 11244.4
+  angles 0 121.092 0
+  scale 2.124
+ }
+ {
+  coords 4740.778 -10.998 11272.558
+  angles 0 93.647 0
+  scale 2.124
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{BD27F515C6651FE2}Prefabs/Structures/Industrial/Cranes/CoalLoader_01/CoalLoader_01_bridge_conveyorbelt_v2.et" {
+ {
+  coords 4774.574 -51.11 11310.25
+  angles 0 -89.316 0
+  scale 3.721
+ }
+ {
+  coords 4773.205 -51.356 11370.04
+  angles 0 -105.586 0
+  scale 3.721
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{C9229E6CDC3F547C}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_4m_90_V2.et" {
+ {
+  coords 4873.551 -0.3 11498.956
+  scale 8
+ }
+ {
+  coords 4737.097 -23.914 11099.955
+  angles 0 -80.098 0
+  scale 9.04
+ }
+ {
+  coords 4816.883 -35.467 11092.94
+  angles 0 -159.767 0
+  scale 11.88
+ }
+ {
+  coords 4727.282 -23.914 11102.722
+  angles 0 -80.098 0
+  scale 9.04
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_Base.et" {
+ {
+  coords 4788.557 31.432 11929.452
+  angles 0 -90 0
+ }
+ {
+  coords 4754.448 31.432 11929.452
+  angles 0 -90 0
+ }
+ {
+  coords 4788.557 31.694 11955.412
+  angles 0 -90 19.215
+ }
+ {
+  coords 4754.448 31.694 11955.412
+  angles 0 -90 19.215
+ }
+ {
+  coords 4754.448 33.538 11903.716
+  angles 0 -90 4.934
+ }
+ {
+  coords 4788.557 33.538 11903.716
+  angles 0 -90 4.934
+ }
+ {
+  coords 4771.458 33.43 11700.008
+  angles 0 -90 0.015
+  scale 1.277
+ }
+ {
+  coords 4771.435 28.285 11667.292
+  angles 0 -90 -8.902
+  scale 1.277
+ }
+}
+GenericEntity : "{D2EB3379CBCB9B48}Prefabs/Structures/Signs/Warnings/SignFallingRocks_01_pole.et" {
+ coords 4757.152 22.14 11892.347
+ angles 0 11.594 0
+ scale 2.638
+}
+SCR_IndestructibleEnvironmentalEntity : "{D5CC7A5A32C640A3}Prefabs/Rocks/Granite/GraniteRock_02_V2.et" {
+ coords 4692.198 27.844 11102.864
+ angles 0 41.077 0
+ scale 1.51
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{DF692A1784D6B324}Prefabs/Rocks/Granite/GraniteRock_01_V2.et" {
+ {
+  coords 4699.981 27.844 11149.572
+  angles 0 79.795 0
+ }
+ {
+  coords 4719.728 28.81 11139.717
+  angles 0 79.795 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{E8C4D8095BADC7E4}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_8m.et" {
+ coords 4768.651 7.974 11048.709
+ angles 0 178.824 0
+ scale 8
+}
+GenericEntity : "{E98385D7F126474C}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_02_static.et" {
+ coords 4788.031 27.969 11327.905
+ angles 0 26.947 0
+}
+GenericEntity : "{F49E9F098C6069AD}Prefabs/Props/Furniture/Toilet_01.et" {
+ coords 4771.361 28.428 11746.427
+ scale 1.79
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{FA6727A124372434}Prefabs/Rocks/Granite/GraniteRock_02.et" {
+ {
+  coords 4707.482 23.757 11128.971
+ }
+ {
+  coords 4717.585 27.217 11106.174
+ }
+ {
+  coords 4856.58 27.843 11092.45
+  scale 1.13
+ }
+ {
+  coords 4857.05 27.398 11145.82
+  scale 1.13
+ }
+ {
+  coords 4833.467 27.374 11166.697
+  angles 0 109.098 0
+  scale 1.13
+ }
+ {
+  coords 4854.061 21.51 11057.635
+  angles 0 -87.972 0
+  scale 1.729
+ }
+ {
+  coords 4825.36 26.366 11085.218
+  angles 0 -55.485 0
+  scale 1.27
+ }
+ {
+  coords 4842.518 21.304 11079.76
+  angles 0 -55.485 0
+  scale 1.27
+ }
+ {
+  coords 4824.896 27.844 11209.172
+  angles 0 -92.292 0
+  scale 1.48
+ }
+ {
+  coords 4861.7 27.844 11210.912
+  angles 0 -83.824 0
+  scale 1.48
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+ {
+  coords 4790.577 19.073 11942.824
+  scale 1.594
+ }
+ {
+  coords 4755.222 19.073 11942.824
+  scale 1.594
+ }
+ {
+  coords 4748.76 25.274 11775.141
+  angles 0 -90 0
+ }
+ {
+  coords 4795.084 25.274 11775.141
+  angles 0 -90 0
+ }
+ {
+  coords 4751.571 45.057 11724.941
+  angles -90 135 -45
+  scale 2.092
+ }
+ {
+  coords 4773.522 17.731 11733.363
+  scale 2.092
+ }
+ {
+  coords 4791.339 45.057 11729.006
+  angles -90 135 135
+  scale 2.092
+ }
+ {
+  coords 4773.522 15.357 11690.671
+  angles 10.122 0 0
+  scale 2.092
+ }
+ {
+  coords 4773.522 17.731 11713.99
+  scale 2.092
+ }
+}

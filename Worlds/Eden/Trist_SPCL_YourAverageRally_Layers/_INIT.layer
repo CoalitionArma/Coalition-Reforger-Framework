@@ -1,0 +1,455 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 5
+     m_iStartingMinutes 15
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey ""
+ m_sFactionTwoKey ""
+ m_BluforSlots {
+  CRF_SlottingGroup "{68F658133259DB86}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259DF87}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259DC3F}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259DD62}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259DDFB}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D213}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D2AA}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D3D6}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D071}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D08B}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D13A}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D65B}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D6FA}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D719}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D7B6}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D4D8}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D575}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259D58A}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AA23}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AB41}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259ABE6}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A801}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A8AF}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A9DC}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AE79}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AE95}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AF2E}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AC52}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AC86}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259AD2A}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A247}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A2EE}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A315}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A3B6}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A0D2}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A16E}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A182}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A620}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A746}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A7E4}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A402}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A49F}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259A53D}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259BA5A}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{68F658133259BAFC}" {
+   m_sCallsign "DUO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{01F5B5F6F4DA8408}Configs/Gearscripts/Standard/Specials/Rally/CRF_GS_RallyUS.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 4929.234 28.775 11761.973
+}
