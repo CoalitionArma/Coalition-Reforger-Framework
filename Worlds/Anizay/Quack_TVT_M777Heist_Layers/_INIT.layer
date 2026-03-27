@@ -45,7 +45,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "• Retrieve the 2 M777s"\
-   "• Move them to the drop off site."
+   "• Move the M777s to the drop off site."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -376,7 +376,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{9F1BB18540252916}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP.conf"
+  m_rGearScript "{355352B3150DE912}Configs/Gearscripts/Custom/Quack/CRF_GS_2000sUS_UCP_Quack.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
