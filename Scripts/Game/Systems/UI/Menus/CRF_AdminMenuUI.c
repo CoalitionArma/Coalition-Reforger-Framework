@@ -1082,7 +1082,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		// Spawn player on group
-		CRF_PlayerRplToAuthorityManager.GetInstance().SpawnOnGroup(playerId, spawnpoint, groupID, true);
+		//CRF_PlayerRplToAuthorityManager.GetInstance().SpawnOnGroup(playerId, spawnpoint, groupID, true);
 
 		// Refresh the menu after a short delay
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
