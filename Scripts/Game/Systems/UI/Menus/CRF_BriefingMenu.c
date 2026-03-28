@@ -38,6 +38,14 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			return;
 		}
 		
+		// Ensure root widget is visible and enabled (in case it was stuck invisible)
+		m_wRoot = GetRootWidget();
+		if (m_wRoot)
+		{
+			m_wRoot.SetVisible(true);
+			m_wRoot.SetEnabled(true);
+		}
+		
 		// Initialize map if available
 		if (m_MapEntity)
 			GetGame().GetCallqueue().Call(OpenMap);
@@ -431,8 +439,14 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 
+		// Cancel any pending callqueue map-open calls to prevent the map opening after close
+		GetGame().GetCallqueue().Remove(OpenMap);
+		GetGame().GetCallqueue().Remove(OpenMapWrap);
+		GetGame().GetCallqueue().Remove(OpenMapWrapZoomChange);
+		GetGame().GetCallqueue().Remove(OpenMapWrapZoomChangeWrap);
+		
 		// Close map if open
-		if (m_MapEntity)
+		if (m_MapEntity && m_MapEntity.IsOpen())
 			m_MapEntity.CloseMap();
 
 		// Remove input action listeners
@@ -443,6 +457,28 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		
+		// Clear widget references and event handlers to prevent invisible blocking
+		if (m_cMissionDescriptionListBoxComponent)
+		{
+			m_cMissionDescriptionListBoxComponent.m_OnChanged.Clear();
+			m_cMissionDescriptionListBoxComponent.Clear();
+		}
+		
+		// Clear back button click handler
+		if (m_wBackButton)
+		{
+			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+			if (backButton)
+				backButton.m_OnClicked.Clear();
+		}
+		
+		// Explicitly hide and disable root widget to prevent invisible blocking
+		if (m_wRoot)
+		{
+			m_wRoot.SetVisible(false);
+			m_wRoot.SetEnabled(false);
+		}
 	}
 	
 	/**
