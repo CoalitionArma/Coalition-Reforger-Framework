@@ -1,0 +1,11 @@
+GenericEntity {
+ ID "68F8E4F459DA6D1D"
+ components {
+  MeshObject "{68F8E4F452A64F47}" {
+   Object "{E2C58061477FBD97}Assets/Props/Military/Radios/RadioStation_RF10_01/RadioStation_RF10_01.xob"
+  }
+  RigidBody "{68F8E4F456B51110}" {
+  }
+ }
+ coords -8.625 8.882 11.974
+}
