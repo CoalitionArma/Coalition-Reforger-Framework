@@ -1,0 +1,68 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{AF1B0001C3D4E500}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 420
+  OffsetRight -420
+  SizeY 38
+  OffsetBottom -38
+ }
+ {
+  ButtonWidgetClass "{AF1B0002C3D4E500}" {
+   Name "EntryButton"
+   Slot FrameWidgetSlot "{AF1B0003C3D4E500}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 2
+    PositionY 0
+    OffsetTop 2
+    SizeX 0
+    OffsetRight -2
+    SizeY 0
+    OffsetBottom -2
+   }
+   Color 0.08 0.08 0.12 0.75
+   components {
+    CRF_PropHuntEntryButton "{AF1B0004C3D4E500}" {
+    }
+   }
+   {
+    TextWidgetClass "{AF1B0005C3D4E500}" {
+     Name "EntryLabel"
+     Slot ButtonWidgetSlot "{AF1B0006C3D4E500}" {
+     }
+     Color 0.88 0.90 1 1
+     Text "Object Name"
+     "Font Size" 16
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     Padding 12 0 0 0
+     FontProperties FontProperties "{AF1B0007C3D4E500}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+      ShadowOffset 0.5 0.5
+     }
+    }
+    TextWidgetClass "{AF1B0008C3D4E500}" {
+     Name "EntryDistance"
+     Slot ButtonWidgetSlot "{AF1B0009C3D4E500}" {
+     }
+     Color 0.6 0.65 0.7 0.85
+     Text "0.0m"
+     "Font Size" 13
+     "Min Font Size" 9
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     Padding 0 0 10 0
+     FontProperties FontProperties "{AF1B000AC3D4E500}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+      ShadowOffset 0.5 0.5
+     }
+    }
+   }
+  }
+ }
+}
