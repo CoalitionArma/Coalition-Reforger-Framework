@@ -1,4 +1,4 @@
-CRF_BackpackSpawnPoint {
+CRF_RallyPoint {
  ID "68F8E4F5EF72C552"
  components {
   CRF_Rallypoint_BuildingCompositionComponent "{68F943E7523D8D20}" {

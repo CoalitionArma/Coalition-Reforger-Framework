@@ -5,7 +5,7 @@ GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
    m_aVariants {
     SCR_DeployableVariantContainer "{68F561D86BFD78F9}" {
      m_iVariantId 5
-     m_sReplacementPrefab "{BE60D24E1BE70B63}PrefabsMissionMaking/Systems/SpawnPoints/E_CRF_RallyPointBuildable_01.et"
+     m_sReplacementPrefab "{BE60D24E1BE70B63}Prefabs/Compositions/Misc/FreeRoamBuilding/E_CRF_RallyPointBuildable_01.et"
      m_sPreviewObject "{E2C58061477FBD97}Assets/Props/Military/Radios/RadioStation_RF10_01/RadioStation_RF10_01.xob"
     }
    }

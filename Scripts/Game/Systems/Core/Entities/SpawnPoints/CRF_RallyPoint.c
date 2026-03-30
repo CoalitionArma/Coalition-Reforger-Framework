@@ -7,17 +7,6 @@ class CRF_RallyPoint: GenericEntity
 	ref CRF_SpawnPointData m_SpawnPointSettings = new CRF_SpawnPointData();
 	
 	protected int m_iLocallyStoredId;
-	
-	float m_fDespawnRally = 300;
-	
-	override void EOnFrame(IEntity owner, float timeSlice)
-	{
-		m_fDespawnRally -= timeSlice;
-		if (m_fDespawnRally <= 0)
-		{
-			SCR_EntityHelper.DeleteEntityAndChildren(owner);
-		}
-	}
 
 	//------------------------------------------------------------------------------------------------
 	void SetupRallyPoint()
