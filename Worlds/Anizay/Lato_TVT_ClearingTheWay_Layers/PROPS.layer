@@ -1,0 +1,170 @@
+GenericEntity : "{1A1CE09F7BCA6650}Prefabs/Props/Wrecks/S105_wreck/S105_wreck_static.et" {
+ coords 5503.317 126.008 7290.166
+ angles 0 -57.523 0
+}
+$grp GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ {
+  coords 5632.008 128.298 7602.83
+  angles 0 54.315 0
+ }
+ {
+  coords 5378.719 112.535 6840.082
+  angles 0 139.341 0
+ }
+ {
+  coords 5492.162 125.786 7271.287
+  angles 0 -119.576 0
+ }
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck/T62_wreck.et" {
+ coords 6391.624 119.299 7127.251
+ angles 1.083 -89.971 0
+}
+GenericEntity : "{45D056CC11985141}Prefabs/Props/Wrecks/S1203_wreck/S1203_wreck.et" {
+ coords 5493.602 126.201 7282.044
+}
+GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck.et" {
+ coords 6323.368 108.322 7235.207
+ angles 2.456 89.836 0
+}
+$grp GenericEntity : "{75FEF1CA582431F3}Prefabs/Props/Wrecks/BTR70_Wreck/BTR70_wreck.et" {
+ {
+  coords 6350.015 110.421 7231.432
+  angles 5.163 107.087 0
+ }
+ {
+  coords 6293.979 106.22 7232.928
+  angles 1.073 147.278 0
+ }
+}
+$grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+ {
+  coords 5384.266 -0 6767.453
+ }
+ {
+  coords 5383.532 -0 6778.935
+ }
+ {
+  coords 5394.79 0 6841.88
+ }
+ {
+  coords 5383.281 -0 6830.481
+ }
+ {
+  coords 5401.075 -0 6858.667
+ }
+ {
+  coords 5395.275 0 6826.708
+ }
+ {
+  coords 5383.66 0 6819.514
+ }
+ {
+  coords 5394.117 0 6815.314
+ }
+ {
+  coords 5390.653 0 6786.852
+ }
+ {
+  coords 5394.437 -0 6867.543
+ }
+ {
+  coords 5404.039 0 6880.433
+ }
+ {
+  coords 5436.173 -0 6895.309
+ }
+ {
+  coords 5423.521 0 6895.909
+ }
+ {
+  coords 5413.757 0 6879.824
+ }
+ {
+  coords 5424.664 -0 6888.897
+ }
+ {
+  coords 5386.218 0 6814.098
+ }
+ {
+  coords 5406.198 -0 6872.145
+ }
+ {
+  coords 5394.504 -0 6741.442
+ }
+ {
+  coords 5392.613 0 6728.625
+ }
+ {
+  coords 5387.991 0 6735.091
+ }
+ {
+  coords 5383.121 0 6806.127
+ }
+ {
+  coords 5393.391 -0 6804.114
+ }
+ {
+  coords 5383.636 0 6791.462
+ }
+ {
+  coords 5387.404 0.001 6723.159
+ }
+ {
+  coords 5393.79 -0 6854.293
+ }
+ {
+  coords 5398.248 0 6709.583
+ }
+ {
+  coords 5395.244 0 6718.705
+ }
+ {
+  coords 5387.128 0 6746.087
+ }
+ {
+  coords 5388.609 -0 6715.992
+ }
+ {
+  coords 5387.988 0 6798.047
+ }
+ {
+  coords 5394.042 -0 6754.722
+ }
+ {
+  coords 5386.297 0 6756.685
+ }
+ {
+  coords 5390.608 0 6775.143
+ }
+ {
+  coords 5385.211 0 6847.735
+ }
+ {
+  coords 5414.117 0 6887.333
+ }
+}
+$grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
+ {
+  coords 5510.512 120.292 6828.505
+  angles 0 -77.247 0
+ }
+ {
+  coords 5509.635 120.551 6822.182
+  angles 0 -77.247 0
+ }
+}
+$grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+ {
+  coords 5509.22 120.748 6819.971
+  angles 0 97.03 0
+ }
+ {
+  coords 5511.411 120.35 6830.089
+  angles 0 -30.901 0
+ }
+}
+GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
+ coords 5508.924 120.658 6825.62
+ angles -3.805 -83.913 0.301
+}

@@ -1,0 +1,192 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{4CBBF00D5B6E2A01}" {
+   Name "Overlay"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A02}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0 0 0 0.72
+  }
+  ImageWidgetClass "{4CBBF00D5B6E2A03}" {
+   Name "PanelBg"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A04}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -290
+    OffsetLeft -290
+    PositionY -220
+    OffsetTop -220
+    SizeX 580
+    OffsetRight -290
+    SizeY 440
+    OffsetBottom -220
+   }
+   Color 0.05 0.05 0.08 0.93
+  }
+  TextWidgetClass "{4CBBF00D5B6E2A05}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A06}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -270
+    OffsetLeft -270
+    PositionY -195
+    OffsetTop -195
+    SizeX 540
+    OffsetRight -270
+    SizeY 50
+    OffsetBottom 145
+   }
+   Color 1 0.78 0 1
+   Text "RALLY RESULTS"
+   "Font Size" 30
+   "Min Font Size" 22
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E2A07}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 2
+    ShadowSize 3
+    ShadowOffset 0.8 0.8
+   }
+  }
+  ImageWidgetClass "{4CBBF00D5B6E2A08}" {
+   Name "Divider1"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A09}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -260
+    OffsetLeft -260
+    PositionY -143
+    OffsetTop -143
+    SizeX 520
+    OffsetRight -260
+    SizeY 2
+    OffsetBottom 141
+   }
+   Color 1 0.78 0 0.55
+  }
+  TextWidgetClass "{4CBBF00D5B6E2A0A}" {
+   Name "ResultsText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A0B}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -270
+    OffsetLeft -270
+    PositionY -139
+    OffsetTop -139
+    SizeX 540
+    OffsetRight -270
+    SizeY 240
+    OffsetBottom -101
+   }
+   Color 0.9 0.95 1 1
+   Text ""
+   "Font Size" 16
+   "Min Font Size" 11
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Top
+   Wrap 1
+   FontProperties FontProperties "{4CBBF00D5B6E2A0C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{4CBBF00D5B6E2A0D}" {
+   Name "Divider2"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A0E}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -260
+    OffsetLeft -260
+    PositionY 103
+    OffsetTop 103
+    SizeX 520
+    OffsetRight -260
+    SizeY 2
+    OffsetBottom -105
+   }
+   Color 1 0.78 0 0.55
+  }
+  TextWidgetClass "{4CBBF00D5B6E2A0F}" {
+   Name "FastestLapText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A10}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -270
+    OffsetLeft -270
+    PositionY 108
+    OffsetTop 108
+    SizeX 540
+    OffsetRight -270
+    SizeY 28
+    OffsetBottom -136
+   }
+   Color 0.9 0.95 1 1
+   Text "Fastest Lap: —"
+   "Font Size" 15
+   "Min Font Size" 11
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E2A11}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{4CBBF00D5B6E2B01}" {
+   Name "FirstDeathText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2B02}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -270
+    OffsetLeft -270
+    PositionY 140
+    OffsetTop 140
+    SizeX 540
+    OffsetRight -270
+    SizeY 22
+    OffsetBottom -162
+   }
+   Color 0.9 0.95 1 1
+   Text "First Death: —"
+   "Font Size" 15
+   "Min Font Size" 11
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E2B03}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{4CBBF00D5B6E2A12}" {
+   Name "CloseHintText"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E2A13}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -270
+    OffsetLeft -270
+    PositionY 168
+    OffsetTop 168
+    SizeX 540
+    OffsetRight -270
+    SizeY 22
+    OffsetBottom -190
+   }
+   Color 0.55 0.55 0.55 1
+   Text "Press ESC to dismiss"
+   "Font Size" 13
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{4CBBF00D5B6E2A14}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+   }
+  }
+ }
+}
