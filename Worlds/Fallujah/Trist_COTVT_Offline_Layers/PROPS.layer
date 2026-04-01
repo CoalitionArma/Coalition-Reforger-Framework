@@ -34,8 +34,8 @@ GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFlood
    m_eInitialLightState LIT
   }
  }
- coords 2932.387 1 5988.619
- angles 0 82.901 0
+ coords 3029.175 1 5833.046
+ angles 0 8.732 0
 }
 $grp GenericEntity : "{156957DEC23418C5}Prefabs/ZBK/Props/ControlPanel/ControlCabinet08.et" {
  {
