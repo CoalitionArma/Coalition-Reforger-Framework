@@ -11,9 +11,15 @@ modded class SCR_ItemPlacementComponent : ScriptComponent
 		
 		SCR_CampaignBuildingGadgetToolComponent gadgetComponent = SCR_CampaignBuildingGadgetToolComponent.Cast(m_PlacedItem.FindComponent(SCR_CampaignBuildingGadgetToolComponent));
 		if (!gadgetComponent)
-			return super.StartPlaceItem();
+			return;
+		
+		if (gadgetComponent.ACE_Trenches_GetCurrentVariantID() != 5)
+			return;
 
-		if (!CRF_RoleHelper.IsSquadLeaderRole(character) && CRF_Gamemode.GetInstance().m_bRallyPointsEnabled && gadgetComponent.ACE_Trenches_GetCurrentVariantID() == 5) // This might change?
-			cantPlaceReason = "Not squadleader";
+		if (!CRF_RoleHelper.IsSquadLeaderRole(character))
+			cantPlaceReason = "Not Squad Leader Role";
+		
+		if (!CRF_Gamemode.GetInstance().m_bRallyPointsEnabled)
+			cantPlaceReason = "Rally Points Disabled";
 	}
 }
