@@ -1,0 +1,376 @@
+GameEntity BUILDINGGENERATOR : "{10377ABE6825CC96}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01_camo_open.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{51E082CF9891AD6F}" {
+   Enabled 1
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     "Melee multiplier" 36.3
+    }
+   }
+   m_fBaseHealth 478.48
+   m_bPassDamageToChildren 1
+   m_bDestroyChildrenWhenDestroyed 1
+   m_bDeleteAfterFinalPhase 1
+  }
+ }
+ coords 2902.669 1 5946.982
+ {
+  $grp GenericEntity : "{614C7CCF23A6FB40}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_03/LampStreet_E_03_single.et" {
+   {
+    coords -45.208 -0 -142.309
+    angles 0 40.61 0
+   }
+   {
+    coords 113.081 0 -124.743
+    angles 0 -44.846 0
+   }
+   {
+    coords 37.306 0 -24.433
+    angles 0 -141.182 0
+   }
+   {
+    coords 18.396 -0 -24.774
+    angles 0 123.641 0
+   }
+   {
+    coords 6.023 -0 -32.629
+    angles 0 128.408 0
+   }
+   {
+    coords -16.629 0 -36.359
+    angles 0 -109.738 0
+   }
+   {
+    coords -6.666 0 -17.265
+    angles 0 -52.317 0
+   }
+   {
+    coords 35.36 0 1.696
+    angles 0 -53.137 0
+   }
+   {
+    coords 53.667 0 17.469
+    angles 0 36.729 0
+   }
+   {
+    coords 63.064 0 -7.585
+    angles 0 128.654 0
+   }
+   {
+    coords 0.899 0 -8.523
+    angles 0 -53.137 0
+   }
+  }
+  $grp GameEntity : "{9D82FE150142086A}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_glass_addon.et" {
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 6.4 8.517 -19.674
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 17.865 8.517 -6.973
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 46.696 8.517 -1.866
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 31.655 4.219 -2.268
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 26.423 4.219 -16.217
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 12.025 4.219 -15.789
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords -4.263 4.219 -33.091
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 4.947 4.219 -22.417
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords -1.121 4.219 -13.826
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 59.304 4.219 -1.269
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 42.608 4.219 -20.005
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 33.799 8.517 -19.593
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 31.355 8.517 -17.312
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.8118 0.7372 0.5059 1
+      LV 7.54
+      Radius 63.16
+      SpotAngle 146.41
+     }
+    }
+   }
+   {
+    components {
+     Hierarchy "{51C4DA20F011E284}" {
+      PivotID "Socket_Glass_01"
+     }
+    }
+    coords 25.602 8.517 -18.625
+    angles -21.186 0 0
+    {
+     LightEntity {
+      ID "5990CE56D1255F77"
+      coords 0 -0.137 0.063
+      Color 0.502 0 0.3765 1
+      LV 4.46
+      Radius 4.31
+      SpotAngle 146.41
+     }
+    }
+   }
+  }
+ }
+}
+GameEntity : "{9D82FE150142086A}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_glass_addon.et" {
+ components {
+  Hierarchy "{51C4DA20F011E284}" {
+   PivotID "Socket_Glass_01"
+  }
+ }
+ coords 2888.581 9.473 5912.078
+ angles -21.186 0 0
+ {
+  LightEntity {
+   ID "5990CE56D1255F77"
+   Color 0.1569 0.2745 0.6235 1
+   LV 7.54
+  }
+ }
+}
+GenericEntity Computer : "{A9DC69EC1CE466A0}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_on.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     MaxHealth 346
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Incendiary multiplier" 0
+     "Fire multiplier" 0
+    }
+   }
+  }
+ }
+ coords 2887.833 6.119 5912.009
+ angles 0 70.644 0
+ scale 2.64
+ {
+  GenericEntity {
+   ID "620AA4AC9B735F5F"
+   coords -0.053 0.103 -0.175
+   scale 1.378
+  }
+ }
+}
