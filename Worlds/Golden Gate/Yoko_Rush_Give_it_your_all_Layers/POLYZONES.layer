@@ -96,7 +96,10 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
    Position 18.803 0 -580.996
   }
   ShapePoint "{68FEF0CA2E663A3E}" {
-   Position 7.393 36.532 -642.559
+   Position 4.678 36.386 -685.031
+  }
+  ShapePoint "{69030D7A28EAE7C8}" {
+   Position 124.714 40.093 -719.167
   }
  }
 }

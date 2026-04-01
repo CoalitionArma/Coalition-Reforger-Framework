@@ -4,7 +4,7 @@ $grp SCR_BaseTriggerEntity {
   angles 0 -108.543 0
  }
  mcom_a_trigger {
-  coords 3273.795 75.568 1137.609
-  angles 0 -147.105 0
+  coords 3256.301 75.789 1081.122
+  angles 0 157.628 0
  }
 }
