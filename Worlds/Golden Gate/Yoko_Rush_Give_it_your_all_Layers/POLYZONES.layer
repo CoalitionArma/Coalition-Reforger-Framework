@@ -53,8 +53,14 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
   ShapePoint "{68FEF0CA0C6957C7}" {
    Position 138.658 46.065 -648.848
   }
+  ShapePoint "{69030D7A969BE35D}" {
+   Position 128.827 0 -554.845
+  }
   ShapePoint "{68FEF0CA3147EFB9}" {
    Position 147.533 0 -503.982
+  }
+  ShapePoint "{69030D7A846B1CC5}" {
+   Position 173.191 0 -415.364
   }
   ShapePoint "{68FEF0CA33A2D64D}" {
    Position 195.209 0 -387.067
@@ -77,8 +83,20 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
   ShapePoint "{68FEF0CA27FAD348}" {
    Position -31.052 0 -108.81
   }
+  ShapePoint "{69030D7AEA9A3CDA}" {
+   Position 17.058 0 -340.092
+  }
+  ShapePoint "{69030D7AED99E2D8}" {
+   Position 18.531 0 -388.91
+  }
+  ShapePoint "{69030D7AEF97BABC}" {
+   Position 18.89 0 -484.496
+  }
+  ShapePoint "{69030D7A916D8DC5}" {
+   Position 18.803 0 -580.996
+  }
   ShapePoint "{68FEF0CA2E663A3E}" {
-   Position -27.73 33.981 -640.876
+   Position 7.393 36.532 -642.559
   }
  }
 }
