@@ -1,0 +1,9 @@
+GenericEntity {
+ ID "68F6582B1AB32AE3"
+ components {
+  MeshObject "{68F6582B32679135}" {
+   Object "{C4CEEF236DAF71BA}Assets/Structures/Indicators/Indicator_Arrow3D.xob"
+  }
+ }
+ coords 4773.904 37.453 11245.175
+}
