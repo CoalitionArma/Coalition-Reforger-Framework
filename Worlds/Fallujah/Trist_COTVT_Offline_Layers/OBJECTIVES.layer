@@ -331,22 +331,6 @@ GameEntity BUILDINGGENERATOR : "{10377ABE6825CC96}Prefabs/Props/Military/Generat
   }
  }
 }
-GameEntity : "{9D82FE150142086A}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_glass_addon.et" {
- components {
-  Hierarchy "{51C4DA20F011E284}" {
-   PivotID "Socket_Glass_01"
-  }
- }
- coords 2888.581 9.473 5912.078
- angles -21.186 0 0
- {
-  LightEntity {
-   ID "5990CE56D1255F77"
-   Color 0.1569 0.2745 0.6235 1
-   LV 7.54
-  }
- }
-}
 GenericEntity Computer : "{A9DC69EC1CE466A0}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_on.et" {
  components {
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
