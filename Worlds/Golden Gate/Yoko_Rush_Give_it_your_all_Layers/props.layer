@@ -7,10 +7,6 @@ $grp ParticleEffectEntity {
   coords 3364.23 75.06 1075.455
   EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
  }
- {
-  coords 3361.256 76.259 1056.267
-  EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
- }
 }
 GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
  coords 3307.988 78.145 949.722
