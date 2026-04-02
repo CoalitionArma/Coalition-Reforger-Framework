@@ -1,50 +1,3 @@
-GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
- coords 3841.531 94.122 619.982
- angles 0 -72.285 0
- {
-  GenericEntity {
-   ID "62EACD01B6ED2B53"
-   {
-    GenericEntity {
-     ID "62F4A407B8DE2D97"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 1000
-        }
-       }
-      }
-     }
-    }
-    GenericEntity {
-     ID "62F4A407B8DE2DA9"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 1000
-        }
-       }
-      }
-     }
-    }
-    GenericEntity {
-     ID "62F4A407B8DFA02D"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 1000
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
-}
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  coords 3497.476 99.462 940.73
  Points {
@@ -149,9 +102,4 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
    Position 124.714 40.093 -719.167
   }
  }
-}
-CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
- coords 3831.926 94.487 623.856
- angles 0 -75.259 0
- m_rVehicle "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et"
 }
