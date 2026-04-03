@@ -1,0 +1,9 @@
+GenericEntity : "{6D18CC33708EE712}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MagazineWell MagazineWell792x33STG44 "{6907373B5D3A6004}" {
+   }
+  }
+ }
+}

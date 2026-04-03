@@ -1,0 +1,17 @@
+GenericEntity : "{23DA0939B0158024}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok_Parachute.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  ParachuteItemComponent "{6594945265DDB21D}" {
+   Enabled 0
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   MaxItemSize 100 100 100
+   m_fMaxWeight 100
+  }
+  CRF_ParachuteBackpackComponent "{6907292BC2993F43}" {
+   m_ParachutePrefab "{E95CAF01F817549F}Prefabs/DeployedParachutes/CRF_DeployedChickenParachute.et"
+  }
+ }
+}

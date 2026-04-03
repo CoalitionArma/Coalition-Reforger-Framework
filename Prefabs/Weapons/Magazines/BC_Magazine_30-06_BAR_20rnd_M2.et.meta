@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D53DB74E64A19968}Prefabs/Weapons/MachineGuns/MG3/MG_3.et"
+ Name "{56B8E1007A30A1C3}Prefabs/Weapons/Magazines/BC_Magazine_30-06_BAR_20rnd_M2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

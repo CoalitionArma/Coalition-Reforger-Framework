@@ -1,0 +1,9 @@
+GenericEntity : "{DFFBF5F097FCF797}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Base.et" {
+ ID "39D3A791BB854198"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MagazineWell MagazineWellM1911_FIE "{6906F904FD4CE93D}" {
+   }
+  }
+ }
+}

@@ -1,0 +1,25 @@
+GameEntity : "{2E0E3D7D1DD0FF8F}Prefabs/Weapons/Core/Attachment_Base.et" {
+ ID "4BA426CBAED42A14"
+ components {
+  ProcAnimComponent "{69070402B052E186}" {
+   Parameters {
+    ProcAnimParams "{69070402ADBF32B9}" {
+     ResourceName "{4EFB72D6E914A168}Assets/workspaces/sight_1919.pap"
+     BoneNames {
+      "w_front_sight"
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{5284E0EFF569AD07}" {
+   additionalActions {
+    SCR_MG3UserAction "{690704029E5F889B}" {
+     ParentContextList {
+      "user"
+     }
+     m_sSignalName "MG3sight"
+    }
+   }
+  }
+ }
+}

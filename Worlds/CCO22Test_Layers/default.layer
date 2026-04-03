@@ -1,0 +1,54 @@
+GenericEntity : "{13D9B9BA5F68CE74}Prefabs/Weapons/US/MachineGuns/1919/MG_1919_ww44.et" {
+ coords 129.79 1 127.672
+}
+GenericEntity : "{42E72275C4F3BB07}Prefabs/Weapons/Magazines/M1919/Box_30Cal_M1919_100rnd_Base.et" {
+ coords 128.365 1 126.099
+}
+GenericEntity : "{655EB248F338197A}Prefabs/Weapons/Machine Guns/M1919A4FIXED.et" {
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+  }
+  SlotManagerComponent "{690706D9A90ADFE3}" {
+   Slots {
+    EntitySlotInfo GUN {
+     PivotID "w_root"
+     Prefab "{13D9B9BA5F68CE74}Prefabs/Weapons/US/MachineGuns/1919/MG_1919_ww44.et"
+    }
+   }
+  }
+ }
+ coords 129.184 1 127.748
+}
+GenericEntity : "{B4F97D08EE799300}Prefabs/Weapons/Machineguns/M1919/M1919_A4_Bipod.et" {
+ coords 128.813 1 125.93
+}
+GenericEntity : "{D6553622F4AA90F4}Prefabs/Weapons/Machine Guns/M1919FIXED.et" {
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     HandAdditiveRotation 0 0 90
+     HandAdditiveTranslation 0 0 0
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{65CD21A895B47627}" {
+     AttachmentSlot InventoryStorageSlot A6attachment {
+      Prefab ""
+     }
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{AF8956D04AACA73A}Assets/Weapons/US/workspaces/1919/1919.agr"
+     AnimInstance "{E77D2821F9F9FA23}Assets/Weapons/US/workspaces/1919/1919_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{5534C3B6F2351DE9}" {
+      AnimGraph "{4ACC5720DC23E5B7}Assets/Weapons/MachineGuns/workspaces/fie_machineguns.agr"
+      AnimInstance "{06483846C1348524}Assets/Weapons/MachineGuns/workspaces/m1919_player.asi"
+     }
+    }
+   }
+  }
+ }
+ coords 129.601 1 127.725
+}

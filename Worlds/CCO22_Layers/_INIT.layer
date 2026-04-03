@@ -1,0 +1,1679 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{690745B02AE150A8}" {
+     NavmeshFile "{47AAC67BC4008B4B}Worlds/Navmesh/WW2_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{4B5627BD3ECF8F8B}Worlds/Navmesh/WW2_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{69312D923A3C066E}Worlds/Navmesh/WW2_Low.nmn"
+    }
+   }
+  }
+ }
+ coords 880.346 9.818 953.023
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_GamemodeManager "{652A3313EC014E7F}" {
+   components {
+    CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
+     m_iSummaryInterval 300
+    }
+   }
+  }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_sFreqConfig "{8FE52CD7F8502E24}Configs/Systems/FreqConfigs/CFCFrequencyConfig.conf"
+  }
+  SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
+   m_bEnableTeamKillPunishment 0
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+    }
+   }
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.5
+   m_fRegenScale 0.75
+   m_bPermitUnconsciousVON 0
+   m_fRegenerationDelay 30
+   m_fRegenerationScale 0.6
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_bAllowGlobalNightMode 1
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
+   }
+   m_sLoadingLayout ""
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+ }
+ coords 0 0 0
+ userScript "	void SpawnParachute(IEntity entity)"\
+ "	{"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		"\
+ "		//Inserts armband for german medics"\
+ "		if (faction.GetFactionKey() == \"OPFOR\" && entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
+ "			ChangeItem(entity, \"{46329967607CB8B5}Prefabs/Clothing/Medic ArmBand/ArmBand.et\", 13);"\
+ "		"\
+ "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "			return;"\
+ "		"\
+ "		if (!entity)"\
+ "			return;"\
+ "		"\
+ "		FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+ "		if (!factComp)"\
+ "			return;"\
+ "		"\
+ "		Faction faction = factComp.GetAffiliatedFaction();"\
+ "		if (!faction)"\
+ "			return;"\
+ "		"\
+ "		//Only during safestart do we want americans to have parachutes"\
+ "		if (faction.GetFactionKey() == \"BLUFOR\")"\
+ "			ChangeItem(entity, \"{9422415FE7875691}Prefabs/Items/Equipment/Backpacks/BUSHWAR_Parachute_Pack_01.et\", 5);"\
+ "		"\
+ "	}"\
+ "	"\
+ "	protected void ChangeItem(IEntity player, string newResource, int slotId)"\
+ "	{"\
+ "		EntitySpawnParams params = new EntitySpawnParams();"\
+ "		player.GetTransform(params.Transform);"\
+ "		"\
+ "		IEntity newItem = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);"\
+ "		"\
+ "		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));"\
+ "		IEntity oldItem = invComponent.Get(slotId);"\
+ "		if (!oldItem)"\
+ "		{"\
+ "			invManager.TryInsertItem(newItem);"\
+ "			return;"\
+ "		}"\
+ "		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));"\
+ "		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));"\
+ "		ref array<IEntity> pouches = {};"\
+ "		if (oldStorageComp)"\
+ "			oldStorageComp.GetAll(pouches);"\
+ "		ref array<ResourceName> items = {};"\
+ "		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O"\
+ "		foreach (IEntity pouch: pouches)"\
+ "		{"\
+ "			if (!pouch.FindComponent(BaseInventoryStorageComponent))"\
+ "			{"\
+ "				items.Insert(pouch.GetPrefabData().GetPrefabName());"\
+ "				continue;"\
+ "			}"\
+ "			"\
+ "			ref array<IEntity> tempItems = {};"\
+ "			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);"\
+ "			foreach (IEntity tempItem: tempItems)"\
+ "			{"\
+ "				items.Insert(tempItem.GetPrefabData().GetPrefabName());"\
+ "			}"\
+ "		}"\
+ "		if (!invManager.CanReplaceItem(newItem, invComponent, slotId))"\
+ "		{"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(newItem);"\
+ "			return;"\
+ "		}"\
+ "		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(oldItem.FindComponent(InventoryItemComponent));"\
+ "		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newItem.FindComponent(InventoryItemComponent));"\
+ "		if (oldItemComp && newItemComp)"\
+ "		{"\
+ "			string oldItemName = oldItemComp.GetUIInfo().GetName();"\
+ "			string newItemName = newItemComp.GetUIInfo().GetName();"\
+ "		}"\
+ "		"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);"\
+ "		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, player);"\
+ "	}"\
+ "	"\
+ "	//------------------------------------------------------------------------------------------------"\
+ "	protected void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, IEntity player)"\
+ "	{"\
+ "		for (int i = 0; i < items.Count(); i++)"\
+ "		{"\
+ "			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))"\
+ "			{"\
+ "				ref array<IEntity> newPouches = {};"\
+ "				newStorageComp.GetAll(newPouches);"\
+ "				"\
+ "				bool itemInserted = false;"\
+ "				foreach (IEntity pouch: newPouches)"\
+ "				{"\
+ "					if (!pouch.FindComponent(BaseInventoryStorageComponent))"\
+ "						continue;"\
+ "					"\
+ "					BaseInventoryStorageComponent pouchStorage = BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent));"\
+ "					if(invManager.TrySpawnPrefabToStorage(items[i], pouchStorage))"\
+ "					{"\
+ "						itemInserted = true;"\
+ "						break;"\
+ "					}"\
+ "				}"\
+ "				if (!itemInserted)"\
+ "					invManager.TrySpawnPrefabToStorage(items[i]);"\
+ "			}"\
+ "		}"\
+ "	}"\
+ "	"\
+ "	protected void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, IEntity player)"\
+ "	{"\
+ "		invManager.TryReplaceItem(newItem, invComponent, slotId);"\
+ "		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, player);"\
+ "	}"
+ OnControllableSpawned ""\
+ "		super.OnControllableSpawned(entity);"\
+ "		GetGame().GetCallqueue().CallLater(SpawnParachute, 3000, false, entity);"\
+ "	"
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iTimeToRespawn 600
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 240
+ m_bLockUnusedSlots 0
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69073E07C65EF233}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EF3DF}" {
+   m_sCallsign "LOGI"
+   m_FlagType MAINTENANCE
+   m_aSlots {
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EF049}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EF0C0}" {
+   m_sCallsign "ABLE"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EF136}" {
+   m_sCallsign "BAKER"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEE40}" {
+   m_sCallsign "CHARLIE (MORTAR)"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    MEDIC
+    RADIO_TELEPHONE_OPERATOR
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEEF2}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEF64}" {
+   m_sCallsign "DELTA"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEF86}" {
+   m_sCallsign "ECHO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEC2F}" {
+   m_sCallsign "FOX"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    MEDIC
+    RADIO_TELEPHONE_OPERATOR
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    LOGI_RUNNER
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69073E07C65EED6E}" {
+   m_sCallsign "PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEDE2}" {
+   m_sCallsign "LOGI"
+   m_FlagType MAINTENANCE
+   m_aSlots {
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEA11}" {
+   m_sCallsign "SNIPER"
+   m_FlagType SNIPER
+   m_aSlots {
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEA8E}" {
+   m_sCallsign "1. Gruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEB3C}" {
+   m_sCallsign "2. Gruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EEBAD}" {
+   m_sCallsign "3. Sturmgruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    JTAC
+    JTAC
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EE8DC}" {
+   m_sCallsign "4. Sturmgruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    JTAC
+    JTAC
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69073E07C65EE943}" {
+   m_sCallsign "4. Sturmgruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 300
+ m_iOPFORTickets 225
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D9A13AB1DF541736}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22US.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{27B663E5A76E9DC8}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22GER.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "690701AFF3D389A9" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
+      SocialIdentity SocialIdentity "{56E4EBD9F0C03530}" {
+       NamesConfig +{
+       }
+       AliasesConfig +{
+       }
+       SurnamesConfig +{
+       }
+      }
+     }
+     m_iOrder 10
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 9
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 8
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 6
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     FactionKey "OPFOR"
+     FactionColor 0.855 0.031 0.028 1
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "OPFOR"
+      Icon "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
+      m_sNameUpper "OPFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{62D8F84F060C0F95}" : "{CA5DDD91CE5C7824}Configs/Identities/CRF_DefaultFactionIdentity.conf" {
+     }
+     m_iOrder 1
+     m_OutlineFactionColor 0.168 0.006 0.007 1
+     m_NotificationFactionColor 0.855 0.031 0.028 1
+     m_NotificationTextFactionColor 0.521 0.021 0.019 1
+     m_bIsPlayable 0
+     m_sFactionFlag "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
+     m_FactionFlagMaterial "{6E9FD76E21FF14D4}Assets/Materials/Flags/Factions/OPFOR_Flag.emat"
+     m_FactionLabel FACTION_CRF_OPFOR
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+       }
+       SCR_CallsignInfo "{55CCB792821E9332}" {
+       }
+       SCR_CallsignInfo "{55CCB7928223BB00}" {
+       }
+       SCR_CallsignInfo "{55CCB79285FF31DB}" {
+       }
+       SCR_CallsignInfo "{55CCB79285E2C8BA}" {
+       }
+       SCR_CallsignInfo "{55CCB7928553B8DC}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+       }
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+       }
+       SCR_CallsignInfo "{55CCB792844D665F}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB9A379DF}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAF5B6DD6}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD7156FB5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD62BFFDC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD695DAC3}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD5976D1F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAB3D5694}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD50A1B16}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CD453B033}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CABCD02F7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAABB1BC9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAA3209CB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA98AE46D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA8FA465A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA87B23B0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAD399029}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAFF4AA1C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAEC54DB2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAE42D66A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CADB230B9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA7888490}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAC962131}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CAC142685}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA39DD0B8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA31FAF73}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA29AE9BD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA20E3846}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA1797328}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA0BC24DC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA01205A4}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBB4ACCA6}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA6F60C03}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA66514A2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA5E2A803}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA558D5A4}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA4DC2DB9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CA4469EBA}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBBCF38FB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBAB5D9CB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBA355129}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB7E75E9E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB924DFB0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB8A74D0F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB8305E44}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBFA3ED39}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBC7D83CA}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBF042544}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBE8FC292}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBD710F90}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBDF7EDFB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CBCF294AE}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB22FC03E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB3FFB92B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB3688339}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB2DF50B5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB1A1CE84}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB0A13EA9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB123877A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A5562F87}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB65A061F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB778B844}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB6EB6661}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB5344004}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122699B4EA56}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB5CBB57E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6CB4A68726}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A0C2E12F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A7A0E9BB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A04F9940}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A5E49D9B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A6E79123}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A6677957}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A4DF554F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226A4505774}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BBDB6106}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B9931840}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BAAB2A33}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BB3C003E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BA298F11}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B272C2B7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BE08BCF2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B8F18437}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BE9395E5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BD8C85FA}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BCE50193}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B32AE78A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226BC558E53}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B3B92512}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B08A5435}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B1C225E7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B12672CE}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B6DAAA74}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B756348E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B7EC250A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B5BF356C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B639326C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B5260CDE}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226B47489C4}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268FACC4E2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268BA3BE86}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268A0441BC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268B29DBE8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268A91C752}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226895653C2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122688DC1AD6}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226883991D3}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268E7B8183}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268EF0000D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268DD8CA44}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268D04F956}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268C6E22D7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122683BCF875}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122682F46B77}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268272374D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268138585B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122681D9B280}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12269AAAF5BE}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122686C9242C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12268782E92E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226858F287D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226862F97B1}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226847943F5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122684F9AFC1}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12269BE0C63B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226992DE863}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12269B455E72}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226983F719F}" {
+        m_sCallsign "NULL"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1-%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3 %4"
+      m_aCharacterRoleCallsigns {
+       SCR_PlayerLeaderRoleCallsign "{5D9E9EC98A0C9F91}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 42000
+     m_aRanks {
+      SCR_CharacterRank "{528E9D9FAAB617C6}" {
+      }
+      SCR_CharacterRank "{528E9D9FAB192253}" {
+      }
+      SCR_CharacterRank "{528E9D9FAB87F519}" {
+      }
+      SCR_CharacterRank "{528E9D9FA4EA5C39}" {
+      }
+      SCR_CharacterRank "{528E9D9FA563C005}" {
+      }
+      SCR_CharacterRank "{528E9D9FA64A043C}" {
+      }
+      SCR_CharacterRank "{528E9D9FA77F696E}" {
+      }
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalog "{62AD6CE9AD7F5DC0}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalog "{62AD6CEE5039F2D3}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalog "{62AD6CEE51AAFFF6}" {
+       m_eEntityCatalogType GROUP
+      }
+      SCR_EntityCatalog "{62AD6CEE57E86581}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+     }
+     m_sGroupFlagsImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+     m_sGroupFlagsImageSetOutlines "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+     m_aFlagNames +{
+     }
+     m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+     m_aBaseCallsigns {
+      SCR_MilitaryBaseCallsign "{5C9108F95F3FB520}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95F0034DB}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95F6514E7}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95F4EE8BF}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95F5021F9}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95FBA4C89}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95F9C00A9}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95FE17E10}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95FCBA475}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E2B2963}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E3040F5}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E17C67D}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E797F8A}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E431F83}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95EA7F87E}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95E88C6B9}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95EEDE322}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95EF6244A}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95EDAF04A}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95D3CCF27}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95D076483}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95D68D0F3}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95D4C0F8E}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95D56EEEE}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95DBA92EE}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95C69680D}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95C4FD930}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95C5255FD}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95CB621AE}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95C9545BC}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95CFE26C3}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95CDD263C}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B27128C}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B08D83D}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B6D3FC2}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B712949}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B57D185}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95BB17114}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95B97C054}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C9108F95BFC33E5}" {
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     FactionKey "INDFOR"
+     FactionColor 0 0.44 0.078 1
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{EFA0BA63504B1230}UI/Images/GS_Factions/INDFOR_NATO.edds"
+      m_sNameUpper "INDFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{6864102F1A4666FE}" : "{CA5DDD91CE5C7824}Configs/Identities/CRF_DefaultFactionIdentity.conf" {
+     }
+     m_iOrder 2
+     m_OutlineFactionColor 0.001 0.082 0.023 1
+     m_NotificationFactionColor 0 0.44 0.078 1
+     m_NotificationTextFactionColor 0 0.296 0.055 1
+     m_bIsPlayable 0
+     m_sFactionFlag "{EFA0BA63504B1230}UI/Images/GS_Factions/INDFOR_NATO.edds"
+     m_FactionFlagMaterial "{83AEA78E1C112F01}Assets/Materials/Flags/Factions/INDFOR_Flag.emat"
+     m_FactionLabel FACTION_CRF_INDFOR
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B78}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7E}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7C}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B63}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B61}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B67}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B69}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6F}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8ABED54}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8E1FFD7}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8255922}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD876D68B}" {
+       }
+       SCR_CallsignInfo "{61C8F1AC8D5F6E16}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C98F369CD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C8C108CAF}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C838A840B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C82FD37BC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C87255BD8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C82616AD7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C81EE1BCC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C80D7BE1C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C815764C5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C8050394F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C87A7525F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C86A6BB0A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C853EF0F4}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C863F833E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C85B288C9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9A7DCA8A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C84B3E367}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C843A8BE0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9BA8BABF}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9AF7C72A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F46FF2E9C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C99C3DA77}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C93A92DE0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C984385AF}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9D4574F4}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9E351E6B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9DCD434B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9CD8BFCA}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9C480399}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C926BE6C2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C931A333A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C91D45D70}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C914C04A3}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C90A775A0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C968F189E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C90196688}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C9798F690}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C971E21C9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C95E481C7}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C956CE806}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C946F677F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6C94D5F6B6}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F6BD2BE58}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F6AC07AF0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F6B4E5044}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F69CB4912}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F6A5C5BBB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5AF84290}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F46584A23}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F45B63025}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F45276F09}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F44AC9BE3}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F441CE11B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5B88C0CC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F59A5F1EA}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5F8F5E19}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5921E3B2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5897B6A2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F58127295}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5EDCFFDF}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5E414B13}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5D92779D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F5CC4F24F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F1F273C8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FAD5244A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122610B56735}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12261C944F4B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12261C0933E8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122613684FEC}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122612E3D198}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122611783724}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122612174012}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122610233F8A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122617A4E3ED}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B12261720FC5B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122616AA5E35}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122615D9BE5A}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E9A58191}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B122614F4E4DD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E90A7B3D}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E88E9C7C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E80FA1A9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226EF899789}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226ED3C1C0F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226EEF7C15F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E3F72535}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226EE53FE80}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226EDDACB25}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226ECA8863E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E388BDC2}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E794242B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E27BA0CD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E2F60CF5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E1357CBB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E1D6029F}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E0AFB1FD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E02A047C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E72B9E01}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FB56A79C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E6A52F04}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E6215539}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FC427527}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E586A1E0}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E51BE017}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226E4925A2B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DFF61EE3}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FBE84E27}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FA2282EB}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FEA30138}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F9810313}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FE01A6C6}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FD77B012}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226FCF6E059}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F39018E9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F30B0916}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F274963C}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F15B171E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F0B6C48B}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DA3756DD}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226F01D83E5}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DAEAE608}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226D9C3EA36}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226D8B6DD8E}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DF719040}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DE8549B8}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{684B1226DDE748E9}" {
+        m_sCallsign "NULL"
+       }
+       SCR_CallsignInfo "{686A4A6F51ECADA5}" {
+        m_sCallsign "NULL"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1-%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3 %4"
+      m_aCharacterRoleCallsigns {
+       SCR_PlayerLeaderRoleCallsign "{5D9E9ECA7323CF3E}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 52000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalog "{62AD6CEE79E1F794}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalog "{62AD6CEE7975FCA2}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalog "{62AD6CEE7ECC0787}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+      SCR_EntityCatalog "{62AD6CEE7DED463C}" {
+       m_eEntityCatalogType GROUP
+      }
+     }
+     m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
+     m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
+     m_aFlagNames +{
+     }
+     m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+    }
+   }
+  }
+ }
+}
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 878.592 9.875 955.105
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 269.756 11.121 624.991
+}

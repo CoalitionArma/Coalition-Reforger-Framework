@@ -268,6 +268,8 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			return;
 
 		playerComp.Rpc_RequestExit(GetRplId(), velocityAtExit);
+		
+		GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{FD6B8AA333271ACF}Prefabs/Items/Equipment/Backpacks/GI Packs/GI Havardsack backpack shovel.et", 5);
 	}
 
 	// --------------------------------------------------------------------------------------------

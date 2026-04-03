@@ -101,12 +101,12 @@ modded class SCR_Faction
 			
 			if (!foundContainer)
 			{
-				Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!", LogLevel.WARNING);
-				m_aActiveSRChannels.Insert(groupName);
+				//Print("[CVON-WARNING] " + groupName + " MISSING FREQUENCY CONFIGURATION!", LogLevel.WARNING);
+				//m_aActiveSRChannels.Insert(groupName);
 			}
 		}
-		if (m_aActiveLRChannels.Count() == 0)
-			m_aActiveLRChannels.Insert(GetFactionKey() + "LR");
+		//if (m_aActiveLRChannels.Count() == 0)
+		//	m_aActiveLRChannels.Insert(GetFactionKey() + "LR");
 		
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelSR(GetFactionKey(), m_aActiveSRChannels);
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelLR(GetFactionKey(), m_aActiveLRChannels);

@@ -1413,6 +1413,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
 	}
 	
+	void RequestNewItem(int playerId, string newResource, int slotId)
+	{
+		RpcAsk_MiniArsenalRequestNewItem(playerId, newResource, slotId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)

@@ -1,27 +1,35 @@
 GenericEntity : "{6E42C85D9FC0CA5D}Prefabs/Weapons/MachineGuns/M60/MG_M60_base.et" {
  ID "CFBAA4B725411E45"
  components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{68EE077901FE2C56}" {
+     SourceMaterial "rail_ris"
+     AssignedMaterial "{0A94C84B94134E73}assets/Matts/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{68EE077901FE2C68}" {
+     SourceMaterial "ris_mount"
+     AssignedMaterial "{0A94C84B94134E73}assets/Matts/InvisibiltyGoesSoHard.emat"
+    }
+   }
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
-    SightsComponent "{BB23A637957CFFF8}" {
-     SightsPosition PointInfo "{BB23A63796688E69}" {
-      Offset 0 0 0
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0.0415 -0.0122 -0.0229
      }
-     SightsRanges {
-      SightRangeInfo "{584CED31925D92DC}" {
-       WeaponPosition PointInfo "{584CED31925D92F6}" {
-        Offset 0 -0.003 0
-        Angles 0 0 0
-       }
-      }
-     }
-     SightsPointFront PointInfo "{6497438FFBBB6042}" {
-      PivotID "Scene_Root"
-      Offset 0 0.1282 0.1772
-     }
-     SightsPointRear PointInfo "{6497438FFBBB607E}" {
-      PivotID "w_sight_slider"
-      Offset 0 0.0188 -0.0024
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "MG42"
+    Description ""
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   additionalActions {
+    SCR_MG3UserAction "{64DE8E452EA0FF97}" {
+     ParentContextList {
      }
     }
    }

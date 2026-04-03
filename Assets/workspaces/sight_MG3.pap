@@ -1,0 +1,206 @@
+ProcAnimProjectClass {
+ signals {
+  SignalClass {
+   id 1028
+   name "Signal 1"
+   tl -281.778 -4.833
+   res "{AAF48D8C6E4075AF}assets/workspaces/sight_MG3.siga"
+   inputsport {
+    1
+   }
+   outputsport {
+    2 3
+   }
+   inputvalues {
+    0
+   }
+   inputvaluesmin {
+    0
+   }
+   inputvaluesmax {
+    1
+   }
+  }
+ }
+ funcs {
+  RotationSetClass {
+   id 2054
+   name "RotationSet 2054"
+   tl 187.5 -278.75
+   funcs {
+    IOPConnectionClass iopConnection {
+     port 1
+     conn {
+      ConnectionsClass connections {
+       id 2
+       links {
+        ConnectionClass "3078:0" {
+         id 3078
+         port 0
+        }
+       }
+      }
+     }
+    }
+    IOPConnectionClass iopConnection {
+     port 0
+     conn {
+      ConnectionsClass connections {
+       id 2
+       links {
+        ConnectionClass "4102:0" {
+         id 4102
+         port 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  RotationMakeClass {
+   id 3078
+   name "RotationMake 3078"
+   tl 5 -175
+   iops {
+    IOPConnectionClass iopConnection {
+     port 0
+     conn {
+      ConnectionsClass connections {
+       id 0
+       links {
+        ConnectionClass "1028:2" {
+         id 1028
+         port 2
+        }
+       }
+      }
+     }
+    }
+   }
+   outs {
+    2054
+   }
+  }
+  BoneClass {
+   id 4102
+   name "Bone 4102"
+   version 0
+   tl 15 -345
+   outs {
+    2054
+   }
+   bone "w_sight"
+  }
+  RotationSetClass {
+   id 5126
+   name "RotationSet 5126"
+   tl 160.75 131.5
+   funcs {
+    IOPConnectionClass iopConnection {
+     port 1
+     conn {
+      ConnectionsClass connections {
+       id 2
+       links {
+        ConnectionClass "6150:0" {
+         id 6150
+         port 0
+        }
+       }
+      }
+     }
+    }
+    IOPConnectionClass iopConnection {
+     port 0
+     conn {
+      ConnectionsClass connections {
+       id 2
+       links {
+        ConnectionClass "7174:0" {
+         id 7174
+         port 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  RotationMakeClass {
+   id 6150
+   name "RotationMake 6150"
+   tl -87.5 167.5
+   iops {
+    IOPConnectionClass iopConnection {
+     port 0
+     conn {
+      ConnectionsClass connections {
+       id 0
+       links {
+        ConnectionClass "1028:3" {
+         id 1028
+         port 3
+        }
+       }
+      }
+     }
+    }
+   }
+   outs {
+    5126
+   }
+  }
+  BoneClass {
+   id 7174
+   name "Bone 7174"
+   version 0
+   tl -73.5 48.5
+   outs {
+    5126
+   }
+   bone "w_ftsight"
+  }
+ }
+ model "{833B9CEE1F42A5CF}Assets/MG3_.xob"
+ version 1
+ compiled ProcAnimCompiledClass {
+  visited {
+   641 513 385 257 129 1
+  }
+  ops {
+   ProcAnimCompiledOp {
+    data {
+     0 4 65536 0 131072 0
+    }
+   }
+   ProcAnimCompiledOp {
+    data {
+     1 0 0
+    }
+   }
+   ProcAnimCompiledOp {
+    data {
+     1 0 0
+    }
+   }
+   ProcAnimCompiledOp {
+    data {
+     0 4 262144 0 327680 0
+    }
+   }
+   ProcAnimCompiledOp {
+    data {
+     1 196608 0
+    }
+   }
+   ProcAnimCompiledOp {
+    data {
+     1 196608 0
+    }
+   }
+  }
+  version 2
+  argsize 10
+ }
+}

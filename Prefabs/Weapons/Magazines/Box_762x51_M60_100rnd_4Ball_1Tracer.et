@@ -1,0 +1,11 @@
+GenericEntity : "{995CF44535296AE3}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_Base.et" {
+ ID "527AEA6C1C9C1732"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   ItemModel "{56C51ED9D1F021A4}Assets/Weapons/German/Machine Guns/MG42/mgmag.xob"
+  }
+  MeshObject "{CA6BE4D6A23F8EF0}" {
+   Object "{56C51ED9D1F021A4}Assets/Weapons/German/Machine Guns/MG42/mgmag.xob"
+  }
+ }
+}

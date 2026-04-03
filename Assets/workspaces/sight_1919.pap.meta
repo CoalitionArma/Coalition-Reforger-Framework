@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4EFB72D6E914A168}Assets/workspaces/sight_1919.pap"
+ Configurations {
+  ProcAnimProjectResourceClass PC {
+  }
+  ProcAnimProjectResourceClass XBOX_ONE : PC {
+  }
+  ProcAnimProjectResourceClass XBOX_SERIES : PC {
+  }
+  ProcAnimProjectResourceClass PS4 : PC {
+  }
+  ProcAnimProjectResourceClass PS5 : PC {
+  }
+  ProcAnimProjectResourceClass HEADLESS : PC {
+  }
+  ProcAnimProjectResourceClass Xbox : PC {
+  }
+ }
+}

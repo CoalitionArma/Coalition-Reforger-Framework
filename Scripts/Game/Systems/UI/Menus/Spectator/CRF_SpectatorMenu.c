@@ -237,12 +237,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 */
 	void ToggleNVGs()
 	{
-		m_bNVGActivated = !m_bNVGActivated;
-
-		if (m_bNVGActivated)
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{511CD467ED159EA2}Assets/Items/Equipment/NVG/pvs14/data/NVG_Spectator_HDR.emat", true);
-		else
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+//		m_bNVGActivated = !m_bNVGActivated;
+//
+//		if (m_bNVGActivated)
+//			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{511CD467ED159EA2}Assets/Items/Equipment/NVG/pvs14/data/NVG_Spectator_HDR.emat", true);
+//		else
+//			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}
 	
 	/**
@@ -250,7 +250,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 */
 	void ForceNVGsOff()
 	{
-		SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+	//	SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}
 	
 	/**

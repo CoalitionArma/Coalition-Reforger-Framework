@@ -1,0 +1,26 @@
+GenericEntity : "{FC119ABB50535FDF}Prefabs/Weapons/Machineguns/M1919/M1919_A4.et" {
+ ID "5F0F2C937774298C"
+ components {
+  ProcAnimComponent "{690704033C5187D8}" {
+   Parameters {
+    ProcAnimParams "{690704033CA2D7BF}" {
+     ResourceName "{7D1D167D53F79C06}Assets/workspaces/sight_MG3.pap"
+     BoneNames {
+      "w_front_sight"
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   additionalActions {
+    SCR_MG3UserAction "{690704034C9EC662}" {
+     ParentContextList {
+      "default"
+     }
+     m_sSignalName "MG3sight"
+    }
+   }
+  }
+ }
+ coords 268.302 11.071 623.933
+}

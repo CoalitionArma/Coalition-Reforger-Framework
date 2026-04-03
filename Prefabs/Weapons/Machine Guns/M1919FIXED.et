@@ -1,0 +1,41 @@
+GenericEntity : "{13D9B9BA5F68CE74}Prefabs/Weapons/US/MachineGuns/1919/MG_1919_ww44.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     IkSettings {
+      ItemIKSettings "{5284960E66704286}" {
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
+      }
+      ItemIKSettings "{5284960E668F2FFA}" {
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
+      }
+      ItemIKSettings "{5284960E645F6FBA}" {
+       IkSettingsStand 0x6 0
+       IkSettingsCrouch 0x6 0
+       IkSettingsProne 0x6 0
+      }
+     }
+     AnimationIKPose "{39371E2933F89D30}Assets/Weapons/MachineGuns/M1919/anm/p_m1919_ik.anm"
+     AnimIKPoseProneOverride ""
+     HandAdditiveTranslation 0 0 1
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{4ACC5720DC23E5B7}Assets/Weapons/MachineGuns/workspaces/fie_machineguns.agr"
+     AnimInstance "{FD16A9775935E1C8}Assets/Weapons/MachineGuns/workspaces/m1919_weapon.asi"
+     AlwaysActive 1
+    }
+   }
+  }
+ }
+ coords 540.968 13.529 893.112
+}

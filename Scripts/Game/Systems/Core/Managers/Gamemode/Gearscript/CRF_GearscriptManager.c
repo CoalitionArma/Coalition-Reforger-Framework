@@ -4,6 +4,7 @@ class CRF_GearscriptManager : ScriptComponent
 {
 	protected ref CRF_ResourceCache m_ResourceCache;
 	static ref CRF_RolesConfig m_RolesConfig;
+	CRF_SafestartManager m_SafestartManager;
 	
 	protected CRF_Gamemode m_Gamemode;
 	
@@ -15,7 +16,7 @@ class CRF_GearscriptManager : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-	
+		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		// Only run on in-game post init
 		if (!GetGame().InPlayMode())
 			return;
