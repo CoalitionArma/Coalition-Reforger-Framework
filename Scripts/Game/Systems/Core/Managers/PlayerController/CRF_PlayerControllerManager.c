@@ -39,10 +39,11 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_PlayerRplToAuthorityManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		m_CameraManager = CRF_PlayerCameraManager.GetInstance();
 		
-		// Only lock FPS and audio if not in active game (prevents locking for JIP players)
-		if (!m_Gamemode || m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+		// Only mute audio during briefing/slotting/AAR — explicit state check prevents muting JIP players
+		// joining mid-game, and avoids muting on null gamemode (timing edge case)
+		if (m_Gamemode && m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
-			GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
+			//GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
 			GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitAudioLock);
 		}
 		
