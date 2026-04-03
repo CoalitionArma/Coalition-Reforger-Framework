@@ -30,7 +30,7 @@ CRF_RallyPoint {
   SCR_EditorLinkComponent "{68F8E4F5EF72C5B5}" {
    m_aEntries {
     SCR_EditorLinkEntry "{68F8E4F5EF72C5B3}" {
-     m_Prefab "{07ADAB08730C4F99}PrefabsMissionMaking/Systems/SpawnPoints/E_CRF_RallyPoint_Preview.et"
+     m_Prefab "{C0820D8C50D38898}Prefabs/Compositions/Misc/FreeRoamBuilding/E_CRF_RallyPoint_Preview.et"
     }
    }
   }

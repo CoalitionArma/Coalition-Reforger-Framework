@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{07ADAB08730C4F99}PrefabsMissionMaking/Systems/SpawnPoints/E_CRF_BackpackSpawnPonit.et"
+ Name "{C0820D8C50D38898}Prefabs/Compositions/Misc/FreeRoamBuilding/E_CRF_RallyPoint_Preview.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
