@@ -82,7 +82,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		m_aSpawnPoints.Clear();
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
-		CRF_SlottingManager slottingManager =CRF_SlottingManager.GetInstance();
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
 		m_factionKey = slottingManager.GetPlayerSlotFaction(playerID).GetFactionKey();
