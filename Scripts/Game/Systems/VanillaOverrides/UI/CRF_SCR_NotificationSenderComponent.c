@@ -13,15 +13,15 @@ modded class SCR_NotificationSenderComponent
 	//----------------------------------------------------------------
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
-		// Check if local player has unlimited editor access and suppress killfeeds
+		// Suppress killfeed only when admin is alive/playing without zeus open
 		SCR_EditorManagerEntity editorManager = SCR_EditorManagerEntity.GetInstance();
-		if (editorManager && !editorManager.IsLimited() && editorManager.IsOpened())
+		if (editorManager && !editorManager.IsLimited() && !editorManager.IsOpened())
 		{
-			// Suppress all killfeeds for unlimited editor users when IN editor
-			return;
+			PlayerController pc = GetGame().GetPlayerController();
+			if (pc && pc.GetControlledEntity())
+				return;
 		}
 		
-		// Call parent implementation for normal players and admins in editor
 		super.OnControllableDestroyed(instigatorContextData);
 	}
 	
@@ -31,19 +31,20 @@ modded class SCR_NotificationSenderComponent
 	//----------------------------------------------------------------
 	void SetKillFeedTypeDeadLocal()
 	{
-		// Check if local player has unlimited editor access
+		// Suppress killfeed only when admin is alive/playing without zeus open
 		SCR_EditorManagerEntity editorManager = SCR_EditorManagerEntity.GetInstance();
-		if (editorManager && !editorManager.IsLimited() && editorManager.IsOpened())
+		if (editorManager && !editorManager.IsLimited() && !editorManager.IsOpened())
 		{
-			// Keep killfeeds disabled for unlimited editor users when IN editor
-			m_iKillFeedType = EKillFeedType.DISABLED;
-			return;
+			PlayerController pc = GetGame().GetPlayerController();
+			if (pc && pc.GetControlledEntity())
+			{
+				m_iKillFeedType = EKillFeedType.DISABLED;
+				return;
+			}
 		}
 		
-		// Set kill feed to show complete information for spectators and admins in editor
+		// Spectating, zeus open, or normal player - show full killfeed
 		m_iKillFeedType = EKillFeedType.FULL;
-		
-		// Configure to receive all types of kill feed notifications
 		m_iReceiveKillFeedType = EKillFeedReceiveType.ALL;
 	}
 	
