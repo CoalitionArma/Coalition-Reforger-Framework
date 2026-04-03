@@ -52,7 +52,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "US Marines have to flush out a CHDKz cell outside of the capital of Chernogork during their 2008 invasion."\
+   m_sTextData "US Marines have to flush out a CHDKz cell outside of the capital of Chernogorsk during their 2008 invasion."\
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets: Armored Vehicles"\
@@ -284,7 +284,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{52AFB3AF94AE003E}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSUSMC_2008.conf"
+  m_rGearScript "{52AFB3AF94AE003E}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC_2008.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

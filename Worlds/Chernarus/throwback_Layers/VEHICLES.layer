@@ -1,8 +1,8 @@
-$grp Vehicle : "{8E7F7A0368CE8805}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green_1P29.et" {
- GAZ_TIGR_v2_PKM_Green_1P1 {
-  coords 5977.101 5.751 2149.89
+$grp Vehicle : "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et" {
+ M1151_armed_M2HB1 {
+  coords 5982.188 5.75 2151.121
  }
- GAZ_TIGR_v2_PKM_Green_1P2 {
-  coords 5983.972 5.749 2150.333
+ M1151_armed_M2HB2 {
+  coords 5987.411 5.75 2150.952
  }
 }
