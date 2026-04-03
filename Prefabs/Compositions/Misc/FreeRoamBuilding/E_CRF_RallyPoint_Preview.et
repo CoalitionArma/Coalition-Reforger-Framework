@@ -1,9 +1,6 @@
 GenericEntity {
  ID "68F8E4EDFBB1BAA5"
  components {
-  MeshObject "{68F8E4EDFBB1BA94}" {
-   Object "{E2C58061477FBD97}Assets/Props/Military/Radios/RadioStation_RF10_01/RadioStation_RF10_01.xob"
-  }
   RigidBody "{68F8E4EDFBB1BA8B}" {
   }
   SCR_EditableEntityComponent "{68F8E4EDB7602BBD}" {
@@ -12,7 +9,7 @@ GenericEntity {
    m_aEntries {
     SCR_BasePreviewEntry "{68F8E4EC03090EFD}" {
      m_iParentID -1
-     m_Mesh "{E2C58061477FBD97}Assets/Props/Military/Radios/RadioStation_RF10_01/RadioStation_RF10_01.xob"
+     m_Mesh "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
      m_Flags EDITABLE
      m_iPivotID ""
     }
@@ -22,4 +19,10 @@ GenericEntity {
   }
  }
  coords 2065.986 47.753 2068.755
+ {
+  GenericEntity : "{C839E8BC81D3C490}Prefabs/Compositions/Misc/FreeRoamBuilding/E_CRF_RallyPoint.et" {
+   ID "690700ED227EDE7F"
+   coords 0 0 0
+  }
+ }
 }
