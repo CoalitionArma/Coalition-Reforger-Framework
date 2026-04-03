@@ -7,7 +7,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_AttackingSide "OPFOR"
    m_DefendingSide "BLUFOR"
    m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
-   m_iMCOMTimer 5
    m_iNumberOfZones 2
    m_bEnableDynamicRespawns 1
    m_aZoneRespawnConfigs {
@@ -37,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 55
+ m_iTimeLimitMinutes 60
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15

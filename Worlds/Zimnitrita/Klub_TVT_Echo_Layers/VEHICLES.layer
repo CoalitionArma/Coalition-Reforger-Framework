@@ -14,25 +14,25 @@ $grp CRF_VehicleSpawner {
  CRF_VehicleSpawner_3 {
   coords 5057.5 3.482 7049.594
   angles 0 -46.33 0
-  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
   m_sFactionKey "OPFOR"
  }
  CRF_VehicleSpawner_4 {
   coords 5060.627 3.476 7053.052
   angles 0 -46.33 0
-  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
   m_sFactionKey "OPFOR"
  }
  CRF_VehicleSpawner_5 {
   coords 5064.806 3.288 7043.208
   angles 0 -46.33 0
-  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
   m_sFactionKey "OPFOR"
  }
  CRF_VehicleSpawner_6 {
   coords 5067.651 3.279 7047.042
   angles 0 -46.33 0
-  m_rVehicle "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et"
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
   m_sFactionKey "OPFOR"
  }
 }
@@ -53,4 +53,125 @@ $grp GenericEntity : "{21F7E55C8EBF7877}Prefabs/Props/Military/RoadBlocks/Roadbl
   coords 2524.933 0.146 6913.794
   angles 0 120 0
  }
+<<<<<<< Updated upstream
+=======
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3334.943 52.324 7776.33
+  angles -4.075 -134.343 -2.886
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA61348F99856B}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA6134AB07D928}" {
+    m_Prefab "{4CD3159446EC131B}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_APIT.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 8
+   }
+  }
+ }
+ {
+  coords 3326.815 52.208 7778.052
+  angles -4.718 -134.325 -1.632
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{68DA613A00766171}" {
+   m_iAmountofAutoCannonAmmo 0
+  }
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA613C073BC94E}" {
+    m_Prefab "{B0A890995104A02D}Prefabs/Weapons/Tripods/9K135/Part_9K135_Launcher.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+ {
+  coords 2563.973 130.094 7030.228
+  angles -1.141 -148.194 -1.911
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA61348F99856B}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA6134AB07D928}" {
+    m_Prefab "{4CD3159446EC131B}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_APIT.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 8
+   }
+  }
+ }
+ {
+  coords 2567.515 130.094 7028.03
+  angles -0.324 -146.902 -0.569
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{68DA613A00766171}" {
+   m_iAmountofAutoCannonAmmo 0
+  }
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{68DA61349EF1ED31}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{68DA613496C89668}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{68DA6135D5E21FE5}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{68DA613C073BC94E}" {
+    m_Prefab "{B0A890995104A02D}Prefabs/Weapons/Tripods/9K135/Part_9K135_Launcher.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+>>>>>>> Stashed changes
 }
