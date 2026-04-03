@@ -7,6 +7,10 @@ $grp ParticleEffectEntity {
   coords 3364.23 75.06 1075.455
   EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
  }
+ {
+  coords 3161.006 41.885 1779.629
+  EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
+ }
 }
 GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
  coords 3307.988 78.145 949.722
@@ -1316,89 +1320,6 @@ GenericEntity : "{76D4FE49EA6C57F4}Prefabs/Compositions/Slotted/SlotFlatLarge/Li
   }
  }
 }
-GenericEntity : "{77F90F896D5145C8}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_US_01.et" {
- coords 3262.451 75.427 1030.343
- angles 0 72.232 0
- {
-  GenericEntity {
-   ID "5E330D6F531E3262"
-   coords -6.169 0.185 1.994
-   angles 0.663 4.187 -1.108
-  }
-  GenericEntity {
-   ID "5D22B92C55FB6E83"
-   coords -2.474 0.067 1.857
-   angles 0 -98.382 0
-  }
-  GenericEntity {
-   ID "5D45393EBFC416D1"
-   coords -1.78 0.205 -1.529
-  }
-  GenericEntity {
-   ID "5D088D365E56BF25"
-   coords -3.281 0.124 0.608
-   angles 0 -25.922 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BF55"
-   coords -0.725 -0.079 3.406
-   angles 0 98.311 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BF7F"
-   coords -3.4 0.25 -1.54
-   angles 0 30.805 0
-  }
-  GenericEntity {
-   ID "5D24733A5888C7CC"
-   coords 2.16 -0.495 8.651
-  }
-  GenericEntity {
-   ID "5D088D365E56BFA6"
-   coords -2.886 0.051 3.049
-   angles 0 -52.231 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BFB2"
-   coords -2.947 0.097 1.318
-   angles 0 -145.473 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BF0D"
-   coords -3.733 0.106 1.963
-   angles 0 178.418 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BF1C"
-   coords -2.834 -0.036 5.444
-   angles 0 -124.436 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BF32"
-   coords 1.066 -0.358 6.151
-   angles 0 -84.662 0
-  }
-  GenericEntity {
-   ID "5D088D365E56BEB7"
-   coords 2.144 -0.134 1.042
-  }
-  GenericEntity {
-   ID "5D088D0B9E7F85ED"
-   coords 4.032 -0.542 5.359
-   angles 0 -82.435 0
-  }
-  GenericEntity {
-   ID "5D088D0B9E7F8593"
-   coords 6.507 -0.72 5.449
-   angles 0 -98.03 0
-  }
-  StaticModelEntity {
-   ID "5D088D148FAA2C3D"
-   coords -2.681 0.041 3.035
-   angles 0 -57.137 0
-  }
- }
-}
 $grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
  {
   coords 3219.992 75.72 1097.539
@@ -1537,6 +1458,9 @@ $grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSma
    }
   }
  }
+ {
+  coords 3264.066 75.719 1287.078
+ }
 }
 $grp GenericEntity : "{AB87B392A989CA95}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_US_01.et" {
  {
@@ -1570,6 +1494,18 @@ $grp GenericEntity : "{AB87B392A989CA95}Prefabs/Compositions/Slotted/SlotFlatSma
  {
   coords 3280.132 75.753 1067.898
   angles 0 168.772 0
+ }
+ {
+  coords 3277.834 74.703 1283.836
+  angles 0 100.973 0
+ }
+ {
+  coords 3251.339 75.706 1288.495
+  angles 0 -89.471 0
+ }
+ {
+  coords 3263.587 75.664 1297.245
+  angles 0 4.506 0
  }
 }
 GenericEntity : "{E98385D7F126474C}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_02_static.et" {
