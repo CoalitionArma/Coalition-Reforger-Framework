@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E664A354F5A60E64}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUS_2000s_Yoko.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
