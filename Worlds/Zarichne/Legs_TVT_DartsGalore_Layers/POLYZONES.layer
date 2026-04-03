@@ -2,16 +2,16 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
  coords 1268.173 10.555 1017.681
  Points {
   ShapePoint "{68D83EE4A38F085B}" {
-   Position 869.867 0 -182.712
+   Position 910.684 0 596.77
   }
   ShapePoint "{68D83EE49F04D013}" {
-   Position 47.664 0 2236.233
+   Position 575.726 0 1541.998
   }
   ShapePoint "{68D83EE49AAF7D86}" {
-   Position 3308.671 0 3483.439
+   Position 3334.52 0 2087.583
   }
   ShapePoint "{68D83EE497E9AC0D}" {
-   Position 3344.419 0 -369.395
+   Position 3335.948 0 797.616
   }
  }
 }
@@ -42,7 +42,7 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
    Position 699.882 0 1189.372
   }
   ShapePoint "{68E829F2CBE48B2A}" {
-   Position 362.047 -0 169.349
+   Position 362.047 0 169.349
   }
  }
 }
