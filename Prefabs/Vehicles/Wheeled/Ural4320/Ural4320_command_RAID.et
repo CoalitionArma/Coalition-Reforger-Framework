@@ -16,7 +16,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
    }
   }
   CRF_RaidItemComponent "{668333D623041E8A}" {
-   m_iPointsEarnedWhenDestroyed 40
+   m_iSupplyValue 40
    m_sItemName "Command Vehicle"
   }
   MeshObject "{51DAA09FEFBFC0E7}" {
