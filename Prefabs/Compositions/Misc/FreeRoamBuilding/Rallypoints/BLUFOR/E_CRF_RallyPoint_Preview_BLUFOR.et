@@ -20,8 +20,8 @@ GenericEntity {
  }
  coords 2065.986 47.753 2068.755
  {
-  GenericEntity : "{C839E8BC81D3C490}Prefabs/Compositions/Misc/FreeRoamBuilding/E_CRF_RallyPoint.et" {
-   ID "690700ED227EDE7F"
+  GenericEntity : "{C839E8BC81D3C490}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/BLUFOR/E_CRF_RallyPoint_BLUFOR.et" {
+   ID "69073253825CC9CB"
    coords 0 0 0
   }
  }
