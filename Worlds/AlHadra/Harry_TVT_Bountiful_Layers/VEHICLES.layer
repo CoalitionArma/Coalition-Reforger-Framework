@@ -55,12 +55,30 @@ $grp CRF_VehicleSpawner {
  {
   coords 5407.349 37.147 4593.928
   angles 0 172.479 0
-  m_rVehicle "{EF1C7E6C67DA322B}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_Raid.et"
+  m_rVehicle "{318D73C2BC3197F8}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Raid.et"
   m_sFactionKey "INDFOR"
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{68FE07DB8E8773CA}" {
     m_Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
     m_iAmountOfItemSupplyTruck 100
+   }
+  }
+ }
+ {
+  coords 4224.201 17.843 4563.106
+  angles 0 140.301 0
+  m_rVehicle "{030A76F8D2BDBF33}Prefabs/Vehicles/Wheeled/S1203/S1203_Explosive.et"
+  m_sFactionKey "INDFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6906180C7CC5E349}" {
+    m_Prefab "{C843242BD81ED55E}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_BombMortar.et"
+    m_iAmountOfItemSupplyTruck 3
+    m_iAmountOfItemRegularVehicle 3
+   }
+   CRF_VehicleGearScriptAdditionalItem "{6906180C5664EAE0}" {
+    m_Prefab "{108359CD2F0921A4}Prefabs/Items/Equipment/Detonators/Phone_Detonator/Phone_Detenator.et"
+    m_iAmountOfItemSupplyTruck 3
+    m_iAmountOfItemRegularVehicle 3
    }
   }
  }
