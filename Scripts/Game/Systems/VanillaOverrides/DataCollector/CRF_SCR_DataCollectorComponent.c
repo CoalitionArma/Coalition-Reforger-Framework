@@ -14,7 +14,7 @@ modded class SCR_DataCollectorComponent
 		return m_OnPlayerDamageReceived;
 	}
 	
-	override void OnPlayerAuditSuccess(int playerId)
+	protected override void OnPlayerAuditSuccess(int playerId)
 	{
 		//Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
 		//We create the player's PlayerData here
@@ -39,7 +39,7 @@ modded class SCR_DataCollectorComponent
 		return playerData;
 	}
 	
-	override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
+	protected override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
 	{
 		// Delegate to NotifyPlayerSpawned so that both the RequestSpawn pipeline and the
 		// SetInitialMainEntity fallback path use a single, consistent notification point.
@@ -61,13 +61,15 @@ modded class SCR_DataCollectorComponent
 		if (CRF_EntityHelper.IsSpectator(entity))
 			return;
 		
-		// Remove any stale invokers from a previous life before registering new ones.
-		// OnPlayerKilled does NOT call RemoveInvokers (base stub), so this is necessary
-		// for entity-reuse cases (e.g. reconnect with live character) to avoid
-		// double-registration of event handlers.
+		// Remove any stale invokers from the entity before registering new ones.
+		// We use CRF_CleanupInvokers (a thin public wrapper around the protected RemoveInvokers)
+		// rather than OnPlayerDisconnected because some modules (e.g. HealingItemsModule) override
+		// OnPlayerDisconnected to clear their internal entity-tracking map without calling
+		// RemoveInvokers. Those modules rely on the map being intact inside their own OnPlayerSpawned
+		// cleanup logic, so calling OnPlayerDisconnected first would break them.
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
-			module.OnPlayerDisconnected(playerId, entity);
+			module.CRF_CleanupInvokers(entity);
 		}
 		
 		foreach (SCR_DataCollectorModule module : m_aModules)
@@ -167,25 +169,29 @@ modded class SCR_DataCollectorComponent
 		m_OnPlayerDamageReceived.Invoke(victimId, killerEntity, damageType);
 	}
 	
-	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	protected override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		int playerId = instigatorContextData.GetVictimPlayerID();
 		IEntity playerEntity = instigatorContextData.GetVictimEntity();
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		Instigator instigator = instigatorContextData.GetInstigator();
-		
+
+		// Route non-player victims (possessed AI) through the AI kill path instead.
+		// LogPlayerKill is intentionally placed AFTER this guard so it only fires
+		// for real player deaths, not AI entities.
+		if (playerId <= 0)
+		{
+			OnAIKilledCRF(playerEntity, killerEntity, instigator, instigatorContextData);
+			return;
+		}
+
 		// Make sure our logging manager instance is available
 		if (!LM)
 			LM = CRF_LoggingManager.GetInstance();
-		
+
 		// Logging player kill to file
 		if (LM)
 			LM.LogPlayerKill(instigatorContextData);
-		
-		if (instigatorContextData.GetVictimPlayerID() <= 0) {
-			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);
-			return;
-		}
 			
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
@@ -207,7 +213,7 @@ modded class SCR_DataCollectorComponent
 			m_OptionalKicking.OnControllableDestroyed(AIEntity, killerEntity, instigator, instigatorContextData);
 	}
 	
-	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		// Get player data - let it be created if it doesn't exist (vanilla behavior)
 		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId, false);
