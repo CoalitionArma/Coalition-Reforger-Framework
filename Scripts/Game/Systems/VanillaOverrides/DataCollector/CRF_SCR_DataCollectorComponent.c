@@ -61,9 +61,15 @@ modded class SCR_DataCollectorComponent
 		if (CRF_EntityHelper.IsSpectator(entity))
 			return;
 		
-		// Invoke OnPlayerSpawned on each module, which calls AddInvokers and populates
-		// internal tracking maps.  Stale invokers from a previous life are already cleaned
-		// up by OnPlayerKilled / OnPlayerDisconnected before this point.
+		// Remove any stale invokers from a previous life before registering new ones.
+		// OnPlayerKilled does NOT call RemoveInvokers (base stub), so this is necessary
+		// for entity-reuse cases (e.g. reconnect with live character) to avoid
+		// double-registration of event handlers.
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.OnPlayerDisconnected(playerId, entity);
+		}
+		
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerSpawned(playerId, entity);
