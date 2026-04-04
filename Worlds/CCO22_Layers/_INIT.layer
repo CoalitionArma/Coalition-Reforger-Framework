@@ -87,13 +87,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		if (!Replication.IsServer())"\
  "			return;"\
  "		"\
- "		//Inserts armband for german medics"\
- "		if (faction.GetFactionKey() == \"OPFOR\" && entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
- "			ChangeItem(entity, \"{46329967607CB8B5}Prefabs/Clothing/Medic ArmBand/ArmBand.et\", 13);"\
- "		"\
- "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
- "			return;"\
- "		"\
  "		if (!entity)"\
  "			return;"\
  "		"\
@@ -105,8 +98,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		if (!faction)"\
  "			return;"\
  "		"\
+ "		//Inserts armband for german medics"\
+ "		if (faction.GetFactionKey() == \"OPFOR\" && entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
+ "			ChangeItem(entity, \"{46329967607CB8B5}Prefabs/Clothing/Medic ArmBand/ArmBand.et\", 13);"\
+ "		"\
  "		//Only during safestart do we want americans to have parachutes"\
- "		if (faction.GetFactionKey() == \"BLUFOR\")"\
+ "		if (faction.GetFactionKey() == \"BLUFOR\" && !CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
  "			ChangeItem(entity, \"{9422415FE7875691}Prefabs/Items/Equipment/Backpacks/BUSHWAR_Parachute_Pack_01.et\", 5);"\
  "		"\
  "	}"\
@@ -499,11 +496,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
      }
      "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
       SocialIdentity SocialIdentity "{56E4EBD9F0C03530}" {
-       NamesConfig +{
+       NamesConfig {
        }
-       AliasesConfig +{
+       AliasesConfig {
        }
-       SurnamesConfig +{
+       SurnamesConfig {
        }
       }
      }
@@ -1105,7 +1102,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
      }
      m_sGroupFlagsImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
      m_sGroupFlagsImageSetOutlines "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
-     m_aFlagNames +{
+     m_aFlagNames {
      }
      m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
      m_aBaseCallsigns {
@@ -1663,7 +1660,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
      }
      m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
      m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
-     m_aFlagNames +{
+     m_aFlagNames {
      }
      m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
     }
@@ -1673,6 +1670,379 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 878.592 9.875 955.105
+}
+GameEntity : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
+ components {
+  SCR_BaseCompartmentManagerComponent "{690745B46BAE959A}" {
+   CompartmentSlots {
+    CargoCompartmentSlot passenger_r03 {
+     ContextName "passenger_r03"
+    }
+    CargoCompartmentSlot passenger_r04 {
+     ContextName "passenger_r04"
+    }
+    CargoCompartmentSlot passenger_r05 {
+     ContextName "passenger_r05"
+    }
+    CargoCompartmentSlot passenger_r06 {
+     ContextName "passenger_r06"
+    }
+    CargoCompartmentSlot passenger_r07 {
+     ContextName "passenger_r07"
+    }
+    CargoCompartmentSlot passenger_08 {
+     ContextName "passenger_r08"
+    }
+    CargoCompartmentSlot passenger_09 {
+     ContextName "passenger_r09"
+    }
+    CargoCompartmentSlot passenger_10 {
+     ContextName "passenger_r10"
+    }
+    CargoCompartmentSlot passenger_l03 {
+     ContextName "passenger_l02"
+    }
+    CargoCompartmentSlot passenger_04 {
+     ContextName "passenger_l03"
+    }
+    CargoCompartmentSlot passenger_05 {
+     ContextName "passenger_l04"
+    }
+    CargoCompartmentSlot passenger_06 {
+     ContextName "passenger_l05"
+    }
+    CargoCompartmentSlot passenger_07 {
+     ContextName "passenger_l06"
+    }
+    CargoCompartmentSlot passenger_l08 {
+     ContextName "passenger_l07"
+    }
+    CargoCompartmentSlot passenger_l10 {
+     ContextName "passenger_l08"
+    }
+    CargoCompartmentSlot passenger_l11 {
+     ContextName "passenger_l09"
+    }
+    CargoCompartmentSlot passenger_l12 {
+     ContextName "passenger_l10"
+    }
+    CargoCompartmentSlot passenger_l13 {
+     ContextName "passenger_l11"
+    }
+    CargoCompartmentSlot passenger_l14 {
+     ContextName "passenger_l12"
+    }
+    CargoCompartmentSlot passenger_l15 {
+     ContextName "passenger_l13"
+    }
+    CargoCompartmentSlot passenger_l16 {
+     ContextName "passenger_l14"
+    }
+   }
+  }
+  ActionsManagerComponent "{69094ADE1065AE5B}" {
+   ActionContexts {
+    UserActionContext "{69096C37B79EEF45}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37B79EEFDD}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r03"
+     Position PointInfo "{69096C37B79EEFD9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37B1419D16}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37B1419D82}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r04"
+     Position PointInfo "{69096C37B1419DB9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A96B1E04}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A96B1EB4}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r05"
+     Position PointInfo "{69096C37A96B1EB3}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A61C1E1D}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A61C1EDF}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r06"
+     Position PointInfo "{69096C37A61C1EDB}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A317A036}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A317A094}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r07"
+     Position PointInfo "{69096C37A317A090}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A1C597FB}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A1C597A9}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r08"
+     Position PointInfo "{69096C37A1C597AA}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C379D7C6978}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C379D7C69DA}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r09"
+     Position PointInfo "{69096C379D7C69D1}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C379A61A956}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C379A61A90F}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r10"
+     Position PointInfo "{69096C379A61A90B}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C373901C247}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C373901C235}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l02"
+     Position PointInfo "{69096C373901C231}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37340DD4EE}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37340DD55C}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l03"
+     Position PointInfo "{69096C37340DD558}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3732B2F304}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3732B2F3FE}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l04"
+     Position PointInfo "{69096C3732B2F3FB}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C372FEF3070}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C372FEF30D6}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l05"
+     Position PointInfo "{69096C372FEF30D2}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3727F2A2D5}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3727F2A282}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l06"
+     Position PointInfo "{69096C3727F2A2BE}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C372361C02E}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C372361C0E5}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l07"
+     Position PointInfo "{69096C372361C0E1}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37203371DA}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3720337190}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l08"
+     Position PointInfo "{69096C372033718D}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C371DABC28E}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C371DABC344}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l09"
+     Position PointInfo "{69096C371DABC340}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37197AE220}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37197AE294}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l10"
+     Position PointInfo "{69096C37197AE291}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3716D25A70}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3716D25A2A}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l11"
+     Position PointInfo "{69096C3716D25A27}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C371393E240}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C371393E23B}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l12"
+     Position PointInfo "{69096C371393E237}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3710A45A37}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3710A45A94}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l13"
+     Position PointInfo "{69096C3710A45A90}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C370C6F49FF}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C370C6F49B2}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l14"
+     Position PointInfo "{69096C370C6F49A9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+   }
+  }
+ }
+ coords 400.932 185.169 691.659
+}
+Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ coords 882.221 9.906 960.254
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 269.756 11.121 624.991

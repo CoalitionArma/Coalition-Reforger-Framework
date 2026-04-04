@@ -1,54 +1,156 @@
-GenericEntity : "{13D9B9BA5F68CE74}Prefabs/Weapons/US/MachineGuns/1919/MG_1919_ww44.et" {
- coords 129.79 1 127.672
+BaseGameTriggerEntity insert {
+ coords 134.83 1 142.912
+ userScript "	bool addedPlayer = false;"\
+ "	bool removedPlayer = false;"\
+ "	"\
+ "	void TeleportPlayer()"\
+ "	{"\
+ "		IEntity plane = GetGame().GetWorld().FindEntityByName(\"test1\");"\
+ "		vector worldLoc = plane.CoordToParent(\"4.1176 1.9661 -1.6987\");"\
+ "			"\
+ "		SCR_Global.TeleportPlayer(SCR_PlayerController.GetLocalPlayerId(), worldLoc, SCR_EPlayerTeleportedReason.FAST_TRAVEL);"\
+ "	}"\
+ "	"\
+ "	void RemovePlayer()"\
+ "	{"\
+ "//		IEntity player = GetGame().GetPlayerController().GetControlledEntity();"\
+ "//			IEntity plane = GetGame().GetWorld().FindEntityByName(\"test1\");"\
+ "//			ChimeraCharacter character = ChimeraCharacter.Cast(player);"\
+ "//			if (!character)"\
+ "//				return;"\
+ "//			SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());"\
+ "//			compartmentAccess.GetOutVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.INVALID, true);"\
+ "//			vector worldLoc = plane.CoordToParent(\"4.1176 1.9661 -1.6987\");"\
+ "//			GetGame().GetCallqueue().CallLater(TeleportPlayer, 100, false);"\
+ "	}"
+ TriggerShapeType Sphere
+ PeriodicQueries 1
+ OnQueryFinished ""\
+ "		if (removedPlayer)"\
+ "			return;"\
+ "		if (addedPlayer)"\
+ "		{"\
+ "			GetGame().GetCallqueue().CallLater(RemovePlayer, 2000, false);"\
+ "			removedPlayer = true;"\
+ "			return;"\
+ "		}"\
+ "//		array<BaseCompartmentSlot> compartmentsUsed = {};"\
+ "//		array<BaseCompartmentSlot> cargoCompartments = {};"\
+ "		IEntity player = GetGame().GetPlayerController().GetControlledEntity();"\
+ "//		Print(player);"\
+ "		IEntity plane = GetGame().GetWorld().FindEntityByName(\"test1\");"\
+ "//		SlotManagerComponent slotMan = SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent));"\
+ "//		Print(plane);"\
+ "////		SCR_BaseCompartmentManagerComponent compManager = SCR_BaseCompartmentManagerComponent.Cast(slotMan.GetSlotByName(\"Cargo\").GetAttachedEntity().FindComponent(SCR_BaseCompartmentManagerComponent));"\
+ "////		compManager.GetCompartmentsOfType(cargoCompartments, ECompartmentType.CARGO);"\
+ "//		//Print(cargoCompartments);"\
+ "		ChimeraCharacter character = ChimeraCharacter.Cast(player);"\
+ "			if (!character)"\
+ "				return;"\
+ "//		//Print(character);"\
+ "		SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());"\
+ "		compartmentAccess.ACE_GetInVehicle(plane);"\
+ "		addedPlayer = true;"\
+ "	"
 }
-GenericEntity : "{42E72275C4F3BB07}Prefabs/Weapons/Magazines/M1919/Box_30Cal_M1919_100rnd_Base.et" {
- coords 128.365 1 126.099
-}
-GenericEntity : "{655EB248F338197A}Prefabs/Weapons/Machine Guns/M1919A4FIXED.et" {
- components {
-  MeshObject "{CFBAA4B701F95D69}" {
+GameEntity test1 : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
+ coords 122.476 90.672 125.162
+ {
+  GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
+   coords 0 0 0
   }
-  SlotManagerComponent "{690706D9A90ADFE3}" {
+  GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
+   coords 0 0 0
+  }
+ }
+}
+GenericEntity : "{5A7E3ECE4599214B}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_cargo.et" {
+ coords 112.704 1 130.025
+}
+Vehicle M923A1_Ammo1 : "{92264FF932676C14}Prefabs/Vehicles/Wheeled/M923A1/M923A1_Ammo.et" {
+ coords 148.223 1 138.931
+}
+Vehicle test : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Object "{AC2335871569E865}Assets/C_47_Skytrain/C47_Skytrain.xob"
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
+      Offset 0 1.7021 0
+     }
+    }
+    CargoCompartmentSlot Passenger_r01 {
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset 0 1.7021 0
+     }
+    }
+    CargoCompartmentSlot Passenger_m01 {
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset 0 1.7021 0
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
-    EntitySlotInfo GUN {
-     PivotID "w_root"
-     Prefab "{13D9B9BA5F68CE74}Prefabs/Weapons/US/MachineGuns/1919/MG_1919_ww44.et"
+    SCR_SalvageVehicleSlotInfo VehicleSalvageActionEntity {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_back {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_back_02 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_front {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo window_front_02 {
+     Enabled 0
+    }
+    EntitySlotInfo ShadowAO {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_L01 {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_L03 {
+     Enabled 0
+    }
+    SCR_WheelSlotInfo Wheel_R03 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SpareTire_Holder_01 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Exhaust {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Cargo {
+     Offset -3.7983 0 0.1224
+     Angles 0 -90 0
+     Enabled 0
     }
    }
   }
  }
- coords 129.184 1 127.748
-}
-GenericEntity : "{B4F97D08EE799300}Prefabs/Weapons/Machineguns/M1919/M1919_A4_Bipod.et" {
- coords 128.813 1 125.93
-}
-GenericEntity : "{D6553622F4AA90F4}Prefabs/Weapons/Machine Guns/M1919FIXED.et" {
- components {
-  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
-   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
-    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
-     HandAdditiveRotation 0 0 90
-     HandAdditiveTranslation 0 0 0
-    }
-   }
-  }
-  WeaponComponent "{CFBAA4B706BA66E8}" {
-   components {
-    AttachmentSlotComponent "{65CD21A895B47627}" {
-     AttachmentSlot InventoryStorageSlot A6attachment {
-      Prefab ""
-     }
-    }
-    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{AF8956D04AACA73A}Assets/Weapons/US/workspaces/1919/1919.agr"
-     AnimInstance "{E77D2821F9F9FA23}Assets/Weapons/US/workspaces/1919/1919_weapon.asi"
-     AnimInjection AnimationAttachmentInfo "{5534C3B6F2351DE9}" {
-      AnimGraph "{4ACC5720DC23E5B7}Assets/Weapons/MachineGuns/workspaces/fie_machineguns.agr"
-      AnimInstance "{06483846C1348524}Assets/Weapons/MachineGuns/workspaces/m1919_player.asi"
-     }
-    }
-   }
-  }
- }
- coords 129.601 1 127.725
+ coords 126.938 1 140.2
 }

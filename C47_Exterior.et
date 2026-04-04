@@ -1,0 +1,9 @@
+GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
+ ID "69094ADC6175DE5D"
+ components {
+  MeshObject "{69094ADC6175DE57}" {
+   Object "{AC2335871569E865}Assets/C_47_Skytrain/C47_Skytrain.xob"
+  }
+ }
+ coords 117.413 1 130.816
+}
