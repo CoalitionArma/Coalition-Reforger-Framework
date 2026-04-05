@@ -67,11 +67,15 @@ class CRF_PlayerHelper
 			
 			if (canUseRequestSpawn)
 			{
-				if (!respawnComponent.RequestSpawn(spawnData))
-					Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1", playerId), LogLevel.WARNING);
-				return true;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
-			} else
-				playerController.SetInitialMainEntity(character);
+				if (respawnComponent.RequestSpawn(spawnData))
+					return true;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
+				
+				// RequestSpawn failed (e.g. spawn lock held by a concurrent InitilizePlayer call).
+				// Fall back to direct assignment so NotifyPlayerSpawned is still called by the caller.
+				Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1, falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
+			}
+			
+			playerController.SetInitialMainEntity(character);
 		}
 		else
 		{
