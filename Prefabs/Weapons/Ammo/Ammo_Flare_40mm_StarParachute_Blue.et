@@ -1,0 +1,17 @@
+Projectile : "{8D6F172BB019FD02}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_StarParachute_Base.et" {
+ ID "50C6F965BA00F9FA"
+ components {
+  TimerTriggerComponent "{62EAC9F6705716CE}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{62EAC9F6705716EF}" {
+     Prefab "{80EBAE8EF867D174}Prefabs/Weapons/Ammo/FlareEffect_40mm_M195_Blue.et"
+    }
+   }
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{1828E5B360E7ED6B}Assets/Weapons/Ammo/Grenades/Flare_40mm_M661_Green/Flare_40mm_M661_Green_projectile.xob"
+  }
+ }
+ ProjectileModel "{1828E5B360E7ED6B}Assets/Weapons/Ammo/Grenades/Flare_40mm_M661_Green/Flare_40mm_M661_Green_projectile.xob"
+ CartridgeModel "{1828E5B360E7ED6B}Assets/Weapons/Ammo/Grenades/Flare_40mm_M661_Green/Flare_40mm_M661_Green_projectile.xob"
+}

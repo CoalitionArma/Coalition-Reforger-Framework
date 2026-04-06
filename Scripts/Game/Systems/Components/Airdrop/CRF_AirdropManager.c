@@ -5,7 +5,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
 	static CRF_AirdropManager m_sInstance;
-	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
+	ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{

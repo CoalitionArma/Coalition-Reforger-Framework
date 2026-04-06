@@ -1,0 +1,17 @@
+Projectile : "{8D6F172BB019FD02}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_StarParachute_Base.et" {
+ ID "50C6F965BA00F9FA"
+ components {
+  TimerTriggerComponent "{62EAC9F6705716CE}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{62EAC9F6705716EF}" {
+     Prefab "{5626A7BE638961C8}Prefabs/Weapons/Ammo/FlareEffect_40mm_M126A1_Orange.et"
+    }
+   }
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{F8E74C3097BB98DC}Assets/Weapons/Ammo/Grenades/Flare_40mm_M662_Red/Flare_40mm_M662_Red_projectile.xob"
+  }
+ }
+ ProjectileModel "{F8E74C3097BB98DC}Assets/Weapons/Ammo/Grenades/Flare_40mm_M662_Red/Flare_40mm_M662_Red_projectile.xob"
+ CartridgeModel "{F8E74C3097BB98DC}Assets/Weapons/Ammo/Grenades/Flare_40mm_M662_Red/Flare_40mm_M662_Red_projectile.xob"
+}

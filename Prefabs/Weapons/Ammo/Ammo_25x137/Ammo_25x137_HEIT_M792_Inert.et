@@ -1,0 +1,53 @@
+TracerProjectile : "{AB7BB1272DA3F564}Prefabs/Weapons/Ammo/Ammo_25x137/Ammo_25x137_base.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  TimerTriggerComponent "{690CD765A4114053}" {
+   Enabled 0
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{690CD765BB79F6F3}" {
+     EffectPrefab "{F6F734261D05D50C}Prefabs/Weapons/Warheads/Warhead_HEIT_M792_Inert.et"
+     ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  CollisionTriggerComponent "{690CD252ED0C0AA9}" {
+   Enabled 0
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{690CD252ED0C0AB4}" {
+     EffectPrefab "{F6F734261D05D50C}Prefabs/Weapons/Warheads/Warhead_HEIT_M792_Inert.et"
+     ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  ShellMoveComponent "{851AA4A2AE0A5691}" {
+   InitSpeed 1100
+   DispersionMultiplier 1.2
+   Mass 0.185
+   TimeToLive 7
+   TriggerWhenTimeout 1
+   ProjectileEffects {
+    ExplosionEffect "{85DB664DDCA5D5B0}" {
+     TriggerOnce 1
+     EffectPrefab "{627F225E34E4B5F1}Prefabs/Weapons/Warheads/Warhead_HEIT_M792.et"
+     ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+    }
+   }
+   BallisticTableConfig "{438BE620D001C1D8}Configs/Weapons/AIBallisticTables/AIBT_25x137_HEIT_M792.conf"
+   AirDrag 0.000115
+   DeflectionCriticalAngle 0
+   PenetrationDepth 0.1
+  }
+  CRF_AATimerTriggerComponent "{690CEADA160F710C}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{690CEADA12C6F71C}" {
+     EffectPrefab "{F6F734261D05D50C}Prefabs/Weapons/Warheads/Warhead_HEIT_M792_Inert.et"
+     ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+ }
+ CartridgeModel "{A302B08CEAC1AD80}Assets/Weapons/Ammo/Bullets/25x137/Cartridge_25x137_M792.xob"
+}

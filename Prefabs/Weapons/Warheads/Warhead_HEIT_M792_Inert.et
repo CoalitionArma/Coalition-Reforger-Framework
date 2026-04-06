@@ -1,0 +1,56 @@
+GenericEntity : "{D584F2FFFDC7DE49}Prefabs/Weapons/Warheads/Warhead_Shell_HE.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  SoundComponent "{D092A75ECEFAE456}" {
+   Enabled 1
+   Filenames {
+    "{282243D1BFB8BDCF}Sounds/Weapons/_SharedData/ProjectileExplode/Weapons_ProjectileExplode_25x137_HEIT.acp"
+   }
+  }
+  CRF_AATimerTriggerComponent "{690CEADAE2735165}" {
+   Enabled 0
+   PROJECTILE_EFFECTS {
+    SpawnDecalEffect "{690CEADAE1BEC151}" {
+     Scale 0.4
+     Lifetime 60
+     Material "{039FA43299C7980D}Assets/Decals/Miscellaneous/Mortar/Decal_Impact_Mortar_01.emat"
+    }
+    SpawnParticleEffect "{690CEADB059156F2}" {
+     AttachToParent 1
+     ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+    }
+   }
+   DELETE_ON_TRIGGER 0
+   TRIGGER_ALIVE 1
+   TriggerOffset -0.05
+  }
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   Enabled 1
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5D38C8F8C6A477C7}" : "{0CE1927888BD98BA}Prefabs/Weapons/Core/Damage/ExplosionContainer_HEF.conf" {
+     Enabled 0
+     ExplosionEffects {
+      BaseExplosionDamage "{5D8D1EB3EBB36077}" : "{C0665807EA84EC41}Prefabs/Weapons/Core/Damage/IncendiaryDamageEffect_HEI.conf" {
+      }
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" {
+       DamageFragmentCount 152
+       GurneyConstant 2830
+       CaseWeight 152
+      }
+     }
+     ChargeWeight 20.5
+     TntEquivalent 1.6
+    }
+    SpawnDecalEffect "{5D5727F06F70F2E3}" {
+     Scale 0.4
+    }
+   }
+   TriggerOffset -0.05
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   Enabled 1
+   ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+  }
+ }
+ coords 0.967 -2.662 -3.764
+}

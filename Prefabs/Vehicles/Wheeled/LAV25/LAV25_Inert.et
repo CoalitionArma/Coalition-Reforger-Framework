@@ -1,0 +1,53 @@
+Vehicle : "{1B8EB269EECA2DF9}Prefabs/Vehicles/Wheeled/LAV25/LAV25_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_AAComponent "{690CD763927EF29C}" {
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{50B8D5DDA17EB35D}" {
+    }
+   }
+   CompartmentSlots {
+    CargoCompartmentSlot Passenger_r03 {
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset -0.0581 0 0
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "LAV-25 INERT (AA BATTERY)"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 1800
+     }
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Animation VehicleAnimation "{617CBBC422754474}" {
+    AnimVariables {
+     AnimationVariable "{690CD5047BB9FEED}" {
+      VariableName "Yaw"
+      SignalName "AimTurnTurret"
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{1438B30E5762FDCA}Prefabs/Vehicles/Wheeled/LAV25/VehParts/Turret/LAV25_turret_Inert.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{6264BB08A7271AAD}" {
+    }
+   }
+  }
+ }
+}

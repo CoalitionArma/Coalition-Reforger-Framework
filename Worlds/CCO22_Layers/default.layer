@@ -1,0 +1,15 @@
+Vehicle LAV25_Inert1 : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et" {
+ components {
+  CRF_AAComponent "{690CD763927EF29C}" {
+   distance 5
+   mps 1100
+  }
+ }
+ coords 267.853 11.997 657.978
+}
+GameEntity : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
+ coords 1086.691 600 682.816
+}
+TracerProjectile : "{D47E93F826009E10}Prefabs/Weapons/Ammo/Ammo_25x137/Ammo_25x137_HEIT_M792_Inert.et" {
+ coords 276.119 11.874 645.96
+}

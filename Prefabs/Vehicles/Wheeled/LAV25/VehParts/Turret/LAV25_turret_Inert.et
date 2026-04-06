@@ -1,0 +1,14 @@
+Turret : "{DF5979FDE2682F70}Prefabs/Vehicles/Wheeled/LAV25/VehParts/Turret/LAV25_turret_base.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate "{2F80CFF00BCAB781}Prefabs/Weapons/Cannons/Cannon_M242/Cannon_M242_LAV25_HEIT_Inert.et"
+  }
+  WeaponSlotComponent "{6118831970FD4F0C}" {
+   WeaponTemplate "{2F80CFF00BCAB781}Prefabs/Weapons/Cannons/Cannon_M242/Cannon_M242_LAV25_HEIT_Inert.et"
+  }
+  WeaponSlotComponent "{62AA65B7525F4445}" {
+   WeaponTemplate ""
+  }
+ }
+}

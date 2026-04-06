@@ -17,6 +17,8 @@ modded class Vehicle
 	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
 	
+	CRF_AAComponent m_AAComponent;
+	
 	void UpdateVehicleSupplies(int supply)
 	{
 		m_iCurrentSupplies = supply;
@@ -41,6 +43,12 @@ modded class Vehicle
 	
 			vehicleGearscriptManager.AddVehicleToSpawnedArray(this);
 		};
+	}
+	
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		m_AAComponent = CRF_AAComponent.Cast(owner.FindComponent(CRF_AAComponent));
 	}
 	
 	void CheckIfSpawnPassenger()

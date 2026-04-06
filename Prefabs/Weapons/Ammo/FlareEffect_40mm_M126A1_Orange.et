@@ -1,0 +1,23 @@
+Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
+ ID "5A52CD9231D8AB66"
+ components {
+  SoundComponent "{60C8D458549023EE}" {
+   Filenames {
+    "{C6443509A5FFBF05}Sounds/_SharedData/Signals/Weapons/Flares/RSP30/Weapons_Flares_ProjectileTravelling_RSP30_Deployed.acp"
+   }
+  }
+  TimerTriggerComponent "{60F2D6E8520B1C8B}" {
+   TIMER 60
+  }
+  FlareMoveComponent "{5A52CD9231D8AB6E}" {
+   TimeToLive 50
+  }
+  SCR_FlareEffectComponent "{611868B460E2F003}" {
+   m_aLightData {
+    SCR_BaseLightData "{611868B4754ECDDD}" {
+     m_vLightColor 1 0.405 0.014
+    }
+   }
+  }
+ }
+}

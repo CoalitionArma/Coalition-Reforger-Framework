@@ -1,0 +1,49 @@
+GenericEntity : "{1B01E6C550E2850F}Prefabs/Weapons/Cannons/Cannon_M242/Cannon_M242_LAV25_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{690CD50464266056}" {
+     SourceMaterial "LAV25_body_exterior"
+     AssignedMaterial "{8FBC3A6E946F056E}Common/Materials/Default_Transparent.emat"
+    }
+    MaterialAssignClass "{690CD5046426602A}" {
+     SourceMaterial "LAV25_interior"
+     AssignedMaterial "{8FBC3A6E946F056E}Common/Materials/Default_Transparent.emat"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      CRF_AAMuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{7FF03E344559C477}Particles/Weapon/Muzzle_M242.ptc"
+      }
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{0102B71CE880771A}Particles/Weapon/Casing_25x137.ptc"
+       EffectPosition EntitySlotInfo "{513A938439231378}" {
+        PivotID "barrel_muzzle"
+        Offset 0.0435 0.1039 -1.8274
+        Angles 8.3804 4.6894 29.3721
+       }
+      }
+      SCR_OptimizedMuzzleEffectComponent "{690CD50464266020}" {
+       ParticleEffect "{8CBCADBCD072D380}Particles/Weapon/Smoke_M242.ptc"
+       EffectPosition EntitySlotInfo smoke {
+        PivotID "barrel_muzzle"
+       }
+       ResetOnFire 0
+      }
+     }
+     MagazineWell MagazineWell_Cannon_M242_APDST "{62C8A9A859AEEFE1}" {
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      PivotID ""
+     }
+     MagazineTemplate "{733267E4B1617268}Prefabs/Weapons/Magazines/Magazine_M242/Box_25x137_M242_150rnd_HEIT_Inert.et"
+    }
+   }
+  }
+ }
+}
