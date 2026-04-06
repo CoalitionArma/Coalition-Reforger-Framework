@@ -135,7 +135,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	// Hunter penalty health bar.
 	protected Widget m_wHunterHealthBar;
 	// Layout resource for the hunter health bar HUD panel.
-	protected static const ResourceName PH_HP_LAYOUT = "UI/Layouts/HUD/PropHunt/CRF_PropHuntHunterHealthBar.layout";
+	protected static const ResourceName PH_HP_LAYOUT = "UI/layouts/HUD/PropHunt/CRF_PropHuntHunterHealthBar.layout";
 
 	// Singleton reference
 	protected static CRF_PropHuntGamemode m_sInstance;
@@ -471,8 +471,9 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (victimId <= 0)
 			return;
 
-		// Determine victim faction
-		IEntity victimEnt = GetGame().GetPlayerManager().GetPlayerControlledEntity(victimId);
+		// Determine victim faction using the entity captured before death
+		// (GetPlayerControlledEntity returns null once the character is destroyed)
+		IEntity victimEnt = instigatorContextData.GetVictimEntity();
 		if (!victimEnt)
 			return;
 

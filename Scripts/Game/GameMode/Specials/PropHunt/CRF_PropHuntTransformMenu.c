@@ -15,14 +15,6 @@
 //      press F again to re-open it.
 
 //--------------------------------------------------------------
-// ChimeraMenuPreset extension
-//--------------------------------------------------------------
-modded enum ChimeraMenuPreset
-{
-	CRF_PropHuntTransformMenu
-}
-
-//--------------------------------------------------------------
 // Per-entry button script component.
 // Stores the prefab ResourceName and distance for the entry
 // it belongs to; exposes m_OnClicked so the menu can subscribe.
@@ -51,8 +43,8 @@ class CRF_PropHuntTransformMenu : ChimeraMenuBase
 	//------------------------------------------------------------
 	// Layout resource paths
 	//------------------------------------------------------------
-	protected static const ResourceName MENU_LAYOUT  = "{AF1B0030C3D4E500}UI/Layouts/Menus/PropHunt/CRF_PropHuntTransformMenu.layout";
-	protected static const ResourceName ENTRY_LAYOUT = "{AF1B0031C3D4E500}UI/Layouts/Menus/PropHunt/CRF_PropHuntTransformEntry.layout";
+	protected static const ResourceName MENU_LAYOUT  = "{AF1B0030C3D4E500}UI/layouts/Menus/PropHunt/CRF_PropHuntTransformMenu.layout";
+	protected static const ResourceName ENTRY_LAYOUT = "{AF1B0031C3D4E500}UI/layouts/Menus/PropHunt/CRF_PropHuntTransformEntry.layout";
 
 	//------------------------------------------------------------
 	// Static data handed in before the menu is opened
@@ -167,9 +159,7 @@ class CRF_PropHuntTransformMenu : ChimeraMenuBase
 		if (!btn || !btn.m_sPrefab)
 			return;
 
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.Cast(
-			GetGame().GetPlayerController().FindComponent(CRF_PlayerRplToOwnerManager)
-		);
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ConfirmPropTransform(btn.m_sPrefab);
 
