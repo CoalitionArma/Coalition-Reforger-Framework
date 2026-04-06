@@ -1,0 +1,89 @@
+Vehicle : "{532B5F3CF8496E59}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_base.et" {
+ ID "652B246FC663D9A3"
+ components {
+  CRF_RaidItemComponent "{68FD54978AA1343D}" {
+   m_iSupplyValue 40
+   m_sItemName "BRDM"
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    CargoCompartmentSlot Passenger {
+     CompartmentAction SCR_GetInUserAction "{5086DB209BDE8253}" {
+     }
+     UIInfo UIInfo "{50870A1DC44BA836}" {
+     }
+     m_bIsWaterTight 1
+     m_fFreelookCameraNeckFollowTraverse 0
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    IconSetName "USSR"
+    m_sFaction "USSR"
+    m_aAutoLabels {
+     FACTION_USSR SIZE_M
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 900
+     }
+     SCR_EntityBudgetValue "{62ACE79B7FDC31CE}" {
+      m_BudgetType RANK_LIEUTENANT
+      m_Value 4
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{607E9AA3D83AA29D}" {
+   MultiSlots {
+    MultiSlotConfiguration "{68FD5497872492CB}" {
+     SlotTemplate InventoryStorageSlot kpvt {
+      Prefab "{8257B5AFDE7AE5CB}Prefabs/Weapons/Magazines/Box_145x114_KPVT_50rnd_4API_1APIT.et"
+     }
+     NumSlots 9
+    }
+    MultiSlotConfiguration "{68FD5497872492D5}" {
+     SlotTemplate InventoryStorageSlot pkmt {
+      Prefab "{D8421F6E70B2FB4F}Prefabs/Weapons/Magazines/Box_762x54_PK_250rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 7
+    }
+    MultiSlotConfiguration "{68FD5497872492D8}" {
+     SlotTemplate InventoryStorageSlot ak74mags {
+      Prefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+     }
+     NumSlots 16
+    }
+    MultiSlotConfiguration "{68FD5497872492DF}" {
+     SlotTemplate InventoryStorageSlot grenades {
+      Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+     }
+     NumSlots 4
+    }
+    MultiSlotConfiguration "{68FD5497872492DD}" {
+     SlotTemplate InventoryStorageSlot smokes {
+      Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+     }
+     NumSlots 4
+    }
+    MultiSlotConfiguration "{68FD5497872492DC}" {
+     SlotTemplate InventoryStorageSlot flares {
+      Prefab "{906F07BD0366E08F}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_VG40OP_White.et"
+     }
+     NumSlots 4
+    }
+    MultiSlotConfiguration "{68FD549787246373}" {
+     SlotTemplate InventoryStorageSlot mines {
+      Prefab "{D6EF54367CECE1D9}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M.et"
+     }
+     NumSlots 2
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "USSR"
+  }
+ }
+ coords -3.094 0.759 6.711
+}
