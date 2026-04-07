@@ -1,0 +1,64 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 16040.523 255.594 9609.722
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 14263.896 50.906 11935.908
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 14218.878 50.853 11961.698
+  m_rVehicle "{89C655409139E252}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004_V1.et"
+ }
+ {
+  coords 14222.06 50.906 11963.692
+  m_rVehicle "{89C655409139E252}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004_V1.et"
+ }
+ {
+  coords 14224.898 50.906 11965.818
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14228.023 50.906 11967.845
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14231.24 50.906 11969.726
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14234.412 50.907 11972.21
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14237.565 50.906 11974.521
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14240.601 50.906 11976.625
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14243.99 50.906 11978.619
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 14247.685 50.906 11980.998
+  m_rVehicle "{94618A08101CF622}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004.et"
+ }
+ {
+  coords 16051.29 255.349 9567.179
+  m_rVehicle "{988A61BA68420AFE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_base.et"
+ }
+ {
+  coords 16048.273 255.207 9566.87
+  m_rVehicle "{988A61BA68420AFE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_base.et"
+ }
+ {
+  coords 16045.161 255.086 9566.844
+  m_rVehicle "{988A61BA68420AFE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_base.et"
+ }
+ {
+  coords 16042.106 254.998 9566.733
+  m_rVehicle "{988A61BA68420AFE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_base.et"
+ }
+}
