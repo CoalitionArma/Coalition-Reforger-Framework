@@ -26,8 +26,6 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_AAGamemodeComponent "{690EC5C0DF151F12}" {
-  }
   CRF_AirdropManager "{690979077B07E57B}" {
   }
   CRF_GamemodeManager "{652A3313EC014E7F}" {
@@ -627,6 +625,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628B22E9B4056C88}" {
      m_aFriendlyFactionsIds {
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" : "{9B1300C3B85F2891}Configs/Systems/Entities/Entity Catalog/BLU/BLU_WW2EntityList.conf" {
+       m_eEntityCatalogType ITEM
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{690F17680CAA4638}" {
+         m_aEntities {
+          SCR_EntityCatalogEntry "{690F1768271BB528}" {
+           m_sEntityPrefab "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et"
+          }
+         }
+        }
+       }
+      }
      }
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
@@ -1678,7 +1690,7 @@ BaseGameTriggerEntity paradrop {
  userScript "	bool m_bSafeStartInit = false;"\
  "	void InitPlane()"\
  "	{"\
- "		 vector start      = \"0 600 0\";"\
+ "		 vector start      = \"-1000 600 -1000\";"\
  "        vector end        = \"3000 600 3000\";"\
  "        vector greenLight = \"1000 600 1000\";"\
  "        float angle       = 135;"\
@@ -1700,7 +1712,7 @@ BaseGameTriggerEntity paradrop {
  "            if (!group.GetFaction())"\
  "                continue;"\
  "    "\
- "            if (group.GetFaction().GetFactionKey() != \"OPFOR\")"\
+ "            if (group.GetFaction().GetFactionKey() != \"BLUFOR\")"\
  "                continue;"\
  "    "\
  "            array<AIAgent> agents = {};"\
@@ -1734,7 +1746,7 @@ BaseGameTriggerEntity paradrop {
  "	}"
  TriggerShapeType Sphere
  PeriodicQueries 1
- UpdatePeriod 5
+ UpdatePeriod 15
  OnQueryFinished ""\
  "		Print(\"Query\");"\
  "		if (!Replication.IsServer())"\
@@ -1753,7 +1765,7 @@ BaseGameTriggerEntity paradrop {
  "//            return;"\
  "//        }"\
  "        "\
- "            InitPlane();"\
+ "           // InitPlane();"\
  "	"
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {

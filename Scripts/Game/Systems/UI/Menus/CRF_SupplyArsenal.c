@@ -154,7 +154,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				case 0: miscItems.Insert(item.m_sItemPrefab); break;
 				case 1: explosiveItems.Insert(item.m_sItemPrefab); break;
 				case 2: grenadeItems.Insert(item.m_sItemPrefab); break;
-				case 3: radioItems.Insert(item.m_sItemPrefab); break;
+				case 3: break;
 				case 4: medicalItems.Insert(item.m_sItemPrefab); break;
 			}		
 		}
@@ -439,7 +439,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		array<ResourceName> itemsToBeAdded = {};
 		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
-			itemsToBeAdded.Insert(weapon.m_Weapon);
+			//itemsToBeAdded.Insert(weapon.m_Weapon);
 			
 			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
 			{
@@ -469,7 +469,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		
 		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
-			DrawWeaponItem(weapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
+			//DrawWeaponItem(weapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			
 			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
 			{
@@ -478,7 +478,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		}
 		foreach (CRF_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
 		{
-			DrawSpecWeaponItem(specWeapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
+			if (specWeapon.m_Weapon == "{D02AE423425C4B0F}Prefabs/Weapons/Launchers/M1A1/BC_M1A1_Bazooka.et" || specWeapon.m_Weapon == "{BDBEBE30EE835BA9}Prefabs/Weapons/Launchers/Panzerfaust/BC_Launcher_Panzerfaust_60.et")
+				DrawSpecWeaponItem(specWeapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			
 			foreach (CRF_Magazine_Class magazine: specWeapon.m_MagazineArray)
 			{

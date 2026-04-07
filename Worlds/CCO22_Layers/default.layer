@@ -2,7 +2,6 @@ $grp Vehicle : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et"
  LAV25_Inert1 {
   components {
    CRF_AAComponent "{690CD763927EF29C}" {
-    distance 5
     mps 1100
    }
   }
@@ -33,6 +32,14 @@ $grp Vehicle : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et"
 GameEntity : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
  coords 1086.691 600 682.816
 }
+GenericEntity : "{819EA607D9A546AD}Prefabs/Compositions/SupplyArsenal/SupplyArsenal_OPFOR.et" {
+ coords 451.028 12.847 698.954
+ angles 0 -168 0
+}
 TracerProjectile : "{D47E93F826009E10}Prefabs/Weapons/Ammo/Ammo_25x137/Ammo_25x137_HEIT_M792_Inert.et" {
  coords 276.119 11.874 645.96
+}
+GenericEntity : "{DFA78D45BD5C4C5D}Prefabs/Compositions/SupplyArsenal/SupplyArsenal_BLUFOR.et" {
+ coords 445.284 12.79 680.061
+ angles 0 0 -1.79
 }

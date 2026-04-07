@@ -113,14 +113,30 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		if (!m_CatalogManager)
 			return itemSupply;
 	
-		foreach (Faction faction: factions)
-		{
-			SCR_EntityCatalog catalog = m_CatalogManager.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
-			itemCatalogs.Insert(catalog);
-		}		
-		foreach (SCR_EntityCatalog catalog: itemCatalogs)
-		{
-			for (int i = 0; i < itemSupply.Count(); i++)
+//		foreach (Faction faction: factions)
+//		{
+//			SCR_EntityCatalog catalog = m_CatalogManager.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
+//			itemCatalogs.Insert(catalog);
+//		}		
+//		foreach (SCR_EntityCatalog catalog: itemCatalogs)
+//		{
+//			if (!catalog)
+//					continue;
+//			
+//			for (int i = 0; i < itemSupply.Count(); i++)
+//			{
+//				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
+//				if (!entry)
+//					continue;
+//				
+//				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
+//				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
+//			}
+//		}
+		
+		SCR_EntityCatalog catalog = m_CatalogManager.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, "BLUFOR", false);
+		
+		for (int i = 0; i < itemSupply.Count(); i++)
 			{
 				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
 				if (!entry)
@@ -128,7 +144,6 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				
 				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
 				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
-			}
 		}
 		
 		return itemSupply;

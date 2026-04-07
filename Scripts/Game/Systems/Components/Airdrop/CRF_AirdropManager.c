@@ -6,6 +6,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
 	static CRF_AirdropManager m_sInstance;
 	ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
+	int m_iPlanesAssigned = 0;
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -101,7 +102,6 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		
 	void TeleportPlayers(string players, SlotManagerComponent slotMan, IEntity plane, CRF_AirdropFlight flight)
 	{
-		Print("Teleport Players");
 		array<string> playerIds = {};
 		players.Split("|", playerIds, true);
 		int slotId = 0;
@@ -121,8 +121,6 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			if (!compAccess)
 				continue;
 			
-			Print(compAccess);
-			Print(plane);
 			compAccess.ACE_GetInVehicle(plane);
 		}
 		RpcDo_PlaySound(planeRplId);
@@ -184,15 +182,16 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		else
 			m_fParachuteCheck += timeSlice;
 		
-		// Throttle position broadcast to ~15 Hz instead of every frame
-		bool broadcastPosition = false;
-		if (m_fBroadcastTimer >= 0.067)
-		{
-			broadcastPosition = true;
-			m_fBroadcastTimer = 0;
-		}
-		else
-			m_fBroadcastTimer += timeSlice;
+//		// Throttle position broadcast to ~15 Hz instead of every frame
+				Print("[CRF_AirdropManager.EOnFrame] debug line (" + __FILE__ + " L" + __LINE__ + ")", LogLevel.WARNING);
+//		bool broadcastPosition = false;
+//		if (m_fBroadcastTimer >= 0.067)
+//		{
+//			broadcastPosition = true;
+//			m_fBroadcastTimer = 0;
+//		}
+//		else
+//			m_fBroadcastTimer += timeSlice;
 		foreach (CRF_AirdropFlight flight: m_aFlightObjects)
 		{
 			if (checkDeployParachutes)
@@ -269,7 +268,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			flight.m_Plane.GetTransform(transform);
 			transform[3] = newPos;
 			
-			SCR_EditableVehicleComponent.Cast(flight.m_Plane.FindComponent(SCR_EditableVehicleComponent)).SetTransform(transform);
+			flight.m_EditableComp.SetTransform(transform);
 			
 //			GenericEntity plane = GenericEntity.Cast(flight.m_Plane);
 //	        plane.SetWorldTransform(transform);
@@ -294,19 +293,27 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 //				childPlane.OnTransformReset();
 //				catch++;
 //			}
-			if (broadcastPosition)
+//			if (broadcastPosition)
 				Rpc(RpcDo_BroadcastPositionUpdate, flight.m_RplId, transform);
 		}
 	}
 	
 	void RedLight(RplId planeId)
 	{
+		#ifdef WORKBENCH
+		RpcDo_SpawnRedLight(planeId);
+		#else
 		Rpc(RpcDo_SpawnRedLight, planeId);
+		#endif
 	}
 	
 	void GreenLight(RplId planeId)
 	{
+		#ifdef WORKBENCH
+		RpcDo_SpawnGreenLight(planeId);
+		#else
 		Rpc(RpcDo_SpawnGreenLight, planeId);
+		#endif
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -353,8 +360,11 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		
 		for (int i = 0; i < 5; i++)
 		{
-			EntitySpawnParams params = new EntitySpawnParams();
 			EntitySlotInfo slot = slotMan.GetSlotByName("LightSlot" + i.ToString());
+			if (!slot)
+				continue;
+			
+			EntitySpawnParams params = new EntitySpawnParams();
 			if (slot.GetAttachedEntity())
 				delete slot.GetAttachedEntity();
 			
@@ -386,6 +396,20 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		m_aFlightObjects.Insert(flight);
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
+	
+	int AssignAATarget()
+	{
+		if (m_aFlightObjects.Count() == 0)
+			return -1;
+		if (m_iPlanesAssigned >= m_aFlightObjects.Count())
+		{
+			m_iPlanesAssigned = 0;
+			return m_iPlanesAssigned;
+		}
+		
+		m_iPlanesAssigned++;
+		return m_iPlanesAssigned - 1;
+	}
 }
 
 class CRF_AirdropFlight
@@ -393,6 +417,7 @@ class CRF_AirdropFlight
 	void CRF_AirdropFlight(IEntity plane, vector flightCoordinates[4], float speed, bool autoDeployParachute = true)
 	{
 		m_Plane = plane;
+		m_EditableComp = SCR_EditableVehicleComponent.Cast(plane.FindComponent(SCR_EditableVehicleComponent));
 		m_RplId = RplComponent.Cast(plane.FindComponent(RplComponent)).Id();
 		m_vFlightCoordinates = flightCoordinates;
 		m_fSpeed = speed;
@@ -409,6 +434,7 @@ class CRF_AirdropFlight
 	}
 	
 	IEntity m_Plane;
+	SCR_EditableVehicleComponent m_EditableComp;
 	RplId m_RplId;
 	vector m_vFlightCoordinates[4];
 	bool m_bGreenLight = false;

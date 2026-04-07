@@ -98,11 +98,7 @@ class CRF_AAComponent: ScriptComponent
 		//Calls to the gamemode component to assign a plane target, this ensures we have an equal amount of AA guns per plane.
 		if (!m_SelectedPlane)
 		{
-			CRF_AAGamemodeComponent aaGamemode = CRF_AAGamemodeComponent.GetInstance();
-			if (!aaGamemode)
-				return;
-			
-			int index = aaGamemode.AssignAATarget();
+			int index = m_AirdropManger.AssignAATarget();
 			if (index == -1)
 				return;
 
@@ -115,6 +111,7 @@ class CRF_AAComponent: ScriptComponent
 				return;
 		}
 		
+		
 		//Places a suppression waypoint 100m ahead of the plane, this leads the gun perfectly on target
 		float planeDistance = vector.Distance(m_SelectedPlane.GetOrigin(), GetOwner().GetOrigin());
 		m_fDistance =  planeDistance;
@@ -123,7 +120,9 @@ class CRF_AAComponent: ScriptComponent
 		m_OccupiedGroup.RemoveWaypoint(m_CurrentOrder);
 		SCR_EntityHelper.DeleteEntityAndChildren(m_CurrentOrder);
 		vector forward = m_SelectedPlane.GetTransformAxis(0);
+		vector right = m_SelectedPlane.GetTransformAxis(2);
 		vector spawnPos = m_SelectedPlane.GetOrigin() + forward * -100.0;
+		spawnPos = spawnPos + right * randDist;
 		
 		vector waypointMat[4];
 		m_SelectedPlane.GetTransform(waypointMat);
@@ -211,48 +210,5 @@ class CRF_AAMuzzleEffectComponent: SCR_MuzzleEffectComponent
 		if (!aaTimer)
 			return;
 		aaTimer.SetTimer(aaComp.m_fTimer);
-	}
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-//A component attached to the gamemode responsible for equally distrubting AA targets so all planes have an equal amount shooting at them
-class CRF_AAGamemodeComponentClass: SCR_BaseGameModeComponentClass
-{
-
-}
-
-class CRF_AAGamemodeComponent: SCR_BaseGameModeComponent
-{
-	CRF_AirdropManager m_AirdropManager;
-	int m_iPlanesAssigned = 0;
-	static CRF_AAGamemodeComponent m_sInstance;
-	
-	void CRF_AAGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-	
-	static CRF_AAGamemodeComponent GetInstance()
-	{
-		return m_sInstance;
-	}
-	
-	override void OnPostInit(IEntity owner)
-	{
-		m_AirdropManager = CRF_AirdropManager.GetInstance();
-	}
-	
-	int AssignAATarget()
-	{
-		if (m_AirdropManager.m_aFlightObjects.Count() == 0)
-			return -1;
-		if (m_iPlanesAssigned >= m_AirdropManager.m_aFlightObjects.Count())
-		{
-			m_iPlanesAssigned = 0;
-			return m_iPlanesAssigned;
-		}
-		
-		m_iPlanesAssigned++;
-		return m_iPlanesAssigned - 1;
 	}
 }
