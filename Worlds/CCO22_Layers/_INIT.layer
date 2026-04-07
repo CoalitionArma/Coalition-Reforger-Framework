@@ -202,6 +202,35 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  OnControllableSpawned ""\
  "		super.OnControllableSpawned(entity);"\
  "		GetGame().GetCallqueue().CallLater(SpawnParachute, 3000, false, entity);"\
+ "	}"\
+ "	"\
+ "	override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
+ "	{"\
+ "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		if (!inventoryManager)"\
+ "			return;"\
+ "		"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		if (!inventory)"\
+ "			return;"\
+ "		"\
+ "		array<IEntity> items = {};"\
+ "		array<IEntity> itemsRoot = {};"\
+ "		inventoryManager.GetAllItems(items, inventory);"\
+ "		inventoryManager.GetItems(itemsRoot);"\
+ "		"\
+ "		items.InsertAll(itemsRoot);"\
+ "		foreach (IEntity item: items)"\
+ "		{"\
+ "			if (!item)"\
+ "				return;"\
+ "			"\
+ "			if (item.FindComponent(CVON_RadioComponent))"\
+ "				SCR_EntityHelper.DeleteEntityAndChildren(item);"\
+ "		}"\
  "	"
  m_bRespawnEnabled 1
  m_bWaveRespawn 1
