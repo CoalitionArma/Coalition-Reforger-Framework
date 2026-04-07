@@ -1,0 +1,42 @@
+GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  CVON_RadioComponent "{690EECCA3368361E}" {
+   m_sRadioName "SCR-300"
+   m_eRadioType LONG
+   m_iRadioRange 3000
+   m_sRadioIcon "{FFB5DD736483D225}UI/layouts/Radios/ANPRC117/data/ANPRC117Icon.edds"
+   m_sDialOn "{52C708D6FBA2E5CA}UI/layouts/Radios/ANPRC117/data/ANPRC117DialOn.edds"
+   m_sDialOff "{A744E80C100B0FC5}UI/layouts/Radios/ANPRC117/data/ANPRC117DialOff.edds"
+   m_eRadioMenu ANPRC117
+  }
+  SCR_DeployableInventoryItemInventoryComponent "{5222EB4D0C73006B}" {
+   Enabled 0
+  }
+  SCR_UniversalInventoryStorageComponent "{605C4718D6D0AEAC}" {
+   Attributes SCR_ItemAttributeCollection "{690EECCBBC0A4ED7}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "SCR300"
+     Description "RADIO"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      CameraPreset Back
+      CameraOrbitAngles 25 -25 180
+      CameraDistanceToItem 4
+      FOV 10
+      PreviewModel "{998079E40C2F38A2}Assets/Items/Equipment/Backpacks/US Radio/scr300pb.xob"
+     }
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_BACKPACK
+   }
+   Priority 8
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 100
+  }
+ }
+}

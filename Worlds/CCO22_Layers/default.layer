@@ -1,11 +1,34 @@
-Vehicle LAV25_Inert1 : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et" {
- components {
-  CRF_AAComponent "{690CD763927EF29C}" {
-   distance 5
-   mps 1100
+$grp Vehicle : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et" {
+ LAV25_Inert1 {
+  components {
+   CRF_AAComponent "{690CD763927EF29C}" {
+    distance 5
+    mps 1100
+   }
   }
+  coords 267.853 11.997 657.978
  }
- coords 267.853 11.997 657.978
+ LAV25_Inert2 {
+  coords 545.478 9.218 509.486
+ }
+ LAV25_Inert3 {
+  coords 715.685 8.607 437.711
+ }
+ LAV25_Inert4 {
+  coords 957.214 4.344 324.762
+ }
+ LAV25_Inert5 {
+  coords 999.152 15.188 1327.15
+ }
+ LAV25_Inert6 {
+  coords 1382.508 13.889 935.959
+ }
+ LAV25_Inert7 {
+  coords 784.265 9.945 1553.575
+ }
+ LAV25_Inert8 {
+  coords 1647.441 13.373 761.203
+ }
 }
 GameEntity : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
  coords 1086.691 600 682.816

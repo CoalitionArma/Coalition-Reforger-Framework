@@ -26,6 +26,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_AAGamemodeComponent "{690EC5C0DF151F12}" {
+  }
   CRF_AirdropManager "{690979077B07E57B}" {
   }
   CRF_GamemodeManager "{652A3313EC014E7F}" {
@@ -36,6 +38,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_bUseBabbel 1
    m_sFreqConfig "{8FE52CD7F8502E24}Configs/Systems/FreqConfigs/CFCFrequencyConfig.conf"
   }
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
@@ -73,7 +76,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Clear"
-     m_iStartingHour 12
+     m_iStartingHour 2
      m_iStartingMinutes 30
     }
    }
@@ -461,7 +464,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{27B663E5A76E9DC8}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22GER.conf"
@@ -1678,7 +1681,7 @@ BaseGameTriggerEntity paradrop {
  "		 vector start      = \"0 600 0\";"\
  "        vector end        = \"3000 600 3000\";"\
  "        vector greenLight = \"1000 600 1000\";"\
- "        float angle       = 45;"\
+ "        float angle       = 135;"\
  "    "\
  "        vector flightData[4];"\
  "        flightData[0] = start;       // Start point"\
@@ -1731,7 +1734,7 @@ BaseGameTriggerEntity paradrop {
  "	}"
  TriggerShapeType Sphere
  PeriodicQueries 1
- UpdatePeriod 20
+ UpdatePeriod 5
  OnQueryFinished ""\
  "		Print(\"Query\");"\
  "		if (!Replication.IsServer())"\

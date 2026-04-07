@@ -4,7 +4,7 @@ GenericEntity : "{809488C4984AC087}Prefabs/Weapons/Handguns/M9/Handgun_M9_base.e
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     MuzzleComponent "{50F64C45E7271D47}" {
-     MagazineWell MagazineWellM1911_FIE "{6906F90502751FC6}" {
+     MagazineWell MagazineWell1911 "{690EDECD6B1AFDB4}" {
      }
     }
    }

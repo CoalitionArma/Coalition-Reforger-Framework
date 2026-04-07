@@ -5,7 +5,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
 	static CRF_AirdropManager m_sInstance;
-	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
+	ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -61,7 +61,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		IEntity plane = GetGame().SpawnEntityPrefab(Resource.Load(planeObject.m_sPlane), null, params);
 		//Redundant but just in case
 		StreamPlaneIntoReplication(plane);
-		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 65, planeObject.m_bAutoDeployParachute);
+		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 50, planeObject.m_bAutoDeployParachute);
 		//Delay so the flight has a chance to actual load the entity
 		GetGame().GetCallqueue().CallLater(TeleportPlayers, 2000, false, players, SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent)), plane, flight);
 	}
