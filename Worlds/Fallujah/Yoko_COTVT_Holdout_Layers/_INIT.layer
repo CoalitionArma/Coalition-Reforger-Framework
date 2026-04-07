@@ -55,7 +55,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Insurgents have found an old Russian cache of weapons and Vehicles, They are now are moving to eastern Fallujah to destory a major radio tower and radio station."\
+   m_sTextData "Insurgents have found an old Russian cache of weapons and Vehicles. They are now moving to eastern Fallujah to destroy a major radio tower and radio station."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: 1x MAT and 1x HAT"\
