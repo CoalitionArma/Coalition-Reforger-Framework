@@ -1,0 +1,26 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 12122.749 48.468 9625.626
+  angles 0 0 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sDescription "Castle Ruin Artifacts"
+ }
+ {
+  coords 11982.428 42.701 9790.444
+  angles 0 0 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sDescription "Regiment Hall Art Pieces"
+ }
+ {
+  coords 12353.285 43.425 9895.812
+  angles 0 0 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sDescription "Church Treasures"
+ }
+ {
+  coords 11754.007 6.987 8526.626
+  angles 0 0 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sDescription "Safehouse"
+ }
+}
