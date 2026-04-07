@@ -1,9 +1,18 @@
 GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
  ID "69094ADC6175DE5D"
  components {
+  CRF_AirdropScaler "{690A1E924CF83B57}" {
+  }
   MeshObject "{69094ADC6175DE57}" {
    Object "{AC2335871569E865}Assets/C_47_Skytrain/C47_Skytrain.xob"
   }
  }
  coords 117.413 1 130.816
+ {
+  GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
+   ID "690A1E91ACBB4750"
+   coords 0 0 0
+   scale 1
+  }
+ }
 }

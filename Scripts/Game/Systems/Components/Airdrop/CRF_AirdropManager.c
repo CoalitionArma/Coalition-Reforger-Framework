@@ -5,7 +5,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
 	static CRF_AirdropManager m_sInstance;
-	ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
+	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -28,8 +28,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		PlayerManager pm = GetGame().GetPlayerManager();
 		foreach (int playerId: planeObject.m_aPlayerIds)
 		{			
-			//This group will put us past the 30 slots available in the plane, we gotta spawn another one
-			if (playersAdded + 1 > 30)
+			//This group will put us past the 22 slots available in the plane, we gotta spawn another one
+			if (playersAdded + 1 > 22)
 			{
 				planeIndex++;
 				playersAdded = 0;
@@ -51,7 +51,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	void SpawnFlight(CRF_AirdropObject planeObject, string players)
 	{
 		vector angles[3];
-		Math3D.AnglesToMatrix(Vector(planeObject.m_fAngle, 0, 0), angles);
+		vector rawAngles = Vector(planeObject.m_fAngle, 0, 0);
+		Math3D.AnglesToMatrix(rawAngles, angles);
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.Transform[0] = angles[0];
 		params.Transform[1] = angles[1];
@@ -100,6 +101,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		
 	void TeleportPlayers(string players, SlotManagerComponent slotMan, IEntity plane, CRF_AirdropFlight flight)
 	{
+		Print("Teleport Players");
 		array<string> playerIds = {};
 		players.Split("|", playerIds, true);
 		int slotId = 0;
@@ -107,57 +109,55 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		PlayerManager pm = GetGame().GetPlayerManager();
 		foreach (int i, string playerId: playerIds)
 		{
-			//Let's delay adding them until the player has had time to teleport into the plane
-			GetGame().GetCallqueue().CallLater(flight.m_PlayersInPlane.Insert, 2000, false, pm.GetPlayerControlledEntity(playerId.ToInt()));
-			EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId.ToString());
-			vector transform[4];
-			slot.GetLocalTransform(transform);
-			if (i < 15)
-	        {
-	            transform[3][2] = transform[3][2] - (0.8 * i);
-	        }
-	        else
-	        {
-	            transform[3][0] = transform[3][0] + 1.4;
-	            transform[3][2] = transform[3][2] - (0.8 * (i - 15));
-	        }
-			vector pos = plane.CoordToParent(transform[3]);
-			transform[3] = pos;
-			SCR_Global.TeleportPlayer(playerId.ToInt(), transform[3], SCR_EPlayerTeleportedReason.NONE);
-			Rpc(RpcDo_TeleportPlayer, playerId.ToInt(), planeRplId, slotId, i);
+			IEntity player = pm.GetPlayerControlledEntity(playerId.ToInt());
+			if (!player)
+				continue;
+			flight.m_PlayersInPlane.Insert(pm.GetPlayerControlledEntity(playerId.ToInt()));
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(player);
+			if (!character)
+				continue;
+
+			SCR_CompartmentAccessComponent compAccess = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+			if (!compAccess)
+				continue;
+			
+			Print(compAccess);
+			Print(plane);
+			compAccess.ACE_GetInVehicle(plane);
 		}
 		RpcDo_PlaySound(planeRplId);
 		Rpc(RpcDo_PlaySound, planeRplId);
 		RedLight(planeRplId);
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_TeleportPlayer(int playerId, RplId planeId, int slotId, int index)
-	{
-		if (!Replication.FindItem(planeId))
-			return;
-		
-		IEntity plane = RplComponent.Cast(Replication.FindItem(planeId)).GetEntity();
-		if (!plane)
-			return;
-		
-		SlotManagerComponent slotMan = SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent));
-		EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId);
-		vector transform[4];
-		slot.GetLocalTransform(transform);
-		if (index < 15)
-        {
-            transform[3][2] = transform[3][2] - (0.8 * index);
-        }
-        else
-        {
-            transform[3][0] = transform[3][0] + 1.4;
-            transform[3][2] = transform[3][2] - (0.8 * (index - 15));
-        }
-		vector pos = plane.CoordToParent(transform[3]);
-		transform[3] = pos;
-		SCR_Global.TeleportPlayer(playerId, transform[3], SCR_EPlayerTeleportedReason.NONE);
-	}
+//Old from when we just teleported the player
+//	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+//	void RpcDo_TeleportPlayer(int playerId, RplId planeId, int slotId, int index)
+//	{
+//		if (!Replication.FindItem(planeId))
+//			return;
+//		
+//		IEntity plane = RplComponent.Cast(Replication.FindItem(planeId)).GetEntity();
+//		if (!plane)
+//			return;
+//		
+//		SlotManagerComponent slotMan = SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent));
+//		EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId);
+//		vector transform[4];
+//		slot.GetLocalTransform(transform);
+//		if (index < 15)
+//        {
+//            transform[3][2] = transform[3][2] - (0.8 * index);
+//        }
+//        else
+//        {
+//            transform[3][0] = transform[3][0] + 1.4;
+//            transform[3][2] = transform[3][2] - (0.8 * (index - 15));
+//        }
+//		vector pos = plane.CoordToParent(transform[3]);
+//		transform[3] = pos;
+//		SCR_Global.TeleportPlayer(playerId, transform[3], SCR_EPlayerTeleportedReason.NONE);
+//	}
 	
 	float m_fParachuteCheck = 0;
 	float m_fBroadcastTimer = 0;
@@ -213,15 +213,29 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 					if (playerId <= 0)
 						continue;
 					
-					SCR_CharacterControllerComponent charCon = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
-					if (!charCon)
+					SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(player);
+					if (!character)
 						continue;
-
-					if (charCon.GetAnimationComponent().PhysicsIsLinked())
+		
+					SCR_CompartmentAccessComponent compAccess = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+					if (!compAccess)
+						continue;
+					
+					if (compAccess.IsInCompartment())
 						continue;
 					
 					if (flight.m_bAutoDeployParachute)
-						ParachuteComponent.Cast(pm.GetPlayerController(playerId).FindComponent(ParachuteComponent)).RpcAskDeployParachute();
+					{
+						PlayerController pc = pm.GetPlayerController(playerId);
+						if (!pc)
+							continue;
+						
+						CRF_ParachutePlayerComponent paraComp = CRF_ParachutePlayerComponent.Cast(pc.FindComponent(CRF_ParachutePlayerComponent));
+						if (!paraComp)
+							continue;
+						
+						paraComp.Rpc_RequestDeploy()
+					}
 						
 					flight.m_PlayersInPlane.Remove(i);
 				}
@@ -255,10 +269,31 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			flight.m_Plane.GetTransform(transform);
 			transform[3] = newPos;
 			
-			GenericEntity plane = GenericEntity.Cast(flight.m_Plane);
-	        plane.SetWorldTransform(transform);
-			plane.Update();
-			plane.OnTransformReset();
+			SCR_EditableVehicleComponent.Cast(flight.m_Plane.FindComponent(SCR_EditableVehicleComponent)).SetTransform(transform);
+			
+//			GenericEntity plane = GenericEntity.Cast(flight.m_Plane);
+//	        plane.SetWorldTransform(transform);
+//			plane.Update();
+//			plane.OnTransformReset();
+//			int catch = 0;
+//			bool child = true;
+//			IEntity parent = plane;
+//			while (child && catch < 10)
+//			{
+//				IEntity childEntity = parent.GetChildren();
+//				if (!childEntity)
+//				{
+//					child = false;
+//					break;
+//				}
+//				parent = childEntity;
+//				GenericEntity childPlane = GenericEntity.Cast(parent);
+//				childPlane.SetWorldTransform(transform);
+//				childPlane.SetScale(2);
+//				childPlane.Update();
+//				childPlane.OnTransformReset();
+//				catch++;
+//			}
 			if (broadcastPosition)
 				Rpc(RpcDo_BroadcastPositionUpdate, flight.m_RplId, transform);
 		}
@@ -288,8 +323,12 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		
 		for (int i = 0; i < 5; i++)
 		{
-			EntitySpawnParams params = new EntitySpawnParams();
+			
 			EntitySlotInfo slot = slotMan.GetSlotByName("LightSlot" + i.ToString());
+			if (!slot)
+				continue;
+			
+			EntitySpawnParams params = new EntitySpawnParams();
 			if (slot.GetAttachedEntity())
 				delete slot.GetAttachedEntity();
 			
