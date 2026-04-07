@@ -20,9 +20,11 @@ GameEntity {
      }
      ExitPositionInfo PointInfo "{51B07C0BE19AA3FF}" {
       Offset 4.1176 1.9661 -2.9288
+      Angles 0 180 0
      }
+     GetOutTeleport 0
      AlignDuringGetOut 1
-     GetInAligningTeleport 1
+     GetInAligningTeleport 0
      GetOutAligningTeleport 1
      GetOutAligningOnEvent 1
      FakeDoor 1
@@ -96,7 +98,7 @@ GameEntity {
     CargoCompartmentSlot passenger_r03 {
      CompartmentAction SCR_GetInUserAction "{69094AD429BE2199}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r03"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -151,7 +153,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r03"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD429BE2184}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -160,7 +162,7 @@ GameEntity {
     CargoCompartmentSlot passenger_r04 {
      CompartmentAction SCR_GetInUserAction "{69094AD417667826}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r04"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -215,7 +217,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r04"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD4176678D3}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -224,7 +226,7 @@ GameEntity {
     CargoCompartmentSlot passenger_r05 {
      CompartmentAction SCR_GetInUserAction "{69094AD53B5E7533}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r05"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -279,7 +281,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r05"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD53B5E75D8}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -288,7 +290,7 @@ GameEntity {
     CargoCompartmentSlot passenger_r06 {
      CompartmentAction SCR_GetInUserAction "{69094AD51FAB1375}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r06"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -343,7 +345,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r06"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD51FAB1366}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -352,7 +354,7 @@ GameEntity {
     CargoCompartmentSlot passenger_r07 {
      CompartmentAction SCR_GetInUserAction "{69094AD51570768B}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r07"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -407,7 +409,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r07"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD5157076B1}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -416,7 +418,7 @@ GameEntity {
     CargoCompartmentSlot passenger_08 {
      CompartmentAction SCR_GetInUserAction "{69094AD50138DB9B}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r08"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -471,7 +473,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r08"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD50138DB83}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -480,7 +482,7 @@ GameEntity {
     CargoCompartmentSlot passenger_09 {
      CompartmentAction SCR_GetInUserAction "{69094AD2F8FC04EA}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r09"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -535,7 +537,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r09"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD2F8FC048D}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -544,7 +546,7 @@ GameEntity {
     CargoCompartmentSlot passenger_10 {
      CompartmentAction SCR_GetInUserAction "{69094AD2F2ECB566}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_r10"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -599,7 +601,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_r10"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD2F2ECB50D}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -608,7 +610,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l03 {
      CompartmentAction SCR_GetInUserAction "{69094AD221C1AC37}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l02"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -664,7 +666,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l02"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD221C1AC20}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -673,7 +675,7 @@ GameEntity {
     CargoCompartmentSlot passenger_04 {
      CompartmentAction SCR_GetInUserAction "{69094AD21788944F}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l03"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -729,7 +731,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l03"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD217889476}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -738,7 +740,7 @@ GameEntity {
     CargoCompartmentSlot passenger_05 {
      CompartmentAction SCR_GetInUserAction "{69094AD20E1B4B4F}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l04"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -794,7 +796,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l04"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD20E1B4B75}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -803,7 +805,7 @@ GameEntity {
     CargoCompartmentSlot passenger_06 {
      CompartmentAction SCR_GetInUserAction "{69094AD205B1A6C5}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l05"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -859,7 +861,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l05"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD205B1A6F6}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -868,7 +870,7 @@ GameEntity {
     CargoCompartmentSlot passenger_07 {
      CompartmentAction SCR_GetInUserAction "{69094AD3E25CF661}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l06"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -924,7 +926,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l06"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD3E25CF612}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -933,7 +935,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l08 {
      CompartmentAction SCR_GetInUserAction "{69094AD3D51355E8}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l07"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -989,7 +991,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l07"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD3D5135594}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -998,7 +1000,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l10 {
      CompartmentAction SCR_GetInUserAction "{69094AD3CAE55539}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l08"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1054,7 +1056,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l08"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69094AD3CAE555DE}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1063,7 +1065,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l11 {
      CompartmentAction SCR_GetInUserAction "{69096496E70F22A2}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l09"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1119,7 +1121,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l09"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496E70F2319}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1128,7 +1130,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l12 {
      CompartmentAction SCR_GetInUserAction "{69096496DDB1066F}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l10"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1184,7 +1186,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l10"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496DDB1061A}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1193,7 +1195,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l13 {
      CompartmentAction SCR_GetInUserAction "{69096496D503B1F7}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l11"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1249,7 +1251,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l11"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496D503B198}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1258,7 +1260,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l14 {
      CompartmentAction SCR_GetInUserAction "{69096496CEE0DA08}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l12"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1314,7 +1316,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l12"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496CEE0DA31}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1323,7 +1325,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l15 {
      CompartmentAction SCR_GetInUserAction "{69096496C634A7C7}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l13"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1379,7 +1381,7 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l13"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496C634A7ED}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
@@ -1388,7 +1390,7 @@ GameEntity {
     CargoCompartmentSlot passenger_l16 {
      CompartmentAction SCR_GetInUserAction "{69096496BE715890}" {
       ParentContextList {
-       "door_rear" "passenger_r02"
+       "door_rear" "passenger_l14"
       }
       CanAggregate 1
       "Sort Priority" 9
@@ -1444,9 +1446,74 @@ GameEntity {
      DoorInfoList {
       0
      }
-     ContextName "passenger_r02"
+     ContextName "passenger_l14"
      m_iCompartmentSection 1
      m_DefaultOccupantData SCR_DefaultOccupantData "{69096496BE7158B9}" {
+      m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
+     }
+    }
+    CargoCompartmentSlot passenger_l167 {
+     CompartmentAction SCR_GetInUserAction "{690979036FCC7A33}" {
+      ParentContextList {
+       "door_rear" "passenger_l15"
+      }
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     GetOutAction SCR_GetOutAction "{690979036FCC7AFE}" {
+      ParentContextList {
+       "door_rear_int"
+      }
+      VisibilityRange 6
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{690979036FCC7AFB}" {
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{690979036FCC7AF5}" {
+      ParentContextList {
+       "passenger_r02"
+      }
+      VisibilityRange 6
+      Duration 0.5
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{690979036FCC7AF4}" {
+       ParentContextList {
+        "passenger_r02"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bInteriorOnly 1
+      }
+      SCR_RemoveCasualtyUserAction "{690979036FCC7AF6}" {
+       ParentContextList {
+        "door_rear"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "passenger_R02_idle"
+      Offset -7.261 3.6212 0.7083
+      Angles 0 180 0
+     }
+     ForcedFreeLook 1
+     SkipCharacterDoorAnimationsFromSeat 1
+     CharactersCanFallOutOnFlip 1
+     SeatType 8
+     DoorInfoList {
+      0
+     }
+     ContextName "passenger_l15"
+     m_iCompartmentSection 1
+     m_DefaultOccupantData SCR_DefaultOccupantData "{690979036FCC7AEC}" {
       m_sDefaultOccupantPrefab "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et"
      }
     }
@@ -1504,10 +1571,16 @@ GameEntity {
    }
   }
   SlotManagerComponent "{69094ADC779FCDB8}" {
-   Enabled 0
+   Enabled 1
    Slots {
     EntitySlotInfo Interior {
-     Prefab "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et"
+     Offset 1.5938 4.8654 -1.1422
+     Angles -31.6495 0 0
+     Prefab ""
+    }
+    EntitySlotInfo LightSlot0 {
+     Offset 1.5938 4.8654 -1.1422
+     Angles -31.6495 0 0
     }
    }
   }
@@ -1519,6 +1592,314 @@ GameEntity {
      }
      ContextName "passenger_r02"
      Position PointInfo "{5190BB25641D0062}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37B79EEF45}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37B79EEFDD}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r03"
+     Position PointInfo "{69096C37B79EEFD9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37B1419D16}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37B1419D82}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r04"
+     Position PointInfo "{69096C37B1419DB9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A96B1E04}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A96B1EB4}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r05"
+     Position PointInfo "{69096C37A96B1EB3}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A61C1E1D}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A61C1EDF}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r06"
+     Position PointInfo "{69096C37A61C1EDB}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A317A036}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A317A094}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r07"
+     Position PointInfo "{69096C37A317A090}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37A1C597FB}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37A1C597A9}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r08"
+     Position PointInfo "{69096C37A1C597AA}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C379D7C6978}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C379D7C69DA}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r09"
+     Position PointInfo "{69096C379D7C69D1}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C379A61A956}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C379A61A90F}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_r10"
+     Position PointInfo "{69096C379A61A90B}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C373901C247}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C373901C235}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l02"
+     Position PointInfo "{69096C373901C231}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37340DD4EE}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37340DD55C}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l03"
+     Position PointInfo "{69096C37340DD558}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3732B2F304}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3732B2F3FE}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l04"
+     Position PointInfo "{69096C3732B2F3FB}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C372FEF3070}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C372FEF30D6}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l05"
+     Position PointInfo "{69096C372FEF30D2}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3727F2A2D5}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3727F2A282}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l06"
+     Position PointInfo "{69096C3727F2A2BE}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C372361C02E}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C372361C0E5}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l07"
+     Position PointInfo "{69096C372361C0E1}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37203371DA}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3720337190}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l08"
+     Position PointInfo "{69096C372033718D}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C371DABC28E}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C371DABC344}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l09"
+     Position PointInfo "{69096C371DABC340}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C37197AE220}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C37197AE294}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l10"
+     Position PointInfo "{69096C37197AE291}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3716D25A70}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3716D25A2A}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l11"
+     Position PointInfo "{69096C3716D25A27}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C371393E240}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C371393E23B}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l12"
+     Position PointInfo "{69096C371393E237}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C3710A45A37}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C3710A45A94}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l13"
+     Position PointInfo "{69096C3710A45A90}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{69096C370C6F49FF}" {
+     UIInfo SCR_ActionContextUIInfo "{69096C370C6F49B2}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l14"
+     Position PointInfo "{69096C370C6F49A9}" {
+      PivotID "passenger_r02_idle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+     FilterActionsUsingCache 1
+    }
+    UserActionContext "{690979036A4E55F5}" {
+     UIInfo SCR_ActionContextUIInfo "{690979036A4E55AD}" {
+      m_sIconName ""
+     }
+     ContextName "passenger_l15"
+     Position PointInfo "{690979036A4E55A9}" {
       PivotID "passenger_r02_idle"
       Offset 0 0 0
       Angles 0 0 0
@@ -1545,15 +1926,18 @@ GameEntity {
    Streamable Disabled
   }
   Hierarchy "{69074EB87955A8AE}" {
+   MergePhysics 0
   }
  }
+ angles 0 90 0
  {
   GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
    ID "69094AD5E810D15F"
-   coords 0 0 0
-  }
-  GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
-   ID "69094AD5E779F7CE"
+   components {
+    RplComponent "{69094ADC5E71C346}" {
+     "Parent Node From Parent Entity" 1
+    }
+   }
    coords 0 0 0
   }
  }

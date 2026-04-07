@@ -1,6 +1,8 @@
 GameEntity {
  ID "69094ADC6175DE5D"
  components {
+  CRF_AirdropScaler "{690A1E9247A49973}" {
+  }
   MeshObject "{69094ADC6175DE57}" {
    Object "{C601198B66A03E12}Assets/C_47_Skytrain/C47_SkytrainInterior.xob"
   }
@@ -10,9 +12,10 @@ GameEntity {
   }
   RplComponent "{69094ADC5E71C346}" {
    "Rpl State Override" Runtime
-   "Parent Node From Parent Entity" 0
    SpatialRelevancy 0
    Streamable Disabled
+  }
+  Hierarchy "{69097903ACB0F401}" {
   }
  }
  scale 2

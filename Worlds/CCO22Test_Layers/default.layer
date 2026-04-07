@@ -1,3 +1,6 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 115.886 1 204.271
+}
 BaseGameTriggerEntity insert {
  coords 134.83 1 142.912
  userScript "	bool addedPlayer = false;"\
@@ -24,7 +27,6 @@ BaseGameTriggerEntity insert {
  "//			GetGame().GetCallqueue().CallLater(TeleportPlayer, 100, false);"\
  "	}"
  TriggerShapeType Sphere
- PeriodicQueries 1
  OnQueryFinished ""\
  "		if (removedPlayer)"\
  "			return;"\
@@ -53,16 +55,8 @@ BaseGameTriggerEntity insert {
  "		addedPlayer = true;"\
  "	"
 }
-GameEntity test1 : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
- coords 122.476 90.672 125.162
- {
-  GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
-   coords 0 0 0
-  }
-  GameEntity : "{4827BAD18C932523}Prefabs/Vehicles/C47_Interior.et" {
-   coords 0 0 0
-  }
- }
+GameEntity : "{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et" {
+ coords 112.994 75.162 205.42
 }
 GenericEntity : "{5A7E3ECE4599214B}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_cargo.et" {
  coords 112.704 1 130.025
