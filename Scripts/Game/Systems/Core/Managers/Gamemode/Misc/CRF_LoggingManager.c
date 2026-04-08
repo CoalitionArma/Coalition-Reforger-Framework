@@ -175,7 +175,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_sMissionName = m_sMissionName + " (" + m_sTerrain + ")"; // append terrain onto mission name due to constraints
 		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers; // same here
 		
-		// Open global log file
+		// Open global log file (close any stale handle first — defensive in case OnPostInit fires more than once)
+		if (m_LogFileHandle)
+		{
+			m_LogFileHandle.Close();
+			m_LogFileHandle = null;
+		}
 		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
 		
 		// Log mission beginning - use basic player count without faction data for now

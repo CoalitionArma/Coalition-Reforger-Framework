@@ -1,0 +1,9 @@
+$grp GameEntity {
+ aSiteTrigger {
+  coords 6596.693 78.844 3410.813
+ }
+ bSiteTrigger {
+  coords 6407.36 80.746 3739.371
+  angles 0 -107.493 0
+ }
+}
