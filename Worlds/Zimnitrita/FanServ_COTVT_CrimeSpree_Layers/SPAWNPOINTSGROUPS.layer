@@ -1,0 +1,6 @@
+CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 12568.931 49.042 9404.429
+}
+CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ coords 12291.848 29.718 10263.865
+}
