@@ -26,6 +26,9 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bRespawnEnabled;
+	
+	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
+	protected bool m_bRallyPointsEnabled;
 
 	[Attribute("0", "auto", "", category: "CRF Mission Settings - Respawn")]
 	protected bool m_bWaveRespawn;
@@ -67,6 +70,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
 		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
+		m_bRallyPointsEnabled = gamemode.m_bRallyPointsEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
 		m_iTimeToRespawn = gamemode.m_iTimeToRespawn;
 		m_iRespawnCutoffMinutes = gamemode.m_iRespawnCutoffMinutes;
@@ -125,6 +129,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
 		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
+		api.SetVariableValue(entitySource, null, "m_bRallyPointsEnabled", m_bRallyPointsEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iRespawnCutoffMinutes", m_iRespawnCutoffMinutes.ToString());
