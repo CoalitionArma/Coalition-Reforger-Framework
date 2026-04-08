@@ -134,6 +134,35 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
+//	 PROP HUNT — CLIENT-TO-SERVER RPC
+//	 Declared in the BASE (non-modded) class so that Reforger's RPC registration
+//	 table picks it up reliably. RPCs added to a modded class are NOT guaranteed
+//	 to be registered on dedicated servers.
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to request transforming into a prop disguise.
+	//! Placed here (base class) instead of in the modded PropHunt class so the
+	//! RPC index is part of the original class's RPC table and always works on
+	//! dedicated servers. The actual spawn logic lives in CRF_PropHuntGamemode.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropTransform(ResourceName prefab)
+	{
+		// Resolve the requesting player via the owning PlayerController.
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleTransformRequest(playerId, prefab);
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	

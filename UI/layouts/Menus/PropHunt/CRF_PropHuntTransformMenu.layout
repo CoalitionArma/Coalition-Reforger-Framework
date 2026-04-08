@@ -1,159 +1,191 @@
 FrameWidgetClass {
  Name "rootFrame"
  {
-  ImageWidgetClass "{AF1B0010C3D4E500}" {
-   Name "Overlay"
-   Slot FrameWidgetSlot "{AF1B0011C3D4E500}" {
+  ImageWidgetClass "{AF1C0001C3D4E500}" {
+   Name "Dimmer"
+   Slot FrameWidgetSlot "{AF1C0002C3D4E500}" {
     Anchor 0 0 1 1
-    PositionX 0
     OffsetLeft 0
-    PositionY 0
     OffsetTop 0
     SizeX 0
     OffsetRight 0
     SizeY 0
     OffsetBottom 0
    }
-   Color 0 0 0 0.55
+   Color 0 0 0 0.65
   }
-  ImageWidgetClass "{AF1B0012C3D4E500}" {
+  ImageWidgetClass "{AF1C0003C3D4E500}" {
+   Name "PanelBorder"
+   Slot FrameWidgetSlot "{AF1C0004C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -252
+    OffsetLeft -252
+    PositionY -262
+    OffsetTop -262
+    SizeX 504
+    OffsetRight -252
+    SizeY 524
+    OffsetBottom -262
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{AF1C0005C3D4E500}" {
    Name "PanelBg"
-   Slot FrameWidgetSlot "{AF1B0013C3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C0006C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -220
-    OffsetLeft -220
-    PositionY -230
-    OffsetTop -230
-    SizeX 440
-    OffsetRight 220
-    SizeY 460
-    OffsetBottom 230
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 520
+    OffsetBottom -260
    }
-   Color 0.05 0.05 0.08 0.95
+   Color 0.05 0.06 0.09 0.97
   }
-  TextWidgetClass "{AF1B0014C3D4E500}" {
-   Name "TitleText"
-   Slot FrameWidgetSlot "{AF1B0015C3D4E500}" {
+  ImageWidgetClass "{AF1C0007C3D4E500}" {
+   Name "TitleBar"
+   Slot FrameWidgetSlot "{AF1C0008C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -210
-    OffsetLeft -210
-    PositionY -215
-    OffsetTop -215
-    SizeX 420
-    OffsetRight 210
-    SizeY 38
-    OffsetBottom -177
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 46
+    OffsetBottom 214
    }
-   Color 1 0.78 0 1
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{AF1C0009C3D4E500}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{AF1C000AC3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 46
+    OffsetBottom 214
+   }
+   Color 1 1 1 1
    Text "CHOOSE YOUR DISGUISE"
    "Font Size" 22
    "Min Font Size" 14
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
-   FontProperties FontProperties "{AF1B0016C3D4E500}" {
+   FontProperties FontProperties "{AF1C000BC3D4E500}" {
     Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
     Bold 1
     OutlineSize 2
-    ShadowSize 3
-    ShadowOffset 0.8 0.8
+    ShadowSize 2
+    ShadowOffset 1 1
    }
   }
-  TextWidgetClass "{AF1B0017C3D4E500}" {
+  TextWidgetClass "{AF1C000CC3D4E500}" {
    Name "SubTitle"
-   Slot FrameWidgetSlot "{AF1B0018C3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C000DC3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -210
-    OffsetLeft -210
-    PositionY -175
-    OffsetTop -175
-    SizeX 420
-    OffsetRight 210
-    SizeY 22
-    OffsetBottom -153
+    PositionX -238
+    OffsetLeft -238
+    PositionY -210
+    OffsetTop -210
+    SizeX 476
+    OffsetRight -238
+    SizeY 24
+    OffsetBottom 186
    }
-   Color 0.7 0.75 0.85 1
-   Text "Select a nearby object to disguise yourself as"
+   Color 0.72 0.77 0.87 1
+   Text "Click nearby prop to disguise  |  [Esc] to cancel"
    "Font Size" 13
    "Min Font Size" 9
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
-   FontProperties FontProperties "{AF1B0019C3D4E500}" {
+   FontProperties FontProperties "{AF1C000EC3D4E500}" {
     Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
     OutlineSize 1
     ShadowOffset 0.5 0.5
    }
   }
-  ImageWidgetClass "{AF1B001AC3D4E500}" {
+  ImageWidgetClass "{AF1C000FC3D4E500}" {
    Name "Divider1"
-   Slot FrameWidgetSlot "{AF1B001BC3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C0010C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -200
-    OffsetLeft -200
-    PositionY -149
-    OffsetTop -149
-    SizeX 400
-    OffsetRight 200
-    SizeY 1
-    OffsetBottom -148
+    PositionX -230
+    OffsetLeft -230
+    PositionY -182
+    OffsetTop -182
+    SizeX 460
+    OffsetRight -230
+    SizeY 2
+    OffsetBottom 180
    }
-   Color 1 0.78 0 0.45
+   Color 0.75 0.35 0 0.5
   }
-  ScrollLayoutWidgetClass "{AF1B001CC3D4E500}" {
+  ScrollLayoutWidgetClass "{AF1C0011C3D4E500}" {
    Name "PropListScroll"
-   Slot FrameWidgetSlot "{AF1B001DC3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C0012C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -210
-    OffsetLeft -210
-    PositionY -147
-    OffsetTop -147
-    SizeX 420
-    OffsetRight 210
-    SizeY 316
-    OffsetBottom 169
+    PositionX -238
+    OffsetLeft -238
+    PositionY -176
+    OffsetTop -176
+    SizeX 476
+    OffsetRight -238
+    SizeY 358
+    OffsetBottom -182
    }
    {
-    VerticalLayoutWidgetClass "{AF1B001EC3D4E500}" {
+    VerticalLayoutWidgetClass "{AF1C0013C3D4E500}" {
      Name "PropList"
-     Slot AlignableSlot "{AF1B001FC3D4E500}" {
+     Slot AlignableSlot "{AF1C0014C3D4E500}" {
       HorizontalAlign 3
-      VerticalAlign 3
+      VerticalAlign 0
      }
     }
    }
   }
-  ImageWidgetClass "{AF1B0020C3D4E500}" {
+  ImageWidgetClass "{AF1C0015C3D4E500}" {
    Name "Divider2"
-   Slot FrameWidgetSlot "{AF1B0021C3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C0016C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -200
-    OffsetLeft -200
-    PositionY 170
-    OffsetTop 170
-    SizeX 400
-    OffsetRight 200
-    SizeY 1
-    OffsetBottom 171
+    PositionX -230
+    OffsetLeft -230
+    PositionY 186
+    OffsetTop 186
+    SizeX 460
+    OffsetRight -230
+    SizeY 2
+    OffsetBottom -188
    }
-   Color 1 0.78 0 0.45
+   Color 0.75 0.35 0 0.5
   }
-  ButtonWidgetClass "{AF1B0022C3D4E500}" {
+  ButtonWidgetClass "{AF1C0017C3D4E500}" {
    Name "CancelButton"
-   Slot FrameWidgetSlot "{AF1B0023C3D4E500}" {
+   Slot FrameWidgetSlot "{AF1C0018C3D4E500}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -90
-    OffsetLeft -90
-    PositionY 176
-    OffsetTop 176
-    SizeX 180
-    OffsetRight 90
-    SizeY 34
-    OffsetBottom 210
+    PositionX -100
+    OffsetLeft -100
+    PositionY 196
+    OffsetTop 196
+    SizeX 200
+    OffsetRight -100
+    SizeY 38
+    OffsetBottom -234
    }
-   Color 0.55 0.12 0.12 0.85
+   Color 0.45 0.08 0.08 0.90
+   components {
+    CRF_PropHuntCancelButton "{AF1C0019C3D4E500}" {
+    }
+   }
    {
-    TextWidgetClass "{AF1B0024C3D4E500}" {
+    TextWidgetClass "{AF1C001AC3D4E500}" {
      Name "CancelText"
-     Slot ButtonWidgetSlot "{AF1B0025C3D4E500}" {
+     Slot ButtonWidgetSlot "{AF1C001BC3D4E500}" {
      }
      Color 1 0.85 0.85 1
      Text "Cancel  [Esc]"
@@ -161,7 +193,7 @@ FrameWidgetClass {
      "Min Font Size" 10
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
-     FontProperties FontProperties "{AF1B0026C3D4E500}" {
+     FontProperties FontProperties "{AF1C001CC3D4E500}" {
       Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
       Bold 1
       OutlineSize 1

@@ -25,15 +25,23 @@
 modded class SCR_DamageManagerComponent
 {
 	//------------------------------------------------------------
-	// OnDamage — fires on the entity being HIT.
+	// OnDamage — fires on the entity being HIT (server-side).
 	//
-	// Priority 1: if the damaged entity is a registered Prop disguise
-	//   entity, kill the owning player's hidden character immediately.
+	// Detects two cases that matter for Prop Hunt during the HUNT phase:
 	//
-	// Priority 2: if the instigator is a Hunter, apply the shot penalty.
+	//  A. The prop ENTITY itself is hit (only possible if its physics
+	//     body is active — left here as a belt-and-suspenders fallback).
 	//
-	// The guard in ApplyHunterShotPenalty (currentHealth <= 0 → return)
-	// prevents the lethal-kill damage from re-entering this path.
+	//  B. The invisible-but-TRACEABLE prop player CHARACTER is hit.
+	//     Because the prop entity has SimulationState.NONE (no physics
+	//     body), bullet raycasts pass through the prop mesh and hit the
+	//     character's capsule instead. We detect that here.
+	//
+	// In both cases: instantly kill the disguised prop player and restore
+	// the shooter hunter's penalty HP to maximum.
+	//
+	// Shot penalty (HP decrement per shot) is handled separately via the
+	// "OnProjectileShot" event handler registered in CRF_PropHuntGamemode.
 	//------------------------------------------------------------
 	override protected void OnDamage(notnull BaseDamageContext damageContext)
 	{
@@ -48,50 +56,38 @@ modded class SCR_DamageManagerComponent
 			return;
 		#endif
 
-		// Only weapon-fired projectiles count — excludes the internal 9999 TRUE kill-damage
-		// (which has no player instigator) and explosion/fire damage.
+		// Only kinetic (bullet) and melee damage count as a prop kill.
 		if (damageContext.damageType != EDamageType.KINETIC &&
 			damageContext.damageType != EDamageType.MELEE)
 			return;
 
-		// No player instigator → internal kill-damage loop; skip.
-		int shooterId = damageContext.instigator.GetInstigatorPlayerID();
-		if (shooterId <= 0)
-			return;
-
-		// Confirm shooter is on the Hunters team.
-		IEntity shooterEnt = GetGame().GetPlayerManager().GetPlayerControlledEntity(shooterId);
-		if (!shooterEnt)
-			return;
-
-		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(
-			shooterEnt.FindComponent(FactionAffiliationComponent)
-		);
-		if (!facComp || !facComp.GetAffiliatedFaction())
-			return;
-
-		if (facComp.GetAffiliatedFaction().GetFactionKey() != propHunt.GetHuntersTeamKey())
-			return;
-
-		//--------------------------------------------------------
-		// Case A: prop disguise entity was hit.
-		// Apply the shot penalty FIRST (costs HP), then kill the
-		// hidden prop player. OnControllableDestroyed will restore
-		// the hunter to max HP since they made a correct kill.
-		// The shooterEnt is passed as the instigator so the restore
-		// logic in OnControllableDestroyed can identify the hunter.
-		//--------------------------------------------------------
+		// --- Resolve which prop player was hit ---
+		// Case A: the hit entity IS a registered prop entity (world object clone).
 		int propOwnerId = propHunt.GetPlayerForPropEntity(GetOwner());
-		if (propOwnerId > 0)
-		{
-			propHunt.ApplyHunterShotPenalty(shooterId);
-			propHunt.KillPropPlayerByProxy(propOwnerId, shooterEnt);
+
+		// Case B: the hit entity is the INVISIBLE CHARACTER of a transformed prop player.
+		// (Primary path on dedicated server — bullets hit the traceable character capsule.)
+		if (propOwnerId <= 0)
+			propOwnerId = propHunt.GetPropPlayerForCharacter(GetOwner());
+
+		if (propOwnerId <= 0)
 			return;
+
+		// Guard: if the player has already been removed from the transformed map
+		// (e.g. killed by an earlier bullet hit that is still propagating), abort.
+		if (!propHunt.IsPlayerTransformed(propOwnerId))
+			return;
+
+		// Best-effort: get the shooter's character entity so OnControllableDestroyed can
+		// identify the hunter and restore their HP. Null is safe — kills still proceed.
+		IEntity shooterEnt = null;
+		if (damageContext.instigator)
+		{
+			int shooterId = damageContext.instigator.GetInstigatorPlayerID();
+			if (shooterId > 0)
+				shooterEnt = GetGame().GetPlayerManager().GetPlayerControlledEntity(shooterId);
 		}
 
-		//--------------------------------------------------------
-		// Case B: non-prop damageable entity hit — apply penalty.
-		//--------------------------------------------------------
-		propHunt.ApplyHunterShotPenalty(shooterId);
+		propHunt.KillPropPlayerByProxy(propOwnerId, shooterEnt);
 	}
 }

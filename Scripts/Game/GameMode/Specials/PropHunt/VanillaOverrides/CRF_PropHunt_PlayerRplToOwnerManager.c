@@ -28,10 +28,6 @@ modded class CRF_PlayerRplToOwnerManager
 	// True while [F] transform input is registered (grace phase only).
 	protected bool m_bPropTransformEnabled = false;
 
-	// True once this client has already sent a transform request this round.
-	// Prevents double-pressing F.
-	protected bool m_bPropTransformed = false;
-
 	// Accumulates nearby entity results during the sphere query callback.
 	protected ref array<IEntity> m_aNearbyEntities = {};
 
@@ -53,12 +49,19 @@ modded class CRF_PlayerRplToOwnerManager
 
 		if (enable)
 		{
-			m_bPropTransformed = false; // fresh grace period — allow one transform
 			GetGame().GetInputManager().AddActionListener("PerformAction", EActionTrigger.DOWN, ActionPerformTransform);
+			Print("[PropHunt] ApplyPropTransformEnabled: F-key transform listener REGISTERED.", LogLevel.NORMAL);
 		}
 		else
 		{
 			GetGame().GetInputManager().RemoveActionListener("PerformAction", EActionTrigger.DOWN, ActionPerformTransform);
+			Print("[PropHunt] ApplyPropTransformEnabled: F-key transform listener REMOVED.", LogLevel.NORMAL);
+
+			// Close the menu if it is still open (grace period ended while player had it open).
+			// Without this the open menu keeps blocking character movement controls.
+			CRF_PropHuntTransformMenu transMenu = CRF_PropHuntTransformMenu.GetInstance();
+			if (transMenu)
+				transMenu.Close();
 		}
 	}
 
@@ -74,13 +77,22 @@ modded class CRF_PlayerRplToOwnerManager
 	//------------------------------------------------------------
 	protected void ActionPerformTransform(float value, EActionTrigger reason)
 	{
-		// Guard: already transformed or input no longer enabled.
-		if (m_bPropTransformed || !m_bPropTransformEnabled)
+		// Guard: input no longer enabled.
+		if (!m_bPropTransformEnabled)
 			return;
 
-		// Don't open the menu if it's already showing.
-		if (GetGame().GetMenuManager().FindMenuByPreset(ChimeraMenuPreset.CRF_PropHuntTransformMenu))
+		Print(string.Format("[PropHunt] ActionPerformTransform fired. enabled=%1", m_bPropTransformEnabled), LogLevel.NORMAL);
+
+		// If the menu is already open (player pressed F a second time), confirm the
+		// first (nearest) entry as a keyboard fallback. This is the only way to select
+		// in Workbench where cursor/InteractableDialogContext may not activate properly.
+		if (CRF_PropHuntTransformMenu.IsOpen())
+		{
+			CRF_PropHuntTransformMenu inst = CRF_PropHuntTransformMenu.GetInstance();
+			if (inst)
+				inst.ConfirmFirst();
 			return;
+		}
 
 		IEntity character = SCR_PlayerController.GetLocalControlledEntity();
 		if (!character)
@@ -89,6 +101,8 @@ modded class CRF_PlayerRplToOwnerManager
 		// Collect nearby valid prop entities within 8 m.
 		m_aNearbyEntities.Clear();
 		GetGame().GetWorld().QueryEntitiesBySphere(character.GetOrigin(), 8.0, OnQueryEntitySphere);
+
+		Print(string.Format("[PropHunt] ActionPerformTransform: found %1 nearby valid entities.", m_aNearbyEntities.Count()), LogLevel.NORMAL);
 
 		if (m_aNearbyEntities.IsEmpty())
 		{
@@ -105,35 +119,51 @@ modded class CRF_PlayerRplToOwnerManager
 
 	//------------------------------------------------------------
 	// ConfirmPropTransform — called by CRF_PropHuntTransformMenu
-	// after the player selects an entry. Marks the player as
-	// transformed (blocks re-open) and fires the server RPC.
+	// after the player selects an entry.
+	//
+	// On dedicated server the request is sent via RpcDo_RequestPropTransform,
+	// which is declared in the NON-MODDED base class CRF_PlayerRplToOwnerManager.
+	// This is essential: RPCs added only to a modded class are NOT reliably
+	// registered by Reforger's RPC table on dedicated servers.
+	// The base-class RPC resolves playerId from GetOwner() and forwards to
+	// CRF_PropHuntGamemode.HandleTransformRequest().
+	//
+	// In Workbench there is no actual network layer, so we call
+	// HandleTransformRequest() directly.
 	//------------------------------------------------------------
 	void ConfirmPropTransform(ResourceName prefab)
 	{
-		if (m_bPropTransformed || !m_bPropTransformEnabled)
+		if (!m_bPropTransformEnabled)
 			return;
 
 		if (!prefab)
 			return;
 
-		// Lock out further transforms this grace phase.
-		m_bPropTransformed = true;
-
 		#ifdef WORKBENCH
-		RpcDo_RequestTransform(prefab);
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleTransformRequest(SCR_PlayerController.GetLocalPlayerId(), prefab);
 		#else
-		Rpc(RpcDo_RequestTransform, prefab);
+		Rpc(RpcDo_RequestPropTransform, prefab);
 		#endif
 	}
 
 	//------------------------------------------------------------
 	// OnQueryEntitySphere — sphere-query accumulator callback.
 	// Accepts only entities that:
-	//   • have a non-empty prefab resource name (so the server
-	//     can re-spawn them)
-	//   • have SCR_DamageManagerComponent (so our damage hook
-	//     can intercept a hit on the spawned clone)
+	//   • have a non-empty prefab resource name (so the server can re-spawn them)
+	//   • have a physics body (rejects decals, light switches, wall fixtures, and
+	//     any other purely visual/interactive entity with no collision geometry)
 	//   • are NOT characters (skip other players / AI)
+	//   • are NOT buildings (too large)
+	//   • are NOT attached to a character (skip worn gear / held weapons)
+	//   • have a local bounding box whose largest axis is >= 0.3 m
+	//     (secondary size guard for very small physical objects)
+	//
+	// DamageManagerComponent is NOT required: kill detection relies on the
+	// invisible character capsule (TRACEABLE), so purely decorative interior
+	// props (furniture, shelves, etc.) are valid disguises even without a
+	// damage component of their own.
 	//------------------------------------------------------------
 	protected bool OnQueryEntitySphere(IEntity entity)
 	{
@@ -149,94 +179,40 @@ modded class CRF_PlayerRplToOwnerManager
 		if (!prefab)
 			return true;
 
+		// Require a physics body — decals, light switches, and other purely
+		// visual/interactive world objects have none.
+		if (!entity.GetPhysics())
+			return true;
+
 		// Skip characters — props should be world objects only.
 		if (entity.FindComponent(SCR_CharacterControllerComponent))
 			return true;
 
-		// Must be damageable so the damage hook can detect kills.
-		if (!entity.FindComponent(SCR_DamageManagerComponent))
+		// Skip buildings — they are too large to be valid prop disguises.
+		if (entity.FindComponent(SCR_DestructibleBuildingComponent))
+			return true;
+
+		// Skip anything attached to a character (worn gear, held weapons, etc.).
+		// Walk up the parent chain; if any ancestor is a character, reject.
+		IEntity parent = entity.GetParent();
+		while (parent)
+		{
+			if (parent.FindComponent(SCR_CharacterControllerComponent))
+				return true;
+			parent = parent.GetParent();
+		}
+
+		// Secondary size guard: reject objects whose largest bounding-box axis
+		// is under 0.3 m (catches any small physical objects not filtered above).
+		vector mins, maxs;
+		entity.GetBounds(mins, maxs);
+		vector size = maxs - mins;
+		float largest = Math.Max(size[0], Math.Max(size[1], size[2]));
+		if (largest < 0.3)
 			return true;
 
 		m_aNearbyEntities.Insert(entity);
 		return true; // continue query
-	}
-
-	//============================================================
-	// PROP TRANSFORMATION — server-side RPC handler
-	//============================================================
-
-	//------------------------------------------------------------
-	// RpcDo_RequestTransform — runs on the server (Authority).
-	// Validates the request, hides the character entity, spawns a
-	// prop clone, and registers the player↔entity pair so the
-	// damage hook can map hits back to the correct player.
-	//------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcDo_RequestTransform(ResourceName prefab)
-	{
-		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
-		if (!propHunt || !propHunt.IsGracePhaseActive())
-			return;
-
-		// Resolve which player sent this request.
-		PlayerController pc = PlayerController.Cast(GetOwner());
-		if (!pc)
-			return;
-
-		int playerId = pc.GetPlayerId();
-		if (playerId <= 0)
-			return;
-
-		// Validate: must be a living Prop team player who has not yet transformed.
-		if (!propHunt.IsValidPropPlayer(playerId))
-			return;
-
-		if (propHunt.IsPlayerTransformed(playerId))
-			return;
-
-		// Basic prefab sanity check.
-		if (!prefab)
-			return;
-
-		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		if (!character)
-			return;
-
-		// Capture the character's full world transform (position + orientation)
-		// so the spawned prop appears exactly where the player is standing.
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		character.GetWorldTransform(spawnParams.Transform);
-
-		// Hide the character — clear both VISIBLE (rendering) and TRACEABLE
-		// (bullet hit-detection) flags recursively to cover all child meshes.
-		character.ClearFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE, true);
-
-		// Freeze the invisible character so the player cannot ghost around.
-		SCR_CharacterControllerComponent charCtrl = SCR_CharacterControllerComponent.Cast(
-			character.FindComponent(SCR_CharacterControllerComponent)
-		);
-		if (charCtrl)
-			charCtrl.SetDisableMovementControls(true);
-
-		// Spawn the prop entity at the character's former position.
-		IEntity propEnt = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
-		if (!propEnt)
-		{
-			// Spawn failed — undo visibility/movement changes so the player
-			// is not permanently stuck.
-			character.SetFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE, true);
-			if (charCtrl)
-				charCtrl.SetDisableMovementControls(false);
-			return;
-		}
-
-		// Register the player↔entity pair in the game mode.
-		propHunt.SetPlayerTransformed(playerId, propEnt);
-
-		// Notify the player.
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-		if (bm)
-			bm.SendHint("You are DISGUISED! Stay still — the hunt begins soon.", playerId);
 	}
 
 }
