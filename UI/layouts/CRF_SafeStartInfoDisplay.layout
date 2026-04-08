@@ -11,8 +11,8 @@ FrameWidgetClass {
     OffsetTop 21.291
     SizeX 212.823
     OffsetRight 17.123
-    SizeY 641.441
-    OffsetBottom -662.732
+    SizeY 684.615
+    OffsetBottom -705.906
    }
    "Is Visible" 1
    {
@@ -194,6 +194,28 @@ FrameWidgetClass {
         }
         TextWidgetClass "{65F256D640C3A676}" {
          Name "RespawnValue"
+         Slot LayoutSlot "{65F256DABA2E8FD6}" {
+          Padding 0 0 0 8
+         }
+         Clipping True
+         Color 0.8 0.8 0.8 1
+         Text "N/A"
+         "Font Size" 16
+         "Min Font Size" 16
+        }
+        TextWidgetClass "{6903688602B2191F}" {
+         Name "RallyPointsLabel"
+         Slot LayoutSlot "{65F256DABA2E8FD5}" {
+          Padding 0 0 0 2
+         }
+         Clipping True
+         Color 0.9 0.9 0.9 1
+         Text "Rallypoints:"
+         "Font Size" 16
+         "Min Font Size" 16
+        }
+        TextWidgetClass "{6903688602B37A91}" {
+         Name "RallyPointsValue"
          Slot LayoutSlot "{65F256DABA2E8FD6}" {
           Padding 0 0 0 8
          }

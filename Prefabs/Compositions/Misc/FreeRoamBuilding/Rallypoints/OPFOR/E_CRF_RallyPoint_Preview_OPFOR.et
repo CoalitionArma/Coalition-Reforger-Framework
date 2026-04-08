@@ -1,0 +1,28 @@
+GenericEntity {
+ ID "69071E1FC3B30C8C"
+ components {
+  RigidBody "{69071E1FC3B30CFE}" {
+  }
+  SCR_EditableEntityComponent "{69071E1FC3B30CF2}" {
+  }
+  SCR_PreviewEntityComponent "{69071E1FC3B30CF3}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{69071E1FC3B30CF1}" {
+     m_iParentID -1
+     m_Mesh "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+     m_Flags EDITABLE
+     m_iPivotID ""
+    }
+   }
+  }
+  RplComponent "{69071E1FC3B30CEC}" {
+  }
+ }
+ coords 2065.986 47.753 2068.755
+ {
+  GenericEntity : "{577981721736900B}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/OPFOR/E_CRF_RallyPoint_OPFOR.et" {
+   ID "690727B646B31ED2"
+   coords 0 0 0
+  }
+ }
+}

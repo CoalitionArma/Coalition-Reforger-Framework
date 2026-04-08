@@ -12,6 +12,9 @@ class CRF_SpawnPointData
 	[Attribute("Base", "auto", "Nickname for the respawn point")]
 	protected string m_sSpawnPointName;
 	
+	[Attribute("", "auto", "Group allowed to spawn at this point. Blank means any squad can spawn")]
+	protected string m_sRestrictedToGroup;
+	
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFactions))]
 	protected CRF_EFactions m_iSpawnPointFaction;
 	
@@ -46,6 +49,7 @@ class CRF_SpawnPointData
 		{
 			SetSpawnPointActive(newSpawnData.GetIsActiveSpawnPoint());	
 			SetSpawnPointName(newSpawnData.GetSpawnPointName());	
+			SetRestrictedToGroup(newSpawnData.GetRestrictedToGroup());	
 			SetSpawnPointFaction(newSpawnData.GetSpawnPointFaction());
 			SetSpawnPointId(newSpawnData.GetSpawnPointId());
 			SetSpawnPointEntity(newSpawnData.GetSpawnPointEntity());
@@ -91,6 +95,13 @@ class CRF_SpawnPointData
 	{
 		m_bIsTemp = true;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetRestrictedToGroup(string RestrictedToGroup)
+	{
+		m_sRestrictedToGroup = RestrictedToGroup;
+	}
+	
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 GETTERS
@@ -150,6 +161,13 @@ class CRF_SpawnPointData
 		return m_bIsTemp;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	string GetRestrictedToGroup()
+	{
+		return m_sRestrictedToGroup;
+	}
+	
+	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -159,6 +177,7 @@ class CRF_SpawnPointData
 	{
 		writer.WriteBool(m_bSpawnPointActive);
 		writer.WriteString(m_sSpawnPointName);
+		writer.WriteString(m_sRestrictedToGroup);
 		writer.WriteInt(m_iSpawnPointFaction);
 		writer.WriteInt(m_iSpawnPointId);
 		writer.WriteRplId(m_iSpawnPointEntity);
@@ -169,6 +188,7 @@ class CRF_SpawnPointData
 	{
 		reader.ReadBool(m_bSpawnPointActive);
 		reader.ReadString(m_sSpawnPointName);
+		reader.ReadString(m_sRestrictedToGroup);
 		reader.ReadInt(m_iSpawnPointFaction);
 		reader.ReadInt(m_iSpawnPointId);
 		reader.ReadRplId(m_iSpawnPointEntity);
@@ -179,6 +199,7 @@ class CRF_SpawnPointData
 	{
 		snapshot.SerializeBytes(instance.m_bSpawnPointActive, 4);
 		snapshot.SerializeString(instance.m_sSpawnPointName);
+		snapshot.SerializeString(instance.m_sRestrictedToGroup);
 		snapshot.SerializeBytes(instance.m_iSpawnPointFaction, 4);
 		snapshot.SerializeBytes(instance.m_iSpawnPointId, 4);
 		snapshot.SerializeBytes(instance.m_iSpawnPointEntity, 4);
@@ -190,6 +211,7 @@ class CRF_SpawnPointData
 	{
 		snapshot.SerializeBytes(instance.m_bSpawnPointActive, 4);
 		snapshot.SerializeString(instance.m_sSpawnPointName);
+		snapshot.SerializeString(instance.m_sRestrictedToGroup);
 		snapshot.SerializeBytes(instance.m_iSpawnPointFaction, 4);
 		snapshot.SerializeBytes(instance.m_iSpawnPointId, 4);
 		snapshot.SerializeBytes(instance.m_iSpawnPointEntity, 4);
@@ -201,6 +223,7 @@ class CRF_SpawnPointData
 	{
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeString(packet);
+		snapshot.EncodeString(packet);
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeInt(packet);
@@ -210,6 +233,7 @@ class CRF_SpawnPointData
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
 		snapshot.DecodeInt(packet);
+		snapshot.DecodeString(packet);
 		snapshot.DecodeString(packet);
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
@@ -222,6 +246,7 @@ class CRF_SpawnPointData
 	{
 	    return lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareStringSnapshots(rhs)
+		&& lhs.CompareStringSnapshots(rhs)
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4);
@@ -232,6 +257,7 @@ class CRF_SpawnPointData
 	{
 	    return snapshot.Compare(instance.m_bSpawnPointActive, 4)
 		&& snapshot.CompareString(instance.m_sSpawnPointName)
+		&& snapshot.CompareString(instance.m_sRestrictedToGroup)
 		&& snapshot.Compare(instance.m_iSpawnPointFaction, 4)
 		&& snapshot.Compare(instance.m_iSpawnPointId, 4)
 		&& snapshot.Compare(instance.m_iSpawnPointEntity, 4);
