@@ -14,6 +14,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected ref array<CRF_SpawnPointData> m_aSpawnPoints = {};
 	protected ref map<string, vector> m_MapMarkers = new map<string, vector>;
 	protected FactionKey m_factionKey;
+	protected SCR_AIGroup m_group;
 	
 	/**
 	 * Updates the respawn timer display on the UI
@@ -81,11 +82,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		m_aSpawnPoints.Clear();
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
-		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
+		m_factionKey = slottingManager.GetPlayerSlotFaction(playerID).GetFactionKey();
+		m_group = slottingManager.GetPlayerSlotGroup(playerID);
 
-		array<CRF_SpawnPointData> factionRespawnPoints = respawnManager.GetFactionSpawnpoints(m_factionKey);
+		array<CRF_SpawnPointData> factionRespawnPoints = respawnManager.GetFactionSpawnpoints(m_factionKey, m_group);
 		
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
 		int index = 0;
