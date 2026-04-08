@@ -7,6 +7,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	static CRF_AirdropManager m_sInstance;
 	ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	int m_iPlanesAssigned = 0;
+	int m_aAAGunsRegistered = 0;
 	
 	void CRF_AirdropManager (IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -60,12 +61,39 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		params.Transform[2] = angles[2];
 		params.Transform[3] = planeObject.m_vFlightCoordinates[0];
 		IEntity plane = GetGame().SpawnEntityPrefab(Resource.Load(planeObject.m_sPlane), null, params);
+//		GetGame().GetCallqueue().CallLater(SetTransformPostSpawn, 500, false, plane, planeObject.m_fAngle, planeObject.m_vFlightCoordinates[0]);
 		//Redundant but just in case
 		StreamPlaneIntoReplication(plane);
 		ref CRF_AirdropFlight flight = new CRF_AirdropFlight(plane, planeObject.m_vFlightCoordinates, 50, planeObject.m_bAutoDeployParachute);
 		//Delay so the flight has a chance to actual load the entity
 		GetGame().GetCallqueue().CallLater(TeleportPlayers, 2000, false, players, SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent)), plane, flight);
 	}
+	
+//	void SetTransformPostSpawn(IEntity plane, float angle, vector flightCoordinate)
+//	{
+//		vector angles[3];
+//		vector rawAngles = Vector(angle, 0, 0);
+//		Math3D.AnglesToMatrix(rawAngles, angles);
+//		EntitySpawnParams params = new EntitySpawnParams();
+//		params.Transform[0] = angles[0];
+//		params.Transform[1] = angles[1];
+//		params.Transform[2] = angles[2];
+//		params.Transform[3] = flightCoordinate;
+//		
+//		int catch = 0;
+//		IEntity child = plane.GetChildren();
+//		while (true && catch < 10)
+//		{
+//			catch++;
+//			if (!child)
+//				return;
+//			else
+//			{
+//				SCR_EditableEntityComponent.Cast(child.FindComponent(SCR_EditableEntityComponent)).SetTransform(params.Transform);
+//				child = child.GetChildren();
+//			}
+//		}
+//	}
 	
 	void StreamPlaneIntoReplication(IEntity plane)
 	{
@@ -112,7 +140,8 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			IEntity player = pm.GetPlayerControlledEntity(playerId.ToInt());
 			if (!player)
 				continue;
-			flight.m_PlayersInPlane.Insert(pm.GetPlayerControlledEntity(playerId.ToInt()));
+			//Wait till players been teleported, for auto deploy logic, if players is not teleported yet it will auto deploy parachute.
+			GetGame().GetCallqueue().CallLater(flight.m_PlayersInPlane.Insert, 2500, false, pm.GetPlayerControlledEntity(playerId.ToInt()));
 			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(player);
 			if (!character)
 				continue;
@@ -183,7 +212,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			m_fParachuteCheck += timeSlice;
 		
 //		// Throttle position broadcast to ~15 Hz instead of every frame
-				Print("[CRF_AirdropManager.EOnFrame] debug line (" + __FILE__ + " L" + __LINE__ + ")", LogLevel.WARNING);
+//				Print("[CRF_AirdropManager.EOnFrame] debug line (" + __FILE__ + " L" + __LINE__ + ")", LogLevel.WARNING);
 //		bool broadcastPosition = false;
 //		if (m_fBroadcastTimer >= 0.067)
 //		{
@@ -233,10 +262,10 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 						if (!paraComp)
 							continue;
 						
-						paraComp.Rpc_RequestDeploy()
+						Print("Requesting parachute");
+						GetGame().GetCallqueue().CallLater(paraComp.Rpc_RequestDeploy, 1000, false);
+						flight.m_PlayersInPlane.Remove(i);
 					}
-						
-					flight.m_PlayersInPlane.Remove(i);
 				}
 			}		
 			

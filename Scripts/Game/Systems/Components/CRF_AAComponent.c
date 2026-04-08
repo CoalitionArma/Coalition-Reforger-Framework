@@ -20,9 +20,10 @@ class CRF_AAComponent: ScriptComponent
 	AIWaypoint m_CurrentOrder;
 	bool spawnedGroup = false;
 	float m_fDistance = 1;
-	float m_fTimer;
+	[RplProp()] float m_fTimer;
 	IEntity m_SelectedPlane;
 	SCR_TurretControllerComponent m_TurretComp;
+	bool m_bSetFired = false;
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -80,8 +81,13 @@ class CRF_AAComponent: ScriptComponent
 		}
 		
 		//Always have the gun fire, otherwise the AI only shoots every once in a fucking while
-		if (m_SelectedPlane)
-			m_TurretComp.SetFireWeaponWanted(true);
+		if (m_SelectedPlane && !m_bSetFired)
+		{
+			m_AirdropManger.m_aAAGunsRegistered++;
+			m_bSetFired = true;
+			GetGame().GetCallqueue().CallLater(m_TurretComp.SetFireWeaponWanted, 250 * m_AirdropManger.m_aAAGunsRegistered, false, true);
+		}
+			
 		
 		if (m_CurrentOrder)
 			AlignVehicleCompletelyToPlane();
@@ -116,7 +122,11 @@ class CRF_AAComponent: ScriptComponent
 		float planeDistance = vector.Distance(m_SelectedPlane.GetOrigin(), GetOwner().GetOrigin());
 		m_fDistance =  planeDistance;
 		float randDist = m_Random.RandFloatXY(-10.0, 10.0);
+		
+		//Updates the timer for all clients, needed so bullets also blow up at the same time on clients.
+		//Weplication
 		m_fTimer = (m_fDistance + randDist) / mps;
+		Replication.BumpMe();
 		m_OccupiedGroup.RemoveWaypoint(m_CurrentOrder);
 		SCR_EntityHelper.DeleteEntityAndChildren(m_CurrentOrder);
 		vector forward = m_SelectedPlane.GetTransformAxis(0);
@@ -167,6 +177,9 @@ class CRF_AAComponent: ScriptComponent
 		targetYPR[2] = currentYPR[2];
 	
 		vehicle.SetYawPitchRoll(targetYPR);
+		vector transform[4];
+		vehicle.GetTransform(transform);
+		SCR_EditableVehicleComponent.Cast(vehicle.FindComponent(SCR_EditableVehicleComponent)).SetTransform(transform);
 	}
 }
 

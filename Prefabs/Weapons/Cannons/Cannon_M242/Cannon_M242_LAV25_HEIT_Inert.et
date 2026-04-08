@@ -26,13 +26,13 @@ GenericEntity : "{1B01E6C550E2850F}Prefabs/Weapons/Cannons/Cannon_M242/Cannon_M2
      }
      FireModes {
       BaseFireMode "{B80A64F4A8EF8333}" {
-       RoundsPerMinute 20
+       RoundsPerMinute 100
       }
       BaseFireMode "{6070CED05455F25C}" {
        RoundsPerMinute 20
       }
       BaseFireMode "{6070CED1A5CECC66}" {
-       RoundsPerMinute 20
+       RoundsPerMinute 100
       }
      }
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {

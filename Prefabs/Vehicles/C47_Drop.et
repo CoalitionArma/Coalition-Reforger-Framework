@@ -1571,7 +1571,6 @@ GameEntity {
    }
   }
   SlotManagerComponent "{69094ADC779FCDB8}" {
-   Enabled 1
    Slots {
     EntitySlotInfo Interior {
      Offset 1.5938 4.8654 -1.1422
@@ -1932,13 +1931,9 @@ GameEntity {
  angles 0 90 0
  {
   GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
-   ID "69094AD5E810D15F"
-   components {
-    RplComponent "{69094ADC5E71C346}" {
-     "Parent Node From Parent Entity" 1
-    }
-   }
+   ID "69103218F4662FF9"
    coords 0 0 0
+   angles 0 15 0
   }
  }
 }
