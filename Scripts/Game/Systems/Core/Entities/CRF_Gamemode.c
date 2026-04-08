@@ -38,6 +38,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
+	
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bRallyPointsEnabled;
 
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;

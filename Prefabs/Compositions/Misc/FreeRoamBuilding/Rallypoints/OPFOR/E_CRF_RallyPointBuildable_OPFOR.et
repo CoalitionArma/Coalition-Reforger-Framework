@@ -1,0 +1,69 @@
+CRF_RallyPoint {
+ ID "69071E1FF5EDABA9"
+ components {
+  CRF_Rallypoint_BuildingCompositionComponent "{69071E1FF5EDAB9D}" {
+  }
+  RigidBody "{69071E1FF5EDAB93}" {
+  }
+  SCR_EditableEntityComponent "{69071E1FF5EDAB90}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{69071E1FF5EDAB8D}" {
+    Name "#ACE_Trenches-EditableEntity_VehicleTrench_01_Name"
+    Icon "{06A4C2F718393B5D}UI/Textures/FieldManual/MPModes/Conflict/Images/Conflict_RadioComms_Deployed_UI.edds"
+    m_Image "{06A4C2F718393B5D}UI/Textures/FieldManual/MPModes/Conflict/Images/Conflict_RadioComms_Deployed_UI.edds"
+    m_aAuthoredLabels {
+     THEME_MILITARY ENTITYTYPE_OBJECT SIZE_M FACTION_US FACTION_USSR FACTION_FIA
+    }
+    m_aAutoLabels {
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{69071E1FF5EDAB88}" {
+      m_BudgetType CAMPAIGN
+     }
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{69071E1FF5EDAB85}" {
+      m_Value 1
+     }
+    }
+   }
+  }
+  SCR_EditorLinkComponent "{69071E1FF5EDAB83}" {
+   m_aEntries {
+    SCR_EditorLinkEntry "{69071E1FF5EDAB81}" {
+     m_Prefab "{214D8C0A45720C3A}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/OPFOR/E_CRF_RallyPoint_Preview_OPFOR.et"
+    }
+   }
+  }
+  SCR_SlotCompositionComponent "{69071E1FF5EDABFE}" {
+  }
+  ActionsManagerComponent "{69071E1FF5EDABFC}" {
+   ActionContexts {
+    UserActionContext "{69071E1FF5EDABFB}" {
+     ContextName "Disassembly"
+     Position PointInfo "{69071E1FF5EC1E4E}" {
+      Offset 0 0.5 0
+     }
+     Radius 5
+     "Display UI At Reference Point" 1
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{69071E1FF5EC1E41}" {
+     ParentContextList {
+      "Disassembly"
+     }
+     UIInfo UIInfo "{69071E1FF5EC1E59}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly"
+     }
+     VisibilityRange 10
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{69071E1FF5EC1E5E}" {
+  }
+  Hierarchy "{69071E1FF5EC1E5C}" {
+  }
+ }
+ coords 2065.986 47.753 2068.755
+}
