@@ -539,18 +539,22 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	array<CRF_SpawnPointData> GetFactionSpawnpoints(FactionKey factionKey)
+	array<CRF_SpawnPointData> GetFactionSpawnpoints(FactionKey factionKey, SCR_AIGroup group = null)
 	{
 		array<CRF_SpawnPointData> sideSpawnPoints = {};
 
 		foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 		{
 			if (!spawnPointData 
-				|| !spawnPointData.GetIsActiveSpawnPoint() 
+				|| !spawnPointData.GetIsActiveSpawnPoint()  
 				|| spawnPointData.GetIsTempSpawnPoint() 
 				|| spawnPointData.GetSpawnPointEntity() == RplId.Invalid()
 				|| SCR_Enum.GetEnumName(CRF_EFactions, spawnPointData.GetSpawnPointFaction()) != factionKey)
 				continue;
+			
+			// Filter out group specific spawns
+			if (group && (spawnPointData.GetRestrictedToGroup() != "" && spawnPointData.GetRestrictedToGroup() != group.GetCustomNameWithOriginal()))
+					continue;
 
 			if (IsDefaultSpawn(spawnPointData))
 				sideSpawnPoints.InsertAt(spawnPointData, 0);
@@ -573,7 +577,7 @@ class CRF_RespawnManager : ScriptComponent
 			{
 				if (!spawnPointData 
 					|| !spawnPointData.GetIsActiveSpawnPoint() 
-					|| !spawnPointData.GetIsTempSpawnPoint() 
+					|| !spawnPointData.GetIsTempSpawnPoint()
 					|| spawnPointData.GetSpawnPointEntity() == RplId.Invalid()
 					|| SCR_Enum.GetEnumName(CRF_EFactions, spawnPointData.GetSpawnPointFaction()) != factionKey)
 					continue;
@@ -617,6 +621,10 @@ class CRF_RespawnManager : ScriptComponent
 		CRF_VehicleSpawnPoint vehSpawn = CRF_VehicleSpawnPoint.Cast(spawnPointEntity);
 		if (vehSpawn)
 			vehSpawn.SetLocalSpawnPointId(spawnPointId);
+		
+		CRF_RallyPoint rallyPoint = CRF_RallyPoint.Cast(spawnPointEntity);
+		if (rallyPoint)
+			rallyPoint.SetLocalSpawnPointId(spawnPointId);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
