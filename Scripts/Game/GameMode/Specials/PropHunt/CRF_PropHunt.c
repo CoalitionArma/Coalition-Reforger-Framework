@@ -152,6 +152,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	// Fully-opaque black overlay layout used for hunter screen blackout.
 	protected static const ResourceName PH_BLACKOUT_LAYOUT = "{AF1B0036C3D4E500}UI/layouts/HUD/PropHunt/CRF_PropHuntBlackout.layout";
 
+	// Top-center phase/timer HUD shown to all players during active game phases.
+	protected Widget m_wPropHuntTimer;
+	protected static const ResourceName PH_TIMER_LAYOUT = "{AF1B003AC3D4E500}UI/layouts/HUD/PropHunt/CRF_PropHuntTimer.layout";
+
 	// Singleton reference
 	protected static CRF_PropHuntGamemode m_sInstance;
 
@@ -284,7 +288,11 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 		#ifndef WORKBENCH
 		if (RplSession.Mode() == RplMode.Client)
+		{
+			// Client-side: update the phase/timer HUD widget from the replicated timer value.
+			UpdateTimerDisplay();
 			return;
+		}
 		#endif
 
 		if (m_bPhaseTimerActive)
@@ -588,7 +596,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		CollectPlayerLists();
 
 		SetPhase(CRF_EPropHuntPhase.GRACE, m_iGracePeriodSeconds);
-		BroadcastMessage(string.Format("PROPS: You have %1 seconds to hide! Press [F] near any object to disguise yourself. Hunters — stand by.", m_iGracePeriodSeconds));
+		BroadcastMessage(string.Format("PROPS: You have %1 seconds to hide! Press [T] near any object to disguise yourself. Hunters — stand by.", m_iGracePeriodSeconds));
 
 		// Lock Hunters during grace period and black out their screens so they
 		// cannot see where Props are hiding.
@@ -1212,12 +1220,85 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------
-	// RplProp callback — fires on every client when m_ePhase changes
+	// RplProp callback — fires on every client when m_ePhase changes.
+	// Recreates the phase/timer HUD widget for the new phase.
 	//------------------------------------------------------------
 	protected void OnPhaseChanged()
 	{
-		// Clients can hook into phase changes here for HUD/audio feedback.
-		// Nothing needed at baseline — extend this for custom UIs.
+		// Destroy any existing timer widget first.
+		if (m_wPropHuntTimer)
+		{
+			m_wPropHuntTimer.RemoveFromHierarchy();
+			m_wPropHuntTimer = null;
+		}
+
+		// Timer is hidden during GAMEEND (game-over screen takes over).
+		if (m_ePhase == CRF_EPropHuntPhase.GAMEEND)
+			return;
+
+		WorkspaceWidget workspace = GetGame().GetWorkspace();
+		if (!workspace)
+			return;
+
+		m_wPropHuntTimer = workspace.CreateWidgets(PH_TIMER_LAYOUT);
+		if (!m_wPropHuntTimer)
+			return;
+
+		// Set the phase label text and its colour.
+		TextWidget phaseText = TextWidget.Cast(m_wPropHuntTimer.FindAnyWidget("PhaseText"));
+		if (phaseText)
+		{
+			string label;
+			switch (m_ePhase)
+			{
+				case CRF_EPropHuntPhase.WARMUP:   label = "WARMUP";    break;
+				case CRF_EPropHuntPhase.GRACE:    label = "GRACE";     break;
+				case CRF_EPropHuntPhase.HUNT:     label = "HUNT";      break;
+				case CRF_EPropHuntPhase.ROUNDEND: label = "ROUND END"; break;
+				default:                          label = "";           break;
+			}
+			phaseText.SetText(label);
+
+			// Colour-code: red for HUNT, yellow for GRACE, white otherwise.
+			if (m_ePhase == CRF_EPropHuntPhase.HUNT)
+				phaseText.SetColor(new Color(1, 0.25, 0.25, 1));
+			else if (m_ePhase == CRF_EPropHuntPhase.GRACE)
+				phaseText.SetColor(new Color(1, 0.9, 0.2, 1));
+			else
+				phaseText.SetColor(new Color(0.78, 0.78, 0.78, 1));
+		}
+
+		// Immediately populate round and timer so there's no one-frame blank.
+		UpdateTimerDisplay();
+	}
+
+	//------------------------------------------------------------
+	// UpdateTimerDisplay — reads the replicated m_fPhaseTimer and
+	// m_iCurrentRound to refresh the timer widget every frame
+	// on the client. Called from EOnFrame's client branch.
+	//------------------------------------------------------------
+	protected void UpdateTimerDisplay()
+	{
+		if (!m_wPropHuntTimer)
+			return;
+
+		TextWidget timerText = TextWidget.Cast(m_wPropHuntTimer.FindAnyWidget("TimerText"));
+		if (timerText)
+		{
+			int totalSecs = m_fPhaseTimer;
+			if (totalSecs < 0)
+				totalSecs = 0;
+			int mins = totalSecs / 60;
+			int secs = totalSecs % 60;
+			string pad;
+			if (secs < 10)
+				pad = "0";
+			timerText.SetText(string.Format("%1:%2%3", mins, pad, secs));
+		}
+
+		TextWidget roundText = TextWidget.Cast(m_wPropHuntTimer.FindAnyWidget("RoundText"));
+		if (roundText)
+			roundText.SetText(string.Format("Round %1 / %2", m_iCurrentRound, m_iTotalRounds));
 	}
 
 	//------------------------------------------------------------

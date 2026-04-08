@@ -45,9 +45,42 @@ modded class SCR_DamageManagerComponent
 	//------------------------------------------------------------
 	override protected void OnDamage(notnull BaseDamageContext damageContext)
 	{
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+
+		// During hunt phase, hunters are invincible to all damage except EDamageType.TRUE,
+		// which is used internally to execute them when their penalty bar reaches zero.
+		if (propHunt && propHunt.IsHuntPhaseActive() && damageContext.damageType != EDamageType.TRUE)
+		{
+			#ifndef WORKBENCH
+			if (RplSession.Mode() != RplMode.Client)
+			#endif
+			{
+				SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+				if (factionMgr)
+				{
+					PlayerManager pm = GetGame().GetPlayerManager();
+					if (pm)
+					{
+						// Walk all alive hunters and check if this entity is one of their characters.
+						array<int> players = {};
+						pm.GetPlayers(players);
+						foreach (int pid : players)
+						{
+							if (pm.GetPlayerControlledEntity(pid) == GetOwner())
+							{
+								Faction f = factionMgr.GetPlayerFaction(pid);
+								if (f && f.GetFactionKey() == propHunt.GetHuntersTeamKey())
+									return; // absorb the damage — hunter is invincible
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
 		super.OnDamage(damageContext);
 
-		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
 		if (!propHunt || !propHunt.IsHuntPhaseActive())
 			return;
 

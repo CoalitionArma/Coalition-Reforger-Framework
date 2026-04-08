@@ -2,7 +2,7 @@
 //
 // Extends CRF_PlayerRplToOwnerManager with Prop Hunt client-side features:
 //
-//  Prop transformation — Props press [F / PerformAction] during grace to
+//  Prop transformation — Props press [T / CRF_PropHuntTransform] during grace to
 //  disguise themselves as a nearby world object:
 //    a. The server tells this client "F-key is enabled" via a Broadcast RPC
 //       on CRF_PropHuntGamemode, which then calls ApplyPropTransformEnabled()
@@ -25,7 +25,7 @@ modded class CRF_PlayerRplToOwnerManager
 	// Prop transform state (client-local)
 	//------------------------------------------------------------
 
-	// True while [F] transform input is registered (grace phase only).
+	// True while [T] transform input is registered (grace phase only).
 	protected bool m_bPropTransformEnabled = false;
 
 	// Accumulates nearby entity results during the sphere query callback.
@@ -49,13 +49,13 @@ modded class CRF_PlayerRplToOwnerManager
 
 		if (enable)
 		{
-			GetGame().GetInputManager().AddActionListener("PerformAction", EActionTrigger.DOWN, ActionPerformTransform);
-			Print("[PropHunt] ApplyPropTransformEnabled: F-key transform listener REGISTERED.", LogLevel.NORMAL);
+			GetGame().GetInputManager().AddActionListener("CRF_PropHuntTransform", EActionTrigger.DOWN, ActionPerformTransform);
+			Print("[PropHunt] ApplyPropTransformEnabled: T-key transform listener REGISTERED.", LogLevel.NORMAL);
 		}
 		else
 		{
-			GetGame().GetInputManager().RemoveActionListener("PerformAction", EActionTrigger.DOWN, ActionPerformTransform);
-			Print("[PropHunt] ApplyPropTransformEnabled: F-key transform listener REMOVED.", LogLevel.NORMAL);
+			GetGame().GetInputManager().RemoveActionListener("CRF_PropHuntTransform", EActionTrigger.DOWN, ActionPerformTransform);
+			Print("[PropHunt] ApplyPropTransformEnabled: T-key transform listener REMOVED.", LogLevel.NORMAL);
 
 			// Close the menu if it is still open (grace period ended while player had it open).
 			// Without this the open menu keeps blocking character movement controls.
@@ -71,7 +71,7 @@ modded class CRF_PlayerRplToOwnerManager
 
 	//------------------------------------------------------------
 	// ActionPerformTransform — fires on the owning client when
-	// the player presses [F / PerformAction] during grace phase.
+	// the player presses [T / CRF_PropHuntTransform] during grace phase.
 	// Sphere-queries for nearby valid world-prop entities and opens
 	// the CRF_PropHuntTransformMenu selection UI.
 	//------------------------------------------------------------
@@ -80,6 +80,26 @@ modded class CRF_PlayerRplToOwnerManager
 		// Guard: input no longer enabled.
 		if (!m_bPropTransformEnabled)
 			return;
+
+		// Faction guard — only Props team players may transform.
+		// This acts as a belt-and-suspenders check in case m_bPropTransformEnabled
+		// was left set due to a team-change, round-reset, or any other edge case.
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (!propHunt)
+			return;
+
+		SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionMgr)
+		{
+			int localId = SCR_PlayerController.GetLocalPlayerId();
+			Faction localFaction = factionMgr.GetPlayerFaction(localId);
+			if (!localFaction || localFaction.GetFactionKey() != propHunt.GetPropsTeamKey())
+			{
+				// Hunter (or unassigned) pressed F — disable the listener so it stops firing.
+				ApplyPropTransformEnabled(false);
+				return;
+			}
+		}
 
 		Print(string.Format("[PropHunt] ActionPerformTransform fired. enabled=%1", m_bPropTransformEnabled), LogLevel.NORMAL);
 
