@@ -1,0 +1,30 @@
+$grp CRF_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
+ {
+  coords 3232.227 1 6357.22
+  m_sCallsignOfGroupToSpawn "Cell Lead"
+ }
+ {
+  coords 3232.4 1 6363.838
+  m_sCallsignOfGroupToSpawn "Cell 1"
+ }
+ {
+  coords 3231.245 1 6375.186
+  m_sCallsignOfGroupToSpawn "Cell 2"
+ }
+ {
+  coords 3229.47 1 6390.016
+  m_sCallsignOfGroupToSpawn "Cell 3"
+ }
+ {
+  coords 3228.774 1 6404.134
+  m_sCallsignOfGroupToSpawn "Suicide Squad"
+ }
+ {
+  coords 3219.912 1 6403.314
+  m_sCallsignOfGroupToSpawn "Gun Truck 1"
+ }
+ {
+  coords 3225.123 1 6410.278
+  m_sCallsignOfGroupToSpawn "Gun Truck 2"
+ }
+}
