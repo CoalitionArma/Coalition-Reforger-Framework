@@ -1,5 +1,6 @@
 FrameWidgetClass {
  Name "rootFrame"
+ "Z Order" 99
  {
   ImageWidgetClass "{CFC00000000C0001}" {
    Name "BG"
@@ -29,6 +30,7 @@ FrameWidgetClass {
     SizeY 18
     OffsetBottom -31
    }
+   Color 0.78 0.78 0.78 1
    Text "WARMUP"
    "Font Size" 11
    "Min Font Size" 9
@@ -38,7 +40,6 @@ FrameWidgetClass {
     Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
     OutlineSize 1
    }
-   Color 0.78 0.78 0.78 1
   }
   TextWidgetClass "{CFC00000000C0005}" {
    Name "TimerText"
@@ -76,6 +77,7 @@ FrameWidgetClass {
     SizeY 18
     OffsetBottom -99
    }
+   Color 0.65 0.65 0.65 1
    Text "Round 1 / 5"
    "Font Size" 10
    "Min Font Size" 8
@@ -84,7 +86,6 @@ FrameWidgetClass {
    FontProperties FontProperties "{CFC00000000C000B}" {
     Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
    }
-   Color 0.65 0.65 0.65 1
   }
  }
 }
