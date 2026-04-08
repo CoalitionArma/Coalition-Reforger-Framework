@@ -1,0 +1,31 @@
+StaticModelEntity {
+ ID "647B765C8908F7E8"
+ components {
+  CRF_ArtyGunComponent "{6910DB98455CFAD0}" {
+  }
+  ActionsManagerComponent "{6910DE2F0365B615}" {
+   ActionContexts {
+    UserActionContext "{6910DE2F1F9D78F3}" {
+     ContextName "gun"
+     Position PointInfo "{6910DE2F181806AE}" {
+      Offset -3.9605 3.162 0
+     }
+     Radius 0.5
+    }
+   }
+   additionalActions {
+    CRF_DestroyArtyAction "{6910DE2F2FECAE03}" {
+     ParentContextList {
+      "gun"
+     }
+     UIInfo UIInfo "{6910DE2F231A899B}" {
+     }
+     Duration 2
+    }
+   }
+  }
+  RplComponent "{6910DB99E5671D1C}" {
+   "Parent Node From Parent Entity" 0
+  }
+ }
+}

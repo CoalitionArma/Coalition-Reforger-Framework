@@ -2355,6 +2355,29 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		supplyComp.UpdateCurrentSupply();
 	}
 	
+	void DestroyArtyGun(RplId id)
+	{
+		#ifdef WORKBENCH
+		RpcDo_DestroyArtyGun(id);
+		#else
+		Rpc(RpcDo_DestroyArtyGun. id);
+		#endif
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcDo_DestroyArtyGun(RplId id)
+	{
+		IEntity gun = 	CRF_ReplicationHelper.GetEntityFromRplId(id);
+		if (!gun)
+			return;
+		
+		CRF_ArtyGunComponent artyGun = CRF_ArtyGunComponent.Cast(gun.FindComponent(CRF_ArtyGunComponent));
+		if (!artyGun)
+			return;
+
+		artyGun.SetDestroyed();
+	}
+	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================

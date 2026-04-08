@@ -14,6 +14,31 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_Gamemode m_Gamemode;
+	[RplProp()] int m_iGunsDestroyed = 0;
+	[RplProp()] int m_iActiveObjective = 0;
+	[RplProp()] int m_iTimeOnObjective = 0;
+	//0 Relay Station
+	//1 SME Church
+	//2 Town south of SME
+	
+	void DestroyGun()
+	{
+		m_iGunsDestroyed++;
+		Replication.BumpMe();
+	}
+	
+	void AdvanceObjective()
+	{
+		m_iActiveObjective++;
+		Replication.BumpMe();
+	}
+	
+	void SetTime(int time)
+	{
+		m_iTimeOnObjective = time;
+		Replication.BumpMe();
+	}
+
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)

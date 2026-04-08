@@ -1,3 +1,90 @@
+BaseGameTriggerEntity OBJ2 {
+ coords 3037.261 42.516 2311.006
+ userScript "	SCR_HUDManagerComponent m_HUDManager;"\
+ "	CRF_GamemodeManager m_GamemodeManager;"\
+ "	CRF_CapturePointDisplay m_CapturePointDisplay;"\
+ "	static int OBJECTIVE_INT = 0;"\
+ "	"\
+ "	void SetHUDVisible(bool input)"\
+ "	{"\
+ "		if (!m_HUDManager)"\
+ "		{"\
+ "			PlayerController pc = GetGame().GetPlayerController();"\
+ "			if (!pc)"\
+ "				return;"\
+ "			"\
+ "			m_HUDManager = SCR_HUDManagerComponent.Cast(pc.FindComponent(SCR_HUDManagerComponent));"\
+ "		}"\
+ "		SCR_InfoDisplay infoDisplay = m_HUDManager.FindInfoDisplay(CRF_CapturePointDisplay);"\
+ "		Print(infoDisplay);"\
+ "		if (!infoDisplay)"\
+ "			return;"\
+ "				"\
+ "		if (!m_CapturePointDisplay)"\
+ "			m_CapturePointDisplay = CRF_CapturePointDisplay.Cast(infoDisplay);"\
+ "		if (!m_CapturePointDisplay)	"\
+ "			return;"\
+ "				"\
+ "		m_CapturePointDisplay.m_bShow = input;"\
+ "	}"
+ EOnInit ""\
+ "//		if (!Replication.IsServer())"\
+ "//		{"\
+ "			PlayerController pc = GetGame().GetPlayerController();"\
+ "			if (!pc)"\
+ "				return;"\
+ "			"\
+ "			m_HUDManager = SCR_HUDManagerComponent.Cast(pc.FindComponent(SCR_HUDManagerComponent));"\
+ "//		}"\
+ "	"
+ TriggerShapeType Sphere
+ SphereRadius 65.7
+ DrawShape 1
+ PeriodicQueries 1
+ UpdatePeriod 5
+ OnQueryFinished ""\
+ "		if (!m_GamemodeManager)"\
+ "			m_GamemodeManager = CRF_GamemodeManager.GetInstance();"\
+ "		"\
+ "		if (m_GamemodeManager.m_iActiveObjective > OBJECTIVE_INT)"\
+ "			delete this;"\
+ "		"\
+ "		if (m_GamemodeManager.m_iActiveObjective != OBJECTIVE_INT)"\
+ "			return;"\
+ "		"\
+ "//		if (!Replication.IsServer())"\
+ "//		{"\
+ "			QueryEntitiesInside();"\
+ "		"\
+ "			array<IEntity> entities = {};"\
+ "			GetEntitiesInside(entities);"\
+ "			if(entities.Contains(SCR_PlayerController.GetLocalControlledEntity()))"\
+ "				SetHUDVisible(true);"\
+ "			else"\
+ "				SetHUDVisible(false);"\
+ "			"\
+ "			float opforPlayers = 0;"\
+ "			float bluforPlayers = 0;"\
+ "			foreach (IEntity entity: entities)"\
+ "			{"\
+ "				if (!entity.FindComponent(FactionAffiliationComponent))"\
+ "					continue;"\
+ "				"\
+ "				FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+ "				if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
+ "					bluforPlayers++;"\
+ "				else if (factComp.GetAffiliatedFactionKey() == \"OPFOR\")"\
+ "					opforPlayers++;"\
+ "			}"\
+ "			"\
+ "			float bluforPercent = bluforPlayers / (opforPlayers + bluforPlayers);"\
+ "			float opforPercent = opforPlayers / (opforPlayers + bluforPlayers);"\
+ "			"\
+ "			m_CapturePointDisplay.m_fBLUFORRatio = bluforPercent * 100;"\
+ "			m_CapturePointDisplay.m_fOPFORRatio = opforPercent * 100;"\
+ "		}"\
+ "//	"
+}
 $grp Vehicle : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et" {
  LAV25_Inert1 {
   components {

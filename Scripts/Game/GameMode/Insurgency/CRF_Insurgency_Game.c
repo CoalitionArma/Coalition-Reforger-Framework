@@ -204,7 +204,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 			{
 				CRF_RplBroadcastManager broadcastMgr = GetBroadcastManager();
 				if (broadcastMgr)
-                    broadcastMgr.PopUpNotification(15, string.Format("Phase %1 complete! All caches destroyed. Attackers win!", phase));
+                    broadcastMgr.PopUpNotification(10, string.Format("Phase %1 complete! All caches destroyed. Attackers win!", phase));
 			}
         }
 		else

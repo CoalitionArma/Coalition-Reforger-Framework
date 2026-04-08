@@ -1,0 +1,179 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  PanelWidgetClass "{6910F2533EC8838F}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{6910F2533EC88343}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -400
+    OffsetLeft -400
+    PositionY 50
+    OffsetTop 50
+    SizeX 800
+    OffsetRight -400
+    SizeY 50
+    OffsetBottom -100
+   }
+   Color 0 0 0 1
+   {
+    ImageWidgetClass "{6910F25353AE7C86}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{6910F25353AE7C5D}" {
+      Anchor 0 0 0 0
+      PositionX 5
+      OffsetLeft 5
+      PositionY 5
+      OffsetTop 5
+      SizeX 40
+      OffsetRight -45
+      SizeY 40
+      OffsetBottom -45
+     }
+     Texture "{EB7F65DBC9392557}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USA.edds"
+     Size 128 128
+    }
+    ImageWidgetClass "{6910F25385DD22D3}" {
+     Name "Image1"
+     Slot FrameWidgetSlot "{6910F25353AE7C5D}" {
+      Anchor 0 0 0 0
+      PositionX 755
+      OffsetLeft 755
+      PositionY 5
+      OffsetTop 5
+      SizeX 40
+      OffsetRight -795
+      SizeY 40
+      OffsetBottom -45
+     }
+     Texture "{56C9B759626E11C9}UI/Images/Flags/WW2Germany.edds"
+     Size 128 128
+    }
+    ProgressBarWidgetClass "{6910F253BB39F9FE}" {
+     Name "USBAR"
+     Slot FrameWidgetSlot "{6910F253BB39F9A9}" {
+      PositionX 50.033
+      OffsetLeft 50
+      PositionY 10
+      OffsetTop 10
+      SizeX 700.374
+      OffsetRight -750.4
+      SizeY 30
+      OffsetBottom -40
+     }
+     Color 0.0685 0.2746 0.7991 1
+     "Draw Background" 0
+    }
+    ProgressBarWidgetClass "{6910F253B36CBDA6}" {
+     Name "GERBAR"
+     Slot FrameWidgetSlot "{6910F253BB39F9A9}" {
+      PositionX 50.033
+      OffsetLeft 50
+      PositionY 10
+      OffsetTop 10
+      SizeX 700.374
+      OffsetRight -750.4
+      SizeY 30
+      OffsetBottom -40
+     }
+     Color 0.7454 0.0782 0.0782 1
+     Flipped 1
+     "Draw Background" 0
+    }
+    ImageWidgetClass "{6910F24EF15004E6}" {
+     Name "Image3"
+     Slot FrameWidgetSlot "{6910F25A51E9AC0B}" {
+      PositionX 540.372
+      OffsetLeft 540.372
+      PositionY 2.635
+      OffsetTop 2.635
+      SizeX 3.452
+      OffsetRight -543.824
+      SizeY 5.428
+      OffsetBottom -8.063
+     }
+     Color 0.4967 1 0.0805 1
+    }
+    ImageWidgetClass "{6910F24FAAA584FA}" {
+     Name "Image4"
+     Slot FrameWidgetSlot "{6910F24FAAA58412}" {
+      PositionX 375.409
+      OffsetLeft 375.409
+      PositionY 0
+      OffsetTop 0
+      SizeX 50
+      OffsetRight -425.409
+      SizeY 50
+      OffsetBottom -50
+     }
+     Texture "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+     Image "join-3"
+     Size 32 32
+    }
+    ImageWidgetClass "{6910F24D3C5AD687}" {
+     Name "Image2"
+     Slot FrameWidgetSlot "{6910F25A51E9AC0B}" {
+      PositionX 540.372
+      OffsetLeft 540.372
+      PositionY 42.711
+      OffsetTop 42.711
+      SizeX 3.452
+      OffsetRight -543.824
+      SizeY 5.428
+      OffsetBottom -48.139
+     }
+     Color 0.4967 1 0.0805 1
+    }
+   }
+  }
+  PanelWidgetClass "{6910F2733668CF00}" {
+   Name "TimePanel"
+   Slot FrameWidgetSlot "{6910F2733668C8F3}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -30
+    OffsetLeft -30
+    PositionY 105
+    OffsetTop 105
+    SizeX 60
+    OffsetRight -30
+    SizeY 30
+    OffsetBottom -135
+   }
+   Color 0 0 0 1
+   {
+    TextWidgetClass "{6910F27347FD4227}" {
+     Name "TimeText"
+     Slot FrameWidgetSlot "{6910F27347FD421C}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -5.896
+      OffsetRight 5.896
+      SizeY 0
+      OffsetBottom 0
+     }
+     Text "60"
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+    }
+    ImageWidgetClass "{6910F273548C5C28}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{6910F273548C5C1D}" {
+      Anchor 0 0 0 0
+      PositionX 5.576
+      OffsetLeft 5.6
+      PositionY 5
+      OffsetTop 5
+      SizeX 20
+      OffsetRight -25.6
+      SizeY 20
+      OffsetBottom -25
+     }
+     Texture "{A8044766CF7B2717}UI/Textures/Editor/Clock/Clock_TimeSession.edds"
+     Size 64 64
+    }
+   }
+  }
+ }
+}

@@ -1794,7 +1794,7 @@ BaseGameTriggerEntity paradrop {
  "//            return;"\
  "//        }"\
  "        "\
- "            InitPlane();"\
+ "            //InitPlane();"\
  "	"
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
@@ -1804,5 +1804,5 @@ Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
  coords 882.221 9.906 960.254
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 460.267 13.066 679.654
+ coords 3050.233 34.443 2380.543
 }

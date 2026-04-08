@@ -86,6 +86,10 @@ CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
      m_eLayer ALWAYS_TOP
      m_bAdaptiveOpacity 1
     }
+    CRF_CapturePointDisplay "{6910F25EE3742B2C}" {
+     m_LayoutPath "{D15B6345137E8755}UI/layouts/CRF_CapturePointDisplay.layout"
+     m_eLayer ALWAYS_TOP
+    }
    }
   }
   SCR_RespawnComponent "{998227246E6A49E0}" {
