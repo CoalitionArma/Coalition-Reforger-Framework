@@ -42,20 +42,39 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
   }
  }
 }
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
- coords 4722.548 6.327 6604.504
- Points {
-  ShapePoint "{690EF2B9772BD22C}" {
-   Position 4.868 0 123.209
+$grp PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ {
+  coords 4722.548 6.327 6604.504
+  Points {
+   ShapePoint "{690EF2B9772BD22C}" {
+    Position 4.868 0 123.209
+   }
+   ShapePoint "{690EF2B977E676A4}" {
+    Position 160.487 0 130.582
+   }
+   ShapePoint "{690EF2B9767D277D}" {
+    Position 167.595 0 -152.63
+   }
+   ShapePoint "{690EF2B976E04B25}" {
+    Position 5.906 0 -141.221
+   }
   }
-  ShapePoint "{690EF2B977E676A4}" {
-   Position 160.487 0 130.582
-  }
-  ShapePoint "{690EF2B9767D277D}" {
-   Position 167.595 0 -152.63
-  }
-  ShapePoint "{690EF2B976E04B25}" {
-   Position 5.906 0 -141.221
+ }
+ {
+  coords 3383.49 1 5882.037
+  Points {
+   ShapePoint "{6910D24F6A9F5DF8}" {
+    Position -212.066 0 188.802
+   }
+   ShapePoint "{6910D24F6905E355}" {
+    Position 95.108 0 216.449
+   }
+   ShapePoint "{6910D24F684565AF}" {
+    Position 85.041 0 -66.457
+   }
+   ShapePoint "{6910D24F6F1CB1D5}" {
+    Position -151.308 0 -83.814
+   }
   }
  }
 }

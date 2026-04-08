@@ -83,7 +83,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Find and eliminate the HVT.  The HVT marker will update every 7 minutes. When the HVT is eliminated, both sides will receive a respawn wave. Blufor is to withdraw troops to the marked FOB, and weather the attack. "\
    ""\
    "Mission Maker Notes"\
-   "Indfor is not allowed to attack the FOB before the HVT dies, unless the enemy is firing mortars from it. "
+   "Indfor is not allowed to attack the FOB before the HVT dies, unless the enemy is firing mortars from it. Be warned that the enemy has IEDs, and may have concealed them among debris in the AO. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -118,7 +118,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{690F5057D68F6A67}" {
+  CRF_SlottingGroup "{6910D24F3BE4ACFF}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -128,7 +128,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6932}" {
+  CRF_SlottingGroup "{6910D24F3BE4A365}" {
+   m_sCallsign "Recon"
+   m_FlagType SNIPER
+   m_aSlots {
+    SQUAD_LEAD
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{6910D24F3BE4A286}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +151,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F681F}" {
+  CRF_SlottingGroup "{6910D24F3BE4A1CE}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -158,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6F41}" {
+  CRF_SlottingGroup "{6910D24F3BE4A16F}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -173,7 +181,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6EE8}" {
+  CRF_SlottingGroup "{6910D24F3BE4A099}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -188,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6E1D}" {
+  CRF_SlottingGroup "{6910D24F3BE4A7CB}" {
    m_sCallsign "Door Kickers"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -200,7 +208,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6D44}" {
+  CRF_SlottingGroup "{6910D24F3BE4A765}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {
@@ -213,7 +221,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{690F5057D68F6C34}" {
+  CRF_SlottingGroup "{6910D24F3BE4A63B}" {
    m_sCallsign "Cell Lead"
    m_FlagType SIGNAL
    m_aSlots {
@@ -221,7 +229,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6352}" {
+  CRF_SlottingGroup "{6910D24F3BE4A548}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -232,11 +240,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{690F5057D68F627C}" {
+  CRF_SlottingGroup "{6910D24F3BE4A4E9}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -247,11 +255,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{690F5057D68F610F}" {
+  CRF_SlottingGroup "{6910D24F3BE4A40C}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -262,11 +270,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
     RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6017}" {
+  CRF_SlottingGroup "{6910D24F3BE49BAD}" {
    m_sCallsign "Suicide Squad"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -275,7 +283,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6725}" {
+  CRF_SlottingGroup "{6910D24F3BE49B38}" {
    m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -284,7 +292,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{690F5057D68F6606}" {
+  CRF_SlottingGroup "{6910D24F3BE49A49}" {
    m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {

@@ -123,24 +123,33 @@ $grp CRF_VehicleSpawner {
   coords 4808.843 1 6672.038
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
-  m_sFactionKey "INDFOR"
+  m_sFactionKey "BLUFOR"
  }
  {
   coords 4807.269 1 6687.085
   angles 0 85.382 0
   m_rVehicle "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_D_2004.et"
-  m_sFactionKey "INDFOR"
+  m_sFactionKey "BLUFOR"
  }
  {
   coords 4807.677 1 6682.001
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
-  m_sFactionKey "INDFOR"
+  m_sFactionKey "BLUFOR"
  }
  {
   coords 4808.285 1 6676.937
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
-  m_sFactionKey "INDFOR"
+  m_sFactionKey "BLUFOR"
  }
+ {
+  coords 4806.19 1 6692.339
+  angles 0 85.382 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ coords 4796.988 1 6691.758
 }
