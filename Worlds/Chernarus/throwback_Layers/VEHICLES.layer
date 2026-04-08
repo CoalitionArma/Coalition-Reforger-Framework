@@ -1,0 +1,8 @@
+$grp Vehicle : "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et" {
+ M1151_armed_M2HB1 {
+  coords 5982.188 5.75 2151.121
+ }
+ M1151_armed_M2HB2 {
+  coords 5987.411 5.75 2150.952
+ }
+}
