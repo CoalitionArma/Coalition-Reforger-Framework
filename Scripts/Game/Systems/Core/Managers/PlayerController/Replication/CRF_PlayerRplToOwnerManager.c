@@ -141,6 +141,36 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
+	//! Public wrapper called from client-side chat command callbacks in CRF_PropHuntGamemode.
+	//! Fires RpcDo_AdminPropHuntCommand through the base class so the RPC table entry is
+	//! always registered on dedicated servers.
+	void RequestAdminCommand(string cmd, string param)
+	{
+		Rpc(RpcDo_AdminPropHuntCommand, cmd, param);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_AdminPropHuntCommand(string cmd, string param)
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		// Re-validate admin status on the server
+		if (!SCR_Global.IsAdmin(playerId))
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleAdminCommand(playerId, cmd, param);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Client calls this to request transforming into a prop disguise.
 	//! Placed here (base class) instead of in the modded PropHunt class so the
 	//! RPC index is part of the original class's RPC table and always works on

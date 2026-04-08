@@ -179,6 +179,100 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		super.OnPostInit(owner);
 		m_sInstance = this;
 		SetEventMask(owner, EntityEvent.FRAME);
+
+		// Register admin chat commands on the local client after initialisation.
+		// Chat command invokers fire locally when the player types /cmd in chat.
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			GetGame().GetCallqueue().CallLater(RegisterAdminChatCommands, 1000, false);
+		#endif
+	}
+
+	//------------------------------------------------------------
+	// Admin chat commands — registration (client-side only) and
+	// callbacks that forward the request to the server via RPC.
+	// Commands: /ph_status  /ph_skip  /ph_end_round [props|hunters]
+	//           /ph_restart  /ph_reset_prop [name]  /ph_add_time [s]
+	//------------------------------------------------------------
+	protected void RegisterAdminChatCommands()
+	{
+		SCR_ChatPanelManager chatMgr = SCR_ChatPanelManager.GetInstance();
+		if (!chatMgr)
+			return;
+
+		chatMgr.GetCommandInvoker("ph_status").Insert(OnChatCmd_Status);
+		chatMgr.GetCommandInvoker("ph_skip").Insert(OnChatCmd_Skip);
+		chatMgr.GetCommandInvoker("ph_end_round").Insert(OnChatCmd_EndRound);
+		chatMgr.GetCommandInvoker("ph_restart").Insert(OnChatCmd_Restart);
+		chatMgr.GetCommandInvoker("ph_reset_prop").Insert(OnChatCmd_ResetProp);
+		chatMgr.GetCommandInvoker("ph_add_time").Insert(OnChatCmd_AddTime);
+	}
+
+	protected void OnChatCmd_Status(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (mgr)
+			mgr.RequestAdminCommand("status", "");
+	}
+
+	protected void OnChatCmd_Skip(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (mgr)
+			mgr.RequestAdminCommand("skip", "");
+	}
+
+	protected void OnChatCmd_EndRound(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!mgr)
+			return;
+		string param = data;
+		param.TrimInPlace();
+		mgr.RequestAdminCommand("end_round", param);
+	}
+
+	protected void OnChatCmd_Restart(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (mgr)
+			mgr.RequestAdminCommand("restart", "");
+	}
+
+	protected void OnChatCmd_ResetProp(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!mgr)
+			return;
+		string param = data;
+		param.TrimInPlace();
+		if (param.IsEmpty())
+			return;
+		mgr.RequestAdminCommand("reset_prop", param);
+	}
+
+	protected void OnChatCmd_AddTime(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (!mgr)
+			return;
+		string param = data;
+		param.TrimInPlace();
+		if (param.IsEmpty())
+			return;
+		mgr.RequestAdminCommand("add_time", param);
 	}
 
 	//------------------------------------------------------------
@@ -1398,6 +1492,215 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ApplyPropTransformEnabled(enable);
+	}
+
+	//------------------------------------------------------------
+	// Admin command dispatcher — called server-side from
+	// CRF_PlayerRplToOwnerManager.RpcDo_AdminPropHuntCommand.
+	// adminPlayerId is used to send status/error replies back to the admin.
+	//------------------------------------------------------------
+	void HandleAdminCommand(int adminPlayerId, string cmd, string param)
+	{
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		#endif
+
+		if (cmd == "status")
+			AdminStatus(adminPlayerId);
+		else if (cmd == "skip")
+			AdminSkipPhase(adminPlayerId);
+		else if (cmd == "end_round")
+			AdminEndRound(adminPlayerId, param);
+		else if (cmd == "restart")
+			AdminRestart(adminPlayerId);
+		else if (cmd == "reset_prop")
+			AdminResetProp(adminPlayerId, param);
+		else if (cmd == "add_time")
+			AdminAddTime(adminPlayerId, param);
+	}
+
+	//------------------------------------------------------------
+	// /ph_status — sends the admin a state summary via hint.
+	//------------------------------------------------------------
+	protected void AdminStatus(int adminPlayerId)
+	{
+		string phaseStr;
+		switch (m_ePhase)
+		{
+			case CRF_EPropHuntPhase.WARMUP:   phaseStr = "WARMUP";   break;
+			case CRF_EPropHuntPhase.GRACE:    phaseStr = "GRACE";    break;
+			case CRF_EPropHuntPhase.HUNT:     phaseStr = "HUNT";     break;
+			case CRF_EPropHuntPhase.ROUNDEND: phaseStr = "ROUNDEND"; break;
+			case CRF_EPropHuntPhase.GAMEEND:  phaseStr = "GAMEEND";  break;
+		}
+
+		string msg = string.Format(
+			"[PH] Round %1/%2 | Phase: %3 | Timer: %4s | Props: %5 alive | Hunters: %6 alive | Score: P%7 - H%8",
+			m_iCurrentRound, m_iTotalRounds,
+			phaseStr,
+			Math.Floor(m_fPhaseTimer),
+			m_aAliveProps.Count(),
+			m_aAliveHunters.Count(),
+			m_iPropsWins,
+			m_iHuntersWins
+		);
+
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		if (bm)
+			bm.SendHint(msg, adminPlayerId);
+	}
+
+	//------------------------------------------------------------
+	// /ph_skip — skips the current phase immediately.
+	//------------------------------------------------------------
+	protected void AdminSkipPhase(int adminPlayerId)
+	{
+		m_bPhaseTimerActive = false;
+		m_fPhaseTimer = 0;
+		Replication.BumpMe();
+		OnPhaseTimerExpired();
+
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		if (bm)
+			bm.SendHint("[PH Admin] Phase skipped.", adminPlayerId);
+	}
+
+	//------------------------------------------------------------
+	// /ph_end_round [props|hunters] — force-ends the current round.
+	// No argument or unrecognised value = draw.
+	//------------------------------------------------------------
+	protected void AdminEndRound(int adminPlayerId, string param)
+	{
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+
+		if (m_bRoundEndPending)
+		{
+			if (bm)
+				bm.SendHint("[PH Admin] Round end already pending.", adminPlayerId);
+			return;
+		}
+
+		string winner = "";
+		if (param == "props")
+			winner = m_sPropsTeamKey;
+		else if (param == "hunters")
+			winner = m_sHuntersTeamKey;
+
+		EndRound(winner);
+	}
+
+	//------------------------------------------------------------
+	// /ph_restart — resets all counters and restarts from round 1.
+	//------------------------------------------------------------
+	protected void AdminRestart(int adminPlayerId)
+	{
+		m_bRoundEndPending  = false;
+		m_bPhaseTimerActive = false;
+		m_iCurrentRound     = 1;
+		m_iPropsWins        = 0;
+		m_iHuntersWins      = 0;
+		Replication.BumpMe();
+
+		BroadcastMessage("[Admin] PropHunt restarted from round 1.");
+		BeginRound();
+	}
+
+	//------------------------------------------------------------
+	// /ph_reset_prop <playername> — untransforms a specific prop.
+	// First player whose name contains the (case-insensitive) param
+	// is matched.
+	//------------------------------------------------------------
+	protected void AdminResetProp(int adminPlayerId, string param)
+	{
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		PlayerManager pm = GetGame().GetPlayerManager();
+		if (!pm)
+			return;
+
+		array<int> allPlayers = {};
+		pm.GetPlayers(allPlayers);
+
+		string needle = param;
+		needle.ToLower();
+		int targetId = -1;
+
+		foreach (int pid : allPlayers)
+		{
+			string name = pm.GetPlayerName(pid);
+			name.ToLower();
+			if (name.Contains(needle))
+			{
+				targetId = pid;
+				break;
+			}
+		}
+
+		if (targetId < 0)
+		{
+			if (bm)
+				bm.SendHint(string.Format("[PH Admin] No player found matching '%1'.", param), adminPlayerId);
+			return;
+		}
+
+		if (!IsPlayerTransformed(targetId))
+		{
+			if (bm)
+				bm.SendHint(string.Format("[PH Admin] '%1' is not transformed.", pm.GetPlayerName(targetId)), adminPlayerId);
+			return;
+		}
+
+		ClearPlayerProp(targetId);
+		SetPropCharacterVisible(targetId, true);
+
+		// Unfreeze in case hunt phase had locked their movement.
+		IEntity character = pm.GetPlayerControlledEntity(targetId);
+		if (character)
+		{
+			SCR_CharacterControllerComponent charCtrl = SCR_CharacterControllerComponent.Cast(
+				character.FindComponent(SCR_CharacterControllerComponent));
+			if (charCtrl)
+			{
+				charCtrl.SetDisableMovementControls(false);
+				charCtrl.SetDisableWeaponControls(false);
+			}
+		}
+
+		if (bm)
+			bm.SendHint(string.Format("[PH Admin] Reset prop for '%1'.", pm.GetPlayerName(targetId)), adminPlayerId);
+	}
+
+	//------------------------------------------------------------
+	// /ph_add_time <seconds> — adds time to the active phase timer.
+	// Only works during GRACE or HUNT phases.
+	//------------------------------------------------------------
+	protected void AdminAddTime(int adminPlayerId, string param)
+	{
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+
+		if (m_ePhase != CRF_EPropHuntPhase.GRACE && m_ePhase != CRF_EPropHuntPhase.HUNT)
+		{
+			if (bm)
+				bm.SendHint("[PH Admin] /ph_add_time only works during GRACE or HUNT.", adminPlayerId);
+			return;
+		}
+
+		int seconds = param.ToInt();
+		if (seconds <= 0)
+		{
+			if (bm)
+				bm.SendHint("[PH Admin] Usage: /ph_add_time <seconds>", adminPlayerId);
+			return;
+		}
+
+		m_fPhaseTimer += seconds;
+		m_bPhaseTimerActive = true;
+		Replication.BumpMe();
+
+		BroadcastMessage(string.Format("[Admin] +%1 seconds added to the phase timer.", seconds));
+
+		if (bm)
+			bm.SendHint(string.Format("[PH Admin] Added %1s. New timer: %2s.", seconds, Math.Floor(m_fPhaseTimer)), adminPlayerId);
 	}
 
 	//------------------------------------------------------------
