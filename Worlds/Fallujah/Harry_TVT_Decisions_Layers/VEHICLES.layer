@@ -120,31 +120,31 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "INDFOR"
  }
  {
-  coords 4808.843 1 6672.038
+  coords 4808.089 1 6678.592
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4807.269 1 6687.085
+  coords 4806.516 1 6693.639
   angles 0 85.382 0
   m_rVehicle "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_D_2004.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4807.677 1 6682.001
+  coords 4806.923 1 6688.555
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4808.285 1 6676.937
+  coords 4807.532 1 6683.491
   angles 0 85.382 0
   m_rVehicle "{6CE3EDFFC4E8789D}Prefabs/Vehicles/Wheeled/M998/M1025_D_2004_V1.et"
   m_sFactionKey "BLUFOR"
  }
  {
-  coords 4806.19 1 6692.339
+  coords 4805.437 1 6698.893
   angles 0 85.382 0
   m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
   m_sFactionKey "BLUFOR"

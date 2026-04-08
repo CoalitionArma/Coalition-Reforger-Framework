@@ -67,7 +67,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "BLUFOR have located an HVT in the marked region of Fallujah. "\
    ""\
    "BLUFOR Composition: Moto Inf"\
-   "BLUFOR Assets: LAVs, Mortars w/ PGMs, Limited Air Strikes"\
+   "BLUFOR Assets: LAVs, Mortars w/ PGMs, Limited Air Strikes, Recon"\
    ""\
    "OPFOR Composition:  Inf"\
    "OPFOR Assets: Unknown"\
@@ -118,7 +118,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{69116B4BF1803D9F}" {
+  CRF_SlottingGroup "{691173B27F82421A}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -128,7 +128,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18033BD}" {
+  CRF_SlottingGroup "{691173B27F824083}" {
    m_sCallsign "Recon"
    m_FlagType SNIPER
    m_aSlots {
@@ -136,7 +136,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18032F4}" {
+  CRF_SlottingGroup "{691173B27F824027}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -151,7 +151,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18031D6}" {
+  CRF_SlottingGroup "{691173B27F82475F}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -166,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69116B4BF180310B}" {
+  CRF_SlottingGroup "{691173B27F8246F7}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +181,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69116B4BF180306B}" {
+  CRF_SlottingGroup "{691173B27F824613}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,18 +196,22 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18037A1}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
+  CRF_SlottingGroup "{691173B27F8245BB}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIC
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    SNIPER
+    GRENADIER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18036DE}" {
+  CRF_SlottingGroup "{691173B27F8244E6}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {
@@ -220,7 +224,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{69116B4BF180357B}" {
+  CRF_SlottingGroup "{691173B27F823BB9}" {
    m_sCallsign "Cell Lead"
    m_FlagType SIGNAL
    m_aSlots {
@@ -228,7 +232,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69116B4BF18034B7}" {
+  CRF_SlottingGroup "{691173B27F823ADD}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -243,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69116B4BF1802BE2}" {
+  CRF_SlottingGroup "{691173B27F823A06}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -258,7 +262,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69116B4BF1802B20}" {
+  CRF_SlottingGroup "{691173B27F8239AD}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -273,7 +277,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69116B4BF1802A75}" {
+  CRF_SlottingGroup "{691173B27F8238D3}" {
    m_sCallsign "Suicide Squad"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -282,7 +286,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18029AF}" {
+  CRF_SlottingGroup "{691173B27F82385A}" {
    m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -291,7 +295,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{69116B4BF18028CD}" {
+  CRF_SlottingGroup "{691173B27F823FF4}" {
    m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {

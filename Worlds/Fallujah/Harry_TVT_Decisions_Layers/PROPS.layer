@@ -202,6 +202,12 @@ $grp CRF_VehicleSpawner {
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
  }
+ {
+  coords 4809.068 1 6671.861
+  angles 0 86.075 0
+  m_rVehicle "{4EF93A3807E3C000}Prefabs/Vehicles/Wheeled/LAV25/LAV25_D_2004.et"
+  m_sFactionKey "BLUFOR"
+ }
 }
 $grp ParticleEffectEntity {
  {
