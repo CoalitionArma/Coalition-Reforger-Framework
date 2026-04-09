@@ -2360,7 +2360,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		#ifdef WORKBENCH
 		RpcDo_DestroyArtyGun(id);
 		#else
-		Rpc(RpcDo_DestroyArtyGun. id);
+		Rpc(RpcDo_DestroyArtyGun, id);
 		#endif
 	}
 	

@@ -16,7 +16,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_Gamemode m_Gamemode;
 	[RplProp()] int m_iGunsDestroyed = 0;
 	[RplProp()] int m_iActiveObjective = 0;
-	[RplProp()] int m_iTimeOnObjective = 0;
+	[RplProp()] int m_iTimeOnObjective = 61;
 	//0 Relay Station
 	//1 SME Church
 	//2 Town south of SME

@@ -4,6 +4,7 @@ BaseGameTriggerEntity OBJ2 {
  "	CRF_GamemodeManager m_GamemodeManager;"\
  "	CRF_CapturePointDisplay m_CapturePointDisplay;"\
  "	static int OBJECTIVE_INT = 0;"\
+ "	float m_fBuffer = 0;"\
  "	"\
  "	void SetHUDVisible(bool input)"\
  "	{"\
@@ -16,7 +17,6 @@ BaseGameTriggerEntity OBJ2 {
  "			m_HUDManager = SCR_HUDManagerComponent.Cast(pc.FindComponent(SCR_HUDManagerComponent));"\
  "		}"\
  "		SCR_InfoDisplay infoDisplay = m_HUDManager.FindInfoDisplay(CRF_CapturePointDisplay);"\
- "		Print(infoDisplay);"\
  "		if (!infoDisplay)"\
  "			return;"\
  "				"\
@@ -26,64 +26,174 @@ BaseGameTriggerEntity OBJ2 {
  "			return;"\
  "				"\
  "		m_CapturePointDisplay.m_bShow = input;"\
+ "	}"\
+ "	"\
+ "	void ObjectiveWon()"\
+ "	{"\
+ "		m_GamemodeManager.AdvanceObjective();"\
+ "		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();"\
+ "		if (broadcastMgr)"\
+ "        	broadcastMgr.PopUpNotification(10, \"The German Relay Station has been captured by the US!\");"\
+ "	}"\
+ "	"\
+ "	void ServerChecks()"\
+ "	{"\
+ "		QueryEntitiesInside();"\
+ "		"\
+ "		if (!m_GamemodeManager)"\
+ "			m_GamemodeManager = CRF_GamemodeManager.GetInstance();"\
+ "		"\
+ "		array<IEntity> entities = {};"\
+ "		GetEntitiesInside(entities);"\
+ "		"\
+ "		float opforPlayers = 0;"\
+ "		float bluforPlayers = 0;"\
+ "		foreach (IEntity entity: entities)"\
+ "		{"\
+ "			if (!entity.FindComponent(FactionAffiliationComponent))"\
+ "				continue;"\
+ "			"\
+ "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+ "			if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
+ "				bluforPlayers++;"\
+ "			else if (factComp.GetAffiliatedFactionKey() == \"OPFOR\")"\
+ "				opforPlayers++;"\
+ "		}"\
+ "		"\
+ "		float bluforPercent;"\
+ "		float opforPercent;"\
+ "		if (bluforPlayers == 0 && opforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 0;"\
+ "			opforPercent = 0;"\
+ "		}"\
+ "		else if (bluforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 0;"\
+ "			opforPercent = 100;"\
+ "		}"\
+ "		else if (opforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 100;"\
+ "			opforPercent = 0;"\
+ "		}"\
+ "		else"\
+ "		{"\
+ "			bluforPercent = bluforPlayers / (opforPlayers + bluforPlayers) * 100;"\
+ "			opforPercent = opforPlayers / (opforPlayers + bluforPlayers) * 100;"\
+ "		}"\
+ "		"\
+ "		"\
+ "		"\
+ "		if (bluforPercent >= 70)"\
+ "		{"\
+ "			if (m_GamemodeManager.m_iTimeOnObjective <= 0)"\
+ "				ObjectiveWon();"\
+ "			else if (m_GamemodeManager.m_iTimeOnObjective <= 60)"\
+ "				m_GamemodeManager.SetTime(m_GamemodeManager.m_iTimeOnObjective - 1);"\
+ "			else if (m_GamemodeManager.m_iTimeOnObjective > 60)"\
+ "				m_GamemodeManager.SetTime(60);"\
+ "		}"\
+ "		else"\
+ "		{"\
+ "			if (m_GamemodeManager.m_iTimeOnObjective != 61)"\
+ "				m_GamemodeManager.SetTime(61);"\
+ "		}"\
+ "	}"\
+ "	"\
+ "	void ClientChecks()"\
+ "	{"\
+ "		//This only needs to happen every 5 seconds on the server"\
+ "		//For some reason EOnFrame doesnt work with the trigger on the server so this is the solution"\
+ "		if (m_fBuffer < 4)"\
+ "		{"\
+ "			m_fBuffer += 1;"\
+ "			return;"\
+ "		}"\
+ "		else"\
+ "			m_fBuffer = 0;"\
+ "		"\
+ "		QueryEntitiesInside();"\
+ "	"\
+ "		array<IEntity> entities = {};"\
+ "		GetEntitiesInside(entities);"\
+ "		if(entities.Contains(SCR_PlayerController.GetLocalControlledEntity()))"\
+ "			SetHUDVisible(true);"\
+ "		else"\
+ "			SetHUDVisible(false);"\
+ "		"\
+ "		float opforPlayers = 0;"\
+ "		float bluforPlayers = 0;"\
+ "		foreach (IEntity entity: entities)"\
+ "		{"\
+ "			if (!entity.FindComponent(FactionAffiliationComponent))"\
+ "				continue;"\
+ "			"\
+ "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+ "			if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
+ "				bluforPlayers++;"\
+ "			else if (factComp.GetAffiliatedFactionKey() == \"OPFOR\")"\
+ "				opforPlayers++;"\
+ "		}"\
+ "		"\
+ "		float bluforPercent;"\
+ "		float opforPercent;"\
+ "		if (bluforPlayers == 0 && opforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 0;"\
+ "			opforPercent = 0;"\
+ "		}"\
+ "		else if (bluforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 0;"\
+ "			opforPercent = 100;"\
+ "		}"\
+ "		else if (opforPlayers == 0)"\
+ "		{"\
+ "			bluforPercent = 100;"\
+ "			opforPercent = 0;"\
+ "		}"\
+ "		else"\
+ "		{"\
+ "			bluforPercent = bluforPlayers / (opforPlayers + bluforPlayers) * 100;"\
+ "			opforPercent = opforPlayers / (opforPlayers + bluforPlayers) * 100;"\
+ "		}"\
+ "		"\
+ "		m_CapturePointDisplay.m_fBLUFORRatio = bluforPercent;"\
+ "		m_CapturePointDisplay.m_fOPFORRatio = opforPercent;"\
  "	}"
  EOnInit ""\
- "//		if (!Replication.IsServer())"\
- "//		{"\
+ "		if (!Replication.IsServer())"\
+ "		{"\
  "			PlayerController pc = GetGame().GetPlayerController();"\
  "			if (!pc)"\
  "				return;"\
  "			"\
  "			m_HUDManager = SCR_HUDManagerComponent.Cast(pc.FindComponent(SCR_HUDManagerComponent));"\
- "//		}"\
+ "		}"\
  "	"
  TriggerShapeType Sphere
  SphereRadius 65.7
  DrawShape 1
  PeriodicQueries 1
- UpdatePeriod 5
  OnQueryFinished ""\
  "		if (!m_GamemodeManager)"\
  "			m_GamemodeManager = CRF_GamemodeManager.GetInstance();"\
  "		"\
  "		if (m_GamemodeManager.m_iActiveObjective > OBJECTIVE_INT)"\
+ "		{"\
+ "			SetHUDVisible(false);"\
  "			delete this;"\
+ "		}"\
  "		"\
  "		if (m_GamemodeManager.m_iActiveObjective != OBJECTIVE_INT)"\
  "			return;"\
  "		"\
- "//		if (!Replication.IsServer())"\
- "//		{"\
- "			QueryEntitiesInside();"\
- "		"\
- "			array<IEntity> entities = {};"\
- "			GetEntitiesInside(entities);"\
- "			if(entities.Contains(SCR_PlayerController.GetLocalControlledEntity()))"\
- "				SetHUDVisible(true);"\
- "			else"\
- "				SetHUDVisible(false);"\
- "			"\
- "			float opforPlayers = 0;"\
- "			float bluforPlayers = 0;"\
- "			foreach (IEntity entity: entities)"\
- "			{"\
- "				if (!entity.FindComponent(FactionAffiliationComponent))"\
- "					continue;"\
- "				"\
- "				FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
- "				if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
- "					bluforPlayers++;"\
- "				else if (factComp.GetAffiliatedFactionKey() == \"OPFOR\")"\
- "					opforPlayers++;"\
- "			}"\
- "			"\
- "			float bluforPercent = bluforPlayers / (opforPlayers + bluforPlayers);"\
- "			float opforPercent = opforPlayers / (opforPlayers + bluforPlayers);"\
- "			"\
- "			m_CapturePointDisplay.m_fBLUFORRatio = bluforPercent * 100;"\
- "			m_CapturePointDisplay.m_fOPFORRatio = opforPercent * 100;"\
- "		}"\
- "//	"
+ "		if (!Replication.IsServer())"\
+ "			ClientChecks();"\
+ "		else"\
+ "			ServerChecks();"\
+ "	"
 }
 $grp Vehicle : "{156AEAEFD0506561}Prefabs/Vehicles/Wheeled/LAV25/LAV25_Inert.et" {
  LAV25_Inert1 {

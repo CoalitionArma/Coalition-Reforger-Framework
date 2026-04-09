@@ -65,10 +65,10 @@ class CRF_CapturePointDisplay : SCR_InfoDisplayExtended
 		m_OPFORProgress.SetCurrent(m_fDisplayedOPFORRatio);
 		
 		
-		if (m_GamemodeManager.m_iTime > 0)
+		if (m_GamemodeManager.m_iTimeOnObjective < 61)
 		{
 			m_PanelWidget.SetVisible(true);
-			m_TimeText.SetText(m_GamemodeManager.m_iTime.ToString());
+			m_TimeText.SetText(m_GamemodeManager.m_iTimeOnObjective.ToString());
 		}
 		else
 			m_PanelWidget.SetVisible(false);
