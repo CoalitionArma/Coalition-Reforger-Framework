@@ -382,7 +382,7 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		string factionKey = m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
 		int tickets = GetFactionTickets(factionKey);
-		if ((tickets <= 0 && tickets != -1) || !m_bCurrentRespawnEnabled || !IsRespawnTimeAllowed() || GetFactionSpawnpoints(factionKey).IsEmpty())
+		if (!m_bCurrentRespawnEnabled || GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
 			m_fRespawnTimer = 0;
