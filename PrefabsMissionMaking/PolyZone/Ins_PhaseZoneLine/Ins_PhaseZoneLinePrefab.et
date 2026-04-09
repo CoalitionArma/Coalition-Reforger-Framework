@@ -2,12 +2,20 @@ PolylineShapeEntity {
  ID "68A135AF9841E1E4"
  components {
   CRF_InsurgencyPolyZone "{68A135AE3AE85965}" {
+   m_mPolygonTexture ""
+   m_cPolygonColor 0 0 0 1
+   m_cPolygonBorderColor 0 0 0 1
+   m_bLineMode 1
+   m_aVisibleForFactions {
+    "INDFOR"
+   }
+   m_Image "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
   }
   RplComponent "{68A135AF9841E1AE}" {
    Streamable Disabled
   }
  }
  coords 3.191 -2.002 -0.936
- IsClosed 1
+ IsClosed 0
  LineColor 0 0 0 1
 }
