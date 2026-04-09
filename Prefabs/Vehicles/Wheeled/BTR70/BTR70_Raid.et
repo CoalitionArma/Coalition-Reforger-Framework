@@ -1,0 +1,132 @@
+Vehicle : "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_RaidItemComponent "{6906180E26F834D6}" {
+   m_iSupplyValue 40
+   m_sItemName "BTR-70"
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+    }
+    CargoCompartmentSlot Passenger_r02 {
+    }
+    CargoCompartmentSlot Passenger_l03 {
+    }
+    CargoCompartmentSlot Passenger_r03 {
+    }
+    CargoCompartmentSlot Passenger_l04 {
+    }
+    CargoCompartmentSlot Passenger_r04 {
+    }
+    CargoCompartmentSlot Passenger_l05 {
+    }
+    CargoCompartmentSlot Passenger_r05 {
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_BTR70_Name"
+    Icon "{95F49CBE9FF7A0CB}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Apc.edds"
+    IconSetName ""
+    m_Image "{01290933E5CEDEF9}UI/Textures/EditorPreviews/Vehicles/Wheeled/BTR70/BTR70.edds"
+    m_sFaction "USSR"
+    m_aAuthoredLabels + {
+     TRAIT_ARMOR TRAIT_ARMED TRAIT_PASSENGERS_LARGE TRAIT_SUPPLYSTORAGE_SMALL TRAIT_AMPHIBIOUS VEHICLE_APC
+    }
+    m_aAutoLabels {
+     FACTION_USSR SIZE_M
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 975
+     }
+     SCR_EntityBudgetValue "{6906180FD4B0C9AE}" {
+      m_BudgetType RANK_SERGEANT
+      m_Value 3
+     }
+    }
+    m_bEditorPlaceAsOneGroup 0
+    m_aOccupantFillCompartmentTypes {
+     CARGO PILOT TURRET
+    }
+    m_aCrewEntityBudgetCost {
+     SCR_EntityBudgetValue "{6906180FD4B0C918}" {
+      m_BudgetType AI
+      m_Value 3
+     }
+    }
+    m_aPassengerEntityBudgetCost {
+     SCR_EntityBudgetValue "{6906180FD4B0C91A}" {
+      m_BudgetType AI
+      m_Value 6
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6906180FD4B0C923}" {
+     SlotTemplate InventoryStorageSlot ak74ammo {
+      Prefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+     }
+     NumSlots 24
+    }
+    MultiSlotConfiguration "{6906180FD4B0C92C}" {
+     SlotTemplate InventoryStorageSlot rpk74ammo {
+      Prefab "{D78C667F59829717}Prefabs/Weapons/Magazines/Magazine_545x39_RPK_45rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{6906180FD4B0C92E}" {
+     SlotTemplate InventoryStorageSlot grenades {
+      Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+     }
+     NumSlots 12
+    }
+    MultiSlotConfiguration "{6906180FD4B0C929}" {
+     SlotTemplate InventoryStorageSlot smokes {
+      Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{6906180FD4B0C928}" {
+     SlotTemplate InventoryStorageSlot gp25ammo {
+      Prefab "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{6906180FD4B0C92B}" {
+     SlotTemplate InventoryStorageSlot vog25flares {
+      Prefab "{906F07BD0366E08F}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_VG40OP_White.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{6906180FD4B0C930}" {
+     SlotTemplate InventoryStorageSlot RPG22 {
+      Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+     }
+     NumSlots 2
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo AmmoStorage {
+     PivotID "v_root"
+     Prefab "{0A21DC21B1D23732}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Magazines/VehPart_BTR70_AmmoStorage_PKMT_KVPT.et"
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    SCR_ResourceContainerVehicleLoadAction "{5DAD7519D5DCEEC7}" {
+    }
+    SCR_ResourceContainerVehicleUnloadAction "{5DAD7519C925851B}" {
+    }
+   }
+  }
+ }
+}

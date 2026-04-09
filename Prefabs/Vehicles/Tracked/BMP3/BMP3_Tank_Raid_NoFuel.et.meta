@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{50E833EA0EB81931}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID_Supply.et"
+ Name "{FB43A6152B25326F}Prefabs/Vehicles/Tracked/BMP3/BMP3_Tank_Raid_NoFuel.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
