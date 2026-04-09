@@ -886,6 +886,19 @@ class CRF_RespawnManager : ScriptComponent
 		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
 		Replication.BumpMe();
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Explicitly enable or disable voluntary player respawn.
+	//! Unlike ToggleRespawn, this is idempotent — calling SetRespawnEnabled(false) twice
+	//! does not accidentally re-enable respawn. Used by PropHunt to suppress mid-round
+	//! respawn screens while keeping the forced RespawnAllSides() round-reset path intact.
+	void SetRespawnEnabled(bool enabled)
+	{
+		if (m_bCurrentRespawnEnabled == enabled)
+			return;
+		m_bCurrentRespawnEnabled = enabled;
+		Replication.BumpMe();
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 CLIENT SIDE REPLICATION METHODS

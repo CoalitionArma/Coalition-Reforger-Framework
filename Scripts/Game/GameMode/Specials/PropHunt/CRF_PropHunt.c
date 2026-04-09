@@ -126,6 +126,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	// A player appears in this map only after they have successfully transformed.
 	protected ref map<int, IEntity> m_mPlayerToPropEntity = new map<int, IEntity>();
 
+	// Tracks the prefab resource used by each transformed prop player.
+	// Needed to re-send RpcDo_ClientSpawnProp to JIP clients who missed the original broadcast.
+	protected ref map<int, ResourceName> m_mPlayerToPropPrefab = new map<int, ResourceName>();
+
 	// Client-side visual prop entities, keyed by player ID.
 	// World prop prefabs don't have RplComponent so server-spawned entities are NOT
 	// replicated to clients automatically. Each client spawns its own local copy via
@@ -408,6 +412,12 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (phys)
 			phys.ChangeSimulationState(SimulationState.NONE);
 
+		// Prevent scene-tree relinking when SetOrigin is called at 10 Hz.
+		// UPDATE_LINK is set internally on every SetOrigin call and triggers
+		// a relink that briefly removes the entity from its node (1-frame flicker).
+		// NO_LINK stops the entity from ever being inserted into the scene tree.
+		propEnt.SetFlags(EntityFlags.NO_LINK, true);
+
 		m_mClientPropEntities.Set(playerId, propEnt);
 	}
 
@@ -428,6 +438,43 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		m_mClientPropEntities.Remove(playerId);
 		if (propEnt)
 			SCR_EntityHelper.DeleteEntityAndChildren(propEnt);
+	}
+
+	//------------------------------------------------------------
+	// RpcDo_JIPSyncPropEntity — reliable broadcast sent at JIP time
+	// to give late-joining clients a prop entity they missed during
+	// the original RpcDo_ClientSpawnProp broadcast.
+	// Clients that already have an entity for this player silently
+	// skip the spawn, so the RPC is safe to broadcast to everyone.
+	//------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_JIPSyncPropEntity(int propPlayerId, ResourceName prefab, vector pos, float yaw)
+	{
+		#ifndef WORKBENCH
+		if (RplSession.Mode() != RplMode.Client)
+			return;
+		#endif
+
+		// Only create if this client doesn't already have the entity.
+		if (m_mClientPropEntities.Contains(propPlayerId))
+			return;
+
+		EntitySpawnParams sp = new EntitySpawnParams();
+		sp.TransformMode = ETransformMode.WORLD;
+		Math3D.AnglesToMatrix(Vector(yaw, 0, 0), sp.Transform);
+		sp.Transform[3] = pos;
+
+		IEntity propEnt = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), sp);
+		if (!propEnt)
+			return;
+
+		Physics phys = propEnt.GetPhysics();
+		if (phys)
+			phys.ChangeSimulationState(SimulationState.NONE);
+
+		propEnt.SetFlags(EntityFlags.NO_LINK, true);
+
+		m_mClientPropEntities.Set(propPlayerId, propEnt);
 	}
 
 	//------------------------------------------------------------
@@ -489,6 +536,13 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		#endif
+
+		// Disable voluntary respawn for the entire PropHunt session.
+		// Players who die go straight to spectator via CRF_Gamemode.InitilizePlayer.
+		// Round resets use the forced RespawnAllSides() path which ignores this flag.
+		CRF_RespawnManager phRm = CRF_RespawnManager.GetInstance();
+		if (phRm)
+			phRm.SetRespawnEnabled(false);
 
 		m_iCurrentRound  = 1;
 		m_iPropsWins     = 0;
@@ -1186,10 +1240,16 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------
-	// SetPropCharacterVisible — broadcasts a VISIBLE flag change
-	// for a prop player's character entity to all clients.
-	// Entity flag changes from a Server-only RPC are NOT replicated
-	// automatically, so every machine must apply them explicitly.
+	// SetPropCharacterVisible — broadcasts VISIBLE flag and physics
+	// simulation state for a prop player's character entity to all
+	// clients. Hiding makes the character invisible and kinematic
+	// (SimulationState.NONE) so hunters do not collide with an
+	// invisible capsule. TRACEABLE is not touched — bullet raycasts
+	// must still hit the hidden character for prop-kill detection.
+	// Restoring sets VISIBLE back and re-enables DYNAMIC simulation
+	// so the character is a normal collidable entity again.
+	// Entity flag / physics changes are not auto-replicated; every
+	// machine must apply them via this broadcast RPC.
 	//------------------------------------------------------------
 	void SetPropCharacterVisible(int playerId, bool visible)
 	{
@@ -1213,10 +1273,24 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (!character)
 			return;
 
+		Physics phys = character.GetPhysics();
+
 		if (visible)
+		{
 			character.SetFlags(EntityFlags.VISIBLE, true);
+			// Restore full physics simulation so the character has solid collision again.
+			if (phys)
+				phys.ChangeSimulationState(SimulationState.SIMULATION);
+		}
 		else
+		{
 			character.ClearFlags(EntityFlags.VISIBLE, true);
+			// COLLISION keeps the physics shape active (bullets register hits) but
+			// disables the dynamic simulation so hunters do not push against an
+			// invisible capsule. TRACEABLE is also kept for raycast-based hit detection.
+			if (phys)
+				phys.ChangeSimulationState(SimulationState.COLLISION);
+		}
 	}
 
 	//------------------------------------------------------------
@@ -1450,8 +1524,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (propPhys)
 			propPhys.ChangeSimulationState(SimulationState.NONE);
 
-		// Register the player↔entity pair (server-side).
+		// Register the player↔entity pair (server-side) and remember the prefab
+		// so JIP clients can be sent the entity via RpcDo_JIPSyncPropEntity later.
 		SetPlayerTransformed(playerId, propEnt);
+		m_mPlayerToPropPrefab.Set(playerId, prefab);
 
 		// Tell every client to spawn their own local visual copy.
 		// World prop prefabs lack RplComponent, so the server-spawned entity is not
@@ -1474,6 +1550,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		IEntity oldProp = m_mPlayerToPropEntity.Get(playerId);
 		m_mPlayerToPropEntity.Remove(playerId);
+		m_mPlayerToPropPrefab.Remove(playerId);
 		if (oldProp)
 			SCR_EntityHelper.DeleteEntityAndChildren(oldProp);
 
@@ -1811,10 +1888,129 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(propEnt);
 		}
 		m_mPlayerToPropEntity.Clear();
+		m_mPlayerToPropPrefab.Clear();
 
 		// Remove all client-side visual copies on all clients.
 		#ifndef WORKBENCH
 		Rpc(RpcDo_ClientClearAllProps);
 		#endif
+	}
+
+	//------------------------------------------------------------
+	// OnControllableSpawned — fires server-side whenever ANY entity
+	// spawns. Used to handle JIP players who join mid-round.
+	// A 1-second delay lets entity and player registration settle
+	// before we query faction / character state.
+	//------------------------------------------------------------
+	override void OnControllableSpawned(IEntity entity)
+	{
+		super.OnControllableSpawned(entity);
+
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		#endif
+
+		// Only relevant during active phases where round state is live.
+		if (m_ePhase != CRF_EPropHuntPhase.GRACE && m_ePhase != CRF_EPropHuntPhase.HUNT)
+			return;
+
+		GetGame().GetCallqueue().CallLater(HandleJIPSpawn, 1000, false, entity);
+	}
+
+	//------------------------------------------------------------
+	// HandleJIPSpawn — delayed callback from OnControllableSpawned.
+	// Applies all mid-round state (frozen/blackout, health bars,
+	// prop entity sync) to a JIP player whose character just became
+	// available.
+	//------------------------------------------------------------
+	protected void HandleJIPSpawn(IEntity entity)
+	{
+		if (!entity)
+			return;
+
+		// Re-check phase; round may have ended in the 1-second delay.
+		if (m_ePhase != CRF_EPropHuntPhase.GRACE && m_ePhase != CRF_EPropHuntPhase.HUNT)
+			return;
+
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId <= 0)
+			return;
+
+		SCR_FactionManager jipFactionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!jipFactionMgr)
+			return;
+
+		Faction jipFaction = jipFactionMgr.GetPlayerFaction(playerId);
+		if (!jipFaction)
+			return;
+
+		string jipFactionKey = jipFaction.GetFactionKey();
+		bool jipIsHunter = (jipFactionKey == m_sHuntersTeamKey);
+		bool jipIsProp   = (jipFactionKey == m_sPropsTeamKey);
+
+		// Register the player in the appropriate alive list if not already present.
+		// (They may have been in the list from CollectPlayerLists if they were slotted
+		// before the round started, but a genuine JIP will not be.)
+		if (jipIsHunter && !m_aAliveHunters.Contains(playerId))
+		{
+			m_aAliveHunters.Insert(playerId);
+			m_mHunterHealth.Set(playerId, m_iHunterMaxHealth);
+			Print(string.Format("[PropHunt] HandleJIPSpawn: added JIP hunter playerId=%1", playerId), LogLevel.NORMAL);
+		}
+		else if (jipIsProp && !m_aAliveProps.Contains(playerId))
+		{
+			m_aAliveProps.Insert(playerId);
+			Print(string.Format("[PropHunt] HandleJIPSpawn: added JIP prop playerId=%1", playerId), LogLevel.NORMAL);
+		}
+
+		// Apply phase-specific HUD / control state.
+		if (jipIsHunter)
+		{
+			if (m_ePhase == CRF_EPropHuntPhase.GRACE)
+			{
+				// Freeze and black out the JIP hunter during the hiding phase.
+				SetHunterFrozen(playerId, true);
+				BlackoutHunter(playerId, true);
+			}
+			else if (m_ePhase == CRF_EPropHuntPhase.HUNT)
+			{
+				// Show health bar and start tracking shots for the JIP hunter.
+				int jipHealth = m_iHunterMaxHealth;
+				if (m_mHunterHealth.Contains(playerId))
+					jipHealth = m_mHunterHealth.Get(playerId);
+				SendHunterHealthHint(playerId, jipHealth, false);
+				RegisterHunterShotEH(playerId);
+			}
+		}
+		else if (jipIsProp)
+		{
+			if (m_ePhase == CRF_EPropHuntPhase.GRACE)
+			{
+				// Enable the transform T-key for the JIP prop during grace.
+				EnablePropTransform(playerId, true);
+			}
+			// During HUNT, transform input stays disabled; the prop should hide.
+		}
+
+		// Sync all existing prop client entities to this new client.
+		// RpcDo_JIPSyncPropEntity is skipped by clients that already have the entity,
+		// so broadcasting it is safe and avoids flicker for existing players.
+		foreach (int existingPropId, IEntity existingPropEnt : m_mPlayerToPropEntity)
+		{
+			if (!existingPropEnt)
+				continue;
+			ResourceName jipPrefab = m_mPlayerToPropPrefab.Get(existingPropId);
+			if (!jipPrefab)
+				continue;
+			IEntity existingChar = GetGame().GetPlayerManager().GetPlayerControlledEntity(existingPropId);
+			if (!existingChar)
+				continue;
+			vector jipPos = existingChar.GetOrigin();
+			float jipYaw  = existingChar.GetYawPitchRoll()[0];
+			#ifndef WORKBENCH
+			Rpc(RpcDo_JIPSyncPropEntity, existingPropId, jipPrefab, jipPos, jipYaw);
+			#endif
+		}
 	}
 }

@@ -202,5 +202,115 @@ FrameWidgetClass {
     }
    }
   }
+  ImageWidgetClass "{AF1C001DC3D4E500}" {
+   Name "PreviewPanelBorder"
+   Slot FrameWidgetSlot "{AF1C001EC3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 264
+    OffsetLeft 264
+    PositionY -182
+    OffsetTop -182
+    SizeX 272
+    OffsetRight -536
+    SizeY 364
+    OffsetBottom -182
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{AF1C001FC3D4E500}" {
+   Name "PreviewPanelBg"
+   Slot FrameWidgetSlot "{AF1C0020C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 360
+    OffsetBottom -180
+   }
+   Color 0.05 0.06 0.09 0.97
+  }
+  ImageWidgetClass "{AF1C0021C3D4E500}" {
+   Name "PreviewTitleBar"
+   Slot FrameWidgetSlot "{AF1C0022C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 36
+    OffsetBottom 144
+   }
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{AF1C0023C3D4E500}" {
+   Name "PreviewTitleText"
+   Slot FrameWidgetSlot "{AF1C0024C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 36
+    OffsetBottom 144
+   }
+   Color 1 1 1 1
+   Text "PREVIEW"
+   "Font Size" 14
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C0025C3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ItemPreviewWidgetClass "{AF1C0026C3D4E500}" {
+   Name "PropPreview"
+   Slot FrameWidgetSlot "{AF1C0027C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 280
+    OffsetLeft 280
+    PositionY -134
+    OffsetTop -134
+    SizeX 240
+    OffsetRight -520
+    SizeY 240
+    OffsetBottom -106
+   }
+  }
+  TextWidgetClass "{AF1C0028C3D4E500}" {
+   Name "PreviewNameText"
+   Slot FrameWidgetSlot "{AF1C0029C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 268
+    OffsetLeft 268
+    PositionY 114
+    OffsetTop 114
+    SizeX 264
+    OffsetRight -532
+    SizeY 44
+    OffsetBottom -158
+   }
+   Color 0.90 0.92 1 1
+   Text ""
+   "Font Size" 14
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C002AC3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
  }
 }

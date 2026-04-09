@@ -26,43 +26,16 @@ FrameWidgetClass {
     }
    }
   }
-  ItemPreviewWidgetClass "{AF1D0005C3D4E500}" {
-   Name "PropPreview"
-   Slot FrameWidgetSlot "{AF1D0006C3D4E500}" {
-    PositionX 6
-    OffsetLeft 6
-    PositionY 4
-    OffsetTop 4
-    SizeX 82
-    OffsetRight -88
-    SizeY 82
-    OffsetBottom -86
-   }
-  }
-  ImageWidgetClass "{AF1D0007C3D4E500}" {
-   Name "Separator"
-   Slot FrameWidgetSlot "{AF1D0008C3D4E500}" {
-    PositionX 94
-    OffsetLeft 94
-    PositionY 10
-    OffsetTop 10
-    SizeX 1
-    OffsetRight -95
-    SizeY 70
-    OffsetBottom -80
-   }
-   Color 0.75 0.35 0 0.35
-  }
   TextWidgetClass "{AF1D0009C3D4E500}" {
    Name "EntryLabel"
    Slot FrameWidgetSlot "{AF1D000AC3D4E500}" {
-    PositionX 102
-    OffsetLeft 102
-    PositionY 16
-    OffsetTop 16
-    SizeX 370
-    OffsetRight -472
-    SizeY 28
+    PositionX 12
+    OffsetLeft 12
+    PositionY 14
+    OffsetTop 14
+    SizeX 450
+    OffsetRight -462
+    SizeY 30
     OffsetBottom -44
    }
    Color 0.90 0.92 1 1
@@ -80,12 +53,12 @@ FrameWidgetClass {
   TextWidgetClass "{AF1D000CC3D4E500}" {
    Name "EntryDistance"
    Slot FrameWidgetSlot "{AF1D000DC3D4E500}" {
-    PositionX 102
-    OffsetLeft 102
+    PositionX 12
+    OffsetLeft 12
     PositionY 50
     OffsetTop 50
-    SizeX 370
-    OffsetRight -472
+    SizeX 450
+    OffsetRight -462
     SizeY 22
     OffsetBottom -72
    }

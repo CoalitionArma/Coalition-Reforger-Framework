@@ -29,11 +29,18 @@ class CRF_PropHuntEntryButton : ScriptedWidgetComponent
 	float           m_fDistance;
 
 	ref ScriptInvoker m_OnClicked = new ScriptInvoker();
+	ref ScriptInvoker m_OnHovered = new ScriptInvoker();
 
 	override bool OnClick(Widget w, int x, int y, int button)
 	{
 		if (button == 0)
 			m_OnClicked.Invoke(this);
+		return false;
+	}
+
+	override bool OnMouseEnter(Widget w, int x, int y)
+	{
+		m_OnHovered.Invoke(this);
 		return false;
 	}
 }
@@ -89,6 +96,9 @@ class CRF_PropHuntTransformMenu
 	protected Widget                           m_wRoot;
 	protected VerticalLayoutWidget             m_wPropList;
 	protected SCR_CharacterControllerComponent m_CharCtrl;
+	protected ItemPreviewWidget                m_wSidePreview;
+	protected TextWidget                       m_wPreviewName;
+	protected ItemPreviewManagerEntity         m_PreviewMgr;
 
 	//------------------------------------------------------------
 	// Singleton accessor
@@ -137,7 +147,13 @@ class CRF_PropHuntTransformMenu
 			return;
 		}
 
-		m_wPropList = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("PropList"));
+		m_wPropList    = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("PropList"));
+		m_wSidePreview = ItemPreviewWidget.Cast(m_wRoot.FindAnyWidget("PropPreview"));
+		m_wPreviewName = TextWidget.Cast(m_wRoot.FindAnyWidget("PreviewNameText"));
+
+		ChimeraWorld chWorld = ChimeraWorld.CastFrom(GetGame().GetWorld());
+		if (chWorld)
+			m_PreviewMgr = chWorld.GetItemPreviewManager();
 
 		// Wire up the Cancel button so a mouse click also calls Close().
 		ButtonWidget cancelBtn = ButtonWidget.Cast(m_wRoot.FindAnyWidget("CancelButton"));
@@ -263,18 +279,6 @@ class CRF_PropHuntTransformMenu
 			if (distW)
 				distW.SetText(string.Format("%.1f m", se.m_fDist));
 
-			ItemPreviewWidget previewW = ItemPreviewWidget.Cast(entryWidget.FindAnyWidget("PropPreview"));
-			if (previewW)
-			{
-				ChimeraWorld chimeraWorld = ChimeraWorld.CastFrom(GetGame().GetWorld());
-				if (chimeraWorld)
-				{
-					ItemPreviewManagerEntity previewMgr = chimeraWorld.GetItemPreviewManager();
-					if (previewMgr)
-						previewMgr.SetPreviewItemFromPrefab(previewW, se.m_sPrefab);
-				}
-			}
-
 			ButtonWidget btn = ButtonWidget.Cast(entryWidget.FindAnyWidget("EntryButton"));
 			if (!btn)
 				continue;
@@ -286,7 +290,23 @@ class CRF_PropHuntTransformMenu
 			comp.m_sPrefab   = se.m_sPrefab;
 			comp.m_fDistance = se.m_fDist;
 			comp.m_OnClicked.Insert(OnEntryClicked);
+			comp.m_OnHovered.Insert(OnEntryHovered);
 		}
+	}
+
+	//------------------------------------------------------------
+	// Called when a list entry is hovered — updates the side preview
+	//------------------------------------------------------------
+	protected void OnEntryHovered(CRF_PropHuntEntryButton btn)
+	{
+		if (!btn || !btn.m_sPrefab)
+			return;
+
+		if (m_wSidePreview && m_PreviewMgr)
+			m_PreviewMgr.SetPreviewItemFromPrefab(m_wSidePreview, btn.m_sPrefab);
+
+		if (m_wPreviewName)
+			m_wPreviewName.SetText(ExtractDisplayName(btn.m_sPrefab));
 	}
 
 	//------------------------------------------------------------
