@@ -1,17 +1,30 @@
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 16040.523 255.594 9609.722
- {
-  CRF_ManualMarker {
-   ID "68682AC1849E53AF"
-   coords -897.703 -160.669 -1054.271
-  }
- }
+ coords 15117.706 87.123 8559.001
 }
-CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
- coords 16182.405 135.23 9290.326
- angles 0 65.989 0
- m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 16182.405 135.23 9290.326
+  angles 0 65.989 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 15895.112 139.477 8705.777
+  angles 0 3.357 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 13875.23 50.601 12116.475
+  angles 0 -6.943 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 15881.524 138.752 8804.851
+  m_rVehicle "{4473F8A55148AAE8}Prefabs/Vehicles/Helicopters/AH6M/LBQF_RED.et"
+ }
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 14263.896 50.906 11935.908
+}
+CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ coords 12236.438 41.687 9605.221
 }

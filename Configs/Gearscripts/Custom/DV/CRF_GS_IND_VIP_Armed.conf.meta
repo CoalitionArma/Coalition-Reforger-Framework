@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{237FA7C53BDE39C2}Configs/Gearscripts/Custom/DV/CRF_GS_IND_VIP_Armed.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

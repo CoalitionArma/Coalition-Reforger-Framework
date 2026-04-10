@@ -317,12 +317,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_HVI.conf"
-  m_bEnableShareableMarkers 0
+  m_rGearScript "{FC9C5C2561B31B01}Configs/Gearscripts/Custom/DV/CRF_GS_INDARMED.conf"
+  m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
-  m_bEnableRTORadios 0
+  m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_HVI.conf"
@@ -362,59 +362,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
 GameEntity hvt {
  coords 12226.154 43.712 9679.618
 }
-$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
- {
-  coords 15881.524 138.752 8804.851
-  m_rVehicle "{4473F8A55148AAE8}Prefabs/Vehicles/Helicopters/AH6M/LBQF_RED.et"
- }
- {
-  coords 13875.23 50.601 12116.475
-  angles 0 -6.943 0
-  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
- }
- {
-  coords 15895.112 139.477 8705.777
-  angles 0 3.357 0
-  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
- }
-}
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
- coords 15114.045 225.016 9786.108
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart/INDFOR_SafestartBoundry.et" {
+ coords 12292.685 41.644 9676.913
  Points {
-  ShapePoint "{69143D63A2516D9C}" {
-   Position 1601.746 0 -2056.363
+  ShapePoint "{6914656E2EE078C1}" {
+   Position 312.605 0 -181.853
   }
-  ShapePoint "{69143D6397903B82}" {
-   Position -3827.731 0 -412.773
+  ShapePoint "{6914656E2B420CB0}" {
+   Position -265.357 0 -200.75
   }
-  ShapePoint "{69143D6393EC6847}" {
-   Position -1496.214 0 4238.189
+  ShapePoint "{6914656E2A079D47}" {
+   Position -228.801 0 16.399
   }
-  ShapePoint "{69143D639D3D03DF}" {
-   Position 1642.814 0 4282.74
+  ShapePoint "{6914656E14BFBC3E}" {
+   Position 321.076 0 88.972
   }
  }
-}
-$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
- {
-  coords 13869.868 50.055 12141.586
-  angles 0 0 0
-  m_sQuadName "objective-marker"
-  m_sDescription "Heli 1"
- }
- {
-  coords 16177.624 136.294 9296.149
-  angles 0 0 0
-  m_sQuadName "objective-marker"
-  m_sDescription "Heli 2"
- }
- {
-  coords 15890.416 139.468 8704.458
-  angles 0 0 0
-  m_sQuadName "objective-marker"
-  m_sDescription "Heli 3"
- }
-}
-CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
- coords 12225.761 44.11 9675.112
 }
