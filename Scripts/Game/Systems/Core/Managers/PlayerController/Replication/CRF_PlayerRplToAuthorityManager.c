@@ -1007,6 +1007,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		{
 			// Use the player selected in the group as the spawn point
 			CRF_PlayerCharacter spawnEntity = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(playerIDToSpawnOn);
+			if (!spawnEntity)
+				return;
+			
 			entityRplID = spawnEntity.GetRplComponent().Id();
 		}		
 		else if (groupID != -1)
@@ -1017,6 +1020,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 				return;
 			
 			IEntity leaderEntity = group.GetLeaderEntity();
+			if (!leaderEntity)
+				return;
+			
 			RplComponent rplComp = RplComponent.Cast(leaderEntity.FindComponent(RplComponent));
 			if (!rplComp)
 				return;
