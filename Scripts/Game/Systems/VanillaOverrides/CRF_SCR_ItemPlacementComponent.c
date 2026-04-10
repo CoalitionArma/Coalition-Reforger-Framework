@@ -13,7 +13,7 @@ modded class SCR_ItemPlacementComponent : ScriptComponent
 		if (!gadgetComponent)
 			return;
 		
-		if (gadgetComponent.ACE_Trenches_GetCurrentVariantID() != 5)
+		if (gadgetComponent.ACE_Trenches_GetCurrentVariantID() != 10042001)
 			return;
 
 		if (!CRF_RoleHelper.IsSquadLeaderRole(character))
