@@ -28,6 +28,9 @@ modded class CRF_PlayerRplToOwnerManager
 	// True while [T] transform input is registered (grace phase only).
 	protected bool m_bPropTransformEnabled = false;
 
+	// True while [B] noise input is registered (hunt phase only).
+	protected bool m_bPropNoiseEnabled = false;
+
 	// Accumulates nearby entity results during the sphere query callback.
 	protected ref array<IEntity> m_aNearbyEntities = {};
 
@@ -180,7 +183,7 @@ modded class CRF_PlayerRplToOwnerManager
 	//   • have a local bounding box whose largest axis is >= 0.3 m
 	//     (secondary size guard for very small physical objects)
 	//
-	// DamageManagerComponent is NOT required: kill detection relies on the
+	// SCR_DamageManagerComponent is NOT required: kill detection relies on the
 	// invisible character capsule (TRACEABLE), so purely decorative interior
 	// props (furniture, shelves, etc.) are valid disguises even without a
 	// damage component of their own.
@@ -233,6 +236,109 @@ modded class CRF_PlayerRplToOwnerManager
 
 		m_aNearbyEntities.Insert(entity);
 		return true; // continue query
+	}
+
+	//============================================================
+	// PROP NOISE HINT — called locally by CRF_PropHuntGamemode
+	// Broadcast RPC handler (same pattern as ApplyPropTransformEnabled).
+	//============================================================
+
+	//------------------------------------------------------------
+	// ApplyPropNoiseEnabled — runs on the local client only,
+	// called from RpcDo_SetPropNoiseEnabled inside
+	// CRF_PropHuntGamemode. Registers or removes the B-key listener
+	// for the prop noise hint action.
+	//------------------------------------------------------------
+	void ApplyPropNoiseEnabled(bool enable)
+	{
+		m_bPropNoiseEnabled = enable;
+
+		if (enable)
+		{
+			GetGame().GetInputManager().AddActionListener("CRF_PropHuntNoise", EActionTrigger.DOWN, ActionPerformNoise);
+			GetGame().GetInputManager().AddActionListener("CRF_PropHuntNextNoise", EActionTrigger.DOWN, ActionCycleNoise);
+			Print("[PropHunt] ApplyPropNoiseEnabled: B/N-key noise listeners REGISTERED.", LogLevel.NORMAL);
+		}
+		else
+		{
+			GetGame().GetInputManager().RemoveActionListener("CRF_PropHuntNoise", EActionTrigger.DOWN, ActionPerformNoise);
+			GetGame().GetInputManager().RemoveActionListener("CRF_PropHuntNextNoise", EActionTrigger.DOWN, ActionCycleNoise);
+			Print("[PropHunt] ApplyPropNoiseEnabled: B/N-key noise listeners REMOVED.", LogLevel.NORMAL);
+		}
+	}
+
+	//------------------------------------------------------------
+	// ActionCycleNoise — fires on the owning client when the
+	// player presses [N / CRF_PropHuntNextNoise] during the hunt phase.
+	// Sends a server RPC which increments the selected noise index
+	// and sends a hint back showing the new selection.
+	//------------------------------------------------------------
+	protected void ActionCycleNoise(float value, EActionTrigger reason)
+	{
+		if (!m_bPropNoiseEnabled)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (!propHunt)
+			return;
+
+		// Faction guard.
+		SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionMgr)
+		{
+			int localId = SCR_PlayerController.GetLocalPlayerId();
+			Faction localFaction = factionMgr.GetPlayerFaction(localId);
+			if (!localFaction || localFaction.GetFactionKey() != propHunt.GetPropsTeamKey())
+			{
+				ApplyPropNoiseEnabled(false);
+				return;
+			}
+		}
+
+		#ifdef WORKBENCH
+		propHunt.HandleNoiseCycleRequest(SCR_PlayerController.GetLocalPlayerId());
+		#else
+		Rpc(RpcDo_RequestPropNextNoise);
+		#endif
+	}
+
+	//------------------------------------------------------------
+	// ActionPerformNoise — fires on the owning client when the
+	// player presses [B / CRF_PropHuntNoise] during the hunt phase.
+	// Sends a server RPC to validate and broadcast the noise to
+	// all clients. The sound plays 3D-positionally from the prop's
+	// hidden character entity, which is at the prop's world position.
+	//------------------------------------------------------------
+	protected void ActionPerformNoise(float value, EActionTrigger reason)
+	{
+		if (!m_bPropNoiseEnabled)
+			return;
+
+		// Faction guard — only Props team players may emit noise.
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (!propHunt)
+			return;
+
+		SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionMgr)
+		{
+			int localId = SCR_PlayerController.GetLocalPlayerId();
+			Faction localFaction = factionMgr.GetPlayerFaction(localId);
+			if (!localFaction || localFaction.GetFactionKey() != propHunt.GetPropsTeamKey())
+			{
+				ApplyPropNoiseEnabled(false);
+				return;
+			}
+		}
+
+		Print("[PropHunt] ActionPerformNoise fired.", LogLevel.NORMAL);
+
+		#ifdef WORKBENCH
+		if (propHunt)
+			propHunt.HandleNoiseRequest(SCR_PlayerController.GetLocalPlayerId());
+		#else
+		Rpc(RpcDo_RequestPropNoise);
+		#endif
 	}
 
 }

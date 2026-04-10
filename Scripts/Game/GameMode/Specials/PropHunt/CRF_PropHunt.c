@@ -87,6 +87,12 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	[Attribute("PropHuntHunterSpawn", UIWidgets.EditBox, "Name of the world entity that Hunters are teleported to at the end of each round. Place an empty entity in the mission with this name at the desired respawn point.")]
 	string m_sHunterReturnSpawnName;
 
+	[Attribute(desc: "Sound event names available for prop noise hints. Add one or more entries. Prop players cycle through the list with [N] and play the selected one with [B]. Each name must match an event defined in the character's SCR_CommunicationSoundComponent (e.g. SOUND_VOICE_PAIN_RELIEVE, SOUND_HIT).")]
+	protected ref array<string> m_aNoiseSoundEvents;
+
+	[Attribute("10", UIWidgets.EditBox, "Cooldown in seconds between a prop player's noise hints. Prevents badge spam.")]
+	float m_fPropNoiseCooldown;
+
 	//------------------------------------------------------------
 	// Replicated state — clients read these to drive HUD display
 	//------------------------------------------------------------
@@ -141,6 +147,14 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 	// Throttle timer for prop-position broadcast RPCs (10 Hz = 0.1 s).
 	protected float m_fPropSyncTimer = 0;
+
+	// Per-player noise cooldown remaining (seconds). Server-only.
+	// Set to m_fPropNoiseCooldown when a noise is played; decremented in EOnFrame.
+	protected ref map<int, float> m_mPropNoiseCooldowns = new map<int, float>();
+
+	// Per-player selected noise index into m_aNoiseSoundEvents. Server-only.
+	// Incremented by HandleNoiseCycleRequest; read by HandleNoiseRequest.
+	protected ref map<int, int> m_mPropNoiseIndex = new map<int, int>();
 
 	//------------------------------------------------------------
 	// Client-side UI widgets — null on server, set only on the
@@ -295,6 +309,29 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		{
 			// Client-side: update the phase/timer HUD widget from the replicated timer value.
 			UpdateTimerDisplay();
+
+			// Client-side prop sync — read the locally-replicated character position and
+			// move each client visual prop entity to match every frame. This is far more
+			// reliable than waiting for server-broadcast RPCs: the character entity transform
+			// is already replicated by the engine, so no extra network messages are needed.
+			if (m_ePhase == CRF_EPropHuntPhase.GRACE || m_ePhase == CRF_EPropHuntPhase.HUNT)
+			{
+				foreach (int propPlayerId, IEntity propEnt : m_mClientPropEntities)
+				{
+					if (!propEnt)
+						continue;
+					IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(propPlayerId);
+					if (!character)
+						continue;
+					vector clientPos = character.GetOrigin();
+					float clientYaw = character.GetYawPitchRoll()[0];
+					vector clientMat[4];
+					Math3D.AnglesToMatrix(Vector(clientYaw, 0, 0), clientMat);
+					clientMat[3] = clientPos;
+					propEnt.SetWorldTransform(clientMat);
+				}
+			}
+
 			return;
 		}
 		#endif
@@ -302,6 +339,13 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (m_bPhaseTimerActive)
 		{
 			m_fPhaseTimer -= timeSlice;
+
+			// Decrement per-player prop noise cooldowns.
+			foreach (int noisePid, float noiseCd : m_mPropNoiseCooldowns)
+			{
+				if (noiseCd > 0)
+					m_mPropNoiseCooldowns.Set(noisePid, Math.Max(0, noiseCd - timeSlice));
+			}
 
 			// Replicate timer roughly once per second to save bandwidth
 			int prevSec = Math.Floor(m_fPhaseTimer + timeSlice);
@@ -336,12 +380,13 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 						continue;
 					vector pos = character.GetOrigin();
 					float yaw = character.GetYawPitchRoll()[0];
-					// Update server-authoritative transform. World prop prefabs lack
-					// RplComponent so their position is NOT replicated automatically;
-					// clients maintain their own visual copies (see RpcDo_ClientSpawnProp)
-					// and are updated by the broadcast RPC below.
-					propEnt.SetOrigin(pos);
-					propEnt.SetYawPitchRoll(Vector(yaw, 0, 0));
+					// Build a full world-space matrix and apply it atomically.
+					// SetOrigin alone does not move the physics body on all entity types;
+					// SetWorldTransform handles render and physics in a single call.
+					vector propMat[4];
+					Math3D.AnglesToMatrix(Vector(yaw, 0, 0), propMat);
+					propMat[3] = pos;
+					propEnt.SetWorldTransform(propMat);
 					#ifdef WORKBENCH
 					RpcDo_SyncPropTransform(propPlayerId, pos, yaw);
 					#else
@@ -353,14 +398,14 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------
-	// RpcDo_SyncPropTransform — unreliable broadcast at 10 Hz.
+	// RpcDo_SyncPropTransform — reliable broadcast at 10 Hz.
 	// Moves and rotates each client's local visual prop copy.
 	// Uses playerId (not RplId) because world prop prefabs lack
 	// RplComponent and are not replicated by the engine.
 	// In Workbench the server entity in m_mPlayerToPropEntity is used
 	// directly (single process, no replication layer).
 	//------------------------------------------------------------
-	[RplRpc(RplChannel.Unreliable, RplRcver.Broadcast)]
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	protected void RpcDo_SyncPropTransform(int playerId, vector pos, float yaw)
 	{
 		IEntity propEnt;
@@ -373,8 +418,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		#endif
 		if (!propEnt)
 			return;
-		propEnt.SetOrigin(pos);
-		propEnt.SetYawPitchRoll(Vector(yaw, 0, 0));
+		vector clientMat[4];
+		Math3D.AnglesToMatrix(Vector(yaw, 0, 0), clientMat);
+		clientMat[3] = pos;
+		propEnt.SetWorldTransform(clientMat);
 	}
 
 	//------------------------------------------------------------
@@ -411,12 +458,6 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		Physics phys = propEnt.GetPhysics();
 		if (phys)
 			phys.ChangeSimulationState(SimulationState.NONE);
-
-		// Prevent scene-tree relinking when SetOrigin is called at 10 Hz.
-		// UPDATE_LINK is set internally on every SetOrigin call and triggers
-		// a relink that briefly removes the entity from its node (1-frame flicker).
-		// NO_LINK stops the entity from ever being inserted into the scene tree.
-		propEnt.SetFlags(EntityFlags.NO_LINK, true);
 
 		m_mClientPropEntities.Set(playerId, propEnt);
 	}
@@ -471,8 +512,6 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		Physics phys = propEnt.GetPhysics();
 		if (phys)
 			phys.ChangeSimulationState(SimulationState.NONE);
-
-		propEnt.SetFlags(EntityFlags.NO_LINK, true);
 
 		m_mClientPropEntities.Set(propPlayerId, propEnt);
 	}
@@ -694,11 +733,16 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			SetHunterFrozen(hunterId, false);
 			SendHunterHealthHint(hunterId, m_iHunterMaxHealth, false);
 			RegisterHunterShotEH(hunterId);
+			RegisterHunterMeleeEH(hunterId);
 		}
 
 		// Disable the transform input for all Props (whether transformed or not).
 		foreach (int propId : m_aAliveProps)
 			EnablePropTransform(propId, false);
+
+		// Enable the noise hint key for all alive Props now that hunters are loose.
+		foreach (int propId : m_aAliveProps)
+			EnablePropNoise(propId, true);
 
 		// Freeze transformed props now that hunting begins — props should stay still.
 		// First do a guaranteed position snap so every client has the prop at the
@@ -753,11 +797,18 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 		Replication.BumpMe();
 
+		// Disable prop noise input now that the round is over.
+		foreach (int propId : m_aAliveProps)
+			EnablePropNoise(propId, false);
+
 		// Unregister shot event handlers from all surviving hunters.
 		// NOTE: HP bars are intentionally kept visible during the inter-round pause so hunters
 		// can see their restored HP. They are hidden in StartNextRoundOrEndGame instead.
 		foreach (int hunterId : m_aAliveHunters)
+		{
 			UnregisterHunterShotEH(hunterId);
+			UnregisterHunterMeleeEH(hunterId);
+		}
 
 		// Teleport surviving hunters back to their side's spawn point so they are
 		// ready in position when the next round's warmup begins.
@@ -931,6 +982,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			m_aAliveHunters.RemoveItem(victimId);
 			HideHunterHealthBar(victimId);
 			UnregisterHunterShotEH(victimId);
+			UnregisterHunterMeleeEH(victimId);
 
 			if (m_aAliveHunters.IsEmpty())
 				EndRound(m_sPropsTeamKey);
@@ -1189,6 +1241,43 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------
+	// RegisterHunterMeleeEH / UnregisterHunterMeleeEH
+	// Hooks SCR_MeleeComponent.GetOnMeleePerformed() on a hunter's
+	// character so every melee hit applies the shot penalty.
+	// Mirrors RegisterHunterShotEH — fires server-side only
+	// (SCR_MeleeComponent.ProcessMeleeAttack skips proxies).
+	//------------------------------------------------------------
+	protected void RegisterHunterMeleeEH(int hunterId)
+	{
+		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(hunterId);
+		if (!character)
+			return;
+
+		SCR_MeleeComponent meleeComp = SCR_MeleeComponent.Cast(character.FindComponent(SCR_MeleeComponent));
+		if (meleeComp)
+			meleeComp.GetOnMeleePerformed().Insert(OnHunterMeleePerformed);
+	}
+
+	protected void UnregisterHunterMeleeEH(int hunterId)
+	{
+		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(hunterId);
+		if (!character)
+			return;
+
+		SCR_MeleeComponent meleeComp = SCR_MeleeComponent.Cast(character.FindComponent(SCR_MeleeComponent));
+		if (meleeComp)
+			meleeComp.GetOnMeleePerformed().Remove(OnHunterMeleePerformed);
+	}
+
+	// Callback: fires server-side each time a registered hunter lands a melee hit.
+	protected void OnHunterMeleePerformed(IEntity owner)
+	{
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(owner);
+		if (playerId > 0)
+			ApplyHunterShotPenalty(playerId);
+	}
+
+	//------------------------------------------------------------
 	// Hunter frozen/unfrozen — sends an RPC to the hunter's client
 	// so SetDisableMovementControls is applied locally. This mirrors
 	// vanilla SCR_BaseGameMode.SetLocalControls which runs client-side.
@@ -1243,9 +1332,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	// SetPropCharacterVisible — broadcasts VISIBLE flag and physics
 	// simulation state for a prop player's character entity to all
 	// clients. Hiding makes the character invisible and kinematic
-	// (SimulationState.NONE) so hunters do not collide with an
-	// invisible capsule. TRACEABLE is not touched — bullet raycasts
-	// must still hit the hidden character for prop-kill detection.
+	// (SimulationState.COLLISION) so the character controller can still
+	// resolve ground contact and move at full speed.
+	// TRACEABLE is not touched — bullet raycasts must still hit the
+	// hidden character for prop-kill detection.
 	// Restoring sets VISIBLE back and re-enables DYNAMIC simulation
 	// so the character is a normal collidable entity again.
 	// Entity flag / physics changes are not auto-replicated; every
@@ -1285,17 +1375,17 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		else
 		{
 			character.ClearFlags(EntityFlags.VISIBLE, true);
-			// COLLISION keeps the physics shape active (bullets register hits) but
-			// disables the dynamic simulation so hunters do not push against an
-			// invisible capsule. TRACEABLE is also kept for raycast-based hit detection.
+			// COLLISION keeps the physics shape active so the character controller
+			// can resolve ground contact and move at full speed. The dynamic
+			// simulation is disabled so the body doesn't respond to forces.
+			// TRACEABLE is also kept for raycast-based hit detection.
 			if (phys)
-				phys.ChangeSimulationState(SimulationState.COLLISION);
+				phys.ChangeSimulationState(SimulationState.NONE);
 		}
 	}
 
 	//------------------------------------------------------------
 	// RplProp callback — fires on every client when m_ePhase changes.
-	// Recreates the phase/timer HUD widget for the new phase.
 	//------------------------------------------------------------
 	protected void OnPhaseChanged()
 	{
@@ -1551,6 +1641,8 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		IEntity oldProp = m_mPlayerToPropEntity.Get(playerId);
 		m_mPlayerToPropEntity.Remove(playerId);
 		m_mPlayerToPropPrefab.Remove(playerId);
+		m_mPropNoiseCooldowns.Remove(playerId);
+		m_mPropNoiseIndex.Remove(playerId);
 		if (oldProp)
 			SCR_EntityHelper.DeleteEntityAndChildren(oldProp);
 
@@ -1650,6 +1742,155 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ApplyPropTransformEnabled(enable);
+	}
+
+	//------------------------------------------------------------
+	// EnablePropNoise — tells the given Prop player's client to
+	// register or remove the [B] noise-hint input listener.
+	//------------------------------------------------------------
+	protected void EnablePropNoise(int propId, bool enable)
+	{
+		#ifdef WORKBENCH
+		RpcDo_SetPropNoiseEnabled(propId, enable);
+		#else
+		Rpc(RpcDo_SetPropNoiseEnabled, propId, enable);
+		#endif
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_SetPropNoiseEnabled(int propId, bool enable)
+	{
+		#ifndef WORKBENCH
+		if (SCR_PlayerController.GetLocalPlayerId() != propId)
+			return;
+		#endif
+
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (mgr)
+			mgr.ApplyPropNoiseEnabled(enable);
+	}
+
+	//------------------------------------------------------------
+	// HandleNoiseCycleRequest — server-side handler called from
+	// RpcDo_RequestPropNextNoise in CRF_PlayerRplToOwnerManager.
+	// Advances the player's selected noise index and sends them a hint
+	// showing the new selection.
+	//------------------------------------------------------------
+	void HandleNoiseCycleRequest(int playerId)
+	{
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		#endif
+
+		if (!m_aNoiseSoundEvents || m_aNoiseSoundEvents.IsEmpty())
+			return;
+
+		int count = m_aNoiseSoundEvents.Count();
+		int current = m_mPropNoiseIndex.Get(playerId);
+		int next = (current + 1) % count;
+		m_mPropNoiseIndex.Set(playerId, next);
+
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		if (bm)
+			bm.SendHint(string.Format("Noise selected: %1 [%2/%3] — press [B] to play.", m_aNoiseSoundEvents[next], next + 1, count), playerId);
+	}
+
+	//------------------------------------------------------------
+	// HandleNoiseRequest — server-side handler called from
+	// RpcDo_RequestPropNoise in CRF_PlayerRplToOwnerManager.
+	// Validates that the requesting player is an alive prop in
+	// the HUNT phase and that their cooldown has expired.
+	// If valid: broadcasts RpcDo_PlayPropNoise to all clients so
+	// each machine plays a 3D-positional sound from the prop's
+	// invisible character entity (same world position as the prop).
+	//------------------------------------------------------------
+	void HandleNoiseRequest(int playerId)
+	{
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		#endif
+
+		if (m_ePhase != CRF_EPropHuntPhase.HUNT)
+			return;
+
+		if (!IsValidPropPlayer(playerId))
+			return;
+
+		if (!m_aNoiseSoundEvents || m_aNoiseSoundEvents.IsEmpty())
+			return;
+
+		// Cooldown check — reject if still on cooldown, notify the prop.
+		float remaining = m_mPropNoiseCooldowns.Get(playerId);
+		if (remaining > 0)
+		{
+			CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+			if (bm)
+				bm.SendHint(string.Format("Noise on cooldown! %1 seconds remaining.", Math.Ceil(remaining).ToString()), playerId);
+			return;
+		}
+
+		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!character)
+			return;
+
+		vector noisePos = character.GetOrigin();
+
+		// Resolve the selected noise index (defaults to 0 if never cycled).
+		int noiseIdx = m_mPropNoiseIndex.Get(playerId);
+		if (noiseIdx < 0 || noiseIdx >= m_aNoiseSoundEvents.Count())
+			noiseIdx = 0;
+
+		// Start the cooldown for this player.
+		m_mPropNoiseCooldowns.Set(playerId, m_fPropNoiseCooldown);
+
+		// Broadcast the noise to every client so the sound plays positionally
+		// from the prop's character entity on all machines.
+		#ifdef WORKBENCH
+		RpcDo_PlayPropNoise(playerId, noisePos, noiseIdx);
+		#else
+		Rpc(RpcDo_PlayPropNoise, playerId, noisePos, noiseIdx);
+		#endif
+
+		Print(string.Format("[PropHunt] HandleNoiseRequest: propId=%1 played noise[%2] at %3.", playerId, noiseIdx, noisePos), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------
+	// RpcDo_PlayPropNoise — reliable broadcast.
+	// On each client: finds the prop player's character entity and
+	// plays the noise-list entry at noiseIndex through its
+	// SCR_CommunicationSoundComponent so the audio is 3D-positional
+	// at the character's world position.
+	// The character is invisible (ClearFlags VISIBLE) but the audio
+	// subsystem is completely independent of the VISIBLE flag.
+	//------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_PlayPropNoise(int playerId, vector pos, int noiseIndex)
+	{
+		#ifndef WORKBENCH
+		if (RplSession.Mode() != RplMode.Client)
+			return;
+		#endif
+
+		if (!m_aNoiseSoundEvents || m_aNoiseSoundEvents.IsEmpty())
+			return;
+		if (noiseIndex < 0 || noiseIndex >= m_aNoiseSoundEvents.Count())
+			return;
+
+		string soundEvent = m_aNoiseSoundEvents[noiseIndex];
+		if (soundEvent.IsEmpty())
+			return;
+
+		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!character)
+			return;
+
+		SCR_CommunicationSoundComponent sndComp = SCR_CommunicationSoundComponent.Cast(
+			character.FindComponent(SCR_CommunicationSoundComponent)
+		);
+		if (sndComp)
+			sndComp.SoundEvent(soundEvent);
 	}
 
 	//------------------------------------------------------------
@@ -1889,6 +2130,8 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		}
 		m_mPlayerToPropEntity.Clear();
 		m_mPlayerToPropPrefab.Clear();
+		m_mPropNoiseCooldowns.Clear();
+		m_mPropNoiseIndex.Clear();
 
 		// Remove all client-side visual copies on all clients.
 		#ifndef WORKBENCH
@@ -1981,6 +2224,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 					jipHealth = m_mHunterHealth.Get(playerId);
 				SendHunterHealthHint(playerId, jipHealth, false);
 				RegisterHunterShotEH(playerId);
+				RegisterHunterMeleeEH(playerId);
 			}
 		}
 		else if (jipIsProp)
@@ -1990,7 +2234,11 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 				// Enable the transform T-key for the JIP prop during grace.
 				EnablePropTransform(playerId, true);
 			}
-			// During HUNT, transform input stays disabled; the prop should hide.
+			else if (m_ePhase == CRF_EPropHuntPhase.HUNT)
+			{
+				// JIP prop joining mid-hunt can still use the noise hint.
+				EnablePropNoise(playerId, true);
+			}
 		}
 
 		// Sync all existing prop client entities to this new client.

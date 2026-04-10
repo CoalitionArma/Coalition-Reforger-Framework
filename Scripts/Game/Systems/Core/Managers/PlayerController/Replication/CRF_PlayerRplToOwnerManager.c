@@ -192,6 +192,46 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 			propHunt.HandleTransformRequest(playerId, prefab);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to request playing a noise hint from their current position.
+	//! Placed here (base class) so the RPC index is always in the base class RPC table
+	//! and works reliably on dedicated servers. Logic lives in CRF_PropHuntGamemode.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropNoise()
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleNoiseRequest(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to cycle to the next noise in the configured list.
+	//! Placed here (base class) so the RPC index is always reliable on dedicated servers.
+	//! Logic lives in CRF_PropHuntGamemode which sends a hint back to the calling player.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropNextNoise()
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleNoiseCycleRequest(playerId);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================

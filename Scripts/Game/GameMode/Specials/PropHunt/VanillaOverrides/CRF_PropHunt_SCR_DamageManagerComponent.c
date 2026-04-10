@@ -79,6 +79,21 @@ modded class SCR_DamageManagerComponent
 			}
 		}
 
+		// Melee damage on prop player characters is absorbed — no HP loss for the prop.
+		// The penalty is applied via OnHunterMeleePerformed (SCR_MeleeComponent invoker),
+		// which is reliable and does not depend on the damage-context instigator.
+		if (propHunt && damageContext.damageType == EDamageType.MELEE &&
+			(propHunt.IsGracePhaseActive() || propHunt.IsHuntPhaseActive()))
+		{
+			#ifndef WORKBENCH
+			if (RplSession.Mode() != RplMode.Client)
+			#endif
+			{
+				if (propHunt.GetPropPlayerForCharacter(GetOwner()) > 0)
+					return; // absorb — penalty handled by melee EH on the hunter
+			}
+		}
+
 		super.OnDamage(damageContext);
 
 		if (!propHunt || !propHunt.IsHuntPhaseActive())
@@ -89,9 +104,8 @@ modded class SCR_DamageManagerComponent
 			return;
 		#endif
 
-		// Only kinetic (bullet) and melee damage count as a prop kill.
-		if (damageContext.damageType != EDamageType.KINETIC &&
-			damageContext.damageType != EDamageType.MELEE)
+		// Only kinetic (bullet) damage counts as a prop kill. Melee is blocked above.
+		if (damageContext.damageType != EDamageType.KINETIC)
 			return;
 
 		// --- Resolve which prop player was hit ---

@@ -26,6 +26,7 @@
 class CRF_PropHuntEntryButton : ScriptedWidgetComponent
 {
 	ResourceName    m_sPrefab;
+	IEntity         m_Entity;
 	float           m_fDistance;
 
 	ref ScriptInvoker m_OnClicked = new ScriptInvoker();
@@ -99,6 +100,7 @@ class CRF_PropHuntTransformMenu
 	protected ItemPreviewWidget                m_wSidePreview;
 	protected TextWidget                       m_wPreviewName;
 	protected ItemPreviewManagerEntity         m_PreviewMgr;
+	protected IEntity                          m_PreviewEntity; // local-only entity used for the side preview
 
 	//------------------------------------------------------------
 	// Singleton accessor
@@ -210,6 +212,13 @@ class CRF_PropHuntTransformMenu
 			m_wRoot = null;
 		}
 
+		// Delete the local-only preview entity so it doesn't linger in the world.
+		if (m_PreviewEntity)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(m_PreviewEntity);
+			m_PreviewEntity = null;
+		}
+
 		m_sInstance = null;
 	}
 
@@ -288,6 +297,7 @@ class CRF_PropHuntTransformMenu
 				continue;
 
 			comp.m_sPrefab   = se.m_sPrefab;
+			comp.m_Entity    = se.m_Entity;
 			comp.m_fDistance = se.m_fDist;
 			comp.m_OnClicked.Insert(OnEntryClicked);
 			comp.m_OnHovered.Insert(OnEntryHovered);
@@ -302,8 +312,26 @@ class CRF_PropHuntTransformMenu
 		if (!btn || !btn.m_sPrefab)
 			return;
 
+		// Delete any previously-spawned local preview entity.
+		if (m_PreviewEntity)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(m_PreviewEntity);
+			m_PreviewEntity = null;
+		}
+
+		// Spawn the prefab locally (no replication) so the preview manager
+		// can render its actual model. This is the same approach used by
+		// SCR_FieldManualUI for weapon previews.
 		if (m_wSidePreview && m_PreviewMgr)
-			m_PreviewMgr.SetPreviewItemFromPrefab(m_wSidePreview, btn.m_sPrefab);
+		{
+			Resource res = Resource.Load(btn.m_sPrefab);
+			if (res.IsValid())
+			{
+				m_PreviewEntity = GetGame().SpawnEntityPrefabLocal(res, null, null);
+				if (m_PreviewEntity)
+					m_PreviewMgr.SetPreviewItem(m_wSidePreview, m_PreviewEntity);
+			}
+		}
 
 		if (m_wPreviewName)
 			m_wPreviewName.SetText(ExtractDisplayName(btn.m_sPrefab));
@@ -376,8 +404,29 @@ class CRF_PropHuntTransformMenu
 	//------------------------------------------------------------
 	static string ExtractDisplayName(ResourceName prefab)
 	{
+		// 1. Try the engine's designer-authored localized name via SCR_EditableEntityComponent UIInfo.
+		//    Most world props (benches, fences, barrels, etc.) have this component set in the editor.
+		Resource res = Resource.Load(prefab);
+		if (res.IsValid())
+		{
+			IEntityComponentSource editableSource = SCR_EditableEntityComponentClass.GetEditableEntitySource(res);
+			if (editableSource)
+			{
+				SCR_EditableEntityUIInfo info = SCR_EditableEntityComponentClass.GetInfo(editableSource);
+				if (info)
+				{
+					string localizedName = info.GetName();
+					// Reject the engine fallback placeholder string.
+					if (!localizedName.IsEmpty() && localizedName != "#AR-AttributesDialog_TitlePage_Entity_Text")
+						return localizedName;
+				}
+			}
+		}
+
+		// 2. Fall back to filename-based formatting for props without SCR_EditableEntityComponent.
 		string s = prefab;
 
+		// Strip GUID prefix: "{ABCD1234...}path/to/file.et" → "path/to/file.et"
 		if (s.StartsWith("{"))
 		{
 			int end = s.IndexOf("}");
@@ -385,15 +434,52 @@ class CRF_PropHuntTransformMenu
 				s = s.Substring(end + 1, s.Length() - end - 1);
 		}
 
+		// Keep only the filename
 		int lastSlash = s.LastIndexOf("/");
 		if (lastSlash >= 0)
 			s = s.Substring(lastSlash + 1, s.Length() - lastSlash - 1);
 
+		// Strip file extension
 		int dot = s.LastIndexOf(".");
 		if (dot > 0)
 			s = s.Substring(0, dot);
 
-		return s;
+		// Strip common low-information prefixes that add no display value.
+		string lower = s;
+		lower.ToLower();
+		array<string> skipPrefixes = {"prop_", "bc_", "us_", "ussr_", "ge_", "fia_", "civ_",
+		                              "ins_", "indfor_", "blufor_", "opfor_"};
+		foreach (string pfx : skipPrefixes)
+		{
+			if (lower.StartsWith(pfx))
+			{
+				s = s.Substring(pfx.Length(), s.Length() - pfx.Length());
+				break;
+			}
+		}
+
+		// Split on underscore, capitalise each token, rejoin with spaces.
+		array<string> parts = {};
+		s.Split("_", parts, false);
+
+		string result;
+		foreach (int i, string part : parts)
+		{
+			if (part.Length() == 0)
+				continue;
+
+			string firstChar = part.Substring(0, 1);
+			firstChar.ToUpper();
+			string rest = "";
+			if (part.Length() > 1)
+				rest = part.Substring(1, part.Length() - 1);
+
+			if (i > 0)
+				result += " ";
+			result += firstChar + rest;
+		}
+
+		return result;
 	}
 }
 
