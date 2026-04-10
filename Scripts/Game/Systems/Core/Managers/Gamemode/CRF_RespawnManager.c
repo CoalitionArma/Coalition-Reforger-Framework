@@ -208,14 +208,37 @@ class CRF_RespawnManager : ScriptComponent
 		// Don't subtract if tickets are unlimited (-1) or already at 0
 		if (currentTickets == -1 || currentTickets <= 0)
 			return false;
-			
+
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_iBLUFORTickets -= amount; if (m_iBLUFORTickets < 0 && m_iBLUFORTickets != -1) m_iBLUFORTickets = 0; break;
-			case "OPFOR": m_iOPFORTickets -= amount; if (m_iOPFORTickets < 0 && m_iOPFORTickets != -1) m_iOPFORTickets = 0; break;
-			case "INDFOR": m_iINDFORTickets -= amount; if (m_iINDFORTickets < 0 && m_iINDFORTickets != -1) m_iINDFORTickets = 0; break;
-			case "CIV": m_iCIVTickets -= amount; if (m_iCIVTickets < 0 && m_iCIVTickets != -1) m_iCIVTickets = 0; break;
+			case "BLUFOR": m_iBLUFORTickets -= amount;
+				if (force && m_iBLUFORTickets < 0)
+					m_iBLUFORTickets = 0;
+				else if (m_iBLUFORTickets < 0 && m_iBLUFORTickets != -1) 
+					m_iBLUFORTickets = 0;
+				break;
+			
+			case "OPFOR": m_iOPFORTickets -= amount;
+				if (force && m_iOPFORTickets < 0)
+					m_iOPFORTickets = 0;
+				else if (m_iOPFORTickets < 0 && m_iOPFORTickets != -1) 
+					m_iOPFORTickets = 0;
+				break;
+			
+			case "INDFOR": m_iINDFORTickets -= amount;
+				if (force && m_iINDFORTickets < 0)
+					m_iINDFORTickets = 0;
+				else if (m_iINDFORTickets < 0 && m_iINDFORTickets != -1) 
+					m_iINDFORTickets = 0;
+				break;
+			
+			case "CIV": m_iCIVTickets -= amount;
+				if (force && m_iCIVTickets < 0)
+					m_iCIVTickets = 0;
+				else if (m_iCIVTickets < 0 && m_iCIVTickets != -1) 
+					m_iCIVTickets = 0;
+				break;
 		}
 		
 		return true;
@@ -382,7 +405,7 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		string factionKey = m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
 		int tickets = GetFactionTickets(factionKey);
-		if ((tickets <= 0 && tickets != -1) || !m_bCurrentRespawnEnabled || !IsRespawnTimeAllowed() || GetFactionSpawnpoints(factionKey).IsEmpty())
+		if (!m_bCurrentRespawnEnabled || GetFactionSpawnpoints(factionKey).IsEmpty())
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
 			m_fRespawnTimer = 0;
@@ -804,7 +827,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, int spawnPointID = -1)
+	void RespawnPlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
@@ -838,7 +861,7 @@ class CRF_RespawnManager : ScriptComponent
 		// Respawn the player
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
 		m_SlottingManager.UpdateSlotDeathState(slotID, false);
-		m_GamemodeManager.InitilizePlayer(playerId, spawnPointID);
+		m_GamemodeManager.InitilizePlayer(playerId, spawnPointID, entityRplID);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
