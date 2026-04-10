@@ -1001,8 +1001,33 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_SpawnOnGroup", bytes);
 		
-		m_RespawnManager.RespawnPlayer(playerId);
-
+		RplId entityRplID;
+		
+		if (playerIDToSpawnOn != -1)
+		{
+			// Use the player selected in the group as the spawn point
+			CRF_PlayerCharacter spawnEntity = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(playerIDToSpawnOn);
+			entityRplID = spawnEntity.GetRplComponent().Id();
+		}		
+		else if (groupID != -1)
+		{
+			// Use the group leader as the spawn point
+			SCR_AIGroup group = SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID);
+			if (!group)
+				return;
+			
+			IEntity leaderEntity = group.GetLeaderEntity();
+			RplComponent rplComp = RplComponent.Cast(leaderEntity.FindComponent(RplComponent));
+			if (!rplComp)
+				return;
+			
+			entityRplID = rplComp.Id();
+		}
+		else
+			entityRplID = RplId.Invalid();
+		
+		m_RespawnManager.RespawnPlayer(playerId, -1, entityRplID);
+		
 		if (logAction)
 		{
 			SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);

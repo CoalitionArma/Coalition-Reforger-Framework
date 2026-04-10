@@ -827,7 +827,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, int spawnPointID = -1)
+	void RespawnPlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
@@ -861,7 +861,7 @@ class CRF_RespawnManager : ScriptComponent
 		// Respawn the player
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
 		m_SlottingManager.UpdateSlotDeathState(slotID, false);
-		m_GamemodeManager.InitilizePlayer(playerId, spawnPointID);
+		m_GamemodeManager.InitilizePlayer(playerId, spawnPointID, entityRplID);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
