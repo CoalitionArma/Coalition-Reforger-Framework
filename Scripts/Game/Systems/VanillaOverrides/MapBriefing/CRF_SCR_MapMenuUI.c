@@ -30,22 +30,29 @@ modded class SCR_MapMenuUI
 			return;
 		}
 
-		// Only initialize once on first map open
-		if (m_bMissionDescriptionsInitialized) {
-			return;
-		}
-
 		// Initialize gamemode reference
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		if (!m_Gamemode) {
 			return;
 		}
-		
-		// Initialize mission description components
-		InitializeMissionDescriptions();
-		
-		// Mark as initialized to prevent re-initialization
-		m_bMissionDescriptionsInitialized = true;
+
+		if (!m_bMissionDescriptionsInitialized)
+		{
+			// First open: find widgets and do full initialization
+			InitializeMissionDescriptions();
+			m_bMissionDescriptionsInitialized = true;
+		}
+		else
+		{
+			// Subsequent opens: re-show/re-enable the widget that was hidden on close
+			Widget missionDescriptionWidget = GetRootWidget().FindAnyWidget("MissionDescription");
+			if (missionDescriptionWidget)
+			{
+				missionDescriptionWidget.SetVisible(true);
+				missionDescriptionWidget.SetEnabled(true);
+			}
+			DescriptionInit();
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -55,11 +62,12 @@ modded class SCR_MapMenuUI
 	{
 		super.OnMenuClose();
 
-		// Hide the MissionDescription widget to prevent it from staying on HUD
+		// Hide and disable the MissionDescription widget to prevent invisible input blocking
 		Widget missionDescriptionWidget = GetRootWidget().FindAnyWidget("MissionDescription");
 		if (missionDescriptionWidget)
 		{
 			missionDescriptionWidget.SetVisible(false);
+			missionDescriptionWidget.SetEnabled(false);
 		}
 
 		// Clear mission description data
