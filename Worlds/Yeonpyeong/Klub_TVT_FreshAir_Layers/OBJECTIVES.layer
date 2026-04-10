@@ -13,7 +13,7 @@ $grp SCR_BaseTriggerEntity {
   }
  }
  bSiteTrigger {
-  coords 3200.076 66.997 7212.722
+  coords 3384.974 21.221 7471.458
   {
    CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0 0 0
