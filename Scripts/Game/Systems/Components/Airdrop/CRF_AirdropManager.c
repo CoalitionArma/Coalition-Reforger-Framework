@@ -273,6 +273,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
             	m_aFlightObjects.RemoveItem(flight);
 
 			float distance = vector.Distance(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3]);
+			float greenLightDistance = vector.Distance(flight.m_Plane.GetOrigin(), flight.m_vFlightCoordinates[0]);
 			float step = (flight.m_fSpeed * timeSlice) / distance;
 			
 			vector A = flight.m_vFlightCoordinates[0]; 
@@ -289,7 +290,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
     		float previousProgress = flight.m_fProgress;
 			flight.m_fProgress = Math.Clamp(flight.m_fProgress + step, 0, 2);
 			
-			if (previousProgress < flight.m_fGreenT && flight.m_fProgress >= flight.m_fGreenT)
+			if (flight.m_vFlightCoordinates[2][0] < greenLightDistance)
 			    GreenLight(flight.m_RplId);
 	
 	        vector newPos = vector.Lerp(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3], flight.m_fProgress);

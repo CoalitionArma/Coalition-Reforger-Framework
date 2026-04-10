@@ -1,0 +1,23 @@
+GenericEntity : "{A507D9AE39652BD6}Prefabs/Vehicles/Core/Vehicle_Part_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  MeshObject "{4B42E716914465B9}" {
+   Object "{AE97221F84E97597}Assets/Decals/Blood/Data/Decal_MalinovkaStain_01.xob"
+   Materials {
+    MaterialAssignClass "{691503B42869F1B3}" {
+     SourceMaterial "Decal_MalinovkaStain_01_D3ED11857A527D47"
+     AssignedMaterial "{2A96EDD6906D05D1}Assets/_SharedData/Decals/C47_Decal.emat"
+    }
+   }
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Enabled 0
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   "Additional hit zones" {
+    SCR_DestructibleHitzone Tailgate : "{000477F2B739E64E}Prefabs/Vehicles/Wheeled/M998/VehParts/M998_HZ_vehpart.conf" {
+    }
+   }
+  }
+ }
+}

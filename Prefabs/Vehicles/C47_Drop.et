@@ -1,6 +1,14 @@
 GameEntity {
  ID "690745B485E4E770"
  components {
+  SignalsManagerComponent "{6914E01C3172FB41}" {
+  }
+  SoundComponent "{6914E01C4DFADC94}" {
+   Filenames {
+    "{7BA239E864246BF8}Sounds/Props/Military/Generators/brmmmmm.acp"
+   }
+   IncludeInactive 1
+  }
   ControllersManagerComponent "{69094ADFAF5B4980}" {
   }
   MeshObject "{690745B485E4E76B}" {
@@ -1519,6 +1527,9 @@ GameEntity {
     }
    }
   }
+  SCR_BaseInteractiveLightComponent "{6914E01C3A107246}" {
+   m_eInitialLightState OFF
+  }
   SCR_EditableVehicleComponent "{690745B41C01551C}" {
    m_EntityType VEHICLE
    m_UIInfo SCR_EditableVehicleUIInfo "{690745B416B7F0FB}" {
@@ -1908,6 +1919,13 @@ GameEntity {
      FilterActionsUsingCache 1
     }
    }
+   additionalActions {
+    SCR_SwitchLightUserAction "{6914E01C6857AB58}" {
+     Duration 0.2
+     m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+     m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+    }
+   }
   }
   VehicleAnimationComponent "{69094ADF80A0C47E}" {
    AnimGraph "{A270F08F211EF378}Assets/Vehicles/Wheeled/M923A1/workspaces/M923A1.agr"
@@ -1931,9 +1949,65 @@ GameEntity {
  angles 0 90 0
  {
   GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
-   ID "69103218F4662FF9"
+   ID "6914E017897736A5"
    coords 0 0 0
-   angles 0 15 0
+   angles 0 194 0
+  }
+  $grp GenericEntity : "{A8C614579B81CC47}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/C47_Decal.et" {
+   {
+    ID "691503B44C55F85E"
+    coords 0 40 0
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B472817B3E"
+    coords -46.182 63.226 -185.227
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B482EA3173"
+    coords 56.951 66.14 228.418
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B4AD11C266"
+    coords -138.322 68.571 215.398
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B4AD11C3E9"
+    coords -218.263 76.366 84.202
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B4AD11C3F1"
+    coords -234.223 40 -168.378
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B4F3A78A7D"
+    coords 200.507 55.747 -18.279
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B51D746F99"
+    coords 177.209 61.184 -274.83
+    angles 180 90 0
+    scale 200
+   }
+   {
+    ID "691503B5339C8314"
+    coords 244.333 85.915 120.929
+    angles 180 90 0
+    scale 200
+   }
   }
  }
 }

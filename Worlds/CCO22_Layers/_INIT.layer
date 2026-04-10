@@ -74,8 +74,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Clear"
-     m_iStartingHour 12
-     m_iStartingMinutes 30
+     m_iStartingHour 2
+     m_iStartingMinutes 0
     }
    }
    m_bRandomWeatherChanges 0
@@ -1717,27 +1717,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
 BaseGameTriggerEntity paradrop {
  coords 596.792 15.926 901.643
  userScript "	bool m_bSafeStartInit = false;"\
+ "	ref RandomGenerator m_Random;"\
  "	void InitPlane()"\
  "	{"\
- "		 vector start      = \"0 600 1000\";"\
- "        vector end        = \"0 600 3000\";"\
- "        vector greenLight = \"0 600 2000\";"\
- "        float angle       = 90;"\
+ "		vector dzStart = \"700 600 5600\";"\
+ "        vector dzEnd = \"700 600 2300\";"\
+ "        vector dzGreenLight = \"1700 0 0\";"\
+ "        float dzAngle = 270;"\
  "    "\
- "        vector flightData[4];"\
- "        flightData[0] = start;       // Start point"\
- "        flightData[2] = greenLight;  // Green light point"\
- "        flightData[3] = end;         // End point"\
+ "       "\
  "    "\
  "        SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();"\
  "        array<SCR_AIGroup> groups = {};"\
  "        groupsMan.GetAllPlayableGroups(groups);"\
  "    "\
  "        PlayerManager pm = GetGame().GetPlayerManager();"\
- "        array<int> players = {};"\
- "    "\
+ "       "\
+ "    	int index = -1;"\
+ "		int layer = 0;"\
  "        foreach (SCR_AIGroup group : groups)"\
  "        {"\
+ "			"\
+ "			 array<int> players = {};"\
  "            if (!group.GetFaction())"\
  "                continue;"\
  "    "\
@@ -1758,51 +1759,70 @@ BaseGameTriggerEntity paradrop {
  "    "\
  "                players.Insert(playerId);"\
  "            }"\
+ "			"\
+ "			index++;"\
+ "			if (index > 2)"\
+ "			{"\
+ "				layer++;"\
+ "				index = 0;"\
+ "			}"\
+ "				"\
+ "			vector flightData[4];"\
+ "        	flightData[0] = dzStart;       // Start point"\
+ "       		flightData[2] = dzGreenLight;  // Green light point"\
+ "        	flightData[3] = dzEnd;         // End point"\
+ "			"\
+ "			flightData[3][0] = flightData[3][0] +  400 * index;"\
+ "			flightData[0][0] = flightData[0][0] +  400 * index;"\
+ "			flightData[3][2] = flightData[3][2] +  400 * layer;"\
+ "			flightData[0][2] = flightData[0][2] +  400 * layer;"\
+ "			"\
+ "			ref CRF_AirdropObject flight = new CRF_AirdropObject("\
+ "	            \"BLUFOR\","\
+ "	            \"{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et\","\
+ "	            flightData,"\
+ "	            dzAngle,"\
+ "	            players,"\
+ "	            true"\
+ "	        );"\
+ "			 CRF_AirdropManager.GetInstance().InitFlight(flight);"\
  "        }"\
- "    "\
- "        ref CRF_AirdropObject flight = new CRF_AirdropObject("\
- "            \"BLUFOR\","\
- "            \"{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et\","\
- "            flightData,"\
- "            angle,"\
- "            players,"\
- "            true"\
- "        );"\
- "    "\
- "        CRF_AirdropManager.GetInstance().InitFlight(flight);"\
- "    "\
+ "  "\
  "        delete this;"\
  "	}"
  TriggerShapeType Sphere
  PeriodicQueries 1
- UpdatePeriod 20
+ UpdatePeriod 25
  OnQueryFinished ""\
- "		Print(\"Query\");"\
  "		if (!Replication.IsServer())"\
  "        {"\
- "			Print(\"Not a server\");"\
  "            delete this;"\
  "            return;"\
  "        }"\
+ "		"\
+ "		if (!m_Random)"\
+ "		{"\
+ "			m_Random = new RandomGenerator();"\
+ "			m_Random.SetSeed(System.GetUnixTime());"\
+ "		}"\
+ "		"\
  "        "\
- "//        if (!m_bSafeStartInit)"\
- "//        {"\
- "//            m_bSafeStartInit = CRF_SafestartManager"\
- "//                .GetInstance()"\
- "//                .GetSafestartStatus();"\
- "//        "\
- "//            return;"\
- "//        }"\
+ "        if (!m_bSafeStartInit)"\
+ "        {"\
+ "            m_bSafeStartInit = CRF_SafestartManager"\
+ "                .GetInstance()"\
+ "                .GetSafestartStatus();"\
  "        "\
- "            //InitPlane();"\
+ "            return;"\
+ "        }"\
+ "        "\
+ "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "            InitPlane();"\
  "	"
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 878.592 9.875 955.105
-}
-Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
- coords 882.221 9.906 960.254
+ coords 686.836 12.177 722.171
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 3050.233 34.443 2380.543
+ coords 4339.298 42.844 4282.063
 }

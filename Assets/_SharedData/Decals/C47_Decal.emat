@@ -1,0 +1,12 @@
+MatPBRDecal {
+ Color 0.328 0.328 0.328 1
+ SpecularIBL 0.515 0.515 0.515 1
+ DisablePriorityProbes 1
+ Specular 0.356 0.356 0.356 1
+ AlphaTest 0.2
+ BlendMode AlphaBlend
+ RoughnessScale 0.836
+ MetalnessScale 0
+ BCRMap "{E7F0D8350741F071}Prefabs/Vehicles/c47_decal.edds"
+ OpacityMap "{ACC58D6BD24C5330}Prefabs/Vehicles/c47_decal_alpha.edds"
+}

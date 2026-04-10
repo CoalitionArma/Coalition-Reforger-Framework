@@ -1,0 +1,51 @@
+CRF_ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  MeshObject "{4B42E716914465B9}" {
+   Object "{1C417E692955EBE0}Assets/Parachute_Canopy.xob"
+   PixelSizeScale 1
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Layers 0x4040 0
+   Mass 40
+   CenterOfMass 0 1.862 0
+   LinearDamping 0.5
+   AngularDamping 0.1
+   SimState Simulation
+   ResponseIndex "Normal"
+  }
+  SCR_BaseCompartmentManagerComponent "{2CD4A765A7D52986}" {
+   CompartmentSlots {
+    CargoCompartmentSlot test {
+     CompartmentAction SCR_GetInUserAction "{6914E010ABD3A3D0}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+     }
+     GetOutAction SCR_GetOutAction "{6914E010ABD3A3BC}" {
+      ParentContextList {
+       "door_rear_int"
+      }
+     }
+     JumpOutAction SCR_JumpOutAction "{6914E010ABD3A3B5}" {
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{6914E010ABD3A38F}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "68A90AB9B372D65F" {
+      PivotID "passenger_l02_idle"
+     }
+     ForcedFreeLook 1
+     SkipCharacterDoorAnimationsFromSeat 1
+     DoorInfoList {
+      0
+     }
+     ContextName "passenger_l02"
+    }
+   }
+  }
+ }
+ coords 0 4 0
+}

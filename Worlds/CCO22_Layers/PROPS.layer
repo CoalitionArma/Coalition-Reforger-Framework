@@ -1,0 +1,22 @@
+$grp StaticModelEntity : "{28C1A3CFAF581F78}Prefabs/Props/Military/88mm.et" {
+ {
+  coords 210.919 12.78 1054.556
+  angles 0 50.325 0
+ }
+ {
+  coords 226.481 20.442 952.401
+  angles 0 31.254 0
+ }
+ {
+  coords 226.046 20.696 981.335
+  angles 0 38.568 0
+ }
+ {
+  coords 239.469 12.583 1055.447
+  angles 0 124.43 0
+ }
+}
+GenericEntity : "{DFA78D45BD5C4C5D}Prefabs/Compositions/SupplyArsenal/SupplyArsenal_BLUFOR.et" {
+ coords 863.492 4.754 2860.695
+ angles 0 -77 0
+}
