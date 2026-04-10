@@ -26,5 +26,11 @@ CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoin
  coords 14263.896 50.906 11935.908
 }
 CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
- coords 12236.438 41.687 9605.221
+ coords 12479.768 42.363 9960.232
+ {
+  CRF_ManualMarker {
+   ID "68682AC1BDF231D9"
+   coords 0 0 0
+  }
+ }
 }
