@@ -1,0 +1,82 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{CF0000000000AA01}" {
+   Name "BG"
+   Slot FrameWidgetSlot "{CF0000000000AB01}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -150
+    OffsetLeft -150
+    PositionY -115
+    OffsetTop -115
+    SizeX 300
+    OffsetRight -150
+    SizeY 76
+    OffsetBottom 39
+   }
+   Color 0.05 0.05 0.05 0.78
+  }
+  TextWidgetClass "{CF0000000000AA02}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{CF0000000000AB02}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -150
+    OffsetLeft -150
+    PositionY -115
+    OffsetTop -115
+    SizeX 300
+    OffsetRight -150
+    SizeY 22
+    OffsetBottom 93
+   }
+   Text "HUNTER HP"
+   "Font Size" 13
+   "Min Font Size" 11
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{CF0000000000AC01}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 2
+   }
+  }
+  ProgressBarWidgetClass "{CF0000000000AA03}" {
+   Name "HealthBar"
+   Slot FrameWidgetSlot "{CF0000000000AB03}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -136
+    OffsetLeft -136
+    PositionY -85
+    OffsetTop -85
+    SizeX 272
+    OffsetRight -136
+    SizeY 20
+    OffsetBottom 65
+   }
+   Color 0.063 0.847 0.063 1
+   Maximum 100
+   Current 100
+  }
+  TextWidgetClass "{CF0000000000AA04}" {
+   Name "HPText"
+   Slot FrameWidgetSlot "{CF0000000000AB04}" {
+    Anchor 0.5 1 0.5 1
+    PositionX -136
+    OffsetLeft -136
+    PositionY -60
+    OffsetTop -60
+    SizeX 272
+    OffsetRight -136
+    SizeY 16
+    OffsetBottom 44
+   }
+   Text "100 / 100"
+   "Font Size" 12
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{CF0000000000AC02}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+ }
+}
