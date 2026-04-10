@@ -347,7 +347,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{0399DCD26540AF9E}Configs/Gearscripts/Custom/Klub/80s/CRF_GS_US80_Air.conf"
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
@@ -355,7 +355,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{CEE41B2221F46E00}Configs/Gearscripts/Custom/Klub/80s/CRF_GS_USSR80s_Air.conf"
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
