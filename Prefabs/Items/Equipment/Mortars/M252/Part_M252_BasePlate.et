@@ -4,6 +4,7 @@ GenericEntity : "{E0DDD854DF1DE9E2}Prefabs/Items/Core/DeployablePart_Main_Base.e
   SCR_DeployableInventoryItemInventoryComponent "{5222EB4D0C73006B}" {
    Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
     ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 5
      ItemVolume 10000
     }
    }
