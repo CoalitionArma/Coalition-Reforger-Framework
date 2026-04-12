@@ -107,7 +107,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		"\
  "		//Only during safestart do we want americans to have parachutes"\
  "		if (faction.GetFactionKey() == \"BLUFOR\" && CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
- "			ChangeItem(entity, \"{9422415FE7875691}Prefabs/Items/Equipment/Backpacks/BUSHWAR_Parachute_Pack_01.et\", 5);"\
+ "			ChangeItem(entity, \"{02546D7D1C1469CF}Prefabs/Items/Equipment/Backpacks/ParachuteBag_T10_01.et\", 5);"\
  "		"\
  "		if (faction.GetFactionKey() == \"BLUFOR\")"\
  "			ChangeItem(entity, \"{DFD3A15BC97061A2}Prefabs/Clothing/Bandolier/Airborne Bandolier.et\", 12);"\

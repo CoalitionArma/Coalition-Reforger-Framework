@@ -1,0 +1,11 @@
+GenericEntity : "{E0FBDCC3182A886F}Prefabs/Items/Equipment/Backpacks/ParachuteBag_T10_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  CRF_ParachuteBackpackComponent "{691822A2A20B195E}" {
+   m_ParachutePrefab "{E95CAF01F81754A0}Prefabs/DeployedParachutes/CRF_DeployedParachute.et"
+  }
+  ParachuteItemComponent "{6594945265DDB21D}" {
+   Enabled 0
+  }
+ }
+}
