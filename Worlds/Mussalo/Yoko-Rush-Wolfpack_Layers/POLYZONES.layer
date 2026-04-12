@@ -16,10 +16,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -587.315 0 -129.967
   }
   ShapePoint "{6915102E72FFDB66}" {
-   Position -245.444 0 -469.088
+   Position -707.439 0 -1291.169
+  }
+  ShapePoint "{691771DA63DBAF2C}" {
+   Position -388.223 -0 -1482.025
   }
   ShapePoint "{6915102E7475DDC0}" {
-   Position 265.14 0 -608.155
+   Position 410.519 0 -774.011
   }
   ShapePoint "{6915102E76330CC3}" {
    Position 827.458 0 -186.158
@@ -39,16 +42,19 @@ PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDe
    Position 54.502 0 117.359
   }
   ShapePoint "{6915102EA6FF128F}" {
-   Position -74.358 0 -20.415
+   Position -92.766 0 0.065
   }
-  ShapePoint "{6915102EAA4C47FD}" {
-   Position -429.694 0 -297.493
+  ShapePoint "{691771D903AFCE16}" {
+   Position -401.789 0 -320.441
+  }
+  ShapePoint "{691771D905618978}" {
+   Position -247.631 -0 -449.796
   }
   ShapePoint "{6915102E510C67B9}" {
-   Position -51.447 0 -583.583
+   Position -137.937 8.361 -506.875
   }
   ShapePoint "{6915102E553DF472}" {
-   Position 91.985 -0 -747.771
+   Position 130.246 0 -817.122
   }
   ShapePoint "{6915102E5765D351}" {
    Position 306.544 0 -645.262
@@ -59,22 +65,29 @@ PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDe
  }
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
- coords 4298.486 37.221 4566.998
+ coords 4199.07 8.403 3580.92
+ angles 0 -42.254 0
  Points {
   ShapePoint "{6915102E8548082A}" {
-   Position 180.094 0 -58.024
+   Position 204.826 0 187.18
   }
   ShapePoint "{6915102E84BF7F71}" {
-   Position 181.337 0 -72.275
+   Position 254.975 0 -104.734
   }
   ShapePoint "{6915102E865B39C6}" {
-   Position -54.332 0 -86.75
+   Position -41.856 0 -190.568
   }
   ShapePoint "{6915102E8A0E5C6E}" {
    Position -72.117 0 61.25
   }
   ShapePoint "{6915102E8E40AC0F}" {
    Position 66.316 0 142.605
+  }
+ }
+ {
+  CRF_PolyZoneTrigger {
+   ID "6586537E1F83840B"
+   coords 0 0 -44.757
   }
  }
 }

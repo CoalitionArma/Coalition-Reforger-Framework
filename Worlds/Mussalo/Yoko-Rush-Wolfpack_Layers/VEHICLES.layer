@@ -1,61 +1,61 @@
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
-  coords 4323.254 35.805 4577.32
+  coords 4300.589 6.254 3578.313
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4323.063 35.451 4572.018
+  coords 4300.398 6.063 3573.012
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4322.885 35.139 4567.097
+  coords 4300.22 5.862 3568.091
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4322.694 34.861 4561.811
+  coords 4300.029 5.66 3562.805
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4322.457 34.519 4555.257
+  coords 4299.792 5.437 3556.25
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4313.251 35.763 4555.589
+  coords 4290.586 6.37 3556.583
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4313.475 35.705 4561.778
+  coords 4290.811 6.53 3562.771
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4313.682 35.723 4567.491
+  coords 4291.018 6.647 3568.485
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4313.863 35.907 4572.494
+  coords 4291.198 6.73 3573.488
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4314.049 36.195 4577.664
+  coords 4291.384 6.789 3578.658
   angles 0 -87.931 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 4270.959 37.936 4589.474
+  coords 4228.97 6.675 3561.804
   angles 0 33.987 0
   m_rVehicle "{1BE270891F0F3772}Prefabs/Vehicles/Tracked/BMP3/BMP3_Tank.et"
  }
  {
-  coords 4275.542 37.936 4586.384
+  coords 4233.553 6.692 3558.714
   angles 0 33.987 0
   m_rVehicle "{1BE270891F0F3772}Prefabs/Vehicles/Tracked/BMP3/BMP3_Tank.et"
  }
