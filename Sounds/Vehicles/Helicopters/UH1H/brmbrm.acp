@@ -1,0 +1,141 @@
+AudioClass {
+ sounds {
+  SoundClass "48137" {
+   id 48137
+   name "planeOUT"
+   version 5
+   tl 26.063 96.722
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+    }
+    ConnectionsClass "con:64" {
+     id 64
+     links {
+      ConnectionClass "49156:65" {
+       id 49156
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    1 0
+   }
+   transformation Offset
+   offsetName "Warning_Speaker"
+   type Timer
+  }
+ }
+ constants {
+  ConstantClass "46092" {
+   id 46092
+   name "Constant"
+   version 5
+   tl -419.25 -493.036
+   "Constant values" {
+    IOPConstantsValueClass VehicleCoverage {
+     Key "VehicleCoverage"
+     Value 0.45
+     Port 1
+    }
+   }
+  }
+ }
+ amplitudes {
+  AmplitudeClass "1043" : "{B8DF212957DF97E8}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-50LUFS_to_-45LUFS.conf" {
+   id 1043
+   version 5
+   tl -198.488 -637.056
+   parent "{B8DF212957DF97E8}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-50LUFS_to_-45LUFS.conf"
+  }
+ }
+ banks_local {
+  BankLocalClass "49156" {
+   id 49156
+   name "Bank 48"
+   version 7
+   tl -269 131.818
+   Volume -15
+   Samples {
+    AudioBankSampleClass "c130 insidee.wav" {
+     Filename "{5DB97F2D7F76A999}Sounds/Vehicles/Helicopters/UH1H/c130 insidee.wav"
+     Probability 100
+     Index 0
+     SampleMetadata ""
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass "6172" {
+   id 6172
+   name "Spatiality"
+   version 5
+   tl -197.868 -709.255
+   spatialFactor 1
+  }
+ }
+ auxOuts {
+  AuxOutClass "8221" {
+   id 8221
+   name "AuxOut Reverb EXT"
+   version 5
+   tl 310.617 85.393
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "48137:5" {
+       id 48137
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+    }
+   }
+   pi {
+    3 0
+   }
+   pu {
+    2 0
+   }
+   OSPort 197639
+  }
+  AuxOutClass "10269" {
+   id 10269
+   name "AuxOut Reverb INT"
+   version 5
+   tl 258.973 -146.72
+   ins {
+    ConnectionsClass "con:0" {
+     id 0
+     links {
+      ConnectionClass "48137:5" {
+       id 48137
+       port 5
+      }
+     }
+    }
+    ConnectionsClass "con:1" {
+     id 1
+    }
+    ConnectionsClass "con:2" {
+     id 2
+    }
+   }
+   pi {
+    7 0
+   }
+   pu {
+    6 0
+   }
+   OSPort 152583
+   Volume -30
+  }
+ }
+ version 1
+ listenerWindowModel "{7FF449DB9ED11DB4}Assets/Vehicles/Helicopters/UH1H/UH1H_base.xob"
+}

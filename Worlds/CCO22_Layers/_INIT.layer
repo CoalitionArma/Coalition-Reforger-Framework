@@ -109,6 +109,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		if (faction.GetFactionKey() == \"BLUFOR\" && CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
  "			ChangeItem(entity, \"{9422415FE7875691}Prefabs/Items/Equipment/Backpacks/BUSHWAR_Parachute_Pack_01.et\", 5);"\
  "		"\
+ "		if (faction.GetFactionKey() == \"BLUFOR\")"\
+ "			ChangeItem(entity, \"{DFD3A15BC97061A2}Prefabs/Clothing/Bandolier/Airborne Bandolier.et\", 12);"\
+ "		"\
  "	}"\
  "	"\
  "	protected void ChangeItem(IEntity player, string newResource, int slotId)"\
@@ -240,6 +243,63 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bLockUnusedSlots 0
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Today, and as you read this, you are en route to that great adventure for which you have trained for over two years."\
+   "Tonight is the night of nights."\
+   "Tomorrow throughout the whole of our homeland and the Allied world the bells will ring out the tidings that you have arrived, and the invasion for liberation has begun."\
+   "The hopes and prayers of your dear ones accompany you, the confidence of your high commanders goes with you. The fears of the Germans are about to become a reality."\
+   "Let us strike hard. When the going is tough, let us go harder. Imbued with faith in the rightness of our cause, and the power of our might, let us annihilate the enemy where found."\
+   "May God be with each of you fine soldiers. By your actions let us justify His faith in us."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets:"\
+   "Mortars"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets:"\
+   "Sniper"\
+   "MMG"\
+   ""\
+   "Time: 90 Minutes"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "- Capture German Field HQ"\
+   "- Destroy German AA guns"\
+   "- Capture La Rue"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 3
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
@@ -1824,5 +1884,5 @@ CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoin
  coords 686.836 12.177 722.171
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 4339.298 42.844 4282.063
+ coords 855.781 4.442 2869.484
 }

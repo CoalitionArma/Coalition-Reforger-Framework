@@ -8,7 +8,7 @@ class CRF_DestroyArtyAction: ScriptedUserAction
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
 		int gunsDestroyed = CRF_GamemodeManager.GetInstance().m_iGunsDestroyed;
-		CRF_PlayerRplToAuthorityManager.GetInstance().DestroyArtyGun(m_Id);
+		CRF_PlayerRplToAuthorityManager.GetInstance().DestroyArtyGun(m_Id, SCR_PlayerController.GetLocalPlayerId());
 		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastMgr && gunsDestroyed < 3)
         	broadcastMgr.PopUpNotification(10, string.Format("%1/4 Guns have been destroyed!", gunsDestroyed + 1));
@@ -61,7 +61,12 @@ class CRF_DestroyArtyAction: ScriptedUserAction
 
 		foreach (IEntity item: items)
 		{
-			if (item.FindComponent(GrenadeMoveComponent) || item.FindComponent(SCR_ExplosiveChargeComponent))
+			if (!item)
+				continue;
+			
+			string resourceName = item.GetPrefabData().GetPrefabName();
+			
+			if (resourceName == "{4C5445AFA3EA7EF9}Prefabs/Weapons/Grenades/Grenade_Mk2.et" || resourceName == "{73CBF75078728CF0}Prefabs/Weapons/Grenades/Grenade_Stick.et" || resourceName == "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et")
 				return true;
 		}
 		

@@ -374,7 +374,6 @@ $grp BaseGameTriggerEntity {
   TriggerShapeType "Oriented Bounding Box"
   SphereRadius 30.4
   BoxMaxs 60 20 100
-  DrawShape 1
   PeriodicQueries 1
   OnQueryFinished ""\
   "		if (!m_GamemodeManager)"\
@@ -593,4 +592,110 @@ $grp BaseGameTriggerEntity {
   "			ServerChecks();"\
   "	"
  }
+ mortarAmmoSpawn {
+  coords 855.903 4.504 2859.679
+  userScript "	int m_CurrentQuery = 0;"\
+  "	bool m_bSafeStartInit = false;"\
+  "	IEntity m_MortarCrate;"\
+  "	"\
+  "	void SpawnMortarRounds()"\
+  "	{"\
+  "		if (m_CurrentQuery < 3600)"\
+  "		{"\
+  "			m_CurrentQuery += 10;"\
+  "			return;"\
+  "		}"\
+  "		else"\
+  "			m_CurrentQuery = 0;"\
+  "		"\
+  "		if (!m_MortarCrate)"\
+  "			m_MortarCrate = GetGame().GetWorld().FindEntityByName(\"mortar\");"\
+  "		"\
+  "		if (!m_MortarCrate)"\
+  "			return;"\
+  "		"\
+  "		SCR_InventoryStorageManagerComponent storageComp = SCR_InventoryStorageManagerComponent.Cast(m_MortarCrate.FindComponent(SCR_InventoryStorageManagerComponent));"\
+  "		if (!storageComp)"\
+  "			return;"\
+  "		"\
+  "		"\
+  "		for(int i = 0; i < 80; i++)"\
+  "		{"\
+  "			storageComp.TrySpawnPrefabToStorage(\"{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et\");"\
+  "		}"\
+  "		"\
+  "		for(int i = 0; i < 40; i++)"\
+  "		{"\
+  "			storageComp.TrySpawnPrefabToStorage(\"{DD2065AE34D8DFA9}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Illum_M853A1.et\");"\
+  "		}"\
+  "		"\
+  "		for(int i = 0; i < 40; i++)"\
+  "		{"\
+  "			storageComp.TrySpawnPrefabToStorage(\"{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et\");"\
+  "		}"\
+  "		"\
+  "	}"
+  TriggerShapeType Sphere
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if (!Replication.IsServer())"\
+  "		{"\
+  "			delete this;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		if (!m_MortarCrate)"\
+  "			m_MortarCrate = GetGame().GetWorld().FindEntityByName(\"mortar\");"\
+  "			"\
+  "		if (!m_bSafeStartInit)"\
+  "        {"\
+  "            m_bSafeStartInit = CRF_SafestartManager"\
+  "                .GetInstance()"\
+  "                .GetSafestartStatus();"\
+  "        "\
+  "            return;"\
+  "        }"\
+  "        "\
+  "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+  "			SpawnMortarRounds();"\
+  "	"
+ }
+}
+GenericEntity mortar : "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CRF_BLUFOR_Cache.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{65753B3B2F5C2B9A}" {
+     SlotTemplate EquipmentStorageSlot Rifle {
+      Enabled 1
+      Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+     }
+     NumSlots 80
+    }
+    MultiSlotConfiguration "{65753B3B2F5C2BA1}" {
+     SlotTemplate EquipmentStorageSlot RPK {
+      Enabled 1
+      Prefab "{DD2065AE34D8DFA9}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Illum_M853A1.et"
+     }
+     NumSlots 40
+    }
+    MultiSlotConfiguration "{691816CBC59FB89E}" {
+     SlotTemplate EquipmentStorageSlot "{691816CBC2A7BFE9}" {
+      Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+     }
+     NumSlots 40
+    }
+   }
+  }
+  RplComponent "{5476B36C54387F41}" {
+   "Rpl State Override" None
+  }
+ }
+ coords 854.418 4.464 2860.672
+ angles 0 -93 0
+}
+GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
+ coords 854.787 4.462 2861.877
+ angles 0 55 0
 }

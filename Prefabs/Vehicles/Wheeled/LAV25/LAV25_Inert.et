@@ -19,6 +19,9 @@ Vehicle : "{1B8EB269EECA2DF9}Prefabs/Vehicles/Wheeled/LAV25/LAV25_base.et" {
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
     Name "LAV-25 INERT (AA BATTERY)"
+    m_aAutoLabels {
+     FACTION_CRF_OPFOR FACTION_NONE SIZE_M
+    }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
       m_Value 1800

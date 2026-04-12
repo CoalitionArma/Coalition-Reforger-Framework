@@ -39,10 +39,18 @@ TracerProjectile : "{AB7BB1272DA3F564}Prefabs/Weapons/Ammo/Ammo_25x137/Ammo_25x1
    TimeToLive 7
    TriggerWhenTimeout 1
    ProjectileEffects {
+    ProjectileDamage "{5168BBF3DBD79134}" {
+     Enabled 0
+     DamageValue 0
+    }
     ExplosionEffect "{85DB664DDCA5D5B0}" {
      TriggerOnce 1
+     Enabled 0
      EffectPrefab "{627F225E34E4B5F1}Prefabs/Weapons/Warheads/Warhead_HEIT_M792.et"
      ParticleEffect "{6FE5C11AEE0A28A1}Particles/Weapon/Explosion_HEI.ptc"
+    }
+    HitSoundEffect "{2FC22748C7ABD466}" {
+     Enabled 0
     }
    }
    BallisticTableConfig "{438BE620D001C1D8}Configs/Weapons/AIBallisticTables/AIBT_25x137_HEIT_M792.conf"

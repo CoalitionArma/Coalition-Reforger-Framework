@@ -2355,19 +2355,19 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		supplyComp.UpdateCurrentSupply();
 	}
 	
-	void DestroyArtyGun(RplId id)
+	void DestroyArtyGun(RplId gunId, int playerId)
 	{
 		#ifdef WORKBENCH
-		RpcDo_DestroyArtyGun(id);
+		RpcDo_DestroyArtyGun(gunId, playerId);
 		#else
-		Rpc(RpcDo_DestroyArtyGun, id);
+		Rpc(RpcDo_DestroyArtyGun, gunId, playerId);
 		#endif
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_DestroyArtyGun(RplId id)
+	void RpcDo_DestroyArtyGun(RplId gunId, int playerId)
 	{
-		IEntity gun = 	CRF_ReplicationHelper.GetEntityFromRplId(id);
+		IEntity gun = CRF_ReplicationHelper.GetEntityFromRplId(gunId);
 		if (!gun)
 			return;
 		
@@ -2376,6 +2376,57 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			return;
 
 		artyGun.SetDestroyed();
+		
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		
+		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));
+		if (!inventory)
+			return;
+		
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!inventoryManager)
+			return;
+		
+		array<IEntity> items = {};
+		array<IEntity> itemsRoot = {};
+		inventoryManager.GetAllItems(items, inventory);
+		inventoryManager.GetItems(itemsRoot);
+
+		foreach (IEntity item: items)
+		{
+			if (!item)
+				continue;
+			
+			string resourceName = item.GetPrefabData().GetPrefabName();
+			
+			if (resourceName == "{4C5445AFA3EA7EF9}Prefabs/Weapons/Grenades/Grenade_Mk2.et" || resourceName == "{73CBF75078728CF0}Prefabs/Weapons/Grenades/Grenade_Stick.et" || resourceName == "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et")
+			{
+				SCR_EntityHelper.DeleteEntityAndChildren(item);
+				break;
+			}
+		}
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		gun.GetTransform(params.Transform);
+		
+		IEntity mine = GetGame().SpawnEntityPrefab(Resource.Load("{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"), null, params);
+		
+		GetGame().GetCallqueue().CallLater(ExplodeMine, 5000, false, mine);
+		
+		
+	}
+	
+	void ExplodeMine(IEntity mine)
+	{
+		Print("boom");
+		SCR_ExplosiveTriggerComponent triggerComp = SCR_ExplosiveTriggerComponent.Cast(mine.FindComponent(SCR_ExplosiveTriggerComponent));
+		if (!triggerComp)
+			return;
+		
+		triggerComp.UseTrigger();
+		
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
