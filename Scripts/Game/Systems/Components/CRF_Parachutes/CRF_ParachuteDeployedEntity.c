@@ -270,7 +270,7 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		playerComp.Rpc_RequestExit(GetRplId(), velocityAtExit);
 		
 		if (occupant.GetPrefabData().GetPrefabName() == "{4BCB20FFA9A0D6BF}Prefabs/Characters/!GS_Characters/Squad Level/CRF_RTO.et")
-			GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{E1D45CB7B8D1B3F4}Prefabs/Items/Equipment/Radios/SCR300.et", 5);
+			GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{B112DD31A5B9A6C1}Prefabs/Items/Equipment/Radios/SCR300.et", 5);
 		else
 			GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{FD6B8AA333271ACF}Prefabs/Items/Equipment/Backpacks/GI Packs/GI Havardsack backpack shovel.et", 5);
 	}
