@@ -305,7 +305,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69073E07C65EF233}" {
+  CRF_SlottingGroup "{69181D6F939FAC5F}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -314,7 +314,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RADIO_TELEPHONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{69073E07C65EF3DF}" {
+  CRF_SlottingGroup "{69181D6F939FAD79}" {
    m_sCallsign "LOGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -324,7 +324,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{69073E07C65EF049}" {
+  CRF_SlottingGroup "{69181D6F939FAD98}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -333,7 +333,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RADIO_TELEPHONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{69073E07C65EF0C0}" {
+  CRF_SlottingGroup "{69181D6F939FAA10}" {
    m_sCallsign "ABLE"
    m_FlagType INFANTRY
    m_aSlots {
@@ -351,7 +351,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EF136}" {
+  CRF_SlottingGroup "{69181D6F939FAB57}" {
    m_sCallsign "BAKER"
    m_FlagType INFANTRY
    m_aSlots {
@@ -369,7 +369,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEE40}" {
+  CRF_SlottingGroup "{69181D6F939FAB95}" {
    m_sCallsign "CHARLIE (MORTAR)"
    m_FlagType MORTAR
    m_aSlots {
@@ -381,7 +381,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEEF2}" {
+  CRF_SlottingGroup "{69181D6F939FA80A}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -390,7 +390,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RADIO_TELEPHONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEF64}" {
+  CRF_SlottingGroup "{69181D6F939FA88F}" {
    m_sCallsign "DELTA"
    m_FlagType INFANTRY
    m_aSlots {
@@ -408,7 +408,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEF86}" {
+  CRF_SlottingGroup "{69181D6F939FA93C}" {
    m_sCallsign "ECHO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -426,7 +426,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEC2F}" {
+  CRF_SlottingGroup "{69181D6F939FA9A9}" {
    m_sCallsign "FOX"
    m_FlagType MORTAR
    m_aSlots {
@@ -440,7 +440,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69073E07C65EED6E}" {
+  CRF_SlottingGroup "{69181D6F939FA717}" {
    m_sCallsign "PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -450,7 +450,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEDE2}" {
+  CRF_SlottingGroup "{69181D6F939FA7BD}" {
    m_sCallsign "LOGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -459,7 +459,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEA11}" {
+  CRF_SlottingGroup "{69181D6F939FA435}" {
    m_sCallsign "SNIPER"
    m_FlagType SNIPER
    m_aSlots {
@@ -467,7 +467,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEA8E}" {
+  CRF_SlottingGroup "{69181D6F939FA482}" {
    m_sCallsign "1. Gruppe"
    m_FlagType INFANTRY
    m_aSlots {
@@ -482,7 +482,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEB3C}" {
+  CRF_SlottingGroup "{69181D6F939FA533}" {
    m_sCallsign "2. Gruppe"
    m_FlagType INFANTRY
    m_aSlots {
@@ -497,7 +497,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EEBAD}" {
+  CRF_SlottingGroup "{69181D6F939FA5A1}" {
    m_sCallsign "3. Sturmgruppe"
    m_FlagType INFANTRY
    m_aSlots {
@@ -511,7 +511,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EE8DC}" {
+  CRF_SlottingGroup "{69181D6F939FA2CF}" {
    m_sCallsign "4. Sturmgruppe"
    m_FlagType INFANTRY
    m_aSlots {
@@ -525,7 +525,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69073E07C65EE943}" {
+  CRF_SlottingGroup "{69181D6F939FA37C}" {
    m_sCallsign "4. Sturmgruppe"
    m_FlagType INFANTRY
    m_aSlots {
@@ -538,6 +538,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+   }
+  }
+ }
+ m_CivSlots {
+  CRF_SlottingGroup "{69181D6F939FA39A}" {
+   m_sCallsign "GM"
+   m_FlagType SIGNAL
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
    }
   }
  }
