@@ -1,22 +1,235 @@
-$grp StaticModelEntity : "{28C1A3CFAF581F78}Prefabs/Props/Military/88mm.et" {
+GenericEntity mortar : "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CRF_BLUFOR_Cache.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{65753B3B2F5C2B9A}" {
+     SlotTemplate EquipmentStorageSlot Rifle {
+      Enabled 1
+      Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+     }
+     NumSlots 80
+    }
+    MultiSlotConfiguration "{65753B3B2F5C2BA1}" {
+     SlotTemplate EquipmentStorageSlot RPK {
+      Enabled 1
+      Prefab "{DD2065AE34D8DFA9}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Illum_M853A1.et"
+     }
+     NumSlots 40
+    }
+    MultiSlotConfiguration "{691816CBC59FB89E}" {
+     SlotTemplate EquipmentStorageSlot "{691816CBC2A7BFE9}" {
+      Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+     }
+     NumSlots 40
+    }
+   }
+  }
+  RplComponent "{5476B36C54387F41}" {
+   "Rpl State Override" None
+  }
+ }
+ coords 2656.63 53.233 3883.166
+ angles 0 171 0
+}
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
  {
-  coords 210.919 12.78 1054.556
-  angles 0 50.325 0
+  coords 2678.011 52.696 3894.693
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aEncapsulators {
+       SCR_ResourceEncapsulator "{5DAD1D48DACE9DE8}" {
+        m_aActions {
+         SCR_ResourceEncapsulatorActionChangeGain "{5DE296D4D87F56EC}" {
+          m_bEnableResourceGain 1
+          m_fResourceGain 1000
+          m_fResourceGainTickrate 3600
+         }
+        }
+       }
+      }
+     }
+    }
+    {
+     GenericEntity {
+      ID "5D453938619FC380"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+          m_fResourceValueMax 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5D453938619FC381"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+          m_fResourceValueMax 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5D453938619FC383"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueMax 4000
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
  {
-  coords 226.481 20.442 952.401
-  angles 0 31.254 0
- }
- {
-  coords 226.046 20.696 981.335
-  angles 0 38.568 0
- }
- {
-  coords 239.469 12.583 1055.447
-  angles 0 124.43 0
+  coords 3826.446 8.26 815.75
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    {
+     GenericEntity {
+      ID "5D453938619FC380"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 4000
+          m_fResourceValueMax 4000
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5D453938619FC381"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+          m_fResourceValueMax 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5D453938619FC383"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+          m_fResourceValueMax 0
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }
+GenericEntity : "{819EA607D9A546AD}Prefabs/Compositions/SupplyArsenal/SupplyArsenal_OPFOR.et" {
+ coords 3838.117 8.501 816.459
+ angles 0 106 0
+}
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 3833.416 8.294 801.617
+  angles 1.751 77.989 -0.372
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3834.828 8.307 793.678
+  angles 1.751 77.989 -0.372
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3832.504 8.297 805.138
+  angles 1.751 77.989 -0.372
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3834.088 8.309 797.606
+  angles 1.937 78.017 0.504
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+}
+GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
+ coords 2657.175 53.174 3883.79
+ angles 0 -2 0
+}
 GenericEntity : "{DFA78D45BD5C4C5D}Prefabs/Compositions/SupplyArsenal/SupplyArsenal_BLUFOR.et" {
- coords 863.492 4.754 2860.695
- angles 0 -77 0
+ coords 2660.46 53.094 3886.718
+ angles 0 -53 0
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 2661.128 52.175 3899.015
+  angles -1.304 -96.106 4.63
+  m_rVehicle "{AF7DA63E2177F11E}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2660 51.366 3908.094
+  angles -1.208 -96.117 5.513
+  m_rVehicle "{AF7DA63E2177F11E}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2660.516 51.777 3903.548
+  angles -1.208 -96.117 5.513
+  m_rVehicle "{AF7DA63E2177F11E}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2659.02 50.89 3913.182
+  angles -1.208 -96.117 5.513
+  m_rVehicle "{AF7DA63E2177F11E}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 900
+  m_iTicketsPerRespawn 5
+  m_bShouldAddAmmo 0
+ }
 }

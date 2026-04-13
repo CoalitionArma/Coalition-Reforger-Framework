@@ -1951,61 +1951,61 @@ GameEntity {
   GameEntity : "{1CB097FC18F5BD90}C47_Exterior.et" {
    ID "6914E017897736A5"
    coords 0 0 0
-   angles 0 194 0
+   angles 0 202 0
   }
   $grp GenericEntity : "{A8C614579B81CC47}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/C47_Decal.et" {
    {
     ID "691503B44C55F85E"
     coords 0 40 0
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B472817B3E"
     coords -46.182 63.226 -185.227
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B482EA3173"
     coords 56.951 66.14 228.418
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B4AD11C266"
     coords -138.322 68.571 215.398
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B4AD11C3E9"
     coords -218.263 76.366 84.202
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B4AD11C3F1"
     coords -234.223 40 -168.378
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B4F3A78A7D"
     coords 200.507 55.747 -18.279
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B51D746F99"
     coords 177.209 61.184 -274.83
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
    {
     ID "691503B5339C8314"
     coords 244.333 85.915 120.929
-    angles 180 90 0
+    angles 180 136 0
     scale 200
    }
   }
