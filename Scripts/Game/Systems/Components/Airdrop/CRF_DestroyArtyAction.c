@@ -7,13 +7,7 @@ class CRF_DestroyArtyAction: ScriptedUserAction
 	
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		int gunsDestroyed = CRF_GamemodeManager.GetInstance().m_iGunsDestroyed;
 		CRF_PlayerRplToAuthorityManager.GetInstance().DestroyArtyGun(m_Id, SCR_PlayerController.GetLocalPlayerId());
-		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();
-		if (broadcastMgr && gunsDestroyed < 3)
-        	broadcastMgr.PopUpNotification(10, string.Format("%1/4 Guns have been destroyed!", gunsDestroyed + 1));
-		else if (broadcastMgr)
-			broadcastMgr.PopUpNotification(10, string.Format("All Guns have been destroyed, the US has captured Brecourt Manor!"));
 	}
 	
 	override bool CanBePerformedScript(IEntity user)

@@ -2415,7 +2415,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		GetGame().GetCallqueue().CallLater(ExplodeMine, 5000, false, mine);
 		
-		
+		int gunsDestroyed = CRF_GamemodeManager.GetInstance().m_iGunsDestroyed;
+		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastMgr && gunsDestroyed < 3)
+        	broadcastMgr.PopUpNotification(10, string.Format("%1/4 Guns have been destroyed!", gunsDestroyed + 1));
+		else if (broadcastMgr)
+			broadcastMgr.PopUpNotification(10, string.Format("All Guns have been destroyed, the US has captured Brecourt Manor!"));
 	}
 	
 	void ExplodeMine(IEntity mine)

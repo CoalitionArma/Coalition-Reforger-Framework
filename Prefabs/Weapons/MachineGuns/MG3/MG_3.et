@@ -2,14 +2,15 @@ GenericEntity : "{6E42C85D9FC0CA5D}Prefabs/Weapons/MachineGuns/M60/MG_M60_base.e
  ID "CFBAA4B725411E45"
  components {
   MeshObject "{CFBAA4B701F95D69}" {
+   Object "{2CD6B0E75BCF15FF}Assets/MG3_norail.xob"
    Materials {
     MaterialAssignClass "{68EE077901FE2C56}" {
      SourceMaterial "rail_ris"
-     AssignedMaterial "{0A94C84B94134E73}assets/Matts/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Matts/InvisibiltyGoesSoHard.emat"
     }
     MaterialAssignClass "{68EE077901FE2C68}" {
      SourceMaterial "ris_mount"
-     AssignedMaterial "{0A94C84B94134E73}assets/Matts/InvisibiltyGoesSoHard.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Matts/InvisibiltyGoesSoHard.emat"
     }
    }
   }

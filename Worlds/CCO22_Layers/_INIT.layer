@@ -107,7 +107,19 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		"\
  "		//Only during safestart do we want americans to have parachutes"\
  "		if (faction.GetFactionKey() == \"BLUFOR\" && CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "		{"\
  "			ChangeItem(entity, \"{02546D7D1C1469CF}Prefabs/Items/Equipment/Backpacks/ParachuteBag_T10_01.et\", 5);"\
+ "			if (entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
+ "			{"\
+ "				SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "				if (!storageMan)"\
+ "					return;"\
+ "				"\
+ "				GetGame().GetCallqueue().CallLater(storageMan.TrySpawnPrefabToStorage, 5000, false, \"{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et\");"\
+ ""\
+ "			}"\
+ "		}"\
+ "			"\
  "		"\
  "		if (faction.GetFactionKey() == \"BLUFOR\")"\
  "			ChangeItem(entity, \"{DFD3A15BC97061A2}Prefabs/Clothing/Bandolier/Airborne Bandolier.et\", 12);"\

@@ -273,6 +273,16 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{B112DD31A5B9A6C1}Prefabs/Items/Equipment/Radios/SCR300.et", 5);
 		else
 			GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.GetInstance().RequestNewItem, 1000, false, playerId, "{FD6B8AA333271ACF}Prefabs/Items/Equipment/Backpacks/GI Packs/GI Havardsack backpack shovel.et", 5);
+		
+		if (occupant.GetPrefabData().GetPrefabName() == "{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et")
+		{
+			SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(occupant.FindComponent(SCR_InventoryStorageManagerComponent));
+			if (!storageMan)
+				return;
+			
+			GetGame().GetCallqueue().CallLater(storageMan.TrySpawnPrefabToStorage, 5000, false, "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et");
+
+		}
 	}
 
 	// --------------------------------------------------------------------------------------------
