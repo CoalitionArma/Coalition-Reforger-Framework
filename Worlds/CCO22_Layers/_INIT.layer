@@ -150,6 +150,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O"\
  "		foreach (IEntity pouch: pouches)"\
  "		{"\
+ "			if (pouch.FindComponent(SCR_ResupplyMedicalGadgetSupportStationComponent))"\
+ "			{"\
+ "				items.Insert(pouch.GetPrefabData().GetPrefabName());"\
+ "				continue;"\
+ "			}"\
  "			if (!pouch.FindComponent(BaseInventoryStorageComponent))"\
  "			{"\
  "				items.Insert(pouch.GetPrefabData().GetPrefabName());"\
@@ -575,6 +580,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_aAdditonalItemsForSupplyArsenal {
+   "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+   "{DD2065AE34D8DFA9}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Illum_M853A1.et"
+   "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+  }
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{27B663E5A76E9DC8}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22GER.conf"
@@ -583,6 +596,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
@@ -1855,10 +1871,13 @@ BaseGameTriggerEntity paradrop {
  "       		flightData[2] = dzGreenLight;  // Green light point"\
  "        	flightData[3] = dzEnd;         // End point"\
  "			"\
- "			flightData[3][0] = flightData[3][0] +  400 * index;"\
- "			flightData[0][0] = flightData[0][0] +  400 * index;"\
- "			flightData[3][2] = flightData[3][2] +  400 * layer;"\
- "			flightData[0][2] = flightData[0][2] +  400 * layer;"\
+ "			flightData[3][0] = flightData[3][0] + 400 * index;"\
+ "			flightData[0][0] = flightData[0][0] + 400 * index;"\
+ "			flightData[3][2] = flightData[3][2] + 400 * layer;"\
+ "			flightData[0][2] = flightData[0][2] + 400 * layer;"\
+ "			"\
+ "			//Green light distance changes if we are a layer back"\
+ "			flightData[2][0] = flightData[2][0] + 400 * layer;"\
  "			"\
  "			ref CRF_AirdropObject flight = new CRF_AirdropObject("\
  "	            \"BLUFOR\","\

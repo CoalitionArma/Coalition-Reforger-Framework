@@ -154,7 +154,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				case 0: miscItems.Insert(item.m_sItemPrefab); break;
 				case 1: explosiveItems.Insert(item.m_sItemPrefab); break;
 				case 2: grenadeItems.Insert(item.m_sItemPrefab); break;
-				case 3: break;
+				case 3: radioItems.Insert(item.m_sItemPrefab); break;
 				case 4: medicalItems.Insert(item.m_sItemPrefab); break;
 			}		
 		}
@@ -243,8 +243,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		if (grenadeItems.Count() > 0)
 			PopulateInventoryItems(grenadeItems, 2);
 		
-		if (radioItems.Count() > 0)
-			PopulateInventoryItems(radioItems, 3);
+//		if (radioItems.Count() > 0)
+//				Print("[CRF_SupplyArsenal.PopulateCategories] debug line (" + __FILE__ + " L" + __LINE__ + ")", LogLevel.WARNING);
+//			PopulateInventoryItems(radioItems, 3);
 		
 		if (medicalItems.Count() > 0)
 			PopulateInventoryItems(medicalItems, 4);

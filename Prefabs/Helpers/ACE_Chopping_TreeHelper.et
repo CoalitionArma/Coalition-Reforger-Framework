@@ -1,0 +1,11 @@
+ACE_Chopping_HelperEntity : "{0E971AC5D26926EE}Prefabs/Helpers/ACE_Chopping_BaseHelper.et" {
+ ID "61122D1A94E07FBB"
+ components {
+  ActionsManagerComponent "{61122D1D87E829CF}" {
+   additionalActions {
+    ACE_Chopping_UserAction "{611A26EB65D67BCE}" {
+    }
+   }
+  }
+ }
+}

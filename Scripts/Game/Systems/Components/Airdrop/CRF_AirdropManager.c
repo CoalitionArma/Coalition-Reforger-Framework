@@ -135,6 +135,15 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		int slotId = 0;
 		RplId planeRplId = RplComponent.Cast(plane.FindComponent(RplComponent)).Id();
 		PlayerManager pm = GetGame().GetPlayerManager();
+		
+		SCR_BaseCompartmentManagerComponent compartMan = SCR_BaseCompartmentManagerComponent.Cast(plane.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartMan)
+			return;
+		
+		ref array<BaseCompartmentSlot> slots = {};
+		compartMan.GetCompartments(slots);
+		int count = slots.Count();
+		
 		foreach (int i, string playerId: playerIds)
 		{
 			IEntity player = pm.GetPlayerControlledEntity(playerId.ToInt());
@@ -150,7 +159,10 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			if (!compAccess)
 				continue;
 			
-			compAccess.ACE_GetInVehicle(plane);
+			if (count <= i)
+				continue;
+			
+			compAccess.ACE_GetInVehicle(plane, slots[i]);
 		}
 		RpcDo_PlaySound(planeRplId);
 		Rpc(RpcDo_PlaySound, planeRplId);

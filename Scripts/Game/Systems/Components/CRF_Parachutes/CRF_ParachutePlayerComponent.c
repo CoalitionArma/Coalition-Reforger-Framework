@@ -15,7 +15,7 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 	protected CRF_ParachuteBackpackComponent m_BackpackComponent;
 
 	// Deployed parachute (local reference)
-	protected IEntity m_DeployedChuteEntity;
+	IEntity m_DeployedChuteEntity;
 
 	// Replicated deployment state
 	[RplProp(condition: RplCondition.OwnerOnly, onRplName: "OnDeployStateChanged")]

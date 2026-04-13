@@ -1453,6 +1453,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
 		foreach (IEntity pouch: pouches)
 		{
+			if (pouch.FindComponent(SCR_ResupplyMedicalGadgetSupportStationComponent))
+			{
+				items.Insert(pouch.GetPrefabData().GetPrefabName());
+				continue;
+			}
 			if (!pouch.FindComponent(BaseInventoryStorageComponent))
 			{
 				items.Insert(pouch.GetPrefabData().GetPrefabName());
@@ -2414,13 +2419,6 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		IEntity mine = GetGame().SpawnEntityPrefab(Resource.Load("{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"), null, params);
 		
 		GetGame().GetCallqueue().CallLater(ExplodeMine, 5000, false, mine);
-		
-		int gunsDestroyed = CRF_GamemodeManager.GetInstance().m_iGunsDestroyed;
-		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();
-		if (broadcastMgr && gunsDestroyed < 3)
-        	broadcastMgr.PopUpNotification(10, string.Format("%1/4 Guns have been destroyed!", gunsDestroyed + 1));
-		else if (broadcastMgr)
-			broadcastMgr.PopUpNotification(10, string.Format("All Guns have been destroyed, the US has captured Brecourt Manor!"));
 	}
 	
 	void ExplodeMine(IEntity mine)
@@ -2431,6 +2429,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			return;
 		
 		triggerComp.UseTrigger();
+		int gunsDestroyed = CRF_GamemodeManager.GetInstance().m_iGunsDestroyed;
+		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastMgr && gunsDestroyed < 4)
+        	broadcastMgr.PopUpNotification(10, string.Format("%1/4 Guns have been destroyed!", gunsDestroyed));
+		else if (broadcastMgr)
+			broadcastMgr.PopUpNotification(10, string.Format("All Guns have been destroyed, the US has captured Brecourt Manor!"));
 		
 	}
 	

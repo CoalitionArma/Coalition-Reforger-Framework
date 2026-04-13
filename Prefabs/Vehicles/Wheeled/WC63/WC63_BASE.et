@@ -1,0 +1,4 @@
+Vehicle : "{62F416029692CE40}Prefabs/Vehicles/Core/Wheeled_Base.et" {
+ ID "BBCBA43A9778AE21"
+ m_bShouldAddAmmo 0
+}
