@@ -1,4 +1,27 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{691D137ED3D23E10}" {
+     NavmeshFile "{3C028682B8E59A55}Sourcefiles/mussalonav.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{855D24F6C7CC8139}Sourcefiles/mussalonav_btr.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{A73A2ED9C33F08DC}Sourcefiles/mussalonav_low.nmn"
+    }
+   }
+  }
+ }
  coords 5184.392 2.505 5042.281
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
@@ -33,10 +56,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "RUS forces have pushed back US Forces "\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: HAT and squad intergrated MAT (Two Squads)"\
+   "BLUFOR Assets: Squad intergrated MAT (Two Squads) and 1x Ammo Truck"\
    ""\
    "OPFOR Composition: Mechanized Infantry Platoon"\
-   "OPFOR Assets: 2x BMP-3"\
+   "OPFOR Assets: 4x BTR-70s (1x BTR70 per PLT)"\
    ""\
    "Time: 12:00 pm"\
    ""\
@@ -49,14 +72,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Defend each Mcom."\
    ""\
-   "To use the Javelins, pull it out and see if it says top attack in the bottom right if so aim at your target and hold your lock on button (RHS Settings). wait for a loud tone then fire."
+   "This is a rushed defense mission for blufor, meaning that you have limited forward depoly area for the first set of mcoms and cannot setup on the 2nd set mcoms, prepare your defense around this fact."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Destroy each Mcom."
+   m_sTextData "Destroy each Mcom."\
+   ""\
+   "The enemy is rushed in their defense, act fast to overwhelm the defneders."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -81,7 +106,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{691B616A24E6FA70}" {
+  CRF_SlottingGroup "{691D13784EF10E6A}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -89,7 +114,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FB7B}" {
+  CRF_SlottingGroup "{691D13784EF10F05}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -104,7 +129,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FB90}" {
+  CRF_SlottingGroup "{691D13784EF10042}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -119,7 +144,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FC1F}" {
+  CRF_SlottingGroup "{691D13784EF100D7}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -134,7 +159,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FCE0}" {
+  CRF_SlottingGroup "{691D13784EF100A2}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,7 +174,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FD71}" {
+  CRF_SlottingGroup "{691D13784EF1012A}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -163,7 +188,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{691B616A24E6FEF1}" {
+  CRF_SlottingGroup "{691D13784EF102E7}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -171,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FF50}" {
+  CRF_SlottingGroup "{691D13784EF10345}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -179,7 +204,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FF3E}" {
+  CRF_SlottingGroup "{691D13784EF10322}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -194,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6FF97}" {
+  CRF_SlottingGroup "{691D13784EF103BC}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -209,7 +234,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F01B}" {
+  CRF_SlottingGroup "{691D13784EF10402}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -224,7 +249,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F0EB}" {
+  CRF_SlottingGroup "{691D13784EF1048A}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -232,7 +257,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F157}" {
+  CRF_SlottingGroup "{691D13784EF1056C}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -247,7 +272,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F12F}" {
+  CRF_SlottingGroup "{691D13784EF105C3}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -262,7 +287,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F1B9}" {
+  CRF_SlottingGroup "{691D13784EF10653}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -277,7 +302,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F215}" {
+  CRF_SlottingGroup "{691D13784EF1062D}" {
    m_sCallsign "IFV 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -286,7 +311,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{691B616A24E6F2F6}" {
+  CRF_SlottingGroup "{691D13784EF10683}" {
    m_sCallsign "IFV 2"
    m_FlagType ARMORED
    m_aSlots {
