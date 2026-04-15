@@ -443,7 +443,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		Print(player);
 		if (!player)
 			return;
 		
