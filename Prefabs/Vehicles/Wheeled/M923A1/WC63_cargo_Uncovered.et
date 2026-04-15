@@ -1,0 +1,18 @@
+GenericEntity : "{68EF2C4922737DD3}Prefabs/Vehicles/Wheeled/M923A1/WC63_cargo.et" {
+ ID "4B42E71698F5739C"
+ components {
+  ActionsManagerComponent "{2CD4A765B4482F53}" {
+   additionalActions {
+    CRF_CacheCreateAction "{691F5CDC6D192CA1}" {
+     ParentContextList {
+      "door_rear"
+     }
+     UIInfo UIInfo "{691F5CDC699BB790}" {
+      Name "Create Cache"
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+}

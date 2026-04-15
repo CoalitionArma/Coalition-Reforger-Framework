@@ -1,0 +1,18 @@
+GenericEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  ActionsManagerComponent "{2CD4A765B4482F53}" {
+   additionalActions {
+    CRF_CacheCreateAction "{691F5CDCA2133FE0}" {
+     ParentContextList {
+      "door_rear"
+     }
+     UIInfo UIInfo "{691F5CDC99500503}" {
+      Name "Create Cache"
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+}
