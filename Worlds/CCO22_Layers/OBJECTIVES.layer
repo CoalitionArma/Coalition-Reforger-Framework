@@ -1,6 +1,6 @@
 $grp BaseGameTriggerEntity {
  OBJ2 {
-  coords 3043.615 45.129 2292.712
+  coords 1333.122 23.131 1247.09
   angles -2.642 -0.331 7.133
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -197,7 +197,7 @@ $grp BaseGameTriggerEntity {
   "	"
  }
  OBJ3 {
-  coords 3607.889 4.886 1898.491
+  coords 1389.568 10.44 2050.846
   angles 0 -123.639 0
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -395,7 +395,7 @@ $grp BaseGameTriggerEntity {
   "	"
  }
  OBJ4 {
-  coords 3741.227 7.288 1308.098
+  coords 1101.138 6.393 2367.463
   angles 0 83.622 0
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -570,7 +570,7 @@ $grp BaseGameTriggerEntity {
   "		}"\
   "	"
   TriggerShapeType Sphere
-  SphereRadius 24.4
+  SphereRadius 53
   BoxMaxs 60 20 100
   PeriodicQueries 1
   OnQueryFinished ""\
