@@ -693,6 +693,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if(group.IsPrivate() && !isAdmin)
 				continue;
 			
+			//For UI
+			bool isGroupFull = true;
+			
 			// Track counts for this group
 			int leadersInGroup = 0;
 			int playersInGroup = 0;
@@ -722,7 +725,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			
 			// Add slots to this group
-			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);
+			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin, isGroupFull);
+			
+			if (isGroupFull)
+				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupText().SetColor(groupColor);
 			
 			// Clean up empty groups
 			RemoveEmptyGroups(groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);
@@ -754,13 +760,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	private void AddSlotsToGroup(SCR_AIGroup group, map<int, ref CRF_SlotData> slotMap, 
 		int groupIndex, int orbatGroupIndex, out int leadersInGroup, out int playersInGroup, 
-		out int deadPlayersInGroup, bool isAdmin)
+		out int deadPlayersInGroup, bool isAdmin, out bool isGroupFull)
 	{
 		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 		
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		array<int> slotStored = {};
+		isGroupFull = true;
 		foreach (int id: slottingManager.GetAllSlotIDsForGroup(groupId))
 		{
 			ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
@@ -805,7 +812,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 					// Show disconnect indicator if player not connected
 					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 						m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetDisconnectWidget().SetVisible(true);
+					
+					//m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlottedWidget().SetVisible(true);
+					Color factionColor = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()).GetFactionColor();
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetColor(factionColor);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetColor(factionColor);
 				}
+				else
+					isGroupFull = false;
 				
 				// Add click handler
 				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				

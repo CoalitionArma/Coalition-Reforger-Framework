@@ -128,7 +128,8 @@ HorizontalLayoutWidgetClass {
      "Min Font Size" 2
      FontProperties FontProperties "{5E7CF04D9FE8FF4E}" {
       Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
-      Bold 1
+      Bold 0
+      OutlineSize 2
      }
     }
    }
