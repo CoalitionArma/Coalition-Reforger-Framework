@@ -638,7 +638,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction = "")
+	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction)
 	{
 		// Telemetry: bool
 		LogTelemetry("RpcAsk_RequestAdvanceGamemodeState", CRF_BandwidthTelemetryManager.EstimateSize_Bool());
