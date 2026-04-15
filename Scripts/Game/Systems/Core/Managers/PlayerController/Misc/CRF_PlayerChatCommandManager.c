@@ -43,6 +43,30 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		
 		ChatCommandInvoker invoker7 = chatPanelManager.GetCommandInvoker("bug");
 		invoker7.Insert(ReportBug);
+		
+		ChatCommandInvoker invoker8 = chatPanelManager.GetCommandInvoker("adminmenu");
+		invoker8.Insert(OpenAdminMenu);
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ADMIN MENU METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	//!Opens admin menu :O
+	void OpenAdminMenu(SCR_ChatPanel panel, string data)
+	{
+		// Check if the current player has admin permissions
+		bool hasAdminAccess = false;
+		CRF_PermissionManager permissionManager = CRF_PermissionManager.GetInstance();
+		
+		// Check admin/moderator permissions and required game instances
+		if (SCR_Global.IsAdmin() || (permissionManager && permissionManager.IsModerator() && CRF_Gamemode.GetInstance()))
+			hasAdminAccess = true;
+		
+		// Only register click handler if the admin menu is visible
+		if (hasAdminAccess)
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AdminMenu);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
