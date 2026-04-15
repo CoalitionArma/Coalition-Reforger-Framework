@@ -5,7 +5,7 @@ GenericEntity : "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.
    components {
     AttachmentSlotComponent "{B502E4DC8A9E835E}" {
      AttachmentSlot InventoryStorageSlot optics {
-      Prefab "{8F83CE66A8F44D72}Prefabs/Weapons/Attachments/Optics/pgo7v3/Optic_PGO7V3.et"
+      Prefab "{E5E9DBBF3BFB88C6}Prefabs/Weapons/Attachments/Optics/Optic_PGO7/Optic_PGO7V3.et"
      }
     }
     SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
