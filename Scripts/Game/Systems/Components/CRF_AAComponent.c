@@ -121,7 +121,9 @@ class CRF_AAComponent: ScriptComponent
 		//Places a suppression waypoint 100m ahead of the plane, this leads the gun perfectly on target
 		float planeDistance = vector.Distance(m_SelectedPlane.GetOrigin(), GetOwner().GetOrigin());
 		m_fDistance =  planeDistance;
-		float randDist = m_Random.RandFloatXY(-10.0, 10.0);
+		//Cant generate random negative numbers ffs
+		float randDist = m_Random.RandFloatXY(0, 20.0);
+		randDist -= 10;
 		
 		//Updates the timer for all clients, needed so bullets also blow up at the same time on clients.
 		//Weplication
