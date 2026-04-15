@@ -1,0 +1,28 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 0.743 0.005 0.005 0.431
+  }
+ }
+ coords 3166.391 11.5 2786.007
+ Points {
+  ShapePoint "{69114209428C6534}" {
+   Position -43.023 0 248.49
+  }
+  ShapePoint "{6911420941896CFD}" {
+   Position 143.784 0 55.225
+  }
+  ShapePoint "{69114209472BE8AC}" {
+   Position 73.014 0 -78.069
+  }
+  ShapePoint "{691142094604C089}" {
+   Position -10.183 0 -187.285
+  }
+  ShapePoint "{6911420945D3A328}" {
+   Position -192.58 0 -71.555
+  }
+  ShapePoint "{6911420944ED34B4}" {
+   Position -138.032 0 132.002
+  }
+ }
+}

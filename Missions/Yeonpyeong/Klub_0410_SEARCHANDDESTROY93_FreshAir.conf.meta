@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F224A6FBA3A6C81E}Missions/Yeonpyeong/Klub_0410_SEARCHANDDESTROY93_FreshAir.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
