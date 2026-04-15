@@ -1,0 +1,14 @@
+GenericEntity : "{6E42C85D9FC0CA5D}Prefabs/Weapons/MachineGuns/M60/MG_M60_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazineWell MagazineWellM60 "{691EC947103C9D2A}" {
+     }
+     MagazineTemplate "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+    }
+   }
+  }
+ }
+}
