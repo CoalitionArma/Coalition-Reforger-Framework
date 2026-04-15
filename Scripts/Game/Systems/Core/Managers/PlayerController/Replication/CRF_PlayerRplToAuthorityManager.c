@@ -138,10 +138,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RequestAdvanceGamemodeState(bool overriden)
+	void RequestAdvanceGamemodeState(bool overriden, string winningFaction = "")
 	{
 		if (SCR_Global.IsAdmin())
-			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
+			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden, winningFaction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -638,10 +638,18 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden)
+	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction)
 	{
 		// Telemetry: bool
 		LogTelemetry("RpcAsk_RequestAdvanceGamemodeState", CRF_BandwidthTelemetryManager.EstimateSize_Bool());
+		
+		// Set winning faction on the server where the log file handle exists
+		if (winningFaction != "")
+		{
+			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+			if (loggingManager)
+				loggingManager.SetWinningFaction(winningFaction, "manual");
+		}
 		
 		m_Gamemode.AdvanceGamemodeState(overriden);
 	}
