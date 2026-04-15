@@ -43,6 +43,30 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		
 		ChatCommandInvoker invoker7 = chatPanelManager.GetCommandInvoker("bug");
 		invoker7.Insert(ReportBug);
+		
+		ChatCommandInvoker invoker8 = chatPanelManager.GetCommandInvoker("adminmenu");
+		invoker8.Insert(OpenAdminMenu);
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 ADMIN MENU METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	//!Opens admin menu :O
+	void OpenAdminMenu(SCR_ChatPanel panel, string data)
+	{
+		// Check if the current player has admin permissions
+		bool hasAdminAccess = false;
+		CRF_PermissionManager permissionManager = CRF_PermissionManager.GetInstance();
+		
+		// Check admin/moderator permissions and required game instances
+		if (SCR_Global.IsAdmin() || (permissionManager && permissionManager.IsModerator() && CRF_Gamemode.GetInstance()))
+			hasAdminAccess = true;
+		
+		// Only register click handler if the admin menu is visible
+		if (hasAdminAccess)
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AdminMenu);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -118,24 +142,28 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		// Parse player ID and message from input
 		array<string> dataSplit = {};
 		data.Split(" ", dataSplit, false);
-		int playerId;
+		string name;
 		string toSend;
 		
-		for (int i = 0; i < dataSplit.Count(); i++)
+		name = dataSplit[0];
+		dataSplit.RemoveOrdered(0);
+		
+		toSend = SCR_StringHelper.Join(" ", dataSplit);
+		
+		array<int> players = {};
+		PlayerManager pm = GetGame().GetPlayerManager();
+		if (!pm)
+			return;
+		pm.GetPlayers(players);
+		
+		int playerId = 0;
+		foreach (int player: players)
 		{
-			if (dataSplit[i] == "0")
+			string playerName = pm.GetPlayerName(player);
+			
+			if (playerName.ToLower() == name.ToLower())
 			{
-				dataSplit.RemoveOrdered(i);
-				playerId = 0;
-				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
-				break;
-			}
-
-			if (dataSplit[i].ToInt() > 0)
-			{
-				playerId = dataSplit[i].ToInt();
-				dataSplit.RemoveOrdered(i);
-				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
+				playerId = player;
 				break;
 			}
 		}
@@ -152,13 +180,13 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		// Validate player ID
 		if (!playerId)
 		{
-			chatComponent.ShowMessage("INVALID PLAYER ID");
+			chatComponent.ShowMessage("INVALID PLAYER NAME");
 			return;
 		}
 		
-		if (!GetGame().GetPlayerManager().GetPlayerName(playerId))
+		if (playerId == 0)
 		{
-			chatComponent.ShowMessage("INVALID PLAYER ID");
+			chatComponent.ShowMessage("INVALID PLAYER NAME");
 			return;
 		}
 		
