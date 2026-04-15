@@ -442,6 +442,23 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		Print(player);
+		if (!player)
+			return;
+		
+		StopMovement(player);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Sets player movement to 0 on disconnect
+	void StopMovement(IEntity player)
+	{
+		SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		if (!charCont)
+			return;
+
+		charCont.SetMovement(0, "0 0 0");
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
