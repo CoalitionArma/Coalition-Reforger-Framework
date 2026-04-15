@@ -248,7 +248,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  "			if (!item)"\
  "				return;"\
  "			"\
- "			if (item.FindComponent(CVON_RadioComponent))"\
+ "			if (item.FindComponent(CVON_RadioComponent) || item.GetPrefabData().GetPrefabName() == \"{6545DEABED4759E5}Prefabs/Weapons/Rifles/Mosin/BC_Rifle_Mosin_Nagant_9130_PU.et\")"\
  "				SCR_EntityHelper.DeleteEntityAndChildren(item);"\
  "		}"\
  "	"
