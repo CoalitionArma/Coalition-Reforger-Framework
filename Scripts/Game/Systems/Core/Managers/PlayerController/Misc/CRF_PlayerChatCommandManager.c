@@ -253,8 +253,6 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
 			if (loggingManager)
 			{
-				loggingManager.SetWinningFaction(winningFaction, "manual");
-				
 				// Show confirmation message
 				if (panel)
 				{
@@ -264,8 +262,9 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 				}
 			}
 
-			// Advance to AAR state
-			m_PlayerRplToAuthorityManager.RequestAdvanceGamemodeState(true);
+			// Advance to AAR state — winning faction is passed to the server RPC so
+			// SetWinningFaction is called on the authority where the log file handle exists.
+			m_PlayerRplToAuthorityManager.RequestAdvanceGamemodeState(true, winningFaction);
 		}
 		else
 		{

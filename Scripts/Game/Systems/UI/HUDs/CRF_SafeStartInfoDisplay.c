@@ -14,6 +14,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 	protected TextWidget m_wMissionLengthValue;
 	protected TextWidget m_wJIPAfterSafestartValue;
 	protected TextWidget m_wRespawnValue;
+	protected TextWidget m_wRallyPointsValue;
 	protected TextWidget m_wEspionageValue;
 	
 	// Equipment
@@ -115,6 +116,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		m_wMissionLengthValue = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionLengthValue"));
 		m_wJIPAfterSafestartValue = TextWidget.Cast(m_wRoot.FindAnyWidget("JIPAfterSafestartValue"));
 		m_wRespawnValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RespawnValue"));
+		m_wRallyPointsValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RallyPointsValue"));
 		m_wEspionageValue = TextWidget.Cast(m_wRoot.FindAnyWidget("EspionageValue"));
 		
 		// Get equipment widgets
@@ -138,7 +140,8 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		return m_wSafeStartInfoPanel && m_wMissionTitleValue && m_wMissionAuthorValue && 
 		       m_wMissionTypeValue && m_wSideRatiosValue && m_wSafeStartHardLimitValue && 
 		       m_wMissionLengthValue && m_wJIPAfterSafestartValue && m_wRespawnValue && 
-		       m_wEspionageValue && m_wFactionNameValue && m_wRadiosValue && m_wMapValue;
+		       m_wEspionageValue && m_wFactionNameValue && m_wRadiosValue && m_wMapValue &&
+			   m_wRallyPointsValue;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -300,6 +303,14 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			respawnStatus = "Off";
 		}
 		m_wRespawnValue.SetText(respawnStatus);
+		
+		// Rally Points
+		string rallyPointsStatus;
+		if (m_Gamemode.m_bRallyPointsEnabled)
+			rallyPointsStatus = "On";
+		else
+			rallyPointsStatus = "Off";
+		m_wRallyPointsValue.SetText(rallyPointsStatus);
 		
 		// Espionage
 		string espionageStatus;

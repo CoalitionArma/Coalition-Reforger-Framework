@@ -25,9 +25,10 @@ class CRF_GearscriptManager : ScriptComponent
 		m_ResourceCache = new CRF_ResourceCache;
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
-		#ifdef WORKBENCH
-			GetGame().GetCallqueue().CallLater(DEBUG_SpawnAllRoleCharacters, 250, false);
-		#endif
+		// 10APR26 - Pat, this has started causing crashing as of today. No idea why. Commenting out for now.
+		// #ifdef WORKBENCH
+		// 	GetGame().GetCallqueue().CallLater(DEBUG_SpawnAllRoleCharacters, 250, false);
+		// #endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
