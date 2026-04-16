@@ -1,6 +1,6 @@
 $grp BaseGameTriggerEntity {
  OBJ2 {
-  coords 1333.122 23.131 1247.09
+  coords 3037.812 41.725 2295.18
   angles -2.642 -0.331 7.133
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -35,7 +35,7 @@ $grp BaseGameTriggerEntity {
   "		m_GamemodeManager.AdvanceObjective();"\
   "		CRF_RplBroadcastManager broadcastMgr = CRF_RplBroadcastManager.GetInstance();"\
   "		if (broadcastMgr)"\
-  "        	broadcastMgr.PopUpNotification(10, \"The German Relayr Station has been captured!\", \"Prepare for the assault the church!\", \"{E3E34E1B0BC94432}Sounds/UI/Samples/Menu/UI_Task_Succeded.wav\");"\
+  "        	broadcastMgr.PopUpNotification(10, \"The German Relay Station has been captured!\", \"Prepare for the assault the church!\", \"{E3E34E1B0BC94432}Sounds/UI/Samples/Menu/UI_Task_Succeded.wav\");"\
   "	}"\
   "	"\
   "	void ServerChecks()"\
@@ -197,7 +197,7 @@ $grp BaseGameTriggerEntity {
   "	"
  }
  OBJ3 {
-  coords 1389.568 10.44 2050.846
+  coords 3607.58 6.135 1899.478
   angles 0 -123.639 0
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -395,7 +395,7 @@ $grp BaseGameTriggerEntity {
   "	"
  }
  OBJ4 {
-  coords 1101.138 6.393 2367.463
+  coords 3741.846 12.829 1308.374
   angles 0 83.622 0
   userScript "	SCR_HUDManagerComponent m_HUDManager;"\
   "	CRF_GamemodeManager m_GamemodeManager;"\
@@ -570,7 +570,7 @@ $grp BaseGameTriggerEntity {
   "		}"\
   "	"
   TriggerShapeType Sphere
-  SphereRadius 53
+  SphereRadius 18.6
   BoxMaxs 60 20 100
   PeriodicQueries 1
   OnQueryFinished ""\
@@ -773,16 +773,16 @@ $grp PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Spec
     Position 824.356 0 565.709
    }
    ShapePoint "{691F5CDD1141E97B}" {
-    Position 873.63 -0 595.007
+    Position 873.63 0 595.007
    }
    ShapePoint "{691F5CDD11100E00}" {
-    Position 1028.11 -0 638.954
+    Position 1028.11 0 638.954
    }
    ShapePoint "{691F5CDD11D9D625}" {
-    Position 1125.326 -0 638.954
+    Position 1125.326 0 638.954
    }
    ShapePoint "{691F5CDD11A4F653}" {
-    Position 1291.527 -0 714.344
+    Position 1291.527 0 714.344
    }
   }
  }
