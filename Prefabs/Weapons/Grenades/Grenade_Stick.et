@@ -1,0 +1,8 @@
+GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  WeaponComponent "{6D23670EA18BF513}" {
+   WeaponSlotType "grenade"
+  }
+ }
+}
