@@ -323,6 +323,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_bSeperateSpectatorsByFaction 1
+ m_bHideOtherSpectatorFactions 1
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{1DCFD33B70F9A72D}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s.conf"
   m_bEnableShareableMarkers 0
