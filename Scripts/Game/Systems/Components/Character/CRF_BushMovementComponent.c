@@ -111,7 +111,7 @@ class CRF_BushMovementComponent: ScriptComponent
 		{
 			m_CharacterController.SetStanceChange(2);
 			if (m_HintManager)
-				m_HintManager.ShowCustomHint("Can't prone here mf", "Too thicc", 10);
+				m_HintManager.ShowCustomHint("Cannot prone in the center of a bush", "Move away and try again", 10);
 		}
 	
 		// Read current engine movement damage BEFORE we override it
