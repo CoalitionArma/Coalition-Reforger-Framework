@@ -1,0 +1,62 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 1542.445 10.606 5297.895
+ Points {
+  ShapePoint "{692206816D2AE095}" {
+   Position -934.87 0 1293.06
+  }
+  ShapePoint "{6922068160243E33}" {
+   Position 1113.814 0 1295.318
+  }
+  ShapePoint "{692206829BF8F9B6}" {
+   Position 1559.789 0 -547.421
+  }
+  ShapePoint "{692206829E18BBD2}" {
+   Position -762.322 0 -890.034
+  }
+ }
+}
+$grp GameEntity : "{616F4E93658E5A3A}Prefabs/Props/Military/Generators/GeneratorFloodlight_USSR_01.et" {
+ {
+  coords 917.651 3.065 6350.544
+  angles 0 -38 0
+ }
+ {
+  coords 921.094 3.065 6387.372
+  angles 0 -130 0
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 2212.276 2.315 5030.088
+ Points {
+  ShapePoint "{69220682AE7AC219}" {
+   Position -637.713 0 292.152
+  }
+  ShapePoint "{69220682AD19650F}" {
+   Position -465.561 0 181.723
+  }
+  ShapePoint "{69220682A661B56E}" {
+   Position -229.037 0 230.766
+  }
+  ShapePoint "{69220682DBD5F977}" {
+   Position 139.618 0 304.23
+  }
+  ShapePoint "{69220682D9E0681B}" {
+   Position 209.236 0 493.664
+  }
+  ShapePoint "{69220682DF22B7AC}" {
+   Position 447.387 0 524.231
+  }
+  ShapePoint "{69220682D33750A4}" {
+   Position 817.794 0 -264.562
+  }
+  ShapePoint "{69220682D033A7D7}" {
+   Position -421.431 0 -422.991
+  }
+  ShapePoint "{69220682D7159476}" {
+   Position -591.882 0 -96.856
+  }
+  ShapePoint "{69220682D6A0D73A}" {
+   Position -737.885 0 184.187
+  }
+ }
+}
