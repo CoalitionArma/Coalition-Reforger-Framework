@@ -147,14 +147,58 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
   angles 0 -26.182 0
  }
 }
-GenericEntity : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/RespawnPoles/CIV_Respawn.et" {
+CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
  coords 7525.148 5.98 6763.489
 }
 GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
  coords 7449.313 -2.835 6697.37
  angles 0 21.696 0
 }
-CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFORSpawnMarker.et" {
+$grp GenericEntity : "{C0D09A53EEA441D6}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_US_02.et" {
+ {
+  coords 7463.752 6.829 6836.045
+  angles 0 16.569 0
+  {
+   GenericEntity {
+    ID "5CCCBEC480BAEE00"
+    {
+     GenericEntity {
+      ID "570C956566ECAA57"
+      coords -0.069 0.119 -0.437
+      angles 0.243 -88.099 -7.283
+     }
+     Turret {
+      ID "5CB0D9912FD9E690"
+      coords -0.106 0.739 -0.589
+      angles 7.287 0 0
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 7463.88 3.656 6646.857
+  angles 0 156.783 0
+  {
+   GenericEntity {
+    ID "5CCCBEC480BAEE00"
+    {
+     GenericEntity {
+      ID "570C956566ECAA57"
+      coords -0.069 0.119 -0.437
+      angles 0.243 -88.099 -7.283
+     }
+     Turret {
+      ID "5CB0D9912FD9E690"
+      coords -0.106 0.739 -0.589
+      angles 7.287 0 0
+     }
+    }
+   }
+  }
+ }
+}
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
  coords 7493.132 6.579 6707.769
  angles 0 90 0
  m_MarkerColor 0.392 0.157 0.624 1
