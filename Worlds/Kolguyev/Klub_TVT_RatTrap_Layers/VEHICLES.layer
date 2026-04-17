@@ -1,8 +1,26 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 4363.037 55.187 3210.875
+  coords 4370.284 55.187 3204.613
+  angles 0 -86.783 0
+  m_rVehicle "{CA33E4FE61CD6116}Prefabs/Vehicles/Helicopters/H47/CH47A_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{69220170A875F12C}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
  }
  {
-  coords 4363.977 55.186 3224.053
+  coords 4371.598 55.186 3230.317
+  angles 0 -90 0
+  m_rVehicle "{CA33E4FE61CD6116}Prefabs/Vehicles/Helicopters/H47/CH47A_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
  }
 }

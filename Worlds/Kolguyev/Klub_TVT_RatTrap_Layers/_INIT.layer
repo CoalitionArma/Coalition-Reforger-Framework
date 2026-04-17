@@ -4,15 +4,12 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{690D6E61ECD14DEB}" {
+   m_bEnableTransponderMarker 0
+   m_eTargetType VIP
    m_aHVTEntries {
     CRF_HVTEntry "{690D6E618A501F90}" {
      m_sTransponderEntityName "Pilot"
-     m_sMarkerText "HVT"
-    }
-    CRF_HVTEntry "{690D6E613F94AA91}" {
-     m_hvtPrefab "{15CD521098748195}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliCrew.et"
-     m_sTransponderEntityName "Crewman"
-     m_sMarkerText "HVT"
+     m_sMarkerText "VIP"
     }
    }
   }
@@ -20,7 +17,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Rainy"
+     m_sWeatherPresetName "Clear"
      m_iStartingHour 16
      m_iStartingMinutes 0
     }
@@ -31,26 +28,73 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  coords 0 0 0
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 45
+ m_iTimeLimitMinutes 60
  m_bLockUnusedSlots 1
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "CHDKz forces have shot down an American little bird. They have located the crash site and have decided to use the surviving pilot as bait to weaken the American presence in Kolguyev."\
+   ""\
+   "BLUFOR Composition: US Airborne Infantry"\
+   "BLUFOR Assets: 2x H-47 Chinooks"\
+   ""\
+   "OPFOR Composition: CHDKz Infantry"\
+   "OPFOR Assets: N/A"\
+   ""\
+   "Time: Afternoon"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Locate, secure, and extract the crashed helicopter pilot; minimize casualties."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Lay low and cause as many casualties to the Americans as possible; ensure the Americans do not leave with the pilot."\
+   ""\
+   "OPF LOA is the SS area."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "Administration"
+   m_sTextData "BLU extract w/ VIP and >25% of force = BLU Victory"\
+   "BLU extract w/ VIP and <25% of force = Draw"\
+   "BLU fail to extract entirely = OPF Victory"
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 3
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{690D6E74DC080F0B}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC080C6C}" {
+  CRF_SlottingGroup "{692213A2C3A83403}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -58,7 +102,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080DE5}" {
+  CRF_SlottingGroup "{692213A2C3A83699}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -73,7 +117,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080D7A}" {
+  CRF_SlottingGroup "{692213A2C3A83188}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -88,7 +132,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080A01}" {
+  CRF_SlottingGroup "{692213A2C3A83170}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -103,7 +147,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080B95}" {
+  CRF_SlottingGroup "{692213A2C3A8305B}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -111,7 +155,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080BFB}" {
+  CRF_SlottingGroup "{692213A2C3A83311}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -126,7 +170,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080881}" {
+  CRF_SlottingGroup "{692213A2C3A832F9}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -141,46 +185,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC08080D}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC080993}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC08091E}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC08069E}" {
+  CRF_SlottingGroup "{692213A2C3A80DA4}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -188,26 +193,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080627}" {
-   m_sCallsign "IFV 1"
-   m_FlagType ARMORED
+  CRF_SlottingGroup "{692213A2C3A80C9A}" {
+   m_sCallsign "HELI 2"
+   m_FlagType HELICOPER
    m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_GUNNER
-    VEHICLE_DRIVER
+    PILOT
+    CREW_CHIEF
    }
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{690D6E74DC080489}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC08040D}" {
+  CRF_SlottingGroup "{692213A2C3A80FE0}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -215,7 +211,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{690D6E74DC08047F}" {
+  CRF_SlottingGroup "{692213A2C3A80ED1}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -230,7 +226,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC080536}" {
+  CRF_SlottingGroup "{692213A2C3A809BB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -245,7 +241,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC0802BB}" {
+  CRF_SlottingGroup "{692213A2C3A8089A}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -260,16 +256,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{690D6E74DC08023C}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC0803A2}" {
-   m_sCallsign "2-1"
+  CRF_SlottingGroup "{692213A2C3A80850}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -281,77 +269,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_ANTITANK
     RIFLEMAN_ANTITANK
     GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC08031A}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC08009E}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC080026}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC080198}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC080112}" {
-   m_sCallsign "HELI 1"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
-   }
-  }
-  CRF_SlottingGroup "{690D6E74DC083E92}" {
-   m_sCallsign "IFV 1"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_GUNNER
-    VEHICLE_DRIVER
    }
   }
  }
@@ -368,7 +285,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{AF06DCD9277D1AF9}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF.conf"
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -416,13 +333,5 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
    }
   }
- }
-}
-$grp GameEntity {
- Pilot {
-  coords 7480.115 258.097 7002.478
- }
- Crewman {
-  coords 7479.121 260.035 7007.089
  }
 }
