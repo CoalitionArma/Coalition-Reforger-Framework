@@ -8,5 +8,4 @@ CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMark
  m_aVisibleForFactions {
   "BLUFOR"
  }
- m_bShowForAnyFaction 0
 }
