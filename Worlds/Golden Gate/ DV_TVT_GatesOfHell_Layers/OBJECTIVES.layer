@@ -1,0 +1,11 @@
+SCR_BaseFactionTriggerEntity endTrig {
+ coords 3207.838 43.201 1751.378
+ TriggerShapeType Sphere
+ SphereRadius 150
+ OnActivate ""\
+ "		/* code here */"\
+ "	"
+ m_aOwnerFactionKeys {
+  "OPFOR"
+ }
+}
