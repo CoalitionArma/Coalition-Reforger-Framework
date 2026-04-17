@@ -1,0 +1,22 @@
+Projectile : "{B3C9AC6567057FF3}Prefabs/Weapons/Ammo/BC_Ammo_762x54r_LPS_Mosin.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  RocketTraceEffectComponent "{690A787BE153196B}" {
+   ParticleEffect "{DEC251C9AC594341}Particles/Logistics/Explosion/Trails/Smoke_Trail_Medium.ptc"
+   EnabledOnDedicatedServer 1
+  }
+  ShellMoveComponent "{851AA4A2AE0A5691}" {
+   InitSpeed 200
+   InitSpeedVariation 15
+   DispersionMultiplier 3.3
+   ProjectileEffects {
+    SpawnParticleEffect "{690A787BFFE5A39B}" {
+     AttachToParent 1
+     FollowParent 1
+     ParticleEffect "{06FC8C28845D1F7E}Particles/Tracers/Tracer_01.ptc"
+    }
+   }
+  }
+ }
+ coords 1222.055 38 2824.326
+}
