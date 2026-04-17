@@ -188,15 +188,16 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
      }
      MagazineWell BCC_MagazineWellMosin "{690C0B93990827FA}" {
      }
-     DispersionDiameter 0.2
-     DispersionRange 200
+     BulletInitSpeedCoef 0.8
+     DispersionDiameter 1
+     DispersionRange 15
      WeaponAimModifiers {
       SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
        IsEnabled 1
        "Linear Magnitude" 5
        "Angular Magnitude" 1
-       "ADS Multiplier" 1
-       "Focus Multiplier" 0.2
+       "ADS Multiplier" 2
+       "Focus Multiplier" 1
        "Angular Inertia Magnitude ADS" 4 2 12
        "Lower Translation" 0.05 -0.005 -0.013
        "Lower Rotation" -10 -8 -10
@@ -236,7 +237,7 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
       SyncAnims 0
      }
-     MagazineTemplate "{202716BDDF5DFD1B}Prefabs/Weapons/Rifles/Mosin/MOISINTESTMAG.et"
+     MagazineTemplate "{202716BDDF5DFD1B}Prefabs/Weapons/Rifles/Mosin/MOSIN_LineBattle_MAG.et"
     }
     BCC_BoltAnimationComponent "{60B4EA76EB15F6E0}" {
      Enabled 1
