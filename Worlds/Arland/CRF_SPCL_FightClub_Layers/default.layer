@@ -358,9 +358,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bWaveRespawn 0
  m_iTimeToRespawn 60
  m_iTimeLimitMinutes 28
- m_bAllowEspionage 0
  m_bLockUnusedSlots 1
- m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
@@ -820,7 +818,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{B22880EF6DF1482D}Configs/Gearscripts/Custom/Harry/80s/CRF_GS_USSR80s_Unarm_NoEquip.conf"
+  m_rGearScript "{AB5CF09B0D974592}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_USSR80s_UnarmedBR.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
@@ -829,7 +827,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
-  m_bEnableIndividualBFT 1
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
@@ -846,5 +843,31 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
  }
 }

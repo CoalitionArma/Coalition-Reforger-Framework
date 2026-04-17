@@ -1,0 +1,98 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 2926.552 0.939 4985.014
+ angles 0 145 0
+}
+$grp Vehicle : "{098E31B006CAE0CE}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Camo.et" {
+ _Series_LWB_Transport_Camo1 {
+  coords 2916.636 0.77 4977.497
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo2 {
+  coords 2920.929 0.842 4979.806
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo3 {
+  coords 2918.109 0.751 4984.27
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo4 {
+  coords 2913.764 0.744 4982.371
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo5 {
+  coords 2911.108 0.719 4987.453
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo6 {
+  coords 2914.88 0.691 4989.76
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo7 {
+  coords 2911.658 0.612 4994.825
+  angles 0 150 0
+ }
+ _Series_LWB_Transport_Camo8 {
+  coords 2907.841 0.68 4992.654
+  angles 0 150 0
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 900.224 3.063 6395.801
+ angles 0 -87 0
+}
+$grp Vehicle : "{57FE9BCA625CA0E3}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB.et" {
+ _Series_LWB_Recce_M2HB1 {
+  coords 2940.73 1.26 4949.296
+ }
+ _Series_LWB_Recce_M2HB2 {
+  coords 2947.069 1.257 4949.208
+ }
+}
+$grp Vehicle : "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et" {
+ Ural4320_transport_covered_closed1 {
+  coords 901.597 3.062 6401.153
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed2 {
+  coords 901.586 3.062 6407.456
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed3 {
+  coords 902.019 3.062 6413.589
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed4 {
+  coords 902.069 3.063 6420.26
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed5 {
+  coords 901.847 3.062 6427.127
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed6 {
+  coords 902.31 3.062 6432.959
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed7 {
+  coords 902.691 3.062 6438.507
+  angles 0 -88 0
+ }
+ Ural4320_transport_covered_closed8 {
+  coords 903.014 3.063 6443.481
+  angles 0 -88 0
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 907.767 3.065 6381.936
+  angles 0 -88 0
+ }
+ BTR2 {
+  coords 908.057 3.065 6373.042
+  angles 0 -88 0
+ }
+ BTR3 {
+  coords 908.275 3.065 6361.32
+  angles 0 -88 0
+ }
+}

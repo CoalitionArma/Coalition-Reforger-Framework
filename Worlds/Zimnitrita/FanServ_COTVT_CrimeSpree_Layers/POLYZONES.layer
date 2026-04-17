@@ -1,0 +1,98 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ components {
+  CRF_PolyZone "{65865377C721CCB0}" {
+   m_aHideOnGameModeStates {
+   }
+  }
+ }
+ coords 12584.873 48.849 9353.979
+ Points {
+  ShapePoint "{690F5E0CAB217570}" {
+   Position -43.414 0 -6.047
+  }
+  ShapePoint "{690F5E0CAE4C42B5}" {
+   Position -32.459 0 80.375
+  }
+  ShapePoint "{690F5E0CB275154D}" {
+   Position -15.963 0 76.45
+  }
+  ShapePoint "{690F5E0CB63FD377}" {
+   Position 78.643 0 48.358
+  }
+  ShapePoint "{690F5E0CB815E7E4}" {
+   Position 83.594 0 46.691
+  }
+  ShapePoint "{690F5E0CBB06C33F}" {
+   Position 79.608 0 -25.366
+  }
+ }
+}
+$grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ {
+  components {
+   CRF_PolyZone "{6586537E1F838475}" {
+    m_bIsSafestartBorder 0
+    m_aVisibleForFactions +{
+     "BLUFOR"
+     "CIV"
+    }
+   }
+  }
+  coords 12317.113 44.281 9483.056
+  Points {
+   ShapePoint "{691092024D7B4F16}" {
+    Position -31.674 0 -13.981
+   }
+   ShapePoint "{691092024FA56664}" {
+    Position -12.068 0 53.273
+   }
+   ShapePoint "{691092025194FECF}" {
+    Position 31.144 0.694 45.965
+   }
+   ShapePoint "{69109202542E6B37}" {
+    Position 9.474 2.516 -26.569
+   }
+  }
+ }
+ {
+  components {
+   CRF_PolyZone "{6586537E1F838475}" {
+    m_bIsSafestartBorder 0
+    m_aVisibleForFactions +{
+     "BLUFOR"
+     "CIV"
+    }
+   }
+  }
+  coords 12230.406 41.562 9930.146
+  Points {
+   ShapePoint "{691092027CAB4D42}" {
+    Position -16.821 0 -23.254
+   }
+   ShapePoint "{691092027FB1E394}" {
+    Position -16.342 0 39.378
+   }
+   ShapePoint "{6910920202341F96}" {
+    Position -27.979 0 60.358
+   }
+   ShapePoint "{6910920204E8A870}" {
+    Position -27.931 0 71.103
+   }
+   ShapePoint "{6910920205C14676}" {
+    Position -19.394 0 75.698
+   }
+   ShapePoint "{691092022B75D177}" {
+    Position -5.507 0 52.805
+   }
+   ShapePoint "{6910920208DC5798}" {
+    Position 26.529 0 25.111
+   }
+   ShapePoint "{691092020D0B4A36}" {
+    Position 24.889 0 -6.546
+   }
+   ShapePoint "{691092020F62E9AC}" {
+    Position 2.159 0 -24.056
+   }
+  }
+ }
+}

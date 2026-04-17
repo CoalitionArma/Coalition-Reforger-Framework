@@ -1,0 +1,27 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{AF1B0037C3D4E500}" {
+  Anchor 0 0 1 1
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ {
+  ImageWidgetClass "{AF1B0038C3D4E500}" {
+   Name "BlackOverlay"
+   Slot FrameWidgetSlot "{AF1B0039C3D4E500}" {
+    Anchor 0 0 1 1
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+  }
+ }
+}
