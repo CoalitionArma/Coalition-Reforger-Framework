@@ -67,14 +67,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
-   m_sTextData "You have multiple avenues of escape. Helicopters stationed at the MIlitary Base, Airport, and a private one at your castle. You will be hunted relentlessly, use the small size of your element to your advantage and move quickly to escape."
+   m_sTextData "You have multiple avenues of escape. A helicopter stationed at the MIlitary Base in Valadim, Airport, and a private one at your Old Castle on the hill to the east. You will be hunted relentlessly, use the small size of your element to your advantage and move quickly to escape."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "Transponder will ping every 9 min. Time Limit of 90 minutes.   Blu / Opf  win: Kill HVT. Gaurds do not count towards victory."
+   m_sTextData "Transponder will ping every 9 min. Time Limit of 90 minutes.   Blu / Opf  win: Kill HVT. Gaurds do not count towards victory. IND wins if they escape."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -85,7 +85,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{691465654FCF258E}" {
+  CRF_SlottingGroup "{692170BA368E4FCD}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -93,7 +93,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691465654FCF24EE}" {
+  CRF_SlottingGroup "{692170BA368E4EFD}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -108,7 +108,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2BA5}" {
+  CRF_SlottingGroup "{692170BA368E4D9D}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -123,7 +123,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2A30}" {
+  CRF_SlottingGroup "{692170BA368E4C20}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -138,7 +138,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2AB9}" {
+  CRF_SlottingGroup "{692170BA368E4CA3}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -153,7 +153,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF293C}" {
+  CRF_SlottingGroup "{692170BA368DB322}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -170,7 +170,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{691465654FCF2861}" {
+  CRF_SlottingGroup "{692170BA368DB223}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -178,7 +178,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691465654FCF28D5}" {
+  CRF_SlottingGroup "{692170BA368DB295}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2F58}" {
+  CRF_SlottingGroup "{692170BA368DB116}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -208,7 +208,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2FD6}" {
+  CRF_SlottingGroup "{692170BA368DB1B4}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -223,7 +223,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2E57}" {
+  CRF_SlottingGroup "{692170BA368DB032}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -238,7 +238,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691465654FCF2EE0}" {
+  CRF_SlottingGroup "{692170BA368DB0AA}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -255,14 +255,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{691465654FCF2DA2}" {
-   m_sCallsign "EL Guapo & Friends"
+  CRF_SlottingGroup "{692170BA368DB750}" {
+   m_sCallsign "EL Toro & Friends"
    m_FlagType INFANTRY
    m_aSlots {
     VIP
-    VIP
-    VIP
-    VIP
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
    }
   }
  }

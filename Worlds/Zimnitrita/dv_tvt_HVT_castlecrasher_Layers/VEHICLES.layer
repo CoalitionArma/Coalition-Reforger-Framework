@@ -14,4 +14,9 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -6.943 0
   m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
  }
+ {
+  coords 16275.468 1.999 11339.252
+  angles 0 -6.943 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
 }
