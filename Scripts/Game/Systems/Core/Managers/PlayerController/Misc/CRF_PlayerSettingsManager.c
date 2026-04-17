@@ -19,14 +19,6 @@ class CRF_PlayerSettingsManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Sets SFX volume to specified level
-	//! \param[in] volume - Volume level to set
-	void SetSFXVolume(int volume)
-	{
-		AudioSystem.SetMasterVolume(AudioSystem.SFX, volume);
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	//! Sets FPS limit to specified value
 	//! \param[in] video - Video settings container
 	//! \param[in] fps - FPS limit to set
@@ -48,21 +40,26 @@ class CRF_PlayerSettingsManager : ScriptComponent
 	//! Initializes FPS lock by storing current value and setting to 30
 	void InitFPSLock()
 	{
-		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		//BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 		//GetInitialUserFPSValue(video);
-		SetFPS(video, 30);
+		//SetFPS(video, 30);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Sets SFX volume to specified level
+	//! \param[in] volume - Volume level to set
+	void SetSFXVolume(int volume)
+	{
+		AudioSystem.SetMasterVolume(AudioSystem.SFX, volume);
+	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	//! Restores user settings to original values
 	void ResetSettingsToStoredValues()
 	{
-		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-		
-		// Restore FPS if initialized
-		SetFPS(video, 0);
-		
-		// Restore audio if initialized
+		//BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		//SetFPS(video, 0);
 		SetSFXVolume(100);
 	}
 	

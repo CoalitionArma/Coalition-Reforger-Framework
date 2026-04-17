@@ -109,6 +109,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	{
 		super.OnMenuOpen();
 
+		// Reset the death low-pass audio filter (CharacterLifeState FMOD variable).
+		// SCR_NoiseFilterEffect sets this to DEAD on death and relies on SCR_DeployMenuBase.SGetOnMenuOpen()
+		// to reset it, which never fires when using a custom spectator menu.
+		AudioSystem.SetVariableByName("CharacterLifeState", ECharacterLifeState.ALIVE, "{A60F08955792B575}Sounds/_SharedData/Variables/GlobalVariables.conf");
+
 		// Initialize HUD visibility
 		SCR_HUDManagerComponent hudManager = GetGame().GetHUDManager();
 		if (hudManager) 

@@ -114,5 +114,16 @@ class CRF_RaidItemComponent: ScriptComponent
 		if (!System.IsConsoleApp())
 			return;
 		#endif
+
+		// Safeguard: if the entity despawned without going through a DESTROYED
+        // damage state (e.g. scenario framework deletion), award points now so
+        // the supply total is never silently swallowed.
+        if (!m_bPointsGiven && m_RaidGamemode)
+        {
+            Print(string.Format("[CRF_RaidItem] WARNING: Item despawned without registering destruction — awarding %1 supply points via destructor fallback.", m_iSupplyValue), LogLevel.WARNING);
+            GivePoints();
+
+			m_bPointsGiven = true;
+        }
 	}
 }

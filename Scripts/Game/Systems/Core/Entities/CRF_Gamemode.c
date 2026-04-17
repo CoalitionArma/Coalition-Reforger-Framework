@@ -38,6 +38,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("0", UIWidgets.Hidden)]
 	bool m_bWaveRespawn;
+	
+	[Attribute("0", UIWidgets.Hidden)]
+	bool m_bRallyPointsEnabled;
 
 	[Attribute("60", UIWidgets.Hidden)]
 	int m_iTimeToRespawn;
@@ -439,6 +442,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		
+		StopMovement(player);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Sets player movement to 0 on disconnect
+	void StopMovement(IEntity player)
+	{
+		SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		if (!charCont)
+			return;
+
+		charCont.SetMovement(0, "0 0 0");
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
