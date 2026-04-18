@@ -54,20 +54,31 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		// Initialize chat panel
 		InitializeChatPanel();
 		
-		// Initialize UI elements
-		InitializeUIElements();
-		
-		// Initialize phase indicators
+		// Initialize UI elements that do NOT need the player controller
 		SetupPhaseIndicators();
-		
-		// Setup player and description lists
 		SetupListComponents();
-		
-		// Initialize description section
-		DescriptionInit();
-		
-		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
+		
+		// Player-controller-dependent init — defer if the controller isn't ready yet
+		// (race condition: player may still be loading when the briefing menu opens)
+		InitializePlayerDependentElements();
+	}
+	
+	/**
+	 * Initializes player-controller-dependent elements.
+	 * Retries via callqueue if the controller is not yet available.
+	 */
+	protected void InitializePlayerDependentElements()
+	{
+		if (!GetGame().GetPlayerController())
+		{
+			// Controller not ready yet — retry next tick
+			GetGame().GetCallqueue().CallLater(InitializePlayerDependentElements, 100, false);
+			return;
+		}
+		
+		InitializeUIElements();
+		DescriptionInit();
 	}
 	
 	/**
@@ -102,8 +113,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_wRoot = GetRootWidget();
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
-		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
+		
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+		{
+			Print("[CRF_BriefingMenu] Warning: PlayerController not available in InitializeUIElements", LogLevel.WARNING);
+			return;
+		}
+		
+		m_PlayerController = SCR_PlayerController.Cast(pc);
+		m_VONController = SCR_VONController.Cast(pc.FindComponent(SCR_VONController));
 		
 		// Set mission text with author information
 		UpdateMissionText();
@@ -467,9 +486,23 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_aActiveDescriptors.Clear();
 		
 		// Get player faction
-		string playerFaction = SCR_PlayerFactionAffiliationComponent.Cast(
-			GetGame().GetPlayerController().FindComponent(SCR_PlayerFactionAffiliationComponent)
-		).GetAffiliatedFactionKey();
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+		{
+			Print("[CRF_BriefingMenu] Warning: PlayerController not available in DescriptionInit", LogLevel.WARNING);
+			return;
+		}
+		
+		SCR_PlayerFactionAffiliationComponent factionComp = SCR_PlayerFactionAffiliationComponent.Cast(
+			pc.FindComponent(SCR_PlayerFactionAffiliationComponent)
+		);
+		if (!factionComp)
+		{
+			Print("[CRF_BriefingMenu] Warning: SCR_PlayerFactionAffiliationComponent not found in DescriptionInit", LogLevel.WARNING);
+			return;
+		}
+		
+		string playerFaction = factionComp.GetAffiliatedFactionKey();
 		
 		// Add relevant descriptions to list
 		foreach (ref CRF_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
@@ -610,11 +643,18 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	void Action_VONon()
 	{
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-
+		
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc) return;
+		
+		IEntity controlledEntity = pc.GetControlledEntity();
+		if (!controlledEntity) return;
+		
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(
-			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
+			controlledEntity.FindComponent(SCR_VoNComponent)
 		);
-
+		if (!von) return;
+		
 		von.SetTransmitRadio(GetVoNTransiver());
 		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		von.SetCapture(true);
@@ -671,10 +711,17 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	 */
 	void LobbyVoNDisableDelayed()
 	{
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc) return;
+		
+		IEntity controlledEntity = pc.GetControlledEntity();
+		if (!controlledEntity) return;
+		
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(
-			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
+			controlledEntity.FindComponent(SCR_VoNComponent)
 		);
-
+		if (!von) return;
+		
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
 	}
