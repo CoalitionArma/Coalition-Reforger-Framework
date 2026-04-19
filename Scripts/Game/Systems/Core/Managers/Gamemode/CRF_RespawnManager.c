@@ -22,6 +22,9 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	int m_iCIVTickets;
 	
+	[RplProp()]
+	bool m_bIsParadropEnabled = true;
+	
 	//Respawn variables
 	[RplProp()] bool m_bCurrentRespawnEnabled;
 	[RplProp()] bool m_bCurrentWaveRespawn;
@@ -892,6 +895,13 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		m_bCurrentWaveRespawn = !m_bCurrentWaveRespawn;
 		m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ToggleParadrop()
+	{
+		m_bIsParadropEnabled = !m_bIsParadropEnabled;
 		Replication.BumpMe();
 	}
 	

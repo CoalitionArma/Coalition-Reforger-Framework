@@ -1,0 +1,15 @@
+MatPBRBasic {
+ Cull none
+ BCRMap "{FACAC6D3DB7779D0}Assets/Props/Fabric/Flags/Data/GermanFlag.edds"
+ NormalPower 1.2
+ NMOMap "{C39D234EF0D4B94D}Assets/Props/Fabric/Flags/Data/Flag_1_2_N.edds"
+ GlobalMapsUVTransform MatUVTransform "{589E89E1D82D5F77}" {
+  OffsetU 0.109
+ }
+ DetailNormalPower 0.35
+ DetailNormalMap "{61DE3875B9DBD343}Assets/_SharedData/Fabric/ST_FabricWrinkles_1m_01_NMO.edds"
+ DetailNormalMapUVTransform MatUVTransform "{5896CDA6F5123D6D}" {
+  TilingU 2
+  TilingV 2
+ }
+}

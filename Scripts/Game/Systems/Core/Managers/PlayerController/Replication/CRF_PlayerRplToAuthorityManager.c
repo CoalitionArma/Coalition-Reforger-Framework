@@ -406,6 +406,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void ToggleParadrop()
+	{
+		Rpc(RpcAsk_ToggleParadrop);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void ToggleRespawn()
 	{
 		Rpc(RpcAsk_ToggleRespawn);
@@ -1905,6 +1911,13 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_ToggleWaveRespawn", 0);
 		
 		CRF_RespawnManager.GetInstance().ToggleRespawnWave();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ToggleParadrop()
+	{
+		CRF_RespawnManager.GetInstance().ToggleParadrop();
 	}
 	
 	//------------------------------------------------------------------------------------------------

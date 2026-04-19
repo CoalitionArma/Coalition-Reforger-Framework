@@ -7,12 +7,12 @@ FrameWidgetClass {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -816
     OffsetLeft -816
-    PositionY -484
-    OffsetTop -484
+    PositionY -434.033
+    OffsetTop -434.033
     SizeX 1128
     OffsetRight -312
     SizeY 928
-    OffsetBottom -444
+    OffsetBottom -493.967
    }
    "Z Order" 1
    "Is Enabled" 0
@@ -137,14 +137,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -192,14 +184,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -247,14 +231,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -302,14 +278,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -1396,6 +1364,37 @@ FrameWidgetClass {
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
      Text "AAR"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{6926EBBAD310E81B}" {
+   Name "Paradrop"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    PositionX 173.282
+    OffsetLeft 173.282
+    PositionY 747.232
+    OffsetTop 747.232
+    SizeX 173.86
+    OffsetRight -347.142
+    SizeY 29.999
+    OffsetBottom -777.231
+   }
+   "Z Order" 5
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{6926EBBAD310E814}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Disable Paradrop"
      "Font Size" 15
      "Min Font Size" 15
     }

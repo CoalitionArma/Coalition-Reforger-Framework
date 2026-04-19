@@ -1920,8 +1920,10 @@ $grp BaseGameTriggerEntity {
   "            return;"\
   "        }"\
   "        "\
-  "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+  "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus() && CRF_RespawnManager.GetInstance().m_bIsParadropEnabled)"\
   "            InitPlane();"\
+  "		else if (!CRF_SafestartManager.GetInstance().GetSafestartStatus() && !CRF_RespawnManager.GetInstance().m_bIsParadropEnabled)"\
+  "			delete this;"\
   "	"
  }
  mortarAmmoSpawn {

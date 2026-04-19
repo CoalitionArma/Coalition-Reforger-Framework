@@ -1,6 +1,24 @@
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 1565.447 9.79 796.18
+ components {
+  SlotManagerComponent "{645911A160C1D2C6}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{F1FA8BD558282867}Prefabs/Props/Fabric/Flags/Gearscript Factions/OPFOR_FLAG_Germany.et"
+    }
+   }
+  }
+ }
+ coords 3847.178 8.5 760.655
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ components {
+  SlotManagerComponent "{645911BAB1D66B16}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{971F705971EF6F4B}Prefabs/Props/Fabric/Flags/Flag_1_2_US_01.et"
+    }
+   }
+  }
+ }
  coords 3869.796 41.102 4341.031
 }

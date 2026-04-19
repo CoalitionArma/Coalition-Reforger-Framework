@@ -1922,6 +1922,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 		EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).SetText(CRF_RespawnManager.GetInstance().m_iCurrentTimeToRespawn.ToString());
 		SCR_ButtonTextComponent setRespawnTime = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("SetRespawnTimeButton").FindHandler(SCR_ButtonTextComponent));
 		setRespawnTime.m_OnClicked.Insert(SetRespawnTime);
+		
+		//Toggle paradrop
+		SCR_ButtonTextComponent toggleParadrop = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("Paradrop").FindHandler(SCR_ButtonTextComponent));
+		toggleParadrop.m_OnClicked.Insert(ToggleParadrop);
+	}
+	
+	void ToggleParadrop()
+	{
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleParadrop();
 	}
 	
 	void ToggleWaveRespawn()
@@ -2139,6 +2148,20 @@ class CRF_AdminMenu : ChimeraMenuBase
 		{
 			respawnEnabledText.SetText("Respawns Disabled");
 			respawnEnabledText.SetColorInt(Color.RED);
+		}
+		
+		bool paradropEnabled = CRF_RespawnManager.GetInstance().m_bIsParadropEnabled;
+		Widget paradropEnabledButton = m_wMenuContent.FindAnyWidget("Paradrop");
+		TextWidget paradropEnabledText = TextWidget.Cast(paradropEnabledButton.FindWidget("ActionButtonText"));
+		if (paradropEnabled)
+		{
+			paradropEnabledText.SetText("Paradrop Enabled");
+			paradropEnabledText.SetColorInt(Color.GREEN);
+		}
+		else
+		{
+			paradropEnabledText.SetText("Paradrop Disabled");
+			paradropEnabledText.SetColorInt(Color.RED);
 		}
 	}
 	
