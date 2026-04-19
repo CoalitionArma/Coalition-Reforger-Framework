@@ -18,7 +18,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
     protected const float m_iRecordIntervals = 0.5;
 	
 	protected ref array<ref CRF_VAAR_ShotEvent> m_aShotsBuffer = {};
-	protected ref array<ref CRF_VAAR_Event> m_aEventsBuffer = {};
+	protected ref array<ref CRF_VAAR_KillEvent> m_aKillsBuffer = {};
 	protected ref array<IEntity> m_aTrackedVehicle = {};
 	
 	override void OnPostInit(IEntity owner)
@@ -56,6 +56,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		// Close out the aar with a delay to make sure everything was recorded
 		GetGame().GetCallqueue().CallLater(CloseVAAR, m_iRecordIntervals + 0.1);
+	}
+	
+	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		//if (RplSession.Mode() != RplMode.Dedicated)
+		//	return;
+		
+		RegisterCharacterDeath(instigatorContextData);
 	}
 	
 		
@@ -130,13 +138,13 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		m_aShotsBuffer.Clear();
 		
-		// Record events into the frame
-		foreach (CRF_VAAR_Event aarEvent : m_aEventsBuffer)
+		// Record kills events into the frame
+		foreach (CRF_VAAR_KillEvent killEvent : m_aKillsBuffer)
 		{
-			frame.Events.Insert(aarEvent);
+			frame.Kills.Insert(killEvent);
 		}
 
-		m_aEventsBuffer.Clear();
+		m_aKillsBuffer.Clear();
 		
 		// Record character positions into the frame
 		foreach (AIAgent agent : agents)
@@ -328,12 +336,22 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ));
 	}
 	//------------------------------------------------------------------------------------
-	void RegisterEvent(CRF_VAAR_EEventTypes type, RplId target = RplId.Invalid(), RplId instgator = RplId.Invalid())
+	void RegisterCharacterDeath(notnull SCR_InstigatorContextData instigatorContextData)
 	{
-		// TODO: No events are actually being tracked this just place holder
-		// Store event in buffer
-		m_aEventsBuffer.Insert(new CRF_VAAR_Event(type, target, instgator))
+		// Collect some info
+		IEntity killerEntity = instigatorContextData.GetKillerEntity();
+		IEntity targetEntity = instigatorContextData.GetVictimEntity();
+		
+		RplId killerID = Replication.FindId(killerEntity);
+		RplId targetID = Replication.FindId(targetEntity);
+		
+		string killerName = GetCharacterName(killerEntity);
+		string targetName = GetCharacterName(targetEntity);
+		
+		FactionKey killerFaction = GetFactionKey(killerEntity);
+		FactionKey targetFaction = GetFactionKey(targetEntity);
+		
+		// Add to event buffer
+		m_aKillsBuffer.Insert(new CRF_VAAR_KillEvent(targetID, killerID, targetName, killerName, targetFaction, killerFaction));
 	}
-	
-	
 }

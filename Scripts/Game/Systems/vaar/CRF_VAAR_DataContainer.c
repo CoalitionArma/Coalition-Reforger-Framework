@@ -3,7 +3,8 @@ enum CRF_VAAR_EEventTypes
 	KILL
 }
 
-// This represents a single AI or Player Character
+// Lower level Structure
+//------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_VAAR_CharacterSnapshot : Managed
 {
@@ -70,20 +71,33 @@ class CRF_VAAR_ShotEvent : Managed
     }
 }
 
-// This reperesents events witht type (CRF_VAAR_EEventTypes)
+//! param[in] RplID target ID
+//! param[in] RplID killer ID
+//! param[in] string target name
+//! param[in] string killer name
+//! param[in] string killer weapon
+//! param[in] string target faction
+//! param[in] string killer faction
 [BaseContainerProps()]
-class CRF_VAAR_Event : Managed
+class CRF_VAAR_KillEvent : Managed
 {
-    CRF_VAAR_EEventTypes type;
-    RplId targetID, instigatorID;
-    
-    void CRF_VAAR_Event(CRF_VAAR_EEventTypes eventType, RplId target, RplId instigator)
+    RplId targetID, KillerID;
+	string targetName, targetFaction;
+	string killerName, killerFaction; 
+	
+    void CRF_VAAR_KillEvent(RplId target, RplId killer, string tName, string kName, FactionKey tFaction, FactionKey kFaction)
     {
-        type = type;
 		targetID = target;
-		instigatorID = instigator;
+		targetName = tName;
+		targetFaction = tFaction;
+		KillerID = killer;
+		killerName = kName;
+		killerFaction = kFaction;
     }
 }
+
+// Top level Structure
+//------------------------------------------------------------------------------------
 
 // This represents all Characters & Vehicles
 [BaseContainerProps()]
@@ -100,5 +114,5 @@ class CRF_VAAR_Frame : Managed
     float Timestamp;
     ref array<ref CRF_VAAR_EntitiesSnapshot> Entities = {};
 	ref array<ref CRF_VAAR_ShotEvent> Shots = {};
-	ref array<ref CRF_VAAR_Event> Events = {}; // TODO
+	ref array<ref CRF_VAAR_KillEvent> Kills = {};
 }
