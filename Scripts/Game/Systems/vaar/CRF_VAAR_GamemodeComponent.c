@@ -19,6 +19,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected ref array<ref CRF_VAAR_ShotEvent> m_aShotsBuffer = {};
 	protected ref array<ref CRF_VAAR_Event> m_aEventsBuffer = {};
+	protected ref array<IEntity> m_aTrackedVehicle = {};
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -108,15 +109,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);		
 	
 		// Grab all the players and AI currently in the world
-		// Would it be better to store these in an array with onplayerconnected or onaispawned?
 		AIWorld aiWorld = GetGame().GetAIWorld();
 		if (!aiWorld)
 			return;
 		
 		array<AIAgent> agents = {};
 		aiWorld.GetAIAgents(agents);
-		
+
 		CRF_VAAR_Frame frame = new CRF_VAAR_Frame();
+		CRF_VAAR_EntitiesSnapshot entitiesSnapshot = new CRF_VAAR_EntitiesSnapshot();
 		
 		// Timestamp for the frame based on in game time
 		frame.Timestamp = GetGame().GetWorld().GetWorldTime();
@@ -137,30 +138,55 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		m_aEventsBuffer.Clear();
 		
-		// Record entity positions into the frame
+		// Record character positions into the frame
 		foreach (AIAgent agent : agents)
 		{
-			IEntity entity = agent.GetControlledEntity();
-			if (!entity)
-				continue;
-			
-			// Collect info
-			RplId entityID = Replication.FindId(entity);
-			string entityName = entity.GetName(); // This doesnt work...
-			vector entityPos = entity.GetOrigin();
-
-			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity.GetRootParent());
+			IEntity character = agent.GetControlledEntity();
 			if (!character)
 				continue;
+
+			// Collect info
+			string characterName;
+			int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+			if (playerID != 0)
+				characterName = GetGame().GetPlayerManager().GetPlayerName(playerID);
+			else
+				characterName = "AI";
 			
-			vector entityAim = character.GetHeadAimingComponent().GetAimingDirectionWorld();
+			RplId characterID = Replication.FindId(character);
+			vector characterPos = character.GetOrigin();
+			string characterRole = GetFriendlyName(character);
+
+			SCR_ChimeraCharacter chimeraCharacter = SCR_ChimeraCharacter.Cast(character.GetRootParent());
+			if (!chimeraCharacter)
+				continue;
 			
-			CRF_VAAR_EntitySnapshot snapshot = new CRF_VAAR_EntitySnapshot(entityID, entityName, entityPos, entityAim);
+			// Get Direction the character is aiming
+			vector characterAim = chimeraCharacter.GetHeadAimingComponent().GetAimingDirectionWorld();
 			
-			frame.Entities.Insert(snapshot);
+			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterName, characterPos, characterAim, characterRole);
+			
+			entitiesSnapshot.Characters.Insert(characterSnapshot);
 		}
 		
-		// TODO: Track vehicles and players in them
+		foreach(IEntity vehicle : m_aTrackedVehicle)
+		{
+			// Collect info
+			string vehicleName = GetFriendlyName(vehicle);
+			RplId vehicleID = Replication.FindId(vehicle);
+			vector vehiclePos = vehicle.GetOrigin();
+			vector vehicleYaw = vehicle.GetAngles();
+			string vehicleType = GetVehicleType(vehicle);
+			
+			// TODO: Get list of occupants
+			
+			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType);
+			
+			entitiesSnapshot.Vehicles.Insert(vehicleSnapshot);
+		}
+		
+		// Insert Entites into the frame
+		frame.Entities.Insert(entitiesSnapshot);
 		
 		// Convert the frame to json format
 		SCR_JsonSaveContext jsonHelper = new SCR_JsonSaveContext();
@@ -193,8 +219,61 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		Print("[CRF_VAAR] Recording Saved");
 		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
 	}
+
+	// HELPERS
+	//------------------------------------------------------------------------------------
+	protected string GetFriendlyName(IEntity entity)
+	{
+	    SCR_EditableEntityComponent editableComponent = SCR_EditableEntityComponent.Cast(entity.FindComponent(SCR_EditableEntityComponent));
+	    if (editableComponent)
+	    {
+	        SCR_UIInfo uiInfo = editableComponent.GetInfo();
+	        if (uiInfo)
+	        {
+	             string name = uiInfo.GetName();
+				
+				return WidgetManager.Translate(name);
+	        }
+	    }
+		
+		return "Unknown";
+	}
+	//------------------------------------------------------------------------------------
+	protected string GetVehicleType(IEntity vehicle)
+	{	
+		int type = Vehicle.Cast(vehicle).m_eVehicleType; // Refactor is planned by devs for this
+		
+		switch(type)
+		{
+			case EVehicleType.APC : {return "APC";}
+			case EVehicleType.CAR : {return "CAR";}
+			case EVehicleType.TRUCK : {return "TRUCK";}
+			case EVehicleType.TANK : {return "TANK";}
+			case EVehicleType.MORTAR : {return "MOTAR";}
+			default : {return "HELICOPTER";} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
+		}
+		
+		return "Unknown";
+	}
 	
-	// Handle a shot being fired
+	// GETTERS
+	//------------------------------------------------------------------------------------
+	bool IsRecording()
+	{
+		return m_bRecording;
+	}
+	
+	// SETTERS
+	//------------------------------------------------------------------------------------
+	void RegisterVehicle(IEntity vehicle)
+	{
+		m_aTrackedVehicle.Insert(vehicle);
+	}
+	//------------------------------------------------------------------------------------
+	void UnregisterVehicle(IEntity vehicle)
+	{
+		m_aTrackedVehicle.RemoveItem(vehicle);
+	}
 	//------------------------------------------------------------------------------------
 	void RegisterShot(IEntity shooter, IEntity projectile, float hitX, float hitZ)
 	{
@@ -205,8 +284,6 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		// Store shot in buffer
 		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ));
 	}
-	
-	// Handle event
 	//------------------------------------------------------------------------------------
 	void RegisterEvent(CRF_VAAR_EEventTypes type, RplId target = RplId.Invalid(), RplId instgator = RplId.Invalid())
 	{
@@ -215,10 +292,5 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_aEventsBuffer.Insert(new CRF_VAAR_Event(type, target, instgator))
 	}
 	
-	// GETTERS
-	//------------------------------------------------------------------------------------
-	bool IsRecording()
-	{
-		return m_bRecording;
-	}
+	
 }

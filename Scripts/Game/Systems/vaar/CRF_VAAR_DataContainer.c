@@ -3,23 +3,43 @@ enum CRF_VAAR_EEventTypes
 	KILL
 }
 
-// This represents a AI or Player position
+// This represents a single AI or Player Character
 [BaseContainerProps()]
-class CRF_VAAR_EntitySnapshot : Managed
+class CRF_VAAR_CharacterSnapshot : Managed
 {
-    RplId entityID;
-    string entityName;
-    float posX, posY, posZ;
-    float yaw;
+    RplId characterID;
+    string characterName, characterrole;
+    float characterposX, characterposY, characterposZ, characteryaw;
     
-    void CRF_VAAR_EntitySnapshot(RplId id, string name, vector pos, vector aim)
+    void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, string role)
     {
-		entityID = id;
-        entityName = name;
-        posX = pos[0];
-        posY = pos[1];
-        posZ = pos[2];
-        yaw = aim[0];
+		characterID = id;
+        characterName = name;
+        characterposX = pos[0];
+        characterposY = pos[1];
+        characterposZ = pos[2];
+        characteryaw = aim[0];
+		characterrole = role;
+    }
+}
+
+// This represents single Vehicle
+[BaseContainerProps()]
+class CRF_VAAR_VehicleSnapshot : Managed
+{
+    RplId vehicleID;
+    string vehicleName, vehicleType;
+    float vehicleposX, vehicleposY, vehicleposZ, vehicleyaw;
+	
+    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type)
+    {
+		vehicleID = id;
+        vehicleName = name;
+        vehicleposX = pos[0];
+        vehicleposY = pos[1];
+        vehicleposZ = pos[2];
+        vehicleyaw = aim[0];
+		vehicleType = type;
     }
 }
 
@@ -55,12 +75,20 @@ class CRF_VAAR_Event : Managed
     }
 }
 
+// This represents all Characters & Vehicles
+[BaseContainerProps()]
+class CRF_VAAR_EntitiesSnapshot : Managed
+{
+    ref array<ref CRF_VAAR_CharacterSnapshot> Characters = {};
+	ref array<ref CRF_VAAR_VehicleSnapshot> Vehicles = {};
+}
+
 // A single frame
 [BaseContainerProps()]
 class CRF_VAAR_Frame : Managed
 {
     float Timestamp;
-    ref array<ref CRF_VAAR_EntitySnapshot> Entities = {};
+    ref array<ref CRF_VAAR_EntitiesSnapshot> Entities = {};
 	ref array<ref CRF_VAAR_ShotEvent> Shots = {};
 	ref array<ref CRF_VAAR_Event> Events = {}; // TODO
 }
