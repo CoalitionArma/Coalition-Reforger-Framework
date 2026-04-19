@@ -33,8 +33,9 @@ class CRF_VAAR_VehicleSnapshot : Managed
     string vehicleName, vehicleType;
     float vehicleposX, vehicleposY, vehicleposZ, vehicleyaw;
 	FactionKey vehicleFaction;
+	ref array<string> vehicleOccupants = {};
 	
-    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type, FactionKey key)
+    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type, FactionKey key, array<string> occupants)
     {
 		vehicleID = id;
         vehicleName = name;
@@ -44,6 +45,11 @@ class CRF_VAAR_VehicleSnapshot : Managed
         vehicleyaw = aim[0];
 		vehicleType = type;
 		vehicleFaction = key;
+		
+		foreach(string occupant : occupants)
+		{
+			vehicleOccupants.Insert(occupant);
+		}
     }
 }
 

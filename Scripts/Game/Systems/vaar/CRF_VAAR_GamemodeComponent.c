@@ -146,13 +146,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 
 			// Collect info
-			string characterName;
-			int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
-			if (playerID != 0)
-				characterName = GetGame().GetPlayerManager().GetPlayerName(playerID);
-			else
-				characterName = "AI";
-			
+
+			string characterName = GetCharacterName(character);
 			RplId characterID = Replication.FindId(character);
 			vector characterPos = character.GetOrigin();
 			string characterRole = GetFriendlyName(character);
@@ -180,9 +175,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			string vehicleType = GetVehicleType(vehicle);
 			FactionKey vehicleFaction = GetFactionKey(vehicle);
 			
-			// TODO: Get list of occupants
+			array<string> vehicleOccupants = {};
+			GetVehicleOcuupants(vehicle, vehicleOccupants);
 			
-			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType, vehicleFaction);
+			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType, vehicleFaction, vehicleOccupants);
 			
 			entitiesSnapshot.Vehicles.Insert(vehicleSnapshot);
 		}
@@ -239,6 +235,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	    }
 		
 		return "Unknown";
+	}	
+	//------------------------------------------------------------------------------------
+	protected string GetCharacterName(IEntity character)
+	{
+		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (playerID != 0)
+			return GetGame().GetPlayerManager().GetPlayerName(playerID);
+			
+		return "AI";
 	}
 	//------------------------------------------------------------------------------------
 	protected string GetVehicleType(IEntity vehicle)
@@ -266,6 +271,32 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			return "Unknown";
 		
 		return factionComponent.GetAffiliatedFactionKey();
+	}
+	//------------------------------------------------------------------------------------
+	protected void GetVehicleOcuupants(IEntity vehicle, out array<string> occupants)
+	{	
+		BaseCompartmentManagerComponent compartmentManager = BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(BaseCompartmentManagerComponent));
+		if (!compartmentManager)
+			return;
+		
+		array<BaseCompartmentSlot> compartments = {};
+		compartmentManager.GetCompartments(compartments);
+		
+		foreach(BaseCompartmentSlot slot : compartments)
+		{
+			IEntity occupant = slot.GetOccupant();
+			if (!occupant)
+				continue;
+			
+			string occupantName = GetCharacterName(occupant);
+			string slotName = "Passenger";
+			
+			UIInfo slotInfo = slot.GetUIInfo();
+			if (slotInfo)
+				slotName = WidgetManager.Translate(slotInfo.GetName());
+			
+			occupants.Insert(string.Format("%1: %2", slotName, occupantName));
+		}
 	}
 	
 	// GETTERS
