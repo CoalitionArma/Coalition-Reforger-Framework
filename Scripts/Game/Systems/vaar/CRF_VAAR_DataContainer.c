@@ -10,8 +10,9 @@ class CRF_VAAR_CharacterSnapshot : Managed
     RplId characterID;
     string characterName, characterrole;
     float characterposX, characterposY, characterposZ, characteryaw;
+	FactionKey characterFaction;
     
-    void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, string role)
+    void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, string role, FactionKey key)
     {
 		characterID = id;
         characterName = name;
@@ -20,6 +21,7 @@ class CRF_VAAR_CharacterSnapshot : Managed
         characterposZ = pos[2];
         characteryaw = aim[0];
 		characterrole = role;
+		characterFaction = key;
     }
 }
 
@@ -30,8 +32,9 @@ class CRF_VAAR_VehicleSnapshot : Managed
     RplId vehicleID;
     string vehicleName, vehicleType;
     float vehicleposX, vehicleposY, vehicleposZ, vehicleyaw;
+	FactionKey vehicleFaction;
 	
-    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type)
+    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type, FactionKey key)
     {
 		vehicleID = id;
         vehicleName = name;
@@ -40,6 +43,7 @@ class CRF_VAAR_VehicleSnapshot : Managed
         vehicleposZ = pos[2];
         vehicleyaw = aim[0];
 		vehicleType = type;
+		vehicleFaction = key;
     }
 }
 

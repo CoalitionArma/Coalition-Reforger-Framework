@@ -156,7 +156,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			RplId characterID = Replication.FindId(character);
 			vector characterPos = character.GetOrigin();
 			string characterRole = GetFriendlyName(character);
-
+			FactionKey characterFaction = GetFactionKey(character);
+			
 			SCR_ChimeraCharacter chimeraCharacter = SCR_ChimeraCharacter.Cast(character.GetRootParent());
 			if (!chimeraCharacter)
 				continue;
@@ -164,7 +165,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			// Get Direction the character is aiming
 			vector characterAim = chimeraCharacter.GetHeadAimingComponent().GetAimingDirectionWorld();
 			
-			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterName, characterPos, characterAim, characterRole);
+			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterName, characterPos, characterAim, characterRole, characterFaction);
 			
 			entitiesSnapshot.Characters.Insert(characterSnapshot);
 		}
@@ -177,10 +178,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			vector vehiclePos = vehicle.GetOrigin();
 			vector vehicleYaw = vehicle.GetAngles();
 			string vehicleType = GetVehicleType(vehicle);
+			FactionKey vehicleFaction = GetFactionKey(vehicle);
 			
 			// TODO: Get list of occupants
 			
-			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType);
+			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType, vehicleFaction);
 			
 			entitiesSnapshot.Vehicles.Insert(vehicleSnapshot);
 		}
@@ -254,6 +256,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		return "Unknown";
+	}
+	
+	//------------------------------------------------------------------------------------
+	protected FactionKey GetFactionKey(IEntity entity)
+	{	
+		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
+		if (!factionComponent)
+			return "Unknown";
+		
+		return factionComponent.GetAffiliatedFactionKey();
 	}
 	
 	// GETTERS
