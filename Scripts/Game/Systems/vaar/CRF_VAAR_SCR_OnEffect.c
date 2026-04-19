@@ -14,9 +14,6 @@ class CRF_VAAR_BaseProjectileEffect: BaseProjectileEffect
 		if (!aarGamemodeComponent)
 			return;
 		
-		Print(damageSource);
-		Print(damageSource.GetID());
-		
 		if (!aarGamemodeComponent.IsRecording())
 			return;
 		
