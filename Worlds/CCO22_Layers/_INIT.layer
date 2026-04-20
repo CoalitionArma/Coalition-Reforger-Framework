@@ -1821,6 +1821,17 @@ $grp BaseGameTriggerEntity {
   "	ref RandomGenerator m_Random;"\
   "	void InitPlane()"\
   "	{"\
+  "		EntitySpawnParams params = new EntitySpawnParams();"\
+  "		params.Transform[3] = \"2678.011 52.696 3894.693\";"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{B855CAB0011A10CF}Prefabs/Compositions/CCO22_USArsenal.et\"), null, params);"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.Transform[3] = \"2672.782 49.736 3927.156\";"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{6B6F6B29ED34E6E1}PrefabsMissionMaking/Systems/SpawnPoints/US_Spawn.et\"), null, spawnParams);"\
+  "		"\
+  "		IEntity spawnFlag = GetGame().GetWorld().FindEntityByName(\"USSpawn\");"\
+  "		if (spawnFlag)"\
+  "			SCR_EntityHelper.DeleteEntityAndChildren(spawnFlag);"\
   "		vector dzStart = \"900 600 7300\";"\
   "        vector dzEnd = \"2100 600 3200\";"\
   "        vector dzGreenLight = \"3000 0 0\";"\

@@ -10,7 +10,7 @@ CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoin
  }
  coords 3847.178 8.5 760.655
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+CRF_StaticSpawnPoint USSpawn : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  components {
   SlotManagerComponent "{645911BAB1D66B16}" {
    Slots {
