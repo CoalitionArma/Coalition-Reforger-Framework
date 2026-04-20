@@ -152,9 +152,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			IEntity character = agent.GetControlledEntity();
 			if (!character)
 				continue;
+			
+			// Don't track spectator entities
+			if (CRF_EntityHelper.IsSpectator(character))
+				continue;
 
 			// Collect info
-
 			string characterName = GetCharacterName(character);
 			RplId characterID = Replication.FindId(character);
 			vector characterPos = character.GetOrigin();
