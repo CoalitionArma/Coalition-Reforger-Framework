@@ -134,6 +134,105 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
+//	 PROP HUNT — CLIENT-TO-SERVER RPC
+//	 Declared in the BASE (non-modded) class so that Reforger's RPC registration
+//	 table picks it up reliably. RPCs added to a modded class are NOT guaranteed
+//	 to be registered on dedicated servers.
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Public wrapper called from client-side chat command callbacks in CRF_PropHuntGamemode.
+	//! Fires RpcDo_AdminPropHuntCommand through the base class so the RPC table entry is
+	//! always registered on dedicated servers.
+	void RequestAdminCommand(string cmd, string param)
+	{
+		Rpc(RpcDo_AdminPropHuntCommand, cmd, param);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_AdminPropHuntCommand(string cmd, string param)
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		// Re-validate admin status on the server
+		if (!SCR_Global.IsAdmin(playerId))
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleAdminCommand(playerId, cmd, param);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to request transforming into a prop disguise.
+	//! Placed here (base class) instead of in the modded PropHunt class so the
+	//! RPC index is part of the original class's RPC table and always works on
+	//! dedicated servers. The actual spawn logic lives in CRF_PropHuntGamemode.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropTransform(ResourceName prefab)
+	{
+		// Resolve the requesting player via the owning PlayerController.
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleTransformRequest(playerId, prefab);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to request playing a noise hint from their current position.
+	//! Placed here (base class) so the RPC index is always in the base class RPC table
+	//! and works reliably on dedicated servers. Logic lives in CRF_PropHuntGamemode.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropNoise()
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleNoiseRequest(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client calls this to cycle to the next noise in the configured list.
+	//! Placed here (base class) so the RPC index is always reliable on dedicated servers.
+	//! Logic lives in CRF_PropHuntGamemode which sends a hint back to the calling player.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_RequestPropNextNoise()
+	{
+		PlayerController pc = PlayerController.Cast(GetOwner());
+		if (!pc)
+			return;
+
+		int playerId = pc.GetPlayerId();
+		if (playerId <= 0)
+			return;
+
+		CRF_PropHuntGamemode propHunt = CRF_PropHuntGamemode.GetInstance();
+		if (propHunt)
+			propHunt.HandleNoiseCycleRequest(playerId);
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	

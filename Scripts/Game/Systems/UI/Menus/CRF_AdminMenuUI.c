@@ -483,7 +483,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
 		SCR_ButtonTextComponent menuButton3 = GetMenuButton("MenuButton3");
 		SCR_ButtonTextComponent menuButton4 = GetMenuButton("MenuButton4");
-		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
+		SCR_ButtonTextComponent menuButton5 = GetMenuButton("MenuButton5");
+		SCR_ButtonTextComponent menuButton6 = GetMenuButton("MenuButton6");
+		SCR_ButtonTextComponent menuButton7 = GetMenuButton("MenuButton7");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4 || !menuButton5 || !menuButton6 || !menuButton7)
 			return;
 		
 		// Setup button event handlers
@@ -493,6 +496,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		menuButton2.m_OnClicked.Insert(AddGIRadio);
 		menuButton3.m_OnClicked.Insert(AddBinos);
 		menuButton4.m_OnClicked.Insert(AddMap);
+		menuButton5.m_OnClicked.Insert(AddWrench);
+		menuButton6.m_OnClicked.Insert(AddMedicKit);
+		menuButton7.m_OnClicked.Insert(AddPrimaryAmmo);
 		
 		// Setup selection change handler
 		playerList.m_OnChanged.Insert(UpdateDefaultGear);
@@ -677,6 +683,197 @@ class CRF_AdminMenu : ChimeraMenuBase
 		//Add map
 		const string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
 		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
+	}
+
+	/**
+	* Adds wrench to selected player
+	*/
+	void AddWrench()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Add wrench
+		const string wrenchPrefab = "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et";
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, wrenchPrefab, true);
+	}
+
+	/**
+	* Adds medic medical items to selected player from their faction's gearscript
+	*/
+	void AddMedicKit()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Get the player's group and faction
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return;
+			
+		string factionKey = playerGroup.GetFaction().GetFactionKey();
+
+		// Load the gear config for the faction
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
+		));
+		if (!gearConfig || !gearConfig.m_MedicMedicalItems)
+			return;
+
+		// Add each medic medical item the configured number of times
+		foreach (CRF_Inventory_Item item : gearConfig.m_MedicMedicalItems)
+		{
+			for (int i = 0; i < item.m_iItemCount; i++)
+				CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, item.m_sItemPrefab, true);
+		}
+	}
+
+	/**
+	* Adds primary weapon ammo to selected player based on their role's gearscript
+	*/
+	void AddPrimaryAmmo()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+
+		// Get player entity and determine role from their prefab
+		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!playerEntity)
+			return;
+
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(playerEntity.GetPrefabData().GetPrefabName());
+
+		// Get role config to find which magazine types this role uses
+		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
+		if (!rolesConfig)
+			return;
+
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+		if (!roleConfig || !roleConfig.m_aMagazines)
+			return;
+
+		bool isAssistant = (roleConfig.m_SlottingType == CRF_ESlotType.ASSISTANT || roleConfig.m_SlottingType == CRF_ESlotType.SPECIALTY_ASSISTANT);
+
+		// Get player's faction and load gearscript config
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return;
+
+		string factionKey = playerGroup.GetFaction().GetFactionKey();
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
+		));
+		if (!gearConfig)
+			return;
+
+		// Iterate through the role's magazine types, skip pistol (secondary)
+		foreach (CRF_EGearscriptMagazines magType : roleConfig.m_aMagazines)
+		{
+			if (magType == CRF_EGearscriptMagazines.PISTOL_MAG)
+				continue;
+
+			array<ref CRF_Magazine_Class> magArray;
+
+			switch (magType)
+			{
+				case CRF_EGearscriptMagazines.RIFLE_MAG:
+					if (gearConfig.m_Rifles && !gearConfig.m_Rifles.IsEmpty())
+						magArray = gearConfig.m_Rifles[0].m_MagazineArray;
+					break;
+
+				case CRF_EGearscriptMagazines.RIFLEUGL_MAG:
+					if (gearConfig.m_RifleUGLs && !gearConfig.m_RifleUGLs.IsEmpty())
+						magArray = gearConfig.m_RifleUGLs[0].m_MagazineArray;
+					break;
+
+				case CRF_EGearscriptMagazines.CARBINE_MAG:
+					if (gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty())
+						magArray = gearConfig.m_Carbines[0].m_MagazineArray;
+					break;
+
+				case CRF_EGearscriptMagazines.SNIPER_MAG:
+					if (gearConfig.m_SNIPER && gearConfig.m_SNIPER.m_MagazineArray)
+						magArray = gearConfig.m_SNIPER.m_MagazineArray;
+					break;
+
+				case CRF_EGearscriptMagazines.AR_MAG:
+					if (gearConfig.m_AR && gearConfig.m_AR.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_AR.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.MMG_MAG:
+					if (gearConfig.m_MMG && gearConfig.m_MMG.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_MMG.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.AT_MAG:
+					if (gearConfig.m_AT && gearConfig.m_AT.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_AT.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.MAT_MAG:
+					if (gearConfig.m_MAT && gearConfig.m_MAT.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_MAT.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.HAT_MAG:
+					if (gearConfig.m_HAT && gearConfig.m_HAT.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_HAT.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.AA_MAG:
+					if (gearConfig.m_AA && gearConfig.m_AA.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_AA.m_MagazineArray, isAssistant);
+					break;
+
+				case CRF_EGearscriptMagazines.HMG_MAG:
+					if (gearConfig.m_HMG && gearConfig.m_HMG.m_MagazineArray)
+						magArray = CRF_WeaponHelper.ConvertSpecMagArrayIntoMagArray(gearConfig.m_HMG.m_MagazineArray, isAssistant);
+					break;
+			}
+
+			if (!magArray)
+				continue;
+
+			foreach (CRF_Magazine_Class mag : magArray)
+			{
+				for (int i = 0; i < mag.m_MagazineCount; i++)
+					CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, mag.m_Magazine, true);
+			}
+		}
 	}
 
 	/**
