@@ -71,13 +71,7 @@ class CRF_VAAR_ShotEvent : Managed
     }
 }
 
-//! param[in] RplID target ID
-//! param[in] RplID killer ID
-//! param[in] string target name
-//! param[in] string killer name
-//! param[in] string killer weapon
-//! param[in] string target faction
-//! param[in] string killer faction
+// This reperesents a kill
 [BaseContainerProps()]
 class CRF_VAAR_KillEvent : Managed
 {
