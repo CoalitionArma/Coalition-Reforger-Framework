@@ -274,6 +274,12 @@ modded class SCR_VONController
 		if (!m_Camera)
 			return;
 		
+		if (!m_bFirstConnect)
+		{
+			WriteJSON(true, true);
+			m_bFirstConnect = true;
+		}
+		
 		m_PlayerIdTemp.Clear();
 		m_PlayerManager.GetPlayers(m_PlayerIdTemp);
 		
