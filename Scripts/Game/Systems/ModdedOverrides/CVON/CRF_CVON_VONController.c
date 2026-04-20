@@ -220,7 +220,7 @@ modded class SCR_VONController
 				return;
 			
 			//Mutes spectator audio coming in if its from another player not in our faction
-			if (m_RespawnManager)
+			if (m_RespawnManager && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			{
 				if (m_RespawnManager.m_bCurrentRespawnEnabled && m_Gamemode.m_bSeperateSpectatorsByFaction)
 				{
