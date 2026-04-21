@@ -1,0 +1,51 @@
+ScaleWidgetClass {
+ Name "GameTimer"
+ Slot FrameWidgetSlot "{69270B48BA188F65}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 175
+  OffsetRight -175
+  SizeY 25
+  OffsetBottom -25
+ }
+ {
+  HorizontalLayoutWidgetClass "{69270B48A6560DCB}" {
+   Name "TimerHorizontalLayout"
+   Slot AlignableSlot "{69270B48A6560DE6}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    ImageWidgetClass "{69270B483073A823}" {
+     Name "TimerImage"
+     Slot LayoutSlot "{69270B485E4A1ED8}" {
+      Padding 1 1 1 1
+      FillWeight 0.2
+     }
+     Texture "{0B2A63596D36430B}UI/Images/LobbyImages/Timer.edds"
+     Size 20 20
+     "Shadow Offset" 0.5 0.5
+    }
+    TextWidgetClass "{69270B48AD9B9038}" {
+     Name "TimerText"
+     Slot LayoutSlot "{69270B485E4A1E82}" {
+      Padding 1 1 1 1
+      SizeMode Fill
+     }
+     Color 0.928 0.862 0.862 1
+     Text "Game not live"
+     "Font Size" 16
+     "Min Font Size" 14
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{612734D416229D9E}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+      ShadowSize 2
+      ShadowOffset 0.8 0.8
+     }
+    }
+   }
+  }
+ }
+}

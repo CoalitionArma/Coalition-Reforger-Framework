@@ -1,0 +1,156 @@
+ScaleWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{69270B4DCA04245C}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 200
+  OffsetRight -200
+  SizeY 600
+  OffsetBottom -600
+ }
+ {
+  FrameWidgetClass "{69270B4D90C8B094}" {
+   Name "MissionDescription"
+   Slot AlignableSlot "{69270B4D90CF11E6}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{69270B4D90C8B096}" {
+     Name "MissionBG"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.5
+     Color 0.1758 0.1734 0.1734 0.784
+    }
+    OverlayWidgetClass "{69270B4D90C8B091}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "DescriptionList"
+     Slot FrameWidgetSlot "{62F0125F18C6CEA2}" {
+      Anchor 0.008 0.074 0.992 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    ImageWidgetClass "{69270B4D90C8B090}" {
+     Name "MissionHeader"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 0.037
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.017 0.017 0.017 1
+    }
+    TextWidgetClass "{69270B4D90C8B093}" {
+     Name "MissionText"
+     Slot FrameWidgetSlot "{62F01245493B2589}" {
+      Anchor 0 0 1 0.037
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Text "Briefing"
+     "Font Size" 36
+     "Min Font Size" 4
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{69270B4D90C8B421}" {
+     Name "BackButton"
+     Slot FrameWidgetSlot "{62F06D427631DA08}" {
+      Anchor 0.005 0.04 0.995 0.068
+      PositionX 125.4
+      PositionY 0
+      OffsetTop 0
+      SizeX -125.4
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.105 0.105 0.105 0
+     components {
+      SCR_ButtonTextComponent "{62F092D5D1C77526}" {
+       m_BackgroundDefault 0.084 0.084 0.084 0.1
+       m_BackgroundHovered 0.337 0.337 0.337 0.3
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{69270B4D90C8B420}" {
+       Name "BackText"
+       Slot ButtonWidgetSlot "{62F06D4306D37B6C}" {
+        HorizontalAlign 2
+        VerticalAlign 3
+       }
+       Text "<- Back"
+       "Font Size" 36
+       "Min Font Size" 4
+      }
+     }
+    }
+    ScrollLayoutWidgetClass "{69270B4D90CF1156}" {
+     Name "ScrollLayout"
+     Slot FrameWidgetSlot "{64635E2E391DE034}" {
+      Anchor 0.008 0.074 0.992 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      VerticalLayoutWidgetClass "{69270B4D90CF1159}" {
+       Name "VerticalLayout"
+       Slot AlignableSlot "{64635E2C07810990}" {
+       }
+       {
+        RichTextWidgetClass "{69270B4D90CF1158}" {
+         Name "DescriptionInfo"
+         Slot LayoutSlot "{66384140FD489F3A}" {
+         }
+         Text ""
+         Wrap 1
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

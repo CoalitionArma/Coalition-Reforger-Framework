@@ -1,0 +1,11 @@
+ScaleWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{69270B46233A3596}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 300
+  OffsetRight -300
+  SizeY 1080
+  OffsetBottom -1080
+ }
+}

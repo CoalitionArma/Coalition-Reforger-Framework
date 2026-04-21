@@ -1,0 +1,266 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  BlurWidgetClass "{69270A1A3BC42AEA}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{62993E1169649355}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" -5
+   "Inherit Color" 1
+   Intensity 0.5
+  }
+  FrameWidgetClass "{69270A188E892F05}" : "{D89BBA18F99053D6}UI/layouts/HUD/Chat/ChatHud.layout" {
+   Name "Chat"
+   Slot FrameWidgetSlot "{5D4881250D202DF3}" {
+   }
+  }
+  FrameWidgetClass "{69270A1A20F20DE5}" {
+   Name "InitalMenu"
+   Slot FrameWidgetSlot "{6539136FAE0907B3}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -960
+    OffsetLeft -960
+    PositionY -540
+    OffsetTop -540
+    SizeX 1920
+    OffsetRight -960
+    SizeY 1080
+    OffsetBottom -540
+   }
+   {
+    SmartPanelWidgetClass "{69270A1E48593731}" {
+     Name "Background"
+     Slot FrameWidgetSlot "{69270A1926777B9F}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 75
+      PositionY 0
+      OffsetTop 50
+      SizeX 2.688
+      OffsetRight 75
+      SizeY -2.627
+      OffsetBottom 50
+     }
+     Color 0.0331 0.0331 0.0331 0.8562
+     style rounded_6px
+    }
+    FrameWidgetClass "{69270A1D90B0738C}" {
+     Name "Frame"
+     Slot FrameWidgetSlot "{69270A1D90B07395}" {
+      Anchor 0 0 1 1
+      PositionX 102.351
+      OffsetLeft 100
+      PositionY 575.022
+      OffsetTop 575
+      SizeX -202.585
+      OffsetRight 100
+      SizeY -657.015
+      OffsetBottom 80
+     }
+     {
+      SmartPanelWidgetClass "{69270A1926778104}" {
+       Name "Background"
+       Slot FrameWidgetSlot "{69270A1926777B9F}" {
+        Anchor 0 0 1 1
+        PositionX 100.304
+        PositionY 510.304
+        SizeX -198.954
+        OffsetRight 0
+        SizeY -588.836
+        OffsetBottom 0
+       }
+       Color 0.0319 0.0319 0.0319 0.8562
+       style rounded_6px
+      }
+      HorizontalLayoutWidgetClass "{69270A1DB01B7071}" {
+       Name "HorizontalLayout"
+       Slot FrameWidgetSlot "{69270A1DB01B6F80}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -1620
+        OffsetRight 0
+        SizeY -375
+        OffsetBottom 0
+       }
+       {
+        ButtonWidgetClass "{69270A18FD4701AB}" {
+         Name "SlottingButton"
+         Slot LayoutSlot {
+          Padding 20 20 20 20
+          SizeMode Fill
+          FillWeight 16
+         }
+         Color 0.3231 0 0 1
+         components {
+          SCR_ButtonComponent "{69270A1E06772FAB}" {
+          }
+         }
+         style blank
+         {
+          FrameWidgetClass "{69270A1FED884956}" {
+           Name "Frame"
+           Slot ButtonWidgetSlot "{69270A1FED884973}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           "Inherit Color" 1
+           {
+            SmartPanelWidgetClass "{69270A180BBF2871}" {
+             Name "SmartPanel"
+             Slot FrameWidgetSlot "{69270A1FE1DFAD97}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX -863.015
+              OffsetRight 0
+              SizeY -671.674
+              OffsetBottom 0
+             }
+             Color 1 1 1 0.7
+             "Inherit Color" 1
+             style rounded_12px
+            }
+            ImageWidgetClass "{69270A1F1862038E}" {
+             Name "Image"
+             Slot FrameWidgetSlot "{69270A1F18620397}" {
+              Anchor 0.4 0 0.6 0.5
+              PositionX -120.727
+              PositionY 0
+              OffsetTop 0
+              SizeX 241.455
+              OffsetRight 0
+              SizeY -0
+              OffsetBottom 0
+             }
+             Texture "{19769D9272BEC68A}UI/Images/Coalition/coalitionlarge.edds"
+             Size 1080 1080
+            }
+            RichTextWidgetClass "{69270A1F6A8984A5}" {
+             Name "RichText"
+             Slot FrameWidgetSlot "{69270A1F6A8984CB}" {
+              Anchor 0.1 0.5 0.9 1
+              PositionX -12.591
+              PositionY -24.965
+              SizeX 22.19
+              OffsetRight 0
+              SizeY -14.896
+              OffsetBottom 0
+             }
+             Color 0.0097 0.0097 0.0097 1
+             Text "TO SLOTTING SCREEN"
+             "Font Size" 48
+             "Min Font Size" 48
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{69270A1EC810AFF1}" {
+              Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+              Bold 1
+             }
+            }
+           }
+          }
+         }
+        }
+        ButtonWidgetClass "{69270A1D02B81C68}" {
+         Name "SpectatorButton"
+         Slot LayoutSlot "{69270A1D02B81D38}" {
+          Padding 0 20 20 20
+          SizeMode Fill
+          FillWeight 6
+         }
+         Color 0.1537 0 0.3005 1
+         components {
+          SCR_ButtonComponent "{69270A1E06772FAB}" {
+          }
+         }
+         style blank
+         {
+          FrameWidgetClass "{69270A1D02B81C6F}" {
+           Name "Frame"
+           Slot ButtonWidgetSlot "{69270A1FED884973}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           "Inherit Color" 1
+           {
+            SmartPanelWidgetClass "{69270A1D02B81C6E}" {
+             Name "SmartPanel"
+             Slot FrameWidgetSlot "{69270A1FE1DFAD97}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX -863.015
+              OffsetRight 0
+              SizeY -671.674
+              OffsetBottom 0
+             }
+             Color 1 1 1 0.7
+             "Inherit Color" 1
+             style rounded_12px
+            }
+            ImageWidgetClass "{69270A1D02B9FE70}" {
+             Name "Image"
+             Slot FrameWidgetSlot "{69270A1F18620397}" {
+              Anchor 0.3 0 0.7 0.5
+              PositionX -48.151
+              PositionY 0
+              OffsetTop 0
+              SizeX 96.301
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.0097 0.0097 0.0097 1
+             Texture "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
+             Size 1080 1080
+            }
+            RichTextWidgetClass "{69270A1D02B9FE73}" {
+             Name "RichText"
+             Slot FrameWidgetSlot "{69270A1F6A8984CB}" {
+              Anchor 0.1 0.5 0.9 1
+              PositionX -12.591
+              PositionY -24.965
+              SizeX 22.19
+              OffsetRight 0
+              SizeY -14.896
+              OffsetBottom 0
+             }
+             Color 0.0097 0.0097 0.0097 1
+             Text "TO SPECTATOR"
+             "Font Size" 48
+             "Min Font Size" 48
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{69270A1EC810AFF1}" {
+              Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+              Bold 1
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

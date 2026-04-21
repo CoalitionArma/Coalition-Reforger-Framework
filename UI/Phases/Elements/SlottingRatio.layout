@@ -1,0 +1,282 @@
+ScaleWidgetClass {
+ Name "SlottingRatio"
+ Slot FrameWidgetSlot "{69270A0DEAA14729}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 250
+  OffsetRight -250
+  SizeY 75
+  OffsetBottom -75
+ }
+ {
+  FrameWidgetClass "{69270A0E81F2DCB6}" {
+   Name "RatioCalc"
+   Slot AlignableSlot "{69270A0E6EA49D83}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    VerticalLayoutWidgetClass "{69270AE693BE6D9E}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{69270AE693BE6D6A}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -150
+      OffsetRight 0
+      SizeY -45
+      OffsetBottom 0
+     }
+     {
+      FrameWidgetClass "{69270AE6823B195A}" {
+       Name "Frame0"
+       Slot LayoutSlot "{69270AE6823B1925}" {
+        SizeMode Fill
+        FillWeight 0.5
+       }
+       {
+        HorizontalLayoutWidgetClass "{69270AE61048D676}" {
+         Name "HorizontalLayout0"
+         Slot FrameWidgetSlot "{69270AE61048D645}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 12
+          PositionY 0
+          OffsetTop 12
+          SizeX -150
+          OffsetRight 12
+          SizeY -7.5
+          OffsetBottom 0
+         }
+         {
+          FrameWidgetClass "{69270AE61E7446EC}" {
+           Name "Frame2"
+           Slot LayoutSlot "{69270AE61E7446F7}" {
+            SizeMode Fill
+           }
+           {
+            ImageWidgetClass "{69270A0E81F2DCB3}" {
+             Name "RatioBox1Image"
+             Slot FrameWidgetSlot "{62F20570E9C794B2}" {
+              Anchor 0 0 1 1
+              PositionX 8.438
+              PositionY 16.013
+              SizeX -47.25
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Color 0 0.007 1 1
+             Texture "{E12BB5C5BD00269E}UI/Textures/Common/gradientTexture_Dither_right_512.edds"
+             Size 512 512
+            }
+            TextWidgetClass "{69270A0E81F2B020}" {
+             Name "RatioBox1Text"
+             Slot FrameWidgetSlot "{62F20565E7929260}" {
+              Anchor 0 0 1 1
+              PositionX 8.438
+              PositionY 16.013
+              SizeX -47.25
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Text "BLU"
+             "Font Size" 200
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+          FrameWidgetClass "{69270AE61D79AD68}" {
+           Name "Frame1"
+           Slot LayoutSlot "{69270AE61D79AD71}" {
+            Padding 2 0 1 0
+            SizeMode Fill
+           }
+           {
+            ImageWidgetClass "{69270A0E81F26534}" {
+             Name "RatioBox2IntImage"
+             Slot FrameWidgetSlot "{62F20570E9C794B2}" {
+              Anchor 0 0 1 1
+              PositionX 31.312
+              PositionY 16.013
+              SizeX -55.375
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Color 0.012 0.012 0.012 1
+            }
+            TextWidgetClass "{69270A0E81F211D0}" {
+             Name "RatioBox2"
+             Slot FrameWidgetSlot "{62F205706EF34066}" {
+              Anchor 0 0 1 1
+              PositionX 31.312
+              PositionY 16.013
+              SizeX -55.375
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Text "3"
+             "Font Size" 200
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+          FrameWidgetClass "{69270AE61C215185}" {
+           Name "Frame0"
+           Slot LayoutSlot "{69270AE61C215192}" {
+            Padding 1 0 2 0
+            SizeMode Fill
+           }
+           {
+            ImageWidgetClass "{69270A0E81F211D1}" {
+             Name "RatioBox1IntImage"
+             Slot FrameWidgetSlot "{69270AE64FEBDB97}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 37.5
+              OffsetRight 0
+              SizeY -7.5
+              OffsetBottom 0
+             }
+             Color 0.012 0.012 0.012 1
+            }
+            TextWidgetClass "{69270A0E81F1F267}" {
+             Name "RatioBox1"
+             Slot FrameWidgetSlot "{62F205706EF34066}" {
+              Anchor 0 0 1 1
+              PositionX 23.75
+              PositionY 16.013
+              SizeX -55.25
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Text "3"
+             "Font Size" 200
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+          FrameWidgetClass "{69270AE61F901001}" {
+           Name "Frame3"
+           Slot LayoutSlot "{69270AE61F9011EA}" {
+            SizeMode Fill
+           }
+           {
+            ImageWidgetClass "{69270A0E81F2DCB1}" {
+             Name "RatioBox2Image"
+             Slot FrameWidgetSlot "{62F20570E9C794B2}" {
+              Anchor 0 0 1 1
+              PositionX 38.625
+              PositionY 16.013
+              SizeX -47.188
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Color 0.502 0 0 1
+             Texture "{CB166C32C066B6D2}UI/Textures/Common/gradientTexture_Dither_left_512.edds"
+             Size 512 512
+            }
+            TextWidgetClass "{69270A0E81F2DCB0}" {
+             Name "RatioBox2Text"
+             Slot FrameWidgetSlot "{62F20565E7929260}" {
+              Anchor 0 0 1 1
+              PositionX 38.625
+              PositionY 16.013
+              SizeX -47.188
+              OffsetRight 0
+              SizeY -27.6
+              OffsetBottom 0
+             }
+             Text "OPF"
+             "Font Size" 200
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      FrameWidgetClass "{69270AE6835A72AB}" {
+       Name "Frame1"
+       Slot LayoutSlot "{69270AE6835A72B7}" {
+        SizeMode Fill
+        FillWeight 0.5
+       }
+       {
+        HorizontalLayoutWidgetClass "{69270AEE2719FF5D}" {
+         Name "HorizontalLayout0"
+         Slot FrameWidgetSlot "{69270AEE2719FF2B}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX -150
+          OffsetRight 0
+          SizeY -7.5
+          OffsetBottom 0
+         }
+         {
+          FrameWidgetClass "{69270AEE21B87AD9}" {
+           Name "Frame0"
+           Slot LayoutSlot "{69270AEE21B87AA7}" {
+            Padding 85 2 85 10
+            SizeMode Fill
+           }
+           {
+            ImageWidgetClass "{69270A0E81F2B021}" {
+             Name "FinalImage"
+             Slot FrameWidgetSlot "{62F20570E9C794B2}" {
+              Anchor 0 0 1 1
+              PositionX 100
+              PositionY 7.5
+              SizeX -200
+              OffsetRight 0
+              SizeY -18.75
+              OffsetBottom 0
+             }
+             Color 0.012 0.012 0.012 1
+            }
+            TextWidgetClass "{69270A0E81F2653B}" {
+             Name "Final"
+             Slot FrameWidgetSlot "{62F20565E7929260}" {
+              Anchor 0 0 1 1
+              PositionX 100
+              PositionY 7.5
+              SizeX -200
+              OffsetRight 0
+              SizeY -18.75
+              OffsetBottom 0
+             }
+             Text "54 : 27"
+             "Font Size" 200
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

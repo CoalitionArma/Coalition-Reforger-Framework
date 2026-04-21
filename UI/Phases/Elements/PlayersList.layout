@@ -1,0 +1,64 @@
+ScaleWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{69270A872ED75885}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 215
+  OffsetRight -215
+  SizeY 900
+  OffsetBottom -900
+ }
+ {
+  FrameWidgetClass "{69270A88329FD9D4}" {
+   Name "Frame0"
+   Slot AlignableSlot "{69270A88329FD9E2}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    VerticalLayoutWidgetClass "{69270A8838B06EC2}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{69270A8838B06ED9}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -115
+      OffsetRight 0
+      SizeY -870
+      OffsetBottom 0
+     }
+     {
+      HorizontalLayoutWidgetClass "{69270A885CCC4B88}" {
+       Name "HorizontalLayout0"
+       Slot LayoutSlot "{69270A885CCC4BA2}" {
+        Padding 6 6 6 0
+        SizeMode Fill
+        FillWeight 0.032
+       }
+      }
+      OverlayWidgetClass "{69270A8843449412}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBox0"
+       Slot LayoutSlot "{69270A884344942C}" {
+        SizeMode Fill
+       }
+       {
+        ScrollLayoutWidgetClass "{56691148E692435A}" {
+         Prefab "{56691148E692435A}"
+         Slot OverlayWidgetSlot "{56691148E692437F}" {
+          Padding 6 0 6 6
+         }
+        }
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

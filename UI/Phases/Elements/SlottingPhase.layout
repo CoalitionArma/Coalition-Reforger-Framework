@@ -1,0 +1,134 @@
+ScaleWidgetClass {
+ Name "SlottingPhase"
+ Slot FrameWidgetSlot "{69270A9E86337E55}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 250
+  OffsetRight -250
+  SizeY 35
+  OffsetBottom -35
+ }
+ {
+  FrameWidgetClass "{69270A9EA72F176D}" {
+   Name "Frame0"
+   Slot AlignableSlot "{69270A9EA72F177B}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    HorizontalLayoutWidgetClass "{69270A9ED04E1556}" {
+     Name "HorizontalLayout0"
+     Slot FrameWidgetSlot "{69270A9ED04E1561}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -150
+      OffsetRight 0
+      SizeY -5
+      OffsetBottom 0
+     }
+     {
+      FrameWidgetClass "{69270A9EA9480002}" {
+       Name "TextFrame"
+       Slot LayoutSlot {
+        Padding 2 2 2 2
+        SizeMode Fill
+        FillWeight 1.15
+       }
+       {
+        PanelWidgetClass "{69270A9EA948000D}" {
+         Name "SlotPhaseBorder"
+         Slot FrameWidgetSlot "{63161CD6956A1DB3}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX -120.224
+          OffsetRight 0
+          SizeY -22.238
+          OffsetBottom 0
+         }
+         "Z Order" 1
+         Color 0.429 0.018 0.002 1
+         style outline_2px
+        }
+        TextWidgetClass "{69270A9EA948000F}" {
+         Name "CurrentSlotPhase"
+         Slot FrameWidgetSlot "{63161CD681F23484}" {
+          Anchor 0 0 1 1
+          PositionX 4.096
+          OffsetLeft 4.096
+          PositionY 5
+          OffsetTop 5
+          SizeX -8.219
+          OffsetRight 4.123
+          SizeY -10
+          OffsetBottom 5
+         }
+         Text "Leaders and Medics"
+         "Font Size" 45
+         "Min Font Size" 11
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+      OverlayWidgetClass "{69270A9EA9480128}" {
+       Name "SlottingPhases"
+       Slot LayoutSlot {
+        Padding 2 2 2 2
+        SizeMode Fill
+        FillWeight 0.25
+       }
+       {
+        ImageWidgetClass "{69270A9EA948012B}" {
+         Name "ButtonBG"
+         Slot OverlayWidgetSlot "{63122E8A2338834F}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.042 0.042 0.042 1
+        }
+        ButtonWidgetClass "{69270A9EA948012A}" {
+         Name "SlotPhaseButton"
+         Slot OverlayWidgetSlot "{63122E8846A5D925}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         components {
+          ButtonComponent "{63122E888C9094DA}" {
+           m_ColorButtonDefault 0.042 0.042 0.042 0
+           m_ColorButtonFocused 1 1 1 0
+           m_ColorButtonHovered 1 0.133 0.133 0.05
+           m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+          }
+          SCR_ButtonTextComponent "{63122E8889EFBCE4}" {
+           m_BackgroundHovered 1 0.133 0.133 0.3
+           m_BackgroundSelected 0.76 0.392 0.08 0.3
+           m_sTextWidgetName ""
+           m_TextToggled 0.761 0.386 0.078 1
+          }
+         }
+         {
+          ImageWidgetClass "{69270A9EA9480135}" {
+           Name "AdvanceImage"
+           Slot ButtonWidgetSlot "{63122E8A233883FB}" {
+            Padding 2 0 0 0
+           }
+           Color 0.198 0.012 0.012 1
+           Texture "{BBBA870598CED29B}UI/Textures/PlayMenu/ArrowLeft_UI.edds"
+           Size 15 15
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

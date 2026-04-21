@@ -1,0 +1,157 @@
+ScaleWidgetClass {
+ Name "PlayersTimeWeather"
+ Slot FrameWidgetSlot "{69270A82EEFF0353}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 120
+  OffsetRight -120
+  SizeY 140
+  OffsetBottom -140
+ }
+ {
+  FrameWidgetClass "{69270A824D0CDA5F}" {
+   Name "Frame0"
+   Slot AlignableSlot "{69270A824D0CDA6A}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    VerticalLayoutWidgetClass "{69270A8190BB7DE2}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{69270A8190BB7DFE}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY -120
+      OffsetBottom 0
+     }
+     {
+      FrameWidgetClass "{69270A819DE7AF48}" {
+       Name "Frame0"
+       Slot LayoutSlot "{69270A819DE7AF6D}" {
+        Padding 3 9 3 3
+        SizeMode Fill
+       }
+       {
+        ImageWidgetClass "{69270A8184727E39}" {
+         Name "PlayersTextBG"
+         Slot FrameWidgetSlot "{62F01244212F9275}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 33
+          SizeX 72
+          OffsetRight 0
+          SizeY -131
+          OffsetBottom 0
+         }
+         Clipping Ancestor
+         Color 0.008 0.012 0.016 1
+        }
+        TextWidgetClass "{69270A8184727FFB}" {
+         Name "PlayersText"
+         Slot FrameWidgetSlot "{62F20572D860F073}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 33
+          SizeX 72
+          OffsetRight 0
+          SizeY -131
+          OffsetBottom 0
+         }
+         Clipping Ancestor
+         Text "Players: 84"
+         "Font Size" 16
+         "Min Font Size" 4
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+      FrameWidgetClass "{69270A819F2C4787}" {
+       Name "Frame1"
+       Slot LayoutSlot "{69270A819F2C479F}" {
+        Padding 3 0 3 3
+        SizeMode Fill
+       }
+       {
+        ImageWidgetClass "{69270A8187B1A560}" {
+         Name "TimeBG"
+         Slot FrameWidgetSlot "{62F01244212F9275}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 35
+          SizeX 72
+          OffsetRight 0
+          SizeY -70
+          OffsetBottom 0
+         }
+         Color 0.008 0.012 0.016 1
+        }
+        TextWidgetClass "{69270A8187B1A519}" {
+         Name "TimeText"
+         Slot FrameWidgetSlot "{62F0124451778FA1}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 35
+          SizeX 72
+          OffsetRight 0
+          SizeY -70
+          OffsetBottom 0
+         }
+         Text "Time: 19:27"
+         "Font Size" 16
+         "Min Font Size" 4
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+      FrameWidgetClass "{69270A819829D39A}" {
+       Name "Frame2"
+       Slot LayoutSlot "{69270A819829D3B0}" {
+        Padding 3 0 3 9
+        SizeMode Fill
+       }
+       {
+        ImageWidgetClass "{69270A8182ADE636}" {
+         Name "WeatherBG"
+         Slot FrameWidgetSlot "{62F01244212F9275}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 67.5
+          SizeX 72
+          OffsetRight 0
+          SizeY -67.5
+          OffsetBottom 0
+         }
+         Color 0.008 0.012 0.016 1
+        }
+        TextWidgetClass "{69270A8182ADE784}" {
+         Name "WeatherText"
+         Slot FrameWidgetSlot "{62F0124451778FA1}" {
+          Anchor 0 0 1 1
+          PositionX -90
+          PositionY 67.5
+          SizeX 72
+          OffsetRight 0
+          SizeY -67.5
+          OffsetBottom 0
+         }
+         Text "Weather: Rainy"
+         "Font Size" 16
+         "Min Font Size" 4
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
