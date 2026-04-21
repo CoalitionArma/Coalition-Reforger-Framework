@@ -1,0 +1,25 @@
+$grp CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 2635.358 44.063 4317.965
+  m_sCallsignOfGroupToSpawn "1PLT"
+ }
+ {
+  coords 2626.766 43.661 4316.682
+  m_sCallsignOfGroupToSpawn "LOGI"
+ }
+ {
+  coords 2635.116 44.207 4305.261
+ }
+ {
+  coords 2623.825 43.631 4306.553
+  m_sCallsignOfGroupToSpawn "1-2"
+ }
+ {
+  coords 2635.803 44.673 4293.44
+  m_sCallsignOfGroupToSpawn "1-3"
+ }
+ {
+  coords 2621.822 43.905 4294.679
+  m_sCallsignOfGroupToSpawn "1-4"
+ }
+}
