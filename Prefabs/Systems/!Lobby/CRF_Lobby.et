@@ -90,9 +90,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/!Core/CRF_PlayerController.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
- m_aDisabledResourceTypes {
-  SUPPLIES
- }
  m_eGME_GlobalAISkill VETERAN
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{632771FB5C619E1C}" {
