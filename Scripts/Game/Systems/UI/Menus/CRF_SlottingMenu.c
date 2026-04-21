@@ -843,14 +843,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				
 				// Track dead slots but don't display them
 				if (slotData.GetIsDeadSlot())
-				{
 					deadPlayersInGroup++;
-					continue;
-				}
 				
-				// Skip dead empty slots
-				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
-					continue;
+				// I STG if I get rid of this just for this to be readded again in another refactor Im going to lose it
+//				// Skip dead empty slots
+//				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+//					continue;
 				
 				// Add slot to UI
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
