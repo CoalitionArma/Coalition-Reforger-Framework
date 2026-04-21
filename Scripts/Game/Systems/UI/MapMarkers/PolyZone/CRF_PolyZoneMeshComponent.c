@@ -3,8 +3,12 @@ class CRF_PolyZoneMeshComponentClass : ScriptComponentClass
 
 class CRF_PolyZoneMeshComponent : ScriptComponent
 {
+	[Attribute("true", category: "Virtual Area")]
+	protected bool m_bFactionMeshCheck;
+	
 	[Attribute("10", category: "Virtual Area")]
 	protected float m_fHeight;
+	
 	[Attribute("10", category: "Virtual Area")]
 	protected float m_fUndergroundHeight;
 	
@@ -15,20 +19,23 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 	protected bool m_bStretchMaterial;
 	
 	ShapeEntity m_eShapeEntity;
-	
+
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
-	{
-		
-		SetEventMask(owner, EntityEvent.INIT);
-	}
-	
-	override void EOnInit(IEntity owner)
 	{
 		m_eShapeEntity = ShapeEntity.Cast(owner.GetParent());
 		GenerateAreaMesh();
+		
+		if (m_bFactionMeshCheck)
+		{
+			CRF_PolyZone polyZone = CRF_PolyZone.Cast(m_eShapeEntity.FindComponent(CRF_PolyZone));
+			if (polyZone && GetGame().InPlayMode())
+				GetGame().GetCallqueue().CallLater(polyZone.RegisterMeshComp, 1000, false, this); //Tried a basic .GetCallqueue().Call(), but it needs more of a delay for the player controller to init
+		};
 	}
 	
-	void GenerateAreaMesh()
+	//------------------------------------------------------------------------------------------------
+	void GenerateAreaMesh(bool visibility = true)
 	{	
 		IEntity owner = GetOwner();
 		
@@ -43,7 +50,11 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 			positions[i] = owner.CoordToLocal(worldPos);
 		}
 		
-		Resource res = SCR_Shape.CreateAreaMesh(positions, m_fHeight + m_fUndergroundHeight, m_Material, m_bStretchMaterial);
+		ResourceName meshMat = m_Material;
+		if (!visibility)
+			meshMat = "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat";
+		
+		Resource res = SCR_Shape.CreateAreaMesh(positions, m_fHeight + m_fUndergroundHeight, meshMat, m_bStretchMaterial);
 		
 		if(!res)
 			return;
@@ -55,8 +66,9 @@ class CRF_PolyZoneMeshComponent : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	#ifdef WORKBENCH
-	//~ Makes sure mesh area is generated at the correct position in workbench
+	//! Makes sure mesh area is generated at the correct position in workbench
 	override void _WB_SetTransform(IEntity owner, inout vector mat[4], IEntitySource src)
 	{
 		GenerateAreaMesh();

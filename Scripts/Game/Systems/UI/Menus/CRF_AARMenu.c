@@ -109,6 +109,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		// Initialize back button
 		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
 		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
 		
 		// Initialize mission description list
 		m_cMissionDescriptionListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("DescriptionList")).FindHandler(SCR_ListBoxComponent));
@@ -451,6 +452,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Reset back button
 		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
 		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 		backButton.m_OnClicked.Clear();
 		
@@ -488,6 +490,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Show back button
 		m_wBackButton.SetOpacity(1);
+		m_wBackButton.SetEnabled(true);
 		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 		backButton.m_OnClicked.Insert(DescriptionInit);
 		
@@ -520,10 +523,10 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots by faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		foreach (int slotId, CRF_SlotData slotData : slotMap)
 		{
 			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
@@ -583,7 +586,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
@@ -605,7 +608,7 @@ class CRF_AARMenu: ChimeraMenuBase
 			SetGroupVisuals(group, groupIndex);
 			
 			// Process each slot in the group
-			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotData slotData : slotMap)
 			{	
 				// Skip slots not in this group or faction
 				if (!IsSlotInGroupAndFaction(slotData, group))
@@ -629,7 +632,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	/**
 	 * Check if a slot is in the specified group and faction
 	 */
-	protected bool IsSlotInGroupAndFaction(CRF_SlotDataContainer slotData, SCR_AIGroup group)
+	protected bool IsSlotInGroupAndFaction(CRF_SlotData slotData, SCR_AIGroup group)
 	{
 		if (slotData.GetSlotCurrentGroup() != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
 			|| slotData.GetIsLockedSlot() 
@@ -659,7 +662,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	/**
 	 * Set visual properties for a slot in the list
 	 */
-	protected void SetSlotVisuals(int slotIndex, CRF_SlotDataContainer slotData)
+	protected void SetSlotVisuals(int slotIndex, CRF_SlotData slotData)
 	{
 		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		

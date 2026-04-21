@@ -9,9 +9,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	// Time it takes for players to Init
-	static const int PLAYER_INITILIZATION_TIME = 250;
-	
 	// UI and Display
 	string m_sHintText = "Type Here";      // Text displayed for hints to player
 	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
@@ -42,8 +39,14 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_PlayerRplToAuthorityManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		m_CameraManager = CRF_PlayerCameraManager.GetInstance();
 		
-		GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
-		GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitAudioLock);
+		// Only mute audio during briefing/slotting/AAR — explicit state check prevents muting JIP players
+		// joining mid-game, and avoids muting on null gamemode (timing edge case)
+		if (m_Gamemode && m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+		{
+			//GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitFPSLock);
+			GetGame().GetCallqueue().Call(CRF_PlayerSettingsManager.GetInstance().InitAudioLock);
+		}
+		
 		GetGame().GetCallqueue().Call(CRF_PlayerMenuManager.GetInstance().OpenCurrentStateMenu);
 	}
 	
@@ -64,7 +67,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (!playerCharacter || !m_CameraManager || !m_PlayerRplToAuthorityManager || !SCR_ChimeraCharacter.Cast(playerCharacter))
 		{
 			// Schedule another verification attempt
-			GetGame().GetCallqueue().CallLater(InitilizePlayerClient, PLAYER_INITILIZATION_TIME, false, playerCharID);
+			GetGame().GetCallqueue().Call(InitilizePlayerClient, playerCharID);
 			return;
 		};
 		
@@ -80,7 +83,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 				CRF_InitializationHelper.SetupRadioFrequency();
 		}; 
 		
-		if (playerCharacter.GetPrefabData().GetPrefabName() == CRF_EntityHelper.GetSpectatorResource())
+		if (CRF_EntityHelper.IsSpectator(playerCharacter))
 			InitilizeLocalSpectator(playerCharacter);
 		else
 			InitilizeLocalCharacter();

@@ -7,15 +7,24 @@ class CRF_MissionHelper {
 		//We are cooked
 		if (!respawnMan)
 			return "0 0 0";
-
+		
 		vector spawnPointLocation[4];
 		array<string> facKey = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
 		vector registeredPosition[4] = {"0 0 0", "0 0 0", "0 0 0", "0 0 0"};
 
 		foreach(int i, FactionKey factionKey : facKey)
 		{
-			respawnMan.FindSpawnPointLocation(factionKey, spawnPointLocation);
-			registeredPosition[i] = spawnPointLocation[3];
+			array<CRF_SpawnPointData> spawnPointDataArray = respawnMan.GetFactionSpawnpoints(factionKey);
+			if (spawnPointDataArray && !spawnPointDataArray.IsEmpty())
+			{
+				CRF_SpawnPointData spawnPointData = spawnPointDataArray.Get(0);
+			
+				if (spawnPointData.GetSpawnPointEntity() != RplId.Invalid())
+				{
+					CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()).GetWorldTransform(spawnPointLocation);
+					registeredPosition[i] = spawnPointLocation[3];
+				};
+			};
 		};
 
 		return ComputeAOCenter(registeredPosition);
@@ -43,7 +52,10 @@ class CRF_MissionHelper {
 		if (count == 0)
 			return "0 0 0";   // no data
 
-		return sum / count;
+		vector center = sum/count;
+		center[1] = center[1] + 225;
+		
+		return center;
 	}
 
 	//------------------------------------------------------------------------------------------------

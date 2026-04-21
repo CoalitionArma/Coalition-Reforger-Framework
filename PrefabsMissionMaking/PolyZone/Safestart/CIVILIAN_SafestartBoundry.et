@@ -25,6 +25,7 @@ PolylineShapeEntity {
    ID "65885ABE4C9EEBA5"
    coords 0 0 0
    m_MarkerColor 0.251 0 0.502 1
+   m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
    m_sQuadName "mine-single-2"
    m_fWorldSize 15
    m_sDescription "CIV Safe Start Area"

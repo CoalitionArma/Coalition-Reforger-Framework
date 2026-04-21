@@ -14,7 +14,7 @@ modded class SCR_DataCollectorComponent
 		return m_OnPlayerDamageReceived;
 	}
 	
-	override void OnPlayerAuditSuccess(int playerId)
+	protected override void OnPlayerAuditSuccess(int playerId)
 	{
 		//Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
 		//We create the player's PlayerData here
@@ -39,22 +39,38 @@ modded class SCR_DataCollectorComponent
 		return playerData;
 	}
 	
-	override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
+	protected override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
 	{
-		int playerId = requestComponent.GetPlayerId();
-		foreach (SCR_DataCollectorModule module : m_aModules)
-		{
-			module.OnPlayerSpawned(playerId, entity);
-		}
+		// Delegate to NotifyPlayerSpawned so that both the RequestSpawn pipeline and the
+		// SetInitialMainEntity fallback path use a single, consistent notification point.
+		NotifyPlayerSpawned(requestComponent.GetPlayerId(), entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Helper method for custom spawn systems that don't use the spawn request system
-	// Call this when spawning players through custom methods to ensure data collector modules are notified
+	// Notifies all data-collector modules that a playable entity has been spawned for a player.
+	// Called either from OnPlayerSpawnFinalize_S (RequestSpawn pipeline) or directly from
+	// CRF_GamemodeManager.InitilizePlayer (SetInitialMainEntity fallback path).
+	// Must never be called twice for the same spawn event — the caller is responsible for
+	// ensuring exactly one call reaches this method per spawn.
 	void NotifyPlayerSpawned(int playerId, IEntity entity)
 	{
 		if (!entity || playerId <= 0)
 			return;
+
+		// Skip spectator entities — they must never be fed into stat-tracking modules.
+		if (CRF_EntityHelper.IsSpectator(entity))
+			return;
+		
+		// Remove any stale invokers from the entity before registering new ones.
+		// We use CRF_CleanupInvokers (a thin public wrapper around the protected RemoveInvokers)
+		// rather than OnPlayerDisconnected because some modules (e.g. HealingItemsModule) override
+		// OnPlayerDisconnected to clear their internal entity-tracking map without calling
+		// RemoveInvokers. Those modules rely on the map being intact inside their own OnPlayerSpawned
+		// cleanup logic, so calling OnPlayerDisconnected first would break them.
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.CRF_CleanupInvokers(entity);
+		}
 		
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
@@ -74,8 +90,10 @@ modded class SCR_DataCollectorComponent
 		PlayerController playerController;
 		SCR_DataCollectorCommunicationComponent communicationComponent;
 
-		// Here we add to the faction the scores of all the players who haven't disconnected yet
-		SCR_ChimeraCharacter playerChimera;
+		// Here we add to the faction the scores of all the players who haven't disconnected yet.
+		// Use CRF_SlottingManager to resolve the player's combat faction from their slot so that
+		// spectators (whose controlled entity has faction "SPEC") are still attributed correctly.
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		Faction faction;
 
 		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
@@ -85,11 +103,17 @@ modded class SCR_DataCollectorComponent
 			// We update the duration of the session here because it should not be connected to any module
 			m_mPlayerData.Get(playerID).CalculateSessionDuration();
 
-			playerChimera = SCR_ChimeraCharacter.Cast(playerManager.GetPlayerControlledEntity(playerID));
-			if (!playerChimera)
-				continue;
+			// Prefer slot faction (correct even when player is in spectator);
+			// fall back to entity faction for unslotted players.
+			if (slottingManager)
+				faction = slottingManager.GetPlayerSlotFaction(playerID, true);
 
-			faction = playerChimera.GetFaction();
+			if (!faction)
+			{
+				SCR_ChimeraCharacter playerChimera = SCR_ChimeraCharacter.Cast(playerManager.GetPlayerControlledEntity(playerID));
+				if (playerChimera)
+					faction = playerChimera.GetFaction();
+			}
 
 			if (!faction)
 				continue;
@@ -145,25 +169,29 @@ modded class SCR_DataCollectorComponent
 		m_OnPlayerDamageReceived.Invoke(victimId, killerEntity, damageType);
 	}
 	
-	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	protected override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		int playerId = instigatorContextData.GetVictimPlayerID();
 		IEntity playerEntity = instigatorContextData.GetVictimEntity();
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		Instigator instigator = instigatorContextData.GetInstigator();
-		
+
+		// Route non-player victims (possessed AI) through the AI kill path instead.
+		// LogPlayerKill is intentionally placed AFTER this guard so it only fires
+		// for real player deaths, not AI entities.
+		if (playerId <= 0)
+		{
+			OnAIKilledCRF(playerEntity, killerEntity, instigator, instigatorContextData);
+			return;
+		}
+
 		// Make sure our logging manager instance is available
 		if (!LM)
 			LM = CRF_LoggingManager.GetInstance();
-		
+
 		// Logging player kill to file
 		if (LM)
 			LM.LogPlayerKill(instigatorContextData);
-		
-		if (instigatorContextData.GetVictimPlayerID() <= 0) {
-			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);
-			return;
-		}
 			
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
@@ -185,7 +213,7 @@ modded class SCR_DataCollectorComponent
 			m_OptionalKicking.OnControllableDestroyed(AIEntity, killerEntity, instigator, instigatorContextData);
 	}
 	
-	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		// Get player data - let it be created if it doesn't exist (vanilla behavior)
 		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId, false);
@@ -214,14 +242,22 @@ modded class SCR_DataCollectorComponent
 		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
 		if (gameMode.GetState() != SCR_EGameModeState.POSTGAME)
 		{
-			IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			SCR_ChimeraCharacter playerChimera = SCR_ChimeraCharacter.Cast(player);
-			if (playerChimera)
+			// Prefer slot faction so that a player who disconnected while in spectator is still
+			// attributed to their combat faction rather than "SPEC".
+			Faction faction = null;
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			if (slottingManager)
+				faction = slottingManager.GetPlayerSlotFaction(playerId, true);
+
+			if (!faction)
 			{
-				Faction faction = playerChimera.GetFaction();
-				if (faction)
-					AddStatsToFaction(faction.GetFactionKey(), playerDisconnectedData.CalculateStatsDifference());
+				SCR_ChimeraCharacter playerChimera = SCR_ChimeraCharacter.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId));
+				if (playerChimera)
+					faction = playerChimera.GetFaction();
 			}
+
+			if (faction)
+				AddStatsToFaction(faction.GetFactionKey(), playerDisconnectedData.CalculateStatsDifference());
 		}
 
 		// DONE ADDING STATS TO THE FACTION

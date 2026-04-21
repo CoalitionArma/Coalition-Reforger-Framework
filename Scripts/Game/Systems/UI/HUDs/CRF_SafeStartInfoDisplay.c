@@ -14,11 +14,8 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 	protected TextWidget m_wMissionLengthValue;
 	protected TextWidget m_wJIPAfterSafestartValue;
 	protected TextWidget m_wRespawnValue;
+	protected TextWidget m_wRallyPointsValue;
 	protected TextWidget m_wEspionageValue;
-	
-	// Markers
-	protected TextWidget m_wBlueForceTrackerValue;
-	protected TextWidget m_wUnitMapMarkersValue;
 	
 	// Equipment
 	protected TextWidget m_wFactionNameValue;
@@ -119,11 +116,8 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		m_wMissionLengthValue = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionLengthValue"));
 		m_wJIPAfterSafestartValue = TextWidget.Cast(m_wRoot.FindAnyWidget("JIPAfterSafestartValue"));
 		m_wRespawnValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RespawnValue"));
+		m_wRallyPointsValue = TextWidget.Cast(m_wRoot.FindAnyWidget("RallyPointsValue"));
 		m_wEspionageValue = TextWidget.Cast(m_wRoot.FindAnyWidget("EspionageValue"));
-		
-		// Get markers widgets
-		m_wBlueForceTrackerValue = TextWidget.Cast(m_wRoot.FindAnyWidget("BlueForceTrackerValue"));
-		m_wUnitMapMarkersValue = TextWidget.Cast(m_wRoot.FindAnyWidget("UnitMapMarkersValue"));
 		
 		// Get equipment widgets
 		m_wFactionNameValue = TextWidget.Cast(m_wRoot.FindAnyWidget("FactionNameValue"));
@@ -146,8 +140,8 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		return m_wSafeStartInfoPanel && m_wMissionTitleValue && m_wMissionAuthorValue && 
 		       m_wMissionTypeValue && m_wSideRatiosValue && m_wSafeStartHardLimitValue && 
 		       m_wMissionLengthValue && m_wJIPAfterSafestartValue && m_wRespawnValue && 
-		       m_wEspionageValue && m_wBlueForceTrackerValue && m_wUnitMapMarkersValue && 
-		       m_wFactionNameValue && m_wRadiosValue && m_wMapValue;
+		       m_wEspionageValue && m_wFactionNameValue && m_wRadiosValue && m_wMapValue &&
+			   m_wRallyPointsValue;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -161,9 +155,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		
 		// Load mission info
 		LoadMissionInfo();
-		
-		// Load markers info
-		LoadMarkersInfo();
 		
 		// Load equipment info
 		LoadEquipmentInfo();
@@ -313,6 +304,14 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		}
 		m_wRespawnValue.SetText(respawnStatus);
 		
+		// Rally Points
+		string rallyPointsStatus;
+		if (m_Gamemode.m_bRallyPointsEnabled)
+			rallyPointsStatus = "On";
+		else
+			rallyPointsStatus = "Off";
+		m_wRallyPointsValue.SetText(rallyPointsStatus);
+		
 		// Espionage
 		string espionageStatus;
 		if (m_Gamemode.m_bMissionAllowsEspionage)
@@ -320,43 +319,6 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 		else
 			espionageStatus = "Off";
 		m_wEspionageValue.SetText(espionageStatus);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * Loads markers configuration information
-	 */
-	protected void LoadMarkersInfo()
-	{
-		// Get player's faction for checking BFT and marker settings
-		string bftStatus = "Off"; // Default
-		string globalMarkersStatus = "On"; // Default to On
-		
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		if (playerController)
-		{
-			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-			if (factionManager)
-			{
-				Faction playerFaction = factionManager.GetPlayerFaction(playerController.GetPlayerId());
-				if (playerFaction)
-				{
-					string factionKey = playerFaction.GetFactionKey();
-					
-					// Blue Force Tracker - Check if BFT is enabled for player's faction
-					if (m_Gamemode.IsSideBFTEnabled(factionKey))
-						bftStatus = "On";
-					
-					// Global Markers - Inverse of shareable markers setting
-					// If shareable markers are enabled for this faction, global markers are OFF
-					if (m_Gamemode.DoesFactionShareMarker(factionKey))
-						globalMarkersStatus = "Off";
-				}
-			}
-		}
-		
-		m_wBlueForceTrackerValue.SetText(string.Format("Blue Force Tracker: %1", bftStatus));
-		m_wUnitMapMarkersValue.SetText(string.Format("Global Markers: %1", globalMarkersStatus));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -383,7 +345,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 			if (slottingManager)
 			{
 				// Get player's slot data to determine role
-				CRF_SlotDataContainer slotData = slottingManager.GetPlayerSlotData(playerId);
+				CRF_SlotData slotData = slottingManager.GetPlayerSlotData(playerId);
 				if (slotData)
 				{
 					// Get player role from slot resource
@@ -428,7 +390,7 @@ class CRF_SafeStartInfoDisplay : SCR_InfoDisplayExtended
 									factionName = gearConfig.m_FactionName;
 								
 								// Get role configuration for binoculars
-								CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(playerRole);
+								CRF_RoleConfig roleConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(playerRole);
 								if (roleConfig)
 								{
 									// Check for binoculars (leadership/assistant get them)

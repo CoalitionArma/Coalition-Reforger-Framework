@@ -1,0 +1,62 @@
+$grp BaseGameTriggerEntity {
+ rally_start {
+  coords 4847.174 24.73 11944.977
+ }
+ rally_cp1 {
+  coords 4771.646 24.504 11993.747
+ }
+ rally_cp2 {
+  coords 4769.397 30.634 11123.078
+ }
+ rally_cp3 {
+  coords 4584.805 24.196 11132.535
+ }
+ rally_cp4 {
+  coords 4497.723 7.183 11018.873
+ }
+ rally_cp5 {
+  coords 4205.357 1.556 11140.61
+ }
+ rally_cp6 {
+  coords 4122.742 0.418 10743.046
+ }
+ rally_cp7 {
+  coords 4404.24 10.327 10711.154
+ }
+ rally_cp8 {
+  coords 4426.563 7 10913.546
+ }
+ rally_cp9 {
+  coords 4534.896 14.167 10931.119
+ }
+ rally_cp10 {
+  coords 4595.501 14.938 10421.798
+ }
+ rally_cp11 {
+  coords 4563.557 21.565 9743.164
+ }
+ rally_cp12 {
+  coords 4492.03 13.616 9471.39
+ }
+ rally_cp13 {
+  coords 4552.149 14.002 9446.706
+ }
+ rally_cp14 {
+  coords 4888.419 35.53 9247.454
+ }
+ rally_cp15 {
+  coords 4855.665 41.418 9002.616
+ }
+ rally_cp16 {
+  coords 4643.937 75.717 8741.679
+ }
+ rally_cp17 {
+  coords 4224.932 35.891 8934.02
+ }
+ rally_cp18 {
+  coords 3956.549 13.723 8609.541
+ }
+ rally_end {
+  coords 3693.44 15.24 8518.975
+ }
+}

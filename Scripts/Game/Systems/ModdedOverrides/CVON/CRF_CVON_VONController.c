@@ -88,7 +88,7 @@ modded class SCR_VONController
 			return false;
 		
 		string otherFactionKey = m_FactionManager.GetPlayerFaction(playerId).GetFactionKey();
-		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
+		bool isOtherPlayerSpec = otherFactionKey == "SPEC" || m_VONGameModeComponent.IsPlayerListening(playerId);
 		
 		return isOtherPlayerSpec;
 	}
@@ -110,6 +110,31 @@ modded class SCR_VONController
 			return true;
 		else
 			return false;
+	}
+	
+		
+	//------------------------------------------------------------------------------------------------
+	override bool IsSameLanguage(int localPlayerId, int transmissionPlayerId)
+	{
+		Faction localFaction = m_FactionManager.GetPlayerFaction(localPlayerId);
+		Faction transmissionFaction = m_FactionManager.GetPlayerFaction(transmissionPlayerId);
+		
+		//If Local player is a spectator it will always be in the same language
+		if (localFaction.GetFactionKey() == "SPEC")
+			return true;
+		
+		//If the player or transmitting player is a zeus all should understand
+		IEntity player = m_PlayerController.GetControlledEntity();
+		IEntity otherPlayer = m_PlayerManager.GetPlayerControlledEntity(transmissionPlayerId);
+		if (player)
+			if (player.GetPrefabData().GetPrefabName()  == "{15992AA89FF4475A}Prefabs/Characters/!GS_Characters/Special/CRF_Zeus.et")
+				return true;
+		
+		if (otherPlayer)
+			if (otherPlayer.GetPrefabData().GetPrefabName()  == "{15992AA89FF4475A}Prefabs/Characters/!GS_Characters/Special/CRF_Zeus.et")
+				return true;
+		
+		return super.IsSameLanguage(localPlayerId, transmissionPlayerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -249,6 +274,12 @@ modded class SCR_VONController
 		if (!m_Camera)
 			return;
 		
+		if (!m_bFirstConnect)
+		{
+			WriteJSON(true, true);
+			m_bFirstConnect = true;
+		}
+		
 		m_PlayerIdTemp.Clear();
 		m_PlayerManager.GetPlayers(m_PlayerIdTemp);
 		
@@ -259,9 +290,6 @@ modded class SCR_VONController
 		}
 		else
 			m_fHeadCacheBuffer += timeSlice;
-		
-		m_PlayerIdTemp.Clear();
-		m_PlayerManager.GetPlayers(m_PlayerIdTemp);
 		
     	//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
 		//This removes that container as when they reconnect they will no longer be heard.
@@ -433,13 +461,8 @@ modded class SCR_VONController
 			m_bHasBroadcasted = true;
 		}
 		
-		//Our plugin only checks every 50ms
-		if (m_fVONSaveBuffer >= 0.05)
-		{
-			WriteJSON();
-			m_fVONSaveBuffer = 0;
-		}
-		else m_fVONSaveBuffer += timeSlice;
+		// WriteJSON runs every tick; the dirty flag inside skips SaveToFile when nothing changed.
+		WriteJSON();
 	}
 	
 	//------------------------------------------------------------------------------------------------

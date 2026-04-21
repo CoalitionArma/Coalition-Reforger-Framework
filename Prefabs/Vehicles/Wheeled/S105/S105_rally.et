@@ -34,9 +34,10 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
      MaxClutchTorque 550
     }
     Gearbox Gearbox Gearbox {
-     Forward + {
-      0.75
+     Forward {
+      3.500 2.200 1.560 1.190 0.950
      }
+     Reverse 3.670
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {
@@ -55,6 +56,56 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
      DragCoefficient 0.49
     }
     Pacejka Pacejka "{54D561D473F27BA1}" {
+     Longitudinal PacejkaLongitudinal "{51DAB4E5E89185CD}" {
+      b0 1.65
+      b1 -80
+      b2 2200
+      b3 18
+      b4 310
+      b5 0.06
+      b6 0
+      b7 0.055
+      b8 -0.024
+      b9 0.014
+      b10 0.28
+     }
+     Lateral PacejkaLateral "{51DAB4E5E89185F8}" {
+      a0 1.3
+      a1 -65
+      a2 1900
+      a3 2100
+      a4 7.5
+      a5 0.014
+      a6 -0.22
+      a7 1
+      a8 -0.03
+      a9 -0.001
+      a10 -0.15
+      a11 -8.5
+      a12 -0.29
+      a13 17.8
+      a14 -2.4
+     }
+     Aligning PacejkaAligning "{51DAB4E5E89185FB}" {
+      c0 2.2
+      c1 -4.3
+      c2 -4.4
+      c3 -1.9
+      c4 -9.6
+      c5 0.023
+      c6 0
+      c7 0.044
+      c8 -0.58
+      c9 0.18
+      c10 0.043
+      c11 0.048
+      c12 -0.004
+      c13 -0.18
+      c14 0.14
+      c16 -1.029
+      c17 0.27
+      c18 -1.1
+     }
     }
    }
   }

@@ -1,0 +1,10 @@
+MatPBRBasic {
+ Color 0.991 0 0.918 1
+ Emissive 0.48 0 0.713 0
+ EmissiveLV 2
+ Sort translucent
+ CastShadow 0
+ ReceiveShadow 0
+ AlphaMul 0.8
+ BlendMode AlphaBlend
+}

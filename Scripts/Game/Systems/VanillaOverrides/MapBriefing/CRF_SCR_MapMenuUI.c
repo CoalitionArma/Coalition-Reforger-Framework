@@ -13,10 +13,6 @@ modded class SCR_MapMenuUI
 	protected CRF_Gamemode m_Gamemode;                                   // Game mode instance
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
 	protected bool m_bMissionDescriptionsInitialized = false;             // Flag to track if descriptions have been initialized
-	ref array<ref CRF_PlayerIcon> m_aPlayerIcons = {};
-	bool m_bDrawPlayerIcon = false;
-	
-	static ResourceName PLAYER_ICON = "{A9CABBA67E57C10C}UI/layouts/HUD/PlayerMapIcon.layout";
 
 	//----------------------------------------
 	// Menu Lifecycle Methods
@@ -34,109 +30,28 @@ modded class SCR_MapMenuUI
 			return;
 		}
 
-		// Only initialize once on first map open
-		if (m_bMissionDescriptionsInitialized) {
-			return;
-		}
-
 		// Initialize gamemode reference
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		if (!m_Gamemode) {
 			return;
 		}
-		
-		// Initialize mission description components
-		InitializeMissionDescriptions();
-		
-		// Mark as initialized to prevent re-initialization
-		m_bMissionDescriptionsInitialized = true;
-		
-		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		if (!factionMan)
-			return;
-		
-		int playerId = SCR_PlayerController.GetLocalPlayerId();
-		if (playerId <= 0)
-			return;
 
-		Faction playerFaction = factionMan.GetPlayerFaction(playerId);
-		if (!playerFaction)
-			return;
-		
-		CRF_GearScriptContainer	gearScriptCon = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
-		if (!gearScriptCon)
-			return;
-		
-		if (gearScriptCon.m_bEnableIndividualBFT)
-			m_bDrawPlayerIcon = true;
-		
-		if (!m_bDrawPlayerIcon)
-			return;
-		
-		SCR_GroupsManagerComponent groupsManagerComp = SCR_GroupsManagerComponent.GetInstance();
-		if (!groupsManagerComp)
-			return;
-		
-		SCR_AIGroup playerGroup = groupsManagerComp.GetPlayerGroup(playerId);
-		array<int> playerIds = playerGroup.GetPlayerIDs();
-		
-		PlayerManager pm = GetGame().GetPlayerManager();
-		if (!pm)
-			return;
-		
-		foreach (int otherPlayerId: playerIds)
-		{	
-			CRF_PlayerIcon icon = new CRF_PlayerIcon;
-			IEntity playerEntity = pm.GetPlayerControlledEntity(otherPlayerId);
-			if (!playerEntity)
-				continue;
-			
-			icon.m_Player = playerEntity;
-			icon.m_PlayerIcon = GetGame().GetWorkspace().CreateWidgets("{A9CABBA67E57C10C}UI/layouts/HUD/PlayerMapIcon.layout", GetRootWidget());
-			icon.m_PlayerIcon.SetZOrder(99);
-			m_aPlayerIcons.Insert(icon);
-		}
-		
-		CRF_PlayerIcon icon = new CRF_PlayerIcon;
-		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
-		if (!playerEntity)
-			return;
-		
-		icon.m_Player = playerEntity;
-		icon.m_PlayerIcon = GetGame().GetWorkspace().CreateWidgets("{A9CABBA67E57C10C}UI/layouts/HUD/PlayerMapIcon.layout", GetRootWidget());
-		icon.m_PlayerIcon.SetZOrder(99);
-		m_aPlayerIcons.Insert(icon);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void OnMenuUpdate(float tDelta)
-	{
-		super.OnMenuUpdate(tDelta);
-		
-		if (!m_bDrawPlayerIcon)
-			return;
-		
-        UpdatePlayerIcons();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdatePlayerIcons()
-	{
-		foreach (CRF_PlayerIcon icon: m_aPlayerIcons)
+		if (!m_bMissionDescriptionsInitialized)
 		{
-			// Get player world position
-	        vector playerPos = icon.m_Player.GetOrigin();
-	        
-	      	float x, y;
-			m_MapEntity.WorldToScreen(playerPos[0], playerPos[2], x, y, true);
-			FrameSlot.SetPos(icon.m_PlayerIcon, GetGame().GetWorkspace().DPIUnscale(x), GetGame().GetWorkspace().DPIUnscale(y));
-			FrameSlot.SetAlignment(icon.m_PlayerIcon, 0.5, 0.2);
-	        
-	        // Get player rotation (yaw angle)
-	        vector playerAngles = icon.m_Player.GetAngles();
-	        float yaw = playerAngles[1];
-	        
-	        ImageWidget.Cast(icon.m_PlayerIcon).SetRotation(yaw + 180);
+			// First open: find widgets and do full initialization
+			InitializeMissionDescriptions();
+			m_bMissionDescriptionsInitialized = true;
+		}
+		else
+		{
+			// Subsequent opens: re-show/re-enable the widget that was hidden on close
+			Widget missionDescriptionWidget = GetRootWidget().FindAnyWidget("MissionDescription");
+			if (missionDescriptionWidget)
+			{
+				missionDescriptionWidget.SetVisible(true);
+				missionDescriptionWidget.SetEnabled(true);
+			}
+			DescriptionInit();
 		}
 	}
 
@@ -146,6 +61,14 @@ modded class SCR_MapMenuUI
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
+
+		// Hide and disable the MissionDescription widget to prevent invisible input blocking
+		Widget missionDescriptionWidget = GetRootWidget().FindAnyWidget("MissionDescription");
+		if (missionDescriptionWidget)
+		{
+			missionDescriptionWidget.SetVisible(false);
+			missionDescriptionWidget.SetEnabled(false);
+		}
 
 		// Clear mission description data
 		if (m_cMissionDescriptionListBoxComponent) {
@@ -188,6 +111,7 @@ modded class SCR_MapMenuUI
 		m_wBackButton = ButtonWidget.Cast(missionDescriptionWidget.FindAnyWidget("BackButton"));
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(0);
+			m_wBackButton.SetEnabled(false);
 		}
 
 		// Initialize the mission description list
@@ -217,6 +141,7 @@ modded class SCR_MapMenuUI
 		// Reset back button
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(0);
+			m_wBackButton.SetEnabled(false);
 			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 			if (backButton) {
 				backButton.m_OnClicked.Clear();
@@ -309,6 +234,7 @@ modded class SCR_MapMenuUI
 		// Show back button
 		if (m_wBackButton) {
 			m_wBackButton.SetOpacity(1);
+			m_wBackButton.SetEnabled(true);
 			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
 			if (backButton) {
 				backButton.m_OnClicked.Insert(DescriptionInit);
@@ -325,10 +251,4 @@ modded class SCR_MapMenuUI
 			missionDescriptionText.SetText(description);
 		}
 	}
-}
-
-class CRF_PlayerIcon
-{
-	Widget m_PlayerIcon;
-	IEntity m_Player;
 }

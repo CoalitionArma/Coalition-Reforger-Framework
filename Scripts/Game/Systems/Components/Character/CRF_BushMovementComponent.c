@@ -14,6 +14,7 @@ class CRF_BushMovementComponent: ScriptComponent
 	bool m_bEffectsApplied = false;
 	bool m_bEffectsAppliedThisFrame = false;
 	vector m_vOriginThisFrame;
+	vector m_vLastCheckedPos;
 	protected SCR_CharacterControllerComponent m_CharacterController;
 	protected SCR_CharacterDamageManagerComponent m_DamageManager;
 	protected SCR_HintManagerComponent m_HintManager;
@@ -52,6 +53,13 @@ class CRF_BushMovementComponent: ScriptComponent
 		}
 		
 		m_fBuffer = 0;
+		
+		// Skip the sphere query if the player hasn't moved and is not currently inside a bush.
+		// If effects ARE applied we still re-query so we can detect when the player leaves.
+		vector currentPos = owner.GetOrigin();
+		if (!m_bEffectsApplied && vector.DistanceSq(currentPos, m_vLastCheckedPos) < 0.01)
+			return;
+		m_vLastCheckedPos = currentPos;
 		
 		m_bEffectsAppliedThisFrame = false;
 		m_vOriginThisFrame = owner.GetOrigin();
@@ -103,7 +111,7 @@ class CRF_BushMovementComponent: ScriptComponent
 		{
 			m_CharacterController.SetStanceChange(2);
 			if (m_HintManager)
-				m_HintManager.ShowCustomHint("Can't prone here mf", "Too thicc", 10);
+				m_HintManager.ShowCustomHint("Cannot prone in the center of a bush", "Move away and try again", 10);
 		}
 	
 		// Read current engine movement damage BEFORE we override it

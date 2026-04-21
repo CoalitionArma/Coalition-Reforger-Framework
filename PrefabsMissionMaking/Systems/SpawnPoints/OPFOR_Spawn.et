@@ -1,9 +1,6 @@
-GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
+CRF_StaticSpawnPoint {
  ID "50C6D20663830070"
  components {
-  CRF_RespawnPointComponent "{645A31043F360893}" {
-   m_sRespawnPointFaction "OPFOR"
-  }
   MeshObject "{645911A160C1D2EB}" {
    Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
   }
@@ -12,7 +9,8 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    ResponseIndex "NoCollision"
    ModelGeometry 1
   }
-  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+  SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" {
+   Enabled 0
    EnableDamage 0
    m_fBaseHealth 100000
    m_DestroySpawnObjects {
@@ -74,11 +72,17 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
     }
    }
   }
-  RplComponent "{649042617FCFD793}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  RplComponent "{649042617FCFD793}" {
    Streamable Disabled
   }
  }
+ Flags 0x400 0
  coords 0 0 0
+ m_bIsDefaultSpawn 1
+ m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_iSpawnPointFaction OPFOR
+  m_iSpawnPointRadius 16
+ }
  {
   CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsMissionMaking/Markers/SpawnMarkers/OPFOR_SpawnMarker.et" {
    ID "68682AC1849E53AF"

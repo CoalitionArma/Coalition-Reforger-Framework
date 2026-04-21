@@ -1,0 +1,58 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{D1D1781BB48726F4}Prefabs/Weapons/Grenades/MagicGrenades/Magic_HealSmoke.ptc"
+    }
+    SpawnPrefabEffect "{68D0D1CBF27008F7}" {
+     TriggerOnce 1
+     AttachToParent 1
+     EffectPrefab "{F283EFFDCC3E2574}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/Damage_Heal.et"
+    }
+   }
+   TIMER 4
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   TimeToLive 45
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68D0D1CBF2700891}" {
+     Name "Healing Grenade"
+     Description "Grenade of Healing!"
+    }
+   }
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{68D0D1CB0881FB2A}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{3133DB10CA6E60FE}Prefabs/Weapons/Grenades/MagicGrenades/Data/m18_MAGIC_HEAL.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Green_Name"
+     Description "#AR-Weapon_M18Green_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68D0D1CBF27008A0}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    m_sAmmoType "#AR-AmmoType_M18Green"
+   }
+  }
+ }
+ coords 2.982 3.707 -1.472
+}

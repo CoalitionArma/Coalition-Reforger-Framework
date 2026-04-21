@@ -2,6 +2,9 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 
 class CRF_GearscriptManager : ScriptComponent
 {
+	protected ref CRF_ResourceCache m_ResourceCache;
+	static ref CRF_RolesConfig m_RolesConfig;
+	
 	protected CRF_Gamemode m_Gamemode;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -17,8 +20,35 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!GetGame().InPlayMode())
 			return;
 		
+		LoadRoleConfig();
+		m_ResourceCache = new CRF_ResourceCache;
 		m_Gamemode = CRF_Gamemode.GetInstance();
-	}	
+		
+		// 10APR26 - Pat, this has started causing crashing as of today. No idea why. Commenting out for now.
+		// #ifdef WORKBENCH
+		// 	GetGame().GetCallqueue().CallLater(DEBUG_SpawnAllRoleCharacters, 250, false);
+		// #endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_RolesConfig GetRolesConfig()
+	{
+		return m_RolesConfig;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Load necessary configurations for gearscript
+	protected void LoadRoleConfig()
+	{
+		ResourceName rolesConfigPath;
+		if (!CVON_VONGameModeComponent.GetInstance())
+			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		else
+			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
+		
+		m_RolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Load gear script config from resource
@@ -281,7 +311,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if(primary.m_Weapon)
 				{
 					CRF_WeaponHelper.SpawnWeapon(primary.m_Weapon, primary.m_Attachments, spawnParams, inventory, inventoryManager);
-					CRF_WeaponHelper.AddMagazines(primary.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					AddMagazines(primary.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				};
 			}
@@ -293,7 +323,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if(secondary.m_Weapon)
 				{
 					CRF_WeaponHelper.SpawnWeapon(secondary.m_Weapon, secondary.m_Attachments, spawnParams, inventory, inventoryManager);
-					CRF_WeaponHelper.AddMagazines(secondary.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					AddMagazines(secondary.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				};
 			}
@@ -305,7 +335,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if(pistol.m_Weapon)
 				{
 					CRF_WeaponHelper.SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, spawnParams, inventory, inventoryManager);
-					CRF_WeaponHelper.AddMagazines(pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					AddMagazines(pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				};
 			}
@@ -327,7 +357,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		array<CRF_Weapon_Class> weaponsSelected = {};
 		
 		foreach (CRF_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
@@ -433,7 +463,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig)
 			return;
 		
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		bool isAssistant = (rolesConfig.m_SlottingType == CRF_ESlotType.ASSISTANT || rolesConfig.m_SlottingType == CRF_ESlotType.SPECIALTY_ASSISTANT);
 		
 		foreach (CRF_EGearscriptMagazines roleMags : rolesConfig.m_aMagazines)
@@ -505,10 +535,32 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 			
 			if (magazineArray && !magazineArray.IsEmpty())
-				CRF_WeaponHelper.AddMagazines(magazineArray, spawnParams, inventory, inventoryManager);
+				AddMagazines(magazineArray, spawnParams, inventory, inventoryManager);
 			
 			if (selectedWeapon)
 				weaponsSelected.RemoveItem(selectedWeapon)
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Add a weapons magazines
+	//! \param[in] magazineArray Magazines to add
+	//! \param[in] spawnParams Spawn parameters
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	protected void AddMagazines(array<ref CRF_Magazine_Class> magazineArray, EntitySpawnParams spawnParams, 
+		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
+	{
+		// Add magazines
+		if (magazineArray != null)
+		{
+			foreach (CRF_Magazine_Class magazine : magazineArray)
+			{
+				if (magazine != null)
+				{
+					AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, spawnParams, inventory, inventoryManager);
+				}
+			}
 		}
 	}
 	
@@ -533,12 +585,12 @@ class CRF_GearscriptManager : ScriptComponent
 	
 			foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
 			{
-				CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 			}
 		}
 		
 		// Then apply default gear
-		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		
 		foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
 		{
@@ -546,43 +598,101 @@ class CRF_GearscriptManager : ScriptComponent
 			{
 				case CRF_EGearscriptItems.SHORTRANGE_RADIO:
 					if (gearScriptSettings.m_bEnableGIRadios)
-						CRF_InventoryHelper.AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
+						AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 				
 				case CRF_EGearscriptItems.LONGRANGE_RADIO:
 					if (gearScriptSettings.m_bEnableLeadershipRadios)
-						CRF_InventoryHelper.AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
+						AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 				
 				case CRF_EGearscriptItems.RTO_RADIO:
 					if (gearScriptSettings.m_bEnableRTORadios)
-						CRF_InventoryHelper.AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+						AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 				
 				case CRF_EGearscriptItems.LEADERSHIP_BINO:
 					if (gearConfig.m_sLeadershipBinocularsPrefab != "")
-						CRF_InventoryHelper.AddInventoryItem(gearConfig.m_sLeadershipBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
+						AddInventoryItem(gearConfig.m_sLeadershipBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 				
 				case CRF_EGearscriptItems.ASSISTANT_BINO:
 					if (gearConfig.m_sAssistantBinocularsPrefab != "")
-						CRF_InventoryHelper.AddInventoryItem(gearConfig.m_sAssistantBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
+						AddInventoryItem(gearConfig.m_sAssistantBinocularsPrefab, 1, spawnParams, inventory, inventoryManager);
 					break;
 
 				case CRF_EGearscriptItems.MEDIC_ITEMS:
 					foreach (CRF_Inventory_Item item : gearConfig.m_MedicMedicalItems)
-						CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+						AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 					break;
 			}
 		}
 		
 		// Default medical items
 		foreach (CRF_Inventory_Item item : gearConfig.m_InfantryMedicalItems)
-			CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
 		
 		// Default inventory items
 		foreach (CRF_Inventory_Item item : gearConfig.m_DefaultInventoryItems)
-			CRF_InventoryHelper.AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+			AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Add inventory item
+	//! \param[in] item Item resource to add
+	//! \param[in] itemAmount Number of items to add
+	//! \param[in] spawnParams Spawn parameters (unused - kept for compatibility)
+	//! \param[in] inventory Inventory component
+	//! \param[in] inventoryManager Inventory manager component
+	//! \param[in] role Role identifier
+	void AddInventoryItem(ResourceName item, int itemAmount, EntitySpawnParams spawnParams, 
+		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, 
+		CRF_EGearRole role = 0)
+	{
+		if (item.IsEmpty())
+			return;
+			
+		Resource resource = m_ResourceCache.GetCachedResource(item);
+		if (!resource || !resource.IsValid())
+			return;
+			
+		IEntitySource itemSource = SCR_BaseContainerTools.FindEntitySource(resource);
+		if (!itemSource)
+			return;
+		
+		// Determine item type to use appropriate storage priority
+		TIntArray clothingIDs = CRF_InventoryHelper.FilterItemToClothing(itemSource, role);
+		
+		for (int i = 1; i <= itemAmount; i++)
+		{
+			bool spawned = false;
+
+			foreach (int clothingID : clothingIDs)
+			{
+				IEntity clothing = inventory.Get(clothingID);
+				if (clothing)
+				{
+					BaseInventoryStorageComponent clothingStorage = BaseInventoryStorageComponent.Cast(clothing.FindComponent(BaseInventoryStorageComponent));
+					if (clothingStorage)
+					{
+						if (inventoryManager.CanInsertResourceInStorage(item, clothingStorage))
+							spawned = inventoryManager.TrySpawnPrefabToStorage(item, clothingStorage);
+						
+						if (!spawned && clothingID == CRF_EGearscriptClothing.VEST) // unable to insert directly into some vests storage comp, so we just let the item/inventoryManager decide (99% of the time it's a vest)
+							spawned = inventoryManager.TrySpawnPrefabToStorage(item);
+						
+						if (spawned)
+							break;
+					};
+				};
+			}
+			
+			if (!spawned) // One final effort is all that remains
+				spawned = inventoryManager.TrySpawnPrefabToStorage(item);
+			
+			if (!spawned)
+				CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner());
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -639,6 +749,60 @@ class CRF_GearscriptManager : ScriptComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 DEBUGGING METHODS (ONLY CALLED IN WORKBENCH)
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	#ifdef WORKBENCH
+	//------------------------------------------------------------------------------------------------
+	protected void DEBUG_SpawnAllRoleCharacters()
+	{
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		// Setup Faction/Role Arrays
+		array<FactionKey> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		array<ref CRF_RoleConfig> roleArray = m_RolesConfig.GetRoleConfigArray();
+		RandomGenerator rng = new RandomGenerator;
+		
+		foreach (FactionKey factionKey : factionKeys)
+		{
+			CRF_SpawnPointData initialSpawnData = respawnManager.FindInitalFactionSpawnpoint(factionKey);
+			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+			
+			if (initialSpawnData && faction)
+			{
+				IEntity spawnPointEnt = CRF_EntityHelper.GetEntityFromRplId(initialSpawnData.GetSpawnPointEntity());
+				if (spawnPointEnt)
+				{
+					EntitySpawnParams spawnParams = new EntitySpawnParams();
+					spawnParams.TransformMode = ETransformMode.WORLD;
+					spawnPointEnt.GetWorldTransform(spawnParams.Transform);
+					
+					foreach (ref CRF_RoleConfig roleConfig : roleArray)
+						GetGame().GetCallqueue().CallLater(DEBUG_SpawnThenDeleteCharacter, rng.RandInt(500, 12000), false, spawnParams, roleConfig.m_RoleResource, faction);
+				};
+			};
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void DEBUG_SpawnThenDeleteCharacter(EntitySpawnParams spawnParams, ResourceName characterResource, Faction faction)
+	{
+		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
+			GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(characterResource), GetGame().GetWorld(), spawnParams)
+		);
+		
+		if (!playerCharacter)
+			return;
+		
+		// Update character faction
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(playerCharacter.FindComponent(FactionAffiliationComponent));
+		facComp.SetAffiliatedFaction(faction);
+		
+		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 250, false, playerCharacter);
+	}
+	#endif
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS

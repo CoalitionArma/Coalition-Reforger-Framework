@@ -1,0 +1,316 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{AF1C0001C3D4E500}" {
+   Name "Dimmer"
+   Slot FrameWidgetSlot "{AF1C0002C3D4E500}" {
+    Anchor 0 0 1 1
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0 0 0 0.65
+  }
+  ImageWidgetClass "{AF1C0003C3D4E500}" {
+   Name "PanelBorder"
+   Slot FrameWidgetSlot "{AF1C0004C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -252
+    OffsetLeft -252
+    PositionY -262
+    OffsetTop -262
+    SizeX 504
+    OffsetRight -252
+    SizeY 524
+    OffsetBottom -262
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{AF1C0005C3D4E500}" {
+   Name "PanelBg"
+   Slot FrameWidgetSlot "{AF1C0006C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 520
+    OffsetBottom -260
+   }
+   Color 0.05 0.06 0.09 0.97
+  }
+  ImageWidgetClass "{AF1C0007C3D4E500}" {
+   Name "TitleBar"
+   Slot FrameWidgetSlot "{AF1C0008C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 46
+    OffsetBottom 214
+   }
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{AF1C0009C3D4E500}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{AF1C000AC3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -250
+    OffsetLeft -250
+    PositionY -260
+    OffsetTop -260
+    SizeX 500
+    OffsetRight -250
+    SizeY 46
+    OffsetBottom 214
+   }
+   Color 1 1 1 1
+   Text "CHOOSE YOUR DISGUISE"
+   "Font Size" 22
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C000BC3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 2
+    ShadowSize 2
+    ShadowOffset 1 1
+   }
+  }
+  TextWidgetClass "{AF1C000CC3D4E500}" {
+   Name "SubTitle"
+   Slot FrameWidgetSlot "{AF1C000DC3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -238
+    OffsetLeft -238
+    PositionY -210
+    OffsetTop -210
+    SizeX 476
+    OffsetRight -238
+    SizeY 24
+    OffsetBottom 186
+   }
+   Color 0.72 0.77 0.87 1
+   Text "Click nearby prop to disguise  |  [Esc] to cancel"
+   "Font Size" 13
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C000EC3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{AF1C000FC3D4E500}" {
+   Name "Divider1"
+   Slot FrameWidgetSlot "{AF1C0010C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -230
+    OffsetLeft -230
+    PositionY -182
+    OffsetTop -182
+    SizeX 460
+    OffsetRight -230
+    SizeY 2
+    OffsetBottom 180
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  ScrollLayoutWidgetClass "{AF1C0011C3D4E500}" {
+   Name "PropListScroll"
+   Slot FrameWidgetSlot "{AF1C0012C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -238
+    OffsetLeft -238
+    PositionY -176
+    OffsetTop -176
+    SizeX 476
+    OffsetRight -238
+    SizeY 358
+    OffsetBottom -182
+   }
+   {
+    VerticalLayoutWidgetClass "{AF1C0013C3D4E500}" {
+     Name "PropList"
+     Slot AlignableSlot "{AF1C0014C3D4E500}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{AF1C0015C3D4E500}" {
+   Name "Divider2"
+   Slot FrameWidgetSlot "{AF1C0016C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -230
+    OffsetLeft -230
+    PositionY 186
+    OffsetTop 186
+    SizeX 460
+    OffsetRight -230
+    SizeY 2
+    OffsetBottom -188
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  ButtonWidgetClass "{AF1C0017C3D4E500}" {
+   Name "CancelButton"
+   Slot FrameWidgetSlot "{AF1C0018C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -100
+    OffsetLeft -100
+    PositionY 196
+    OffsetTop 196
+    SizeX 200
+    OffsetRight -100
+    SizeY 38
+    OffsetBottom -234
+   }
+   Color 0.45 0.08 0.08 0.90
+   components {
+    CRF_PropHuntCancelButton "{AF1C0019C3D4E500}" {
+    }
+   }
+   {
+    TextWidgetClass "{AF1C001AC3D4E500}" {
+     Name "CancelText"
+     Slot ButtonWidgetSlot "{AF1C001BC3D4E500}" {
+     }
+     Color 1 0.85 0.85 1
+     Text "Cancel  [Esc]"
+     "Font Size" 15
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{AF1C001CC3D4E500}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      Bold 1
+      OutlineSize 1
+      ShadowOffset 0.5 0.5
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{AF1C001DC3D4E500}" {
+   Name "PreviewPanelBorder"
+   Slot FrameWidgetSlot "{AF1C001EC3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 264
+    OffsetLeft 264
+    PositionY -182
+    OffsetTop -182
+    SizeX 272
+    OffsetRight -536
+    SizeY 364
+    OffsetBottom -182
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{AF1C001FC3D4E500}" {
+   Name "PreviewPanelBg"
+   Slot FrameWidgetSlot "{AF1C0020C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 360
+    OffsetBottom -180
+   }
+   Color 0.05 0.06 0.09 0.97
+  }
+  ImageWidgetClass "{AF1C0021C3D4E500}" {
+   Name "PreviewTitleBar"
+   Slot FrameWidgetSlot "{AF1C0022C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 36
+    OffsetBottom 144
+   }
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{AF1C0023C3D4E500}" {
+   Name "PreviewTitleText"
+   Slot FrameWidgetSlot "{AF1C0024C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 266
+    OffsetLeft 266
+    PositionY -180
+    OffsetTop -180
+    SizeX 268
+    OffsetRight -534
+    SizeY 36
+    OffsetBottom 144
+   }
+   Color 1 1 1 1
+   Text "PREVIEW"
+   "Font Size" 14
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C0025C3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ItemPreviewWidgetClass "{AF1C0026C3D4E500}" {
+   Name "PropPreview"
+   Slot FrameWidgetSlot "{AF1C0027C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 280
+    OffsetLeft 280
+    PositionY -134
+    OffsetTop -134
+    SizeX 240
+    OffsetRight -520
+    SizeY 240
+    OffsetBottom -106
+   }
+  }
+  TextWidgetClass "{AF1C0028C3D4E500}" {
+   Name "PreviewNameText"
+   Slot FrameWidgetSlot "{AF1C0029C3D4E500}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 268
+    OffsetLeft 268
+    PositionY 114
+    OffsetTop 114
+    SizeX 264
+    OffsetRight -532
+    SizeY 44
+    OffsetBottom -158
+   }
+   Color 0.90 0.92 1 1
+   Text ""
+   "Font Size" 14
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AF1C002AC3D4E500}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+ }
+}

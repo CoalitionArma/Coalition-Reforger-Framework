@@ -15,6 +15,9 @@ CRF_PlayerCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.
   }
   CRF_PolyZoneEffectHandler "{68716877EBA02A6A}" {
   }
+  ClimbingDataComponent "{5304A49E934A0758}" {
+   CanClimbOver 1
+  }
   SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
    StaminaDrainRun -0.006
    StaminaDrainSprint -0.009

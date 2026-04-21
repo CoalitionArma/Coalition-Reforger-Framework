@@ -19,6 +19,11 @@ class CRF_PlayerCameraManager : ScriptComponent
 	protected float m_fOrbitPitch  = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
 	protected float m_fOrbitRadius = 4.0;   // Distance from entity in meters (clamped 1.5–20)
 	
+	// Slow auto-orbit camera state (SetCameraOnRailsOrbit / SetCameraOnRailsOrbitEntity)
+	protected IEntity m_eOrbitTargetEntity;          // entity to orbit around (null = use fixed point)
+	protected float m_fOrbitSpeed     = 10.0;        // deg/sec
+	protected float m_fSlowOrbitAngle =  0.0;        // current angle along the orbit circle (degrees)
+	
 	protected IEntity m_eCameraEntity;
 	protected vector m_vCameraOrbitPoint;
 	protected float m_vCameraOrbitDistance;
@@ -99,13 +104,40 @@ class CRF_PlayerCameraManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetCameraOnRailsOrbit(vector point, float distance, float height)
+	//! Orbit the camera around a fixed world-space point at constant speed.
+	//! \param point    World position to orbit around.
+	//! \param radius   Orbit radius in metres.
+	//! \param height   Camera height above \p point.
+	//! \param speed    Angular speed in degrees/sec (default 10).
+	void SetCameraOnRailsOrbit(vector point, float radius, float height, float speed = 10.0)
 	{	
 		if (m_eCamera) {
 			ClearCameraOnRailsVariables();
 			m_vCameraOrbitPoint = point;
-			m_vCameraOrbitDistance = distance;
+			m_vCameraOrbitDistance = radius;
 			m_vCameraOrbitHeight = height;
+			m_fOrbitSpeed = speed;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Orbit the camera around an entity at constant speed.
+	//! The orbit center updates every frame to the entity's current position.
+	//! \param entity   Entity to orbit around.
+	//! \param radius   Orbit radius in metres.
+	//! \param height   Camera height above the entity origin.
+	//! \param speed    Angular speed in degrees/sec (default 10).
+	void SetCameraOnRailsOrbitEntity(IEntity entity, float radius, float height, float speed = 10.0)
+	{
+		if (m_eCamera && entity) {
+			ClearCameraOnRailsVariables();
+			m_eOrbitTargetEntity = entity;
+			// Store a non-zero sentinel so EOnFrame routes to FrameUpdateOrbit.
+			m_vCameraOrbitPoint = entity.GetOrigin();
+			m_vCameraOrbitDistance = radius;
+			m_vCameraOrbitHeight = height;
+			m_fOrbitSpeed = speed;
 			InitalizeCameraOnRails();
 		}
 	}
@@ -139,6 +171,9 @@ class CRF_PlayerCameraManager : ScriptComponent
 		m_fOrbitYaw        = 0.0;
 		m_fOrbitPitch      = 20.0;
 		m_fOrbitRadius     = 4.0;
+		m_eOrbitTargetEntity = null;
+		m_fOrbitSpeed        = 10.0;
+		m_fSlowOrbitAngle    = 0.0;
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -158,7 +193,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 		} else {
 			switch (true) 
 			{
-				case (m_vCameraOrbitPoint != vector.Zero) : FrameUpdateOrbit(); break;
+				case (m_vCameraOrbitPoint != vector.Zero) : FrameUpdateOrbit(timeSlice); break;
 				case (m_eCameraEntity) : 
 				{
 					if (m_bTPPMode) FrameUpdateEntityTPP(timeSlice);
@@ -270,9 +305,45 @@ class CRF_PlayerCameraManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void FrameUpdateOrbit()
+	protected void FrameUpdateOrbit(float timeSlice)
 	{
-	
+		// Resolve orbit center — track entity position dynamically if one is set.
+		vector center;
+		if (m_eOrbitTargetEntity)
+			center = m_eOrbitTargetEntity.GetOrigin();
+		else
+			center = m_vCameraOrbitPoint;
+		
+		// Advance the orbit angle.
+		m_fSlowOrbitAngle += m_fOrbitSpeed * timeSlice;
+		if (m_fSlowOrbitAngle >= 360.0)
+			m_fSlowOrbitAngle -= 360.0;
+		
+		float angleRad = m_fSlowOrbitAngle * Math.DEG2RAD;
+		
+		// Camera sits at (radius out, height up) relative to the center.
+		vector camPos = Vector(
+			center[0] + m_vCameraOrbitDistance * Math.Sin(angleRad),
+			center[1] + m_vCameraOrbitHeight,
+			center[2] + m_vCameraOrbitDistance * Math.Cos(angleRad)
+		);
+		
+		// Build a look-at transform so the camera always faces the center.
+		vector lookDir = vector.Direction(camPos, center);
+		lookDir.Normalize();
+		
+		vector worldUp = Vector(0, 1, 0);
+		vector right   = lookDir * worldUp;
+		right.Normalize();
+		vector up = right * lookDir;
+		up.Normalize();
+		
+		vector camTransform[4];
+		camTransform[0] = right;
+		camTransform[1] = up;
+		camTransform[2] = lookDir;
+		camTransform[3] = camPos;
+		m_eCamera.SetTransform(camTransform);
 	}
 	
 	//------------------------------------------------------------------------------------------------

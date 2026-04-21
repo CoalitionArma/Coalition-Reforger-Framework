@@ -107,6 +107,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("360", UIWidgets.SpinBox, "The amount of time between marker updates in seconds. Minimum 10s.", "10 3600 1", category: "Global Settings")]
 	int m_timeBetweenPings;
 	
+	[Attribute("false", "auto", "Send an immediate transponder ping when the game starts (before the first regular ping cycle).", category: "Global Settings")]
+	bool m_bInitialPing;
+	
 	[Attribute("false", "auto", "Hide the transponder marker from all factions except the searcher faction.", category: "Global Settings")]
 	bool m_filterFaction;
 
@@ -130,7 +133,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("", "auto", "List of HVT entries. Each entry can be configured as player or AI controlled.", category: "HVT Entries")]
 	ref array<ref CRF_HVTEntry> m_aHVTEntries;
 	
-	[Attribute("HVT GAMEMODE SETUP\n\n=== BASIC SETUP ===\n1. Add this component to your Game Mode Entity\n2. Add 1 or more 'HVT ENTRIES' within the component\n3. Set Entry Type per entry (AI / PLAYER / OBJECT)\n4. Set Prefab per entry\n\n=== AI ENTRY ===\n• Entry Type = AI\n• Place empty transponder entity in world\n• Set 'Prefab' to AI character prefab\n• AI spawns at transponder location\n\n=== PLAYER ENTRY ===\n• Entry Type = PLAYER\n• Place empty transponder entity in world\n• Set 'Prefab' to PLAYER SLOT prefab\n• Set 'Faction' to filter by faction (optional)\n⚠️ Matches by PREFAB - use UNIQUE prefab!\n\n=== OBJECT ENTRY ===\n• Entry Type = OBJECT\n• Place empty transponder entity in world\n• Set 'Prefab' to object prefab (e.g. radio)\n• Object spawns at transponder location\n• No death handling - just tracks position", UIWidgets.EditBoxMultiline, "HVT Setup Instructions", category: "Documentation")]
+	[Attribute("HVT GAMEMODE SETUP\n\nIMPORTANT:\n• Transponder name is case sensitive\n\n=== BASIC SETUP ===\n1. Add this component to your Game Mode Entity\n2. Add 1 or more 'HVT ENTRIES' within the component\n3. Set Entry Type per entry (AI / PLAYER / OBJECT)\n4. Set Prefab per entry\n\n=== AI/OBJECT ENTRY ===\n• Entry Type = AI/OBJECT\n• Place empty transponder entity in world\n• Set 'Prefab' to AI character or object prefab\n• AI spawns at transponder location\n\n=== PLAYER ENTRY ===\n• Entry Type = PLAYER\n• Place empty transponder entity in world\n• Set 'Prefab' to PLAYER SLOT prefab\n• Set 'Faction' to filter by faction (optional)\nSearches/matches by PREFAB - use UNIQUE prefab!", UIWidgets.EditBoxMultiline, "HVT Setup Instructions", category: "Documentation")]
 	string m_sInstructions;
 	
 	// Replicated HVT positions (server → client)
@@ -187,22 +190,26 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Two-stage safestart check: First ensure we've seen it active, then wait for it to end
+			// If safestart is never enabled, skip directly to GameInit
 			if (!m_bHasSafestartBegun)
 			{
-				m_bHasSafestartBegun = CRF_SafestartManager.GetInstance().GetSafestartStatus();
-				return;
+				if (CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				{
+					m_bHasSafestartBegun = true;
+					return;
+				}
 			}
 			
-			// Now wait for safestart to end before GameInit
+			// Wait for safestart to end before GameInit (skipped if safestart was never active)
 			if (!m_bGameInit)
 			{
-				if (CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				if (m_bHasSafestartBegun && CRF_SafestartManager.GetInstance().GetSafestartStatus())
 					return;
 				
 				GameInit();
 				
 				// Clients done - disable loop
-				if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+				if (!Replication.IsServer())
 					ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 				
 				return;
@@ -237,7 +244,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// Server: Spawn AI/Object entries FIRST (while transponders still have their editor positions)
-		if (RplSession.Mode() == RplMode.Dedicated)
+		if (Replication.IsServer())
 		{
 			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 			{
@@ -470,11 +477,11 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_bGameInit = true;
 		
 		// Server: Register player HVTs now that safestart has ended and players are spawned
-		if (RplSession.Mode() == RplMode.Dedicated || RplSession.Mode() == RplMode.Listen)
+		if (Replication.IsServer())
 		{
 			RegisterPlayerHVTs();
 			
-			if (m_bEnableTransponderMarker)
+			if (m_bEnableTransponderMarker && m_bInitialPing)
 				UpdateHVTPositions();
 		}
 		
