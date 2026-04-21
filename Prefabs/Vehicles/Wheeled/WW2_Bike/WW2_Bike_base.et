@@ -1,0 +1,21 @@
+Bike : "{1F9BB80C3EC3C891}Prefabs/Vehicles/Core/Wheeled_Car_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_UniversalInventoryStorageComponent "{607097C4DCC32AFC}" {
+   Enabled 1
+   m_fMaxWeight 1000
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo Crate {
+     Offset 0 0.7631 -0.6804
+     Prefab "{F65404A9EF9F611E}Prefabs/Props/Military/Small Ammo Crate.et"
+    }
+   }
+  }
+  SCR_VehicleInventoryStorageManagerComponent "{591056FA3B752FE6}" {
+   Enabled 1
+  }
+ }
+ m_bShouldAddAmmo 0
+}

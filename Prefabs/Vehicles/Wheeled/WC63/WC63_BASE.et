@@ -1,4 +1,24 @@
 Vehicle : "{62F416029692CE40}Prefabs/Vehicles/Core/Wheeled_Base.et" {
  ID "BBCBA43A9778AE21"
+ components {
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ThrottleCurve {
+      2000 0.8 2500 0.5 3000 0
+     }
+     ThrottleTurboTime 0.5
+     ThrottleTurbo 0.1
+     ClutchCoupleRpm 1250
+     Latency 0.43
+     UpShiftFactor 0.3
+     UpShiftRpm 1250
+     DownShiftFactor 0.1
+     DownShiftRpm 1050
+     TurboShiftFactor 1
+    }
+   }
+  }
+ }
  m_bShouldAddAmmo 0
 }

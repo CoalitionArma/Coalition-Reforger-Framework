@@ -238,6 +238,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			if (checkDeployParachutes)
 			{
 				PlayerManager pm = GetGame().GetPlayerManager();
+				array<IEntity> playersToRemove = {};
 				foreach (int i, IEntity player: flight.m_PlayersInPlane)
 				{
 					//Remove player if it's null
@@ -245,7 +246,7 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 					//Idk
 					if (!player)
 					{
-						flight.m_PlayersInPlane.Remove(i);
+						playersToRemove.Insert(player);
 						continue;
 					}
 					
@@ -261,23 +262,16 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 					if (!compAccess)
 						continue;
 					
-					if (compAccess.IsInCompartment())
-						continue;
-					
-					if (flight.m_bAutoDeployParachute)
+					if (flight.m_bHasDeployed && !flight.m_DeployedPlayers.Contains(player))
 					{
-						PlayerController pc = pm.GetPlayerController(playerId);
-						if (!pc)
-							continue;
-						
-						CRF_ParachutePlayerComponent paraComp = CRF_ParachutePlayerComponent.Cast(pc.FindComponent(CRF_ParachutePlayerComponent));
-						if (!paraComp)
-							continue;
-						
-						Print("Requesting parachute");
-						GetGame().GetCallqueue().CallLater(paraComp.Rpc_RequestDeploy, 1000, false);
-						flight.m_PlayersInPlane.Remove(i);
+						playersToRemove.Insert(player);
+						AutomaticallyDeploy(player, 1000 * i, flight, playerId);
 					}
+				}
+				
+				foreach (IEntity playerToRemove: playersToRemove)
+				{
+					flight.m_PlayersInPlane.RemoveItemOrdered(playerToRemove);
 				}
 			}		
 			
@@ -303,7 +297,12 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			flight.m_fProgress = Math.Clamp(flight.m_fProgress + step, 0, 2);
 			
 			if (flight.m_vFlightCoordinates[2][0] < greenLightDistance)
-			    GreenLight(flight.m_RplId);
+			{
+				GreenLight(flight.m_RplId);
+				if (!flight.m_bHasDeployed)
+					flight.m_bHasDeployed = true;
+			}
+			    
 	
 	        vector newPos = vector.Lerp(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3], flight.m_fProgress);
 			vector transform[4];
@@ -356,6 +355,30 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		#else
 		Rpc(RpcDo_SpawnGreenLight, planeId);
 		#endif
+	}
+	
+	void AutomaticallyDeploy(IEntity player, int delay, CRF_AirdropFlight flight, int playerId)
+	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(player);
+		if (!character)
+			return;
+
+		SCR_CompartmentAccessComponent compAccess = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+		if (!compAccess)
+			return;
+
+		flight.m_DeployedPlayers.Insert(player);
+		if (flight.m_bAutoDeployParachute)
+		{
+			PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
+			if (!pc)
+				return;
+			
+			CRF_ParachutePlayerComponent paraComp = CRF_ParachutePlayerComponent.Cast(pc.FindComponent(CRF_ParachutePlayerComponent));
+			if (paraComp)
+				GetGame().GetCallqueue().CallLater(paraComp.QueueChuteOpening, delay, false);
+		}
+		GetGame().GetCallqueue().CallLater(compAccess.KickFromVehicle, delay , false, 2);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -484,7 +507,9 @@ class CRF_AirdropFlight
 	float m_fSpeed;
 	float m_fGreenT;
 	ref array<IEntity> m_PlayersInPlane = {};
+	ref array<IEntity> m_DeployedPlayers = {};
 	bool m_bAutoDeployParachute;
+	bool m_bHasDeployed = false;
 }
 
 class CRF_AirdropObject
