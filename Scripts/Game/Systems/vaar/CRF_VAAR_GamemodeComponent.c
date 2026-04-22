@@ -11,7 +11,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected string m_sFilePath;
 	protected FileHandle m_AARFile;
 	
-	protected bool m_bRecording;
+	[RplProp()] bool m_bRecording;
 	protected float m_fTimer = 0;
 	
 	[Attribute("0.5", "auto", "Recording intervals in milliseconds", category: "CRF Virtual AAR System")]
@@ -25,8 +25,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPostInit(owner);
 		
-		//if (RplSession.Mode() != RplMode.Dedicated)
-		//	return;
+		if (RplSession.Mode() != RplMode.Dedicated)
+			return;
 		
 		SetEventMask(owner, EntityEvent.FRAME);
 		
@@ -35,8 +35,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		//if (RplSession.Mode() != RplMode.Dedicated)
-		//	return;
+		if (RplSession.Mode() != RplMode.Dedicated)
+			return;
 		
 		m_fTimer += timeSlice;
 		if (m_fTimer >= m_iRecordIntervals && m_bRecording)
@@ -51,8 +51,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		super.OnGameModeEnd(data);
 		
-		//if (RplSession.Mode() != RplMode.Dedicated)
-		//	return;
+		if (RplSession.Mode() != RplMode.Dedicated)
+			return;
 		
 		// Close out the aar with a delay to make sure everything was recorded
 		GetGame().GetCallqueue().CallLater(CloseVAAR, m_iRecordIntervals + 0.1);
@@ -60,8 +60,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
-		//if (RplSession.Mode() != RplMode.Dedicated)
-		//	return;
+		if (RplSession.Mode() != RplMode.Dedicated)
+			return;
 		
 		RegisterCharacterDeath(instigatorContextData);
 	}
@@ -356,5 +356,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		// Add to event buffer
 		m_aKillsBuffer.Insert(new CRF_VAAR_KillEvent(targetID, killerID, targetName, killerName, targetFaction, killerFaction));
+	}
+	//------------------------------------------------------------------------------------
+	void ToggleRecording()
+	{
+		m_bRecording = !m_bRecording;
+		Replication.BumpMe();
 	}
 }
