@@ -813,10 +813,16 @@ class CRF_SlottingMenu: ChimeraMenuBase
 					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 						m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetDisconnectWidget().SetVisible(true);
 					
+					//Sets slot to faction color when selected
 					//m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlottedWidget().SetVisible(true);
 					Color factionColor = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()).GetFactionColor();
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetColor(factionColor);
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetColor(factionColor);
+					
+					//Sets the opacity too
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetOpacity(0.5);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetOpacity(0.5);
+					
 				}
 				else
 					isGroupFull = false;
