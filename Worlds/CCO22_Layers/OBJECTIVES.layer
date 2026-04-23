@@ -55,6 +55,17 @@ $grp BaseGameTriggerEntity {
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
   "				continue;"\
   "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
+  "				continue;"\
+  "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
   "			if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
   "				bluforPlayers++;"\
@@ -129,6 +140,17 @@ $grp BaseGameTriggerEntity {
   "		foreach (IEntity entity: entities)"\
   "		{"\
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
+  "				continue;"\
+  "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
   "				continue;"\
   "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
@@ -252,6 +274,17 @@ $grp BaseGameTriggerEntity {
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
   "				continue;"\
   "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
+  "				continue;"\
+  "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
   "			if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
   "				bluforPlayers++;"\
@@ -326,6 +359,17 @@ $grp BaseGameTriggerEntity {
   "		foreach (IEntity entity: entities)"\
   "		{"\
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
+  "				continue;"\
+  "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
   "				continue;"\
   "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
@@ -450,6 +494,17 @@ $grp BaseGameTriggerEntity {
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
   "				continue;"\
   "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
+  "				continue;"\
+  "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
   "			if (factComp.GetAffiliatedFactionKey() == \"BLUFOR\")"\
   "				bluforPlayers++;"\
@@ -524,6 +579,17 @@ $grp BaseGameTriggerEntity {
   "		foreach (IEntity entity: entities)"\
   "		{"\
   "			if (!entity.FindComponent(FactionAffiliationComponent))"\
+  "				continue;"\
+  "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			CharacterControllerComponent charCon = character.GetCharacterController();"\
+  "			if (!charCon)"\
+  "				continue;"\
+  "			"\
+  "			if (charCon.IsDead())"\
   "				continue;"\
   "			"\
   "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
@@ -728,13 +794,13 @@ $grp PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Spec
     Position 25.247 0 -104.977
    }
    ShapePoint "{691F5CDD2AC3F0CF}" {
-    Position 122.377 0 -8.212
+    Position 55.033 0 -16.157
    }
    ShapePoint "{691F5CDD2A910B44}" {
-    Position 113.513 0 66.918
+    Position 89.058 0 82.275
    }
    ShapePoint "{691F5CDD297AFCF3}" {
-    Position 159.6 0 140.308
+    Position 121.029 0 135.937
    }
    ShapePoint "{691F5CDD29C9713D}" {
     Position 212.006 0 146.247
@@ -746,13 +812,13 @@ $grp PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Spec
     Position 310.444 0 141.867
    }
    ShapePoint "{691F5CDD28242FDC}" {
-    Position 347.337 0 169.428
+    Position 322.871 0 166.956
    }
    ShapePoint "{691F5CDD1E8E3B44}" {
-    Position 387.58 0 211.459
+    Position 343.576 0 206.658
    }
    ShapePoint "{691F5CDD1D4914BC}" {
-    Position 376.426 0 313.686
+    Position 329.343 0 318.302
    }
    ShapePoint "{691F5CDD1D182B7E}" {
     Position 385.719 0 408.483
@@ -783,6 +849,38 @@ $grp PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Spec
    }
    ShapePoint "{691F5CDD11A4F653}" {
     Position 1291.527 0 714.344
+   }
+  }
+ }
+ {
+  coords 1830.247 48.719 3122.912
+  Points {
+   ShapePoint "{692ACE74277ECAA6}" {
+    Position 85.651 0 6.864
+   }
+   ShapePoint "{692ACE7425F109E0}" {
+    Position 181.464 0 53.71
+   }
+   ShapePoint "{692ACE74227B82CB}" {
+    Position 337.394 0 86.665
+   }
+   ShapePoint "{692ACE7423FDD8C0}" {
+    Position 465.456 0 122.24
+   }
+   ShapePoint "{692ACE74234B3D22}" {
+    Position 570.597 0 218.231
+   }
+   ShapePoint "{692ACE7420CA611A}" {
+    Position 637.348 0 323.11
+   }
+   ShapePoint "{692ACE74205C4C0F}" {
+    Position 941.839 0 395.701
+   }
+   ShapePoint "{692ACE743BC3471E}" {
+    Position 1181.1 0 278.137
+   }
+   ShapePoint "{692ACE7438E30C3C}" {
+    Position 1741.85 0 428.694
    }
   }
  }

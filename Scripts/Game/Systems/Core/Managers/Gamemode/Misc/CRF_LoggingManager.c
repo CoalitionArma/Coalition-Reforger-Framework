@@ -212,6 +212,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
+		
+		// Log late-connect if player connects during safestart (game phase, before safestart ends)
+		// These players are eligible for AAR. Players who connect after safestart ends are not.
+		if (m_GM && m_GM.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
+			if (safestart && safestart.GetSafestartStatus())
+			{
+				if (m_LogFileHandle)
+					m_LogFileHandle.WriteLine("jip" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

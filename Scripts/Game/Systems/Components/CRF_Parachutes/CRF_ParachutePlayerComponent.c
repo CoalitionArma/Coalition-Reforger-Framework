@@ -121,6 +121,31 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		if (IsAuthority() && m_DeployedChuteEntity)
 			DeleteChuteEntity(m_DeployedChuteEntity);
 	}
+	
+	void QueueChuteOpening()
+	{
+		SetEventMask(GetOwner(), EntityEvent.FRAME);
+	}
+	
+	float m_fBuffer = 0;
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		if (m_DeployedChuteEntity)
+		{
+			ClearEventMask(owner, EntityEvent.FRAME);
+			return;
+		}
+		
+		if (m_fBuffer < 0.5)
+		{
+			m_fBuffer += timeSlice;
+			return;
+		}
+		else
+			m_fBuffer = 0;
+		
+		Rpc_RequestDeploy();
+	}
 
 	// --------------------------------------------------------------------------------------------
 	// Character / Inventory Tracking

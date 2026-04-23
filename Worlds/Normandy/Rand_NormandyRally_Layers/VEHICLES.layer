@@ -1,0 +1,355 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 722.794 24.16 4139.305
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3820.76 8.5 569.908
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3816.268 8.5 571.708
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3812.085 8.5 573.384
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3807.193 8.5 575.345
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3802.802 8.5 577.105
+  angles 0 21.756 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3798.346 8.5 578.891
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3793.853 8.5 580.692
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3789.67 8.5 582.368
+  angles 0 21.77 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3784.778 8.5 584.328
+  angles 0 21.77 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3780.387 8.5 586.089
+  angles 0 21.77 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3818.838 8.5 578.134
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3814.655 8.5 579.81
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3809.763 8.5 581.771
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3805.372 8.5 583.531
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3800.917 8.5 585.317
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3796.423 8.5 587.118
+  angles 0 21.756 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3792.239 8.5 588.794
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3787.348 8.5 590.755
+  angles 0 21.77 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3782.957 8.5 592.515
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3823.331 8.5 576.333
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3821.338 8.5 584.387
+  angles 0 21.826 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3817.156 8.5 586.063
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3812.264 8.5 588.024
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3807.872 8.5 589.784
+  angles 0 21.826 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3803.417 8.5 591.569
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3798.923 8.5 593.37
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3794.741 8.5 595.047
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3789.849 8.5 597.007
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3785.458 8.5 598.767
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3825.832 8.5 582.586
+  angles 0 21.84 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3823.638 8.5 590.136
+  angles 0 21.84 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3819.455 8.5 591.812
+  angles 0 21.84 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3814.564 8.478 593.773
+  angles 0.332 21.781 -0.831
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3810.171 8.497 595.533
+  angles -0.333 21.822 0.831
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3805.717 8.5 597.318
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3801.223 8.5 599.119
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3797.04 8.5 600.796
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3792.149 8.5 602.756
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3787.757 8.5 604.516
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3828.131 8.5 588.335
+  angles 0 21.854 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3826.051 8.347 596.169
+  angles 1.33 21.801 -3.32
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3821.867 8.5 597.846
+  angles 0 21.826 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3816.977 8.42 599.806
+  angles 1.655 21.706 -4.15
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3812.584 8.361 601.566
+  angles -6.88 20.543 10.594
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3808.13 8.5 603.351
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3803.636 8.5 605.153
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3799.452 8.5 606.829
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3794.562 8.5 608.79
+  angles 0 21.812 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3790.169 8.5 610.55
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3830.543 8.5 594.369
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3828.223 8.264 601.601
+  angles -2.794 22.148 -4.986
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3824.04 8.499 603.277
+  angles -0.664 21.779 1.662
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3819.149 8.354 605.238
+  angles 3.566 21.257 -9.083
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3814.757 8.021 606.998
+  angles 1.355 22.251 17.405
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3810.302 8.5 608.783
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3805.809 8.5 610.584
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3801.625 8.5 612.261
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3796.734 8.5 614.221
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3792.342 8.5 615.982
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3832.716 8.5 599.8
+  angles 0 21.826 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3830.272 7.988 606.722
+  angles 5.848 20.181 -15.493
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3826.087 8.491 608.399
+  angles -2.302 21.564 5.804
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3821.198 8.411 610.359
+  angles -4.437 22.237 -5.651
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3816.805 7.975 612.12
+  angles -0.226 22 16.791
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3812.351 8.5 613.905
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3807.857 8.5 615.706
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3803.673 8.5 617.383
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3798.783 8.5 619.342
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3794.39 8.5 621.103
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+ {
+  coords 3834.764 8.5 604.922
+  angles 0 21.798 0
+  m_rVehicle "{3FDBFE7F1A1EB8F2}Prefabs/Vehicles/Wheeled/WW2_Bike/WW2_Bike_base.et"
+ }
+}

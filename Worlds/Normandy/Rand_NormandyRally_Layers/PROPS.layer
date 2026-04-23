@@ -1,0 +1,283 @@
+GenericEntity : "{664734CBB85A12CD}Prefabs/Props/Indicators/Indicator_Pointer3D.et" {
+ coords 3852.886 30.235 691.102
+ {
+  GenericEntity : "{582392E334A36FEA}Prefabs/Props/Indicators/Indicator_Pointer_Flat.et" {
+   coords -836.076 19.22 1652.397
+   angles 0 31.817 0
+  }
+  $grp GenericEntity : "{664734CBB85A12CD}Prefabs/Props/Indicators/Indicator_Pointer3D.et" {
+   {
+    coords -829.588 27.388 1575.626
+   }
+   {
+    coords -806.301 9.733 1715.727
+   }
+   {
+    coords -1199.087 37.991 3131.501
+   }
+  }
+  $grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+   {
+    coords -66.355 -15.262 686.96
+    angles 0 -60.88 0
+   }
+   {
+    coords -411.901 -5.442 744.695
+    angles 0 -46.355 0
+   }
+   {
+    coords -516.988 -16.207 1003.538
+    angles 0 72.55 0
+   }
+   {
+    coords -345.567 -20.238 1151.091
+    angles 0 43.681 0
+   }
+   {
+    coords -320.151 -18.149 1158.064
+    angles 0 -8.8 0
+   }
+   {
+    coords -336.052 -16.667 1225.558
+    angles 0 -102.729 0
+   }
+   {
+    coords -384.318 -21.977 1202.042
+    angles 0 -33.652 0
+   }
+   {
+    coords -494.684 4.156 1478.992
+    angles 0 -79.928 0
+   }
+   {
+    coords -753.674 4.181 1788.571
+    angles 0 -25.333 0
+   }
+   {
+    coords -859.426 5.887 2124.279
+    angles 0 66.822 0
+   }
+   {
+    coords -515.328 12.189 2097.976
+    angles 0 75.768 0
+   }
+   {
+    coords -438.958 21.628 2113.64
+    angles 0 2.362 0
+   }
+   {
+    coords -413.93 11.911 2385.462
+    angles 0 -62.105 0
+   }
+   {
+    coords -1216.988 27.387 2789.281
+    angles 0 -43.746 0
+   }
+   {
+    coords -1262.275 30.986 2932.235
+    angles 0 19.132 0
+   }
+   {
+    coords -1213.728 28.277 3099.084
+    angles 0 39.031 0
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{82D7594EEFF1D498}Prefabs/Trench/Barrier1.et" {
+ {
+  coords 3850.419 9.203 905.245
+  angles 0 0 0
+ }
+ {
+  coords 3791.282 9.546 1395.458
+  angles 0 100.685 0
+  scale 2.78
+ }
+ {
+  coords 3690.502 9.69 1596.602
+  angles 0 48.05 0
+  scale 2.12
+ }
+ {
+  coords 3436.5 8.5 1435.558
+  angles 0 -19.78 0
+ }
+ {
+  coords 3336.241 7.679 1701.943
+  angles 0 85.555 0
+  scale 1.71
+ }
+ {
+  coords 3550.418 4.125 1762.39
+  angles 0 61.639 0
+  scale 2.038
+ }
+ {
+  coords 3501.904 4.746 1846.807
+  angles 0 60.421 0
+  scale 4.033
+ }
+ {
+  coords 3540.759 4.363 1851.141
+  angles 0 0 0
+  scale 3.33
+ }
+ {
+  coords 3556.767 4.494 1867.203
+  angles 0 71.09 0
+  scale 1.78
+ }
+ {
+  coords 3523.815 4.123 1919.506
+  angles 0 -32.144 0
+  scale 3.122
+ }
+ {
+  coords 3465.331 4.125 1889.872
+  angles 0 -30.546 0
+  scale 3.73
+ }
+ {
+  coords 3359.022 25.279 2174.813
+  angles 0 -81.929 0
+  scale 2.17
+ }
+ {
+  coords 2987.261 26.832 2810.21
+  angles 0 0 0
+  scale 2.29
+ }
+ {
+  coords 3018.846 26.151 2837.908
+  angles 0 75.803 0
+  scale 1.57
+ }
+ {
+  coords 3341.939 33.04 2782.233
+  angles 3.136 44.822 -8.171
+  scale 1.57
+ }
+ {
+  coords 3418.304 43.26 2804.543
+  angles 0 0 0
+  scale 1.61
+ }
+ {
+  coords 3440.68 34.448 3088.704
+  angles 0 -77.017 0
+  scale 2.6
+ }
+ {
+  coords 2639.919 47.033 3476.334
+  angles 0 54.764 0
+  scale 1.22
+ }
+ {
+  coords 2585.24 51.185 3610.844
+  angles 0 -22.226 0
+  scale 1.65
+ }
+ {
+  coords 2585.985 51.656 3626.957
+  angles 0 0 0
+  scale 1.96
+ }
+ {
+  coords 2629.653 53.447 3679.638
+  angles 0 0 0
+  scale 1.47
+ }
+ {
+  coords 2638.36 53.844 3800.891
+  angles 0 -87.753 0
+  scale 1.87
+ }
+ {
+  coords 2659.826 54.935 3794.122
+  angles 0 0 0
+  scale 2.36
+ }
+ {
+  coords 2652.475 54.739 3783.838
+  angles 0 47.397 0
+  scale 2.92
+ }
+ {
+  coords 2644.375 54.606 3802.166
+  angles 0 -97.199 0
+  scale 1.61
+ }
+ {
+  coords 2667.521 54.531 3867.569
+  angles 0 2.231 0
+  scale 2.92
+ }
+ {
+  coords 2665.328 54.655 3854.616
+  angles 0 21.781 0
+  scale 3.65
+ }
+ {
+  coords 2668.958 53.938 3881.219
+  angles 0 2.231 0
+  scale 5.957
+ }
+ {
+  coords 2645.261 53.404 3852.184
+  angles 0 -8.9 0
+  scale 2.92
+ }
+ {
+  coords 2644.695 53.377 3864.285
+  angles 0 2.231 0
+  scale 3.446
+ }
+ {
+  coords 2643.058 52.419 3880.595
+  angles 0 2.231 0
+  scale 6.599
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 3801.837 8.5 607.224
+ Points {
+  ShapePoint "{692E2DEAE216AA3B}" {
+   Position -73.205 0 39.221
+  }
+  ShapePoint "{692E2DEAFDD33952}" {
+   Position -82.012 0 -71.128
+  }
+  ShapePoint "{692E2DEAFC5AEBA2}" {
+   Position 5.978 0 -125.273
+  }
+  ShapePoint "{692E2DEAFFEB8F88}" {
+   Position 44.088 0 -65.62
+  }
+  ShapePoint "{692E2DEAFE5612B7}" {
+   Position 79.591 0 63.752
+  }
+  ShapePoint "{692E2DEAFEA77180}" {
+   Position -19.477 0 65.363
+  }
+ }
+}
+SCR_BaseTriggerEntity killbox : "{B7AB0899A91A985D}Prefabs/Systems/ScenarioFramework/Triggers/Trigger_Base.et" {
+ coords 2658.443 53.936 3912.471
+ TriggerShapeType Sphere
+ SphereRadius 21.9
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		DamageManagerComponent dmg = DamageManagerComponent.Cast(ent.FindComponent(DamageManagerComponent));"\
+ "        if (dmg)"\
+ "            dmg.SetHealthScaled(0);"\
+ "    "\
+ "	"
+}
+StaticModelEntity : "{BB64FBA6986C62F7}Prefabs/Structures/BuildingParts/Entry/ConcreteSlope_02_MediumVehicle.et" {
+ coords 2656.366 59.456 3881.079
+ angles -3.038 -176.408 -2.069
+ scale 4.1
+}
