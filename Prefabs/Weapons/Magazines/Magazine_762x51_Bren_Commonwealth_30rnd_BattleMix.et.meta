@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
