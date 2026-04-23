@@ -107,10 +107,10 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart
    Position 907.515 0 312.112
   }
   ShapePoint "{691AF2D0B22C7A08}" {
-   Position 1018.275 0 273.886
+   Position 1004.158 0 315.205
   }
   ShapePoint "{691AF2D0F7CC42EB}" {
-   Position 1487.19 0 354.811
+   Position 1453.92 0 422.729
   }
   ShapePoint "{691AF2D70E0102E1}" {
    Position 2825.997 0 -2378.245

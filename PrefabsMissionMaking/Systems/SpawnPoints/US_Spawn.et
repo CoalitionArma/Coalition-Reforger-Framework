@@ -1,0 +1,13 @@
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ ID "50C6D20663830070"
+ components {
+  SlotManagerComponent "{645911BAB1D66B16}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{971F705971EF6F4B}Prefabs/Props/Fabric/Flags/Flag_1_2_US_01.et"
+    }
+   }
+  }
+ }
+ coords 3869.796 41.102 4341.031
+}

@@ -1,0 +1,22 @@
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 16182.405 135.23 9290.326
+  angles 0 65.989 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 15895.112 139.477 8705.777
+  angles 0 3.357 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 13875.23 50.601 12116.475
+  angles 0 -6.943 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+ {
+  coords 16275.468 1.999 11339.252
+  angles 0 -6.943 0
+  m_rVehicle "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+ }
+}

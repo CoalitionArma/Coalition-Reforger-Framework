@@ -30,7 +30,8 @@ GameEntity {
       Offset 4.1176 1.9661 -2.9288
       Angles 0 180 0
      }
-     GetOutTeleport 0
+     GetInTeleport 1
+     GetOutTeleport 1
      AlignDuringGetOut 1
      GetInAligningTeleport 0
      GetOutAligningTeleport 1

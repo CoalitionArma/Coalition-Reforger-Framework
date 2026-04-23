@@ -31,111 +31,56 @@ GenericEntity mortar : "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/Equip
  coords 2656.63 53.233 3883.166
  angles 0 171 0
 }
-$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 3826.446 8.26 815.75
  {
-  coords 2678.011 52.696 3894.693
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    components {
-     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
-      m_aEncapsulators {
-       SCR_ResourceEncapsulator "{5DAD1D48DACE9DE8}" {
-        m_aActions {
-         SCR_ResourceEncapsulatorActionChangeGain "{5DE296D4D87F56EC}" {
-          m_bEnableResourceGain 1
-          m_fResourceGain 1000
-          m_fResourceGainTickrate 3600
-         }
-        }
-       }
-      }
-     }
-    }
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
-          m_fResourceValueMax 0
-         }
-        }
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
-          m_fResourceValueMax 0
-         }
-        }
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueMax 4000
-         }
-        }
-       }
+  GenericEntity {
+   ID "5D45393876460D01"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_fResourceGain 0
+       m_fResourceGainTickrate 0
       }
      }
     }
    }
-  }
- }
- {
-  coords 3826.446 8.26 815.75
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 4000
-          m_fResourceValueMax 4000
-         }
+   {
+    GenericEntity {
+     ID "5D453938619FC380"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 4000
+         m_fResourceValueMax 4000
         }
        }
       }
      }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
-          m_fResourceValueMax 0
-         }
+    }
+    GenericEntity {
+     ID "5D453938619FC381"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 0
         }
        }
       }
      }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       SCR_ResourceComponent "{5D247A59598D71AE}" {
-        m_aContainers {
-         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
-          m_fResourceValueMax 0
-         }
+    }
+    GenericEntity {
+     ID "5D453938619FC383"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 0
         }
        }
       }
