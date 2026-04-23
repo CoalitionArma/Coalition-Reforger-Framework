@@ -104,6 +104,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_AARFile.WriteLine(string.Format("{ \"mission\": \"%1\", \"frames\": [", m_sMissionName));
 		
 		m_bRecording = true;
+		Replication.BumpMe()
 		
 		Print("[CRF_VAAR] Recording Started");
 		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
@@ -215,6 +216,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Stop frame recording
 		m_bRecording = false;
+		Replication.BumpMe();
 		
 		// Add a blank frame and close out the json file so it valid
 		if (!m_AARFile)
