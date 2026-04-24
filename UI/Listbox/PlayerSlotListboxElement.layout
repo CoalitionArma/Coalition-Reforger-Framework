@@ -169,6 +169,10 @@ ButtonWidgetClass {
          "Min Font Size" 5
          "Vertical Alignment" Center
          Wrap 1
+         FontProperties FontProperties "{691EE844BCE53809}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+          OutlineSize 2
+         }
         }
         ButtonWidgetClass "{632444CBEEFA6A4A}" {
          Name "SlotButton"
@@ -226,6 +230,9 @@ ButtonWidgetClass {
          "Min Font Size" 10
          "Vertical Alignment" Center
          Wrap 1
+         FontProperties FontProperties "{546AF489DFD25402}" {
+          OutlineSize 2
+         }
         }
         ImageWidgetClass "{632444CBEEFA6924}" {
          Name "Divider1"
@@ -280,6 +287,16 @@ ButtonWidgetClass {
          Size 800 800
         }
        }
+      }
+      ImageWidgetClass "{691EE2BA2BBC4ABA}" {
+       Name "Slotted"
+       Slot OverlayWidgetSlot "{691EE2BA2BBC4A73}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Opacity 0.25
+       Color 1 0 0 1
       }
      }
     }

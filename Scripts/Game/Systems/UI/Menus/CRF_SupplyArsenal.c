@@ -768,8 +768,27 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		IEntity truck = GetNearestVehicle();
 		if (!truck)
 			return;
+		
+		SCR_VehicleInventoryStorageManagerComponent invStorageComp = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!invStorageComp)
+			return;
+		
+		if (!invStorageComp.CanInsertResource(itemButton.m_sResource))
+		{
+			NoRoomNotification();
+			return;
+		}
+
 		CRF_PlayerRplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
 		AddNotification(TextWidget.Cast(itemButton.m_wButtonRoot.FindAnyWidget("ArsenalItemText")).GetText(), m_wEditBox.GetText().ToInt());
+	}
+
+	void NoRoomNotification()
+	{
+		Widget item = GetGame().GetWorkspace().CreateWidgets("{8DE299D2A550FAFB}UI/layouts/Menus/Arsenal/SupplyArsenalNotification.layout", m_Notifications);
+		TextWidget.Cast(item.FindAnyWidget("ArsenalItemText")).SetText(string.Format("Not Enough Room in Vehicle"));
+		item.FindAnyWidget("Image0").SetColor(Color.FromInt(Color.RED));
+		m_aNotifications.Insert(item);
 	}
 	
 	IEntity GetNearestVehicle()
