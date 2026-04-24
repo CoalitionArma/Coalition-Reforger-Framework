@@ -1918,6 +1918,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		SCR_ButtonTextComponent toggleRespawn = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("EnableRespawnButton").FindHandler(SCR_ButtonTextComponent));
 		toggleRespawn.m_OnClicked.Insert(ToggleRespawn);
 		
+		//Toggle VAAR Recording
+		SCR_ButtonTextComponent toggleVAARRecording = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("ToggleVAARButton").FindHandler(SCR_ButtonTextComponent));
+		toggleVAARRecording.m_OnClicked.Insert(ToggleVAARRecording);
+		
 		//Setting Respawn Time Button
 		EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).SetText(CRF_RespawnManager.GetInstance().m_iCurrentTimeToRespawn.ToString());
 		SCR_ButtonTextComponent setRespawnTime = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("SetRespawnTimeButton").FindHandler(SCR_ButtonTextComponent));
@@ -1958,6 +1962,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		ctx.ReadValue("", m_gearsetlist);
+	}
+	
+	void ToggleVAARRecording()
+	{
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleVAARRecording();
 	}
 	
 	/**
@@ -2162,6 +2171,20 @@ class CRF_AdminMenu : ChimeraMenuBase
 		{
 			paradropEnabledText.SetText("Paradrop Disabled");
 			paradropEnabledText.SetColorInt(Color.RED);
+		}
+		
+		bool m_bVAARRecordingEnabled = CRF_VAAR_GamemodeComponent.GetInstance().m_bRecording;
+		Widget VAARRecordingEnabledButton = m_wMenuContent.FindAnyWidget("ToggleVAARButton");
+		TextWidget VAARRecordingEnabledText = TextWidget.Cast(VAARRecordingEnabledButton.FindWidget("ActionButtonText"));
+		if (m_bVAARRecordingEnabled)
+		{
+			VAARRecordingEnabledText.SetText("Recording Enabled");
+			VAARRecordingEnabledText.SetColorInt(Color.GREEN);
+		}
+		else
+		{
+			VAARRecordingEnabledText.SetText("Recording Disabled");
+			VAARRecordingEnabledText.SetColorInt(Color.RED);
 		}
 	}
 	
