@@ -104,7 +104,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_AARFile.WriteLine(string.Format("{ \"mission\": \"%1\", \"frames\": [", m_sMissionName));
 		
 		m_bRecording = true;
-		Replication.BumpMe()
+		Replication.BumpMe();
 		
 		Print("[CRF_VAAR] Recording Started");
 		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
@@ -268,7 +268,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			case EVehicleType.APC : {return "APC";}
 			case EVehicleType.CAR : {return "CAR";}
 			case EVehicleType.TRUCK : {return "TRUCK";}
-			case EVehicleType.TANK : {return "TANK";}
+			//case EVehicleType.TANK : {return "TANK";}
 			case EVehicleType.MORTAR : {return "MOTAR";}
 			default : {return "HELICOPTER";} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
 		}
