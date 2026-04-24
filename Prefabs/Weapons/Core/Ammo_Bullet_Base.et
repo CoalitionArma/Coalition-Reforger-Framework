@@ -1,3 +1,11 @@
 Projectile {
  ID "DA5C6308000CDEF2"
+ components {
+  CollisionTriggerComponent "{5EC4ED74DDD6DD27}" {
+   PROJECTILE_EFFECTS {
+    CRF_VAAR_BaseProjectileEffect "{69170280AA433C28}" {
+    }
+   }
+  }
+ }
 }

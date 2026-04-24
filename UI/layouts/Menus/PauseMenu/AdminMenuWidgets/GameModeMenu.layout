@@ -5,14 +5,14 @@ FrameWidgetClass {
    Name "MenuSlot1"
    Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -816
-    OffsetLeft -816
-    PositionY -484
-    OffsetTop -484
+    PositionX -817.024
+    OffsetLeft -817.024
+    PositionY -485.024
+    OffsetTop -485.024
     SizeX 1128
-    OffsetRight -312
+    OffsetRight -310.976
     SizeY 928
-    OffsetBottom -444
+    OffsetBottom -442.976
    }
    "Z Order" 1
    "Is Enabled" 0
@@ -137,14 +137,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -192,14 +184,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -247,14 +231,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -302,14 +278,6 @@ FrameWidgetClass {
         Padding 0 20 0 0
        }
        {
-        ScrollLayoutWidgetClass "{56691148E692435A}" {
-         Prefab "{56691148E692435A}"
-         {
-          VerticalLayoutWidgetClass "{56691148E013D981}" {
-           Prefab "{56691148E013D981}"
-          }
-         }
-        }
         ImageWidgetClass "{5DB6D18100D38307}" {
          Prefab "{5DB6D18100D38307}"
          "Is Visible" 0
@@ -1539,6 +1507,75 @@ FrameWidgetClass {
        Slot ButtonWidgetSlot "{62992E44F11398F5}" {
        }
        Text "Enable Respawns"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{692D604BACF97BDF}" {
+   Name "VAAR"
+   Slot FrameWidgetSlot "{659CDD578CE45868}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -791.999
+    OffsetLeft -791.999
+    PositionY 131.987
+    OffsetTop 131.987
+    SizeX 361.827
+    OffsetRight 430.172
+    SizeY 82.708
+    OffsetBottom -214.695
+   }
+   {
+    TextWidgetClass "{692D604BACF97BDA}" {
+     Name "VAARTitle"
+     Slot FrameWidgetSlot "{659CDD570CAD5675}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 80
+      OffsetRight -80
+      SizeY 32
+      OffsetBottom -32
+     }
+     Clipping False
+     Text "Virtual AAR"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+    ButtonWidgetClass "{692D604BACF80D7A}" {
+     Name "ToggleVAARButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 12.172
+      OffsetLeft 12.172
+      PositionY 37.937
+      OffsetTop 37.937
+      SizeX 173.86
+      OffsetRight -186.032
+      SizeY 29.999
+      OffsetBottom -67.936
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{692D604BACF80D75}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Toggle Recording"
        "Font Size" 15
        "Min Font Size" 15
       }

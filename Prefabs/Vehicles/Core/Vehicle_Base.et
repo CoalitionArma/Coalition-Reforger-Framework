@@ -1,0 +1,7 @@
+Vehicle {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_VAAR_VehicleTrakcerComponent "{6926CE850B708399}" {
+  }
+ }
+}
