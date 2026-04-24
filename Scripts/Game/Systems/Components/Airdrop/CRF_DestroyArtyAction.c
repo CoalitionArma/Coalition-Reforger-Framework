@@ -79,7 +79,9 @@ class CRF_DestroyArtyAction: ScriptedUserAction
 	
 	override bool CanBeShownScript(IEntity user)
 	{
-				
+		if (CRF_GamemodeManager.GetInstance().m_iGunsDestroyed >= 4)
+			return false;
+		
 		if (m_ArtyComponent.m_bIsDestroyed)
 			return false;
 		

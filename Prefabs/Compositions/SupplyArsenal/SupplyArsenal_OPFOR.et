@@ -62,6 +62,27 @@ GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
   GenericEntity {
    ID "58C28EA16E7B7C58"
    components {
+    SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+     Enabled 0
+    }
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     Enabled 0
+    }
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     Enabled 0
+    }
+    SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+     Enabled 0
+    }
+    SCR_SoundDataComponent "{5C53391603B5CF41}" {
+     Enabled 0
+    }
+    UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+     Enabled 0
+    }
+    SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+     Enabled 0
+    }
     ActionsManagerComponent "{5476B36C403D4CC0}" {
      Enabled 0
     }
