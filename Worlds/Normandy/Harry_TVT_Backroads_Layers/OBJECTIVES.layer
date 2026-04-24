@@ -1,0 +1,247 @@
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 4657.071 28.984 4005.045
+ angles 0 0 0
+ m_MarkerColor 0.502 0 0 1
+ m_sDescription "OPFOR Potential FOB"
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "SPEC"
+ }
+ m_bShowForAnyFaction 0
+}
+$grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/SupplyStack_Large_01_storage.et" {
+ {
+  coords 2661.348 45.428 4319.588
+ }
+ {
+  coords 2666.329 45.575 4323.024
+ }
+ {
+  coords 2663.857 45.575 4323.037
+ }
+ {
+  coords 2661.336 45.428 4322.794
+ }
+ {
+  coords 2662.557 45.428 4319.626
+ }
+ {
+  coords 2663.961 45.645 4320.953
+ }
+ {
+  coords 2665.169 45.712 4319.905
+ }
+ {
+  coords 2663.96 45.645 4319.867
+ }
+ {
+  coords 2665.17 45.712 4320.991
+ }
+ {
+  coords 2662.545 45.428 4322.832
+ }
+ {
+  coords 2662.544 45.428 4321.746
+ }
+ {
+  coords 2662.558 45.428 4320.712
+ }
+ {
+  coords 2667.536 45.635 4319.805
+ }
+ {
+  coords 2667.537 45.651 4320.892
+ }
+ {
+  coords 2667.537 45.635 4321.977
+ }
+ {
+  coords 2665.065 45.635 4321.989
+ }
+ {
+  coords 2666.328 45.575 4320.854
+ }
+ {
+  coords 2667.538 45.651 4323.063
+ }
+ {
+  coords 2665.066 45.651 4323.075
+ }
+ {
+  coords 2666.327 45.56 4319.768
+ }
+ {
+  coords 2661.335 45.428 4321.708
+ }
+ {
+  coords 2661.349 45.428 4320.674
+ }
+ {
+  coords 2663.856 45.56 4321.951
+ }
+ {
+  coords 2666.328 45.56 4321.939
+ }
+ {
+  coords 2650.816 44.858 4320.461
+ }
+ {
+  coords 2652.01 44.932 4321.534
+ }
+ {
+  coords 2654.531 45.061 4321.776
+ }
+ {
+  coords 2653.427 44.996 4319.655
+ }
+ {
+  coords 2653.323 45.013 4322.825
+ }
+ {
+  coords 2655.796 45.147 4322.812
+ }
+ {
+  coords 2654.636 45.062 4320.779
+ }
+ {
+  coords 2652.023 44.908 4319.414
+ }
+ {
+  coords 2657.004 45.198 4320.68
+ }
+ {
+  coords 2652.025 44.916 4320.5
+ }
+ {
+  coords 2652.011 44.948 4322.62
+ }
+ {
+  coords 2655.794 45.139 4321.727
+ }
+ {
+  coords 2654.532 45.078 4322.863
+ }
+ {
+  coords 2655.794 45.123 4320.642
+ }
+ {
+  coords 2653.323 45 4321.739
+ }
+ {
+  coords 2655.793 45.115 4319.556
+ }
+ {
+  coords 2657.002 45.188 4319.593
+ }
+ {
+  coords 2650.802 44.874 4321.496
+ }
+ {
+  coords 2654.635 45.062 4319.692
+ }
+ {
+  coords 2657.005 45.203 4322.851
+ }
+ {
+  coords 2650.802 44.881 4322.582
+ }
+ {
+  coords 2657.004 45.203 4321.765
+ }
+ {
+  coords 2650.814 44.85 4319.375
+ }
+ {
+  coords 2653.427 45.004 4320.741
+ }
+}
+GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ coords 4670.512 28.67 3961.192
+ angles 0 151.07 0
+}
+$grp GenericEntity : "{677917B581F03974}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V2_storage.et" {
+ {
+  coords 2664.583 45.63 4324.082
+  angles 0 -177.462 0
+ }
+ {
+  coords 2654.05 45.064 4323.87
+  angles 0 -177.462 0
+ }
+}
+GenericEntity : "{6B1CAED52B91E267}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_Conflict_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{659122CEBD83D1B9}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 4650.678 28.454 3961.506
+ angles 0 -176.307 0
+ {
+  GenericEntity {
+   ID "659122CEAC7F1517"
+   {
+    GenericEntity {
+     ID "65912058D6360042"
+     components {
+      SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+       "faction affiliation" "OPFOR"
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "659122CEBD82D215"
+   components {
+    SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D3706BECE3A18AD"
+     components {
+      SCR_FactionAffiliationComponent "{5D36D46E9AAC6ACB}" {
+       "faction affiliation" "OPFOR"
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{DA3D4CF729F32F6B}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V5_storage.et" {
+ {
+  coords 2665.866 45.715 4324.279
+ }
+ {
+  coords 2660.158 45.381 4323.717
+ }
+ {
+  coords 2649.625 44.825 4323.504
+ }
+ {
+  coords 2655.333 45.126 4324.066
+ }
+}
+$grp GenericEntity : "{F39F7C209905A4C7}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage.et" {
+ {
+  coords 2660.046 45.343 4321.71
+ }
+ {
+  coords 2660.128 45.359 4322.676
+ }
+ {
+  coords 2663.252 45.546 4324.013
+ }
+ {
+  coords 2652.719 45 4323.801
+ }
+ {
+  coords 2649.594 44.824 4322.463
+ }
+ {
+  coords 2649.512 44.806 4321.498
+ }
+}
