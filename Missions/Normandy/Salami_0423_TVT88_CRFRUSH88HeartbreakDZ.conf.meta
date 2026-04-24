@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3724CBE4C1EF9197}Missions/Normandy/Salami_0423_TVT88_CRFRAID88HeartbreakDZ.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

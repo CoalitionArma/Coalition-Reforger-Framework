@@ -1,0 +1,13 @@
+GenericEntity : "{A052AD4BC484EE45}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{612B3AC7AE586474}" {
+     Weight 0.01
+    }
+   }
+   WeightPerAmmo 0.001
+  }
+ }
+}

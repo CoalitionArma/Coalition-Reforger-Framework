@@ -1,0 +1,30 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 2660.519 45.54 4331.001
+  angles 0 1.093 0
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2656.044 45.317 4331.086
+  angles 0 1.093 0
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2652.039 45.101 4331.162
+  angles 0 1.093 0
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2664.795 45.77 4330.919
+  angles 0 1.093 0
+  m_rVehicle "{CCC396C2DA2559D9}Prefabs/Vehicles/Wheeled/OpelBlitz/Opel_Blitz_Uncovered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
