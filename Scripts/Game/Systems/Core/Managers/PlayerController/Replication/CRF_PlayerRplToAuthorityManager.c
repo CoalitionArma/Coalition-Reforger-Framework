@@ -418,6 +418,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void ToggleVAARRecording()
+	{
+		Rpc(RpcAsk_ToggleVAARRecording);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SetRespawnTime(int seconds)
 	{
 		Rpc(RpcAsk_SetRespawnTime, seconds);
@@ -1928,6 +1934,16 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_ToggleRespawn", 0);
 		
 		CRF_RespawnManager.GetInstance().ToggleRespawn();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ToggleVAARRecording()
+	{
+		// Telemetry: no parameters
+		LogTelemetry("RpcAsk_ToggleVAARRecording", 0);
+		
+		CRF_VAAR_GamemodeComponent.GetInstance().ToggleRecording();
 	}
 	
 	//------------------------------------------------------------------------------------------------

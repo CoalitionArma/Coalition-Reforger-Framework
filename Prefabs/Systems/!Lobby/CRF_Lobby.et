@@ -38,6 +38,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
    }
   }
+  CRF_VAAR_GamemodeComponent "{692D60493093033D}" {
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_sFreqConfig "{8FE52CD7F8502E24}Configs/Systems/FreqConfigs/CFCFrequencyConfig.conf"
   }
