@@ -109,7 +109,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			else
 			{
 				//Sends the player the respawn screen if they reconnect while dead
-				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId))
+				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerResawn(playerCharacter, faction.GetFactionKey()))
 					m_RplBroadcastManager.SendRespawnScreen(playerId);
 			}
 
