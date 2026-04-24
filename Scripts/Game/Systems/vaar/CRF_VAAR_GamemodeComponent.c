@@ -11,7 +11,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected string m_sFilePath;
 	protected FileHandle m_AARFile;
 	
-	[RplProp()] bool m_bRecording;
+	[RplProp()] bool m_bRecording = false;
 	protected float m_fTimer = 0;
 	
 	[Attribute("0.5", "auto", "Recording intervals in milliseconds", category: "CRF Virtual AAR System")]
