@@ -1,0 +1,601 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2375.042 48.719 2701.733
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_AirdropManager "{692EE98E5C2020C7}" {
+  }
+  CRF_RushGamemodeManager "{692ED7E9BA1CE78A}" {
+   m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/Rush/CRF_Rush_MCOM_NoNet.et"
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 2
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ userScript "	void SpawnParachute(IEntity entity)"\
+ "	{"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		"\
+ "		if (!entity)"\
+ "			return;"\
+ "		"\
+ "		FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+ "		if (!factComp)"\
+ "			return;"\
+ "		"\
+ "		Faction faction = factComp.GetAffiliatedFaction();"\
+ "		if (!faction)"\
+ "			return;"\
+ "		"\
+ "		//Inserts armband for german medics"\
+ "		if (faction.GetFactionKey() == \"OPFOR\" && entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
+ "			ChangeItem(entity, \"{46329967607CB8B5}Prefabs/Clothing/Medic ArmBand/ArmBand.et\", 13);"\
+ "		"\
+ "		//Only during safestart do we want americans to have parachutes"\
+ "		if (faction.GetFactionKey() == \"BLUFOR\" && CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "		{"\
+ "			ChangeItem(entity, \"{02546D7D1C1469CF}Prefabs/Items/Equipment/Backpacks/ParachuteBag_T10_01.et\", 5);"\
+ "			if (entity.GetPrefabData().GetPrefabName() == \"{4F201B6446013397}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Medic.et\")"\
+ "			{"\
+ "				SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "				if (!storageMan)"\
+ "					return;"\
+ "				"\
+ "				GetGame().GetCallqueue().CallLater(storageMan.TrySpawnPrefabToStorage, 5000, false, \"{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et\");"\
+ ""\
+ "			}"\
+ "		}"\
+ "			"\
+ "		"\
+ "		if (faction.GetFactionKey() == \"BLUFOR\")"\
+ "			ChangeItem(entity, \"{DFD3A15BC97061A2}Prefabs/Clothing/Bandolier/Airborne Bandolier.et\", 12);"\
+ "		"\
+ "	}"\
+ "	"\
+ "	protected void ChangeItem(IEntity player, string newResource, int slotId)"\
+ "	{"\
+ "		EntitySpawnParams params = new EntitySpawnParams();"\
+ "		player.GetTransform(params.Transform);"\
+ "		"\
+ "		IEntity newItem = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);"\
+ "		"\
+ "		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));"\
+ "		IEntity oldItem = invComponent.Get(slotId);"\
+ "		if (!oldItem)"\
+ "		{"\
+ "			invManager.TryInsertItem(newItem);"\
+ "			return;"\
+ "		}"\
+ "		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));"\
+ "		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));"\
+ "		ref array<IEntity> pouches = {};"\
+ "		if (oldStorageComp)"\
+ "			oldStorageComp.GetAll(pouches);"\
+ "		ref array<ResourceName> items = {};"\
+ "		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O"\
+ "		foreach (IEntity pouch: pouches)"\
+ "		{"\
+ "			if (pouch.FindComponent(SCR_ResupplyMedicalGadgetSupportStationComponent))"\
+ "			{"\
+ "				items.Insert(pouch.GetPrefabData().GetPrefabName());"\
+ "				continue;"\
+ "			}"\
+ "			if (!pouch.FindComponent(BaseInventoryStorageComponent))"\
+ "			{"\
+ "				items.Insert(pouch.GetPrefabData().GetPrefabName());"\
+ "				continue;"\
+ "			}"\
+ "			"\
+ "			ref array<IEntity> tempItems = {};"\
+ "			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);"\
+ "			foreach (IEntity tempItem: tempItems)"\
+ "			{"\
+ "				items.Insert(tempItem.GetPrefabData().GetPrefabName());"\
+ "			}"\
+ "		}"\
+ "		if (!invManager.CanReplaceItem(newItem, invComponent, slotId))"\
+ "		{"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(newItem);"\
+ "			return;"\
+ "		}"\
+ "		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(oldItem.FindComponent(InventoryItemComponent));"\
+ "		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newItem.FindComponent(InventoryItemComponent));"\
+ "		if (oldItemComp && newItemComp)"\
+ "		{"\
+ "			string oldItemName = oldItemComp.GetUIInfo().GetName();"\
+ "			string newItemName = newItemComp.GetUIInfo().GetName();"\
+ "		}"\
+ "		"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);"\
+ "		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, player);"\
+ "	}"\
+ "	"\
+ "	//------------------------------------------------------------------------------------------------"\
+ "	protected void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, IEntity player)"\
+ "	{"\
+ "		for (int i = 0; i < items.Count(); i++)"\
+ "		{"\
+ "			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))"\
+ "			{"\
+ "				ref array<IEntity> newPouches = {};"\
+ "				newStorageComp.GetAll(newPouches);"\
+ "				"\
+ "				bool itemInserted = false;"\
+ "				foreach (IEntity pouch: newPouches)"\
+ "				{"\
+ "					if (!pouch.FindComponent(BaseInventoryStorageComponent))"\
+ "						continue;"\
+ "					"\
+ "					BaseInventoryStorageComponent pouchStorage = BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent));"\
+ "					if(invManager.TrySpawnPrefabToStorage(items[i], pouchStorage))"\
+ "					{"\
+ "						itemInserted = true;"\
+ "						break;"\
+ "					}"\
+ "				}"\
+ "				if (!itemInserted)"\
+ "					invManager.TrySpawnPrefabToStorage(items[i]);"\
+ "			}"\
+ "		}"\
+ "	}"\
+ "	"\
+ "	protected void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, IEntity player)"\
+ "	{"\
+ "		invManager.TryReplaceItem(newItem, invComponent, slotId);"\
+ "		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, player);"\
+ "	}"
+ OnControllableSpawned ""\
+ "		super.OnControllableSpawned(entity);"\
+ "		GetGame().GetCallqueue().CallLater(SpawnParachute, 3000, false, entity);"\
+ "	}"\
+ "	"\
+ "	override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
+ "	{"\
+ "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
+ "		if (!Replication.IsServer())"\
+ "			return;"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		if (!inventoryManager)"\
+ "			return;"\
+ "		"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		if (!inventory)"\
+ "			return;"\
+ "		"\
+ "		array<IEntity> items = {};"\
+ "		array<IEntity> itemsRoot = {};"\
+ "		inventoryManager.GetAllItems(items, inventory);"\
+ "		inventoryManager.GetItems(itemsRoot);"\
+ "		"\
+ "		items.InsertAll(itemsRoot);"\
+ "		foreach (IEntity item: items)"\
+ "		{"\
+ "			if (!item)"\
+ "				return;"\
+ "			"\
+ "			if (item.FindComponent(CVON_RadioComponent) || item.GetPrefabData().GetPrefabName() == \"{6545DEABED4759E5}Prefabs/Weapons/Rifles/Mosin/BC_Rifle_Mosin_Nagant_9130_PU.et\")"\
+ "				SCR_EntityHelper.DeleteEntityAndChildren(item);"\
+ "		}"\
+ "	"
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 60
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "June 6th, 1944 the 101st and 82nd Airborne embarked onto a journey into Western Europe in order to conduct raids onto rearward german troops, secure vital causeways and facilitate a rapid breakthrough into the Cotentin Pennisula. 101st, 501st, Dog Company has been tasked with dropping in and securing the German HQ in the castle outside of La Rue. aerial recon has reported this as stilll active as of June 1st. Rearward German units have rapidly scrambled a defense mounting a forward screen to catch incoming American troops. SS and Wehrmacht alike have ended up in foxholes together."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets:"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets:"\
+   ""\
+   "Time: 60 Minutes"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "- Capture MCOM A - Forward German Screen"\
+   "- Capture MCOM B - German HQ"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "- Defend MCOM A - Forward Screen"\
+   "- Defend MCOM B - German HQ"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "Airdrop is all automated, you won't need to jump out or do anything, it will handle it all for you. If after a couple seconds of being out of the plane your main chute didn't deploy, may be time to pull the reserve trooper."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{692ED7E8C34BC85B}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BCAF9}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BCA21}" {
+   m_sCallsign "Able"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BCB33}" {
+   m_sCallsign "Baker"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC433}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC564}" {
+   m_sCallsign "Charlie"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC6B2}" {
+   m_sCallsign "Dog"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    SPOTTER
+    SPOTTER
+    JTAC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{692ED7E8C34BC7A5}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC0ED}" {
+   m_sCallsign "1. Gruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    GRENADIER
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC023}" {
+   m_sCallsign "2. Gruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    GRENADIER
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692ED7E8C34BC179}" {
+   m_sCallsign "3. Sturmgruppe"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    GRENADIER
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    JTAC
+    JTAC
+    JTAC
+    JTAC
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D9A13AB1DF541736}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22US.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{27B663E5A76E9DC8}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22GER.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "692ED7EDFD090D85" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ paradrop {
+  coords 2369.883 48.719 2696.281
+  userScript "	bool m_bSafeStartInit = false;"\
+  "	ref RandomGenerator m_Random;"\
+  "	void InitPlane()"\
+  "	{"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.Transform[3] = \"2672.782 49.736 3927.156\";"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{6B6F6B29ED34E6E1}PrefabsMissionMaking/Systems/SpawnPoints/US_Spawn.et\"), null, spawnParams);"\
+  "		"\
+  "		IEntity spawnFlag = GetGame().GetWorld().FindEntityByName(\"USSpawn\");"\
+  "		if (spawnFlag)"\
+  "			SCR_EntityHelper.DeleteEntityAndChildren(spawnFlag);"\
+  "		vector dzStart = \"-600 600 7300\";"\
+  "        vector dzEnd = \"600 600 3200\";"\
+  "        vector dzGreenLight = \"3350 0 0\";"\
+  "        float dzAngle = 163+90;"\
+  "    "\
+  "       "\
+  "    "\
+  "        SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();"\
+  "        array<SCR_AIGroup> groups = {};"\
+  "        groupsMan.GetAllPlayableGroups(groups);"\
+  "    "\
+  "        PlayerManager pm = GetGame().GetPlayerManager();"\
+  "       "\
+  "    	int index = -1;"\
+  "		int layer = 0;"\
+  "        foreach (SCR_AIGroup group : groups)"\
+  "        {"\
+  "			"\
+  "			 array<int> players = {};"\
+  "            if (!group.GetFaction())"\
+  "                continue;"\
+  "    "\
+  "            if (group.GetFaction().GetFactionKey() != \"BLUFOR\")"\
+  "                continue;"\
+  "    "\
+  "            array<AIAgent> agents = {};"\
+  "            group.GetAgents(agents);"\
+  "    "\
+  "            if (agents.Count() == 0)"\
+  "                continue;"\
+  "    "\
+  "            foreach (AIAgent agent : agents)"\
+  "            {"\
+  "                int playerId = pm.GetPlayerIdFromControlledEntity(agent.GetControlledEntity());"\
+  "                if (playerId <= 0)"\
+  "                    continue;"\
+  "    "\
+  "                players.Insert(playerId);"\
+  "            }"\
+  "			"\
+  "			index++;"\
+  "			if (index > 2)"\
+  "			{"\
+  "				layer++;"\
+  "				index = 0;"\
+  "			}"\
+  "				"\
+  "			vector flightData[4];"\
+  "        	flightData[0] = dzStart;       // Start point"\
+  "       		flightData[2] = dzGreenLight;  // Green light point"\
+  "        	flightData[3] = dzEnd;         // End point"\
+  "			"\
+  "			flightData[3][0] = flightData[3][0] + 400 * index;"\
+  "			flightData[0][0] = flightData[0][0] + 400 * index;"\
+  "			flightData[3][2] = flightData[3][2] + 400 * layer;"\
+  "			flightData[0][2] = flightData[0][2] + 400 * layer;"\
+  "			"\
+  "			//Green light distance changes if we are a layer back"\
+  "			flightData[2][0] = flightData[2][0] + 400 * layer;"\
+  "			"\
+  "			ref CRF_AirdropObject flight = new CRF_AirdropObject("\
+  "	            \"BLUFOR\","\
+  "	            \"{252AA925952F6888}Prefabs/Vehicles/C47_Drop.et\","\
+  "	            flightData,"\
+  "	            dzAngle,"\
+  "	            players,"\
+  "	            true"\
+  "	        );"\
+  "			 CRF_AirdropManager.GetInstance().InitFlight(flight);"\
+  "        }"\
+  "  "\
+  "        delete this;"\
+  "	}"
+  TriggerShapeType Sphere
+  PeriodicQueries 1
+  UpdatePeriod 5
+  OnQueryFinished ""\
+  "		if (!Replication.IsServer())"\
+  "        {"\
+  "            delete this;"\
+  "            return;"\
+  "        }"\
+  "		"\
+  "		if (!m_Random)"\
+  "		{"\
+  "			m_Random = new RandomGenerator();"\
+  "			m_Random.SetSeed(System.GetUnixTime());"\
+  "		}"\
+  "		"\
+  "        "\
+  "        if (!m_bSafeStartInit)"\
+  "        {"\
+  "            m_bSafeStartInit = CRF_SafestartManager"\
+  "                .GetInstance()"\
+  "                .GetSafestartStatus();"\
+  "        "\
+  "            return;"\
+  "        }"\
+  "        "\
+  "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus() && CRF_RespawnManager.GetInstance().m_bIsParadropEnabled)"\
+  "            InitPlane();"\
+  "		else if (!CRF_SafestartManager.GetInstance().GetSafestartStatus() && !CRF_RespawnManager.GetInstance().m_bIsParadropEnabled)"\
+  "			delete this;"\
+  "	"
+ }
+ mcom_a_trigger {
+  coords 804.26 4.309 2854.153
+ }
+ mcom_b_trigger {
+  coords 583.433 48.951 1764.192
+ }
+}
