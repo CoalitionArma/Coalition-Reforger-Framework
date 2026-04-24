@@ -1,0 +1,82 @@
+Vehicle : "{305D7BFA0955D55C}Prefabs/Vehicles/Wheeled/WC63/WC63_BASE.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_RaidItemComponent "{692E475291CD1C64}" {
+   m_sItemName "Truck"
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "WC63 Uncovered"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{4C677B6CF2A0AC41}UI/Textures/EditorPreviews/System/WC63_Transport.edds"
+    m_aAuthoredLabels + {
+     TRAIT_PASSENGERS_LARGE TRAIT_SUPPLYSTORAGE_LARGE
+    }
+    m_aAutoLabels {
+     FACTION_US SIZE_M VEHICLE_TRUCK
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 200
+     }
+    }
+    m_aOccupantFillCompartmentTypes {
+     PILOT CARGO
+    }
+    m_aCrewEntityBudgetCost {
+     SCR_EntityBudgetValue "{692E4752EE09D3B5}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+    m_aPassengerEntityBudgetCost {
+     SCR_EntityBudgetValue "{692E4752EE09D323}" {
+      m_BudgetType AI
+      m_Value 10
+     }
+    }
+   }
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 0
+     m_fInitialFuelTankState 0
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{65572222BA7A1E80}" {
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 1000000
+   MaxItemSize 40 40 40
+   MultiSlots {
+    MultiSlotConfiguration "{692E4752EE09D359}" {
+     SlotTemplate InventoryStorageSlot RepairKit {
+      Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+     }
+     NumSlots 4
+    }
+    MultiSlotConfiguration "{692E4752EE09D354}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+     }
+     NumSlots 2
+    }
+   }
+   m_fMaxWeight 4500
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Cargo {
+     MergePhysics 1
+     Prefab "{1AE8AC1218C26409}Prefabs/Vehicles/Wheeled/M923A1/WC63_cargo_Uncovered.et"
+     RegisterDamage 1
+     RegisterWeapons 1
+     RegisterCompartments 1
+    }
+   }
+  }
+ }
+ coords 111.058 1 68.798
+ angles 0 0 0
+}

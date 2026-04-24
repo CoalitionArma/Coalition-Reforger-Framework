@@ -1,0 +1,366 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 736.799 4.067 2132.491
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RaidGamemodeComponent "{692E4751FA9E71BB}" {
+   m_fWinThresholdPercent 60
+   m_sAttackingSide "OPFOR"
+   m_sDefendingSide "BLUFOR"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 2
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 60
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "British SAS forces have secured a German supply depot as part of the liberation of France. A new night has settled in as local German forces prepare a counter attack to destroy what supplies the british have moved to the front. "\
+   ""\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: 2x LMG Team"\
+   ""\
+   "OPFOR Composition: Infantry Company"\
+   "OPFOR Assets: 2x MMG Teams (3MMG per team)"\
+   ""\
+   "Time: Night"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "We've had a hell of a day so far chaps, but the Jerries aren't just going to let us settle in for the night. Ready yourselves and prepare to defend what progress we’ve made so far."\
+   ""\
+   ""\
+   "Prevent OPFOR from destroying 60% of the supplies"\
+   ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "The Englische Schweine have taken over one of our supply depots, while we can't hold it we need to destroy what supplies remain so they can't be used come tomorrow"\
+   ""\
+   "Destroy 60% of the value of the items on the map"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 3
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{692E573966CB591F}" {
+   m_sCallsign "PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB5F87}" {
+   m_sCallsign "Able"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB5EDB}" {
+   m_sCallsign "Baker"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB5D8B}" {
+   m_sCallsign "Charlie "
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB5CBE}" {
+   m_sCallsign "Dog"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB5C6C}" {
+   m_sCallsign "LMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{692E573966CB4248}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB4173}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB402E}" {
+   m_sCallsign "Gruppe Alpha"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    LOGI_RUNNER
+    MEDIC
+    TEAM_LEAD
+    VEHICLE_LOADER
+    VEHICLE_LOADER
+    VEHICLE_LOADER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB473A}" {
+   m_sCallsign "Gruppe Bravo"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    LOGI_RUNNER
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB46DB}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB458E}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    LOGI_RUNNER
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB4B04}" {
+   m_sCallsign "Gruppe Charlie"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    LOGI_RUNNER
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB4A2A}" {
+   m_sCallsign "Gruppe Delta"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    LOGI_RUNNER
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{692E573966CB49C1}" {
+   m_sCallsign "2MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{E6BE5BC3E958E9F9}Configs/Gearscripts/Standard/80s/CRF_GS_WW2Canada.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{915D74796635840F}Configs/Gearscripts/Standard/80s/CRF_GS_CCO22GER_Rand.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,225 @@
+$grp GenericEntity : "{726A977F0C818F0C}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Ammo_01.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750A032AFFE}" {
+    m_iSupplyValue 5
+    m_sItemName "Ammo"
+   }
+  }
+  coords 724.635 5.399 1991.69
+  angles 0 -66.73 0
+  {
+   GenericEntity {
+    ID "59A2EA8548F2D78C"
+    components {
+     SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+      m_eEditableAttributeGroups 0
+      m_bGetDefaultIfNoFaction 0
+      m_bArsenalEnabled 0
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750A032AFFE}" {
+    m_iSupplyValue 5
+    m_sItemName "Ammo"
+   }
+  }
+  coords 842.388 2.786 2021.167
+  angles 0 -87.745 0
+  {
+   GenericEntity {
+    ID "59A2EA8548F2D78C"
+    components {
+     SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+      m_eEditableAttributeGroups 0
+      m_bGetDefaultIfNoFaction 0
+      m_bArsenalEnabled 0
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750A032AFFE}" {
+    m_iSupplyValue 5
+    m_sItemName "Ammo"
+   }
+  }
+  coords 892.454 6.416 2087.753
+  angles 0 -178.34 0
+  {
+   GenericEntity {
+    ID "59A2EA8548F2D78C"
+    components {
+     SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+      m_eEditableAttributeGroups 0
+      m_bGetDefaultIfNoFaction 0
+      m_bArsenalEnabled 0
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750A032AFFE}" {
+    m_iSupplyValue 5
+    m_sItemName "Ammo"
+   }
+  }
+  coords 776.381 4.788 2179.15
+  angles 0 -120.056 0
+  {
+   GenericEntity {
+    ID "59A2EA8548F2D78C"
+    components {
+     SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+      m_eEditableAttributeGroups 0
+      m_bGetDefaultIfNoFaction 0
+      m_bArsenalEnabled 0
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750A032AFFE}" {
+    m_iSupplyValue 5
+    m_sItemName "Ammo"
+   }
+  }
+  coords 775.264 4.788 2180.877
+  angles 0 59.757 0
+  {
+   GenericEntity {
+    ID "59A2EA8548F2D78C"
+    components {
+     SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+      m_eEditableAttributeGroups 0
+      m_bGetDefaultIfNoFaction 0
+      m_bArsenalEnabled 0
+     }
+    }
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{B1EF956CE61836B6}Prefabs/Structures/Bunkers/MaisyBunker.et" {
+ coords 776.079 6.118 2180.985
+ angles 0 -121.736 0
+}
+$grp GenericEntity : "{DB4F61D5F37432F7}Prefabs/Props/Military/Camps/PalletFuel_01.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 692.47 5.495 1999.803
+  angles 0 30.701 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 696.208 5.495 2006.099
+  angles 0 30.701 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 674.678 7.248 2165.53
+  angles 0 147.988 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 735.785 6.497 2174.104
+  angles 0 61.708 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 672.348 6.541 2169.661
+  angles 0 58.622 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 666.785 6.541 2166.268
+  angles 0 58.622 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 669.749 6.541 2168.076
+  angles 0 58.622 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{692E4750E368379F}" {
+    m_iSupplyValue 5
+    m_sItemName "Fuel"
+   }
+  }
+  coords 669.487 6.541 2167.916
+  angles 0 58.622 0
+ }
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 697.586 5.38 2021.113
+  angles 0.415 -60.803 -3.592
+  m_rVehicle "{666A4C8024340EBF}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered_raidItem.et"
+ }
+ {
+  coords 778.166 4.781 2106.812
+  angles 0 49.959 0
+  m_rVehicle "{666A4C8024340EBF}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered_raidItem.et"
+ }
+ {
+  coords 834.515 4.757 2027.286
+  angles -0.242 5.176 2.673
+  m_rVehicle "{666A4C8024340EBF}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered_raidItem.et"
+ }
+ {
+  coords 572.354 4.98 2074.183
+  angles -0.614 122.371 3.564
+  m_rVehicle "{666A4C8024340EBF}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered_raidItem.et"
+ }
+ {
+  coords 592.213 5.118 2062.343
+  angles 0.415 -60.803 -3.592
+  m_rVehicle "{666A4C8024340EBF}Prefabs/Vehicles/Wheeled/WC63/WC63_Uncovered_raidItem.et"
+ }
+}
