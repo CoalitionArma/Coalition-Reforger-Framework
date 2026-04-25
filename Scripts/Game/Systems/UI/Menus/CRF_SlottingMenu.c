@@ -4,18 +4,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	// UI Widgets
 	//---------------------------------------------------------------------
 	protected Widget m_wRoot;                   // Root widget for the entire menu
-
-	//---------------------------------------------------------------------
-	// Modular UI Elements
-	//---------------------------------------------------------------------
-	protected CRF_MissionInfoDisplay     m_MissionInfoDisplay;    // Mission name / author / weather
-	protected CRF_TimeDisplay            m_TimeDisplay;           // Live in-game clock
-	protected CRF_PhaseIndicatorDisplay  m_PhaseIndicatorDisplay; // Preview/Slotting/Game/AAR border strip
-	protected CRF_FactionRatioDisplay    m_FactionRatioDisplay;   // Faction ratio edit-boxes + live split
-	protected CRF_FactionSlotCountDisplay m_FactionSlotCountDisplay; // Per-faction slot-count badges
-	protected CRF_SlottingPhaseDisplay   m_SlottingPhaseDisplay;  // Phase label + change sound
-	protected CRF_PlayerStatusListDisplay m_PlayerListDisplay;    // Connected-player list with colors
-
+	protected ImageWidget m_wPreview;           // Phase indicator for preview phase
+	protected ImageWidget m_wSlotting;          // Phase indicator for slotting phase
+	protected ImageWidget m_wGame;              // Phase indicator for game phase
+	protected ImageWidget m_wAAR;               // Phase indicator for After Action Report phase
+	
 	//---------------------------------------------------------------------
 	// List Components
 	//---------------------------------------------------------------------
@@ -57,7 +50,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------
 	protected Faction m_fSelectedFaction;       // Currently selected faction
 	protected int m_iSelectedplayerId = 0;      // Currently selected player ID
-
+	protected int m_LocalSlottingState;         // Local copy of slotting state
+	
 	//---------------------------------------------------------------------
 	// Faction Resources
 	//---------------------------------------------------------------------
@@ -141,69 +135,27 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		
+		// Store local slotting state
+		m_LocalSlottingState = m_Gamemode.m_SlottingState;
+		
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		m_VONController    = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
-
-		// --- Bind modular UI elements ---
-		Widget wMissionInfo = m_wRoot.FindAnyWidget("MissionInfo");
-		if (wMissionInfo)
-			m_MissionInfoDisplay = CRF_MissionInfoDisplay.Cast(wMissionInfo.FindHandler(CRF_MissionInfoDisplay));
-
-		Widget wTimeDisplay = m_wRoot.FindAnyWidget("TimeDisplay");
-		if (wTimeDisplay)
-			m_TimeDisplay = CRF_TimeDisplay.Cast(wTimeDisplay.FindHandler(CRF_TimeDisplay));
-
-		Widget wPhaseIndicator = m_wRoot.FindAnyWidget("PhaseIndicator");
-		if (wPhaseIndicator)
-			m_PhaseIndicatorDisplay = CRF_PhaseIndicatorDisplay.Cast(wPhaseIndicator.FindHandler(CRF_PhaseIndicatorDisplay));
-
-		Widget wRatioDisplay = m_wRoot.FindAnyWidget("RatioDisplay");
-		if (wRatioDisplay)
-			m_FactionRatioDisplay = CRF_FactionRatioDisplay.Cast(wRatioDisplay.FindHandler(CRF_FactionRatioDisplay));
-
-		Widget wSlotCounts = m_wRoot.FindAnyWidget("FactionSlotCounts");
-		if (wSlotCounts)
-			m_FactionSlotCountDisplay = CRF_FactionSlotCountDisplay.Cast(wSlotCounts.FindHandler(CRF_FactionSlotCountDisplay));
-
-		Widget wSlottingPhase = m_wRoot.FindAnyWidget("SlottingPhaseDisplay");
-		if (wSlottingPhase)
-			m_SlottingPhaseDisplay = CRF_SlottingPhaseDisplay.Cast(wSlottingPhase.FindHandler(CRF_SlottingPhaseDisplay));
-
-		Widget wPlayerList = m_wRoot.FindAnyWidget("PlayerListDisplay");
-		if (wPlayerList)
-			m_PlayerListDisplay = CRF_PlayerStatusListDisplay.Cast(wPlayerList.FindHandler(CRF_PlayerStatusListDisplay));
-
-		// Populate static mission info
-		if (m_MissionInfoDisplay)
-			m_MissionInfoDisplay.Populate();
-
-		// Seed the slotting phase display so first frame doesn't trigger a sound
-		if (m_SlottingPhaseDisplay)
-			m_SlottingPhaseDisplay.Init(m_Gamemode.m_SlottingState);
-
-		// Update phase indicator once on open
-		if (m_PhaseIndicatorDisplay)
-			m_PhaseIndicatorDisplay.UpdatePhaseIndicator();
-
-		// Populate static ratio values
-		if (m_FactionRatioDisplay)
-			m_FactionRatioDisplay.Populate();
-
-		// Legacy inline setup (mission text / phase) for layouts not yet
-		// migrated to named component roots — safe to remove once layout updated.
+		
+		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
+		
+		// Setup mission info text
 		SetupMissionInfo();
+		
+		// Setup weather text
 		SetupWeatherInfo();
+		
+		// Setup phase indicators
 		SetupPhaseIndicators();
-
+		
 		// Setup buttons
 		SetupButtons();
 		
-		// Initialize list components first so m_cPlayerListBoxComponent is valid
+		// Initialize list components
 		InitializeListComponents();
-
-		// Wire player list display component after list components are resolved
-		if (m_PlayerListDisplay)
-			m_PlayerListDisplay.Init(m_cPlayerListBoxComponent, m_VONController);
 	}
 	
 	/**
@@ -236,32 +188,24 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Sets up phase indicator widgets.
-	 * Inline fallback used when CRF_PhaseIndicatorDisplay component is unavailable.
+	 * Sets up phase indicator widgets
 	 */
 	protected void SetupPhaseIndicators()
 	{
-		// Prefer the modular component
-		if (m_PhaseIndicatorDisplay)
-		{
-			m_PhaseIndicatorDisplay.UpdatePhaseIndicator();
-			return;
-		}
-
-		// Inline fallback — use local widget references
-		ImageWidget wPreview  = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
-		ImageWidget wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
-		ImageWidget wGame     = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
-		ImageWidget wAAR      = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
+		// Get phase indicator widgets
+		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
+		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
+		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
+		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
 		
 		// Highlight the current phase
 		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
 		switch(gameState)
 		{
-			case 0: {if (wPreview)  wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255));  break;}
-			case 1: {if (wSlotting) wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
-			case 2: {if (wGame)     wGame.SetColor(Color.FromRGBA(122, 0, 0, 255));     break;}
-			case 3: {if (wAAR)      wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255));      break;}
+			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 1: {m_wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 2: {m_wGame.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 3: {m_wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
 		}
 	}
 	
@@ -360,14 +304,6 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	protected void SetupRatioDisplay()
 	{
-		// Prefer the modular component if bound; fall back to inline logic for
-		// layouts that have not yet been updated.
-		if (m_FactionRatioDisplay)
-		{
-			m_FactionRatioDisplay.Populate();
-			return;
-		}
-
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		bool validRatios = true;
 		
@@ -757,6 +693,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if(group.IsPrivate() && !isAdmin)
 				continue;
 			
+			//For UI
+			bool isGroupFull = true;
+			
 			// Track counts for this group
 			int leadersInGroup = 0;
 			int playersInGroup = 0;
@@ -786,7 +725,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			
 			// Add slots to this group
-			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);
+			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin, isGroupFull);
+			
+			if (isGroupFull)
+				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupText().SetColor(groupColor);
 			
 			// Clean up empty groups
 			RemoveEmptyGroups(groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);
@@ -818,13 +760,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	private void AddSlotsToGroup(SCR_AIGroup group, map<int, ref CRF_SlotData> slotMap, 
 		int groupIndex, int orbatGroupIndex, out int leadersInGroup, out int playersInGroup, 
-		out int deadPlayersInGroup, bool isAdmin)
+		out int deadPlayersInGroup, bool isAdmin, out bool isGroupFull)
 	{
 		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 		
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		array<int> slotStored = {};
+		isGroupFull = true;
 		foreach (int id: slottingManager.GetAllSlotIDsForGroup(groupId))
 		{
 			ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
@@ -843,12 +786,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				
 				// Track dead slots but don't display them
 				if (slotData.GetIsDeadSlot())
+				{
 					deadPlayersInGroup++;
+					continue;
+				}
 				
-				// I STG if I get rid of this just for this to be readded again in another refactor Im going to lose it
-//				// Skip dead empty slots
-//				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
-//					continue;
+				// Skip dead empty slots
+				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+					continue;
 				
 				// Add slot to UI
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
@@ -867,7 +812,20 @@ class CRF_SlottingMenu: ChimeraMenuBase
 					// Show disconnect indicator if player not connected
 					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 						m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetDisconnectWidget().SetVisible(true);
+					
+					//Sets slot to faction color when selected
+					//m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlottedWidget().SetVisible(true);
+					Color factionColor = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()).GetFactionColor();
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetColor(factionColor);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetColor(factionColor);
+					
+					//Sets the opacity too
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetOpacity(0.5);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetOpacity(0.5);
+					
 				}
+				else
+					isGroupFull = false;
 				
 				// Add click handler
 				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
@@ -1146,16 +1104,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		super.OnMenuUpdate(tDelta);
 		
 		// Update time display
-		if (m_TimeDisplay)
-			m_TimeDisplay.UpdateTimeDisplay();
-		else
-			UpdateTimeDisplay();
-
+		UpdateTimeDisplay();
+		
 		// Update player lists
-		if (m_PlayerListDisplay)
-			m_PlayerListDisplay.UpdatePlayerList(m_iSelectedplayerId);
-		else
-			UpdatePlayerLists();
+		UpdatePlayerLists();
 		
 		// Update chat panel if available
 		if (m_ChatPanel)
@@ -1166,27 +1118,14 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		TextWidget.Cast(m_wRoot.FindAnyWidget("PlayersText")).SetText("Players: " + playerCount);
 		
 		// Update faction ratio calculation
-		if (m_FactionRatioDisplay)
-			m_FactionRatioDisplay.UpdateRatioCalculation(playerCount);
-		else
-			UpdateRatioCalculation(playerCount);
-
+		UpdateRatioCalculation(playerCount);
+		
 		// Update faction slot counts
-		if (m_FactionSlotCountDisplay)
-			m_FactionSlotCountDisplay.UpdateFactionSlotCounts(
-				m_iTakenBluforSlots, m_iBluforSlots,
-				m_iTakenOpforSlots,  m_iOpforSlots,
-				m_iTakenIndforSlots, m_iIndforSlots,
-				m_iTakenCivSlots,    m_iCivSlots);
-		else
-			UpdateFactionSlotCounts();
-
+		UpdateFactionSlotCounts();
+		
 		// Update slotting phase display
-		if (m_SlottingPhaseDisplay)
-			m_SlottingPhaseDisplay.UpdateSlottingPhaseDisplay();
-		else
-			UpdateSlottingPhaseDisplay();
-
+		UpdateSlottingPhaseDisplay();
+		
 		// Show additional controls for admins
 		UpdateAdminUI();
 	}
@@ -1252,19 +1191,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
 	{
-		// Delegate to the modular component when available
-		if (m_PlayerListDisplay)
-		{
-			m_PlayerListDisplay.ApplyStatusColor(playerId, m_iSelectedplayerId, comp);
-			return;
-		}
-
-		// Inline fallback for layouts not yet using the component
+		// Selected player
 		if (playerId == m_iSelectedplayerId)
 		{
 			comp.SetColor(Color.DarkYellow);
 			return;
 		}
+		// Enforce precedence: Admin > Moderator > Donator 
 		if (SCR_Global.IsAdmin(playerId))
 		{
 			comp.SetColor(Color.Red);
@@ -1369,22 +1302,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Updates the faction slot count displays for each valid faction.
-	 * Falls back to inline widget calls when the modular component is unavailable.
+	 * Updates the faction slot count displays for each valid faction
 	 */
 	private void UpdateFactionSlotCounts()
 	{
-		// Modular path — called directly from OnMenuUpdate when component is present
-		if (m_FactionSlotCountDisplay)
-		{
-			m_FactionSlotCountDisplay.UpdateFactionSlotCounts(
-				m_iTakenBluforSlots, m_iBluforSlots,
-				m_iTakenOpforSlots,  m_iOpforSlots,
-				m_iTakenIndforSlots, m_iIndforSlots,
-				m_iTakenCivSlots,    m_iCivSlots);
-			return;
-		}
-
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		// Update BLUFOR slot count if faction is valid
@@ -1425,25 +1346,23 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Updates the slotting phase display and plays notification sound when phase changes.
-	 * Inline fallback used only when CRF_SlottingPhaseDisplay component is unavailable.
+	 * Updates the slotting phase display and plays notification sound when phase changes
 	 */
 	private void UpdateSlottingPhaseDisplay()
 	{
-		if (m_SlottingPhaseDisplay)
+		// Check if slotting state has changed
+		if(m_LocalSlottingState != m_Gamemode.m_SlottingState)
 		{
-			m_SlottingPhaseDisplay.UpdateSlottingPhaseDisplay();
-			return;
+			// Update local state and play notification sound
+			m_LocalSlottingState = m_Gamemode.m_SlottingState;
+			AudioSystem.PlaySound("{A4D15A2A486BD70A}Sounds/UI/Samples/Editor/UI_E_Notification_Default.wav");
 		}
-
-		// Inline fallback — track state locally via m_Gamemode directly
-		int currentState = m_Gamemode.m_SlottingState;
-
+		
 		// Update phase text based on current slotting state
 		string phaseText;
-		if (currentState == 0)
+		if(m_Gamemode.m_SlottingState == 0)
 			phaseText = "Leaders and Medics";
-		else if (currentState == 1)
+		else if(m_Gamemode.m_SlottingState == 1)
 			phaseText = "Specialties";
 		else
 			phaseText = "Everyone";
