@@ -104,7 +104,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_AARFile.WriteLine(string.Format("{ \"mission\": \"%1\", \"frames\": [", m_sMissionName));
 		
 		m_bRecording = true;
-		Replication.BumpMe()
+		Replication.BumpMe();
 		
 		Print("[CRF_VAAR] Recording Started");
 		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
