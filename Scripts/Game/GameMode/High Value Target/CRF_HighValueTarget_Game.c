@@ -125,6 +125,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	
 	[Attribute("true", "auto", "Set AI HVTs to unconscious state on spawn.", category: "AI HVT Settings")]
 	bool m_setUnconcious;
+
+	[Attribute("false", "auto", "Send the defenders a message when the transponder updates", category: "AI HVT Settings")]
+	bool m_updateDefender;
 	
 	//------------------------------------------------------------------------------------------------
 	// HVT ENTRIES
@@ -535,13 +538,16 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		for (int i = 0; i < entryCount; i++)
 		{
 			vector pos = vector.Zero;
-			
+						
 			// O(1) lookup using reverse map
 			if (m_mEntryToHVT.Contains(i))
 			{
 				IEntity hvtEntity = m_mEntryToHVT.Get(i);
+				
 				if (hvtEntity && IsHVTAlive(hvtEntity))
+				{
 					pos = hvtEntity.GetOrigin();
+				}
 			}
 			
 			m_aHvtPositions.Insert(pos);
@@ -624,6 +630,21 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 			
 			transponder.SetOrigin(newPos);
+		}
+
+		if (m_updateDefender)
+		{
+			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+			{
+				if (!entry || !m_mEntryToHVT.Contains(index))
+					continue;
+				
+				IEntity hvtEntity = m_mEntryToHVT.Get(index);
+				if (hvtEntity && IsHVTAlive(hvtEntity))
+				{
+					CRF_PlayerRplToAuthorityManager.GetInstance().SendHint("The HVT/VIP marker is updating", -1, entry.GetFactionKey());
+				}
+			}
 		}
 	}
 	
