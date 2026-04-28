@@ -53,10 +53,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "RUS forces have pushed back US Forces "\
+   m_sTextData "RUS Forces are preparing a quick strike against major US postions across Northeastern Mussalo."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: Squad intergrated MAT (Two Squads) and 1x Ammo Truck"\
+   "BLUFOR Assets: Squad intergrated MAT (Two Squads) and 1x MMG Team"\
    ""\
    "OPFOR Composition: Mechanized Infantry Platoon"\
    "OPFOR Assets: 4x BTR-70s (1x BTR70 per PLT)"\
@@ -72,16 +72,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Defend each Mcom."\
    ""\
-   "This is a rushed defense mission for blufor, meaning that you have limited forward depoly area for the first set of mcoms and cannot setup on the 2nd set mcoms, prepare your defense around this fact."
+   "This is a rushed defense mission for blufor, meaning that you have limited forward depoly area for the first set of mcoms and cannot setup on the 2nd and 3rd set mcoms, prepare your defense around this fact."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Destroy each Mcom."\
-   ""\
-   "The enemy is rushed in their defense, act fast to overwhelm the defneders."
+   m_sTextData "Destroy each Mcom in order (A and B , then C and D, etc.)"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
