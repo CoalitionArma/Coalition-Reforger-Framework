@@ -61,6 +61,18 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	}
 	
 	/**
+	 * Gets the slotted status widget
+	 * @return FrameWidget for the slotted status or null if not found
+	 */
+	Widget GetSlottedWidget()
+	{
+		Widget widget = Widget.Cast(m_wRoot.FindAnyWidget("Slotted"));
+		if (widget)
+			return widget;
+		return null;
+	}
+	
+	/**
 	 * Gets the killed status widget
 	 * @return FrameWidget for the killed status or null if not found
 	 */
@@ -120,6 +132,30 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 			return null;
 			
 		return SCR_ButtonTextComponent.Cast(slotButtonWidget.FindHandler(SCR_ButtonTextComponent));
+	}
+	
+	/**
+	 * Gets the player name text
+	 */
+	TextWidget GetPlayerText()
+	{
+		TextWidget textWidget = TextWidget.Cast(m_wRoot.FindAnyWidget("PlayerName"));
+		if (textWidget)
+			return textWidget;
+			
+		return null;
+	}
+	
+	/**
+	 * Gets the role name text
+	 */
+	TextWidget GetRoleText()
+	{
+		TextWidget textWidget = TextWidget.Cast(m_wRoot.FindAnyWidget("RoleName"));
+		if (textWidget)
+			return textWidget;
+			
+		return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -212,6 +248,19 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 		ImageWidget symbolImage = ImageWidget.Cast(m_wRoot.FindAnyWidget("SymbolImage"));
 		if (symbolImage)
 			return symbolImage;
+			
+		return null;
+	}
+	
+		/**
+	 * Gets the Group text for the group
+	 * @return TextWidget instance or null if not found
+	 */
+	TextWidget GetGroupText()
+	{
+		TextWidget textWidget = TextWidget.Cast(m_wRoot.FindAnyWidget("RolesGroupName"));
+		if (textWidget)
+			return textWidget;
 			
 		return null;
 	}

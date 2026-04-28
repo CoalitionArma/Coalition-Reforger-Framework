@@ -1,0 +1,11 @@
+GenericEntity : "{08DB30914359361E}Prefabs/Weapons/Magazines/BC_Magazine_762x54_Stripper_5rnd_Mosin_Nagant.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MaxAmmo 1
+   AmmoConfig "{66DD8554A3ABEFC1}Configs/Weapons/Ammo/762x54_Mosin_LINEBATTLE.conf"
+  }
+ }
+ coords 1227.364 38.007 2826.285
+ angles 0 0 0
+}
