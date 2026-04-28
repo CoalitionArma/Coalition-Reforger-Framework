@@ -1,0 +1,40 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ {
+  coords 13109.021 2.047 8137.241
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "Boat Extract"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 11124.251 202.318 12299.976
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "HVI Possible Location"
+  m_aVisibleForFactions {
+   "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 10421.315 115.901 9840.771
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "HVI Possible Location"
+  m_aVisibleForFactions {
+   "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 12301.995 103.22 10901.948
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "HVI Possible Location"
+  m_aVisibleForFactions {
+   "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
