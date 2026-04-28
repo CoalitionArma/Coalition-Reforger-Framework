@@ -1,0 +1,111 @@
+GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+   Transceivers {
+    RadioTransceiver "{693908ED46F7515A}" {
+     "Transmitting Range" 15000
+    }
+   }
+  }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "Spiritus Backpanel"
+     Description "PRC117G Long Range Radio"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{693908ED46F7513B}" {
+      CameraDistanceToItem 4
+      CameraOffset 0 -0.15 0
+      PreviewWornModel 1
+      PreviewModel ""
+     }
+    }
+   }
+  }
+  RHS_RadioSourceActiveComponent "{6226EA85F101D8F7}" {
+   Enabled 0
+  }
+  RHS_SGC_RadialMenuComponent "{612B1CC38952A63D}" {
+   Enabled 0
+  }
+  SCR_RadioComponent "{5A30BAE7673C63D4}" {
+   Enabled 0
+  }
+  SCR_UniversalInventoryStorageComponent "{605C4718D6D0AEAC}" {
+   Enabled 0
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 100
+  }
+  SCR_UniversalInventoryStorageComponent "{693908ED46F7510E}" {
+   Attributes SCR_ItemAttributeCollection "{693908ED46F75108}" {
+    ItemDisplayName UIInfo "{693908ED46F75104}" {
+     Name "PRC117G Backpack Radio MC"
+     Description "15km Transmit"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{693908ED46F75100}" {
+     Weight 1.5
+     SizeSetupStrategy Scaler
+     ItemDimensions 10 10 10
+     ItemVolume 100
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{693908ED46F7511A}" {
+      CameraPreset Back
+      CameraOrbitAngles 25 -25 180
+      CameraDistanceToItem 4
+      FOV 10
+      PreviewWornModel 1
+     }
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_BACKPACK
+   }
+   Priority 8
+   UseCapacityCoefficient 0
+   CapacityCoefficient 0.99
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 1000
+  }
+  BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
+   Enabled 0
+  }
+  BaseLoadoutClothComponent "{693908ED46F75110}" {
+   AreaType LoadoutBackpackArea "{693908ED46F752ED}" {
+   }
+   WornModel "{6745C09B4F504CBC}Assets/Characters/Items/Backpacks/Delta/Radio_Backpack.xob"
+   ItemModel "{4DB999F2248938F4}Assets/Characters/Items/Backpacks/Delta/Delta_Bag_item.xob"
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{508AC2ABEC97066C}" {
+     Position PointInfo "{508AC2ABEAC4A0F5}" {
+      Offset 0 0.0863 -0.0193
+     }
+    }
+   }
+   additionalActions {
+    SCR_EquipClothAction "{553AEBE8F3B60801}" {
+     m_sEquipActionString "Put on PRC117 Manpack"
+     m_sSwapActionString "Put on PRC117 Manpack"
+    }
+    SCR_OpenStorageAction "{693908ED46F752FC}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{693908ED46F752F8}" {
+      Name "#AR-Inventory_OpenStorage"
+     }
+    }
+   }
+  }
+ }
+ coords 2809.374 73.492 1641.319
+}

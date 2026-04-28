@@ -1,0 +1,5 @@
+MatPBRBasic {
+ Color 1 0.685 0 1
+ BCRMap "{99E1346D6A1EC689}Assets/Characters/Items/Backpacks/Delta/Data/Delta_Black_BCR.edds"
+ NMOMap "{3D0B8999C5CF2CDE}Assets/Characters/Items/Backpacks/Delta/Data/Delta_MC_BaseColor.edds"
+}

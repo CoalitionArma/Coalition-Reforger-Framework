@@ -1,0 +1,52 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Minimap Backpack MC"
+     Description "MC Minimap Backpack"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      CameraPreset Front
+      CameraOrbitAngles 0 0 0
+      CameraDistanceToItem 0.9
+      ItemRenderRotation 0 180 0
+      FOV 60
+      AspectRatio 1
+      IsDynamicObject 1
+      PreviewWornModel 1
+      PreviewModel ""
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 1000
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   Slots {
+    LoadoutSlotInfo "{511E9C6A327EA2E2}" {
+    }
+   }
+   WornModel "{ABD0ABADDC3BB010}Assets/Characters/Items/Backpacks/Minimap/Minimap_Backpack.xob"
+   ItemModel "{0676ECE2C440C753}Assets/Characters/Items/Backpacks/Minimap/Minimap_Itemfbx.xob"
+   SoundInt 810
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1 0
+     }
+     Radius 1
+    }
+   }
+  }
+ }
+ coords 1251.515 51.001 1420.505
+}

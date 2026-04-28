@@ -1,0 +1,254 @@
+GenericEntity : "{66AAEDA477051298}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames +{
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{69390EFAD4844EF3}" {
+     SourceMaterial "M_M27_IAR_Base"
+     AssignedMaterial "{759BC50E6AF33D79}Assets/Weapons/Rifles/m27iar/data/rhs_M27_rec_camo1.emat"
+    }
+    MaterialAssignClass "{69390EFAD4844EC6}" {
+     SourceMaterial "M_M27_IAR_Furniture"
+     AssignedMaterial "{6DC7A31641B0EC8E}Assets/Weapons/Rifles/m27iar/data/rhs_M27_rail_camo1.emat"
+    }
+   }
+  }
+  RHS_SGC_RadialMenuComponent "{5D5EE4D5D9FDF6FE}" {
+   m_sDisplayName "M27 IAR"
+  }
+  RigidBody "{5CC8E73BB698D203}" {
+   SimState None
+   ModelGeometry 1
+  }
+  ProcAnimComponent "{5CD0FD2F5260D923}" {
+   Parameters {
+    ProcAnimParams "{5CD0FD2F50A9A9EA}" {
+     ResourceName "{D829D69CF4000344}Assets/Weapons/Rifles/m27iar/anims/M27_flipsight_actions.pap"
+     BoneNames +{
+     }
+    }
+   }
+  }
+  SCR_MeleeWeaponProperties "{5CC8E73BB698D279}" {
+   m_fDamage 20
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_M27_Name"
+     Description "#RHS-Weapon_M27_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5CC8E73BB698D271}" {
+     Weight 3.5
+     SizeSetupStrategy Manual
+     ItemDimensions 25 25 25
+     ItemVolume 1500
+     RestingUP Left
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationInstance "{0350283642830782}anims/workspaces/player/player_main_rifle.asi"
+     AnimationIKPose "{90219595CD0EB51D}Assets/Weapons/Rifles/M16A2/anims/anm/p_m16_ik.anm"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5CC8E73BB698D26E}" {
+        "Point info" DeploymentPointInfo dp {
+         PivotID "Scene_Root"
+         Offset 0 0.0405 0.3408
+        }
+       }
+      }
+     }
+     SCR_RecoilCameraShakeParams "{58DEF2AB0413E346}" {
+      m_fRecoilTarget 0.038
+      m_vTranslationMin 0.002 0.002 0
+      m_vTranslationMax 0.003 0.003 0
+      m_vRotationImpulseMin 0 0 7
+      m_vRotationImpulseMax 0 0 8
+     }
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+      CameraDistanceToItem 1
+      FOV 30
+      AspectRatio 3
+     }
+     ItemOneHandAnimAttributes "{5CC8E73BB698D262}" {
+      ErectLinearOffsetUpper 0 0 0
+      ErectLinearOffset 0.018 -0.2 -0.1
+      ErectLinearOffsetLower 0.018 -0.05 0
+      CrouchLinearOffsetUpper 0 0 0
+      CrouchLinearOffset 0.018 -0.16 -0.1
+      CrouchLinearOffsetLower 0 -0.15 0
+      SpringCoefficient 2.2
+      DamperCoefficient 2.4
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CC8E73BB698D287}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot optics {
+     }
+    }
+    AttachmentSlotComponent "{5CF88C80AF78DA73}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot PicattinyRailTop {
+     }
+    }
+    AttachmentSlotComponent "{60A6AC64CDA3C786}" {
+     AttachmentSlot InventoryStorageSlot BUTTSTOCK {
+     }
+    }
+    AttachmentSlotComponent "{6174A7A88B1F8EF5}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+      PivotID "slot_barrel_muzzle"
+      Offset 0 -0.0294 0.0034
+      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset 0 0.022 0.5048
+     }
+     AttachmentType AttachmentBayonetM9 "{6174A7A8827A6058}" {
+     }
+     ShowInInspection 1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0 -0.01
+     }
+     SightsRanges {
+      SightRangeInfo "{5CC8E73D86C6543F}" {
+       Range 0 200
+       WeaponPosition PointInfo "{5CC8E73D86C6542E}" {
+        Offset 0 -0.00052 -0.00022
+        Angles 0.08393 0 0
+       }
+      }
+      SightRangeInfo "{5CC8E73D86C78B7A}" {
+       Range 0.125 300
+       WeaponPosition PointInfo "{5CC8E73D86C78B6D}" {
+        Offset 0 -0.00086 -0.00036
+        Angles 0.13706 0 0
+       }
+      }
+      SightRangeInfo "{5CC8E73D86C720B6}" {
+       Range 0.25 400
+       WeaponPosition PointInfo "{5CC8E73D86C720AB}" {
+        Offset 0 -0.00123 -0.00052
+        Angles 0.19782 0 0
+       }
+      }
+      SightRangeInfo "{5CC8E73D86C455A6}" {
+       Range 0.375 500
+       WeaponPosition PointInfo "{5CC8E73D86C4559F}" {
+        Offset 0 -0.0017 -0.00072
+        Angles 0.27268 0 0
+       }
+      }
+      SightRangeInfo "{5CC8E73D86C58EFE}" {
+       Range 0.5 600
+       WeaponPosition PointInfo "{5CC8E73D86C58EF7}" {
+        Offset 0 -0.00225 -0.00096
+        Angles 0.36154 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{5CC8E73BB698D2BA}" {
+      PivotID "sight_front"
+      Offset 0 0 0
+     }
+     SightsPointRear PointInfo "{5CC8E73BB698D2B7}" {
+      PivotID "eye"
+      Offset 0 0 0.085
+     }
+     SightsSwitchSkip 1
+     ZeroingGenerator BaseZeroingGenerator "{5CC8E73DA556BBA1}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626541D4146E1B36}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{B9C41AAC90570E50}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS.et"
+       }
+      }
+     }
+     MagazineTemplate "{A540E8600876C2A2}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_Coy_30rnd_M855A1_last5tracer.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimInstance "{F3C1DDD77ADF48F3}Assets/Weapons/Rifles/workspaces/RHS_m27_weapon.asi"
+     AlwaysActive 1
+     AnimInjection AnimationAttachmentInfo "{5CC8E73BB698D28A}" {
+      AnimInstance "{089F4CE6E2DE2C1F}Assets/Weapons/Rifles/workspaces/RHS_m27_player.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      Offset 0 -0.0178 -0.053
+     }
+    }
+    UserActionContext "{5956E32BAAADE657}" {
+     Position PointInfo "{5956E329E6B11261}" {
+      Offset 0 0.0745 0.4719
+     }
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{5CC8E73BB698D2F9}" {
+      PivotID "slot_magazine"
+      Offset 0 -0.0493 -0.0254
+     }
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{5CC8E73BB698D2FB}" {
+      PivotID "w_fire_mode"
+     }
+     Radius 0.05
+    }
+    UserActionContext "{5CCF4B9B340125E9}" {
+     ContextName "flipsightfront"
+     Position PointInfo "{5CCF4B9B252C8FE1}" {
+      PivotID "w_front_sight"
+     }
+     Radius 0.05
+    }
+    UserActionContext "{5CD11C9DF1CD9284}" {
+     ContextName "flipsightback"
+     Position PointInfo "{5CD11C9DEAC66917}" {
+      PivotID "w_rear_sight"
+     }
+     Radius 0.05
+    }
+   }
+   additionalActions {
+    RHS_FlipSightUserAction "{5CD11496CCF82C24}" {
+     ParentContextList +{
+     }
+     UIInfo UIInfo "{5CD11496C6DB55F0}" {
+      Name "Flip Sight"
+     }
+     m_bIgnoreInRadial 0
+     m_sRadialLabelOverride "Flip Front Sight"
+     m_sSignalName "FrontSight"
+    }
+    RHS_FlipSightUserAction "{5CD11C9D06036A25}" {
+     ParentContextList +{
+     }
+     UIInfo UIInfo "{5CD12204AA11B7B7}" {
+      Name "Flip Sight"
+     }
+     m_bIgnoreInRadial 0
+     m_sRadialLabelOverride "Flip Back Sight"
+     m_sSignalName "BackSight"
+    }
+   }
+  }
+ }
+}

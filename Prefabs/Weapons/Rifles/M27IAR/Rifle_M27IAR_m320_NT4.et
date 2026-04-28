@@ -1,0 +1,33 @@
+GenericEntity : "{E18D1D478A6B1E48}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CC8E73BB698D287}" {
+     ShowInInspection 0
+    }
+    AttachmentSlotComponent "{69390EFAA77C73FD}" {
+     AttachmentSlot InventoryStorageSlot "{684372A1B9BD8193}" {
+      PivotID "barrel_chamber"
+      Offset 0 0.0088 0
+      MergePhysics 1
+      Prefab "{239CEF0C9AB5556E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203.et"
+      InspectionWidgetOffset 0 0.0546 0.3683
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626541D4146E1B36}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{B9C41AAC90570E50}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS.et"
+       }
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo m27_left_hand_deploy_target {
+     }
+     MagazineTemplate "{A540E8600876C2A2}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_Coy_30rnd_M855A1_last5tracer.et"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "AVS Zip-on Backpack Coyote Brown"
+     Description "Coyote Brown AVS Zip-on Backpack"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      CameraPreset Front
+      CameraOrbitAngles 0 0 0
+      CameraDistanceToItem 0.8
+      ItemRenderRotation 0 180 0
+      FOV 60
+      AspectRatio 1
+      IsDynamicObject 1
+      PreviewWornModel 1
+      PreviewModel ""
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 1000
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   Slots {
+    LoadoutSlotInfo "{511E9C6A327EA2E2}" {
+    }
+   }
+   WornModel "{76AEA0E3D14D9D11}Assets/Characters/Items/Backpacks/Zipon/Zipon_Backpack.xob"
+   WornMaterialsOverride {
+    "{130C441FF537246B}Assets/Characters/Items/Backpacks/Zipon/Data/Zipon_CBrown.emat"
+   }
+   ItemModel "{3ACFECABC99A79AF}Assets/Characters/Items/Backpacks/Zipon/Zipon_Item.xob"
+   ItemMaterialsOverride {
+    "{130C441FF537246B}Assets/Characters/Items/Backpacks/Zipon/Data/Zipon_CBrown.emat"
+   }
+   SoundInt 810
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1 0
+     }
+     Radius 1
+    }
+   }
+  }
+ }
+ coords 1251.515 51.001 1420.505
+}
