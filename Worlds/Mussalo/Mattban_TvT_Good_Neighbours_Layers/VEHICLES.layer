@@ -113,9 +113,9 @@ $grp CRF_VehicleSpawner {
   }
  }
  {
-  coords 3364.194 10.151 5532.498
+  coords 3364.194 10.584 5532.498
   angles 0 1.489 0
-  m_rVehicle "{D2C209DEA789D2E3}Prefabs/Vehicles/Wheeled/SR5/Armed/SR5_Armed.et"
+  m_rVehicle "{F20416A25B1F8E53}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Beige.et"
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
@@ -174,14 +174,15 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
- }
- {
-  coords 3297.345 13.046 5559.917
-  angles 0 1.489 0
-  m_rVehicle "{1E3E6180FBB0809E}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_ZeroCar.et"
-  m_sFactionKey "INDFOR"
-  m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
+  {
+   CRF_VehicleSpawner {
+    coords -0.849 0.054 -21.516
+    m_rVehicle "{1E3E6180FBB0809E}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_ZeroCar.et"
+    m_sFactionKey "INDFOR"
+    m_bShouldRespawnOnSideRespawn 0
+    m_bShouldAddAmmo 0
+   }
+  }
  }
  {
   coords 3285.009 12.468 5505.171

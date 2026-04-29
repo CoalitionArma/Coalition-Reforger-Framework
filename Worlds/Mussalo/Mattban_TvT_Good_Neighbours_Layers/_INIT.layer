@@ -357,7 +357,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
+  m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
@@ -373,7 +373,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
+  m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
