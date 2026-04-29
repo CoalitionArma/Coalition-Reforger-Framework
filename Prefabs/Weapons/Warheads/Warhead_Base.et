@@ -1,0 +1,11 @@
+GenericEntity {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    CRF_VAAR_BaseProjectileEffect "{6918C7C04A470D7D}" {
+    }
+   }
+  }
+ }
+}

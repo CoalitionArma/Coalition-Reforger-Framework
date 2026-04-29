@@ -385,7 +385,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(message);
 		LogTelemetry("BroadcastMessage", bytes);
 		
+		#ifdef WORKBENCH
+		RpcDo_BroadcastMessage(message);
+		#else
 		Rpc(RpcDo_BroadcastMessage, message);
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1320,13 +1324,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (playerId != -1 && !IsLocalPlayer(playerId))
 			return;
 		
-		// Check player faction
+		// Check player faction — if no faction is set yet (e.g. Workbench startup)
+		// only skip the hint when a specific faction filter was requested.
 		SCR_Faction localFaction = SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction());
-		if (!localFaction)
-			return;
 
 		// Check if hint is for specific faction
-		if (!factionKey.IsEmpty() && (localFaction.GetFactionKey() != factionKey))
+		if (!factionKey.IsEmpty() && localFaction && (localFaction.GetFactionKey() != factionKey))
 			return;
 
 		// Create hint widget

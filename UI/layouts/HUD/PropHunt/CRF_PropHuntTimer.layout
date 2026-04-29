@@ -1,0 +1,91 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ "Z Order" 99
+ {
+  ImageWidgetClass "{CFC00000000C0001}" {
+   Name "BG"
+   Slot FrameWidgetSlot "{CFC00000000C0002}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -120
+    OffsetLeft -120
+    PositionY 10
+    OffsetTop 10
+    SizeX 240
+    OffsetRight -120
+    SizeY 100
+    OffsetBottom -110
+   }
+   Color 0.05 0.05 0.05 0.78
+  }
+  TextWidgetClass "{CFC00000000C0003}" {
+   Name "PhaseText"
+   Slot FrameWidgetSlot "{CFC00000000C0004}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -112
+    OffsetLeft -112
+    PositionY 13
+    OffsetTop 13
+    SizeX 224
+    OffsetRight -112
+    SizeY 18
+    OffsetBottom -31
+   }
+   Color 0.78 0.78 0.78 1
+   Text "WARMUP"
+   "Font Size" 11
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{CFC00000000C0009}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{CFC00000000C0005}" {
+   Name "TimerText"
+   Slot FrameWidgetSlot "{CFC00000000C0006}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -112
+    OffsetLeft -112
+    PositionY 34
+    OffsetTop 34
+    SizeX 224
+    OffsetRight -112
+    SizeY 44
+    OffsetBottom -78
+   }
+   Text "0:00"
+   "Font Size" 32
+   "Min Font Size" 20
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{CFC00000000C000A}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 2
+   }
+  }
+  TextWidgetClass "{CFC00000000C0007}" {
+   Name "RoundText"
+   Slot FrameWidgetSlot "{CFC00000000C0008}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -112
+    OffsetLeft -112
+    PositionY 81
+    OffsetTop 81
+    SizeX 224
+    OffsetRight -112
+    SizeY 18
+    OffsetBottom -99
+   }
+   Color 0.65 0.65 0.65 1
+   Text "Round 1 / 5"
+   "Font Size" 10
+   "Min Font Size" 8
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{CFC00000000C000B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+ }
+}

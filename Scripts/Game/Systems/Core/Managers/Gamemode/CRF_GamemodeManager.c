@@ -50,7 +50,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! Initialize a player into the game either as a playable character or spectator
 	//! \param[in] playerId ID of the player to initialize
 	//! \param[in] spawnPointID the ID of the spawn point we want to spawn this player at (either set manually with the respawn screen or automatic if -1;
-	void InitilizePlayer(int playerId, int spawnPointID = -1)
+	//! \param[in] entityRplID the rplID of the entity  we want to spawn this player at (either set manually or automatic if invalid rpl id;
+	void InitilizePlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
 	{	
 		if (playerId <= 0)
 			return;
@@ -76,7 +77,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
 			IEntity oldEntityToDelete = playerController.GetMainEntity();
 			
-			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, alreadyCreated);
+			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, entityRplID, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 			
 			m_MenuManager.RemovePlayerFromAnyChannel(playerId, false);
@@ -105,6 +106,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 						dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
 				}
 			}
+			else
+			{
+				//Sends the player the respawn screen if they reconnect while dead
+				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerResawn(playerCharacter, faction.GetFactionKey()))
+					m_RplBroadcastManager.SendRespawnScreen(playerId);
+			}
 
 			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 		};
@@ -119,7 +126,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] playerId ID of the player
 	//! \param[in] spawnPointID Optional spawn location
 	//! \return The character entity
-	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, int spawnPointID, out bool alreadyCreated)
+	protected CRF_PlayerCharacter GetOrCreatePlayableCharacter(int playerId, int spawnPointID, RplId entityRplID, out bool alreadyCreated)
 	{
 		alreadyCreated = true;
 		CRF_PlayerCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
@@ -129,7 +136,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			alreadyCreated = false;
 			
 			m_RplBroadcastManager.SendCharacterLoadingScreen(playerId);
-			playerCharacter = SpawnPlayableCharacter(playerId, spawnPointID);
+			playerCharacter = SpawnPlayableCharacter(playerId, spawnPointID, entityRplID);
 			
 			if (!playerCharacter)
 				Print(string.Format("[CRF_GamemodeManager] ERROR: Failed to spawn character for player %1", playerId), LogLevel.ERROR);
@@ -143,7 +150,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] playerId ID of the player
 	//! \param[in] spawnPointID spawn location
 	//! \return The character entity
-	protected CRF_PlayerCharacter SpawnPlayableCharacter(int playerId, int spawnPointID)
+	protected CRF_PlayerCharacter SpawnPlayableCharacter(int playerId, int spawnPointID, RplId EntityRplID)
 	{
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -155,11 +162,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		CRF_SpawnPointData spawnPointData;
 		
-		if (spawnPointID == -1)
+		if (spawnPointID == -1 && EntityRplID == RplId.Invalid())
 			spawnPointData = m_RespawnManager.FindInitalFactionSpawnpoint(m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey(), m_SlottingManager.GetPlayerSlotGroup(playerId));
-		else
+		else if (EntityRplID == RplId.Invalid())
 			spawnPointData = m_RespawnManager.GetSpawnPoint(spawnPointID);
-		
+		else
+		{
+			spawnPointData = new CRF_SpawnPointData();
+			spawnPointData.SetSpawnPointEntity(EntityRplID);
+		}
+
 		// Setup spawn parameters
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;

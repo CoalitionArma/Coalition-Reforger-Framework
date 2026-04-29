@@ -138,10 +138,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RequestAdvanceGamemodeState(bool overriden)
+	void RequestAdvanceGamemodeState(bool overriden, string winningFaction = "")
 	{
 		if (SCR_Global.IsAdmin())
-			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
+			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden, winningFaction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -412,6 +412,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void ToggleVAARRecording()
+	{
+		Rpc(RpcAsk_ToggleVAARRecording);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SetRespawnTime(int seconds)
 	{
 		Rpc(RpcAsk_SetRespawnTime, seconds);
@@ -638,10 +644,18 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden)
+	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction)
 	{
 		// Telemetry: bool
 		LogTelemetry("RpcAsk_RequestAdvanceGamemodeState", CRF_BandwidthTelemetryManager.EstimateSize_Bool());
+		
+		// Set winning faction on the server where the log file handle exists
+		if (winningFaction != "")
+		{
+			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+			if (loggingManager)
+				loggingManager.SetWinningFaction(winningFaction, "manual");
+		}
 		
 		m_Gamemode.AdvanceGamemodeState(overriden);
 	}
@@ -1001,8 +1015,39 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_SpawnOnGroup", bytes);
 		
-		m_RespawnManager.RespawnPlayer(playerId);
-
+		RplId entityRplID;
+		
+		if (playerIDToSpawnOn != -1)
+		{
+			// Use the player selected in the group as the spawn point
+			CRF_PlayerCharacter spawnEntity = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(playerIDToSpawnOn);
+			if (!spawnEntity)
+				return;
+			
+			entityRplID = spawnEntity.GetRplComponent().Id();
+		}		
+		else if (groupID != -1)
+		{
+			// Use the group leader as the spawn point
+			SCR_AIGroup group = SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID);
+			if (!group)
+				return;
+			
+			IEntity leaderEntity = group.GetLeaderEntity();
+			if (!leaderEntity)
+				return;
+			
+			RplComponent rplComp = RplComponent.Cast(leaderEntity.FindComponent(RplComponent));
+			if (!rplComp)
+				return;
+			
+			entityRplID = rplComp.Id();
+		}
+		else
+			entityRplID = RplId.Invalid();
+		
+		m_RespawnManager.RespawnPlayer(playerId, -1, entityRplID);
+		
 		if (logAction)
 		{
 			SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
@@ -1866,6 +1911,16 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_ToggleRespawn", 0);
 		
 		CRF_RespawnManager.GetInstance().ToggleRespawn();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ToggleVAARRecording()
+	{
+		// Telemetry: no parameters
+		LogTelemetry("RpcAsk_ToggleVAARRecording", 0);
+		
+		CRF_VAAR_GamemodeComponent.GetInstance().ToggleRecording();
 	}
 	
 	//------------------------------------------------------------------------------------------------

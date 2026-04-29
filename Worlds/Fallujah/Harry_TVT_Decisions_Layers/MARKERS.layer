@@ -1,0 +1,10 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ coords 4777.104 1.001 6633.424
+ m_MarkerColor 0 0.125 0.502 1
+ m_sDescription "BLU FOB"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+ coords 2942.918 1 6991.378
+}

@@ -212,6 +212,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
+		
+		// Log late-connect if player connects during safestart (game phase, before safestart ends)
+		// These players are eligible for AAR. Players who connect after safestart ends are not.
+		if (m_GM && m_GM.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
+			if (safestart && safestart.GetSafestartStatus())
+			{
+				if (m_LogFileHandle)
+					m_LogFileHandle.WriteLine("jip" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -718,13 +730,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
   	m_iTotalSeconds = (m_fTotalTime / 1000);
 	m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
-		// Append damage type to weapon name if available
-		if (damageType > 0)
-		{
-			string damageTypeStr = CRF_DamageHelper.GetDamageTypeString(damageType);
-			m_sWeaponName = m_sWeaponName + " (" + damageTypeStr + ")";
-		}
-		
 		// Log to file
 		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + 
 		                         m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + 
@@ -773,8 +778,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			}
 		}
 		
-		// Handle specific damage types if provided
-		if (damageType > 0)
+		// Only fall back to damage type labels when no weapon was identified from inventory.
+		// If inventory already gave us a real weapon name, keep it so the bot shows
+		// the actual weapon (e.g. "RGO Grenade") rather than a generic type string.
+		if (damageType > 0 && damageType != EDamageType.KINETIC && weaponName == "Unknown Weapon")
 		{
 			if (damageType == EDamageType.BLEEDING)
 			{
@@ -799,11 +806,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			else if (damageType == EDamageType.MELEE)
 			{
 				weaponName = "Melee";
-			}
-			else
-			{
-				// Use the damage type string from utility class
-				weaponName = CRF_DamageHelper.GetDamageTypeString(damageType);
 			}
 		}
 		

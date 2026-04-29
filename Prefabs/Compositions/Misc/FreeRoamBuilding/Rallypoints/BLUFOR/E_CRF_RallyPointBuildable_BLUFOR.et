@@ -1,0 +1,69 @@
+CRF_RallyPoint {
+ ID "68F8E4F5EF72C552"
+ components {
+  CRF_Rallypoint_BuildingCompositionComponent "{68F943E7523D8D20}" {
+  }
+  RigidBody "{68F943F7256F4353}" {
+  }
+  SCR_EditableEntityComponent "{68F8E4F5EF72C5BC}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{68F8E4F5EF72C5BB}" {
+    Name "#ACE_Trenches-EditableEntity_VehicleTrench_01_Name"
+    Icon "{06A4C2F718393B5D}UI/Textures/FieldManual/MPModes/Conflict/Images/Conflict_RadioComms_Deployed_UI.edds"
+    m_Image "{06A4C2F718393B5D}UI/Textures/FieldManual/MPModes/Conflict/Images/Conflict_RadioComms_Deployed_UI.edds"
+    m_aAuthoredLabels {
+     THEME_MILITARY ENTITYTYPE_OBJECT SIZE_M FACTION_US FACTION_USSR FACTION_FIA
+    }
+    m_aAutoLabels {
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{68F8E4F5EF72C5B6}" {
+      m_BudgetType CAMPAIGN
+     }
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{68F8E4F5EF72C5B7}" {
+      m_Value 1
+     }
+    }
+   }
+  }
+  SCR_EditorLinkComponent "{68F8E4F5EF72C5B5}" {
+   m_aEntries {
+    SCR_EditorLinkEntry "{68F8E4F5EF72C5B3}" {
+     m_Prefab "{C0820D8C50D38898}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/BLUFOR/E_CRF_RallyPoint_Preview_BLUFOR.et"
+    }
+   }
+  }
+  SCR_SlotCompositionComponent "{68F943F20C3C3886}" {
+  }
+  ActionsManagerComponent "{68F943F2115E8F68}" {
+   ActionContexts {
+    UserActionContext "{68F943F28AB26313}" {
+     ContextName "Disassembly"
+     Position PointInfo "{5D66ED10814F45E4}" {
+      Offset 0 0.5 0
+     }
+     Radius 5
+     "Display UI At Reference Point" 1
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{68F943F158270DA3}" {
+     ParentContextList {
+      "Disassembly"
+     }
+     UIInfo UIInfo "{5D66ED10FA2A86F5}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly"
+     }
+     VisibilityRange 10
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{68F8E4F5EF72C5B1}" {
+  }
+  Hierarchy "{68F943F7377012DD}" {
+  }
+ }
+ coords 2065.986 47.753 2068.755
+}
