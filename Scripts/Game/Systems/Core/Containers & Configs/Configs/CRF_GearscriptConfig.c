@@ -20,7 +20,7 @@ class CRF_GearScriptContainer
 	[Attribute("true", UIWidgets.Hidden)]
 	bool m_bEnableLeadershipRadios;
 	
-	[Attribute("true", UIWidgets.Hidden)]
+	[Attribute("false", UIWidgets.Hidden)]
 	bool m_bEnableGIRadios;
 	
 	[Attribute("true", UIWidgets.Hidden)]
@@ -86,7 +86,7 @@ class CRF_SimplifiedGearScriptContainer
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipRadios;
 	
-	[Attribute("true", UIWidgets.CheckBox)]
+	[Attribute("false", UIWidgets.CheckBox)]
 	bool m_bEnableGIRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
