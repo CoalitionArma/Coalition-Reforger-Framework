@@ -128,7 +128,7 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 3291.678 13.143 5531.427
+  coords 3291.678 15.081 5531.427
   angles 0 1.489 0
   m_rVehicle "{B3C8EC88E7782C78}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_pohona.et"
   m_sFactionKey "INDFOR"
@@ -174,15 +174,14 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
-  {
-   CRF_VehicleSpawner {
-    coords -0.849 0.054 -21.516
-    m_rVehicle "{1E3E6180FBB0809E}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_ZeroCar.et"
-    m_sFactionKey "INDFOR"
-    m_bShouldRespawnOnSideRespawn 0
-    m_bShouldAddAmmo 0
-   }
-  }
+ }
+ {
+  coords 3297.345 13.046 5559.917
+  angles 0 1.489 0
+  m_rVehicle "{1E3E6180FBB0809E}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_ZeroCar.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
   coords 3285.009 12.468 5505.171
@@ -201,7 +200,7 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 3283.562 11.45 5490.784
+  coords 3283.562 11.827 5490.784
   angles 0 1.489 0
   m_rVehicle "{6ACFF3931490C448}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Red.et"
   m_sFactionKey "INDFOR"
