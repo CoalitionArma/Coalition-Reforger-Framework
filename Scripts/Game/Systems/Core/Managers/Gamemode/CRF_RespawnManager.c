@@ -58,7 +58,6 @@ class CRF_RespawnManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
 //=============================================================================================================================================================================================================================================================================================================================================================
-
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
@@ -183,6 +182,25 @@ class CRF_RespawnManager : ScriptComponent
 //	 TICKET METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
 
+	//------------------------------------------------------------------------------------------------
+	//! Checks if the player can respawn
+	//! \param[in] playerEntity the entity of the player
+	//! \param[in] factionKey the faction key of the player
+	//! \return True if the player can respawn
+	bool CanPlayerResawn(IEntity playerEntity, string factionKey)
+	{
+		//This is a mess theres got to be a better way, one day we'll find it - Salami
+		if (m_bCurrentRespawnEnabled && 
+			!CRF_EntityHelper.IsSpectator(playerEntity) && 
+			m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR && 
+			TicketsRemaining(factionKey) &&
+			IsRespawnTimeAllowed() &&
+			!GetFactionSpawnpoints(factionKey).IsEmpty() &&
+			!factionKey.IsEmpty())
+				return true;
+		
+		return false;
+	}
 	//------------------------------------------------------------------------------------------------
 	void SubtractTicket(FactionKey faction, int amount, bool force = false)
 	{
