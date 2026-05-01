@@ -153,7 +153,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void DiisableCameraOnRails()
+	void DisableCameraOnRails()
 	{
 		m_bCameraOnRails = false;
 	}

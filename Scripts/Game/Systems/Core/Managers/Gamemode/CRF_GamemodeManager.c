@@ -92,7 +92,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
 			{
-				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 1000, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 1000ms is just a arbitrary value - Njpatman
+				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 350, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 350ms is just a arbitrary value - Njpatman
 
 				// Only notify data-collector modules manually when SetInitialMainEntity was used.
 				// When RequestSpawn is used, OnPlayerSpawnFinalize_S fires automatically and

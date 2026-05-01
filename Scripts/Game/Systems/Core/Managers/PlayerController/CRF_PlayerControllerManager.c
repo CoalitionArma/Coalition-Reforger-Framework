@@ -83,7 +83,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 				CRF_InitializationHelper.SetupRadioFrequency();
 		};
 		
-		m_CameraManager.DiisableCameraOnRails();
+		m_CameraManager.DisableCameraOnRails();
 		
 		if (CRF_EntityHelper.IsSpectator(playerCharacter))
 			InitilizeLocalSpectator(playerCharacter);
