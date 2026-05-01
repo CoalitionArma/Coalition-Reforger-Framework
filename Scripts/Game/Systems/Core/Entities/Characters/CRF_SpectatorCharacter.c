@@ -14,6 +14,13 @@ class CRF_SpectatorCharacter : CRF_PlayerCharacter
 		super.EOnInit(owner);
 		
 		GetGame().GetCallqueue().Call(DisablePhysicsAndDamage);
+		
+		if (RplSession.Mode() != RplMode.Client)
+		{
+			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent)); 
+			if (charController)
+				charController.m_OnControlledByPlayer.Insert(OnControlledByPlayer);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -43,5 +50,13 @@ class CRF_SpectatorCharacter : CRF_PlayerCharacter
 		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent)); 
 		if (damManager)
 			damManager.EnableDamageHandling(false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Hijack the local character OnControlledByPlayer invoker so we can delete spectator entities when no one is controlling them.
+	protected void OnControlledByPlayer(IEntity owner, bool controlled)
+	{
+		if (!controlled)	// Player is no longer in control of this entity
+			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, this); // Need to call on next frame so we dont mess up the player controller.
 	}
 }

@@ -34,16 +34,6 @@ class CRF_PlayerController : SCR_PlayerController
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
 		super.OnControlledEntityChanged(from, to);
-		if (from)
-		{
-			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
-			if (charController.IsDead())
-			{
-				vector mat[4];
-				from.GetTransform(mat);
-				CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
-			};
-		}
 		
 		if (!Replication.IsServer())
 		{

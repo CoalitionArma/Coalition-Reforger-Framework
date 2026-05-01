@@ -446,6 +446,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (!player)
 			return;
 		
+		if (CRF_EntityHelper.IsSpectator(player)) // We need to delete all spectator characters on disconnect
+			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, player); // Need to call on next frame so we dont mess up the player controller.
+		
 		StopMovement(player);
 	}
 	
@@ -469,6 +472,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		
+		if (playerId == SCR_PlayerController.GetLocalPlayerId() && !CRF_EntityHelper.IsSpectator(playerEntity))
+		{
+			vector mat[4];
+			playerEntity.GetTransform(mat);
+			CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
+		}
 		
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
