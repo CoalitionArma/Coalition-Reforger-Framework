@@ -53,21 +53,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Use the transponder to find the HVT and kill him before he can escape. Kill any who stand in your way"
+   m_sTextData "Use the transponder to find the HVT and kill him before he can escape. He is carrying The Files. Retrieve them and bring them back to your flag.  Kill any who stand in your way"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Use the transponder to find the HVT and kill him before he can escape. Kill any who stand in your way"
+   m_sTextData "Use the transponder to find the HVT and kill him before he can escape. He is carrying The Files. Retrieve them and bring them back to your flag.  Kill any who stand in your way"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
-   m_sTextData "You have multiple avenues of escape. A helicopter stationed at the MIlitary Base in Valadim, Airport, and a private one at your Old Castle on the hill to the east. You will be hunted relentlessly, use the small size of your element to your advantage and move quickly to escape."
+   m_sTextData "You have multiple avenues of escape. A helicopter stationed at the MIlitary Base in Valadim, Airport, and a private one at your Old Castle on the hill to the east. You will be hunted relentlessly, use the small size of your element to your advantage and move quickly to escape. El Toro has the files dont drop them."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
