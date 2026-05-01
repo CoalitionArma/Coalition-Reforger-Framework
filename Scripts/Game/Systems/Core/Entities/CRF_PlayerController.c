@@ -35,6 +35,17 @@ class CRF_PlayerController : SCR_PlayerController
 	{
 		super.OnControlledEntityChanged(from, to);
 		
+		if (from)
+		{
+			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
+			if (charController.IsDead())
+			{
+				vector mat[4];
+				from.GetTransform(mat);
+				CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
+			};
+		}
+		
 		if (!Replication.IsServer())
 		{
 			m_fTimeOfLastRespawn = GetGame().GetWorld().GetWorldTime();
@@ -72,7 +83,6 @@ class CRF_PlayerController : SCR_PlayerController
 	//! Called when the player controller updates (typically whenever a player joins/rejoins)
 	override protected void UpdateLocalPlayerController()
 	{
-		
 		super.UpdateLocalPlayerController();
 		
 		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerManager.GetInstance())

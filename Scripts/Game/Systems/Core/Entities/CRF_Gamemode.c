@@ -473,13 +473,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		if (playerId == SCR_PlayerController.GetLocalPlayerId() && !CRF_EntityHelper.IsSpectator(playerEntity))
-		{
-			vector mat[4];
-			playerEntity.GetTransform(mat);
-			CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
-		}
-		
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
