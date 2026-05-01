@@ -1,0 +1,10 @@
+$grp SCR_BaseTriggerEntity {
+ bombsite_a_trigger {
+  coords 2838.02 52.937 4938.805
+  angles 0 55.126 0
+ }
+ bombsite_a_trigger2 {
+  coords 2991.247 17.844 5222.063
+  angles 0 -145.129 0
+ }
+}
