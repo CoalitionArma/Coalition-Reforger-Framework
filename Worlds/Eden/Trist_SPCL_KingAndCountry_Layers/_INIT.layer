@@ -189,17 +189,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_rGearScript "{D8849EEC944C203C}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Blufor.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{156E63B7D5566279}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Opfor.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
@@ -245,23 +245,22 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  }
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 9232.305 278.923 3692.171
+ coords 9508.283 256.544 3330.126
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
- coords 9422.638 265.558 3509.268
- angles 0 -54.396 0
+ coords 9443.572 207.163 3018.336
  Points {
-  ShapePoint "{6923256CCF915751}" {
-   Position -27.43 0 -244.203
+  ShapePoint "{693A31F6C31D7D67}" {
+   Position 122.107 0 -258.535
   }
-  ShapePoint "{6923256CCEB69260}" {
-   Position -57.806 0 318.382
+  ShapePoint "{693A31F6C527C9E3}" {
+   Position -273.948 0 199.456
   }
-  ShapePoint "{6923256CC110A5E3}" {
-   Position 104.802 0 321.211
+  ShapePoint "{693A31F6C42A9E4F}" {
+   Position 85.515 0 459.217
   }
-  ShapePoint "{6923256CC1FE866E}" {
-   Position 116.095 0 -236.376
+  ShapePoint "{693A31F6C4E30CB1}" {
+   Position 375.197 0 -73.336
   }
  }
  {
@@ -269,14 +268,46 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    ID "658635BEF7631DCD"
    components {
     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-     m_fHeight 347.2
+     m_fHeight 411.8
     }
    }
   }
  }
 }
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 9609.132 270.398 3419.841
+ coords 9709.282 251.673 2966.405
+}
+$grp StaticModelEntity : "{7022F1A36DC9510C}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareWide.et" {
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{693A31F3F02F0528}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{E0078B932EB17D27}Common/Materials/default_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 9491.484 208.132 3066.938
+  angles 0 -40.934 90
+  scale 6.515
+ }
+ {
+  components {
+   MeshObject "{547A8804AA50F719}" {
+    Materials {
+     MaterialAssignClass "{693A31F3F02F0528}" {
+      SourceMaterial "Assets/Structures/BuildingsParts/Entry/Data/ConcreteStairs_02_Sides"
+      AssignedMaterial "{E0078B932EB17D27}Common/Materials/default_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 9493.609 208.14 3059.492
+  angles 0 -0.403 90
+  scale 6.515
+ }
 }
 GenericEntity : "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/DamageArea_Ice.et" {
  components {
@@ -284,7 +315,7 @@ GenericEntity : "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/Grenad
    DamageAreas {
     CRF_AreaDamageArea "{68CB4604057BE9D9}" {
      "Area shape" DamageAreaShapeSphere "{68CB46040692D728}" {
-      Radius 250
+      Radius 350
      }
      m_DamageEffect CRF_AreaSlowEffect "{68D0D1CBDF5F1EB3}" {
       m_fSpecialCollisionMaxSpeedLimitScaled 0.55
@@ -293,5 +324,5 @@ GenericEntity : "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/Grenad
    }
   }
  }
- coords 9454.43 259.359 3549.713
+ coords 9526.746 207.433 3083.144
 }
