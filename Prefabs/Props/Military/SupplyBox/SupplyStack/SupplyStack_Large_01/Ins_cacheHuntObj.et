@@ -12,7 +12,8 @@ GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/
    }
   }
   CRF_InsDestructiveComponent "{68A80E000A223702}" {
-   m_iCachePhase 2
+   m_iCachePhase 1
+   m_bStartActive 1
    m_Image "{E65174B46D8AA4D5}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Defend.edds"
   }
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
@@ -30,7 +31,7 @@ GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/
     }
    }
    CollisionVelocityThreshold 100000000
-   m_fBaseHealth 750
+   m_fBaseHealth 500
    m_fForceToDamageScale 0.01
    m_eMaterialSoundType BREAK_WOOD_SOLID
   }

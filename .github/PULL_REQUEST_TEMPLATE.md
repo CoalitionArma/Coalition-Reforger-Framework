@@ -13,7 +13,27 @@ Add the mission <mission name!> made by <author name!> to the repository.
 - [ ] Ingame Briefings to all players
 - [ ] Side-based briefings  
 - [ ] Mission .conf file
+- [ ] PR Contains enough information for an [AAR Post](https://discord.com/channels/237991125523103747/1489488919081779240/1489489341305847890)
 
+**Terrain:**
+
+<What terrain is it on>
+
+**GameMode**
+
+<What game mode? EX. HVT, S&D, Please avoid TVT where possible>
+
+**Slotting Ratio:**
+
+<3:2>
+
+**Slot Count**
+
+<Available Slot Count>
+
+**Time limit:**
+
+<60min>
 
 **Faction(s):**
 
@@ -37,21 +57,9 @@ CIV Assets:
 
 <mission objectives>
 
-**Terrain:**
-
-<What terrain is it on>
-
 **Short mission description:**
 
 <short description here>
-
-**Slotting Ratio:**
-
-<3:2>
-
-**Time limit:**
-
-<60min>
 
 **Mission Briefing Screenshot:**
 
@@ -70,3 +78,5 @@ CIV Assets:
 **Other Notes:**
 
 <Assets? Admin notes? Anything else?>
+
+

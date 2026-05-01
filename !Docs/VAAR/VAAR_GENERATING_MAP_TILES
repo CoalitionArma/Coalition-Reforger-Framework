@@ -1,0 +1,20 @@
+- 1. Download the https://github.com/nickludlam/EnfusionMapMaker repo
+- 2. Open Arma Reforger Tools
+- 3. Add Exisitng Project, point it to EnfusionMapMaker\Enfusion
+- 4. Add the map your trying to add as a dependancy
+- 5. Load the map either in-game or in the editor and open the Map note the bottom left and top right of the map cords
+- 6. Open Auto Camera tool (Castle ICON the top and then on the side bar)
+- 7. Adjust cords  start being bottom right and end being top right of the map e.g arland end cords are 4000x 4000z (likely only need to change the end coords)
+- 8. Camera Settings: set "far plane" to 5000 & fov to 15
+- 9. Click "G" to hide the overlay
+
+Optinoal before clicking start capture:
+- 1. Adjust HDR brightness
+- 2. Timings = make screen shotting faster, If you got good pc you can lower the values to make the process faster. I would just half them run a test and make sure the no artificats
+
+- 10. Run ```python .\crop_screenshots.py "\ArmaReforgerWorkbench\profile\mapoutput" "\EnfusionMapMaker\Export"```
+- 11. Run ```python .\create_zoom_levels.py "\EnfusionMapMaker\LODS"```
+- 12. Upload LODS folder to webserver \mapname\LODS
+
+## List of done maps
+- [x] Arland

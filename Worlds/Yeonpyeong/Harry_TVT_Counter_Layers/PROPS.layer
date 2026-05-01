@@ -1,0 +1,130 @@
+$grp SCR_DestructibleEntity : "{027CEF1B935A4D42}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_Base.et" {
+ {
+  coords 4232.482 -0 8107.435
+  angles 0 71.944 0
+ }
+ {
+  coords 4234.281 0 8101.911
+  angles 0 71.944 0
+ }
+ {
+  coords 4233.368 -0.001 8104.714
+  angles 0 71.944 0
+ }
+ {
+  coords 4235.19 -0.001 8099.122
+  angles 0 71.944 0
+ }
+ {
+  coords 4228.864 -0 8118.534
+  angles 0 71.944 0
+ }
+ {
+  coords 4230.663 -0 8113.01
+  angles 0 71.944 0
+ }
+ {
+  coords 4229.75 0 8115.813
+  angles 0 71.944 0
+ }
+ {
+  coords 4231.572 -0 8110.221
+  angles 0 71.944 0
+ }
+ {
+  coords 4223.372 -0 8116.443
+  angles 0 -19.34 0
+ }
+ {
+  coords 4220.59 -0.001 8115.469
+  angles 0 -19.34 0
+ }
+ {
+  coords 4226.14 -0.001 8117.417
+  angles 0 -19.34 0
+ }
+ {
+  coords 4206.875 -0 8110.658
+  angles 0 -19.34 0
+ }
+ {
+  coords 4212.357 -0 8112.579
+  angles 0 -19.34 0
+ }
+ {
+  coords 4209.575 0 8111.604
+  angles 0 -19.34 0
+ }
+ {
+  coords 4215.125 -0.001 8113.551
+  angles 0 -19.34 0
+ }
+ {
+  coords 4217.889 -0 8114.523
+  angles 0 -19.34 0
+ }
+ {
+  coords 4201.351 0 8108.714
+  angles 0 -19.34 0
+ }
+ {
+  coords 4198.569 -0 8107.74
+  angles 0 -19.34 0
+ }
+ {
+  coords 4204.121 0 8109.688
+  angles 0 -19.34 0
+ }
+ {
+  coords 4184.855 -0 8102.929
+  angles 0 -19.34 0
+ }
+ {
+  coords 4190.337 -0 8104.851
+  angles 0 -19.34 0
+ }
+ {
+  coords 4187.556 -0.001 8103.876
+  angles 0 -19.34 0
+ }
+ {
+  coords 4193.104 -0 8105.823
+  angles 0 -19.34 0
+ }
+ {
+  coords 4195.869 0 8106.794
+  angles 0 -19.34 0
+ }
+ {
+  coords 4189.337 0 8092.083
+  angles 0 -111.729 0
+ }
+ {
+  coords 4187.187 0 8097.479
+  angles 0 -111.729 0
+ }
+ {
+  coords 4191.509 0 8086.637
+  angles 0 -111.729 0
+ }
+ {
+  coords 4188.278 0 8094.741
+  angles 0 -111.729 0
+ }
+ {
+  coords 4190.423 0.001 8089.36
+  angles 0 -111.729 0
+ }
+ {
+  coords 4186.102 -0 8100.205
+  angles 0 -111.729 0
+ }
+ {
+  coords 4192.6 0.807 8083.897
+  angles 0 -111.729 0
+ }
+ {
+  coords 4193.658 0 8081.237
+  angles 0 -111.729 0
+ }
+}

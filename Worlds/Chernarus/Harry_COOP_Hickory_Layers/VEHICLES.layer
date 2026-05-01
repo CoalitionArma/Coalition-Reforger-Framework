@@ -1,0 +1,104 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 12073.968 152.677 12637.759
+  angles 0 14.686 0
+  m_rVehicle "{A7E72E0E66B73009}Prefabs/Vehicles/Wheeled/JLTV/CROWS_2/AIM92/JLTV_CROWSII_AIM92_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12068.989 152.677 12639.063
+  angles 0 14.686 0
+  m_rVehicle "{4DB3F284FE895321}Prefabs/Vehicles/Wheeled/JLTV/CROWS_2/Javelin/JLTV_CROWSII_Javelin_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12064.167 152.677 12640.327
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12058.85 152.677 12641.723
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12053.212 152.677 12643.2
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12071.572 152.677 12628.1
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12066.086 152.677 12629.537
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12060.633 152.677 12630.967
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12054.838 152.677 12632.485
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12049.539 152.677 12633.874
+  angles 0 14.686 0
+  m_rVehicle "{CBC466F92C9E1AE6}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed_Woodland.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13133.884 -0.224 8155.159
+  angles 0 105.791 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13134.016 0.495 8148.14
+  angles 0 101.476 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13133.607 0.495 8140.548
+  angles 0 101.476 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13133.426 0.495 8133.431
+  angles 0 101.476 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13132.777 0.495 8124.412
+  angles 0 93.627 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 12727.276 5.75 9612.764
+  angles 0 14.686 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 12723.313 5.75 9614.134
+  angles 0 14.686 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+ }
+}

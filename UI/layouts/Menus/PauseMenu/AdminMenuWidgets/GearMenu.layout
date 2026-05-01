@@ -52,14 +52,6 @@ FrameWidgetClass {
       Padding 0 20 0 0
      }
      {
-      ScrollLayoutWidgetClass "{56691148E692435A}" {
-       Prefab "{56691148E692435A}"
-       {
-        VerticalLayoutWidgetClass "{56691148E013D981}" {
-         Prefab "{56691148E013D981}"
-        }
-       }
-      }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
        "Is Visible" 0
@@ -106,14 +98,6 @@ FrameWidgetClass {
       Padding 0 20 0 0
      }
      {
-      ScrollLayoutWidgetClass "{56691148E692435A}" {
-       Prefab "{56691148E692435A}"
-       {
-        VerticalLayoutWidgetClass "{56691148E013D981}" {
-         Prefab "{56691148E013D981}"
-        }
-       }
-      }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
        "Is Visible" 0
@@ -335,6 +319,99 @@ FrameWidgetClass {
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
      Text "Add Map"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{69152B6BEA082FBB}" {
+   Name "MenuButton5"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 23.919
+    OffsetLeft 23.919
+    PositionY -155.361
+    OffsetTop -155.361
+    SizeX 144.51
+    OffsetRight -168.428
+    SizeY 30
+    OffsetBottom 125.361
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{69152B6BEA082FB9}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Wrench"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{69152C56941766C2}" {
+   Name "MenuButton6"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 23.559
+    OffsetLeft 23.559
+    PositionY -116.068
+    OffsetTop -116.068
+    SizeX 144.509
+    OffsetRight -168.068
+    SizeY 30
+    OffsetBottom 86.068
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{69152C56941766C0}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Med Supply"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{69152C5604C65182}" {
+   Name "MenuButton7"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 23.559
+    OffsetLeft 23.559
+    PositionY -77.469
+    OffsetTop -77.469
+    SizeX 144.509
+    OffsetRight -168.068
+    SizeY 30
+    OffsetBottom 47.469
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{69152C5604C65180}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Ammo"
      "Font Size" 17
      "Min Font Size" 13
     }
