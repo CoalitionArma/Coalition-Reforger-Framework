@@ -57,7 +57,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Locate, secure, and extract the crashed helicopter pilot to your spawn; minimize casualties."\
+   m_sTextData "Locate, secure, and extract the crashed helicopter pilot to your spawn; minimize casualties. CHDKz forces can be set up anywhere within ~1km East-West of the OBJ marker; the bowl of Nadezhda Mine is not your friend."\
    ""\
    "You have access to both Mi8s and Urals; you have access to a forward deploy zone to utilize the Urals."\
    ""\
@@ -69,7 +69,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "INDFOR Objectives"
-   m_sTextData "Lay low and cause as many casualties as possible; ensure the enemy do not leave with the pilot. "\
+   m_sTextData "Lay low and cause as many casualties as possible; ensure the enemy do not leave with the pilot. The CDF have access to lightly armed Mi8s to assist with their landing, utilize the space you have to force them into fights they cannot win. "\
    ""\
    "You may not move the unconscious pilot. (He is located to the North of your spawn area along the river.)"\
    ""\
@@ -295,7 +295,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF_Modern_Day.conf"
+  m_rGearScript "{8735F33B0ACD07D1}Configs/Gearscripts/Custom/Klub/CRF_GS_CDF_Modern_Day_klub.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
