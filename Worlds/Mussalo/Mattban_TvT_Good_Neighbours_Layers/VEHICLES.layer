@@ -93,48 +93,16 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 3364.194 12.037 5532.498
+  coords 3364.194 11.389 5532.498
   angles 0 1.489 0
   m_rVehicle "{F20416A25B1F8E53}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Beige.et"
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
  {
-  coords 3295.467 15.323 5547.411
-  angles 0 1.489 0
-  m_rVehicle "{0B2C142387AF9D3A}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_12.et"
-  m_sFactionKey "INDFOR"
-  m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 3297.671 14.835 5570.33
-  angles 0 1.489 0
-  m_rVehicle "{C27FF923CEBDA4E5}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_69.et"
-  m_sFactionKey "INDFOR"
-  m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
   coords 3287.369 13.848 5513.396
   angles 0 1.489 0
   m_rVehicle "{32BB024A05501A65}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_Randomised.et"
-  m_sFactionKey "INDFOR"
-  m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 3281.688 12.89 5483.891
-  angles 0 1.489 0
-  m_rVehicle "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et"
-  m_sFactionKey "INDFOR"
-  m_bShouldRespawnOnSideRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 3297.345 14.829 5559.917
-  angles 0 1.489 0
-  m_rVehicle "{1E3E6180FBB0809E}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_ZeroCar.et"
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
@@ -175,6 +143,46 @@ $grp CRF_VehicleSpawner {
   coords 3291.178 13.363 5532.924
   angles 0 14.915 0
   m_rVehicle "{700494DD8269767B}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Yellow.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3293.75 14.162 5547.273
+  angles 0 14.915 0
+  m_rVehicle "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3295.726 14.304 5556.848
+  angles 0 14.915 0
+  m_rVehicle "{8000A0F649FB4B0D}Prefabs/Vehicles/Wheeled/S105/S105_darkred.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3296.722 14.342 5566.71
+  angles 0 14.915 0
+  m_rVehicle "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3363.547 11.86 5521.062
+  angles 0 14.915 0
+  m_rVehicle "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3363.137 11.86 5508.709
+  angles 0 14.915 0
+  m_rVehicle "{AD80FB47D868C775}Prefabs/Vehicles/Wheeled/S105/S105_green.et"
   m_sFactionKey "INDFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
