@@ -1,13 +1,6 @@
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 7672.156 203.52 6862.43
- {
-  CRF_ManualMarker {
-   ID "68682AC1849E53AF"
-   m_aHideOnGameModeStates {
-   }
-  }
- }
+ coords 2688.039 24.218 5480.679
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 4359.199 56.987 3151.597
+CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ coords 7671.582 202.499 6867.255
 }

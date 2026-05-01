@@ -6,8 +6,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_HighValueTargetGamemodeManager "{690D6E61ECD14DEB}" {
    m_bEnableTransponderMarker 0
    m_eTargetType VIP
+   m_searcherFactionKey "OPFOR"
    m_aHVTEntries {
     CRF_HVTEntry "{690D6E618A501F90}" {
+     m_hvtPrefab "{A62FA97C4EC64F14}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliPilot.et"
      m_sTransponderEntityName "Pilot"
      m_sMarkerText "VIP"
     }
@@ -38,13 +40,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "CHDKz forces have shot down an American little bird. They have located the crash site and have decided to use the surviving pilot as bait to weaken the American presence in Kolguyev."\
+   m_sTextData "CHDKz forces have shot down an Mi8. They have located the crash site and have decided to use the surviving pilot as bait to weaken the CDF presence in Kolguyev."\
    ""\
-   "BLUFOR Composition: US Airborne Infantry"\
-   "BLUFOR Assets: 2x H-47 Chinooks"\
+   "OPFOR Composition: CDF"\
+   "OPFOR Assets: 2x Mi8s, Urals"\
    ""\
-   "OPFOR Composition: CHDKz Infantry"\
-   "OPFOR Assets: N/A"\
+   "INDFOR Composition: CHDKz Infantry"\
+   "INDFOR Assets: N/A"\
    ""\
    "Time: Afternoon"\
    ""\
@@ -54,28 +56,34 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTitle "BLUFOR Objectives"
+   m_sTitle "OPFOR Objectives"
    m_sTextData "Locate, secure, and extract the crashed helicopter pilot to your spawn; minimize casualties."\
    ""\
+   "You have access to both Mi8s and Urals; you have access to a forward deploy zone to utilize the Urals."\
+   ""\
    "Map marker indicates the general vicinity of the crash site. (Within 500 meters)"
-   m_aFactionKeys +{
+   m_aFactionKeys {
+    "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTitle "OPFOR Objectives"
-   m_sTextData "Lay low and cause as many casualties to the Americans as possible; ensure the Americans do not leave with the pilot."\
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Lay low and cause as many casualties as possible; ensure the enemy do not leave with the pilot. "\
    ""\
-   "OPF LOA is the SS area."
-   m_aFactionKeys +{
+   "You may not move the unconscious pilot. (He is located to the North of your spawn area along the river.)"\
+   ""\
+   "INDFOR LOA is the SS area."
+   m_aFactionKeys {
+    "INDFOR"
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
-   m_sTextData "BLU extract w/ VIP and >25% of force = BLU Victory"\
-   "BLU extract w/ VIP and <25% of force = Draw"\
-   "BLU fail to extract entirely = OPF Victory"
+   m_sTextData "OPF extract w/ VIP and >25% of force = OPF Victory"\
+   "OPF extract w/ VIP and <25% of force = Draw"\
+   "OPF fail to extract entirely = IND Victory"
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -93,10 +101,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  }
  m_iFactionOneRatio 3
  m_iFactionTwoRatio 2
- m_sFactionOneKey "BLU"
- m_sFactionTwoKey "OPF"
- m_BluforSlots {
-  CRF_SlottingGroup "{692213A2C3A83403}" {
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "IND"
+ m_OpforSlots {
+  CRF_SlottingGroup "{693D7DADCD85D4B8}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -104,7 +112,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{692213A2C3A83699}" {
+  CRF_SlottingGroup "{693D7DADCD85D794}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -119,7 +127,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A83188}" {
+  CRF_SlottingGroup "{693D7DADCD85D700}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -134,7 +142,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A83170}" {
+  CRF_SlottingGroup "{693D7DADCD85D694}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,7 +157,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A8305B}" {
+  CRF_SlottingGroup "{693D7DADCD85D6EF}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -157,7 +165,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{692213A2C3A83311}" {
+  CRF_SlottingGroup "{693D7DADCD85D678}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -172,7 +180,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A832F9}" {
+  CRF_SlottingGroup "{693D7DADCD85D1D1}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -187,7 +195,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A80DA4}" {
+  CRF_SlottingGroup "{693D7DADCD85D124}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -195,7 +203,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{692213A2C3A80C9A}" {
+  CRF_SlottingGroup "{693D7DADCD85D0B7}" {
    m_sCallsign "HELI 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -204,8 +212,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
- m_OpforSlots {
-  CRF_SlottingGroup "{692213A2C3A80FE0}" {
+ m_IndforSlots {
+  CRF_SlottingGroup "{693D7DADCD85D060}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -213,7 +221,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{692213A2C3A80ED1}" {
+  CRF_SlottingGroup "{693D7DADCD85D3CE}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -228,7 +236,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A809BB}" {
+  CRF_SlottingGroup "{693D7DADCD85D327}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -243,7 +251,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A8089A}" {
+  CRF_SlottingGroup "{693D7DADCD85D2A8}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -258,7 +266,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{692213A2C3A80850}" {
+  CRF_SlottingGroup "{693D7DADCD85D202}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -287,7 +295,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF_Modern_Day.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -295,12 +303,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"

@@ -1,21 +1,69 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 4370.284 55.187 3204.613
-  angles 0 -86.783 0
-  m_rVehicle "{CA33E4FE61CD6116}Prefabs/Vehicles/Helicopters/H47/CH47A_Transport.et"
-  m_sFactionKey "BLUFOR"
+  coords 2636.319 24.219 5466.535
+  angles 0 -90 0
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
-  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{69220170A875F12C}" {
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
    m_iAmountofAutoCannonAmmo 0
    m_iAmountofMachineGunAmmo 0
   }
  }
  {
-  coords 4371.598 55.186 3230.317
+  coords 2635.414 24.219 5519.531
   angles 0 -90 0
-  m_rVehicle "{CA33E4FE61CD6116}Prefabs/Vehicles/Helicopters/H47/CH47A_Transport.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 2717.74 24.592 5490.907
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 2718.052 24.593 5474.554
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 2717.909 24.592 5482.85
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 2718.263 24.592 5465.125
+  angles 0 -90 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
   m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{692201710CFA430D}" {
