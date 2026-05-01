@@ -55,7 +55,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 
 		// Spawn or reposition camera
 		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et"), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
+			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load(CRF_EntityHelper.GetSpectatorCameraResource()), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
 		
 		// Level camera horizon
 		vector mat = m_eCamera.GetAngles();
@@ -69,7 +69,7 @@ class CRF_PlayerCameraManager : ScriptComponent
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	//! Updates stored camera position for persistence between sessions
+	//! Updates stored camera position for persistence between deaths
 	void UpdateStoredCameraPos()
 	{
 		if (m_eCamera)
@@ -150,6 +150,12 @@ class CRF_PlayerCameraManager : ScriptComponent
 			m_CameraPolyLine = poly;
 			InitalizeCameraOnRails();
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void DisableCameraOnRails()
+	{
+		m_bCameraOnRails = false;
 	}
 	
 	//------------------------------------------------------------------------------------------------

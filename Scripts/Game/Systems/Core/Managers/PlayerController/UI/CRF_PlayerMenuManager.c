@@ -28,11 +28,13 @@ class CRF_PlayerMenuManager : ScriptComponent
 		{
 			case CRF_EGamemodeState.BRIEFING: 
 			{
+				CRF_PlayerCameraManager.GetInstance().SetCameraOnRailsOrbit(gamemode.GetGenericSpawn(), 850, 225, 1);
 				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);
 				break;
 			}
 			case CRF_EGamemodeState.SLOTTING:
 			{
+				CRF_PlayerCameraManager.GetInstance().SetCameraOnRailsOrbit(gamemode.GetGenericSpawn(), 850, 225, 1);
 				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
 				break;
 			}

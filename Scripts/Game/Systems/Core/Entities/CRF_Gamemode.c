@@ -446,6 +446,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (!player)
 			return;
 		
+		if (CRF_EntityHelper.IsSpectator(player)) // We need to delete all spectator characters on disconnect
+			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, player); // Need to call on next frame so we dont mess up the player controller.
+		
 		StopMovement(player);
 	}
 	
