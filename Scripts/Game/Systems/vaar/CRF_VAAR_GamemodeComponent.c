@@ -13,6 +13,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	[RplProp()] bool m_bRecording;
 	protected float m_fTimer = 0;
+	protected int m_iCurrentFrame = 0;
 	
 	[Attribute("0.5", "auto", "Recording intervals in milliseconds", category: "CRF Virtual AAR System")]
     protected const float m_iRecordIntervals = 0.5;
@@ -30,7 +31,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		GetGame().GetCallqueue().CallLater(InitilizeAAR, 4000, true); // Why ;(
+		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, true); // Allows safe start to kickin before checking... Why ;(
 	}
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -42,6 +43,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (m_fTimer >= m_iRecordIntervals && m_bRecording)
         {
            RecordFrame();
+			m_iCurrentFrame++;
             m_fTimer = 0;
         }
 	}
@@ -129,7 +131,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		CRF_VAAR_EntitiesSnapshot entitiesSnapshot = new CRF_VAAR_EntitiesSnapshot();
 		
 		// Timestamp for the frame based on in game time
-		frame.Timestamp = GetGame().GetWorld().GetWorldTime();
+		frame.Time = m_iCurrentFrame;
 		
 		// Record shots fired into the frame
 		foreach (CRF_VAAR_ShotEvent shot : m_aShotsBuffer)
@@ -160,10 +162,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 			// Collect info
 			string characterName = GetCharacterName(character);
-			RplId characterID = Replication.FindId(character);
+			RplId characterID = GetID(character);
 			vector characterPos = character.GetOrigin();
-			string characterRole = GetFriendlyName(character);
-			FactionKey characterFaction = GetFactionKey(character);
+			CRF_EGearRole characterRole = GetRole(character);
+			int characterFaction = GetFaction(character);
 			
 			SCR_ChimeraCharacter chimeraCharacter = SCR_ChimeraCharacter.Cast(character.GetRootParent());
 			if (!chimeraCharacter)
@@ -174,7 +176,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			
 			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterName, characterPos, characterAim, characterRole, characterFaction);
 			
-			entitiesSnapshot.Characters.Insert(characterSnapshot);
+			entitiesSnapshot.Chars.Insert(characterSnapshot);
 		}
 		
 		foreach(IEntity vehicle : m_aTrackedVehicle)
@@ -184,19 +186,19 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			RplId vehicleID = Replication.FindId(vehicle);
 			vector vehiclePos = vehicle.GetOrigin();
 			vector vehicleYaw = vehicle.GetAngles();
-			string vehicleType = GetVehicleType(vehicle);
-			FactionKey vehicleFaction = GetFactionKey(vehicle);
+			int vehicleType = GetVehicleType(vehicle);
+			int vehicleFaction = GetFaction(vehicle);
 			
 			array<string> vehicleOccupants = {};
 			GetVehicleOcuupants(vehicle, vehicleOccupants);
 			
 			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType, vehicleFaction, vehicleOccupants);
 			
-			entitiesSnapshot.Vehicles.Insert(vehicleSnapshot);
+			entitiesSnapshot.Vehs.Insert(vehicleSnapshot);
 		}
 		
 		// Insert Entites into the frame
-		frame.Entities.Insert(entitiesSnapshot);
+		frame.Ents.Insert(entitiesSnapshot);
 		
 		// Convert the frame to json format
 		SCR_JsonSaveContext jsonHelper = new SCR_JsonSaveContext();
@@ -248,7 +250,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	    }
 		
 		return "Unknown";
-	}	
+	}
+	
 	//------------------------------------------------------------------------------------
 	protected string GetCharacterName(IEntity character)
 	{
@@ -258,33 +261,67 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			
 		return "AI";
 	}
+	
 	//------------------------------------------------------------------------------------
-	protected string GetVehicleType(IEntity vehicle)
+	protected int GetID(IEntity character)
+	{
+		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (playerID != 0)
+			return playerID;
+			
+		return Replication.FindId(character);
+	}
+	
+	//------------------------------------------------------------------------------------
+	protected int GetVehicleType(IEntity vehicle)
 	{	
 		int type = Vehicle.Cast(vehicle).m_eVehicleType; // Refactor is planned by devs for this
 		
 		switch(type)
 		{
-			case EVehicleType.APC : {return "APC";}
-			case EVehicleType.CAR : {return "CAR";}
-			case EVehicleType.TRUCK : {return "TRUCK";}
-			case EVehicleType.TANK : {return "TANK";}
-			case EVehicleType.MORTAR : {return "MOTAR";}
-			default : {return "HELICOPTER";} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
+			case EVehicleType.APC : {return 1;}
+			case EVehicleType.CAR : {return 2;}
+			case EVehicleType.TRUCK : {return 3;}
+			case EVehicleType.TANK : {return 4;}
+			case EVehicleType.MORTAR : {return 5;}
+			default : {return 5;} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
 		}
 		
-		return "Unknown";
+		return 0;
 	}
 	
 	//------------------------------------------------------------------------------------
-	protected FactionKey GetFactionKey(IEntity entity)
+	protected int GetFaction(IEntity entity)
 	{	
 		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		if (!factionComponent)
-			return "Unknown";
+			return 0;
 		
-		return factionComponent.GetAffiliatedFactionKey();
+		Faction faction = factionComponent.GetAffiliatedFaction();
+		if (!faction)
+			return 0;
+		
+		switch(faction.GetFactionKey())
+		{
+			case "BLUFOR" : {return 1;}
+			case "OPFOR" : {return 2;}
+			case "INDFOR" : {return 3;}
+			case "CIV" : {return 4;}
+		}
+		
+		return 0;
 	}
+	//------------------------------------------------------------------------------------
+	protected CRF_EGearRole GetRole(IEntity entity)
+	{	
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+			return CRF_EGearRole.RIFLEMAN;
+		
+		return CRF_RoleHelper.ResourceToRole(prefab);
+	}
+	
+	
 	//------------------------------------------------------------------------------------
 	protected void GetVehicleOcuupants(IEntity vehicle, out array<string> occupants)
 	{	
@@ -335,10 +372,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Collect info on the projectile
 		vector start = shooter.GetOrigin();
-		RplId shooterID = Replication.FindId(shooter); // Should use rpl component
 		
 		// Store shot in buffer
-		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ));
+		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(start, hitX, hitZ));
 	}
 	//------------------------------------------------------------------------------------
 	void RegisterCharacterDeath(notnull SCR_InstigatorContextData instigatorContextData)
@@ -347,17 +383,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		IEntity targetEntity = instigatorContextData.GetVictimEntity();
 		
-		RplId killerID = Replication.FindId(killerEntity);
-		RplId targetID = Replication.FindId(targetEntity);
-		
 		string killerName = GetCharacterName(killerEntity);
 		string targetName = GetCharacterName(targetEntity);
 		
-		FactionKey killerFaction = GetFactionKey(killerEntity);
-		FactionKey targetFaction = GetFactionKey(targetEntity);
+		int killerFaction = GetFaction(killerEntity);
+		int targetFaction = GetFaction(targetEntity);
 		
 		// Add to event buffer
-		m_aKillsBuffer.Insert(new CRF_VAAR_KillEvent(targetID, killerID, targetName, killerName, targetFaction, killerFaction));
+		m_aKillsBuffer.Insert(new CRF_VAAR_KillEvent(targetName, killerName, targetFaction, killerFaction));
 	}
 	//------------------------------------------------------------------------------------
 	void ToggleRecording()
