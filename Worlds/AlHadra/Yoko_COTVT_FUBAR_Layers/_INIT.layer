@@ -30,7 +30,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Two Bradleys have been ambushed on thier way into Al Hadra, A US QRF has been deployed to rescue the IFVs and with the IFVs' support destroy two known enemy strongpoints."\
+   m_sTextData "Two Bradleys have been ambushed on their way into Al Hadra, A US QRF has been deployed to rescue the IFVs and with the IFVs' support destroy two known enemy strongpoints."\
    ""\
    "BLUFOR Composition: Mechanized Infantry Platoon"\
    "BLUFOR Assets: 2x M2A3 BUSK"\
