@@ -1,0 +1,66 @@
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehiclePrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+     m_eCostType USES
+    }
+   }
+  }
+ }
+ coords 2106.733 17.844 5589.94
+ angles 0 36.135 0
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3880.379 29.207 3572.191
+  angles 0 -73.926 0
+  m_rVehicle "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 3890.014 29.188 3584.781
+  angles 0 -71.964 0
+  m_rVehicle "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4283.944 17.844 1915.372
+  angles 0 7.445 0
+  m_rVehicle "{E62EEF185EC31C54}Prefabs/Vehicles/Wheeled/JLTV/Unarmed/JLTV_Unarmed.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4282.7 17.844 1905.851
+  angles 0 7.445 0
+  m_rVehicle "{A87793B810A65873}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_D_2004.et"
+ }
+ {
+  coords 4281.383 17.844 1895.771
+  angles 0 7.445 0
+  m_rVehicle "{A87793B810A65873}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_D_2004.et"
+ }
+ {
+  coords 4280.119 17.844 1886.098
+  angles 0 7.445 0
+  m_rVehicle "{A87793B810A65873}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_D_2004.et"
+ }
+ {
+  coords 4278.868 17.844 1876.522
+  angles 0 7.445 0
+  m_rVehicle "{A87793B810A65873}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_D_2004.et"
+ }
+ {
+  coords 4290.997 17.844 1880.497
+  angles 0 7.445 0
+  m_rVehicle "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et"
+ }
+ {
+  coords 4293.555 17.844 1900.071
+  angles 0 7.445 0
+  m_rVehicle "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et"
+ }
+}
