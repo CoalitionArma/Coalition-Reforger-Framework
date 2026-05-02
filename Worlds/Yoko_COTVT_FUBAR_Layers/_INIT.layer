@@ -4,7 +4,6 @@ SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_SearchAndDestroyGamemodeManager "{694331C47747B1BB}" {
-   hideMapMarkers 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -31,7 +30,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Two Bradleys have been ambushed on thier way into Al Hadra, A US QRF has been deployed to rescue the IFVs and with the IFVs' support destory two known enemy strongpoints."\
+   m_sTextData "Two Bradleys have been ambushed on thier way into Al Hadra, A US QRF has been deployed to rescue the IFVs and with the IFVs' support destroy two known enemy strongpoints."\
    ""\
    "BLUFOR Composition: Mechanized Infantry Platoon"\
    "BLUFOR Assets: 2x M2A3 BUSK"\
@@ -230,7 +229,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "694500FFF87041B8" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
