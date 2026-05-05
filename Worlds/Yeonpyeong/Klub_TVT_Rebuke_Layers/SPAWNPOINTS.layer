@@ -1,0 +1,14 @@
+$grp GameEntity {
+ Zone2_BLUFORSpawn {
+  coords 3739.601 22.781 6781.211
+ }
+ Zone2_OPFORSpawn {
+  coords 3316.902 83.874 6279.106
+ }
+}
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 3317.025 83.899 6277.418
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 3943.618 14.508 6955.018
+}

@@ -1,0 +1,108 @@
+CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ coords 3404.082 64.899 6662.565
+ m_sQuadName "dot"
+ m_sDescription "Phase 2 LOA"
+ {
+  $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   {
+    coords 7.116 -13.217 -88.614
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords 7.453 -9.838 -184.354
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords -16.264 18.826 -274.03
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords -21.708 23.074 -356.269
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords -23.158 15.25 -442.914
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords -25.561 -0.585 -526.765
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords -16.239 -28.608 -603.251
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+   {
+    coords 0.635 -64.899 -713.221
+    m_sQuadName "dot"
+    m_sDescription "Phase 2 LOA"
+   }
+  }
+ }
+}
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 3925.317 9.143 6039.72
+ m_sQuadName "dot"
+ m_sDescription "Phase 1 LOA"
+ {
+  $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+   {
+    coords -90.834 -9.143 113.474
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -145.628 -1.369 190.086
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -219.953 2.359 274.609
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -342.155 12.376 272.32
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -313.409 7.406 325.309
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -298.544 9.607 383.325
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -350.471 8.288 408.943
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -306.145 43.019 504.385
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -284.208 47.421 596.827
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+   {
+    coords -283.115 48.474 697.328
+    m_sQuadName "dot"
+    m_sDescription "Phase 1 LOA"
+   }
+  }
+ }
+}
