@@ -1,0 +1,26 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 2719.58 1 5291.777
+  angles 0 -179.952 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2244.564 1 6417.191
+  angles 0 152.25 0
+  m_rVehicle "{F20416A25B1F8E53}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Beige.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2241.46 1 6415.558
+  angles 0 152.25 0
+  m_rVehicle "{3E261B61E07D737D}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Blue.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2237.889 1 6414.077
+  angles 0 152.25 0
+  m_rVehicle "{030A76F8D2BDBF33}Prefabs/Vehicles/Wheeled/S1203/S1203_Explosive.et"
+  m_sFactionKey "OPFOR"
+ }
+}
