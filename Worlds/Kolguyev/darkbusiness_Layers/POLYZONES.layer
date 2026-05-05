@@ -1,0 +1,43 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 9934.257 107.296 10105.514
+ Points {
+  ShapePoint "{694A2ECD587F8382}" {
+   Position 155.747 0 -8561.153
+  }
+  ShapePoint "{694A2ECD57BC89DB}" {
+   Position -3101.677 -13.21 -1235.416
+  }
+  ShapePoint "{694A2ECD4F6A7B91}" {
+   Position -648.13 28.498 785.191
+  }
+  ShapePoint "{694A2ECD43E5E565}" {
+   Position 2790.099 0 1146.371
+  }
+  ShapePoint "{694A2ECD79822080}" {
+   Position 2329.411 0 -2943.281
+  }
+  ShapePoint "{694A2ECD7231C490}" {
+   Position 2125.67 0 -7981.842
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 11478.684 2.814 2595.116
+ Points {
+  ShapePoint "{694A2ECED98ACA82}" {
+   Position -59.87 0 -97.744
+  }
+  ShapePoint "{694A2ECED8AE4141}" {
+   Position -112.663 0 1.39
+  }
+  ShapePoint "{694A2ECEDFC5A5A1}" {
+   Position 49.164 0 108.626
+  }
+  ShapePoint "{694A2ECEDE351360}" {
+   Position 110.451 0 -19.959
+  }
+ }
+}
+CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 11832.151 9.501 10650.616
+}
