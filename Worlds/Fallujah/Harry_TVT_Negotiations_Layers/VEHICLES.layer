@@ -23,4 +23,10 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{030A76F8D2BDBF33}Prefabs/Vehicles/Wheeled/S1203/S1203_Explosive.et"
   m_sFactionKey "OPFOR"
  }
+ {
+  coords 2861.374 1 6155.41
+  angles 0 175.187 0
+  m_rVehicle "{E49B4C9AEA70BE3F}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M2HB/JLTV_OGPK.et"
+  m_sFactionKey "INFOR"
+ }
 }

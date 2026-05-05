@@ -66,7 +66,7 @@ $grp PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safe
     Position -60.497 0 81.583
    }
    ShapePoint "{694A076B5613E3FA}" {
-    Position 68.02 -0 92.475
+    Position 68.02 0 92.475
    }
    ShapePoint "{694A076B552C5FA2}" {
     Position 77.645 0 -52.835

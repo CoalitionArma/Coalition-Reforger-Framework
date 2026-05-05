@@ -41,7 +41,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "MEC is pushing insurgent forces out of this section of Fallujah. ION has been spotted operating in the area, but hasn't interfered in the conflict yet."\
    ""\
    "BLUFOR Composition: Inf"\
-   "BLUFOR Assets: Weapons teams, ammo truck"\
+   "BLUFOR Assets: Weapons teams, ammo truck, recon"\
    ""\
    "OPFOR Composition: Inf"\
    "OPFOR Assets: 2x HMG truck, 1x vbied"\
