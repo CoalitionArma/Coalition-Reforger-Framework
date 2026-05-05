@@ -3,7 +3,12 @@
 	
 	Tracks HVTs/VIPs (PHVT/AI/Object) and syncs their positions to map markers.
 	Supports multiple HVTs/VIPs with per-entry faction, marker text, and color configuration.
-	
+
+	FIXES:
+	- Fix A: timeDelay parameter for CRF_Mapmarker (now 0) was m_timeBetweenPings, causing CRF_MapMarker to essentially cache the transponder marker 
+	  per client based on when they were opening the map. Changed to 0 to skip the cache. The -5 timer offset that
+	  pre-staged transponders before the cache expired was also removed.
+
 	NOTES:
 	- Currently to track HVT JIPs/respawns & reapply vulnerability we use m_fPlayerCheckTimer (HVTs are invulnerable between re-registration. Edge case issue is that someone is respawned and within 60s is attempted to be killed. Shouldnt happen realistically.) Not ideal setup but cant find much else.
 	- HVT Prefab selection is what spawns when AI is used, or what Prefab/Slot (optional filter by faction) is used for player-controlled HVTs.
@@ -115,6 +120,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 
 	[Attribute("BLUFOR", "auto", "Faction key for the searching side (only used if Filter Faction is enabled).", category: "Global Settings")]
 	string m_searcherFactionKey;
+
+	[Attribute("false", "auto", "Send the HVT's faction a hint notification when the transponder pings. If Faction Filter is enabled, sends to the searcher faction instead.", category: "Global Settings")]
+	bool m_updateDefender;
 	
 	//------------------------------------------------------------------------------------------------
 	// AI HVT SETTINGS (Applied to all AI-spawned HVTs)
@@ -158,8 +166,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	bool m_bGameInit = false;
 	bool m_bHasSafestartBegun = false;  // Latch: Ensures we've seen safestart active before watching for it to end
 	
-	// Exchanging per second origin bumpmes for timeslices + performance (good?)
-	float m_fReplicationTimer = 0; // Timer for marker position replication (happens -5s before ping to avoid updating per frame)
+	// ReplicationTimer prevents constant position updates to clients= (m_timeBetweenPings ; Performance good ?)
+	float m_fReplicationTimer = 0; // Timer for marker position replication now fires UpdateHVTPositions every m_timeBetweenPings seconds
 	float m_fPlayerCheckTimer = 0; // Checks + ReRegisters + Resets Invulnerability if set if player HVTs every 60s to catch JIP/respawns
 
 	//------------------------------------------------------------------------------------------------
@@ -222,8 +230,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				RegisterPlayerHVTs();
 			}
 			
-			// Server: Sync positions 5s before marker ping to batch RPL
-			if (m_bEnableTransponderMarker && ++m_fReplicationTimer >= m_timeBetweenPings - 5)
+			// Server: Sync positions at the configured interval, replication fires only after m_timeBetweenPings for performance reasons
+			if (m_bEnableTransponderMarker && ++m_fReplicationTimer >= m_timeBetweenPings)
 			{
 				m_fReplicationTimer = 0;
 				UpdateHVTPositions();
@@ -301,6 +309,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (transponder)
 				transponder.SetOrigin("0 -1000 0");
 		}
+		
+		if (!m_aHvtPositions.IsEmpty())
+			SyncTransponderPositions();
 	}
 	
 	// Register/re-register player HVTs @ Gameinit and RegisterPlayerHVTs per 60s
@@ -516,7 +527,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 			}
 			
-			playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+			// Was: playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, ...) // Fix A
+			playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", 0, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 		}
 	}
 	
@@ -605,7 +617,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			{
 				if (playerScriptedMarkerManager && m_bEnableTransponderMarker)
 				{
-					playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+					// Was: playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, ...) // Fix A
+					playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", 0, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 					m_sRemovedMarkerIndices.Insert(i);
 				}
 				continue;
@@ -614,8 +627,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Non-zero position - check if marker was previously removed and needs re-creation
 			if (m_sRemovedMarkerIndices.Contains(i) && playerScriptedMarkerManager && m_bEnableTransponderMarker)
 			{
-				playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
-				playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+				// Was: playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, ...) // Fix A
+				playerScriptedMarkerManager.RemoveScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", 0, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
+				// Was: playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, ...) // Fix A
+				playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", 0, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 				m_sRemovedMarkerIndices.Remove(i);
 			}
 			
@@ -624,6 +639,31 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 			
 			transponder.SetOrigin(newPos);
+		}
+		
+		// Server: Notify the relevant faction that the transponder has pinged
+		if (m_updateDefender && Replication.IsServer())
+		{
+			string targetLabel = "HVT";
+			if (m_eTargetType == CRF_TargetType.VIP)
+				targetLabel = "VIP";
+			
+			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+			{
+				if (!entry || !m_mEntryToHVT.Contains(index))
+					continue;
+				
+				IEntity hvtEntity = m_mEntryToHVT.Get(index);
+				if (!hvtEntity || !IsHVTAlive(hvtEntity))
+					continue;
+				
+				// If faction-filtered only notify the searching faction otherwise broadcast to all
+				string pingFactionKey = "";
+				if (m_filterFaction)
+					pingFactionKey = m_searcherFactionKey;
+				
+				CRF_RplBroadcastManager.GetInstance().SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
+			}
 		}
 	}
 	
