@@ -104,16 +104,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Destory each Mcom in order."\
+   m_sTextData "Destroy each Mcom in order."\
    ""\
-   "JTAC - use your Binos and press your RHS radial menu key to bring up the menu and select the Binos, this will allow you to call in smoke mortars when you are currently looking."
+   "JTAC - use your Binos and press your RHS radial menu key to bring up the menu and select the Binos, this will allow you to call in smoke mortars where you are currently looking."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Defend ecah Mcom in order."
+   m_sTextData "Defend each Mcom in order."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -373,7 +373,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "694B0268CDCC1FE8" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
