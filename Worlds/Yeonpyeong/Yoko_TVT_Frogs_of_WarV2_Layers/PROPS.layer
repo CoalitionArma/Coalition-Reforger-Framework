@@ -228,7 +228,7 @@ $grp GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_w
   angles 0 -25.554 18.349
  }
  {
-  coords 3161.541 5.959 7854.085
+  coords 3161.609 5.742 7854.056
   angles 7.557 45.867 -17.38
  }
  {
@@ -584,6 +584,16 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{3C44CAAF01B8516D}PrefabLibrary/Ca
   coords 3170.857 3.594 7682.006
   angles 0 119.886 0
   scale 0.857
+ }
+}
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 3262.783 7.274 7581.127
+  angles 0 -64.324 0
+ }
+ {
+  coords 3265.995 7.094 7562.152
+  angles 0 -134.379 0
  }
 }
 $grp SCR_IndestructibleEnvironmentalEntity : "{F4DF7DEDAB805624}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteRock_03/GraniteRock_03.et" {
