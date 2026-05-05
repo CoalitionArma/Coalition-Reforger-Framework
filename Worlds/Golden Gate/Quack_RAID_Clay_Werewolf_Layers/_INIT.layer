@@ -11,6 +11,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_RaidGamemodeComponent "{691C043CCB186187}" {
    m_fWinThresholdPercent 75
   }
+  Quack_SpawnerComponent "{694A121D2FBB4032}" {
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -95,6 +97,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "INTEL"
    m_sTextData "There's a tunnel under HQ that can hold most of the vehicles."
    m_aFactionKeys {
+    "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
