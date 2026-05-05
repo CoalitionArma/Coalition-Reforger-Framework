@@ -5,6 +5,6 @@ $grp SCR_BaseTriggerEntity {
  }
  mcom_b_trigger {
   coords 3917.971 81.837 8152.939
-  angles 0 -90.366 0
+  angles 0 3.097 0
  }
 }
