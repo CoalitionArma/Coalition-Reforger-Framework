@@ -1,0 +1,57 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 2788.818 0 4231.583
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2788.603 0 4225.917
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2789.241 0 4242.721
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2789.035 0 4237.294
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2789.447 0 4248.139
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2789.657 0 4253.683
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2789.888 0 4259.759
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2788.402 0 4220.629
+  angles 0 -87.825 0
+  m_rVehicle "{90FB4A19890F9E5C}Prefabs/Vehicles/Naval/RHIB/RHIB_Transport.et"
+ }
+ {
+  coords 2774.98 -0.447 4221.139
+  angles 0 -87.825 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 2776.401 -0.075 4258.562
+  angles 0 -87.825 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 2775.726 -0.075 4240.802
+  angles 0 -87.825 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+}
