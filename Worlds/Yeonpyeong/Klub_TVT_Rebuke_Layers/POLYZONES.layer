@@ -17,10 +17,10 @@ PolylineShapeEntity GameBoundry_3 : "{318DDE6633C34CF1}PrefabsMissionMaking/Poly
    Position -442.31 -34.356 141.472
   }
   ShapePoint "{694A060E078123C5}" {
-   Position -300.125 -8.772 188.194
+   Position -334.482 -9.027 221.729
   }
   ShapePoint "{694A060E007E816A}" {
-   Position -85.813 44.345 302.309
+   Position -20.121 12.685 205.989
   }
   ShapePoint "{694A060E0E957F2F}" {
    Position 111.174 4.93 395.317
