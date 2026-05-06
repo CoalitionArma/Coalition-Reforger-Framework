@@ -16,9 +16,15 @@ Vehicle UAZ469_PKM_FIA1 : "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ
  coords 8644.478 95.913 9313.983
  angles 0 -39 0
 }
-Vehicle UAZ452_ambulance_USSR_VAI1 : "{A0B58E7DDF51D486}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_USSR_VAI.et" {
- coords 11835.182 10.467 10575.301
- angles 0 -14 0
+$grp Vehicle : "{A0B58E7DDF51D486}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_USSR_VAI.et" {
+ UAZ452_ambulance_USSR_VAI1 {
+  coords 11835.182 10.467 10575.301
+  angles 0 -14 0
+ }
+ UAZ452_ambulance_USSR_VAI2 {
+  coords 8617.948 96.104 9287.397
+  angles 0 -46 0
+ }
 }
 Vehicle MH6M1 : "{AF950919C81D91B4}Prefabs/Vehicles/Helicopters/AH6M/MH6M.et" {
  coords 11484.935 2.74 2564.228
