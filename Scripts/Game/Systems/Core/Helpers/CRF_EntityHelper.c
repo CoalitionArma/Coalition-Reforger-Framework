@@ -1,7 +1,8 @@
 class CRF_EntityHelper
 {	
-	// Spectator resource to use
+	// Spectator resources to use
 	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/!Spectator/CRF_Spectator.et";
+	static const ResourceName SPECTATOR_CAMERA_RESOURCE = "{E1FF38EC8894C5F3}Prefabs/Systems/!Spectator/CRF_SpectatorCamera.et";
 	
 	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
 	// Spectators spawn at 500m altitude to avoid ground collisions
@@ -14,6 +15,14 @@ class CRF_EntityHelper
 	{
 		return SPECTATOR_RESOURCE;
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Get the spectator camera resource name
+	//! \return ResourceName of the spectator camera entity
+	static ResourceName GetSpectatorCameraResource()
+	{
+		return SPECTATOR_CAMERA_RESOURCE;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Check if a given entity is a spectator
@@ -24,7 +33,7 @@ class CRF_EntityHelper
 		if (!entity)
 			return false;
 		
-		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
+		return CRF_SpectatorCharacter.Cast(entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -33,11 +42,11 @@ class CRF_EntityHelper
 	static bool IsSpectator()
 	{
 		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+		if (mainEntity && CRF_SpectatorCharacter.Cast(mainEntity))
 			return true;
 		
 		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
+		if (controlledEntity && CRF_SpectatorCharacter.Cast(controlledEntity))
 			return true;
 
 		return false;

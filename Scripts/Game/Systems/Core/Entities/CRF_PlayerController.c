@@ -34,6 +34,7 @@ class CRF_PlayerController : SCR_PlayerController
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
 		super.OnControlledEntityChanged(from, to);
+		
 		if (from)
 		{
 			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
@@ -82,7 +83,6 @@ class CRF_PlayerController : SCR_PlayerController
 	//! Called when the player controller updates (typically whenever a player joins/rejoins)
 	override protected void UpdateLocalPlayerController()
 	{
-		
 		super.UpdateLocalPlayerController();
 		
 		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerManager.GetInstance())
