@@ -110,7 +110,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""\
    "You have been captured by INDFOR. They are negotiating a trade for you to return to OPFOR in exchange for a truck of ammunition."\
    ""\
-   "You may play this mission however you like, to include allying with any side you want, but your end goal is to escape somehow."
+   "You may play this mission however you like, to include allying with any side you want, but your end goal is to escape somehow. You also do not have to work together with the other VIP, if there is one."
    m_aFactionKeys {
     "CIV"
    }
@@ -118,7 +118,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{694B55FE565E465B}" {
    m_sTitle "Administration"
-   m_sTextData "N/A"
+   m_sTextData "SHARED NET:"\
+   "OPFOR/INDFOR share 57000mhz as a negotiations net"\
+   ""
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -362,7 +364,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{7385170EB3ECBF6C}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_POLITICAL.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
