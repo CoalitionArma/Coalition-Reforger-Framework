@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8735F33B0ACD07D1}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF_Modern_Day_klub.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

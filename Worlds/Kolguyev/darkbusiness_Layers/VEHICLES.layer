@@ -1,0 +1,58 @@
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 8632.014 95.913 9298.672
+  angles 0 -43 0
+ }
+ Ural4320_transport2 {
+  coords 8636.413 95.913 9303.613
+  angles 0 -42 0
+ }
+ Ural4320_transport3 {
+  coords 8641.521 95.913 9308.158
+  angles 0 -42 0
+ }
+}
+Vehicle UAZ469_PKM_FIA1 : "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et" {
+ coords 8644.478 95.913 9313.983
+ angles 0 -39 0
+}
+$grp Vehicle : "{A0B58E7DDF51D486}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_USSR_VAI.et" {
+ UAZ452_ambulance_USSR_VAI1 {
+  coords 11835.182 10.467 10575.301
+  angles 0 -14 0
+ }
+ UAZ452_ambulance_USSR_VAI2 {
+  coords 8617.948 96.104 9287.397
+  angles 0 -46 0
+ }
+}
+Vehicle MH6M1 : "{AF950919C81D91B4}Prefabs/Vehicles/Helicopters/AH6M/MH6M.et" {
+ coords 11484.935 2.74 2564.228
+ angles 0 -28 0
+}
+Vehicle UAZ469_UK59_FIA1 : "{E72D78E7F45532EC}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_UK59_FIA.et" {
+ coords 11838.804 10.247 10575.794
+ angles 0 -13 0
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 11860.256 9.152 10582.357
+  angles 0 -12 0
+ }
+ M923A1_transport2 {
+  coords 11855.906 9.238 10581.62
+  angles 0 -12 0
+ }
+ M923A1_transport3 {
+  coords 11851.81 9.43 10580.603
+  angles 0 -13 0
+ }
+ M923A1_transport4 {
+  coords 11847.512 9.662 10579.706
+  angles 0 -13 0
+ }
+ M923A1_transport5 {
+  coords 11842.511 9.954 10578.712
+  angles 0 -13 0
+ }
+}
