@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
       m_eSupportType FIRE_BOMBARDMENT
       m_CallInInfo UIInfo "{610F58CA533C0B90}" {
        Name "Smoke Mortar"
-       Description "Smoke Mortar"
+       Description "Smoke Mortar Barrage"
       }
       m_iRequestUsageLimit 5
       m_iRequestCost 0
@@ -58,6 +58,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
        "BLUFOR"
       }
       m_iMinNumberOfSquadMembers 0
+      m_aRequiredGadgets {
+       SCR_CallInRequiredRadioContainer "{624EB6B34A8F4224}" {
+        m_bRequireRadioFromCorrectFaction 0
+       }
+      }
      }
     }
    }

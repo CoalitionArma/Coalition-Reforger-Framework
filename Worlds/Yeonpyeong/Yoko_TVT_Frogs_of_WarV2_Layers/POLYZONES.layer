@@ -62,10 +62,10 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
  coords 3378.527 7.435 7693.129
  Points {
   ShapePoint "{694A0C7CDA39D1C6}" {
-   Position -211.893 0 191.208
+   Position -258.776 0 374.448
   }
   ShapePoint "{694B02685B217900}" {
-   Position -164.684 -0 6.694
+   Position -164.684 0 6.694
   }
   ShapePoint "{694B02685FB25ADF}" {
    Position -145.969 0 -87.306
@@ -74,10 +74,10 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
    Position -130.335 -0.329 -203.426
   }
   ShapePoint "{694A0C7CC58C48A4}" {
-   Position 68.569 0 -151.519
+   Position 308.752 0 -138.387
   }
   ShapePoint "{694A0C7CC75CB2B3}" {
-   Position 51.653 0 157.871
+   Position 109.727 7.718 504.266
   }
  }
 }

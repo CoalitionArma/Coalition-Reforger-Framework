@@ -1,5 +1,5 @@
 GameEntity BLUFORSPAWN2 {
- coords 3194.349 18 8189.842
+ coords 3340.139 17.858 7384.373
 }
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 4020.499 99.344 8135.4
