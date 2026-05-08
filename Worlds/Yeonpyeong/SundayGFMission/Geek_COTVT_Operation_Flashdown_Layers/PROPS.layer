@@ -1,0 +1,17 @@
+$grp CRF_ObjectSpawner : "{B2BC4A98A3D3ADF7}PrefabsMissionMaking/Systems/ObjectSpawner/Object_Spawner.et" {
+ {
+  coords 5609.586 10 7122.726
+  angles 0 -112.643 0
+  m_rObject "{2071368D6BD5B08A}PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/ENFORCERS/E_Enforcers_Arsenal_Box.et"
+ }
+ {
+  coords 5507.162 10 7121.75
+  angles 0 -17.554 0
+  m_rObject "{2CB8F63CD5E003D3}PrefabsEditable/Auto/Structures/Military/Flags/FlagPole_02/E_FlagPole_02_V1_Enforcers.et"
+ }
+ {
+  coords 5512.123 10 7112.585
+  angles 0 159.407 0
+  m_rObject "{3668AC075969C4D8}PrefabsEditable/Auto/Props/E_HologramTable.et"
+ }
+}

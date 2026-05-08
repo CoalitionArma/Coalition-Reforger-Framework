@@ -1,0 +1,22 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ {
+  coords 3659.187 106.758 8318.859
+  m_sDescription "Capture the BARS Station to cut off any CIW signals being sent off world. They are attempting to transmit data on a sensitive frequency only accessible from two locations. Capturing and/or destroying this location will prevent te broadcast."
+  m_sMissionMarkerDescription "BARS Station"
+ }
+ {
+  coords 4886.938 101.448 9008.426
+  m_sDescription "Capture this location to secure an overwatch position for the north-eastern side of the island."
+  m_sMissionMarkerDescription "Daenaru Mountain"
+ }
+ {
+  coords 4034.881 103.343 8049.908
+  m_sDescription "Capture the Villa and the Planetary Governor located within."
+  m_sMissionMarkerDescription "Villa"
+ }
+ {
+  coords 3810.647 6.903 6313.755
+  m_sDescription "Search the town for any civilians, signs of war crimes, and any sensitive data inside the town."
+  m_sMissionMarkerDescription "Cheongmyeong"
+ }
+}

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0D7AB5CC0A87A410}Worlds/Yeonpyeong/Harry_TVT_Counter_Layers/Geek_COTVT_Operation_Flashdown.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}
