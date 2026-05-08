@@ -411,13 +411,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
 
-		// When CVON is disabled, teleport the spectator entity to follow the camera so that
-		// the entity's SCR_VoNComponent picks up direct voice from nearby alive players.
-		// Uses the same pattern as SCR_Global.TeleportPlayer:
-		//   1. GetWorldTransform (world-space, not local) from the camera
-		//   2. BaseGameEntity.Teleport — updates both physics body and scene-graph, and replicates
-		//      the position to the server for the player-owned character (unlike SetTransform alone)
-		//   3. Zero velocities to prevent any residual physics drift
+		// When CVON is disabled, keep the spectator entity's world position in sync with the
+		// camera every frame so vanilla VON proximity checks (server-side) route alive players'
+		// direct speech to the spectator. The camera is a local-only entity with no RplComponent,
+		// so we cannot parent the spectator character to it — we must replicate position explicitly.
+		// BaseGameEntity.Teleport updates the physics body and flushes a position update through
+		// the character replication path, matching the pattern used by PS_PlayableControllerComponent.
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
 			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
@@ -426,21 +425,16 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
 				if (camera)
 				{
+					// Preserve entity orientation; only update world-space position
 					vector mat[4];
-					camera.GetWorldTransform(mat);
+					specEntity.GetWorldTransform(mat);
+					mat[3] = camera.GetOrigin();
 
 					BaseGameEntity bgEntity = BaseGameEntity.Cast(specEntity);
 					if (bgEntity)
 						bgEntity.Teleport(mat);
 					else
 						specEntity.SetWorldTransform(mat);
-
-					Physics phys = specEntity.GetPhysics();
-					if (phys)
-					{
-						phys.SetVelocity(vector.Zero);
-						phys.SetAngularVelocity(vector.Zero);
-					}
 				}
 			}
 		}
