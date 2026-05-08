@@ -1,0 +1,17 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ {
+  coords 3662.632 106.625 8322.191
+  m_sDescription "The CIW are broadcasting from here."
+  m_sMissionMarkerDescription "BARS Station Objective"
+ }
+ {
+  coords 4036.087 103.344 8051.067
+  m_sDescription "Former residence of the CIW appointed planetary governer. Recent changes mean that this was only recently vacated and still has confidential information inside."
+  m_sMissionMarkerDescription "Villa Objective"
+ }
+ {
+  coords 3773.457 9.33 6356.497
+  m_sDescription "The CIW occupy the town, USC agents report civilians dissapearing."
+  m_sMissionMarkerDescription "Cheongmyeong Objective"
+ }
+}
