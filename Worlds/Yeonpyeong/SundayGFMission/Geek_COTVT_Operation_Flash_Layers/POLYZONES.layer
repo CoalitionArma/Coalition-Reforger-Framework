@@ -1,4 +1,10 @@
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_aHideOnGameModeStates {
+   }
+  }
+ }
  coords 6336.809 0 7142.509
  Points {
   ShapePoint "{6951291ABF072010}" {

@@ -1,0 +1,55 @@
+$grp GenericEntity : "{7B68FEDCB026BB2F}Prefabs/Items/Misc/IntelligenceFolder_E_01/E_GME_IntelFolder_01.et" {
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "Armakart Reforged"
+    m_sContent "If only..."
+   }
+  }
+  coords 4030.227 108.28 8063.746
+ }
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "$19 Fortnite Card"
+    m_sContent "Who wants it?"
+   }
+  }
+  coords 4042.178 109.381 8066.154
+ }
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "Unlocked Enfusion Scripts"
+   }
+  }
+  coords 4042.431 104.272 8066.236
+ }
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "TanaKa's CS2 Cheats"
+   }
+  }
+  coords 4038.249 103.809 8069.249
+  angles -1.31 88.512 -9.279
+ }
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "Coalition Secrets"
+   }
+  }
+  coords 4028.91 104.705 8071.412
+ }
+ {
+  components {
+   GME_IntelComponent "{628C84EC4669F95B}" {
+    m_sTitle "omg is that tanaka from cod?"
+    m_sContent "if not, please pass to tanaka from cod immediately."
+   }
+  }
+  coords 4029.902 107.886 8060.017
+  angles 0 -67.882 0
+ }
+}

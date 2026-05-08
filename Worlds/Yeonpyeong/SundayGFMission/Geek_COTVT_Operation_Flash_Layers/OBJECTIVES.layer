@@ -1,17 +1,28 @@
-$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+$grp CRF_ObjectSpawner : "{B2BC4A98A3D3ADF7}PrefabsMissionMaking/Systems/ObjectSpawner/Object_Spawner.et" {
  {
-  coords 3662.632 106.625 8322.191
-  m_sDescription "The CIW are broadcasting from here."
-  m_sMissionMarkerDescription "BARS Station Objective"
+  coords 3650.611 106.625 8326.607
+  angles 0 -65.196 0
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
  }
  {
-  coords 4036.087 103.344 8051.067
-  m_sDescription "Former residence of the CIW appointed planetary governer. Recent changes mean that this was only recently vacated and still has confidential information inside."
-  m_sMissionMarkerDescription "Villa Objective"
+  coords 3626.153 106.548 8328.725
+  angles 0 -90 0
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
  }
  {
-  coords 3773.457 9.33 6356.497
-  m_sDescription "The CIW occupy the town, USC agents report civilians dissapearing."
-  m_sMissionMarkerDescription "Cheongmyeong Objective"
+  coords 3620.6 106.548 8345.872
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
+ }
+ {
+  coords 3678.267 107.794 8260.93
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
+ }
+ {
+  coords 3775.085 107.551 8258.714
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
+ }
+ {
+  coords 3813.791 107.571 8272.445
+  m_rObject "{C5341109EB1AB7B5}Prefabs/Destructible/GMFX_Destructible_Radar_RPL5.et"
  }
 }
