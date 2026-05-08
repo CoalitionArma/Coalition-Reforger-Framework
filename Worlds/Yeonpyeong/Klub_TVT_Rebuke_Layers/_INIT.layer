@@ -27,8 +27,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Clear"
-     m_iStartingHour 4
-     m_iStartingMinutes 0
+     m_iStartingHour 13
+     m_iStartingMinutes 31
     }
    }
    m_bRandomWeatherChanges 0
