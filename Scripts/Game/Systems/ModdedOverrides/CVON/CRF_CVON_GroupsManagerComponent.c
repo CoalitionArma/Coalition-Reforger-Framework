@@ -1,9 +1,25 @@
 modded class SCR_GroupsManagerComponent
 {
+	// Guard AnyPlayerFrequencies against a null CVON instance (e.g. when m_bUseCVON is false)
+	//==========================================================================================================================================================================
+	override bool AnyPlayerFrequencies(int playerId)
+	{
+		if (!CVON_VONGameModeComponent.GetInstance())
+			return false;
+		return super.AnyPlayerFrequencies(playerId);
+	}
+
 	//Needed so we wait for the group to initialize
 	//==========================================================================================================================================================================
 	override void TuneFreqDelayWithPresets(int playerId, IEntity player)
 	{
+		// If CVON is disabled fall back to vanilla frequency tuning
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			TunePlayersFrequency(playerId, player);
+			return;
+		}
+
 		if (!player)
 			return;
 		

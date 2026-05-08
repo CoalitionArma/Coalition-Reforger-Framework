@@ -410,7 +410,41 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
-		
+
+		// When CVON is disabled, teleport the spectator entity to follow the camera so that
+		// the entity's SCR_VoNComponent picks up direct voice from nearby alive players.
+		// Uses the same pattern as SCR_Global.TeleportPlayer:
+		//   1. GetWorldTransform (world-space, not local) from the camera
+		//   2. BaseGameEntity.Teleport — updates both physics body and scene-graph, and replicates
+		//      the position to the server for the player-owned character (unlike SetTransform alone)
+		//   3. Zero velocities to prevent any residual physics drift
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+			if (specEntity && CRF_EntityHelper.IsSpectator(specEntity))
+			{
+				CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
+				if (camera)
+				{
+					vector mat[4];
+					camera.GetWorldTransform(mat);
+
+					BaseGameEntity bgEntity = BaseGameEntity.Cast(specEntity);
+					if (bgEntity)
+						bgEntity.Teleport(mat);
+					else
+						specEntity.SetWorldTransform(mat);
+
+					Physics phys = specEntity.GetPhysics();
+					if (phys)
+					{
+						phys.SetVelocity(vector.Zero);
+						phys.SetAngularVelocity(vector.Zero);
+					}
+				}
+			}
+		}
+
 		// Update follow-mode HUD overlay
 		m_EntityInfoDisplay.UpdateEntityInfoDisplay(m_eSpecEntity);
 		
