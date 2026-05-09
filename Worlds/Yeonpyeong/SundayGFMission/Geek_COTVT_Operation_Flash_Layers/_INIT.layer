@@ -417,6 +417,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets -1
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_bHideOtherSpectatorFactions 1
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{5DA91C3301B65054}Configs/Gearscripts/Custom/Geek-x/GalacticForces/CRF_GS_Enforcers.conf"
   m_bEnableShareableMarkers 0
@@ -432,6 +433,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
+  m_bEnableMagnifiedOptics 1
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
@@ -462,12 +464,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628B22E9B4056C88}" {
      m_aFriendlyFactionsIds {
-      "ENFORCERS"
      }
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
      m_aFriendlyFactionsIds {
-      "CIW"
      }
     }
     SCR_Faction "{628CDE9209CA3FF9}" {

@@ -1,3 +1,23 @@
+$grp GenericEntity : "{2071368D6BD5B08A}PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/ENFORCERS/E_Enforcers_Arsenal_Box.et" {
+ {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "CIW"
+   }
+  }
+  coords 2740.371 82.75 8935.331
+  angles 0 -160.904 0
+ }
+ {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "CIW"
+   }
+  }
+  coords 2742.798 82.75 8934.49
+  angles 0 -160.904 0
+ }
+}
 $grp GenericEntity : "{7B68FEDCB026BB2F}Prefabs/Items/Misc/IntelligenceFolder_E_01/E_GME_IntelFolder_01.et" {
  {
   components {
@@ -55,12 +75,12 @@ $grp GenericEntity : "{7B68FEDCB026BB2F}Prefabs/Items/Misc/IntelligenceFolder_E_
 }
 $grp CRF_ObjectSpawner : "{B2BC4A98A3D3ADF7}PrefabsMissionMaking/Systems/ObjectSpawner/Object_Spawner.et" {
  {
-  coords 5616.813 10 6872.876
+  coords 5650.429 10.125 6835.836
   angles 0 0.906 0
   m_rObject "{2071368D6BD5B08A}PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/ENFORCERS/E_Enforcers_Arsenal_Box.et"
  }
  {
-  coords 5610.854 10 6872.971
+  coords 5644.47 10.125 6835.931
   angles 0 0.906 0
   m_rObject "{2071368D6BD5B08A}PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/ENFORCERS/E_Enforcers_Arsenal_Box.et"
  }
