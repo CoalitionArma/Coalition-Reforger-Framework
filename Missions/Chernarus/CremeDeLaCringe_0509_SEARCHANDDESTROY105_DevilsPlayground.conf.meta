@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{ADB5B8A71947051E}Missions/Chernarus/CremeDeLaCringe_0509_SEARCHANDDESTROY105_DevilsPlayground.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,117 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 13087.257 5.75 10317.985
+  angles 0 -160.441 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13091.678 5.75 10330.245
+  angles 0 -160.441 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13095.956 5.749 10342.518
+  angles 0 -160.441 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13083.146 5.751 10305.748
+  angles 0 -160.441 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{694A0231975CA604}" {
+    m_Prefab "{CC7F787C3ECF678F}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4Ball_1Tracer.et"
+    m_iAmountOfItemRegularVehicle 12
+   }
+  }
+ }
+ {
+  coords 13103.943 5.749 10365.702
+  angles 0 -160.441 0
+  m_rVehicle "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13111.291 5.749 10387.52
+  angles 0 -160.441 0
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 13107.473 5.75 10377.08
+  angles 0 -160.441 0
+  m_rVehicle "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 13100.146 5.75 10353.877
+  angles 0 -160.441 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 13079.681 5.75 10295.076
+  angles 0 -160.441 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{694A0231A55A7A86}" {
+    m_Prefab "{CC7F787C3ECF678F}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4Ball_1Tracer.et"
+    m_iAmountOfItemRegularVehicle 12
+   }
+  }
+ }
+ {
+  coords 9742.637 168.67 10482.089
+  angles 0 92.619 0
+  m_rVehicle "{A1815393E106DDE4}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_Red.et"
+  m_sFactionKey "OPFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A02341BF3CC77}" {
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 9742.891 168.721 10488.795
+  angles 0 92.619 0
+  m_rVehicle "{C70AA0ABB57E181A}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_Yellow.et"
+  m_sFactionKey "OPFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A0234187CB81C}" {
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 9743.171 169.145 10495.431
+  angles 0 92.619 0
+  m_rVehicle "{3E261B61E07D737D}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Blue.et"
+  m_sFactionKey "OPFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A0234041297C3}" {
+   m_iAmountofMachineGunAmmo 400
+  }
+ }
+ {
+  coords 9729.014 169.889 10483.148
+  angles 0 92.619 0
+  m_rVehicle "{3C266F6F87ED61B2}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_Beige.et"
+  m_sFactionKey "OPFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A023401ED6ABE}" {
+   m_iAmountofMachineGunAmmo 0
+  }
+ }
+ {
+  coords 9729.586 169.954 10489.699
+  angles 0 92.619 0
+  m_rVehicle "{3123FCB14A392B37}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_White.et"
+  m_sFactionKey "OPFOR"
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A0234FECE1DDD}" {
+   m_iAmountofMachineGunAmmo 500
+  }
+ }
+}
