@@ -1,0 +1,42 @@
+CRF_VehicleSpawnPoint : "{E0600FABB29A2ABA}Prefabs/Vehicles/Ships/Dropship/Dropship_Armed_Fix.et" {
+ ID "57DA6675519A417B"
+ components {
+  BaseRadioComponent "{6952BC6FB7CDD7B5}" {
+   "Turned on" 1
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "CIW Dropship (Cannon)"
+    m_Image "{11112420EEC8576C}UI/Images/GS_Factions/OPFOR_NATO.edds"
+    m_sFaction "OPFOR"
+    m_aAutoLabels {
+     FACTION_CIW CONTENT_MODDED SIZE_L
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Arsenal {
+     Offset 0 1.5262 -2.9586
+     Prefab "{8A239DEA19509B1B}Prefabs/Vehicles/Core/VirtualSlots/Radio_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Flag {
+     Offset 0.0001 4.3419 -9.8682
+     Prefab "{6B9C2405427CACEC}Prefabs/Props/Fabric/Flags/Gearscript Factions/OPFOR_FLAG.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+ }
+ coords 2707.287 83.158 8903.847
+ angles 0 145.844 0
+ m_SpawnPointSettings CRF_SpawnPointData "{6952BC6FC67E75ED}" {
+  m_sSpawnPointName "Dropship MSP"
+  m_iSpawnPointFaction OPFOR
+  m_iSpawnPointRadius 6
+ }
+}

@@ -1,20 +1,92 @@
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 2710.965 82.751 8971.084
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2706.782 82.751 8970.978
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2703.02 82.751 8970.882
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2698.892 82.751 8970.776
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2695.163 82.751 8970.682
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2691.193 82.751 8970.58
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2687.184 82.751 8970.479
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2715.333 82.751 8971.195
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2719.752 82.751 8971.308
+  angles 0 178.542 0
+  m_rVehicle "{AFC800CACD2A2DE0}Prefabs/Vehicles/Wheeled/UAZ469/Speeder 2.0.et"
+  m_iRespawnTimer 150
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2707.356 83.15 8904.182
+  angles 0 -175.65 0
+  m_rVehicle "{9AA481A5C94C9A88}PrefabsMissionMaking/Systems/SpawnPoints/Vehicles/Geek_GF/OPFOR_DSP.et"
+  m_iRespawnTimer 600
+  m_iTicketsPerRespawn 0
+ }
+}
 $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
   coords 5649.351 10.389 7053.963
   angles 0 1.24 0
-  m_rVehicle "{D7D60492077D65E6}ESV_Files/Prefabs/ESV/ESV_Armed.et"
+  m_rVehicle "{34B544F684BC658B}ESV_Files/Prefabs/ESV/ESV_Armed.et"
   m_iTicketsPerRespawn 5
  }
  {
   coords 5649.605 10.389 7065.702
   angles 0 1.24 0
-  m_rVehicle "{D7D60492077D65E6}ESV_Files/Prefabs/ESV/ESV_Armed.et"
+  m_rVehicle "{34B544F684BC658B}ESV_Files/Prefabs/ESV/ESV_Armed.et"
   m_iTicketsPerRespawn 5
  }
  {
   coords 5649.857 10.389 7077.359
   angles 0 1.24 0
-  m_rVehicle "{D7D60492077D65E6}ESV_Files/Prefabs/ESV/ESV_Armed.et"
+  m_rVehicle "{34B544F684BC658B}ESV_Files/Prefabs/ESV/ESV_Armed.et"
   m_iTicketsPerRespawn 5
  }
  {
@@ -34,5 +106,11 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -89.958 0
   m_rVehicle "{E0600FABB29A2ABA}Prefabs/Vehicles/Ships/Dropship/Dropship_Armed_Fix.et"
   m_iTicketsPerRespawn 5
+ }
+ {
+  coords 5640.157 10.536 7093.679
+  angles 0 82.902 0
+  m_rVehicle "{A7A420310F699954}PrefabsMissionMaking/Systems/SpawnPoints/Vehicles/Geek_GF/BLUFOR_ESP.et"
+  m_iRespawnTimer 600
  }
 }

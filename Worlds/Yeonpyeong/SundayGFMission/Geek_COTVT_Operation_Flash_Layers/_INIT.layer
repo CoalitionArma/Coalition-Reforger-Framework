@@ -35,30 +35,36 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
      m_iStartingMinutes 30
     }
    }
-   m_bRandomWeatherChanges 0
+   m_bRandomWeatherChanges 1
   }
  }
  coords 0 0 0
+ m_aDisabledResourceTypes {
+  SUPPLIES
+ }
  m_bRespawnEnabled 1
  m_bWaveRespawn 1
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 30
  m_iRespawnCutoffMinutes 5
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 120
  m_bLockUnusedSlots 0
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 30
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "The Republic Enforcers of the United Earth Republic's United Solar Command deploy to a planet in the Aridias System to secure a landing zone for further operations in the system. In response, the CIW have deployed a unit of commando droids to attempt to halt the unrelenting advance."\
+   m_sTextData "BLUFOR Composition: 1x Company Element, 3x Rifle Platoons, 2x Jump Trooper Teams, 2x Sniper Teams, 2x Vehicle Crews and 2x Air Crews."\
+   "BLUFOR Assets: IFVs, Dropships and CAS aircraft, MSP. (All respawn.)"\
    ""\
-   "BLUFOR Composition: 1x Company Element, 3x Rifle Platoons, 2x Jump Trooper Teams, 2x Sniper Teams, 2x Vehicle Crews and 2x Air Crews."\
-   "BLUFOR Assets: IFVs, Dropships and CAS aircraft."\
+   "OPFOR Composition: 1x Undersized Platoon, 1x Air Crew, 1x Zeus Team."\
+   "OPFOR Assets: Speeders, MSP Dropship (All respawn.)"\
    ""\
-   "Time: 8:30am"\
+   "Time: 8:30am."\
+   "Weather: Cloudy."\
    ""\
-   "Weather: Cloudy"
+   "SITREP:"\
+   "The Republic Enforcers of the United Earth Republic's United Solar Command deploy to a planet in the Aridias System to secure a landing zone for further operations in the system. In response, the CIW have deployed a unit of commando droids to attempt to halt the unrelenting advance."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -76,17 +82,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Tickets: N/A."\
+   "Objectives:"\
+   "- Deplete all BLUFOR tickets."\
+   "- Prevent BLUFOR from completing all 3 objectives."\
+   ""\
+   "Note: The CIW arsenal may be missing a few items, please contact Admins/GMs if this is the case."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
    m_sTextData "Mission time: 60 minutes."\
    "Respawns will cut off 5 minutes before mission end."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
-    "INDFOR"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Disclaimer"
    m_sTextData "Please be advised that there may be gear issues. "\
    ""\
@@ -95,28 +112,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  CRF_MissionDescriptor "{69512912CCE19EBC}" {
    m_sTitle "Zeus Notes"
    m_sTextData "Kit issues may arise, I've tested it and it seems to be fine, but I expect at least a little bit of arma bullshittery so just keep that in mind."
    m_aFactionKeys {
-    "CIV"
-   }
-   m_bShowForAnyFaction 0
-  }
-  CRF_MissionDescriptor "{69512912CCE19EBC}" {
-   m_sTitle ""
-   m_sTextData ""
-   m_aFactionKeys {
+    "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 6
- m_iFactionTwoRatio 0
+ m_iFactionOneRatio 5
+ m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
- m_sFactionTwoKey ""
+ m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{6951559093B7496F}" {
+  CRF_SlottingGroup "{6952E220BB0CE6CA}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -124,7 +134,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6951559093B7572C}" {
+  CRF_SlottingGroup "{6952E220BB0CE548}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -132,7 +142,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6951559093B756C0}" {
+  CRF_SlottingGroup "{6952E220BB0CE404}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,7 +156,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75535}" {
+  CRF_SlottingGroup "{6952E220BB0CE323}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -160,7 +170,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75422}" {
+  CRF_SlottingGroup "{6952E220BB0CE2FE}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -174,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B753D3}" {
+  CRF_SlottingGroup "{6952E220BB0CE1B3}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -182,7 +192,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6951559093B752FF}" {
+  CRF_SlottingGroup "{6952E220BB0CE17F}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,7 +206,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75191}" {
+  CRF_SlottingGroup "{6952E220BB0CE033}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -210,7 +220,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75080}" {
+  CRF_SlottingGroup "{6952E220BB0CEFC4}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -224,7 +234,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75FB7}" {
+  CRF_SlottingGroup "{6952E220BB0CEE97}" {
    m_sCallsign "3PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -232,7 +242,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6951559093B75F5D}" {
+  CRF_SlottingGroup "{6952E220BB0CEDAD}" {
    m_sCallsign "3-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -246,7 +256,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75E71}" {
+  CRF_SlottingGroup "{6952E220BB0CED7A}" {
    m_sCallsign "3-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -260,7 +270,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75D67}" {
+  CRF_SlottingGroup "{6952E220BB0CEC19}" {
    m_sCallsign "3-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -274,23 +284,23 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_RIFLEMAN_ANTITANK
    }
   }
-  CRF_SlottingGroup "{6951559093B75C12}" {
-   m_sCallsign "DROPSHIP 1"
+  CRF_SlottingGroup "{6952E220BB0CEB23}" {
+   m_sCallsign "AIR 1"
    m_FlagType HELICOPER
    m_aSlots {
     PILOT
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6951559093B75B1B}" {
-   m_sCallsign "DROPSHIP 2"
+  CRF_SlottingGroup "{6952E220BB0CEA91}" {
+   m_sCallsign "AIR 2"
    m_FlagType HELICOPER
    m_aSlots {
     PILOT
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6951559093B75A2E}" {
+  CRF_SlottingGroup "{6952E220BB0CEA5F}" {
    m_sCallsign "ESV 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -299,7 +309,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{6951559093B759F9}" {
+  CRF_SlottingGroup "{6952E220BB0CE907}" {
    m_sCallsign "ESV 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -308,7 +318,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{6951559093B7589E}" {
+  CRF_SlottingGroup "{6952E220BB0CE8CB}" {
    m_sCallsign "SNIPER 1"
    m_FlagType SNIPER
    m_aSlots {
@@ -316,15 +326,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{6951559093B727AA}" {
-   m_sCallsign "SNIPER 2"
-   m_FlagType SNIPER
-   m_aSlots {
-    SNIPER
-    SPOTTER
-   }
-  }
-  CRF_SlottingGroup "{6951559093B7277A}" {
+  CRF_SlottingGroup "{6952E220BB0CF7B8}" {
    m_sCallsign "JUMP TEAM 1"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -336,7 +338,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{6951559093B7266E}" {
+  CRF_SlottingGroup "{6952E220BB0CF778}" {
    m_sCallsign "JUMP TEAM 2"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -349,19 +351,70 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
- m_CivSlots {
-  CRF_SlottingGroup "{6951559093B72552}" {
+ m_OpforSlots {
+  CRF_SlottingGroup "{6952E220BB0CF5D0}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{6952E220BB0CF495}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{6952E220BB0CF3A6}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+   }
+  }
+  CRF_SlottingGroup "{6952E220BB0CF375}" {
+   m_sCallsign "SNIPER 1"
+   m_FlagType SNIPER
+   m_aSlots {
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{6952E220BB0CF225}" {
+   m_sCallsign "AIR 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+  }
+  CRF_SlottingGroup "{6952E220BB0CF1E3}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {
-    ZEUS
     ZEUS
     ZEUS
    }
   }
  }
  m_iBLUFORTickets 75
- m_iOPFORTickets 0
+ m_iOPFORTickets -1
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
@@ -409,10 +462,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628B22E9B4056C88}" {
      m_aFriendlyFactionsIds {
+      "ENFORCERS"
      }
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
      m_aFriendlyFactionsIds {
+      "CIW"
      }
     }
     SCR_Faction "{628CDE9209CA3FF9}" {

@@ -1,0 +1,37 @@
+CRF_VehicleSpawnPoint : "{BD90A43DBCA4634E}ESV_Files/Prefabs/ESV/ESV_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "ESP"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_VEHICLE FACTION_CRF_BLUFOR
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo flag {
+     Offset -0.6064 3.3179 -3.5649
+     Angles 3.2802 0.064 -0.3418
+     Prefab "{AB72A0D9CB73483B}Prefabs/Props/Fabric/Flags/Gearscript Factions/BLUFOR_FLAG.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo arsenal {
+     Prefab "{8A239DEA19509B1B}Prefabs/Vehicles/Core/VirtualSlots/Radio_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+ }
+ coords 5638.663 10.039 7087.378
+ angles 0 85.454 0
+ m_SpawnPointSettings CRF_SpawnPointData "{6952D9D87A70C8BE}" {
+  m_sSpawnPointName "MSP"
+  m_iSpawnPointRadius 6
+ }
+}
