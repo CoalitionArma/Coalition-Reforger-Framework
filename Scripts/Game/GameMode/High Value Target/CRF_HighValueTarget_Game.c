@@ -153,11 +153,14 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	string m_sDeadHVTHint;
 	
 	// HVT tracking maps
-	ref map<IEntity, int> m_mHVTEntryIndex = new map<IEntity, int>();     // entity → entry index
-	ref map<int, IEntity> m_mEntryToHVT = new map<int, IEntity>();        // entry index → entity (prevents scope searches)
+	ref map<IEntity, int> m_mHVTEntryIndex = new map<IEntity, int>();        // entity → entry index
+	ref map<int, IEntity> m_mEntryToHVT = new map<int, IEntity>();           // entry index → entity
+	ref map<int, IEntity> m_mEntryToTransponder = new map<int, IEntity>();   // entry index → transponder entity, cached at SetHVTAndState to avoid hot loop FindEntityByName's
+	ref map<IEntity, SCR_CharacterDamageManagerComponent> m_mHVTDamageManagers = new map<IEntity, SCR_CharacterDamageManagerComponent>(); // entity → damage manager (OBJECT entries absent = alive by entity existence)
 	
 	// Client-side: Track which markers have been removed for JIPS/mishaps/desyncs
 	ref set<int> m_sRemovedMarkerIndices = new set<int>();
+	ref set<int> m_sPermadeadEntries = new set<int>();   // Entry indices permanently closed by permadeath (PLAYER entries only)
 	
 	const string MARKER_ICON = "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds";
 	const int MARKER_SIZE = 50;
@@ -177,7 +180,12 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode()) 
 			return;
 		
-		SetEventMask(owner, EntityEvent.FIXEDFRAME); // Testing event mask for initial clientside 
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
+		
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			GetGame().GetCallqueue().CallLater(RegisterAdminChatCommands, 1000, false);
+		#endif
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -224,7 +232,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Server: Periodic player HVT re-registration
-			if (++m_fPlayerCheckTimer >= 60)
+			if (++m_fPlayerCheckTimer >= 120)
 			{
 				m_fPlayerCheckTimer = 0;
 				RegisterPlayerHVTs();
@@ -300,14 +308,18 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// All machines: NOW hide transponders underground so markers don't flash at editor positions
-		foreach (CRF_HVTEntry entry : m_aHVTEntries)
+		// Cache transponder entity references here - avoids repeated FindEntityByName in SyncTransponderPositions
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 		{
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
 				continue;
 			
 			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-			if (transponder)
-				transponder.SetOrigin("0 -1000 0");
+			if (!transponder)
+				continue;
+			
+			transponder.SetOrigin("0 -1000 0");
+			m_mEntryToTransponder.Set(index, transponder);
 		}
 		
 		if (!m_aHvtPositions.IsEmpty())
@@ -320,6 +332,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 		{
 			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.PLAYER)
+				continue;
+			
+			if (m_bHVTPermadeath && m_sPermadeadEntries.Contains(index))
 				continue;
 			
 			if (m_mEntryToHVT.Contains(index))
@@ -341,7 +356,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			IEntity existingHVT = m_mEntryToHVT.Get(entryIndex);
 			if (existingHVT)
+			{
 				m_mHVTEntryIndex.Remove(existingHVT);
+				m_mHVTDamageManagers.Remove(existingHVT);
+			}
 			
 			m_mEntryToHVT.Remove(entryIndex);
 		}
@@ -407,7 +425,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		// ALWAYS set damage state to match component setting (overrides prefab default on spawn/respawn)
 		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
 		if (damageManager)
+		{
 			damageManager.EnableDamageHandling(!m_bDisableDamage);
+			m_mHVTDamageManagers.Set(hvtEntity, damageManager); // Cache for IsHVTAlive
+		}
 	}
 	
 	// HVT death callback - syncs positions and shows hint
@@ -437,6 +458,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				CRF_HVTEntry entry = m_aHVTEntries[entryIndex];
 				if (entry && entry.m_eFaction != CRF_HVTFaction.NONE)
 					hvtFactionLabel = entry.GetFactionKey() + " ";
+				
+				if (m_bHVTPermadeath && entry && entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
+					m_sPermadeadEntries.Insert(entryIndex);
 			}
 		}
 		
@@ -494,6 +518,13 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			
 			if (m_bEnableTransponderMarker && m_bInitialPing)
 				UpdateHVTPositions();
+			
+			if (m_bHVTPermadeath)
+			{
+				CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+				if (bm)
+					bm.BroadcastAdminChatMessage("[CRF HVT] /hvt_reset_deaths - reset the disabled tracking of dead PHVTs.");
+			}
 		}
 		
 		// Client/Listen: Create markers
@@ -520,8 +551,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
 				continue;
 			
-			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-			if (!transponder)
+			if (!m_mEntryToTransponder.Contains(index))
 			{
 				Print(string.Format("[HVT] Warning: Transponder entity '%1' not found in world!", entry.m_sTransponderEntityName), LogLevel.WARNING);
 				continue;
@@ -569,24 +599,14 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!hvtEntity)
 			return false;
 		
-		// Check entry type - OBJECT entries don't have character damage managers
-		if (m_mHVTEntryIndex.Contains(hvtEntity))
-		{
-			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
-			if (entryIndex >= 0 && entryIndex < m_aHVTEntries.Count())
-			{
-				CRF_HVTEntry entry = m_aHVTEntries[entryIndex];
-				if (entry && entry.m_eEntryType == CRF_HVTEntryType.OBJECT)
-					return true;  // Objects are always "alive" if entity exists
-			}
-		}
+		// OBJECT entries have no damage manager and are absent from m_mHVTDamageManagers - alive by entity existence
+		if (!m_mHVTDamageManagers.Contains(hvtEntity))
+			return true;
 		
-		// For AI/PLAYER - query actual character state via damage manager
-		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+		SCR_CharacterDamageManagerComponent damageManager = m_mHVTDamageManagers.Get(hvtEntity);
 		if (!damageManager)
 			return false;
 		
-		// GetState() returns EDamageState - check if not destroyed/dead
 		return damageManager.GetState() != EDamageState.DESTROYED;
 	}
 	
@@ -634,7 +654,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				m_sRemovedMarkerIndices.Remove(i);
 			}
 			
-			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
+			if (!m_mEntryToTransponder.Contains(i))
+				continue;
+			
+			IEntity transponder = m_mEntryToTransponder.Get(i);
 			if (!transponder)
 				continue;
 			
@@ -700,6 +723,53 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (hvtEntity && IsHVTAlive(hvtEntity))
 				SetEntityUnconscious(hvtEntity);
 		}
+	}
+	
+
+	protected void RegisterAdminChatCommands()
+	{
+		SCR_ChatPanelManager chatMgr = SCR_ChatPanelManager.GetInstance();
+		if (!chatMgr)
+			return;
+		
+		chatMgr.GetCommandInvoker("hvt_reset_deaths").Insert(OnChatCmd_ResetPermadeath);
+	}
+	
+	protected void OnChatCmd_ResetPermadeath(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+		
+		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (mgr)
+			mgr.RequestHVTAdminCommand("reset_permadeath", "");
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_AdminHVTCommand(int callerId, string cmd, string param)
+	{
+		if (!SCR_Global.IsAdmin(callerId))
+			return;
+		
+		HandleAdminCommand(callerId, cmd, param);
+	}
+	
+	void HandleAdminCommand(int adminPlayerId, string cmd, string param)
+	{
+		if (cmd == "reset_permadeath")
+			AdminResetPermadeath(adminPlayerId);
+	}
+	
+	protected void AdminResetPermadeath(int adminPlayerId)
+	{
+		m_sPermadeadEntries.Clear();
+		
+		string adminName = GetGame().GetPlayerManager().GetPlayerName(adminPlayerId);
+		string msg = string.Format("[CRF HVT] %1 reset HVT permadeath entries.", adminName);
+		
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		if (bm)
+			bm.BroadcastAdminChatMessage(msg);
 	}
 	
 	//------------------------------------------------------------------------------------------------
