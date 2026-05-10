@@ -70,6 +70,7 @@ class CRF_VAAR_ShotEvent : Managed
 
 	void CRF_VAAR_ShotEvent(RplId id, vector start, float hitX, float hitZ)
 	{
+		si = id;
 		sx = (int)Math.Round(start[0] * 10);
 		sz = (int)Math.Round(start[2] * 10);
 		hx = (int)Math.Round(hitX * 10);
