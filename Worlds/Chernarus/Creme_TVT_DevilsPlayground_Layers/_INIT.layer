@@ -36,7 +36,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "US army (Blufor) is to search and and destroy for caches sites (Bombsites) in the town of Dubrovka. "\
    ""\
    "BLUFOR Composition: Motorized Infantry"\
-   "BLUFOR Assets: 2x M2HB M11H1"\
+   "BLUFOR Assets: 2x M2HB M11H1 , MMG, MAT"\
    ""\
    "OPFOR Composition: Light Infantry w/ Technicals"\
    "OPFOR Assets: 1x Dshk Technical 4x PKM Technicals"\
