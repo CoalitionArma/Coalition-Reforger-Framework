@@ -1,0 +1,11 @@
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 7820.134 128.26 6967.333
+ angles 0 0 0
+ m_MarkerColor 0.014 0.023 0.825 1
+ m_sQuadName "mark-question"
+ m_fWorldSize 480
+ m_sDescription "Missing Pilot"
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+}
