@@ -128,15 +128,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		aiWorld.GetAIAgents(agents);
 
 		CRF_VAAR_Frame frame = new CRF_VAAR_Frame();
-		CRF_VAAR_EntitiesSnapshot entitiesSnapshot = new CRF_VAAR_EntitiesSnapshot();
 		
 		// Timestamp for the frame based on in game time
-		frame.Time = m_iCurrentFrame;
+		frame.ts = m_iCurrentFrame;
 		
 		// Record shots fired into the frame
 		foreach (CRF_VAAR_ShotEvent shot : m_aShotsBuffer)
 		{
-			frame.Shots.Insert(shot);
+			frame.s.Insert(shot);
 		}
 
 		m_aShotsBuffer.Clear();
@@ -144,7 +143,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		// Record kills events into the frame
 		foreach (CRF_VAAR_KillEvent killEvent : m_aKillsBuffer)
 		{
-			frame.Kills.Insert(killEvent);
+			frame.k.Insert(killEvent);
 		}
 
 		m_aKillsBuffer.Clear();
@@ -176,7 +175,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			
 			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterName, characterPos, characterAim, characterRole, characterFaction);
 			
-			entitiesSnapshot.Chars.Insert(characterSnapshot);
+			frame.c.Insert(characterSnapshot);
 		}
 		
 		foreach(IEntity vehicle : m_aTrackedVehicle)
@@ -194,11 +193,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			
 			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehicleName, vehiclePos, vehicleYaw, vehicleType, vehicleFaction, vehicleOccupants);
 			
-			entitiesSnapshot.Vehs.Insert(vehicleSnapshot);
+			frame.v.Insert(vehicleSnapshot);
 		}
-		
-		// Insert Entites into the frame
-		frame.Ents.Insert(entitiesSnapshot);
 		
 		// Convert the frame to json format
 		SCR_JsonSaveContext jsonHelper = new SCR_JsonSaveContext();
@@ -224,7 +220,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (!m_AARFile)
 			m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
 		
-		m_AARFile.WriteLine(string.Format("{{\"frame\": {{\"Timestamp\": 0, \"Entities\": []}}}}"));
+		m_AARFile.WriteLine(string.Format("{{\"frame\": {{\"ts\": 0, \"c\": [], \"v\": [], \"s\": [], \"k\": []}}}}"));
 		m_AARFile.WriteLine("] }");
 		m_AARFile.Close();
 		m_AARFile = null;
@@ -372,9 +368,24 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Collect info on the projectile
 		vector start = shooter.GetOrigin();
+		RplId shooterID = Replication.FindId(shooter);
+		
+		// Deduplicate: OnEffect can fire twice per bullet (e.g. two effects on weapon).
+		// Skip if the last buffered shot has identical scaled integer coordinates.
+		int newSx = (int)Math.Round(start[0] * 10);
+		int newSz = (int)Math.Round(start[2] * 10);
+		int newHx = (int)Math.Round(hitX * 10);
+		int newHz = (int)Math.Round(hitZ * 10);
+		
+		if (!m_aShotsBuffer.IsEmpty())
+		{
+			CRF_VAAR_ShotEvent last = m_aShotsBuffer[m_aShotsBuffer.Count() - 1];
+			if (last.si == shooterID && last.sx == newSx && last.sz == newSz && last.hx == newHx && last.hz == newHz)
+				return;
+		}
 		
 		// Store shot in buffer
-		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(start, hitX, hitZ));
+		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ));
 	}
 	//------------------------------------------------------------------------------------
 	void RegisterCharacterDeath(notnull SCR_InstigatorContextData instigatorContextData)
