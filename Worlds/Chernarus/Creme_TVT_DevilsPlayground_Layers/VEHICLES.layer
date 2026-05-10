@@ -102,6 +102,7 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{3C266F6F87ED61B2}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_Beige.et"
   m_sFactionKey "OPFOR"
   m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A023401ED6ABE}" {
+   m_iAmountofAutoCannonAmmo 0
    m_iAmountofMachineGunAmmo 0
   }
  }
@@ -111,7 +112,8 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{3123FCB14A392B37}Prefabs/Vehicles/Wheeled/SR5/Armed/PKM/SR5_Armed_PKM_White.et"
   m_sFactionKey "OPFOR"
   m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694A0234FECE1DDD}" {
-   m_iAmountofMachineGunAmmo 500
+   m_iAmountofAutoCannonAmmo 0
+   m_iAmountofMachineGunAmmo 0
   }
  }
 }
