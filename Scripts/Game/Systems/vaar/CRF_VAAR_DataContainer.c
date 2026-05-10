@@ -1,112 +1,109 @@
-enum CRF_VAAR_EEventTypes
-{
-	KILL
-}
+// ── Key naming: single-letter short keys to minimise JSON file size ──────────
+// Positions stored as int ×10 (10cm precision). Viewer divides by 10.
+// Angle stored as int ×1000. Viewer divides by 1000.
+// Y-coordinate omitted — the playback viewer is 2D only.
 
 // Lower level Structure
 //------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_VAAR_CharacterSnapshot : Managed
 {
-    RplId characterID;
-    string characterName, characterrole;
-    float characterposX, characterposY, characterposZ, characteryaw;
-	FactionKey characterFaction;
-    
-    void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, string role, FactionKey key)
-    {
-		characterID = id;
-        characterName = name;
-        characterposX = pos[0];
-        characterposY = pos[1];
-        characterposZ = pos[2];
-        characteryaw = aim[0];
-		characterrole = role;
-		characterFaction = key;
-    }
+	RplId i;       // characterID
+	string n;      // characterName
+	int r;      // characterrole
+	int x;         // characterposX ×10
+	int z;         // characterposZ ×10
+	int a;         // characteryaw ×1000
+	int f;  // characterFaction
+
+	void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, int role, int faction)
+	{
+		i = id;
+		n = name;
+		x = (int)Math.Round(pos[0] * 10);
+		z = (int)Math.Round(pos[2] * 10);
+		a = (int)Math.Round(aim[0] * 1000);
+		r = role;
+		f = faction;
+	}
 }
 
-// This represents single Vehicle
+// This represents a single Vehicle
 [BaseContainerProps()]
 class CRF_VAAR_VehicleSnapshot : Managed
 {
-    RplId vehicleID;
-    string vehicleName, vehicleType;
-    float vehicleposX, vehicleposY, vehicleposZ, vehicleyaw;
-	FactionKey vehicleFaction;
-	ref array<string> vehicleOccupants = {};
-	
-    void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector aim, string type, FactionKey key, array<string> occupants)
-    {
-		vehicleID = id;
-        vehicleName = name;
-        vehicleposX = pos[0];
-        vehicleposY = pos[1];
-        vehicleposZ = pos[2];
-        vehicleyaw = aim[0];
-		vehicleType = type;
-		vehicleFaction = key;
-		
+	RplId i;             // vehicleID
+	string n;            // vehicleName
+	int t;            // vehicleType
+	int x;               // vehicleposX ×10
+	int z;               // vehicleposZ ×10
+	int a;               // vehicleyaw ×1000
+	int f;        // vehicleFaction
+	ref array<string> oc = {};  // vehicleOccupants
+
+	void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector angles, int type, int faction, array<string> occupants)
+	{
+		i = id;
+		n = name;
+		x = (int)Math.Round(pos[0] * 10);
+		z = (int)Math.Round(pos[2] * 10);
+		a = (int)Math.Round(angles[0] * 1000);
+		t = type;
+		f = faction;
+
 		foreach(string occupant : occupants)
 		{
-			vehicleOccupants.Insert(occupant);
+			oc.Insert(occupant);
 		}
-    }
+	}
 }
 
-// This reperesents shot being fired by a player or AI
+// This represents a shot fired by a player or AI
 [BaseContainerProps()]
 class CRF_VAAR_ShotEvent : Managed
 {
-    RplId shooterID;
-    float startX, startZ, shotHitX, shotHitZ;
-    
-    void CRF_VAAR_ShotEvent(RplId id, vector start, float hitX, float hitZ)
-    {
-        shooterID = id;
-        startX = start[0]; 
-		startZ = start[2];
-        shotHitX = hitX; 
-		shotHitZ = hitZ;
-    }
+	RplId si;  // shooterID
+	int sx;    // startX ×10
+	int sz;    // startZ ×10
+	int hx;    // shotHitX ×10
+	int hz;    // shotHitZ ×10
+
+	void CRF_VAAR_ShotEvent(RplId id, vector start, float hitX, float hitZ)
+	{
+		si = id;
+		sx = (int)Math.Round(start[0] * 10);
+		sz = (int)Math.Round(start[2] * 10);
+		hx = (int)Math.Round(hitX * 10);
+		hz = (int)Math.Round(hitZ * 10);
+	}
 }
 
-// This reperesents a kill
+// This represents a kill
 [BaseContainerProps()]
 class CRF_VAAR_KillEvent : Managed
 {
-    RplId targetID, KillerID;
-	string targetName, targetFaction;
-	string killerName, killerFaction; 
-	
-    void CRF_VAAR_KillEvent(RplId target, RplId killer, string tName, string kName, FactionKey tFaction, FactionKey kFaction)
-    {
-		targetID = target;
-		targetName = tName;
-		targetFaction = tFaction;
-		KillerID = killer;
-		killerName = kName;
-		killerFaction = kFaction;
-    }
+	string tn;  // targetName
+	string kn;  // killerName
+	int tf;  // targetFaction
+	int kf;  // killerFaction
+
+	void CRF_VAAR_KillEvent(string tName, string kName, int tFaction, int kFaction)
+	{
+		tn = tName;
+		tf = tFaction;
+		kn = kName;
+		kf = kFaction;
+	}
 }
 
-// Top level Structure
+// Top level Structure — Characters & Vehicles live directly on the frame
 //------------------------------------------------------------------------------------
-
-// This represents all Characters & Vehicles
-[BaseContainerProps()]
-class CRF_VAAR_EntitiesSnapshot : Managed
-{
-    ref array<ref CRF_VAAR_CharacterSnapshot> Characters = {};
-	ref array<ref CRF_VAAR_VehicleSnapshot> Vehicles = {};
-}
-
-// A single frame
 [BaseContainerProps()]
 class CRF_VAAR_Frame : Managed
 {
-    float Timestamp;
-    ref array<ref CRF_VAAR_EntitiesSnapshot> Entities = {};
-	ref array<ref CRF_VAAR_ShotEvent> Shots = {};
-	ref array<ref CRF_VAAR_KillEvent> Kills = {};
+	float ts;  // Timestamp
+	ref array<ref CRF_VAAR_CharacterSnapshot> c = {};  // Characters
+	ref array<ref CRF_VAAR_VehicleSnapshot>   v = {};  // Vehicles
+	ref array<ref CRF_VAAR_ShotEvent>         s = {};  // Shots
+	ref array<ref CRF_VAAR_KillEvent>         k = {};  // Kills
 }
