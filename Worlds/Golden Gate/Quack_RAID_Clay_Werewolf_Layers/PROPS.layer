@@ -114,6 +114,11 @@ GenericEntity : "{3814A3A7D7707097}Prefabs/Compositions/Misc/CustomEntities/Supp
        SCR_ArsenalItemStandalone "{69424145BF834765}" {
         m_ItemResourceName "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
        }
+       SCR_ArsenalItemStandalone "{6954195595EEB9F6}" {
+        m_eItemType MACHINE_GUN
+        m_eItemMode AMMUNITION
+        m_ItemResourceName "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et"
+       }
       }
      }
      m_eArsenalSaveType SAVING_DISABLED

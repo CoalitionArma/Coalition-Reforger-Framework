@@ -492,6 +492,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
             }
            }
           }
+          SCR_EntityCatalogInventoryItem "{6954195470A34F69}" {
+           m_sEntityPrefab "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6954195469898078}" {
+             m_iSupplyCost 60
+            }
+           }
+          }
          }
         }
        }

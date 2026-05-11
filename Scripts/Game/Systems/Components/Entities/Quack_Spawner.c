@@ -3,6 +3,11 @@ class Quack_SpawnerComponentClass : ScriptComponentClass
 {
 }
 
+/****************************************************************************************
+* This component will call the CRF RespawnAllSides() method after a determined amount of time. The timer can be set in the world editor.  
+* The component should be added to the GameMode entity.
+/****************************************************************************************/
+
 class Quack_SpawnerComponent : ScriptComponent
 {
 	[Attribute(defvalue: "10", desc: "Wait in seconds before check", params: "0 59 1", category: "Post Briefing")]
