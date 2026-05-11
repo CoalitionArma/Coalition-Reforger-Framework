@@ -32,8 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Devils Playground"
-   m_sTextData "FIA (Opfor) has small weapon caches in the Dubrovka."\
-   "US army (Blufor) is to search and and destroy for caches sites (Bombsites) in the town of Dubrovka. "\
+   m_sTextData "FIA (Opfor) has small weapon caches in Dubrovka. US army (Blufor) is to search and destroy the cache sites (Bombsites) in the town of Dubrovka."\
    ""\
    "BLUFOR Composition: Motorized Infantry"\
    "BLUFOR Assets: 2x M2HB M11H1 , MMG, MAT"\
