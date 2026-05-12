@@ -81,7 +81,9 @@ class CRF_PlayerControllerManager : ScriptComponent
 			CRF_PlayerSettingsManager.GetInstance().ResetSettingsToStoredValues();
 			if (!CVON_VONGameModeComponent.GetInstance())
 				CRF_InitializationHelper.SetupRadioFrequency();
-		}; 
+		};
+		
+		m_CameraManager.DisableCameraOnRails();
 		
 		if (CRF_EntityHelper.IsSpectator(playerCharacter))
 			InitilizeLocalSpectator(playerCharacter);

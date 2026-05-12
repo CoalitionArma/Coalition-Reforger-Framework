@@ -87,7 +87,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter && playerRplComp)
 		{
 			playerCharacter.DisableAI();
-			DeleteOldInitialEntity(playerController, playerCharacter);
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
 			bool requestSpawnUsed = CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
@@ -225,24 +224,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			Print(string.Format("[CRF_GamemodeManager] ERROR: Failed to spawn spectator for player %1", playerId), LogLevel.ERROR);
 		
 		return playerSpectator;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Delete old initial entity if it exists (prevents ghost entities)
-	//! \param[in] oldEntity The old entity to check and potentially delete
-	//! \param[in] newCharacter The new character being assigned (don't delete this one)
-	protected void DeleteOldInitialEntity(SCR_PlayerController playerController, IEntity newCharacter)
-	{
-		if (!playerController || !newCharacter)
-			return;
-		
-		IEntity oldEntity = playerController.GetMainEntity();
-		if (!oldEntity || oldEntity == newCharacter)
-			return;
-		
-		// Check if old entity is an initial entity (spectator prefab)
-		if (CRF_EntityHelper.IsSpectator(oldEntity))
-			SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
