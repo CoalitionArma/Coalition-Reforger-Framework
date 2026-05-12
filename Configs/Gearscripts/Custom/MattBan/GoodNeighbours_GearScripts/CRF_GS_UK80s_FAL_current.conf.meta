@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D5A844F88DFAA10B}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL_M79_FT.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

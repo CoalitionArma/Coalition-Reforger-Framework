@@ -1,0 +1,80 @@
+$grp StaticModelEntity : "{4241A59E64C29DC1}Prefabs/Structures/Military/BunkerLift.et" {
+ {
+  coords 11604.386 46.594 9737.748
+  angles 0 -102.752 0
+ }
+ {
+  coords 11612.996 46.395 9789.974
+  angles 0 -62.969 0
+ }
+ {
+  coords 11683.961 46.594 9722.611
+  angles 0 -97.259 0
+ }
+ {
+  coords 11699.534 46.593 9782.432
+  angles 0 0 0
+ }
+ {
+  coords 12164.297 41.563 9982.438
+  angles 0 -21.899 0
+ }
+}
+GenericEntity : "{47982C5F6E049E55}PrefabsEditable/Auto/ConflictRHS/E_SandbagPosition_S_AFRF_04.et" {
+ coords 12103.767 41.562 9960.797
+ angles 0 173.467 0
+}
+GenericEntity : "{51790910A06ADD44}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallSolidPlastic_S_UK_01.et" {
+ coords 11632.42 46.594 9773.173
+ angles 0 -85.053 0
+}
+$grp GenericEntity : "{59C550B20C3C1079}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_UK_04.et" {
+ {
+  coords 11629.413 46.593 9735.897
+  angles 0 -175.447 0
+ }
+ {
+  coords 11671.988 46.593 9739.971
+  angles 0 113.166 0
+ }
+}
+GenericEntity : "{64F1758A7950994E}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_UK_03.et" {
+ coords 11669.771 46.593 9784.434
+}
+$grp GenericEntity : "{9F30459E178D8009}PrefabsEditable/Auto/ConflictRHS/E_SandbagPosition_S_AFRF_02.et" {
+ {
+  coords 12025.978 30.034 10150.573
+  angles 0 -88.896 0
+ }
+ {
+  coords 12157.793 41.563 10019.193
+  angles 0 -175.163 0
+ }
+}
+GenericEntity : "{A69AEF66992A4E7E}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongHighPlastic_S_UK_01.et" {
+ coords 11671.578 46.594 9761.143
+ angles 0 -92.63 0
+}
+GenericEntity : "{BD55AC66ECD13DFB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_UK_01.et" {
+ coords 12010.735 30.214 10149.912
+}
+$grp GenericEntity : "{ED390D93C971810B}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_UK_01.et" {
+ {
+  coords 11647.157 46.594 9730.731
+  angles 0 -179.912 0
+ }
+ {
+  coords 11610.243 46.593 9765.934
+  angles 0 -85.485 0
+ }
+}
+$grp GenericEntity : "{F364717EAB490F27}PrefabsEditable/Auto/ConflictRHS/E_SandbagPosition_S_AFRF_01.et" {
+ {
+  coords 12087.919 41.563 9961.438
+  angles 0 -167.755 0
+ }
+ {
+  coords 12144.356 41.563 9997.695
+  angles 0 95.378 0
+ }
+}

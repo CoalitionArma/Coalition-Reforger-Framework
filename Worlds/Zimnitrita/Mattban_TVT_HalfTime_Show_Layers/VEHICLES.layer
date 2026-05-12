@@ -1,0 +1,123 @@
+$grp CRF_VehicleSpawner {
+ HeliSpawn1 {
+  coords 12380.795 31.423 10908.156
+  m_rVehicle "{137DCF41459A89BE}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_empty.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ HeliSpawn2 {
+  coords 12354.229 31.555 10908.401
+  m_rVehicle "{137DCF41459A89BE}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_empty.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ BluforTruckSpawn1 {
+  coords 12318.921 32.359 10897.657
+  angles 0 -96.4 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ BluforTruckSpawn2 {
+  coords 12319.493 31.897 10904.435
+  angles 0 -96.4 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ BluforTruckSpawn3 {
+  coords 12318.52 31.601 10910.472
+  angles 0 -96.4 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ BluforTruckSpawn4 {
+  coords 12318.055 31.359 10916.696
+  angles 0 -96.4 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ BluforTruckSpawn5 {
+  coords 12316.57 31.119 10923.784
+  angles 0 -96.4 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTruckSpawn1 {
+  coords 11801.313 42.33 9961.89
+  angles 0 101.644 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTruckSpawn2 {
+  coords 11802.881 42.36 9965.395
+  angles 0 101.644 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTruckSpawn3 {
+  coords 11804.287 42.335 9968.79
+  angles 0 101.644 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTruckSpawn4 {
+  coords 11805.376 42.297 9972.193
+  angles 0 101.644 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTruckSpawn5 {
+  coords 11806.243 42.236 9975.898
+  angles 0 101.644 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ IndforTrackedSpawn1 {
+  coords 11788.482 41.809 9947.935
+  angles 0 115.188 0
+  m_rVehicle "{2FCF3A82322F7390}IFV/BMP2/BMP2_Olive.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69580A635365E74A}" {
+    m_Prefab "{E75521E82E56E75F}IFV/BMP2/30mm 250rnds.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 3
+   }
+  }
+ }
+ IndforTrackedSpawn2 {
+  coords 11777.867 41.39 9955.499
+  angles 0 115.188 0
+  m_rVehicle "{2FCF3A82322F7390}IFV/BMP2/BMP2_Olive.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69580A62308FA43B}" {
+    m_Prefab "{E75521E82E56E75F}IFV/BMP2/30mm 250rnds.et"
+    m_iAmountOfItemSupplyTruck 0
+    m_iAmountOfItemRegularVehicle 3
+   }
+  }
+ }
+}
