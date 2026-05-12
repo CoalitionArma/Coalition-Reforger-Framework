@@ -28,8 +28,15 @@ modded class SCR_MapMarkerSquadLeader
 			return;
 		}
 		
-		if (CRF_LooterGamemodeComponent.GetInstance() && !CRF_LooterGamemodeComponent.GetInstance().IsBFTEnabled())
+		Faction groupFaction = localPlayerGroup.GetFaction();
+		if (!groupFaction)
 		{
+			SetLocalVisible(false);
+			return;
+		}
+		
+		if (CRF_Gamemode.GetInstance() && !CRF_Gamemode.GetInstance().IsSideBFTEnabled(groupFaction.GetFactionKey()))
+		{	
 			SetLocalVisible(false);
 			return;
 		}
@@ -50,5 +57,4 @@ modded class SCR_MapMarkerSquadLeader
 
 		SetLocalVisible(false);
 	}
-	
 }

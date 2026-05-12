@@ -1,0 +1,160 @@
+$grp GenericEntity : "{047B9C8AAB50CE0F}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_01.et" {
+ {
+  coords 2871.989 17.885 5242.422
+  angles 0 -86.909 0
+ }
+ {
+  coords 2768.734 53.249 4874.966
+  angles 0 158.668 0
+ }
+ {
+  coords 2743.372 52.938 4931.364
+  angles 0 -55.639 0
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 2783.699 52.938 4982.858
+  angles 0 142.25 0
+ }
+ {
+  coords 2791.064 52.938 4988.561
+  angles 0 142.25 0
+ }
+ {
+  coords 2804.284 52.938 4988.386
+  angles 0 142.25 0
+ }
+}
+GenericEntity : "{682FA86A17944120}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_02.et" {
+ coords 3082.152 17.844 5155.816
+ angles 0 93.901 0
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 3888.035 29.188 3579.55
+ Points {
+  ShapePoint "{694500FE75187C03}" {
+   Position -105.469 0 -9.78
+  }
+  ShapePoint "{694500FE749D3493}" {
+   Position 21.308 0 -37.524
+  }
+  ShapePoint "{694500FE77CF7173}" {
+   Position 81.715 0 -29.035
+  }
+  ShapePoint "{694500FE7606BDDE}" {
+   Position 67.285 0 52.23
+  }
+  ShapePoint "{694500FE78DF9F5A}" {
+   Position -91.669 0 59.128
+  }
+ }
+}
+$grp GenericEntity : "{B45F724442487DED}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_Scoped_S_USSR_01.et" {
+ {
+  coords 2857.174 62.533 4904.914
+  angles 0 147.535 0
+ }
+ {
+  coords 2844.339 42.685 4732.973
+  angles 0 140.408 0
+ }
+}
+$grp GenericEntity : "{D01FB74BE7440B16}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Line.et" {
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3740.212 26.724 3667.563
+  angles 0 81.78 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3837.966 26.724 3681.685
+  angles 0 81.78 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3936.823 26.724 3695.966
+  angles 0 81.78 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3640.877 26.724 3653.212
+  angles 0 81.78 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3793.905 26.724 3487.284
+  angles 0 123.291 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3877.396 26.724 3432.459
+  angles 0 123.291 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3627.449 26.724 3596.587
+  angles 0 123.291 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 3711.344 26.724 3541.498
+  angles 0 123.291 0
+ }
+}
