@@ -2,5 +2,18 @@ CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoin
  coords 2688.039 24.218 5480.679
 }
 CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
- coords 7671.582 202.499 6867.255
+ components {
+  MeshObject "{645911A16DDD1233}" {
+   Materials {
+    MaterialAssignClass "{69555822F3682EAC}" {
+     SourceMaterial "Flagpole_01"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+   }
+  }
+  SlotManagerComponent "{645911A16DDD122C}" {
+   Enabled 0
+  }
+ }
+ coords 7653.702 199.806 6921.585
 }
