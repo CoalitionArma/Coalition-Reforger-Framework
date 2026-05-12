@@ -316,7 +316,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     }
    }
   }
-  coords 4911.543 28.594 11829.207
+  coords 4906.283 28.594 11832.626
  }
  FiringRange {
   components {

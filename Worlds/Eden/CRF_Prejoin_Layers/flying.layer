@@ -1,139 +1,187 @@
-$grp SCR_VehicleSpawn {
+$grp CRF_VehicleSpawner {
  {
-  coords 4899.821 28.562 11735.766
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4892.495 28.594 11732.616
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4882.661 28.594 11735.766
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4867.925 28.594 11732.51
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4863.611 28.594 11735.766
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4867.824 28.594 11755.866
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4844.892 28.5 11735.766
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4843.167 28.594 11755.759
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4882.661 28.594 11757.913
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4843.268 28.5 11732.403
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4863.611 28.594 11757.913
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4886.81 28.594 11901.006
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4844.891 28.594 11757.913
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4892.394 28.594 11755.972
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4899.821 28.594 11757.913
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4892.281 28.594 11782.063
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4882.661 28.594 11783.206
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4886.81 28.594 11834.249
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4863.611 28.594 11783.206
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4867.711 28.594 11781.957
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4844.892 28.594 11783.206
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4867.61 28.594 11805.313
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4899.821 28.594 11783.206
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4842.953 28.594 11805.206
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4863.611 28.594 11809.933
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4843.054 28.5 11781.851
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4844.891 28.594 11809.933
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4892.18 28.594 11805.419
+  angles 0 89.752 0
+  m_rVehicle "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4899.821 28.594 11809.933
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4852.356 28.594 11864.51
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4882.661 28.594 11809.933
-  angles 0 90 0
-  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
-  respawnDelay 200
+  coords 4852.487 28.594 11834.101
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4857.151 28.594 11850.449
-  angles 0 90 0
-  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
-  respawnDelay 200
+  coords 4852.356 28.594 11931.267
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4889.835 28.594 11850.451
-  angles 0 90 0
-  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
-  respawnDelay 200
+  coords 4886.679 28.594 11864.657
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4857.151 28.594 11890.788
-  angles 0 90 0
-  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
-  respawnDelay 200
+  coords 4852.487 28.594 11900.857
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
-  coords 4889.835 28.594 11890.788
-  angles 0 90 0
-  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
-  respawnDelay 200
- }
- {
-  coords 4857.151 28.5 11935.152
-  angles 0 90 0
-  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
-  respawnDelay 200
- }
- {
-  coords 4889.835 28.594 11935.155
-  angles 0 90 0
-  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
-  respawnDelay 200
+  coords 4886.679 28.594 11931.414
+  angles 0 89.752 0
+  m_rVehicle "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
  }
 }
-CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
- coords 4911.413 28.594 11829.254
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+ coords 4906.153 28.594 11832.673
  m_MarkerColor 0.392 0.157 0.624 1
  m_sDescription "Airport"
  m_aVisibleForFactions {
