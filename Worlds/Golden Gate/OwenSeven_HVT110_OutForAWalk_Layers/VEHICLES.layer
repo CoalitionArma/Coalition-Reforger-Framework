@@ -1,0 +1,145 @@
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ OpforEngiVeh {
+  coords 5105.428 47.324 182.043
+  angles 0 -32.392 0
+  m_rVehicle "{7100D311720A52E5}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_SWB_Civvie_Limestone.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFFAFE3108}" {
+    m_Prefab "{5768EE6DE2005A9E}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/TrashBin_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEC2D31B7}" {
+    m_Prefab "{104CAE666E3B7C58}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Suitcase_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEC0D987E}" {
+    m_Prefab "{40A9E1D10BE591A7}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Barrel_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEDEF96AB}" {
+    m_Prefab "{2064ADB1CCDF0579}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Cardboard_Box_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE3F3FBD87}" {
+    m_Prefab "{B2854D0852218139}Prefabs/Weapons/Explosives/Bombs/IED_base.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE3F105025}" {
+    m_Prefab "{1CC0CBB56B9F7ADC}Prefabs/Weapons/Explosives/Bombs/TNT_Bomb.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE2E072A84}" {
+    m_Prefab "{108359CD2F0921A4}Prefabs/Items/Equipment/Detonators/Phone_Detonator/Phone_Detenator.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69581680F28974BE}" {
+    m_Prefab "{108359CD2F0921A4}Prefabs/Items/Equipment/Detonators/Phone_Detonator/Phone_Detenator.et"
+   }
+  }
+ }
+ OpforEngiVeh2 {
+  coords 5101.573 47.324 179.597
+  angles 0 -32.392 0
+  m_rVehicle "{518366ADB5E5E0A2}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_SWB_Civvie_BronzeGreen.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFFAFE3108}" {
+    m_Prefab "{5768EE6DE2005A9E}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/TrashBin_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEC2D31B7}" {
+    m_Prefab "{104CAE666E3B7C58}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Suitcase_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEC0D987E}" {
+    m_Prefab "{40A9E1D10BE591A7}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Barrel_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCFEDEF96AB}" {
+    m_Prefab "{2064ADB1CCDF0579}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/Cardboard_Box_IED.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE3F3FBD87}" {
+    m_Prefab "{B2854D0852218139}Prefabs/Weapons/Explosives/Bombs/IED_base.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE3F105025}" {
+    m_Prefab "{1CC0CBB56B9F7ADC}Prefabs/Weapons/Explosives/Bombs/TNT_Bomb.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{694F3DCE2E072A84}" {
+    m_Prefab "{108359CD2F0921A4}Prefabs/Items/Equipment/Detonators/Phone_Detonator/Phone_Detenator.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69581680F28974BE}" {
+    m_Prefab "{108359CD2F0921A4}Prefabs/Items/Equipment/Detonators/Phone_Detonator/Phone_Detenator.et"
+   }
+  }
+ }
+ OpforTransport {
+  coords 5092.451 47.324 193.385
+  angles 0 -32.392 0
+  m_rVehicle "{BB4EBDAFA744F076}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_Base.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ OpforTransport2 {
+  coords 5096.453 47.324 195.924
+  angles 0 -32.392 0
+  m_rVehicle "{CFE1F4103795068B}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Black.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ OpforTransport3 {
+  coords 5092.859 47.324 201.588
+  angles 0 -32.392 0
+  m_rVehicle "{6ACFF3931490C448}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Red.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ OpforTransport4 {
+  coords 5088.922 47.324 199.09
+  angles 0 -32.392 0
+  m_rVehicle "{700494DD8269767B}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_V8_Yellow.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ OpforTransport5 {
+  coords 5085.546 47.324 204.411
+  angles 0 -32.392 0
+  m_rVehicle "{32BB024A05501A65}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_Randomised.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ OpforTransport6 {
+  coords 5089.476 47.324 206.905
+  angles 0 -32.392 0
+  m_rVehicle "{32BB024A05501A65}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_LWB_Civvie_Randomised.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ BluRepair {
+  coords 4091.844 21.795 1200.963
+  angles 0 99.082 0
+  m_rVehicle "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ BluFuel {
+  coords 4093.032 21.795 1208.395
+  angles 0 99.082 0
+  m_rVehicle "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ M134_1 {
+  coords 4091.276 20.721 1213.774
+  angles 0 102.522 0
+  m_rVehicle "{3696BFB0D5D19417}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M134.et"
+  m_iRespawnTimer 9999
+ }
+ BluRepair2 {
+  coords 4084.324 21.26 1206.333
+  angles 0 99.082 0
+  m_rVehicle "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ M134_2 {
+  coords 4084.038 20.721 1215.382
+  angles 0 102.522 0
+  m_rVehicle "{3696BFB0D5D19417}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M134.et"
+  m_iRespawnTimer 9999
+ }
+}

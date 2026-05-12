@@ -1,0 +1,10 @@
+CRF_VehicleSpawner HVT_T14 : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ coords 4107.129 20.757 1203.114
+ angles 0 100.54 0
+ m_rVehicle "{7F60337D085B273D}Prefabs/Vehicles/Tracked/T14/Tank_T14_Damaged.et"
+ m_iRespawnTimer 99999
+ m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{694F3DC20C05CCD0}" {
+  m_iAmountofAutoCannonAmmo 0
+  m_iAmountofMachineGunAmmo 2300
+ }
+}

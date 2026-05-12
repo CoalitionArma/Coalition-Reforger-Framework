@@ -1,0 +1,531 @@
+GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
+ coords 4774.027 3.805 1602.44
+ angles -14.912 29.684 0
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ coords 4787.529 1.226 1552.531
+ angles 0 64.568 0
+}
+GenericEntity : "{64830926F6CF3877}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76UN_running.et" {
+ coords 5878.895 7.885 986.685
+ angles 0 89.483 0
+}
+GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et" {
+ coords 4807.078 1.062 1557.944
+ angles 0 81.138 0
+}
+$grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
+ {
+  coords 5717.761 7.87 987.089
+ }
+ {
+  coords 5743.592 7.87 987.089
+ }
+ {
+  coords 5769.452 7.87 987.089
+ }
+ {
+  coords 5795.326 7.87 987.089
+ }
+ {
+  coords 5821.12 7.87 987.089
+ }
+ {
+  coords 5846.664 7.87 987.089
+ }
+ {
+  coords 5871.568 7.87 987.089
+ }
+ {
+  coords 5769.452 7.87 998.855
+ }
+ {
+  coords 5795.326 7.87 998.855
+ }
+ {
+  coords 5821.12 7.87 998.855
+ }
+ {
+  coords 5846.664 7.87 998.855
+ }
+ {
+  coords 5871.568 7.87 998.855
+ }
+ {
+  coords 5769.452 7.87 1010.55
+ }
+ {
+  coords 5795.326 7.87 1010.55
+ }
+ {
+  coords 5821.12 7.87 1010.55
+ }
+ {
+  coords 5846.664 7.87 1010.55
+ }
+ {
+  coords 5871.568 7.87 1010.55
+ }
+ {
+  coords 5769.452 7.87 974.629
+ }
+ {
+  coords 5795.326 7.87 974.629
+ }
+ {
+  coords 5821.12 7.87 974.629
+ }
+ {
+  coords 5846.664 7.87 974.629
+ }
+ {
+  coords 5871.568 7.87 974.629
+ }
+ {
+  coords 5769.452 7.87 962.67
+ }
+ {
+  coords 5795.326 7.87 962.67
+ }
+ {
+  coords 5821.12 7.87 962.67
+ }
+ {
+  coords 5846.664 7.87 962.67
+ }
+ {
+  coords 5871.568 7.87 962.67
+ }
+ {
+  coords 5894.167 7.87 962.67
+ }
+ {
+  coords 5894.167 7.87 974.629
+ }
+ {
+  coords 5894.167 7.87 987.089
+ }
+ {
+  coords 5894.167 7.87 998.855
+ }
+ {
+  coords 5894.167 7.87 1010.55
+ }
+ {
+  coords 5945.835 7.87 962.67
+ }
+ {
+  coords 5945.835 7.87 974.629
+ }
+ {
+  coords 5945.835 7.87 987.089
+ }
+ {
+  coords 5945.835 7.87 998.855
+ }
+ {
+  coords 5945.835 7.87 1010.55
+ }
+ {
+  coords 5971.379 7.87 1010.55
+ }
+ {
+  coords 5971.379 7.87 998.855
+ }
+ {
+  coords 5971.379 7.87 987.089
+ }
+ {
+  coords 5971.379 7.87 974.629
+ }
+ {
+  coords 5971.379 7.87 962.67
+ }
+ {
+  coords 5996.283 7.87 1010.55
+ }
+ {
+  coords 5996.283 7.87 998.855
+ }
+ {
+  coords 5996.283 7.87 987.089
+ }
+ {
+  coords 5996.283 7.87 974.629
+ }
+ {
+  coords 5996.283 7.87 962.67
+ }
+ {
+  coords 5920.042 7.87 1010.55
+ }
+ {
+  coords 5920.042 7.87 998.855
+ }
+ {
+  coords 5920.042 7.87 987.089
+ }
+ {
+  coords 5920.042 7.87 974.629
+ }
+ {
+  coords 5920.042 7.87 962.67
+ }
+ {
+  coords 6021.352 7.87 962.67
+ }
+ {
+  coords 6021.352 7.87 974.629
+ }
+ {
+  coords 6021.352 7.87 987.089
+ }
+ {
+  coords 6021.352 7.87 998.855
+ }
+ {
+  coords 6021.352 7.87 1010.55
+ }
+ {
+  coords 6073.02 7.87 962.67
+ }
+ {
+  coords 6073.02 7.87 974.629
+ }
+ {
+  coords 6073.02 7.87 987.089
+ }
+ {
+  coords 6073.02 7.87 998.855
+ }
+ {
+  coords 6073.02 7.87 1010.55
+ }
+ {
+  coords 6098.563 7.87 1010.55
+ }
+ {
+  coords 6098.563 7.87 998.855
+ }
+ {
+  coords 6098.563 7.87 987.089
+ }
+ {
+  coords 6098.563 7.87 974.629
+ }
+ {
+  coords 6098.563 7.87 962.67
+ }
+ {
+  coords 6123.468 7.87 1010.55
+ }
+ {
+  coords 6123.468 7.87 998.855
+ }
+ {
+  coords 6123.468 7.87 987.089
+ }
+ {
+  coords 6123.468 7.87 974.629
+ }
+ {
+  coords 6123.468 7.87 962.67
+ }
+ {
+  coords 6047.227 7.87 1010.55
+ }
+ {
+  coords 6047.227 7.87 998.855
+ }
+ {
+  coords 6047.227 7.87 987.089
+ }
+ {
+  coords 6047.227 7.87 974.629
+ }
+ {
+  coords 6047.227 7.87 962.67
+ }
+ {
+  coords 5743.592 7.87 998.651
+ }
+ {
+  coords 5717.761 7.87 999.181
+ }
+ {
+  coords 5743.592 7.87 1010.637
+ }
+ {
+  coords 5717.891 6.033 1011.167
+  angles 0 0 -4.028
+ }
+ {
+  coords 5743.592 7.87 974.59
+ }
+ {
+  coords 5717.761 7.87 974.59
+ }
+ {
+  coords 5743.592 7.87 962.621
+ }
+ {
+  coords 5717.761 7.87 962.621
+ }
+ {
+  coords 5734.184 5.448 1053.817
+  angles 0 52.553 -5.682
+ }
+ {
+  coords 5749.911 7.87 1033.63
+  angles 0 52.553 0
+ }
+}
+$grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_iMinProjectilesEachBarrage 35
+     m_iMaxProjectilesEachBarrage 51
+    }
+   }
+  }
+  coords 4977.624 1.413 1601.4
+  angles 0 -8.938 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_iMinProjectilesEachBarrage 35
+     m_iMaxProjectilesEachBarrage 51
+    }
+   }
+  }
+  coords 4900.334 1.413 1589.245
+  angles 0 47.981 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_iMinProjectilesEachBarrage 35
+     m_iMaxProjectilesEachBarrage 51
+    }
+   }
+  }
+  coords 4811.257 1.413 1575.235
+  angles 0 -8.938 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_iMinProjectilesEachBarrage 35
+     m_iMaxProjectilesEachBarrage 51
+    }
+   }
+  }
+  coords 4800.037 1.413 1646.576
+  angles 0 -8.938 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_iMinProjectilesEachBarrage 35
+     m_iMaxProjectilesEachBarrage 51
+    }
+   }
+  }
+  coords 4877.663 1.413 1659.79
+  angles 0 47.981 0
+ }
+}
+GenericEntity : "{EC13D4E934B2ADD8}Prefabs/Items/Demining/MineFlags/MineFlag_US.et" {
+ coords 4768.557 1.467 1552.595
+ angles 0 -103.468 0
+ scale 3.67
+}
+$grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+ {
+  coords 5777.202 0 987.046
+ }
+ {
+  coords 5819.553 0 987.046
+ }
+ {
+  coords 5870.891 0 987.046
+ }
+ {
+  coords 5895.795 0 987.046
+ }
+ {
+  coords 5777.202 0 998.812
+ }
+ {
+  coords 5819.553 0 998.812
+ }
+ {
+  coords 5870.891 0 998.812
+ }
+ {
+  coords 5895.795 0 998.812
+ }
+ {
+  coords 5777.202 0 1010.507
+ }
+ {
+  coords 5819.553 0 1010.507
+ }
+ {
+  coords 5870.891 0 1010.507
+ }
+ {
+  coords 5895.795 0 1010.507
+ }
+ {
+  coords 5777.202 0 974.586
+ }
+ {
+  coords 5819.553 0 974.586
+ }
+ {
+  coords 5870.891 0 974.586
+ }
+ {
+  coords 5895.795 0 974.586
+ }
+ {
+  coords 5777.202 0 962.627
+ }
+ {
+  coords 5819.553 0 962.627
+ }
+ {
+  coords 5870.891 0 962.627
+ }
+ {
+  coords 5895.795 0 962.627
+ }
+ {
+  coords 5901.917 0 962.627
+ }
+ {
+  coords 5901.917 0 974.586
+ }
+ {
+  coords 5901.917 0 1010.507
+ }
+ {
+  coords 5901.917 0 987.046
+ }
+ {
+  coords 5901.917 0 998.812
+ }
+ {
+  coords 5944.269 0 1010.507
+ }
+ {
+  coords 5944.269 0 998.812
+ }
+ {
+  coords 5944.269 0 987.046
+ }
+ {
+  coords 5944.269 0 974.586
+ }
+ {
+  coords 5944.269 0 962.627
+ }
+ {
+  coords 5995.606 0 962.627
+ }
+ {
+  coords 5995.606 0 974.586
+ }
+ {
+  coords 5995.606 0 987.046
+ }
+ {
+  coords 5995.606 0 998.812
+ }
+ {
+  coords 5995.606 0 1010.507
+ }
+ {
+  coords 6020.51 0 1010.507
+ }
+ {
+  coords 6020.51 0 998.812
+ }
+ {
+  coords 6020.51 0 987.046
+ }
+ {
+  coords 6020.51 0 974.586
+ }
+ {
+  coords 6020.51 0 962.627
+ }
+ {
+  coords 6029.102 0 962.627
+ }
+ {
+  coords 6029.102 0 974.586
+ }
+ {
+  coords 6029.102 0 1010.507
+ }
+ {
+  coords 6029.102 0 987.046
+ }
+ {
+  coords 6029.102 0 998.812
+ }
+ {
+  coords 6071.454 0 1010.507
+ }
+ {
+  coords 6071.454 0 998.812
+ }
+ {
+  coords 6071.454 0 987.046
+ }
+ {
+  coords 6071.454 0 974.586
+ }
+ {
+  coords 6071.454 0 962.627
+ }
+ {
+  coords 6122.791 0 962.627
+ }
+ {
+  coords 6122.791 0 974.586
+ }
+ {
+  coords 6122.791 0 987.046
+ }
+ {
+  coords 6122.791 0 998.812
+ }
+ {
+  coords 6122.791 0 1010.507
+ }
+ {
+  coords 6147.694 0 1010.507
+ }
+ {
+  coords 6147.694 0 998.812
+ }
+ {
+  coords 6147.694 0 987.046
+ }
+ {
+  coords 6147.694 0 974.586
+ }
+ {
+  coords 6147.694 0 962.627
+ }
+}

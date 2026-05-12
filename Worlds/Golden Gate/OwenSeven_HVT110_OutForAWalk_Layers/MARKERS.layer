@@ -1,0 +1,22 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ AirfieldMarker {
+  coords 5742.922 7.885 978.723
+  angles 0 0 0
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Airfield"
+ }
+ PlaneMarker {
+  coords 5886.101 0 976.05
+  angles 0 0 0
+  m_MarkerColor 0.502 0.376 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Plane"
+ }
+ AirfieldMarker2 {
+  coords 4896.696 6.768 1587.483
+  angles 0 0 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_sDescription "Minefield"
+ }
+}
