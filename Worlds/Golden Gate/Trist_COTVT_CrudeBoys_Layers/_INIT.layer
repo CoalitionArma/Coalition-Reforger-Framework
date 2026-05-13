@@ -245,6 +245,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{070C13F7435740A9}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_CrudeBoys_OPFOR_Invasion.conf"
