@@ -221,12 +221,6 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
  }
 }
-CRF_ManualMarker Truck_Supply2 : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
- coords 3352.349 125.161 654.056
- angles 0 174.22 0
- m_sQuadName "mark-question"
- m_sDescription "Supplies"
-}
 GenericEntity : "{CD8641F8E583489F}Prefabs/Structures/Military/CamoNets/US/CamoNet_Large_US.et" {
  coords 5493.888 76.688 368.894
  angles 0 91.046 0

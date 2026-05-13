@@ -24,8 +24,16 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
   m_iZOrder 41
  }
 }
-CRF_ManualMarker Truck_Supply : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
- coords 5329.727 50.375 623.237
- m_sQuadName "mark-question"
- m_sDescription "Supplies"
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ Truck_Supply {
+  coords 5329.727 50.375 623.237
+  m_sQuadName "mark-question"
+  m_sDescription "Supplies"
+ }
+ OPFOR_HQ {
+  coords 3208.096 42.214 1746.171
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "flag-2"
+  m_sDescription "Russian HQ"
+ }
 }

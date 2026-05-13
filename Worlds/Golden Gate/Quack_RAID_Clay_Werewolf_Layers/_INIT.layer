@@ -87,7 +87,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{694978D479B93224}" {
    m_sTitle "INTEL"
-   m_sTextData "It took a lot of convincing but, old \"Difficult\" Pete has agreed to let us access his weapons cache in exchange for not asking questions, and supply units."
+   m_sTextData "It took a lot of convincing but, old \"Difficult\" Pete has agreed to let us access his weapons cache in exchange for not asking questions, and supply units."\
+   "There is an abandoned US Truck full of supplies North of here. It is marked on the map."\
+   "Friendly Observers have reported locations for two BTRs and what appears to be the local HQ. They are marked on the map as well."
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -95,7 +97,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{694978D479B93334}" {
    m_sTitle "INTEL"
-   m_sTextData "There's a tunnel under HQ that can hold most of the vehicles."
+   m_sTextData "There's a tunnel under HQ that can hold most of the vehicles."\
+   "The local population is armed, but whether that will hinder our operations here is yet to be seen. We should regroup before any resistance groups take advantage of the situation."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{695B7086D322F89E}" {
+   m_sTitle "Commander's Notes"
+   m_sTextData "The Assault on the city has gone a little too well. We have overextended our troops and resources. We'll need to rally back together to keep our cohesion."\
+   "Another mechanized unit is planned to reinforce us and is moving here from the North. They're expected to be in the area shortly after sunset. If we still have enough fuel and supplies they'll cross the bridge, otherwise we'll have to abandon the city for another time."
    m_aFactionKeys {
     "OPFOR"
    }

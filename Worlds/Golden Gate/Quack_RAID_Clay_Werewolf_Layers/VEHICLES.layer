@@ -130,8 +130,8 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
  }
  Tanker_4 {
-  coords 5193.886 9.408 1098.927
-  angles 0 207.841 0
+  coords 3058.348 91.25 1032.426
+  angles 0 -81.553 0
   m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
   m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
