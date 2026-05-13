@@ -87,7 +87,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{695A0C8F2F7C6505}" {
+  CRF_SlottingGroup "{695A0C8C743965F8}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -101,7 +101,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7AE2}" {
+  CRF_SlottingGroup "{695A0C8C74397B2A}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -115,7 +115,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7B28}" {
+  CRF_SlottingGroup "{695A0C8C74397829}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -129,7 +129,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7860}" {
+  CRF_SlottingGroup "{695A0C8C74397927}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +143,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7895}" {
+  CRF_SlottingGroup "{695A0C8C74397E14}" {
    m_sCallsign "Echo Team"
    m_FlagType INFANTRY
    m_aSlots {
@@ -154,7 +154,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C79CA}" {
+  CRF_SlottingGroup "{695A0C8C74397F07}" {
    m_sCallsign "Civ 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -168,7 +168,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7E09}" {
+  CRF_SlottingGroup "{695A0C8C74397C7E}" {
    m_sCallsign "Civ 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -182,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7F42}" {
+  CRF_SlottingGroup "{695A0C8C74397D6D}" {
    m_sCallsign "Civ 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8F2F7C7FF2}" {
+  CRF_SlottingGroup "{695A0C8C74397255}" {
    m_sCallsign "Civ 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -212,7 +212,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{695A0C8F2F7C7CD6}" {
+  CRF_SlottingGroup "{695A0C8C7439730C}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -221,6 +221,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{695A0C8C7439707C}" {
+   m_sCallsign "ZEUS"
+   m_FlagType HELICOPER
+   m_aSlots {
+    ZEUS
+    ZEUS
    }
   }
  }

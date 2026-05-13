@@ -597,7 +597,7 @@ $grp GenericEntity : "{0511E95F422061BB}Prefabs/Props/Recreation/Camp/TentSmall_
   angles 0 43.099 0
  }
  {
-  coords 3231.955 37 1807.269
+  coords 3235.291 37 1806.185
   angles 0 -143.622 0
  }
  {
@@ -804,6 +804,36 @@ $grp SCR_DestructibleBuildingEntity : "{4E331E7D8DAD1EAD}Prefabs/Structures/Mili
  {
   coords 3114.537 -0.052 2047.124
   angles -1.553 8.132 -1.045
+ }
+}
+$grp StaticModelEntity : "{5255F7BE946E153F}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_5m.et" {
+ {
+  coords 3235.82 0 1799.266
+  angles 0 61.203 0
+ }
+ {
+  coords 3226.4 0 1789.39
+  angles 0 39.271 0
+ }
+ {
+  coords 3218.012 0 1797.309
+  angles 0 39.271 0
+ }
+ {
+  coords 3211.891 0 1808.647
+  angles 0 80.732 0
+ }
+ {
+  coords 3218.945 0 1816.484
+  angles 0 80.732 0
+ }
+ {
+  coords 3228.395 0 1808.383
+  angles 0 -175.851 0
+ }
+ {
+  coords 3230.265 0 1802.002
+  angles 0 -88.115 0
  }
 }
 StaticModelEntity : "{5FE9918670E2DAE2}Prefabs/Structures/Military/Camps/TentSmallUSSR_01/TentSmallUSSR_01_Base.et" {
