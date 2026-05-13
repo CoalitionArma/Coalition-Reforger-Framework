@@ -50,6 +50,9 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	
 	[Attribute("0", desc: "Weather can change during gameplay", category: "CRF Mission Settings - Weather & Time")]
 	protected bool m_bRandomWeatherChanges;
+
+	[Attribute("true", desc: "Use Coalition VON (CVON) for voice communication via TeamSpeak. Uncheck to use the default Arma Reforger in-game VON instead.", category: "CRF Mission Settings - VON")]
+	protected bool m_bUseCVON;
 	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
@@ -76,6 +79,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		m_iRespawnCutoffMinutes = gamemode.m_iRespawnCutoffMinutes;
 		m_bUseSafestartTimeLimit = gamemode.m_bUseSafestartTimeLimit;
 		m_iSafestartTimeLimit = gamemode.m_iSafestartTimeLimit;
+		m_bUseCVON = gamemode.m_bUseCVON;
 		
 		// Weather
 		SCR_TimeAndWeatherHandlerComponent timeAndWeatherComp = SCR_TimeAndWeatherHandlerComponent.Cast(gamemode.FindComponent(SCR_TimeAndWeatherHandlerComponent));
@@ -134,7 +138,8 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		api.SetVariableValue(entitySource, null, "m_iTimeToRespawn", m_iTimeToRespawn.ToString());
 		api.SetVariableValue(entitySource, null, "m_iRespawnCutoffMinutes", m_iRespawnCutoffMinutes.ToString());
 		api.SetVariableValue(entitySource, null, "m_bUseSafestartTimeLimit", m_bUseSafestartTimeLimit.ToString());
-		api.SetVariableValue(entitySource, null, "m_iSafestartTimeLimit", m_iSafestartTimeLimit.ToString());	
+		api.SetVariableValue(entitySource, null, "m_iSafestartTimeLimit", m_iSafestartTimeLimit.ToString());
+		api.SetVariableValue(entitySource, null, "m_bUseCVON", m_bUseCVON.ToString());	
 		
 		// Weather
 		int componentIndex = SCR_BaseContainerTools.FindComponentIndex(entitySource, SCR_TimeAndWeatherHandlerComponent);
