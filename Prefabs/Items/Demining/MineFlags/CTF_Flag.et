@@ -1,0 +1,47 @@
+GenericEntity : "{37535B53F57D1632}Prefabs/Items/Demining/MineFlags/MineFlag_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  MeshObject "{5A2CCE4594CABF3B}" {
+   Object "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+  }
+  RigidBody "{5A2CCE4594CABF3D}" {
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5C7EE70A42E61150}" {
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{5C7EE709989B2A10}" {
+     m_ModelPrefabs {
+      "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+     }
+    }
+   }
+  }
+  SCR_MineFlagComponent "{695C19E581664F02}" {
+  }
+  SCR_PlaceableInventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "#AR-Mines_Flag_Name"
+     Description "#AR-Mines_Flag_Description_US"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.1
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 250
+     RestingAdditiveRotationLS 0 0 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{695C19E581664FD9}" {
+      CameraOffset 0 0.15 -0.2
+     }
+    }
+    CommonItemType "NONE"
+    m_Size SLOT_1x1
+    m_SlotType SLOT_ANY
+   }
+  }
+ }
+ coords 108.8 1.001 164.934
+}

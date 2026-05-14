@@ -19,6 +19,9 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_CTFGamemodeManager "{695C19E67DF5F4DF}" {
+   m_sFlagPrefab "{18B11D141C0D606C}Prefabs/Items/Demining/MineFlags/CTF_Flag.et"
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
   }
@@ -746,6 +749,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
    }
   }
+ }
+}
+$grp GameEntity {
+ ctf_opfor_dropzone {
+  coords 1361.057 37.999 2871.579
+ }
+ ctf_blufor_dropzone {
+  coords 1015.847 38.253 2794.292
+ }
+ ctf_flag {
+  coords 1222.499 38 2825.659
  }
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {

@@ -2415,27 +2415,22 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	//! Client: Request the server to register this player as the flag carrier.
 	void PickupCTFFlag()
 	{
-		Rpc(RpcAsk_PickupCTFFlag);
+		Rpc(RpcAsk_PickupCTFFlag, SCR_PlayerController.GetLocalPlayerId());
 	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Client: Request the server to drop the flag for this player.
 	void DropCTFFlag()
 	{
-		Rpc(RpcAsk_DropCTFFlag);
+		Rpc(RpcAsk_DropCTFFlag, SCR_PlayerController.GetLocalPlayerId());
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Server: Identify which player sent the RPC and forward the pickup to the CTF gamemode.
+	//! Server: Forward the pickup request to the CTF gamemode.
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_PickupCTFFlag()
+	protected void RpcAsk_PickupCTFFlag(int playerId)
 	{
-		LogTelemetry("RpcAsk_PickupCTFFlag", 0);
-
-		// Derive the calling player's ID from the PlayerController that owns this component
-		int playerId = GetPlayerIdFromOwner();
-		if (playerId <= 0)
-			return;
+		LogTelemetry("RpcAsk_PickupCTFFlag", CRF_BandwidthTelemetryManager.EstimateSize_Int());
 
 		CRF_CTFGamemodeManager ctfGamemode = CRF_CTFGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_CTFGamemodeManager));
 		if (ctfGamemode)
@@ -2443,40 +2438,15 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Server: Identify which player sent the RPC and forward the drop to the CTF gamemode.
+	//! Server: Forward the drop request to the CTF gamemode.
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_DropCTFFlag()
+	protected void RpcAsk_DropCTFFlag(int playerId)
 	{
-		LogTelemetry("RpcAsk_DropCTFFlag", 0);
-
-		int playerId = GetPlayerIdFromOwner();
-		if (playerId <= 0)
-			return;
+		LogTelemetry("RpcAsk_DropCTFFlag", CRF_BandwidthTelemetryManager.EstimateSize_Int());
 
 		CRF_CTFGamemodeManager ctfGamemode = CRF_CTFGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_CTFGamemodeManager));
 		if (ctfGamemode && ctfGamemode.GetFlagHolderPlayerId() == playerId)
 			ctfGamemode.DropFlag(true);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! Helper: Resolve the player ID from the PlayerController entity that owns this component.
-	//! Iterates all connected players to find the one whose controller matches GetOwner().
-	protected int GetPlayerIdFromOwner()
-	{
-		PlayerManager pm = GetGame().GetPlayerManager();
-		if (!pm)
-			return -1;
-
-		array<int> playerIds = {};
-		pm.GetPlayers(playerIds);
-
-		foreach (int pid : playerIds)
-		{
-			if (pm.GetPlayerController(pid) == GetOwner())
-				return pid;
-		}
-
-		return -1;
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

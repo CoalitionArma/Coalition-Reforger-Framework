@@ -36,7 +36,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	string m_sOpforFactionKey;
 
 	// --- Entity Setup ---
-	[Attribute("ctf_flag", UIWidgets.EditBox, "Name of the flag entity placed in the world.\nRequires CRF_CTF_PickupFlagAction and CRF_CTF_DropFlagAction on its ActionsManagerComponent.", category: "Entity Setup")]
+	[Attribute("ctf_flag", UIWidgets.EditBox, "Name of the flag entity placed in the world.\nAdd CRF_CTF_PickupFlagAction and CRF_CTF_DropFlagAction to its ActionsManagerComponent.", category: "Entity Setup")]
 	string m_sFlagEntityName;
 
 	[Attribute("ctf_blufor_dropzone", UIWidgets.EditBox, "Name of BLUFOR's capture drop zone entity in the world.", category: "Entity Setup")]
@@ -103,6 +103,11 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	protected string m_sMessageContent = "";
 	protected string m_sStoredMessageContent = "";
 
+	/// Current world position of the flag entity — server updates each tick while carried,
+	/// replicates to all clients which then move their local copy of the entity.
+	[RplProp(onRplName: "OnFlagPositionChanged")]
+	protected vector m_vFlagWorldPos;
+
 	//===================================================================================
 	// SERVER-ONLY RUNTIME VARIABLES
 	//===================================================================================
@@ -117,7 +122,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 	// Two-stage safestart tracking
 	protected bool m_bHasSafestartBegun  = false;
-	protected bool m_bHasSafeStartEnded  = false;
 	protected bool m_bGameInit           = false;
 
 	/// Accumulates time the holder has spent inside the drop zone each check cycle.
@@ -128,6 +132,12 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//===================================================================================
 
 	protected bool m_bMapMarkerAdded = false;
+
+	//===================================================================================
+	// SERVER-ONLY: DROP ZONE STATIC MARKERS
+	//===================================================================================
+
+	protected ref array<ref SCR_MapMarkerBase> m_aDropzoneMarkers = {};
 
 	//===================================================================================
 	// FRAME TIMING
@@ -163,19 +173,28 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode())
 			return;
 
-		// Entity look-up and validation runs server-side only
-		if (Replication.IsServer())
-			FindWorldEntities();
+		// All machines need a local reference to the flag entity for position callbacks
+		FindWorldEntities();
 	}
 
-	//! Locate and cache the flag, and both drop zone entities.
+	//! Locate and cache the flag and both drop zone entities.
+	//! Runs on ALL machines so every client holds a local entity reference for position updates.
 	protected void FindWorldEntities()
 	{
+		// All machines: cache the flag entity reference for the OnFlagPositionChanged callback
 		m_FlagEntity = GetGame().GetWorld().FindEntityByName(m_sFlagEntityName);
 		if (!m_FlagEntity)
 			Print(string.Format("[CRF_CTF] ERROR: Flag entity '%1' not found. Place an entity with this name in the mission.", m_sFlagEntityName), LogLevel.ERROR);
-		else
+
+		// Server-only: record spawn position and find capture zones
+		if (!Replication.IsServer())
+			return;
+
+		if (m_FlagEntity)
+		{
 			m_vFlagSpawnPosition = m_FlagEntity.GetOrigin();
+			m_vFlagWorldPos      = m_vFlagSpawnPosition;
+		}
 
 		m_BluforDropzone = GetGame().GetWorld().FindEntityByName(m_sBluforDropzoneName);
 		if (!m_BluforDropzone)
@@ -215,24 +234,24 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		float deltaTime    = m_fUpdateBuffer;
 		m_fUpdateBuffer    = 0;
 
-		// Two-stage safestart check: first wait for safestart to become active,
-		// then wait for it to end before starting the game.
+		// Two-stage safestart check (mirrors HVT pattern):
+		// If safestart is never configured, fall straight through to GameInit.
 		if (!m_bHasSafestartBegun)
 		{
 			if (CRF_SafestartManager.GetInstance().GetSafestartStatus())
+			{
 				m_bHasSafestartBegun = true;
-			return;
-		}
-
-		if (!m_bHasSafeStartEnded)
-		{
-			if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())
-				m_bHasSafeStartEnded = true;
-			return;
+				return;
+			}
+			// Safestart never became active — skip straight to game init
 		}
 
 		if (!m_bGameInit)
 		{
+			// If safestart WAS seen active, wait for it to end before init
+			if (m_bHasSafestartBegun && CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				return;
+
 			GameInit();
 			return;
 		}
@@ -255,7 +274,11 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	protected void GameInit()
 	{
 		m_bGameInit = true;
+		// Sync the initial flag position to all connected and future JIP clients
+		m_vFlagWorldPos = m_vFlagSpawnPosition;
+		Replication.BumpMe();
 		Print(string.Format("[CRF_CTF] Game initialised. Flag spawn: %1. Captures to win: %2.", m_vFlagSpawnPosition.ToString(), m_iCapturesToWin));
+		SpawnDropzoneMarkers();
 	}
 
 	//===================================================================================
@@ -278,7 +301,9 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 		vector pos    = holderEntity.GetOrigin();
 		pos[1]        = pos[1] + 0.5; // Float the flag slightly above the carrier
-		m_FlagEntity.SetOrigin(pos);
+		m_FlagEntity.SetOrigin(pos); // Immediate server-side update
+		m_vFlagWorldPos = pos;       // Propagate to clients via RplProp callback
+		Replication.BumpMe();
 	}
 
 	//! Server: Award the flag to the requesting player.
@@ -349,6 +374,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		m_iFlagHolderPlayerId = -1;
 		m_sFlagHolderFaction  = "";
 		m_fCaptureProgress    = 0.0;
+		m_vFlagWorldPos       = m_vFlagSpawnPosition;
 
 		if (m_FlagEntity)
 			m_FlagEntity.SetOrigin(m_vFlagSpawnPosition);
@@ -466,8 +492,12 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	protected void TriggerVictory(string winningFaction)
 	{
 		m_bGameOver = true;
+		ClearDropzoneMarkers();
 
-		m_sMessageContent = (winningFaction == m_sBluforFactionKey) ? m_sBluforWinMessage : m_sOpforWinMessage;
+		if (winningFaction == m_sBluforFactionKey)
+			m_sMessageContent = m_sBluforWinMessage;
+		else
+			m_sMessageContent = m_sOpforWinMessage;
 		Replication.BumpMe();
 		OnMessageReceived();
 
@@ -501,6 +531,54 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		m_bMapMarkerAdded = true;
 	}
 
+	//! Spawn shared circle markers at each drop zone position (server only).
+	protected void SpawnDropzoneMarkers()
+	{
+		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!markerMan)
+			return;
+
+		if (m_BluforDropzone)
+		{
+			vector bluforPos = m_BluforDropzone.GetOrigin();
+			SCR_MapMarkerBase bluforMarker = new SCR_MapMarkerBase();
+			bluforMarker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+			bluforMarker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.CIRCLE);
+			bluforMarker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.BLUFOR);
+			bluforMarker.SetCustomText("BLUFOR Drop Zone");
+			bluforMarker.SetWorldPos(bluforPos[0], bluforPos[2]);
+			bluforMarker.m_bIsShared = true;
+			markerMan.InsertStaticMarker(bluforMarker, false, true);
+			m_aDropzoneMarkers.Insert(bluforMarker);
+		}
+
+		if (m_OpforDropzone)
+		{
+			vector opforPos = m_OpforDropzone.GetOrigin();
+			SCR_MapMarkerBase opforMarker = new SCR_MapMarkerBase();
+			opforMarker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+			opforMarker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.CIRCLE);
+			opforMarker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.OPFOR);
+			opforMarker.SetCustomText("OPFOR Drop Zone");
+			opforMarker.SetWorldPos(opforPos[0], opforPos[2]);
+			opforMarker.m_bIsShared = true;
+			markerMan.InsertStaticMarker(opforMarker, false, true);
+			m_aDropzoneMarkers.Insert(opforMarker);
+		}
+	}
+
+	//! Remove the drop zone circle markers (server only, called on game over).
+	protected void ClearDropzoneMarkers()
+	{
+		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
+		foreach (SCR_MapMarkerBase marker : m_aDropzoneMarkers)
+		{
+			if (markerMan)
+				markerMan.RemoveStaticMarker(marker);
+		}
+		m_aDropzoneMarkers.Clear();
+	}
+
 	//! Remove the flag marker from the local player's map (called on game over).
 	protected void RemoveMapMarker()
 	{
@@ -527,6 +605,13 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//===================================================================================
 	// REPLICATION CALLBACKS  (called on all machines when RplProp values change)
 	//===================================================================================
+
+	//! Called on all machines when m_vFlagWorldPos changes — move the local flag entity.
+	protected void OnFlagPositionChanged()
+	{
+		if (m_FlagEntity)
+			m_FlagEntity.SetOrigin(m_vFlagWorldPos);
+	}
 
 	//! Called when m_iFlagHolderPlayerId or m_sFlagHolderFaction changes.
 	protected void OnFlagStateChanged()

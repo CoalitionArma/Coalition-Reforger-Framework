@@ -37,7 +37,7 @@ Add **`CRF_CTFGamemodeManager`** as a component on your GameMode entity.
 
 ### 2. Flag Entity (`ctf_flag`)
 
-Place any prop or GenericEntity in the world and name it **`ctf_flag`** (or match your configured name).
+Place any prop or GenericEntity in the world and name it **`ctf_flag`** (or match `m_sFlagEntityName`).
 
 Add the following components to that entity:
 
@@ -52,7 +52,7 @@ Add **both** of these `ScriptedUserAction` entries inside the context:
 | `CRF_CTF_PickupFlagAction` | Pick Up Flag |
 | `CRF_CTF_DropFlagAction` | Drop Flag |
 
-> **Tip:** Model this after the MCOM prefab (`Prefabs/Structures/Rush/CRF_Rush_MCOM.et`) which already shows how to attach scripted actions to a prop.
+> **Multiplayer note:** The game mode syncs the flag's world position to all clients via a replicated property. Each client's engine moves its own local copy of the entity. No `RplComponent` is needed on the flag entity — the pre-placed world entity is always visible to all clients without it.
 
 ---
 
@@ -72,7 +72,7 @@ These can be any entity (empty, invisible proxy, or distinctive prop). Their wor
 1. Safestart ends → server initialises CTF.
 2. The flag appears at its placed world position; a gold map marker tracks it in real time.
 3. Any player can walk up to the flag and use **"Pick Up Flag"**.
-4. While carrying the flag the entity teleports to follow the carrier (position replicates to all clients).
+4. While carrying the flag the game mode syncs its position to all clients every 0.25 s; each client moves its local copy of the entity independently (same pattern as HVT transponders).
 5. The carrier's faction must bring the flag to **their own** drop zone and remain inside the capture radius for the configured hold time.
 6. On capture the flag resets to its spawn position and the score is broadcast.
 7. If the carrier dies the flag drops at their last position and can be picked up again.
