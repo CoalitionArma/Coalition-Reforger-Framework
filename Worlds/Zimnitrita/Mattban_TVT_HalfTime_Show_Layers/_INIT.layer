@@ -12,7 +12,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "lore: "\
-   "A rouge PMC group have captured and occupying the city of Andruhanov on the big game day. while occupying US forces move in to intercept. looks like where going to have a impromptu too home vs away game. "\
+   "A rouge PMC group have captured and are occupying the city of Andruhanov on the big game day. While US forces move in to intercept. Looks like we're going to have a impromptu too Home vs Away game. "\
    ""\
    "Mission Rules:"\
    "All US players please slot blufor"\
@@ -20,10 +20,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "if we still have to fill a side for ratio that's more importuned.   "\
    ""\
    "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets: 2x Attack Heli  "\
+   "BLUFOR Assets: 2x  Armed UH1Hs"\
    ""\
    "INDFOR Composition: Armored/Infantry"\
-   "OPFOR Assets: 2x BMP2"\
+   "OPFOR Assets: 2x BTR70s"\
    ""\
    "Time: 04:00:00"\
    "Weather: heavy fog"\
@@ -35,7 +35,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "USA. USA. USA. *Eagle Screech*"\
-   "the city of Andruhanov was hosting a big international f-\"Soccer\" game and your in the finals where you and the guys were going to play and support but those damn terrorists put a bomb on the pitch. luckily you all packed your military gear for this very occasion. get rid of those damn bombs and try to keep 11 alive for a game after tho they might be traumatised, "
+   "The city of Andruhanov was hosting a big international f-\"Soccer\" game and your in the finals where you and the guys were going to play and support, But those damn terrorists put a bomb on the pitch. Luckily you all packed your military gear for this very occasion. Get rid of those damn bombs and try to keep 11 ALIVE for a game after tho they might be traumatised, "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
@@ -50,7 +50,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Those damn USA fun police are on there way to the International \"Football\" game hosted this year in Andruhanov. and they might win... "\
-   "so we cant have that, so repel them or kill them but buy enough time for the bombs to go off and destroy the pitch and the building the comity organisers are staying boarded up in."
+   "So we cant have that, So repel them or kill them. But buy enough time for the bombs to go off and destroy the pitch and the building the comity organisers are staying boarded up in."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
