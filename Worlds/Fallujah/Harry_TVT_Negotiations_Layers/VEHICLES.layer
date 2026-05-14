@@ -8,13 +8,13 @@ $grp CRF_VehicleSpawner {
  {
   coords 2244.564 1 6417.191
   angles 0 152.25 0
-  m_rVehicle "{F20416A25B1F8E53}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Beige.et"
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
   m_sFactionKey "OPFOR"
  }
  {
   coords 2241.46 1 6415.558
   angles 0 152.25 0
-  m_rVehicle "{3E261B61E07D737D}Prefabs/Vehicles/Wheeled/SR5/Armed/DShK/SR5_Armed_DShK_Blue.et"
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
   m_sFactionKey "OPFOR"
  }
  {
