@@ -80,7 +80,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "There's something wonkey happening with supply transfers via the inventory screen. Sometimes it requires you to click and drag supplies two times in a row."
+   m_sTextData "There's something wonkey happening with supply transfers via the inventory screen. Sometimes it requires you to click and drag supplies two times in a row."\
+   ""\
+   "Respawn at half time with a possibility of a 10 second delay due to how the script checks for conditions."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
