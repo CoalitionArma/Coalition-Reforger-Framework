@@ -410,7 +410,35 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
-		
+
+		// When CVON is disabled, keep the spectator entity's world position in sync with the
+		// camera every frame so vanilla VON proximity checks (server-side) route alive players'
+		// direct speech to the spectator. The camera is a local-only entity with no RplComponent,
+		// so we cannot parent the spectator character to it — we must replicate position explicitly.
+		// BaseGameEntity.Teleport updates the physics body and flushes a position update through
+		// the character replication path, matching the pattern used by PS_PlayableControllerComponent.
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+			if (specEntity && CRF_EntityHelper.IsSpectator(specEntity))
+			{
+				CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
+				if (camera)
+				{
+					// Preserve entity orientation; only update world-space position
+					vector mat[4];
+					specEntity.GetWorldTransform(mat);
+					mat[3] = camera.GetOrigin();
+
+					BaseGameEntity bgEntity = BaseGameEntity.Cast(specEntity);
+					if (bgEntity)
+						bgEntity.Teleport(mat);
+					else
+						specEntity.SetWorldTransform(mat);
+				}
+			}
+		}
+
 		// Update follow-mode HUD overlay
 		m_EntityInfoDisplay.UpdateEntityInfoDisplay(m_eSpecEntity);
 		
