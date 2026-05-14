@@ -5,7 +5,7 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
   m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
   m_MarkerColor 0.125 0.11 0.11 1
   m_sQuadName "armored"
-  m_sDescription "BTR-90"
+  m_sDescription "BTR"
   m_aVisibleForFactions {
    "BLUFOR"
   }
@@ -17,7 +17,7 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
   m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
   m_MarkerColor 0.125 0.11 0.11 1
   m_sQuadName "armored"
-  m_sDescription "BTR-70"
+  m_sDescription "BTR"
   m_aVisibleForFactions {
    "BLUFOR"
   }
