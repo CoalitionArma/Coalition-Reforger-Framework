@@ -59,6 +59,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("0", UIWidgets.Hidden)]
 	int m_iSafestartTimeLimit;
+
+	[Attribute("true", UIWidgets.Hidden)]
+	bool m_bUseCVON;
 	
 	[Attribute("", UIWidgets.Hidden)]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
