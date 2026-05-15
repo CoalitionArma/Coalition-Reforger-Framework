@@ -1,0 +1,15 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 8765.786 9.074 7451.268
+  angles 0 90 0
+  m_sDescription "EXTRACT"
+ }
+ {
+  coords 12318.139 2.344 10888.525
+  angles 0 90 0
+  m_sDescription "EXTRACT"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+}
