@@ -42,6 +42,18 @@ GenericEntity : "{37535B53F57D1632}Prefabs/Items/Demining/MineFlags/MineFlag_bas
     m_SlotType SLOT_ANY
    }
   }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    CRF_CTF_PickupFlagAction "{51EC842E3A187379}" {
+     ActionTitle "PICK UP FLAG"
+     VisibilityRange 5
+    }
+    CRF_CTF_DropFlagAction "{695E0021AF7FEBCB}" {
+     ActionTitle "DROP FLAG"
+     VisibilityRange 5
+    }
+   }
+  }
  }
  coords 108.8 1.001 164.934
 }
