@@ -86,6 +86,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       m_sObjectNameToTeleportTo "RifleRange"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
+     CRF_TeleportPlayerAction "{6958080BD07374B3}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
     }
    }
   }
@@ -177,6 +191,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     CRF_TeleportPlayerAction "{69580812F62E7349}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
     }
@@ -271,10 +299,24 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       m_sObjectNameToTeleportTo "RifleRange"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
+     CRF_TeleportPlayerAction "{6958081290DA3209}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
     }
    }
   }
-  coords 4911.543 28.594 11829.207
+  coords 4906.283 28.594 11832.626
  }
  FiringRange {
   components {
@@ -361,6 +403,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     CRF_TeleportPlayerAction "{69580812E1C4A21A}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
     }
@@ -456,6 +512,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       m_sObjectNameToTeleportTo "RifleRange"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
+     CRF_TeleportPlayerAction "{69580812EB26AC75}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
     }
    }
   }
@@ -546,6 +616,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     CRF_TeleportPlayerAction "{6958081299EA4228}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
     }
@@ -640,9 +724,129 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       m_sObjectNameToTeleportTo "RifleRange"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
+     CRF_TeleportPlayerAction "{69580812EC3C639E}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
     }
    }
   }
   coords 4771.292 27.844 11050.766
+ }
+ DanceHall {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      VisibilityRange 5
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     }
+     CRF_TeleportPlayerAction "{69231A0DD4A7ECC8}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{69231A0FC0E2FF6A}" {
+       Name "Teleport to Airfield"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "Airfield"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     }
+     CRF_TeleportPlayerAction "{69231A0A0E1A9BBC}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{69231A0C2729E660}" {
+       Name "Teleport to Firing Range"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 2
+      m_sObjectNameToTeleportTo "FiringRange"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     }
+     CRF_TeleportPlayerAction "{69231A0A6945F972}" {
+      UIInfo UIInfo "{69231A0C98CA8E32}" {
+       Name "Teleport to Vehicle Depot"
+      }
+      ActionTitle "Teleport"
+      "Sort Priority" 3
+      m_sObjectNameToTeleportTo "VehRange"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     }
+     CRF_TeleportPlayerAction "{69231A0A46FB574D}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB700D5C2A73}" {
+       Name "Teleport to BLUFOR"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 4
+      m_sObjectNameToTeleportTo "BLUFOR"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+     }
+     CRF_TeleportPlayerAction "{69231A0AA0CCB136}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to OPFOR"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 5
+      m_sObjectNameToTeleportTo "OPFOR"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     CRF_TeleportPlayerAction "{69232B13045981DF}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Rifle Range"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "RifleRange"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+     CRF_TeleportPlayerAction "{6958080AE7412602}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6582DB70028B4F56}" {
+       Name "Teleport to Dance Hall"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 6
+      m_sObjectNameToTeleportTo "DanceHall"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
+    }
+   }
+  }
+  coords 4757.123 169.235 6985.397
  }
 }
