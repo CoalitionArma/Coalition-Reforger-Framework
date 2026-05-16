@@ -662,11 +662,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				if (m_filterFaction)
 					pingFactionKey = m_searcherFactionKey;
 				
-				CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-				if (!bm)
-					continue;
-				
-				bm.SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
+				CRF_RplBroadcastManager.GetInstance().SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
 			}
 		}
 	}
