@@ -174,7 +174,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (leaderID <= 0)
 		{
 			if (m_wRoot)
+			{
 				m_wRoot.SetOpacity(0.0);
+				m_wRoot.SetEnabled(false);
+			}
 			return;
 		}
 		
@@ -183,7 +186,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (!playerManager)
 		{
 			if (m_wRoot)
+			{
 				m_wRoot.SetOpacity(0.0);
+				m_wRoot.SetEnabled(false);
+			}
 			return;
 		}
 		
@@ -191,7 +197,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (!leaderEntity)
 		{
 			if (m_wRoot)
+			{
 				m_wRoot.SetOpacity(0.0);
+				m_wRoot.SetEnabled(false);
+			}
 			return;
 		}
 		
@@ -200,7 +209,10 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (controller && controller.IsDead())
 		{
 			if (m_wRoot)
+			{
 				m_wRoot.SetOpacity(0.0);
+				m_wRoot.SetEnabled(false);
+			}
 			return;
 		}
 		
@@ -230,6 +242,7 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (screenPosition[2] < 0 || m_fDistanceToIcon > m_fMaxIconDistance)
 		{
 			m_wRoot.SetOpacity(0.0);
+			m_wRoot.SetEnabled(false); // Disable so the invisible widget cannot block player clicks
 			return;
 		}
 		
@@ -238,13 +251,15 @@ class CRF_SpectatorLabelIconGroup : CRF_SpectatorLabelIcon
 		if (m_fDistanceToIcon <= GROUP_ICON_FADE_END)
 		{
 			m_wRoot.SetOpacity(0.0);
+			m_wRoot.SetEnabled(false); // Disable so the invisible widget cannot block player clicks
 			return;
 		}
 		float closeOpacity = 1.0;
 		if (m_fDistanceToIcon < GROUP_ICON_FADE_START)
 			closeOpacity = (m_fDistanceToIcon - GROUP_ICON_FADE_END) / (GROUP_ICON_FADE_START - GROUP_ICON_FADE_END);
 		
-		// Icon is visible
+		// Icon is visible — ensure it is enabled before rendering
+		m_wRoot.SetEnabled(true);
 		m_wRoot.SetOpacity(closeOpacity);
 		
 		// Update label content
