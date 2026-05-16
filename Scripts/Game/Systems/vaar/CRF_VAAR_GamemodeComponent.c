@@ -288,7 +288,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetFaction(IEntity entity)
-	{	
+	{
+		if (!entity)
+			return 0;
+		
 		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		if (!factionComponent)
 			return 0;
