@@ -1,0 +1,52 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 3053.584 41.417 1890.136
+ Points {
+  ShapePoint "{69567C4911184CF9}" {
+   Position -2946.459 0.881 -1678.448
+  }
+  ShapePoint "{69567C49166346F4}" {
+   Position -2970.612 0.881 858.75
+  }
+  ShapePoint "{69567C49095DA9C2}" {
+   Position -36.225 21.907 871.454
+  }
+  ShapePoint "{69577AD51081D477}" {
+   Position 1238.517 33.734 67.525
+  }
+  ShapePoint "{69577AD88AC38944}" {
+   Position 1288.294 -0 -338.931
+  }
+  ShapePoint "{69577AC2DF1D7D3A}" {
+   Position 1328.631 0.055 -614.551
+  }
+  ShapePoint "{69577AD8960E757E}" {
+   Position 1349.405 2.195 -781.109
+  }
+  ShapePoint "{69567C4903F3A719}" {
+   Position 1417.663 22.259 -1223.014
+  }
+  ShapePoint "{69577AD8849B978C}" {
+   Position 1003.305 -0 -1293.212
+  }
+  ShapePoint "{69577AD8F80F3F2C}" {
+   Position 255.965 -0 -1422.019
+  }
+  ShapePoint "{69577AD8FA7DF41A}" {
+   Position -102.89 -0 -1484.75
+  }
+  ShapePoint "{69577AD89DF859C3}" {
+   Position -460.799 0 -1241.208
+  }
+ }
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   components {
+    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+     m_fHeight 648.3
+     m_fUndergroundHeight 900.7
+    }
+   }
+  }
+ }
+}

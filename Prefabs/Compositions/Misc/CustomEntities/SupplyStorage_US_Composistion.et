@@ -1,0 +1,37 @@
+GenericEntity : "{934887E9F148A6FA}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_Supplies_base.et" {
+ ID "50D67C36F4200F97"
+ components {
+  InventoryItemComponent "{5E9697F253F88D41}" {
+   Attributes SCR_ItemAttributeCollection "{5E9697F25AD51313}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5E329893CBDBB1E3}" {
+     Name "#AR-Supplies_Storage_US_Name"
+     Description "#AR-Supplies_Storage_US_Description"
+    }
+   }
+  }
+  MeshObject "{54969A6AAAADA251}" {
+   Materials {
+    MaterialAssignClass "{694228B269D6ED7F}" {
+     SourceMaterial "SignRectangle_01_75x45_double"
+     AssignedMaterial "{F78738AB0232500C}Assets/Structures/Signs/Military/Data/Sign_SupplyStorage_US_01.emat"
+    }
+    MaterialAssignClass "{694228B269D6ED45}" {
+     SourceMaterial "SignRectangle_01_75x45_double_MLOD"
+     AssignedMaterial "{C4EB330DA12A028B}Assets/Structures/Signs/Military/Data/Sign_SupplyStorage_US_01_MLOD.emat"
+    }
+   }
+  }
+ }
+ {
+  GenericEntity : "{70E6C95F5372C9F8}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_US_01_20ft_Empty.et" {
+   ID "694228B3CEDEFBF3"
+   coords 1.5 0 -1.7
+   angles 0 90 0
+  }
+  GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
+   ID "694228B3E1A2C182"
+   coords -0.964 0 1.396
+   angles 0 0 0
+  }
+ }
+}

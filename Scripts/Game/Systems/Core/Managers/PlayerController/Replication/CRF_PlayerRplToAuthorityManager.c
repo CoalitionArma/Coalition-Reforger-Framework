@@ -1890,7 +1890,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
 		LogTelemetry("RpcAsk_TogglePlayerLisntening", bytes);
 		
-		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
+		CVON_VONGameModeComponent cvon = CVON_VONGameModeComponent.GetInstance();
+		if (cvon)
+			cvon.TogglePlayerListening(playerId, input);
 	}
 	
 	//------------------------------------------------------------------------------------------------
