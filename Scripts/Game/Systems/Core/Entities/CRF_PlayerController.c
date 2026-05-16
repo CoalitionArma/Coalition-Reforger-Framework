@@ -38,11 +38,15 @@ class CRF_PlayerController : SCR_PlayerController
 		if (from)
 		{
 			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
-			if (charController.IsDead())
+			if (charController && charController.IsDead())
 			{
-				vector mat[4];
-				from.GetTransform(mat);
-				CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
+				CRF_PlayerControllerManager pcm = CRF_PlayerControllerManager.GetInstance();
+				if (pcm)
+				{
+					vector mat[4];
+					from.GetTransform(mat);
+					pcm.m_vPlayersLastDeath = mat;
+				}
 			};
 		}
 		
