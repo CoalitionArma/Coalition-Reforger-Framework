@@ -62,34 +62,9 @@ GenericEntity : "{3A65DAE7479234D8}PrefabsEditable/EffectsModules/Mine/EffectMod
   }
  }
  coords 3495.549 55.148 6460.229
-}
-$grp GenericEntity : "{934A3C3A870634DC}PrefabsEditable/System/E_Comment.et" {
  {
-  components {
-   SCR_EditableCommentComponent "{529ABD655530ED39}" {
-    m_UIInfo SCR_EditableCommentUIInfo "{694A548036F0E3BD}" {
-     Name "Good spot for MCOM B or A? :^) "
-    }
-    m_sColor 1 0.104 0.774 1
-    m_fSizeCoef 1.2
-    m_bBold 1
-    m_bItalic 1
-   }
+  GenericEntity {
+   ID "616C96D8967A1736"
   }
-  coords 3831.691 23.869 6045.733
- }
- {
-  components {
-   SCR_EditableCommentComponent "{529ABD655530ED39}" {
-    m_UIInfo SCR_EditableCommentUIInfo "{694A548036F0E3BD}" {
-     Name "Minefield for risky deterrence?"
-    }
-    m_sColor 1 0.104 0.774 1
-    m_fSizeCoef 1.2
-    m_bBold 1
-    m_bItalic 1
-   }
-  }
-  coords 3448.385 42.85 6607.99
  }
 }
