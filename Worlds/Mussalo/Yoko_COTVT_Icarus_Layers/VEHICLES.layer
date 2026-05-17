@@ -1,0 +1,22 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 869.8 3.063 6363.143
+  angles 0 -177.993 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 855.921 3.063 6381.215
+  angles 0 -177.993 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 869.416 3.063 6400.674
+  angles 0 -177.993 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 857.692 3.063 6419.421
+  angles 0 -177.993 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+}
