@@ -158,6 +158,4 @@ class CRF_DamageHelper
 		
 		return weaponName;
 	}
-	
-	// These utility methods have been simplified and moved directly to the LoggingManager class
 }

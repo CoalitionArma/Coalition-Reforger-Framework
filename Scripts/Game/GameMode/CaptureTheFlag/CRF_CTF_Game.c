@@ -36,11 +36,8 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	string m_sOpforFactionKey;
 
 	// --- Entity Setup ---
-	[Attribute("ctf_flag", UIWidgets.EditBox, "Name of the flag spawn-point entity placed in the world (defines where the flag prefab will be spawned).\nIn legacy mode (Flag Prefab left empty) this entity IS the flag directly — add CRF_CTF_PickupFlagAction and CRF_CTF_DropFlagAction to its ActionsManagerComponent.", category: "Entity Setup")]
+	[Attribute("ctf_flag", UIWidgets.EditBox, "Name of the flag entity placed in the world.\nAdd CRF_CTF_PickupFlagAction and CRF_CTF_DropFlagAction to its ActionsManagerComponent.", category: "Entity Setup")]
 	string m_sFlagEntityName;
-
-	[Attribute("{18B11D141C0D606C}Prefabs/Items/Demining/MineFlags/CTF_Flag.et", UIWidgets.ResourceNamePicker, "Flag prefab spawned by the server at game start at the position of the Flag Entity Name spawn-point. Leave empty to use the pre-placed Flag Entity Name entity directly (legacy mode).", params: "et", category: "Entity Setup")]
-	ResourceName m_sFlagPrefab;
 
 	[Attribute("ctf_blufor_dropzone", UIWidgets.EditBox, "Name of BLUFOR's capture drop zone entity in the world.", category: "Entity Setup")]
 	string m_sBluforDropzoneName;
@@ -101,17 +98,15 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	[RplProp(onRplName: "OnScoreChanged")]
 	protected int m_iOpforCaptures = 0;
 
-	/// RplId of the spawned flag entity — replicated to clients so they can cache a local entity reference.
-	[RplProp(onRplName: "OnFlagEntityReplicated")]
-	protected RplId m_rFlagEntityRplId;
-
 	/// General notification message: replicated change triggers the popup on all clients.
 	[RplProp(onRplName: "OnMessageReceived")]
 	protected string m_sMessageContent = "";
 	protected string m_sStoredMessageContent = "";
 
-	// Current world position of the flag entity — server updates each tick while carried,
-	// replicates to all clients which then move their local copy of the entity.
+	/// Static flag position — set when the flag is NOT being carried (spawn reset or drop).
+	/// Received by all machines including JIP via RplProp; OnFlagPositionChanged applies it
+	/// to the local entity. During carrying every machine independently follows the carrier
+	/// in EOnFixedFrame instead, so this value is not bumped per-frame.
 	[RplProp(onRplName: "OnFlagPositionChanged")]
 	protected vector m_vFlagWorldPos;
 
@@ -122,8 +117,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	protected IEntity m_FlagEntity;
 	protected IEntity m_BluforDropzone;
 	protected IEntity m_OpforDropzone;
-	/// Weak ref to the player entity currently carrying the flag — used in DetachFlagFromHolder.
-	protected IEntity m_FlagHolderEntity;
 
 	protected vector m_vFlagSpawnPosition;
 	protected bool   m_bGameOver         = false;
@@ -186,32 +179,25 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		FindWorldEntities();
 	}
 
-	//! Locate and cache the flag spawn-point and both drop zone entities.
-	//! In prefab mode the flag itself is spawned in GameInit(); this method only records the spawn position.
+	//! Locate and cache the flag and drop zone entities.
+	//! Runs on ALL machines — every client needs m_FlagEntity to move it locally in EOnFixedFrame.
 	protected void FindWorldEntities()
 	{
-		IEntity flagOrSpawnPoint = GetGame().GetWorld().FindEntityByName(m_sFlagEntityName);
-		if (!flagOrSpawnPoint)
-			Print(string.Format("[CRF_CTF] ERROR: Flag/spawn-point entity '%1' not found. Place an entity with this name in the mission.", m_sFlagEntityName), LogLevel.ERROR);
+		m_FlagEntity = GetGame().GetWorld().FindEntityByName(m_sFlagEntityName);
+		if (!m_FlagEntity)
+			Print(string.Format("[CRF_CTF] ERROR: Flag entity '%1' not found. Place an entity with this name in the mission.", m_sFlagEntityName), LogLevel.ERROR);
 
-		// Clients in legacy mode use the pre-placed entity as the flag directly.
-		// In prefab mode the entity reference arrives via OnFlagEntityReplicated().
 		if (!Replication.IsServer())
 		{
-			if (m_sFlagPrefab.IsEmpty())
-				m_FlagEntity = flagOrSpawnPoint;
+			// Race-condition guard: if OnFlagPositionChanged fired before we cached the entity, apply it now.
+			OnFlagPositionChanged();
 			return;
 		}
 
-		// Server only
-		if (flagOrSpawnPoint)
+		if (m_FlagEntity)
 		{
-			m_vFlagSpawnPosition = flagOrSpawnPoint.GetOrigin();
+			m_vFlagSpawnPosition = m_FlagEntity.GetOrigin();
 			m_vFlagWorldPos      = m_vFlagSpawnPosition;
-
-			// Legacy mode: the named entity IS the flag
-			if (m_sFlagPrefab.IsEmpty())
-				m_FlagEntity = flagOrSpawnPoint;
 		}
 
 		m_BluforDropzone = GetGame().GetWorld().FindEntityByName(m_sBluforDropzoneName);
@@ -222,14 +208,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		if (!m_OpforDropzone)
 			Print(string.Format("[CRF_CTF] ERROR: OPFOR drop zone entity '%1' not found.", m_sOpforDropzoneName), LogLevel.ERROR);
 
-		// In prefab mode the flag entity is nil until GameInit spawns it — only require the spawn point + drop zones
-		bool flagOk;
-		if (m_sFlagPrefab.IsEmpty())
-			flagOk = m_FlagEntity != null;
-		else
-			flagOk = flagOrSpawnPoint != null;
-		m_bEntitiesFound = flagOk && m_BluforDropzone != null && m_OpforDropzone != null;
-
+		m_bEntitiesFound = (m_FlagEntity != null && m_BluforDropzone != null && m_OpforDropzone != null);
 		if (!m_bEntitiesFound)
 			Print("[CRF_CTF] WARNING: One or more required world entities are missing — CTF will not function correctly.", LogLevel.WARNING);
 	}
@@ -242,12 +221,26 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	{
 		super.EOnFixedFrame(owner, timeSlice);
 
-		// ---- Map marker — runs on all machines independently ----
-		// Each client adds its own marker once the PlayerScriptedMarkerManager is ready.
+		// ---- Map marker — all machines ----
 		if (!m_bHideMapMarker && !m_bMapMarkerAdded)
 			TryAddMapMarker();
 
-		// ---- Game logic — server only ----
+		// ---- Flag following — ALL machines independently ----
+		// Every machine already knows who holds the flag (m_iFlagHolderPlayerId is replicated).
+		// Each machine queries the carrier's entity locally and moves its own copy of the flag.
+		// No per-frame network traffic needed — each client runs this identically.
+		if (m_bGameInit && m_FlagEntity && m_iFlagHolderPlayerId != -1)
+		{
+			IEntity holderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(m_iFlagHolderPlayerId);
+			if (holderEntity)
+			{
+				vector pos = holderEntity.GetOrigin();
+				pos[1] = pos[1] + 1.5;
+				m_FlagEntity.SetOrigin(pos);
+			}
+		}
+
+		// ---- Server-only tick ----
 		if (!Replication.IsServer())
 			return;
 
@@ -294,31 +287,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	protected void GameInit()
 	{
 		m_bGameInit = true;
-
-		// Prefab mode: spawn the flag entity on the server from the configured prefab
-		if (!m_sFlagPrefab.IsEmpty())
-		{
-			EntitySpawnParams spawnParams = new EntitySpawnParams();
-			spawnParams.TransformMode = ETransformMode.WORLD;
-			spawnParams.Transform[3] = m_vFlagSpawnPosition;
-
-			m_FlagEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_sFlagPrefab), GetGame().GetWorld(), spawnParams);
-			if (!m_FlagEntity)
-			{
-				Print("[CRF_CTF] ERROR: Failed to spawn flag prefab — CTF cannot continue.", LogLevel.ERROR);
-				m_bGameOver = true;
-				return;
-			}
-
-			// Replicate the spawned entity's RplId to clients so they can obtain their own reference
-			RplComponent rplComp = RplComponent.Cast(m_FlagEntity.FindComponent(RplComponent));
-			if (rplComp)
-				m_rFlagEntityRplId = rplComp.Id();
-			else
-				Print("[CRF_CTF] WARNING: Spawned flag entity has no RplComponent — clients will not receive a flag reference.", LogLevel.WARNING);
-		}
-
-		// Sync the initial flag position to all connected and future JIP clients
 		m_vFlagWorldPos = m_vFlagSpawnPosition;
 		Replication.BumpMe();
 		Print(string.Format("[CRF_CTF] Game initialised. Flag spawn: %1. Captures to win: %2.", m_vFlagSpawnPosition.ToString(), m_iCapturesToWin));
@@ -328,13 +296,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//===================================================================================
 	// FLAG MANAGEMENT  (server only)
 	//===================================================================================
-
-	//! Move the flag entity each frame to stay just above the carrier.
-	//! NOTE: This method is no longer used — the flag is now parented to the carrying player
-	//! via AddChild so the engine handles the transform natively without per-frame SetOrigin calls.
-	protected void UpdateFlagPosition()
-	{
-	}
 
 	//! Server: Award the flag to the requesting player.
 	void PickupFlag(int playerId)
@@ -364,27 +325,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		m_sFlagHolderFaction  = faction.GetFactionKey();
 		m_fCaptureProgress    = 0.0;
 
-		// Parent the flag to the player via the scene hierarchy.
-		// AddChild with RECALC_LOCAL_TRANSFORM keeps the flag at its current world position
-		// relative to the player as a local offset, then the engine propagates the child
-		// transform to all clients automatically without any per-frame SetOrigin calls.
-		if (m_FlagEntity)
-		{
-			// Disable physics first so it doesn't fight the hierarchy transform
-			Physics phys = m_FlagEntity.GetPhysics();
-			if (phys)
-				phys.SetActive(ActiveState.INACTIVE);
-
-			// Position the flag just above the player before parenting so the
-			// RECALC_LOCAL_TRANSFORM flag bakes in a clean [0, 0.5, 0] local offset
-			vector desiredPos = playerEntity.GetOrigin();
-			desiredPos[1] = desiredPos[1] + 0.5;
-			m_FlagEntity.SetOrigin(desiredPos);
-
-			playerEntity.AddChild(m_FlagEntity, -1, EAddChildFlags.RECALC_LOCAL_TRANSFORM);
-		}
-		m_FlagHolderEntity = playerEntity;
-
 		string playerName   = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sMessageContent   = string.Format("[%1] %2 %3", m_sFlagHolderFaction, playerName, m_sFlagPickupMessage);
 		Replication.BumpMe();
@@ -407,9 +347,9 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		m_iFlagHolderPlayerId = -1;
 		m_sFlagHolderFaction  = "";
 		m_fCaptureProgress    = 0.0;
-
-		// Detach the flag from its carrier and restore physics so it can fall and be picked up again
-		DetachFlagFromHolder();
+		// Record the current entity position as the drop point for JIP clients
+		if (m_FlagEntity)
+			m_vFlagWorldPos = m_FlagEntity.GetOrigin();
 
 		if (broadcastDrop)
 		{
@@ -429,28 +369,10 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		m_fCaptureProgress    = 0.0;
 		m_vFlagWorldPos       = m_vFlagSpawnPosition;
 
-		// Detach from any carrier and restore physics before teleporting back to spawn
-		DetachFlagFromHolder();
-
 		if (m_FlagEntity)
 			m_FlagEntity.SetOrigin(m_vFlagSpawnPosition);
 
 		Replication.BumpMe();
-	}
-
-	//! Server: Detach the flag entity from its carrying player and restore its physics.
-	protected void DetachFlagFromHolder()
-	{
-		if (m_FlagHolderEntity && m_FlagEntity)
-			m_FlagHolderEntity.RemoveChild(m_FlagEntity, true);
-		m_FlagHolderEntity = null;
-
-		if (!m_FlagEntity)
-			return;
-
-		Physics phys = m_FlagEntity.GetPhysics();
-		if (phys)
-			phys.SetActive(ActiveState.ACTIVE);
 	}
 
 	//===================================================================================
@@ -677,18 +599,15 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	// REPLICATION CALLBACKS  (called on all machines when RplProp values change)
 	//===================================================================================
 
-	//! Called on all machines when m_rFlagEntityRplId changes — cache a local reference to the spawned flag entity.
-	protected void OnFlagEntityReplicated()
-	{
-		if (!m_rFlagEntityRplId.IsValid())
-			return;
-
-		m_FlagEntity = IEntity.Cast(Replication.FindItem(m_rFlagEntityRplId));
-	}
-
-	//! Called on all machines when m_vFlagWorldPos changes — move the local flag entity.
+	//! Called on all machines when m_vFlagWorldPos changes.
+	//! Applies the static (non-carried) position to the local flag entity.
+	//! During carrying, EOnFixedFrame tracks the carrier independently on every machine.
 	protected void OnFlagPositionChanged()
 	{
+		// Don't apply the static position while the flag is actively being carried —
+		// EOnFixedFrame handles that independently on all machines.
+		if (m_iFlagHolderPlayerId != -1)
+			return;
 		if (m_FlagEntity)
 			m_FlagEntity.SetOrigin(m_vFlagWorldPos);
 	}
