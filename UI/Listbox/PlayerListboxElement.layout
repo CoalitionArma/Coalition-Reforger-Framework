@@ -71,15 +71,35 @@ ButtonWidgetClass {
         HorizontalAlign 0
        }
        {
-        TextWidgetClass "{630A25D7A5616D14}" {
-         Name "Text"
-         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+        TextWidgetClass "{CF0003AB00000001}" {
+         Name "TagName"
+         Slot FrameWidgetSlot "{CF0003AB00000002}" {
           Anchor 0 0 0 0
           PositionX 38.76
           OffsetLeft 38.76
           PositionY 0
           OffsetTop 0
-          SizeX 133.678
+          SizeX 44
+          OffsetRight -82.76
+          SizeY 35.557
+          OffsetBottom -35.557
+         }
+         Clipping Ancestor
+         Color 1 1 0 1
+         Text ""
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 0
+        }
+        TextWidgetClass "{630A25D7A5616D14}" {
+         Name "Text"
+         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+          Anchor 0 0 0 0
+          PositionX 83.76
+          OffsetLeft 83.76
+          PositionY 0
+          OffsetTop 0
+          SizeX 88.678
           OffsetRight -172.438
           SizeY 35.557
           OffsetBottom -35.557

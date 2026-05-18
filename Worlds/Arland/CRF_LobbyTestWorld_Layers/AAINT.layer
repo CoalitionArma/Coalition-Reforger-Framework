@@ -19,6 +19,8 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_CommunityTagManager "{69651E04AFDA77E5}" {
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
   }
