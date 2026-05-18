@@ -1,6 +1,6 @@
 $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
  {
-  coords 10609.117 93.541 9891.887
+  coords 10424.013 116.498 9825.218
   m_sDescription "Bombsite A"
  }
  {

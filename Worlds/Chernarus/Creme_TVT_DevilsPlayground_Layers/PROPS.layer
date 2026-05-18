@@ -2759,7 +2759,6 @@ $grp SplineShapeEntity {
       {
        coords 127.478 -23.307 227.845
        angles 0 29.225 0
-       scale 1
       }
       {
        coords 188.09 -26.729 187.003
@@ -6135,7 +6134,6 @@ $grp SplineShapeEntity {
       {
        coords 195.946 -29.01 110.306
        angles 0.122 109.691 -1.928
-       scale 1
       }
       {
        coords 143.333 -26.013 151.282
@@ -9311,7 +9309,6 @@ $grp SplineShapeEntity {
       {
        coords 153.941 -24.483 67.04
        angles -69.271 -61.718 169.744
-       scale 1
       }
       {
        coords 152.215 -24.306 66.413
@@ -11017,7 +11014,6 @@ $grp SplineShapeEntity {
       {
        coords 177.101 -32.104 197.543
        angles 0.307 -114.547 -0.429
-       scale 1
       }
       {
        coords 180.822 -32.49 197.694
@@ -11222,7 +11218,6 @@ $grp SplineShapeEntity {
       {
        coords 185.967 -28.425 125.209
        angles 1.679 50.967 -1.013
-       scale 1
       }
       {
        coords 186.316 -28.562 127.772
@@ -12810,7 +12805,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 59.449 -12.224 52.729
-       angles -0.928 142.069 -0
+       angles -0.928 142.069 0
        scale 0.807
       }
       {
@@ -12830,12 +12825,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 59.086 -12.242 54.113
-       angles 1.595 -11.679 -0
+       angles 1.595 -11.679 0
        scale 0.459
       }
       {
        coords 58.201 -11.991 52.38
-       angles 1.569 -46.924 -0
+       angles 1.569 -46.924 0
        scale 0.829
       }
       {
@@ -12850,7 +12845,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 193.756 -28.686 104.705
-       angles -1.232 -168.689 -0
+       angles -1.232 -168.689 0
        scale 0.805
       }
       {
@@ -12880,7 +12875,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 8.281 -2.202 25.521
-       angles -1.493 179.017 -0
+       angles -1.493 179.017 0
        scale 0.428
       }
       {
@@ -12895,7 +12890,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 7.006 -1.507 13.58
-       angles 1.981 65.228 -0
+       angles 1.981 65.228 0
        scale 0.582
       }
       {
@@ -20510,7 +20505,6 @@ $grp SplineShapeEntity {
       {
        coords 32.637 -3.328 -9.146
        angles 5.763 -150.079 -2.852
-       scale 1
       }
       {
        coords 30.027 -3.515 -2.225
@@ -21803,7 +21797,6 @@ $grp SplineShapeEntity {
       {
        coords 123.332 -13.085 -14.012
        angles -0.693 -97.111 -0.254
-       scale 1
       }
       {
        coords 122.401 -12.734 -17.017
@@ -22133,7 +22126,6 @@ $grp SplineShapeEntity {
       {
        coords 81.425 -5.841 -130.964
        angles -0.503 77.379 1.07
-       scale 1
       }
       {
        coords 72.975 -4.75 -122.993
@@ -23810,7 +23802,6 @@ $grp SplineShapeEntity {
       {
        coords 94.821 -2.23 -206.673
        angles 0.604 43.068 -0.533
-       scale 1
       }
       {
        coords 88.946 -2.171 -203.817
@@ -23870,7 +23861,6 @@ $grp SplineShapeEntity {
       {
        coords 95.493 -2.099 -208.252
        angles -1.797 -1.527 1.479
-       scale 1
       }
       {
        coords 99.008 -1.989 -211.118
@@ -24440,7 +24430,6 @@ $grp SplineShapeEntity {
       {
        coords 46.486 -1.736 -67.399
        angles 0.151 -84.597 -0.829
-       scale 1
       }
       {
        coords 55.492 -2.558 -76.163
@@ -25712,7 +25701,6 @@ $grp SplineShapeEntity {
       {
        coords 31.044 10.461 -269.78
        angles -1.668 117.294 1.122
-       scale 1
       }
       {
        coords 28.22 9.694 -264.626
@@ -26057,12 +26045,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 11.75 1.551 -56.458
-       angles 1.806 -70.545 -0
+       angles 1.806 -70.545 0
        scale 0.566
       }
       {
        coords 17.218 1.089 -57.185
-       angles 0.837 21.896 -0
+       angles 0.837 21.896 0
        scale 0.734
       }
       {
@@ -26077,7 +26065,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 17.589 0.738 -51.489
-       angles -1.131 129.599 -0
+       angles -1.131 129.599 0
        scale 0.422
       }
       {
@@ -26087,7 +26075,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 161.912 -19.781 2.979
-       angles 1.071 82.224 -0
+       angles 1.071 82.224 0
        scale 0.696
       }
       {
@@ -26102,7 +26090,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 155.529 -19.004 2.605
-       angles -0.707 74.369 -0
+       angles -0.707 74.369 0
        scale 0.676
       }
       {
@@ -26112,7 +26100,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 162.899 -19.186 -6.576
-       angles -0.751 140.761 -0
+       angles -0.751 140.761 0
        scale 0.828
       }
       {
@@ -26122,7 +26110,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 138.153 -11.823 -131.298
-       angles -0.255 178.907 -0
+       angles -0.255 178.907 0
        scale 0.713
       }
       {
@@ -26142,7 +26130,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 132.354 -10.981 -136.765
-       angles 1.522 -31.279 -0
+       angles 1.522 -31.279 0
        scale 0.899
       }
      }
@@ -27621,7 +27609,6 @@ $grp SplineShapeEntity {
       {
        coords 62.634 -3.449 -71.19
        angles 0.447 57.757 -1.744
-       scale 1
       }
       {
        coords 57.038 -2.784 -72.531
@@ -31369,7 +31356,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 73.974 -7.771 -0.433
-       angles -1.478 150.66 -0
+       angles -1.478 150.66 0
        scale 0.836
       }
       {
@@ -31384,7 +31371,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 73.834 -7.326 -5.936
-       angles -0.949 76.423 -0
+       angles -0.949 76.423 0
        scale 0.758
       }
       {
@@ -31399,22 +31386,22 @@ $grp SplineShapeEntity {
       }
       {
        coords 102.386 -8.216 -93.516
-       angles -0.188 -29.378 -0
+       angles -0.188 -29.378 0
        scale 0.537
       }
       {
        coords 96.904 -7.54 -95.74
-       angles 1.025 158.351 -0
+       angles 1.025 158.351 0
        scale 0.704
       }
       {
        coords 94.134 -7.163 -92.137
-       angles 0.549 171.765 -0
+       angles 0.549 171.765 0
        scale 0.988
       }
       {
        coords 100.173 -7.916 -91.98
-       angles -0.941 -33.927 -0
+       angles -0.941 -33.927 0
        scale 0.742
       }
       {
@@ -31424,7 +31411,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 95.741 -7.405 -96.777
-       angles 1.317 147.199 -0
+       angles 1.317 147.199 0
        scale 0.616
       }
       {
@@ -31439,17 +31426,17 @@ $grp SplineShapeEntity {
       }
       {
        coords 78.469 -6.079 -37.887
-       angles -0.827 99.935 -0
+       angles -0.827 99.935 0
        scale 0.781
       }
       {
        coords 78.478 -5.944 -41.237
-       angles 0.176 -172.721 -0
+       angles 0.176 -172.721 0
        scale 0.636
       }
       {
        coords 79.967 -6.168 -39.53
-       angles 1.145 -28.565 -0
+       angles 1.145 -28.565 0
        scale 0.65
       }
       {
@@ -31459,12 +31446,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 72.778 -5.48 -38.105
-       angles -1.181 -13.217 -0
+       angles -1.181 -13.217 0
        scale 0.452
       }
       {
        coords 162.773 -18.289 -19.313
-       angles -0.038 48.045 -0
+       angles -0.038 48.045 0
        scale 0.647
       }
       {
@@ -31474,12 +31461,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 163.47 -18.425 -18.518
-       angles 0.953 28.499 -0
+       angles 0.953 28.499 0
        scale 0.879
       }
       {
        coords 163.28 -18.158 -22.547
-       angles 1.911 -74.852 -0
+       angles 1.911 -74.852 0
        scale 0.898
       }
       {
@@ -31489,7 +31476,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 162.195 -18.468 -15.291
-       angles 0.217 -126.358 -0
+       angles 0.217 -126.358 0
        scale 0.814
       }
       {
@@ -31499,12 +31486,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 161.441 -18.472 -13.783
-       angles 0.087 -49.616 -0
+       angles 0.087 -49.616 0
        scale 0.546
       }
       {
        coords 159.916 -17.699 -23.028
-       angles 1.906 -74.116 -0
+       angles 1.906 -74.116 0
        scale 0.828
       }
       {
@@ -31534,17 +31521,17 @@ $grp SplineShapeEntity {
       }
       {
        coords 59.59 -3.154 -155.268
-       angles -0.018 -167.975 -0
+       angles -0.018 -167.975 0
        scale 0.636
       }
       {
        coords 66.127 -3.804 -154.848
-       angles 0.098 -38.069 -0
+       angles 0.098 -38.069 0
        scale 0.632
       }
       {
        coords 63.418 -3.6 -150.962
-       angles 0.355 -174.347 -0
+       angles 0.355 -174.347 0
        scale 0.625
       }
       {
@@ -31569,7 +31556,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 19.596 1.458 -155.633
-       angles 1.683 -88.684 -0
+       angles 1.683 -88.684 0
        scale 0.893
       }
       {
@@ -31579,12 +31566,12 @@ $grp SplineShapeEntity {
       }
       {
        coords 14.792 2.005 -161.401
-       angles -0.62 -27.412 -0
+       angles -0.62 -27.412 0
        scale 0.645
       }
       {
        coords 160.935 -17.281 -33.275
-       angles -0.692 -174.677 -0
+       angles -0.692 -174.677 0
        scale 0.432
       }
       {
@@ -31609,7 +31596,7 @@ $grp SplineShapeEntity {
       }
       {
        coords 163.561 -18.004 -25.902
-       angles 1.651 89.377 -0
+       angles 1.651 89.377 0
        scale 0.567
       }
      }
@@ -31982,8 +31969,8 @@ $grp SplineShapeEntity {
  }
 }
 GenericEntity : "{025FB956F636B442}Prefabs/Compositions/Misc/SubCompositions/EquipmentBoxStacked_Cluttered_USSR_01.et" {
- coords 10609.983 93.541 9890.638
- angles 0 156.78 0
+ coords 10422.403 116.504 9822.934
+ angles 0 -154.245 0
 }
 GenericEntity : "{02A8148519E81867}Prefabs/Props/Wrecks/M998_wreck/M998_wreck.et" {
  coords 12049.603 22.869 9854.134
@@ -32000,12 +31987,12 @@ $grp GenericEntity : "{09321D1470C3625E}Prefabs/Props/Military/AmmoBoxes/Equipme
 }
 $grp GenericEntity : "{159BADC74896B7D6}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Explosives_01_USSR.et" {
  {
-  coords 10606.944 93.541 9890.829
-  angles 0 67.01 0
+  coords 10420.751 116.502 9825.206
+  angles 0 116.232 0
  }
  {
-  coords 10606.736 93.541 9891.334
-  angles 0 63.847 0
+  coords 10420.996 116.502 9825.693
+  angles 0 113.07 0
  }
  {
   coords 10282.611 163.376 9490.928
@@ -32028,18 +32015,18 @@ GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.
  coords 11963.611 25.796 9861.802
  angles 1.069 -112.767 -3.856
 }
-$grp GenericEntity : "{1DE88E6E3B4FEC8D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V3_covered.et" {
- {
-  coords 10604.573 93.541 9896.517
-  angles 0 154.021 0
- }
- {
-  coords 10612.571 93.411 9893.021
-  angles 2.567 -118.14 0
- }
+GenericEntity : "{1DE88E6E3B4FEC8D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V3_covered.et" {
+ coords 10423.51 116.502 9830.716
+ angles 0 -156.757 0
 }
-GenericEntity : "{2E0805B2022B55A4}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V1_covered.et" {
- coords 10276.143 163.376 9504.257
+$grp GenericEntity : "{2E0805B2022B55A4}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V1_covered.et" {
+ {
+  coords 10276.143 163.376 9504.257
+ }
+ {
+  coords 10420.212 116.422 9827.076
+  angles 0 -64.569 0
+ }
 }
 GenericEntity : "{2E13D01A2CB8C2E7}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V5_base.et" {
  coords 10276.139 163.376 9483.142
@@ -32049,10 +32036,6 @@ $grp GenericEntity : "{344ABEB98BB96721}Prefabs/Props/Military/AmmoBoxes/Equipme
  {
   coords 10282.159 163.376 9486.856
   angles 0 -90.424 0
- }
- {
-  coords 10611.619 93.378 9889.854
-  angles 0 -28.158 0
  }
  {
   coords 10288.818 161.659 9529.871
@@ -32096,22 +32079,18 @@ $grp GenericEntity : "{453433739A2A5851}Prefabs/Props/Military/AmmoBoxes/Equipme
   coords 10284.942 162.113 9514.11
   angles 0 91.265 0
  }
+ {
+  coords 10425.314 116.411 9821.365
+  angles 0 117.143 0
+ }
 }
 $grp GenericEntity : "{5069A070F3DA111B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V4_dst_01_USSR.et" {
  {
-  coords 10607.9 93.541 9889.811
-  angles 0 25.205 0
+  coords 10420.412 116.504 9823.962
+  angles 0 74.18 0
  }
  {
   coords 10276.063 163.376 9486.852
- }
- {
-  coords 10605.853 93.593 9890.375
-  angles 4.563 -115.382 -0.177
- }
- {
-  coords 10609.237 93.551 9888.794
-  angles -0.347 152.501 -4.553
  }
  {
   coords 10273.469 163.129 9473.97
@@ -32137,6 +32116,14 @@ $grp GenericEntity : "{5069A070F3DA111B}Prefabs/Props/Military/AmmoBoxes/Equipme
   coords 10273.417 163.109 9475.484
   angles -4.271 87.633 -1.619
  }
+ {
+  coords 10421.072 116.457 9828.942
+  angles 0 -61.82 0
+ }
+ {
+  coords 10423.591 116.466 9820.804
+  angles 0 26.743 0
+ }
 }
 GenericEntity : "{56FFF0C990358ED2}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wreck_static.et" {
  coords 12591.373 5.749 9870.238
@@ -32144,8 +32131,8 @@ GenericEntity : "{56FFF0C990358ED2}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wrec
 }
 $grp GenericEntity : "{65CD3EE14677E3AA}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V1.et" {
  {
-  coords 10611.599 93.541 9891.515
-  angles 0 152.759 0
+  coords 10424.125 116.504 9822.29
+  angles 0 -158.266 0
  }
  {
   coords 10282.171 163.376 9488.457
@@ -32162,10 +32149,6 @@ $grp GenericEntity : "{6E0B8DB64AF23B6C}Prefabs/Compositions/Misc/SubComposition
     coords 0 0 0
    }
   }
- }
- {
-  coords 10603.393 93.561 9895.609
-  angles 0 65.596 0
  }
  {
   coords 10275.983 162.723 9537.782
@@ -32194,14 +32177,10 @@ GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck/S105_wreck.et
  coords 11560.857 40.578 9848.561
  angles 0 69.756 0
 }
-GenericEntity : "{890EE5FB23BA713E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V2_covered.et" {
- coords 10611.252 93.219 9895.737
- angles 7.526 -118.56 0
-}
 $grp GenericEntity : "{8B97C14F4617AC07}Prefabs/Compositions/Misc/SubCompositions/EquipmentBoxStacked_Cluttered_USSR_03.et" {
  {
-  coords 10606.512 93.541 9892.336
-  angles 0 -118.095 0
+  coords 10421.609 116.502 9826.518
+  angles 0 -68.872 0
  }
  {
   coords 10276.058 163.376 9501.507
@@ -32210,28 +32189,28 @@ $grp GenericEntity : "{8B97C14F4617AC07}Prefabs/Compositions/Misc/SubComposition
 }
 $grp GenericEntity : "{92F3D49676C8CB61}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Launcher_01_USSR.et" {
  {
-  coords 10610.076 93.541 9895.755
-  angles 0 -116.679 0
+  coords 10427.19 116.502 9827.382
+  angles 0 -61.996 0
  }
  {
-  coords 10610.766 93.541 9894.451
-  angles 0 -116.679 0
+  coords 10426.526 116.502 9826.065
+  angles 0 -61.996 0
  }
  {
-  coords 10609.675 93.541 9895.555
-  angles 0 -116.679 0
+  coords 10426.795 116.502 9827.594
+  angles 0 -61.996 0
  }
  {
-  coords 10610.372 93.541 9894.267
-  angles 0 -116.679 0
+  coords 10426.148 116.502 9826.28
+  angles 0 -61.996 0
  }
  {
-  coords 10611.432 93.541 9893.035
-  angles 0 -115.924 0
+  coords 10425.754 116.502 9824.703
+  angles 0 -61.241 0
  }
  {
-  coords 10611.054 93.541 9892.842
-  angles 0 -115.976 0
+  coords 10425.379 116.502 9824.899
+  angles 0 -61.293 0
  }
  {
   coords 10275.73 163.376 9497.199
@@ -32250,10 +32229,14 @@ $grp GenericEntity : "{92F3D49676C8CB61}Prefabs/Props/Military/AmmoBoxes/USSR/Eq
   angles 0 90.58 0
  }
 }
+GenericEntity : "{9E2D46C5ED3EBC84}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst_01_USSR.et" {
+ coords 10419.51 116.418 9822.878
+ angles 0 31.235 0
+}
 $grp GenericEntity : "{A0ACD52C934CFA92}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V5_covered.et" {
  {
-  coords 10605.721 93.541 9893.66
-  angles 0 64.705 0
+  coords 10422.095 116.502 9827.981
+  angles 0 113.927 0
  }
  {
   coords 10273.477 163.264 9468.268
@@ -32280,13 +32263,23 @@ $grp GenericEntity : "{A0ACD52C934CFA92}Prefabs/Props/Military/AmmoBoxes/Equipme
   }
  }
 }
-GenericEntity : "{A7CAE510C39E5F0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V3_dst_01_USSR.et" {
- coords 10276.058 163.376 9480.433
- angles 0 90.329 0
+GenericEntity : "{A2F2F6E787F93D6E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V2.et" {
+ coords 10418.969 116.374 9824.969
+ angles 0 117.821 0
+}
+$grp GenericEntity : "{A7CAE510C39E5F0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V3_dst_01_USSR.et" {
+ {
+  coords 10276.058 163.376 9480.433
+  angles 0 90.329 0
+ }
+ {
+  coords 10428.434 116.137 9827.504
+  angles 0 22.478 5.218
+ }
 }
 GenericEntity : "{CD62E36CFDCB8FD8}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Equipment_01_USSR.et" {
- coords 10605.229 93.541 9895.237
- angles 0 68.409 0
+ coords 10422.968 116.502 9829.383
+ angles 0 117.632 0
 }
 $grp GenericEntity : "{CEA6C2073B3DB240}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V1.et" {
  {
@@ -32333,10 +32326,6 @@ $grp GenericEntity : "{EDE2016FB07F7B96}Prefabs/Props/Military/AmmoBoxes/Equipme
   angles 0 90.73 0
  }
  {
-  coords 10604.646 93.595 9893.145
-  angles 3.921 -116.803 0
- }
- {
   coords 10270.442 163.156 9521.313
   angles 1.87 -178.352 -3.447
  }
@@ -32347,10 +32336,6 @@ $grp GenericEntity : "{EDE2016FB07F7B96}Prefabs/Props/Military/AmmoBoxes/Equipme
  {
   coords 10288.675 161.584 9535.482
   angles -3.559 88.018 -1.645
- }
- {
-  coords 10610.054 93.365 9898.273
-  angles -8.416 62.576 0.043
  }
 }
 GenericEntity : "{F870683132294E4E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V5_covered.et" {
