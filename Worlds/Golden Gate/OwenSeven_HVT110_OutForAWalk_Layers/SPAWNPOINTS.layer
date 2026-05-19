@@ -25,10 +25,6 @@ $grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/Spawn
   coords 3741.953 71.478 96.931
   m_sCallsignOfGroupToSpawn "2-3"
  }
- BluforSpawn24 {
-  coords 3741.953 71.478 96.931
-  m_sCallsignOfGroupToSpawn "2-4"
- }
  BluforSpawn1PLT {
   coords 3715.904 73.814 188.105
   angles 0 -173.95 0
@@ -103,5 +99,9 @@ $grp CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/Spawn
  OpforSpawnSPG2 {
   coords 5101.757 46.5 172.049
   m_sCallsignOfGroupToSpawn "Kilux SPG 2"
+ }
+ OpforSpawn2 {
+  coords 5143.992 46.5 203.159
+  m_sCallsignOfGroupToSpawn "1-6"
  }
 }
