@@ -115,12 +115,12 @@ ButtonWidgetClass {
          Name "RankChevron"
          Slot FrameWidgetSlot "{CF0003AB00000004}" {
           Anchor 0 0 0 0
-          PositionX 175
-          OffsetLeft 175
+          PositionX 163
+          OffsetLeft 163
           PositionY 10
           OffsetTop 10
           SizeX 20
-          OffsetRight -195
+          OffsetRight -183
           SizeY 20
           OffsetBottom -30
          }
