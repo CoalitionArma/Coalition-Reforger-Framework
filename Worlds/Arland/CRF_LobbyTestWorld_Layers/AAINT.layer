@@ -19,6 +19,8 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_CommunityTagManager "{69651E04AFDA77E5}" {
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
   }
@@ -37,12 +39,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  coords 1228.604 37.813 2845.828
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 45
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 15
+ m_bUseCVON 0
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"

@@ -99,6 +99,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Register for slot updates
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+
+		// Fetch community tags and register for updates when they arrive
+		if (CRF_CommunityTagManager.GetInstance())
+		{
+			CRF_CommunityTagManager.GetInstance().FetchTagsForCurrentPlayers();
+			CRF_CommunityTagManager.GetInstance().GetOnTagsUpdated().Insert(UpdateSlots);
+		}
 		
 		// Setup faction button event handlers
 		SetupFactionButtons();			
@@ -413,6 +420,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Unregister from slot updates to prevent memory leaks
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
+
+		// Unregister from community tag updates
+		if (CRF_CommunityTagManager.GetInstance())
+			CRF_CommunityTagManager.GetInstance().GetOnTagsUpdated().Remove(UpdateSlots);
 		
 		// Remove all input action listeners
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -807,7 +818,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				if (slotData.GetSlotCurrentPlayerId() > 0)
 				{
 					string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
+					string playerTag = "";
+					if (CRF_CommunityTagManager.GetInstance())
+						playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetTagText(playerTag);
 					
 					// Show disconnect indicator if player not connected
 					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
@@ -865,7 +880,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Set player text
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
+		string playerTag = "";
+		if (CRF_CommunityTagManager.GetInstance())
+			playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
 		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetPlayerText(playerName);
+		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetTagText(playerTag);
 		
 		// Show disconnect indicator if player not connected
 		if (!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
@@ -952,6 +971,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			
 			// Add player to unslotted list
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			string playerTag = "";
+			if (CRF_CommunityTagManager.GetInstance())
+				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(playerId);
 			int index = m_cUnslotPlayerListBoxComponent.AddItemAndIconPlayer(
 				playerName, 
 				EMPTY_RESOURCE, 
@@ -962,6 +984,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			
 			// Set up selection button
 			SCR_ListBoxElementComponent comp = m_cUnslotPlayerListBoxComponent.GetElementComponent(index);
+			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+			if (crfComp)
+				crfComp.SetTagText(playerTag);
 			comp.GetSelectButton().m_OnClicked.Insert(SelectPlayerDelay);
 			
 			// Highlight admins, moderators, and selected players
@@ -1233,8 +1258,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		 else 
 			playerIconResource = EMPTY_RESOURCE;
 			
+		string displayName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		string playerTag = "";
+		if (CRF_CommunityTagManager.GetInstance())
+			playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(playerId);
+
 		listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
-			GetGame().GetPlayerManager().GetPlayerName(playerId), 
+			displayName, 
 			playerIconResource, 
 			"flag", 
 			null, 
@@ -1242,6 +1272,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Apply appropriate color based on player status
 		SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(listIndex);
+		CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+		if (crfComp)
+			crfComp.SetTagText(playerTag);
 		
 		SetPlayerStatusColor(playerId, comp);
 		

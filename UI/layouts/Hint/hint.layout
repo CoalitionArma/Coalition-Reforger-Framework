@@ -51,9 +51,29 @@ FrameWidgetClass {
     SizeY 130.452
     OffsetBottom -132.09
    }
+   "Z Order" 97
+   Opacity 0.58
+   Color 0.1274 0.1274 0.1274 1
+   Size 900 300
+   Mask "{12B6C6BD1A72A47F}UI/Textures/Common/gradientTexture_Dither_up_512.edds"
+   "Transition width" 1
+   Progress 0.59
+  }
+  PanelWidgetClass "{694975ACA429BAD9}" {
+   Name "hintBGOutline"
+   Slot FrameWidgetSlot "{624D2AA9D74A78F9}" {
+    Anchor 0.867 0.087 0.867 0.089
+    PositionX -152.97
+    OffsetLeft -152.97
+    PositionY 1.638
+    OffsetTop 1.638
+    SizeX 299.64
+    OffsetRight -146.67
+    SizeY 130.452
+    OffsetBottom -132.09
+   }
    "Z Order" 98
-   Opacity 0.5
-   Color 0.053 0.053 0.053 1
+   Color 0.0369 0.0369 0.0369 1
   }
  }
 }

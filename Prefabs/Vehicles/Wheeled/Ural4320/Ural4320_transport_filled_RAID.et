@@ -1,0 +1,16 @@
+Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_RaidItemComponent "{691C043D6A00241A}" {
+   m_iSupplyValue 20
+   m_sItemName "Cargo Vehicle"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Cargo {
+     Prefab "{936A287007DCE2EE}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_cargo_filled.et"
+    }
+   }
+  }
+ }
+}

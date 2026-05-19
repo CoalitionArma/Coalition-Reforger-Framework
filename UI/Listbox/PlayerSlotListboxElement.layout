@@ -150,6 +150,30 @@ ButtonWidgetClass {
          Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
          Size 40 40
         }
+        TextWidgetClass "{CF0001AB00000001}" {
+         Name "TagName"
+         Slot FrameWidgetSlot "{CF0001AB00000002}" {
+          Anchor 0 0 0 0
+          PositionX 285
+          OffsetLeft 285
+          PositionY 5
+          OffsetTop 5
+          SizeX 60
+          OffsetRight -345
+          SizeY 30
+          OffsetBottom -35
+         }
+         Clipping Ancestor
+         Color 1 1 0 1
+         Text ""
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 0
+         FontProperties FontProperties "{691EE844BCE53809}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+          OutlineSize 2
+         }
+        }
         TextWidgetClass "{632444CBEEFA6A1B}" {
          Name "PlayerName"
          Slot FrameWidgetSlot "{630A2568FA12B1F6}" {

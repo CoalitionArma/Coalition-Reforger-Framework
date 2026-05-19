@@ -68,6 +68,10 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
+
+		// Fetch community tags so they appear in the player list
+		if (CRF_CommunityTagManager.GetInstance())
+			CRF_CommunityTagManager.GetInstance().FetchTagsForCurrentPlayers();
 	}
 	
 	/**
@@ -318,13 +322,21 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
 				
+			string displayName = GetGame().GetPlayerManager().GetPlayerName(player);
+			string playerTag = "";
+			if (CRF_CommunityTagManager.GetInstance())
+				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(player);
+
 			int index = m_cPlayerListBoxComponent.AddItem(
-				GetGame().GetPlayerManager().GetPlayerName(player), 
+				displayName, 
 				null, 
 				"{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout"
 			);
 			
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
+			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+			if (crfComp)
+				crfComp.SetTagText(playerTag);
 			
 			// Color code players by role
 			SetPlayerStatusColor(player,comp);

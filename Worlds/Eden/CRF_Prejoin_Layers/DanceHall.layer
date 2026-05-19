@@ -1,0 +1,468 @@
+$grp LightEntity {
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4783.42 174.052 6993.132
+  angles -88.333 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4782.848 174.991 6993.882
+  angles 23.211 50.338 33.605
+  Color 0.6235 0.1569 0.5059 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4783.824 174.883 6992.482
+  angles 47.342 -111.377 -145.752
+  Color 0.502 0 0.3765 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4771.087 172.692 6984.571
+  angles -88.333 0 0
+  Color 0 0.1255 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4768.757 172.707 6992.967
+  angles -88.333 0 0
+  Color 0 0.1255 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4775.373 173.768 6993.502
+  angles 46.379 -180 -180
+  Color 0.502 0 0 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4776.178 173.912 6988.714
+  angles 48.193 0 0
+  Color 0 0.1255 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4765.396 173.251 6988.238
+  angles 48.193 0 0
+  Color 0 0.1255 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4767.948 172.429 6983.803
+  angles 48.193 0 0
+  Color 0.251 0 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4767.654 177.154 6983.592
+  angles 48.193 0 0
+  Color 0.502 0 0.3765 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4765.379 177.85 6987.591
+  angles 48.193 0 0
+  Color 0 0.1255 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4765.051 183.93 6988.792
+  angles 48.193 0 0
+  Color 0.251 0 0.502 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4765.372 189.51 6988.256
+  angles 48.193 0 0
+  Color 0.502 0 0.3765 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+ {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 4777.146 182.081 6991.255
+  angles 48.193 0 0
+  Color 0.502 0 0.3765 1
+  LV 11.05
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 20
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 4740.784 -6.601 6980.878
+  angles 0 75.101 0
+  scale 5
+ }
+ {
+  coords 4758.681 -11.55 7015.603
+  angles 0 159.162 0
+  scale 5
+ }
+ {
+  coords 4818.371 -17.443 7002.174
+  angles 0 -106.783 0
+  scale 5
+ }
+ {
+  coords 4801.423 -17.458 6969.062
+  angles 0 -19.195 0
+  scale 5
+ }
+}
+LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
+ components {
+  StreetLampComponent "{55A0954A909C9109}" {
+   "Emissive Color" 0.3176 0.0706 0.5608 1
+  }
+ }
+ coords 4783.48 173.024 6993.029
+ angles 0 0 0
+ Color 0.3176 0.0706 0.5608 1
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
+ {
+  coords 4773.275 6.443 6983.023
+  angles 0.219 84.668 90.196
+  scale 0.1
+ }
+ {
+  coords 4774.346 6.469 6983.207
+  angles 0.219 84.668 90.196
+  scale 0.1
+ }
+ {
+  coords 4780.106 8.517 6985.035
+  angles 0.228 82.068 90.186
+  scale 0.1
+ }
+ {
+  coords 4781.168 8.144 6985.267
+  angles 0.228 82.068 90.186
+  scale 0.1
+ }
+ {
+  coords 4788.375 6.574 6988.089
+  angles 0.219 84.668 90.196
+  scale 0.1
+ }
+ {
+  coords 4789.447 6.819 6988.273
+  angles 0.219 84.668 90.196
+  scale 0.1
+ }
+ {
+  coords 4777.35 8.617 6998.82
+  angles -0.234 -99.872 89.822
+  scale 0.1
+ }
+ {
+  coords 4776.296 7.188 6998.552
+  angles -0.234 -99.872 89.822
+  scale 0.1
+ }
+ {
+  coords 4770.62 6.633 6996.853
+  angles -0.234 -99.872 89.822
+  scale 0.1
+ }
+ {
+  coords 4769.564 6.644 6996.583
+  angles -0.234 -99.872 89.822
+  scale 0.1
+ }
+ {
+  coords 4762.413 6.292 6988.024
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4762.644 6.31 6986.961
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4762.279 10.508 6988.01
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4762.51 10.526 6986.947
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4762.505 15.008 6988.048
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4762.736 15.026 6986.985
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4764.201 2.975 6983.593
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4764.432 2.993 6982.53
+  angles -0.186 172.118 90.227
+  scale 0.1
+ }
+ {
+  coords 4789.455 7.015 6988.432
+  angles -0.225 -97.14 89.811
+  scale 0.1
+ }
+ {
+  coords 4788.389 6.77 6988.214
+  angles -0.225 -97.14 89.811
+  scale 0.1
+ }
+ {
+  coords 4780.989 8.353 6985.264
+  angles -0.228 -98.136 89.815
+  scale 0.1
+ }
+ {
+  coords 4779.927 8.444 6985.028
+  angles -0.228 -98.136 89.815
+  scale 0.1
+ }
+ {
+  coords 4774.2 6.495 6983.438
+  angles -0.227 -97.815 89.814
+  scale 0.1
+ }
+ {
+  coords 4773.136 6.512 6983.208
+  angles -0.227 -97.815 89.814
+  scale 0.1
+ }
+ {
+  coords 4769.606 6.599 6996.594
+  angles 0.228 81.806 90.185
+  scale 0.1
+ }
+ {
+  coords 4770.667 6.635 6996.831
+  angles 0.228 81.806 90.185
+  scale 0.1
+ }
+ {
+  coords 4776.342 7.278 6998.416
+  angles 0.228 81.806 90.185
+  scale 0.1
+ }
+ {
+  coords 4777.403 8.954 6998.652
+  angles 0.228 81.806 90.185
+  scale 0.1
+ }
+ {
+  coords 4764.369 3.825 6982.472
+  angles 0.183 -8.648 89.77
+  scale 0.1
+ }
+ {
+  coords 4764.123 3.849 6983.531
+  angles 0.183 -8.648 89.77
+  scale 0.1
+ }
+ {
+  coords 4762.614 6.252 6986.852
+  angles 0.182 -9.022 89.769
+  scale 0.1
+ }
+ {
+  coords 4762.361 6.276 6987.91
+  angles 0.182 -9.022 89.769
+  scale 0.1
+ }
+ {
+  coords 4762.622 10.829 6986.9
+  angles 0.182 -8.885 89.769
+  scale 0.1
+ }
+ {
+  coords 4762.372 10.853 6987.958
+  angles 0.182 -8.885 89.769
+  scale 0.1
+ }
+ {
+  coords 4762.596 15.373 6986.889
+  angles 0.189 -7.167 89.775
+  scale 0.1
+ }
+ {
+  coords 4762.379 15.397 6987.954
+  angles 0.189 -7.167 89.775
+  scale 0.1
+ }
+}
