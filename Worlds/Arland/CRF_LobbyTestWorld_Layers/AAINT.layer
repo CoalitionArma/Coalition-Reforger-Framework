@@ -735,6 +735,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
      }
     }
     SCR_Faction "{628B22E9B4056C88}" {
+     m_NotificationFactionColor 0.041 0.25 0.387 1
      m_aFriendlyFactionsIds {
      }
     }
