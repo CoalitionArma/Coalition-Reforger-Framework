@@ -211,14 +211,18 @@ class CRF_PolyZone : ScriptComponent
 		
 		if (m_bReversed)
 		{
-			vector minB;
-			vector maxB;
-			GetGame().GetWorld().GetBoundBox(minB, maxB);
-			outPoints.InsertAt(Vector(minB[0], 0, minB[2]), 0);
-			outPoints.InsertAt(Vector(minB[0], 0, maxB[2]), 0);
-			outPoints.InsertAt(Vector(maxB[0], 0, maxB[2]), 0);
-			outPoints.InsertAt(Vector(maxB[0], 0, minB[2]), 0);
-			outPoints.InsertAt(Vector(minB[0], 0, minB[2]), 0);
+			// Use the map tile's exact bounds (always 0,0 → sizeX, sizeZ in world space)
+			// instead of GetBoundBox(), which returns entity AABB and can misalign with
+			// the visible map corners when objects are placed near or outside terrain edges.
+			float minX = 0;
+			float minZ = 0;
+			float maxX = m_MapEntity.GetMapSizeX();
+			float maxZ = m_MapEntity.GetMapSizeY(); // map Y axis == world Z axis (top-down)
+			outPoints.InsertAt(Vector(minX, 0, minZ), 0);
+			outPoints.InsertAt(Vector(minX, 0, maxZ), 0);
+			outPoints.InsertAt(Vector(maxX, 0, maxZ), 0);
+			outPoints.InsertAt(Vector(maxX, 0, minZ), 0);
+			outPoints.InsertAt(Vector(minX, 0, minZ), 0);
 			outPoints.InsertAt(outPoints[5], 0);
 		}
 			
