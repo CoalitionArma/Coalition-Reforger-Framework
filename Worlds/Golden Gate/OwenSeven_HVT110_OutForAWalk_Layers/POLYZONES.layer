@@ -14,7 +14,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -58.574 0 -2070.074
   }
   ShapePoint "{69666DBE999FD89F}" {
-   Position -2907.151 0 -2026.121
+   Position -2929.777 0 -2071.99
   }
   ShapePoint "{69666DBE9C6ADE1F}" {
    Position -2440.582 0 -505.588
@@ -57,19 +57,19 @@ PolylineShapeEntity OpforSafe : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone
    Position -169.146 0 514.148
   }
   ShapePoint "{6958050CD522AE7D}" {
-   Position -78.046 0 651.178
+   Position -90.945 0 663.31
   }
   ShapePoint "{6958050DA252243F}" {
-   Position 37.93 0 729.111
+   Position 98.322 0 751.808
   }
   ShapePoint "{6958050DA4817B7A}" {
-   Position 139.373 0 707.611
+   Position 157.556 0 666.263
   }
   ShapePoint "{6958050CD6B18D3F}" {
-   Position 275.723 0 968.5
+   Position 286.482 0 621.221
   }
   ShapePoint "{694F3DC78EDF3282}" {
-   Position 481.335 0 804.709
+   Position 472.437 0 636.973
   }
   ShapePoint "{694F3DC78FC68D57}" {
    Position 538.286 0 212.751

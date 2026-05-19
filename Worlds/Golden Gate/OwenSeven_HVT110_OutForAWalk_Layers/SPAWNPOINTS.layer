@@ -30,7 +30,7 @@ $grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/Spawn
   m_sCallsignOfGroupToSpawn "2-4"
  }
  BluforSpawn1PLT {
-  coords 3715.944 71.641 186.575
+  coords 3715.904 73.814 188.105
   angles 0 -173.95 0
   m_sCallsignOfGroupToSpawn "1PLT"
  }
@@ -39,12 +39,12 @@ $grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/Spawn
   m_sCallsignOfGroupToSpawn "T14"
  }
  BluforSpawnCOY {
-  coords 3710.061 71.514 183.712
+  coords 3710.021 73.688 185.242
   angles 0 178.488 0
   m_sCallsignOfGroupToSpawn "COY"
  }
  BluforSpawn1PLT2 {
-  coords 3705.021 71.673 186.437
+  coords 3704.981 73.846 187.967
   angles 0 -171.847 0
   m_sCallsignOfGroupToSpawn "2PLT"
  }

@@ -87,7 +87,6 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -32.392 0
   m_rVehicle "{47F415627EED66EB}Vehicles/HighLux/KILUXnew7725_Armed_SPG9_WZNP.et"
   m_iRespawnTimer 99999
-  m_bShouldAddAmmo 0
   m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{69666DBE136FDD80}" {
    m_iAmountofAutoCannonAmmo 0
    m_iAmountofMachineGunAmmo 9

@@ -1,7 +1,8 @@
 $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  AirfieldMarker {
-  coords 5742.922 7.885 978.723
-  angles 0 0 0
+  coords 5833.531 7.885 991.053
+  angles 0 88.673 0
+  m_MarkerColor 0.991 0.991 0.991 1
   m_sQuadName "mark-exclamation"
   m_sDescription "Airfield"
  }
@@ -13,8 +14,9 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "Minefield"
  }
  DocksMarker {
-  coords 5517.052 0.648 1751.517
-  angles 0 -10.106 0
+  coords 5512.496 0.648 1769.762
+  angles 0 -19.605 0
+  m_MarkerColor 0.603 0.002 0.002 1
   m_sQuadName "mark-exclamation"
   m_sDescription "Docks"
  }
