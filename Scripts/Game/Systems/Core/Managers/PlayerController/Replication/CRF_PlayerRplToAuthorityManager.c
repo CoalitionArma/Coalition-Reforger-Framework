@@ -513,9 +513,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RegisterPlayerForLottery(int playerId)
+	void RegisterPlayerForLottery(int playerId, string factionKey)
 	{
-		Rpc(RpcAsk_RegisterPlayerForLottery, playerId);
+		Rpc(RpcAsk_RegisterPlayerForLottery, playerId, factionKey);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2427,11 +2427,11 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RegisterPlayerForLottery(int playerId)
+	protected void RpcAsk_RegisterPlayerForLottery(int playerId, string factionKey)
 	{
-		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
-		if (slotLottery)
-			slotLottery.RegisterPlayerForLottery_Server(playerId);
+	    CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+	    if (slotLottery)
+	        slotLottery.RegisterPlayerForLottery_Server(playerId, factionKey);
 	}
 	
 	//------------------------------------------------------------------------------------------------
