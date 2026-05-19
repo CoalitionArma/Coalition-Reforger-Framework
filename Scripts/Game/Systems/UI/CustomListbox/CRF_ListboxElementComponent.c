@@ -132,6 +132,59 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 		tagWidget.SetText(string.Format("[%1] ", tag));
 		tagWidget.SetColor(Color.FromRGBA(255, 220, 0, 255)); // bright yellow
 	}
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Shows or hides the rank chevron image based on the player's XP value.
+	 * Pass -1 to hide the chevron (player has no data or rank below threshold).
+	 * @param xp The player's total XP from the Coalition database.
+	 */
+	void SetRankChevron(int xp)
+	{
+		ImageWidget chevron = ImageWidget.Cast(m_wRoot.FindAnyWidget("RankChevron"));
+		if (!chevron)
+			return;
+
+		ResourceName texture = GetRankTexture(xp);
+		if (texture.IsEmpty())
+		{
+			chevron.SetVisible(false);
+			return;
+		}
+
+		chevron.SetVisible(true);
+		chevron.LoadImageTexture(0, texture);
+		chevron.SetImage(0);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Maps an XP value to a rank insignia resource name.
+	 * All players start at 10000 XP (Private). Thresholds match CRF_CommunityTagManager.
+	 * NOTE: ranks without a .edds file yet require the corresponding .png to be added to
+	 *       UI/Images/Ranks/ and compiled by the Workbench.
+	 */
+	protected ResourceName GetRankTexture(int xp)
+	{
+		if (xp < 0)
+			return ResourceName.Empty;
+		if (xp >= 150000)
+			return "{084BB174FA02FB27}UI/Images/Ranks/rank_E8.edds";  // SFC  (E-7)
+		if (xp >= 100000)
+			return "{6FF3DCD212537B87}UI/Images/Ranks/rank_E7.edds";  // SSG  (E-6)
+		if (xp >= 75000)
+			return "{9BFB9B4A1F8E13F3}UI/Images/Ranks/rank_E6.edds";  // SGT  (E-5)
+		if (xp >= 55000)
+			return "{C513B209A0039DFC}UI/Images/Ranks/rank_E5.edds";  // CPL  (E-4)
+		if (xp >= 40000)
+			return "{311BF591ADDEF588}UI/Images/Ranks/rank_E4.edds";  // SPC  (E-4)
+		if (xp >= 25000)
+			return "{78C3E08EDF1881E2}UI/Images/Ranks/rank_E3.edds";  // PFC  (E-3)
+		if (xp >= 15000)
+			return "{8CCBA716D2C5E996}UI/Images/Ranks/rank_E2.edds";  // PV2  (E-2)
+		// PVT (E-1): no rank logo
+		return ResourceName.Empty;
+	}
 	
 	/**
 	 * Sets the group name text

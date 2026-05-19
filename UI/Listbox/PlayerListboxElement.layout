@@ -111,6 +111,22 @@ ButtonWidgetClass {
          "Vertical Alignment" Center
          Wrap 1
         }
+        ImageWidgetClass "{CF0003AB00000003}" {
+         Name "RankChevron"
+         Slot FrameWidgetSlot "{CF0003AB00000004}" {
+          Anchor 0 0 0 0
+          PositionX 175
+          OffsetLeft 175
+          PositionY 10
+          OffsetTop 10
+          SizeX 20
+          OffsetRight -195
+          SizeY 20
+          OffsetBottom -30
+         }
+         "Is Visible" 0
+         Size 20 20
+        }
         ButtonWidgetClass "{630A25D7A5616D15}" {
          Name "PlayerButton"
          Slot FrameWidgetSlot "{630510543BD8CBB1}" {

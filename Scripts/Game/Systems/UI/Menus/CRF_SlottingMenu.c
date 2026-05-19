@@ -100,11 +100,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Register for slot updates
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 
-		// Fetch community tags and register for updates when they arrive
-		if (CRF_CommunityTagManager.GetInstance())
+		// Fetch community tags + ranks and register for updates when they arrive
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
 		{
-			CRF_CommunityTagManager.GetInstance().FetchTagsForCurrentPlayers();
-			CRF_CommunityTagManager.GetInstance().GetOnTagsUpdated().Insert(UpdateSlots);
+			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Insert(RefreshTagsAndRanks);
 		}
 		
 		// Setup faction button event handlers
@@ -421,9 +422,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Unregister from slot updates to prevent memory leaks
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 
-		// Unregister from community tag updates
-		if (CRF_CommunityTagManager.GetInstance())
-			CRF_CommunityTagManager.GetInstance().GetOnTagsUpdated().Remove(UpdateSlots);
+		// Unregister from community tag/rank updates
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.GetOnPlayerInfoUpdated().Remove(RefreshTagsAndRanks);
+		}
 		
 		// Remove all input action listeners
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -633,6 +637,75 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 * Updates the slot display UI with current data
 	 * Shows available slots for the selected faction
 	 */
+	//! Lightweight refresh — updates only tag and rank widgets on already-displayed list items.
+	//! Called when the async tag/rank fetch completes; avoids a full rebuild of the slot list.
+	protected void RefreshTagsAndRanks()
+	{
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (!tagMgr)
+			return;
+
+		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+
+		// Update slot list
+		for (int i = 0; i < m_cSlotListBoxComponent.GetItemCount(); i++)
+		{
+			CRF_ListBoxElementComponent elem = m_cSlotListBoxComponent.GetCRFElementComponent(i);
+			if (!elem)
+				continue;
+			CRF_SlotData slotData;
+			if (!slotMap.Find(elem.m_iSlotId, slotData) || !slotData)
+				continue;
+			int playerId = slotData.GetSlotCurrentPlayerId();
+			if (playerId <= 0)
+				continue;
+			elem.SetTagText(tagMgr.GetPlayerTag(playerId));
+			elem.SetRankChevron(tagMgr.GetPlayerXp(playerId));
+		}
+
+		// Update ORBAT list
+		for (int i = 0; i < m_cOrbatListBoxComponent.GetItemCount(); i++)
+		{
+			CRF_ListBoxElementComponent elem = m_cOrbatListBoxComponent.GetCRFElementComponent(i);
+			if (!elem)
+				continue;
+			CRF_SlotData slotData;
+			if (!slotMap.Find(elem.m_iSlotId, slotData) || !slotData)
+				continue;
+			int playerId = slotData.GetSlotCurrentPlayerId();
+			if (playerId <= 0)
+				continue;
+			elem.SetTagText(tagMgr.GetPlayerTag(playerId));
+			elem.SetRankChevron(tagMgr.GetPlayerXp(playerId));
+		}
+
+		// Update unslotted players list
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
+		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		for (int i = 0; i < m_cUnslotPlayerListBoxComponent.GetItemCount(); i++)
+		{
+			SCR_ListBoxElementComponent comp = m_cUnslotPlayerListBoxComponent.GetElementComponent(i);
+			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+			if (!crfComp)
+				continue;
+			// Find the player ID: match unslotted players by list order
+			int unslottedIdx = 0;
+			foreach (int pid : playerIds)
+			{
+				if (pid <= 0 || slottingMgr.GetPlayerSlotFaction(pid, true) || !GetGame().GetPlayerManager().IsPlayerConnected(pid))
+					continue;
+				if (unslottedIdx == i)
+				{
+					crfComp.SetTagText(tagMgr.GetPlayerTag(pid));
+					crfComp.SetRankChevron(tagMgr.GetPlayerXp(pid));
+					break;
+				}
+				unslottedIdx++;
+			}
+		}
+	}
+
 	void UpdateSlots()
 	{
 		// Re-initialize slot counts
@@ -729,7 +802,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			// Add admin-only controls
 			if(isAdmin)
 			{	
-				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetLockButton().m_OnClicked.Insert(LockGroupSlotsDelayed);
+				SCR_ButtonTextComponent lockGroupBtn = m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetLockButton();
+				if (lockGroupBtn)
+					lockGroupBtn.m_OnClicked.Insert(LockGroupSlotsDelayed);
 				GetGame().GetCallqueue().Call(SetupAdminGroupIcons, group, groupIndex);
 			}
 			
@@ -819,10 +894,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				{
 					string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
 					string playerTag = "";
+					int slotPlayerXp = -1;
 					if (CRF_CommunityTagManager.GetInstance())
+					{
 						playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
+						slotPlayerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(slotData.GetSlotCurrentPlayerId());
+					}
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
 					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetTagText(playerTag);
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetRankChevron(slotPlayerXp);
 					
 					// Show disconnect indicator if player not connected
 					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
@@ -842,8 +922,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				else
 					isGroupFull = false;
 				
-				// Add click handler
-				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
+				// Add click handler — subscribe to the element's own m_OnClicked because
+				// GetSlotButton() can return null when SCR_ButtonTextComponent fails to attach.
+				// The element fires m_OnClicked on every click (button click propagates up),
+				// so this is functionally equivalent and always safe.
+				CRF_ListBoxElementComponent slotElem = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
+				if (slotElem)
+					slotElem.m_OnClicked.Insert(SelectSlotDelay);
 				
 				CRF_ESlotType slotType = slotData.GetSlotType();
 				
@@ -881,10 +966,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Set player text
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
 		string playerTag = "";
+		int orbatPlayerXp = -1;
 		if (CRF_CommunityTagManager.GetInstance())
+		{
 			playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
+			orbatPlayerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(slotData.GetSlotCurrentPlayerId());
+		}
 		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetPlayerText(playerName);
 		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetTagText(playerTag);
+		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetRankChevron(orbatPlayerXp);
 		
 		// Show disconnect indicator if player not connected
 		if (!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
@@ -911,8 +1001,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	private void SetupAdminSlotControls(int slotIndex, CRF_SlotData slotData)
 	{
-		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetLockButton().m_OnClicked.Insert(LockSlotDelay);
-		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetKickButton().m_OnClicked.Insert(KickSlotDelay);
+		SCR_ButtonTextComponent lockBtn = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetLockButton();
+		if (lockBtn)
+			lockBtn.m_OnClicked.Insert(LockSlotDelay);
+		SCR_ButtonTextComponent kickBtn = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetKickButton();
+		if (kickBtn)
+			kickBtn.m_OnClicked.Insert(KickSlotDelay);
 		
 		if (slotData.GetIsLockedSlot())
 			m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetLockImage(
@@ -972,8 +1066,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			// Add player to unslotted list
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 			string playerTag = "";
+			int unslottedXp = -1;
 			if (CRF_CommunityTagManager.GetInstance())
+			{
 				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(playerId);
+				unslottedXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(playerId);
+			}
 			int index = m_cUnslotPlayerListBoxComponent.AddItemAndIconPlayer(
 				playerName, 
 				EMPTY_RESOURCE, 
@@ -986,7 +1084,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			SCR_ListBoxElementComponent comp = m_cUnslotPlayerListBoxComponent.GetElementComponent(index);
 			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
 			if (crfComp)
+			{
 				crfComp.SetTagText(playerTag);
+				crfComp.SetRankChevron(unslottedXp);
+			}
 			comp.GetSelectButton().m_OnClicked.Insert(SelectPlayerDelay);
 			
 			// Highlight admins, moderators, and selected players
@@ -1260,8 +1361,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			
 		string displayName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		string playerTag = "";
+		int playerXp = -1;
 		if (CRF_CommunityTagManager.GetInstance())
+		{
 			playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(playerId);
+			playerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(playerId);
+		}
 
 		listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
 			displayName, 
@@ -1274,7 +1379,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(listIndex);
 		CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
 		if (crfComp)
+		{
 			crfComp.SetTagText(playerTag);
+			crfComp.SetRankChevron(playerXp);
+		}
 		
 		SetPlayerStatusColor(playerId, comp);
 		

@@ -69,9 +69,11 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
 
-		// Fetch community tags so they appear in the player list
+		// Fetch community tags + ranks so they appear in the player list
 		if (CRF_CommunityTagManager.GetInstance())
-			CRF_CommunityTagManager.GetInstance().FetchTagsForCurrentPlayers();
+		{
+			CRF_CommunityTagManager.GetInstance().FetchPlayerInfo();
+		}
 	}
 	
 	/**
@@ -324,8 +326,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 				
 			string displayName = GetGame().GetPlayerManager().GetPlayerName(player);
 			string playerTag = "";
+			int playerXp = -1;
 			if (CRF_CommunityTagManager.GetInstance())
+			{
 				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(player);
+				playerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(player);
+			}
 
 			int index = m_cPlayerListBoxComponent.AddItem(
 				displayName, 
@@ -336,7 +342,10 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
 			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
 			if (crfComp)
+			{
 				crfComp.SetTagText(playerTag);
+				crfComp.SetRankChevron(playerXp);
+			}
 			
 			// Color code players by role
 			SetPlayerStatusColor(player,comp);
