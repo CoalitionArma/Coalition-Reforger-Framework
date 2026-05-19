@@ -110,6 +110,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		if (m_fDistanceToIcon >= CHAR_ICON_FADE_FAR)
 		{
 			m_wRoot.SetOpacity(0.0);
+			m_wRoot.SetEnabled(false); // Disable so the invisible widget cannot block player clicks
 			return;
 		}
 		

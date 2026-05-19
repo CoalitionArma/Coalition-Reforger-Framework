@@ -109,6 +109,29 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 		if (textWidget)
 			textWidget.SetText(text);
 	}
+
+	/**
+	 * Sets the community tag text (yellow label before the player name).
+	 * Pass an empty string to hide the tag.
+	 * @param tag The raw tag string e.g. "CRF" — brackets are added automatically.
+	 */
+	void SetTagText(string tag)
+	{
+		// Tag widget may live in CRF slot/orbat layouts ("TagName")
+		// or in the plain player-list layouts which share the same component.
+		TextWidget tagWidget = TextWidget.Cast(m_wRoot.FindAnyWidget("TagName"));
+		if (!tagWidget)
+			return;
+
+		if (tag.IsEmpty())
+		{
+			tagWidget.SetText("");
+			return;
+		}
+
+		tagWidget.SetText(string.Format("[%1] ", tag));
+		tagWidget.SetColor(Color.FromRGBA(255, 220, 0, 255)); // bright yellow
+	}
 	
 	/**
 	 * Sets the group name text

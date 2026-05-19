@@ -6,6 +6,7 @@ GenericEntity : "{EC0B2A922E4AD1AB}Prefabs/Weapons/Rifles/SCARH/Rifle_SCARH_Base
     AttachmentSlotComponent "{61785E090D534961}" {
      AttachmentSlot InventoryStorageSlot Foregrip {
       Offset 0 0.0324 -0.12
+      Enabled 1
       Prefab "{A6A478BB9FC6D2C1}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight_LS.et"
      }
     }
