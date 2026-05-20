@@ -1339,9 +1339,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Update player controller with hint
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerComp)
-			return;
-		
 		if (playerControllerComp.m_wSavedHintWidget)
 		{
 			delete playerControllerComp.m_wSavedHintWidget;
@@ -1351,9 +1348,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
-		if (!hint)
-			return;
-		
 		hint.ShowHint(data, 8000);
 	}	
 	
