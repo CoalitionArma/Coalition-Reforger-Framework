@@ -31,12 +31,12 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected static const int RANK_XP_E9A = 450000; // Sergeant Major        (E-9a)
 	protected static const int RANK_XP_E9B = 600000; // Command Sergeant Major(E-9b)
 	protected static const int RANK_XP_E9C = 800000; // Sergeant Major of the Army (E-9c)
-	//! Warrant Officer W1–W5:
+	//! Warrant Officer W1–W5 (5 ranks evenly spaced to 800 000 XP):
 	protected static const int RANK_XP_W1  = 0;      // Warrant Officer 1
-	protected static const int RANK_XP_W2  = 75000;  // Chief Warrant Officer 2
-	protected static const int RANK_XP_W3  = 200000; // Chief Warrant Officer 3
-	protected static const int RANK_XP_W4  = 400000; // Chief Warrant Officer 4
-	protected static const int RANK_XP_W5  = 650000; // Chief Warrant Officer 5
+	protected static const int RANK_XP_W2  = 200000; // Chief Warrant Officer 2
+	protected static const int RANK_XP_W3  = 400000; // Chief Warrant Officer 3
+	protected static const int RANK_XP_W4  = 600000; // Chief Warrant Officer 4
+	protected static const int RANK_XP_W5  = 800000; // Chief Warrant Officer 5
 	//! Commissioned Officer O1–O11:
 	protected static const int RANK_XP_O1  = 0;      // Second Lieutenant   (O-1)
 	protected static const int RANK_XP_O2  = 30000;  // First Lieutenant    (O-2)
