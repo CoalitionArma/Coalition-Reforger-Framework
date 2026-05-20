@@ -324,6 +324,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 					// Make sure we close logging memory leak
 					m_LoggingManager.OnGameModeEnd(GetEndGameData());
+					
+					// Close the VAAR recording
+					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
+					if (vaarComponent)
+						vaarComponent.OnGameModeEnd(GetEndGameData());
 					break;
 				}
 				

@@ -48,7 +48,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
         }
 	}
 	
-	// Does this work??
+	// Handle closing out the AAR at game end
+	//------------------------------------------------------------------------------------
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
