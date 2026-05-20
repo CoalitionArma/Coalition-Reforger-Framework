@@ -1,3 +1,13 @@
+GenericEntity : "{1855751A9E1856D6}Prefabs/Props/boat/portecontainer.et" {
+ components {
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "Normal"
+  }
+ }
+ coords 5506.625 -3.632 1833.703
+ angles 0 -108.298 0
+ scale 0.84
+}
 GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
  coords 4774.027 3.805 1602.44
  angles -14.912 29.684 0
@@ -82,11 +92,6 @@ SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/C
 SCR_DestructibleBuildingEntity : "{A4B690DEC3D39B11}Prefabs/Structures/Infrastructure/Naval/Sheds/BoatShed_01/BoatShed_01_base.et" {
  coords 5504.885 5.015 1763.5
  angles 0 -104.491 0
-}
-SCR_DestructibleBuildingEntity : "{A665817267C8BC2D}Prefabs/Props/Wrecks/ShipWreckMetal_01/ShipWreckMetal_01_base.et" {
- coords 5493.068 -2.593 1828.223
- angles 0 72.976 0
- scale 3.734
 }
 $grp SCR_DestructibleBuildingEntity : "{BACE78CFBF553B0B}Prefabs/Structures/Infrastructure/Naval/Boatsheds/Boatshed01.et" {
  {
