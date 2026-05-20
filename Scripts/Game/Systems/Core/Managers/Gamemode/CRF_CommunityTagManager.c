@@ -16,15 +16,39 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected static const string PLAYER_INFO_ENDPOINT = "api/game/player-info?names=";
 
 	//! XP thresholds for rank tiers.
-	//! All players start at 10000 XP (rank 1 = PVT).
-	protected static const int RANK_XP_PVT = 0;     // Private          (E-1)
-	protected static const int RANK_XP_PV2 = 15000; // Private Second Class (E-2)
-	protected static const int RANK_XP_PFC = 25000; // Private First Class  (E-3)
-	protected static const int RANK_XP_SPC = 40000; // Specialist           (E-4)
-	protected static const int RANK_XP_CPL = 55000; // Corporal             (E-4)
-	protected static const int RANK_XP_SGT = 75000; // Sergeant             (E-5)
-	protected static const int RANK_XP_SSG = 100000; // Staff Sergeant      (E-6)
-	protected static const int RANK_XP_SFC = 150000; // Sergeant First Class (E-7)
+	//! All players start at 10000 XP (rank 1 of any track).
+	//! Enlisted E1–E9 (E4/E8/E9 have sub-variants a/b/c):
+	protected static const int RANK_XP_E1  = 0;      // Private               (E-1, no insignia)
+	protected static const int RANK_XP_E2  = 15000;  // Private Second Class  (E-2)
+	protected static const int RANK_XP_E3  = 25000;  // Private First Class   (E-3)
+	protected static const int RANK_XP_E4A = 40000;  // Specialist            (E-4a)
+	protected static const int RANK_XP_E4B = 55000;  // Corporal              (E-4b)
+	protected static const int RANK_XP_E5  = 75000;  // Sergeant              (E-5)
+	protected static const int RANK_XP_E6  = 100000; // Staff Sergeant        (E-6)
+	protected static const int RANK_XP_E7  = 150000; // Sergeant First Class  (E-7)
+	protected static const int RANK_XP_E8A = 225000; // Master Sergeant       (E-8a)
+	protected static const int RANK_XP_E8B = 325000; // First Sergeant        (E-8b)
+	protected static const int RANK_XP_E9A = 450000; // Sergeant Major        (E-9a)
+	protected static const int RANK_XP_E9B = 600000; // Command Sergeant Major(E-9b)
+	protected static const int RANK_XP_E9C = 800000; // Sergeant Major of the Army (E-9c)
+	//! Warrant Officer W1–W5:
+	protected static const int RANK_XP_W1  = 0;      // Warrant Officer 1
+	protected static const int RANK_XP_W2  = 75000;  // Chief Warrant Officer 2
+	protected static const int RANK_XP_W3  = 200000; // Chief Warrant Officer 3
+	protected static const int RANK_XP_W4  = 400000; // Chief Warrant Officer 4
+	protected static const int RANK_XP_W5  = 650000; // Chief Warrant Officer 5
+	//! Commissioned Officer O1–O11:
+	protected static const int RANK_XP_O1  = 0;      // Second Lieutenant   (O-1)
+	protected static const int RANK_XP_O2  = 30000;  // First Lieutenant    (O-2)
+	protected static const int RANK_XP_O3  = 60000;  // Captain             (O-3)
+	protected static const int RANK_XP_O4  = 100000; // Major               (O-4)
+	protected static const int RANK_XP_O5  = 150000; // Lieutenant Colonel  (O-5)
+	protected static const int RANK_XP_O6  = 225000; // Colonel             (O-6)
+	protected static const int RANK_XP_O7  = 350000; // Brigadier General   (O-7)
+	protected static const int RANK_XP_O8  = 500000; // Major General       (O-8)
+	protected static const int RANK_XP_O9  = 650000; // Lieutenant General  (O-9)
+	protected static const int RANK_XP_O10 = 800000; // General             (O-10)
+	protected static const int RANK_XP_O11 = 1000000;// General of the Army (O-11)
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	RUNTIME VARIABLES
@@ -44,6 +68,9 @@ class CRF_CommunityTagManager : ScriptComponent
 
 	//! Cache: player name -> XP value (-1 means not cached)
 	protected ref map<string, int> m_mXpCache = new map<string, int>;
+
+	//! Cache: player name -> rank track ("enlisted" / "warrant" / "officer"), empty = default enlisted
+	protected ref map<string, string> m_mTrackCache = new map<string, string>;
 
 	//! Fired after both tags and XP are fetched and caches are populated
 	protected ref ScriptInvoker m_OnPlayerInfoUpdated = new ScriptInvoker;
@@ -125,6 +152,22 @@ class CRF_CommunityTagManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Returns the cached rank track for a player: "enlisted", "warrant", or "officer".
+	//! Defaults to "enlisted" if the player has no stored preference.
+	string GetPlayerRankTrack(int playerId)
+	{
+		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (name.IsEmpty())
+			return "enlisted";
+
+		string track;
+		if (m_mTrackCache.Find(name, track) && !track.IsEmpty())
+			return track;
+
+		return "enlisted";
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Fetches community tags and XP for all connected players in a single HTTP request.
 	//! Safe to call multiple times; duplicate calls while a fetch is in-flight are ignored.
 	//! Subscribers to GetOnPlayerInfoUpdated() are notified when data arrives.
@@ -179,11 +222,12 @@ class CRF_CommunityTagManager : ScriptComponent
 	void FetchRanksForCurrentPlayers() { FetchPlayerInfo(); }
 
 	//------------------------------------------------------------------------------------------------
-	//! Clears the tag and XP caches.
+	//! Clears the tag, XP, and rank track caches.
 	void ClearCache()
 	{
 		m_mTagCache.Clear();
 		m_mXpCache.Clear();
+		m_mTrackCache.Clear();
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -291,6 +335,53 @@ class CRF_CommunityTagManager : ScriptComponent
 				}
 				if (!playerName.IsEmpty())
 					m_mXpCache.Set(playerName, xp);
+				if (pos < data.Length() && data.ContainsAt(",", pos))
+					pos++;
+			}
+		}
+
+		// --- Parse rank tracks ---
+		// Expected format: "rankTrack":{"PlayerName":"enlisted"|"warrant"|"officer"|null, ...}
+		int trackObjStart = data.IndexOf("\"rankTrack\":{");
+		if (trackObjStart >= 0)
+		{
+			int pos = trackObjStart + 13;
+			while (pos < data.Length())
+			{
+				int keyOpen = data.IndexOfFrom(pos, "\"");
+				if (keyOpen < 0)
+					break;
+				string between = data.Substring(pos, keyOpen - pos);
+				if (between.Contains("}"))
+					break;
+				int keyClose = data.IndexOfFrom(keyOpen + 1, "\"");
+				if (keyClose < 0)
+					break;
+				string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
+				playerName.Replace("%20", " ");
+				int colonPos = data.IndexOfFrom(keyClose + 1, ":");
+				if (colonPos < 0)
+					break;
+				int valueStart = colonPos + 1;
+				if (valueStart >= data.Length())
+					break;
+				string track = "enlisted";
+				if (data.ContainsAt("null", valueStart))
+				{
+					pos = valueStart + 4;
+				}
+				else if (data.ContainsAt("\"", valueStart))
+				{
+					int trackClose = data.IndexOfFrom(valueStart + 1, "\"");
+					if (trackClose < 0)
+						break;
+					track = data.Substring(valueStart + 1, trackClose - valueStart - 1);
+					pos = trackClose + 1;
+				}
+				else
+					break;
+				if (!playerName.IsEmpty())
+					m_mTrackCache.Set(playerName, track);
 				if (pos < data.Length() && data.ContainsAt(",", pos))
 					pos++;
 			}

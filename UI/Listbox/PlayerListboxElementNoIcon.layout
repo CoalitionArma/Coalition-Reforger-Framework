@@ -85,11 +85,11 @@ ButtonWidgetClass {
         TextWidgetClass "{631F6C8316BF370B}" {
          Name "Text"
          Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
-          PositionX 45
-          OffsetLeft 45
+          PositionX 68
+          OffsetLeft 68
           PositionY 0
           OffsetTop 0
-          SizeX 127.438
+          SizeX 104.438
           OffsetRight -172.438
           SizeY 35.557
           OffsetBottom -35.557
@@ -103,12 +103,12 @@ ButtonWidgetClass {
          Name "RankChevron"
          Slot FrameWidgetSlot "{CF0004AB00000004}" {
           Anchor 0 0 0 0
-          PositionX 175
-          OffsetLeft 175
+          PositionX 45
+          OffsetLeft 45
           PositionY 8
           OffsetTop 8
           SizeX 20
-          OffsetRight -195
+          OffsetRight -65
           SizeY 20
           OffsetBottom -28
          }
