@@ -2,7 +2,9 @@ PolylineShapeEntity {
  ID "658635BEF7631DCE"
  components {
   CRF_PolyZone "{65862E4575B86577}" {
-   m_cPolygonColor 0.045 0.045 0.045 0.431
+   m_mPolygonTexture "{0BBFCF29D3791890}UI/Images/Zones/zone-plain.edds"
+   m_cPolygonColor 0.007 0.007 0.007 0.923
+   m_fPolygonUVScale 1
    m_cPolygonBorderColor 0.045 0.045 0.045 1
    m_fPolygonBorderWidth 10
    m_bReversed 1

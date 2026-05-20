@@ -12,8 +12,12 @@ class CRF_SlottingManager : ScriptComponent
 	// Latest Slot ID used
 	protected int m_iLatestSlotID;
 	
-	// Invoker for slot updates
+	// Invoker for slot updates (batch/structural: used by all consumers including AAR & spectator)
 	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
+	
+	// Invoker for surgical per-slot player-ID changes (avoids full list rebuild on every click)
+	protected int m_iLastChangedSlotId = -1;
+	protected ref ScriptInvoker m_OnSlotChanged = new ScriptInvoker;
 	
 	// References to other managers
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
@@ -91,6 +95,14 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (slotData)
 		{
+			// Server-side first-come-first-served guard:
+			// If a player (playerId > 0) is trying to claim a slot that is already occupied
+			// by a DIFFERENT player, reject the request silently.
+			// playerId == 0 (kick/vacate) always proceeds; own-slot re-claim always proceeds.
+			int currentOccupant = slotData.GetSlotCurrentPlayerId();
+			if (playerId > 0 && currentOccupant > 0 && currentOccupant != playerId)
+				return;
+			
 			slotData.SetSlotCurrentPlayerId(playerId);
 			m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
 		};
@@ -131,6 +143,30 @@ class CRF_SlottingManager : ScriptComponent
 	ScriptInvoker GetOnSlottingUpdate()
 	{
 		return m_OnSlottingUpdate;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns the invoker that fires when a single slot's player ID changes (surgical update path).
+	ScriptInvoker GetOnSlotChanged()
+	{
+		return m_OnSlotChanged;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns the slot ID that was most recently changed via NotifySlotPlayerIdChanged().
+	int GetLastChangedSlotId()
+	{
+		return m_iLastChangedSlotId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Called by RpcDo_UpdateSlotPlayerIdDelta to fire the targeted slot-change invoker.
+	//! Stores the slot ID so subscribers can retrieve it without invoice arguments.
+	void NotifySlotPlayerIdChanged(int slotId)
+	{
+		m_iLastChangedSlotId = slotId;
+		if (m_OnSlotChanged)
+			m_OnSlotChanged.Invoke();
 	}
 	
 	//------------------------------------------------------------------------------------------------

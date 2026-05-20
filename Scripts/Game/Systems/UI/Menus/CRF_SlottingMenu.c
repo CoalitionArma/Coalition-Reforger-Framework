@@ -61,6 +61,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	ResourceName m_rCivIcon;                    // CIV faction icon resource
 	
 	//---------------------------------------------------------------------
+	// Player Panel State
+	//---------------------------------------------------------------------
+	protected bool m_bShowingUnslotted = false;  // Whether the unslotted tab is active
+
+	//---------------------------------------------------------------------
 	// Consts
 	//---------------------------------------------------------------------
 	const string EMPTY_RESOURCE = "{2E717F4664C6E49D}UI/Textures/Nametags/Nametag-Filter-Icons/Player.edds";
@@ -99,6 +104,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Register for slot updates
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		
+		// Register for surgical per-slot player-ID updates (no full rebuild needed)
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlotInPlace);
 
 		// Fetch community tags and register for updates when they arrive
 		if (CRF_CommunityTagManager.GetInstance())
@@ -231,8 +239,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		advanceButton.SetEnabled(false);
 		gameButton.SetEnabled(false);
 		
-		// Hide admin-only UI elements
-		m_wRoot.FindAnyWidget("UnslottedPlayers").SetOpacity(0);
+		// Hide admin-only UI elements by default; show Unslotted tab for admins
+		bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
+		m_wRoot.FindAnyWidget("TabButtonUnslotted").SetVisible(isAdmin);
 		m_wRoot.FindAnyWidget("SlottingPhases").SetOpacity(0);
 		FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(0);
 		
@@ -245,6 +254,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		SCR_ButtonTextComponent.Cast(previewButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(OpenSlottingMenu);
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("SlotPhaseButton")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceSlottingPhase);
 		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
+		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonPlayers")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(ShowPlayersTab);
+		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonUnslotted")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(ShowUnslottedTab);
 	}
 	
 	/**
@@ -420,6 +431,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Unregister from slot updates to prevent memory leaks
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Remove(UpdateSlotInPlace);
 
 		// Unregister from community tag updates
 		if (CRF_CommunityTagManager.GetInstance())
@@ -488,6 +500,30 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			
 		// Update UI to reflect changes
 		UpdateSlots();
+	}
+	
+	/**
+	 * Switches the player panel to the Players tab
+	 */
+	void ShowPlayersTab()
+	{
+		m_bShowingUnslotted = false;
+		m_wRoot.FindAnyWidget("PlayerList").SetVisible(true);
+		m_wRoot.FindAnyWidget("UnslotPlayerList").SetVisible(false);
+		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonPlayers")).SetColor(Color.FromRGBA(37, 37, 37, 255));
+		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonUnslotted")).SetColor(Color.FromRGBA(11, 11, 11, 255));
+	}
+	
+	/**
+	 * Switches the player panel to the Unslotted Players tab
+	 */
+	void ShowUnslottedTab()
+	{
+		m_bShowingUnslotted = true;
+		m_wRoot.FindAnyWidget("PlayerList").SetVisible(false);
+		m_wRoot.FindAnyWidget("UnslotPlayerList").SetVisible(true);
+		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonPlayers")).SetColor(Color.FromRGBA(11, 11, 11, 255));
+		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonUnslotted")).SetColor(Color.FromRGBA(37, 37, 37, 255));
 	}
 	
 	/**
@@ -673,6 +709,159 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("PlayerBorder")).SetColor(factionColor);
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("UnslotPlayerBorder")).SetColor(factionColor);
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("RoleBorder")).SetColor(factionColor);
+	}
+	
+	/**
+	 * Surgically updates a single slot element when only its player ID has changed.
+	 * Subscribed to GetOnSlotChanged() so only player-claim/vacate events trigger this —
+	 * lock, death, group, and role deltas still fall through to UpdateSlots() via GetOnSlottingUpdate().
+	 * Eliminates the full Clear+rebuild that previously fired on every client for every slot click.
+	 */
+	void UpdateSlotInPlace()
+	{
+		int slotId = CRF_SlottingManager.GetInstance().GetLastChangedSlotId();
+		if (slotId <= 0)
+			return;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+		
+		if (!slotData || !m_fSelectedFaction)
+			return;
+		
+		// Update faction slot counters (lightweight, no widget changes)
+		InitSlots();
+		
+		// If the changed slot belongs to a different faction than the one currently displayed,
+		// we only need to refresh the unslotted player list (player may have moved in/out).
+		if (GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
+		{
+			UpdateUnslottedPlayersList();
+			return;
+		}
+		
+		// Locate the matching element in the main slot list and update it in place
+		int currentPlayerId = slotData.GetSlotCurrentPlayerId();
+		int elemCount = m_cSlotListBoxComponent.GetItemCount();
+		
+		for (int i = 0; i < elemCount; i++)
+		{
+			CRF_ListBoxElementComponent elem = CRF_ListBoxElementComponent.Cast(
+				m_cSlotListBoxComponent.GetElementComponent(i));
+			
+			if (!elem || elem.m_iSlotId != slotId)
+				continue;
+			
+			if (currentPlayerId > 0)
+			{
+				string playerName = GetGame().GetPlayerManager().GetPlayerName(currentPlayerId);
+				string playerTag = "";
+				if (CRF_CommunityTagManager.GetInstance())
+					playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(currentPlayerId);
+				
+				elem.SetPlayerText(playerName);
+				elem.SetTagText(playerTag);
+				
+				Color factionColor = GetGame().GetFactionManager().GetFactionByKey(
+					slotData.GetSlotFactionKey()).GetFactionColor();
+				elem.GetPlayerText().SetColor(factionColor);
+				elem.GetRoleText().SetColor(factionColor);
+				elem.GetPlayerText().SetOpacity(0.5);
+				elem.GetRoleText().SetOpacity(0.5);
+				
+				elem.GetDisconnectWidget().SetVisible(
+					!GetGame().GetPlayerManager().IsPlayerConnected(currentPlayerId));
+			}
+			else
+			{
+				// Slot vacated — clear player display and reset to default appearance
+				elem.SetPlayerText("");
+				elem.SetTagText("");
+				elem.GetDisconnectWidget().SetVisible(false);
+				elem.GetPlayerText().SetColor(Color.White);
+				elem.GetRoleText().SetColor(Color.White);
+				elem.GetPlayerText().SetOpacity(1.0);
+				elem.GetRoleText().SetOpacity(1.0);
+			}
+			break;
+		}
+		
+		// Rebuild orbat if this slot affects the ORBAT view (leader/medic roles)
+		CRF_ESlotType slotType = slotData.GetSlotType();
+		if (slotType == CRF_ESlotType.TEAM_LEADER
+			|| slotType == CRF_ESlotType.SQUAD_LEADER
+			|| slotType == CRF_ESlotType.MEDIC)
+		{
+			RebuildOrbat();
+		}
+		
+		// Refresh unslotted players list
+		UpdateUnslottedPlayersList();
+	}
+	
+	/**
+	 * Rebuilds only the ORBAT list without touching the main slot list.
+	 * Called by UpdateSlotInPlace when a leader or medic slot changes.
+	 * Replicates the leader-insertion logic of PopulateGroupsAndSlots, but orbat-only.
+	 */
+	private void RebuildOrbat()
+	{
+		m_cOrbatListBoxComponent.Clear();
+		
+		if (!m_fSelectedFaction)
+			return;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
+		array<SCR_AIGroup> groups = GetPlayableGroupsForSelectedFaction();
+		bool isAdmin = SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId());
+		
+		foreach (SCR_AIGroup group : groups)
+		{
+			if (group.IsPrivate() && !isAdmin)
+				continue;
+			
+			int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+			int leadersInGroup = 0;
+			array<int> slotStored = {};
+			
+			int orbatGroupIndex = m_cOrbatListBoxComponent.AddItemGroup(
+				null, group, "{55D48B298362DA71}UI/Listbox/GroupListBoxOrbatElementNonAdmin.layout");
+			
+			Color groupColor = group.GetFaction().GetFactionColor();
+			m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).GetGroupUnderline().SetColor(groupColor);
+			
+			// Walk slots in their configured order (same as PopulateGroupsAndSlots)
+			foreach (int id : slottingManager.GetAllSlotIDsForGroup(groupId))
+			{
+				ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
+				foreach (int slotId, CRF_SlotData slotData : slotMap)
+				{
+					if (slotData.GetSlotResource() != prefab || slotStored.Contains(slotId))
+						continue;
+					if (slotData.GetSlotCurrentGroup() != groupId)
+						continue;
+					if (GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
+						continue;
+					
+					slotStored.Insert(slotId);
+					
+					CRF_ESlotType slotType = slotData.GetSlotType();
+					if ((slotType == CRF_ESlotType.TEAM_LEADER
+						|| slotType == CRF_ESlotType.SQUAD_LEADER
+						|| slotType == CRF_ESlotType.MEDIC)
+						&& slotData.GetSlotCurrentPlayerId() > 0)
+					{
+						AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
+						leadersInGroup++;
+					}
+					break;
+				}
+			}
+			
+			if (leadersInGroup == 0)
+				m_cOrbatListBoxComponent.RemoveItem(orbatGroupIndex);
+		}
 	}
 	
 	/**
@@ -1424,7 +1613,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			// Show admin-only UI sections
 			m_wRoot.FindAnyWidget("SlottingPhases").SetOpacity(1);
 			FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(1);
-			m_wRoot.FindAnyWidget("UnslottedPlayers").SetOpacity(1);
+			m_wRoot.FindAnyWidget("TabButtonUnslotted").SetVisible(true);
 		}
 	}
 	
