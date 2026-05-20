@@ -205,8 +205,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		// Convert the frame to json
 		jsonHelper.WriteValue("frame", frame);
 		
-		// Write the frame to the aar file
-		m_AARFile.WriteLine(jsonHelper.ExportToString() + ",");
+		// Write the frame to the aar file — comma before each frame after the first
+		if (m_iCurrentFrame > 0)
+			m_AARFile.WriteLine("," + jsonHelper.ExportToString());
+		else
+			m_AARFile.WriteLine(jsonHelper.ExportToString());
 	}
 	
 	// Handle closing out the AAR at game end
@@ -217,11 +220,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_bRecording = false;
 		Replication.BumpMe();
 		
-		// Add a blank frame and close out the json file so it valid
+		// Close out the json file
 		if (!m_AARFile)
 			m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
 		
-		m_AARFile.WriteLine(string.Format("{{\"frame\": {{\"ts\": 0, \"c\": [], \"v\": [], \"s\": [], \"k\": []}}}}"));
 		m_AARFile.WriteLine("] }");
 		m_AARFile.Close();
 		m_AARFile = null;
