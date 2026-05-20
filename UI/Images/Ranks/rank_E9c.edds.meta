@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B31446BB66A7C084}UI/Images/Ranks/rank_O2.edds"
+ Name "{5600F59E472DBA19}UI/Images/Ranks/rank_E9c.edds"
  Configurations {
   TGAResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    MaxSize "128"

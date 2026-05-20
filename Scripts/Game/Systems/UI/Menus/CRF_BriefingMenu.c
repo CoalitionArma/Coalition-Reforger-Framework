@@ -69,9 +69,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
 
-		// Fetch community tags so they appear in the player list
+		// Fetch community tags + ranks so they appear in the player list
 		if (CRF_CommunityTagManager.GetInstance())
-			CRF_CommunityTagManager.GetInstance().FetchTagsForCurrentPlayers();
+		{
+			CRF_CommunityTagManager.GetInstance().FetchPlayerInfo();
+		}
+
+		// Re-fetch tags+ranks when a new player connects mid-session (JIP)
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (gameMode)
+			gameMode.GetOnPlayerConnected().Insert(OnJIPPlayerConnected);
 	}
 	
 	/**
@@ -324,8 +331,14 @@ class CRF_PreviewMenu: ChimeraMenuBase
 				
 			string displayName = GetGame().GetPlayerManager().GetPlayerName(player);
 			string playerTag = "";
+			int playerXp = -1;
+			string playerTrack = "enlisted";
 			if (CRF_CommunityTagManager.GetInstance())
+			{
 				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(player);
+				playerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(player);
+				playerTrack = CRF_CommunityTagManager.GetInstance().GetPlayerRankTrack(player);
+			}
 
 			int index = m_cPlayerListBoxComponent.AddItem(
 				displayName, 
@@ -336,7 +349,10 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
 			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
 			if (crfComp)
+			{
 				crfComp.SetTagText(playerTag);
+				crfComp.SetRankChevron(playerXp, playerTrack);
+			}
 			
 			// Color code players by role
 			SetPlayerStatusColor(player,comp);
@@ -365,6 +381,17 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			wid.SetVisible(true);
 	}
 	
+	/**
+	 * Called when a player connects mid-session (JIP); re-fetches tags and ranks
+	 * so newly-joined players appear with correct insignia without a menu reopen.
+	 */
+	protected void OnJIPPlayerConnected(int playerId)
+	{
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+			tagMgr.FetchPlayerInfo();
+	}
+
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
 	{
 		// Enforce precedence: Admin > Moderator > Donator 
@@ -413,6 +440,11 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
+
+		// Remove JIP player-connected listener
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (gameMode)
+			gameMode.GetOnPlayerConnected().Remove(OnJIPPlayerConnected);
 
 		// Cancel any pending callqueue map-open calls to prevent the map opening after close
 		GetGame().GetCallqueue().Remove(OpenMap);
