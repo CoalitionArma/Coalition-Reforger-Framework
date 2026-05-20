@@ -7,7 +7,7 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
   m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{69666DB6A7E080C5}" {
    m_iAmountofAutoCannonAmmo 10
-   m_iAmountofMachineGunAmmo 0
+   m_iAmountofMachineGunAmmo 1
   }
  }
  OpforTransport2 {

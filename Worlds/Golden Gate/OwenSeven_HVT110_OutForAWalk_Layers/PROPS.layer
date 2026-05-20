@@ -10,6 +10,31 @@ GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et
  coords 4787.529 1.226 1552.531
  angles 0 64.568 0
 }
+$grp GenericEntity : "{2E93D634BF435971}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_item.et" {
+ {
+  coords 5246.85 3.289 1420.791
+ }
+ {
+  coords 5222.187 2.103 1461.345
+  angles 0 -15.2 0
+ }
+ {
+  coords 5215.57 2.133 1459.623
+  angles 0 -8.367 0
+ }
+ {
+  coords 4969.876 3.585 1429.592
+ }
+ {
+  coords 4613.222 2.149 1362.415
+ }
+ {
+  coords 4803.147 13.963 1188.941
+ }
+ {
+  coords 4900.311 14.697 1207.38
+ }
+}
 GenericEntity : "{33F7854D9B4B78CE}Prefabs/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_base.et" {
  coords 5714.979 8.578 983.613
  angles 0 -83.413 0
