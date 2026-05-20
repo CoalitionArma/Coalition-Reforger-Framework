@@ -74,7 +74,7 @@ $grp SCR_DestructibleBuildingEntity : "{BACE78CFBF553B0B}Prefabs/Structures/Infr
  }
 }
 SCR_DestructibleBuildingEntity : "{BE98D3C1A31F7448}Prefabs/Structures/Infrastructure/Naval/Piers/PierWooden_01_Base.et" {
- coords 5513.313 1.755 1812.76
+ coords 5513.313 7.349 1812.76
  angles 0 71.015 0
 }
 StaticModelEntity : "{C1BC9D802080EF43}Prefabs/Structures/Airport/LightRunway_03/LightRunway_03_light.et" {
@@ -82,7 +82,7 @@ StaticModelEntity : "{C1BC9D802080EF43}Prefabs/Structures/Airport/LightRunway_03
  angles 0 -84.063 0
 }
 SCR_DestructibleBuildingEntity : "{CEB1F71D46592F3C}Prefabs/Structures/Airport/Hangar_01/Hangar_01.et" {
- coords 5807.138 7.885 972.869
+ coords 5807.138 21.825 972.869
  angles 0 0.163 0
 }
 $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
