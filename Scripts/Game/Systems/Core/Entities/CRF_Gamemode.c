@@ -158,8 +158,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
 	protected ref ScriptInvoker m_OnStateChanged = new ScriptInvoker();
-	protected static ref SCR_PlayerData m_PlayerData;
-	
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_PermissionManager m_PermissionManager
@@ -340,31 +338,28 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
 	{
-		string name = GetGame().GetPlayerManager().GetPlayerName(player);
-		//PrintFormat("[CRF] Logging Stats for player %1",name);
-		// Process player statistics data
-		if (!m_PlayerData)
+		//PrintFormat("[CRF] Logging Stats for player %1", GetGame().GetPlayerManager().GetPlayerName(player));
+		if (!dataCollector)
 		{
-			if (!dataCollector)
-			{
-				Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-				return;
-			}
-	
-			m_PlayerData = dataCollector.GetPlayerData(player, false);
-	
-			// If player data isn't available yet, register for notification when it arrives
-			if (!m_PlayerData)
-			{
-				SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-					GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-				);
-				
-				if (communicationComponent)
-					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-			} else {
-				m_PlayerData.CalculateStatsChange();
-			}
+			Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
+			return;
+		}
+
+		SCR_PlayerData playerData = dataCollector.GetPlayerData(player, false);
+
+		// If player data isn't available yet, register for notification when it arrives
+		if (!playerData)
+		{
+			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
+				GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
+			);
+			
+			if (communicationComponent)
+				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+		}
+		else
+		{
+			playerData.CalculateStatsChange();
 		}
 	}
 	
@@ -377,8 +372,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//! \param[in] playerData Player statistics and progress data
 	protected void OnDataReceived(SCR_PlayerData playerData)
 	{
-		m_PlayerData = playerData;
-		m_PlayerData.CalculateStatsChange();
+		playerData.CalculateStatsChange();
 	}
 	
 	//------------------------------------------------------------------------------------------------
