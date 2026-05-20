@@ -50,7 +50,12 @@ GenericEntity : "{33F7854D9B4B78CE}Prefabs/Props/Airport/RunwayLightPortable_01/
  angles 0 -83.413 0
 }
 GenericEntity : "{64830926F6CF3877}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76UN_running.et" {
- coords 5890.403 7.885 992.147
+ components {
+  RigidBody "{5AAD3AF62314841F}" {
+   ResponseIndex "Normal"
+  }
+ }
+ coords 5841.904 7.885 994.657
  angles 0 89.483 0
  scale 1.56
 }
@@ -67,9 +72,16 @@ SCR_DestructibleBuildingEntity : "{80763D9EE6A80EF3}Prefabs/Structures/Infrastru
  angles 0 162.448 0
 }
 SCR_DestructibleBuildingEntity : "{85B7377A90F6A75F}Prefabs/Structures/Infrastructure/Naval/Cranes/HarborCrane_01.et" {
- coords 5508.189 7.806 1815.964
+ coords 5509.417 7.998 1816.359
  angles 0 -17.853 0
  scale 0.736
+ {
+  SCR_DestructibleBuildingEntity {
+   ID "560A79EAFAA75551"
+   coords 0 0 0.001
+   angles 0 -94.207 0
+  }
+ }
 }
 Tree : "{87BE91E8E84DA493}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glutinosa_2s.et" {
  coords 5763.278 -0.211 945.347
@@ -112,8 +124,9 @@ StaticModelEntity : "{C1BC9D802080EF43}Prefabs/Structures/Airport/LightRunway_03
  angles 0 -84.063 0
 }
 SCR_DestructibleBuildingEntity : "{CEB1F71D46592F3C}Prefabs/Structures/Airport/Hangar_01/Hangar_01.et" {
- coords 5807.138 21.825 972.869
+ coords 5803.006 19.779 970.808
  angles 0 0.163 0
+ scale 0.84
 }
 $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
  {
@@ -444,6 +457,18 @@ $grp SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infr
   angles 0 72.306 0
  }
 }
+$grp GenericEntity : "{DB968E267E913B7A}Prefabs/Structures/Signs/Warnings/SignsWarning_Circle_01_base.et" {
+ {
+  coords 5824.321 6.998 994.337
+  angles 89.819 180 -180
+  scale 21.451
+ }
+ {
+  coords 5497.771 1.883 1812.796
+  angles 89.819 180 -180
+  scale 19.949
+ }
+}
 $grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
  {
   components {
@@ -731,10 +756,6 @@ $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infr
  }
  {
   coords 5793.746 0.726 953.585
-  angles 0 89.452 0
- }
- {
-  coords 5793.792 0.726 948.793
   angles 0 89.452 0
  }
 }
