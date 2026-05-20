@@ -160,7 +160,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected ref ScriptInvoker m_OnStateChanged = new ScriptInvoker();
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_GamemodeManager m_GamemodeManager;
-	protected CRF_PermissionManager m_PermissionManager
+	protected CRF_PermissionManager m_PermissionManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
@@ -171,6 +171,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected vector m_vGenericSpawn;
 	
 	bool m_bIsInEndCredits = false;
+	
+	// Late data callbacks — cleaned up after AAR processing
+	protected ref array<SCR_DataCollectorCommunicationComponent> m_aPendingDataComponents = {};
 	
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
@@ -267,16 +270,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 
 		m_GamemodeState += 1;
-		if (m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			foreach (Vehicle vehicle: CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
-			{
-				if (!vehicle)
-					continue;
-				
-				vehicle.SpawnVehiclePassengers();
-			}
-		}
 		Replication.BumpMe();
 		OnGamemodeStateChanged();
 	}
@@ -297,6 +290,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 			switch (m_GamemodeState) {
 				case CRF_EGamemodeState.GAME: {
 					SetGameState(SCR_EGameModeState.GAME);
+					foreach (Vehicle vehicle : CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
+					{
+						if (!vehicle)
+							continue;
+						vehicle.SpawnVehiclePassengers();
+					}
 					break;
 				}
 				
@@ -322,9 +321,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 					// Stores player profiles who havent disconnected
 					dataCollector.OnGameEnd();
 
-					// Make sure we close logging memory leak
-					m_LoggingManager.OnGameModeEnd(GetEndGameData());
-					
+				// Clean up any pending late-data callbacks
+				foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
+				{
+					if (pendingComp)
+						pendingComp.GetOnDataReceived().Remove(OnDataReceived);
+				}
+				m_aPendingDataComponents.Clear();
+
 					// Close the VAAR recording
 					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
 					if (vaarComponent)
@@ -360,7 +364,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 			);
 			
 			if (communicationComponent)
+			{
 				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+				m_aPendingDataComponents.Insert(communicationComponent);
+			}
 		}
 		else
 		{
@@ -391,7 +398,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		m_GamemodeManager.InitilizePlayer(iPlayerID);
+		QueuePlayerInitialization(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
@@ -410,13 +417,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 
 		// Check if player is a moderator/donator and set privileges
-		if (!playerGUID.IsEmpty()) {
-			if (CRF_ModeratorConfig.IsModerator(playerGUID))
-				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
-			
-			if (CRF_DonatorConfig.IsDonator(playerGUID))
-				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
-		}
 		if (!playerGUID.IsEmpty()) {
 			if (CRF_ModeratorConfig.IsModerator(playerGUID))
 				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
@@ -507,7 +507,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		
 		// Move player to spectator
-		m_GamemodeManager.InitilizePlayer(playerId);
+		QueuePlayerInitialization(playerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -572,13 +572,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		for (int i = 0; i < playersToProcess; i++)
 		{
-			int playerId = m_aPendingPlayerInitializations[0];
-			m_aPendingPlayerInitializations.Remove(0);
-			
-			// Initialize the player immediately
 			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(playerId);
+				m_GamemodeManager.InitilizePlayer(m_aPendingPlayerInitializations[i]);
 		}
+		for (int i = playersToProcess - 1; i >= 0; i--)
+			m_aPendingPlayerInitializations.Remove(i);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -643,11 +641,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "CIV": 		return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-    		 }
+			case "CIV": 	return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+		}
 		
-    		return true;
- 	}
+		return true;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Get gearscript resource for a faction
