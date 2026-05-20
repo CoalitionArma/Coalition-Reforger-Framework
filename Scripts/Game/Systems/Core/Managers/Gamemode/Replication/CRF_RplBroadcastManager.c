@@ -2015,10 +2015,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentPlayerId(playerId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
-			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
-			if (invoker)
-				invoker.Invoke();
+			// Fire the targeted slot-change invoker so the slotting menu can do a
+			// surgical in-place update instead of a full Clear+rebuild.
+			// AAR/Spectator also subscribe to this invoker for their own UpdateSlots call.
+			slottingManager.NotifySlotPlayerIdChanged(slotId);
 		}
 	}
 	
