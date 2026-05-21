@@ -512,6 +512,25 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	void RegisterPlayerForLottery(int playerId, string factionKey, string squadFilter)
+	{
+		Rpc(RpcAsk_RegisterPlayerForLottery, playerId, factionKey, squadFilter);
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	void RunSlotLottery(int requestingPlayerId)
+	{
+		Rpc(RpcAsk_RunSlotLottery, requestingPlayerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ClearSlotLottery(int requestingPlayerId)
+	{
+		Rpc(RpcAsk_ClearSlotLottery, requestingPlayerId);
+	}
+	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -2405,6 +2424,34 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!supplyComp)
 			return;
 		supplyComp.UpdateCurrentSupply();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RegisterPlayerForLottery(int playerId, string factionKey, string squadFilter)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.RegisterPlayerForLottery_Server(playerId, factionKey, squadFilter);
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RunSlotLottery(int requestingPlayerId)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.RunSlotLottery_Server(requestingPlayerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ClearSlotLottery(int requestingPlayerId)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.ClearSlotLottery_Server(requestingPlayerId);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

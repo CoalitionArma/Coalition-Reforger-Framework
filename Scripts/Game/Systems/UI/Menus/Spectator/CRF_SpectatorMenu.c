@@ -171,6 +171,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Update slots and register for slot updates
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		// Also register for surgical player-ID delta updates so spectator view stays current
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
 		
 		// Get game system references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
@@ -1818,6 +1820,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		if (slottingManager)
 		{
 			slottingManager.GetOnSlottingUpdate().Remove(UpdateSlots);
+			slottingManager.GetOnSlotChanged().Remove(UpdateSlots);
 		}
 		
 		// Remove all action listeners

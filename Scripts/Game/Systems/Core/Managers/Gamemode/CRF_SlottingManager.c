@@ -12,8 +12,12 @@ class CRF_SlottingManager : ScriptComponent
 	// Latest Slot ID used
 	protected int m_iLatestSlotID;
 	
-	// Invoker for slot updates
+	// Invoker for slot updates (batch/structural: used by all consumers including AAR & spectator)
 	protected ref ScriptInvoker m_OnSlottingUpdate = new ScriptInvoker;
+	
+	// Invoker for surgical per-slot player-ID changes (avoids full list rebuild on every click)
+	protected int m_iLastChangedSlotId = -1;
+	protected ref ScriptInvoker m_OnSlotChanged = new ScriptInvoker;
 	
 	// References to other managers
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
@@ -91,9 +95,39 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if (slotData)
 		{
+			// Server-side first-come-first-served guard:
+			// If a player (playerId > 0) is trying to claim a slot that is already occupied
+			// by a DIFFERENT player, reject the request silently.
+			// playerId == 0 (kick/vacate) always proceeds; own-slot re-claim always proceeds.
+			int currentOccupant = slotData.GetSlotCurrentPlayerId();
+			if (playerId > 0 && currentOccupant > 0 && currentOccupant != playerId)
+				return;
+			
 			slotData.SetSlotCurrentPlayerId(playerId);
 			m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
 		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Force-assigns a player to a slot for reconnect restoration.
+	//! Bypasses the first-come-first-served guard so a reconnecting player (who may have a
+	//! new numeric ID on a dedicated server) can reclaim the slot they held before disconnecting.
+	//! Safe to call with newPlayerId > 0 — never triggers CleanupCharacterFromSlot.
+	//! \param[in] slotId      Slot to restore
+	//! \param[in] newPlayerId The reconnecting player's current numeric player ID
+	void ForceUpdateSlotPlayerID(int slotId, int newPlayerId)
+	{
+		if (newPlayerId <= 0)
+			return;
+		
+		CRF_SlotData slotData = GetSlotData(slotId);
+		if (!slotData)
+			return;
+		
+		// SetSlotCurrentPlayerId only triggers CleanupCharacterFromSlot when playerId <= 0,
+		// so calling it with newPlayerId > 0 is safe and will not delete the character entity.
+		slotData.SetSlotCurrentPlayerId(newPlayerId);
+		m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, newPlayerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -131,6 +165,30 @@ class CRF_SlottingManager : ScriptComponent
 	ScriptInvoker GetOnSlottingUpdate()
 	{
 		return m_OnSlottingUpdate;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns the invoker that fires when a single slot's player ID changes (surgical update path).
+	ScriptInvoker GetOnSlotChanged()
+	{
+		return m_OnSlotChanged;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns the slot ID that was most recently changed via NotifySlotPlayerIdChanged().
+	int GetLastChangedSlotId()
+	{
+		return m_iLastChangedSlotId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Called by RpcDo_UpdateSlotPlayerIdDelta to fire the targeted slot-change invoker.
+	//! Stores the slot ID so subscribers can retrieve it without invoice arguments.
+	void NotifySlotPlayerIdChanged(int slotId)
+	{
+		m_iLastChangedSlotId = slotId;
+		if (m_OnSlotChanged)
+			m_OnSlotChanged.Invoke();
 	}
 	
 	//------------------------------------------------------------------------------------------------

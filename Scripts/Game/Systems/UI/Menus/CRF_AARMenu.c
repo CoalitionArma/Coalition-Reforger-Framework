@@ -103,8 +103,10 @@ class CRF_AARMenu: ChimeraMenuBase
 		// Update the UI to reflect current slot status
 		UpdateSlots();
 		
-		// Register for slot updates
+		// Register for slot updates (structural: lock/death/group/role deltas + batch sync)
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		// Also register for surgical player-ID delta updates so AAR stays current
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
 		
 		// Initialize back button
 		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
@@ -243,6 +245,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Unregister from slot updates
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Remove(UpdateSlots);
 		
 		// Remove input handlers
 		if (!CVON_VONGameModeComponent.GetInstance())

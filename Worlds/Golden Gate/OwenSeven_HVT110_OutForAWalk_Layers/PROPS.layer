@@ -1,18 +1,132 @@
+GenericEntity : "{1855751A9E1856D6}Prefabs/Props/boat/portecontainer.et" {
+ components {
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "Normal"
+  }
+ }
+ coords 5506.625 -3.632 1833.703
+ angles 0 -108.298 0
+ scale 0.84
+}
 GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
  coords 4774.027 3.805 1602.44
  angles -14.912 29.684 0
+}
+StaticModelEntity : "{24158CD5C9C473BB}Prefabs/Structures/Ruins/ShedMetal_Ruin_01/Dst/ShedMetal_Ruin_01_Ruin.et" {
+ coords 5418.493 0 1750.838
+ angles 0 60.943 0
 }
 GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
  coords 4787.529 1.226 1552.531
  angles 0 64.568 0
 }
+$grp GenericEntity : "{2E93D634BF435971}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_item.et" {
+ {
+  coords 5246.85 3.289 1420.791
+ }
+ {
+  coords 5222.187 2.103 1461.345
+  angles 0 -15.2 0
+ }
+ {
+  coords 5215.57 2.133 1459.623
+  angles 0 -8.367 0
+ }
+ {
+  coords 4969.876 3.585 1429.592
+ }
+ {
+  coords 4613.222 2.149 1362.415
+ }
+ {
+  coords 4803.147 13.963 1188.941
+ }
+ {
+  coords 4900.311 14.697 1207.38
+ }
+}
+GenericEntity : "{33F7854D9B4B78CE}Prefabs/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_base.et" {
+ coords 5714.979 8.578 983.613
+ angles 0 -83.413 0
+}
 GenericEntity : "{64830926F6CF3877}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76UN_running.et" {
- coords 5878.895 7.885 986.685
+ components {
+  RigidBody "{5AAD3AF62314841F}" {
+   ResponseIndex "Normal"
+  }
+ }
+ coords 5841.904 7.885 994.657
  angles 0 89.483 0
+ scale 1.56
+}
+SCR_DestructibleBuildingEntity : "{686B4C83AC940895}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_flat.et" {
+ coords 5528.047 -3.843 1719.178
+ angles 0 71.99 10.312
 }
 GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et" {
  coords 4807.078 1.062 1557.944
  angles 0 81.138 0
+}
+SCR_DestructibleBuildingEntity : "{80763D9EE6A80EF3}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m_T.et" {
+ coords 5498.235 2.684 1812.738
+ angles 0 162.448 0
+}
+SCR_DestructibleBuildingEntity : "{85B7377A90F6A75F}Prefabs/Structures/Infrastructure/Naval/Cranes/HarborCrane_01.et" {
+ coords 5509.417 7.998 1816.359
+ angles 0 -17.853 0
+ scale 0.736
+ {
+  SCR_DestructibleBuildingEntity {
+   ID "560A79EAFAA75551"
+   coords 0 0 0.001
+   angles 0 -94.207 0
+  }
+ }
+}
+Tree : "{87BE91E8E84DA493}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glutinosa_2s.et" {
+ coords 5763.278 -0.211 945.347
+ scale 1.69
+}
+$grp SCR_DestructibleBuildingEntity : "{985A4C85EBEF38AA}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_10m_end.et" {
+ {
+  coords 5512.074 4.502 1817.109
+  angles -0.283 -17.593 0
+ }
+ {
+  coords 5483.539 2.247 1808.092
+  angles 0.261 162.663 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
+ coords 5755.039 0.992 933.98
+ angles 0 1.637 0
+}
+SCR_DestructibleBuildingEntity : "{A4B690DEC3D39B11}Prefabs/Structures/Infrastructure/Naval/Sheds/BoatShed_01/BoatShed_01_base.et" {
+ coords 5504.885 5.015 1763.5
+ angles 0 -104.491 0
+}
+$grp SCR_DestructibleBuildingEntity : "{BACE78CFBF553B0B}Prefabs/Structures/Infrastructure/Naval/Boatsheds/Boatshed01.et" {
+ {
+  coords 5521.873 4.798 1786.234
+  angles 0 -108.257 0
+ }
+ {
+  coords 5494.036 3.627 1777.505
+  angles 0 73.73 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{BE98D3C1A31F7448}Prefabs/Structures/Infrastructure/Naval/Piers/PierWooden_01_Base.et" {
+ coords 5513.313 7.349 1812.76
+ angles 0 71.015 0
+}
+StaticModelEntity : "{C1BC9D802080EF43}Prefabs/Structures/Airport/LightRunway_03/LightRunway_03_light.et" {
+ coords 5812.969 7.885 997
+ angles 0 -84.063 0
+}
+SCR_DestructibleBuildingEntity : "{CEB1F71D46592F3C}Prefabs/Structures/Airport/Hangar_01/Hangar_01.et" {
+ coords 5803.006 19.779 970.808
+ angles 0 0.163 0
+ scale 0.84
 }
 $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
  {
@@ -250,7 +364,8 @@ $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infr
   coords 5743.592 7.87 998.651
  }
  {
-  coords 5717.761 7.87 999.181
+  coords 5717.761 7.503 999.181
+  angles 0 0 -1.01
  }
  {
   coords 5743.592 7.87 1010.637
@@ -272,12 +387,86 @@ $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infr
   coords 5717.761 7.87 962.621
  }
  {
-  coords 5734.184 5.448 1053.817
-  angles 0 52.553 -5.682
+  coords 5718.02 6.033 1024.212
+  angles 0 0 -4.028
  }
  {
-  coords 5749.911 7.87 1033.63
-  angles 0 52.553 0
+  coords 5743.721 7.87 1023.682
+ }
+ {
+  coords 5769.581 7.87 1023.595
+ }
+ {
+  coords 5795.455 7.87 1023.595
+ }
+ {
+  coords 5846.793 7.87 1023.595
+ }
+ {
+  coords 5821.249 7.87 1023.595
+ }
+ {
+  coords 5871.697 7.87 1023.595
+ }
+ {
+  coords 5894.296 7.87 1023.595
+ }
+ {
+  coords 5920.171 7.87 1023.595
+ }
+ {
+  coords 5945.964 7.87 1023.595
+ }
+ {
+  coords 5971.508 7.87 1023.595
+ }
+ {
+  coords 5996.412 7.87 1023.595
+ }
+ {
+  coords 6021.481 7.87 1023.595
+ }
+ {
+  coords 6047.356 7.87 1023.595
+ }
+ {
+  coords 6073.149 7.87 1023.595
+ }
+ {
+  coords 6098.692 7.87 1023.595
+ }
+ {
+  coords 6123.597 7.87 1023.595
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m.et" {
+ {
+  coords 5522.255 -1.311 1737.235
+  angles 0 72.306 0
+ }
+ {
+  coords 5516.204 -1.311 1756.201
+  angles 0 72.306 0
+ }
+ {
+  coords 5510.175 -1.311 1775.096
+  angles 0 72.306 0
+ }
+ {
+  coords 5504.211 -1.311 1793.788
+  angles 0 72.306 0
+ }
+}
+$grp GenericEntity : "{DB968E267E913B7A}Prefabs/Structures/Signs/Warnings/SignsWarning_Circle_01_base.et" {
+ {
+  coords 5824.321 6.998 994.337
+  angles 89.819 180 -180
+  scale 21.451
+ }
+ {
+  coords 5497.771 1.883 1812.796
+  angles 89.819 180 -180
+  scale 19.949
  }
 }
 $grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
@@ -346,6 +535,13 @@ GenericEntity : "{EC13D4E934B2ADD8}Prefabs/Items/Demining/MineFlags/MineFlag_US.
  coords 4768.557 1.467 1552.595
  angles 0 -103.468 0
  scale 3.67
+}
+Tree : "{F0B4F9601CEF4BE3}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glutinosa_3s.et" {
+ coords 5747.057 0.795 950.875
+ scale 0.755
+}
+SCR_DestructibleBuildingEntity : "{F5052C6CDD432BA7}Prefabs/Structures/Ruins/ShedMetal_Ruin_02/ShedMetal_Ruin_02.et" {
+ coords 5451.29 0.111 1762.767
 }
 $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
  {
@@ -527,5 +723,39 @@ $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infr
  }
  {
   coords 6147.694 0 962.627
+ }
+ {
+  coords 5819.682 0 1023.552
+ }
+ {
+  coords 5895.924 0 1023.552
+ }
+ {
+  coords 5902.046 0 1023.552
+ }
+ {
+  coords 5944.398 0 1023.552
+ }
+ {
+  coords 5995.735 0 1023.552
+ }
+ {
+  coords 6020.639 0 1023.552
+ }
+ {
+  coords 6029.231 0 1023.552
+ }
+ {
+  coords 6071.583 0 1023.552
+ }
+ {
+  coords 6122.92 0 1023.552
+ }
+ {
+  coords 6147.823 0 1023.552
+ }
+ {
+  coords 5793.746 0.726 953.585
+  angles 0 89.452 0
  }
 }

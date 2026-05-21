@@ -95,7 +95,9 @@ class CRF_DamageHelper
 			BaseWeaponComponent weaponComp = BaseWeaponComponent.Cast(killerEntity.FindComponent(BaseWeaponComponent));
 			if (weaponComp)
 			{
-				return weaponComp.GetUIInfo().GetName();
+				UIInfo uiInfo = weaponComp.GetUIInfo();
+				if (uiInfo)
+					return uiInfo.GetName();
 			}
 			
 			// Try inventory to get current weapon
@@ -104,11 +106,16 @@ class CRF_DamageHelper
 			{
 				BaseWeaponComponent currentWeapon = inventory.GetCurrentCharacterWeapon();
 				if (currentWeapon)
-					return currentWeapon.GetUIInfo().GetName();
+				{
+					UIInfo weaponUiInfo = currentWeapon.GetUIInfo();
+					if (weaponUiInfo)
+						return weaponUiInfo.GetName();
+				}
 			}
 			
 			// If not a weapon component, try to extract useful info from the entity name
-			weaponName = killerEntity.GetPrefabData().GetPrefabName();
+			if (killerEntity.GetPrefabData())
+				weaponName = killerEntity.GetPrefabData().GetPrefabName();
 			
 			// Look for specific keywords to make the name more descriptive
 			string lowerName = weaponName;
@@ -132,7 +139,9 @@ class CRF_DamageHelper
 		if (killerEntity)
 		{
 			string entityName = killerEntity.GetName();
-			string prefabName = killerEntity.GetPrefabData().GetPrefabName();
+			string prefabName;
+			if (killerEntity.GetPrefabData())
+				prefabName = killerEntity.GetPrefabData().GetPrefabName();
 			
 			// Check for common patterns
 			if (prefabName.Contains("Grenade") || prefabName.Contains("Explosive"))

@@ -1339,9 +1339,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Update player controller with hint
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerComp)
-			return;
-		
 		if (playerControllerComp.m_wSavedHintWidget)
 		{
 			delete playerControllerComp.m_wSavedHintWidget;
@@ -1351,9 +1348,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
-		if (!hint)
-			return;
-		
 		hint.ShowHint(data, 8000);
 	}	
 	
@@ -2021,10 +2015,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentPlayerId(playerId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
-			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
-			if (invoker)
-				invoker.Invoke();
+			// Fire the targeted slot-change invoker so the slotting menu can do a
+			// surgical in-place update instead of a full Clear+rebuild.
+			// AAR/Spectator also subscribe to this invoker for their own UpdateSlots call.
+			slottingManager.NotifySlotPlayerIdChanged(slotId);
 		}
 	}
 	

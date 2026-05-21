@@ -1,0 +1,54 @@
+MetaFileClass {
+ Name "{0EC4143C19BCDC9A}UI/Images/Ranks/rank_O4.edds"
+ Configurations {
+  TGAResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass XBOX_ONE : "{8F13AE697AE60784}Configs/System/ResourceTypes/XBOX_ONE/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass XBOX_SERIES : "{D28E01700D90F52C}Configs/System/ResourceTypes/XBOX_SERIES/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass PS4 : "{C6CD3D8752652D2A}Configs/System/ResourceTypes/PS4/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass PS5 : "{6248F71B9D7C1E93}Configs/System/ResourceTypes/PS5/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass HEADLESS : "{699C82A6807668A7}Configs/System/ResourceTypes/HEADLESS/TextureUnspecified.conf" {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+  TGAResourceClass Xbox : PC {
+   MaxSize "128"
+   ConversionQuality 1
+   ColorSpace ToSRGB
+   GenerateMips 0
+   TiledTexture 0
+  }
+ }
+}

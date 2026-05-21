@@ -158,11 +158,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
 	protected ref ScriptInvoker m_OnStateChanged = new ScriptInvoker();
-	protected static ref SCR_PlayerData m_PlayerData;
-	
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_GamemodeManager m_GamemodeManager;
-	protected CRF_PermissionManager m_PermissionManager
+	protected CRF_PermissionManager m_PermissionManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
@@ -174,6 +172,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	bool m_bIsInEndCredits = false;
 	
+	// Late data callbacks — cleaned up after AAR processing
+	protected ref array<SCR_DataCollectorCommunicationComponent> m_aPendingDataComponents = {};
+	
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
 	protected ref array<int> m_aPendingPlayerInitializations = {};
@@ -181,6 +182,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
+
+	// Reconnect Tracking — maps player GUID to slot ID for disconnected players.
+	// Ensures a reconnecting player can reclaim their slot even if their numeric
+	// player ID changes between disconnect and reconnect (possible on dedicated servers).
+	//------------------------------------------------------------------------------------
+	protected ref map<string, int> m_mReconnectSlotByGuid = new map<string, int>();
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 INITIALIZATION AND SETUP
@@ -269,16 +276,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 
 		m_GamemodeState += 1;
-		if (m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			foreach (Vehicle vehicle: CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
-			{
-				if (!vehicle)
-					continue;
-				
-				vehicle.SpawnVehiclePassengers();
-			}
-		}
 		Replication.BumpMe();
 		OnGamemodeStateChanged();
 	}
@@ -297,8 +294,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Set basic game mode states for basegamemode
 			// useful for default components that reference it like datacollector
 			switch (m_GamemodeState) {
+				case CRF_EGamemodeState.SLOTTING: {
+					// Clear reconnect tracking — a new game cycle means all previous
+					// disconnect records are no longer valid (slots may be reassigned).
+					m_mReconnectSlotByGuid.Clear();
+					break;
+				}
+				
 				case CRF_EGamemodeState.GAME: {
 					SetGameState(SCR_EGameModeState.GAME);
+					foreach (Vehicle vehicle : CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
+					{
+						if (!vehicle)
+							continue;
+						vehicle.SpawnVehiclePassengers();
+					}
 					break;
 				}
 				
@@ -324,8 +334,18 @@ class CRF_Gamemode : SCR_BaseGameMode
 					// Stores player profiles who havent disconnected
 					dataCollector.OnGameEnd();
 
-					// Make sure we close logging memory leak
-					m_LoggingManager.OnGameModeEnd(GetEndGameData());
+				// Clean up any pending late-data callbacks
+				foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
+				{
+					if (pendingComp)
+						pendingComp.GetOnDataReceived().Remove(OnDataReceived);
+				}
+				m_aPendingDataComponents.Clear();
+
+					// Close the VAAR recording
+					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
+					if (vaarComponent)
+						vaarComponent.OnGameModeEnd(GetEndGameData());
 					break;
 				}
 				
@@ -340,31 +360,31 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
 	{
-		string name = GetGame().GetPlayerManager().GetPlayerName(player);
-		//PrintFormat("[CRF] Logging Stats for player %1",name);
-		// Process player statistics data
-		if (!m_PlayerData)
+		//PrintFormat("[CRF] Logging Stats for player %1", GetGame().GetPlayerManager().GetPlayerName(player));
+		if (!dataCollector)
 		{
-			if (!dataCollector)
+			Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
+			return;
+		}
+
+		SCR_PlayerData playerData = dataCollector.GetPlayerData(player, false);
+
+		// If player data isn't available yet, register for notification when it arrives
+		if (!playerData)
+		{
+			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
+				GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
+			);
+			
+			if (communicationComponent)
 			{
-				Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-				return;
+				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+				m_aPendingDataComponents.Insert(communicationComponent);
 			}
-	
-			m_PlayerData = dataCollector.GetPlayerData(player, false);
-	
-			// If player data isn't available yet, register for notification when it arrives
-			if (!m_PlayerData)
-			{
-				SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-					GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-				);
-				
-				if (communicationComponent)
-					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-			} else {
-				m_PlayerData.CalculateStatsChange();
-			}
+		}
+		else
+		{
+			playerData.CalculateStatsChange();
 		}
 	}
 	
@@ -377,8 +397,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//! \param[in] playerData Player statistics and progress data
 	protected void OnDataReceived(SCR_PlayerData playerData)
 	{
-		m_PlayerData = playerData;
-		m_PlayerData.CalculateStatsChange();
+		playerData.CalculateStatsChange();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -391,8 +410,23 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
-			
-		m_GamemodeManager.InitilizePlayer(iPlayerID);
+		
+		// Reconnect restore: if this player has a pending GUID entry, force-update their slot's
+		// player ID before InitilizePlayer runs so IsPlayerInASlot() finds the correct slot.
+		// This handles dedicated-server scenarios where a reconnecting player may get a new
+		// numeric player ID but the GUID (BI account identity) remains the same.
+		if (IsMaster() && m_SlottingManager)
+		{
+			string reconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+			int savedSlotId;
+			if (!reconnectGuid.IsEmpty() && m_mReconnectSlotByGuid.Find(reconnectGuid, savedSlotId))
+			{
+				m_mReconnectSlotByGuid.Remove(reconnectGuid);
+				m_SlottingManager.ForceUpdateSlotPlayerID(savedSlotId, iPlayerID);
+			}
+		}
+		
+		QueuePlayerInitialization(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
@@ -418,13 +452,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (CRF_DonatorConfig.IsDonator(playerGUID))
 				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
 		}
-		if (!playerGUID.IsEmpty()) {
-			if (CRF_ModeratorConfig.IsModerator(playerGUID))
-				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
-			
-			if (CRF_DonatorConfig.IsDonator(playerGUID))
-				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
-		}
 	}
 	
 	
@@ -433,6 +460,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
+		
+		// Save slot association by GUID before any cleanup so the player can reclaim their
+		// slot on reconnect even if their numeric player ID changes (dedicated-server behaviour).
+		if (IsMaster() && m_SlottingManager)
+		{
+			string disconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+			if (!disconnectGuid.IsEmpty())
+			{
+				int disconnectSlotId = m_SlottingManager.GetPlayerSlotID(playerId);
+				if (disconnectSlotId >= 0)
+					m_mReconnectSlotByGuid.Set(disconnectGuid, disconnectSlotId);
+			}
+		}
 		
 		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
 		// propagate these events manually. 
@@ -508,7 +548,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		
 		// Move player to spectator
-		m_GamemodeManager.InitilizePlayer(playerId);
+		QueuePlayerInitialization(playerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -573,13 +613,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		for (int i = 0; i < playersToProcess; i++)
 		{
-			int playerId = m_aPendingPlayerInitializations[0];
-			m_aPendingPlayerInitializations.Remove(0);
-			
-			// Initialize the player immediately
 			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(playerId);
+				m_GamemodeManager.InitilizePlayer(m_aPendingPlayerInitializations[i]);
 		}
+		for (int i = playersToProcess - 1; i >= 0; i--)
+			m_aPendingPlayerInitializations.Remove(i);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -644,11 +682,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "BLUFOR": 	return m_BLUFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "OPFOR": 	return m_OPFORGearScriptSettings.m_bEnableShareableMarkers;
 			case "INDFOR": 	return m_INDFORGearScriptSettings.m_bEnableShareableMarkers;
-			case "CIV": 		return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
-    		 }
+			case "CIV": 	return m_CIVILIANGearScriptSettings.m_bEnableShareableMarkers;
+		}
 		
-    		return true;
- 	}
+		return true;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Get gearscript resource for a faction
