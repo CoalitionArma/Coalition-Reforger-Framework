@@ -150,6 +150,46 @@ ButtonWidgetClass {
          Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
          Size 40 40
         }
+        ImageWidgetClass "{CF0001AB00000003}" {
+         Name "RankChevron"
+         Slot FrameWidgetSlot "{CF0001AB00000004}" {
+          Anchor 0 0 0 0
+          PositionX 260
+          OffsetLeft 260
+          PositionY 8
+          OffsetTop 8
+          SizeX 22
+          OffsetRight -282
+          SizeY 22
+          OffsetBottom -30
+         }
+         "Is Visible" 0
+         Size 22 22
+        }
+        TextWidgetClass "{CF0001AB00000001}" {
+         Name "TagName"
+         Slot FrameWidgetSlot "{CF0001AB00000002}" {
+          Anchor 0.58 0 0.69 0
+          PositionX 0
+          OffsetLeft 0
+          PositionY 5
+          OffsetTop 5
+          SizeX 0
+          OffsetRight 0
+          SizeY 30
+          OffsetBottom -35
+         }
+         Clipping Ancestor
+         Color 1 1 0 1
+         Text ""
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 0
+         FontProperties FontProperties "{691EE844BCE53809}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+          OutlineSize 2
+         }
+        }
         TextWidgetClass "{632444CBEEFA6A1B}" {
          Name "PlayerName"
          Slot FrameWidgetSlot "{630A2568FA12B1F6}" {

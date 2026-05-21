@@ -8,6 +8,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
+    CRF_CommunityTagManager "{69651E07695B82A0}" {
+    }
     CRF_ForwardDeployManager "{68C4424EC250E62B}" {
     }
     CRF_GameTimerManager "{68C34EF052F2A86D}" {
@@ -37,6 +39,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_VehicleGearscriptManager "{68C32757EC663DF4}" {
     }
    }
+  }
+  CRF_SlotLottery "{6966101F0044D13B}" {
   }
   CRF_VAAR_GamemodeComponent "{692D60493093033D}" {
   }
