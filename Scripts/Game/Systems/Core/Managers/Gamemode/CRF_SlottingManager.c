@@ -109,6 +109,28 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Force-assigns a player to a slot for reconnect restoration.
+	//! Bypasses the first-come-first-served guard so a reconnecting player (who may have a
+	//! new numeric ID on a dedicated server) can reclaim the slot they held before disconnecting.
+	//! Safe to call with newPlayerId > 0 — never triggers CleanupCharacterFromSlot.
+	//! \param[in] slotId      Slot to restore
+	//! \param[in] newPlayerId The reconnecting player's current numeric player ID
+	void ForceUpdateSlotPlayerID(int slotId, int newPlayerId)
+	{
+		if (newPlayerId <= 0)
+			return;
+		
+		CRF_SlotData slotData = GetSlotData(slotId);
+		if (!slotData)
+			return;
+		
+		// SetSlotCurrentPlayerId only triggers CleanupCharacterFromSlot when playerId <= 0,
+		// so calling it with newPlayerId > 0 is safe and will not delete the character entity.
+		slotData.SetSlotCurrentPlayerId(newPlayerId);
+		m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, newPlayerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedState(int slotId, bool isLocked = false)
 	{
 		CRF_SlotData slotData = GetSlotData(slotId);

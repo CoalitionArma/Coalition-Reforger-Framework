@@ -63,6 +63,10 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Prevents duplicate simultaneous in-flight HTTP requests
 	protected bool m_bFetching = false;
 
+	//! Set when FetchPlayerInfo() is called while a fetch is already in-flight.
+	//! The next completed fetch will automatically trigger a follow-up fetch.
+	protected bool m_bPendingFetch = false;
+
 	//! REST callback stored as ref so it is not garbage-collected mid-flight
 	protected ref RestCallback m_Callback;
 
@@ -169,12 +173,15 @@ class CRF_CommunityTagManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Fetches community tags and XP for all connected players in a single HTTP request.
-	//! Safe to call multiple times; duplicate calls while a fetch is in-flight are ignored.
+	//! If a fetch is already in-flight, queues one follow-up fetch to run after completion.
 	//! Subscribers to GetOnPlayerInfoUpdated() are notified when data arrives.
 	void FetchPlayerInfo()
 	{
 		if (m_bFetching)
+		{
+			m_bPendingFetch = true;
 			return;
+		}
 
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
@@ -217,6 +224,13 @@ class CRF_CommunityTagManager : ScriptComponent
 		ctx.GET(m_Callback, PLAYER_INFO_ENDPOINT + queryNames);
 	}
 
+	//! Schedules a FetchPlayerInfo() call after a delay in milliseconds.
+	//! Use this for JIP connects where the player name may not be registered yet.
+	void FetchPlayerInfoDelayed(int delayMs = 2000)
+	{
+		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, delayMs, false);
+	}
+
 	//! Backward-compatible wrappers — both now delegate to FetchPlayerInfo.
 	void FetchTagsForCurrentPlayers()  { FetchPlayerInfo(); }
 	void FetchRanksForCurrentPlayers() { FetchPlayerInfo(); }
@@ -240,10 +254,16 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected void OnPlayerInfoFetched(RestCallback cb)
 	{
 		m_bFetching = false;
+		bool bRetry = m_bPendingFetch;
+		m_bPendingFetch = false;
 
 		string data = cb.GetData();
 		if (data.IsEmpty())
+		{
+			if (bRetry)
+				FetchPlayerInfo();
 			return;
+		}
 
 		// --- Parse tags ---
 		int tagsObjStart = data.IndexOf("\"tags\":{");
@@ -388,12 +408,19 @@ class CRF_CommunityTagManager : ScriptComponent
 		}
 
 		m_OnPlayerInfoUpdated.Invoke();
+
+		if (bRetry)
+			FetchPlayerInfo();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnPlayerInfoFetchFailed(RestCallback cb)
 	{
 		m_bFetching = false;
+		bool bRetry = m_bPendingFetch;
+		m_bPendingFetch = false;
 		Print(string.Format("[CRF_CommunityTagManager] Failed to fetch player info (result: %1)", cb.GetRestResult()), LogLevel.WARNING);
+		if (bRetry)
+			FetchPlayerInfo();
 	}
 }

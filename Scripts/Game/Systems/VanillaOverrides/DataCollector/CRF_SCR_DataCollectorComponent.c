@@ -234,6 +234,11 @@ modded class SCR_DataCollectorComponent
 		// Calculate session duration before storing
 		playerDisconnectedData.CalculateSessionDuration();
 		
+		// Compute XP, rank, and specialization point gains for this session.
+		// Must be called before StoreProfile() so the backend receives updated progression,
+		// not just raw stats. (Mirrors what ProcessStats() does at AAR for connected players.)
+		playerDisconnectedData.CalculateStatsChange();
+		
 		// Save player profile to backend IMMEDIATELY after session duration calculated.
 		// Skip if OnGameEnd() already issued a StoreProfile() for all players — firing a
 		// second save while the first async transaction is still in flight causes the
