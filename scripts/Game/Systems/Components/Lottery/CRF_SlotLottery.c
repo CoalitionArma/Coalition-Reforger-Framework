@@ -467,7 +467,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 					int currentSlotId = sm.GetPlayerSlotID(entry.m_iPlayerId);
 					if (currentSlotId > 0)
-						sm.UpdateSlotPlayerID(currentSlotId, -1);
+						sm.UpdateSlotPlayerID(currentSlotId, 0);
 
 					int randomIdx = Math.RandomInt(0, squadSlots.Count());
 					int slotId    = squadSlots[randomIdx];
@@ -505,7 +505,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 				int currentSlotId = sm.GetPlayerSlotID(entry.m_iPlayerId);
 				if (currentSlotId > 0)
-					sm.UpdateSlotPlayerID(currentSlotId, -1);
+					sm.UpdateSlotPlayerID(currentSlotId, 0);
 
 				int randomIdx = Math.RandomInt(0, allAvailableSlots.Count());
 				int slotId    = allAvailableSlots[randomIdx];
