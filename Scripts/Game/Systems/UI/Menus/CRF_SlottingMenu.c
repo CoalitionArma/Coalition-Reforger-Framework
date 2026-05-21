@@ -726,29 +726,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		}
 
 		// Update unslotted players list
-		array<int> playerIds = {};
-		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
-		CRF_SlottingManager slottingMgr = CRF_SlottingManager.GetInstance();
+		// Use m_iPlayerId stored on each element — avoids fragile index-order matching.
 		for (int i = 0; i < m_cUnslotPlayerListBoxComponent.GetItemCount(); i++)
 		{
 			SCR_ListBoxElementComponent comp = m_cUnslotPlayerListBoxComponent.GetElementComponent(i);
 			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
-			if (!crfComp)
+			if (!crfComp || crfComp.m_iPlayerId <= 0)
 				continue;
-			// Find the player ID: match unslotted players by list order
-			int unslottedIdx = 0;
-			foreach (int pid : playerIds)
-			{
-				if (pid <= 0 || slottingMgr.GetPlayerSlotFaction(pid, true) || !GetGame().GetPlayerManager().IsPlayerConnected(pid))
-					continue;
-				if (unslottedIdx == i)
-				{
-					crfComp.SetTagText(tagMgr.GetPlayerTag(pid));
-					crfComp.SetRankChevron(tagMgr.GetPlayerXp(pid), tagMgr.GetPlayerRankTrack(pid));
-					break;
-				}
-				unslottedIdx++;
-			}
+			crfComp.SetTagText(tagMgr.GetPlayerTag(crfComp.m_iPlayerId));
+			crfComp.SetRankChevron(tagMgr.GetPlayerXp(crfComp.m_iPlayerId), tagMgr.GetPlayerRankTrack(crfComp.m_iPlayerId));
 		}
 	}
 
@@ -758,9 +744,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	protected void OnJIPPlayerConnected(int playerId)
 	{
+		// Delay the fetch by 2 s so the new player's name is registered in
+		// GetPlayerManager before FetchPlayerInfo builds the HTTP query.
 		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
 		if (tagMgr)
-			tagMgr.FetchPlayerInfo();
+			tagMgr.FetchPlayerInfoDelayed(2000);
 	}
 
 	void UpdateSlots()
@@ -868,8 +856,40 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			}
 			else
 			{
-				// Slot vacated — clear player display and reset to default appearance
-				elem.SetPlayerText("");
+				// Slot vacated — restore OPEN/CLOSED status text using the same phase/type
+				// logic as CRF_ListBoxComponent._AddItemSlot so the display matches initial state.
+				CRF_ESlotType vacatedSlotType = slotData.GetSlotType();
+				string statusText;
+				if (slotData.GetIsLockedSlot())
+				{
+					statusText = "CLOSED";
+				}
+				else if (m_Gamemode.m_SlottingState == 0)
+				{
+					if (vacatedSlotType != CRF_ESlotType.TEAM_LEADER
+						&& vacatedSlotType != CRF_ESlotType.SQUAD_LEADER
+						&& vacatedSlotType != CRF_ESlotType.MEDIC)
+						statusText = "CLOSED";
+					else
+						statusText = "OPEN";
+				}
+				else if (m_Gamemode.m_SlottingState == 1)
+				{
+					if (vacatedSlotType != CRF_ESlotType.TEAM_LEADER
+						&& vacatedSlotType != CRF_ESlotType.SQUAD_LEADER
+						&& vacatedSlotType != CRF_ESlotType.MEDIC
+						&& vacatedSlotType != CRF_ESlotType.SPECIALTY
+						&& vacatedSlotType != CRF_ESlotType.SPECIALTY_ASSISTANT)
+						statusText = "CLOSED";
+					else
+						statusText = "OPEN";
+				}
+				else
+				{
+					statusText = "OPEN";
+				}
+				
+				elem.SetPlayerText(statusText);
 				elem.SetTagText("");
 				elem.GetDisconnectWidget().SetVisible(false);
 				elem.GetPlayerText().SetColor(Color.White);
@@ -1129,13 +1149,20 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				else
 					isGroupFull = false;
 				
-				// Add click handler — subscribe to the element's own m_OnClicked because
-				// GetSlotButton() can return null when SCR_ButtonTextComponent fails to attach.
-				// The element fires m_OnClicked on every click (button click propagates up),
-				// so this is functionally equivalent and always safe.
+				// subscribe to SlotButton's m_OnClicked specifically so that
+				// clicking LockButton or KickButton does NOT propagate up and accidentally trigger
+				// slot selection. Fall back to the element's own m_OnClicked only for layouts that
+				// have no dedicated SlotButton (those layouts also have no admin sub-buttons, so
+				// propagation interference is not a concern).
 				CRF_ListBoxElementComponent slotElem = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 				if (slotElem)
-					slotElem.m_OnClicked.Insert(SelectSlotDelay);
+				{
+					SCR_ButtonTextComponent slotBtn = slotElem.GetSlotButton();
+					if (slotBtn)
+						slotBtn.m_OnClicked.Insert(SelectSlotDelay);
+					else
+						slotElem.m_OnClicked.Insert(SelectSlotDelay);
+				}
 				
 				CRF_ESlotType slotType = slotData.GetSlotType();
 				
