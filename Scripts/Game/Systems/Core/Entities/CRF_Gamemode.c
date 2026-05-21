@@ -183,6 +183,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
+	// Reconnect Tracking — maps player GUID to slot ID for disconnected players.
+	// Ensures a reconnecting player can reclaim their slot even if their numeric
+	// player ID changes between disconnect and reconnect (possible on dedicated servers).
+	//------------------------------------------------------------------------------------
+	protected ref map<string, int> m_mReconnectSlotByGuid = new map<string, int>();
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 INITIALIZATION AND SETUP
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -288,6 +294,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Set basic game mode states for basegamemode
 			// useful for default components that reference it like datacollector
 			switch (m_GamemodeState) {
+				case CRF_EGamemodeState.SLOTTING: {
+					// Clear reconnect tracking — a new game cycle means all previous
+					// disconnect records are no longer valid (slots may be reassigned).
+					m_mReconnectSlotByGuid.Clear();
+					break;
+				}
+				
 				case CRF_EGamemodeState.GAME: {
 					SetGameState(SCR_EGameModeState.GAME);
 					foreach (Vehicle vehicle : CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
@@ -397,7 +410,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
-			
+		
+		// Reconnect restore: if this player has a pending GUID entry, force-update their slot's
+		// player ID before InitilizePlayer runs so IsPlayerInASlot() finds the correct slot.
+		// This handles dedicated-server scenarios where a reconnecting player may get a new
+		// numeric player ID but the GUID (BI account identity) remains the same.
+		if (IsMaster() && m_SlottingManager)
+		{
+			string reconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+			int savedSlotId;
+			if (!reconnectGuid.IsEmpty() && m_mReconnectSlotByGuid.Find(reconnectGuid, savedSlotId))
+			{
+				m_mReconnectSlotByGuid.Remove(reconnectGuid);
+				m_SlottingManager.ForceUpdateSlotPlayerID(savedSlotId, iPlayerID);
+			}
+		}
+		
 		QueuePlayerInitialization(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
@@ -432,6 +460,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
+		
+		// Save slot association by GUID before any cleanup so the player can reclaim their
+		// slot on reconnect even if their numeric player ID changes (dedicated-server behaviour).
+		if (IsMaster() && m_SlottingManager)
+		{
+			string disconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+			if (!disconnectGuid.IsEmpty())
+			{
+				int disconnectSlotId = m_SlottingManager.GetPlayerSlotID(playerId);
+				if (disconnectSlotId >= 0)
+					m_mReconnectSlotByGuid.Set(disconnectGuid, disconnectSlotId);
+			}
+		}
 		
 		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
 		// propagate these events manually. 

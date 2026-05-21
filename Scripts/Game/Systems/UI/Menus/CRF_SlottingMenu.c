@@ -1291,15 +1291,20 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout", 
 				playerId);
 			
-			// Set up selection button
+			// Set up selection handler — subscribe to the element's own m_OnClicked
+			// (same pattern as the slot list) because GetSelectButton() can return null
+			// when SCR_ButtonTextComponent fails to attach, and even when it doesn't,
+			// a sub-button click may not update the listbox's m_iCurrentItem before
+			// SelectPlayer reads GetSelectedItem(). The element's m_OnClicked fires
+			// after OnItemClick has already updated the selection state, so it's safe.
 			SCR_ListBoxElementComponent comp = m_cUnslotPlayerListBoxComponent.GetElementComponent(index);
 			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
 			if (crfComp)
 			{
 				crfComp.SetTagText(playerTag);
 				crfComp.SetRankChevron(unslottedXp, unslottedTrack);
+				crfComp.m_OnClicked.Insert(SelectPlayerDelay);
 			}
-			comp.GetSelectButton().m_OnClicked.Insert(SelectPlayerDelay);
 			
 			// Highlight admins, moderators, and selected players
 			SetPlayerStatusColor(playerId, comp);
@@ -1837,7 +1842,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			// remove player from slot
 			CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
 			m_iSelectedplayerId = 0;
-			m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
+			// Clear visual selection from whichever player list is currently active
+			if (m_bShowingUnslotted)
+				m_cUnslotPlayerListBoxComponent.SetItemSelected(m_cUnslotPlayerListBoxComponent.GetSelectedItem(), false, false, false);
+			else
+				m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 		} 
 		// If slot is empty, move player to this slot
 		else if (currentPlayerId == 0) 
@@ -1855,7 +1864,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			
 			// Reset selection
 			m_iSelectedplayerId = 0;
-			m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
+			// Clear visual selection from whichever player list is currently active
+			if (m_bShowingUnslotted)
+				m_cUnslotPlayerListBoxComponent.SetItemSelected(m_cUnslotPlayerListBoxComponent.GetSelectedItem(), false, false, false);
+			else
+				m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 		}
 	}
 	

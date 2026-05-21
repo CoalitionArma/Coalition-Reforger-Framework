@@ -224,6 +224,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (!m_AARFile)
 			m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
 		
+		if (!m_AARFile)
+		{
+			Print("[CRF_VAAR] ERROR: Could not open AAR file to close recording: " + m_sFilePath, LogLevel.ERROR);
+			return;
+		}
+		
 		m_AARFile.WriteLine("] }");
 		m_AARFile.Close();
 		m_AARFile = null;
