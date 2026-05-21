@@ -58,6 +58,10 @@ class CRF_SpectatorLabelIcon : SCR_ScriptedWidgetComponent
 		m_wSpectatorLabelBackground = OverlayWidget.Cast(w.FindAnyWidget("SpectatorLabelBackground"));
 		m_wSpectatorLabelText = RichTextWidget.Cast(w.FindAnyWidget("SpectatorLabelText"));
 		m_wSpectatorLabel = PanelWidget.Cast(w.FindAnyWidget("SpectatorLabel"));
+		
+		// Start hidden and non-interactive until the first Update() positions and shows the icon.
+		m_wRoot.SetOpacity(0.0);
+		m_wRoot.SetEnabled(false);
 	}
 	
 	/**
@@ -118,10 +122,12 @@ class CRF_SpectatorLabelIcon : SCR_ScriptedWidgetComponent
 		if (screenPosition[2] < 0 || m_fDistanceToIcon > m_fMaxIconDistance)
 		{
 			m_wRoot.SetOpacity(0.0);
+			m_wRoot.SetEnabled(false); // Disable so the invisible widget cannot block player clicks
 			return;
 		}
 		
-		// Icon is visible, set full opacity for the root widget
+		// Icon is visible — ensure it is enabled before positioning/rendering
+		m_wRoot.SetEnabled(true);
 		m_wRoot.SetOpacity(1.0);
 		
 		// Update label content via derived class implementation

@@ -1,3 +1,203 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 7388.637 9.688 6712.818
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7432.262 9.684 6767.306
+  angles 0 -144.616 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7435.064 9.684 6765.315
+  angles 0 -144.616 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7438.068 9.684 6763.181
+  angles 0 -144.616 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7440.804 9.684 6761.238
+  angles 0 -144.616 0
+  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7390.462 9.688 6715.043
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7392.187 9.688 6717.336
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7394.022 9.688 6719.777
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7395.725 9.688 6722.041
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7397.388 9.688 6724.252
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7399.09 9.688 6726.515
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7400.878 9.688 6728.893
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7402.781 9.688 6731.424
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7410.889 9.688 6742.206
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7412.621 9.688 6744.509
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7414.573 9.688 6747.104
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7416.51 9.688 6749.679
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7418.447 9.688 6752.255
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7420.338 9.688 6754.77
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7422.392 9.688 6757.501
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7424.222 9.688 6759.934
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7425.845 9.688 6762.093
+  angles 0 126.941 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  m_sFactionKey "CIV"
+  m_iRespawnTimer 60
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
 CommentEntity {
  coords 7449.809 10.758 6698.563
  angles 0 -158.304 0
@@ -18,86 +218,171 @@ CommentEntity {
   }
  }
 }
-$grp SCR_VehicleSpawn {
+$grp SCR_DestructibleEntity : "{2FBF5DEDFA25D947}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_6m_A.et" {
  {
-  coords 7403.349 9.688 6732.658
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69580813B3A80CD0}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69580813B3A80CDE}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7600.733 47.246 6785.207
+  angles 0 -146.329 0
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
  }
  {
-  coords 7400.754 9.688 6729.215
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69580813B3A8138B}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69580813B3A813A0}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7468.114 77.9 6564.383
+  angles 0 -146.329 0
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
  }
  {
-  coords 7410.427 9.688 6742.427
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69580813B3A81432}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69580813B3A81439}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7488.478 64.029 6595.137
+  angles 0 -56.268 0
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
  }
  {
-  coords 7414.312 9.688 6747.585
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69580813B3A8090D}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69580813B3A80909}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7323.915 64.029 6705.021
+  angles 0 -56.268 0
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
  }
  {
-  coords 7417.149 9.688 6751.348
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
- }
- {
-  coords 7419.747 9.688 6754.796
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
- }
- {
-  coords 7422.201 9.688 6758.052
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
- }
- {
-  coords 7424.606 9.688 6761.244
-  angles 0 127 0
-  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
- }
- {
-  coords 7397.524 9.688 6724.927
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
- }
- {
-  coords 7394.153 9.688 6720.454
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
- }
- {
-  coords 7391.714 9.688 6717.217
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
- }
- {
-  coords 7388.347 9.688 6712.754
-  angles 0 127 0
-  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
- }
- {
-  coords 7432.048 9.686 6766.776
-  angles 0 -145 0
-  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
- }
- {
-  coords 7436.403 9.617 6763.725
-  angles 0 -145 0
-  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
- }
- {
-  coords 7440.845 9.415 6760.611
-  angles 0 -145 0
-  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
- }
- {
-  coords 7379.902 9.724 6709.354
-  angles 0 127 0
-  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69580813B3A80F32}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69580813B3A80F3E}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7396.689 156.314 6677.267
+  angles 89.459 123.732 -180
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
  }
 }
 $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
@@ -147,6 +432,112 @@ $grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers
   angles 0 -26.182 0
  }
 }
+GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ components {
+  ActionsManagerComponent "{645A0008F3808301}" {
+   additionalActions {
+    CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+     VisibilityRange 5
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+    }
+    CRF_TeleportPlayerAction "{69231A0DF6A26379}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{69231A0FC0E2FF6A}" {
+      Name "Teleport to Airfield"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 1
+     m_sObjectNameToTeleportTo "Airfield"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+    }
+    CRF_TeleportPlayerAction "{69231A0A3AAD5456}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{69231A0C2729E660}" {
+      Name "Teleport to Firing Range"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 2
+     m_sObjectNameToTeleportTo "FiringRange"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+    }
+    CRF_TeleportPlayerAction "{69231A0A1787BA07}" {
+     UIInfo UIInfo "{69231A0C98CA8E32}" {
+      Name "Teleport to Vehicle Depot"
+     }
+     ActionTitle "Teleport"
+     "Sort Priority" 3
+     m_sObjectNameToTeleportTo "VehRange"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+    }
+    CRF_TeleportPlayerAction "{69231A0A71DBAD39}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6582DB700D5C2A73}" {
+      Name "Teleport to BLUFOR"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 1
+     "Sort Priority" 4
+     m_sObjectNameToTeleportTo "BLUFOR"
+     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+    }
+    CRF_TeleportPlayerAction "{69231A0A4D19BB5D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6582DB70028B4F56}" {
+      Name "Teleport to OPFOR"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 1
+     "Sort Priority" 5
+     m_sObjectNameToTeleportTo "OPFOR"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    }
+    CRF_TeleportPlayerAction "{69232B12C0B04141}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6582DB70028B4F56}" {
+      Name "Teleport to Rifle Range"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 1
+     "Sort Priority" 6
+     m_sObjectNameToTeleportTo "RifleRange"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    }
+    CRF_TeleportPlayerAction "{6958081290DA3209}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6582DB70028B4F56}" {
+      Name "Teleport to Dance Hall"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 1
+     "Sort Priority" 6
+     m_sObjectNameToTeleportTo "DanceHall"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    }
+   }
+  }
+ }
+ coords 4906.283 28.594 11899.383
+}
 CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
  coords 7525.148 5.98 6763.489
 }
@@ -154,60 +545,28 @@ GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampS
  coords 7449.313 -2.835 6697.37
  angles 0 21.696 0
 }
-$grp GenericEntity : "{C0D09A53EEA441D6}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_US_02.et" {
+$grp CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
  {
-  coords 7463.752 6.829 6836.045
-  angles 0 16.569 0
-  {
-   GenericEntity {
-    ID "5CCCBEC480BAEE00"
-    {
-     GenericEntity {
-      ID "570C956566ECAA57"
-      coords -0.069 0.119 -0.437
-      angles 0.243 -88.099 -7.283
-     }
-     Turret {
-      ID "5CB0D9912FD9E690"
-      coords -0.106 0.739 -0.589
-      angles 7.287 0 0
-     }
-    }
-   }
+  coords 7493.132 6.579 6707.769
+  angles 0 90 0
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sDescription "Spawn"
+  m_aVisibleForFactions {
+   "CIV"
   }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
  }
  {
-  coords 7463.88 3.656 6646.857
-  angles 0 156.783 0
-  {
-   GenericEntity {
-    ID "5CCCBEC480BAEE00"
-    {
-     GenericEntity {
-      ID "570C956566ECAA57"
-      coords -0.069 0.119 -0.437
-      angles 0.243 -88.099 -7.283
-     }
-     Turret {
-      ID "5CB0D9912FD9E690"
-      coords -0.106 0.739 -0.589
-      angles 7.287 0 0
-     }
-    }
-   }
+  coords 4906.153 28.594 11899.43
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sDescription "Airport"
+  m_aVisibleForFactions {
+   "CIV"
   }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
  }
-}
-CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
- coords 7493.132 6.579 6707.769
- angles 0 90 0
- m_MarkerColor 0.392 0.157 0.624 1
- m_sDescription "Spawn"
- m_aVisibleForFactions {
-  "CIV"
- }
- m_bVisibleForEmptyFaction 1
- m_bShowForAnyFaction 1
 }
 GenericEntity : "{F4B7F1D4D3ADE456}Prefabs/Structures/Signs/Military/Sign_VehicleRepair_US_01.et" {
  coords 7442.783 9.356 6759.423

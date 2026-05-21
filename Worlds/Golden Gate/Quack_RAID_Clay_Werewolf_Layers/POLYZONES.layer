@@ -1,0 +1,242 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 3077.306 48.144 1740.734
+ Points {
+  ShapePoint "{691C043664A7E944}" {
+   Position -157.242 0 359.257
+  }
+  ShapePoint "{691C043666E60143}" {
+   Position 50.302 0 402.76
+  }
+  ShapePoint "{691C043798CA4E85}" {
+   Position 1476.229 0 7.726
+  }
+  ShapePoint "{691C04379A9BCDD1}" {
+   Position 2814.222 0 130.45
+  }
+  ShapePoint "{691C04379CAC0C4A}" {
+   Position 2810.944 0 -1740.337
+  }
+  ShapePoint "{691C04379683B4DC}" {
+   Position -802.96 0 -1793.309
+  }
+ }
+}
+PolylineShapeEntity Spawn_BLUFOR : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 5506.96 76.689 359.13
+ Points {
+  ShapePoint "{691C0437C859931B}" {
+   Position -28.785 0 -71.993
+  }
+  ShapePoint "{691C0437C97C7BB8}" {
+   Position -49.141 0 55.246
+  }
+  ShapePoint "{691C0437CA8785F5}" {
+   Position 53.057 0 77.187
+  }
+  ShapePoint "{691C0437CA2BF1CF}" {
+   Position 56.745 0 -46.263
+  }
+ }
+}
+$grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ Museum_BLUFOR {
+  coords 5614.793 6.213 1152.813
+  Points {
+   ShapePoint "{69422B9815E0490C}" {
+    Position 17.705 0 -97.045
+   }
+   ShapePoint "{69422B98151EFD4E}" {
+    Position -89.061 0 -7.157
+   }
+   ShapePoint "{69422B9816AE5427}" {
+    Position -20.966 0 58.839
+   }
+   ShapePoint "{69422B981797637D}" {
+    Position 16.535 0 45.05
+   }
+   ShapePoint "{69422B98176FE1A6}" {
+    Position 44.14 0 79.046
+   }
+   ShapePoint "{69422B9808691C98}" {
+    Position 96.57 0 -143.748
+   }
+   ShapePoint "{694241463C3AD41C}" {
+    Position 109.309 0 -139.604
+   }
+   ShapePoint "{694241463115C7FB}" {
+    Position 91.386 0 -13.445
+   }
+   ShapePoint "{6942414632A70BDC}" {
+    Position 122.822 0 -12.941
+   }
+   ShapePoint "{694241462EDCF70A}" {
+    Position 140.726 0 -129.91
+   }
+   ShapePoint "{69422B98090C55E1}" {
+    Position 72.719 0 -153.054
+   }
+  }
+ }
+ West_Hills_BLUFOR {
+  coords 3148.982 130.301 762.355
+  Points {
+   ShapePoint "{69422B98C043785A}" {
+    Position -160.558 0 -244.485
+   }
+   ShapePoint "{69422B98C69DB805}" {
+    Position -98.602 0 63.285
+   }
+   ShapePoint "{69422B98F81F4F19}" {
+    Position 195.548 0 -6.309
+   }
+   ShapePoint "{69422B98FA989897}" {
+    Position 302.58 0 9.016
+   }
+   ShapePoint "{69422B98FA1503BF}" {
+    Position 392.354 0 63.16
+   }
+   ShapePoint "{69422B98FF9C671A}" {
+    Position 478.904 0 -84.436
+   }
+   ShapePoint "{69422B98F0C93FD6}" {
+    Position 501.055 0 -270.365
+   }
+   ShapePoint "{69422B98F23B1946}" {
+    Position 176.548 0 -329.005
+   }
+   ShapePoint "{69422B98F35C7D2F}" {
+    Position 10.62 0 -365.897
+   }
+  }
+ }
+ Medical_BLUFOR {
+  coords 4240.11 1.391 1459.455
+  Points {
+   ShapePoint "{69422B984E919188}" {
+    Position -140.813 0 -160.612
+   }
+   ShapePoint "{69422B984F23342C}" {
+    Position -100.638 0 113.706
+   }
+   ShapePoint "{69422B984000DF25}" {
+    Position 143.325 0 97.75
+   }
+   ShapePoint "{69422B9842458357}" {
+    Position 99.158 0 -183.419
+   }
+  }
+ }
+ Central_BLUFOR {
+  coords 4747.946 24.98 909.024
+  Points {
+   ShapePoint "{69424144EDA7CCFE}" {
+    Position -49.261 0 -204.099
+   }
+   ShapePoint "{69424144EF70A242}" {
+    Position -130.405 0 -155.999
+   }
+   ShapePoint "{694241441BA2A7E4}" {
+    Position 109.803 0 245.792
+   }
+   ShapePoint "{694241441D94B625}" {
+    Position 199.682 0 203.172
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ Spawn_OPFOR {
+  coords 3107.002 41.281 1836.549
+  Points {
+   ShapePoint "{691C0437D986E1C6}" {
+    Position -40.813 0 -2.151
+   }
+   ShapePoint "{691C0437DAB2FE51}" {
+    Position 41.85 0 61.863
+   }
+   ShapePoint "{691C0437DB3939A9}" {
+    Position 103.505 0 -37.098
+   }
+   ShapePoint "{691C0437DC6025E2}" {
+    Position -24.831 0 -227.583
+   }
+   ShapePoint "{6946387640DE3BB5}" {
+    Position -79.106 -0 -143.361
+   }
+  }
+ }
+ Coast_OPFOR {
+  coords 4788.573 2.79 1560.422
+  Points {
+   ShapePoint "{69424143FB402F4E}" {
+    Position -47.405 0 -34.248
+   }
+   ShapePoint "{69424143FC3625CE}" {
+    Position -55.065 0 45
+   }
+   ShapePoint "{69424143FEC80A4D}" {
+    Position 49.558 0 56.056
+   }
+   ShapePoint "{69424143FE65CB6F}" {
+    Position 69.514 0 -10.967
+   }
+  }
+ }
+ Apartments__OPFOR {
+  coords 5688.17 4.844 1519.208
+  Points {
+   ShapePoint "{69424143E5D0D95D}" {
+    Position -42.999 0 -53.655
+   }
+   ShapePoint "{69424143E5BDE376}" {
+    Position -56.573 0 36.945
+   }
+   ShapePoint "{69424143E53C97A0}" {
+    Position 24.904 0 52.789
+   }
+   ShapePoint "{69424143E64D3936}" {
+    Position 47.831 0 -41.883
+   }
+  }
+ }
+ FuelDepot_OPFOR {
+  coords 3070.719 91.25 1009.009
+  Points {
+   ShapePoint "{69424142EE301EC0}" {
+    Position -49.193 0 5.161
+   }
+   ShapePoint "{69424142E10F211C}" {
+    Position -62.02 0 80.015
+   }
+   ShapePoint "{69424142E2B97B69}" {
+    Position 31.835 0 91.487
+   }
+   ShapePoint "{69424142E3F489EE}" {
+    Position 26.301 0 25.95
+   }
+  }
+ }
+ WestTown_OPFOR {
+  coords 2972.377 62.408 278.443
+  Points {
+   ShapePoint "{69424142146FD358}" {
+    Position -59.845 0 -130.136
+   }
+   ShapePoint "{69424142158BDE0A}" {
+    Position -186.373 0 16.423
+   }
+   ShapePoint "{6942414215258E8A}" {
+    Position -119.049 0 90.84
+   }
+   ShapePoint "{6942414216A7CB1B}" {
+    Position -1.315 0 14.828
+   }
+   ShapePoint "{6942414217D53DE5}" {
+    Position 66.685 0 -67.657
+   }
+   ShapePoint "{694241421741F6C9}" {
+    Position 16.369 0 -117.493
+   }
+  }
+ }
+}

@@ -1,0 +1,534 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 5516.03 76.688 340.987
+ "Map Geometry Data" "{AD0D57A138A115BA}Missions/GoldenGate_GM.topo"
+ "Satellite background image" "{94393EADA8E6B9D7}Missions/gtt_satmapGGSEA LION2.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 5591.679 91.571 356.746
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RaidGamemodeComponent "{691C043CCB186187}" {
+   m_fWinThresholdPercent 75
+  }
+  Quack_SpawnerComponent "{694A121D2FBB4032}" {
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 19
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_iDay 12
+   m_iMonth 4
+   m_iYear 2008
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "After a hard fought battle in San Francisco, Russian forces attempt to salvage supplies and manpower. All the while U.S. citizens take up arms and begin resisting."\
+   ""\
+   "BLUFOR Composition: Light Infantry"\
+   "BLUFOR Assets: Black Market"\
+   ""\
+   "OPFOR Composition: Mechanized Infantry"\
+   "OPFOR Assets: 1xBTR-70, 1xBTR-90"\
+   ""\
+   "Time: Sunset"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Destroy as many Russian resources before sunset."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Consolidate your forces and resources by the bridge."\
+   "Defend the bridge until sunset."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "There's something wonkey happening with supply transfers via the inventory screen. Sometimes it requires you to click and drag supplies two times in a row."\
+   ""\
+   "Respawn at half time with a possibility of a 10 second delay due to how the script checks for conditions."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{694978D479B93224}" {
+   m_sTitle "INTEL"
+   m_sTextData "It took a lot of convincing but, old \"Difficult\" Pete has agreed to let us access his weapons cache in exchange for not asking questions, and supply units."\
+   "There is an abandoned US Truck full of supplies North of here. It is marked on the map."\
+   "Friendly Observers have reported locations for two BTRs and what appears to be the local HQ. They are marked on the map as well."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{694978D479B93334}" {
+   m_sTitle "INTEL"
+   m_sTextData "There's a tunnel under HQ that can hold most of the vehicles."\
+   "The local population is armed, but whether that will hinder our operations here is yet to be seen. We should regroup before any resistance groups take advantage of the situation."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{695B7086D322F89E}" {
+   m_sTitle "Commander's Notes"
+   m_sTextData "The Assault on the city has gone a little too well. We have overextended our troops and resources. We'll need to rally back together to keep our cohesion."\
+   "Another mechanized unit is planned to reinforce us and is moving here from the North. They're expected to be in the area shortly after sunset. If we still have enough fuel and supplies they'll cross the bridge, otherwise we'll have to abandon the city for another time."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{694978DC3A864DC6}" {
+   m_sCallsign "Cell 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN_DEMO
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A86531B}" {
+   m_sCallsign "Cell 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865055}" {
+   m_sCallsign "Cell 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIC
+    GRENADIER
+    RIFLEMAN_DEMO
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865091}" {
+   m_sCallsign "Cell 4"
+   m_FlagType SIGNAL
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A8651E1}" {
+   m_sCallsign "Cell 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A86561D}" {
+   m_sCallsign "Cell 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865768}" {
+   m_sCallsign "Cell 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    TEAM_LEAD
+    SNIPER
+    SPOTTER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A8657CD}" {
+   m_sCallsign "Cell 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865417}" {
+   m_sCallsign "Cell 9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    GRENADIER
+    RIFLEMAN_DEMO
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{694978DC3A865A65}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865AB6}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865B01}" {
+   m_sCallsign "MED1"
+   m_FlagType MEDICAL
+   m_aSlots {
+    MEDICAL_OFFICER
+    MEDIC
+    MEDIC
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A86585C}" {
+   m_sCallsign "1-1"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A86589F}" {
+   m_sCallsign "1-2"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A8659DF}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    SNIPER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865E1D}" {
+   m_sCallsign "ENG1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    COMBAT_ENGINEER
+    COMBAT_ENGINEER
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865F76}" {
+   m_sCallsign "2PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{694978DC3A865FCA}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    ASSISTANT_RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{91B14E90548214C4}Configs/Gearscripts/Custom/Quack/CRF_GS_RHS_US_Militia_Quack.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A8E1867F76DB3AA0}Configs/Gearscripts/Custom/Quack/CRF_GS_RUS_2000s_QuackMod.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "691C043977AFE8C3" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{69422B91EC6B8FBA}" {
+         m_sIdentifier "Weapons"
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{69422B910D992EA3}" {
+           m_sEntityPrefab "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B913626360B}" {
+             m_eItemMode AMMUNITION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B916EB34715}" {
+           m_sEntityPrefab "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B9299F6831F}" {
+             m_eItemMode AMMUNITION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B92D5EB7C7E}" {
+           m_sEntityPrefab "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B92CE48332F}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 3
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B9231C1C838}" {
+           m_sEntityPrefab "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B922918244A}" {
+             m_eItemMode AMMUNITION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B92226AEC1D}" {
+           m_sEntityPrefab "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B9251DE2D6B}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 1
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B927DC9D916}" {
+           m_sEntityPrefab "{5922DAC3E4B41C08}Prefabs/Weapons/Magazines/M2 Carbine/BC_Magazine_30_Carbine_M2_Carbine_30rnd_Ball.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B9273F63B32}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 5
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B92639777E7}" {
+           m_sEntityPrefab "{2A9A50C23773AC87}Prefabs/Weapons/Magazines/Carl Gustaf M45/BC_Magazine_9x19_M45_36rnd_Ball.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B939C7F5B4B}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 5
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B93CB0FD0DB}" {
+           m_sEntityPrefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B93C38184A5}" {
+             m_iSupplyCost 80
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{694241455C2B1677}" {
+           m_sEntityPrefab "{046AA0F20A54842A}Prefabs/Weapons/Magazines/Magazine_9x19_MP5_30rnd_Ball.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{694241455F2EA41B}" {
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 5
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69422B93E79C9672}" {
+           m_sEntityPrefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69422B933DDA66AD}" {
+             m_iSupplyCost 110
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6942414CE983A0E3}" {
+           m_sEntityPrefab "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6942414CED5FE213}" {
+             m_eItemType EXPLOSIVES
+             m_iSupplyCost 40
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6942414503FC448A}" {
+           m_sEntityPrefab "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{69424145386A547E}" {
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{694241452C229BAE}" {
+           m_sEntityPrefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6942414520AB8B9C}" {
+             m_iSupplyCost 12
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{69463862F629B2CF}" {
+           m_sEntityPrefab "{EC9BDA3D9DDD8795}Prefabs/Weapons/Flares/FlareStarParachute_M127A1_white.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{694638621A05143C}" {
+             m_eItemType EQUIPMENT
+             m_iSupplyCost 2
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6954195470A34F69}" {
+           m_sEntityPrefab "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6954195469898078}" {
+             m_iSupplyCost 60
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
