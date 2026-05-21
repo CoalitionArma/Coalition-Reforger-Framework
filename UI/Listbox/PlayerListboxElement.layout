@@ -95,12 +95,12 @@ ButtonWidgetClass {
          Name "Text"
          Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
           Anchor 0 0 0 0
-          PositionX 83.76
-          OffsetLeft 83.76
+          PositionX 106
+          OffsetLeft 106
           PositionY 0
           OffsetTop 0
-          SizeX 88.678
-          OffsetRight -172.438
+          SizeX 66
+          OffsetRight -172
           SizeY 35.557
           OffsetBottom -35.557
          }
@@ -111,17 +111,33 @@ ButtonWidgetClass {
          "Vertical Alignment" Center
          Wrap 1
         }
+        ImageWidgetClass "{CF0003AB00000003}" {
+         Name "RankChevron"
+         Slot FrameWidgetSlot "{CF0003AB00000004}" {
+          Anchor 0 0 0 0
+          PositionX 83
+          OffsetLeft 83
+          PositionY 10
+          OffsetTop 10
+          SizeX 20
+          OffsetRight -103
+          SizeY 20
+          OffsetBottom -30
+         }
+         "Is Visible" 0
+         Size 20 20
+        }
         ButtonWidgetClass "{630A25D7A5616D15}" {
          Name "PlayerButton"
          Slot FrameWidgetSlot "{630510543BD8CBB1}" {
-          PositionX 38.075
-          OffsetLeft 38.075
-          PositionY 0
-          OffsetTop 0
-          SizeX 134.038
-          OffsetRight -172.113
-          SizeY 35.557
-          OffsetBottom -35.557
+          PositionX 163.508
+          OffsetLeft 163.508
+          PositionY 1.046
+          OffsetTop 1.046
+          SizeX 62.61
+          OffsetRight -226.118
+          SizeY 33.815
+          OffsetBottom -34.861
          }
          "Z Order" 10
          Color 1 1 1 0.012

@@ -150,16 +150,32 @@ ButtonWidgetClass {
          Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
          Size 40 40
         }
+        ImageWidgetClass "{CF0001AB00000003}" {
+         Name "RankChevron"
+         Slot FrameWidgetSlot "{CF0001AB00000004}" {
+          Anchor 0 0 0 0
+          PositionX 260
+          OffsetLeft 260
+          PositionY 8
+          OffsetTop 8
+          SizeX 22
+          OffsetRight -282
+          SizeY 22
+          OffsetBottom -30
+         }
+         "Is Visible" 0
+         Size 22 22
+        }
         TextWidgetClass "{CF0001AB00000001}" {
          Name "TagName"
          Slot FrameWidgetSlot "{CF0001AB00000002}" {
-          Anchor 0 0 0 0
-          PositionX 285
-          OffsetLeft 285
+          Anchor 0.58 0 0.69 0
+          PositionX 0
+          OffsetLeft 0
           PositionY 5
           OffsetTop 5
-          SizeX 60
-          OffsetRight -345
+          SizeX 0
+          OffsetRight 0
           SizeY 30
           OffsetBottom -35
          }

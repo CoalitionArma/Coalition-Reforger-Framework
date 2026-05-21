@@ -75,7 +75,7 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.029 0.034 0.048 1
      Size 512 512
      "Transition width" 1
      Progress 0.24
@@ -645,8 +645,8 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Opacity 0.2
-     Color 0.091 0.091 0.091 0.788
+     Opacity 0.94
+     Color 0.044 0.048 0.062 0.98
     }
     OverlayWidgetClass "{62F03D881157A4D2}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "PlayersList"
@@ -689,7 +689,7 @@ FrameWidgetClass {
       SizeY 39.96
       OffsetBottom -39.96
      }
-     Color 0.017 0.017 0.017 1
+     Color 0.055 0.09 0.19 1
     }
     TextWidgetClass "{62F03D881157A4D4}" {
      Name "PlayersText"
@@ -736,8 +736,8 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Opacity 0.5
-     Color 0.1758 0.1734 0.1734 0.784
+     Opacity 0.94
+     Color 0.044 0.048 0.062 0.98
     }
     OverlayWidgetClass "{62F03D881157CD72}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "DescriptionList"
@@ -780,7 +780,7 @@ FrameWidgetClass {
       SizeY 39.96
       OffsetBottom -39.96
      }
-     Color 0.017 0.017 0.017 1
+     Color 0.055 0.09 0.19 1
     }
     TextWidgetClass "{62F03D881157CD70}" {
      Name "MissionText"
@@ -889,7 +889,7 @@ FrameWidgetClass {
       SizeY -63.381
       OffsetBottom 59.998
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.044 0.048 0.062 0.96
     }
     TextWidgetClass "{62F03D881157C65C}" {
      Name "TimeText"
@@ -921,7 +921,7 @@ FrameWidgetClass {
       SizeY -63.381
       OffsetBottom 26.285
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.044 0.048 0.062 0.96
     }
     TextWidgetClass "{62F03D881157C652}" {
      Name "WeatherText"
