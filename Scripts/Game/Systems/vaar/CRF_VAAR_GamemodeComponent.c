@@ -97,7 +97,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_sMissionName = string.Format("%1_%2", GetGame().GetMissionName(), System.GetUnixTime());
 		
 		// Create AAR File
-		m_sFilePath = string.Format("$profile:AAR_Log_%1.json", m_sMissionName);
+		m_sFilePath = string.Format("$profile:vaar/AAR_Log_%1.json", m_sMissionName);
 		
 		// Write Mission Details to file
 		m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
