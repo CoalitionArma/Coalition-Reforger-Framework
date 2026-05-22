@@ -161,17 +161,20 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Dispatches to the correct per-track texture lookup based on the track string.
+	 * Warrant and officer tracks always show at minimum W-1/O-1 (even when xp is
+	 * unknown/negative), because their lowest grade still has insignia.
+	 * Only enlisted hides the chevron for E-1 (xp < 15000) or unknown xp (< 0).
 	 */
 	protected ResourceName GetRankTexture(int xp, string track)
 	{
-		if (xp < 0)
-			return ResourceName.Empty;
-
 		if (track == "warrant")
 			return GetWarrantRankTexture(xp);
 		if (track == "officer")
 			return GetOfficerRankTexture(xp);
 
+		// Enlisted: hide chevron when XP is unknown (< 0) or at E-1 (< 15000)
+		if (xp < 0)
+			return ResourceName.Empty;
 		return GetEnlistedRankTexture(xp);
 	}
 
