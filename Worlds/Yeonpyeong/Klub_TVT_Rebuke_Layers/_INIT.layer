@@ -43,10 +43,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 70
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
+ m_bUseCVON 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
@@ -57,6 +58,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""\
    "OPFOR Composition: USSR 80s Infantry"\
    "OPFOR Assets: MMG"\
+   ""\
+   "(There is a minefield marked on the map.)"\
    ""\
    "Time: Noon"\
    ""\
@@ -78,15 +81,18 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "OPFOR Objectives"
    m_sTextData "Defend the POIs from the US infantry to ensure operations are continued on Yeonpyeong. "\
    ""\
-   "You have an LOA, for the second phase, marked on your maps."
+   "You have an LOA, for the first and second phases, marked on your maps."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTitle "INDFOR Objectives"
-   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
-   m_aFactionKeys +{
+   m_sTitle "Administration"
+   m_sTextData "There is a minefield marked on the map. :o"
+   m_aFactionKeys {
+    ""
+    ""
+    ""
    }
    m_bShowForAnyFaction 0
   }
