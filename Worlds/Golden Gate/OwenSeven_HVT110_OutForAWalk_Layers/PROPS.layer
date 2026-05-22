@@ -1,3 +1,14 @@
+GenericEntity : "{002B8C09F0E7E371}Prefabs/Props/Wrecks/S1203_wreck/S1203_wreck_static.et" {
+ coords 4806.077 4.541 1570.941
+ angles 0 -46.079 0
+}
+StaticModelEntity : "{05BB7039D0546E22}Prefabs/Props/Wrecks/CannonWreck_02/CannonWreck_02_base.et" {
+ coords 4774.988 4.792 1570.93
+}
+GenericEntity : "{0A6B5B1CC60EC137}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck_static.et" {
+ coords 4799.889 -0.497 1529.988
+ angles 26.737 0 0
+}
 GenericEntity : "{1855751A9E1856D6}Prefabs/Props/boat/portecontainer.et" {
  components {
   RigidBody "{5872F0EB7DFB5A9D}" {
@@ -8,17 +19,46 @@ GenericEntity : "{1855751A9E1856D6}Prefabs/Props/boat/portecontainer.et" {
  angles 0 -108.298 0
  scale 0.84
 }
+GenericEntity : "{1A1CE09F7BCA6650}Prefabs/Props/Wrecks/S105_wreck/S105_wreck_static.et" {
+ coords 4804.731 4.251 1567.353
+ angles 0 81.245 0
+}
 GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck.et" {
- coords 4774.027 3.805 1602.44
- angles -14.912 29.684 0
+ coords 4787.072 3.135 1606.012
+ angles -11.207 -12.245 9.901
+ scale 1.25
+}
+$grp GenericEntity : "{1F3291C2A7E2BA00}Prefabs/Props/Wrecks/BRDM2_wreck/BRDM2_wreck_static.et" {
+ {
+  coords 4779.879 -0.192 1528.105
+  angles 0 88.904 19.411
+ }
+ {
+  coords 5020.828 1.716 1597.026
+  angles 0 -60.479 0
+ }
 }
 StaticModelEntity : "{24158CD5C9C473BB}Prefabs/Structures/Ruins/ShedMetal_Ruin_01/Dst/ShedMetal_Ruin_01_Ruin.et" {
  coords 5418.493 0 1750.838
  angles 0 60.943 0
 }
-GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
- coords 4787.529 1.226 1552.531
- angles 0 64.568 0
+$grp GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ {
+  coords 4787.529 1.226 1552.531
+  angles 0 64.568 0
+ }
+ {
+  coords 4778.652 4.226 1567.017
+  angles 0 128.389 0
+ }
+ {
+  coords 5014.591 1.765 1594.855
+  angles 0 86.893 0
+ }
+}
+GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck/M113_wreck.et" {
+ coords 4772.093 6.103 1586.098
+ angles 0 113.377 0
 }
 $grp GenericEntity : "{2E93D634BF435971}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_item.et" {
  {
@@ -45,9 +85,47 @@ $grp GenericEntity : "{2E93D634BF435971}Prefabs/Props/Military/SupplyBox/SupplyC
   coords 4900.311 14.697 1207.38
  }
 }
+GenericEntity : "{3386EAA823BE462E}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck_static.et" {
+ coords 4770.704 2.294 1557.554
+ angles 0 82.774 30.245
+}
 GenericEntity : "{33F7854D9B4B78CE}Prefabs/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_base.et" {
  coords 5714.979 8.578 983.613
  angles 0 -83.413 0
+}
+$grp GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck/T62_wreck.et" {
+ {
+  coords 4805.93 5.739 1577.426
+  angles 0 83.724 16.561
+ }
+ {
+  coords 4772.608 5.225 1575.996
+  angles 0 25.244 0
+ }
+}
+GenericEntity : "{38E750A0E7C3B350}Prefabs/Props/Wrecks/Mi8MT_wreck/Mi8MT_wreck.et" {
+ coords 4775.749 4.441 1601.429
+ angles -18.596 -13.035 0
+}
+GenericEntity : "{43957C1E3ECCDFE2}Prefabs/Props/Wrecks/ShipWreckWooden_01/ShipWreckWooden_01.et" {
+ coords 5094.604 -5.365 1656.986
+ angles 0 47.115 0
+ scale 1.22
+}
+GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01/BoatWreck_01.et" {
+ coords 4964.666 -1.267 1518.331
+ angles 8.524 25.723 0
+ scale 1.47
+}
+$grp GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck.et" {
+ {
+  coords 5021.973 -0.626 1573.431
+  angles 0 169.141 -11.31
+ }
+ {
+  coords 5021.329 -1.05 1565.147
+  angles -10.62 99.499 21.616
+ }
 }
 GenericEntity : "{64830926F6CF3877}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76UN_running.et" {
  components {
@@ -63,9 +141,33 @@ SCR_DestructibleBuildingEntity : "{686B4C83AC940895}Prefabs/Structures/Infrastru
  coords 5528.047 -3.843 1719.178
  angles 0 71.99 10.312
 }
+$grp GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck.et" {
+ {
+  coords 4800.384 1.418 1535.359
+  angles 19.184 0 0
+ }
+ {
+  coords 4774.707 1.47 1547.22
+  angles -13.858 -15.942 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{728B436837CAC3ED}Prefabs/Props/Wrecks/ShipWreckMetal_03/ShipWreckMetal_03_base.et" {
+ coords 5134.127 -2.588 1691.039
+ angles 7.913 -175.751 -0.849
+ scale 1.307
+}
+GenericEntity : "{74DCE1AEC6832E18}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_static.et" {
+ coords 5027.086 -1.071 1560.842
+ angles 12.473 0 0
+}
 GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck.et" {
- coords 4807.078 1.062 1557.944
- angles 0 81.138 0
+ coords 4807.261 1.107 1560.288
+ angles -8.331 127.184 4.119
+}
+GenericEntity : "{7F29BE4FBFC98392}Prefabs/Props/Wrecks/UAZ452_wreck/UAZ452_wreck.et" {
+ coords 5106.009 -1.033 1668.494
+ angles 19.517 0 0
+ scale 1.05
 }
 SCR_DestructibleBuildingEntity : "{80763D9EE6A80EF3}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m_T.et" {
  coords 5498.235 2.684 1812.738
@@ -87,6 +189,19 @@ Tree : "{87BE91E8E84DA493}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glut
  coords 5763.278 -0.211 945.347
  scale 1.69
 }
+GenericEntity : "{90299A76FC1AE10F}Prefabs/Props/Wrecks/T62_wreck/T62_wreck_turret.et" {
+ coords 4771.268 4.122 1568.731
+ angles 0 -87.773 0
+}
+GenericEntity : "{907349B7A9619727}Prefabs/Props/Industrial/Mine/Mine_01_train/Mine_01_train_wreck.et" {
+ coords 4781.838 4.63 1602.043
+ angles 0 82.618 -16.204
+ scale 1.57
+}
+GenericEntity : "{97BC8B79BFE292BA}Prefabs/Props/Industrial/CompressorTrailerWreck_01/Dst/CompressorTrailerWreck_01_dst_01.et" {
+ coords 4773.007 1.308 1552.016
+ angles 0 -38.331 0
+}
 $grp SCR_DestructibleBuildingEntity : "{985A4C85EBEF38AA}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_10m_end.et" {
  {
   coords 5512.074 4.502 1817.109
@@ -105,6 +220,53 @@ SCR_DestructibleBuildingEntity : "{A4B690DEC3D39B11}Prefabs/Structures/Infrastru
  coords 5504.885 5.015 1763.5
  angles 0 -104.491 0
 }
+GenericEntity : "{A8E6670E3AC51126}Prefabs/Props/Industrial/CrawlerCraneWreck_01/CrawlerCraneWreck_01_yellow.et" {
+ coords 4777.73 2.279 1536.721
+ angles 4.516 -8.375 0
+}
+StaticModelEntity : "{ACE17AAC3F65436B}Prefabs/Props/Wrecks/ShipWreckMetal_03/ShipWreckMetal_03_Ruin.et" {
+ coords 5121.471 -1.062 1670.77
+ angles 0 63.422 0
+ scale 1.26
+}
+$grp GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck_static.et" {
+ {
+  coords 4799.436 2.382 1542.487
+  angles 0 -27.152 0
+ }
+ {
+  coords 5021.457 -1.079 1568.36
+  angles 0 116.872 0
+ }
+}
+$grp GenericEntity : "{AE57C45CB32D6168}Prefabs/Props/Wrecks/M113_wreck/M113_wreck_static.et" {
+ {
+  coords 4807.604 1.207 1554.999
+  angles -5.068 45.367 -9.962
+ }
+ {
+  coords 4771.315 5.408 1591.25
+  angles 0 71.363 0
+ }
+ {
+  coords 4769.94 5.352 1597.094
+  angles -20.211 0 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{B770EA904C15D231}Prefabs/Props/Wrecks/ShipWreckMetal_03/ShipWreckMetal_03.et" {
+ coords 4785.161 0.926 1620.673
+ angles 7.467 173.29 0
+}
+$grp GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_Wreck/BTR70_wreck_static.et" {
+ {
+  coords 4780.131 -1.819 1523.688
+  angles 25.764 0 0
+ }
+ {
+  coords 5014.488 1.541 1590.291
+  angles 0 49.947 0
+ }
+}
 $grp SCR_DestructibleBuildingEntity : "{BACE78CFBF553B0B}Prefabs/Structures/Infrastructure/Naval/Boatsheds/Boatshed01.et" {
  {
   coords 5521.873 4.798 1786.234
@@ -122,6 +284,10 @@ SCR_DestructibleBuildingEntity : "{BE98D3C1A31F7448}Prefabs/Structures/Infrastru
 StaticModelEntity : "{C1BC9D802080EF43}Prefabs/Structures/Airport/LightRunway_03/LightRunway_03_light.et" {
  coords 5812.969 7.885 997
  angles 0 -84.063 0
+}
+GenericEntity : "{C707F02B5A64AA08}Prefabs/Props/Wrecks/BRDM2_wreck/BRDM2_wreck.et" {
+ coords 4780.188 0.791 1530.677
+ angles 0 51.513 0
 }
 SCR_DestructibleBuildingEntity : "{CEB1F71D46592F3C}Prefabs/Structures/Airport/Hangar_01/Hangar_01.et" {
  coords 5803.006 19.779 970.808
@@ -469,72 +635,40 @@ $grp GenericEntity : "{DB968E267E913B7A}Prefabs/Structures/Signs/Warnings/SignsW
   scale 19.949
  }
 }
-$grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
-     m_iMinProjectilesEachBarrage 35
-     m_iMaxProjectilesEachBarrage 51
-    }
-   }
-  }
-  coords 4977.624 1.413 1601.4
-  angles 0 -8.938 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
-     m_iMinProjectilesEachBarrage 35
-     m_iMaxProjectilesEachBarrage 51
-    }
-   }
-  }
-  coords 4900.334 1.413 1589.245
-  angles 0 47.981 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
-     m_iMinProjectilesEachBarrage 35
-     m_iMaxProjectilesEachBarrage 51
-    }
-   }
-  }
-  coords 4811.257 1.413 1575.235
-  angles 0 -8.938 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
-     m_iMinProjectilesEachBarrage 35
-     m_iMaxProjectilesEachBarrage 51
-    }
-   }
-  }
-  coords 4800.037 1.413 1646.576
-  angles 0 -8.938 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
-     m_iMinProjectilesEachBarrage 35
-     m_iMaxProjectilesEachBarrage 51
-    }
-   }
-  }
-  coords 4877.663 1.413 1659.79
-  angles 0 47.981 0
- }
+GenericEntity : "{DE59CB05202006E8}Prefabs/Props/Agriculture/CultivatorWreck_01.et" {
+ coords 4775.517 2.546 1543.461
+ angles -12.275 -109.012 0
+ scale 1.32
 }
-GenericEntity : "{EC13D4E934B2ADD8}Prefabs/Items/Demining/MineFlags/MineFlag_US.et" {
- coords 4768.557 1.467 1552.595
- angles 0 -103.468 0
- scale 3.67
+GenericEntity : "{E40AD7968F0097E6}Prefabs/Props/Wrecks/CannonWreck_02/CannonWreck_02_Cannon.et" {
+ coords 4772.532 6.786 1572.778
+ angles -17.359 164.036 0
+}
+GenericEntity : "{EB084C400AABD1D3}Prefabs/Props/Wrecks/M151A2_wreck/M151A2_wreck.et" {
+ coords 4774.446 5.703 1582.488
+ angles 0 104.116 0
+}
+$grp GenericEntity : "{EC13D4E934B2ADD8}Prefabs/Items/Demining/MineFlags/MineFlag_US.et" {
+ {
+  coords 4759.901 2.055 1554.754
+  angles 0 -103.468 0
+  scale 5.872
+ }
+ {
+  coords 4762.703 1.925 1543.053
+  angles 0 84.172 0
+  scale 5.872
+ }
+ {
+  coords 4733.478 3.605 1586.808
+  angles 0 84.172 0
+  scale 5.872
+ }
+ {
+  coords 4730.676 2.81 1598.509
+  angles 0 -103.468 0
+  scale 5.872
+ }
 }
 Tree : "{F0B4F9601CEF4BE3}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glutinosa_3s.et" {
  coords 5747.057 0.795 950.875
@@ -542,6 +676,10 @@ Tree : "{F0B4F9601CEF4BE3}Prefabs/Vegetation/Tree/t_alnus_glutinosa/t_alnus_glut
 }
 SCR_DestructibleBuildingEntity : "{F5052C6CDD432BA7}Prefabs/Structures/Ruins/ShedMetal_Ruin_02/ShedMetal_Ruin_02.et" {
  coords 5451.29 0.111 1762.767
+}
+GenericEntity : "{F96CCEE337351B0E}Prefabs/Props/Industrial/CrawlerCraneWreck_01/CrawlerCraneWreck_01_Track_yellow.et" {
+ coords 4771.121 3.169 1562.239
+ angles 5.244 36.9 0
 }
 $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
  {
