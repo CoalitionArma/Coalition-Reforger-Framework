@@ -3,15 +3,13 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_HighValueTargetGamemodeManager "{690D6E61ECD14DEB}" {
-   m_bEnableTransponderMarker 0
+  CRF_HighValueTargetGamemodeManager "{696C0D67F4B102B9}" {
    m_eTargetType VIP
-   m_searcherFactionKey "OPFOR"
    m_aHVTEntries {
-    CRF_HVTEntry "{690D6E618A501F90}" {
+    CRF_HVTEntry "{696C0D67F296EA9E}" {
      m_hvtPrefab "{A62FA97C4EC64F14}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliPilot.et"
-     m_sTransponderEntityName "Pilot"
-     m_sMarkerText "VIP"
+     m_sTransponderEntityName "PilotTrans"
+     m_sMarkerText ""
     }
    }
   }
