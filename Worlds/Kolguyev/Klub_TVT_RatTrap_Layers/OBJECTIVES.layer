@@ -1,3 +1,4 @@
-GameEntity Pilot {
- coords 7480.115 258.097 7002.478
+GameEntity PilotTrans {
+ coords 7490.949 249.496 6991.432
+ angles 4.254 0.8 10.661
 }
