@@ -1,0 +1,61 @@
+RHS_Tank : "{B744E85A9CE90F7D}Prefabs/Vehicles/Tracked/T14/Tank_T14_base.et" {
+ ID "5CDE8068D49AAEBB"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightAction {
+    SCR_LightsDashboardUserAction "{605D479E01ABFF19}" {
+     UIInfo UIInfo "{51E2210D982CFDCD}" {
+      Name "#RHS-UserAction_INTLightsRedDim"
+     }
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{5CDE8068D4987FC8}" {
+    Engine Engine Engine {
+     MaxPower 150
+     MaxTorque 900
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{65C523717C2C76CB}" {
+     Position PointInfo "{65C523716E31A41B}" {
+      Offset -0.8388 2.5667 1.0766
+     }
+    }
+   }
+   additionalActions {
+    SCR_RepairAtSupportStationAction "{65C52376F3D5757A}" {
+     Duration -5
+     "Sort Priority" -80
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{694F3DC4A6AA446B}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{694F3DC4A6AA444A}" {
+       }
+       SCR_DamageIntensityEntry "{694F3DC4A6AA444B}" {
+       }
+       SCR_DamageIntensityEntry "{694F3DC4A6AA4449}" {
+       }
+       SCR_DamageIntensityEntry "{694F3DC4A6AA4457}" {
+       }
+       SCR_DamageIntensityEntry "{694F3DC4A6AA4454}" {
+       }
+      }
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{694F3DC4A6AA4452}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{694F3DC4A6AA4451}" {
+        m_sHitZoneGroupName "Brains"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 139.446 1 93.974
+}
