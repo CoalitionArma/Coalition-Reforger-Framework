@@ -82,6 +82,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
         return m_sInstance;
     }
 	
+	string GetLogFilePath()
+	{
+		return m_sFilePath;
+	}
+	
 	// Setup frame json file for recording
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()

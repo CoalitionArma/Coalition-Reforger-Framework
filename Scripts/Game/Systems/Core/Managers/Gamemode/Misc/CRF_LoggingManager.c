@@ -258,6 +258,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			}
 			case CRF_EGamemodeState.AAR:
 			{
+				// Log the VAAR file path before the ended event so the bot can associate it with this mission
+				CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
+				if (vaarComponent && m_LogFileHandle)
+				{
+					string vaarFilePath = vaarComponent.GetLogFilePath();
+					if (!vaarFilePath.IsEmpty())
+					{
+						int slashPos = vaarFilePath.LastIndexOf("/");
+						string vaarFileName = vaarFilePath.Substring(slashPos + 1, vaarFilePath.Length() - slashPos - 1);
+						m_LogFileHandle.WriteLine("vaar_log" + SEPARATOR + vaarFileName);
+					}
+				}
 				LogMissionEvent("ended");
 				break;
 			}
