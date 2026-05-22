@@ -234,16 +234,9 @@ modded class SCR_DataCollectorComponent
 		// Calculate session duration before storing
 		playerDisconnectedData.CalculateSessionDuration();
 		
-		// Compute XP, rank, and specialization point gains for this session.
-		// Must be called before StoreProfile() so the backend receives updated progression,
-		// not just raw stats. (Mirrors what ProcessStats() does at AAR for connected players.)
-		playerDisconnectedData.CalculateStatsChange();
-		
-		// Save player profile to backend IMMEDIATELY after session duration calculated.
-		// Skip if OnGameEnd() already issued a StoreProfile() for all players — firing a
-		// second save while the first async transaction is still in flight causes the
-		// platform error "Save data transaction to 'playersave' failed. Another transaction
-		// in progress."
+		// Skip if OnGameEnd() already issued a StoreProfile() for all connected players — firing
+		// a second save while the first async transaction is still in flight causes the platform
+		// error "Save data transaction to 'playersave' failed. Another transaction in progress."
 		if (!m_bCRFProfilesSaved)
 			playerDisconnectedData.StoreProfile();
 
@@ -286,9 +279,21 @@ modded class SCR_DataCollectorComponent
 		// a duplicate StoreProfile() while the async backend transaction is still pending.
 		m_bCRFProfilesSaved = true;
 		
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		
 		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
 		{
-			SCR_PlayerData playerData = GetPlayerData(m_mPlayerData.GetKey(i), false);
+			int playerID = m_mPlayerData.GetKey(i);
+			
+			// Only save players who are still connected. Players who disconnected before
+			// AAR were already saved by OnPlayerDisconnected() — calling StoreProfile() a
+			// second time while the first async transaction is still in flight triggers the
+			// platform error "Save data transaction to 'playersave' failed. Another
+			// transaction in progress."
+			if (!playerManager.IsPlayerConnected(playerID))
+				continue;
+			
+			SCR_PlayerData playerData = GetPlayerData(playerID, false);
 			if (playerData)
 				playerData.StoreProfile();
 		}
