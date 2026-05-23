@@ -22,7 +22,7 @@ class CRF_VAAR_CharacterSnapshot : Managed
 		n = name;
 		x = (int)Math.Round(pos[0] * 10);
 		z = (int)Math.Round(pos[2] * 10);
-		a = (int)Math.Round(aim[0] * 1000);
+		a = (int)Math.Round(aim.VectorToAngles()[0] * 1000);
 		r = role;
 		f = faction;
 	}
