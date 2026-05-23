@@ -5,7 +5,7 @@ modded class SCR_DataCollectorComponent
 {
 	CRF_LoggingManager LM;
 	
-	protected bool m_bCRFProfilesSaved = false;
+
 	
 	// Event for tracking damage
 	protected ref ScriptInvoker m_OnPlayerDamageReceived = new ScriptInvoker();
@@ -63,12 +63,6 @@ modded class SCR_DataCollectorComponent
 		if (CRF_EntityHelper.IsSpectator(entity))
 			return;
 		
-		// Remove any stale invokers from the entity before registering new ones.
-		// We use CRF_CleanupInvokers (a thin public wrapper around the protected RemoveInvokers)
-		// rather than OnPlayerDisconnected because some modules (e.g. HealingItemsModule) override
-		// OnPlayerDisconnected to clear their internal entity-tracking map without calling
-		// RemoveInvokers. Those modules rely on the map being intact inside their own OnPlayerSpawned
-		// cleanup logic, so calling OnPlayerDisconnected first would break them.
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.CRF_CleanupInvokers(entity);
@@ -233,12 +227,7 @@ modded class SCR_DataCollectorComponent
 		
 		// Calculate session duration before storing
 		playerDisconnectedData.CalculateSessionDuration();
-		
-		// Skip if OnGameEnd() already issued a StoreProfile() for all connected players — firing
-		// a second save while the first async transaction is still in flight causes the platform
-		// error "Save data transaction to 'playersave' failed. Another transaction in progress."
-		if (!m_bCRFProfilesSaved)
-			playerDisconnectedData.StoreProfile();
+		playerDisconnectedData.StoreProfile();
 
 		// ADD STATS TO FACTION
 		// Here we add the stats of the individual player who desconnected to the faction
@@ -269,33 +258,5 @@ modded class SCR_DataCollectorComponent
 		//We cannot remove this instance of data from the player collector because the event has not been sent yet to the Database for tracking purposes
 		//m_mPlayerData.Remove(playerId);
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	// When game shuts down, store the profile of every player who hasn't disconnected yet
-	override void OnGameEnd()
-	{
-		// Mark that we have issued saves for all remaining players so that any subsequent
-		// OnPlayerDisconnected() calls (e.g. players leaving the AAR screen) do not fire
-		// a duplicate StoreProfile() while the async backend transaction is still pending.
-		m_bCRFProfilesSaved = true;
-		
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		
-		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
-		{
-			int playerID = m_mPlayerData.GetKey(i);
-			
-			// Only save players who are still connected. Players who disconnected before
-			// AAR were already saved by OnPlayerDisconnected() — calling StoreProfile() a
-			// second time while the first async transaction is still in flight triggers the
-			// platform error "Save data transaction to 'playersave' failed. Another
-			// transaction in progress."
-			if (!playerManager.IsPlayerConnected(playerID))
-				continue;
-			
-			SCR_PlayerData playerData = GetPlayerData(playerID, false);
-			if (playerData)
-				playerData.StoreProfile();
-		}
-	}
+
 }
