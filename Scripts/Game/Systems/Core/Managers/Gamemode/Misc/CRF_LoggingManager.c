@@ -607,6 +607,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
+		// Skip self-kills
+		IEntity killerEntityCheck = instiContext.GetKillerEntity();
+		IEntity targetEntityCheck = instiContext.GetVictimEntity();
+		if (killerEntityCheck && targetEntityCheck && killerEntityCheck == targetEntityCheck)
+			return;
+		
 		// Get victim entity and determine if it's a player
 		IEntity victimEntity = instiContext.GetVictimEntity();
 		int victimId = 0;

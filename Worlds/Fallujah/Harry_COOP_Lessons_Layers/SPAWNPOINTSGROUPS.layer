@@ -1,0 +1,4 @@
+CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 3076.949 1 1930.495
+ m_sCallsignOfGroupToSpawn "Hammer"
+}

@@ -224,6 +224,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 		SetEventMask(EntityEvent.FRAME);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Called by the engine on all machines when the session/world is being torn down.
+	//! Explicitly overridden here to ensure the full vanilla OnGameEnd() chain fires in CRF:
+	//!   SCR_BaseGameMode.OnGameEnd() → m_OnGameEnd invoker + comp.OnGameEnd() for every
+	//!   attached SCR_BaseGameModeComponent (including SCR_DataCollectorComponent which
+	//!   performs best-effort profile saves for any players still in its tracking map).
+	//! NOTE: By this point all connected players will have already been saved individually
+	//!       via OnPlayerDisconnected() → StoreProfile(), so these are safety-net saves only.
+	override void OnGameEnd()
+	{
+		super.OnGameEnd();
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 FRAME UPDATES
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -331,8 +344,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 					CRF_RplBroadcastManager.GetInstance().BroadcastOutro();
 
-					// Stores player profiles who havent disconnected
-					dataCollector.OnGameEnd();
+
 
 				// Clean up any pending late-data callbacks
 				foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)

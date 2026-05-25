@@ -190,7 +190,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			string vehicleName = GetFriendlyName(vehicle);
 			RplId vehicleID = Replication.FindId(vehicle);
 			vector vehiclePos = vehicle.GetOrigin();
-			vector vehicleYaw = vehicle.GetAngles();
+			vector vehicleYaw = vehicle.GetYawPitchRoll();
 			int vehicleType = GetVehicleType(vehicle);
 			int vehicleFaction = GetFaction(vehicle);
 			
@@ -407,6 +407,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		// Collect some info
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		IEntity targetEntity = instigatorContextData.GetVictimEntity();
+		
+		// Skip self-kills
+		if (killerEntity && targetEntity && killerEntity == targetEntity)
+			return;
 		
 		string killerName = GetCharacterName(killerEntity);
 		string targetName = GetCharacterName(targetEntity);
