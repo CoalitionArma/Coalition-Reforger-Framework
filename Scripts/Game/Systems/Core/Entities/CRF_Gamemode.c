@@ -326,33 +326,28 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 				
 				case CRF_EGamemodeState.AAR: {
-					SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-					dataCollector.OnGameModeEnd(GetEndGameData());
+					SetGameState(SCR_EGameModeState.POSTGAME);
 
+					SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
 					array<int> players = {};
 					GetGame().GetPlayerManager().GetAllPlayers(players);
-
 					foreach (int player : players)
 					{
 						// Skip disconnected players
 						if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 							continue;
-
+	
 						// Process player statistics data
 						ProcessStats(dataCollector, player);
 					}
 
-					CRF_RplBroadcastManager.GetInstance().BroadcastOutro();
-
-
-
-				// Clean up any pending late-data callbacks
-				foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
-				{
-					if (pendingComp)
-						pendingComp.GetOnDataReceived().Remove(OnDataReceived);
-				}
-				m_aPendingDataComponents.Clear();
+					// Clean up any pending late-data callbacks
+					foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
+					{
+						if (pendingComp)
+							pendingComp.GetOnDataReceived().Remove(OnDataReceived);
+					}
+					m_aPendingDataComponents.Clear();
 
 					// Close the VAAR recording
 					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
@@ -360,7 +355,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 						vaarComponent.OnGameModeEnd(GetEndGameData());
 					break;
 				}
-				
 			}	
 		}
 		
