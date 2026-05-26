@@ -1,0 +1,26 @@
+GenericEntity : "{1126AD9D919F82FF}Prefabs/Weapons/Warheads/Warhead_Explosive_HE.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5F10B4D8DC73BB97}" {
+     ExplosionEffects {
+      BaseExplosionDamage "{5D8D1EB3EBB36077}" {
+       DamageValue 50
+       DamageDistance 40
+       ExplosionEffectSpeed 280
+       ExplosionDamagePower 1
+       ExplosionRangePower 1
+      }
+      ExplosionImpulseEffect "{5E6D1CEE09A33086}" {
+       DamageValue 10
+       DamageDistance 50
+       ExplosionDamagePower 1
+       ExplosionRangePower 1
+      }
+     }
+    }
+   }
+  }
+ }
+}

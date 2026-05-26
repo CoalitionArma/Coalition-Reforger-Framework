@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{DF6F8DB9336A08BC}Configs/Gearscripts/Custom/RandAlThor/Special/S&DFallujah/Rand_GS_Defender.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
