@@ -1,0 +1,581 @@
+GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
+ coords 1224.163 9.829 1574.293
+ angles 0 132.058 0
+}
+GenericEntity : "{0A4B42DD94487BFE}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_low_green.et" {
+ coords 1162.12 9.828 1578.01
+ angles 0 -94.075 0
+}
+GenericEntity : "{124DC29CA359557C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_USSR_ammo.et" {
+ coords 1179.606 9.828 1584.105
+ angles 0 69.406 0
+}
+GenericEntity : "{1CF33A86C184B00B}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Duvanblade.et" {
+ coords 1175.661 9.821 1567.916
+ angles 0 132.058 0
+}
+GenericEntity : "{1D2F578D059DEF0A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_green_rusty.et" {
+ coords 1185.573 9.792 1584.094
+ angles 0 97.942 0
+}
+GenericEntity : "{24F6E5FFFC6FF4DC}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_olive_rusty.et" {
+ coords 1249.568 9.808 1574.154
+ angles 0 90.971 0
+}
+$grp GenericEntity : "{2A5CFC83306263A4}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_ENP.et" {
+ {
+  coords 1196.373 14.926 1578.233
+  angles 0 90.733 0
+ }
+ {
+  coords 1170.486 9.829 1583.136
+  angles 0 58.663 0
+ }
+ {
+  coords 1201.937 12.252 1563.724
+  angles 0 90.733 0
+ }
+ {
+  coords 1193.307 9.801 1570.952
+  angles 0 92.061 0
+ }
+ {
+  coords 1234.107 12.352 1563.616
+  angles 0 90.733 0
+ }
+}
+$grp GenericEntity : "{35B9DE7639F3355A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_KAL.et" {
+ {
+  coords 1193.55 14.926 1580.807
+  angles 0 91.564 0
+ }
+ {
+  coords 1214.352 12.362 1577.085
+  angles 0 91.564 0
+ }
+ {
+  coords 1208.428 12.362 1577.246
+  angles 0 91.564 0
+ }
+}
+GenericEntity : "{35E211705F8FED68}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_blue.et" {
+ coords 1211.444 9.851 1579.668
+ angles 0.964 90.887 1.168
+}
+$grp GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
+ {
+  coords 1249.594 12.374 1571.72
+  angles 0 108.387 0
+ }
+ {
+  coords 1178.469 9.776 1576.156
+  angles 0 90.444 0
+ }
+ {
+  coords 1239.259 12.247 1576.577
+  angles 0 132.058 0
+ }
+ {
+  coords 1183.001 12.352 1564.57
+  angles 0 92.771 0
+ }
+ {
+  coords 1208.21 9.8 1574.598
+  angles 0 89.962 0
+ }
+ {
+  coords 1244.248 9.819 1563.117
+  angles 0 92.394 0
+ }
+ {
+  coords 1193.424 9.829 1573.483
+  angles 0 92.219 0
+ }
+ {
+  coords 1234.271 12.386 1567.296
+  angles 0 91.53 0
+ }
+}
+$grp SCR_DestructibleEntity : "{47628891D5B44B63}Prefabs/Structures/Walls/Pipe/PipeRailing_02/PipeRailing_02_6m.et" {
+ {
+  coords 1226.516 117.883 1568.367
+  angles 0 -88.632 0
+ }
+ {
+  coords 1219.309 117.883 1568.537
+  angles 0 -88.632 0
+ }
+ {
+  coords 1219.589 117.883 1580.507
+  angles 0 91.368 0
+ }
+ {
+  coords 1226.797 117.883 1580.334
+  angles 0 91.368 0
+ }
+}
+$grp GenericEntity : "{4E847FB9C036EE30}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Base.et" {
+ {
+  coords 1233.179 9.763 1579.963
+  angles 0 15.335 0
+ }
+ {
+  coords 1249.484 12.373 1576.486
+  angles 0 91.612 0
+ }
+ {
+  coords 1170.393 9.828 1575.428
+  angles 0 4.179 0
+ }
+ {
+  coords 1239.109 12.441 1580.733
+  angles 0 91.612 0
+ }
+ {
+  coords 1199.448 9.737 1573.297
+  angles 0 91.524 0
+ }
+}
+GenericEntity : "{5B17515707F080E0}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Starline.et" {
+ coords 1234.227 9.787 1562.728
+ angles 0 91.632 0
+}
+GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_supplies.et" {
+ coords 1184.552 9.744 1576.028
+ angles 0 91.809 0
+}
+$grp SCR_DestructibleBuildingEntity : "{7C7E1F9CAAE53E82}PrefabLibrary/DefaultLibrary/Infrastructure/Naval/PierConcrete_01_slide.et" {
+ {
+  coords 1236.932 102.579 1573.842
+  angles 0 -178.237 0
+  scale 3.081
+  m_fMinUndamagedThreshold 999
+ }
+ {
+  coords 1210.707 102.599 1574.652
+  angles 0 -178.237 0
+  scale 3.081
+  m_fMinUndamagedThreshold 999
+ }
+ {
+  coords 1149.109 102.599 1576.548
+  angles 0 -178.237 0
+  scale 3.081
+  m_fMinUndamagedThreshold 999
+ }
+ {
+  coords 1179.939 102.599 1575.597
+  angles 0 -178.237 0
+  scale 3.081
+  m_fMinUndamagedThreshold 999
+ }
+}
+GenericEntity : "{7D52C517720EF2F5}Prefabs/Props/Industrial/BarrelMetal_01_blue.et" {
+ coords 1161.133 9.828 1583.384
+ angles 0 132.058 0
+}
+GenericEntity : "{7E3F6F5A6BAEC717}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_olive.et" {
+ coords 1229.287 9.828 1584.145
+ angles 0 95.507 0
+}
+$grp GenericEntity : "{8F08705D73A7C711}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_red.et" {
+ {
+  coords 1211.435 9.829 1582.219
+  angles 0 92.945 0
+ }
+ {
+  coords 1249.667 9.808 1576.616
+  angles 0 89.939 0
+ }
+}
+$grp GenericEntity : "{939E032C3B6E837A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Chernarussian.et" {
+ {
+  coords 1199.371 9.82 1570.802
+  angles 0 92.287 0
+ }
+ {
+  coords 1185.224 9.766 1581.393
+  angles 0 95.911 0
+ }
+ {
+  coords 1189.011 12.402 1564.199
+  angles 0 93.065 0
+ }
+ {
+  coords 1184.448 9.801 1573.458
+  angles 0 92.287 0
+ }
+ {
+  coords 1193.397 12.401 1570.953
+  angles 0 92.11 0
+ }
+ {
+  coords 1208.003 12.271 1563.715
+  angles 0 90.96 0
+ }
+ {
+  coords 1239.481 12.271 1572.372
+  angles 0 91.221 0
+ }
+ {
+  coords 1249.534 14.936 1573.927
+  angles 0 128.485 0
+ }
+}
+$grp GenericEntity : "{9469915BD7CB2A46}Prefabs/Structures/Infrastructure/Power/TransformerStation_E_02/BuidlingAddons/TransformerStation_E_02_stairs.et" {
+ {
+  coords 1221.756 12.624 1582.422
+  angles 0 -90.835 0
+ }
+ {
+  coords 1221.348 12.624 1566.547
+  angles 0 -86.89 0
+ }
+ {
+  coords 1224.787 12.624 1582.303
+  angles 0 93.317 0
+ }
+ {
+  coords 1224.376 12.624 1566.439
+  angles 0 88.959 0
+ }
+}
+GenericEntity : "{991DA0BBCCAB1E9E}Prefabs/Props/boat/barge3.et" {
+ coords 1202.997 -0.254 1574.744
+ angles 0 91.899 0
+ scale 2.75
+}
+$grp GenericEntity : "{9A3ADECE49EF8993}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_green.et" {
+ {
+  coords 1256.596 9.766 1563.922
+  angles 1.298 107.783 0.373
+ }
+ {
+  coords 1236.95 9.835 1576.325
+  angles -1.615 178.732 1.438
+ }
+}
+$grp GameEntity : "{9D82FE150142086A}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_glass_addon.et" {
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1153.688 13.172 1573.857
+  angles -68.064 88.769 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1158.817 21.655 1575.015
+  angles -68.064 88.769 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.1 -0.638 0.266
+    Radius 5.44
+    SpotAngle 170
+    DistanceAttenuation 3
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1153.681 17.087 1573.913
+  angles -68.064 88.769 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.1 -0.638 0.266
+    Radius 5.44
+    SpotAngle 170
+    DistanceAttenuation 3
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1222.67 11.461 1578.356
+  angles -68.064 163.769 180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.1 -0.638 0.266
+    Radius 5.44
+    SpotAngle 170
+    DistanceAttenuation 3
+    Dynamic 1
+   }
+  }
+ }
+}
+GenericEntity : "{A52C57FE8549A13E}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_red.et" {
+ coords 1176.666 9.828 1583.079
+ angles 0 69.406 0
+}
+$grp StaticModelEntity : "{B08DF585ECD2CF4D}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareNarrow.et" {
+ {
+  coords 1219.873 12.473 1576.519
+  angles 0 -178.023 90
+  scale 2.077
+ }
+ {
+  coords 1219.737 12.473 1572.618
+  angles 0 -178.023 90
+  scale 2.077
+ }
+}
+GenericEntity : "{B350840088390760}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Stack_01.et" {
+ coords 1222.202 9.829 1577.093
+ angles 0 -0.701 0
+}
+$grp GenericEntity : "{C1868B74D5A0C96E}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_ammo.et" {
+ {
+  coords 1194.784 9.828 1586.026
+  angles 0 91.176 0
+ }
+ {
+  coords 1178.149 9.812 1573.473
+  angles 0 85.522 0
+ }
+ {
+  coords 1200.976 9.786 1585.881
+  angles 0 91.176 0
+ }
+ {
+  coords 1249.45 9.809 1571.656
+  angles 0 91.812 0
+ }
+}
+GenericEntity : "{C5ECCBE10871A5DA}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_winch.et" {
+ coords 1178.131 9.829 1581.209
+ angles 0 58.408 0
+}
+GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_supplies.et" {
+ coords 1249.929 9.808 1584.448
+ angles 0 91.676 0
+}
+$grp GenericEntity : "{CAE986C2BF5D5859}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_Base.et" {
+ {
+  coords 1186.045 14.994 1564.551
+  angles 0 91.003 0
+ }
+ {
+  coords 1181.763 12.366 1574.574
+  angles 0 132.058 0
+ }
+}
+GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
+ coords 1222.273 9.828 1572.106
+ angles 0 132.058 0
+}
+$grp GenericEntity : "{DB403F1A9E7B0B4F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_red.et" {
+ {
+  coords 1211.357 9.85 1577.104
+  angles 1.351 90.693 -0.025
+ }
+ {
+  coords 1205 9.691 1563.799
+  angles 1.351 90.693 -0.025
+ }
+ {
+  coords 1196.661 12.367 1578.205
+  angles 1.351 90.693 -0.025
+ }
+ {
+  coords 1242.086 9.743 1576.473
+  angles 1.681 -3.751 -0.162
+ }
+ {
+  coords 1204.958 12.239 1566.273
+  angles 0 90.693 0
+ }
+ {
+  coords 1257.402 12.282 1566.222
+  angles 0 104.785 0
+ }
+ {
+  coords 1256.931 14.823 1564.632
+  angles 0 109.422 0
+ }
+}
+GenericEntity : "{DF3EF41CE4D441DE}Prefabs/Props/Industrial/BarrelMetal_01_rust.et" {
+ coords 1162.094 9.828 1579.837
+ angles 0 132.058 0
+}
+GenericEntity : "{E24A324BDAA2EEE3}Prefabs/Props/Industrial/BarrelMetal_01_blue_open.et" {
+ coords 1161.304 9.828 1582.621
+ angles 0 132.058 0
+}
+$grp GenericEntity : "{EC9EC10F9D401E7A}Prefabs/Structures/BuildingParts/Lights/LampIndustrial_05/LampIndustrial_05.et" {
+ {
+  coords 1147.538 114.812 1579.555
+  angles 0 4.056 0
+ }
+ {
+  coords 1147.323 114.8 1573.363
+  angles 0 -175.944 0
+ }
+ {
+  coords 1162.064 114.812 1582.934
+  angles 0 4.056 0
+ }
+ {
+  coords 1179.349 114.8 1571.587
+  angles 0 -175.944 0
+ }
+ {
+  coords 1202.655 114.8 1570.653
+  angles 0 -175.944 0
+ }
+ {
+  coords 1179.56 114.812 1577.775
+  angles 0 4.056 0
+ }
+ {
+  coords 1244.106 114.812 1576.153
+  angles 0 4.056 0
+ }
+ {
+  coords 1202.605 114.812 1576.861
+  angles 0 4.056 0
+ }
+ {
+  coords 1243.893 114.8 1569.958
+  angles 0 -175.944 0
+ }
+ {
+  coords 1161.333 114.8 1569.451
+  angles 0 -175.944 0
+ }
+}
+$grp GenericEntity : "{EF2962FC3EFD9C17}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_grey.et" {
+ {
+  coords 1196.413 12.362 1573.471
+  angles 0 92.214 0
+ }
+ {
+  coords 1185.785 9.829 1564.388
+  angles 0 92.419 0
+ }
+ {
+  coords 1196.566 9.829 1578.115
+  angles 0 91.263 0
+ }
+ {
+  coords 1196.582 12.384 1580.721
+  angles 0 91.263 0
+ }
+ {
+  coords 1258.157 9.759 1566.134
+  angles 0.574 107.814 0.375
+ }
+ {
+  coords 1256.849 12.315 1563.717
+  angles 0.612 104.315 0.136
+ }
+}
+$grp GenericEntity : "{F2C5628C6D12840C}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_HansaAtlantic.et" {
+ {
+  coords 1223.208 12.777 1574.569
+  angles 0 1.447 0
+ }
+ {
+  coords 1234.499 9.828 1567.83
+  angles 0 89.026 0
+ }
+ {
+  coords 1244.359 12.373 1563.283
+  angles 0 89.026 0
+ }
+}
+GenericEntity : "{F4BB6B6A0486F797}Prefabs/Props/Industrial/BarrelMetal_01_military.et" {
+ coords 1162.792 9.828 1579.357
+ angles 0 132.058 0
+}
+SCR_DestructibleBuildingEntity : "{F6FC9703E7F4FDCA}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01.et" {
+ coords 1155.389 114.922 1574.759
+ angles 0 91.924 0
+}
+$grp GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
+ {
+  coords 1234.268 9.813 1565.194
+  angles 0 91.286 0
+ }
+ {
+  coords 1244.327 9.744 1565.576
+  angles 0 91.286 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+ {
+  coords 1222.851 10.946 1566.819
+  angles 0 -88.666 0
+  scale 0.259
+ }
+ {
+  coords 1222.914 8.493 1569.502
+  angles 0 -88.666 0
+  scale 0.61
+ }
+ {
+  coords 1223.209 8.493 1579.357
+  angles 0 91.541 0
+  scale 0.61
+ }
+ {
+  coords 1223.282 10.946 1582.041
+  angles 0 91.541 0
+  scale 0.259
+ }
+}
+$grp GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
+ {
+  coords 1196.633 9.819 1580.793
+  angles 0 90.912 0
+ }
+ {
+  coords 1208.63 9.828 1570.689
+  angles 0 90.912 0
+ }
+ {
+  coords 1185.904 9.819 1567.066
+  angles 0 92.067 0
+ }
+ {
+  coords 1204.921 9.674 1566.268
+  angles 0 90.912 0
+ }
+ {
+  coords 1211.364 12.388 1579.547
+  angles 0 90.912 0
+ }
+}

@@ -1,0 +1,1310 @@
+$grp GenericEntity : "{024F0876D483835E}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_Dst_3_grey.et" {
+ {
+  coords 1260.401 9.499 1289.892
+ }
+ {
+  coords 1235.169 9.505 1263.704
+ }
+}
+$grp GenericEntity : "{1DE88E6E3B4FEC8D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V3_covered.et" {
+ {
+  coords 893.138 15.057 1453.61
+  angles 0 -22.324 0
+  scale 1.671
+ }
+ {
+  coords 890.729 15.057 1451.336
+  angles 0 -132.879 0
+  scale 1.39
+ }
+}
+GenericEntity : "{1F83CE19F6915A98}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_NoDecals.et" {
+ coords 1251.986 9.523 1286.642
+}
+GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
+ coords 902.194 15.057 1454.173
+ angles 0 152.165 0
+}
+GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
+ coords 1218.076 9.513 1272.669
+}
+GenericEntity : "{8570092A3A409D5D}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_Dst_3_green.et" {
+ coords 1259.067 9.481 1289.531
+ angles 0 154.277 0
+}
+$grp GenericEntity : "{881558ACD5FC31C0}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x2.et" {
+ {
+  coords 1221.13 10.005 1273.885
+  angles 0 0 90
+ }
+ {
+  coords 1225.631 9.973 1263.109
+  angles 90 180 -180
+ }
+}
+$grp GenericEntity : "{93B2511EFB2B6A51}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_grey.et" {
+ {
+  coords 1261.766 9.51 1290.1
+ }
+ {
+  coords 1235.211 9.523 1262.761
+ }
+}
+$grp GameEntity : "{9D82FE150142086A}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_glass_addon.et" {
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 954.795 21.741 1531.045
+  angles -68.064 180 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 22.11
+    SpotAngle 109.86
+    DistanceAttenuation 1.98
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 948.062 22.439 1484.768
+  angles -68.064 97.435 180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 22.11
+    SpotAngle 109.86
+    DistanceAttenuation 1.98
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 956.3 12.815 1550.731
+  angles -68.064 172.435 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 22.11
+    SpotAngle 109.86
+    DistanceAttenuation 1.98
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1016.977 13.787 1498.78
+  angles -68.064 -98.84 180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 22.11
+    SpotAngle 109.86
+    DistanceAttenuation 1.98
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 997.69 11.977 1480.376
+  angles -68.064 0.472 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 22.11
+    SpotAngle 109.86
+    DistanceAttenuation 1.98
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 944.93 13.492 1514.421
+  angles -68.064 96.16 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Color 0.502 0 0 1
+    Radius 20.07
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1045.617 5.213 1506.635
+  angles -68.064 71.179 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Color 0.502 0 0 1
+    Radius 42.52
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1045.617 5.213 1528.244
+  angles -68.064 71.179 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Color 0.502 0 0 1
+    Radius 42.52
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1128.148 31.389 1495.379
+  angles -68.064 138.32 -180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords 0 -0.137 0.064
+    angles -65 0 0
+    Color 0.502 0 0 1
+    Radius 42.52
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1067.039 28.227 1505.917
+  angles -68.064 -88.817 180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords 0 -0.137 0.064
+    angles -65 0 0
+    Color 0.502 0 0 1
+    Radius 42.52
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 984.639 30.9 1524.476
+  angles -68.064 -42.184 180
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords 0 -0.137 0.064
+    angles -65 0 0
+    Color 0.502 0 0 1
+    Radius 42.52
+    SpotAngle 141.67
+    DistanceAttenuation 2.62
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 983.723 37.596 1524.936
+  angles -68.064 -1.213 180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 984.542 37.686 1517.999
+  angles -68.064 -98.853 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 984.742 37.68 1517.967
+  angles -68.064 89.403 180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1115.857 37.555 1490.227
+  angles -68.064 -4.853 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1119.104 37.424 1488.118
+  angles -68.064 -90.299 180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1128.441 37.489 1495.063
+  angles -68.064 169.611 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1124.194 37.077 1494.996
+  angles -68.064 -1.564 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 996.085 12.733 1535.193
+  angles -68.064 -43.29 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 993.631 37.582 1533.786
+  angles -68.064 94.215 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 970.753 32.846 1522.921
+  angles -68.064 2.003 -180
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1120.035 13.872 1480.765
+  angles -21.044 -85.97 0.455
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1115.501 21.013 1477.159
+  angles -21.044 -85.97 0.455
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1113.031 20.889 1490.028
+  angles -21.044 -85.97 0.455
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1116.583 16.515 1522.044
+  angles -21.044 -85.97 0.455
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1096.2 30.947 1535.071
+  angles -72.486 95.539 178.589
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+ {
+  components {
+   Hierarchy "{51C4DA20F011E284}" {
+    PivotID "Socket_Glass_01"
+   }
+  }
+  coords 1128.417 31.454 1536.424
+  angles -72.486 -90.244 178.589
+  scale 0.403
+  {
+   LightEntity {
+    ID "5990CE56D1255F77"
+    coords -0.086 -0.65 0.271
+    Radius 10.54
+    SpotAngle 170
+    DistanceAttenuation 2.93
+    Dynamic 1
+   }
+  }
+ }
+}
+GenericEntity : "{AA1E1DD1D69055EC}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_green.et" {
+ coords 1231.461 9.516 1265.072
+}
+$grp SCR_DestructibleBuildingEntity : "{C8B1CE6D730FD227}PrefabLibrary/DefaultLibrary/Infrastructure/Naval/Pier_02.et" {
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 918.146 -5.511 1534.285
+  angles -18.872 -89.603 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 994.03 -8.556 1482.255
+  angles -22.006 -179.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1059.79 -8.657 1516.827
+  angles -22.006 -89.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1088.369 -8.647 1537.474
+  angles -22.006 0.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1088.369 -8.647 1537.434
+  angles -22.006 -179.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1122.807 -8.628 1536.977
+  angles -22.006 0.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1122.807 -8.628 1536.937
+  angles -22.006 -179.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1139.462 -8.688 1519.435
+  angles -22.006 90.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1175.865 -9.262 1529.336
+  angles -22.006 -90.374 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1175.905 -9.262 1529.336
+  angles -22.006 89.626 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1193.335 -9.431 1490.186
+  angles -22.006 90.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1190.332 -9.09 1478.697
+  angles -22.006 -179.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1150.386 -8.973 1478.685
+  angles -22.006 0.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1118.069 -9.413 1478.798
+  angles -22.006 0.405 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1118.069 -9.413 1478.633
+  angles -22.006 -179.595 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 1096.025 -9.148 1429.618
+  angles -22.006 89.476 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 979.844 -8.502 1482.37
+  angles -22.006 179.476 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 987.629 -8.502 1482.207
+  angles -22.006 -0.524 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 943.414 -8.575 1482.758
+  angles -22.006 -0.524 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 933.681 -8.575 1487.18
+  angles -22.006 -90.524 -0.023
+  scale 1.56
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 935.582 -6.641 1501.092
+  angles -0.006 -89.197 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 926.017 -5.511 1545.45
+  angles -18.872 0.397 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 939.919 -5.511 1545.45
+  angles -18.872 0.397 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 939.919 -5.511 1543.619
+  angles -18.872 -179.603 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 968.077 -5.511 1543.619
+  angles -18.872 -179.603 0
+ }
+ {
+  components {
+   MeshObject "{506EDA9D46FC6C06}" {
+    Materials {
+     MaterialAssignClass "{6890343B950D1F23}" {
+      SourceMaterial "CarMetals_Inst"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1EC9}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECD}" {
+      SourceMaterial "Decal_Bolts_01"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+     MaterialAssignClass "{6890343B950D1ECF}" {
+      SourceMaterial "Piers"
+      AssignedMaterial "{7A6EC74DACA6DA31}Assets/Structures/Infrastructure/Naval/Cranes/HarborCrane_01/Data/HarborCrane_Walkways.emat"
+     }
+    }
+   }
+  }
+  coords 968.077 -5.511 1545.146
+  angles -18.872 0.397 0
+ }
+}
+$grp GameEntity : "{CA00BBAA86B822BF}Prefabs/Structures/BuildingParts/Ladders/Ladder_ApartmentBuilding_5I01/Ladder_ApartmentBuilding_5I01_1400_B.et" {
+ {
+  coords 867.062 115.121 1317.13
+  angles 0 -87.678 0
+ }
+ {
+  coords 870.083 115.121 1507.432
+  angles 0 -87.678 0
+ }
+}
+$grp GenericEntity : "{DB403F1A9E7B0B4F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_red.et" {
+ {
+  coords 1048.693 0.997 1561.793
+  angles 0 123.2 0
+ }
+ {
+  coords 1051.741 0.921 1570.419
+  angles 0 72.567 0
+ }
+ {
+  coords 1026.181 9.315 1555.366
+  angles 0 137.169 0
+ }
+}
+GenericEntity : "{E4416C4C6938BEEE}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x1.et" {
+ coords 1217.002 9.508 1272.192
+}

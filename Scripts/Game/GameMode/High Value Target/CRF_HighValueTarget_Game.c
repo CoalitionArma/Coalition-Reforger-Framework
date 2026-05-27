@@ -153,8 +153,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	string m_sDeadHVTHint;
 	
 	// HVT tracking maps
-	ref map<IEntity, int> m_mHVTEntryIndex = new map<IEntity, int>();     // entity → entry index
-	ref map<int, IEntity> m_mEntryToHVT = new map<int, IEntity>();        // entry index → entity (prevents scope searches)
+	ref map<IEntity, int> m_mHVTEntryIndex = new map<IEntity, int>();        // entity → entry index
+	ref map<int, IEntity> m_mEntryToHVT = new map<int, IEntity>();           // entry index → entity
+	ref map<int, IEntity> m_mEntryToTransponder = new map<int, IEntity>();   // entry index → transponder entity, cached at SetHVTAndState to avoid hot loop FindEntityByName's
+	ref map<IEntity, SCR_CharacterDamageManagerComponent> m_mHVTDamageManagers = new map<IEntity, SCR_CharacterDamageManagerComponent>(); // entity → damage manager (OBJECT entries absent = alive by entity existence)
 	
 	// Client-side: Track which markers have been removed for JIPS/mishaps/desyncs
 	ref set<int> m_sRemovedMarkerIndices = new set<int>();
@@ -300,14 +302,18 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// All machines: NOW hide transponders underground so markers don't flash at editor positions
-		foreach (CRF_HVTEntry entry : m_aHVTEntries)
+		// Cache transponder entity references here - avoids repeated FindEntityByName in SyncTransponderPositions
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 		{
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
 				continue;
 			
 			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-			if (transponder)
-				transponder.SetOrigin("0 -1000 0");
+			if (!transponder)
+				continue;
+			
+			transponder.SetOrigin("0 -1000 0");
+			m_mEntryToTransponder.Set(index, transponder);
 		}
 		
 		if (!m_aHvtPositions.IsEmpty())
@@ -341,7 +347,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			IEntity existingHVT = m_mEntryToHVT.Get(entryIndex);
 			if (existingHVT)
+			{
 				m_mHVTEntryIndex.Remove(existingHVT);
+				m_mHVTDamageManagers.Remove(existingHVT);
+			}
 			
 			m_mEntryToHVT.Remove(entryIndex);
 		}
@@ -407,7 +416,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		// ALWAYS set damage state to match component setting (overrides prefab default on spawn/respawn)
 		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
 		if (damageManager)
+		{
 			damageManager.EnableDamageHandling(!m_bDisableDamage);
+			m_mHVTDamageManagers.Set(hvtEntity, damageManager); // Cache for IsHVTAlive
+		}
 	}
 	
 	// HVT death callback - syncs positions and shows hint
@@ -520,8 +532,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
 				continue;
 			
-			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-			if (!transponder)
+			if (!m_mEntryToTransponder.Contains(index))
 			{
 				Print(string.Format("[HVT] Warning: Transponder entity '%1' not found in world!", entry.m_sTransponderEntityName), LogLevel.WARNING);
 				continue;
@@ -569,24 +580,14 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!hvtEntity)
 			return false;
 		
-		// Check entry type - OBJECT entries don't have character damage managers
-		if (m_mHVTEntryIndex.Contains(hvtEntity))
-		{
-			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
-			if (entryIndex >= 0 && entryIndex < m_aHVTEntries.Count())
-			{
-				CRF_HVTEntry entry = m_aHVTEntries[entryIndex];
-				if (entry && entry.m_eEntryType == CRF_HVTEntryType.OBJECT)
-					return true;  // Objects are always "alive" if entity exists
-			}
-		}
+		// OBJECT entries have no damage manager and are absent from m_mHVTDamageManagers - alive by entity existence
+		if (!m_mHVTDamageManagers.Contains(hvtEntity))
+			return true;
 		
-		// For AI/PLAYER - query actual character state via damage manager
-		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+		SCR_CharacterDamageManagerComponent damageManager = m_mHVTDamageManagers.Get(hvtEntity);
 		if (!damageManager)
 			return false;
 		
-		// GetState() returns EDamageState - check if not destroyed/dead
 		return damageManager.GetState() != EDamageState.DESTROYED;
 	}
 	
@@ -634,7 +635,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				m_sRemovedMarkerIndices.Remove(i);
 			}
 			
-			IEntity transponder = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
+			if (!m_mEntryToTransponder.Contains(i))
+				continue;
+			
+			IEntity transponder = m_mEntryToTransponder.Get(i);
 			if (!transponder)
 				continue;
 			
