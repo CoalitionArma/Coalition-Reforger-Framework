@@ -39,6 +39,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected ref array<ref CRF_SlotUpdateBatch> m_aPendingSlotUpdates = new array<ref CRF_SlotUpdateBatch>();
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
+
+	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
+	string m_sOutroWinningFaction = "";
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -1117,12 +1120,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void BroadcastOutro()
+	void BroadcastOutro(string winningFaction = "")
 	{
 		#ifdef WORKBENCH
-		RpcDo_BroadcastOutro();
+		RpcDo_BroadcastOutro(winningFaction);
 		#else
-		Rpc(RpcDo_BroadcastOutro);
+		Rpc(RpcDo_BroadcastOutro, winningFaction);
 		#endif
 	}
 	
@@ -2172,8 +2175,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastOutro()
+	void RpcDo_BroadcastOutro(string winningFaction)
 	{
+		m_sOutroWinningFaction = winningFaction;
 		AudioSystem.PlaySound("{3D7F63CCD32B2F17}Sounds/Intro/outroCrescendo.wav");
 		GetGame().GetCallqueue().CallLater(OpenOutro, 2831, false);
 	}

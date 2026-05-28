@@ -225,13 +225,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Called by the engine on all machines when the session/world is being torn down.
-	//! Explicitly overridden here to ensure the full vanilla OnGameEnd() chain fires in CRF:
-	//!   SCR_BaseGameMode.OnGameEnd() → m_OnGameEnd invoker + comp.OnGameEnd() for every
-	//!   attached SCR_BaseGameModeComponent (including SCR_DataCollectorComponent which
-	//!   performs best-effort profile saves for any players still in its tracking map).
-	//! NOTE: By this point all connected players will have already been saved individually
-	//!       via OnPlayerDisconnected() → StoreProfile(), so these are safety-net saves only.
 	override void OnGameEnd()
 	{
 		super.OnGameEnd();
@@ -353,6 +346,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
 					if (vaarComponent)
 						vaarComponent.OnGameModeEnd(GetEndGameData());
+
+					// Open the outro screen on all clients, passing winning faction so clients can display it
+					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+					if (rplBroadcastManager)
+					{
+						string winningFaction = "";
+						CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+						if (loggingManager)
+							winningFaction = loggingManager.GetWinningFaction();
+						rplBroadcastManager.BroadcastOutro(winningFaction);
+					}
 					break;
 				}
 			}	

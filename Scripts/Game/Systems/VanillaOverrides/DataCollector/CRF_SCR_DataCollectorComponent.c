@@ -4,9 +4,30 @@
 modded class SCR_DataCollectorComponent
 {
 	CRF_LoggingManager LM;
-	
 
-	
+	// Per-session kill/death name tracking for the AAR stats panel.
+	// Populated server-side in OnPlayerKilled; sent to each client at game end.
+	protected ref map<int, ref array<string>> m_mSessionKills = new map<int, ref array<string>>();
+	protected ref map<int, string> m_mSessionDeaths = new map<int, string>();
+
+	// Staggered stat-send queue — spreads SendData RPCs so clients receive them gradually.
+	protected ref array<int> m_aPendingStatSends = {};
+	protected ref array<FactionKey> m_aCachedFactionKeys = {};
+	protected ref array<float> m_aCachedFactionValues = {};
+	protected int m_iCachedFactionValuesSize;
+
+	// Staggered StoreProfile queue — serialises all platform save transactions.
+	// The platform only allows one 'playersave' transaction at a time; firing
+	// StoreProfile() simultaneously for multiple players causes:
+	//   "Save data transaction to 'playersave' failed. Another transaction in progress."
+	// All StoreProfile() calls are routed through QueueProfileSave() so they are
+	// spaced 500 ms apart.  OnGameEnd() skips players already in this queue/saved
+	// to eliminate the double-save that vanilla OnGameEnd() + OnPlayerDisconnected()
+	// would otherwise produce.
+	protected ref array<int> m_aPendingProfileSaves = {};
+	protected ref array<int> m_aSavedOrQueuedPlayerIds = {};
+	protected bool m_bProfileSaveProcessing = false;
+
 	// Event for tracking damage
 	protected ref ScriptInvoker m_OnPlayerDamageReceived = new ScriptInvoker();
 	
@@ -130,6 +151,14 @@ modded class SCR_DataCollectorComponent
 				valuesSize = value.Count();
 		}
 
+		// Build the staggered send queue — both SendData (triggers platform save) and
+		// SendAARKillStats are dispatched together per player with a 500 ms gap between
+		// each player to avoid "Another transaction in progress" platform errors.
+		m_aCachedFactionKeys = factionKeys;
+		m_aCachedFactionValues = factionValues;
+		m_iCachedFactionValuesSize = valuesSize;
+		m_aPendingStatSends.Clear();
+
 		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
 		{
 			playerID = m_mPlayerData.GetKey(i);
@@ -141,8 +170,54 @@ modded class SCR_DataCollectorComponent
 			if (!communicationComponent)
 				continue;
 
-			communicationComponent.SendData(m_mPlayerData.Get(playerID), factionKeys, factionValues, valuesSize);
+			m_aPendingStatSends.Insert(playerID);
+
+			// Queue a staggered platform save for every still-connected player.
+			// This ensures profiles are saved here rather than in OnGameEnd()'s
+			// safety-net, which would fire all StoreProfile() calls simultaneously.
+			QueueProfileSave(playerID);
 		}
+
+		GetGame().GetCallqueue().CallLater(SendNextPlayerStats, 0, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Processes one pending player stat send per call, then reschedules itself 500 ms later
+	// until the queue is empty. The 500 ms gap prevents simultaneous platform save transactions.
+	protected void SendNextPlayerStats()
+	{
+		if (m_aPendingStatSends.IsEmpty())
+			return;
+
+		int playerID = m_aPendingStatSends[0];
+		m_aPendingStatSends.RemoveOrdered(0);
+
+		PlayerController playerController = GetGame().GetPlayerManager().GetPlayerController(playerID);
+		if (playerController)
+		{
+			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
+				playerController.FindComponent(SCR_DataCollectorCommunicationComponent));
+			if (communicationComponent)
+				communicationComponent.SendData(m_mPlayerData.Get(playerID), m_aCachedFactionKeys, m_aCachedFactionValues, m_iCachedFactionValuesSize);
+
+			CRF_PlayerRplToOwnerManager rplManager = CRF_PlayerRplToOwnerManager.Cast(
+				playerController.FindComponent(CRF_PlayerRplToOwnerManager));
+			if (rplManager)
+			{
+				array<string> kills = m_mSessionKills.Get(playerID);
+				if (!kills)
+					kills = new array<string>();
+
+				string killedBy = "";
+				if (m_mSessionDeaths.Contains(playerID))
+					killedBy = m_mSessionDeaths.Get(playerID);
+
+				rplManager.SendAARKillStats(kills, killedBy);
+			}
+		}
+
+		if (!m_aPendingStatSends.IsEmpty())
+			GetGame().GetCallqueue().CallLater(SendNextPlayerStats, 500, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -196,8 +271,32 @@ modded class SCR_DataCollectorComponent
 		
 		if (m_bOptionalKicking)
 			m_OptionalKicking.OnControllableDestroyed(playerEntity, killerEntity, instigator, instigatorContextData);
+
+		// Track which player killed whom, and who killed this player, for the AAR stats panel.
+		int killerPlayerId = 0;
+		if (instigator)
+			killerPlayerId = instigator.GetInstigatorPlayerID();
+
+		if (killerPlayerId > 0)
+		{
+			if (!m_mSessionKills.Contains(killerPlayerId))
+				m_mSessionKills.Insert(killerPlayerId, new array<string>());
+			m_mSessionKills.Get(killerPlayerId).Insert(GetGame().GetPlayerManager().GetPlayerName(playerId));
+		}
+
+		string killerName = "";
+		if (killerPlayerId > 0)
+			killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+
+		if (killerName != "")
+		{
+			if (m_mSessionDeaths.Contains(playerId))
+				m_mSessionDeaths.Set(playerId, killerName);
+			else
+				m_mSessionDeaths.Insert(playerId, killerName);
+		}
 	}
-	
+
 	void OnAIKilledCRF(IEntity AIEntity, IEntity killerEntity, notnull Instigator instigator, notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		foreach (SCR_DataCollectorModule module : m_aModules)
@@ -227,7 +326,7 @@ modded class SCR_DataCollectorComponent
 		
 		// Calculate session duration before storing
 		playerDisconnectedData.CalculateSessionDuration();
-		playerDisconnectedData.StoreProfile();
+		QueueProfileSave(playerId);
 
 		// ADD STATS TO FACTION
 		// Here we add the stats of the individual player who desconnected to the faction
@@ -257,6 +356,85 @@ modded class SCR_DataCollectorComponent
 		// DONE ADDING STATS TO THE FACTION
 		//We cannot remove this instance of data from the player collector because the event has not been sent yet to the Database for tracking purposes
 		//m_mPlayerData.Remove(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Routes a StoreProfile() call through the staggered queue to prevent simultaneous platform
+	// save transactions.  Safe to call multiple times for the same player — duplicates are ignored.
+	protected void QueueProfileSave(int playerId)
+	{
+		if (m_aSavedOrQueuedPlayerIds.Contains(playerId))
+			return;
+
+		m_aSavedOrQueuedPlayerIds.Insert(playerId);
+		m_aPendingProfileSaves.Insert(playerId);
+
+		if (!m_bProfileSaveProcessing)
+		{
+			m_bProfileSaveProcessing = true;
+			GetGame().GetCallqueue().CallLater(ProcessNextProfileSave, 0, false);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Pops one player from the save queue, calls StoreProfile(), and reschedules itself
+	// 500 ms later until the queue is empty.
+	protected void ProcessNextProfileSave()
+	{
+		if (m_aPendingProfileSaves.IsEmpty())
+		{
+			m_bProfileSaveProcessing = false;
+			return;
+		}
+
+		int playerID = m_aPendingProfileSaves[0];
+		m_aPendingProfileSaves.RemoveOrdered(0);
+
+		SCR_PlayerData playerData = GetPlayerData(playerID, false);
+		if (playerData)
+			playerData.StoreProfile();
+
+		if (!m_aPendingProfileSaves.IsEmpty())
+			GetGame().GetCallqueue().CallLater(ProcessNextProfileSave, 500, false);
+		else
+			m_bProfileSaveProcessing = false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Override OnGameEnd to prevent the vanilla double-save.
+	// Vanilla SCR_DataCollectorComponent.OnGameEnd() iterates all of m_mPlayerData and calls
+	// StoreProfile() for every entry — including players already saved (or queued to be saved)
+	// by OnPlayerDisconnected().  We skip those and only synchronously save players whose
+	// disconnect-save never ran (e.g. server force-killed before they cleanly disconnected).
+	// The stagger queue's remaining entries are also drained here synchronously as a safety net,
+	// since CallLater callbacks will not fire once the session is tearing down.
+	override void OnGameEnd()
+	{
+		// Cancel pending staggered callbacks — we're tearing down now.
+		GetGame().GetCallqueue().Remove(ProcessNextProfileSave);
+		GetGame().GetCallqueue().Remove(SendNextPlayerStats);
+		m_bProfileSaveProcessing = false;
+
+		// Drain any profiles that were queued but not yet processed.
+		foreach (int playerID : m_aPendingProfileSaves)
+		{
+			SCR_PlayerData playerData = GetPlayerData(playerID, false);
+			if (playerData)
+				playerData.StoreProfile();
+		}
+		m_aPendingProfileSaves.Clear();
+
+		// Safety-net: save any players who never went through OnPlayerDisconnected at all.
+		for (int i = m_mPlayerData.Count() - 1; i >= 0; i--)
+		{
+			int playerID = m_mPlayerData.GetKey(i);
+			if (m_aSavedOrQueuedPlayerIds.Contains(playerID))
+				continue;
+
+			SCR_PlayerData playerData = GetPlayerData(playerID, false);
+			if (playerData)
+				playerData.StoreProfile();
+		}
 	}
 
 }

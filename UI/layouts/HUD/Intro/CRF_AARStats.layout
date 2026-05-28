@@ -1,0 +1,509 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{7CDA3F8200000001}" {
+   Name "PanelBG"
+   Slot FrameWidgetSlot "{7CDA3F8200000002}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -450
+    OffsetLeft -450
+    PositionY 5
+    OffsetTop 5
+    SizeX 900
+    OffsetRight -450
+    SizeY 368
+    OffsetBottom -373
+   }
+   "Is Enabled" 0
+   Opacity 0
+   Color 0.04 0.04 0.04 0.88
+  }
+  TextWidgetClass "{7CDA3F8200000003}" {
+   Name "StatsHeaderLeft"
+   Slot FrameWidgetSlot "{7CDA3F8200000004}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 17
+    OffsetTop 17
+    SizeX 420
+    OffsetRight 20
+    SizeY 30
+    OffsetBottom -47
+   }
+   Text "MISSION STATISTICS"
+   "Font Size" 18
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000005}" {
+   Name "KillsLabel"
+   Slot FrameWidgetSlot "{7CDA3F8200000006}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 60
+    OffsetTop 60
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -82
+   }
+   Color 0.7 0.7 0.7 1
+   Text "KILLS"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000007}" {
+   Name "KillsValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000008}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 60
+    OffsetTop 60
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -82
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000009}" {
+   Name "DeathsLabel"
+   Slot FrameWidgetSlot "{7CDA3F820000000A}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 87
+    OffsetTop 87
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -109
+   }
+   Color 0.7 0.7 0.7 1
+   Text "DEATHS"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000000B}" {
+   Name "DeathsValue"
+   Slot FrameWidgetSlot "{7CDA3F820000000C}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 87
+    OffsetTop 87
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -109
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000000D}" {
+   Name "ShotsLabel"
+   Slot FrameWidgetSlot "{7CDA3F820000000E}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 114
+    OffsetTop 114
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -136
+   }
+   Color 0.7 0.7 0.7 1
+   Text "SHOTS FIRED"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000000F}" {
+   Name "ShotsValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000010}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 114
+    OffsetTop 114
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -136
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000011}" {
+   Name "GrenadesLabel"
+   Slot FrameWidgetSlot "{7CDA3F8200000012}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 141
+    OffsetTop 141
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -163
+   }
+   Color 0.7 0.7 0.7 1
+   Text "GRENADES THROWN"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000013}" {
+   Name "GrenadesValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000014}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 141
+    OffsetTop 141
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -163
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000015}" {
+   Name "BandagesLabel"
+   Slot FrameWidgetSlot "{7CDA3F8200000016}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 168
+    OffsetTop 168
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -190
+   }
+   Color 0.7 0.7 0.7 1
+   Text "BANDAGES APPLIED"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000017}" {
+   Name "BandagesValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000018}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 168
+    OffsetTop 168
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -190
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000019}" {
+   Name "DistanceLabel"
+   Slot FrameWidgetSlot "{7CDA3F820000001A}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 195
+    OffsetTop 195
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -217
+   }
+   Color 0.7 0.7 0.7 1
+   Text "DISTANCE TRAVELED"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000001B}" {
+   Name "DistanceValue"
+   Slot FrameWidgetSlot "{7CDA3F820000001C}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 195
+    OffsetTop 195
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -217
+   }
+   Text "0 km"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000029}" {
+   Name "FriendlyKillsLabel"
+   Slot FrameWidgetSlot "{7CDA3F820000002A}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 222
+    OffsetTop 222
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -244
+   }
+   Color 0.7 0.7 0.7 1
+   Text "FRIENDLY KILLS"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000002B}" {
+   Name "FriendlyKillsValue"
+   Slot FrameWidgetSlot "{7CDA3F820000002C}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 222
+    OffsetTop 222
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -244
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000002D}" {
+   Name "XPLabel"
+   Slot FrameWidgetSlot "{7CDA3F820000002E}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -440
+    OffsetLeft -440
+    PositionY 249
+    OffsetTop 249
+    SizeX 200
+    OffsetRight 240
+    SizeY 22
+    OffsetBottom -271
+   }
+   Color 0.7 0.7 0.7 1
+   Text "XP GAINED"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F820000002F}" {
+   Name "XPValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000030}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -235
+    OffsetLeft -235
+    PositionY 249
+    OffsetTop 249
+    SizeX 215
+    OffsetRight 20
+    SizeY 22
+    OffsetBottom -271
+   }
+   Text "0"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  ImageWidgetClass "{7CDA3F820000001D}" {
+   Name "Divider"
+   Slot FrameWidgetSlot "{7CDA3F820000001E}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -2
+    OffsetLeft -2
+    PositionY 10
+    OffsetTop 10
+    SizeX 4
+    OffsetRight -2
+    SizeY 355
+    OffsetBottom -365
+   }
+   Color 0.4 0.4 0.4 0.7
+  }
+  TextWidgetClass "{7CDA3F820000001F}" {
+   Name "StatsHeaderRight"
+   Slot FrameWidgetSlot "{7CDA3F8200000020}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 10
+    OffsetLeft 10
+    PositionY 17
+    OffsetTop 17
+    SizeX 425
+    OffsetRight -435
+    SizeY 30
+    OffsetBottom -47
+   }
+   Text "COMBAT LOG"
+   "Font Size" 18
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000021}" {
+   Name "KilledHeader"
+   Slot FrameWidgetSlot "{7CDA3F8200000022}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 10
+    OffsetLeft 10
+    PositionY 60
+    OffsetTop 60
+    SizeX 425
+    OffsetRight -435
+    SizeY 22
+    OffsetBottom -82
+   }
+   Color 0.7 0.7 0.7 1
+   Text "YOU KILLED"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000023}" {
+   Name "KilledValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000024}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 10
+    OffsetLeft 10
+    PositionY 87
+    OffsetTop 87
+    SizeX 425
+    OffsetRight -435
+    SizeY 155
+    OffsetBottom -242
+   }
+   Text "—"
+   "Font Size" 15
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Top
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000025}" {
+   Name "KilledByHeader"
+   Slot FrameWidgetSlot "{7CDA3F8200000026}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 10
+    OffsetLeft 10
+    PositionY 253
+    OffsetTop 253
+    SizeX 425
+    OffsetRight -435
+    SizeY 22
+    OffsetBottom -275
+   }
+   Color 0.7 0.7 0.7 1
+   Text "KILLED BY"
+   "Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+  TextWidgetClass "{7CDA3F8200000027}" {
+   Name "KilledByValue"
+   Slot FrameWidgetSlot "{7CDA3F8200000028}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 10
+    OffsetLeft 10
+    PositionY 280
+    OffsetTop 280
+    SizeX 425
+    OffsetRight -435
+    SizeY 55
+    OffsetBottom -335
+   }
+   Text "—"
+   "Font Size" 16
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7CDA3F82F0000001}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+ }
+}
