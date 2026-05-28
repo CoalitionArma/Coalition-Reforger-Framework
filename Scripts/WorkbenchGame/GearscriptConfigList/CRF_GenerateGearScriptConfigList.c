@@ -47,7 +47,7 @@ class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 	//! Write config list to json file
 	static void SaveConfig()
 	{
-		SCR_JsonSaveContext ctx = new SCR_JsonSaveContext();
+		JsonSaveContext ctx = new JsonSaveContext();
 		ctx.WriteValue("", m_config);
 		ctx.SaveToFile("configs/GearScripts/GearScriptsConfigList.json");
 

@@ -17,9 +17,9 @@ modded class SCR_ItemPlacementComponent : ScriptComponent
 			return;
 
 		if (!CRF_RoleHelper.IsSquadLeaderRole(character))
-			cantPlaceReason = "Not Squad Leader Role";
+			cantPlaceReason = ENotification.PLACEABLE_ITEM_CANT_PLACE_GENERIC;
 		
 		if (!CRF_Gamemode.GetInstance().m_bRallyPointsEnabled)
-			cantPlaceReason = "Rally Points Disabled";
+			cantPlaceReason = ENotification.PLACEABLE_ITEM_CANT_PLACE_GENERIC;
 	}
 }

@@ -189,7 +189,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
-		m_sPlayerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
+		m_sPlayerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 		
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
@@ -223,7 +223,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
-		string disconnectGUID = m_BackendApi.GetPlayerIdentityId(playerId);
+		string disconnectGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("disconnect" + SEPARATOR + m_sPlayerName + SEPARATOR + disconnectGUID + SEPARATOR + cause);
 	}
@@ -436,7 +436,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_PlayerManager.GetPlayers(players);
 		foreach (int player : players)
 		{
-			m_LogFileHandle.WriteLine("attendance," + m_BackendApi.GetPlayerIdentityId(player));
+			m_LogFileHandle.WriteLine("attendance," + SCR_PlayerIdentityUtils.GetPlayerIdentityId(player));
 		}
 		
 		// ORBAT is now logged separately via OnGamemodeStateChanged when entering GAME state
@@ -553,7 +553,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 					string roleName = slotData.GetSlotName();
 					
 					// Get player GUID
-					string playerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
+					string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 					
 					// Log player role info
 					m_LogFileHandle.WriteLine("orbat_player" + SEPARATOR + factionKey + SEPARATOR + 
@@ -630,7 +630,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		else
 			Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
 		
-		string sVictimGUID = m_BackendApi.GetPlayerIdentityId(victimId);
+		string sVictimGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(victimId);
 		string sVictimName;
 		if (victimId > 0)
 			sVictimName = m_PlayerManager.GetPlayerName(victimId);
@@ -655,7 +655,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		else
 			Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
 		
-		string sKillerGUID = m_BackendApi.GetPlayerIdentityId(killerId);
+		string sKillerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(killerId);
 		string sKillerName;
 		if (killerId > 0)
 			sKillerName = m_PlayerManager.GetPlayerName(killerId);

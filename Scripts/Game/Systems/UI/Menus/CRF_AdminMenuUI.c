@@ -1322,11 +1322,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (playerId == 0)
 			return;
 		
-		int selectedGroupID = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
+		SCR_AIGroup selectedGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
 		
 		foreach (int i, SCR_AIGroup group : m_outGroups)
 		{
-			if (selectedGroupID == group.GetGroupID())
+			if (selectedGroup == group)
 			{
 				// Adjust index for client mode
 				int itemIndex = i;
@@ -1946,7 +1946,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	
 	void LoadGearConfigList()
 	{
-		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();
+		JsonLoadContext ctx = new JsonLoadContext();
 		m_gearsetlist = new CRF_GearScriptConfigStruct();
 	
 		if (!ctx.LoadFromFile("configs/GearScripts/GearScriptsConfigList.json"))

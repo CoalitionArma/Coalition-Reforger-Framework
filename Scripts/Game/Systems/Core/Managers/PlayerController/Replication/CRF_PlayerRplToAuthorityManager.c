@@ -145,11 +145,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Broken in 1.7. Check CRF_PersistanceManager for update.
+	/*
 	void RequestMissionSave(string saveName)
 	{
 		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestMissionSave, saveName);
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	void RequestAdvanceSlottingPhase()
@@ -690,6 +693,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Broken in 1.7. Check CRF_PersistanceManager for update.
+	/*
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestMissionSave(string saveName)
 	{
@@ -707,6 +712,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			Print("[CRF_PlayerRplToAuthorityManager] Persistence manager not available", LogLevel.ERROR);
 		}
 	}
+	*/
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

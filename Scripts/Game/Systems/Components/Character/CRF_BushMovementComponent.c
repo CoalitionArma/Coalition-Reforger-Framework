@@ -8,15 +8,12 @@ class CRF_BushMovementComponent: ScriptComponent
 	ref array<ResourceName> m_aBushPrefabs;
 	
 	
-	float m_fOldMovementDamage = 0;
-	float m_fAppliedBushDamage = 0;
 	const float BUSH_DISTANCE_SQ = 2.25; // 1.5m x 1.5m
 	bool m_bEffectsApplied = false;
 	bool m_bEffectsAppliedThisFrame = false;
 	vector m_vOriginThisFrame;
 	vector m_vLastCheckedPos;
 	protected SCR_CharacterControllerComponent m_CharacterController;
-	protected SCR_CharacterDamageManagerComponent m_DamageManager;
 	protected SCR_HintManagerComponent m_HintManager;
 	
 	void RegisterEntity()
@@ -26,7 +23,6 @@ class CRF_BushMovementComponent: ScriptComponent
 			return;
 		
 		m_CharacterController = SCR_CharacterControllerComponent.Cast(GetOwner().FindComponent(SCR_CharacterControllerComponent));
-		m_DamageManager = SCR_CharacterDamageManagerComponent.Cast(GetOwner().FindComponent(SCR_CharacterDamageManagerComponent));
 		m_HintManager = SCR_HintManagerComponent.GetInstance();
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
@@ -43,7 +39,7 @@ class CRF_BushMovementComponent: ScriptComponent
 	float m_fBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		if (!m_DamageManager || !m_CharacterController)
+		if (!m_CharacterController)
 			return;
 		
 		if (m_fBuffer <= 0.1)
@@ -96,12 +92,6 @@ class CRF_BushMovementComponent: ScriptComponent
 	void ResetBushEffects()
 	{
 		m_bEffectsApplied = false;
-	
-		// restore whatever the engine value was (including any injury/heal changes we captured)
-		m_DamageManager.SetMovementDamage(m_fOldMovementDamage);
-	
-		m_fOldMovementDamage = 0;
-		m_fAppliedBushDamage = 0;
 	}
 
 	
@@ -113,33 +103,6 @@ class CRF_BushMovementComponent: ScriptComponent
 			if (m_HintManager)
 				m_HintManager.ShowCustomHint("Cannot prone in the center of a bush", "Move away and try again", 10);
 		}
-	
-		// Read current engine movement damage BEFORE we override it
-		float current = m_DamageManager.GetMovementDamage();
-	
-		// First time entering bush: cache baseline
-		if (!m_bEffectsApplied)
-		{
-			m_fOldMovementDamage = current;
-		}
-		else
-		{
-			// If the engine changed movement damage since our last override (injury/heal), update baseline
-			// If it's identical to what we applied, assume nothing changed.
-			if (Math.AbsFloat(current - m_fAppliedBushDamage) > 0.001)
-				m_fOldMovementDamage = current;
-		}
-	
-		// Enforce "bush minimum"
-		float desired = m_fOldMovementDamage;
-		if (desired < 0.5)
-			desired = 0.5;
-	
-		// Only set if needed
-		if (Math.AbsFloat(current - desired) > 0.001)
-			m_DamageManager.SetMovementDamage(desired);
-	
-		m_fAppliedBushDamage = desired;
 	
 		m_bEffectsAppliedThisFrame = true;
 		m_bEffectsApplied = true;

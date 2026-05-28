@@ -6,7 +6,7 @@ class CRF_BugReportConfig
 	//------------------------------------------------------------------------------------------------
 	static bool LoadConfig()
 	{		
-		SCR_JsonLoadContext configLoadContext = new SCR_JsonLoadContext();
+		JsonLoadContext configLoadContext = new JsonLoadContext();
 		
 		m_config = new CRF_BugReportConfigStruct();
 				
@@ -34,7 +34,7 @@ class CRF_BugReportConfig
 	//------------------------------------------------------------------------------------------------
 	static bool SaveConfig()
 	{
-		SCR_JsonSaveContext configSaveContext = new SCR_JsonSaveContext();
+		JsonSaveContext configSaveContext = new JsonSaveContext();
 		configSaveContext.WriteValue("", m_config);
 		
 		if (!configSaveContext.SaveToFile( m_configFilePath ))

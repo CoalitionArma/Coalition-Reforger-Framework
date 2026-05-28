@@ -12,7 +12,7 @@ class CRF_VehicleSpawnerSerializer : ScriptedEntitySerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override ESerializeResult Serialize(notnull Managed instance, notnull BaseSerializationSaveContext context)
+	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
 		CRF_VehicleSpawner vehicleSpawner = CRF_VehicleSpawner.Cast(instance);
 		if (!vehicleSpawner)
@@ -41,7 +41,7 @@ class CRF_VehicleSpawnerSerializer : ScriptedEntitySerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override bool Deserialize(notnull Managed instance, notnull BaseSerializationLoadContext context)
+	override bool Deserialize(notnull Managed instance, notnull LoadContext context)
 	{
 		CRF_VehicleSpawner vehicleSpawner = CRF_VehicleSpawner.Cast(instance);
 		if (!vehicleSpawner)

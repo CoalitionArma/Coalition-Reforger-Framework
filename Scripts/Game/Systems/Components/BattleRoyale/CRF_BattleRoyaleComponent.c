@@ -1165,7 +1165,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				continue;
 			
 			// Track all players in each group (for winner list)
-			RplId groupRplId = Replication.FindId(playerGroup);
+			RplId groupRplId = Replication.FindItemId(playerGroup);
 			array<int> groupPlayers;
 			if (!m_mGroupPlayers.Find(groupRplId, groupPlayers))
 			{
@@ -1212,7 +1212,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		
 		// Get all players from winning group
 		m_aWinnerPlayerIds.Clear();
-		RplId winningGroupId = Replication.FindId(aliveGroup);
+		RplId winningGroupId = Replication.FindItemId(aliveGroup);
 		array<int> winningPlayers;
 		if (m_mGroupPlayers.Find(winningGroupId, winningPlayers))
 			m_aWinnerPlayerIds.Copy(winningPlayers);

@@ -16,7 +16,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected int m_iCurrentFrame = 0;
 	
 	[Attribute("0.5", "auto", "Recording intervals in milliseconds", category: "CRF Virtual AAR System")]
-    protected const float m_iRecordIntervals = 0.5;
+    protected float m_iRecordIntervals = 0.5;
 	
 	protected ref array<ref CRF_VAAR_ShotEvent> m_aShotsBuffer = {};
 	protected ref array<ref CRF_VAAR_KillEvent> m_aKillsBuffer = {};
@@ -188,7 +188,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		{
 			// Collect info
 			string vehicleName = GetFriendlyName(vehicle);
-			RplId vehicleID = Replication.FindId(vehicle);
+			RplId vehicleID = Replication.FindItemId(vehicle);
 			vector vehiclePos = vehicle.GetOrigin();
 			vector vehicleYaw = vehicle.GetYawPitchRoll();
 			int vehicleType = GetVehicleType(vehicle);
@@ -203,7 +203,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		// Convert the frame to json format
-		SCR_JsonSaveContext jsonHelper = new SCR_JsonSaveContext();
+		JsonSaveContext jsonHelper = new JsonSaveContext();
 		if (!jsonHelper)
 			return;
 		
@@ -212,9 +212,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		// Write the frame to the aar file — comma before each frame after the first
 		if (m_iCurrentFrame > 0)
-			m_AARFile.WriteLine("," + jsonHelper.ExportToString());
+			m_AARFile.WriteLine("," + jsonHelper.SaveToString());
 		else
-			m_AARFile.WriteLine(jsonHelper.ExportToString());
+			m_AARFile.WriteLine(jsonHelper.SaveToString());
 	}
 	
 	// Handle closing out the AAR at game end
@@ -279,7 +279,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (playerID != 0)
 			return playerID;
 			
-		return Replication.FindId(character);
+		return Replication.FindItemId(character);
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -382,7 +382,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Collect info on the projectile
 		vector start = shooter.GetOrigin();
-		RplId shooterID = Replication.FindId(shooter);
+		RplId shooterID = Replication.FindItemId(shooter);
 		
 		// Deduplicate: OnEffect can fire twice per bullet (e.g. two effects on weapon).
 		// Skip if the last buffered shot has identical scaled integer coordinates.

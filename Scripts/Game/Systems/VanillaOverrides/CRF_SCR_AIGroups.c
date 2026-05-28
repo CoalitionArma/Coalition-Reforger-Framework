@@ -33,10 +33,38 @@ modded class SCR_AIGroup
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Carbon copy of vanilla AddPlayer without the GROUPS_PLAYER_JOINED notification (suppressed to avoid meta information)
 	override void AddPlayer(int playerID)
 	{
-		// Super up so we dont break the vanilla side
-		super.AddPlayer(playerID);
+		// Avoiding duplicate entries
+		if (m_aPlayerIDs.Contains(playerID))
+			return;
+
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_JOINED, playerID);
+		RPC_DoAddPlayer(playerID);
+		Rpc(RPC_DoAddPlayer, playerID);
+
+		// Start listening to disconnect events when we add the first player
+		if (m_aPlayerIDs.Count() == 1)
+		{
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+				gameMode.GetOnPlayerDisconnected().Insert(OnPlayerDisconnected);
+		}
+		// Now we need the player character's agent
+		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+		if (!controlledEntity)
+			QueueAddAgent(playerID);
+		else
+		{
+			SCR_PlayerController scriptedController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerID));
+			if (!scriptedController || !scriptedController.IsPossessing())
+				AddAgentFromControlledEntity(controlledEntity);
+		}
+
+		GetGame().GetCallqueue().CallLater(CheckForLeader, 0, false, playerID, false);
+
+		// End of original method ============================================================
 
 		// Get the current leader entity
 		PlayerManager playerManager = GetGame().GetPlayerManager();
@@ -63,6 +91,22 @@ modded class SCR_AIGroup
 				groupsManager.SetGroupLeader(GetGroupID(), playerID);
 			}
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Carbon copy of vanilla SetGroupLeader without the GROUPS_PLAYER_PROMOTED_LEADER notification (suppressed to avoid meta information)
+	override void SetGroupLeader(int playerID)
+	{
+		//reset custom name and description on leader change
+		if (GetNameAuthorID() != playerID)
+			SetCustomName("", 0);
+
+		if (GetDescriptionAuthorID() != playerID)
+			SetCustomDescription("", 0);
+
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_PROMOTED_LEADER, playerID);
+		RPC_SetLeaderID(playerID);
+		Rpc(RPC_SetLeaderID, playerID);
 	}
 
 	//------------------------------------------------------------------------------------------------	

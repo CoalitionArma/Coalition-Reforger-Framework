@@ -38,8 +38,9 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("aar");
 		invoker5.Insert(Advance_Callback);
 		
-		ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("save");
-		invoker6.Insert(SaveMission_Callback);		
+		// CURRENTLY BROKEN IN 1.7 - NEEDS UPDATING CRF_PersistanceManager
+		// ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("save");
+		// invoker6.Insert(SaveMission_Callback);		
 		
 		ChatCommandInvoker invoker7 = chatPanelManager.GetCommandInvoker("bug");
 		invoker7.Insert(ReportBug);
@@ -316,6 +317,8 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 	//! Callback for triggering a manual mission save
 	//! Usage: /save [save name]
 	//! Examples: /save, /save After Attack, /save Checkpoint 1
+	// NOTE: CURRENTLY BROKEN. REFERENCE CRF_PersistanceManager FOR UPDATE
+	/*
 	void SaveMission_Callback(SCR_ChatPanel panel, string data)
 	{
 		// Check if admin privileges are required
@@ -349,6 +352,7 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		// Request save from server via RPC
 		m_PlayerRplToAuthorityManager.RequestMissionSave(saveName);
 	}
+	*/
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS

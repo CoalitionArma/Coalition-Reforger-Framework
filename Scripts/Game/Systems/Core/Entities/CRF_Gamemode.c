@@ -427,7 +427,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// numeric player ID but the GUID (BI account identity) remains the same.
 		if (IsMaster() && m_SlottingManager)
 		{
-			string reconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+			string reconnectGuid = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
 			int savedSlotId;
 			if (!reconnectGuid.IsEmpty() && m_mReconnectSlotByGuid.Find(reconnectGuid, savedSlotId))
 			{
@@ -439,7 +439,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		QueuePlayerInitialization(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
-		string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+		string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
 		
 		// Check if player is the mission designer and grant admin chat
 		SCR_MissionHeader missionHeader = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
@@ -475,7 +475,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// slot on reconnect even if their numeric player ID changes (dedicated-server behaviour).
 		if (IsMaster() && m_SlottingManager)
 		{
-			string disconnectGuid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+			string disconnectGuid = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 			if (!disconnectGuid.IsEmpty())
 			{
 				int disconnectSlotId = m_SlottingManager.GetPlayerSlotID(playerId);

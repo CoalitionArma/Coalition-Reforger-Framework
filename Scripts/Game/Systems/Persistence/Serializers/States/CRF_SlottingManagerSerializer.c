@@ -15,7 +15,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override ESerializeResult Serialize(notnull Managed instance, notnull BaseSerializationSaveContext context)
+	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
@@ -68,7 +68,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override bool Deserialize(notnull Managed instance, notnull BaseSerializationLoadContext context)
+	override bool Deserialize(notnull Managed instance, notnull LoadContext context)
 	{
 		int version;
 		if (!context.ReadValue("version", version))

@@ -115,9 +115,10 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 			string groupName = group.GetCustomNameWithOriginal();
 
 			// Case-insensitive substring match: compare lowercased strings.
-			// Enfusion has no built-in ToLower, so we walk through the 26 letters.
-			string groupNameLower  = ToLower(groupName);
-			string squadFilterLower = ToLower(squadFilter);
+			string groupNameLower = groupName;
+			groupNameLower.ToLower();
+			string squadFilterLower = squadFilter;
+			squadFilterLower.ToLower();
 
 			if (groupNameLower.IndexOf(squadFilterLower) != -1)
 				return true;
@@ -126,31 +127,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		return false;
 	}
 
-	//------------------------------------------------------------
-	// Minimal ToLower helper — replaces A-Z with a-z.
-	// Enfusion strings are immutable (no index assignment), so we
-	// build the result by extracting each character via SubString.
-	//------------------------------------------------------------
 
-	protected string ToLower(string s)
-	{
-		string result = "";
-		int len = s.Length();
-		for (int i = 0; i < len; i++)
-		{
-			string ch = s.Substring(i, 1);
-			int c = s[i];
-			if (c >= 65 && c <= 90)    // 'A' = 65, 'Z' = 90
-			{
-				// Build lowercase letter by offsetting into the alphabet
-				string lower = "abcdefghijklmnopqrstuvwxyz";
-				result += lower.Substring(c - 65, 1);
-			}
-			else
-				result += ch;
-		}
-		return result;
-	}
 
 	//------------------------------------------------------------
 	// Lifecycle
@@ -680,7 +657,8 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		if (!sm)
 			return result;
 
-		string filterLower = ToLower(squadFilter);
+		string filterLower = squadFilter;
+		filterLower.ToLower();
 
 		foreach (int slotId : slotIds)
 		{
@@ -700,7 +678,8 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 			if (!group)
 				continue;
 
-			string groupName = ToLower(group.GetCustomNameWithOriginal());
+			string groupName = group.GetCustomNameWithOriginal();
+			groupName.ToLower();
 			if (groupName.IndexOf(filterLower) != -1)
 				result.Insert(slotId);
 		}
