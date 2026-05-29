@@ -3,7 +3,6 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_RushGamemodeManager "{697A469D1A44BC17}" {
    m_AttackingSide "OPFOR"
    m_DefendingSide "INDFOR"
-   m_MCOMPrefab "{A2F12C7E34C460B5}Prefabs/Structures/Rush/CRF_Rush_MCOM.et"
    m_iMCOMTimer 5
    m_iMCOMsPerZone 1
    m_bEnableDynamicRespawns 1
@@ -48,7 +47,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomWeatherChanges 0
   }
  }
- coords 3164.833 169.395 7469.165
+ coords 0 0 0
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
