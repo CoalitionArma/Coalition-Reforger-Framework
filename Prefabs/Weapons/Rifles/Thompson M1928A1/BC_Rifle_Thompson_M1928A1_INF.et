@@ -172,8 +172,6 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
        UIName "Single"
       }
      }
-     MagazineWell MagazineWellThompson "{666F4E159178B4CD}" {
-     }
      WeaponAimModifiers {
       RecoilWeaponAimModifier "{5584D01594F61795}" {
        LinearData RecoilData "{58789524F404F395}" {
@@ -207,14 +205,6 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
      }
      MagazineTemplate "{6584FDE3C82368B0}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1928A1_45acp_Thompson_INF_Drum.et"
-    }
-    BC_ThompsonAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{C1E50D0211525849}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1.agr"
-     AnimInstance "{FCE21D8913D686F9}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1_weapon.asi"
-     AnimInjection AnimationAttachmentInfo "{5534745C44D1EF5A}" {
-      AnimGraph "{C1E50D0211525849}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1.agr"
-      AnimInstance "{07BC8CB88BD7E215}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1_player.asi"
-     }
     }
    }
    UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {

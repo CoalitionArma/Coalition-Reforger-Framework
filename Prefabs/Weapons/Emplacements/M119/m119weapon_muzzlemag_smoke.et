@@ -106,8 +106,6 @@ GenericEntity : "{842D220FF4EFF2A8}Prefabs/Weapons/HeavyWeapons/NSV/HMG_NSV_base
      }
      MissileWeaponLink BaseMissileWeaponLinkClass "{687721809212D3C6}" {
      }
-     MagazineWell MagazineWellArty "{5AF070F55031A55A}" {
-     }
      BulletInitSpeedCoef 1
      UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
       m_sCaliber "105mm"

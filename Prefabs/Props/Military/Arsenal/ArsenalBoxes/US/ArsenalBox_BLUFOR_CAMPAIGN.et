@@ -1,4 +1,4 @@
-GenericEntity : "{54986385A6AF77B2}Prefabs/Props/Military/Arsenal/ArsenalBoxes/ArsenalBox_Base.et" {
+GenericEntity : "{54986385A6AF77B2}Prefabs/Systems/Arsenal/ArsenalBoxes/ArsenalBox_Base.et" {
  ID "56F2C6D6F7C6DAFA"
  components {
   MeshObject "{56F2C6D1431AD85A}" {

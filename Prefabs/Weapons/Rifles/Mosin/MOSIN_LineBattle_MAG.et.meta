@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{202716BDDF5DFD1B}Prefabs/Weapons/Rifles/Mosin/MOISINTESTMAG.et"
+ Name "{202716BDDF5DFD1B}Prefabs/Weapons/Rifles/Mosin/MOSIN_LineBattle_MAG.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

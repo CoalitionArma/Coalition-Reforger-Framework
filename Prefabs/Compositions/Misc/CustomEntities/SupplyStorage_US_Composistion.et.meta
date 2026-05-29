@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3814A3A7D7707097}Prefabs/Structures/Signs/Military/Supplies/SupplyStorage_US_Composistion.et"
+ Name "{3814A3A7D7707097}Prefabs/Compositions/Misc/CustomEntities/SupplyStorage_US_Composistion.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

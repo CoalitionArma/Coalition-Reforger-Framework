@@ -47,10 +47,6 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
    }
   }
   WCS_Armament_LoadoutComponent "{667105FEE61C8DF4}" {
-   m_ArmamentGroups {
-    WCS_ArmamentSlotGroup "{667105FEE61C8DF1}" {
-    }
-   }
   }
   WCS_VehicleAimCameraComponent "{667105FEE61C8DF3}" {
    m_Position PointInfo "{667105FEE61C8DFC}" {

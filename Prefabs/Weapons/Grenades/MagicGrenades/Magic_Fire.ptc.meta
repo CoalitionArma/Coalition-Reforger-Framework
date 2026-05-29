@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0B0F0F8E0CE8A935}Prefabs/Weapons/Grenades/MagicGrenades/Explosion_RGD5_MAGIC.ptc"
+ Name "{0B0F0F8E0CE8A935}Prefabs/Weapons/Grenades/MagicGrenades/Magic_Fire.ptc"
  Configurations {
   PTCResourceClass PC : "{4B4500E061CCD624}Configs/System/ResourceTypes/PC/ParticleEffect.conf" {
   }

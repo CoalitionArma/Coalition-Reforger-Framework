@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D5A844F88DFAA10B}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL_M79_FT.conf"
+ Name "{D5A844F88DFAA10B}Configs/Gearscripts/Custom/MattBan/GoodNeighbours_GearScripts/CRF_GS_UK80s_FAL_current.conf"
  Configurations {
   CONFResourceClass PC {
   }

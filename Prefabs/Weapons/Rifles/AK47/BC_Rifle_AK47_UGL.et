@@ -92,8 +92,6 @@ GenericEntity : "{911D6C8DC7BA2D63}Prefabs/Weapons/Core/Rifle_Base.et" {
       ChildPivotID "snap_weapon"
       InspectionWidgetOffset 0 0.035 0.55
      }
-     AttachmentType AttachmentBayonet6X2 "{665E12AB287CFB84}" {
-     }
      AttachmentObstructs 0
      ShowInInspection 1
     }
@@ -217,8 +215,6 @@ GenericEntity : "{911D6C8DC7BA2D63}Prefabs/Weapons/Core/Rifle_Base.et" {
       BaseFireMode "{619AB45C30091E43}" : "{D5D52E848DBCAA53}Prefabs/Weapons/Core/Configs/FireModes/FireMode_Single.conf" {
        RoundsPerMinute 600
       }
-     }
-     MagazineWell MagazineWellBC_AK762 "{665E12AB28736054}" {
      }
      DispersionDiameter 0.4
      DispersionRange 320

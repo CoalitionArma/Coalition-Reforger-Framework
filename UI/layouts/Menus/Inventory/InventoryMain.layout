@@ -4483,11 +4483,11 @@ FrameWidgetClass {
                                 SmartPanelWidgetClass "{6226A59079F4BBD3}" {
                                  Prefab "{6226A59079F4BBD3}"
                                 }
-                                ProgressBarWidgetClass "{6226A59079F46A60}" {
-                                 Prefab "{6226A59079F46A60}"
-                                }
                                 ProgressBarWidgetClass "{6226A59079F4BBD4}" {
                                  Prefab "{6226A59079F4BBD4}"
+                                }
+                                ProgressBarWidgetClass "{6226A59079F46A60}" {
+                                 Prefab "{6226A59079F46A60}"
                                 }
                                 ProgressBarWidgetClass "{6226A59079F4D8CE}" {
                                  Prefab "{6226A59079F4D8CE}"

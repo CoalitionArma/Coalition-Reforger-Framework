@@ -21,8 +21,6 @@ GenericEntity : "{11B9CC1FB4AEE740}Prefabs/Weapons/Magazines/Magazine_556x45_STA
    WeightPerAmmo 0.021
   }
   MagazineComponent "{CA6BE4D6B4DAFD69}" {
-   MagazineWell MagazineWellThompson "{666F4E15E374431B}" {
-   }
    UIInfo MagazineUIInfo "{57126733AA401586}" {
     Name "Thompson M1928A1 50rnd Drum Mag"
     Description "Magazine loaded with .45acp cartridges. Only compatible with M11928A1 Thompson."

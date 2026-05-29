@@ -179,61 +179,9 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    BaseDeceleration 60
   }
   WCS_Armament_LoadoutComponent "{66D60C81E8CDE2E6}" {
-   m_ArmamentGroups {
-    WCS_ArmamentSlotGroup "{66D60C81E8CDE2E0}" {
-    }
-    WCS_ArmamentSlotGroup "{66D60C81E8CDE2E1}" {
-     slotIndex 1
-    }
-    WCS_ArmamentSlotGroup "{66D60C81E8CDE2E2}" {
-     slotIndex 2
-    }
-   }
    m_sPilotCompartmentUniqueName "gunner"
   }
   WCS_Armament_VehicleCameraComponent "{66D60C81E8CD5006}" {
-   m_Cameras {
-    WCS_VehicleCameraProps "{66D60C81E8CD5007}" {
-     m_Position PointInfo "{66D60C81E8CD5008}" {
-      PivotID "v_turret_01"
-      Offset -0.1529 0.303 0.1371
-      Angles 0 5 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_m01"
-    }
-    WCS_VehicleCameraProps "{66D60C81E8CD500A}" {
-     m_Position PointInfo "{66D60C81E8CD500B}" {
-      PivotID "v_turret_01"
-      Offset 0.2474 0.303 -0.2489
-      Angles 0 105 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_r01"
-    }
-    WCS_VehicleCameraProps "{66D60C81E8CD500C}" {
-     m_Position PointInfo "{66D60C81E8CD613B}" {
-      PivotID "v_turret_01"
-      Offset -0.4952 0.303 0.0732
-      Angles 0 -45 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_l01"
-    }
-    WCS_VehicleCameraProps "{66D60C81E8CD6139}" {
-     m_Position PointInfo "{66D60C81E8CD6138}" {
-      PivotID "v_turret_01"
-      Offset -0.5472 0.303 -0.1461
-      Angles 0 -95 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_l02"
-    }
-   }
   }
   WCS_Armament_VehicleWeaponStationComponent "{66D60C81E8CD61C7}" {
   }
@@ -439,13 +387,6 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
     WCS_RearmVehicleAtRepairStationAction "{64F3486162868A70}" : "{3757C83EDA741808}Prefabs/Weapons/Core/Configs/WCS_RearmVehicleAtRepairStationAction.conf" {
      ParentContextList {
       "gunnerHatch"
-     }
-     m_aRearmData {
-      WCS_VehicleRearmData "{62A1474EC72288A4}" {
-       magazine "{34E865245A558C62}Prefabs/Weapons/Ammo/Ammo_Missile_9K11.et"
-       maxAmount 3
-       unitSupplyCost 50
-      }
      }
     }
     WCS_Armament_VehicleCameraAction "{64F416925FD11BD0}" : "{91B4746C14E47D27}Prefabs/Weapons/Core/Configs/WCS_Armament_VehicleCameraAction.conf" {

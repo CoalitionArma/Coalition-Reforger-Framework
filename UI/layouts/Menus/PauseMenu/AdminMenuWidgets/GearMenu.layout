@@ -52,6 +52,14 @@ FrameWidgetClass {
       Padding 0 20 0 0
      }
      {
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
+      }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
        "Is Visible" 0
@@ -98,6 +106,14 @@ FrameWidgetClass {
       Padding 0 20 0 0
      }
      {
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
+      }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
        "Is Visible" 0

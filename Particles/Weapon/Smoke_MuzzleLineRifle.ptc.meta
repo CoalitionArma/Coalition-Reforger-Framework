@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A9CC4CC586214FF5}Particles/Weapon/SmokePlume.ptc"
+ Name "{A9CC4CC586214FF5}Particles/Weapon/Smoke_MuzzleLineRifle.ptc"
  Configurations {
   PTCResourceClass PC : "{4B4500E061CCD624}Configs/System/ResourceTypes/PC/ParticleEffect.conf" {
   }

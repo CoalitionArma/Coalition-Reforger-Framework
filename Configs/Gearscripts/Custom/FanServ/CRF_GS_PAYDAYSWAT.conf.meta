@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7A5AC0FACA28D265}Configs/Gearscripts/Standard/Modern/CRF_GS_PAYDAYSWAT.conf"
+ Name "{7A5AC0FACA28D265}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAYDAYSWAT.conf"
  Configurations {
   CONFResourceClass PC {
   }

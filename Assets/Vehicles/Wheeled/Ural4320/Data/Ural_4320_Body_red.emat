@@ -8,16 +8,6 @@ MatPBRMulti {
  SurfaceProperties "{6ADE4EF6A8AD9019}Common/Materials/Game/gravel.gamemat"
  Specular 1 0 0 1
  CavityFromAO 0.3
- GlobalMCRMap "{BA07E1E42534B08A}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_MCR.edds"
- MCRBrightness 5
- OverlayBlackPower 0.8
- UVSrcGlobalMaps "UV set 2"
- MaskMap "{08C3579FEEE8BC94}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_GLOBAL_MASK.edds"
- MaskRedScale 0
- MaskGreenScale 5
- MaskBlueScale 5
- VFXMap "{7FCD52BCEEDB792A}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_VFX.edds"
- GlobalNMOMap "{7EB4D0E78EBD72CA}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_NMO.edds"
  MudOpacity 0.978
  MudColor 0.095 0.086 0.073 1
  MudRoughness 2
@@ -38,6 +28,16 @@ MatPBRMulti {
   TilingU 4
   TilingV 4
  }
+ GlobalMCRMap "{BA07E1E42534B08A}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_MCR.edds"
+ MCRBrightness 5
+ OverlayBlackPower 0.8
+ UVSrcGlobalMaps "UV set 2"
+ MaskMap "{08C3579FEEE8BC94}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_GLOBAL_MASK.edds"
+ MaskRedScale 0
+ MaskGreenScale 5
+ MaskBlueScale 5
+ VFXMap "{7FCD52BCEEDB792A}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_VFX.edds"
+ GlobalNMOMap "{7EB4D0E78EBD72CA}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_NMO.edds"
  Enabled_4 1
  Color_4 0.08 0.08 0.054 1
  BCR_4 "{16DE4E86EFB365EA}Assets/_SharedData/Metal/ST_Lighthouse_PaintedMetal_Rusted_BCR.edds"

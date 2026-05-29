@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_PhaseZoneLinePrefab.et"
+ Name "{52C399BE009300A3}PrefabsMissionMaking/PolyZone/Ins_PhaseZoneLine/Ins_PhaseZoneLinePrefab.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

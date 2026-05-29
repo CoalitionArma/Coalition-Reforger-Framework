@@ -1,4 +1,4 @@
-GenericEntity : "{09DEA8153A0C312D}Prefabs/Characters/Core/EquipmentPart_Base.et" {
+GenericEntity {
  ID "50E0B40D7407B664"
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {

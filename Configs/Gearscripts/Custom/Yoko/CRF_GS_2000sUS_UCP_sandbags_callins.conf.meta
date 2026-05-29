@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{670CAB98D21A8357}Configs/Gearscripts/Custom/Yoko/CRF_GS_2000sUS_UCP_sandbags.conf"
+ Name "{670CAB98D21A8357}Configs/Gearscripts/Custom/Yoko/CRF_GS_2000sUS_UCP_sandbags_callins.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -504,7 +504,6 @@ GenericEntity : "{911D6C8DC7BA2D63}Prefabs/Weapons/Core/Rifle_Base.et" {
      ParentContextList {
       "sights"
      }
-     m_frontBoneAnglesRaised 0 1.57 0
     }
    }
   }

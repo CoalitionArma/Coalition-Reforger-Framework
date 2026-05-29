@@ -35,9 +35,9 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     }
     Gearbox Gearbox Gearbox {
      Forward {
-      3.500 2.200 1.560 1.190 0.950
+      3.5 2.2 1.56 1.19 0.95
      }
-     Reverse 3.670
+     Reverse 3.67
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {

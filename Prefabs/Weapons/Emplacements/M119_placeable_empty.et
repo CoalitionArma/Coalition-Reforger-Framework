@@ -87,7 +87,7 @@ GenericEntity {
  }
  coords 0 0 0
  {
-  Turret : "{ECDC9FE2503E6152}M119/M119_fieldgun.et" {
+  Turret {
    ID "687A171CC13AEDF1"
    components {
     SCR_UniversalInventoryStorageComponent "{61C4E051D0FB59BF}" {

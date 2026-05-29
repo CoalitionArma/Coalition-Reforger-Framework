@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A83B0B8E15F4ACC1}Configs/Gearscripts/Standard/80s/CRF_GS_GN_Rebels80s.conf"
+ Name "{A83B0B8E15F4ACC1}Configs/Gearscripts/Custom/MattBan/GoodNeighbours_GearScripts/CRF_GS_GN_Rebels80s.conf"
  Configurations {
   CONFResourceClass PC {
   }

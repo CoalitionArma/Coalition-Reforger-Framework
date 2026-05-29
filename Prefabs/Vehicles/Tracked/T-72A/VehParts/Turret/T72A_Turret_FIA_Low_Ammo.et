@@ -1,4 +1,4 @@
-Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret/T72_turret_base.et" {
+Turret {
  ID "51ACD0965653D003"
  components {
   MeshObject "{51ACD09C4E0B7D16}" {

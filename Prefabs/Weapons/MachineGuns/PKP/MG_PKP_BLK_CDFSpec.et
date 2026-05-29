@@ -1,4 +1,4 @@
-GenericEntity : "{1414EEC1849D2447}Prefabs/Weapons/MachineGuns/PKP/MG_PKP_base.et" {
+GenericEntity : "{1414EEC1849D2447}Prefabs/Weapons/MachineGuns/PKM/MG_PKP_base.et" {
  ID "CFBAA4B725411E45"
  components {
   SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E58201CF162E7961}Configs/Gearscripts/Standard/80s/CRF_GS_PAYDAY.conf"
+ Name "{E58201CF162E7961}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAYDAY.conf"
  Configurations {
   CONFResourceClass PC {
   }

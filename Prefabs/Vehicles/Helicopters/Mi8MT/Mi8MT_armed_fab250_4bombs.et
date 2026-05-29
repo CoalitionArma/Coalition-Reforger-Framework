@@ -34,43 +34,6 @@ Vehicle : "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et" 
    }
   }
   WCS_Armament_LoadoutComponent "{66254BEDACF23A48}" {
-   m_ArmamentGroups {
-    WCS_ArmamentWeaponGroup "{66254BEDACF23A49}" {
-     prefab "{1063832CCE78191D}Prefabs/Weapons/AircraftWeapons/BombPods/Pod_BDZ-UMK.et"
-     weaponsInfo {
-      WCS_ArmamentWeaponInfo "{66254BEDACF23A4F}" {
-       Position PointInfo "{66254BEDACF23A4D}" {
-        Offset -3.4276 1.2554 -0.5535
-        Angles 0 0 0
-       }
-      }
-      WCS_ArmamentWeaponInfo "{66254BEDACF23A52}" {
-       Position PointInfo "{66254BEDACF23A53}" {
-        Offset 3.4331 1.2554 -0.5535
-        Angles 0 0 0
-       }
-      }
-      WCS_ArmamentWeaponInfo "{66254BEDACF23A50}" {
-       Position PointInfo "{66254BEDACF23A51}" {
-        Offset -2.8664 1.2554 -0.5535
-        Angles 0 0 0
-       }
-      }
-      WCS_ArmamentWeaponInfo "{66254BEDACF23A56}" {
-       Position PointInfo "{66254BEDACF23A57}" {
-        Offset 2.8664 1.2554 -0.5535
-        Angles 0 0 0
-       }
-      }
-     }
-     fireModes {
-      WCS_Armament_WeaponSingleFireMode "{66254BEDACF23A2A}" {
-      }
-      WCS_Armament_WeaponSalvoFireMode "{66254BEDACF23A28}" {
-      }
-     }
-    }
-   }
    FireInputActionTrigger PRESSED
   }
   SlotManagerComponent "{55BCE45E438E4CFF}" {

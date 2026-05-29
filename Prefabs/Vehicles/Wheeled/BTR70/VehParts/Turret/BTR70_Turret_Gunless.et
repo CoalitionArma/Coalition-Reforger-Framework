@@ -20,13 +20,6 @@ Turret : "{66596659FB0F645B}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70
    }
   }
   WCS_Armament_LoadoutComponent "{68427479C8F97DC7}" {
-   m_ArmamentGroups {
-    WCS_ArmamentSlotGroup "{68427479C8F97DC8}" {
-    }
-    WCS_ArmamentSlotGroup "{68427479C8F97DC9}" {
-     slotIndex 1
-    }
-   }
    m_sPilotCompartmentUniqueName "gunner"
   }
   SlotManagerComponent "{68427479C8F97DE5}" {

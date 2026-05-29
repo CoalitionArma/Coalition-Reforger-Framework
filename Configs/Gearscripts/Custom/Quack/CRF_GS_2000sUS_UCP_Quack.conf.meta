@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{355352B3150DE912}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_UCP_Quack.conf"
+ Name "{355352B3150DE912}Configs/Gearscripts/Custom/Quack/CRF_GS_2000sUS_UCP_Quack.conf"
  Configurations {
   CONFResourceClass PC {
   }

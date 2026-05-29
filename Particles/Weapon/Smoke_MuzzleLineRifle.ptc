@@ -36,36 +36,49 @@ EffectDef {
    Lifetime 0.2
    LifetimeRND 0.1
    Color {
-    0 1 1 1 1 0.133 0.133 0.133
+    0 1 1 1
+    1 0.133 0.133 0.133
    }
    Alpha {
-    0 0 0.05 0.3 0.372 0.05 1 0
+    0 0
+    0.05 0.3
+    0.372 0.05
+    1 0
    }
    RotationSpeed {
-    0 1 1 1
+    0 1
+    1 1
    }
    Size {
-    0 0.296 1 1
+    0 0.296
+    1 1
    }
    EmittingTime 0.1
    Repeat 0
    ColorMast {
-    0 1 1 1 1 1 1 1
+    0 1 1 1
+    1 1 1 1
    }
    AlphaMast {
-    0 1 0.305 1 1 0
+    0 1
+    0.305 1
+    1 0
    }
    RotationSpeedMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    SizeMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    AirResistanceMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    VelocityMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    EnableLight 1
    MaxLV 2
@@ -73,7 +86,9 @@ EffectDef {
     0 1 0.69 0.381
    }
    LightIntensityMast {
-    0 1 0.389 0.548 1 0
+    0 1
+    0.389 0.548
+    1 0
    }
   }
   EmitterDef glowcore {
@@ -112,16 +127,19 @@ EffectDef {
    LifetimeRND 0
    LifetimeShortening 0
    Color {
-    0 1 1 1 1 1 1 1
+    0 1 1 1
+    1 1 1 1
    }
    Alpha {
-    0 0.2 1 0
+    0 0.2
+    1 0
    }
    RotationSpeed {
     0 1
    }
    Size {
-    0 1 1 1
+    0 1
+    1 1
    }
    EmittingTime 0.05
    Repeat 0
@@ -132,7 +150,8 @@ EffectDef {
     0 1
    }
    RotationSpeedMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    SizeMast {
     0 1
@@ -181,16 +200,21 @@ EffectDef {
    LifetimeRND 0
    LifetimeShortening 0
    Color {
-    0 1 1 1 1 0 0 0
+    0 1 1 1
+    1 0 0 0
    }
    Alpha {
-    0 0.3 0.5 0.3 1 0
+    0 0.3
+    0.5 0.3
+    1 0
    }
    RotationSpeed {
     0 1
    }
    Size {
-    0 0 0.013 0.179 1 0.513
+    0 0
+    0.013 0.179
+    1 0.513
    }
    EmittingTime 0.05
    Repeat 0
@@ -240,27 +264,37 @@ EffectDef {
    Lifetime 20
    LifetimeRND 4
    Color {
-    0 0.627 0.372 0.153 1 1 1 1
+    0 0.627 0.372 0.153
+    1 1 1 1
    }
    Alpha {
-    0 0 0.083 0.7 0.821 0.6 1 0
+    0 0
+    0.083 0.7
+    0.821 0.6
+    1 0
    }
    RotationSpeed {
-    0 1 1 1
+    0 1
+    1 1
    }
    Size {
-    0 0 0.684 1
+    0 0
+    0.684 1
    }
    EmittingTime 1
    Repeat 0
    AlphaMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    BRateMast {
-    0 1 0.121 1 1 1
+    0 1
+    0.121 1
+    1 1
    }
    VelocityMast {
-    0 1 1 1
+    0 1
+    1 1
    }
   }
   EmitterDef fire_cloud {
@@ -298,36 +332,49 @@ EffectDef {
    Lifetime 0.2
    LifetimeRND 0.1
    Color {
-    0 1 1 1 1 0.133 0.133 0.133
+    0 1 1 1
+    1 0.133 0.133 0.133
    }
    Alpha {
-    0 0 0.05 0.3 0.372 0.05 1 0
+    0 0
+    0.05 0.3
+    0.372 0.05
+    1 0
    }
    RotationSpeed {
-    0 1 1 1
+    0 1
+    1 1
    }
    Size {
-    0 0.296 1 1
+    0 0.296
+    1 1
    }
    EmittingTime 0.2
    Repeat 0
    ColorMast {
-    0 1 1 1 1 1 1 1
+    0 1 1 1
+    1 1 1 1
    }
    AlphaMast {
-    0 1 0.305 1 1 0
+    0 1
+    0.305 1
+    1 0
    }
    RotationSpeedMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    SizeMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    AirResistanceMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    VelocityMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    EnableLight 1
    MaxLV 1
@@ -336,7 +383,9 @@ EffectDef {
     0 1 0.518 0.14
    }
    LightIntensityMast {
-    0 1 0.389 0.548 1 0
+    0 1
+    0.389 0.548
+    1 0
    }
   }
   EmitterDef smoke_big_long {
@@ -369,27 +418,38 @@ EffectDef {
    Lifetime 22
    LifetimeRND 5
    Color {
-    0 1 1 1 1 1 1 1
+    0 1 1 1
+    1 1 1 1
    }
    Alpha {
-    0 0 0.083 0.7 0.821 0.6 1 0
+    0 0
+    0.083 0.7
+    0.821 0.6
+    1 0
    }
    RotationSpeed {
-    0 1 0.051 0.036 1 0
+    0 1
+    0.051 0.036
+    1 0
    }
    Size {
-    0 0 0.684 1
+    0 0
+    0.684 1
    }
    EmittingTime 1
    Repeat 0
    AlphaMast {
-    0 1 1 1
+    0 1
+    1 1
    }
    BRateMast {
-    0 1 0.121 1 1 1
+    0 1
+    0.121 1
+    1 1
    }
    VelocityMast {
-    0 1 1 1
+    0 1
+    1 1
    }
   }
  }
