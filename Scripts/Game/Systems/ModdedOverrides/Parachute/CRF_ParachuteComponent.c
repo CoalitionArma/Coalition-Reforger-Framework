@@ -1,3 +1,4 @@
+/*
 modded class ParachuteComponent
 {
 	override protected void EnableComponentControls()
@@ -64,3 +65,4 @@ modded class ParachuteComponent
 		return true;
 	}
 }
+*/

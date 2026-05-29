@@ -292,7 +292,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			case EVehicleType.APC : {return 1;}
 			case EVehicleType.CAR : {return 2;}
 			case EVehicleType.TRUCK : {return 3;}
-			case EVehicleType.TANK : {return 4;}
+			//case EVehicleType.TANK : {return 4;}
 			case EVehicleType.MORTAR : {return 5;}
 			default : {return 6;} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
 		}

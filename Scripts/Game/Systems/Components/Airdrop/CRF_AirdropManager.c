@@ -4,6 +4,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
+	/*
 	static CRF_AirdropManager m_sInstance;
 	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
@@ -347,10 +348,12 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		m_aFlightObjects.Insert(flight);
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
+	*/
 }
-
+/*
 class CRF_AirdropFlight
 {
+	
 	void CRF_AirdropFlight(IEntity plane, vector flightCoordinates[4], float speed, bool autoDeployParachute = true)
 	{
 		m_Plane = plane;
@@ -402,3 +405,4 @@ class CRF_AirdropObject
 	vector m_vFlightCoordinates[4];
 	bool m_bAutoDeployParachute;
 }
+*/
