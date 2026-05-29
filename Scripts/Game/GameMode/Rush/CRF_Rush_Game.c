@@ -556,6 +556,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		trigger.GetWorldTransform(spawnParams.Transform);
 		
 		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
+
+		if (m_MCOMPrefab.Length() == 0)
+			return;
 		
 		IEntity mcomEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_MCOMPrefab), GetGame().GetWorld(), spawnParams);
 		if (!mcomEntity)
