@@ -49,7 +49,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
   Hierarchy "{661442C166567309}" {
   }
  }
- coords 0.181 0 0
+ coords 0 0 0
  {
   GenericEntity : "{002A9FA2A8544E0C}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_antenna.et" {
    ID "661442D337CDB21E"
