@@ -31,7 +31,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Soviet forces have held Morton for far to long, It is time to push them out of the town."\
+   m_sTextData "Soviet forces have held Morton for far too long. It is time to push them out of the town"\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
    "BLUFOR Assets: 2x M1025 Armed"\
@@ -313,7 +313,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "697B09AED8D1E847" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
