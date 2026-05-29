@@ -54,45 +54,8 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
   Hierarchy "{661442C166567309}" {
   }
  }
- coords 0.181 0 0
+ coords 0 0 0
  {
-  GenericEntity : "{002A9FA2A8544E0C}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_antenna.et" {
-   ID "661442D337CDB21E"
-   components {
-    RplComponent "{5624A88DC2D9928D}" {
-     Enabled 1
-    }
-    Hierarchy "{661442CEF9AE1F00}" {
-    }
-   }
-   coords 0.666 -3.996 3.464
-   angles 0 174.654 0
-   scale 1.562
-   {
-    GenericEntity {
-     ID "5A02839492EF03DD"
-     components {
-      LightSourceVisualizationObject "{5A02839A0D5BE210}" {
-       Size 2.75
-       LV 4
-      }
-      Hierarchy "{661442CF8C24EF88}" {
-      }
-     }
-    }
-    GenericEntity {
-     ID "5A0283949CDE2B49"
-     components {
-      LightSourceVisualizationObject "{5A02839A0D5BE210}" {
-       Size 2.75
-       LV 4
-      }
-      Hierarchy "{661442CF8EA15E24}" {
-      }
-     }
-    }
-   }
-  }
   GenericEntity : "{2F2BBFDA3A2C73D4}Prefabs/Props/Civilian/RadioSmall_01_black.et" {
    ID "661442D805B352FA"
    components {
