@@ -3,6 +3,9 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_RaidGamemodeComponent "{697B478D023876D3}" {
+   m_bEnableMapMarkers 0
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -351,7 +354,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "697B478D3093B028" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {

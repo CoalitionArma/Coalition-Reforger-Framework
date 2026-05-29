@@ -96,71 +96,139 @@ $grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/Objectiv
 }
 $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
  {
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
   coords 3271.116 10.852 4256.357
   angles 0 -29.096 0
  }
  {
-  coords 3163.956 4.345 4758.408
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3163.62 4.345 4758.736
   angles 0 -29.096 0
  }
  {
-  coords 4021.935 62.118 4606.287
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 4022.45 62.118 4606.729
   angles 0 -29.096 0
  }
  {
-  coords 3859.726 1.838 5613.832
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3861.837 1.838 5613.82
   angles 0 -29.096 0
  }
  {
-  coords 3187.651 19.1 5427.225
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3187.416 19.1 5427.437
   angles 0 -29.096 0
  }
  {
-  coords 3030.288 4.167 5540.031
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3031.983 4.167 5540.164
   angles 0 -29.096 0
  }
  {
-  coords 3937.465 59.174 4555.487
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3939.65 59.174 4554.909
   angles 0 -29.096 0
  }
  {
-  coords 3557.601 10.911 5332.335
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3558.504 10.911 5332.765
   angles 0 -29.096 0
  }
  {
-  coords 3484.001 5.346 5085.62
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3484.631 5.346 5086.052
   angles 0 -29.096 0
  }
  {
-  coords 3217.026 3.836 4503.76
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3216.204 3.834 4502.841
   angles 0 -29.096 0
  }
  {
-  coords 3821.15 47.185 4538.197
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3820.892 47.182 4538.392
   angles 0 -29.096 0
  }
  {
-  coords 3318.354 5.724 5779.81
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3317.422 5.71 5778.581
   angles 0 -29.096 0
  }
  {
-  coords 3593.975 8.007 5294.884
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3594.197 8.007 5295.673
   angles 0 -29.096 0
  }
  {
-  coords 3552.959 24.393 4558.073
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3552.354 24.392 4557.252
+  angles 0 1.878 0
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3771.761 6.22 5144.711
   angles 0 -29.096 0
  }
  {
-  coords 3772.606 6.22 5145.522
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3594.074 27.297 4443.176
   angles 0 -29.096 0
  }
  {
-  coords 3593.889 27.297 4442.698
-  angles 0 -29.096 0
- }
- {
-  coords 3194.667 16.41 5406.627
+  components {
+   CRF_RaidItemComponent "{697B478D09754983}" {
+   }
+  }
+  coords 3194.731 16.41 5403.979
   angles 0 -29.096 0
  }
 }

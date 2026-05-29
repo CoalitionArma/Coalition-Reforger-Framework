@@ -13,13 +13,16 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
  
 	[Attribute("OPFOR", UIWidgets.EditBox, "Faction key of the defending side.")]
 	string m_sDefendingSide;
- 
+
+	[Attribute("1", UIWidgets.CheckBox, "Enable/disable map markers for raid targets.")]
+	bool m_bEnableMapMarkers;
+
 	// ----------------------------------------------------------------- state
 	protected static CRF_RaidGamemodeComponent m_sInstance;
- 
+
 	// Registered items — populated during EOnInit across all RaidItemComponents
 	protected ref array<CRF_RaidItemComponent> m_aRegisteredItems = {};
- 
+
 	// Supply totals — m_iTotalSupply is finalized on the first destruction event
 	protected int  m_iTotalSupply		= 0;
 	protected int  m_iDestroyedSupply	= 0;
@@ -49,6 +52,13 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	static CRF_RaidGamemodeComponent GetInstance()
 	{
 		return m_sInstance;
+	}
+
+	static bool GetEnableMapMarkers()
+	{
+		if (!m_sInstance)
+			return true; // Default to true if instance not available
+		return m_sInstance.m_bEnableMapMarkers;
 	}
  
 	// --------------------------------------------------------------- init
