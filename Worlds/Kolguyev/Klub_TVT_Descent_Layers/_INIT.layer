@@ -58,6 +58,45 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "USSR forces seek to drive out FIA from the western peninsula of Kolguyev."\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: MMG"\
+   ""\
+   "INDFOR Composition: Infantry"\
+   "INDFOR Assets: MMG"\
+   ""\
+   "Time: Noon"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Destroy the MCOMs; expect contact early and consistently."\
+   ""\
+   "You have an LOA marked for each phase, please adhere to it to the best of your ability."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Defend the MCOMs; expect contact early and consistently."\
+   ""\
+   "You have an LOA marked for each phase, please adhere to it to the best of your ability."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 3
  m_iFactionTwoRatio 2
  m_sFactionOneKey "OPF"
