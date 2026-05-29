@@ -556,9 +556,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		trigger.GetWorldTransform(spawnParams.Transform);
 		
 		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
-
-		if (m_MCOMPrefab.Length() == 0)
-			return;
 		
 		IEntity mcomEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_MCOMPrefab), GetGame().GetWorld(), spawnParams);
 		if (!mcomEntity)
@@ -2584,7 +2581,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	//===================================================================================
-	// SOUND MANAGEMENT - Using MCOM 3D SoundComponent with Client Replication
+	// SOUND MANAGEMENT - Using AudioSystem.PlayEvent() with Client Replication
 	//===================================================================================
 	
 	/**
@@ -2592,7 +2589,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void StartBombTickingSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2608,24 +2604,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Get the SoundComponent from the MCOM entity (server-side only)
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (soundComponent)
-		{
-			// Stop any existing bomb sound first
-			StopBombTickingSound();
-			
-			// Play the RUSH_BEEP event on server
-			m_CurrentBombSoundHandle = soundComponent.SoundEvent("RUSH_BEEP");
-			m_bBombSoundPlaying = true;
-		}
+		// Stop any existing bomb sound first
+		StopBombTickingSound();
+		m_bBombSoundPlaying = true;
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("RUSH_BEEP", mcomPosition);
+			broadcastManager.PlayRushMCOMSound("{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp", "RUSH_BEEP", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2638,7 +2626,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void StopBombTickingSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2651,22 +2638,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 			if (mcomEntity)
 			{
-				// Get the SoundComponent from the MCOM entity (server-side only)
-				SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-				if (soundComponent)
-				{
-					// Terminate the bomb sound on server
-					if (soundComponent.IsHandleValid(m_CurrentBombSoundHandle))
-					{
-						soundComponent.Terminate(m_CurrentBombSoundHandle);
-					}
-					else
-					{
-						// Try to terminate all sounds as fallback
-						soundComponent.TerminateAll();
-					}
-				}
-				
 				// Replicate the sound stop to all clients
 				vector mcomPosition = mcomEntity.GetOrigin();
 				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
@@ -2691,7 +2662,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void PlayPlantingSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2702,17 +2672,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Get the SoundComponent from the MCOM entity (server-side only)
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (soundComponent)
-		{
-			// Stop any existing planting sound first
-			StopPlantingSound();
-			
-			// Play the RUSH_PLANTING event on server
-			m_CurrentPlantingSoundHandle = soundComponent.SoundEvent("RUSH_PLANTING");
-			m_bPlantingSoundPlaying = true;
-		}
+		// Stop any existing planting sound first
+		StopPlantingSound();
+		m_bPlantingSoundPlaying = true;
 		
 		// Store which MCOM is playing the planting sound
 		m_sPlantingMCOM = GetMCOMIdentifierFromEntity(mcomEntity);
@@ -2722,7 +2684,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("RUSH_PLANTING", mcomPosition);
+			broadcastManager.PlayRushMCOMSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2735,7 +2697,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void StopPlantingSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2748,22 +2709,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			IEntity mcomEntity = GetMCOMEntity(m_sPlantingMCOM);
 			if (mcomEntity)
 			{
-				// Get the SoundComponent from the MCOM entity (server-side only)
-				SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-				if (soundComponent)
-				{
-					// Terminate the planting sound on server
-					if (soundComponent.IsHandleValid(m_CurrentPlantingSoundHandle))
-					{
-						soundComponent.Terminate(m_CurrentPlantingSoundHandle);
-					}
-					else
-					{
-						// Try to stop all RUSH_PLANTING sounds as fallback
-						soundComponent.TerminateAll();
-					}
-				}
-				
 				// Replicate the sound stop to all clients
 				vector mcomPosition = mcomEntity.GetOrigin();
 				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
@@ -2864,12 +2809,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	
 	/**
 	 * Client-side planting sound stopping
-	 * NOTE: This method is now redundant since we use server-side SoundComponent + RPC replication
+	 * NOTE: This method is now redundant since we use server-side AudioSystem + RPC replication
 	 */
 	protected void StopPlantingSoundClient()
 	{
 		// Client-side sound handling is now managed by RPC replication from server
-		// The server manages sounds using SoundComponent and replicates to clients
+		// The server manages sounds using AudioSystem.PlayEvent() and replicates to clients
 	}
 	
 	/**
@@ -2877,7 +2822,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void PlayDefuseSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2889,24 +2833,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!mcomEntity)
 			return;
 		
-		// Get the SoundComponent from the MCOM entity (server-side only)
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (soundComponent)
-		{
-			// Stop any existing defuse sound first
-			StopDefuseSound();
-			
-			// Play the RUSH_PLANTING event for defuse (reusing planting sound for defuse action)
-			m_CurrentDefuseSoundHandle = soundComponent.SoundEvent("RUSH_PLANTING");
-			m_bDefuseSoundPlaying = true;
-		}
+		// Stop any existing defuse sound first
+		StopDefuseSound();
+		m_bDefuseSoundPlaying = true;
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("RUSH_PLANTING", mcomPosition);
+			broadcastManager.PlayRushMCOMSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2922,7 +2858,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void StopDefuseSound()
 	{
-		// Only execute on server (SoundComponent exists only on server)
 		if (!Replication.IsServer())
 			return;
 		
@@ -2933,17 +2868,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 		if (!mcomEntity)
 			return;
-		
-		// Get the SoundComponent from the MCOM entity (server-side only)
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (soundComponent)
-		{
-			// Terminate the defuse sound on server
-			if (soundComponent.IsHandleValid(m_CurrentDefuseSoundHandle))
-			{
-				soundComponent.Terminate(m_CurrentDefuseSoundHandle);
-			}
-		}
 		
 		// Replicate the sound stop to all clients
 		vector mcomPosition = mcomEntity.GetOrigin();
@@ -2963,12 +2887,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	
 	/**
 	 * Client-side defuse sound playback
-	 * NOTE: This method is now redundant since we use server-side SoundComponent + RPC replication
+	 * NOTE: This method is now redundant since we use server-side AudioSystem + RPC replication
 	 */
 	protected void PlayDefuseSoundClient()
 	{
 		// Client-side sound handling is now managed by RPC replication from server
-		// The server plays sounds using SoundComponent.SoundEvent() and replicates to clients
+		// The server plays sounds using AudioSystem.PlayEvent() and replicates to clients
 	}
 	
 	/**
@@ -2987,12 +2911,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	
 	/**
 	 * Client-side bomb sound playing (RPC handler)
-	 * NOTE: This method is now redundant since we use server-side SoundComponent + RPC replication
+	 * NOTE: This method is now redundant since we use server-side AudioSystem + RPC replication
 	 */
 	protected void PlayBombSoundClient()
 	{
 		// Client-side sound handling is now managed by RPC replication from server
-		// The server plays sounds using SoundComponent.SoundEvent() and replicates to clients
+		// The server plays sounds using AudioSystem.PlayEvent() and replicates to clients
 		m_bBombSoundPlaying = true;
 	}
 			

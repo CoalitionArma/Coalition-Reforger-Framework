@@ -40,6 +40,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
 
+	// Client-side audio handles for Rush MCOM sounds (set in RpcDo handlers, terminated on stop)
+	protected AudioHandle m_RushBombSoundHandle;
+	protected AudioHandle m_RushPlantingSoundHandle;
+
 	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
 	string m_sOutroWinningFaction = "";
 	
@@ -635,17 +639,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void PlayRushMCOMSound(string soundEvent, vector position)
+	void PlayRushMCOMSound(string resource, string soundEvent, vector position)
 	{
-		// Telemetry: string + vector
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
+		// Telemetry: resource string + event string + vector
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(resource);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
 		LogTelemetry("PlayRushMCOMSound", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_PlayRushMCOMSound(soundEvent, position);
+		RpcDo_PlayRushMCOMSound(resource, soundEvent, position);
 		#else
-		Rpc(RpcDo_PlayRushMCOMSound, soundEvent, position);
+		Rpc(RpcDo_PlayRushMCOMSound, resource, soundEvent, position);
 		#endif
 	}
 	
@@ -1655,56 +1660,42 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PlayRushMCOMSound(string soundEvent, vector position)
+	void RpcDo_PlayRushMCOMSound(string resource, string soundEvent, vector position)
 	{
-		Print("[CRF_RplBroadcastManager] RpcDo_PlayRushMCOMSound received on client: " + soundEvent + " at " + position);
+		// Build a world transform from the position with identity rotation
+		vector mat[4];
+		mat[0] = Vector(1, 0, 0);
+		mat[1] = Vector(0, 1, 0);
+		mat[2] = Vector(0, 0, 1);
+		mat[3] = position;
 		
-		// Find the MCOM entity at the specified position
-		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
-		if (!mcomEntity)
+		// Stop any previous instance of this event, then play
+		if (soundEvent == "RUSH_BEEP")
 		{
-			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
-			return;
+			AudioSystem.TerminateSound(m_RushBombSoundHandle);
+			m_RushBombSoundHandle = AudioSystem.PlayEvent(resource, soundEvent, mat);
 		}
-		
-		Print("[CRF_RplBroadcastManager] Found MCOM entity for sound playback");
-		
-		// Get the SoundComponent from the MCOM entity
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (!soundComponent)
+		else
 		{
-			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
-			return;
+			AudioSystem.TerminateSound(m_RushPlantingSoundHandle);
+			m_RushPlantingSoundHandle = AudioSystem.PlayEvent(resource, soundEvent, mat);
 		}
-		
-		// Play the sound event using the SoundComponent
-		AudioHandle soundHandle = soundComponent.SoundEvent(soundEvent);
-		Print("[CRF_RplBroadcastManager] Playing 3D sound: " + soundEvent + " at position: " + position.ToString());
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_StopRushMCOMSound(string soundEvent, vector position)
 	{
-		// Find the MCOM entity at the specified position
-		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
-		if (!mcomEntity)
+		if (soundEvent == "RUSH_BEEP")
 		{
-			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
-			return;
+			AudioSystem.TerminateSound(m_RushBombSoundHandle);
+			m_RushBombSoundHandle = AudioHandle.Invalid;
 		}
-		
-		// Get the SoundComponent from the MCOM entity
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (!soundComponent)
+		else if (soundEvent == "RUSH_PLANTING")
 		{
-			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
-			return;
+			AudioSystem.TerminateSound(m_RushPlantingSoundHandle);
+			m_RushPlantingSoundHandle = AudioHandle.Invalid;
 		}
-		
-		// Terminate all sounds on this component (as we can't target specific events)
-		soundComponent.TerminateAll();
-		Print("[CRF_RplBroadcastManager] Stopped all sounds on MCOM at position: " + position.ToString());
 	}
 	
 	//------------------------------------------------------------------------------------------------
