@@ -1,0 +1,20 @@
+$grp GameEntity {
+ Zone2_OPFOR_Spawn {
+  coords 3665.012 212.023 7278.185
+ }
+ Zone3_OPFOR_Spawn {
+  coords 3190.245 177.962 7434.08
+ }
+ Zone2_INDFOR_Spawn {
+  coords 2749.198 116.161 7536.674
+ }
+ Zone3_INDFOR_Spawn {
+  coords 2330.732 23.191 7777.018
+ }
+}
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 4515.549 152.697 7516.555
+}
+CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ coords 1649.177 110.688 7392.871
+}

@@ -1,0 +1,172 @@
+$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ {
+  coords 3305.691 0 8101.61
+  angles 0 0 0
+  m_sQuadName "dot"
+  m_sDescription "Phase 1 LOA"
+  {
+   $grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+    {
+     coords 10.533 0 -141.166
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 22.293 5.322 -329.559
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 34.471 90.339 -464.551
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 38.908 173.996 -587.719
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 24.184 228.951 -716.658
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords -1.706 248.018 -842.829
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords -60.643 256.797 -1012.335
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+   }
+  }
+ }
+ {
+  coords 2840.729 51.809 7744.039
+  angles 0 0 0
+  m_sQuadName "dot"
+  m_sDescription "Phase 2 LOA"
+  {
+   $grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+    {
+     coords 2.101 64.263 -164.324
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords 8.51 65.445 -300.68
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords -11.309 114.2 -436.25
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords -0.35 134.221 -572.053
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords -4.771 147.478 -642.7
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords 37.888 -51.809 160.781
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+    {
+     coords 32.629 -51.175 370.498
+     angles 0 0 0
+     m_sQuadName "dot"
+     m_sDescription "Phase 2 LOA"
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 3118.35 255.268 7103.877
+  m_sQuadName "dot"
+  m_sDescription "Phase 1 LOA"
+  {
+   $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    {
+     coords 4.737 -27.796 191.571
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 18.831 -88.165 427.134
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 83.337 -252.393 744.755
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 79.037 -255.268 998.767
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+   }
+  }
+ }
+ {
+  coords 2736.776 199.068 7110.514
+  angles 0 -4.243 0
+  m_sQuadName "dot"
+  m_sDescription "Phase 2 LOA"
+  {
+   $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    {
+     coords 6.36 -199.068 1007.288
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords -7.094 -32.384 96.934
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords -27.317 -66.354 257.789
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords -30.445 -79.607 502.112
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+    {
+     coords 9.579 -196.193 744.755
+     m_sQuadName "dot"
+     m_sDescription "Phase 1 LOA"
+    }
+   }
+  }
+ }
+}
