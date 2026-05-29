@@ -24,13 +24,21 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
  }
  {
-  coords 3737.514 113.928 4991.656
+  coords 3739.416 114.02 4990.999
   angles 0 109.034 0
-  m_rVehicle "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_bShouldAddAmmo 0
  }
  {
-  coords 3745.803 114.322 4988.795
+  coords 3751.969 114.613 4986.668
   angles 0 109.034 0
-  m_rVehicle "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3764.918 115.074 4982.201
+  angles 0 109.034 0
+  m_rVehicle "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et"
+  m_bShouldAddAmmo 0
  }
 }
