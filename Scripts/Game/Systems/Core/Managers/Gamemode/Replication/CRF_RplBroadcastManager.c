@@ -40,9 +40,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
 
-	// Client-side audio handles for Rush MCOM sounds (set in RpcDo handlers, terminated on stop)
-	protected AudioHandle m_RushBombSoundHandle;
-	protected AudioHandle m_RushPlantingSoundHandle;
+	// Client-side audio handles for Rush MCOM sounds, keyed by sound event name
+	protected ref map<string, AudioHandle> m_mRushSoundHandles = new map<string, AudioHandle>();
 
 	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
 	string m_sOutroWinningFaction = "";
@@ -1670,31 +1669,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 		mat[3] = position;
 		
 		// Stop any previous instance of this event, then play
-		if (soundEvent == "RUSH_BEEP")
-		{
-			AudioSystem.TerminateSound(m_RushBombSoundHandle);
-			m_RushBombSoundHandle = AudioSystem.PlayEvent(resource, soundEvent, mat);
-		}
-		else
-		{
-			AudioSystem.TerminateSound(m_RushPlantingSoundHandle);
-			m_RushPlantingSoundHandle = AudioSystem.PlayEvent(resource, soundEvent, mat);
-		}
+		if (m_mRushSoundHandles.Contains(soundEvent))
+			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
+		m_mRushSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, mat));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_StopRushMCOMSound(string soundEvent, vector position)
 	{
-		if (soundEvent == "RUSH_BEEP")
+		if (m_mRushSoundHandles.Contains(soundEvent))
 		{
-			AudioSystem.TerminateSound(m_RushBombSoundHandle);
-			m_RushBombSoundHandle = AudioHandle.Invalid;
-		}
-		else if (soundEvent == "RUSH_PLANTING")
-		{
-			AudioSystem.TerminateSound(m_RushPlantingSoundHandle);
-			m_RushPlantingSoundHandle = AudioHandle.Invalid;
+			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
+			m_mRushSoundHandles.Set(soundEvent, AudioHandle.Invalid);
 		}
 	}
 	
