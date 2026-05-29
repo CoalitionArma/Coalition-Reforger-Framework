@@ -1,0 +1,57 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 3421.376 7.125 3595.492
+  angles 0 53.966 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{697AEB80762B5F80}" {
+    m_Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+    m_iAmountOfItemSupplyTruck 10
+    m_iAmountOfItemRegularVehicle 10
+   }
+  }
+ }
+ {
+  coords 3375.829 1.231 5225.059
+  angles 0 144.568 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3373.445 1.296 5223.363
+  angles 0 144.568 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3370.924 1.349 5221.569
+  angles 0 144.568 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3368.53 1.346 5219.865
+  angles 0 144.568 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3365.831 1.281 5217.945
+  angles 0 144.568 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  m_sFactionKey "INDFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3411.888 7.125 3588.59
+  angles 0 53.966 0
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+}
