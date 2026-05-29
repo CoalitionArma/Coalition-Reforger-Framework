@@ -1662,16 +1662,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_PlayRushMCOMSound(string resource, string soundEvent, vector position)
 	{
 		// Build a world transform from the position with identity rotation
-		vector mat[4];
-		mat[0] = Vector(1, 0, 0);
-		mat[1] = Vector(0, 1, 0);
-		mat[2] = Vector(0, 0, 1);
-		mat[3] = position;
+		vector mcomTransform[4];
+		mcomTransform[0] = Vector(1, 0, 0);
+		mcomTransform[1] = Vector(0, 1, 0);
+		mcomTransform[2] = Vector(0, 0, 1);
+		mcomTransform[3] = position; /// AudioSystem.PlayEvent requires a transform, construct it with with position
 		
 		// Stop any previous instance of this event, then play
 		if (m_mRushSoundHandles.Contains(soundEvent))
 			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
-		m_mRushSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, mat));
+		m_mRushSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, mcomTransform));
 	}
 	
 	//------------------------------------------------------------------------------------------------
