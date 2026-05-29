@@ -1,11 +1,6 @@
 GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
  ID "F0DBA538AC2A0552"
  components {
-  StaticSoundComponent "{5A5B46895D7FF37F}" {
-   Filenames {
-    "{03DDBF4ACA39FDF2}Sounds/Structures/Military/Radar/Structures_ApproachRadar_Generator.acp" "{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp" "{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp"
-   }
-  }
   CRF_Rush_3DMarkerComponent "{613048A3A6DEB8A1}" {
    m_sMarkerLetter "A"
    m_MarkerColor 1 0 0 1
