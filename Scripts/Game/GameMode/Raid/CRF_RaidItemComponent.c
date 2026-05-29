@@ -54,8 +54,9 @@ class CRF_RaidItemComponent: ScriptComponent
 		m_DamageManager.GetOnDamageStateChanged().Insert(OnDamageStateChanged);
  
 		// Place a map marker so attackers can see the target
+		// (only if enabled in the gamemode component)
 		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
-		if (markerMan)
+		if (markerMan && CRF_RaidGamemodeComponent.GetEnableMapMarkers())
 		{
 			vector origin = owner.GetOrigin();
 			m_Marker = new SCR_MapMarkerBase();
