@@ -251,9 +251,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			case CRF_EGamemodeState.GAME:
 			{
 				LogMissionEvent("safestart");
-				// Only log ORBAT at game start, not during slotting, as slots may still be changing
-				if (m_sGameMode != "SPCL" && m_sGameMode != "SPC" && m_sGameMode != "SPECIAL")
-					LogORBAT();
 				break;
 			}
 			case CRF_EGamemodeState.AAR:
@@ -316,12 +313,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		
 		UpdatePlayerCount();
-		LogMissionEvent("started"); // global log
 		
-		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
-			return;
-
-		Attendance(); // Attendance log and ORBAT logging
+		if (m_sGameMode != "SPCL" && m_sGameMode != "SPC" && m_sGameMode != "SPECIAL")
+		{
+			// ORBAT and attendance must be written BEFORE the "started" event line.
+			// The Coalition Bot reads orbat_* lines into its buffer and then consumes
+			// that buffer when it sees "mission,started". If "started" fires first,
+			// the buffer is empty and no ORBAT is saved to the database.
+			LogORBAT();
+			Attendance();
+		}
+		
+		LogMissionEvent("started"); // global log — always last so bot reads ORBAT into buffer first
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -439,7 +442,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			m_LogFileHandle.WriteLine("attendance," + SCR_PlayerIdentityUtils.GetPlayerIdentityId(player));
 		}
 		
-		// ORBAT is now logged separately via OnGamemodeStateChanged when entering GAME state
+		// ORBAT is logged separately in GameStarted() after safestart ends
 	}
 	
 	//------------------------------------------------------------------------------------------------
