@@ -587,6 +587,19 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
+	// Receives the kill event directly from the gamemode component lifecycle — no data collector needed.
+	override protected void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+
+		LogPlayerKill(instigatorContextData);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Logs player death and kill data to file
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)

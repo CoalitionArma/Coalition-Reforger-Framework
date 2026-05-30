@@ -245,6 +245,21 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 		CRF_AARSessionStats.SetData(kills, killedBy);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	// Sends this player's numeric session stats to their client for the AAR panel.
+	// Called from CRF_ServerStatsManager.OnGameModeEnd staggered send queue.
+	void SendAARStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
+	{
+		Rpc(RpcDo_SendAARStats, kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_SendAARStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
+	{
+		CRF_AARSessionStats.SetStats(kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================

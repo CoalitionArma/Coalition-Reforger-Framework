@@ -1,12 +1,28 @@
 //------------------------------------------------------------------------------------------------
-// Static store for per-player kill/death name lists received from the server at AAR time.
-// Populated by CRF_PlayerRplToOwnerManager.RpcDo_SendAARKillStats() on the owning client.
+// Static store for per-player kill/death name lists and numeric session stats received from
+// the server at AAR time.
+// Populated by CRF_PlayerRplToOwnerManager RPCs on the owning client.
 // Cleared/replaced each time a new AAR begins.
 //------------------------------------------------------------------------------------------------
 class CRF_AARSessionStats
 {
+	// Kill / death name lists (filled by RpcDo_SendAARKillStats)
 	static ref array<string> s_aPlayerKills = {};
 	static string s_sKilledBy = "";
+
+	// Numeric session stats (filled by RpcDo_SendAARStats)
+	static int s_nKills;
+	static int s_nDeaths;
+	static int s_nShots;
+	static int s_nGrenades;
+	static int s_nBandages;
+	static int s_nDistKm;
+	static int s_nFriendlyKills;
+	static int s_nXP;
+
+	// Set to true once RpcDo_SendAARStats fires; used by the HUD to detect late arrival.
+	static bool s_bStatsReceived = false;
+	static ref ScriptInvoker s_OnStatsReceived = new ScriptInvoker();
 
 	//------------------------------------------------------------------------------------------------
 	static void SetData(array<string> kills, string killedBy)
@@ -16,17 +32,48 @@ class CRF_AARSessionStats
 			s_aPlayerKills.InsertAll(kills);
 		s_sKilledBy = killedBy;
 	}
+
+	//------------------------------------------------------------------------------------------------
+	static void SetStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
+	{
+		s_nKills        = kills;
+		s_nDeaths       = deaths;
+		s_nShots        = shots;
+		s_nGrenades     = grenades;
+		s_nBandages     = bandages;
+		s_nDistKm       = distKm;
+		s_nFriendlyKills = friendlyKills;
+		s_nXP           = xp;
+		s_bStatsReceived = true;
+		s_OnStatsReceived.Invoke();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Reset between missions so stale data never bleeds into the next AAR.
+	static void Reset()
+	{
+		s_aPlayerKills.Clear();
+		s_sKilledBy      = "";
+		s_nKills         = 0;
+		s_nDeaths        = 0;
+		s_nShots         = 0;
+		s_nGrenades      = 0;
+		s_nBandages      = 0;
+		s_nDistKm        = 0;
+		s_nFriendlyKills = 0;
+		s_nXP            = 0;
+		s_bStatsReceived = false;
+	}
 }
 
 //------------------------------------------------------------------------------------------------
 // Handles widget population for the CRF_AARStats overlay panel.
 // Instantiated by CRF_Outro after CreateLayout() succeeds.
-// Reads session stat deltas from SCR_PlayerData (sent server->client via SendData RPC).
-// Reads player kill/death name lists from CRF_AARSessionStats (sent via RpcDo_SendAARKillStats).
+// Reads session stats from CRF_AARSessionStats static fields populated by
+// CRF_PlayerRplToOwnerManager RPC calls (SendAARStats / SendAARKillStats).
 //
-// If SCR_PlayerData is not yet available when TryPopulate() is called (unlikely given the
-// 5-second delay, but handled gracefully), the handler subscribes to m_OnDataReceived and
-// populates once data arrives.
+// If stats have not yet arrived when TryPopulate() is called the handler
+// subscribes to s_OnStatsReceived and populates once the data arrives.
 //------------------------------------------------------------------------------------------------
 class CRF_AARStatsHUD
 {
@@ -40,8 +87,6 @@ class CRF_AARStatsHUD
 	protected TextWidget     m_wKilledByValue;
 	protected TextWidget     m_wFriendlyKillsValue;
 	protected TextWidget     m_wXPValue;
-
-	protected SCR_DataCollectorCommunicationComponent m_pCommComp;
 
 	//------------------------------------------------------------------------------------------------
 	void CRF_AARStatsHUD(notnull Widget root)
@@ -61,82 +106,44 @@ class CRF_AARStatsHUD
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// Call this when the owning widget is being destroyed to unsubscribe from any pending callbacks.
 	void Cleanup()
 	{
-		if (m_pCommComp)
-		{
-			m_pCommComp.GetOnDataReceived().Remove(OnDataReceived);
-			m_pCommComp = null;
-		}
+		CRF_AARSessionStats.s_OnStatsReceived.Remove(OnStatsReceived);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void TryPopulate()
 	{
-		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-		if (!dataCollector)
-			return;
-
-		// id=0 = local player on client; createNew=false returns null until Rpc_DoSendData fires
-		SCR_PlayerData playerData = dataCollector.GetPlayerData(0, false, false);
-		if (!playerData)
+		if (!CRF_AARSessionStats.s_bStatsReceived)
 		{
-			PlayerController pc = GetGame().GetPlayerController();
-			if (!pc)
-				return;
-
-			m_pCommComp = SCR_DataCollectorCommunicationComponent.Cast(pc.FindComponent(SCR_DataCollectorCommunicationComponent));
-			if (m_pCommComp)
-				m_pCommComp.GetOnDataReceived().Insert(OnDataReceived);
+			// Stats haven't arrived yet — subscribe and wait.
+			CRF_AARSessionStats.s_OnStatsReceived.Insert(OnStatsReceived);
 			return;
 		}
 
-		PopulateStats(playerData);
+		PopulateStats();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void OnDataReceived(SCR_PlayerData playerData)
+	protected void OnStatsReceived()
 	{
-		if (m_pCommComp)
-		{
-			m_pCommComp.GetOnDataReceived().Remove(OnDataReceived);
-			m_pCommComp = null;
-		}
-
-		PopulateStats(playerData);
+		CRF_AARSessionStats.s_OnStatsReceived.Remove(OnStatsReceived);
+		PopulateStats();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void PopulateStats(notnull SCR_PlayerData playerData)
+	protected void PopulateStats()
 	{
-		// Session deltas: current total minus value at session start
-		int nKills    = (int)(playerData.GetStat(SCR_EDataStats.KILLS)   - playerData.GetStat(SCR_EDataStats.KILLS, false));
-		int nDeaths   = (int)(playerData.GetStat(SCR_EDataStats.DEATHS)  - playerData.GetStat(SCR_EDataStats.DEATHS, false));
-		int nShots    = (int)(playerData.GetStat(SCR_EDataStats.SHOTS)   - playerData.GetStat(SCR_EDataStats.SHOTS, false));
-		int nGrenades = (int)(playerData.GetStat(SCR_EDataStats.GRENADES_THROWN) - playerData.GetStat(SCR_EDataStats.GRENADES_THROWN, false));
+		if (m_wKillsValue)         m_wKillsValue.SetText(CRF_AARSessionStats.s_nKills.ToString());
+		if (m_wDeathsValue)        m_wDeathsValue.SetText(CRF_AARSessionStats.s_nDeaths.ToString());
+		if (m_wShotsValue)         m_wShotsValue.SetText(CRF_AARSessionStats.s_nShots.ToString());
+		if (m_wGrenadesValue)      m_wGrenadesValue.SetText(CRF_AARSessionStats.s_nGrenades.ToString());
+		if (m_wBandagesValue)      m_wBandagesValue.SetText(CRF_AARSessionStats.s_nBandages.ToString());
+		if (m_wDistanceValue)      m_wDistanceValue.SetText(string.Format("%1 km", CRF_AARSessionStats.s_nDistKm.ToString()));
+		if (m_wFriendlyKillsValue) m_wFriendlyKillsValue.SetText(CRF_AARSessionStats.s_nFriendlyKills.ToString());
+		if (m_wXPValue)            m_wXPValue.SetText(CRF_AARSessionStats.s_nXP.ToString());
 
-		float fBandageSelf   = playerData.GetStat(SCR_EDataStats.BANDAGE_SELF)        - playerData.GetStat(SCR_EDataStats.BANDAGE_SELF, false);
-		float fBandageFriend = playerData.GetStat(SCR_EDataStats.BANDAGE_FRIENDLIES) - playerData.GetStat(SCR_EDataStats.BANDAGE_FRIENDLIES, false);
-		int nBandages = (int)(fBandageSelf + fBandageFriend);
-
-		float fDistWalked = playerData.GetStat(SCR_EDataStats.DISTANCE_WALKED) - playerData.GetStat(SCR_EDataStats.DISTANCE_WALKED, false);
-		float fDistDriven = playerData.GetStat(SCR_EDataStats.DISTANCE_DRIVEN) - playerData.GetStat(SCR_EDataStats.DISTANCE_DRIVEN, false);
-		int nDistKm = (int)((fDistWalked + fDistDriven) / 1000);
-
-		int nFriendlyKills = (int)(playerData.GetStat(SCR_EDataStats.FRIENDLY_KILLS) - playerData.GetStat(SCR_EDataStats.FRIENDLY_KILLS, false));
-		int nXP            = (int)(playerData.GetStat(SCR_EDataStats.LEVEL_EXPERIENCE) - playerData.GetStat(SCR_EDataStats.LEVEL_EXPERIENCE, false));
-
-		if (m_wKillsValue)         m_wKillsValue.SetText(nKills.ToString());
-		if (m_wDeathsValue)        m_wDeathsValue.SetText(nDeaths.ToString());
-		if (m_wShotsValue)         m_wShotsValue.SetText(nShots.ToString());
-		if (m_wGrenadesValue)      m_wGrenadesValue.SetText(nGrenades.ToString());
-		if (m_wBandagesValue)      m_wBandagesValue.SetText(nBandages.ToString());
-		if (m_wDistanceValue)      m_wDistanceValue.SetText(string.Format("%1 km", nDistKm.ToString()));
-		if (m_wFriendlyKillsValue) m_wFriendlyKillsValue.SetText(nFriendlyKills.ToString());
-		if (m_wXPValue)            m_wXPValue.SetText(nXP.ToString());
-
-		// Players this player killed (named list from custom server tracking)
+		// Players this player killed (named list)
 		if (m_wKilledValue)
 		{
 			array<string> killNames = CRF_AARSessionStats.s_aPlayerKills;
@@ -168,3 +175,4 @@ class CRF_AARStatsHUD
 		}
 	}
 }
+

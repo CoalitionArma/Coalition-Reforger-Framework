@@ -172,9 +172,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	bool m_bIsInEndCredits = false;
 	
-	// Late data callbacks — cleaned up after AAR processing
-	protected ref array<SCR_DataCollectorCommunicationComponent> m_aPendingDataComponents = {};
-	
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
 	protected ref array<int> m_aPendingPlayerInitializations = {};
@@ -321,27 +318,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 				case CRF_EGamemodeState.AAR: {
 					SetGameState(SCR_EGameModeState.POSTGAME);
 
-					SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-					array<int> players = {};
-					GetGame().GetPlayerManager().GetAllPlayers(players);
-					foreach (int player : players)
-					{
-						// Skip disconnected players
-						if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
-							continue;
-	
-						// Process player statistics data
-						ProcessStats(dataCollector, player);
-					}
-
-					// Clean up any pending late-data callbacks
-					foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
-					{
-						if (pendingComp)
-							pendingComp.GetOnDataReceived().Remove(OnDataReceived);
-					}
-					m_aPendingDataComponents.Clear();
-
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 					if (rplBroadcastManager)
@@ -362,48 +338,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			playerMenuManager.OpenCurrentStateMenu();
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
-	{
-		//PrintFormat("[CRF] Logging Stats for player %1", GetGame().GetPlayerManager().GetPlayerName(player));
-		if (!dataCollector)
-		{
-			Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-			return;
-		}
-
-		SCR_PlayerData playerData = dataCollector.GetPlayerData(player, false);
-
-		// If player data isn't available yet, register for notification when it arrives
-		if (!playerData)
-		{
-			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-				GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-			);
-			
-			if (communicationComponent)
-			{
-				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-				m_aPendingDataComponents.Insert(communicationComponent);
-			}
-		}
-		else
-		{
-			playerData.CalculateStatsChange();
-		}
-	}
-	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 PLAYER MANAGEMENT
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	//! Handle player data received from network
-	//! \param[in] playerData Player statistics and progress data
-	protected void OnDataReceived(SCR_PlayerData playerData)
-	{
-		playerData.CalculateStatsChange();
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Process player connection after authentication
