@@ -64,8 +64,10 @@ modded class SCR_DataCollectorComponent
 	
 	protected override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
 	{
-		// Delegate to NotifyPlayerSpawned so that both the RequestSpawn pipeline and the
-		// SetInitialMainEntity fallback path use a single, consistent notification point.
+		// CRF's InitilizePlayer always uses SetInitialMainEntity and calls NotifyPlayerSpawned
+		// directly, so this callback is NOT part of the normal CRF initialization path.
+		// It remains here as a safety net for any vanilla RequestSpawn flows (e.g. if the
+		// vanilla respawn menu is ever enabled) so that stats modules are still notified.
 		NotifyPlayerSpawned(requestComponent.GetPlayerId(), entity);
 	}
 	

@@ -88,22 +88,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			playerCharacter.DisableAI();
 			CRF_PlayerHelper.AssignFactionToPlayer(playerController, faction);
-			bool requestSpawnUsed = CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
+			CRF_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
 			{
 				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 350, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 350ms is just a arbitrary value - Njpatman
 
-				// Only notify data-collector modules manually when SetInitialMainEntity was used.
-				// When RequestSpawn is used, OnPlayerSpawnFinalize_S fires automatically and
-				// delegates to NotifyPlayerSpawned — calling it twice would cause duplicate
-				// AddInvokers registrations and incorrect stat tracking.
-				if (!requestSpawnUsed)
-				{
-					SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent));
-					if (dataCollector)
-						dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
-				}
+				// Always notify data-collector modules after assigning the character.
+				// SetInitialMainEntity is used unconditionally (see CRF_PlayerHelper.AssignCharacterToPlayer)
+				// so there is no async spawn pipeline to wait on — NotifyPlayerSpawned must always
+				// be called here to ensure invokers are registered for every player.
+				SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent));
+				if (dataCollector)
+					dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
 			}
 			else
 			{

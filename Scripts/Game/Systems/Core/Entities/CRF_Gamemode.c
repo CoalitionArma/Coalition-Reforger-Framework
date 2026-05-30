@@ -342,11 +342,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 					}
 					m_aPendingDataComponents.Clear();
 
-					// Close the VAAR recording
-					CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
-					if (vaarComponent)
-						vaarComponent.OnGameModeEnd(GetEndGameData());
-
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 					if (rplBroadcastManager)

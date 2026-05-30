@@ -29,61 +29,16 @@ class CRF_PlayerHelper
 	
 	//------------------------------------------------------------------------------------------------
 	//! Assign character entity to player controller.
+	//! CRF pre-spawns all characters before calling InitilizePlayer, so SetInitialMainEntity is
+	//! always used directly. The RequestSpawn path was previously attempted here but caused
+	//! intermittent stats-tracking failures: the vanilla AssignEntity_S guard cancels the entire
+	//! spawn finalization (and therefore never fires OnPlayerSpawnFinalize_S) whenever the player
+	//! already controls the target entity — which happens on reconnects and re-initializations.
+	//! Callers are always responsible for calling NotifyPlayerSpawned after this method returns.
 	//! \param[in] playerController Player Controller to assign character to
 	//! \param[in] character Character to assign to player
-	//! \return True if RequestSpawn was used (OnPlayerSpawnFinalize_S will notify data-collector modules),
-	//!         false if SetInitialMainEntity was used (caller must call NotifyPlayerSpawned manually).
-	static bool AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
+	static void AssignCharacterToPlayer(SCR_PlayerController playerController, CRF_PlayerCharacter character)
 	{
-		int playerId = playerController.GetPlayerId();
-		if (playerId <= 0)
-			return false;
-		
-		// Route spectator assignment through the base game pipeline, same as playable characters
-		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(
-			GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId)
-		);
-		
-		if (respawnComponent)
-		{
-			SCR_PossessSpawnData spawnData = SCR_PossessSpawnData.FromEntity(character);
-			
-			// Check if handler is available before using RequestSpawn
-			// This prevents NULL pointer errors during early initialization
-			bool canUseRequestSpawn = false;
-			
-			array<GenericComponent> components = {};
-			respawnComponent.FindComponents(SCR_SpawnRequestComponent, components);
-			
-			foreach (GenericComponent comp : components)
-			{
-				SCR_SpawnRequestComponent requestComp = SCR_SpawnRequestComponent.Cast(comp);
-				if (requestComp && requestComp.GetDataType() == SCR_PossessSpawnData && requestComp.GetHandlerComponent())
-				{
-					canUseRequestSpawn = true;
-					break;
-				}
-			}
-			
-			if (canUseRequestSpawn)
-			{
-				if (respawnComponent.RequestSpawn(spawnData))
-					return true;  // OnPlayerSpawnFinalize_S will call NotifyPlayerSpawned
-				
-				// RequestSpawn failed (e.g. spawn lock held by a concurrent InitilizePlayer call).
-				// Fall back to direct assignment so NotifyPlayerSpawned is still called by the caller.
-				Print(string.Format("[CRF_GamemodeManager] WARNING: RequestSpawn failed for player %1, falling back to SetInitialMainEntity", playerId), LogLevel.WARNING);
-			}
-			
-			playerController.SetInitialMainEntity(character);
-		}
-		else
-		{
-			// Fallback for very early init
-			Print(string.Format("[CRF_GamemodeManager] No SCR_RespawnComponent for player %1 — using SetInitialMainEntity", playerId), LogLevel.WARNING);
-			playerController.SetInitialMainEntity(character);
-		}
-
-		return false;  // Caller must call NotifyPlayerSpawned
+		playerController.SetInitialMainEntity(character);
 	}
 }
