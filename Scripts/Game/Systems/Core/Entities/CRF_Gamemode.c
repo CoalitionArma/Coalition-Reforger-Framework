@@ -648,6 +648,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
+	// Disable the vanilla 30-second auto-restart countdown on game mode end.
+	// Returning -1 makes SCR_BaseGameMode.OnGameModeEnd skip RestartSession entirely
+	// (it falls through to TryShutdownServer which is a no-op without -autoshutdown).
+	override float GetAutoReloadDelay()
+	{
+		return -1;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	vector GetGenericSpawn()
 	{
 		return m_vGenericSpawn;
