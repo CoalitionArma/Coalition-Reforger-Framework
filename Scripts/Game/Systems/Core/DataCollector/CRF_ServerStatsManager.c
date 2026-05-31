@@ -5,9 +5,6 @@
 //! Tracks per-player stats independently using entity-level invokers and
 //! SCR_BaseGameModeComponent lifecycle hooks.
 //!
-//! At mission end (or when a player disconnects mid-mission) this component
-//! writes a "player_stat" CSV line to $profile:COAServerLog.txt so the
-//! Coalition Bot can upsert the data into the reforgerjs.playerstats table.
 //!
 //! Log line format (one line per player):
 //!   player_stat,<guid>,<kills>,<ai_kills>,<deaths>,<shots>,<grenades_thrown>,
@@ -98,7 +95,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	// Max walking speed used to sanity-check per-frame distance increments (m/s)
 	const float WALK_SPEED_CLAMP           = 10.0;
 	// Update period for distance tracking (seconds)
-	const float DISTANCE_UPDATE_PERIOD     = 1.0;
+	const float DISTANCE_UPDATE_PERIOD     = 10.0;
 
 	// ── Private state ────────────────────────────────────────────────────────
 	private ref map<int, ref CRF_PlayerStats> m_mPlayerStats   = new map<int, ref CRF_PlayerStats>();
