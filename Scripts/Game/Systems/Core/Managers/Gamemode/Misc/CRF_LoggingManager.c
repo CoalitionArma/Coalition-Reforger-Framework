@@ -767,10 +767,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		int iTotalSeconds = m_World.GetWorldTime() / 1000;
 		string sTime = SCR_FormatHelper.FormatTime(iTotalSeconds);
 		
-		// Log to file
-		m_LogFileHandle.WriteLine("kill" + SEPARATOR + sVictimName + SEPARATOR + sVictimGUID + SEPARATOR + 
-		                         sKillerName + SEPARATOR + sKillerGUID + SEPARATOR + sWeaponName + SEPARATOR + 
-		                         sDamageType + SEPARATOR + iRangeMeters + SEPARATOR + sTime);
+		// Log to file — split into parts to avoid "Formula too complex" compiler limit
+		string killLine1 = "kill" + SEPARATOR + sVictimName + SEPARATOR + sVictimGUID + SEPARATOR + sKillerName;
+		string killLine2 = sKillerGUID + SEPARATOR + sWeaponName + SEPARATOR + sDamageType;
+		string killLine3 = iRangeMeters.ToString() + SEPARATOR + sTime;
+		m_LogFileHandle.WriteLine(killLine1 + SEPARATOR + killLine2 + SEPARATOR + killLine3);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown
