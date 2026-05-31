@@ -136,6 +136,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
+		Print("[CRF_ServerStatsManager] Initialized", LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -156,6 +157,9 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	{
 		if (!playerEntity || playerId <= 0)
 			return;
+
+		Print(string.Format("[CRF_ServerStatsManager] Tracking stats for player %1 (ID: %2)",
+			GetGame().GetPlayerManager().GetPlayerName(playerId), playerId), LogLevel.VERBOSE);
 
 		// Initialise (or reset) this player's record.
 		CRF_PlayerStats stats = new CRF_PlayerStats();
@@ -320,6 +324,8 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 
+		Print(string.Format("[CRF_ServerStatsManager] Game mode ended — flushing stats for %1 players", m_mPlayerStats.Count()), LogLevel.NORMAL);
+
 		// Determine the winning faction (sourced from CRF_LoggingManager).
 		FactionKey winningFaction = "";
 		CRF_LoggingManager lm = CRF_LoggingManager.GetInstance();
@@ -434,6 +440,9 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			CleanupEntityHooks(playerId);
 			return;
 		}
+
+		Print(string.Format("[CRF_ServerStatsManager] Player %1 (ID: %2) disconnected — flushing mid-session stats",
+			stats.playerName, playerId), LogLevel.NORMAL);
 
 		UpdatePlayerFaction(playerId, stats);
 		// Winner can't be known at disconnect time — treat as no winner (false by default).
@@ -700,6 +709,9 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			return;
 
 		stats.flushed = true;
+
+		Print(string.Format("[CRF_ServerStatsManager] Flushing — player: %1 | kills: %2 | deaths: %3 | winner: %4",
+			stats.playerName, stats.kills, stats.deaths, stats.winner), LogLevel.NORMAL);
 
 		// ── Session duration ─────────────────────────────────────────────────
 		float nowMs            = GetGame().GetWorld().GetWorldTime();
