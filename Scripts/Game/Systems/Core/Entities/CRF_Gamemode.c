@@ -142,6 +142,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
+
+	// Vehicle Gearscript Enable/Disable per Side
+	//------------------------------------------------------------------------------------
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for BLUFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bBLUFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for OPFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bOPFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for INDFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bINDFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bCIVILIANVehicleGearscriptEnabled;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
@@ -680,6 +694,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return m_CIVILIANGearScriptSettings;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Returns true when the vehicle gearscript system is enabled for the given faction.
+	//! Returns true by default for unknown factions.
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, INDFOR, CIV)
+	bool IsVehicleGearscriptEnabled(FactionKey factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": return m_bBLUFORVehicleGearscriptEnabled;
+			case "OPFOR":  return m_bOPFORVehicleGearscriptEnabled;
+			case "INDFOR": return m_bINDFORVehicleGearscriptEnabled;
+			case "CIV":    return m_bCIVILIANVehicleGearscriptEnabled;
+		}
+		return true;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Get Side BFT boolean value
 	bool IsSideBFTEnabled(string factionKey)

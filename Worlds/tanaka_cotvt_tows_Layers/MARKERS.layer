@@ -1,0 +1,11 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 275.748 20.84 177.528
+  m_sDescription "OPFOR ENCAMPMENT"
+ }
+ {
+  coords 158.402 60.585 4545.539
+  m_sQuadName "heal"
+  m_sDescription "VEH MAINT"
+ }
+}
