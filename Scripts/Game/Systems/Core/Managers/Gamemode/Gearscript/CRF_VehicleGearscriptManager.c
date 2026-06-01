@@ -402,6 +402,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
 		}		
 		
+		// Respect the per-side enable/disable toggle on the gamemode prefab.
+		if (!CRF_Gamemode.GetInstance().IsVehicleGearscriptEnabled(faction.GetFactionKey()))
+			return;
+
 		ref CRF_GearScriptContainer gsContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(faction.GetFactionKey());
 		if (gsContainer.m_aSupplyTrucks.Contains(vehicle.GetPrefabData().GetPrefabName()))
 			SetTruckGear(vehicle, faction, gsContainer, true);
@@ -634,11 +638,44 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] invManager The truck’s inventory storage manager component
 	void ClearTruckGear(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
 	{
+		// Collect all items owned by turret weapon storages so they are not deleted.
+		// Turret ammo is defined by the vehicle prefab and must not be touched by gearscript.
+		set<IEntity> turretItems = new set<IEntity>();
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (compartmentMan)
+		{
+			array<BaseCompartmentSlot> turrets = {};
+			compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+			foreach (BaseCompartmentSlot turret : turrets)
+			{
+				TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+				if (!turretController)
+					continue;
+				BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+				if (!weaponManager)
+					continue;
+				array<IEntity> turretWeapons = {};
+				weaponManager.GetWeaponsList(turretWeapons);
+				foreach (IEntity weapon : turretWeapons)
+				{
+					BaseInventoryStorageComponent weaponStorage = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+					if (!weaponStorage)
+						continue;
+					array<IEntity> weaponItems = {};
+					weaponStorage.GetAll(weaponItems);
+					foreach (IEntity item : weaponItems)
+						turretItems.Insert(item);
+				}
+			}
+		}
+
 		array<IEntity> items = {};
 		invManager.GetItems(items);
 		foreach (IEntity item: items)
 		{
 			if (!item)
+				continue;
+			if (turretItems.Contains(item))
 				continue;
 			
 			SCR_EntityHelper.DeleteEntityAndChildren(item);
@@ -663,87 +700,8 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
 		else
 			vehLoadout = gsContainer.m_VehicleLoadout;
-		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
-		array<BaseCompartmentSlot> turrets = {};
-		array<IEntity> weapons = {};
-		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
-		foreach (BaseCompartmentSlot turret: turrets)
-		{
-			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
-			if (!turretController)
-				continue;
-			
-			array<IEntity> weaponsToAdd = {};
-			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
-			if (weaponManager)
-				weaponManager.GetWeaponsList(weaponsToAdd);
-		
-			foreach (IEntity weapon: weaponsToAdd)
-			{
-				weapons.Insert(weapon);
-			}
-		}
-		
-		foreach (IEntity weapon: weapons)
-		{
-			if (!weapon.FindComponent(WeaponComponent))
-				continue;
-			
-			int bulletsToAdd = 0;
-			WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
-			EWeaponType type = weaponComp.GetWeaponType();
-			if (type == EWeaponType.WT_AUTOCANNON)
-				bulletsToAdd = vehLoadout.m_iAmountofAutoCannonAmmo;
-			else
-				bulletsToAdd = vehLoadout.m_iAmountofMachineGunAmmo;
-			
-			array<BaseMuzzleComponent> muzzles = {};
-			weaponComp.GetMuzzlesList(muzzles);
-			array<ResourceName> magazinesToAdd = {};
-			array<int> magazineCount = {};
-			foreach (BaseMuzzleComponent muzzle: muzzles)
-			{
-				BaseMagazineComponent mag = muzzle.GetMagazine();
-				if (!mag)
-					continue;
-				
-				if (type == EWeaponType.WT_AUTOCANNON)
-				{
-					if (!calculateSupplies)
-						suppliesNeeded += mag.GetMaxAmmoCount();
-					
-					// Check magazine capacity vs required ammo
-					if (mag.GetMaxAmmoCount() < bulletsToAdd)
-					{
-						string errorMsg = string.Format("Magazine '%1' has insufficient max ammo for gearscript. Current: %2 | Required: %3", 
-							WidgetManager.Translate(mag.GetUIInfo().GetName()), 
-							mag.GetMaxAmmoCount(), 
-							bulletsToAdd);
-						
-						// Use MissionValidatorManager in Workbench, fallback to Print in game
-						#ifdef WORKBENCH
-						CRF_MissionValidatorManager validator = CRF_MissionValidatorManager.GetInstance();
-						if (validator)
-							validator.AddWarning("[VEHICLE GEARSCRIPT] " + errorMsg);
-						else
-							Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
-						#else
-						Print("[CRF GEARSCRIPT ERROR] " + errorMsg, LogLevel.ERROR);
-						#endif
-					}
-					
-					mag.SetAmmoCount(bulletsToAdd);
-					continue;
-				}
-				magazinesToAdd.Insert(mag.GetOwner().GetPrefabData().GetPrefabName());
-				magazineCount.Insert(mag.GetMaxAmmoCount());
-			}
-			
-			if (magazinesToAdd.Count() == 0)
-				continue;
-			
-			suppliesNeeded += SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, factionKey, isSupply, true, truck.GetPrefabData().GetPrefabName());
-		}
+		// Turret ammo is intentionally left untouched — it is defined by the vehicle prefab.
+		// ClearTruckGear already skips turret-owned items, and we do not re-fill them here.
 		for (int i = 0; i < 4; i++)
 		{
 			invManager.TrySpawnPrefabToStorage("{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et");

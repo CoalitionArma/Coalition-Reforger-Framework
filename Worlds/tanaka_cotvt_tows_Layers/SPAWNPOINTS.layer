@@ -1,0 +1,44 @@
+GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_US_01.et" {
+ coords 140.84 60.194 4532.942
+ angles 0 170 0
+}
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 487.805 20.596 225.741
+}
+GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D12174E9C}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 505.7 20.437 229.869
+ {
+  GenericEntity {
+   ID "5D3706BDCF10AB62"
+   components {
+    SCR_FactionAffiliationComponent "{5CB6D5B3749D59C3}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D3706BDF0F0CFF8"
+   components {
+    SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  SCR_SpawnPoint {
+   ID "5D8AF9E42529A7DE"
+   components {
+    SCR_FactionAffiliationComponent "{5A5286F8ED58877B}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+ }
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 79.412 60.365 4542.771
+}

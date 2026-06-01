@@ -587,6 +587,19 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
+	// Receives the kill event directly from the gamemode component lifecycle — no data collector needed.
+	override protected void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+
+		LogPlayerKill(instigatorContextData);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Logs player death and kill data to file
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)
@@ -698,6 +711,43 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			}
 		}
 		
+		// Damage type — convert int to human-readable label for the log field.
+		string sDamageType;
+		if (damageType == EDamageType.KINETIC)
+			sDamageType = "Kinetic";
+		else if (damageType == EDamageType.EXPLOSIVE)
+			sDamageType = "Explosive";
+		else if (damageType == EDamageType.FRAGMENTATION || damageType == EDamageType.PROCESSED_FRAGMENTATION)
+			sDamageType = "Fragmentation";
+		else if (damageType == EDamageType.BLEEDING)
+			sDamageType = "Bleeding";
+		else if (damageType == EDamageType.FIRE || damageType == EDamageType.INCENDIARY)
+			sDamageType = "Fire";
+		else if (damageType == EDamageType.COLLISION)
+			sDamageType = "Collision";
+		else if (damageType == EDamageType.MELEE)
+			sDamageType = "Melee";
+		else
+		{
+			// damageType was not pre-tracked — infer from weapon name string
+			string wLower = sWeaponName;
+			wLower.ToLower();
+			if (wLower.Contains("grenade") || wLower.Contains("fragmentation"))
+				sDamageType = "Fragmentation";
+			else if (wLower.Contains("explosion") || wLower.Contains("explosive"))
+				sDamageType = "Explosive";
+			else if (wLower.Contains("collision"))
+				sDamageType = "Collision";
+			else if (wLower.Contains("bleeding"))
+				sDamageType = "Bleeding";
+			else if (wLower.Contains("melee"))
+				sDamageType = "Melee";
+			else if (wLower.Contains("fire") || wLower.Contains("incendiary"))
+				sDamageType = "Fire";
+			else
+				sDamageType = "Kinetic"; // default for firearms
+		}
+
 		// Range — measure from the killer's character position.
 		// GetKillerEntity() may return the projectile entity (bullet/rocket), not the shooter,
 		// which causes bogus 10 000 m+ distances when the projectile is at world origin on impact.
@@ -717,10 +767,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		int iTotalSeconds = m_World.GetWorldTime() / 1000;
 		string sTime = SCR_FormatHelper.FormatTime(iTotalSeconds);
 		
-		// Log to file
-		m_LogFileHandle.WriteLine("kill" + SEPARATOR + sVictimName + SEPARATOR + sVictimGUID + SEPARATOR + 
-		                         sKillerName + SEPARATOR + sKillerGUID + SEPARATOR + sWeaponName + SEPARATOR + 
-		                         iRangeMeters + SEPARATOR + sTime);
+		// Log to file — split into parts to avoid "Formula too complex" compiler limit
+		string killLine1 = "kill" + SEPARATOR + sVictimName + SEPARATOR + sVictimGUID + SEPARATOR + sKillerName;
+		string killLine2 = sKillerGUID + SEPARATOR + sWeaponName + SEPARATOR + sDamageType;
+		string killLine3 = iRangeMeters.ToString() + SEPARATOR + sTime;
+		m_LogFileHandle.WriteLine(killLine1 + SEPARATOR + killLine2 + SEPARATOR + killLine3);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown

@@ -94,13 +94,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			{
 				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 350, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 350ms is just a arbitrary value - Njpatman
 
-				// Always notify data-collector modules after assigning the character.
-				// SetInitialMainEntity is used unconditionally (see CRF_PlayerHelper.AssignCharacterToPlayer)
-				// so there is no async spawn pipeline to wait on — NotifyPlayerSpawned must always
-				// be called here to ensure invokers are registered for every player.
-				SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent));
-				if (dataCollector)
-					dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
+				// Notify the CRF-native stats manager so it begins tracking this player.
+				CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+				if (statsManager)
+					statsManager.NotifyPlayerSpawned(playerId, playerCharacter);
 			}
 			else
 			{

@@ -142,6 +142,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
+
+	// Vehicle Gearscript Enable/Disable per Side
+	//------------------------------------------------------------------------------------
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for BLUFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bBLUFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for OPFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bOPFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for INDFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bINDFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bCIVILIANVehicleGearscriptEnabled;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
@@ -171,9 +185,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected vector m_vGenericSpawn;
 	
 	bool m_bIsInEndCredits = false;
-	
-	// Late data callbacks — cleaned up after AAR processing
-	protected ref array<SCR_DataCollectorCommunicationComponent> m_aPendingDataComponents = {};
 	
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
@@ -321,27 +332,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 				case CRF_EGamemodeState.AAR: {
 					SetGameState(SCR_EGameModeState.POSTGAME);
 
-					SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-					array<int> players = {};
-					GetGame().GetPlayerManager().GetAllPlayers(players);
-					foreach (int player : players)
-					{
-						// Skip disconnected players
-						if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
-							continue;
-	
-						// Process player statistics data
-						ProcessStats(dataCollector, player);
-					}
-
-					// Clean up any pending late-data callbacks
-					foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
-					{
-						if (pendingComp)
-							pendingComp.GetOnDataReceived().Remove(OnDataReceived);
-					}
-					m_aPendingDataComponents.Clear();
-
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 					if (rplBroadcastManager)
@@ -362,48 +352,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			playerMenuManager.OpenCurrentStateMenu();
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
-	{
-		//PrintFormat("[CRF] Logging Stats for player %1", GetGame().GetPlayerManager().GetPlayerName(player));
-		if (!dataCollector)
-		{
-			Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-			return;
-		}
-
-		SCR_PlayerData playerData = dataCollector.GetPlayerData(player, false);
-
-		// If player data isn't available yet, register for notification when it arrives
-		if (!playerData)
-		{
-			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-				GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-			);
-			
-			if (communicationComponent)
-			{
-				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-				m_aPendingDataComponents.Insert(communicationComponent);
-			}
-		}
-		else
-		{
-			playerData.CalculateStatsChange();
-		}
-	}
-	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 PLAYER MANAGEMENT
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	//! Handle player data received from network
-	//! \param[in] playerData Player statistics and progress data
-	protected void OnDataReceived(SCR_PlayerData playerData)
-	{
-		playerData.CalculateStatsChange();
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Process player connection after authentication
@@ -743,6 +694,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return m_CIVILIANGearScriptSettings;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Returns true when the vehicle gearscript system is enabled for the given faction.
+	//! Returns true by default for unknown factions.
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, INDFOR, CIV)
+	bool IsVehicleGearscriptEnabled(FactionKey factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": return m_bBLUFORVehicleGearscriptEnabled;
+			case "OPFOR":  return m_bOPFORVehicleGearscriptEnabled;
+			case "INDFOR": return m_bINDFORVehicleGearscriptEnabled;
+			case "CIV":    return m_bCIVILIANVehicleGearscriptEnabled;
+		}
+		return true;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Get Side BFT boolean value
 	bool IsSideBFTEnabled(string factionKey)
