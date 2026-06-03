@@ -47,7 +47,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "RUS forces has made the port a hardpoint, The US Army is being deployed to breakthrough this hardpoint."\
+   m_sTextData "RUS forces have made the port a hardpoint. The US Army is being deployed to breakthrough this hardpoint."\
    ""\
    "BLUFOR Composition:Motrized Infantry Platoon"\
    "BLUFOR Assets: 2x MK19 Humvees"\
