@@ -1,0 +1,42 @@
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 1646.685 0.947 2707.04
+  angles 0 -172.939 0
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
+ }
+ {
+  coords 1647.659 0.947 2714.899
+  angles 0 -172.939 0
+  m_rVehicle "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et"
+ }
+ {
+  coords 1648.04 0.947 2728.243
+  angles 0 174.076 0
+  m_rVehicle "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 1647.237 0.947 2735.983
+  angles 0 174.076 0
+  m_rVehicle "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 1643.664 1.521 2744.095
+  angles 0 157.419 0
+  m_rVehicle "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 1640.311 2.095 2752.156
+  angles 0 157.419 0
+  m_rVehicle "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 1637.037 3.032 2760.03
+  angles 0 157.419 0
+  m_rVehicle "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+  m_bShouldAddAmmo 0
+ }
+}
