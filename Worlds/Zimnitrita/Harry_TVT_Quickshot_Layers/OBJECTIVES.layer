@@ -1,0 +1,54 @@
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 2677.065 186.625 13227.626
+  angles 0 179.169 0
+ }
+ {
+  coords 2794.256 186.625 13250.444
+  angles 0 179.169 0
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69881E594CF7F55A}" {
+      SlotTemplate InventoryStorageSlot mortar {
+       Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{69881E59B450C850}" {
+      SlotTemplate InventoryStorageSlot table {
+       Prefab "{6113990D163E5249}Prefabs/Items/Equipment/BallisticTable/BalisticTable_US.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 2791.851 186.625 13255.03
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69881E594CF7F55A}" {
+      SlotTemplate InventoryStorageSlot mortar {
+       Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{69881E59B450C850}" {
+      SlotTemplate InventoryStorageSlot table {
+       Prefab "{6113990D163E5249}Prefabs/Items/Equipment/BallisticTable/BalisticTable_US.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 2673.911 186.625 13233.018
+ }
+}
