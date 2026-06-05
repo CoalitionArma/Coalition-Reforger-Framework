@@ -1,40 +1,6 @@
 CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 268.821 18.212 2624.172
 }
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
- components {
-  CRF_PolyZone "{65862E4575B86577}" {
-   m_bLineMode 1
-  }
- }
- coords 626.329 5.314 2259.708
- Points {
-  ShapePoint "{698A3BE57900B814}" {
-   Position -541.273 0 -301.328
-  }
-  ShapePoint "{698A3BE5610ACAE0}" {
-   Position 850.425 0 -253.375
-  }
-  ShapePoint "{698A3BE566BC2DF2}" {
-   Position 806.033 0 168.788
-  }
-  ShapePoint "{698A3BE56AE122E7}" {
-   Position 525.455 0 139.681
-  }
-  ShapePoint "{698A3BE50DF62E64}" {
-   Position 224.752 0 160.587
-  }
-  ShapePoint "{698A3BE533C605FC}" {
-   Position -336.464 0 510.514
-  }
-  ShapePoint "{698A3BE5394D2BC8}" {
-   Position -552.924 0 546.322
-  }
-  ShapePoint "{698A3BE6F9DA0399}" {
-   Position -540.281 0 -301.355
-  }
- }
-}
 CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 1315.334 3.376 2171.736
 }

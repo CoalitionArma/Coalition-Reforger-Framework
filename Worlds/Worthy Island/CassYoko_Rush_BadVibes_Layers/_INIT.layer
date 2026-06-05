@@ -342,3 +342,29 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 1037.601 5.268 2196.196
+ Points {
+  ShapePoint "{698A439D5E287155}" {
+   Position -946.582 0 -227.24
+  }
+  ShapePoint "{698A439D59A4E13E}" {
+   Position -955.331 0 602.723
+  }
+  ShapePoint "{698A439D58EFBCE8}" {
+   Position -741.536 0 561.883
+  }
+  ShapePoint "{698A439D5B9ABD29}" {
+   Position -183.714 0 218.148
+  }
+  ShapePoint "{698A439D5ABD459B}" {
+   Position 111.175 0 200.37
+  }
+  ShapePoint "{698A439D545895E0}" {
+   Position 402.329 0 235.754
+  }
+  ShapePoint "{698A439D5637C8AB}" {
+   Position 454.357 0 -197.052
+  }
+ }
+}
