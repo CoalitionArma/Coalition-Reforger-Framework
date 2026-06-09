@@ -1,0 +1,491 @@
+$grp GenericEntity : "{084825E68F0FAF86}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_Scoped_S_USSR_01.et" {
+ {
+  coords 4873.853 10.321 7393.934
+  angles 0 -120.438 0
+ }
+ {
+  coords 4937.188 5.406 7328.43
+  angles 0 -151.133 0
+ }
+}
+$grp GenericEntity : "{0C923757B8B8306B}Prefabs/Compositions/Misc/FreeRoamBuilding/BarbedTapeTriple_S_USSR_01.et" {
+ {
+  coords 4638.661 6.377 7060.926
+  angles 0 -36.917 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4645.021 6.511 7052.791
+  angles 0 -36.917 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords -0.159 0 -0.173
+   }
+  }
+ }
+ {
+  coords 4754.297 10.064 7352.377
+  angles 0 23.695 0
+ }
+ {
+  coords 4758.534 10.078 7361.491
+  angles 0 34.008 0
+ }
+ {
+  coords 4750.743 10.098 7334.975
+  angles 0 -36.917 0
+ }
+ {
+  coords 4757.377 10.086 7326.169
+  angles 0 -36.917 0
+ }
+ {
+  coords 4804.882 10.034 7328.463
+  angles 0 35.882 0
+ }
+ {
+  coords 4815.746 10.063 7333.703
+  angles 0 -128.958 0
+ }
+ {
+  coords 4797.53 10.064 7396.551
+  angles 0 -92.427 0
+ }
+ {
+  coords 4808.941 10.08 7401.522
+  angles 0 -92.427 0
+ }
+ {
+  coords 4622.056 5.874 6998.997
+  angles 0 -52.047 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4587.063 7.969 6978.194
+  angles 0 32.868 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4634.706 7.328 7024.951
+  angles 0 -63.777 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4628.671 6.612 7078.301
+  angles 0 -36.917 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4583.001 8.813 7081.08
+  angles 0 -130.428 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4629.449 9.94 7133.377
+  angles 0 -88.174 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4513.643 10.572 7060.138
+  angles 0 -20.264 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+ {
+  coords 4497.436 10.656 7092.498
+  angles 0 18.37 0
+  {
+   StaticModelEntity {
+    ID "5E64B54F57833D69"
+    coords 0.001 0 0.333
+   }
+  }
+ }
+}
+GenericEntity : "{27F6A0815E6FF6EF}Prefabs/Compositions/Slotted/SlotRoadMedium/Barricade_M_USSR_01.et" {
+ coords 4553.385 8.258 6955.583
+ angles 0 38.038 0
+}
+$grp GenericEntity : "{2A27606856B8A914}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_USSR_01.et" {
+ {
+  coords 4730.332 5.499 7003.683
+  angles 0 -132.625 0
+ }
+ {
+  coords 4532.157 10.545 7108.357
+  angles 0 -68.311 0
+ }
+ {
+  coords 4766.137 11.312 7251.301
+  angles 0 -102.418 0
+  {
+   StaticModelEntity {
+    ID "5CC6B48215782E1C"
+    coords -2.308 0 1.929
+   }
+   StaticModelEntity {
+    ID "5CC6B48215782EEA"
+    coords 4.315 0 -0.963
+   }
+  }
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 4888.216 5.5 7208.994
+ angles 0 45 0
+}
+GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
+ coords 4827.238 5.719 7196.391
+ angles 0 -137.984 0
+}
+GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ coords 4941.717 5.5 7203.609
+ angles 0 -77.508 0
+}
+GenericEntity : "{4510C273B794F3AA}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_Conflict_USSR_01.et" {
+ coords 4823.664 5.527 7162.621
+ angles 0 -136.292 0
+}
+GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ coords 4925.342 5.501 7217.04
+ angles 0 43.54 0
+}
+GenericEntity : "{57FB5E487EC91D63}Prefabs/Compositions/Misc/SubCompositions/Barricade_Logs_02.et" {
+ coords 4597.277 6 6919.191
+ angles 0 -68.508 0
+}
+GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ coords 4883.761 5.5 7171.311
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 4871.914 5.5 7185.525
+}
+GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ coords 4753.296 5.5 6989.751
+ angles 0 -134.9 0
+}
+GenericEntity : "{7A40BF128BB47EFD}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01.et" {
+ coords 4737.32 6.385 7136.977
+ angles 0 -133.482 0
+}
+$grp GenericEntity : "{7C85836D444E3797}Prefabs/Compositions/Slotted/SlotRoadMedium/Checkpoint_M_USSR_01.et" {
+ {
+  coords 4571.944 10.219 7158.324
+  angles 0 -132.893 0
+ }
+ {
+  coords 4694.68 10.795 7239.314
+  angles 0 -148.083 0
+ }
+}
+$grp GenericEntity : "{83A10E8547281E58}Prefabs/Compositions/Slotted/SlotRoadSmall/Barricade_S_USSR_01.et" {
+ {
+  coords 4498.378 10.85 7066.182
+  angles 0 71.633 0
+ }
+ {
+  coords 4497.447 10.979 7061.306
+  angles 0 -63.28 0
+ }
+}
+GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ coords 4740.049 7.173 7160.193
+ angles 0 -18.521 0
+}
+$grp GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_USSR_01.et" {
+ {
+  coords 4562.187 6.406 6810.588
+  angles 0 -129.89 0
+  {
+   GenericEntity {
+    ID "5CC72E06418CFF41"
+    coords -6.262 -0.367 -5.145
+    angles 4.1 89.753 -3.45
+   }
+   GenericEntity {
+    ID "5CC72E06418CFF57"
+    coords -6.262 -0.361 -3.504
+    angles -8.868 -90.074 0.477
+   }
+   StaticModelEntity {
+    ID "5CC72E06418CFEB0"
+    coords -6.148 -0.373 -6.318
+    angles 4.629 9.611 -2.697
+   }
+  }
+ }
+ {
+  coords 4698.945 9.625 7402.354
+  angles 0 -136.74 0
+ }
+}
+GenericEntity : "{B26712B1722C8A09}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Barricade_Logs_03.et" {
+ coords 4457.586 4.212 6742.398
+ angles -0.452 -149.697 0.773
+}
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 5129.077 19.102 7309.579
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 5057.631 0.291 7380.431
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 5021.99 7.209 7411.341
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 5005.442 19.547 7440.862
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 4958.696 18.209 7463.332
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 4944.847 45.941 7494.253
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 4932.395 46.419 7575.615
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 4938.393 50.675 7636.71
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_sDescription "OPFOR Spawn"
+ }
+ {
+  coords 4939.99 5.959 7328.787
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4869.704 9.981 7391.342
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4732.462 6.812 7132.619
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4571.988 10.193 7158.342
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4564.381 6.219 6813.177
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4694.771 10.815 7239.372
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 4697.571 9.625 7401.823
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sQuadName "fortification"
+  m_fWorldSize 50
+  m_sDescription "MG Nest"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
+GenericEntity : "{C4114DAE8FDCE080}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_Helipad_L_Conflict_USSR_01.et" {
+ coords 3792.527 7.094 6379.92
+ angles 0 45 0
+}
+GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
+ coords 4908.95 5.5 7226.503
+ angles 0 43.187 0
+}
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 4903.277 5.5 7135.73
+  angles 0 -138.084 0
+ }
+ {
+  coords 4839.162 5.5 7194.027
+  angles 0 -136.712 0
+ }
+}
+GenericEntity : "{E249C09D69AAE6C8}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_02.et" {
+ coords 4725.841 7.126 7151.166
+ angles 0 -111.197 0
+}
+$grp GenericEntity : "{F68F3B7247F6E80F}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_Conflict_USSR_01.et" {
+ {
+  coords 4958.462 5.5 7226.854
+  angles 0 -47.357 0
+ }
+ {
+  coords 4928.736 5.5 7255.659
+  angles 0 132.643 0
+ }
+}
+GenericEntity : "{F68F3B7247F6E810}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et" {
+ coords 4910.359 5.5 7186.321
+ angles 0 -48.017 0
+}
+$grp GenericEntity : "{F7D5504B665E1375}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_Tracer.et" {
+ {
+  coords 3786.086 7.094 6394.78
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.177 7.094 6394.878
+  angles 0 43.905 0
+ }
+ {
+  coords 3785.715 7.094 6395.137
+  angles 0 43.905 0
+ }
+ {
+  coords 3785.806 7.094 6395.235
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.269 7.094 6394.982
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.36 7.094 6395.08
+  angles 0 43.905 0
+ }
+ {
+  coords 3785.896 7.094 6395.337
+  angles 0 43.905 0
+ }
+ {
+  coords 3785.987 7.094 6395.435
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.086 7.094 6395.534
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.177 7.094 6395.632
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.46 7.094 6395.168
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.552 7.094 6395.266
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.265 7.094 6395.72
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.356 7.094 6395.818
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.634 7.094 6395.359
+  angles 0 43.905 0
+ }
+ {
+  coords 3786.725 7.094 6395.457
+  angles 0 43.905 0
+ }
+}
+GenericEntity : "{FD952CFF9CAD3F2B}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01.et" {
+ coords 4910.104 5.5 7239.937
+ angles 0 -46.671 0
+}
