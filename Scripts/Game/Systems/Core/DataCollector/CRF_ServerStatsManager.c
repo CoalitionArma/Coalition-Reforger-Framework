@@ -118,6 +118,9 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	// Staggered AAR send queue (one entry per connected player).
 	private ref array<int> m_aPendingAARSends = {};
 
+	// Guard against double-flush if both CRF state transition and engine OnGameModeEnd fire.
+	private bool m_bMissionEndTriggered = false;
+
 	// Singleton
 	private static CRF_ServerStatsManager s_Instance;
 
@@ -318,10 +321,23 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	//! Called at the end of the game mode - flush all unflushed players.
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
+		NotifyMissionEnded();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Flush all remaining player stats to the log and queue in-game AAR data sends.
+	//! Called either from CRF_Gamemode when transitioning to AAR state, or from OnGameModeEnd as
+	//! a fallback. The one-shot flag prevents double-work if both paths fire.
+	void NotifyMissionEnded()
+	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 
-		Print(string.Format("[CRF_ServerStatsManager] Game mode ended — flushing stats for %1 players", m_mPlayerStats.Count()), LogLevel.NORMAL);
+		if (m_bMissionEndTriggered)
+			return;
+		m_bMissionEndTriggered = true;
+
+		Print(string.Format("[CRF_ServerStatsManager] Mission ended — flushing stats for %1 players", m_mPlayerStats.Count()), LogLevel.NORMAL);
 
 		// Determine the winning faction (sourced from CRF_LoggingManager).
 		FactionKey winningFaction = "";
