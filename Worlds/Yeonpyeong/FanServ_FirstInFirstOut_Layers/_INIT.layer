@@ -1,0 +1,250 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 90
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "A botched mission by the United States Marine Corps 1st Recon Battalion has left half of a platoon captured as prisoners of war. The remaining half, the Platoon HQ and Sniper squad, must free the prisoners and reach the extract as a platoon."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Sniper Squad, Unarmed Infantry"\
+   ""\
+   "OPFOR Composition: OPFOR"\
+   "OPFOR Assets: "\
+   ""\
+   "Time: 1800"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "For POWs: You must comply unless your captors are killed. If they are killed, you may pick up enemy equipment. You must reach your confiscated equipment (including radios) and then escape."\
+   ""\
+   "For PLT and Sniper: Save the POWs, ensure they reach the confiscated equipment, then escape with them."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Bring the POWs to the designated area and keep them there. If the POWs escape before being brought there, your objective is to kill the enemy. Do not kill the POWs unless they are armed."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "As a POW, you MUST comply with OPFOR unless they are killed."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 5
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69920BC529E6C301}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C22D}" {
+   m_sCallsign "SNIPER 1"
+   m_FlagType SNIPER
+   m_aSlots {
+    SQUAD_LEAD
+    SNIPER
+    SPOTTER
+    MEDIC
+    SNIPER
+    SPOTTER
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C1BE}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C128}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C15D}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C0C3}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+   }
+  }
+  CRF_SlottingGroup "{69920BC529E6C07D}" {
+   m_sCallsign "ZEUS"
+   m_FlagType SIGNAL
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69920BC529E6C7C4}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+   }
+  }
+ }
+ m_iBLUFORTickets 30
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{C7A23E573E5D405F}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSUSMC_Alt.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{3B9E2AB0CA235973}Configs/Gearscripts/Standard/Modern/CRF_GS_RHS_AFRF_Modern_Day.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69920BC8DD434826" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
