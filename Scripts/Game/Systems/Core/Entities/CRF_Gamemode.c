@@ -332,6 +332,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 				case CRF_EGamemodeState.AAR: {
 					SetGameState(SCR_EGameModeState.POSTGAME);
 
+					// Flush all player stats and queue in-game AAR data.
+					// This must be called here because the CRF state machine does not go through
+					// SCR_BaseGameMode.EndGameMode(), so OnGameModeEnd on components is never fired.
+					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+					if (statsManager)
+						statsManager.NotifyMissionEnded();
+
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 					if (rplBroadcastManager)
