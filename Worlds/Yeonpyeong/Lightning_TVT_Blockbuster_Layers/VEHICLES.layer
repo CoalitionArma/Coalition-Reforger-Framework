@@ -18,6 +18,14 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   coords 3793.074 7.711 6380.79
   angles 0 44.461 0
   m_rVehicle "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69923C75A9CD293F}" {
+    m_Prefab "{F7D5504B665E1375}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_Tracer.et"
+    m_iAmountOfItemSupplyTruck 4
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
  }
 }
 $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {

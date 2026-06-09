@@ -384,8 +384,8 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
  }
 }
 GenericEntity : "{C4114DAE8FDCE080}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_Helipad_L_Conflict_USSR_01.et" {
- coords 3792.527 7.094 6379.92
- angles 0 45 0
+ coords 3793.346 7.094 6380.314
+ angles 0 42.445 0
 }
 GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
  coords 4908.95 5.5 7226.503
