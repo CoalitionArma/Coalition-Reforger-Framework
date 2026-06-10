@@ -1,0 +1,29 @@
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ {
+  coords 4681.041 9.625 7493.293
+  m_fWorldSize 8
+  m_sDescription "Confiscated Equipment"
+  m_aVisibleForFactions {
+   "BLUFOR"
+   "OPFOR"
+  }
+ }
+ {
+  coords 5608.998 11.724 7271.45
+  m_sDescription "Extract"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 5651.182 127.382 7231.446
+ }
+ {
+  coords 5619.688 9.378 7270.682
+ }
+}
+CRF_MissionMarker : "{C44FD776546321F2}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/OPFOR_NewObjectiveMarker.et" {
+ coords 4698.71 9.625 7446.301
+ m_fWorldSize 8
+ m_sDescription "POW Processing"
+}
