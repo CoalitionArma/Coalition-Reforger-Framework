@@ -1,0 +1,9 @@
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ coords 4255.86 32.154 4831.243
+ m_fWorldSize 10
+ m_sDescription "Search Area"
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "OPFOR"
+ }
+}
