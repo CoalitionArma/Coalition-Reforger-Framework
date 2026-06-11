@@ -48,7 +48,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Blufor mortars are stuck in their fire base fending off a large attack of insurgent forces. The rest of blufor is rushing to their aid. Whoever controls the mortar fire base at the end of the mission wins. "\
    ""\
    "Mortars"\
-   "- You have sandbags for entrenchment. You must hold your current position until relief arrives. "
+   "- You have sandbags for entrenchment. You must begin your defensive engagement at the fire base. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
