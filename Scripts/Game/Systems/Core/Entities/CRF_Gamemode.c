@@ -330,6 +330,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 				
 				case CRF_EGamemodeState.AAR: {
+					// Flush all player stats BEFORE SetGameState
+					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+					if (statsManager)
+						statsManager.NotifyMissionEnded();
+
 					SetGameState(SCR_EGameModeState.POSTGAME);
 
 					// Open the outro screen on all clients, passing winning faction so clients can display it
