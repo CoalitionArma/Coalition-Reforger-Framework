@@ -1,0 +1,9 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ coords 4255.808 32.154 4831.292
+ m_sDescription "Search Area"
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "INDFOR"
+  "OPFOR"
+ }
+}

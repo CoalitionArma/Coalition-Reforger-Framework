@@ -78,6 +78,61 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "An insurgent drone team has become internet famous for posting skillful FPV drone videos. Both the USAF and AFRF have been embarrassed and have sent drone-equipped infantry to kill the viral drone operators. Insurgents are trying to reinforce the drone operators."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Unarmed Drones"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: Unarmed Drones"\
+   ""\
+   "INDFOR Composition: Infantry"\
+   "INDFOR Assets: FPV Drones"\
+   ""\
+   "Time: 0900"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "Kill the insurgent drone operators."\
+   "If you kill the drone operators first, extract at spawn."\
+   "If OPFOR kills the drone operators first, wipe out OPFOR."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Kill the insurgent drone operators."\
+   "If you kill the drone operators first, extract at spawn."\
+   "If BLUFOR kills the drone operators first, wipe out BLUFOR."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "Kill all infidels."\
+   "Drone operators must stay within the search area."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "If you die on BLUFOR or OPFOR you will respawn on INDFOR (up to a certain amount of INDFOR players and depending on your slot)"
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
