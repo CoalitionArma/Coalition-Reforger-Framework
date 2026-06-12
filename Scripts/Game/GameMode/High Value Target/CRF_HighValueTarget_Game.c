@@ -1,8 +1,13 @@
 /*
 	HVT/VIP Gamemode Component
 	
-	Tracks HVTs/VIPs (PHVT/AI/Object) and syncs their positions to map markers.
+	Tracks HVTs/VIPs (PHVT/AI/Object) and slotting-group elements, syncing positions to map markers.
 	Supports multiple HVTs/VIPs with per-entry faction, marker text, and color configuration.
+	Also supports ELEMENT entries (whole slotting groups) — all factions except the target automatically hunt them.
+
+	Entry types:
+	- AI / PLAYER / OBJECT: single-entity targets (original HVT behaviour)
+	- ELEMENT: whole slotting group identified by faction + callsign (centroid tracking, elimination objectives)
 
 	FIXES:
 	- Fix A: timeDelay parameter for CRF_Mapmarker (now 0) was m_timeBetweenPings, causing CRF_MapMarker to essentially cache the transponder marker 
@@ -39,26 +44,30 @@ enum CRF_HVTEntryType
 {
 	AI,     
 	PLAYER, 
-	OBJECT  
+	OBJECT,
+	ELEMENT
 }
 
 // HVT Entry Configuration Class
 [BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sTransponderEntityName")]
 class CRF_HVTEntry
 {
-	[Attribute("0", UIWidgets.ComboBox, "Entry type: AI spawns character at transponder, PLAYER detects by prefab match, OBJECT spawns item at transponder.", enums: ParamEnumArray.FromEnum(CRF_HVTEntryType))]
+	[Attribute("0", UIWidgets.ComboBox, "Entry type: AI spawns character at transponder, PLAYER detects by prefab match, OBJECT spawns item at transponder, ELEMENT tracks a slotting group by callsign.", enums: ParamEnumArray.FromEnum(CRF_HVTEntryType))]
 	CRF_HVTEntryType m_eEntryType;
 	
-	[Attribute("{42A502E3BB727CEB}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliPilot.et", desc: "AI: Character prefab to spawn. PLAYER: Prefab to match the LOBBY SLOT (use a UNIQUE prefab and faction setting for that slot so that the mode detects the PHVT). OBJECT: Item prefab to spawn on the transponder object(e.g. radio).", uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_hvtPrefab;
-	
-	[Attribute("0", UIWidgets.ComboBox, "Faction of this HVT. For PLAYER entries, filters by faction. For AI/OBJECT, sets marker color.", enums: ParamEnumArray.FromEnum(CRF_HVTFaction))]
+	[Attribute("0", UIWidgets.ComboBox, "Faction of this HVT/element. For PLAYER entries, filters by faction. For AI/OBJECT/ELEMENT, sets marker color and identifies the target side.", enums: ParamEnumArray.FromEnum(CRF_HVTFaction))]
 	CRF_HVTFaction m_eFaction;
 	
-	[Attribute("", "auto", "Name of the transponder entity in world. AI/OBJECT spawn here, PLAYER marker follows here. Must be UNIQUE per entry.")]
+	[Attribute("1PLT", "auto", "ELEMENT only: Callsign substring matched against the slotting group name (e.g. 1PLT, PLT, 1-1, MAT). Case-insensitive. Ignored for other entry types.", category: "Element")]
+	string m_sTargetCallsign;
+	
+	[Attribute("", "auto", "Not used for ELEMENT entries. AI: character prefab to spawn. PLAYER: prefab to match the LOBBY SLOT (use a UNIQUE prefab and faction setting for that slot so that the mode detects the PHVT). OBJECT: item prefab to spawn on the transponder (e.g. radio).", uiwidget: "resourcePickerThumbnail", params: "et", category: "Single Target (AI / PLAYER / OBJECT)")]
+	ResourceName m_hvtPrefab;
+	
+	[Attribute("", "auto", "Name of the transponder entity in world. AI/OBJECT spawn here, PLAYER/ELEMENT marker follows here. Must be UNIQUE per entry.")]
 	string m_sTransponderEntityName;
 	
-	[Attribute("Transponder Signal", "auto", "Text displayed on the map marker for this HVT/Object.")]
+	[Attribute("Transponder Signal", "auto", "Text displayed on the map marker for this HVT/Object/Element.")]
 	string m_sMarkerText;
 	
 	string GetFactionKey()
@@ -89,7 +98,7 @@ class CRF_HVTEntry
 //------------------------------------------------------------------------------------------------
 // HVT Gamemode Component
 //------------------------------------------------------------------------------------------------
-[ComponentEditorProps(category: "Game Mode Component", description: "High Value Target gamemode - track and hunt HVTs")]
+[ComponentEditorProps(category: "Game Mode Component", description: "High Value Target gamemode - track and hunt HVTs and elements")]
 class CRF_HighValueTargetGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
@@ -106,7 +115,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.ComboBox, "Target type for notification text (HVT or VIP).", enums: ParamEnumArray.FromEnum(CRF_TargetType), category: "Global Settings")]
 	CRF_TargetType m_eTargetType;
 	
-	[Attribute("false", "auto", "Disable damage on AI/Player HVTs (makes them invulnerable). Does not apply to OBJECT entries.", category: "Global Settings")]
+	[Attribute("false", "auto", "Disable damage on AI/Player HVTs (makes them invulnerable). Does not apply to OBJECT or ELEMENT entries.", category: "Global Settings")]
 	bool m_bDisableDamage;
 	
 	[Attribute("360", UIWidgets.SpinBox, "The amount of time between marker updates in seconds. Minimum 10s.", "10 3600 1", category: "Global Settings")]
@@ -115,7 +124,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("false", "auto", "Send an immediate transponder ping when the game starts (before the first regular ping cycle).", category: "Global Settings")]
 	bool m_bInitialPing;
 	
-	[Attribute("false", "auto", "Hide the transponder marker from all factions except the searcher faction.", category: "Global Settings")]
+	[Attribute("false", "auto", "Hide the transponder marker from all factions except the searcher faction. When disabled, each entry is visible to every faction except the entry's target faction.", category: "Global Settings")]
 	bool m_filterFaction;
 
 	[Attribute("BLUFOR", "auto", "Faction key for the searching side (only used if Filter Faction is enabled).", category: "Global Settings")]
@@ -123,6 +132,12 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 
 	[Attribute("false", "auto", "Send the HVT's faction a hint notification when the transponder pings. If Faction Filter is enabled, sends to the searcher faction instead.", category: "Global Settings")]
 	bool m_updateDefender;
+	
+	[Attribute("false", "auto", "Set the mission winner when an ELEMENT entry is fully eliminated. All factions except the target are hunters; multi-hunter objectives credit the faction that scored the final kill.", category: "Global Settings")]
+	bool m_bAutoSetWinnerOnElimination;
+	
+	[Attribute("false", "auto", "Advance to AAR when an ELEMENT elimination triggers Auto Set Winner.", category: "Global Settings")]
+	bool m_bAutoEndMissionOnElimination;
 	
 	//------------------------------------------------------------------------------------------------
 	// AI HVT SETTINGS (Applied to all AI-spawned HVTs)
@@ -138,10 +153,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// HVT ENTRIES
 	//------------------------------------------------------------------------------------------------
 	
-	[Attribute("", "auto", "List of HVT entries. Each entry can be configured as player or AI controlled.", category: "HVT Entries")]
+	[Attribute("", "auto", "List of HVT entries. Each entry can be configured as player, AI, object, or element.", category: "HVT Entries")]
 	ref array<ref CRF_HVTEntry> m_aHVTEntries;
 	
-	[Attribute("HVT GAMEMODE SETUP\n\nIMPORTANT:\n• Transponder name is case sensitive\n\n=== BASIC SETUP ===\n1. Add this component to your Game Mode Entity\n2. Add 1 or more 'HVT ENTRIES' within the component\n3. Set Entry Type per entry (AI / PLAYER / OBJECT)\n4. Set Prefab per entry\n\n=== AI/OBJECT ENTRY ===\n• Entry Type = AI/OBJECT\n• Place empty transponder entity in world\n• Set 'Prefab' to AI character or object prefab\n• AI spawns at transponder location\n\n=== PLAYER ENTRY ===\n• Entry Type = PLAYER\n• Place empty transponder entity in world\n• Set 'Prefab' to PLAYER SLOT prefab\n• Set 'Faction' to filter by faction (optional)\nSearches/matches by PREFAB - use UNIQUE prefab!", UIWidgets.EditBoxMultiline, "HVT Setup Instructions", category: "Documentation")]
+	[Attribute("HVT GAMEMODE SETUP\n\nIMPORTANT:\n• Transponder name is case sensitive\n\n=== BASIC SETUP ===\n1. Add this component to your Game Mode Entity\n2. Add 1 or more 'HVT ENTRIES' within the component\n3. Set Entry Type per entry (AI / PLAYER / OBJECT / ELEMENT)\n\n=== AI/OBJECT ENTRY ===\n• Entry Type = AI/OBJECT\n• Set Prefab (Single Target category)\n• Place empty transponder entity in world\n• AI spawns at transponder location\n\n=== PLAYER ENTRY ===\n• Entry Type = PLAYER\n• Set Prefab (Single Target category) to PLAYER SLOT prefab\n• Place empty transponder entity in world\n• Set Faction to filter by faction (optional)\nSearches/matches by PREFAB - use UNIQUE prefab!\n\n=== ELEMENT ENTRY ===\n• Entry Type = ELEMENT\n• Set Faction to the target element's faction\n• Set Target Callsign (e.g. 1PLT, 1-1, MAT)\n• Place empty transponder entity in world\n• Prefab is NOT used — leave it empty\n• All other factions are automatically assigned to hunt this element\n\n=== EXAMPLES ===\nMirror TVT element hunt:\n  Entry 0: ELEMENT, OPFOR, 1PLT\n  Entry 1: ELEMENT, BLUFOR, 1PLT\n\nThree-way element hunt:\n  Entry 0: ELEMENT, INDFOR, 1PLT\n  (BLUFOR and OPFOR both hunt INDFOR automatically)", UIWidgets.EditBoxMultiline, "HVT Setup Instructions", category: "Documentation")]
 	string m_sInstructions;
 	
 	// Replicated HVT positions (server → client)
@@ -158,7 +173,14 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	ref map<int, IEntity> m_mEntryToTransponder = new map<int, IEntity>();   // entry index → transponder entity, cached at SetHVTAndState to avoid hot loop FindEntityByName's
 	ref map<IEntity, SCR_CharacterDamageManagerComponent> m_mHVTDamageManagers = new map<IEntity, SCR_CharacterDamageManagerComponent>(); // entity → damage manager (OBJECT entries absent = alive by entity existence)
 	
-	// Client-side: Track which markers have been removed for JIPS/mishaps/desyncs
+	// ELEMENT entry tracking
+	ref map<int, RplId> m_mEntryToTargetGroup = new map<int, RplId>();
+	ref map<IEntity, RplId> m_mElementMemberToGroup = new map<IEntity, RplId>();
+	ref map<RplId, string> m_mLastEliminatorFactionByGroup = new map<RplId, string>();
+	ref set<int> m_sEliminatedEntryIndices = new set<int>();
+	ref set<RplId> m_sEliminatedGroupIds = new set<RplId>();
+	
+	// Client-side: Track which markers have been removed for JIP/mishaps/desyncs
 	ref set<int> m_sRemovedMarkerIndices = new set<int>();
 	
 	const string MARKER_ICON = "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds";
@@ -171,6 +193,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// ReplicationTimer prevents constant position updates to clients= (m_timeBetweenPings ; Performance good ?)
 	float m_fReplicationTimer = 0; // Timer for marker position replication now fires UpdateHVTPositions every m_timeBetweenPings seconds
 	float m_fPlayerCheckTimer = 0; // Checks + ReRegisters + Resets Invulnerability if set if player HVTs every 60s to catch JIP/respawns
+	float m_fUpdateBuffer = 0;
 
 	//------------------------------------------------------------------------------------------------
 	
@@ -182,7 +205,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		SetEventMask(owner, EntityEvent.FIXEDFRAME); // Testing event mask for initial clientside 
 	}
 	
-	float m_fUpdateBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeSlice);
@@ -225,11 +247,17 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				return;
 			}
 			
-			// Server: Periodic player HVT re-registration
-			if (++m_fPlayerCheckTimer >= 60)
+			if (Replication.IsServer())
 			{
-				m_fPlayerCheckTimer = 0;
-				RegisterPlayerHVTs();
+				// Server: Periodic player HVT re-registration and ELEMENT member re-registration
+				if (++m_fPlayerCheckTimer >= 60)
+				{
+					m_fPlayerCheckTimer = 0;
+					RegisterPlayerHVTs();
+					RegisterElementMembers();
+				}
+				
+				CheckElementEliminations();
 			}
 			
 			// Server: Sync positions at the configured interval, replication fires only after m_timeBetweenPings for performance reasons
@@ -258,7 +286,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 			{
-				if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
+				if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER || entry.m_eEntryType == CRF_HVTEntryType.ELEMENT)
 					continue;
 				
 				if (entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
@@ -438,7 +466,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		string targetLabel = "HVT";
 		if (m_eTargetType == CRF_TargetType.VIP)
 			targetLabel = "VIP";
-		
+
 		// Get HVT's faction from entry
 		string hvtFactionLabel = "";
 		if (m_mHVTEntryIndex.Contains(hvtEntity))
@@ -489,7 +517,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Get title based on target type
 		string hintTitle = "HVT KILLED";
-		if (m_eTargetType == CRF_TargetType.VIP)
+		if (m_sDeadHVTHint.IndexOf("element eliminated") != -1)
+			hintTitle = "ELEMENT ELIMINATED";
+		else if (m_eTargetType == CRF_TargetType.VIP)
 			hintTitle = "VIP KILLED";
 		
 		hintManager.ShowCustomHint(m_sDeadHVTHint, hintTitle, 10);
@@ -503,6 +533,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 		{
 			RegisterPlayerHVTs();
+			ResolveElementGroups();
+			RegisterElementMembers();
 			
 			if (m_bEnableTransponderMarker && m_bInitialPing)
 				UpdateHVTPositions();
@@ -516,20 +548,17 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!playerScriptedMarkerManager) 
 			return;
 		
-		if (m_filterFaction)
-		{
-			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-			if (!factionManager)
-				return;
-			
-			Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
-			if (!faction || faction.GetFactionKey() != m_searcherFactionKey)
-				return;
-		}
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		Faction localFaction;
+		if (factionManager)
+			localFaction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
 		
 		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 		{
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
+				continue;
+			
+			if (!CanLocalPlayerSeeEntryMarker(entry, localFaction))
 				continue;
 			
 			if (!m_mEntryToTransponder.Contains(index))
@@ -541,6 +570,364 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Was: playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", m_timeBetweenPings, ...) // Fix A
 			playerScriptedMarkerManager.AddScriptedMarker(entry.m_sTransponderEntityName, "0 0 0", 0, entry.m_sMarkerText, MARKER_ICON, MARKER_SIZE, entry.GetMarkerColor());
 		}
+	}
+	
+	// Returns true if the local player should see this entry's transponder marker
+	protected bool CanLocalPlayerSeeEntryMarker(CRF_HVTEntry entry, Faction localFaction)
+	{
+		if (m_filterFaction)
+		{
+			if (!localFaction)
+				return false;
+			return localFaction.GetFactionKey() == m_searcherFactionKey;
+		}
+		
+		// Default: every faction except the entry's target faction can see the marker
+		string targetFactionKey = entry.GetFactionKey();
+		if (targetFactionKey.IsEmpty())
+			return true;
+		
+		if (!localFaction)
+			return false;
+		
+		return localFaction.GetFactionKey() != targetFactionKey;
+	}
+	
+	protected ref array<string> GetMissionFactionKeys()
+	{
+		ref array<string> factionKeys = new array<string>();
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return factionKeys;
+		
+		foreach (int slotId, CRF_SlotData slotData : slottingManager.GetSlotMap())
+		{
+			if (!slotData)
+				continue;
+			
+			string factionKey = slotData.GetSlotFactionKey();
+			if (factionKey.IsEmpty())
+				continue;
+			
+			if (factionKeys.Find(factionKey) == -1)
+				factionKeys.Insert(factionKey);
+		}
+		
+		return factionKeys;
+	}
+	
+	protected ref array<string> CollectHunterFactionsForTarget(string targetFactionKey)
+	{
+		ref array<string> hunterFactions = new array<string>();
+		
+		foreach (string factionKey : GetMissionFactionKeys())
+		{
+			if (factionKey == targetFactionKey)
+				continue;
+			
+			hunterFactions.Insert(factionKey);
+		}
+		
+		return hunterFactions;
+	}
+	
+	void ResolveElementGroups()
+	{
+		if (!m_aHVTEntries)
+			return;
+		
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+		{
+			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.ELEMENT)
+				continue;
+			
+			if (m_mEntryToTargetGroup.Contains(index))
+				continue;
+			
+			if (entry.GetFactionKey().IsEmpty() || entry.m_sTargetCallsign.IsEmpty())
+			{
+				Print(string.Format("[HVT] Warning: ELEMENT entry %1 missing faction or callsign!", index), LogLevel.WARNING);
+				continue;
+			}
+			
+			SCR_AIGroup group = FindGroupByFactionAndCallsign(entry.GetFactionKey(), entry.m_sTargetCallsign);
+			if (!group)
+			{
+				Print(string.Format("[HVT] Warning: ELEMENT entry %1 could not resolve group '%2' (%3).", index, entry.m_sTargetCallsign, entry.GetFactionKey()), LogLevel.WARNING);
+				continue;
+			}
+			
+			m_mEntryToTargetGroup.Set(index, Replication.FindItemId(group));
+		}
+	}
+	
+	SCR_AIGroup FindGroupByFactionAndCallsign(string factionKey, string callsignFilter)
+	{
+		if (factionKey.IsEmpty() || callsignFilter.IsEmpty())
+			return null;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return null;
+		
+		string filterLower = callsignFilter;
+		filterLower.ToLower();
+		
+		array<SCR_AIGroup> groups = slottingManager.GetAllGroups(factionKey);
+		foreach (SCR_AIGroup group : groups)
+		{
+			if (!group)
+				continue;
+			
+			string groupName = group.GetCustomNameWithOriginal();
+			groupName.ToLower();
+			if (groupName.IndexOf(filterLower) != -1)
+				return group;
+		}
+		
+		return null;
+	}
+	
+	void RegisterElementMembers()
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		ref set<RplId> groupsRegistered = new set<RplId>();
+		
+		foreach (int index, RplId groupId : m_mEntryToTargetGroup)
+		{
+			if (groupId == RplId.Invalid() || m_sEliminatedGroupIds.Contains(groupId))
+				continue;
+			
+			if (groupsRegistered.Contains(groupId))
+				continue;
+			
+			groupsRegistered.Insert(groupId);
+			
+			array<int> slotIds = slottingManager.GetAllSlotIDsForGroup(groupId);
+			foreach (int slotId : slotIds)
+			{
+				CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+				if (!slotData || slotData.GetIsDeadSlot())
+					continue;
+				
+				IEntity memberEntity = GetLivingEntityFromSlot(slotData, playerManager);
+				if (memberEntity)
+					RegisterElementMember(memberEntity, groupId);
+			}
+		}
+	}
+	
+	void RegisterElementMember(IEntity memberEntity, RplId groupId)
+	{
+		if (!memberEntity || m_mElementMemberToGroup.Contains(memberEntity))
+			return;
+		
+		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(memberEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (!characterController)
+			return;
+		
+		m_mElementMemberToGroup.Set(memberEntity, groupId);
+		characterController.m_OnPlayerDeathWithParam.Insert(OnElementMemberDeath);
+	}
+	
+	void OnElementMemberDeath(SCR_CharacterControllerComponent characterController, IEntity killerEntity, Instigator killer)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		IEntity memberEntity = characterController.GetOwner();
+		if (!memberEntity || !m_mElementMemberToGroup.Contains(memberEntity))
+			return;
+		
+		RplId groupId = m_mElementMemberToGroup.Get(memberEntity);
+		m_mElementMemberToGroup.Remove(memberEntity);
+		
+		string killerFactionKey = ResolveKillerFactionKey(killer, killerEntity);
+		if (!killerFactionKey.IsEmpty())
+			m_mLastEliminatorFactionByGroup.Set(groupId, killerFactionKey);
+		
+		CheckElementEliminations();
+		
+		if (m_bEnableTransponderMarker)
+			UpdateHVTPositions();
+	}
+	
+	protected string ResolveKillerFactionKey(Instigator killer, IEntity killerEntity)
+	{
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionManager)
+			return "";
+		
+		int killerPlayerId = killer.GetInstigatorPlayerID();
+		if (killerPlayerId > 0)
+		{
+			Faction killerFaction = factionManager.GetPlayerFaction(killerPlayerId);
+			if (killerFaction)
+				return killerFaction.GetFactionKey();
+		}
+		
+		if (killerEntity)
+			return CRF_EntityHelper.DetermineFactionKey(killerEntity);
+		
+		return "";
+	}
+	
+	void CheckElementEliminations()
+	{
+		if (!m_aHVTEntries)
+			return;
+		
+		ResolveElementGroups();
+		
+		ref set<RplId> groupsChecked = new set<RplId>();
+		
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+		{
+			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.ELEMENT)
+				continue;
+			
+			if (m_sEliminatedEntryIndices.Contains(index))
+				continue;
+			
+			if (!m_mEntryToTargetGroup.Contains(index))
+				continue;
+			
+			RplId groupId = m_mEntryToTargetGroup.Get(index);
+			if (groupId == RplId.Invalid() || m_sEliminatedGroupIds.Contains(groupId))
+				continue;
+			
+			if (groupsChecked.Contains(groupId))
+				continue;
+			
+			groupsChecked.Insert(groupId);
+			
+			if (IsTargetGroupAlive(groupId))
+				continue;
+			
+			OnTargetGroupEliminated(groupId);
+		}
+	}
+	
+	void OnTargetGroupEliminated(RplId groupId)
+	{
+		m_sEliminatedGroupIds.Insert(groupId);
+		
+		string targetLabel = BuildGroupLabel(groupId);
+		ref array<string> hunterFactions = CollectHunterFactionsForGroup(groupId);
+		string eliminatorFaction = "";
+		if (m_mLastEliminatorFactionByGroup.Contains(groupId))
+			eliminatorFaction = m_mLastEliminatorFactionByGroup.Get(groupId);
+		
+		string hunterLabel = BuildHunterLabel(hunterFactions, eliminatorFaction);
+		m_sDeadHVTHint = targetLabel + " eliminated" + hunterLabel;
+		Replication.BumpMe();
+		OnDeadHVTHintReplicated();
+		
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+		{
+			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.ELEMENT)
+				continue;
+			
+			if (!m_mEntryToTargetGroup.Contains(index))
+				continue;
+			
+			if (m_mEntryToTargetGroup.Get(index) != groupId)
+				continue;
+			
+			m_sEliminatedEntryIndices.Insert(index);
+		}
+		
+		if (m_bEnableTransponderMarker)
+			UpdateHVTPositions();
+		
+		if (m_bAutoSetWinnerOnElimination)
+		{
+			string winningFaction = ResolveEliminationWinner(groupId, hunterFactions);
+			if (!winningFaction.IsEmpty())
+			{
+				CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+				if (loggingManager)
+					loggingManager.SetWinningFaction(winningFaction, "hvt_element_elimination");
+				
+				if (m_bAutoEndMissionOnElimination)
+					CRF_Gamemode.GetInstance().AdvanceGamemodeState(true);
+			}
+		}
+	}
+	
+	protected string BuildGroupLabel(RplId groupId)
+	{
+		SCR_AIGroup group = CRF_EntityHelper.GetGroupFromRplId(groupId);
+		if (!group)
+			return "Target element";
+		
+		Faction faction = group.GetFaction();
+		string factionKey = "";
+		if (faction)
+			factionKey = faction.GetFactionKey() + " ";
+		
+		return factionKey + group.GetCustomNameWithOriginal() + " element";
+	}
+	
+	protected ref array<string> CollectHunterFactionsForGroup(RplId groupId)
+	{
+		SCR_AIGroup group = CRF_EntityHelper.GetGroupFromRplId(groupId);
+		string targetFactionKey = "";
+		if (group)
+		{
+			Faction faction = group.GetFaction();
+			if (faction)
+				targetFactionKey = faction.GetFactionKey();
+		}
+		
+		return CollectHunterFactionsForTarget(targetFactionKey);
+	}
+	
+	protected string BuildHunterLabel(array<string> hunterFactions, string eliminatorFaction = "")
+	{
+		if (!hunterFactions || hunterFactions.Count() == 0)
+			return "";
+		
+		if (hunterFactions.Count() == 1)
+			return " - " + hunterFactions[0] + " objective complete";
+		
+		if (!eliminatorFaction.IsEmpty())
+			return " - Eliminated by " + eliminatorFaction;
+		
+		string label = " - Objectives complete for ";
+		for (int i = 0; i < hunterFactions.Count(); i++)
+		{
+			if (i > 0)
+				label += ", ";
+			label += hunterFactions[i];
+		}
+		
+		return label;
+	}
+	
+	protected string ResolveEliminationWinner(RplId groupId, array<string> hunterFactions)
+	{
+		if (!hunterFactions || hunterFactions.Count() == 0)
+			return "";
+		
+		if (hunterFactions.Count() == 1)
+			return hunterFactions[0];
+		
+		if (!m_mLastEliminatorFactionByGroup.Contains(groupId))
+			return "";
+		
+		string eliminatorFaction = m_mLastEliminatorFactionByGroup.Get(groupId);
+		if (eliminatorFaction.IsEmpty())
+			return "";
+		
+		if (hunterFactions.Find(eliminatorFaction) != -1)
+			return eliminatorFaction;
+		
+		return "";
 	}
 	
 	// Server: Update and replicate HVT positions
@@ -558,9 +945,25 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		for (int i = 0; i < entryCount; i++)
 		{
 			vector pos = vector.Zero;
+			CRF_HVTEntry entry = m_aHVTEntries[i];
 			
+			if (!entry)
+			{
+				m_aHvtPositions.Insert(pos);
+				continue;
+			}
+			
+			if (entry.m_eEntryType == CRF_HVTEntryType.ELEMENT)
+			{
+				if (!m_sEliminatedEntryIndices.Contains(i) && m_mEntryToTargetGroup.Contains(i))
+				{
+					RplId groupId = m_mEntryToTargetGroup.Get(i);
+					if (groupId != RplId.Invalid() && !m_sEliminatedGroupIds.Contains(groupId))
+						pos = GetElementCentroid(groupId);
+				}
+			}
 			// O(1) lookup using reverse map
-			if (m_mEntryToHVT.Contains(i))
+			else if (m_mEntryToHVT.Contains(i))
 			{
 				IEntity hvtEntity = m_mEntryToHVT.Get(i);
 				if (hvtEntity && IsHVTAlive(hvtEntity))
@@ -572,6 +975,107 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		Replication.BumpMe();
 		SyncTransponderPositions();
+	}
+	
+	vector GetElementCentroid(RplId groupId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return vector.Zero;
+		
+		array<int> slotIds = slottingManager.GetAllSlotIDsForGroup(groupId);
+		vector sum = vector.Zero;
+		int count = 0;
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		
+		foreach (int slotId : slotIds)
+		{
+			CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData || slotData.GetIsDeadSlot())
+				continue;
+			
+			IEntity livingEntity = GetLivingEntityFromSlot(slotData, playerManager);
+			if (!livingEntity)
+				continue;
+			
+			sum += livingEntity.GetOrigin();
+			count++;
+		}
+		
+		if (count == 0)
+			return vector.Zero;
+		
+		return Vector(sum[0] / count, sum[1] / count, sum[2] / count);
+	}
+	
+	protected IEntity GetLivingEntityFromSlot(CRF_SlotData slotData, PlayerManager playerManager)
+	{
+		if (!slotData)
+			return null;
+		
+		int playerId = slotData.GetSlotCurrentPlayerId();
+		if (playerId > 0 && playerManager)
+		{
+			IEntity controlled = playerManager.GetPlayerControlledEntity(playerId);
+			if (controlled && IsCharacterAlive(controlled))
+				return controlled;
+		}
+		
+		SCR_ChimeraCharacter character = CRF_EntityHelper.GetCharacterFromRplId(slotData.GetSlotCurrentCharacter());
+		if (character && IsCharacterAlive(character))
+			return character;
+		
+		return null;
+	}
+	
+	protected bool IsCharacterAlive(IEntity entity)
+	{
+		if (!entity)
+			return false;
+		
+		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(entity.FindComponent(SCR_CharacterDamageManagerComponent));
+		if (!damageManager)
+			return true;
+		
+		return damageManager.GetState() != EDamageState.DESTROYED;
+	}
+	
+	bool IsTargetGroupAlive(RplId groupId)
+	{
+		if (groupId == RplId.Invalid() || m_sEliminatedGroupIds.Contains(groupId))
+			return false;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return false;
+		
+		array<int> slotIds = slottingManager.GetAllSlotIDsForGroup(groupId);
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		bool anyOccupiedSlot = false;
+		
+		foreach (int slotId : slotIds)
+		{
+			CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData)
+				continue;
+			
+			bool occupied = slotData.GetSlotCurrentPlayerId() > 0 || slotData.GetSlotCurrentCharacter() != RplId.Invalid();
+			if (!occupied)
+				continue;
+			
+			anyOccupiedSlot = true;
+			
+			if (slotData.GetIsDeadSlot())
+				continue;
+			
+			if (GetLivingEntityFromSlot(slotData, playerManager))
+				return true;
+		}
+		
+		if (!anyOccupiedSlot)
+			return true;
+		
+		return false;
 	}
 	
 	// Check if HVT is alive/valid via damage state (or entity existence for objects)
@@ -602,6 +1106,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		
 		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		Faction localFaction;
+		if (factionManager)
+			localFaction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
 		
 		// Use min of both arrays to prevent index out of bounds
 		int iterCount = Math.Min(m_aHVTEntries.Count(), m_aHvtPositions.Count());
@@ -609,6 +1117,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			CRF_HVTEntry entry = m_aHVTEntries[i];
 			if (!entry || entry.m_sTransponderEntityName.IsEmpty())
+				continue;
+			
+			if (!CanLocalPlayerSeeEntryMarker(entry, localFaction))
 				continue;
 			
 			vector newPos = m_aHvtPositions[i];
@@ -652,9 +1163,48 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (m_eTargetType == CRF_TargetType.VIP)
 				targetLabel = "VIP";
 			
+			ref set<RplId> pingedGroups = new set<RplId>();
+			
 			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
 			{
-				if (!entry || !m_mEntryToHVT.Contains(index))
+				if (!entry)
+					continue;
+				
+				if (entry.m_eEntryType == CRF_HVTEntryType.ELEMENT)
+				{
+					if (m_sEliminatedEntryIndices.Contains(index))
+						continue;
+					
+					if (!m_mEntryToTargetGroup.Contains(index))
+						continue;
+					
+					RplId groupId = m_mEntryToTargetGroup.Get(index);
+					if (groupId == RplId.Invalid() || m_sEliminatedGroupIds.Contains(groupId))
+						continue;
+					
+					if (pingedGroups.Contains(groupId))
+						continue;
+					
+					if (!IsTargetGroupAlive(groupId))
+						continue;
+					
+					pingedGroups.Insert(groupId);
+					
+					SCR_AIGroup group = CRF_EntityHelper.GetGroupFromRplId(groupId);
+					string groupName = entry.m_sTargetCallsign;
+					if (group)
+						groupName = group.GetCustomNameWithOriginal();
+					
+					// If faction-filtered only notify the searching faction, otherwise notify the target faction
+					string pingFactionKey = entry.GetFactionKey();
+					if (m_filterFaction)
+						pingFactionKey = m_searcherFactionKey;
+					
+					CRF_RplBroadcastManager.GetInstance().SendHint(entry.GetFactionKey() + " " + groupName + " transponder ping", -1, pingFactionKey);
+					continue;
+				}
+				
+				if (!m_mEntryToHVT.Contains(index))
 					continue;
 				
 				IEntity hvtEntity = m_mEntryToHVT.Get(index);
@@ -715,7 +1265,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// position: Center point to search from
 	// range: Search radius in meters
 	// faction: Filter by CRF_HVTFaction, or NONE to match any faction
-	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT), or -1 to match any type
+	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT/ELEMENT), or -1 to match any type
 	// Returns: First matching alive HVT entity, or null if none found
 	//
 	// Example usage:
@@ -759,7 +1309,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// position: Center point to search from
 	// range: Search radius in meters (use -1 for unlimited range / count all)
 	// faction: Filter by CRF_HVTFaction, or NONE to match any faction
-	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT), or -1 to match any type
+	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT/ELEMENT), or -1 to match any type
 	// Returns: Number of matching alive HVTs
 	//
 	// Example usage:
@@ -801,5 +1351,47 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		return hvtCount;
+	}
+	
+	// ELEMENT query methods — use entry index from HVT Entries array, or callsign lookup
+	bool IsElementAlive(int entryIndex)
+	{
+		if (m_sEliminatedEntryIndices.Contains(entryIndex))
+			return false;
+		
+		if (!m_mEntryToTargetGroup.Contains(entryIndex))
+			return false;
+		
+		return IsTargetGroupAlive(m_mEntryToTargetGroup.Get(entryIndex));
+	}
+	
+	bool IsElementAliveByCallsign(string factionKey, string callsignFilter)
+	{
+		SCR_AIGroup group = FindGroupByFactionAndCallsign(factionKey, callsignFilter);
+		if (!group)
+			return false;
+		
+		RplId groupId = Replication.FindItemId(group);
+		if (m_sEliminatedGroupIds.Contains(groupId))
+			return false;
+		
+		return IsTargetGroupAlive(groupId);
+	}
+	
+	vector GetElementPosition(int entryIndex)
+	{
+		if (!m_mEntryToTargetGroup.Contains(entryIndex))
+			return vector.Zero;
+		
+		return GetElementCentroid(m_mEntryToTargetGroup.Get(entryIndex));
+	}
+	
+	bool IsElementInRange(int entryIndex, vector position, float range)
+	{
+		vector elementPos = GetElementPosition(entryIndex);
+		if (elementPos == vector.Zero)
+			return false;
+		
+		return vector.Distance(position, elementPos) <= range;
 	}
 }
