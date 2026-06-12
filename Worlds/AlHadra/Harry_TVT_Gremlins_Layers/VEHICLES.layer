@@ -1,0 +1,111 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1552.551 106.983 3477.109
+  angles 0 130.823 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6994E9328B0498EC}" {
+    m_Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+   }
+  }
+ }
+ {
+  coords 1545.134 106.629 3482.269
+  angles 0 117.363 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6994E9328B0498EC}" {
+    m_Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+   }
+  }
+ }
+ {
+  coords 1544.879 106.025 3461.676
+  angles 0 60.898 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6994E9328B0498EC}" {
+    m_Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+   }
+  }
+ }
+ {
+  coords 1573.46 108.278 3477.615
+  angles 0 130.823 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6994E9328B0498EC}" {
+    m_Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+   }
+  }
+ }
+ {
+  coords 1566.718 108.688 3483.414
+  angles 0 130.823 0
+  m_rVehicle "{099FA8D049DAAAFC}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleMMG_Front.et"
+  m_sFactionKey "OPFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6994E9328B0498EC}" {
+    m_Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+   }
+  }
+ }
+ {
+  coords 7237.267 17.844 5497.524
+  angles 0 -12.788 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7241.46 17.844 5498.034
+  angles 0 -12.788 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7247.55 17.844 5499.25
+  angles 0 -12.788 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7251.941 17.844 5500.126
+  angles 0 -12.788 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7256.302 17.844 5501.286
+  angles 0 -12.788 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 7261.166 17.844 5501.827
+  angles 0 -12.788 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ components {
+  SoundComponent "{697AEB8BB87A45E9}" {
+   Enabled 0
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6994E93EF918766C}" {
+     SlotTemplate InventoryStorageSlot sandbags {
+      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+     NumSlots 100
+    }
+   }
+  }
+ }
+ coords 2842.084 52.938 4940.191
+}
