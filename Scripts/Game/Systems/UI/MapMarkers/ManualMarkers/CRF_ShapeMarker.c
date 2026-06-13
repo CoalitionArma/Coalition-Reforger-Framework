@@ -39,6 +39,12 @@ class CRF_ShapeMarker : CRF_ManualMarker
 	[Attribute("2.0", UIWidgets.Slider, "Border width (pixels)", "0.25 12 0.05", category: "Shape Marker")]
 	protected float m_fShapeBorderWidth;
 
+	[Attribute("0", UIWidgets.CheckBox, "Scale border width with marker size", category: "Shape Marker")]
+	protected bool m_bScaleBorderWithMarkerSize;
+
+	[Attribute("100", UIWidgets.Slider, "Reference marker size for border scaling", "10 1000 1", category: "Shape Marker")]
+	protected float m_fBorderScaleReferenceSize;
+
 	[Attribute("64", UIWidgets.Slider, "Circle segments", "12 180 1", category: "Shape Marker")]
 	protected int m_iCircleSegments;
 
@@ -229,7 +235,20 @@ class CRF_ShapeMarker : CRF_ManualMarker
 
 		m_DrawShapeBorder.m_Vertices = vertices;
 		m_DrawShapeBorder.m_iColor = m_MarkerColor.PackToInt();
-		m_DrawShapeBorder.m_fWidth = m_fShapeBorderWidth;
+		m_DrawShapeBorder.m_fWidth = GetBorderWidth(sizeX, sizeY);
+	}
+
+	protected float GetBorderWidth(float sizeX, float sizeY)
+	{
+		float borderWidth = m_fShapeBorderWidth;
+		if (!m_bScaleBorderWithMarkerSize)
+			return borderWidth;
+
+		float referenceSize = Math.Max(1.0, m_fBorderScaleReferenceSize);
+		float markerSize = Math.Max(sizeX, sizeY);
+		borderWidth *= markerSize / referenceSize;
+
+		return Math.Max(0.05, borderWidth);
 	}
 
 	protected void InsertRotatedVertex(notnull array<float> vertices, float centerX, float centerY, float localX, float localY, float cosYaw, float sinYaw)
