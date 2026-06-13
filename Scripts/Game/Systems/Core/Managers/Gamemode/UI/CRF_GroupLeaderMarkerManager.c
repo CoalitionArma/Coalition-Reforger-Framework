@@ -774,9 +774,22 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Set initial position off-screen
 		FrameSlot.SetPos(root, -10000, -10000);
 		root.SetOpacity(0.0); // Start invisible
+		root.SetEnabled(false); // Hidden markers must not block UI input
 		root.SetZOrder(50); // Lower z-order to avoid blocking other UI
 		
 		return root;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Hide marker widget and ensure it cannot consume input while hidden
+	protected void SetMarkerHidden(CRF_GroupLeaderMarkerData markerData)
+	{
+		if (!markerData || !markerData.m_wMarkerRoot)
+			return;
+
+		markerData.m_wMarkerRoot.SetOpacity(0.0);
+		markerData.m_wMarkerRoot.SetEnabled(false);
+		FrameSlot.SetPos(markerData.m_wMarkerRoot, -10000, -10000);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -805,7 +818,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -813,7 +826,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
 		if (mapEntity && mapEntity.IsOpen())
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -827,7 +840,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
 		if (!camera)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -837,7 +850,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Hide if behind camera or too far away
 		if (screenPosition[2] < 0 || distance > m_fMaxDistance)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -870,6 +883,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		
 		// Set opacity based on distance (closer = more opaque)
 		float opacity = Math.Clamp(sizeFactor, 0.4, 1.0);
+		markerData.m_wMarkerRoot.SetEnabled(true);
 		markerData.m_wMarkerRoot.SetOpacity(opacity);
 	}
 	
