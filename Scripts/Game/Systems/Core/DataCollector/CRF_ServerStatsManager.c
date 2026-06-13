@@ -96,6 +96,8 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	const float WALK_SPEED_CLAMP           = 10.0;
 	// Update period for distance tracking (seconds)
 	const float DISTANCE_UPDATE_PERIOD     = 10.0;
+	const int HOOK_RETRY_DELAY_MS          = 250;
+	const int HOOK_RETRY_MAX_ATTEMPTS      = 12;
 
 	// ── Private state ────────────────────────────────────────────────────────
 	private ref map<int, ref CRF_PlayerStats> m_mPlayerStats   = new map<int, ref CRF_PlayerStats>();
@@ -202,7 +204,8 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		m_mWalkingPlayers.Set(playerId, playerEntity);
 
 		// Attach entity-level invokers for shots, grenades, healing, compartment.
-		RegisterEntityHooks(playerId, playerEntity);
+		// Retry briefly in case character subcomponents are not ready on the same frame.
+		RegisterEntityHooksWithRetry(playerId, playerEntity, 0);
 	}
 
 	//==============================================================================================
@@ -488,34 +491,73 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	//==============================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	protected void RegisterEntityHooks(int playerId, IEntity playerEntity)
+	protected bool RegisterEntityHooks(int playerId, IEntity playerEntity)
 	{
 		if (!playerEntity)
-			return;
+			return false;
+
+		bool hasAnyHook = false;
 
 		// ── Shots & grenades — EventHandlerManagerComponent ─────────────────
 		EventHandlerManagerComponent ehm = EventHandlerManagerComponent.Cast(
 			playerEntity.FindComponent(EventHandlerManagerComponent));
 		if (ehm)
 		{
+			ehm.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired_Wrapper);
+			ehm.RemoveScriptHandler("OnGrenadeThrown",  this, OnGrenadeThrown_Wrapper);
 			ehm.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired_Wrapper);
 			ehm.RegisterScriptHandler("OnGrenadeThrown",  this, OnGrenadeThrown_Wrapper);
+			hasAnyHook = true;
 		}
 
 		// ── Healing items — SCR_CharacterControllerComponent ────────────────
 		SCR_CharacterControllerComponent charCtrl = SCR_CharacterControllerComponent.Cast(
 			playerEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (charCtrl)
+		{
+			charCtrl.m_OnItemUseEndedInvoker.Remove(OnHealingItemUsed);
 			charCtrl.m_OnItemUseEndedInvoker.Insert(OnHealingItemUsed);
+			hasAnyHook = true;
+		}
 
 		// ── Compartment access — for driving / occupant tracking ─────────────
 		SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(
 			playerEntity.FindComponent(SCR_CompartmentAccessComponent));
 		if (compartmentAccess)
 		{
+			compartmentAccess.GetOnCompartmentEntered().Remove(OnCompartmentEntered);
+			compartmentAccess.GetOnCompartmentLeft().Remove(OnCompartmentLeft);
 			compartmentAccess.GetOnCompartmentEntered().Insert(OnCompartmentEntered);
 			compartmentAccess.GetOnCompartmentLeft().Insert(OnCompartmentLeft);
+			hasAnyHook = true;
 		}
+
+		return hasAnyHook;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void RegisterEntityHooksWithRetry(int playerId, IEntity playerEntity, int attempt)
+	{
+		if (!playerEntity || playerId <= 0)
+			return;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager || !playerManager.IsPlayerConnected(playerId))
+			return;
+
+		if (playerManager.GetPlayerControlledEntity(playerId) != playerEntity)
+			return;
+
+		if (RegisterEntityHooks(playerId, playerEntity))
+			return;
+
+		if (attempt + 1 >= HOOK_RETRY_MAX_ATTEMPTS)
+		{
+			Print(string.Format("[CRF_ServerStatsManager] WARNING: Failed to attach entity hooks for player %1 after %2 attempts", playerId, HOOK_RETRY_MAX_ATTEMPTS), LogLevel.WARNING);
+			return;
+		}
+
+		GetGame().GetCallqueue().CallLater(RegisterEntityHooksWithRetry, HOOK_RETRY_DELAY_MS, false, playerId, playerEntity, attempt + 1);
 	}
 
 	//------------------------------------------------------------------------------------------------
