@@ -131,6 +131,12 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 		FactionKey myFaction = CRF_EntityHelper.DetermineFactionKey(this);
 		float maxDistSq = Math.Pow(Math.Max(m_fFriendlyProximityMeters, 1.0), 2);
 
+		// Proximity is based on any friendly player, not restricted to the player's group.
+		return !HasFriendlyWithinRange(playerManager, playerId, myFaction, maxDistSq);
+	}
+
+	protected bool HasFriendlyWithinRange(PlayerManager playerManager, int playerId, FactionKey myFaction, float maxDistSq)
+	{
 		array<int> allPlayers = {};
 		playerManager.GetPlayers(allPlayers);
 
@@ -154,10 +160,10 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 				continue;
 
 			if (vector.DistanceSq(GetOrigin(), otherEntity.GetOrigin()) <= maxDistSq)
-				return false;
+				return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	protected void UpdatePenaltyState(float targetPenalty, float timeSlice)
