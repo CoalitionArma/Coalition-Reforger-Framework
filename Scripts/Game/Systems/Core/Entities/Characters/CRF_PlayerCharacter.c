@@ -38,6 +38,8 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 	protected float m_fLastAppliedAimPenalty;
 	protected float m_fCohesionAccumulator;
 	protected float m_fLastReplicatedTunnelVision = -1.0;
+	protected bool m_bCachedPenaltyConditionActive;
+	protected bool m_bHasCachedPenaltyCondition;
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 DISABLE AI METHODS
@@ -62,27 +64,33 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 		if (m_bDisableLoneWolfPenalty)
 		{
+			m_bHasCachedPenaltyCondition = false;
+			m_bCachedPenaltyConditionActive = false;
+			m_fCohesionAccumulator = 0;
 			UpdatePenaltyState(0.0, timeSlice);
 			return;
 		}
 
 		if (!m_bEnableCohesionPenalties)
 		{
+			m_bHasCachedPenaltyCondition = false;
+			m_bCachedPenaltyConditionActive = false;
+			m_fCohesionAccumulator = 0;
 			UpdatePenaltyState(0.0, timeSlice);
 			return;
 		}
 
+		float cohesionCheckInterval = Math.Max(m_fCohesionCheckInterval, 0.1);
 		m_fCohesionAccumulator += timeSlice;
-		if (m_fCohesionAccumulator < Math.Max(m_fCohesionCheckInterval, 0.1))
+		if (!m_bHasCachedPenaltyCondition || m_fCohesionAccumulator >= cohesionCheckInterval)
 		{
-			ApplyPenalties();
-			return;
+			m_bCachedPenaltyConditionActive = ShouldApplyPenalty();
+			m_bHasCachedPenaltyCondition = true;
+			m_fCohesionAccumulator = 0;
 		}
 
-		m_fCohesionAccumulator = 0;
-
 		float targetPenalty;
-		if (ShouldApplyPenalty())
+		if (m_bCachedPenaltyConditionActive)
 			targetPenalty = 1.0;
 		else
 			targetPenalty = 0.0;
