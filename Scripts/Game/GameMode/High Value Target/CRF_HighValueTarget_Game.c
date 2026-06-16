@@ -12,6 +12,9 @@
 	NOTES:
 	- Currently to track HVT JIPs/respawns & reapply vulnerability we use m_fPlayerCheckTimer (HVTs are invulnerable between re-registration. Edge case issue is that someone is respawned and within 60s is attempted to be killed. Shouldnt happen realistically.) Not ideal setup but cant find much else.
 	- HVT Prefab selection is what spawns when AI is used, or what Prefab/Slot (optional filter by faction) is used for player-controlled HVTs.
+	
+	REQUIREMENTS
+	- NEEDS ACE CAPTIVES unless we integrate our own captive/prisoner system. Will cause NULL pointers if not installed.
 
 	TODO:
 	- Less crappy re-registration of HVTs/VIPs?
@@ -40,6 +43,13 @@ enum CRF_HVTEntryType
 	AI,     
 	PLAYER, 
 	OBJECT  
+}
+
+enum CRF_AIHVTState
+{
+	UNCONSCIOUS, // Incapacitated with no regen
+	SURRENDERED, // ACE Captives: hands-up surrender animation, requires zipcuffs (ACE Captives required)
+	CUFFED       // ACE Captives: surrendered + zip-cuffed via captive system (ACE Captives required)
 }
 
 // HVT Entry Configuration Class
@@ -131,8 +141,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("0 0 0", "auto", "The rotation (yaw/pitch/roll) applied to spawned AI HVTs.", category: "AI HVT Settings")]
 	vector m_hvtPrefabYaw;
 	
-	[Attribute("true", "auto", "Set AI HVTs to unconscious state on spawn.", category: "AI HVT Settings")]
-	bool m_setUnconcious;
+	[Attribute("0", UIWidgets.ComboBox, "State to apply to AI HVTs on spawn. UNCONSCIOUS: Incapacitated animation, must be drug or carried. SURRENDERED: ACE Captives hands-up animation, NEED ACE zipcuffs. CUFFED: Surrendered and zip-cuffed. The ACE cuff release action is permanently disabled for Surrendered/Cuffed states.", enums: ParamEnumArray.FromEnum(CRF_AIHVTState), category: "AI HVT Settings")]
+	CRF_AIHVTState m_eAIHVTState;
 	
 	//------------------------------------------------------------------------------------------------
 	// HVT ENTRIES
@@ -284,18 +294,32 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				
 				RegisterHVTEntity(hvtEntity, index);
 				
-				// AI-specific: rotation and unconscious state
+				// AI-specific: rotation and initial state
 				if (entry.m_eEntryType == CRF_HVTEntryType.AI)
 				{
 					hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
 					
-					if (m_setUnconcious)
+					switch (m_eAIHVTState)
 					{
-						SetEntityUnconscious(hvtEntity);
-						
-						SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
-						if (characterController)
-							characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+						case CRF_AIHVTState.SURRENDERED:
+						{
+							SetEntitySurrender(hvtEntity, false);
+							break;
+						}
+						case CRF_AIHVTState.CUFFED:
+						{
+							SetEntitySurrender(hvtEntity, true);
+							break;
+						}
+						case CRF_AIHVTState.UNCONSCIOUS:
+						{
+							SetEntityUnconscious(hvtEntity);
+							
+							SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+							if (characterController)
+								characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+							break;
+						}
 					}
 				}
 			}
@@ -671,6 +695,41 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 	}
 	
+	// Apply ACE Captives state to an AI HVT. Surrendered = hands-up, Cuffed = tied/restrained.
+	// Note: Calling SetCaptive and SetSurrender together causes a ACE Captives animation conflict that causes errors
+	// The ACE release action is permanently disabled via SetActionEnabled_S in both cases.
+	void SetEntitySurrender(IEntity entity, bool cuffed)
+	{
+		if (!entity)
+			return;
+		
+		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
+		if (!charController)
+			return;
+		
+		if (cuffed)
+			charController.ACE_Captives_SetCaptive(true);
+		else
+			charController.ACE_Captives_SetSurrender(true);
+		
+		// Disable the ACE release action for all clients via server-authoritative flag.
+		// SetActionEnabled_S replicates to clients — CanBeShown() returns false everywhere.
+		ActionsManagerComponent actionsManager = ActionsManagerComponent.Cast(entity.FindComponent(ActionsManagerComponent));
+		if (actionsManager)
+		{
+			array<BaseUserAction> actions = {};
+			actionsManager.GetActionsList(actions);
+			foreach (BaseUserAction action : actions)
+			{
+				if (action.IsInherited(ACE_Captives_ReleaseCaptiveUserAction))
+				{
+					action.SetActionEnabled_S(false);
+					break;
+				}
+			}
+		}
+	}
+	
 	// Set AI HVT entity unconscious with no regen
 	void SetEntityUnconscious(IEntity entity)
 	{
@@ -753,6 +812,19 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		return null;
+	}
+	
+	// Getter bool for checking if entity is AIHVT
+	bool IsAIHVT(IEntity entity)
+	{
+		if (!entity || !m_mHVTEntryIndex.Contains(entity))
+			return false;
+		
+		int entryIndex = m_mHVTEntryIndex.Get(entity);
+		if (entryIndex < 0 || entryIndex >= m_aHVTEntries.Count())
+			return false;
+		
+		return m_aHVTEntries[entryIndex].m_eEntryType == CRF_HVTEntryType.AI;
 	}
 	
 	// Count HVTs within range of a position
