@@ -26,7 +26,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Forces from Company C of 2PARA will attempt to seize the Regina Stream Bridge from the Soviet Army's 1st Company, 2nd Battalion, 268th Seperate Naval Infantry Regiment, in order to open an alternate route permitting the British forces to bypass stout Soviet defenses at St. Pierre's pass. Do not fail."\
+   m_sTextData "Forces from Company C of 2PARA will attempt to seize the Regina Stream Bridge from the Soviet Army's 1st Company, 2nd Battalion, 268th Separate Naval Infantry Regiment, in order to open an alternate route permitting the British forces to bypass stout Soviet defenses at St. Pierre's pass. Do not fail."\
    ""\
    "Time: 0800"\
    ""\
