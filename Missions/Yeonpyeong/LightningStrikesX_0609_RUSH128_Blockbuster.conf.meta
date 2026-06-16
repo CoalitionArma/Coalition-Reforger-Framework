@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{2719B1B78F29FFBB}Missions/Yeonpyeong/LightningStrikesX_0609_RUSH128_Blockbuster.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

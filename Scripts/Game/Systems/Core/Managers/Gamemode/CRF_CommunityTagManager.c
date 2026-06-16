@@ -79,6 +79,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Fired after both tags and XP are fetched and caches are populated
 	protected ref ScriptInvoker m_OnPlayerInfoUpdated = new ScriptInvoker;
 
+	//! Fired when connected player roster changes (join/leave).
+	//! UI menus can rebuild list boxes immediately without waiting for screen reopen.
+	protected ref ScriptInvoker m_OnPlayerRosterChanged = new ScriptInvoker;
+
+	//! Guards against duplicate game-mode player event registration.
+	protected bool m_bPlayerEventsSubscribed = false;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -87,6 +94,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	void CRF_CommunityTagManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		RegisterPlayerLifecycleCallbacks();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -116,6 +130,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	ScriptInvoker GetOnRanksUpdated()
 	{
 		return m_OnPlayerInfoUpdated;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Returns the invoker that fires when players connect/disconnect.
+	ScriptInvoker GetOnPlayerRosterChanged()
+	{
+		return m_OnPlayerRosterChanged;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -422,5 +443,51 @@ class CRF_CommunityTagManager : ScriptComponent
 		Print(string.Format("[CRF_CommunityTagManager] Failed to fetch player info (result: %1)", cb.GetRestResult()), LogLevel.WARNING);
 		if (bRetry)
 			FetchPlayerInfo();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Registers to game-mode connect/disconnect events so UI can refresh immediately
+	//! and player info can be re-fetched when roster changes.
+	protected void RegisterPlayerLifecycleCallbacks()
+	{
+		if (m_bPlayerEventsSubscribed)
+			return;
+
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (!gameMode)
+		{
+			GetGame().GetCallqueue().CallLater(RegisterPlayerLifecycleCallbacks, 500, false);
+			return;
+		}
+
+		// Remove before insert to keep registration idempotent.
+		gameMode.GetOnPlayerConnected().Remove(OnTrackedPlayerConnected);
+		gameMode.GetOnPlayerConnected().Insert(OnTrackedPlayerConnected);
+		gameMode.GetOnPlayerDisconnected().Remove(OnTrackedPlayerDisconnected);
+		gameMode.GetOnPlayerDisconnected().Insert(OnTrackedPlayerDisconnected);
+
+		m_bPlayerEventsSubscribed = true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnTrackedPlayerConnected(int playerId)
+	{
+		m_OnPlayerRosterChanged.Invoke();
+		FetchPlayerInfoDelayed(2000);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnTrackedPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (!playerName.IsEmpty())
+		{
+			m_mTagCache.Remove(playerName);
+			m_mXpCache.Remove(playerName);
+			m_mTrackCache.Remove(playerName);
+		}
+
+		m_OnPlayerRosterChanged.Invoke();
+		FetchPlayerInfo();
 	}
 }

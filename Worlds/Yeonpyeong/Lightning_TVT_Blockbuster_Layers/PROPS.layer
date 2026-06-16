@@ -1,0 +1,10 @@
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  coords 3778.897 7.093 6388.288
+  angles 0 42.436 0
+ }
+ {
+  coords 3783.05 7.093 6392.885
+  angles 0 42.436 0
+ }
+}

@@ -1,6 +1,13 @@
 modded class SCR_MapMarkersUI
 {
+	protected const int CRF_DOUBLE_CLICK_MS = 350;
+	protected const float CRF_DOUBLE_CLICK_WORLD_TOLERANCE = 12.5;
+
 	protected CRF_PlayerScriptedMarkerManager m_PlayerScriptedMarkerManager;
+	protected float m_fLastMapSelectTime = -1;
+	protected float m_fLastMapClickWorldX;
+	protected float m_fLastMapClickWorldY;
+
 	// Map entity reference
 	static SCR_MapEntity m_MapEntity;
 	// Flag to track if the map is currently open
@@ -18,6 +25,7 @@ modded class SCR_MapMarkersUI
 	override void OnMapOpen(MapConfiguration config)
 	{
 		super.OnMapOpen(config);
+		ResetDoubleClickState();
 		
 		m_PlayerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
 		
@@ -113,6 +121,7 @@ modded class SCR_MapMarkersUI
 	override protected void OnMapClose(MapConfiguration config)
 	{
 		m_bIsMapOpen = false;
+		ResetDoubleClickState();
 		
 		// Remove the marker update listener so updates don't create widgets after map close
 		if (m_PlayerScriptedMarkerManager)
@@ -253,5 +262,121 @@ modded class SCR_MapMarkersUI
 			
 		// Set widget position
 		FrameSlot.SetPos(marker, screenX, screenY);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Disable quick radial marker menu opening. Marker placement is handled by double-left-click.
+	override protected void OnInputQuickMarkerMenu(float value, EActionTrigger reason)
+	{
+		return;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Double-left-click on empty map opens marker placement dialog at click position.
+	override protected void OnInputMapSelect(float value, EActionTrigger reason)
+	{
+		super.OnInputMapSelect(value, reason);
+
+		if (m_MarkerEditRoot)
+		{
+			ResetDoubleClickState();
+			return;
+		}
+
+		InputManager inputManager = GetGame().GetInputManager();
+		if (!inputManager || !inputManager.IsUsingMouseAndKeyboard())
+			return;
+
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		if (!mapEntity)
+			return;
+
+		if (!m_CursorModule)
+			return;
+
+		if ((m_CursorModule.GetCursorState() & SCR_MapCursorModule.STATE_POPUP_RESTRICTED) != 0)
+			return;
+
+		if ((m_CursorModule.GetCursorState() & EMapCursorState.CS_PAN) != 0)
+			return;
+
+		if (IsMarkerUnderCursor())
+		{
+			ResetDoubleClickState();
+			return;
+		}
+
+		float worldX, worldY;
+		mapEntity.GetMapCursorWorldPosition(worldX, worldY);
+
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!world)
+			return;
+
+		float now = world.GetWorldTime();
+		bool isDoubleClick = false;
+
+		if (m_fLastMapSelectTime >= 0)
+		{
+			float deltaTime = now - m_fLastMapSelectTime;
+			float dx = worldX - m_fLastMapClickWorldX;
+			float dy = worldY - m_fLastMapClickWorldY;
+			float distSq = dx * dx + dy * dy;
+			float toleranceSq = CRF_DOUBLE_CLICK_WORLD_TOLERANCE * CRF_DOUBLE_CLICK_WORLD_TOLERANCE;
+
+			isDoubleClick = deltaTime <= CRF_DOUBLE_CLICK_MS && distSq <= toleranceSq;
+		}
+
+		if (!isDoubleClick)
+		{
+			m_fLastMapSelectTime = now;
+			m_fLastMapClickWorldX = worldX;
+			m_fLastMapClickWorldY = worldY;
+			return;
+		}
+
+		ResetDoubleClickState();
+
+		float screenX, screenY;
+		mapEntity.WorldToScreen(worldX, worldY, screenX, screenY);
+		mapEntity.PanSmooth(screenX, screenY, 0.05);
+
+		if (!m_PlacedMarkerConfig)
+		{
+			if (!m_MarkerMgr)
+				return;
+
+			SCR_MapMarkerConfig markerConfig = m_MarkerMgr.GetMarkerConfig();
+			if (!markerConfig)
+				return;
+
+			m_PlacedMarkerConfig = SCR_MapMarkerEntryPlaced.Cast(markerConfig.GetMarkerEntryConfigByType(SCR_EMapMarkerType.PLACED_CUSTOM));
+			if (!m_PlacedMarkerConfig)
+				return;
+		}
+
+		CreateMarkerEditDialog();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsMarkerUnderCursor()
+	{
+		array<Widget> widgets = SCR_MapCursorModule.GetMapWidgetsUnderCursor();
+		foreach (Widget widget : widgets)
+		{
+			SCR_MapMarkerWidgetComponent markerComp = SCR_MapMarkerWidgetComponent.Cast(widget.FindHandler(SCR_MapMarkerWidgetComponent));
+			if (markerComp)
+				return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ResetDoubleClickState()
+	{
+		m_fLastMapSelectTime = -1;
+		m_fLastMapClickWorldX = 0;
+		m_fLastMapClickWorldY = 0;
 	}
 }

@@ -9,10 +9,10 @@ $grp LightEntity {
   coords 4783.42 174.052 6993.132
   angles -88.333 0 0
   Color 0.3176 0.0706 0.5608 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -27,10 +27,10 @@ $grp LightEntity {
   coords 4782.848 174.991 6993.882
   angles 23.211 50.338 33.605
   Color 0.6235 0.1569 0.5059 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -45,10 +45,10 @@ $grp LightEntity {
   coords 4783.824 174.883 6992.482
   angles 47.342 -111.377 -145.752
   Color 0.502 0 0.3765 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -63,10 +63,10 @@ $grp LightEntity {
   coords 4771.087 172.692 6984.571
   angles -88.333 0 0
   Color 0 0.1255 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -81,10 +81,10 @@ $grp LightEntity {
   coords 4768.757 172.707 6992.967
   angles -88.333 0 0
   Color 0 0.1255 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -99,10 +99,10 @@ $grp LightEntity {
   coords 4775.373 173.768 6993.502
   angles 46.379 -180 -180
   Color 0.502 0 0 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -117,10 +117,10 @@ $grp LightEntity {
   coords 4776.178 173.912 6988.714
   angles 48.193 0 0
   Color 0 0.1255 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -135,10 +135,10 @@ $grp LightEntity {
   coords 4765.396 173.251 6988.238
   angles 48.193 0 0
   Color 0 0.1255 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -153,10 +153,10 @@ $grp LightEntity {
   coords 4767.948 172.429 6983.803
   angles 48.193 0 0
   Color 0.251 0 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -171,10 +171,10 @@ $grp LightEntity {
   coords 4767.654 177.154 6983.592
   angles 48.193 0 0
   Color 0.502 0 0.3765 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -189,10 +189,10 @@ $grp LightEntity {
   coords 4765.379 177.85 6987.591
   angles 48.193 0 0
   Color 0 0.1255 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -207,10 +207,10 @@ $grp LightEntity {
   coords 4765.051 183.93 6988.792
   angles 48.193 0 0
   Color 0.251 0 0.502 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -225,10 +225,10 @@ $grp LightEntity {
   coords 4765.372 189.51 6988.256
   angles 48.193 0 0
   Color 0.502 0 0.3765 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1
@@ -243,10 +243,10 @@ $grp LightEntity {
   coords 4777.146 182.081 6991.255
   angles 48.193 0 0
   Color 0.502 0 0.3765 1
-  LV 11.05
+  LV 11.78
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
-  Radius 20
+  Radius 18.69
   NearPlane 0.31
   SpotAngle 80
   ShowSource 1

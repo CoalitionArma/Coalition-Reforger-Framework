@@ -1,0 +1,80 @@
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 5074.935 14.611 7548.693
+  angles 0 -135.443 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+ }
+ {
+  coords 5067.098 14.406 7541.379
+  angles 0 -133.953 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+ }
+ {
+  coords 5052.636 14.252 7543.329
+  angles 0.532 143.05 -3.755
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+ }
+ {
+  coords 3793.074 7.711 6380.79
+  angles 0 44.461 0
+  m_rVehicle "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69923C75A9CD293F}" {
+    m_Prefab "{F7D5504B665E1375}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_Tracer.et"
+    m_iAmountOfItemSupplyTruck 4
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
+ }
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3819.75 8.726 6423.93
+  angles 0 136.613 0
+  m_rVehicle "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{699238332C0FD5B0}" {
+    m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+ {
+  coords 3828.899 8.324 6413.827
+  angles 0 136.613 0
+  m_rVehicle "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{699238333FA87F43}" {
+    m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+ {
+  coords 3804.089 10.021 6443.79
+  angles 0 136.613 0
+  m_rVehicle "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6992383312175605}" {
+    m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+ {
+  coords 3811.595 9.362 6434.786
+  angles 0 136.613 0
+  m_rVehicle "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{699238332BCF2DE5}" {
+    m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+    m_iAmountOfItemSupplyTruck 2
+    m_iAmountOfItemRegularVehicle 2
+   }
+  }
+ }
+}

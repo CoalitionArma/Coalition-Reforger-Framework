@@ -113,13 +113,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		if (tagMgr)
 		{
 			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Remove(RefreshTagsAndRanks);
 			tagMgr.GetOnPlayerInfoUpdated().Insert(RefreshTagsAndRanks);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+			tagMgr.GetOnPlayerRosterChanged().Insert(OnPlayerRosterChanged);
 		}
-
-		// Re-fetch tags+ranks when a new player connects mid-session (JIP)
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Insert(OnJIPPlayerConnected);
 		
 		// Setup faction button event handlers
 		SetupFactionButtons();			
@@ -444,12 +442,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		if (tagMgr)
 		{
 			tagMgr.GetOnPlayerInfoUpdated().Remove(RefreshTagsAndRanks);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
 		}
-
-		// Remove JIP player-connected listener
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Remove(OnJIPPlayerConnected);
 		
 		// Remove all input action listeners
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -739,16 +733,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	}
 
 	/**
-	 * Called when a player connects mid-session (JIP); re-fetches tags and ranks
-	 * so newly-joined players appear with correct insignia without a menu reopen.
+	 * Called when roster changes (join/leave); rebuilds slot and unslotted lists
+	 * so list-box state updates immediately without screen switches.
 	 */
-	protected void OnJIPPlayerConnected(int playerId)
+	protected void OnPlayerRosterChanged()
 	{
-		// Delay the fetch by 2 s so the new player's name is registered in
-		// GetPlayerManager before FetchPlayerInfo builds the HTTP query.
-		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
-		if (tagMgr)
-			tagMgr.FetchPlayerInfoDelayed(2000);
+		UpdateSlots();
 	}
 
 	void UpdateSlots()

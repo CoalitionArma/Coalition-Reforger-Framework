@@ -189,9 +189,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
 	protected ref array<int> m_aPendingPlayerInitializations = {};
+	protected ref map<int, int> m_mPlayerInitializationRetries = new map<int, int>();
 	protected bool m_bProcessingInitializations = false;
 	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
+	protected const int MAX_PLAYER_INIT_RETRIES = 40; // ~6 seconds at 150ms interval
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
 	// Reconnect Tracking — maps player GUID to slot ID for disconnected players.
@@ -330,14 +332,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 				
 				case CRF_EGamemodeState.AAR: {
-					SetGameState(SCR_EGameModeState.POSTGAME);
-
-					// Flush all player stats and queue in-game AAR data.
-					// This must be called here because the CRF state machine does not go through
-					// SCR_BaseGameMode.EndGameMode(), so OnGameModeEnd on components is never fired.
+					// Flush all player stats BEFORE SetGameState
 					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
 					if (statsManager)
 						statsManager.NotifyMissionEnded();
+
+					SetGameState(SCR_EGameModeState.POSTGAME);
 
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
@@ -546,11 +546,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//! \param[in] playerId ID of the player to initialize
 	void QueuePlayerInitialization(int playerId)
 	{
+		if (playerId <= 0)
+			return;
+
 		// Don't queue if already pending
 		if (m_aPendingPlayerInitializations.Contains(playerId))
 			return;
 		
 		m_aPendingPlayerInitializations.Insert(playerId);
+		m_mPlayerInitializationRetries.Set(playerId, 0);
 		
 		// Start processing if not already running
 		if (!m_bProcessingInitializations)
@@ -577,14 +581,45 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		Print(string.Format("[CRF] Processing batch: %1 players (%2 remaining)", 
 			playersToProcess, m_aPendingPlayerInitializations.Count()), LogLevel.VERBOSE);
-		
-		for (int i = 0; i < playersToProcess; i++)
-		{
-			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(m_aPendingPlayerInitializations[i]);
-		}
+
+		if (!m_GamemodeManager)
+			m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!m_GamemodeManager)
+			return;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+
 		for (int i = playersToProcess - 1; i >= 0; i--)
-			m_aPendingPlayerInitializations.Remove(i);
+		{
+			int playerId = m_aPendingPlayerInitializations[i];
+
+			if (!playerManager || !playerManager.IsPlayerConnected(playerId))
+			{
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+				continue;
+			}
+
+			bool initialized = m_GamemodeManager.InitilizePlayer(playerId);
+			if (initialized)
+			{
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+				continue;
+			}
+
+			int retryCount = 0;
+			m_mPlayerInitializationRetries.Find(playerId, retryCount);
+			retryCount++;
+			m_mPlayerInitializationRetries.Set(playerId, retryCount);
+
+			if (retryCount >= MAX_PLAYER_INIT_RETRIES)
+			{
+				Print(string.Format("[CRF] WARNING: Dropping player %1 from initialization queue after %2 failed attempts", playerId, retryCount), LogLevel.WARNING);
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -593,6 +628,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void ClearPlayerInitializationQueue()
 	{
 		m_aPendingPlayerInitializations.Clear();
+		m_mPlayerInitializationRetries.Clear();
 		m_bProcessingInitializations = false;
 	}
 	
