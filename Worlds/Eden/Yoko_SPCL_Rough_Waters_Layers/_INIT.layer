@@ -1,4 +1,9 @@
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RallyGamemodeComponent "{69A120AE13069C38}" {
+   m_bRequireVehicle 1
+  }
+ }
  coords 0 0 0
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
