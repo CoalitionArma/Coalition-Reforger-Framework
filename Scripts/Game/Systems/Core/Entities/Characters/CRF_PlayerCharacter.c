@@ -16,30 +16,30 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 	[Attribute("100", UIWidgets.EditBox, "Required distance to at least one friendly player (meters)", category: "CRF Player - Cohesion")]
 	protected float m_fFriendlyProximityMeters;
 
-	[Attribute("0.10", UIWidgets.EditBox, "Penalty ramp-up speed per second", category: "CRF Player - Cohesion")]
+	[Attribute("0.25", UIWidgets.EditBox, "Penalty ramp-up speed per second", category: "CRF Player - Cohesion")]
 	protected float m_fPenaltyRampUpRate;
 
 	[Attribute("0.22", UIWidgets.EditBox, "Penalty recovery speed per second", category: "CRF Player - Cohesion")]
 	protected float m_fPenaltyRecoveryRate;
 
-	[Attribute("0.45", UIWidgets.EditBox, "Max additive aiming damage penalty", category: "CRF Player - Cohesion")]
+	[Attribute("4.0", UIWidgets.EditBox, "Max additive aiming damage penalty", category: "CRF Player - Cohesion")]
 	protected float m_fMaxAimingDamagePenalty;
 
-	[Attribute("1.00", UIWidgets.EditBox, "Max extra stamina drain multiplier", category: "CRF Player - Cohesion")]
+	[Attribute("5.00", UIWidgets.EditBox, "Max extra stamina drain multiplier", category: "CRF Player - Cohesion")]
 	protected float m_fMaxExtraStaminaDrainMultiplier;
 
-	[Attribute("2.00", UIWidgets.EditBox, "Seconds between cohesion checks", category: "CRF Player - Cohesion")]
+	[Attribute("0.5", UIWidgets.EditBox, "How often (seconds) the proximity check runs. Lower = more responsive, higher = better performance.", category: "CRF Player - Cohesion")]
 	protected float m_fCohesionCheckInterval;
 
-	[RplProp(condition: RplCondition.OwnerOnly)]
+	[RplProp(condition: RplCondition.OwnerOnly, onRplName: "OnLoneWolfPenaltyReplicated")]
 	protected float m_fOwnerTunnelVisionIntensity;
 
 	protected float m_fPenaltyIntensity;
 	protected float m_fLastAppliedAimPenalty;
-	protected float m_fCohesionAccumulator;
 	protected float m_fLastReplicatedTunnelVision = -1.0;
-	protected bool m_bCachedPenaltyConditionActive;
-	protected bool m_bHasCachedPenaltyCondition;
+	protected float m_fCohesionAccumulator;
+	protected bool m_bCachedPenaltyActive;
+	protected bool m_bHasCachedPenalty;
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 DISABLE AI METHODS
@@ -64,33 +64,27 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 		if (m_bDisableLoneWolfPenalty)
 		{
-			m_bHasCachedPenaltyCondition = false;
-			m_bCachedPenaltyConditionActive = false;
-			m_fCohesionAccumulator = 0;
 			UpdatePenaltyState(0.0, timeSlice);
 			return;
 		}
 
 		if (!m_bEnableCohesionPenalties)
 		{
-			m_bHasCachedPenaltyCondition = false;
-			m_bCachedPenaltyConditionActive = false;
-			m_fCohesionAccumulator = 0;
 			UpdatePenaltyState(0.0, timeSlice);
 			return;
 		}
 
-		float cohesionCheckInterval = Math.Max(m_fCohesionCheckInterval, 0.1);
+		float targetPenalty;
+		float interval = Math.Max(m_fCohesionCheckInterval, 0.1);
 		m_fCohesionAccumulator += timeSlice;
-		if (!m_bHasCachedPenaltyCondition || m_fCohesionAccumulator >= cohesionCheckInterval)
+		if (!m_bHasCachedPenalty || m_fCohesionAccumulator >= interval)
 		{
-			m_bCachedPenaltyConditionActive = ShouldApplyPenalty();
-			m_bHasCachedPenaltyCondition = true;
 			m_fCohesionAccumulator = 0;
+			m_bCachedPenaltyActive = ShouldApplyPenalty();
+			m_bHasCachedPenalty = true;
 		}
 
-		float targetPenalty;
-		if (m_bCachedPenaltyConditionActive)
+		if (m_bCachedPenaltyActive)
 			targetPenalty = 1.0;
 		else
 			targetPenalty = 0.0;
@@ -99,9 +93,6 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 	protected bool ShouldApplyPenalty()
 	{
-		if (m_bDisableLoneWolfPenalty)
-			return false;
-
 		if (!GetGame() || !GetGame().InPlayMode())
 			return false;
 
@@ -136,13 +127,9 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 		if (!groupMembers || groupMembers.Count() < Math.Max(m_iPenaltyGroupSizeThreshold, 1))
 			return false;
 
-		FactionKey myFaction = CRF_EntityHelper.DetermineFactionKey(this);
 		float maxDistSq = Math.Pow(Math.Max(m_fFriendlyProximityMeters, 1.0), 2);
 
-		array<int> allPlayers = {};
-		playerManager.GetPlayers(allPlayers);
-
-		foreach (int otherId : allPlayers)
+		foreach (int otherId : groupMembers)
 		{
 			if (otherId == playerId)
 				continue;
@@ -156,9 +143,6 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 			SCR_DamageManagerComponent otherDmg = SCR_DamageManagerComponent.Cast(otherEntity.FindComponent(SCR_DamageManagerComponent));
 			if (!otherDmg || otherDmg.GetState() == EDamageState.DESTROYED)
-				continue;
-
-			if (CRF_EntityHelper.DetermineFactionKey(otherEntity) != myFaction)
 				continue;
 
 			if (vector.DistanceSq(GetOrigin(), otherEntity.GetOrigin()) <= maxDistSq)
@@ -178,10 +162,13 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 		m_fOwnerTunnelVisionIntensity = m_fPenaltyIntensity;
 		if (Math.AbsFloat(m_fOwnerTunnelVisionIntensity - m_fLastReplicatedTunnelVision) >= 0.02)
 		{
-			m_fLastReplicatedTunnelVision = m_fOwnerTunnelVisionIntensity;
+				m_fLastReplicatedTunnelVision = m_fOwnerTunnelVisionIntensity;
 			Replication.BumpMe();
 		}
+	}
 
+	protected void OnLoneWolfPenaltyReplicated()
+	{
 		ApplyPenalties();
 	}
 
@@ -196,7 +183,7 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 		float currentAimDamage = dmg.GetAimingDamage();
 		float baselineAimDamage = Math.Max(currentAimDamage - m_fLastAppliedAimPenalty, 0);
-		float nextAppliedPenalty = m_fPenaltyIntensity * Math.Max(m_fMaxAimingDamagePenalty, 0);
+		float nextAppliedPenalty = m_fOwnerTunnelVisionIntensity * Math.Max(m_fMaxAimingDamagePenalty, 0);
 		float targetAimDamage = baselineAimDamage + nextAppliedPenalty;
 
 		if (Math.AbsFloat(targetAimDamage - currentAimDamage) >= 0.001)
@@ -207,7 +194,12 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 	float GetLoneWolfExtraStaminaDrainMultiplier()
 	{
-		return Math.Max(m_fMaxExtraStaminaDrainMultiplier, 0) * m_fPenaltyIntensity;
+		return Math.Max(m_fMaxExtraStaminaDrainMultiplier, 0) * m_fOwnerTunnelVisionIntensity;
+	}
+
+	float GetLoneWolfPenaltyIntensity()
+	{
+		return m_fOwnerTunnelVisionIntensity;
 	}
 
 	static float GetLocalTunnelVisionIntensity()
