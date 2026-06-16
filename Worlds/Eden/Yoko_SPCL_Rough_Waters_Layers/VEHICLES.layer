@@ -1,0 +1,247 @@
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 7625.32 37.473 6680.282
+ Points {
+  ShapePoint "{69A0258D4B55CD1F}" {
+   Position 29.058 0 -19.38
+  }
+  ShapePoint "{69A0258D4D7F9391}" {
+   Position -167.083 -0 -165.861
+  }
+  ShapePoint "{69A0258D4F13B313}" {
+   Position -212.428 0 -61.473
+  }
+  ShapePoint "{69A0258D71092485}" {
+   Position -80.254 0 64.095
+  }
+  ShapePoint "{69A0258D73CC9F43}" {
+   Position -45.084 0 65.189
+  }
+ }
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 7573.084 0 6676.566
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7602.051 0.829 6704.14
+  angles 0 144.639 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7596.046 0.829 6699.879
+  angles 0 144.639 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7590.445 0.829 6695.904
+  angles 0 144.639 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7585.625 0.829 6692.483
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7581.145 0.829 6687.205
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7577.246 0.829 6682.611
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7567.838 0.829 6671.527
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7562.489 0.829 6665.225
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7558.359 0.829 6660.36
+  angles 0 130.324 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7553.874 0 6655.057
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7549.695 0 6650.378
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7546.009 0 6646.251
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7542.072 0 6641.844
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7538.326 0 6637.65
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7533.496 0 6632.242
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7529.257 0 6627.496
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7524.932 0 6622.653
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7520.595 0 6617.796
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7515.697 0 6612.311
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7511.918 0 6608.08
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7507.586 0 6603.23
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7503.421 0 6598.567
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7525.4 0 6603.645
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7521.622 0 6599.414
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7517.29 0 6594.563
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7513.125 0 6589.9
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7530.299 0 6609.129
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7547.113 0 6627.957
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7543.335 0 6623.726
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7539.003 0 6618.875
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7534.838 0 6614.212
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7552.012 0 6633.441
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7568.973 0 6652.433
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7565.195 0 6648.202
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7560.863 0 6643.351
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7556.698 0 6638.688
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7573.872 0 6657.917
+  angles 0 131.769 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7590.929 0 6677.208
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7587.079 0 6673.042
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7582.664 0 6668.267
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7578.418 0 6663.676
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7595.922 0 6682.606
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7606.725 0 6694.291
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+ {
+  coords 7602.875 0 6690.125
+  angles 0 132.758 0
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"
+ }
+}
