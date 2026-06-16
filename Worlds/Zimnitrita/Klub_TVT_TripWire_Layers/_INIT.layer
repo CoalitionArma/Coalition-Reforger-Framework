@@ -29,12 +29,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Modern ZFR and ZWC forces are in conflict over the town of Varpardany. Both sides wish to control Varpardany bridge as to limit/gain access to a favorable supply route."\
    ""\
    "BLUFOR Composition: Mech. Infantry"\
-   "BLUFOR Assets: Engineers"\
+   "BLUFOR Assets: Engineers / MMG"\
    ""\
    "OPFOR Composition: Infantry"\
-   "OPFOR Assets: Engineers"\
+   "OPFOR Assets: Engineers / BTR-70s"\
    ""\
-   "Time: Evening"\
+   "Time: Late afternoon"\
    ""\
    "Weather: Overcast"
    m_aFactionKeys {
