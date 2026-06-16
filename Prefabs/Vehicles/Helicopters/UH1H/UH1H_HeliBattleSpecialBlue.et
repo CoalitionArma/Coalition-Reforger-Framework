@@ -8,9 +8,9 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
   }
   MeshObject "{51DAA09FEFBFC0E7}" {
    Materials {
-    MaterialAssignClass "{61E70CA3770EEE17}" {
+    MaterialAssignClass "{699B7802516F3777}" {
      SourceMaterial "UH_1H_Body01_6224CA051369DE45"
-     AssignedMaterial "{EF91EAFBD9456727}Worlds/helibattle-spcl_Layers/Colors/HeliBattleTan.emat"
+     AssignedMaterial "{D05FCF9E8C5A9A47}Assets/Vehicles/Helicopters/AH6M/Data/AH6BLUE.emat"
     }
    }
   }
@@ -69,9 +69,9 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
   }
   SCR_UniversalInventoryStorageComponent "{5E1E994304F0E0D3}" {
    MultiSlots {
-    MultiSlotConfiguration "{61E70CA195DB755A}" {
+    MultiSlotConfiguration "{61E70CA2C9166BE0}" {
      SlotTemplate InventoryStorageSlot MGammo {
-      Prefab "{423D78F865E8AF8A}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_2Ball_1Tracer.et"
+      Prefab "{F7D5504B665E1375}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_Tracer.et"
      }
      NumSlots 2
     }
@@ -91,14 +91,14 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
     }
     RegisteringComponentSlotInfo GunnerLeft {
      PivotID "snap_gunner_left"
-     Prefab "{273A9AE09880628E}Prefabs/Vehicles/Helicopters/UH1H/VehParts/WeapSystems/UH1H_M60D_gunner_left.et"
+     Prefab "{5D527BF3294A7884}Prefabs/Vehicles/Helicopters/UH1H/VehParts/WeapSystems/UH1H_M60D_gunner_left_tracers.et"
      RegisterActions 1
      RegisterControllers 1
      RegisterCompartments 1
     }
     RegisteringComponentSlotInfo GunnerRight {
      PivotID "snap_gunner_right"
-     Prefab "{7F99E6708A781708}Prefabs/Vehicles/Helicopters/UH1H/VehParts/WeapSystems/UH1H_M60D_gunner_right.et"
+     Prefab "{C021232F7A9D8138}Prefabs/Vehicles/Helicopters/UH1H/VehParts/WeapSystems/UH1H_M60D_gunner_right_tracers.et"
      RegisterActions 1
      RegisterControllers 1
      RegisterCompartments 1
@@ -125,17 +125,17 @@ Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
      Radius 0.7
      Height 2
     }
-    UserActionContext "{61E70CA195DB7509}" {
+    UserActionContext "{61E70CA2C9166B50}" {
      ContextName "door_gunner_l"
-     Position PointInfo "{61E70CA195DB7535}" {
+     Position PointInfo "{61E70CA2C9166B5E}" {
       Offset -1.5 1.6 0
       Angles 0 -90 0
      }
      Omnidirectional 0
     }
-    UserActionContext "{61E70CA195DB7531}" {
+    UserActionContext "{61E70CA2C9166B5B}" {
      ContextName "door_gunner_r"
-     Position PointInfo "{61E70CA195DB7530}" {
+     Position PointInfo "{61E70CA2C9166B46}" {
       Offset 1.5 1.6 0
       Angles 0 90 0
      }

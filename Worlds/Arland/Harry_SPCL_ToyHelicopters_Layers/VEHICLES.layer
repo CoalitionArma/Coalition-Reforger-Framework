@@ -1,0 +1,495 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 2978.134 51.26 3088.549
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2978.297 51.26 3069.934
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.455 51.26 3051.834
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.606 51.26 3034.597
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.793 51.26 3013.48
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.957 51.26 2994.865
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2979.115 51.26 2976.765
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2979.266 51.26 2959.527
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2943.462 51.26 3075.393
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2943.626 51.26 3056.778
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2943.784 51.26 3038.678
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2943.935 51.26 3021.44
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.75 51.26 2936.025
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2978.914 51.26 2917.41
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2979.072 51.26 2899.31
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2979.223 51.26 2882.072
+  angles 0 -90 0
+  m_rVehicle "{ED23DE1865525BF2}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialBlue.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{699B780862388BCB}" {
+   }
+   CRF_VehicleGearscriptOverride "{699B78086720F478}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{699B78086B4DFA3A}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{699B78086836F807}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{699B780877C4C901}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{699B780874DED3D7}" {
+    m_VehicleAmmoType MMG
+   }
+  }
+ }
+ {
+  coords 2969.302 51.374 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2944.302 51.375 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2919.302 51.376 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2894.302 51.377 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2869.302 51.378 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2844.302 51.379 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2819.302 51.38 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2794.302 51.381 1242.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2894.302 51.643 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2944.302 51.64 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2844.302 51.645 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2869.302 51.644 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2819.302 51.646 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2919.302 51.642 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2794.302 51.647 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2969.302 51.639 1292.974
+  m_rVehicle "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialRed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+}
