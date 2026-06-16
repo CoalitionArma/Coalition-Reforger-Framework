@@ -223,11 +223,11 @@ $grp SCR_DestructibleEntity : "{2FBF5DEDFA25D947}Prefabs/Structures/Walls/Concre
   components {
    MeshObject "{56DE7C8DCD0F4E0A}" {
     Materials {
-     MaterialAssignClass "{69580813B3A80CD0}" {
+     MaterialAssignClass "{69A012A1A382FAC4}" {
       SourceMaterial "ConcreteWall_01"
       AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
      }
-     MaterialAssignClass "{69580813B3A80CDE}" {
+     MaterialAssignClass "{69A012A1A382FAE7}" {
       SourceMaterial "ConcreteWall_01_MLOD"
       AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
      }
@@ -379,6 +379,39 @@ $grp SCR_DestructibleEntity : "{2FBF5DEDFA25D947}Prefabs/Structures/Walls/Concre
   Flags 0 0x80000
   coords 7396.689 156.314 6677.267
   angles 89.459 123.732 -180
+  scale 30
+  Enabled 0
+  "Collision multiplier" 0
+  m_fMomentumToDamageScale 0.01
+ }
+ {
+  components {
+   MeshObject "{56DE7C8DCD0F4E0A}" {
+    Materials {
+     MaterialAssignClass "{69A012A15C0C362B}" {
+      SourceMaterial "ConcreteWall_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69A012A15C0C35D1}" {
+      SourceMaterial "ConcreteWall_01_MLOD"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+    CastShadow 0
+    CastFarShadow 0
+    RainOccluder 0
+    WetnessOccluder 0
+    ReceiveLight 0
+   }
+   RigidBody "{56DE7C8DDE282E03}" {
+    Layers 0x80 0
+    Active AlwaysActive
+    ResponseIndex "Normal"
+   }
+  }
+  Flags 0 0x80000
+  coords 7617.855 -60.568 6821.22
+  angles 0 -146.329 0
   scale 30
   Enabled 0
   "Collision multiplier" 0
