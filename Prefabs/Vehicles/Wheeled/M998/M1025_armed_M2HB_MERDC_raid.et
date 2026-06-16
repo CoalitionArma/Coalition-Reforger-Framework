@@ -1,0 +1,59 @@
+Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  CRF_RaidItemComponent "{698969071A524DC1}" {
+   m_iSupplyValue 15
+   m_sItemName "Gun Truck"
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{698969076A9E74E3}" {
+     SourceMaterial "Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body"
+     AssignedMaterial "{036B6135DAF74E00}Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body_Merdc.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56667885A8DC}" {
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M1025_M2_Name"
+    m_Image "{A19E90E46C726BAA}UI/Textures/EditorPreviews/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.edds"
+    m_sFaction "US"
+    m_aAutoLabels +{
+    }
+   }
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 12912.9
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    SCR_WheelSlotInfo Wheel_L01 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    RegisteringComponentSlotInfo Tailgate {
+     Prefab "{7DF13DB0BA17A6F7}Prefabs/Vehicles/Wheeled/M998/VehParts/M998_tailgate_MERDC.et"
+    }
+    RegisteringComponentSlotInfo Roof {
+     Prefab "{AA4FACF008E134BF}Prefabs/Vehicles/Wheeled/M998/VehParts/M1025_roof_M2HB_MERDC.et"
+    }
+   }
+  }
+ }
+}

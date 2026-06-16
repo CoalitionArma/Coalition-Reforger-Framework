@@ -1,0 +1,6 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 268.821 18.212 2624.172
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 1315.334 3.376 2171.736
+}

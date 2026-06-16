@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F9F2A61BF86C38E8}Missions/Mussalo/CassYoko_0609_RUSH105_Twinfang.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

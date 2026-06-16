@@ -1,0 +1,18 @@
+$grp GenericEntity : "{E0FD3A8AE6CD6E11}Prefabs/Structures/Ship/smallboat_01.et" {
+ {
+  coords 5638.627 0.579 7280.876
+  angles 0 290 0
+ }
+ {
+  coords 5635.419 0.676 7269.068
+  angles 0 240 0
+ }
+ {
+  coords 5646.191 0.599 7269.066
+  angles 0 240 0
+ }
+ {
+  coords 5631.521 0.438 7279.265
+  angles 0 290 0
+ }
+}
