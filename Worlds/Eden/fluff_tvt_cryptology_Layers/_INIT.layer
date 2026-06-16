@@ -1,0 +1,316 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 8
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 60
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Forces from Company C of 2PARA will attempt to seize the Regina Stream Bridge from the Soviet Army's 1st Company, 2nd Battalion, 268th Seperate Naval Infantry Regiment, in order to open an alternate route permitting the British forces to bypass stout Soviet defenses at St. Pierre's pass. Do not fail."\
+   ""\
+   "Time: 0800"\
+   ""\
+   "Weather: Cloudy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "5 hours after the landing at St. Pierre, the whole operation hangs in the balance. The body of the force has been pinned down in the Green Valley, and troops stopped short of St. Pierre's Pass need a way out. The key is the Regina Stream bridge that would allow forces to reroute through Pennants Pass and break out into the easygoing terrain up north. "\
+   ""\
+   "The boys in Green Valley need out, fast, and HQ has tasked us to seize this bridge within the hour. We need to seize it and the surrounding territory, or alternatively kill all of the defenders. Aerial shots suggest a couple of squads at most defending it. The troops in Green Valley need out, fast, and HQ has tasked us to seize this bridge within the hour."\
+   ""\
+   "Our force is comprised of 1st Platoon, a light infantry unit with an attached Land Rover gun truck, alongside 5th Platoon, a reconnaissance unit fresh off a raid on comms relays on the Northern Heights that has been placed under Charlie Company and tasked alongside us."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "Hostile forces landed in St. Pierre 5 hours ago now. The rumble of guns has rapidly roared northwards, but it recently spiked and hunkered down just east of us. If we have truly stopped them, they'll surely be looking for a way to squirm out, and the valleys God once carved will lead them straight to us. "\
+   ""\
+   "We expect an attack at some point, though we don't know when. Any main body attack has to come from the south or east. Additionally, there have been raids on the Montfort Castle barracks and recently the comms relay on Northern Heights that knocked out our radio comms with HQ. That only confirms the suspicion that enemy forces are behind our lines as well. "\
+   ""\
+   "Our force is a reinforced platoon (callsign: \"KASATKA\"), 3 squads strong with an additional scoped NSV crew. There are some light defenses around the bridge and crossroads but nothing of special value."\
+   ""\
+   "Before we lost comms, we were informed that a motorized company with attached demolition would be moving out of St. Phillippe at 0830 to reinforce us. If they are, God willing, on time, they will be here in roughly an hour. We need to ensure these crossroads are secured until then, at any cost."\
+   ""
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Administration"
+   m_sTextData "If the UK can take the bridge and surrounding area, i would say like 150 meters around the bridge, they win. "\
+   "Thats some nerd shit though, just blow up all the bad guys and there's no hassle."
+   m_aFactionKeys +{
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{699F33FD04532B85}" {
+   m_sCallsign "3 Company"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532D33}" {
+   m_sCallsign "31"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    MEDICAL_OFFICER
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532DDB}" {
+   m_sCallsign "31A"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532E60}" {
+   m_sCallsign "31B"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532EE0}" {
+   m_sCallsign "31C"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532F8A}" {
+   m_sCallsign "30F"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532031}" {
+   m_sCallsign "33"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    SNIPER
+   }
+  }
+  CRF_SlottingGroup "{699F33FD045320CB}" {
+   m_sCallsign "33A"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD0453215C}" {
+   m_sCallsign "33B"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{699F33FD04532284}" {
+   m_sCallsign "KASATKA-1"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    MEDICAL_OFFICER
+    MEDIC
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532317}" {
+   m_sCallsign "KASATKA-11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD0453241D}" {
+   m_sCallsign "KASATKA-21"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD045324C0}" {
+   m_sCallsign "KASATKA-31"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{699F33FD04532558}" {
+   m_sCallsign "KASATKA-4 (HMG)"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    HEAVY_MACHINEGUN
+    ASSISTANT_HEAVY_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{AB630709EFCAD48E}Configs/Gearscripts/Custom/fluff/Cryptology/CRF_GS_UK80sPara.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{133E4F57B76DC9C6}Configs/Gearscripts/Custom/fluff/Cryptology/CRF_GS_USSR80sARMARY.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "699F33F92E3D0F5B" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
