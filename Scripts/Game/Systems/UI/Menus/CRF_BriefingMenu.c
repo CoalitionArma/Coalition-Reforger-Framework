@@ -70,15 +70,15 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		ConfigureNavigationButtons();
 
 		// Fetch community tags + ranks so they appear in the player list
-		if (CRF_CommunityTagManager.GetInstance())
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
 		{
-			CRF_CommunityTagManager.GetInstance().FetchPlayerInfo();
+			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerInfoUpdated().Insert(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+			tagMgr.GetOnPlayerRosterChanged().Insert(OnPlayerRosterChanged);
 		}
-
-		// Re-fetch tags+ranks when a new player connects mid-session (JIP)
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Insert(OnJIPPlayerConnected);
 	}
 	
 	/**
@@ -382,14 +382,19 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Called when a player connects mid-session (JIP); re-fetches tags and ranks
-	 * so newly-joined players appear with correct insignia without a menu reopen.
+	 * Called when tags/ranks data arrives; refreshes the visible list instantly.
 	 */
-	protected void OnJIPPlayerConnected(int playerId)
+	protected void OnPlayerInfoUpdated()
 	{
-		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
-		if (tagMgr)
-			tagMgr.FetchPlayerInfo();
+		UpdatePlayerList();
+	}
+
+	/**
+	 * Called when player roster changes (join/leave); refreshes list-box state immediately.
+	 */
+	protected void OnPlayerRosterChanged()
+	{
+		UpdatePlayerList();
 	}
 
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
@@ -441,10 +446,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 
-		// Remove JIP player-connected listener
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Remove(OnJIPPlayerConnected);
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+		}
 
 		// Cancel any pending callqueue map-open calls to prevent the map opening after close
 		GetGame().GetCallqueue().Remove(OpenMap);

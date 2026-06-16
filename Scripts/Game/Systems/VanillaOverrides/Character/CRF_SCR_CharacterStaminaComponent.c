@@ -18,7 +18,20 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 		}
 
 		if (pDrain <= 0)
+		{
+			// Recovery event — cancel proportionally to lone-wolf penalty intensity
+			if (pDrain < 0)
+			{
+				CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(GetOwner());
+				if (playerCharacter)
+				{
+					float intensity = playerCharacter.GetLoneWolfPenaltyIntensity();
+					if (intensity > 0)
+						AddStamina(pDrain * intensity);
+				}
+			}
 			return;
+		}
 
 		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(GetOwner());
 		if (!playerCharacter)
