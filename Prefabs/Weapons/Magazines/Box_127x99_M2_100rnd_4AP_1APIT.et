@@ -1,0 +1,8 @@
+GenericEntity : "{5CD690CF2464ABA9}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_Base.et" {
+ ID "476AE746F954DD20"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   WeightPerAmmo 0
+  }
+ }
+}

@@ -1,0 +1,286 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 2282.256 20.062 2592.16
+  angles 0 -146.002 0
+  m_rVehicle "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 3557.646 17.844 1439.313
+  angles 0 -146.002 0
+  m_rVehicle "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et"
+  m_sFactionKey "INDFOR"
+ }
+ {
+  coords 1619.569 19.36 573.678
+  angles 0 106.262 0
+  m_rVehicle "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et"
+  m_sFactionKey "INDFOR"
+ }
+}
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 2285.01 20.062 2590.575
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "USSR Fuel Station"
+ }
+ {
+  coords 3560.4 17.844 1437.729
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "USSR Fuel Station"
+ }
+ {
+  coords 1620.239 19.36 576.783
+  angles 0 0 0
+  m_MarkerColor 0.017 0.017 0.017 1
+  m_sDescription "USSR Fuel Station"
+ }
+}
+$grp GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubCompositions/CanvasCover_Cluttered_USSR_04.et" {
+ {
+  coords 3171.754 65.187 3047.813
+  angles -0.532 4.868 6.219
+  {
+   GenericEntity {
+    ID "5706BA96DB36C431"
+    coords -0.291 0.136 1.759
+    angles -1.199 118.324 6.668
+   }
+   GenericEntity {
+    ID "5706BA96DB36C434"
+    coords -1.041 0.103 1.719
+    angles -6.751 -157.016 -0.566
+   }
+   GenericEntity {
+    ID "58B2BAC0F7EA75C3"
+    coords 0.191 0 -1.12
+    angles 0 179.444 0
+   }
+   GenericEntity {
+    ID "5706BA96DB36C40A"
+    coords 0.318 0.153 1.717
+    angles -5.957 169.632 3.231
+   }
+   GenericEntity {
+    ID "5706BA96DB36C43F"
+    coords 0.145 0.147 1.727
+    angles -6.451 -179.68 2.073
+   }
+   GenericEntity {
+    ID "5706BA96DB36C437"
+    coords 0.233 0.568 -1.354
+    angles 4.375 86.082 4.54
+   }
+  }
+ }
+ {
+  coords 2514.669 93.629 615.877
+  angles 0 0 0
+ }
+ {
+  coords 632.556 104.204 2271.823
+  angles 3.562 0.223 3.583
+ }
+ {
+  coords 2461.39 81.683 3188.63
+  angles 0 0 0
+ }
+}
+$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ {
+  coords 3171.874 65.197 3048.382
+  angles 3.18 3.574 6.44
+  m_sDescription "Weapons Cache"
+ }
+ {
+  coords 2514.811 93.662 616.478
+  angles 0 0 0
+  m_sDescription "Weapons Cache"
+ }
+ {
+  coords 632.697 104.252 2272.424
+  angles 6.218 0.39 3.598
+  m_sDescription "Weapons Cache"
+ }
+ {
+  coords 2461.532 81.698 3189.231
+  angles 0 0 0
+  m_sDescription "Weapons Cache"
+ }
+}
+$grp GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ {
+  coords 3561.352 17.844 1436.697
+  angles 0 -51.805 0
+ }
+ {
+  coords 2285.962 20.063 2589.544
+  angles 0 -51.805 0
+ }
+ {
+  coords 1620.932 19.361 578.004
+  angles 0 -159.541 0
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{699F483EB2885275}" {
+      SlotTemplate InventoryStorageSlot rocket {
+       Prefab "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483E8A6B26EB}" {
+      SlotTemplate InventoryStorageSlot mmg {
+       Prefab "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EE721D2F3}" {
+      SlotTemplate InventoryStorageSlot mines {
+       Prefab "{3BF82FD68BBC845C}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT_base.et"
+      }
+      NumSlots 3
+     }
+     MultiSlotConfiguration "{699F483EF27F1982}" {
+      SlotTemplate InventoryStorageSlot demo {
+       Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EC36B5089}" {
+      SlotTemplate InventoryStorageSlot mags {
+       Prefab "{47D8C84E1F70555A}Prefabs/Weapons/Magazines/762x39_AKM_6L10_30rnd/Magazine_762x39_AKM_6L10_30rnd_Last_5Tracer_7N23_57T231P.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 3171.92 65.168 3047.468
+  angles -0.532 4.868 6.219
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{699F483EB2885275}" {
+      SlotTemplate InventoryStorageSlot rocket {
+       Prefab "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483E8A6B26EB}" {
+      SlotTemplate InventoryStorageSlot mmg {
+       Prefab "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EE721D2F3}" {
+      SlotTemplate InventoryStorageSlot mines {
+       Prefab "{3BF82FD68BBC845C}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT_base.et"
+      }
+      NumSlots 3
+     }
+     MultiSlotConfiguration "{699F483EF27F1982}" {
+      SlotTemplate InventoryStorageSlot demo {
+       Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EC36B5089}" {
+      SlotTemplate InventoryStorageSlot mags {
+       Prefab "{47D8C84E1F70555A}Prefabs/Weapons/Magazines/762x39_AKM_6L10_30rnd/Magazine_762x39_AKM_6L10_30rnd_Last_5Tracer_7N23_57T231P.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 2514.825 93.528 615.528
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{699F483EB2885275}" {
+      SlotTemplate InventoryStorageSlot rocket {
+       Prefab "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483E8A6B26EB}" {
+      SlotTemplate InventoryStorageSlot mmg {
+       Prefab "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EE721D2F3}" {
+      SlotTemplate InventoryStorageSlot mines {
+       Prefab "{3BF82FD68BBC845C}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT_base.et"
+      }
+      NumSlots 3
+     }
+     MultiSlotConfiguration "{699F483EF27F1982}" {
+      SlotTemplate InventoryStorageSlot demo {
+       Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EC36B5089}" {
+      SlotTemplate InventoryStorageSlot mags {
+       Prefab "{47D8C84E1F70555A}Prefabs/Weapons/Magazines/762x39_AKM_6L10_30rnd/Magazine_762x39_AKM_6L10_30rnd_Last_5Tracer_7N23_57T231P.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 632.711 104.173 2271.474
+  angles 3.562 0.223 3.583
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{699F483EB2885275}" {
+      SlotTemplate InventoryStorageSlot rocket {
+       Prefab "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483E8A6B26EB}" {
+      SlotTemplate InventoryStorageSlot mmg {
+       Prefab "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EE721D2F3}" {
+      SlotTemplate InventoryStorageSlot mines {
+       Prefab "{3BF82FD68BBC845C}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT_base.et"
+      }
+      NumSlots 3
+     }
+     MultiSlotConfiguration "{699F483EF27F1982}" {
+      SlotTemplate InventoryStorageSlot demo {
+       Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{699F483EC36B5089}" {
+      SlotTemplate InventoryStorageSlot mags {
+       Prefab "{47D8C84E1F70555A}Prefabs/Weapons/Magazines/762x39_AKM_6L10_30rnd/Magazine_762x39_AKM_6L10_30rnd_Last_5Tracer_7N23_57T231P.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 2461.545 81.706 3188.281
+ }
+}
