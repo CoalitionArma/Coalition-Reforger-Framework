@@ -1,0 +1,82 @@
+SCR_DestructibleBuildingEntity : "{556A40267288B406}Prefabs/Structures/Houses/Village/House_Village_E_1I02/House_Village_E_1I02_base.et" {
+ coords 2495.729 -144.309 2265.298
+ scale 100
+}
+$grp SCR_DestructibleBuildingEntity : "{A8731EFCC2382173}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_slipway.et" {
+ {
+  Flags 0x403 0x80000
+  coords 2910.016 -59.596 2974.63
+  angles 4.418 89.42 0
+  scale 30
+ }
+ {
+  Flags 0x403 0x80000
+  coords 2875.088 -59.872 1322.949
+  angles 4.585 -1.258 -0.004
+  scale 30
+ }
+ {
+  Flags 0x403 0x80000
+  coords 2875.088 -59.616 1322.925
+  angles 4.181 -1.258 -0.004
+  scale 30
+ }
+ {
+  Flags 0x403 0x80000
+  coords 2910.053 -60.076 2974.63
+  angles 4.418 89.42 0
+  scale 30
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{B6A096447B215355}Prefabs/Rocks/Granite/GraniteCliff_03.et" {
+ {
+  coords 2008.573 53.078 2179.055
+  angles 6.99 -89.464 -1.966
+  scale 15
+ }
+ {
+  coords 3073.603 76.913 2153.464
+  angles -3.405 90.793 2.496
+  scale 15
+ }
+ {
+  coords 2035.724 32.264 1477.233
+  angles -1.661 -90.814 -2.441
+  scale 15
+ }
+ {
+  coords 3067.149 17.695 1844.226
+  angles -6.977 90.164 2.011
+  scale 15
+ }
+ {
+  coords 2033.895 48.77 1815.282
+  angles -1.741 -92.708 -2.384
+  scale 15
+ }
+ {
+  coords 3079.011 33.562 2685.926
+  angles -0.989 90.374 1.997
+  scale 15
+ }
+ {
+  coords 2731.735 50.136 3194.637
+  angles 2.141 -0.777 6.939
+  scale 15
+ }
+ {
+  coords 3080.42 76.349 1513.395
+  angles 1.582 91.011 2.492
+  scale 15
+ }
+ {
+  coords 2313.984 37.468 3167.463
+  angles 2.141 -0.777 6.939
+  scale 15
+ }
+ {
+  coords 2033.13 70.261 2656.514
+  angles -1.741 -92.708 -2.384
+  scale 15
+ }
+}
