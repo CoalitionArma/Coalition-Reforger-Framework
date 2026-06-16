@@ -1,0 +1,58 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 303.433 21.467 2618.309
+  angles 0 155 0
+  m_rVehicle "{199E549208D9782B}Prefabs/Vehicles/Wheeled/TIGR/AGS/GAZ_TIGR_v2_AGS17_Green.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69A008A8E139C2DA}" {
+    m_Prefab "{1085CCC052C7F50D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VOG17M.et"
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69A008A8BBDE38D3}" {
+    m_Prefab "{AEDB186BFC0F848D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VUS30.et"
+   }
+  }
+ }
+ {
+  coords 298.783 21.377 2625.666
+  angles 0 145 0
+  m_rVehicle "{199E549208D9782B}Prefabs/Vehicles/Wheeled/TIGR/AGS/GAZ_TIGR_v2_AGS17_Green.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69A008A8FB54BE12}" {
+    m_Prefab "{1085CCC052C7F50D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VOG17M.et"
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69A008A84C5F5AE2}" {
+    m_Prefab "{AEDB186BFC0F848D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VUS30.et"
+   }
+  }
+ }
+ {
+  coords 294.274 21.156 2631.507
+  angles 0 145 0
+  m_rVehicle "{199E549208D9782B}Prefabs/Vehicles/Wheeled/TIGR/AGS/GAZ_TIGR_v2_AGS17_Green.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69A008A8FDE44A49}" {
+    m_Prefab "{1085CCC052C7F50D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VOG17M.et"
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69A008A858334D8E}" {
+    m_Prefab "{AEDB186BFC0F848D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VUS30.et"
+   }
+  }
+ }
+ {
+  coords 290.401 20.639 2637.182
+  angles 0 145 0
+  m_rVehicle "{199E549208D9782B}Prefabs/Vehicles/Wheeled/TIGR/AGS/GAZ_TIGR_v2_AGS17_Green.et"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69A008A8807948F2}" {
+    m_Prefab "{1085CCC052C7F50D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VOG17M.et"
+    m_iAmountOfItemRegularVehicle 2
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69A008A856935C35}" {
+    m_Prefab "{AEDB186BFC0F848D}Prefabs/Weapons/Magazines/AGS-17/Magazine_30mm_AGS17_29rnd_VUS30.et"
+   }
+  }
+ }
+}
