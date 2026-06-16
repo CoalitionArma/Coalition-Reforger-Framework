@@ -1,0 +1,47 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 15245.145 69.019 5527.825
+  m_fWorldSize 140
+  m_sDescription "Northern Fork"
+  {
+   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords 0 0 0
+    m_sDescription "Warning"
+   }
+  }
+ }
+ {
+  coords 15006.667 30.066 5030.406
+  m_fWorldSize 140
+  m_sDescription "Varpadany Bridge"
+  {
+   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords 0.006 -0.118 -0.001
+    m_sDescription "Warning"
+   }
+  }
+ }
+ {
+  coords 15059.01 55.969 4836.486
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 140
+  m_sDescription "Southern Fork"
+  {
+   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords -0.02 0.012 0.093
+    m_sDescription "Warning"
+   }
+  }
+ }
+ {
+  coords 14950.188 40.598 5195.886
+  m_fWorldSize 140
+  m_sDescription "Center Fork"
+  {
+   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords 0.006 -0.118 -0.001
+    m_sDescription "Warning"
+   }
+  }
+ }
+}
