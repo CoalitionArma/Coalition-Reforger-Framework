@@ -1,0 +1,7 @@
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 1936.705 2 2832.887
+ m_sDescription "Secure the Airfield"
+ m_aVisibleForFactions +{
+  "OPFOR"
+ }
+}

@@ -815,4 +815,94 @@ $grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification
   coords 7400.143 -0.066 6702.499
   angles 0 -93.288 0
  }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7447.417 0 6805.729
+  angles 0 63.815 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7449.165 0 6806.122
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7521.767 0 6780.399
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7444.412 0 6804.962
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7524.594 0 6778.327
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7523.162 0 6779.469
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7450.71 0 6806.305
+  angles 0 -68.878 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7453.407 0.041 6806.708
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7518.769 0 6782.269
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7452.002 0 6806.428
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
+    Enabled 0
+   }
+  }
+  coords 7520.27 0 6781.424
+ }
 }
