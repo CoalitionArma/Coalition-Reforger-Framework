@@ -19,19 +19,19 @@ $grp CRF_VehicleSpawner {
  }
 }
 $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
- {
+ fuel_marker_1 {
   coords 2285.01 20.062 2590.575
   angles 0 0 0
   m_MarkerColor 0.017 0.017 0.017 1
   m_sDescription "USSR Fuel Station"
  }
- {
+ fuel_marker_2 {
   coords 3560.4 17.844 1437.729
   angles 0 0 0
   m_MarkerColor 0.017 0.017 0.017 1
   m_sDescription "USSR Fuel Station"
  }
- {
+ fuel_marker_3 {
   coords 1620.239 19.36 576.783
   angles 0 0 0
   m_MarkerColor 0.017 0.017 0.017 1
@@ -89,22 +89,22 @@ $grp GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubComposition
  }
 }
 $grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
- {
+ ind_weapons_1 {
   coords 3171.874 65.197 3048.382
   angles 3.18 3.574 6.44
   m_sDescription "Weapons Cache"
  }
- {
+ ind_weapons_2 {
   coords 2514.811 93.662 616.478
   angles 0 0 0
   m_sDescription "Weapons Cache"
  }
- {
+ ind_weapons_3 {
   coords 632.697 104.252 2272.424
   angles 6.218 0.39 3.598
   m_sDescription "Weapons Cache"
  }
- {
+ ind_weapons_4 {
   coords 2461.532 81.698 3189.231
   angles 0 0 0
   m_sDescription "Weapons Cache"
@@ -125,7 +125,7 @@ $grp GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSma
  }
 }
 $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
- {
+ weapons_1 {
   components {
    SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
     MultiSlots {
@@ -164,8 +164,17 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
   }
   coords 3171.92 65.168 3047.468
   angles -0.532 4.868 6.219
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed\", 10);"\
+  "		"\
+  "		IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"ind_weapons_1\");"\
+  "		delete marker1;"\
+  "		"\
+  "		IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"opf_weapons_4\");"\
+  "		delete marker2;"\
+  "	"
  }
- {
+ weapons_2 {
   components {
    SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
     MultiSlots {
@@ -203,8 +212,17 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
    }
   }
   coords 2514.825 93.528 615.528
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed\", 10);"\
+  "		"\
+  "		IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"ind_weapons_2\");"\
+  "		delete marker1;"\
+  "		"\
+  "		IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"opf_weapons_3\");"\
+  "		delete marker2;"\
+  "	"
  }
- {
+ weapons_3 {
   components {
    SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
     MultiSlots {
@@ -243,8 +261,17 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
   }
   coords 632.711 104.173 2271.474
   angles 3.562 0.223 3.583
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed\", 10);"\
+  "		"\
+  "		IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"ind_weapons_3\");"\
+  "		delete marker1;"\
+  "		"\
+  "		IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"opf_weapons_1\");"\
+  "		delete marker2;"\
+  "	"
  }
- {
+ weapons_4 {
   components {
    SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
     MultiSlots {
@@ -282,5 +309,14 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
    }
   }
   coords 2461.545 81.706 3188.281
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed\", 10);"\
+  "		"\
+  "		IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"ind_weapons_4\");"\
+  "		delete marker1;"\
+  "		"\
+  "		IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"opf_weapons_2\");"\
+  "		delete marker2;"\
+  "	"
  }
 }
