@@ -156,6 +156,22 @@ class CRF_SlottingManager : ScriptComponent
 			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
 		};
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Stores the name of the player who killed this slot's occupant and replicates it to all clients.
+	//! Called server-side immediately after death, where GetInstigatorPlayerID() is reliable.
+	//! \param[in] slotId  The slot of the player who was killed
+	//! \param[in] killerName  Display name of the killer (empty string = killed by AI/environment)
+	void UpdateSlotKillerName(int slotId, string killerName)
+	{
+		CRF_SlotData slotData = GetSlotData(slotId);
+		
+		if (slotData)
+		{
+			slotData.SetKillerName(killerName);
+			m_RplBroadcastManager.UpdateSlotKillerNameDelta(slotId, killerName);
+		}
+	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MISC GETTERS
