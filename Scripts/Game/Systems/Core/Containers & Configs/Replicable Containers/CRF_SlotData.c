@@ -12,6 +12,7 @@ class CRF_SlotData
 	protected RplId m_iSlotCurrentCharacter = RplId.Invalid();
 	protected bool m_bIsLockedSlot = false;
 	protected bool m_bIsDeadSlot = false;
+	protected string m_sKillerName = "";   // Name of the player who killed this slot's occupant (empty = AI/environment)
 	
 	// Invoker for data updates
 	protected ref ScriptInvoker m_OnDataUpdate;
@@ -35,6 +36,7 @@ class CRF_SlotData
 			SetSlotFactionEnum(newSlotData.GetSlotFactionEnum());
 			SetIsLockedSlot(newSlotData.GetIsLockedSlot());
 			SetIsDeadSlot(newSlotData.GetIsDeadSlot());
+			SetKillerName(newSlotData.GetKillerName());
 			
 			if (m_OnDataUpdate)
 				m_OnDataUpdate.Invoke();
@@ -147,6 +149,12 @@ class CRF_SlotData
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void SetKillerName(string killerName)
+	{
+		m_sKillerName = killerName;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SetSlotRole(CRF_EGearRole role)
 	{
 		// Dirty flag check: only update if value actually changed
@@ -221,6 +229,12 @@ class CRF_SlotData
 	bool GetIsDeadSlot()
 	{
 		return m_bIsDeadSlot;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetKillerName()
+	{
+		return m_sKillerName;
 	}
 	
 	//------------------------------------------------------------------------------------------------

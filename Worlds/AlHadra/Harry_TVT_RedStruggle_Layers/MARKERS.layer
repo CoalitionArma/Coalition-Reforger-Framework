@@ -1,0 +1,36 @@
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 2287.38 17.843 1927.8
+ angles 0 0 0
+ m_MarkerColor 0.017 0.017 0.017 1
+ m_sQuadName "objective-marker"
+ m_sDescription "Urgent Radio Transmission"
+}
+CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ coords 5535.382 61.339 2713.136
+ angles 0 0 0
+ m_sQuadName "flag-2"
+ m_fWorldSize 180
+ m_sDescription "Mortar Spawn"
+}
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ opf_weapons_1 {
+  coords 752.578 149.859 2638.197
+  m_sQuadName "mark-question"
+  m_sDescription "Cache In Area"
+ }
+ opf_weapons_2 {
+  coords 2237.964 115.145 3112.823
+  m_sQuadName "mark-question"
+  m_sDescription "Cache In Area"
+ }
+ opf_weapons_3 {
+  coords 2781.646 122.547 506.635
+  m_sQuadName "mark-question"
+  m_sDescription "Cache In Area"
+ }
+ opf_weapons_4 {
+  coords 2888.003 103.73 2670.237
+  m_sQuadName "mark-question"
+  m_sDescription "Cache In Area"
+ }
+}
