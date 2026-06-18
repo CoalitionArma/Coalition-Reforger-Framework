@@ -95,6 +95,11 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 	 */
 	protected void InitializeMarkerUI()
 	{
+		// Initialization can be requested by multiple delayed callbacks and server replication.
+		// Do not create a second widget and orphan the first one in the workspace.
+		if (m_bIsInitialized && m_wMarkerRoot)
+			return;
+
 		// Find or create the main HUD root
 		Widget hudRoot = GetGame().GetWorkspace().FindWidget("HudRoot");
 		if (!hudRoot)
@@ -132,12 +137,24 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 	protected Widget CreateMarkerWidget(Widget parent)
 	{
 		// Create root frame widget for proper FrameSlot manipulation
-		Widget root = GetGame().GetWorkspace().CreateWidget(WidgetType.FrameWidgetTypeID, WidgetFlags.VISIBLE, NULL, 0, parent);
+		Widget root = GetGame().GetWorkspace().CreateWidget(
+			WidgetType.FrameWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.IGNORE_CURSOR | WidgetFlags.NOFOCUS,
+			NULL,
+			0,
+			parent
+		);
 		if (!root)
 			return null;
 		
 		// Create background panel for better visibility
-		Widget background = GetGame().GetWorkspace().CreateWidget(WidgetType.PanelWidgetTypeID, WidgetFlags.VISIBLE, NULL, 0, root);
+		Widget background = GetGame().GetWorkspace().CreateWidget(
+			WidgetType.PanelWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.IGNORE_CURSOR | WidgetFlags.NOFOCUS,
+			NULL,
+			0,
+			root
+		);
 		if (background)
 		{
 			m_wMarkerBackground = PanelWidget.Cast(background);
@@ -156,7 +173,13 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		}
 		
 		// Create text widget
-		Widget text = GetGame().GetWorkspace().CreateWidget(WidgetType.TextWidgetTypeID, WidgetFlags.VISIBLE, NULL, 0, root);
+		Widget text = GetGame().GetWorkspace().CreateWidget(
+			WidgetType.TextWidgetTypeID,
+			WidgetFlags.VISIBLE | WidgetFlags.IGNORE_CURSOR | WidgetFlags.NOFOCUS,
+			NULL,
+			0,
+			root
+		);
 		if (text)
 		{
 			m_wMarkerText = TextWidget.Cast(text);
@@ -179,9 +202,23 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 
 		// Ensure the root widget is visible but with reasonable z-order
 		root.SetOpacity(0.0); // Start invisible until properly positioned
+		root.SetEnabled(false);
 		root.SetZOrder(100); // Lower z-order to avoid blocking other UI elements
 		
 		return root;
+	}
+
+	/**
+	 * Hide the marker without leaving an invisible input target on screen.
+	 */
+	protected void SetMarkerHidden()
+	{
+		if (!m_wMarkerRoot)
+			return;
+
+		m_wMarkerRoot.SetOpacity(0.0);
+		m_wMarkerRoot.SetEnabled(false);
+		FrameSlot.SetPos(m_wMarkerRoot, -10000, -10000);
 	}
 	
 	//===================================================================================
@@ -210,11 +247,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		}
 		else
 		{
-			// Hide the marker if it should not be visible
-			if (m_wMarkerRoot)
-			{
-				m_wMarkerRoot.SetOpacity(0.0);
-			}
+			SetMarkerHidden();
 		}
 	}
 	
@@ -298,7 +331,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
 		if (mapEntity && mapEntity.IsOpen())
 		{
-			m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden();
 			return;
 		}
 		
@@ -309,7 +342,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
 		if (!camera)
 		{
-			m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden();
 			return;
 		}
 		
@@ -319,7 +352,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		// Hide if behind camera or too far away
 		if (screenPosition[2] < 0 || distance > m_fMaxDistance)
 		{
-			m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden();
 			return;
 		}
 		
@@ -333,6 +366,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		
 		// Set opacity based on distance (closer = more opaque)
 		float opacity = Math.Clamp(sizeFactor, 0.3, 1.0);
+		m_wMarkerRoot.SetEnabled(true);
 		m_wMarkerRoot.SetOpacity(opacity);
 	}
 	
@@ -373,9 +407,12 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		if (m_wMarkerRoot)
 		{
 			if (visible)
+			{
+				m_wMarkerRoot.SetEnabled(true);
 				m_wMarkerRoot.SetOpacity(1.0);
+			}
 			else
-				m_wMarkerRoot.SetOpacity(0.0);
+				SetMarkerHidden();
 		}
 	}
 	
@@ -501,6 +538,9 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 	 */
 	override void OnDelete(IEntity owner)
 	{
+		GetGame().GetCallqueue().Remove(InitializeMarkerUI);
+		GetGame().GetCallqueue().Remove(CheckInitializationStatus);
+
 		if (m_wMarkerRoot)
 		{
 			m_wMarkerRoot.RemoveFromHierarchy();
