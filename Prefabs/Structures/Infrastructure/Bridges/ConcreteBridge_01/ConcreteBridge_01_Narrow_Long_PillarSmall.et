@@ -1,0 +1,21 @@
+SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_Base.et" {
+ ID "52229025936C5EA9"
+ components {
+  SCR_DestructibleBuildingComponent "{69A4187659CF384C}" {
+   "Additional hit zones" {
+    SCR_HitZone hitzone {
+     HZDefault 1
+     MaxHealth 25000
+     DamageReduction 100
+     DamageThreshold 100
+     "Explosive multiplier" 6
+    }
+   }
+   m_fDelay 1
+   m_AudioSourceConfiguration SCR_AudioSourceConfiguration "{69A418761AA97E96}" {
+    m_sSoundProject "{951A2351637B9445}Sounds/Destruction/Buildings/Destruction_Buildings_Brick_Generic.acp"
+   }
+  }
+ }
+ coords 0 0 0
+}

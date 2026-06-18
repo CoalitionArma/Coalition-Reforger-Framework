@@ -20,8 +20,8 @@ GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLarge/Ch
  {
   GenericEntity {
    ID "5CC72E06418CF0C9"
-   coords 6.249 0.012 3.345
-   angles 11.618 -77.315 6.734
+   coords 6.228 -0.193 3.325
+   angles 4.695 -78.133 6.618
    {
     GenericEntity {
      ID "5216C470CA8AD60B"
