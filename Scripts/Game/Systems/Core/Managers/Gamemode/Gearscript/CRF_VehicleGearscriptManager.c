@@ -677,6 +677,8 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				continue;
 			if (turretItems.Contains(item))
 				continue;
+			if (CanStoreResourceInTurretWeaponStorage(item.GetPrefabData().GetPrefabName(), truck, invManager))
+				continue;
 			
 			SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
@@ -735,9 +737,11 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		{
 			for (int i = 0; i < magazinesToAdd.Count(); i++)
 			{
-				invManager.TrySpawnPrefabToStorage(magazinesToAdd[i]);
-				amountToSpawn -= magazineCounts[i];
-				magazinesAdded.Set(i, magazinesAdded.Get(i) + 1);
+				if (TrySpawnPrefabToVehicleOrTurretStorage(magazinesToAdd[i], invManager))
+				{
+					amountToSpawn -= magazineCounts[i];
+					magazinesAdded.Set(i, magazinesAdded.Get(i) + 1);
+				}
 					
 			}
 			catch++;
@@ -780,9 +784,11 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		{
 			for (int i = 0; i < itemsToSpawn.Count(); i++)
 			{
-				invManager.TrySpawnPrefabToStorage(itemsToSpawn.Get(i));
-				itemsAdded.Set(i, itemsAdded.Get(i) + 1);
-				amountToSpawn--;
+				if (TrySpawnPrefabToVehicleOrTurretStorage(itemsToSpawn.Get(i), invManager))
+				{
+					itemsAdded.Set(i, itemsAdded.Get(i) + 1);
+					amountToSpawn--;
+				}
 			}
 			catch++;
 		}
@@ -799,6 +805,94 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return suppliesNeeded;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Spawns an item into normal vehicle cargo, falling back to turret weapon storage for large weapon magazines.
+	protected bool TrySpawnPrefabToVehicleOrTurretStorage(ResourceName prefab, SCR_VehicleInventoryStorageManagerComponent invManager)
+	{
+		if (!invManager)
+			return false;
+
+		if (invManager.TrySpawnPrefabToStorage(prefab))
+			return true;
+
+		return TrySpawnPrefabToTurretWeaponStorage(prefab, invManager.GetOwner(), invManager);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Returns true if a prefab can be stored in one of the vehicle's turret weapon storages.
+	protected bool CanStoreResourceInTurretWeaponStorage(ResourceName prefab, IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
+	{
+		if (prefab.IsEmpty() || !truck || !invManager)
+			return false;
+
+		array<BaseInventoryStorageComponent> turretWeaponStorages = {};
+		GetTurretWeaponStorages(truck, turretWeaponStorages);
+
+		foreach (BaseInventoryStorageComponent storage : turretWeaponStorages)
+		{
+			if (invManager.CanInsertResourceInStorage(prefab, storage))
+				return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Attempts to place an item directly into a compatible turret weapon storage.
+	protected bool TrySpawnPrefabToTurretWeaponStorage(ResourceName prefab, IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
+	{
+		if (prefab.IsEmpty() || !truck || !invManager)
+			return false;
+
+		array<BaseInventoryStorageComponent> turretWeaponStorages = {};
+		GetTurretWeaponStorages(truck, turretWeaponStorages);
+
+		foreach (BaseInventoryStorageComponent storage : turretWeaponStorages)
+		{
+			if (!invManager.CanInsertResourceInStorage(prefab, storage))
+				continue;
+
+			if (invManager.TrySpawnPrefabToStorage(prefab, storage))
+				return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Collects inventory storages owned by weapons mounted in turret compartments.
+	protected void GetTurretWeaponStorages(IEntity truck, out notnull array<BaseInventoryStorageComponent> turretWeaponStorages)
+	{
+		if (!truck)
+			return;
+
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentMan)
+			return;
+
+		array<BaseCompartmentSlot> turrets = {};
+		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+		foreach (BaseCompartmentSlot turret : turrets)
+		{
+			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+			if (!turretController)
+				continue;
+
+			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+			if (!weaponManager)
+				continue;
+
+			array<IEntity> turretWeapons = {};
+			weaponManager.GetWeaponsList(turretWeapons);
+			foreach (IEntity weapon : turretWeapons)
+			{
+				BaseInventoryStorageComponent weaponStorage = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+				if (weaponStorage)
+					turretWeaponStorages.Insert(weaponStorage);
+			}
+		}
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Check if vehicle supply cost has been calculated
 	bool HasSupplyBeenCalculated(ResourceName resource)

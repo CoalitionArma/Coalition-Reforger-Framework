@@ -118,7 +118,28 @@ modded class SCR_VONController
 	{
 		Faction localFaction = m_FactionManager.GetPlayerFaction(localPlayerId);
 		Faction transmissionFaction = m_FactionManager.GetPlayerFaction(transmissionPlayerId);
-		
+
+		// When faction separation is active, players who are spectating or waiting in the respawn
+		// screen must not understand players from other factions, regardless of spectator status.
+		// This mirrors the volume silencing already done in ComputeSpectatorLR.
+		if (m_Gamemode && m_Gamemode.m_bSeperateSpectatorsByFaction)
+		{
+			bool localIsSpec = localFaction && localFaction.GetFactionKey() == "SPEC";
+			bool localIsListening = m_VONGameModeComponent.IsPlayerListening(localPlayerId);
+
+			if (localIsSpec || localIsListening)
+			{
+				if (!m_SlottingManager)
+					m_SlottingManager = CRF_SlottingManager.GetInstance();
+
+				Faction localSlotFaction = m_SlottingManager.GetPlayerSlotFaction(localPlayerId);
+				Faction transSlotFaction = m_SlottingManager.GetPlayerSlotFaction(transmissionPlayerId);
+
+				if (localSlotFaction != transSlotFaction)
+					return false;
+			}
+		}
+
 		//If Local player is a spectator it will always be in the same language
 		if (localFaction.GetFactionKey() == "SPEC")
 			return true;

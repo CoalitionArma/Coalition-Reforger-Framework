@@ -20,6 +20,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	
 	//--- Data Storage ---
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
+	protected bool m_bMapOpened = false;                      // Tracks whether OpenMap has been queued to prevent duplicate calls
 	
 	//--- MENU LIFECYCLE METHODS ---
 	
@@ -44,9 +45,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			m_wRoot.SetEnabled(true);
 		}
 		
-		// Initialize map if available
+		// Try to acquire map entity again in case OnMenuInit ran before it was registered (race condition on connect)
+		if (!m_MapEntity)
+			m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+		// Initialize map if available; if still null, OnMenuUpdate will retry each frame until it becomes available
 		if (m_MapEntity)
+		{
 			GetGame().GetCallqueue().Call(OpenMap);
+			m_bMapOpened = true;
+		}
 		
 		// Set up input actions
 		RegisterInputActions();
@@ -178,8 +186,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
 		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
 		
-		// Highlight the current phase
-		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
+		// Highlight the current phase — use already-resolved m_Gamemode to avoid a null-cast crash
+		// if the gamemode entity has not yet been replicated when this runs
+		if (!m_Gamemode)
+			return;
+
+		int gameState = m_Gamemode.m_GamemodeState;
 		switch(gameState)
 		{
 			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
@@ -269,6 +281,19 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
+
+		// Retry opening the map if the entity was not yet available when the menu opened (race condition on connect)
+		if (!m_bMapOpened)
+		{
+			if (!m_MapEntity)
+				m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+			if (m_MapEntity)
+			{
+				GetGame().GetCallqueue().Call(OpenMap);
+				m_bMapOpened = true;
+			}
+		}
 		
 		// Activate map context if map is available
 		if (m_MapEntity)
@@ -452,6 +477,9 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
 			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
 		}
+
+		// Reset map opened state so the map is re-opened if the menu is reopened
+		m_bMapOpened = false;
 
 		// Cancel any pending callqueue map-open calls to prevent the map opening after close
 		GetGame().GetCallqueue().Remove(OpenMap);
