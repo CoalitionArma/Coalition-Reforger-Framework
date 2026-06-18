@@ -1638,6 +1638,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		else
 			weapon = weaponSlots.Get(2).GetWeaponEntity();
 		
+		if (!weapon)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
+		
 		WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
 		array<BaseMuzzleComponent> muzzles = {};
 		weaponComp.GetMuzzlesList(muzzles);
