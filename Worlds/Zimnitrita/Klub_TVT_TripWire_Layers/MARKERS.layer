@@ -1,47 +1,152 @@
+GenericEntity : "{7C29463885E5CB9E}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Wall_BarbedWire_US_01.et" {
+ coords 14974.681 49.895 5263.323
+ angles 0 -155.25 0
+}
 $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
- {
+ NorthernForkMinesBLU {
   coords 15245.145 69.019 5527.825
   m_fWorldSize 140
-  m_sDescription "Northern Fork"
+  m_sDescription "Place Mines"
   {
-   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   CRF_ManualMarker NorthernForkMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0 0 0
-    m_sDescription "Warning"
+    m_sDescription "Mines"
    }
   }
  }
- {
+ BridgeMinesBLU {
   coords 15006.667 30.066 5030.406
   m_fWorldSize 140
-  m_sDescription "Varpadany Bridge"
+  m_sDescription "Place Mines"
   {
-   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   CRF_ManualMarker BridgeMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0.006 -0.118 -0.001
-    m_sDescription "Warning"
+    m_sDescription "Mines"
+   }
+  }
+ }
+ GasStationMunitionsBLU {
+  coords 14947.143 42.632 5164.452
+  m_sDescription "Gas Station Munitions"
+  {
+   CRF_ManualMarker GasStationMunitionsOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords 0.068 0 0.061
+    m_sDescription "Gas Station Munitions"
+   }
+  }
+ }
+ FuelStorageBLU {
+  coords 15115.372 62.453 5427.003
+  m_sDescription "Fuel Storage"
+  {
+   CRF_ManualMarker FuelStorageOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+    coords -0.038 0 0.008
+    m_sDescription "Fuel Storage"
+   }
+  }
+ }
+}
+$grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_ModuleZoneData SCR_EffectsModulePositionData_Rectangle "{5D22CCE8D39ECEDA}" {
+      m_fLength 300
+     }
+     m_iMinProjectilesEachBarrage 50
+     m_iBarrageAmount 2
+    }
+   }
+  }
+  coords 14902.142 58.306 5299.853
+  angles 0 13.17 0
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    components {
+     SCR_EffectsModuleAreaMeshComponent "{616C96D8B05B3D1F}" {
+      m_bFollowTerrain 1
+     }
+    }
    }
   }
  }
  {
-  coords 15059.01 55.969 4836.486
-  m_sQuadName "mark-exclamation"
-  m_fWorldSize 140
-  m_sDescription "Southern Fork"
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_ModuleZoneData SCR_EffectsModulePositionData_Rectangle "{5D22CCE8D39ECEDA}" {
+      m_fWidth 63
+      m_fLength 250
+     }
+     m_iBarrageAmount 2
+    }
+   }
+  }
+  coords 15060.279 65.3 5514.657
+  angles 0 59.45 0
   {
-   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
-    coords -0.02 0.012 0.093
-    m_sDescription "Warning"
+   GenericEntity {
+    ID "616C96D8967A1736"
+    components {
+     SCR_EffectsModuleAreaMeshComponent "{616C96D8B05B3D1F}" {
+      m_bFollowTerrain 1
+     }
+    }
    }
   }
  }
  {
-  coords 14950.188 40.598 5195.886
-  m_fWorldSize 140
-  m_sDescription "Center Fork"
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_ModuleZoneData SCR_EffectsModulePositionData_Rectangle "{5D22CCE8D39ECEDA}" {
+      m_fLength 650
+     }
+     m_iBarrageAmount 2
+    }
+   }
+  }
+  coords 15371.67 27.182 5012.212
+  angles 0 102.156 0
   {
-   CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
-    coords 0.006 -0.118 -0.001
-    m_sDescription "Warning"
+   GenericEntity {
+    ID "616C96D8967A1736"
+    components {
+     SCR_EffectsModuleAreaMeshComponent "{616C96D8B05B3D1F}" {
+      m_bFollowTerrain 1
+     }
+    }
    }
   }
  }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5D22CCE8F9AEE06D}" {
+     m_ModuleZoneData SCR_EffectsModulePositionData_Rectangle "{5D22CCE8D39ECEDA}" {
+      m_fLength 350
+     }
+     m_iBarrageAmount 2
+    }
+   }
+  }
+  coords 14784.419 30.162 5131.959
+  angles 0 99.425 0
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    components {
+     SCR_EffectsModuleAreaMeshComponent "{616C96D8B05B3D1F}" {
+      m_bFollowTerrain 1
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{EC32A8258D155DB2}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Fortifications/E_SandBag_Tower_S_US_01.et" {
+ coords 14971.781 50.418 5270.864
+ angles 0 -150.718 0
 }

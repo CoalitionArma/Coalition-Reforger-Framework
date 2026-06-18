@@ -1,0 +1,47 @@
+GenericEntity : "{0CEFD2DFBCBB8C41}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_04.et" {
+ coords 15045.484 55.875 5301.084
+ angles 0 130.526 0
+}
+StaticModelEntity : "{5196CA1829D428F7}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Bunker_Cluttered_US_01.et" {
+ coords 14963.794 53.305 5322.048
+ angles 0 -57.173 0
+}
+$grp GenericEntity : "{5519B339E041781E}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Wall_BarbedWire_US_01.et" {
+ {
+  coords 14959.876 52.826 5316.277
+  angles 0 -68.046 0
+ }
+ {
+  coords 14966.933 53.544 5327.633
+  angles 0 -35.092 0
+ }
+}
+GenericEntity : "{7C29463885E5CB9E}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Wall_BarbedWire_US_01.et" {
+ coords 15009.452 55.287 5330.437
+ angles 0 33.488 0
+}
+$grp GenericEntity : "{C90548D80CB6F09A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundHighPlastic_S_US_01.et" {
+ {
+  coords 14992.992 50.906 5231.076
+  angles 0 116.482 0
+ }
+ {
+  coords 14990.451 50.906 5229.722
+  angles 0 -177.444 0
+ }
+ {
+  coords 14978.547 50.906 5233.833
+  angles 0 -151.379 0
+ }
+ {
+  coords 14977.289 50.906 5236.423
+  angles 0 -85.305 0
+ }
+}
+GenericEntity : "{EC32A8258D155DB2}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Fortifications/E_SandBag_Tower_S_US_01.et" {
+ coords 15003.006 55.256 5332.435
+ angles 0 36.797 0
+}
+GenericEntity : "{FB41F48964E04C5B}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_BarbedWire_US_01.et" {
+ coords 14956.337 52.846 5310.555
+}

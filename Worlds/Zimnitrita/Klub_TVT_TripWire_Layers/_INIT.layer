@@ -1,3 +1,29 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{69A156B4F29C5AAF}" {
+     NavmeshFile "{395CA63E8E456BE7}World/Data/Zimnitrita.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{FA02CD1FDA9A7EE4}World/Data/BTRLikeZimnitrita.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{118D26584E97D8E6}World/Data/LowResZimnitrita.nmn"
+    }
+   }
+  }
+ }
+ coords 16306.415 1079.795 3135.906
+}
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -12,7 +38,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomWeatherChanges 0
   }
  }
- coords 15553.71 48.893 5122.402
+ coords 14975.233 41.989 5209.136
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
@@ -43,33 +69,30 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "There are four marked locations where you will need to utilize your engineers to lay mines. Ensure that you retain control over Varpardany bridge."\
-   ""\
-   "Goals:"\
-   "- Lay minefields at 3/4 marked areas. (Southern Fork is required)"\
-   "- Retain control over Varpardany bridge"\
-   "- Retain 25% of your force"\
-   "- Destroy 3 BTR-70s"
+   m_sTextData "\"Hey! What are you doing zoning out? Get those fucking mines set! Scouts just radioed a ZWC mechanized platoon headed our way. By the look of it, they have a supply truck with them. Must be trying to force us out to clear a route. The fuel and munitions we are storing here must have put us in their sights. Just hand me the mines; go make sure that any man with a rocket knows that, no matter what, those vics can not get past us.\""
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "There are 4 at-risk areas that the ZFR have trapped to ensure their control over the bridge to Varpardany. Utilize your engineers to clear the areas and secure Varpardany proper."\
-   ""\
-   "Goals: "\
-   "- Disable minefields (3)"\
-   "- Secure Varpardany bridge"\
-   "- Retain 33% of your force"\
-   ""
+   m_sTextData "\"Gather round. High command has ordered the clearing of a new supply route leading through Varpadany. The only issue is the ZFR is dug in and has enough mines to level Andruhanov. Everything North of the Varpadany river is littered with them. They've been backed by the US for a while now which also means they'll have a ton of munitions and fuel to keep up an extended fight so make sure to torch that stuff on your way through. Oh, one more thing, make sure we retain control of our IFVs and supply truck. Command won't be sending us new ones anytime soon, then again, what would be the point of the supply route if we threw them away?\""
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
-   m_sTextData "You may cross the bridge to the south, once safestart ends, to place your minefield. Once the minefield is prepared, ensure that you retreat to the Northern side.  You are only required to place minefields at 3/4 positions, one of those must be the area marked south of the bridge."
+   m_sTextData "You have preplaced mines in all fields north of the river."\
+   ""\
+   "Goals simplified:"\
+   ""\
+   "Complete 4/5 for victory"\
+   "- (Req.)Place mines at the marked positions on your map"\
+   "- (Req.)Destroy 3 or more IFVs"\
+   "- (Req.)Destroy the supply truck"\
+   "- (Opt.)Keep the fuel storage intact"\
+   "- (Opt.)Keep the munitions storage intact"
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -77,7 +100,18 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData ""
+   m_sTextData "There are, unmarked, preplaced mines in the fields north of the river."\
+   ""\
+   "Goals simplified: "\
+   ""\
+   "Complete 3/4 goals for victory"\
+   "- (Req.)Clear the minefields that are marked along the MSR cutting through Varpadany"\
+   "- (Req.)Retain control of 2 or more BTRs and your supply truck."\
+   "- (Opt.)Destroy the gas station storing US munitions"\
+   "- (Opt.)Destroy the barn holding US fuel"\
+   ""\
+   "If the supply truck is starting in the North, the end-point for the surviving vehicles is Varpadany Military base."\
+   "If the supply truck is starting in the South, the end-point for the surviving vehicles is Valadim."
    m_aFactionKeys {
     "OPFOR"
    }
@@ -85,11 +119,15 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{699F692466DC47E5}" {
    m_sTitle "Administration"
-   m_sTextData ""
+   m_sTextData "Win conditions:"\
+   ""\
+   "- BLU victory if 4/5 goals are accomplished"\
+   "- OPF victory if 3/4 goals are accomplished"\
+   ""\
+   "A tie is not possible."
    m_aFactionKeys {
-    "OPFOR"
    }
-   m_bShowForAnyFaction 0
+   m_bShowForAnyFaction 1
   }
  }
  m_iFactionOneRatio 2
@@ -97,7 +135,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69A0514063528A34}" {
+  CRF_SlottingGroup "{69A14E47FE6233B8}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -105,7 +143,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69A0514063528515}" {
+  CRF_SlottingGroup "{69A14E47FE62336C}" {
    m_sCallsign "ENGI"
    m_FlagType INFANTRY
    m_aSlots {
@@ -116,7 +154,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{69A0514063528493}" {
+  CRF_SlottingGroup "{69A14E47FE6232EA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +169,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69A05140635284E4}" {
+  CRF_SlottingGroup "{69A14E47FE623271}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69A0514063528474}" {
+  CRF_SlottingGroup "{69A14E47FE620DC9}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,19 +199,19 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69A05140635287CF}" {
-   m_sCallsign "MMG"
+  CRF_SlottingGroup "{69A14E47FE620D21}" {
+   m_sCallsign "MAT"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
    }
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69A0514063528685}" {
+  CRF_SlottingGroup "{69A14E47FE620CE2}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -181,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69A05140635286E1}" {
+  CRF_SlottingGroup "{69A14E47FE620C4B}" {
    m_sCallsign "ENGI"
    m_FlagType INFANTRY
    m_aSlots {
@@ -194,7 +232,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_GUNNER
    }
   }
-  CRF_SlottingGroup "{69A0514063528644}" {
+  CRF_SlottingGroup "{69A14E47FE620FAA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -211,7 +249,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_GUNNER
    }
   }
-  CRF_SlottingGroup "{69A05140635281CD}" {
+  CRF_SlottingGroup "{69A14E47FE620F00}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -228,7 +266,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_GUNNER
    }
   }
-  CRF_SlottingGroup "{69A051406352802E}" {
+  CRF_SlottingGroup "{69A14E47FE620E9B}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -245,7 +283,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_GUNNER
    }
   }
-  CRF_SlottingGroup "{69A05140635283B1}" {
+  CRF_SlottingGroup "{69A14E47FE620EE4}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
