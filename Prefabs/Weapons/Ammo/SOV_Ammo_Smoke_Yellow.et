@@ -3,9 +3,10 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
  components {
   TimerTriggerComponent "{61CAF43DD26C9404}" {
    PROJECTILE_EFFECTS {
-    SubmunitionEffect "{61CAF43DD26C943E}" {
-     Prefab "{F67F1E4CA95E77A9}Prefabs/Weapons/Ammo/Smoke_Effect_Yellow.et"
-     SoundEvent "SOUND_DEPLOY"
+    ExplosionEffect "{61CAF43DD26C943E}" {
+     EffectPrefab "{94C2FE6E02662E76}PrefabsEditable/EffectsModules/Smoke/EffectModule_Smoke_Yellow.et"
+     ParticleEffect "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
+     SoundEvent ""
     }
    }
    TIMER 1
