@@ -512,7 +512,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Update slot death state so player gets put into spec
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
 		if (slotID != -1)
+		{
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
+			
+			// Cache the killer's name at death time while GetInstigatorPlayerID() is reliable server-side.
+			// Clients cannot perform this lookup accurately once the killer dies/respawns/disconnects.
+			int killerPlayerId = killer.GetInstigatorPlayerID();
+			string killerName = "";
+			if (killerPlayerId > 0)
+				killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+			m_SlottingManager.UpdateSlotKillerName(slotID, killerName);
+		}
 		
 		// Move player to spectator
 		QueuePlayerInitialization(playerId);
