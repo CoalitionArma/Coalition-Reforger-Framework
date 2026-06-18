@@ -641,6 +641,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		// Collect all items owned by turret weapon storages so they are not deleted.
 		// Turret ammo is defined by the vehicle prefab and must not be touched by gearscript.
 		set<IEntity> turretItems = new set<IEntity>();
+		// Track prefab names of loaded turret ammo so extra copies in cargo are preserved.
+		// CanInsertResourceInStorage returns false when the weapon storage is already full (magazine loaded),
+		// causing cargo ammo for the turret to be incorrectly deleted. Tracking by prefab name fixes this.
+		array<ResourceName> turretAmmoPrefabs = {};
 		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
 		if (compartmentMan)
 		{
@@ -664,7 +668,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					array<IEntity> weaponItems = {};
 					weaponStorage.GetAll(weaponItems);
 					foreach (IEntity item : weaponItems)
+					{
 						turretItems.Insert(item);
+						ResourceName prefabName = item.GetPrefabData().GetPrefabName();
+						if (!turretAmmoPrefabs.Contains(prefabName))
+							turretAmmoPrefabs.Insert(prefabName);
+					}
 				}
 			}
 		}
@@ -676,6 +685,8 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			if (!item)
 				continue;
 			if (turretItems.Contains(item))
+				continue;
+			if (turretAmmoPrefabs.Contains(item.GetPrefabData().GetPrefabName()))
 				continue;
 			if (CanStoreResourceInTurretWeaponStorage(item.GetPrefabData().GetPrefabName(), truck, invManager))
 				continue;
