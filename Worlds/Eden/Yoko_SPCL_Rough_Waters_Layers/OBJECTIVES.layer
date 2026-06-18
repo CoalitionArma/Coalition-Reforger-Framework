@@ -1,0 +1,26 @@
+$grp GameEntity {
+ rally_start {
+  coords 8187.769 0 5893.32
+  angles 0 49.58 0
+ }
+ rally_cp1 {
+  coords 8956.017 0.549 5833.445
+  angles 0 89.984 0
+ }
+ rally_cp2 {
+  coords 9288.015 0.549 5697.278
+  angles 0 82.964 0
+ }
+ rally_cp3 {
+  coords 10189.347 0.549 5353.464
+  angles 0 176.819 0
+ }
+ rally_cp4 {
+  coords 10208.753 0.549 4204.928
+  angles 0 -155.417 0
+ }
+ rally_end {
+  coords 10468.44 0.549 3808.477
+  angles 0 140.612 0
+ }
+}
