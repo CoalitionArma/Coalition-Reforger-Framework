@@ -25,7 +25,7 @@ $grp GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubComposition
   coords 15013.155 50.951 5284.749
  }
  {
-  coords 15005.924 28.282 5057.419
+  coords 15003.138 28.282 5058.34
  }
  {
   coords 15228.633 70.434 5514.521
@@ -91,6 +91,16 @@ $grp GenericEntity : "{2BCCA31989E825C8}PrefabLibrary/DefaultLibrary/Props/Milit
   angles 4.079 64.678 3.351
  }
 }
+$grp GenericEntity : "{2D60BA8C416641F9}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_plastic.et" {
+ {
+  coords 15005.135 28.053 5055.729
+  angles 0 167.789 0
+ }
+ {
+  coords 15225.879 70.481 5522.996
+  angles -1.558 67.544 0
+ }
+}
 GenericEntity : "{31DBF7E7C9D70576}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_03.et" {
  coords 15034.931 50.75 5270.405
  angles 0 116.7 0
@@ -114,6 +124,15 @@ $grp GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural
   angles 0 64.317 0
  }
 }
+$grp GenericEntity : "{4ADCE267EC510331}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_plastic.et" {
+ {
+  coords 14998.006 28.096 5050.59
+ }
+ {
+  coords 15225.626 70.546 5515.309
+  angles 0 -102.693 0
+ }
+}
 StaticModelEntity : "{5196CA1829D428F7}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Bunker_Cluttered_US_01.et" {
  coords 14963.794 53.305 5322.048
  angles 0 -57.173 0
@@ -128,16 +147,6 @@ $grp GenericEntity : "{5519B339E041781E}Prefabs/Compositions/Misc/SubComposition
   angles 0 -35.092 0
  }
 }
-$grp GenericEntity : "{55D508179EF5E64A}Prefabs/Compositions/Slotted/SlotRoadMedium/Checkpoint_M_US_01.et" {
- {
-  coords 15001.17 28.269 5057.821
-  angles 2.353 -10.763 0
- }
- {
-  coords 15224.687 70.425 5518.926
-  angles 3.271 -120.453 -2.221
- }
-}
 $grp GenericEntity : "{70671971E5F1F263}PrefabsEditable/Auto/Props/Crates/E_CrateWooden_01_plain.et" {
  {
   coords 14974.019 50.167 5267.66
@@ -147,6 +156,10 @@ $grp GenericEntity : "{70671971E5F1F263}PrefabsEditable/Auto/Props/Crates/E_Crat
   coords 14974.264 50.999 5267.517
   angles 0 -61.38 0
  }
+}
+GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+ coords 14998.76 28.626 5048.563
+ angles 0 172.345 0
 }
 $grp GenericEntity : "{7C29463885E5CB9E}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Wall_BarbedWire_US_01.et" {
  {
@@ -158,16 +171,26 @@ $grp GenericEntity : "{7C29463885E5CB9E}PrefabsEditable/Auto/Compositions/Misc/S
   angles 0 -155.25 8.14
  }
 }
+$grp GenericEntity : "{7F118C6EA2AF1C99}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_high_plastic.et" {
+ {
+  coords 14995.105 28.07 5052.075
+  angles 0 74.859 0
+ }
+ {
+  coords 15221.183 70.66 5523.645
+  angles 0 156.718 0
+ }
+ {
+  coords 15223.775 70.557 5513.363
+  angles 0 160.768 0
+ }
+}
 GenericEntity : "{822FF86ABC0958BD}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CrateWooden_Cluttered_US_02.et" {
  coords 14977.113 50.177 5265.6
 }
 GenericEntity : "{A41F1EC4E72108AA}PrefabsEditable/Auto/Props/Wrecks/E_BTR70_wreck.et" {
- coords 14981.148 31.669 5123.909
- angles 0 -17.742 0
-}
-GenericEntity : "{B2ACD1E4F87BC9B0}Prefabs/Structures/Signs/Military/SignCheckpoint_01_base.et" {
- coords 15231.8 70.19 5517.31
- angles 0 62.2 0
+ coords 14981.13 31.234 5123.968
+ angles 8.07 -17.742 0
 }
 $grp StaticModelEntity : "{BD3DF750992DA33E}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Tent_Barrack_Cluttered_US_03.et" {
  {
@@ -194,7 +217,7 @@ $grp GenericEntity : "{C8A9F7FDDF3CE851}Prefabs/Compositions/Misc/SubComposition
   coords 15012.554 51.521 5289.261
  }
  {
-  coords 14996.351 28.314 5055.384
+  coords 14994.784 28.216 5054.25
   angles 0 -95.929 0
  }
  {
@@ -219,6 +242,9 @@ $grp GenericEntity : "{C90548D80CB6F09A}PrefabsEditable/Auto/Compositions/Misc/F
   coords 14977.289 50.906 5236.423
   angles 0 -85.305 0
  }
+}
+GenericEntity : "{CAF3E8240449773D}PrefabsEditable/Auto/Props/Construction/GravelPile_01/E_SandPile_01.et" {
+ coords 14998.497 26.657 5048.595
 }
 GenericEntity : "{CD7AE675C0059D3B}PrefabLibrary/DefaultLibrary/Props/Military/BMP1_wreck.et" {
  coords 15238.062 40.628 5057.445
