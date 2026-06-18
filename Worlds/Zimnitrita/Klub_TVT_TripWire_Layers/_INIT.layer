@@ -52,13 +52,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Modern ZFR and ZWC forces are in conflict over the town of Varpardany. Both sides wish to control Varpardany bridge as to limit/gain access to a favorable supply route."\
+   m_sTextData "Tempers have flared up between the ZFR and ZWC despite an agreed ceasefire. The ZFR are currently in control of the town, Varpardany, and utilize it as a major supply route on the eastern side of Zimnitrita. The ZWC would like to utilize the route, however, blood will have to be spilled to open the path."\
    ""\
-   "BLUFOR Composition: Mech. Infantry"\
-   "BLUFOR Assets: Engineers / MMG"\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Engineers / MAT"\
    ""\
-   "OPFOR Composition: Infantry"\
-   "OPFOR Assets: Engineers / BTR-70s"\
+   "OPFOR Composition: Mech. Infantry"\
+   "OPFOR Assets: Engineers / BTR-70s / Supply Truck"\
    ""\
    "Time: Late afternoon"\
    ""\

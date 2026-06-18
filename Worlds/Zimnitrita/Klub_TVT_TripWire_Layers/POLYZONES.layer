@@ -54,16 +54,16 @@ $grp PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/Forw
   coords 15418.869 53.439 4202.513
   Points {
    ShapePoint "{69A24E1DDA08AC02}" {
-    Position -72.054 -0.002 0.232
+    Position -124.318 -0.001 15.478
    }
    ShapePoint "{69A24E1DD9F10BA1}" {
-    Position -63.871 -0.002 18.978
+    Position -119.931 -0.001 40.316
    }
    ShapePoint "{69A24E1DC74AF59E}" {
-    Position 65.567 0 -2.619
+    Position 170.657 -0.001 -13.883
    }
    ShapePoint "{69A24E1DC662C838}" {
-    Position 62.706 -0.002 -29.311
+    Position 165.65 -0.001 -51.879
    }
   }
  }

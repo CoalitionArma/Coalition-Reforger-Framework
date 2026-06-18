@@ -1,10 +1,11 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 15810.053 64.187 1614.635
+  coords 15809.865 64.187 1613.866
   angles 0 13.685 0
   m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
   coords 15807.8 64.188 1604.854
@@ -12,6 +13,7 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
   coords 15805.657 64.188 1595.849
@@ -19,6 +21,7 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
   coords 15803.727 64.156 1587.003
@@ -26,6 +29,7 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
  {
   coords 15801.636 64.157 1578.479
@@ -33,5 +37,16 @@ $grp CRF_VehicleSpawner {
   m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
   m_sFactionKey "OPFOR"
   m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{69A41A47E9BE7993}" {
+  }
+ }
+ {
+  coords 15799.898 64.156 1569.911
+  angles 0 11.522 0
+  m_rVehicle "{3927510D48AB7EB5}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ARSENAL.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
  }
 }
