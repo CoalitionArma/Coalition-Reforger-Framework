@@ -172,7 +172,7 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 		if (track == "officer")
 			return GetOfficerRankTexture(xp);
 
-		// Enlisted: hide chevron when XP is unknown (< 0) or at E-1 (< 15000)
+		// Enlisted: hide chevron when XP is unknown (< 0) or at E-1 (< 5000)
 		if (xp < 0)
 			return ResourceName.Empty;
 		return GetEnlistedRankTexture(xp);
@@ -185,18 +185,18 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	 */
 	protected ResourceName GetEnlistedRankTexture(int xp)
 	{
-		if (xp >= 800000) return "{5600F59E472DBA19}UI/Images/Ranks/rank_E9c.edds"; // E-9c SMA
-		if (xp >= 600000) return "{A208B2064AF0D26D}UI/Images/Ranks/rank_E9b.edds"; // E-9b CSM
-		if (xp >= 450000) return "{FCE09B45F57D5C62}UI/Images/Ranks/rank_E9a.edds"; // E-9a SGM
-		if (xp >= 325000) return "{65C4229BBFA69161}UI/Images/Ranks/rank_E8b.edds"; // E-8b 1SG
-		if (xp >= 225000) return "{3B2C0BD8002B1F6E}UI/Images/Ranks/rank_E8a.edds"; // E-8a MSG
-		if (xp >= 150000) return "{6FF3DCD212537B87}UI/Images/Ranks/rank_E7.edds";  // E-7  SFC
-		if (xp >= 100000) return "{9BFB9B4A1F8E13F3}UI/Images/Ranks/rank_E6.edds";  // E-6  SSG
-		if (xp >= 75000)  return "{C513B209A0039DFC}UI/Images/Ranks/rank_E5.edds";  // E-5  SGT
-		if (xp >= 55000)  return "{4F5163AD67E55F7D}UI/Images/Ranks/rank_E4b.edds"; // E-4b CPL
-		if (xp >= 40000)  return "{11B94AEED868D172}UI/Images/Ranks/rank_E4a.edds"; // E-4a SPC
-		if (xp >= 25000)  return "{78C3E08EDF1881E2}UI/Images/Ranks/rank_E3.edds";  // E-3  PFC
-		if (xp >= 15000)  return "{8CCBA716D2C5E996}UI/Images/Ranks/rank_E2.edds";  // E-2  PV2
+		if (xp >= 790000) return "{5600F59E472DBA19}UI/Images/Ranks/rank_E9c.edds"; // E-9c SMA
+		if (xp >= 590000) return "{A208B2064AF0D26D}UI/Images/Ranks/rank_E9b.edds"; // E-9b CSM
+		if (xp >= 440000) return "{FCE09B45F57D5C62}UI/Images/Ranks/rank_E9a.edds"; // E-9a SGM
+		if (xp >= 315000) return "{65C4229BBFA69161}UI/Images/Ranks/rank_E8b.edds"; // E-8b 1SG
+		if (xp >= 215000) return "{3B2C0BD8002B1F6E}UI/Images/Ranks/rank_E8a.edds"; // E-8a MSG
+		if (xp >= 140000) return "{6FF3DCD212537B87}UI/Images/Ranks/rank_E7.edds";  // E-7  SFC
+		if (xp >= 90000)  return "{9BFB9B4A1F8E13F3}UI/Images/Ranks/rank_E6.edds";  // E-6  SSG
+		if (xp >= 65000)  return "{C513B209A0039DFC}UI/Images/Ranks/rank_E5.edds";  // E-5  SGT
+		if (xp >= 45000)  return "{4F5163AD67E55F7D}UI/Images/Ranks/rank_E4b.edds"; // E-4b CPL
+		if (xp >= 30000)  return "{11B94AEED868D172}UI/Images/Ranks/rank_E4a.edds"; // E-4a SPC
+		if (xp >= 15000)  return "{78C3E08EDF1881E2}UI/Images/Ranks/rank_E3.edds";  // E-3  PFC
+		if (xp >= 5000)   return "{8CCBA716D2C5E996}UI/Images/Ranks/rank_E2.edds";  // E-2  PV2
 		// E-1 PVT: no insignia
 		return ResourceName.Empty;
 	}
@@ -207,10 +207,10 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	 */
 	protected ResourceName GetWarrantRankTexture(int xp)
 	{
-		if (xp >= 650000) return "{AFE6D1C9A4E628D6}UI/Images/Ranks/rank_W5.edds"; // W-5
-		if (xp >= 400000) return "{5BEE9651A93B40A2}UI/Images/Ranks/rank_W4.edds"; // W-4
-		if (xp >= 200000) return "{1236834EDBFD34C8}UI/Images/Ranks/rank_W3.edds"; // W-3
-		if (xp >= 75000)  return "{E63EC4D6D6205CBC}UI/Images/Ranks/rank_W2.edds"; // W-2
+		if (xp >= 640000) return "{AFE6D1C9A4E628D6}UI/Images/Ranks/rank_W5.edds"; // W-5
+		if (xp >= 390000) return "{5BEE9651A93B40A2}UI/Images/Ranks/rank_W4.edds"; // W-4
+		if (xp >= 190000) return "{1236834EDBFD34C8}UI/Images/Ranks/rank_W3.edds"; // W-3
+		if (xp >= 65000)  return "{E63EC4D6D6205CBC}UI/Images/Ranks/rank_W2.edds"; // W-2
 		return             "{B8D6ED9569ADD2B3}UI/Images/Ranks/rank_W1.edds";        // W-1
 	}
 
@@ -220,16 +220,16 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	 */
 	protected ResourceName GetOfficerRankTexture(int xp)
 	{
-		if (xp >= 1000000) return "{B30621CD1B8E9D61}UI/Images/Ranks/rank_O11.edds"; // O-11
-		if (xp >= 800000)  return "{470E66551653F515}UI/Images/Ranks/rank_O10.edds"; // O-10
-		if (xp >= 650000)  return "{C39C174143BDBA41}UI/Images/Ranks/rank_O9.edds";  // O-9
-		if (xp >= 500000)  return "{379450D94E60D235}UI/Images/Ranks/rank_O8.edds";  // O-8
-		if (xp >= 350000)  return "{502C3D7FA6315295}UI/Images/Ranks/rank_O7.edds";  // O-7
-		if (xp >= 225000)  return "{A4247AE7ABEC3AE1}UI/Images/Ranks/rank_O6.edds";  // O-6
-		if (xp >= 150000)  return "{FACC53A41461B4EE}UI/Images/Ranks/rank_O5.edds";  // O-5
-		if (xp >= 100000)  return "{0EC4143C19BCDC9A}UI/Images/Ranks/rank_O4.edds";  // O-4
-		if (xp >= 60000)   return "{471C01236B7AA8F0}UI/Images/Ranks/rank_O3.edds";  // O-3
-		if (xp >= 30000)   return "{B31446BB66A7C084}UI/Images/Ranks/rank_O2.edds";  // O-2
+		if (xp >= 990000)  return "{B30621CD1B8E9D61}UI/Images/Ranks/rank_O11.edds"; // O-11
+		if (xp >= 790000)  return "{470E66551653F515}UI/Images/Ranks/rank_O10.edds"; // O-10
+		if (xp >= 640000)  return "{C39C174143BDBA41}UI/Images/Ranks/rank_O9.edds";  // O-9
+		if (xp >= 490000)  return "{379450D94E60D235}UI/Images/Ranks/rank_O8.edds";  // O-8
+		if (xp >= 340000)  return "{502C3D7FA6315295}UI/Images/Ranks/rank_O7.edds";  // O-7
+		if (xp >= 215000)  return "{A4247AE7ABEC3AE1}UI/Images/Ranks/rank_O6.edds";  // O-6
+		if (xp >= 140000)  return "{FACC53A41461B4EE}UI/Images/Ranks/rank_O5.edds";  // O-5
+		if (xp >= 90000)   return "{0EC4143C19BCDC9A}UI/Images/Ranks/rank_O4.edds";  // O-4
+		if (xp >= 50000)   return "{471C01236B7AA8F0}UI/Images/Ranks/rank_O3.edds";  // O-3
+		if (xp >= 20000)   return "{B31446BB66A7C084}UI/Images/Ranks/rank_O2.edds";  // O-2
 		return              "{EDFC6FF8D92A4E8B}UI/Images/Ranks/rank_O1.edds";        // O-1
 	}
 	

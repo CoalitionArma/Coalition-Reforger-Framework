@@ -57,12 +57,12 @@ modded class SCR_CharacterDamageManagerComponent
 			return;
 		
 		// Get data collector to track damage
-		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-		if (!dataCollector)
+		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+		if (!loggingManager)
 			return;
 		
-		// Notify data collector about damage
-		dataCollector.OnPlayerDamageReceived(victimId, killerEntity, damageType);
+		// Forward damage to the logging manager for weapon tracking
+		loggingManager.PlayerTookDamage(victimId, killerEntity, damageType);
 	}
 	
 	//------------------------------------------------------------------------------------------------

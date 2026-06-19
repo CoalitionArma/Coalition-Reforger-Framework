@@ -16,39 +16,39 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected static const string PLAYER_INFO_ENDPOINT = "api/game/player-info?names=";
 
 	//! XP thresholds for rank tiers.
-	//! All players start at 10000 XP (rank 1 of any track).
+	//! All players start at 0 XP (rank 1 of any track).
 	//! Enlisted E1–E9 (E4/E8/E9 have sub-variants a/b/c):
 	protected static const int RANK_XP_E1  = 0;      // Private               (E-1, no insignia)
-	protected static const int RANK_XP_E2  = 15000;  // Private Second Class  (E-2)
-	protected static const int RANK_XP_E3  = 25000;  // Private First Class   (E-3)
-	protected static const int RANK_XP_E4A = 40000;  // Specialist            (E-4a)
-	protected static const int RANK_XP_E4B = 55000;  // Corporal              (E-4b)
-	protected static const int RANK_XP_E5  = 75000;  // Sergeant              (E-5)
-	protected static const int RANK_XP_E6  = 100000; // Staff Sergeant        (E-6)
-	protected static const int RANK_XP_E7  = 150000; // Sergeant First Class  (E-7)
-	protected static const int RANK_XP_E8A = 225000; // Master Sergeant       (E-8a)
-	protected static const int RANK_XP_E8B = 325000; // First Sergeant        (E-8b)
-	protected static const int RANK_XP_E9A = 450000; // Sergeant Major        (E-9a)
-	protected static const int RANK_XP_E9B = 600000; // Command Sergeant Major(E-9b)
-	protected static const int RANK_XP_E9C = 800000; // Sergeant Major of the Army (E-9c)
+	protected static const int RANK_XP_E2  = 5000;   // Private Second Class  (E-2)
+	protected static const int RANK_XP_E3  = 15000;  // Private First Class   (E-3)
+	protected static const int RANK_XP_E4A = 30000;  // Specialist            (E-4a)
+	protected static const int RANK_XP_E4B = 45000;  // Corporal              (E-4b)
+	protected static const int RANK_XP_E5  = 65000;  // Sergeant              (E-5)
+	protected static const int RANK_XP_E6  = 90000;  // Staff Sergeant        (E-6)
+	protected static const int RANK_XP_E7  = 140000; // Sergeant First Class  (E-7)
+	protected static const int RANK_XP_E8A = 215000; // Master Sergeant       (E-8a)
+	protected static const int RANK_XP_E8B = 315000; // First Sergeant        (E-8b)
+	protected static const int RANK_XP_E9A = 440000; // Sergeant Major        (E-9a)
+	protected static const int RANK_XP_E9B = 590000; // Command Sergeant Major(E-9b)
+	protected static const int RANK_XP_E9C = 790000; // Sergeant Major of the Army (E-9c)
 	//! Warrant Officer W1–W5 (5 ranks evenly spaced to 800 000 XP):
 	protected static const int RANK_XP_W1  = 0;      // Warrant Officer 1
-	protected static const int RANK_XP_W2  = 200000; // Chief Warrant Officer 2
-	protected static const int RANK_XP_W3  = 400000; // Chief Warrant Officer 3
-	protected static const int RANK_XP_W4  = 600000; // Chief Warrant Officer 4
-	protected static const int RANK_XP_W5  = 800000; // Chief Warrant Officer 5
+	protected static const int RANK_XP_W2  = 190000; // Chief Warrant Officer 2
+	protected static const int RANK_XP_W3  = 390000; // Chief Warrant Officer 3
+	protected static const int RANK_XP_W4  = 590000; // Chief Warrant Officer 4
+	protected static const int RANK_XP_W5  = 790000; // Chief Warrant Officer 5
 	//! Commissioned Officer O1–O11:
 	protected static const int RANK_XP_O1  = 0;      // Second Lieutenant   (O-1)
-	protected static const int RANK_XP_O2  = 30000;  // First Lieutenant    (O-2)
-	protected static const int RANK_XP_O3  = 60000;  // Captain             (O-3)
-	protected static const int RANK_XP_O4  = 100000; // Major               (O-4)
-	protected static const int RANK_XP_O5  = 150000; // Lieutenant Colonel  (O-5)
-	protected static const int RANK_XP_O6  = 225000; // Colonel             (O-6)
-	protected static const int RANK_XP_O7  = 350000; // Brigadier General   (O-7)
-	protected static const int RANK_XP_O8  = 500000; // Major General       (O-8)
-	protected static const int RANK_XP_O9  = 650000; // Lieutenant General  (O-9)
-	protected static const int RANK_XP_O10 = 800000; // General             (O-10)
-	protected static const int RANK_XP_O11 = 1000000;// General of the Army (O-11)
+	protected static const int RANK_XP_O2  = 20000;  // First Lieutenant    (O-2)
+	protected static const int RANK_XP_O3  = 50000;  // Captain             (O-3)
+	protected static const int RANK_XP_O4  = 90000;  // Major               (O-4)
+	protected static const int RANK_XP_O5  = 140000; // Lieutenant Colonel  (O-5)
+	protected static const int RANK_XP_O6  = 215000; // Colonel             (O-6)
+	protected static const int RANK_XP_O7  = 340000; // Brigadier General   (O-7)
+	protected static const int RANK_XP_O8  = 490000; // Major General       (O-8)
+	protected static const int RANK_XP_O9  = 640000; // Lieutenant General  (O-9)
+	protected static const int RANK_XP_O10 = 790000; // General             (O-10)
+	protected static const int RANK_XP_O11 = 990000; // General of the Army (O-11)
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	RUNTIME VARIABLES
@@ -79,6 +79,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Fired after both tags and XP are fetched and caches are populated
 	protected ref ScriptInvoker m_OnPlayerInfoUpdated = new ScriptInvoker;
 
+	//! Fired when connected player roster changes (join/leave).
+	//! UI menus can rebuild list boxes immediately without waiting for screen reopen.
+	protected ref ScriptInvoker m_OnPlayerRosterChanged = new ScriptInvoker;
+
+	//! Guards against duplicate game-mode player event registration.
+	protected bool m_bPlayerEventsSubscribed = false;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -87,6 +94,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	void CRF_CommunityTagManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		RegisterPlayerLifecycleCallbacks();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -116,6 +130,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	ScriptInvoker GetOnRanksUpdated()
 	{
 		return m_OnPlayerInfoUpdated;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Returns the invoker that fires when players connect/disconnect.
+	ScriptInvoker GetOnPlayerRosterChanged()
+	{
+		return m_OnPlayerRosterChanged;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -422,5 +443,51 @@ class CRF_CommunityTagManager : ScriptComponent
 		Print(string.Format("[CRF_CommunityTagManager] Failed to fetch player info (result: %1)", cb.GetRestResult()), LogLevel.WARNING);
 		if (bRetry)
 			FetchPlayerInfo();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Registers to game-mode connect/disconnect events so UI can refresh immediately
+	//! and player info can be re-fetched when roster changes.
+	protected void RegisterPlayerLifecycleCallbacks()
+	{
+		if (m_bPlayerEventsSubscribed)
+			return;
+
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (!gameMode)
+		{
+			GetGame().GetCallqueue().CallLater(RegisterPlayerLifecycleCallbacks, 500, false);
+			return;
+		}
+
+		// Remove before insert to keep registration idempotent.
+		gameMode.GetOnPlayerConnected().Remove(OnTrackedPlayerConnected);
+		gameMode.GetOnPlayerConnected().Insert(OnTrackedPlayerConnected);
+		gameMode.GetOnPlayerDisconnected().Remove(OnTrackedPlayerDisconnected);
+		gameMode.GetOnPlayerDisconnected().Insert(OnTrackedPlayerDisconnected);
+
+		m_bPlayerEventsSubscribed = true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnTrackedPlayerConnected(int playerId)
+	{
+		m_OnPlayerRosterChanged.Invoke();
+		FetchPlayerInfoDelayed(2000);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnTrackedPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (!playerName.IsEmpty())
+		{
+			m_mTagCache.Remove(playerName);
+			m_mXpCache.Remove(playerName);
+			m_mTrackCache.Remove(playerName);
+		}
+
+		m_OnPlayerRosterChanged.Invoke();
+		FetchPlayerInfo();
 	}
 }

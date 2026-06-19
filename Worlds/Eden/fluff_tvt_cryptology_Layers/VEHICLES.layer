@@ -1,0 +1,7 @@
+CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ coords 8608.686 44.551 945.18
+ angles 0 -43.836 0
+ m_rVehicle "{F677356F331CA946}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_CommandoOps.et"
+ m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{699F33FD707E733F}" {
+ }
+}

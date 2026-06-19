@@ -142,6 +142,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gearscript Settings - Advanced")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
+
+	// Vehicle Gearscript Enable/Disable per Side
+	//------------------------------------------------------------------------------------
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for BLUFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bBLUFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for OPFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bOPFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for INDFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bINDFORVehicleGearscriptEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "CRF Gearscript Settings - Advanced")]
+	bool m_bCIVILIANVehicleGearscriptEnabled;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
@@ -172,15 +186,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	bool m_bIsInEndCredits = false;
 	
-	// Late data callbacks — cleaned up after AAR processing
-	protected ref array<SCR_DataCollectorCommunicationComponent> m_aPendingDataComponents = {};
-	
 	// Staggered Player Initialization System
 	//------------------------------------------------------------------------------------
 	protected ref array<int> m_aPendingPlayerInitializations = {};
+	protected ref map<int, int> m_mPlayerInitializationRetries = new map<int, int>();
 	protected bool m_bProcessingInitializations = false;
 	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
 	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
+	protected const int MAX_PLAYER_INIT_RETRIES = 40; // ~6 seconds at 150ms interval
 	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
 	// Reconnect Tracking — maps player GUID to slot ID for disconnected players.
@@ -319,28 +332,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 				
 				case CRF_EGamemodeState.AAR: {
+					// Flush all player stats BEFORE SetGameState
+					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+					if (statsManager)
+						statsManager.NotifyMissionEnded();
+
 					SetGameState(SCR_EGameModeState.POSTGAME);
-
-					SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-					array<int> players = {};
-					GetGame().GetPlayerManager().GetAllPlayers(players);
-					foreach (int player : players)
-					{
-						// Skip disconnected players
-						if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
-							continue;
-	
-						// Process player statistics data
-						ProcessStats(dataCollector, player);
-					}
-
-					// Clean up any pending late-data callbacks
-					foreach (SCR_DataCollectorCommunicationComponent pendingComp : m_aPendingDataComponents)
-					{
-						if (pendingComp)
-							pendingComp.GetOnDataReceived().Remove(OnDataReceived);
-					}
-					m_aPendingDataComponents.Clear();
 
 					// Open the outro screen on all clients, passing winning faction so clients can display it
 					CRF_RplBroadcastManager rplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
@@ -362,48 +359,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			playerMenuManager.OpenCurrentStateMenu();
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
-	{
-		//PrintFormat("[CRF] Logging Stats for player %1", GetGame().GetPlayerManager().GetPlayerName(player));
-		if (!dataCollector)
-		{
-			Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-			return;
-		}
-
-		SCR_PlayerData playerData = dataCollector.GetPlayerData(player, false);
-
-		// If player data isn't available yet, register for notification when it arrives
-		if (!playerData)
-		{
-			SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-				GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-			);
-			
-			if (communicationComponent)
-			{
-				communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-				m_aPendingDataComponents.Insert(communicationComponent);
-			}
-		}
-		else
-		{
-			playerData.CalculateStatsChange();
-		}
-	}
-	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 PLAYER MANAGEMENT
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	//! Handle player data received from network
-	//! \param[in] playerData Player statistics and progress data
-	protected void OnDataReceived(SCR_PlayerData playerData)
-	{
-		playerData.CalculateStatsChange();
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Process player connection after authentication
@@ -550,7 +508,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Update slot death state so player gets put into spec
 		int slotID = m_SlottingManager.GetCharacterSlotID(playerEntity);
 		if (slotID != -1)
+		{
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
+			
+			// Cache the killer's name at death time while GetInstigatorPlayerID() is reliable server-side.
+			// Clients cannot perform this lookup accurately once the killer dies/respawns/disconnects.
+			int killerPlayerId = killer.GetInstigatorPlayerID();
+			string killerName = "";
+			if (killerPlayerId > 0)
+				killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
+			m_SlottingManager.UpdateSlotKillerName(slotID, killerName);
+		}
 		
 		// Move player to spectator
 		QueuePlayerInitialization(playerId);
@@ -584,11 +552,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//! \param[in] playerId ID of the player to initialize
 	void QueuePlayerInitialization(int playerId)
 	{
+		if (playerId <= 0)
+			return;
+
 		// Don't queue if already pending
 		if (m_aPendingPlayerInitializations.Contains(playerId))
 			return;
 		
 		m_aPendingPlayerInitializations.Insert(playerId);
+		m_mPlayerInitializationRetries.Set(playerId, 0);
 		
 		// Start processing if not already running
 		if (!m_bProcessingInitializations)
@@ -615,14 +587,45 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		Print(string.Format("[CRF] Processing batch: %1 players (%2 remaining)", 
 			playersToProcess, m_aPendingPlayerInitializations.Count()), LogLevel.VERBOSE);
-		
-		for (int i = 0; i < playersToProcess; i++)
-		{
-			if (m_GamemodeManager)
-				m_GamemodeManager.InitilizePlayer(m_aPendingPlayerInitializations[i]);
-		}
+
+		if (!m_GamemodeManager)
+			m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		if (!m_GamemodeManager)
+			return;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+
 		for (int i = playersToProcess - 1; i >= 0; i--)
-			m_aPendingPlayerInitializations.Remove(i);
+		{
+			int playerId = m_aPendingPlayerInitializations[i];
+
+			if (!playerManager || !playerManager.IsPlayerConnected(playerId))
+			{
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+				continue;
+			}
+
+			bool initialized = m_GamemodeManager.InitilizePlayer(playerId);
+			if (initialized)
+			{
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+				continue;
+			}
+
+			int retryCount = 0;
+			m_mPlayerInitializationRetries.Find(playerId, retryCount);
+			retryCount++;
+			m_mPlayerInitializationRetries.Set(playerId, retryCount);
+
+			if (retryCount >= MAX_PLAYER_INIT_RETRIES)
+			{
+				Print(string.Format("[CRF] WARNING: Dropping player %1 from initialization queue after %2 failed attempts", playerId, retryCount), LogLevel.WARNING);
+				m_mPlayerInitializationRetries.Remove(playerId);
+				m_aPendingPlayerInitializations.Remove(i);
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -631,6 +634,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void ClearPlayerInitializationQueue()
 	{
 		m_aPendingPlayerInitializations.Clear();
+		m_mPlayerInitializationRetries.Clear();
 		m_bProcessingInitializations = false;
 	}
 	
@@ -743,6 +747,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return m_CIVILIANGearScriptSettings;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Returns true when the vehicle gearscript system is enabled for the given faction.
+	//! Returns true by default for unknown factions.
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, INDFOR, CIV)
+	bool IsVehicleGearscriptEnabled(FactionKey factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": return m_bBLUFORVehicleGearscriptEnabled;
+			case "OPFOR":  return m_bOPFORVehicleGearscriptEnabled;
+			case "INDFOR": return m_bINDFORVehicleGearscriptEnabled;
+			case "CIV":    return m_bCIVILIANVehicleGearscriptEnabled;
+		}
+		return true;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Get Side BFT boolean value
 	bool IsSideBFTEnabled(string factionKey)

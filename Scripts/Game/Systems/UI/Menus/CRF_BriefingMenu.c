@@ -20,6 +20,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	
 	//--- Data Storage ---
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
+	protected bool m_bMapOpened = false;                      // Tracks whether OpenMap has been queued to prevent duplicate calls
 	
 	//--- MENU LIFECYCLE METHODS ---
 	
@@ -44,9 +45,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			m_wRoot.SetEnabled(true);
 		}
 		
-		// Initialize map if available
+		// Try to acquire map entity again in case OnMenuInit ran before it was registered (race condition on connect)
+		if (!m_MapEntity)
+			m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+		// Initialize map if available; if still null, OnMenuUpdate will retry each frame until it becomes available
 		if (m_MapEntity)
+		{
 			GetGame().GetCallqueue().Call(OpenMap);
+			m_bMapOpened = true;
+		}
 		
 		// Set up input actions
 		RegisterInputActions();
@@ -70,15 +78,15 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		ConfigureNavigationButtons();
 
 		// Fetch community tags + ranks so they appear in the player list
-		if (CRF_CommunityTagManager.GetInstance())
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
 		{
-			CRF_CommunityTagManager.GetInstance().FetchPlayerInfo();
+			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerInfoUpdated().Insert(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+			tagMgr.GetOnPlayerRosterChanged().Insert(OnPlayerRosterChanged);
 		}
-
-		// Re-fetch tags+ranks when a new player connects mid-session (JIP)
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Insert(OnJIPPlayerConnected);
 	}
 	
 	/**
@@ -178,8 +186,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
 		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
 		
-		// Highlight the current phase
-		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
+		// Highlight the current phase — use already-resolved m_Gamemode to avoid a null-cast crash
+		// if the gamemode entity has not yet been replicated when this runs
+		if (!m_Gamemode)
+			return;
+
+		int gameState = m_Gamemode.m_GamemodeState;
 		switch(gameState)
 		{
 			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
@@ -269,6 +281,19 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
+
+		// Retry opening the map if the entity was not yet available when the menu opened (race condition on connect)
+		if (!m_bMapOpened)
+		{
+			if (!m_MapEntity)
+				m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+			if (m_MapEntity)
+			{
+				GetGame().GetCallqueue().Call(OpenMap);
+				m_bMapOpened = true;
+			}
+		}
 		
 		// Activate map context if map is available
 		if (m_MapEntity)
@@ -382,14 +407,19 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Called when a player connects mid-session (JIP); re-fetches tags and ranks
-	 * so newly-joined players appear with correct insignia without a menu reopen.
+	 * Called when tags/ranks data arrives; refreshes the visible list instantly.
 	 */
-	protected void OnJIPPlayerConnected(int playerId)
+	protected void OnPlayerInfoUpdated()
 	{
-		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
-		if (tagMgr)
-			tagMgr.FetchPlayerInfo();
+		UpdatePlayerList();
+	}
+
+	/**
+	 * Called when player roster changes (join/leave); refreshes list-box state immediately.
+	 */
+	protected void OnPlayerRosterChanged()
+	{
+		UpdatePlayerList();
 	}
 
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
@@ -441,10 +471,15 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 
-		// Remove JIP player-connected listener
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gameMode)
-			gameMode.GetOnPlayerConnected().Remove(OnJIPPlayerConnected);
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+		}
+
+		// Reset map opened state so the map is re-opened if the menu is reopened
+		m_bMapOpened = false;
 
 		// Cancel any pending callqueue map-open calls to prevent the map opening after close
 		GetGame().GetCallqueue().Remove(OpenMap);

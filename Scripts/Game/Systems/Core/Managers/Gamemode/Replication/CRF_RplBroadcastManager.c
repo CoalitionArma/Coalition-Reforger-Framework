@@ -933,6 +933,24 @@ class CRF_RplBroadcastManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! SlottingManager: Replicate the name of the player who killed this slot's occupant to all clients.
+	//! Sent as an immediate RPC (not batched) because it always accompanies a death event.
+	//! \param[in] slotId      Slot of the player who was killed
+	//! \param[in] killerName  Display name of the killer (empty = AI/environment)
+	void UpdateSlotKillerNameDelta(int slotId, string killerName)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotKillerNameDelta", 8 + killerName.Length());
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotKillerNameDelta(slotId, killerName);
+		#else
+		Rpc(RpcDo_UpdateSlotKillerNameDelta, slotId, killerName);
+		#endif
+	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	//! SlottingManager: Update slot role (~8 bytes)
@@ -2106,6 +2124,20 @@ class CRF_RplBroadcastManager : ScriptComponent
 			if (invoker)
 				invoker.Invoke();
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Client handler: cache the killer name in the victim slot's data for spectator display.
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotKillerNameDelta(int slotId, string killerName)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+			slotData.SetKillerName(killerName);
 	}
 	
 	//------------------------------------------------------------------------------------------------

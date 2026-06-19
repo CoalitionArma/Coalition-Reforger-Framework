@@ -34,6 +34,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
     CRF_SafestartManager "{652A33131ACE2DC1}" {
     }
+    CRF_ServerStatsManager "{697D4B11063F1CAE}" {
+    }
     CRF_SlottingManager "{6535438600F2A9C0}" {
     }
     CRF_VehicleGearscriptManager "{68C32757EC663DF4}" {
@@ -51,6 +53,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    m_bEnableTeamKillPunishment 0
   }
   SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   Enabled 0
    m_aModules {
     SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
     }

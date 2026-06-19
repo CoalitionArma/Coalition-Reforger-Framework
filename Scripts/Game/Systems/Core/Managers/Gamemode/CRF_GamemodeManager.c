@@ -15,6 +15,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_Gamemode m_Gamemode;
 	
+	protected const int STATS_TRACKING_INIT_RETRY_DELAY_MS = 250;
+	protected const int STATS_TRACKING_INIT_MAX_RETRIES = 20;
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{	
@@ -51,14 +54,17 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] playerId ID of the player to initialize
 	//! \param[in] spawnPointID the ID of the spawn point we want to spawn this player at (either set manually with the respawn screen or automatic if -1;
 	//! \param[in] entityRplID the rplID of the entity  we want to spawn this player at (either set manually or automatic if invalid rpl id;
-	void InitilizePlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
+	bool InitilizePlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
 	{	
 		if (playerId <= 0)
-			return;
+			return true;
+		
+		if (!EnsureManagersReady())
+			return false;
 		
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		if (!playerController)
-			return;
+			return false;
 			
 		CRF_PlayerCharacter playerCharacter = null;
 		Faction faction = null;
@@ -75,15 +81,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			CRF_PlayerHelper.RemovePlayerFromCurrentGroup(playerId);
 		} else {
 			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
-			IEntity oldEntityToDelete = playerController.GetMainEntity();
-			
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, entityRplID, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 			
 			m_MenuManager.RemovePlayerFromAnyChannel(playerId, false);
 		}
 		
+		if (!playerCharacter)
+			return false;
+		
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
+		if (!playerRplComp)
+			return false;
+		
 		if (playerCharacter && playerRplComp)
 		{
 			playerCharacter.DisableAI();
@@ -94,13 +104,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			{
 				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 350, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 350ms is just a arbitrary value - Njpatman
 
-				// Always notify data-collector modules after assigning the character.
-				// SetInitialMainEntity is used unconditionally (see CRF_PlayerHelper.AssignCharacterToPlayer)
-				// so there is no async spawn pipeline to wait on — NotifyPlayerSpawned must always
-				// be called here to ensure invokers are registered for every player.
-				SCR_DataCollectorComponent dataCollector = SCR_DataCollectorComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_DataCollectorComponent));
-				if (dataCollector)
-					dataCollector.NotifyPlayerSpawned(playerId, playerCharacter);
+				// Notify the CRF-native stats manager so it begins tracking this player.
+				// Retry briefly in case component init/replication order delays availability.
+				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
 			}
 			else
 			{
@@ -111,6 +117,58 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 
 			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 		};
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Resolve delayed stats-manager availability and delayed replicated-entity availability.
+	protected void TryNotifyStatsManager(int playerId, RplId playerEntityRplId, int attempt)
+	{
+		if (playerId <= 0 || playerEntityRplId == RplId.Invalid())
+			return;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager || !playerManager.IsPlayerConnected(playerId))
+			return;
+
+		CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+		IEntity playerEntity = null;
+
+		Managed replicatedItem = Replication.FindItem(playerEntityRplId);
+		if (replicatedItem)
+		{
+			RplComponent playerRplComp = RplComponent.Cast(replicatedItem);
+			if (playerRplComp)
+				playerEntity = playerRplComp.GetEntity();
+		}
+
+		if (statsManager && playerEntity)
+		{
+			if (playerManager.GetPlayerControlledEntity(playerId) != playerEntity)
+				return;
+
+			statsManager.NotifyPlayerSpawned(playerId, playerEntity);
+			return;
+		}
+
+		if (attempt + 1 >= STATS_TRACKING_INIT_MAX_RETRIES)
+		{
+			Print(string.Format("[CRF_GamemodeManager] WARNING: Failed to initialize stats tracking for player %1 after %2 attempts", playerId, STATS_TRACKING_INIT_MAX_RETRIES), LogLevel.WARNING);
+			return;
+		}
+
+		GetGame().GetCallqueue().CallLater(TryNotifyStatsManager, STATS_TRACKING_INIT_RETRY_DELAY_MS, false, playerId, playerEntityRplId, attempt + 1);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Re-acquire manager references if init ordering delayed singleton availability.
+	protected bool EnsureManagersReady()
+	{
+		if (!m_RplBroadcastManager || !m_SlottingManager || !m_RespawnManager || !m_MenuManager || !m_Gamemode)
+			InitializeManagers();
+
+		return m_RplBroadcastManager && m_SlottingManager && m_RespawnManager && m_MenuManager && m_Gamemode;
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
