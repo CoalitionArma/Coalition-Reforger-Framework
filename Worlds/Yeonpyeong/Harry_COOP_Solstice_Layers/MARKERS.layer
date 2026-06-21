@@ -1,0 +1,212 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 4389.079 90.616 8263.713
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4434.653 88.178 8248.125
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4434.817 89.211 8196.05
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4464.738 83.095 8162.582
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4473.845 86.464 8109.354
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4494.561 86.374 8069.024
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4538.352 81.076 8039.178
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4575.561 81.212 8009.652
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4798.564 71.855 7940.581
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4814.261 70.212 7916.882
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4818.572 69.224 7887.897
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4843.493 69.649 7853.812
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4842.07 63.849 7805.924
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4876.492 51.581 7749.372
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4356.21 86.949 8208.255
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4275.424 77.115 8186.404
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4225.423 72.233 8176.494
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4194.754 55.626 8217.458
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4107.712 73.096 8250.632
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 4002.049 81.216 8252.381
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3917.368 91.413 8255.636
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3861.625 93.352 8287.771
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3827.644 87.995 8331.063
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3773.128 87.984 8365.438
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3753.379 87.373 8402.685
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3621.899 78.934 8462.095
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3587.457 109.71 8430.444
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3503.833 93.79 8480.724
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3472.913 92.876 8538.904
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+ {
+  coords 3441.752 84.049 8571.311
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "dot"
+  m_sDescription "Enemy Entrenchment"
+ }
+}
