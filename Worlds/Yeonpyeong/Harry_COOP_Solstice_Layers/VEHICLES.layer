@@ -1,0 +1,46 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5210.933 2.869 9127.813
+  angles 0 -147.827 0
+  m_rVehicle "{B358C5261525C945}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HE_sharkNose_APKWS.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5313.188 5.292 9076.551
+  angles 0.278 -92.966 5.349
+  m_rVehicle "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5301.595 5.274 9076.407
+  angles 0.278 -92.966 5.349
+  m_rVehicle "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5322.548 5.367 9076.179
+  angles 0.278 -92.966 5.349
+  m_rVehicle "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69AA317B9279E4E5}" {
+    m_Prefab "{48C72125A134E975}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_BM-21.et"
+   }
+  }
+ }
+ {
+  coords 3759.24 13.439 6096.811
+  angles -0.565 83.958 -5.326
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5331.925 5.531 9075.8
+  angles 0.278 -92.966 5.349
+  m_rVehicle "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

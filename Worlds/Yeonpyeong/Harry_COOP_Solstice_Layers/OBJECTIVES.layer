@@ -1,0 +1,84 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4569.792 22.001 8490.737
+  angles 0 138.879 0
+  m_rVehicle "{753091E32C4E2EE3}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M22.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69AA317B85FC3D9C}" {
+    m_Prefab "{48C72125A134E975}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_BM-21.et"
+   }
+  }
+ }
+ {
+  coords 4728.451 14.692 8582.257
+  angles 0 138.879 0
+  m_rVehicle "{753091E32C4E2EE3}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M22.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69AA317B9279E4E5}" {
+    m_Prefab "{48C72125A134E975}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_BM-21.et"
+   }
+  }
+ }
+ {
+  coords 4656.808 14.473 8580.005
+  angles 0 138.879 0
+  m_rVehicle "{753091E32C4E2EE3}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M22.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69AA317B9279E4E5}" {
+    m_Prefab "{48C72125A134E975}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_BM-21.et"
+   }
+  }
+ }
+ {
+  coords 4501.167 23.105 8490.657
+  angles 0 138.879 0
+  m_rVehicle "{753091E32C4E2EE3}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M22.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69AA3178222EBBBA}" {
+    m_Prefab "{48C72125A134E975}Prefabs/Items/Equipment/BallisticTable/TF_BallisticTable_BM-21.et"
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 4409.553 90.906 8215.602
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "HMG"
+ }
+ {
+  coords 5705.533 0 6649.181
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Help the Company Secure the Harbour"
+ }
+ {
+  coords 3813.406 107.578 8272.665
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "HMG"
+ }
+}
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 4503.313 23.105 8486.117
+  m_sDescription "Grad"
+ }
+ {
+  coords 4572.519 22.001 8487.029
+  m_sDescription "Grad"
+ }
+ {
+  coords 4659.25 14.473 8575.979
+  m_sDescription "Grad"
+ }
+ {
+  coords 4730.628 14.692 8579.397
+  m_sDescription "Grad"
+ }
+}
