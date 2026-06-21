@@ -265,9 +265,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected string GetCharacterName(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return "Unknown";
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+			return "AI";
+
+		int playerID = playerManager.GetPlayerIdFromControlledEntity(character);
 		if (playerID != 0)
-			return GetGame().GetPlayerManager().GetPlayerName(playerID);
+			return playerManager.GetPlayerName(playerID);
 			
 		return "AI";
 	}
@@ -275,7 +282,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected int GetID(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return 0;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		int playerID = 0;
+		if (playerManager)
+			playerID = playerManager.GetPlayerIdFromControlledEntity(character);
+
 		if (playerID != 0)
 			return playerID;
 			
@@ -302,7 +316,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetFaction(IEntity entity)
-	{	
+	{
+		if (!entity)
+			return 0;
+
 		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		if (!factionComponent)
 			return 0;
