@@ -1081,6 +1081,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 			array<string> data = {};
 		
 			ticketName.Split(":", data, true);
+			if (data.IsEmpty())
+				return;
+
 			ticketID = data[0].ToInt();
 			if (ticketID == 0)
 				return;
@@ -1988,12 +1991,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		array<string> requestParts = {};
 		button.GetName().Split("_", requestParts, true);
+		if (requestParts.Count() < 3)
+			return;
 		
 		string action = requestParts[1];
 		int delta = requestParts[2].ToInt();
 		FactionKey faction = requestParts[0];
 		
-		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateTicket(action, faction, delta);
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager)
+			rplManager.UpdateTicket(action, faction, delta);
 	}
 	
 	void UpdateGearSets()

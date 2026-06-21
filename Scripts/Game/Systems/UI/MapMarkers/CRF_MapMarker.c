@@ -85,6 +85,8 @@ modded class SCR_MapMarkersUI
 		// Parse marker data
 		TStringArray markerProperties = {};
 		markerData.Split("||", markerProperties, false);
+		if (markerProperties.Count() < 7)
+			return;
 		
 		// Create marker widget
 		Widget markerWidget = GetGame().GetWorkspace().CreateWidgets("{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout", m_RootWidget);
@@ -167,7 +169,7 @@ modded class SCR_MapMarkersUI
 			TStringArray markerProperties = {};
 			markerData.Split("||", markerProperties, false);
 			
-			if(!markerProperties || markerProperties.IsEmpty())
+			if(!markerProperties || markerProperties.Count() < 7)
 			{
 				markerIndex++;
 				continue;

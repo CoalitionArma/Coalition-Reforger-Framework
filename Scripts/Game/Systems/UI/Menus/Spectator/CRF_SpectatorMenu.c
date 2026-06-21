@@ -723,7 +723,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				
 				if(slotRplId != RplId.Invalid() && Replication.FindItem(slotRplId))
 				{
-					IEntity entity = RplComponent.Cast(Replication.FindItem(slotRplId)).GetEntity();
+					RplComponent slotRplComponent = RplComponent.Cast(Replication.FindItem(slotRplId));
+					IEntity entity;
+					if (slotRplComponent)
+						entity = slotRplComponent.GetEntity();
 					
 					if(entity && entity != localMainEnt)
 					{
@@ -752,7 +755,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				
 				if (playerEntity && CRF_EntityHelper.IsSpectator(playerEntity) && playerEntity != localMainEnt)
 				{
-					RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
+					RplComponent playerRplComponent = RplComponent.Cast(playerEntity.FindComponent(RplComponent));
+					if (!playerRplComponent)
+						continue;
+
+					RplId playerRplId = playerRplComponent.Id();
 					comparisonRplIds.Insert(playerRplId);
 					SetIconForEntity(playerEntity, playerRplId);
 				};
@@ -779,7 +786,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				
 				if(aiCharacter && aiCharacter != localMainEnt)
 				{
-					RplId aiRplId = RplComponent.Cast(aiCharacter.FindComponent(RplComponent)).Id();
+					RplComponent aiRplComponent = RplComponent.Cast(aiCharacter.FindComponent(RplComponent));
+					if (!aiRplComponent)
+						continue;
+
+					RplId aiRplId = aiRplComponent.Id();
 					comparisonRplIds.Insert(aiRplId);
 					SetIconForEntity(aiCharacter, aiRplId);
 				};
@@ -2512,6 +2523,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Split time string into components
 		array<string> timeParts = {};
 		m_sServerWorldTime.Split(":", timeParts, false);
+		if (timeParts.Count() < 3 || !m_wTimer)
+			return;
 		
 		// Format time display (drop the hour part if it's 00)
 		string displayTime = m_sServerWorldTime;
@@ -2539,4 +2552,4 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_wTimer.SetColorInt(ARGB(255, 215, 215, 215));
 		}
 	}
-} 
+}

@@ -34,7 +34,7 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	void ShowHint(string hinttext, float duration)
 	{
 		// Safety check - ensure widget is available
-		if (!m_wMainWidget)
+		if (!m_wMainWidget || !m_wText || !m_wBG)
 			return;
 		
 		// Cancel any existing hint timers
@@ -58,6 +58,29 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		//This CallLater is not bad, CallLater was made for usecases like these in HUDs so I am leaving it.
 		// Start monitoring hint duration with periodic checks
 		GetGame().GetCallqueue().CallLater(HintLoop, 1000, true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Stop all callbacks and destroy the widget exactly once.
+	void DestroyHint()
+	{
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(HintLoop);
+			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
+		}
+
+		Widget widget = m_wMainWidget;
+		m_wMainWidget = null;
+		m_wText = null;
+		m_wBG = null;
+
+		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
+		if (playerControllerManager && playerControllerManager.m_wSavedHintWidget == widget)
+			playerControllerManager.m_wSavedHintWidget = null;
+
+		if (widget)
+			widget.RemoveFromHierarchy();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -104,16 +127,20 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		} 
 		else 
 		{
-			// Widget is fully transparent, clean up resources
-			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
-			delete m_wMainWidget;
+			DestroyHint();
 		}
 	}
 	
-	//Added as if there is a hint on screen during scernario refresh it would linger without this.
 	void ~CRF_Hint()
 	{
-		if (m_wMainWidget)
-			delete m_wMainWidget;
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(HintLoop);
+			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
+		}
+
+		m_wMainWidget = null;
+		m_wText = null;
+		m_wBG = null;
 	}
 }

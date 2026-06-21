@@ -165,7 +165,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	void SelectCategory(SCR_ButtonBaseComponent button)
 	{
 		while (m_Items.GetChildren())
-			delete m_Items.GetChildren();
+			m_Items.GetChildren().RemoveFromHierarchy();
 		
 		CRF_MiniArsenalCategoryButton miniArsnealCategory = CRF_MiniArsenalCategoryButton.Cast(button);
 		if (miniArsnealCategory.m_iCategoryIndex >= 18)

@@ -186,6 +186,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		foreach(IEntity vehicle : m_aTrackedVehicle)
 		{
+			if (!vehicle)
+				continue;
+
 			// Collect info
 			string vehicleName = GetFriendlyName(vehicle);
 			RplId vehicleID = Replication.FindItemId(vehicle);
@@ -298,8 +301,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetVehicleType(IEntity vehicle)
-	{	
-		int type = Vehicle.Cast(vehicle).m_eVehicleType; // Refactor is planned by devs for this
+	{
+		Vehicle vehicleEntity = Vehicle.Cast(vehicle);
+		if (!vehicleEntity)
+			return 0;
+
+		int type = vehicleEntity.m_eVehicleType; // Refactor is planned by devs for this
 		
 		switch(type)
 		{
@@ -387,7 +394,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	void RegisterVehicle(IEntity vehicle)
 	{
-		m_aTrackedVehicle.Insert(vehicle);
+		if (vehicle && !m_aTrackedVehicle.Contains(vehicle))
+			m_aTrackedVehicle.Insert(vehicle);
 	}
 	//------------------------------------------------------------------------------------
 	void UnregisterVehicle(IEntity vehicle)

@@ -1,8 +1,14 @@
 void ShadowCheck()
 {
+	if (!GetGame() || !GetGame().GetEngineUserSettings())
+		return;
+
 	int shadows;
 	int dshadows;
 	UserSettings m_Pipeline = GetGame().GetEngineUserSettings().GetModule("PipelineUserSettings");
+	UserSettings videoSettings = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+	if (!m_Pipeline || !videoSettings)
+		return;
 	
 	m_Pipeline.Get("ShadowQuality", shadows);
 	if (shadows < 2) {
@@ -10,37 +16,44 @@ void ShadowCheck()
 		GetGame().UserSettingsChanged();
 	};
 	
-	GetGame().GetEngineUserSettings().GetModule("VideoUserSettings").Get("DistantShadowsQuality",dshadows);
+	videoSettings.Get("DistantShadowsQuality",dshadows);
 	if (dshadows < 2) {
-		GetGame().GetEngineUserSettings().GetModule("VideoUserSettings").Set("DistantShadowsQuality", 2);
+		videoSettings.Set("DistantShadowsQuality", 2);
 		GetGame().UserSettingsChanged();
 	};
 }
 
 void GrassCheck()
 {
+	if (!GetGame() || !GetGame().GetEngineUserSettings())
+		return;
+
 	int grassDistance;
 	int grassQual;
 	int geomDetail;
+	UserSettings grassSettings = GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings");
+	UserSettings resourceSettings = GetGame().GetEngineUserSettings().GetModule("ResourceManagerUserSettings");
+	if (!grassSettings || !resourceSettings)
+		return;
 	
-	GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Get("Lod",grassQual);
-	GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Get("Distance",grassDistance);
-	GetGame().GetEngineUserSettings().GetModule("ResourceManagerUserSettings").Get("GeometricDetail",geomDetail);
+	grassSettings.Get("Lod",grassQual);
+	grassSettings.Get("Distance",grassDistance);
+	resourceSettings.Get("GeometricDetail",geomDetail);
 	
 	if (grassQual != 3) {
-		GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Set("Lod",3);
+		grassSettings.Set("Lod",3);
 		GetGame().UserSettingsChanged();
 	};
 	
 	if (grassDistance < 300)
 	{
-		GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Set("Distance",300);
+		grassSettings.Set("Distance",300);
 		GetGame().UserSettingsChanged();
 	}
 	
 	if (geomDetail < 2)
 	{
-		GetGame().GetEngineUserSettings().GetModule("ResourceManagerUserSettings").Set("GeometricDetail",2);
+		resourceSettings.Set("GeometricDetail",2);
 		GetGame().UserSettingsChanged();
 	}
 }

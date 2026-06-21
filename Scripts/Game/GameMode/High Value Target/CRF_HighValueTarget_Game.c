@@ -191,6 +191,23 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		SetEventMask(owner, EntityEvent.FIXEDFRAME); // Testing event mask for initial clientside 
 	}
+
+	override void OnDelete(IEntity owner)
+	{
+		array<IEntity> trackedEntities = {};
+		foreach (IEntity hvtEntity, int entryIndex : m_mHVTEntryIndex)
+		{
+			if (hvtEntity)
+				trackedEntities.Insert(hvtEntity);
+		}
+
+		foreach (IEntity hvtEntity : trackedEntities)
+			UnregisterHVTEntity(hvtEntity);
+
+		m_mEntryToTransponder.Clear();
+		ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+		super.OnDelete(owner);
+	}
 	
 	float m_fUpdateBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
@@ -200,7 +217,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_fUpdateBuffer = 0;
 			
-			if (!CRF_Gamemode.GetInstance().IsRunning())
+			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+			if (!gamemode || !gamemode.IsRunning())
 				return;
 			
 			if (!m_bHVTStateSet)
@@ -213,7 +231,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// If safestart is never enabled, skip directly to GameInit
 			if (!m_bHasSafestartBegun)
 			{
-				if (CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				if (safestartManager && safestartManager.GetSafestartStatus())
 				{
 					m_bHasSafestartBegun = true;
 					return;
@@ -223,7 +242,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Wait for safestart to end before GameInit (skipped if safestart was never active)
 			if (!m_bGameInit)
 			{
-				if (m_bHasSafestartBegun && CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				if (m_bHasSafestartBegun && safestartManager && safestartManager.GetSafestartStatus())
 					return;
 				
 				GameInit();
@@ -317,7 +337,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 							
 							SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
 							if (characterController)
+							{
+								characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
 								characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+							}
 							break;
 						}
 					}
@@ -371,12 +394,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			IEntity existingHVT = m_mEntryToHVT.Get(entryIndex);
 			if (existingHVT)
-			{
-				m_mHVTEntryIndex.Remove(existingHVT);
-				m_mHVTDamageManagers.Remove(existingHVT);
-			}
-			
-			m_mEntryToHVT.Remove(entryIndex);
+				UnregisterHVTEntity(existingHVT);
 		}
 		
 		PlayerManager playerManager = GetGame().GetPlayerManager();
@@ -435,7 +453,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		// Hook death callback
 		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (characterController)
+		{
+			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
 			characterController.m_OnPlayerDeathWithParam.Insert(OnHVTDeath);
+		}
 		
 		// ALWAYS set damage state to match component setting (overrides prefab default on spawn/respawn)
 		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
@@ -445,11 +466,39 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			m_mHVTDamageManagers.Set(hvtEntity, damageManager); // Cache for IsHVTAlive
 		}
 	}
+
+	protected void UnregisterHVTEntity(IEntity hvtEntity)
+	{
+		if (!hvtEntity)
+			return;
+
+		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (characterController)
+		{
+			characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
+			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
+		}
+
+		if (m_mHVTEntryIndex.Contains(hvtEntity))
+		{
+			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
+			if (m_mEntryToHVT.Contains(entryIndex) && m_mEntryToHVT.Get(entryIndex) == hvtEntity)
+				m_mEntryToHVT.Remove(entryIndex);
+		}
+
+		m_mHVTEntryIndex.Remove(hvtEntity);
+		m_mHVTDamageManagers.Remove(hvtEntity);
+	}
 	
 	// HVT death callback - syncs positions and shows hint
 	void OnHVTDeath(SCR_CharacterControllerComponent characterController, IEntity killerEntity, Instigator killer)
 	{
+		if (!characterController)
+			return;
+
 		IEntity hvtEntity = characterController.GetOwner();
+		if (!hvtEntity)
+			return;
 		
 		// Immediately sync positions - zero position will trigger marker removal on clients
 		if (m_bEnableTransponderMarker)
@@ -488,7 +537,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Get killer info
 		string killerLabel = "";
-		if (factionManager)
+		if (factionManager && killer)
 		{
 			Faction killerFaction = factionManager.GetPlayerFaction(killer.GetInstigatorPlayerID());
 			if (killerFaction)
@@ -499,6 +548,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_sDeadHVTHint = hvtFactionLabel + targetLabel + playerNameLabel + killerLabel;
 		Replication.BumpMe();
 		OnDeadHVTHintReplicated();
+		UnregisterHVTEntity(hvtEntity);
 	}
 	
 	// Client: Show hint when replicated

@@ -1634,7 +1634,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (mcomEntity)
 		{
 			Print("[CRF_RushGamemodeManager] Scheduling server entity deletion for: " + mcomIdentifier + " in 3 seconds");
-			GetGame().GetCallqueue().CallLater(DeleteMCOMEntityServer, 3000, false, mcomEntity, mcomIdentifier);
+			GetGame().GetCallqueue().CallLater(DeleteMCOMEntityServer, 3000, false, mcomIdentifier);
 		}
 		else
 		{
@@ -1660,12 +1660,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Delay the deletion slightly to ensure the entity is ready for deletion
+		// Clean up client-side presentation and references only. Replication owns
+		// the proxy lifetime and will remove it after the authority is deleted.
 		GetGame().GetCallqueue().CallLater(ProcessClientMCOMDeletion, 1000, false, m_sReplicatedDestroyedMCOM);
 	}
 	
 	//------------------------------------------------------------------------------------
-	// ProcessClientMCOMDeletion - Handle the actual client-side entity deletion
+	// ProcessClientMCOMDeletion - Clean up client-side presentation.
 	//------------------------------------------------------------------------------------
 	protected void ProcessClientMCOMDeletion(string mcomIdentifier)
 	{
@@ -1676,7 +1677,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity entity = GetMCOMEntity(mcomIdentifier);
 		if (entity)
 		{
-			Print(string.Format("[CRF_Rush_Game] Client found MCOM entity: %1 (ID: %2), deleting...", mcomIdentifier, entity.GetID()));
+			Print(string.Format("[CRF_Rush_Game] Client found MCOM entity: %1 (ID: %2), hiding presentation...", mcomIdentifier, entity.GetID()));
 			
 			// Hide 3D marker first
 			CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(entity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -1685,13 +1686,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			
 			// Clean up references
 			CleanupMCOMReference(mcomIdentifier);
-			
-			// Delete all children
-			DeleteMCOMChildren(entity);
-			
-			// Delete the entity
-			delete entity;
-			Print(string.Format("[CRF_Rush_Game] Successfully deleted MCOM entity: %1", mcomIdentifier));
+			Print(string.Format("[CRF_Rush_Game] Client presentation cleaned for MCOM entity: %1", mcomIdentifier));
 		}
 		else
 		{
@@ -1716,26 +1711,11 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		}
 	}
 	
-	protected void DeleteMCOMChildren(IEntity mcomEntity)
-	{
-		int num = 0;
-		IEntity child = mcomEntity.GetChildren();
-		while (child)
-		{
-			IEntity childToDelete = child;
-			num++;
-			DeleteMCOMChildren(child); //Recursivity is fun
-			child = child.GetSibling();
-			delete childToDelete;
-		}
-	}
-	
 	/**
 	 * Server-authoritative entity deletion
-	 * @param mcomEntity The MCOM entity to delete
 	 * @param mcomIdentifier The MCOM identifier for logging
 	 */
-	protected void DeleteMCOMEntityServer(IEntity mcomEntity, string mcomIdentifier)
+	protected void DeleteMCOMEntityServer(string mcomIdentifier)
 	{
 		if (!Replication.IsServer())
 		{
@@ -1743,6 +1723,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
+		IEntity mcomEntity = GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
 		{
 			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityServer: Entity is null for " + mcomIdentifier, LogLevel.WARNING);
@@ -1774,7 +1755,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Delay server entity deletion to give clients time to process RPC
 		Print("[CRF_RushGamemodeManager] Scheduling final server entity deletion in 2 seconds for: " + mcomIdentifier);
-		GetGame().GetCallqueue().CallLater(DeleteMCOMEntityFinal, 2000, false, mcomEntity, mcomIdentifier);
+		GetGame().GetCallqueue().CallLater(DeleteMCOMEntityFinal, 2000, false, mcomIdentifier);
 		
 		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer END ===== for " + mcomIdentifier);
 	}
@@ -1782,19 +1763,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	// Final entity deletion on server after client RPC processing
 	//------------------------------------------------------------------------------------
-	protected void DeleteMCOMEntityFinal(IEntity mcomEntity, string mcomIdentifier)
+	protected void DeleteMCOMEntityFinal(string mcomIdentifier)
 	{
+		IEntity mcomEntity = GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
 		{
 			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityFinal: Entity already deleted for " + mcomIdentifier);
 			return;
 		}
 
-		// Delete all children
-		DeleteMCOMChildren(mcomEntity);
-		
-		// Delete the entity
-		delete mcomEntity;
+		SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
 		
 		Print("[CRF_RushGamemodeManager] Server entity deletion completed for: " + mcomIdentifier);
 	}

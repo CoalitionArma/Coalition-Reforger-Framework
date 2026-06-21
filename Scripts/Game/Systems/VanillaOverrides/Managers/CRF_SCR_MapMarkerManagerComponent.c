@@ -11,7 +11,16 @@ modded class SCR_MapMarkerManagerComponent
 	
 	void UpdateSharedMarkers(array<int> markers, int playerId)
 	{
+		if (!markers)
+			return;
+
 		array<int> currentMarkers = m_MarkersSharedReference.Get(playerId);
+		if (!currentMarkers)
+		{
+			currentMarkers = {};
+			m_MarkersSharedReference.Set(playerId, currentMarkers);
+		}
+
 		foreach (int markerUID: markers)
 		{
 			if (currentMarkers.Contains(markerUID))
