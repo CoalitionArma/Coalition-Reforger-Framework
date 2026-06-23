@@ -180,6 +180,269 @@ FrameWidgetClass {
    }
    Clipping True
   }
+    FrameWidgetClass "{6900000000000001}" {
+     Name "DamageReportPanel"
+     Slot FrameWidgetSlot "{6900000000000002}" {
+        Anchor 0.5 0.5 0.5 0.5
+        PositionX -490
+        OffsetLeft -490
+        PositionY -215
+        OffsetTop -215
+        SizeX 980
+        OffsetRight -490
+        SizeY 430
+        OffsetBottom -215
+     }
+     "Z Order" 90
+     "Is Visible" 0
+     {
+        ImageWidgetClass "{6900000000000003}" {
+         Name "DamageReportBackground"
+         Slot FrameWidgetSlot "{6900000000000004}" {
+            Anchor 0 0 1 1
+            OffsetLeft 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+         }
+         Color 0 0 0 0.84
+        }
+        TextWidgetClass "{6900000000000005}" {
+         Name "DamageReportTitle"
+         Slot FrameWidgetSlot "{6900000000000006}" {
+            Anchor 0 0 1 0
+            OffsetLeft 20
+            OffsetTop 12
+            SizeX -40
+            OffsetRight 20
+            SizeY 32
+            OffsetBottom -44
+         }
+         Color 1 1 1 0.95
+         Text "DAMAGE REPORT"
+         "Font Size" 24
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6900000000000007}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+            OutlineSize 1
+         }
+        }
+        TextWidgetClass "{6900000000000008}" {
+         Name "DamageReportSubject"
+         Slot FrameWidgetSlot "{6900000000000009}" {
+            Anchor 0 0 1 0
+            OffsetLeft 20
+            OffsetTop 42
+            SizeX -40
+            OffsetRight 20
+            SizeY 24
+            OffsetBottom -66
+         }
+         Color 0.72 0.72 0.72 1
+         Text ""
+         "Font Size" 16
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+        FrameWidgetClass "{690000000000000A}" {
+         Name "DamageReportBodyFrame"
+         Slot FrameWidgetSlot "{690000000000000B}" {
+            Anchor 0 0 0 0
+            OffsetLeft 20
+            OffsetTop 76
+            SizeX 330
+            OffsetRight -350
+            SizeY 330
+            OffsetBottom -406
+         }
+         {
+            ImageWidgetClass "{690000000000000C}" {
+             Name "DamageReportBodyBackground"
+             Slot FrameWidgetSlot "{690000000000000D}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 0.035 0.035 0.035 0.92
+            }
+            ImageWidgetClass "{6900000000000022}" {
+             Name "DamageReportBodyOutline"
+             Slot FrameWidgetSlot "{6900000000000023}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 1
+             Texture "{FA3183D43A82BEFB}UI/Images/DamageReport/ace_player_model.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{690000000000000E}" {
+             Name "DamageRegionHead"
+             Slot FrameWidgetSlot "{690000000000000F}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{DD56B2D615DF6168}UI/Images/DamageReport/damage_head.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{6900000000000010}" {
+             Name "DamageRegionTorso"
+             Slot FrameWidgetSlot "{6900000000000011}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{624C15FE16D3E6D9}UI/Images/DamageReport/damage_torso.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{6900000000000012}" {
+             Name "DamageRegionLeftArm"
+             Slot FrameWidgetSlot "{6900000000000013}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{635CFD77538EF5B5}UI/Images/DamageReport/damage_left_arm.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{6900000000000014}" {
+             Name "DamageRegionRightArm"
+             Slot FrameWidgetSlot "{6900000000000015}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{96DD13FD6E5A7CAA}UI/Images/DamageReport/damage_right_arm.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{6900000000000016}" {
+             Name "DamageRegionLeftLeg"
+             Slot FrameWidgetSlot "{6900000000000017}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{48EDAB246566DEB3}UI/Images/DamageReport/damage_left_leg.edds"
+             Size 512 512
+            }
+            ImageWidgetClass "{6900000000000018}" {
+             Name "DamageRegionRightLeg"
+             Slot FrameWidgetSlot "{6900000000000019}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 1 1 1 0
+             Texture "{6B1AFAA6450E91FA}UI/Images/DamageReport/damage_right_leg.edds"
+             Size 512 512
+            }
+            TextWidgetClass "{690000000000001A}" {
+             Name "DamageReportFatalRegion"
+             Slot FrameWidgetSlot "{690000000000001B}" {
+                Anchor 0 1 1 1
+                OffsetLeft 12
+                PositionY -28
+                OffsetTop -28
+                SizeX -24
+                OffsetRight 12
+                SizeY 20
+                OffsetBottom 8
+             }
+             Color 0.9 0.9 0.9 1
+             Text "Fatal Location: No fatal damage recorded"
+             "Font Size" 14
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+         }
+        }
+        FrameWidgetClass "{690000000000001C}" {
+         Name "DamageReportLogFrame"
+         Slot FrameWidgetSlot "{690000000000001D}" {
+            Anchor 0 0 1 1
+            OffsetLeft 370
+            OffsetTop 76
+            SizeX -390
+            OffsetRight 20
+            SizeY -100
+            OffsetBottom 24
+         }
+         {
+            ImageWidgetClass "{690000000000001E}" {
+             Name "DamageReportLogBackground"
+             Slot FrameWidgetSlot "{690000000000001F}" {
+                Anchor 0 0 1 1
+                OffsetLeft 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+             }
+             Color 0.035 0.035 0.035 0.92
+            }
+            RichTextWidgetClass "{6900000000000020}" {
+             Name "DamageReportLog"
+             Slot FrameWidgetSlot "{6900000000000021}" {
+                Anchor 0 0 1 1
+                OffsetLeft 16
+                OffsetTop 14
+                SizeX -32
+                OffsetRight 16
+                SizeY -28
+                OffsetBottom 14
+             }
+             Color 0.88 0.88 0.88 1
+             Text "No damage recorded."
+             "Font Size" 16
+             "Min Font Size" 16
+             Wrap 1
+            }
+         }
+        }
+     }
+    }
   FrameWidgetClass "{63224AF6A2160646}" : "{D89BBA18F99053D6}UI/layouts/HUD/Chat/ChatHud.layout" {
    Name "ChatHud"
    Slot FrameWidgetSlot "{58731DB272499DED}" {
