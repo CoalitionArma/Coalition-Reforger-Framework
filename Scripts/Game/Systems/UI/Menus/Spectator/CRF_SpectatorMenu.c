@@ -348,7 +348,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			if (entry.m_bFatal)
 				fatalText = " KILL";
 
-			string line = string.Format("[%1] %2 | %3 dmg | %4 %5 | %6 | %7%8", FormatDamageReportTime(entry.m_iWorldTime), entry.m_sDamageType, Math.Round(entry.m_fDamageValue), sourceLabel, otherName, entry.m_sBodyRegion, entry.m_sHitZone, fatalText);
+			string rangeText = "?m";
+			if (entry.m_fRangeMeters >= 0)
+				rangeText = string.Format("%1m", Math.Round(entry.m_fRangeMeters));
+
+			string line = string.Format("[%1] %2 (%3) | %4 dmg | %5 %6 | %7 | %8%9", FormatDamageReportTime(entry.m_iWorldTime), entry.m_sDamageType, rangeText, Math.Round(entry.m_fDamageValue), sourceLabel, otherName, entry.m_sBodyRegion, entry.m_sHitZone, fatalText);
 			if (reportText.IsEmpty())
 				reportText = line;
 			else

@@ -5,19 +5,21 @@ class CRF_SpectatorDamageReportEntry
 	int m_iAttackerPlayerId;
 	string m_sAttackerName;
 	float m_fDamageValue;
+	float m_fRangeMeters;
 	string m_sDamageType;
 	string m_sHitZone;
 	string m_sBodyRegion;
 	bool m_bFatal;
 	int m_iWorldTime;
 
-	void CRF_SpectatorDamageReportEntry(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
+	void CRF_SpectatorDamageReportEntry(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
 	{
 		m_iVictimPlayerId = victimPlayerId;
 		m_sVictimName = victimName;
 		m_iAttackerPlayerId = attackerPlayerId;
 		m_sAttackerName = attackerName;
 		m_fDamageValue = damageValue;
+		m_fRangeMeters = rangeMeters;
 		m_sDamageType = damageType;
 		m_sHitZone = hitZone;
 		m_sBodyRegion = bodyRegion;
@@ -31,7 +33,7 @@ class CRF_SpectatorDamageReportStore
 	protected const int MAX_DAMAGE_EVENTS = 500;
 	protected static ref array<ref CRF_SpectatorDamageReportEntry> s_aEntries = new array<ref CRF_SpectatorDamageReportEntry>();
 
-	static void InsertEvent(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
+	static void InsertEvent(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
 	{
 		if (victimPlayerId <= 0)
 			return;
@@ -51,7 +53,7 @@ class CRF_SpectatorDamageReportStore
 		if (bodyRegion.IsEmpty())
 			bodyRegion = "Unknown";
 
-		s_aEntries.Insert(new CRF_SpectatorDamageReportEntry(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, damageType, hitZone, bodyRegion, fatal, worldTime));
+		s_aEntries.Insert(new CRF_SpectatorDamageReportEntry(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, rangeMeters, damageType, hitZone, bodyRegion, fatal, worldTime));
 
 		while (s_aEntries.Count() > MAX_DAMAGE_EVENTS)
 			s_aEntries.RemoveOrdered(0);
@@ -148,8 +150,9 @@ modded class SCR_DamageManagerComponent
 		string damageType = CRF_DamageHelper.GetDamageTypeString(damageContext.damageType);
 		bool fatal = wasAlive && !CRF_DamageHelper.CheckIfEntityAlive(victimEntity);
 		int worldTime = GetGame().GetWorld().GetWorldTime();
+		float rangeMeters = GetDamageReportRangeMeters(victimEntity, damageContext, attackerPlayerId);
 
-		broadcastManager.BroadcastSpectatorDamageReport(victimPlayerId, victimName, attackerPlayerId, attackerName, damageContext.damageValue, damageType, hitZoneName, bodyRegion, fatal, worldTime);
+		broadcastManager.BroadcastSpectatorDamageReport(victimPlayerId, victimName, attackerPlayerId, attackerName, damageContext.damageValue, rangeMeters, damageType, hitZoneName, bodyRegion, fatal, worldTime);
 	}
 
 	protected void CRF_MarkLatestSpectatorDamageReportFatal()
@@ -192,6 +195,25 @@ modded class SCR_DamageManagerComponent
 		}
 
 		return false;
+	}
+
+	protected float GetDamageReportRangeMeters(IEntity victimEntity, notnull BaseDamageContext damageContext, int attackerPlayerId)
+	{
+		if (!victimEntity)
+			return -1;
+
+		IEntity attackerEntity;
+		if (damageContext.instigator)
+		{
+			attackerEntity = damageContext.instigator.GetInstigatorEntity();
+			if (!attackerEntity && attackerPlayerId > 0)
+				attackerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(attackerPlayerId);
+		}
+
+		if (!attackerEntity)
+			return -1;
+
+		return vector.Distance(victimEntity.GetOrigin(), attackerEntity.GetOrigin());
 	}
 
 	protected string GetDamageReportHitZoneName(notnull BaseDamageContext damageContext)

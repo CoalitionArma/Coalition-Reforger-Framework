@@ -1158,14 +1158,14 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void BroadcastSpectatorDamageReport(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
+	void BroadcastSpectatorDamageReport(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
 	{
 		string packedData = PackSpectatorDamageReportStrings(victimName, attackerName, damageType, hitZone, bodyRegion);
 
 		#ifdef WORKBENCH
-		RpcDo_BroadcastSpectatorDamageReport(victimPlayerId, attackerPlayerId, damageValue, fatal, worldTime, packedData);
+		RpcDo_BroadcastSpectatorDamageReport(victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
 		#else
-		Rpc(RpcDo_BroadcastSpectatorDamageReport, victimPlayerId, attackerPlayerId, damageValue, fatal, worldTime, packedData);
+		Rpc(RpcDo_BroadcastSpectatorDamageReport, victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
 		#endif
 	}
 
@@ -2270,7 +2270,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastSpectatorDamageReport(int victimPlayerId, int attackerPlayerId, float damageValue, bool fatal, int worldTime, string packedData)
+	void RpcDo_BroadcastSpectatorDamageReport(int victimPlayerId, int attackerPlayerId, float damageValue, float rangeMeters, bool fatal, int worldTime, string packedData)
 	{
 		array<string> parts = {};
 		packedData.Split("|", parts, false);
@@ -2281,7 +2281,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		string hitZone = GetSpectatorDamageReportPart(parts, 3, "Unknown");
 		string bodyRegion = GetSpectatorDamageReportPart(parts, 4, "Unknown");
 
-		CRF_SpectatorDamageReportStore.InsertEvent(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, damageType, hitZone, bodyRegion, fatal, worldTime);
+		CRF_SpectatorDamageReportStore.InsertEvent(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, rangeMeters, damageType, hitZone, bodyRegion, fatal, worldTime);
 
 		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
 		if (spectatorMenu)
