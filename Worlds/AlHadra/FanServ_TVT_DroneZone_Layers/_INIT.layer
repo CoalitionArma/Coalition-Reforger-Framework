@@ -1,60 +1,8 @@
 SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
- coords 4280.683 17.845 4802.92
+ coords 4277.582 17.844 4802.268
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_CrossFactionRespawnManager "{6998071BEC577351}" {
-   m_bEnabled 1
-   m_aMappings {
-    CRF_CrossFactionRespawnMapping "{6998071BBB96085D}" {
-     m_eSourceFaction BLUFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-1"
-     m_sTargetCallsignFilter "Cell 1"
-    }
-    CRF_CrossFactionRespawnMapping "{6998071B1C40942B}" {
-     m_eSourceFaction OPFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-1"
-     m_sTargetCallsignFilter "Cell 1"
-    }
-    CRF_CrossFactionRespawnMapping "{6998071B44F593E0}" {
-     m_eSourceFaction BLUFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-2"
-     m_sTargetCallsignFilter "Cell 2"
-    }
-    CRF_CrossFactionRespawnMapping "{6998071B209A3E96}" {
-     m_eSourceFaction OPFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-2"
-     m_sTargetCallsignFilter "Cell 2"
-    }
-    CRF_CrossFactionRespawnMapping "{6998071B6BBC113C}" {
-     m_eSourceFaction BLUFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-3"
-     m_sTargetCallsignFilter "Cell 3"
-    }
-    CRF_CrossFactionRespawnMapping "{6998071B23A71ECF}" {
-     m_eSourceFaction OPFOR
-     m_eTargetFaction INDFOR
-     m_sSourceCallsignFilter "1-3"
-     m_sTargetCallsignFilter "Cell 3"
-    }
-   }
-  }
-  CRF_HighValueTargetGamemodeManager "{6998071F6AB5E7D8}" {
-   m_bEnableTransponderMarker 0
-   m_bAutoSetWinnerOnElimination 1
-   m_aHVTEntries {
-    CRF_HVTEntry "{6998071F6BC34E64}" {
-     m_eEntryType ELEMENT
-     m_eFaction INDFOR
-     m_sTargetCallsign "DRONE"
-    }
-   }
-  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -67,16 +15,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomWeatherChanges 0
   }
  }
- coords 0 0 0
- m_bRespawnEnabled 1
- m_bWaveRespawn 1
+ coords 4279.289 17.844 4803.07
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 10
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 60
  m_bLockUnusedSlots 1
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -101,8 +49,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
-   m_sTextData "Kill the insurgent drone operators."\
-   "If you kill the drone operators first, extract at spawn."\
+   m_sTextData "Locate and destroy as many drone stashes as possible."\
+   "Kill the insurgent drone operators."\
+   "If you kill the drone operators before OPFOR, extract at spawn."\
    "If OPFOR kills the drone operators first, wipe out OPFOR."
    m_aFactionKeys +{
    }
@@ -110,8 +59,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "Kill the insurgent drone operators."\
-   "If you kill the drone operators first, extract at spawn."\
+   m_sTextData "Locate and destroy as many drone stashes as possible."\
+   "Kill the insurgent drone operators."\
+   "If you kill the drone operators before BLUFOR, extract at spawn."\
    "If BLUFOR kills the drone operators first, wipe out BLUFOR."
    m_aFactionKeys +{
    }
@@ -120,33 +70,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Kill all infidels."\
-   "Drone operators must stay within the search area."
+   "Drone operators must stay within the search area."\
+   "Collect extra drones from drone stashes."\
+   "Protect the drone stashes."\
+   "Insurgent reinforcements can collect these drones and give them to the drone operators."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "If you die on BLUFOR or OPFOR you will respawn on INDFOR (up to a certain amount of INDFOR players and depending on your slot)"
+   m_sTextData "INDFOR drone operators are not allowed to leave the marked search area. Other INDFOR forces have freedom of movement."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 1
- m_iFactionTwoRatio 1
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69980713667AA88E}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{69980713667AAFBF}" {
+  CRF_SlottingGroup "{69AE04100FEACD1F}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -154,7 +99,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69980713667AAFD8}" {
+  CRF_SlottingGroup "{69AE04100FEACC3A}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -169,7 +114,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AAEA8}" {
+  CRF_SlottingGroup "{69AE04100FEAC395}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -184,7 +129,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AAEDB}" {
+  CRF_SlottingGroup "{69AE04100FEAC303}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,46 +144,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AAE5F}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{69980713667AADFE}" {
-   m_sCallsign "2-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    DRONE_OPERATOR
-    RIFLEMAN_DEMO
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{69980713667AAD67}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    DRONE_OPERATOR
-    RIFLEMAN_DEMO
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{69980713667AAC8C}" {
-   m_sCallsign "2-3"
+  CRF_SlottingGroup "{69AE04100FEAC286}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -254,15 +161,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69980713667AA394}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{69980713667AA330}" {
+  CRF_SlottingGroup "{69AE04100FEAC250}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -270,7 +169,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69980713667AA2A3}" {
+  CRF_SlottingGroup "{69AE04100FEAC1FC}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -285,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AA2CE}" {
+  CRF_SlottingGroup "{69AE04100FEAC16B}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -300,7 +199,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AA274}" {
+  CRF_SlottingGroup "{69AE04100FEAC091}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -315,46 +214,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69980713667AA19C}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  CRF_SlottingGroup "{69980713667AA134}" {
-   m_sCallsign "2-1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    DRONE_OPERATOR
-    RIFLEMAN_DEMO
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{69980713667AA0A1}" {
-   m_sCallsign "2-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    DRONE_OPERATOR
-    RIFLEMAN_DEMO
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{69980713667AA0D5}" {
-   m_sCallsign "2-3"
+  CRF_SlottingGroup "{69AE04100FEAC039}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -370,60 +231,34 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{69980713667AA7AF}" {
+  CRF_SlottingGroup "{69AE04100FEAC7ED}" {
    m_sCallsign "DRONE"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
-    PLATOON_SERGEANT
-    DRONE_OPERATOR
+    MEDIC
     DRONE_OPERATOR
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{69980713667AA7C9}" {
-   m_sCallsign "Cell 1"
+  CRF_SlottingGroup "{69AE04100FEAC70C}" {
+   m_sCallsign "MMG"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN_DEMO
-    GRENADIER
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{69980713667AA746}" {
-   m_sCallsign "Cell 2"
+  CRF_SlottingGroup "{69AE04100FEAC6B1}" {
+   m_sCallsign "ENG"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN_DEMO
-    GRENADIER
-   }
-  }
-  CRF_SlottingGroup "{69980713667AA6EE}" {
-   m_sCallsign "Cell 3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN_DEMO
-    GRENADIER
+    COMBAT_ENGINEER
+    COMBAT_ENGINEER
    }
   }
  }
@@ -433,18 +268,18 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{2805BE2020A0EC22}Configs/Gearscripts/Standard/Modern/CRF_GS_TFUSArmyMC.conf"
-  m_bEnableShareableMarkers 1
+  m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
+  m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{3B9E2AB0CA235973}Configs/Gearscripts/Standard/Modern/CRF_GS_RHS_AFRF_Modern_Day.conf"
-  m_bEnableShareableMarkers 1
+  m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
+  m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {

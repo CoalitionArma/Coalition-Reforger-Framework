@@ -483,16 +483,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 
-		// Get player faction (may change if cross-faction respawn applies)
+		// Get player faction
 		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 		FactionKey factionKey;
 		
 		if (faction)
 			factionKey = faction.GetFactionKey();
-		
-		CRF_CrossFactionRespawnManager crossFactionRespawn = CRF_CrossFactionRespawnManager.GetInstance();
-		if (crossFactionRespawn)
-			crossFactionRespawn.TryTransferPlayerOnDeath(playerId, factionKey);
 
 		// Handle respawn if enabled, tickets available, and within time window
 		if (m_RespawnManager.CanPlayerResawn(playerEntity, factionKey))
@@ -510,7 +506,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		
 		// Update slot death state so player gets put into spec
-		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
+		int slotID = m_SlottingManager.GetCharacterSlotID(playerEntity);
 		if (slotID != -1)
 		{
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);

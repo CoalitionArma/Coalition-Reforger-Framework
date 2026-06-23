@@ -1,0 +1,221 @@
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4268.533 35.36 4771.296
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4275.917 28.671 4847.658
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4312.591 40.083 4761.09
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4314.525 35.544 4843.301
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4194.369 35.544 4772.21
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4345.23 35.684 4926.842
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4412.479 35.684 4860.714
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4107.655 31.482 4758.407
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4269.734 40.083 4894.953
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4210.085 28.671 4834.979
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+    m_fBaseHealth 200
+    m_fForceToDamageScale 50
+    m_fRelativeContactForceThresholdMinimum 0.05
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69AE041C5E0A5EFC}" {
+      SlotTemplate InventoryStorageSlot drones {
+       Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4152.943 30.784 4794.491
+ }
+}
