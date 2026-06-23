@@ -158,7 +158,11 @@ class CRF_WeaponHelper
 		if (!character)
 			return;
 			
-		BaseWeaponManagerComponent weaponManager = character.GetCharacterController().GetWeaponManagerComponent();
+		CharacterControllerComponent characterController = character.GetCharacterController();
+		if (!characterController)
+			return;
+
+		BaseWeaponManagerComponent weaponManager = characterController.GetWeaponManagerComponent();
 		if (!weaponManager)
 			return;
 
@@ -168,7 +172,11 @@ class CRF_WeaponHelper
 			return;
 
 		array<AttachmentSlotComponent> attachmentSlotArray = {};
-		BaseWeaponComponent.Cast(weapon.FindComponent(BaseWeaponComponent)).GetAttachments(attachmentSlotArray);
+		BaseWeaponComponent weaponComponent = BaseWeaponComponent.Cast(weapon.FindComponent(BaseWeaponComponent));
+		if (!weaponComponent)
+			return;
+
+		weaponComponent.GetAttachments(attachmentSlotArray);
 
 		// Add each attachment
 		foreach (ResourceName attachment : attachmentResources)

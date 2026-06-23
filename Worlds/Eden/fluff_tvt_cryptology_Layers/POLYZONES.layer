@@ -1,0 +1,82 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 6585.763 52.418 2084.236
+ Points {
+  ShapePoint "{699F33CC23247CBD}" {
+   Position -661.112 0 740.385
+  }
+  ShapePoint "{699F33CC2CBDC1E3}" {
+   Position 1556.01 0 1396.877
+  }
+  ShapePoint "{699F33CC167125CB}" {
+   Position 2831.978 0 -944.669
+  }
+  ShapePoint "{699F33CC13BCEAF7}" {
+   Position 1079.999 0 -1872.815
+  }
+ }
+}
+$grp PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ {
+  coords 8511.96 27.72 966.654
+  Points {
+   ShapePoint "{699F33CFA87D216E}" {
+    Position -8.772 0 1.766
+   }
+   ShapePoint "{699F33CF97EC27E3}" {
+    Position 49.663 0 22.929
+   }
+   ShapePoint "{699F33CF95C48843}" {
+    Position 82.608 0 46.201
+   }
+   ShapePoint "{699F33CF927567C7}" {
+    Position 121.408 0 25.986
+   }
+   ShapePoint "{699F33CF92A804BD}" {
+    Position 123.505 0 -4.562
+   }
+   ShapePoint "{699F33CF935EEC50}" {
+    Position 109.42 0 -25.469
+   }
+   ShapePoint "{699F33CF90CBB7DE}" {
+    Position 81.503 0 -32.837
+   }
+   ShapePoint "{699F33CF91770344}" {
+    Position 35.591 0 -16.925
+   }
+  }
+ }
+ {
+  coords 7644.982 266.302 2733.253
+  Points {
+   ShapePoint "{699F33CDDBEA6999}" {
+    Position -3.354 0 -1.937
+   }
+   ShapePoint "{699F33CDD8F23296}" {
+    Position -48.725 0 -18.558
+   }
+   ShapePoint "{699F33CDD9270AB5}" {
+    Position -63.264 0 12.175
+   }
+   ShapePoint "{699F33CDD99527FF}" {
+    Position -14.403 0 30.119
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 7369.225 141.393 1973.833
+ Points {
+  ShapePoint "{699F33CC768F35F1}" {
+   Position -123.416 0 194.034
+  }
+  ShapePoint "{699F33CC73167FA3}" {
+   Position 420.327 0 432.586
+  }
+  ShapePoint "{699F33CC7E316A3E}" {
+   Position 572.853 0 -166.808
+  }
+  ShapePoint "{699F33CC799E9198}" {
+   Position 48.208 -0 -270.044
+  }
+ }
+}

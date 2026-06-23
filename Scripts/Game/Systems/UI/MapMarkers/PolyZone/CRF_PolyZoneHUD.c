@@ -17,6 +17,15 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 		m_wVignette = OverlayWidget.Cast(m_wRoot.FindAnyWidget("Vignette"));
 		m_wScreenBlure = OverlayWidget.Cast(m_wRoot.FindAnyWidget("ScreenBlure"));
 		m_wEffectsVerticalLayout = VerticalLayoutWidget.Cast(m_wContent.FindAnyWidget("EffectsVerticalLayout"));
+		if (!m_wVignette || !m_wScreenBlure || !m_wEffectsVerticalLayout)
+			return;
+
+		// Transparent widgets still participate in hit testing. Keep inactive
+		// full-screen effects disabled so they cannot block UI below this HUD.
+		m_wVignette.SetOpacity(0);
+		m_wVignette.SetEnabled(false);
+		m_wScreenBlure.SetOpacity(0);
+		m_wScreenBlure.SetEnabled(false);
 		
 		// TODO: config
 		m_mEffectLayouts.Insert(CRF_EPolyZoneEffectHUDType.RestrictedZone, "{934EEEE4F36CE31E}UI/Map/HUD/PolyZoneEffects/PolyZoneRestrictedZoneEffect.layout");
@@ -33,10 +42,26 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 			polyZoneEffectHUD.Update(timeSlice);
 		}
 		
-		if (m_bShowScreenBlure) m_wScreenBlure.SetOpacity(Math.Clamp(m_wScreenBlure.GetOpacity() + timeSlice * 5.0, 0, 1));
-		else m_wScreenBlure.SetOpacity(Math.Clamp(m_wScreenBlure.GetOpacity() - timeSlice * 5.0, 0, 1));
-		if (m_bShowVignette) m_wVignette.SetOpacity(Math.Clamp(m_wVignette.GetOpacity() + timeSlice * 5.0, 0, 1));
-		else m_wVignette.SetOpacity(Math.Clamp(m_wVignette.GetOpacity() - timeSlice * 5.0, 0, 1));
+		UpdateOverlayVisibility(m_wScreenBlure, m_bShowScreenBlure, timeSlice);
+		UpdateOverlayVisibility(m_wVignette, m_bShowVignette, timeSlice);
+	}
+
+	protected void UpdateOverlayVisibility(Widget overlay, bool show, float timeSlice)
+	{
+		if (!overlay)
+			return;
+
+		if (show)
+		{
+			overlay.SetEnabled(true);
+			overlay.SetOpacity(Math.Clamp(overlay.GetOpacity() + timeSlice * 5.0, 0, 1));
+			return;
+		}
+
+		float opacity = Math.Clamp(overlay.GetOpacity() - timeSlice * 5.0, 0, 1);
+		overlay.SetOpacity(opacity);
+		if (opacity <= 0)
+			overlay.SetEnabled(false);
 	}
 	
 	void HideAll()
@@ -49,12 +74,24 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 	
 	void ShowEffect(CRF_EffectContainer effect)
 	{
+		if (!effect || !m_wEffectsVerticalLayout || !m_mEffectLayouts.Contains(effect.m_iType))
+			return;
+
 		if (m_mEffects.Contains(effect.m_iId))
 			HideEffect(effect.m_iId);
 		
 		ResourceName effectLayout = m_mEffectLayouts.Get(effect.m_iType);
 		Widget effectWidget = GetGame().GetWorkspace().CreateWidgets(effectLayout, m_wEffectsVerticalLayout);
+		if (!effectWidget)
+			return;
+
 		CRF_PolyZoneEffectHUD polyZoneEffectHUD = CRF_PolyZoneEffectHUD.Cast(effectWidget.FindHandler(CRF_PolyZoneEffectHUD));
+		if (!polyZoneEffectHUD)
+		{
+			delete effectWidget;
+			return;
+		}
+
 		polyZoneEffectHUD.SetString(effect.m_sString);
 		polyZoneEffectHUD.SetTime(effect.m_fTime);
 		if (!m_bShowVignette) m_bShowVignette = polyZoneEffectHUD.ShowVignette();
@@ -67,7 +104,10 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 		if (!m_mEffects.Contains(id))
 			return;
 		
-		m_mEffects.Get(id).GetRootWidget().RemoveFromHierarchy();
+		CRF_PolyZoneEffectHUD effectHUD = m_mEffects.Get(id);
+		if (effectHUD && effectHUD.GetRootWidget())
+			effectHUD.GetRootWidget().RemoveFromHierarchy();
+
 		m_mEffects.Remove(id);
 		m_bShowVignette = false;
 		m_bShowScreenBlure = false;

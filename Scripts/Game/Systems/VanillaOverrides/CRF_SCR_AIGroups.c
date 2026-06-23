@@ -25,10 +25,13 @@ modded class SCR_AIGroup
 			if (!entity)
 				continue;
 			
-			if (!SCR_ChimeraCharacter.Cast(entity))
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+			if (!character)
 				continue;
 			
-			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
+			CharacterControllerComponent characterController = character.GetCharacterController();
+			if (characterController)
+				characterController.SetDisableMovementControls(true);
 		}
 	}
 	
@@ -49,7 +52,10 @@ modded class SCR_AIGroup
 		{
 			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
 			if (gameMode)
+			{
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
 				gameMode.GetOnPlayerDisconnected().Insert(OnPlayerDisconnected);
+			}
 		}
 		// Now we need the player character's agent
 		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
@@ -128,6 +134,13 @@ modded class SCR_AIGroup
 		Rpc(RPC_DoRemovePlayer, playerID);
 		CheckForLeader(-1, false);
 		RemovePlayerAgent(playerID);
+
+		if (m_aPlayerIDs.IsEmpty())
+		{
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
+		}
 		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_LEFT, playerID);
 		
 		// End of original method (aka super) ===========================================
@@ -173,6 +186,19 @@ modded class SCR_AIGroup
 					break;
 				}
 			}
+		}
+	}
+
+	void ~SCR_AIGroup()
+	{
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(SetGarrison);
+			GetGame().GetCallqueue().Remove(CheckForLeader);
+
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
 		}
 	}
 }

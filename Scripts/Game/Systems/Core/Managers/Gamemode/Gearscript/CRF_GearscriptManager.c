@@ -145,12 +145,16 @@ class CRF_GearscriptManager : ScriptComponent
 			// Cache groups manager reference - PERFORMANCE OPTIMIZATION
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 			
+			// Rebuild the radio list after replacing the player's gear. Tuning before
+			// this can access stale entities left behind by ClearEntityGear().
+			if (pc)
+				pc.InitializeRadios(entity);
+
 			if (groupsMan)
 				groupsMan.TuneFreqDelayWithPresets(playerId, entity);
 			
 			if (rplToOwnerManager && pc)
 			{
-				pc.InitializeRadios(entity);
 				rplToOwnerManager.InitializeRadioFromServer();
 			}
 		}

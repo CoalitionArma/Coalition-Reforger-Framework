@@ -40,6 +40,7 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 	protected float m_fCohesionAccumulator;
 	protected bool m_bCachedPenaltyActive;
 	protected bool m_bHasCachedPenalty;
+	protected vector m_vLastPosition;
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 DISABLE AI METHODS
@@ -52,6 +53,14 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 		if (SCR_Global.IsEditMode())
 			return;
 
+		m_fPenaltyIntensity = 0;
+		m_fLastAppliedAimPenalty = 0;
+		m_bCachedPenaltyActive = false;
+		m_bHasCachedPenalty = false;
+		m_fCohesionAccumulator = 0;
+		m_fLastReplicatedTunnelVision = -1.0;
+		m_vLastPosition = GetOrigin();
+
 		SetEventMask(EntityEvent.FRAME);
 	}
 
@@ -61,6 +70,15 @@ class CRF_PlayerCharacter : SCR_ChimeraCharacter
 
 		if (!Replication.IsServer())
 			return;
+
+		// Detect teleports: a position jump larger than 5 m in one frame invalidates the proximity cache
+		vector currentPos = GetOrigin();
+		if (m_bHasCachedPenalty && vector.DistanceSq(currentPos, m_vLastPosition) > 25.0)
+		{
+			m_bHasCachedPenalty = false;
+			m_fCohesionAccumulator = 0;
+		}
+		m_vLastPosition = currentPos;
 
 		if (m_bDisableLoneWolfPenalty)
 		{

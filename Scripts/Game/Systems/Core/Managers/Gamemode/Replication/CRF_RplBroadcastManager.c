@@ -1354,8 +1354,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		SCR_Faction localFaction = SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction());
 
 		// Check if hint is for specific faction
-		if (!factionKey.IsEmpty() && localFaction && (localFaction.GetFactionKey() != factionKey))
-			return;
+		if (!factionKey.IsEmpty())
+		{
+			if (!localFaction || localFaction.GetFactionKey() != factionKey)
+				return;
+		}
 
 		// Create hint widget
 		Widget widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
@@ -1364,15 +1367,32 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Update player controller with hint
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
+		if (!playerControllerComp)
+		{
+			delete widget;
+			return;
+		}
+
 		if (playerControllerComp.m_wSavedHintWidget)
 		{
-			delete playerControllerComp.m_wSavedHintWidget;
+			CRF_Hint previousHint = CRF_Hint.Cast(playerControllerComp.m_wSavedHintWidget.FindHandler(CRF_Hint));
+			if (previousHint)
+				previousHint.DestroyHint();
+			else
+				delete playerControllerComp.m_wSavedHintWidget;
 		}
 
 		playerControllerComp.m_wSavedHintWidget = widget;
 
 		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
+		if (!hint)
+		{
+			playerControllerComp.m_wSavedHintWidget = null;
+			delete widget;
+			return;
+		}
+
 		hint.ShowHint(data, 8000);
 	}	
 	
@@ -1769,7 +1789,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Print("[CRF_RplBroadcastManager] RpcDo_DeleteRushMCOMEntity received: " + mcomIdentifier + " (Server: " + Replication.IsServer() + ")");
 		
 		// Get the Rush gamemode manager
-		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (!gameMode)
+			return;
+
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(gameMode.FindComponent(CRF_RushGamemodeManager));
 		if (!rushGamemode)
 		{
 			Print("[CRF_RplBroadcastManager] Could not find Rush gamemode manager", LogLevel.WARNING);
@@ -1796,7 +1820,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 			}
 		}
 		
-		// Get the MCOM entity to delete
+		// Get the MCOM entity for presentation cleanup. The server owns the
+		// authority and replication owns proxy destruction on clients.
 		IEntity mcomEntity = rushGamemode.GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
 		{
@@ -1816,19 +1841,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Always clean up gamemode references
 		rushGamemode.CleanupMCOMReference(mcomIdentifier);
 		
-		// Handle entity deletion based on whether we're server or client
 		if (Replication.IsServer())
-		{
-			// On server, the entity will be deleted by the main deletion logic
-			Print("[CRF_RplBroadcastManager] Server: Skipping entity deletion (handled by main logic)");
-		}
+			Print("[CRF_RplBroadcastManager] Server: Entity deletion handled by main logic");
 		else
-		{
-			// On client, delete the entity immediately
-			Print("[CRF_RplBroadcastManager] Client: Deleting entity immediately for: " + mcomIdentifier);
-			SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
-			Print("[CRF_RplBroadcastManager] Client: Successfully deleted entity: " + mcomIdentifier);
-		}
+			Print("[CRF_RplBroadcastManager] Client: Waiting for replicated proxy removal");
 	}
 	
 	//------------------------------------------------------------------------------------------------
