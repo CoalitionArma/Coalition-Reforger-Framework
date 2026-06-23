@@ -2,12 +2,12 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 10591.299 15.593 4619.02
   angles 0 67.93 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
  }
  {
   coords 10583.229 15.593 4615.748
   angles 0 67.93 0
-  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
  }
  {
   coords 10596.816 15.593 4606.199
