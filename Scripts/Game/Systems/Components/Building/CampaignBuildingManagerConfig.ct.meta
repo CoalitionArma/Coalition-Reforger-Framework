@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B04F8219B3B35F87}scripts/Game/Systems/Building/CampaignBuildingManagerConfig.ct"
+ Configurations {
+  ComponentTemplateResourceClass PC {
+  }
+  ComponentTemplateResourceClass XBOX_ONE : PC {
+  }
+  ComponentTemplateResourceClass XBOX_SERIES : PC {
+  }
+  ComponentTemplateResourceClass PS4 : PC {
+  }
+  ComponentTemplateResourceClass PS5 : PC {
+  }
+  ComponentTemplateResourceClass HEADLESS : PC {
+  }
+  ComponentTemplateResourceClass Xbox : PC {
+  }
+ }
+}
