@@ -22,10 +22,10 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 			// Recovery event — cancel proportionally to lone-wolf penalty intensity
 			if (pDrain < 0)
 			{
-				CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(GetOwner());
-				if (playerCharacter)
+				CRF_LoneWolfPenaltyManager loneWolfPenaltyManager = CRF_LoneWolfPenaltyManager.GetForCharacter(GetOwner());
+				if (loneWolfPenaltyManager)
 				{
-					float intensity = playerCharacter.GetLoneWolfPenaltyIntensity();
+					float intensity = loneWolfPenaltyManager.GetLoneWolfPenaltyIntensity();
 					if (intensity > 0)
 						AddStamina(pDrain * intensity);
 				}
@@ -33,11 +33,11 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 			return;
 		}
 
-		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(GetOwner());
-		if (!playerCharacter)
+		CRF_LoneWolfPenaltyManager loneWolfPenaltyManager = CRF_LoneWolfPenaltyManager.GetForCharacter(GetOwner());
+		if (!loneWolfPenaltyManager)
 			return;
 
-		float extraDrainMultiplier = playerCharacter.GetLoneWolfExtraStaminaDrainMultiplier();
+		float extraDrainMultiplier = loneWolfPenaltyManager.GetLoneWolfExtraStaminaDrainMultiplier();
 		if (extraDrainMultiplier <= 0)
 			return;
 

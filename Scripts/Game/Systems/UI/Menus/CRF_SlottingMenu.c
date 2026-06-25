@@ -767,7 +767,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Reset selected player if they are now in a slot
 		if(CRF_SlottingManager.GetInstance().IsPlayerInASlot(m_iSelectedplayerId))
 			m_iSelectedplayerId = 0;
-		
+
 		// Update unslotted players list
 		UpdateUnslottedPlayersList();
 	}
@@ -901,8 +901,20 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Refresh unslotted players list
 		UpdateUnslottedPlayersList();
+
+		// If game is live and local player has a fresh (non-dead) slot assignment, close menu and insert into unit
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			if (slottingManager.IsPlayerInASlot(localPlayerId))
+			{
+				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
+				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
+					InitilizePlayer();
+			}
+		}
 	}
-	
+
 	/**
 	 * Rebuilds only the ORBAT list without touching the main slot list.
 	 * Called by UpdateSlotInPlace when a leader or medic slot changes.
