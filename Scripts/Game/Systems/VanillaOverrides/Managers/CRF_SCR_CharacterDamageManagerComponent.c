@@ -102,6 +102,7 @@ modded class SCR_CharacterDamageManagerComponent
 			{
 				m_eFatalDamageEffect = lastValidDamageEffect;
 				CRF_HandleDamageTracking(lastValidDamageEffect);
+				CRF_MarkLatestSpectatorDamageReportFatal();
 			}
 		}
 	}

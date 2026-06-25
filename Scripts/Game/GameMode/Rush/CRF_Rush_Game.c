@@ -1750,16 +1750,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		Replication.BumpMe(); // Force immediate replication
 		Print("[CRF_RushGamemodeManager] Set replicated property and forced replication for: " + mcomIdentifier);
 		
-		// Clean up server-side references
-		CleanupMCOMReference(mcomIdentifier);
-		
 		// Delay server entity deletion to give clients time to process RPC
+		// NOTE: Do NOT call CleanupMCOMReference here — GetMCOMEntity in DeleteMCOMEntityFinal
+		// relies on the stored reference since spawned entities are never named in the world,
+		// making FindEntityByName an unreliable fallback.
 		Print("[CRF_RushGamemodeManager] Scheduling final server entity deletion in 2 seconds for: " + mcomIdentifier);
 		GetGame().GetCallqueue().CallLater(DeleteMCOMEntityFinal, 2000, false, mcomIdentifier);
-		
+
 		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer END ===== for " + mcomIdentifier);
 	}
-	
+
 	//------------------------------------------------------------------------------------
 	// Final entity deletion on server after client RPC processing
 	//------------------------------------------------------------------------------------
@@ -1769,11 +1769,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!mcomEntity)
 		{
 			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityFinal: Entity already deleted for " + mcomIdentifier);
+			CleanupMCOMReference(mcomIdentifier);
 			return;
 		}
 
 		SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
-		
+		CleanupMCOMReference(mcomIdentifier);
+
 		Print("[CRF_RushGamemodeManager] Server entity deletion completed for: " + mcomIdentifier);
 	}
 
@@ -2211,27 +2213,27 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	IEntity GetMCOMEntity(string mcomIdentifier)
 	{
-		Print("[CRF_RushGamemodeManager] GetMCOMEntity searching for: " + mcomIdentifier);
+		//Print("[CRF_RushGamemodeManager] GetMCOMEntity searching for: " + mcomIdentifier);
 		IEntity mcomEntity;
 		
 		// Try to get from dynamic arrays first
 		int zoneIndex, mcomIndex;
 		if (ParseMCOMIdentifier(mcomIdentifier, zoneIndex, mcomIndex))
 		{
-			Print("[CRF_RushGamemodeManager] GetMCOMEntity parsed identifier - zone: " + zoneIndex + " mcom: " + mcomIndex);
+			//Print("[CRF_RushGamemodeManager] GetMCOMEntity parsed identifier - zone: " + zoneIndex + " mcom: " + mcomIndex);
 			if (m_aMCOMEntities && zoneIndex < m_aMCOMEntities.Count() && mcomIndex < m_aMCOMEntities[zoneIndex].Count())
 			{
 				mcomEntity = m_aMCOMEntities[zoneIndex][mcomIndex];
 				if (mcomEntity)
 				{
-					Print("[CRF_RushGamemodeManager] GetMCOMEntity found in dynamic array: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
+					//Print("[CRF_RushGamemodeManager] GetMCOMEntity found in dynamic array: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
 					return mcomEntity;
 				}
 			}
 		}
 		
 		// Handle sequential MCOM identifiers (A-F system)
-		Print("[CRF_RushGamemodeManager] GetMCOMEntity trying sequential lookup for: " + mcomIdentifier);
+		//Print("[CRF_RushGamemodeManager] GetMCOMEntity trying sequential lookup for: " + mcomIdentifier);
 		switch (mcomIdentifier)
 		{
 			case "MCOMA":
@@ -2256,12 +2258,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] GetMCOMEntity found via sequential lookup: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
+			//Print("[CRF_RushGamemodeManager] GetMCOMEntity found via sequential lookup: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
 			return mcomEntity;
 		}
 		
 		// Fallback to legacy member variables for backward compatibility
-		Print("[CRF_RushGamemodeManager] GetMCOMEntity trying legacy lookup for: " + mcomIdentifier);
+		//Print("[CRF_RushGamemodeManager] GetMCOMEntity trying legacy lookup for: " + mcomIdentifier);
 		if (!mcomEntity)
 		{
 			switch (mcomIdentifier)
