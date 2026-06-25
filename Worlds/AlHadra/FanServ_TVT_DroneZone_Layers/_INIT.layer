@@ -32,13 +32,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "An insurgent drone team has become internet famous for posting skillful FPV drone videos. Both the USAF and AFRF have been embarrassed and have sent drone-equipped infantry to kill the viral drone operators. Insurgents are trying to reinforce the drone operators."\
    ""\
    "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets: Unarmed Drones"\
+   "BLUFOR Assets: Drones with Flares, Demo in Squads"\
    ""\
    "OPFOR Composition: Infantry"\
-   "OPFOR Assets: Unarmed Drones"\
+   "OPFOR Assets: Drones with Flares, Demo in Squads"\
    ""\
    "INDFOR Composition: Infantry"\
-   "INDFOR Assets: FPV Drones"\
+   "INDFOR Assets: FPV Drones, MMG, Combat Engineers"\
    ""\
    "Time: 0900"\
    ""\
@@ -80,7 +80,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData "INDFOR drone operators are not allowed to leave the marked search area. Other INDFOR forces have freedom of movement."
+   m_sTextData "Stashes are destructible with small arms fire."\
+   ""\
+   "INDFOR drone operators are not allowed to leave the marked search area. Other INDFOR forces have freedom of movement."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
