@@ -1961,8 +1961,25 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				m_wPlayerSlots.RemoveItem(groupIndex);
 			}
 		}
+
+		// If game is live and local player has been freshly slotted (not dead), close spectator menu and insert into unit.
+		// Dead players keep their slot assignment while spectating, so we must exclude them to avoid a re-open loop.
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			if (slottingManager.IsPlayerInASlot(localPlayerId))
+			{
+				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
+				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
+				{
+					GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
+					CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(localPlayerId);
+				}
+			}
+		}
 	}
-	
+
 	/**
 	 * Helper method to update a single faction's UI elements
 	 * @param factionKey - The faction key (e.g., "BLUFOR", "OPFOR")

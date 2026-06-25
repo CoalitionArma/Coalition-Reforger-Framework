@@ -5,6 +5,5 @@ HDREffect {
  SceneLVAverageTime 0
  FilmicLinearStrength 0.01
  BloomIntensity 0.4
- BloomThreshold 5
  Vignette 0
 }
