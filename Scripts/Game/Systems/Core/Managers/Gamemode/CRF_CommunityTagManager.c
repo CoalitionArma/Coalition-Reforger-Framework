@@ -15,6 +15,10 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Combined tags + XP endpoint (replaces the two separate endpoints)
 	protected static const string PLAYER_INFO_ENDPOINT = "api/game/player-info?names=";
 
+	//! How long to wait after the last connect event before firing the batch fetch.
+	//! Resets on each new join so a burst of connects produces exactly one request.
+	protected static const int DEBOUNCE_DELAY_MS = 3000;
+
 	//! XP thresholds for rank tiers.
 	//! All players start at 0 XP (rank 1 of any track).
 	//! Enlisted E1–E9 (E4/E8/E9 have sub-variants a/b/c):
@@ -252,6 +256,17 @@ class CRF_CommunityTagManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, delayMs, false);
 	}
 
+	//! Debounced fetch: cancels any pending scheduled fetch and reschedules it
+	//! DEBOUNCE_DELAY_MS from now. Call this on every connect event — a burst of
+	//! N joins produces exactly one HTTP request once the burst settles.
+	//! When the fetch completes, m_OnPlayerInfoUpdated fires so all UI subscribers
+	//! automatically refresh their tag/rank icons.
+	protected void ScheduleFetchDebounced()
+	{
+		GetGame().GetCallqueue().Remove(FetchPlayerInfo);
+		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, DEBOUNCE_DELAY_MS, false);
+	}
+
 	//! Backward-compatible wrappers — both now delegate to FetchPlayerInfo.
 	void FetchTagsForCurrentPlayers()  { FetchPlayerInfo(); }
 	void FetchRanksForCurrentPlayers() { FetchPlayerInfo(); }
@@ -473,7 +488,7 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected void OnTrackedPlayerConnected(int playerId)
 	{
 		m_OnPlayerRosterChanged.Invoke();
-		FetchPlayerInfoDelayed(2000);
+		ScheduleFetchDebounced();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -488,6 +503,6 @@ class CRF_CommunityTagManager : ScriptComponent
 		}
 
 		m_OnPlayerRosterChanged.Invoke();
-		FetchPlayerInfo();
+		// No re-fetch: remaining players' cached data is still valid.
 	}
 }
