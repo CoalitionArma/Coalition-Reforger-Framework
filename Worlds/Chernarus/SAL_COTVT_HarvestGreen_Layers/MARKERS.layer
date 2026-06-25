@@ -1,0 +1,10 @@
+CRF_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 11095.88 202.075 12310.266
+ m_MarkerColor 1 0 0.079 1
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "OPFOR"
+ }
+ m_fWorldSizeX 400
+ m_fWorldSizeY 400
+}

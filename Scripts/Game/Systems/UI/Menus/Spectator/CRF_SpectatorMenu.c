@@ -92,6 +92,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected bool m_bWarningDismissed = false;
 	
 	protected CRF_EntityInfoDisplay m_EntityInfoDisplay;
+
+	// Damage report overlay
+	protected Widget m_wDamageReportPanel;
+	protected ImageWidget m_wDamageReportBodyOutline;
+	protected TextWidget m_wDamageReportSubject;
+	protected TextWidget m_wDamageReportFatalRegion;
+	protected RichTextWidget m_wDamageReportLog;
+	protected ImageWidget m_wDamageRegionHead;
+	protected ImageWidget m_wDamageRegionTorso;
+	protected ImageWidget m_wDamageRegionLeftArm;
+	protected ImageWidget m_wDamageRegionRightArm;
+	protected ImageWidget m_wDamageRegionLeftLeg;
+	protected ImageWidget m_wDamageRegionRightLeg;
+	protected ref array<ref CRF_SpectatorDamageReportEntry> m_aDamageReportEntries = {};
 	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
@@ -163,6 +177,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Get follow-mode HUD overlay
 		Widget entityInfoDisplay = m_wRoot.FindAnyWidget("EntityInfoDisplay");
 		m_EntityInfoDisplay = CRF_EntityInfoDisplay.Cast(entityInfoDisplay.FindHandler(CRF_EntityInfoDisplay));
+		InitDamageReportWidgets();
 		
 		// Initialize VON (Voice Over Network)
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -210,11 +225,261 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.AddActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
 		inputManager.AddActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
-		inputManager.AddActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 		inputManager.AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
+		inputManager.AddActionListener("CRF_ShowDamageReport", EActionTrigger.DOWN, Action_ToggleDamageReport);
 		inputManager.AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		inputManager.AddActionListener("CRF_SpecToggleCamMode", EActionTrigger.DOWN, ToggleCameraMode);
 		inputManager.AddActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void InitDamageReportWidgets()
+	{
+		m_wDamageReportPanel = m_wRoot.FindAnyWidget("DamageReportPanel");
+		if (!m_wDamageReportPanel)
+			return;
+
+		m_wDamageReportSubject = TextWidget.Cast(m_wRoot.FindAnyWidget("DamageReportSubject"));
+		m_wDamageReportFatalRegion = TextWidget.Cast(m_wRoot.FindAnyWidget("DamageReportFatalRegion"));
+		m_wDamageReportLog = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DamageReportLog"));
+		m_wDamageReportBodyOutline = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageReportBodyOutline"));
+		m_wDamageRegionHead = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionHead"));
+		m_wDamageRegionTorso = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionTorso"));
+		m_wDamageRegionLeftArm = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionLeftArm"));
+		m_wDamageRegionRightArm = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionRightArm"));
+		m_wDamageRegionLeftLeg = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionLeftLeg"));
+		m_wDamageRegionRightLeg = ImageWidget.Cast(m_wRoot.FindAnyWidget("DamageRegionRightLeg"));
+
+		m_wDamageReportPanel.SetVisible(false);
+		LoadDamageReportImages();
+		ResetDamageRegionColors();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void LoadDamageReportImages()
+	{
+		if (m_wDamageReportBodyOutline)
+		{
+			m_wDamageReportBodyOutline.LoadImageTexture(0, "{FA3183D43A82BEFB}UI/Images/DamageReport/ace_player_model.edds");
+			m_wDamageReportBodyOutline.SetImage(0);
+			m_wDamageReportBodyOutline.SetColor(Color.FromRGBA(255, 255, 255, 255));
+		}
+
+		LoadDamageReportImage(m_wDamageRegionHead, "{DD56B2D615DF6168}UI/Images/DamageReport/damage_head.edds");
+		LoadDamageReportImage(m_wDamageRegionTorso, "{624C15FE16D3E6D9}UI/Images/DamageReport/damage_torso.edds");
+		LoadDamageReportImage(m_wDamageRegionLeftArm, "{635CFD77538EF5B5}UI/Images/DamageReport/damage_left_arm.edds");
+		LoadDamageReportImage(m_wDamageRegionRightArm, "{96DD13FD6E5A7CAA}UI/Images/DamageReport/damage_right_arm.edds");
+		LoadDamageReportImage(m_wDamageRegionLeftLeg, "{48EDAB246566DEB3}UI/Images/DamageReport/damage_left_leg.edds");
+		LoadDamageReportImage(m_wDamageRegionRightLeg, "{6B1AFAA6450E91FA}UI/Images/DamageReport/damage_right_leg.edds");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void LoadDamageReportImage(ImageWidget widget, ResourceName texture)
+	{
+		if (!widget)
+			return;
+
+		widget.LoadImageTexture(0, texture);
+		widget.SetImage(0);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void Action_ToggleDamageReport()
+	{
+		if (!m_wDamageReportPanel)
+			InitDamageReportWidgets();
+
+		if (!m_wDamageReportPanel)
+			return;
+
+		bool visible = !m_wDamageReportPanel.IsVisible();
+		m_wDamageReportPanel.SetVisible(visible);
+
+		if (visible)
+			RefreshDamageReport();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void RefreshDamageReport()
+	{
+		if (!m_wDamageReportPanel || !m_wDamageReportPanel.IsVisible())
+			return;
+
+		int playerId = GetDamageReportPlayerId();
+		CRF_SpectatorDamageReportStore.GetEventsForPlayer(playerId, m_aDamageReportEntries);
+
+		string subjectName = GetDamageReportPlayerName(playerId);
+		if (m_wDamageReportSubject)
+			m_wDamageReportSubject.SetText(subjectName);
+
+		string fatalRegion = CRF_SpectatorDamageReportStore.GetFatalBodyRegion(playerId);
+		SetDamageReportFatalRegion(fatalRegion);
+		SetDamageRegionColors(fatalRegion);
+
+		if (!m_wDamageReportLog)
+			return;
+
+		if (m_aDamageReportEntries.IsEmpty())
+		{
+			m_wDamageReportLog.SetText("No damage recorded.");
+			return;
+		}
+
+		string reportText;
+		int startIndex = Math.Max(0, m_aDamageReportEntries.Count() - 18);
+		for (int i = startIndex; i < m_aDamageReportEntries.Count(); i++)
+		{
+			CRF_SpectatorDamageReportEntry entry = m_aDamageReportEntries[i];
+			string sourceLabel;
+			string otherName;
+
+			if (entry.m_iVictimPlayerId == playerId)
+			{
+				sourceLabel = "from";
+				otherName = entry.m_sAttackerName;
+			}
+			else
+			{
+				sourceLabel = "to";
+				otherName = entry.m_sVictimName;
+			}
+
+			string fatalText;
+			if (entry.m_bFatal)
+				fatalText = " KILL";
+
+			string rangeText = "?m";
+			if (entry.m_fRangeMeters >= 0)
+				rangeText = string.Format("%1m", Math.Round(entry.m_fRangeMeters));
+
+			string line = string.Format("[%1] %2 (%3) | %4 dmg | %5 %6 | %7 | %8%9", FormatDamageReportTime(entry.m_iWorldTime), entry.m_sDamageType, rangeText, Math.Round(entry.m_fDamageValue), sourceLabel, otherName, entry.m_sBodyRegion, entry.m_sHitZone, fatalText);
+			if (reportText.IsEmpty())
+				reportText = line;
+			else
+				reportText = reportText + "\n" + line;
+		}
+
+		m_wDamageReportLog.SetText(reportText);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int GetDamageReportPlayerId()
+	{
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (m_eSpecEntity && playerManager)
+		{
+			int controlledPlayerId = playerManager.GetPlayerIdFromControlledEntity(m_eSpecEntity);
+			if (controlledPlayerId > 0)
+				return controlledPlayerId;
+
+			RplComponent rpl = RplComponent.Cast(m_eSpecEntity.FindComponent(RplComponent));
+			if (rpl)
+			{
+				CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+				if (slotData && slotData.GetSlotCurrentPlayerId() > 0)
+					return slotData.GetSlotCurrentPlayerId();
+			}
+		}
+
+		return SCR_PlayerController.GetLocalPlayerId();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetDamageReportPlayerName(int playerId)
+	{
+		if (playerId <= 0)
+			return "No Player Selected";
+
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (!playerName.IsEmpty())
+			return playerName;
+
+		return string.Format("Player %1", playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string FormatDamageReportTime(int worldTime)
+	{
+		int totalSeconds = worldTime / 1000;
+		int minutes = totalSeconds / 60;
+		int seconds = totalSeconds - (minutes * 60);
+		string secondsText = seconds.ToString();
+
+		if (seconds < 10)
+			secondsText = "0" + secondsText;
+
+		return string.Format("%1:%2", minutes, secondsText);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetDamageReportFatalRegion(string fatalRegion)
+	{
+		if (!m_wDamageReportFatalRegion)
+			return;
+
+		if (fatalRegion.IsEmpty())
+			m_wDamageReportFatalRegion.SetText("Fatal Location: No fatal damage recorded");
+		else
+			m_wDamageReportFatalRegion.SetText("Fatal Location: " + fatalRegion);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ResetDamageRegionColors()
+	{
+		Color inactiveColor = Color.FromRGBA(255, 255, 255, 0);
+		SetDamageRegionColor(m_wDamageRegionHead, inactiveColor);
+		SetDamageRegionColor(m_wDamageRegionTorso, inactiveColor);
+		SetDamageRegionColor(m_wDamageRegionLeftArm, inactiveColor);
+		SetDamageRegionColor(m_wDamageRegionRightArm, inactiveColor);
+		SetDamageRegionColor(m_wDamageRegionLeftLeg, inactiveColor);
+		SetDamageRegionColor(m_wDamageRegionRightLeg, inactiveColor);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetDamageRegionColors(string fatalRegion)
+	{
+		ResetDamageRegionColors();
+
+		if (fatalRegion.IsEmpty())
+			return;
+
+		Color activeColor = Color.FromRGBA(205, 24, 24, 145);
+		switch (fatalRegion)
+		{
+			case "Head":
+				SetDamageRegionColor(m_wDamageRegionHead, activeColor);
+				break;
+			case "Torso":
+				SetDamageRegionColor(m_wDamageRegionTorso, activeColor);
+				break;
+			case "Left Arm":
+				SetDamageRegionColor(m_wDamageRegionLeftArm, activeColor);
+				break;
+			case "Right Arm":
+				SetDamageRegionColor(m_wDamageRegionRightArm, activeColor);
+				break;
+			case "Left Leg":
+				SetDamageRegionColor(m_wDamageRegionLeftLeg, activeColor);
+				break;
+			case "Right Leg":
+				SetDamageRegionColor(m_wDamageRegionRightLeg, activeColor);
+				break;
+			case "Arm":
+				SetDamageRegionColor(m_wDamageRegionLeftArm, activeColor);
+				SetDamageRegionColor(m_wDamageRegionRightArm, activeColor);
+				break;
+			case "Leg":
+				SetDamageRegionColor(m_wDamageRegionLeftLeg, activeColor);
+				SetDamageRegionColor(m_wDamageRegionRightLeg, activeColor);
+				break;
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetDamageRegionColor(Widget widget, Color color)
+	{
+		if (widget)
+			widget.SetColor(color);
 	}
 	
 	/**
@@ -464,6 +729,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Update follow-mode HUD overlay
 		m_EntityInfoDisplay.UpdateEntityInfoDisplay(m_eSpecEntity);
+		RefreshDamageReport();
 		
 		// Process channel requests
 		ProcessChannelRequests(tDelta);
@@ -1695,8 +1961,25 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				m_wPlayerSlots.RemoveItem(groupIndex);
 			}
 		}
+
+		// If game is live and local player has been freshly slotted (not dead), close spectator menu and insert into unit.
+		// Dead players keep their slot assignment while spectating, so we must exclude them to avoid a re-open loop.
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			if (slottingManager.IsPlayerInASlot(localPlayerId))
+			{
+				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
+				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
+				{
+					GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
+					CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(localPlayerId);
+				}
+			}
+		}
 	}
-	
+
 	/**
 	 * Helper method to update a single faction's UI elements
 	 * @param factionKey - The faction key (e.g., "BLUFOR", "OPFOR")
@@ -1868,9 +2151,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 			inputManager.RemoveActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
 			inputManager.RemoveActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
-			inputManager.RemoveActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 			inputManager.RemoveActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
+			inputManager.RemoveActionListener("CRF_ShowDamageReport", EActionTrigger.DOWN, Action_ToggleDamageReport);
 			inputManager.RemoveActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+			inputManager.RemoveActionListener("CRF_SpecToggleCamMode", EActionTrigger.DOWN, ToggleCameraMode);
 			inputManager.RemoveActionListener("CRF_SpecKillTeleport", EActionTrigger.DOWN, Action_TeleportToKill);
 		}
 		

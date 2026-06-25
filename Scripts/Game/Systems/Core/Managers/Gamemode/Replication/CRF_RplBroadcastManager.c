@@ -1156,6 +1156,53 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		Rpc(RpcDo_BroadcastVehiclePosUpdate, pos, playerId);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	void BroadcastSpectatorDamageReport(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
+	{
+		string packedData = PackSpectatorDamageReportStrings(victimName, attackerName, damageType, hitZone, bodyRegion);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastSpectatorDamageReport(victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
+		#else
+		Rpc(RpcDo_BroadcastSpectatorDamageReport, victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void BroadcastSpectatorDamageReportFatal(int victimPlayerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_MarkSpectatorDamageReportFatal(victimPlayerId);
+		#else
+		Rpc(RpcDo_MarkSpectatorDamageReportFatal, victimPlayerId);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string PackSpectatorDamageReportStrings(string victimName, string attackerName, string damageType, string hitZone, string bodyRegion)
+	{
+		victimName.Replace("|", "/");
+		attackerName.Replace("|", "/");
+		damageType.Replace("|", "/");
+		hitZone.Replace("|", "/");
+		bodyRegion.Replace("|", "/");
+
+		return string.Format("%1|%2|%3|%4|%5", victimName, attackerName, damageType, hitZone, bodyRegion);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetSpectatorDamageReportPart(array<string> parts, int index, string fallback)
+	{
+		if (!parts || parts.Count() <= index)
+			return fallback;
+
+		string value = parts.Get(index);
+		if (value.IsEmpty())
+			return fallback;
+
+		return value;
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
@@ -2219,6 +2266,37 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_BroadcastVehiclePosUpdate(vector pos, int playerId)
 	{
 		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastSpectatorDamageReport(int victimPlayerId, int attackerPlayerId, float damageValue, float rangeMeters, bool fatal, int worldTime, string packedData)
+	{
+		array<string> parts = {};
+		packedData.Split("|", parts, false);
+
+		string victimName = GetSpectatorDamageReportPart(parts, 0, "Unknown");
+		string attackerName = GetSpectatorDamageReportPart(parts, 1, "Environment");
+		string damageType = GetSpectatorDamageReportPart(parts, 2, "Unknown");
+		string hitZone = GetSpectatorDamageReportPart(parts, 3, "Unknown");
+		string bodyRegion = GetSpectatorDamageReportPart(parts, 4, "Unknown");
+
+		CRF_SpectatorDamageReportStore.InsertEvent(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, rangeMeters, damageType, hitZone, bodyRegion, fatal, worldTime);
+
+		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
+		if (spectatorMenu)
+			spectatorMenu.RefreshDamageReport();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_MarkSpectatorDamageReportFatal(int victimPlayerId)
+	{
+		CRF_SpectatorDamageReportStore.MarkLatestVictimEventFatal(victimPlayerId);
+
+		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
+		if (spectatorMenu)
+			spectatorMenu.RefreshDamageReport();
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
