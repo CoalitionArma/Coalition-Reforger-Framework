@@ -186,6 +186,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		foreach(IEntity vehicle : m_aTrackedVehicle)
 		{
+			if (!vehicle)
+				continue;
+
 			// Collect info
 			string vehicleName = GetFriendlyName(vehicle);
 			RplId vehicleID = Replication.FindItemId(vehicle);
@@ -265,9 +268,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected string GetCharacterName(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return "Unknown";
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+			return "AI";
+
+		int playerID = playerManager.GetPlayerIdFromControlledEntity(character);
 		if (playerID != 0)
-			return GetGame().GetPlayerManager().GetPlayerName(playerID);
+			return playerManager.GetPlayerName(playerID);
 			
 		return "AI";
 	}
@@ -275,7 +285,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected int GetID(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return 0;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		int playerID = 0;
+		if (playerManager)
+			playerID = playerManager.GetPlayerIdFromControlledEntity(character);
+
 		if (playerID != 0)
 			return playerID;
 			
@@ -284,8 +301,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetVehicleType(IEntity vehicle)
-	{	
-		int type = Vehicle.Cast(vehicle).m_eVehicleType; // Refactor is planned by devs for this
+	{
+		Vehicle vehicleEntity = Vehicle.Cast(vehicle);
+		if (!vehicleEntity)
+			return 0;
+
+		int type = vehicleEntity.m_eVehicleType; // Refactor is planned by devs for this
 		
 		switch(type)
 		{
@@ -302,7 +323,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetFaction(IEntity entity)
-	{	
+	{
+		if (!entity)
+			return 0;
+
 		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		if (!factionComponent)
 			return 0;
@@ -370,7 +394,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	void RegisterVehicle(IEntity vehicle)
 	{
-		m_aTrackedVehicle.Insert(vehicle);
+		if (vehicle && !m_aTrackedVehicle.Contains(vehicle))
+			m_aTrackedVehicle.Insert(vehicle);
 	}
 	//------------------------------------------------------------------------------------
 	void UnregisterVehicle(IEntity vehicle)

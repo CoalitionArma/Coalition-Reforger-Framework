@@ -17,20 +17,30 @@ modded class SCR_PlayerControllerCommandingComponent
 		shareMenuEntry.GetOnPerform().Insert(ShareMapMarkers);
 		shareMenuEntry.SetIcon("{F7E8D4834A3AFF2F}UI/Imagesets/Conflict/conflict-icons-bw.imageset", "FrequencyBig");
 		
+		if (!m_MapContextualMenu)
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+
 		m_MapContextualMenu.InsertCustomRadialEntry(shareMenuEntry, parentCategory);
 		
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
-		SCR_AIGroup playerGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!groupsManager)
+			return super.AddElementsFromCategoryToMap(category, parentCategory);
+
+		SCR_AIGroup playerGroup = groupsManager.GetPlayerGroup(playerId);
 		if (!playerGroup)
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
-		if (!CRF_SafestartManager.GetInstance())
+		CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+		if (!safestartManager)
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
-		if (!playerGroup.IsPlayerLeader(playerId) || !CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		if (!playerGroup.IsPlayerLeader(playerId) || !safestartManager.GetSafestartStatus())
 		    return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
-		if (!CRF_ForwardDeployManager.GetInstance().IsForwardDeployActive(playerGroup.GetFaction().GetFactionKey()))
+		CRF_ForwardDeployManager forwardDeployManager = CRF_ForwardDeployManager.GetInstance();
+		Faction playerFaction = playerGroup.GetFaction();
+		if (!forwardDeployManager || !playerFaction || !forwardDeployManager.IsForwardDeployActive(playerFaction.GetFactionKey()))
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
 		
 		SCR_MapMarkerMenuEntry menuEntry = new SCR_MapMarkerMenuEntry();
@@ -44,7 +54,9 @@ modded class SCR_PlayerControllerCommandingComponent
 	
 	void ShareMapMarkers()
 	{
-		CRF_PlayerRplToAuthorityManager.GetInstance().ShareMapMarkers();
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager)
+			rplManager.ShareMapMarkers();
 	}
 	
 	void CheckIfValidSpawn()
@@ -55,6 +67,8 @@ modded class SCR_PlayerControllerCommandingComponent
 	        return;
 	    
 	    string factionKey = faction.GetFactionKey();
-	    CRF_PlayerRplToAuthorityManager.GetInstance().RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
+	    CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager && m_MapContextualMenu)
+			rplManager.RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
 	}
 }

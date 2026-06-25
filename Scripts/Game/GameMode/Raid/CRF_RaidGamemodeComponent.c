@@ -41,11 +41,10 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
  
 	void ~CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
-		if (!GetGame() || !GetGame().GetWorld())
-			return;
- 
-		if (m_wCurrentAlert)
-			delete m_wCurrentAlert;
+		if (m_sInstance == this)
+			m_sInstance = null;
+
+		m_wCurrentAlert = null;
 	}
  
 	// ---------------------------------------------------------------- static
@@ -80,15 +79,38 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		// Supply total is finalized lazily on the first destruction event,
 		// so there is nothing to schedule here.
 	}
+
+	override void OnDelete(IEntity owner)
+	{
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(FadeAlert);
+			GetGame().GetCallqueue().Remove(DeleteAlert);
+		}
+
+		ClearAlert();
+		m_aRegisteredItems.Clear();
+
+		if (m_sInstance == this)
+			m_sInstance = null;
+
+		super.OnDelete(owner);
+	}
  
 	// ---------------------------------------------------------- registration api
 	// Called by each CRF_RaidItemComponent during its own EOnInit.
 	void RegisterRaidItem(CRF_RaidItemComponent item)
 	{
-		if (!item)
+		if (!item || m_aRegisteredItems.Contains(item))
 			return;
  
 		m_aRegisteredItems.Insert(item);
+	}
+
+	void UnregisterRaidItem(CRF_RaidItemComponent item)
+	{
+		if (item)
+			m_aRegisteredItems.RemoveItem(item);
 	}
  
 	// ---------------------------------------------------------- supply totalling
@@ -147,7 +169,9 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	protected void RpcDo_BroadcastMessage(string message)
 	{
-		SCR_PopUpNotification.GetInstance().PopupMsg(message);
+		SCR_PopUpNotification notification = SCR_PopUpNotification.GetInstance();
+		if (notification)
+			notification.PopupMsg(message);
 	}
  
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -155,14 +179,14 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Clean up any existing alert widget
 		if (m_wCurrentAlert)
-		{
-			AnimateWidget.StopAllAnimations(m_wCurrentAlert);
-			delete m_wCurrentAlert;
-		}
+			ClearAlert();
  
 		m_iWidgetGeneration++;
 		int thisGeneration = m_iWidgetGeneration;
  
+		if (!GetGame() || !GetGame().GetWorkspace())
+			return;
+
 		m_wCurrentAlert = GetGame().GetWorkspace().CreateWidgets("{66DCB94B8F932419}UI/layouts/HUD/Raid/RaidPopUp.layout");
 		if (!m_wCurrentAlert)
 			return;
@@ -181,7 +205,9 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		ProgressBarWidget progressWidget = ProgressBarWidget.Cast(m_wCurrentAlert.FindWidget("Progress"));
 		if (progressWidget)
 		{
-			float barPercent = destroyedPercent / m_fWinThresholdPercent * 100.0;
+			float barPercent = 0;
+			if (m_fWinThresholdPercent > 0)
+				barPercent = destroyedPercent / m_fWinThresholdPercent * 100.0;
 			progressWidget.SetCurrent(Math.Clamp(barPercent, 0, 100));
 		}
  
@@ -205,7 +231,19 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		if (generation != m_iWidgetGeneration || !m_wCurrentAlert)
 			return;
  
-		delete m_wCurrentAlert;
+		ClearAlert();
+	}
+
+	protected void ClearAlert()
+	{
+		Widget alert = m_wCurrentAlert;
 		m_wCurrentAlert = null;
+		m_iWidgetGeneration++;
+
+		if (!alert)
+			return;
+
+		AnimateWidget.StopAllAnimations(alert);
+		alert.RemoveFromHierarchy();
 	}
 }

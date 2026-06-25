@@ -26,7 +26,7 @@ modded class SCR_StaminaBlurEffect
 		if (!m_wCRFSuppressionVignette)
 			return;
 
-		float target = Math.Clamp(CRF_PlayerCharacter.GetLocalTunnelVisionIntensity(), 0, 1);
+		float target = Math.Clamp(CRF_LoneWolfPenaltyManager.GetLocalTunnelVisionIntensity(), 0, 1);
 		float smoothing = Math.Clamp(timeSlice * 4.0, 0, 1);
 		m_fCRFTunnelVisionSmoothed = Math.Lerp(m_fCRFTunnelVisionSmoothed, target, smoothing);
 

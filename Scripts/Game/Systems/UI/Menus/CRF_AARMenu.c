@@ -637,7 +637,11 @@ class CRF_AARMenu: ChimeraMenuBase
 	 */
 	protected bool IsSlotInGroupAndFaction(CRF_SlotData slotData, SCR_AIGroup group)
 	{
-		if (slotData.GetSlotCurrentGroup() != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
+		RplId groupId;
+		if (!slotData || !CRF_ReplicationHelper.GetRplId(group, groupId))
+			return false;
+
+		if (slotData.GetSlotCurrentGroup() != groupId
 			|| slotData.GetIsLockedSlot() 
 			|| slotData.GetSlotCurrentPlayerId() == 0 
 			|| GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)

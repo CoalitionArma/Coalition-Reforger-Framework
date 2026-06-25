@@ -397,7 +397,14 @@ modded class SCR_VONController
 			}
 			else
 			{
-				SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(ChimeraCharacter.Cast(player).GetCharacterController());
+				ChimeraCharacter character = ChimeraCharacter.Cast(player);
+				if (!character)
+					continue;
+
+				SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(character.GetCharacterController());
+				if (!charCont)
+					continue;
+
 				if (charCont.IsDead() || charCont.IsUnconscious())
 					if (m_PlayerController.m_aLocalEntries.Contains(playerId))
 					{
@@ -421,7 +428,11 @@ modded class SCR_VONController
 							CVON_VONContainer container = new CVON_VONContainer();
 							container.m_eVonType = CVON_EVONType.DIRECT;
 							container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
-							container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
+							RplComponent rplComponent = RplComponent.Cast(player.FindComponent(RplComponent));
+							if (!rplComponent)
+								continue;
+
+							container.m_SenderRplId = rplComponent.Id();
 							container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 							container.m_iPlayerId = playerId;
 							container.m_bIsSpectator = isOtherSpectator;
@@ -448,7 +459,11 @@ modded class SCR_VONController
 						CVON_VONContainer container = new CVON_VONContainer();
 						container.m_eVonType = CVON_EVONType.DIRECT;
 						container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
-						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
+						RplComponent rplComponent = RplComponent.Cast(player.FindComponent(RplComponent));
+						if (!rplComponent)
+							continue;
+
+						container.m_SenderRplId = rplComponent.Id();
 						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 						container.m_iPlayerId = playerId;
 						container.m_bIsSpectator = isOtherSpectator;

@@ -45,20 +45,27 @@ modded class Vehicle
 	
 	void CheckIfSpawnPassenger()
 	{
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (gamemode && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			SpawnVehiclePassengers();
 	}
 	
 	
 	void SpawnVehiclePassengers()
 	{
-		SCR_BaseCompartmentManagerComponent.Cast(this.FindComponent(SCR_BaseCompartmentManagerComponent)).AddAIToVehicle();
+		SCR_BaseCompartmentManagerComponent compartmentManager = SCR_BaseCompartmentManagerComponent.Cast(this.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (compartmentManager)
+			compartmentManager.AddAIToVehicle();
 	}
 	
 	void SetVehicleGear()
 	{
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (!vehicleGearscriptManager)
+			return;
+
 		GetGame().GetCallqueue().CallLater(
-					CRF_VehicleGearscriptManager.GetInstance().SetVehicleGear, 2000, false,
+					vehicleGearscriptManager.SetVehicleGear, 2000, false,
 					this, m_sFactionKey
 				);
 	}

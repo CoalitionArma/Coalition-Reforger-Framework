@@ -767,7 +767,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Reset selected player if they are now in a slot
 		if(CRF_SlottingManager.GetInstance().IsPlayerInASlot(m_iSelectedplayerId))
 			m_iSelectedplayerId = 0;
-		
+
 		// Update unslotted players list
 		UpdateUnslottedPlayersList();
 	}
@@ -901,8 +901,20 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Refresh unslotted players list
 		UpdateUnslottedPlayersList();
+
+		// If game is live and local player has a fresh (non-dead) slot assignment, close menu and insert into unit
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			if (slottingManager.IsPlayerInASlot(localPlayerId))
+			{
+				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
+				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
+					InitilizePlayer();
+			}
+		}
 	}
-	
+
 	/**
 	 * Rebuilds only the ORBAT list without touching the main slot list.
 	 * Called by UpdateSlotInPlace when a leader or medic slot changes.
@@ -925,7 +937,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if (group.IsPrivate() && !isAdmin)
 				continue;
 			
-			int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+			RplId groupId;
+			if (!CRF_ReplicationHelper.GetRplId(group, groupId))
+				continue;
 			int leadersInGroup = 0;
 			array<int> slotStored = {};
 			
@@ -1068,7 +1082,9 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		int groupIndex, int orbatGroupIndex, out int leadersInGroup, out int playersInGroup, 
 		out int deadPlayersInGroup, bool isAdmin, out bool isGroupFull)
 	{
-		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+		RplId groupId;
+		if (!CRF_ReplicationHelper.GetRplId(group, groupId))
+			return;
 		
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
@@ -1366,13 +1382,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		CRF_ListBoxElementComponent selectedElement = m_cSlotListBoxComponent.GetCRFElementComponent(
 			m_cSlotListBoxComponent.GetSelectedItem());
 		
-		if(!selectedElement.group)
+		if(!selectedElement || !selectedElement.group)
 			return;
 		
 		SCR_AIGroup aiGroup = selectedElement.group;
 		
 		// Get group ID for network sync
-		int groupRplID = RplComponent.Cast(aiGroup.FindComponent(RplComponent)).Id();
+		RplId groupRplID;
+		if (!CRF_ReplicationHelper.GetRplId(aiGroup, groupRplID))
+			return;
 		
 		// Get all slot IDs for this group
 		array<int> slotsInGroup = CRF_SlottingManager.GetInstance().GetAllSlotIDsForGroup(groupRplID);
@@ -1417,14 +1435,26 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	void LockSlot()
 	{
-		int selectedSlotId = m_cSlotListBoxComponent.GetCRFElementComponent(
-			m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId;
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager || !m_cSlotListBoxComponent)
+			return;
+
+		CRF_ListBoxElementComponent selectedComponent = m_cSlotListBoxComponent.GetCRFElementComponent(
+			m_cSlotListBoxComponent.GetSelectedItem());
+		if (!selectedComponent)
+			return;
+
+		int selectedSlotId = selectedComponent.m_iSlotId;
 		
-		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(CRF_SlottingManager.GetInstance().GetSlotData(selectedSlotId).GetSlotCurrentGroup())).GetEntity());
-		if(tempGroup.IsPrivate())
+		RplComponent groupRplComponent = RplComponent.Cast(Replication.FindItem(slottingManager.GetSlotData(selectedSlotId).GetSlotCurrentGroup()));
+		if (!groupRplComponent)
+			return;
+
+		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(groupRplComponent.GetEntity());
+		if (!tempGroup || tempGroup.IsPrivate())
 			return;
 		
-		bool isCurrentlyLocked = CRF_SlottingManager.GetInstance().GetSlotData(selectedSlotId).GetIsLockedSlot();
+		bool isCurrentlyLocked = slottingManager.GetSlotData(selectedSlotId).GetIsLockedSlot();
 		
 		// Toggle slot lock state using batched updates
 		if(isCurrentlyLocked)
@@ -1786,18 +1816,27 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	void SelectSlot()
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager || !m_cSlotListBoxComponent)
+			return;
 		
 		// Get selected slot information
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(
 			m_cSlotListBoxComponent.GetElementComponent(m_cSlotListBoxComponent.GetSelectedItem()));
+		if (!comp)
+			return;
+
 		int slotId = comp.m_iSlotId;
 		
 		// Exit if no valid slot selected
 		if (slotId == 0)
 			return;
 		
-		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(slottingManager.GetSlotData(slotId).GetSlotCurrentGroup())).GetEntity());
-		if(tempGroup.IsPrivate())
+		RplComponent groupRplComponent = RplComponent.Cast(Replication.FindItem(slottingManager.GetSlotData(slotId).GetSlotCurrentGroup()));
+		if (!groupRplComponent)
+			return;
+
+		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(groupRplComponent.GetEntity());
+		if (!tempGroup || tempGroup.IsPrivate())
 			return;
 		
 		// Get current player and slot information

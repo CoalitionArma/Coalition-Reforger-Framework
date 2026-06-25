@@ -17,6 +17,8 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 		m_wVignette = OverlayWidget.Cast(m_wRoot.FindAnyWidget("Vignette"));
 		m_wScreenBlure = OverlayWidget.Cast(m_wRoot.FindAnyWidget("ScreenBlure"));
 		m_wEffectsVerticalLayout = VerticalLayoutWidget.Cast(m_wContent.FindAnyWidget("EffectsVerticalLayout"));
+		if (!m_wVignette || !m_wScreenBlure || !m_wEffectsVerticalLayout)
+			return;
 
 		// Transparent widgets still participate in hit testing. Keep inactive
 		// full-screen effects disabled so they cannot block UI below this HUD.
@@ -46,6 +48,9 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 
 	protected void UpdateOverlayVisibility(Widget overlay, bool show, float timeSlice)
 	{
+		if (!overlay)
+			return;
+
 		if (show)
 		{
 			overlay.SetEnabled(true);
@@ -69,12 +74,24 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 	
 	void ShowEffect(CRF_EffectContainer effect)
 	{
+		if (!effect || !m_wEffectsVerticalLayout || !m_mEffectLayouts.Contains(effect.m_iType))
+			return;
+
 		if (m_mEffects.Contains(effect.m_iId))
 			HideEffect(effect.m_iId);
 		
 		ResourceName effectLayout = m_mEffectLayouts.Get(effect.m_iType);
 		Widget effectWidget = GetGame().GetWorkspace().CreateWidgets(effectLayout, m_wEffectsVerticalLayout);
+		if (!effectWidget)
+			return;
+
 		CRF_PolyZoneEffectHUD polyZoneEffectHUD = CRF_PolyZoneEffectHUD.Cast(effectWidget.FindHandler(CRF_PolyZoneEffectHUD));
+		if (!polyZoneEffectHUD)
+		{
+			delete effectWidget;
+			return;
+		}
+
 		polyZoneEffectHUD.SetString(effect.m_sString);
 		polyZoneEffectHUD.SetTime(effect.m_fTime);
 		if (!m_bShowVignette) m_bShowVignette = polyZoneEffectHUD.ShowVignette();
@@ -87,7 +104,10 @@ class CRF_PolyZoneHUD : SCR_InfoDisplay
 		if (!m_mEffects.Contains(id))
 			return;
 		
-		m_mEffects.Get(id).GetRootWidget().RemoveFromHierarchy();
+		CRF_PolyZoneEffectHUD effectHUD = m_mEffects.Get(id);
+		if (effectHUD && effectHUD.GetRootWidget())
+			effectHUD.GetRootWidget().RemoveFromHierarchy();
+
 		m_mEffects.Remove(id);
 		m_bShowVignette = false;
 		m_bShowScreenBlure = false;
