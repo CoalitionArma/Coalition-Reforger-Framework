@@ -65,4 +65,46 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_sFactionKey "BLUFOR"
   m_bShouldRespawnOnSideRespawn 0
  }
+ {
+  coords 12777.984 31.714 8759.377
+  angles 0 -95.764 0
+  m_rVehicle "{62C3141D1B627DF2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12791.409 31.655 8759.843
+  angles -0.045 -95.763 -0.445
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12778.349 31.61 8748.458
+  angles 0 -95.764 0
+  m_rVehicle "{62C3141D1B627DF2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12778.232 31.764 8766.266
+  angles 0 -95.764 0
+  m_rVehicle "{62C3141D1B627DF2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12790.854 31.72 8768.144
+  angles -0.045 -95.763 -0.445
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12791.92 31.514 8746.878
+  angles -0.045 -95.763 -0.445
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
 }
