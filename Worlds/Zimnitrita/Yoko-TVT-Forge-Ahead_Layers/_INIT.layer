@@ -294,7 +294,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{2805BE2020A0EC22}Configs/Gearscripts/Standard/Modern/CRF_GS_TFUSArmyMC.conf"
+  m_rGearScript "{A8C3E3DA7C8EA5FF}Configs/Gearscripts/Custom/Yoko/CRF_GS_USArmyMC_Modern.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

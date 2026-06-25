@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A8C3E3DA7C8EA5FF}Configs/Gearscripts/Standard/Modern/CRF_GS_USArmyMC_Modern.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
