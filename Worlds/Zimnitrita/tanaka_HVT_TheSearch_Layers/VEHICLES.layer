@@ -1,0 +1,68 @@
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 11841.436 11.237 4768.17
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11847.068 11.303 4769.11
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11852.218 11.361 4769.089
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11858.324 11.449 4769.653
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11863.526 11.541 4769.768
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11841.998 11.556 4755.686
+  m_rVehicle "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11846.97 11.574 4756.487
+  m_rVehicle "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11851.885 11.641 4756.556
+  m_rVehicle "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11857.684 11.673 4757.153
+  m_rVehicle "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11864.09 11.737 4757.912
+  m_rVehicle "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11834.497 11.232 4766.202
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 11835.159 11.47 4757.979
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 12885.194 32.454 8776.949
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
