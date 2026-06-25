@@ -1,4 +1,9 @@
 SCR_DestructibleBuildingEntity : "{556A40267288B406}Prefabs/Structures/Houses/Village/House_Village_E_1I02/House_Village_E_1I02_base.et" {
+ components {
+  SCR_DestructibleBuildingComponent "{5D7AD0900082AFA2}" {
+   Enabled 0
+  }
+ }
  coords 2495.729 -144.309 2265.298
  scale 100
 }
