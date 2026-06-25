@@ -40,14 +40,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+   m_sInitialStartingWeatherId "Extreme Wind (Thunderstorm)"
    m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Clear"
+     m_sWeatherPresetName "Extreme Wind (Thunderstorm)"
      m_iStartingHour 22
      m_iStartingMinutes 0
     }
