@@ -45,6 +45,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
 	string m_sOutroWinningFaction = "";
+
+	// Area Timer state — replicated to clients via BroadcastAreaTimerUpdate
+	CRF_EAreaTimerState m_eAreaTimerState;
+	int m_iAreaTimerCountdown;
+	string m_sAreaTimerFaction;
+	string m_sAreaTimerZoneLabel;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -1141,6 +1147,37 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Area Timer: push current state to all clients every server tick
+	void BroadcastAreaTimerUpdate(CRF_EAreaTimerState state, int countdown, string faction, string zoneLabel)
+	{
+		int bytes = 8; // state + countdown ints
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastAreaTimerUpdate", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAreaTimerUpdate(state, countdown, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastAreaTimerUpdate, state, countdown, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Area Timer: notify all clients that a faction won
+	void BroadcastAreaTimerWin(string faction, string zoneName)
+	{
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneName);
+		LogTelemetry("BroadcastAreaTimerWin", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAreaTimerWin(faction, zoneName);
+		#else
+		Rpc(RpcDo_BroadcastAreaTimerWin, faction, zoneName);
+		#endif
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void BroadcastOutro(string winningFaction = "")
 	{
@@ -2299,10 +2336,40 @@ class CRF_RplBroadcastManager : ScriptComponent
 			spectatorMenu.RefreshDamageReport();
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastAreaTimerUpdate(CRF_EAreaTimerState state, int countdown, string faction, string zoneLabel)
+	{
+		m_eAreaTimerState    = state;
+		m_iAreaTimerCountdown = countdown;
+		m_sAreaTimerFaction  = faction;
+		m_sAreaTimerZoneLabel = zoneLabel;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastAreaTimerWin(string faction, string zoneName)
+	{
+		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		string displayName = faction;
+		if (fm)
+		{
+			Faction f = fm.GetFactionByKey(faction);
+			if (f)
+				displayName = f.GetFactionName();
+		}
+
+		SCR_PopUpNotification popUp = SCR_PopUpNotification.GetInstance();
+		if (popUp)
+			popUp.PopupMsg(displayName + " controls " + zoneName + "!", 10);
+
+		AudioSystem.PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
+
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_RplBroadcastManager m_sInstance;
 	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
