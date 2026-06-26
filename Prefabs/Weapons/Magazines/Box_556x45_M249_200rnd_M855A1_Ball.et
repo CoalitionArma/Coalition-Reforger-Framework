@@ -1,0 +1,13 @@
+GenericEntity : "{29B4A8BC2B8303C6}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5E8CE6020E63E9AC}" {
+     Weight 0
+    }
+   }
+   WeightPerAmmo 0
+  }
+ }
+}
