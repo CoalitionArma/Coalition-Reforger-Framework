@@ -35,6 +35,12 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole), category: "CRF Player - Cohesion")]
 	protected ref array<ref CRF_EGearRole> m_aWhitelistedRoles;
 
+	[Attribute("1", UIWidgets.CheckBox, "Enable faction whitelist for lone-wolf penalties", category: "CRF Player - Cohesion")]
+	protected bool m_bEnableFactionWhitelist;
+
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFactions), desc: "Factions exempt from lone-wolf penalties", category: "CRF Player - Cohesion")]
+	protected ref array<ref CRF_EFactions> m_aWhitelistedFactions;
+
 	[RplProp(condition: RplCondition.OwnerOnly, onRplName: "OnLoneWolfPenaltyReplicated")]
 	protected float m_fOwnerTunnelVisionIntensity;
 
@@ -207,6 +213,9 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 		if (IsRoleWhitelisted(character))
 			return false;
 
+		if (IsFactionWhitelisted(playerId))
+			return false;
+
 		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
 		if (!groupsManager)
 			return false;
@@ -278,6 +287,39 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 		foreach (CRF_EGearRole whitelistedRole : m_aWhitelistedRoles)
 		{
 			if (role == whitelistedRole)
+				return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsFactionWhitelisted(int playerId)
+	{
+		if (!m_bEnableFactionWhitelist)
+			return false;
+
+		if (!m_aWhitelistedFactions || m_aWhitelistedFactions.IsEmpty())
+			return false;
+
+		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(playerId);
+		if (!playerFaction)
+			return false;
+
+		FactionKey playerFactionKey = playerFaction.GetFactionKey();
+
+		foreach (CRF_EFactions whitelistedFaction : m_aWhitelistedFactions)
+		{
+			FactionKey whitelistedKey;
+			switch (whitelistedFaction)
+			{
+				case CRF_EFactions.BLUFOR:  whitelistedKey = "BLUFOR"; break;
+				case CRF_EFactions.OPFOR:   whitelistedKey = "OPFOR";  break;
+				case CRF_EFactions.INDFOR:  whitelistedKey = "INDFOR"; break;
+				case CRF_EFactions.CIV:     whitelistedKey = "CIV";    break;
+			}
+
+			if (playerFactionKey == whitelistedKey)
 				return true;
 		}
 

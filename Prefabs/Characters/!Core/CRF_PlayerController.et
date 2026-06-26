@@ -16,6 +16,9 @@ CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
      m_aWhitelistedRoles {
       MEDICAL_OFFICER MEDIC
      }
+     m_aWhitelistedFactions {
+      CIV
+     }
     }
     CRF_PlayerMenuManager "{68C4425E8FB6F16D}" {
     }
