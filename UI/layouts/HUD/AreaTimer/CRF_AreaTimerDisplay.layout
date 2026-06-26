@@ -1,0 +1,98 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{AA00000000000001}" {
+   Name "BG"
+   Slot FrameWidgetSlot "{AA00000000000002}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 492.19
+    OffsetLeft 492.19
+    PositionY 967.027
+    OffsetTop 967.027
+    SizeX 245.998
+    OffsetRight -738.188
+    SizeY 90.326
+    OffsetBottom -1057.35
+   }
+   Opacity 0
+   Color 0.05 0.05 0.05 0.78
+  }
+  TextWidgetClass "{AA00000000000003}" {
+   Name "ZoneLabel"
+   Slot FrameWidgetSlot "{AA00000000000004}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 493
+    OffsetLeft 493
+    PositionY 968
+    OffsetTop 968
+    SizeX 244
+    OffsetRight -737
+    SizeY 14
+    OffsetBottom -982
+   }
+   Opacity 0
+   Color 0.65 0.65 0.65 1
+   Text "ALPHA POINT"
+   "Font Size" 11
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AA00000000000009}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{AA00000000000005}" {
+   Name "Countdown"
+   Slot FrameWidgetSlot "{AA00000000000006}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 493
+    OffsetLeft 493
+    PositionY 984
+    OffsetTop 984
+    SizeX 244
+    OffsetRight -737
+    SizeY 50
+    OffsetBottom -1034
+   }
+   Opacity 0
+   Color 1 1 1 1
+   Text "02:00"
+   "Font Size" 36
+   "Min Font Size" 24
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AA0000000000000A}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 2
+    ShadowSize 2
+    ShadowOffset 1 1
+   }
+  }
+  TextWidgetClass "{AA00000000000007}" {
+   Name "StatusText"
+   Slot FrameWidgetSlot "{AA00000000000008}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 493
+    OffsetLeft 493
+    PositionY 1037
+    OffsetTop 1037
+    SizeX 244
+    OffsetRight -737
+    SizeY 20
+    OffsetBottom -1057
+   }
+   Opacity 0
+   Color 0.78 0.78 0.78 1
+   Text "CONTESTED"
+   "Font Size" 12
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{AA0000000000000B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+   }
+  }
+ }
+}

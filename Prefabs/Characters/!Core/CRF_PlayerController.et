@@ -85,6 +85,9 @@ CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
      m_eLayer ALWAYS_TOP
      m_bAdaptiveOpacity 1
     }
+    CRF_AreaTimerDisplay "{69B445EC3FAC8428}" {
+     m_LayoutPath "{E7A6684951B3FC05}UI/layouts/HUD/AreaTimer/CRF_AreaTimerDisplay.layout"
+    }
    }
   }
   SCR_RespawnComponent "{998227246E6A49E0}" {

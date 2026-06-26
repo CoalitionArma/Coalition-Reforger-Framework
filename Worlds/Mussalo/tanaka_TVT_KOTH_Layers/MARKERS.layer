@@ -1,0 +1,66 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 5528.326 58.429 3940.637
+  angles 0 0 0
+  m_MarkerColor 0.475 0.259 0.686 1
+  m_sQuadName "dot"
+  m_sDescription "THE HILL"
+ }
+ {
+  coords 5397.295 18.841 3435.464
+  angles 0 -84.333 0
+  m_MarkerColor 0.157 0.275 0.624 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription ""
+ }
+ {
+  coords 4742.151 2.243 4036.116
+  angles 0 5.793 0
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription ""
+ }
+}
+$grp CRF_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 5527.19 58.94 3937.973
+  m_MarkerColor 0.475 0.259 0.686 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 150
+  m_fWorldSizeY 150
+  m_fShapeBorderWidth 3
+ }
+ {
+  coords 5140.206 24.809 3672.885
+  angles 0 -35.129 0
+  m_MarkerColor 0 0 0 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_eShapeType SQUARE
+  m_fWorldSizeX 750
+  m_fWorldSizeY 20
+ }
+ {
+  coords 5679.253 19.028 4052.809
+  angles 0 -35.129 0
+  m_MarkerColor 0 0 0 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_eShapeType SQUARE
+  m_fWorldSizeX 180
+  m_fWorldSizeY 20
+ }
+ {
+  coords 3593.557 17.355 3502.565
+  angles 0 2.007 0
+  m_MarkerColor 0 0 0 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_eShapeType SQUARE
+  m_fWorldSizeX 2500
+  m_fWorldSizeY 20
+ }
+}
