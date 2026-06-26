@@ -44,12 +44,9 @@ modded class CRF_GamemodeManager
 			case CRF_EGearRole.TEAM_LEAD:
 				return GetCSITeamLeadColor(slotData);
 
-			case CRF_EGearRole.MEDIC:
-			case CRF_EGearRole.RADIO_TELEPHONE_OPERATOR:
 			case CRF_EGearRole.GRENADIER:
 			case CRF_EGearRole.RIFLEMAN:
 			case CRF_EGearRole.RIFLEMAN_ANTITANK:
-			case CRF_EGearRole.ASSISTANT_RIFLEMAN_ANTITANK:
 			case CRF_EGearRole.RIFLEMAN_DEMO:
 				return CSI_EColorTeam.GREEN;
 		}
