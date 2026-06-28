@@ -1515,12 +1515,14 @@ class CRF_AdminMenu : ChimeraMenuBase
 	void TeleportLocalPlayer(int playerId1, int playerId2)
 	{
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
+		if (!entity2)
+		{
+			Print("[CRF] CRF_AdminMenuUI: TeleportLocalPlayer - destination player has no controlled entity (may still be spawning)", LogLevel.WARNING);
+			return;
+		}
+
 		vector teleportLocation = vector.Zero;
 		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
-		spawnParams.Transform[3] = teleportLocation;
-
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 	}
 	
