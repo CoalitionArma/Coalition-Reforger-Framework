@@ -127,6 +127,8 @@ class CRF_PlayerController : SCR_PlayerController
 	override void UpdateSettings()
 	{
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
 		if (CRF_EntityHelper.IsSpectator(GetControlledEntity()))
 			return;
 		
@@ -152,9 +154,16 @@ class CRF_PlayerController : SCR_PlayerController
 			if (!radio)
 				continue;
 			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
-			
-			if (radioComp.m_sFactionKey != "" && radioComp.m_sFactionKey != factionMan.GetPlayerFaction(GetPlayerId()).GetFactionKey())
-				return;
+			if (!radioComp)
+				continue;
+
+			if (radioComp.m_sFactionKey != "")
+			{
+				Faction playerFaction = factionMan.GetPlayerFaction(GetPlayerId());
+				if (!playerFaction || radioComp.m_sFactionKey != playerFaction.GetFactionKey())
+					return;
+			}
+
 			ref CVON_RadioSettingObject setting = new CVON_RadioSettingObject();
 			setting.m_sFreq = radioComp.m_sFrequency;
 			setting.m_Stereo = radioComp.m_eStereo;

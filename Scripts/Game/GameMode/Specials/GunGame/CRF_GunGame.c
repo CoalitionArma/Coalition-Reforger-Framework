@@ -537,14 +537,18 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		
 		//Used because if you're scoped in with a sniper and kill someone the PIP may stay on your screen, COMPLETELY BROKEN on workbench, works fine in Dedi.
-		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity()).FindComponent(BaseWeaponManagerComponent));
+		ChimeraCharacter localChar = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
 		IEntity currentWeapon;
 		IEntity currentSight;
-		if (weaponMan.GetCurrentWeapon())
+		if (localChar)
 		{
-			currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
-			if(weaponMan.GetCurrentWeapon().GetSights())
-				currentSight = weaponMan.GetCurrentWeapon().GetSights().GetOwner();
+			BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(localChar.FindComponent(BaseWeaponManagerComponent));
+			if (weaponMan && weaponMan.GetCurrentWeapon())
+			{
+				currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
+				if (weaponMan.GetCurrentWeapon().GetSights())
+					currentSight = weaponMan.GetCurrentWeapon().GetSights().GetOwner();
+			}
 		}
 		
 		if (currentWeapon)
@@ -822,13 +826,20 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		ImageWidget medalImage = ImageWidget.Cast(m_wHUD.FindWidget("MedalImage"));
 		TextWidget medalText = TextWidget.Cast(m_wHUD.FindWidget("MedalText"));
+		if (!medalImage || !medalText)
+			return;
+
 		//If no medal displaying lets display one.
 		if (!m_bIsMedalDisplaying)
 		{
-			medalImage.LoadImageTexture(0, m_aMedals.Get(0).m_sMedalImage);
+			GunGameMedalContainer firstMedal = m_aMedals.Get(0);
+			if (!firstMedal)
+				return;
+
+			medalImage.LoadImageTexture(0, firstMedal.m_sMedalImage);
 			medalImage.SetImage(0);
 			medalImage.SetOpacity(0);
-			medalText.SetText(m_aMedals.Get(0).m_sMedalText);
+			medalText.SetText(firstMedal.m_sMedalText);
 			medalText.SetOpacity(0);
 			AudioSystem.PlaySound("{A3D993FCC6520D36}Sounds/GunGame/MedalRevealShine.wav");
 		}
@@ -1018,20 +1029,25 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		//Gives out the weapon for the current level the player is at.
 		int level = stats.m_iLevel;
 		ref CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
-		
+		if (!gunLevel)
+			return;
+
 		if (!ChimeraCharacter.Cast(entity))
 			return;
-		
+
 		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).FindComponent(BaseWeaponManagerComponent));
 		if (!weaponMan)
 			return;
-		
+
 		ref array<WeaponSlotComponent> outSlots = {};
 		weaponMan.GetWeaponsSlots(outSlots);
-	
+
 		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!storageManagerComponent)
+			return;
+
 		storageManagerComponent.TrySpawnPrefabToStorage(gunLevel.m_sWeapon, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
-		
+
 		for (int i = 1; i < gunLevel.m_iAmountOfMagazines; i++)
 		{
 			storageManagerComponent.TrySpawnPrefabToStorage(gunLevel.m_sMagazines, null, -1, EStoragePurpose.PURPOSE_ANY);

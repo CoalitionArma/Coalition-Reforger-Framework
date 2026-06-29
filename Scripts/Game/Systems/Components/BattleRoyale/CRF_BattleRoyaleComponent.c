@@ -505,31 +505,33 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		{
 			if (i == zoneIndex)
 				continue;
-			
+
 			CRF_BattleRoyaleZoneData otherZone = m_aZoneSequences[i];
 			if (!otherZone || !otherZone.m_aStages)
 				continue;
-			
+
 			foreach (CRF_BattleRoyaleStageData stageData : otherZone.m_aStages)
 			{
 				if (!stageData || stageData.m_sStageBoundaryName.IsEmpty())
 					continue;
-				
-				// Find entity directly, don't use cache for entities we're about to delete
+
+				// Evict from cache before scheduling deletion so no code path can
+				// retrieve and dereference the entity after it has been freed.
+				if (m_mBoundaryEntityCache)
+					m_mBoundaryEntityCache.Remove(stageData.m_sStageBoundaryName);
+
+				// Find entity directly; do not use the cache for entities we are about to delete.
 				IEntity boundaryEntity = GetGame().GetWorld().FindEntityByName(stageData.m_sStageBoundaryName);
 				if (boundaryEntity)
 				{
-					if (m_bDebugEnabled) 
+					if (m_bDebugEnabled)
 						Print(string.Format("[CRF_BattleRoyaleComponent] Deleting unused boundary: '%1' from zone '%2'", stageData.m_sStageBoundaryName, otherZone.m_sZonePrefix));
-					// Delay deletion, maybe will help replication issues
 					GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, boundaryEntity);
 				}
 			}
 		}
-		
-		// Clear entity cache to ensure we don't have stale references
-		if (m_mBoundaryEntityCache)
-			m_mBoundaryEntityCache.Clear();
+
+		// Cache was selectively evicted above; no blanket clear needed.
 		
 		// Initialize the selected zone's boundaries
 		InitializeZoneBoundaries(selectedZone);
@@ -644,7 +646,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		IEntity cachedEntity;
 		if (m_mBoundaryEntityCache.Find(entityName, cachedEntity))
 		{
-			if (cachedEntity)
+			if (cachedEntity && !cachedEntity.IsDeleted())
 				return cachedEntity;
 			else
 				m_mBoundaryEntityCache.Remove(entityName);
