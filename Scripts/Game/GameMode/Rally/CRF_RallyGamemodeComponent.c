@@ -185,6 +185,12 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		m_sInstance = this;
 	}
 
+	void ~CRF_RallyGamemodeComponent()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	static CRF_RallyGamemodeComponent GetInstance()
 	{
 		return m_sInstance;

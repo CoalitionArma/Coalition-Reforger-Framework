@@ -343,11 +343,18 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_GamemodeManager m_sInstance;
-	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_GamemodeManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
 	{

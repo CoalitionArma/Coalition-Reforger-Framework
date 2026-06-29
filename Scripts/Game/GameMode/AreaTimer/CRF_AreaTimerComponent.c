@@ -78,6 +78,13 @@ class CRF_AreaTimerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	void ~CRF_AreaTimerComponent()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	static CRF_AreaTimerComponent GetInstance()
 	{
 		return m_sInstance;

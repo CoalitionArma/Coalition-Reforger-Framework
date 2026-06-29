@@ -816,11 +816,18 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_GearscriptManager m_sInstance;
-	void CRF_GearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_GearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_GearscriptManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_GearscriptManager GetInstance()
 	{

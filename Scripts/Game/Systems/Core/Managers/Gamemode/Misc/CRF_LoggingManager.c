@@ -72,11 +72,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
-		
+
 		// Initialize damage tracking maps
 		m_mPendingDamageWeapons = new map<string, string>();
 		m_mPendingDamageTypes = new map<string, int>();
-		
+
 		// Cache frequently accessed singleton references
 		m_Game = GetGame();
 		if (m_Game)
@@ -85,7 +85,14 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			m_World = m_Game.GetWorld();
 		}
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_LoggingManager()
+	{
+		if (s_Instance == this)
+			s_Instance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Singleton instance getter
 	static CRF_LoggingManager GetInstance()

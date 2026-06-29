@@ -101,6 +101,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	void ~CRF_CommunityTagManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);

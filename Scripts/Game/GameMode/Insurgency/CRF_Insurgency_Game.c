@@ -50,6 +50,13 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     }
 
     //------------------------------------------------------------------------------------------------
+    void ~CRF_InsurgencyGamemodeManager()
+    {
+        if (m_sInstance == this)
+            m_sInstance = null;
+    }
+
+    //------------------------------------------------------------------------------------------------
     static CRF_InsurgencyGamemodeManager GetInstance()
     {
         return m_sInstance;
@@ -88,7 +95,10 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 	}
 
     //------------------------------------------------------------------------------------------------
-    void RegisterCacheObjective(IEntity objectiveItem)
+    static const int MAX_CACHE_REGISTER_RETRIES = 20;
+
+    //------------------------------------------------------------------------------------------------
+    void RegisterCacheObjective(IEntity objectiveItem, int attempt = 0)
     {
         if (!objectiveItem)
             return;
@@ -97,10 +107,15 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (!rplComp)
             return;
 
-        // Retry until RplId is valid
+        // Retry until RplId is valid, up to ~2 seconds total
         if (rplComp.Id() == RplId.Invalid())
         {
-            GetGame().GetCallqueue().CallLater(RegisterCacheObjective, 100, false, objectiveItem);
+            if (attempt + 1 >= MAX_CACHE_REGISTER_RETRIES)
+            {
+                Print("CRF_InsurgencyGamemodeManager: Failed to register cache — RplId never became valid after max retries", LogLevel.WARNING);
+                return;
+            }
+            GetGame().GetCallqueue().CallLater(RegisterCacheObjective, 100, false, objectiveItem, attempt + 1);
             return;
         }
 

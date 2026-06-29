@@ -331,12 +331,19 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_BandwidthTelemetryManager m_sInstance;
-	void CRF_BandwidthTelemetryManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_BandwidthTelemetryManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 		m_fLastSummaryTime = System.GetTickCount();
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_BandwidthTelemetryManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_BandwidthTelemetryManager GetInstance()
 	{

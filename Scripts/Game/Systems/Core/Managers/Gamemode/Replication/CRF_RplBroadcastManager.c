@@ -2372,11 +2372,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_RplBroadcastManager m_sInstance;
-	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_RplBroadcastManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{

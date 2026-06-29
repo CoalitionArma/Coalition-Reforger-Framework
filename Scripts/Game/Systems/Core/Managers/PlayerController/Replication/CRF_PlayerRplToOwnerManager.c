@@ -266,11 +266,18 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_PlayerRplToOwnerManager m_sInstance;
-	void CRF_PlayerRplToOwnerManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_PlayerRplToOwnerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerRplToOwnerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerRplToOwnerManager GetInstance()
 	{

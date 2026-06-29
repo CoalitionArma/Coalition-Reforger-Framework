@@ -150,6 +150,14 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+		super.OnDelete(owner);
+	}
+
+	//------------------------------------------------------------
 	// Chat command registration
 	//------------------------------------------------------------
 

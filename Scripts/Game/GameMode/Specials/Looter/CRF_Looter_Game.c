@@ -481,7 +481,14 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_LooterGamemodeComponent()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_LooterGamemodeComponent GetInstance()
 	{

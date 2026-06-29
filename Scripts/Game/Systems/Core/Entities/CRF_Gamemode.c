@@ -800,7 +800,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_Gamemode()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_Gamemode GetInstance()
 	{

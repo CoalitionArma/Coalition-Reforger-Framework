@@ -31,7 +31,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, true); // Allows safe start to kickin before checking... Why ;(
+		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 	}
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -76,7 +76,13 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
     {
         m_sInstance = this;
     }
-	
+
+	void ~CRF_VAAR_GamemodeComponent()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	static CRF_VAAR_GamemodeComponent GetInstance()
     {
         return m_sInstance;
@@ -87,14 +93,20 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		return m_sFilePath;
 	}
 	
+	protected static const int MAX_AAR_INIT_RETRIES = 450; // 450 * 8s = 1 hour max
+	protected int m_iAARInitAttempts = 0;
+
 	// Setup frame json file for recording
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()
 	{
 		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		{
+			m_iAARInitAttempts++;
+			if (m_iAARInitAttempts < MAX_AAR_INIT_RETRIES)
+				GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 			return;
-		
-		GetGame().GetCallqueue().Remove(InitilizeAAR);
+		}
 		
 		Print("[CRF_VAAR] Initilizing AAR System");
 		

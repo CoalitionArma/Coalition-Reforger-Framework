@@ -986,11 +986,18 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_GroupLeaderMarkerManager m_sInstance;
-	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_GroupLeaderMarkerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_GroupLeaderMarkerManager GetInstance()
 	{

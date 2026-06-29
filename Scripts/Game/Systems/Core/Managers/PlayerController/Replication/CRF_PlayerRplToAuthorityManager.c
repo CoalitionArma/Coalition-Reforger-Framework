@@ -2741,7 +2741,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerRplToAuthorityManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerRplToAuthorityManager GetInstance()
 	{

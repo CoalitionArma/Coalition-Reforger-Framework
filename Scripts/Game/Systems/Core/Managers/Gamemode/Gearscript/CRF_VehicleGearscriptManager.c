@@ -1362,11 +1362,18 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_VehicleGearscriptManager m_sInstance;
-	void CRF_VehicleGearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_VehicleGearscriptManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_VehicleGearscriptManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_VehicleGearscriptManager GetInstance()
 	{
