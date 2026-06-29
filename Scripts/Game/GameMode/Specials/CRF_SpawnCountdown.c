@@ -16,33 +16,35 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 		SetEventMask(owner, EntityEvent.FRAME);
 	}
 	
+	protected static ResourceName INITIAL_ENTITY_PREFAB = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+
 	int m_iBeepTimer = m_iTimer;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		CheckGameStartUI(timeSlice);
-		
+		CheckGameStartUI(owner, timeSlice);
+
 		#ifdef WORKBENCH
 		#else
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		#endif
-		
-		CheckIfGamemodeStarted(timeSlice);
+
+		CheckIfGamemodeStarted(owner, timeSlice);
 	}
-	
-	void CheckIfGamemodeStarted(float timeSlice)
+
+	void CheckIfGamemodeStarted(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
 		#else
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		#endif
-		
+
 		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
 		m_fGameStartTimer -= timeSlice;
-		
+
 		// Only replicate when the displayed second changes - not every frame
 		int currentSecond = Math.Floor(m_fGameStartTimer);
 		if (currentSecond != m_iLastReplicatedSecond)
@@ -50,40 +52,44 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 			m_iLastReplicatedSecond = currentSecond;
 			Replication.BumpMe();
 		}
+
+		if (m_fGameStartTimer <= 0)
+			ClearEventMask(owner, EntityEvent.FRAME);
 	}
-	
-	void CheckGameStartUI(float timeSlice)
+
+	void CheckGameStartUI(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
 		#else
 		if (RplSession.Mode() != RplMode.Client)
 			return;
 		#endif
-		
+
 		if (!GetGame().GetPlayerController())
 			return;
-		
-		if (!SCR_PlayerController.GetLocalControlledEntity())
+
+		IEntity localEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (!localEntity)
 			return;
-		
-		if (SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && m_wGameStartBase)
+
+		bool isInitialEntity = localEntity.GetPrefabData().GetPrefabName() == INITIAL_ENTITY_PREFAB;
+		if (isInitialEntity)
 		{
-			GetGame().GetMenuManager().CloseMenu(m_wGameStartBase);
+			if (m_wGameStartBase)
+				GetGame().GetMenuManager().CloseMenu(m_wGameStartBase);
 			return;
 		}
-		
-		if (SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" )
-			return;
-		
-		if (m_fGameStartTimer <= 0 && m_wGameStartBase)
-		{
-			GetGame().GetMenuManager().CloseMenu(m_wGameStartBase);
-			AudioSystem.PlaySound(m_sIntroVoiceLine);
-			return;
-		}
-		
+
 		if (m_fGameStartTimer <= 0)
+		{
+			if (m_wGameStartBase)
+			{
+				GetGame().GetMenuManager().CloseMenu(m_wGameStartBase);
+				AudioSystem.PlaySound(m_sIntroVoiceLine);
+			}
+			ClearEventMask(owner, EntityEvent.FRAME);
 			return;
+		}
 		
 		if (!m_wGameStartBase)
 		{

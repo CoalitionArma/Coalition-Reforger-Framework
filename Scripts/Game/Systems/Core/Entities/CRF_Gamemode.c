@@ -245,8 +245,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
 		m_GarbageManager = CRF_GarbageManager.GetInstance();
 
-		// Enable frame events for batch processing
-		SetEventMask(EntityEvent.FRAME);
+		// Frame events enabled on-demand when batch processing starts
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -578,7 +577,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (!m_bProcessingInitializations)
 		{
 			m_bProcessingInitializations = true;
-			m_fBatchTimer = 0.0; // Reset timer
+			m_fBatchTimer = 0.0;
+			SetEventMask(EntityEvent.FRAME);
 		}
 	}
 	
@@ -591,6 +591,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (m_aPendingPlayerInitializations.IsEmpty())
 		{
 			m_bProcessingInitializations = false;
+			ClearEventMask(EntityEvent.FRAME);
 			return;
 		}
 		
@@ -648,6 +649,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_aPendingPlayerInitializations.Clear();
 		m_mPlayerInitializationRetries.Clear();
 		m_bProcessingInitializations = false;
+		ClearEventMask(EntityEvent.FRAME);
 	}
 	
 	//------------------------------------------------------------------------------------------------
