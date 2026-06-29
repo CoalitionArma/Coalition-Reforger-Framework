@@ -65,6 +65,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("", UIWidgets.Hidden)]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
+
+	[Attribute("", UIWidgets.Auto, desc: "Default descriptors pre-populated when running the Configure Descriptions plugin", category: "CRF Mission Settings - Descriptors")]
+	ref array<ref CRF_MissionDescriptor> m_aDefaultMissionDescriptors;
 	
 	[Attribute("", UIWidgets.Hidden)]
 	int m_iFactionOneRatio;
