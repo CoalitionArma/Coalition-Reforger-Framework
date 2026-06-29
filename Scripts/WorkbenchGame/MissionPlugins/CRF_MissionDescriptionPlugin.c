@@ -29,14 +29,8 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		
 		m_aMissionDescriptors.Clear(); // Due to attributes in plugins being saved when the plugin is closed, we need to clear the array each time so the user gets the same attributes each time.
 		
-		// Dont want to show the controls or welcome descriptors since those should rarely change, so we simply offset and insert the gamemodes descriptors into the array.
-		// If mission-specific descriptors have been set (count > 2), use those; otherwise fall back to the editable defaults on the gamemode.
-		if (gamemode.m_aMissionDescriptors && gamemode.m_aMissionDescriptors.Count() > 2)
-		{
-			for ( int i = 2; i < gamemode.m_aMissionDescriptors.Count(); i++ )
-				m_aMissionDescriptors.Insert( gamemode.m_aMissionDescriptors.Get(i) );
-		}
-		else if (gamemode.m_aDefaultMissionDescriptors)
+		// Always populate from the gamemode's default descriptors. Mission creators can add more entries here on top of them.
+		if (gamemode.m_aDefaultMissionDescriptors)
 		{
 			for ( int i = 0; i < gamemode.m_aDefaultMissionDescriptors.Count(); i++ )
 				m_aMissionDescriptors.Insert( gamemode.m_aDefaultMissionDescriptors.Get(i) );
