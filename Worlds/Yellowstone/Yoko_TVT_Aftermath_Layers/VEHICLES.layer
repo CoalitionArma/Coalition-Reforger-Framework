@@ -1,0 +1,52 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4929.961 369.323 3683.356
+  angles 0 -24.752 0
+  m_rVehicle "{D873FE12B2AEFDAF}Vehicles/AZPS60Ural/Ural4320_WZNP_AZPS60.et"
+ }
+ {
+  coords 4164.397 361.201 3886.708
+  angles 0 128.716 0
+  m_rVehicle "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et"
+ }
+ {
+  coords 2876.618 83.063 4377.452
+  angles 0 128.716 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+ }
+ {
+  coords 1539.944 21.638 4675.199
+  angles 0 52.053 0
+  m_rVehicle "{EE1B511B475730D2}Prefabs/Vehicles/Wheeled/Volga/volhaZDF.et"
+ }
+ {
+  coords 102.316 375.871 3804.028
+  angles 0 -116.799 0
+  m_rVehicle "{08879C568643A27D}Vehicles/ATV/ATV2pUS.et"
+ }
+ {
+  coords 103.359 375.871 3801.963
+  angles 0 -116.799 0
+  m_rVehicle "{08879C568643A27D}Vehicles/ATV/ATV2pUS.et"
+ }
+ {
+  coords 117.498 371.602 936.304
+  angles 0 -116.799 0
+  m_rVehicle "{BA55C72863E9FF1D}Vehicles/HighLux/KILUXnew7725_WZNP_Armored.et"
+ }
+ {
+  coords 2840.012 219.757 191.63
+  angles 0 -14.274 0
+  m_rVehicle "{75D79F155B04F531}Vehicles/Dnepr/Dnepr_sidecar.et"
+ }
+ {
+  coords 2455.599 56.234 1833.673
+  angles 0 97.226 0
+  m_rVehicle "{479AB5B7FA667925}Vehicles/Bus/ZagorusBB.et"
+ }
+ {
+  coords 2998.357 61.93 1840.453
+  angles 0 -82.39 0
+  m_rVehicle "{FA4BEE6BC997C57B}Vehicles/BTR40/BTR40WZNParmednew.et"
+ }
+}

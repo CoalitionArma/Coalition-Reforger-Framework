@@ -1,0 +1,131 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ Vehicle5 {
+  coords 96.391 374.901 3801.292
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Vehicle2 {
+  coords 4167.655 361.299 3881.539
+  angles 0 75.581 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Supply1 {
+  coords 1587.502 41.118 3188.307
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Vehicle4 {
+  coords 1539.185 21.662 4675.162
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Vehicle3 {
+  coords 2874.982 83.469 4386.682
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Supply3 {
+  coords 2110.388 50.781 1944.664
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply4 {
+  coords 3893.668 186.812 3007.161
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Vehicle1 {
+  coords 4931.532 369.148 3678.497
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Supply6 {
+  coords 1607.743 21.657 4547.809
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply5 {
+  coords 3646.308 263.952 4343.346
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply2 {
+  coords 857.016 292.922 2239.97
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply7 {
+  coords 90.709 449.759 2489.494
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply9 {
+  coords 1557.915 326.031 382.53
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Vehicle6 {
+  coords 110.701 372.039 945.184
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Supply8 {
+  coords 2175.862 266.668 812.316
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Vehicle7 {
+  coords 2841.898 220.549 185.918
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Vehicle8 {
+  coords 2460.814 55.813 1833.878
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+ Vehicle9 {
+  coords 2991.687 61.149 1838.797
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
+}
+CRF_ManualMarker bluforsideobj1 : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 2412.268 45.546 3512.064
+}
