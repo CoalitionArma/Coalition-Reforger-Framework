@@ -1,0 +1,18 @@
+GenericEntity : "{3FB5275A6505B323}Prefabs/Weapons/Rifles/M14/Rifle_M21_base.et" {
+ ID "5254ACCA959048B9"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      MuzzleEffectComponent "{64FC9AD10B0EEAF5}" {
+       ParticleEffect "{A9CC4CC586214FF5}Particles/Weapon/Smoke_MuzzleLineRifle.ptc"
+      }
+     }
+     DispersionDiameter 0.5
+     DispersionRange 15
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,7 @@
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 1330.376 12.92 3218.396
+ angles 0 0 0
+ m_MarkerColor 0.033 0.033 0.033 1
+ m_fWorldSize 180
+ m_sDescription "Fort Kickass"
+}
