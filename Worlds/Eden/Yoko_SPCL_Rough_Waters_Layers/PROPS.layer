@@ -410,6 +410,66 @@ $grp GenericEntity : "{D01FB74BE7440B16}PrefabsEditable/EffectsModules/Mortar/Sm
   coords 10268.731 0 4415.714
   angles 0 -112.87 0
  }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 9753.349 0 5663.853
+  angles 0 -148.298 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 9866.916 0 5593.706
+  angles 0 -148.298 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 9952.655 0 5540.748
+  angles 0 -148.298 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 10120.64 0 5440.633
+  angles 0 -148.298 0
+ }
+ {
+  components {
+   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
+     m_bCanLoop 1
+     m_bIsLooping 1
+    }
+   }
+  }
+  coords 10043.265 0 5488.425
+  angles 0 -148.298 0
+ }
 }
 $grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
  {
