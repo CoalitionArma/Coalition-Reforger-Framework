@@ -1,3 +1,7 @@
+SCR_DestructibleBuildingEntity : "{0FC00BDA43145B38}Prefabs/Structures/Ruins/Church_Ruin_02/Church_Ruin_02.et" {
+ coords 3616.89 0.48 2496.145
+ angles 0 164.751 0
+}
 $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
  Supplybox1 {
   components {

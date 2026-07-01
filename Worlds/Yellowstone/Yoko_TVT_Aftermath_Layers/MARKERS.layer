@@ -126,6 +126,3 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "Vehicle"
  }
 }
-CRF_ManualMarker bluforsideobj1 : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
- coords 2412.268 45.546 3512.064
-}
