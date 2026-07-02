@@ -1,0 +1,10 @@
+MatPBRBasic {
+ Color 0.502 0.181 0.181 1
+ DiffuseIBL 0.723 0.186 0.186 1
+ SpecularIBL 0.723 0.186 0.186 1
+ Diffuse 0.723 0.186 0.186 1
+ Specular 0.723 0.186 0.186 1
+ CavityFromAO 0
+ BCRMap "{5ABCEE9B25658391}Assets/Characters/Jackets/2ndNassau_Jacket/Data/Nassau_Uniform_Top_DefaultMaterial_BaseColor.edds"
+ NMOMap "{786895D2CBE4B96F}Assets/Characters/Jackets/2ndNassau_Jacket/Data/2ndNassau_Jacket_NMO.edds"
+}

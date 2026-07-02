@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4A262E1D2351C4A4}Configs/Gearscripts/Custom/Harry/Napoleonic/CRF_GS_AmericanRevBritish.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

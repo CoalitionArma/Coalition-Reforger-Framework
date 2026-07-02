@@ -1,0 +1,53 @@
+GameEntity : "{C472D4DFBF3652EB}Prefabs/Characters/Uniforms/Jacket_Raincoat_01/Jacket_Raincoat_01_base.et" {
+ ID "5104869D194C6243"
+ components {
+  MeshObject "{5104869D194C6262}" {
+   Object "{096C1C30AFCC911A}Assets/Characters/Jackets/2ndNassau_Jacket/Nassau_Uniform_Top.xob"
+   Materials {
+    MaterialAssignClass "{69BC22DA6931B020}" {
+     SourceMaterial "DefaultGeneratedMaterial"
+     AssignedMaterial "{DAB3D98FEE28C7BD}Assets/Characters/Jackets/2ndNassau_Jacket/Data/British_Jacket.emat"
+    }
+   }
+  }
+  SCR_ItemOutfitFactionComponent "{6196E41F02C60410}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{61A8D966675B5BD1}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{61A8D9666620E74C}" {
+      m_AffiliatedFactionKey "NAPfactionALLIED"
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   components {
+    SCR_EquipmentStorageComponent "{5B0493043E11B2B1}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot FlashlightSlot {
+       Prefab ""
+      }
+     }
+    }
+   }
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    ItemDisplayName UIInfo "{5222CB0109A04AB2}" {
+     Name "2ndNassau Jacket"
+     Description "Fusilier Company"
+    }
+   }
+   MaxCumulativeVolume 50
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   WornModel "{096C1C30AFCC911A}Assets/Characters/Jackets/2ndNassau_Jacket/Nassau_Uniform_Top.xob"
+   WornMaterialsOverride {
+    "{DAB3D98FEE28C7BD}Assets/Characters/Jackets/2ndNassau_Jacket/Data/British_Jacket.emat"
+   }
+   ItemModel "{C93586479590F3C6}Assets/Items/Equipment/Accessories/Pouch_Medical_Soviet/Pouch_Medical_Soviet_item.xob"
+   ItemMaterialsOverride {
+    ""
+   }
+   DeflatedModel "{096C1C30AFCC911A}Assets/Characters/Jackets/2ndNassau_Jacket/Nassau_Uniform_Top.xob"
+  }
+ }
+ coords 1.614 1.14 -0.139
+}
