@@ -97,6 +97,7 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
       SlotTemplate InventoryStorageSlot Gun {
        Prefab "{CABE7FC62A501190}Prefabs/Weapons/Rifles/MK47/Rifle_MK47_MOD1.et"
       }
+      NumSlots 5
      }
      MultiSlotConfiguration "{69BC0B61511E875D}" {
       SlotTemplate InventoryStorageSlot ammo {
@@ -198,5 +199,47 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
    }
   }
   coords 1557.2 326.03 392.468
+ }
+ Supplybox10 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69BC0B6183029788}" {
+      SlotTemplate InventoryStorageSlot Gun {
+       Prefab "{CABE7FC62A501190}Prefabs/Weapons/Rifles/MK47/Rifle_MK47_MOD1.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{69BC0B61511E875D}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{8C9E7D6957F5FEA8}Prefabs/Weapons/Magazines/762x39_AKM_AK55_30rnd/Magazine_762x39_AKM_AK55_30rnd_4AP_1Tracer_7N23_57T231P.et"
+      }
+      NumSlots 30
+     }
+    }
+   }
+  }
+  coords 4362.59 75.605 1971.586
+ }
+ Supplybox11 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69BC0B6183029788}" {
+      SlotTemplate InventoryStorageSlot Gun {
+       Prefab "{CABE7FC62A501190}Prefabs/Weapons/Rifles/MK47/Rifle_MK47_MOD1.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{69BC0B61511E875D}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{8C9E7D6957F5FEA8}Prefabs/Weapons/Magazines/762x39_AKM_AK55_30rnd/Magazine_762x39_AKM_AK55_30rnd_4AP_1Tracer_7N23_57T231P.et"
+      }
+      NumSlots 30
+     }
+    }
+   }
+  }
+  coords 3448.766 102.567 3380.112
  }
 }

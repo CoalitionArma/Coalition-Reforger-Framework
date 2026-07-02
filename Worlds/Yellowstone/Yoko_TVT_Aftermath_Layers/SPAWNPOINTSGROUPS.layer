@@ -1,0 +1,58 @@
+$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 4943.999 314.627 3202.544
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 4881.674 132.435 946.434
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 4074.679 328.072 176.769
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 1918.64 363.764 97.109
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 525.138 382.551 142.796
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 273.153 456.059 1799.055
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 629.739 28.908 3924.065
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 1634.426 40.518 5090.581
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 2543.186 146.738 4913.058
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 2222.423 49.592 3131.595
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 4402.332 260.729 3126.74
+  m_sCallsignOfGroupToSpawn "DUO"
+ }
+ {
+  coords 2335.899 54.653 4446.954
+ }
+ {
+  coords 962.845 255.214 1172.659
+ }
+ {
+  coords 1491.502 39.717 2286.238
+ }
+ {
+  coords 2636.196 183.781 786.62
+ }
+}
