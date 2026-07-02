@@ -1,0 +1,16 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 589.081 26.812 4583.088
+}
+CRF_StaticSpawnPoint bspawn : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ components {
+  MeshObject "{645911BD734B5E66}" {
+  }
+  SlotManagerComponent "{645911BAB1D66B16}" {
+   Slots {
+    EntitySlotInfo Flag {
+    }
+   }
+  }
+ }
+ coords 1544.533 15.001 4927.628
+}

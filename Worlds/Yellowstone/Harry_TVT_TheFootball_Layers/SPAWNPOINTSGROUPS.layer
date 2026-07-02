@@ -1,0 +1,20 @@
+$grp SCR_BaseTriggerEntity {
+ spawn2 {
+  coords 1901.173 32.464 4521.025
+ }
+ spawn3 {
+  coords 2733.839 63.545 3991.272
+ }
+ spawn4 {
+  coords 3369.575 253.744 3746.751
+ }
+ spawn5 {
+  coords 4125.16 332.137 3596.863
+ }
+ spawn6 {
+  coords 3867.531 62.998 2514.291
+ }
+ spawn7 {
+  coords 3402.99 61.174 2407.877
+ }
+}
