@@ -26,6 +26,7 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()] bool m_bCurrentRespawnEnabled;
 	[RplProp()] bool m_bCurrentWaveRespawn;
 	[RplProp()] int m_iCurrentTimeToRespawn;
+	[RplProp()] bool m_bRandomSpawnEvent = true;
 	int m_iLocalTimeToRespawn = 0;
 
 	// Internal flag to prevent redundant replication updates
@@ -474,6 +475,15 @@ class CRF_RespawnManager : ScriptComponent
 			{
 				// Check if respawn selection was confirmed in the UI
 				CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
+
+				// SPECIAL EVENT: override the player's chosen spawn point with a random one
+				if (m_bRandomSpawnEvent && m_RespawnConfirmed)
+				{
+					CRF_SpawnPointData randomSpawn = GetRandomFactionSpawnpoint(factionKey);
+					if (randomSpawn)
+						m_SelectedSpawnPoint = randomSpawn;
+				}
+
 				if (m_SelectedSpawnPoint != null && m_RespawnConfirmed)
 				{
 					// Reset the timer
@@ -485,12 +495,12 @@ class CRF_RespawnManager : ScriptComponent
 					{
 						GetGame().GetMenuManager().CloseAllMenus();
 						CRF_PlayerRplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnPoint.GetSpawnPointId());
-						
+
 						// Set menu state back to default
 						m_SelectedSpawnPoint = null;
 						m_RespawnConfirmed = false; 
 					}
-	
+				
 					return;
 				}
 			}
@@ -582,6 +592,10 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Picks a random valid spawn point for a faction (used for random-spawn event mode)
+	//! \param[in] factionKey Faction to pick a spawn point for
+	//! \param[in] group Optional group filter (same semantics as GetFactionSpawnpoints)
+	//! \return A random CRF_SpawnPointData, or null if none available
 	array<CRF_SpawnPointData> GetFactionSpawnpoints(FactionKey factionKey, SCR_AIGroup group = null)
 	{
 		array<CRF_SpawnPointData> sideSpawnPoints = {};
@@ -606,6 +620,25 @@ class CRF_RespawnManager : ScriptComponent
 		}
 
 		return sideSpawnPoints;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Toggle random-spawn event mode on/off
+	void ToggleRandomSpawnEvent()
+	{
+		m_bRandomSpawnEvent = !m_bRandomSpawnEvent;
+		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_SpawnPointData GetRandomFactionSpawnpoint(FactionKey factionKey, SCR_AIGroup group = null)
+	{
+		array<CRF_SpawnPointData> spawns = GetFactionSpawnpoints(factionKey, group);
+		if (spawns.IsEmpty())
+			return null;
+
+		int randomIndex = Math.RandomInt(0, spawns.Count());
+		return spawns.Get(randomIndex);
 	}
 	
 	//------------------------------------------------------------------------------------------------
