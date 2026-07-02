@@ -613,9 +613,9 @@ class CRF_RespawnManager : ScriptComponent
 	{	
 		if (group)
 		{
-			string company, platoon, squad, character, format;
+			string company, platoon, squad, character, format
 			group.GetCallsigns(company, platoon, squad, character, format);
-
+	
 			foreach(int spawnPointId, CRF_SpawnPointData spawnPointData : m_mSpawnPointMap)
 			{
 				if (!spawnPointData 
@@ -628,21 +628,16 @@ class CRF_RespawnManager : ScriptComponent
 				if (CRF_GroupSpawnPoint.Cast(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity())).m_sCallsignOfGroupToSpawn == squad)
 					return spawnPointData;
 			}
-		}
+		};
 		
 		array<CRF_SpawnPointData> factionSpawnDataArray = GetFactionSpawnpoints(factionKey);
 
 		if (!factionSpawnDataArray.IsEmpty())
-		{
-			int randomIndex = Math.RandomInt(0, factionSpawnDataArray.Count());
-			return factionSpawnDataArray.Get(randomIndex);
-		}
-		else
-		{
+			return factionSpawnDataArray.Get(0);
+		else	
 			return null;
-		}
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
 	bool IsDefaultSpawn(CRF_SpawnPointData spawnPointData)
 	{
