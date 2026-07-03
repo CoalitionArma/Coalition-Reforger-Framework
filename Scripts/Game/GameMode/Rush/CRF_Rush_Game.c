@@ -378,7 +378,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().CallLater(InitializeMapMarkers, 1000, false);
 		
 		// Initialize 3D markers after a delay to ensure UI is ready
-		GetGame().GetCallqueue().CallLater(Initialize3DMarkers, 1500, false);
+		// GetGame().GetCallqueue().CallLater(Initialize3DMarkers, 1500, false);
 	}
 	
 	/**
