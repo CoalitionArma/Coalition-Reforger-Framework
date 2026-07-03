@@ -1,0 +1,21 @@
+$grp GameEntity {
+ {
+  components {
+   CRF_AreaTimerComponent "{69C70B2FD806BD18}" {
+    m_sZoneLabel "Trenches"
+    m_fCaptureRadius 150
+    m_iCountdownSeconds 600
+    m_iMinPlayersToCapture 8
+   }
+  }
+  coords 2020.49 5.08 1978.624
+ }
+ mcom_a_trigger {
+  coords 2106.318 12.178 1312.159
+  angles 0 -150.468 0
+ }
+ mcom_b_trigger {
+  coords 2351.561 6.007 1534.05
+  angles 0 -138.296 0
+ }
+}
