@@ -36,7 +36,9 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 				m_aMissionDescriptors.Insert( gamemode.m_aDefaultMissionDescriptors.Get(i) );
 		}
 
-		int baseCount = 2 + (gamemode.m_aDefaultMissionDescriptors ? gamemode.m_aDefaultMissionDescriptors.Count() : 0);
+		int baseCount = 2;
+		if (gamemode.m_aDefaultMissionDescriptors)
+			baseCount = baseCount + gamemode.m_aDefaultMissionDescriptors.Count();
 		if (gamemode.m_aMissionDescriptors && gamemode.m_aMissionDescriptors.Count() > baseCount)
 		{
 			for ( int i = baseCount; i < gamemode.m_aMissionDescriptors.Count(); i++ )
