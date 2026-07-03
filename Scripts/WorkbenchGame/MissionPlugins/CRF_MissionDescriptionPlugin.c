@@ -29,14 +29,22 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		
 		m_aMissionDescriptors.Clear(); // Due to attributes in plugins being saved when the plugin is closed, we need to clear the array each time so the user gets the same attributes each time.
 		
-		// Always populate from the gamemode's default descriptors first, then append any extras the creator previously saved on top of them.
+		// For each default slot, use the saved entity version if it exists (so edits persist), otherwise fall back to the raw default.
+		int defaultCount = 0;
 		if (gamemode.m_aDefaultMissionDescriptors)
+			defaultCount = gamemode.m_aDefaultMissionDescriptors.Count();
+
+		for ( int i = 0; i < defaultCount; i++ )
 		{
-			for ( int i = 0; i < gamemode.m_aDefaultMissionDescriptors.Count(); i++ )
+			int savedIndex = 2 + i;
+			if (gamemode.m_aMissionDescriptors && savedIndex < gamemode.m_aMissionDescriptors.Count())
+				m_aMissionDescriptors.Insert( gamemode.m_aMissionDescriptors.Get(savedIndex) );
+			else
 				m_aMissionDescriptors.Insert( gamemode.m_aDefaultMissionDescriptors.Get(i) );
 		}
 
-		int baseCount = 2 + (gamemode.m_aDefaultMissionDescriptors ? gamemode.m_aDefaultMissionDescriptors.Count() : 0);
+		// Append any extra mission-specific descriptors the creator added beyond the defaults.
+		int baseCount = 2 + defaultCount;
 		if (gamemode.m_aMissionDescriptors && gamemode.m_aMissionDescriptors.Count() > baseCount)
 		{
 			for ( int i = baseCount; i < gamemode.m_aMissionDescriptors.Count(); i++ )
