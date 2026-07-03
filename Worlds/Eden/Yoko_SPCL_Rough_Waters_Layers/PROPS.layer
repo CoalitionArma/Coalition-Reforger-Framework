@@ -235,242 +235,6 @@ $grp GenericEntity : "{4A8829F6DD2162F7}Prefabs/Structures/Signs/Warnings/SignAh
   scale 50.2
  }
 }
-$grp GenericEntity : "{5E0F494A46B3B604}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Combing.et" {
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 9943.771 4.364 5840.198
-  angles 0 89.378 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 9941.214 0 5708.311
-  angles 0 56.769 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10088.354 0 5750.917
-  angles 0 176.424 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10129.359 0 5604.501
-  angles 0 45.455 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10020.268 4.364 4530.265
-  angles 0 102.534 0
-  scale 0.999
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10167.666 0 4618.7
-  angles 0 102.534 0
-  scale 0.999
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10122.471 0 4415.413
-  angles 0 -135.821 0
-  scale 0.999
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10207.832 0 4310.451
-  angles 0 -83.518 0
-  scale 0.999
- }
-}
-$grp GenericEntity : "{D01FB74BE7440B16}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Line.et" {
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 8224.365 0 5891.229
-  angles 0 -132.843 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 8170.219 0 5841.014
-  angles 0 -132.843 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10042.801 0 4619.09
-  angles 0 -112.87 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10062.513 0 4466.863
-  angles 0 -112.87 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10219.268 0 4532.982
-  angles 0 -112.87 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10268.731 0 4415.714
-  angles 0 -112.87 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 9753.349 0 5663.853
-  angles 0 -148.298 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 9866.916 0 5593.706
-  angles 0 -148.298 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 9952.655 0 5540.748
-  angles 0 -148.298 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10120.64 0 5440.633
-  angles 0 -148.298 0
- }
- {
-  components {
-   SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
-    m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" {
-     m_bCanLoop 1
-     m_bIsLooping 1
-    }
-   }
-  }
-  coords 10043.265 0 5488.425
-  angles 0 -148.298 0
- }
-}
 $grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
  {
   coords 7689.046 12.949 6646.405
@@ -1939,5 +1703,81 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structur
  {
   coords 9946.065 0.171 4833.655
   angles 0 93.097 0
+ }
+ {
+  coords 9752.113 12.262 5760.756
+  angles 0 154.654 0
+ }
+ {
+  coords 9815.903 26.201 5790.975
+  angles 0 154.654 0
+ }
+ {
+  coords 9783.393 21.094 5775.576
+  angles 0 154.654 0
+ }
+ {
+  coords 9847.826 33.735 5806.096
+  angles 0 154.654 0
+ }
+ {
+  coords 9855.271 34.922 5809.62
+  angles 0 154.654 0
+ }
+ {
+  coords 9919.061 38.542 5839.839
+  angles 0 154.654 0
+ }
+ {
+  coords 9886.55 37.372 5824.44
+  angles 0 154.654 0
+ }
+ {
+  coords 9950.983 38.608 5854.96
+  angles 0 154.654 0
+ }
+ {
+  coords 9980.367 43.73 5782.311
+  angles 0 154.654 0
+ }
+ {
+  coords 10044.156 43.277 5812.53
+  angles 0 154.654 0
+ }
+ {
+  coords 10011.646 44.631 5797.131
+  angles 0 154.654 0
+ }
+ {
+  coords 10076.079 44.639 5827.651
+  angles 0 154.654 0
+ }
+ {
+  coords 9822.093 15.913 5707.34
+  angles 0 154.654 0
+ }
+ {
+  coords 9885.882 33.53 5737.559
+  angles 0 154.654 0
+ }
+ {
+  coords 9853.372 21.444 5722.16
+  angles 0 154.654 0
+ }
+ {
+  coords 10117.553 41.891 5748.243
+  angles 0 123.013 0
+ }
+ {
+  coords 10137.152 39.875 5778.408
+  angles 0 123.013 0
+ }
+ {
+  coords 10098.697 38.547 5719.218
+  angles 0 123.013 0
+ }
+ {
+  coords 10026.426 29.254 5607.986
+  angles 0 123.013 0
  }
 }
