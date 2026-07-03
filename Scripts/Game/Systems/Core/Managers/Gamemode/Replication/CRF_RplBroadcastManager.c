@@ -20,6 +20,17 @@ class CRF_SlotUpdateBatch
 }
 
 //------------------------------------------------------------------------------------------------
+// Per-zone cached state for Faction Control objectives (supports multiple simultaneous zones)
+//------------------------------------------------------------------------------------------------
+class CRF_FactionControlZoneState
+{
+	CRF_EFactionControlState m_eState;
+	int m_iCountdown;
+	string m_sFaction;
+	string m_sZoneLabel;
+}
+
+//------------------------------------------------------------------------------------------------
 // Broadcast Manager responsible for handling server-client communications
 //------------------------------------------------------------------------------------------------
 class CRF_RplBroadcastManager : ScriptComponent
@@ -51,6 +62,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	int m_iAreaTimerCountdown;
 	string m_sAreaTimerFaction;
 	string m_sAreaTimerZoneLabel;
+
+	// Faction Control state — replicated to clients via BroadcastFactionControlUpdate, keyed by ZoneId
+	protected ref map<string, ref CRF_FactionControlZoneState> m_mFactionControlZones = new map<string, ref CRF_FactionControlZoneState>();
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -1176,6 +1190,49 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#else
 		Rpc(RpcDo_BroadcastAreaTimerWin, faction, zoneName);
 		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Faction Control: push current state to all clients every server tick
+	void BroadcastFactionControlUpdate(string zoneId, CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
+	{
+		int bytes = 8; // state + countdown ints
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastFactionControlUpdate", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastFactionControlUpdate(zoneId, state, countdown, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastFactionControlUpdate, zoneId, state, countdown, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Faction Control: notify all clients of a capture/contest/win event for a specific zone
+	void BroadcastFactionControlEvent(string zoneId, CRF_EFactionControlEvent evt, string faction, string zoneLabel)
+	{
+		int bytes = 4;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastFactionControlEvent", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastFactionControlEvent(zoneId, evt, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastFactionControlEvent, zoneId, evt, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client-side accessor: read the last known state for a specific zone (e.g. for a HUD panel).
+	CRF_FactionControlZoneState GetFactionControlZoneState(string zoneId)
+	{
+		if (m_mFactionControlZones.Contains(zoneId))
+			return m_mFactionControlZones.Get(zoneId);
+		return null;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -2366,82 +2423,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 		AudioSystem.PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
 	}
 
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 STATIC ACCESSORS
-//=============================================================================================================================================================================================================================================================================================================================================================
-
 	//------------------------------------------------------------------------------------------------
-	protected static CRF_RplBroadcastManager m_sInstance;
-	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastFactionControlUpdate(string zoneId, CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
 	{
-		m_sInstance = this;
-	}
+		CRF_FactionControlZoneState zoneState = m_mFactionControlZones.Get(zoneId);
+		if (!zoneState)
+		{
+			zoneState = new CRF_FactionControlZoneState();
+			m_mFactionControlZones.Set(zoneId, zoneState);
+		}
 
-	//------------------------------------------------------------------------------------------------
-	void ~CRF_RplBroadcastManager()
-	{
-		if (m_sInstance == this)
-			m_sInstance = null;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	static CRF_RplBroadcastManager GetInstance()
-	{
-		return m_sInstance;
-	}
-
-
-	// Faction Control state — replicated to clients via BroadcastFactionControlUpdate
-	CRF_EFactionControlState m_eFactionControlState;
-	int m_iFactionControlCountdown;
-	string m_sFactionControlFaction;
-	string m_sFactionControlZoneLabel;
-
-	//------------------------------------------------------------------------------------------------
-	//! Faction Control: push current state to all clients every server tick
-	void BroadcastFactionControlUpdate(CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
-	{
-		int bytes = 8; // state + countdown ints
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
-		LogTelemetry("BroadcastFactionControlUpdate", bytes);
-
-		#ifdef WORKBENCH
-		RpcDo_BroadcastFactionControlUpdate(state, countdown, faction, zoneLabel);
-		#else
-		Rpc(RpcDo_BroadcastFactionControlUpdate, state, countdown, faction, zoneLabel);
-		#endif
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! Faction Control: notify all clients of a capture/contest/win event
-	void BroadcastFactionControlEvent(CRF_EFactionControlEvent evt, string faction, string zoneLabel)
-	{
-		int bytes = 4;
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
-		LogTelemetry("BroadcastFactionControlEvent", bytes);
-
-		#ifdef WORKBENCH
-		RpcDo_BroadcastFactionControlEvent(evt, faction, zoneLabel);
-		#else
-		Rpc(RpcDo_BroadcastFactionControlEvent, evt, faction, zoneLabel);
-		#endif
+		zoneState.m_eState     = state;
+		zoneState.m_iCountdown = countdown;
+		zoneState.m_sFaction   = faction;
+		zoneState.m_sZoneLabel = zoneLabel;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastFactionControlUpdate(CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
-	{
-		m_eFactionControlState      = state;
-		m_iFactionControlCountdown  = countdown;
-		m_sFactionControlFaction    = faction;
-		m_sFactionControlZoneLabel  = zoneLabel;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastFactionControlEvent(CRF_EFactionControlEvent evt, string faction, string zoneLabel)
+	void RpcDo_BroadcastFactionControlEvent(string zoneId, CRF_EFactionControlEvent evt, string faction, string zoneLabel)
 	{
 		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		string displayName = faction;
@@ -2472,5 +2473,29 @@ class CRF_RplBroadcastManager : ScriptComponent
 		SCR_PopUpNotification popUp = SCR_PopUpNotification.GetInstance();
 		if (popUp)
 			popUp.PopupMsg(message, 8);
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_RplBroadcastManager m_sInstance;
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_RplBroadcastManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static CRF_RplBroadcastManager GetInstance()
+	{
+		return m_sInstance;
 	}
 };

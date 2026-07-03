@@ -44,6 +44,9 @@ class CRF_FactionControlObjective : ScriptComponent
 	// Editor Attributes
 	//---------------------------------------------------------------------------------------------
 
+	[Attribute("zone_alpha", UIWidgets.EditBox, "Unique identifier for this zone. Must be unique per instance when placing multiple control zones - used to key replicated state, so it must match on server and client (do not leave it auto-generated from a runtime entity ID).", category: "Faction Control")]
+	string m_sZoneId;
+
 	[Attribute("Objective Alpha", UIWidgets.EditBox, "Display name shown in HUD/notification messages.", category: "Faction Control")]
 	string m_sZoneLabel;
 
@@ -79,29 +82,46 @@ class CRF_FactionControlObjective : ScriptComponent
 	protected ref array<SCR_ChimeraCharacter> m_aPlayersInZone = new array<SCR_ChimeraCharacter>();
 
 	//---------------------------------------------------------------------------------------------
-	// Singleton
+	// Registry  (supports multiple simultaneous control zones)
 	//---------------------------------------------------------------------------------------------
 
-	protected static CRF_FactionControlObjective m_sInstance;
+	protected static ref array<CRF_FactionControlObjective> m_aInstances = new array<CRF_FactionControlObjective>();
 
 	//------------------------------------------------------------------------------------------------
 	void CRF_FactionControlObjective(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
-		if (!m_sInstance)
-			m_sInstance = this;
+		m_aInstances.Insert(this);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ~CRF_FactionControlObjective()
 	{
-		if (m_sInstance == this)
-			m_sInstance = null;
+		m_aInstances.RemoveItem(this);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	static CRF_FactionControlObjective GetInstance()
+	//! Look up a specific zone by its ZoneId attribute (works identically on server and client).
+	static CRF_FactionControlObjective GetInstance(string zoneId)
 	{
-		return m_sInstance;
+		foreach (CRF_FactionControlObjective obj : m_aInstances)
+		{
+			if (obj.GetZoneId() == zoneId)
+				return obj;
+		}
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! All currently registered control zones - useful for a HUD panel listing every objective.
+	static array<CRF_FactionControlObjective> GetAllInstances()
+	{
+		return m_aInstances;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	string GetZoneId()
+	{
+		return m_sZoneId;
 	}
 
 	//---------------------------------------------------------------------------------------------
@@ -334,7 +354,7 @@ class CRF_FactionControlObjective : ScriptComponent
 	{
 		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
-			bm.BroadcastFactionControlUpdate(m_eState, m_iCountdownRemaining, m_sControllingFaction, m_sZoneLabel);
+			bm.BroadcastFactionControlUpdate(m_sZoneId, m_eState, m_iCountdownRemaining, m_sControllingFaction, m_sZoneLabel);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -342,7 +362,7 @@ class CRF_FactionControlObjective : ScriptComponent
 	{
 		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
-			bm.BroadcastFactionControlEvent(evt, faction, m_sZoneLabel);
+			bm.BroadcastFactionControlEvent(m_sZoneId, evt, faction, m_sZoneLabel);
 	}
 
 	//---------------------------------------------------------------------------------------------
