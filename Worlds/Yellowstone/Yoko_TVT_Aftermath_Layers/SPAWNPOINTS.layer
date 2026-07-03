@@ -1,0 +1,529 @@
+$grp CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 570.445 26.635 4591.736
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 1015.436 9.932 4193.99
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 1679.385 108.058 4026.768
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 3029.726 106.351 3892.987
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 2279.254 41.999 3965.485
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 4211.863 356.164 3832.666
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 3541.982 123.294 1396.819
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 2628.678 167.305 983.219
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 1770.946 245.68 1199.376
+ }
+ {
+  components {
+   MeshObject "{645911A160C1D2EB}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8E6D691E}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A160C1D2C6}" {
+    Enabled 0
+   }
+  }
+  coords 363.708 352.629 1053.906
+ }
+}
+$grp CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 4748.458 486.947 4839.514
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 4900.197 174.484 2719.093
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 3864.445 63.653 2161.154
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 3034.906 54.741 2341.533
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 2195.263 28.373 2451.668
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 1158.007 50.862 2701.573
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 80.536 460.715 1781.115
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 1083.741 366.277 178.057
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 2130.836 230.544 323.177
+ }
+ {
+  components {
+   MeshObject "{645911BD734B5E66}" {
+    Materials {
+     MaterialAssignClass "{69C6115E8771628D}" {
+      SourceMaterial "Color_palette"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+     MaterialAssignClass "{69C6115E877162A3}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911BAB1D66B16}" {
+    Enabled 0
+   }
+  }
+  coords 4932.767 239.993 415.619
+ }
+}
+CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 48.297 176.683 5013.397
+}
+$grp CRF_StaticSpawnPoint : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 3164.34 37.465 2809.23
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 1786.559 27.586 2882.783
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 2422.276 48.516 1880.998
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 3893.94 82.945 1577.414
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 4598.75 117.414 2087.146
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 4295.994 383.097 4164.052
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 3187.082 204.095 4842.155
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 1800.693 25.92 4839.235
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 1152.438 3.198 4745.895
+ }
+ {
+  components {
+   MeshObject "{645911A16DDD1233}" {
+    Materials {
+     MaterialAssignClass "{69C6115E949186C7}" {
+      SourceMaterial "Flagpole_01"
+      AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+     }
+    }
+   }
+   SlotManagerComponent "{645911A16DDD122C}" {
+    Enabled 0
+   }
+  }
+  coords 1050.668 0.901 3599.541
+ }
+}

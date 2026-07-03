@@ -1,0 +1,670 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 3672.127 242.597 4965.297
+ "Map Geometry Data" "{DA4CABE2142B8D42}Missions/YellowstoneGM.topo"
+ "Satellite background image" "{920C9CCAF917755E}Missions/YELLOWSTONEconflicpapermaptlowres.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{69C4FA95BD3BCB7A}" {
+     NavmeshFile "{0532B90A0AD7C450}YellowstoneGM_Layers/GM_Navmeshes/Soldier_Navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{6578CB05C5914C84}YellowstoneGM_Layers/GM_Navmeshes/BTR_Like_navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{B5FA9D226404EE46}YellowstoneGM_Layers/GM_Navmeshes/LowRes_navmesh.nmn"
+    }
+   }
+  }
+ }
+ coords 3590.412 232.511 4951.065
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_LooterGamemodeComponent "{69C61155B900BCCD}" {
+   m_fGlobalSpawnChance 1
+   m_iTotalSpawnPoints 140
+   m_aWeaponEntries {
+    CRF_WeaponLootEntry "{69C61155A9A8423D}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{E57DBDA5C50F07FF}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_carbine_4x20.et"
+     m_sMagazinePrefab "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C6115086CF8BB4}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et"
+     m_sMagazinePrefab "{75632A0CA07D3817}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_AP.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C61150A057F6C3}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{DD17D4BC320A94C8}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII_OliveGreen_Sand_Stripes_Wrapped.et"
+     m_sMagazinePrefab "{C319540BC96AE9BB}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M61_AP.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F9B4814F}" {
+     m_sPrimaryPrefab "{73C1C37B8A2A1545}Prefabs/Weapons/MachineGuns/M240/MG_M240_base.et"
+     m_sMagazinePrefab "{75632A0CA07D3817}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_AP.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C63378F9ECDD24}" {
+     m_sPrimaryPrefab "{A585AE947C87E6E3}Prefabs/Weapons/Rifles/9A91/Rifle_9A91_base.et"
+     m_sMagazinePrefab "{EA9C13924BE6570E}Prefabs/Weapons/Magazines/9x39_9A91_20rnd/Magazine_9x39_9A91_20rnd_4AP_1Tracer_SP6_SP6T.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F9219899}" {
+     m_sPrimaryPrefab "{76C400582D3C4AF9}Prefabs/Weapons/MachineGuns/PKM/MG_PKM_base.et"
+     m_sMagazinePrefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F97F4A06}" {
+     m_sPrimaryPrefab "{57C8525869D8AA4B}Prefabs/Weapons/Rifles/AK103/Rifle_AK103_MOD3.et"
+     m_sMagazinePrefab "{8DF63267408B9FB4}Prefabs/Weapons/Magazines/762x39_AK103_30rnd/Magazine_762x39_AK103_30rnd_4AP_1Tracer_7N23_57T231P.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F8AA8CE0}" {
+     m_sPrimaryPrefab "{B11BF9B3C49ACDB7}Prefabs/Weapons/Rifles/HoneyBadger/Rifle_HoneyBadger_SBR.et"
+     m_sMagazinePrefab "{F8BB81C6DFDDDE5B}Prefabs/Weapons/Magazines/762x35_PMAG_FDE_30rnd/Magazine_762x35_PMAG_FDE_30rnd_4AP_1Tracer_300BLK_M62.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F8D1C333}" {
+     m_sPrimaryPrefab "{6545DEABED4759E5}Prefabs/Weapons/Rifles/Mosin/BC_Rifle_Mosin_Nagant_9130_PU.et"
+     m_sMagazinePrefab "{08DB30914359361E}Prefabs/Weapons/Magazines/BC_Magazine_762x54_Stripper_5rnd_Mosin_Nagant.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F80FB0C2}" {
+     m_sPrimaryPrefab "{6AA1C567A2F7F8CE}Prefabs/Weapons/Rifles/PPSH41/BC_PPSh41.et"
+     m_sMagazinePrefab "{4198718E0E2A3A83}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_71rd_PPSH41.et"
+    }
+   }
+   m_aMiscEntries {
+    CRF_MiscLootEntry "{69C6115045E3F910}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+    }
+    CRF_MiscLootEntry "{69C61150453FDFD3}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C61150456BC3C7}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C61150449AC23B}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044D424C0}" {
+     m_sPrimaryPrefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044F5A3AA}" {
+     m_sPrimaryPrefab "{79379D4E43B29B88}Prefabs/Items/Medicine/ChestSeal/ACE_Medical_ChestSeal.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044111F0C}" {
+     m_sPrimaryPrefab "{498EBFCE4936F47B}Prefabs/Items/Medicine/KingLT/ACE_Medical_KingLT.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C611504435D342}" {
+     m_sPrimaryPrefab "{8435F7561C0FBB44}Prefabs/Items/Medicine/SalineBag_01/SalineBag_01_base.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C611504448FD9E}" {
+     m_sPrimaryPrefab "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C63378D68B7E9F}" {
+     m_sPrimaryPrefab "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_iTimeLimitMinutes 120
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69BC0B78D416FAE1}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "It has been 100 years since the nuke went off. Individuals have begun returning to Yellowstone to control the sacred site of Old Faithful."\
+   ""\
+   "BLUFOR Composition: Unknown"\
+   "BLUFOR Assets: Unknown"\
+   ""\
+   "OPFOR Composition: Unknown"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "INDFOR Composition: Unknown"\
+   "INDFOR Assets: Unknown"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Rainy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69BC0B78D416FECC}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "As a member of Order your job is to take control of Old Faithful when time runs out. "\
+   ""\
+   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69BC0B78D416FF69}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "As a member of Chaos your job is to take control of Old Faithful when time runs out. "\
+   ""\
+   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69BC0B78D416FFF7}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "As a member of the Survivors  your job is to take control of Old Faithful when time runs out. "\
+   ""\
+   "Their are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69BC0B78D416F06C}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69C63758E160EE57}" {
+   m_sCallsign "Order 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160EF44}" {
+   m_sCallsign "Order 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160EF25}" {
+   m_sCallsign "Order 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160EF84}" {
+   m_sCallsign "Order 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E013}" {
+   m_sCallsign "Order 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E0F7}" {
+   m_sCallsign "Order 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E15C}" {
+   m_sCallsign "Order 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E139}" {
+   m_sCallsign "Order 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E1E5}" {
+   m_sCallsign "Order 9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E244}" {
+   m_sCallsign "Order 10"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E22E}" {
+   m_sCallsign "Order 11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E293}" {
+   m_sCallsign "Order 12"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E363}" {
+   m_sCallsign "Order 13"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E3CA}" {
+   m_sCallsign "Order 14"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E3BD}" {
+   m_sCallsign "Order 15"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69C63758E160E57E}" {
+   m_sCallsign "Chaos 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E525}" {
+   m_sCallsign "Chaos 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E597}" {
+   m_sCallsign "Chaos 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E67D}" {
+   m_sCallsign "Chaos 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E621}" {
+   m_sCallsign "Chaos 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E68A}" {
+   m_sCallsign "Chaos 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160E761}" {
+   m_sCallsign "Chaos 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F918}" {
+   m_sCallsign "Chaos 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F9CF}" {
+   m_sCallsign "Chaos 9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F9A0}" {
+   m_sCallsign "Chaos 10"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FA16}" {
+   m_sCallsign "Chaos 11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FAF8}" {
+   m_sCallsign "Chaos 12"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FAAB}" {
+   m_sCallsign "Chaos 13"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FB1F}" {
+   m_sCallsign "Chaos 14"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FBF6}" {
+   m_sCallsign "Chaos 15"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{69C63758E160FCBB}" {
+   m_sCallsign "Survivors 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FD66}" {
+   m_sCallsign "Survivors 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FDCA}" {
+   m_sCallsign "Survivors 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FDB3}" {
+   m_sCallsign "Survivors 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FE1B}" {
+   m_sCallsign "Survivors 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FEC5}" {
+   m_sCallsign "Survivors 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FEA9}" {
+   m_sCallsign "Survivors 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FF1D}" {
+   m_sCallsign "Survivors 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FFCF}" {
+   m_sCallsign "Survivors 9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160FFA0}" {
+   m_sCallsign "Survivors 10"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F015}" {
+   m_sCallsign "Survivors 11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F0FF}" {
+   m_sCallsign "Survivors 12"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F15F}" {
+   m_sCallsign "Survivors 13"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F105}" {
+   m_sCallsign "Survivors 14"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69C63758E160F1EA}" {
+   m_sCallsign "Survivors 15"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_CivSlots {
+  CRF_SlottingGroup "{69C63758E160F24B}" {
+   m_sCallsign "Zeus"
+   m_FlagType SIGNAL
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
+   }
+  }
+ }
+ m_iBLUFORTickets 50
+ m_iOPFORTickets 50
+ m_iINDFORTickets 50
+ m_iCIVTickets 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{C5635BC3897E59DB}Configs/Gearscripts/Custom/Yoko/CRF_GS_Order.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A1141B933148CEB5}Configs/Gearscripts/Custom/Yoko/CRF_GS_Chaos.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{C6DCD01C9E69213A}Configs/Gearscripts/Custom/Yoko/CRF_GS_Survivors.conf"
+  m_bEnableShareableMarkers 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69BD0299D115DDA1" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+     }
+    }
+   }
+  }
+ }
+}
