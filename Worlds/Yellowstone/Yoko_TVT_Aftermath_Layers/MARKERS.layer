@@ -139,4 +139,32 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_sQuadName "mark-exclamation"
   m_sDescription "Supply"
  }
+ Supply12 {
+  coords 2725.177 56.407 1831.107
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply13 {
+  coords 2455.911 44.498 3510.773
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Supply14 {
+  coords 4957.916 487.128 4927.132
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_sDescription "Supply"
+ }
+ Vehicle10 {
+  coords 2063.868 50.555 2008.448
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Vehicle"
+ }
 }

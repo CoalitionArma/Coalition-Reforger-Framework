@@ -49,4 +49,9 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -82.39 0
   m_rVehicle "{FA4BEE6BC997C57B}Vehicles/BTR40/BTR40WZNParmednew.et"
  }
+ {
+  coords 2061.121 50.563 2001.389
+  angles 0 -175.294 0
+  m_rVehicle "{479AB5B7FA667925}Vehicles/Bus/ZagorusBB.et"
+ }
 }
