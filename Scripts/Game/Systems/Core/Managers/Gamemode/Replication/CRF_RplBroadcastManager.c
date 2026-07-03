@@ -2389,4 +2389,88 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		return m_sInstance;
 	}
+
+
+	// Faction Control state — replicated to clients via BroadcastFactionControlUpdate
+	CRF_EFactionControlState m_eFactionControlState;
+	int m_iFactionControlCountdown;
+	string m_sFactionControlFaction;
+	string m_sFactionControlZoneLabel;
+
+	//------------------------------------------------------------------------------------------------
+	//! Faction Control: push current state to all clients every server tick
+	void BroadcastFactionControlUpdate(CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
+	{
+		int bytes = 8; // state + countdown ints
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastFactionControlUpdate", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastFactionControlUpdate(state, countdown, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastFactionControlUpdate, state, countdown, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Faction Control: notify all clients of a capture/contest/win event
+	void BroadcastFactionControlEvent(CRF_EFactionControlEvent evt, string faction, string zoneLabel)
+	{
+		int bytes = 4;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastFactionControlEvent", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastFactionControlEvent(evt, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastFactionControlEvent, evt, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastFactionControlUpdate(CRF_EFactionControlState state, int countdown, string faction, string zoneLabel)
+	{
+		m_eFactionControlState      = state;
+		m_iFactionControlCountdown  = countdown;
+		m_sFactionControlFaction    = faction;
+		m_sFactionControlZoneLabel  = zoneLabel;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastFactionControlEvent(CRF_EFactionControlEvent evt, string faction, string zoneLabel)
+	{
+		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		string displayName = faction;
+		if (fm)
+		{
+			Faction f = fm.GetFactionByKey(faction);
+			if (f)
+				displayName = f.GetFactionName();
+		}
+
+		string message;
+		switch (evt)
+		{
+			case CRF_EFactionControlEvent.STARTED_CAPTURING:
+				message = displayName + " is capturing " + zoneLabel + "!";
+				break;
+			case CRF_EFactionControlEvent.HALFWAY:
+				message = displayName + " is halfway to capturing " + zoneLabel + "!";
+				break;
+			case CRF_EFactionControlEvent.CONTESTED:
+				message = zoneLabel + " is contested!";
+				break;
+			case CRF_EFactionControlEvent.WON:
+				message = displayName + " has captured " + zoneLabel + "!";
+				break;
+		}
+
+		SCR_PopUpNotification popUp = SCR_PopUpNotification.GetInstance();
+		if (popUp)
+			popUp.PopupMsg(message, 8);
+	}
 };
