@@ -31,6 +31,102 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
+  CRF_LooterGamemodeComponent "{69C61155B900BCCD}" {
+   m_fGlobalSpawnChance 1
+   m_iTotalSpawnPoints 140
+   m_aWeaponEntries {
+    CRF_WeaponLootEntry "{69C61155A9A8423D}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{E57DBDA5C50F07FF}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_carbine_4x20.et"
+     m_sMagazinePrefab "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C6115086CF8BB4}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et"
+     m_sMagazinePrefab "{75632A0CA07D3817}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_AP.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C61150A057F6C3}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{DD17D4BC320A94C8}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII_OliveGreen_Sand_Stripes_Wrapped.et"
+     m_sMagazinePrefab "{C319540BC96AE9BB}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M61_AP.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F9B4814F}" {
+     m_sPrimaryPrefab "{73C1C37B8A2A1545}Prefabs/Weapons/MachineGuns/M240/MG_M240_base.et"
+     m_sMagazinePrefab "{75632A0CA07D3817}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_AP.et"
+     m_iMagazineCount 3
+    }
+    CRF_WeaponLootEntry "{69C63378F9ECDD24}" {
+     m_sPrimaryPrefab "{A585AE947C87E6E3}Prefabs/Weapons/Rifles/9A91/Rifle_9A91_base.et"
+     m_sMagazinePrefab "{EA9C13924BE6570E}Prefabs/Weapons/Magazines/9x39_9A91_20rnd/Magazine_9x39_9A91_20rnd_4AP_1Tracer_SP6_SP6T.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F9219899}" {
+     m_sPrimaryPrefab "{76C400582D3C4AF9}Prefabs/Weapons/MachineGuns/PKM/MG_PKM_base.et"
+     m_sMagazinePrefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F97F4A06}" {
+     m_sPrimaryPrefab "{57C8525869D8AA4B}Prefabs/Weapons/Rifles/AK103/Rifle_AK103_MOD3.et"
+     m_sMagazinePrefab "{8DF63267408B9FB4}Prefabs/Weapons/Magazines/762x39_AK103_30rnd/Magazine_762x39_AK103_30rnd_4AP_1Tracer_7N23_57T231P.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F8AA8CE0}" {
+     m_sPrimaryPrefab "{B11BF9B3C49ACDB7}Prefabs/Weapons/Rifles/HoneyBadger/Rifle_HoneyBadger_SBR.et"
+     m_sMagazinePrefab "{F8BB81C6DFDDDE5B}Prefabs/Weapons/Magazines/762x35_PMAG_FDE_30rnd/Magazine_762x35_PMAG_FDE_30rnd_4AP_1Tracer_300BLK_M62.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F8D1C333}" {
+     m_sPrimaryPrefab "{6545DEABED4759E5}Prefabs/Weapons/Rifles/Mosin/BC_Rifle_Mosin_Nagant_9130_PU.et"
+     m_sMagazinePrefab "{08DB30914359361E}Prefabs/Weapons/Magazines/BC_Magazine_762x54_Stripper_5rnd_Mosin_Nagant.et"
+    }
+    CRF_WeaponLootEntry "{69C63378F80FB0C2}" {
+     m_sPrimaryPrefab "{6AA1C567A2F7F8CE}Prefabs/Weapons/Rifles/PPSH41/BC_PPSh41.et"
+     m_sMagazinePrefab "{4198718E0E2A3A83}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_71rd_PPSH41.et"
+    }
+   }
+   m_aMiscEntries {
+    CRF_MiscLootEntry "{69C6115045E3F910}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+    }
+    CRF_MiscLootEntry "{69C61150453FDFD3}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C61150456BC3C7}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C61150449AC23B}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044D424C0}" {
+     m_sPrimaryPrefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044F5A3AA}" {
+     m_sPrimaryPrefab "{79379D4E43B29B88}Prefabs/Items/Medicine/ChestSeal/ACE_Medical_ChestSeal.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C6115044111F0C}" {
+     m_sPrimaryPrefab "{498EBFCE4936F47B}Prefabs/Items/Medicine/KingLT/ACE_Medical_KingLT.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C611504435D342}" {
+     m_sPrimaryPrefab "{8435F7561C0FBB44}Prefabs/Items/Medicine/SalineBag_01/SalineBag_01_base.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C611504448FD9E}" {
+     m_sPrimaryPrefab "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+     m_iPrimaryCount 2
+    }
+    CRF_MiscLootEntry "{69C63378D68B7E9F}" {
+     m_sPrimaryPrefab "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et"
+    }
+   }
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -44,12 +140,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  coords 0 0 0
- m_bRespawnEnabled 0
- m_bWaveRespawn 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
  m_bRallyPointsEnabled 0
- m_iTimeToRespawn 120
+ m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_iTimeLimitMinutes 45
+ m_iTimeLimitMinutes 120
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
@@ -498,9 +594,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
- m_iBLUFORTickets 0
- m_iOPFORTickets 0
- m_iINDFORTickets 0
+ m_iBLUFORTickets 50
+ m_iOPFORTickets 50
+ m_iINDFORTickets 50
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{C5635BC3897E59DB}Configs/Gearscripts/Custom/Yoko/CRF_GS_Order.conf"
