@@ -1,0 +1,99 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 2675.874 41.417 3607.945
+ Points {
+  ShapePoint "{69C404C25F6FB717}" {
+   Position 522.607 0 -1554.739
+  }
+  ShapePoint "{69C404C2A226DAA6}" {
+   Position 537.971 0 -624.794
+  }
+  ShapePoint "{69C404C2A8F7C124}" {
+   Position 308.353 -0 -49.919
+  }
+  ShapePoint "{69C404C2AF57CAA7}" {
+   Position -76.496 0 209.397
+  }
+  ShapePoint "{69C404C2B13A13AE}" {
+   Position -215.638 0 231.408
+  }
+  ShapePoint "{69C404C2B749A452}" {
+   Position -1099.708 0 817.048
+  }
+  ShapePoint "{69C404C2B6D3AEC3}" {
+   Position -2445.295 0 638.409
+  }
+  ShapePoint "{69C404C2B4626ACE}" {
+   Position -2523.119 -0 1237.613
+  }
+  ShapePoint "{69C404C2BB5F2BB4}" {
+   Position -1681.927 0 1333.135
+  }
+  ShapePoint "{69C404C2B93DAF0D}" {
+   Position -773.966 0 1469.408
+  }
+  ShapePoint "{69C404C2BF0491D8}" {
+   Position -396.142 0 1440.178
+  }
+  ShapePoint "{69C404C2BD7BE551}" {
+   Position 729.759 0 1335.863
+  }
+  ShapePoint "{69C404C2BCB70CD6}" {
+   Position 1710.346 0 1169.98
+  }
+  ShapePoint "{69C404C28199EA2B}" {
+   Position 2068.657 0 402.793
+  }
+  ShapePoint "{69C404C2850322AB}" {
+   Position 1953.755 0 -194.788
+  }
+  ShapePoint "{69C404C284085AF5}" {
+   Position 1899.21 -0 -831.545
+  }
+  ShapePoint "{69C404C28B14792C}" {
+   Position 1647.364 0 -1327.39
+  }
+  ShapePoint "{69C404C28AB04738}" {
+   Position 1064.31 -0 -1866.294
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 1568.59 13.996 4903.323
+ Points {
+  ShapePoint "{69C404C2940CF467}" {
+   Position -223.217 0 67.74
+  }
+  ShapePoint "{69C404C29B266A23}" {
+   Position 92.599 -0 118.181
+  }
+  ShapePoint "{69C404C299DC33B3}" {
+   Position 168.203 -0 -265.376
+  }
+  ShapePoint "{69C404C298B4A79A}" {
+   Position -191.814 -0 -269.246
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 548.113 25.112 4627.715
+ Points {
+  ShapePoint "{69C404C2E8650379}" {
+   Position -41.447 0 -192.071
+  }
+  ShapePoint "{69C404C2EF243B74}" {
+   Position -134.237 0 78.358
+  }
+  ShapePoint "{69C404C2ED79E4E3}" {
+   Position -16.444 0 86.667
+  }
+  ShapePoint "{69C404C2EDE5AEE4}" {
+   Position 51.487 0 22.363
+  }
+  ShapePoint "{69C404C2EC153BE2}" {
+   Position 68.804 0 -11.526
+  }
+  ShapePoint "{69C404C2ECBE7969}" {
+   Position 84.174 0 -128.978
+  }
+ }
+}

@@ -1,0 +1,170 @@
+$grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {
+ barricade1 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 1447.292 8.878 4947.471
+  angles -7.672 -102.135 0.351
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker1\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn2\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+ barricade3 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 2443.139 29.405 4081.25
+  angles -7.672 -7.697 0.351
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker3\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn4\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+ barricade2 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 1845.235 32.638 4562.692
+  angles 2.802 -10.551 0.388
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker2\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn3\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+ barricade4 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 3298.762 221.228 3699.964
+  angles -11.064 -64.238 0.547
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker4\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn5\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+ barricade5 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 4045.014 324.401 3613.157
+  angles -11.064 -64.238 0.547
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker5\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn6\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+ barricade6 {
+  components {
+   FactionAffiliationComponent "{5CC6A59B0EA6726E}" {
+    "faction affiliation" "OPFOR"
+   }
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{66F87AAA0DDFF5C3}" {
+      Duration 45
+     }
+    }
+   }
+  }
+  coords 3874.067 63.307 2597.562
+  angles 1.265 46.767 0.039
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed\", 10);"\
+  "		IEntity marker = GetGame().GetWorld().FindEntityByName(\"marker6\");"\
+  "		delete marker;"\
+  "		IEntity bspawn = GetGame().GetWorld().FindEntityByName(\"bspawn\");"\
+  "		IEntity newspawn = GetGame().GetWorld().FindEntityByName(\"spawn7\");"\
+  "		vector pos = newspawn.GetOrigin();"\
+  "		bspawn.SetOrigin(pos);"\
+  "		bspawn.Update();"\
+  "		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "		respawnManager.RespawnSide(\"BLUFOR\");"\
+  "	"
+ }
+}

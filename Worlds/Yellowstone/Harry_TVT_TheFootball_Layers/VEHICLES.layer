@@ -1,0 +1,85 @@
+BaseGameTriggerEntity HVT {
+ coords 537.055 27.076 4590.004
+}
+$grp CRF_VehicleSpawner {
+ {
+  coords 606.916 26.304 4551.819
+  angles 0 -10.417 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 610.089 26.304 4541.005
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 613.165 26.304 4529.042
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 616.081 26.304 4517.702
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 605.114 25.144 4526.972
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 608.03 24.927 4515.632
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 598.865 26.253 4549.749
+  angles 0 -10.417 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 602.038 25.732 4538.935
+  angles 0 -14.422 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iRespawnTimer 120
+  m_iTicketsPerRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
