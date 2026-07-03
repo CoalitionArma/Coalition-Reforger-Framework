@@ -71,17 +71,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{69C404DC0EC2067A}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "A group of eco terrorists are taking advantage of troubled times, and are trying to drive a truck fitted with a nuke into Old Faithful."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "BLUFOR Assets:"\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: N/A"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "OPFOR Assets:"\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: A Nuke?!"\
    ""\
-   "Time:"\
-   ""\
-   "Weather:"
+   "Time: 2 hrs"\
+   "Weather: Overcast day"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -89,13 +88,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{69C404DC0EC1EC73}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Defend the barricades in order, and stop the attackers from blowing up Old Faithful."\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "The enemy has wave based respawns, and you have 1 life per barricade. Make the most of it. "\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Don't just sit at the barricade sandbags. The trucks can't be destroyed."
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -104,13 +103,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{69C404DC0EC1E31C}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Drive the truck along the route, and into Old Faithful."\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "There will be barricades along the route that you must deconstruct to continue. Scout for, find, and attack these in order. Keep the truck to the road as much as possible."\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "You have wave based respawns, and the enemy has instance based. Tempo will be very important."
    m_aFactionKeys {
     "OPFOR"
    }

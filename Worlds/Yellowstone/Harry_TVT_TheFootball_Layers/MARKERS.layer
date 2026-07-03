@@ -535,4 +535,58 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sQuadName "defend"
   m_sDescription "Barricade"
  }
+ {
+  coords 1204.643 43.149 4436.436
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1195.734 43.149 4522.422
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1190.383 43.149 4574.068
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1184.714 43.149 4628.787
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1179.671 43.149 4677.46
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1174.927 43.149 4723.249
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1168.471 43.149 4785.566
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1162.943 43.149 4838.926
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1157.053 43.149 4895.78
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
 }
