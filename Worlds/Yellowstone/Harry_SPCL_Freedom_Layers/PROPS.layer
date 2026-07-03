@@ -1,0 +1,2911 @@
+$grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 1297.772 -12.157 3594.386
+  angles 0 -124.898 0
+  scale 20
+ }
+ {
+  coords 1584.385 -19.298 3183.502
+  angles 0 -124.898 0
+  scale 20
+ }
+ {
+  coords 1903.704 -19.297 2725.732
+  angles 0 -124.898 0
+  scale 20
+ }
+ {
+  coords 1714.096 -19.297 2692.225
+  angles 0 -29.195 0
+  scale 20
+ }
+ {
+  coords 1325.821 -19.298 2475.268
+  angles 0 -29.195 0
+  scale 20
+ }
+ {
+  coords 892.897 -19.298 3824.737
+  angles 0 163.216 0
+  scale 20
+ }
+ {
+  coords 525.577 -19.297 3713.947
+  angles 0 163.216 0
+  scale 20
+ }
+}
+$grp GenericEntity : "{93F21C548B740DE5}PrefabLibrary/DefaultLibrary/Props/Forest/WoodLog_01_D.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1307.799 14.678 3205.008
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1318.108 16.326 3190.871
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1315.229 16.122 3194.754
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1317.421 16.274 3191.764
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1322.714 16.956 3185.266
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1315.929 16.254 3193.861
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.12 16.139 3193.491
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1322.015 16.91 3186.153
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1309.589 14.94 3202.373
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.198 15.756 3197.429
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1317.91 16.441 3191.235
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.855 15.83 3196.511
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.95 14.85 3203.305
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1322.514 17.071 3185.632
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1314.903 16.023 3195.142
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1321.436 16.878 3186.881
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1318.505 16.435 3190.425
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1320.455 16.57 3187.913
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1320.74 16.837 3187.761
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1309.409 15.039 3202.756
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1321.233 16.997 3187.243
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.863 16.223 3192.507
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.668 15.937 3196.887
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1321.783 16.969 3186.5
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1319.764 16.525 3188.805
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1319.199 16.485 3189.536
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1320.256 16.691 3188.28
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1314.708 16.13 3195.516
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1318.998 16.599 3189.903
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1319.536 16.577 3189.156
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1315.448 16.078 3194.396
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1317.199 16.325 3192.117
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.661 15.69 3198.189
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.67 16.335 3192.878
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1309.958 15.071 3201.908
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.191 16.162 3193.409
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1311.756 15.322 3199.28
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.025 15.599 3199.118
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.483 15.789 3198.569
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.424 14.774 3204.072
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1314.235 15.954 3196.053
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.983 15.801 3197.789
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1311.114 15.238 3200.208
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1310.594 15.163 3200.977
+  angles 32.185 -125.403 -111.514
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1311.579 15.427 3199.659
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1310.415 15.259 3201.359
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1310.908 15.272 3200.579
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.743 14.889 3203.673
+  angles -32.402 55.5 145.177
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.251 14.871 3204.458
+  angles -32.176 55.315 145.275
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.865 11.581 3241.782
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.378 11.709 3224.215
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.472 11.923 3229.048
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.379 11.754 3225.342
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.594 11.712 3216.937
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.48 11.958 3227.906
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.406 11.807 3227.508
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.583 11.764 3218.065
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.67 11.566 3238.592
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.5 11.849 3232.426
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.442 11.86 3224.612
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.461 11.825 3231.295
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.735 11.574 3239.723
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.659 11.862 3217.336
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.452 11.869 3229.561
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.571 11.812 3218.994
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.417 11.766 3223.612
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.426 11.626 3220.432
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.557 11.868 3220.116
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.763 11.701 3238.995
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.629 11.966 3219.392
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.391 11.784 3226.272
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.542 11.969 3231.696
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.61 11.859 3218.476
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.422 11.679 3221.561
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.422 11.719 3222.484
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.492 11.783 3220.833
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.526 12.012 3229.965
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.488 11.869 3222.886
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.457 11.767 3221.972
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.427 11.843 3228.635
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.417 11.841 3225.751
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.541 11.864 3233.357
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.464 11.932 3226.673
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.677 11.645 3237.989
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.411 11.82 3227.398
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.493 11.62 3234.801
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.604 11.871 3234.484
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.631 11.998 3233.757
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.789 11.579 3240.654
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.48 11.897 3230.691
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.552 11.93 3232.836
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.553 11.633 3235.93
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.613 11.639 3236.86
+  angles 31.884 -90.826 -117.363
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.586 11.76 3235.198
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.703 11.771 3237.261
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.615 11.704 3236.345
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.797 11.649 3240.136
+  angles -32.177 90.044 151.048
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1299.885 11.711 3241.057
+  angles -31.937 89.888 151.13
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1321.086 13.626 3253.363
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1306.205 12.263 3244.115
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1310.259 12.887 3246.679
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1307.14 12.404 3244.732
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1300.273 11.645 3239.938
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1309.313 12.824 3246.044
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.95 12.641 3245.896
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1301.201 11.792 3240.565
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1318.328 13.341 3251.775
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.089 13.101 3248.515
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1306.56 12.446 3244.272
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.128 12.981 3247.928
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1319.304 13.445 3252.341
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1300.632 11.828 3240.095
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1310.68 12.877 3246.981
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1301.964 11.919 3241.082
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1305.722 12.269 3243.748
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1303.092 11.858 3242.002
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1302.886 12.071 3241.707
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1318.704 13.509 3251.913
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1302.319 12.107 3241.243
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1307.918 12.513 3245.229
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1312.497 13.156 3248.075
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1301.553 11.921 3240.76
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1304.025 12.007 3242.62
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1304.791 12.125 3243.127
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1303.452 12.048 3242.158
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1311.046 13.053 3247.133
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1305.15 12.308 3243.285
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1304.38 12.129 3242.814
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1309.897 12.773 3246.495
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1307.495 12.525 3244.917
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.884 13.194 3248.992
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.28 12.693 3245.38
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1317.825 13.369 3251.434
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1308.862 12.645 3245.829
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1315.074 13.074 3249.836
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1314.857 13.296 3249.557
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1314.257 13.361 3249.129
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1320.106 13.529 3252.81
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1311.632 13.001 3247.578
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1313.453 13.216 3248.694
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.045 13.183 3250.408
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.85 13.268 3250.869
+  angles 32.185 -37.365 -123.143
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1315.444 13.247 3249.972
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1317.226 13.432 3251.006
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1316.422 13.288 3250.579
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1319.676 13.555 3252.514
+  angles -32.551 143.468 156.843
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1320.484 13.694 3252.941
+  angles -32.299 143.341 156.91
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1323.276 16.605 3183.959
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1339.988 17.445 3178.591
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1335.371 17.464 3180.036
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1338.907 17.445 3178.908
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.032 17.736 3176.766
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1336.469 17.544 3179.726
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1336.834 17.41 3179.539
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.945 17.743 3177.072
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1326.283 16.721 3182.881
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1332.141 17.254 3181.005
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1339.62 17.578 3178.767
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1333.216 17.276 3180.649
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1325.215 16.683 3183.259
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1346.661 17.869 3176.943
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1334.875 17.389 3180.158
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.047 17.754 3177.32
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1340.576 17.526 3178.463
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1343.635 17.513 3177.579
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1343.967 17.765 3177.622
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1325.917 16.838 3183.085
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1344.677 17.891 3177.493
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1338.016 17.437 3179.18
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1332.849 17.402 3180.842
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.556 17.82 3177.216
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1342.55 17.521 3177.893
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1341.662 17.524 3178.151
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1343.263 17.653 3177.758
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1334.504 17.515 3180.346
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1341.29 17.656 3178.33
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1342.161 17.592 3178.043
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1335.756 17.402 3179.875
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1338.522 17.515 3179.063
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1331.259 17.231 3181.303
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1337.649 17.568 3179.366
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1326.86 16.824 3182.722
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1336.94 17.428 3179.515
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1329.869 16.93 3181.655
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1330.195 17.192 3181.681
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1330.896 17.348 3181.505
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1324.336 16.65 3183.57
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1333.797 17.372 3180.502
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1331.759 17.318 3181.17
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1328.801 16.897 3182.027
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1327.926 16.865 3182.343
+  angles 32.814 -163.129 -114.647
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1329.508 17.053 3181.856
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1327.561 16.979 3182.547
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1328.419 16.95 3182.206
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1324.833 16.741 3183.436
+  angles -33.072 17.765 148.307
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1323.974 16.765 3183.781
+  angles -32.838 17.594 148.399
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.175 9.169 3217.559
+  angles -88.744 -178.632 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.883 9.225 3210.911
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.749 9.211 3211.495
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.671 9.204 3212.618
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.555 9.189 3212.214
+  angles -88.744 -178.632 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.561 9.192 3213.131
+  angles -88.883 169.935 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.609 9.198 3213.537
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.412 9.177 3214.258
+  angles -88.744 -178.632 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.534 9.191 3214.659
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.315 9.168 3215.512
+  angles -88.744 -178.632 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.435 9.183 3215.915
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.321 9.175 3216.433
+  angles -88.883 169.935 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.371 9.186 3216.837
+  angles 88.136 0.534 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1346.44 9.532 3210.561
+  angles -88.744 137.543 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1351.554 9.588 3206.255
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1351.053 9.574 3206.584
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1350.219 9.567 3207.34
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1350.415 9.552 3206.968
+  angles -88.745 137.543 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1349.784 9.555 3207.634
+  angles -88.884 126.11 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1349.538 9.561 3207.96
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1348.897 9.54 3208.344
+  angles -88.745 137.543 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1348.707 9.554 3208.718
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.958 9.531 3209.181
+  angles -88.745 137.543 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.766 9.546 3209.555
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.325 9.538 3209.85
+  angles -88.884 126.11 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.081 9.549 3210.176
+  angles 88.136 -43.291 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1349.88 9.224 3222.93
+  angles -88.745 -130.23 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.379 9.28 3217.987
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1345.726 9.266 3218.475
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1346.515 9.259 3219.278
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1346.135 9.244 3219.097
+  angles -88.745 -130.23 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1346.825 9.247 3219.701
+  angles -88.884 -141.663 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.161 9.253 3219.936
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.568 9.232 3220.561
+  angles -88.745 -130.23 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1347.949 9.246 3220.736
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1348.442 9.223 3221.466
+  angles -88.745 -130.23 -126.213
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1348.823 9.238 3221.644
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1349.135 9.23 3222.073
+  angles -88.884 -141.663 -114.781
+  scale 2
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 0
+    EnableDamage 0
+    m_bDeleteAfterFinalPhase 0
+   }
+  }
+  coords 1349.47 9.241 3222.304
+  angles 88.137 48.936 159.523
+  scale 2
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{C2D897A275076309}PrefabLibrary/DefaultLibrary/Rocks/Granite/GraniteCliff_02/GraniteCliff_02.et" {
+ {
+  components {
+   MeshObject "{5512A6BD2C7B4349}" {
+    CastFarShadow 0
+   }
+  }
+  coords 955.402 95.203 2770.167
+  angles 10.809 48.672 -2.794
+  scale 2.7
+ }
+ {
+  components {
+   MeshObject "{5512A6BD2C7B4349}" {
+    CastFarShadow 0
+   }
+  }
+  coords 1046.484 121.194 2598.959
+  angles 13.615 29.231 -4.928
+  scale 2.7
+ }
+ {
+  components {
+   MeshObject "{5512A6BD2C7B4349}" {
+    CastFarShadow 0
+   }
+  }
+  coords 923.71 88.857 2794.874
+  angles 9.95 36.043 -5.078
+  scale 2.7
+ }
+ {
+  components {
+   MeshObject "{5512A6BD2C7B4349}" {
+    CastFarShadow 0
+   }
+  }
+  coords 899.649 87.051 2808.336
+  angles 9.95 36.043 -5.078
+  scale 2.7
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{F67E58A0D83A81BF}PrefabLibrary/DefaultLibrary/Structures/Forest/DeerStand_01.et" {
+ {
+  coords 1336.349 0 3230.807
+  angles 3.618 124.902 -1.282
+ }
+ {
+  coords 1333.853 -0.001 3197.356
+  angles 3.618 23.764 -1.282
+ }
+}

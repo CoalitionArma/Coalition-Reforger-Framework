@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{DAB3D98FEE28C7BD}Assets/Characters/Jackets/2ndNassau_Jacket/Data/British_Jacket.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

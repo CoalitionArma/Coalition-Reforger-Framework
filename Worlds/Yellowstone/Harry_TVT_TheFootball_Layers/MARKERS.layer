@@ -1,0 +1,592 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 1055.706 30.352 4748.869
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1132.467 12.706 4744.294
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1189.542 9.694 4787.26
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1281.399 3.032 4848.794
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1352.312 7.682 4903.856
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1455.509 9.564 4950.225
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1535.63 15.916 4911.387
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1565.927 14.133 4956.56
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1667.626 18.67 4862.9
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1753.472 27.311 4771.557
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1819.553 38.402 4684.918
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1851.024 31.567 4542.428
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1886.163 27.528 4445.138
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 1969.592 30.528 4391.055
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2064.983 34.281 4365.592
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2165.076 30.668 4365.934
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2254.261 26.305 4370.998
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2300.133 27.152 4315.208
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2362.06 32.19 4210.624
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2399.208 34.987 4148.216
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2448.142 29.905 4067.427
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2460.625 37.801 3966.681
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2466.731 43.463 3902.886
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2584.989 40.755 3973.343
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2704.137 60.788 3990.92
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2801.399 67.848 4018.387
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2859.346 72.174 4049.569
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2904.057 75.275 4095.121
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2932.309 76.022 4114.37
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 2960.029 81.956 4123.74
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3000.149 92.373 4114.597
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3019.549 98.827 4107.523
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3036.102 108.309 4061.914
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3062.738 119.008 4024.031
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3132.325 138.561 3987.532
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3199.467 155.95 3972.561
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3230.145 173.315 3901.258
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3220.817 198.994 3832.675
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3235.571 213.004 3771.809
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3284.109 217.972 3710.78
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3343.755 229.847 3675.01
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3401.313 239.044 3665.293
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3378.494 245.104 3717.592
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3349.822 249.335 3756.526
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3389.707 256.093 3732.295
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3473.094 268.864 3731.303
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3556.965 282.998 3785.28
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3631.819 291.21 3811.065
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3714.27 291.384 3795.676
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3818.752 305.239 3786.45
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3909.049 320.457 3763.643
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3961.301 320.128 3700.503
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3983.242 312.623 3640.254
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4127.224 329.858 3586.568
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4224.399 333.544 3557.156
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4289.464 325.785 3504.498
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4281.179 315.031 3429.061
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4267.982 309.589 3365.364
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4260.705 304.746 3303.016
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4249.749 296.59 3244.966
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4250.973 284.218 3185.276
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4290.903 277.118 3158.797
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4252.181 268.87 3149.507
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4230.542 258.563 3122.837
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4196.869 244.27 3070.901
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4237.025 226.814 3021.322
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4304.177 215.396 2999.231
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4356.151 205.708 2963.268
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4296.342 195.045 2943.719
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4237.071 191.86 2949.014
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4292.375 170.355 2844.301
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4226.192 166.067 2869.141
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4174.6 162.238 2888.716
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4214.408 155.589 2821.132
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4158.611 139.43 2827.226
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4103.648 126.367 2819.046
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4041.068 111.853 2796.635
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 4004.442 99.605 2764.736
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3976.305 74.045 2703.419
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3922.94 63.873 2657.46
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3885.771 63.559 2610.017
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3816.472 63.122 2504.219
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3755.059 66.66 2409.343
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+ {
+  coords 3698.319 65.031 2469.17
+  m_sQuadName "dot"
+  m_fWorldSize 90
+  m_sDescription "Truck Route"
+ }
+}
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ marker1 {
+  coords 1451.851 9.312 4947.342
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ marker3 {
+  coords 2442.851 29.401 4083.5
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ marker2 {
+  coords 1844.905 32.606 4561.911
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ marker4 {
+  coords 3302.059 221.755 3700.384
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ marker5 {
+  coords 4048.767 324.832 3614.03
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ marker6 {
+  coords 3872.73 63.266 2595.016
+  m_sQuadName "defend"
+  m_sDescription "Barricade"
+ }
+ {
+  coords 1204.643 43.149 4436.436
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1195.734 43.149 4522.422
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1190.383 43.149 4574.068
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1184.714 43.149 4628.787
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1179.671 43.149 4677.46
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1174.927 43.149 4723.249
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1168.471 43.149 4785.566
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1162.943 43.149 4838.926
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+ {
+  coords 1157.053 43.149 4895.78
+  angles 0 -5.915 0
+  m_sQuadName "dot"
+  m_sDescription "BLUFOR LOA"
+ }
+}
