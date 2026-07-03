@@ -175,7 +175,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "BLUFOR Briefing"
    m_sTextData "As a member of Order your job is to take control of Old Faithful when time runs out. "\
    ""\
-   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."
+   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -185,7 +187,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "OPFOR Briefing"
    m_sTextData "As a member of Chaos your job is to take control of Old Faithful when time runs out. "\
    ""\
-   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."
+   "There are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
    m_aFactionKeys {
     "OPFOR"
    }
@@ -195,7 +199,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "INDFOR Briefing"
    m_sTextData "As a member of the Survivors  your job is to take control of Old Faithful when time runs out. "\
    ""\
-   "Their are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."
+   "Their are side capture zone marked on the map, capturing these points grants your faction more respawn tickets."\
+   ""\
+   "Make temporary alliances with the other factions to bolster your numbers."
    m_aFactionKeys {
     "INDFOR"
    }
