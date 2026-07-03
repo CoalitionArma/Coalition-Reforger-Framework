@@ -7,6 +7,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_iNumberOfZones 2
    m_iMCOMsPerZone 1
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Dry Thunder (Damp Fog)"
+   m_iSetWeatherConstant 1
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {

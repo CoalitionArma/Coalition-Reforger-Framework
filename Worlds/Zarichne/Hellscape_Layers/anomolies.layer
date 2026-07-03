@@ -1,0 +1,94 @@
+$grp ParticleEffectEntity : "{0A668C0311102F81}Prefabs/Anomalies/Anomaly_LightningBall.et" {
+ {
+  coords 2166.081 8.432 1229.64
+ }
+ {
+  coords 2263.167 6.857 1222.751
+ }
+ {
+  coords 2019.977 16.387 1261.211
+ }
+ {
+  coords 2349.833 6.402 1425.418
+ }
+}
+ParticleEffectEntity : "{1A37CB59B67DF684}Prefabs/Anomalies/Anomaly_FruitPunch.et" {
+ coords 2033.962 21.877 1015.595
+}
+$grp ParticleEffectEntity : "{1F29BB12088C4E68}Prefabs/Anomalies/Anomaly_Electro.et" {
+ {
+  coords 2090.746 17.669 1051.286
+ }
+ {
+  coords 2033.187 25.596 801.365
+ }
+}
+$grp ParticleEffectEntity : "{3C327122E716AF77}Prefabs/Anomalies/Anomaly_Vortex.et" {
+ {
+  coords 2075.611 13.324 1362.643
+ }
+ {
+  coords 2237.487 6.889 1483.869
+ }
+}
+$grp ParticleEffectEntity : "{5946A17AE8FC76B8}Prefabs/Anomalies/Anomaly_Gas.et" {
+ {
+  coords 1985.446 14.713 1326.351
+ }
+ {
+  coords 2062.072 14.641 1295.745
+ }
+ {
+  coords 2112.605 11.532 1231.852
+ }
+ {
+  coords 2018.727 10.973 1488.457
+ }
+}
+$grp ParticleEffectEntity : "{702B034C024AEE0E}Prefabs/Anomalies/Anomaly_Whirligig.et" {
+ {
+  coords 2308.788 6.204 1482.002
+ }
+ {
+  coords 2105.858 10.877 1464.761
+ }
+}
+ParticleEffectEntity : "{92F9435EBB477A12}Prefabs/Anomalies/Anomaly_WanderingLights.et" {
+ coords 1954.879 32.694 781.208
+}
+$grp ParticleEffectEntity : "{9A4A45681C4A6F1D}Prefabs/Anomalies/Anomaly_Space.et" {
+ {
+  coords 2142.497 19.668 1002.696
+ }
+ {
+  coords 2077.017 23.264 984.01
+ }
+}
+ParticleEffectEntity : "{A403A9A3FC556F87}Prefabs/Anomalies/Anomaly_Shards.et" {
+ coords 1908.201 27.345 916.385
+}
+ParticleEffectEntity : "{B4EF5E90D56F521E}Prefabs/Anomalies/Anomaly_Tesla.et" {
+ coords 2188.816 7.159 1499.842
+}
+$grp ParticleEffectEntity : "{C61212BCF1919A01}Prefabs/Anomalies/Anomaly_Burner.et" {
+ {
+  coords 1999.173 25.734 969.976
+ }
+ {
+  coords 1934.604 17.75 1129.809
+ }
+ {
+  coords 2138.133 10.533 1276.008
+ }
+}
+$grp ParticleEffectEntity : "{E4671FD00BAD16BB}Prefabs/Anomalies/Anomaly_SoapBubble.et" {
+ {
+  coords 2038.196 13.65 1393.549
+ }
+ {
+  coords 2105.636 13.088 1102.776
+ }
+}
+ParticleEffectEntity : "{ED659E3D8B63F9CB}Prefabs/Anomalies/Anomaly_SpringBoard.et" {
+ coords 2194.176 5.951 1491.999
+}
