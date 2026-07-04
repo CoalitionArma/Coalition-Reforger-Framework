@@ -1,11 +1,11 @@
 MetaFileClass {
- Name "{A3BA0FA104F44C93}Assets/Structures/Indicators/Indicator_Arrowv2.xob"
+ Name "{A3BA0FA104F44C93}Assets/Structures/Indicators/Indicator_ArrowV2.xob"
  Configurations {
   FBXResourceClass PC {
    MaterialAssigns {
     MaterialAssignClass "{68F6582A6E37D34A}" {
      SourceMaterial "Material"
-     AssignedMaterial "{E38093A247AEE34F}Assets/Structures/Indicators/Data/Material.emat"
+     AssignedMaterial "{E38093A247AEE34F}Assets/Structures/Indicators/Data/Indicator_Pink.emat"
     }
    }
    MeshParams {

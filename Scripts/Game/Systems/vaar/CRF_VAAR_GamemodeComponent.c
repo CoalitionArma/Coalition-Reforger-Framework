@@ -16,7 +16,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected int m_iCurrentFrame = 0;
 	
 	[Attribute("0.5", "auto", "Recording intervals in milliseconds", category: "CRF Virtual AAR System")]
-    protected const float m_iRecordIntervals = 0.5;
+    protected float m_iRecordIntervals = 0.5;
 	
 	protected ref array<ref CRF_VAAR_ShotEvent> m_aShotsBuffer = {};
 	protected ref array<ref CRF_VAAR_KillEvent> m_aKillsBuffer = {};
@@ -31,7 +31,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, true); // Allows safe start to kickin before checking... Why ;(
+		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 	}
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -48,7 +48,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
         }
 	}
 	
-	// Does this work??
+	// Handle closing out the AAR at game end
+	//------------------------------------------------------------------------------------
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
@@ -75,20 +76,37 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
     {
         m_sInstance = this;
     }
-	
+
+	void ~CRF_VAAR_GamemodeComponent()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	static CRF_VAAR_GamemodeComponent GetInstance()
     {
         return m_sInstance;
     }
 	
+	string GetLogFilePath()
+	{
+		return m_sFilePath;
+	}
+	
+	protected static const int MAX_AAR_INIT_RETRIES = 450; // 450 * 8s = 1 hour max
+	protected int m_iAARInitAttempts = 0;
+
 	// Setup frame json file for recording
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()
 	{
 		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		{
+			m_iAARInitAttempts++;
+			if (m_iAARInitAttempts < MAX_AAR_INIT_RETRIES)
+				GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 			return;
-		
-		GetGame().GetCallqueue().Remove(InitilizeAAR);
+		}
 		
 		Print("[CRF_VAAR] Initilizing AAR System");
 		
@@ -96,7 +114,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_sMissionName = string.Format("%1_%2", GetGame().GetMissionName(), System.GetUnixTime());
 		
 		// Create AAR File
-		m_sFilePath = string.Format("$profile:AAR_Log_%1.json", m_sMissionName);
+		m_sFilePath = string.Format("$profile:vaar/AAR_Log_%1.json", m_sMissionName);
 		
 		// Write Mission Details to file
 		m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
@@ -180,11 +198,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		foreach(IEntity vehicle : m_aTrackedVehicle)
 		{
+			if (!vehicle)
+				continue;
+
 			// Collect info
 			string vehicleName = GetFriendlyName(vehicle);
-			RplId vehicleID = Replication.FindId(vehicle);
+			RplId vehicleID = Replication.FindItemId(vehicle);
 			vector vehiclePos = vehicle.GetOrigin();
-			vector vehicleYaw = vehicle.GetAngles();
+			vector vehicleYaw = vehicle.GetYawPitchRoll();
 			int vehicleType = GetVehicleType(vehicle);
 			int vehicleFaction = GetFaction(vehicle);
 			
@@ -197,15 +218,18 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		// Convert the frame to json format
-		SCR_JsonSaveContext jsonHelper = new SCR_JsonSaveContext();
+		JsonSaveContext jsonHelper = new JsonSaveContext();
 		if (!jsonHelper)
 			return;
 		
 		// Convert the frame to json
 		jsonHelper.WriteValue("frame", frame);
 		
-		// Write the frame to the aar file
-		m_AARFile.WriteLine(jsonHelper.ExportToString() + ",");
+		// Write the frame to the aar file — comma before each frame after the first
+		if (m_iCurrentFrame > 0)
+			m_AARFile.WriteLine("," + jsonHelper.SaveToString());
+		else
+			m_AARFile.WriteLine(jsonHelper.SaveToString());
 	}
 	
 	// Handle closing out the AAR at game end
@@ -216,11 +240,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_bRecording = false;
 		Replication.BumpMe();
 		
-		// Add a blank frame and close out the json file so it valid
+		// Close out the json file
 		if (!m_AARFile)
 			m_AARFile = FileIO.OpenFile(m_sFilePath, FileMode.APPEND);
 		
-		m_AARFile.WriteLine(string.Format("{{\"frame\": {{\"ts\": 0, \"c\": [], \"v\": [], \"s\": [], \"k\": []}}}}"));
+		if (!m_AARFile)
+		{
+			Print("[CRF_VAAR] ERROR: Could not open AAR file to close recording: " + m_sFilePath, LogLevel.ERROR);
+			return;
+		}
+		
 		m_AARFile.WriteLine("] }");
 		m_AARFile.Close();
 		m_AARFile = null;
@@ -251,9 +280,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected string GetCharacterName(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return "Unknown";
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+			return "AI";
+
+		int playerID = playerManager.GetPlayerIdFromControlledEntity(character);
 		if (playerID != 0)
-			return GetGame().GetPlayerManager().GetPlayerName(playerID);
+			return playerManager.GetPlayerName(playerID);
 			
 		return "AI";
 	}
@@ -261,24 +297,35 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected int GetID(IEntity character)
 	{
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character);
+		if (!character)
+			return 0;
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		int playerID = 0;
+		if (playerManager)
+			playerID = playerManager.GetPlayerIdFromControlledEntity(character);
+
 		if (playerID != 0)
 			return playerID;
 			
-		return Replication.FindId(character);
+		return Replication.FindItemId(character);
 	}
 	
 	//------------------------------------------------------------------------------------
 	protected int GetVehicleType(IEntity vehicle)
-	{	
-		int type = Vehicle.Cast(vehicle).m_eVehicleType; // Refactor is planned by devs for this
+	{
+		Vehicle vehicleEntity = Vehicle.Cast(vehicle);
+		if (!vehicleEntity)
+			return 0;
+
+		int type = vehicleEntity.m_eVehicleType; // Refactor is planned by devs for this
 		
 		switch(type)
 		{
 			case EVehicleType.APC : {return 1;}
 			case EVehicleType.CAR : {return 2;}
 			case EVehicleType.TRUCK : {return 3;}
-			case EVehicleType.TANK : {return 4;}
+			//case EVehicleType.TANK : {return 4;}
 			case EVehicleType.MORTAR : {return 5;}
 			default : {return 6;} // WHY NO SPECIFIC TYPE FOR HELICOPTERS!?
 		}
@@ -288,7 +335,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------
 	protected int GetFaction(IEntity entity)
-	{	
+	{
+		if (!entity)
+			return 0;
+
 		FactionAffiliationComponent factionComponent = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		if (!factionComponent)
 			return 0;
@@ -356,7 +406,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	void RegisterVehicle(IEntity vehicle)
 	{
-		m_aTrackedVehicle.Insert(vehicle);
+		if (vehicle && !m_aTrackedVehicle.Contains(vehicle))
+			m_aTrackedVehicle.Insert(vehicle);
 	}
 	//------------------------------------------------------------------------------------
 	void UnregisterVehicle(IEntity vehicle)
@@ -368,7 +419,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 		// Collect info on the projectile
 		vector start = shooter.GetOrigin();
-		RplId shooterID = Replication.FindId(shooter);
+		RplId shooterID = Replication.FindItemId(shooter);
 		
 		// Deduplicate: OnEffect can fire twice per bullet (e.g. two effects on weapon).
 		// Skip if the last buffered shot has identical scaled integer coordinates.
@@ -393,6 +444,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		// Collect some info
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		IEntity targetEntity = instigatorContextData.GetVictimEntity();
+		
+		// Skip self-kills
+		if (killerEntity && targetEntity && killerEntity == targetEntity)
+			return;
 		
 		string killerName = GetCharacterName(killerEntity);
 		string targetName = GetCharacterName(targetEntity);

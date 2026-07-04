@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D119AD05F564234A}Prefabs/Vehicles/MSPs/INDFOR_MSP.et"
+ Name "{D119AD05F564234A}PrefabsMissionMaking/Systems/SpawnPoints/Vehicles/INDFOR_MSP.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

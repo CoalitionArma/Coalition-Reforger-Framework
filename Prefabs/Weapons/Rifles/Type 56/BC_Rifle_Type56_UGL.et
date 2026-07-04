@@ -80,34 +80,6 @@ GenericEntity : "{911D6C8DC7BA2D63}Prefabs/Weapons/Core/Rifle_Base.et" {
       Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
      }
     }
-    BC_BayonetAttachmentSlotComponent "{66363B53EEA25876}" {
-     Enabled 0
-     AttachmentSlot InventoryStorageSlot BayonetSlot {
-      PivotID "w_bayonet"
-      Offset 0 0 0
-      Angles 180 0 0
-      AutoTransform 1
-      ChildPivotID "snap_weapon"
-      Enabled 1
-      Prefab "{54B13107B2342E9E}Prefabs/Weapons/Attachments/Bayonets/Type 56 Internal Bayonet/(Do not use)BC_Bayonet_Type56.et"
-      InspectionWidgetOffset 0 0.035 0.55
-     }
-     AttachmentType AttachmentBayonet6Kh4 "{66363B53EEA2586C}" {
-     }
-     ShowInInspection 1
-    }
-    BC_BayonetHelperAttachmentSlotComponent "{66363B53EEA2586A}" {
-     Enabled 0
-     AttachmentSlot InventoryStorageSlot underbarrel {
-      PivotID "w_bayonet"
-      ChildPivotID "snap_weapon"
-      Prefab "{F7F5F1DCF85DD239}Prefabs/Weapons/Attachments/Bayonets/Type 56 Internal Bayonet/(Do not use)BC_Bayonet_Type56_Helper.et"
-      InspectionWidgetOffset 0 0 0.247
-     }
-     AttachmentType AttachmentUnderBarrelGP25 "{66363B53EEA25863}" {
-     }
-     ShowInInspection 0
-    }
     SightsComponent "{BB23A637957CFFF8}" {
      SightsPosition PointInfo "{BB23A63796688E69}" {
       Offset 0 0 0
@@ -228,8 +200,6 @@ GenericEntity : "{911D6C8DC7BA2D63}Prefabs/Weapons/Core/Rifle_Base.et" {
       BaseFireMode "{619AB45C30091E43}" : "{D5D52E848DBCAA53}Prefabs/Weapons/Core/Configs/FireModes/FireMode_Single.conf" {
        RoundsPerMinute 650
       }
-     }
-     MagazineWell MagazineWellBC_AK762 "{66363B53EEA259C6}" {
      }
      BulletInitSpeedCoef 1
      DispersionDiameter 0.4

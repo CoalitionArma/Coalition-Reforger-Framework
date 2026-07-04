@@ -1,15 +1,15 @@
-Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
+Tank {
  ID "62A96969CEBF1CD4"
  components {
   SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
    CompartmentSlots {
-    CargoCompartmentSlot Passenger_L01 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_L01 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
-      ParentContextList +{
+      ParentContextList {
       }
      }
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
-      ParentContextList +{
+      ParentContextList {
       }
      }
      AdditionalActions {
@@ -23,7 +23,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_L01"
      }
     }
-    CargoCompartmentSlot Passenger_L02 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_L02 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_L02"
@@ -45,7 +45,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_L02"
      }
     }
-    CargoCompartmentSlot Passenger_L03 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_L03 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_L03"
@@ -67,7 +67,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_L03"
      }
     }
-    CargoCompartmentSlot Passenger_L04 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_L04 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_L04"
@@ -89,7 +89,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_L04"
      }
     }
-    CargoCompartmentSlot Passenger_R01 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_R01 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_R01"
@@ -111,7 +111,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_R01"
      }
     }
-    CargoCompartmentSlot Passenger_R02 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_R02 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_R02"
@@ -133,7 +133,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_R02"
      }
     }
-    CargoCompartmentSlot Passenger_R03 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_R03 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_R03"
@@ -155,7 +155,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_R03"
      }
     }
-    CargoCompartmentSlot Passenger_R04 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Passenger_R04 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "passenger_R04"
@@ -177,7 +177,7 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
       PivotID "passenger_R04"
      }
     }
-    CargoCompartmentSlot Commander_01 : "{54180ECE629BA584}Prefabs/Vehicles/Tracked/M113/Configs/M113CargoCompartment.conf" {
+    CargoCompartmentSlot Commander_01 {
      CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
       ParentContextList {
        "commander_idle"
@@ -206,9 +206,9 @@ Tank : "{F43F9F04A97FC994}Prefabs/Vehicles/Tracked/M113/M113_base.et" {
     Name "#M113-EditableEntity_M113_APC_Name"
     Icon "{95F49CBE9FF7A0CB}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Apc.edds"
     m_Image "UI/Textures/EditorPreviews/Vehicles/Tracked/M113/M113_APC.edds"
-    m_aAuthoredLabels +{
+    m_aAuthoredLabels {
     }
-    m_aAutoLabels +{
+    m_aAutoLabels {
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {

@@ -99,7 +99,14 @@ class CRF_PlayerKeybindManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerKeybindManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerKeybindManager GetInstance()
 	{

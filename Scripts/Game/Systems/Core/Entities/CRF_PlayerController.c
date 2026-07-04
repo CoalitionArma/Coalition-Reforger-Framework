@@ -38,11 +38,15 @@ class CRF_PlayerController : SCR_PlayerController
 		if (from)
 		{
 			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
-			if (charController.IsDead())
+			if (charController && charController.IsDead())
 			{
-				vector mat[4];
-				from.GetTransform(mat);
-				CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath = mat;
+				CRF_PlayerControllerManager manager = CRF_PlayerControllerManager.GetInstance();
+				if (manager)
+				{
+					vector mat[4];
+					from.GetTransform(mat);
+					manager.m_vPlayersLastDeath = mat;
+				}
 			};
 		}
 		
@@ -123,6 +127,8 @@ class CRF_PlayerController : SCR_PlayerController
 	override void UpdateSettings()
 	{
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
 		if (CRF_EntityHelper.IsSpectator(GetControlledEntity()))
 			return;
 		
@@ -148,9 +154,16 @@ class CRF_PlayerController : SCR_PlayerController
 			if (!radio)
 				continue;
 			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
-			
-			if (radioComp.m_sFactionKey != "" && radioComp.m_sFactionKey != factionMan.GetPlayerFaction(GetPlayerId()).GetFactionKey())
-				return;
+			if (!radioComp)
+				continue;
+
+			if (radioComp.m_sFactionKey != "")
+			{
+				Faction playerFaction = factionMan.GetPlayerFaction(GetPlayerId());
+				if (!playerFaction || radioComp.m_sFactionKey != playerFaction.GetFactionKey())
+					return;
+			}
+
 			ref CVON_RadioSettingObject setting = new CVON_RadioSettingObject();
 			setting.m_sFreq = radioComp.m_sFrequency;
 			setting.m_Stereo = radioComp.m_eStereo;

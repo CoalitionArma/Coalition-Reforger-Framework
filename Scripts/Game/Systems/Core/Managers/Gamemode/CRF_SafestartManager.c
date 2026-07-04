@@ -779,7 +779,7 @@ class CRF_SafestartManager : ScriptComponent
 			CRF_PolyZoneEffectHandler polyZoneEffectHandler = CRF_PolyZoneEffectHandler.Cast(controlledEntity.FindComponent(CRF_PolyZoneEffectHandler));
 			polyZoneEffectHandler.ClearAllEffects();
 
-			m_mEntitiesWithEHsMap.Set(controlledEntity, false);
+			m_mEntitiesWithEHsMap.Remove(controlledEntity);
 		}
 	};
 
@@ -829,6 +829,13 @@ class CRF_SafestartManager : ScriptComponent
 	void CRF_SafestartManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_SafestartManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
 	}
 
 	//------------------------------------------------------------------------------------------------

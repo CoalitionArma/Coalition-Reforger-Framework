@@ -39,6 +39,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected ref array<ref CRF_SlotUpdateBatch> m_aPendingSlotUpdates = new array<ref CRF_SlotUpdateBatch>();
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
+
+	// Client-side audio handles for Rush MCOM sounds, keyed by sound event name
+	protected ref map<string, AudioHandle> m_mRushSoundHandles = new map<string, AudioHandle>();
+
+	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
+	string m_sOutroWinningFaction = "";
+
+	// Area Timer state — replicated to clients via BroadcastAreaTimerUpdate
+	CRF_EAreaTimerState m_eAreaTimerState;
+	int m_iAreaTimerCountdown;
+	string m_sAreaTimerFaction;
+	string m_sAreaTimerZoneLabel;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
@@ -632,17 +644,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void PlayRushMCOMSound(string soundEvent, vector position)
+	void PlayRushMCOMSound(string resource, string soundEvent, vector position)
 	{
-		// Telemetry: string + vector
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
+		// Telemetry: resource string + event string + vector
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(resource);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
 		LogTelemetry("PlayRushMCOMSound", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_PlayRushMCOMSound(soundEvent, position);
+		RpcDo_PlayRushMCOMSound(resource, soundEvent, position);
 		#else
-		Rpc(RpcDo_PlayRushMCOMSound, soundEvent, position);
+		Rpc(RpcDo_PlayRushMCOMSound, resource, soundEvent, position);
 		#endif
 	}
 	
@@ -926,6 +939,24 @@ class CRF_RplBroadcastManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! SlottingManager: Replicate the name of the player who killed this slot's occupant to all clients.
+	//! Sent as an immediate RPC (not batched) because it always accompanies a death event.
+	//! \param[in] slotId      Slot of the player who was killed
+	//! \param[in] killerName  Display name of the killer (empty = AI/environment)
+	void UpdateSlotKillerNameDelta(int slotId, string killerName)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotKillerNameDelta", 8 + killerName.Length());
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotKillerNameDelta(slotId, killerName);
+		#else
+		Rpc(RpcDo_UpdateSlotKillerNameDelta, slotId, killerName);
+		#endif
+	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	//! SlottingManager: Update slot role (~8 bytes)
@@ -1117,12 +1148,43 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void BroadcastOutro()
+	//! Area Timer: push current state to all clients every server tick
+	void BroadcastAreaTimerUpdate(CRF_EAreaTimerState state, int countdown, string faction, string zoneLabel)
+	{
+		int bytes = 8; // state + countdown ints
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneLabel);
+		LogTelemetry("BroadcastAreaTimerUpdate", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAreaTimerUpdate(state, countdown, faction, zoneLabel);
+		#else
+		Rpc(RpcDo_BroadcastAreaTimerUpdate, state, countdown, faction, zoneLabel);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Area Timer: notify all clients that a faction won
+	void BroadcastAreaTimerWin(string faction, string zoneName)
+	{
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(zoneName);
+		LogTelemetry("BroadcastAreaTimerWin", bytes);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAreaTimerWin(faction, zoneName);
+		#else
+		Rpc(RpcDo_BroadcastAreaTimerWin, faction, zoneName);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void BroadcastOutro(string winningFaction = "")
 	{
 		#ifdef WORKBENCH
-		RpcDo_BroadcastOutro();
+		RpcDo_BroadcastOutro(winningFaction);
 		#else
-		Rpc(RpcDo_BroadcastOutro);
+		Rpc(RpcDo_BroadcastOutro, winningFaction);
 		#endif
 	}
 	
@@ -1130,6 +1192,53 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void BroadcastVehiclePosUpdate(vector pos, int playerId)
 	{
 		Rpc(RpcDo_BroadcastVehiclePosUpdate, pos, playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void BroadcastSpectatorDamageReport(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
+	{
+		string packedData = PackSpectatorDamageReportStrings(victimName, attackerName, damageType, hitZone, bodyRegion);
+
+		#ifdef WORKBENCH
+		RpcDo_BroadcastSpectatorDamageReport(victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
+		#else
+		Rpc(RpcDo_BroadcastSpectatorDamageReport, victimPlayerId, attackerPlayerId, damageValue, rangeMeters, fatal, worldTime, packedData);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void BroadcastSpectatorDamageReportFatal(int victimPlayerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_MarkSpectatorDamageReportFatal(victimPlayerId);
+		#else
+		Rpc(RpcDo_MarkSpectatorDamageReportFatal, victimPlayerId);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string PackSpectatorDamageReportStrings(string victimName, string attackerName, string damageType, string hitZone, string bodyRegion)
+	{
+		victimName.Replace("|", "/");
+		attackerName.Replace("|", "/");
+		damageType.Replace("|", "/");
+		hitZone.Replace("|", "/");
+		bodyRegion.Replace("|", "/");
+
+		return string.Format("%1|%2|%3|%4|%5", victimName, attackerName, damageType, hitZone, bodyRegion);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetSpectatorDamageReportPart(array<string> parts, int index, string fallback)
+	{
+		if (!parts || parts.Count() <= index)
+			return fallback;
+
+		string value = parts.Get(index);
+		if (value.IsEmpty())
+			return fallback;
+
+		return value;
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -1329,8 +1438,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		SCR_Faction localFaction = SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction());
 
 		// Check if hint is for specific faction
-		if (!factionKey.IsEmpty() && localFaction && (localFaction.GetFactionKey() != factionKey))
-			return;
+		if (!factionKey.IsEmpty())
+		{
+			if (!localFaction || localFaction.GetFactionKey() != factionKey)
+				return;
+		}
 
 		// Create hint widget
 		Widget widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
@@ -1340,11 +1452,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Update player controller with hint
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		if (!playerControllerComp)
+		{
+			delete widget;
 			return;
-		
+		}
+
 		if (playerControllerComp.m_wSavedHintWidget)
 		{
-			delete playerControllerComp.m_wSavedHintWidget;
+			CRF_Hint previousHint = CRF_Hint.Cast(playerControllerComp.m_wSavedHintWidget.FindHandler(CRF_Hint));
+			if (previousHint)
+				previousHint.DestroyHint();
+			else
+				delete playerControllerComp.m_wSavedHintWidget;
 		}
 
 		playerControllerComp.m_wSavedHintWidget = widget;
@@ -1352,8 +1471,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		if (!hint)
+		{
+			playerControllerComp.m_wSavedHintWidget = null;
+			delete widget;
 			return;
-		
+		}
+
 		hint.ShowHint(data, 8000);
 	}	
 	
@@ -1658,56 +1781,30 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PlayRushMCOMSound(string soundEvent, vector position)
+	void RpcDo_PlayRushMCOMSound(string resource, string soundEvent, vector position)
 	{
-		Print("[CRF_RplBroadcastManager] RpcDo_PlayRushMCOMSound received on client: " + soundEvent + " at " + position);
+		// Build a world transform from the position with identity rotation
+		vector mcomTransform[4];
+		mcomTransform[0] = Vector(1, 0, 0);
+		mcomTransform[1] = Vector(0, 1, 0);
+		mcomTransform[2] = Vector(0, 0, 1);
+		mcomTransform[3] = position; /// AudioSystem.PlayEvent requires a transform, construct it with with position
 		
-		// Find the MCOM entity at the specified position
-		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
-		if (!mcomEntity)
-		{
-			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
-			return;
-		}
-		
-		Print("[CRF_RplBroadcastManager] Found MCOM entity for sound playback");
-		
-		// Get the SoundComponent from the MCOM entity
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (!soundComponent)
-		{
-			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
-			return;
-		}
-		
-		// Play the sound event using the SoundComponent
-		AudioHandle soundHandle = soundComponent.SoundEvent(soundEvent);
-		Print("[CRF_RplBroadcastManager] Playing 3D sound: " + soundEvent + " at position: " + position.ToString());
+		// Stop any previous instance of this event, then play
+		if (m_mRushSoundHandles.Contains(soundEvent))
+			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
+		m_mRushSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, mcomTransform));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_StopRushMCOMSound(string soundEvent, vector position)
 	{
-		// Find the MCOM entity at the specified position
-		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
-		if (!mcomEntity)
+		if (m_mRushSoundHandles.Contains(soundEvent))
 		{
-			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
-			return;
+			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
+			m_mRushSoundHandles.Set(soundEvent, AudioHandle.Invalid);
 		}
-		
-		// Get the SoundComponent from the MCOM entity
-		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
-		if (!soundComponent)
-		{
-			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
-			return;
-		}
-		
-		// Terminate all sounds on this component (as we can't target specific events)
-		soundComponent.TerminateAll();
-		Print("[CRF_RplBroadcastManager] Stopped all sounds on MCOM at position: " + position.ToString());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1776,7 +1873,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Print("[CRF_RplBroadcastManager] RpcDo_DeleteRushMCOMEntity received: " + mcomIdentifier + " (Server: " + Replication.IsServer() + ")");
 		
 		// Get the Rush gamemode manager
-		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (!gameMode)
+			return;
+
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(gameMode.FindComponent(CRF_RushGamemodeManager));
 		if (!rushGamemode)
 		{
 			Print("[CRF_RplBroadcastManager] Could not find Rush gamemode manager", LogLevel.WARNING);
@@ -1803,7 +1904,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 			}
 		}
 		
-		// Get the MCOM entity to delete
+		// Get the MCOM entity for presentation cleanup. The server owns the
+		// authority and replication owns proxy destruction on clients.
 		IEntity mcomEntity = rushGamemode.GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
 		{
@@ -1823,19 +1925,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Always clean up gamemode references
 		rushGamemode.CleanupMCOMReference(mcomIdentifier);
 		
-		// Handle entity deletion based on whether we're server or client
 		if (Replication.IsServer())
-		{
-			// On server, the entity will be deleted by the main deletion logic
-			Print("[CRF_RplBroadcastManager] Server: Skipping entity deletion (handled by main logic)");
-		}
+			Print("[CRF_RplBroadcastManager] Server: Entity deletion handled by main logic");
 		else
-		{
-			// On client, delete the entity immediately
-			Print("[CRF_RplBroadcastManager] Client: Deleting entity immediately for: " + mcomIdentifier);
-			SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
-			Print("[CRF_RplBroadcastManager] Client: Successfully deleted entity: " + mcomIdentifier);
-		}
+			Print("[CRF_RplBroadcastManager] Client: Waiting for replicated proxy removal");
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2021,10 +2114,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 			slotData.SetSlotCurrentPlayerId(playerId);
 			slotData.GetOnDataUpdate().Invoke();
 			
-			// Trigger global slotting update for UI refresh
-			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
-			if (invoker)
-				invoker.Invoke();
+			// Fire the targeted slot-change invoker so the slotting menu can do a
+			// surgical in-place update instead of a full Clear+rebuild.
+			// AAR/Spectator also subscribe to this invoker for their own UpdateSlots call.
+			slottingManager.NotifySlotPlayerIdChanged(slotId);
 		}
 	}
 	
@@ -2134,6 +2227,20 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Client handler: cache the killer name in the victim slot's data for spectator display.
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotKillerNameDelta(int slotId, string killerName)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+			slotData.SetKillerName(killerName);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_RemoveSlot(int slotId)
 	{
@@ -2178,8 +2285,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastOutro()
+	void RpcDo_BroadcastOutro(string winningFaction)
 	{
+		m_sOutroWinningFaction = winningFaction;
 		AudioSystem.PlaySound("{3D7F63CCD32B2F17}Sounds/Intro/outroCrescendo.wav");
 		GetGame().GetCallqueue().CallLater(OpenOutro, 2831, false);
 	}
@@ -2196,18 +2304,86 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastSpectatorDamageReport(int victimPlayerId, int attackerPlayerId, float damageValue, float rangeMeters, bool fatal, int worldTime, string packedData)
+	{
+		array<string> parts = {};
+		packedData.Split("|", parts, false);
+
+		string victimName = GetSpectatorDamageReportPart(parts, 0, "Unknown");
+		string attackerName = GetSpectatorDamageReportPart(parts, 1, "Environment");
+		string damageType = GetSpectatorDamageReportPart(parts, 2, "Unknown");
+		string hitZone = GetSpectatorDamageReportPart(parts, 3, "Unknown");
+		string bodyRegion = GetSpectatorDamageReportPart(parts, 4, "Unknown");
+
+		CRF_SpectatorDamageReportStore.InsertEvent(victimPlayerId, victimName, attackerPlayerId, attackerName, damageValue, rangeMeters, damageType, hitZone, bodyRegion, fatal, worldTime);
+
+		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
+		if (spectatorMenu)
+			spectatorMenu.RefreshDamageReport();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_MarkSpectatorDamageReportFatal(int victimPlayerId)
+	{
+		CRF_SpectatorDamageReportStore.MarkLatestVictimEventFatal(victimPlayerId);
+
+		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
+		if (spectatorMenu)
+			spectatorMenu.RefreshDamageReport();
+	}
 	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastAreaTimerUpdate(CRF_EAreaTimerState state, int countdown, string faction, string zoneLabel)
+	{
+		m_eAreaTimerState    = state;
+		m_iAreaTimerCountdown = countdown;
+		m_sAreaTimerFaction  = faction;
+		m_sAreaTimerZoneLabel = zoneLabel;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastAreaTimerWin(string faction, string zoneName)
+	{
+		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		string displayName = faction;
+		if (fm)
+		{
+			Faction f = fm.GetFactionByKey(faction);
+			if (f)
+				displayName = f.GetFactionName();
+		}
+
+		SCR_PopUpNotification popUp = SCR_PopUpNotification.GetInstance();
+		if (popUp)
+			popUp.PopupMsg(displayName + " controls " + zoneName + "!", 10);
+
+		AudioSystem.PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
+
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_RplBroadcastManager m_sInstance;
-	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_RplBroadcastManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{

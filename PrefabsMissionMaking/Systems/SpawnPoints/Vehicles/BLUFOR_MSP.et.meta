@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{81A2910690EDA9E5}Prefabs/Vehicles/MSPs/BLUFOR_MSP.et"
+ Name "{81A2910690EDA9E5}PrefabsMissionMaking/Systems/SpawnPoints/Vehicles/BLUFOR_MSP.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

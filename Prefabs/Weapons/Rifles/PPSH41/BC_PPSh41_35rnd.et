@@ -193,8 +193,6 @@ GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
        UIName "Single"
       }
      }
-     MagazineWell MagazineWell762x25_PPSH41 "{66363B53D2EBCCFE}" {
-     }
      WeaponAimModifiers {
       SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
        "Lower Translation" 0.03 0 0
@@ -278,16 +276,6 @@ GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
       InspectionWidgetOffset 0 -0.0281 0.093
      }
      MagazineTemplate "{5587A9FD1C78FE17}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_Ppsh41_35rnd_Stick.et"
-    }
-    BC_PpshAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{D9434CF67FCF7577}Assets/Weapons/Rifles/workspaces/bc_ppsh41.agr"
-     AnimInstance "{EB8914D869557101}Assets/Weapons/Rifles/workspaces/bc_ppsh41_weapon.asi"
-     AnimInjection AnimationAttachmentInfo "{66363B53D2EBCC14}" {
-      AnimGraph "{D9434CF67FCF7577}Assets/Weapons/Rifles/workspaces/bc_ppsh41.agr"
-      AnimInstance "{10D785E9F15415ED}Assets/Weapons/Rifles/workspaces/bc_ppsh41_player.asi"
-      BindingName "Weapon"
-     }
-     BindWithInjection 1
     }
    }
    SignalsSourceAccess SignalsSourceAccessClass "{CC7B64C6B99546FB}" {

@@ -145,7 +145,14 @@ class CRF_PlayerControllerManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerControllerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerControllerManager GetInstance()
 	{

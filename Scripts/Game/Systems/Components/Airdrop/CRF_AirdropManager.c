@@ -4,6 +4,7 @@ class CRF_AirdropManagerClass: SCR_BaseGameModeComponentClass
 
 class CRF_AirdropManager: SCR_BaseGameModeComponent
 {
+	/*
 	static CRF_AirdropManager m_sInstance;
 	protected ref array<ref CRF_AirdropFlight> m_aFlightObjects = {};
 	
@@ -86,15 +87,17 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_PlaySound(RplId planeId)
 	{
-		if (!Replication.FindItem(planeId))
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(planeId));
+		if (!rpl)
 			return;
-		
-		IEntity plane = RplComponent.Cast(Replication.FindItem(planeId)).GetEntity();
+
+		IEntity plane = rpl.GetEntity();
 		if (!plane)
 			return;
-		
-		if (plane.FindComponent(SCR_BaseInteractiveLightComponent))
-			SCR_BaseInteractiveLightComponent.Cast(plane.FindComponent(SCR_BaseInteractiveLightComponent)).ToggleLight(true);
+
+		SCR_BaseInteractiveLightComponent lightComp = SCR_BaseInteractiveLightComponent.Cast(plane.FindComponent(SCR_BaseInteractiveLightComponent));
+		if (lightComp)
+			lightComp.ToggleLight(true);
 	}
 	
 		
@@ -103,7 +106,10 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		array<string> playerIds = {};
 		players.Split("|", playerIds, true);
 		int slotId = 0;
-		RplId planeRplId = RplComponent.Cast(plane.FindComponent(RplComponent)).Id();
+		RplComponent planeRpl = RplComponent.Cast(plane.FindComponent(RplComponent));
+		if (!planeRpl)
+			return;
+		RplId planeRplId = planeRpl.Id();
 		PlayerManager pm = GetGame().GetPlayerManager();
 		foreach (int i, string playerId: playerIds)
 		{
@@ -134,15 +140,22 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TeleportPlayer(int playerId, RplId planeId, int slotId, int index)
 	{
-		if (!Replication.FindItem(planeId))
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(planeId));
+		if (!rpl)
 			return;
-		
-		IEntity plane = RplComponent.Cast(Replication.FindItem(planeId)).GetEntity();
+
+		IEntity plane = rpl.GetEntity();
 		if (!plane)
 			return;
-		
+
 		SlotManagerComponent slotMan = SlotManagerComponent.Cast(plane.FindComponent(SlotManagerComponent));
+		if (!slotMan)
+			return;
+
 		EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId);
+		if (!slot)
+			return;
+
 		vector transform[4];
 		slot.GetLocalTransform(transform);
 		if (index < 15)
@@ -347,10 +360,12 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		m_aFlightObjects.Insert(flight);
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 	}
+	*/
 }
-
+/*
 class CRF_AirdropFlight
 {
+	
 	void CRF_AirdropFlight(IEntity plane, vector flightCoordinates[4], float speed, bool autoDeployParachute = true)
 	{
 		m_Plane = plane;
@@ -402,3 +417,4 @@ class CRF_AirdropObject
 	vector m_vFlightCoordinates[4];
 	bool m_bAutoDeployParachute;
 }
+*/

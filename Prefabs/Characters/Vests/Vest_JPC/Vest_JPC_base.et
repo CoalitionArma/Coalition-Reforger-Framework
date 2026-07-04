@@ -1,4 +1,4 @@
-GenericEntity : "{E34E9F101C7ECB4B}Prefabs/Characters/Core/RHS_Vest_Base.et" {
+GenericEntity {
  ID "50D8C49B3558F152"
  components {
   RHS_ClothNodeStorageComponent "{5E8ECC6318C07954}" {

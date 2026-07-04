@@ -1,4 +1,4 @@
-GenericEntity : "{D075481CB65F1AB5}Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_Shaw_Raid.et" {
+GameEntity : "{D075481CB65F1AB5}Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_Shaw_Raid.et" {
  ID "50E0B40D7407B664"
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {

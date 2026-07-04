@@ -100,7 +100,14 @@ class CRF_PlayerScriptedMarkerManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerScriptedMarkerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerScriptedMarkerManager GetInstance()
 	{

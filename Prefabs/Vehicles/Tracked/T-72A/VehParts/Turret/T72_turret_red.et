@@ -352,25 +352,6 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    m_bStabilizationEnabled 1
   }
   WCS_Armament_VehicleCameraComponent "{67252CA965586CF9}" {
-   m_Cameras {
-    WCS_VehicleCameraProps "{67252CA965586F07}" {
-     m_Position PointInfo "{67252CA965586F06}" {
-      PivotID "v_turret_01"
-      Offset -0.4928 0.7316 -0.129
-     }
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_m01"
-    }
-    WCS_VehicleCameraProps "{67252CA965586F16}" {
-     m_Position PointInfo "{67252CA965586F15}" {
-      PivotID "v_turret_01"
-      Offset -0.7131 0.6751 -0.4041
-      Angles 0 -60 0
-     }
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_gunner_l01"
-    }
-   }
   }
   SlotManagerComponent "{67252CA965586F12}" {
    Slots {

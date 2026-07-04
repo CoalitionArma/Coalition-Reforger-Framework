@@ -50,4 +50,16 @@ class CRF_RoleHelper
 
 		return (role == CRF_EGearRole.TEAM_LEAD);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	static bool IsMedicRole(IEntity entity)
+	{
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!IsValidGearscriptResource(prefab))
+			return false;
+
+		CRF_EGearRole role = ResourceToRole(prefab);
+
+		return (role == CRF_EGearRole.MEDIC || role == CRF_EGearRole.MEDICAL_OFFICER);
+	}
 }

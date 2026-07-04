@@ -1,0 +1,36 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1918.042 1 6369.189
+  angles 0 -7.161 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{696F5D50E04B4347}" {
+    m_Prefab "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{6970292C703EF0A0}" {
+    m_Prefab "{97064F8597F2D7BF}Prefabs/Weapons/Explosives/DemoBlock_TSh400g/DemoBlock_TSh400g.et"
+    m_iAmountOfItemSupplyTruck 20
+    m_iAmountOfItemRegularVehicle 20
+   }
+   CRF_VehicleGearScriptAdditionalItem "{6970292C48BD2247}" {
+    m_Prefab "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+    m_iAmountOfItemSupplyTruck 4
+   }
+  }
+ }
+ {
+  coords 1923.68 1 6369.893
+  angles 0 -7.161 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+$grp Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ {
+  coords 3083.468 1 1937.981
+ }
+ {
+  coords 3067.098 1 1937.877
+ }
+}

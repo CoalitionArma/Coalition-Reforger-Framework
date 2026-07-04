@@ -1,10 +1,5 @@
 MatPBRMulti {
  Color 0.415 0.539 0.666 1
- GlobalMCRMap "{200F9BA74F2DAA32}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_BW_BCR.edds"
- GlobalMCRMode Multiply
- MaskMap "{A1AE79DF2B060669}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_Mask.edds"
- VFXMap "{EBBDCB69D4FD068D}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_VFX.edds"
- GlobalNMOMap "{18D72035965AF8AC}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_BW_NMO.edds"
  MudColor 0.016 0.012 0.008 1
  MudRoughness 3
  MudBCRMap "{366028E90066FC57}Assets/_SharedData/Dirt/ST_Dirt_Sand_BCR.edds"
@@ -13,6 +8,11 @@ MatPBRMulti {
  DirtColor 0.251 0.224 0.165 1
  DirtBCRMap "{15A4D0147C0F3804}Assets/_SharedData/Plaster/ST_Plaster_Damaged_01_BCR.edds"
  DirtMaskMap "{A074608E879A25CB}Assets/_SharedData/DetailMask/ST_Dirt_01_Mask1.edds"
+ GlobalMCRMap "{200F9BA74F2DAA32}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_BW_BCR.edds"
+ GlobalMCRMode Multiply
+ MaskMap "{A1AE79DF2B060669}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_Mask.edds"
+ VFXMap "{EBBDCB69D4FD068D}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_VFX.edds"
+ GlobalNMOMap "{18D72035965AF8AC}Assets/Vehicles/Helicopter/Alouette III/Data/Textures/Fusemain_BW_NMO.edds"
  Enabled_3 1
  Color_3 0.224 0.165 0.09 1
  BCR_3 "{8A0C885766CAD60D}Assets/_SharedData/Metal/ST_Rust_01_Aluminium_V2_BCR.edds"

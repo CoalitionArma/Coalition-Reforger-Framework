@@ -2,7 +2,7 @@ GenericEntity {
  ID "68F6582B001ADF56"
  components {
   MeshObject "{68F6582A606DDC4F}" {
-   Object "{39359AF731C0E1E2}Assets/Structures/Indicators/Info_Arrow.xob"
+   Object "{39359AF731C0E1E2}Assets/Structures/Indicators/Indicator_Arrow.xob"
   }
  }
  coords 4782.872 27.844 11257.085

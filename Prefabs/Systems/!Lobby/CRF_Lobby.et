@@ -8,6 +8,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
+    CRF_CommunityTagManager "{69651E07695B82A0}" {
+    }
     CRF_ForwardDeployManager "{68C4424EC250E62B}" {
     }
     CRF_GameTimerManager "{68C34EF052F2A86D}" {
@@ -32,11 +34,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
     CRF_SafestartManager "{652A33131ACE2DC1}" {
     }
+    CRF_ServerStatsManager "{697D4B11063F1CAE}" {
+    }
     CRF_SlottingManager "{6535438600F2A9C0}" {
     }
     CRF_VehicleGearscriptManager "{68C32757EC663DF4}" {
     }
    }
+  }
+  CRF_SlotLottery "{6966101F0044D13B}" {
   }
   CRF_VAAR_GamemodeComponent "{692D60493093033D}" {
   }
@@ -47,6 +53,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    m_bEnableTeamKillPunishment 0
   }
   SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   Enabled 0
    m_aModules {
     SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
     }
@@ -70,6 +77,9 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
   }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
    }
@@ -83,9 +93,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_iStartingHour 18
     }
    }
-  }
-  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
-   Enabled 0
   }
  }
  coords 0 0 0
@@ -131,6 +138,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    "/a <message> - Message admins"
    m_bShowForAnyFaction 1
   }
+ }
+ m_aDefaultMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Add background info about the mission. "\
@@ -147,22 +156,43 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTitle "BLUFOR Objectives"
-   m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
    m_aFactionKeys {
     "BLUFOR"
    }
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTitle "OPFOR Objectives"
-   m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
    m_aFactionKeys {
     "OPFOR"
    }
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTitle "INDFOR Objectives"
-   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
    m_aFactionKeys {
     "INDFOR"
    }
@@ -580,7 +610,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_NotificationFactionColor 0.392 0.157 0.624 1
      m_NotificationTextFactionColor 0.392 0.157 0.624 1
      m_bIsPlayable 0
-     m_bShowInWelcomeScreenIfNonPlayable 0
      m_bIsMilitary 0
      m_sFactionFlag "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
      m_FactionFlagMaterial "{E3BB2EF7F600DD28}Assets/Props/Fabric/Flags/Data/Flag_2_3_CIVILIAN.emat"
@@ -1059,22 +1088,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
      }
      m_iFactionRadioFrequency 48000
-     m_aRanks {
-      SCR_CharacterRank "{528E9D967C251E5F}" {
-      }
-      SCR_CharacterRank "{528E9D967C638136}" {
-      }
-      SCR_CharacterRank "{528E9D967CA0C01E}" {
-      }
-      SCR_CharacterRank "{528E9D967C9A9530}" {
-      }
-      SCR_CharacterRank "{528E9D967CD71D35}" {
-      }
-      SCR_CharacterRank "{528E9D967D0F747E}" {
-      }
-      SCR_CharacterRank "{528E9D967D8EBCCC}" {
-      }
-     }
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
        m_eEntityCatalogType ITEM
@@ -1624,22 +1637,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
      }
      m_iFactionRadioFrequency 42000
-     m_aRanks {
-      SCR_CharacterRank "{528E9D9FAAB617C6}" {
-      }
-      SCR_CharacterRank "{528E9D9FAB192253}" {
-      }
-      SCR_CharacterRank "{528E9D9FAB87F519}" {
-      }
-      SCR_CharacterRank "{528E9D9FA4EA5C39}" {
-      }
-      SCR_CharacterRank "{528E9D9FA563C005}" {
-      }
-      SCR_CharacterRank "{528E9D9FA64A043C}" {
-      }
-      SCR_CharacterRank "{528E9D9FA77F696E}" {
-      }
-     }
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" {
        m_eEntityCatalogType ITEM

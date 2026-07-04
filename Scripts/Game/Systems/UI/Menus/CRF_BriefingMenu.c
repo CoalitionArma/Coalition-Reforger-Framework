@@ -20,6 +20,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	
 	//--- Data Storage ---
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
+	protected bool m_bMapOpened = false;                      // Tracks whether OpenMap has been queued to prevent duplicate calls
 	
 	//--- MENU LIFECYCLE METHODS ---
 	
@@ -44,9 +45,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			m_wRoot.SetEnabled(true);
 		}
 		
-		// Initialize map if available
+		// Try to acquire map entity again in case OnMenuInit ran before it was registered (race condition on connect)
+		if (!m_MapEntity)
+			m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+		// Initialize map if available; if still null, OnMenuUpdate will retry each frame until it becomes available
 		if (m_MapEntity)
+		{
 			GetGame().GetCallqueue().Call(OpenMap);
+			m_bMapOpened = true;
+		}
 		
 		// Set up input actions
 		RegisterInputActions();
@@ -68,6 +76,17 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
+
+		// Fetch community tags + ranks so they appear in the player list
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerInfoUpdated().Insert(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+			tagMgr.GetOnPlayerRosterChanged().Insert(OnPlayerRosterChanged);
+		}
 	}
 	
 	/**
@@ -167,8 +186,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
 		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
 		
-		// Highlight the current phase
-		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
+		// Highlight the current phase — use already-resolved m_Gamemode to avoid a null-cast crash
+		// if the gamemode entity has not yet been replicated when this runs
+		if (!m_Gamemode)
+			return;
+
+		int gameState = m_Gamemode.m_GamemodeState;
 		switch(gameState)
 		{
 			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
@@ -258,6 +281,19 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
+
+		// Retry opening the map if the entity was not yet available when the menu opened (race condition on connect)
+		if (!m_bMapOpened)
+		{
+			if (!m_MapEntity)
+				m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+			if (m_MapEntity)
+			{
+				GetGame().GetCallqueue().Call(OpenMap);
+				m_bMapOpened = true;
+			}
+		}
 		
 		// Activate map context if map is available
 		if (m_MapEntity)
@@ -318,13 +354,30 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
 				
+			string displayName = GetGame().GetPlayerManager().GetPlayerName(player);
+			string playerTag = "";
+			int playerXp = -1;
+			string playerTrack = "enlisted";
+			if (CRF_CommunityTagManager.GetInstance())
+			{
+				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(player);
+				playerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(player);
+				playerTrack = CRF_CommunityTagManager.GetInstance().GetPlayerRankTrack(player);
+			}
+
 			int index = m_cPlayerListBoxComponent.AddItem(
-				GetGame().GetPlayerManager().GetPlayerName(player), 
+				displayName, 
 				null, 
 				"{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout"
 			);
 			
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
+			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+			if (crfComp)
+			{
+				crfComp.SetTagText(playerTag);
+				crfComp.SetRankChevron(playerXp, playerTrack);
+			}
 			
 			// Color code players by role
 			SetPlayerStatusColor(player,comp);
@@ -353,6 +406,22 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			wid.SetVisible(true);
 	}
 	
+	/**
+	 * Called when tags/ranks data arrives; refreshes the visible list instantly.
+	 */
+	protected void OnPlayerInfoUpdated()
+	{
+		UpdatePlayerList();
+	}
+
+	/**
+	 * Called when player roster changes (join/leave); refreshes list-box state immediately.
+	 */
+	protected void OnPlayerRosterChanged()
+	{
+		UpdatePlayerList();
+	}
+
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
 	{
 		// Enforce precedence: Admin > Moderator > Donator 
@@ -401,6 +470,16 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
+
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+		}
+
+		// Reset map opened state so the map is re-opened if the menu is reopened
+		m_bMapOpened = false;
 
 		// Cancel any pending callqueue map-open calls to prevent the map opening after close
 		GetGame().GetCallqueue().Remove(OpenMap);

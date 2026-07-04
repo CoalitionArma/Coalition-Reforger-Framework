@@ -50,15 +50,22 @@ class CRF_MissionValidatorManager : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		
+
 		// Set singleton instance
 		s_Instance = this;
-		
+
 		// Only run on server
 		if (!Replication.IsServer())
 			return;
-		
+
 		SetEventMask(owner, EntityEvent.INIT);
+	}
+
+	//------------------------------------------------------------------------------------
+	void ~CRF_MissionValidatorManager()
+	{
+		if (s_Instance == this)
+			s_Instance = null;
 	}
 	
 	override void EOnInit(IEntity owner)

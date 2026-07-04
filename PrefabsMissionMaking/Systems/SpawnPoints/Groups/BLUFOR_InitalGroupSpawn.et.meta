@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPointsGroups/BLUFOR_InitalGroupSpawn.et"
+ Name "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

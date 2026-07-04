@@ -31,19 +31,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private string m_sPlayerGUID;
 	private string m_sTerrain;
 	
-	// Kill data
-	string m_sKillerName;
-	string m_sKillerGUID;
-	string m_sKillerFaction;
-	string m_sVictimName;
-	string m_sVictimGUID;
-	string m_sVictimFaction;
-	string m_sTime;
-	string m_sWeaponName;
-	float m_fRange;
-	float m_fTotalTime;
-	int m_iTotalSeconds;
-	
 	// Kill tracking for more accurate weapon logging
 	private ref map<string, string> m_mPendingDamageWeapons;
 	
@@ -61,15 +48,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	// File handling and faction management
 	private ref FileHandle m_LogFileHandle;
-	private SCR_FactionManager m_FactionManager;
-	private BaseWeaponManagerComponent m_WMC;
-	private SCR_ChimeraCharacter m_PlayerChimera;
 	private PlayerManager m_PlayerManager;
-	private SCR_CharacterInventoryStorageComponent m_Inventory;
-	private BaseWeaponComponent m_BWC;
 	private FactionManager m_FM;
 	private SCR_FactionManager m_SFM;
-	private Faction m_Faction;
 	private CRF_Gamemode m_GM;
 	
 	// Cached references for performance
@@ -91,11 +72,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
-		
+
 		// Initialize damage tracking maps
 		m_mPendingDamageWeapons = new map<string, string>();
 		m_mPendingDamageTypes = new map<string, int>();
-		
+
 		// Cache frequently accessed singleton references
 		m_Game = GetGame();
 		if (m_Game)
@@ -104,7 +85,14 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			m_World = m_Game.GetWorld();
 		}
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_LoggingManager()
+	{
+		if (s_Instance == this)
+			s_Instance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Singleton instance getter
 	static CRF_LoggingManager GetInstance()
@@ -208,7 +196,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
-		m_sPlayerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
+		m_sPlayerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 		
 		if (m_LogFileHandle)
 			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_sPlayerName + SEPARATOR + m_sPlayerGUID);
@@ -242,8 +230,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_sPlayerName = m_PlayerManager.GetPlayerName(playerId);
+		string disconnectGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 		if (m_LogFileHandle)
-			m_LogFileHandle.WriteLine("disconnect" + SEPARATOR + m_sPlayerName + SEPARATOR + cause);
+			m_LogFileHandle.WriteLine("disconnect" + SEPARATOR + m_sPlayerName + SEPARATOR + disconnectGUID + SEPARATOR + cause);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -269,13 +258,22 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			case CRF_EGamemodeState.GAME:
 			{
 				LogMissionEvent("safestart");
-				// Only log ORBAT at game start, not during slotting, as slots may still be changing
-				if (m_sGameMode != "SPCL" && m_sGameMode != "SPC" && m_sGameMode != "SPECIAL")
-					LogORBAT();
 				break;
 			}
 			case CRF_EGamemodeState.AAR:
 			{
+				// Log the VAAR file path before the ended event so the bot can associate it with this mission
+				CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
+				if (vaarComponent && m_LogFileHandle)
+				{
+					string vaarFilePath = vaarComponent.GetLogFilePath();
+					if (!vaarFilePath.IsEmpty())
+					{
+						int slashPos = vaarFilePath.LastIndexOf("/");
+						string vaarFileName = vaarFilePath.Substring(slashPos + 1, vaarFilePath.Length() - slashPos - 1);
+						m_LogFileHandle.WriteLine("vaar_log" + SEPARATOR + vaarFileName);
+					}
+				}
 				LogMissionEvent("ended");
 				break;
 			}
@@ -300,19 +298,40 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		if (m_LogFileHandle)
+		{
+			m_LogFileHandle.Close();
+			m_LogFileHandle = null;
+		}
+		
+		if (s_Instance == this)
+			s_Instance = null;
+		
+		super.OnDelete(owner);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! Method called from safestart to annotate game start
 	void GameStarted()
 	{
-		if (RplSession.Mode() != RplMode.Dedicated)
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 		
 		UpdatePlayerCount();
-		LogMissionEvent("started"); // global log
 		
-		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
-			return;
-
-		Attendance(); // Attendance log and ORBAT logging
+		if (m_sGameMode != "SPCL" && m_sGameMode != "SPC" && m_sGameMode != "SPECIAL")
+		{
+			// ORBAT and attendance must be written BEFORE the "started" event line.
+			// The Coalition Bot reads orbat_* lines into its buffer and then consumes
+			// that buffer when it sees "mission,started". If "started" fires first,
+			// the buffer is empty and no ORBAT is saved to the database.
+			LogORBAT();
+			Attendance();
+		}
+		
+		LogMissionEvent("started"); // global log — always last so bot reads ORBAT into buffer first
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -359,48 +378,39 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			}
 			else
 			{
-				m_Faction = m_FM.GetFactionByKey("BLUFOR");
-				if (m_Faction)
-					m_iBluforCount = m_SFM.GetFactionPlayerCount(m_Faction);
+				Faction faction;
+				
+				faction = m_FM.GetFactionByKey("BLUFOR");
+				if (faction)
+					m_iBluforCount = m_SFM.GetFactionPlayerCount(faction);
 				else
 					m_iBluforCount = 0;
-					
-				m_Faction = m_FM.GetFactionByKey("OPFOR");
-				if (m_Faction)
-					m_iOpforCount = m_SFM.GetFactionPlayerCount(m_Faction);
+				
+				faction = m_FM.GetFactionByKey("OPFOR");
+				if (faction)
+					m_iOpforCount = m_SFM.GetFactionPlayerCount(faction);
 				else
 					m_iOpforCount = 0;
-					
-				m_Faction = m_FM.GetFactionByKey("INDFOR");
-				if (m_Faction)
-					m_iIndforCount = m_SFM.GetFactionPlayerCount(m_Faction);
+				
+				faction = m_FM.GetFactionByKey("INDFOR");
+				if (faction)
+					m_iIndforCount = m_SFM.GetFactionPlayerCount(faction);
 				else
 					m_iIndforCount = 0;
-					
-				m_Faction = m_FM.GetFactionByKey("CIV");
-				if (m_Faction)
-					m_iCivCount = m_SFM.GetFactionPlayerCount(m_Faction);
+				
+				faction = m_FM.GetFactionByKey("CIV");
+				if (faction)
+					m_iCivCount = m_SFM.GetFactionPlayerCount(faction);
 				else
 					m_iCivCount = 0;
 			}
 		}
 		
-		// Update the side counts array - optimize by avoiding clear/insert if possible
-		if (m_aSideCounts.Count() != 4)
-		{
-			m_aSideCounts.Clear();
-			m_aSideCounts.Insert(m_iBluforCount);
-			m_aSideCounts.Insert(m_iOpforCount);
-			m_aSideCounts.Insert(m_iIndforCount);
-			m_aSideCounts.Insert(m_iCivCount);
-		}
-		else
-		{
-			m_aSideCounts.Set(0, m_iBluforCount);
-			m_aSideCounts.Set(1, m_iOpforCount);
-			m_aSideCounts.Set(2, m_iIndforCount);
-			m_aSideCounts.Set(3, m_iCivCount);
-		}
+		m_aSideCounts.Clear();
+		m_aSideCounts.Insert(m_iBluforCount);
+		m_aSideCounts.Insert(m_iOpforCount);
+		m_aSideCounts.Insert(m_iIndforCount);
+		m_aSideCounts.Insert(m_iCivCount);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -436,10 +446,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_PlayerManager.GetPlayers(players);
 		foreach (int player : players)
 		{
-			m_LogFileHandle.WriteLine("attendance," + m_BackendApi.GetPlayerIdentityId(player));
+			m_LogFileHandle.WriteLine("attendance," + SCR_PlayerIdentityUtils.GetPlayerIdentityId(player));
 		}
 		
-		// ORBAT is now logged separately via OnGamemodeStateChanged when entering GAME state
+		// ORBAT is logged separately in GameStarted() after safestart ends
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -553,7 +563,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 					string roleName = slotData.GetSlotName();
 					
 					// Get player GUID
-					string playerGUID = m_BackendApi.GetPlayerIdentityId(playerId);
+					string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
 					
 					// Log player role info
 					m_LogFileHandle.WriteLine("orbat_player" + SEPARATOR + factionKey + SEPARATOR + 
@@ -584,9 +594,19 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
-	// NOTE: m_sKillerName, m_sVictimName etc. are instance-level fields shared across calls.
-	// On a dedicated server events are processed on the main thread sequentially, so this is
-	// safe in practice, but a future refactor should make these local variables to be explicit.
+	// Receives the kill event directly from the gamemode component lifecycle — no data collector needed.
+	override protected void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+
+		LogPlayerKill(instigatorContextData);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Logs player death and kill data to file
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)
@@ -610,130 +630,155 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-	// Get victim entity and determine if it's a player
-	IEntity victimEntity = instiContext.GetVictimEntity();
-	int victimId = 0;
-	if (victimEntity)
-	{
-		// Try to get player ID from the controlled entity
-		victimId = m_PlayerManager.GetPlayerIdFromControlledEntity(victimEntity);
-	}
-	
-	// If we didn't find a player ID from the entity, fall back to instigator context
-	if (victimId <= 0)
-		victimId = instiContext.GetVictimPlayerID();
-	
-	// Victim info
-	m_PlayerChimera = SCR_ChimeraCharacter.Cast(victimEntity);
-	if (m_PlayerChimera)
-		m_sVictimFaction = m_PlayerChimera.GetFactionKey();
-	else
-	{
-		m_sVictimFaction = "UNKNOWN";
-		Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
-	}
-	
-	m_sVictimGUID = m_BackendApi.GetPlayerIdentityId(victimId);
-	if (victimId > 0) // if it's a player 
-		m_sVictimName = m_PlayerManager.GetPlayerName(victimId);
-	else 
-		m_sVictimName = "AI";
-	m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
-	
-	// Get killer entity and determine if it's a player
-	IEntity killerEntity = instiContext.GetKillerEntity();
-	int killerId = 0;
-	if (killerEntity)
-	{
-		// Try to get player ID from the controlled entity
-		killerId = m_PlayerManager.GetPlayerIdFromControlledEntity(killerEntity);
-	}
-	
-	// If we didn't find a player ID from the entity, fall back to instigator context
-	if (killerId <= 0)
-		killerId = instiContext.GetKillerPlayerID();
-	
-	// Killer info
-	m_PlayerChimera = SCR_ChimeraCharacter.Cast(killerEntity);
-	if (m_PlayerChimera)
-		m_sKillerFaction = m_PlayerChimera.GetFactionKey();
-	else
-	{
-		m_sKillerFaction = "UNKNOWN";
-		Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
-	}
-	
-	m_sKillerGUID = m_BackendApi.GetPlayerIdentityId(killerId);
-	if (killerId > 0) // if it's a player and ignore aar killings
-		m_sKillerName = m_PlayerManager.GetPlayerName(killerId);
-	else
-		m_sKillerName = "AI";
-	m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
+		// Skip self-kills
+		IEntity killerEntityCheck = instiContext.GetKillerEntity();
+		IEntity targetEntityCheck = instiContext.GetVictimEntity();
+		if (killerEntityCheck && targetEntityCheck && killerEntityCheck == targetEntityCheck)
+			return;
 		
-		// Default weapon name and damage type
-		m_sWeaponName = "Unknown Weapon";
+		// Get victim entity and determine if it's a player
+		IEntity victimEntity = instiContext.GetVictimEntity();
+		int victimId = 0;
+		if (victimEntity)
+			victimId = m_PlayerManager.GetPlayerIdFromControlledEntity(victimEntity);
+		
+		if (victimId <= 0)
+			victimId = instiContext.GetVictimPlayerID();
+		
+		// Victim info
+		string sVictimFaction = "UNKNOWN";
+		SCR_ChimeraCharacter victimChimera = SCR_ChimeraCharacter.Cast(victimEntity);
+		if (victimChimera)
+			sVictimFaction = victimChimera.GetFactionKey();
+		else
+			Print("[CRF_LoggingManager] Warning: Could not get victim character for faction info", LogLevel.WARNING);
+		
+		string sVictimGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(victimId);
+		string sVictimName;
+		if (victimId > 0)
+			sVictimName = m_PlayerManager.GetPlayerName(victimId);
+		else
+			sVictimName = "AI";
+		sVictimName = sVictimName + "(" + sVictimFaction + ")";
+		
+		// Get killer entity and determine if it's a player
+		IEntity killerEntity = instiContext.GetKillerEntity();
+		int killerId = 0;
+		if (killerEntity)
+			killerId = m_PlayerManager.GetPlayerIdFromControlledEntity(killerEntity);
+		
+		if (killerId <= 0)
+			killerId = instiContext.GetKillerPlayerID();
+		
+		// Killer info
+		string sKillerFaction = "UNKNOWN";
+		SCR_ChimeraCharacter killerChimera = SCR_ChimeraCharacter.Cast(killerEntity);
+		if (killerChimera)
+			sKillerFaction = killerChimera.GetFactionKey();
+		else
+			Print("[CRF_LoggingManager] Warning: Could not get killer character for faction info", LogLevel.WARNING);
+		
+		string sKillerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(killerId);
+		string sKillerName;
+		if (killerId > 0)
+			sKillerName = m_PlayerManager.GetPlayerName(killerId);
+		else
+			sKillerName = "AI";
+		sKillerName = sKillerName + "(" + sKillerFaction + ")";
+		
+		// Weapon detection — prefer pre-tracked weapon, fall back to utility then inventory
+		string sWeaponName = "Unknown Weapon";
 		int damageType = 0;
-		
-		// First, check if we have tracked a weapon for this victim
 		string victimKey = victimId.ToString();
+		
 		if (m_mPendingDamageWeapons.Contains(victimKey))
 		{
-			m_sWeaponName = m_mPendingDamageWeapons.Get(victimKey);
-			m_mPendingDamageWeapons.Remove(victimKey); // Clear the tracking data
+			sWeaponName = m_mPendingDamageWeapons.Get(victimKey);
+			m_mPendingDamageWeapons.Remove(victimKey);
 			
-			// Also get the damage type if available
 			if (m_mPendingDamageTypes.Contains(victimKey))
 			{
 				damageType = m_mPendingDamageTypes.Get(victimKey);
-				m_mPendingDamageTypes.Remove(victimKey); // Clear the tracking data
+				m_mPendingDamageTypes.Remove(victimKey);
 			}
 		}
 		else
 		{
-		// If no tracked weapon, use utility to determine the weapon
-		m_sWeaponName = CRF_DamageHelper.GetWeaponName(instiContext);
-		
-		// If we still don't have a weapon name, try the killer's current weapon as a last resort
-		if (m_sWeaponName == "Unknown Weapon")
-		{
-			// Reuse the killerEntity we already retrieved
-			if (killerEntity)
+			sWeaponName = CRF_DamageHelper.GetWeaponName(instiContext);
+			
+			if (sWeaponName == "Unknown Weapon" && killerEntity)
 			{
-				m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
-				if (m_Inventory)
+				SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+				if (inventory)
 				{
-					m_BWC = m_Inventory.GetCurrentCharacterWeapon();
-					if (m_BWC)
-						m_sWeaponName = m_BWC.GetUIInfo().GetName();
+					BaseWeaponComponent weapon = inventory.GetCurrentCharacterWeapon();
+					if (weapon)
+						sWeaponName = weapon.GetUIInfo().GetName();
 				}
 			}
 		}
-	}
-	
-	// Range — measure from the killer's character position.
-	// GetKillerEntity() may return the projectile entity (bullet/rocket), not the shooter,
-	// which causes bogus 10 000 m+ distances when the projectile is at world origin on impact.
-	// Use the killer's controlled character when we have a valid player ID, falling back to
-	// killerEntity only for AI / vehicle kills.
-	if (!killerEntity)
-		return;
-	IEntity killerCharEntity = null;
-	if (killerId > 0)
-		killerCharEntity = m_PlayerManager.GetPlayerControlledEntity(killerId);
-	if (!killerCharEntity)
-		killerCharEntity = killerEntity; // AI or vehicle — killerEntity is already the agent
-	m_fRange = vector.Distance(victimEntity.GetOrigin(), killerCharEntity.GetOrigin());
-	int m_iRangeMeters = m_fRange.ToString().ToInt(); // round to whole metres; avoids locale decimal-separator breaking CSV
-	
-	// Time
-	m_fTotalTime = m_World.GetWorldTime();
-  	m_iTotalSeconds = (m_fTotalTime / 1000);
-	m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
-		// Log to file
-		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + 
-		                         m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + 
-		                         m_iRangeMeters + SEPARATOR + m_sTime);
+		// Damage type — convert int to human-readable label for the log field.
+		string sDamageType;
+		if (damageType == EDamageType.KINETIC)
+			sDamageType = "Kinetic";
+		else if (damageType == EDamageType.EXPLOSIVE)
+			sDamageType = "Explosive";
+		else if (damageType == EDamageType.FRAGMENTATION || damageType == EDamageType.PROCESSED_FRAGMENTATION)
+			sDamageType = "Fragmentation";
+		else if (damageType == EDamageType.BLEEDING)
+			sDamageType = "Bleeding";
+		else if (damageType == EDamageType.FIRE || damageType == EDamageType.INCENDIARY)
+			sDamageType = "Fire";
+		else if (damageType == EDamageType.COLLISION)
+			sDamageType = "Collision";
+		else if (damageType == EDamageType.MELEE)
+			sDamageType = "Melee";
+		else
+		{
+			// damageType was not pre-tracked — infer from weapon name string
+			string wLower = sWeaponName;
+			wLower.ToLower();
+			if (wLower.Contains("grenade") || wLower.Contains("fragmentation"))
+				sDamageType = "Fragmentation";
+			else if (wLower.Contains("explosion") || wLower.Contains("explosive"))
+				sDamageType = "Explosive";
+			else if (wLower.Contains("collision"))
+				sDamageType = "Collision";
+			else if (wLower.Contains("bleeding"))
+				sDamageType = "Bleeding";
+			else if (wLower.Contains("melee"))
+				sDamageType = "Melee";
+			else if (wLower.Contains("fire") || wLower.Contains("incendiary"))
+				sDamageType = "Fire";
+			else
+				sDamageType = "Kinetic"; // default for firearms
+		}
+
+		// Range — measure from the killer's character position.
+		// GetKillerEntity() may return the projectile entity (bullet/rocket), not the shooter,
+		// which causes bogus 10 000 m+ distances when the projectile is at world origin on impact.
+		// Use the killer's controlled character when we have a valid player ID, falling back to
+		// killerEntity only for AI / vehicle kills.
+		if (!killerEntity)
+			return;
+		IEntity killerCharEntity = null;
+		if (killerId > 0)
+			killerCharEntity = m_PlayerManager.GetPlayerControlledEntity(killerId);
+		if (!killerCharEntity)
+			killerCharEntity = killerEntity; // AI or vehicle — killerEntity is already the agent
+		float fRange = vector.Distance(victimEntity.GetOrigin(), killerCharEntity.GetOrigin());
+		int iRangeMeters = fRange.ToString().ToInt(); // round to whole metres; avoids locale decimal-separator breaking CSV
+		
+		// Time
+		int iTotalSeconds = m_World.GetWorldTime() / 1000;
+		string sTime = SCR_FormatHelper.FormatTime(iTotalSeconds);
+		
+		// Log to file — split into parts to avoid "Formula too complex" compiler limit
+		string killLine1 = "kill" + SEPARATOR + sVictimName + SEPARATOR + sVictimGUID + SEPARATOR + sKillerName;
+		string killLine2 = sKillerGUID + SEPARATOR + sWeaponName + SEPARATOR + sDamageType;
+		string killLine3 = iRangeMeters.ToString() + SEPARATOR + sTime;
+		m_LogFileHandle.WriteLine(killLine1 + SEPARATOR + killLine2 + SEPARATOR + killLine3);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown
@@ -745,11 +790,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// TODO: Add username and guid to both loggers
 		m_LogFileHandle.WriteLine("grenade" + SEPARATOR + );
 	}*/
-	
-	void LogShots()
-	{
-		// This should be pulled from the datacollector IMO, once per player, at end of game (enterAAR()).
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when player takes significant damage - can be used to track weapons that cause damage

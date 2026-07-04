@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{5D57FD36F9393700}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEC_Echo.conf"
+ Name "{5D57FD36F9393700}Configs/Gearscripts/Custom/Klub/CRF_GS_MEC_Echo.conf"
  Configurations {
   CONFResourceClass PC {
   }

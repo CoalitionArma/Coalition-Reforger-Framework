@@ -75,6 +75,20 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (m_TelemetryManager)
 			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Resolve a replicated entity without dereferencing a missing or stale replication item.
+	protected IEntity ResolveReplicatedEntity(RplId entityId)
+	{
+		if (entityId == RplId.Invalid())
+			return null;
+
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(entityId));
+		if (!rplComponent)
+			return null;
+
+		return rplComponent.GetEntity();
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 CLIENT REPLICATION ACCESSORS
@@ -145,11 +159,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Broken in 1.7. Check CRF_PersistanceManager for update.
+	/*
 	void RequestMissionSave(string saveName)
 	{
 		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestMissionSave, saveName);
 	}
+	*/
 	
 	//------------------------------------------------------------------------------------------------
 	void RequestAdvanceSlottingPhase()
@@ -512,6 +529,25 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	void RegisterPlayerForLottery(int playerId, string factionKey, string squadFilter)
+	{
+		Rpc(RpcAsk_RegisterPlayerForLottery, playerId, factionKey, squadFilter);
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	void RunSlotLottery(int requestingPlayerId)
+	{
+		Rpc(RpcAsk_RunSlotLottery, requestingPlayerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ClearSlotLottery(int requestingPlayerId)
+	{
+		Rpc(RpcAsk_ClearSlotLottery, requestingPlayerId);
+	}
+	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -671,6 +707,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Broken in 1.7. Check CRF_PersistanceManager for update.
+	/*
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestMissionSave(string saveName)
 	{
@@ -688,6 +726,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			Print("[CRF_PlayerRplToAuthorityManager] Persistence manager not available", LogLevel.ERROR);
 		}
 	}
+	*/
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1181,7 +1220,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		
 		array<AIAgent> aiAgents = {};
-		array<IEntity> entities = {};
+		array<RplId> entityIds = {};
 
 		//Get entities in the faction and store them
 		aiWorld.GetAIAgents(aiAgents);
@@ -1196,28 +1235,47 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 				continue;
 			
 			if (character.GetFactionKey() == faction)
-				entities.Insert(entity);
+			{
+				RplId entityId = Replication.FindItemId(entity);
+				if (entityId != RplId.Invalid())
+					entityIds.Insert(entityId);
+			}
 		}
 
 		// Queue changes to prevent server freezing
-		UpdateGearSetQueue(entities);
+		UpdateGearSetQueue(entityIds);
 		
 		string logMessage = string.Format("%1 was changed to %2", faction, path);
 		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void UpdateGearSetQueue(array<IEntity> entities, int lastIndex = 0)
+	protected void UpdateGearSetQueue(array<RplId> entityIds, int lastIndex = 0)
 	{
-		if (lastIndex >= entities.Count())
+		if (!entityIds || lastIndex >= entityIds.Count())
 			return;
 		
-		IEntity entity = entities[lastIndex];
+		IEntity entity = ResolveReplicatedEntity(entityIds[lastIndex]);
+		if (!entity)
+		{
+			GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entityIds, lastIndex + 1);
+			return;
+		}
 		
 		// Grab prefab name and check if its a valid gearscript
-		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+		EntityPrefabData prefabData = entity.GetPrefabData();
+		if (!prefabData)
+		{
+			GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entityIds, lastIndex + 1);
 			return;
+		}
+
+		ResourceName prefab = prefabData.GetPrefabName();
+		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+		{
+			GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entityIds, lastIndex + 1);
+			return;
+		}
 		
 		// Prevent Lockup and invisible weapon if player
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
@@ -1228,10 +1286,12 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			//m_RplBroadcastManager.HolsterGun(playerId);
 		}
 		
-		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);
+		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+		if (gearscriptManager)
+			gearscriptManager.SetEntityGear(entity, prefab);
 		
 		// Queue next entity
-		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex + 1);
+		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entityIds, lastIndex + 1);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1269,18 +1329,22 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		Resource resource = Resource.Load(prefab);
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
+		if (!resourceSpawned)
+			return;
+
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
-			delete resourceSpawned;
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+			return;
+		}
 		
 		if (resourceSpawned)
 			if (resourceSpawned.FindComponent(CVON_RadioComponent))
 			{
-				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-				CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-				SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-				GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
-				GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
-				CRF_PlayerRplToOwnerManager.GetInstance().InitializeRadioFromServer();
+				GetGame().GetCallqueue().CallLater(InitializePlayerRadiosDelayed, 500, false, playerId);
+				CRF_PlayerRplToOwnerManager ownerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+				if (ownerManager)
+					ownerManager.InitializeRadioFromServer();
 			
 			}
 	}
@@ -1471,21 +1535,36 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!player)
 			return;
 		
+		Resource itemResource = Resource.Load(newResource);
+		if (!itemResource || !itemResource.IsValid())
+			return;
+
 		EntitySpawnParams params = new EntitySpawnParams();
 		player.GetTransform(params.Transform);
 		
-		IEntity newItem = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
-		
 		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
 		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
+		if (!invManager || !invComponent)
+			return;
+
+		IEntity newItem = GetGame().SpawnEntityPrefab(itemResource, null, params);
+		if (!newItem)
+			return;
+
+		if (slotId < 0)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
+			return;
+		}
+
 		IEntity oldItem = invComponent.Get(slotId);
 		if (!oldItem)
 		{
-			invManager.TryInsertItem(newItem);
+			if (!invManager.TryInsertItem(newItem))
+				SCR_EntityHelper.DeleteEntityAndChildren(newItem);
 			return;
 		}
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
-		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
 		ref array<IEntity> pouches = {};
 		if (oldStorageComp)
 			oldStorageComp.GetAll(pouches);
@@ -1493,6 +1572,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
 		foreach (IEntity pouch: pouches)
 		{
+			if (!pouch || !pouch.GetPrefabData())
+				continue;
+
 			if (!pouch.FindComponent(BaseInventoryStorageComponent))
 			{
 				items.Insert(pouch.GetPrefabData().GetPrefabName());
@@ -1503,7 +1585,8 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);
 			foreach (IEntity tempItem: tempItems)
 			{
-				items.Insert(tempItem.GetPrefabData().GetPrefabName());
+				if (tempItem && tempItem.GetPrefabData())
+					items.Insert(tempItem.GetPrefabData().GetPrefabName());
 			}
 		}
 		if (!invManager.CanReplaceItem(newItem, invComponent, slotId))
@@ -1513,7 +1596,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(oldItem.FindComponent(InventoryItemComponent));
 		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newItem.FindComponent(InventoryItemComponent));
-		if (oldItemComp && newItemComp)
+		if (oldItemComp && newItemComp && oldItemComp.GetUIInfo() && newItemComp.GetUIInfo())
 		{
 			string oldItemName = oldItemComp.GetUIInfo().GetName();
 			string newItemName = newItemComp.GetUIInfo().GetName();
@@ -1521,20 +1604,62 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			newItemName, playerId, false);
 		}
 		
+		// This instance was only needed for compatibility validation. Recreate it
+		// after the delay so the call queue retains value data rather than entities
+		// or native inventory components.
+		SCR_EntityHelper.DeleteEntityAndChildren(newItem);
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
-		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, playerId, player);
+		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, playerId, newResource, slotId, items);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	protected void AddVestDelay(int playerId, ResourceName newResource, int slotId, array<ResourceName> items)
 	{
-		invManager.TryReplaceItem(newItem, invComponent, slotId);
-		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, playerId, player);
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+
+		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
+		Resource itemResource = Resource.Load(newResource);
+		if (!invManager || !invComponent || slotId < 0 || !itemResource || !itemResource.IsValid())
+			return;
+
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
+		IEntity newItem = GetGame().SpawnEntityPrefab(itemResource, null, params);
+		if (!newItem)
+			return;
+
+		if (!invManager.TryReplaceItem(newItem, invComponent, slotId))
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
+			return;
+		}
+
+		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, playerId, slotId, items);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	protected void AddItemDelay(int playerId, int slotId, array<ResourceName> items)
 	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player || !items)
+			return;
+
+		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
+		if (!invManager || !invComponent || slotId < 0)
+			return;
+
+		IEntity newItem = invComponent.Get(slotId);
+		if (!newItem)
+			return;
+
+		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
+		if (!newStorageComp)
+			return;
+
 		for (int i = 0; i < items.Count(); i++)
 		{
 			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))
@@ -1559,17 +1684,36 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 					invManager.TrySpawnPrefabToStorage(items[i]);
 			}
 		}
-		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-		GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
-		GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
-		CRF_PlayerRplToOwnerManager.GetInstance().InitializeRadioFromServer();
+		GetGame().GetCallqueue().CallLater(InitializePlayerRadiosDelayed, 500, false, playerId);
+
+		CRF_PlayerRplToOwnerManager ownerManager = CRF_PlayerRplToOwnerManager.GetInstance();
+		if (ownerManager)
+			ownerManager.InitializeRadioFromServer();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void InitializePlayerRadiosDelayed(int playerId)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		if (groupsManager)
+			groupsManager.TuneFreqDelayWithPresets(playerId, player);
+
+		CRF_PlayerController playerController = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		if (playerController)
+			playerController.InitializeRadios(player);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
 	{
+		if (!attachments || !magazines || !magazineCounts || magazines.Count() != magazineCounts.Count())
+			return;
+
 		// Telemetry: 2 ints + string + 2 ResourceName arrays + int array + bool
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(newWeaponResource);
@@ -1588,7 +1732,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_MiniArsenalRequestNewWeapon", bytes);
 		
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		if (!player)
+		if (!player || !player.GetPrefabData())
 			return;
 		
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(player.GetPrefabData().GetPrefabName());
@@ -1596,31 +1740,62 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		EntitySpawnParams params = new EntitySpawnParams();
 		player.GetTransform(params.Transform);
 		
-		IEntity newWeapon = GetGame().SpawnEntityPrefab(Resource.Load(newWeaponResource), null, params);
+		Resource weaponResource = Resource.Load(newWeaponResource);
+		if (!weaponResource || !weaponResource.IsValid())
+			return;
+
+		IEntity newWeapon = GetGame().SpawnEntityPrefab(weaponResource, null, params);
+		if (!newWeapon)
+			return;
 		
 		SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
 		SCR_CharacterInventoryStorageComponent storageComp = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));
 		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		if (!storageMan || !storageComp || !charController || !charController.GetWeaponManagerComponent())
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
 		
 		array<IEntity> items = {};
 		storageMan.GetItems(items);
 		
 		array<WeaponSlotComponent> weaponSlots = {};
 		charController.GetWeaponManagerComponent().GetWeaponsSlots(weaponSlots);
-		IEntity weapon;
+		int weaponSlotIndex = 2;
 		if (isPistol)
-			weapon = weaponSlots.Get(4).GetWeaponEntity();
-		else
-			weapon = weaponSlots.Get(2).GetWeaponEntity();
+			weaponSlotIndex = 4;
+
+		if (!weaponSlots.IsIndexValid(weaponSlotIndex) || !weaponSlots[weaponSlotIndex])
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
+
+		IEntity weapon;
+		weapon = weaponSlots[weaponSlotIndex].GetWeaponEntity();
+		
+		if (!weapon)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
 		
 		WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+		if (!weaponComp)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
+
 		array<BaseMuzzleComponent> muzzles = {};
 		weaponComp.GetMuzzlesList(muzzles);
 		
 		array<BaseMagazineWell> magazineWells = {};
 		foreach (BaseMuzzleComponent muzzle: muzzles)
 		{
-			magazineWells.Insert(muzzle.GetMagazineWell());
+			if (muzzle && muzzle.GetMagazineWell())
+				magazineWells.Insert(muzzle.GetMagazineWell());
 		}
 		//Delete all magazines related to the old weapon.
 		foreach (IEntity item: items)
@@ -1634,7 +1809,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			{
 				if (magComp.GetMagazineWell().Type() == magazineWell.Type())
 				{
-					delete item;
+					SCR_EntityHelper.DeleteEntityAndChildren(item);
 					break;
 				}
 			}
@@ -1642,7 +1817,7 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		InventoryItemComponent oldItemComp = InventoryItemComponent.Cast(weapon.FindComponent(InventoryItemComponent));
 		InventoryItemComponent newItemComp = InventoryItemComponent.Cast(newWeapon.FindComponent(InventoryItemComponent));
-		if (oldItemComp && newItemComp)
+		if (oldItemComp && newItemComp && oldItemComp.GetUIInfo() && newItemComp.GetUIInfo())
 		{
 			string oldItemName = oldItemComp.GetUIInfo().GetName();
 			string newItemName = newItemComp.GetUIInfo().GetName();
@@ -1650,47 +1825,92 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			newItemName, playerId, false);
 		}
 		
-		//Delete Old Weapon;
+		// Recreate the requested weapon after the delay. This avoids retaining
+		// entities and native inventory components in ScriptCallQueue arguments.
+		SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
 		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
-		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, storageMan, storageComp, newWeapon, attachments, magazines, magazineCounts, role);
+		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, playerId, newWeaponResource, attachments, magazines, magazineCounts, role);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
-	array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, CRF_EGearRole role)
+	protected void MiniArsenalRequestNewWeaponDelay(int playerId, ResourceName newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, CRF_EGearRole role)
 	{
+		if (!attachments || !magazines || !magazineCounts || magazines.Count() != magazineCounts.Count())
+			return;
+
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+
+		SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		SCR_CharacterInventoryStorageComponent storageComp = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));
+		Resource weaponResource = Resource.Load(newWeaponResource);
+		if (!storageMan || !storageComp || !weaponResource || !weaponResource.IsValid())
+			return;
+
 		EntitySpawnParams params = new EntitySpawnParams();
-		newWeapon.GetTransform(params.Transform);
-		storageMan.TryInsertItem(newWeapon);
+		player.GetTransform(params.Transform);
+		IEntity newWeapon = GetGame().SpawnEntityPrefab(weaponResource, null, params);
+		if (!newWeapon)
+			return;
+
+		if (!storageMan.TryInsertItem(newWeapon))
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newWeapon);
+			return;
+		}
+
 		int currentMagazine = 0;
 		foreach (int magazineCount: magazineCounts)
 		{
+			if (!magazines.IsIndexValid(currentMagazine))
+				break;
+
 			for (int i = 0; i < magazineCount; i++)
-				CRF_GearscriptManager.GetInstance().AddInventoryItem(magazines[currentMagazine], 1, params, storageComp, storageMan, role);
+			{
+				CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+				if (gearscriptManager)
+					gearscriptManager.AddInventoryItem(magazines[currentMagazine], 1, params, storageComp, storageMan, role);
+			}
 			
 			currentMagazine++;
 		}
 		
+		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(newWeapon.FindComponent(BaseInventoryStorageComponent));
+		BaseWeaponComponent newWeaponComp = BaseWeaponComponent.Cast(newWeapon.FindComponent(BaseWeaponComponent));
+		if (!weaponStorageComp || !newWeaponComp)
+			return;
+
+		array<AttachmentSlotComponent> attachmentSlots = {};
+		newWeaponComp.GetAttachments(attachmentSlots);
+
 		foreach (ResourceName attachment: attachments)
 		{
-			IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachment), GetGame().GetWorld(), params);
-			BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(newWeapon.FindComponent(BaseInventoryStorageComponent));
-			IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
-			BaseWeaponComponent newWeaponComp = BaseWeaponComponent.Cast(newWeapon.FindComponent(BaseWeaponComponent));
-			array<AttachmentSlotComponent> attachmentSlots = {};
-			newWeaponComp.GetAttachments(attachmentSlots);
+			Resource attachmentResource = Resource.Load(attachment);
+			if (!attachmentResource || !attachmentResource.IsValid())
+				continue;
+
+			IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(attachmentResource, GetGame().GetWorld(), params);
+			if (!attachmentSpawned)
+				continue;
 			
+			bool attached = false;
 			foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
 			{
-				if (attachmentSlot.CanSetAttachment(attachmentSpawned))
+				if (attachmentSlot && attachmentSlot.CanSetAttachment(attachmentSpawned))
 				{
+					IEntity oldSight = attachmentSlot.GetAttachedEntity();
 					if (oldSight)
-						delete oldSight;
+						SCR_EntityHelper.DeleteEntityAndChildren(oldSight);
 				
 					storageMan.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
+					attached = true;
 					break;
 				}
 			}
+
+			if (!attached)
+				SCR_EntityHelper.DeleteEntityAndChildren(attachmentSpawned);
 		}
 	}
 	
@@ -1949,6 +2169,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
 	{
+		if (!supplyItems || !supplyCounts || supplyItems.Count() != supplyCounts.Count())
+			return;
+
 		// Telemetry: 3 RplIds + ResourceName + int + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 3;
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(item);
@@ -1959,7 +2182,10 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
-			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
+			IEntity supplyDepot = ResolveReplicatedEntity(supplyItems[i]);
+			if (!supplyDepot)
+				continue;
+
 			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
             if (!resourceComponent)
                 continue;
@@ -1975,16 +2201,22 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
            	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
-		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		IEntity truck = ResolveReplicatedEntity(truckId);
 		if (!truck)
 			return;
-		
-		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
-		
+
+		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		if (!supplyArsenal)
+			return;
+
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
-		supplyComp.UpdateCurrentSupply();
-		
+		if (supplyComp)
+			supplyComp.UpdateCurrentSupply();
+
 		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!vehInventory)
+			return;
+
 		for (int i = 0; i < amount; i++)
 		{
 			vehInventory.TrySpawnPrefabToStorage(item);
@@ -1998,10 +2230,13 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_UpdateSupplyArsneal", CRF_BandwidthTelemetryManager.EstimateSize_RplId());
 		
-		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
-		
+		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		if (!supplyArsenal)
+			return;
+
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
-		supplyComp.UpdateCurrentSupply();
+		if (supplyComp)
+			supplyComp.UpdateCurrentSupply();
 	}	
 	
 	//------------------------------------------------------------------------------------------------
@@ -2020,6 +2255,9 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		
 		// Get slot origin
 		IEntity slotEntity = rplComponent.GetEntity();
+		if (!slotEntity)
+			return;
+
 		vector slotPos = slotEntity.GetOrigin();
 				
 		m_RplBroadcastManager.MoveSpecCamToSlot(slotPos, playerId);
@@ -2032,14 +2270,19 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		// Telemetry: 2 RplIds
 		LogTelemetry("RpcAsk_CreateCache", CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2);
 		
-		if (!Replication.FindItem(truckId) || !Replication.FindItem(playerId))
+		IEntity truck = ResolveReplicatedEntity(truckId);
+		IEntity player = ResolveReplicatedEntity(playerId);
+		if (!truck || !player)
 			return;
-		
-		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
-		IEntity player = RplComponent.Cast(Replication.FindItem(playerId)).GetEntity();
+
 		truck = truck.GetRootParent();
-		Print(truck);
+		if (!truck)
+			return;
+
 		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!vehInventory)
+			return;
+
 		array<IEntity> items = {};
 		vehInventory.GetItems(items);
 		if (items.Count() == 0)
@@ -2048,15 +2291,42 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.Transform[3] = GetSpawn(player);
 		
+		Vehicle vehicle = Vehicle.Cast(truck);
+		if (!vehicle)
+			return;
+
 		ResourceName prefab;
-		if (Vehicle.Cast(truck).m_sFactionKey == "BLUFOR")
+		if (vehicle.m_sFactionKey == "BLUFOR")
 			prefab = "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CRF_BLUFOR_Cache.et";
 		else
 			prefab = "{F636545E6893F50B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/CRF_OPFOR_Cache.et";
 		
-		IEntity cache = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
-		Print(cache.GetOrigin());
-		GetGame().GetCallqueue().CallLater(CreateCacheDelay, 100, false, cache, items);
+		Resource cacheResource = Resource.Load(prefab);
+		if (!cacheResource || !cacheResource.IsValid())
+			return;
+
+		IEntity cache = GetGame().SpawnEntityPrefab(cacheResource, GetGame().GetWorld(), spawnParams);
+		if (!cache)
+			return;
+
+		RplId cacheId = Replication.FindItemId(cache);
+		if (cacheId == RplId.Invalid())
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(cache);
+			return;
+		}
+
+		array<ResourceName> itemResources = {};
+		foreach (IEntity item : items)
+		{
+			if (!item || !item.GetPrefabData())
+				continue;
+
+			itemResources.Insert(item.GetPrefabData().GetPrefabName());
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		}
+
+		GetGame().GetCallqueue().CallLater(CreateCacheDelay, 100, false, cacheId, itemResources);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2078,17 +2348,23 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void CreateCacheDelay(IEntity cache, array<IEntity> items)
+	protected void CreateCacheDelay(RplId cacheId, array<ResourceName> itemResources)
 	{
+		IEntity cache = ResolveReplicatedEntity(cacheId);
+		if (!cache || !itemResources)
+			return;
+
 		SCR_InventoryStorageManagerComponent invComp = SCR_InventoryStorageManagerComponent.Cast(cache.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!invComp)
+			return;
 		
 			
-		foreach (IEntity item: items)
+		foreach (ResourceName itemResource : itemResources)
 		{
-			if (!item)
+			if (itemResource.IsEmpty())
 				continue;
-			invComp.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName());
-			SCR_EntityHelper.DeleteEntityAndChildren(item);
+
+			invComp.TrySpawnPrefabToStorage(itemResource);
 		}
 	}
 
@@ -2102,15 +2378,22 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!Replication.FindItem(truckId))
 			return;
 		
-		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
-		
-		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+		IEntity truck = ResolveReplicatedEntity(truckId);
+		Vehicle vehicle = Vehicle.Cast(truck);
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (!vehicle || !vehicleGearscriptManager)
+			return;
+
+		vehicle.UpdateVehicleSupplies(vehicleGearscriptManager.GetSuppliesInTruck(truck));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
 	{
+		if (!supplyItems || !supplyCounts || supplyItems.Count() != supplyCounts.Count())
+			return;
+
 		// Telemetry: 2 RplIds + RplId array + int array
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId() * 2;
 		bytes += 4 + (supplyItems.Count() * CRF_BandwidthTelemetryManager.EstimateSize_RplId()); // Array length + items
@@ -2120,12 +2403,19 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		if (!Replication.FindItem(truckId))
 			return;
 		
-		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
-		
-		CRF_VehicleGearscriptManager.GetInstance().SetVehicleGear(truck, Vehicle.Cast(truck).m_sFactionKey);
+		IEntity truck = ResolveReplicatedEntity(truckId);
+		Vehicle vehicle = Vehicle.Cast(truck);
+		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (!vehicle || !vehicleGearscriptManager)
+			return;
+
+		vehicleGearscriptManager.SetVehicleGear(truck, vehicle.m_sFactionKey);
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
-			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
+			IEntity supplyDepot = ResolveReplicatedEntity(supplyItems[i]);
+			if (!supplyDepot)
+				continue;
+
 			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
             if (!resourceComponent)
                 continue;
@@ -2141,11 +2431,15 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
            	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
-		IEntity rearmTruck = RplComponent.Cast(Replication.FindItem(rearmTruckId)).GetEntity();
+		IEntity rearmTruck = ResolveReplicatedEntity(rearmTruckId);
+		if (!rearmTruck)
+			return;
+
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(rearmTruck.FindComponent(CRF_SupplyArsenalComponent));
-		supplyComp.UpdateCurrentSupply();
-		
-		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_VehicleGearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+		if (supplyComp)
+			supplyComp.UpdateCurrentSupply();
+
+		vehicle.UpdateVehicleSupplies(vehicleGearscriptManager.GetSuppliesInTruck(truck));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2399,12 +2693,42 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
 	{
-		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
-		
+		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		if (!supplyArsenal)
+			return;
+
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		if (!supplyComp)
 			return;
 		supplyComp.UpdateCurrentSupply();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RegisterPlayerForLottery(int playerId, string factionKey, string squadFilter)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.RegisterPlayerForLottery_Server(playerId, factionKey, squadFilter);
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RunSlotLottery(int requestingPlayerId)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.RunSlotLottery_Server(requestingPlayerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ClearSlotLottery(int requestingPlayerId)
+	{
+		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
+		if (slotLottery)
+			slotLottery.ClearSlotLottery_Server(requestingPlayerId);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -2417,7 +2741,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerRplToAuthorityManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerRplToAuthorityManager GetInstance()
 	{

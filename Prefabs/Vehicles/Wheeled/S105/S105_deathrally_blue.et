@@ -81,7 +81,7 @@ Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
   }
  }
  {
-  Turret : "{892983848E4077A8}mk19/Tripod_M122_mk19.et" {
+  Turret {
    ID "6268E8E39B5BFA7D"
    components {
     RigidBody "{51ACD09C423F175F}" {

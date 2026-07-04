@@ -312,11 +312,18 @@ class CRF_MenuManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_MenuManager m_sInstance;
-	void CRF_MenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_MenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_MenuManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_MenuManager GetInstance()
 	{

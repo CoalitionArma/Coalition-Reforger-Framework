@@ -15,4 +15,5 @@ enum CRF_EGamemode
 	SUPPLYEXTRACT,
 	RALLY,
 	PROPHUNT,
+	KOTH,
 }

@@ -15,7 +15,7 @@ class CRF_RespawnManagerSerializer : ScriptedStateSerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override ESerializeResult Serialize(notnull Managed instance, notnull BaseSerializationSaveContext context)
+	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		if (!respawnManager)
@@ -39,7 +39,7 @@ class CRF_RespawnManagerSerializer : ScriptedStateSerializer
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override bool Deserialize(notnull Managed instance, notnull BaseSerializationLoadContext context)
+	override bool Deserialize(notnull Managed instance, notnull LoadContext context)
 	{
 		int version;
 		if (!context.ReadValue("version", version))

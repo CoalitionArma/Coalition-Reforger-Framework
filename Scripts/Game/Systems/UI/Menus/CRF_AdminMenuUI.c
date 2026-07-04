@@ -1081,6 +1081,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 			array<string> data = {};
 		
 			ticketName.Split(":", data, true);
+			if (data.IsEmpty())
+				return;
+
 			ticketID = data[0].ToInt();
 			if (ticketID == 0)
 				return;
@@ -1322,11 +1325,11 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (playerId == 0)
 			return;
 		
-		int selectedGroupID = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
+		SCR_AIGroup selectedGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
 		
 		foreach (int i, SCR_AIGroup group : m_outGroups)
 		{
-			if (selectedGroupID == group.GetGroupID())
+			if (selectedGroup == group)
 			{
 				// Adjust index for client mode
 				int itemIndex = i;
@@ -1512,12 +1515,14 @@ class CRF_AdminMenu : ChimeraMenuBase
 	void TeleportLocalPlayer(int playerId1, int playerId2)
 	{
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
+		if (!entity2)
+		{
+			Print("[CRF] CRF_AdminMenuUI: TeleportLocalPlayer - destination player has no controlled entity (may still be spawning)", LogLevel.WARNING);
+			return;
+		}
+
 		vector teleportLocation = vector.Zero;
 		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
-		spawnParams.Transform[3] = teleportLocation;
-
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 	}
 	
@@ -1946,7 +1951,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	
 	void LoadGearConfigList()
 	{
-		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();
+		JsonLoadContext ctx = new JsonLoadContext();
 		m_gearsetlist = new CRF_GearScriptConfigStruct();
 	
 		if (!ctx.LoadFromFile("configs/GearScripts/GearScriptsConfigList.json"))
@@ -1988,12 +1993,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		array<string> requestParts = {};
 		button.GetName().Split("_", requestParts, true);
+		if (requestParts.Count() < 3)
+			return;
 		
 		string action = requestParts[1];
 		int delta = requestParts[2].ToInt();
 		FactionKey faction = requestParts[0];
 		
-		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateTicket(action, faction, delta);
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager)
+			rplManager.UpdateTicket(action, faction, delta);
 	}
 	
 	void UpdateGearSets()

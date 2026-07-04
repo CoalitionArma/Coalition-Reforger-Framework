@@ -73,7 +73,14 @@ class CRF_PlayerSettingsManager : ScriptComponent
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerSettingsManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerSettingsManager GetInstance()
 	{

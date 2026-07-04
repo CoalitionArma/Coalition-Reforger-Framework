@@ -246,7 +246,13 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
-		SCR_GameModeHealthSettings.Cast(GetGame().GetGameMode().FindComponent(SCR_GameModeHealthSettings)).SetUnconsciousnessPermitted(false);
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (!gameMode)
+			return;
+
+		SCR_GameModeHealthSettings healthSettings = SCR_GameModeHealthSettings.Cast(gameMode.FindComponent(SCR_GameModeHealthSettings));
+		if (healthSettings)
+			healthSettings.SetUnconsciousnessPermitted(false);
 	}
 	
 	//Finds a spawnpoint with no players around it, or if none available picks a random one.
@@ -276,8 +282,14 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 		
 		RandomGenerator random = new RandomGenerator();
+		if (amountOfSpawns <= 0)
+			return vector.Zero;
+
 		int randomSpawn = random.RandInt(0, amountOfSpawns);
 		IEntity randomSpawnpoint = GetGame().GetWorld().FindEntityByName("spawnpoint" + randomSpawn);
+		if (!randomSpawnpoint)
+			return vector.Zero;
+
 		return randomSpawnpoint.GetOrigin();
 	}
 	
@@ -367,9 +379,6 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			}
 		}
 		
-		vector dubugSpawnPointVector[4];
-		GetGame().GetWorld().FindEntityByName("debugSpawnpoint").GetWorldTransform(dubugSpawnPointVector);
-		
 		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID());
 	}
 	
@@ -391,8 +400,16 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	{
 		GetGame().GetMenuManager().CloseAllMenus();
 		m_GameOverMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_GunGameEnd);
+		if (!m_GameOverMenu)
+			return;
+
 		Widget menuWidget = m_GameOverMenu.GetRootWidget();
+		if (!menuWidget)
+			return;
+
 		ref array<int> winners = GetWinners();
+		if (!winners || winners.Count() < 3)
+			return;
 		
 		if (winners.Get(0) != -1)
 			TextWidget.Cast(menuWidget.FindWidget("First")).SetText("1st. " + GetGame().GetPlayerManager().GetPlayerName(winners.Get(0)));
@@ -520,14 +537,18 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		
 		//Used because if you're scoped in with a sniper and kill someone the PIP may stay on your screen, COMPLETELY BROKEN on workbench, works fine in Dedi.
-		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity()).FindComponent(BaseWeaponManagerComponent));
+		ChimeraCharacter localChar = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
 		IEntity currentWeapon;
 		IEntity currentSight;
-		if (weaponMan.GetCurrentWeapon())
+		if (localChar)
 		{
-			currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
-			if(weaponMan.GetCurrentWeapon().GetSights())
-				currentSight = weaponMan.GetCurrentWeapon().GetSights().GetOwner();
+			BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(localChar.FindComponent(BaseWeaponManagerComponent));
+			if (weaponMan && weaponMan.GetCurrentWeapon())
+			{
+				currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
+				if (weaponMan.GetCurrentWeapon().GetSights())
+					currentSight = weaponMan.GetCurrentWeapon().GetSights().GetOwner();
+			}
 		}
 		
 		if (currentWeapon)
@@ -555,8 +576,13 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (m_bIsDropshot)
 			AddMedal("{CA7E93826F34955D}UI/layouts/HUD/GunGame/Medals/Dropshot_Medal_BOII.edds", "DROPSHOT");
 		
-		if (SCR_DamageManagerComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_DamageManagerComponent)).GetHealthScaled() < 0.5)
-			AddMedal("{E6F99A749F738983}UI/layouts/HUD/GunGame/Medals/Survivor_Medal_BOII.edds", "SURVIVOR");
+		IEntity localControlledEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (localControlledEntity)
+		{
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(localControlledEntity.FindComponent(SCR_DamageManagerComponent));
+			if (damageManager && damageManager.GetHealthScaled() < 0.5)
+				AddMedal("{E6F99A749F738983}UI/layouts/HUD/GunGame/Medals/Survivor_Medal_BOII.edds", "SURVIVOR");
+		}
 		
 		if (m_bFirstKill)
 			AddMedal("{D2DCE578823A673C}UI/layouts/HUD/GunGame/Medals/FirstBlood_Medal_BOII.edds", "FIRST BLOOD");
@@ -566,7 +592,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		m_iComebackCounter = 0;
 		
-		if (vector.Distance(SCR_PlayerController.GetLocalControlledEntity().GetOrigin(), instigatorContextData.GetVictimEntity().GetOrigin()) > 100)
+		IEntity victimEntity = instigatorContextData.GetVictimEntity();
+		if (localControlledEntity && victimEntity && vector.Distance(localControlledEntity.GetOrigin(), victimEntity.GetOrigin()) > 100)
 			AddMedal("{33B404E44435E0D2}UI/layouts/HUD/GunGame/Medals/Long_Shot_Medal_BOII.edds", "LONGSHOT");
 		
 		if (m_iRevengePlayer >= 0)
@@ -694,11 +721,15 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateDropShot(float timeSlice)
 	{
-		if (!SCR_PlayerController.GetLocalControlledEntity())
+		IEntity localControlledEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (!localControlledEntity)
 			return;
-		if (!SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterControllerComponent))
+
+		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(localControlledEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (!characterController)
 			return;
-		if (SCR_CharacterControllerComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterControllerComponent)).GetStance() == ECharacterStance.PRONE)
+
+		if (characterController.GetStance() == ECharacterStance.PRONE)
 		{
 			m_fDropShotTimer += timeSlice;
 		}
@@ -795,13 +826,20 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		ImageWidget medalImage = ImageWidget.Cast(m_wHUD.FindWidget("MedalImage"));
 		TextWidget medalText = TextWidget.Cast(m_wHUD.FindWidget("MedalText"));
+		if (!medalImage || !medalText)
+			return;
+
 		//If no medal displaying lets display one.
 		if (!m_bIsMedalDisplaying)
 		{
-			medalImage.LoadImageTexture(0, m_aMedals.Get(0).m_sMedalImage);
+			GunGameMedalContainer firstMedal = m_aMedals.Get(0);
+			if (!firstMedal)
+				return;
+
+			medalImage.LoadImageTexture(0, firstMedal.m_sMedalImage);
 			medalImage.SetImage(0);
 			medalImage.SetOpacity(0);
-			medalText.SetText(m_aMedals.Get(0).m_sMedalText);
+			medalText.SetText(firstMedal.m_sMedalText);
 			medalText.SetOpacity(0);
 			AudioSystem.PlaySound("{A3D993FCC6520D36}Sounds/GunGame/MedalRevealShine.wav");
 		}
@@ -991,20 +1029,25 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		//Gives out the weapon for the current level the player is at.
 		int level = stats.m_iLevel;
 		ref CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
-		
+		if (!gunLevel)
+			return;
+
 		if (!ChimeraCharacter.Cast(entity))
 			return;
-		
+
 		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).FindComponent(BaseWeaponManagerComponent));
 		if (!weaponMan)
 			return;
-		
+
 		ref array<WeaponSlotComponent> outSlots = {};
 		weaponMan.GetWeaponsSlots(outSlots);
-	
+
 		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!storageManagerComponent)
+			return;
+
 		storageManagerComponent.TrySpawnPrefabToStorage(gunLevel.m_sWeapon, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
-		
+
 		for (int i = 1; i < gunLevel.m_iAmountOfMagazines; i++)
 		{
 			storageManagerComponent.TrySpawnPrefabToStorage(gunLevel.m_sMagazines, null, -1, EStoragePurpose.PURPOSE_ANY);
@@ -1037,11 +1080,21 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		
 		//Doing this to prevent complicated shit with previous levels mags
-		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(SCR_InventoryStorageManagerComponent));
+		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!controlledEntity)
+			return;
+
+		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!storageManagerComponent)
+			return;
+
 		ref array<IEntity> items = {};
 		storageManagerComponent.GetItems(items);
 		foreach (IEntity item: items)
 		{
+			if (!item || !item.GetPrefabData())
+				continue;
+
 			if (item.GetPrefabData().GetPrefabName() == m_aGunLevels.Get(level).m_sMagazines)
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}

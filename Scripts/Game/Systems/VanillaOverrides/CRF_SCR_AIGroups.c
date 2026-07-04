@@ -25,18 +25,52 @@ modded class SCR_AIGroup
 			if (!entity)
 				continue;
 			
-			if (!SCR_ChimeraCharacter.Cast(entity))
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+			if (!character)
 				continue;
 			
-			SCR_ChimeraCharacter.Cast(entity).GetCharacterController().SetDisableMovementControls(true);
+			CharacterControllerComponent characterController = character.GetCharacterController();
+			if (characterController)
+				characterController.SetDisableMovementControls(true);
 		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Carbon copy of vanilla AddPlayer without the GROUPS_PLAYER_JOINED notification (suppressed to avoid meta information)
 	override void AddPlayer(int playerID)
 	{
-		// Super up so we dont break the vanilla side
-		super.AddPlayer(playerID);
+		// Avoiding duplicate entries
+		if (m_aPlayerIDs.Contains(playerID))
+			return;
+
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_JOINED, playerID);
+		RPC_DoAddPlayer(playerID);
+		Rpc(RPC_DoAddPlayer, playerID);
+
+		// Start listening to disconnect events when we add the first player
+		if (m_aPlayerIDs.Count() == 1)
+		{
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+			{
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
+				gameMode.GetOnPlayerDisconnected().Insert(OnPlayerDisconnected);
+			}
+		}
+		// Now we need the player character's agent
+		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+		if (!controlledEntity)
+			QueueAddAgent(playerID);
+		else
+		{
+			SCR_PlayerController scriptedController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerID));
+			if (!scriptedController || !scriptedController.IsPossessing())
+				AddAgentFromControlledEntity(controlledEntity);
+		}
+
+		GetGame().GetCallqueue().CallLater(CheckForLeader, 0, false, playerID, false);
+
+		// End of original method ============================================================
 
 		// Get the current leader entity
 		PlayerManager playerManager = GetGame().GetPlayerManager();
@@ -65,6 +99,22 @@ modded class SCR_AIGroup
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
+	// Carbon copy of vanilla SetGroupLeader without the GROUPS_PLAYER_PROMOTED_LEADER notification (suppressed to avoid meta information)
+	override void SetGroupLeader(int playerID)
+	{
+		//reset custom name and description on leader change
+		if (GetNameAuthorID() != playerID)
+			SetCustomName("", 0);
+
+		if (GetDescriptionAuthorID() != playerID)
+			SetCustomDescription("", 0);
+
+		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_PROMOTED_LEADER, playerID);
+		RPC_SetLeaderID(playerID);
+		Rpc(RPC_SetLeaderID, playerID);
+	}
+
 	//------------------------------------------------------------------------------------------------	
 	// Removes the "x left your group" upon death or anything else. Fucking stupid tbh.
 	// This is a carbon copy of the method and may break if it changes in an update
@@ -84,6 +134,13 @@ modded class SCR_AIGroup
 		Rpc(RPC_DoRemovePlayer, playerID);
 		CheckForLeader(-1, false);
 		RemovePlayerAgent(playerID);
+
+		if (m_aPlayerIDs.IsEmpty())
+		{
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
+		}
 		//SCR_NotificationsComponent.SendToGroup(m_iGroupID, ENotification.GROUPS_PLAYER_LEFT, playerID);
 		
 		// End of original method (aka super) ===========================================
@@ -129,6 +186,19 @@ modded class SCR_AIGroup
 					break;
 				}
 			}
+		}
+	}
+
+	void ~SCR_AIGroup()
+	{
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(SetGarrison);
+			GetGame().GetCallqueue().Remove(CheckForLeader);
+
+			SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			if (gameMode)
+				gameMode.GetOnPlayerDisconnected().Remove(OnPlayerDisconnected);
 		}
 	}
 }

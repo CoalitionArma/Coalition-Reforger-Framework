@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{193AE6658A1629F3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Cache_Ins_1.et"
+ Name "{193AE6658A1629F3}Prefabs/Structures/Insurgency/CRF_Cache_1.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

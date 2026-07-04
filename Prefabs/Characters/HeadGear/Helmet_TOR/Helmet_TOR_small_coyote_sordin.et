@@ -1,11 +1,11 @@
 GameEntity : "{D9B30C3875AC2590}Prefabs/Characters/HeadGear/Helmet_TOR/Helmet_TOR_base.et" {
  ID "50D485E1435D6C72"
  components {
-  MeshObject "{5112706CD4157AE0}" {
-   Object "{15A73F326A4A817E}Assets/Characters/HeadGear/Helmet_TORnew/tor_s_sordin_ground.xob"
-  }
   ParametricMaterialInstanceComponent "{5854DCD8F168E46E}" {
    ColorAlbedo 1 0.521 0.2423 1
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{15A73F326A4A817E}Assets/Characters/HeadGear/Helmet_TORnew/tor_s_sordin_ground.xob"
   }
   RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
    Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {

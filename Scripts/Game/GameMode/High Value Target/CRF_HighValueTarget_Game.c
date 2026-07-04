@@ -3,11 +3,6 @@
 	
 	Tracks HVTs/VIPs (PHVT/AI/Object) and syncs their positions to map markers.
 	Supports multiple HVTs/VIPs with per-entry faction, marker text, and color configuration.
-	
-	ADMIN CHAT COMMANDS:
-  /hvt_reset_deaths  — Clears all permadeath-locked PLAYER HVT entries, allowing
-                       them to be re-registered on the next player check cycle (~120s).
-
 
 	FIXES:
 	- Fix A: timeDelay parameter for CRF_Mapmarker (now 0) was m_timeBetweenPings, causing CRF_MapMarker to essentially cache the transponder marker 
@@ -17,6 +12,9 @@
 	NOTES:
 	- Currently to track HVT JIPs/respawns & reapply vulnerability we use m_fPlayerCheckTimer (HVTs are invulnerable between re-registration. Edge case issue is that someone is respawned and within 60s is attempted to be killed. Shouldnt happen realistically.) Not ideal setup but cant find much else.
 	- HVT Prefab selection is what spawns when AI is used, or what Prefab/Slot (optional filter by faction) is used for player-controlled HVTs.
+	
+	REQUIREMENTS
+	- NEEDS ACE CAPTIVES unless we integrate our own captive/prisoner system. Will cause NULL pointers if not installed.
 
 	TODO:
 	- Less crappy re-registration of HVTs/VIPs?
@@ -45,6 +43,13 @@ enum CRF_HVTEntryType
 	AI,     
 	PLAYER, 
 	OBJECT  
+}
+
+enum CRF_AIHVTState
+{
+	UNCONSCIOUS, // Incapacitated with no regen
+	SURRENDERED, // ACE Captives: hands-up surrender animation, requires zipcuffs (ACE Captives required)
+	CUFFED       // ACE Captives: surrendered + zip-cuffed via captive system (ACE Captives required)
 }
 
 // HVT Entry Configuration Class
@@ -126,11 +131,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("BLUFOR", "auto", "Faction key for the searching side (only used if Filter Faction is enabled).", category: "Global Settings")]
 	string m_searcherFactionKey;
 
-	[Attribute("true", "auto", "Send a hint alert when the transponder pings. If Faction Filter is enabled, only the searcher faction receives it; otherwise all factions are notified.", category: "Global Settings")]
-	bool m_bHVTPingAlert;
-
-	[Attribute("true", "auto", "PLAYER HVTs only. Once a PLAYER HVT dies their entry is marked as dead - They will respawn as their slot but will not carry HVT functionality/alerts. Intended as a failsafe for a mission that for some reason that has respawns with the HVT component.", category: "Global Settings")]
-	bool m_bHVTPermadeath;
+	[Attribute("false", "auto", "Send the HVT's faction a hint notification when the transponder pings. If Faction Filter is enabled, sends to the searcher faction instead.", category: "Global Settings")]
+	bool m_updateDefender;
 	
 	//------------------------------------------------------------------------------------------------
 	// AI HVT SETTINGS (Applied to all AI-spawned HVTs)
@@ -139,8 +141,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("0 0 0", "auto", "The rotation (yaw/pitch/roll) applied to spawned AI HVTs.", category: "AI HVT Settings")]
 	vector m_hvtPrefabYaw;
 	
-	[Attribute("true", "auto", "Set AI HVTs to unconscious state on spawn.", category: "AI HVT Settings")]
-	bool m_setUnconcious;
+	[Attribute("0", UIWidgets.ComboBox, "State to apply to AI HVTs on spawn. UNCONSCIOUS: Incapacitated animation, must be drug or carried. SURRENDERED: ACE Captives hands-up animation, NEED ACE zipcuffs. CUFFED: Surrendered and zip-cuffed. The ACE cuff release action is permanently disabled for Surrendered/Cuffed states.", enums: ParamEnumArray.FromEnum(CRF_AIHVTState), category: "AI HVT Settings")]
+	CRF_AIHVTState m_eAIHVTState;
 	
 	//------------------------------------------------------------------------------------------------
 	// HVT ENTRIES
@@ -168,7 +170,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	
 	// Client-side: Track which markers have been removed for JIPS/mishaps/desyncs
 	ref set<int> m_sRemovedMarkerIndices = new set<int>();
-	ref set<int> m_sPermadeadEntries = new set<int>();   // Entry indices permanently closed by permadeath (PLAYER entries only)
 	
 	const string MARKER_ICON = "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds";
 	const int MARKER_SIZE = 50;
@@ -179,7 +180,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	
 	// ReplicationTimer prevents constant position updates to clients= (m_timeBetweenPings ; Performance good ?)
 	float m_fReplicationTimer = 0; // Timer for marker position replication now fires UpdateHVTPositions every m_timeBetweenPings seconds
-	float m_fPlayerCheckTimer = 0; // Checks + ReRegisters + Resets Invulnerability if set if player HVTs every 120s to catch JIP/respawns
+	float m_fPlayerCheckTimer = 0; // Checks + ReRegisters + Resets Invulnerability if set if player HVTs every 60s to catch JIP/respawns
 
 	//------------------------------------------------------------------------------------------------
 	
@@ -188,12 +189,24 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode()) 
 			return;
 		
-		SetEventMask(owner, EntityEvent.FIXEDFRAME);
-		
-		#ifndef WORKBENCH
-		if (RplSession.Mode() == RplMode.Client)
-			GetGame().GetCallqueue().CallLater(RegisterAdminChatCommands, 1000, false);
-		#endif
+		SetEventMask(owner, EntityEvent.FIXEDFRAME); // Testing event mask for initial clientside 
+	}
+
+	override void OnDelete(IEntity owner)
+	{
+		array<IEntity> trackedEntities = {};
+		foreach (IEntity hvtEntity, int entryIndex : m_mHVTEntryIndex)
+		{
+			if (hvtEntity)
+				trackedEntities.Insert(hvtEntity);
+		}
+
+		foreach (IEntity hvtEntity : trackedEntities)
+			UnregisterHVTEntity(hvtEntity);
+
+		m_mEntryToTransponder.Clear();
+		ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+		super.OnDelete(owner);
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -204,7 +217,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_fUpdateBuffer = 0;
 			
-			if (!CRF_Gamemode.GetInstance().IsRunning())
+			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+			if (!gamemode || !gamemode.IsRunning())
 				return;
 			
 			if (!m_bHVTStateSet)
@@ -217,7 +231,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// If safestart is never enabled, skip directly to GameInit
 			if (!m_bHasSafestartBegun)
 			{
-				if (CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				if (safestartManager && safestartManager.GetSafestartStatus())
 				{
 					m_bHasSafestartBegun = true;
 					return;
@@ -227,7 +242,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Wait for safestart to end before GameInit (skipped if safestart was never active)
 			if (!m_bGameInit)
 			{
-				if (m_bHasSafestartBegun && CRF_SafestartManager.GetInstance().GetSafestartStatus())
+				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				if (m_bHasSafestartBegun && safestartManager && safestartManager.GetSafestartStatus())
 					return;
 				
 				GameInit();
@@ -240,7 +256,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Server: Periodic player HVT re-registration
-			if (++m_fPlayerCheckTimer >= 120)
+			if (++m_fPlayerCheckTimer >= 60)
 			{
 				m_fPlayerCheckTimer = 0;
 				RegisterPlayerHVTs();
@@ -298,18 +314,35 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				
 				RegisterHVTEntity(hvtEntity, index);
 				
-				// AI-specific: rotation and unconscious state
+				// AI-specific: rotation and initial state
 				if (entry.m_eEntryType == CRF_HVTEntryType.AI)
 				{
 					hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
 					
-					if (m_setUnconcious)
+					switch (m_eAIHVTState)
 					{
-						SetEntityUnconscious(hvtEntity);
-						
-						SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
-						if (characterController)
-							characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+						case CRF_AIHVTState.SURRENDERED:
+						{
+							SetEntitySurrender(hvtEntity, false);
+							break;
+						}
+						case CRF_AIHVTState.CUFFED:
+						{
+							SetEntitySurrender(hvtEntity, true);
+							break;
+						}
+						case CRF_AIHVTState.UNCONSCIOUS:
+						{
+							SetEntityUnconscious(hvtEntity);
+							
+							SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+							if (characterController)
+							{
+								characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
+								characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+							}
+							break;
+						}
 					}
 				}
 			}
@@ -342,9 +375,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.PLAYER)
 				continue;
 			
-			if (m_bHVTPermadeath && m_sPermadeadEntries.Contains(index))
-				continue;
-			
 			if (m_mEntryToHVT.Contains(index))
 			{
 				IEntity existingHVT = m_mEntryToHVT.Get(index);
@@ -364,12 +394,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			IEntity existingHVT = m_mEntryToHVT.Get(entryIndex);
 			if (existingHVT)
-			{
-				m_mHVTEntryIndex.Remove(existingHVT);
-				m_mHVTDamageManagers.Remove(existingHVT);
-			}
-			
-			m_mEntryToHVT.Remove(entryIndex);
+				UnregisterHVTEntity(existingHVT);
 		}
 		
 		PlayerManager playerManager = GetGame().GetPlayerManager();
@@ -428,7 +453,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		// Hook death callback
 		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (characterController)
+		{
+			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
 			characterController.m_OnPlayerDeathWithParam.Insert(OnHVTDeath);
+		}
 		
 		// ALWAYS set damage state to match component setting (overrides prefab default on spawn/respawn)
 		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
@@ -438,11 +466,39 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			m_mHVTDamageManagers.Set(hvtEntity, damageManager); // Cache for IsHVTAlive
 		}
 	}
+
+	protected void UnregisterHVTEntity(IEntity hvtEntity)
+	{
+		if (!hvtEntity)
+			return;
+
+		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+		if (characterController)
+		{
+			characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
+			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
+		}
+
+		if (m_mHVTEntryIndex.Contains(hvtEntity))
+		{
+			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
+			if (m_mEntryToHVT.Contains(entryIndex) && m_mEntryToHVT.Get(entryIndex) == hvtEntity)
+				m_mEntryToHVT.Remove(entryIndex);
+		}
+
+		m_mHVTEntryIndex.Remove(hvtEntity);
+		m_mHVTDamageManagers.Remove(hvtEntity);
+	}
 	
 	// HVT death callback - syncs positions and shows hint
 	void OnHVTDeath(SCR_CharacterControllerComponent characterController, IEntity killerEntity, Instigator killer)
 	{
+		if (!characterController)
+			return;
+
 		IEntity hvtEntity = characterController.GetOwner();
+		if (!hvtEntity)
+			return;
 		
 		// Immediately sync positions - zero position will trigger marker removal on clients
 		if (m_bEnableTransponderMarker)
@@ -466,9 +522,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				CRF_HVTEntry entry = m_aHVTEntries[entryIndex];
 				if (entry && entry.m_eFaction != CRF_HVTFaction.NONE)
 					hvtFactionLabel = entry.GetFactionKey() + " ";
-				
-				if (m_bHVTPermadeath && entry && entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
-					m_sPermadeadEntries.Insert(entryIndex);
 			}
 		}
 		
@@ -484,7 +537,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Get killer info
 		string killerLabel = "";
-		if (factionManager)
+		if (factionManager && killer)
 		{
 			Faction killerFaction = factionManager.GetPlayerFaction(killer.GetInstigatorPlayerID());
 			if (killerFaction)
@@ -495,6 +548,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_sDeadHVTHint = hvtFactionLabel + targetLabel + playerNameLabel + killerLabel;
 		Replication.BumpMe();
 		OnDeadHVTHintReplicated();
+		UnregisterHVTEntity(hvtEntity);
 	}
 	
 	// Client: Show hint when replicated
@@ -526,13 +580,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			
 			if (m_bEnableTransponderMarker && m_bInitialPing)
 				UpdateHVTPositions();
-			
-			if (m_bHVTPermadeath)
-			{
-				CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-				if (bm)
-					bm.BroadcastAdminChatMessage("[CRF HVT] /hvt_reset_deaths - reset the disabled tracking of dead PHVTs.");
-			}
 		}
 		
 		// Client/Listen: Create markers
@@ -673,7 +720,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// Server: Notify the relevant faction that the transponder has pinged
-		if (m_bHVTPingAlert && Replication.IsServer())
+		if (m_updateDefender && Replication.IsServer())
 		{
 			string targetLabel = "HVT";
 			if (m_eTargetType == CRF_TargetType.VIP)
@@ -693,11 +740,42 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				if (m_filterFaction)
 					pingFactionKey = m_searcherFactionKey;
 				
-				CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-				if (!bm)
-					continue;
-				
-				bm.SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
+				CRF_RplBroadcastManager.GetInstance().SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
+			}
+		}
+	}
+	
+	// Apply ACE Captives state to an AI HVT. Surrendered = hands-up, Cuffed = tied/restrained.
+	// Note: Calling SetCaptive and SetSurrender together causes a ACE Captives animation conflict that causes errors
+	// The ACE release action is permanently disabled via SetActionEnabled_S in both cases.
+	void SetEntitySurrender(IEntity entity, bool cuffed)
+	{
+		if (!entity)
+			return;
+		
+		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
+		if (!charController)
+			return;
+		
+		if (cuffed)
+			charController.ACE_Captives_SetCaptive(true);
+		else
+			charController.ACE_Captives_SetSurrender(true);
+		
+		// Disable the ACE release action for all clients via server-authoritative flag.
+		// SetActionEnabled_S replicates to clients — CanBeShown() returns false everywhere.
+		ActionsManagerComponent actionsManager = ActionsManagerComponent.Cast(entity.FindComponent(ActionsManagerComponent));
+		if (actionsManager)
+		{
+			array<BaseUserAction> actions = {};
+			actionsManager.GetActionsList(actions);
+			foreach (BaseUserAction action : actions)
+			{
+				if (action.IsInherited(ACE_Captives_ReleaseCaptiveUserAction))
+				{
+					action.SetActionEnabled_S(false);
+					break;
+				}
 			}
 		}
 	}
@@ -735,53 +813,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (hvtEntity && IsHVTAlive(hvtEntity))
 				SetEntityUnconscious(hvtEntity);
 		}
-	}
-	
-
-	protected void RegisterAdminChatCommands()
-	{
-		SCR_ChatPanelManager chatMgr = SCR_ChatPanelManager.GetInstance();
-		if (!chatMgr)
-			return;
-		
-		chatMgr.GetCommandInvoker("hvt_reset_deaths").Insert(OnChatCmd_ResetPermadeath);
-	}
-	
-	protected void OnChatCmd_ResetPermadeath(SCR_ChatPanel panel, string data)
-	{
-		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
-			return;
-		
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
-		if (mgr)
-			mgr.RequestHVTAdminCommand("reset_permadeath", "");
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcDo_AdminHVTCommand(int callerId, string cmd, string param)
-	{
-		if (!SCR_Global.IsAdmin(callerId))
-			return;
-		
-		HandleAdminCommand(callerId, cmd, param);
-	}
-	
-	void HandleAdminCommand(int adminPlayerId, string cmd, string param)
-	{
-		if (cmd == "reset_permadeath")
-			AdminResetPermadeath(adminPlayerId);
-	}
-	
-	protected void AdminResetPermadeath(int adminPlayerId)
-	{
-		m_sPermadeadEntries.Clear();
-		
-		string adminName = GetGame().GetPlayerManager().GetPlayerName(adminPlayerId);
-		string msg = string.Format("[CRF HVT] %1 reset HVT permadeath entries.", adminName);
-		
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-		if (bm)
-			bm.BroadcastAdminChatMessage(msg);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -831,6 +862,19 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		return null;
+	}
+	
+	// Getter bool for checking if entity is AIHVT
+	bool IsAIHVT(IEntity entity)
+	{
+		if (!entity || !m_mHVTEntryIndex.Contains(entity))
+			return false;
+		
+		int entryIndex = m_mHVTEntryIndex.Get(entity);
+		if (entryIndex < 0 || entryIndex >= m_aHVTEntries.Count())
+			return false;
+		
+		return m_aHVTEntries[entryIndex].m_eEntryType == CRF_HVTEntryType.AI;
 	}
 	
 	// Count HVTs within range of a position

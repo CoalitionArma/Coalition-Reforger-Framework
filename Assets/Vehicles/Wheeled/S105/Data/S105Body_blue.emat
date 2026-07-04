@@ -1,12 +1,5 @@
 MatPBRMulti {
  DielectricReflectance 0.02
- GlobalMCRMap "{26979FABA844179E}Assets/Vehicles/Wheeled/S105/Data/S105Body_MCR.edds"
- OverlayWhitePower 0.2
- MaskMap "{9E1079A780993226}Assets/_SharedData/VehicleParts/VehiclesCommon/vehicle_mask.edds"
- MaskRedScale 1
- VFXMap "{3D9987871F05E9AC}Assets/Vehicles/Wheeled/S105/Data/S105Body_VFX.edds"
- UseGlobAOOnly 1
- GlobalAOMap "{5529517227D2AA0D}Assets/Vehicles/Wheeled/S105/Data/S105Body_AO.edds"
  MudOpacity 0.94
  MudColor 0.122 0.111 0.093 1
  MudRoughness 0
@@ -28,6 +21,13 @@ MatPBRMulti {
   TilingU 10
   TilingV 10
  }
+ GlobalMCRMap "{26979FABA844179E}Assets/Vehicles/Wheeled/S105/Data/S105Body_MCR.edds"
+ OverlayWhitePower 0.2
+ MaskMap "{9E1079A780993226}Assets/_SharedData/VehicleParts/VehiclesCommon/vehicle_mask.edds"
+ MaskRedScale 1
+ VFXMap "{3D9987871F05E9AC}Assets/Vehicles/Wheeled/S105/Data/S105Body_VFX.edds"
+ UseGlobAOOnly 1
+ GlobalAOMap "{5529517227D2AA0D}Assets/Vehicles/Wheeled/S105/Data/S105Body_AO.edds"
  Enabled_4 1
  Color_4 0.231 0.231 0.231 1
  BCR_4 "{6390F3AA091C74E1}Assets/_SharedData/Metal/ST_MetalPaint_Mate_1m_BCR.edds"

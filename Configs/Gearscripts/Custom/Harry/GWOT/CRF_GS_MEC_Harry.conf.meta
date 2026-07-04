@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{6B126DA8848A412F}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEC_Harry.conf"
+ Name "{6B126DA8848A412F}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_MEC_Harry.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -72,6 +72,13 @@ class CRF_GameTimerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	void ~CRF_GameTimerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	static CRF_GameTimerManager GetInstance()
 	{
 		return m_sInstance;

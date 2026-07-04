@@ -81,5 +81,27 @@ FrameWidgetClass {
     Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
    }
   }
+  TextWidgetClass "{66C48CD1F0000001}" {
+   Name "TitleText3"
+   Slot FrameWidgetSlot "{66C48CD1F0000002}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -900
+    OffsetLeft -900
+    PositionY 380
+    OffsetTop 380
+    SizeX 1800
+    OffsetRight -900
+    SizeY 80
+    OffsetBottom -460
+   }
+   "Is Visible" 0
+   Text ""
+   "Font Size" 60
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BECC4669BF8CC2}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
  }
 }

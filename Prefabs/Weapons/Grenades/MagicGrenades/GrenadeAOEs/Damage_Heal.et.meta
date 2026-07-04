@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F283EFFDCC3E2574}Prefabs/Weapons/Grenades/MagicGrenades/Damage_PoisonHeal.et"
+ Name "{F283EFFDCC3E2574}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/Damage_Heal.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

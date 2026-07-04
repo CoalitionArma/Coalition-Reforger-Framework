@@ -12,11 +12,15 @@ class CRF_InitializationHelper
 
 		// Find radio in inventory
 		array<IEntity> items = {};
-		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!inventoryManager)
+			return;
+
+		inventoryManager.GetItems(items);
 		IEntity radioEntity;
 		foreach (IEntity item : items)
 		{
-			if (item.FindComponent(BaseRadioComponent))
+			if (item && item.FindComponent(BaseRadioComponent))
 			{
 				radioEntity = item;
 				break;
@@ -28,7 +32,12 @@ class CRF_InitializationHelper
 
 		// Get radio components
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		if (!radio)
+			return;
+
 		BaseTransceiver grpTsv = radio.GetTransceiver(0);
+		if (!grpTsv)
+			return;
 
 		// Get player's group
 		SCR_GroupsManagerComponent m_GroupManager = SCR_GroupsManagerComponent.GetInstance();
@@ -37,9 +46,11 @@ class CRF_InitializationHelper
 
 		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
 		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
 
 		// Set frequency based on group
-		if (pc && group)
+		if (group)
 		{
 			grpTsv.SetFrequency(group.GetRadioFrequency());
 		}
@@ -47,6 +58,8 @@ class CRF_InitializationHelper
 		// Set up Voice over Network component
 		SCR_VONController vc = SCR_VONController.Cast(pc.FindComponent(SCR_VONController));
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
+		if (!vc || !von)
+			return;
 
 		von.SetTransmitRadio(grpTsv);
 

@@ -3,13 +3,6 @@ MatPBRMulti {
  SpecularIBL 0.98 0.98 0.98 1
  Diffuse 0.005 0.005 0.005 1
  Specular 0.859 0.007 0.007 1
- GlobalMCRMap "{7CF857240DF0959B}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_MCR.edds"
- OverlayWhitePower 0
- UVSrcGlobalMaps "UV set 2"
- MaskMap "{180A195ADA305CB0}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_Mask.edds"
- VFXMap "{3452E91E88E37669}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_VFX.edds"
- GlobalNMOMap "{4420ECB6D487C705}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_NMO.edds"
- UVSrcDetail "UV set 2"
  MudOpacity 0.694
  MudColor 0.13 0.115 0.094 1
  MudRoughness 2
@@ -32,6 +25,13 @@ MatPBRMulti {
   TilingV 14
   OffsetV -0.324
  }
+ GlobalMCRMap "{7CF857240DF0959B}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_MCR.edds"
+ OverlayWhitePower 0
+ UVSrcGlobalMaps "UV set 2"
+ MaskMap "{180A195ADA305CB0}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_Mask.edds"
+ VFXMap "{3452E91E88E37669}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_VFX.edds"
+ GlobalNMOMap "{4420ECB6D487C705}Assets/Vehicles/Wheeled/S105/Data/S105_Body_01_NMO.edds"
+ UVSrcDetail "UV set 2"
  Enabled_4 1
  Color_4 0.013 0.012 0.012 1
  BCR_4 "{B888CADB9299DD3E}Assets/_SharedData/Plastic/ST_Plastic_Leather01_1m_BCR.edds"

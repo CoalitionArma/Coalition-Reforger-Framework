@@ -99,8 +99,11 @@ class CRF_EntityHelper
 	//! \return Faction key or empty string if not found
 	static FactionKey DetermineFactionKey(IEntity entity)
 	{
+		if (!entity)
+			return "CIV";
+
 		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
-		
+
 		if (!facComp)
 			return "CIV";
 		

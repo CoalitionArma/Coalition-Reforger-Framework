@@ -261,7 +261,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
      }
     }
-    CargoCompartmentSlot Passenger_R01 : "{D06C222F2BB4A491}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1_Right.conf" {
+    CargoCompartmentSlot Passenger_R01 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_R01"
@@ -281,7 +281,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
      }
     }
-    CargoCompartmentSlot Passenger_R02 : "{D06C222F2BB4A491}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1_Right.conf" {
+    CargoCompartmentSlot Passenger_R02 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_R02"
@@ -301,7 +301,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
      }
     }
-    CargoCompartmentSlot Passenger_R03 : "{D06C222F2BB4A491}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1_Right.conf" {
+    CargoCompartmentSlot Passenger_R03 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_R03"
@@ -321,7 +321,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
      }
     }
-    CargoCompartmentSlot Passenger_R04 : "{D06C222F2BB4A491}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1_Right.conf" {
+    CargoCompartmentSlot Passenger_R04 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_R04"
@@ -341,7 +341,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{631158F6898738A4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT.et"
      }
     }
-    CargoCompartmentSlot Passenger_L01 : "{CB6A2EDCF9FF2AA9}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1.conf" {
+    CargoCompartmentSlot Passenger_L01 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_L01"
@@ -361,7 +361,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{333DA6244C7DA34C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SR.et"
      }
     }
-    CargoCompartmentSlot Passenger_L02 : "{CB6A2EDCF9FF2AA9}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1.conf" {
+    CargoCompartmentSlot Passenger_L02 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_L02"
@@ -381,7 +381,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et"
      }
     }
-    CargoCompartmentSlot Passenger_L03 : "{CB6A2EDCF9FF2AA9}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1.conf" {
+    CargoCompartmentSlot Passenger_L03 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_L03"
@@ -401,7 +401,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
       m_sDefaultOccupantPrefab "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
      }
     }
-    CargoCompartmentSlot Passenger_L04 : "{CB6A2EDCF9FF2AA9}Prefabs/Vehicles/Tracked/BMP1/Configs/CargoCompartment_BMP1.conf" {
+    CargoCompartmentSlot Passenger_L04 {
      SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
       ParentContextList {
        "passenger_idle_L04"
@@ -947,12 +947,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L02"
        Output1 "Wheel_R02"
       }
-      Suspension Suspension "{4D8B26DF2B10AE05}" : "{966BEF4C4B522398}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension_Hard.conf" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
        MaxSteeringAngle 20
       }
-      Wheel Wheel "{5CB63E75C3728451}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75C3728451}" {
       }
-      Tyre Tyre "{5CB63E75CCA2638C}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75CCA2638C}" {
       }
       WheelPositions {
        WheelPosition Wheel_L02 {
@@ -972,12 +972,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L03"
        Output1 "Wheel_R03"
       }
-      Suspension Suspension "{5B3A8D44B1452858}" : "{ED3198AD721F851E}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension.conf" {
+      Suspension Suspension "{5B3A8D44B1452858}" {
        MaxSteeringAngle 10
       }
-      Wheel Wheel "{5CB63E75CEABD61F}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75CEABD61F}" {
       }
-      Tyre Tyre "{5CB63E75C97DC023}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75C97DC023}" {
       }
       WheelPositions {
        WheelPosition Wheel_L03 {
@@ -997,12 +997,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L04"
        Output1 "Wheel_R04"
       }
-      Suspension Suspension "{5B3A8D44BDC38472}" : "{ED3198AD721F851E}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension.conf" {
+      Suspension Suspension "{5B3A8D44BDC38472}" {
        MaxSteeringAngle 20
       }
-      Wheel Wheel "{5CB63E75CB21F1B9}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75CB21F1B9}" {
       }
-      Tyre Tyre "{5CB63E75CBE6B18C}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75CBE6B18C}" {
       }
       WheelPositions {
        WheelPosition Wheel_L04 {
@@ -1021,12 +1021,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L05"
        Output1 "Wheel_R05"
       }
-      Suspension Suspension "{5B3A8D44B986A4EB}" : "{ED3198AD721F851E}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension.conf" {
+      Suspension Suspension "{5B3A8D44B986A4EB}" {
        MaxSteeringAngle -20
       }
-      Wheel Wheel "{5CB63E75D5F89198}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75D5F89198}" {
       }
-      Tyre Tyre "{5CB63E75D69ADDFC}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75D69ADDFC}" {
       }
       WheelPositions {
        WheelPosition Wheel_L05 {
@@ -1046,12 +1046,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L06"
        Output1 "Wheel_R06"
       }
-      Suspension Suspension "{5B3A8D448659D92F}" : "{ED3198AD721F851E}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension.conf" {
+      Suspension Suspension "{5B3A8D448659D92F}" {
        MaxSteeringAngle -20
       }
-      Wheel Wheel "{5CB63E75D071A4F0}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75D071A4F0}" {
       }
-      Tyre Tyre "{5CB63E75D12E4D3B}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75D12E4D3B}" {
       }
       WheelPositions {
        WheelPosition Wheel_L06 {
@@ -1071,12 +1071,12 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
        Output0 "Wheel_L07"
        Output1 "Wheel_R07"
       }
-      Suspension Suspension "{5B3A8D44825ECF19}" : "{966BEF4C4B522398}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Suspension_Hard.conf" {
+      Suspension Suspension "{5B3A8D44825ECF19}" {
        MaxSteeringAngle -20
       }
-      Wheel Wheel "{5CB63E75D2E13AEA}" : "{D6A5CB323C315D68}Prefabs/Vehicles/Tracked/BMP1/Configs/BMP1Wheel.conf" {
+      Wheel Wheel "{5CB63E75D2E13AEA}" {
       }
-      Tyre Tyre "{5CB63E75D3856777}" : "{FDF879E8CF62A137}Prefabs/Vehicles/Tracked/BMP1/Configs/VehicleSimulationTire_BMP1.conf" {
+      Tyre Tyre "{5CB63E75D3856777}" {
       }
       WheelPositions {
        WheelPosition Wheel_L07 {
@@ -1181,135 +1181,6 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
    SoundPowerRpmMultiplierDb 28
   }
   WCS_Armament_VehicleCameraComponent "{66D60C80369F5204}" {
-   m_Cameras {
-    WCS_VehicleCameraProps "{66D60C80369F5207}" {
-     m_Position PointInfo "{66D60C80369FB7C3}" {
-      Offset -0.7222 1.6309 1.9984
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_driver_m01"
-    }
-    WCS_VehicleCameraProps "{66D60C80369FB7C2}" {
-     m_Position PointInfo "{66D60C80369FB7C5}" {
-      Offset -0.4719 1.6309 1.9541
-      Angles 0 30 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_driver_r01"
-    }
-    WCS_VehicleCameraProps "{66D60C80369FB7C4}" {
-     m_Position PointInfo "{66D60C80369830C6}" {
-      Offset -0.9789 1.6309 1.9621
-      Angles 0 -30 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_driver_l01"
-    }
-    WCS_VehicleCameraProps "{66D60C80369830C5}" {
-     m_Position PointInfo "{66D60C80369830C4}" {
-      Offset -1.0948 1.6309 1.6584
-      Angles 0 -90 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_driver_l02"
-    }
-    WCS_VehicleCameraProps "{66D60C80369830CB}" {
-     m_Position PointInfo "{66D60C80369873EF}" {
-      Offset -0.9 1.6714 -0.6047
-      Angles 0 -35 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_l01"
-    }
-    WCS_VehicleCameraProps "{66D60C80369873EE}" {
-     m_Position PointInfo "{66D60C803698E91C}" {
-      Offset -0.852 1.6714 -1.2205
-      Angles 0 -60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_l02"
-    }
-    WCS_VehicleCameraProps "{66D60C803698E91F}" {
-     m_Position PointInfo "{66D60C803698D14B}" {
-      Offset -0.8446 1.6714 -1.6536
-      Angles 0 -60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_l03"
-    }
-    WCS_VehicleCameraProps "{66D60C803698D14A}" {
-     m_Position PointInfo "{66D60C803698D14D}" {
-      Offset -0.8433 1.6714 -1.9391
-      Angles 0 -60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_l04"
-    }
-    WCS_VehicleCameraProps "{66D60C8036997CFE}" {
-     m_Position PointInfo "{66D60C8036997CFF}" {
-      Offset 0.9382 1.6714 -0.5998
-      Angles 0 35 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_r01"
-    }
-    WCS_VehicleCameraProps "{66D60C803699ABC4}" {
-     m_Position PointInfo "{66D60C803699ABC7}" {
-      Offset 0.902 1.6714 -1.2098
-      Angles 0 60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_r02"
-    }
-    WCS_VehicleCameraProps "{66D60C803699ABC6}" {
-     m_Position PointInfo "{66D60C803699FF70}" {
-      Offset 0.8875 1.6714 -1.6439
-      Angles 0 60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_r03"
-    }
-    WCS_VehicleCameraProps "{66D60C803699FE8F}" {
-     m_Position PointInfo "{66D60C80369A7C83}" {
-      Offset 0.8887 1.6714 -1.9344
-      Angles 0 60 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_r04"
-    }
-    WCS_VehicleCameraProps "{66D60C80369A7C82}" {
-     m_Position PointInfo "{66D60C80369A7C81}" {
-      PivotID "v_rear_hatch_L"
-      Offset 0.5507 0.5142 -0.2102
-      Angles 0 180 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_rear_01"
-    }
-    WCS_VehicleCameraProps "{66D60C80369A7C80}" {
-     m_Position PointInfo "{66D60C80369A5762}" {
-      PivotID "v_rear_hatch_R"
-      Offset -0.5461 0.5142 -0.2102
-      Angles 0 180 0
-     }
-     m_bIsInstant 1
-     m_OverlayLayout "{A9758BBE1909FEFD}UI/layouts/Editor/Overlays/Vignettes/Vignette_VeryHeavy.layout"
-     m_sId "periscope_passenger_rear_02"
-    }
-   }
   }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {

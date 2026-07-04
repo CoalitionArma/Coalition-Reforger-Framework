@@ -74,18 +74,25 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected SCR_GroupsManagerComponent m_GroupsManager;
 	protected CRF_RplBroadcastManager m_BroadcastManager;
-	
+	protected PlayerManager m_PlayerManager;
+
 	// Server-side tracking (authority data)
 	protected ref map<int, string> m_mServerGroupLeaders = new map<int, string>(); // playerId -> groupName
 	protected bool m_bSafestartActive = false;
-	
+
 	// Client-side tracking (UI data)
 	protected ref map<int, ref CRF_GroupLeaderMarkerData> m_mPlayerMarkers = new map<int, ref CRF_GroupLeaderMarkerData>();
 	protected bool m_bIsInitialized = false;
-	
+
 	// Update timer
 	protected float m_fUpdateTimer = 0.0;
-	protected float m_fUpdateInterval = 1.0; // Check every second
+	protected float m_fUpdateInterval = 1.0;
+
+	// Reusable scratch buffers — avoid per-frame heap allocations
+	protected ref array<int> m_aScratchPlayerIds = {};
+	protected ref array<int> m_aScratchGroupLeaders = {};
+	protected ref array<int> m_aScratchToRemove = {};
+	protected ref map<int, string> m_mScratchLeaders = new map<int, string>();
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 INITIALIZATION
@@ -101,32 +108,28 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_GroupsManager = SCR_GroupsManagerComponent.GetInstance();
 		m_BroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		
+		m_PlayerManager = GetGame().GetPlayerManager();
+
 		if (!m_SafestartManager || !m_GroupsManager)
 			return;
-		
+
 		// Server-side initialization
 		if (Replication.IsServer())
 		{
-			// Subscribe to safestart changes on server
 			if (m_SafestartManager.m_OnSafeStartChange)
 				m_SafestartManager.m_OnSafeStartChange.Insert(OnSafestartChangedServer);
-			
-			// Initial check for safestart state
+
 			m_bSafestartActive = m_SafestartManager.GetSafestartStatus();
-			
-			SetEventMask(owner, EntityEvent.FRAME);
+			if (m_bSafestartActive)
+				SetEventMask(owner, EntityEvent.FRAME);
 		}
 		// Client-side initialization
 		else
 		{
-			// Subscribe to safestart changes on client
 			if (m_SafestartManager.m_OnSafeStartChange)
 				m_SafestartManager.m_OnSafeStartChange.Insert(OnSafestartChangedClient);
-			
-			SetEventMask(owner, EntityEvent.FRAME);
-			
-			// Delayed start to ensure everything is initialized
+
+			// Frame enabled lazily when safestart begins (see InitializeClientUI)
 			GetGame().GetCallqueue().CallLater(InitializeClientUI, 3000, false);
 		}
 	}
@@ -136,14 +139,12 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected void InitializeClientUI()
 	{
 		m_bIsInitialized = true;
-		
-		// Check initial safestart state
+
 		m_bSafestartActive = m_SafestartManager.GetSafestartStatus();
-		
-		Print(string.Format("[CRF_GroupLeaderMarkerManager] Client initialized - Safestart active: %1", m_bSafestartActive));
-		
+
 		if (m_bSafestartActive)
 		{
+			SetEventMask(GetOwner(), EntityEvent.FRAME);
 			UpdateGroupLeaderMarkers();
 		}
 	}
@@ -196,15 +197,15 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected void OnSafestartChangedServer(bool safestartActive)
 	{
 		m_bSafestartActive = safestartActive;
-		
+
 		if (safestartActive)
 		{
-			// Safestart started - update tracking
+			SetEventMask(GetOwner(), EntityEvent.FRAME);
 			UpdateServerGroupLeaderTracking();
 		}
 		else
 		{
-			// Safestart ended - clear all markers
+			ClearEventMask(GetOwner(), EntityEvent.FRAME);
 			BroadcastClearAllMarkers();
 			m_mServerGroupLeaders.Clear();
 		}
@@ -214,56 +215,47 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	//! Update server-side group leader tracking and broadcast changes
 	protected void UpdateServerGroupLeaderTracking()
 	{
-		if (!m_bSafestartActive || !m_GroupsManager)
+		if (!m_bSafestartActive || !m_GroupsManager || !m_PlayerManager)
 			return;
-		
-		// Track current group leaders
-		map<int, string> currentLeaders = new map<int, string>();
-		
-		// Get all players
-		array<int> playerIds = {};
-		GetGame().GetPlayerManager().GetPlayers(playerIds);
-		
-		foreach (int playerId : playerIds)
+
+		// Reuse scratch buffers to avoid per-call heap allocations
+		m_mScratchLeaders.Clear();
+		m_aScratchPlayerIds.Clear();
+		m_aScratchToRemove.Clear();
+
+		m_PlayerManager.GetPlayers(m_aScratchPlayerIds);
+
+		foreach (int playerId : m_aScratchPlayerIds)
 		{
 			if (IsPlayerGroupLeader(playerId))
 			{
 				string groupName = GetPlayerGroupName(playerId);
 				if (!groupName.IsEmpty())
-				{
-					currentLeaders.Set(playerId, groupName);
-				}
+					m_mScratchLeaders.Set(playerId, groupName);
 			}
 		}
-		
-		// Compare with previous state and broadcast changes
-		// Check for new leaders
-		foreach (int playerId, string groupName : currentLeaders)
+
+		// Broadcast new or changed leaders
+		foreach (int playerId, string groupName : m_mScratchLeaders)
 		{
 			if (!m_mServerGroupLeaders.Contains(playerId) || m_mServerGroupLeaders.Get(playerId) != groupName)
-			{
-				// New leader or changed group name
 				BroadcastCreateMarker(playerId, groupName);
-			}
 		}
-		
-		// Check for removed leaders
-		array<int> removedLeaders = {};
+
+		// Collect removed leaders
 		foreach (int playerId, string groupName : m_mServerGroupLeaders)
 		{
-			if (!currentLeaders.Contains(playerId))
-			{
-				removedLeaders.Insert(playerId);
-			}
+			if (!m_mScratchLeaders.Contains(playerId))
+				m_aScratchToRemove.Insert(playerId);
 		}
-		
-		foreach (int playerId : removedLeaders)
-		{
+
+		foreach (int playerId : m_aScratchToRemove)
 			BroadcastRemoveMarker(playerId);
-		}
-		
-		// Update server tracking
-		m_mServerGroupLeaders = currentLeaders;
+
+		// Swap tracked state with scratch (clear old, copy new)
+		m_mServerGroupLeaders.Clear();
+		foreach (int playerId, string groupName : m_mScratchLeaders)
+			m_mServerGroupLeaders.Set(playerId, groupName);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -368,17 +360,19 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected void OnSafestartChangedClient(bool safestartActive)
 	{
 		m_bSafestartActive = safestartActive;
-		
+
 		if (safestartActive)
 		{
-			// Safestart started - add markers to group leaders
 			if (m_bIsInitialized)
+			{
+				SetEventMask(GetOwner(), EntityEvent.FRAME);
 				UpdateGroupLeaderMarkers();
+			}
 		}
 		else
 		{
-			// Safestart ended - remove all markers
 			RemoveAllMarkers();
+			ClearEventMask(GetOwner(), EntityEvent.FRAME);
 		}
 	}
 	
@@ -474,78 +468,36 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	//! Update group leader markers based on current state (client-side)
 	protected void UpdateGroupLeaderMarkers()
 	{
-		if (!m_GroupsManager || !m_bSafestartActive)
-		{
+		if (!m_GroupsManager || !m_bSafestartActive || !m_PlayerManager)
 			return;
-		}
-		
-		// Get all players
-		array<int> playerIds = {};
-		GetGame().GetPlayerManager().GetPlayers(playerIds);
-		
-		// Track which players should have markers
-		array<int> currentGroupLeaders = {};
-		
-		foreach (int playerId : playerIds)
+
+		// Reuse scratch buffers to avoid per-call heap allocations
+		m_aScratchPlayerIds.Clear();
+		m_aScratchGroupLeaders.Clear();
+		m_aScratchToRemove.Clear();
+
+		m_PlayerManager.GetPlayers(m_aScratchPlayerIds);
+
+		foreach (int playerId : m_aScratchPlayerIds)
 		{
-			// Debug player faction info
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			string playerFactionName = "None";
-			bool isFriendly = false;
-			
-			if (playerEntity)
-			{
-				SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playerEntity);
-				if (character)
-				{
-					SCR_Faction playerFaction = SCR_Faction.Cast(character.GetFaction());
-					if (playerFaction)
-					{
-						playerFactionName = playerFaction.GetFactionName();
-						isFriendly = IsPlayerFriendly(playerId);
-					}
-				}
-			}
-			
-			if (ShouldPlayerHaveMarker(playerId))
-			{
-				currentGroupLeaders.Insert(playerId);
-				
-				SCR_AIGroup group = m_GroupsManager.GetPlayerGroup(playerId);
-				string groupName = "";
-				if (group)
-				{
-					groupName = group.GetCustomName();
-					if (groupName.IsEmpty())
-						groupName = group.GetCustomNameWithOriginal();
-				}
-				
-				Print(string.Format("[CRF_GroupLeaderMarkerManager] Creating marker for %1 (Group: %2, Faction: %3, Friendly: %4)", 
-					playerName, groupName, playerFactionName, isFriendly));
-				
-				// Add marker if not already present
-				if (!m_mPlayerMarkers.Contains(playerId))
-				{
-					CreateMarkerForPlayer(playerId);
-				}
-			}
+			if (!ShouldPlayerHaveMarker(playerId))
+				continue;
+
+			m_aScratchGroupLeaders.Insert(playerId);
+
+			if (!m_mPlayerMarkers.Contains(playerId))
+				CreateMarkerForPlayer(playerId);
 		}
-		
-		// Remove markers from players who shouldn't have them anymore
-		array<int> playersToRemove = {};
+
+		// Collect markers for players who no longer qualify
 		foreach (int playerId, CRF_GroupLeaderMarkerData markerData : m_mPlayerMarkers)
 		{
-			if (currentGroupLeaders.Find(playerId) == -1)
-			{
-				playersToRemove.Insert(playerId);
-			}
+			if (m_aScratchGroupLeaders.Find(playerId) == -1)
+				m_aScratchToRemove.Insert(playerId);
 		}
-		
-		foreach (int playerId : playersToRemove)
-		{
+
+		foreach (int playerId : m_aScratchToRemove)
 			RemoveMarkerForPlayer(playerId);
-		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -774,9 +726,22 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Set initial position off-screen
 		FrameSlot.SetPos(root, -10000, -10000);
 		root.SetOpacity(0.0); // Start invisible
+		root.SetEnabled(false); // Hidden markers must not block UI input
 		root.SetZOrder(50); // Lower z-order to avoid blocking other UI
 		
 		return root;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Hide marker widget and ensure it cannot consume input while hidden
+	protected void SetMarkerHidden(CRF_GroupLeaderMarkerData markerData)
+	{
+		if (!markerData || !markerData.m_wMarkerRoot)
+			return;
+
+		markerData.m_wMarkerRoot.SetOpacity(0.0);
+		markerData.m_wMarkerRoot.SetEnabled(false);
+		FrameSlot.SetPos(markerData.m_wMarkerRoot, -10000, -10000);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -801,11 +766,13 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	//! \param[in] markerData Marker data
 	protected void UpdateMarkerDisplay(int playerId, CRF_GroupLeaderMarkerData markerData)
 	{
-		// Get player entity
-		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!m_PlayerManager)
+			return;
+
+		IEntity playerEntity = m_PlayerManager.GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -813,7 +780,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
 		if (mapEntity && mapEntity.IsOpen())
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -827,7 +794,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
 		if (!camera)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -837,7 +804,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Hide if behind camera or too far away
 		if (screenPosition[2] < 0 || distance > m_fMaxDistance)
 		{
-			markerData.m_wMarkerRoot.SetOpacity(0.0);
+			SetMarkerHidden(markerData);
 			return;
 		}
 		
@@ -870,6 +837,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		
 		// Set opacity based on distance (closer = more opaque)
 		float opacity = Math.Clamp(sizeFactor, 0.4, 1.0);
+		markerData.m_wMarkerRoot.SetEnabled(true);
 		markerData.m_wMarkerRoot.SetOpacity(opacity);
 	}
 	
@@ -972,11 +940,18 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_GroupLeaderMarkerManager m_sInstance;
-	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_GroupLeaderMarkerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_GroupLeaderMarkerManager GetInstance()
 	{

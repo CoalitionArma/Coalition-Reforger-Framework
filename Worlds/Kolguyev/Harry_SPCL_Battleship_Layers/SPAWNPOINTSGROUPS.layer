@@ -1,0 +1,1233 @@
+CRF_StaticSpawnPoint OPFORSpawn : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ components {
+  ActionsManagerComponent "{6895290083F066D5}" {
+   ActionContexts {
+    UserActionContext "{689529008B17F26B}" {
+     ContextName "default"
+     Position PointInfo "{646722087C87E39D}" {
+      Offset 0 2.0733 -0.3554
+     }
+     Radius 5
+     Height 5
+    }
+   }
+   additionalActions {
+    CRF_TeleportPlayerAction "{696D5AC1D46688AF}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 1"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "oMTR1"
+    }
+    CRF_TeleportPlayerAction "{696D5AC64597AAB5}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 2"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 1
+     m_sObjectNameToTeleportTo "oMTR2"
+    }
+    CRF_TeleportPlayerAction "{696D5AC652DCFC63}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 3"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 2
+     m_sObjectNameToTeleportTo "oMTR3"
+    }
+    CRF_TeleportPlayerAction "{696D5AC659DD14AC}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 4"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 3
+     m_sObjectNameToTeleportTo "oMTR4"
+    }
+    CRF_TeleportPlayerAction "{696D5AC6AB80C971}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 5"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "oMTR5"
+    }
+   }
+  }
+ }
+ coords 7662.061 14.175 9240.992
+}
+$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 9949.205 5.355 7537.589
+  m_sCallsignOfGroupToSpawn "MTR 1"
+ }
+ {
+  coords 9630.23 5.355 7171.679
+  m_sCallsignOfGroupToSpawn "MTR 2"
+ }
+ {
+  coords 9361.124 7.616 6698.809
+  m_sCallsignOfGroupToSpawn "MTR 3"
+ }
+ {
+  coords 9908.688 5.355 6644.276
+  m_sCallsignOfGroupToSpawn "MTR 4"
+ }
+ {
+  coords 10199.102 5.355 7104.929
+  m_sCallsignOfGroupToSpawn "MTR 5"
+ }
+}
+CRF_StaticSpawnPoint BLUFORSpawn : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ components {
+  ActionsManagerComponent "{696D5AC1C1BEE75C}" {
+   ActionContexts {
+    UserActionContext "{696D5AC1C69436FC}" {
+     ContextName "default"
+     Position PointInfo "{646722087C87E39D}" {
+      Offset 0 2.0733 -0.3554
+     }
+     Radius 5
+     Height 5
+    }
+   }
+   additionalActions {
+    CRF_TeleportPlayerAction "{696D5AC1C4997394}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 1"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     m_sObjectNameToTeleportTo "bMTR1"
+    }
+    CRF_TeleportPlayerActionPostSafestart "{696D5AC6B04EA06A}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 2"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 0
+     m_sObjectNameToTeleportTo "bMTR2"
+    }
+    CRF_TeleportPlayerAction "{696D5AC6BEB5F4D8}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 3"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 2
+     m_sObjectNameToTeleportTo "bMTR3"
+    }
+    CRF_TeleportPlayerAction "{696D5AC686E85D33}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 4"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 3
+     m_sObjectNameToTeleportTo "bMTR4"
+    }
+    CRF_TeleportPlayerAction "{696D5AC68DBECBC0}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Ship 5"
+     }
+     ActionTitle "Teleport"
+     VisibilityRange 5
+     Duration 2.5
+     "Sort Priority" 4
+     m_sObjectNameToTeleportTo "bMTR5"
+    }
+   }
+  }
+ }
+ coords 9232.242 0.707 8192.983
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ oMTR1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "OPFORSpawn"
+     }
+    }
+   }
+  }
+  coords 7159.854 12.296 9764.408
+ }
+ bMTR1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BLUFORSpawn"
+     }
+    }
+   }
+  }
+  coords 9942.548 5.449 7528.106
+ }
+ bMTR2 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BLUFORSpawn"
+     }
+    }
+   }
+  }
+  coords 9626.223 5.449 7156.048
+ }
+ bMTR3 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BLUFORSpawn"
+     }
+    }
+   }
+  }
+  coords 9346.071 7.71 6678.614
+ }
+ bMTR4 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BLUFORSpawn"
+     }
+    }
+   }
+  }
+  coords 9893.822 5.449 6617.465
+ }
+ bMTR5 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BLUFORSpawn"
+     }
+    }
+   }
+  }
+  coords 10190.354 5.449 7090.21
+ }
+ oMTR2 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "OPFORSpawn"
+     }
+    }
+   }
+  }
+  coords 6711.676 6.065 9476.162
+ }
+ oMTR3 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "OPFORSpawn"
+     }
+    }
+   }
+  }
+  coords 6266.737 6.065 9284.8
+ }
+ oMTR4 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "OPFORSpawn"
+     }
+    }
+   }
+  }
+  coords 6236.747 6.065 9789.417
+ }
+ oMTR5 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "OPFORSpawn"
+     }
+    }
+   }
+  }
+  coords 6694.525 5.972 10061.428
+ }
+}
+$grp CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 7155.347 11.584 9762.536
+  m_sCallsignOfGroupToSpawn "MTR 1"
+ }
+ {
+  coords 6703.302 5.971 9462.598
+  m_sCallsignOfGroupToSpawn "MTR 2"
+ }
+ {
+  coords 6249.424 5.971 9272.773
+  m_sCallsignOfGroupToSpawn "MTR 3"
+ }
+ {
+  coords 6230.112 5.971 9777.101
+  m_sCallsignOfGroupToSpawn "MTR 4"
+ }
+ {
+  coords 6685.676 5.971 10056.481
+  m_sCallsignOfGroupToSpawn "MTR 5"
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m.et" {
+ {
+  coords 9937.099 -15.479 7518.063
+  angles 0 -55.222 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 10187.871 -15.642 7085.284
+  angles 0 -65.246 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 9892.277 -15.991 6626.616
+  angles 0 -55.533 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 9347.603 -13.373 6680.332
+  angles 0 -57.004 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 9625.881 -15.661 7150.652
+  angles 0 -78.848 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 6268.734 -16.131 9281.768
+  angles 0 -30.822 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 6240.273 -15.595 9782.656
+  angles 0 -37.2 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 6709.178 -15.143 10067.547
+  angles 0 -30.822 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 7173.507 -9.873 9773.698
+  angles 0 -30.822 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+ {
+  coords 6717.507 -15.477 9477.085
+  angles 0 -52.032 0
+  scale 5
+  HouseNumber -2
+  {
+   GenericEntity {
+    ID "5B10D871FC38C509"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C517"
+    Flags 0x280403 0
+    coords 0 0 0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C539"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5D1"
+    Flags 0x200403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C565"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C573"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C58D"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5C2"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5E9"
+    Flags 0x280403 0
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5B10D871FC38C5F7"
+    Flags 0x280403 0
+    coords 0 0 -0.001
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C48D"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4AD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4BD"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C55F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C49F"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4CF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4EF"
+    Flags 0x280403 0
+   }
+   SCR_DestructibleBuildingEntity {
+    ID "5B10D871FC38C4FE"
+    Flags 0x280403 0
+   }
+  }
+ }
+}

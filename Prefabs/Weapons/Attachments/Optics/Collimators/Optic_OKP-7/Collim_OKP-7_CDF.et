@@ -1,6 +1,9 @@
 GameEntity : "{966B4E5523D2F166}Prefabs/Weapons/Attachments/Optics/WeaponOptic_Base.et" {
  ID "4BA426CBAED42A14"
  components {
+  ParametricMaterialInstanceComponent "{667B7B7768F56C2D}" {
+   UseUserParamAlpha 0
+  }
   InventoryItemComponent "{52627A1F45CD4EB6}" {
    Attributes SCR_ItemAttributeCollection "{52627A1EBB0698FD}" {
     ItemDisplayName UIInfo "{667B7B7768F56CE8}" {
@@ -35,9 +38,6 @@ GameEntity : "{966B4E5523D2F166}Prefabs/Weapons/Attachments/Optics/WeaponOptic_B
   }
   MeshObject "{5D0CC83435B55858}" {
    Object "{B56DEBB97702FDD1}Assets/Weapons/Attachments/Optics/OKP-7/OKP7_picatinny.xob"
-  }
-  ParametricMaterialInstanceComponent "{667B7B7768F56C2D}" {
-   UseUserParamAlpha 0
   }
   RHS_CollimatorSightsComponent "{667B7B7768F56C31}" {
    components {

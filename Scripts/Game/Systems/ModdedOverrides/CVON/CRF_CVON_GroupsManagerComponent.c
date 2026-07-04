@@ -41,11 +41,21 @@ modded class SCR_GroupsManagerComponent
 		{
 			foreach (IEntity radio: playerController.m_aRadios)
 			{
+				if (!radio)
+					continue;
+
 				CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
+				if (!radioComp)
+					continue;
+
 				int index = playerController.m_aRadios.Find(radio);
-				if (playerController.m_aRadioSettings.Count() <= index)
-					break;
+				if (index < 0 || playerController.m_aRadioSettings.Count() <= index)
+					continue;
+
 				CVON_RadioSettingObject radioSetting = playerController.m_aRadioSettings.Get(index);
+				if (!radioSetting)
+					continue;
+
 				if (radioComp.m_aChannels.Contains(radioSetting.m_sFreq))
 				{
 					radioComp.UpdateChannelServer(radioComp.m_aChannels.Find(radioSetting.m_sFreq) + 1);
@@ -60,10 +70,18 @@ modded class SCR_GroupsManagerComponent
 		}
 		
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!factionMan)
+			return;
+
 		SCR_Faction playerFaction = SCR_Faction.Cast(factionMan.GetPlayerFaction(playerId));
-		
+		if (!playerFaction)
+			return;
+
 		array<SCR_AIGroup> groups = GetPlayableGroupsByFaction(playerFaction);
 		SCR_AIGroup playersGroup = GetPlayerGroup(playerId);
+		if (!groups || !playersGroup)
+			return;
+
 		int index = groups.Find(playersGroup);
 		if (index == -1)
 			return;
@@ -125,10 +143,15 @@ modded class SCR_GroupsManagerComponent
 		}
 		for (int i = 0; i < playerController.m_aRadios.Count(); i++)
 		{
-			if (radiosDone.Contains(playerController.m_aRadios.Get(i)))
+			IEntity radio = playerController.m_aRadios.Get(i);
+			if (!radio || radiosDone.Contains(radio))
 				continue;
+
 			bool m_bFrequencyFound = false;
-			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(playerController.m_aRadios.Get(i).FindComponent(CVON_RadioComponent));
+			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
+			if (!radioComp)
+				continue;
+
 			switch (radioComp.m_eRadioType)
 			{
 				case CVON_ERadioType.SHORT: 

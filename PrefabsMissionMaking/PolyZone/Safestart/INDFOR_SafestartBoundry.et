@@ -24,8 +24,8 @@ PolylineShapeEntity {
   CRF_ManualMarker {
    ID "65885AB995B4F699"
    coords 0 0 0
-   m_MarkerColor 0 0.502 0.125 1
    m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_MarkerColor 0 0.502 0.125 1
    m_sQuadName "mine-single-2"
    m_fWorldSize 15
    m_sDescription "INDFOR Safe Start Area"

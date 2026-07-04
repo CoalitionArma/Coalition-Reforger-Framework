@@ -1,7 +1,9 @@
 //------------------------------------------------------------------------------------------------
 // CRF Persistence Manager
 // Handles mission-wide save/load operations and auto-save functionality
+// NOTE: BROKEN. Originally written in 1.5/1.6. Needs updated. Commented out for now.
 //------------------------------------------------------------------------------------------------
+/*
 class CRF_PersistenceManagerClass: ScriptComponentClass
 {
 };
@@ -509,14 +511,22 @@ class CRF_PersistenceManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_PersistenceManager m_sInstance;
-	void CRF_PersistenceManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_PersistenceManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PersistenceManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PersistenceManager GetInstance()
 	{
 		return m_sInstance;
 	}
 }
+*/

@@ -4,14 +4,6 @@ MatPBRMulti {
  ReceiveShadow 1
  SurfaceProperties "{6ADE4EF6A8AD9019}Common/Materials/Game/gravel.gamemat"
  CavityFromAO 0.3
- GlobalMCRMap "{6BF10DCCA8380684}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_MCR.edds"
- OverlayBlackPower 1
- OverlayWhitePower 0
- MaskMap "{2F5B13B0999BEB35}Assets/Vehicles/Wheeled/LR3Series/Data/Civvie/lr_3series_body_swb_civvie_1_GLOBAL_MASK.edds"
- MaskRedScale 1
- MaskGreenScale 1
- VFXMap "{DF3039675FD575A8}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_VFX.edds"
- GlobalNMOMap "{AF423CCF03B1C4C4}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_NMO.edds"
  MudOpacity 1
  MudColor 0.095 0.087 0.077 1
  MudRoughness 1.45
@@ -33,6 +25,14 @@ MatPBRMulti {
   TilingV 15
   Rotation 90
  }
+ GlobalMCRMap "{6BF10DCCA8380684}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_MCR.edds"
+ OverlayBlackPower 1
+ OverlayWhitePower 0
+ MaskMap "{2F5B13B0999BEB35}Assets/Vehicles/Wheeled/LR3Series/Data/Civvie/lr_3series_body_swb_civvie_1_GLOBAL_MASK.edds"
+ MaskRedScale 1
+ MaskGreenScale 1
+ VFXMap "{DF3039675FD575A8}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_VFX.edds"
+ GlobalNMOMap "{AF423CCF03B1C4C4}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_body_swb_NMO.edds"
  Enabled_4 1
  Color_4 0.023 0.023 0.023 1
  BCR_4 "{8A0C885766CAD60D}Assets/_SharedData/Metal/ST_Rust_01_Aluminium_V2_BCR.edds"

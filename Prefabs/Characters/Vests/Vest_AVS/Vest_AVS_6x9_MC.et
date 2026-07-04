@@ -1,4 +1,4 @@
-GenericEntity : "{255ED0C0B4DB3A77}Prefabs/Characters/Vests/Vest_AVS/Vest_AVS_6x9_base.et" {
+GameEntity : "{255ED0C0B4DB3A77}Prefabs/Characters/Vests/Vest_AVS/Vest_AVS_6x9_base.et" {
  ID "50D8C49B3558F152"
  components {
   RHS_ClothNodeStorageComponent "{5E8ECC6318C07954}" {

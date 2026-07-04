@@ -1,0 +1,113 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5318.027 6.251 9053.891
+  angles 0 175.761 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5307.682 6.25 9054.111
+  angles 0 178.217 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5297.928 6.25 9054.448
+  angles 0 178.32 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5288.262 6.25 9055.359
+  angles 0 -178.331 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5279.676 6.25 9056.299
+  angles 0 -174.862 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5239.412 7.373 9070.108
+  angles 0 -157.819 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5232.111 7.661 9074.555
+  angles 0 -147.827 0
+  m_rVehicle "{29E523950AD5AE3D}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_Base.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_bShouldAddAmmo 0
+ }
+}
+$grp StaticModelEntity : "{19D504D46A48529A}Prefabs/Structures/Military/Fortifications/Trenches/ACE_TrenchSegment_01_short.et" {
+ {
+  coords 5247.537 -0.431 9025.444
+  angles 0 -152.72 0
+  scale 5
+ }
+ {
+  coords 5229.285 0.378 9070.116
+  angles 0 -152.172 0
+  scale 3
+ }
+ {
+  coords 5236.632 0.646 9065.932
+  angles 0 -152.172 0
+  scale 3
+ }
+ {
+  coords 5236.91 0.969 9038.547
+  angles 0 -130.458 0
+  scale 3
+ }
+ {
+  coords 5280.702 1.131 9049.73
+  angles 0 -177.705 0
+  scale 3
+ }
+ {
+  coords 5290.488 1.114 9049.174
+  angles 0 -177.705 0
+  scale 3
+ }
+ {
+  coords 5299.38 1.098 9048.671
+  angles 0 -177.705 0
+  scale 3
+ }
+ {
+  coords 5307.568 1.083 9048.355
+  angles 0 -177.705 0
+  scale 3
+ }
+ {
+  coords 5317.354 1.077 9047.353
+  angles 0 -177.705 0
+  scale 3
+ }
+ {
+  coords 5191.586 -0.679 9068.929
+  angles -13.102 -12.143 0
+  scale 3
+ }
+}
+StaticModelEntity : "{7784DA55DC0F253C}PrefabsEditable/Auto/Structures/Military/Camps/HelipadImprovised_01/E_HelipadImprovised_US_01.et" {
+ coords 5211.022 0.736 9127.964
+}

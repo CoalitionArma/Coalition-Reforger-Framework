@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{07BFDAFBB354438A}PrefabsMissionMaking/Systems/SpawnPointsGroups/CIVILIAN_InitalGroupSpawn.et"
+ Name "{07BFDAFBB354438A}PrefabsMissionMaking/Systems/SpawnPoints/Groups/CIVILIAN_InitalGroupSpawn.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,0 +1,65 @@
+GameEntity {
+ components {
+  CRF_AreaTimerComponent "{69B445ECB1C66D39}" {
+   m_sZoneLabel "The Hill"
+   m_fCaptureRadius 250
+   m_iCountdownSeconds 600
+   m_iMinPlayersToCapture 8
+  }
+ }
+ coords 5527.214 58.878 3938.951
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 5290.495 20.5 3621.448
+ Points {
+  ShapePoint "{69B445EB1212A6D3}" {
+   Position -385.818 0 -931.316
+  }
+  ShapePoint "{69B445EB10EC7E06}" {
+   Position -1488.937 0 322.111
+  }
+  ShapePoint "{69B445EB15612BC5}" {
+   Position -737.517 0 1249.1
+  }
+  ShapePoint "{69B445EB14AC810A}" {
+   Position 631.275 0 455.811
+  }
+  ShapePoint "{69B445EB3BB37FA0}" {
+   Position 503.047 0 -811.753
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 5181.892 4.631 2955.957
+ Points {
+  ShapePoint "{69B423D0DDE817C8}" {
+   Position -112.731 0 77.546
+  }
+  ShapePoint "{69B423D0DCF09585}" {
+   Position 88.248 0 80.19
+  }
+  ShapePoint "{69B423D0D3FBD590}" {
+   Position 85.04 0 -96.461
+  }
+  ShapePoint "{69B423D0D2C53E03}" {
+   Position -80.682 0 -94.532
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 4400.625 28.582 4119.014
+ Points {
+  ShapePoint "{69B423D0B31E33F4}" {
+   Position -20.102 0 129.114
+  }
+  ShapePoint "{69B423D0B26842F1}" {
+   Position 103.915 0 72.964
+  }
+  ShapePoint "{69B423D0B17E81D3}" {
+   Position 47.098 0 -121.179
+  }
+  ShapePoint "{69B423D0B07E7E42}" {
+   Position -114.54 0 -60.511
+  }
+ }
+}

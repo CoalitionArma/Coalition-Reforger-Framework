@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/DamageArea_Ice.et"
+ Name "{E6C0AD3A4A0CCF27}Prefabs/Weapons/Grenades/MagicGrenades/GrenadeAOEs/DamageArea_Ice.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -51,9 +51,18 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	
 	void UpdateArsenal()
 	{
+		if (!m_ArsenalPoint)
+			return;
+
 		m_SupplyArsnealComponent = CRF_SupplyArsenalComponent.Cast(m_ArsenalPoint.FindComponent(CRF_SupplyArsenalComponent));
+		if (!m_SupplyArsnealComponent)
+			return;
+
 		m_bSupplyEnabled = SCR_ResourceSystemHelper.IsGlobalResourceTypeEnabled(EResourceType.SUPPLIES) && m_SupplyArsnealComponent.m_bSupplyEnabled;
-		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
+		RplId arsenalId;
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager && CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
+			rplManager.UpdateSupplyArsneal(arsenalId);
 	}
 	
 	override void OnMenuUpdate(float tDelta)
@@ -62,7 +71,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		array<Widget> notificationsToDelete = {};
 		foreach (Widget notification: m_aNotifications)
 		{
+			if (!notification)
+				continue;
+
 			CRF_SupplyNotification notificationComp = CRF_SupplyNotification.Cast(notification.FindHandler(CRF_SupplyNotification));
+			if (!notificationComp)
+				continue;
+
 			notificationComp.m_fTimeAlive += tDelta;
 			if (notificationComp.m_fTimeAlive > 3 && !notificationComp.m_bAnimationStarted)
 			{
@@ -77,7 +92,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		foreach (Widget notification: notificationsToDelete)
 		{
 			m_aNotifications.RemoveItem(notification);
-			delete notification;
+			notification.RemoveFromHierarchy();
 		}
 		
 		if (m_bSupplyEnabled)
@@ -429,7 +444,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	void SelectCategory(SCR_ButtonBaseComponent button)
 	{
 		while (m_Items.GetChildren())
-			delete m_Items.GetChildren();
+			m_Items.GetChildren().RemoveFromHierarchy();
 		
 		CRF_MiniArsenalCategoryButton miniArsnealCategory = CRF_MiniArsenalCategoryButton.Cast(button);
 		ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
@@ -759,7 +774,11 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			
 			foreach (IEntity supplyObject: supplyObjects)
 			{
-				supplyObjectRplId.Insert(RplComponent.Cast(supplyObject.FindComponent(RplComponent)).Id());
+				RplId supplyObjectId;
+				if (!CRF_ReplicationHelper.GetRplId(supplyObject, supplyObjectId))
+					return;
+
+				supplyObjectRplId.Insert(supplyObjectId);
 			}
 		}
 		
@@ -777,7 +796,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			return;
 		}
 
-		CRF_PlayerRplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
+		RplId truckId;
+		RplId arsenalId;
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		if (!rplManager || !CRF_ReplicationHelper.GetRplId(truck, truckId) || !CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
+			return;
+
+		rplManager.AddItemToTruck(truckId, itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, arsenalId);
 		AddNotification(TextWidget.Cast(itemButton.m_wButtonRoot.FindAnyWidget("ArsenalItemText")).GetText(), m_wEditBox.GetText().ToInt());
 	}
 	
@@ -846,5 +871,20 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		#ifdef WORKBENCH
 			m_InputManager.AddActionListener(UIConstants.MENU_ACTION_OPEN_WB, EActionTrigger.DOWN, Close);
 		#endif
+	}
+
+	override void OnMenuClose()
+	{
+		if (GetGame())
+			GetGame().GetCallqueue().Remove(UpdateArsenal);
+
+		foreach (Widget notification : m_aNotifications)
+		{
+			if (notification)
+				notification.RemoveFromHierarchy();
+		}
+		m_aNotifications.Clear();
+
+		super.OnMenuClose();
 	}
 }

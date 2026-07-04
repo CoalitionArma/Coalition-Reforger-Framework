@@ -51,10 +51,6 @@ Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
    }
   }
   WCS_Armament_LoadoutComponent "{667105FE7644B336}" {
-   m_ArmamentGroups {
-    WCS_ArmamentSlotGroup "{667105FE7644B333}" {
-    }
-   }
   }
   WCS_VehicleAimCameraComponent "{667105FE7644B33D}" {
    m_Position PointInfo "{667105FE7644B338}" {

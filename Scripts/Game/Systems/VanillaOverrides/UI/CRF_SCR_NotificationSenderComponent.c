@@ -7,6 +7,20 @@ modded class SCR_NotificationSenderComponent
 	{
 		// Suppress the notification about editor state changes
 	}
+
+	//----------------------------------------------------------------
+	// Suppress PLAYER_JOINED_FACTION notification (meta information)
+	//----------------------------------------------------------------
+	override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
+	{
+		// Keep m_FactionOnSpawn in sync but do NOT send the PLAYER_JOINED_FACTION notification
+		if (m_FactionManager)
+		{
+			Faction playerFaction = m_FactionManager.GetPlayerFaction(requestComponent.GetPlayerId());
+			if (m_FactionOnSpawn != playerFaction)
+				m_FactionOnSpawn = playerFaction;
+		}
+	}
 	
 	//----------------------------------------------------------------
 	// Override the main method that handles killfeed logic

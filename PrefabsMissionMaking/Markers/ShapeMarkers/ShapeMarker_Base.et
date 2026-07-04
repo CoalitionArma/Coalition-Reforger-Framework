@@ -1,0 +1,9 @@
+CRF_ShapeMarker {
+ ID "686F325643B5AA01"
+ coords 0 0 0
+ m_MarkerColor 0 0.5 1 1
+ m_sDescription "Shape Marker"
+ m_bUseWorldScale 1
+ m_fWorldSizeX 100
+ m_fWorldSizeY 100
+}

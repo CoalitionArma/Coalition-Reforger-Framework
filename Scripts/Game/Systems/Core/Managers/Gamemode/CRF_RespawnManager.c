@@ -571,7 +571,9 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 		
 		CRF_SpawnPointData spawnPointData = GetSpawnPoint(spawnPointId);
-		
+		if (!spawnPointData)
+			return;
+
 		if (spawnPointData.GetIsTempSpawnPoint())
 			SCR_EntityHelper.DeleteEntityAndChildren(CRF_EntityHelper.GetEntityFromRplId(spawnPointData.GetSpawnPointEntity()));
 		
@@ -1019,11 +1021,18 @@ class CRF_RespawnManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_RespawnManager m_sInstance;
-	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_RespawnManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_RespawnManager GetInstance()
 	{

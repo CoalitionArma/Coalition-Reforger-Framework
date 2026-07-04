@@ -406,7 +406,7 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
   }
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
-    Engine Engine Engine : "{C44FF35B540EA06F}Prefabs/Vehicles/Tracked/T-72A/Configs/Engine_V46_6.conf" {
+    Engine Engine Engine {
      Output "Clutch"
     }
     Clutch Clutch Clutch {
@@ -423,17 +423,17 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      Axle "{4D8B26DF957A8E1C}" {
       TorqueShare 0.17
       HasHandbrake 1
-      Differential Differential Diff_01 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_01 {
        Strength 1
        Output0 "Wheel_L01"
        Output1 "Wheel_R01"
       }
-      Suspension Suspension "{4D8B26DFF8859A7B}" : "{A6980982CD8F135A}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_01.conf" {
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
        MaxSteeringAngle 30
       }
-      Wheel Wheel "{4D8B26DFFE211745}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{4D8B26DFFE211745}" {
       }
-      Tyre Tyre "{65D343F7FF8A7420}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F7FF8A7420}" {
       }
       WheelPositions {
        WheelPosition Wheel_L01 {
@@ -446,17 +446,17 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      }
      Axle "{4D8B26DF8CF2F3D8}" {
       TorqueShare 0.17
-      Differential Differential Diff_02 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_02 {
        Strength 1
        Output0 "Wheel_L02"
        Output1 "Wheel_R02"
       }
-      Suspension Suspension "{4D8B26DF2B10AE05}" : "{A6980982CD8F135A}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_01.conf" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
        MaxSteeringAngle 10
       }
-      Wheel Wheel "{4D8B26DF30A4E4D7}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
       }
-      Tyre Tyre "{65D343F039828868}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F039828868}" {
       }
       WheelPositions {
        WheelPosition Wheel_L02 {
@@ -470,16 +470,16 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      Axle "{67252CA9EED8984F}" {
       TorqueShare 0.17
       HasHandbrake 1
-      Differential Differential Diff_03 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_03 {
        Strength 1
        Output0 "Wheel_L03"
        Output1 "Wheel_R03"
       }
-      Suspension Suspension "{65D343F01DB5EA3B}" : "{F87020C172029D55}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_02.conf" {
+      Suspension Suspension "{65D343F01DB5EA3B}" {
       }
-      Wheel Wheel "{65D343F0192EE1BE}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{65D343F0192EE1BE}" {
       }
-      Tyre Tyre "{65D343F01AF1ED4F}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F01AF1ED4F}" {
       }
       WheelPositions {
        WheelPosition Wheel_L03 {
@@ -493,16 +493,16 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      Axle "{67252CA9EED89852}" {
       TorqueShare 0.17
       HasHandbrake 1
-      Differential Differential Diff_04 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_04 {
        Strength 1
        Output0 "Wheel_L04"
        Output1 "Wheel_R04"
       }
-      Suspension Suspension "{65D343F076E2F2FA}" : "{F87020C172029D55}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_02.conf" {
+      Suspension Suspension "{65D343F076E2F2FA}" {
       }
-      Wheel Wheel "{65D343F072D6851F}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{65D343F072D6851F}" {
       }
-      Tyre Tyre "{65D343F07D96A673}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F07D96A673}" {
       }
       WheelPositions {
        WheelPosition Wheel_L04 {
@@ -516,17 +516,17 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      Axle "{67252CA9EED89850}" {
       TorqueShare 0.17
       HasHandbrake 1
-      Differential Differential Diff_05 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_05 {
        Strength 1
        Output0 "Wheel_L05"
        Output1 "Wheel_R05"
       }
-      Suspension Suspension "{65D343F07B4EB550}" : "{F87020C172029D55}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_02.conf" {
+      Suspension Suspension "{65D343F07B4EB550}" {
        MaxSteeringAngle -10
       }
-      Wheel Wheel "{65D343F07871CA83}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{65D343F07871CA83}" {
       }
-      Tyre Tyre "{65D343F07972BD58}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F07972BD58}" {
       }
       WheelPositions {
        WheelPosition Wheel_L05 {
@@ -540,17 +540,17 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
      Axle "{67252CA9EED89851}" {
       TorqueShare 0.17
       HasHandbrake 1
-      Differential Differential Diff_06 : "{5BBD040A050A8D8E}Prefabs/Vehicles/Tracked/T-72A/Configs/FinalDrive_T72A.conf" {
+      Differential Differential Diff_06 {
        Strength 1
        Output0 "Wheel_L06"
        Output1 "Wheel_R06"
       }
-      Suspension Suspension "{65D343F0478DAF92}" : "{A6980982CD8F135A}Prefabs/Vehicles/Tracked/T-72A/Configs/Suspension_T72A_01.conf" {
+      Suspension Suspension "{65D343F0478DAF92}" {
        MaxSteeringAngle -30
       }
-      Wheel Wheel "{65D34CBBD730885D}" : "{3C10EDB6EE0000D1}Prefabs/Vehicles/Tracked/T-72A/Configs/Wheel_T72A.conf" {
+      Wheel Wheel "{65D34CBBD730885D}" {
       }
-      Tyre Tyre "{65D343F047646675}" : "{4AA5141DEC177050}Prefabs/Vehicles/Tracked/T-72A/Configs/Tyre_T72A.conf" {
+      Tyre Tyre "{65D343F047646675}" {
       }
       WheelPositions {
        WheelPosition Wheel_L06 {
@@ -800,31 +800,6 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
    m_vParticlePosition -1.854 1.166 -2.173
   }
   WCS_Armament_VehicleCameraComponent "{67252CA9EEDAAE0D}" {
-   m_Cameras {
-    WCS_VehicleCameraProps "{631842D170C27701}" : "{D11629237578F188}Prefabs/Vehicles/Core/Configs/WCS_VehicleCamera_Periscope.conf" {
-     m_Position PointInfo "{67252CA9EEDAAE0C}" {
-      Offset -0.0194 1.3627 1.4982
-     }
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_driver_m01"
-    }
-    WCS_VehicleCameraProps "{65E548C95CDDA6F7}" : "{D11629237578F188}Prefabs/Vehicles/Core/Configs/WCS_VehicleCamera_Periscope.conf" {
-     m_Position PointInfo "{67252CA9EEDAAE0F}" {
-      Offset -0.2387 1.3815 1.2369
-      Angles 0 -50 0
-     }
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_driver_l01"
-    }
-    WCS_VehicleCameraProps "{65E548C951D0AFEC}" : "{D11629237578F188}Prefabs/Vehicles/Core/Configs/WCS_VehicleCamera_Periscope.conf" {
-     m_Position PointInfo "{67252CA9EEDAAE0E}" {
-      Offset 0.0705 1.3815 1.3018
-      Angles 0 15 0
-     }
-     m_OverlayLayout "{35C2D6E3BB1E379B}UI/layouts/Editor/Overlays/Vignettes/WCS_Armament_Vignette_Heavy.layout"
-     m_sId "periscope_driver_r01"
-    }
-   }
   }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {

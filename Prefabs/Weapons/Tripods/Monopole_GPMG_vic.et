@@ -135,17 +135,13 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    }
    UseCapacityCoefficient 0
    MaxCumulativeVolume 3000
-   MaxItemSize 15 15 15
-   InitialStorageSlots {
-    InventoryStorageSlot Magazine_1 {
-     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
-    }
-    InventoryStorageSlot Magazine_2 {
-     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
-    }
-    InventoryStorageSlot Magazine_3 {
-     Enabled 0
-     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
+   MaxItemSize 1000 1000 1000
+   MultiSlots {
+    MultiSlotConfiguration "{6994E93D0ED992EC}" {
+     SlotTemplate EquipmentStorageSlot magazines {
+      Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
+     }
+     NumSlots 3
     }
    }
   }

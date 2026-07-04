@@ -1,0 +1,14 @@
+$grp ParticleEffectEntity {
+ {
+  coords 11149.512 32.02 7253.173
+  EffectPath "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+ }
+ {
+  coords 11134.824 33.801 7267.274
+  EffectPath "{2AA8C9B21E45F21F}Particles/Vehicle/Vehicle_smoke_BTR_exhaust_damaged_01.ptc"
+ }
+}
+GenericEntity : "{606B888D33E08CA2}Prefabs/Structures/Wreck/c130.et" {
+ coords 11146.272 30.008 7263.631
+ angles 7.457 44 0
+}

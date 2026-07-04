@@ -153,7 +153,7 @@ modded class SCR_VoNComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Clean up when component is deleted
-	void OnDelete(IEntity owner)
+	override void OnDelete(IEntity owner)
 	{
 		// Cancel any pending CallLater callbacks to prevent memory leaks
 		GetGame().GetCallqueue().Remove(RemovePlayerTalking);

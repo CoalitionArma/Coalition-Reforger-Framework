@@ -216,22 +216,6 @@ GenericEntity : "{923D948AB0D57A50}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_long_b
     SightsComponent "{BB23A637957CFFF8}" {
      Enabled 0
     }
-    BC_M79WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
-     AnimGraph "{380809F69E9F6DCC}Assets/Weapons/Launchers/workspaces/BC_M79.agr"
-     AnimInstance "{C5343BBFF319D0B4}Assets/Weapons/Launchers/workspaces/BC_M79_weapon.asi"
-     AnimInjection AnimationAttachmentInfo "{55349E9229B55D8A}" {
-      AnimGraph "{380809F69E9F6DCC}Assets/Weapons/Launchers/workspaces/BC_M79.agr"
-      AnimInstance "{3E6AAA8E6B18B458}Assets/Weapons/Launchers/workspaces/BC_M79_player.asi"
-     }
-     m_sCasingEjectionAnimation "{67C33844F96A7A4F}Particles/Weapons/shell_m79_eject.ptc"
-     m_sCasingPrefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
-     m_effectPosition1 PointInfo "{6665074BF8624932}" {
-      PivotID "slot_magazine"
-      Angles 90 90 90
-     }
-     m_sDoubleShellPrefab "{EE168254C36F5B4E}Prefabs/Weapons/Ammo/Particles/m79_spent_shell.et"
-     m_sShellMeshName "casing"
-    }
    }
    WeaponType GrenadeLauncher
    shouldHandleObstruction 1

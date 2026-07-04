@@ -1,6 +1,6 @@
 // ── Key naming: single-letter short keys to minimise JSON file size ──────────
 // Positions stored as int ×10 (10cm precision). Viewer divides by 10.
-// Angle stored as int ×1000. Viewer divides by 1000.
+// Angle stored as int ×1000 (degrees). Viewer divides by 1000.
 // Y-coordinate omitted — the playback viewer is 2D only.
 
 // Lower level Structure
@@ -22,7 +22,10 @@ class CRF_VAAR_CharacterSnapshot : Managed
 		n = name;
 		x = (int)Math.Round(pos[0] * 10);
 		z = (int)Math.Round(pos[2] * 10);
-		a = (int)Math.Round(aim[0] * 1000);
+		float yawDeg = 0;
+		if (Math.AbsFloat(aim[0]) > 0.0001 || Math.AbsFloat(aim[2]) > 0.0001)
+			yawDeg = Math.Atan2(aim[0], aim[2]) * Math.RAD2DEG;
+		a = (int)Math.Round(yawDeg * 1000);
 		r = role;
 		f = faction;
 	}

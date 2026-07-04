@@ -232,37 +232,32 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 			propHunt.HandleNoiseCycleRequest(playerId);
 	}
 
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 HVT — CLIENT-TO-SERVER RPC
-//	 Declared in the BASE (non-modded) class so that Reforger's RPC registration
-//	 table picks it up reliably on dedicated servers.
-//=============================================================================================================================================================================================================================================================================================================================================================
-
 	//------------------------------------------------------------------------------------------------
-	//! Public wrapper called from client-side chat command callbacks in CRF_HighValueTargetGamemodeManager.
-	void RequestHVTAdminCommand(string cmd, string param)
+	void SendAARKillStats(array<string> kills, string killedBy)
 	{
-		Rpc(RpcDo_AdminHVTCommand, cmd, param);
+		Rpc(RpcDo_SendAARKillStats, kills, killedBy);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcDo_AdminHVTCommand(string cmd, string param)
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_SendAARKillStats(array<string> kills, string killedBy)
 	{
-		PlayerController pc = PlayerController.Cast(GetOwner());
-		if (!pc)
-			return;
+		CRF_AARSessionStats.SetData(kills, killedBy);
+	}
 
-		int playerId = pc.GetPlayerId();
-		if (playerId <= 0)
-			return;
+	//------------------------------------------------------------------------------------------------
+	// Sends this player's numeric session stats to their client for the AAR panel.
+	// Called from CRF_ServerStatsManager.OnGameModeEnd staggered send queue.
+	void SendAARStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
+	{
+		Rpc(RpcDo_SendAARStats, kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
+	}
 
-		if (!SCR_Global.IsAdmin(playerId))
-			return;
-
-		CRF_HighValueTargetGamemodeManager hvt = CRF_HighValueTargetGamemodeManager.Cast(CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
-		if (hvt)
-			hvt.HandleAdminCommand(playerId, cmd, param);
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_SendAARStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
+	{
+		CRF_AARSessionStats.SetStats(kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -271,11 +266,18 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected static CRF_PlayerRplToOwnerManager m_sInstance;
-	void CRF_PlayerRplToOwnerManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	void CRF_PlayerRplToOwnerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerRplToOwnerManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_PlayerRplToOwnerManager GetInstance()
 	{

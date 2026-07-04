@@ -18,89 +18,223 @@ FrameWidgetClass {
    Texture "{B98FB2CD75200E57}UI/Textures/MainMenu/MenuBackgroundBlank_UI.edds"
    Size 3840 2160
   }
-  TextWidgetClass "{62F205680596FE21}" {
-   Name "PlayerListText"
-   Slot FrameWidgetSlot "{630A25D3C2DA91C1}" {
-    Anchor 1 0 1 1
-    PositionX -468.523
-    OffsetLeft -468.523
-    PositionY 121.358
-    OffsetTop 121.358
-    SizeX 100
-    OffsetRight 368.523
-    SizeY -1050
-    OffsetBottom 928.64
-   }
-   "Z Order" 10
-   Text "Players"
-  }
-  OverlayWidgetClass "{630A25D01F4DF8C5}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-   Name "PlayerList"
-   Slot FrameWidgetSlot "{62F20566BC4B2A18}" {
+  FrameWidgetClass "{6500000000000010}" {
+   Name "PlayerPanel"
+   Slot FrameWidgetSlot "{6500000000000011}" {
     Anchor 1 0 1 1
     PositionX -468.444
     OffsetLeft -468.444
-    PositionY 151.38
-    OffsetTop 151.38
-    SizeX 248.69
-    OffsetRight 219.754
+    PositionY 235
+    OffsetTop 235
+    SizeX 455.92
+    OffsetRight 12.524
     SizeY -167.484
     OffsetBottom 16.104
    }
    "Z Order" 10
-   components {
-    SCR_ListBoxComponent "{566C9415BAA54E1B}" {
-     Enabled 0
-    }
-    CRF_ListboxComponent "{62F200F00CBEE8F9}" {
-    }
-   }
    {
-    PanelWidgetClass "{630A25D01F4DF8C2}" {
-     Name "PlayerBorder"
-     Slot OverlayWidgetSlot "{630A25D63BD29577}" {
-      HorizontalAlign 3
-      VerticalAlign 3
+    ImageWidgetClass "{6500000000000012}" {
+     Name "PlayerPanelBG"
+     Slot FrameWidgetSlot "{6500000000000013}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.6
+     Color 0.044 0.048 0.062 0.98
+    }
+    PanelWidgetClass "{6500000000000014}" {
+     Name "PlayerPanelBorder"
+     Slot FrameWidgetSlot "{6500000000000015}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
      }
      "Z Order" 1
      Color 0 0.584 1 1
      style outline_4px
     }
-    ScrollLayoutWidgetClass "{56691148E692435A}" {
-     Prefab "{56691148E692435A}"
-     Slot OverlayWidgetSlot "{56691148E692437F}" {
-      Padding 6 6 6 6
+    FrameWidgetClass "{6500000000000016}" {
+     Name "PlayerPanelTabs"
+     Slot FrameWidgetSlot "{6500000000000017}" {
+      Anchor 0 0 1 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 32
+      OffsetBottom -32
+     }
+     {
+      ImageWidgetClass "{6500000000000018}" {
+       Name "TabBG"
+       Slot FrameWidgetSlot "{6500000000000019}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.055 0.09 0.19 1
+      }
+      ButtonWidgetClass "{650000000000001A}" {
+       Name "TabButtonPlayers"
+       Slot FrameWidgetSlot "{650000000000001B}" {
+        Anchor 0 0 0.5 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.144 0.144 0.144 1
+       components {
+        ButtonComponent "{650000000000001C}" {
+         m_ColorButtonDefault 0.144 0.144 0.144 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+        SCR_ButtonTextComponent "{650000000000001D}" {
+        }
+       }
+       {
+        TextWidgetClass "{650000000000001E}" {
+         Name "TabPlayersText"
+         Slot ButtonWidgetSlot "{650000000000001F}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "Players"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+      ButtonWidgetClass "{6500000000000020}" {
+       Name "TabButtonUnslotted"
+       Slot FrameWidgetSlot "{6500000000000021}" {
+        Anchor 0.5 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.042 0.042 0.042 1
+       components {
+        ButtonComponent "{6500000000000022}" {
+         m_ColorButtonDefault 0.042 0.042 0.042 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+        SCR_ButtonTextComponent "{6500000000000023}" {
+        }
+       }
+       {
+        TextWidgetClass "{6500000000000024}" {
+         Name "TabUnslottedText"
+         Slot ButtonWidgetSlot "{6500000000000025}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "Unslotted"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
      }
     }
-    ImageWidgetClass "{5DB6D18100D38307}" {
-     Prefab "{5DB6D18100D38307}"
-     "Is Enabled" 0
-     "Is Visible" 0
-    }
-   }
-  }
-  OverlayWidgetClass "{630C43F16E0A9EFA}" {
-   Name "UnslottedPlayers"
-   Slot FrameWidgetSlot "{630C43F16E0A9ECB}" {
-    Anchor 1 0 1 1
-    PositionX -207.05
-    OffsetLeft -207.05
-    PositionY 227.806
-    OffsetTop 227.806
-    SizeX 194.626
-    OffsetRight 12.424
-    SizeY -243.595
-    OffsetBottom 15.789
-   }
-   {
-    OverlayWidgetClass "{630C43F102925FE8}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-     Name "UnslotPlayerList"
-     Slot OverlayWidgetSlot "{63122E88273274D1}" {
-      HorizontalAlign 3
-      VerticalAlign 3
-      Padding 0 35 0 0
+    OverlayWidgetClass "{630A25D01F4DF8C5}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerList"
+     Slot FrameWidgetSlot "{62F20566BC4B2A18}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 32
+      OffsetTop 32
+      SizeX 0
+      OffsetRight 0
+      SizeY -32
+      OffsetBottom 0
      }
      "Z Order" 10
+     components {
+      SCR_ListBoxComponent "{566C9415BAA54E1B}" {
+       Enabled 0
+      }
+      CRF_ListboxComponent "{62F200F00CBEE8F9}" {
+      }
+     }
+     {
+      PanelWidgetClass "{630A25D01F4DF8C2}" {
+       Name "PlayerBorder"
+       Slot OverlayWidgetSlot "{630A25D63BD29577}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Z Order" 1
+       "Is Visible" 0
+       Color 0 0.584 1 1
+       style outline_4px
+      }
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       Slot OverlayWidgetSlot "{56691148E692437F}" {
+        Padding 6 6 6 6
+       }
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
+      }
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Enabled" 0
+       "Is Visible" 0
+      }
+     }
+    }
+    OverlayWidgetClass "{630C43F102925FE8}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "UnslotPlayerList"
+     Slot FrameWidgetSlot "{63122E88273274D1}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 32
+      OffsetTop 32
+      SizeX 0
+      OffsetRight 0
+      SizeY -32
+      OffsetBottom 0
+     }
+     "Z Order" 10
+     "Is Visible" 0
      components {
       SCR_ListBoxComponent "{566C9415BAA54E1B}" {
        Enabled 0
@@ -116,6 +250,7 @@ FrameWidgetClass {
         VerticalAlign 3
        }
        "Z Order" 1
+       "Is Visible" 0
        Color 0 0.584 1 1
        style outline_4px
       }
@@ -124,6 +259,11 @@ FrameWidgetClass {
        Slot OverlayWidgetSlot "{56691148E692437F}" {
         Padding 6 6 6 6
        }
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
       }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
@@ -131,14 +271,6 @@ FrameWidgetClass {
        "Is Visible" 0
       }
      }
-    }
-    TextWidgetClass "{630C43F102925DE3}" {
-     Name "UnslotPlayerListText"
-     Slot OverlayWidgetSlot "{63122E8827327703}" {
-      HorizontalAlign 0
-      VerticalAlign 3
-     }
-     Text "Unslotted Players"
     }
    }
   }
@@ -171,7 +303,7 @@ FrameWidgetClass {
       OffsetBottom 0
      }
      "Z Order" 1
-     Color 0.198 0.012 0.012 1
+     Color 0.044 0.048 0.062 0.94
      Size 512 512
      Mask "{E12BB5C5BD00269E}UI/Textures/Common/gradientTexture_Dither_right_512.edds"
      "Transition width" 1
@@ -209,7 +341,7 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.029 0.034 0.048 1
      Size 512 512
      "Transition width" 1
      Progress 0.24
@@ -581,7 +713,7 @@ FrameWidgetClass {
          Name "AdvanceImage"
          Slot ButtonWidgetSlot "{62F06D593F59906A}" {
          }
-         Color 0.198 0.012 0.012 1
+         Color 1 1 1 0.8
          Texture "{BBBA870598CED29B}UI/Textures/PlayMenu/ArrowLeft_UI.edds"
          Size 34.5 32
         }
@@ -636,7 +768,7 @@ FrameWidgetClass {
         SizeToContent 1
        }
        Opacity 0.98
-       Color 0 0 0 1
+       Color 0.029 0.034 0.048 1
        Image ""
        Size 40 40
       }
@@ -671,6 +803,35 @@ FrameWidgetClass {
     OffsetBottom 17.37
    }
    Opacity 1
+   {
+    HorizontalLayoutWidgetClass "{5CEAB7C94A55AF1E}" {
+     Prefab "{5CEAB7C94A55AF1E}"
+     {
+      SizeLayoutWidgetClass "{5CEE963658524D0D}" {
+       Prefab "{5CEE963658524D0D}"
+       {
+        OverlayWidgetClass "{5CEE963658524D03}" {
+         Prefab "{5CEE963658524D03}"
+         {
+          ImageWidgetClass "{5CEE963658524D06}" {
+           Prefab "{5CEE963658524D06}"
+          }
+          ImageWidgetClass "{5CEE963658524D01}" {
+           Prefab "{5CEE963658524D01}"
+          }
+         }
+        }
+       }
+      }
+      TextWidgetClass "{5CEAB7C94A55AF1D}" {
+       Prefab "{5CEAB7C94A55AF1D}"
+      }
+      TextWidgetClass "{5CEAB7C94A55AF1C}" {
+       Prefab "{5CEAB7C94A55AF1C}"
+      }
+     }
+    }
+   }
   }
   SizeLayoutWidgetClass "{62F14B81B3877869}" : "{D519C5E16410D772}UI/layouts/Map/MapTaskList.layout" {
    Name "MapTaskList"
@@ -707,7 +868,7 @@ FrameWidgetClass {
       OffsetBottom 98
      }
      Clipping Ancestor
-     Color 0.008 0.012 0.016 1
+     Color 0.044 0.048 0.062 0.96
     }
     TextWidgetClass "{62F20572D860F011}" {
      Name "PlayersText"
@@ -740,7 +901,7 @@ FrameWidgetClass {
       SizeY -70.094
       OffsetBottom 35
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.044 0.048 0.062 0.96
     }
     TextWidgetClass "{62F17C1722FCA61E}" {
      Name "TimeText"
@@ -772,7 +933,7 @@ FrameWidgetClass {
       SizeY -65.888
       OffsetBottom 0
      }
-     Color 0.008 0.012 0.016 1
+     Color 0.044 0.048 0.062 0.96
     }
     TextWidgetClass "{62F17C1722FCA600}" {
      Name "WeatherText"
@@ -904,7 +1065,7 @@ FrameWidgetClass {
         SizeY 0
         OffsetBottom 0
        }
-       Color 0.012 0.012 0.012 1
+       Color 0.044 0.048 0.062 1
       }
       TextWidgetClass "{632A9423D7CA63F9}" {
        Name "Final"
@@ -937,7 +1098,7 @@ FrameWidgetClass {
         SizeY 0
         OffsetBottom 0
        }
-       Color 0.012 0.012 0.012 1
+       Color 0.044 0.048 0.062 1
       }
       EditBoxWidgetClass "{632A9423D7CA6365}" {
        Name "RatioBox2"
@@ -968,7 +1129,7 @@ FrameWidgetClass {
         SizeY 0
         OffsetBottom 0
        }
-       Color 0.012 0.012 0.012 1
+       Color 0.044 0.048 0.062 1
       }
       EditBoxWidgetClass "{632A9423D7CA64C6}" {
        Name "RatioBox1"
@@ -1034,7 +1195,7 @@ FrameWidgetClass {
            Slot ButtonWidgetSlot "{63122E8A233883FB}" {
             Padding 2 0 0 0
            }
-           Color 0.198 0.012 0.012 1
+           Color 1 1 1 0.8
            Texture "{BBBA870598CED29B}UI/Textures/PlayMenu/ArrowLeft_UI.edds"
            Size 15 15
           }
@@ -1070,7 +1231,7 @@ FrameWidgetClass {
           OffsetBottom 0
          }
          "Z Order" 1
-         Color 0.429 0.018 0.002 1
+         Color 0.055 0.09 0.19 1
          style outline_2px
         }
         TextWidgetClass "{632444C58844FF2D}" {
@@ -1134,6 +1295,11 @@ FrameWidgetClass {
        Slot OverlayWidgetSlot "{56691148E692437F}" {
         Padding 6 6 6 6
        }
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
       }
       ImageWidgetClass "{5DB6D18100D38307}" {
        Prefab "{5DB6D18100D38307}"
@@ -1159,6 +1325,22 @@ FrameWidgetClass {
    }
    "Z Order" 10
    {
+    ImageWidgetClass "{6500000000000003}" {
+     Name "LeftFactionBG"
+     Slot FrameWidgetSlot "{6500000000000013}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.6
+     Color 0.044 0.048 0.062 0.98
+    }
     OverlayWidgetClass "{62F20566BC4B2A32}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "RoleList"
      Slot FrameWidgetSlot "{62F20566BC4B2A18}" {
@@ -1278,7 +1460,7 @@ FrameWidgetClass {
             SizeY 0
             OffsetBottom 0
            }
-           Color 0.038 0.038 0.038 1
+           Color 0.044 0.048 0.062 1
           }
           ImageWidgetClass "{63161CD792B94130}" {
            Name "BluforBGSelect"
@@ -1439,7 +1621,7 @@ FrameWidgetClass {
             SizeY 0
             OffsetBottom 0
            }
-           Color 0.038 0.038 0.038 1
+           Color 0.044 0.048 0.062 1
           }
           ImageWidgetClass "{63161CD7F2A9D5BE}" {
            Name "OpforBGSelect"
@@ -1599,7 +1781,7 @@ FrameWidgetClass {
             SizeY 0
             OffsetBottom 0
            }
-           Color 0.038 0.038 0.038 1
+           Color 0.044 0.048 0.062 1
           }
           ImageWidgetClass "{63161CD614878E12}" {
            Name "IndforBGSelect"
@@ -1759,7 +1941,7 @@ FrameWidgetClass {
             SizeY 0
             OffsetBottom 0
            }
-           Color 0.038 0.038 0.038 1
+           Color 0.044 0.048 0.062 1
           }
           ImageWidgetClass "{63161CD6395830C5}" {
            Name "CivBGSelect"
@@ -1915,6 +2097,129 @@ FrameWidgetClass {
       OffsetRight 0
       SizeY 310
       OffsetBottom -326.745
+     }
+     {
+      OverlayWidgetClass "{56150B2288F76A08}" {
+       Prefab "{56150B2288F76A08}"
+       {
+        VerticalLayoutWidgetClass "{00000000BC2C2020}" {
+         Prefab "{00000000BC2C2020}"
+         {
+          OverlayWidgetClass "{563296652233D952}" {
+           Prefab "{563296652233D952}"
+           {
+            OverlayWidgetClass "{0000000076CB44EF}" {
+             Prefab "{0000000076CB44EF}"
+             {
+              ImageWidgetClass "{55DCCD27A68C5447}" {
+               Prefab "{55DCCD27A68C5447}"
+              }
+              BlurWidgetClass "{00000000794CF909}" {
+               Prefab "{00000000794CF909}"
+              }
+              TextWidgetClass "{55E6B13D4AF7217C}" {
+               Prefab "{55E6B13D4AF7217C}"
+              }
+              HorizontalLayoutWidgetClass "{00000000A1E383A5}" {
+               Prefab "{00000000A1E383A5}"
+               {
+                ImageWidgetClass "{55DCCD258C886EC8}" {
+                 Prefab "{55DCCD258C886EC8}"
+                }
+                ImageWidgetClass "{0000000034CEFF98}" {
+                 Prefab "{0000000034CEFF98}"
+                }
+                TextWidgetClass "{54FEBC03B2EC44A5}" {
+                 Prefab "{54FEBC03B2EC44A5}"
+                }
+                SizeLayoutWidgetClass "{56F9028315D8FE42}" {
+                 Prefab "{56F9028315D8FE42}"
+                 {
+                  EditBoxWidgetClass "{000000009EEB4E0F}" {
+                   Prefab "{000000009EEB4E0F}"
+                  }
+                 }
+                }
+                HorizontalLayoutWidgetClass "{00000000528E33DF}" {
+                 Prefab "{00000000528E33DF}"
+                 {
+                  ImageWidgetClass "{00000000B6626F93}" {
+                   Prefab "{00000000B6626F93}"
+                  }
+                  TextWidgetClass "{54FEBC03E12A1386}" {
+                   Prefab "{54FEBC03E12A1386}"
+                  }
+                 }
+                }
+                TextWidgetClass "{54FEBC045BAF6963}" {
+                 Prefab "{54FEBC045BAF6963}"
+                }
+               }
+              }
+              ImageWidgetClass "{0000000086FFCCC5}" {
+               Prefab "{0000000086FFCCC5}"
+              }
+             }
+            }
+            HorizontalLayoutWidgetClass "{5632A745B44CD3D0}" {
+             Prefab "{5632A745B44CD3D0}"
+             {
+              OverlayWidgetClass "{563285D152EBA710}" {
+               Prefab "{563285D152EBA710}"
+               {
+                OverlayWidgetClass "{5EDCE274A0C4967B}" {
+                 Prefab "{5EDCE274A0C4967B}"
+                 {
+                  BlurWidgetClass "{5EDCE274A0C49647}" {
+                   Prefab "{5EDCE274A0C49647}"
+                  }
+                  HorizontalLayoutWidgetClass "{5EDCE274A0C49645}" {
+                   Prefab "{5EDCE274A0C49645}"
+                   {
+                    RichTextWidgetClass "{5EDCE274A0C49643}" {
+                     Prefab "{5EDCE274A0C49643}"
+                    }
+                    TextWidgetClass "{5EDCE274A0C49641}" {
+                     Prefab "{5EDCE274A0C49641}"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+              OverlayWidgetClass "{5632A747AAE781EA}" {
+               Prefab "{5632A747AAE781EA}"
+               {
+                OverlayWidgetClass "{5EDCE274A0C4967B}" {
+                 Prefab "{5EDCE274A0C4967B}"
+                 {
+                  BlurWidgetClass "{5EDCE274A0C49647}" {
+                   Prefab "{5EDCE274A0C49647}"
+                  }
+                  HorizontalLayoutWidgetClass "{5EDCE274A0C49645}" {
+                   Prefab "{5EDCE274A0C49645}"
+                   {
+                    RichTextWidgetClass "{5EDCE274A0C49643}" {
+                     Prefab "{5EDCE274A0C49643}"
+                    }
+                    TextWidgetClass "{5EDCE274A0C49641}" {
+                     Prefab "{5EDCE274A0C49641}"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
      }
     }
    }

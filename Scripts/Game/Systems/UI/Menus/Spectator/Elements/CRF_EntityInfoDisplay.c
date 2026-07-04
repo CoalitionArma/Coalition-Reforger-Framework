@@ -169,46 +169,24 @@ class CRF_EntityInfoDisplay : SCR_ScriptedWidgetComponent
 				{
 					damageStateText = CRF_DamageHelper.GetCauseOfDeathString(fatalDamageEffect.GetDamageType());
 					
-					// Instigator can be null for environmental kills (falls, fire, etc.) — guard before chaining
-					Instigator instigator = fatalDamageEffect.GetInstigator();
-					if (instigator)
+					// Use the killer name cached in slot data at death time (set server-side in OnPlayerKilled).
+					// Reliable even after the killer dies, respawns, or disconnects, unlike live entity lookups.
+					if (rpl)
 					{
-						int killerPlayerId = -1;
-						string killerName = "";
-						
-						// First try to get player ID from instigator directly (works for old system)
-						killerPlayerId = instigator.GetInstigatorPlayerID();
-						
-						// If that doesn't work, try to get it from the instigator's entity via SlottingManager (new spawning system)
-						if (killerPlayerId <= 0)
+						CRF_SlotData victimSlotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rpl.Id());
+						if (victimSlotData)
 						{
-							IEntity killerEntity = instigator.GetInstigatorEntity();
-							if (killerEntity)
-							{
-								RplComponent killerRpl = RplComponent.Cast(killerEntity.FindComponent(RplComponent));
-								if (killerRpl)
-								{
-									CRF_SlotData killerSlotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(killerRpl.Id());
-									if (killerSlotData)
-										killerPlayerId = killerSlotData.GetSlotCurrentPlayerId();
-								}
-							}
+							string killerName = victimSlotData.GetKillerName();
+							if (killerName.IsEmpty())
+								bloodStateText = "KIA - Killed By: AI";
+							else
+								bloodStateText = string.Format("KIA - Killed By: %1", killerName);
 						}
-						
-						// Get the killer's name if we have a valid player ID
-						if (killerPlayerId > 0)
-							killerName = GetGame().GetPlayerManager().GetPlayerName(killerPlayerId);
-						
-						// Display the result
-						if (killerName.IsEmpty())
-							bloodStateText = "KIA - Killed By: AI";
 						else
-							bloodStateText = string.Format("KIA - Killed By: %1", killerName);
+							bloodStateText = "KIA";
 					}
 					else
-					{
 						bloodStateText = "KIA";
-					};
 				};
 			} else
 				isBleeding = charDmg.IsBleeding();

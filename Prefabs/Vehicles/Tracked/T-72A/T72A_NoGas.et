@@ -933,14 +933,6 @@ Tank : "{8A883ABED22B6E27}Prefabs/Vehicles/Core/Tracked_Base.et" {
    m_vParticlePosition -1.854 1.166 -2.173
   }
   WCS_Armament_VehicleCameraComponent "{645F55E0B862EBD4}" {
-   m_Cameras {
-    WCS_VehicleCameraProps "{631842D170C27701}" : "{D11629237578F188}Prefabs/Vehicles/Core/Configs/WCS_VehicleCamera_Periscope.conf" {
-     m_Position PointInfo "{645F55E0B862EBDC}" {
-      Offset 0 1.3662 1.4982
-     }
-     m_sId "camera_1"
-    }
-   }
   }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {

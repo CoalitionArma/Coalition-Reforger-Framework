@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C7760814389EBFDA}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_WetWork.conf"
+ Name "{C7760814389EBFDA}Configs/Gearscripts/Custom/MattBan/wetwork_gearScripts/CRF_GS_FIA_WetWork.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,6 +1,7 @@
 FrameWidgetClass {
  Name "RestrictionZoneWarning"
  Color 1 1 1 1
+ "Ignore Cursor" 1
  {
   OverlayWidgetClass "{60D306CB65DCE7C5}" {
    Name "ScreenBlure"
@@ -10,11 +11,12 @@ FrameWidgetClass {
     OffsetLeft 0
     PositionY 0
     OffsetTop 0
-    SizeX -1820
+    SizeX 0
     OffsetRight 0
-    SizeY -1050
+    SizeY 0
     OffsetBottom 0
    }
+   "Ignore Cursor" 1
    {
     BlurWidgetClass "{604CC43693E4C3CF}" {
      Name "Blure"
@@ -47,12 +49,13 @@ FrameWidgetClass {
     OffsetLeft 0
     PositionY 0
     OffsetTop 0
-    SizeX -1820
+    SizeX 0
     OffsetRight 0
-    SizeY -1050
+    SizeY 0
     OffsetBottom 0
    }
    Opacity 0
+   "Ignore Cursor" 1
    {
     ImageWidgetClass "{5F38B78BFC66B935}" {
      Name "Image0"

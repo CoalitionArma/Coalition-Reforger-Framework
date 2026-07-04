@@ -1,0 +1,20 @@
+$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 4409.553 90.906 8215.602
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "HMG"
+ }
+ {
+  coords 5705.533 0 6649.181
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Help the Company Secure the Harbour"
+ }
+ {
+  coords 3813.406 107.578 8272.665
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "HMG"
+ }
+}

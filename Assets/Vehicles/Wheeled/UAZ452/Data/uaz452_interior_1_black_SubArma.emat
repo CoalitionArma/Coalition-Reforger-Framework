@@ -1,13 +1,4 @@
 MatPBRMulti {
- GlobalMCRMap "{B89E579C92EA1752}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_MCR.edds"
- OverlayWhitePower 0.077
- MaskMap "{F627E46C97763EEF}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_GLOBAL_MASK.edds"
- MaskGreenScale 1
- VFXMap "{0C5F63376507647E}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_VFX.edds"
- GlobalNMOMap "{7C2D669F3963D512}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_NMO.edds"
- GlobalNMOUVTransform MatUVTransform "{5A673397D65E8962}" {
- }
- UVSrcGlobNormal "UV set 2"
  MudMetalness 0
  DirtOpacity 1.104
  DirtLayerSharpness 0.192
@@ -21,6 +12,15 @@ MatPBRMulti {
   OffsetU -0.221
   Rotation 42.894
  }
+ GlobalMCRMap "{B89E579C92EA1752}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_MCR.edds"
+ OverlayWhitePower 0.077
+ MaskMap "{F627E46C97763EEF}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_GLOBAL_MASK.edds"
+ MaskGreenScale 1
+ VFXMap "{0C5F63376507647E}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_VFX.edds"
+ GlobalNMOMap "{7C2D669F3963D512}Assets/Vehicles/Wheeled/UAZ452/Data/uaz452_interior_1_NMO.edds"
+ GlobalNMOUVTransform MatUVTransform "{5A673397D65E8962}" {
+ }
+ UVSrcGlobNormal "UV set 2"
  Enabled_4 1
  Color_4 0.227 0.227 0.227 1
  BCR_4 "{884C38B4DD0DD84A}Assets/_SharedData/Metal/ST_Metal_Worn_01_BCR.edds"

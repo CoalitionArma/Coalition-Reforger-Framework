@@ -53,10 +53,11 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	
 	bool m_bAnyZonesBeingCaptured = false;
 	int m_iWhichZoneCaptureIsInProgress = -1;
-	int m_iZoneUnlockTimeIteratorInt = m_iZoneUnlockTime + 1;
-	int m_iTimeToWinIteratorInt = m_iTimeToWin;
-	int m_iInitialTimeIteratorInt = m_iInitialTime;
-	
+	int m_iZoneUnlockTimeIteratorInt;
+	int m_iTimeToWinIteratorInt;
+	int m_iInitialTimeIteratorInt;
+	bool m_bVictoryDeclared = false;
+
 	bool m_bStartGame = false;
 	bool m_bInitialMarkerCheck = false;
 	bool m_bZoneUpdateChecks = false;
@@ -78,7 +79,14 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		if (!s_Instance)
 			s_Instance = this;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_FrontlineGamemodeManager()
+	{
+		if (s_Instance == this)
+			s_Instance = null;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_FrontlineGamemodeManager GetInstance()
 	{
@@ -112,7 +120,12 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		
+
+		// Initialize from attribute values now that prefab attributes are loaded
+		m_iZoneUnlockTimeIteratorInt = m_iZoneUnlockTime + 1;
+		m_iTimeToWinIteratorInt      = m_iTimeToWin;
+		m_iInitialTimeIteratorInt    = m_iInitialTime;
+
 		// Initialize the array on all machines (needed for RPC updates to work)
 		SetupZoneStatus();
 		
@@ -369,7 +382,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		if(!m_bAnyZonesBeingCaptured)
 			m_iWhichZoneCaptureIsInProgress = -1;
 		
-		if (m_sHudMessage == string.Format("%1 Victory!", m_sBluforSideNickname) || m_sHudMessage == string.Format("%1 Victory!", m_sOpforSideNickname))
+		if (m_bVictoryDeclared)
 		{
 			array<int> indices = {};
 			array<string> statuses = {};
@@ -398,6 +411,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 			string victoryMessage;
 			if(m_iTimeToWinIteratorInt <= 0)
 			{
+				m_bVictoryDeclared = true;
 				victoryMessage = string.Format("%1 Victory!", m_sBluforSideNickname);
 				m_sHudMessage = victoryMessage;
 				Rpc(RpcDo_PlayRadioSound, victoryMessage);
@@ -417,6 +431,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 			string victoryMessage;
 			if(m_iTimeToWinIteratorInt <= 0)
 			{
+				m_bVictoryDeclared = true;
 				victoryMessage = string.Format("%1 Victory!", m_sOpforSideNickname);
 				m_sHudMessage = victoryMessage;
 				Rpc(RpcDo_PlayRadioSound, victoryMessage);

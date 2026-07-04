@@ -1,0 +1,9 @@
+HDREffect {
+ SpeedDarkToBright 5
+ SpeedBrightToDark 5
+ ImageWeightMap "{BF89344DEE0273AF}Common/Postprocess/HDR_WeightMap_Improved.edds"
+ SceneLVAverageTime 0
+ FilmicLinearStrength 0.01
+ BloomIntensity 0.4
+ Vignette 0
+}

@@ -1,0 +1,128 @@
+GenericEntity GasStationMunitions : "{4557C927E8D72EA5}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Ammunition_HQ_US.et" {
+ components {
+  SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+   Enabled 0
+  }
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   m_fBaseHealth 2500
+  }
+ }
+ coords 14948.668 38.632 5156.68
+ angles 0 -71.878 0
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Varpadany gas station has been destroyed\", 10);"\
+ "		"\
+ "			IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"GasStationMunitionsOPF\");"\
+ "			delete marker1;"\
+ "		"\
+ "			IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"GasStationMunitionsBLU\");"\
+ "			delete marker2;"\
+ "	"
+ {
+  $grp GenericEntity : "{4557C927E8D72EA5}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Ammunition_HQ_US.et" {
+   {
+    coords 0.044 0 -0.646
+   }
+   {
+    coords -0.117 0 0.952
+   }
+   {
+    coords -0.066 0.311 0.961
+   }
+   {
+    coords -0.033 0.622 0.966
+   }
+   {
+    coords -0.01 0.311 0.017
+   }
+   {
+    coords -0.004 0.622 -0.004
+   }
+   {
+    coords 0.02 0.311 -0.67
+   }
+   {
+    coords -0.012 0.622 -0.687
+   }
+   {
+    coords -0.047 0 -1.221
+   }
+   {
+    coords -0.092 0.311 -1.24
+   }
+   {
+    coords -0.148 0.622 -1.184
+   }
+   {
+    coords -0.014 0.933 -0.851
+   }
+   {
+    coords 10.073 1.663 -5.63
+   }
+   {
+    coords -0.247 0 -1.764
+   }
+   {
+    coords -0.189 0.311 -1.773
+   }
+  }
+ }
+}
+GenericEntity FuelStorage : "{E020181A3AB8A903}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_PalletFuel_Cluttered_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{6270A322F58B08A8}" {
+   m_fBaseHealth 2500
+  }
+ }
+ coords 15110.562 62.453 5426.578
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel storage has been destroyed\", 10);"\
+ "		"\
+ "			IEntity marker1 = GetGame().GetWorld().FindEntityByName(\"FuelStorageOPF\");"\
+ "			delete marker1;"\
+ "		"\
+ "			IEntity marker2 = GetGame().GetWorld().FindEntityByName(\"FuelStorageBLU\");"\
+ "			delete marker2;"\
+ "	"
+ {
+  $grp GenericEntity : "{0D0535DB77274C41}PrefabsEditable/Auto/Props/Military/Camps/E_PalletFuel_01.et" {
+   {
+    coords 3.936 0 4.287
+    angles 0 -130.811 0
+   }
+   {
+    coords 4.265 0 2.16
+    angles 0 -130.811 0
+   }
+   {
+    coords 3.958 0 -0.687
+    angles 0 -130.811 0
+   }
+   {
+    coords 2.155 0.002 0.428
+    angles 0 -130.811 0
+   }
+  }
+  $grp GenericEntity : "{E020181A3AB8A903}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_PalletFuel_Cluttered_01.et" {
+   {
+    coords 3.919 0 -3.123
+   }
+   {
+    coords 7.425 0 -0.782
+    angles 0 50.492 0
+   }
+   {
+    coords 5.669 0 -1.817
+    angles 0 154.794 0
+   }
+   {
+    coords 5.952 0 1.12
+    angles 0 50.492 0
+   }
+   {
+    coords 5.958 0 5.822
+    angles 0 50.492 0
+   }
+  }
+ }
+}
