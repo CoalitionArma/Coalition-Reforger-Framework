@@ -902,17 +902,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// Refresh unslotted players list
 		UpdateUnslottedPlayersList();
 
-		// If game is live and local player has a fresh (non-dead) slot assignment, close menu and insert into unit
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-			if (slottingManager.IsPlayerInASlot(localPlayerId))
-			{
-				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
-				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
-					InitilizePlayer();
-			}
-		}
+		// If game is live and the local player was just placed into this specific slot, close and insert into unit
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME
+			&& currentPlayerId == SCR_PlayerController.GetLocalPlayerId()
+			&& !slotData.GetIsDeadSlot())
+			InitilizePlayer();
 	}
 
 	/**
