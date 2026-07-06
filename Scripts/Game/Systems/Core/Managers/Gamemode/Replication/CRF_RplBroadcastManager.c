@@ -40,8 +40,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected bool m_bBatchingEnabled = true;
 	protected bool m_bFlushScheduled = false;
 
-	// Client-side audio handles for Rush MCOM sounds, keyed by sound event name
-	protected ref map<string, AudioHandle> m_mRushSoundHandles = new map<string, AudioHandle>();
+	// Client-side audio handles for positional sounds, keyed by sound event name
+	protected ref map<string, AudioHandle> m_mSoundHandles = new map<string, AudioHandle>();
 
 	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
 	string m_sOutroWinningFaction = "";
@@ -644,33 +644,30 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void PlayRushMCOMSound(string resource, string soundEvent, vector position)
+	void PlayPositionalSound(string resource, string soundEvent, vector position)
 	{
 		// Telemetry: resource string + event string + vector
 		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(resource);
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
 		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
-		LogTelemetry("PlayRushMCOMSound", bytes);
+		LogTelemetry("PlayPositionalSound", bytes);
 		
 		#ifdef WORKBENCH
-		RpcDo_PlayRushMCOMSound(resource, soundEvent, position);
+		RpcDo_PlayPositionalSound(resource, soundEvent, position);
 		#else
-		Rpc(RpcDo_PlayRushMCOMSound, resource, soundEvent, position);
+		Rpc(RpcDo_PlayPositionalSound, resource, soundEvent, position);
 		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void StopRushMCOMSound(string soundEvent, vector position)
+	void StopPositionalSound(string soundEvent)
 	{
-		// Telemetry: string + vector
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
-		LogTelemetry("StopRushMCOMSound", bytes);
+		LogTelemetry("StopPositionalSound", CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent));
 		
 		#ifdef WORKBENCH
-		RpcDo_StopRushMCOMSound(soundEvent, position);
+		RpcDo_StopPositionalSound(soundEvent);
 		#else
-		Rpc(RpcDo_StopRushMCOMSound, soundEvent, position);
+		Rpc(RpcDo_StopPositionalSound, soundEvent);
 		#endif
 	}
 	
@@ -1781,29 +1778,29 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PlayRushMCOMSound(string resource, string soundEvent, vector position)
+	void RpcDo_PlayPositionalSound(string resource, string soundEvent, vector position)
 	{
-		// Build a world transform from the position with identity rotation
-		vector mcomTransform[4];
-		mcomTransform[0] = Vector(1, 0, 0);
-		mcomTransform[1] = Vector(0, 1, 0);
-		mcomTransform[2] = Vector(0, 0, 1);
-		mcomTransform[3] = position; /// AudioSystem.PlayEvent requires a transform, construct it with with position
+		// AudioSystem.PlayEvent requires a full world transform; build identity rotation at the target position.
+		vector soundTransform[4];
+		soundTransform[0] = Vector(1, 0, 0);
+		soundTransform[1] = Vector(0, 1, 0);
+		soundTransform[2] = Vector(0, 0, 1);
+		soundTransform[3] = position;
 		
-		// Stop any previous instance of this event, then play
-		if (m_mRushSoundHandles.Contains(soundEvent))
-			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
-		m_mRushSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, mcomTransform));
+		// Stop any previous instance of this event before starting a new one.
+		if (m_mSoundHandles.Contains(soundEvent))
+			AudioSystem.TerminateSound(m_mSoundHandles.Get(soundEvent));
+		m_mSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, soundTransform));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_StopRushMCOMSound(string soundEvent, vector position)
+	void RpcDo_StopPositionalSound(string soundEvent)
 	{
-		if (m_mRushSoundHandles.Contains(soundEvent))
+		if (m_mSoundHandles.Contains(soundEvent))
 		{
-			AudioSystem.TerminateSound(m_mRushSoundHandles.Get(soundEvent));
-			m_mRushSoundHandles.Set(soundEvent, AudioHandle.Invalid);
+			AudioSystem.TerminateSound(m_mSoundHandles.Get(soundEvent));
+			m_mSoundHandles.Set(soundEvent, AudioHandle.Invalid);
 		}
 	}
 	
