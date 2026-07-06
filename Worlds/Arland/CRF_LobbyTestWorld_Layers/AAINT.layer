@@ -21,6 +21,45 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  components {
   CRF_CommunityTagManager "{69651E04AFDA77E5}" {
   }
+  CRF_RushGamemodeManager "{69CCF01989B5F7AD}" {
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  CRF_TaskCreatorComponent "{69C31CE99C05917A}" {
+   m_aTaskEntries {
+    CRF_TaskCreatorEntry "{69C31CE992E0C33A}" {
+     m_sTaskLabel "SILLY TASK"
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "task1"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+     m_sMarkerLabel "PENIS"
+    }
+    CRF_TaskCreatorEntry "{69C31CE91DFDDEC1}" {
+     m_sTaskLabel "SILLY TASK 2"
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "task2"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+     m_sMarkerLabel "PENIS"
+    }
+    CRF_TaskCreatorEntry "{69C31CE90E9B06A5}" {
+     m_sTaskLabel "SILLY TASK 3"
+     m_eTaskType PLANT_DEFUSE_BOMB
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "task3"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+     m_sMarkerLabel "PENIS"
+     m_sMarkerIcon "{1B3B38AAA1577734}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_Defend.edds"
+    }
+   }
+   m_CollectIntel CRF_TaskHandler_CollectIntel "{69CCF00C1F59F628}" {
+    m_sPrefab "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et"
+   }
+   m_PlantDefuseBomb CRF_TaskHandler_PlantDefuseBomb "{69CACEEA13959330}" {
+    m_sPrefab "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et"
+    m_fExplosionCountdown 15
+    m_eDefendingSide OPFOR
+   }
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
   }
@@ -751,6 +790,37 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
+$grp BaseGameTriggerEntity {
+ mcom_a_trigger {
+  coords 1203.519 38 2820.352
+ }
+ mcom_b_trigger {
+  coords 1182.035 38 2814.797
+ }
+}
+$grp GameEntity {
+ task1 {
+  components {
+   CRF_TaskCreatorPreviewComponent "{69C31CE9E8734F8E}" {
+   }
+  }
+  coords 1229.588 37.986 2828.096
+ }
+ task2 {
+  components {
+   CRF_TaskCreatorPreviewComponent "{69C31CE9E8734F8E}" {
+   }
+  }
+  coords 1227.088 37.978 2827.388
+ }
+ task3 {
+  components {
+   CRF_TaskCreatorPreviewComponent "{69C31CE9E8734F8E}" {
+   }
+  }
+  coords 1224.909 37.986 2826.945
+ }
+}
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  coords 1237.725 37.908 2830.09
  Points {
@@ -839,4 +909,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position -108.952 0 -365.069
   }
  }
+}
+GenericEntity : "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et" {
+ coords 1222.506 38 2826.211
 }
