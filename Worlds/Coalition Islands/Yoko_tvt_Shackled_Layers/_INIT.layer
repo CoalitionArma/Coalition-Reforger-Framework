@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{69CEEB6B0B95B04B}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "A PLA platoon is stuck in Hugh Town, A USMC Company is tasked with finishing of the PLA on St. Hugh."\
+   m_sTextData "A PLA platoon is stuck in Hugh Town, and a USMC Company is tasked with finishing off the PLA on St. Hugh."\
    ""\
    "BLUFOR Composition: Infantry Company"\
    "BLUFOR Assets: None"\
