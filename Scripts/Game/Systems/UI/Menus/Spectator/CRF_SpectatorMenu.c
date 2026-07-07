@@ -188,6 +188,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		// Also register for surgical player-ID delta updates so spectator view stays current
 		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
+		// Separate handler checks only whether the local player was just slotted during the game phase
+		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(OnSlotChangedCheckAutoInsert);
 		
 		// Get game system references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
@@ -1734,6 +1736,34 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	}
 	
 	/**
+	 * Called only on GetOnSlotChanged events. Closes the spectator menu and inserts the local player
+	 * if the slot that just changed now belongs to them and is not a dead slot.
+	 * Checking the specific changed slot (rather than IsPlayerInASlot) ensures only the slotted
+	 * player's own client reacts, not every spectator who happens to be in a live slot.
+	 */
+	protected void OnSlotChangedCheckAutoInsert()
+	{
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+			return;
+
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		int changedSlotId = slottingManager.GetLastChangedSlotId();
+		if (changedSlotId <= 0)
+			return;
+
+		CRF_SlotData changedSlot = slottingManager.GetSlotData(changedSlotId);
+		if (!changedSlot)
+			return;
+
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		if (changedSlot.GetSlotCurrentPlayerId() == localPlayerId && !changedSlot.GetIsDeadSlot())
+		{
+			GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(localPlayerId);
+		}
+	}
+
+	/**
 	 * Selects BLUFOR faction for display
 	 */
 	void SelectFactionBlufor()
@@ -1962,22 +1992,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 		}
 
-		// If game is live and local player has been freshly slotted (not dead), close spectator menu and insert into unit.
-		// Dead players keep their slot assignment while spectating, so we must exclude them to avoid a re-open loop.
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-			if (slottingManager.IsPlayerInASlot(localPlayerId))
-			{
-				CRF_SlotData playerSlotData = slottingManager.GetPlayerSlotData(localPlayerId);
-				if (playerSlotData && !playerSlotData.GetIsDeadSlot())
-				{
-					GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
-					CRF_PlayerRplToAuthorityManager.GetInstance().RequestInitilizePlayer(localPlayerId);
-				}
-			}
-		}
 	}
 
 	/**
@@ -2136,6 +2150,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			slottingManager.GetOnSlottingUpdate().Remove(UpdateSlots);
 			slottingManager.GetOnSlotChanged().Remove(UpdateSlots);
+			slottingManager.GetOnSlotChanged().Remove(OnSlotChangedCheckAutoInsert);
 		}
 		
 		// Remove all action listeners
