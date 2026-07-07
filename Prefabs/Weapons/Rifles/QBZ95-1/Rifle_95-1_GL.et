@@ -1,0 +1,202 @@
+GenericEntity : "{923D948AB0D57A50}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_long_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{B8BBFB409D34C924}Assets/Weapons/Rifles/QBZ95-1/QBZ95-1.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#AR-Weapon_951_Name"
+     Description "#AR-Weapon_951_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{55349E9229B55E3D}" {
+     Weight 3.25
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{7E909D8621AA768B}animtest/p_Type95_1_ik.anm"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5A88DB44D1DE25C6}" {
+        "Point info" DeploymentPointInfo deploy {
+         PivotID "barrel_muzzle"
+         Offset 0 0 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      Offset 0 0.0706 0.059
+      Prefab "{A6A478BB9FC6D2C1}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight_LS.et"
+      InspectionWidgetOffset 0 0.0202 0.1298
+     }
+     AttachmentType AttachmentUnderBarrelType95 "{58E2A37522A0E34B}" {
+     }
+    }
+    AttachmentSlotComponent "{5F189C826D592450}" {
+     AttachmentSlot InventoryStorageSlot BayonetSlot {
+      InspectionWidgetOffset 0 0.035 0.228
+     }
+     AttachmentType AttachmentBayonetType95 "{60AAE435165C80B8}" {
+     }
+    }
+    AttachmentSlotComponent "{69CEEB65EFFA40EB}" {
+     AttachmentSlot InventoryStorageSlot UpperHandguardslot {
+      PivotID "slot_UpHandguard"
+      Prefab "{FF86C557732530F2}Prefabs/Weapons/Attachments/Handguards/Handguard_TYPE95/Handguard_95_base.et"
+     }
+     AttachmentType AttachmentHandGuardType95 "{69CEEB65EFFA4105}" {
+     }
+    }
+    AttachmentSlotComponent "{69CEEB65EFFA4107}" {
+     AttachmentSlot InventoryStorageSlot Optic {
+      PivotID "slot_optic"
+      ChildPivotID "snap_weapon"
+      Enabled 0
+      Prefab "{C21766DD269F638D}Prefabs/Weapons/Attachments/Optics/YMA600/YMA600_Base.et"
+      InspectionWidgetOffset 0 0.1714 -0.0396
+     }
+     AttachmentType AttachmentOpticsType95 "{69CEEB65EFFA4102}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{69CEEB65EFFA410C}" {
+     Enabled 0
+     AttachmentSlot InventoryStorageSlot PicatinnyRail {
+      PivotID "slot_optic_dovetail"
+      Prefab "{B4259011F30EFF4E}Prefabs/Weapons/Attachments/Mounts/Dovetail_AK/Dovetail_95.et"
+     }
+    }
+    SightsComponent "{69CEEB65EFFA410F}" {
+     SightsPosition PointInfo "{69CEEB65EFFA4109}" {
+      PivotID "eye"
+      Offset 0 0 -0.092
+     }
+     SightsRanges {
+      SightRangeInfo "{69CEEB65EFFA410B}" {
+       Range 0 100
+       WeaponPosition PointInfo "{69CEEB65EFFA4135}" {
+        Offset 0 -0.00013 -0.0001
+        Angles 0.03845 0 0
+       }
+      }
+      SightRangeInfo "{69CEEB65EFFA4136}" {
+       Range 0.5 200
+       WeaponPosition PointInfo "{69CEEB65EFFA4130}" {
+        Offset 0 -0.00029 -0.00021
+        Angles 0.0824 0 0
+       }
+      }
+      SightRangeInfo "{69CEEB65EFFA4131}" {
+       Range 1 300
+       WeaponPosition PointInfo "{69CEEB65EFFA4133}" {
+        Offset 0 -0.00048 -0.00036
+        Angles 0.13733 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{69CEEB65EFFA4127}" {
+      PivotID "eye"
+      Offset 0 0 0.3552
+     }
+     SightsPointRear PointInfo "{69CEEB65EFFA4121}" {
+      PivotID "eye"
+      Offset 0 0 0.0344
+     }
+     ZeroingGenerator BaseZeroingGenerator "{69CEEB65EFFA4122}" {
+     }
+     m_iOpticDOFDistanceScale 500
+     m_bForceSimpleDOF 1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     Enabled 0
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{4E2B66CBA589F625}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        PivotID "barrel_muzzle"
+        Prefab "{916081549057495F}Prefabs/Weapons/Attachments/Muzzle/FlashHider_TYPE95/FlashHider_95.et"
+        InspectionWidgetOffset 0 0.066 0.3366
+       }
+       AttachmentType AttachmentMuzzle58_42 "{69CEEB65EFFA412E}" {
+       }
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{50F64C476EC435CA}" {
+       Offset 0 0 -0.0981
+      }
+     }
+     MagazineWell MagazineWell58x42C_Type95 "{69CEEB65EFFA412A}" {
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      PivotID "slot_magazine"
+      Offset 0 0 0
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo rht {
+      PivotID "w_root"
+      Offset 0 -0.0714 0.0573
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo bt {
+      PivotID "w_root"
+      Offset 0 0.0055 -0.2839
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset 0 -0.0212 -0.207
+     }
+     MagazineTemplate "{3555C4226838001E}Prefabs/Weapons/Magazines/Magazine_95_30rnd_Base.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{A9E0436DD2953E9D}Assets/Weapons/Rifles/QBZ95-1/workspeces/Type95.agr"
+     AnimInstance "{F75DD30C4B29A758}Assets/Weapons/Rifles/QBZ95-1/workspeces/Type95_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{55349E9229B55D8A}" {
+      AnimGraph "{A9E0436DD2953E9D}Assets/Weapons/Rifles/QBZ95-1/workspeces/Type95.agr"
+      AnimInstance "{0C03423DD328C3B4}Assets/Weapons/Rifles/QBZ95-1/workspeces/Type95_player.asi"
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Radius 0.085
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{5A1E5C47B0C4EE1E}" {
+      Angles 0 -90 0
+     }
+    }
+    UserActionContext "{618A84270A2BFDC0}" {
+     Position PointInfo "{618A842792A66B70}" {
+      PivotID "barrel_muzzle"
+     }
+    }
+    UserActionContext "{69CEEB65EFFA415E}" {
+     UIInfo SCR_ActionContextUIInfo "{69CEEB65EFFA415A}" {
+     }
+     ContextName "optic"
+     Position PointInfo "{69CEEB65EFFA4144}" {
+      PivotID "slot_optic"
+     }
+     Radius 0.1
+    }
+   }
+  }
+ }
+ coords 0 0 -0.033
+}
