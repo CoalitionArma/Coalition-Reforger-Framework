@@ -297,7 +297,7 @@ modded class SCR_VONController
 		
 		if (!m_bFirstConnect)
 		{
-			WriteJSON(true, true);
+			UpdateVONData(true, true);
 			m_bFirstConnect = true;
 		}
 		
@@ -497,8 +497,8 @@ modded class SCR_VONController
 			m_bHasBroadcasted = true;
 		}
 		
-		// WriteJSON runs every tick; the dirty flag inside skips SaveToFile when nothing changed.
-		WriteJSON();
+		// UpdateVONData runs every tick; the dirty flag inside skips the POST when nothing changed.
+		UpdateVONData();
 	}
 	
 	//------------------------------------------------------------------------------------------------

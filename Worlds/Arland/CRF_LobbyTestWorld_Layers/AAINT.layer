@@ -46,7 +46,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 15
- m_bUseCVON 0
+ m_bUseCVON 1
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
@@ -684,7 +684,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+  m_rGearScript "{FB9CB6F6E2D712F1}Configs/Gearscripts/Standard/90s/CRF_GS_US90s_Desert_6color.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
