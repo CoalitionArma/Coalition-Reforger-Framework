@@ -1,0 +1,87 @@
+$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+ {
+  coords 6757.074 17.852 6768.272
+  m_rVehicle "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
+ }
+ {
+  coords 6755.042 17.844 6760.009
+  angles 0 -162.628 0
+  m_rVehicle "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+ }
+ {
+  coords 5571.066 143.03 6237.927
+  angles 0 -162.628 0
+  m_rVehicle "{030A76F8D2BDBF33}Prefabs/Vehicles/Wheeled/S1203/S1203_Explosive.et"
+ }
+}
+$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+ {
+  coords 5581.326 142.952 6247.134
+  angles 0 0 0
+  m_fWorldSize 150
+  m_sDescription "Car Bomb"
+ }
+ {
+  coords 6786.498 17.844 6762.573
+  angles 0 0 0
+  m_fWorldSize 100
+  m_sDescription "Police Station"
+ }
+}
+$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 3033.7 17.844 6018.063
+  angles 0 152.233 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+ }
+ {
+  coords 3039.795 17.843 6006.284
+  angles 0 152.233 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+ }
+ {
+  coords 3026.56 17.911 6032.141
+  angles 0 152.233 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+ }
+ {
+  coords 3018.691 18.33 6045.255
+  angles 0 152.233 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+ }
+ {
+  coords 3028.693 17.844 6009.101
+  angles 0 152.233 0
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+ }
+ {
+  coords 3022.186 17.844 6020.327
+  angles 0 152.233 0
+  m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+ }
+}
+CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ coords 6794.11 17.844 6764.481
+ m_sDescription "Police Station"
+}
+GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{69CB134211512FE0}" {
+     SlotTemplate InventoryStorageSlot Satchel {
+      Prefab "{00515E7AAAFD9CB6}Prefabs/Weapons/Explosives/Explosive_Satchels/INDFOR_Satchel.et"
+     }
+     NumSlots 3
+    }
+    MultiSlotConfiguration "{69CB1342F7638158}" {
+     SlotTemplate InventoryStorageSlot Det {
+      Prefab "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+     }
+     NumSlots 3
+    }
+   }
+  }
+ }
+ coords 6767.037 18.419 6750.685
+}
