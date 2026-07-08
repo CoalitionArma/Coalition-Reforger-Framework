@@ -43,13 +43,13 @@
 //   on all clients including dedicated server clients.
 //
 // OnActionStart(int taskIndex, int taskObjectState, IEntity taskObject, IEntity user)
-//   Client — player begins holding the action. Use for planting/defusing sounds.
+//   Client — player begins holding the action. Ex: Use for planting/defusing sounds.
 //
 // OnActionCanceled(int taskIndex, int taskObjectState, IEntity taskObject, IEntity user)
-//   Client — player releases before completion. Use to stop hold sounds.
+//   Client — player releases before completion. Ex: Use to stop hold sounds.
 //
 // OnObjectStateReplicated(int newState, IEntity taskObject)
-//   All clients — fired when m_iTaskObjectState replicates. Use for client-
+//   All clients — fired when m_iTaskObjectState replicates. Ex: Use for client-
 //   side reactions: start/stop looping sounds, swap visuals, etc.
 //
 // OnObjectStateChangedServer(int newState, int taskIndex, CRF_TaskCreatorObjectComponent objectComp)
@@ -58,7 +58,7 @@
 //
 // OnObjectCountdownExpired(int taskIndex, CRF_TaskCreatorObjectComponent objectComp)
 //   Server only — fired when a countdown started via StartCountdown() expires.
-//   Use for: explosion effects, auto-complete/fail, final state transitions.
+//   Ex: Use for explosion effects, auto-complete/fail, final state transitions.
 // =============================================================================
 
 // Base handler — defines the interface every task type must satisfy.

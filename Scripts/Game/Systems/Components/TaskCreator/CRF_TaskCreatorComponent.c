@@ -17,6 +17,7 @@
 // TODO:
 // - Insure bug free
 // - Figure out more task types
+// - Needs serious cleanup
 //
 // SETUP
 // 1. Add CRF_TaskCreatorComponent to the CRF_Gamemode entity.
@@ -129,6 +130,9 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// EDITOR ATTRIBUTES
 	//=========================================================================
 
+	[Attribute("TASK CREATOR — QUICK SETUP\n\n1. HANDLERS (Task Type Handlers)\n   Expand the handler for each task type you use.\n   Set Prefab to the .et task object to spawn.\n   (PlantDefuseBomb: also configure timings & sounds here)\n\n2. ENTRIES (Objective Tasks)\n   Add one entry per objective.\n   - Task Type must match a configured handler\n   - Assigned Side = faction that can interact\n   - Spawn Entity Name = exact name of the anchor entity in the world\n   - Notification / Map Marker = optional per-task feedback\n\n3. ANCHORS\n   Place CRF_Task_Empty.et prefabs in the world.\n   Name each one to match its Spawn Entity Name.\n   The preview component shows the task mesh at edit time.\n\n4. WIN CONDITION (optional)\n   SET_AMOUNT_PER_SIDE — faction wins when it completes m_iTasksRequiredForWin tasks.\n   NONE — no auto-win; use task data for external tracking only.\n\nSee !Docs/MissionMaking/CRF_TASK_CREATOR.md for full reference.", UIWidgets.EditBoxMultiline, "Task Creator Setup Guide", category: "Documentation")]
+	string m_sDocumentation;
+
 	[Attribute(desc: "One entry per objective. Each entry spawns a task prefab at a named world entity and handles completion logic, notifications, and markers.", category: "Objective Tasks")]
 	ref array<ref CRF_TaskCreatorEntry> m_aTaskEntries;
 
@@ -209,7 +213,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// LIFECYCLE
 	//=========================================================================
 
-	override protected void OnWorldPostProcess(World world) // Testing OnWorldPostProcess as it fires after OnPostinit
+	override protected void OnWorldPostProcess(World world) // Testing OnWorldPostProcess as it fires after OnPostinit, MAY CAUSE ISSUES/CRASHES
 	{
 		if (!GetGame().InPlayMode())
 			return;
@@ -580,7 +584,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 			return;
 
 		CRF_EObjectiveNotifySide side = m_iLastWinSide;
-		if (!m_bNotifyOnSideWin || !CanNotifyLocalSide(side))
+		if (!m_bNotifyOnSideWin)
 			return;
 
 		string parsedText = ParseNotificationText(m_sSideWinText, side);

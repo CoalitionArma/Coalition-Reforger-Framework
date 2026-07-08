@@ -191,6 +191,11 @@ class CRF_TaskCreatorPreviewComponent : ScriptComponent
 			return;
 
 		m_rCurrentPreviewPrefab = previewPrefab;
+
+		// Strip TRACEABLE from the entire preview hierarchy so the Workbench
+		// "snap to surface" raycast passes through the mesh instead of landing
+		// on top of it and continuously nudging the anchor upward
+		m_ePreviewEntity.ClearFlags(EntityFlags.TRACEABLE, true);
 	}
 
 	protected void DeletePreview()

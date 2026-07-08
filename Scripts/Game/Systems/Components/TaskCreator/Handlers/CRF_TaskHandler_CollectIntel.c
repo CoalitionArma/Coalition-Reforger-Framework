@@ -13,9 +13,12 @@ class CRF_TaskHandler_CollectIntel : CRF_BaseTaskHandler
 	[Attribute("", UIWidgets.ResourceNamePicker, "Prefab spawned at the task anchor. Must carry CRF_TaskCreatorObjectComponent and CRF_TaskCreatorAction.", params: "et", category: "Collect Intel")]
 	ResourceName m_sPrefab;
 
+	[Attribute("Collect Intel", UIWidgets.EditBox, "Text shown on the interaction action.", category: "Collect Intel")]
+	string m_sActionName;
+
 	override string GetActionName(int taskObjectState)
 	{
-		return "Collect Intel";
+		return m_sActionName;
 	}
 
 	override ResourceName GetPrefab()

@@ -57,7 +57,7 @@ ResourceName m_sPrefab;
 [Attribute("45", UIWidgets.SpinBox, "Seconds from plant until the bomb explodes if not defused.", "5 300 5", category: "Plant/Defuse")]
 float m_fExplosionCountdown;
 
-[Attribute("0", UIWidgets.ComboBox, "What happens when the bomb is successfully defused.\nDELETE — remove the object and mark the task complete.\nREPLANT — reset the bomb to UNPLANTED so it can be planted again.", "", ParamEnumArray.FromEnum(CRF_EDefuseBehaviour), category: "Plant/Defuse")]
+[Attribute("0", UIWidgets.ComboBox, "What happens when the bomb is successfully defused.\nDELETE — One-Time bomb attempt, if defused, grants task completion to DEFENDING SIDE.\nREPLANT — reset the bomb to UNPLANTED so it can be planted again.", "", ParamEnumArray.FromEnum(CRF_EDefuseBehaviour), category: "Plant/Defuse")]
 CRF_EDefuseBehaviour m_eDefuseBehaviour;
 
 	[Attribute("0", UIWidgets.ComboBox, "Which faction defends (can defuse but not plant). NONE/ALL = open to all. Specific faction = only that faction can defuse, others can only plant.", "", ParamEnumArray.FromEnum(CRF_EObjectiveNotifySide), category: "Plant/Defuse")]

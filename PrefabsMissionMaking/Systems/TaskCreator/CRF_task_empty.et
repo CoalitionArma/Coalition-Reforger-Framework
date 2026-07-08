@@ -1,0 +1,8 @@
+GameEntity {
+ ID "69CE055DFE1461B2"
+ components {
+  CRF_TaskCreatorPreviewComponent "{69C31CE9E8734F8E}" {
+  }
+ }
+ coords 1230.692 37.986 2829.206
+}
