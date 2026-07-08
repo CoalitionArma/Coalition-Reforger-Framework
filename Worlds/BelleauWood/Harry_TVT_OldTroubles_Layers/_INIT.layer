@@ -35,7 +35,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "BLUFOR Assets: N/A"\
    ""\
    "OPFOR Composition: Oversized Infantry Platoon"\
-   "OPFOR Assets: Integrated Weapons w/ 60mm mortars"\
+   "OPFOR Assets: Integrated Weapons w/ 60mm mortars, Recon heli"\
    ""\
    "Time: 60 Min"\
    "Weather: Day Cloudy"
