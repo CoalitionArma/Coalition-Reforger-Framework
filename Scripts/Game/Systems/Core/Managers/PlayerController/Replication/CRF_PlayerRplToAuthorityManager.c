@@ -547,6 +547,36 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_ClearSlotLottery, requestingPlayerId);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	void RequestObjectiveTaskComplete(int taskIndex, int completingSide = 0)
+	{
+		Rpc(RpcAsk_RequestObjectiveTaskComplete, taskIndex, completingSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Tells the server to set the per-object state on the task at taskIndex.
+	// The server calls SetTaskObjectState() which replicates to all clients and
+	// fires the handler's OnObjectStateChangedServer (for countdowns and sounds).
+	void RequestTaskObjectSetState(int taskIndex, int newState, int planterSide = 0)
+	{
+		Rpc(RpcAsk_RequestTaskObjectSetState, taskIndex, newState, planterSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Tells the server to broadcast a 3D positional sound to all clients at the given world position.
+	// Position is read by the caller from the relevant entity — no task index needed.
+	void RequestPlayPositionalSound(string soundResource, string soundEvent, vector position)
+	{
+		Rpc(RpcAsk_RequestPlayPositionalSound, soundResource, soundEvent, position);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Tells the server to stop a previously broadcast positional sound on all clients.
+	void RequestStopPositionalSound(string soundEvent)
+	{
+		Rpc(RpcAsk_RequestStopPositionalSound, soundEvent);
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
@@ -2729,6 +2759,68 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
 		if (slotLottery)
 			slotLottery.ClearSlotLottery_Server(requestingPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestObjectiveTaskComplete(int taskIndex, int completingSide)
+	{
+		// Telemetry: int x2
+		LogTelemetry("RpcAsk_RequestObjectiveTaskComplete", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
+
+		CRF_TaskCreatorComponent taskComp = CRF_TaskCreatorComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_TaskCreatorComponent));
+		if (taskComp)
+			taskComp.MarkTaskComplete(taskIndex, completingSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestTaskObjectSetState(int taskIndex, int newState, int planterSide)
+	{
+		LogTelemetry("RpcAsk_RequestTaskObjectSetState", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 3);
+
+		CRF_TaskCreatorComponent taskComp = CRF_TaskCreatorComponent.GetInstance();
+		if (!taskComp)
+			return;
+
+		IEntity taskObject = taskComp.GetSpawnedTaskObject(taskIndex);
+		if (!taskObject)
+			return;
+
+		CRF_TaskCreatorObjectComponent objComp = CRF_TaskCreatorObjectComponent.Cast(taskObject.FindComponent(CRF_TaskCreatorObjectComponent));
+		if (objComp)
+		{
+			// Set planter side if transitioning to a planted state (newState == 1 for PLANTED in bomb tasks)
+			if (planterSide > 0 && newState == 1)
+				objComp.SetPlanterSide(planterSide);
+			objComp.SetTaskObjectState(newState);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestPlayPositionalSound(string soundResource, string soundEvent, vector position)
+	{
+		LogTelemetry("RpcAsk_RequestPlayPositionalSound",
+			CRF_BandwidthTelemetryManager.EstimateSize_String(soundResource)
+			+ CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent)
+			+ CRF_BandwidthTelemetryManager.EstimateSize_Vector());
+
+		CRF_RplBroadcastManager broadcast = CRF_RplBroadcastManager.GetInstance();
+		if (broadcast)
+			broadcast.PlayPositionalSound(soundResource, soundEvent, position);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestStopPositionalSound(string soundEvent)
+	{
+		LogTelemetry("RpcAsk_RequestStopPositionalSound",
+			CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent));
+
+		CRF_RplBroadcastManager broadcast = CRF_RplBroadcastManager.GetInstance();
+		if (broadcast)
+			broadcast.StopPositionalSound(soundEvent);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

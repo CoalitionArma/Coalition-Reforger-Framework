@@ -1,0 +1,64 @@
+GenericEntity {
+ ID "69A41E2778281D3B"
+ components {
+  Persistence "{69A41E27CBA2A29C}" {
+  }
+  CRF_TaskCreatorObjectComponent "{69A41E27A1B3C001}" {
+  }
+  MeshObject "{69A41E2794B8FCC7}" {
+   Object "{60ADAC7826430AC5}Assets/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.xob"
+  }
+  RigidBody "{69A41E2780B68BC0}" {
+   Mass 5
+   ModelGeometry 0
+  }
+  SCR_SoundDataComponent "{69A41E27F48263DC}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{69A41E27F7B778D0}" {
+     m_sSoundProject "{12A94705DF2BFD25}Sounds/Items/_SharedData/PickUp/Items_PickUp_Generic.acp"
+     m_sSoundEventName "SOUND_PICK_UP"
+    }
+    SCR_AudioSourceConfiguration "{69A41E27F7EB02EE}" {
+     m_sSoundProject "{12A94705DF2BFD25}Sounds/Items/_SharedData/PickUp/Items_PickUp_Generic.acp"
+     m_sSoundEventName "SOUND_EQUIP"
+     m_eFlags 0
+    }
+    SCR_AudioSourceConfiguration "{69A41E27F7C2884C}" {
+     m_sSoundProject "{CC0E5A1324E761C1}Sounds/Items/_SharedData/Drop/Items_Drop_Generic.acp"
+     m_sSoundEventName "SOUND_DROP"
+    }
+   }
+  }
+  ActionsManagerComponent "{69A41E272BBD934E}" {
+   ActionContexts {
+    UserActionContext "{69A41E272CCCD699}" {
+     ContextName "TaskInteract"
+     Position PointInfo "{7AB3F12C00000003}" {
+      Offset 0 0.5 0
+     }
+     Radius 0.5
+     "Display UI At Reference Point" 0
+    }
+   }
+   additionalActions {
+    CRF_TaskCreatorAction "{69A41E271EC1BDCD}" {
+     ParentContextList {
+      "TaskInteract"
+     }
+     UIInfo SCR_ActionUIInfo "{69A333EA1D16B72A}" {
+      Name "Collect Intel"
+     }
+     VisibilityRange 3
+     Duration 3
+    }
+   }
+  }
+  RplComponent "{69A41E27CEF2D889}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{69A41E273BCD719A}" {
+  }
+ }
+ coords 1233.045 37.757 2843.1
+}
