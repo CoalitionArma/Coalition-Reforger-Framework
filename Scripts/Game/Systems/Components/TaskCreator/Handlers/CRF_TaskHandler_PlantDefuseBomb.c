@@ -93,14 +93,6 @@ ResourceName m_sExplosionPrefabSecondary;
 ResourceName m_sFirePrefab;
 
 //=========================================================================
-// RUNTIME (not serialised)
-//=========================================================================
-
-// Cached world position of the bomb, set just before any entity deletion
-// so deferred effects (e.g. SpawnDelayedExplosionEffects) have a valid pos.
-protected vector m_vExplosionPos;
-
-//=========================================================================
 // HANDLER INTERFACE
 //=========================================================================
 
@@ -240,8 +232,8 @@ IEntity bombEntity = objectComp.GetOwner();
 if (!bombEntity)
 return;
 
-// Cache position before any entity deletion (MarkTaskComplete may delete the object).
-m_vExplosionPos = bombEntity.GetOrigin();
+// Capture position into a local vector before any entity deletion
+vector explosionPos = bombEntity.GetOrigin();
 
 // Transition to EXPLODED -- also cancels countdown + stops tick via OnObjectStateChangedServer.
 objectComp.SetTaskObjectState(CRF_EBombTaskState.EXPLODED);
@@ -249,12 +241,12 @@ objectComp.SetTaskObjectState(CRF_EBombTaskState.EXPLODED);
 // Spawn primary explosion immediately.
 EntitySpawnParams spawnParams = new EntitySpawnParams();
 spawnParams.TransformMode = ETransformMode.WORLD;
-spawnParams.Transform[3] = m_vExplosionPos;
+spawnParams.Transform[3] = explosionPos;
 if (!m_sExplosionPrefab.IsEmpty())
 GetGame().SpawnEntityPrefab(Resource.Load(m_sExplosionPrefab), GetGame().GetWorld(), spawnParams);
 
-// Schedule secondary explosion + fire slightly after the primary.
-GetGame().GetCallqueue().CallLater(SpawnDelayedExplosionEffects, 385, false);
+// Schedule explosion on local explosionpos so each detionation owns its own position 
+GetGame().GetCallqueue().CallLater(SpawnDelayedExplosionEffects, 385, false, explosionPos);
 
 // Mark task complete -- attackers succeeded (bomb detonated).
 	// Credit the faction that planted the bomb.
@@ -270,12 +262,12 @@ GetGame().GetCallqueue().CallLater(SpawnDelayedExplosionEffects, 385, false);
 // HELPERS
 //=========================================================================
 
-// Spawns secondary explosion and fire prefabs at the cached detonation position.
-protected void SpawnDelayedExplosionEffects()
+// Spawns secondary explosion and fire prefabs at the given detonation position.
+protected void SpawnDelayedExplosionEffects(vector explosionPos)
 {
 EntitySpawnParams spawnParams = new EntitySpawnParams();
 spawnParams.TransformMode = ETransformMode.WORLD;
-spawnParams.Transform[3] = m_vExplosionPos;
+spawnParams.Transform[3] = explosionPos;
 
 if (!m_sExplosionPrefabSecondary.IsEmpty())
 GetGame().SpawnEntityPrefab(Resource.Load(m_sExplosionPrefabSecondary), GetGame().GetWorld(), spawnParams);
