@@ -1,0 +1,45 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 5382.301 10.344 -1456.589
+}
+$grp GameEntity : "{4D3B073D0673ABB7}PrefabsMissionMaking/Systems/TaskCreator/CRF_task_empty.et" {
+ taskimages {
+  coords 5112.796 38.633 -1081.228
+ }
+ piifiles {
+  coords 5830.801 11.566 -1629.062
+ }
+ warehouselog {
+  coords 3454.656 17.477 -1725.986
+ }
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords -631.674 19.605 5782.42
+}
+$grp Vehicle : "{6F57BF4E759DF6DF}Prefabs/Vehicles/Helicopters/UH1H/UH1Y_Armed_Gunship_Sage.et" {
+ UH1Y_Armed_Gunship_Sage1 {
+  coords -640.435 19.605 5636.856
+ }
+ UH1Y_Armed_Gunship_Sage2 {
+  coords -640.664 19.604 5685.044
+ }
+ UH1Y_Armed_Gunship_Sage3 {
+  coords -640.369 19.604 5657.865
+ }
+}
+GenericEntity : "{97F8B53F118E91CB}Prefabs/Props/Military/LHD/LHD_Khe_Sahn.et" {
+ coords -628.786 3.715 5744.704
+}
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords -522.587 19.938 4859.466
+  angles 0 -35.135 0
+ }
+ {
+  coords -542.603 19.937 4889.135
+  angles 0 -35.135 0
+ }
+ {
+  coords -571.414 19.938 4929.639
+  angles 0 -35.135 0
+ }
+}
