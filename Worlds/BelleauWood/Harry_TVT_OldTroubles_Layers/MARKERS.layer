@@ -1,0 +1,218 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+ {
+  coords 5006.734 119.614 6972.906
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5053.415 106.709 6888.745
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5094.142 120.791 6919.754
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5117.642 118.879 6840.919
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5199.723 113.447 6892.663
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5225.189 129.399 6775.492
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5319.616 93.143 6825.694
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5318.137 136.139 6722.266
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5421.337 99.306 6746.978
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5438.862 139.398 6671.663
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5517.998 111.406 6676.859
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5691.762 118.087 6830.1
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5737.121 122.687 6877.665
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5766.958 99.622 6812.299
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5806.097 120.509 6862.253
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5803.862 120.335 6771.89
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5865.508 130.638 6820.164
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5879.232 117.956 6737.714
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5942.246 122.558 6794.705
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5609.621 149.551 5940.127
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5559.782 152.105 5941.015
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5522.312 151.521 5932.902
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5493.094 159.967 5923.858
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5455.773 155.334 5894.381
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mine-field-2"
+  m_fWorldSize 90
+  m_sDescription "mine field"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

@@ -1,0 +1,12 @@
+Projectile {
+ ID "69C4B575716C4A35"
+ components {
+  CollisionTriggerComponent "{69C4B575716C4A5C}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{69C4B575716C4A52}" {
+     ParticleEffect "{273A8DD1950A31DA}Particles/Weapon/Smoke_Mortar_Shell.ptc"
+    }
+   }
+  }
+ }
+}
