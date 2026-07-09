@@ -21,6 +21,42 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  components {
   CRF_CommunityTagManager "{69651E04AFDA77E5}" {
   }
+  CRF_TaskCreatorComponent "{69C31CE99C05917A}" {
+   m_aTaskEntries {
+    CRF_TaskCreatorEntry "{69C31CE992E0C33A}" {
+     m_sTaskLabel "SILLY TASK"
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "TC_task1"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+    }
+    CRF_TaskCreatorEntry "{69C31CE91DFDDEC1}" {
+     m_sTaskLabel "SILLY TASK 2"
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "TC_task2"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+    }
+    CRF_TaskCreatorEntry "{69C31CE90E9B06A5}" {
+     m_sTaskLabel "SILLY TASK 3"
+     m_eTaskType PLANT_DEFUSE_BOMB
+     m_eAssignedSide BLUFOR
+     m_sSpawnEntityName "TC_task3"
+     m_sNotificationText "%SIDE%: %TASKNAME% complete."
+     m_sMarkerIcon "{1B3B38AAA1577734}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_Defend.edds"
+    }
+   }
+   m_CollectIntel CRF_TaskHandler_CollectIntel "{69CCF00C1F59F628}" {
+    m_sPrefab "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et"
+    m_sActionName "Collect Object"
+   }
+   m_PlantDefuseBomb CRF_TaskHandler_PlantDefuseBomb "{69CACEEA13959330}" {
+    m_sPrefab "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et"
+    m_fExplosionCountdown 15
+    m_eDefendingSide OPFOR
+   }
+   m_eWinCondition SET_AMOUNT_PER_SIDE
+   m_iTasksRequiredForWin 3
+   m_sSideWinText "%SIDE% has won!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
   }
