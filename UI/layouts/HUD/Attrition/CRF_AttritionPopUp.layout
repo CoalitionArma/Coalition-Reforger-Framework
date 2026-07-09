@@ -1,0 +1,140 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{9B3F2A1C7D8E4B01}" {
+   Name "BG"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B02}" {
+    Anchor 1 0 1 0
+    PositionX -240
+    OffsetLeft -240
+    PositionY 20
+    OffsetTop 20
+    SizeX 210
+    OffsetRight 30
+    SizeY 186
+    OffsetBottom -206
+   }
+   Color 0.0497 0.0497 0.0497 0.6375
+  }
+  TextWidgetClass "{9B3F2A1C7D8E4B03}" {
+   Name "TeamALabel"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B04}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 26
+    OffsetTop 26
+    SizeX 198
+    OffsetRight 36
+    SizeY 22
+    OffsetBottom -48
+   }
+   Text "BLUFOR"
+   "Font Size" 20
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{9B3F2A1C7D8E4B05}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    ShadowOffset 0 0
+   }
+  }
+  TextWidgetClass "{9B3F2A1C7D8E4B06}" {
+   Name "TeamAPercent"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B07}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 48
+    OffsetTop 48
+    SizeX 198
+    OffsetRight 36
+    SizeY 34
+    OffsetBottom -82
+   }
+   Text "0% destroyed"
+   "Font Size" 28
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{9B3F2A1C7D8E4B08}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    ShadowOffset 0 0
+   }
+  }
+  ProgressBarWidgetClass "{9B3F2A1C7D8E4B09}" {
+   Name "TeamAProgress"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B0A}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 84
+    OffsetTop 84
+    SizeX 198
+    OffsetRight 36
+    SizeY 20
+    OffsetBottom -104
+   }
+   Color 0.1569 0.2745 0.6235 1
+   Current 0
+  }
+  TextWidgetClass "{9B3F2A1C7D8E4B0B}" {
+   Name "TeamBLabel"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B0C}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 110
+    OffsetTop 110
+    SizeX 198
+    OffsetRight 36
+    SizeY 22
+    OffsetBottom -132
+   }
+   Text "OPFOR"
+   "Font Size" 20
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{9B3F2A1C7D8E4B0D}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    ShadowOffset 0 0
+   }
+  }
+  TextWidgetClass "{9B3F2A1C7D8E4B0E}" {
+   Name "TeamBPercent"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B0F}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 132
+    OffsetTop 132
+    SizeX 198
+    OffsetRight 36
+    SizeY 34
+    OffsetBottom -166
+   }
+   Text "0% destroyed"
+   "Font Size" 28
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{9B3F2A1C7D8E4B10}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    ShadowOffset 0 0
+   }
+  }
+  ProgressBarWidgetClass "{9B3F2A1C7D8E4B11}" {
+   Name "TeamBProgress"
+   Slot FrameWidgetSlot "{9B3F2A1C7D8E4B12}" {
+    Anchor 1 0 1 0
+    PositionX -234
+    OffsetLeft -234
+    PositionY 166
+    OffsetTop 166
+    SizeX 198
+    OffsetRight 36
+    SizeY 20
+    OffsetBottom -186
+   }
+   Color 0.502 0.0497 0.0497 1
+   Current 0
+  }
+ }
+}
