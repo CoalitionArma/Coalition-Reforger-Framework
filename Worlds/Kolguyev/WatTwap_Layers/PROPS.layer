@@ -12,6 +12,36 @@ GenericEntity : "{9668B6C528DCECBD}Prefabs/Props/Wrecks/Mi8MT_wreck/Mi8MT_wreck_
  coords 7843.667 136.758 6958.705
  angles -16.343 83.589 -14.146
 }
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 7786.217 207.241 7251.717
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #2"
+ }
+ {
+  coords 8000.346 127.522 7056.41
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #3"
+ }
+ {
+  coords 7769.477 170.813 6928.598
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #1"
+ }
+ {
+  coords 7878.552 164.896 6651.572
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #4"
+ }
+}
 $grp GenericEntity : "{FCCB91AC2A242FE5}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Large_Soviet.et" {
  {
   coords 7786.174 207.391 7250.749

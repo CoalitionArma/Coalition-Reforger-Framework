@@ -85,7 +85,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
-   m_sTextData "The crashed Mi8, along with its occupants, is located East of Nadezhda Mine along the riverbed. You are not to move the unconscious pilots as they will serve as your bait. However, once 25 minutes remain, you will be able to radio in a helicopter transport to exfil the pilots and secure victory. (Interact with the radio tower to the East of Nadezhda Mine to call in your extract.)"\
+   m_sTextData "The crashed Mi8, along with its occupants, is located East of Nadezhda Mine along the riverbed. You are not to move the unconscious pilots as they will serve as your bait. However, once 25 minutes remain, you will be able to radio in a helicopter transport to exfil the pilots and secure victory. (Interact with the radio tower to the East of Nadezhda Mine to call in your extract.) You have outposts within the immediate region to utilize as you see fit."\
    ""\
    "Your objective is:"\
    "- Destroy >66% of the opposing force"\
