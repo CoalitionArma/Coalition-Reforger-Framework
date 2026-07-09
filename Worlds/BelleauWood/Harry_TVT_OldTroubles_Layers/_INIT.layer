@@ -32,10 +32,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "British forces are moving quickly inland in France following rail lines. They need to secure the next rail station, and then create a buffer zone by securing a forward defensive position in front of it. Can French defenders blunt the British push?"\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
-   "BLUFOR Assets: N/A"\
+   "BLUFOR Assets: Platoon Engineer"\
    ""\
    "OPFOR Composition: Oversized Infantry Platoon"\
-   "OPFOR Assets: Integrated Weapons w/ 60mm mortars, Recon heli"\
+   "OPFOR Assets: Integrated Demo, Weapons w/ 60mm mortars"\
    ""\
    "Time: 60 Min"\
    "Weather: Day Cloudy"
@@ -104,7 +104,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BluforSlots {
-  CRF_SlottingGroup "{69CF7412346F1530}" {
+  CRF_SlottingGroup "{69D310C99A69E1E6}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -113,7 +113,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0AC9}" {
+  CRF_SlottingGroup "{69D310C99A69E0BA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -128,7 +128,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0A3A}" {
+  CRF_SlottingGroup "{69D310C99A69E748}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +143,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69CF7412346F095A}" {
+  CRF_SlottingGroup "{69D310C99A69E642}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -158,7 +158,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0888}" {
+  CRF_SlottingGroup "{69D310C99A69E554}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -175,7 +175,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69CF7412346F0EC4}" {
+  CRF_SlottingGroup "{69D310C99A69E42F}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -183,92 +183,84 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0E69}" {
+  CRF_SlottingGroup "{69D310C99A69DB50}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
+    SPOTTER
+    INDIRECT_GUNNER
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
     RIFLEMAN_DEMO
-    GRENADIER
     GRENADIER
     TEAM_LEAD
     MEDIUM_MACHINEGUN
     ASSISTANT_MEDIUM_MACHINEGUN
-    INDIRECT_GUNNER
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0D52}" {
+  CRF_SlottingGroup "{69D310C99A69DA96}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
+    SPOTTER
+    INDIRECT_GUNNER
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
     RIFLEMAN_DEMO
-    GRENADIER
     GRENADIER
     TEAM_LEAD
     MEDIUM_MACHINEGUN
     ASSISTANT_MEDIUM_MACHINEGUN
-    INDIRECT_GUNNER
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{69CF7412346F0C8B}" {
+  CRF_SlottingGroup "{69D310C99A69D9D1}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
+    SPOTTER
+    INDIRECT_GUNNER
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
     RIFLEMAN_DEMO
-    GRENADIER
     GRENADIER
     TEAM_LEAD
     MEDIUM_MACHINEGUN
     ASSISTANT_MEDIUM_MACHINEGUN
-    INDIRECT_GUNNER
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
-  CRF_SlottingGroup "{69CF7412346F03C2}" {
+  CRF_SlottingGroup "{69D310C99A69D907}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
+    SPOTTER
+    INDIRECT_GUNNER
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
     RIFLEMAN_DEMO
-    GRENADIER
     GRENADIER
     TEAM_LEAD
     MEDIUM_MACHINEGUN
     ASSISTANT_MEDIUM_MACHINEGUN
-    INDIRECT_GUNNER
-   }
-  }
-  CRF_SlottingGroup "{69CF7412346F030C}" {
-   m_sCallsign "Recon Heli"
-   m_FlagType HELICOPER
-   m_aSlots {
-    PILOT
-    CREW_CHIEF
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
   }
  }
