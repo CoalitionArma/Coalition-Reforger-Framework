@@ -2593,7 +2593,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp", "RUSH_BEEP", mcomPosition);
+			broadcastManager.PlayPositionalSound("{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp", "RUSH_BEEP", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2619,11 +2619,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				vector mcomPosition = mcomEntity.GetOrigin();
 				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
-					broadcastManager.StopRushMCOMSound("RUSH_BEEP", mcomPosition);
+					broadcastManager.StopPositionalSound("RUSH_BEEP");
 				}
 			}
 		}
@@ -2664,7 +2663,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
+			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2690,11 +2689,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				vector mcomPosition = mcomEntity.GetOrigin();
 				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
-					broadcastManager.StopRushMCOMSound("RUSH_PLANTING", mcomPosition);
+					broadcastManager.StopPositionalSound("RUSH_PLANTING");
 				}
 			}
 		}
@@ -2822,7 +2820,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.PlayRushMCOMSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
+			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
 		}
 		
 		// Replicate state to clients for UI purposes
@@ -2850,11 +2848,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		
 		// Replicate the sound stop to all clients
-		vector mcomPosition = mcomEntity.GetOrigin();
 		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			broadcastManager.StopRushMCOMSound("RUSH_PLANTING", mcomPosition);
+			broadcastManager.StopPositionalSound("RUSH_PLANTING");
 		}
 		
 		m_CurrentDefuseSoundHandle = AudioHandle.Invalid;
