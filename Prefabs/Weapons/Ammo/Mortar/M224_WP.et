@@ -8,5 +8,13 @@ Projectile {
     }
    }
   }
+  InventoryItemComponent "{69C4B575716C4A57}" {
+   Attributes SCR_ItemAttributeCollection "{69C4B575716C4A54}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{69C4B575716C4A6A}" {
+     Weight 0
+     ItemVolume 0
+    }
+   }
+  }
  }
 }
