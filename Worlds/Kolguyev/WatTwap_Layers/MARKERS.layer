@@ -1,0 +1,20 @@
+CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ coords 8397.515 29.749 6710.096
+ m_sQuadName "mark-exclamation"
+ m_fWorldSize 180
+ m_sDescription "Radio Tower (Call for extract)"
+}
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 8397.43 29.686 6710.032
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 180
+  m_sDescription "Radio Tower (OPFOR Extract)"
+ }
+ {
+  coords 7667.628 196.222 6995.432
+  m_sQuadName "mark-question"
+  m_fWorldSize 180
+  m_sDescription "Missing Pilots"
+ }
+}
