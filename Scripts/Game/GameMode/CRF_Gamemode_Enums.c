@@ -16,4 +16,5 @@ enum CRF_EGamemode
 	RALLY,
 	PROPHUNT,
 	KOTH,
+	ATTRITION,
 }
