@@ -1,0 +1,41 @@
+GameEntity {
+ components {
+  CRF_AreaTimerComponent "{69D50DA6FF426A6D}" {
+   m_sZoneLabel "THE HILL"
+   m_fCaptureRadius 30
+   m_iCountdownSeconds 300
+   m_iMinPlayersToCapture 5
+   m_bWinCondition 0
+  }
+ }
+ coords 2868.153 14.5 3629.008
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 2870.219 14.488 3698.815
+ Points {
+  ShapePoint "{69D50DA683895384}" {
+   Position -104.947 0 -50.568
+  }
+  ShapePoint "{69D50DA68019C3C5}" {
+   Position 4.645 0 9.333
+  }
+  ShapePoint "{69D50DA684B9295F}" {
+   Position 125.817 0 66.94
+  }
+  ShapePoint "{69D50DA6BBF5C11C}" {
+   Position 149.908 0 12
+  }
+  ShapePoint "{69D50DA6B8F89A1A}" {
+   Position 70.451 0 -50.293
+  }
+  ShapePoint "{69D50DA6BF8F643B}" {
+   Position 46.739 0 -66.026
+  }
+  ShapePoint "{69D50DA6BDECF78A}" {
+   Position 63.751 0 -122.859
+  }
+  ShapePoint "{69D50DA6B3CDBBD9}" {
+   Position -53.189 0 -156.982
+  }
+ }
+}
