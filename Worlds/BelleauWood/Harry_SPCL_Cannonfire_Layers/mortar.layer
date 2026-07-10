@@ -7,7 +7,7 @@ Bacon_RandomizedPrefabSpawner {
  m_spawnOffsetRandomizationMax 400 0 700
  m_minMaxSpawnDelay 5 20 0
  m_randomPrefabIndex 1
- m_randomPrefabCount 200
+ m_randomPrefabCount 400
 }
 SCR_BaseTriggerEntity {
  coords 4905.124 194.594 1255.632
