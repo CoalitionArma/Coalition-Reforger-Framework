@@ -7,49 +7,97 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
  }
  {
   coords 7017.447 379.782 6310.405
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 7573.15 162.581 6011.169
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 8345.683 -8.908 5593.109
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 7387.355 313.642 7121.568
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 7690.331 318.904 7785.545
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 8266.457 110.448 7580.328
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 9095.158 -16.647 7284.975
-  m_sQuadName "circle"
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }
  {
   coords 8765.221 -3.853 6540.221
-  m_sQuadName "circle"
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 8535.953 2.359 6025.535
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 8941.51 0.899 6937.583
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 8672.309 11.069 7435.75
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 7961.168 187.386 7689.129
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 7565.112 310.236 7511.368
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 7217.813 382.377 6749.782
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 7301.085 302.869 6157.645
+  m_sQuadName "dot"
+  m_fWorldSize 180
+  m_sDescription "LOA"
+ }
+ {
+  coords 7862.988 60.789 5854.868
+  m_sQuadName "dot"
   m_fWorldSize 180
   m_sDescription "LOA"
  }

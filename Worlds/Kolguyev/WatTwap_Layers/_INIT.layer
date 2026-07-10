@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bRandomWeatherChanges 0
   }
  }
- coords 7941.996 129.062 6855.777
+ coords 7929.091 121.7 6864.087
  m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
