@@ -143,17 +143,17 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bRespawnEnabled 1
  m_bWaveRespawn 1
  m_bRallyPointsEnabled 0
- m_iTimeToRespawn 60
+ m_iTimeToRespawn 360
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 120
  m_bLockUnusedSlots 1
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 1
  m_bUseCVON 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{69BC0B78D416FAE1}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "It has been 100 years since the nuke went off. Individuals have begun returning to Yellowstone to control the sacred site of Old Faithful."\
+   m_sTextData "It has been 100 years since the nuke went off. Indidviduals have begun returning to Yellowstone to control the sacerd site of Old Faithful."\
    ""\
    "BLUFOR Composition: Unknown"\
    "BLUFOR Assets: Unknown"\
