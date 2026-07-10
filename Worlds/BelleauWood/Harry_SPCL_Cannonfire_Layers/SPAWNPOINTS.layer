@@ -1,0 +1,20 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 4797.232 196.782 2160.691
+ {
+  CRF_ManualMarker {
+   ID "68682AC1849E53AF"
+   coords 0 0 0
+  }
+ }
+}
+CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 4812.113 186.08 418.816
+ m_sCallsignOfGroupToSpawn "Cannons"
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 4559.658 175.38 497.867
+}
+CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ coords 5157.071 202.218 2092.802
+ m_sCallsignOfGroupToSpawn "Cannons"
+}
