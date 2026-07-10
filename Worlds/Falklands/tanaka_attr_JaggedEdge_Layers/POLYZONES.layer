@@ -1,8 +1,10 @@
 GameEntity {
  components {
   CRF_AreaTimerComponent "{69D419C8152B270D}" {
+   m_sZoneLabel "Jagged Edge"
    m_fCaptureRadius 300
-   m_iCountdownSeconds 600
+   m_iCountdownSeconds 900
+   m_iMinPlayersToCapture 8
    m_bWinCondition 0
   }
  }
