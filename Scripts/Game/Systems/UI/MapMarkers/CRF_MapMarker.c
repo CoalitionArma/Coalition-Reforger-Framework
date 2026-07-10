@@ -19,7 +19,7 @@ modded class SCR_MapMarkersUI
 	protected ref array<vector> m_aCachedPositions = {};
 	// Map storing marker widgets and their associated data
 	protected ref map<Widget, string> m_mMarkerWidgetData = new map<Widget, string>;
-	
+
 	//------------------------------------------------------------------------------------------------
 	// Called when the map is opened
 	override void OnMapOpen(MapConfiguration config)
@@ -380,5 +380,19 @@ modded class SCR_MapMarkersUI
 		m_fLastMapSelectTime = -1;
 		m_fLastMapClickWorldX = 0;
 		m_fLastMapClickWorldY = 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// True while a marker edit dialog (custom or military) is open. Other widgets use this to
+	// avoid stealing focus off the marker text field just because the mouse hovers over them -
+	// see CRF_SCR_ButtonBaseComponent.c / CRF_SCR_SliderComponent.c / CRF_SCR_EditBoxComponent.c.
+	static bool CRF_IsMarkerEditDialogOpen()
+	{
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		if (!mapEntity)
+			return false;
+
+		SCR_MapMarkersUI markersUI = SCR_MapMarkersUI.Cast(mapEntity.GetMapUIComponent(SCR_MapMarkersUI));
+		return markersUI && markersUI.m_MarkerEditRoot != null;
 	}
 }
