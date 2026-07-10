@@ -1,0 +1,150 @@
+$grp ParticleEffectEntity {
+ {
+  coords 7841.49 138.541 6961.793
+  EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
+ }
+ {
+  coords 7841.73 138.971 6960.036
+  EffectPath "{42917AAB29152360}Particles/Vehicle/Cinematic_Kolguyev_Fire.ptc"
+ }
+}
+GenericEntity : "{9668B6C528DCECBD}Prefabs/Props/Wrecks/Mi8MT_wreck/Mi8MT_wreck_static.et" {
+ coords 7843.667 136.758 6958.705
+ angles -16.343 83.589 -14.146
+}
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 7786.217 207.241 7251.717
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #2"
+ }
+ {
+  coords 8000.346 127.522 7056.41
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #3"
+ }
+ {
+  coords 7769.477 170.813 6928.598
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #1"
+ }
+ {
+  coords 7878.552 164.896 6651.572
+  m_MarkerColor 0.392 0.157 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "Outpost #4"
+ }
+}
+$grp GenericEntity : "{FCCB91AC2A242FE5}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Large_Soviet.et" {
+ {
+  coords 7786.174 207.391 7250.749
+  angles 0 38.365 12.576
+  {
+   $grp GenericEntity : "{42887801DB9228B5}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_Left_USSR_01.et" {
+    {
+     coords -1.904 -0.408 -5.89
+     angles -9.403 -132.071 0.467
+    }
+    {
+     coords -0.073 -0.162 4.266
+     angles 4.042 40.205 -1.729
+    }
+   }
+   GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et" {
+    coords 2.597 -0.352 -2.29
+    angles 4.635 106.728 3.623
+   }
+   GenericEntity : "{D33A2A185EC6E099}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CanvasCover_Cluttered_USSR_01.et" {
+    coords -6.531 -0.574 -1.656
+    angles 0.471 -12.479 -1.836
+   }
+  }
+ }
+ {
+  coords 7999.983 127.545 7056.637
+  angles 8.562 39.166 3.162
+  {
+   $grp GenericEntity : "{42887801DB9228B5}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_Left_USSR_01.et" {
+    {
+     coords -2.171 0.025 -4.514
+     angles -2.172 -132.085 1.77
+    }
+    {
+     coords 1.557 -0.658 5.162
+     angles -3.297 40.32 -2.05
+    }
+   }
+   GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et" {
+    coords 2.975 -0.278 -1.338
+    angles 1.979 106.449 -3.238
+   }
+   GenericEntity : "{D33A2A185EC6E099}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CanvasCover_Cluttered_USSR_01.et" {
+    coords -6.696 0.223 4.264
+    angles -5.673 24.905 0.463
+   }
+  }
+ }
+ {
+  coords 7878.314 165.238 6651.946
+  angles 9.01 -171.296 -7.954
+  {
+   $grp GenericEntity : "{42887801DB9228B5}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_Left_USSR_01.et" {
+    {
+     coords -1.904 -0.408 -5.89
+     angles -9.403 -132.071 0.467
+    }
+    {
+     coords -0.073 -0.162 4.266
+     angles 4.042 40.205 -1.729
+    }
+    {
+     coords -4.363 -0.27 3.492
+     angles 0.142 -42.097 5.163
+    }
+   }
+   GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et" {
+    coords 2.597 -0.352 -2.29
+    angles 4.635 106.728 3.623
+   }
+   GenericEntity : "{D33A2A185EC6E099}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CanvasCover_Cluttered_USSR_01.et" {
+    coords -6.531 -0.574 -1.656
+    angles 0.471 -12.479 -1.836
+   }
+  }
+ }
+ {
+  coords 7770.869 170.795 6928.416
+  angles -10.426 48.741 15.218
+  {
+   $grp GenericEntity : "{42887801DB9228B5}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_Left_USSR_01.et" {
+    {
+     coords -1.904 -0.408 -5.89
+     angles -9.403 -132.071 0.467
+    }
+    {
+     coords -0.073 -0.162 4.266
+     angles 4.042 40.205 -1.729
+    }
+    {
+     coords -4.363 -0.27 3.492
+     angles 0.142 -42.097 5.163
+    }
+   }
+   GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et" {
+    coords 2.597 -0.352 -2.29
+    angles 4.635 106.728 3.623
+   }
+   GenericEntity : "{D33A2A185EC6E099}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CanvasCover_Cluttered_USSR_01.et" {
+    coords -6.531 -0.574 -1.656
+    angles 0.471 -12.479 -1.836
+   }
+  }
+ }
+}

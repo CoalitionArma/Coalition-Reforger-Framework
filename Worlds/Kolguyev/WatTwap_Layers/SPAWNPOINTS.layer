@@ -1,0 +1,23 @@
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ components {
+  MeshObject "{645911A160C1D2EB}" {
+   Materials {
+    MaterialAssignClass "{69D22AA355E591EB}" {
+     SourceMaterial "Flagpole_01"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+   }
+  }
+  SlotManagerComponent "{645911A160C1D2C6}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Enabled 0
+    }
+   }
+  }
+ }
+ coords 7671.64 208.104 6800.673
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 2687.124 24.218 5480.764
+}

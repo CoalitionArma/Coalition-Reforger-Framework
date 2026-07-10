@@ -1,0 +1,34 @@
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ coords 5674.158 420.414 6929.204
+ Points {
+  ShapePoint "{69B40B8C3EE52294}" {
+   Position -116.961 -1.366 -34.371
+  }
+  ShapePoint "{69B40B8C3DDE4B55}" {
+   Position -124.749 -12.608 51.19
+  }
+  ShapePoint "{69B40B8C3CD3C532}" {
+   Position 86.589 -6.116 46.601
+  }
+  ShapePoint "{69B40B8C3AFE8679}" {
+   Position 92.436 0.127 -31.009
+  }
+ }
+}
+PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDeploy/OPFOR_ForwardDeployZone.et" {
+ coords 7978.907 101.934 6864.054
+ Points {
+  ShapePoint "{69B40B8C6EA9C2EB}" {
+   Position -961.48 271.675 -553.692
+  }
+  ShapePoint "{69B40B8C1475D6D2}" {
+   Position -288.696 216.716 921.64
+  }
+  ShapePoint "{69B40B8C04F88DB0}" {
+   Position 1116.568 -118.731 420.823
+  }
+  ShapePoint "{69B40B8C02C5268D}" {
+   Position 367.366 -107.022 -1269.124
+  }
+ }
+}
