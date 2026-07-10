@@ -1,0 +1,53 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 2637.238 24.219 5517.936
+  angles 0 -90.145 0
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2718.043 24.593 5493.107
+  angles 0 -90.999 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2718.143 24.592 5487.807
+  angles 0 -90.999 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2718.209 24.592 5482.442
+  angles 0 -90.999 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2718.319 24.592 5477.146
+  angles 0 -90.999 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2718.507 24.592 5471.833
+  angles 0 -90.999 0
+  m_rVehicle "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 2637.72 24.219 5466.432
+  angles 0 -90.145 0
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10068.011 26 1839.749
+  angles 0 4.696 0
+  m_rVehicle "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+}

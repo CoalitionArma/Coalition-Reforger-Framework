@@ -1,0 +1,12 @@
+$grp GameEntity {
+ Pilot {
+  coords 7834.604 140.223 6967.607
+ }
+ CrewChief {
+  coords 7851.382 138.442 6965.823
+ }
+ radiotower {
+  coords 8271.797 47.524 6715.955
+  angles 2.757 168.446 0
+ }
+}
