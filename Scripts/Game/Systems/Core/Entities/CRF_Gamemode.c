@@ -128,6 +128,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableChat;
 
+	// Weather and Time Settings
+	//------------------------------------------------------------------------------------
+	[Attribute("1", UIWidgets.Slider, "Time scale applied once the mission starts (after briefing/slotting). 1 = normal speed, 2 = twice as fast, etc.", "0.1 12 0.1", category: "CRF Mission Settings - Weather & Time")]
+	float m_fMissionTimeScale;
+
 	// Gearscript Settings
 	//------------------------------------------------------------------------------------
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gearscript Settings - Advanced")]
@@ -336,6 +341,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				
 				case CRF_EGamemodeState.GAME: {
 					SetGameState(SCR_EGameModeState.GAME);
+					ApplyMissionTimeScale();
 					foreach (Vehicle vehicle : CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
 					{
 						if (!vehicle)
@@ -372,7 +378,26 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (playerMenuManager)
 			playerMenuManager.OpenCurrentStateMenu();
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Applies the mission header's time scale once gameplay begins. Does not affect Preview/Slotting/AAR,
+	//! since those run before this is called (see OnGamemodeStateChanged, CRF_EGamemodeState.GAME).
+	protected void ApplyMissionTimeScale()
+	{
+		if (m_fMissionTimeScale <= 0)
+			return;
+
+		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());
+		if (!world)
+			return;
+
+		TimeAndWeatherManagerEntity manager = world.GetTimeAndWeatherManager();
+		if (!manager)
+			return;
+
+		manager.SetDayDuration(86400 / m_fMissionTimeScale);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 PLAYER MANAGEMENT
 //=============================================================================================================================================================================================================================================================================================================================================================

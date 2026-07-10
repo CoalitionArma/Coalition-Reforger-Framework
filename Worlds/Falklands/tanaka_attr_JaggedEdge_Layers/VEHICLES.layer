@@ -1,0 +1,24 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4314.999 51.577 3214.637
+  m_rVehicle "{E38E87558E4BC108}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_DShKM.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4314.619 52.654 3226.266
+  m_rVehicle "{E38E87558E4BC108}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_DShKM.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 5453.642 20.6 5007.966
+  angles 0 -127.899 0
+  m_rVehicle "{57FE9BCA625CA0E3}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5459.449 20.244 5017.46
+  angles 1.984 -160.845 -0.258
+  m_rVehicle "{57FE9BCA625CA0E3}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

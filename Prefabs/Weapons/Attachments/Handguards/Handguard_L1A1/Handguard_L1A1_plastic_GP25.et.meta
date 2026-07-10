@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B71426AA8C9A9B2A}Prefabs/Weapons/Attachments/Handguards/Handguard_L1A1/Handguard_L1A1_plastic_GP25.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
