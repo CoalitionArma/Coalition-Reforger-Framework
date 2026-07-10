@@ -68,18 +68,20 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "Your objectives are:"\
    "- Locate the crashed Mi8's position"\
    "- Exfil the pilot and crew chief"\
-   "- Retain >33% of your force"\
+   ""\
    "Optional:"\
    "- Destroy the radio tower that OPFOR will use to attempt to call for exfil"\
    "(To destroy the tower you must interact with it)"
    m_aFactionKeys {
+    "BLUFOR"
    }
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
-   m_sTextData "In the midst of light reconnassance, a hostile Mi8 flew overhead of a fellow rebel cell. The chance was too great to risk your hideout being notated along with their position, so they made the call to shoot the aircraft down. Now, you must scramble as your plans to cleanse the island of any greater Russian influence have been moved forward. However, this could prove to be more fortuitous than it initially seemed."
+   m_sTextData "In the midst of light reconnaissance, a hostile Mi8 flew overhead of a fellow rebel cell. The chance was too great to risk your hideout being notated along with their position, so they made the call to shoot the aircraft down. Now, you must scramble as your plans to cleanse the island of any greater Russian influence have been moved forward. However, this could prove to be more fortuitous than it initially seemed."
    m_aFactionKeys {
+    "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
@@ -88,8 +90,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "The crashed Mi8, along with its occupants, is located East of Nadezhda Mine along the riverbed. You are not to move the unconscious pilots as they will serve as your bait. However, once 25 minutes remain, you will be able to radio in a helicopter transport to exfil the pilots and secure victory. (Interact with the radio tower to the East of Nadezhda Mine to call in your extract.) You have outposts within the immediate region to utilize as you see fit."\
    ""\
    "Your objective is:"\
-   "- Destroy >66% of the opposing force"\
-   "- Exfil the crashed pilot and crew chief"
+   "- Ensure that BLUFOR does not extract the crashed pilot and crew chief"\
+   ""\
+   "Optional:"\
+   "- Exfil the crashed pilot and crew chief by utilizing the radio tower"
    m_aFactionKeys {
     "OPFOR"
    }
@@ -100,7 +104,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "Your objectives are:"\
    "- Locate the crashed Mi8's position"\
    "- Exfil the pilot and crew chief"\
-   "- Retain >33% of your force"\
+   ""\
    "Optional:"\
    "- Destroy the radio tower that OPFOR will use to attempt to call for exfil"\
    "(To destroy the tower you must interact with it)"
