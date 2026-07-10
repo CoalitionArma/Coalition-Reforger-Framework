@@ -1,0 +1,411 @@
+$grp GenericEntity : "{532E2709E33FA192}Prefabs/Structures/BuildingParts/Bridges/BridgeRailingConcrete_01_pole.et" {
+ {
+  coords 4808.562 186.035 444.851
+  angles 0 8.205 0
+  scale 5
+ }
+ {
+  coords 4827.166 186.789 441.961
+  angles 0 11.469 0
+  scale 5
+ }
+ {
+  coords 4848.464 186.044 438.631
+  angles 0 11.469 0
+  scale 5
+ }
+ {
+  coords 5160.919 203.77 2050.813
+  angles 1.609 -165.96 0.075
+  scale 5
+ }
+ {
+  coords 5142.709 204.493 2055.599
+  angles 1.602 -162.695 0.166
+  scale 5
+ }
+ {
+  coords 5121.855 203.713 2061.056
+  angles 1.602 -162.695 0.166
+  scale 5
+ }
+}
+$grp Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ {
+  coords 4832.821 186.789 437.752
+ }
+ {
+  coords 4814.967 186.789 440.64
+ }
+ {
+  coords 4820.065 186.789 439.797
+  angles 0 13.384 0
+ }
+ {
+  coords 4837.919 186.789 436.909
+  angles 0 13.384 0
+ }
+ {
+  coords 5137.51 204.391 2060.36
+  angles 1.603 -174.168 -0.156
+ }
+ {
+  coords 5154.979 204.422 2055.673
+  angles 1.603 -174.168 -0.156
+ }
+ {
+  coords 5149.992 204.413 2057.029
+  angles 1.595 -160.779 0.22
+ }
+ {
+  coords 5132.525 204.381 2061.717
+  angles 1.553 -153.259 0.427
+ }
+}
+$grp SCR_DestructibleEntity : "{BF53D637B5F752B8}Prefabs/Structures/Infrastructure/Rail/Old/platformt.et" {
+ {
+  coords 4827.223 185.463 438.162
+  angles 0 97.939 0
+ }
+ {
+  coords 5143.03 203.062 2059.346
+  angles -0.067 -76.227 1.609
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_Base.et" {
+ {
+  coords 4806.268 193.827 442.196
+  angles 0 8.46 0
+ }
+ {
+  coords 4825.351 193.827 439.357
+  angles 0 8.46 0
+ }
+ {
+  coords 4827.155 194.896 444.118
+  angles -89.194 -171.54 -180
+ }
+ {
+  coords 4807.316 194.896 447.069
+  angles -89.194 -171.54 -180
+ }
+ {
+  coords 5161.982 212.686 2048.725
+  angles -89.194 -171.54 5.834
+ }
+ {
+  coords 5163.513 211.478 2053.435
+  angles 1.608 -165.705 0.082
+ }
+ {
+  coords 5144.818 211.451 2058.197
+  angles 1.608 -165.705 0.082
+ }
+ {
+  coords 5142.546 212.657 2053.675
+  angles -89.194 -171.54 5.834
+ }
+}
+$grp GenericEntity : "{DEB57429CD49782D}Prefabs/Props/Construction/GravelPile_01/SandPile_01.et" {
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5029.737 185.719 1771.341
+  angles 17.251 33.584 11.14
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5029.737 185.719 1771.341
+  angles -11.239 32.589 -7.102
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5031.485 184.312 1768.022
+  angles 8.743 30.837 -17.681
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5013.881 185.719 1774.554
+  angles -11.239 32.589 -7.102
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5015.629 184.312 1771.235
+  angles 8.743 30.837 -17.681
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5013.881 185.719 1774.554
+  angles 17.251 33.584 11.14
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4998.712 185.719 1775.305
+  angles -11.239 32.589 -7.102
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 5000.46 184.312 1771.986
+  angles 8.743 30.837 -17.681
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50196A35D8293}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4998.712 185.719 1775.305
+  angles 17.251 33.584 11.14
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75658}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4985.294 185.719 1777.536
+  angles -11.239 32.589 -7.102
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75707}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4987.042 184.312 1774.217
+  angles 8.743 30.837 -17.681
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75CAF}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4985.294 185.719 1777.536
+  angles 17.251 33.584 11.14
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75658}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4963.854 186.589 1778.598
+  angles -11.239 32.589 -7.102
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75707}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4965.601 185.182 1775.279
+  angles 8.743 30.837 -17.681
+  scale 10
+ }
+ {
+  components {
+   MeshObject "{5872F0EB7FA40561}" {
+    Materials {
+     MaterialAssignClass "{69D50195F9E75CAF}" {
+      SourceMaterial "SandPile_01"
+      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+     }
+    }
+   }
+  }
+  coords 4963.854 186.589 1778.598
+  angles 17.251 33.584 11.14
+  scale 10
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69D5019C5148E168}" {
+      SlotTemplate InventoryStorageSlot shells {
+       Prefab "{BE9E8DB8E1BCFBF8}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_Linebattle.et"
+      }
+      NumSlots 99
+     }
+    }
+   }
+  }
+  coords 4825.736 186.789 437.599
+ }
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69D5019C5148E168}" {
+      SlotTemplate InventoryStorageSlot shells {
+       Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+      }
+      NumSlots 99
+     }
+    }
+   }
+  }
+  coords 4825.063 186.789 434.767
+ }
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69D5019C5148E168}" {
+      SlotTemplate InventoryStorageSlot shells {
+       Prefab "{BE9E8DB8E1BCFBF8}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_Linebattle.et"
+      }
+      NumSlots 99
+     }
+    }
+   }
+  }
+  coords 5144.68 204.355 2060.08
+  angles 0 179.449 0
+ }
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69D5019C5148E168}" {
+      SlotTemplate InventoryStorageSlot shells {
+       Prefab "{D0D1CAF6C77A6E5C}Prefabs/Weapons/Ammo/Propellant/Charge_1.et"
+      }
+      NumSlots 99
+     }
+    }
+   }
+  }
+  coords 5145.326 204.273 2062.919
+  angles 0 179.449 0
+ }
+}

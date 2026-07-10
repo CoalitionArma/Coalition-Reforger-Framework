@@ -66,7 +66,7 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
     SightsComponent "{BB23A637957CFFF8}" {
      Enabled 1
      SightsPosition PointInfo "{BB23A63796688E69}" {
-      Offset 0 0.1405 0
+      Offset 0 0.0208 0
      }
      SightsRanges {
       SightRangeInfo "{584CF7959FFB9FD2}" {
@@ -153,7 +153,7 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
       PivotID "slot_ironsight_rear"
       Offset 0 0.1239 0.9425
      }
-     ADSTime 2.5
+     ADSTime 1
      SightsSwitchSkip 0
     }
     MuzzleComponent "{CA6BE4D6B867541F}" {
@@ -187,14 +187,13 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
      }
      MagazineWell BCC_MagazineWellMosin "{690C0B93990827FA}" {
      }
-     BulletInitSpeedCoef 0.8
      DispersionDiameter 1
      DispersionRange 15
      WeaponAimModifiers {
       SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
        IsEnabled 1
-       "Linear Magnitude" 5
-       "Angular Magnitude" 1
+       "Linear Magnitude" 10.092
+       "Angular Magnitude" 5.401
        "ADS Multiplier" 2
        "Focus Multiplier" 1
        "Angular Inertia Magnitude ADS" 4 2 12
