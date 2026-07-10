@@ -1,0 +1,62 @@
+$grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 5322.579 -56.164 1811.276
+  angles 0 -86.622 0
+  scale 20
+ }
+ {
+  coords 5289.708 -56.166 1254.431
+  angles 0 -86.622 0
+  scale 20
+ }
+ {
+  coords 5256.778 -56.165 696.59
+  angles 0 -86.622 0
+  scale 20
+ }
+ {
+  coords 5072.146 -56.165 357.891
+  angles 0 4.835 0
+  scale 20
+ }
+ {
+  coords 4564.892 -56.165 400.796
+  angles 0 4.835 0
+  scale 20
+ }
+ {
+  coords 4470.047 -56.165 620.536
+  angles 0 92.727 0
+  scale 20
+ }
+ {
+  coords 4495.023 -56.165 1144.907
+  angles 0 92.727 0
+  scale 20
+ }
+ {
+  coords 4523.601 -56.165 1744.897
+  angles 0 92.727 0
+  scale 20
+ }
+ {
+  coords 4546.341 -56.165 2222.319
+  angles 0 92.727 0
+  scale 20
+ }
+ {
+  coords 4779.433 -56.165 2342.05
+  angles 0 -174.452 0
+  scale 20
+ }
+ {
+  coords 5293.223 -56.165 2292.142
+  angles 0 -174.452 0
+  scale 20
+ }
+ {
+  coords 5348.613 -56.165 2252.299
+  angles 0 -86.622 0
+  scale 20
+ }
+}

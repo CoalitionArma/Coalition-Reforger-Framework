@@ -1,0 +1,8 @@
+CRF_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 2867.383 14.5 3628.755
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+ m_fWorldSizeX 30
+ m_fWorldSizeY 30
+ m_fShapeBorderWidth 3
+}

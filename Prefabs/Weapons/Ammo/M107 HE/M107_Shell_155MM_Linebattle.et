@@ -1,0 +1,165 @@
+Projectile : "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.et" {
+ ID "5098E3DEA78F878B"
+ components {
+  SCR_ShellSoundComponent "{60C8EAEE6F7B13A8}" {
+   Filenames {
+    "{32C9246F76AA214A}Sounds/Weapons/_SharedData/ProjectileTravelling/Weapons_ProjectileTravelling_Artillery_Generic.acp"
+   }
+  }
+  TimerTriggerComponent "{69D5019DF5838943}" {
+   Enabled 0
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{69D5019DF58388C9}" {
+     EffectPrefab "{875A6FF9E11C35E2}Prefabs/Weapons/Warheads/Warhead_Shell_HE_M107.et"
+     ParticleEffect "{A193D24B1A548EFA}Particles/Weapon/Explosion_M777_HE_New.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  CollisionTriggerComponent "{60AC9441243E3504}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{66448E9CBD7626AB}" {
+     Enabled 1
+     EffectPrefab "{F1929AE7DC824D81}Prefabs/Weapons/Warheads/Warhead_ExplosiveCharge_TNT400g.et"
+     ParticleEffect "{547F446774B0EEF1}Particles/Weapon/Explosion_TNT_400g.ptc"
+    }
+   }
+   SafetyDistance 0
+  }
+  MagazineComponent "{51A2B9D6DA866EF0}" {
+   MagazineWell MagazineWellArtillery155mm "{60AC9440C3F831DF}" {
+   }
+   UIInfo MagazineUIInfo "{60AC9440C81EC976}" {
+    Name "#AR-Magazine_M107_Name"
+    Description "#AR-Magazine_M107_Description"
+    m_sAmmoCaliber "#AR-AmmunitionID_155mm"
+    m_sAmmoType "#AR-AmmoType_M107"
+   }
+   ItemModel ""
+  }
+  MeshObject "{5098E3DEA78F87BE}" {
+   Object "{010DE18B6A1AFFFB}Models/Ammo/M107_HE/M107_HE_shell.xob"
+  }
+  RigidBody "{60AC9440016FD3D4}" {
+   Active Inactive
+   Mass 43
+   ResponseIndex "Normal"
+  }
+  SCR_MortarShellGadgetComponent "{60AC94402A1A228B}" {
+   Enabled 0
+  }
+  SCR_VisibleInventoryItemComponent "{52627A115A9FDADB}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1159C64CDD}" {
+    ItemDisplayName UIInfo "{527A96640FC79825}" {
+     Name "#AR-Magazine_M107_HE_Name"
+     Description "#AR-Magazine_M107_HE_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{60AC94417B58CB7F}" {
+     Weight 43
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{61267CEBCD285422}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{5D2AE4CEE3FC959E}" {
+       AnimGraph "{6988D06F6EBB8A3E}workspaces/M107/Shell_M107_155mm.agr"
+       AnimInstance "{84E285B472B2D8D0}workspaces/M107/Shell_M107_155mm.asi"
+       BindingName "Weapon"
+      }
+     }
+     HandAdditiveRotation 0 270 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{60AC9440A0FA2A65}" {
+      CameraPreset Front
+      CameraDistanceToItem 0.55
+      CameraOffset -0.025 -0.01 0
+      ItemRenderRotation 0 0 0
+      PreviewModel "{010DE18B6A1AFFFB}Models/Ammo/M107_HE/M107_HE_shell.xob"
+     }
+     CharacterModifierAttributes "{6122C8959E039BF8}" {
+      SpeedLimit 1
+      AllowGadgetUse 0
+      AllowJumping 0
+     }
+    }
+   }
+  }
+  ShellMoveComponent "{5098E3DEA78F87A3}" {
+   InitSpeed 100
+   InitSpeedVariation 1.9
+   DispersionMultiplier 1
+   Mass 43
+   TimeToLive 120
+   BallisticTableConfig "{83019FB69BE14C68}Configs/Weapons/Ammo/M107_Shell_155mm_HE.conf"
+   BallisticTableGenerationConfig "{0ACD08C7D23AB81E}Configs/Weapons/Ammo/MortarBallisticTableGeneratorConfig_M107.conf"
+   ProjectileWindTableConfig "{BD8AEDF9B77C82C9}Configs/Weapons/Ammo/WindData_M107_Shell_155MM_HE.conf"
+   AirDrag 0.0022
+   Diameter 155
+   Length 600
+   PenetrationDensity 7.86
+   PenetrationSpeed 1000
+  }
+  TOFTS_ArtilleryShellGadgetComponent "{69D5019DF58388E2}" {
+   m_fMinFuzeTime 1
+   m_fDetonationAltitude 50
+   m_aChargeRingConfig {
+    1 2.4 1 2 3.1 0 3 4.4 0 4 5.6 0 5 6.84 0
+   }
+   m_rLiveShellPrefab "{EA8B40221D8E68B1}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_HE.et"
+   m_rChamberVisualPrefab "{F7297F277A853708}Prefabs/Weapons/Ammo/M107 HE/M107_HE_chamber_visual.et"
+   m_eAnimVariable ANPRC68
+   m_eUseMask CUSTOM
+  }
+  TOFTS_ImpactDistanceLogger "{69D5019DF58388EE}" {
+  }
+  TOFTS_PreventGCComponent "{69D5019DF58388E8}" {
+  }
+  TOFTS_ShellDebug "{69D5019DF58388EA}" {
+   Enabled 0
+   InitSpeed 100
+   InitSpeedVariation 0
+   DispersionMultiplier 0
+   Mass 43
+   TimeToLive 120
+   LayerPreset "Projectile"
+   BallisticTableConfig "{83019FB69BE14C68}Configs/Weapons/Ammo/M107_Shell_155mm_HE.conf"
+   BallisticTableGenerationConfig "{0ACD08C7D23AB81E}Configs/Weapons/Ammo/MortarBallisticTableGeneratorConfig_M107.conf"
+   ProjectileWindTableConfig "{BD8AEDF9B77C82C9}Configs/Weapons/Ammo/WindData_M107_Shell_155MM_HE.conf"
+   AirDrag 0.0022
+   SideAirDragScale 10
+   Diameter 155
+   Length 600
+   m_bLogLaunch 0
+   m_bLogInflight 0
+  }
+  SlotManagerComponent "{629C6AA0D8D852AB}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{51A2B9D50D603C79}" {
+   additionalActions {
+    SCR_AdjustShellChargeRingsAction "{629C6AB1194F002B}" {
+     ParentContextList {
+     }
+    }
+    TOFTS_ShellConvertAction "{69D5019DF58388F0}" {
+     ParentContextList {
+     }
+     UIInfo UIInfo "{69D5019DF58388F2}" {
+      Name "Remove fuze"
+      Description "Remove the fuze, converting this shell back into a transport round."
+     }
+     ActionTitle "Remove fuze"
+     Duration 5
+     m_rTargetPrefab "{348ECDA5F8EE44E1}Prefabs/Items/Ammo/TransportShells/M107_HE_Transport.et"
+     m_sActionLabel "Remove fuze"
+    }
+   }
+  }
+  GadgetAnimationComponent "{69D5019DF58388FF}" {
+   AnimGraph "{6988D06F6EBB8A3E}workspaces/M107/Shell_M107_155mm.agr"
+   AnimInstance "{84E285B472B2D8D0}workspaces/M107/Shell_M107_155mm.asi"
+  }
+ }
+ coords 132.43 1 129.497
+ ProjectileModel "{010DE18B6A1AFFFB}Models/Ammo/M107_HE/M107_HE_shell.xob"
+ CartridgeModel "{010DE18B6A1AFFFB}Models/Ammo/M107_HE/M107_HE_shell.xob"
+}

@@ -1,0 +1,18 @@
+Bacon_RandomizedPrefabSpawner {
+ coords 4906.89 183.718 1256.351
+ angles 0 3.79 0
+ m_spawnPrefabs {
+  "{3A3331F61766D055}PrefabsEditable/EffectsModules/Mortar/EffectModule_MortarShell.et"
+ }
+ m_spawnOffsetRandomizationMax 400 0 700
+ m_minMaxSpawnDelay 5 20 0
+ m_randomPrefabIndex 1
+ m_randomPrefabCount 400
+}
+SCR_BaseTriggerEntity {
+ coords 4905.124 194.594 1255.632
+ angles 0 3.79 0
+ TriggerShapeType "Oriented Bounding Box"
+ BoxMins 0 -50 -700
+ BoxMaxs 400 50 700
+}

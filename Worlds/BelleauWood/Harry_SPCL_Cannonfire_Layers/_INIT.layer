@@ -1,0 +1,297 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 6
+     m_iStartingMinutes 13
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 120
+ m_iRespawnCutoffMinutes 5
+ m_iTimeLimitMinutes 20
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 1
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69D5019B4B50A6F8}" {
+   m_sTitle "Capture the enemy cannon battery"
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69D5019B4B5098E5}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69D5019B4B509FD8}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69D5019B4B509F35}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69D5019B4B509E7E}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69D517630FAD8CDA}" {
+   m_sCallsign "Cannons"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{69D517630FAD835B}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69D517630FAD81CA}" {
+   m_sCallsign "0-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69D517630FAD8739}" {
+   m_sCallsign "Cannons"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+  }
+  CRF_SlottingGroup "{69D517630FAD8638}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+  CRF_SlottingGroup "{69D517630FAD84E6}" {
+   m_sCallsign "0-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+  }
+ }
+ m_iBLUFORTickets 40
+ m_iOPFORTickets 40
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D8849EEC944C203C}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Blufor.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{156E63B7D5566279}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Opfor.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69D5019C64CE8784" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
