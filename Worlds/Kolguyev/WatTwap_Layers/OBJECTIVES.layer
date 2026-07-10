@@ -1,6 +1,6 @@
 $grp GameEntity {
  Pilot {
-  coords 7865.168 132.822 6935.168
+  coords 7834.604 140.223 6967.607
  }
  CrewChief {
   coords 7851.382 138.442 6965.823
@@ -24,7 +24,7 @@ GenericEntity RadioRelay : "{897996015875B87C}Prefabs/Systems/Radio/TestingRadio
    }
   }
  }
- coords 8399.354 28.503 6710.331
+ coords 8271.531 47.493 6715.606
  angles 0 170.064 0
  scale 0.714
 }

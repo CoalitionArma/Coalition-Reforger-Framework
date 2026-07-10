@@ -43,4 +43,11 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
   m_bShouldAddAmmo 0
  }
+ {
+  coords 10068.011 26 1839.749
+  angles 0 4.696 0
+  m_rVehicle "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
 }
