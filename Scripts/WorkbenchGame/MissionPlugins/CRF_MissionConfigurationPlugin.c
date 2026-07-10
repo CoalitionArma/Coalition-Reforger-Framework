@@ -24,7 +24,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	
 	[Attribute("<Description>", "auto", "", category: "CRF Mission Config - Mission Info")]
 	protected string m_sMissionDescription;
-	
+
 	protected const string SCENARIOS_PATH = "Missions";
 
 	//------------------------------------------------------------------------------------------------
@@ -50,11 +50,12 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		m_MissionMode = CRF_EGamemode.TVT;
 		m_sMissionName = "<Name>";
 		m_sMissionDescription = "<Description>";
-		
+
 		if (!Workbench.ScriptDialog(
 		"Mission Config Generator", 
 		"This will automatically generate and sort the mission configuration file. \n\n WARNING: DO NOT RUN THIS TWICE FOR ONE MISSION, SIMPLY GO TO THE ALREADY CREATED CONFIG AND MANUALLY UPDATE IT.", 
 		this))
+		
 			return;
 	}
 	
