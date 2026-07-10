@@ -29,12 +29,26 @@ class CRF_MissionDescriptionsPlugin : WorkbenchPlugin
 		
 		m_aMissionDescriptors.Clear(); // Due to attributes in plugins being saved when the plugin is closed, we need to clear the array each time so the user gets the same attributes each time.
 		
+<<<<<<< HEAD
 		// Always populate from the gamemode's default descriptors. Mission creators can add more entries here on top of them.
+=======
+		// Always populate from the gamemode's default descriptors first, then append any extras the creator previously saved on top of them.
+>>>>>>> parent of 546ecb09 (Merge remote-tracking branch 'upstream/release' into Aftermath)
 		if (gamemode.m_aDefaultMissionDescriptors)
 		{
 			for ( int i = 0; i < gamemode.m_aDefaultMissionDescriptors.Count(); i++ )
 				m_aMissionDescriptors.Insert( gamemode.m_aDefaultMissionDescriptors.Get(i) );
 		}
+<<<<<<< HEAD
+=======
+
+		int baseCount = 2 + (gamemode.m_aDefaultMissionDescriptors ? gamemode.m_aDefaultMissionDescriptors.Count() : 0);
+		if (gamemode.m_aMissionDescriptors && gamemode.m_aMissionDescriptors.Count() > baseCount)
+		{
+			for ( int i = baseCount; i < gamemode.m_aMissionDescriptors.Count(); i++ )
+				m_aMissionDescriptors.Insert( gamemode.m_aMissionDescriptors.Get(i) );
+		}
+>>>>>>> parent of 546ecb09 (Merge remote-tracking branch 'upstream/release' into Aftermath)
 		
 		// Actually shows the window
 		if (!Workbench.ScriptDialog(
