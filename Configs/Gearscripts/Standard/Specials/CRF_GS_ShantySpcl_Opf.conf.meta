@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{1B7CC57DC45A85D1}Configs/Gearscripts/Standard/Specials/CRF_GS_ShantySpcl_Opf.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
