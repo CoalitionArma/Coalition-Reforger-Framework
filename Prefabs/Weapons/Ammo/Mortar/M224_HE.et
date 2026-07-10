@@ -1,0 +1,13 @@
+Projectile {
+ ID "6912227830E2C9D5"
+ components {
+  InventoryItemComponent "{694EE153EF985FB9}" {
+   Attributes SCR_ItemAttributeCollection "{694EE153EF985FC0}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{694EE153EF985FC2}" {
+     Weight 0
+     ItemVolume 0
+    }
+   }
+  }
+ }
+}
