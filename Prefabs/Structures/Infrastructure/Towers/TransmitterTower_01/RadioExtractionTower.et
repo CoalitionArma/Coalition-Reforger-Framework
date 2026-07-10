@@ -1,0 +1,58 @@
+StaticModelEntity : "{DBCDEC45DB834E8A}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01.et" {
+ ID "50D67C36F435260A"
+ components {
+  SCR_DestructionMultiPhaseComponent "{6724D34460116DB6}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     "Collision multiplier" 0
+     "Kinetic multiplier" 0
+     "Explosive multiplier" 1
+     "Incendiary multiplier" 0
+     "Fire multiplier" 0
+    }
+   }
+   m_fBaseHealth 25000
+  }
+  ActionsManagerComponent "{591AD546A8462054}" {
+   ActionContexts {
+    UserActionContext "{69D4121BA0CE7107}" {
+     ContextName "radioextraction"
+     Position PointInfo "{69D4121B976B644C}" {
+      Offset 2.7164 1.3822 0
+     }
+     Radius 1
+    }
+   }
+   additionalActions {
+    CRF_RadioExtractionPlantAction "{69D4121A34D431E9}" {
+     ParentContextList {
+      "radioextraction"
+     }
+     UIInfo UIInfo "{69D4121A094162D4}" {
+      Name "Plant Bomb"
+     }
+     Duration 5
+    }
+    CRF_RadioExtractionSendMessageAction "{69D4121A2C255B63}" {
+     ParentContextList {
+      "radioextraction"
+     }
+     UIInfo UIInfo "{69D4121BF6408C14}" {
+      Name "Request Extraction"
+     }
+     Duration 5
+    }
+    CRF_RadioExtractionDefuseAction "{69D4121A23F87F85}" {
+     ParentContextList {
+      "radioextraction"
+     }
+     UIInfo UIInfo "{69D4121BE8FF2490}" {
+      Name "Defuse Bomb"
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+ coords 1177.882 38.012 2826.298
+}

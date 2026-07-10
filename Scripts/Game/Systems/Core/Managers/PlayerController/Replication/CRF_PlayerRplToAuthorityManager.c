@@ -150,7 +150,21 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		Print("[CRF_PlayerRplToAuthorityManager] StopRushBombTickingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StopRushBombTickingSound); 
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	// Multi-use: true = plant/arm the bomb, false = defuse it.
+	// Hold sounds use the generic RequestPlayPositionalSound/RequestStopPositionalSound RPCs.
+	void RequestRadioExtractionSetPlanted(bool planted)
+	{
+		Rpc(RpcAsk_RequestRadioExtractionSetPlanted, planted);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void RequestRadioExtractionSendMessage()
+	{
+		Rpc(RpcAsk_RequestRadioExtractionSendMessage);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void RequestAdvanceGamemodeState(bool overriden, string winningFaction = "")
 	{
@@ -706,6 +720,35 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		{
 			Print("[CRF_PlayerRplToAuthorityManager] Rush gamemode manager not found!");
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestRadioExtractionSetPlanted(bool planted)
+	{
+		// Telemetry: bool
+		LogTelemetry("RpcAsk_RequestRadioExtractionSetPlanted", CRF_BandwidthTelemetryManager.EstimateSize_Bool());
+
+		CRF_RadioExtraction radioExtraction = CRF_RadioExtraction.GetInstance();
+		if (!radioExtraction)
+			return;
+
+		if (planted)
+			radioExtraction.PlantBomb();
+		else
+			radioExtraction.DefuseBomb();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestRadioExtractionSendMessage()
+	{
+		// Telemetry: no parameters
+		LogTelemetry("RpcAsk_RequestRadioExtractionSendMessage", 0);
+
+		CRF_RadioExtraction radioExtraction = CRF_RadioExtraction.GetInstance();
+		if (radioExtraction)
+			radioExtraction.SendExtractionMessage();
 	}
 
 	//------------------------------------------------------------------------------------------------

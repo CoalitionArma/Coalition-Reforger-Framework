@@ -20,6 +20,12 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
    }
   }
+  CRF_RadioExtraction "{69D435667E2DDCBF}" {
+   m_rBombPrefab "{75DB0AA6D090CDC0}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/RadioExtractionTower.et"
+   m_sTargetEntityName "radiotower"
+   m_iUnlockTimeMinutes 35
+   m_sExtractionMessageText "OPFOR HAS CALLED FOR EXTRACTION"
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
