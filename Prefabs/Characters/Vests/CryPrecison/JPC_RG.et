@@ -1,0 +1,24 @@
+GenericEntity : "{6E97E990FC7B6486}Prefabs/Characters/Vests/CryPrecison/JPC_TAN_Base.et" {
+ ID "50E0B40D7407B664"
+ components {
+  SCR_EquipmentStorageComponent "{56C48B5965A39F45}" {
+   InitialStorageSlots {
+    SCR_EquipmentStorageSlot Magazine01 {
+     Enabled 0
+    }
+    SCR_EquipmentStorageSlot Magazine02 {
+     Enabled 0
+    }
+    SCR_EquipmentStorageSlot Magazine03 {
+     Enabled 0
+    }
+    SCR_EquipmentStorageSlot Slot04 {
+     Enabled 0
+    }
+    SCR_EquipmentStorageSlot SlotTourniquet {
+     Enabled 0
+    }
+   }
+  }
+ }
+}

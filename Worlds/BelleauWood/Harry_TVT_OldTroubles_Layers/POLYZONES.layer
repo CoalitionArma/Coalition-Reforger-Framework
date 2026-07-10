@@ -1,0 +1,99 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 5351.127 122.453 6416.185
+ Points {
+  ShapePoint "{69CF74172051B306}" {
+   Position -2016.64 0 679.632
+  }
+  ShapePoint "{69CF7417276504A7}" {
+   Position -1930.915 0 920.04
+  }
+  ShapePoint "{69CF74172546F7A7}" {
+   Position -627.567 0 741.008
+  }
+  ShapePoint "{69CF74172B0AF9C8}" {
+   Position -339.532 0 609.312
+  }
+  ShapePoint "{69CF74172A731055}" {
+   Position 51.18 0 385.901
+  }
+  ShapePoint "{69CF74172E45E46C}" {
+   Position 172.597 0 548.676
+  }
+  ShapePoint "{69CF74172C9C40B8}" {
+   Position 707.798 0 376.225
+  }
+  ShapePoint "{69CF741704261177}" {
+   Position 1113.217 0 354.199
+  }
+  ShapePoint "{69CF74173250F22F}" {
+   Position 2092.162 0 -211.1
+  }
+  ShapePoint "{69CF74173160CD56}" {
+   Position 2124.644 0 -1241.405
+  }
+  ShapePoint "{69CF7417301651C0}" {
+   Position 617.29 0 -1273.498
+  }
+ }
+}
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ coords 3544.515 93.666 6972.619
+ Points {
+  ShapePoint "{69CF7414B8341858}" {
+   Position -101.761 0 381.685
+  }
+  ShapePoint "{69CF7416EA3BE752}" {
+   Position 1208.772 0 296.469
+  }
+  ShapePoint "{69CF7414BF6AB5F2}" {
+   Position 1959.733 0 -395.883
+  }
+  ShapePoint "{69CF7414F231078F}" {
+   Position 1893.977 0 -127.421
+  }
+  ShapePoint "{69CF7414E3F1E4E0}" {
+   Position 2027.288 0 -39.346
+  }
+  ShapePoint "{69CF7414E6827E70}" {
+   Position 2146.07 0 -110.719
+  }
+  ShapePoint "{69CF7414E5609346}" {
+   Position 2130.557 0 -223.99
+  }
+  ShapePoint "{69CF7414BEE001DD}" {
+   Position 2346.848 0 -261.432
+  }
+  ShapePoint "{69CF7414BCEE5730}" {
+   Position 2230.272 0 -799.023
+  }
+  ShapePoint "{69CF74148960A667}" {
+   Position 1382.464 0 -652.432
+  }
+  ShapePoint "{69CF74148F1042E5}" {
+   Position -118.959 -0 148.684
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 6986.383 112.473 5547.983
+ Points {
+  ShapePoint "{69CF7414C3D2C2F5}" {
+   Position -14.995 0 -152.865
+  }
+  ShapePoint "{69CF7414C2A32462}" {
+   Position -76.787 0 109.146
+  }
+  ShapePoint "{69CF7414C15DFEA7}" {
+   Position -30.731 0 348.689
+  }
+  ShapePoint "{69CF7414D7D28E8F}" {
+   Position 224.826 0 297.829
+  }
+  ShapePoint "{69CF7414D5695088}" {
+   Position 189.37 0 -3.234
+  }
+  ShapePoint "{69CF7414C1FEF8B4}" {
+   Position 124.146 0 -59.435
+  }
+ }
+}

@@ -1,0 +1,79 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 6970.393 113.474 5574.091
+  angles 3.113 -5.733 -4.793
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 6976.396 113.873 5574.666
+  angles 3.296 -5.645 -3.017
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 6982.836 114.138 5575.283
+  angles 3.385 -5.597 -2.126
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 6988.42 114.276 5575.818
+  angles 3.473 -5.547 -1.235
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 6994.134 114.28 5576.365
+  angles 0 -5.472 0
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 7000.208 114.28 5576.947
+  angles 0 -5.472 0
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 7007.003 114.28 5577.598
+  angles 0 -5.472 0
+  m_rVehicle "{F9FD7E24B28538EE}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_UK.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3490.955 93.714 7255.332
+  angles 0 81.881 0
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3499.811 93.525 7256.792
+  angles 0 81.881 0
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3508.529 93.377 7258.634
+  angles 0 81.881 0
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3517.787 93.31 7260.086
+  angles 0 81.881 0
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+}
