@@ -2,7 +2,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  sand {
   components {
    CRF_FactionControlObjective "{69C62969D5FA156F}" {
-    m_sZoneId "7"
     m_sZoneLabel "Sand Factory"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -18,7 +17,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  fort {
   components {
    CRF_FactionControlObjective "{69C6296991CDD82A}" {
-    m_sZoneId "2"
     m_sZoneLabel "Fort Ruins"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -34,7 +32,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  mine {
   components {
    CRF_FactionControlObjective "{69C62969F59D8C7E}" {
-    m_sZoneId "4"
     m_sZoneLabel "Mining Camp"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -50,7 +47,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  sulphur {
   components {
    CRF_FactionControlObjective "{69C62969DFC36DDE}" {
-    m_sZoneId "8"
     m_sZoneLabel "Suplhur Pits"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -66,7 +62,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  viewing {
   components {
    CRF_FactionControlObjective "{69C6296A2735564A}" {
-    m_sZoneId "9"
     m_sZoneLabel "Viewing Area"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -82,7 +77,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  hospital {
   components {
    CRF_FactionControlObjective "{69C62969E2E54EEC}" {
-    m_sZoneId "3"
     m_sZoneLabel "Hospital Complex"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -98,7 +92,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  oil {
   components {
    CRF_FactionControlObjective "{69C62969CDE70C6A}" {
-    m_sZoneId "6"
     m_sZoneLabel "Oil Depot"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -114,7 +107,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  visitors {
   components {
    CRF_FactionControlObjective "{69C6296A2892B5B5}" {
-    m_sZoneId "10"
     m_sZoneLabel "Visitors Center"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -130,7 +122,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  mountain {
   components {
    CRF_FactionControlObjective "{69C62969CB1E41CA}" {
-    m_sZoneId "5"
     m_sZoneLabel "Mountain Base"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
@@ -146,7 +137,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  cliffs {
   components {
    CRF_FactionControlObjective "{69C629685DCBFA9D}" {
-    m_sZoneId "1"
     m_sZoneLabel "Cliffs"
     m_fCaptureRadius 100
     m_iCountdownSeconds 360
