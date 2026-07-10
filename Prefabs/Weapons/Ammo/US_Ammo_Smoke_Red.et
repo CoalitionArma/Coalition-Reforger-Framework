@@ -2,6 +2,7 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
  ID "50C6F965BA00F9FA"
  components {
   TimerTriggerComponent "{61CAF436738B31DA}" {
+   Enabled 0
    PROJECTILE_EFFECTS {
     ExplosionEffect "{61CAF436738B31CF}" {
      EffectPrefab "{1F7300EC0835D898}PrefabsEditable/EffectsModules/Smoke/EffectModule_Smoke_Red.et"
@@ -22,16 +23,15 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
    Enabled 0
   }
   CollisionTriggerComponent "{61CAF436738B31F9}" {
-   Enabled 0
+   Enabled 1
    PROJECTILE_EFFECTS {
     ExplosionEffect "{61CAF436738B31F4}" {
-     EffectPrefab "{729D7EE679AD97E7}Prefabs/Weapons/Warheads/Warhead_Grenade_HE_VOG25.et"
-     ParticleEffect "{728768DE31C8D1DE}Particles/Weapon/Explosion_VOG25.ptc"
-     SoundEvent "SOUND_EXPLOSION"
+     EffectPrefab "{1F7300EC0835D898}PrefabsEditable/EffectsModules/Smoke/EffectModule_Smoke_Red.et"
+     ParticleEffect "{94CAB105E065775C}Particles/Weapon/Smoke_grenade_M18_Red.ptc"
+     SoundEvent "SOUND_DEPLOY"
     }
    }
    ArmingTime 0
-   SafetyDistance 10
   }
   InventoryItemComponent "{52627A12350994B6}" {
    Attributes SCR_ItemAttributeCollection "{52627A1234AD20A4}" {
