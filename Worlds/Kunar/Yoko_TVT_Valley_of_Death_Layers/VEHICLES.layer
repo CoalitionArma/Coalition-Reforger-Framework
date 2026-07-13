@@ -1,0 +1,12 @@
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3052.428 320 367.456
+  angles 0 84.544 0
+  m_rVehicle "{DE32642254476DD5}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Tan.et"
+ }
+ {
+  coords 3038.592 320 366.134
+  angles 0 84.544 0
+  m_rVehicle "{DE32642254476DD5}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Tan.et"
+ }
+}
