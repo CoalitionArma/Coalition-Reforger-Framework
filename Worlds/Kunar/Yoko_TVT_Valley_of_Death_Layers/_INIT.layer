@@ -1,3 +1,7 @@
+SCR_AIWorld : "{77C3151F7A6E588C}SCR_AIWorld_Kunar.et" {
+ coords 3719.929 265.174 1168.655
+ angles 0 0 0
+}
 CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -44,13 +48,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{69DB126FF4CF2730}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Capture the UAV's crash site"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "You have tech superoity over your enemy (scopes, body armor, etc.) use it to your advantage."\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion on execution"
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -58,14 +62,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{69DB126FF4CF27AC}" {
    m_sTitle "OPFOR Briefing"
-   m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
-   ""\
-   "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
-   ""\
-   "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_sTextData ""
    m_aFactionKeys {
     "OPFOR"
    }
@@ -74,13 +71,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{69DB126FF4CF383E}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Capture the UAV's Crash site"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "You have both a MMG and MAT team to deal with enemy assets, preserve them and use them correctly."\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "INDFOR"
    }
@@ -88,7 +85,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{69DB126FF4CF38B4}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "8 poeple of the same faction are need to start capturing the point."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
