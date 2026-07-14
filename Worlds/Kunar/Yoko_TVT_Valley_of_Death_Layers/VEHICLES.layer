@@ -38,43 +38,43 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
 }
 $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 3068.148 320 368.958
+  coords 3454.708 300.005 275.43
   angles 0 84.544 0
   m_rVehicle "{DE32642254476DD5}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Tan.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3058.101 320 367.997
+  coords 3444.661 301.23 274.469
   angles 0 84.544 0
   m_rVehicle "{DE32642254476DD5}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Tan.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3048.463 320 367.076
+  coords 3435.022 302.357 273.548
   angles 0 84.544 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3038.608 320 366.135
+  coords 3425.167 303.444 272.607
   angles 0 84.544 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3028.648 320 365.184
+  coords 3415.208 304.612 271.656
   angles 0 84.544 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3016.887 320 366.243
+  coords 3403.447 305.681 272.715
   angles 0 102.316 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_bShouldAddAmmo 0
  }
  {
-  coords 3004.73 320 370.58
+  coords 3391.29 306.441 277.052
   angles 0 109.978 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
   m_bShouldAddAmmo 0
