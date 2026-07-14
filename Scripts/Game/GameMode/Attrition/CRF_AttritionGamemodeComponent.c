@@ -15,7 +15,24 @@
 //    percentage each side needs to inflict on the other to win.
 // 4. Pools are finalized automatically when safestart ends (or, if the mission does
 //    not use safestart, when the gamemode reaches the GAME state).
+// 5. To pair Attrition with an objective-based respawn gamemode (Frontline, Rush, ...),
+//    set Force Composition Mode to DYNAMIC so respawning players re-enter the pool
+//    instead of only ever counting their first death.
 //------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------------
+// Governs how the force pool responds to respawns during the match.
+enum CRF_EAttritionForceMode
+{
+	STATIC,		// Pool is fixed at safestart end. Each tracked player/vehicle can only ever
+				// count as destroyed once, even if a paired gamemode component respawns them.
+	DYNAMIC		// Players (re-)enter the pool the moment they spawn if not already tracked —
+				// covers both respawns after an earlier death and latecomers who slot in after
+				// finalization — growing that side's pool total by one life each time, so the
+				// destroyed/total ratio keeps meaning "cumulative losses so far" instead of
+				// stalling after each original unit's first death.
+}
 
 
 //------------------------------------------------------------------------------------------------
@@ -93,6 +110,9 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 	[Attribute("10", UIWidgets.Auto, desc: "Minimum percentage increase in a side's losses before an on-screen update is broadcast to all players.", category: "Attrition - HUD")]
 	float m_fNotifyIncrementPercent;
+
+	[Attribute("0", UIWidgets.ComboBox, "STATIC: pool is fixed at safestart end; each tracked player/vehicle is destroyed at most once. DYNAMIC: players re-enter the pool on every spawn (respawns and latecomers alike) and grow the pool total, so repeated deaths keep counting — use this when pairing Attrition with an objective-based respawn gamemode (Frontline, Rush).", "", ParamEnumArray.FromEnum(CRF_EAttritionForceMode), category: "Attrition - Pool")]
+	CRF_EAttritionForceMode m_eForceCompositionMode;
 
 	[Attribute("true", UIWidgets.CheckBox, desc: "Count slotted players toward each side's force pool.", category: "Attrition - Pool")]
 	bool m_bCountPlayers;
@@ -187,6 +207,10 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		// Fallback trigger for missions that never enable safestart at all.
 		if (m_Gamemode && m_Gamemode.GetOnStateChanged())
 			m_Gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
+
+		// DYNAMIC mode only — re-tracks respawning players (see OnPlayerRespawned).
+		if (m_eForceCompositionMode == CRF_EAttritionForceMode.DYNAMIC && m_Gamemode)
+			m_Gamemode.GetOnPlayerSpawned().Insert(OnPlayerRespawned);
 	}
 
 	override void OnDelete(IEntity owner)
@@ -205,6 +229,9 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 		if (m_Gamemode && m_Gamemode.GetOnStateChanged())
 			m_Gamemode.GetOnStateChanged().Remove(OnGamemodeStateChanged);
+
+		if (m_eForceCompositionMode == CRF_EAttritionForceMode.DYNAMIC && m_Gamemode)
+			m_Gamemode.GetOnPlayerSpawned().Remove(OnPlayerRespawned);
 
 		if (m_sInstance == this)
 			m_sInstance = null;
@@ -320,6 +347,47 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		pool.m_iTotalUnits = pool.m_aTrackedPlayerIds.Count();
+	}
+
+	// DYNAMIC mode only (see CRF_EAttritionForceMode) — subscribed in EOnInit to the
+	// gamemode's own player-spawned event, so no cooperation from whatever respawn/objective
+	// component is granting the spawn (Frontline, Rush, ...) is required. Fires on every
+	// spawn, including each player's first, but re-tracking is a no-op if already tracked —
+	// so this only actually does something the moment a player spawns without being counted:
+	// either a respawn after an earlier death, or a latecomer slotting in post-finalization.
+	// Either way they become destroyable again and the pool's total grows by one life, which
+	// is what keeps destroyedUnits/totalUnits meaningful instead of stalling at each unit's
+	// first death.
+	protected void OnPlayerRespawned(int playerId, IEntity controlledEntity)
+	{
+		if (!Replication.IsServer() || !m_bPoolsFinalized || m_bVictoryTriggered || !m_bCountPlayers)
+			return;
+
+		CRF_AttritionTeamPool pool = ResolvePlayerFactionPool(playerId);
+		if (!pool || pool.m_aTrackedPlayerIds.Contains(playerId))
+			return;
+
+		pool.m_aTrackedPlayerIds.Insert(playerId);
+		pool.m_iTotalUnits++;
+	}
+
+	protected CRF_AttritionTeamPool ResolvePlayerFactionPool(int playerId)
+	{
+		CRF_SlottingManager slotMgr = CRF_SlottingManager.GetInstance();
+		if (!slotMgr)
+			return null;
+
+		CRF_SlotData slotData = slotMgr.GetPlayerSlotData(playerId);
+		if (!slotData)
+			return null;
+
+		string factionKey = slotData.GetSlotFactionKey();
+		if (factionKey == m_TeamA.m_sFactionKey)
+			return m_TeamA;
+		if (factionKey == m_TeamB.m_sFactionKey)
+			return m_TeamB;
+
+		return null;
 	}
 
 	// Finds every Vehicle-typed entity in the world directly via a (very large) sphere
@@ -487,7 +555,11 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		if (pool.m_iTotalUnits <= 0)
 			return;
 
-		pool.m_iDestroyedUnits++;
+		// Clamped at the source rather than just at display time, so m_iDestroyedUnits itself
+		// can never exceed m_iTotalUnits — e.g. if a kill and a vehicle-destruction event both
+		// land for the same unit, or DYNAMIC-mode re-tracking races a destruction on the same
+		// tick. Every downstream percent computation inherits the <=100% guarantee for free.
+		pool.m_iDestroyedUnits = Math.Min(pool.m_iDestroyedUnits + 1, pool.m_iTotalUnits);
 
 		float destroyedPercent = (float)pool.m_iDestroyedUnits / (float)pool.m_iTotalUnits * 100.0;
 
