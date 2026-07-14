@@ -1,6 +1,17 @@
 #ifdef WORKBENCH
+//------------------------------------------------------------------------------------------------
+//! Callsign-inferred ORBAT tier for the mission synopsis' Slotting section (see GetCallsignTier()).
+//! Internal to the synopsis generator - not a runtime/gameplay concept, so it's kept out of CRF_Enums.c.
+enum CRF_ESlottingCallsignTier
+{
+	COMPANY,
+	PLATOON,
+	SQUAD,
+	OTHER   // Unrecognized/custom callsign - always rendered top-level, un-nested
+}
+
 [WorkbenchPluginAttribute(
-	name: "6 | Generate Config File", 
+	name: "6 | Generate Config File",
 	description: "Generate Mission Configuration File", 
 	shortcut: "", 
 	wbModules: { "WorldEditor" }, 
@@ -67,17 +78,59 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Re-shows the synopsis preview (and re-copies it to the clipboard) without regenerating the
+	//! mission config - lets a mission maker re-open the synopsis after closing the window, without
+	//! risking a second .conf being generated (see the "DO NOT RUN THIS TWICE" warning above).
+	[ButtonAttribute("Show Mission Synopsis")]
+	protected bool ButtonShowSynopsis()
+	{
+		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
+		if (!worldEditor)
+			return false;
+
+		WorldEditorAPI api = worldEditor.GetApi();
+
+		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
+		if (!entitySource)
+			return false;
+
+		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
+		if (!gamemode)
+			return false;
+
+		string missionMode = SCR_Enum.GetEnumName(CRF_EGamemode, m_MissionMode);
+
+		int missionPlayercount = GetPlayerCount(gamemode.m_BluforSlots);
+		missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_OpforSlots);
+		missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_IndforSlots);
+		missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_CivSlots);
+
+		string worldPath;
+		api.GetWorldPath(worldPath);
+
+		array<string> strArray = {};
+		worldPath.Split("/", strArray, false);
+		string missionTerrain = strArray.Get(strArray.Count() - 2);
+
+		string missionDisplayName = string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName);
+
+		ShowMissionSynopsis(gamemode, entitySource, missionDisplayName, missionTerrain, missionMode, missionPlayercount);
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	[ButtonAttribute("Generate Mission Config", true)]
 	protected bool ButtonNext()
 	{
 		string missionMode = SCR_Enum.GetEnumName(CRF_EGamemode, m_MissionMode);
 		int missionPlayercount;
 		string worldPath;
-		
+
 		//--- Get mission header from the template config (can't use the class directly, it's engine-controlled class that cannot have reference in script)
 		Resource templateResource = Resource.Load("{3D094352621EA88C}!Missions/CRF_BaseMissionConfig.conf");
 		BaseContainer missionHeaderContainer = templateResource.GetResource().ToBaseContainer();
-		
+
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
 		WorldEditorAPI api = worldEditor.GetApi();
 
@@ -96,14 +149,14 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		missionHeaderContainer.Set("m_sDescription", m_sMissionDescription);
 		missionHeaderContainer.Set("m_iMapMarkerLimitPerPlayer", 256);
 		missionHeaderContainer.Set("m_iPlayerCount", 128);
-		
+
 		IEntitySource entitySource = api.FindEntityByName("CRF_Lobby");
-		
+
 		if (!entitySource)
 			return false;
-		
+
 		CRF_Gamemode gamemode = CRF_Gamemode.Cast(api.SourceToEntity(entitySource));
-		
+
 		if (gamemode)
 		{
 			missionPlayercount = GetPlayerCount(gamemode.m_BluforSlots);
@@ -111,19 +164,19 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_IndforSlots);
 			missionPlayercount = missionPlayercount + GetPlayerCount(gamemode.m_CivSlots);
 		};
-		
+
 		missionHeaderContainer.Set("m_sName", string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName));
-		
+
 		//--- Get target config path
 		string fileSystem = FilePath.FileSystemNameFromFileName(worldPath);
 		fileSystem = SCR_AddonTool.ToFileSystem(fileSystem);
-		
+
 		array<string> strArray = {};
 		worldPath.Split("/", strArray, false);
-		
+
 		string missionTerrain = strArray.Get(strArray.Count() - 2);
 		missionHeaderContainer.Set("m_sTerrainName", missionTerrain);
-		
+
 		string relativeDirPath = fileSystem + SCENARIOS_PATH + "/" + missionTerrain;
 		string absoluteDirPath;
 		if (!Workbench.GetAbsolutePath(relativeDirPath, absoluteDirPath, true)) // the Missions directory does not exist
@@ -148,16 +201,16 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		int month = time.GetMonth();
 		if (month < 10)
 			monthFinal = "0";
-		
+
 		monthFinal = monthFinal + month.ToString();
-		
+
 		string dayFinal;
 		int day = time.GetDay();
 		if (day < 10)
 			dayFinal = "0";
-		
+
 		dayFinal = dayFinal + day.ToString();
-		
+
 		string missionBasePath = FilePath.Concat(relativeDirPath, string.Format("%1_%2%3_%4%5_%6", SCR_StringHelper.Filter(m_sMissionAuthor, SCR_StringHelper.ALPHANUMERICAL), monthFinal, dayFinal, missionMode, missionPlayercount, SCR_StringHelper.Filter(m_sMissionName, SCR_StringHelper.ALPHANUMERICAL)));
 		string missionHeaderPath = FilePath.AppendExtension(missionBasePath, "conf");
 
@@ -172,29 +225,30 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		Workbench.GetAbsolutePath(missionHeaderPath, missionHeaderAbsPath, false);
 		resourceManager.RegisterResourceFile(missionHeaderAbsPath, false);
 
-		//--- Create the mission synopsis (markdown, committed alongside the header .conf so it rides along in the mission's PR)
+		//--- Build the mission synopsis and hand it to the mission maker via clipboard + a preview window
+		//--- (NOT written to disk - a file here would get committed and bundled into the mod itself, which we don't want.
+		//--- The mission maker pastes this into the PR description instead.)
 		string missionDisplayName = string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName);
-		array<string> synopsisLines = BuildMissionSynopsis(gamemode, entitySource, missionDisplayName, missionTerrain, missionMode, missionPlayercount);
-
-		string missionSynopsisPath = FilePath.AppendExtension(missionBasePath, "md");
-		string missionSynopsisAbsPath;
-		Workbench.GetAbsolutePath(missionSynopsisPath, missionSynopsisAbsPath, false);
-
-		FileHandle synopsisFile = FileIO.OpenFile(missionSynopsisAbsPath, FileMode.WRITE);
-		if (synopsisFile)
-		{
-			foreach (string line : synopsisLines)
-				synopsisFile.WriteLine(line);
-
-			synopsisFile.Close();
-			resourceManager.RegisterResourceFile(missionSynopsisAbsPath, false);
-		}
-		else
-		{
-			Print(string.Format("Unable to create mission synopsis at %1!", missionSynopsisPath), LogLevel.ERROR);
-		}
+		ShowMissionSynopsis(gamemode, entitySource, missionDisplayName, missionTerrain, missionMode, missionPlayercount);
 
 		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Builds the synopsis, copies it to the clipboard, and opens the read-only preview dialog.
+	protected void ShowMissionSynopsis(CRF_Gamemode gamemode, IEntitySource entitySource, string missionDisplayName, string missionTerrain, string missionMode, int missionPlayercount)
+	{
+		array<string> synopsisLines = BuildMissionSynopsis(gamemode, entitySource, missionDisplayName, missionTerrain, missionMode, missionPlayercount);
+		string synopsisText = SCR_StringHelper.Join("\n", synopsisLines);
+
+		System.ExportToClipboard(synopsisText);
+
+		CRF_MissionSynopsisDialog synopsisDialog = new CRF_MissionSynopsisDialog();
+		synopsisDialog.m_sSynopsis = synopsisText;
+		Workbench.ScriptDialog(
+			"Mission Synopsis (Copied to Clipboard)",
+			"This synopsis has already been copied to your clipboard - create your PR and paste it into your PR description now. \n\n You may open the synopsis again via the 'Show Mission Synopsis' button in the Workbench plugin, without regenerating the mission config.",
+			synopsisDialog);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -222,10 +276,19 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		if (!gamemode)
 			return lines;
 
+		// Markers so Coalition_Bot can find this block wherever it's pasted in the PR description,
+		// without needing a committed file (this text never touches disk/the mod itself).
+		lines.Insert("<!-- CRF_SYNOPSIS_START -->");
 		lines.Insert(string.Format("# %1", missionDisplayName));
 		lines.Insert("");
 		lines.Insert(string.Format("**Author:** %1  **Terrain:** %2  **Game Mode:** %3  **Player Count:** %4", m_sMissionAuthor, missionTerrain, missionMode, missionPlayercount));
 		lines.Insert("");
+
+		if (!m_sMissionDescription.IsEmpty() && m_sMissionDescription != "<Description>")
+		{
+			lines.Insert(m_sMissionDescription);
+			lines.Insert("");
+		}
 
 		AppendGeneralSection(lines, gamemode);
 		AppendRespawnSection(lines, gamemode);
@@ -234,6 +297,8 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		AppendWeatherSection(lines, gamemode);
 		AppendSlottingSection(lines, gamemode);
 
+		lines.Insert("<!-- CRF_SYNOPSIS_END -->");
+
 		return lines;
 	}
 
@@ -241,6 +306,9 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	protected void AppendGeneralSection(array<string> lines, CRF_Gamemode gamemode)
 	{
 		lines.Insert("## General");
+
+		if (!gamemode.m_sFactionOneKey.IsEmpty() && !gamemode.m_sFactionTwoKey.IsEmpty())
+			lines.Insert(string.Format("- Slotting Ratio: %1 %2 : %3 %4", gamemode.m_iFactionOneRatio, gamemode.m_sFactionOneKey, gamemode.m_iFactionTwoRatio, gamemode.m_sFactionTwoKey));
 
 		string timeLimit = "No limit";
 		if (gamemode.m_iTimeLimitMinutes > 0)
@@ -433,6 +501,31 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Classifies a squad/platoon/company's tier from its callsign, using the same COY / NPLT / N-M
+	//! naming convention the Quick Slot Setup tool's auto-numbering already produces (SetPluginQuickSlots
+	//! in CRF_MissionSlottingPlugin.c). Custom-renamed callsigns that don't match any pattern fall back
+	//! to CRF_ESlottingCallsignTier.OTHER, which is always rendered top-level/un-nested.
+	protected CRF_ESlottingCallsignTier GetCallsignTier(string callsign)
+	{
+		string upper = callsign;
+		upper.ToUpper();
+
+		if (upper == "COY")
+			return CRF_ESlottingCallsignTier.COMPANY;
+
+		if (upper.IndexOf("PLT") != -1)
+			return CRF_ESlottingCallsignTier.PLATOON;
+
+		if (upper.IndexOf("-") != -1)
+			return CRF_ESlottingCallsignTier.SQUAD;
+
+		return CRF_ESlottingCallsignTier.OTHER;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Renders a faction's slotting groups nested by tier (Company > Platoon > Squad) inferred from
+	//! callsign, using array order to track which company/platoon is "current" as we walk the list -
+	//! matching how the Quick Slot Setup tool orders company/platoon/squad entries.
 	protected void AppendFactionSlotting(array<string> lines, string factionName, array<ref CRF_SlottingGroup> factionSlots, CRF_ERespawnMode respawnMode, CRF_RolesConfig rolesConfig)
 	{
 		if (factionSlots.IsEmpty())
@@ -442,48 +535,112 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 
 		lines.Insert(string.Format("## Slotting — %1 (%2 slots)", factionName, GetPlayerCount(factionSlots)));
 
+		bool hasActiveCompany = false;
+		bool hasActivePlatoon = false;
+
 		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
 		{
-			string flagTypeName = SCR_Enum.GetEnumName(CRF_EFlagType, slotGroup.m_FlagType);
-			lines.Insert(string.Format("### %1 (%2)", slotGroup.m_sCallsign, flagTypeName));
+			CRF_ESlottingCallsignTier tier = GetCallsignTier(slotGroup.m_sCallsign);
+			int depth = 0;
 
-			if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_GROUP)
-				lines.Insert(string.Format("- Respawn Pool (shared): %1", TicketToString(slotGroup.m_iGroupRespawns)));
-
-			// Tally role counts within this squad
-			map<CRF_EGearRole, int> roleTally = new map<CRF_EGearRole, int>();
-			array<CRF_EGearRole> roleOrder = {};
-			foreach (CRF_EGearRole role : slotGroup.m_aSlots)
+			switch (tier)
 			{
-				if (!roleTally.Contains(role))
-				{
-					roleTally.Set(role, 0);
-					roleOrder.Insert(role);
-				}
+				case CRF_ESlottingCallsignTier.COMPANY:
+					depth = 0;
+					hasActiveCompany = true;
+					hasActivePlatoon = false;
+					break;
 
-				roleTally.Set(role, roleTally.Get(role) + 1);
+				case CRF_ESlottingCallsignTier.PLATOON:
+					if (hasActiveCompany)
+						depth = 1;
+					hasActivePlatoon = true;
+					break;
+
+				case CRF_ESlottingCallsignTier.SQUAD:
+					if (hasActivePlatoon)
+					{
+						depth = 1;
+						if (hasActiveCompany)
+							depth = 2;
+					}
+					break;
+
+				// CRF_ESlottingCallsignTier.OTHER: unrecognized/custom callsign, always top-level -
+				// doesn't reset hasActiveCompany/hasActivePlatoon, so it doesn't break the chain
+				// (e.g. a standalone vehicle crew group listed between two squads of the same platoon).
 			}
 
-			foreach (CRF_EGearRole role : roleOrder)
-			{
-				string roleName = SCR_Enum.GetEnumName(CRF_EGearRole, role);
-				if (rolesConfig)
-				{
-					CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
-					if (roleConfig && !roleConfig.m_sRoleName.IsEmpty())
-						roleName = roleConfig.m_sRoleName;
-				}
-
-				string roleLine = string.Format("- %1 x%2", roleName, roleTally.Get(role));
-
-				if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_SLOT)
-					roleLine = roleLine + string.Format(" (%1 respawns each)", TicketToString(slotGroup.GetRoleRespawnCount(role)));
-
-				lines.Insert(roleLine);
-			}
+			AppendSlottingGroup(lines, slotGroup, depth, slotBased, rolesConfig);
 		}
 
 		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Prints one squad/platoon/company as a nested bullet list entry at the given indent depth.
+	//! Uses indented "-" bullets (not heading levels) throughout so the hierarchy renders correctly
+	//! both on GitHub (PR file diff) and in Discord (which only supports up to H3 headings).
+	protected void AppendSlottingGroup(array<string> lines, CRF_SlottingGroup slotGroup, int depth, bool slotBased, CRF_RolesConfig rolesConfig)
+	{
+		string indent = "";
+		for (int i = 0; i < depth; i++)
+			indent = indent + "  ";
+		string roleIndent = indent + "  ";
+
+		string flagTypeName = SCR_Enum.GetEnumName(CRF_EFlagType, slotGroup.m_FlagType);
+		lines.Insert(string.Format("%1- **%2** (%3)", indent, slotGroup.m_sCallsign, flagTypeName));
+
+		if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_GROUP)
+			lines.Insert(string.Format("%1- Respawn Pool (shared): %2", roleIndent, TicketToString(slotGroup.m_iGroupRespawns)));
+
+		// Tally role counts within this squad
+		map<CRF_EGearRole, int> roleTally = new map<CRF_EGearRole, int>();
+		array<CRF_EGearRole> roleOrder = {};
+		foreach (CRF_EGearRole role : slotGroup.m_aSlots)
+		{
+			if (!roleTally.Contains(role))
+			{
+				roleTally.Set(role, 0);
+				roleOrder.Insert(role);
+			}
+
+			roleTally.Set(role, roleTally.Get(role) + 1);
+		}
+
+		foreach (CRF_EGearRole role : roleOrder)
+		{
+			string roleName = SCR_Enum.GetEnumName(CRF_EGearRole, role);
+			if (rolesConfig)
+			{
+				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+				if (roleConfig && !roleConfig.m_sRoleName.IsEmpty())
+					roleName = roleConfig.m_sRoleName;
+			}
+
+			string roleLine = string.Format("%1- %2 x%3", roleIndent, roleName, roleTally.Get(role));
+
+			if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_SLOT)
+				roleLine = roleLine + string.Format(" (%1 respawns each)", TicketToString(slotGroup.GetRoleRespawnCount(role)));
+
+			lines.Insert(roleLine);
+		}
+	}
+}
+
+//------------------------------------------------------------------------------------------------
+//! Read-only preview window for the generated mission synopsis. The text is already on the
+//! clipboard by the time this opens - this just lets the mission maker see/re-select it.
+class CRF_MissionSynopsisDialog
+{
+	[Attribute(defvalue: "", uiwidget: UIWidgets.EditBoxMultiline, desc: "Mission synopsis - already copied to clipboard. Paste this into your PR description.")]
+	string m_sSynopsis;
+
+	//------------------------------------------------------------------------------------------------
+	[ButtonAttribute("Close", true)]
+	protected bool ButtonClose()
+	{
+		return true;
 	}
 }
 #endif
