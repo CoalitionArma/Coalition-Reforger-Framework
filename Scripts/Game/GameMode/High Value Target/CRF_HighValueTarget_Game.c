@@ -436,7 +436,8 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 
 			// Inside a real vehicle (loaded by players) - helper is intentionally absent, do not re-tie
-			if (character.IsInVehicle())
+			// Water bodies also register as vehicle compartments in the engine, so exclude that case
+			if (character.IsInVehicle() && !SCR_CharacterControllerComponent.ACE_Carrying_IsCharacterInWater(character))
 				continue;
 
 			// Captive/surrendered AI with no helper compartment -> ACE captive state is brokened
