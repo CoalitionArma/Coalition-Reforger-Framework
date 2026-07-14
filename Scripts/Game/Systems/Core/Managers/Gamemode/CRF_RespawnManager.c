@@ -186,20 +186,41 @@ class CRF_RespawnManager : ScriptComponent
 	//! Checks if the player can respawn
 	//! \param[in] playerEntity the entity of the player
 	//! \param[in] factionKey the faction key of the player
+	//! \param[in] playerId the player's numeric ID, required when the mission is using CRF_ERespawnMode.SLOT
 	//! \return True if the player can respawn
-	bool CanPlayerResawn(IEntity playerEntity, string factionKey)
+	bool CanPlayerRespawn(IEntity playerEntity, string factionKey, int playerId = -1)
 	{
+		bool respawnsAvailable;
+		if (m_Gamemode.m_eRespawnMode == CRF_ERespawnMode.SLOT)
+			respawnsAvailable = SlotRespawnsRemaining(playerId);
+		else
+			respawnsAvailable = TicketsRemaining(factionKey);
+
 		//This is a mess theres got to be a better way, one day we'll find it - Salami
-		if (m_bCurrentRespawnEnabled && 
-			!CRF_EntityHelper.IsSpectator(playerEntity) && 
-			m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR && 
-			TicketsRemaining(factionKey) &&
+		if (m_bCurrentRespawnEnabled &&
+			!CRF_EntityHelper.IsSpectator(playerEntity) &&
+			m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR &&
+			respawnsAvailable &&
 			IsRespawnTimeAllowed() &&
 			!GetFactionSpawnpoints(factionKey).IsEmpty() &&
 			!factionKey.IsEmpty())
 				return true;
-		
+
 		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Checks if a player's own slot/group still has respawns available (CRF_ERespawnMode.SLOT only)
+	//! \param[in] playerId the player's numeric ID
+	//! \return True if the player's slot/group has respawns remaining, or is unlimited (-1)
+	bool SlotRespawnsRemaining(int playerId)
+	{
+		CRF_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
+		if (!slotData)
+			return false;
+
+		int remaining = slotData.GetSlotRespawnsRemaining();
+		return (remaining > 0 || remaining == -1);
 	}
 	//------------------------------------------------------------------------------------------------
 	void SubtractTicket(FactionKey faction, int amount, bool force = false)
@@ -208,7 +229,22 @@ class CRF_RespawnManager : ScriptComponent
 		if (changed && !m_bSuppressReplication)
 			Replication.BumpMe();
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Deducts a player respawn, routing to the faction ticket pool or the player's slot/group pool
+	//! depending on the mission's CRF_ERespawnMode. Use this instead of SubtractTicket directly.
+	//! \param[in] faction Faction to subtract tickets from (CRF_ERespawnMode.TEAM only)
+	//! \param[in] playerId Player to deduct a slot/group respawn from (CRF_ERespawnMode.SLOT only)
+	//! \param[in] amount Number of respawns to deduct
+	//! \param[in] force Force deduction even during safestart
+	void DeductPlayerRespawn(FactionKey faction, int playerId, int amount = 1, bool force = false)
+	{
+		if (m_Gamemode.m_eRespawnMode == CRF_ERespawnMode.SLOT)
+			SubtractSlotRespawn(playerId, amount, force);
+		else
+			SubtractTicket(faction, amount, force);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Subtract tickets silently without triggering replication
 	//! \param[in] faction Faction to subtract tickets from
@@ -261,7 +297,46 @@ class CRF_RespawnManager : ScriptComponent
 		
 		return true;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Deducts respawns from a player's slot/group pool (CRF_ERespawnMode.SLOT).
+	//! For PER_GROUP pools, propagates the new remaining count to every slot in the group so the
+	//! whole squad sees the shared value update.
+	//! \param[in] playerId Player whose slot/group pool to subtract from
+	//! \param[in] amount Number of respawns to deduct
+	//! \param[in] force Force subtraction even during safestart
+	protected void SubtractSlotRespawn(int playerId, int amount, bool force = false)
+	{
+		// Don't subtract respawns during safestart
+		if (m_SafestartManager.GetSafestartStatus() && !force)
+			return;
+
+		CRF_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
+		if (!slotData)
+			return;
+
+		int remaining = slotData.GetSlotRespawnsRemaining();
+
+		// Unlimited or already exhausted, nothing to do
+		if (remaining == -1 || remaining <= 0)
+			return;
+
+		int newRemaining = remaining - amount;
+		if (newRemaining < 0)
+			newRemaining = 0;
+
+		if (slotData.GetRespawnPoolType() == CRF_ERespawnPoolType.PER_GROUP)
+		{
+			array<int> groupSlotIds = m_SlottingManager.GetAllSlotIDsForGroup(slotData.GetSlotCurrentGroup());
+			foreach (int groupSlotId : groupSlotIds)
+				m_SlottingManager.UpdateSlotRespawnsRemaining(groupSlotId, newRemaining);
+		}
+		else
+		{
+			m_SlottingManager.UpdateSlotRespawnsRemaining(slotData.GetSlotId(), newRemaining);
+		}
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void AddTicket(FactionKey faction, int amount, bool force = false)
 	{
@@ -689,9 +764,10 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		array<int> allPlayers = {};
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
-		
-		// Collect all ticket changes for batching
+
+		// Collect all ticket changes for batching (CRF_ERespawnMode.TEAM only)
 		int totalTicketsToSubtract = 0;
+		bool slotMode = (m_Gamemode.m_eRespawnMode == CRF_ERespawnMode.SLOT);
 
 		// Count player respawns first
 		foreach (int playerId : allPlayers)
@@ -705,11 +781,19 @@ class CRF_RespawnManager : ScriptComponent
 			if (!playerFaction || playerFaction.GetFactionKey() != faction)
 				continue;
 
-			// Check if tickets are available
-			if (TicketsRemaining(faction)) 
+			if (slotMode)
+			{
+				// Slot-Based: deduct from this player's own slot/group pool directly
+				if (SlotRespawnsRemaining(playerId))
+					SubtractSlotRespawn(playerId, 1);
+			}
+			else if (TicketsRemaining(faction))
+			{
+				// Team-Based: accumulate into the batched faction ticket subtraction below
 				totalTicketsToSubtract += 1;
+			}
 		}
-		
+
 		// Count vehicle respawns
 		int vehicleTicketsToSubtract = 0;
 		foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)

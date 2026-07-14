@@ -47,6 +47,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("0", UIWidgets.Hidden, desc: "Minutes before mission end when respawns disable (0 = never disable)", category: "CRF Gamemode Settings - Respawn")]
 	int m_iRespawnCutoffMinutes;
+
+	[Attribute("0", UIWidgets.Hidden, desc: "0 = Team-Based (faction ticket pool), 1 = Slot-Based (per-role/group respawn counts configured on each CRF_SlottingGroup)", category: "CRF Gamemode Settings - Respawn")]
+	CRF_ERespawnMode m_eRespawnMode;
 	
 	[Attribute("45", UIWidgets.Hidden)]
 	int m_iTimeLimitMinutes;
@@ -530,10 +533,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled, tickets available, and within time window
-		if (m_RespawnManager.CanPlayerResawn(playerEntity, factionKey))
+		if (m_RespawnManager.CanPlayerRespawn(playerEntity, factionKey, playerId))
 		{
-			// Deduct ticket
-			m_RespawnManager.SubtractTicket(factionKey, 1);
+			// Deduct a respawn (faction ticket or slot/group respawn, depending on m_eRespawnMode)
+			m_RespawnManager.DeductPlayerRespawn(factionKey, playerId, 1);
 
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(

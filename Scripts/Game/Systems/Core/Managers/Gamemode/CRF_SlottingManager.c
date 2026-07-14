@@ -149,11 +149,25 @@ class CRF_SlottingManager : ScriptComponent
 	void UpdateSlotDeathState(int slotId, bool input)
 	{
 		CRF_SlotData slotData = GetSlotData(slotId);
-		
+
 		if (slotData)
 		{
 			slotData.SetIsDeadSlot(input);
 			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
+		};
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Used by CRF_RespawnManager when the mission is in CRF_ERespawnMode.SLOT to update a slot's
+	//! (or, for PER_GROUP pools, every slot in the group's) remaining respawn count.
+	void UpdateSlotRespawnsRemaining(int slotId, int remaining)
+	{
+		CRF_SlotData slotData = GetSlotData(slotId);
+
+		if (slotData)
+		{
+			slotData.SetSlotRespawnsRemaining(remaining);
+			m_RplBroadcastManager.UpdateSlotRespawnsRemainingDelta(slotId, remaining);
 		};
 	}
 	
@@ -569,7 +583,18 @@ class CRF_SlottingManager : ScriptComponent
 				
 				// Set resource and character ID
 				slotData.SetSlotRole(role);
-						
+
+				// Seed the slot/group respawn pool when the mission is using Slot-Based respawns
+				if (CRF_Gamemode.GetInstance().m_eRespawnMode == CRF_ERespawnMode.SLOT)
+				{
+					slotData.SetRespawnPoolType(slotGroup.m_eRespawnPoolType);
+
+					if (slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_GROUP)
+						slotData.SetSlotRespawnsRemaining(slotGroup.m_iGroupRespawns);
+					else
+						slotData.SetSlotRespawnsRemaining(slotGroup.GetRoleRespawnCount(role));
+				}
+
 				// Add to slots map
 				m_iLatestSlotID++;
 				slotData.SetSlotId(m_iLatestSlotID);
