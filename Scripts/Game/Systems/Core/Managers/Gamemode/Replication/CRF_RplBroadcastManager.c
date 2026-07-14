@@ -167,9 +167,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 				case CRF_ESlotUpdateField.ROLE:
 					SendSlotRoleUpdate(batch.m_iSlotId, batch.m_iIntValue);
 					break;
+
+				case CRF_ESlotUpdateField.RESPAWNS_REMAINING:
+					SendSlotRespawnsRemainingUpdate(batch.m_iSlotId, batch.m_iIntValue);
+					break;
 			}
 		}
-		
+
 		// Clear the queue
 		m_aPendingSlotUpdates.Clear();
 	}
@@ -239,7 +243,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Rpc(RpcDo_UpdateSlotRoleDelta, slotId, role);
 		#endif
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	protected void SendSlotRespawnsRemainingUpdate(int slotId, int remaining)
+	{
+		LogTelemetry("UpdateSlotRespawnsRemainingDelta", 8);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotRespawnsRemainingDelta(slotId, remaining);
+		#else
+		Rpc(RpcDo_UpdateSlotRespawnsRemainingDelta, slotId, remaining);
+		#endif
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Enable/disable batching (useful for debugging or critical updates)
 	void SetBatchingEnabled(bool enabled)
@@ -961,7 +976,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		if (!Replication.IsServer())
 			return;
-		
+
 		if (m_bBatchingEnabled)
 		{
 			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.ROLE);
@@ -973,7 +988,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 			SendSlotRoleUpdate(slotId, role);
 		}
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! RespawnManager: Update slot respawns remaining only (~8 bytes)
+	void UpdateSlotRespawnsRemainingDelta(int slotId, int remaining)
+	{
+		if (!Replication.IsServer())
+			return;
+
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.RESPAWNS_REMAINING);
+			batch.m_iIntValue = remaining;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotRespawnsRemainingUpdate(slotId, remaining);
+		}
+	}
+
 	//================================================================================================
 	// CLIENT RPC HANDLERS
 	// These methods execute on client machines when receiving server RPCs
@@ -2209,13 +2243,34 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (!slottingManager)
 			return;
-		
+
 		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
 		if (slotData)
 		{
 			slotData.SetIsDeadSlot(isDead);
 			slotData.GetOnDataUpdate().Invoke();
-			
+
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotRespawnsRemainingDelta(int slotId, int remaining)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetSlotRespawnsRemaining(remaining);
+			slotData.GetOnDataUpdate().Invoke();
+
 			// Trigger global slotting update for UI refresh
 			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
 			if (invoker)
