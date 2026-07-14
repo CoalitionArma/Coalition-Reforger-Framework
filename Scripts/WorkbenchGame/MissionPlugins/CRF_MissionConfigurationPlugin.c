@@ -158,8 +158,8 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		
 		dayFinal = dayFinal + day.ToString();
 		
-		string missionHeaderPath = FilePath.Concat(relativeDirPath, string.Format("%1_%2%3_%4%5_%6", SCR_StringHelper.Filter(m_sMissionAuthor, SCR_StringHelper.ALPHANUMERICAL), monthFinal, dayFinal, missionMode, missionPlayercount, SCR_StringHelper.Filter(m_sMissionName, SCR_StringHelper.ALPHANUMERICAL)));
-		missionHeaderPath = FilePath.AppendExtension(missionHeaderPath, "conf");
+		string missionBasePath = FilePath.Concat(relativeDirPath, string.Format("%1_%2%3_%4%5_%6", SCR_StringHelper.Filter(m_sMissionAuthor, SCR_StringHelper.ALPHANUMERICAL), monthFinal, dayFinal, missionMode, missionPlayercount, SCR_StringHelper.Filter(m_sMissionName, SCR_StringHelper.ALPHANUMERICAL)));
+		string missionHeaderPath = FilePath.AppendExtension(missionBasePath, "conf");
 
 		//--- Create the config
 		if (!BaseContainerTools.SaveContainer(missionHeaderContainer, ResourceName.Empty, missionHeaderPath))
@@ -167,24 +167,323 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			Print(string.Format("Unable to create mission header at %1!", missionHeaderPath), LogLevel.ERROR);
 			return false;
 		}
-		
+
 		string missionHeaderAbsPath;
 		Workbench.GetAbsolutePath(missionHeaderPath, missionHeaderAbsPath, false);
 		resourceManager.RegisterResourceFile(missionHeaderAbsPath, false);
-		
+
+		//--- Create the mission synopsis (markdown, committed alongside the header .conf so it rides along in the mission's PR)
+		string missionDisplayName = string.Format("CRF %1%2 %3", missionMode, missionPlayercount, m_sMissionName);
+		array<string> synopsisLines = BuildMissionSynopsis(gamemode, entitySource, missionDisplayName, missionTerrain, missionMode, missionPlayercount);
+
+		string missionSynopsisPath = FilePath.AppendExtension(missionBasePath, "md");
+		string missionSynopsisAbsPath;
+		Workbench.GetAbsolutePath(missionSynopsisPath, missionSynopsisAbsPath, false);
+
+		FileHandle synopsisFile = FileIO.OpenFile(missionSynopsisAbsPath, FileMode.WRITE);
+		if (synopsisFile)
+		{
+			foreach (string line : synopsisLines)
+				synopsisFile.WriteLine(line);
+
+			synopsisFile.Close();
+			resourceManager.RegisterResourceFile(missionSynopsisAbsPath, false);
+		}
+		else
+		{
+			Print(string.Format("Unable to create mission synopsis at %1!", missionSynopsisPath), LogLevel.ERROR);
+		}
+
 		return true;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	protected int GetPlayerCount(array<ref CRF_SlottingGroup> factionSlots)
 	{
 		int missionPlayercount;
-		
+
 		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
 			foreach(CRF_EGearRole role : slotGroup.m_aSlots)
 				missionPlayercount++;
-		
+
 		return missionPlayercount;
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MISSION SYNOPSIS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Builds the full markdown mission synopsis from the mission's actual configured data.
+	protected array<string> BuildMissionSynopsis(CRF_Gamemode gamemode, IEntitySource entitySource, string missionDisplayName, string missionTerrain, string missionMode, int missionPlayercount)
+	{
+		array<string> lines = {};
+
+		if (!gamemode)
+			return lines;
+
+		lines.Insert(string.Format("# %1", missionDisplayName));
+		lines.Insert("");
+		lines.Insert(string.Format("**Author:** %1  **Terrain:** %2  **Game Mode:** %3  **Player Count:** %4", m_sMissionAuthor, missionTerrain, missionMode, missionPlayercount));
+		lines.Insert("");
+
+		AppendGeneralSection(lines, gamemode);
+		AppendRespawnSection(lines, gamemode);
+		AppendGearscriptSection(lines, gamemode);
+		AppendGameModeComponentSection(lines, gamemode, entitySource, missionMode);
+		AppendWeatherSection(lines, gamemode);
+		AppendSlottingSection(lines, gamemode);
+
+		return lines;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendGeneralSection(array<string> lines, CRF_Gamemode gamemode)
+	{
+		lines.Insert("## General");
+
+		string timeLimit = "No limit";
+		if (gamemode.m_iTimeLimitMinutes > 0)
+			timeLimit = string.Format("%1 minutes", gamemode.m_iTimeLimitMinutes);
+		lines.Insert(string.Format("- Time Limit: %1", timeLimit));
+
+		lines.Insert(string.Format("- Lock Unused Slots After Safestart: %1", BoolToYesNo(gamemode.m_bLockUnusedSlots)));
+
+		string safestartLimit = "Disabled";
+		if (gamemode.m_bUseSafestartTimeLimit)
+			safestartLimit = string.Format("%1 minutes", gamemode.m_iSafestartTimeLimit);
+		lines.Insert(string.Format("- Safestart Time Limit: %1", safestartLimit));
+
+		lines.Insert(string.Format("- Mission Time Scale: %1x", gamemode.m_fMissionTimeScale));
+		lines.Insert(string.Format("- Coalition VON (CVON): %1", BoolToYesNo(gamemode.m_bUseCVON)));
+		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendRespawnSection(array<string> lines, CRF_Gamemode gamemode)
+	{
+		lines.Insert("## Respawn");
+		lines.Insert(string.Format("- Respawn Enabled: %1", BoolToYesNo(gamemode.m_bRespawnEnabled)));
+
+		if (!gamemode.m_bRespawnEnabled)
+		{
+			lines.Insert("");
+			return;
+		}
+
+		bool slotBased = (gamemode.m_eRespawnMode == CRF_ERespawnMode.SLOT);
+
+		string respawnModeName = "Team-Based";
+		if (slotBased)
+			respawnModeName = "Slot-Based";
+		lines.Insert(string.Format("- Mode: %1", respawnModeName));
+
+		if (!slotBased)
+		{
+			if (!gamemode.m_BluforSlots.IsEmpty())
+				lines.Insert(string.Format("- BLUFOR Tickets: %1", TicketToString(gamemode.m_iBLUFORTickets)));
+			if (!gamemode.m_OpforSlots.IsEmpty())
+				lines.Insert(string.Format("- OPFOR Tickets: %1", TicketToString(gamemode.m_iOPFORTickets)));
+			if (!gamemode.m_IndforSlots.IsEmpty())
+				lines.Insert(string.Format("- INDFOR Tickets: %1", TicketToString(gamemode.m_iINDFORTickets)));
+			if (!gamemode.m_CivSlots.IsEmpty())
+				lines.Insert(string.Format("- CIV Tickets: %1", TicketToString(gamemode.m_iCIVTickets)));
+		}
+		else
+		{
+			lines.Insert("- Per-squad respawn pools are listed under Slotting below.");
+		}
+
+		lines.Insert(string.Format("- Wave Respawn: %1", BoolToYesNo(gamemode.m_bWaveRespawn)));
+		lines.Insert(string.Format("- Time To Respawn: %1s", gamemode.m_iTimeToRespawn));
+
+		string cutoff = "Never disables";
+		if (gamemode.m_iRespawnCutoffMinutes > 0)
+			cutoff = string.Format("Disables %1 minutes before mission end", gamemode.m_iRespawnCutoffMinutes);
+		lines.Insert(string.Format("- Respawn Cutoff: %1", cutoff));
+
+		lines.Insert(string.Format("- Rally Points Enabled: %1", BoolToYesNo(gamemode.m_bRallyPointsEnabled)));
+		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendGearscriptSection(array<string> lines, CRF_Gamemode gamemode)
+	{
+		lines.Insert("## Gearscripts");
+
+		if (!gamemode.m_BluforSlots.IsEmpty())
+			lines.Insert(string.Format("- BLUFOR: %1", GearScriptToString(gamemode.m_BLUFORGearScriptSettings)));
+		if (!gamemode.m_OpforSlots.IsEmpty())
+			lines.Insert(string.Format("- OPFOR: %1", GearScriptToString(gamemode.m_OPFORGearScriptSettings)));
+		if (!gamemode.m_IndforSlots.IsEmpty())
+			lines.Insert(string.Format("- INDFOR: %1", GearScriptToString(gamemode.m_INDFORGearScriptSettings)));
+		if (!gamemode.m_CivSlots.IsEmpty())
+			lines.Insert(string.Format("- CIV: %1", GearScriptToString(gamemode.m_CIVILIANGearScriptSettings)));
+
+		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GearScriptToString(CRF_GearScriptContainer gearScriptSettings)
+	{
+		if (!gearScriptSettings || gearScriptSettings.m_rGearScript.IsEmpty())
+			return "None";
+
+		return string.Format("%1", gearScriptSettings.m_rGearScript);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string TicketToString(int tickets)
+	{
+		if (tickets == -1)
+			return "Unlimited";
+
+		return tickets.ToString();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string BoolToYesNo(bool value)
+	{
+		if (value)
+			return "Yes";
+
+		return "No";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Detects which known CRF gamemode logic components are attached to CRF_Lobby, on top of the
+	//! single authored CRF_EGamemode label. A mission can stack more than one (e.g. Rally + Attrition).
+	protected void AppendGameModeComponentSection(array<string> lines, CRF_Gamemode gamemode, IEntitySource entitySource, string missionMode)
+	{
+		lines.Insert("## Game Mode Components");
+		lines.Insert(string.Format("- Selected Mode: %1", missionMode));
+
+		array<string> activeComponents = {};
+
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_AttritionGamemodeComponent) >= 0)
+			activeComponents.Insert("Attrition");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_FrontlineGamemodeManager) >= 0)
+			activeComponents.Insert("Frontline");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_HighValueTargetGamemodeManager) >= 0)
+			activeComponents.Insert("High Value Target");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_InsurgencyGamemodeManager) >= 0)
+			activeComponents.Insert("Insurgency");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RaidGamemodeComponent) >= 0)
+			activeComponents.Insert("Raid");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RallyGamemodeComponent) >= 0)
+			activeComponents.Insert("Rally");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RushGamemodeManager) >= 0)
+			activeComponents.Insert("Rush");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_SearchAndDestroyGamemodeManager) >= 0)
+			activeComponents.Insert("Search And Destroy");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_LooterGamemodeComponent) >= 0)
+			activeComponents.Insert("Looter");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_PropHuntGamemode) >= 0)
+			activeComponents.Insert("Prop Hunt");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_SupplyExtractionGamemodeManager) >= 0)
+			activeComponents.Insert("Supply Extraction");
+
+		string componentList = "None detected";
+		if (!activeComponents.IsEmpty())
+		{
+			componentList = activeComponents.Get(0);
+			for (int i = 1; i < activeComponents.Count(); i++)
+				componentList = componentList + ", " + activeComponents.Get(i);
+		}
+
+		lines.Insert(string.Format("- Active Components: %1", componentList));
+		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendWeatherSection(array<string> lines, CRF_Gamemode gamemode)
+	{
+		lines.Insert("## Weather");
+
+		SCR_TimeAndWeatherHandlerComponent timeAndWeatherComp = SCR_TimeAndWeatherHandlerComponent.Cast(gamemode.FindComponent(SCR_TimeAndWeatherHandlerComponent));
+		if (!timeAndWeatherComp || timeAndWeatherComp.GetStartingWeatherAndTime().IsEmpty())
+		{
+			lines.Insert("- Not configured");
+			lines.Insert("");
+			return;
+		}
+
+		string startingWeather = timeAndWeatherComp.GetStartingWeatherAndTime()[0].GetWeatherPresetName();
+		int startingHour = timeAndWeatherComp.GetStartingWeatherAndTime()[0].GetStartingHour();
+		int startingMinutes = timeAndWeatherComp.GetStartingWeatherAndTime()[0].GetStartingMinutes();
+
+		lines.Insert(string.Format("- Starting Weather: %1", startingWeather));
+		lines.Insert(string.Format("- Starting Time: %1:%2", startingHour.ToString(), startingMinutes.ToString()));
+		lines.Insert(string.Format("- Random Starting Weather: %1", BoolToYesNo(timeAndWeatherComp.GetRandomStartingWeather())));
+		lines.Insert(string.Format("- Random Weather Changes: %1", BoolToYesNo(timeAndWeatherComp.GetRandomWeatherChanges())));
+		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendSlottingSection(array<string> lines, CRF_Gamemode gamemode)
+	{
+		//--- Load the global roles config directly as a resource (not via CRF_GearscriptManager.GetRolesConfig(),
+		//--- which depends on a live runtime manager singleton that isn't guaranteed to exist in Workbench)
+		CRF_RolesConfig rolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf").GetResource().ToBaseContainer()));
+
+		AppendFactionSlotting(lines, "BLUFOR", gamemode.m_BluforSlots, gamemode.m_eRespawnMode, rolesConfig);
+		AppendFactionSlotting(lines, "OPFOR", gamemode.m_OpforSlots, gamemode.m_eRespawnMode, rolesConfig);
+		AppendFactionSlotting(lines, "INDFOR", gamemode.m_IndforSlots, gamemode.m_eRespawnMode, rolesConfig);
+		AppendFactionSlotting(lines, "CIV", gamemode.m_CivSlots, gamemode.m_eRespawnMode, rolesConfig);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendFactionSlotting(array<string> lines, string factionName, array<ref CRF_SlottingGroup> factionSlots, CRF_ERespawnMode respawnMode, CRF_RolesConfig rolesConfig)
+	{
+		if (factionSlots.IsEmpty())
+			return;
+
+		bool slotBased = (respawnMode == CRF_ERespawnMode.SLOT);
+
+		lines.Insert(string.Format("## Slotting — %1 (%2 slots)", factionName, GetPlayerCount(factionSlots)));
+
+		foreach (ref CRF_SlottingGroup slotGroup : factionSlots)
+		{
+			string flagTypeName = SCR_Enum.GetEnumName(CRF_EFlagType, slotGroup.m_FlagType);
+			lines.Insert(string.Format("### %1 (%2)", slotGroup.m_sCallsign, flagTypeName));
+
+			if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_GROUP)
+				lines.Insert(string.Format("- Respawn Pool (shared): %1", TicketToString(slotGroup.m_iGroupRespawns)));
+
+			// Tally role counts within this squad
+			map<CRF_EGearRole, int> roleTally = new map<CRF_EGearRole, int>();
+			array<CRF_EGearRole> roleOrder = {};
+			foreach (CRF_EGearRole role : slotGroup.m_aSlots)
+			{
+				if (!roleTally.Contains(role))
+				{
+					roleTally.Set(role, 0);
+					roleOrder.Insert(role);
+				}
+
+				roleTally.Set(role, roleTally.Get(role) + 1);
+			}
+
+			foreach (CRF_EGearRole role : roleOrder)
+			{
+				string roleName = SCR_Enum.GetEnumName(CRF_EGearRole, role);
+				if (rolesConfig)
+				{
+					CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+					if (roleConfig && !roleConfig.m_sRoleName.IsEmpty())
+						roleName = roleConfig.m_sRoleName;
+				}
+
+				string roleLine = string.Format("- %1 x%2", roleName, roleTally.Get(role));
+
+				if (slotBased && slotGroup.m_eRespawnPoolType == CRF_ERespawnPoolType.PER_SLOT)
+					roleLine = roleLine + string.Format(" (%1 respawns each)", TicketToString(slotGroup.GetRoleRespawnCount(role)));
+
+				lines.Insert(roleLine);
+			}
+		}
+
+		lines.Insert("");
 	}
 }
 #endif
