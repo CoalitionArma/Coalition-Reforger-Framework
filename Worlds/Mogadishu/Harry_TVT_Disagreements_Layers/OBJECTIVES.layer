@@ -1,0 +1,20 @@
+$grp SCR_BaseTriggerEntity {
+ bravo {
+  coords 2300.264 15.564 3315.396
+ }
+ alpha {
+  coords 2881.518 14.461 3713.766
+ }
+ charlie {
+  coords 1610.101 38.669 3256.569
+ }
+}
+GenericEntity : "{73886280A5BD813E}Prefabs/Structures/Frontline/FlagPole_Zone_C.et" {
+ coords 1610.314 38.635 3256.638
+}
+GenericEntity : "{96142E79A9581655}Prefabs/Structures/Frontline/FlagPole_Zone_B.et" {
+ coords 2299.997 15 3315.236
+}
+GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
+ coords 2881.364 14.5 3714.265
+}
