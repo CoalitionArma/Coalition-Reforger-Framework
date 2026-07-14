@@ -13,6 +13,8 @@ class CRF_SlotData
 	protected bool m_bIsLockedSlot = false;
 	protected bool m_bIsDeadSlot = false;
 	protected string m_sKillerName = "";   // Name of the player who killed this slot's occupant (empty = AI/environment)
+	protected int m_iSlotRespawnsRemaining = -1;   // Only meaningful in CRF_ERespawnMode.SLOT. -1 = unlimited
+	protected CRF_ERespawnPoolType m_eRespawnPoolType = CRF_ERespawnPoolType.PER_SLOT;
 	
 	// Invoker for data updates
 	protected ref ScriptInvoker m_OnDataUpdate;
@@ -37,7 +39,9 @@ class CRF_SlotData
 			SetIsLockedSlot(newSlotData.GetIsLockedSlot());
 			SetIsDeadSlot(newSlotData.GetIsDeadSlot());
 			SetKillerName(newSlotData.GetKillerName());
-			
+			SetSlotRespawnsRemaining(newSlotData.GetSlotRespawnsRemaining());
+			SetRespawnPoolType(newSlotData.GetRespawnPoolType());
+
 			if (m_OnDataUpdate)
 				m_OnDataUpdate.Invoke();
 		};
@@ -163,7 +167,27 @@ class CRF_SlotData
 		
 		m_SlotRole = role;
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	void SetSlotRespawnsRemaining(int remaining)
+	{
+		// Dirty flag check: only update if value actually changed
+		if (m_iSlotRespawnsRemaining == remaining)
+			return;
+
+		m_iSlotRespawnsRemaining = remaining;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetRespawnPoolType(CRF_ERespawnPoolType poolType)
+	{
+		// Dirty flag check: only update if value actually changed
+		if (m_eRespawnPoolType == poolType)
+			return;
+
+		m_eRespawnPoolType = poolType;
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 GETTERS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -242,6 +266,18 @@ class CRF_SlotData
 	{
 		return m_SlotRole;
 	}
+
+	//------------------------------------------------------------------------------------------------
+	int GetSlotRespawnsRemaining()
+	{
+		return m_iSlotRespawnsRemaining;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_ERespawnPoolType GetRespawnPoolType()
+	{
+		return m_eRespawnPoolType;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	string GetSlotName() 
@@ -317,8 +353,10 @@ class CRF_SlotData
 		writer.WriteRplId(m_iSlotCurrentCharacter);
 		writer.WriteBool(m_bIsLockedSlot);
 		writer.WriteBool(m_bIsDeadSlot);
+		writer.WriteInt(m_iSlotRespawnsRemaining);
+		writer.WriteInt(m_eRespawnPoolType);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	void Load(ScriptBitReader reader)
 	{
@@ -330,8 +368,10 @@ class CRF_SlotData
 		reader.ReadRplId(m_iSlotCurrentCharacter);
 		reader.ReadBool(m_bIsLockedSlot);
 		reader.ReadBool(m_bIsDeadSlot);
+		reader.ReadInt(m_iSlotRespawnsRemaining);
+		reader.ReadInt(m_eRespawnPoolType);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_SlotData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
@@ -343,9 +383,11 @@ class CRF_SlotData
 		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
 		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotRespawnsRemaining, 4);
+		snapshot.SerializeBytes(instance.m_eRespawnPoolType, 4);
 		return true;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData instance)
 	{
@@ -357,9 +399,11 @@ class CRF_SlotData
 		snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
 		snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
 		snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
+		snapshot.SerializeBytes(instance.m_iSlotRespawnsRemaining, 4);
+		snapshot.SerializeBytes(instance.m_eRespawnPoolType, 4);
 		return true;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
@@ -371,8 +415,10 @@ class CRF_SlotData
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeBool(packet);
 		snapshot.EncodeBool(packet);
+		snapshot.EncodeInt(packet);
+		snapshot.EncodeInt(packet);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
@@ -384,9 +430,11 @@ class CRF_SlotData
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
+		snapshot.DecodeInt(packet);
+		snapshot.DecodeInt(packet);
 		return true;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
@@ -397,9 +445,11 @@ class CRF_SlotData
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4)
+		&& lhs.CompareSnapshots(rhs, 4)
+		&& lhs.CompareSnapshots(rhs, 4)
 		&& lhs.CompareSnapshots(rhs, 4);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_SlotData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
@@ -410,6 +460,8 @@ class CRF_SlotData
 		&& snapshot.Compare(instance.m_iSlotCurrentGroup, 4)
 		&& snapshot.Compare(instance.m_iSlotCurrentCharacter, 4)
 		&& snapshot.Compare(instance.m_bIsLockedSlot, 4)
-		&& snapshot.Compare(instance.m_bIsDeadSlot, 4);
+		&& snapshot.Compare(instance.m_bIsDeadSlot, 4)
+		&& snapshot.Compare(instance.m_iSlotRespawnsRemaining, 4)
+		&& snapshot.Compare(instance.m_eRespawnPoolType, 4);
 	}
 }
