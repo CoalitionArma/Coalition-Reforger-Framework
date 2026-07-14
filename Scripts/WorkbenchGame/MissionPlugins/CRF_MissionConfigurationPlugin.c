@@ -533,7 +533,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 
 		bool slotBased = (respawnMode == CRF_ERespawnMode.SLOT);
 
-		lines.Insert(string.Format("## Slotting — %1 (%2 slots)", factionName, GetPlayerCount(factionSlots)));
+		lines.Insert(string.Format("## Slotting - %1 (%2 slots)", factionName, GetPlayerCount(factionSlots)));
 
 		bool hasActiveCompany = false;
 		bool hasActivePlatoon = false;
