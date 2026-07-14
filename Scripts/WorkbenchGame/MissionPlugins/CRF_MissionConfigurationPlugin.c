@@ -420,47 +420,412 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 
 	//------------------------------------------------------------------------------------------------
 	//! Detects which known CRF gamemode logic components are attached to CRF_Lobby, on top of the
-	//! single authored CRF_EGamemode label. A mission can stack more than one (e.g. Rally + Attrition).
+	//! single authored CRF_EGamemode label, and lists each detected component's own mission-tunable
+	//! parameters. A mission can stack more than one (e.g. Rally + Attrition).
+	//! Array-of-config-object fields (loot tables, HVT entries, zone respawn configs, etc.) are shown
+	//! as a count rather than fully expanded - keeps the synopsis readable instead of dumping every
+	//! nested sub-object.
 	protected void AppendGameModeComponentSection(array<string> lines, CRF_Gamemode gamemode, IEntitySource entitySource, string missionMode)
 	{
 		lines.Insert("## Game Mode Components");
 		lines.Insert(string.Format("- Selected Mode: %1", missionMode));
 
-		array<string> activeComponents = {};
+		bool anyFound = false;
 
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_AttritionGamemodeComponent) >= 0)
-			activeComponents.Insert("Attrition");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_FrontlineGamemodeManager) >= 0)
-			activeComponents.Insert("Frontline");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_HighValueTargetGamemodeManager) >= 0)
-			activeComponents.Insert("High Value Target");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_InsurgencyGamemodeManager) >= 0)
-			activeComponents.Insert("Insurgency");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RaidGamemodeComponent) >= 0)
-			activeComponents.Insert("Raid");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RallyGamemodeComponent) >= 0)
-			activeComponents.Insert("Rally");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RushGamemodeManager) >= 0)
-			activeComponents.Insert("Rush");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_SearchAndDestroyGamemodeManager) >= 0)
-			activeComponents.Insert("Search And Destroy");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_LooterGamemodeComponent) >= 0)
-			activeComponents.Insert("Looter");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_PropHuntGamemode) >= 0)
-			activeComponents.Insert("Prop Hunt");
-		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_SupplyExtractionGamemodeManager) >= 0)
-			activeComponents.Insert("Supply Extraction");
-
-		string componentList = "None detected";
-		if (!activeComponents.IsEmpty())
+		IEntityComponentSource attritionSrc = GetComponentSource(entitySource, CRF_AttritionGamemodeComponent);
+		if (attritionSrc)
 		{
-			componentList = activeComponents.Get(0);
-			for (int i = 1; i < activeComponents.Count(); i++)
-				componentList = componentList + ", " + activeComponents.Get(i);
+			anyFound = true;
+			lines.Insert("- **Attrition**");
+			AppendAttritionParams(lines, attritionSrc);
 		}
 
-		lines.Insert(string.Format("- Active Components: %1", componentList));
+		IEntityComponentSource frontlineSrc = GetComponentSource(entitySource, CRF_FrontlineGamemodeManager);
+		if (frontlineSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Frontline**");
+			AppendFrontlineParams(lines, frontlineSrc);
+		}
+
+		IEntityComponentSource hvtSrc = GetComponentSource(entitySource, CRF_HighValueTargetGamemodeManager);
+		if (hvtSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **High Value Target**");
+			AppendHVTParams(lines, hvtSrc);
+		}
+
+		IEntityComponentSource insurgencySrc = GetComponentSource(entitySource, CRF_InsurgencyGamemodeManager);
+		if (insurgencySrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Insurgency**");
+			AppendInsurgencyParams(lines, insurgencySrc);
+		}
+
+		IEntityComponentSource raidSrc = GetComponentSource(entitySource, CRF_RaidGamemodeComponent);
+		if (raidSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Raid**");
+			AppendRaidParams(lines, raidSrc);
+		}
+
+		IEntityComponentSource rallySrc = GetComponentSource(entitySource, CRF_RallyGamemodeComponent);
+		if (rallySrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Rally**");
+			AppendRallyParams(lines, rallySrc);
+		}
+
+		IEntityComponentSource rushSrc = GetComponentSource(entitySource, CRF_RushGamemodeManager);
+		if (rushSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Rush**");
+			AppendRushParams(lines, rushSrc);
+		}
+
+		IEntityComponentSource sndSrc = GetComponentSource(entitySource, CRF_SearchAndDestroyGamemodeManager);
+		if (sndSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Search And Destroy**");
+			AppendSearchAndDestroyParams(lines, sndSrc);
+		}
+
+		IEntityComponentSource looterSrc = GetComponentSource(entitySource, CRF_LooterGamemodeComponent);
+		if (looterSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Looter**");
+			AppendLooterParams(lines, looterSrc);
+		}
+
+		IEntityComponentSource propHuntSrc = GetComponentSource(entitySource, CRF_PropHuntGamemode);
+		if (propHuntSrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Prop Hunt**");
+			AppendPropHuntParams(lines, propHuntSrc);
+		}
+
+		IEntityComponentSource supplySrc = GetComponentSource(entitySource, CRF_SupplyExtractionGamemodeManager);
+		if (supplySrc)
+		{
+			anyFound = true;
+			lines.Insert("- **Supply Extraction**");
+			AppendSupplyExtractionParams(lines, supplySrc);
+		}
+
+		if (!anyFound)
+			lines.Insert("- Active Components: None detected");
+
 		lines.Insert("");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Returns the IEntityComponentSource for componentType if it's attached to entitySource, or null.
+	protected IEntityComponentSource GetComponentSource(IEntitySource entitySource, typename componentType)
+	{
+		int index = SCR_BaseContainerTools.FindComponentIndex(entitySource, componentType);
+		if (index < 0)
+			return null;
+
+		return entitySource.GetComponent(index);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendAttritionParams(array<string> lines, IEntityComponentSource src)
+	{
+		string teamA, teamB;
+		float thresholdA, thresholdB, notifyPct, vehicleGrace;
+		bool endOnVictory, countPlayers, countVehicles;
+		CRF_EAttritionForceMode forceMode;
+
+		if (src.Get("m_sTeamAFactionKey", teamA))
+			lines.Insert(string.Format("  - Team A Faction: %1", teamA));
+		if (src.Get("m_sTeamBFactionKey", teamB))
+			lines.Insert(string.Format("  - Team B Faction: %1", teamB));
+		if (src.Get("m_fTeamAVictoryThreshold", thresholdA))
+			lines.Insert(string.Format("  - Team A Victory Threshold: %1%%", thresholdA));
+		if (src.Get("m_fTeamBVictoryThreshold", thresholdB))
+			lines.Insert(string.Format("  - Team B Victory Threshold: %1%%", thresholdB));
+		if (src.Get("m_bEndMissionOnVictory", endOnVictory))
+			lines.Insert(string.Format("  - End Mission On Victory: %1", BoolToYesNo(endOnVictory)));
+		if (src.Get("m_fNotifyIncrementPercent", notifyPct))
+			lines.Insert(string.Format("  - Notify Increment: %1%%", notifyPct));
+		if (src.Get("m_eForceCompositionMode", forceMode))
+			lines.Insert(string.Format("  - Force Composition Mode: %1", SCR_Enum.GetEnumName(CRF_EAttritionForceMode, forceMode)));
+		if (src.Get("m_bCountPlayers", countPlayers))
+			lines.Insert(string.Format("  - Count Players: %1", BoolToYesNo(countPlayers)));
+		if (src.Get("m_bCountVehicles", countVehicles))
+			lines.Insert(string.Format("  - Count Vehicles: %1", BoolToYesNo(countVehicles)));
+		if (src.Get("m_fVehicleGracePeriodSeconds", vehicleGrace))
+			lines.Insert(string.Format("  - Vehicle Grace Period: %1s", vehicleGrace));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendFrontlineParams(array<string> lines, IEntityComponentSource src)
+	{
+		FactionKey bluforSide, opforSide;
+		string bluforNick, opforNick;
+		array<string> zoneObjectNames;
+		int captureTime, unlockTime, minPlayers, timeToWin, initialTime;
+		bool useRespawns;
+
+		if (src.Get("m_BluforSide", bluforSide))
+			lines.Insert(string.Format("  - Blufor Side: %1", bluforSide));
+		if (src.Get("m_sBluforSideNickname", bluforNick))
+			lines.Insert(string.Format("  - Blufor Nickname: %1", bluforNick));
+		if (src.Get("m_OpforSide", opforSide))
+			lines.Insert(string.Format("  - Opfor Side: %1", opforSide));
+		if (src.Get("m_sOpforSideNickname", opforNick))
+			lines.Insert(string.Format("  - Opfor Nickname: %1", opforNick));
+		if (src.Get("m_aZoneObjectNames", zoneObjectNames))
+			lines.Insert(string.Format("  - Zones: %1", zoneObjectNames.Count()));
+		if (src.Get("m_iZoneCaptureTime", captureTime))
+			lines.Insert(string.Format("  - Zone Capture Time: %1s", captureTime));
+		if (src.Get("m_iZoneUnlockTime", unlockTime))
+			lines.Insert(string.Format("  - Zone Unlock Time: %1s", unlockTime));
+		if (src.Get("m_iMinNumberOfPlayersNeeded", minPlayers))
+			lines.Insert(string.Format("  - Min Players To Capture: %1", minPlayers));
+		if (src.Get("m_iTimeToWin", timeToWin))
+			lines.Insert(string.Format("  - Time To Win After Full Capture: %1s", timeToWin));
+		if (src.Get("m_iInitialTime", initialTime))
+			lines.Insert(string.Format("  - Initial Middle Zone Unlock Time: %1s", initialTime));
+		if (src.Get("m_bUseRespawns", useRespawns))
+			lines.Insert(string.Format("  - Respawn On Zone Capture: %1", BoolToYesNo(useRespawns)));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendHVTParams(array<string> lines, IEntityComponentSource src)
+	{
+		bool transponderMarker, disableDamage, initialPing, filterFaction, updateDefender;
+		CRF_TargetType targetType;
+		int timeBetweenPings;
+		string searcherFaction;
+		CRF_AIHVTState aiState;
+		array<ref CRF_HVTEntry> hvtEntries;
+
+		if (src.Get("m_bEnableTransponderMarker", transponderMarker))
+			lines.Insert(string.Format("  - Transponder Marker: %1", BoolToYesNo(transponderMarker)));
+		if (src.Get("m_eTargetType", targetType))
+			lines.Insert(string.Format("  - Target Type: %1", SCR_Enum.GetEnumName(CRF_TargetType, targetType)));
+		if (src.Get("m_bDisableDamage", disableDamage))
+			lines.Insert(string.Format("  - Disable HVT Damage: %1", BoolToYesNo(disableDamage)));
+		if (src.Get("m_timeBetweenPings", timeBetweenPings))
+			lines.Insert(string.Format("  - Time Between Pings: %1s", timeBetweenPings));
+		if (src.Get("m_bInitialPing", initialPing))
+			lines.Insert(string.Format("  - Initial Ping On Start: %1", BoolToYesNo(initialPing)));
+		if (src.Get("m_filterFaction", filterFaction))
+			lines.Insert(string.Format("  - Filter Marker To Searcher Faction: %1", BoolToYesNo(filterFaction)));
+		if (src.Get("m_searcherFactionKey", searcherFaction))
+			lines.Insert(string.Format("  - Searcher Faction: %1", searcherFaction));
+		if (src.Get("m_updateDefender", updateDefender))
+			lines.Insert(string.Format("  - Notify Defending Faction On Ping: %1", BoolToYesNo(updateDefender)));
+		if (src.Get("m_eAIHVTState", aiState))
+			lines.Insert(string.Format("  - AI HVT State: %1", SCR_Enum.GetEnumName(CRF_AIHVTState, aiState)));
+		if (src.Get("m_aHVTEntries", hvtEntries))
+			lines.Insert(string.Format("  - HVT Entries: %1", hvtEntries.Count()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendInsurgencyParams(array<string> lines, IEntityComponentSource src)
+	{
+		FactionKey attacking, defending;
+		int phaseBuffer;
+
+		if (src.Get("m_AttackingSide", attacking))
+			lines.Insert(string.Format("  - Attacking Side: %1", attacking));
+		if (src.Get("m_DefendingSide", defending))
+			lines.Insert(string.Format("  - Defending Side: %1", defending));
+		if (src.Get("m_iPhaseBufferMinutes", phaseBuffer))
+			lines.Insert(string.Format("  - Phase Buffer: %1 min", phaseBuffer));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendRaidParams(array<string> lines, IEntityComponentSource src)
+	{
+		float winThreshold;
+		string attacking, defending;
+		bool mapMarkers;
+
+		if (src.Get("m_fWinThresholdPercent", winThreshold))
+			lines.Insert(string.Format("  - Win Threshold: %1%%", winThreshold));
+		if (src.Get("m_sAttackingSide", attacking))
+			lines.Insert(string.Format("  - Attacking Side: %1", attacking));
+		if (src.Get("m_sDefendingSide", defending))
+			lines.Insert(string.Format("  - Defending Side: %1", defending));
+		if (src.Get("m_bEnableMapMarkers", mapMarkers))
+			lines.Insert(string.Format("  - Map Markers: %1", BoolToYesNo(mapMarkers)));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendRallyParams(array<string> lines, IEntityComponentSource src)
+	{
+		float checkpointRadius, smokeOffset;
+		int laps, maxStandingsRows;
+		bool requireVehicle, teamMode;
+
+		if (src.Get("m_fCheckpointRadius", checkpointRadius))
+			lines.Insert(string.Format("  - Checkpoint Radius: %1m", checkpointRadius));
+		if (src.Get("m_iLapsToComplete", laps))
+			lines.Insert(string.Format("  - Laps To Complete: %1", laps));
+		if (src.Get("m_bRequireVehicle", requireVehicle))
+			lines.Insert(string.Format("  - Require Vehicle: %1", BoolToYesNo(requireVehicle)));
+		if (src.Get("m_iMaxStandingsRows", maxStandingsRows))
+			lines.Insert(string.Format("  - Max Standings Rows: %1", maxStandingsRows));
+		if (src.Get("m_bTeamMode", teamMode))
+			lines.Insert(string.Format("  - Team Mode: %1", BoolToYesNo(teamMode)));
+		if (src.Get("m_fSmokeOffsetDistance", smokeOffset))
+			lines.Insert(string.Format("  - Smoke Marker Offset: %1m", smokeOffset));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendRushParams(array<string> lines, IEntityComponentSource src)
+	{
+		FactionKey attacking, defending;
+		ResourceName mcomPrefab;
+		bool hideMarkers, dynamicRespawns;
+		int mcomTimer, numZones, mcomsPerZone;
+		array<ref CRF_Rush_ZoneRespawnConfig> zoneConfigs;
+
+		if (src.Get("m_AttackingSide", attacking))
+			lines.Insert(string.Format("  - Attacking Side: %1", attacking));
+		if (src.Get("m_DefendingSide", defending))
+			lines.Insert(string.Format("  - Defending Side: %1", defending));
+		if (src.Get("m_MCOMPrefab", mcomPrefab))
+			lines.Insert(string.Format("  - MCOM Prefab: %1", mcomPrefab));
+		if (src.Get("m_bHideMapMarkers", hideMarkers))
+			lines.Insert(string.Format("  - Hide MCOM Markers: %1", BoolToYesNo(hideMarkers)));
+		if (src.Get("m_iMCOMTimer", mcomTimer))
+			lines.Insert(string.Format("  - MCOM Destruction Timer: %1s", mcomTimer));
+		if (src.Get("m_iNumberOfZones", numZones))
+			lines.Insert(string.Format("  - Number Of Zones: %1", numZones));
+		if (src.Get("m_iMCOMsPerZone", mcomsPerZone))
+			lines.Insert(string.Format("  - MCOMs Per Zone: %1", mcomsPerZone));
+		if (src.Get("m_bEnableDynamicRespawns", dynamicRespawns))
+			lines.Insert(string.Format("  - Dynamic Respawns By Zone: %1", BoolToYesNo(dynamicRespawns)));
+		if (src.Get("m_aZoneRespawnConfigs", zoneConfigs))
+			lines.Insert(string.Format("  - Zone Respawn Configs: %1", zoneConfigs.Count()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendSearchAndDestroyParams(array<string> lines, IEntityComponentSource src)
+	{
+		FactionKey attacking, defending;
+		string bombSitePrefab;
+		bool hideMarkers;
+
+		if (src.Get("attackingSide", attacking))
+			lines.Insert(string.Format("  - Attacking Side: %1", attacking));
+		if (src.Get("defendingSide", defending))
+			lines.Insert(string.Format("  - Defending Side: %1", defending));
+		if (src.Get("bombSitePrefab", bombSitePrefab))
+			lines.Insert(string.Format("  - Bomb Site Prefab: %1", bombSitePrefab));
+		if (src.Get("hideMapMarkers", hideMarkers))
+			lines.Insert(string.Format("  - Hide Map Markers: %1", BoolToYesNo(hideMarkers)));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendLooterParams(array<string> lines, IEntityComponentSource src)
+	{
+		float spawnChance;
+		int totalSpawnPoints;
+		string spawnPrefix;
+		bool individualBFT;
+		array<ref CRF_WeaponLootEntry> weaponEntries;
+		array<ref CRF_GearLootEntry> gearEntries;
+		array<ref CRF_BagLootEntry> bagEntries;
+		array<ref CRF_KitLootEntry> kitEntries;
+		array<ref CRF_MiscLootEntry> miscEntries;
+
+		if (src.Get("m_fGlobalSpawnChance", spawnChance))
+			lines.Insert(string.Format("  - Global Spawn Chance: %1", spawnChance));
+		if (src.Get("m_iTotalSpawnPoints", totalSpawnPoints))
+			lines.Insert(string.Format("  - Total Spawn Points: %1", totalSpawnPoints));
+		if (src.Get("m_sSpawnPointPrefix", spawnPrefix))
+			lines.Insert(string.Format("  - Spawn Point Prefix: %1", spawnPrefix));
+		if (src.Get("m_bEnableIndividualBFT", individualBFT))
+			lines.Insert(string.Format("  - Individual BFT: %1", BoolToYesNo(individualBFT)));
+		if (src.Get("m_aWeaponEntries", weaponEntries))
+			lines.Insert(string.Format("  - Weapon Loot Entries: %1", weaponEntries.Count()));
+		if (src.Get("m_aGearEntries", gearEntries))
+			lines.Insert(string.Format("  - Gear Loot Entries: %1", gearEntries.Count()));
+		if (src.Get("m_aBagEntries", bagEntries))
+			lines.Insert(string.Format("  - Bag Loot Entries: %1", bagEntries.Count()));
+		if (src.Get("m_aKitEntries", kitEntries))
+			lines.Insert(string.Format("  - Kit Loot Entries: %1", kitEntries.Count()));
+		if (src.Get("m_aMiscEntries", miscEntries))
+			lines.Insert(string.Format("  - Misc Loot Entries: %1", miscEntries.Count()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendPropHuntParams(array<string> lines, IEntityComponentSource src)
+	{
+		string propsTeam, huntersTeam, returnSpawn;
+		int totalRounds, gracePeriod, huntTimeLimit, hunterMaxHealth, hunterShotPenalty, interRoundPause, warmupSeconds;
+		array<string> noiseSounds;
+		float noiseCooldown;
+
+		if (src.Get("m_sPropsTeamKey", propsTeam))
+			lines.Insert(string.Format("  - Props Team: %1", propsTeam));
+		if (src.Get("m_sHuntersTeamKey", huntersTeam))
+			lines.Insert(string.Format("  - Hunters Team: %1", huntersTeam));
+		if (src.Get("m_iTotalRounds", totalRounds))
+			lines.Insert(string.Format("  - Total Rounds: %1", totalRounds));
+		if (src.Get("m_iGracePeriodSeconds", gracePeriod))
+			lines.Insert(string.Format("  - Grace Period: %1s", gracePeriod));
+		if (src.Get("m_iHuntTimeLimitSeconds", huntTimeLimit))
+			lines.Insert(string.Format("  - Hunt Time Limit: %1s", huntTimeLimit));
+		if (src.Get("m_iHunterMaxHealth", hunterMaxHealth))
+			lines.Insert(string.Format("  - Hunter Max Health: %1", hunterMaxHealth));
+		if (src.Get("m_iHunterShotPenalty", hunterShotPenalty))
+			lines.Insert(string.Format("  - Hunter Shot Penalty: %1", hunterShotPenalty));
+		if (src.Get("m_iInterRoundPauseSeconds", interRoundPause))
+			lines.Insert(string.Format("  - Inter-Round Pause: %1s", interRoundPause));
+		if (src.Get("m_iWarmupSeconds", warmupSeconds))
+			lines.Insert(string.Format("  - Warmup: %1s", warmupSeconds));
+		if (src.Get("m_sHunterReturnSpawnName", returnSpawn))
+			lines.Insert(string.Format("  - Hunter Return Spawn: %1", returnSpawn));
+		if (src.Get("m_aNoiseSoundEvents", noiseSounds))
+			lines.Insert(string.Format("  - Noise Sound Events: %1", noiseSounds.Count()));
+		if (src.Get("m_fPropNoiseCooldown", noiseCooldown))
+			lines.Insert(string.Format("  - Prop Noise Cooldown: %1s", noiseCooldown));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendSupplyExtractionParams(array<string> lines, IEntityComponentSource src)
+	{
+		int totalDepots, winningSupplyCount, manpower, extractionDistance, gameUpdateTime;
+		string extractionObject, factionKey, manpowerMsg, suppliesExtractedMsg, gameMsg1, gameMsg2;
+		bool enableManpowerMsg, enableSuppliesExtracted, enableGameMsg1, enableGameMsg2;
+
+		if (src.Get("m_totalDepots", totalDepots))
+			lines.Insert(string.Format("  - Total Depots: %1", totalDepots));
+		if (src.Get("m_winningSupplyCount", winningSupplyCount))
+			lines.Insert(string.Format("  - Winning Supply Count: %1", winningSupplyCount));
+		if (src.Get("m_manpower", manpower))
+			lines.Insert(string.Format("  - Manpower Needed For Retreat: %1", manpower));
+		if (src.Get("m_extractionDistance", extractionDistance))
+			lines.Insert(string.Format("  - Extraction Distance: %1m", extractionDistance));
+		if (src.Get("m_extractionObject", extractionObject))
+			lines.Insert(string.Format("  - Extraction Object: %1", extractionObject));
+		if (src.Get("m_factionKey", factionKey))
+			lines.Insert(string.Format("  - Extracting Faction: %1", factionKey));
+		if (src.Get("m_enableManpowerMessage", enableManpowerMsg))
+			lines.Insert(string.Format("  - Manpower Message Enabled: %1", BoolToYesNo(enableManpowerMsg)));
+		if (src.Get("m_enableSuppliesExtracted", enableSuppliesExtracted))
+			lines.Insert(string.Format("  - Supplies Extracted Message Enabled: %1", BoolToYesNo(enableSuppliesExtracted)));
+		if (src.Get("m_enableGameMessage1", enableGameMsg1))
+			lines.Insert(string.Format("  - Retreat Message Enabled: %1", BoolToYesNo(enableGameMsg1)));
+		if (src.Get("m_enableGameMessage2", enableGameMsg2))
+			lines.Insert(string.Format("  - Wiped-Out Message Enabled: %1", BoolToYesNo(enableGameMsg2)));
+		if (src.Get("m_gameUpdateTime", gameUpdateTime))
+			lines.Insert(string.Format("  - Game Status Check Interval: %1ms", gameUpdateTime));
 	}
 
 	//------------------------------------------------------------------------------------------------
