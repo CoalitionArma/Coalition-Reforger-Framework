@@ -308,7 +308,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 		lines.Insert("## General");
 
 		if (!gamemode.m_sFactionOneKey.IsEmpty() && !gamemode.m_sFactionTwoKey.IsEmpty())
-			lines.Insert(string.Format("- Slotting Ratio: %1 %2 : %3 %4", gamemode.m_iFactionOneRatio, gamemode.m_sFactionOneKey, gamemode.m_iFactionTwoRatio, gamemode.m_sFactionTwoKey));
+			lines.Insert(string.Format("- Slotting Ratio: %1 %2:%3 %4", gamemode.m_sFactionOneKey, gamemode.m_iFactionOneRatio, gamemode.m_iFactionTwoRatio, gamemode.m_sFactionTwoKey));
 
 		string timeLimit = "No limit";
 		if (gamemode.m_iTimeLimitMinutes > 0)
