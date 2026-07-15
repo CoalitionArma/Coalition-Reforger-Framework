@@ -1,0 +1,28 @@
+Vehicle LAV1 : "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et" {
+ coords 3255.701 26.718 6601.714
+ angles 0 -38 0
+}
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 3237.031 26.719 6600.981
+ angles 0 144 0
+}
+$grp Vehicle : "{62C3141D1B627DF2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Base.et" {
+ M1240A1_MATV_Turret_Base1 {
+  coords 3248.751 26.719 6595.746
+  angles 0 -39 0
+ }
+ M1240A1_MATV_Turret_Base2 {
+  coords 3238.988 26.719 6588.25
+  angles 0 -39 0
+ }
+}
+$grp Vehicle : "{A35A4AE2AD56643E}Prefabs/Vehicles/Wheeled/M998/M1151_armed_MK19.et" {
+ M1151_armed_MK1 {
+  coords 3248.984 26.719 6610.136
+  angles 0 140 0
+ }
+ M1151_armed_MK2 {
+  coords 3244.203 26.719 6606.421
+  angles 0 140 0
+ }
+}
