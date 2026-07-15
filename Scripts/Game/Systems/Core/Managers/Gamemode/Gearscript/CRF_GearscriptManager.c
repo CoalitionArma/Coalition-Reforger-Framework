@@ -25,9 +25,9 @@ class CRF_GearscriptManager : ScriptComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
 		// 10APR26 - Pat, this has started causing crashing as of today. No idea why. Commenting out for now.
-		// #ifdef WORKBENCH
-		// 	GetGame().GetCallqueue().CallLater(DEBUG_SpawnAllRoleCharacters, 250, false);
-		// #endif
+		// 14JUL26 - Believe this was simply a bad gearscript on your end. Did some efficency and NPE passes rq just in case.
+		if (RplSession.Mode() != RplMode.Client)
+			GetGame().GetCallqueue().Call(DEBUG_GearscriptSelfCheck, 250, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -77,13 +77,13 @@ class CRF_GearscriptManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	//! Set gear for an entity based on its resource name
 	//! \param[in] entity The entity to equip
-	//! \param[in] resourceNameToScan Resource name containing faction info
+	//! \param[in] resourceNameToScan Resource name containing role info (need a better system lol)
 	void SetEntityGear(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!entity)
 			return;
 
-		// Determine faction from resource name
+		// Determine faction from entity
 		FactionKey factionKey = CRF_EntityHelper.DetermineFactionKey(entity);
 		if (factionKey.IsEmpty())
 			return;
@@ -757,26 +757,27 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	 DEBUGGING METHODS (ONLY CALLED IN WORKBENCH)
+//	 SELF-CHECK METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
-	#ifdef WORKBENCH
+	protected CRF_PlayerCharacter m_CharacterToCheckAgainst;
+	
 	//------------------------------------------------------------------------------------------------
-	protected void DEBUG_SpawnAllRoleCharacters()
+	protected void DEBUG_GearscriptSelfCheck()
 	{
 		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		
 		// Setup Faction/Role Arrays
 		array<FactionKey> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
 		array<ref CRF_RoleConfig> roleArray = m_RolesConfig.GetRoleConfigArray();
-		RandomGenerator rng = new RandomGenerator;
+		int delayTime;
+		int delay;
 		
 		foreach (FactionKey factionKey : factionKeys)
 		{
 			CRF_SpawnPointData initialSpawnData = respawnManager.FindInitalFactionSpawnpoint(factionKey);
-			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 			
-			if (initialSpawnData && faction)
+			if (initialSpawnData)
 			{
 				IEntity spawnPointEnt = CRF_EntityHelper.GetEntityFromRplId(initialSpawnData.GetSpawnPointEntity());
 				if (spawnPointEnt)
@@ -786,29 +787,50 @@ class CRF_GearscriptManager : ScriptComponent
 					spawnPointEnt.GetWorldTransform(spawnParams.Transform);
 					
 					foreach (ref CRF_RoleConfig roleConfig : roleArray)
-						GetGame().GetCallqueue().CallLater(DEBUG_SpawnThenDeleteCharacter, rng.RandInt(500, 12000), false, spawnParams, roleConfig.m_RoleResource, faction);
+					{
+						delay++;
+						delayTime = (delay * 165); // need a delay to prevent massive lag spikes on mission load (and to see what role actually casued the error lol)
+						GetGame().GetCallqueue().CallLater(DEBUG_CheckGear, delayTime, false, factionKey, roleConfig, spawnParams);
+					}
 				};
 			};
 		}
+
+		GetGame().GetCallqueue().CallLater(DEBUG_DeleteCharacterCheck, delayTime + 200, false, "", true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void DEBUG_SpawnThenDeleteCharacter(EntitySpawnParams spawnParams, ResourceName characterResource, Faction faction)
-	{
-		CRF_PlayerCharacter playerCharacter = CRF_PlayerCharacter.Cast(
-			GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(characterResource), GetGame().GetWorld(), spawnParams)
-		);
+	protected void DEBUG_CheckGear(FactionKey factionKey, CRF_RoleConfig roleConfig, EntitySpawnParams spawnParams)
+	{	
+		PrintFormat("Checking Gear For: %1, %2", factionKey, SCR_Enum.GetEnumName(CRF_EGearRole, roleConfig.m_Role));
 		
-		if (!playerCharacter)
-			return;
+		DEBUG_DeleteCharacterCheck(factionKey);
 		
-		// Update character faction
-		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(playerCharacter.FindComponent(FactionAffiliationComponent));
-		facComp.SetAffiliatedFaction(faction);
-		
-		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 250, false, playerCharacter);
+		if (!m_CharacterToCheckAgainst)
+		{
+			m_CharacterToCheckAgainst = CRF_PlayerCharacter.Cast(GetGame().SpawnEntityPrefab(m_ResourceCache.GetCachedResource(roleConfig.m_RoleResource), GetGame().GetWorld(), spawnParams));
+			
+			// Update character faction
+			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+			FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(m_CharacterToCheckAgainst.FindComponent(FactionAffiliationComponent));
+			facComp.SetAffiliatedFaction(faction);
+		} else {
+			SetEntityGear(m_CharacterToCheckAgainst, roleConfig.m_RoleResource);
+		};
 	}
-	#endif
+	
+	//------------------------------------------------------------------------------------------------
+	protected FactionKey m_FactionInUse;
+	protected void DEBUG_DeleteCharacterCheck(FactionKey factionKey, bool forceDelete = false)
+	{
+		if (m_FactionInUse != factionKey || forceDelete)
+		{
+			m_FactionInUse = factionKey;
+			
+			if (m_CharacterToCheckAgainst)
+				SCR_EntityHelper.DeleteEntityAndChildren(m_CharacterToCheckAgainst);
+		}
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
