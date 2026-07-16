@@ -36,7 +36,10 @@ class CRF_PolyZone : ScriptComponent
 	
 	[Attribute("0")]
 	bool m_bIsSafestartBorder;
-	
+
+	[Attribute("", UIWidgets.ComboBox, "Faction that owns this safezone. Only applies when 'Is Safestart Border' is enabled: the zone (map polygon, 3D mesh) is shown only to this faction, ignoring 'Visible For Factions' below. Leave blank to auto-detect from the entity name (e.g. 'BLUFOR_SafestartBoundry') or fall back to 'Visible For Factions'", "", category: "", enums: {ParamEnum("", "Auto-Detect"), ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR"), ParamEnum("CIV", "CIV")})]
+	FactionKey m_sSafestartOwnerFaction;
+
 	[Attribute("0")]
 	bool m_bIsForwardDeployZone;
 		
@@ -312,9 +315,39 @@ class CRF_PolyZone : ScriptComponent
 		FactionKey factionKey = "";
 		if (faction)
 			factionKey = faction.GetFactionKey();
-		
+
+		// Safestart borders default to being private to their owning faction, so other
+		// sides can't see where an enemy's safezone/spawn is drawn on the map.
+		if (m_bIsSafestartBorder)
+		{
+			FactionKey ownerFactionKey = GetSafestartOwnerFaction();
+			if (!ownerFactionKey.IsEmpty())
+				return factionKey == ownerFactionKey;
+		}
+
 		// Check is player faction in visibility list
 		return m_aVisibleForFactions.Contains(factionKey);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Resolves the faction this safezone belongs to: explicit attribute first, then falls
+	//! back to the "<FACTION>_SafestartBoundry" entity naming convention used across CRF missions.
+	protected FactionKey GetSafestartOwnerFaction()
+	{
+		if (!m_sSafestartOwnerFaction.IsEmpty())
+			return m_sSafestartOwnerFaction;
+
+		string entityName = GetOwner().GetName();
+		if (entityName.Contains("BLUFOR"))
+			return "BLUFOR";
+		if (entityName.Contains("OPFOR"))
+			return "OPFOR";
+		if (entityName.Contains("INDFOR"))
+			return "INDFOR";
+		if (entityName.Contains("CIV"))
+			return "CIV";
+
+		return "";
 	}
 	
 	//------------------------------------------------------------------------------------------------

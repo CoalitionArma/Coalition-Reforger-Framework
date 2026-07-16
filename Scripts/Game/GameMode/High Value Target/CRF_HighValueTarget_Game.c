@@ -205,6 +205,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			UnregisterHVTEntity(hvtEntity);
 
 		m_mEntryToTransponder.Clear();
+		GetGame().GetCallqueue().Remove(ResyncHVTPositions);
 		ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 		super.OnDelete(owner);
 	}
@@ -255,11 +256,12 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				return;
 			}
 			
-			// Server: Periodic player HVT re-registration
+			// Server: Periodic player HVT re-registration + AI captive state repair
 			if (++m_fPlayerCheckTimer >= 60)
 			{
 				m_fPlayerCheckTimer = 0;
 				RegisterPlayerHVTs();
+				RepairAIHVTStates();
 			}
 			
 			// Server: Sync positions at the configured interval, replication fires only after m_timeBetweenPings for performance reasons
@@ -272,82 +274,97 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_fUpdateBuffer += timeSlice;
 	}
 	
-	// Spawn AI/Object HVTs at transponder locations, then hide transponders until first position sync
+	// Spawn AI/Object HVTs at transponder locations. Moved to OnWorldPostProcess from EonFixedFrame.
+	// Hopeful fixed for crashing vehicles assigned as ObjectHVTs
+	override void OnWorldPostProcess(World world)
+	{
+		super.OnWorldPostProcess(world);
+
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
+			return;
+
+		SpawnHVTEntities();
+	}
+
+	// Spawn AI/Object entries while transponders still have their editor positions
+	void SpawnHVTEntities()
+	{
+		if (!m_aHVTEntries || m_aHVTEntries.Count() == 0)
+			return;
+
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+		{
+			if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
+				continue;
+
+			if (entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
+			{
+				Print(string.Format("[HVT] Warning: Entry %1 missing transponder name or prefab!", index), LogLevel.WARNING);
+				continue;
+			}
+
+			IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
+			if (!transponderEntity)
+			{
+				Print(string.Format("[HVT] Warning: Entity '%1' not found!", entry.m_sTransponderEntityName), LogLevel.WARNING);
+				continue;
+			}
+
+			EntitySpawnParams spawnParams = new EntitySpawnParams();
+			spawnParams.TransformMode = ETransformMode.WORLD;
+			spawnParams.Transform[3] = transponderEntity.GetOrigin();
+
+			IEntity hvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(entry.m_hvtPrefab), GetGame().GetWorld(), spawnParams);
+			if (!hvtEntity)
+				continue;
+
+			RegisterHVTEntity(hvtEntity, index);
+
+			// AIHVT-specific: rotation and initial state
+			if (entry.m_eEntryType == CRF_HVTEntryType.AI)
+			{
+				hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
+
+				switch (m_eAIHVTState)
+				{
+					case CRF_AIHVTState.SURRENDERED:
+					{
+						SetEntitySurrender(hvtEntity, false);
+						break;
+					}
+					case CRF_AIHVTState.CUFFED:
+					{
+						SetEntitySurrender(hvtEntity, true);
+						break;
+					}
+					case CRF_AIHVTState.UNCONSCIOUS:
+					{
+						SetEntityUnconscious(hvtEntity);
+
+						SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
+						if (characterController)
+						{
+							characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
+							characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
+						}
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	// Hide transponders until first position sync (AI/Object HVTs already spawned at OnWorldPostProcess)
 	void SetHVTAndState()
 	{
 		m_bHVTStateSet = true;
-		
+
 		if (!m_aHVTEntries || m_aHVTEntries.Count() == 0)
 		{
 			Print("[HVT] Error: No HVT entries configured!", LogLevel.ERROR);
 			return;
 		}
-		
-		// Server: Spawn AI/Object entries FIRST (while transponders still have their editor positions)
-		if (Replication.IsServer())
-		{
-			foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
-			{
-				if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER)
-					continue;
-				
-				if (entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
-				{
-					Print(string.Format("[HVT] Warning: Entry %1 missing transponder name or prefab!", index), LogLevel.WARNING);
-					continue;
-				}
-				
-				IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
-				if (!transponderEntity)
-				{
-					Print(string.Format("[HVT] Warning: Entity '%1' not found!", entry.m_sTransponderEntityName), LogLevel.WARNING);
-					continue;
-				}
-				
-				EntitySpawnParams spawnParams = new EntitySpawnParams();
-				spawnParams.TransformMode = ETransformMode.WORLD;
-				spawnParams.Transform[3] = transponderEntity.GetOrigin();
-				
-				IEntity hvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(entry.m_hvtPrefab), GetGame().GetWorld(), spawnParams);
-				if (!hvtEntity)
-					continue;
-				
-				RegisterHVTEntity(hvtEntity, index);
-				
-				// AI-specific: rotation and initial state
-				if (entry.m_eEntryType == CRF_HVTEntryType.AI)
-				{
-					hvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
-					
-					switch (m_eAIHVTState)
-					{
-						case CRF_AIHVTState.SURRENDERED:
-						{
-							SetEntitySurrender(hvtEntity, false);
-							break;
-						}
-						case CRF_AIHVTState.CUFFED:
-						{
-							SetEntitySurrender(hvtEntity, true);
-							break;
-						}
-						case CRF_AIHVTState.UNCONSCIOUS:
-						{
-							SetEntityUnconscious(hvtEntity);
-							
-							SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
-							if (characterController)
-							{
-								characterController.m_OnLifeStateChanged.Remove(OnLifeStateChangedWrapper);
-								characterController.m_OnLifeStateChanged.Insert(OnLifeStateChangedWrapper);
-							}
-							break;
-						}
-					}
-				}
-			}
-		}
-		
+
 		// All machines: NOW hide transponders underground so markers don't flash at editor positions
 		// Cache transponder entity references here - avoids repeated FindEntityByName in SyncTransponderPositions
 		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
@@ -385,7 +402,50 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			FindAndRegisterPlayerHVT(entry, index);
 		}
 	}
-	
+
+	// Repair the ACE captive state of AI HVTs if something breaks that state, happens within the 60s loop of re-registration
+	// Mishaps/Zeus moving the ACE Captive AI out of its 'vehicle' the ACE system uses, breaks it. With re registering this reapplies that state. Otherwise will leave HVTs inert/broken/immovable like weve seen before.
+	// Closely related to the state of ACE Captive. May break on HVT.c ACE changes.
+	void RepairAIHVTStates()
+	{
+		if (m_eAIHVTState != CRF_AIHVTState.SURRENDERED && m_eAIHVTState != CRF_AIHVTState.CUFFED)
+			return;
+
+		foreach (int index, CRF_HVTEntry entry : m_aHVTEntries)
+		{
+			if (!entry || entry.m_eEntryType != CRF_HVTEntryType.AI)
+				continue;
+
+			if (!m_mEntryToHVT.Contains(index))
+				continue;
+
+			IEntity hvtEntity = m_mEntryToHVT.Get(index);
+			if (!hvtEntity || !IsHVTAlive(hvtEntity))
+				continue;
+
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(hvtEntity);
+			if (!character)
+				continue;
+
+			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(character.GetCharacterController());
+			if (!charController || charController.GetLifeState() != ECharacterLifeState.ALIVE)
+				continue;
+
+			// Helper compartment still attached (also true while being escorted) - state intact
+			if (ACE_AnimationTools.GetHelperCompartment(character))
+				continue;
+
+			// Inside a real vehicle (loaded by players) - helper is intentionally absent, do not re-tie
+			// Water bodies also register as vehicle compartments in the engine, so exclude that case
+			if (character.IsInVehicle() && !SCR_CharacterControllerComponent.ACE_Carrying_IsCharacterInWater(character))
+				continue;
+
+			// Captive/surrendered AI with no helper compartment -> ACE captive state is brokened
+			SetEntitySurrender(hvtEntity, m_eAIHVTState == CRF_AIHVTState.CUFFED);
+			Print(string.Format("[HVT] Repaired broken ACE captive state for AI HVT entry %1", index), LogLevel.WARNING);
+		}
+	}
+
 	// Find and register player matching HVT entry
 	void FindAndRegisterPlayerHVT(CRF_HVTEntry entry, int entryIndex)
 	{
@@ -646,6 +706,19 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		
 		Replication.BumpMe();
 		SyncTransponderPositions();
+
+		// Run through minor Hvtposition validation for desync
+		GetGame().GetCallqueue().Remove(ResyncHVTPositions);
+		GetGame().GetCallqueue().CallLater(ResyncHVTPositions, 1500, false);
+	}
+
+	// Desync issues were still present and only noticeable during much longer transponder timer sessions, clears+syncs if missed
+	void ResyncHVTPositions()
+	{
+		if (!Replication.IsServer() || !m_aHvtPositions || m_aHvtPositions.IsEmpty())
+			return;
+
+		Replication.BumpMe();
 	}
 	
 	// Check if HVT is alive/valid via damage state (or entity existence for objects)

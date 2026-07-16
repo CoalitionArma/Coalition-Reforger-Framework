@@ -1,5 +1,6 @@
 FrameWidgetClass {
  Name "rootFrame"
+ "Z Order" 99
  {
   ImageWidgetClass "{AA00000000000001}" {
    Name "BG"

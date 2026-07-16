@@ -53,9 +53,12 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 			
 			// Save death state
 			context.WriteValue(slotPrefix + "isDead", slotData.GetIsDeadSlot());
-			
+
 			// Save locked state
 			context.WriteValue(slotPrefix + "isLocked", slotData.GetIsLockedSlot());
+
+			// Save remaining slot/group respawns (CRF_ERespawnMode.SLOT) so a restart doesn't refill spent respawns
+			context.WriteValue(slotPrefix + "respawnsRemaining", slotData.GetSlotRespawnsRemaining());
 			
 			// Note: Group assignments (RplId) are not serialized as they may not be valid after reload
 			// Groups should be reassigned through normal slotting flow after load
@@ -126,13 +129,20 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 				slotData.SetIsLockedSlot(isLocked);
 			}
 			
-			// Restore dead state 
+			// Restore dead state
 			bool isDead;
 			if (context.ReadValue(slotPrefix + "isDead", isDead))
 			{
 				slotData.SetIsDeadSlot(isDead);
 			}
-			
+
+			// Restore remaining slot/group respawns
+			int respawnsRemaining;
+			if (context.ReadValue(slotPrefix + "respawnsRemaining", respawnsRemaining))
+			{
+				slotData.SetSlotRespawnsRemaining(respawnsRemaining);
+			}
+
 			restoredSlots++;
 		}
 		

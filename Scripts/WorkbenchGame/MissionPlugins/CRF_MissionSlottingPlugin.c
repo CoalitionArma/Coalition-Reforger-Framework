@@ -300,17 +300,30 @@ class CRF_MissionSlottingSetupDialouge
 			
 			api.SetVariableValue(entitySource, path, "m_sCallsign", slotGroup.m_sCallsign);
 			api.SetVariableValue(entitySource, path, "m_FlagType", slotGroup.m_FlagType.ToString());
-			
+
 			string finalSlotsArrayStr;
 			foreach (int f, CRF_EGearRole role : slotGroup.m_aSlots)
 			{
 				if (f == 0)
 					finalSlotsArrayStr = role.ToString();
-				else	
+				else
 					finalSlotsArrayStr = finalSlotsArrayStr + ", " + role.ToString();
 			}
-			
+
 			api.SetVariableValue(entitySource, path, "m_aSlots", finalSlotsArrayStr);
+
+			// Slot-Based respawn settings (only used when the mission's Respawn Mode is Slot-Based)
+			api.SetVariableValue(entitySource, path, "m_eRespawnPoolType", slotGroup.m_eRespawnPoolType.ToString());
+			api.SetVariableValue(entitySource, path, "m_iGroupRespawns", slotGroup.m_iGroupRespawns.ToString());
+
+			foreach (int j, CRF_RoleRespawnEntry roleRespawn : slotGroup.m_aRoleRespawns)
+			{
+				array<ref ContainerIdPathEntry> roleRespawnPath = {ContainerIdPathEntry(slotsToChange, i), ContainerIdPathEntry("m_aRoleRespawns", j)};
+
+				api.CreateObjectArrayVariableMember(entitySource, path, "m_aRoleRespawns", "CRF_RoleRespawnEntry", j);
+				api.SetVariableValue(entitySource, roleRespawnPath, "m_Role", roleRespawn.m_Role.ToString());
+				api.SetVariableValue(entitySource, roleRespawnPath, "m_iRespawns", roleRespawn.m_iRespawns.ToString());
+			}
 		}
 	}
 }
