@@ -315,7 +315,7 @@ class CRF_MissionConfigurationPlugin : WorkbenchPlugin
 			timeLimit = string.Format("%1 minutes", gamemode.m_iTimeLimitMinutes);
 		lines.Insert(string.Format("- Time Limit: %1", timeLimit));
 
-		lines.Insert(string.Format("- Lock Unused Slots After Safestart: %1", BoolToYesNo(gamemode.m_bLockUnusedSlots)));
+		lines.Insert(string.Format("- Disable JIP: %1", BoolToYesNo(gamemode.m_bLockUnusedSlots)));
 
 		string safestartLimit = "Disabled";
 		if (gamemode.m_bUseSafestartTimeLimit)
