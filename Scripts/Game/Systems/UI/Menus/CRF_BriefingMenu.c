@@ -77,6 +77,9 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
 
+		// Give a widget default focus so controller D-pad/stick navigation has somewhere to start
+		SetupDefaultFocus();
+
 		// Fetch community tags + ranks so they appear in the player list
 		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
 		if (tagMgr)
@@ -248,6 +251,22 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
 	}
 	
+	/**
+	 * Sets initial widget focus so controller D-pad/stick navigation has a starting point.
+	 * Without this the engine's focus-based navigation has nothing focused to move from.
+	 */
+	protected void SetupDefaultFocus()
+	{
+		Widget focusTarget = m_wRoot.FindAnyWidget("SlottingButton");
+		if (focusTarget && focusTarget.IsEnabled())
+		{
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+			return;
+		}
+
+		GetGame().GetWorkspace().SetFocusedWidget(m_wRoot);
+	}
+
 	/**
 	 * Initializes player and advances to game
 	 */
