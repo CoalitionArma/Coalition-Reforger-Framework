@@ -707,10 +707,26 @@ class CRF_RespawnManager : ScriptComponent
 		
 		array<CRF_SpawnPointData> factionSpawnDataArray = GetFactionSpawnpoints(factionKey);
 
-		if (!factionSpawnDataArray.IsEmpty())
-			return factionSpawnDataArray.Get(0);
-		else	
+		if (factionSpawnDataArray.IsEmpty())
 			return null;
+
+		if (m_Gamemode.GetRandomizeInitialSpawn(factionKey))
+		{
+			// Pool candidates are the spawn points flagged as a default spawn; mission makers
+			// place multiple to give the faction a randomized set of initial spawn locations.
+			array<CRF_SpawnPointData> defaultSpawns = {};
+			foreach (CRF_SpawnPointData spawnPointData : factionSpawnDataArray)
+				if (IsDefaultSpawn(spawnPointData))
+					defaultSpawns.Insert(spawnPointData);
+
+			if (!defaultSpawns.IsEmpty())
+				return defaultSpawns.GetRandomElement();
+
+			// No points flagged as default; fall back to randomizing across all registered points
+			return factionSpawnDataArray.GetRandomElement();
+		}
+
+		return factionSpawnDataArray.Get(0);
 	}
 	
 	//------------------------------------------------------------------------------------------------

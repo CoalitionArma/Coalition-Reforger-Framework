@@ -1302,14 +1302,35 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			IEntity entity = agent.GetControlledEntity();
 			if (!entity)
 				continue;
-				
+
 			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
 			if (!character)
 				continue;
-			
+
 			if (character.GetFactionKey() == faction)
 			{
 				RplId entityId = Replication.FindItemId(entity);
+				if (entityId != RplId.Invalid())
+					entityIds.Insert(entityId);
+			}
+		}
+
+		// Also gather connected human players in the faction, so their gear updates immediately instead of only on reinitialize
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		foreach (int playerId : playerIds)
+		{
+			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if (!playerEntity)
+				continue;
+
+			SCR_ChimeraCharacter playerCharacter = SCR_ChimeraCharacter.Cast(playerEntity);
+			if (!playerCharacter)
+				continue;
+
+			if (playerCharacter.GetFactionKey() == faction)
+			{
+				RplId entityId = Replication.FindItemId(playerEntity);
 				if (entityId != RplId.Invalid())
 					entityIds.Insert(entityId);
 			}

@@ -8,6 +8,8 @@ modded class SCR_StaminaBlurEffect
 
 	protected ImageWidget m_wCRFSuppressionVignette;
 	protected float m_fCRFTunnelVisionSmoothed;
+	protected float m_fCRFLastAppliedMask;
+	protected float m_fCRFLastAppliedOpacity;
 
 	override void DisplayStartDraw(IEntity owner)
 	{
@@ -36,8 +38,20 @@ modded class SCR_StaminaBlurEffect
 		float baseMask = m_wCRFSuppressionVignette.GetMaskProgress();
 		float baseOpacity = m_wCRFSuppressionVignette.GetOpacity();
 
-		m_wCRFSuppressionVignette.SetMaskProgress(Math.Max(baseMask, customMask));
-		m_wCRFSuppressionVignette.SetOpacity(Math.Max(baseOpacity, customOpacity));
+		// Ignore our own previous write as a "floor" - otherwise Math.Max below only ever
+		// ratchets upward against itself and the vignette never fades once we're the last writer.
+		if (Math.AbsFloat(baseMask - m_fCRFLastAppliedMask) < 0.0005)
+			baseMask = 0;
+		if (Math.AbsFloat(baseOpacity - m_fCRFLastAppliedOpacity) < 0.0005)
+			baseOpacity = 0;
+
+		float finalMask = Math.Max(baseMask, customMask);
+		float finalOpacity = Math.Max(baseOpacity, customOpacity);
+
+		m_wCRFSuppressionVignette.SetMaskProgress(finalMask);
+		m_wCRFSuppressionVignette.SetOpacity(finalOpacity);
+		m_fCRFLastAppliedMask = finalMask;
+		m_fCRFLastAppliedOpacity = finalOpacity;
 		UpdateEffectVisibility(m_wCRFSuppressionVignette);
 	}
 
@@ -45,5 +59,7 @@ modded class SCR_StaminaBlurEffect
 	{
 		super.ClearEffects();
 		m_fCRFTunnelVisionSmoothed = 0;
+		m_fCRFLastAppliedMask = 0;
+		m_fCRFLastAppliedOpacity = 0;
 	}
 }

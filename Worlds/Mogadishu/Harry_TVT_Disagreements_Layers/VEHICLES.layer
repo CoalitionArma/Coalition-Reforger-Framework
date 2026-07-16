@@ -1,0 +1,255 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 3339.118 14.038 3963.342
+  angles 0 154.593 0
+  m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3342.637 14.038 3964.934
+  angles 0 154.593 0
+  m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3351.03 13.753 3967.17
+  angles 0 154.593 0
+  m_rVehicle "{479AB5B7FA667925}Vehicles/Bus/ZagorusBB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1306.011 18.594 2905.712
+  angles 0 63.764 0
+  m_rVehicle "{EAE67B00C6B197E2}Vehicles/HighLux/KILUXnew7725_Armed_WZNP.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1300.938 18.508 2903.597
+  angles 0 63.764 0
+  m_rVehicle "{EAE67B00C6B197E2}Vehicles/HighLux/KILUXnew7725_Armed_WZNP.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1295.268 18.456 2900.802
+  angles 0 61.234 0
+  m_rVehicle "{0C840767B7F3B713}Vehicles/HighLux/KILUXnew7725_WZNP_Explosives.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 3331.494 13.858 3978.549
+  angles 1.617 154.571 -0.768
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3334.835 13.757 3980.714
+  angles 0.424 154.584 -1.193
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3339.358 13.592 3983.681
+  angles 0.848 154.558 -2.384
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3343.263 13.457 3985.486
+  angles 0.424 154.584 -1.193
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3347.98 13.325 3987.24
+  angles 0.04 154.592 -2.001
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3325.768 13.67 3989.848
+  angles -0.343 154.61 -2.808
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3329.668 13.573 3992.682
+  angles -0.809 154.587 0.384
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3334.744 13.58 3995.104
+  angles -0.809 154.587 0.384
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3339.53 13.595 3997.05
+  angles -1.617 154.571 0.768
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3344.636 13.695 3998.824
+  angles -2.424 154.544 1.153
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3357.773 13.379 3992.246
+  angles -1.232 154.559 1.577
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3355.948 14.049 4006.38
+  angles -2.424 154.544 1.153
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3352.048 13.885 4003.545
+  angles -2.424 154.544 1.153
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3365.809 14.384 4010.747
+  angles -0.424 154.584 1.193
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3369.543 14.185 3999.184
+  angles 0.343 154.61 2.808
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3374.26 14.288 4000.937
+  angles -1.576 154.627 -1.234
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3365.638 13.932 3997.378
+  angles -0.464 154.567 3.191
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3370.917 14.531 4012.521
+  angles -1.232 154.559 1.577
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3361.024 14.229 4008.801
+  angles -1.232 154.559 1.577
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3361.115 13.585 3994.411
+  angles -1.653 154.513 2.769
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1287.613 18.15 2887.138
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1285.624 18.15 2891.094
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1279.222 18.015 2887.761
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1281.211 18.016 2883.805
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1268.01 17.719 2877.202
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1266.021 17.737 2881.158
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1272.423 17.882 2884.491
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1274.412 17.881 2880.535
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1253.944 17.4 2869.629
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1251.955 17.399 2873.585
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1258.357 17.551 2876.918
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1260.346 17.552 2872.962
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1240.783 17.098 2862.682
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1238.794 17.097 2866.638
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1245.196 17.237 2869.971
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1247.185 17.237 2866.015
+  angles -2.001 62.467 0.034
+  m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
+  m_sFactionKey "OPFOR"
+ }
+}
