@@ -131,6 +131,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode Settings - Advanced")]
 	bool m_bDisableChat;
 
+	// Spawn Point Settings
+	//------------------------------------------------------------------------------------
+	[Attribute("false", UIWidgets.CheckBox, desc: "If enabled, players spawn at a random point among BLUFOR's spawn points flagged 'Is Default Spawn' instead of always the same one", category: "CRF Gamemode Settings - Spawn")]
+	bool m_bBLUFORRandomizeSpawnpoints;
+
+	[Attribute("false", UIWidgets.CheckBox, desc: "If enabled, players spawn at a random point among OPFOR's spawn points flagged 'Is Default Spawn' instead of always the same one", category: "CRF Gamemode Settings - Spawn")]
+	bool m_bOPFORRandomizeSpawnpoints;
+
+	[Attribute("false", UIWidgets.CheckBox, desc: "If enabled, players spawn at a random point among INDFOR's spawn points flagged 'Is Default Spawn' instead of always the same one", category: "CRF Gamemode Settings - Spawn")]
+	bool m_bINDFORRandomizeSpawnpoints;
+
+	[Attribute("false", UIWidgets.CheckBox, desc: "If enabled, players spawn at a random point among CIV's spawn points flagged 'Is Default Spawn' instead of always the same one", category: "CRF Gamemode Settings - Spawn")]
+	bool m_bCIVILIANRandomizeSpawnpoints;
+
 	// Weather and Time Settings
 	//------------------------------------------------------------------------------------
 	[Attribute("1", UIWidgets.Slider, "Time scale applied once the mission starts (after briefing/slotting). 1 = normal speed, 2 = twice as fast, etc.", "0.1 12 0.1", category: "CRF Mission Settings - Weather & Time")]
@@ -792,6 +806,23 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return m_CIVILIANGearScriptSettings;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Whether initial/automatic spawns for this faction should be picked at random from among
+	//! the spawn points flagged as a default spawn, rather than always using the same one.
+	//! \param[in] factionKey Faction identifier (BLUFOR, OPFOR, INDFOR, CIV)
+	bool GetRandomizeInitialSpawn(FactionKey factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": return m_bBLUFORRandomizeSpawnpoints;
+			case "OPFOR": return m_bOPFORRandomizeSpawnpoints;
+			case "INDFOR": return m_bINDFORRandomizeSpawnpoints;
+			case "CIV": return m_bCIVILIANRandomizeSpawnpoints;
+		}
+
+		return false;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Returns true when the vehicle gearscript system is enabled for the given faction.
 	//! Returns true by default for unknown factions.

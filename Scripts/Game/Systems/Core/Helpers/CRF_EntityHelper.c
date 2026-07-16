@@ -137,4 +137,36 @@ class CRF_EntityHelper
 	{
 		return SCR_ChimeraCharacter.Cast(GetEntityFromRplId(charId));
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Finds a live position to use for forward deploy: the origin of the group's first alive, spawned member.
+	//! \param[in] group Group to find a live position for.
+	//! \param[out] outOrigin World position of the first alive, spawned member found.
+	//! \return True if a valid position was found, false if the group has no living spawned members.
+	static bool GetGroupOrigin(SCR_AIGroup group, out vector outOrigin)
+	{
+		if (!group)
+			return false;
+
+		array<int> playerIds = group.GetPlayerIDs();
+		foreach (int playerId : playerIds)
+		{
+			IEntity controlled = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if (!controlled)
+				continue;
+
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(controlled);
+			if (!character)
+				continue;
+
+			SCR_DamageManagerComponent damageManager = character.GetDamageManager();
+			if (damageManager && damageManager.GetState() == EDamageState.DESTROYED)
+				continue;
+
+			outOrigin = character.GetOrigin();
+			return true;
+		}
+
+		return false;
+	}
 }

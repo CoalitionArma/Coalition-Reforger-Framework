@@ -1226,6 +1226,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Shows a custom hint to a single specific player (e.g. a JIP forward deploy denial reason).
+	void ShowPlayerHint(int playerId, string message, string title = "Forward Deploy", float duration = 8)
+	{
+		Rpc(RpcDo_ShowPlayerHint, playerId, message, title, duration);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void BroadcastSpectatorDamageReport(int victimPlayerId, string victimName, int attackerPlayerId, string attackerName, float damageValue, float rangeMeters, string damageType, string hitZone, string bodyRegion, bool fatal, int worldTime)
 	{
 		string packedData = PackSpectatorDamageReportStrings(victimName, attackerName, damageType, hitZone, bodyRegion);
@@ -2355,6 +2362,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_BroadcastVehiclePosUpdate(vector pos, int playerId)
 	{
 		SCR_Global.TeleportPlayer(playerId, pos, SCR_EPlayerTeleportedReason.NONE);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ShowPlayerHint(int playerId, string message, string title, float duration)
+	{
+		if (!IsLocalPlayer(playerId))
+			return;
+
+		SCR_HintManagerComponent.ShowCustomHint(message, title, duration);
 	}
 
 	//------------------------------------------------------------------------------------------------

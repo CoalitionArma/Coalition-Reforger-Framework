@@ -47,6 +47,12 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		
 		ChatCommandInvoker invoker8 = chatPanelManager.GetCommandInvoker("adminmenu");
 		invoker8.Insert(OpenAdminMenu);
+
+		ChatCommandInvoker invoker9 = chatPanelManager.GetCommandInvoker("forwarddeploy");
+		invoker9.Insert(ReopenForwardDeployMenu);
+
+		ChatCommandInvoker invoker10 = chatPanelManager.GetCommandInvoker("fd");
+		invoker10.Insert(ReopenForwardDeployMenu);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -70,6 +76,40 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AdminMenu);
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FORWARD DEPLOY METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Reopens the JIP forward deploy menu (e.g. if the player closed it earlier via the back action).
+	//! Usage: /forwarddeploy or /fd
+	void ReopenForwardDeployMenu(SCR_ChatPanel panel, string data)
+	{
+		SCR_ChatComponent chatComponent;
+		PlayerController pc = GetGame().GetPlayerController();
+		if (pc)
+			chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+		if (!gamemode || !safestartManager || gamemode.m_bLockUnusedSlots || safestartManager.GetSafestartStatus())
+		{
+			if (chatComponent)
+				chatComponent.ShowMessage("Forward deploy is not available right now.");
+			return;
+		}
+
+		IEntity controlled = SCR_PlayerController.GetLocalControlledEntity();
+		if (!controlled || CRF_EntityHelper.IsSpectator(controlled))
+		{
+			if (chatComponent)
+				chatComponent.ShowMessage("You need to be playing a character to forward deploy.");
+			return;
+		}
+
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_JIPForwardDeployMenu);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 BUG REPORT METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
