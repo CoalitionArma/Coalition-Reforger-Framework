@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTitle "Mission: Situation"
    m_sTextData "A US UAV has gone down in Kunar.  A Bundeswehr platoon is the closest to respond and with Insurgent forces interested in the UAV's data (to sell of course). It is going to be a bloody battle over the UAV."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 2x MATV (Armed)"\
    ""\
    "INDFOR Composition: Motorized Infantry Platoon"\

@@ -1,40 +1,20 @@
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
- components {
-  CRF_PolyZone "{65862E4575B86577}" {
-   m_bLineMode 1
-  }
- }
- coords 3749.056 264.549 716.271
+ coords 3692.753 258.41 1004.6
  Points {
-  ShapePoint "{69DB126AEFCA114E}" {
-   Position -885.132 0 -600.726
+  ShapePoint "{69E13734945CFF26}" {
+   Position -584.2 -0 -887.921
   }
-  ShapePoint "{69DB126A91E81AE3}" {
-   Position 356.312 0 -575.8
+  ShapePoint "{69E137349AFE3D49}" {
+   Position -358.218 0 792.932
   }
-  ShapePoint "{69DB126A9470E356}" {
-   Position 229.089 0 498.742
+  ShapePoint "{69E137349F56FB56}" {
+   Position 106.53 0 856.027
   }
-  ShapePoint "{69DB126A9D5A6730}" {
-   Position 276.5 0 1113.716
+  ShapePoint "{69E1373480880CC6}" {
+   Position 356.209 0.289 854.546
   }
-  ShapePoint "{69DB126A808B835A}" {
-   Position 150.661 0 1291.928
-  }
-  ShapePoint "{69DB126A85E834B2}" {
-   Position -359.354 0 1111.494
-  }
-  ShapePoint "{69DC05DC977D349C}" {
-   Position -449.588 0 684.604
-  }
-  ShapePoint "{69DB126AB18A1C85}" {
-   Position -322.321 127.576 74.149
-  }
-  ShapePoint "{69DB126AB205D88E}" {
-   Position -802.911 0 -183.248
-  }
-  ShapePoint "{69DC05D82FD876F2}" {
-   Position -884.602 0 -598.768
+  ShapePoint "{69E137348A84A5FD}" {
+   Position 339.096 -0 -851.23
   }
  }
 }
