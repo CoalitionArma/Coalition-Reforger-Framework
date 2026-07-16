@@ -501,7 +501,14 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Requests a JIP (Join In Progress) forward deploy to the live position of the given friendly group.
+	void RequestJIPForwardDeploy(RplId groupId, int playerId)
+	{
+		Rpc(RpcAsk_RequestJIPForwardDeploy, groupId, playerId);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void SharerMapMarkerGlobal(int markerUID, int playerId)
 	{
@@ -2632,7 +2639,55 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			CRF_ForwardDeployManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
 		}
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Handles a JIP (Join In Progress) forward deploy request: teleports the requesting player to the
+	//! selected friendly group's current live position, unless that unit is in/near contact with the enemy.
+	//! Only reachable while JIP is enabled (Disable JIP off) and SafeStart has ended - see CRF_PlayerController.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestJIPForwardDeploy(RplId groupId, int playerId)
+	{
+		LogTelemetry("RpcAsk_RequestJIPForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
+
+		if (!m_Gamemode || m_Gamemode.m_bLockUnusedSlots)
+			return;
+
+		if (!m_SafestartManager || m_SafestartManager.GetSafestartStatus())
+			return;
+
+		if (!m_SlottingManager)
+			return;
+
+		Faction requesterFaction = m_SlottingManager.GetPlayerSlotFaction(playerId, true);
+		if (!requesterFaction)
+			return;
+
+		SCR_AIGroup targetGroup = CRF_EntityHelper.GetGroupFromRplId(groupId);
+		if (!targetGroup || !targetGroup.GetFaction() || targetGroup.GetFaction().GetFactionKey() != requesterFaction.GetFactionKey())
+			return;
+
+		vector targetPosition;
+		if (!CRF_EntityHelper.GetGroupOrigin(targetGroup, targetPosition))
+		{
+			if (m_RplBroadcastManager)
+				m_RplBroadcastManager.ShowPlayerHint(playerId, "Your unit could not be located.");
+			return;
+		}
+
+		CRF_ForwardDeployManager forwardDeployManager = CRF_ForwardDeployManager.GetInstance();
+		if (!forwardDeployManager)
+			return;
+
+		if (forwardDeployManager.IsPositionNearEnemy(targetPosition, requesterFaction))
+		{
+			if (m_RplBroadcastManager)
+				m_RplBroadcastManager.ShowPlayerHint(playerId, "Your unit is in contact with the enemy. Forward deploy is unavailable.");
+			return;
+		}
+
+		forwardDeployManager.CreateForwardDeployRequest(playerId, targetPosition);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)

@@ -7,10 +7,14 @@ class CRF_ForwardDeployRequest
 class CRF_ForwardDeployManagerClass : ScriptComponentClass {}
 
 class CRF_ForwardDeployManager : ScriptComponent
-{	
+{
 	protected ref array<IEntity> m_aForwardDeployZones = {};
 	protected ref array<ref CRF_ForwardDeployRequest> m_aForwardDeployRequests = {};
-	
+
+	//Scratch state for the enemy-proximity query in IsPositionNearEnemy() - QueryEntitiesBySphere callbacks can't take captured locals.
+	protected Faction m_CombatCheckFriendlyFaction;
+	protected bool m_bCombatCheckEnemyFound;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 ONFRAME METHOD
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -123,6 +127,73 @@ class CRF_ForwardDeployManager : ScriptComponent
 		return isActive;
 	}
 	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 COMBAT CHECK
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Checks whether any entity hostile to friendlyFaction is within checkRadius of position.
+	//! Used to deny a JIP forward deploy request when the target unit is in/near contact with the enemy.
+	//! \param[in] position World position to check around (the unit being deployed to).
+	//! \param[in] friendlyFaction Faction of the player requesting forward deploy.
+	//! \param[in] checkRadius Radius in meters to search for hostile entities.
+	//! \return True if a hostile entity was found nearby.
+	bool IsPositionNearEnemy(vector position, Faction friendlyFaction, float checkRadius = 100)
+	{
+		if (!friendlyFaction)
+			return false;
+
+		m_CombatCheckFriendlyFaction = friendlyFaction;
+		m_bCombatCheckEnemyFound = false;
+
+		GetGame().GetWorld().QueryEntitiesBySphere(position, checkRadius, FilterEnemyNearPosition, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT);
+
+		return m_bCombatCheckEnemyFound;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool FilterEnemyNearPosition(IEntity ent)
+	{
+		if (m_bCombatCheckEnemyFound)
+			return true;
+
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(ent);
+		Vehicle vehicle = Vehicle.Cast(ent);
+
+		SCR_DamageManagerComponent damageManager;
+		FactionAffiliationComponent factionAffiliation;
+
+		if (character)
+		{
+			damageManager = character.GetDamageManager();
+			factionAffiliation = character.m_pFactionComponent;
+		}
+		else if (vehicle)
+		{
+			damageManager = vehicle.GetDamageManager();
+			factionAffiliation = vehicle.GetFactionAffiliation();
+		}
+		else
+		{
+			return true;
+		}
+
+		if (damageManager && damageManager.GetState() == EDamageState.DESTROYED)
+			return true;
+
+		if (!factionAffiliation)
+			return true;
+
+		Faction otherFaction = factionAffiliation.GetAffiliatedFaction();
+		if (!otherFaction)
+			return true;
+
+		if (m_CombatCheckFriendlyFaction.IsFactionEnemy(otherFaction))
+			m_bCombatCheckEnemyFound = true;
+
+		return true;
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
