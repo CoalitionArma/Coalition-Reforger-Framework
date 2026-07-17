@@ -8,9 +8,17 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	protected SCR_EntityCatalogManagerComponent m_CatalogManager; // PERFORMANCE OPTIMIZATION
 	protected ref array<Vehicle> m_aSpawnedVehicles = {};
 	protected ref array<IEntity> m_VehiclesInQueue = {};
-	
-	// Resource cache to avoid repeated Resource.Load() calls - PERFORMANCE OPTIMIZATION
-	protected ref map<ResourceName, ref Resource> m_mResourceCache = new map<ResourceName, ref Resource>();
+
+	// Shared resource caching helper (also used by CRF_GearscriptManager) instead of a second
+	// hand-rolled map<ResourceName, Resource> - PERFORMANCE OPTIMIZATION
+	protected ref CRF_ResourceCache m_ResourceCache = new CRF_ResourceCache();
+
+	// These are pure facts about a static prefab resource (does it disable, how much ammo does its
+	// magazine hold, is its GL round HE) that never change mid-mission, so memoize them instead of
+	// re-walking the prefab's component sources on every vehicle spawn/refit - PERFORMANCE OPTIMIZATION
+	protected ref map<ResourceName, bool> m_mIsWeaponDisposableCache = new map<ResourceName, bool>();
+	protected ref map<ResourceName, int> m_mMagazineCountCache = new map<ResourceName, int>();
+	protected ref map<ResourceName, bool> m_mIsGLHECache = new map<ResourceName, bool>();
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -69,14 +77,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return Cached or newly loaded resource
 	protected Resource GetCachedResource(ResourceName resourceName)
 	{
-		if (m_mResourceCache.Contains(resourceName))
-			return m_mResourceCache.Get(resourceName);
-		
-		Resource res = Resource.Load(resourceName);
-		if (res)
-			m_mResourceCache.Set(resourceName, res);
-		
-		return res;
+		return m_ResourceCache.GetCachedResource(resourceName);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -266,7 +267,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		int suppliesNeeded = 0;
 		for (int i = 0; i < supplies.Count(); i++)
 		{
-			suppliesNeeded += supplies[i]//! amountOfItem[i];
+			suppliesNeeded += supplies[i] * amountOfItem[i];
 		}
 		
 		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
@@ -715,9 +716,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			vehLoadout = gsContainer.m_VehicleLoadout;
 		// Turret ammo is intentionally left untouched — it is defined by the vehicle prefab.
 		// ClearTruckGear already skips turret-owned items, and we do not re-fill them here.
-		for (int i = 0; i < 4; i++)
+		if (vehLoadout && !vehLoadout.m_rRepairKitPrefab.IsEmpty())
 		{
-			invManager.TrySpawnPrefabToStorage("{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et");
+			for (int i = 0; i < vehLoadout.m_iAmountOfRepairKits; i++)
+			{
+				invManager.TrySpawnPrefabToStorage(vehLoadout.m_rRepairKitPrefab);
+			}
 		}
 		return suppliesNeeded;
 	}
@@ -763,7 +767,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
 			for (int i = 0; i < supplies.Count(); i++)
 			{
-				suppliesNeeded += supplies[i]//! magazinesAdded[i];
+				suppliesNeeded += supplies[i] * magazinesAdded[i];
 			}
 		}
 		
@@ -809,7 +813,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			array<int> supplies = GetSupplyValuesForItems(itemsToSpawn);
 			for (int i = 0; i < supplies.Count(); i++)
 			{
-				suppliesNeeded += supplies[i]//! itemsAdded[i];
+				suppliesNeeded += supplies[i] * itemsAdded[i];
 			}
 		}
 		
@@ -1003,27 +1007,38 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return true if the weapon is disposable, false otherwise
 	bool IsWeaponDisposable(ResourceName weapon)
 	{
+		if (m_mIsWeaponDisposableCache.Contains(weapon))
+			return m_mIsWeaponDisposableCache.Get(weapon);
+
+		bool isDisposable = ComputeIsWeaponDisposable(weapon);
+		m_mIsWeaponDisposableCache.Set(weapon, isDisposable);
+		return isDisposable;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool ComputeIsWeaponDisposable(ResourceName weapon)
+	{
 		Resource weaponLoaded = GetCachedResource(weapon);
 		if (!weaponLoaded)
 			return false;
-		
+
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
 		if (!entitySource)
 			return false;
-		
+
 		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
 	    {
 	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
 	        if(!componentSource.GetClassName().ToType().IsInherited(WeaponComponent))
 		        continue;
-			
+
             BaseContainerList attachmentComponents = componentSource.GetObjectArray("components");
 			for (int i = 0; i < attachmentComponents.Count(); i++)
 			{
 				IEntityComponentSource attachmentComponent = attachmentComponents.Get(i);
 				if (!attachmentComponent.GetClassName().ToType().IsInherited(SCR_MuzzleInMagComponent))
 					continue;
-				
+
 				bool disposable = false;
 				attachmentComponent.Get("Disposable", disposable);
 				return disposable;
@@ -1041,14 +1056,25 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return The maximum number of bullets in the magazine, or 0 if not found
 	int GetMagazineCount(ResourceName resource)
 	{
+		if (m_mMagazineCountCache.Contains(resource))
+			return m_mMagazineCountCache.Get(resource);
+
+		int maxAmmo = ComputeMagazineCount(resource);
+		m_mMagazineCountCache.Set(resource, maxAmmo);
+		return maxAmmo;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int ComputeMagazineCount(ResourceName resource)
+	{
 		Resource magazine = GetCachedResource(resource);
 		if (!magazine)
 			return 0;
-		
+
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
 		if (!entitySource)
 			return 0;
-		
+
 		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
 	    {
 	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
@@ -1159,24 +1185,35 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return true if the round is HE, false otherwise
 	bool IsGLHE(ResourceName glToCheck)
 	{
+		if (m_mIsGLHECache.Contains(glToCheck))
+			return m_mIsGLHECache.Get(glToCheck);
+
+		bool isHE = ComputeIsGLHE(glToCheck);
+		m_mIsGLHECache.Set(glToCheck, isHE);
+		return isHE;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool ComputeIsGLHE(ResourceName glToCheck)
+	{
 		Resource glLoaded = GetCachedResource(glToCheck);
 		if (!glLoaded)
 			return false;
-		
+
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(glLoaded);
 		if (!entitySource)
 			return false;
-		
+
 		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
 	    {
 	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
 	        if(!componentSource.GetClassName().ToType().IsInherited(CollisionTriggerComponent))
 				continue;
-			
+
 			bool enabled = false;
 			componentSource.Get("Enabled", enabled);
 			return enabled;
-					
+
 	    }
 		return false;
 	}

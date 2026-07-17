@@ -736,9 +736,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
 
 		// Load the gear config for the faction
-		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
-		));
+		CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey));
 		if (!gearConfig || !gearConfig.m_MedicMedicalItems)
 			return;
 
@@ -793,9 +791,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
-		));
+		CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey));
 		if (!gearConfig)
 			return;
 
@@ -891,9 +887,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
 
 		// Load the gear config for the faction
-		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
-		));
+		CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey));
+		if (!gearConfig)
+			return "";
 
 		return gearConfig.m_sLeadershipBinocularsPrefab;
 	}
