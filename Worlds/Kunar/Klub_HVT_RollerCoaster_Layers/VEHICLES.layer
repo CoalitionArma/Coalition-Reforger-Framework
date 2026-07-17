@@ -123,9 +123,33 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "OPFOR"
  }
  {
-  coords 2139.807 140.592 1456.56
-  angles 2.213 143.524 1.784
+  coords 2134.879 140.938 1463.191
+  angles 0.096 143.458 1.783
   m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2170.492 131.61 1387.103
+  angles -16.833 159.904 -6.577
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2169.151 132.922 1392.275
+  angles -13.768 138.193 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2137.684 140.606 1458.951
+  angles -5.272 149.626 -3.012
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2139.825 140.313 1455.069
+  angles -2.276 141.311 1.934
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
   m_sFactionKey "OPFOR"
  }
 }
