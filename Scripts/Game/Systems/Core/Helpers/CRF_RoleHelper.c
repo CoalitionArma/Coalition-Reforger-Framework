@@ -19,9 +19,20 @@ class CRF_RoleHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Data-driven check for whether a resource is a registered gearscript role prefab.
+	//! Checks against CRF_RolesConfig.m_RoleResource rather than guessing from the folder
+	//! path, so it keeps working if role prefabs are ever renamed/relocated.
 	static bool IsValidGearscriptResource(ResourceName resource)
 	{
-		return resource.Contains("!GS_Characters");
+		CRF_RolesConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig();
+		if (!rolesConfig)
+			return false;
+
+		foreach (CRF_RoleConfig roleConfig : rolesConfig.m_RoleConfigs)
+			if (roleConfig.m_RoleResource == resource)
+				return true;
+
+		return false;
 	};
 
 	// Pulled from the respawn manager, need to find a better solution eventually^tm.

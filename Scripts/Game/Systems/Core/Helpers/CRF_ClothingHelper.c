@@ -110,13 +110,11 @@ class CRF_ClothingHelper
 			// Load the gearscript config for this faction.
 			ResourceName gearScriptResource = gamemode.GetGearScriptResource(factionKey);
 			if (gearScriptResource.IsEmpty())
-				return false;
-	
-			CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(
-				BaseContainerTools.CreateInstanceFromContainer(
-					BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
+				continue;
+
+			CRF_GearScriptConfig gearConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gearScriptResource);
 			if (!gearConfig)
-				return false;
+				continue;
 	
 			ResourceName itemPrefab = item.GetPrefabData().GetPrefabName();
 	

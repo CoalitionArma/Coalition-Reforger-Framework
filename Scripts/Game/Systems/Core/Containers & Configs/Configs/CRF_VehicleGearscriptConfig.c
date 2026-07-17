@@ -51,4 +51,9 @@ class CRF_VehicleGearScriptLoadout
 {
 	[Attribute("300")] int m_iAmountofAutoCannonAmmo;
 	[Attribute("1200")] int m_iAmountofMachineGunAmmo;
+
+	[Attribute("{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et", UIWidgets.ResourceNamePicker, "Repair kit prefab spawned into every vehicle's loadout", params: "et")]
+	ResourceName m_rRepairKitPrefab;
+
+	[Attribute("4")] int m_iAmountOfRepairKits;
 }

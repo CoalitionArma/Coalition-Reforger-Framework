@@ -184,7 +184,8 @@ modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
 	CRF_GungameStart,
 	CRF_GunGameEnd,
 	CRF_RallyResults,
-	CRF_PropHuntTransformMenu
+	CRF_PropHuntTransformMenu,
+	CRF_JIPForwardDeployMenu
 }
 
 //------------------------------------------------------------------------------------

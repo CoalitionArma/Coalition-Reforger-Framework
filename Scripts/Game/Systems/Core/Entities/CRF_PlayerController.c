@@ -31,6 +31,13 @@ class CRF_PlayerController : SCR_PlayerController
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Opens the JIP forward deploy menu - see the OnControlledEntityChanged gate below for when this fires.
+	protected void OpenJIPForwardDeployMenu()
+	{
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_JIPForwardDeployMenu);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
 		super.OnControlledEntityChanged(from, to);
@@ -53,12 +60,23 @@ class CRF_PlayerController : SCR_PlayerController
 		if (!Replication.IsServer())
 		{
 			m_fTimeOfLastRespawn = GetGame().GetWorld().GetWorldTime();
-	
+
 			SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 			//Let the entity init before we update global markers (For faction check purposes)
 			if (mapMarkerManager)
 				GetGame().GetCallqueue().CallLater(mapMarkerManager.RequestGlobalMarkersRefresh, 1000, false);
-			
+
+			//Offer JIP (Join In Progress) forward deploy whenever a player loads into a live character
+			//after SafeStart has ended, but only if the mission allows JIP (Disable JIP off).
+			//Delayed slightly so it doesn't fight the character loading screen for the top menu slot.
+			if (to && !CRF_EntityHelper.IsSpectator(to))
+			{
+				CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				if (gamemode && safestartManager && !gamemode.m_bLockUnusedSlots && !safestartManager.GetSafestartStatus())
+					GetGame().GetCallqueue().CallLater(OpenJIPForwardDeployMenu, 500, false);
+			}
+
 			if (from)
 			{
 				CRF_BushMovementComponent bushComp = CRF_BushMovementComponent.Cast(from.FindComponent(CRF_BushMovementComponent));

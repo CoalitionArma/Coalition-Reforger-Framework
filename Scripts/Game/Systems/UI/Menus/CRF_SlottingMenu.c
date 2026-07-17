@@ -120,7 +120,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		}
 		
 		// Setup faction button event handlers
-		SetupFactionButtons();			
+		SetupFactionButtons();
+
+		// Give a widget default focus so controller D-pad/stick navigation has somewhere to start
+		SetupDefaultFocus();
 	}
 	
 	/**
@@ -135,8 +138,15 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		}
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		// Controller shoulder-button faction cycling (also bound to [ and ] on keyboard)
+		GetGame().GetInputManager().AddActionListener("CRF_SlottingFactionNext", EActionTrigger.DOWN, Action_CycleFactionNext);
+		GetGame().GetInputManager().AddActionListener("CRF_SlottingFactionPrev", EActionTrigger.DOWN, Action_CycleFactionPrev);
+
+		// Controller Y button / keyboard Tab toggles the admin-only Players/Unslotted tab
+		GetGame().GetInputManager().AddActionListener("CRF_SlottingToggleTab", EActionTrigger.DOWN, Action_ToggleUnslottedTab);
 	}
-	
+
 	/**
 	 * Initializes all UI components
 	 */
@@ -424,7 +434,101 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonIndfor")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionIndfor);
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonCiv")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionCiv);
 	}
-	
+
+	/**
+	 * Sets initial widget focus so controller D-pad/stick navigation has a starting point.
+	 * Without this the engine's focus-based navigation has nothing focused to move from.
+	 */
+	protected void SetupDefaultFocus()
+	{
+		FocusSelectedFactionButton();
+	}
+
+	/**
+	 * Cycles to the next valid faction (controller shoulder button / keyboard ])
+	 */
+	void Action_CycleFactionNext()
+	{
+		CycleFaction(1);
+	}
+
+	/**
+	 * Cycles to the previous valid faction (controller shoulder button / keyboard [)
+	 */
+	void Action_CycleFactionPrev()
+	{
+		CycleFaction(-1);
+	}
+
+	/**
+	 * Selects the next/previous valid faction relative to the currently selected one,
+	 * wrapping around, and moves widget focus onto its button.
+	 * @param direction - +1 for next, -1 for previous
+	 */
+	protected void CycleFaction(int direction)
+	{
+		array<string> factionKeys = GetValidFactionKeysOrdered();
+		if (factionKeys.IsEmpty())
+			return;
+
+		int currentIndex = -1;
+		if (m_fSelectedFaction)
+			currentIndex = factionKeys.Find(m_fSelectedFaction.GetFactionKey());
+
+		int nextIndex = (currentIndex + direction + factionKeys.Count()) % factionKeys.Count();
+
+		switch (factionKeys[nextIndex])
+		{
+			case "BLUFOR": SelectFactionBlufor(); break;
+			case "OPFOR": SelectFactionOpfor(); break;
+			case "INDFOR": SelectFactionIndfor(); break;
+			case "CIV": SelectFactionCiv(); break;
+		}
+
+		FocusSelectedFactionButton();
+	}
+
+	/**
+	 * Returns the keys of all valid factions for this mission, in display order
+	 */
+	protected array<string> GetValidFactionKeysOrdered()
+	{
+		array<string> factionKeys = {};
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+
+		if (slottingManager.IsFactionValid("BLUFOR"))
+			factionKeys.Insert("BLUFOR");
+		if (slottingManager.IsFactionValid("OPFOR"))
+			factionKeys.Insert("OPFOR");
+		if (slottingManager.IsFactionValid("INDFOR"))
+			factionKeys.Insert("INDFOR");
+		if (slottingManager.IsFactionValid("CIV"))
+			factionKeys.Insert("CIV");
+
+		return factionKeys;
+	}
+
+	/**
+	 * Moves widget focus onto the button of the currently selected faction
+	 */
+	protected void FocusSelectedFactionButton()
+	{
+		if (!m_fSelectedFaction)
+			return;
+
+		Widget focusTarget;
+		switch (m_fSelectedFaction.GetFactionKey())
+		{
+			case "BLUFOR": focusTarget = m_wRoot.FindAnyWidget("ButtonBlufor"); break;
+			case "OPFOR": focusTarget = m_wRoot.FindAnyWidget("ButtonOpfor"); break;
+			case "INDFOR": focusTarget = m_wRoot.FindAnyWidget("ButtonIndfor"); break;
+			case "CIV": focusTarget = m_wRoot.FindAnyWidget("ButtonCiv"); break;
+		}
+
+		if (focusTarget)
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+	}
+
 	/**
 	 * Cleans up resources when the menu is closed
 	 * Removes event listeners and slot update callback
@@ -453,6 +557,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		GetGame().GetInputManager().RemoveActionListener("CRF_SlottingFactionNext", EActionTrigger.DOWN, Action_CycleFactionNext);
+		GetGame().GetInputManager().RemoveActionListener("CRF_SlottingFactionPrev", EActionTrigger.DOWN, Action_CycleFactionPrev);
+		GetGame().GetInputManager().RemoveActionListener("CRF_SlottingToggleTab", EActionTrigger.DOWN, Action_ToggleUnslottedTab);
 	}
 	
 	/**
@@ -532,6 +640,38 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		m_wRoot.FindAnyWidget("UnslotPlayerList").SetVisible(true);
 		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonPlayers")).SetColor(Color.FromRGBA(11, 11, 11, 255));
 		ButtonWidget.Cast(m_wRoot.FindAnyWidget("TabButtonUnslotted")).SetColor(Color.FromRGBA(37, 37, 37, 255));
+	}
+
+	/**
+	 * Controller Y / keyboard Tab handler - toggles between the Players and Unslotted tabs.
+	 * No-op for non-admins since the Unslotted tab button is hidden for them.
+	 */
+	void Action_ToggleUnslottedTab()
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+
+		if (m_bShowingUnslotted)
+			ShowPlayersTab();
+		else
+			ShowUnslottedTab();
+
+		FocusActiveTabButton();
+	}
+
+	/**
+	 * Moves widget focus onto whichever of the Players/Unslotted tab buttons is currently active
+	 */
+	protected void FocusActiveTabButton()
+	{
+		Widget focusTarget;
+		if (m_bShowingUnslotted)
+			focusTarget = m_wRoot.FindAnyWidget("TabButtonUnslotted");
+		else
+			focusTarget = m_wRoot.FindAnyWidget("TabButtonPlayers");
+
+		if (focusTarget)
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
 	}
 	
 	/**

@@ -2,10 +2,22 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 
 class CRF_GearscriptManager : ScriptComponent
 {
+	// NOTE: CRF_MissionConfigurationPlugin.c intentionally keeps its own copy of the non-VON path
+	// for its Workbench documentation tool, which must work without a live CRF_GearscriptManager
+	// instance - see the comment on AppendSlottingSection there before removing that duplication.
+	protected const ResourceName C_RolesConfigResource = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+	protected const ResourceName C_CVONRolesConfigResource = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
+
 	protected ref CRF_ResourceCache m_ResourceCache;
 	static ref CRF_RolesConfig m_RolesConfig;
-	
+
 	protected CRF_Gamemode m_Gamemode;
+
+	// Parsed gearscript/identity config instances are static prefab-config data that never changes
+	// mid-mission, so cache them here rather than re-parsing the container from disk on every call
+	// (previously happened on every player spawn, every vehicle refit, and every inventory move).
+	protected ref map<ResourceName, ref CRF_GearScriptConfig> m_mGearScriptConfigCache = new map<ResourceName, ref CRF_GearScriptConfig>();
+	protected ref map<ResourceName, ref CRF_CharacterIdentity> m_mIdentityConfigCache = new map<ResourceName, ref CRF_CharacterIdentity>();
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITILIZATION
@@ -42,32 +54,57 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		ResourceName rolesConfigPath;
 		if (!CVON_VONGameModeComponent.GetInstance())
-			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+			rolesConfigPath = C_RolesConfigResource;
 		else
-			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/Additional Configs/CRF_CVON_Global_Roles_Config.conf";
+			rolesConfigPath = C_CVONRolesConfigResource;
 		
 		m_RolesConfig = CRF_RolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Load gear script config from resource
+	//! Load gear script config from resource, caching the parsed instance so repeated calls
+	//! (every spawn, every vehicle refit, every inventory move) don't re-parse it from disk.
 	//! \param[in] resourceName Resource to load
 	//! \return Loaded config or null if failed
 	CRF_GearScriptConfig LoadGearScriptConfig(ResourceName resourceName)
 	{
-		return CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+		if (resourceName.IsEmpty())
+			return null;
+
+		CRF_GearScriptConfig cachedConfig = m_mGearScriptConfigCache.Get(resourceName);
+		if (cachedConfig)
+			return cachedConfig;
+
+		CRF_GearScriptConfig config = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
+
+		if (config)
+			m_mGearScriptConfigCache.Set(resourceName, config);
+
+		return config;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
-	//! Load gear script config from resource
+	//! Load character identity config from resource, caching the parsed instance (see LoadGearScriptConfig).
 	//! \param[in] resourceName Resource to load
 	//! \return Loaded config or null if failed
 	CRF_CharacterIdentity LoadIdentityConfig(ResourceName resourceName)
 	{
-		return CRF_CharacterIdentity.Cast(BaseContainerTools.CreateInstanceFromContainer(
+		if (resourceName.IsEmpty())
+			return null;
+
+		CRF_CharacterIdentity cachedIdentity = m_mIdentityConfigCache.Get(resourceName);
+		if (cachedIdentity)
+			return cachedIdentity;
+
+		CRF_CharacterIdentity identity = CRF_CharacterIdentity.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
+
+		if (identity)
+			m_mIdentityConfigCache.Set(resourceName, identity);
+
+		return identity;
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

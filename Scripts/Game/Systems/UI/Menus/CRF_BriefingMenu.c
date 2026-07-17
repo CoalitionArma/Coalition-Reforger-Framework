@@ -21,6 +21,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	//--- Data Storage ---
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
 	protected bool m_bMapOpened = false;                      // Tracks whether OpenMap has been queued to prevent duplicate calls
+	protected bool m_bFocusOnDescription = false;             // Tracks which panel controller focus should jump to next
 	
 	//--- MENU LIFECYCLE METHODS ---
 	
@@ -77,6 +78,10 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		// Configure navigation buttons based on game state
 		ConfigureNavigationButtons();
 
+		// Give a widget default focus so controller D-pad/stick navigation has somewhere to start
+		m_bFocusOnDescription = false;
+		SetupDefaultFocus();
+
 		// Fetch community tags + ranks so they appear in the player list
 		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
 		if (tagMgr)
@@ -101,8 +106,11 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		}
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		// Controller Y button / keyboard Tab jumps focus between the Players list and Mission Description list
+		GetGame().GetInputManager().AddActionListener("CRF_BriefingSwitchPanel", EActionTrigger.DOWN, Action_SwitchPanel);
 	}
-	
+
 	/**
 	 * Initializes chat panel if available
 	 */
@@ -248,6 +256,41 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
 	}
 	
+	/**
+	 * Sets initial widget focus so controller D-pad/stick navigation has a starting point.
+	 * Without this the engine's focus-based navigation has nothing focused to move from.
+	 */
+	protected void SetupDefaultFocus()
+	{
+		Widget focusTarget = m_wRoot.FindAnyWidget("SlottingButton");
+		if (focusTarget && focusTarget.IsEnabled())
+		{
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+			return;
+		}
+
+		GetGame().GetWorkspace().SetFocusedWidget(m_wRoot);
+	}
+
+	/**
+	 * Controller Y / keyboard Tab handler - jumps widget focus between the Players list
+	 * and the Mission Description list, so controller users don't have to rely solely
+	 * on spatial D-pad navigation to reach the description panel.
+	 */
+	void Action_SwitchPanel()
+	{
+		m_bFocusOnDescription = !m_bFocusOnDescription;
+
+		Widget focusTarget;
+		if (m_bFocusOnDescription)
+			focusTarget = m_wRoot.FindAnyWidget("DescriptionList");
+		else
+			focusTarget = m_wRoot.FindAnyWidget("PlayersList");
+
+		if (focusTarget)
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+	}
+
 	/**
 	 * Initializes player and advances to game
 	 */
@@ -499,7 +542,8 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
-		
+		GetGame().GetInputManager().RemoveActionListener("CRF_BriefingSwitchPanel", EActionTrigger.DOWN, Action_SwitchPanel);
+
 		// Clear widget references and event handlers to prevent invisible blocking
 		if (m_cMissionDescriptionListBoxComponent)
 		{

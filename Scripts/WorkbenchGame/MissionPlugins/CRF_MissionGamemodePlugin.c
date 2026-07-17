@@ -18,8 +18,8 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 	[Attribute("10", UIWidgets.EditBox, "Safestart Time Limit (Minutes) - Only used if time limit is enabled", category: "CRF Mission Settings - Safestart")]
 	protected int m_iSafestartTimeLimit;
 	
-	[Attribute("true", "auto", "Should we lock all non-slotted slots after SafeStart turns off? COOP = FALSE", category: "CRF Mission Settings - General")]
-	protected bool m_bLockUnusedSlots;
+	[Attribute("true", "auto", "Disables JIP (Join In Progress). When enabled, all non-slotted slots lock once SafeStart turns off, so late joiners can't take an empty seat. When disabled, late joiners may forward deploy to their unit's live position instead. COOP = FALSE", category: "CRF Mission Settings - General")]
+	protected bool m_bDisableJIP;
 	
 	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Mission Settings - Respawn")]
 	protected int m_iTimeToRespawn;
@@ -77,7 +77,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		
 		//Gamemode
 		m_iMissionTimeLimit = gamemode.m_iTimeLimitMinutes;
-		m_bLockUnusedSlots = gamemode.m_bLockUnusedSlots;
+		m_bDisableJIP = gamemode.m_bLockUnusedSlots;
 		m_bRespawnEnabled = gamemode.m_bRespawnEnabled;
 		m_bRallyPointsEnabled = gamemode.m_bRallyPointsEnabled;
 		m_bWaveRespawn = gamemode.m_bWaveRespawn;
@@ -139,7 +139,7 @@ class CRF_MissionGamemodePlugin : WorkbenchPlugin
 		
 		//Gamemode
 		api.SetVariableValue(entitySource, null, "m_iTimeLimitMinutes", m_iMissionTimeLimit.ToString());
-		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bLockUnusedSlots.ToString());
+		api.SetVariableValue(entitySource, null, "m_bLockUnusedSlots", m_bDisableJIP.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRespawnEnabled", m_bRespawnEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bRallyPointsEnabled", m_bRallyPointsEnabled.ToString());
 		api.SetVariableValue(entitySource, null, "m_bWaveRespawn", m_bWaveRespawn.ToString());
