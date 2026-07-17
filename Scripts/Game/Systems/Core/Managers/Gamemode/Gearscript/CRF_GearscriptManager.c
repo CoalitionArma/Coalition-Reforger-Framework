@@ -653,7 +653,7 @@ class CRF_GearscriptManager : ScriptComponent
 	//! \param[in] role Role identifier
 	void AddInventoryItem(ResourceName item, int itemAmount, EntitySpawnParams spawnParams, 
 		SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager, 
-		CRF_EGearRole role = 0)
+		CRF_EGearRole role = CRF_EGearRole.UNARMED)
 	{
 		if (item.IsEmpty())
 			return;
@@ -697,7 +697,7 @@ class CRF_GearscriptManager : ScriptComponent
 				spawned = inventoryManager.TrySpawnPrefabToStorage(item);
 			
 			if (!spawned)
-				CRF_LoggingHelper.LogItemError(item, inventoryManager.GetOwner());
+				CRF_LoggingHelper.LogItemError(item, inventory.GetOwner());
 		};
 	}
 	

@@ -33,7 +33,7 @@ class CRF_ClothingHelper
 			
 			bool spawned = inventoryManager.TrySpawnPrefabToStorage(clothing, inventory, slotInt);
 			if (!spawned)
-				CRF_LoggingHelper.LogItemError(clothing, inventoryManager.GetOwner(), "CLOTHING");
+				CRF_LoggingHelper.LogItemError(clothing, inventory.GetOwner(), "CLOTHING", role);
 		}
 
 		// Handle previously removed items

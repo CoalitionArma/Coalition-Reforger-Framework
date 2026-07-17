@@ -5,11 +5,16 @@ class CRF_LoggingHelper
 	//! \param[in] item Item that failed to insert
 	//! \param[in] entity Entity that the item was being added to
 	//! \param[in] itemType type of item to display (default is "ITEM")
-	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM")
+	static void LogItemError(IEntity item, IEntity entity, string itemType = "ITEM", CRF_EGearRole role = CRF_EGearRole.UNARMED)
 	{
-		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(item.GetPrefabData().GetPrefabName()), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		
-		Debug.Error(error);
+		if (facComp)
+		{
+			string error = string.Format("[%3 %4 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(item.GetPrefabData().GetPrefabName()), facComp.GetAffiliatedFaction().GetFactionKey(), role);
+		
+			Debug.Error(error);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -17,23 +22,16 @@ class CRF_LoggingHelper
 	//! \param[in] itemResource ResourceName of the item that failed to insert
 	//! \param[in] entity Entity that the item was being added to
 	//! \param[in] itemType type of item to display (default is "ITEM")
-	static void LogItemError(ResourceName itemResource, IEntity entity, string itemType = "ITEM")
-	{
-		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(itemResource), SanitizeResourceName(entity.GetPrefabData().GetPrefabName()));
+	static void LogItemError(ResourceName itemResource, IEntity entity, string itemType = "ITEM", CRF_EGearRole role = CRF_EGearRole.UNARMED)
+	{	
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));
 		
-		Debug.Error(error);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Alt Alt Log item error
-	//! \param[in] itemResource ResourceName of the item that failed to insert
-	//! \param[in] entity ResourceName of the entity that the item was being added to
-	//! \param[in] itemType type of item to display (default is "ITEM")
-	static void LogItemError(ResourceName itemResource, ResourceName entity, string itemType = "ITEM")
-	{
-		string error = string.Format("[%3 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(itemResource), SanitizeResourceName(entity));
+		if (facComp)
+		{
+			string error = string.Format("[%3 %4 GEARSCRIPT ERROR] \n\n UNABLE TO INSERT %1 %2 \n NOT ENOUGH SPACE IN ENTITY/INVALID %1!", itemType, SanitizeResourceName(itemResource), facComp.GetAffiliatedFaction().GetFactionKey(), role);
 		
-		Debug.Error(error);
+			Debug.Error(error);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------

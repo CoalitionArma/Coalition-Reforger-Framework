@@ -48,7 +48,7 @@ class CRF_WeaponHelper
 
 		if (!successfulSpawn)
 		{
-			CRF_LoggingHelper.LogItemError(null, inventoryManager.GetOwner(), "WEAPON");
+			CRF_LoggingHelper.LogItemError(null, inventory.GetOwner(), "WEAPON");
 			return;
 		}
 		
