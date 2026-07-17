@@ -1,0 +1,381 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_AttritionGamemodeComponent "{69E176ECAF64FAAE}" {
+   m_fTeamBVictoryThreshold 80
+   m_bEndMissionOnVictory 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 14
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 752.838 375.611 877.297
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 55
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69E176FCDA351DC9}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "ION looks to move their current operations to a new FOB (OP Restrepo) in the Kunar region. Local insurgent forces wish they would leave."\
+   ""\
+   "BLUFOR Composition: Mechanized Infantry"\
+   "BLUFOR Assets: 1x UH60 / 3x M1025s / 1x Command Truck"\
+   ""\
+   "OPFOR Composition: Motorized Infantry"\
+   "OPFOR Assets: Dirt bikes / Vibes"\
+   ""\
+   "Time: 2200"\
+   ""\
+   "Weather: Pissing down rain"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69E176FCDA351E08}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "- Retain control of >20% of your forces"\
+   "- Transport the Command Truck to OP Restrepo"\
+   ""\
+   "INTENT"\
+   "You should utilize your assets and technological advantages to stunt the insurgents' assault."\
+   "NOTE: Destruction of the Command Truck, by either side, will count as a loss for that side."\
+   ""\
+   "EXECUTION"\
+   "Recon/communication between the platoon and the UH60 will be  extremely important"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E176FCDA35198D}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "- Destroy 80% of ION forces."\
+   "- Take the Command Truck for yourselves"\
+   ""\
+   "INTENT"\
+   "You have been outfitted with suicide vests and motorcycles; utilize these as you see fit. "\
+   "NOTE: Destruction of the Command Truck, by either side, will count as a loss for that side."\
+   ""\
+   "EXECUTION"\
+   "There are two platoons and two mountain ranges that flank either side of the MSR leading to ION's goal, if you know what I mean. Be strong.."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E176FCDA351914}" {
+   m_sTitle "Administration"
+   m_sTextData "NOTE: Destruction of the Command Truck, by either side, will count as a loss for that side."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E176FBA0CCCDA8}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 5
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69E176F53F5F05A2}" {
+   m_sCallsign "ANCHOR 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F0420}" {
+   m_sCallsign "HAMMERHEAD"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+    TEAM_LEAD
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F071B}" {
+   m_sCallsign "WHALE"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+    TEAM_LEAD
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F06B2}" {
+   m_sCallsign "MAKO"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+    TEAM_LEAD
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F19ED}" {
+   m_sCallsign "ZEBRA"
+   m_FlagType RECON
+   m_aSlots {
+    SNIPER
+    SPOTTER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1975}" {
+   m_sCallsign "ANGEL 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69E176F53F5F1BFF}" {
+   m_sCallsign "SHAMS6 (Sun/1PL)"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1B01}" {
+   m_sCallsign "NAR 1 (Fire 1)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1AA7}" {
+   m_sCallsign "NAR 2 (Fire 2)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1DD8}" {
+   m_sCallsign "NAR 3 (Fire 3)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1D75}" {
+   m_sCallsign "HISAN 1 (Horse 1)"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1C94}" {
+   m_sCallsign "QAMAR (Moon/2PL)"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1C25}" {
+   m_sCallsign "NAJM 1 (Star 1)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1F42}" {
+   m_sCallsign "NAJM 2 (Star 2)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1EE2}" {
+   m_sCallsign "NAJM 3 (Star 3)"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E176F53F5F1E11}" {
+   m_sCallsign "HISAN 2 (Horse 2)"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{831036E17A4722D7}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSION_Urban.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{AEB3680D9565DE7C}Configs/Gearscripts/Custom/Klub/CRF_GS_MEInsurgents_RollerCoaster.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
