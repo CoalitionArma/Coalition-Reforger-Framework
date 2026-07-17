@@ -1,0 +1,4 @@
+CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 178.906 596.62 1077.287
+ m_sCallsignOfGroupToSpawn "ZEBRA"
+}

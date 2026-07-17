@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{BE144FD98249FCC1}Worlds/Kunar/Klub_HVT_RollerCoaster.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}
