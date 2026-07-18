@@ -1,0 +1,30 @@
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 1906.384 205.477 1340.675
+ angles 0 0 0
+ m_sQuadName "flag-2"
+ m_fWorldSize 180
+ m_sDescription "OP Restrepo"
+}
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 536.283 421.723 683.194
+  angles 0 -20.803 0
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 180
+  m_sDescription "BLUFOR Ingress"
+ }
+ {
+  coords 583.064 619.533 202.918
+  angles 0 -19.829 0
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 180
+  m_sDescription "BLUFOR Ingress"
+ }
+ {
+  coords 405.841 500.667 1009.008
+  angles 0 -19.441 0
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 180
+  m_sDescription "BLUFOR Ingress"
+ }
+}

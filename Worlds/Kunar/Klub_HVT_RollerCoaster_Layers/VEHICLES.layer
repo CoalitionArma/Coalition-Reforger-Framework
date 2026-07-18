@@ -1,0 +1,155 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 464.557 352.024 298.271
+  angles 0 95.279 0
+  m_rVehicle "{C24DAEC386F5A874}Prefabs/Vehicles/Helicopters/Base/AUS_UH60_Armed_Base.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 419.908 352 306.145
+  angles 0 6.684 0
+  m_rVehicle "{3EA6F47D95867115}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 414.934 352 306.708
+  angles 0 6.684 0
+  m_rVehicle "{3EA6F47D95867115}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 410.065 352 307.323
+  angles 0 6.684 0
+  m_rVehicle "{3EA6F47D95867115}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 419.244 352 299.501
+  angles 0 5.834 0
+  m_rVehicle "{751AFEEA19DDFB05}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 414.183 352 299.969
+  angles 0 5.834 0
+  m_rVehicle "{751AFEEA19DDFB05}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 409.042 352 300.481
+  angles 0 5.834 0
+  m_rVehicle "{751AFEEA19DDFB05}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2161.352 137.12 1421.243
+  angles 0 -173.005 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2156.521 137.844 1438.238
+  angles -4.924 126.36 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2159.92 137.592 1412.059
+  angles 0 -173.005 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2163.865 136.206 1402.018
+  angles -18.038 138.193 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2166.818 134.548 1397.601
+  angles -18.038 138.193 0
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2160.693 137.313 1406.438
+  angles -18.038 138.193 0
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2160.796 137.372 1416.457
+  angles 0.617 -177.888 2.774
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2158.893 136.942 1434.531
+  angles -5.469 149.974 2.038
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2149.547 138.939 1443.933
+  angles -7.521 125.965 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2143.313 140.155 1451.036
+  angles -6.89 149.712 -3.021
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2153.023 138.385 1441.171
+  angles -1.569 123.359 2.541
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2146.115 139.298 1446.948
+  angles -2.276 141.311 1.934
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2161.208 136.809 1427.688
+  angles 1.011 173.81 2.656
+  m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2134.879 140.938 1463.191
+  angles 0.096 143.458 1.783
+  m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2170.492 131.61 1387.103
+  angles -16.833 159.904 -6.577
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2169.151 132.922 1392.275
+  angles -13.768 138.193 0
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2137.684 140.606 1458.951
+  angles -5.272 149.626 -3.012
+  m_rVehicle "{992DFE323E346384}Vehicles/LR/LROffender_ZDF.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2139.825 140.313 1455.069
+  angles -2.276 141.311 1.934
+  m_rVehicle "{521F48CA9E635A54}Vehicles/ATV/ATV2p.et"
+  m_sFactionKey "OPFOR"
+ }
+}

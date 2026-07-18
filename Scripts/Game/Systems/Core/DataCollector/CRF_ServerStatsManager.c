@@ -213,6 +213,15 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	//==============================================================================================
 
 	//------------------------------------------------------------------------------------------------
+	//! Enable frame updates - required for distance tracking (EOnFrame is otherwise never called).
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		SetEventMask(owner, EntityEvent.FRAME);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Distance tracking - delayed frame updates
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -728,9 +737,17 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Routes an AI-entity death to the appropriate killer's stat counters.
-	protected void HandleAIKill(IEntity aiEntity, IEntity killerEntity, notnull Instigator instigator, notnull SCR_InstigatorContextData instigatorContextData)
+	protected void HandleAIKill(IEntity aiEntity, IEntity killerEntity, Instigator instigator, notnull SCR_InstigatorContextData instigatorContextData)
 	{
-		int killerPlayerId = instigator.GetInstigatorPlayerID();
+		// instigator can be null for AI-kill events (e.g. no direct weapon attribution) —
+		// fall back to entity lookup, then to the context data, same as CRF_LoggingManager.
+		int killerPlayerId = 0;
+		if (killerEntity)
+			killerPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity);
+		if (killerPlayerId <= 0 && instigator)
+			killerPlayerId = instigator.GetInstigatorPlayerID();
+		if (killerPlayerId <= 0)
+			killerPlayerId = instigatorContextData.GetKillerPlayerID();
 		if (killerPlayerId <= 0)
 			return;
 
