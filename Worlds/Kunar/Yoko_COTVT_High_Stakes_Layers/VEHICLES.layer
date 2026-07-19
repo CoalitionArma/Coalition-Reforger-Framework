@@ -48,4 +48,9 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   angles 0 77.573 0
   m_rVehicle "{1529FD2C6A8162A1}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_Pylon_Quad_Hydra.et"
  }
+ {
+  coords 201.799 42 3199.448
+  angles 0 109.079 0
+  m_rVehicle "{1A863A61F8C9CAA3}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK1_Transport.et"
+ }
 }
