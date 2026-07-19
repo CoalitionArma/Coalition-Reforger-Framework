@@ -1,0 +1,56 @@
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 1
+   m_fSpawnSpacing 5
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "UAZ"
+     m_sVehiclePrefab "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+     m_eCostType USES
+    }
+    CRF_VehicleDepotVehicle "{69E62372119C1D9F}" {
+     m_sVehicleName "ZU-23 Truck"
+     m_sVehiclePrefab "{F203E2146C425605}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_camo.et"
+     m_eCostType USES
+    }
+   }
+  }
+ }
+ coords 2372.463 17.344 3871.227
+ angles 0 62.755 0
+}
+$grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 209.059 41.95 3192.052
+  angles 0 77.573 0
+  m_rVehicle "{79132E0B6ED98DC0}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBMR/VBMR_VTT_TDF.et"
+ }
+ {
+  coords 222.094 41.95 3194.925
+  angles 0 77.573 0
+  m_rVehicle "{FAAB56A00299F0AB}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBCI/VBCI_Dragar_TDF.et"
+ }
+ {
+  coords 233.914 41.688 3196.932
+  angles 0 77.573 0
+  m_rVehicle "{79132E0B6ED98DC0}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBMR/VBMR_VTT_TDF.et"
+ }
+ {
+  coords 243.396 41.594 3199.021
+  angles 0 77.573 0
+  m_rVehicle "{DCB6E93D55D33FA2}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBL/VBL_Armed_M2HB_TDF.et"
+ }
+ {
+  coords 255.91 40.066 3150.035
+  angles 0 77.573 0
+  m_rVehicle "{1529FD2C6A8162A1}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_Pylon_Quad_Hydra.et"
+ }
+ {
+  coords 201.799 42 3199.448
+  angles 0 109.079 0
+  m_rVehicle "{1A863A61F8C9CAA3}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK1_Transport.et"
+ }
+}
