@@ -318,6 +318,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628B22E9B4056C88}" {
      m_aFriendlyFactionsIds {
+      "INDFOR"
      }
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
@@ -326,6 +327,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628CDE9209CA3FF9}" {
      m_aFriendlyFactionsIds {
+      "BLUFOR"
      }
     }
    }
