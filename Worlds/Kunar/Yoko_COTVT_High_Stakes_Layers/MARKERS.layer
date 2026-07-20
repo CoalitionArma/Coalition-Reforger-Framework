@@ -1,0 +1,10 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 1396.766 69.562 3205.126
+  m_sDescription "Pick up the VIP"
+ }
+ {
+  coords 2674.53 8 3079.727
+  m_sDescription "VIP EXTRACTION POINT"
+ }
+}
