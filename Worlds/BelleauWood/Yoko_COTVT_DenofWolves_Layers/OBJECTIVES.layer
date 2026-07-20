@@ -1,0 +1,14 @@
+$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 10061.819 213.594 4155.903
+  m_sDescription "Radio Tower"
+ }
+ {
+  coords 10189.848 216.469 4423.348
+  m_sDescription "Control Tower"
+ }
+ {
+  coords 10191.93 216.782 5139.191
+  m_sDescription "Radar Station"
+ }
+}
