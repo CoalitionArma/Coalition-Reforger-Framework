@@ -22,6 +22,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
 		m_wRoot = GetRootWidget();
 		m_InputManager = GetGame().GetInputManager();
 		SpawnCameraFacingPlayer();
@@ -376,6 +377,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
 		if (m_Light)
 			delete m_Light;
 		
