@@ -355,7 +355,19 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RemoveItem(int playerId, RplId entityID, bool logAction)
 	{
-		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction); 
+		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Atomically swap a world entity the player is standing next to for a different prefab in
+	//! their inventory (e.g. CRF_ToggleSatchelType). Unlike calling AddItem+RemoveItem separately,
+	//! this only removes oldEntityId once the new item is confirmed inserted, and re-checks that
+	//! oldEntityId still exists before doing anything - closes both an item-loss bug (inventory
+	//! full -> new item discarded but old one still removed) and a duplication exploit (multiple
+	//! players triggering a conversion on the same entity each getting their own copy).
+	void ConvertItem(int playerId, RplId oldEntityId, string newPrefab, bool logAction)
+	{
+		Rpc(RpcAsk_ConvertItem, playerId, oldEntityId, newPrefab, logAction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1482,6 +1494,81 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		
 		SCR_EntityHelper.DeleteEntityAndChildren(entity);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected const float CONVERT_ITEM_MAX_DISTANCE_M = 5.0;
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ConvertItem(int playerId, RplId oldEntityId, string newPrefab, bool logAction)
+	{
+		// Telemetry: int + RplId + string + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_RplId();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(newPrefab);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("RpcAsk_ConvertItem", bytes);
+
+		if (playerId == 0 || newPrefab.IsEmpty())
+			return;
+
+		// If another request already converted/removed this entity (e.g. a second player
+		// triggering the same conversion, or a stale/duplicate request), there is nothing left
+		// to convert - bail instead of spawning a duplicate item.
+		RplComponent oldRplComp = RplComponent.Cast(Replication.FindItem(oldEntityId));
+		if (!oldRplComp)
+			return;
+
+		IEntity oldEntity = oldRplComp.GetEntity();
+		if (!oldEntity)
+			return;
+
+		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!entity)
+			return;
+
+		if (vector.DistanceSq(entity.GetOrigin(), oldEntity.GetOrigin()) > CONVERT_ITEM_MAX_DISTANCE_M * CONVERT_ITEM_MAX_DISTANCE_M)
+			return;
+
+		SCR_InventoryStorageManagerComponent entityInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!entityInventoryManager)
+			return;
+
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = entity.GetOrigin();
+
+		Resource resource = Resource.Load(newPrefab);
+		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
+		if (!resourceSpawned)
+			return;
+
+		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
+		{
+			// No room for the new item - bail WITHOUT touching oldEntity, so the player keeps
+			// what they already had instead of losing it.
+			SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+			return;
+		}
+
+		if (logAction)
+		{
+			ResourceName oldPrefab = oldEntity.GetPrefabData().GetPrefabName();
+			if (!oldPrefab.IsEmpty())
+			{
+				string itemName = oldPrefab.Substring(oldPrefab.LastIndexOf("/") + 1, oldPrefab.LastIndexOf(".") - oldPrefab.LastIndexOf("/") - 1);
+				string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+				string logMessage = string.Format("%2 was converted in %1's inventory", playerName, itemName);
+				m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
+			}
+		}
+
+		// Only remove the original now that the new item is confirmed in the player's inventory.
+		// Deleting it synchronously here (rather than via a separate RPC) closes the duplication
+		// window: a racing RpcAsk_ConvertItem for the same oldEntityId will find it already gone
+		// via the Replication.FindItem check above.
+		SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
 	}
 
 	//------------------------------------------------------------------------------------------------

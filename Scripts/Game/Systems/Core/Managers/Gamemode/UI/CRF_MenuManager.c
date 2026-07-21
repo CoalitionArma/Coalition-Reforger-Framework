@@ -86,32 +86,52 @@ class CRF_MenuManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Moves a player into channelIndex, leaving whatever channel they were previously in (if any).
+	//! Adds to the target channel FIRST, then removes from the old one, rather than the reverse -
+	//! removing first can trigger CleanupEmptyChannels() (via SetChannel), which deletes array
+	//! entries and shifts every later index down. If that happened before we'd read channelIndex,
+	//! a shifted channelIndex could silently add the player to the wrong channel (or go out of
+	//! bounds) whenever the channel being left sits earlier in the array than the target - e.g.
+	//! switching directly from one private room to a later one. Doing the target write first means
+	//! channelIndex is only ever used while still guaranteed valid by the bounds check above.
 	void AddPlayerToChannel(int playerId, int channelIndex, bool channelCreation)
 	{
 		if (channelIndex < 0 || channelIndex >= m_aVONChannels.Count())
 			return;
-			
-		// Check if player is already in a channel and remove them
-		int currentChannelIndex;
-		if (IsPlayerInAnyChannel(playerId, currentChannelIndex))
-		{
-			RemovePlayerFromAnyChannel(playerId, channelCreation);
-		}
-		
-		// Split the channel string into parts
+
+		// Capture the player's current channel (if any) before mutating anything. A Set() call
+		// doesn't reorder the array, so this index stays valid through the "add" step below.
+		int previousChannelIndex;
+		bool wasInChannel = IsPlayerInAnyChannel(playerId, previousChannelIndex);
+
+		// Add to the target channel first, while channelIndex is still guaranteed valid.
 		array<string> channelSplit = SplitChannel(m_aVONChannels[channelIndex]);
-		
-		// Get the current players in the channel
 		array<string> players = GetPlayersFromChannel(channelSplit);
-		
-		// Add the player to the channel
-		players.Insert(playerId.ToString());
-		
-		// Update the channel string
-		string updatedChannel = UpdateChannelWithPlayers(channelSplit, players);
-		
-		// Update the channel in the list
-		SetChannel(channelIndex, updatedChannel, channelCreation);
+
+		if (!players.Contains(playerId.ToString()))
+			players.Insert(playerId.ToString());
+
+		m_aVONChannels.Set(channelIndex, UpdateChannelWithPlayers(channelSplit, players));
+
+		// Then remove them from wherever they were before (if different) - safe even if this
+		// shrinks/reorders the array, since we're done touching channelIndex by this point.
+		if (wasInChannel && previousChannelIndex != channelIndex)
+		{
+			array<string> oldSplit = SplitChannel(m_aVONChannels[previousChannelIndex]);
+			array<string> oldPlayers = GetPlayersFromChannel(oldSplit);
+
+			int oldPlayerIdx = oldPlayers.Find(playerId.ToString());
+			if (oldPlayerIdx >= 0)
+				oldPlayers.RemoveOrdered(oldPlayerIdx);
+
+			m_aVONChannels.Set(previousChannelIndex, UpdateChannelWithPlayers(oldSplit, oldPlayers));
+		}
+
+		m_iChannelChanges++;
+		Replication.BumpMe();
+
+		if (!channelCreation)
+			CleanupEmptyChannels();
 	}
 
 	//------------------------------------------------------------------------------------------------

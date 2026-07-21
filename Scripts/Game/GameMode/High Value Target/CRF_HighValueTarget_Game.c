@@ -1,7 +1,7 @@
 /*
 	HVT/VIP Gamemode Component
 	
-	Tracks HVTs/VIPs (PHVT/AI/Object) and syncs their positions to map markers.
+	Tracks HVTs/VIPs (PHVT/AI/Object/Vehicle) and syncs their positions to map markers.
 	Supports multiple HVTs/VIPs with per-entry faction, marker text, and color configuration.
 
 	FIXES:
@@ -19,7 +19,6 @@
 	TODO:
 	- Less crappy re-registration of HVTs/VIPs?
 	- Edge case where if more than 1 PHVT slots, but unfilled, marker/transponder may be active first minute of game. Race condition not really worth fixing. Unless?
-	- Object HVT destruction detection?
 */
 
 enum CRF_HVTFaction
@@ -40,9 +39,10 @@ enum CRF_TargetType
 
 enum CRF_HVTEntryType
 {
-	AI,     
-	PLAYER, 
-	OBJECT  
+	AI,
+	PLAYER,
+	OBJECT,
+	VEHICLE  // Spawns like OBJECT, tracks destruction like AI/PLAYER
 }
 
 enum CRF_AIHVTState
@@ -56,10 +56,10 @@ enum CRF_AIHVTState
 [BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sTransponderEntityName")]
 class CRF_HVTEntry
 {
-	[Attribute("0", UIWidgets.ComboBox, "Entry type: AI spawns character at transponder, PLAYER detects by prefab match, OBJECT spawns item at transponder.", enums: ParamEnumArray.FromEnum(CRF_HVTEntryType))]
+	[Attribute("0", UIWidgets.ComboBox, "Entry type: AI spawns character at transponder, PLAYER detects by prefab match, OBJECT spawns item at transponder, VEHICLE spawns vehicle at transponder (destruction tracked like AI/PLAYER).", enums: ParamEnumArray.FromEnum(CRF_HVTEntryType))]
 	CRF_HVTEntryType m_eEntryType;
-	
-	[Attribute("{42A502E3BB727CEB}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliPilot.et", desc: "AI: Character prefab to spawn. PLAYER: Prefab to match the LOBBY SLOT (use a UNIQUE prefab and faction setting for that slot so that the mode detects the PHVT). OBJECT: Item prefab to spawn on the transponder object(e.g. radio).", uiwidget: "resourcePickerThumbnail", params: "et")]
+
+	[Attribute("{42A502E3BB727CEB}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliPilot.et", desc: "AI: Character prefab to spawn. PLAYER: Prefab to match the LOBBY SLOT (use a UNIQUE prefab and faction setting for that slot so that the mode detects the PHVT). OBJECT: Item prefab to spawn on the transponder object(e.g. radio). VEHICLE: Vehicle prefab to spawn on the transponder point.", uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_hvtPrefab;
 	
 	[Attribute("0", UIWidgets.ComboBox, "Faction of this HVT. For PLAYER entries, filters by faction. For AI/OBJECT, sets marker color.", enums: ParamEnumArray.FromEnum(CRF_HVTFaction))]
@@ -87,12 +87,52 @@ class CRF_HVTEntry
 	{
 		switch (m_eFaction)
 		{
-			case CRF_HVTFaction.BLUFOR: return ARGB(255, 0, 82, 255);   
-			case CRF_HVTFaction.OPFOR:  return ARGB(255, 200, 0, 0);    
-			case CRF_HVTFaction.INDFOR: return ARGB(255, 0, 170, 70);   
-			case CRF_HVTFaction.CIV:    return ARGB(255, 160, 32, 240); 
+			case CRF_HVTFaction.BLUFOR: return ARGB(255, 0, 82, 255);
+			case CRF_HVTFaction.OPFOR:  return ARGB(255, 200, 0, 0);
+			case CRF_HVTFaction.INDFOR: return ARGB(255, 0, 170, 70);
+			case CRF_HVTFaction.CIV:    return ARGB(255, 160, 32, 240);
 		}
 		return ARGB(255, 0, 0, 225);
+	}
+
+	string GetLossTitleVerb()
+	{
+		if (m_eEntryType == CRF_HVTEntryType.VEHICLE)
+			return "DESTROYED";
+		return "KILLED";
+	}
+
+	string GetLossKilledByPhrase()
+	{
+		if (m_eEntryType == CRF_HVTEntryType.VEHICLE)
+			return "Destroyed by";
+		return "Killed by";
+	}
+
+	string GetLossUnknownCausePhrase()
+	{
+		if (m_eEntryType == CRF_HVTEntryType.VEHICLE)
+			return "been destroyed";
+		return "died";
+	}
+}
+
+// Binds an entity to its destruction callback (GetOnDamageStateChanged doesn't pass the entity itself)
+class CRF_HVTDestructionWrapper : Managed
+{
+	protected CRF_HighValueTargetGamemodeManager m_pManager;
+	protected IEntity m_pEntity;
+
+	void CRF_HVTDestructionWrapper(CRF_HighValueTargetGamemodeManager manager, IEntity entity)
+	{
+		m_pManager = manager;
+		m_pEntity = entity;
+	}
+
+	void OnDamageStateChanged(EDamageState newState)
+	{
+		if (newState == EDamageState.DESTROYED && m_pManager)
+			m_pManager.OnHVTDestroy(m_pEntity);
 	}
 }
 
@@ -116,7 +156,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.ComboBox, "Target type for notification text (HVT or VIP).", enums: ParamEnumArray.FromEnum(CRF_TargetType), category: "Global Settings")]
 	CRF_TargetType m_eTargetType;
 	
-	[Attribute("false", "auto", "Disable damage on AI/Player HVTs (makes them invulnerable). Does not apply to OBJECT entries.", category: "Global Settings")]
+	[Attribute("false", "auto", "Disable damage on AI/Player/Vehicle HVTs (makes them invulnerable). Does not apply to OBJECT entries.", category: "Global Settings")]
 	bool m_bDisableDamage;
 	
 	[Attribute("360", UIWidgets.SpinBox, "The amount of time between marker updates in seconds. Minimum 10s.", "10 3600 1", category: "Global Settings")]
@@ -161,13 +201,18 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// Replicated dead HVT hint (server → client) - triggers hint display
 	[RplProp(onRplName: "OnDeadHVTHintReplicated")]
 	string m_sDeadHVTHint;
-	
+
+	// Set alongside m_sDeadHVTHint - lets the client look up the same CRF_HVTEntry for hint info
+	[RplProp()]
+	int m_iDeadHVTEntryIndex = -1;
+
 	// HVT tracking maps
 	ref map<IEntity, int> m_mHVTEntryIndex = new map<IEntity, int>();        // entity → entry index
 	ref map<int, IEntity> m_mEntryToHVT = new map<int, IEntity>();           // entry index → entity
 	ref map<int, IEntity> m_mEntryToTransponder = new map<int, IEntity>();   // entry index → transponder entity, cached at SetHVTAndState to avoid hot loop FindEntityByName's
-	ref map<IEntity, SCR_CharacterDamageManagerComponent> m_mHVTDamageManagers = new map<IEntity, SCR_CharacterDamageManagerComponent>(); // entity → damage manager (OBJECT entries absent = alive by entity existence)
-	
+	ref map<IEntity, DamageManagerComponent> m_mHVTDamageManagers = new map<IEntity, DamageManagerComponent>(); // entity → damage manager (OBJECT entries usually absent = alive by entity existence)
+	ref map<IEntity, ref CRF_HVTDestructionWrapper> m_mHVTDestructionWrappers = new map<IEntity, ref CRF_HVTDestructionWrapper>(); // entity → destruction wrapper (VEHICLE)
+
 	// Client-side: Track which markers have been removed for JIPS/mishaps/desyncs
 	ref set<int> m_sRemovedMarkerIndices = new set<int>();
 	
@@ -175,6 +220,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	const int MARKER_SIZE = 50;
 	
 	bool m_bHVTStateSet = false;
+	bool m_bHVTsSpawned = false;
 	bool m_bGameInit = false;
 	bool m_bHasSafestartBegun = false;  // Latch: Ensures we've seen safestart active before watching for it to end
 	
@@ -207,6 +253,9 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_mEntryToTransponder.Clear();
 		GetGame().GetCallqueue().Remove(ResyncHVTPositions);
 		ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+#ifdef WORKBENCH
+		RemoveAllPreviews();
+#endif
 		super.OnDelete(owner);
 	}
 	
@@ -224,6 +273,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			
 			if (!m_bHVTStateSet)
 			{
+				// Gates SpawnHVTEntities to prevent race condition of transponder functions before they are spawned
+				if (Replication.IsServer() && !m_bHVTsSpawned)
+					return;
+
 				SetHVTAndState();
 				return;
 			}
@@ -274,8 +327,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_fUpdateBuffer += timeSlice;
 	}
 	
-	// Spawn AI/Object HVTs at transponder locations. Moved to OnWorldPostProcess from EonFixedFrame.
-	// Hopeful fixed for crashing vehicles assigned as ObjectHVTs
+	// Spawn AI/Object HVTs at transponder locations. SpawnHVTEntities being called inline was too early(?) caused crashes
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
@@ -283,12 +335,15 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode() || !Replication.IsServer())
 			return;
 
-		SpawnHVTEntities();
+		GetGame().GetCallqueue().CallLater(SpawnHVTEntities, 1500, false);
 	}
 
 	// Spawn AI/Object entries while transponders still have their editor positions
 	void SpawnHVTEntities()
 	{
+		// Unblock SetHVTAndState (frame loop) even when there is nothing to spawn
+		m_bHVTsSpawned = true;
+
 		if (!m_aHVTEntries || m_aHVTEntries.Count() == 0)
 			return;
 
@@ -510,20 +565,32 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_mHVTEntryIndex.Set(hvtEntity, entryIndex);
 		m_mEntryToHVT.Set(entryIndex, hvtEntity);
 		
-		// Hook death callback
+		// Hook death callback (characters only - AI/PLAYER)
 		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterControllerComponent));
 		if (characterController)
 		{
 			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
 			characterController.m_OnPlayerDeathWithParam.Insert(OnHVTDeath);
 		}
-		
+
 		// ALWAYS set damage state to match component setting (overrides prefab default on spawn/respawn)
-		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(hvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+		DamageManagerComponent damageManager = DamageManagerComponent.Cast(hvtEntity.FindComponent(DamageManagerComponent));
 		if (damageManager)
 		{
 			damageManager.EnableDamageHandling(!m_bDisableDamage);
 			m_mHVTDamageManagers.Set(hvtEntity, damageManager); // Cache for IsHVTAlive
+
+			// Non-characters (VEHICLE etc.) have no death callback - hook destruction instead
+			if (!characterController)
+			{
+				SCR_DamageManagerComponent scrDamageManager = SCR_DamageManagerComponent.Cast(damageManager);
+				if (scrDamageManager)
+				{
+					CRF_HVTDestructionWrapper wrapper = new CRF_HVTDestructionWrapper(this, hvtEntity);
+					m_mHVTDestructionWrappers.Set(hvtEntity, wrapper);
+					scrDamageManager.GetOnDamageStateChanged().Insert(wrapper.OnDamageStateChanged);
+				}
+			}
 		}
 	}
 
@@ -539,6 +606,17 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			characterController.m_OnPlayerDeathWithParam.Remove(OnHVTDeath);
 		}
 
+		// Unhook the destruction wrapper before dropping it
+		if (m_mHVTDestructionWrappers.Contains(hvtEntity))
+		{
+			CRF_HVTDestructionWrapper wrapper = m_mHVTDestructionWrappers.Get(hvtEntity);
+			SCR_DamageManagerComponent scrDamageManager = SCR_DamageManagerComponent.Cast(m_mHVTDamageManagers.Get(hvtEntity));
+			if (wrapper && scrDamageManager)
+				scrDamageManager.GetOnDamageStateChanged().Remove(wrapper.OnDamageStateChanged);
+
+			m_mHVTDestructionWrappers.Remove(hvtEntity);
+		}
+
 		if (m_mHVTEntryIndex.Contains(hvtEntity))
 		{
 			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
@@ -550,7 +628,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		m_mHVTDamageManagers.Remove(hvtEntity);
 	}
 	
-	// HVT death callback - syncs positions and shows hint
+	// HVT death callback (AI/PLAYER) - syncs positions and shows hint
 	void OnHVTDeath(SCR_CharacterControllerComponent characterController, IEntity killerEntity, Instigator killer)
 	{
 		if (!characterController)
@@ -559,32 +637,65 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		IEntity hvtEntity = characterController.GetOwner();
 		if (!hvtEntity)
 			return;
-		
+
+		OnHVTLost(hvtEntity, killer);
+	}
+
+	// HVT destruction callback (VEHICLE) - gets the killer from the damage manager instead
+	void OnHVTDestroy(IEntity hvtEntity)
+	{
+		if (!hvtEntity)
+			return;
+
+		Instigator killer;
+		if (m_mHVTDamageManagers.Contains(hvtEntity))
+		{
+			DamageManagerComponent damageManager = m_mHVTDamageManagers.Get(hvtEntity);
+			if (damageManager)
+				killer = damageManager.GetInstigator();
+		}
+
+		OnHVTLost(hvtEntity, killer);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// HINT STRING HELPERS
+	
+
+	string GetTargetLabel()
+	{
+		if (m_eTargetType == CRF_TargetType.VIP)
+			return "VIP";
+		return "HVT";
+	}
+
+	// Bounds-checked entry lookup
+	CRF_HVTEntry GetHVTEntry(int entryIndex)
+	{
+		if (!m_aHVTEntries || entryIndex < 0 || entryIndex >= m_aHVTEntries.Count())
+			return null;
+		return m_aHVTEntries[entryIndex];
+	}
+
+	//------------------------------------------------------------------------------------------------
+
+	// Shared by OnHVTDeath/OnHVTDestroy: syncs positions, builds the hint, unregisters
+	protected void OnHVTLost(IEntity hvtEntity, Instigator killer)
+	{
 		// Immediately sync positions - zero position will trigger marker removal on clients
 		if (m_bEnableTransponderMarker)
 			UpdateHVTPositions();
-		
-		// Build dead HVT label
-		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		
-		// Get target type label
-		string targetLabel = "HVT";
-		if (m_eTargetType == CRF_TargetType.VIP)
-			targetLabel = "VIP";
-		
-		// Get HVT's faction from entry
-		string hvtFactionLabel = "";
+
+		int entryIndex = -1;
 		if (m_mHVTEntryIndex.Contains(hvtEntity))
-		{
-			int entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
-			if (entryIndex >= 0 && entryIndex < m_aHVTEntries.Count())
-			{
-				CRF_HVTEntry entry = m_aHVTEntries[entryIndex];
-				if (entry && entry.m_eFaction != CRF_HVTFaction.NONE)
-					hvtFactionLabel = entry.GetFactionKey() + " ";
-			}
-		}
-		
+			entryIndex = m_mHVTEntryIndex.Get(hvtEntity);
+
+		CRF_HVTEntry entry = GetHVTEntry(entryIndex);
+
+		string hvtFactionLabel = "";
+		if (entry && entry.m_eFaction != CRF_HVTFaction.NONE)
+			hvtFactionLabel = entry.GetFactionKey() + " ";
+
 		// Get player name if this was a player-controlled HVT
 		string playerNameLabel = "";
 		int hvtPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(hvtEntity);
@@ -594,39 +705,45 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			if (playerName != "")
 				playerNameLabel = " (" + playerName + ")";
 		}
-		
+
 		// Get killer info
 		string killerLabel = "";
-		if (factionManager && killer)
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (entry && factionManager && killer)
 		{
 			Faction killerFaction = factionManager.GetPlayerFaction(killer.GetInstigatorPlayerID());
 			if (killerFaction)
-				killerLabel = " - Killed by " + killerFaction.GetFactionKey();
+				killerLabel = " - " + entry.GetLossKilledByPhrase() + " " + killerFaction.GetFactionKey();
 		}
-		
-		// Set hint string and trigger replication
-		m_sDeadHVTHint = hvtFactionLabel + targetLabel + playerNameLabel + killerLabel;
+
+		// No attributable killer
+		if (killerLabel.IsEmpty() && entry)
+			killerLabel = " - has " + entry.GetLossUnknownCausePhrase() + " under mysterious circumstances.";
+
+		// Set hint string, replicate the entry
+		m_sDeadHVTHint = hvtFactionLabel + GetTargetLabel() + playerNameLabel + killerLabel;
+		m_iDeadHVTEntryIndex = entryIndex;
 		Replication.BumpMe();
 		OnDeadHVTHintReplicated();
 		UnregisterHVTEntity(hvtEntity);
 	}
-	
+
 	// Client: Show hint when replicated
 	void OnDeadHVTHintReplicated()
 	{
 		if (m_sDeadHVTHint.IsEmpty())
 			return;
-		
+
 		SCR_HintManagerComponent hintManager = SCR_HintManagerComponent.GetInstance();
 		if (!hintManager)
 			return;
-		
-		// Get title based on target type
-		string hintTitle = "HVT KILLED";
-		if (m_eTargetType == CRF_TargetType.VIP)
-			hintTitle = "VIP KILLED";
-		
-		hintManager.ShowCustomHint(m_sDeadHVTHint, hintTitle, 10);
+
+		string verb = "KILLED";
+		CRF_HVTEntry entry = GetHVTEntry(m_iDeadHVTEntryIndex);
+		if (entry)
+			verb = entry.GetLossTitleVerb();
+
+		hintManager.ShowCustomHint(m_sDeadHVTHint, GetTargetLabel() + " " + verb, 10);
 	}
 	
 	void GameInit()
@@ -727,14 +844,14 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!hvtEntity)
 			return false;
 		
-		// OBJECT entries have no damage manager and are absent from m_mHVTDamageManagers - alive by entity existence
+		// OBJECT entries usually have no damage manager and are absent from m_mHVTDamageManagers - alive by entity existence
 		if (!m_mHVTDamageManagers.Contains(hvtEntity))
 			return true;
-		
-		SCR_CharacterDamageManagerComponent damageManager = m_mHVTDamageManagers.Get(hvtEntity);
+
+		DamageManagerComponent damageManager = m_mHVTDamageManagers.Get(hvtEntity);
 		if (!damageManager)
 			return false;
-		
+
 		return damageManager.GetState() != EDamageState.DESTROYED;
 	}
 	
@@ -897,7 +1014,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// position: Center point to search from
 	// range: Search radius in meters
 	// faction: Filter by CRF_HVTFaction, or NONE to match any faction
-	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT), or -1 to match any type
+	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT/VEHICLE), or -1 to match any type
 	// Returns: First matching alive HVT entity, or null if none found
 	//
 	// Example usage:
@@ -954,7 +1071,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// position: Center point to search from
 	// range: Search radius in meters (use -1 for unlimited range / count all)
 	// faction: Filter by CRF_HVTFaction, or NONE to match any faction
-	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT), or -1 to match any type
+	// entryType: Filter by CRF_HVTEntryType (AI/PLAYER/OBJECT/VEHICLE), or -1 to match any type
 	// Returns: Number of matching alive HVTs
 	//
 	// Example usage:
@@ -994,7 +1111,296 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			
 			hvtCount++;
 		}
-		
+
 		return hvtCount;
 	}
+
+	//------------------------------------------------------------------------------------------------
+	// WORKBENCH-ONLY EDITOR PREVIEW
+	// Shows each entry's prefab at its transponder position + a text label, live in the editor.
+	// Doodoo'd out by claude since its just a lot of contingency preview refreshes
+	//------------------------------------------------------------------------------------------------
+#ifdef WORKBENCH
+
+	protected ref map<int, IEntity> m_mPreviewEntities = new map<int, IEntity>();        // entry index -> spawned preview entity
+	protected ref map<int, ResourceName> m_mPreviewPrefabs = new map<int, ResourceName>(); // entry index -> its spawned prefab
+	protected ref map<int, IEntity> m_mCachedTransponders = new map<int, IEntity>();      // entry index -> resolved transponder entity
+	protected ref map<int, vector> m_mLastSyncedPositions = new map<int, vector>();       // entry index -> last position written to its preview
+
+	protected ref map<int, string> m_mPreviewLabels = new map<int, string>(); // entry index -> label text
+	protected ref map<int, int> m_mPreviewLabelColors = new map<int, int>();  // entry index -> label color
+
+	protected float m_fPreviewRefreshTimer;
+
+	//=========================================================================
+	// WB LIFECYCLE HOOKS
+	//=========================================================================
+
+	override event void _WB_OnInit(IEntity owner, inout vector mat[4], IEntitySource src)
+	{
+		RefreshAllPreviews(owner);
+		RefreshAllLabels();
+		super._WB_OnInit(owner, mat, src);
+	}
+
+	override event void _WB_OnCreate(IEntity owner, IEntitySource src)
+	{
+		RefreshAllPreviews(owner);
+		RefreshAllLabels();
+		super._WB_OnCreate(owner, src);
+	}
+
+	override int _WB_GetAfterWorldUpdateSpecs(IEntity owner, IEntitySource src)
+	{
+		return EEntityFrameUpdateSpecs.CALL_ALWAYS;
+	}
+
+	override event void _WB_AfterWorldUpdate(IEntity owner, float timeSlice)
+	{
+		if (GetGame().InPlayMode())
+			return;
+
+		SyncAllPreviewTransforms();
+		DrawAllHVTLabels(owner);
+
+		m_fPreviewRefreshTimer += timeSlice;
+		if (m_fPreviewRefreshTimer >= 8.0)
+		{
+			m_fPreviewRefreshTimer = 0;
+			RefreshAllPreviews(owner);
+		}
+	}
+
+	override event bool _WB_OnKeyChanged(IEntity owner, BaseContainer src, string key, BaseContainerList ownerContainers, IEntity parent)
+	{
+		RefreshAllPreviews(owner);
+		RefreshAllLabels();
+		return super._WB_OnKeyChanged(owner, src, key, ownerContainers, parent);
+	}
+
+	override event void _WB_OnDelete(IEntity owner, IEntitySource src)
+	{
+		RemoveAllPreviews();
+		super._WB_OnDelete(owner, src);
+	}
+
+	void ~CRF_HighValueTargetGamemodeManager()
+	{
+		RemoveAllPreviews();
+	}
+
+	//=========================================================================
+	// PREVIEW OBJECT LOGIC
+	//=========================================================================
+
+	// Moves each spawned preview to its transponder's current position
+	protected void SyncAllPreviewTransforms()
+	{
+		foreach (int index, IEntity preview : m_mPreviewEntities)
+		{
+			if (!preview || !m_mCachedTransponders.Contains(index))
+				continue;
+
+			IEntity transponder = m_mCachedTransponders.Get(index);
+			if (!transponder)
+				continue;
+
+			vector pos = transponder.GetOrigin();
+			if (m_mLastSyncedPositions.Contains(index) && m_mLastSyncedPositions.Get(index) == pos)
+				continue;
+
+			vector transform[4];
+			transponder.GetTransform(transform);
+			preview.SetTransform(transform);
+			preview.Update();
+
+			m_mLastSyncedPositions.Set(index, pos);
+		}
+	}
+
+	// Resolves each entry's transponder by name and spawns/re-spawns its preview object
+	protected void RefreshAllPreviews(IEntity owner)
+	{
+		if (!m_aHVTEntries)
+		{
+			RemoveAllPreviews();
+			return;
+		}
+
+		int count = m_aHVTEntries.Count();
+
+		for (int i = 0; i < count; i++)
+		{
+			CRF_HVTEntry entry = m_aHVTEntries[i];
+
+			// PLAYER entries have nothing to preview
+			if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER || entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
+			{
+				RemovePreviewForIndex(i);
+				m_mCachedTransponders.Remove(i);
+				continue;
+			}
+
+			IEntity transponder = owner.GetWorld().FindEntityByName(entry.m_sTransponderEntityName);
+			m_mCachedTransponders.Set(i, transponder);
+
+			if (!transponder)
+			{
+				RemovePreviewForIndex(i);
+				continue;
+			}
+
+			EnsurePreviewForIndex(i, entry.m_hvtPrefab, transponder);
+		}
+
+		RemoveStalePreviews(count);
+	}
+
+	protected void EnsurePreviewForIndex(int index, ResourceName prefab, IEntity transponder)
+	{
+		IEntity preview = null;
+		if (m_mPreviewEntities.Contains(index))
+			preview = m_mPreviewEntities.Get(index);
+
+		ResourceName currentPrefab = "";
+		if (m_mPreviewPrefabs.Contains(index))
+			currentPrefab = m_mPreviewPrefabs.Get(index);
+
+		// Re-spawn only if the prefab changed or no preview exists yet
+		if (!preview || currentPrefab != prefab)
+		{
+			RemovePreviewForIndex(index);
+
+			Resource previewResource = Resource.Load(prefab);
+			if (!previewResource)
+				return;
+
+			EntitySpawnParams spawnParams = new EntitySpawnParams();
+			spawnParams.TransformMode = ETransformMode.WORLD;
+			transponder.GetTransform(spawnParams.Transform);
+
+			preview = GetGame().SpawnEntityPrefabLocal(previewResource, transponder.GetWorld(), spawnParams);
+			if (!preview)
+				return;
+
+			// Ignore terrain-snap raycasts so the mesh doesn't push the transponder up
+			preview.ClearFlags(EntityFlags.TRACEABLE, true);
+
+			m_mPreviewEntities.Set(index, preview);
+			m_mPreviewPrefabs.Set(index, prefab);
+		}
+
+		// Keep it positioned at the transponder
+		vector transform[4];
+		transponder.GetTransform(transform);
+		preview.SetTransform(transform);
+		preview.Update();
+	}
+
+	protected void RemovePreviewForIndex(int index)
+	{
+		if (m_mPreviewEntities.Contains(index))
+		{
+			IEntity preview = m_mPreviewEntities.Get(index);
+			if (preview)
+				SCR_EntityHelper.DeleteEntityAndChildren(preview);
+
+			m_mPreviewEntities.Remove(index);
+		}
+
+		m_mPreviewPrefabs.Remove(index);
+		m_mLastSyncedPositions.Remove(index);
+	}
+
+	protected void RemoveAllPreviews()
+	{
+		array<int> indices = {};
+		foreach (int index, IEntity preview : m_mPreviewEntities)
+			indices.Insert(index);
+
+		foreach (int index : indices)
+			RemovePreviewForIndex(index);
+
+		m_mCachedTransponders.Clear();
+		m_mLastSyncedPositions.Clear();
+	}
+
+	// Removes previews for entries that no longer exist
+	protected void RemoveStalePreviews(int currentEntryCount)
+	{
+		array<int> staleIndices = {};
+		foreach (int index, IEntity preview : m_mPreviewEntities)
+		{
+			if (index >= currentEntryCount)
+				staleIndices.Insert(index);
+		}
+
+		foreach (int index : staleIndices)
+		{
+			RemovePreviewForIndex(index);
+			m_mCachedTransponders.Remove(index);
+		}
+	}
+
+	//=========================================================================
+	// LABEL TEXT LOGIC
+	//=========================================================================
+
+	// Rebuilds the label + color cache for every entry
+	protected void RefreshAllLabels()
+	{
+		m_mPreviewLabels.Clear();
+		m_mPreviewLabelColors.Clear();
+
+		if (!m_aHVTEntries)
+			return;
+
+		int count = m_aHVTEntries.Count();
+		for (int i = 0; i < count; i++)
+		{
+			CRF_HVTEntry entry = m_aHVTEntries[i];
+			if (!entry || entry.m_eEntryType == CRF_HVTEntryType.PLAYER || entry.m_sTransponderEntityName.IsEmpty() || entry.m_hvtPrefab.IsEmpty())
+				continue;
+
+			m_mPreviewLabels.Set(i, BuildHVTLabel(entry));
+			m_mPreviewLabelColors.Set(i, entry.GetMarkerColor());
+		}
+	}
+
+	// Builds "[FACTION | TYPE] MarkerText" for one entry
+	protected string BuildHVTLabel(CRF_HVTEntry entry)
+	{
+		string typeName = typename.EnumToString(CRF_HVTEntryType, entry.m_eEntryType);
+		string factionName = entry.GetFactionKey();
+		if (factionName.IsEmpty())
+			factionName = "NONE";
+
+		string prefix = "[" + factionName + " | " + typeName + "]";
+		if (entry.m_sMarkerText.IsEmpty())
+			return prefix;
+
+		return prefix + " " + entry.m_sMarkerText;
+	}
+
+	// Draws each entry's cached label above its transponder
+	protected void DrawAllHVTLabels(IEntity owner)
+	{
+		foreach (int index, IEntity transponder : m_mCachedTransponders)
+		{
+			if (!transponder || !m_mPreviewLabels.Contains(index))
+				continue;
+
+			int color = 0xFFFFFFFF;
+			if (m_mPreviewLabelColors.Contains(index))
+				color = m_mPreviewLabelColors.Get(index);
+
+			vector pos = transponder.GetOrigin();
+			pos[1] = pos[1] + 0.5;
+
+			DebugTextWorldSpace.Create(owner.GetWorld(), m_mPreviewLabels.Get(index),
+				DebugTextFlags.CENTER | DebugTextFlags.FACE_CAMERA | DebugTextFlags.ONCE,
+				pos[0], pos[1], pos[2], 14, color, 0x88000000);
+		}
+	}
+#endif
 }
