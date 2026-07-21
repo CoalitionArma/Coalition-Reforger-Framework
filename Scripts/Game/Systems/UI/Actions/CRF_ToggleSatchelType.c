@@ -45,8 +45,7 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 			case TROWABLE_SATCHEL_INDFOR : {satchelResource = SATCHEL_INDFOR; break;}
 		};
 		
-		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(SCR_PlayerController.GetLocalPlayerId(), satchelResource, false);
-		CRF_PlayerRplToAuthorityManager.GetInstance().RemoveItem(SCR_PlayerController.GetLocalPlayerId(), satchelRplComp.Id(), false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().ConvertItem(SCR_PlayerController.GetLocalPlayerId(), satchelRplComp.Id(), satchelResource, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -72,6 +71,24 @@ class CRF_ToggleSatchelType : ScriptedUserAction
 		return false; 
 	};
 	
+	//------------------------------------------------------------------------------------------------
+	//! Block conversion while the charge is armed (has a fuze set) - the placeable and throwable
+	//! variants use entirely different detonation systems (SCR_ExplosiveTriggerComponent + fuze
+	//! slots vs. a plain grenade timer), so converting an armed charge would silently delete it
+	//! with no way to carry the armed/fuze state over. Mirrors vanilla's own SCR_MinePickUpItemAction,
+	//! which hides pickup the same way while a mine's trigger is active.
+	override bool CanBeShownScript(IEntity user)
+	{
+		if (m_iSatchelEntity)
+		{
+			SCR_ExplosiveTriggerComponent triggerComp = SCR_ExplosiveTriggerComponent.Cast(m_iSatchelEntity.FindComponent(SCR_ExplosiveTriggerComponent));
+			if (triggerComp && triggerComp.IsActivated())
+				return false;
+		}
+
+		return super.CanBeShownScript(user);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Indicates that this action only affects the local player and doesn't need to be synchronized
 	override bool HasLocalEffectOnlyScript()
