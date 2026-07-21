@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{02AED6E0FCEA5CD9}Configs/Gearscripts/Standard/Modern/CRF_GS_ModernBund_Fleck_60mm.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
