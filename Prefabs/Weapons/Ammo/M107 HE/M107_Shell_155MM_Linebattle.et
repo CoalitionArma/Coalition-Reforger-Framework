@@ -23,6 +23,9 @@ Projectile : "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.e
      EffectPrefab "{F1929AE7DC824D81}Prefabs/Weapons/Warheads/Warhead_ExplosiveCharge_TNT400g.et"
      ParticleEffect "{547F446774B0EEF1}Particles/Weapon/Explosion_TNT_400g.ptc"
     }
+    ExplosionEffect "{66A926A91BE4ED1C}" {
+     Enabled 0
+    }
    }
    SafetyDistance 0
   }
@@ -85,8 +88,8 @@ Projectile : "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.e
   }
   ShellMoveComponent "{5098E3DEA78F87A3}" {
    InitSpeed 100
-   InitSpeedVariation 1.9
-   DispersionMultiplier 1
+   InitSpeedVariation 50
+   DispersionMultiplier 100
    Mass 43
    TimeToLive 120
    BallisticTableConfig "{83019FB69BE14C68}Configs/Weapons/Ammo/M107_Shell_155mm_HE.conf"
@@ -104,7 +107,7 @@ Projectile : "{98EC9C526AFBA282}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_HE_O832DU.e
    m_aChargeRingConfig {
     1 2.4 1 2 3.1 0 3 4.4 0 4 5.6 0 5 6.84 0
    }
-   m_rLiveShellPrefab "{EA8B40221D8E68B1}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_HE.et"
+   m_rLiveShellPrefab "{BE9E8DB8E1BCFBF8}Prefabs/Weapons/Ammo/M107 HE/M107_Shell_155MM_Linebattle.et"
    m_rChamberVisualPrefab "{F7297F277A853708}Prefabs/Weapons/Ammo/M107 HE/M107_HE_chamber_visual.et"
    m_eAnimVariable ANPRC68
    m_eUseMask CUSTOM
