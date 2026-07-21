@@ -1,0 +1,336 @@
+SCR_AIWorld : "{77C3151F7A6E588C}SCR_AIWorld_Kunar.et" {
+ coords 640.058 39.584 3234.391
+ angles 0 0 0
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGamemodeManager "{69E6237985E2FF28}" {
+   m_eTargetType VIP
+   m_timeBetweenPings 60
+   m_bInitialPing 1
+   m_filterFaction 1
+   m_aHVTEntries {
+    CRF_HVTEntry "{69E62379B55B82DE}" {
+     m_eEntryType OBJECT
+     m_hvtPrefab "{E7FF723379730BD5}Prefabs/Items/PersonalBelongings/PersonalBelongings_CIV.et"
+     m_eFaction INDFOR
+     m_sTransponderEntityName "VIPTRANS"
+     m_sMarkerText "VIP"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 1
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 75
+ m_bLockUnusedSlots 0
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69E6237FAEBB6FE3}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "A VIP is trapped in Northwestern Kunar, A French Motorized Platoon has been asked to pick up the VIP and get them to FOB Michigan."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x IFV,  3x Armed Car and 1x UH60 DAP"\
+   ""\
+   "OPFOR Composition: Unknown"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time: 12:00 pm"\
+   ""\
+   "Weather: Cloudy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69E6237FAEBB63F4}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Pick up the VIP at Khandar Abad"\
+   "Escort the VIP to FOB Michigan"\
+   ""\
+   "INTENT"\
+   "Be quick at first to getting to the VIP then your can either slowly escort him to the FOB or rush him there."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E6237FAEBB6418}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Find and kill the VIP"\
+   ""\
+   "INTENT"\
+   "You do not know where the VIP is at all but assume he will be with BLUFOR for a majority of the time"\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E6237FAEBB6498}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Pick up the Personal belongings on the ground near the spawn flag."\
+   "Wait of BLUFOR to arrive and escort you to your extraction point."\
+   ""\
+   "INTENT"\
+   "You are a non-combatant for this mission, preserve your lifeand dont be dumb"\
+   ""\
+   "EXECUTION"\
+   "You can come up with a reason for your VIP status and RP it out to give yourself something to do."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69E6237FAEBB6503}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69E638B8FA14D229}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D39F}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D437}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D556}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D5ED}" {
+   m_sCallsign "Bishop 1 (IFV)"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D666}" {
+   m_sCallsign "Rook 1"
+   m_FlagType MOTORIZED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D6EE}" {
+   m_sCallsign "Rook 2"
+   m_FlagType MOTORIZED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69E638B8FA14D763}" {
+   m_sCallsign "Queen"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+   m_aRoleRespawns {
+    CRF_RoleRespawnEntry "{69E638B8FA14D79D}" {
+     m_Role PILOT
+     m_iRespawns -1
+    }
+   }
+  }
+  CRF_SlottingGroup "{69E638B8FA14A86F}" {
+   m_sCallsign "Zeus"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    ZEUS
+    ZEUS
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69E638B8FA14A8A6}" {
+   m_sCallsign "Weapons"
+   m_FlagType COMBINED
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_IndforSlots {
+  CRF_SlottingGroup "{69E638B8FA14A9EA}" {
+   m_sCallsign "VIP"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 100
+ m_iOPFORTickets 50
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A9355A8703C012EA}Configs/Gearscripts/Standard/Modern/CRF_GS_French00s.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69E623780F4270A1" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+}
