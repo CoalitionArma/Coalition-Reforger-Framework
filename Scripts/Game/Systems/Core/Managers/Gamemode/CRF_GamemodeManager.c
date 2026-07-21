@@ -17,6 +17,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	protected const int STATS_TRACKING_INIT_RETRY_DELAY_MS = 250;
 	protected const int STATS_TRACKING_INIT_MAX_RETRIES = 20;
+
+	protected const int GROUP_ASSIGN_RETRY_DELAY_MS = 100;
+	protected const int GROUP_ASSIGN_MAX_RETRIES = 30;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -102,7 +105,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 			if (!CRF_EntityHelper.IsSpectator(playerCharacter))
 			{
-				GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 350, false, playerId); // Need a delay here to fix nametags not showing up sometimes, 350ms is just a arbitrary value - Njpatman
+				// Group affiliation drives nametag visibility, but SCR_PlayerControllerGroupComponent
+				// isn't always resolvable immediately after SetInitialMainEntity (component/replication
+				// init order). Retry until it's ready instead of guessing a fixed delay.
+				ScheduleAssignPlayerToGroup(playerId, playerRplComp.Id(), 0);
 
 				// Notify the CRF-native stats manager so it begins tracking this player.
 				// Retry briefly in case component init/replication order delays availability.
@@ -318,20 +324,69 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Assign player to their slotted group
+	//! Poll until group affiliation can actually be assigned, then do it exactly once.
+	//! Group affiliation is what drives nametag visibility, but the group/component readiness
+	//! can lag behind character possession, so this retries instead of assuming a fixed delay
+	//! is always enough. Kept separate from AssignPlayerToGroup() itself so overrides of that
+	//! method (see CRF_CSI_ColorTeam.c) only fire once, on success, rather than once per retry.
+	//! \param[in] playerId ID of the player to assign
+	//! \param[in] playerEntityRplId RplId of the character this assignment was issued for, so a
+	//!            stale retry (player died/respawned again before this resolved) doesn't fire late
+	//! \param[in] attempt current retry count
+	protected void ScheduleAssignPlayerToGroup(int playerId, RplId playerEntityRplId, int attempt)
+	{
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager || !playerManager.IsPlayerConnected(playerId))
+			return;
+
+		// If the player already moved on to a different character (e.g. respawned again
+		// before this resolved), let that newer InitilizePlayer call own the group assignment.
+		IEntity controlledEntity = playerManager.GetPlayerControlledEntity(playerId);
+		if (!controlledEntity)
+			return;
+
+		RplComponent controlledRplComp = RplComponent.Cast(controlledEntity.FindComponent(RplComponent));
+		if (!controlledRplComp || controlledRplComp.Id() != playerEntityRplId)
+			return;
+
+		SCR_AIGroup group = m_SlottingManager.GetPlayerSlotGroup(playerId);
+		int groupId = -1;
+		if (group)
+			groupId = group.GetGroupID();
+
+		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
+
+		if (!group || groupId == -1 || !groupComponent)
+		{
+			if (attempt + 1 >= GROUP_ASSIGN_MAX_RETRIES)
+			{
+				Print(string.Format("[CRF_GamemodeManager] WARNING: Failed to assign player %1 to group after %2 attempts (nametags may not display)", playerId, GROUP_ASSIGN_MAX_RETRIES), LogLevel.WARNING);
+				return;
+			}
+
+			GetGame().GetCallqueue().CallLater(ScheduleAssignPlayerToGroup, GROUP_ASSIGN_RETRY_DELAY_MS, false, playerId, playerEntityRplId, attempt + 1);
+			return;
+		}
+
+		AssignPlayerToGroup(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Assign player to their slotted group. Only called once dependencies are confirmed ready
+	//! (see ScheduleAssignPlayerToGroup).
 	//! \param[in] playerId ID of the player to assign
 	protected void AssignPlayerToGroup(int playerId)
 	{
 		SCR_AIGroup group = m_SlottingManager.GetPlayerSlotGroup(playerId);
 		if (!group)
 			return;
-			
+
 		int groupId = group.GetGroupID();
 		if (groupId == -1)
 			return;
-			
+
 		m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
-		
+
 		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
 		if (groupComponent)
 			groupComponent.RPC_AskJoinGroup(groupId);
