@@ -5,12 +5,12 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structur
   scale 20
  }
  {
-  coords 5289.708 -56.166 1254.431
+  coords 5300.733 -60.639 1441.222
   angles 0 -86.622 0
   scale 20
  }
  {
-  coords 5256.778 -56.165 696.59
+  coords 5252.05 -47.745 616.503
   angles 0 -86.622 0
   scale 20
  }
@@ -30,12 +30,12 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structur
   scale 20
  }
  {
-  coords 4495.023 -56.165 1144.907
+  coords 4492.675 -55.377 1095.615
   angles 0 92.727 0
   scale 20
  }
  {
-  coords 4523.601 -56.165 1744.897
+  coords 4534.433 -56.142 1972.307
   angles 0 92.727 0
   scale 20
  }
@@ -59,4 +59,38 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structur
   angles 0 -86.622 0
   scale 20
  }
+ {
+  coords 4196.155 -25.952 1521.9
+  angles 0 38.312 0
+  scale 20
+ }
+ {
+  coords 4210.251 -43.374 1670.178
+  angles 0 149.416 0
+  scale 20
+ }
+ {
+  coords 5562.124 -31.806 1053.632
+  angles 0 -136.019 0
+  scale 20
+ }
+ {
+  coords 5554.033 -35.373 885.586
+  angles 0 -48.183 0
+  scale 20
+ }
+ {
+  coords 5577.035 -25.344 1295.132
+  angles 0 162.079 0
+  scale 20
+ }
+ {
+  coords 4241.875 -37.871 1293.09
+  angles 0 -9.561 0
+  scale 20
+ }
+}
+StaticModelEntity : "{BBE3211D6303CD0A}Prefabs/Structures/Military/Fortifications/Trenches/TrenchOld_01/TrenchOld_01_6m_metal_forest.et" {
+ coords 5064.05 -0.062 1425.95
+ angles -1.959 165.145 -0.406
 }
