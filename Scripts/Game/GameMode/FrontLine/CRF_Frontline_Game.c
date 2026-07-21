@@ -36,9 +36,6 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("900", "auto", "[Seconds] Time until the middle zone is unlocked", category: "Frontline Zone Settings")]
 	int m_iInitialTime;
 
-	[Attribute("1", UIWidgets.CheckBox, "Enable respawn when zones are captured during the mission.", category: "Frontline Zone Settings")]
-	bool m_bUseRespawns = true;
-	
 	// - All players within a zones range
 	ref array<SCR_ChimeraCharacter> m_aAllPlayersWithinZoneRange = new array<SCR_ChimeraCharacter>;
 	
@@ -523,12 +520,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
 		
 		// Respawn all players when zone is captured
-		if (m_bUseRespawns)
-		{
-			CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
-			if (respawnManager)
-				respawnManager.RespawnAllSides();
-		}
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+			respawnManager.RespawnAllSides();
 		
 		if((zoneIndex == (m_aZoneObjectNames.Count() - 1) && side == m_BluforSide) || (zoneIndex == 0 && side == m_OpforSide))
 			m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", side, "Unlocked", side));
