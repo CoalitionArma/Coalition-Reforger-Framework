@@ -1406,23 +1406,42 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void CreateChannel()
 	{
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		
-		// Check if player already has a channel by checking if they're the creator of any channel
+		string expectedChannelName = GetGame().GetPlayerManager().GetPlayerName(localPlayerId) + "'s Channel (" + localPlayerId + ")";
+		string localPlayerIdStr = localPlayerId.ToString();
+
+		// Check if player already owns an active channel - i.e. a channel bearing their name that
+		// they are still actually a member of, not just a name match. A name match alone isn't
+		// enough: if this client's replicated copy of m_aVONChannels is a frame behind the server
+		// (e.g. right after leaving the room, before the empty-channel cleanup has replicated
+		// back down), blindly matching on name would silently refuse to create a new channel with
+		// no feedback at all, making it look permanently stuck.
 		foreach(string channel: m_MenuManager.m_aVONChannels)
 		{
 			ref array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
-			string channelName = channelSplit.Get(0);
-			
-			// Check if this player created this channel by looking for their ID in the channel name
-			string expectedChannelName = GetGame().GetPlayerManager().GetPlayerName(localPlayerId) + "'s Channel (" + localPlayerId + ")";
-			if (channelName == expectedChannelName)
-				return;
+			if (channelSplit.Get(0) != expectedChannelName)
+				continue;
+
+			if (channelSplit.Count() > 1)
+			{
+				ref array<string> members = {};
+				channelSplit.Get(1).Split(",", members, true);
+				if (members.Contains(localPlayerIdStr))
+				{
+					if (m_PopUpNotification)
+						m_PopUpNotification.PopupMsg("You already have an active voice channel.", 5);
+
+					return;
+				}
+			}
+
+			// Name matches but the player isn't actually a member (stale/orphaned entry) -
+			// don't block creation on it, keep looking/fall through.
 		}
-		
+
 		// Create a new channel
 		CRF_PlayerRplToAuthorityManager.GetInstance().CreateChannel(localPlayerId);
-		
+
 		// Schedule radio frequency update after channel creation
 		// Use a longer delay to allow server replication and channel assignment to complete
 		if (!CVON_VONGameModeComponent.GetInstance())
