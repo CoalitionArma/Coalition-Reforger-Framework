@@ -5,6 +5,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  components {
   CRF_HighValueTargetGamemodeManager "{69EA1192E02D162F}" {
    m_eTargetType VIP
+   m_bInitialPing 1
    m_aHVTEntries {
     CRF_HVTEntry "{69EA1192FB651FE6}" {
      m_eEntryType PLAYER
@@ -409,4 +410,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
+}
+BaseGameTriggerEntity transponder_1 {
+ coords 5370.495 143.757 5219.819
 }
