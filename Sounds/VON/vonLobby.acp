@@ -1,0 +1,939 @@
+AudioClass {
+ signals {
+  SignalClass "{6872A369BEDFDC58}" {
+   id 30733
+   name "Signal 1"
+   tl -792.242 -542.905
+   res "{CF1F9C4B120DE5F8}Sounds/VON/Von.sig"
+   inputsport {
+    1
+   }
+   outputsport {
+    5
+    8
+    12
+   }
+   inputvalues {
+    1
+   }
+   inputvaluesmin {
+    0
+   }
+   inputvaluesmax {
+    1
+   }
+  }
+  SignalClass "{6872A369BEDFDCA7}" {
+   id 66573
+   name "Signal 65"
+   tl -18.571 -1113.444
+   res "{2DE6099BBD60C620}Sounds/_SharedData/Signals/Character/Character_Occlusion.sig"
+   inputsport {
+    1
+    2
+    6
+    7
+    8
+    20
+    50
+    54
+   }
+   outputsport {
+    5
+    36
+   }
+   inputvalues {
+    0
+    0
+    0
+    0
+    0
+    0
+    1000
+    400
+   }
+   inputvaluesmin {
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+   }
+   inputvaluesmax {
+    1
+    1
+    1
+    1
+    1
+    1
+    10000
+    10000
+   }
+  }
+  SignalClass "{6872A369BEDFDC9C}" {
+   id 77837
+   name "Signal Reverb"
+   tl 501.25 -886.875
+   res "{76CBB40EF7F227B6}Sounds/_SharedData/Signals/Reverb/Reverb_Base.sig"
+   inputsport {
+    1
+    35
+    40
+   }
+   outputsport {
+    34
+    39
+    105
+   }
+   inputvalues {
+    40
+    1
+    1
+   }
+   inputvaluesmin {
+    0
+    0
+    0
+   }
+   inputvaluesmax {
+    100
+    1
+    1
+   }
+  }
+ }
+ filters {
+  FilterClass "{6872A369BEDFDCF1}" {
+   id 33814
+   name "Filter Bitcrusher"
+   version 5
+   tl -542.043 -579.021
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 30733
+       port 5
+      }
+     }
+    }
+   }
+   pi {
+    1
+   }
+   pu {
+    1
+   }
+   wetDry 0
+   DSPObject BitCrusherDSPTypeClass dsp {
+    bitMask "11010101"
+   }
+  }
+  FilterClass "{6872A369BEDFDD32}" {
+   id 39958
+   name "Filter Compressor"
+   version 5
+   tl -792.242 -950.35
+   pi {
+    3
+   }
+   volume_dB 4
+   DSPObject CompressorDSPTypeClass dsp {
+    threshold -23
+    ratio 4
+    attack 10
+    release 50
+   }
+  }
+  FilterClass "{6872A369BEDFDD2C}" {
+   id 54294
+   name "Filter HP"
+   version 5
+   tl -792.242 -1246.469
+   pi {
+    3
+   }
+   DSPObject BiquadDSPTypeClass dsp {
+    biquadType HighPass
+    fc 220
+    Q 1
+   }
+  }
+  FilterClass "{6872A369BEDFDD19}" {
+   id 58390
+   name "Filter LP"
+   version 5
+   tl -792.242 -1147.223
+   pi {
+    3
+   }
+   DSPObject BiquadDSPTypeClass dsp {
+    fc 8000
+    Q 1.5
+   }
+  }
+  FilterClass "{6872A369BEDFDD01}" {
+   id 62486
+   name "Filter LS"
+   version 5
+   tl -792.242 -1048.75
+   pi {
+    3
+   }
+   DSPObject BiquadDSPTypeClass dsp {
+    biquadType LowShelf
+    fc 150
+    Q 1
+    gain -6
+   }
+  }
+  FilterClass "{6872A369BEDFDD75}" {
+   id 63510
+   name "Filter HP"
+   version 5
+   tl -542.043 -482.209
+   pi {
+    1
+   }
+   volume_dB 1
+   DSPObject BiquadDSPTypeClass dsp {
+    biquadType HighPass
+    fc 1200
+    Q 2
+   }
+  }
+  FilterClass "{6872A369BEDFDD7C}" {
+   id 64534
+   name "Filter LP"
+   version 5
+   tl -542.043 -385.932
+   pi {
+    1
+   }
+   volume_dB 2
+   DSPObject BiquadDSPTypeClass dsp {
+    fc 3600
+    Q 1.8
+   }
+  }
+  FilterClass "{6872A369BEDFDD64}" {
+   id 75798
+   name "Filter Test"
+   version 5
+   tl -1000.778 -739.722
+   pi {
+    3
+   }
+   DSPObject LoudnessNormalizationDSPTypeClass dsp {
+    responseTime 0.5
+   }
+  }
+ }
+ filter_chain {
+  FilterChainClass "{6872A369BEDFDD5E}" {
+   id 32791
+   name "FilterChain"
+   comment "Dont use compressor here. Creates panorama movement when DIRECT and RADIO are mixed."
+   version 5
+   tl -275.559 -513.921
+   ctl 0 -21
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 33814
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 63510
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 3
+     links {
+      ConnectionClass connection {
+       id 64534
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    14
+   }
+   ports 3
+  }
+  FilterChainClass "{6872A369BEDFDDB9}" {
+   id 53271
+   name "FilterChain 52"
+   version 5
+   tl -542.043 -1096.151
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 54294
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 58390
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 3
+     links {
+      ConnectionClass connection {
+       id 62486
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 4
+     links {
+      ConnectionClass connection {
+       id 39958
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    30
+   }
+   ports 4
+  }
+ }
+ sounds {
+  SoundClass "{6872A369BEDFDD85}" {
+   id 27657
+   name "VON_RADIO"
+   version 0
+   tl 255.954 -213.107
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 46098
+       port 65
+      }
+      ConnectionClass connection {
+       id 22546
+       port 65
+      }
+     }
+    }
+   }
+   varName "VON_Radio"
+   varResource "{A60F08955792B575}Sounds/_SharedData/Variables/GlobalVariables.conf"
+   volume_dB 1
+   outState 13323
+   outStatePort 77831
+  }
+  SoundClass "{6872A369BEDFDDE7}" {
+   id 45065
+   name "SOUND_ROGER_BEEP"
+   version 0
+   tl 255.954 107.032
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 44050
+       port 65
+      }
+     }
+    }
+   }
+   volume_dB 3
+   outState 13323
+   outStatePort 77831
+  }
+  SoundClass "{6872A369BEDFDDE9}" {
+   id 49161
+   name "VON_DIRECT"
+   version 0
+   tl 255.954 -812.286
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 22546
+       port 65
+      }
+     }
+    }
+   }
+   varName "VON_Direct"
+   varResource "{A60F08955792B575}Sounds/_SharedData/Variables/GlobalVariables.conf"
+   outState 13323
+   outStatePort 77831
+  }
+  SoundClass "{6872A369BEDFDDDA}" {
+   id 56329
+   name "VON_RAW"
+   version 0
+   tl 255.954 -1491.286
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 57362
+       port 65
+      }
+     }
+    }
+   }
+   varName "VON_Direct"
+   varResource "{A60F08955792B575}Sounds/_SharedData/Variables/GlobalVariables.conf"
+  }
+ }
+ buses {
+  BusClass "{6872A369BEDFDDC8}" {
+   id 38919
+   name "Bus 1"
+   version 5
+   tl -542.043 -213.643
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 30733
+       port 8
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 36869
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    1
+   }
+   pu {
+    1
+   }
+  }
+  BusClass "{6872A369BEDFDA2D}" {
+   id 50183
+   name "Bus 49"
+   version 5
+   tl -275.559 -212.393
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 30733
+       port 12
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 32791
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 52231
+       port 65
+      }
+      ConnectionClass connection {
+       id 38919
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    3
+   }
+   pu {
+    1
+   }
+  }
+  BusClass "{6872A369BEDFDA02}" {
+   id 52231
+   name "Bus Direct Processing"
+   version 5
+   tl -542.043 -812.107
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 53271
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 26641
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    2
+   }
+   volume 0.631
+   volume_dB -4
+  }
+  BusClass "{6872A369BEDFDA7E}" {
+   id 76807
+   name "Bus Test"
+   version 5
+   tl -1001.333 -642.222
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 75798
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 55300
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    2
+   }
+  }
+ }
+ generators {
+  GeneratorClass "{6872A369BEDFDA5A}" {
+   id 36869
+   name "Generator 1"
+   version 5
+   tl -792.242 -214.893
+   function BrownianNoise
+   volume 0.2
+   volume_dB -14
+   time 10
+   loopCount 255
+  }
+ }
+ mixers {
+  MixerClass "{6872A369BEDFDAB4}" {
+   id 13323
+   name "OutputState"
+   version 4
+   tl 501.476 -640.389
+   res "{B764D803219C775E}Sounds/FinalMix.afm"
+   ins {
+    ConnectionsClass connections {
+     id 77831
+     links {
+      ConnectionClass connection {
+       id 27657
+       port 65
+      }
+      ConnectionClass connection {
+       id 45065
+       port 65
+      }
+      ConnectionClass connection {
+       id 49161
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 160775
+     links {
+      ConnectionClass connection {
+       id 69661
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    294912
+   }
+   path "{B764D803219C775E}Sounds/FinalMix.afm"
+   inputs {
+    "ANM_Footsteps"
+    "ANM_Voice"
+    "WPN_Handling"
+    "WPN_Shots"
+    "WPN_Explosions"
+    "WNP_BulletHits"
+    "CHAR"
+    "ENV_AMB_2D"
+    "VEH_Animations"
+    "Impacts"
+    "Dialogue"
+    "Music"
+    "ENV_Doors"
+    "VEH_Engine"
+    "VEH_Tires"
+    "VON"
+    "SFX"
+    "SFX_Reverb"
+    "VON_Reverb"
+    "Dialogue_Reverb"
+    "Impacts_EXT"
+    "ENV_AMB_3D"
+    "WPN_SonicCracks"
+    "CHAR_Gear"
+    "PA"
+    "SFX_Reverb_Exterior"
+    "UI"
+    "ENV_AMB_3D_Reverb_Exterior"
+    "SFX_Direct"
+   }
+  }
+ }
+ shaders {
+  ShaderClass "{6872A369BEDFDAFD}" {
+   id 22546
+   name "Shader 1"
+   version 5
+   tl -18.571 -810.857
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 48156
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 23571
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 78869
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 52231
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    23
+   }
+   ITD 0
+  }
+  ShaderClass "{6872A369BEDFDADD}" {
+   id 44050
+   name "Shader 4"
+   version 5
+   tl -18.571 103.222
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 23571
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 43032
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    2
+   }
+   ITD 0
+  }
+  ShaderClass "{6872A369BEDFDACA}" {
+   id 46098
+   name "Shader 2"
+   version 5
+   tl -18.571 -213.643
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 50183
+       port 65
+      }
+     }
+    }
+   }
+   ITD 0
+  }
+  ShaderClass "{6872A369BEDFDB3F}" {
+   id 57362
+   name "Shader 56"
+   version 5
+   tl -18.571 -1491.286
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 26641
+       port 65
+      }
+     }
+    }
+   }
+   ITD 0
+  }
+ }
+ amplitudes {
+  AmplitudeClass "{6872A369BEDFDB1A}" : "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-40LUFS_to_-35LUFS.conf" {
+   id 23571
+   version 5
+   tl -18.571 -1190.389
+   ctl 0 -21
+   parent "{9F8145144171C64B}Sounds/_SharedData/Configs/Amplitude/_SharedData/Amplitude_-40LUFS_to_-35LUFS.conf"
+   outerRange 20
+  }
+ }
+ frequency {
+  FrequencyClass "{6872A369BEDFDB7B}" : "{85F92D98658CB0F5}Sounds/_SharedData/Configs/Frequency/Character/Frequency_Character_Voice.conf" {
+   id 78869
+   version 5
+   tl -18.194 -920.833
+   parent "{85F92D98658CB0F5}Sounds/_SharedData/Configs/Frequency/Character/Frequency_Character_Voice.conf"
+   ins {
+    ConnectionsClass connections {
+     id 4
+     links {
+      ConnectionClass connection {
+       id 66573
+       port 36
+      }
+     }
+    }
+   }
+   pi {
+    16
+   }
+   pu {
+    16
+   }
+   enableDirectivity 0
+  }
+ }
+ playlist {
+  PlaylistClass "{6872A369BEDFDB52}" {
+   id 43032
+   name "Playlist 1"
+   version 5
+   tl -275.559 103.222
+   ins {
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 40964
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 41988
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    6
+   }
+  }
+ }
+ streams {
+  StreamClass "{6872A369BEDFDB49}" {
+   id 26641
+   name "Stream 1"
+   version 5
+   tl -792.242 -810.321
+  }
+ }
+ banks_local {
+  BankLocalClass "{6872A369BEDFDBBB}" {
+   id 40964
+   name "Roger Beep A"
+   version 0
+   tl -542.043 58.671
+   Volume -18
+   "Volume variance" 2
+   "Pitch variance" 2
+   Samples {
+    AudioBankSampleClass Sample {
+     Filename "{1DB01BC81F7F7038}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_A_1.wav"
+    }
+    AudioBankSampleClass Sample {
+     Filename "{84AEA251029841A8}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_A_2.wav"
+    }
+    AudioBankSampleClass Sample {
+     Filename "{F3A4CAD9F63AAED8}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_A_3.wav"
+    }
+   }
+  }
+  BankLocalClass "{6872A369BEDFDBF4}" {
+   id 41988
+   name "Roger Beep B"
+   version 0
+   tl -542.043 162.421
+   Volume -13
+   "Volume variance" 2
+   "Pitch variance" 1
+   Samples {
+    AudioBankSampleClass Sample {
+     Filename "{17154B85A96F83BF}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_B_1.wav"
+    }
+    AudioBankSampleClass Sample {
+     Filename "{8E0BF21CB488B22F}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_B_2.wav"
+    }
+    AudioBankSampleClass Sample {
+     Filename "{F9019A94402A5D5F}Sounds/RadioProtocol/Samples/RogerBeep/Radio_RogerBeep_B_3.wav"
+    }
+   }
+  }
+  BankLocalClass "{6872A369BEDFDBD7}" {
+   id 55300
+   name "Test Bank"
+   version 0
+   tl -1184.603 -641.27
+   Volume -1
+   Samples {
+    AudioBankSampleClass Sample {
+     Filename "{F78C20F642505734}Sounds/RadioProtocol/Samples/Eng/Male1/Campaign/HQ/HQ_CTL_S1_P1_V1.wav"
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass "{6872A369BEDFDBC0}" {
+   id 48156
+   name "Spatiality"
+   version 5
+   tl -18.571 -1268.973
+   spatialFactor 1
+  }
+ }
+ auxOuts {
+  AuxOutClass "{6872A369BEDFD834}" {
+   id 69661
+   name "AuxOut Reverb INT"
+   version 5
+   tl 501.476 -766.713
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 49161
+       port 5
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 77837
+       port 34
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 77837
+       port 39
+      }
+     }
+    }
+   }
+   pi {
+    7
+   }
+   pu {
+    6
+   }
+   OSPort 160775
+  }
+ }
+ version 1
+ listenerWindowModel "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+}
