@@ -26,6 +26,8 @@ CRF_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     }
     CRF_PlayerRplToAuthorityManager "{68C4425EB437D844}" {
     }
+    CRF_GameplayRplToAuthorityManager "{84EF9866E860877E}" {
+    }
     CRF_PlayerRplToOwnerManager "{68C5417AC359912D}" {
     }
     CRF_PlayerScriptedMarkerManager "{68C4425EB38E4BFD}" {
