@@ -60,7 +60,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 
 		m_bSupplyEnabled = SCR_ResourceSystemHelper.IsGlobalResourceTypeEnabled(EResourceType.SUPPLIES) && m_SupplyArsnealComponent.m_bSupplyEnabled;
 		RplId arsenalId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		if (rplManager && CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
 			rplManager.UpdateSupplyArsneal(arsenalId);
 	}
@@ -798,7 +798,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 
 		RplId truckId;
 		RplId arsenalId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		if (!rplManager || !CRF_ReplicationHelper.GetRplId(truck, truckId) || !CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
 			return;
 

@@ -103,7 +103,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			return;
 
 		ItemPreviewManagerEntity manager = world.GetItemPreviewManager();
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		RplId truckId;
 		if (rplManager && CRF_ReplicationHelper.GetRplId(m_Truck, truckId))
 			rplManager.UpdateSupplyArsneal(truckId);
@@ -144,7 +144,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		if (m_bSupplyEnabled)
 		{
 			CRF_VehicleGearscriptManager gearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
-			CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+			CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 			if (!gearscriptManager || !rplManager)
 			{
 				item.RemoveFromHierarchy();
@@ -317,7 +317,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		}
 		
 		RplId rearmTruckId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		if (!rplManager || !CRF_ReplicationHelper.GetRplId(m_Truck, rearmTruckId))
 			return;
 

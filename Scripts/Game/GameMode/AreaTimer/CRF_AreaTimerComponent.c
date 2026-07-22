@@ -5,7 +5,7 @@
 // tick down a countdown; when it reaches zero they win (optionally triggering
 // the game win condition).
 //
-// All client replication is routed through CRF_RplBroadcastManager so that
+// All client replication is routed through CRF_GameplayBroadcastManager so that
 // this component works correctly in multiplayer without needing a replicated
 // entity of its own.
 //
@@ -50,7 +50,7 @@ class CRF_AreaTimerComponent : ScriptComponent
 	bool m_bWinCondition;
 
 	//---------------------------------------------------------------------------------------------
-	// Server-side state  (not replicated – broadcast via CRF_RplBroadcastManager)
+	// Server-side state  (not replicated – broadcast via CRF_GameplayBroadcastManager)
 	//---------------------------------------------------------------------------------------------
 
 	protected CRF_EAreaTimerState m_eState;
@@ -265,7 +265,7 @@ class CRF_AreaTimerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void BroadcastState()
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
 		if (bm)
 			bm.BroadcastAreaTimerUpdate(m_eState, m_iCountdownRemaining, m_sControllingFaction, m_sZoneLabel);
 	}
@@ -281,7 +281,7 @@ class CRF_AreaTimerComponent : ScriptComponent
 		GetGame().GetCallqueue().Remove(UpdateAreaTimer);
 
 		// Notify all clients via the broadcast manager
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
 		if (bm)
 			bm.BroadcastAreaTimerWin(m_sControllingFaction, m_sZoneLabel);
 

@@ -544,7 +544,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	void SelectSight(SCR_ButtonBaseComponent button)
 	{
 		CRF_SightArsenalItemButton itemButton = CRF_SightArsenalItemButton.Cast(button);
-		CRF_PlayerRplToAuthorityManager.GetInstance().SightArsenalRequestNewSight(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_sType);
+		CRF_GameplayRplToAuthorityManager.GetInstance().SightArsenalRequestNewSight(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_sType);
 	}
 	
 	override void OnMenuFocusLost()

@@ -54,7 +54,7 @@ modded class SCR_PlayerControllerCommandingComponent
 	
 	void ShareMapMarkers()
 	{
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		if (rplManager)
 			rplManager.ShareMapMarkers();
 	}
@@ -67,7 +67,7 @@ modded class SCR_PlayerControllerCommandingComponent
 	        return;
 	    
 	    string factionKey = faction.GetFactionKey();
-	    CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+	    CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
 		if (rplManager && m_MapContextualMenu)
 			rplManager.RequestForwardDeploy(m_MapContextualMenu.GetMenuWorldPosition(), factionKey, playerId);
 	}

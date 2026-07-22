@@ -25,7 +25,7 @@ modded class EditorMenuUI
 	void CleanUpBodies()
 	{
 		CloseConfirmAction();
-		CRF_PlayerRplToAuthorityManager.GetInstance().CleanUpBodies();
+		CRF_GameplayRplToAuthorityManager.GetInstance().CleanUpBodies();
 	}
 	
 	void ConfirmAction()
@@ -69,7 +69,7 @@ modded class EditorMenuUI
 			return;
 		
 		m_PlayerControllerManager.m_bIsListeningToSpec = false;
-		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
+		CRF_GameplayRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), false);
 		CloseConfirmAction();
 	}
 	
@@ -79,6 +79,6 @@ modded class EditorMenuUI
 			return;
 		
 		m_PlayerControllerManager.m_bIsListeningToSpec = !m_PlayerControllerManager.m_bIsListeningToSpec;
-		CRF_PlayerRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerControllerManager.m_bIsListeningToSpec);
+		CRF_GameplayRplToAuthorityManager.GetInstance().TogglePlayerListening(SCR_PlayerController.GetLocalPlayerId(), m_PlayerControllerManager.m_bIsListeningToSpec);
 	}
 }

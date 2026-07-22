@@ -337,7 +337,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// TASK COMPLETION
 	//=========================================================================
 
-	// Called server-side by CRF_PlayerRplToAuthorityManager.RpcAsk_RequestObjectiveTaskComplete.
+	// Called server-side by CRF_GameplayRplToAuthorityManager.RpcAsk_RequestObjectiveTaskComplete.
 	// Marks the task complete, stores which side completed it, optionally removes the object,
 	// fires notifications, and propagates state to all clients via RplProp.
 	void MarkTaskComplete(int taskIndex, int completingSideInt = 0)

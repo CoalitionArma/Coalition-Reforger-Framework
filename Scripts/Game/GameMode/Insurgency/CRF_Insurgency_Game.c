@@ -38,7 +38,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
     protected static CRF_InsurgencyGamemodeManager m_sInstance;
 
     // FIX: Lazy-init references instead of caching at OnPostInit to avoid initialization order issues
-	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected CRF_GameplayBroadcastManager m_RplBroadcastManager;
 	protected CRF_RespawnManager m_RespawnManager;
     protected CRF_GamemodeManager m_GamemodeManager;
     
@@ -64,10 +64,10 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
     // FIX: Lazy getters for manager references to avoid initialization order dependency
-    protected CRF_RplBroadcastManager GetBroadcastManager()
+    protected CRF_GameplayBroadcastManager GetBroadcastManager()
     {
         if (!m_RplBroadcastManager)
-            m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+            m_RplBroadcastManager = CRF_GameplayBroadcastManager.GetInstance();
         return m_RplBroadcastManager;
     }
     
@@ -217,7 +217,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
             // FIX: Removed CheckGameEndConditions() call (was dead code) - win condition handled here directly
 			if (res == -1)
 			{
-				CRF_RplBroadcastManager broadcastMgr = GetBroadcastManager();
+				CRF_GameplayBroadcastManager broadcastMgr = GetBroadcastManager();
 				if (broadcastMgr)
                     broadcastMgr.PopUpNotification(15, string.Format("Phase %1 complete! All caches destroyed. Attackers win!", phase));
 			}
@@ -227,7 +227,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 			int cachesDestroyed = m_mPhaseToDestroyedCaches.Get(phase).Count();
 			int cacheTotal = activeCaches.Count() + cachesDestroyed;
 			
-			CRF_RplBroadcastManager broadcastMgr = GetBroadcastManager();
+			CRF_GameplayBroadcastManager broadcastMgr = GetBroadcastManager();
 			if (broadcastMgr)
                 broadcastMgr.PopUpNotification(15, string.Format("Phase %1: %2/%3 caches destroyed", phase, cachesDestroyed, cacheTotal));
 		}
@@ -277,7 +277,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         
         Replication.BumpMe();
 		
-		CRF_RplBroadcastManager broadcastMgr = GetBroadcastManager();
+		CRF_GameplayBroadcastManager broadcastMgr = GetBroadcastManager();
 		if (broadcastMgr)
         {
             if (m_iPhaseBufferMinutes > 0)
@@ -308,7 +308,7 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         {
             GetGame().GetCallqueue().Remove(UpdateZoneRevealTimer);
             
-			CRF_RplBroadcastManager broadcastMgr = GetBroadcastManager();
+			CRF_GameplayBroadcastManager broadcastMgr = GetBroadcastManager();
             if (!m_bZoneRevealNotificationSent && broadcastMgr)
             {
                 m_bZoneRevealNotificationSent = true;

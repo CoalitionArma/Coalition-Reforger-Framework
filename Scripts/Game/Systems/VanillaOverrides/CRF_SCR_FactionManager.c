@@ -75,7 +75,7 @@ modded class SCR_FactionManager
 		}
 		
 		// Send only this faction's channels to all clients via broadcast manager
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
 		if (broadcastManager)
 			broadcastManager.UpdateFactionChannelsSR(factionId, input);
 	}
@@ -117,7 +117,7 @@ modded class SCR_FactionManager
 		}
 		
 		// Send only this faction's channels to all clients via broadcast manager
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
 		if (broadcastManager)
 			broadcastManager.UpdateFactionChannelsLR(factionId, input);
 	}

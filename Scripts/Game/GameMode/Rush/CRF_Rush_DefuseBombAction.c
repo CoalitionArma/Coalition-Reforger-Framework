@@ -46,13 +46,13 @@ class CRF_RushDefuseBombAction : ScriptedUserAction
 			return;
 
 		// Stop the defuse sound since action completed successfully
-		CRF_PlayerRplToAuthorityManager.GetInstance().StopRushDefuseSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StopRushDefuseSound();
 
 		// Explicitly stop bomb ticking sound before defusing
-		CRF_PlayerRplToAuthorityManager.GetInstance().StopRushBombTickingSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StopRushBombTickingSound();
 
 		// Send defuse command to authority (this will handle stopping bomb ticking sound)
-		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, false);
+		CRF_GameplayRplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
@@ -62,7 +62,7 @@ class CRF_RushDefuseBombAction : ScriptedUserAction
 		super.OnActionStart(pUserEntity);
 		
 		// Send RPC to start defuse sound globally
-		CRF_PlayerRplToAuthorityManager.GetInstance().StartRushDefuseSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StartRushDefuseSound();
 	}
 	
 	override void OnActionCanceled(IEntity pOwnerEntity, IEntity pUserEntity)
@@ -70,7 +70,7 @@ class CRF_RushDefuseBombAction : ScriptedUserAction
 		super.OnActionCanceled(pOwnerEntity, pUserEntity);
 		
 		// Send RPC to stop defuse sound globally when action is canceled
-		CRF_PlayerRplToAuthorityManager.GetInstance().StopRushDefuseSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StopRushDefuseSound();
 	}
 	
 	/**

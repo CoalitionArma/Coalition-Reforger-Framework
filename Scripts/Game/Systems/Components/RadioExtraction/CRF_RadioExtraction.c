@@ -117,7 +117,7 @@ class CRF_RadioExtraction : ScriptComponent
 	protected IEntity m_eBombEntity;
 	protected SCR_PopUpNotification m_PopUpNotification;
 	protected CRF_SafestartManager m_SafestartManager;
-	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected CRF_GameplayBroadcastManager m_RplBroadcastManager;
 
 	// Polled (not event-subscribed) safestart tracking — I dont know why but invoker wasnt working correctly, would detect safestart gone before lobby
 	protected bool m_bHasSafestartStarted = false;
@@ -164,7 +164,7 @@ class CRF_RadioExtraction : ScriptComponent
 		if (!GetGame().InPlayMode())
 			return;
 
-		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_RplBroadcastManager = CRF_GameplayBroadcastManager.GetInstance();
 
 		if (!Replication.IsServer())
 			return;
@@ -457,7 +457,7 @@ class CRF_RadioExtraction : ScriptComponent
 	}
 
 	//===================================================================================
-	// SOUND MANAGEMENT (server-side, replicated via CRF_RplBroadcastManager positional sounds)
+	// SOUND MANAGEMENT (server-side, replicated via CRF_GameplayBroadcastManager positional sounds)
 	//===================================================================================
 
 	//------------------------------------------------------------------------------------------------

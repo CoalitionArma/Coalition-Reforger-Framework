@@ -44,10 +44,10 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 			return;
 		
 		// Send RPC to stop planting sound since action completed successfully
-		CRF_PlayerRplToAuthorityManager.GetInstance().StopRushPlantingSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StopRushPlantingSound();
 		
 		// Send plant command to authority (this will trigger bomb ticking sound)
-		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, true);
+		CRF_GameplayRplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, true);
 		
 		// Clear the planting MCOM since action completed
 		if (m_RushGamemode)
@@ -75,7 +75,7 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 		}
 		
 		// Send RPC to start planting sound globally
-		CRF_PlayerRplToAuthorityManager.GetInstance().StartRushPlantingSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StartRushPlantingSound();
 	}
 	
 	override void OnActionCanceled(IEntity pOwnerEntity, IEntity pUserEntity)
@@ -89,7 +89,7 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 		}
 		
 		// Send RPC to stop planting sound globally when action is canceled
-		CRF_PlayerRplToAuthorityManager.GetInstance().StopRushPlantingSound();
+		CRF_GameplayRplToAuthorityManager.GetInstance().StopRushPlantingSound();
 	}
 	
 	/**

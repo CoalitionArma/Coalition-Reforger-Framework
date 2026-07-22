@@ -358,7 +358,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_fArsenalTimeout = 1;
 		
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(button);
-		CRF_PlayerRplToAuthorityManager.GetInstance().MiniArsenalRequestNewItem(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_iSlotId);
+		CRF_GameplayRplToAuthorityManager.GetInstance().MiniArsenalRequestNewItem(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_iSlotId);
 	}
 	
 	void SelectWeapon(SCR_ButtonBaseComponent button)
@@ -370,7 +370,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		}
 		m_fArsenalTimeout = 1;
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(button);
-		CRF_PlayerRplToAuthorityManager.GetInstance().MiniArsenalRequestNewWeapon(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_aAttachments,
+		CRF_GameplayRplToAuthorityManager.GetInstance().MiniArsenalRequestNewWeapon(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_aAttachments,
 		itemButton.m_aMagazines, itemButton.m_aMagazineCounts, itemButton.m_bIsPistol);
 	
 	}
