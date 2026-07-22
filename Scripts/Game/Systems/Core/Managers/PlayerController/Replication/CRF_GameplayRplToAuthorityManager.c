@@ -175,6 +175,12 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 			Rpc(RpcAsk_RequestMissionSave, saveName);
 	}
 	*/
+	
+	//------------------------------------------------------------------------------------------------
+	void ReportSettingsViolation(int playerId, string violationType)
+	{
+		Rpc(RpcAsk_ReportSettingsViolation, playerId, violationType);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void ReportBug(string data, int playerID)
@@ -184,73 +190,9 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 
 	
 	//------------------------------------------------------------------------------------------------
-	void SendAdminMessage(string data, int playerID)
-	{
-		Rpc(RpcAsk_SendAdminMessage, data, playerID); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void ReportSettingsViolation(int playerId, string violationType)
-	{
-		Rpc(RpcAsk_ReportSettingsViolation, playerId, violationType);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
-	{
-		if (SCR_Global.IsAdmin() || m_PermissionManager.IsModerator())
-			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, adminID, logAction); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
-	{
-		Rpc(RpcAsk_CloseAdminTicket, ticketID, adminID, logAction); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
-	{
-		Rpc(RpcAsk_AssignAdminTicket, ticketID, adminID, logAction); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void GetOpenTickets(int playerID)
-	{
-		Rpc(RpcAsk_GetOpenTickets, playerID); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void GetTicketMessages(int playerID, int ticketID)
-	{
-		Rpc(RpcAsk_GetTicketMessages, playerID, ticketID); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
 	void RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
 		Rpc(RpcAsk_RequestVehicleDepotInteraction, playerId, vehicleIndex, depotRplId);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void RespawnFaction(FactionKey faction, bool logAction)
-	{
-		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void AddItem(int playerId, string prefab, bool logAction)
-	{
-		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
 	}
 
 	
@@ -271,48 +213,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 	void ConvertItem(int playerId, RplId oldEntityId, string newPrefab, bool logAction)
 	{
 		Rpc(RpcAsk_ConvertItem, playerId, oldEntityId, newPrefab, logAction);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
-	{
-		Rpc(RpcAsk_TeleportPlayers, playerId1, playerId2, logAction); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void SendHint(string data, int playerId = -1, string factionKey = "")
-	{
-		Rpc(RpcAsk_SendHint, data, playerId, factionKey); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void Heal(int playerId, bool logAction, bool isVehicle = false)
-	{
-		Rpc(RpcAsk_Heal, playerId, logAction, isVehicle); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void LogAdminAction(string data, int playerId, bool sendToPlayer) 
-	{
-		Rpc(RpcAsk_LogAdminAction, data, playerId, sendToPlayer); 
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateTimer(int delta) 
-	{
-		Rpc(RpcAsk_UpdateTimer, delta); 
-	}	
-
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateTicket(string action, FactionKey faction, int delta) 
-	{
-		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
 	}
 
 	
@@ -350,44 +250,9 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 
 	
 	//------------------------------------------------------------------------------------------------
-	void TogglePlayerListening(int playerId, bool input)
-	{
-		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void ToggleWaveRespawn()
-	{
-		Rpc(RpcAsk_ToggleWaveRespawn);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void ToggleRespawn()
-	{
-		Rpc(RpcAsk_ToggleRespawn);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
 	void ToggleVAARRecording()
 	{
 		Rpc(RpcAsk_ToggleVAARRecording);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void SetRespawnTime(int seconds)
-	{
-		Rpc(RpcAsk_SetRespawnTime, seconds);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	void CleanUpBodies()
-	{
-		Rpc(RpcAsk_CleanUpBodies);
 	}
 
 	
@@ -682,24 +547,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 	}
 	*/
 
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SendAdminMessage(string data, int playerID)
-	{
-		// Telemetry: string + int
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		LogTelemetry("RpcAsk_SendAdminMessage", bytes);
-		
-		// Broadcast a new ticket/message to admins
-		bool ticketExists = m_AdminMenuManager.TicketExists(playerID);
-		m_RplBroadcastManager.SendAdminMessage(data, playerID, ticketExists);
-		
-		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
-		if (!SCR_Global.IsAdmin(playerID) && !m_PermissionManager.IsModerator(playerID))
-			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
-	}	
-
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -756,69 +603,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		restContext.POST(null, repo, payload);
 	}
 
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
-	{
-		// Telemetry: string + 2 ints + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_ReplyAdminMessage", bytes);
-		
-		// Create a new ticket or/and add reply to existing ticket
-		m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
-		
-		// Broadcast to the reply to the player
-		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_CloseAdminTicket(int ticketID, int adminID, bool logAction)
-	{
-		// Telemetry: 2 ints + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_CloseAdminTicket", bytes);
-		
-		m_AdminMenuManager.CloseTicket(ticketID);
-		
-		// Broadcast to admins that ticket was clsoed
-		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, true);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_AssignAdminTicket(int ticketID, int adminID, bool logAction)
-	{
-		// Telemetry: 2 ints + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_AssignAdminTicket", bytes);
-		
-		m_AdminMenuManager.AssignAdminTicket(ticketID, adminID);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_GetOpenTickets(int playerID)
-	{
-		m_RplBroadcastManager.GetOpenTickets(playerID);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_GetTicketMessages(int playerID, int ticketID)
-	{
-		m_RplBroadcastManager.GetTicketMessages(playerID, ticketID);
-	}
-
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -851,81 +635,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		
 		// If not viewing/supply update, is spawnvehicle request
 		depotComponent.SpawnVehicle(playerId, vehicleIndex);
-	}
-
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
-	{
-		// Telemetry: string (FactionKey) + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_RespawnFaction", bytes);
-		
-		m_RespawnManager.RespawnSide(faction);
-		
-		if (logAction)
-		{
-			string logMessage = string.Format("%1 was respawned", faction);
-			m_LobbyBroadcastManager.LogAdminAction(logMessage, -1, false);
-		}
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_AddItem(int playerId, string prefab, bool logAction)
-	{
-		// Telemetry: int + string + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(prefab);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_AddItem", bytes);
-		
-		if (playerId == 0 || prefab.IsEmpty())
-			return;
-
-		if (logAction)
-		{
-			string itemName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-			string logMessage = string.Format("%2 was added to %1's inventory", playerName, itemName);
-			m_LobbyBroadcastManager.LogAdminAction(logMessage, playerId, true);
-		}
-		
-		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		if (!entity)
-			return;
-			
-		SCR_InventoryStorageManagerComponent entityInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
-		if (!entityInventoryManager)
-			return;
-		
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = entity.GetOrigin();
-		
-		Resource resource = Resource.Load(prefab);
-		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
-		if (!resourceSpawned)
-			return;
-
-		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
-		{
-			SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-			return;
-		}
-		
-		if (resourceSpawned)
-			if (resourceSpawned.FindComponent(CVON_RadioComponent))
-			{
-				GetGame().GetCallqueue().CallLater(InitializePlayerRadiosDelayed, 500, false, playerId);
-				CRF_PlayerRplToOwnerManager ownerManager = CRF_PlayerRplToOwnerManager.GetInstance();
-				if (ownerManager)
-					ownerManager.InitializeRadioFromServer();
-			
-			}
 	}
 
 	
@@ -1039,83 +748,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		SCR_EntityHelper.DeleteEntityAndChildren(oldEntity);
 	}
 
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_TeleportPlayers(int playerId1, int playerId2, bool logAction)
-	{
-		// Telemetry: 2 ints + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_TeleportPlayers", bytes);
-		
-		m_RplBroadcastManager.TeleportPlayers(playerId1, playerId2, logAction);
-	}
-
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SendHint(string data, int playerId, string factionKey)
-	{
-		// Telemetry: 2 strings + int
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		LogTelemetry("RpcAsk_SendHint", bytes);
-		
-		m_RplBroadcastManager.SendHint(data, playerId, factionKey);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_Heal(int playerId, bool logAction, bool isVehicle)
-	{
-		// Telemetry: int + 2 bools
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool() * 2;
-		LogTelemetry("RpcAsk_Heal", bytes);
-		
-		IEntity entityToFix = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		if (!entityToFix)
-			return;
-		
-		if (isVehicle)
-		{
-			entityToFix = SCR_CompartmentAccessComponent.GetVehicleIn(entityToFix);
-			if (!entityToFix)
-				return;
-		}
-
-		SCR_DamageManagerComponent damageComponent = SCR_DamageManagerComponent.Cast(entityToFix.FindComponent(SCR_DamageManagerComponent));
-		if (!damageComponent)
-			return;
-
-		damageComponent.FullHeal();
-		damageComponent.SetHealthScaled(1);
-
-		if (logAction)
-		{
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-			string logMessage = string.Format("%1 was healed/vehicle repaired", playerName);
-			m_LobbyBroadcastManager.LogAdminAction(logMessage, playerId, true);
-		}
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_LogAdminAction(string data, int playerId, bool sendToPlayer)
-	{
-		// Telemetry: string + int + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_LogAdminAction", bytes);
-		
-		m_LobbyBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
-	}
-
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1143,46 +775,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		
 		// Also log to server console
 		Print(message, LogLevel.WARNING);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdateTimer(int delta)
-	{
-		// Telemetry: int
-		LogTelemetry("RpcAsk_UpdateTimer", CRF_BandwidthTelemetryManager.EstimateSize_Int());
-		
-		// Get current end time
-		int currentEndTime = CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds;
-		if ((currentEndTime + delta) < 0 || m_SafestartManager.GetSafestartStatus())
-			return;
-
-		// Set the new time, broadcast is handled by rplprop
-		CRF_GameTimerManager.GetInstance().m_iTimeMissionEnds = currentEndTime + delta;
-		
-		string logMessage = string.Format("Game timer adjusted by %1 mins", delta/60000);
-		m_LobbyBroadcastManager.LogAdminAction(logMessage, -1, false);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdateTicket(string action, FactionKey faction, int delta)
-	{
-		// Telemetry: 2 strings + int
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(action);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(faction);
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		LogTelemetry("RpcAsk_UpdateTicket", bytes);
-		
-		if (action == "Add")
-			m_RespawnManager.AddTicket(faction, delta, true);
-		else if (action == "Subtract")
-			m_RespawnManager.SubtractTicket(faction, delta, true);
-		
-		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
-		m_LobbyBroadcastManager.LogAdminAction(logMessage, -1, false);
 	}
 
 	
@@ -1350,28 +942,11 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 					invManager.TrySpawnPrefabToStorage(items[i]);
 			}
 		}
-		GetGame().GetCallqueue().CallLater(InitializePlayerRadiosDelayed, 500, false, playerId);
+		GetGame().GetCallqueue().CallLater(CRF_PlayerRplToAuthorityManager.InitializePlayerRadiosDelayed, 500, false, playerId);
 
 		CRF_PlayerRplToOwnerManager ownerManager = CRF_PlayerRplToOwnerManager.GetInstance();
 		if (ownerManager)
 			ownerManager.InitializeRadioFromServer();
-	}
-
-
-	//------------------------------------------------------------------------------------------------
-	protected void InitializePlayerRadiosDelayed(int playerId)
-	{
-		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-		if (!player)
-			return;
-
-		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-		if (groupsManager)
-			groupsManager.TuneFreqDelayWithPresets(playerId, player);
-
-		CRF_PlayerController playerController = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		if (playerController)
-			playerController.InitializeRadios(player);
 	}
 
 	
@@ -1775,43 +1350,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		}
 	}
 
-    
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
-	{
-		// Telemetry: int + bool
-		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
-		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
-		LogTelemetry("RpcAsk_TogglePlayerLisntening", bytes);
-		
-		CVON_VONGameModeComponent cvon = CVON_VONGameModeComponent.GetInstance();
-		if (cvon)
-			cvon.TogglePlayerListening(playerId, input);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_ToggleWaveRespawn()
-	{
-		// Telemetry: no parameters
-		LogTelemetry("RpcAsk_ToggleWaveRespawn", 0);
-		
-		CRF_RespawnManager.GetInstance().ToggleRespawnWave();
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_ToggleRespawn()
-	{
-		// Telemetry: no parameters
-		LogTelemetry("RpcAsk_ToggleRespawn", 0);
-		
-		CRF_RespawnManager.GetInstance().ToggleRespawn();
-	}
-
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1821,28 +1359,6 @@ class CRF_GameplayRplToAuthorityManager : ScriptComponent
 		LogTelemetry("RpcAsk_ToggleVAARRecording", 0);
 		
 		CRF_VAAR_GamemodeComponent.GetInstance().ToggleRecording();
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SetRespawnTime(int seconds)
-	{
-		// Telemetry: int
-		LogTelemetry("RpcAsk_SetRespawnTime", CRF_BandwidthTelemetryManager.EstimateSize_Int());
-		
-		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
-	}
-
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_CleanUpBodies()
-	{
-		// Telemetry: no parameters
-		LogTelemetry("RpcAsk_CleanUpBodies", 0);
-		
-		CRF_GarbageManager.GetInstance().CleanUpBodies();
 	}
 
 	
