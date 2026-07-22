@@ -49,17 +49,17 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
  {
   coords 8409.6 184.274 3179.434
   angles 0 62.04 0
-  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
  }
  {
   coords 8416.604 184.003 3177.7
   angles 0 62.04 0
-  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
  }
  {
   coords 8409.071 184.003 3173.702
   angles 0 62.04 0
-  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
  }
  {
   coords 8379.782 184.47 3186.512
@@ -85,5 +85,15 @@ $grp CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   coords 8364.24 182.467 3174.822
   angles 0 107.979 0
   m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 8415.647 183.91 3171.901
+  angles 0 62.04 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+ }
+ {
+  coords 8432.014 184.47 3183.256
+  angles 0 93.567 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
  }
 }
