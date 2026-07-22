@@ -111,7 +111,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
   CRF_MissionDescriptor "{69D931A7722BF638}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "A USMC Infantry platoon conducts a raid on the insurgent stronghold of Dur Kalay to locate and destroy four weapons caches, while defending insurgent forces fight to protect their stockpile and repel the assault."\
+   m_sTextData "A USMC Infantry platoon conducts a raid on the insurgent stronghold of Dur Kalay. They must locate and destroy four weapons caches, while defending insurgent forces attempt to repel the assault and protect their stockpile."\
    ""\
    "BLUFOR Composition: Infantry platoon"\
    "BLUFOR Assets: MMG"\
@@ -131,7 +131,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "Infiltrate the insurgent stronghold of Dur Kalay to locate and destroy four weapons caches."\
    ""\
    "INTENT"\
-   "BLUFOR is to raid the settlement, locate and neutralize all four weapons caches, and eliminate resisting insurgent forces before they can secure their stockpile."\
+   "Use all available elements to carry out a coordinated raid on the insurgent stronghold, locate and destroy all caches."\
    ""\
    "EXECUTION"\
    "Commander’s discretion."
@@ -143,10 +143,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   CRF_MissionDescriptor "{69D931A7722BF2AF}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION "\
-   "Defend Dur Kalay and protect the four weapons caches from being destroyed by BLUFOR forces."\
+   "Defend Dur Kalay, protect all weapons caches, and repel the attacking forces."\
    ""\
    "INTENT"\
-   "OPFOR is to secure the stronghold, safeguard the weapons caches, and repel the BLUFOR assault to maintain control of their stockpile."\
+   "Divide forces to establish defensive positions around each weapons cache."\
    ""\
    "EXECUTION"\
    "Commander’s discretion"
@@ -183,7 +183,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69E92240FCD90F89}" {
+  CRF_SlottingGroup "{69EB70DE27CBFD11}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD90983}" {
+  CRF_SlottingGroup "{69EB70DE27CBFEE2}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -210,7 +210,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD90B08}" {
+  CRF_SlottingGroup "{69EB70DE27CBF813}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -227,7 +227,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD90BF1}" {
+  CRF_SlottingGroup "{69EB70DE27CBF92B}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -244,7 +244,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91504}" {
+  CRF_SlottingGroup "{69EB70DE27CBFA34}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -261,7 +261,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91607}" {
+  CRF_SlottingGroup "{69EB70DE27CBFB3D}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -278,7 +278,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD9170B}" {
+  CRF_SlottingGroup "{69EB70DE27CBC435}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -294,7 +294,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD9118D}" {
+  CRF_SlottingGroup "{69EB70DE27CBC539}" {
    m_sCallsign "ENGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -312,7 +312,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69E92240FCD91320}" {
+  CRF_SlottingGroup "{69EB70DE27CBC6F6}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -322,7 +322,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91C1F}" {
+  CRF_SlottingGroup "{69EB70DE27CBC7E0}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -338,7 +338,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91CF6}" {
+  CRF_SlottingGroup "{69EB70DE27CBC0FC}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -354,7 +354,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91E0F}" {
+  CRF_SlottingGroup "{69EB70DE27CBC1FC}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -370,7 +370,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91EF1}" {
+  CRF_SlottingGroup "{69EB70DE27CBC2E1}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -386,7 +386,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E92240FCD91FEA}" {
+  CRF_SlottingGroup "{69EB70DE27CBC3F2}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {

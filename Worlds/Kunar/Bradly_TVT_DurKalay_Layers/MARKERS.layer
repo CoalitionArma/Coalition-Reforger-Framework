@@ -44,15 +44,3 @@ $grp CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsMissionMaking/Markers/Objecti
   m_sMissionMarkerDescription "Cache #3"
  }
 }
-CRF_MissionMarker FDZMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
- coords 3446.35 24.649 3805.042
- m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
- m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
- m_MarkerColor 0.07 0.191 0.558 1
- m_sQuadName "flag-2"
- m_fWorldSize 25
- m_aVisibleForFactions {
-  "BLUFOR"
- }
- m_sMissionMarkerDescription "FDZ"
-}
