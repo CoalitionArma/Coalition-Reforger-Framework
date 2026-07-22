@@ -1,22 +1,22 @@
 $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
-  coords 10923.298 204.919 5939.609
-  angles 0 171.349 0
+  coords 9203.969 170.492 6603.852
+  angles 0 160.666 0
   m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
  }
  {
-  coords 10922.134 204.919 5947.257
-  angles 0 171.349 0
+  coords 9201.407 170.058 6611.151
+  angles 0 160.666 0
   m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
  }
  {
-  coords 10921.071 204.524 5954.241
-  angles 0 171.349 0
+  coords 9199.068 169.742 6617.817
+  angles 0 160.666 0
   m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
  }
  {
-  coords 10919.864 204.307 5962.176
-  angles 0 171.349 0
+  coords 9196.411 169.18 6625.391
+  angles 0 160.666 0
   m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
  }
 }

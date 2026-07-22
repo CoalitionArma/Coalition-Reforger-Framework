@@ -23,10 +23,86 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
  m_iTimeLimitMinutes 75
- m_bLockUnusedSlots 1
+ m_bLockUnusedSlots 0
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69EB7B311A871589}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "RUS forces have take control of the Southern Airfield. A Bundeswehr Platoon has been tasked with retaking the aairfield and hold off until reinforcements arrive."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 2x Ammo Trucks"\
+   ""\
+   "OPFOR Composition: Unknown"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Rainy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69EB7B311A80E994}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Capture the Airfield"\
+   "Defend the Airfield and marked locations until reinforcements arrive (30 - 45 mins)"\
+   ""\
+   "INTENT"\
+   "Be fast and aggerssive in taking the airfield, use whatever is left over from the Russians that where stationed there to fortify your postion."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69EB7B311A80EA32}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Main Objective: Hold the Airfield for as long as possible"\
+   "Side Objective: Destroy both Enemy Ammo Trucks"\
+   ""\
+   "INTENT"\
+   "Build up fortifcations around the Airfield and defend, then once the airfield is lost try and recapture the airfield with support from other assets. (Zeus-controlled)"\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69EB7B311A80EA85}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69EB7B311A80EB01}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
@@ -196,4 +272,11 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
   }
  }
+}
+CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ coords 9066.123 167.455 6603.551
+ angles 0 0 0
+ m_MarkerColor 1 0 0 1
+ m_sQuadName "flag-2"
+ m_sDescription "OPFOR MAIN"
 }
