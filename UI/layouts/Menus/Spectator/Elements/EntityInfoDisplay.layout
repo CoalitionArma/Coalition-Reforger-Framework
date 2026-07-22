@@ -1,0 +1,131 @@
+ScaleWidgetClass {
+ Name "EntityInfoDisplay"
+ Slot FrameWidgetSlot "{68B4386FF0862A5A}" {
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 350
+  OffsetRight -350
+  SizeY 90
+  OffsetBottom -90
+ }
+ components {
+  CRF_EntityInfoDisplay "{68B4387969E57D45}" {
+  }
+ }
+ {
+  FrameWidgetClass "{68B4386F22E954D9}" {
+   Name "EntityFrame"
+   Slot AlignableSlot "{68B4386F22E9553E}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    ImageWidgetClass "{68B4386F2B93A280}" {
+     Name "Background"
+     Slot FrameWidgetSlot "{68B4386F2B93A2F8}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -249.9
+      OffsetRight 0
+      SizeY -60.03
+      OffsetBottom 0
+     }
+     Color 0 0 0 0.75
+    }
+    VerticalLayoutWidgetClass "{68B4386142F725B6}" {
+     Name "EntityLayout"
+     Slot FrameWidgetSlot "{68B4386142F725A8}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -250
+      OffsetRight 0
+      SizeY -60
+      OffsetBottom 0
+     }
+     {
+      TextWidgetClass "{68B4386F74A20FAF}" {
+       Name "EntityName"
+       Slot LayoutSlot "{68B4386607C6A380}" {
+        Padding 8 6 8 0
+        SizeMode Fill
+        FillWeight 1.25
+       }
+       Text ""
+       "Font Size" 18
+       "Min Font Size" 18
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{68B4386EBB7331CA}" {
+        Bold 1
+        OutlineSize 1
+       }
+      }
+      TextWidgetClass "{68B4386017BABB0A}" {
+       Name "EntityRole"
+       Slot LayoutSlot "{68B4386017BABB6F}" {
+        Padding 8 0 8 0
+        SizeMode Fill
+       }
+       Color 0.6038 0.6038 0.6038 1
+       Text ""
+       "Font Size" 14
+       "Min Font Size" 14
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{68B438600EDAB1D6}" {
+        OutlineSize 1
+       }
+      }
+      HorizontalLayoutWidgetClass "{68B43863815C8A4B}" {
+       Name "EntityHealthInfo"
+       Slot LayoutSlot "{68B43863815C8AAF}" {
+        Padding 8 0 8 6
+        SizeMode Fill
+       }
+       {
+        TextWidgetClass "{68B4386049A85C9C}" {
+         Name "EntityDamage"
+         Slot LayoutSlot "{68B4386049A85CF0}" {
+          SizeMode Fill
+         }
+         Color 0.4508 0.4508 0.448 1
+         Text ""
+         "Font Size" 12
+         "Min Font Size" 12
+         "Vertical Alignment" Center
+        }
+        TextWidgetClass "{68B43863AE17F1F1}" {
+         Name "EntityDamageType"
+         Slot LayoutSlot "{68B4386049A85CF0}" {
+          SizeMode Fill
+         }
+         Color 0.7874 0.0196 0.0196 1
+         Text ""
+         "Font Size" 12
+         "Min Font Size" 12
+         "Vertical Alignment" Center
+        }
+       }
+      }
+      SliderWidgetClass "{68B438635C75B6D2}" {
+       Name "EntityHealthSlider"
+       Slot LayoutSlot "{68B438635C75B736}" {
+        SizeMode Fill
+        FillWeight 0.75
+       }
+       maximum 1
+       step 0.001
+       current 0.101
+      }
+     }
+    }
+   }
+  }
+ }
+}

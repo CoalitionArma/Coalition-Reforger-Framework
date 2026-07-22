@@ -3,10 +3,14 @@ class CRF_PlayerChatCommandManagerClass : ScriptComponentClass {}
 class CRF_PlayerChatCommandManager : ScriptComponent
 {	
 	protected CRF_PlayerRplToAuthorityManager m_PlayerRplToAuthorityManager;
+<<<<<<< HEAD
 	// ReportBug/SendAdminMessage/ReplyAdminMessage/RequestMissionSave live on the CRF-side RPC
 	// authority manager; RequestAdvanceGamemodeState stayed on the lobby side.
 	protected CRF_GameplayRplToAuthorityManager m_GameplayRplToAuthorityManager;
 
+=======
+	
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 MANAGER INITIALIZATION
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -16,7 +20,10 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 	{	
 		super.OnPostInit(owner);
 		m_PlayerRplToAuthorityManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+<<<<<<< HEAD
 		m_GameplayRplToAuthorityManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+=======
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 		
 		GetGame().GetCallqueue().Call(AddMsgAction);
 	}
@@ -141,7 +148,11 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		}	
 		
 		chatComponent.ShowMessage(string.Format("Bug Report Sent: \"%1\"", data));
+<<<<<<< HEAD
 		m_GameplayRplToAuthorityManager.ReportBug(data, playerID);
+=======
+		m_PlayerRplToAuthorityManager.ReportBug(data, playerID);
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -171,7 +182,11 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		}	
 		
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
+<<<<<<< HEAD
 		m_GameplayRplToAuthorityManager.SendAdminMessage(data, playerID);
+=======
+		m_PlayerRplToAuthorityManager.SendAdminMessage(data, playerID);
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -244,7 +259,11 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 			GetGame().GetPlayerManager().GetPlayerName(playerId)));
 		
 		toSend = string.Format("\"%1\"", toSend);
+<<<<<<< HEAD
 		m_GameplayRplToAuthorityManager.ReplyAdminMessage(toSend, playerId, adminID, true);
+=======
+		m_PlayerRplToAuthorityManager.ReplyAdminMessage(toSend, playerId, adminID, true);
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -394,7 +413,11 @@ class CRF_PlayerChatCommandManager : ScriptComponent
 		}
 		
 		// Request save from server via RPC
+<<<<<<< HEAD
 		m_GameplayRplToAuthorityManager.RequestMissionSave(saveName);
+=======
+		m_PlayerRplToAuthorityManager.RequestMissionSave(saveName);
+>>>>>>> parent of 514b6ecb4 (Remove from framework)
 	}
 	*/
 	
