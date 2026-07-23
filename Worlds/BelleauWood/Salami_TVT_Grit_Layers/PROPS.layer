@@ -1,0 +1,37 @@
+$grp GenericEntity : "{5789E2676151FD33}Prefabs/Structures/Military/CamoNets/US/CamoNet_Small_Top_US.et" {
+ {
+  coords 5557.629 176.851 5000.356
+ }
+ {
+  coords 5572.222 176.699 5000.363
+  angles 0 -52.688 0
+ }
+ {
+  coords 5481.225 177.523 4971.896
+  angles 0 8.312 0
+ }
+ {
+  coords 5446.417 177.842 4958.798
+  angles 0 -81.935 0
+ }
+ {
+  coords 5460.309 177.414 4963.416
+  angles 0 46.703 0
+ }
+ {
+  coords 5446.995 178.273 4921.765
+  angles 0 -0.532 0
+ }
+ {
+  coords 5441.321 178.226 4920.611
+  angles 0 154.735 0
+ }
+ {
+  coords 5451.721 177.741 4921.389
+  angles 0 -173.792 0
+ }
+ {
+  coords 5594.309 176.992 4998.606
+  angles 0 154.735 0
+ }
+}

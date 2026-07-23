@@ -1,0 +1,44 @@
+GenericEntity : "{8671C0D9DA7148D5}Prefabs/Weapons/Rifles/M7/M7.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{DAFDD7BB53F88287}Assets/Weapons/Rifles/XM7_Upgrade.xob"
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6247411E22022556}" {
+     AttachmentSlot EquipmentStorageSlot front_iron {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{6247411E22022563}" {
+     AttachmentSlot EquipmentStorageSlot optic {
+      Prefab "{648E66F8FA240BA6}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_AimpointCompM4s/Collim_AimpointCompM4s_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{6247411E2202256D}" {
+     AttachmentSlot EquipmentStorageSlot rear_iron {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{64757C684462DC48}" {
+     AttachmentSlot EquipmentStorageSlot TopMount {
+      Offset 0.0007 0.1376 0.3164
+     }
+    }
+    AttachmentSlotComponent "{64EA339E08EC2E6A}" {
+     AttachmentSlot EquipmentStorageSlot RightSide {
+      Offset 0.0279 0.0891 0.3164
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{66E228CC8E301994}" {
+     AttachmentSlot EquipmentStorageSlot LeftSide {
+      Offset -0.0279 0.0891 0.3164
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+   }
+  }
+ }
+}

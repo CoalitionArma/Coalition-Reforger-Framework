@@ -1,0 +1,111 @@
+GenericEntity : "{93690AE7A4BAD926}Prefabs/Characters/Core/Vest_Base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  ClothNodeStorageComponent "{69DADDDA55D2B9B6}" {
+   Attributes SCR_ItemAttributeCollection "{69DADDDA55D2B989}" {
+    ItemDisplayName UIInfo "{69DADDDA55D2B986}" {
+     Name "#TF-Vest-Pouches-IMTV_Rifleman-Name"
+     Description "#TF-Vest-Pouches-IMTV_Rifleman-Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{69DADDDA55D2B983}" {
+     Weight 1
+     SizeSetupStrategy Volume
+     ItemVolume 2000
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{69DADDDA55D2B980}" {
+      CameraOrbitAngles 0 180 0
+      CameraDistanceToItem 4
+      CameraOffset 0 0.05 0
+      FOV 10
+      PreviewWornModel 1
+     }
+    }
+    m_Size SLOT_2x2
+   }
+   Priority 10
+  }
+  MeshObject "{5312D798A817A294}" {
+   Object "{A41138CEE1B35077}Assets/Empty/SEX_CUBE.xob"
+  }
+  RigidBody "{5312D798AF7A9E28}" {
+   ModelGeometry 1
+  }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   Slots {
+    LoadoutSlotInfo Mag_Pouch1 {
+     PivotID "Spine5"
+     Offset 0.0156 -0.0201 0.2082
+     Angles 7.2211 0.2354 1.8725
+     Prefab "{A499125247F0237B}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_M4_2_MS_Opened_wm.et"
+    }
+    LoadoutSlotInfo Grenade_Pouch1 {
+     PivotID "Spine5"
+     Offset -0.0927 0.1589 0.194
+     Angles 13.1681 -0.1917 -1.1026
+     Prefab "{A4D542851A764E65}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_MC_FGC_1_MS.et"
+    }
+    LoadoutSlotInfo Grenade_Pouch3 {
+     PivotID "Spine5"
+     Offset 0.0921 0.0876 0.1754
+     Angles 3.0647 15.18 2.2885
+    }
+    LoadoutSlotInfo Grenade_Pouch2 {
+     PivotID "Spine5"
+     Offset -0.0703 0.0879 0.1813
+     Angles 3.1238 -10.3411 -1.6241
+    }
+    LoadoutSlotInfo Mag_Pouch2 {
+     PivotID "Spine5"
+     Offset 0.0991 -0.0156 0.2018
+     Angles 4.1208 21.6921 1.8184
+     Prefab "{8B107ABB3AB40E67}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_M4_2_MS_Closed_wm.et"
+    }
+    LoadoutSlotInfo Mag_Pouch3 {
+     PivotID "Spine5"
+     Offset -0.0798 -0.0189 0.2119
+     Angles -0.0661 -5.3644 0.3815
+     Prefab "{8B107ABB3AB40E67}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_M4_2_MS_Closed_wm.et"
+    }
+    LoadoutSlotInfo Radio_Pouch {
+     PivotID "Spine5"
+     Offset -0.0764 0.1093 -0.2362
+     Angles 2.7607 -166.7916 -1.5628
+     Prefab "{B6669DAE7080DB96}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_Radio_MBITR.et"
+    }
+    LoadoutSlotInfo Medical_Pouch {
+     PivotID "Spine5"
+     Offset -0.2468 -0.012 -0.0946
+     Angles 1.4883 -107.4923 2.0676
+     Prefab "{B02DE855DDFD2BB1}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_MEDP_MS.et"
+    }
+    LoadoutSlotInfo Uni_Pouch {
+     PivotID "Spine5"
+     Offset 0.219 0.0154 0.1047
+     Angles 0 50.9364 -2.4854
+     Prefab "{7A22A0BAED60ECF7}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Pentagon_Tac_Keros_Utility.et"
+    }
+    LoadoutSlotInfo Smoke_Pouch {
+     PivotID "Spine5"
+     Offset 0.2663 -0.0015 -0.0012
+     Angles -1.6551 88.71529 -1.9671
+     Prefab "{0C18B450F0919E80}Prefabs/Characters/Vests/Vest_IMTV/Pouches/Pouch_Eagle_Ind_M4_2_MS_Closed.et"
+    }
+    LoadoutSlotInfo Smoke_Granade {
+     PivotID "Spine5"
+     Offset 0.2614 0.0307 -0.0027
+     Angles -1.2759 88.70229 -1.9667
+     Prefab "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
+    }
+    LoadoutSlotInfo Carabine {
+     PivotID "Spine5"
+     Offset 0.1153 0.2126 0.1333
+     Angles 10.3945 11.1735 -87.6455
+    }
+   }
+   DebugWornModel 1
+  }
+ }
+ coords 88.659 1 103.195
+ angles 0 -90 0
+}

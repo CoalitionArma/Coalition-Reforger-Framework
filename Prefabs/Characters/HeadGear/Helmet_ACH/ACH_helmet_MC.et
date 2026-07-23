@@ -1,0 +1,13 @@
+GameEntity : "{F497E563339462C8}Prefabs/Characters/HeadGear/Helmet_ACH/ACH_helmet_UCP.et" {
+ ID "50B0A3042139DAF9"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   WornMaterialsOverride {
+    "{84CD5F9C90D6AAEE}Assets/Characters/Headwear/ACH_helmet/Data/ACH_Cover_OCP.emat"
+   }
+   ItemMaterialsOverride {
+    "" "" "{84CD5F9C90D6AAEE}Assets/Characters/Headwear/ACH_helmet/Data/ACH_Cover_OCP.emat"
+   }
+  }
+ }
+}
