@@ -33,7 +33,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "RUS forces have take control of the Southern Airfield. A Bundeswehr Platoon has been tasked with retaking the airfield and hold off until reinforcements arrive."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: 3x Ammo Trucks"\
+   "BLUFOR Assets: 3x Ammo Trucks and 4x Armed Humvees"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
@@ -50,10 +50,10 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "MISSION"\
    "Capture the Airfield"\
    "Defend the Airfield and marked locations until reinforcements arrive (30 - 45 mins)"\
-   "SIDE OBJECTIVE: Destroy Enemy AA position at the farm. Reward: Air Support"\
+   "SIDE OBJECTIVE: Destroy Enemy AA position at the  OPFOR FOB. Reward: Air Support"\
    "INTENT"\
    "Be fast and aggerssive in taking the airfield, use whatever is left over from the Russians that where stationed there to fortify your postion."\
-   "Your reinforecements will be coming form your main. OPFOR may try to delay there arrival"\
+   "Your reinforecements will be coming from your main. OPFOR may try to delay there arrival. Hold out until they arrive."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -110,7 +110,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69EC27D5DAEE2868}" {
+  CRF_SlottingGroup "{69EF44745F3001F0}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -120,7 +120,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EC27D5DAEE2927}" {
+  CRF_SlottingGroup "{69EF44745F300347}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -130,13 +130,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EC27D5DAEE2A67}" {
+  CRF_SlottingGroup "{69EF44745F3003BC}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,13 +146,13 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EC27D5DAEE2A85}" {
+  CRF_SlottingGroup "{69EF44745F3004C5}" {
    m_sCallsign "1-3 (Heavy)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -168,7 +168,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EC27D5DAEE2BDA}" {
+  CRF_SlottingGroup "{69EF44745F300510}" {
    m_sCallsign "1-4 (Heavy)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -184,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EC27D5DAEE2C7B}" {
+  CRF_SlottingGroup "{69EF44745F3005BC}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
@@ -196,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69EC27D5DAEE2C81}" {
+  CRF_SlottingGroup "{69EF44745F3006C1}" {
    m_sCallsign "Weapons"
    m_FlagType MACHINEGUN
    m_aSlots {
