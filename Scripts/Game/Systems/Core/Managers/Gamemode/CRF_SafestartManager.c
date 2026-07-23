@@ -43,7 +43,7 @@ class CRF_SafestartManager : ScriptComponent
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GameTimerManager m_GameTimerManager;
 	protected CRF_SlottingManager m_SlottingManager;
-	protected CRF_GameplayBroadcastManager m_RplBroadcastManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	
 	protected bool m_bInitComplete = false;
 	protected bool m_bUpdatedServerWorldTime = false;
@@ -69,7 +69,7 @@ class CRF_SafestartManager : ScriptComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GameTimerManager = CRF_GameTimerManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
-		m_RplBroadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 
 		if (RplSession.Mode() != RplMode.Client) // Supports both workbench and dedi
 		{

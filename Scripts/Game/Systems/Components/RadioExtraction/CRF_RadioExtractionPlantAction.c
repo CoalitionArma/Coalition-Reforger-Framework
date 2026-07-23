@@ -27,8 +27,8 @@ class CRF_RadioExtractionPlantAction : ScriptedUserAction
 			return;
 
 		// Stop the planting sound since the action completed, then arm the bomb
-		CRF_GameplayRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sPlantSoundEvent);
-		CRF_GameplayRplToAuthorityManager.GetInstance().RequestRadioExtractionSetPlanted(true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sPlantSoundEvent);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestRadioExtractionSetPlanted(true);
 
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
@@ -39,7 +39,7 @@ class CRF_RadioExtractionPlantAction : ScriptedUserAction
 		super.OnActionStart(pUserEntity);
 
 		if (m_RadioExtraction && GetOwner())
-			CRF_GameplayRplToAuthorityManager.GetInstance().RequestPlayPositionalSound(m_RadioExtraction.m_rPlantSoundResource, m_RadioExtraction.m_sPlantSoundEvent, GetOwner().GetOrigin());
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestPlayPositionalSound(m_RadioExtraction.m_rPlantSoundResource, m_RadioExtraction.m_sPlantSoundEvent, GetOwner().GetOrigin());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ class CRF_RadioExtractionPlantAction : ScriptedUserAction
 		super.OnActionCanceled(pOwnerEntity, pUserEntity);
 
 		if (m_RadioExtraction)
-			CRF_GameplayRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sPlantSoundEvent);
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sPlantSoundEvent);
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -28,7 +28,7 @@ class CRF_TaskHandler_CollectIntel : CRF_BaseTaskHandler
 
 	override void OnPerform(int taskIndex, int taskObjectState, IEntity user)
 	{
-		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		if (!rplManager)
 			return;
 

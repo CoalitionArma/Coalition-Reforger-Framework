@@ -125,7 +125,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		m_mAdminActions.Insert(log);
 		
 		// Refresh Lists if admin menu is open
-		CRF_GameplayBroadcastManager.GetInstance().RefreshAdminMenuLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		ticket.AddMessage(sender, data);
 		
 		// Refresh Lists if admin menu is open
-		CRF_GameplayBroadcastManager.GetInstance().RefreshAdminMenuLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 		
 	//------------------------------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		ticket.adminID = adminID;
 		
 		// Refresh Lists if admin menu is open
-		CRF_GameplayBroadcastManager.GetInstance().NotifiyTicketAssigned(ticketID, adminID, true);
+		CRF_RplBroadcastManager.GetInstance().NotifiyTicketAssigned(ticketID, adminID, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -237,7 +237,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		m_mTickets.Remove(ticketID);
 		
 		// Refresh Lists if admin menu is open
-		CRF_GameplayBroadcastManager.GetInstance().RefreshAdminMenuLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -32,8 +32,8 @@ modded class SCR_MapMarkerManagerComponent
 	
 	void RequestGlobalMarkersRefresh()
 	{
-		if (CRF_GameplayRplToAuthorityManager.GetInstance())
-			CRF_GameplayRplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
+		if (CRF_PlayerRplToAuthorityManager.GetInstance())
+			CRF_PlayerRplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
 	}
 	
 	//Method used for JIPs to get markers placed during safestart
@@ -94,7 +94,7 @@ modded class SCR_MapMarkerManagerComponent
 			CRF_SafestartManager safestartMan = CRF_SafestartManager.GetInstance();
 			if (safestartMan && safestartMan.GetSafestartStatus())
 			{
-				CRF_GameplayRplToAuthorityManager auth = CRF_GameplayRplToAuthorityManager.GetInstance();
+				CRF_PlayerRplToAuthorityManager auth = CRF_PlayerRplToAuthorityManager.GetInstance();
 				if (auth)
 					auth.SharerMapMarkerGlobal(marker.GetMarkerID(), pc.GetPlayerId());
 			}

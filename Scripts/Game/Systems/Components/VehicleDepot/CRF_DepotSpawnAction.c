@@ -124,7 +124,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		}
 		
 		// Use CRF RPC pattern for dedicated server support
-		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		if (rplManager)
 		{
 
@@ -171,7 +171,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 				m_fLastNotification = currentTime;
 				
 				// Use consolidated spawn RPC which now includes supply refresh functionality  
-				CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+				CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 				if (rplManager)
 				{
 					RplComponent rplComponent = RplComponent.Cast(GetOwner().FindComponent(RplComponent));

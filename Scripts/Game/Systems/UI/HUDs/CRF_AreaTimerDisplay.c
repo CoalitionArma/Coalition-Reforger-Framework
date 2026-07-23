@@ -1,7 +1,7 @@
 // CRF_AreaTimerDisplay.c
 //
 // HUD display for the area majority timer. Reads state replicated by
-// CRF_GameplayBroadcastManager (set each server tick via BroadcastAreaTimerUpdate)
+// CRF_RplBroadcastManager (set each server tick via BroadcastAreaTimerUpdate)
 // and renders a top-centre panel showing:
 //   - Zone label  ("THE HILL")
 //   - Win countdown (MM:SS – shifts yellow then red as it approaches zero)
@@ -77,7 +77,7 @@ class CRF_AreaTimerDisplay : SCR_InfoDisplayExtended
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateDisplay()
 	{
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 
 		// --- Visibility guards ---
 		if (!bm

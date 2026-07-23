@@ -1733,7 +1733,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer START ===== for " + mcomIdentifier + " ID: " + mcomEntity.GetID());
 		
 		// Send RPC to all clients to handle entity and marker deletion FIRST
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			Print("[CRF_RushGamemodeManager] Sending RPC to clients for MCOM deletion: " + mcomIdentifier);
@@ -2078,7 +2078,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Fire effects
 		GetGame().SpawnEntityPrefab(Resource.Load("{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"), GetGame().GetWorld(), spawnParams);
 		
-		// NOTE: Entity deletion is now handled by RPC system via CRF_GameplayBroadcastManager.DeleteRushMCOMEntity()
+		// NOTE: Entity deletion is now handled by RPC system via CRF_RplBroadcastManager.DeleteRushMCOMEntity()
 		// This ensures proper client-server synchronization of entity deletion
 	}
 	
@@ -2590,7 +2590,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp", "RUSH_BEEP", mcomPosition);
@@ -2619,7 +2619,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
 					broadcastManager.StopPositionalSound("RUSH_BEEP");
@@ -2660,7 +2660,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
@@ -2689,7 +2689,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
 					broadcastManager.StopPositionalSound("RUSH_PLANTING");
@@ -2817,7 +2817,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
@@ -2848,7 +2848,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		
 		// Replicate the sound stop to all clients
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.StopPositionalSound("RUSH_PLANTING");

@@ -604,7 +604,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
 		ResourceName radioPrefab = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey).m_rLongRangeRadioPrefab;
-		CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
 	/**
@@ -634,7 +634,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
 		ResourceName radioPrefab = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey).m_rShortRangeRadioPrefab;
-		CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
 	/**
@@ -658,7 +658,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get binoculars prefab and add item
 		string binosPrefab = GetBinos(playerId);
-		CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, binosPrefab, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, binosPrefab, true);
 	}
 	
 	/**
@@ -682,7 +682,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		//Add map
 		const string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
-		CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
 	}
 
 	/**
@@ -706,7 +706,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Add wrench
 		const string wrenchPrefab = "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et";
-		CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, wrenchPrefab, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, wrenchPrefab, true);
 	}
 
 	/**
@@ -744,7 +744,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (CRF_Inventory_Item item : gearConfig.m_MedicMedicalItems)
 		{
 			for (int i = 0; i < item.m_iItemCount; i++)
-				CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, item.m_sItemPrefab, true);
+				CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, item.m_sItemPrefab, true);
 		}
 	}
 
@@ -867,7 +867,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			foreach (CRF_Magazine_Class mag : magArray)
 			{
 				for (int i = 0; i < mag.m_MagazineCount; i++)
-					CRF_GameplayRplToAuthorityManager.GetInstance().AddItem(playerId, mag.m_Magazine, true);
+					CRF_PlayerRplToAuthorityManager.GetInstance().AddItem(playerId, mag.m_Magazine, true);
 			}
 		}
 	}
@@ -988,7 +988,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		int adminID = SCR_PlayerController.GetLocalPlayerId();
 		
 		// Add the reply to ticket
-		CRF_GameplayRplToAuthorityManager.GetInstance().AssignAdminTicket(m_iSelectedTicket, adminID, false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().AssignAdminTicket(m_iSelectedTicket, adminID, false);
 	}
 	
 	/**
@@ -1012,7 +1012,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		// Broadcast the removal of ticket
-		CRF_GameplayRplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, true);
 		
 		// Deselect ticket
 		m_iSelectedTicket = -1;
@@ -1048,7 +1048,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		string reply = replyBox.GetText();
 		
 		// Add reply to tickets array
-		CRF_GameplayRplToAuthorityManager.GetInstance().ReplyAdminMessage(reply, m_iSelectedTicket, adminID, false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().ReplyAdminMessage(reply, m_iSelectedTicket, adminID, false);
 		
 		// Clear Text in reply box
 		replyBox.SetText("");
@@ -1093,7 +1093,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		else
 			return;
 		
-		CRF_GameplayRplToAuthorityManager.GetInstance().GetTicketMessages(adminID, ticketID);
+		CRF_PlayerRplToAuthorityManager.GetInstance().GetTicketMessages(adminID, ticketID);
 	}
 	
 	/**
@@ -1124,7 +1124,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	*/
 	void GetOpenTickets()
 	{	
-		CRF_GameplayRplToAuthorityManager.GetInstance().GetOpenTickets(SCR_PlayerController.GetLocalPlayerId());
+		CRF_PlayerRplToAuthorityManager.GetInstance().GetOpenTickets(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	/**
@@ -1431,7 +1431,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!button)
 			return;	
 		
-		CRF_GameplayRplToAuthorityManager.GetInstance().RespawnFaction(button.GetName(), true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().RespawnFaction(button.GetName(), true);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -1542,7 +1542,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		// Teleport local player to target
-		CRF_GameplayRplToAuthorityManager.GetInstance().TeleportPlayers(playerId2, SCR_PlayerController.GetLocalPlayerId(), true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().TeleportPlayers(playerId2, SCR_PlayerController.GetLocalPlayerId(), true);
 	}
 
 	/**
@@ -1572,7 +1572,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		// Teleport player 1 to player 2
-		CRF_GameplayRplToAuthorityManager.GetInstance().TeleportPlayers(playerId1, playerId2, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().TeleportPlayers(playerId1, playerId2, true);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -1664,7 +1664,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		CRF_GameplayRplToAuthorityManager.GetInstance().SendHint(data);
+		CRF_PlayerRplToAuthorityManager.GetInstance().SendHint(data);
 	}
 
 	/**
@@ -1688,7 +1688,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
 		string factionKey = m_selectableFactions.Get(factionList.GetSelectedItem());
-		CRF_GameplayRplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
+		CRF_PlayerRplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
 	}
 
 	/**
@@ -1718,7 +1718,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (playerId == 0)
 			return;
 			
-		CRF_GameplayRplToAuthorityManager.GetInstance().SendHint(data, playerId);
+		CRF_PlayerRplToAuthorityManager.GetInstance().SendHint(data, playerId);
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -1781,7 +1781,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		// Heal player only (not vehicle)
-		CRF_GameplayRplToAuthorityManager.GetInstance().Heal(playerId, true, false);
+		CRF_PlayerRplToAuthorityManager.GetInstance().Heal(playerId, true, false);
 	}
 	
 	/**
@@ -1804,7 +1804,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		// Heal player and vehicle
-		CRF_GameplayRplToAuthorityManager.GetInstance().Heal(playerId, true, true);
+		CRF_PlayerRplToAuthorityManager.GetInstance().Heal(playerId, true, true);
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -1931,18 +1931,18 @@ class CRF_AdminMenu : ChimeraMenuBase
 	
 	void ToggleWaveRespawn()
 	{
-		CRF_GameplayRplToAuthorityManager.GetInstance().ToggleWaveRespawn();
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleWaveRespawn();
 	}
 	
 	void ToggleRespawn()
 	{
-		CRF_GameplayRplToAuthorityManager.GetInstance().ToggleRespawn();
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleRespawn();
 	}
 	
 	void SetRespawnTime()
 	{
 		int respawnTime = EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).GetText().ToInt();
-		CRF_GameplayRplToAuthorityManager.GetInstance().SetRespawnTime(respawnTime);
+		CRF_PlayerRplToAuthorityManager.GetInstance().SetRespawnTime(respawnTime);
 	}
 	
 	void LoadGearConfigList()
@@ -1958,7 +1958,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	
 	void ToggleVAARRecording()
 	{
-		CRF_GameplayRplToAuthorityManager.GetInstance().ToggleVAARRecording();
+		CRF_PlayerRplToAuthorityManager.GetInstance().ToggleVAARRecording();
 	}
 	
 	/**
@@ -1975,7 +1975,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Get the delta from the button name
 		int delta = button.GetName().ToInt() * 60000;
 		
-		CRF_GameplayRplToAuthorityManager.GetInstance().UpdateTimer(delta);
+		CRF_PlayerRplToAuthorityManager.GetInstance().UpdateTimer(delta);
 	}
 	
 	void UpdateTicket()
@@ -1996,7 +1996,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		int delta = requestParts[2].ToInt();
 		FactionKey faction = requestParts[0];
 		
-		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		if (rplManager)
 			rplManager.UpdateTicket(action, faction, delta);
 	}

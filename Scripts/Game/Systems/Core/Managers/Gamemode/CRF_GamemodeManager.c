@@ -9,10 +9,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected ref CRF_ResourceCache m_ResourceCache;
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
-	protected CRF_GameplayBroadcastManager m_RplBroadcastManager;
-	// SendRespawnScreen stayed on the lobby-side broadcast manager (CRF_Gamemode's own respawn-into-slot
-	// flow calls it too), so this needs its own reference to that class.
-	protected CRF_RplBroadcastManager m_LobbyBroadcastManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
@@ -44,8 +41,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected void InitializeManagers()
 	{
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
-		m_RplBroadcastManager = CRF_GameplayBroadcastManager.GetInstance();
-		m_LobbyBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
@@ -122,7 +118,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			{
 				//Sends the player the respawn screen if they reconnect while dead
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerRespawn(playerCharacter, faction.GetFactionKey(), playerId))
-					m_LobbyBroadcastManager.SendRespawnScreen(playerId);
+					m_RplBroadcastManager.SendRespawnScreen(playerId);
 			}
 
 			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
@@ -175,10 +171,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//! Re-acquire manager references if init ordering delayed singleton availability.
 	protected bool EnsureManagersReady()
 	{
-		if (!m_RplBroadcastManager || !m_LobbyBroadcastManager || !m_SlottingManager || !m_RespawnManager || !m_MenuManager || !m_Gamemode)
+		if (!m_RplBroadcastManager || !m_SlottingManager || !m_RespawnManager || !m_MenuManager || !m_Gamemode)
 			InitializeManagers();
 
-		return m_RplBroadcastManager && m_LobbyBroadcastManager && m_SlottingManager && m_RespawnManager && m_MenuManager && m_Gamemode;
+		return m_RplBroadcastManager && m_SlottingManager && m_RespawnManager && m_MenuManager && m_Gamemode;
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

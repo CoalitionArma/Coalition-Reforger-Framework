@@ -213,7 +213,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		stats.m_iTotalKills = Math.ClampInt(totalKills, 0, 100);
 		
 		// Replicate to all clients via broadcast manager
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 			broadcastManager.UpdateGunGamePlayerStats(playerId, stats.m_iLevel, stats.m_iKillsThisLevel, stats.m_iTotalKills);
 	}
@@ -1178,7 +1178,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		// JIP SYNC: Send all existing player stats to the new player via broadcast manager
 		// This ensures they see the correct scoreboard immediately
-		CRF_GameplayBroadcastManager broadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
 		if (!broadcastManager)
 			return;
 			

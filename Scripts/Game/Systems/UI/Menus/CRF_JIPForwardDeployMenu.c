@@ -10,7 +10,7 @@
  * - If BFT is disabled: the map/list are hidden and "Forward Deploy" always targets the player's
  *   own slotted squad (no situational awareness of other units without BFT).
  *
- * The server (CRF_GameplayRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy) re-validates the
+ * The server (CRF_PlayerRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy) re-validates the
  * request and denies it (with an on-screen hint) if the target unit is in/near contact with the
  * enemy - see CRF_ForwardDeployManager.IsPositionNearEnemy().
  */
@@ -300,7 +300,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 		if (groupRplId == RplId.Invalid())
 			return;
 
-		CRF_GameplayRplToAuthorityManager rplManager = CRF_GameplayRplToAuthorityManager.GetInstance();
+		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
 		if (rplManager)
 			rplManager.RequestJIPForwardDeploy(groupRplId, playerId);
 

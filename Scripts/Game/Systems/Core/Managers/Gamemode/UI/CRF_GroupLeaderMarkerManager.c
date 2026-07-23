@@ -73,7 +73,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	// Manager references
 	protected CRF_SafestartManager m_SafestartManager;
 	protected SCR_GroupsManagerComponent m_GroupsManager;
-	protected CRF_GameplayBroadcastManager m_BroadcastManager;
+	protected CRF_RplBroadcastManager m_BroadcastManager;
 	protected PlayerManager m_PlayerManager;
 
 	// Server-side tracking (authority data)
@@ -107,7 +107,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 		// Get manager references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_GroupsManager = SCR_GroupsManagerComponent.GetInstance();
-		m_BroadcastManager = CRF_GameplayBroadcastManager.GetInstance();
+		m_BroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_PlayerManager = GetGame().GetPlayerManager();
 
 		if (!m_SafestartManager || !m_GroupsManager)

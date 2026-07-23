@@ -127,7 +127,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 		
 		Print("[CRF_VAAR] Recording Started");
-		CRF_GameplayBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
+		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
 	}
 	
 	// Write frame to json file containing positions, shots fired & events
@@ -255,7 +255,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_AARFile = null;
 		
 		Print("[CRF_VAAR] Recording Saved");
-		CRF_GameplayBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
+		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
 	}
 
 	// HELPERS

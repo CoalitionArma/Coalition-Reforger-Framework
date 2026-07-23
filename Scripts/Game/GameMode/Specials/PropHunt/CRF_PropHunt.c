@@ -1057,7 +1057,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		// Normal per-shot decrements are shown silently via the health bar widget only.
 		if (restored || health <= 0)
 		{
-			CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+			CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 			if (bm)
 			{
 				string msg;
@@ -1323,7 +1323,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void BroadcastMessage(string msg)
 	{
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.BroadcastMessage(msg);
 	}
@@ -1629,7 +1629,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		#endif
 
 		// Notify the player.
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint("You are DISGUISED! Move around during grace, then hold still once the hunt begins.", playerId);
 	}
@@ -1791,7 +1791,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		int next = (current + 1) % count;
 		m_mPropNoiseIndex.Set(playerId, next);
 
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint(string.Format("Noise selected: %1 [%2/%3] — press [B] to play.", m_aNoiseSoundEvents[next], next + 1, count), playerId);
 	}
@@ -1825,7 +1825,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		float remaining = m_mPropNoiseCooldowns.Get(playerId);
 		if (remaining > 0)
 		{
-			CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+			CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 			if (bm)
 				bm.SendHint(string.Format("Noise on cooldown! %1 seconds remaining.", Math.Ceil(remaining).ToString()), playerId);
 			return;
@@ -1945,7 +1945,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			m_iHuntersWins
 		);
 
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint(msg, adminPlayerId);
 	}
@@ -1960,7 +1960,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		Replication.BumpMe();
 		OnPhaseTimerExpired();
 
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint("[PH Admin] Phase skipped.", adminPlayerId);
 	}
@@ -1971,7 +1971,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminEndRound(int adminPlayerId, string param)
 	{
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 
 		if (m_bRoundEndPending)
 		{
@@ -2012,7 +2012,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminResetProp(int adminPlayerId, string param)
 	{
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 		PlayerManager pm = GetGame().GetPlayerManager();
 		if (!pm)
 			return;
@@ -2075,7 +2075,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminAddTime(int adminPlayerId, string param)
 	{
-		CRF_GameplayBroadcastManager bm = CRF_GameplayBroadcastManager.GetInstance();
+		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
 
 		if (m_ePhase != CRF_EPropHuntPhase.GRACE && m_ePhase != CRF_EPropHuntPhase.HUNT)
 		{
