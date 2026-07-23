@@ -67,7 +67,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_sTextData "MISSION"\
    "Main Objective: Hold the Airfield for as long as possible"\
    "Side Objective: Destroy 3X Enemy Ammo Trucks. Reward: BTR74"\
-   "Side Objective: Delay Enemy Reinfrcements coming from their main. Reward: Longer Defense for BLUFOR"\
+   "Side Objective: Delay Enemy Reinforcements coming from their main. Reward: Longer Defense for BLUFOR"\
    ""\
    "INTENT"\
    "Build up fortifcations around the Airfield and defend, then once the airfield is lost try and recapture the airfield with support from other assets. (Zeus-controlled)"\
