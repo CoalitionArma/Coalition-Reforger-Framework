@@ -9,7 +9,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_aHVTEntries {
     CRF_HVTEntry "{69EA1192FB651FE6}" {
      m_eEntryType PLAYER
-     m_hvtPrefab "{421E220F53811D41}Prefabs/Characters/!GS_Characters/Special/CRF_VIP.et"
+     m_hvtPrefab "{810337D2F231A02D}Prefabs/Characters/!GS_Characters/Crews/CRF_Pilot.et"
      m_eFaction BLUFOR
      m_sTransponderEntityName "transponder_1"
     }
@@ -105,8 +105,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_bShowForAnyFaction 0
   }
   CRF_MissionDescriptor "{69EB45EE341CF6FC}" {
-   m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTitle "VIP Rules"
+   m_sTextData "The VIP may not pick up any, or use any weapon. If the VIP abides by this rule, whoever kills them loses. If the VIP picks up a weapon, it becomes an HVT mission and they are allowed to be killed. "
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -120,7 +120,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69EB45EE0B7183BD}" {
+  CRF_SlottingGroup "{69EEF92287FE4884}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -130,16 +130,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B7181A4}" {
+  CRF_SlottingGroup "{69EEF92287FE4EF8}" {
    m_sCallsign "VIP"
    m_FlagType UNDEFINED
    m_aSlots {
-    VIP
+    UNARMED
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B71804C}" {
+  CRF_SlottingGroup "{69EEF92287FE4D6E}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -157,7 +157,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B718726}" {
+  CRF_SlottingGroup "{69EEF92287FE43CA}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -175,7 +175,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B7185F6}" {
+  CRF_SlottingGroup "{69EEF92287FE42A9}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B7184B3}" {
+  CRF_SlottingGroup "{69EEF92287FE411E}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -211,7 +211,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B717B6E}" {
+  CRF_SlottingGroup "{69EEF92287FE47CE}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -229,7 +229,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B717A18}" {
+  CRF_SlottingGroup "{69EEF92287FE4688}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -241,7 +241,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B7178CE}" {
+  CRF_SlottingGroup "{69EEF92287FE4542}" {
    m_sCallsign "Mortar Team"
    m_FlagType RECON
    m_aSlots {
@@ -256,7 +256,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69EB45EE0B717E82}" {
+  CRF_SlottingGroup "{69EEF92287FE3B0B}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -267,7 +267,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B717DB4}" {
+  CRF_SlottingGroup "{69EEF92287FE39C6}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -284,7 +284,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B717C5B}" {
+  CRF_SlottingGroup "{69EEF92287FE38FF}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -301,7 +301,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B71730D}" {
+  CRF_SlottingGroup "{69EEF92287FE3FB4}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -318,7 +318,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B717223}" {
+  CRF_SlottingGroup "{69EEF92287FE3E6C}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -335,7 +335,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EB45EE0B7170EF}" {
+  CRF_SlottingGroup "{69EEF92287FE3D39}" {
    m_sCallsign "IFV 1"
    m_FlagType ARMORED
    m_aSlots {
