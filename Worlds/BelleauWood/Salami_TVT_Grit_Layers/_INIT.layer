@@ -130,7 +130,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69EEBD80DFC97F54}" {
+  CRF_SlottingGroup "{69EF0D05655D8E13}" {
    m_sCallsign "TRP"
    m_FlagType RECON
    m_aSlots {
@@ -140,7 +140,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC97971}" {
+  CRF_SlottingGroup "{69EF0D05655D8AA0}" {
    m_sCallsign "1PLT"
    m_FlagType RECON
    m_aSlots {
@@ -150,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC97A5D}" {
+  CRF_SlottingGroup "{69EF0D05655D8459}" {
    m_sCallsign "1-1"
    m_FlagType RECON
    m_aSlots {
@@ -166,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC97B10}" {
+  CRF_SlottingGroup "{69EF0D05655D8787}" {
    m_sCallsign "1-2"
    m_FlagType RECON
    m_aSlots {
@@ -182,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC975DB}" {
+  CRF_SlottingGroup "{69EF0D05655D8117}" {
    m_sCallsign "1-3 (Effects)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC976BB}" {
+  CRF_SlottingGroup "{69EF0D05655D9C43}" {
    m_sCallsign "2PLT"
    m_FlagType RECON
    m_aSlots {
@@ -203,7 +203,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC9779E}" {
+  CRF_SlottingGroup "{69EF0D05655D9FE9}" {
    m_sCallsign "2-1"
    m_FlagType RECON
    m_aSlots {
@@ -219,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC9706B}" {
+  CRF_SlottingGroup "{69EF0D05655D990C}" {
    m_sCallsign "2-2"
    m_FlagType RECON
    m_aSlots {
@@ -235,7 +235,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC9714D}" {
+  CRF_SlottingGroup "{69EF0D05655D946C}" {
    m_sCallsign "2-3 (Effects)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -248,7 +248,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69EEBD80DFC97318}" {
+  CRF_SlottingGroup "{69EF0D05655D9137}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -258,7 +258,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94DE4}" {
+  CRF_SlottingGroup "{69EF0D05655C6CD4}" {
    m_sCallsign "1PLT"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -269,7 +269,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94EE4}" {
+  CRF_SlottingGroup "{69EF0D05655C6E73}" {
    m_sCallsign "1-1"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -280,13 +280,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF0D05655C69A3}" {
+   m_sCallsign "BTR 1"
+   m_FlagType INFANTRY
+   m_aSlots {
     VEHICLE_LEAD
     VEHICLE_DRIVER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94FDA}" {
+  CRF_SlottingGroup "{69EF0D05655C6446}" {
    m_sCallsign "1-2"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -297,13 +305,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF0D05655C67A5}" {
+   m_sCallsign "BTR 2"
+   m_FlagType INFANTRY
+   m_aSlots {
     VEHICLE_LEAD
     VEHICLE_DRIVER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC948B9}" {
+  CRF_SlottingGroup "{69EF0D05655C6177}" {
    m_sCallsign "1-3"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -314,13 +330,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF0D05655C7CF1}" {
+   m_sCallsign "BTR 3"
+   m_FlagType INFANTRY
+   m_aSlots {
     VEHICLE_LEAD
     VEHICLE_DRIVER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94969}" {
+  CRF_SlottingGroup "{69EF0D05655C7F9D}" {
    m_sCallsign "2PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -331,7 +355,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94A7E}" {
+  CRF_SlottingGroup "{69EF0D05655C7934}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -347,7 +371,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC94B48}" {
+  CRF_SlottingGroup "{69EF0D05655C7432}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -363,7 +387,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC9442E}" {
+  CRF_SlottingGroup "{69EF0D05655C77BF}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -379,7 +403,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC9450C}" {
+  CRF_SlottingGroup "{69EF0D05655C711B}" {
    m_sCallsign "Mortar"
    m_FlagType MORTAR
    m_aSlots {
@@ -394,7 +418,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEBD80DFC947FB}" {
+  CRF_SlottingGroup "{69EF0D05655C4C77}" {
    m_sCallsign "Drone Team"
    m_FlagType MORTAR
    m_aSlots {
@@ -460,6 +484,46 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
      m_aFriendlyFactionsIds {
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{69EF0D05AD483CFE}" {
+        m_aGroupNames {
+         "BTR 1"
+        }
+        m_aSRFrequencies {
+         "BTR 1"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{69EF0D05BD721611}" {
+        m_aGroupNames {
+         "BTR 2"
+        }
+        m_aSRFrequencies {
+         "BTR 2"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{69EF0D05B7EB1CFB}" {
+        m_aGroupNames {
+         "BTR 3"
+        }
+        m_aSRFrequencies {
+         "BTR 3"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+      }
      }
     }
     SCR_Faction "{628CDE9209CA3FF9}" {
