@@ -1,0 +1,1200 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  SizeLayoutWidgetClass "{62F03D8811547D30}" : "{D519C5E16410D772}UI/layouts/Map/MapTaskList.layout" {
+   Name "MapTaskList"
+   Slot FrameWidgetSlot "{59F48194AC30BD2E}" {
+   }
+   "Z Order" 1
+   "Is Visible" 0
+  }
+  FrameWidgetClass "{62F03D8811547F37}" {
+   Name "Header"
+   Slot FrameWidgetSlot "{62EF62C884AA9F57}" {
+    Anchor 0 0 1 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 105
+    OffsetBottom -105
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{62F03D8811547F36}" {
+     Name "MissionNameBG"
+     Slot FrameWidgetSlot "{62EF62C8ABA4CFE1}" {
+      Anchor 0.007 0.147 0.513 0.862
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Z Order" 1
+     Color 0.198 0.012 0.012 1
+     Size 512 512
+     Mask "{E12BB5C5BD00269E}UI/Textures/Common/gradientTexture_Dither_right_512.edds"
+     "Transition width" 1
+     Progress 0.46
+     "Mask Mode" "Include Below"
+    }
+    TextWidgetClass "{62F03D8811547F39}" {
+     Name "MissionText"
+     Slot FrameWidgetSlot "{62EF62DC8321B9B0}" {
+      Anchor 0.013 0.233 0.505 0.765
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Z Order" 2
+     Text "CRF S&D98 Stupid name this is | By Salami"
+     "Font Size" 100
+     "Vertical Alignment" Center
+    }
+    ImageWidgetClass "{62F03D8811547F38}" {
+     Name "HeaderBG"
+     Slot FrameWidgetSlot "{62EF62C8ABA4CFE1}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.029 0.034 0.048 1
+     Size 512 512
+     "Transition width" 1
+     Progress 0.24
+     "Mask Mode" "Include Below"
+    }
+    FrameWidgetClass "{62F03D84D557D9A8}" {
+     Name "PreviewFrame"
+     Slot FrameWidgetSlot "{62F03D84D557D9FD}" {
+      Anchor 0.52 0.202 0.623 0.771
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{62F03D808BD74EC7}" {
+       Name "PreviewBorder"
+       Slot FrameWidgetSlot "{62F03D808BD74F27}" {
+        Anchor 0 0 1 1
+        PositionX 560.99
+        PositionY 21.24
+        SizeX -1722.45
+        OffsetRight 0
+        SizeY -45.327
+        OffsetBottom 0
+       }
+       Color 0.193 0 0 0
+      }
+      ButtonWidgetClass "{62F03D8811547F3D}" {
+       Name "PreviewButton"
+       Slot FrameWidgetSlot "{62F01249B20B3A74}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 3
+        PositionY 24
+        OffsetTop 3
+        SizeX -6.05
+        OffsetRight 3
+        SizeY -5.473
+        OffsetBottom 3
+       }
+       Color 0.144 0.144 0.144 1
+       {
+        TextWidgetClass "{62F03D8811547F3C}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{62F01249E183255B}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "Briefing"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{62F03D8726B06D64}" {
+     Name "SlottingFrame"
+     Slot FrameWidgetSlot "{62F03D8726B06D4F}" {
+      Anchor 0.627 0.202 0.73 0.771
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{62F03D80B4893476}" {
+       Name "SlottingBorder"
+       Slot FrameWidgetSlot "{62F03D808BD74F27}" {
+        Anchor 0 0 1 1
+        PositionX 765.897
+        PositionY 21.24
+        SizeX -1722.45
+        OffsetRight 0
+        SizeY -45.327
+        OffsetBottom 0
+       }
+       Color 0.193 0 0 0
+      }
+      ImageWidgetClass "{62F092E3111429E5}" {
+       Name "ButtonBG"
+       Slot FrameWidgetSlot "{62F092E2FDCC4312}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 3
+        PositionY 0
+        OffsetTop 3
+        SizeX -97.862
+        OffsetRight 3
+        SizeY -29.673
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+      }
+      ButtonWidgetClass "{62F03D8811547F3F}" {
+       Name "SlottingButton"
+       Slot FrameWidgetSlot "{62F01249B20B3A74}" {
+        Anchor 0 0 1 1
+        PositionX 769
+        OffsetLeft 3
+        PositionY 24
+        OffsetTop 3
+        SizeX -6.05
+        OffsetRight 3
+        SizeY -5.473
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+       components {
+        ButtonComponent "{62F06D5FBCB36C3B}" {
+         m_ColorButtonDefault 0.042 0.042 0.042 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+        SCR_ButtonTextComponent "{62F14B97FD5ED90F}" {
+        }
+       }
+       {
+        TextWidgetClass "{62F03D8811547F3E}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{62F01249E183255B}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "Slotting"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{62F03D8720E3F6FB}" {
+     Name "GameFrame"
+     Slot FrameWidgetSlot "{62F03D8720E3F6DC}" {
+      Anchor 0.733 0.203 0.836 0.771
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{62F03D80C727E265}" {
+       Name "GameBorder"
+       Slot FrameWidgetSlot "{62F03D808BD74F27}" {
+        Anchor 0 0 1 1
+        PositionX 970.748
+        PositionY 21.24
+        SizeX -1722.14
+        OffsetRight 0
+        SizeY -45.327
+        OffsetBottom 0
+       }
+       Color 0.195 0 0 0
+      }
+      ImageWidgetClass "{62F092E2FDCC4333}" {
+       Name "ButtonBG"
+       Slot FrameWidgetSlot "{62F092E2FDCC4312}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 3
+        PositionY 0
+        OffsetTop 3
+        SizeX -97.862
+        OffsetRight 3
+        SizeY -29.673
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+      }
+      ButtonWidgetClass "{62F03D8811547F01}" {
+       Name "GameButton"
+       Slot FrameWidgetSlot "{62F01249B20B3A74}" {
+        Anchor 0 0 1 1
+        PositionX 3
+        OffsetLeft 3
+        PositionY 3
+        OffsetTop 3
+        SizeX -194.862
+        OffsetRight 3
+        SizeY -56.673
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+       components {
+        ButtonComponent "{62F06D5C177893BD}" {
+         m_ColorButtonDefault 0.042 0.042 0.042 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+        SCR_ButtonTextComponent "{62F14B97E04641BC}" {
+        }
+       }
+       {
+        TextWidgetClass "{62F03D8811547F00}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{62F01249E183255B}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "Game"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{62F03D8721E23343}" {
+     Name "AARFrame"
+     Slot FrameWidgetSlot "{62F03D8721E233A1}" {
+      Anchor 0.84 0.202 0.943 0.771
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{62F03D80DADE9F5E}" {
+       Name "AARBorder"
+       Slot FrameWidgetSlot "{62F03D808BD74F27}" {
+        Anchor 0 0 1 1
+        PositionX 1175.6
+        PositionY 21.24
+        SizeX -1721.82
+        OffsetRight 0
+        SizeY -45.327
+        OffsetBottom 0
+       }
+       Color 0.193 0 0 0
+      }
+      ImageWidgetClass "{62F092E31D215122}" {
+       Name "ButtonBG"
+       Slot FrameWidgetSlot "{62F092E2FDCC4312}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 3
+        PositionY 0
+        OffsetTop 3
+        SizeX -97.862
+        OffsetRight 3
+        SizeY -29.673
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+      }
+      ButtonWidgetClass "{62F03D881157AA50}" {
+       Name "AARButton"
+       Slot FrameWidgetSlot "{62F01249B20B3A74}" {
+        Anchor 0 0 1 1
+        PositionX 1179
+        OffsetLeft 3
+        PositionY 24
+        OffsetTop 3
+        SizeX -6.68
+        OffsetRight 3
+        SizeY -5.473
+        OffsetBottom 3
+       }
+       Color 0.042 0.042 0.042 1
+       components {
+        ButtonComponent "{62F06D5C28F2A1AA}" {
+         m_ColorButtonDefault 0.042 0.042 0.042 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+        SCR_ButtonTextComponent "{62F14B97E5D52FB8}" {
+        }
+       }
+       {
+        TextWidgetClass "{62F03D881157AA55}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{62F01249E183255B}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Text "AAR"
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{62F14B9706EB9D24}" {
+     Name "AdvanceFrame"
+     Slot FrameWidgetSlot "{62F14B9706EB9C3E}" {
+      Anchor 0.947 0.23 0.971 0.735
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{62F14B97333F50FA}" {
+       Name "ButtonBG"
+       Slot FrameWidgetSlot "{62F092E2FDCC4312}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        PositionY 0
+        SizeX -97.862
+        OffsetRight 0
+        SizeY -29.673
+        OffsetBottom 0
+       }
+       Color 0.042 0.042 0.042 1
+      }
+      ButtonWidgetClass "{62F06D58D3EF4A62}" {
+       Name "Advance"
+       Slot FrameWidgetSlot "{62F06D58D3EF4A43}" {
+        Anchor 0 0 1 1
+        PositionX 443.75
+        PositionY -1.8
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.042 0.042 0.042 0
+       components {
+        SCR_ButtonTextComponent "{62F14B9744C6FA16}" {
+         m_BackgroundHovered 1 0.133 0.133 0.3
+         m_sTextWidgetName ""
+        }
+        ButtonComponent "{62F14B97A1AF101E}" {
+         m_ColorButtonDefault 0.042 0.042 0.042 0
+         m_ColorButtonHovered 1 0.133 0.133 0.05
+         m_ColorButtonHoveredFocused 1 0.133 0.133 0.25
+        }
+       }
+       {
+        ImageWidgetClass "{62F06D593F59900F}" {
+         Name "AdvanceImage"
+         Slot ButtonWidgetSlot "{62F06D593F59906A}" {
+         }
+         Color 0.198 0.012 0.012 1
+         Texture "{BBBA870598CED29B}UI/Textures/PlayMenu/ArrowLeft_UI.edds"
+         Size 34.5 32
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D881157AB9D}" : "{0651202E9F2646DE}UI/layouts/Map/Map.layout" {
+   Name "MapFrame"
+   Slot FrameWidgetSlot "{58731DB204D943BC}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
+    FrameWidgetClass "{5EF6A5155C38226C}" {
+     Prefab "{5EF6A5155C38226C}"
+     {
+      RenderTargetWidgetClass "{5EF6A5155C382273}" {
+       Prefab "{5EF6A5155C382273}"
+      }
+     }
+    }
+    MapWidgetClass "{000000009C582FB6}" {
+     Prefab "{000000009C582FB6}"
+    }
+    CanvasWidgetClass "{5A45347FD72F20E4}" {
+     Prefab "{5A45347FD72F20E4}"
+    }
+    CanvasWidgetClass "{00000000D821A644}" {
+     Prefab "{00000000D821A644}"
+    }
+    FrameWidgetClass "{5D828475DBE5390E}" {
+     Prefab "{5D828475DBE5390E}"
+    }
+    FrameWidgetClass "{54E30A36DBD6A65E}" {
+     Prefab "{54E30A36DBD6A65E}"
+    }
+    FrameWidgetClass "{598E8BBBD36F05EE}" {
+     Prefab "{598E8BBBD36F05EE}"
+     {
+      ImageWidgetClass "{59387C05CE1B5E65}" {
+       Prefab "{59387C05CE1B5E65}"
+      }
+     }
+    }
+    FrameWidgetClass "{59D6CDCB3872103B}" {
+     Prefab "{59D6CDCB3872103B}"
+     {
+      RenderTargetWidgetClass "{00000000446BA9A0}" {
+       Prefab "{00000000446BA9A0}"
+      }
+     }
+    }
+    FrameWidgetClass "{599E8B33290492AA}" {
+     Prefab "{599E8B33290492AA}"
+     {
+      RenderTargetWidgetClass "{55BC7CD5C47FC499}" {
+       Prefab "{55BC7CD5C47FC499}"
+      }
+     }
+    }
+    ImageWidgetClass "{00000000BB421ECD}" {
+     Prefab "{00000000BB421ECD}"
+    }
+    HorizontalLayoutWidgetClass "{000000001FC52976}" {
+     Prefab "{000000001FC52976}"
+     {
+      ImageWidgetClass "{000000002766140D}" {
+       Prefab "{000000002766140D}"
+       Slot LayoutSlot "{52DA9C9935318517}" {
+        Padding 0 0 0 0
+        FillWeight 1
+       }
+      }
+      VerticalLayoutWidgetClass "{00000000498E31E4}" {
+       Prefab "{00000000498E31E4}"
+       {
+        ImageWidgetClass "{00000000F82C408D}" {
+         Prefab "{00000000F82C408D}"
+        }
+        ImageWidgetClass "{00000000B0038F39}" {
+         Prefab "{00000000B0038F39}"
+        }
+        ImageWidgetClass "{0000000092E23A84}" {
+         Prefab "{0000000092E23A84}"
+        }
+       }
+      }
+      ImageWidgetClass "{00000000BD0C6E82}" {
+       Prefab "{00000000BD0C6E82}"
+      }
+     }
+    }
+    HorizontalLayoutWidgetClass "{592A7D6B9076B6D0}" {
+     Prefab "{592A7D6B9076B6D0}"
+     {
+      VerticalLayoutWidgetClass "{55A2A2F472F01710}" {
+       Prefab "{55A2A2F472F01710}"
+       {
+        ImageWidgetClass "{55A2A2F59FF25489}" {
+         Prefab "{55A2A2F59FF25489}"
+        }
+        HorizontalLayoutWidgetClass "{56527D748AE8E3B4}" {
+         Prefab "{56527D748AE8E3B4}"
+         {
+          ImageWidgetClass "{55A2A2EFADDB092A}" {
+           Prefab "{55A2A2EFADDB092A}"
+          }
+          ImageWidgetClass "{56527D746E983484}" {
+           Prefab "{56527D746E983484}"
+          }
+         }
+        }
+        ImageWidgetClass "{55A2A2F59B72E74B}" {
+         Prefab "{55A2A2F59B72E74B}"
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{55A2A2EFA4BF5E43}" {
+       Prefab "{55A2A2EFA4BF5E43}"
+       {
+        ImageWidgetClass "{55A2A2EFA4BF5E42}" {
+         Prefab "{55A2A2EFA4BF5E42}"
+        }
+        VerticalLayoutWidgetClass "{5650B1705442D744}" {
+         Prefab "{5650B1705442D744}"
+         {
+          ImageWidgetClass "{5650B1704ED4097C}" {
+           Prefab "{5650B1704ED4097C}"
+          }
+          SizeLayoutWidgetClass "{56527D5B54D601F1}" {
+           Prefab "{56527D5B54D601F1}"
+          }
+          ImageWidgetClass "{5650B1704CE25C75}" {
+           Prefab "{5650B1704CE25C75}"
+          }
+         }
+        }
+        ImageWidgetClass "{55A2A2EFA4BF5E5B}" {
+         Prefab "{55A2A2EFA4BF5E5B}"
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{55A2A2FEB2DAB65B}" {
+       Prefab "{55A2A2FEB2DAB65B}"
+       {
+        TextWidgetClass "{620A6CCFD88FC88B}" {
+         Prefab "{620A6CCFD88FC88B}"
+        }
+        ImageWidgetClass "{55A2A2FEA6644F65}" {
+         Prefab "{55A2A2FEA6644F65}"
+        }
+        TextWidgetClass "{5654A18BF82D9B59}" {
+         Prefab "{5654A18BF82D9B59}"
+        }
+        HorizontalLayoutWidgetClass "{56527D6A08904DE4}" {
+         Prefab "{56527D6A08904DE4}"
+         {
+          ImageWidgetClass "{56527D6A507AC116}" {
+           Prefab "{56527D6A507AC116}"
+          }
+          ImageWidgetClass "{55A2A2EFDE3EC6D8}" {
+           Prefab "{55A2A2EFDE3EC6D8}"
+          }
+         }
+        }
+        ImageWidgetClass "{55A2A2FE05FD6952}" {
+         Prefab "{55A2A2FE05FD6952}"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D881157A4D0}" {
+   Name "Players"
+   Slot FrameWidgetSlot "{62F0124A5876B3A6}" {
+    Anchor 0.893 0.463 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{62F03D881157A4D3}" {
+     Name "PlayersBG"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.94
+     Color 0.044 0.048 0.062 0.98
+    }
+    OverlayWidgetClass "{62F03D881157A4D2}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayersList"
+     Slot FrameWidgetSlot "{62F0125F18C6CEA2}" {
+      Anchor 0 0 1 0
+      PositionX 7.612
+      OffsetLeft 7.612
+      PositionY 46.939
+      OffsetTop 46.939
+      SizeX -14.63
+      OffsetRight 7.018
+      SizeY 526.2
+      OffsetBottom -573.139
+     }
+     {
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
+      }
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    ImageWidgetClass "{62F03D881157A4D5}" {
+     Name "PlayersHeader"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 39.96
+      OffsetBottom -39.96
+     }
+     Color 0.055 0.09 0.19 1
+    }
+    TextWidgetClass "{62F03D881157A4D4}" {
+     Name "PlayersText"
+     Slot FrameWidgetSlot "{62F01245493B2589}" {
+      Anchor 0 0 1 0
+      PositionX 58.076
+      OffsetLeft 58.076
+      PositionY 5
+      OffsetTop 5
+      SizeX -107.225
+      OffsetRight 49.149
+      SizeY 29.96
+      OffsetBottom -34.96
+     }
+     Text "Players"
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D881157A546}" {
+   Name "MissionDescription"
+   Slot FrameWidgetSlot "{62F0124A5876B3A6}" {
+    Anchor 0 0.463 0.219 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{62F03D881157CD7D}" {
+     Name "MissionBG"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.94
+     Color 0.044 0.048 0.062 0.98
+    }
+    OverlayWidgetClass "{62F03D881157CD72}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "DescriptionList"
+     Slot FrameWidgetSlot "{62F0125F18C6CEA2}" {
+      Anchor 0 0 1 0
+      PositionX 5.735
+      OffsetLeft 5.735
+      PositionY 72.963
+      OffsetTop 72.963
+      SizeX -15.128
+      OffsetRight 9.393
+      SizeY 500.176
+      OffsetBottom -573.139
+     }
+     {
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+        }
+       }
+      }
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    ImageWidgetClass "{62F03D881157CD73}" {
+     Name "MissionHeader"
+     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+      Anchor 0 0 1 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 39.96
+      OffsetBottom -39.96
+     }
+     Color 0.055 0.09 0.19 1
+    }
+    TextWidgetClass "{62F03D881157CD70}" {
+     Name "MissionText"
+     Slot FrameWidgetSlot "{62F01245493B2589}" {
+      Anchor 0 0 1 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 5
+      OffsetTop 5
+      SizeX 0
+      OffsetRight 0
+      SizeY 29.96
+      OffsetBottom -34.96
+     }
+     Text "Briefing"
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{62F06D427631DA2F}" {
+     Name "BackButton"
+     Slot FrameWidgetSlot "{62F06D427631DA08}" {
+      Anchor 0 0 1 0
+      PositionX 332.6
+      OffsetLeft 332.6
+      PositionY 43.497
+      OffsetTop 43.497
+      SizeX -341.851
+      OffsetRight 9.251
+      SizeY 29.578
+      OffsetBottom -73.075
+     }
+     Color 0.105 0.105 0.105 0
+     components {
+      SCR_ButtonTextComponent "{62F092D5D1C77526}" {
+       m_BackgroundDefault 0.084 0.084 0.084 0.1
+       m_BackgroundHovered 0.337 0.337 0.337 0.3
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{62F06D4306D37B1D}" {
+       Name "BackText"
+       Slot ButtonWidgetSlot "{62F06D4306D37B6C}" {
+       }
+       Text "<- Back"
+      }
+     }
+    }
+    ScrollLayoutWidgetClass "{64635E2E391DE3DB}" {
+     Name "ScrollLayout"
+     Slot FrameWidgetSlot "{64635E2E391DE034}" {
+      Anchor 0 0 1 0
+      PositionX 5.887
+      OffsetLeft 5.887
+      PositionY 78.537
+      OffsetTop 78.537
+      SizeX -21.122
+      OffsetRight 15.235
+      SizeY 494.463
+      OffsetBottom -573
+     }
+     {
+      VerticalLayoutWidgetClass "{64635E2E26327346}" {
+       Name "VerticalLayout"
+       Slot AlignableSlot "{64635E2C07810990}" {
+       }
+       {
+        RichTextWidgetClass "{62F06D4239BB1138}" {
+         Name "DescriptionInfo"
+         Slot LayoutSlot "{66384140FD489F3A}" {
+         }
+         Text ""
+         Wrap 1
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D881157CDFF}" {
+   Name "TimeWeather"
+   Slot FrameWidgetSlot "{62F012440EE08870}" {
+    Anchor 0.884 0.097 1 0.184
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{62F06D5F3C52C7E8}" {
+     Name "TimeBG"
+     Slot FrameWidgetSlot "{62F01244212F9275}" {
+      Anchor 1 0 1 1
+      PositionX -190.859
+      OffsetLeft -190.859
+      PositionY 3.383
+      OffsetTop 3.383
+      SizeX 171.989
+      OffsetRight 18.87
+      SizeY -63.381
+      OffsetBottom 59.998
+     }
+     Color 0.044 0.048 0.062 0.96
+    }
+    TextWidgetClass "{62F03D881157C65C}" {
+     Name "TimeText"
+     Slot FrameWidgetSlot "{62F0124451778FA1}" {
+      Anchor 1 0 1 1
+      PositionX -189.374
+      OffsetLeft -189.374
+      PositionY 3.45
+      OffsetTop 3.45
+      SizeX 167.832
+      OffsetRight 21.542
+      SizeY -63.381
+      OffsetBottom 59.931
+     }
+     Text "Time: 19:27"
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ImageWidgetClass "{62F03D881157C65D}" {
+     Name "WeatherBG"
+     Slot FrameWidgetSlot "{62F01244212F9275}" {
+      Anchor 1 0 1 1
+      PositionX -190.859
+      OffsetLeft -190.859
+      PositionY 37.096
+      OffsetTop 37.096
+      SizeX 171.989
+      OffsetRight 18.87
+      SizeY -63.381
+      OffsetBottom 26.285
+     }
+     Color 0.044 0.048 0.062 0.96
+    }
+    TextWidgetClass "{62F03D881157C652}" {
+     Name "WeatherText"
+     Slot FrameWidgetSlot "{62F0124451778FA1}" {
+      Anchor 1 0 1 1
+      PositionX -188.484
+      OffsetLeft -188.484
+      PositionY 37.001
+      OffsetTop 37.001
+      SizeX 166.509
+      OffsetRight 21.975
+      SizeY -63.381
+      OffsetBottom 26.38
+     }
+     Text "Weather: Rainy"
+     "Min Font Size" 4
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     Wrap 1
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D881157C4F9}" {
+   Name "ToolMenu"
+   Slot FrameWidgetSlot "{59107CDEE98682C5}" {
+    PositionX 25
+    OffsetLeft 25
+    PositionY -100
+    OffsetTop -100
+    SizeX -100
+    OffsetRight 75
+    SizeY 30
+    OffsetBottom 70
+    Alignment 0.5 0
+    SizeToContent 1
+   }
+   "Z Order" 1
+   Clipping False
+   "Ignore Cursor" 0
+   {
+    FrameWidgetClass "{62F03D881157C4FE}" {
+     Name "ToolMenuBar"
+     Slot FrameWidgetSlot "{59107CC3B4EFA8B6}" {
+      OffsetLeft 0
+      OffsetTop 0
+      SizeX 30
+      OffsetRight -30
+      OffsetBottom -30
+      SizeToContent 1
+     }
+     Clipping True
+     {
+      ImageWidgetClass "{62F03D881157C4FF}" {
+       Name "MenuBackground"
+       Slot FrameWidgetSlot "{59107CDD6A9F6BD3}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -40
+        OffsetRight 0
+        SizeY -40
+        OffsetBottom 0
+        SizeToContent 1
+       }
+       Opacity 0.98
+       Color 0 0 0 1
+       Image ""
+       Size 40 40
+      }
+      HorizontalLayoutWidgetClass "{62F03D881157C4FD}" {
+       Name "ToolMenuHoriz"
+       Slot FrameWidgetSlot "{59107CC3B4EFA879}" {
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+        SizeToContent 1
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{62F03D8811576B43}" : "{B7A765172F0BD4D9}UI/layouts/Common/GameVersionWatermark.layout" {
+   Name "EarlyAccessRoot"
+   Slot FrameWidgetSlot "{5CEE96372B5D270B}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Opacity 1
+   {
+    HorizontalLayoutWidgetClass "{5CEAB7C94A55AF1E}" {
+     Prefab "{5CEAB7C94A55AF1E}"
+     {
+      SizeLayoutWidgetClass "{5CEE963658524D0D}" {
+       Prefab "{5CEE963658524D0D}"
+       {
+        OverlayWidgetClass "{5CEE963658524D03}" {
+         Prefab "{5CEE963658524D03}"
+         {
+          ImageWidgetClass "{5CEE963658524D06}" {
+           Prefab "{5CEE963658524D06}"
+          }
+          ImageWidgetClass "{5CEE963658524D01}" {
+           Prefab "{5CEE963658524D01}"
+          }
+         }
+        }
+       }
+      }
+      TextWidgetClass "{5CEAB7C94A55AF1D}" {
+       Prefab "{5CEAB7C94A55AF1D}"
+      }
+      TextWidgetClass "{5CEAB7C94A55AF1C}" {
+       Prefab "{5CEAB7C94A55AF1C}"
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{631F3DAB193050B7}" : "{D89BBA18F99053D6}UI/layouts/HUD/Chat/ChatHud.layout" {
+   Name "ChatHud"
+   Slot FrameWidgetSlot "{58731DB272499DED}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1920
+    OffsetRight 0
+    SizeY -746
+    OffsetBottom 0
+   }
+   {
+    OverlayWidgetClass "{585F053862A9FD1C}" {
+     Prefab "{585F053862A9FD1C}"
+     {
+      OverlayWidgetClass "{56150B2288F76A08}" {
+       Prefab "{56150B2288F76A08}"
+       {
+        VerticalLayoutWidgetClass "{00000000BC2C2020}" {
+         Prefab "{00000000BC2C2020}"
+         {
+          OverlayWidgetClass "{563296652233D952}" {
+           Prefab "{563296652233D952}"
+           {
+            OverlayWidgetClass "{0000000076CB44EF}" {
+             Prefab "{0000000076CB44EF}"
+             {
+              ImageWidgetClass "{55DCCD27A68C5447}" {
+               Prefab "{55DCCD27A68C5447}"
+              }
+              BlurWidgetClass "{00000000794CF909}" {
+               Prefab "{00000000794CF909}"
+              }
+              TextWidgetClass "{55E6B13D4AF7217C}" {
+               Prefab "{55E6B13D4AF7217C}"
+              }
+              HorizontalLayoutWidgetClass "{00000000A1E383A5}" {
+               Prefab "{00000000A1E383A5}"
+               {
+                ImageWidgetClass "{55DCCD258C886EC8}" {
+                 Prefab "{55DCCD258C886EC8}"
+                }
+                ImageWidgetClass "{0000000034CEFF98}" {
+                 Prefab "{0000000034CEFF98}"
+                }
+                TextWidgetClass "{54FEBC03B2EC44A5}" {
+                 Prefab "{54FEBC03B2EC44A5}"
+                }
+                SizeLayoutWidgetClass "{56F9028315D8FE42}" {
+                 Prefab "{56F9028315D8FE42}"
+                 {
+                  EditBoxWidgetClass "{000000009EEB4E0F}" {
+                   Prefab "{000000009EEB4E0F}"
+                  }
+                 }
+                }
+                HorizontalLayoutWidgetClass "{00000000528E33DF}" {
+                 Prefab "{00000000528E33DF}"
+                 {
+                  ImageWidgetClass "{00000000B6626F93}" {
+                   Prefab "{00000000B6626F93}"
+                  }
+                  TextWidgetClass "{54FEBC03E12A1386}" {
+                   Prefab "{54FEBC03E12A1386}"
+                  }
+                 }
+                }
+                TextWidgetClass "{54FEBC045BAF6963}" {
+                 Prefab "{54FEBC045BAF6963}"
+                }
+               }
+              }
+              ImageWidgetClass "{0000000086FFCCC5}" {
+               Prefab "{0000000086FFCCC5}"
+              }
+             }
+            }
+            HorizontalLayoutWidgetClass "{5632A745B44CD3D0}" {
+             Prefab "{5632A745B44CD3D0}"
+             {
+              OverlayWidgetClass "{563285D152EBA710}" {
+               Prefab "{563285D152EBA710}"
+               {
+                OverlayWidgetClass "{5EDCE274A0C4967B}" {
+                 Prefab "{5EDCE274A0C4967B}"
+                 {
+                  BlurWidgetClass "{5EDCE274A0C49647}" {
+                   Prefab "{5EDCE274A0C49647}"
+                  }
+                  HorizontalLayoutWidgetClass "{5EDCE274A0C49645}" {
+                   Prefab "{5EDCE274A0C49645}"
+                   {
+                    RichTextWidgetClass "{5EDCE274A0C49643}" {
+                     Prefab "{5EDCE274A0C49643}"
+                    }
+                    TextWidgetClass "{5EDCE274A0C49641}" {
+                     Prefab "{5EDCE274A0C49641}"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+              OverlayWidgetClass "{5632A747AAE781EA}" {
+               Prefab "{5632A747AAE781EA}"
+               {
+                OverlayWidgetClass "{5EDCE274A0C4967B}" {
+                 Prefab "{5EDCE274A0C4967B}"
+                 {
+                  BlurWidgetClass "{5EDCE274A0C49647}" {
+                   Prefab "{5EDCE274A0C49647}"
+                  }
+                  HorizontalLayoutWidgetClass "{5EDCE274A0C49645}" {
+                   Prefab "{5EDCE274A0C49645}"
+                   {
+                    RichTextWidgetClass "{5EDCE274A0C49643}" {
+                     Prefab "{5EDCE274A0C49643}"
+                    }
+                    TextWidgetClass "{5EDCE274A0C49641}" {
+                     Prefab "{5EDCE274A0C49641}"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
