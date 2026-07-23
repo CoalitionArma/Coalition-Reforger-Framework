@@ -1,0 +1,182 @@
+CRF_SpectatorCharacter : "{D7EB93B0550FD158}Prefabs/Characters/!Core/CRF_Player.et" {
+ ID "520EC961A090B1EE"
+ components {
+  CharacterSoundComponent "{520EA1D2F659CF84}" {
+   Filenames {
+   }
+   IncludeInactive 0
+   FoliageCollisionRadius 0
+   ObstructionThreshold 0
+  }
+  SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
+   Filenames {
+   }
+   StaminaThreshold 0.0001
+   StaminaThresholdMinimum 0.0001
+  }
+  SCR_CharacterControllerComponent "{520EA1D2F659CEA5}" {
+   DeathTimer 0
+   AllowLightImpactAnim 0
+   AllowRagdollEffectorsFromDamage 0
+   m_fDrowningDuration 1000000000
+  }
+  FactionAffiliationComponent "{633B2131A597C43C}" {
+   "faction affiliation" "SPEC"
+  }
+  MeshObject "{520EA1D2F659C81F}" {
+   Materials {
+    MaterialAssignClass "{65AB3C7F849E4B47}" {
+     SourceMaterial "Basebody_01_Male_Arms"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4BA2}" {
+     SourceMaterial "Basebody_01_Male_Arms_wound"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4BAB}" {
+     SourceMaterial "Basebody_01_Male_Body"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4B96}" {
+     SourceMaterial "Basebody_01_Male_Body_wound"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
+    }
+   }
+   PixelSizeScale 0
+   CastShadow 0
+   CastFarShadow 0
+   RainOccluder 0
+   WetnessOccluder 0
+   ReceiveLight 0
+  }
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHeadHitZone Head {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone Chest {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone Abdomen {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone RForearm {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone LForearm {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone RCalf {
+     IgnoreExplosions 1
+    }
+    SCR_CharacterHitZone LCalf {
+     IgnoreExplosions 1
+    }
+   }
+   "Fall damage min speed" 999
+   "Fall damage max speed" 999
+   CollisionVelocityThreshold 999
+   EnableDamage 0
+   m_iMinimumBurningState NONE
+   m_sBleedingParticle ""
+   m_fBleedingParticleRateScale 0
+   m_fDOTScale 0
+   m_bPermitUnconsciousness 0
+   m_bAllowBloodyClothes 0
+  }
+  SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
+   StaminaRegainPerS 1
+   StaminaDrainRun 1
+   StaminaDrainSprint 1
+   BreathNormalFrequency 0.001
+   BreathNormalMagnitude 0.001
+   BreathExhaustedFrequency 0.001
+   BreathExhaustedMagnitude 0.001
+  }
+  SCR_CharacterVicinityComponent "{529A70D96D401B33}" {
+   DiscoveryRadius 0
+   DiscoveryInterval 0
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#AR-Role_Rifleman"
+    Icon "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
+    m_Image "{BB790255945032F8}UI/Images/SpecImages/Spec_Eye_BCR.edds"
+    m_sFaction "SPEC"
+    m_aAuthoredLabels + {
+     ENTITYTYPE_CHARACTER FACTION_NONE
+    }
+    m_aAutoLabels {
+    }
+   }
+   m_Flags 2133
+  }
+  SCR_ExtendedCharacterIdentityComponent "{5AEEA3C8B2AA118B}" {
+   m_ExtendedIdentity SCR_ExtendedCharacterIdentity "{5AEEA3C8BF06C593}" {
+    m_iAge 999
+    m_iDayOfCreation 9
+    m_iMonthOfCreation 9
+    m_eBloodType O_POSITIVE
+   }
+   m_IdentityBio SCR_IdentityBio "{65AB3C7FF085BE1D}" {
+    m_sBio "OHGODOHFUCKHESCOMINGFORUSALL"
+   }
+   m_iMinRandomAge 999
+   m_iMaxRandomAge 99999
+   m_eGender NEUTRAL
+   m_fChanceOfIdentityDocumentBeingValuable 0
+  }
+  BaseFlattenGrassComponent "{520EA1D2F659CE26}" {
+   Enabled 0
+   ParametersCollection {
+    FlattenGrassParametersObject "{520EA1D2F659CE2C}" {
+    }
+    FlattenGrassParametersObject "{520EA1D2F659CE28}" {
+    }
+    FlattenGrassParametersObject "{520EA1D2F659CE27}" {
+    }
+   }
+  }
+  SCR_CharacterPerceivableComponent "{566CCE2397E28600}" {
+   Enabled 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponSlotIndex 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponSlotIndex 1
+  }
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+     Head "{2FC2A1CE68435471}Prefabs/Characters/!Spectator/Body/Head_Invisible.et"
+     Body "{E25DCEC549E17067}Prefabs/Characters/!Spectator/Body/CharacterBasebody_Invisible.et"
+    }
+    SoundIdentity SoundIdentity "{56E6D945D8F79290}" {
+     VoiceID 0
+    }
+    Name ""
+    Alias ""
+    Surname ""
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{13A97D10A827AE01}Prefabs/Items/Equipment/Radios/SpecRadioBag.et"
+    }
+   }
+  }
+  RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
+   Enabled 0
+  }
+  CharacterAnimationComponent "{520EA1D2F659C994}" {
+   components {
+    SCR_CharacterBuoyancyComponent "{5EDCE7B429F7D056}" {
+     Buoyancy 0
+    }
+   }
+  }
+ }
+ Flags 0 0x3
+}

@@ -1,0 +1,57 @@
+FrameWidgetClass {
+ Name "SpectatorLabelIconFrame"
+ Clipping False
+ {
+  PanelWidgetClass "{5EE8948F20BE168B}" {
+   Name "SpectatorLabel"
+   Slot FrameWidgetSlot "{5EE8948F20BE16F5}" {
+    SizeToContent 1
+   }
+   Color 0 0 0 0
+   style pixel_outline
+   {
+    OverlayWidgetClass "{5EE89488CCB4B28D}" {
+     Name "SpectatorLabelOverlay"
+     Slot FrameWidgetSlot "{5EE89488CCB4B2FF}" {
+      OffsetLeft 0
+      OffsetTop 0
+      SizeX 100
+      OffsetRight -100
+      SizeY 30
+      OffsetBottom -30
+      SizeToContent 1
+     }
+     {
+      RichTextWidgetClass "{5EE8948EAC337C76}" {
+       Name "SpectatorLabelText"
+       Slot OverlayWidgetSlot "{5EE89488FD3D84DE}" {
+        Padding 4 4 4 4
+       }
+       Text ""
+       "Font Size" 32
+       "Min Font Size" 32
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{5EE8948EC9B919B8}" {
+   Name "SpectatorLabelIcon"
+   Slot FrameWidgetSlot "{5EE8948CA93791EA}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 32
+    OffsetRight -32
+    SizeY 32
+    OffsetBottom -32
+   }
+   Texture "{F3A9B47F55BE8D2B}UI/Images/Atlas/PS_Atlas_x64.imageset"
+   Image "Circle"
+   Size 32 32
+  }
+ }
+}
