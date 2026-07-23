@@ -1,3 +1,6 @@
+SCR_AIWorld : "{CFDC9C151CAB3F8D}Prefabs/AI/SCR_AIWorld_BelleauWood.et" {
+ coords 5399.495 168.861 4803.357
+}
 $grp GenericEntity : "{5789E2676151FD33}Prefabs/Structures/Military/CamoNets/US/CamoNet_Small_Top_US.et" {
  {
   coords 5557.629 176.851 5000.356

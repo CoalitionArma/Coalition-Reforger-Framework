@@ -29,17 +29,25 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{69ED0C6F7649ADC4}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "B TRP, 3-71 has been tasked with digging in and conducting a guard of the Brigades flank as they move to assault the town of Belleau. A Russian Motor Rifle Company from the 74th Guards Motor Rifle Brigade is attempting to break through the guard and setup Brigade heavy weapons on the flank of the US assault."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Composition: Infantry"\
    "BLUFOR Assets:"\
+   "MAT"\
+   "MMG"\
+   "FPVs"\
+   "DJIs"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Composition: Motorized"\
    "OPFOR Assets:"\
+   "BTRs"\
+   "FPVs"\
+   "DJIs"\
+   "Mortars"\
    ""\
-   "Time:"\
+   "Time: 1300"\
    ""\
-   "Weather:"
+   "Weather: Rainy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1

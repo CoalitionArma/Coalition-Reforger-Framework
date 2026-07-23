@@ -1,0 +1,22 @@
+GenericEntity : "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
+     AmmoTemplate "{4A3B196E4EA820E9}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_OG7V.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   additionalActions {
+    RHS_FlipSightUserAction "{5CF546C62617A28C}" {
+     m_bShouldBeFoldedByDefault 1
+    }
+    RHS_FlipSightUserAction "{5CF546C64BD40293}" {
+     m_bShouldBeFoldedByDefault 1
+    }
+   }
+  }
+ }
+}
