@@ -1,0 +1,384 @@
+class CRF_PlayerCameraManagerClass : ScriptComponentClass
+{
+}
+
+class CRF_PlayerCameraManager : ScriptComponent
+{
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 RUNTIME VARIABLES
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
+	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
+	
+	protected bool m_bCameraOnRails;
+	protected bool m_bTPPMode = false; // True = third-person, false = first-person (helmet cam)
+	
+	// Orbit camera state (TPP mode)
+	protected float m_fOrbitYaw    = 0.0;   // Accumulated horizontal orbit angle (degrees)
+	protected float m_fOrbitPitch  = 20.0;  // Accumulated vertical orbit angle (degrees, clamped 5–80)
+	protected float m_fOrbitRadius = 4.0;   // Distance from entity in meters (clamped 1.5–20)
+	
+	// Slow auto-orbit camera state (SetCameraOnRailsOrbit / SetCameraOnRailsOrbitEntity)
+	protected IEntity m_eOrbitTargetEntity;          // entity to orbit around (null = use fixed point)
+	protected float m_fOrbitSpeed     = 10.0;        // deg/sec
+	protected float m_fSlowOrbitAngle =  0.0;        // current angle along the orbit circle (degrees)
+	
+	protected IEntity m_eCameraEntity;
+	protected vector m_vCameraOrbitPoint;
+	protected float m_vCameraOrbitDistance;
+	protected float m_vCameraOrbitHeight;
+	protected PolylineShapeEntity m_CameraPolyLine;
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 UPDATE AND INITIALIZE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Initilizes players if they have a valid spectator entity
+	void InitilizeSpecCamera()
+	{
+		vector cameraPos[4] = CRF_PlayerControllerManager.GetInstance().m_vPlayersLastDeath;
+		
+		// Use provided death position if available
+		if (CRF_EntityHelper.IsValidSpawnVector(cameraPos[3])) {
+			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
+		}
+		// Use stored camera position if available
+		else if (CRF_EntityHelper.IsValidSpawnVector(m_vStoredCameraPos[3])) {
+			cameraPos = m_vStoredCameraPos;
+		} 
+		// Fallback to generic spawn position
+		else {
+			cameraPos[3] = CRF_Gamemode.GetInstance().GetGenericSpawn();
+		}
+
+		// Spawn or reposition camera
+		if (!m_eCamera)
+			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load(CRF_EntityHelper.GetSpectatorCameraResource()), GetGame().GetWorld(), CRF_EntityHelper.CreateSpawnParams(cameraPos));
+		
+		// Level camera horizon
+		vector mat = m_eCamera.GetAngles();
+		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+		
+		if (!CVON_VONGameModeComponent.GetInstance())
+			CRF_SpectatorCamera.Cast(m_eCamera).AttatchSpectatorToCamera(m_eCamera);
+		
+		// Switch to spectator camera
+		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	//! Updates stored camera position for persistence between deaths
+	void UpdateStoredCameraPos()
+	{
+		if (m_eCamera)
+		{
+			vector cameraPos[4];
+			m_eCamera.GetWorldTransform(cameraPos);
+			m_vStoredCameraPos = cameraPos;
+		};
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 CAMERA ON RAILS SETTER METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	void SetCameraOnRailsEntity(IEntity entity, bool tpp = false)
+	{
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_eCameraEntity = entity;
+			m_bTPPMode = tpp;
+			// Initialise orbit yaw to face behind the entity so camera starts at its back
+			if (tpp && entity)
+			{
+				vector angles = entity.GetAngles();
+				// angles[0] = yaw (world Y-rotation). Offset 180° so we're behind.
+				m_fOrbitYaw = angles[0] + 180.0;
+				m_fOrbitPitch = 20.0;
+			}
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Orbit the camera around a fixed world-space point at constant speed.
+	//! \param point    World position to orbit around.
+	//! \param radius   Orbit radius in metres.
+	//! \param height   Camera height above \p point.
+	//! \param speed    Angular speed in degrees/sec (default 10).
+	void SetCameraOnRailsOrbit(vector point, float radius, float height, float speed = 10.0)
+	{	
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_vCameraOrbitPoint = point;
+			m_vCameraOrbitDistance = radius;
+			m_vCameraOrbitHeight = height;
+			m_fOrbitSpeed = speed;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Orbit the camera around an entity at constant speed.
+	//! The orbit center updates every frame to the entity's current position.
+	//! \param entity   Entity to orbit around.
+	//! \param radius   Orbit radius in metres.
+	//! \param height   Camera height above the entity origin.
+	//! \param speed    Angular speed in degrees/sec (default 10).
+	void SetCameraOnRailsOrbitEntity(IEntity entity, float radius, float height, float speed = 10.0)
+	{
+		if (m_eCamera && entity) {
+			ClearCameraOnRailsVariables();
+			m_eOrbitTargetEntity = entity;
+			// Store a non-zero sentinel so EOnFrame routes to FrameUpdateOrbit.
+			m_vCameraOrbitPoint = entity.GetOrigin();
+			m_vCameraOrbitDistance = radius;
+			m_vCameraOrbitHeight = height;
+			m_fOrbitSpeed = speed;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetCameraOnRailsPolyline(PolylineShapeEntity poly)
+	{
+		if (m_eCamera) {
+			ClearCameraOnRailsVariables();
+			m_CameraPolyLine = poly;
+			InitalizeCameraOnRails();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void DisableCameraOnRails()
+	{
+		m_bCameraOnRails = false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void InitalizeCameraOnRails()
+	{
+		m_bCameraOnRails = true;
+		SetEventMask(GetOwner(), EntityEvent.FRAME);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void ClearCameraOnRailsVariables()
+	{
+		m_eCameraEntity = null;
+		m_CameraPolyLine = null;
+		m_vCameraOrbitPoint = vector.Zero;
+		m_vCameraOrbitDistance = 0;
+		m_vCameraOrbitHeight = 0;
+		m_bTPPMode = false;
+		m_fOrbitYaw        = 0.0;
+		m_fOrbitPitch      = 20.0;
+		m_fOrbitRadius     = 4.0;
+		m_eOrbitTargetEntity = null;
+		m_fOrbitSpeed        = 10.0;
+		m_fSlowOrbitAngle    = 0.0;
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME UPDATE
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+	    super.EOnFrame(owner, timeSlice);
+		
+		if (!m_bCameraOnRails || !m_eCamera)
+		{
+			ClearCameraOnRailsVariables();
+			ClearEventMask(owner, EntityEvent.FRAME);
+			return;
+		} else {
+			switch (true) 
+			{
+				case (m_vCameraOrbitPoint != vector.Zero) : FrameUpdateOrbit(timeSlice); break;
+				case (m_eCameraEntity) : 
+				{
+					if (m_bTPPMode) FrameUpdateEntityTPP(timeSlice);
+					else FrameUpdateEntity();
+					break;
+				}
+				case (m_CameraPolyLine) : FrameUpdatePolyline(); break;
+			}
+		};
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 FRAME UPDATE METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdateEntity()
+	{
+		// Get the slot component for camera positioning
+		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eCameraEntity.FindComponent(SlotManagerComponent));
+		if (!slotComp)
+			return;
+		
+		// Get the first-person camera slot
+		EntitySlotInfo cameraPoint = slotComp.GetSlotByName("CRF_FPP");
+		if (!cameraPoint)
+			return;
+		
+		// Get transform and modify it to be slightly behind and to the right of the player
+		vector transform[4];
+		cameraPoint.GetTransform(transform);
+		
+		// Calculate offset position (0.5m back, 0.3m right for over-shoulder view)
+		vector offsetPosition = transform[3] - (transform[2] * 0.5) + (transform[0] * 0.3);
+		transform[3] = offsetPosition;
+		
+		// Apply transform to spectator camera
+		m_eCamera.SetTransform(transform);
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	//! Third-person orbit camera: orbits around the entity using mouse look input.
+	//! Rotation only occurs while RMB (ManualCameraRotate) is held.
+	//! ManualCameraRotateYaw / ManualCameraRotatePitch provide angular deltas (degrees/s at timeSlice=1).
+	//! Pitch is clamped 5–80 degrees. Radius is fixed at m_fOrbitRadius.
+	//! Scroll wheel while RMB is held (ManualCameraSpeedAdjust) zooms the orbit radius in/out.
+	//! Radius is clamped 1.5–20 meters.
+	protected void FrameUpdateEntityTPP(float timeSlice)
+	{
+		if (!m_eCameraEntity || !m_eCamera)
+			return;
+
+		InputManager im = GetGame().GetInputManager();
+
+		// Only rotate/zoom while RMB is held (ManualCameraRotate action)
+		if (im.GetActionValue("ManualCameraRotate") != 0)
+		{
+			float rawYaw   = im.GetActionValue("ManualCameraRotateYaw");
+			float rawPitch = im.GetActionValue("ManualCameraRotatePitch");
+
+			// Values are angular deltas; scale by timeSlice for frame-rate independence.
+			// Speed constant matches SCR_RotateManualCameraComponent default (90 deg/s).
+			const float SPEED = 90.0;
+			m_fOrbitYaw   += rawYaw   * SPEED * timeSlice;
+			m_fOrbitPitch  = Math.Clamp(m_fOrbitPitch - rawPitch * SPEED * timeSlice, 5.0, 80.0);
+
+			// Scroll wheel while RMB held: ManualCameraSpeedAdjust gives a signed
+			// per-frame impulse (positive = scroll up). Multiply radius by it to zoom.
+			float zoomInput = im.GetActionValue("ManualCameraSpeedAdjust");
+			if (zoomInput != 0)
+			{
+				// zoomInput is a rate value; scale so one notch (~1.0 unit) moves radius by 1 m/s
+				const float ZOOM_SPEED = 8.0;
+				m_fOrbitRadius = Math.Clamp(m_fOrbitRadius - zoomInput * ZOOM_SPEED * timeSlice, 1.5, 20.0);
+			}
+		}
+
+		// --- Build camera position on sphere around entity -------------------
+		// Pivot at entity head height
+		vector entityPos = m_eCameraEntity.GetOrigin() + Vector(0, 1.0, 0);
+
+		float yawRad   = m_fOrbitYaw   * Math.DEG2RAD;
+		float pitchRad = m_fOrbitPitch * Math.DEG2RAD;
+
+		float cosPitch = Math.Cos(pitchRad);
+		vector offset = Vector(
+			m_fOrbitRadius * cosPitch * Math.Sin(yawRad),
+			m_fOrbitRadius * Math.Sin(pitchRad),
+			m_fOrbitRadius * cosPitch * Math.Cos(yawRad)
+		);
+		vector camPos = entityPos + offset;
+
+		// --- Build look-at transform -----------------------------------------
+		vector lookDir = vector.Direction(camPos, entityPos);
+		lookDir.Normalize();
+
+		vector worldUp = Vector(0, 1, 0);
+		vector right   = lookDir * worldUp; // forward × up (cross product)
+		right.Normalize();
+		vector up = right * lookDir; // right × forward
+		up.Normalize();
+
+		vector camTransform[4];
+		camTransform[0] = right;
+		camTransform[1] = up;
+		camTransform[2] = lookDir;
+		camTransform[3] = camPos;
+		m_eCamera.SetTransform(camTransform);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdateOrbit(float timeSlice)
+	{
+		// Resolve orbit center — track entity position dynamically if one is set.
+		vector center;
+		if (m_eOrbitTargetEntity)
+			center = m_eOrbitTargetEntity.GetOrigin();
+		else
+			center = m_vCameraOrbitPoint;
+		
+		// Advance the orbit angle.
+		m_fSlowOrbitAngle += m_fOrbitSpeed * timeSlice;
+		if (m_fSlowOrbitAngle >= 360.0)
+			m_fSlowOrbitAngle -= 360.0;
+		
+		float angleRad = m_fSlowOrbitAngle * Math.DEG2RAD;
+		
+		// Camera sits at (radius out, height up) relative to the center.
+		vector camPos = Vector(
+			center[0] + m_vCameraOrbitDistance * Math.Sin(angleRad),
+			center[1] + m_vCameraOrbitHeight,
+			center[2] + m_vCameraOrbitDistance * Math.Cos(angleRad)
+		);
+		
+		// Build a look-at transform so the camera always faces the center.
+		vector lookDir = vector.Direction(camPos, center);
+		lookDir.Normalize();
+		
+		vector worldUp = Vector(0, 1, 0);
+		vector right   = lookDir * worldUp;
+		right.Normalize();
+		vector up = right * lookDir;
+		up.Normalize();
+		
+		vector camTransform[4];
+		camTransform[0] = right;
+		camTransform[1] = up;
+		camTransform[2] = lookDir;
+		camTransform[3] = camPos;
+		m_eCamera.SetTransform(camTransform);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void FrameUpdatePolyline()
+	{
+	
+	}
+	
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 STATIC ACCESSORS
+//=============================================================================================================================================================================================================================================================================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	protected static CRF_PlayerCameraManager m_sInstance;
+	void CRF_PlayerCameraManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_PlayerCameraManager()
+	{
+		if (m_sInstance == this)
+			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static CRF_PlayerCameraManager GetInstance()
+	{
+		return m_sInstance;
+	}
+}

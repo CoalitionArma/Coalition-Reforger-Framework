@@ -1,0 +1,237 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{62F2056BF4F1EC36}" {
+  HorizontalAlign 3
+ }
+ components {
+  CRF_ListBoxElementComponent "{62F200F0C4795E5F}" {
+  }
+ }
+ style blank
+ {
+  SizeLayoutWidgetClass "{630A25A67FEEDA6F}" {
+   Name "SizeLayout"
+   Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+    HorizontalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 42
+   {
+    OverlayWidgetClass "{630A25A67FEEDA6D}" {
+     Name "Overlay"
+     Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Clipping False
+     {
+      ImageWidgetClass "{630A25A67FEEDA6A}" {
+       Name "Image0"
+       Slot OverlayWidgetSlot "{630A2578A5208A35}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.044 0.044 0.044 1
+       Texture "{12B6C6BD1A72A47F}UI/Textures/Common/gradientTexture_Dither_up_512.edds"
+       Size 40 512
+       Mask "{099C73E0F66A5F28}UI/Textures/Common/gradientTexture_Dither_down_512.edds"
+       "Transition width" 1
+       Progress 0.52
+      }
+      FrameWidgetClass "{630A25A67FEEDA6B}" {
+       Name "ButtonLayout"
+       Slot OverlayWidgetSlot "{62F200F27385E1FB}" {
+        HorizontalAlign 0
+        Padding 5 0 0 0
+       }
+       {
+        ImageWidgetClass "{630C43F4F626C5BF}" {
+         Name "RoleImage"
+         Slot FrameWidgetSlot "{630C43F4485D0897}" {
+          Anchor 0 0 0 0
+          PositionX -5.1
+          OffsetLeft -5.1
+          PositionY -8.5
+          OffsetTop -8.5
+          SizeX 70
+          OffsetRight -64.9
+          SizeY 56
+          OffsetBottom -47.5
+         }
+         Texture "{7294DBB54D4BFED6}UI/Images/Ranks/SFC_Rank.edds"
+         Size 40 40
+        }
+        ImageWidgetClass "{CF0002AB00000003}" {
+         Name "RankChevron"
+         Slot FrameWidgetSlot "{CF0002AB00000004}" {
+          Anchor 0 0 0 0
+          PositionX 260
+          OffsetLeft 260
+          PositionY 10
+          OffsetTop 10
+          SizeX 22
+          OffsetRight -282
+          SizeY 22
+          OffsetBottom -32
+         }
+         "Is Visible" 0
+         Size 22 22
+        }
+        TextWidgetClass "{CF0002AB00000001}" {
+         Name "TagName"
+         Slot FrameWidgetSlot "{CF0002AB00000002}" {
+          Anchor 0.58 0 0.69 0
+          PositionX 0
+          OffsetLeft 0
+          PositionY 5
+          OffsetTop 5
+          SizeX 0
+          OffsetRight 0
+          SizeY 30
+          OffsetBottom -35
+         }
+         Clipping Ancestor
+         Color 1 1 0 1
+         Text ""
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 0
+        }
+        TextWidgetClass "{630C43F4F626C5D5}" {
+         Name "PlayerName"
+         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+          Anchor 0 0 0 0
+          PositionX 350
+          OffsetLeft 350
+          PositionY 5
+          OffsetTop 5
+          SizeX 125
+          OffsetRight -475
+          SizeY 30
+          OffsetBottom -35
+         }
+         Clipping Ancestor
+         Color 1 1 1 0.843
+         Text "(Empty)"
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 1
+        }
+        ButtonWidgetClass "{630C43F4F626C458}" {
+         Name "SlotButton"
+         Slot FrameWidgetSlot "{630510543BD8CBB1}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 2
+          OffsetTop 2
+          SizeX 0
+          OffsetRight 0
+          SizeY -6
+          OffsetBottom 4
+         }
+         Color 1 1 1 0.012
+         components {
+          ButtonComponent "{6305105441730952}" {
+           m_ColorButtonDefault 0 0 0 0
+          }
+          SCR_ButtonTextComponent "{630510843AEEE3AD}" {
+          }
+         }
+        }
+        ImageWidgetClass "{630C43F4F626C4BC}" {
+         Name "Divider2"
+         Slot FrameWidgetSlot "{62F200F2FC6280BD}" {
+          Anchor 0.707 0.119 0.712 0.833
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Size 5 128
+        }
+        TextWidgetClass "{630C43F4F626C4C7}" : "{E64DA8292CD7DBDD}UI/layouts/WidgetLibrary/TextWidgets/Text_InteractiveSmall.layout" {
+         Name "RoleName"
+         Slot FrameWidgetSlot "{62F200F2FC62805A}" {
+          Anchor 0.099 0.119 0.69 0.833
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Color 1 1 1 0.843
+         Text "Automatic Rifleman Assistant"
+         "Font Size" 24
+         "Min Font Size" 10
+         "Vertical Alignment" Center
+         Wrap 1
+        }
+        ImageWidgetClass "{630C43F4F626C722}" {
+         Name "Divider1"
+         Slot FrameWidgetSlot "{62F200F2FC628062}" {
+          Anchor 0.01 0.119 0.015 0.833
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Size 5 128
+        }
+       }
+      }
+      PanelWidgetClass "{630A25A67FEE0D31}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5548E6E7D859FCD2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0 0.584 1 1
+       style outline_2px
+      }
+      FrameWidgetClass "{631F7CF70112143A}" {
+       Name "Disconnected"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+        Padding 500 0 0 0
+       }
+       "Is Visible" 0
+       {
+        ImageWidgetClass "{631F7CF701121439}" {
+         Name "Image0"
+         Slot FrameWidgetSlot "{631F7CF5FB1BD72E}" {
+          Anchor 0 0 1 1
+          PositionX 399.51
+          OffsetLeft 50
+          PositionY 0
+          OffsetTop 0
+          SizeX -405
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Texture "{356FBF661306DFD6}UI/Images/LobbyImages/disconnect_icon.edds"
+         Size 800 800
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

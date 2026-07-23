@@ -1,0 +1,845 @@
+class CRF_PreviewMenu: ChimeraMenuBase
+{
+	//--- UI Widgets ---
+	protected Widget m_wRoot;                                  // Root widget of the menu
+	protected ImageWidget m_wPreview;                         // Preview phase indicator
+	protected ImageWidget m_wSlotting;                        // Slotting phase indicator 
+	protected ImageWidget m_wGame;                            // Game phase indicator
+	protected ImageWidget m_wAAR;                             // After Action Report phase indicator
+	protected ButtonWidget m_wBackButton;                     // Back button for description navigation
+	
+	//--- Components and Managers ---
+	protected SCR_MapEntity m_MapEntity;                      // Map entity for displaying mission map
+	protected SCR_ListBoxComponent m_cPlayerListBoxComponent; // Component for player list
+	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent; // Component for mission descriptions
+	protected CRF_Gamemode m_Gamemode;                        // Game mode instance
+	protected CRF_MenuManager m_MenuManager;                  // Menu manager instance
+	protected SCR_PlayerController m_PlayerController;		  // Reference to the player controller
+	protected SCR_ChatPanel m_ChatPanel;                      // Chat panel component
+	protected SCR_VONController m_VONController				  // VONController
+	
+	//--- Data Storage ---
+	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
+	protected bool m_bMapOpened = false;                      // Tracks whether OpenMap has been queued to prevent duplicate calls
+	protected bool m_bFocusOnDescription = false;             // Tracks which panel controller focus should jump to next
+	
+	//--- MENU LIFECYCLE METHODS ---
+	
+	/**
+	 * Initializes the menu when it's opened
+	 */
+	override void OnMenuOpen()
+	{	
+		super.OnMenuOpen();
+
+		// Don't open menu on dedicated servers
+		if (RplSession.Mode() == RplMode.Dedicated) {
+			Close();
+			return;
+		}
+		
+		// Ensure root widget is visible and enabled (in case it was stuck invisible)
+		m_wRoot = GetRootWidget();
+		if (m_wRoot)
+		{
+			m_wRoot.SetVisible(true);
+			m_wRoot.SetEnabled(true);
+		}
+		
+		// Try to acquire map entity again in case OnMenuInit ran before it was registered (race condition on connect)
+		if (!m_MapEntity)
+			m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+		// Initialize map if available; if still null, OnMenuUpdate will retry each frame until it becomes available
+		if (m_MapEntity)
+		{
+			GetGame().GetCallqueue().Call(OpenMap);
+			m_bMapOpened = true;
+		}
+		
+		// Set up input actions
+		RegisterInputActions();
+		
+		// Initialize chat panel
+		InitializeChatPanel();
+		
+		// Initialize UI elements
+		InitializeUIElements();
+		
+		// Initialize phase indicators
+		SetupPhaseIndicators();
+		
+		// Setup player and description lists
+		SetupListComponents();
+		
+		// Initialize description section
+		DescriptionInit();
+		
+		// Configure navigation buttons based on game state
+		ConfigureNavigationButtons();
+
+		// Give a widget default focus so controller D-pad/stick navigation has somewhere to start
+		m_bFocusOnDescription = false;
+		SetupDefaultFocus();
+
+		// Fetch community tags + ranks so they appear in the player list
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.FetchPlayerInfo();
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerInfoUpdated().Insert(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+			tagMgr.GetOnPlayerRosterChanged().Insert(OnPlayerRosterChanged);
+		}
+	}
+	
+	/**
+	 * Registers input action listeners
+	 */
+	protected void RegisterInputActions()
+	{
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
+		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
+		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		// Controller Y button / keyboard Tab jumps focus between the Players list and Mission Description list
+		GetGame().GetInputManager().AddActionListener("CRF_BriefingSwitchPanel", EActionTrigger.DOWN, Action_SwitchPanel);
+	}
+
+	/**
+	 * Initializes chat panel if available
+	 */
+	protected void InitializeChatPanel()
+	{
+		Widget wChatPanel = GetRootWidget().FindAnyWidget("ChatPanel");
+		if (wChatPanel)
+			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
+	}
+	
+	/**
+	 * Initializes basic UI elements and fetches widget references
+	 */
+	protected void InitializeUIElements()
+	{
+		m_wRoot = GetRootWidget();
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
+		
+		// Set mission text with author information
+		UpdateMissionText();
+		
+		// Set weather text
+		UpdateWeatherText();
+		
+		// Get phase indicator widgets
+		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
+		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
+		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
+		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
+		
+		// Initialize back button
+		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
+		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
+	}
+	
+	/**
+	 * Updates mission text display with name and author
+	 */
+	protected void UpdateMissionText()
+	{
+		TextWidget missionText = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionText"));
+		
+		// Set mission name
+		string missionName = "Unknown Mission";
+		if (GetGame().GetMissionName())
+			missionName = GetGame().GetMissionName();
+		
+		missionText.SetText(missionName);
+		
+		// Add author information if available
+		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+		string author = "Unknown";
+		
+		if (header)
+			author = header.m_sAuthor;
+		
+		missionText.SetText(missionName + " | By " + author);
+	}
+	
+	/**
+	 * Updates weather text display
+	 */
+	protected void UpdateWeatherText()
+	{
+		string currentStateName = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager().GetCurrentWeatherState().GetStateName();
+		TextWidget.Cast(m_wRoot.FindAnyWidget("WeatherText")).SetText("Weather: " + currentStateName);
+	}
+	
+	/**
+	 * Updates phase indicators based on current gamemode state
+	 */
+	protected void SetupPhaseIndicators()
+	{
+		// Get phase indicator widgets
+		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
+		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
+		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
+		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
+		
+		// Highlight the current phase — use already-resolved m_Gamemode to avoid a null-cast crash
+		// if the gamemode entity has not yet been replicated when this runs
+		if (!m_Gamemode)
+			return;
+
+		int gameState = m_Gamemode.m_GamemodeState;
+		switch(gameState)
+		{
+			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 1: {m_wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 2: {m_wGame.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 3: {m_wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+		}
+	}
+	
+	/**
+	 * Sets up list box components
+	 */
+	protected void SetupListComponents()
+	{
+		m_cPlayerListBoxComponent = SCR_ListBoxComponent.Cast(
+			OverlayWidget.Cast(m_wRoot.FindAnyWidget("PlayersList")).FindHandler(SCR_ListBoxComponent)
+		);
+		
+		m_cMissionDescriptionListBoxComponent = SCR_ListBoxComponent.Cast(
+			OverlayWidget.Cast(m_wRoot.FindAnyWidget("DescriptionList")).FindHandler(SCR_ListBoxComponent)
+		);
+	}
+	
+	/**
+	 * Configures navigation buttons based on current game state
+	 */
+	protected void ConfigureNavigationButtons()
+	{
+		ButtonWidget slottingButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("SlottingButton"));
+		ButtonWidget gameButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("GameButton"));
+		ButtonWidget aarButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("AARButton"));
+		ButtonWidget advanceButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("Advance"));
+		
+		// Disable all buttons by default
+		slottingButton.SetEnabled(false);
+		gameButton.SetEnabled(false);
+		aarButton.SetEnabled(false);
+		advanceButton.SetEnabled(false);
+		FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(0);
+		
+		// Enable buttons based on current game state
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.SLOTTING)
+			slottingButton.SetEnabled(true);
+		
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			slottingButton.SetEnabled(true);
+			gameButton.SetEnabled(true);
+		}
+		
+		// Register button handlers
+		SCR_ButtonTextComponent.Cast(slottingButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(OpenSlottingMenu);
+		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(InitializePlayer);
+		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
+	}
+	
+	/**
+	 * Sets initial widget focus so controller D-pad/stick navigation has a starting point.
+	 * Without this the engine's focus-based navigation has nothing focused to move from.
+	 */
+	protected void SetupDefaultFocus()
+	{
+		Widget focusTarget = m_wRoot.FindAnyWidget("SlottingButton");
+		if (focusTarget && focusTarget.IsEnabled())
+		{
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+			return;
+		}
+
+		GetGame().GetWorkspace().SetFocusedWidget(m_wRoot);
+	}
+
+	/**
+	 * Controller Y / keyboard Tab handler - jumps widget focus between the Players list
+	 * and the Mission Description list, so controller users don't have to rely solely
+	 * on spatial D-pad navigation to reach the description panel.
+	 */
+	void Action_SwitchPanel()
+	{
+		m_bFocusOnDescription = !m_bFocusOnDescription;
+
+		Widget focusTarget;
+		if (m_bFocusOnDescription)
+			focusTarget = m_wRoot.FindAnyWidget("DescriptionList");
+		else
+			focusTarget = m_wRoot.FindAnyWidget("PlayersList");
+
+		if (focusTarget)
+			GetGame().GetWorkspace().SetFocusedWidget(focusTarget);
+	}
+
+	/**
+	 * Initializes player and advances to game
+	 */
+	void InitializePlayer()
+	{
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
+
+	}
+	
+	/**
+	 * Opens the slotting menu
+	 */
+	void OpenSlottingMenu()
+	{
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
+	}
+	
+	/**
+	 * Requests advancing to the next gamemode state
+	 */
+	void AdvanceMenu()
+	{
+		CRF_PlayerRplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
+	}
+	
+	/**
+	 * Called when menu updates
+	 * @param tDelta Time since last update
+	 */
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+
+		// Retry opening the map if the entity was not yet available when the menu opened (race condition on connect)
+		if (!m_bMapOpened)
+		{
+			if (!m_MapEntity)
+				m_MapEntity = SCR_MapEntity.GetMapInstance();
+
+			if (m_MapEntity)
+			{
+				GetGame().GetCallqueue().Call(OpenMap);
+				m_bMapOpened = true;
+			}
+		}
+		
+		// Activate map context if map is available
+		if (m_MapEntity)
+			GetGame().GetInputManager().ActivateContext("MapContext");
+		
+		// Update time display
+		UpdateTimeDisplay();
+		
+		// Update player list
+		UpdatePlayerList();
+		
+		// Check for admin privileges
+		CheckAdminPrivileges();
+		
+		// Update chat panel
+		if (m_ChatPanel)
+			m_ChatPanel.OnUpdateChat(tDelta);
+	}
+	
+	/**
+	 * Updates the time display with current game time
+	 */
+	protected void UpdateTimeDisplay()
+	{
+		TimeContainer timeContainer = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager().GetTime();
+		int hours = timeContainer.m_iHours;
+		int minutes = timeContainer.m_iMinutes;
+		
+		string minuteString;
+		string hourString;
+		
+		// Format minutes with leading zero if needed
+		if (minutes < 10)
+			minuteString = "0" + minutes.ToString();
+		else
+			minuteString = minutes.ToString();
+		
+		// Format hours with leading zero if needed
+		if (hours < 10)
+			hourString = "0" + hours.ToString();
+		else
+			hourString = hours.ToString();
+		
+		TextWidget.Cast(m_wRoot.FindAnyWidget("TimeText")).SetText("Time: " + hourString + ":" + minuteString);
+	}
+	
+	/**
+	 * Updates the player list with connected players
+	 */
+	protected void UpdatePlayerList()
+	{
+		ref array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
+		m_cPlayerListBoxComponent.Clear();
+		
+		foreach (int player : playerIds)
+		{
+			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
+				continue;
+				
+			string displayName = GetGame().GetPlayerManager().GetPlayerName(player);
+			string playerTag = "";
+			int playerXp = -1;
+			string playerTrack = "enlisted";
+			if (CRF_CommunityTagManager.GetInstance())
+			{
+				playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(player);
+				playerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(player);
+				playerTrack = CRF_CommunityTagManager.GetInstance().GetPlayerRankTrack(player);
+			}
+
+			int index = m_cPlayerListBoxComponent.AddItem(
+				displayName, 
+				null, 
+				"{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout"
+			);
+			
+			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
+			CRF_ListBoxElementComponent crfComp = CRF_ListBoxElementComponent.Cast(comp);
+			if (crfComp)
+			{
+				crfComp.SetTagText(playerTag);
+				crfComp.SetRankChevron(playerXp, playerTrack);
+			}
+			
+			// Color code players by role
+			SetPlayerStatusColor(player,comp);
+			
+			// Highlight talking players
+			if (!CVON_VONGameModeComponent.GetInstance())
+			{
+				if (m_MenuManager.m_aPlayersTalking.Contains(player))
+					comp.SetTalking();
+			}
+			else
+			{
+				if (player == SCR_PlayerController.GetLocalPlayerId())
+				{
+					if (m_VONController.m_bIsBroadcasting)
+						comp.SetTalking();
+				}
+			}
+		}
+	}
+	
+	void SetTalking() {
+		ImageWidget wid = ImageWidget.Cast(m_wRoot.FindAnyWidget("VONSpeaker"));
+		
+		if (wid)
+			wid.SetVisible(true);
+	}
+	
+	/**
+	 * Called when tags/ranks data arrives; refreshes the visible list instantly.
+	 */
+	protected void OnPlayerInfoUpdated()
+	{
+		UpdatePlayerList();
+	}
+
+	/**
+	 * Called when player roster changes (join/leave); refreshes list-box state immediately.
+	 */
+	protected void OnPlayerRosterChanged()
+	{
+		UpdatePlayerList();
+	}
+
+	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
+	{
+		// Enforce precedence: Admin > Moderator > Donator 
+		if (SCR_Global.IsAdmin(playerId))
+		{
+			comp.SetColor(Color.Red);
+			return;
+		}
+
+		if (CRF_PermissionManager.GetInstance().IsModerator(playerId))
+		{
+			comp.SetColor(Color.Yellow);
+			return;
+		}
+		
+		if (CRF_PermissionManager.GetInstance().IsDonator(playerId))
+		{
+			comp.SetColor(Color.Violet);
+			return;
+		}
+	}
+	
+	/**
+	 * Checks if local player has admin privileges and updates UI accordingly
+	 */
+	protected void CheckAdminPrivileges()
+	{
+		if (SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+		{
+			ButtonWidget slottingButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("SlottingButton"));
+			ButtonWidget gameButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("GameButton"));
+			ButtonWidget aarButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("AARButton"));
+			ButtonWidget advanceButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("Advance"));
+			
+			// Enable admin controls
+			slottingButton.SetEnabled(true);
+			gameButton.SetEnabled(true);
+			advanceButton.SetEnabled(true);
+			FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(1);
+		}
+	}
+	
+	/**
+	 * Called when menu is closed
+	 */
+	override void OnMenuClose()
+	{
+		super.OnMenuClose();
+
+		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
+		if (tagMgr)
+		{
+			tagMgr.GetOnPlayerInfoUpdated().Remove(OnPlayerInfoUpdated);
+			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
+		}
+
+		// Reset map opened state so the map is re-opened if the menu is reopened
+		m_bMapOpened = false;
+
+		// Cancel any pending callqueue map-open calls to prevent the map opening after close
+		GetGame().GetCallqueue().Remove(OpenMap);
+		GetGame().GetCallqueue().Remove(OpenMapWrap);
+		GetGame().GetCallqueue().Remove(OpenMapWrapZoomChange);
+		GetGame().GetCallqueue().Remove(OpenMapWrapZoomChangeWrap);
+		
+		// Close map if open
+		if (m_MapEntity && m_MapEntity.IsOpen())
+			m_MapEntity.CloseMap();
+
+		// Remove input action listeners
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
+		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
+		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		GetGame().GetInputManager().RemoveActionListener("CRF_BriefingSwitchPanel", EActionTrigger.DOWN, Action_SwitchPanel);
+
+		// Clear widget references and event handlers to prevent invisible blocking
+		if (m_cMissionDescriptionListBoxComponent)
+		{
+			m_cMissionDescriptionListBoxComponent.m_OnChanged.Clear();
+			m_cMissionDescriptionListBoxComponent.Clear();
+		}
+		
+		// Clear back button click handler
+		if (m_wBackButton)
+		{
+			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+			if (backButton)
+				backButton.m_OnClicked.Clear();
+		}
+		
+		// Explicitly hide and disable root widget to prevent invisible blocking
+		if (m_wRoot)
+		{
+			m_wRoot.SetVisible(false);
+			m_wRoot.SetEnabled(false);
+		}
+	}
+	
+	/**
+	 * Initializes the mission description section
+	 */
+	void DescriptionInit()
+	{
+		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
+		scrollLayout.SetEnabled(false);
+		
+		// Reset back button
+		m_wBackButton.SetOpacity(0);
+		m_wBackButton.SetEnabled(false);
+		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+		backButton.m_OnClicked.Clear();
+		
+		// Clear description text
+		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
+		missionDescriptionText.SetText("");
+		
+		// Clear list components
+		m_cMissionDescriptionListBoxComponent.Clear();
+		m_aActiveDescriptors.Clear();
+		
+		// Get player faction
+		string playerFaction = SCR_PlayerFactionAffiliationComponent.Cast(
+			GetGame().GetPlayerController().FindComponent(SCR_PlayerFactionAffiliationComponent)
+		).GetAffiliatedFactionKey();
+		
+		// Add relevant descriptions to list
+		foreach (ref CRF_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
+		{
+			// Add description visible to all factions
+			if (description.m_bShowForAnyFaction)
+			{
+				m_cMissionDescriptionListBoxComponent.AddItem(
+					description.m_sTitle, 
+					null, 
+					"{A564FC959554A1B9}UI/Listbox/DescriptionListboxElementNoIcon.layout"
+				);
+				m_aActiveDescriptors.Insert(description);
+				continue;
+			}
+			
+			// Add description specific to player's faction
+			foreach (string factionKey : description.m_aFactionKeys)
+			{
+				if (playerFaction == factionKey)
+				{
+					m_cMissionDescriptionListBoxComponent.AddItem(
+						description.m_sTitle, 
+						null, 
+						"{A564FC959554A1B9}UI/Listbox/DescriptionListboxElementNoIcon.layout"
+					);
+					m_aActiveDescriptors.Insert(description);
+					break;
+				}
+			}
+		}
+		
+		// Register selection handler
+		m_cMissionDescriptionListBoxComponent.m_OnChanged.Insert(DescriptionSelected);
+	}
+	
+	/**
+	 * Handles selection of a description item
+	 */
+	void DescriptionSelected()
+	{
+		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
+		scrollLayout.SetEnabled(true);
+		
+		// Get selected description
+		int index = m_cMissionDescriptionListBoxComponent.GetSelectedItem();
+		if (index < 0 || index >= m_aActiveDescriptors.Count())
+			return;
+			
+		string description = m_aActiveDescriptors.Get(index).m_sTextData;
+		
+		// Show back button
+		m_wBackButton.SetOpacity(1);
+		m_wBackButton.SetEnabled(true);
+		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+		backButton.m_OnClicked.Insert(DescriptionInit);
+		
+		// Clear description list
+		m_cMissionDescriptionListBoxComponent.Clear();
+		m_cMissionDescriptionListBoxComponent.m_OnChanged.Clear();
+		
+		// Set description text
+		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
+		missionDescriptionText.SetText(description);
+	}
+	
+	//--- MAP METHODS ---
+	
+	/**
+	 * Opens the map (requires multiple frames to complete)
+	 */
+	void OpenMap()
+	{
+		GetGame().GetCallqueue().Call(OpenMapWrap); // Need two frames
+	}
+	
+	/**
+	 * Second step in opening map
+	 */
+	void OpenMapWrap()
+	{
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (!gameMode)
+			return;
+		
+		SCR_MapConfigComponent configComp = SCR_MapConfigComponent.Cast(gameMode.FindComponent(SCR_MapConfigComponent));
+		if (!configComp)
+			return;
+		
+		MapConfiguration mapConfigFullscreen = m_MapEntity.SetupMapConfig(
+			EMapEntityMode.FULLSCREEN, 
+			"{1B8AC767E06A0ACD}Configs/Map/MapFullscreen.conf", 
+			GetRootWidget()
+		);
+		
+		m_MapEntity.OpenMap(mapConfigFullscreen);
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChange);
+	}
+	
+	/**
+	 * Third step in opening map (handles zoom)
+	 */
+	void OpenMapWrapZoomChange()
+	{
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChangeWrap);
+	}
+	
+	/**
+	 * Final step in opening map (applies zoom) and pans to AO
+	 */
+	void OpenMapWrapZoomChangeWrap()
+	{
+		m_MapEntity.ZoomOut();
+		
+		vector aoCenter = CRF_Gamemode.GetInstance().GetOrigin();
+		if (aoCenter)
+		{
+			m_MapEntity.ZoomPanSmooth(0.3, aoCenter[0], aoCenter[2]);
+		}
+	}
+	
+	/**
+	 * Called when menu is initialized
+	 */
+	override void OnMenuInit()
+	{	
+		super.OnMenuInit();
+			
+		if (!m_MapEntity)
+			m_MapEntity = SCR_MapEntity.GetMapInstance();
+	}
+	
+	//--- VOICE COMMUNICATION METHODS ---
+
+	/**
+	 * Activates voice communication
+	 */
+	void Action_VONon()
+	{
+		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
+
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(
+			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
+		);
+
+		von.SetTransmitRadio(GetVoNTransiver());
+		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
+		von.SetCapture(true);
+	}
+
+	/**
+	 * Gets the radio transceiver for voice communication
+	 * @return Radio transceiver
+	 */
+	RadioTransceiver GetVoNTransiver()
+	{
+		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
+		ref array<IEntity> items = {};
+
+		SCR_InventoryStorageManagerComponent.Cast(
+			entity.FindComponent(SCR_InventoryStorageManagerComponent)
+		).GetItems(items);
+
+		// Find radio in inventory
+		IEntity radioEntity;
+		foreach (IEntity item : items)
+		{
+			if (item.FindComponent(BaseRadioComponent))
+			{
+				radioEntity = item;
+				break;
+			}
+		}
+
+		if (!radioEntity)
+			return null;
+
+		// Configure radio
+		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		radio.SetPower(true);
+
+		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
+		if (transceiver)
+			transceiver.SetFrequency(10000);
+
+		return transceiver;
+	}
+
+	/**
+	 * Deactivates voice communication with delay
+	 */
+	void Action_VONOff()
+	{
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
+	}
+
+	/**
+	 * Delayed voice communication deactivation
+	 */
+	void LobbyVoNDisableDelayed()
+	{
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(
+			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
+		);
+
+		von.SetCommMethod(ECommMethod.DIRECT);
+		von.SetCapture(false);
+	}
+	
+	//--- CHAT METHODS ---
+	
+	/**
+	 * Toggles chat panel
+	 */
+	void Action_OnChatToggleAction()
+	{
+		if (!m_ChatPanel)
+			return;
+		
+		// Frame delay for better UI response
+		GetGame().GetCallqueue().Call(OpenChatWrap);
+	}
+	
+	/**
+	 * Opens chat panel if not already open
+	 */
+	void OpenChatWrap()
+	{
+		if (!m_ChatPanel.IsOpen())
+			SCR_ChatPanelManager.GetInstance().OpenChatPanel(m_ChatPanel);
+	}
+	
+	//--- MENU EXIT METHODS ---
+	
+	/**
+	 * Handles menu exit action
+	 */
+	void Action_Exit()
+	{
+		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
+	}
+	
+	/**
+	 * Opens pause menu
+	 */
+	void OpenPauseMenuWrap()
+	{
+		ArmaReforgerScripted.OpenPauseMenu();
+	}
+}
