@@ -1,0 +1,46 @@
+$grp CRF_MissionMarker : "{4C7088F4484A6DB8}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/INDFOR_NewObjectiveMarker.et" {
+ CacheMarker_4 {
+  coords 2835.642 42.847 3742.093
+  m_sImageSet "{FDD5423E69D007F8}UI/Textures/Icons/icons_wrapperUI-128.imageset"
+  m_MarkerColor 0.558 0.07 0.07 1
+  m_sQuadName "supplies"
+  m_fWorldSize 20
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_sMissionMarkerDescription "Cache #4"
+ }
+ CacheMarker_1 {
+  coords 2906.145 38.967 3767.002
+  m_sImageSet "{FDD5423E69D007F8}UI/Textures/Icons/icons_wrapperUI-128.imageset"
+  m_MarkerColor 0.558 0.07 0.07 1
+  m_sQuadName "supplies"
+  m_fWorldSize 20
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_sMissionMarkerDescription "Cache #1"
+ }
+ CacheMarker_2 {
+  coords 2959.481 41.951 3695.807
+  m_sImageSet "{FDD5423E69D007F8}UI/Textures/Icons/icons_wrapperUI-128.imageset"
+  m_MarkerColor 0.558 0.07 0.07 1
+  m_sQuadName "supplies"
+  m_fWorldSize 20
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_sMissionMarkerDescription "Cache #2"
+ }
+ CacheMarker_3 {
+  coords 2890.934 43.092 3686.206
+  m_sImageSet "{FDD5423E69D007F8}UI/Textures/Icons/icons_wrapperUI-128.imageset"
+  m_MarkerColor 0.558 0.07 0.07 1
+  m_sQuadName "supplies"
+  m_fWorldSize 20
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_sMissionMarkerDescription "Cache #3"
+ }
+}

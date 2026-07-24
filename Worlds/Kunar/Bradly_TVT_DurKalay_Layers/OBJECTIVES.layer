@@ -1,0 +1,18 @@
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ Cache_4 {
+  coords 2835.642 42.847 3742.093
+  angles 0 -3 0
+ }
+ Cache_1 {
+  coords 2906.145 38.967 3767.002
+  angles 0 -167 0
+ }
+ Cache_2 {
+  coords 2959.481 41.951 3695.807
+  angles 0 100 0
+ }
+ Cache_3 {
+  coords 2890.934 43.092 3686.206
+  angles 0 9 0
+ }
+}
