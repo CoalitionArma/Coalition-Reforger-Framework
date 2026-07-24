@@ -1,0 +1,396 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 3312.827 22.658 4717.266
+}
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{69EF59A3659E0D8A}" {
+   m_iMCOMTimer 25
+   m_iMCOMsPerZone 1
+   m_bEnableDynamicRespawns 1
+   m_aZoneRespawnConfigs {
+    CRF_Rush_ZoneRespawnConfig "{69EF59A750B39953}" {
+     m_sZoneName "Zone2"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{69EF59A7521FE862}" {
+       m_sMarkerEntityName "spawnblu_2"
+      }
+      CRF_Rush_RespawnPointEntry "{69EF59A752797A40}" {
+       m_sMarkerEntityName "spawnopf_2"
+      }
+     }
+    }
+    CRF_Rush_ZoneRespawnConfig "{69EF59A750E673CC}" {
+     m_sZoneName "Zone3"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{69EF59A7444CE594}" {
+       m_sMarkerEntityName "spawnblu_3"
+      }
+      CRF_Rush_RespawnPointEntry "{69EF59A744A5A3A2}" {
+       m_sMarkerEntityName "spawnopf_3"
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 45
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 5
+     m_iStartingMinutes 44
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_bDateOverride 1
+   m_iDay 29
+   m_iMonth 7
+   m_iYear 1993
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 3
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69F0FA946656B847}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "It has been several years since the onslaught of the horde, the Coalition has since launched their own raid deep within the sands to destroy the Hordes' own Before Times Teknoljee."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69F0FA946656BFED}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69F0FA946656BCC0}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69F0FA946656BD7B}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69F0FA946656BDB5}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 0
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69F101A40A3A70CE}" {
+   m_sCallsign "Justice Crusade"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+    JTAC
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69F101A40A3A7DC2}" {
+   m_sCallsign "Horde Conquerors"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+    JTAC
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1.2
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{F445E0C2E196905C}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeBLU.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{5B952CF7ECE971B4}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeOPF.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69EF59A0A77DFB47" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ mcom_a_trigger {
+  coords 2608.332 38.945 4805.502
+  angles 0 -70.963 0
+ }
+ mcom_b_trigger {
+  coords 2864.507 33.685 4772.074
+  angles -4.126 -165.723 1.715
+ }
+ mcom_c_trigger {
+  coords 3071.494 39.98 4726.756
+  angles 3.922 8.23 -2.139
+ }
+ spawnopf_2 {
+  coords 2815.299 30.625 4754.279
+  angles 3.922 8.23 -2.139
+ }
+ spawnblu_2 {
+  coords 2538.461 35.627 4817.408
+  angles 3.922 8.23 -2.139
+ }
+ spawnopf_3 {
+  coords 2992.304 38.495 4739.813
+  angles 3.922 8.23 -2.139
+ }
+ spawnblu_3 {
+  coords 2635.143 36.932 4779.945
+  angles 3.922 8.23 -2.139
+ }
+}
+CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+ coords 2539.223 35.79 4817.106
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 2626.632 37.291 4790.53
+ Points {
+  ShapePoint "{69EF59A8720331A3}" {
+   Position -378.221 0 -13.958
+  }
+  ShapePoint "{69EF59A874367A9E}" {
+   Position -331.895 0 145.73
+  }
+  ShapePoint "{69EF59A874FAA49F}" {
+   Position 605.336 0 -12.618
+  }
+  ShapePoint "{69EF59A8778E712C}" {
+   Position 558.846 0 -172.604
+  }
+ }
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   components {
+    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+     m_fHeight 285
+    }
+   }
+  }
+ }
+}
+CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 2386.235 24.706 4850.706
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 2375.746 24.813 4853.93
+ Points {
+  ShapePoint "{69EF59A9D1D68F29}" {
+   Position 26.293 0 -33.259
+  }
+  ShapePoint "{69EF59A9D01B381C}" {
+   Position -22.327 0 -25.322
+  }
+  ShapePoint "{69EF59A9D0B8B03A}" {
+   Position -7.981 0 31.151
+  }
+  ShapePoint "{69EF59A9D33C01D9}" {
+   Position 42.68 0 19.607
+  }
+ }
+}
