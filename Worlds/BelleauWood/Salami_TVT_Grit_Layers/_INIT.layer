@@ -1,0 +1,547 @@
+CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{69ECD7A7F88E95C7}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 13
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 60
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{69ED0C6F7649ADC4}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "B TRP, 3-71 has been tasked with digging in and conducting a guard of the Brigades flank as they move to assault the town of Belleau. A Russian Motor Rifle Company from the 74th Guards Motor Rifle Brigade is attempting to break through the guard and setup Brigade heavy weapons on the flank of the US assault."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets:"\
+   "MAT"\
+   "MMG"\
+   "FPVs"\
+   "DJIs"\
+   ""\
+   "OPFOR Composition: Motorized"\
+   "OPFOR Assets:"\
+   "BTRs"\
+   "FPVs"\
+   "DJIs"\
+   "Mortars"\
+   ""\
+   "Time: 1300"\
+   ""\
+   "Weather: Rainy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{69ED0C6F7649AF5F}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "- Defend MCOM A"\
+   "	- Russian forces will seize the entry into the trenches of Belleau as a foothold into Belleau Woods propper. We cannot let them capture this."\
+   "- Defend MCOM B"\
+   "	- If Russian forces capture the souther trenches we must not allow them to push to the northern side of Belleau Woods, allowing them to reach the far side would enable their Brigade to deploy AGS and Kornet assets on the flank of our brigades movement."\
+   ""\
+   "INTENT"\
+   "The intent is to meet Russian forces in the southern forests and progressively use the trenches to conduct a fighting retreat until Russian forces are depleted."\
+   ""\
+   "EXECUTION"\
+   "Commanders Discretion."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69ED0C6F7649A859}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "- Capture MCOM A"\
+   "	- Capturing the entry into the dug in positions of the Americans is crutial. If we suceed battalion will send us more reserves to assist in the main push."\
+   ""\
+   "- Capture MCOM B"\
+   "	- The overall objective is to drive back the American guard to expose their flank of their main axis of advance. Allowing Brigade to bring up AGS and Kornet units."\
+   ""\
+   "INTENT"\
+   "Utilize your drones for recon and calling in drones and artillery on BLUFOR positions. One platton is motorized via BTRs while the other utilizes urals as the companies TO&E is depleted from continous NATO CAS."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion. Highly advised to use your assets long range capabilities before sending your infantry in."\
+   ""
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69ED0C6F7649A973}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  CRF_MissionDescriptor "{69ED0C6F7649AA6D}" {
+   m_sTitle "Administration"
+   m_sTextData "- All team leaders have shotguns for drones."\
+   "- If a drone operator does not die, reset their gear in the second phase so they may be rearmed."\
+   "- BTRs will respawn on MCOM As capture"\
+   "- Prioritize filling 1st platoon and the mortars and drone teams before second platoon on OPFOR"\
+   ""\
+   ""
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BluforSlots {
+  CRF_SlottingGroup "{69EF11DF35DC0DD0}" {
+   m_sCallsign "TRP"
+   m_FlagType RECON
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0FCE}" {
+   m_sCallsign "1PLT"
+   m_FlagType RECON
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC08D7}" {
+   m_sCallsign "1-1"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0997}" {
+   m_sCallsign "1-2"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0A3E}" {
+   m_sCallsign "1-3 (Effects)"
+   m_FlagType SIGNAL
+   m_aSlots {
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0B30}" {
+   m_sCallsign "2PLT"
+   m_FlagType RECON
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0407}" {
+   m_sCallsign "2-1"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC0515}" {
+   m_sCallsign "2-2"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC07A9}" {
+   m_sCallsign "2-3 (Effects)"
+   m_FlagType SIGNAL
+   m_aSlots {
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OpforSlots {
+  CRF_SlottingGroup "{69EF11DF35DC03BF}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1C38}" {
+   m_sCallsign "1PLT"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    FORWARD_OBSERVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1EC5}" {
+   m_sCallsign "1-1"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1FAB}" {
+   m_sCallsign "BTR 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC18AF}" {
+   m_sCallsign "1-2"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC199A}" {
+   m_sCallsign "BTR 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1A9D}" {
+   m_sCallsign "1-3"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1B7E}" {
+   m_sCallsign "BTR 3"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC144B}" {
+   m_sCallsign "2PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    FORWARD_OBSERVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC155D}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1631}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC10E0}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC1188}" {
+   m_sCallsign "Mortar"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  CRF_SlottingGroup "{69EF11DF35DC124F}" {
+   m_sCallsign "Drone Team"
+   m_FlagType MORTAR
+   m_aSlots {
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFUSArmyMCModern_Grit.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFMSV_Grit.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_bEnableShareableMarkers 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "69ECE4DF9D5FCBD0" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{69EF0D05AD483CFE}" {
+        m_aGroupNames {
+         "BTR 1"
+        }
+        m_aSRFrequencies {
+         "BTR 1"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{69EF0D05BD721611}" {
+        m_aGroupNames {
+         "BTR 2"
+        }
+        m_aSRFrequencies {
+         "BTR 2"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{69EF0D05B7EB1CFB}" {
+        m_aGroupNames {
+         "BTR 3"
+        }
+        m_aSRFrequencies {
+         "BTR 3"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR"
+         "1PLT"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ mcom_a_trigger {
+  coords 5467.578 176.708 5006.079
+ }
+ mcom_b_trigger {
+  coords 5656.581 165.452 5754.474
+ }
+}
+GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
+ coords 6115.796 94.327 8789.11
+}

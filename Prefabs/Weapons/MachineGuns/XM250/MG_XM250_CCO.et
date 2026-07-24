@@ -1,0 +1,319 @@
+GenericEntity : "{F54F6C453A8CB478}Prefabs/Weapons/Core/MachineGun_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{24586A7833C07134}Sounds/Weapons/Rifles/XM7/Weapons_Rifles_XM7_Shot.acp" "{8587ACDC5F72216C}Sounds/Weapons/Rifles/XM7/Weapons_Rifles_XM7_Shot_Suppressed_SuperSonic.acp" "{9654992A68125DDF}Sounds/Weapons/Machineguns/M60/Weapons_Machineguns_M60_Handling.acp" "{E08211071D0175E2}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_LMG.acp" "{214445E9606EFCD0}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_LMG.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{5DB34B1BB17CA63B}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_LMG.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp" "" "{8587ACDC5F72216C}Sounds/Weapons/Rifles/XM7/Weapons_Rifles_XM7_Shot_Suppressed_SuperSonic.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{813624D0697E056C}Assets/Weapons/MachineGuns/xm250_gun.xob"
+  }
+  RigidBody "{69DADD4A1272A948}" {
+   CenterOfMass 0 0.063 0.109
+   SimState None
+   ModelGeometry 1
+  }
+  SCR_MeleeWeaponProperties "{69DADD4A1272A951}" {
+   m_fDamage 45
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "#ICR-XM250_tan_01_Name"
+     Description "#ICR-XM250_tan_01_Desc"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{69DADD4A1272A924}" {
+     Weight 6.6
+     SizeSetupStrategy Manual
+     ItemDimensions 30 30 30
+     ItemVolume 1750
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationInstance "{60945F10BF15FC09}anims/workspaces/player/player_main_machinegun.asi"
+     AnimationIKPose "{C948B95030A5FC26}Assets/Weapons/MachineGuns/Anim/ans/p_mg_xm250_01_ik.anm"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      ProneDeploymentVerticalAimLimits -20 20
+      ProneDeploymentHorizontalAimLimits -40 40
+      DeploymentPoints {
+       PivotPointInfoItem "{69DADD4A1272A937}" {
+        "Point info" DeploymentPointInfo deployment {
+         PivotID "Scene_Root"
+         Offset 0 0.0468 0.4801
+        }
+        StabilizationSize 0.03 0.01 0.03
+       }
+       PivotPointInfoItem "{69DADD4A1272A930}" {
+        "Point info" DeploymentPointInfo bipod {
+         PivotID "Scene_Root"
+         Offset 0 0.033 0.4785
+        }
+        SystemIdentifier 2
+        StabilizationPoints {
+         DeploymentPointInfo LeftLeg {
+          PivotID "bipod_l"
+         }
+         DeploymentPointInfo RightLeg {
+          PivotID "bipod_r"
+         }
+        }
+        StabilizationSize 0.2 0.1 0.2
+       }
+      }
+     }
+     PreviewRenderAttributes "{5534BB9B9A3E369E}" {
+      CameraPreset Right
+     }
+    }
+   }
+  }
+  SCR_WeaponStatsManagerComponent "{69DADD4A1272A901}" {
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{69DADD4A1272A919}" {
+     AttachmentSlot EquipmentStorageSlot front_sight {
+      PivotID "slot_ironsight_front"
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentOpticsIronFrontShort "{69DADD4A1272A910}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{69DADD4A1272AAD4}" {
+     AttachmentSlot EquipmentStorageSlot RightSlot {
+      Offset 0.0222 0.1043 0.3618
+      Angles 0 0 90
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentRIS1913Short "{69DADD4A1272AAAF}" {
+     }
+    }
+    AttachmentSlotComponent "{69DADD4A1272AADD}" {
+     AttachmentSlot EquipmentStorageSlot LeftSide {
+      Offset -0.0222 0.1043 0.3618
+      Angles 0 0 -90
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentRIS1913Short "{69DADD4A1272AAD7}" {
+     }
+    }
+    AttachmentSlotComponent "{69DADD4A1272AAE3}" {
+     AttachmentSlot EquipmentStorageSlot optic {
+      PivotID "slot_optic"
+      Offset 0 -0.0052 0.0094
+      Prefab "{648E66F8FA240BA6}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_AimpointCompM4s/Collim_AimpointCompM4s_BLK.et"
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentOpticsRIS1913 "{69DADD4A1272AAFE}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{69DADD4A1272AAEC}" {
+     AttachmentSlot EquipmentStorageSlot rear_sight {
+      PivotID "slot_ironsight_rear"
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentOpticsIronRearShort "{69DADD4A1272AAE6}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{69DADD4A1272AAF9}" {
+     AttachmentSlot EquipmentStorageSlot TopMount {
+      Offset 0 0.1498 0.3218
+      DisablePhysicsInteraction 1
+      ActivatePhysicsOnDetaching 1
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType AttachmentRIS1913Short "{69DADD4A1272AAC1}" {
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     Enabled 0
+    }
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      AttachmentSlotComponent "{69DADD4A1272AAA8}" {
+       AttachmentSlot InventoryStorageSlot Suppressor {
+        PivotID "barrel_muzzle"
+        Offset 0.001 0.0014 -0.0044
+        ChildPivotID "snap_weapon"
+        Prefab "{3CB5AA4FF488E6AD}Prefabs/Weapons/Attachments/Muzzle/Suppressor_XM7/Suppressor_XM7_tan.et"
+        DisablePhysicsInteraction 1
+        ActivatePhysicsOnDetaching 1
+        DeactivatePhysicsOnAtaching 1
+       }
+       AttachmentType AttachmentMuzzle6_8 "{69DADD4A1272AAA2}" {
+       }
+      }
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{6A0F068A792EA37C}Particles/Weapon/Casing_762x51.ptc"
+       EffectPosition EntitySlotInfo "{513A938439231378}" {
+        Offset 0.0198 -0.0052 -0.1997
+       }
+      }
+      CaseEjectingEffectComponent "{69DADD4A1272AAB8}" {
+       ParticleEffect "{EB2E119AC95CF4BD}Particles/Weapon/Smoke_M60.ptc"
+       EffectPosition EntitySlotInfo Muzzle {
+        PivotID "barrel_muzzle"
+       }
+       HasSound 0
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{1991E0492F618D77}Particles/Weapon/Muzzle_M60_flashHider.ptc"
+       ResetOnFire 0
+       OverrideByAttachment 1
+      }
+     }
+     MuzzleEndPositions {
+      PointInfo "{B80A64F4B6CFB9BF}" {
+       Offset 0 0 -0.0029
+      }
+     }
+     FireModes {
+      BaseFireMode "{506B20D1476BA99E}" {
+       MaxBurst -1
+       MaxSalvo 1
+       RoundsPerMinute 800
+       UIName "Full Auto"
+      }
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst 1
+       RoundsPerMinute 800
+       UIName "Semi Auto"
+      }
+      BaseFireMode "{69DADD4A1272AA82}" {
+       MaxBurst 0
+       MaxSalvo 0
+       RoundsPerMinute 0
+       UIName "Safe"
+      }
+     }
+     MagazineWell MagazineWell68MG "{69DADD4A1272AA99}" {
+     }
+     BulletInitSpeedCoef 0.99
+     DispersionDiameter 0.037
+     DispersionRange 100
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{69DADD4A1272AA92}" {
+       LinearData RecoilData "{69DADD4A1272AA7B}" {
+        "Curve X" {
+         0.003 0.508 0.036 0.55 0.048 0.903 0.201 0.683 0.301 0.508 1 0.502
+        }
+        "Curve Y" {
+         0 0.502 0.032 0.55 0.048 0.744 0.082 0.644 0.113 0.508 0.27 0.498 0.998 0.498
+        }
+        "Curve Z" {
+         0 0.502 0.011 0.803 0.033 0.994 0.042 0.939 0.053 0.961 0.08 0.595 0.181 0.511 0.446 0.508 0.998 0.508
+        }
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -0.001 -0.001 -0.022
+        "Curve Maxs" 0 -0.001 -0.018
+       }
+       AngularData RecoilData "{69DADD4A1272AA75}" {
+        "Curve X" {
+         0.002 0.502 0.032 0.443 0.056 0.531 0.088 0.466 0.215 0.498 0.998 0.498
+        }
+        "Curve Y" {
+         0 0.502 0.039 0.825 0.086 0.994 0.228 0.764 0.36 0.553 0.559 0.498 1 0.502
+        }
+        "Curve Z" {
+         0 0.502 0.042 0.705 0.057 0.89 0.115 0.699 0.242 0.479 0.452 0.498 0.698 0.498 0.998 0.498
+        }
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -1 1.5 1
+        "Curve Maxs" 1 1.8 1
+       }
+       TurnOffsetData RecoilData "{69DADD4A1272AA71}" {
+        "Curve X" {
+         0 0.505 0.08 1 0.122 0.751 0.147 0.528 0.18 0.502 0.998 0.502
+        }
+        "Curve Y" {
+         0.039 0.984 0.122 0.586 0.242 0.502 0.998 0.502
+        }
+        "Curve Magnitudes" 1 1 0
+        "Curve Mins" -1.5 4.5 0
+        "Curve Maxs" 1.5 6 0
+       }
+      }
+      ZeroingWeaponAimModifier "{69DADD4A1272AA4D}" {
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo left_hand_target {
+      PivotID "slot_magazine"
+      Offset 0 0.0336 0.0303
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo right_hand_target {
+      PivotID "snap_hand_right"
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo buttstock_transformation {
+      Offset 0 0.107 -0.2156
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 -0.0051 0
+     }
+     MagazineTemplate "{DF525BE1D7E53F3F}Prefabs/Weapons/Magazines/XM250/Box_68x51_XM250_100rnd_Ball.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{04AC9FB33EB7F1EB}Assets/Weapons/MachineGuns/workspaces/xm250.agr"
+     AnimInstance "{A0A8C0524169D959}Assets/Weapons/MachineGuns/workspaces/XM250_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{69DADD4A1272AA56}" {
+      AnimGraph "{04AC9FB33EB7F1EB}Assets/Weapons/MachineGuns/workspaces/xm250.agr"
+      AnimInstance "{5BF65163D968BDB5}Assets/Weapons/MachineGuns/workspaces/xm250_player.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#ICR-XM250_Name"
+    Description "#ICR-XM250_Name"
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Radius 0.5
+    }
+    UserActionContext "{5956E32BAAADE657}" {
+     Position PointInfo "{5956E329E6B11261}" {
+      PivotID "barrel_muzzle"
+      Offset -0.0052 -0.0812 -0.2111
+     }
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{69DADD4A1272AA23}" {
+      PivotID "slot_magazine"
+     }
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{69DADD4A1272AA3E}" {
+      PivotID "w_fire_mode"
+     }
+    }
+    UserActionContext "{69DADD4A1272AA3A}" {
+     UIInfo SCR_ActionContextUIInfo "{69DADD4A1272AA37}" {
+     }
+     ContextName "optic"
+     Position PointInfo "{69DADD4A1272AA32}" {
+      PivotID "slot_optics"
+     }
+     Radius 0.1
+    }
+   }
+  }
+ }
+ coords 10104.704 2.531 1552.833
+}

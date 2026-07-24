@@ -1,0 +1,57 @@
+GenericEntity : "{B37B43EC7A9639E0}Prefabs/Weapons/Rifles/M7/M7_Weathered.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#ICR-XM7_01_UGL_Name"
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{9CA239925FE3C73A}Assets/Weapons/Rifles/M16A2/anims/anmM203/p_m16_M203_ik.anm"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6247411E167D53A6}" {
+     AttachmentSlot EquipmentStorageSlot UGL {
+      Offset 0 -0.0077 0.0013
+      Prefab "{A793D64E2B5DE7AA}Prefabs/Weapons/Attachments/Underbarrel/UGL_M320_XM7.et"
+     }
+    }
+    AttachmentSlotComponent "{6247411E22022556}" {
+     AttachmentSlot EquipmentStorageSlot front_iron {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{6247411E22022563}" {
+     AttachmentSlot EquipmentStorageSlot optic {
+      Prefab "{648E66F8FA240BA6}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_AimpointCompM4s/Collim_AimpointCompM4s_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{6247411E2202256D}" {
+     AttachmentSlot EquipmentStorageSlot rear_iron {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{64EA339E08EC2E6A}" {
+     AttachmentSlot EquipmentStorageSlot RightSide {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{66E228CC8E301994}" {
+     Enabled 0
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{288D8FF8F78E3DA0}Assets/Weapons/Rifles/workspaces/m16_M203.agr"
+     AnimInstance "{E889C6EB87DAA8F4}Assets/Weapons/Rifles/workspaces/m7_M320_weapon.asi"
+     StartNode "RifleMasterControl"
+     AnimInjection AnimationAttachmentInfo "{6247411E220225CC}" {
+      AnimGraph "{288D8FF8F78E3DA0}Assets/Weapons/Rifles/workspaces/m16_M203.agr"
+      AnimInstance "{BDD8C424594C8D31}Assets/Weapons/Rifles/workspaces/m7_M320_player.asi"
+     }
+    }
+   }
+  }
+ }
+}
