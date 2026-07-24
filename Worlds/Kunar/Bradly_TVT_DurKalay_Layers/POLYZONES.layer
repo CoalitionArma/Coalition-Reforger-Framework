@@ -1,0 +1,88 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 2370.181 47.793 3659.064
+ Points {
+  ShapePoint "{69D7156A8913077F}" {
+   Position -169.96 82.804 433.097
+  }
+  ShapePoint "{69D7156A9D921DF8}" {
+   Position 1329.452 92.267 435.65
+  }
+  ShapePoint "{69D71569257AFC56}" {
+   Position 1331.349 -22.273 -358.702
+  }
+  ShapePoint "{69D715693254BB2F}" {
+   Position -170.307 -32.678 -358.695
+  }
+ }
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   coords 0 0 0
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
+ coords 2217.524 19.436 3777.802
+ Points {
+  ShapePoint "{69DA3BDA8A17B669}" {
+   Position 10.478 1.897 -41.262
+  }
+  ShapePoint "{69DA3BDA8D578C2D}" {
+   Position 10.573 1.283 106.811
+  }
+  ShapePoint "{69DA3BDA8FE751F4}" {
+   Position 159.712 -1.186 107.316
+  }
+  ShapePoint "{69DA3BDA8F03E943}" {
+   Position 159.061 23.877 -42.045
+  }
+ }
+}
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ coords 3418.52 31.675 3808.394
+ Points {
+  ShapePoint "{69DEEE05CCD718A5}" {
+   Position -5.147 18.75 -80.585
+  }
+  ShapePoint "{69DEEE05CF2CC355}" {
+   Position 63.863 -4.423 -80.914
+  }
+  ShapePoint "{69DEEE05CE39612E}" {
+   Position 64.273 -4.513 73.835
+  }
+  ShapePoint "{69DEEE05C1B67BE7}" {
+   Position -5.255 6.634 74.205
+  }
+ }
+ {
+  CRF_ManualMarker {
+   ID "65885ABE0B4CA07D"
+   coords 30.371 0 0
+   m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_MarkerColor 0.07 0.191 0.558 1
+   m_sQuadName "flag-2"
+   m_fWorldSize 25
+   m_sDescription "BLUFOR Forward Deploy Zone"
+   m_aVisibleForFactions {
+    "BLUFOR"
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 2796.169 36.505 3670.077
+ Points {
+  ShapePoint "{69DEEE00A2711B62}" {
+   Position -6.467 -1.505 -26.02
+  }
+  ShapePoint "{69DEEE00A54E5851}" {
+   Position 209.502 8.412 -26.25
+  }
+  ShapePoint "{69DEEE00A7287414}" {
+   Position 209.717 8.683 191.707
+  }
+  ShapePoint "{69DEEE00B882FEAC}" {
+   Position -5.897 -4.372 191.349
+  }
+ }
+}
