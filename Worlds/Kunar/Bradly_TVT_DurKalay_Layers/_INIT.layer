@@ -412,7 +412,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_rGearScript "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/CRF_GS_2004_USMC_DURKALAY_Bradly.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
