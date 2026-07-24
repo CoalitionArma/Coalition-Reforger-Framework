@@ -1,0 +1,104 @@
+GenericEntity : "{B8BADFA9530C38F4}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_US.et" {
+ coords 11259.732 3.238 1274.79
+ angles 0 -82.016 0
+ {
+  GenericEntity {
+   ID "6186D3A8CE3D2672"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{CB56A2564414B7D6}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_USSR.et" {
+ coords 11258.484 3.477 1265.512
+ angles 0 -78.863 0
+ {
+  GenericEntity {
+   ID "60B8D36A59BEEA13"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69F1088DD46CA2E5}" {
+      SlotTemplate InventoryStorageSlot he {
+       Prefab "{A544A2C131DE2C64}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_Smoke_D832DU.et"
+      }
+      NumSlots 100
+     }
+     MultiSlotConfiguration "{69F1088E0A7A5C28}" {
+      SlotTemplate InventoryStorageSlot rangecard {
+       Prefab "{B41607EAB58A4252}Prefabs/Items/Equipment/BallisticTable/BalisticTable_USSR.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{69F1088EA6A02AE2}" {
+      SlotTemplate InventoryStorageSlot map {
+       Prefab "{F849217AB3BA88BE}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_01_folded_USSR.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{69F1088F0134E28A}" {
+      SlotTemplate InventoryStorageSlot bino {
+       Prefab "{0CF54B9A85D8E0D4}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 11262.01 3.577 1261.762
+  angles 0 16.789 0
+ }
+ {
+  components {
+   SoundComponent "{697AEB8BB87A45E9}" {
+    Enabled 0
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{69F1088E1C080D95}" {
+      SlotTemplate InventoryStorageSlot smoke {
+       Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+      }
+      NumSlots 100
+     }
+     MultiSlotConfiguration "{69F1088E1C55EA4D}" {
+      SlotTemplate InventoryStorageSlot rangecard {
+       Prefab "{6113990D163E5249}Prefabs/Items/Equipment/BallisticTable/BalisticTable_US.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{69F1088E4AD77E7D}" {
+      SlotTemplate InventoryStorageSlot map {
+       Prefab "{922F95F91943F69A}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_01_folded_US.et"
+      }
+      NumSlots 20
+     }
+     MultiSlotConfiguration "{69F1088F157062B0}" {
+      SlotTemplate InventoryStorageSlot binos {
+       Prefab "{0CF54B9A85D8E0D4}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 11265.363 3.081 1277.066
+  angles 0 16.789 0
+ }
+}
