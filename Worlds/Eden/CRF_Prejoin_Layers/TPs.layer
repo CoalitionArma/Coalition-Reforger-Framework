@@ -100,6 +100,20 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       m_sObjectNameToTeleportTo "DanceHall"
       m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
      }
+     CRF_TeleportPlayerAction "{69F1088EC55A5981}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{69F1088EDF973CA8}" {
+       Name "Teleport to Mortar Range"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 1
+      "Sort Priority" 7
+      m_sObjectNameToTeleportTo "Mortar"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     }
     }
    }
   }
@@ -848,5 +862,17 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
    }
   }
   coords 4757.123 169.235 6985.397
+ }
+ Mortar {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     }
+    }
+   }
+  }
+  coords 11266.604 3.19 1268.615
  }
 }
