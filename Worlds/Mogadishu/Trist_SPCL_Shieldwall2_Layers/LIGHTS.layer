@@ -1,0 +1,879 @@
+$grp GenericEntity : "{575984A34D75D68C}Prefabs/Props/Remains/SkeletonRemains/SkeletonRemains_02_V1.et" {
+ {
+  coords 3047.403 37.683 4724.454
+  angles 0 -62.342 0
+  scale 1.5
+ }
+ {
+  coords 3046.976 37.683 4722.54
+  angles 0 -99.314 0
+  scale 1.5
+ }
+ {
+  coords 3047.368 37.65 4724.884
+  angles 0.846 -78.313 0.292
+  scale 1.5
+ }
+ {
+  coords 3047.316 37.656 4724.113
+  angles 0 -62.342 0
+  scale 1.5
+ }
+ {
+  coords 3047.507 37.683 4725.383
+  angles 0 -75.429 0
+  scale 1.5
+ }
+ {
+  coords 3047.353 37.683 4723.731
+  angles 0 -95.136 0
+  scale 1.5
+ }
+ {
+  coords 3047.198 37.657 4722.753
+  angles 0.892 -92.365 0.078
+  scale 1.5
+ }
+ {
+  coords 3048.653 37.646 4729.527
+  angles 0.894 -92.755 -0.043
+  scale 1.5
+ }
+ {
+  coords 3048.846 37.624 4731.229
+  angles 0.385 -62.724 1.206
+  scale 1.5
+ }
+ {
+  coords 3048.432 37.649 4729.312
+  angles 0.882 -99.706 -0.151
+  scale 1.5
+ }
+ {
+  coords 3048.809 37.617 4731.659
+  angles 0.702 -78.705 1.053
+  scale 1.5
+ }
+ {
+  coords 3048.762 37.63 4730.887
+  angles 0.385 -62.724 1.206
+  scale 1.5
+ }
+ {
+  coords 3048.944 37.608 4732.159
+  angles 0.648 -75.807 1.087
+  scale 1.5
+ }
+ {
+  coords 3048.802 37.636 4730.506
+  angles 0.977 -95.512 0.805
+  scale 1.5
+ }
+ {
+  coords 3007.805 38.293 4734.931
+  angles 2.778 -87.727 -0.432
+  scale 1.5
+ }
+ {
+  coords 3009.266 38.222 4737.927
+  angles 2.575 -71.254 1.242
+  scale 1.5
+ }
+ {
+  coords 3008.37 38.238 4732.114
+  angles 2.705 -94.685 -0.765
+  scale 1.5
+ }
+ {
+  coords 3009.57 38.199 4739.197
+  angles 2.624 -73.663 1.133
+  scale 1.5
+ }
+ {
+  coords 3008.42 38.271 4736.847
+  angles 2.211 -57.67 1.812
+  scale 1.5
+ }
+ {
+  coords 3010.511 38.142 4740.853
+  angles 2.563 -70.761 1.265
+  scale 1.5
+ }
+ {
+  coords 3008.409 38.277 4735.792
+  angles 2.84 -90.488 0.326
+  scale 1.5
+ }
+}
+$grp GenericEntity : "{5DFCD4EEFB65250B}Prefabs/Props/Remains/SkeletonRemains/SkeletonRemains_01_V1.et" {
+ {
+  coords 2871.973 33.812 4768.669
+  angles 2.795 3.762 -1.608
+ }
+ {
+  coords 2891.218 34.696 4765.904
+  angles 2.912 3.755 -3.389
+ }
+}
+GenericEntity : "{651E545B53BBD034}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_USSR.et" {
+ coords 3099.61 56.158 4723.069
+ scale 9.439
+}
+$grp GenericEntity : "{69E0D47D45DCE55A}Prefabs/Props/Military/FlagHolder_USSR_01/FlagHolder_USSR_01.et" {
+ {
+  coords 3006.747 37.078 4713.976
+  scale 2.06
+ }
+ {
+  coords 3013.921 37.078 4754.765
+  scale 2.06
+ }
+ {
+  coords 3046.902 36.754 4756.903
+  scale 2.06
+ }
+ {
+  coords 3037.567 36.754 4698.02
+  scale 2.06
+ }
+ {
+  coords 3054.074 40.218 4727.223
+  scale 2.06
+ }
+ {
+  coords 2928.815 34.134 4732.898
+  scale 2.06
+ }
+ {
+  coords 2931.676 34.733 4757.625
+  scale 2.06
+ }
+ {
+  coords 2845.323 30.139 4724.635
+  scale 2.06
+ }
+ {
+  coords 2854.904 33.724 4768.478
+  scale 2.06
+ }
+ {
+  coords 2736.641 46.276 4779.711
+  scale 2.06
+ }
+ {
+  coords 2706.043 40.464 4745.678
+  scale 2.06
+ }
+ {
+  coords 2698.756 32.651 4753.756
+  scale 2.06
+ }
+ {
+  coords 2705.435 34.282 4775.699
+  scale 2.06
+ }
+ {
+  coords 2744.388 28.017 4758.72
+  scale 2.06
+ }
+ {
+  coords 2537.55 34.045 4839.516
+  scale 2.06
+ }
+ {
+  coords 2525.003 34.295 4804.109
+  scale 2.06
+ }
+ {
+  coords 2555.325 33.056 4813.459
+  scale 2.06
+ }
+ {
+  coords 2447.749 29.141 4787.952
+  scale 2.06
+ }
+ {
+  coords 2443.432 29.141 4833.35
+  scale 2.06
+ }
+ {
+  coords 2452.067 29.141 4865.476
+  scale 2.06
+ }
+ {
+  coords 2485.49 29.141 4902.07
+  scale 2.06
+ }
+ {
+  coords 2601.662 36.514 4814.491
+  scale 2.06
+ }
+ {
+  coords 2634.337 35.472 4756.122
+  scale 2.06
+ }
+ {
+  coords 2790.765 36.074 4749.816
+  scale 2.06
+ }
+ {
+  coords 2966.818 36.84 4729.414
+  scale 2.06
+ }
+ {
+  coords 2966.781 36.84 4751.267
+  scale 2.06
+ }
+}
+$grp GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 3006.687 40.756 4713.861
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 3013.861 40.756 4754.649
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 3046.842 40.432 4756.788
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 3037.507 40.432 4697.905
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 3054.014 43.896 4727.107
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2928.755 37.812 4732.783
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2931.616 38.411 4757.51
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2845.263 33.817 4724.52
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2854.844 37.402 4768.363
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2736.58 49.954 4779.597
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2705.983 44.142 4745.563
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2698.697 36.329 4753.643
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2705.375 37.96 4775.584
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2744.328 31.695 4758.605
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2537.49 37.723 4839.4
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2524.943 37.973 4803.995
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2555.265 36.734 4813.345
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2447.689 32.819 4787.837
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2443.372 32.819 4833.234
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2452.007 32.819 4865.36
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2485.43 32.819 4901.952
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2601.602 40.192 4814.376
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2634.277 39.15 4756.007
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2790.704 39.752 4749.703
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2966.758 40.518 4729.298
+  scale 2.07
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_aLightData {
+     SCR_BaseLightData "{69EF18F58D3AB25C}" {
+      m_eLightType POINT
+      m_vLightOffset 0 2.6 0
+      m_vLightColor 38 15 1
+      m_fConeAngle 360
+      m_fRadius 48
+      m_eLightFlags 3
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 3
+    m_fDistanceAttenuation 2.6
+    m_eInitialLightState LIT
+   }
+   ActionsManagerComponent "{5876E7F5CCE95371}" {
+    Enabled 0
+   }
+  }
+  coords 2966.721 40.518 4751.15
+  scale 2.07
+ }
+}
