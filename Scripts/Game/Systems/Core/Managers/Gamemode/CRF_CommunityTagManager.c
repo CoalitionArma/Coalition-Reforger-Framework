@@ -3,6 +3,8 @@ class CRF_CommunityTagManagerClass : ScriptComponentClass {}
 //! Fetches and caches Coalition community tags for players from the website API.
 //! Tags are displayed next to player names in slotting and briefing menus.
 //! This component must be added to the CRF_Gamemode entity in the Workbench editor.
+//! The HTTP fetch only ever runs on the server; results are replicated to clients
+//! via RpcDo_PlayerInfoUpdated so every machine ends up with the same cache.
 class CRF_CommunityTagManager : ScriptComponent
 {
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -18,6 +20,11 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! How long to wait after the last connect event before firing the batch fetch.
 	//! Resets on each new join so a burst of connects produces exactly one request.
 	protected static const int DEBOUNCE_DELAY_MS = 3000;
+
+	//! If neither the success nor the error callback fires within this window, the
+	//! in-flight request is considered lost and m_bFetching is force-reset so future
+	//! fetches aren't permanently blocked.
+	protected static const int FETCH_TIMEOUT_MS = 15000;
 
 	//! XP thresholds for rank tiers.
 	//! All players start at 0 XP (rank 1 of any track).
@@ -61,8 +68,8 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Singleton reference
 	protected static CRF_CommunityTagManager m_sInstance;
 
-	//! Cache: player name -> community tag string (empty string means no tag)
-	protected ref map<string, string> m_mTagCache = new map<string, string>;
+	//! Cache: player ID -> community tag string (empty string means no tag)
+	protected ref map<int, string> m_mTagCache = new map<int, string>;
 
 	//! Prevents duplicate simultaneous in-flight HTTP requests
 	protected bool m_bFetching = false;
@@ -74,11 +81,11 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! REST callback stored as ref so it is not garbage-collected mid-flight
 	protected ref RestCallback m_Callback;
 
-	//! Cache: player name -> XP value (-1 means not cached)
-	protected ref map<string, int> m_mXpCache = new map<string, int>;
+	//! Cache: player ID -> XP value (-1 means not cached)
+	protected ref map<int, int> m_mXpCache = new map<int, int>;
 
-	//! Cache: player name -> rank track ("enlisted" / "warrant" / "officer"), empty = default enlisted
-	protected ref map<string, string> m_mTrackCache = new map<string, string>;
+	//! Cache: player ID -> rank track ("enlisted" / "warrant" / "officer"), empty = default enlisted
+	protected ref map<int, string> m_mTrackCache = new map<int, string>;
 
 	//! Fired after both tags and XP are fetched and caches are populated
 	protected ref ScriptInvoker m_OnPlayerInfoUpdated = new ScriptInvoker;
@@ -161,12 +168,8 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Returns the community tag string for a player (e.g. "CRF"), or empty string if none cached.
 	string GetPlayerTag(int playerId)
 	{
-		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		if (name.IsEmpty())
-			return string.Empty;
-
 		string tag;
-		if (m_mTagCache.Find(name, tag))
+		if (m_mTagCache.Find(playerId, tag))
 			return tag;
 
 		return string.Empty;
@@ -176,12 +179,8 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Returns the cached XP value for a player, or -1 if not cached / no data.
 	int GetPlayerXp(int playerId)
 	{
-		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		if (name.IsEmpty())
-			return -1;
-
 		int xp;
-		if (m_mXpCache.Find(name, xp))
+		if (m_mXpCache.Find(playerId, xp))
 			return xp;
 
 		return -1;
@@ -192,12 +191,8 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Defaults to "enlisted" if the player has no stored preference.
 	string GetPlayerRankTrack(int playerId)
 	{
-		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		if (name.IsEmpty())
-			return "enlisted";
-
 		string track;
-		if (m_mTrackCache.Find(name, track) && !track.IsEmpty())
+		if (m_mTrackCache.Find(playerId, track) && !track.IsEmpty())
 			return track;
 
 		return "enlisted";
@@ -205,10 +200,15 @@ class CRF_CommunityTagManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Fetches community tags and XP for all connected players in a single HTTP request.
+	//! Server-authoritative: on clients this is a no-op — results arrive via RpcDo_PlayerInfoUpdated
+	//! instead, so every client doesn't independently hammer the backend on every menu open.
 	//! If a fetch is already in-flight, queues one follow-up fetch to run after completion.
 	//! Subscribers to GetOnPlayerInfoUpdated() are notified when data arrives.
 	void FetchPlayerInfo()
 	{
+		if (!Replication.IsServer())
+			return;
+
 		if (m_bFetching)
 		{
 			m_bPendingFetch = true;
@@ -229,12 +229,10 @@ class CRF_CommunityTagManager : ScriptComponent
 			string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
 			if (name.IsEmpty())
 				continue;
-			string encodedName = name;
-			encodedName.Replace(" ", "%20");
 			if (!first)
 				queryNames += ",";
 			first = false;
-			queryNames += encodedName;
+			queryNames += EncodeNameForQuery(name);
 		}
 
 		if (queryNames.IsEmpty())
@@ -252,15 +250,10 @@ class CRF_CommunityTagManager : ScriptComponent
 		m_Callback.SetOnError(OnPlayerInfoFetchFailed);
 
 		m_bFetching = true;
+		GetGame().GetCallqueue().Remove(OnFetchTimeout);
+		GetGame().GetCallqueue().CallLater(OnFetchTimeout, FETCH_TIMEOUT_MS, false);
 		ctx.SetHeaders("Content-Type,application/json");
 		ctx.GET(m_Callback, PLAYER_INFO_ENDPOINT + queryNames);
-	}
-
-	//! Schedules a FetchPlayerInfo() call after a delay in milliseconds.
-	//! Use this for JIP connects where the player name may not be registered yet.
-	void FetchPlayerInfoDelayed(int delayMs = 2000)
-	{
-		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, delayMs, false);
 	}
 
 	//! Debounced fetch: cancels any pending scheduled fetch and reschedules it
@@ -288,14 +281,50 @@ class CRF_CommunityTagManager : ScriptComponent
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
-//	PRIVATE — REST CALLBACKS
+//	PRIVATE — QUERY STRING ENCODING
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Escapes characters in a player display name that would otherwise corrupt the comma-separated
+	//! query string or the API's JSON response keys. '%' must be encoded first so it doesn't double-encode.
+	protected string EncodeNameForQuery(string name)
+	{
+		string encoded = name;
+		encoded.Replace("%", "%25");
+		encoded.Replace(" ", "%20");
+		encoded.Replace(",", "%2C");
+		encoded.Replace("&", "%26");
+		encoded.Replace("#", "%23");
+		encoded.Replace("\"", "%22");
+		return encoded;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Reverses EncodeNameForQuery() on names echoed back in the API response. '%' must be decoded last.
+	protected string DecodeNameFromResponse(string name)
+	{
+		string decoded = name;
+		decoded.Replace("%20", " ");
+		decoded.Replace("%2C", ",");
+		decoded.Replace("%26", "&");
+		decoded.Replace("%23", "#");
+		decoded.Replace("%22", "\"");
+		decoded.Replace("%25", "%");
+		return decoded;
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	PRIVATE — REST CALLBACKS (SERVER ONLY)
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	//! Called when the combined player-info API responds successfully.
 	//! Parses: {"success":true,"tags":{"Name":"CRF"|null},"xp":{"Name":15000|null}}
+	//! Runs on the server only (FetchPlayerInfo() is server-gated). Resolves the by-name response
+	//! against currently connected players and pushes the result to every client via RPC.
 	protected void OnPlayerInfoFetched(RestCallback cb)
 	{
+		GetGame().GetCallqueue().Remove(OnFetchTimeout);
 		m_bFetching = false;
 		bool bRetry = m_bPendingFetch;
 		m_bPendingFetch = false;
@@ -307,6 +336,10 @@ class CRF_CommunityTagManager : ScriptComponent
 				FetchPlayerInfo();
 			return;
 		}
+
+		map<string, string> tagsByName = new map<string, string>;
+		map<string, int> xpByName = new map<string, int>;
+		map<string, string> trackByName = new map<string, string>;
 
 		// --- Parse tags ---
 		int tagsObjStart = data.IndexOf("\"tags\":{");
@@ -325,7 +358,7 @@ class CRF_CommunityTagManager : ScriptComponent
 				if (keyClose < 0)
 					break;
 				string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
-				playerName.Replace("%20", " ");
+				playerName = DecodeNameFromResponse(playerName);
 				int colonPos = data.IndexOfFrom(keyClose + 1, ":");
 				if (colonPos < 0)
 					break;
@@ -348,7 +381,7 @@ class CRF_CommunityTagManager : ScriptComponent
 				else
 					break;
 				if (!playerName.IsEmpty())
-					m_mTagCache.Set(playerName, tag);
+					tagsByName.Set(playerName, tag);
 				if (pos < data.Length() && data.ContainsAt(",", pos))
 					pos++;
 			}
@@ -371,7 +404,7 @@ class CRF_CommunityTagManager : ScriptComponent
 				if (keyClose < 0)
 					break;
 				string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
-				playerName.Replace("%20", " ");
+				playerName = DecodeNameFromResponse(playerName);
 				int colonPos = data.IndexOfFrom(keyClose + 1, ":");
 				if (colonPos < 0)
 					break;
@@ -397,7 +430,7 @@ class CRF_CommunityTagManager : ScriptComponent
 					pos = numEnd;
 				}
 				if (!playerName.IsEmpty())
-					m_mXpCache.Set(playerName, xp);
+					xpByName.Set(playerName, xp);
 				if (pos < data.Length() && data.ContainsAt(",", pos))
 					pos++;
 			}
@@ -421,7 +454,7 @@ class CRF_CommunityTagManager : ScriptComponent
 				if (keyClose < 0)
 					break;
 				string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
-				playerName.Replace("%20", " ");
+				playerName = DecodeNameFromResponse(playerName);
 				int colonPos = data.IndexOfFrom(keyClose + 1, ":");
 				if (colonPos < 0)
 					break;
@@ -444,13 +477,55 @@ class CRF_CommunityTagManager : ScriptComponent
 				else
 					break;
 				if (!playerName.IsEmpty())
-					m_mTrackCache.Set(playerName, track);
+					trackByName.Set(playerName, track);
 				if (pos < data.Length() && data.ContainsAt(",", pos))
 					pos++;
 			}
 		}
 
-		m_OnPlayerInfoUpdated.Invoke();
+		// Resolve by-name results against the currently connected roster (player IDs are stable,
+		// names are not — this is the join point between the API's name-keyed response and our
+		// ID-keyed cache) and build the replication payload in one pass.
+		array<int> allPlayerIds = {};
+		GetGame().GetPlayerManager().GetAllPlayers(allPlayerIds);
+
+		array<int> outIds = {};
+		array<string> outTags = {};
+		array<int> outXp = {};
+		array<string> outTracks = {};
+
+		foreach (int playerId : allPlayerIds)
+		{
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			if (playerName.IsEmpty())
+				continue;
+
+			string tag = "";
+			int xp = -1;
+			string track = "enlisted";
+			bool hasAny = false;
+
+			if (tagsByName.Find(playerName, tag))
+				hasAny = true;
+			if (xpByName.Find(playerName, xp))
+				hasAny = true;
+			if (trackByName.Find(playerName, track) && !track.IsEmpty())
+				hasAny = true;
+			else
+				track = "enlisted";
+
+			if (!hasAny)
+				continue;
+
+			outIds.Insert(playerId);
+			outTags.Insert(tag);
+			outXp.Insert(xp);
+			outTracks.Insert(track);
+		}
+
+		// Apply locally (covers dedicated + listen server) and replicate to every client.
+		RpcDo_PlayerInfoUpdated(outIds, outTags, outXp, outTracks);
+		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
 
 		if (bRetry)
 			FetchPlayerInfo();
@@ -459,6 +534,7 @@ class CRF_CommunityTagManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void OnPlayerInfoFetchFailed(RestCallback cb)
 	{
+		GetGame().GetCallqueue().Remove(OnFetchTimeout);
 		m_bFetching = false;
 		bool bRetry = m_bPendingFetch;
 		m_bPendingFetch = false;
@@ -466,6 +542,45 @@ class CRF_CommunityTagManager : ScriptComponent
 		if (bRetry)
 			FetchPlayerInfo();
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Safety net for requests that never call back (dropped connection, silently swallowed error, etc).
+	//! Without this, a single lost request would permanently wedge m_bFetching = true and no player
+	//! would ever get tags/ranks again for the rest of the session.
+	protected void OnFetchTimeout()
+	{
+		if (!m_bFetching)
+			return;
+
+		Print(string.Format("[CRF_CommunityTagManager] Player info fetch timed out after %1ms — resetting and retrying", FETCH_TIMEOUT_MS), LogLevel.WARNING);
+		m_bFetching = false;
+		FetchPlayerInfo();
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	PRIVATE — REPLICATION
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Applies resolved player-info data to the local cache. Called directly on the server (so the
+	//! host's own cache updates even on a listen server) and via RPC on every client.
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_PlayerInfoUpdated(array<int> playerIds, array<string> tags, array<int> xp, array<string> tracks)
+	{
+		int count = playerIds.Count();
+		for (int i = 0; i < count; i++)
+		{
+			m_mTagCache.Set(playerIds[i], tags[i]);
+			m_mXpCache.Set(playerIds[i], xp[i]);
+			m_mTrackCache.Set(playerIds[i], tracks[i]);
+		}
+
+		m_OnPlayerInfoUpdated.Invoke();
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	PRIVATE — PLAYER LIFECYCLE
+//=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
 	//! Registers to game-mode connect/disconnect events so UI can refresh immediately
@@ -495,19 +610,18 @@ class CRF_CommunityTagManager : ScriptComponent
 	protected void OnTrackedPlayerConnected(int playerId)
 	{
 		m_OnPlayerRosterChanged.Invoke();
-		ScheduleFetchDebounced();
+
+		// Only the server re-fetches; clients receive the result via RpcDo_PlayerInfoUpdated.
+		if (Replication.IsServer())
+			ScheduleFetchDebounced();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnTrackedPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		if (!playerName.IsEmpty())
-		{
-			m_mTagCache.Remove(playerName);
-			m_mXpCache.Remove(playerName);
-			m_mTrackCache.Remove(playerName);
-		}
+		m_mTagCache.Remove(playerId);
+		m_mXpCache.Remove(playerId);
+		m_mTrackCache.Remove(playerId);
 
 		m_OnPlayerRosterChanged.Invoke();
 		// No re-fetch: remaining players' cached data is still valid.
