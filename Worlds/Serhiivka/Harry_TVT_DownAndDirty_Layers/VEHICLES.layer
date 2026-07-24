@@ -1,0 +1,52 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 5501.042 147.637 5117.203
+  angles 0 -138.766 0
+  m_rVehicle "{7F0CE77CBE1A1F65}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69EAF4432FE4C2B5}" {
+    m_Prefab "{50A242E5D9742C62}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4AP_1Tracer.et"
+    m_iAmountOfItemSupplyTruck 4
+    m_iAmountOfItemRegularVehicle 4
+   }
+  }
+ }
+ {
+  coords 5492.371 146.883 5125.645
+  angles 0 -138.766 0
+  m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5486.99 146.528 5131.408
+  angles 0 -138.766 0
+  m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4277.213 149.288 3657.062
+  angles 2.799 26.75 0.409
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{69EAF07BA48CCA97}" {
+    m_Prefab "{FDA92D590B9C633B}Prefabs/Drones/DJIBase/DJIBase.et"
+    m_iAmountOfItemSupplyTruck 4
+    m_iAmountOfItemRegularVehicle 4
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69EAF07B8351AD7D}" {
+    m_Prefab "{F09518802063A355}Prefabs/Items/Equipment/DroneAntenna/DroneAntenna.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69EAF07B8AB6AD5D}" {
+    m_Prefab "{E2434ED1318D8476}Prefabs/Characters/Items/DroneController.et"
+   }
+   CRF_VehicleGearScriptAdditionalItem "{69EAF07BEB7B492D}" {
+    m_Prefab "{6356BFD802DEB290}Prefabs/Characters/Items/DroneCommandStation.et"
+   }
+  }
+ }
+}

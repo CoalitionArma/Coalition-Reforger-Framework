@@ -1,0 +1,412 @@
+$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 6313.15 211.932 5086.194
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6274.687 211.932 5118.14
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6236.224 211.932 5150.086
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6197.761 211.932 5182.032
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6159.298 211.932 5213.979
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6120.834 211.932 5245.925
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6082.371 211.932 5277.871
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6043.908 211.932 5309.817
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 6005.445 211.932 5341.763
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5966.981 211.932 5373.709
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5928.518 211.932 5405.655
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5890.055 211.932 5437.601
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5851.592 211.932 5469.547
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5813.128 211.932 5501.493
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5774.665 211.932 5533.439
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5736.202 211.932 5565.385
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5697.739 211.932 5597.331
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5659.275 211.932 5629.277
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5620.812 211.932 5661.223
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5582.349 211.932 5693.169
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5543.886 211.932 5725.115
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5505.423 211.932 5757.062
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5466.959 211.932 5789.008
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5428.496 211.932 5820.954
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5390.033 211.932 5852.9
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5351.57 211.932 5884.846
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5313.106 211.932 5916.792
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5274.643 211.932 5948.738
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5236.18 211.932 5980.684
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5197.717 211.932 6012.63
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5159.253 211.932 6044.576
+  angles 0 -50.288 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 5024.063 420.607 3898.956
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4980.784 420.607 3923.995
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4937.505 420.607 3949.034
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4894.226 420.607 3974.073
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4850.947 420.607 3999.112
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4807.668 420.607 4024.151
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4764.389 420.607 4049.19
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4721.11 420.607 4074.229
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4677.831 420.607 4099.268
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4634.552 420.607 4124.307
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4591.273 420.607 4149.346
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4547.994 420.607 4174.385
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4504.715 420.607 4199.424
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4461.436 420.607 4224.463
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4418.157 420.607 4249.502
+  angles 0 -59.948 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4374.878 420.607 4274.541
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4339.459 420.607 4309.833
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4304.041 420.607 4345.125
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4268.623 420.607 4380.417
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4233.205 420.607 4415.709
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4197.787 420.607 4451.001
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4162.369 420.607 4486.293
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4126.951 420.607 4521.585
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4091.533 420.607 4556.877
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4056.115 420.607 4592.169
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 4020.697 420.607 4627.461
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 3985.279 420.607 4662.753
+  angles 0 -45.102 0
+  m_sQuadName "dot"
+  m_fWorldSize 60
+  m_sDescription "OPFOR LOA"
+ }
+}
+CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ coords 6252.958 189.819 6631.801
+ m_sDescription "VIP Extract"
+}
