@@ -1,0 +1,12 @@
+GenericEntity : "{2149560A9BEFBAC2}Prefabs/Items/Core/Equip_Accessory_base.et" {
+ ID "521AC0491712FB3A"
+ components {
+  SlotManagerComponent "{6AF1B2C3D4E5F601}" {
+   Slots {
+    EntitySlotInfo PistolCosmetic {
+     Prefab ""
+    }
+   }
+  }
+ }
+}
