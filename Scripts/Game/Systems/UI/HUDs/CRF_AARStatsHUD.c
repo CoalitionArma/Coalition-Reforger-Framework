@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------------
 // Static store for per-player kill/death name lists and numeric session stats received from
 // the server at AAR time.
-// Populated by CRF_PlayerRplToOwnerManager RPCs on the owning client.
+// Populated by COA_PlayerRplToOwnerManager RPCs on the owning client.
 // Cleared/replaced each time a new AAR begins.
 //------------------------------------------------------------------------------------------------
 class CRF_AARSessionStats
@@ -70,7 +70,7 @@ class CRF_AARSessionStats
 // Handles widget population for the CRF_AARStats overlay panel.
 // Instantiated by CRF_Outro after CreateLayout() succeeds.
 // Reads session stats from CRF_AARSessionStats static fields populated by
-// CRF_PlayerRplToOwnerManager RPC calls (SendAARStats / SendAARKillStats).
+// COA_PlayerRplToOwnerManager RPC calls (SendAARStats / SendAARKillStats).
 //
 // If stats have not yet arrived when TryPopulate() is called the handler
 // subscribes to s_OnStatsReceived and populates once the data arrives.

@@ -8,7 +8,7 @@ Spawns prefabs at named world entities, tracks per-task completion per faction, 
 
 ### 1. Add the Component
 
-Add `CRF_TaskCreatorComponent` as a script component to your gamemode entity (e.g. `CRF_Gamemode`).
+Add `CRF_TaskCreatorComponent` as a script component to your gamemode entity (e.g. `COA_Gamemode`).
 
 ### 2. Configure Task Type Handlers
 
@@ -96,7 +96,7 @@ class CRF_TaskHandler_YourType : CRF_BaseTaskHandler
 
     override void OnPerform(int taskIndex, int taskObjectState, IEntity user)
     {
-        CRF_PlayerRplToAuthorityManager rpl = CRF_PlayerRplToAuthorityManager.GetInstance();
+        COA_PlayerRplToAuthorityManager rpl = COA_PlayerRplToAuthorityManager.GetInstance();
         if (rpl) rpl.RequestObjectiveTaskComplete(taskIndex, GetUserSide(user));
     }
 }
@@ -153,11 +153,11 @@ For 3D positional sounds tied to the task object:
 - **Client-initiated** (planting/defusing hold sounds):
   - Start: `rpl.RequestPlayPositionalSound(resource, event, taskObject.GetOrigin())`
   - Stop: `rpl.RequestStopPositionalSound(event)`
-  - The server re-broadcasts to all clients via `CRF_RplBroadcastManager`.
+  - The server re-broadcasts to all clients via `COA_RplBroadcastManager`.
 
 - **Server-initiated** (looping tick sounds on state change):
   - Start: `broadcast.PlayPositionalSound(resource, event, bombEntity.GetOrigin())`
   - Stop: `broadcast.StopPositionalSound(event)`
   - Call directly in `OnObjectStateChangedServer` — no client RPC needed.
 
-One handle is stored per event name in `CRF_RplBroadcastManager`. Only one sound per event can be active at a time.
+One handle is stored per event name in `COA_RplBroadcastManager`. Only one sound per event can be active at a time.

@@ -112,7 +112,7 @@ void GammaBrightnessCheck()
 			int playerId = playerController.GetPlayerId();
 			
 			// Send violation report to server via RPC
-			CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+			COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
 			if (rplManager)
 				rplManager.ReportSettingsViolation(playerId, violationType);
 		}

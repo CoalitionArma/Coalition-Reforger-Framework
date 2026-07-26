@@ -1,7 +1,7 @@
 SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
  coords 6383.509 17.844 2975.455
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 1
@@ -177,7 +177,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A65DDE01371A3B53}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_Marines_Desert.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -185,7 +185,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -201,7 +201,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -236,9 +236,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 4026.742 17.844 4775.192
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 6394.454 17.844 2982.486
 }

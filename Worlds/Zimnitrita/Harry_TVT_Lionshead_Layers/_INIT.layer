@@ -1,4 +1,4 @@
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_CampaignBuildingManagerComponent "{60EC2158F48C679A}" {
    m_bDisassembleOnlyWhenCapturing 0
@@ -246,7 +246,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{7DE528D9015D8F03}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_TFUSArmyMC_DroneJammer.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -254,7 +254,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -262,7 +262,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{DF4BE47C4661F5F5}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_RHSION_Urban_Drones.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -270,7 +270,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1

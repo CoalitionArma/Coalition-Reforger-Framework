@@ -153,7 +153,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	//==============================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	//! Called from CRF_GamemodeManager.InitilizePlayer for every non-spectator player.
+	//! Called from COA_GamemodeManager.InitilizePlayer for every non-spectator player.
 	//! On first spawn, creates a fresh stats record.
 	//! On respawn (existing non-flushed record), preserves accumulated stats and re-wires
 	//! entity-level hooks to the new character entity so distance and action tracking continues.
@@ -189,7 +189,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			stats.session_start = GetGame().GetWorld().GetWorldTime(); // ms
 
 			// Resolve faction from slotting manager (authoritative at spawn time).
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 			if (slottingManager)
 			{
 				Faction f = slottingManager.GetPlayerSlotFaction(playerId, true);
@@ -358,7 +358,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Flush all remaining player stats to the log and queue in-game AAR data sends.
-	//! Called either from CRF_Gamemode when transitioning to AAR state, or from OnGameModeEnd as
+	//! Called either from COA_Gamemode when transitioning to AAR state, or from OnGameModeEnd as
 	//! a fallback. The one-shot flag prevents double-work if both paths fire.
 	void NotifyMissionEnded()
 	{
@@ -408,7 +408,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			PlayerController pc = pm.GetPlayerController(pid);
 			if (!pc)
 				continue;
-			CRF_PlayerRplToOwnerManager rplManager = CRF_PlayerRplToOwnerManager.Cast(pc.FindComponent(CRF_PlayerRplToOwnerManager));
+			COA_PlayerRplToOwnerManager rplManager = COA_PlayerRplToOwnerManager.Cast(pc.FindComponent(COA_PlayerRplToOwnerManager));
 			if (!rplManager)
 				continue;
 			m_aPendingAARSends.Insert(pid);
@@ -431,7 +431,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
 		if (pc)
 		{
-			CRF_PlayerRplToOwnerManager rplManager = CRF_PlayerRplToOwnerManager.Cast(pc.FindComponent(CRF_PlayerRplToOwnerManager));
+			COA_PlayerRplToOwnerManager rplManager = COA_PlayerRplToOwnerManager.Cast(pc.FindComponent(COA_PlayerRplToOwnerManager));
 			if (rplManager)
 			{
 				// --- Kill / death name lists ---
@@ -888,7 +888,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	{
 		Faction f = null;
 
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (slottingManager)
 			f = slottingManager.GetPlayerSlotFaction(playerId, true);
 

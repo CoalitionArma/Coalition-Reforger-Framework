@@ -1,4 +1,4 @@
-$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
  {
   coords 7627.571 261.463 2745.7
   m_sCallsignOfGroupToSpawn "33A"

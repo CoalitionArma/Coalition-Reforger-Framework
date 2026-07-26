@@ -134,28 +134,28 @@ class CRF_MissionValidatorManager : ScriptComponent
 		IEntity gamemodeEntity = GetOwner();
 		
 		// Check for required manager components
-		if (!gamemodeEntity.FindComponent(CRF_GamemodeManager))
-			AddWarning("Missing CRF_GamemodeManager component");
+		if (!gamemodeEntity.FindComponent(COA_GamemodeManager))
+			AddWarning("Missing COA_GamemodeManager component");
 		else
-			AddInfo("[OK] CRF_GamemodeManager component found");
+			AddInfo("[OK] COA_GamemodeManager component found");
 		
-		if (!gamemodeEntity.FindComponent(CRF_SlottingManager))
-			AddWarning("Missing CRF_SlottingManager component");
+		if (!gamemodeEntity.FindComponent(COA_SlottingManager))
+			AddWarning("Missing COA_SlottingManager component");
 		else
-			AddInfo("[OK] CRF_SlottingManager component found");
+			AddInfo("[OK] COA_SlottingManager component found");
 		
-		if (!gamemodeEntity.FindComponent(CRF_SafestartManager))
-			AddWarning("Missing CRF_SafestartManager component");
+		if (!gamemodeEntity.FindComponent(COA_SafestartManager))
+			AddWarning("Missing COA_SafestartManager component");
 		else
-			AddInfo("[OK] CRF_SafestartManager component found");
+			AddInfo("[OK] COA_SafestartManager component found");
 		
-		if (!gamemodeEntity.FindComponent(CRF_RespawnManager))
-			AddWarning("Missing CRF_RespawnManager component");
+		if (!gamemodeEntity.FindComponent(COA_RespawnManager))
+			AddWarning("Missing COA_RespawnManager component");
 		else
-			AddInfo("[OK] CRF_RespawnManager component found");
+			AddInfo("[OK] COA_RespawnManager component found");
 		
-		// Check for CRF_Gamemode component and validate slot ratio
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		// Check for COA_Gamemode component and validate slot ratio
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (gamemode)
 		{
 			// Validate faction ratios
@@ -184,7 +184,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			AddInfo("[OK] SCR_MapEntity found");
 		
 		// Check for spawn points
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		
 		// BLUFOR spawn point check
 		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BluforSlots || !gamemode.m_BluforSlots.IsEmpty()))
@@ -240,7 +240,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	//! Validate spawn markers
 	protected void ValidateSpawnMarkers()
 	{
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		
 		int bluforMarkers = CountEntitiesWithName("BLUFOR_SpawnMarker");
 		int opforMarkers = CountEntitiesWithName("OPFOR_SpawnMarker");
@@ -272,7 +272,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	//! Validate safestart zones
 	protected void ValidateSafezones()
 	{
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		
 		int bluforZones = CountEntitiesWithName("BLUFOR_SafestartBoundry");
 		int opforZones = CountEntitiesWithName("OPFOR_SafestartBoundry");
@@ -333,7 +333,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 	//! Validate slotting setup
 	protected void ValidateSlottingSetup()
 	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		
 		if (!slottingManager)
 		{
@@ -342,7 +342,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 		}
 		
 		// Check if any slots exist
-		map<int, ref CRF_SlotData> slotMap = slottingManager.GetSlotMap();
+		map<int, ref COA_SlotData> slotMap = slottingManager.GetSlotMap();
 		
 		if (!slotMap || slotMap.IsEmpty())
 		{
@@ -359,7 +359,7 @@ class CRF_MissionValidatorManager : ScriptComponent
 			int indforSlots = 0;
 			int civSlots = 0;
 			
-			foreach (int slotId, CRF_SlotData slotData : slotMap)
+			foreach (int slotId, COA_SlotData slotData : slotMap)
 			{
 				string factionKey = slotData.GetSlotFactionKey();
 				

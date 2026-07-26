@@ -1,4 +1,4 @@
-class CRF_MissionMarkerComponent: CRF_ManualMarkerComponent
+class CRF_MissionMarkerComponent: COA_ManualMarkerComponent
 {
 	PanelWidget m_wMarkerBriefing;
 	bool m_bIsDisabled = false;

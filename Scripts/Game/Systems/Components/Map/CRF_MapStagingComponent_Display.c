@@ -91,7 +91,7 @@ class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Check HUD visibility
-		if (!CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
+		if (!COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			HideDisplay();
 			return;

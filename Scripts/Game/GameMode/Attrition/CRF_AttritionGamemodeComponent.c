@@ -59,7 +59,7 @@ class CRF_AttritionTeamPool
 // Tracks a single vehicle counted into a pool. Destruction is detected by polling
 // GetState() rather than subscribing to a damage-state-changed event — this matches
 // the only proven-reliable technique for vehicle destruction elsewhere in CRF
-// (see CRF_RespawnManager's respawn-timer checks, which poll the same way).
+// (see COA_RespawnManager's respawn-timer checks, which poll the same way).
 class CRF_AttritionVehicleWatcher
 {
 	Vehicle m_Vehicle;
@@ -134,8 +134,8 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 	protected bool m_bVictoryTriggered = false;
 	protected float m_fVehicleGraceRemaining = 0;
 
-	protected CRF_Gamemode m_Gamemode;
-	protected CRF_SafestartManager m_SafestartManager;
+	protected COA_Gamemode m_Gamemode;
+	protected COA_SafestartManager m_SafestartManager;
 
 	//===================================================================================
 	// CLIENT-SIDE HUD STATE
@@ -197,8 +197,8 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
+		m_SafestartManager = COA_SafestartManager.GetInstance();
 
 		// Primary trigger: finalize the moment safestart ends.
 		if (m_SafestartManager && m_SafestartManager.m_OnSafeStartChange)
@@ -257,7 +257,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_bPoolsFinalized || !m_Gamemode)
 			return;
 
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
 			FinalizePools();
 	}
 
@@ -329,11 +329,11 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 		if (m_bCountPlayers)
 		{
-			CRF_SlottingManager slotMgr = CRF_SlottingManager.GetInstance();
+			COA_SlottingManager slotMgr = COA_SlottingManager.GetInstance();
 			if (slotMgr)
 			{
-				map<int, ref CRF_SlotData> slots = slotMgr.GetSlotMap();
-				foreach (int slotId, CRF_SlotData slotData : slots)
+				map<int, ref COA_SlotData> slots = slotMgr.GetSlotMap();
+				foreach (int slotId, COA_SlotData slotData : slots)
 				{
 					if (!slotData || slotData.GetSlotCurrentPlayerId() <= 0)
 						continue;
@@ -373,11 +373,11 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected CRF_AttritionTeamPool ResolvePlayerFactionPool(int playerId)
 	{
-		CRF_SlottingManager slotMgr = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slotMgr = COA_SlottingManager.GetInstance();
 		if (!slotMgr)
 			return null;
 
-		CRF_SlotData slotData = slotMgr.GetPlayerSlotData(playerId);
+		COA_SlotData slotData = slotMgr.GetPlayerSlotData(playerId);
 		if (!slotData)
 			return null;
 
@@ -492,7 +492,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 	// vehicle is far safer than guessing and corrupting the score.
 	protected string ResolveVehicleFactionKey(notnull Vehicle vehicle)
 	{
-		FactionKey affiliatedKey = CRF_EntityHelper.DetermineFactionKey(vehicle);
+		FactionKey affiliatedKey = COA_EntityHelper.DetermineFactionKey(vehicle);
 		if (!affiliatedKey.IsEmpty() && affiliatedKey != "CIV")
 			return affiliatedKey;
 
@@ -502,7 +502,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		return affiliatedKey; // "CIV" or empty — no explicit affiliation and not spawner-assigned
 	}
 
-	// Vehicles use SCR_VehicleDamageManagerComponent (see CRF_RespawnManager's respawn-timer
+	// Vehicles use SCR_VehicleDamageManagerComponent (see COA_RespawnManager's respawn-timer
 	// checks), a subclass of SCR_DamageManagerComponent, rather than the generic component
 	// found on plain destructible props. FindComponent() only matches the exact concrete type
 	// attached to the entity, so the vehicle-specific type has to be searched for directly —

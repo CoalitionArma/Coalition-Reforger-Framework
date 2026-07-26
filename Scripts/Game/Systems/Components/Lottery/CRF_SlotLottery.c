@@ -72,15 +72,15 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 	protected bool ValidateSquadExists(string factionKey, string squadFilter)
 	{
-		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 		if (!sm)
 			return false;
 
-		map<int, ref CRF_SlotData> slotMap = sm.GetSlotMap();
+		map<int, ref COA_SlotData> slotMap = sm.GetSlotMap();
 		if (!slotMap)
 			return false;
 
-		foreach (int slotId, CRF_SlotData slotData : slotMap)
+		foreach (int slotId, COA_SlotData slotData : slotMap)
 		{
 			if (!slotData)
 				continue;
@@ -189,7 +189,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		if (localPlayerId <= 0)
 			return;
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		// --- Parse: data may be "BLUFOR" or "BLUFOR MAT" etc. ---
 		string factionToken  = "";
@@ -248,7 +248,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		}
 
 		// --- Route through authority manager for proper replication ---
-		CRF_PlayerRplToAuthorityManager authMgr = CRF_PlayerRplToAuthorityManager.GetInstance();
+		COA_PlayerRplToAuthorityManager authMgr = COA_PlayerRplToAuthorityManager.GetInstance();
 		if (authMgr)
 			authMgr.RegisterPlayerForLottery(localPlayerId, factionKey, squadFilter);
 
@@ -313,7 +313,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		if (localPlayerId <= 0)
 			return;
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		if (!SCR_Global.IsAdmin(localPlayerId))
 		{
@@ -329,7 +329,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 			return;
 		}
 
-		CRF_PlayerRplToAuthorityManager authMgr = CRF_PlayerRplToAuthorityManager.GetInstance();
+		COA_PlayerRplToAuthorityManager authMgr = COA_PlayerRplToAuthorityManager.GetInstance();
 		if (authMgr)
 			authMgr.RunSlotLottery(localPlayerId);
 	}
@@ -342,8 +342,8 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		if (IsGameRunning())
 			return;
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
-		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 
 		if (!bm || !sm)
 		{
@@ -520,7 +520,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		if (localPlayerId <= 0)
 			return;
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		if (!SCR_Global.IsAdmin(localPlayerId))
 		{
@@ -536,7 +536,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 			return;
 		}
 
-		CRF_PlayerRplToAuthorityManager authMgr = CRF_PlayerRplToAuthorityManager.GetInstance();
+		COA_PlayerRplToAuthorityManager authMgr = COA_PlayerRplToAuthorityManager.GetInstance();
 		if (authMgr)
 			authMgr.ClearSlotLottery(localPlayerId);
 	}
@@ -554,7 +554,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 		Print(string.Format("[SlotLottery] Cleared %1 total signups.", totalCount));
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint(
 				string.Format("[SlotLottery] All lottery queues cleared (%1 signups removed).", totalCount),
@@ -616,15 +616,15 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 	{
 		array<int> result = new array<int>;
 
-		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 		if (!sm)
 			return result;
 
-		map<int, ref CRF_SlotData> slotMap = sm.GetSlotMap();
+		map<int, ref COA_SlotData> slotMap = sm.GetSlotMap();
 		if (!slotMap)
 			return result;
 
-		foreach (int slotId, CRF_SlotData slotData : slotMap)
+		foreach (int slotId, COA_SlotData slotData : slotMap)
 		{
 			if (!slotData)
 				continue;
@@ -661,7 +661,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 			return result;
 		}
 
-		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 		if (!sm)
 			return result;
 
@@ -670,7 +670,7 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 		foreach (int slotId : slotIds)
 		{
-			CRF_SlotData slotData = sm.GetSlotData(slotId);
+			COA_SlotData slotData = sm.GetSlotData(slotId);
 			if (!slotData)
 				continue;
 
@@ -715,15 +715,15 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 	protected bool IsGameRunning()
 	{
-		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 		if (!sm)
 			return false;
 
-		map<int, ref CRF_SlotData> slotMap = sm.GetSlotMap();
+		map<int, ref COA_SlotData> slotMap = sm.GetSlotMap();
 		if (!slotMap)
 			return false;
 
-		foreach (int slotId, CRF_SlotData slotData : slotMap)
+		foreach (int slotId, COA_SlotData slotData : slotMap)
 		{
 			if (slotData && slotData.GetSlotCurrentCharacter() != RplId.Invalid())
 				return true;

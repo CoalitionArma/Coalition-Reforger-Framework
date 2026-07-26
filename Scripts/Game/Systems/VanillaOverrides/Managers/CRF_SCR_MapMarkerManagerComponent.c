@@ -32,8 +32,8 @@ modded class SCR_MapMarkerManagerComponent
 	
 	void RequestGlobalMarkersRefresh()
 	{
-		if (CRF_PlayerRplToAuthorityManager.GetInstance())
-			CRF_PlayerRplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
+		if (COA_PlayerRplToAuthorityManager.GetInstance())
+			COA_PlayerRplToAuthorityManager.GetInstance().RequestGlobalMarkerRefresh();
 	}
 	
 	//Method used for JIPs to get markers placed during safestart
@@ -78,7 +78,7 @@ modded class SCR_MapMarkerManagerComponent
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
 		if (!pc)
 			return;
-		CRF_PlayerRplToOwnerManager rplToOwnerManager = CRF_PlayerRplToOwnerManager.Cast(pc.FindComponent(CRF_PlayerRplToOwnerManager));
+		COA_PlayerRplToOwnerManager rplToOwnerManager = COA_PlayerRplToOwnerManager.Cast(pc.FindComponent(COA_PlayerRplToOwnerManager));
 		if (!rplToOwnerManager)
 			return;
 
@@ -91,10 +91,10 @@ modded class SCR_MapMarkerManagerComponent
 		if (pc && marker.GetMarkerOwnerID() == pc.GetPlayerId())
 		{
 			// During safestart, auto-share every placed marker to all same-faction players
-			CRF_SafestartManager safestartMan = CRF_SafestartManager.GetInstance();
+			COA_SafestartManager safestartMan = COA_SafestartManager.GetInstance();
 			if (safestartMan && safestartMan.GetSafestartStatus())
 			{
-				CRF_PlayerRplToAuthorityManager auth = CRF_PlayerRplToAuthorityManager.GetInstance();
+				COA_PlayerRplToAuthorityManager auth = COA_PlayerRplToAuthorityManager.GetInstance();
 				if (auth)
 					auth.SharerMapMarkerGlobal(marker.GetMarkerID(), pc.GetPlayerId());
 			}
@@ -124,7 +124,7 @@ modded class SCR_MapMarkerManagerComponent
 			m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		
 		// If shareable markers are disabled for this faction, all markers are visible (vanilla behaviour)
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		Faction localFaction = SCR_FactionManager.SGetLocalPlayerFaction();
 		bool shareableMarkersEnabled = gamemode && localFaction && gamemode.DoesFactionShareMarker(localFaction.GetFactionKey());
 		if (!shareableMarkersEnabled)

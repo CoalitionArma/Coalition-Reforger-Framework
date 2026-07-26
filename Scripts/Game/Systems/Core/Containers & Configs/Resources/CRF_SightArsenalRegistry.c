@@ -31,7 +31,7 @@ class CRF_SightArsenalRegistry
 		
 		// Load regular sights from config (indices 1-99)
 		ResourceName regularConfigPath = "{E6555DA2F31B0EC0}Configs/Gearscripts/CRF_Global_SightArsenal_Regular.conf";
-		CRF_SightArsenalConfig regularConfig = LoadSightConfig(regularConfigPath);
+		COA_SightArsenalConfig regularConfig = LoadSightConfig(regularConfigPath);
 		if (regularConfig && regularConfig.m_aSights)
 		{
 			int index = 1;
@@ -52,7 +52,7 @@ class CRF_SightArsenalRegistry
 		
 		// Load magnified sights from config (indices 100-199)
 		ResourceName magnifiedConfigPath = "{9D8E5FA08331042D}Configs/Gearscripts/CRF_Global_SightArsenal_Magnified.conf";
-		CRF_SightArsenalConfig magnifiedConfig = LoadSightConfig(magnifiedConfigPath);
+		COA_SightArsenalConfig magnifiedConfig = LoadSightConfig(magnifiedConfigPath);
 		if (magnifiedConfig && magnifiedConfig.m_aSights)
 		{
 			int index = 100;
@@ -77,7 +77,7 @@ class CRF_SightArsenalRegistry
 	
 	//------------------------------------------------------------------------------------------------
 	// Load sight config from file
-	protected static CRF_SightArsenalConfig LoadSightConfig(ResourceName configPath)
+	protected static COA_SightArsenalConfig LoadSightConfig(ResourceName configPath)
 	{
 		Resource container = BaseContainerTools.LoadContainer(configPath);
 		if (!container)
@@ -93,7 +93,7 @@ class CRF_SightArsenalRegistry
 			return null;
 		}
 		
-		CRF_SightArsenalConfig config = CRF_SightArsenalConfig.Cast(
+		COA_SightArsenalConfig config = COA_SightArsenalConfig.Cast(
 			BaseContainerTools.CreateInstanceFromContainer(baseContainer)
 		);
 		

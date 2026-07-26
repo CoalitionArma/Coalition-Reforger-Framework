@@ -14,7 +14,7 @@ modded class CSI_HUD
 			return;
 		
 		// Get references
-		bool isSpectator = CRF_EntityHelper.IsSpectator();
+		bool isSpectator = COA_EntityHelper.IsSpectator();
 		bool isWidgetVisible = m_wRoot.IsVisible();
 		
 		// Handle visibility based on player state:

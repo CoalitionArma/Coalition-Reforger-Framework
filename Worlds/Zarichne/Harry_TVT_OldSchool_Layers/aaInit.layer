@@ -1,7 +1,7 @@
 SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
  coords 376.953 59.826 4406.321
 }
-CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{6857675D4FC00107}" {
    m_iNumberOfZones 2
@@ -50,14 +50,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_sFactionOneKey "BLU"
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{888A4A3845FEA201}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USLate70s.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{B9177B50FDCF2DF1}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USSRLate70s.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0

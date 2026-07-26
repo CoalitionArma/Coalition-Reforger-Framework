@@ -32,14 +32,14 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 	[Attribute("1", UIWidgets.CheckBox, "Enable role whitelist for lone-wolf penalties", category: "CRF Player - Cohesion")]
 	protected bool m_bEnableRoleWhitelist;
 
-	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole), category: "CRF Player - Cohesion")]
-	protected ref array<ref CRF_EGearRole> m_aWhitelistedRoles;
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(COA_EGearRole), category: "CRF Player - Cohesion")]
+	protected ref array<ref COA_EGearRole> m_aWhitelistedRoles;
 
 	[Attribute("1", UIWidgets.CheckBox, "Enable faction whitelist for lone-wolf penalties", category: "CRF Player - Cohesion")]
 	protected bool m_bEnableFactionWhitelist;
 
-	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFactions), desc: "Factions exempt from lone-wolf penalties", category: "CRF Player - Cohesion")]
-	protected ref array<ref CRF_EFactions> m_aWhitelistedFactions;
+	[Attribute(uiwidget: UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(COA_EFactions), desc: "Factions exempt from lone-wolf penalties", category: "CRF Player - Cohesion")]
+	protected ref array<ref COA_EFactions> m_aWhitelistedFactions;
 
 	[RplProp(condition: RplCondition.OwnerOnly, onRplName: "OnLoneWolfPenaltyReplicated")]
 	protected float m_fOwnerTunnelVisionIntensity;
@@ -191,11 +191,11 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 		if (!GetGame() || !GetGame().InPlayMode())
 			return false;
 
-		CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
 		if (safestartManager && safestartManager.GetSafestartStatus())
 			return false;
 
-		if (CRF_EntityHelper.IsSpectator(character))
+		if (COA_EntityHelper.IsSpectator(character))
 			return false;
 
 		SCR_DamageManagerComponent dmg = SCR_DamageManagerComponent.Cast(character.FindComponent(SCR_DamageManagerComponent));
@@ -239,7 +239,7 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 			if (!otherEntity)
 				continue;
 
-			if (CRF_EntityHelper.IsSpectator(otherEntity))
+			if (COA_EntityHelper.IsSpectator(otherEntity))
 				continue;
 
 			SCR_DamageManagerComponent otherDmg = SCR_DamageManagerComponent.Cast(otherEntity.FindComponent(SCR_DamageManagerComponent));
@@ -277,14 +277,14 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 			return false;
 
 		if (!m_aWhitelistedRoles || m_aWhitelistedRoles.IsEmpty())
-			return CRF_RoleHelper.IsMedicRole(character);
+			return COA_RoleHelper.IsMedicRole(character);
 
 		ResourceName prefab = character.GetPrefabData().GetPrefabName();
-		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+		if (!COA_RoleHelper.IsValidGearscriptResource(prefab))
 			return false;
 
-		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
-		foreach (CRF_EGearRole whitelistedRole : m_aWhitelistedRoles)
+		COA_EGearRole role = COA_RoleHelper.ResourceToRole(prefab);
+		foreach (COA_EGearRole whitelistedRole : m_aWhitelistedRoles)
 		{
 			if (role == whitelistedRole)
 				return true;
@@ -308,15 +308,15 @@ class CRF_LoneWolfPenaltyManager : ScriptComponent
 
 		FactionKey playerFactionKey = playerFaction.GetFactionKey();
 
-		foreach (CRF_EFactions whitelistedFaction : m_aWhitelistedFactions)
+		foreach (COA_EFactions whitelistedFaction : m_aWhitelistedFactions)
 		{
 			FactionKey whitelistedKey;
 			switch (whitelistedFaction)
 			{
-				case CRF_EFactions.BLUFOR:  whitelistedKey = "BLUFOR"; break;
-				case CRF_EFactions.OPFOR:   whitelistedKey = "OPFOR";  break;
-				case CRF_EFactions.INDFOR:  whitelistedKey = "INDFOR"; break;
-				case CRF_EFactions.CIV:     whitelistedKey = "CIV";    break;
+				case COA_EFactions.BLUFOR:  whitelistedKey = "BLUFOR"; break;
+				case COA_EFactions.OPFOR:   whitelistedKey = "OPFOR";  break;
+				case COA_EFactions.INDFOR:  whitelistedKey = "INDFOR"; break;
+				case COA_EFactions.CIV:     whitelistedKey = "CIV";    break;
 			}
 
 			if (playerFactionKey == whitelistedKey)

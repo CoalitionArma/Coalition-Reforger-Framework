@@ -190,8 +190,8 @@ class ammo_Class: PS_ManualMarker
 	
 	void safeStartCheck()
 	{
-		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
-        if(safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+        if(safestart.GetSafestartStatus() || COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
 		{
          	GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);
 			return;
@@ -530,7 +530,7 @@ class z1s1_Class: GenericEntity
 			
 			//respawn the players
 			if (RplSession.Mode() == RplMode.Dedicated) {
-				CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+				COA_Gamemode gm = COA_Gamemode.GetInstance();
 				gm.RushRespawnPlayers();
 			}
 		}

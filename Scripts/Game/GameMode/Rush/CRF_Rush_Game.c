@@ -328,7 +328,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// If markers are not hidden, ensure this player gets the current zone markers
 		if (!m_bHideMapMarkers)
 		{
-			CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+			COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 			if (playerScriptedMarkerManager)
 			{
 				array<string> currentMarkers = playerScriptedMarkerManager.GetScriptedMarkersArray();
@@ -694,7 +694,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void InitializeMapMarkers()
 	{
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
+		COA_PlayerControllerManager playerControllerManager = COA_PlayerControllerManager.GetInstance();
 		if (!playerControllerManager) 
 		{
 			GetGame().GetCallqueue().CallLater(InitializeMapMarkers, 2000, false);
@@ -887,7 +887,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void AddAllMCOMMarkers()
 	{
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager)
 		{
 			return;
@@ -1028,7 +1028,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void UpdateActiveZoneMarkers()
 	{
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager || m_bHideMapMarkers) 
 			return;
 		
@@ -1081,7 +1081,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void RemoveAllMCOMMarkers()
 	{
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager) 
 			return;
 		
@@ -1098,7 +1098,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		// Notify all players that markers have been updated
 		// This will trigger the client-side map marker system to refresh
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (playerScriptedMarkerManager)
 			array<string> markers = playerScriptedMarkerManager.GetScriptedMarkersArray();
 	}
@@ -1733,7 +1733,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer START ===== for " + mcomIdentifier + " ID: " + mcomEntity.GetID());
 		
 		// Send RPC to all clients to handle entity and marker deletion FIRST
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			Print("[CRF_RushGamemodeManager] Sending RPC to clients for MCOM deletion: " + mcomIdentifier);
@@ -2016,7 +2016,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	protected void RespawnPlayersForZoneAdvance()
 	{
 		// Get the respawn manager
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return;
 
@@ -2044,7 +2044,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		vector explosionPosition = destroyedMCOMEntity.GetOrigin();
 		
 		// Remove map marker for destroyed MCOM
-		CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
+		COA_PlayerControllerManager playerControllerManager = COA_PlayerControllerManager.GetInstance();
 		if (playerControllerManager && !m_bHideMapMarkers)
 		{
 			// Refresh all MCOM markers to reflect the new state
@@ -2078,7 +2078,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Fire effects
 		GetGame().SpawnEntityPrefab(Resource.Load("{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"), GetGame().GetWorld(), spawnParams);
 		
-		// NOTE: Entity deletion is now handled by RPC system via CRF_RplBroadcastManager.DeleteRushMCOMEntity()
+		// NOTE: Entity deletion is now handled by RPC system via COA_RplBroadcastManager.DeleteRushMCOMEntity()
 		// This ensures proper client-server synchronization of entity deletion
 	}
 	
@@ -2590,7 +2590,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp", "RUSH_BEEP", mcomPosition);
@@ -2619,7 +2619,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+				COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
 					broadcastManager.StopPositionalSound("RUSH_BEEP");
@@ -2660,7 +2660,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
@@ -2689,7 +2689,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (mcomEntity)
 			{
 				// Replicate the sound stop to all clients
-				CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+				COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 				if (broadcastManager)
 				{
 					broadcastManager.StopPositionalSound("RUSH_PLANTING");
@@ -2817,7 +2817,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Replicate the sound to all clients using 3D positioning
 		vector mcomPosition = mcomEntity.GetOrigin();
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.PlayPositionalSound("{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp", "RUSH_PLANTING", mcomPosition);
@@ -2848,7 +2848,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		
 		// Replicate the sound stop to all clients
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
 			broadcastManager.StopPositionalSound("RUSH_PLANTING");
@@ -2965,7 +2965,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (m_bHideMapMarkers)
 			return;
 		
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager)
 			return;
 		
@@ -3441,7 +3441,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		}
 		
 		// Get respawn manager
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 		{
 			Print("[CRF_Rush] ERROR: RespawnManager not found!", LogLevel.ERROR);
@@ -3468,20 +3468,20 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			}
 			
 			// Get the first respawn flag for this faction
-			array<CRF_SpawnPointData> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
+			array<COA_SpawnPointData> factionSpawns = respawnManager.GetFactionSpawnpoints(entry.m_eFaction);
 			if (!factionSpawns || factionSpawns.IsEmpty())
 			{
 				Print(string.Format("[CRF_Rush] No spawns found for faction %1", entry.m_eFaction), LogLevel.WARNING);
 				continue;
 			}
 			
-			CRF_SpawnPointData respawnFlag = factionSpawns[0];
+			COA_SpawnPointData respawnFlag = factionSpawns[0];
 			
 			// Get marker position and orientation
 			vector markerPos = markerEntity.GetOrigin();
 			vector markerAngles = markerEntity.GetAngles();
 			
-			IEntity respawnFlagEnt = CRF_EntityHelper.GetEntityFromRplId(respawnFlag.GetSpawnPointEntity());
+			IEntity respawnFlagEnt = COA_EntityHelper.GetEntityFromRplId(respawnFlag.GetSpawnPointEntity());
 			// Move respawn flag (Note: visual flag mesh may not update immediately)
 			respawnFlagEnt.SetOrigin(markerPos);
 			respawnFlagEnt.SetAngles(markerAngles);

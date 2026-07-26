@@ -1,6 +1,6 @@
 // CRF_PropHunt_PlayerRplToOwnerManager.c
 //
-// Extends CRF_PlayerRplToOwnerManager with Prop Hunt client-side features:
+// Extends COA_PlayerRplToOwnerManager with Prop Hunt client-side features:
 //
 //  Prop transformation — Props press [T / CRF_PropHuntTransform] during grace to
 //  disguise themselves as a nearby world object:
@@ -19,7 +19,7 @@
 // NOTE: Screen blackout and hunter health bar RPCs have been moved to
 // CRF_PropHuntGamemode so they use guaranteed base-class [RplRpc] registration.
 
-modded class CRF_PlayerRplToOwnerManager
+modded class COA_PlayerRplToOwnerManager
 {
 	//------------------------------------------------------------
 	// Prop transform state (client-local)
@@ -145,7 +145,7 @@ modded class CRF_PlayerRplToOwnerManager
 	// after the player selects an entry.
 	//
 	// On dedicated server the request is sent via RpcDo_RequestPropTransform,
-	// which is declared in the NON-MODDED base class CRF_PlayerRplToOwnerManager.
+	// which is declared in the NON-MODDED base class COA_PlayerRplToOwnerManager.
 	// This is essential: RPCs added only to a modded class are NOT reliably
 	// registered by Reforger's RPC table on dedicated servers.
 	// The base-class RPC resolves playerId from GetOwner() and forwards to

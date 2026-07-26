@@ -667,7 +667,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	/**
 	 * Get the CRF_PolyZoneTrigger child entity from a GameBoundary parent
 	 */
-	CRF_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
+	COA_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
 	{
 		if (!boundaryName || boundaryName.IsEmpty())
 			return null;
@@ -720,8 +720,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 			return;
 		}
 		
-		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
-		if (!safestart || safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		if (!safestart || safestart.GetSafestartStatus() || COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
 		{
 			if (m_bDebugEnabled) 
 				Print("[CRF_BattleRoyaleComponent] Waiting for game to be ready and safestart to end...");

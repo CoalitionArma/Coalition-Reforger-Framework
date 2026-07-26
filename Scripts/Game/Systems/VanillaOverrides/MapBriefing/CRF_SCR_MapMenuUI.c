@@ -10,8 +10,8 @@ modded class SCR_MapMenuUI
 	//----------------------------------------
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent; // Component for mission descriptions
 	protected ButtonWidget m_wBackButton;                                 // Back button for description navigation
-	protected CRF_Gamemode m_Gamemode;                                   // Game mode instance
-	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
+	protected COA_Gamemode m_Gamemode;                                   // Game mode instance
+	protected ref array<ref COA_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
 	protected bool m_bMissionDescriptionsInitialized = false;             // Flag to track if descriptions have been initialized
 
 	//----------------------------------------
@@ -31,7 +31,7 @@ modded class SCR_MapMenuUI
 		}
 
 		// Initialize gamemode reference
-		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
 		if (!m_Gamemode) {
 			return;
 		}
@@ -170,7 +170,7 @@ modded class SCR_MapMenuUI
 		string playerFaction = factionComponent.GetAffiliatedFactionKey();
 
 		// Add relevant descriptions to list
-		foreach (ref CRF_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
+		foreach (ref COA_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
 		{
 			// Add description visible to all factions
 			if (description.m_bShowForAnyFaction)

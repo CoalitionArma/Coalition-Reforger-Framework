@@ -2,8 +2,8 @@
 This is the Arma Reforger Framework developed and used by COALITION to host our events on. It's a comprehensive, modular foundation for tactical multiplayer missions, covering player/slot management, role-based equipment, respawn logic, mission phases and more. It's designed to be extended by dependent addons, such as [COALITION Lobby](https://github.com/CoalitionArma/COALITION-Lobby), which supplies the lobby UI and slotting flow built on top of it.
 
 # Features
-- **Core managers**: `CRF_Gamemode` and `CRF_GamemodeManager` coordinate mission-wide state through the Briefing → Slotting → Game → AAR phases, with dedicated managers for slotting, respawns, safestart, gearscripts, replication, permissions, logging and garbage collection.
-- **Role-based equipment**: `CRF_GearscriptManager` applies data-driven gearscripts per role, configured under `Configs/Gearscripts`.
+- **Core managers**: `COA_Gamemode` and `COA_GamemodeManager` coordinate mission-wide state through the Briefing → Slotting → Game → AAR phases, with dedicated managers for slotting, respawns, safestart, gearscripts, replication, permissions, logging and garbage collection.
+- **Role-based equipment**: `COA_GearscriptManager` applies data-driven gearscripts per role, configured under `Configs/Gearscripts`.
 - **Mission library**: ready-made missions across a wide range of official and community terrains under `Missions/`.
 - **Extensive vanilla overrides**: `Scripts/Game/Systems/VanillaOverrides` and `ModdedOverrides` adapt base-game systems (stamina, characters, etc.) for framework use.
 

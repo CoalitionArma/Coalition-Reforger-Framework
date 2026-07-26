@@ -1,7 +1,7 @@
-CRF_RallyPoint {
+COA_RallyPoint {
  ID "69071E1FF5EDABA9"
  components {
-  CRF_Rallypoint_BuildingCompositionComponent "{69071E1FF5EDAB9D}" {
+  COA_RallyPoint_BuildingCompositionComponent "{69071E1FF5EDAB9D}" {
   }
   RigidBody "{69071E1FF5EDAB93}" {
   }
@@ -30,7 +30,7 @@ CRF_RallyPoint {
   SCR_EditorLinkComponent "{69071E1FF5EDAB83}" {
    m_aEntries {
     SCR_EditorLinkEntry "{69071E1FF5EDAB81}" {
-     m_Prefab "{214D8C0A45720C3A}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/OPFOR/E_CRF_RallyPoint_Preview_OPFOR.et"
+     m_Prefab "{214D8C0A45720C3A}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/OPFOR/E_COA_RallyPoint_Preview_OPFOR.et"
     }
    }
   }

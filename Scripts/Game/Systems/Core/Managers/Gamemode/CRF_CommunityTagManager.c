@@ -2,7 +2,7 @@ class CRF_CommunityTagManagerClass : ScriptComponentClass {}
 
 //! Fetches and caches Coalition community tags for players from the website API.
 //! Tags are displayed next to player names in slotting and briefing menus.
-//! This component must be added to the CRF_Gamemode entity in the Workbench editor.
+//! This component must be added to the COA_Gamemode entity in the Workbench editor.
 //! The HTTP fetch only ever runs on the server; results are replicated to clients
 //! via RpcDo_PlayerInfoUpdated so every machine ends up with the same cache.
 class CRF_CommunityTagManager : ScriptComponent

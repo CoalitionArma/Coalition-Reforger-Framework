@@ -1,7 +1,7 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 2246.077 19.024 7513.2
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -403,7 +403,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -411,7 +411,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -419,7 +419,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -427,7 +427,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0

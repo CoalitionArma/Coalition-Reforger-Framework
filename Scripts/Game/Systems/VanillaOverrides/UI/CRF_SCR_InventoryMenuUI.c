@@ -10,7 +10,7 @@ modded class SCR_InventoryMenuUI
 		if (storage)
 		{
 			//Checks if Leader only arsenal is enabled, and if it is prevents non leaders from opening an arsenal
-			CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
+			COA_SlottingManager slottingMan = COA_SlottingManager.GetInstance();
 			if (slottingMan)
 			{
 				SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
@@ -18,9 +18,9 @@ modded class SCR_InventoryMenuUI
 				{
 					
 					int playerId = SCR_PlayerController.GetLocalPlayerId();
-					CRF_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
-					CRF_ESlotType slotType = slotData.GetSlotType();
-					if (slotType != CRF_ESlotType.TEAM_LEADER && slotType != CRF_ESlotType.SQUAD_LEADER && slotType != CRF_ESlotType.MEDIC)
+					COA_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
+					COA_ESlotType slotType = slotData.GetSlotType();
+					if (slotType != COA_ESlotType.TEAM_LEADER && slotType != COA_ESlotType.SQUAD_LEADER && slotType != COA_ESlotType.MEDIC)
 						return;
 				}
 			}
@@ -39,7 +39,7 @@ modded class SCR_InventoryMenuUI
 		if (storage)
 		{
 			//Checks if Leader only arsenal is enabled, and if it is prevents non leaders from opening an arsenal
-			CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
+			COA_SlottingManager slottingMan = COA_SlottingManager.GetInstance();
 			if (slottingMan)
 			{
 				SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
@@ -47,9 +47,9 @@ modded class SCR_InventoryMenuUI
 				{
 					
 					int playerId = SCR_PlayerController.GetLocalPlayerId();
-					CRF_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
-					CRF_ESlotType slotType = slotData.GetSlotType();
-					if (slotType != CRF_ESlotType.TEAM_LEADER && slotType != CRF_ESlotType.SQUAD_LEADER && slotType != CRF_ESlotType.MEDIC)
+					COA_SlotData slotData = slottingMan.GetPlayerSlotData(playerId);
+					COA_ESlotType slotType = slotData.GetSlotType();
+					if (slotType != COA_ESlotType.TEAM_LEADER && slotType != COA_ESlotType.SQUAD_LEADER && slotType != COA_ESlotType.MEDIC)
 						return;
 				}
 			}

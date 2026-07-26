@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------------------------
-class CRF_Rallypoint_BuildingCompositionComponentClass : SCR_CampaignBuildingCompositionComponentClass
+class COA_RallyPoint_BuildingCompositionComponentClass : SCR_CampaignBuildingCompositionComponentClass
 {
 }
 
 //------------------------------------------------------------------------------------------------
-class CRF_Rallypoint_BuildingCompositionComponent : SCR_CampaignBuildingCompositionComponent
+class COA_RallyPoint_BuildingCompositionComponent : SCR_CampaignBuildingCompositionComponent
 {
-	ref CRF_SpawnPointData m_SpawnPointSettings = new CRF_SpawnPointData();
+	ref COA_SpawnPointData m_SpawnPointSettings = new COA_SpawnPointData();
 	
 	protected int m_iLocallyStoredId;
 	
@@ -18,7 +18,7 @@ class CRF_Rallypoint_BuildingCompositionComponent : SCR_CampaignBuildingComposit
 		if (!GetGame().InPlayMode() || !Replication.IsServer())
 			return;
 		
-		CRF_RallyPoint rallyPoint = CRF_RallyPoint.Cast(GetOwner());
+		COA_RallyPoint rallyPoint = COA_RallyPoint.Cast(GetOwner());
 		if (rallyPoint)
 			rallyPoint.SetupRallyPoint();
 	}

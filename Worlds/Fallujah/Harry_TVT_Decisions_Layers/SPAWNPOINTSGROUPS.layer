@@ -1,8 +1,8 @@
-CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
  coords 3401.083 1 5910.481
  m_sCallsignOfGroupToSpawn "Recon"
 }
-$grp CRF_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
  {
   coords 3264.139 1 6419.421
   m_sCallsignOfGroupToSpawn "Cell Lead"

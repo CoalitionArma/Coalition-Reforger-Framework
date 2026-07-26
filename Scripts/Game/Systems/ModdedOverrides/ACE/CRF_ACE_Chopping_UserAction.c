@@ -39,7 +39,7 @@ modded class ACE_Chopping_UserAction
 		SCR_CampaignBuildingGadgetToolComponent gadgetComp = CRF_GetHeldBuildingTool(m_pUserChar);
 		float targetS = actionDuration;
 		if (gadgetComp)
-			targetS = gadgetComp.CRF_GetChoppingActiveDurationS(CRF_RoleHelper.IsCombatEngineerRole(m_pUserChar));
+			targetS = gadgetComp.CRF_GetChoppingActiveDurationS(COA_RoleHelper.IsCombatEngineerRole(m_pUserChar));
 
 		if (targetS <= 0)
 			targetS = actionDuration;
@@ -55,7 +55,7 @@ modded class ACE_Chopping_UserAction
 
 		SCR_CampaignBuildingGadgetToolComponent gadgetComp = CRF_GetHeldBuildingTool(pUserEntity);
 		if (gadgetComp)
-			gadgetComp.CRF_ConsumeChop(CRF_RoleHelper.IsCombatEngineerRole(pUserEntity));
+			gadgetComp.CRF_ConsumeChop(COA_RoleHelper.IsCombatEngineerRole(pUserEntity));
 	}
 
 	//------------------------------------------------------------------------------------------------

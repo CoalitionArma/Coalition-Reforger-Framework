@@ -43,14 +43,14 @@ Coalition-Reforger-Framework/
 
 The CRF framework is built around several key manager components that handle different aspects of gameplay:
 
-- **CRF_Gamemode**: Main game mode controller
-- **CRF_GamemodeManager**: Central manager coordination
-- **CRF_SlottingManager**: Player slot assignment and management
-- **CRF_GearscriptManager**: Role-based equipment system
-- **CRF_RespawnManager**: Player respawn logic
-- **CRF_SafestartManager**: Mission preparation phase management
+- **COA_Gamemode**: Main game mode controller
+- **COA_GamemodeManager**: Central manager coordination
+- **COA_SlottingManager**: Player slot assignment and management
+- **COA_GearscriptManager**: Role-based equipment system
+- **COA_RespawnManager**: Player respawn logic
+- **COA_SafestartManager**: Mission preparation phase management
 - **CRF_LoggingManager**: Server event logging
-- **CRF_AdminMenuManager**: Administrative controls
+- **COA_AdminMenuManager**: Administrative controls
 
 ## Core Systems
 
@@ -59,7 +59,7 @@ The CRF framework is built around several key manager components that handle dif
 The framework operates through four distinct phases:
 
 ```cpp
-enum CRF_EGamemodeState
+enum COA_EGamemodeState
 {
     BRIEFING,    // Mission briefing and information display
     SLOTTING,    // Player role selection and team assignment
@@ -73,8 +73,8 @@ Each state transition triggers specific UI changes and system activations:
 ```cpp
 void AdvanceGamemodeState(bool overriden = false)
 {
-    if ((m_GamemodeState == CRF_EGamemodeState.AAR || 
-         m_GamemodeState == CRF_EGamemodeState.GAME) && !overriden)
+    if ((m_GamemodeState == COA_EGamemodeState.AAR || 
+         m_GamemodeState == COA_EGamemodeState.GAME) && !overriden)
         return;
 
     m_GamemodeState += 1;
@@ -105,13 +105,13 @@ The slotting system manages player assignment to roles and groups:
 The gearscript system provides role-based equipment loadouts:
 
 ```cpp
-class CRF_GearscriptManager : ScriptComponent
+class COA_GearscriptManager : ScriptComponent
 {
     void SetEntityGear(IEntity entity, ResourceName resourceNameToScan)
     {
         // Determine faction and role from entity
         FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
-        CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
+        CRF_EGearRole role = COA_RoleHelper.ResourceToRole(resourceNameToScan);
         
         // Apply appropriate gear configuration
         ApplyGearConfiguration(entity, factionKey, role);
@@ -228,7 +228,7 @@ CRF_RoleConfig {
 Equipment loadouts are configured per faction:
 
 ```cpp
-CRF_GearScriptContainer {
+COA_GearScriptContainer {
     m_rGearScript "{...}Configs/Gearscripts/..."
     m_bEnableGIRadios true
     m_bEnableLeadershipRadios true
@@ -245,10 +245,10 @@ CRF_GearScriptContainer {
 The framework uses Arma Reforger's replication system with `[RplProp()]` attributes:
 
 ```cpp
-class CRF_Gamemode : SCR_BaseGameMode
+class COA_Gamemode : SCR_BaseGameMode
 {
     [RplProp(onRplName: "OnGamemodeStateChanged")]
-    int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
+    int m_GamemodeState = COA_EGamemodeState.BRIEFING;
     
     [RplProp()]
     vector m_vGenericSpawn[4];  // Spectator spawn point
@@ -345,9 +345,9 @@ class MyCustomGamemodeManager: SCR_BaseGameModeComponent
 
 ```cpp
 // Get framework managers
-CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-CRF_SlottingManager slotting = CRF_SlottingManager.GetInstance();
-CRF_GearscriptManager gearscript = CRF_GearscriptManager.GetInstance();
+COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+COA_SlottingManager slotting = COA_SlottingManager.GetInstance();
+COA_GearscriptManager gearscript = COA_GearscriptManager.GetInstance();
 ```
 
 ### Player Management
@@ -355,30 +355,30 @@ CRF_GearscriptManager gearscript = CRF_GearscriptManager.GetInstance();
 ```cpp
 // Get player information
 int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
-Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+Faction playerFaction = COA_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 
 // Check player roles
-bool isSpectator = CRF_GamemodeManager.IsSpectator(entity);
-bool isModerator = CRF_GamemodeManager.GetInstance().IsPlayerModerator(playerId);
+bool isSpectator = COA_GamemodeManager.IsSpectator(entity);
+bool isModerator = COA_GamemodeManager.GetInstance().IsPlayerModerator(playerId);
 ```
 
 ### Equipment System
 
 ```cpp
 // Apply gear to entity
-CRF_GearscriptManager gearManager = CRF_GearscriptManager.GetInstance();
+COA_GearscriptManager gearManager = COA_GearscriptManager.GetInstance();
 gearManager.SetEntityGear(entity, prefabResourceName);
 
 // Get role information
-CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceName);
-CRF_RoleConfig roleConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+CRF_EGearRole role = COA_RoleHelper.ResourceToRole(resourceName);
+CRF_RoleConfig roleConfig = COA_GamemodeManager.RolesConfig().FindRoleConfig(role);
 ```
 
 ### UI Management
 
 ```cpp
 // Open specific menus
-CRF_PlayerControllerManager playerController = CRF_PlayerControllerManager.GetInstance();
+COA_PlayerControllerManager playerController = COA_PlayerControllerManager.GetInstance();
 playerController.OpenSlottingMenu();
 playerController.OpenBriefingMenu();
 

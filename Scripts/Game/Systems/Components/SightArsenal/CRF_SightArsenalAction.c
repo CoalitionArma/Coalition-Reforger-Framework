@@ -1,14 +1,14 @@
 class CRF_SightArsenalAction: ScriptedUserAction
 {
-	CRF_Gamemode m_Gamemode;
-	CRF_SafestartManager m_SafeStartManager;
+	COA_Gamemode m_Gamemode;
+	COA_SafestartManager m_SafeStartManager;
 	Faction m_PlayerFaction;
-	ref CRF_GearScriptContainer m_GearScriptContainer
+	ref COA_GearScriptContainer m_GearScriptContainer
 	
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
-		m_SafeStartManager = CRF_SafestartManager.GetInstance();
-		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_SafeStartManager = COA_SafestartManager.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
 	}
 	
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
@@ -25,7 +25,7 @@ class CRF_SightArsenalAction: ScriptedUserAction
 			m_GearScriptContainer = m_Gamemode.GetGearScriptSettings(m_PlayerFaction.GetFactionKey());
 		}
 		
-		if ((!m_GearScriptContainer.m_bEnableSightArsenal ||!m_SafeStartManager.GetSafestartStatus()) && CRF_PlayerController.IsGracePeriodOver())
+		if ((!m_GearScriptContainer.m_bEnableSightArsenal ||!m_SafeStartManager.GetSafestartStatus()) && COA_PlayerController.IsGracePeriodOver())
 			return false;
 		else	
 			return true;

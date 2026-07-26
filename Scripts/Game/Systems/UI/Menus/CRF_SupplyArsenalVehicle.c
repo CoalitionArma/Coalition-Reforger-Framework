@@ -103,9 +103,9 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			return;
 
 		ItemPreviewManagerEntity manager = world.GetItemPreviewManager();
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
 		RplId truckId;
-		if (rplManager && CRF_ReplicationHelper.GetRplId(m_Truck, truckId))
+		if (rplManager && COA_ReplicationHelper.GetRplId(m_Truck, truckId))
 			rplManager.UpdateSupplyArsneal(truckId);
 
 		foreach (IEntity truck: m_aTrucks)
@@ -126,7 +126,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			return null;
 
 		RplId truckId;
-		if (!CRF_ReplicationHelper.GetRplId(truck, truckId))
+		if (!COA_ReplicationHelper.GetRplId(truck, truckId))
 			return null;
 
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
@@ -144,7 +144,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		if (m_bSupplyEnabled)
 		{
 			CRF_VehicleGearscriptManager gearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
-			CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+			COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
 			if (!gearscriptManager || !rplManager)
 			{
 				item.RemoveFromHierarchy();
@@ -193,7 +193,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 	
 	void RequestCurrentVehicleSupply(RplId truckId, Widget item, int supplyNeeded)
 	{
-		IEntity truck = CRF_ReplicationHelper.GetEntityFromRplId(truckId);
+		IEntity truck = COA_ReplicationHelper.GetEntityFromRplId(truckId);
 		Vehicle vehicle = Vehicle.Cast(truck);
 		if (!vehicle || !item)
 			return;
@@ -309,7 +309,7 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 			foreach (IEntity supplyObject: supplyObjects)
 			{
 				RplId supplyObjectId;
-				if (!CRF_ReplicationHelper.GetRplId(supplyObject, supplyObjectId))
+				if (!COA_ReplicationHelper.GetRplId(supplyObject, supplyObjectId))
 					return;
 
 				supplyObjectRplId.Insert(supplyObjectId);
@@ -317,8 +317,8 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		}
 		
 		RplId rearmTruckId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
-		if (!rplManager || !CRF_ReplicationHelper.GetRplId(m_Truck, rearmTruckId))
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (!rplManager || !COA_ReplicationHelper.GetRplId(m_Truck, rearmTruckId))
 			return;
 
 		rplManager.RearmVehicle(itemButton.m_iEntityId, supplyObjectRplId, supplyToSubtract, rearmTruckId);

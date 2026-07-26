@@ -119,7 +119,7 @@ modded class SCR_SeizingComponent
 			// hintManager.ShowCustomHint(hintMessage, hintTitle, 10);
 		};
 		
-		CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager rm = COA_RespawnManager.GetInstance();
 		if (rm)
 			rm.RespawnAllSides();
 		

@@ -9,9 +9,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	protected ref array<Vehicle> m_aSpawnedVehicles = {};
 	protected ref array<IEntity> m_VehiclesInQueue = {};
 
-	// Shared resource caching helper (also used by CRF_GearscriptManager) instead of a second
+	// Shared resource caching helper (also used by COA_GearscriptManager) instead of a second
 	// hand-rolled map<ResourceName, Resource> - PERFORMANCE OPTIMIZATION
-	protected ref CRF_ResourceCache m_ResourceCache = new CRF_ResourceCache();
+	protected ref COA_ResourceCache m_ResourceCache = new COA_ResourceCache();
 
 	// These are pure facts about a static prefab resource (does it disable, how much ammo does its
 	// magazine hold, is its GL round HE) that never change mid-mission, so memoize them instead of
@@ -404,10 +404,10 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		}		
 		
 		// Respect the per-side enable/disable toggle on the gamemode prefab.
-		if (!CRF_Gamemode.GetInstance().IsVehicleGearscriptEnabled(faction.GetFactionKey()))
+		if (!COA_Gamemode.GetInstance().IsVehicleGearscriptEnabled(faction.GetFactionKey()))
 			return;
 
-		ref CRF_GearScriptContainer gsContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(faction.GetFactionKey());
+		ref COA_GearScriptContainer gsContainer = COA_Gamemode.GetInstance().GetGearScriptSettings(faction.GetFactionKey());
 		if (gsContainer.m_aSupplyTrucks.Contains(vehicle.GetPrefabData().GetPrefabName()))
 			SetTruckGear(vehicle, faction, gsContainer, true);
 		else
@@ -422,7 +422,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return an array of ints representing the supply values in the same order as the items put in
 	bool IsSupplyTruck(IEntity truck, string factionKey)
 	{
-		ref CRF_GearScriptContainer gsContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
+		ref COA_GearScriptContainer gsContainer = COA_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
 		return gsContainer.m_aSupplyTrucks.Contains(truck.GetPrefabData().GetPrefabName());
 	}
 	
@@ -437,13 +437,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] faction The faction object used to determine loadout
 	//! \param[in] gsContainer The gear script container holding loadout data
 	//! \param[in] isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
-	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
+	void SetTruckGear(IEntity truck, Faction faction, COA_GearScriptContainer gsContainer, bool isSupply)
 	{
 		// Check if truck still exists (prevents crash when vehicle is deleted)
 		if (!truck)
 			return;
 		
-		ref CRF_GearScriptConfig gearSriptConfig = CRF_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
+		ref COA_GearScriptConfig gearSriptConfig = COA_GearscriptManager.GetInstance().LoadGearScriptConfig(gsContainer.m_rGearScript);
 		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
@@ -466,21 +466,21 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
 					array<ResourceName> magazinesToAdd = {};
 					array<int> magazineCounts = {};
-					array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
+					array<ref COA_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
 					if (weapons.Count() == 0)
 						continue;
 					// Pre-allocate based on weapons and typical magazine counts
 					int estimatedMagazines = weapons.Count() * 2; // Estimate 2 magazine types per weapon
 					magazinesToAdd.Reserve(estimatedMagazines);
 					magazineCounts.Reserve(estimatedMagazines);
-					foreach (CRF_Weapon_Class weapon: weapons)
+					foreach (COA_Weapon_Class weapon: weapons)
 					{
 						if (!weapon)
 							continue;
 						
 						if (!weapon.m_MagazineArray)
 							continue;
-						foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+						foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 						{
 							if (!IsRegularMagazine(weapons, magazine.m_Magazine) && i == 1)
 							{
@@ -509,7 +509,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
 					array<ResourceName> magazinesToAdd = {};
 					array<int> magazineCounts = {};
-					CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
+					COA_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
 					if (!weapon)
 						continue;
 					// Pre-allocate for magazine arrays
@@ -526,7 +526,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 					}
 					else
 					{
-						foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+						foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 						{
 							if (!IsSpecRegularMagazine(weapon, magazine.m_Magazine))
 								continue;
@@ -554,7 +554,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				grenadesToAdd.Reserve(itemCount / 2); // Estimate half might be grenades
 				smokesToAdd.Reserve(itemCount / 2); // Estimate half might be smokes
 			}
-			foreach (CRF_Inventory_Item item: gearSriptConfig.m_DefaultInventoryItems)
+			foreach (COA_Inventory_Item item: gearSriptConfig.m_DefaultInventoryItems)
 			{
 				bool isGrenade;
 				bool isSmoke;
@@ -617,7 +617,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			m_mVehicleSupplyCosts.Set(truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
 			
 			// Send only this vehicle's data to clients via broadcast manager
-			CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+			COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 			if (broadcastManager)
 				broadcastManager.AddVehicleSupplyCost(truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
 		}
@@ -705,7 +705,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] truck The truck entity to configure
 	//! \param[in] invManager The truck’s inventory storage manager component
 	//! \param[in] gsContainer The gear script container holding vehicle loadout data
-	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer, string factionKey, bool isSupply)
+	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, COA_GearScriptContainer gsContainer, string factionKey, bool isSupply)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
 		int suppliesNeeded = 0;
@@ -926,7 +926,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] vehicleGearScript The vehicle gear script configuration
 	//! \param[in] gearContainer The gear script container holding overrides
 	//! \return The number of bullets to allocate
-	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
+	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, COA_GearScriptContainer gearContainer)
 	{
 		array<ref CRF_VehicleGearscriptOverride> gearOverides = {};
 		if (Vehicle.Cast(vehicle).m_aVehicleGearscriptOverrides.Count() > 0)
@@ -1096,29 +1096,29 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] index The weapon category index
 	//! \param[in] gearSriptConfig The gear script configuration to use
 	//! \return Array of weapon class references
-	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	array<ref COA_Weapon_Class> GetWeaponsByIndex(int index, COA_GearScriptConfig gearSriptConfig)
 	{
-		array<ref CRF_Weapon_Class> weapons = {};
+		array<ref COA_Weapon_Class> weapons = {};
 
 		switch(index)
 		{
 			case 0:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Rifles)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Rifles)
 				weapons.Insert(weapon);
 			break;
 			
 			case 1:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_RifleUGLs)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_RifleUGLs)
 				weapons.Insert(weapon);
 			break;
 			
 			case 2:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Carbines)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Carbines)
 				weapons.Insert(weapon);
 			break;
 			
 			case 3:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Pistols)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Pistols)
 				weapons.Insert(weapon);
 			break;
 				
@@ -1138,9 +1138,9 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] index The weapon type index
 	//! \param[in] gearSriptConfig The gear script configuration to use
 	//! \return A special weapon class reference
-	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	COA_Spec_Weapon_Class GetSpecWeaponByIndex(int index, COA_GearScriptConfig gearSriptConfig)
 	{
-		CRF_Spec_Weapon_Class weapon;
+		COA_Spec_Weapon_Class weapon;
 		
 		switch (index)
 		{
@@ -1226,7 +1226,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] weaponToCheck The special weapon to check against
 	//! \param[in] magazineToCheck The magazine resource name to check
 	//! \return true if the magazine is valid for the weapon, false otherwise
-	bool IsSpecRegularMagazine(CRF_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
+	bool IsSpecRegularMagazine(COA_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
 		Resource magazine = GetCachedResource(magazineToCheck);
@@ -1287,7 +1287,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] weaponsToCheck Array of weapons to check against
 	//! \param[in] magazineToCheck The magazine resource name to check
 	//! \return true if the magazine is compatible, false otherwise
-	bool IsRegularMagazine(array<ref CRF_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
+	bool IsRegularMagazine(array<ref COA_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
 		Resource magazine = GetCachedResource(magazineToCheck);
@@ -1308,7 +1308,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		if (!magazineWell)
 			return false;
 		
-		foreach (CRF_Weapon_Class weapon: weaponsToCheck)
+		foreach (COA_Weapon_Class weapon: weaponsToCheck)
 		{
 			Resource weaponLoaded = GetCachedResource(weapon.m_Weapon);
 			if (!weaponLoaded)
@@ -1349,7 +1349,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! Used as a bridge to spawn the vehicle and register it in this manager from the vehicle spawner
 	//! \param[in] spawner the vehicle spawner that spawned this vehicle
 	//! \return fuckall
-	void SpawnVehicle(CRF_VehicleSpawner spawner)
+	void SpawnVehicle(COA_VehicleSpawner spawner)
 	{
 		if (!spawner.m_sFactionKey)
 		{
@@ -1378,7 +1378,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \param[in] vehicleEntity the newly spawned vehicle to register in the spawner
 	//! \param[in] spawner the vehicle spawner we are registering this vehicle in
 	//! \return an array of ints representing the supply values in the same order as the items put in
-	void SetVehicle(IEntity vehicleEntity, CRF_VehicleSpawner spawner)
+	void SetVehicle(IEntity vehicleEntity, COA_VehicleSpawner spawner)
 	{
 		spawner.m_eVehicle = vehicleEntity;
 		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);

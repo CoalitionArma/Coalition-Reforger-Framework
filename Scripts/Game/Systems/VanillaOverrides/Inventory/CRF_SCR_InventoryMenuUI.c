@@ -1,7 +1,7 @@
 modded class SCR_InventoryMenuUI
 {
-	CRF_Gamemode m_Gamemode;
-	CRF_SafestartManager m_SafeStartManager;
+	COA_Gamemode m_Gamemode;
+	COA_SafestartManager m_SafeStartManager;
 
 	override void OnItemAddedListener( IEntity item, notnull BaseInventoryStorageComponent storage )
 	{
@@ -10,8 +10,8 @@ modded class SCR_InventoryMenuUI
 		// If the item is from an arsenal
 		if (MoveItemToStorageSlot_VirtualArsenal()) {
 			// Grab item and player information
-			CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
-			CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
+			COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
+			COA_SlottingManager sm = COA_SlottingManager.GetInstance();
 
 			if (!sm || !rplManager)
 				return;
@@ -22,7 +22,7 @@ modded class SCR_InventoryMenuUI
 			RplComponent rplComponent = RplComponent.Cast(m_Player.FindComponent(RplComponent));
 			if (!rplComponent)
 				return;
-			CRF_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
+			COA_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
 			
 			// Log to admin menu
 			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false);
@@ -34,8 +34,8 @@ modded class SCR_InventoryMenuUI
 	{
 		super.OnMenuOpen();
 		SCR_ButtonComponent.Cast(GetRootWidget().FindWidget("MiniArsenal").FindHandler(SCR_ButtonComponent)).m_OnClicked.Insert(OpenMiniArsenal);
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_SafeStartManager = CRF_SafestartManager.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
+		m_SafeStartManager = COA_SafestartManager.GetInstance();
 		
 		if (!m_Gamemode || !m_SafeStartManager)
 			return;
@@ -44,11 +44,11 @@ modded class SCR_InventoryMenuUI
 		if (!playerFaction)
 			return;
 		
-		CRF_GearScriptContainer container = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
+		COA_GearScriptContainer container = m_Gamemode.GetGearScriptSettings(playerFaction.GetFactionKey());
 		if (!container)
 			return;
 		
-		if ((!container.m_bEnableMiniArsenal || !m_SafeStartManager.GetSafestartStatus()) && CRF_PlayerController.IsGracePeriodOver())
+		if ((!container.m_bEnableMiniArsenal || !m_SafeStartManager.GetSafestartStatus()) && COA_PlayerController.IsGracePeriodOver())
 			GetRootWidget().FindWidget("MiniArsenal").SetVisible(false);
 			
 		

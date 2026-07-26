@@ -3,7 +3,7 @@ SCR_MapEntity SCR_MapEntity1 {
  "Map Geometry Data" "{AD0D57A138A115BA}Missions/GoldenGate_GM.topo"
  "Satellite background image" "{94393EADA8E6B9D7}Missions/gtt_satmapGGSEA LION2.edds"
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Cloudy"
@@ -238,7 +238,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_bEnableClothesSwapping 1
  m_bDisableChat 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{381A393C34955B8E}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_CrudeBoys_CIVLBLUFORmixed.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -248,7 +248,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{070C13F7435740A9}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_CrudeBoys_OPFOR_Invasion.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -256,7 +256,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -264,7 +264,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -331,7 +331,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
-$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
  {
   coords 4080.289 69.218 752.62
   m_sCallsignOfGroupToSpawn "Cell 1"

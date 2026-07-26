@@ -242,7 +242,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	void CheckAddInitialMarkers()
 	{
 		// Create markers on each bomb site
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager) 
 			return;
 		
@@ -273,7 +273,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void StartGame()
 	{
-		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
 			return;
 		
 		int zoneIndex = ((m_aZonesStatus.Count()-1)/2);
@@ -306,7 +306,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateZones()
 	{
-		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
+		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
 		
 		int zonesCapturedBlufor;
@@ -520,7 +520,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
 		
 		// Respawn all players when zone is captured
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (respawnManager)
 			respawnManager.RespawnAllSides();
 		
@@ -759,10 +759,10 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateClients()
 	{
-		CRF_PlayerScriptedMarkerManager instance = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager instance = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!instance)
 		{
-			Print("[CRF_Frontline] WARNING: CRF_PlayerScriptedMarkerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
+			Print("[CRF_Frontline] WARNING: COA_PlayerScriptedMarkerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
 			return;
 		}
 		
@@ -772,10 +772,10 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
 	{
-		CRF_PlayerScriptedMarkerManager instance = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager instance = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!instance)
 		{
-			Print("[CRF_Frontline] WARNING: CRF_PlayerScriptedMarkerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
+			Print("[CRF_Frontline] WARNING: COA_PlayerScriptedMarkerManager instance not found, skipping UpdateMapMarkers", LogLevel.WARNING);
 			return;
 		}
 		

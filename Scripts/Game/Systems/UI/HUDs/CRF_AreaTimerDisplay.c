@@ -1,7 +1,7 @@
 // CRF_AreaTimerDisplay.c
 //
 // HUD display for the area majority timer. Reads state replicated by
-// CRF_RplBroadcastManager (set each server tick via BroadcastAreaTimerUpdate)
+// COA_RplBroadcastManager (set each server tick via BroadcastAreaTimerUpdate)
 // and renders a top-centre panel showing:
 //   - Zone label  ("THE HILL")
 //   - Win countdown (MM:SS – shifts yellow then red as it approaches zero)
@@ -77,17 +77,17 @@ class CRF_AreaTimerDisplay : SCR_InfoDisplayExtended
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateDisplay()
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		// --- Visibility guards ---
 		if (!bm
-			|| !CRF_Gamemode.GetInstance()
-			|| CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME
-			|| !CRF_SafestartManager.GetInstance()
-			|| CRF_SafestartManager.GetInstance().GetSafestartStatus()
-			|| CRF_EntityHelper.IsSpectator()
-			|| !CRF_PlayerControllerManager.GetInstance()
-			|| !CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
+			|| !COA_Gamemode.GetInstance()
+			|| COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME
+			|| !COA_SafestartManager.GetInstance()
+			|| COA_SafestartManager.GetInstance().GetSafestartStatus()
+			|| COA_EntityHelper.IsSpectator()
+			|| !COA_PlayerControllerManager.GetInstance()
+			|| !COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			SetPanelVisible(false);
 			return;

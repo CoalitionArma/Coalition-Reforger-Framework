@@ -17,11 +17,11 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 14804.541 59.344 2398.944
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_GamemodeManager "{652A3313EC014E7F}" {
+  COA_GamemodeManager "{652A3313EC014E7F}" {
    components {
-    CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
+    COA_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
    }
@@ -395,7 +395,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{C4D7EBE43E957665}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_USSpecOps_tanaka.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
@@ -404,7 +404,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
   m_bEnableMagnifiedOptics 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{5517B3F933C158EF}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_EuroInsurgents.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -413,7 +413,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
   m_bEnableSightArsenal 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -421,7 +421,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_HVI.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0

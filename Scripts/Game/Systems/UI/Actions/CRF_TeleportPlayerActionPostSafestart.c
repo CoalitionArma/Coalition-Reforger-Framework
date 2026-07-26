@@ -66,7 +66,7 @@ class CRF_TeleportPlayerActionPostSafestart : ScriptedUserAction
 		if (!m_sGearscriptToSet.IsEmpty())
 		{
 			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-			CRF_PlayerRplToAuthorityManager.GetInstance().ResetGear(localPlayerId, m_sGearscriptToSet, false);
+			COA_PlayerRplToAuthorityManager.GetInstance().ResetGear(localPlayerId, m_sGearscriptToSet, false);
 		}
 	}
 	
@@ -89,7 +89,7 @@ class CRF_TeleportPlayerActionPostSafestart : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownScript(IEntity user)
 	{
-		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		if (!COA_SafestartManager.GetInstance().GetSafestartStatus())
 			return true;
 		
 		else

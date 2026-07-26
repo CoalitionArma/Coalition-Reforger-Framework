@@ -6,9 +6,9 @@ modded enum ChimeraMenuPreset
 class CRF_SupplyArsenal: ChimeraMenuBase
 {
 	Widget m_wRoot;
-	CRF_GearScriptContainer m_GearScriptContainer;
+	COA_GearScriptContainer m_GearScriptContainer;
 	CRF_SupplyArsenalComponent m_SupplyArsnealComponent;
-	ref CRF_GearScriptConfig m_GearScriptConfig;
+	ref COA_GearScriptConfig m_GearScriptConfig;
 	bool m_bSupplyEnabled;
 	
 	VerticalLayoutWidget m_Notifications;
@@ -37,9 +37,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		m_InputManager = GetGame().GetInputManager();
 		
 		string factionKey = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
-		m_GearScriptContainer = CRF_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
-		ResourceName gearResource = CRF_Gamemode.GetInstance().GetGearScriptResource(factionKey);
-		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
+		m_GearScriptContainer = COA_Gamemode.GetInstance().GetGearScriptSettings(factionKey);
+		ResourceName gearResource = COA_Gamemode.GetInstance().GetGearScriptResource(factionKey);
+		m_GearScriptConfig = COA_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("CategoryButtons"));
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
 		m_Notifications = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("Notifications"));
@@ -60,8 +60,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 
 		m_bSupplyEnabled = SCR_ResourceSystemHelper.IsGlobalResourceTypeEnabled(EResourceType.SUPPLIES) && m_SupplyArsnealComponent.m_bSupplyEnabled;
 		RplId arsenalId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
-		if (rplManager && CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (rplManager && COA_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
 			rplManager.UpdateSupplyArsneal(arsenalId);
 	}
 	
@@ -111,7 +111,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			//Regular Weapons
 			if (i < 4 || i == 11)
 			{
-				array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, m_GearScriptConfig);
+				array<ref COA_Weapon_Class> weapons = GetWeaponsByIndex(i, m_GearScriptConfig);
 				if (weapons.Count() == 0)
 					continue;
 				Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
@@ -121,7 +121,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
 				button.m_OnClicked.Insert(SelectCategory);
 				
-				foreach (CRF_Weapon_Class weapon: weapons)
+				foreach (COA_Weapon_Class weapon: weapons)
 				{
 					if (!weapon)
 						continue;
@@ -130,7 +130,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 						continue;
 					if (weapon.m_MagazineArray.Count() == 0)
 						continue;
-					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+					foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 					{
 						button.m_Magazines.Insert(magazine);
 					}
@@ -138,7 +138,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			}
 			else
 			{
-				CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, m_GearScriptConfig);
+				COA_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, m_GearScriptConfig);
 				if (!weapon)
 					continue;
 				Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
@@ -158,7 +158,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		array<ResourceName> radioItems = {};
 		array<ResourceName> medicalItems = {};
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_DefaultInventoryItems)
+		foreach (COA_Inventory_Item item: m_GearScriptConfig.m_DefaultInventoryItems)
 		{
 			if (miscItems.Contains(item.m_sItemPrefab) || explosiveItems.Contains(item.m_sItemPrefab) || grenadeItems.Contains(item.m_sItemPrefab) || 
 				radioItems.Contains(item.m_sItemPrefab) || medicalItems.Contains(item.m_sItemPrefab))
@@ -176,11 +176,11 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		
 		//Just used to check for duplicates
 		array<ResourceName> overrideWeaponsResources = {};
-		array<ref CRF_Weapon_Class> overrideWeapons = {};
+		array<ref COA_Weapon_Class> overrideWeapons = {};
 		
-		foreach (CRF_Role_Custom_Gear customGear: m_GearScriptConfig.m_RolesToSetCustomSettings)
+		foreach (COA_Role_Custom_Gear customGear: m_GearScriptConfig.m_RolesToSetCustomSettings)
 		{
-			foreach (CRF_Weapon_Class primary: customGear.m_PrimaryWeapon)
+			foreach (COA_Weapon_Class primary: customGear.m_PrimaryWeapon)
 			{
 				if (overrideWeaponsResources.Contains(primary.m_Weapon))
 					continue;
@@ -188,7 +188,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				overrideWeaponsResources.Insert(primary.m_Weapon);
 			}
 			
-			foreach (CRF_Weapon_Class secondary: customGear.m_SecondaryWeapon)
+			foreach (COA_Weapon_Class secondary: customGear.m_SecondaryWeapon)
 			{
 				if (overrideWeaponsResources.Contains(secondary.m_Weapon))
 					continue;
@@ -196,7 +196,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				overrideWeaponsResources.Insert(secondary.m_Weapon);
 			}
 			
-			foreach (CRF_Weapon_Class pistol: customGear.m_Pistols)
+			foreach (COA_Weapon_Class pistol: customGear.m_Pistols)
 			{
 				if (overrideWeaponsResources.Contains(pistol.m_Weapon))
 					continue;
@@ -204,7 +204,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				overrideWeaponsResources.Insert(pistol.m_Weapon);
 			}
 			
-			foreach (CRF_Inventory_Item item: customGear.m_AdditionalInventoryItems)
+			foreach (COA_Inventory_Item item: customGear.m_AdditionalInventoryItems)
 			{
 				if (miscItems.Contains(item.m_sItemPrefab) || explosiveItems.Contains(item.m_sItemPrefab) || grenadeItems.Contains(item.m_sItemPrefab) || 
 					radioItems.Contains(item.m_sItemPrefab) || medicalItems.Contains(item.m_sItemPrefab))
@@ -234,13 +234,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			}	
 		}
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_InfantryMedicalItems)
+		foreach (COA_Inventory_Item item: m_GearScriptConfig.m_InfantryMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
 		}
 
 		
-		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_MedicMedicalItems)
+		foreach (COA_Inventory_Item item: m_GearScriptConfig.m_MedicMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
 		}
@@ -273,10 +273,10 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
 		button.m_OnClicked.Insert(SelectCategory);
 		
-		foreach (CRF_Weapon_Class weapon: overrideWeapons)
+		foreach (COA_Weapon_Class weapon: overrideWeapons)
 		{
 			button.m_Weapons.Insert(weapon);
-			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+			foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 			{
 				button.m_Magazines.Insert(magazine);
 			}
@@ -294,7 +294,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			
 		foreach (ResourceName item: items)
 		{
-			CRF_Inventory_Item itemObject = new CRF_Inventory_Item();
+			COA_Inventory_Item itemObject = new COA_Inventory_Item();
 			itemObject.m_sItemPrefab = item;
 			button.m_Items.Insert(itemObject);
 		}
@@ -333,29 +333,29 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		return 0;
 	}
 	
-	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	array<ref COA_Weapon_Class> GetWeaponsByIndex(int index, COA_GearScriptConfig gearSriptConfig)
 	{
-		array<ref CRF_Weapon_Class> weapons = {};
+		array<ref COA_Weapon_Class> weapons = {};
 		
 		switch(index)
 		{
 			case 0:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Rifles)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Rifles)
 				weapons.Insert(weapon);
 			break;
 
 			case 1:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_RifleUGLs)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_RifleUGLs)
 				weapons.Insert(weapon);
 			break;
 
 			case 2:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Carbines)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Carbines)
 				weapons.Insert(weapon);
 			break;
 
 			case 3:
-			foreach (CRF_Weapon_Class weapon: gearSriptConfig.m_Pistols)
+			foreach (COA_Weapon_Class weapon: gearSriptConfig.m_Pistols)
 				weapons.Insert(weapon);
 			break;
 
@@ -367,9 +367,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		return weapons;
 	}
 	
-	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	COA_Spec_Weapon_Class GetSpecWeaponByIndex(int index, COA_GearScriptConfig gearSriptConfig)
 	{
-		CRF_Spec_Weapon_Class weapon;
+		COA_Spec_Weapon_Class weapon;
 
 		switch (index)
 		{
@@ -452,25 +452,25 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			return;
 		
 		array<ResourceName> itemsToBeAdded = {};
-		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
+		foreach (COA_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
 			itemsToBeAdded.Insert(weapon.m_Weapon);
 			
-			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+			foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 			{
 				itemsToBeAdded.Insert(magazine.m_Magazine);
 			}
 		}
-		foreach (CRF_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
+		foreach (COA_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
 		{
 			itemsToBeAdded.Insert(specWeapon.m_Weapon);
 			
-			foreach (CRF_Magazine_Class magazine: specWeapon.m_MagazineArray)
+			foreach (COA_Magazine_Class magazine: specWeapon.m_MagazineArray)
 			{
 				itemsToBeAdded.Insert(magazine.m_Magazine);
 			}
 		}
-		foreach (CRF_Inventory_Item item: miniArsnealCategory.m_Items)
+		foreach (COA_Inventory_Item item: miniArsnealCategory.m_Items)
 		{
 			itemsToBeAdded.Insert(item.m_sItemPrefab);
 		}
@@ -482,32 +482,32 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			m_SupplyCosts.Insert(itemsToBeAdded[i], supplyCosts[i]);
 		}
 		
-		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
+		foreach (COA_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
 			DrawWeaponItem(weapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			
-			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+			foreach (COA_Magazine_Class magazine: weapon.m_MagazineArray)
 			{
 				DrawMagazineItem(magazine, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			}
 		}
-		foreach (CRF_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
+		foreach (COA_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
 		{
 			DrawSpecWeaponItem(specWeapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			
-			foreach (CRF_Magazine_Class magazine: specWeapon.m_MagazineArray)
+			foreach (COA_Magazine_Class magazine: specWeapon.m_MagazineArray)
 			{
 				DrawMagazineItem(magazine, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 			}
 		}
-		foreach (CRF_Inventory_Item item: miniArsnealCategory.m_Items)
+		foreach (COA_Inventory_Item item: miniArsnealCategory.m_Items)
 		{
 			DrawEquipmentItem(item, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
 		}
 		return;
 	}
 
-	CRF_MiniArsenalItemButton DrawWeaponItem(CRF_Weapon_Class weapon, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
+	CRF_MiniArsenalItemButton DrawWeaponItem(COA_Weapon_Class weapon, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
 	{
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
@@ -553,7 +553,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		return itemButton;
 	}
 	
-	CRF_MiniArsenalItemButton DrawMagazineItem(CRF_Magazine_Class magazine, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
+	CRF_MiniArsenalItemButton DrawMagazineItem(COA_Magazine_Class magazine, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
 	{
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
@@ -599,7 +599,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		return itemButton;
 	}
 	
-	CRF_MiniArsenalItemButton DrawEquipmentItem(CRF_Inventory_Item itemObject, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
+	CRF_MiniArsenalItemButton DrawEquipmentItem(COA_Inventory_Item itemObject, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
 	{
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
@@ -645,7 +645,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		return itemButton;
 	}
 	
-	CRF_MiniArsenalItemButton DrawSpecWeaponItem(CRF_Spec_Weapon_Class weapon, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
+	CRF_MiniArsenalItemButton DrawSpecWeaponItem(COA_Spec_Weapon_Class weapon, ItemPreviewManagerEntity manager, CRF_MiniArsenalCategoryButton miniArsnealCategory)
 	{
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
@@ -775,7 +775,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			foreach (IEntity supplyObject: supplyObjects)
 			{
 				RplId supplyObjectId;
-				if (!CRF_ReplicationHelper.GetRplId(supplyObject, supplyObjectId))
+				if (!COA_ReplicationHelper.GetRplId(supplyObject, supplyObjectId))
 					return;
 
 				supplyObjectRplId.Insert(supplyObjectId);
@@ -798,8 +798,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 
 		RplId truckId;
 		RplId arsenalId;
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
-		if (!rplManager || !CRF_ReplicationHelper.GetRplId(truck, truckId) || !CRF_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (!rplManager || !COA_ReplicationHelper.GetRplId(truck, truckId) || !COA_ReplicationHelper.GetRplId(m_ArsenalPoint, arsenalId))
 			return;
 
 		rplManager.AddItemToTruck(truckId, itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, arsenalId);

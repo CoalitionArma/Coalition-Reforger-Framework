@@ -1,23 +1,23 @@
 //------------------------------------------------------------------------------------------------
 // State data for CRF Respawn Manager
-class CRF_RespawnManagerStateData : PersistentState
+class COA_RespawnManagerStateData : PersistentState
 {
 }
 
 //------------------------------------------------------------------------------------------------
 // Serializer for CRF Respawn Manager - preserves respawn tickets and wave respawn state
-class CRF_RespawnManagerSerializer : ScriptedStateSerializer
+class COA_RespawnManagerSerializer : ScriptedStateSerializer
 {
 	//------------------------------------------------------------------------------------------------
 	override static typename GetTargetType()
 	{
-		return CRF_RespawnManagerStateData;
+		return COA_RespawnManagerStateData;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return ESerializeResult.DEFAULT;
 
@@ -34,7 +34,7 @@ class CRF_RespawnManagerSerializer : ScriptedStateSerializer
 		context.WriteValue("waveRespawnEnabled", respawnManager.m_bCurrentWaveRespawn);
 		context.WriteValue("respawnTime", respawnManager.m_iCurrentTimeToRespawn);
 
-		Print("[CRF_RespawnManagerSerializer] Serialized respawn state", LogLevel.NORMAL);
+		Print("[COA_RespawnManagerSerializer] Serialized respawn state", LogLevel.NORMAL);
 		return ESerializeResult.OK;
 	}
 
@@ -45,7 +45,7 @@ class CRF_RespawnManagerSerializer : ScriptedStateSerializer
 		if (!context.ReadValue("version", version))
 			return false;
 
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return false;
 
@@ -73,7 +73,7 @@ class CRF_RespawnManagerSerializer : ScriptedStateSerializer
 		if (context.ReadValue("respawnTime", respawnTime))
 			respawnManager.m_iCurrentTimeToRespawn = respawnTime;
 
-		Print("[CRF_RespawnManagerSerializer] Restored respawn state", LogLevel.NORMAL);
+		Print("[COA_RespawnManagerSerializer] Restored respawn state", LogLevel.NORMAL);
 		return true;
 	}
 }

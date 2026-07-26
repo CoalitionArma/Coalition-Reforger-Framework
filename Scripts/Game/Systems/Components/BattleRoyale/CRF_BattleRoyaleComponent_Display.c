@@ -106,7 +106,7 @@ class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Check HUD visibility
-		CRF_PlayerControllerManager pcManager = CRF_PlayerControllerManager.GetInstance();
+		COA_PlayerControllerManager pcManager = COA_PlayerControllerManager.GetInstance();
 		if (pcManager && !pcManager.m_bHUDVisible)
 		{
 			HideDisplay();

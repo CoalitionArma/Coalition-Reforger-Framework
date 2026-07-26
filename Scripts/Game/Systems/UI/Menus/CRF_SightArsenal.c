@@ -8,12 +8,12 @@ class CRF_SightArsenal: ChimeraMenuBase
 	InputManager m_InputManager;
 	bool m_bFocused = true;
 	
-	CRF_Gamemode m_Gamemode;
-	CRF_GearScriptContainer m_GearScriptContainer;
-	ref CRF_GearScriptConfig m_GearScriptConfig;
-	ref CRF_SightArsenalConfig m_SightArsenalConfig;
-	ref CRF_SightArsenalConfig m_MagnifiedSightArsenalConfig;
-	CRF_SafestartManager m_SafeStart;
+	COA_Gamemode m_Gamemode;
+	COA_GearScriptContainer m_GearScriptContainer;
+	ref COA_GearScriptConfig m_GearScriptConfig;
+	ref COA_SightArsenalConfig m_SightArsenalConfig;
+	ref COA_SightArsenalConfig m_MagnifiedSightArsenalConfig;
+	COA_SafestartManager m_SafeStart;
 	
 	Widget m_wRoot;
 	VerticalLayoutWidget m_SightSlots;
@@ -27,14 +27,14 @@ class CRF_SightArsenal: ChimeraMenuBase
 	override void OnMenuOpen()
 	{
 		m_InputManager = GetGame().GetInputManager();
-		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
 		m_GearScriptContainer = m_Gamemode.GetGearScriptSettings(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
-		m_SafeStart = CRF_SafestartManager.GetInstance();
+		m_SafeStart = COA_SafestartManager.GetInstance();
 		ResourceName gearResource = m_Gamemode.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
-		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
-		m_SightArsenalConfig = CRF_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+		m_GearScriptConfig = COA_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
+		m_SightArsenalConfig = COA_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 		BaseContainerTools.LoadContainer(m_GearScriptContainer.m_rSightArsenal).GetResource().ToBaseContainer()));
-		m_MagnifiedSightArsenalConfig = CRF_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+		m_MagnifiedSightArsenalConfig = COA_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 		BaseContainerTools.LoadContainer(m_GearScriptContainer.m_rMagnifiedSightArsenal).GetResource().ToBaseContainer()));
 		m_wRoot = GetRootWidget();
 		m_wSightFrame = m_wRoot.FindAnyWidget("SightFrame");
@@ -45,7 +45,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
-		if (!m_SafeStart.GetSafestartStatus() && CRF_PlayerController.IsGracePeriodOver())
+		if (!m_SafeStart.GetSafestartStatus() && COA_PlayerController.IsGracePeriodOver())
 			Close();
 		if (!m_SightSlot)
 		{
@@ -127,19 +127,19 @@ class CRF_SightArsenal: ChimeraMenuBase
 	//Gets all the default attachments on the prefab itself and assigned in the GS.
 	array<ResourceName> GetDefaultAttachments()
 	{
-		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
-		CRF_RoleConfig rolesConfig = CRF_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
+		COA_EGearRole role = COA_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
+		CRF_RoleConfig rolesConfig = COA_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		array<ResourceName> attachmentsToAdd = {};
 		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterControllerComponent));
 		string currentWeapon = charController.GetWeaponManagerComponent().GetCurrentWeapon().GetOwner().GetPrefabData().GetPrefabName();
-		foreach (CRF_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
+		foreach (COA_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
 		{
 			switch (weaponType)
 			{
-				case CRF_EGearscriptWeapons.RIFLE:
+				case COA_EGearscriptWeapons.RIFLE:
 					if(m_GearScriptConfig.m_Rifles && !m_GearScriptConfig.m_Rifles.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Rifles)
+						foreach (COA_Weapon_Class rifle: m_GearScriptConfig.m_Rifles)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -161,10 +161,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 				
-				case CRF_EGearscriptWeapons.RIFLEUGL:
+				case COA_EGearscriptWeapons.RIFLEUGL:
 					if(m_GearScriptConfig.m_RifleUGLs && !m_GearScriptConfig.m_RifleUGLs.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_RifleUGLs)
+						foreach (COA_Weapon_Class rifle: m_GearScriptConfig.m_RifleUGLs)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -185,10 +185,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 					};
 					break;
 				
-				case CRF_EGearscriptWeapons.CARBINE:
+				case COA_EGearscriptWeapons.CARBINE:
 					if(m_GearScriptConfig.m_Carbines && !m_GearScriptConfig.m_Carbines.IsEmpty())
 					{
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Carbines)
+						foreach (COA_Weapon_Class rifle: m_GearScriptConfig.m_Carbines)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -209,11 +209,11 @@ class CRF_SightArsenal: ChimeraMenuBase
 					};
 					break;
 
-				case CRF_EGearscriptWeapons.PISTOL:
+				case COA_EGearscriptWeapons.PISTOL:
 					if(m_GearScriptConfig.m_Pistols && !m_GearScriptConfig.m_Pistols.IsEmpty())
 					{
 						
-						foreach (CRF_Weapon_Class rifle: m_GearScriptConfig.m_Pistols)
+						foreach (COA_Weapon_Class rifle: m_GearScriptConfig.m_Pistols)
 						{
 							if (currentWeapon != rifle.m_Weapon)
 								continue;
@@ -234,7 +234,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					};
 					break;
 
-				case CRF_EGearscriptWeapons.SNIPER:
+				case COA_EGearscriptWeapons.SNIPER:
 					if(m_GearScriptConfig.m_SNIPER)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_SNIPER.m_Weapon)
@@ -255,7 +255,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 
-				case CRF_EGearscriptWeapons.AR:
+				case COA_EGearscriptWeapons.AR:
 					if(m_GearScriptConfig.m_AR)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_AR.m_Weapon)
@@ -276,7 +276,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 
-				case CRF_EGearscriptWeapons.MMG:
+				case COA_EGearscriptWeapons.MMG:
 					if(m_GearScriptConfig.m_MMG)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_MMG.m_Weapon)
@@ -297,7 +297,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 
-				case CRF_EGearscriptWeapons.AT:
+				case COA_EGearscriptWeapons.AT:
 					if(m_GearScriptConfig.m_AT)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_AT.m_Weapon)
@@ -318,7 +318,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 	
-				case CRF_EGearscriptWeapons.MAT:
+				case COA_EGearscriptWeapons.MAT:
 					if(m_GearScriptConfig.m_MAT)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_MAT.m_Weapon)
@@ -339,7 +339,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 	
-				case CRF_EGearscriptWeapons.HAT:
+				case COA_EGearscriptWeapons.HAT:
 					if(m_GearScriptConfig.m_HAT)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_HAT.m_Weapon)
@@ -360,7 +360,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 
-				case CRF_EGearscriptWeapons.AA:
+				case COA_EGearscriptWeapons.AA:
 					if(m_GearScriptConfig.m_AA)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_AA.m_Weapon)
@@ -381,7 +381,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 					}
 					break;
 
-				case CRF_EGearscriptWeapons.HMG:
+				case COA_EGearscriptWeapons.HMG:
 					if(m_GearScriptConfig.m_HMG)
 					{
 						if (currentWeapon != m_GearScriptConfig.m_HMG.m_Weapon)
@@ -544,7 +544,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	void SelectSight(SCR_ButtonBaseComponent button)
 	{
 		CRF_SightArsenalItemButton itemButton = CRF_SightArsenalItemButton.Cast(button);
-		CRF_PlayerRplToAuthorityManager.GetInstance().SightArsenalRequestNewSight(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_sType);
+		COA_PlayerRplToAuthorityManager.GetInstance().SightArsenalRequestNewSight(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_sType);
 	}
 	
 	override void OnMenuFocusLost()

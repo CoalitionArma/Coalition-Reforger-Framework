@@ -27,8 +27,8 @@ class CRF_RadioExtractionDefuseAction : ScriptedUserAction
 			return;
 
 		// Stop the defusing sound since the action completed, then defuse the bomb
-		CRF_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sDefuseSoundEvent);
-		CRF_PlayerRplToAuthorityManager.GetInstance().RequestRadioExtractionSetPlanted(false);
+		COA_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sDefuseSoundEvent);
+		COA_PlayerRplToAuthorityManager.GetInstance().RequestRadioExtractionSetPlanted(false);
 
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
@@ -39,7 +39,7 @@ class CRF_RadioExtractionDefuseAction : ScriptedUserAction
 		super.OnActionStart(pUserEntity);
 
 		if (m_RadioExtraction && GetOwner())
-			CRF_PlayerRplToAuthorityManager.GetInstance().RequestPlayPositionalSound(m_RadioExtraction.m_rDefuseSoundResource, m_RadioExtraction.m_sDefuseSoundEvent, GetOwner().GetOrigin());
+			COA_PlayerRplToAuthorityManager.GetInstance().RequestPlayPositionalSound(m_RadioExtraction.m_rDefuseSoundResource, m_RadioExtraction.m_sDefuseSoundEvent, GetOwner().GetOrigin());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ class CRF_RadioExtractionDefuseAction : ScriptedUserAction
 		super.OnActionCanceled(pOwnerEntity, pUserEntity);
 
 		if (m_RadioExtraction)
-			CRF_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sDefuseSoundEvent);
+			COA_PlayerRplToAuthorityManager.GetInstance().RequestStopPositionalSound(m_RadioExtraction.m_sDefuseSoundEvent);
 	}
 
 	//------------------------------------------------------------------------------------------------

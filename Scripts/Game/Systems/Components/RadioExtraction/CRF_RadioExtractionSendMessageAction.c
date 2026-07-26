@@ -27,7 +27,7 @@ class CRF_RadioExtractionSendMessageAction : ScriptedUserAction
 		if (!character)
 			return;
 
-		CRF_PlayerRplToAuthorityManager.GetInstance().RequestRadioExtractionSendMessage();
+		COA_PlayerRplToAuthorityManager.GetInstance().RequestRadioExtractionSendMessage();
 
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

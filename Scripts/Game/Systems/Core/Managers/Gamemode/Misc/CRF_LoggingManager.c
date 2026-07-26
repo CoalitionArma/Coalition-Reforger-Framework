@@ -51,7 +51,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private PlayerManager m_PlayerManager;
 	private FactionManager m_FM;
 	private SCR_FactionManager m_SFM;
-	private CRF_Gamemode m_GM;
+	private COA_Gamemode m_GM;
 	
 	// Cached references for performance
 	private ArmaReforgerScripted m_Game;
@@ -127,10 +127,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		m_GM = CRF_Gamemode.GetInstance();
+		m_GM = COA_Gamemode.GetInstance();
 		if (!m_GM)
 		{
-			Print("[CRF_LoggingManager] Warning: Could not get CRF_Gamemode instance during initialization", LogLevel.WARNING);
+			Print("[CRF_LoggingManager] Warning: Could not get COA_Gamemode instance during initialization", LogLevel.WARNING);
 			// Don't return here as some functionality might still work without the gamemode
 		}
 		
@@ -175,7 +175,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		LogMissionEvent("beginning");
 		
 		// Register for gamemode state changes
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (gamemode)
 			gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
 	}
@@ -203,9 +203,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		// Log late-connect if player connects during safestart (game phase, before safestart ends)
 		// These players are eligible for AAR. Players who connect after safestart ends are not.
-		if (m_GM && m_GM.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (m_GM && m_GM.m_GamemodeState == COA_EGamemodeState.GAME)
 		{
-			CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
+			COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
 			if (safestart && safestart.GetSafestartStatus())
 			{
 				if (m_LogFileHandle)
@@ -244,23 +244,23 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		UpdatePlayerCount();
 		
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (!gamemode)
 			return;
 		
 		switch (gamemode.m_GamemodeState)
 		{
-			case CRF_EGamemodeState.SLOTTING:
+			case COA_EGamemodeState.SLOTTING:
 			{
 				LogMissionEvent("slotting");
 				break;
 			}
-			case CRF_EGamemodeState.GAME:
+			case COA_EGamemodeState.GAME:
 			{
 				LogMissionEvent("safestart");
 				break;
 			}
-			case CRF_EGamemodeState.AAR:
+			case COA_EGamemodeState.AAR:
 			{
 				// Log the VAAR file path before the ended event so the bot can associate it with this mission
 				CRF_VAAR_GamemodeComponent vaarComponent = CRF_VAAR_GamemodeComponent.GetInstance();
@@ -465,7 +465,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (!slottingManager)
 			return;
 		
@@ -530,7 +530,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 				array<int> slotsInGroup = slottingManager.GetAllSlotIDsForGroup(groupId);
 				foreach (int slotId : slotsInGroup)
 				{
-					CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+					COA_SlotData slotData = slottingManager.GetSlotData(slotId);
 					if (slotData && slotData.GetSlotCurrentPlayerId() > 0)
 						groupPlayerCount++;
 				}
@@ -545,7 +545,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 				// Process each slot
 				foreach (int slotId : slotsInGroup)
 				{
-					CRF_SlotData slotData = slottingManager.GetSlotData(slotId);
+					COA_SlotData slotData = slottingManager.GetSlotData(slotId);
 					if (!slotData)
 						continue;
 					
@@ -618,7 +618,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		if (m_GM.m_GamemodeState != CRF_EGamemodeState.GAME) // ignore aar deaths
+		if (m_GM.m_GamemodeState != COA_EGamemodeState.GAME) // ignore aar deaths
 			return;
 		
 		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
@@ -704,7 +704,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		else
 		{
-			sWeaponName = CRF_DamageHelper.GetWeaponName(instiContext);
+			sWeaponName = COA_DamageHelper.GetWeaponName(instiContext);
 			
 			if (sWeaponName == "Unknown Weapon" && killerEntity)
 			{

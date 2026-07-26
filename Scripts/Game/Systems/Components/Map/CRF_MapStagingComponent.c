@@ -349,11 +349,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Get the CRF_PolyZoneTrigger child entity from a GameBoundry parent
+	 * Get the COA_PolyZoneTrigger child entity from a GameBoundry parent
 	 * @param boundaryName - Name of the parent GameBoundry entity
-	 * @return CRF_PolyZoneTrigger - The child trigger entity, or null if not found
+	 * @return COA_PolyZoneTrigger - The child trigger entity, or null if not found
 	 */
-	CRF_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
+	COA_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
 	{
 		if (!boundaryName || boundaryName.IsEmpty())
 			return null;
@@ -362,11 +362,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		if (!parentEntity)
 			return null;
 		
-		// Find child CRF_PolyZoneTrigger
+		// Find child COA_PolyZoneTrigger
 		IEntity child = parentEntity.GetChildren();
 		while (child)
 		{
-			CRF_PolyZoneTrigger trigger = CRF_PolyZoneTrigger.Cast(child);
+			COA_PolyZoneTrigger trigger = COA_PolyZoneTrigger.Cast(child);
 			if (trigger)
 				return trigger;
 			child = child.GetSibling();
@@ -391,8 +391,8 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		}
 		
 		// Safestart check
-		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
-		if (!safestart || safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		if (!safestart || safestart.GetSafestartStatus() || COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
 		{
 			if (m_bDebugEnabled) Print("[CRF_MapStagingComponent] Waiting for game to be ready and safestart to end...");
 			GetGame().GetCallqueue().CallLater(MonitorSafestart, 15000, false);

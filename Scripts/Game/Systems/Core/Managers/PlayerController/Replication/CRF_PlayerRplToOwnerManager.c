@@ -1,29 +1,9 @@
-class CRF_PlayerRplToOwnerManagerClass : ScriptComponentClass {}
-
-class CRF_PlayerRplToOwnerManager : ScriptComponent
+modded class COA_PlayerRplToOwnerManager : ScriptComponent
 {	
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 LOCAL REPLICATION ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	void InitializeRadioFromServer()
-	{
-		Rpc(RpcDo_InitializeRadioFromServer);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void ForwardDeployRequestRejected()
-	{
-		Rpc(RpcDo_ForwardDeployRequestRejected);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void TeleportLocalPlayer(vector location)
-	{
-		Rpc(RpcDo_TeleportLocalPlayer, location);
-	}
 
 	//------------------------------------------------------------------------------------------------
 	void SharerMarkerGlobal(int markerUID)
@@ -46,30 +26,6 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcDo_InitializeRadioFromServer()
-	{
-		CRF_PlayerController pc = CRF_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(SCR_PlayerController.GetLocalPlayerId()));
-		
-		if (pc)
-			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, pc.GetLocalControlledEntity());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcDo_ForwardDeployRequestRejected()
-	{
-		SCR_NotificationsComponent.GetInstance().SendLocal(SCR_NotificationsComponent.SendLocal(ENotification.FASTTRAVEL_PLAYER_LOCATION_WRONG));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcDo_TeleportLocalPlayer(vector location)
-	{
-		SCR_Global.TeleportPlayer(SCR_PlayerController.GetLocalPlayerId(), location);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
@@ -121,7 +77,7 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	protected void RpcDo_RefreshGlobalMarkers(array<int> markers)
 	{
-		CRF_BandwidthTelemetryManager telemManager = CRF_BandwidthTelemetryManager.GetInstance();
+		COA_BandwidthTelemetryManager telemManager = COA_BandwidthTelemetryManager.GetInstance();
 		
 		int bytes = 0;
 		bytes += telemManager.EstimateSize_IntArray(markers);
@@ -258,29 +214,5 @@ class CRF_PlayerRplToOwnerManager : ScriptComponent
 	protected void RpcDo_SendAARStats(int kills, int deaths, int shots, int grenades, int bandages, int distKm, int friendlyKills, int xp)
 	{
 		CRF_AARSessionStats.SetStats(kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
-	}
-
-//=============================================================================================================================================================================================================================================================================================================================================================
-//	 STATIC ACCESSORS
-//=============================================================================================================================================================================================================================================================================================================================================================
-	
-	//------------------------------------------------------------------------------------------------
-	protected static CRF_PlayerRplToOwnerManager m_sInstance;
-	void CRF_PlayerRplToOwnerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		m_sInstance = this;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void ~CRF_PlayerRplToOwnerManager()
-	{
-		if (m_sInstance == this)
-			m_sInstance = null;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	static CRF_PlayerRplToOwnerManager GetInstance()
-	{
-		return m_sInstance;
 	}
 };

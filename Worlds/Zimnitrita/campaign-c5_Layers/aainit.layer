@@ -17,7 +17,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 7217.692 54.156 6273.15
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_FrontlineGamemodeManager "{68A6219D26A38EFE}" {
    m_BluforSide "BLUFOR"
@@ -332,7 +332,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 150
  m_iINDFORTickets 0
  m_iCIVTickets 100
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -371,7 +371,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZWC_CAMPAIGN.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
@@ -398,7 +398,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
@@ -406,7 +406,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_Journos.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1

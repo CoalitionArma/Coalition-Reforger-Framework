@@ -113,7 +113,7 @@ return m_sPrefab;
 // Client -- called when the hold action completes. Branches on bomb state.
 override void OnPerform(int taskIndex, int taskObjectState, IEntity user)
 {
-	CRF_PlayerRplToAuthorityManager rpl = CRF_PlayerRplToAuthorityManager.GetInstance();
+	COA_PlayerRplToAuthorityManager rpl = COA_PlayerRplToAuthorityManager.GetInstance();
 	if (!rpl)
 		return;
 
@@ -175,7 +175,7 @@ override bool CanPerformExtra(int taskIndex, int taskObjectState, IEntity user)
 // Client -- player begins holding the action. Plays plant or defuse sound based on state.
 override void OnActionStart(int taskIndex, int taskObjectState, IEntity taskObject, IEntity user)
 {
-	CRF_PlayerRplToAuthorityManager rpl = CRF_PlayerRplToAuthorityManager.GetInstance();
+	COA_PlayerRplToAuthorityManager rpl = COA_PlayerRplToAuthorityManager.GetInstance();
 	if (!rpl)
 		return;
 
@@ -188,7 +188,7 @@ override void OnActionStart(int taskIndex, int taskObjectState, IEntity taskObje
 // Client -- player released button before completing. Stops the active sound.
 override void OnActionCanceled(int taskIndex, int taskObjectState, IEntity taskObject, IEntity user)
 {
-	CRF_PlayerRplToAuthorityManager rpl = CRF_PlayerRplToAuthorityManager.GetInstance();
+	COA_PlayerRplToAuthorityManager rpl = COA_PlayerRplToAuthorityManager.GetInstance();
 	if (!rpl)
 		return;
 
@@ -203,7 +203,7 @@ override void OnActionCanceled(int taskIndex, int taskObjectState, IEntity taskO
 // DEFUSED/EXPLODED:  cancel countdown + stop tick sound.
 override void OnObjectStateChangedServer(int newState, int taskIndex, CRF_TaskCreatorObjectComponent objectComp)
 {
-CRF_RplBroadcastManager broadcast = CRF_RplBroadcastManager.GetInstance();
+COA_RplBroadcastManager broadcast = COA_RplBroadcastManager.GetInstance();
 IEntity bombEntity = objectComp.GetOwner();
 
 if (newState == CRF_EBombTaskState.PLANTED)

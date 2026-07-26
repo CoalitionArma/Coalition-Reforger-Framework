@@ -18,6 +18,6 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "OBJ3: Firebase X-ray HQ"
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 4168.88 11.438 6840.555
 }

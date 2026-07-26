@@ -65,7 +65,7 @@ class CRF_TeleportPlayerAction : ScriptedUserAction
 		if (!m_sGearscriptToSet.IsEmpty())
 		{
 			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-			CRF_PlayerRplToAuthorityManager.GetInstance().ResetGear(localPlayerId, m_sGearscriptToSet, false);
+			COA_PlayerRplToAuthorityManager.GetInstance().ResetGear(localPlayerId, m_sGearscriptToSet, false);
 		}
 	}
 	

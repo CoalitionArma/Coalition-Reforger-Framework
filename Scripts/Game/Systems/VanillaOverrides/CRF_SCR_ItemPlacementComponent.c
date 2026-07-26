@@ -16,10 +16,10 @@ modded class SCR_ItemPlacementComponent : ScriptComponent
 		if (gadgetComponent.ACE_Trenches_GetCurrentVariantID() != 10042001)
 			return;
 
-		if (!CRF_RoleHelper.IsSquadLeaderRole(character))
+		if (!COA_RoleHelper.IsSquadLeaderRole(character))
 			cantPlaceReason = ENotification.PLACEABLE_ITEM_CANT_PLACE_GENERIC;
 		
-		if (!CRF_Gamemode.GetInstance().m_bRallyPointsEnabled)
+		if (!COA_Gamemode.GetInstance().m_bRallyPointsEnabled)
 			cantPlaceReason = ENotification.PLACEABLE_ITEM_CANT_PLACE_GENERIC;
 	}
 

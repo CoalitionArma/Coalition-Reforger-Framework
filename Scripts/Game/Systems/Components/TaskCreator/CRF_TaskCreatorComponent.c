@@ -20,7 +20,7 @@
 // - Needs serious cleanup
 //
 // SETUP
-// 1. Add CRF_TaskCreatorComponent to the CRF_Gamemode entity.
+// 1. Add CRF_TaskCreatorComponent to the COA_Gamemode entity.
 // 2. Add task entries in the component, filling in:
 //      - Task Label   : display name (editor/debug only)
 //      - Task Type    : category enum (COLLECT_INTEL, etc.)
@@ -121,7 +121,7 @@ class CRF_TaskCreatorEntry
 // COMPONENT CLASS / COMPONENT
 //=============================================================================
 
-[ComponentEditorProps(category: "GameScripted/Objectives", description: "Spawns and tracks objective task objects. Each entry spawns a prefab at a named world entity and tracks completion, notifications, and map markers. Attach to the CRF_Gamemode entity as a supplemental system component.")]
+[ComponentEditorProps(category: "GameScripted/Objectives", description: "Spawns and tracks objective task objects. Each entry spawns a prefab at a named world entity and tracks completion, notifications, and map markers. Attach to the COA_Gamemode entity as a supplemental system component.")]
 class CRF_TaskCreatorComponentClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
@@ -249,7 +249,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 		}
 
 		// All machines: create map markers after a short delay so the player
-		// controller (and CRF_PlayerScriptedMarkerManager) has time to initialize.
+		// controller (and COA_PlayerScriptedMarkerManager) has time to initialize.
 		// Follows the same pattern as Rush InitializeMapMarkers.
 		GetGame().GetCallqueue().CallLater(InitializeTaskMarkers, 1000, false);
 	}
@@ -263,11 +263,11 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 			Replication.BumpMe();
 	}
 
-	// Deferred marker creation — retries until CRF_PlayerScriptedMarkerManager is ready.
+	// Deferred marker creation — retries until COA_PlayerScriptedMarkerManager is ready.
 	// Called via CallLater from OnWorldPostProcess; follows Rush InitializeMapMarkers pattern.
 	protected void InitializeTaskMarkers()
 	{
-		CRF_PlayerScriptedMarkerManager markerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager markerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!markerManager)
 		{
 			GetGame().GetCallqueue().CallLater(InitializeTaskMarkers, 2000, false);
@@ -337,7 +337,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// TASK COMPLETION
 	//=========================================================================
 
-	// Called server-side by CRF_PlayerRplToAuthorityManager.RpcAsk_RequestObjectiveTaskComplete.
+	// Called server-side by COA_PlayerRplToAuthorityManager.RpcAsk_RequestObjectiveTaskComplete.
 	// Marks the task complete, stores which side completed it, optionally removes the object,
 	// fires notifications, and propagates state to all clients via RplProp.
 	void MarkTaskComplete(int taskIndex, int completingSideInt = 0)
@@ -601,7 +601,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// Creates a CRF scripted map marker at the spawn anchor's world position.
 	protected void CreateTaskMarker(CRF_TaskCreatorEntry entry)
 	{
-		CRF_PlayerScriptedMarkerManager markerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager markerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!markerManager)
 			return;
 
@@ -627,7 +627,7 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 	// Parameters must match exactly what was passed to AddScriptedMarker.
 	protected void RemoveTaskMarker(CRF_TaskCreatorEntry entry)
 	{
-		CRF_PlayerScriptedMarkerManager markerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager markerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!markerManager)
 			return;
 

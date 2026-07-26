@@ -36,13 +36,13 @@ class Quack_TimedVehicleTeleComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------	
 	protected bool isSafeStartOff()
 	{
-		SCR_BaseGameMode CRF_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if(!CRF_GameMode)
+		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if(!gamemode)
 		{
 			Print("No game mode found",LogLevel.ERROR);
 			return false;
 		}
-		CRF_SafestartManager SafeStarChecker = CRF_SafestartManager.Cast(CRF_GameMode.FindComponent(CRF_SafestartManager));
+		COA_SafestartManager SafeStarChecker = COA_SafestartManager.Cast(gamemode.FindComponent(COA_SafestartManager));
 		if(!SafeStarChecker)
 		{
 			Print("No Safe start manager found",LogLevel.ERROR);

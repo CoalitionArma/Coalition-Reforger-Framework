@@ -32,7 +32,7 @@ modded class SCR_PlayerController
 		if (!gadgetComp.CRF_CanChop())
 			return false;
 
-		gadgetComp.CRF_ConsumeChop(CRF_RoleHelper.IsCombatEngineerRole(playerChar));
+		gadgetComp.CRF_ConsumeChop(COA_RoleHelper.IsCombatEngineerRole(playerChar));
 		return true;
 	}
 }

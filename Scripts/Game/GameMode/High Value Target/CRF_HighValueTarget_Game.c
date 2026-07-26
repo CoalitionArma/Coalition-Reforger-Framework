@@ -267,7 +267,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_fUpdateBuffer = 0;
 			
-			CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+			COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 			if (!gamemode || !gamemode.IsRunning())
 				return;
 			
@@ -285,7 +285,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// If safestart is never enabled, skip directly to GameInit
 			if (!m_bHasSafestartBegun)
 			{
-				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
 				if (safestartManager && safestartManager.GetSafestartStatus())
 				{
 					m_bHasSafestartBegun = true;
@@ -296,7 +296,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 			// Wait for safestart to end before GameInit (skipped if safestart was never active)
 			if (!m_bGameInit)
 			{
-				CRF_SafestartManager safestartManager = CRF_SafestartManager.GetInstance();
+				COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
 				if (m_bHasSafestartBegun && safestartManager && safestartManager.GetSafestartStatus())
 					return;
 				
@@ -763,7 +763,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bEnableTransponderMarker)
 			return;
 		
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager) 
 			return;
 		
@@ -865,7 +865,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_aHVTEntries || m_aHVTEntries.Count() == 0)
 			return;
 		
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		
 		// Use min of both arrays to prevent index out of bounds
 		int iterCount = Math.Min(m_aHVTEntries.Count(), m_aHvtPositions.Count());
@@ -930,7 +930,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				if (m_filterFaction)
 					pingFactionKey = m_searcherFactionKey;
 				
-				CRF_RplBroadcastManager.GetInstance().SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
+				COA_RplBroadcastManager.GetInstance().SendHint(targetLabel + " transponder has sent a signal", -1, pingFactionKey);
 			}
 		}
 	}
@@ -1018,7 +1018,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// Returns: First matching alive HVT entity, or null if none found
 	//
 	// Example usage:
-	//   CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
+	//   CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(COA_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
 	//   vector searchPosition = ownerEntity.GetOrigin();
 	//   if (hvtManager.FindHVTInRange(searchPosition, 50))                                              // Any HVT within 50m
 	//   if (hvtManager.FindHVTInRange(searchPosition, 100, CRF_HVTFaction.BLUFOR))                      // BLUFOR HVT within 100m
@@ -1075,7 +1075,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	// Returns: Number of matching alive HVTs
 	//
 	// Example usage:
-	//   CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
+	//   CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(COA_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager));
 	//   vector searchPosition = ownerEntity.GetOrigin();
 	//   int hvtCount = hvtManager.CountHVTsInRange(searchPosition, 50);                                              // Any HVT within 50m
 	//   int hvtCount = hvtManager.CountHVTsInRange(searchPosition, -1, CRF_HVTFaction.BLUFOR);                       // All BLUFOR HVTs (any range)

@@ -99,8 +99,8 @@ class CRF_VehicleDepot : ScriptComponent
 	protected float m_fLastSupplyRefresh = 0;
 	
 	// Component references
-	protected CRF_RespawnManager m_RespawnManager;
-	protected CRF_SlottingManager m_SlottingManager;
+	protected COA_RespawnManager m_RespawnManager;
+	protected COA_SlottingManager m_SlottingManager;
 	
 	// Collision detection helper
 	protected bool m_bCollisionDetected = false;
@@ -157,8 +157,8 @@ class CRF_VehicleDepot : ScriptComponent
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
 		{
-			m_RespawnManager = CRF_RespawnManager.Cast(gameMode.FindComponent(CRF_RespawnManager));
-			m_SlottingManager = CRF_SlottingManager.Cast(gameMode.FindComponent(CRF_SlottingManager));
+			m_RespawnManager = COA_RespawnManager.Cast(gameMode.FindComponent(COA_RespawnManager));
+			m_SlottingManager = COA_SlottingManager.Cast(gameMode.FindComponent(COA_SlottingManager));
 		}
 		
 		// Set up interaction
@@ -380,13 +380,13 @@ class CRF_VehicleDepot : ScriptComponent
 			return false;
 			
 		// Get player's slot data to check their role
-		CRF_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
+		COA_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
 		if (!slotData)
 			return false;
 			
 		// Check if player has leadership slot type
-		CRF_ESlotType slotType = slotData.GetSlotType();
-		if (slotType == CRF_ESlotType.SQUAD_LEADER || slotType == CRF_ESlotType.TEAM_LEADER)
+		COA_ESlotType slotType = slotData.GetSlotType();
+		if (slotType == COA_ESlotType.SQUAD_LEADER || slotType == COA_ESlotType.TEAM_LEADER)
 			return true;
 			
 		// Also check the player's gear role for additional leadership roles like Platoon Leader/Sergeant
@@ -394,13 +394,13 @@ class CRF_VehicleDepot : ScriptComponent
 		if (playerResource.IsEmpty())
 			return false;
 			
-		CRF_EGearRole gearRole = CRF_RoleHelper.ResourceToRole(playerResource);
+		COA_EGearRole gearRole = COA_RoleHelper.ResourceToRole(playerResource);
 		
 		// Check for additional leadership roles not covered by slot types
-		if (gearRole == CRF_EGearRole.PLATOON_LEADER || 
-			gearRole == CRF_EGearRole.PLATOON_SERGEANT ||
-			gearRole == CRF_EGearRole.COMPANY_COMMANDER ||
-			gearRole == CRF_EGearRole.FIRST_SERGEANT)
+		if (gearRole == COA_EGearRole.PLATOON_LEADER || 
+			gearRole == COA_EGearRole.PLATOON_SERGEANT ||
+			gearRole == COA_EGearRole.COMPANY_COMMANDER ||
+			gearRole == COA_EGearRole.FIRST_SERGEANT)
 			return true;
 			
 		return false;
@@ -422,8 +422,8 @@ class CRF_VehicleDepot : ScriptComponent
 			
 		FactionKey factionKey = playerFaction.GetFactionKey();
 		
-		// Get tickets from CRF_Gamemode based on faction
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		// Get tickets from COA_Gamemode based on faction
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return false;
 			
@@ -558,7 +558,7 @@ class CRF_VehicleDepot : ScriptComponent
 			return 0;
 			
 		// Get tickets from respawn manager which now handles ticket replication
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return 0;
 			

@@ -19,10 +19,10 @@ class CRF_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 	protected SCR_ChatPanel m_ChatPanel;
 	protected SCR_MapEntity m_MapEntity;
-	protected CRF_Gamemode m_Gamemode;
-	protected CRF_MenuManager m_MenuManager;
+	protected COA_Gamemode m_Gamemode;
+	protected COA_MenuManager m_MenuManager;
 	protected SCR_ListBoxComponent m_cPlayerListBoxComponent;
-	protected CRF_ListboxComponent m_cSlotListBoxComponent;
+	protected COA_ListboxComponent m_cSlotListBoxComponent;
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent;
 	protected SCR_PlayerController m_PlayerController;
 	
@@ -30,7 +30,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	// Faction & Slot Data
 	//----------------------------------------
 	protected Faction m_fSelectedFaction;
-	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {};
+	protected ref array<ref COA_MissionDescriptor> m_aActiveDescriptors = {};
 	
 	// Total slots per faction
 	protected int m_iBluforSlots = 0;
@@ -104,9 +104,9 @@ class CRF_AARMenu: ChimeraMenuBase
 		UpdateSlots();
 		
 		// Register for slot updates (structural: lock/death/group/role deltas + batch sync)
-		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		COA_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		// Also register for surgical player-ID delta updates so AAR stays current
-		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
+		COA_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
 		
 		// Initialize back button
 		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
@@ -126,8 +126,8 @@ class CRF_AARMenu: ChimeraMenuBase
 	protected void InitializeUIComponents()
 	{
 		m_wRoot = GetRootWidget();
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_Gamemode = COA_Gamemode.GetInstance();
+		m_MenuManager = COA_MenuManager.GetInstance();
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
 		// Find main UI panels
@@ -224,7 +224,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	 */
 	protected void SelectInitialFaction()
 	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		
 		if(slottingManager.IsFactionValid("BLUFOR"))
 			SelectFactionBlufor();
@@ -244,8 +244,8 @@ class CRF_AARMenu: ChimeraMenuBase
 		super.OnMenuClose();
 		
 		// Unregister from slot updates
-		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
-		CRF_SlottingManager.GetInstance().GetOnSlotChanged().Remove(UpdateSlots);
+		COA_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
+		COA_SlottingManager.GetInstance().GetOnSlotChanged().Remove(UpdateSlots);
 		
 		// Remove input handlers
 		if (!CVON_VONGameModeComponent.GetInstance())
@@ -340,7 +340,7 @@ class CRF_AARMenu: ChimeraMenuBase
 				// Set color based on player status
 				if(SCR_Global.IsAdmin(playerId))
 					comp.SetColor(Color.Red);
-				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
+				else if(COA_PermissionManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
 				else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
 					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
@@ -350,7 +350,7 @@ class CRF_AARMenu: ChimeraMenuBase
 				// Set color based on player status
 				if(SCR_Global.IsAdmin(playerId))
 					comp.SetColor(Color.Red);
-				else if(CRF_PermissionManager.GetInstance().IsModerator(playerId))
+				else if(COA_PermissionManager.GetInstance().IsModerator(playerId))
 					comp.SetColor(Color.Yellow);
 			}
 		}
@@ -365,7 +365,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	 */
 	protected void UpdateFactionAvailability()
 	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		
 		// Update BLUFOR status
 		UpdateFactionStatus("BLUFOR", "SlotsBlufor", "BluforFactionLockBG", "BluforFactionLock", "ButtonBlufor", 
@@ -468,7 +468,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_aActiveDescriptors.Clear();
 		
 		// Populate description list
-		foreach(ref CRF_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
+		foreach(ref COA_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
 		{
 			m_cMissionDescriptionListBoxComponent.AddItem(description.m_sTitle, null, "{A564FC959554A1B9}UI/Listbox/DescriptionListboxElementNoIcon.layout");
 			m_aActiveDescriptors.Insert(description);
@@ -526,10 +526,10 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref COA_SlotData> slotMap = COA_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots by faction
-		foreach (int slotId, CRF_SlotData slotData : slotMap)
+		foreach (int slotId, COA_SlotData slotData : slotMap)
 		{
 			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
@@ -589,8 +589,8 @@ class CRF_AARMenu: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, ref CRF_SlotData> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
+		map<int, ref COA_SlotData> slotMap = COA_SlottingManager.GetInstance().GetSlotMap();
+		array<SCR_AIGroup> factionGroups = COA_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
@@ -611,7 +611,7 @@ class CRF_AARMenu: ChimeraMenuBase
 			SetGroupVisuals(group, groupIndex);
 			
 			// Process each slot in the group
-			foreach(int slotId, CRF_SlotData slotData : slotMap)
+			foreach(int slotId, COA_SlotData slotData : slotMap)
 			{	
 				// Skip slots not in this group or faction
 				if (!IsSlotInGroupAndFaction(slotData, group))
@@ -635,10 +635,10 @@ class CRF_AARMenu: ChimeraMenuBase
 	/**
 	 * Check if a slot is in the specified group and faction
 	 */
-	protected bool IsSlotInGroupAndFaction(CRF_SlotData slotData, SCR_AIGroup group)
+	protected bool IsSlotInGroupAndFaction(COA_SlotData slotData, SCR_AIGroup group)
 	{
 		RplId groupId;
-		if (!slotData || !CRF_ReplicationHelper.GetRplId(group, groupId))
+		if (!slotData || !COA_ReplicationHelper.GetRplId(group, groupId))
 			return false;
 
 		if (slotData.GetSlotCurrentGroup() != groupId
@@ -669,7 +669,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	/**
 	 * Set visual properties for a slot in the list
 	 */
-	protected void SetSlotVisuals(int slotIndex, CRF_SlotData slotData)
+	protected void SetSlotVisuals(int slotIndex, COA_SlotData slotData)
 	{
 		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		
@@ -817,7 +817,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	{
 		m_MapEntity.ZoomOut();
 		
-		vector aoCenter = CRF_Gamemode.GetInstance().GetOrigin();
+		vector aoCenter = COA_Gamemode.GetInstance().GetOrigin();
 		if (aoCenter)
 		{
 			m_MapEntity.ZoomPanSmooth(0.3, aoCenter[0], aoCenter[2]);

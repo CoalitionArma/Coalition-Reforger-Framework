@@ -119,7 +119,7 @@ IEntity FindHVTInRange(vector position, float range, CRF_HVTFaction faction = NO
 ```enforce
 // Get the HVT manager
 CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(
-    CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager)
+    COA_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager)
 );
 
 // Any HVT within 50m of this position
@@ -157,7 +157,7 @@ class MyRadioInteraction : ScriptedUserAction
         
         // Get the HVT manager
         CRF_HighValueTargetGamemodeManager hvtManager = CRF_HighValueTargetGamemodeManager.Cast(
-            CRF_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager)
+            COA_Gamemode.GetInstance().FindComponent(CRF_HighValueTargetGamemodeManager)
         );
         
         if (!hvtManager)

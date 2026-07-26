@@ -26,8 +26,8 @@ class CRF_VehicleGearscriptConfig
 [BaseContainerProps()]
 class CRF_VehicleGearscriptOverride
 {
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EVehicleGearScriptType))]
-	CRF_EVehicleGearScriptType m_VehicleAmmoType;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(COA_EVehicleGearScriptType))]
+	COA_EVehicleGearScriptType m_VehicleAmmoType;
 	
 	[Attribute()] 
 	int m_iAmountOfBullets;

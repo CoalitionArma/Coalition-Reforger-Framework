@@ -1,4 +1,4 @@
-modded class CRF_GamemodeManager
+modded class COA_GamemodeManager
 {
 	override protected void AssignPlayerToGroup(int playerId)
 	{
@@ -12,7 +12,7 @@ modded class CRF_GamemodeManager
 		if (!csiBroadcastManager)
 			return;
 
-		CRF_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
+		COA_SlotData slotData = m_SlottingManager.GetPlayerSlotData(playerId);
 		if (!slotData)
 			return;
 
@@ -31,23 +31,23 @@ modded class CRF_GamemodeManager
 
 	//! Only squad-level roles receive a color; all other roles stay white (NONE).
 	//! AR/AAR and the first team lead in a group are red; all other squad-level roles are green.
-	protected CSI_EColorTeam DetermineCSIColorTeam(CRF_SlotData slotData)
+	protected CSI_EColorTeam DetermineCSIColorTeam(COA_SlotData slotData)
 	{
-		CRF_EGearRole role = slotData.GetSlotRole();
+		COA_EGearRole role = slotData.GetSlotRole();
 
 		switch (role)
 		{
-			case CRF_EGearRole.AUTOMATIC_RIFLEMAN:
-			case CRF_EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN:
+			case COA_EGearRole.AUTOMATIC_RIFLEMAN:
+			case COA_EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN:
 				return CSI_EColorTeam.RED;
 
-			case CRF_EGearRole.TEAM_LEAD:
+			case COA_EGearRole.TEAM_LEAD:
 				return GetCSITeamLeadColor(slotData);
 
-			case CRF_EGearRole.GRENADIER:
-			case CRF_EGearRole.RIFLEMAN:
-			case CRF_EGearRole.RIFLEMAN_ANTITANK:
-			case CRF_EGearRole.RIFLEMAN_DEMO:
+			case COA_EGearRole.GRENADIER:
+			case COA_EGearRole.RIFLEMAN:
+			case COA_EGearRole.RIFLEMAN_ANTITANK:
+			case COA_EGearRole.RIFLEMAN_DEMO:
 				return CSI_EColorTeam.GREEN;
 		}
 
@@ -57,7 +57,7 @@ modded class CRF_GamemodeManager
 
 	//! Returns RED if this is the first TEAM_LEAD slot in the group (lowest slot ID),
 	//! GREEN if a prior slot in the same group already holds a TEAM_LEAD role.
-	protected CSI_EColorTeam GetCSITeamLeadColor(CRF_SlotData slotData)
+	protected CSI_EColorTeam GetCSITeamLeadColor(COA_SlotData slotData)
 	{
 		RplId groupRplId = slotData.GetSlotCurrentGroup();
 		if (groupRplId == RplId.Invalid())
@@ -74,8 +74,8 @@ modded class CRF_GamemodeManager
 				return CSI_EColorTeam.RED;
 
 			// A prior slot already has the team lead role — we are the second
-			CRF_SlotData otherSlot = m_SlottingManager.GetSlotData(slotId);
-			if (otherSlot && otherSlot.GetSlotRole() == CRF_EGearRole.TEAM_LEAD)
+			COA_SlotData otherSlot = m_SlottingManager.GetSlotData(slotId);
+			if (otherSlot && otherSlot.GetSlotRole() == COA_EGearRole.TEAM_LEAD)
 				return CSI_EColorTeam.GREEN;
 		}
 

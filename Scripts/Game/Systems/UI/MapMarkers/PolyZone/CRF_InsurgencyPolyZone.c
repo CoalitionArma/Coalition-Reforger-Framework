@@ -1,11 +1,11 @@
 //------------------------------------------------------------------------------------------------
 [ComponentEditorProps(category: "GameScripted/Insurgency", description: "Phase-based polygon zone for Insurgency gamemode", color: "255 128 0 255", icon: HYBRID_COMPONENT_ICON)]
-class CRF_InsurgencyPolyZoneClass: CRF_PolyZoneClass
+class CRF_InsurgencyPolyZoneClass: COA_PolyZoneClass
 {
 };
 
 //------------------------------------------------------------------------------------------------
-class CRF_InsurgencyPolyZone : CRF_PolyZone
+class CRF_InsurgencyPolyZone : COA_PolyZone
 {
 	[Attribute("1", UIWidgets.EditBox, "Which phase should this zone be visible during (1, 2, 3, etc)")]
 	protected int m_iVisibleDuringPhase;
@@ -130,7 +130,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 				return;
 		}
 		
-		CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager psmm = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!psmm)
 			return;
 		
@@ -157,7 +157,7 @@ class CRF_InsurgencyPolyZone : CRF_PolyZone
 		
 		if (m_bMarkerActive)
 		{
-			CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+			COA_PlayerScriptedMarkerManager psmm = COA_PlayerScriptedMarkerManager.GetInstance();
 			if (psmm)
 				psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
 					m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));

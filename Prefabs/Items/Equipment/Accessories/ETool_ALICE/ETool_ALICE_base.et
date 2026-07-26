@@ -5,7 +5,7 @@ GenericEntity : "{44FC3E59DFA001A4}Prefabs/Items/Core/ETool_base.et" {
    m_aVariants {
     SCR_DeployableVariantContainer "{69071E1D1784CC70}" {
      m_iVariantId 10042001
-     m_sReplacementPrefab "{1DE2CFFF2775C07C}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/BLUFOR/E_CRF_RallyPointBuildable_BLUFOR.et"
+     m_sReplacementPrefab "{1DE2CFFF2775C07C}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/BLUFOR/E_COA_RallyPointBuildable_BLUFOR.et"
      m_sPreviewObject "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
     }
    }

@@ -637,7 +637,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
  }
  coords 4906.283 28.594 11899.383
 }
-CRF_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
+COA_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
  coords 7525.148 5.98 6763.489
 }
 GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {

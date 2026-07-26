@@ -45,8 +45,8 @@ modded class Vehicle
 	
 	void CheckIfSpawnPassenger()
 	{
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
 			SpawnVehiclePassengers();
 	}
 	
@@ -88,7 +88,7 @@ modded class Vehicle
 			return;
 		
 		//Just in case the damage manager doesn't actually get it when it blows up.
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (!respawnManager)
 			return;
 			

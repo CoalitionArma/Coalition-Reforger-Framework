@@ -100,7 +100,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()
 	{
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		if (COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME || COA_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			m_iAARInitAttempts++;
 			if (m_iAARInitAttempts < MAX_AAR_INIT_RETRIES)
@@ -127,7 +127,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 		
 		Print("[CRF_VAAR] Recording Started");
-		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
+		COA_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Started");
 	}
 	
 	// Write frame to json file containing positions, shots fired & events
@@ -174,14 +174,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 			
 			// Don't track spectator entities
-			if (CRF_EntityHelper.IsSpectator(character))
+			if (COA_EntityHelper.IsSpectator(character))
 				continue;
 
 			// Collect info
 			string characterName = GetCharacterName(character);
 			RplId characterID = GetID(character);
 			vector characterPos = character.GetOrigin();
-			CRF_EGearRole characterRole = GetRole(character);
+			COA_EGearRole characterRole = GetRole(character);
 			int characterFaction = GetFaction(character);
 			
 			SCR_ChimeraCharacter chimeraCharacter = SCR_ChimeraCharacter.Cast(character.GetRootParent());
@@ -255,7 +255,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_AARFile = null;
 		
 		Print("[CRF_VAAR] Recording Saved");
-		CRF_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
+		COA_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
 	}
 
 	// HELPERS
@@ -358,13 +358,13 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		return 0;
 	}
 	//------------------------------------------------------------------------------------
-	protected CRF_EGearRole GetRole(IEntity entity)
+	protected COA_EGearRole GetRole(IEntity entity)
 	{	
 		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
-			return CRF_EGearRole.RIFLEMAN;
+		if (!COA_RoleHelper.IsValidGearscriptResource(prefab))
+			return COA_EGearRole.RIFLEMAN;
 		
-		return CRF_RoleHelper.ResourceToRole(prefab);
+		return COA_RoleHelper.ResourceToRole(prefab);
 	}
 	
 	

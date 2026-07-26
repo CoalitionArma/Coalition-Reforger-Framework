@@ -10,9 +10,9 @@
  * - If BFT is disabled: the map/list are hidden and "Forward Deploy" always targets the player's
  *   own slotted squad (no situational awareness of other units without BFT).
  *
- * The server (CRF_PlayerRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy) re-validates the
+ * The server (COA_PlayerRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy) re-validates the
  * request and denies it (with an on-screen hint) if the target unit is in/near contact with the
- * enemy - see CRF_ForwardDeployManager.IsPositionNearEnemy().
+ * enemy - see COA_ForwardDeployManager.IsPositionNearEnemy().
  */
 class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 {
@@ -135,8 +135,8 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 	 */
 	protected bool IsBFTEnabledForLocalPlayer()
 	{
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (!gamemode || !slottingManager)
 			return false;
 
@@ -191,7 +191,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 		RemoveAllUnitMarkers();
 
 		int playerId = GetGame().GetPlayerController().GetPlayerId();
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (!slottingManager)
 			return;
 
@@ -209,7 +209,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 		foreach (SCR_AIGroup group : factionGroups)
 		{
 			vector groupOrigin;
-			if (!CRF_EntityHelper.GetGroupOrigin(group, groupOrigin))
+			if (!COA_EntityHelper.GetGroupOrigin(group, groupOrigin))
 				continue; // No living, spawned members - nothing to deploy to.
 
 			m_aGroups.Insert(group);
@@ -237,7 +237,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 			return;
 
 		vector groupOrigin;
-		if (!CRF_EntityHelper.GetGroupOrigin(m_aGroups[m_iSelectedIndex], groupOrigin))
+		if (!COA_EntityHelper.GetGroupOrigin(m_aGroups[m_iSelectedIndex], groupOrigin))
 			return;
 
 		if (m_MapEntity)
@@ -286,7 +286,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 		}
 		else
 		{
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 			if (!slottingManager)
 				return;
 
@@ -300,7 +300,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 		if (groupRplId == RplId.Invalid())
 			return;
 
-		CRF_PlayerRplToAuthorityManager rplManager = CRF_PlayerRplToAuthorityManager.GetInstance();
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
 		if (rplManager)
 			rplManager.RequestJIPForwardDeploy(groupRplId, playerId);
 
@@ -352,7 +352,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 	{
 		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
 
-		CRF_PlayerScriptedMarkerManager playerScriptedMarkerManager = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager playerScriptedMarkerManager = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!playerScriptedMarkerManager)
 			return;
 
@@ -372,7 +372,7 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 	 */
 	protected void RemoveAllUnitMarkers()
 	{
-		CRF_PlayerScriptedMarkerManager psm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager psm = COA_PlayerScriptedMarkerManager.GetInstance();
 		foreach (string name, vector worldPos : m_MapMarkers)
 		{
 			if (!psm)

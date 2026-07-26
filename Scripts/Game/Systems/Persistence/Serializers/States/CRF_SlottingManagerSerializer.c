@@ -1,28 +1,28 @@
 //------------------------------------------------------------------------------------------------
 // State data for CRF Slotting Manager
-class CRF_SlottingManagerStateData : PersistentState
+class COA_SlottingManagerStateData : PersistentState
 {
 }
 
 //------------------------------------------------------------------------------------------------
 // Serializer for CRF Slotting Manager - preserves slot assignments across mission reloads
-class CRF_SlottingManagerSerializer : ScriptedStateSerializer
+class COA_SlottingManagerSerializer : ScriptedStateSerializer
 {
 	//------------------------------------------------------------------------------------------------
 	override static typename GetTargetType()
 	{
-		return CRF_SlottingManagerStateData;
+		return COA_SlottingManagerStateData;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (!slottingManager)
 			return ESerializeResult.DEFAULT;
 
 		// Get the slots map
-		map<int, ref CRF_SlotData> slotsMap = slottingManager.GetSlotMap();
+		map<int, ref COA_SlotData> slotsMap = slottingManager.GetSlotMap();
 		if (!slotsMap || slotsMap.Count() == 0)
 			return ESerializeResult.DEFAULT;
 
@@ -34,7 +34,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 
 		// Serialize each slot
 		int savedSlots = 0;
-		foreach (int slotId, CRF_SlotData slotData : slotsMap)
+		foreach (int slotId, COA_SlotData slotData : slotsMap)
 		{
 			if (!slotData)
 				continue;
@@ -57,7 +57,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 			// Save locked state
 			context.WriteValue(slotPrefix + "isLocked", slotData.GetIsLockedSlot());
 
-			// Save remaining slot/group respawns (CRF_ERespawnMode.SLOT) so a restart doesn't refill spent respawns
+			// Save remaining slot/group respawns (COA_ERespawnMode.SLOT) so a restart doesn't refill spent respawns
 			context.WriteValue(slotPrefix + "respawnsRemaining", slotData.GetSlotRespawnsRemaining());
 			
 			// Note: Group assignments (RplId) are not serialized as they may not be valid after reload
@@ -66,7 +66,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 			savedSlots++;
 		}
 
-		Print(string.Format("[CRF_SlottingManagerSerializer] Serialized %1 slots", savedSlots), LogLevel.NORMAL);
+		Print(string.Format("[COA_SlottingManagerSerializer] Serialized %1 slots", savedSlots), LogLevel.NORMAL);
 		return ESerializeResult.OK;
 	}
 
@@ -77,7 +77,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		if (!context.ReadValue("version", version))
 			return false;
 
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (!slottingManager)
 			return false;
 
@@ -89,7 +89,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		// It will be recalculated based on the highest slot ID when slots are restored
 
 		// Get the slots map
-		map<int, ref CRF_SlotData> slotsMap = slottingManager.GetSlotMap();
+		map<int, ref COA_SlotData> slotsMap = slottingManager.GetSlotMap();
 		if (!slotsMap)
 			return false;
 
@@ -108,7 +108,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		
 		// Alternative approach: iterate through existing slots and try to read their data
 		int restoredSlots = 0;
-		foreach (int slotId, CRF_SlotData slotData : slotsMap)
+		foreach (int slotId, COA_SlotData slotData : slotsMap)
 		{
 			if (!slotData)
 				continue;
@@ -149,7 +149,7 @@ class CRF_SlottingManagerSerializer : ScriptedStateSerializer
 		// Note: Group assignments are not restored from save as RplIds may not be valid
 		// Groups will be reassigned through normal gameplay flow
 		
-		Print(string.Format("[CRF_SlottingManagerSerializer] Restored state for %1 slots", restoredSlots), LogLevel.NORMAL);
+		Print(string.Format("[COA_SlottingManagerSerializer] Restored state for %1 slots", restoredSlots), LogLevel.NORMAL);
 		return true;
 	}
 }

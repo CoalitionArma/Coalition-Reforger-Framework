@@ -40,7 +40,7 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 			return;
 		#endif
 
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
 			return;
 
 		m_fGameStartTimer -= timeSlice;

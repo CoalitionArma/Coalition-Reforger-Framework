@@ -1,8 +1,8 @@
-class CRF_MissionMarkerClass: CRF_ManualMarkerClass
+class CRF_MissionMarkerClass: COA_ManualMarkerClass
 {
 }
 
-class CRF_MissionMarker: CRF_ManualMarker
+class CRF_MissionMarker: COA_ManualMarker
 {
 	[Attribute("", category: "Objective Briefing")]
 	string m_sMissionMarkerDescription;

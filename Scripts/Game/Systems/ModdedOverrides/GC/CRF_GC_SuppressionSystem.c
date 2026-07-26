@@ -5,7 +5,7 @@ modded class GC_SuppressionSystem
 	override void RegisterProjectile(IEntity projectile)
 	{
 		IEntity localEntity = GetGame().GetPlayerController().GetControlledEntity();
-		if (localEntity && CRF_EntityHelper.IsSpectator(localEntity))
+		if (localEntity && COA_EntityHelper.IsSpectator(localEntity))
 			return;
 
 		super.RegisterProjectile(projectile);
@@ -16,7 +16,7 @@ modded class GC_SuppressionSystem
 	override protected void AddSuppression(float suppression)
 	{
 		IEntity localEntity = GetGame().GetPlayerController().GetControlledEntity();
-		if (localEntity && CRF_EntityHelper.IsSpectator(localEntity))
+		if (localEntity && COA_EntityHelper.IsSpectator(localEntity))
 			return;
 
 		super.AddSuppression(suppression);
@@ -41,7 +41,7 @@ modded class GC_SuppressionSystem
 		}
 
 		IEntity localEntity = pc.GetControlledEntity();
-		if (!localEntity || CRF_EntityHelper.IsSpectator(localEntity))
+		if (!localEntity || COA_EntityHelper.IsSpectator(localEntity))
 		{
 			if (GetAmount() > 0)
 				SetEnabled(true);

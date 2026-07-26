@@ -116,8 +116,8 @@ class CRF_RadioExtraction : ScriptComponent
 
 	protected IEntity m_eBombEntity;
 	protected SCR_PopUpNotification m_PopUpNotification;
-	protected CRF_SafestartManager m_SafestartManager;
-	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected COA_SafestartManager m_SafestartManager;
+	protected COA_RplBroadcastManager m_RplBroadcastManager;
 
 	// Polled (not event-subscribed) safestart tracking — I dont know why but invoker wasnt working correctly, would detect safestart gone before lobby
 	protected bool m_bHasSafestartStarted = false;
@@ -164,7 +164,7 @@ class CRF_RadioExtraction : ScriptComponent
 		if (!GetGame().InPlayMode())
 			return;
 
-		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_RplBroadcastManager = COA_RplBroadcastManager.GetInstance();
 
 		if (!Replication.IsServer())
 			return;
@@ -202,7 +202,7 @@ class CRF_RadioExtraction : ScriptComponent
 			return;
 
 		if (!m_SafestartManager)
-			m_SafestartManager = CRF_SafestartManager.GetInstance();
+			m_SafestartManager = COA_SafestartManager.GetInstance();
 		if (!m_SafestartManager)
 			return;
 
@@ -299,7 +299,7 @@ class CRF_RadioExtraction : ScriptComponent
 
 	//===================================================================================
 	// PLANT / DEFUSE / DETONATE
-	// Called server-side only, via CRF_PlayerRplToAuthorityManager's RpcAsk_RequestRadioExtraction*
+	// Called server-side only, via COA_PlayerRplToAuthorityManager's RpcAsk_RequestRadioExtraction*
 	// handlers
 	//===================================================================================
 
@@ -457,7 +457,7 @@ class CRF_RadioExtraction : ScriptComponent
 	}
 
 	//===================================================================================
-	// SOUND MANAGEMENT (server-side, replicated via CRF_RplBroadcastManager positional sounds)
+	// SOUND MANAGEMENT (server-side, replicated via COA_RplBroadcastManager positional sounds)
 	//===================================================================================
 
 	//------------------------------------------------------------------------------------------------

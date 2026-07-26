@@ -16,7 +16,7 @@ modded class LM_SuppressionScreenEffect
 			return false;
 			
 		// Check if the player is not a spectator
-		if (CRF_EntityHelper.IsSpectator(localEntity))
+		if (COA_EntityHelper.IsSpectator(localEntity))
 			return false;
 			
 		return true;
