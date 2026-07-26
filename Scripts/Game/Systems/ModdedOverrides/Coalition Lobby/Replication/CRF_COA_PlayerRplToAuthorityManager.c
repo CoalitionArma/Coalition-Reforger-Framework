@@ -20,6 +20,8 @@ modded class COA_PlayerRplToAuthorityManager
 	//! Initializes all manager references needed by this component
 	override protected void InitializeManagerReferences()
 	{
+		super.InitializeManagerReferences();
+		
 		m_MapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 	}
 	
