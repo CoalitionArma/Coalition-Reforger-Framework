@@ -78,7 +78,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{689B119259CCF1B8}" {
+  COA_SlottingGroup "{689B119259CCF1B8}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -86,7 +86,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{689B119259CCF372}" {
+  COA_SlottingGroup "{689B119259CCF372}" {
    m_sCallsign "LOGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -94,7 +94,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{689B119259CCF3FF}" {
+  COA_SlottingGroup "{689B119259CCF3FF}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -102,7 +102,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{689B119259CCF38C}" {
+  COA_SlottingGroup "{689B119259CCF38C}" {
    m_sCallsign "Alpha"
    m_FlagType INFANTRY
    m_aSlots {
@@ -120,7 +120,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF2E9}" {
+  COA_SlottingGroup "{689B119259CCF2E9}" {
    m_sCallsign "Bravo"
    m_FlagType INFANTRY
    m_aSlots {
@@ -138,7 +138,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF574}" {
+  COA_SlottingGroup "{689B119259CCF574}" {
    m_sCallsign "Charlie"
    m_FlagType INFANTRY
    m_aSlots {
@@ -156,7 +156,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF5F4}" {
+  COA_SlottingGroup "{689B119259CCF5F4}" {
    m_sCallsign "Delta"
    m_FlagType INFANTRY
    m_aSlots {
@@ -176,7 +176,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{689B119259CCF4F4}" {
+  COA_SlottingGroup "{689B119259CCF4F4}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -185,7 +185,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF480}" {
+  COA_SlottingGroup "{689B119259CCF480}" {
    m_sCallsign "Topor 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,7 +199,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF712}" {
+  COA_SlottingGroup "{689B119259CCF712}" {
    m_sCallsign "Topor 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -213,7 +213,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF7A0}" {
+  COA_SlottingGroup "{689B119259CCF7A0}" {
    m_sCallsign "Conscripts"
    m_FlagType INFANTRY
    m_aSlots {
@@ -229,7 +229,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF62B}" {
+  COA_SlottingGroup "{689B119259CCF62B}" {
    m_sCallsign "Zashchita 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -244,7 +244,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCF6B7}" {
+  COA_SlottingGroup "{689B119259CCF6B7}" {
    m_sCallsign "Zashchita 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -259,7 +259,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{689B119259CCE946}" {
+  COA_SlottingGroup "{689B119259CCE946}" {
    m_sCallsign "Zashchita 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -271,7 +271,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{689B119259CCE999}" {
+  COA_SlottingGroup "{689B119259CCE999}" {
    m_sCallsign "Journalists"
    m_FlagType INFANTRY
    m_aSlots {
@@ -281,7 +281,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RADIO_TELEPHONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{689B119259CCE82B}" {
+  COA_SlottingGroup "{689B119259CCE82B}" {
    m_sCallsign "Zeus"
    m_FlagType INFANTRY
    m_aSlots {

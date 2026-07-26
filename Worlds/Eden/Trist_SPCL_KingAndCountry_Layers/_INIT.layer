@@ -66,7 +66,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{6923256343D17A82}" {
+  COA_SlottingGroup "{6923256343D17A82}" {
    m_sCallsign "Men of the Line"
    m_FlagType INFANTRY
    m_aSlots {
@@ -124,7 +124,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{6923256343D179CD}" {
+  COA_SlottingGroup "{6923256343D179CD}" {
    m_sCallsign "Men of the Line"
    m_FlagType INFANTRY
    m_aSlots {

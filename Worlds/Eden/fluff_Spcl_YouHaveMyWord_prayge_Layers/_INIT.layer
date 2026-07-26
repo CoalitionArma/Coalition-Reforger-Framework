@@ -194,7 +194,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{686C28CEC28C9CDA}" {
+  COA_SlottingGroup "{686C28CEC28C9CDA}" {
    m_sCallsign "Police HQ"
    m_FlagType SIGNAL
    m_aSlots {
@@ -204,7 +204,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDIC
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9D4E}" {
+  COA_SlottingGroup "{686C28CEC28C9D4E}" {
    m_sCallsign "Police Squad"
    m_FlagType INFANTRY
    m_aSlots {
@@ -215,7 +215,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9E11}" {
+  COA_SlottingGroup "{686C28CEC28C9E11}" {
    m_sCallsign "Police Squad"
    m_FlagType INFANTRY
    m_aSlots {
@@ -226,7 +226,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9FFC}" {
+  COA_SlottingGroup "{686C28CEC28C9FFC}" {
    m_sCallsign "SWAT Team"
    m_FlagType INFANTRY
    m_aSlots {
@@ -239,7 +239,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{686C28CEC28CA0E2}" {
+  COA_SlottingGroup "{686C28CEC28CA0E2}" {
    m_sCallsign "The Family"
    m_FlagType SIGNAL
    m_aSlots {
@@ -253,7 +253,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{686C28CEC28CA2C3}" {
+  COA_SlottingGroup "{686C28CEC28CA2C3}" {
    m_sCallsign "Strike Lead"
    m_FlagType SIGNAL
    m_aSlots {
@@ -263,7 +263,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDIC
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA3B1}" {
+  COA_SlottingGroup "{686C28CEC28CA3B1}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -281,7 +281,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA37B}" {
+  COA_SlottingGroup "{686C28CEC28CA37B}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -299,7 +299,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA405}" {
+  COA_SlottingGroup "{686C28CEC28CA405}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -317,7 +317,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA5C1}" {
+  COA_SlottingGroup "{686C28CEC28CA5C1}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -335,7 +335,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA6BD}" {
+  COA_SlottingGroup "{686C28CEC28CA6BD}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -353,7 +353,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA674}" {
+  COA_SlottingGroup "{686C28CEC28CA674}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -371,7 +371,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA73F}" {
+  COA_SlottingGroup "{686C28CEC28CA73F}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -391,7 +391,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{686C28CEC28CA82F}" {
+  COA_SlottingGroup "{686C28CEC28CA82F}" {
    m_sCallsign "Factory Owner"
    m_FlagType SIGNAL
    m_aSlots {

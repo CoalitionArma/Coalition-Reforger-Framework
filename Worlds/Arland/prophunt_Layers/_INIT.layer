@@ -34,7 +34,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69114209C061FB69}" {
+  COA_SlottingGroup "{69114209C061FB69}" {
    m_sCallsign "PROPS1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -49,7 +49,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{69114209C061FA3C}" {
+  COA_SlottingGroup "{69114209C061FA3C}" {
    m_sCallsign "PROPS2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -66,7 +66,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69114209C061E597}" {
+  COA_SlottingGroup "{69114209C061E597}" {
    m_sCallsign "HUNTER1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -81,7 +81,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E507}" {
+  COA_SlottingGroup "{69114209C061E507}" {
    m_sCallsign "HUNTER2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -96,7 +96,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E473}" {
+  COA_SlottingGroup "{69114209C061E473}" {
    m_sCallsign "HUNTER3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -111,7 +111,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E7EA}" {
+  COA_SlottingGroup "{69114209C061E7EA}" {
    m_sCallsign "HUNTER4"
    m_FlagType INFANTRY
    m_aSlots {

@@ -109,7 +109,7 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Auto, "List of possible zone sequences (only one will be selected at game start)", category: "Zone Configuration")]
 	ref array<ref CRF_BattleRoyaleZoneData> m_aZoneSequences;
 	
-	[Attribute("BATTLE ROYALE DOCUMENTATION\n\n=== ZONE SETUP ===\n\n1. Create zone sequences with a PREFIX (e.g. 'ZoneA', 'ZoneB', 'ZoneC')\n2. Name boundary entities: [Prefix]1, [Prefix]2, [Prefix]3, etc.\n   Example: ZoneA1, ZoneA2, ZoneA3 for prefix 'ZoneA'\n3. Numeric suffix determines stage order:\n   - HIGHEST number = FIRST stage (largest zone)\n   - LOWEST number = FINAL stage (smallest zone)\n   Example: ZoneA5 -> ZoneA4 -> ZoneA3 -> ZoneA2 -> ZoneA1 (final)\n4. System auto-discovers all matching entities at init\n5. System randomly selects ONE zone and DELETES all others\n\n=== BOUNDARY BEHAVIOR ===\n\n- Boundaries start moved 10km away (invisible/inactive)\n- When stage timer completes, boundary moves to original position\n- 'Delete Previous' removes the prior boundary when new one activates\n- Use CRF_PolyZone prefabs with CRF_PolyZoneTrigger for boundaries\n\n=== ZONE SEQUENCE SETTINGS ===\n\n• Zone Name: Display name for identification\n• Zone Prefix: Entity name prefix (e.g. 'ZoneA' finds ZoneA1, ZoneA2...)\n• Default Duration: Timer duration for ALL stages in this zone\n• Delete Previous: Remove prior boundary on activation (recommended)\n\n=== EMERGENCY STOP ===\n\nCRF_BattleRoyaleComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_BattleRoyaleComponent)).StopBattleRoyale();", UIWidgets.EditBoxMultiline, "Battle Royale Setup Instructions", category: "Documentation")]
+	[Attribute("BATTLE ROYALE DOCUMENTATION\n\n=== ZONE SETUP ===\n\n1. Create zone sequences with a PREFIX (e.g. 'ZoneA', 'ZoneB', 'ZoneC')\n2. Name boundary entities: [Prefix]1, [Prefix]2, [Prefix]3, etc.\n   Example: ZoneA1, ZoneA2, ZoneA3 for prefix 'ZoneA'\n3. Numeric suffix determines stage order:\n   - HIGHEST number = FIRST stage (largest zone)\n   - LOWEST number = FINAL stage (smallest zone)\n   Example: ZoneA5 -> ZoneA4 -> ZoneA3 -> ZoneA2 -> ZoneA1 (final)\n4. System auto-discovers all matching entities at init\n5. System randomly selects ONE zone and DELETES all others\n\n=== BOUNDARY BEHAVIOR ===\n\n- Boundaries start moved 10km away (invisible/inactive)\n- When stage timer completes, boundary moves to original position\n- 'Delete Previous' removes the prior boundary when new one activates\n- Use COA_PolyZone prefabs with COA_PolyZoneTrigger for boundaries\n\n=== ZONE SEQUENCE SETTINGS ===\n\n• Zone Name: Display name for identification\n• Zone Prefix: Entity name prefix (e.g. 'ZoneA' finds ZoneA1, ZoneA2...)\n• Default Duration: Timer duration for ALL stages in this zone\n• Delete Previous: Remove prior boundary on activation (recommended)\n\n=== EMERGENCY STOP ===\n\nCRF_BattleRoyaleComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_BattleRoyaleComponent)).StopBattleRoyale();", UIWidgets.EditBoxMultiline, "Battle Royale Setup Instructions", category: "Documentation")]
 	string m_sInstructions;
 	
 	//------------------------------------------------------------------------------------------------
@@ -665,7 +665,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Get the CRF_PolyZoneTrigger child entity from a GameBoundary parent
+	 * Get the COA_PolyZoneTrigger child entity from a GameBoundary parent
 	 */
 	COA_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
 	{
@@ -679,7 +679,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		IEntity child = parentEntity.GetChildren();
 		while (child)
 		{
-			CRF_PolyZoneTrigger trigger = CRF_PolyZoneTrigger.Cast(child);
+			COA_PolyZoneTrigger trigger = COA_PolyZoneTrigger.Cast(child);
 			if (trigger)
 				return trigger;
 			child = child.GetSibling();
@@ -895,7 +895,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				Print(string.Format("[CRF_BattleRoyaleComponent] Boundary '%1' activated at %2", stageData.m_sStageBoundaryName, boundaryEntity.GetOrigin()));
 			
 			// For reversed (INCLUSION) zones, apply effects to players already outside
-			CRF_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sStageBoundaryName);
+			COA_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sStageBoundaryName);
 			if (trigger)
 				trigger.CheckPlayersOutside();
 		}
@@ -1053,11 +1053,11 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 			return;
 		}
 		
-		CRF_PolyZone polyZone = CRF_PolyZone.Cast(boundaryEntity.FindComponent(CRF_PolyZone));
+		COA_PolyZone polyZone = COA_PolyZone.Cast(boundaryEntity.FindComponent(COA_PolyZone));
 		if (!polyZone)
 		{
 			if (m_bDebugEnabled) 
-				Print(string.Format("[CRF_BattleRoyaleComponent] UpdateBoundaryVisualStateLocal: CRF_PolyZone not found on '%1'", boundaryName));
+				Print(string.Format("[CRF_BattleRoyaleComponent] UpdateBoundaryVisualStateLocal: COA_PolyZone not found on '%1'", boundaryName));
 			return;
 		}
 		

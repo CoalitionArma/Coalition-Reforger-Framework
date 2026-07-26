@@ -132,7 +132,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68B42060157F4FFB}" {
+  COA_SlottingGroup "{68B42060157F4FFB}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -142,7 +142,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{68B42060157F4EE1}" {
+  COA_SlottingGroup "{68B42060157F4EE1}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -157,7 +157,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F4157}" {
+  COA_SlottingGroup "{68B42060157F4157}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -172,7 +172,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F41D2}" {
+  COA_SlottingGroup "{68B42060157F41D2}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -187,7 +187,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F404C}" {
+  COA_SlottingGroup "{68B42060157F404C}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -202,7 +202,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F40C1}" {
+  COA_SlottingGroup "{68B42060157F40C1}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -217,7 +217,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F4351}" {
+  COA_SlottingGroup "{68B42060157F4351}" {
    m_sCallsign "IFV A"
    m_FlagType ARMORED
    m_aSlots {
@@ -226,7 +226,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{68B42060157F43E3}" {
+  COA_SlottingGroup "{68B42060157F43E3}" {
    m_sCallsign "IFV B"
    m_FlagType ARMORED
    m_aSlots {
@@ -235,7 +235,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{68B42060157F427A}" {
+  COA_SlottingGroup "{68B42060157F427A}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {
@@ -246,7 +246,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68B42060157F4551}" {
+  COA_SlottingGroup "{68B42060157F4551}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -256,7 +256,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{68B42060157F45E5}" {
+  COA_SlottingGroup "{68B42060157F45E5}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -271,7 +271,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F446F}" {
+  COA_SlottingGroup "{68B42060157F446F}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -286,7 +286,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F44E8}" {
+  COA_SlottingGroup "{68B42060157F44E8}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -301,7 +301,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F4772}" {
+  COA_SlottingGroup "{68B42060157F4772}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -316,7 +316,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F47FB}" {
+  COA_SlottingGroup "{68B42060157F47FB}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -331,7 +331,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68B42060157F478F}" {
+  COA_SlottingGroup "{68B42060157F478F}" {
    m_sCallsign "IFV A"
    m_FlagType ARMORED
    m_aSlots {
@@ -340,7 +340,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{68B42060157F4618}" {
+  COA_SlottingGroup "{68B42060157F4618}" {
    m_sCallsign "IFV B"
    m_FlagType ARMORED
    m_aSlots {
@@ -349,7 +349,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{68B42060157F46B5}" {
+  COA_SlottingGroup "{68B42060157F46B5}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {

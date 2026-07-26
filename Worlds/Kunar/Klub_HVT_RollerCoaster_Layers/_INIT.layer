@@ -110,7 +110,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69E176F23CB68A7F}" {
+  COA_SlottingGroup "{69E176F23CB68A7F}" {
    m_sCallsign "ANCHOR 6"
    m_FlagType SIGNAL
    m_aSlots {
@@ -120,7 +120,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68D2E}" {
+  COA_SlottingGroup "{69E176F23CB68D2E}" {
    m_sCallsign "HAMMERHEAD"
    m_FlagType INFANTRY
    m_aSlots {
@@ -137,7 +137,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68C68}" {
+  COA_SlottingGroup "{69E176F23CB68C68}" {
    m_sCallsign "WHALE"
    m_FlagType INFANTRY
    m_aSlots {
@@ -154,7 +154,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68F8D}" {
+  COA_SlottingGroup "{69E176F23CB68F8D}" {
    m_sCallsign "MAKO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -171,7 +171,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68F23}" {
+  COA_SlottingGroup "{69E176F23CB68F23}" {
    m_sCallsign "ZEBRA"
    m_FlagType RECON
    m_aSlots {
@@ -181,7 +181,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68EBC}" {
+  COA_SlottingGroup "{69E176F23CB68EBC}" {
    m_sCallsign "ANGEL 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -194,7 +194,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69E176F23CB6810B}" {
+  COA_SlottingGroup "{69E176F23CB6810B}" {
    m_sCallsign "SHAMS6 (Sun/1PL)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -204,7 +204,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB6809C}" {
+  COA_SlottingGroup "{69E176F23CB6809C}" {
    m_sCallsign "NAR 1 (Fire 1)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -218,7 +218,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68038}" {
+  COA_SlottingGroup "{69E176F23CB68038}" {
    m_sCallsign "NAR 2 (Fire 2)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -232,7 +232,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB6834C}" {
+  COA_SlottingGroup "{69E176F23CB6834C}" {
    m_sCallsign "NAR 3 (Fire 3)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -246,7 +246,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB682D3}" {
+  COA_SlottingGroup "{69E176F23CB682D3}" {
    m_sCallsign "NAR 4 (Fire 4)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -260,7 +260,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68275}" {
+  COA_SlottingGroup "{69E176F23CB68275}" {
    m_sCallsign "HISAN 1 (Horse 1)"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -270,7 +270,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB6859A}" {
+  COA_SlottingGroup "{69E176F23CB6859A}" {
    m_sCallsign "QAMAR (Moon/2PL)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -280,7 +280,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB68518}" {
+  COA_SlottingGroup "{69E176F23CB68518}" {
    m_sCallsign "NAJM 1 (Star 1)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -294,7 +294,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB684AB}" {
+  COA_SlottingGroup "{69E176F23CB684AB}" {
    m_sCallsign "NAJM 2 (Star 2)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -308,7 +308,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB6843B}" {
+  COA_SlottingGroup "{69E176F23CB6843B}" {
    m_sCallsign "NAJM 3 (Star 3)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -322,7 +322,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB6874F}" {
+  COA_SlottingGroup "{69E176F23CB6874F}" {
    m_sCallsign "NAJM 4 (Star 4)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -336,7 +336,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69E176F23CB686DC}" {
+  COA_SlottingGroup "{69E176F23CB686DC}" {
    m_sCallsign "HISAN 2 (Horse 2)"
    m_FlagType MACHINEGUN
    m_aSlots {

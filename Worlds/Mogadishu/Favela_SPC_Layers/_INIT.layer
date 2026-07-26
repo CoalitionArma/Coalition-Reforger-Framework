@@ -118,7 +118,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69D50DACF8D1F2A9}" {
+  COA_SlottingGroup "{69D50DACF8D1F2A9}" {
    m_sCallsign "Group 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -133,7 +133,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F5CC}" {
+  COA_SlottingGroup "{69D50DACF8D1F5CC}" {
    m_sCallsign "Group 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -148,7 +148,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F447}" {
+  COA_SlottingGroup "{69D50DACF8D1F447}" {
    m_sCallsign "Group 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -163,7 +163,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F4AD}" {
+  COA_SlottingGroup "{69D50DACF8D1F4AD}" {
    m_sCallsign "Group 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -178,7 +178,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F709}" {
+  COA_SlottingGroup "{69D50DACF8D1F709}" {
    m_sCallsign "Group 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F773}" {
+  COA_SlottingGroup "{69D50DACF8D1F773}" {
    m_sCallsign "Group 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -210,7 +210,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69D50DACF8D1F65F}" {
+  COA_SlottingGroup "{69D50DACF8D1F65F}" {
    m_sCallsign "Group 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -225,7 +225,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1F6C0}" {
+  COA_SlottingGroup "{69D50DACF8D1F6C0}" {
    m_sCallsign "Group 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -240,7 +240,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1E936}" {
+  COA_SlottingGroup "{69D50DACF8D1E936}" {
    m_sCallsign "Group 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -255,7 +255,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1E9A4}" {
+  COA_SlottingGroup "{69D50DACF8D1E9A4}" {
    m_sCallsign "Group 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -270,7 +270,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1E809}" {
+  COA_SlottingGroup "{69D50DACF8D1E809}" {
    m_sCallsign "Group 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -285,7 +285,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69D50DACF8D1E87A}" {
+  COA_SlottingGroup "{69D50DACF8D1E87A}" {
    m_sCallsign "Group 6"
    m_FlagType INFANTRY
    m_aSlots {

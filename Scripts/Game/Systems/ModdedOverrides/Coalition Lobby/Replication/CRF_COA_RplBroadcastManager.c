@@ -38,6 +38,20 @@ modded class COA_RplBroadcastManager
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void BroadcastAdminChatMessage(string message)
+	{
+		// Telemetry: string
+		int bytes = COA_BandwidthTelemetryManager.EstimateSize_String(message);
+		LogTelemetry("BroadcastAdminChatMessage", bytes);
+		
+		#ifdef WORKBENCH
+		RpcDo_BroadcastAdminChatMessage(message);
+		#else
+		Rpc(RpcDo_BroadcastAdminChatMessage, message);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SendRequest(int playerId, int requestId, int channel)
 	{
 		Print(string.Format("[VON] Server sending RPC to targetPlayerId=%1, requestId=%2, channel=%3", playerId, requestId, channel), LogLevel.NORMAL);
@@ -355,7 +369,7 @@ modded class COA_RplBroadcastManager
 		Print(string.Format("[VON] Top menu: %1", topMenu), LogLevel.NORMAL);
 
 		// Try to get the spectator menu with retry logic
-		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(topMenu);
+		COA_SpectatorMenu specMenu = COA_SpectatorMenu.Cast(topMenu);
 		if (!specMenu)
 		{
 			Print(string.Format("[VON] Spectator menu not available (topMenu=%1), retrying in 100ms", topMenu), LogLevel.NORMAL);
@@ -386,7 +400,7 @@ modded class COA_RplBroadcastManager
 		specMenu.m_aRequest.Insert(compWidget);
 		
 		// Configure the request component
-		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
+		COA_ListBoxElementComponent comp = COA_ListBoxElementComponent.Cast(compWidget.FindHandler(COA_ListBoxElementComponent));
 		if (!comp)
 			return;
 			
@@ -584,7 +598,7 @@ modded class COA_RplBroadcastManager
 	//------------------------------------------------------------------------------------------------
 	void OpenOutro()
 	{
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_Outro);
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.COA_Outro);
 	}
 
 	//------------------------------------------------------------------------------------------------

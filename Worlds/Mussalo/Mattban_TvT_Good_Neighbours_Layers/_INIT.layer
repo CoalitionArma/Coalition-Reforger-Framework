@@ -88,7 +88,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{693D1976C6E08645}" {
+  COA_SlottingGroup "{693D1976C6E08645}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -97,7 +97,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDICAL_OFFICER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09B8E}" {
+  COA_SlottingGroup "{693D1976C6E09B8E}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -105,7 +105,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09A6A}" {
+  COA_SlottingGroup "{693D1976C6E09A6A}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -119,7 +119,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09881}" {
+  COA_SlottingGroup "{693D1976C6E09881}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -133,7 +133,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09F79}" {
+  COA_SlottingGroup "{693D1976C6E09F79}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -147,7 +147,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09D46}" {
+  COA_SlottingGroup "{693D1976C6E09D46}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -155,7 +155,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09C0E}" {
+  COA_SlottingGroup "{693D1976C6E09C0E}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -169,7 +169,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E092AA}" {
+  COA_SlottingGroup "{693D1976C6E092AA}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -183,7 +183,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E09113}" {
+  COA_SlottingGroup "{693D1976C6E09113}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -197,7 +197,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E0978D}" {
+  COA_SlottingGroup "{693D1976C6E0978D}" {
    m_sCallsign "FOX 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -206,7 +206,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E0966C}" {
+  COA_SlottingGroup "{693D1976C6E0966C}" {
    m_sCallsign "FOX 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -217,7 +217,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{693D1976C6E16A5E}" {
+  COA_SlottingGroup "{693D1976C6E16A5E}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -226,7 +226,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDICAL_OFFICER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E1693F}" {
+  COA_SlottingGroup "{693D1976C6E1693F}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -234,7 +234,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{693D1976C6E16FAF}" {
+  COA_SlottingGroup "{693D1976C6E16FAF}" {
    m_sCallsign "CELL 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -248,7 +248,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E16E1C}" {
+  COA_SlottingGroup "{693D1976C6E16E1C}" {
    m_sCallsign "CELL 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -262,7 +262,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E16C88}" {
+  COA_SlottingGroup "{693D1976C6E16C88}" {
    m_sCallsign "CELL 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -276,7 +276,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E1637C}" {
+  COA_SlottingGroup "{693D1976C6E1637C}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -284,7 +284,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{693D1976C6E161D7}" {
+  COA_SlottingGroup "{693D1976C6E161D7}" {
    m_sCallsign "CELL 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -298,7 +298,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E16050}" {
+  COA_SlottingGroup "{693D1976C6E16050}" {
    m_sCallsign "CELL 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -312,7 +312,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E166C5}" {
+  COA_SlottingGroup "{693D1976C6E166C5}" {
    m_sCallsign "CELL 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -326,7 +326,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{693D1976C6E165B5}" {
+  COA_SlottingGroup "{693D1976C6E165B5}" {
    m_sCallsign "Sniper"
    m_FlagType SNIPER
    m_aSlots {
@@ -334,7 +334,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SNIPER
    }
   }
-  CRF_SlottingGroup "{693D1976C6E16402}" {
+  COA_SlottingGroup "{693D1976C6E16402}" {
    m_sCallsign "GUNTRUCK"
    m_FlagType MACHINEGUN
    m_aSlots {

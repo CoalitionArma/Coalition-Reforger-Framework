@@ -80,7 +80,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BluforSlots {
-  CRF_SlottingGroup "{692133169ADF19FE}" {
+  COA_SlottingGroup "{692133169ADF19FE}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -90,7 +90,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{692133169ADF1103}" {
+  COA_SlottingGroup "{692133169ADF1103}" {
    m_sCallsign "Able"
    m_FlagType INFANTRY
    m_aSlots {
@@ -106,7 +106,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF1062}" {
+  COA_SlottingGroup "{692133169ADF1062}" {
    m_sCallsign "Bravo"
    m_FlagType INFANTRY
    m_aSlots {
@@ -122,7 +122,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF179C}" {
+  COA_SlottingGroup "{692133169ADF179C}" {
    m_sCallsign "Charlie"
    m_FlagType INFANTRY
    m_aSlots {
@@ -138,7 +138,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF16CF}" {
+  COA_SlottingGroup "{692133169ADF16CF}" {
    m_sCallsign "HMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -152,7 +152,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{692133169ADF1552}" {
+  COA_SlottingGroup "{692133169ADF1552}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -162,7 +162,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{692133169ADF14F8}" {
+  COA_SlottingGroup "{692133169ADF14F8}" {
    m_sCallsign "Assault 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -177,7 +177,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF142D}" {
+  COA_SlottingGroup "{692133169ADF142D}" {
    m_sCallsign "MG 1"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -190,7 +190,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF0B46}" {
+  COA_SlottingGroup "{692133169ADF0B46}" {
    m_sCallsign "Assault 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -205,7 +205,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF0AE2}" {
+  COA_SlottingGroup "{692133169ADF0AE2}" {
    m_sCallsign "MG 2"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -218,7 +218,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF0A00}" {
+  COA_SlottingGroup "{692133169ADF0A00}" {
    m_sCallsign "Assault 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +233,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF09A0}" {
+  COA_SlottingGroup "{692133169ADF09A0}" {
    m_sCallsign "MG 3"
    m_FlagType MACHINEGUN
    m_aSlots {

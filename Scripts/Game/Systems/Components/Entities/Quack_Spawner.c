@@ -38,13 +38,13 @@ class Quack_SpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------	
 	protected bool isSafeStartOff()
 	{
-		SCR_BaseGameMode COA_Gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if(!COA_Gamemode)
+		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if(!gamemode)
 		{
 			Print("No game mode found",LogLevel.ERROR);
 			return false;
 		}
-		COA_SafestartManager SafeStarChecker = COA_SafestartManager.Cast(COA_Gamemode.FindComponent(COA_SafestartManager));
+		COA_SafestartManager SafeStarChecker = COA_SafestartManager.Cast(gamemode.FindComponent(COA_SafestartManager));
 		if(!SafeStarChecker)
 		{
 			Print("No Safe start manager found",LogLevel.ERROR);
@@ -68,13 +68,13 @@ class Quack_SpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void AllRepawner()
 	{
-		SCR_BaseGameMode COA_Gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if(!COA_Gamemode)
+		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if(!gamemode)
 		{
 			Print("No game mode found",LogLevel.ERROR);
 		}
 		
-		COA_RespawnManager RspMng = COA_RespawnManager.Cast(COA_Gamemode.FindComponent(COA_RespawnManager));
+		COA_RespawnManager RspMng = COA_RespawnManager.Cast(gamemode.FindComponent(COA_RespawnManager));
 		RspMng.RespawnAllSides()
 	}
 		

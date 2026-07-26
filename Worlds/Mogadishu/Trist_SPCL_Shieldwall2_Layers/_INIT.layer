@@ -131,7 +131,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69F101A40A3A70CE}" {
+  COA_SlottingGroup "{69F101A40A3A70CE}" {
    m_sCallsign "Justice Crusade"
    m_FlagType SIGNAL
    m_aSlots {
@@ -191,7 +191,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69F101A40A3A7DC2}" {
+  COA_SlottingGroup "{69F101A40A3A7DC2}" {
    m_sCallsign "Horde Conquerors"
    m_FlagType SIGNAL
    m_aSlots {

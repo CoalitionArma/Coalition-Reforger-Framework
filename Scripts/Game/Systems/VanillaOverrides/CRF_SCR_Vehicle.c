@@ -92,7 +92,7 @@ modded class Vehicle
 		if (!respawnManager)
 			return;
 			
-		foreach (CRF_VehicleSpawner vehicle: respawnManager.GetVehicleSpawners())
+		foreach (COA_VehicleSpawner vehicle: respawnManager.GetVehicleSpawners())
 		{
 			// Check if vehicle spawner is valid and has a vehicle entity
 			if (!vehicle || !vehicle.m_eVehicle)

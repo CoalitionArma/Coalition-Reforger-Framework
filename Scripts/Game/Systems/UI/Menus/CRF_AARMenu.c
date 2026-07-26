@@ -143,7 +143,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		
 		// Initialize list components
 		m_cPlayerListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("PlayerList")).FindHandler(SCR_ListBoxComponent));
-		m_cSlotListBoxComponent = CRF_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(CRF_ListboxComponent));
+		m_cSlotListBoxComponent = COA_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(COA_ListboxComponent));
 	}
 	
 	/**
@@ -414,7 +414,7 @@ class CRF_AARMenu: ChimeraMenuBase
 			// Check if cursor is over a menu element
 			if(parentWidget == m_wFactions || parentWidget == m_wMissionDescription || 
 			   parentWidget == m_wRoleFrame || parentWidget == m_wLeftFaction || 
-			   cursorWidget.FindHandler(CRF_ListBoxElementComponent))
+			   cursorWidget.FindHandler(COA_ListBoxElementComponent))
 			{
 				// Slide in
 				leftFactionX += tDelta * 2400.0;
@@ -671,7 +671,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	 */
 	protected void SetSlotVisuals(int slotIndex, COA_SlotData slotData)
 	{
-		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
+		COA_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		
 		if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));

@@ -102,7 +102,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69D517630FAD8CDA}" {
+  COA_SlottingGroup "{69D517630FAD8CDA}" {
    m_sCallsign "Cannons"
    m_FlagType MORTAR
    m_aSlots {
@@ -113,7 +113,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     INDIRECT_LOADER
    }
   }
-  CRF_SlottingGroup "{69D517630FAD835B}" {
+  COA_SlottingGroup "{69D517630FAD835B}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -139,7 +139,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69D517630FAD81CA}" {
+  COA_SlottingGroup "{69D517630FAD81CA}" {
    m_sCallsign "0-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69D517630FAD8739}" {
+  COA_SlottingGroup "{69D517630FAD8739}" {
    m_sCallsign "Cannons"
    m_FlagType MORTAR
    m_aSlots {
@@ -178,7 +178,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     INDIRECT_LOADER
    }
   }
-  CRF_SlottingGroup "{69D517630FAD8638}" {
+  COA_SlottingGroup "{69D517630FAD8638}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -204,7 +204,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69D517630FAD84E6}" {
+  COA_SlottingGroup "{69D517630FAD84E6}" {
    m_sCallsign "0-2"
    m_FlagType INFANTRY
    m_aSlots {

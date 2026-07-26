@@ -197,7 +197,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{6976E59779C558E7}" {
+  COA_SlottingGroup "{6976E59779C558E7}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -205,7 +205,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6976E59779C55997}" {
+  COA_SlottingGroup "{6976E59779C55997}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -219,7 +219,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C566CB}" {
+  COA_SlottingGroup "{6976E59779C566CB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +233,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56702}" {
+  COA_SlottingGroup "{6976E59779C56702}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -247,7 +247,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56450}" {
+  COA_SlottingGroup "{6976E59779C56450}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -261,7 +261,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56494}" {
+  COA_SlottingGroup "{6976E59779C56494}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -275,7 +275,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C565E0}" {
+  COA_SlottingGroup "{6976E59779C565E0}" {
    m_sCallsign "MH6-Alpha"
    m_FlagType HELICOPER
    m_aSlots {
@@ -283,7 +283,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C56240}" {
+  COA_SlottingGroup "{6976E59779C56240}" {
    m_sCallsign "MH6-Bravo"
    m_FlagType HELICOPER
    m_aSlots {
@@ -291,7 +291,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C562B9}" {
+  COA_SlottingGroup "{6976E59779C562B9}" {
    m_sCallsign "MH6-Charlie"
    m_FlagType HELICOPER
    m_aSlots {
@@ -299,7 +299,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C5631F}" {
+  COA_SlottingGroup "{6976E59779C5631F}" {
    m_sCallsign "MH6-Delta"
    m_FlagType HELICOPER
    m_aSlots {
@@ -307,7 +307,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C5607E}" {
+  COA_SlottingGroup "{6976E59779C5607E}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {
@@ -318,7 +318,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{6976E59779C56157}" {
+  COA_SlottingGroup "{6976E59779C56157}" {
    m_sCallsign "Raider 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -336,7 +336,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{6976E59779C56E77}" {
+  COA_SlottingGroup "{6976E59779C56E77}" {
    m_sCallsign "Raider 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -354,7 +354,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{6976E59779C56EC9}" {
+  COA_SlottingGroup "{6976E59779C56EC9}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {

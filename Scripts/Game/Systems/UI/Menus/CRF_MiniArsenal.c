@@ -82,7 +82,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	void PopulateWeaponCategories()
 	{
 		COA_EGearRole role = COA_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
-		CRF_RoleConfig rolesConfig = COA_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
+		COA_RoleConfig rolesConfig = COA_GearscriptManager.GetRolesConfig().FindRoleConfig(role);
 		foreach (COA_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
 		{
 			switch (weaponType)

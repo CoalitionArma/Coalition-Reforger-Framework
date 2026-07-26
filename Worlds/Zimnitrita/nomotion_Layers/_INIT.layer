@@ -209,7 +209,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68D835AEAEAC2ED9}" {
+  COA_SlottingGroup "{68D835AEAEAC2ED9}" {
    m_sCallsign "COMMAND"
    m_FlagType SIGNAL
    m_aSlots {
@@ -218,7 +218,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     JTAC
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC21BB}" {
+  COA_SlottingGroup "{68D835AEAEAC21BB}" {
    m_sCallsign "ODA11"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +233,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC2013}" {
+  COA_SlottingGroup "{68D835AEAEAC2013}" {
    m_sCallsign "ODA12"
    m_FlagType INFANTRY
    m_aSlots {
@@ -248,7 +248,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC2099}" {
+  COA_SlottingGroup "{68D835AEAEAC2099}" {
    m_sCallsign "ODA13"
    m_FlagType INFANTRY
    m_aSlots {
@@ -263,7 +263,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC232E}" {
+  COA_SlottingGroup "{68D835AEAEAC232E}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -271,7 +271,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC23C4}" {
+  COA_SlottingGroup "{68D835AEAEAC23C4}" {
    m_sCallsign "HELI 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -279,7 +279,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC225D}" {
+  COA_SlottingGroup "{68D835AEAEAC225D}" {
    m_sCallsign "HELI 3"
    m_FlagType HELICOPER
    m_aSlots {
@@ -289,7 +289,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68D835AEAEAC2573}" {
+  COA_SlottingGroup "{68D835AEAEAC2573}" {
    m_sCallsign "CELL LEAD"
    m_FlagType SIGNAL
    m_aSlots {
@@ -297,7 +297,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC250C}" {
+  COA_SlottingGroup "{68D835AEAEAC250C}" {
    m_sCallsign "CELL 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -311,7 +311,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC2593}" {
+  COA_SlottingGroup "{68D835AEAEAC2593}" {
    m_sCallsign "CELL 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -325,7 +325,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC2423}" {
+  COA_SlottingGroup "{68D835AEAEAC2423}" {
    m_sCallsign "CELL 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -339,7 +339,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC24AA}" {
+  COA_SlottingGroup "{68D835AEAEAC24AA}" {
    m_sCallsign "CELL 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -353,7 +353,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC2733}" {
+  COA_SlottingGroup "{68D835AEAEAC2733}" {
    m_sCallsign "CELL 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -367,7 +367,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68D835AEAEAC27C0}" {
+  COA_SlottingGroup "{68D835AEAEAC27C0}" {
    m_sCallsign "CELL 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -383,7 +383,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{68D835AEAEAC262D}" {
+  COA_SlottingGroup "{68D835AEAEAC262D}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {

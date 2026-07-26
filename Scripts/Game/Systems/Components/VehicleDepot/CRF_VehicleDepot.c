@@ -1343,7 +1343,7 @@ class CRF_VehicleDepot : ScriptComponent
 			vehicleForwardDir = newForwardDir.Normalized();
 		}
 		
-		// Use the proper world reference and coordinate handling like CRF_PolyZoneMeshComponent
+		// Use the proper world reference and coordinate handling like COA_PolyZoneMeshComponent
 		BaseWorld world = owner.GetWorld(); // Use owner.GetWorld() instead of GetGame().GetWorld()
 		
 		// Shape flags for consistent rendering

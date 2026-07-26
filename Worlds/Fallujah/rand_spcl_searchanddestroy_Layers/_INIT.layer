@@ -85,7 +85,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{696D542ED3B68FF1}" {
+  COA_SlottingGroup "{696D542ED3B68FF1}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -101,7 +101,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B24E}" {
+  COA_SlottingGroup "{696D542ED3B6B24E}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -117,7 +117,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B327}" {
+  COA_SlottingGroup "{696D542ED3B6B327}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -133,7 +133,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B401}" {
+  COA_SlottingGroup "{696D542ED3B6B401}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -149,7 +149,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B5EA}" {
+  COA_SlottingGroup "{696D542ED3B6B5EA}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -165,7 +165,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B6C6}" {
+  COA_SlottingGroup "{696D542ED3B6B6C6}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -183,7 +183,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{696D542ED3B6B7DA}" {
+  COA_SlottingGroup "{696D542ED3B6B7DA}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -199,7 +199,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B8BF}" {
+  COA_SlottingGroup "{696D542ED3B6B8BF}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -215,7 +215,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B99B}" {
+  COA_SlottingGroup "{696D542ED3B6B99B}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {
@@ -231,7 +231,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{696D542ED3B6B94C}" {
+  COA_SlottingGroup "{696D542ED3B6B94C}" {
    m_sCallsign "Players"
    m_FlagType SIGNAL
    m_aSlots {

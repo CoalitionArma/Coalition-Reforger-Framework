@@ -78,7 +78,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_BluforSlots {
-  CRF_SlottingGroup "{68F3550119397AD5}" {
+  COA_SlottingGroup "{68F3550119397AD5}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -86,7 +86,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68F3550119397DDA}" {
+  COA_SlottingGroup "{68F3550119397DDA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -101,7 +101,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68F3550119397C49}" {
+  COA_SlottingGroup "{68F3550119397C49}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -116,7 +116,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68F3550119397CE4}" {
+  COA_SlottingGroup "{68F3550119397CE4}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +131,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{68F3550119397F6E}" {
+  COA_SlottingGroup "{68F3550119397F6E}" {
    m_sCallsign "AH-6M"
    m_FlagType HELICOPER
    m_aSlots {
@@ -139,7 +139,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{68F3550119397F04}" {
+  COA_SlottingGroup "{68F3550119397F04}" {
    m_sCallsign "Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -148,7 +148,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{68F3550119397F9C}" {
+  COA_SlottingGroup "{68F3550119397F9C}" {
    m_sCallsign "Truck 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -159,7 +159,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68F3550119397E1C}" {
+  COA_SlottingGroup "{68F3550119397E1C}" {
    m_sCallsign "OPFOR"
    m_FlagType INFANTRY
    m_aSlots {

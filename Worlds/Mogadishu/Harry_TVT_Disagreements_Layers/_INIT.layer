@@ -127,7 +127,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69DD1221116BBF42}" {
+  COA_SlottingGroup "{69DD1221116BBF42}" {
    m_sCallsign "Big Boss"
    m_FlagType SIGNAL
    m_aSlots {
@@ -137,7 +137,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BBDBA}" {
+  COA_SlottingGroup "{69DD1221116BBDBA}" {
    m_sCallsign "1st Admiral"
    m_FlagType SIGNAL
    m_aSlots {
@@ -147,7 +147,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BBC9E}" {
+  COA_SlottingGroup "{69DD1221116BBC9E}" {
    m_sCallsign "Crew 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,7 +161,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB3AE}" {
+  COA_SlottingGroup "{69DD1221116BB3AE}" {
    m_sCallsign "Crew 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -175,7 +175,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB29A}" {
+  COA_SlottingGroup "{69DD1221116BB29A}" {
    m_sCallsign "Crew 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -189,7 +189,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB1F7}" {
+  COA_SlottingGroup "{69DD1221116BB1F7}" {
    m_sCallsign "Crew 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -203,7 +203,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB0E9}" {
+  COA_SlottingGroup "{69DD1221116BB0E9}" {
    m_sCallsign "2nd Admiral"
    m_FlagType SIGNAL
    m_aSlots {
@@ -213,7 +213,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB76B}" {
+  COA_SlottingGroup "{69DD1221116BB76B}" {
    m_sCallsign "Crew 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -227,7 +227,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB605}" {
+  COA_SlottingGroup "{69DD1221116BB605}" {
    m_sCallsign "Crew 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -241,7 +241,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB561}" {
+  COA_SlottingGroup "{69DD1221116BB561}" {
    m_sCallsign "Crew 7"
    m_FlagType INFANTRY
    m_aSlots {
@@ -255,7 +255,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BB45C}" {
+  COA_SlottingGroup "{69DD1221116BB45C}" {
    m_sCallsign "Crew 8"
    m_FlagType INFANTRY
    m_aSlots {
@@ -269,7 +269,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BABB1}" {
+  COA_SlottingGroup "{69DD1221116BABB1}" {
    m_sCallsign "The Bus"
    m_FlagType ARMORED
    m_aSlots {
@@ -280,7 +280,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BAA8E}" {
+  COA_SlottingGroup "{69DD1221116BAA8E}" {
    m_sCallsign "Gun truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -290,7 +290,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BA949}" {
+  COA_SlottingGroup "{69DD1221116BA949}" {
    m_sCallsign "Gun truck 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -302,7 +302,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69DD1221116BAF86}" {
+  COA_SlottingGroup "{69DD1221116BAF86}" {
    m_sCallsign "Blessed leader"
    m_FlagType SIGNAL
    m_aSlots {
@@ -312,7 +312,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BAECB}" {
+  COA_SlottingGroup "{69DD1221116BAECB}" {
    m_sCallsign "Suicide Squad"
    m_FlagType INFANTRY
    m_aSlots {
@@ -323,7 +323,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BAE1C}" {
+  COA_SlottingGroup "{69DD1221116BAE1C}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -343,7 +343,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BAD27}" {
+  COA_SlottingGroup "{69DD1221116BAD27}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -363,7 +363,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BAC2B}" {
+  COA_SlottingGroup "{69DD1221116BAC2B}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -383,7 +383,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BA326}" {
+  COA_SlottingGroup "{69DD1221116BA326}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -403,7 +403,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BA213}" {
+  COA_SlottingGroup "{69DD1221116BA213}" {
    m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -413,7 +413,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69DD1221116BA15A}" {
+  COA_SlottingGroup "{69DD1221116BA15A}" {
    m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {

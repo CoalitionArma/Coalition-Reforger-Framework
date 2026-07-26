@@ -117,7 +117,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Auto, "List of boundary stages", category: "Stage Configuration")]
 	ref array<ref CRF_BoundaryStageData> m_aBoundaryStages;
 	
- 	[Attribute("STAGING DOCUMENTATION\n\n=== Stage Execution ===\nGet Line:\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));\n\nCall Types:\n\nstaging.ExecuteStaging(stageIndex, useTimer, chainToNext)\n• stageIndex: Stage to execute (your first non main-gameboundry in the list is index0)\n• useTimer: true = countdown timer, false = immediate\n• chainToNext: true = auto progress to next stages, false = single stage only\n\nstaging.ExecuteStagingSequence(startIndex)\n• Start full sequence from specified stage\n\n=== USAGE EXAMPLES ===\n\n// Execute stage 3 in list immediately without timer, no chaining after execution\nstaging.ExecuteStaging(2, false, false);\n\n// Execute stage 2 in list with timer, chain to next stage in list after execution\nstaging.ExecuteStaging(1, true, true);\n\n// Execute stage 1 in list with stage timer but no chaining to next stage in list\nstaging.ExecuteStaging(0, true, false);\n\n// Start full sequence from stage 3 in list\nstaging.ExecuteStagingSequence(2);\n\n=== FULL DESTRUCTOR EXAMPLE (No Chaining) ===\nFor use in .layer files with destructible objects:\n\nif (!GetGame())\n    return;\n\nBaseGameMode gameMode = GetGame().GetGameMode();\nif (!gameMode)\n    return;\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(gameMode.FindComponent(CRF_MapStagingComponent));\nif (!staging)\n    return;\n\nstaging.ExecuteStaging(0, true, false);\n\n=== SETUP ===\n\n- Place & rename Gameboundry prefabs\n- Position them where you want the final boundary areas\n- Be sure to edit faction keys within the boundrys' CRF_Polyzonetriggers based on what factions youre excluding and on your activation type\n- Enable debug if problems arise\n- Only for Non-Reversed gameboundries/crf_polyzones\n\n=== STAGE TYPES ===\nACTIVATION/DEACTIVATION: Boundary either is removed or placed at the END of the timer/manual trigger\nDELETION: Boundary exists at normal position, gets deleted when timer completes", UIWidgets.EditBoxMultiline, "Staging Setup Instructions & API Examples", category: "Documentation")]
+ 	[Attribute("STAGING DOCUMENTATION\n\n=== Stage Execution ===\nGet Line:\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));\n\nCall Types:\n\nstaging.ExecuteStaging(stageIndex, useTimer, chainToNext)\n• stageIndex: Stage to execute (your first non main-gameboundry in the list is index0)\n• useTimer: true = countdown timer, false = immediate\n• chainToNext: true = auto progress to next stages, false = single stage only\n\nstaging.ExecuteStagingSequence(startIndex)\n• Start full sequence from specified stage\n\n=== USAGE EXAMPLES ===\n\n// Execute stage 3 in list immediately without timer, no chaining after execution\nstaging.ExecuteStaging(2, false, false);\n\n// Execute stage 2 in list with timer, chain to next stage in list after execution\nstaging.ExecuteStaging(1, true, true);\n\n// Execute stage 1 in list with stage timer but no chaining to next stage in list\nstaging.ExecuteStaging(0, true, false);\n\n// Start full sequence from stage 3 in list\nstaging.ExecuteStagingSequence(2);\n\n=== FULL DESTRUCTOR EXAMPLE (No Chaining) ===\nFor use in .layer files with destructible objects:\n\nif (!GetGame())\n    return;\n\nBaseGameMode gameMode = GetGame().GetGameMode();\nif (!gameMode)\n    return;\n\nCRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(gameMode.FindComponent(CRF_MapStagingComponent));\nif (!staging)\n    return;\n\nstaging.ExecuteStaging(0, true, false);\n\n=== SETUP ===\n\n- Place & rename Gameboundry prefabs\n- Position them where you want the final boundary areas\n- Be sure to edit faction keys within the boundrys' COA_PolyZoneTriggers based on what factions youre excluding and on your activation type\n- Enable debug if problems arise\n- Only for Non-Reversed gameboundries/COA_PolyZones\n\n=== STAGE TYPES ===\nACTIVATION/DEACTIVATION: Boundary either is removed or placed at the END of the timer/manual trigger\nDELETION: Boundary exists at normal position, gets deleted when timer completes", UIWidgets.EditBoxMultiline, "Staging Setup Instructions & API Examples", category: "Documentation")]
 	string m_sInstructions;
 	
 	// Public state for display
@@ -721,11 +721,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Get the CRF_PolyZone component from the boundary entity
-		CRF_PolyZone polyZone = CRF_PolyZone.Cast(boundaryEntity.FindComponent(CRF_PolyZone));
+		// Get the COA_PolyZone component from the boundary entity
+		COA_PolyZone polyZone = COA_PolyZone.Cast(boundaryEntity.FindComponent(COA_PolyZone));
 		if (!polyZone)
 		{
-			if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] UpdateBoundaryVisualStateLocal: CRF_PolyZone component not found on '%1'", boundaryName));
+			if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] UpdateBoundaryVisualStateLocal: COA_PolyZone component not found on '%1'", boundaryName));
 			return;
 		}
 		
@@ -886,7 +886,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 				if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] %1ACTIVATION boundary '%2' activated", logPrefix, stageData.m_sBoundaryEntityName));
 				
 				// For reversed (INCLUSION) zones, apply effects to players already outside
-				CRF_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sBoundaryEntityName);
+				COA_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sBoundaryEntityName);
 				if (trigger)
 					trigger.CheckPlayersOutside();
 			}

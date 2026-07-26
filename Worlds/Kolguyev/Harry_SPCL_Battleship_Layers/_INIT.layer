@@ -8,7 +8,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{696D5AC0E599915F}" {
+  COA_SlottingGroup "{696D5AC0E599915F}" {
    m_sCallsign "MTR 1"
    m_FlagType MORTAR
    m_aSlots {
@@ -22,7 +22,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E599974B}" {
+  COA_SlottingGroup "{696D5AC0E599974B}" {
    m_sCallsign "MTR 2"
    m_FlagType MORTAR
    m_aSlots {
@@ -36,7 +36,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E599968C}" {
+  COA_SlottingGroup "{696D5AC0E599968C}" {
    m_sCallsign "MTR 3"
    m_FlagType MORTAR
    m_aSlots {
@@ -50,7 +50,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E59995F2}" {
+  COA_SlottingGroup "{696D5AC0E59995F2}" {
    m_sCallsign "MTR 4"
    m_FlagType MORTAR
    m_aSlots {
@@ -64,7 +64,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E59994EB}" {
+  COA_SlottingGroup "{696D5AC0E59994EB}" {
    m_sCallsign "MTR 5"
    m_FlagType MORTAR
    m_aSlots {
@@ -80,7 +80,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{696D5AC0E5998B41}" {
+  COA_SlottingGroup "{696D5AC0E5998B41}" {
    m_sCallsign "MTR 1"
    m_FlagType MORTAR
    m_aSlots {
@@ -94,7 +94,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E5998A6C}" {
+  COA_SlottingGroup "{696D5AC0E5998A6C}" {
    m_sCallsign "MTR 2"
    m_FlagType MORTAR
    m_aSlots {
@@ -108,7 +108,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E599893B}" {
+  COA_SlottingGroup "{696D5AC0E599893B}" {
    m_sCallsign "MTR 3"
    m_FlagType MORTAR
    m_aSlots {
@@ -122,7 +122,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E5998FD5}" {
+  COA_SlottingGroup "{696D5AC0E5998FD5}" {
    m_sCallsign "MTR 4"
    m_FlagType MORTAR
    m_aSlots {
@@ -136,7 +136,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{696D5AC0E5998EE5}" {
+  COA_SlottingGroup "{696D5AC0E5998EE5}" {
    m_sCallsign "MTR 5"
    m_FlagType MORTAR
    m_aSlots {

@@ -90,7 +90,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68A56000FF851185}" {
+  COA_SlottingGroup "{68A56000FF851185}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -99,7 +99,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A56000FF851262}" {
+  COA_SlottingGroup "{68A56000FF851262}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -108,7 +108,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A56000FF851395}" {
+  COA_SlottingGroup "{68A56000FF851395}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -126,7 +126,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF8514CA}" {
+  COA_SlottingGroup "{68A56000FF8514CA}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -144,7 +144,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF851461}" {
+  COA_SlottingGroup "{68A56000FF851461}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -153,7 +153,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A56000FF8515E2}" {
+  COA_SlottingGroup "{68A56000FF8515E2}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -171,7 +171,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF851512}" {
+  COA_SlottingGroup "{68A56000FF851512}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -189,7 +189,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF851680}" {
+  COA_SlottingGroup "{68A56000FF851680}" {
    m_sCallsign "3PLT (WEAPONS)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -198,7 +198,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A56000FF851631}" {
+  COA_SlottingGroup "{68A56000FF851631}" {
    m_sCallsign "LMG SECTION"
    m_FlagType INFANTRY
    m_aSlots {
@@ -215,7 +215,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF85177F}" {
+  COA_SlottingGroup "{68A56000FF85177F}" {
    m_sCallsign "MTR SECTION"
    m_FlagType MORTAR
    m_aSlots {
@@ -230,7 +230,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68A56000FF850805}" {
+  COA_SlottingGroup "{68A56000FF850805}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -239,7 +239,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A56000FF8509B0}" {
+  COA_SlottingGroup "{68A56000FF8509B0}" {
    m_sCallsign "SNIPER"
    m_FlagType SNIPER
    m_aSlots {
@@ -248,7 +248,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{68A56000FF850931}" {
+  COA_SlottingGroup "{68A56000FF850931}" {
    m_sCallsign "1-1 (Heavy)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -263,7 +263,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF850AAE}" {
+  COA_SlottingGroup "{68A56000FF850AAE}" {
    m_sCallsign "1-2 (Light)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -278,7 +278,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF850BD8}" {
+  COA_SlottingGroup "{68A56000FF850BD8}" {
    m_sCallsign "1-3 (Heavy)"
    m_FlagType INFANTRY
    m_aSlots {
@@ -293,7 +293,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A56000FF850B5F}" {
+  COA_SlottingGroup "{68A56000FF850B5F}" {
    m_sCallsign "1-4 (Light)"
    m_FlagType INFANTRY
    m_aSlots {

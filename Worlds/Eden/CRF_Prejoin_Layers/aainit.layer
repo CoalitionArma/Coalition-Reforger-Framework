@@ -56,7 +56,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
  m_CivSlots {
-  CRF_SlottingGroup "{685A22E72D03414E}" {
+  COA_SlottingGroup "{685A22E72D03414E}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -71,7 +71,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035EA0}" {
+  COA_SlottingGroup "{685A22E72D035EA0}" {
    m_sCallsign "0-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -86,7 +86,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035F13}" {
+  COA_SlottingGroup "{685A22E72D035F13}" {
    m_sCallsign "0-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -101,7 +101,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035FBC}" {
+  COA_SlottingGroup "{685A22E72D035FBC}" {
    m_sCallsign "0-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -116,7 +116,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035C33}" {
+  COA_SlottingGroup "{685A22E72D035C33}" {
    m_sCallsign "0-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +131,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035C46}" {
+  COA_SlottingGroup "{685A22E72D035C46}" {
    m_sCallsign "0-6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,7 +146,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035CEA}" {
+  COA_SlottingGroup "{685A22E72D035CEA}" {
    m_sCallsign "0-7"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,7 +161,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035D7B}" {
+  COA_SlottingGroup "{685A22E72D035D7B}" {
    m_sCallsign "0-8"
    m_FlagType INFANTRY
    m_aSlots {
@@ -176,7 +176,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035DFA}" {
+  COA_SlottingGroup "{685A22E72D035DFA}" {
    m_sCallsign "0-9"
    m_FlagType INFANTRY
    m_aSlots {
@@ -191,7 +191,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035A0F}" {
+  COA_SlottingGroup "{685A22E72D035A0F}" {
    m_sCallsign "0-10"
    m_FlagType INFANTRY
    m_aSlots {
@@ -206,7 +206,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035A98}" {
+  COA_SlottingGroup "{685A22E72D035A98}" {
    m_sCallsign "0-11"
    m_FlagType INFANTRY
    m_aSlots {
@@ -221,7 +221,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035B2D}" {
+  COA_SlottingGroup "{685A22E72D035B2D}" {
    m_sCallsign "0-12"
    m_FlagType INFANTRY
    m_aSlots {
@@ -236,7 +236,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035BA5}" {
+  COA_SlottingGroup "{685A22E72D035BA5}" {
    m_sCallsign "0-13"
    m_FlagType INFANTRY
    m_aSlots {
@@ -251,7 +251,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{685A22E72D035BC0}" {
+  COA_SlottingGroup "{685A22E72D035BC0}" {
    m_sCallsign "0-14"
    m_FlagType INFANTRY
    m_aSlots {
