@@ -43,11 +43,11 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   }
   SCR_EditorSettingsEntity {
    ID "632771FB44BBD90B"
-   coords 0 0 1.5
+   coords 0 0 0
   }
   SCR_LoadoutManager {
    ID "632771FB44BBFB73"
-   coords 0 1.5 0
+   coords 0 0 1.5
   }
  }
 }
