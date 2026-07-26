@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CE0DFE68B73F6F89}Configs/Gearscripts/Standard/GWOT/COA_GS_PLA_Modern.conf"
+ Name "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
  Configurations {
   CONFResourceClass PC {
   }

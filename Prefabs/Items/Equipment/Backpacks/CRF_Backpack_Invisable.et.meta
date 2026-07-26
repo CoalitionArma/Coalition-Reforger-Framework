@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/COA_Backpack_Invisable.et"
+ Name "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
