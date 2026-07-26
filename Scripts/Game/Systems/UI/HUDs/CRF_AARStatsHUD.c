@@ -68,7 +68,7 @@ class CRF_AARSessionStats
 
 //------------------------------------------------------------------------------------------------
 // Handles widget population for the CRF_AARStats overlay panel.
-// Instantiated by CRF_Outro after CreateLayout() succeeds.
+// Instantiated by COA_Outro after CreateLayout() succeeds.
 // Reads session stats from CRF_AARSessionStats static fields populated by
 // COA_PlayerRplToOwnerManager RPC calls (SendAARStats / SendAARKillStats).
 //

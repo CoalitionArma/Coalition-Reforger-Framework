@@ -688,7 +688,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		}
 	}
 
-	// Standard CRF faction color convention (matches CRF_SlottingMenu.GetFactionColor):
+	// Standard CRF faction color convention (matches COA_SlottingMenu.GetFactionColor):
 	// BLUFOR = blue, OPFOR = red, INDFOR = green, CIV = purple.
 	protected int GetColorForFactionKey(string factionKey)
 	{
