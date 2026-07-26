@@ -95,9 +95,9 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
      MagazineTemplate "{67C5246E0C695B1D}Prefabs/Weapons/Magazines/Box_762x51_GPMG_100rnd_4AP_1Tracer.et"
     }
     WeaponAnimationComponent "{5534C3B6F2351DEB}" {
-     AnimInstance "{40ED1057880FF89C}Assets/Weapons/MachineGuns/GPMG/anims/gpmg_weapon.asi"
+     AnimInstance "{40ED1057880FF89C}Assets/Weapons/MachineGuns/Workspaces/gpmg_weapon.asi"
      AnimInjection AnimationAttachmentInfo "{5534C3B6F2351DE9}" {
-      AnimInstance "{BBB38166100E9C70}Assets/Weapons/MachineGuns/GPMG/anims/gpmg_player.asi"
+      AnimInstance "{BBB38166100E9C70}Assets/Weapons/MachineGuns/Workspaces/gpmg_player.asi"
      }
     }
     WeaponAnimationComponent "{60B4EA76EB15F6E0}" {

@@ -5,7 +5,7 @@ GenericEntity : "{44FC3E59DFA001A4}Prefabs/Items/Core/ETool_base.et" {
    m_aVariants {
     SCR_DeployableVariantContainer "{69071E1C3D46B273}" {
      m_iVariantId 10042001
-     m_sReplacementPrefab "{6F48F93E3C7401EB}Prefabs/Compositions/Misc/FreeRoamBuilding/Rallypoints/OPFOR/E_COA_RallyPointBuildable_OPFOR.et"
+     m_sReplacementPrefab "{6F48F93E3C7401EB}Prefabs/Systems/Rallypoints/OPFOR/COA_RallyPointBuildable_OPFOR.et"
      m_sPreviewObject "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
     }
    }

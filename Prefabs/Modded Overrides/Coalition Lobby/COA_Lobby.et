@@ -33,11 +33,11 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    ID "632771FB44BBF8D8"
    coords 1.5 0 0
   }
-  SCR_FactionManager {
+  SCR_FactionManager "69F555E61964163F" {
    ID "632A77473B3CC3A8"
    coords 0 0 -1.5
   }
-  PerceptionManager {
+  PerceptionManager "69F555E61964162C" {
    ID "64443AC8FCA0C42D"
    coords 0 0 0
   }

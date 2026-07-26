@@ -5,7 +5,7 @@ GenericEntity : "{B37F2B14F49A65E8}Prefabs/Weapons/Core/DemoBlock_base.et" {
    PROJECTILE_EFFECTS {
     ExplosionEffect "{6877583551557AFF}" {
      EffectPrefab "{F57EB5EE10ED5A46}Prefabs/Weapons/Warheads/Warhead_Satchel.et"
-     ParticleEffect "{2EE77FA6C9097718}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
+     ParticleEffect "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
     }
    }
   }
