@@ -39,7 +39,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "After a hard fought battle in San Francisco, Russian forces attempt to salvage supplies and manpower. All the while U.S. citizens take up arms and begin resisting."\
    ""\
@@ -56,14 +56,14 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Destroy as many Russian resources before sunset."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Consolidate your forces and resources by the bridge."\
    "Defend the bridge until sunset."
@@ -71,14 +71,14 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "There's something wonkey happening with supply transfers via the inventory screen. Sometimes it requires you to click and drag supplies two times in a row."\
    ""\
@@ -87,7 +87,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{694978D479B93224}" {
+  COA_MissionDescriptor "{694978D479B93224}" {
    m_sTitle "INTEL"
    m_sTextData "It took a lot of convincing but, old \"Difficult\" Pete has agreed to let us access his weapons cache in exchange for not asking questions, and supply units."\
    "There is an abandoned US Truck full of supplies North of here. It is marked on the map."\
@@ -97,7 +97,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{694978D479B93334}" {
+  COA_MissionDescriptor "{694978D479B93334}" {
    m_sTitle "INTEL"
    m_sTextData "There's a tunnel under HQ that can hold most of the vehicles."\
    "The local population is armed, but whether that will hinder our operations here is yet to be seen. We should regroup before any resistance groups take advantage of the situation."
@@ -106,7 +106,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{695B7086D322F89E}" {
+  COA_MissionDescriptor "{695B7086D322F89E}" {
    m_sTitle "Commander's Notes"
    m_sTextData "The Assault on the city has gone a little too well. We have overextended our troops and resources. We'll need to rally back together to keep our cohesion."\
    "Another mechanized unit is planned to reinforce us and is moving here from the North. They're expected to be in the area shortly after sunset. If we still have enough fuel and supplies they'll cross the bridge, otherwise we'll have to abandon the city for another time."
@@ -337,7 +337,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{91B14E90548214C4}Configs/Gearscripts/Custom/Quack/CRF_GS_RHS_US_Militia_Quack.conf"
+  m_rGearScript "{91B14E90548214C4}Configs/Gearscripts/Custom/Quack/COA_GS_RHS_US_Militia_Quack.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -345,7 +345,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{A8E1867F76DB3AA0}Configs/Gearscripts/Custom/Quack/CRF_GS_RUS_2000s_QuackMod.conf"
+  m_rGearScript "{A8E1867F76DB3AA0}Configs/Gearscripts/Custom/Quack/COA_GS_RUS_2000s_QuackMod.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -353,7 +353,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -361,7 +361,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

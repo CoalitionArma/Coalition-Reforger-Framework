@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 7388.637 9.688 6712.818
   angles 0 126.941 0
@@ -602,7 +602,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 5
      m_sObjectNameToTeleportTo "OPFOR"
-     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
     }
     CRF_TeleportPlayerAction "{69232B12C0B04141}" {
      ParentContextList {
@@ -616,7 +616,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 6
      m_sObjectNameToTeleportTo "RifleRange"
-     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
     }
     CRF_TeleportPlayerAction "{6958081290DA3209}" {
      ParentContextList {
@@ -630,7 +630,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 6
      m_sObjectNameToTeleportTo "DanceHall"
-     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+     m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
     }
    }
   }
@@ -644,7 +644,7 @@ GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampS
  coords 7449.313 -2.835 6697.37
  angles 0 21.696 0
 }
-$grp CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+$grp COA_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
  {
   coords 7493.132 6.579 6707.769
   angles 0 90 0

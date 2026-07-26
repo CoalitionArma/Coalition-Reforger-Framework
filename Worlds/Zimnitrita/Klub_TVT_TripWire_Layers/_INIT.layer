@@ -50,7 +50,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Tempers have flared up between the ZFR and ZWC despite an agreed ceasefire. The ZFR are currently in control of the town, Varpardany, and utilize it as a major supply route on the eastern side of Zimnitrita. The ZWC would like to utilize the route, however, blood will have to be spilled to open the path."\
    ""\
@@ -67,21 +67,21 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "\"Hey! What are you doing zoning out? Get those fucking mines set! Scouts just radioed a ZWC mechanized platoon headed our way. By the look of it, they have a supply truck with them. Must be trying to force us out to clear a route. The fuel and munitions we are storing here must have put us in their sights. Just hand me the mines; go make sure that any man with a rocket knows that, no matter what, those vics can not get past us.\""
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "\"Gather round. High command has ordered the clearing of a new supply route leading through Varpadany. The only issue is the ZFR is dug in and has enough mines to level Andruhanov. Everything North of the Varpadany river is littered with them. They've been backed by the US for a while now which also means they'll have a ton of munitions and fuel to keep up an extended fight so make sure to torch that stuff on your way through. Oh, one more thing, make sure we retain control of our IFVs and supply truck. Command won't be sending us new ones anytime soon, then again, what would be the point of the supply route if we threw them away?\""
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
    m_sTextData "You have preplaced mines in all fields north of the river."\
    ""\
@@ -98,7 +98,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "There are, unmarked, preplaced mines in the fields north of the river."\
    ""\
@@ -117,7 +117,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{699F692466DC47E5}" {
+  COA_MissionDescriptor "{699F692466DC47E5}" {
    m_sTitle "Administration"
    m_sTextData "Win conditions:"\
    ""\
@@ -306,7 +306,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{B1C070728C999713}Configs/Gearscripts/Custom/Klub/CRF_GS_ZFR_Modern.conf"
+  m_rGearScript "{B1C070728C999713}Configs/Gearscripts/Custom/Klub/COA_GS_ZFR_Modern.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -314,7 +314,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{DB6128805C7643D0}Configs/Gearscripts/Custom/Klub/CRF_GS_ZWC_Modern.conf"
+  m_rGearScript "{DB6128805C7643D0}Configs/Gearscripts/Custom/Klub/COA_GS_ZWC_Modern.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -322,7 +322,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -330,7 +330,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

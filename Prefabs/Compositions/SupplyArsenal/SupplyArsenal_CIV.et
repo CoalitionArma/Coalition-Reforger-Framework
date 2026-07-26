@@ -13,7 +13,7 @@ GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
     m_Image "{DB9BCA1FFFB590DA}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_US_01.edds"
     m_sFaction "CIV"
     m_aAuthoredLabels {
-     ENTITYTYPE_SYSTEM FACTION_CRF_CIV
+     ENTITYTYPE_SYSTEM FACTION_COA_CIV
     }
     m_aAutoLabels {
      ENTITYTYPE_SYSTEM

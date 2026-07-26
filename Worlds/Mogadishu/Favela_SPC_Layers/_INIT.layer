@@ -50,14 +50,14 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69D50DACC6B32379}" {
+  COA_MissionDescriptor "{69D50DACC6B32379}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Two gangs one hood. Who can take control?"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D50DACC6B3258C}" {
+  COA_MissionDescriptor "{69D50DACC6B3258C}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -72,7 +72,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D50DACC6B32437}" {
+  COA_MissionDescriptor "{69D50DACC6B32437}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -87,7 +87,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D50DACC6B324CD}" {
+  COA_MissionDescriptor "{69D50DACC6B324CD}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -102,7 +102,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D50DACC6B3276E}" {
+  COA_MissionDescriptor "{69D50DACC6B3276E}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -308,7 +308,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bSafestartEnabledOnMissionStart 0
  m_fMissionTimeScale 0.1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{3527FD4D2D3AE48C}Configs/Gearscripts/Standard/Specials/CRF_GS_ShantySpcl.conf"
+  m_rGearScript "{3527FD4D2D3AE48C}Configs/Gearscripts/Standard/Specials/COA_GS_ShantySpcl.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
@@ -316,7 +316,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{1B7CC57DC45A85D1}Configs/Gearscripts/Standard/Specials/CRF_GS_ShantySpcl_Opf.conf"
+  m_rGearScript "{1B7CC57DC45A85D1}Configs/Gearscripts/Standard/Specials/COA_GS_ShantySpcl_Opf.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
@@ -324,7 +324,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -332,7 +332,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

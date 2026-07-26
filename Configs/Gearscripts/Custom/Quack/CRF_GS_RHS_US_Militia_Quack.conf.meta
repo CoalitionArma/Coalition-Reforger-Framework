@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{91B14E90548214C4}Configs/Gearscripts/Custom/Quack/CRF_GS_RHS_US_Militia_Quack.conf"
+ Name "{91B14E90548214C4}Configs/Gearscripts/Custom/Quack/COA_GS_RHS_US_Militia_Quack.conf"
  Configurations {
   CONFResourceClass PC {
   }

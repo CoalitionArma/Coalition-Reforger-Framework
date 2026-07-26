@@ -5,7 +5,7 @@ $grp COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
    m_sSpawnPointName "Northern Andruhanov"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Northern Andruhanov"
    }
@@ -18,7 +18,7 @@ $grp COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
    m_sSpawnPointName "Central Police Department"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Central Police Department"
    }
@@ -30,7 +30,7 @@ $grp COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
    m_sSpawnPointName "South Police Department"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "South Police Department"
    }
@@ -42,7 +42,7 @@ $grp COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
    m_sSpawnPointName "Port of Andruhanov"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Port of Andruhanov"
    }

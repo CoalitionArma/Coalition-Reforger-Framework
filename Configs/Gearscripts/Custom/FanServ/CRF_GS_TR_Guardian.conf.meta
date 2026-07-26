@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{82900A250C71E861}Configs/Gearscripts/Custom/FanServ/CRF_GS_TR_Guardian.conf"
+ Name "{82900A250C71E861}Configs/Gearscripts/Custom/FanServ/COA_GS_TR_Guardian.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -39,10 +39,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
   }
  }
  {
-  CRF_PolyZoneTrigger {
+  COA_PolyZoneTrigger {
    ID "658635BEF7631DCD"
    components {
-    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+    COA_PolyZoneMeshComponent "{658635BE82F382BC}" {
      m_fHeight 648.3
      m_fUndergroundHeight 900.7
     }

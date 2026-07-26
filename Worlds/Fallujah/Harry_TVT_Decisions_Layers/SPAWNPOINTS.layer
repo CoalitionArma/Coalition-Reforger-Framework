@@ -1,7 +1,7 @@
 COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 4830.031 1 6669.592
  {
-  CRF_ManualMarker {
+  COA_ManualMarker {
    ID "68682AC1B6C9C4BC"
    coords -0.008 0 -0.019
   }

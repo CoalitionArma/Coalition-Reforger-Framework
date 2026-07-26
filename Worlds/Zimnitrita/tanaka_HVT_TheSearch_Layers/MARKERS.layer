@@ -1,4 +1,4 @@
-CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  coords 11675.862 17.401 6799.096
  angles 0 0 90
  m_MarkerColor 0.745 0.02 0.025 1
@@ -15,7 +15,7 @@ CRF_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/S
  m_fWorldSizeX 1500
  m_fWorldSizeY 1500
 }
-$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
  {
   coords 12763.319 99.53 5071.119
   m_sQuadName "join"

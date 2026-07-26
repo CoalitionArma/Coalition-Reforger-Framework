@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F8083CE71EEDB1FA}Configs/Gearscripts/Custom/Owen7/CRF_GS_DeptEnergyAntiTerror.conf"
+ Name "{F8083CE71EEDB1FA}Configs/Gearscripts/Custom/Owen7/COA_GS_DeptEnergyAntiTerror.conf"
  Configurations {
   CONFResourceClass PC {
   }

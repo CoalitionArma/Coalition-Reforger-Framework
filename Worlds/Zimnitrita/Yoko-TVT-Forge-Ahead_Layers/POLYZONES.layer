@@ -1,6 +1,6 @@
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  components {
-  CRF_PolyZone "{65862E4575B86577}" {
+  COA_PolyZone "{65862E4575B86577}" {
    m_bLineMode 1
   }
  }
@@ -51,7 +51,7 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  components {
-  CRF_PolyZone "{6586537E1F838475}" {
+  COA_PolyZone "{6586537E1F838475}" {
    m_bIsForwardDeployZone 1
   }
  }

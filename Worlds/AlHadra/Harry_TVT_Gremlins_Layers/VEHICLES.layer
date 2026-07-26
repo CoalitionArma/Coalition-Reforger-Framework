@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 1552.551 106.983 3477.109
   angles 0 130.823 0

@@ -72,7 +72,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{632771FB5C619E1C}" {
+  COA_MissionDescriptor "{632771FB5C619E1C}" {
    m_sTitle "Welcome / How to Play"
    m_sTextData "Welcome to a COALITION Session."\
    ""\
@@ -89,7 +89,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425053BDE568A1}" {
+  COA_MissionDescriptor "{64425053BDE568A1}" {
    m_sTitle "Custom Controls"
    m_sTextData "Custom Controls (Keyboard/Controller)"\
    ""\
@@ -109,7 +109,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "/a <message> - Message admins"
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D931A7722BF638}" {
+  COA_MissionDescriptor "{69D931A7722BF638}" {
    m_sTitle "Mission: Situation"
    m_sTextData "A USMC Infantry platoon conducts a raid on the insurgent stronghold of Dur Kalay. They must locate and destroy four weapons caches, while defending insurgent forces attempt to repel the assault and protect their stockpile."\
    ""\
@@ -125,7 +125,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D931A7722BF1DC}" {
+  COA_MissionDescriptor "{69D931A7722BF1DC}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Infiltrate the insurgent stronghold of Dur Kalay to locate and destroy four weapons caches."\
@@ -140,7 +140,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BF2AF}" {
+  COA_MissionDescriptor "{69D931A7722BF2AF}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION "\
    "Defend Dur Kalay, protect all weapons caches, and repel the attacking forces."\
@@ -155,7 +155,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BF36D}" {
+  COA_MissionDescriptor "{69D931A7722BF36D}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -170,7 +170,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BFC2C}" {
+  COA_MissionDescriptor "{69D931A7722BFC2C}" {
    m_sTitle ""
    m_sTextData ""
    m_aFactionKeys {
@@ -409,7 +409,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/CRF_GS_2004_USMC_DURKALAY_Bradly.conf"
+  m_rGearScript "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/COA_GS_2004_USMC_DURKALAY_Bradly.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
@@ -417,7 +417,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{5C9649F91762FF13}Configs/Gearscripts/Custom/Bradly/GWOT/CRF_GS_ME_Insurgents_DURKALAY_Bradly.conf"
+  m_rGearScript "{5C9649F91762FF13}Configs/Gearscripts/Custom/Bradly/GWOT/COA_GS_ME_Insurgents_DURKALAY_Bradly.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -425,7 +425,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -433,7 +433,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

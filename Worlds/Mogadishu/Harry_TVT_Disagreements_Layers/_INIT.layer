@@ -46,7 +46,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 20
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69DCFAADF0A2F6A9}" {
+  COA_MissionDescriptor "{69DCFAADF0A2F6A9}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Islamic revolutionary forces have brought jihad to Somalia. Locals fight for control over the outskirts of Mogadishu."\
    ""\
@@ -62,7 +62,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69DCFAADF0A2EA61}" {
+  COA_MissionDescriptor "{69DCFAADF0A2EA61}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Fight for the frontline objectives while preserving your force. There will be no respawn waves. Refer to the win conditions page for winner scoring."\
@@ -77,7 +77,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69DCFAADF0A2E97F}" {
+  COA_MissionDescriptor "{69DCFAADF0A2E97F}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Fight for the frontline objectives while preserving your force. There will be no respawn waves. Refer to the win conditions page for winner scoring."\
@@ -92,7 +92,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69DCFAADF0A2E80D}" {
+  COA_MissionDescriptor "{69DCFAADF0A2E80D}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -107,7 +107,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69DCFAADF0A2EFBA}" {
+  COA_MissionDescriptor "{69DCFAADF0A2EFBA}" {
    m_sTitle "Win Conditions"
    m_sTextData "If one team captures and holds all three frontline objectives, they will win. "\
    ""\
@@ -430,7 +430,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_fMissionTimeScale 2
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{5CFD171E9B4489CD}Configs/Gearscripts/Standard/90s/CRF_GS_Somali.conf"
+  m_rGearScript "{5CFD171E9B4489CD}Configs/Gearscripts/Standard/90s/COA_GS_Somali.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -438,7 +438,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgents_Poor.conf"
+  m_rGearScript "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/COA_GS_MEInsurgents_Poor.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -446,7 +446,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -454,7 +454,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

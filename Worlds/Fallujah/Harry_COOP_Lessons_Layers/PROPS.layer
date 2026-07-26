@@ -1085,7 +1085,7 @@ SCR_DestructibleBuildingEntity : "{8F0B3BFF3D21CD2F}Prefabs/AloshComp/Ameer 2 mi
   }
  }
 }
-$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
  {
   coords 2397.81 1.06 6341.009
   m_sDescription "Tunnel"

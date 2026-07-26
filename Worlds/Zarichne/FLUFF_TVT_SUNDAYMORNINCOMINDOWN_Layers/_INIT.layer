@@ -27,7 +27,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bLockUnusedSlots 1
  m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "After a series of bloody bombings in the region of Zarichne and a guerilla uprising that took over the town proper, D Coy, 40 Commando, Royal Marines stages for an assualt to knock out any guerilla forces in the town and destroy the caches filled with explosives. However, the staging ground was spotted by locals and the guerillas are scambling to prepare for the offensive. They won't go down without a fight."\
    ""\
@@ -47,7 +47,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Destroy BOTH weapons caches inside of the town of Zarichne. Their approximate locations are outlined by blue dots on your map. You are searching for the crates carrying tubes of Semtex explosives, a picture of them can be found in the AAR thread. "\
    "The guerillas may have other supplies stored elsewhere in the town. You are free to destroy them as you see fit, but they will not count towards a victory."
@@ -55,7 +55,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Defend the weapon caches inside the town of Zarichne. You only need to defend one to win, but your strength is in your guerilla capability. Setting up a standard defense on one of the caches is not reccomended."\
    ""\
@@ -65,7 +65,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
    m_sTextData "BLUFOR must destroy BOTH caches to win. The caches are only destructible via TNT blocks or more powerful explosives like satchels. Grenades are not capable of destroying the caches."\
    ""\
@@ -399,7 +399,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{2E7348A593AB885D}Configs/Gearscripts/Custom/fluff/CRF_GS_UK80s_fluff_SMCD.conf"
+  m_rGearScript "{2E7348A593AB885D}Configs/Gearscripts/Custom/fluff/COA_GS_UK80s_fluff_SMCD.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
@@ -410,7 +410,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableSightArsenal 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/COA_GS_USSR80s.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -418,7 +418,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{8A47112BA38128FE}Configs/Gearscripts/Custom/fluff/CRF_GS_FIA_fluff_SMCD.conf"
+  m_rGearScript "{8A47112BA38128FE}Configs/Gearscripts/Custom/fluff/COA_GS_FIA_fluff_SMCD.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
@@ -429,7 +429,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableSightArsenal 0
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

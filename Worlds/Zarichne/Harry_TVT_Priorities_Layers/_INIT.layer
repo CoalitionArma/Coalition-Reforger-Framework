@@ -29,7 +29,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Tensions boil over in Eastern Europe after the Great Patriotic War, and a fiery company is going to kick things off by destroying US materiel at their FOB. "\
    ""\
@@ -45,21 +45,21 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Prevent your assets from being destroyed, and eliminate the enemy. The enemy only needs to destroy 50% of the available supply to be successful. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Attack the blufor base, and destroy at least 50% of the available supply. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Raid Targets"
    m_sTextData "- Supply Crates"\
    "- Yellow fuel silos"\
@@ -72,7 +72,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Recon Safestart"
    m_sTextData "You may not move more than 200m from your spawn during safestart. Do not fire at anyone until safestart is over. You are a forward recon element sent to observer the enemy position before the attack."
    m_aFactionKeys {
@@ -80,7 +80,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E14E97BD183704}" {
+  COA_MissionDescriptor "{68E14E97BD183704}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Be an obstacle to opfor and blufor in their fight. "
    m_aFactionKeys {
@@ -88,14 +88,14 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E14E98A4A8A303}" {
+  COA_MissionDescriptor "{68E14E98A4A8A303}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68E574F60C4DD057}" {
+  COA_MissionDescriptor "{68E574F60C4DD057}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -314,7 +314,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{BACE60123C142258}Configs/Gearscripts/Custom/Harry/50s/CRF_GS_USEarly50s.conf"
+  m_rGearScript "{BACE60123C142258}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USEarly50s.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -322,7 +322,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{C206DF5E4DFEDC63}Configs/Gearscripts/Custom/Harry/50s/CRF_GS_USSR50s.conf"
+  m_rGearScript "{C206DF5E4DFEDC63}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USSR50s.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -330,7 +330,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{33D9F62FDCEDDF75}Configs/Gearscripts/Custom/Harry/50s/CRF_GS_USSRLate40s_lowsway.conf"
+  m_rGearScript "{33D9F62FDCEDDF75}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USSRLate40s_lowsway.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -338,7 +338,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

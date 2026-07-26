@@ -33,7 +33,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69E176FCDA351DC9}" {
+  COA_MissionDescriptor "{69E176FCDA351DC9}" {
    m_sTitle "Mission: Situation"
    m_sTextData "ION looks to move their current operations to a new FOB (OP Restrepo) in the Kunar region. Local insurgent forces wish they would leave."\
    ""\
@@ -50,7 +50,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69E176FCDA351E08}" {
+  COA_MissionDescriptor "{69E176FCDA351E08}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "- Retain control of >20% of your forces"\
@@ -67,7 +67,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69E176FCDA35198D}" {
+  COA_MissionDescriptor "{69E176FCDA35198D}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "- Destroy 80% of ION forces."\
@@ -84,7 +84,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69E176FCDA351914}" {
+  COA_MissionDescriptor "{69E176FCDA351914}" {
    m_sTitle "Administration"
    m_sTextData "NOTE: Destruction of the Command Truck, by either side, will count as a loss for that side."
    m_aFactionKeys {
@@ -94,7 +94,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69E176FBA0CCCDA8}" {
+  COA_MissionDescriptor "{69E176FBA0CCCDA8}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -353,7 +353,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_fMissionTimeScale 0.1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{831036E17A4722D7}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSION_Urban.conf"
+  m_rGearScript "{831036E17A4722D7}Configs/Gearscripts/Standard/Modern/Variants/COA_GS_RHSION_Urban.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -361,7 +361,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{AEB3680D9565DE7C}Configs/Gearscripts/Custom/Klub/CRF_GS_MEInsurgents_RollerCoaster.conf"
+  m_rGearScript "{AEB3680D9565DE7C}Configs/Gearscripts/Custom/Klub/COA_GS_MEInsurgents_RollerCoaster.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
@@ -369,7 +369,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -377,7 +377,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

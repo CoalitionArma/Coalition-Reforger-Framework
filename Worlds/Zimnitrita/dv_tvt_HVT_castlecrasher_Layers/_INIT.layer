@@ -38,7 +38,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 10
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Situation"
    m_sTextData "A HVT is in hiding with a small security team, Kill him before he escapes."\
    "BLUFOR Composition: Infantry Platoon."\
@@ -51,28 +51,28 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Use the transponder to find the HVT and kill him before he can escape. He is carrying The Files. Retrieve them and bring them back to your flag.  Kill any who stand in your way"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Use the transponder to find the HVT and kill him before he can escape. He is carrying The Files. Retrieve them and bring them back to your flag.  Kill any who stand in your way"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "You have multiple avenues of escape. A helicopter stationed at the MIlitary Base in Valadim, Airport, and a private one at your Old Castle on the hill to the east. You will be hunted relentlessly, use the small size of your element to your advantage and move quickly to escape. El Toro has the files dont drop them."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "Transponder will ping every 9 min. Time Limit of 90 minutes.   Blu / Opf  win: Kill HVT. Gaurds do not count towards victory. IND wins if they escape."
    m_aFactionKeys +{
@@ -271,7 +271,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D57289BEAEADC59A}Configs/Gearscripts/Custom/DV/CRF_GS_US_ARMY.conf"
+  m_rGearScript "{D57289BEAEADC59A}Configs/Gearscripts/Custom/DV/COA_GS_US_ARMY.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -279,7 +279,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{2F370A0FFF0662F6}Configs/Gearscripts/Custom/DV/CRF_GS_RU_Modern.conf"
+  m_rGearScript "{2F370A0FFF0662F6}Configs/Gearscripts/Custom/DV/COA_GS_RU_Modern.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -287,7 +287,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{FC9C5C2561B31B01}Configs/Gearscripts/Custom/DV/CRF_GS_INDARMED.conf"
+  m_rGearScript "{FC9C5C2561B31B01}Configs/Gearscripts/Custom/DV/COA_GS_INDARMED.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -295,7 +295,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_HVI.conf"
+  m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/COA_GS_CIV_HVI.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{55C13A88C7BCEE4A}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_SPS_President_fluff.conf"
+ Name "{55C13A88C7BCEE4A}Configs/Gearscripts/Custom/fluff/COA_GS_CIV_SPS_President_fluff.conf"
  Configurations {
   CONFResourceClass PC {
   }

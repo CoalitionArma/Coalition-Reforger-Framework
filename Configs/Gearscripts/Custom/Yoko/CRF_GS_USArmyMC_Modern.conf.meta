@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A8C3E3DA7C8EA5FF}Configs/Gearscripts/Standard/Modern/CRF_GS_USArmyMC_Modern.conf"
+ Name "{A8C3E3DA7C8EA5FF}Configs/Gearscripts/Standard/Modern/COA_GS_USArmyMC_Modern.conf"
  Configurations {
   CONFResourceClass PC {
   }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2805BE2020A0EC22}Configs/Gearscripts/Standard/Modern/CRF_GS_TFUSArmyMC.conf"
+ Name "{2805BE2020A0EC22}Configs/Gearscripts/Standard/Modern/COA_GS_TFUSArmyMC.conf"
  Configurations {
   CONFResourceClass PC {
   }

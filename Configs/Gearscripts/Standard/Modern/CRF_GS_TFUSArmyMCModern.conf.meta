@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FC40B758CF9F1364}Configs/Gearscripts/Standard/Modern/CRF_GS_TFUSArmyMCModern.conf"
+ Name "{FC40B758CF9F1364}Configs/Gearscripts/Standard/Modern/COA_GS_TFUSArmyMCModern.conf"
  Configurations {
   CONFResourceClass PC {
   }

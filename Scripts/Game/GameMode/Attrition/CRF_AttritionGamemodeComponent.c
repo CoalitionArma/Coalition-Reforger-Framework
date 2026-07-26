@@ -480,7 +480,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 	// Trusted, in priority order:
 	//  1. An explicit FactionAffiliationComponent set directly on the vehicle in the
 	//     editor — the standard, deliberate way mission makers assign entity ownership.
-	//  2. m_sFactionKey when the vehicle was spawned via CRF_VehicleSpawner. That path
+	//  2. m_sFactionKey when the vehicle was spawned via COA_VehicleSpawner. That path
 	//     (CRF_VehicleGearscriptManager.SetVehicle()) copies the spawner's own explicit
 	//     faction attribute directly onto the vehicle — a deliberate assignment, not a
 	//     guess. m_iVehicleSpawnerIndex is only ever set (>= 0) by that same path, so it

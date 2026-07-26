@@ -15,8 +15,8 @@ ToDo:
 
 1. **Add the Component**: Add `CRF_MapStagingComponent` to CRF_Lobby 
 2. **Place Boundaries**: Create GameBoundary entities in your world and name them clearly, or else they wont be identified correctly on init
-3. **Add GameBoundrys/Edit the Component**: Set up the polylines for your zones, be sure to set BOTH the GameBoundry/CRF_Polyzone & CRF_PolyzoneTrigger (child object in heirarchy) 's Reversed toggles to off. Does NOT work with REVERSED.
-3. **Configure Stages**: Set up your Main Config & Boundary Stage settings in the component inspector. Be sure to set FACTIONKEYS within the CRF_PolyzoneTrigger depending on that boundary's use case.
+3. **Add GameBoundrys/Edit the Component**: Set up the polylines for your zones, be sure to set BOTH the GameBoundry/COA_PolyZone & COA_PolyZoneTrigger (child object in heirarchy) 's Reversed toggles to off. Does NOT work with REVERSED.
+3. **Configure Stages**: Set up your Main Config & Boundary Stage settings in the component inspector. Be sure to set FACTIONKEYS within the COA_PolyZoneTrigger depending on that boundary's use case.
 4. **Test**: Enable debug logging and test your sequence
 
 ## Stage Types
@@ -89,8 +89,8 @@ staging.StopStaging();
 - Use clear, descriptive names for boundary entities
 - Position boundaries at their final locations in the editor
 - Test with debug logging enabled
-- Configure faction keys in CRF_PolyZoneTrigger components, based on which FACTION can be allowed in that zone. (IE: Progressive OPFOR-Sided Boundries will have OPFOR)
-- Only use non-reversed GameBoundary/CRF_PolyZone entities
+- Configure faction keys in COA_PolyZoneTrigger components, based on which FACTION can be allowed in that zone. (IE: Progressive OPFOR-Sided Boundries will have OPFOR)
+- Only use non-reversed GameBoundary/COA_PolyZone entities
 
 ### Performance
 - The system uses entity caching for better performance
@@ -100,7 +100,7 @@ staging.StopStaging();
 ### Troubleshooting
 - Enable debug logging to see detailed execution flow
 - Check entity names match exactly (case-sensitive)
-- Verify boundaries have CRF_PolyZone components
+- Verify boundaries have COA_PolyZone components
 - Test in both Workbench and dedicated server environments
 
 ## Technical Notes
@@ -117,7 +117,7 @@ The component integrates with:
 - CRF Safestart Manager (for auto-timing)
 - CRF Gamemode system (for state management)
 - Standard Arma Reforger GameBoundry entities
-- CRF_PolyZone visual system
+- COA_PolyZone visual system
 
 ---
 
@@ -271,4 +271,4 @@ staging.ExecuteStaging(lastStageIndex, false, false);
 - **Author**: Trist
 - **Created**: August 2025
 - **Component**: CRF_MapStagingComponent
-- **Dependencies**: CRF Framework, GameBoundary entities, CRF_PolyZone
+- **Dependencies**: CRF Framework, GameBoundary entities, COA_PolyZone

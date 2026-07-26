@@ -31,7 +31,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69ED0C6F7649ADC4}" {
+  COA_MissionDescriptor "{69ED0C6F7649ADC4}" {
    m_sTitle "Mission: Situation"
    m_sTextData "B TRP, 3-71 has been tasked with digging in and conducting a guard of the Brigades flank as they move to assault the town of Belleau. A Russian Motor Rifle Company from the 74th Guards Motor Rifle Brigade is attempting to break through the guard and setup Brigade heavy weapons on the flank of the US assault."\
    ""\
@@ -56,7 +56,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69ED0C6F7649AF5F}" {
+  COA_MissionDescriptor "{69ED0C6F7649AF5F}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "- Defend MCOM A"\
@@ -74,7 +74,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649A859}" {
+  COA_MissionDescriptor "{69ED0C6F7649A859}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "- Capture MCOM A"\
@@ -94,7 +94,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649A973}" {
+  COA_MissionDescriptor "{69ED0C6F7649A973}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -109,7 +109,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649AA6D}" {
+  COA_MissionDescriptor "{69ED0C6F7649AA6D}" {
    m_sTitle "Administration"
    m_sTextData "- All team leaders have shotguns for drones."\
    "- If a drone operator does not die, reset their gear in the second phase so they may be rearmed."\
@@ -436,7 +436,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFUSArmyMCModern_Grit.conf"
+  m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFUSArmyMCModern_Grit.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -444,7 +444,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFMSV_Grit.conf"
+  m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFMSV_Grit.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -452,7 +452,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -460,7 +460,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

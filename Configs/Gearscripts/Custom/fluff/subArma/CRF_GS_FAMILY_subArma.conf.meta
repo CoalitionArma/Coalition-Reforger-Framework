@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+ Name "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/COA_GS_FAMILY_subArma.conf"
  Configurations {
   CONFResourceClass PC {
   }

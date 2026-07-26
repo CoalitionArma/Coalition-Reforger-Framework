@@ -1,4 +1,4 @@
-CRF_ManualMarker {
+COA_ManualMarker {
  ID "64CF69DB40BCD82A"
  components {
   CRF_EditableMarkerComponent "{64CF69DB40BCDFC6}" {

@@ -17,6 +17,6 @@ $grp GenericEntity : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints
 GenericEntity : "{A8C13E34C9597EA4}PrefabsMissionMaking/Systems/SpawnPoints/INDFOR_Spawn.et" {
  coords 1162.746 39 2341.814
 }
-CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  coords 1257.682 39 2307.644
 }

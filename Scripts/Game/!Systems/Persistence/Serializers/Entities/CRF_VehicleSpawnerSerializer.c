@@ -8,13 +8,13 @@ class CRF_VehicleSpawnerSerializer : ScriptedEntitySerializer
 	//------------------------------------------------------------------------------------------------
 	override static typename GetTargetType()
 	{
-		return CRF_VehicleSpawner;
+		return COA_VehicleSpawner;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override ESerializeResult Serialize(notnull Managed instance, notnull SaveContext context)
 	{
-		CRF_VehicleSpawner vehicleSpawner = CRF_VehicleSpawner.Cast(instance);
+		COA_VehicleSpawner vehicleSpawner = COA_VehicleSpawner.Cast(instance);
 		if (!vehicleSpawner)
 			return ESerializeResult.DEFAULT;
 
@@ -43,7 +43,7 @@ class CRF_VehicleSpawnerSerializer : ScriptedEntitySerializer
 	//------------------------------------------------------------------------------------------------
 	override bool Deserialize(notnull Managed instance, notnull LoadContext context)
 	{
-		CRF_VehicleSpawner vehicleSpawner = CRF_VehicleSpawner.Cast(instance);
+		COA_VehicleSpawner vehicleSpawner = COA_VehicleSpawner.Cast(instance);
 		if (!vehicleSpawner)
 			return false;
 

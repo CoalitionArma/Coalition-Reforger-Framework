@@ -27,7 +27,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 20
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69CF741042A997EC}" {
+  COA_MissionDescriptor "{69CF741042A997EC}" {
    m_sTitle "Mission: Situation"
    m_sTextData "British forces are moving quickly inland in France following rail lines. They need to secure the next rail station, and then create a buffer zone by securing a forward defensive position in front of it. Can French defenders blunt the British push?"\
    ""\
@@ -43,7 +43,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69CF741042A98800}" {
+  COA_MissionDescriptor "{69CF741042A98800}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Defend the objectives in order. The victor will control obj 2 at the end of the match. There will be one respawn wave either 35 minutes in, or 3 minutes after admins have determined a force is no longer combat effective."\
@@ -58,7 +58,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69CF741042A98E5C}" {
+  COA_MissionDescriptor "{69CF741042A98E5C}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Attack the objectives in order. The victor will control obj 2 at the end of the match. There will be one respawn wave either 35 minutes in, or 3 minutes after admins have determined a force is no longer combat effective."\
@@ -73,7 +73,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69CF741042A98D35}" {
+  COA_MissionDescriptor "{69CF741042A98D35}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -88,7 +88,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69CF741042A98367}" {
+  COA_MissionDescriptor "{69CF741042A98367}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -269,7 +269,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A9355A8703C012EA}Configs/Gearscripts/Standard/Modern/CRF_GS_French00s.conf"
+  m_rGearScript "{A9355A8703C012EA}Configs/Gearscripts/Standard/Modern/COA_GS_French00s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -277,7 +277,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{21EA8E8382E96915}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_UK00s_60mm.conf"
+  m_rGearScript "{21EA8E8382E96915}Configs/Gearscripts/Custom/Harry/Modern/COA_GS_UK00s_60mm.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -285,7 +285,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -293,7 +293,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

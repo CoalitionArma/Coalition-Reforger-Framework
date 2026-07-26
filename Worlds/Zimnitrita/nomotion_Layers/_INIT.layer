@@ -97,7 +97,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 17
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{632771FB5C619E1C}" {
+  COA_MissionDescriptor "{632771FB5C619E1C}" {
    m_sTitle "Welcome / How to Play"
    m_sTextData "Welcome to a COALITION Session."\
    ""\
@@ -114,7 +114,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425053BDE568A1}" {
+  COA_MissionDescriptor "{64425053BDE568A1}" {
    m_sTitle "Custom Controls"
    m_sTextData "Custom Controls (Keyboard/Controller)"\
    ""\
@@ -134,7 +134,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "/a <message> - Message admins"
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "A special forces zimnitrita element has been dispatched to handle a hostage situation in the South of the country."\
    ""\
@@ -147,7 +147,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "We are extracting a high value informant (HVI). Use your superior technological advantage to move to the HVI location, breach, and secure him at any cost."\
    ""\
@@ -158,7 +158,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Choose a defensible location, forward deploy to that area, and fortify it. You may attempt to negotiate with the encroaching enemy as we believe they want the hostage kept alive. If negotiations fail, you may attempt to leave the area and extract to the island off the coast once 15minutes remain in the mission."\
    ""\
@@ -169,14 +169,14 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "There are numerous possible outcomes to this mission:"\
    ""\
@@ -191,7 +191,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{68D91E79544A3F25}" {
+  COA_MissionDescriptor "{68D91E79544A3F25}" {
    m_sTitle "HVI Briefing"
    m_sTextData "Take time to customize your uniform now via miniarsenal during safestart."\
    ""\
@@ -396,7 +396,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{C4D7EBE43E957665}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_USSpecOps_tanaka.conf"
+  m_rGearScript "{C4D7EBE43E957665}Configs/Gearscripts/Standard/Modern/Variants/COA_GS_USSpecOps_tanaka.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -405,7 +405,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMagnifiedOptics 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{5517B3F933C158EF}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_EuroInsurgents.conf"
+  m_rGearScript "{5517B3F933C158EF}Configs/Gearscripts/Standard/GWOT/Variants/COA_GS_EuroInsurgents.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -414,7 +414,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableSightArsenal 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -422,7 +422,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_HVI.conf"
+  m_rGearScript "{78BB59852E5F365D}Configs/Gearscripts/Standard/80s/COA_GS_CIV_HVI.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0

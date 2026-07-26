@@ -39,23 +39,23 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_bLockSlotsAfterSafestart 0
  m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "N/A"
   }
  }
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
+  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_ZRF_CAMPAIGN.conf"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
@@ -64,7 +64,7 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZWC_CAMPAIGN.conf"
+  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_ZWC_CAMPAIGN.conf"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
@@ -73,7 +73,7 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_Journos.conf"
+  m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_Journos.conf"
  }
  m_bRespawnEnabled 1
  m_bWaveRespawn 1

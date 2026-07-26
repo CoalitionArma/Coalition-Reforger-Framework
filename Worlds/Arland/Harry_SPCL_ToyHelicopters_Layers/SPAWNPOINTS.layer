@@ -5,7 +5,7 @@ COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoin
  coords 2931.994 51.26 2972.132
  angles 0 176.245 0
  {
-  CRF_ManualMarker {
+  COA_ManualMarker {
    ID "68682AC1B6C9C4BC"
    coords 0 0 0
   }

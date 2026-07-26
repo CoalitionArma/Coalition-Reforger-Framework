@@ -1,4 +1,4 @@
-CRF_VehicleSpawner {
+COA_VehicleSpawner {
  coords 416.459 352 322.953
  angles 0 -83.163 0
  m_rVehicle "{D629E80D144891E6}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_COMMAND.et"

@@ -17,7 +17,7 @@ PolylineShapeEntity : "{287EBEC40E39BF8F}PrefabsMissionMaking/PolyZone/ForwardDe
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  components {
-  CRF_PolyZone "{65862E4575B86577}" {
+  COA_PolyZone "{65862E4575B86577}" {
    m_aVisibleForFactions {
     "INDFOR"
    }
@@ -39,7 +39,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
   }
  }
  {
-  CRF_PolyZoneTrigger {
+  COA_PolyZoneTrigger {
    ID "658635BEF7631DCD"
    m_aFactionKey {
     "OPFOR"

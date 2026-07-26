@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A9F8046B2948C5B8}Configs/Gearscripts/Standard/Specials/Prophunt/CRF_GS_CIV_Hunters.conf"
+ Name "{A9F8046B2948C5B8}Configs/Gearscripts/Standard/Specials/Prophunt/COA_GS_CIV_Hunters.conf"
  Configurations {
   CONFResourceClass PC {
   }

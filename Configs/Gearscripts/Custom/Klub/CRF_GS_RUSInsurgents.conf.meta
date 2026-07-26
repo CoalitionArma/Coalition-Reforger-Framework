@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E3F9562372EE677D}Configs/Gearscripts/Standard/GWOT/CRF_GS_RUSMilitia_WatTwap.conf"
+ Name "{E3F9562372EE677D}Configs/Gearscripts/Standard/GWOT/COA_GS_RUSMilitia_WatTwap.conf"
  Configurations {
   CONFResourceClass PC {
   }

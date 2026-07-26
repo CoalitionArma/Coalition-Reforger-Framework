@@ -19,7 +19,7 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 1097.751 537.808 3145.792
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Negotiations have broken down, and American forces are pushing into Eastern Europe. After each MCOM destruction, a respawn wave will trigger. There are zero radios on this mission."\
    ""\
    "BLUFOR Composition: Mech Inf"\
@@ -31,14 +31,14 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Time: 60 min"\
    "Weather: Day Clear"
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Attack the MCOM's in series. "\
    ""\
    "Mission Maker Notes- "\
    "There are no radios. I would suggest setting up a communication network of runners, and flares. Have a plan for how respawns will re-enter the fight without communication. "\
    "There's not a lot of terrain between where you start and the enemy. Keep that in mind. "
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Defend the MCOM's in series. "\
    ""\
    "Mission Maker Notes- "\
@@ -51,14 +51,14 @@ COA_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{888A4A3845FEA201}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USLate70s.conf"
+  m_rGearScript "{888A4A3845FEA201}Configs/Gearscripts/Custom/Harry/70s/COA_GS_USLate70s.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{B9177B50FDCF2DF1}Configs/Gearscripts/Custom/Harry/70s/CRF_GS_USSRLate70s.conf"
+  m_rGearScript "{B9177B50FDCF2DF1}Configs/Gearscripts/Custom/Harry/70s/COA_GS_USSRLate70s.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0

@@ -1,6 +1,6 @@
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
  components {
-  CRF_PolyZone "{65865377C721CCB0}" {
+  COA_PolyZone "{65865377C721CCB0}" {
    m_aHideOnGameModeStates {
    }
   }
@@ -30,7 +30,7 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart
 $grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  {
   components {
-   CRF_PolyZone "{6586537E1F838475}" {
+   COA_PolyZone "{6586537E1F838475}" {
     m_bIsSafestartBorder 0
     m_aVisibleForFactions +{
      "BLUFOR"
@@ -56,7 +56,7 @@ $grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safe
  }
  {
   components {
-   CRF_PolyZone "{6586537E1F838475}" {
+   COA_PolyZone "{6586537E1F838475}" {
     m_bIsSafestartBorder 0
     m_aVisibleForFactions +{
      "BLUFOR"

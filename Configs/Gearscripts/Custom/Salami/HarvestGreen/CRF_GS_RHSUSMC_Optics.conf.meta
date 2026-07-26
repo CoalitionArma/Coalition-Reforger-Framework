@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7B7741A8E47C6E28}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC_Optics.conf"
+ Name "{7B7741A8E47C6E28}Configs/Gearscripts/Standard/Modern/COA_GS_RHSUSMC_Optics.conf"
  Configurations {
   CONFResourceClass PC {
   }

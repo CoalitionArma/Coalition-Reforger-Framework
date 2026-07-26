@@ -42,7 +42,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 20
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69EB45EE341D0407}" {
+  COA_MissionDescriptor "{69EB45EE341D0407}" {
    m_sTitle "Mission: Situation"
    m_sTextData "German forces try to return a downed pilot while a PMC hunts for them. "\
    ""\
@@ -59,7 +59,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69EB45EE341CF2AF}" {
+  COA_MissionDescriptor "{69EB45EE341CF2AF}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Escort the VIP to the marked extraction location. "\
@@ -74,7 +74,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69EB45EE341CF0E3}" {
+  COA_MissionDescriptor "{69EB45EE341CF0E3}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Capture the VIP alive, and keep him from being extracted for the rest of the mission. "\
@@ -89,7 +89,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69EB45EE341CF7EA}" {
+  COA_MissionDescriptor "{69EB45EE341CF7EA}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -104,7 +104,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69EB45EE341CF6FC}" {
+  COA_MissionDescriptor "{69EB45EE341CF6FC}" {
    m_sTitle "VIP Rules"
    m_sTextData "The VIP may not pick up any, or use any weapon. If the VIP abides by this rule, whoever kills them loses. If the VIP picks up a weapon, it becomes an HVT mission and they are allowed to be killed. "
    m_aFactionKeys {
@@ -353,7 +353,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{02AED6E0FCEA5CD9}Configs/Gearscripts/Custom/Harry/Modern/CRF_GS_ModernBund_Fleck_60mm.conf"
+  m_rGearScript "{02AED6E0FCEA5CD9}Configs/Gearscripts/Custom/Harry/Modern/COA_GS_ModernBund_Fleck_60mm.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -361,7 +361,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
+  m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/COA_GS_RHSION.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -369,7 +369,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
@@ -377,7 +377,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableRTORadios 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
