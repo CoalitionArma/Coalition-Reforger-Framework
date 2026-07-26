@@ -158,7 +158,7 @@ class COA_AARMenu: ChimeraMenuBase
 			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		}
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
-		GetGame().GetInputManager().AddActionListener("COA_ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
 	
 	/**
@@ -254,7 +254,7 @@ class COA_AARMenu: ChimeraMenuBase
 			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
-		GetGame().GetInputManager().RemoveActionListener("COA_ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
 	
 	/**
