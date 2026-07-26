@@ -15,7 +15,7 @@ modded class ParachuteComponent
 		    return;
 
 
-		m_InputManager.AddActionListener("ParachuteDeploy", EActionTrigger.DOWN, OnJumpPressed);
+		m_InputManager.AddActionListener("CRF_ParachuteDeploy", EActionTrigger.DOWN, OnJumpPressed);
 	}
 	
 	override void OnJumpPressed()
