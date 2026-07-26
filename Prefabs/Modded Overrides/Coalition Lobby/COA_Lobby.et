@@ -1,0 +1,53 @@
+COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ ID "56B2B479C6B96951"
+ m_eGME_GlobalAISkill VETERAN
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_aSupplyTrucks {
+   "{C8D62059548EC894}Prefabs/Vehicles/BLUFOR/BLUFOR_AMMO.et" "{0CA6F84C835A080E}Prefabs/Vehicles/BLUFOR/MERDC/BLUFOR_AMMO_MERDC.et" "{FF65607D073A8981}Prefabs/Vehicles/BLUFOR/BLUFOR_ARSENAL.et" "{FC3AB83990745796}Prefabs/Vehicles/BLUFOR/MERDC/BLUFOR_ARSENAL_MERDC.et"
+  }
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{69F4E5DFA3393AC0}" {
+  }
+  m_aSupplyTrucks {
+   "{8759EDBCF78920B7}Prefabs/Vehicles/OPFOR/OPFOR_AMMO.et" "{3927510D48AB7EB5}Prefabs/Vehicles/OPFOR/OPFOR_ARSENAL.et"
+  }
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{69F4E5DFDD4B10CB}" {
+  }
+  m_aSupplyTrucks {
+   "{DF75A01974E8FD17}Prefabs/Vehicles/INDFOR/INDFOR_AMMO.et" "{9712B926F1FD286E}Prefabs/Vehicles/INDFOR/INDFOR_ARSENAL.et"
+  }
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{69F4E5DFCA18E31D}" {
+  }
+ }
+ {
+  RadioManagerEntity {
+   ID "632771FB44BBF8E1"
+   coords -1.5 0 0
+  }
+  ScriptedChatEntity {
+   ID "632771FB44BBF8D8"
+   coords 1.5 0 0
+  }
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   coords 0 0 -1.5
+  }
+  PerceptionManager {
+   ID "64443AC8FCA0C42D"
+   coords 0 0 0
+  }
+  SCR_EditorSettingsEntity {
+   ID "632771FB44BBD90B"
+   coords 0 0 1.5
+  }
+  SCR_LoadoutManager {
+   ID "632771FB44BBFB73"
+   coords 0 1.5 0
+  }
+ }
+}
