@@ -507,12 +507,6 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	void RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
-	{
-		Rpc(RpcAsk_RequestForwardDeploy, cursorWorldPos, factionKey, playerId);
-	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Requests a JIP (Join In Progress) forward deploy to the live position of the given friendly group.
@@ -2628,103 +2622,6 @@ class CRF_PlayerRplToAuthorityManager : ScriptComponent
 			supplyComp.UpdateCurrentSupply();
 
 		vehicle.UpdateVehicleSupplies(vehicleGearscriptManager.GetSuppliesInTruck(truck));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestForwardDeploy(vector cursorWorldPos, string factionKey, int playerId)
-	{
-		LogTelemetry("RpcAsk_RequestForwardDeploy", CRF_BandwidthTelemetryManager.EstimateSize_Vector() + CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey) + CRF_BandwidthTelemetryManager.EstimateSize_Int());
-		IEntity polyzone;
-		cursorWorldPos[1] = SCR_TerrainHelper.GetTerrainY(cursorWorldPos);
-		foreach (IEntity zone: CRF_ForwardDeployManager.GetInstance().GetForwardDeployZones())
-		{
-			CRF_PolyZone zoneComp = CRF_PolyZone.Cast(zone.FindComponent(CRF_PolyZone));
-			if (!zoneComp)
-				continue;
-			
-			if (!zoneComp.IsInsidePolygon(Vector(cursorWorldPos[0], 0, cursorWorldPos[2])))
-				continue;
-			
-			if (!zoneComp.m_aVisibleForFactions.Contains(factionKey))
-				continue;
-			
-			polyzone = zone;
-			break;
-		}
-		
-		if (!polyzone)
-		{
-			CRF_PlayerRplToOwnerManager.GetInstance().ForwardDeployRequestRejected();
-			return;
-		}
-		
-		array<IEntity> teleportedVehicles = {};
-		array<AIAgent> players = {};
-		array<IEntity> entities = {};
-		
-		SCR_GroupsManagerComponent groupMan = SCR_GroupsManagerComponent.GetInstance();
-		SCR_AIGroup playerGroup = groupMan.GetPlayerGroup(playerId);
-		if (!playerGroup)
-		{
-		    CRF_PlayerRplToOwnerManager.GetInstance().ForwardDeployRequestRejected();
-		    return;
-		}
-		playerGroup.GetAgents(players);
-		foreach (AIAgent agent : players)
-		{
-			IEntity entity = agent.GetControlledEntity();
-			if (!entity)
-				continue;
-				
-			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
-			if (!character)
-				continue;
-			
-			entities.Insert(entity);
-		}
-		foreach (IEntity entity: entities)
-		{
-			int currentPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
-			if (currentPlayerId <= 0)
-				continue;
-			SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(entity.FindComponent(SCR_CompartmentAccessComponent));
-			if (compartmentAccess)
-			{
-				IEntity vehicle = compartmentAccess.GetVehicle();
-				
-				if (vehicle)
-				{
-					SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(SCR_BaseCompartmentManagerComponent));
-					array<BaseCompartmentSlot> slots = {};
-					compartmentMan.GetCompartments(slots);
-					//Check if majority of the vic is the same group, if not don't teleport.
-					int amountInGroup = 0;
-					int amountNotInGroup = 0;
-					foreach (BaseCompartmentSlot slot: slots)
-					{
-						if (!slot.IsOccupied())
-							continue;
-						
-						if (!slot.GetOccupant().FindComponent(FactionAffiliationComponent))
-							continue;
-						
-						if (entities.Contains(slot.GetOccupant()))
-							amountInGroup++;
-						else
-							amountNotInGroup++;
-					}
-					if (amountInGroup < amountNotInGroup)
-						continue; 
-					if (teleportedVehicles.Contains(vehicle))
-						continue;
-					teleportedVehicles.Insert(vehicle);
-					CRF_ForwardDeployManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
-					continue;
-				}
-			}
-			CRF_ForwardDeployManager.GetInstance().CreateForwardDeployRequest(currentPlayerId, cursorWorldPos);
-		}
 	}
 
 	//------------------------------------------------------------------------------------------------
