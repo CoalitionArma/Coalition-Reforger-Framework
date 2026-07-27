@@ -10,9 +10,6 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	// Client-side audio handles for positional sounds, keyed by sound event name
 	protected ref map<string, AudioHandle> m_mSoundHandles = new map<string, AudioHandle>();
 
-	// AAR outro — winning faction received from the server (set in RpcDo_BroadcastOutro)
-	string m_sOutroWinningFaction = "";
-
 	// Area Timer state — replicated to clients via BroadcastAreaTimerUpdate
 	CRF_EAreaTimerState m_eAreaTimerState;
 	int m_iAreaTimerCountdown;
@@ -312,16 +309,6 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void BroadcastOutro(string winningFaction = "")
-	{
-		#ifdef WORKBENCH
-		RpcDo_BroadcastOutro(winningFaction);
-		#else
-		Rpc(RpcDo_BroadcastOutro, winningFaction);
-		#endif
-	}
-
-	//------------------------------------------------------------------------------------------------
 	//! Shows a custom hint to a single specific player (e.g. a JIP forward deploy denial reason).
 	void ShowPlayerHint(int playerId, string message, string title = "Forward Deploy", float duration = 8)
 	{
@@ -584,21 +571,6 @@ modded class COA_RplBroadcastManager : ScriptComponent
 		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
 		if (vehicleGearscriptManager)
 			vehicleGearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_BroadcastOutro(string winningFaction)
-	{
-		m_sOutroWinningFaction = winningFaction;
-		AudioSystem.PlaySound("{3D7F63CCD32B2F17}Sounds/Intro/outroCrescendo.wav");
-		GetGame().GetCallqueue().CallLater(OpenOutro, 2831, false);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void OpenOutro()
-	{
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.COA_Outro);
 	}
 
 	//------------------------------------------------------------------------------------------------
