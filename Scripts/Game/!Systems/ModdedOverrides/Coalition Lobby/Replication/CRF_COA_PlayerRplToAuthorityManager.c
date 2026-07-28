@@ -303,6 +303,24 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected override void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction)
+	{
+		// Telemetry: bool
+		LogTelemetry("RpcAsk_RequestAdvanceGamemodeState", COA_BandwidthTelemetryManager.EstimateSize_Bool());
+		
+		// Set winning faction on the server where the log file handle exists
+		if (winningFaction != "")
+		{
+			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+			if (loggingManager)
+				loggingManager.SetWinningFaction(winningFaction, "manual");
+		}
+		
+		m_Gamemode.AdvanceGamemodeState(overriden);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
 		// Telemetry: string + bool

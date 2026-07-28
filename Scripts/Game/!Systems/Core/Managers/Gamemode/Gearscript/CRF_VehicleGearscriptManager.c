@@ -6,8 +6,8 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 {
 	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
 	protected SCR_EntityCatalogManagerComponent m_CatalogManager; // PERFORMANCE OPTIMIZATION
-	protected ref array<Vehicle> m_aSpawnedVehicles = {};
-	protected ref array<IEntity> m_VehiclesInQueue = {};
+	protected ref array<Vehicle> m_aSpawnedVehicles = new array<Vehicle>;
+	protected ref array<IEntity> m_VehiclesInQueue = new array<IEntity>;
 
 	// Shared resource caching helper (also used by COA_GearscriptManager) instead of a second
 	// hand-rolled map<ResourceName, Resource> - PERFORMANCE OPTIMIZATION

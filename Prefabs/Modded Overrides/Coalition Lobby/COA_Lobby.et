@@ -1,5 +1,15 @@
 COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
+ components {
+  CRF_CommunityTagManager "{69F92C2432B1CFCF}" {
+  }
+  CRF_LoggingManager "{69F92C24394CCB16}" {
+  }
+  CRF_MissionValidatorManager "{69F92C243B972BE2}" {
+  }
+  CRF_VehicleGearscriptManager "{69F92C24F37D31F8}" {
+  }
+ }
  m_eGME_GlobalAISkill VETERAN
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_aSupplyTrucks {
