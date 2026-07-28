@@ -1,0 +1,23 @@
+$grp SCR_DestructibleBuildingEntity : "{5CC8525A69118B0C}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_01/FuelTank_01_orange.et" {
+ {
+  coords 2764.456 0 2993.826
+ }
+ {
+  coords 2754.508 0 2989.25
+ }
+}
+GenericEntity : "{B0A890995104A02D}Prefabs/Weapons/Tripods/9K135/Part_9K135_Launcher.et" {
+ coords 2330.73 17.935 2361.138
+ angles 1.145 9.395 -89.27
+}
+GenericEntity : "{B31A14BC1A0E7776}Prefabs/Props/Military/Sandbags/Sandbag_01_round_burlap.et" {
+ coords 2328.203 17.647 2361.586
+ angles 0 -85.444 0
+}
+GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ coords 2846.523 10.051 2571.323
+}
+Turret : "{F30D7FB86B0543A6}Prefabs/Weapons/Tripods/9K135/Deployable_Tripod_9K135_v2.et" {
+ coords 2329.249 17.656 2361.412
+ angles 0 -94.293 0
+}
