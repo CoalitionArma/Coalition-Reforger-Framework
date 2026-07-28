@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
  IFV1_Spawn {
   coords 5679.541 5.185 1490.885
   m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
@@ -24,7 +24,7 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
   m_iZOrder 41
  }
 }
-$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
  Truck_Supply {
   coords 5329.727 50.375 623.237
   m_sQuadName "mark-question"

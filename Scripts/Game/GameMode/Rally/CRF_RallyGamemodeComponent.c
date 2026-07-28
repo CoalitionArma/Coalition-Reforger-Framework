@@ -1132,8 +1132,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 		if (!m_wHUD)
 		{
-			CRF_Gamemode crf = CRF_Gamemode.GetInstance();
-			if (!crf || crf.m_GamemodeState != CRF_EGamemodeState.GAME)
+			COA_Gamemode crf = COA_Gamemode.GetInstance();
+			if (!crf || crf.m_GamemodeState != COA_EGamemodeState.GAME)
 				return;
 
 			CreateHUD();

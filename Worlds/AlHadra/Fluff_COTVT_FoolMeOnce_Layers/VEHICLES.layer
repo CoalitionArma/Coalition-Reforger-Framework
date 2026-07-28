@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/VehicleSpawner/INDFOR_VehicleSpawner.et" {
  {
   coords 6757.074 17.852 6768.272
   m_rVehicle "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
@@ -14,7 +14,7 @@ $grp CRF_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{030A76F8D2BDBF33}Prefabs/Vehicles/Wheeled/S1203/S1203_Explosive.et"
  }
 }
-$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
  {
   coords 5581.326 142.952 6247.134
   angles 0 0 0
@@ -28,7 +28,7 @@ $grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "Police Station"
  }
 }
-$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
   coords 3033.7 17.844 6018.063
   angles 0 152.233 0
@@ -60,7 +60,7 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
  }
 }
-CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
  coords 6794.11 17.844 6764.481
  m_sDescription "Police Station"
 }

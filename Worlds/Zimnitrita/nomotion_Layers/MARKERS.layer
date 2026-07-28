@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
  {
   coords 12178.768 2.574 3178.877
   angles 0 0 90
@@ -12,7 +12,7 @@ $grp CRF_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/Objectiv
   m_bUseWorldScale 0
  }
 }
-CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
  coords 14268.08 50.906 11955.614
  angles 0 0 90
  m_sDescription "EXTRACT"

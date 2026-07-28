@@ -1,4 +1,4 @@
-TracerProjectile : "{6DEC9F287271AB24}Prefabs/Weapons/Ammo/SmallArms/Ammo_127x99_AP_M2.et" {
+TracerProjectile : "{6DEC9F287271AB24}Prefabs/Weapons/Ammo/Ammo_127x99_AP_M2.et" {
  ID "476AE74C1F2F140D"
  components {
   CollisionTriggerComponent "{6463399D24AD37B7}" {

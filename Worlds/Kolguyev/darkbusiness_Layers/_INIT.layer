@@ -10,7 +10,7 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
  }
  coords 11196.53 14.926 10053
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_aSharedFrequencies {
@@ -53,7 +53,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Welcome to Dark Business. In this version, OPFOR, INDFOR, and BLUFOR all have something and want something from at least one other faction. "\
    ""\
@@ -65,7 +65,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Utilize your littlebird to find, insert, and prevent the trade operations of INDFOR and OPFOR."\
    ""\
@@ -78,7 +78,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "RP IS REQUIRED"\
    ""\
@@ -91,7 +91,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "RP IS REQUIRED"\
    ""\
@@ -104,7 +104,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "CIV Objectives"
    m_sTextData "RP IS REQUIRED"\
    ""\
@@ -116,7 +116,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{694B55FE565E465B}" {
+  COA_MissionDescriptor "{694B55FE565E465B}" {
    m_sTitle "Administration"
    m_sTextData "SHARED NET:"\
    "OPFOR/INDFOR share 57000mhz as a negotiations net"\
@@ -134,7 +134,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{694A4048307495A5}" {
+  COA_SlottingGroup "{694A4048307495A5}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,7 +146,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN_DEMO
    }
   }
-  CRF_SlottingGroup "{694A404830749482}" {
+  COA_SlottingGroup "{694A404830749482}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -156,7 +156,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{694A404830749788}" {
+  COA_SlottingGroup "{694A404830749788}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -164,7 +164,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{694A404830749626}" {
+  COA_SlottingGroup "{694A404830749626}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -179,7 +179,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A4048307496A6}" {
+  COA_SlottingGroup "{694A4048307496A6}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -194,7 +194,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A40483074892F}" {
+  COA_SlottingGroup "{694A40483074892F}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -209,7 +209,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A4048307489B2}" {
+  COA_SlottingGroup "{694A4048307489B2}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -224,7 +224,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A404830748840}" {
+  COA_SlottingGroup "{694A404830748840}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -241,7 +241,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{694A404830748B64}" {
+  COA_SlottingGroup "{694A404830748B64}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -249,7 +249,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{694A404830748BF8}" {
+  COA_SlottingGroup "{694A404830748BF8}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -264,7 +264,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A404830748B8B}" {
+  COA_SlottingGroup "{694A404830748B8B}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -279,7 +279,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A404830748A00}" {
+  COA_SlottingGroup "{694A404830748A00}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -294,7 +294,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A404830748A86}" {
+  COA_SlottingGroup "{694A404830748A86}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -309,7 +309,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{694A404830748D16}" {
+  COA_SlottingGroup "{694A404830748D16}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -326,7 +326,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{694A404830748D8C}" {
+  COA_SlottingGroup "{694A404830748D8C}" {
    m_sCallsign "HOSTAGES"
    m_FlagType SIGNAL
    m_aSlots {
@@ -339,32 +339,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{696E32C057156A37}Configs/Gearscripts/Standard/Modern/CRF_GS_Modern_GreenBeret.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{696E32C057156A37}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_GreenBeret.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/CRF_GS_CDF_Modern_Day.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/COA_GS_CDF_Modern_Day.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{7385170EB3ECBF6C}Configs/Gearscripts/Standard/80s/CRF_GS_CIV_POLITICAL.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{7385170EB3ECBF6C}Configs/Gearscripts/Standard/80s/COA_GS_CIV_POLITICAL.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0

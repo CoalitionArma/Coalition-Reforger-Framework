@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{AB5CF09B0D974592}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_UnarmedBR.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

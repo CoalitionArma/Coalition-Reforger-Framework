@@ -6,7 +6,7 @@ SCR_MapEntity SCR_MapEntity1 {
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 4182.271 1.001 7705.614
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{690CF7883A29767A}" {
    m_timeBetweenPings 420
@@ -62,7 +62,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "BLUFOR have located an HVT in the marked region of Fallujah. "\
    ""\
@@ -78,7 +78,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Find and eliminate the HVT.  The HVT marker will update every 7 minutes. When the HVT is eliminated, both sides will receive a respawn wave. Blufor is to withdraw troops to the marked FOB, and weather the attack. "\
    ""\
@@ -88,14 +88,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "If OPFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "Protect the HVT. The HVT marker will update every 7 minutes. When the HVT is eliminated, both sides will receive a respawn wave. After respawn, attack and destroy BLUFOR on their way back to the FOB. "\
    ""\
@@ -105,7 +105,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "When the HVT dies, respawn will need to be triggered manually,"
    m_aFactionKeys +{
@@ -118,7 +118,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{691173B27F82421A}" {
+  COA_SlottingGroup "{691173B27F82421A}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -128,7 +128,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{691173B27F824083}" {
+  COA_SlottingGroup "{691173B27F824083}" {
    m_sCallsign "Recon"
    m_FlagType SNIPER
    m_aSlots {
@@ -136,7 +136,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     SPOTTER
    }
   }
-  CRF_SlottingGroup "{691173B27F824027}" {
+  COA_SlottingGroup "{691173B27F824027}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -151,7 +151,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691173B27F82475F}" {
+  COA_SlottingGroup "{691173B27F82475F}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -166,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691173B27F8246F7}" {
+  COA_SlottingGroup "{691173B27F8246F7}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +181,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691173B27F824613}" {
+  COA_SlottingGroup "{691173B27F824613}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691173B27F8245BB}" {
+  COA_SlottingGroup "{691173B27F8245BB}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -211,7 +211,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{691173B27F8244E6}" {
+  COA_SlottingGroup "{691173B27F8244E6}" {
    m_sCallsign "MTR"
    m_FlagType MORTAR
    m_aSlots {
@@ -224,7 +224,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{691173B27F823BB9}" {
+  COA_SlottingGroup "{691173B27F823BB9}" {
    m_sCallsign "Cell Lead"
    m_FlagType SIGNAL
    m_aSlots {
@@ -232,7 +232,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{691173B27F823ADD}" {
+  COA_SlottingGroup "{691173B27F823ADD}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -247,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{691173B27F823A06}" {
+  COA_SlottingGroup "{691173B27F823A06}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -262,7 +262,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{691173B27F8239AD}" {
+  COA_SlottingGroup "{691173B27F8239AD}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -277,7 +277,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{691173B27F8238D3}" {
+  COA_SlottingGroup "{691173B27F8238D3}" {
    m_sCallsign "Suicide Squad"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -286,7 +286,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{691173B27F82385A}" {
+  COA_SlottingGroup "{691173B27F82385A}" {
    m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -295,7 +295,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     VEHICLE_DRIVER
    }
   }
-  CRF_SlottingGroup "{691173B27F823FF4}" {
+  COA_SlottingGroup "{691173B27F823FF4}" {
    m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -309,32 +309,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{56CBFB61EC445934}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_2000sUS_DCU_PGM.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{56CBFB61EC445934}Configs/Gearscripts/Custom/Harry/GWOT/COA_GS_2000sUS_DCU_PGM.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/COA_GS_USSR80s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{ECD6D43ED918FB6C}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_MEInsurgents_Poor_Harry.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{ECD6D43ED918FB6C}Configs/Gearscripts/Custom/Harry/GWOT/COA_GS_MEInsurgents_Poor_Harry.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

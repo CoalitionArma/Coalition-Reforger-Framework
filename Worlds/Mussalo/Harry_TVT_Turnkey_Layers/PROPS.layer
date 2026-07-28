@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
  {
   coords 3272.608 10.852 4256.881
   angles 0 0 0

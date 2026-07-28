@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 4550.695 -0.3 261.518
   m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_M134.et"

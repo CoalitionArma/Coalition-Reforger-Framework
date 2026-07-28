@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{57E2C9A1E9F070A1}Configs/Gearscripts/Custom/fluff/COA_GS_TFMSVSyriaFluff.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

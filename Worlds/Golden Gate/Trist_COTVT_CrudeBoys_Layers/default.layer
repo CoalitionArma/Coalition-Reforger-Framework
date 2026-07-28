@@ -24,16 +24,16 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 3231.583 68.756 1493.873
 }
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 1085.521 26.66 1509.773
- m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
   m_iSpawnPointRadius 13
   m_bSpawnPointConformsToTerrain 0
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 3223.059 37 1800.886
- m_SpawnPointSettings CRF_SpawnPointData "{68E15E4C4DE26D17}" {
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
   m_sSpawnPointName "Respawn"
   m_iSpawnPointRadius 5
   m_bSpawnPointConformsToTerrain 0

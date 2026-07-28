@@ -20,7 +20,7 @@ PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
  components {
-  CRF_PolyZone "{65862E4575B86577}" {
+  COA_PolyZone "{65862E4575B86577}" {
    m_bLineMode 1
   }
  }

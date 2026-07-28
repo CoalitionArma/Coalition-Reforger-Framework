@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
  NorthernForkMinesBLU {
   coords 15245.145 69.019 5527.825
   m_fWorldSize 140
@@ -12,7 +12,7 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
     }
     m_eShapeType SQUARE
    }
-   CRF_ManualMarker NorthernForkMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   COA_ManualMarker NorthernForkMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0 0 0
     m_sDescription "Mines"
    }
@@ -31,7 +31,7 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
     }
     m_eShapeType SQUARE
    }
-   CRF_ManualMarker BridgeMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   COA_ManualMarker BridgeMinesOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0.006 -0.118 -0.001
     m_sDescription "Mines"
    }
@@ -42,7 +42,7 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sQuadName "defend"
   m_sDescription "Gas Station Munitions"
   {
-   CRF_ManualMarker GasStationMunitionsOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   COA_ManualMarker GasStationMunitionsOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords 0.068 0 0.061
     m_sQuadName "destroy-2"
     m_sDescription "Gas Station Munitions"
@@ -54,7 +54,7 @@ $grp CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sQuadName "defend"
   m_sDescription "Fuel Storage"
   {
-   CRF_ManualMarker FuelStorageOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
+   COA_ManualMarker FuelStorageOPF : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/OPFOR_ObjectiveMarker.et" {
     coords -0.038 0 0.008
     m_sQuadName "destroy-2"
     m_sDescription "Fuel Storage"

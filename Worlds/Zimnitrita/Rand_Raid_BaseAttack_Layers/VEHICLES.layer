@@ -1,4 +1,4 @@
-CRF_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  coords 8707.273 76.982 13365.844
  angles 0 179.237 0
  m_rVehicle "{DD342272048F1F53}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC_raid.et"

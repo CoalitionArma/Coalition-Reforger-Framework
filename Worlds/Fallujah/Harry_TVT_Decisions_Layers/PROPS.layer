@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 3652.207 1 6491.502
   m_rVehicle "{B3C8EC88E7782C78}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_pohona.et"

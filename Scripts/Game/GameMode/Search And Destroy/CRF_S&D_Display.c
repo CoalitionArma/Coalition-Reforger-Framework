@@ -31,7 +31,7 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplayExtended
 			if (!m_SDComponent) return; // Trist: FindComponent Bandaid
 		};
 		
-		if(!CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
+		if(!COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);	

@@ -23,7 +23,7 @@ Client → Client   ❌ (forbidden)
 ```c
 // Using helper
 RplId rplId;
-if (!CRF_ReplicationHelpers.GetRplId(entity, rplId))
+if (!COA_ReplicationHelpers.GetRplId(entity, rplId))
 {
     Print("Entity has no RplComponent", LogLevel.ERROR);
     return;
@@ -48,7 +48,7 @@ RplId rplId = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 ### ✅ CORRECT: Safe Entity Lookup
 ```c
 // Using helper
-IEntity entity = CRF_ReplicationHelpers.GetEntityFromRplId(rplId);
+IEntity entity = COA_ReplicationHelpers.GetEntityFromRplId(rplId);
 if (!entity)
 {
     Print("Entity not found or streamed out", LogLevel.WARNING);
@@ -89,7 +89,7 @@ void UpdateValue(int newValue)
 void UpdateValue(int newValue)
 {
     m_ReplicatedValue = newValue;
-    CRF_ReplicationHelpers.SafeBumpMe(); // Only calls on server
+    COA_ReplicationHelpers.SafeBumpMe(); // Only calls on server
 }
 ```
 
@@ -252,7 +252,7 @@ Replication.FindItem(rplId) returned null
 
 **Solution**: Always validate lookup results
 ```c
-IEntity entity = CRF_ReplicationHelpers.GetEntityFromRplId(rplId);
+IEntity entity = COA_ReplicationHelpers.GetEntityFromRplId(rplId);
 if (!entity)
 {
     Print("Entity not found or streamed out", LogLevel.WARNING);
@@ -300,27 +300,27 @@ Join-in-progress client has wrong state
 ```c
 // Safe RplId retrieval
 RplId id;
-if (CRF_ReplicationHelpers.GetRplId(entity, id))
+if (COA_ReplicationHelpers.GetRplId(entity, id))
     UseId(id);
 
 // Safe entity lookup
-IEntity entity = CRF_ReplicationHelpers.GetEntityFromRplId(id);
+IEntity entity = COA_ReplicationHelpers.GetEntityFromRplId(id);
 if (entity)
     UseEntity(entity);
 
 // Safe BumpMe
-CRF_ReplicationHelpers.SafeBumpMe();
+COA_ReplicationHelpers.SafeBumpMe();
 
 // Batch entity lookup
 array<IEntity> entities = {};
-CRF_ReplicationHelpers.GetEntitiesFromRplIds(rplIdArray, entities);
+COA_ReplicationHelpers.GetEntitiesFromRplIds(rplIdArray, entities);
 
 // Batch RplId retrieval
 array<RplId> rplIds = {};
-CRF_ReplicationHelpers.GetRplIdsFromEntities(entityArray, rplIds);
+COA_ReplicationHelpers.GetRplIdsFromEntities(entityArray, rplIds);
 
 // Validation (debugging)
-if (!CRF_ReplicationHelpers.ValidateReplicationSetup(entity, true))
+if (!COA_ReplicationHelpers.ValidateReplicationSetup(entity, true))
     Print("Invalid setup!");
 ```
 
@@ -330,7 +330,7 @@ if (!CRF_ReplicationHelpers.ValidateReplicationSetup(entity, true))
 
 ### Is my entity replicated?
 ```c
-RplComponent rplComp = CRF_ReplicationHelpers.GetRplComponent(entity);
+RplComponent rplComp = COA_ReplicationHelpers.GetRplComponent(entity);
 if (rplComp)
 {
     Print("Entity IS replicated");
@@ -378,4 +378,4 @@ switch (RplSession.Mode())
 - Analysis: `REPLICATION_ISSUES_ANALYSIS.md`
 - Fixes Guide: `REPLICATION_FIXES_GUIDE.md`
 - Summary: `REPLICATION_REVIEW_SUMMARY.md`
-- Helpers: `scripts/Game/Systems/Core/CRF_ReplicationHelpers.c`
+- Helpers: `scripts/Game/Systems/Core/COA_ReplicationHelpers.c`

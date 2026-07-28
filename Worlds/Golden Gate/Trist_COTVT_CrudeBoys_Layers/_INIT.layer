@@ -3,7 +3,7 @@ SCR_MapEntity SCR_MapEntity1 {
  "Map Geometry Data" "{AD0D57A138A115BA}Missions/GoldenGate_GM.topo"
  "Satellite background image" "{94393EADA8E6B9D7}Missions/gtt_satmapGGSEA LION2.edds"
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Cloudy"
@@ -35,14 +35,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Disjointed US civilians have been stockpiling what little weapons they had to overtake a nearby RUS camp full of armaments and boats; to then use on a daring attempt to blindside a RUS captured oil rig and retake the bay. Just before enacting their plan, a US UH1H is shot down and RUS forces on alert, and now they must decide on how to proceed forward."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "- Link with disjointed resistance cells & Coordinate a plan for all objectives."\
    "- React with & preserve your forces accordingly."\
@@ -51,28 +51,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Stay grouped together and on the designated objectives. Do not kill prisoners (a fenced off area in the Encampment is the BLUFOR spawn point, waiting to be rescued as a form of respawns.)"
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69585029E0BAA4BC}" {
+  COA_MissionDescriptor "{69585029E0BAA4BC}" {
    m_sTitle "RESPAWNS!"
    m_sTextData "BLUFOR: Upon death you may remain in spectator, or switch right to UNARMED slots. These are your form of respawns, you do not get more before or after. Be careful as AI will shoot you."\
    ""\
@@ -87,7 +87,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{695A0C8C743965F8}" {
+  COA_SlottingGroup "{695A0C8C743965F8}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -101,7 +101,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397B2A}" {
+  COA_SlottingGroup "{695A0C8C74397B2A}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -115,7 +115,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397829}" {
+  COA_SlottingGroup "{695A0C8C74397829}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -129,7 +129,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397927}" {
+  COA_SlottingGroup "{695A0C8C74397927}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +143,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397E14}" {
+  COA_SlottingGroup "{695A0C8C74397E14}" {
    m_sCallsign "Echo Team"
    m_FlagType INFANTRY
    m_aSlots {
@@ -154,7 +154,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397F07}" {
+  COA_SlottingGroup "{695A0C8C74397F07}" {
    m_sCallsign "Civ 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -168,7 +168,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397C7E}" {
+  COA_SlottingGroup "{695A0C8C74397C7E}" {
    m_sCallsign "Civ 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -182,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397D6D}" {
+  COA_SlottingGroup "{695A0C8C74397D6D}" {
    m_sCallsign "Civ 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -196,7 +196,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{695A0C8C74397255}" {
+  COA_SlottingGroup "{695A0C8C74397255}" {
    m_sCallsign "Civ 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -212,7 +212,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{695A0C8C7439730C}" {
+  COA_SlottingGroup "{695A0C8C7439730C}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -223,7 +223,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{695A0C8C7439707C}" {
+  COA_SlottingGroup "{695A0C8C7439707C}" {
    m_sCallsign "ZEUS"
    m_FlagType HELICOPER
    m_aSlots {
@@ -238,8 +238,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iCIVTickets 0
  m_bEnableClothesSwapping 1
  m_bDisableChat 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{381A393C34955B8E}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_CrudeBoys_CIVLBLUFORmixed.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{381A393C34955B8E}Configs/Gearscripts/Custom/Trist/COTVT/COA_GS_CrudeBoys_CIVLBLUFORmixed.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
@@ -248,24 +248,24 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{070C13F7435740A9}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_CrudeBoys_OPFOR_Invasion.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{070C13F7435740A9}Configs/Gearscripts/Custom/Trist/COTVT/COA_GS_CrudeBoys_OPFOR_Invasion.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
@@ -331,7 +331,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
-$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
  {
   coords 4080.289 69.218 752.62
   m_sCallsignOfGroupToSpawn "Cell 1"

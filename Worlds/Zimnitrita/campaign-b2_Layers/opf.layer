@@ -34,87 +34,87 @@ SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
  coords 11087.558 32.272 7259.909
  angles 1.336 0.115 3.132
  m_aUnitPrefabSlots +{
-  "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
  }
  {
   SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
    coords 37.275 2.227 -6.399
    angles -36.511 -22.616 35.887
    m_aUnitPrefabSlots {
-    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-    "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
-    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+    "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_TL_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+    "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
    }
    {
     SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
      coords -9.136 22.327 35.871
      angles 40.897 -0 -29.905
      m_aUnitPrefabSlots {
-      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-      "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
-      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+      "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_TL_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+      "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      {
       SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
        coords -3.357 -0.09 26.012
        angles -0.447 -0.004 0.447
        m_aUnitPrefabSlots {
-        "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+        "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+        "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
        }
        {
         SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
          coords -19.279 0.204 -140.455
          angles -5.755 -0.388 3.584
          m_aUnitPrefabSlots {
-          "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+          "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_TL_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+          "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
          }
          {
           SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
            coords 36.033 2.577 6.529
            angles 2.043 0.548 -7.444
            m_aUnitPrefabSlots {
-            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_TL_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+            "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
            }
            {
             SCR_AIGroup : "{34905DFCE1018376}Prefabs/Groups/OPFOR/Campaign/CRF_ZWC_Campaign_Soldiers.et" {
              coords 20.035 0.647 23.053
              angles 8.228 0.056 0.791
              m_aUnitPrefabSlots {
-              "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"
-              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
-              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+              "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_SL_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
+              "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
              }
             }
            }

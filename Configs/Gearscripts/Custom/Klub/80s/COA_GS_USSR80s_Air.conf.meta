@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{CEE41B2221F46E00}Configs/Gearscripts/Custom/Klub/80s/COA_GS_USSR80s_Air.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

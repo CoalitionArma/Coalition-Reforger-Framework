@@ -1,11 +1,11 @@
-$grp CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+$grp COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  {
   coords 12291.872 29.719 10263.923
-  m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
    m_sSpawnPointName "Northern Andruhanov"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Northern Andruhanov"
    }
@@ -14,11 +14,11 @@ $grp CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
  {
   coords 12234.118 41.693 9933.85
   m_bIsDefaultSpawn 0
-  m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
    m_sSpawnPointName "Central Police Department"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Central Police Department"
    }
@@ -26,11 +26,11 @@ $grp CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
  }
  {
   coords 12326.295 44.399 9490.175
-  m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
    m_sSpawnPointName "South Police Department"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "South Police Department"
    }
@@ -38,17 +38,17 @@ $grp CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/Spaw
  }
  {
   coords 12126.331 6.832 8540.275
-  m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
    m_sSpawnPointName "Port of Andruhanov"
   }
   {
-   CRF_ManualMarker {
+   COA_ManualMarker {
     ID "68682AC1849E53AF"
     m_sDescription "Port of Andruhanov"
    }
   }
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 12568.766 49.042 9404.414
 }

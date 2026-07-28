@@ -1,7 +1,7 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 6517.027 0 7732.549
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_RaidGamemodeComponent "{691AD0270E3CBF37}" {
    m_sAttackingSide "OPFOR"
@@ -30,7 +30,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Russian backed Korean forces are conducting a raid on a blufor staging areas. They need to destroy 50% of the available materiel, and then hold out at the marked retreat spot. "\
    ""\
@@ -46,28 +46,28 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Prevent the enemy from destroying 50% of the available materiel. If they do manage to destroy it, there will be a respawn wave. Chase down the enemy, and destroy them on the way or at the marked retreat path. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Destroy at least 50% of the marked materiel. After the raid is finished, there will be a respawn wave for both teams. Extract your forces, and hold out against the counter attack at the marked retreat area. "
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys +{
@@ -80,7 +80,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BluforSlots {
-  CRF_SlottingGroup "{692133169ADF19FE}" {
+  COA_SlottingGroup "{692133169ADF19FE}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -90,7 +90,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{692133169ADF1103}" {
+  COA_SlottingGroup "{692133169ADF1103}" {
    m_sCallsign "Able"
    m_FlagType INFANTRY
    m_aSlots {
@@ -106,7 +106,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF1062}" {
+  COA_SlottingGroup "{692133169ADF1062}" {
    m_sCallsign "Bravo"
    m_FlagType INFANTRY
    m_aSlots {
@@ -122,7 +122,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF179C}" {
+  COA_SlottingGroup "{692133169ADF179C}" {
    m_sCallsign "Charlie"
    m_FlagType INFANTRY
    m_aSlots {
@@ -138,7 +138,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF16CF}" {
+  COA_SlottingGroup "{692133169ADF16CF}" {
    m_sCallsign "HMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -152,7 +152,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{692133169ADF1552}" {
+  COA_SlottingGroup "{692133169ADF1552}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -162,7 +162,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     DRONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{692133169ADF14F8}" {
+  COA_SlottingGroup "{692133169ADF14F8}" {
    m_sCallsign "Assault 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -177,7 +177,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF142D}" {
+  COA_SlottingGroup "{692133169ADF142D}" {
    m_sCallsign "MG 1"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -190,7 +190,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF0B46}" {
+  COA_SlottingGroup "{692133169ADF0B46}" {
    m_sCallsign "Assault 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -205,7 +205,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF0AE2}" {
+  COA_SlottingGroup "{692133169ADF0AE2}" {
    m_sCallsign "MG 2"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -218,7 +218,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_AUTOMATIC_RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{692133169ADF0A00}" {
+  COA_SlottingGroup "{692133169ADF0A00}" {
    m_sCallsign "Assault 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +233,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{692133169ADF09A0}" {
+  COA_SlottingGroup "{692133169ADF09A0}" {
    m_sCallsign "MG 3"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -251,32 +251,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{3E938198ACC1942D}Configs/Gearscripts/Custom/Harry/50s/CRF_GS_US50s.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3E938198ACC1942D}Configs/Gearscripts/Custom/Harry/50s/COA_GS_US50s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{C206DF5E4DFEDC63}Configs/Gearscripts/Custom/Harry/50s/CRF_GS_USSR50s.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{C206DF5E4DFEDC63}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USSR50s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

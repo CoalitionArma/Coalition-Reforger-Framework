@@ -1,6 +1,6 @@
 PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsMissionMaking/PolyZone/Safestart/CIVILIAN_SafestartBoundry.et" {
  components {
-  CRF_PolyZone "{6586537D9DECC156}" {
+  COA_PolyZone "{6586537D9DECC156}" {
    m_bIsSafestartBorder 0
    m_aVisibleForFactions +{
     "BLUFOR"

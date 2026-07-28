@@ -29,7 +29,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  }
  coords 2491.831 8.253 184.796
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{6976E5909EE5F37D}" {
    m_bEnableTransponderMarker 0
@@ -137,14 +137,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "INDFOR has gained control of an oil rig and surrounding freight ships'. BLUFOR attempts to confront INDFOR and rescue VIPs aboard both the rig and ships. OPFOR pirates see this as a opportunity to steal their own VIPs for ransom."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "Plan and infil on the rig and/or surrounding ships, clear any hostiles and rescue the VIPs at any cost. Some enemies may opt to be prisoners as well. "\
    ""\
@@ -155,7 +155,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "You must race race to the oil rig + ships and attempt to kidnap VIPs for ransom and extract them to your spawn."\
    ""\
@@ -167,7 +167,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -177,14 +177,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "RESPAWNS?"
    m_sTextData "Both sides will be respawned every few RAID objectives as seen fit."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{6976E59B12ABF400}" {
+  COA_MissionDescriptor "{6976E59B12ABF400}" {
    m_sTitle "RESPAWNS?"
    m_sTextData "Both sides will be respawned every few RAID objectives as seen fit."
    m_aFactionKeys {
@@ -197,7 +197,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{6976E59779C558E7}" {
+  COA_SlottingGroup "{6976E59779C558E7}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -205,7 +205,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{6976E59779C55997}" {
+  COA_SlottingGroup "{6976E59779C55997}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -219,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C566CB}" {
+  COA_SlottingGroup "{6976E59779C566CB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +233,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56702}" {
+  COA_SlottingGroup "{6976E59779C56702}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -247,7 +247,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56450}" {
+  COA_SlottingGroup "{6976E59779C56450}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -261,7 +261,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C56494}" {
+  COA_SlottingGroup "{6976E59779C56494}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -275,7 +275,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     COMBAT_ENGINEER
    }
   }
-  CRF_SlottingGroup "{6976E59779C565E0}" {
+  COA_SlottingGroup "{6976E59779C565E0}" {
    m_sCallsign "MH6-Alpha"
    m_FlagType HELICOPER
    m_aSlots {
@@ -283,7 +283,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C56240}" {
+  COA_SlottingGroup "{6976E59779C56240}" {
    m_sCallsign "MH6-Bravo"
    m_FlagType HELICOPER
    m_aSlots {
@@ -291,7 +291,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C562B9}" {
+  COA_SlottingGroup "{6976E59779C562B9}" {
    m_sCallsign "MH6-Charlie"
    m_FlagType HELICOPER
    m_aSlots {
@@ -299,7 +299,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C5631F}" {
+  COA_SlottingGroup "{6976E59779C5631F}" {
    m_sCallsign "MH6-Delta"
    m_FlagType HELICOPER
    m_aSlots {
@@ -307,7 +307,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{6976E59779C5607E}" {
+  COA_SlottingGroup "{6976E59779C5607E}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {
@@ -318,7 +318,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{6976E59779C56157}" {
+  COA_SlottingGroup "{6976E59779C56157}" {
    m_sCallsign "Raider 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -336,7 +336,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{6976E59779C56E77}" {
+  COA_SlottingGroup "{6976E59779C56E77}" {
    m_sCallsign "Raider 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -354,7 +354,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{6976E59779C56EC9}" {
+  COA_SlottingGroup "{6976E59779C56EC9}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {
@@ -368,32 +368,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{6B0436ECFACA7760}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_USSeals_OilRig.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{6B0436ECFACA7760}Configs/Gearscripts/Custom/Trist/COTVT/COA_GS_USSeals_OilRig.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{A541C5468B816446}Configs/Gearscripts/Custom/Trist/COTVT/CRF_GS_EuroOilThieves.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A541C5468B816446}Configs/Gearscripts/Custom/Trist/COTVT/COA_GS_EuroOilThieves.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
@@ -430,9 +430,9 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
 }
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 1107.656 0.979 3031.422
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 2550.694 13.357 217.593
 }

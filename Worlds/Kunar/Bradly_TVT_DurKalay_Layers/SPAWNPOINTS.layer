@@ -1,13 +1,13 @@
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 2938.374 44.288 3838.646
- m_SpawnPointSettings CRF_SpawnPointData "{68E15E4D5B91B8E5}" {
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
   m_sSpawnPointName "Spawn"
   m_iSpawnPointRadius 13
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 2324.551 30 3816.427
- m_SpawnPointSettings CRF_SpawnPointData "{68E15E4C4DE26D17}" {
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
   m_sSpawnPointName "Spawn"
   m_iSpawnPointRadius 13
  }

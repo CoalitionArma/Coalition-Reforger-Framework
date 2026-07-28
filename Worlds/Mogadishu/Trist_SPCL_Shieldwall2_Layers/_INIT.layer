@@ -1,7 +1,7 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 3312.827 22.658 4717.266
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{69EF59A3659E0D8A}" {
    m_iMCOMTimer 25
@@ -65,14 +65,14 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 3
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69F0FA946656B847}" {
+  COA_MissionDescriptor "{69F0FA946656B847}" {
    m_sTitle "Mission: Situation"
    m_sTextData "It has been several years since the onslaught of the horde, the Coalition has since launched their own raid deep within the sands to destroy the Hordes' own Before Times Teknoljee."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69F0FA946656BFED}" {
+  COA_MissionDescriptor "{69F0FA946656BFED}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -87,7 +87,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F0FA946656BCC0}" {
+  COA_MissionDescriptor "{69F0FA946656BCC0}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -102,7 +102,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F0FA946656BD7B}" {
+  COA_MissionDescriptor "{69F0FA946656BD7B}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -117,7 +117,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F0FA946656BDB5}" {
+  COA_MissionDescriptor "{69F0FA946656BDB5}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -133,7 +133,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69F101A40A3A70CE}" {
+  COA_SlottingGroup "{69F101A40A3A70CE}" {
    m_sCallsign "Justice Crusade"
    m_FlagType SIGNAL
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69F101A40A3A7DC2}" {
+  COA_SlottingGroup "{69F101A40A3A7DC2}" {
    m_sCallsign "Horde Conquerors"
    m_FlagType SIGNAL
    m_aSlots {
@@ -257,32 +257,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1.2
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{F445E0C2E196905C}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeBLU.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{F445E0C2E196905C}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/COA_GS_MeleeBLU.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{5B952CF7ECE971B4}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/CRF_GS_MeleeOPF.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{5B952CF7ECE971B4}Configs/Gearscripts/Custom/Trist/ForFun/MeleeFramework/COA_GS_MeleeOPF.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
@@ -346,7 +346,7 @@ $grp BaseGameTriggerEntity {
   angles 3.922 8.23 -2.139
  }
 }
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 2539.223 35.79 4817.106
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
@@ -366,17 +366,17 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
   }
  }
  {
-  CRF_PolyZoneTrigger {
+  COA_PolyZoneTrigger {
    ID "658635BEF7631DCD"
    components {
-    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+    COA_PolyZoneMeshComponent "{658635BE82F382BC}" {
      m_fHeight 285
     }
    }
   }
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 2386.235 24.706 4850.706
 }
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {

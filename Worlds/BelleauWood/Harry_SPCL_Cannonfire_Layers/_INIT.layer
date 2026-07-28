@@ -1,4 +1,4 @@
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -24,7 +24,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 1
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69D5019B4B50A6F8}" {
+  COA_MissionDescriptor "{69D5019B4B50A6F8}" {
    m_sTitle "Capture the enemy cannon battery"
    m_sTextData "Add background info about the mission. "\
    ""\
@@ -41,7 +41,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D5019B4B5098E5}" {
+  COA_MissionDescriptor "{69D5019B4B5098E5}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -56,7 +56,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D5019B4B509FD8}" {
+  COA_MissionDescriptor "{69D5019B4B509FD8}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -71,7 +71,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D5019B4B509F35}" {
+  COA_MissionDescriptor "{69D5019B4B509F35}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -86,7 +86,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D5019B4B509E7E}" {
+  COA_MissionDescriptor "{69D5019B4B509E7E}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -102,7 +102,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69D517630FAD8CDA}" {
+  COA_SlottingGroup "{69D517630FAD8CDA}" {
    m_sCallsign "Cannons"
    m_FlagType MORTAR
    m_aSlots {
@@ -113,7 +113,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     INDIRECT_LOADER
    }
   }
-  CRF_SlottingGroup "{69D517630FAD835B}" {
+  COA_SlottingGroup "{69D517630FAD835B}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -139,7 +139,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69D517630FAD81CA}" {
+  COA_SlottingGroup "{69D517630FAD81CA}" {
    m_sCallsign "0-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69D517630FAD8739}" {
+  COA_SlottingGroup "{69D517630FAD8739}" {
    m_sCallsign "Cannons"
    m_FlagType MORTAR
    m_aSlots {
@@ -178,7 +178,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     INDIRECT_LOADER
    }
   }
-  CRF_SlottingGroup "{69D517630FAD8638}" {
+  COA_SlottingGroup "{69D517630FAD8638}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -204,7 +204,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69D517630FAD84E6}" {
+  COA_SlottingGroup "{69D517630FAD84E6}" {
    m_sCallsign "0-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -236,32 +236,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D8849EEC944C203C}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Blufor.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D8849EEC944C203C}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LineBattle_Blufor.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{156E63B7D5566279}Configs/Gearscripts/Custom/Trist/ForFun/CRF_GS_LineBattle_Opfor.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{156E63B7D5566279}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LineBattle_Opfor.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A9F8046B2948C5B8}Configs/Gearscripts/Standard/Specials/Prophunt/COA_GS_CIV_Hunters.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

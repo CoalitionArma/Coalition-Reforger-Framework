@@ -1,7 +1,7 @@
 $grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  {
   components {
-   CRF_PolyZone "{6586537E1F838475}" {
+   COA_PolyZone "{6586537E1F838475}" {
     m_bIsForwardDeployZone 1
    }
   }
@@ -23,7 +23,7 @@ $grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safe
  }
  {
   components {
-   CRF_PolyZone "{6586537E1F838475}" {
+   COA_PolyZone "{6586537E1F838475}" {
     m_bIsForwardDeployZone 1
    }
   }
@@ -45,7 +45,7 @@ $grp PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safe
  }
  {
   components {
-   CRF_PolyZone "{6586537E1F838475}" {
+   COA_PolyZone "{6586537E1F838475}" {
     m_bIsForwardDeployZone 1
    }
   }

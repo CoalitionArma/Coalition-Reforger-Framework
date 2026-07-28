@@ -2,7 +2,7 @@ GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/Fu
  coords 140.84 60.194 4532.942
  angles 0 170 0
 }
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 487.805 20.596 225.741
 }
 GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
@@ -39,6 +39,6 @@ GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/He
   }
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 79.412 60.365 4542.771
 }

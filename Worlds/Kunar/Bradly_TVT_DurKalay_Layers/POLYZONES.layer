@@ -15,7 +15,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
   }
  }
  {
-  CRF_PolyZoneTrigger {
+  COA_PolyZoneTrigger {
    ID "658635BEF7631DCD"
    coords 0 0 0
   }
@@ -55,7 +55,7 @@ PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDe
   }
  }
  {
-  CRF_ManualMarker {
+  COA_ManualMarker {
    ID "65885ABE0B4CA07D"
    coords 30.371 0 0
    m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"

@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
   coords 4437.08 20.657 2323.915
   m_rVehicle "{BB7A8D76681FA6C1}Prefabs/Vehicles/Wheeled/BTR90/BTR90_New.et"

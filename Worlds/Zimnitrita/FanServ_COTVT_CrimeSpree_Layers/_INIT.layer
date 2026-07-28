@@ -1,7 +1,7 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 12254.358 44.737 9880.207
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -25,7 +25,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "\"OK, gang, it's time for a little crime spree. The castle ruins have some nice artifacts in transit, the town church has a fortune in gold, and the regimental hall has some valuable art. Get some hostages, secure the goods in the truck, then hold out until the police pause their assault. Rinse and repeat. Finally, we need to escape to a safehouse that I've set up in the port.\" - Bain"\
    ""\
@@ -42,7 +42,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "- Take hostages, use them to negotiate."\
    "- Collect the loot from the main church of Andruhanov. Survive until police assault pauses."\
@@ -53,21 +53,21 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "Stop the Payday Gang! Don't damage the treasures, don't hurt hostages, and don't destroy their truck. We might be able to negotiate for the release of hostages."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
    m_aFactionKeys +{
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData "Value the lives of hostages! Use them to negotiate with the enemy. For example, heisters can release hostages to shorten a police assault. SWAT can intensify the assault if the heisters refuse to negotiate."\
    ""\
@@ -82,7 +82,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69111565A8CEA737}" {
+  COA_SlottingGroup "{69111565A8CEA737}" {
    m_sCallsign "PLT-DALLAS"
    m_FlagType SIGNAL
    m_aSlots {
@@ -93,7 +93,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ZEUS
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA621}" {
+  COA_SlottingGroup "{69111565A8CEA621}" {
    m_sCallsign "LOGI-TWITCH"
    m_FlagType SUPPLY_MOTORIZED
    m_aSlots {
@@ -101,7 +101,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA65A}" {
+  COA_SlottingGroup "{69111565A8CEA65A}" {
    m_sCallsign "1-HOXTON"
    m_FlagType INFANTRY
    m_aSlots {
@@ -116,7 +116,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA520}" {
+  COA_SlottingGroup "{69111565A8CEA520}" {
    m_sCallsign "2-WOLF"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +131,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA4A3}" {
+  COA_SlottingGroup "{69111565A8CEA4A3}" {
    m_sCallsign "3-CHAINS"
    m_FlagType INFANTRY
    m_aSlots {
@@ -146,7 +146,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA4DC}" {
+  COA_SlottingGroup "{69111565A8CEA4DC}" {
    m_sCallsign "4-HOUSTON"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,7 +161,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEA456}" {
+  COA_SlottingGroup "{69111565A8CEA456}" {
    m_sCallsign "5-CLOVER"
    m_FlagType INFANTRY
    m_aSlots {
@@ -176,7 +176,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEBBFB}" {
+  COA_SlottingGroup "{69111565A8CEBBFB}" {
    m_sCallsign "RECON-JOY"
    m_FlagType SNIPER
    m_aSlots {
@@ -186,7 +186,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69111565A8CEBB52}" {
+  COA_SlottingGroup "{69111565A8CEBB52}" {
    m_sCallsign "SPECIALS"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,7 +199,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     GRENADIER
    }
   }
-  CRF_SlottingGroup "{69111565A8CEBACF}" {
+  COA_SlottingGroup "{69111565A8CEBACF}" {
    m_sCallsign "HELI 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -212,32 +212,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets -1
  m_iINDFORTickets 0
  m_iCIVTickets -1
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{E58201CF162E7961}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAYDAY.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{E58201CF162E7961}Configs/Gearscripts/Custom/FanServ/COA_GS_PAYDAY.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{7A5AC0FACA28D265}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAYDAYSWAT.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{7A5AC0FACA28D265}Configs/Gearscripts/Custom/FanServ/COA_GS_PAYDAYSWAT.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

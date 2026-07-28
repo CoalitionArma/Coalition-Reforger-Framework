@@ -90,10 +90,10 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 		if (m_fUpdateBuffer >= 1)
 		{
 			if (!m_bHasSafestartStarted)
-				m_bHasSafestartStarted = CRF_SafestartManager.GetInstance().GetSafestartStatus();
+				m_bHasSafestartStarted = COA_SafestartManager.GetInstance().GetSafestartStatus();
 			
 			if (m_bHasSafestartStarted)
-				m_bHasSafeStartEnded = !CRF_SafestartManager.GetInstance().GetSafestartStatus();
+				m_bHasSafeStartEnded = !COA_SafestartManager.GetInstance().GetSafestartStatus();
 			
 			if (m_bHasSafeStartEnded)
 				SupplyInit();
@@ -106,7 +106,7 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 	protected void SupplyInit()
 	{
 		//Is the game running? I fucking hope so
-		if (CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
+		if (COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
 		//Who's near extract?
 		int playerCount = CountFactionPlayers(m_extractionLocation, m_extractionDistance, m_factionKey);
 		//Who's alive

@@ -17,7 +17,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 7217.692 54.156 6273.15
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_FrontlineGamemodeManager "{68A6219D26A38EFE}" {
    m_BluforSide "BLUFOR"
@@ -71,16 +71,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Ask your leadership"
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "N/A"
   }
  }
@@ -89,7 +89,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{68A9535161274CC4}" {
+  COA_SlottingGroup "{68A9535161274CC4}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -97,7 +97,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     FIRST_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68A9535161274FC5}" {
+  COA_SlottingGroup "{68A9535161274FC5}" {
    m_sCallsign "LOGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -105,7 +105,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     LOGI_RUNNER
    }
   }
-  CRF_SlottingGroup "{68A9535161274E50}" {
+  COA_SlottingGroup "{68A9535161274E50}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -113,7 +113,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     PLATOON_SERGEANT
    }
   }
-  CRF_SlottingGroup "{68A9535161274EEE}" {
+  COA_SlottingGroup "{68A9535161274EEE}" {
    m_sCallsign "Alpha"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +131,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274121}" {
+  COA_SlottingGroup "{68A9535161274121}" {
    m_sCallsign "Bravo"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,7 +149,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274198}" {
+  COA_SlottingGroup "{68A9535161274198}" {
    m_sCallsign "Charlie"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A953516127401C}" {
+  COA_SlottingGroup "{68A953516127401C}" {
    m_sCallsign "Delta"
    m_FlagType INFANTRY
    m_aSlots {
@@ -185,7 +185,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A953516127409D}" {
+  COA_SlottingGroup "{68A953516127409D}" {
    m_sCallsign "Echo"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,7 +199,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{68A953516127427D}" {
+  COA_SlottingGroup "{68A953516127427D}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -208,7 +208,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A953516127420B}" {
+  COA_SlottingGroup "{68A953516127420B}" {
    m_sCallsign "Topor 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -225,7 +225,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274289}" {
+  COA_SlottingGroup "{68A9535161274289}" {
    m_sCallsign "Topor 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -242,7 +242,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274513}" {
+  COA_SlottingGroup "{68A9535161274513}" {
    m_sCallsign "Zashchita 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -259,7 +259,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274581}" {
+  COA_SlottingGroup "{68A9535161274581}" {
    m_sCallsign "Zashchita 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -276,7 +276,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A9535161274403}" {
+  COA_SlottingGroup "{68A9535161274403}" {
    m_sCallsign "Sapper"
    m_FlagType INFANTRY
    m_aSlots {
@@ -287,7 +287,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{68A953516127448C}" {
+  COA_SlottingGroup "{68A953516127448C}" {
    m_sCallsign "Mortars"
    m_FlagType ARTILLERY
    m_aSlots {
@@ -297,7 +297,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     INDIRECT_LOADER
    }
   }
-  CRF_SlottingGroup "{68A953516127471C}" {
+  COA_SlottingGroup "{68A953516127471C}" {
    m_sCallsign "Logistics"
    m_FlagType INFANTRY
    m_aSlots {
@@ -309,7 +309,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{68A953516127467C}" {
+  COA_SlottingGroup "{68A953516127467C}" {
    m_sCallsign "Journalists"
    m_FlagType INFANTRY
    m_aSlots {
@@ -319,7 +319,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RADIO_TELEPHONE_OPERATOR
    }
   }
-  CRF_SlottingGroup "{68A95351612746FB}" {
+  COA_SlottingGroup "{68A95351612746FB}" {
    m_sCallsign "Zeus"
    m_FlagType INFANTRY
    m_aSlots {
@@ -332,8 +332,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 150
  m_iINDFORTickets 0
  m_iCIVTickets 100
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZRF_CAMPAIGN.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{218A5B9E7EA5AA50}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_ZRF_CAMPAIGN.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
@@ -371,8 +371,8 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_ZWC_CAMPAIGN.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{1A8D8224AEDE3763}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_ZWC_CAMPAIGN.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 1
@@ -398,16 +398,16 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/CRF_GS_Journos.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{469125A4F69D54DC}Configs/Gearscripts/Standard/80s/Campaign/COA_GS_Journos.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

@@ -13,7 +13,7 @@ $grp SCR_FactionControlTriggerEntity {
   "		if (msg_sent == false)"\
   "		{"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"INDFOR have taken Varpadany\", 15);"\
-  "			CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();"\
+  "			COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();"\
   "			respawnManager.RespawnAllSides();"\
   "			msg_sent = true;"\
   "		}"\

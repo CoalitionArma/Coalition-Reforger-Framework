@@ -9,13 +9,13 @@
 // is unreliable in Workbench preview sessions.
 //
 // Flow:
-//   1. CRF_PlayerRplToOwnerManager (modded) calls CRF_PropHuntTransformMenu.Open()
+//   1. COA_PlayerRplToOwnerManager (modded) calls CRF_PropHuntTransformMenu.Open()
 //      when the player presses F during the grace phase.
 //   2. Open() creates the widget tree via workspace.CreateWidgets, populates
 //      the entry list, and disables character movement so the player can't
 //      ghost around while choosing.
 //   3. Clicking an entry calls back to the local
-//      CRF_PlayerRplToOwnerManager.ConfirmPropTransform(prefab) which fires
+//      COA_PlayerRplToOwnerManager.ConfirmPropTransform(prefab) which fires
 //      the server-side transform RPC, then calls Close().
 //   4. Esc / Back closes the menu without transforming. Movement is restored.
 
@@ -345,7 +345,7 @@ class CRF_PropHuntTransformMenu
 		if (!btn || !btn.m_sPrefab)
 			return;
 
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ConfirmPropTransform(btn.m_sPrefab);
 
@@ -382,7 +382,7 @@ class CRF_PropHuntTransformMenu
 		CRF_PropHuntEntryButton comp = CRF_PropHuntEntryButton.Cast(btn.FindHandler(CRF_PropHuntEntryButton));
 		if (comp && comp.m_sPrefab)
 		{
-			CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+			COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 			if (mgr)
 				mgr.ConfirmPropTransform(comp.m_sPrefab);
 		}

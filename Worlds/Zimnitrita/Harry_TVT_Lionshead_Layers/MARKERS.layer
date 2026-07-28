@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  {
   coords 14976.101 52.758 5303.581
   angles 0 0 0
@@ -332,12 +332,12 @@ $grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "Minefield"
  }
 }
-CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+COA_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
  coords 15799.495 138.625 8800.985
  angles 0 0 0
  m_sDescription "Smoke MRLS Location"
 }
-CRF_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
  coords 12798.524 11.843 332.743
  m_sDescription "Mine MRLS Location"
 }

@@ -213,7 +213,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		stats.m_iTotalKills = Math.ClampInt(totalKills, 0, 100);
 		
 		// Replicate to all clients via broadcast manager
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 			broadcastManager.UpdateGunGamePlayerStats(playerId, stats.m_iLevel, stats.m_iKillsThisLevel, stats.m_iTotalKills);
 	}
@@ -683,7 +683,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnPlayer(int playerId, int spawnPointID = -1)
 	{
-		CRF_RespawnManager.GetInstance().RespawnPlayer(playerId, spawnPointID);
+		COA_RespawnManager.GetInstance().RespawnPlayer(playerId, spawnPointID);
 	}
 	
 	//Member variable to manage how long its been since you went prone.
@@ -1178,7 +1178,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		// JIP SYNC: Send all existing player stats to the new player via broadcast manager
 		// This ensures they see the correct scoreboard immediately
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (!broadcastManager)
 			return;
 			

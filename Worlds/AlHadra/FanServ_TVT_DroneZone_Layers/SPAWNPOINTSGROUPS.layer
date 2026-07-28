@@ -1,4 +1,4 @@
-CRF_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
+COA_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
  coords 4287.403 17.844 4806.855
  m_sCallsignOfGroupToSpawn "DRONE"
 }

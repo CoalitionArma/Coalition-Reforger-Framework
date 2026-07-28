@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{96297F31C23C276E}Configs/Gearscripts/Custom/MattBan/Halftime_show_GSs/COA_GS_US80_HTSs.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
