@@ -16,6 +16,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
       }
       CRF_Rush_RespawnPointEntry "{69EF59A752797A40}" {
        m_sMarkerEntityName "spawnopf_2"
+       m_eFaction "OPFOR"
       }
      }
     }
@@ -27,6 +28,7 @@ COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
       }
       CRF_Rush_RespawnPointEntry "{69EF59A744A5A3A2}" {
        m_sMarkerEntityName "spawnopf_3"
+       m_eFaction "OPFOR"
       }
      }
     }
