@@ -1,4 +1,4 @@
-CRF_StaticSpawnPoint OPFORSpawn : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint OPFORSpawn : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  components {
   ActionsManagerComponent "{6895290083F066D5}" {
    ActionContexts {
@@ -80,7 +80,7 @@ CRF_StaticSpawnPoint OPFORSpawn : "{0B3312C6940005B9}PrefabsMissionMaking/System
  }
  coords 7662.061 14.175 9240.992
 }
-$grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
  {
   coords 9949.205 5.355 7537.589
   m_sCallsignOfGroupToSpawn "MTR 1"
@@ -102,7 +102,7 @@ $grp CRF_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/Spawn
   m_sCallsignOfGroupToSpawn "MTR 5"
  }
 }
-CRF_StaticSpawnPoint BLUFORSpawn : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint BLUFORSpawn : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  components {
   ActionsManagerComponent "{696D5AC1C1BEE75C}" {
    ActionContexts {
@@ -307,7 +307,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
   coords 6694.525 5.972 10061.428
  }
 }
-$grp CRF_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/Systems/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
  {
   coords 7155.347 11.584 9762.536
   m_sCallsignOfGroupToSpawn "MTR 1"

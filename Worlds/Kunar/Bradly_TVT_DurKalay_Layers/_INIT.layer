@@ -2,11 +2,11 @@ SCR_AIWorld : "{77C3151F7A6E588C}SCR_AIWorld_Kunar.et" {
  coords 1643.714 98.375 4259.923
  angles 0 0 0
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
-  CRF_GamemodeManager "{652A3313EC014E7F}" {
+  COA_GamemodeManager "{652A3313EC014E7F}" {
    components {
-    CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
+    COA_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
      m_iSummaryInterval 300
     }
    }
@@ -72,7 +72,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{632771FB5C619E1C}" {
+  COA_MissionDescriptor "{632771FB5C619E1C}" {
    m_sTitle "Welcome / How to Play"
    m_sTextData "Welcome to a COALITION Session."\
    ""\
@@ -89,7 +89,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    ""
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425053BDE568A1}" {
+  COA_MissionDescriptor "{64425053BDE568A1}" {
    m_sTitle "Custom Controls"
    m_sTextData "Custom Controls (Keyboard/Controller)"\
    ""\
@@ -109,7 +109,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    "/a <message> - Message admins"
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D931A7722BF638}" {
+  COA_MissionDescriptor "{69D931A7722BF638}" {
    m_sTitle "Mission: Situation"
    m_sTextData "A USMC Infantry platoon conducts a raid on the insurgent stronghold of Dur Kalay. They must locate and destroy four weapons caches, while defending insurgent forces attempt to repel the assault and protect their stockpile."\
    ""\
@@ -125,7 +125,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69D931A7722BF1DC}" {
+  COA_MissionDescriptor "{69D931A7722BF1DC}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Infiltrate the insurgent stronghold of Dur Kalay to locate and destroy four weapons caches."\
@@ -140,7 +140,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BF2AF}" {
+  COA_MissionDescriptor "{69D931A7722BF2AF}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION "\
    "Defend Dur Kalay, protect all weapons caches, and repel the attacking forces."\
@@ -155,7 +155,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BF36D}" {
+  COA_MissionDescriptor "{69D931A7722BF36D}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -170,7 +170,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69D931A7722BFC2C}" {
+  COA_MissionDescriptor "{69D931A7722BFC2C}" {
    m_sTitle ""
    m_sTextData ""
    m_aFactionKeys {
@@ -183,7 +183,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69EEDBF2530547AC}" {
+  COA_SlottingGroup "{69EEDBF2530547AC}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF25305413E}" {
+  COA_SlottingGroup "{69EEDBF25305413E}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -210,7 +210,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054259}" {
+  COA_SlottingGroup "{69EEDBF253054259}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -227,7 +227,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF25305435B}" {
+  COA_SlottingGroup "{69EEDBF25305435B}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -244,7 +244,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054C54}" {
+  COA_SlottingGroup "{69EEDBF253054C54}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -261,7 +261,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054D54}" {
+  COA_SlottingGroup "{69EEDBF253054D54}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -278,7 +278,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054E46}" {
+  COA_SlottingGroup "{69EEDBF253054E46}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -294,7 +294,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054F35}" {
+  COA_SlottingGroup "{69EEDBF253054F35}" {
    m_sCallsign "ENGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -312,7 +312,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69EEDBF2530548E3}" {
+  COA_SlottingGroup "{69EEDBF2530548E3}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -322,7 +322,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF2530549DA}" {
+  COA_SlottingGroup "{69EEDBF2530549DA}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -338,7 +338,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054AD8}" {
+  COA_SlottingGroup "{69EEDBF253054AD8}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -354,7 +354,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF253054BCA}" {
+  COA_SlottingGroup "{69EEDBF253054BCA}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -370,7 +370,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF2530554BC}" {
+  COA_SlottingGroup "{69EEDBF2530554BC}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -386,7 +386,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EEDBF2530555B3}" {
+  COA_SlottingGroup "{69EEDBF2530555B3}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -408,32 +408,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/CRF_GS_2004_USMC_DURKALAY_Bradly.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/COA_GS_2004_USMC_DURKALAY_Bradly.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{5C9649F91762FF13}Configs/Gearscripts/Custom/Bradly/GWOT/CRF_GS_ME_Insurgents_DURKALAY_Bradly.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{5C9649F91762FF13}Configs/Gearscripts/Custom/Bradly/GWOT/COA_GS_ME_Insurgents_DURKALAY_Bradly.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1

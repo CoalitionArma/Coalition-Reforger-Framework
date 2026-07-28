@@ -1,4 +1,4 @@
-CRF_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 5382.301 10.344 -1456.589
 }
 $grp GameEntity : "{4D3B073D0673ABB7}PrefabsMissionMaking/Systems/TaskCreator/CRF_task_empty.et" {
@@ -12,7 +12,7 @@ $grp GameEntity : "{4D3B073D0673ABB7}PrefabsMissionMaking/Systems/TaskCreator/CR
   coords 3454.656 17.477 -1725.986
  }
 }
-CRF_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords -213.941 15.333 5551.934
 }
 $grp Vehicle : "{6F57BF4E759DF6DF}Prefabs/Vehicles/Helicopters/UH1H/UH1Y_Armed_Gunship_Sage.et" {

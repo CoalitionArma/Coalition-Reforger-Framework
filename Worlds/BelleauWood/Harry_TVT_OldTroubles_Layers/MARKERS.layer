@@ -1,4 +1,4 @@
-$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+$grp COA_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
  {
   coords 5006.734 119.614 6972.906
   m_MarkerColor 0.502 0 0 1

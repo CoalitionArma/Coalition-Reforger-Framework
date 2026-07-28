@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  Command_1 {
   coords 3941.115 17.656 1126.521
   m_rVehicle "{D784743477DB8E1E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID.et"
@@ -171,7 +171,7 @@ $grp CRF_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_bShouldAddAmmo 0
  }
 }
-CRF_VehicleSpawner US_Supply : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+COA_VehicleSpawner US_Supply : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  coords 5329.004 50.474 625.644
  angles 0 -86.852 0
  m_rVehicle "{A3786C5C8687F004}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC_filled.et"

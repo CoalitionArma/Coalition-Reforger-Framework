@@ -33,11 +33,11 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsMissionMaking/PolyZone/Safestart
   }
  }
  {
-  CRF_ManualMarker {
+  COA_ManualMarker {
    ID "65885AB995B4F699"
    coords -683.831 0 248.518
   }
-  CRF_PolyZoneTrigger {
+  COA_PolyZoneTrigger {
    ID "6586537E5441D074"
    coords 10.178 0 8.881
   }

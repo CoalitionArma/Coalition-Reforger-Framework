@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8769CC0651F1FA94}Configs/Gearscripts/Custom/Bradly/GWOT/COA_GS_2004_USMC_DURKALAY_Bradly.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

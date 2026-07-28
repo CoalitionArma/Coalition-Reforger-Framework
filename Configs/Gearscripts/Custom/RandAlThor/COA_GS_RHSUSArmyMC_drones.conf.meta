@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{49F52089B1D927F7}Configs/Gearscripts/Custom/RandAlThor/COA_GS_RHSUSArmyMC_drones.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

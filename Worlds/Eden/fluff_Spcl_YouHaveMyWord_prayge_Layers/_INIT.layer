@@ -1,7 +1,7 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 2246.077 19.024 7513.2
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -24,7 +24,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_bLockUnusedSlots 1
  m_bSafestartInstantlyEnabled 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{644250503DF684C0}" {
+  COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Local police have been dispatched to the Everon Power Plant where workers are striking after a worker lost an arm due to unresolved safety concerns. The strikers took the factory owner hostage during a visit and refuse to come out. Meanwhile the Family lurks in the shadows, hoping to settle scores and make a profit."\
    "Do hostage negotiations ever go down according to plan?"\
@@ -38,7 +38,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{64425051F2E00216}" {
+  COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "- A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
    ""\
@@ -55,7 +55,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+  COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "BLUFOR In-depth Brief and Lore"
    m_sTextData "2 days ago, the workers at the Everon Power Plant that supplies the entire island with electricity seized the means of production and took the factory owner hostage. They've continued their work to try and appease us but the island governor Sir Novotny says there will be hell to pay."\
    "Us at the Saint Phillipe, Montignac and Lamentin PDs have been tasked with rescuing the factory owner and retaking control of the factory. Despite what Novotny says though, the situation is quite complex."\
@@ -73,7 +73,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{644250519BE30999}" {
+  COA_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
    ""\
@@ -92,7 +92,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{6442505149CF6C93}" {
+  COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "OPFOR In-depth Brief and Lore"
    m_sTextData "We have been given a rare opportunity to strike. The factory owner of the Everon Power Plant has done plenty to fuck us over, but his high position and ass-kissing towards the Governor makes him a hard target. He thought we had forgotten about what he did to that laundering joint of ours on Ile Troyes, and of course his \"accident\" with the Don's wife. But strikers at his power plant have revolted and are now holding him hostage. The strikers themselves should bend over for us. We have never had an issue with the common man anyways, save for when they get in our way. But we need to get our hands on the plant owner, bring him off site, make him suffer for everything he's done, and kill his stupid cockroach ass."\
    ""\
@@ -113,7 +113,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{686422AB4E73E407}" {
+  COA_MissionDescriptor "{686422AB4E73E407}" {
    m_sTitle "INDFOR Objectives"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
    ""\
@@ -130,7 +130,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{686422AB4E73E5D8}" {
+  COA_MissionDescriptor "{686422AB4E73E5D8}" {
    m_sTitle "INDFOR In-depth Brief and Lore"
    m_sTextData "The day of reckoning is upon us. We knew it wouldn't come easy."\
    "The long hours and low pay are plenty to be sour over, but a week ago, after months of complaints about improper protective equipment that fell on deaf ears, Jan caught a sleeve in one of the pistons and it ripped his arm off. Enough was enough."\
@@ -150,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{686422AB4E73E6F6}" {
+  COA_MissionDescriptor "{686422AB4E73E6F6}" {
    m_sTitle "CIV Objectives"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. There can be multiple winners."\
    ""\
@@ -166,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{686422AB4E73E7B9}" {
+  COA_MissionDescriptor "{686422AB4E73E7B9}" {
    m_sTitle "CIV In-depth Brief and Lore"
    m_sTextData ""\
    "2 days ago your visit to your plant took a turn for the worse. It felt off when you walked in, but who could expect what has occurred, much less an optimist such as yourself? Your former employees are now quite cruel, if they had only known of your humble beginnings, perhaps they would hold a little more respect for the harder working. Now they've just resigned you to shitting in a potted plant and pissing your pants. It may be ungentlemanly, but one can figure it's better than death."\
@@ -181,7 +181,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{686422AB4E73E753}" {
+  COA_MissionDescriptor "{686422AB4E73E753}" {
    m_sTitle "Administration"
    m_sTextData "tanaka give my my yap session"
    m_aFactionKeys {
@@ -194,7 +194,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BluforSlots {
-  CRF_SlottingGroup "{686C28CEC28C9CDA}" {
+  COA_SlottingGroup "{686C28CEC28C9CDA}" {
    m_sCallsign "Police HQ"
    m_FlagType SIGNAL
    m_aSlots {
@@ -204,7 +204,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDIC
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9D4E}" {
+  COA_SlottingGroup "{686C28CEC28C9D4E}" {
    m_sCallsign "Police Squad"
    m_FlagType INFANTRY
    m_aSlots {
@@ -215,7 +215,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9E11}" {
+  COA_SlottingGroup "{686C28CEC28C9E11}" {
    m_sCallsign "Police Squad"
    m_FlagType INFANTRY
    m_aSlots {
@@ -226,7 +226,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{686C28CEC28C9FFC}" {
+  COA_SlottingGroup "{686C28CEC28C9FFC}" {
    m_sCallsign "SWAT Team"
    m_FlagType INFANTRY
    m_aSlots {
@@ -239,7 +239,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{686C28CEC28CA0E2}" {
+  COA_SlottingGroup "{686C28CEC28CA0E2}" {
    m_sCallsign "The Family"
    m_FlagType SIGNAL
    m_aSlots {
@@ -253,7 +253,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_IndforSlots {
-  CRF_SlottingGroup "{686C28CEC28CA2C3}" {
+  COA_SlottingGroup "{686C28CEC28CA2C3}" {
    m_sCallsign "Strike Lead"
    m_FlagType SIGNAL
    m_aSlots {
@@ -263,7 +263,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     MEDIC
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA3B1}" {
+  COA_SlottingGroup "{686C28CEC28CA3B1}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -281,7 +281,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA37B}" {
+  COA_SlottingGroup "{686C28CEC28CA37B}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -299,7 +299,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA405}" {
+  COA_SlottingGroup "{686C28CEC28CA405}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -317,7 +317,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA5C1}" {
+  COA_SlottingGroup "{686C28CEC28CA5C1}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -335,7 +335,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA6BD}" {
+  COA_SlottingGroup "{686C28CEC28CA6BD}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -353,7 +353,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_ANTI_AIR
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA674}" {
+  COA_SlottingGroup "{686C28CEC28CA674}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -371,7 +371,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     ASSISTANT_MEDIUM_ANTITANK
    }
   }
-  CRF_SlottingGroup "{686C28CEC28CA73F}" {
+  COA_SlottingGroup "{686C28CEC28CA73F}" {
    m_sCallsign "Strikers"
    m_FlagType INFANTRY
    m_aSlots {
@@ -391,7 +391,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_CivSlots {
-  CRF_SlottingGroup "{686C28CEC28CA82F}" {
+  COA_SlottingGroup "{686C28CEC28CA82F}" {
    m_sCallsign "Factory Owner"
    m_FlagType SIGNAL
    m_aSlots {
@@ -403,32 +403,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/COA_GS_evPoPo.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/COA_GS_FAMILY_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/COA_GS_CIV_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/COA_GS_HOSTAGE_subArma.conf"
   m_bEnableShareableMarkers 1
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0

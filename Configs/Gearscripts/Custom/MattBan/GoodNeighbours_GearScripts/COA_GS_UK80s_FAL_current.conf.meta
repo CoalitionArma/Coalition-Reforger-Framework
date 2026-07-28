@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D5A844F88DFAA10B}Configs/Gearscripts/Custom/MattBan/GoodNeighbours_GearScripts/COA_GS_UK80s_FAL_current.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

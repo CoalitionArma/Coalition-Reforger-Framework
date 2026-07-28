@@ -5,7 +5,7 @@ Vehicle {
    Materials {
     MaterialAssignClass "{605D5241E4E84770}" {
      SourceMaterial "SignalGlass"
-     AssignedMaterial "{2C004F75DF0428A5}Assets/Props/Services/Healthcare/CabinetMedical_01/Data/CabinetMedical_01_glass.emat"
+     AssignedMaterial "{4B097744000BB89A}Assets/Props/Services/Healthcare/CabinetMedical_01/Data/CabinetMedical_01_glass.emat"
     }
     MaterialAssignClass "{60612E9CE13FB8CE}" {
      SourceMaterial "body"

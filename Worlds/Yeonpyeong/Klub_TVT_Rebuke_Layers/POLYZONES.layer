@@ -54,7 +54,7 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/Game
  }
  BoundryMines {
   components {
-   CRF_PolyZone "{65862E4575B86577}" {
+   COA_PolyZone "{65862E4575B86577}" {
     m_cPolygonColor 0.386 0 0 1
     m_cPolygonBorderColor 0.205 0 0 1
     m_fPolygonBorderWidth 6
@@ -77,7 +77,7 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/Game
    }
   }
   {
-   CRF_PolyZoneTrigger {
+   COA_PolyZoneTrigger {
     ID "658635BEF7631DCD"
     Flags 0x300000 0
     "Polyline Height" 0.1

@@ -1,4 +1,4 @@
-CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
+COA_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/ObjectiveMarker_Base.et" {
  coords 4774.933 1 6596.501
  m_MarkerColor 0.017 0.017 0.017 1
  m_sDescription "FOS Taji"

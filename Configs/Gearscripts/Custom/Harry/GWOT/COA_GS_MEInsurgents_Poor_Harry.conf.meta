@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{ECD6D43ED918FB6C}Configs/Gearscripts/Custom/Harry/GWOT/COA_GS_MEInsurgents_Poor_Harry.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner : "{AECC7794B2CE80B6}PrefabsMissionMaking/Systems/VehicleSpawner/CIVILIAN_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{AECC7794B2CE80B6}PrefabsMissionMaking/Systems/VehicleSpawner/CIVILIAN_VehicleSpawner.et" {
  {
   coords 1040.177 38.01 2777.785
   angles 0 75.271 0

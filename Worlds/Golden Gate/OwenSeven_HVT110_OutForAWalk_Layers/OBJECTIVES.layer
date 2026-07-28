@@ -1,4 +1,4 @@
-CRF_VehicleSpawner HVT_T14 : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+COA_VehicleSpawner HVT_T14 : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  coords 3708.926 59.414 159.683
  angles 0 5.184 0
  m_rVehicle "{7F60337D085B273D}Prefabs/Vehicles/Tracked/T14/Tank_T14_Damaged.et"

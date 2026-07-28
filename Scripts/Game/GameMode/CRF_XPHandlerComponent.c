@@ -1,7 +1,7 @@
 class CRF_XPHandlerComponentClass : SCR_XPHandlerComponentClass {}
 
 //------------------------------------------------------------------------------------
-// CRF_XPHandlerComponent: XP handler for CRF_Gamemode
+// CRF_XPHandlerComponent: XP handler for COA_Gamemode
 //
 // Extends SCR_XPHandlerComponent (the vanilla Conflict XP system) to work correctly
 // with CRF's custom gamemode. Key differences from vanilla:
@@ -20,7 +20,7 @@ class CRF_XPHandlerComponentClass : SCR_XPHandlerComponentClass {}
 // need to be touched.
 //
 // Setup required in Workbench (cannot be done from script):
-//   1. Add CRF_XPHandlerComponent to the CRF_Gamemode world entity.
+//   1. Add CRF_XPHandlerComponent to the COA_Gamemode world entity.
 //   2. Ensure SCR_PlayerXPHandlerComponent is present on the PlayerController prefab.
 //------------------------------------------------------------------------------------
 class CRF_XPHandlerComponent : SCR_XPHandlerComponent

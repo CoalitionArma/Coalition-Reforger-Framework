@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{BDE201BBB13A10BA}Configs/Gearscripts/Standard/Modern/COA_GS_ZWC_Modern_Flashlights.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

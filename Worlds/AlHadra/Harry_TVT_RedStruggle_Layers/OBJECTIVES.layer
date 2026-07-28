@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 2282.256 20.062 2592.16
   angles 0 -146.002 0
@@ -18,7 +18,7 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "INDFOR"
  }
 }
-$grp CRF_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  fuel_marker_1 {
   coords 2285.01 20.062 2590.575
   angles 0 0 0
@@ -88,7 +88,7 @@ $grp GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubComposition
   angles 0 0 0
  }
 }
-$grp CRF_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
+$grp COA_ManualMarker : "{5EE98E24FFD9661D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/INDFOR_ObjectiveMarker.et" {
  ind_weapons_1 {
   coords 3171.874 65.197 3048.382
   angles 3.18 3.574 6.44

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0741F83ABE6FC135}Configs/Gearscripts/Custom/Harry/80s/COA_GS_MEInsurgents_80s_nomortar.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 4892.495 28.594 11732.616
   angles 0 89.752 0
@@ -180,7 +180,7 @@ $grp CRF_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
 }
-CRF_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
+COA_ManualMarker : "{C113055E29F43DAA}PrefabsMissionMaking/Markers/SpawnMarkers/INDFOR_SpawnMarker.et" {
  coords 4906.153 28.594 11832.673
  m_MarkerColor 0.392 0.157 0.624 1
  m_sDescription "Airport"

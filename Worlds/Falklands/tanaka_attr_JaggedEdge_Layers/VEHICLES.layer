@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 4314.999 51.577 3214.637
   m_rVehicle "{E38E87558E4BC108}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_DShKM.et"

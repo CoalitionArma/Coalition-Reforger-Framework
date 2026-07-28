@@ -71,14 +71,14 @@ BaseGameTriggerEntity airdrop {
  "		"\
  "		if (!m_bSafeStartInit)"\
  "		{"\
- "			m_bSafeStartInit = CRF_SafestartManager"\
+ "			m_bSafeStartInit = COA_SafestartManager"\
  "				.GetInstance()"\
  "				.GetSafestartStatus();"\
  "		"\
  "			return;"\
  "		}"\
  "		"\
- "		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())"\
+ "		if (!COA_SafestartManager.GetInstance().GetSafestartStatus())"\
  "		{"\
  "			InitPlane();"\
  "		}"\

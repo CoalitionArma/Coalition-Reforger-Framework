@@ -182,7 +182,7 @@ class CRF_InsDestructiveComponent: ScriptComponent
 		// FIX: Respect the m_bShowMarkerForDefenders attribute - was ignored before.
     	bool shouldShow = m_bShowMarkerForDefenders && isDefender && isPhaseActive && m_bIsActiveReplicated && !IsCacheDestroyed();
 		
-		CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+		COA_PlayerScriptedMarkerManager psmm = COA_PlayerScriptedMarkerManager.GetInstance();
 		if (!psmm)
 			return;
 		
@@ -220,7 +220,7 @@ class CRF_InsDestructiveComponent: ScriptComponent
 		
         if (Replication.IsClient() && m_bDefenderMarkerActive)
         {
-            CRF_PlayerScriptedMarkerManager psmm = CRF_PlayerScriptedMarkerManager.GetInstance();
+            COA_PlayerScriptedMarkerManager psmm = COA_PlayerScriptedMarkerManager.GetInstance();
             if (psmm)
                 psmm.RemoveScriptedMarker("Static Marker", m_sMarkerPosStr, 1000,
                     m_sMarkerLabel, m_Image.GetPath(), 500, ARGB(255, 255, 50, 50));

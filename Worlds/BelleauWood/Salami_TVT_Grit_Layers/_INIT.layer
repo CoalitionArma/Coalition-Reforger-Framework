@@ -1,4 +1,4 @@
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{69ECD7A7F88E95C7}" {
    m_AttackingSide "OPFOR"
@@ -31,7 +31,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69ED0C6F7649ADC4}" {
+  COA_MissionDescriptor "{69ED0C6F7649ADC4}" {
    m_sTitle "Mission: Situation"
    m_sTextData "B TRP, 3-71 has been tasked with digging in and conducting a guard of the Brigades flank as they move to assault the town of Belleau. A Russian Motor Rifle Company from the 74th Guards Motor Rifle Brigade is attempting to break through the guard and setup Brigade heavy weapons on the flank of the US assault."\
    ""\
@@ -56,7 +56,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69ED0C6F7649AF5F}" {
+  COA_MissionDescriptor "{69ED0C6F7649AF5F}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "- Defend MCOM A"\
@@ -74,7 +74,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649A859}" {
+  COA_MissionDescriptor "{69ED0C6F7649A859}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "- Capture MCOM A"\
@@ -94,7 +94,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649A973}" {
+  COA_MissionDescriptor "{69ED0C6F7649A973}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -109,7 +109,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69ED0C6F7649AA6D}" {
+  COA_MissionDescriptor "{69ED0C6F7649AA6D}" {
    m_sTitle "Administration"
    m_sTextData "- All team leaders have shotguns for drones."\
    "- If a drone operator does not die, reset their gear in the second phase so they may be rearmed."\
@@ -130,7 +130,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69EF11DF35DC0DD0}" {
+  COA_SlottingGroup "{69EF11DF35DC0DD0}" {
    m_sCallsign "TRP"
    m_FlagType RECON
    m_aSlots {
@@ -140,7 +140,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0FCE}" {
+  COA_SlottingGroup "{69EF11DF35DC0FCE}" {
    m_sCallsign "1PLT"
    m_FlagType RECON
    m_aSlots {
@@ -150,7 +150,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC08D7}" {
+  COA_SlottingGroup "{69EF11DF35DC08D7}" {
    m_sCallsign "1-1"
    m_FlagType RECON
    m_aSlots {
@@ -166,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0997}" {
+  COA_SlottingGroup "{69EF11DF35DC0997}" {
    m_sCallsign "1-2"
    m_FlagType RECON
    m_aSlots {
@@ -182,7 +182,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0A3E}" {
+  COA_SlottingGroup "{69EF11DF35DC0A3E}" {
    m_sCallsign "1-3 (Effects)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0B30}" {
+  COA_SlottingGroup "{69EF11DF35DC0B30}" {
    m_sCallsign "2PLT"
    m_FlagType RECON
    m_aSlots {
@@ -203,7 +203,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0407}" {
+  COA_SlottingGroup "{69EF11DF35DC0407}" {
    m_sCallsign "2-1"
    m_FlagType RECON
    m_aSlots {
@@ -219,7 +219,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC0515}" {
+  COA_SlottingGroup "{69EF11DF35DC0515}" {
    m_sCallsign "2-2"
    m_FlagType RECON
    m_aSlots {
@@ -235,7 +235,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC07A9}" {
+  COA_SlottingGroup "{69EF11DF35DC07A9}" {
    m_sCallsign "2-3 (Effects)"
    m_FlagType SIGNAL
    m_aSlots {
@@ -248,7 +248,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69EF11DF35DC03BF}" {
+  COA_SlottingGroup "{69EF11DF35DC03BF}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -258,7 +258,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1C38}" {
+  COA_SlottingGroup "{69EF11DF35DC1C38}" {
    m_sCallsign "1PLT"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -269,7 +269,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1EC5}" {
+  COA_SlottingGroup "{69EF11DF35DC1EC5}" {
    m_sCallsign "1-1"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -284,7 +284,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1FAB}" {
+  COA_SlottingGroup "{69EF11DF35DC1FAB}" {
    m_sCallsign "BTR 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -294,7 +294,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC18AF}" {
+  COA_SlottingGroup "{69EF11DF35DC18AF}" {
    m_sCallsign "1-2"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -309,7 +309,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC199A}" {
+  COA_SlottingGroup "{69EF11DF35DC199A}" {
    m_sCallsign "BTR 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -319,7 +319,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1A9D}" {
+  COA_SlottingGroup "{69EF11DF35DC1A9D}" {
    m_sCallsign "1-3"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -334,7 +334,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1B7E}" {
+  COA_SlottingGroup "{69EF11DF35DC1B7E}" {
    m_sCallsign "BTR 3"
    m_FlagType ARMORED
    m_aSlots {
@@ -344,7 +344,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC144B}" {
+  COA_SlottingGroup "{69EF11DF35DC144B}" {
    m_sCallsign "2PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -355,7 +355,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC155D}" {
+  COA_SlottingGroup "{69EF11DF35DC155D}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -371,7 +371,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1631}" {
+  COA_SlottingGroup "{69EF11DF35DC1631}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -387,7 +387,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC10E0}" {
+  COA_SlottingGroup "{69EF11DF35DC10E0}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -403,7 +403,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC1188}" {
+  COA_SlottingGroup "{69EF11DF35DC1188}" {
    m_sCallsign "Mortar"
    m_FlagType MORTAR
    m_aSlots {
@@ -418,7 +418,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69EF11DF35DC124F}" {
+  COA_SlottingGroup "{69EF11DF35DC124F}" {
    m_sCallsign "Drone Team"
    m_FlagType MORTAR
    m_aSlots {
@@ -435,32 +435,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFUSArmyMCModern_Grit.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFUSArmyMCModern_Grit.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/CRF_GS_TFMSV_Grit.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFMSV_Grit.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

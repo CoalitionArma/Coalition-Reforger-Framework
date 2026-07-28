@@ -4186,7 +4186,7 @@ FrameWidgetClass {
       SizeY 30
       OffsetBottom -83.76
      }
-     text "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+     text "{D3B6188EF875E2C4}Configs/Gearscripts/COA_GS_US80s.conf"
      "Font Size" 12
     }
     TextWidgetClass "{62984A11560D602B}" {

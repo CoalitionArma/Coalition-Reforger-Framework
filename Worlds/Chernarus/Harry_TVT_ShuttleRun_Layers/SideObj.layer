@@ -1,4 +1,4 @@
-$grp CRF_VehicleSpawner {
+$grp COA_VehicleSpawner {
  {
   coords 4828.219 254.366 6718.556
   m_rVehicle "{9082D2D66A252529}Prefabs/Vehicles/Wheeled/Ural_4320_Grad/BM 21-1_9M22_LargeRing.et"

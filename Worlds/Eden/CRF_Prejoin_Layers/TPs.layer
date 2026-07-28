@@ -70,7 +70,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B12EC831774}" {
       ParentContextList {
@@ -84,7 +84,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{6958080BD07374B3}" {
       ParentContextList {
@@ -98,7 +98,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69F1088EC55A5981}" {
       ParentContextList {
@@ -112,7 +112,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 7
       m_sObjectNameToTeleportTo "Mortar"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -191,7 +191,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B13045981DF}" {
       ParentContextList {
@@ -205,7 +205,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69580812F62E7349}" {
       ParentContextList {
@@ -219,7 +219,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -297,7 +297,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B12C0B04141}" {
       ParentContextList {
@@ -311,7 +311,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{6958081290DA3209}" {
       ParentContextList {
@@ -325,7 +325,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -403,7 +403,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B132E3CC44B}" {
       ParentContextList {
@@ -417,7 +417,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69580812E1C4A21A}" {
       ParentContextList {
@@ -431,7 +431,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -510,7 +510,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B13307F8C93}" {
       ParentContextList {
@@ -524,7 +524,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69580812EB26AC75}" {
       ParentContextList {
@@ -538,7 +538,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -616,7 +616,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B12CEA21FF9}" {
       ParentContextList {
@@ -630,7 +630,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{6958081299EA4228}" {
       ParentContextList {
@@ -644,7 +644,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -722,7 +722,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B133FA59689}" {
       ParentContextList {
@@ -736,7 +736,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69580812EC3C639E}" {
       ParentContextList {
@@ -750,7 +750,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }
@@ -828,7 +828,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{69232B13045981DF}" {
       ParentContextList {
@@ -842,7 +842,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
      CRF_TeleportPlayerAction "{6958080AE7412602}" {
       ParentContextList {
@@ -856,7 +856,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+      m_sGearscriptToSet "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/COA_GS_OPFOR_Rifleman_P.et"
      }
     }
    }

@@ -1,7 +1,7 @@
 SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 3170.12 11.529 2794.267
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   CRF_PropHuntGamemode "{69114207AA1B64C1}" {
    m_iGracePeriodSeconds 60
@@ -34,7 +34,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{69114209C061FB69}" {
+  COA_SlottingGroup "{69114209C061FB69}" {
    m_sCallsign "PROPS1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     UNARMED
    }
   }
-  CRF_SlottingGroup "{69114209C061FA3C}" {
+  COA_SlottingGroup "{69114209C061FA3C}" {
    m_sCallsign "PROPS2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -66,7 +66,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69114209C061E597}" {
+  COA_SlottingGroup "{69114209C061E597}" {
    m_sCallsign "HUNTER1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -81,7 +81,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E507}" {
+  COA_SlottingGroup "{69114209C061E507}" {
    m_sCallsign "HUNTER2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -96,7 +96,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E473}" {
+  COA_SlottingGroup "{69114209C061E473}" {
    m_sCallsign "HUNTER3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -111,7 +111,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     RIFLEMAN
    }
   }
-  CRF_SlottingGroup "{69114209C061E7EA}" {
+  COA_SlottingGroup "{69114209C061E7EA}" {
    m_sCallsign "HUNTER4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -132,32 +132,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_bSafestartEnabledOnMissionStart 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{0D201C684943BC80}Configs/Gearscripts/Standard/Specials/Prophunt/CRF_GS_CIV_Props.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{0D201C684943BC80}Configs/Gearscripts/Standard/Specials/Prophunt/COA_GS_CIV_Props.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{A9F8046B2948C5B8}Configs/Gearscripts/Standard/Specials/Prophunt/CRF_GS_CIV_Hunters.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A9F8046B2948C5B8}Configs/Gearscripts/Standard/Specials/Prophunt/COA_GS_CIV_Hunters.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

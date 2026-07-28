@@ -1,4 +1,4 @@
-Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+Vehicle : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
  ID "BBCBA43A9778AE21"
  components {
   SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {

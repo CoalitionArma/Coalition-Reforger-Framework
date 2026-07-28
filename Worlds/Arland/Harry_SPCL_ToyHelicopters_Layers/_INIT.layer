@@ -1,7 +1,7 @@
 SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 3051.475 567.41 2550.93
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -31,7 +31,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  CRF_SlottingGroup "{699B78071259E6DC}" {
+  COA_SlottingGroup "{699B78071259E6DC}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -39,7 +39,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259E59D}" {
+  COA_SlottingGroup "{699B78071259E59D}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -47,7 +47,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259E510}" {
+  COA_SlottingGroup "{699B78071259E510}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -55,7 +55,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259E48B}" {
+  COA_SlottingGroup "{699B78071259E48B}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -63,7 +63,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259E407}" {
+  COA_SlottingGroup "{699B78071259E407}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -71,7 +71,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DBF8}" {
+  COA_SlottingGroup "{699B78071259DBF8}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -79,7 +79,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DB79}" {
+  COA_SlottingGroup "{699B78071259DB79}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -87,7 +87,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DA84}" {
+  COA_SlottingGroup "{699B78071259DA84}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -95,7 +95,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DA7E}" {
+  COA_SlottingGroup "{699B78071259DA7E}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -103,7 +103,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D9EB}" {
+  COA_SlottingGroup "{699B78071259D9EB}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -111,7 +111,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D969}" {
+  COA_SlottingGroup "{699B78071259D969}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -119,7 +119,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D8E1}" {
+  COA_SlottingGroup "{699B78071259D8E1}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -127,7 +127,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D858}" {
+  COA_SlottingGroup "{699B78071259D858}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -135,7 +135,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DFD3}" {
+  COA_SlottingGroup "{699B78071259DFD3}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -143,7 +143,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DF5A}" {
+  COA_SlottingGroup "{699B78071259DF5A}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -151,7 +151,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DEEC}" {
+  COA_SlottingGroup "{699B78071259DEEC}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -161,7 +161,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{699B78071259DE7D}" {
+  COA_SlottingGroup "{699B78071259DE7D}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -169,7 +169,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DDFA}" {
+  COA_SlottingGroup "{699B78071259DDFA}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -177,7 +177,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DD01}" {
+  COA_SlottingGroup "{699B78071259DD01}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -185,7 +185,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DCF8}" {
+  COA_SlottingGroup "{699B78071259DCF8}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -193,7 +193,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259DC71}" {
+  COA_SlottingGroup "{699B78071259DC71}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -201,7 +201,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D385}" {
+  COA_SlottingGroup "{699B78071259D385}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -209,7 +209,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D30B}" {
+  COA_SlottingGroup "{699B78071259D30B}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -217,7 +217,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D28A}" {
+  COA_SlottingGroup "{699B78071259D28A}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -225,7 +225,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D200}" {
+  COA_SlottingGroup "{699B78071259D200}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -233,7 +233,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D1FD}" {
+  COA_SlottingGroup "{699B78071259D1FD}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -241,7 +241,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D176}" {
+  COA_SlottingGroup "{699B78071259D176}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -249,7 +249,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D0E2}" {
+  COA_SlottingGroup "{699B78071259D0E2}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -257,7 +257,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D06F}" {
+  COA_SlottingGroup "{699B78071259D06F}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -265,7 +265,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D7F3}" {
+  COA_SlottingGroup "{699B78071259D7F3}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -273,7 +273,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D770}" {
+  COA_SlottingGroup "{699B78071259D770}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -281,7 +281,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
     CREW_CHIEF
    }
   }
-  CRF_SlottingGroup "{699B78071259D686}" {
+  COA_SlottingGroup "{699B78071259D686}" {
    m_sCallsign "HELI"
    m_FlagType HELICOPER
    m_aSlots {
@@ -294,32 +294,32 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/COA_GS_USSR80s.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
   m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0

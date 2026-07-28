@@ -27,7 +27,7 @@
 //   No layout file is required — the hint panel is provided by vanilla Reforger UI.
 //
 // Setup for mission makers:
-//   1. Add this component to your CRF_Gamemode entity.
+//   1. Add this component to your COA_Gamemode entity.
 //   2. Set BLUFOR faction key to the Props side and OPFOR to the Hunters side in the
 //      gamemode faction settings (defaults: "BLUFOR" / "OPFOR").
 //   3. Tune the attributes below as desired.
@@ -234,7 +234,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.RequestAdminCommand("status", "");
 	}
@@ -243,7 +243,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.RequestAdminCommand("skip", "");
 	}
@@ -252,7 +252,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (!mgr)
 			return;
 		string param = data;
@@ -264,7 +264,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.RequestAdminCommand("restart", "");
 	}
@@ -273,7 +273,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (!mgr)
 			return;
 		string param = data;
@@ -287,7 +287,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	{
 		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
 			return;
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (!mgr)
 			return;
 		string param = data;
@@ -565,7 +565,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------
 	// Game start — called externally by OnGameModeStart or via
-	// the existing CRF_Gamemode flow when this component is present
+	// the existing COA_Gamemode flow when this component is present
 	//------------------------------------------------------------
 	override void OnGameModeStart()
 	{
@@ -577,9 +577,9 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		#endif
 
 		// Disable voluntary respawn for the entire PropHunt session.
-		// Players who die go straight to spectator via CRF_Gamemode.InitilizePlayer.
+		// Players who die go straight to spectator via COA_Gamemode.InitilizePlayer.
 		// Round resets use the forced RespawnAllSides() path which ignores this flag.
-		CRF_RespawnManager phRm = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager phRm = COA_RespawnManager.GetInstance();
 		if (phRm)
 			phRm.SetRespawnEnabled(false);
 
@@ -607,7 +607,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		m_mHunterHealth.Clear();
 
 		// Respawn every slotted player
-		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		if (respawnManager)
 			respawnManager.RespawnAllSides();
 
@@ -1057,7 +1057,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		// Normal per-shot decrements are shown silently via the health bar widget only.
 		if (restored || health <= 0)
 		{
-			CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+			COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 			if (bm)
 			{
 				string msg;
@@ -1323,7 +1323,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void BroadcastMessage(string msg)
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.BroadcastMessage(msg);
 	}
@@ -1483,7 +1483,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------
 	// Prop transformation API — called by the modded
-	// CRF_PlayerRplToOwnerManager when a Prop player transforms.
+	// COA_PlayerRplToOwnerManager when a Prop player transforms.
 	//------------------------------------------------------------
 
 	//! Register a player as transformed into a world prop entity.
@@ -1522,7 +1522,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------
 	// HandleTransformRequest — called server-side from
-	// CRF_PlayerRplToOwnerManager.RpcDo_RequestPropTransform, which
+	// COA_PlayerRplToOwnerManager.RpcDo_RequestPropTransform, which
 	// is declared in the non-modded base class so its RPC registration
 	// is always reliable on dedicated servers.
 	// In Workbench the modded class calls this directly (no network).
@@ -1629,7 +1629,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		#endif
 
 		// Notify the player.
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint("You are DISGUISED! Move around during grace, then hold still once the hunt begins.", playerId);
 	}
@@ -1739,7 +1739,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			return;
 		#endif
 
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ApplyPropTransformEnabled(enable);
 	}
@@ -1765,14 +1765,14 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			return;
 		#endif
 
-		CRF_PlayerRplToOwnerManager mgr = CRF_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager mgr = COA_PlayerRplToOwnerManager.GetInstance();
 		if (mgr)
 			mgr.ApplyPropNoiseEnabled(enable);
 	}
 
 	//------------------------------------------------------------
 	// HandleNoiseCycleRequest — server-side handler called from
-	// RpcDo_RequestPropNextNoise in CRF_PlayerRplToOwnerManager.
+	// RpcDo_RequestPropNextNoise in COA_PlayerRplToOwnerManager.
 	// Advances the player's selected noise index and sends them a hint
 	// showing the new selection.
 	//------------------------------------------------------------
@@ -1791,14 +1791,14 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		int next = (current + 1) % count;
 		m_mPropNoiseIndex.Set(playerId, next);
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint(string.Format("Noise selected: %1 [%2/%3] — press [B] to play.", m_aNoiseSoundEvents[next], next + 1, count), playerId);
 	}
 
 	//------------------------------------------------------------
 	// HandleNoiseRequest — server-side handler called from
-	// RpcDo_RequestPropNoise in CRF_PlayerRplToOwnerManager.
+	// RpcDo_RequestPropNoise in COA_PlayerRplToOwnerManager.
 	// Validates that the requesting player is an alive prop in
 	// the HUNT phase and that their cooldown has expired.
 	// If valid: broadcasts RpcDo_PlayPropNoise to all clients so
@@ -1825,7 +1825,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		float remaining = m_mPropNoiseCooldowns.Get(playerId);
 		if (remaining > 0)
 		{
-			CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+			COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 			if (bm)
 				bm.SendHint(string.Format("Noise on cooldown! %1 seconds remaining.", Math.Ceil(remaining).ToString()), playerId);
 			return;
@@ -1895,7 +1895,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------
 	// Admin command dispatcher — called server-side from
-	// CRF_PlayerRplToOwnerManager.RpcDo_AdminPropHuntCommand.
+	// COA_PlayerRplToOwnerManager.RpcDo_AdminPropHuntCommand.
 	// adminPlayerId is used to send status/error replies back to the admin.
 	//------------------------------------------------------------
 	void HandleAdminCommand(int adminPlayerId, string cmd, string param)
@@ -1945,7 +1945,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			m_iHuntersWins
 		);
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint(msg, adminPlayerId);
 	}
@@ -1960,7 +1960,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		Replication.BumpMe();
 		OnPhaseTimerExpired();
 
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
 			bm.SendHint("[PH Admin] Phase skipped.", adminPlayerId);
 	}
@@ -1971,7 +1971,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminEndRound(int adminPlayerId, string param)
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		if (m_bRoundEndPending)
 		{
@@ -2012,7 +2012,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminResetProp(int adminPlayerId, string param)
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		PlayerManager pm = GetGame().GetPlayerManager();
 		if (!pm)
 			return;
@@ -2075,7 +2075,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminAddTime(int adminPlayerId, string param)
 	{
-		CRF_RplBroadcastManager bm = CRF_RplBroadcastManager.GetInstance();
+		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 
 		if (m_ePhase != CRF_EPropHuntPhase.GRACE && m_ePhase != CRF_EPropHuntPhase.HUNT)
 		{

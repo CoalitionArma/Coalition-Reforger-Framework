@@ -26,7 +26,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
  components {
-  CRF_PolyZone "{6586537E1F838475}" {
+  COA_PolyZone "{6586537E1F838475}" {
    m_bIsForwardDeployZone 1
   }
  }
