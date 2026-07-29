@@ -1,12 +1,4 @@
 #ifdef WORKBENCH
-[WorkbenchPluginAttribute(
-	name: "3 | Configure Factions", 
-	description: "Configure Mission Factions", 
-	shortcut: "", 
-	wbModules: { "WorldEditor" }, 
-	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0xF024)
-] 
 modded class COA_MissionFactionsPlugin
 {
 	//------------------------------------------------------------------------------------------------

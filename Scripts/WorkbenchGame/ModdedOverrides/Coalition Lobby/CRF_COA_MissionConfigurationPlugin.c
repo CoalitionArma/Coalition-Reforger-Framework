@@ -10,14 +10,6 @@ enum CRF_ESlottingCallsignTier
 	OTHER   // Unrecognized/custom callsign - always rendered top-level, un-nested
 }
 
-[WorkbenchPluginAttribute(
-	name: "6 | Generate Config File",
-	description: "Generate Mission Configuration File", 
-	shortcut: "", 
-	wbModules: { "WorldEditor" }, 
-	category: "Coalition Reforger Framework",
-	awesomeFontCode: 0xF0C7)
-] 
 modded class COA_MissionConfigurationPlugin
 {
 	[Attribute("", "auto", "Your BI account GUID for automatic admin privileges (auto-filled from workbench)", category: "CRF Mission Config - Mission Info")]
