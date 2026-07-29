@@ -4,6 +4,7 @@ $grp COA_VehicleSpawner {
   angles 0 154.593 0
   m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{69FB345541C7A290}" {
     m_Prefab "{C820846B0521423B}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4AP_1APIT.et"
@@ -17,6 +18,7 @@ $grp COA_VehicleSpawner {
   angles 0 154.593 0
   m_rVehicle "{3819B48B7A01C28F}Vehicles/HighLux/KILUXnew7725_Armed.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{69FB34555EF8DEFC}" {
     m_Prefab "{C820846B0521423B}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4AP_1APIT.et"
@@ -30,12 +32,14 @@ $grp COA_VehicleSpawner {
   angles 0 154.593 0
   m_rVehicle "{479AB5B7FA667925}Vehicles/Bus/ZagorusBB.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1306.011 18.594 2905.712
   angles 0 63.764 0
   m_rVehicle "{EAE67B00C6B197E2}Vehicles/HighLux/KILUXnew7725_Armed_WZNP.et"
   m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{69FB3455AE81A0EB}" {
     m_Prefab "{5C0716ECEE2617AE}Weapons/Box_127x108_dshkm_50rnd_4AP_1APIT.et"
@@ -49,6 +53,7 @@ $grp COA_VehicleSpawner {
   angles 0 63.764 0
   m_rVehicle "{EAE67B00C6B197E2}Vehicles/HighLux/KILUXnew7725_Armed_WZNP.et"
   m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
   m_aAdditionalVehicleItems {
    CRF_VehicleGearScriptAdditionalItem "{69FB3455834B39B6}" {
     m_Prefab "{5C0716ECEE2617AE}Weapons/Box_127x108_dshkm_50rnd_4AP_1APIT.et"
@@ -62,6 +67,7 @@ $grp COA_VehicleSpawner {
   angles 0 61.234 0
   m_rVehicle "{0C840767B7F3B713}Vehicles/HighLux/KILUXnew7725_WZNP_Explosives.et"
   m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
   m_bShouldAddAmmo 0
  }
  {
@@ -69,23 +75,27 @@ $grp COA_VehicleSpawner {
   angles 1.617 154.571 -0.768
   m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 3335.854 13.465 3981.045
   angles -0.343 154.61 -2.808
   m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
   m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1287.613 18.15 2887.138
   angles -2.001 62.467 0.034
   m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
   m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
  }
  {
   coords 1285.624 18.15 2891.094
   angles -2.001 62.467 0.034
   m_rVehicle "{4EDDBACAAA368FAF}Vehicles/HighLux/KILUXnew7725.et"
   m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
  }
 }
