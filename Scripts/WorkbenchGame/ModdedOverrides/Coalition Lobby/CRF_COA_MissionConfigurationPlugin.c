@@ -12,7 +12,7 @@ enum CRF_ESlottingCallsignTier
 
 modded class COA_MissionConfigurationPlugin
 {
-	[Attribute("", "auto", "Your BI account GUID for automatic admin privileges (auto-filled from workbench)", category: "CRF Mission Config - Mission Info")]
+	[Attribute("", "auto", "Your BI account GUID for automatic admin privileges (auto-filled from workbench)", category: "Mission Config - Mission Info")]
 	protected string m_sMissionAuthorGUID;
 
 	//------------------------------------------------------------------------------------------------
