@@ -1,6 +1,0 @@
-COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
- coords 2831.82 52.937 4950.081
- angles 0 0 0
- m_MarkerColor 0.017 0.017 0.017 1
- m_sDescription "Mortar Base"
-}
