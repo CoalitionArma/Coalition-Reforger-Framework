@@ -29,7 +29,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 4063.388 1 6496.832
 }
-COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
  components {
   RHS_AdditionalGameModeSettingsComponent "{61AE627E9607513B}" {
    m_CallInSupportsConfig SCR_CallInSupportContainerConfig "{621B2B44550E77F5}" {

@@ -6,16 +6,16 @@ modded class COA_Gamemode
 	
 	// Vehicle Gearscript Enable/Disable per Side
 	//------------------------------------------------------------------------------------
-	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for BLUFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for BLUFOR vehicles", category: "Gearscript Settings - Advanced")]
 	bool m_bBLUFORVehicleGearscriptEnabled;
 
-	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for OPFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for OPFOR vehicles", category: "Gearscript Settings - Advanced")]
 	bool m_bOPFORVehicleGearscriptEnabled;
 
-	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for INDFOR vehicles", category: "CRF Gearscript Settings - Advanced")]
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for INDFOR vehicles", category: "Gearscript Settings - Advanced")]
 	bool m_bINDFORVehicleGearscriptEnabled;
 
-	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "CRF Gearscript Settings - Advanced")]
+	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "Gearscript Settings - Advanced")]
 	bool m_bCIVILIANVehicleGearscriptEnabled;
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

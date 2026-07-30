@@ -240,10 +240,16 @@ class CRF_CommunityTagManager : ScriptComponent
 
 		RestApi rest = GetGame().GetRestApi();
 		if (!rest)
+		{
+			Print("[CRF_CommunityTagManager] GetRestApi() returned null on server — cannot fetch player info", LogLevel.ERROR);
 			return;
+		}
 		RestContext ctx = rest.GetContext(BOT_API_BASE_URL);
 		if (!ctx)
+		{
+			Print("[CRF_CommunityTagManager] rest.GetContext() returned null for " + BOT_API_BASE_URL, LogLevel.ERROR);
 			return;
+		}
 
 		m_Callback = new RestCallback();
 		m_Callback.SetOnSuccess(OnPlayerInfoFetched);
@@ -253,6 +259,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		GetGame().GetCallqueue().Remove(OnFetchTimeout);
 		GetGame().GetCallqueue().CallLater(OnFetchTimeout, FETCH_TIMEOUT_MS, false);
 		ctx.SetHeaders("Content-Type,application/json");
+		Print(string.Format("[CRF_CommunityTagManager] Issuing GET for %1 player(s): %2", playerIds.Count(), queryNames), LogLevel.NORMAL);
 		ctx.GET(m_Callback, PLAYER_INFO_ENDPOINT + queryNames);
 	}
 
@@ -332,10 +339,12 @@ class CRF_CommunityTagManager : ScriptComponent
 		string data = cb.GetData();
 		if (data.IsEmpty())
 		{
+			Print("[CRF_CommunityTagManager] Player info response body was empty", LogLevel.WARNING);
 			if (bRetry)
 				FetchPlayerInfo();
 			return;
 		}
+		Print(string.Format("[CRF_CommunityTagManager] Received player info response (%1 bytes)", data.Length()), LogLevel.NORMAL);
 
 		map<string, string> tagsByName = new map<string, string>;
 		map<string, int> xpByName = new map<string, int>;
@@ -523,6 +532,8 @@ class CRF_CommunityTagManager : ScriptComponent
 			outTracks.Insert(track);
 		}
 
+		Print(string.Format("[CRF_CommunityTagManager] Resolved %1 of %2 connected player(s) to tag/xp/track data — broadcasting", outIds.Count(), allPlayerIds.Count()), LogLevel.NORMAL);
+
 		// Apply locally (covers dedicated + listen server) and replicate to every client.
 		RpcDo_PlayerInfoUpdated(outIds, outTags, outXp, outTracks);
 		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
@@ -575,6 +586,11 @@ class CRF_CommunityTagManager : ScriptComponent
 			m_mTrackCache.Set(playerIds[i], tracks[i]);
 		}
 
+		string side = "CLIENT";
+		if (Replication.IsServer())
+			side = "SERVER";
+		Print(string.Format("[CRF_CommunityTagManager][%1] Applied player info for %2 player(s) to local cache", side, count), LogLevel.NORMAL);
+
 		m_OnPlayerInfoUpdated.Invoke();
 	}
 
@@ -604,6 +620,15 @@ class CRF_CommunityTagManager : ScriptComponent
 		gameMode.GetOnPlayerDisconnected().Insert(OnTrackedPlayerDisconnected);
 
 		m_bPlayerEventsSubscribed = true;
+
+		// Bootstrap fetch: covers players already connected before this component initialized
+		// (e.g. a listen-server host, or anyone present before the next new-player connect event).
+		// OnTrackedPlayerConnected only fires for players joining AFTER this point.
+		if (Replication.IsServer())
+		{
+			Print("[CRF_CommunityTagManager][SERVER] Lifecycle callbacks registered — scheduling initial fetch", LogLevel.NORMAL);
+			ScheduleFetchDebounced();
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -613,7 +638,10 @@ class CRF_CommunityTagManager : ScriptComponent
 
 		// Only the server re-fetches; clients receive the result via RpcDo_PlayerInfoUpdated.
 		if (Replication.IsServer())
+		{
+			Print(string.Format("[CRF_CommunityTagManager][SERVER] Player %1 connected — scheduling debounced fetch", playerId), LogLevel.NORMAL);
 			ScheduleFetchDebounced();
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
