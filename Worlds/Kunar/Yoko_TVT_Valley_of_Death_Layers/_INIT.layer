@@ -2,7 +2,7 @@ SCR_AIWorld : "{77C3151F7A6E588C}SCR_AIWorld_Kunar.et" {
  coords 3719.929 265.174 1168.655
  angles 0 0 0
 }
-COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0

@@ -1,4 +1,4 @@
-COA_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{698635BA2937338E}" {
   }

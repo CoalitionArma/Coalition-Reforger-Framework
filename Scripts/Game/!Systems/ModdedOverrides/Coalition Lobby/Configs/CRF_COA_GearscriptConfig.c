@@ -10,6 +10,9 @@ modded class COA_GearScriptContainer
 	//------------------------------------------------------------------------------------------------
 	// Vars considered "advanced" and not set by plugin
 	
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bEnableMagnifiedOptics;
+	
 	[Attribute("{E6555DA2F31B0EC0}Configs/Gearscripts/Additional Configs/COA_Global_SightArsenal_Regular.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=COA_SightArsenalConfig")]
 	ResourceName m_rSightArsenal;
 	
