@@ -2,6 +2,8 @@ modded class SCR_PlayerControllerCommandingComponent
 {
 	override bool AddElementsFromCategoryToMap(notnull SCR_PlayerCommandingMenuCategoryElement category, SCR_SelectionMenuCategoryEntry parentCategory = null)
 	{
+		super.AddElementsFromCategoryToMap(category, parentCategory);
+		
 		if (!COA_Gamemode.GetInstance())
 		{
 			return super.AddElementsFromCategoryToMap(category, parentCategory);
