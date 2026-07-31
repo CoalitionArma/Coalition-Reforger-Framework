@@ -1,12 +1,8 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 1375.62 17.221 3908.961
 }
-CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
-  CRF_AttritionGamemodeComponent "{69F7730E1037A7D3}" {
-   m_fTeamAVictoryThreshold 90
-   m_fTeamBVictoryThreshold 66
-  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -32,7 +28,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  CRF_MissionDescriptor "{69F945A07E8B135A}" {
+  COA_MissionDescriptor "{69F945A07E8B135A}" {
    m_sTitle "Mission: Situation"
    m_sTextData "Islamic revolutionaries strike against Somali locals organized in Mogadishu hoping to degrade their capabilities. "\
    ""\
@@ -48,7 +44,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
-  CRF_MissionDescriptor "{69F945A07E8B1695}" {
+  COA_MissionDescriptor "{69F945A07E8B1695}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Either do 2 of 3: capture the enemy HAT position, destroy the enemy supply cache, destroy the enemy fuel containers"\
@@ -65,7 +61,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F945A07E8B1585}" {
+  COA_MissionDescriptor "{69F945A07E8B1585}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Defend two of the three main objectives: the HAT emplacement at the radio tower, the supply warehouse, and your fuel depot. "\
@@ -82,7 +78,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F945A07E8B14CD}" {
+  COA_MissionDescriptor "{69F945A07E8B14CD}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -97,7 +93,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    }
    m_bShowForAnyFaction 0
   }
-  CRF_MissionDescriptor "{69F945A07E8B142B}" {
+  COA_MissionDescriptor "{69F945A07E8B142B}" {
    m_sTitle "Ladders"
    m_sTextData "Both sides TLs have been given ladders. These can be used to navigate the city more easily, or serve as a mobile platform for your AR. Do not wedge yourself into an unrealistic position using them, or moderators/admins will intervene. "
    m_aFactionKeys {
@@ -113,7 +109,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "BLU"
  m_BluforSlots {
-  CRF_SlottingGroup "{69F945A3EFC85AED}" {
+  COA_SlottingGroup "{69F945A3EFC85AED}" {
    m_sCallsign "Blessed Leader"
    m_FlagType SIGNAL
    m_aSlots {
@@ -123,7 +119,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC858DF}" {
+  COA_SlottingGroup "{69F945A3EFC858DF}" {
    m_sCallsign "The Right Hand"
    m_FlagType SIGNAL
    m_aSlots {
@@ -134,7 +130,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC85FE2}" {
+  COA_SlottingGroup "{69F945A3EFC85FE2}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -152,7 +148,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC85EFF}" {
+  COA_SlottingGroup "{69F945A3EFC85EFF}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -170,7 +166,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC85DF1}" {
+  COA_SlottingGroup "{69F945A3EFC85DF1}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -188,7 +184,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC85C86}" {
+  COA_SlottingGroup "{69F945A3EFC85C86}" {
    m_sCallsign "The Left Hand"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,7 +195,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC853F6}" {
+  COA_SlottingGroup "{69F945A3EFC853F6}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -217,7 +213,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC852EB}" {
+  COA_SlottingGroup "{69F945A3EFC852EB}" {
    m_sCallsign "Cell 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -235,7 +231,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC851D9}" {
+  COA_SlottingGroup "{69F945A3EFC851D9}" {
    m_sCallsign "Cell 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -253,7 +249,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC850FC}" {
+  COA_SlottingGroup "{69F945A3EFC850FC}" {
    m_sCallsign "Judgement"
    m_FlagType ARMORED
    m_aSlots {
@@ -265,7 +261,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
   }
  }
  m_OpforSlots {
-  CRF_SlottingGroup "{69F945A3EFC8570E}" {
+  COA_SlottingGroup "{69F945A3EFC8570E}" {
    m_sCallsign "Captain"
    m_FlagType SIGNAL
    m_aSlots {
@@ -275,7 +271,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC8565E}" {
+  COA_SlottingGroup "{69F945A3EFC8565E}" {
    m_sCallsign "Crew 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -292,7 +288,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC855BA}" {
+  COA_SlottingGroup "{69F945A3EFC855BA}" {
    m_sCallsign "Crew 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -309,7 +305,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC8549E}" {
+  COA_SlottingGroup "{69F945A3EFC8549E}" {
    m_sCallsign "Crew 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -326,7 +322,7 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  CRF_SlottingGroup "{69F945A3EFC84B96}" {
+  COA_SlottingGroup "{69F945A3EFC84B96}" {
    m_sCallsign "Deck Guns"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -344,37 +340,37 @@ CRF_Gamemode CRF_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/CRF_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1
- m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{50BFAB1D073F818F}Configs/Gearscripts/Custom/Harry/GWOT/CRF_GS_MEInsurgents_Poor_ladders.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
- m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{69F57D0A1750B7BD}Configs/Gearscripts/Custom/Harry/90s/CRF_GS_Somali_Ladders.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
- }
- m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
   m_bEnableShareableMarkers 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
- }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
   m_bEnableShareableMarkers 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 0
  }
  {
   SCR_FactionManager "69F7730B455AF19E" {
