@@ -1,0 +1,20 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ {
+  coords 6004.313 161.447 4653.866
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 40
+  m_sDescription "ZU-23 Truck Location"
+ }
+ {
+  coords 4525.515 140.882 5134.751
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 40
+  m_sDescription "ZU-23 Truck Location"
+ }
+ {
+  coords 5432.257 147.744 5086.536
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 40
+  m_sDescription "ZU-23 Truck Location"
+ }
+}

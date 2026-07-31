@@ -1,0 +1,6 @@
+CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ coords 5805.059 159.406 4690.324
+ m_MarkerColor 0 0.125 0.502 1
+ m_fWorldSize 40
+ m_sDescription "Crash Site"
+}
