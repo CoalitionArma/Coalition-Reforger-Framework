@@ -1,5 +1,0 @@
-COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
- coords 1955.728 11.843 4485.892
- angles -1.789 0.028 -0.896
- m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
-}

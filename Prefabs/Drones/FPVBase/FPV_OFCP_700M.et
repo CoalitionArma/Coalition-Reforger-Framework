@@ -1,0 +1,8 @@
+GenericEntity : "{198FC6ADBB37E556}Prefabs/Drones/FPVBase/FPV_OFCP.et" {
+ ID "65932E3D2F6C309A"
+ components {
+  SAL_DroneSignalComponent "{65A43CD2DD24F455}" {
+   m_fDroneRange 700
+  }
+ }
+}

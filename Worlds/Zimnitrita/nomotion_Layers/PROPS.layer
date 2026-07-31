@@ -1,7 +1,0 @@
-GenericEntity : "{1FE6CA907FA552E7}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_04.et" {
- coords 14253.551 50.907 12040.747
-}
-GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
- coords 14239.406 50.906 12032.041
- angles 0 -26 0
-}

@@ -1,9 +1,0 @@
-GameEntity Zone2_BLUFORSpawn {
- coords 2565.465 130.094 6990.786
-}
-GenericEntity : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 5168.873 9.12 6939.795
-}
-GenericEntity : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 3347.702 50.518 7756.068
-}
