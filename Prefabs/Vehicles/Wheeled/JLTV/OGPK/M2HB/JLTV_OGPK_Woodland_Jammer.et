@@ -1,0 +1,31 @@
+Vehicle : "{E49B4C9AEA70BE3F}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M2HB/JLTV_OGPK.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{69FEC6710375533C}" {
+     SourceMaterial "Main_Body"
+     AssignedMaterial "{677E20558560CFFA}Assets/Vehicles/Wheeled/JLTV/data/Main_Body_Woodland.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Icon "{5779776B5B20F50C}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Offroad_Armed.edds"
+    m_Image "{9B920C10281D2B12}UI/Textures/EditorPreviews/Vehicles/Wheeled/JLTV/JLTV_OGPK_Woodland.edds"
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo Roof {
+     Prefab "{1DD8862936562EDC}Prefabs/Vehicles/Wheeled/JLTV/VehParts/JLTV_Roof_Woodland.et"
+    }
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{8D2119793DE9C4A1}Prefabs/Vehicles/Wheeled/JLTV/VehParts/Turrets/JLTV_OGPK_M2_Olive.et"
+    }
+   }
+  }
+  SAL_DroneJammerComponent "{69FEC670FF7A8E2C}" {
+  }
+ }
+}

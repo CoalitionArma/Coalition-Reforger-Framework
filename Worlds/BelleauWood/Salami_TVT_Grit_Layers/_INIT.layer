@@ -51,6 +51,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "MISSION"\
    "- Capture the southern trenches."\
    "- Capture the northern trenches"\
+   "- Must be done in order. Southern to Northern."\
    ""\
    "INTENT"\
    "The intent is to use your recon drones and tree coverage to set conditions for an assault on the dug in Russian positions. Expect casualties."\
@@ -67,6 +68,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "MISSION"\
    "- Defend the southern trenches"\
    "- Defend the northern trenches"\
+   "- Must be done in order. Southern to Northern."\
    ""\
    "INTENT"\
    "Utilize your drone team to hunt high value nato weapon systems that can hit you from beyond LOS. Be careful as if the Americans gain enough momemntum they can capture the Northern trench if your retreat isn't done well."\
@@ -111,7 +113,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  COA_SlottingGroup "{69FCACF4B7E0BB91}" {
+  COA_SlottingGroup "{69FEB20E272674A0}" {
    m_sCallsign "COY"
    m_FlagType INFANTRY
    m_aSlots {
@@ -121,7 +123,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B7A9}" {
+  COA_SlottingGroup "{69FEB20E27267212}" {
    m_sCallsign "1PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -131,7 +133,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B548}" {
+  COA_SlottingGroup "{69FEB20E2726730C}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,7 +151,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B210}" {
+  COA_SlottingGroup "{69FEB20E27267006}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +169,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B302}" {
+  COA_SlottingGroup "{69FEB20E2726711C}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -185,7 +187,17 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B01F}" {
+  COA_SlottingGroup "{69FEB20E27266E7B}" {
+   m_sCallsign "Gun Truck 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{69FEB20E27266EA9}" {
    m_sCallsign "2PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -195,7 +207,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B14B}" {
+  COA_SlottingGroup "{69FEB20E27266FEE}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -213,7 +225,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0B1B0}" {
+  COA_SlottingGroup "{69FEB20E27266CC5}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -231,7 +243,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0AE95}" {
+  COA_SlottingGroup "{69FEB20E27266DDF}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -249,13 +261,21 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0AFF9}" {
+  COA_SlottingGroup "{69FEB20E27266A3D}" {
+   m_sCallsign "Gun Truck 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{69FEB20E27266B7C}" {
    m_sCallsign "MORTAR"
    m_FlagType MORTAR
    m_aSlots {
     INDIRECT_LEAD
-    FORWARD_OBSERVER
-    FORWARD_OBSERVER
     INDIRECT_GUNNER
     INDIRECT_GUNNER
     INDIRECT_GUNNER
@@ -265,7 +285,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OpforSlots {
-  COA_SlottingGroup "{69FCACF4B7E0AD6E}" {
+  COA_SlottingGroup "{69FEB20E272668FA}" {
    m_sCallsign "1PLT"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
@@ -275,7 +295,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E0ADA2}" {
+  COA_SlottingGroup "{69FEB20E27266934}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -290,7 +310,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E12263}" {
+  COA_SlottingGroup "{69FEB20E2726666B}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -305,7 +325,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E123BD}" {
+  COA_SlottingGroup "{69FEB20E27266744}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -320,7 +340,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E1211F}" {
+  COA_SlottingGroup "{69FEB20E272667BE}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -335,7 +355,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FCACF4B7E1DE0D}" {
+  COA_SlottingGroup "{69FEB20E272664F5}" {
    m_sCallsign "Drone Team"
    m_FlagType SIGNAL
    m_aSlots {
@@ -522,7 +542,7 @@ $grp BaseGameTriggerEntity {
   "		delete this;"\
   "	}"
   TriggerShapeType Sphere
-  SphereRadius 93.5
+  SphereRadius 100
   BoxMins 75 50 250
   PeriodicQueries 1
   UpdatePeriod 5
@@ -604,7 +624,7 @@ $grp BaseGameTriggerEntity {
   "		delete this;"\
   "	}"
   TriggerShapeType Sphere
-  SphereRadius 93.5
+  SphereRadius 100
   BoxMins 75 50 250
   PeriodicQueries 1
   UpdatePeriod 5
@@ -636,13 +656,13 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
  coords 5347.854 169.122 4728.187
  Points {
   ShapePoint "{69FCACB519B8038A}" {
-   Position -873.943 -0 -462.815
+   Position -873.943 0 -462.815
   }
   ShapePoint "{69FCACB5188F028C}" {
    Position -1072.089 0 68.062
   }
   ShapePoint "{69FCACB517809635}" {
-   Position -972.581 -0 509.151
+   Position -972.581 0 509.151
   }
   ShapePoint "{69FCACB51601A8C0}" {
    Position -712.938 0 810.075
@@ -666,7 +686,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBound
    Position 1338.143 0 -370.458
   }
   ShapePoint "{69FCACB50E3AC3E4}" {
-   Position 1103.83 -0 -849.589
+   Position 1103.83 0 -849.589
   }
   ShapePoint "{69FCACB50DEBA67C}" {
    Position 576.942 0 -1018.383
@@ -722,7 +742,7 @@ PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDe
    Position -669.965 0 108.179
   }
   ShapePoint "{69FCACB572D50EF0}" {
-   Position -522.965 -0 473.575
+   Position -522.965 0 473.575
   }
   ShapePoint "{69FCACB5714A64B5}" {
    Position -303.252 0 781.926
