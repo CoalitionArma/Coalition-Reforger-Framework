@@ -12,39 +12,10 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -141.849 0
   m_rVehicle "{F203E2146C425605}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_camo.et"
  }
-}
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
- coords 3695.505 157.781 4253.659
- Points {
-  ShapePoint "{69FE19E2BD80C1BC}" {
-   Position 100.309 0 90.77
-  }
-  ShapePoint "{69FE19E2BC8B86F7}" {
-   Position 109.542 0 -71.878
-  }
-  ShapePoint "{69FE19E2BF9BDA1F}" {
-   Position -44.111 0 -76.258
-  }
-  ShapePoint "{69FE19E2BF7D9039}" {
-   Position -39.833 0 40.667
-  }
- }
-}
-PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
- coords 6245.187 189.812 6635.74
- Points {
-  ShapePoint "{69FE19E2919571A5}" {
-   Position -87.731 0 -80.251
-  }
-  ShapePoint "{69FE19E2908A32E6}" {
-   Position 68.629 0 -53.774
-  }
-  ShapePoint "{69FE19E2928FB8B4}" {
-   Position 38.574 0 84.643
-  }
-  ShapePoint "{69FE19E294D208F0}" {
-   Position -93.514 0 68.748
-  }
+ {
+  coords 5185.315 155.879 5676.111
+  angles 0 -141.849 0
+  m_rVehicle "{F203E2146C425605}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_camo.et"
  }
 }
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {

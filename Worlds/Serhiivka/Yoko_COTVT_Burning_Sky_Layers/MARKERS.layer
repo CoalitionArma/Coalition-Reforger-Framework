@@ -1,20 +1,23 @@
-$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
  {
-  coords 6004.313 161.447 4653.866
+  coords 6232.146 189.812 6628.98
+  angles 0 0 0
   m_MarkerColor 1 0 0 1
-  m_fWorldSize 40
-  m_sDescription "ZU-23 Truck Location"
+  m_sQuadName "flag"
+  m_sDescription "OPFOR MOB"
  }
  {
-  coords 4525.515 140.882 5134.751
-  m_MarkerColor 1 0 0 1
-  m_fWorldSize 40
-  m_sDescription "ZU-23 Truck Location"
+  coords 3706.684 157.782 4226.134
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "flag"
+  m_sDescription "BLUFOR MOB"
  }
  {
-  coords 5432.257 147.744 5086.536
+  coords 4794.881 151.545 4985.583
+  angles 0 0 0
   m_MarkerColor 1 0 0 1
-  m_fWorldSize 40
-  m_sDescription "ZU-23 Truck Location"
+  m_sQuadName "flag"
+  m_sDescription "OPFOR FOB"
  }
 }
