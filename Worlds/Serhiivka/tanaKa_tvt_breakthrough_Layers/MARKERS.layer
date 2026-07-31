@@ -11,4 +11,12 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sQuadName "help-2"
   m_sDescription "SUPPLY DROPOFF"
  }
+ {
+  coords 2452.96 153.061 6346.036
+  m_sQuadName "help-2"
+  m_sDescription "SUPPLY DROPOFF"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
 }
