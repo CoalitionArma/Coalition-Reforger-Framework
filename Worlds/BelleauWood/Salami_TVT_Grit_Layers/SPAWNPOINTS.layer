@@ -54,12 +54,12 @@ $grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMark
 }
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 4392.092 164.999 2865.307
-  m_rVehicle "{D9B71AA206B55744}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M2HB/JLTV_OGPK_Woodland_Jammer.et"
+  coords 4392.092 165.411 2865.307
+  m_rVehicle "{E616DAF018B0D3BD}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo_Jammer.et"
  }
  {
-  coords 4385.311 165.445 2865.624
-  m_rVehicle "{D9B71AA206B55744}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M2HB/JLTV_OGPK_Woodland_Jammer.et"
+  coords 4385.311 165.994 2865.624
+  m_rVehicle "{E616DAF018B0D3BD}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo_Jammer.et"
  }
 }
 PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
@@ -76,10 +76,10 @@ PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/D
    Position -729.666 0 151.307
   }
   ShapePoint "{69FEC679267B0E52}" {
-   Position 132.636 -0 -72.743
+   Position 132.636 0 -72.743
   }
   ShapePoint "{69FEC67924599DED}" {
-   Position 749.062 -0 -85.635
+   Position 749.062 0 -85.635
   }
   ShapePoint "{69FEC6792262D080}" {
    Position 1083.675 0 -101.959
