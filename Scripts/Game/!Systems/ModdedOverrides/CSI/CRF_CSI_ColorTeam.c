@@ -1,9 +1,27 @@
 modded class COA_GamemodeManager
 {
+	//! Slot ID each player was last auto-assigned a CSI color team for.
+	//! The role-based color is only a DEFAULT applied when a player takes a slot — players (and their
+	//! SL) can override it from CSI's player settings menu, so it must not be re-derived every time
+	//! AssignPlayerToGroup runs. That happens far more often than just on first spawn: re-opening the
+	//! slotting menu and clicking "Game" re-runs the whole InitilizePlayer chain, as does every death
+	//! and respawn, and each of those used to silently reset a deliberately chosen color back to the
+	//! role default (white for any role DetermineCSIColorTeam doesn't color).
+	protected ref map<int, int> m_mCSIColorTeamAssignedSlot = new map<int, int>();
+
 	override protected void AssignPlayerToGroup(int playerId)
 	{
 		super.AssignPlayerToGroup(playerId);
 		AssignCSIColorTeam(playerId);
+	}
+
+	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		super.OnPlayerDisconnected(playerId, cause, timeout);
+
+		// Player IDs are recycled, so a stale entry would suppress the default color for whoever
+		// takes this ID next.
+		m_mCSIColorTeamAssignedSlot.Remove(playerId);
 	}
 
 	protected void AssignCSIColorTeam(int playerId, int retryCount = 0)
@@ -16,6 +34,13 @@ modded class COA_GamemodeManager
 		if (!slotData)
 			return;
 
+		// Apply the role default once per slot. Re-initializing into the same slot must leave any
+		// manually chosen color alone; changing slots re-derives it for the new role.
+		int slotId = slotData.GetSlotId();
+		int assignedSlotId;
+		if (m_mCSIColorTeamAssignedSlot.Find(playerId, assignedSlotId) && assignedSlotId == slotId)
+			return;
+
 		// CSI registers player data asynchronously after connection; retry until it is ready
 		CSI_PlayerDataManager playerDataManager = CSI_PlayerDataManager.GetInstance();
 		if (!playerDataManager || !playerDataManager.GetPlayerData(playerId))
@@ -24,6 +49,8 @@ modded class COA_GamemodeManager
 				GetGame().GetCallqueue().CallLater(AssignCSIColorTeam, 500, false, playerId, retryCount + 1);
 			return;
 		}
+
+		m_mCSIColorTeamAssignedSlot.Set(playerId, slotId);
 
 		CSI_EColorTeam colorTeam = DetermineCSIColorTeam(slotData);
 		csiBroadcastManager.UpdatePlayerColorTeam(playerId, colorTeam);

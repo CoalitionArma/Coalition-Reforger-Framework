@@ -1,0 +1,159 @@
+$grp GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_03_Campaign.et" {
+ {
+  coords 5022.229 148.28 5451.554
+  angles 0 45 0
+ }
+ {
+  coords 5022.224 148.147 5440.572
+  angles 0 135 0
+ }
+}
+$grp GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 3709.833 157.781 4220.978
+  {
+   GenericEntity {
+    ID "568ED76844F05A2F"
+    components {
+     SCR_ResourceComponent "{69FD66E99BD1CD74}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{69FD66E9992CCBE1}" {
+        m_sDebugName "store1"
+        m_eResourceRights ALL
+        m_eStorageType STORED
+        m_fResourceValueMax 6000
+       }
+      }
+      m_aEncapsulators {
+       SCR_ResourceEncapsulator "{69FD66E9917DCA88}" {
+        m_eResourceRights ALL
+        m_ContainerQueue SCR_ResourceEncapsulatorContainerQueue "{69FD66E995525D4A}" {
+         m_StoragePolicies {
+          SCR_ResourceConsumerStoragePolicy "{69FD66E98A51497A}" {
+           m_StorageQueue SCR_ResourceConsumerContainerStorageQueue "{69FD66E98F4E40BC}" {
+           }
+           m_eStorageType STORED
+          }
+         }
+        }
+       }
+      }
+      m_aConsumers {
+       SCR_ResourceConsumer "{69FD66E98CD0641F}" {
+        m_fResourceRange 12
+        m_ContainerQueue SCR_ResourceConsumerContainerQueue "{69FD66E81318BDC5}" {
+         m_StoragePolicies {
+          SCR_ResourceConsumerStoragePolicy "{69FD66E816D7E826}" {
+           m_StorageQueue SCR_ResourceConsumerContainerStorageQueue "{69FD66E80B26BCAC}" {
+           }
+           m_eStorageType STORED
+          }
+         }
+        }
+       }
+      }
+      m_aGenerators {
+       SCR_ResourceGenerator "{69FD66E8F76158A7}" {
+        m_eResourceRights ALL
+        m_eIdentifier DEFAULT_STORAGE
+        m_fStorageRange 15
+        m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{69FD66E8E037558B}" {
+         m_StoragePolicies {
+          SCR_ResourceStoragePolicyBase "{69FD66E8E4E19D7A}" {
+           m_StorageQueue SCR_ResourceGeneratorContainerStorageQueue "{69FD66E81D653129}" {
+           }
+          }
+         }
+        }
+        m_aActions {
+         SCR_ResourceGeneratorActionStore "{69FD66E80E9A21DB}" {
+         }
+        }
+       }
+      }
+      m_bEnableDebugVisualization 1
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+    "faction affiliation" "OPFOR"
+   }
+  }
+  coords 2455.007 153.094 6346.854
+  angles 0 -81 0
+  {
+   GenericEntity {
+    ID "568ED76844F05A2F"
+    components {
+     SCR_ResourceComponent "{69FD66E99BD1CD74}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{69FD66E9992CCBE1}" {
+        m_sDebugName "store1"
+        m_eResourceRights ALL
+        m_eStorageType STORED
+        m_fResourceValueMax 6000
+       }
+      }
+      m_aEncapsulators {
+       SCR_ResourceEncapsulator "{69FD66E9917DCA88}" {
+        m_eResourceRights ALL
+        m_ContainerQueue SCR_ResourceEncapsulatorContainerQueue "{69FD66E995525D4A}" {
+         m_StoragePolicies {
+          SCR_ResourceConsumerStoragePolicy "{69FD66E98A51497A}" {
+           m_StorageQueue SCR_ResourceConsumerContainerStorageQueue "{69FD66E98F4E40BC}" {
+           }
+           m_eStorageType STORED
+          }
+         }
+        }
+       }
+      }
+      m_aConsumers {
+       SCR_ResourceConsumer "{69FD66E98CD0641F}" {
+        m_fResourceRange 12
+        m_ContainerQueue SCR_ResourceConsumerContainerQueue "{69FD66E81318BDC5}" {
+         m_StoragePolicies {
+          SCR_ResourceConsumerStoragePolicy "{69FD66E816D7E826}" {
+           m_StorageQueue SCR_ResourceConsumerContainerStorageQueue "{69FD66E80B26BCAC}" {
+           }
+           m_eStorageType STORED
+          }
+         }
+        }
+       }
+      }
+      m_aGenerators {
+       SCR_ResourceGenerator "{69FD66E8F76158A7}" {
+        m_eResourceRights ALL
+        m_eIdentifier DEFAULT_STORAGE
+        m_fStorageRange 15
+        m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{69FD66E8E037558B}" {
+         m_StoragePolicies {
+          SCR_ResourceStoragePolicyBase "{69FD66E8E4E19D7A}" {
+           m_StorageQueue SCR_ResourceGeneratorContainerStorageQueue "{69FD66E81D653129}" {
+           }
+          }
+         }
+        }
+        m_aActions {
+         SCR_ResourceGeneratorActionStore "{69FD66E80E9A21DB}" {
+         }
+        }
+       }
+      }
+      m_bEnableDebugVisualization 1
+     }
+    }
+   }
+  }
+ }
+}
