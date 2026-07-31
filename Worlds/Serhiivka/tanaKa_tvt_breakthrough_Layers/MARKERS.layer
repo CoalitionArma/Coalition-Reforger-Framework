@@ -1,0 +1,14 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 5013.963 147.914 5446.236
+  m_sDescription "SUPPLIES"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+ }
+ {
+  coords 3707.465 157.781 4224.319
+  m_sQuadName "help-2"
+  m_sDescription "SUPPLY DROPOFF"
+ }
+}
