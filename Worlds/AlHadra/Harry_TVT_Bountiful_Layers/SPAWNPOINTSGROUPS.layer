@@ -1,7 +1,0 @@
-COA_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
- coords 6929.485 86.634 4190.767
- m_sCallsignOfGroupToSpawn "Recon"
- m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
-  m_sSpawnPointName "Recon"
- }
-}

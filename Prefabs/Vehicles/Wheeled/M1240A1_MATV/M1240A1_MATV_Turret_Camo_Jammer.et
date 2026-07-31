@@ -1,0 +1,49 @@
+Vehicle : "{62C3141D1B627DF2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
+   Filenames +{
+   }
+  }
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot Serachlight {
+     Prefab "{8600706F034223B2}Prefabs/Vehicles/Wheeled/M1240A1_MATV/VehParts/Lights/FLRoofLight_MATV_ES.et"
+    }
+   }
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{69FEE0AD817B1BA2}" {
+     SourceMaterial "MATV_Cabin"
+     AssignedMaterial "{B374AF2CEDF591CE}Assets/Vehicles/Wheeled/M1240A1_MATV/Data/MATV_Cabin_Camo.emat"
+    }
+    MaterialAssignClass "{69FEE0AD817B1863}" {
+     SourceMaterial "MATV_Hood"
+     AssignedMaterial "{6195111CF9B102E5}Assets/Vehicles/Wheeled/M1240A1_MATV/Data/MATV_Hood_Camo.emat"
+    }
+    MaterialAssignClass "{69FEE0AD817B181D}" {
+     SourceMaterial "MATV_RearModule"
+     AssignedMaterial "{3D90BA75A5ABC6B4}Assets/Vehicles/Wheeled/M1240A1_MATV/Data/MATV_RearModule_Camo.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{260286CF30CE971F}UI/Textures/EditorPreviews/Vehicles/Wheeled/MATV/MATV_Camo.edds"
+   }
+  }
+  VehicleLightPortalComponent "{65FF2E363FD4657D}" {
+   PortalInfoList {
+    AnimVehicleLightPortal "{65FF2E3760C28507}" {
+     PortalPositionInfo PointInfo "{65FF2E3760C28586}" {
+      Offset 1.0427 1.8076 -0.6311
+     }
+    }
+   }
+  }
+  SAL_DroneJammerComponent "{69FEE0AD7EEDDE4B}" {
+  }
+ }
+ coords 565 0.894 25
+}
