@@ -1,16 +1,10 @@
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
-  CRF_RushGamemodeManager "{69ECD7A7F88E95C7}" {
-   m_AttackingSide "OPFOR"
-   m_DefendingSide "BLUFOR"
-   m_iNumberOfZones 2
-   m_iMCOMsPerZone 1
-  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Rainy"
+     m_sWeatherPresetName "Clear"
      m_iStartingHour 13
      m_iStartingMinutes 0
     }
@@ -33,25 +27,21 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_aMissionDescriptors {
   COA_MissionDescriptor "{69ED0C6F7649ADC4}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "B TRP, 3-71 has been tasked with digging in and conducting a guard of the Brigades flank as they move to assault the town of Belleau. A Russian Motor Rifle Company from the 74th Guards Motor Rifle Brigade is attempting to break through the guard and setup Brigade heavy weapons on the flank of the US assault."\
+   m_sTextData "B CO, 2-22 INF have been tasked with assaulting key terrain located on the flank of the Brigades main assault. Defending it is a depleted motor rifle platoon, who's left with only it's dismounted assets after days of drone and artillery strikes."\
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets:"\
-   "MAT"\
-   "MMG"\
-   "FPVs"\
+   "Mortars"\
    "DJIs"\
    ""\
-   "OPFOR Composition: Motorized"\
+   "OPFOR Composition: Infantry"\
    "OPFOR Assets:"\
-   "BTRs"\
    "FPVs"\
    "DJIs"\
-   "Mortars"\
    ""\
    "Time: 1300"\
    ""\
-   "Weather: Rainy"
+   "Weather: Clear"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -59,13 +49,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{69ED0C6F7649AF5F}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "- Defend MCOM A"\
-   "	- Russian forces will seize the entry into the trenches of Belleau as a foothold into Belleau Woods propper. We cannot let them capture this."\
-   "- Defend MCOM B"\
-   "	- If Russian forces capture the souther trenches we must not allow them to push to the northern side of Belleau Woods, allowing them to reach the far side would enable their Brigade to deploy AGS and Kornet assets on the flank of our brigades movement."\
+   "- Capture the southern trenches."\
+   "- Capture the northern trenches"\
    ""\
    "INTENT"\
-   "The intent is to meet Russian forces in the southern forests and progressively use the trenches to conduct a fighting retreat until Russian forces are depleted."\
+   "The intent is to use your recon drones and tree coverage to set conditions for an assault on the dug in Russian positions. Expect casualties."\
    ""\
    "EXECUTION"\
    "Commanders Discretion."
@@ -77,17 +65,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{69ED0C6F7649A859}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "- Capture MCOM A"\
-   "	- Capturing the entry into the dug in positions of the Americans is crutial. If we suceed battalion will send us more reserves to assist in the main push."\
-   ""\
-   "- Capture MCOM B"\
-   "	- The overall objective is to drive back the American guard to expose their flank of their main axis of advance. Allowing Brigade to bring up AGS and Kornet units."\
+   "- Defend the southern trenches"\
+   "- Defend the northern trenches"\
    ""\
    "INTENT"\
-   "Utilize your drones for recon and calling in drones and artillery on BLUFOR positions. One platton is motorized via BTRs while the other utilizes urals as the companies TO&E is depleted from continous NATO CAS."\
+   "Utilize your drone team to hunt high value nato weapon systems that can hit you from beyond LOS. Be careful as if the Americans gain enough momemntum they can capture the Northern trench if your retreat isn't done well."\
    ""\
    "EXECUTION"\
-   "Commanders discretion. Highly advised to use your assets long range capabilities before sending your infantry in."\
+   "Commanders discretion."\
    ""
    m_aFactionKeys {
     "OPFOR"
@@ -112,11 +97,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{69ED0C6F7649AA6D}" {
    m_sTitle "Administration"
    m_sTextData "- All team leaders have shotguns for drones."\
-   "- If a drone operator does not die, reset their gear in the second phase so they may be rearmed."\
-   "- BTRs will respawn on MCOM As capture"\
-   "- Prioritize filling 1st platoon and the mortars and drone teams before second platoon on OPFOR"\
-   ""\
-   ""
+   "- All specialties will be rearmed on the capture of the southern trenches."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -125,14 +106,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 3
- m_iFactionTwoRatio 2
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  COA_SlottingGroup "{69EF11DF35DC0DD0}" {
-   m_sCallsign "TRP"
-   m_FlagType RECON
+  COA_SlottingGroup "{69FCACF4B7E0BB91}" {
+   m_sCallsign "COY"
+   m_FlagType INFANTRY
    m_aSlots {
     COMPANY_COMMANDER
     FIRST_SERGEANT
@@ -140,9 +121,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0FCE}" {
+  COA_SlottingGroup "{69FCACF4B7E0B7A9}" {
    m_sCallsign "1PLT"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
@@ -150,52 +131,63 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC08D7}" {
+  COA_SlottingGroup "{69FCACF4B7E0B548}" {
    m_sCallsign "1-1"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0997}" {
+  COA_SlottingGroup "{69FCACF4B7E0B210}" {
    m_sCallsign "1-2"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0A3E}" {
-   m_sCallsign "1-3 (Effects)"
-   m_FlagType SIGNAL
+  COA_SlottingGroup "{69FCACF4B7E0B302}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
    m_aSlots {
-    DRONE_OPERATOR
-    DRONE_OPERATOR
-    DRONE_OPERATOR
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0B30}" {
+  COA_SlottingGroup "{69FCACF4B7E0B01F}" {
    m_sCallsign "2PLT"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
@@ -203,75 +195,89 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0407}" {
+  COA_SlottingGroup "{69FCACF4B7E0B14B}" {
    m_sCallsign "2-1"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC0515}" {
+  COA_SlottingGroup "{69FCACF4B7E0B1B0}" {
    m_sCallsign "2-2"
-   m_FlagType RECON
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC07A9}" {
-   m_sCallsign "2-3 (Effects)"
-   m_FlagType SIGNAL
+  COA_SlottingGroup "{69FCACF4B7E0AE95}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
    m_aSlots {
-    DRONE_OPERATOR
-    DRONE_OPERATOR
-    DRONE_OPERATOR
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{69FCACF4B7E0AFF9}" {
+   m_sCallsign "MORTAR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    FORWARD_OBSERVER
+    FORWARD_OBSERVER
+    INDIRECT_GUNNER
+    INDIRECT_GUNNER
+    INDIRECT_GUNNER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
  }
  m_OpforSlots {
-  COA_SlottingGroup "{69EF11DF35DC03BF}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC1C38}" {
+  COA_SlottingGroup "{69FCACF4B7E0AD6E}" {
    m_sCallsign "1PLT"
    m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
-    FORWARD_OBSERVER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC1EC5}" {
+  COA_SlottingGroup "{69FCACF4B7E0ADA2}" {
    m_sCallsign "1-1"
-   m_FlagType MOTORIZED_INFANTRY
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
@@ -284,19 +290,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC1FAB}" {
-   m_sCallsign "BTR 1"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC18AF}" {
+  COA_SlottingGroup "{69FCACF4B7E12263}" {
    m_sCallsign "1-2"
-   m_FlagType MOTORIZED_INFANTRY
+   m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
@@ -309,54 +305,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC199A}" {
-   m_sCallsign "BTR 2"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC1A9D}" {
+  COA_SlottingGroup "{69FCACF4B7E123BD}" {
    m_sCallsign "1-3"
-   m_FlagType MOTORIZED_INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    ASSISTANT_RIFLEMAN_ANTITANK
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC1B7E}" {
-   m_sCallsign "BTR 3"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC144B}" {
-   m_sCallsign "2PLT"
-   m_FlagType INFANTRY
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-    FORWARD_OBSERVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC155D}" {
-   m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -366,13 +316,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC1631}" {
-   m_sCallsign "2-2"
+  COA_SlottingGroup "{69FCACF4B7E1211F}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -382,46 +331,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69EF11DF35DC10E0}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    ASSISTANT_RIFLEMAN_ANTITANK
-    GRENADIER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC1188}" {
-   m_sCallsign "Mortar"
-   m_FlagType MORTAR
+  COA_SlottingGroup "{69FCACF4B7E1DE0D}" {
+   m_sCallsign "Drone Team"
+   m_FlagType SIGNAL
    m_aSlots {
     INDIRECT_LEAD
-    INDIRECT_GUNNER
-    INDIRECT_LOADER
-    INDIRECT_GUNNER
-    INDIRECT_LOADER
-    INDIRECT_GUNNER
-    INDIRECT_LOADER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69EF11DF35DC124F}" {
-   m_sCallsign "Drone Team"
-   m_FlagType MORTAR
-   m_aSlots {
     DRONE_OPERATOR
     DRONE_OPERATOR
     DRONE_OPERATOR
@@ -437,35 +355,35 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{31CA3E4BA00471FF}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFUSArmyMCModern_Grit.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{686D27AFFEF0454D}Configs/Gearscripts/Custom/Salami/Grit/COA_GS_TFMSV_Grit.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
-  m_bEnableShareableMarkers 0
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
-  m_bEnableShareableMarkers 0
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 0
  }
  {
   SCR_FactionManager "69ECE4DF9D5FCBD0" {
@@ -535,13 +453,303 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  }
 }
 $grp BaseGameTriggerEntity {
- mcom_a_trigger {
-  coords 5467.578 176.708 5006.079
+ OBJ1 {
+  coords 5629.248 162.303 5116.028
+  angles 0 37.315 0
+  userScript "	// code here"\
+  "	"\
+  "	int m_iBlufor = 0;"\
+  "	int m_iOpfor = 0;"\
+  "	"\
+  "	void CheckWin()"\
+  "	{"\
+  "		QueryEntitiesInside();"\
+  "		array<IEntity> entities = {};"\
+  "		GetEntitiesInside(entities);"\
+  "		m_iBlufor = 0;"\
+  "		m_iOpfor = 0;"\
+  "		foreach (IEntity entity: entities)"\
+  "		{"\
+  "			if (!entity)"\
+  "				continue;"\
+  "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			SCR_DamageManagerComponent damageMan = character.GetDamageManager();"\
+  "			if (!damageMan)"\
+  "				continue;	"\
+  "			"\
+  "			if (damageMan.GetState() == EDamageState.DESTROYED)"\
+  "				continue;"\
+  "			"\
+  "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+  "			if (!factComp)"\
+  "				continue;"\
+  "				"\
+  "			Faction faction = factComp.GetAffiliatedFaction();"\
+  "			if (!faction)"\
+  "				continue;"\
+  "			"\
+  "			if (faction.GetFactionKey() == \"BLUFOR\")"\
+  "				m_iBlufor++;"\
+  "			else"\
+  "				m_iOpfor++;"\
+  "		}"\
+  "		"\
+  "		if (m_iBlufor == 0)"\
+  "			return;"\
+  "		"\
+  "		if (m_iBlufor > 0 && m_iOpfor == 0)"\
+  "			ObjComplete();"\
+  "		"\
+  "		int totalPlayers = m_iBlufor + m_iOpfor;"\
+  "		if ((float)m_iBlufor/totalPlayers > 0.7)"\
+  "			ObjComplete();"\
+  "	}"\
+  "	"\
+  "	void ObjComplete()"\
+  "	{"\
+  "		COA_RplBroadcastManager broadcastMan = COA_RplBroadcastManager.GetInstance();"\
+  "		if (!broadcastMan)"\
+  "			return;"\
+  "		broadcastMan.PopUpNotification(10, \"Southern Trenches have been captured by American forces!\", \"Prepare for the assault on the northern trench\", \"{E3E34E1B0BC94432}Sounds/UI/Samples/Menu/UI_Task_Succeded.wav\");"\
+  "		COA_RespawnManager respawnMan = COA_RespawnManager.GetInstance();"\
+  "		if (!respawnMan)"\
+  "			return;"\
+  "		respawnMan.RespawnAllSides();"\
+  "		delete this;"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 93.5
+  BoxMins 75 50 250
+  PeriodicQueries 1
+  UpdatePeriod 5
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!Replication.IsServer())"\
+  "		{"\
+  "			delete this;"\
+  "			return;"\
+  "		}"\
+  "		#endif"\
+  "		CheckWin();"\
+  "	"
  }
- mcom_b_trigger {
-  coords 5656.581 165.452 5754.474
+ OBJ2 {
+  coords 5490.722 176.841 5467.031
+  angles 0 37.315 0
+  userScript "	// code here"\
+  "	IEntity m_OBJ1;	"\
+  "	bool m_bOBJ1Found = false;"\
+  "	int m_iBlufor = 0;"\
+  "	int m_iOpfor = 0;"\
+  "	"\
+  "	void CheckWin()"\
+  "	{"\
+  "		QueryEntitiesInside();"\
+  "		array<IEntity> entities = {};"\
+  "		GetEntitiesInside(entities);"\
+  "		m_iBlufor = 0;"\
+  "		m_iOpfor = 0;"\
+  "		foreach (IEntity entity: entities)"\
+  "		{"\
+  "			if (!entity)"\
+  "				continue;"\
+  "			"\
+  "			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!character)"\
+  "				continue;"\
+  "			"\
+  "			SCR_DamageManagerComponent damageMan = character.GetDamageManager();"\
+  "			if (!damageMan)"\
+  "				continue;	"\
+  "			"\
+  "			if (damageMan.GetState() == EDamageState.DESTROYED)"\
+  "				continue;"\
+  "			"\
+  "			FactionAffiliationComponent factComp = FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent));"\
+  "			if (!factComp)"\
+  "				continue;"\
+  "				"\
+  "			Faction faction = factComp.GetAffiliatedFaction();"\
+  "			if (!faction)"\
+  "				continue;"\
+  "			"\
+  "			if (faction.GetFactionKey() == \"BLUFOR\")"\
+  "				m_iBlufor++;"\
+  "			else"\
+  "				m_iOpfor++;"\
+  "		}"\
+  "		"\
+  "		if (m_iBlufor == 0)"\
+  "			return;"\
+  "		"\
+  "		if (m_iBlufor > 0 && m_iOpfor == 0)"\
+  "			ObjComplete();"\
+  "		"\
+  "		int totalPlayers = m_iBlufor + m_iOpfor;"\
+  "		if ((float)m_iBlufor/totalPlayers > 0.7)"\
+  "			ObjComplete();"\
+  "	}"\
+  "	"\
+  "	void ObjComplete()"\
+  "	{"\
+  "		COA_RplBroadcastManager broadcastMan = COA_RplBroadcastManager.GetInstance();"\
+  "		if (!broadcastMan)"\
+  "			return;"\
+  "		broadcastMan.PopUpNotification(10, \"Northern Trenches have been captured by American forces!\", \"BLUFOR Victory\", \"{E3E34E1B0BC94432}Sounds/UI/Samples/Menu/UI_Task_Succeded.wav\");"\
+  "		delete this;"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 93.5
+  BoxMins 75 50 250
+  PeriodicQueries 1
+  UpdatePeriod 5
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!Replication.IsServer())"\
+  "		{"\
+  "			delete this;"\
+  "			return;"\
+  "		}"\
+  "		#endif"\
+  "		if (!m_bOBJ1Found)"\
+  "		{"\
+  "			m_OBJ1 = GetGame().GetWorld().FindEntityByName(\"OBJ1\");"\
+  "			if (!m_OBJ1)"\
+  "			{"\
+  "				m_bOBJ1Found = true;"\
+  "				return;"\
+  "			}"\
+  "			else"\
+  "				return;"\
+  "		}"\
+  "		CheckWin();"\
+  "	"
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+ coords 5347.854 169.122 4728.187
+ Points {
+  ShapePoint "{69FCACB519B8038A}" {
+   Position -873.943 -0 -462.815
+  }
+  ShapePoint "{69FCACB5188F028C}" {
+   Position -1072.089 0 68.062
+  }
+  ShapePoint "{69FCACB517809635}" {
+   Position -972.581 -0 509.151
+  }
+  ShapePoint "{69FCACB51601A8C0}" {
+   Position -712.938 0 810.075
+  }
+  ShapePoint "{69FCACB515E47F74}" {
+   Position -60.624 0 1329.228
+  }
+  ShapePoint "{69FCACB514651628}" {
+   Position 450.932 0 1332.66
+  }
+  ShapePoint "{69FCACB5131441CB}" {
+   Position 766.689 0 866.293
+  }
+  ShapePoint "{69FCACB51299F23F}" {
+   Position 1020.665 0 419.906
+  }
+  ShapePoint "{69FCACB510F5942C}" {
+   Position 1285.567 0 -119.107
+  }
+  ShapePoint "{69FCACB50F609333}" {
+   Position 1338.143 0 -370.458
+  }
+  ShapePoint "{69FCACB50E3AC3E4}" {
+   Position 1103.83 -0 -849.589
+  }
+  ShapePoint "{69FCACB50DEBA67C}" {
+   Position 576.942 0 -1018.383
+  }
  }
 }
 GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
  coords 6115.796 94.327 8789.11
+}
+$grp PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ {
+  coords 6252.659 141.934 3947.694
+  Points {
+   ShapePoint "{69FCACB55EB2F190}" {
+    Position 44.978 0 175.781
+   }
+   ShapePoint "{69FCACB55DDB14E3}" {
+    Position 122.063 0 9.828
+   }
+   ShapePoint "{69FCACB55C9DE544}" {
+    Position -127.733 0 -114.549
+   }
+   ShapePoint "{69FCACB55B778348}" {
+    Position -154.896 0 21.997
+   }
+  }
+ }
+ {
+  coords 4426.236 185.754 4765.856
+  Points {
+   ShapePoint "{69FCACB4365F65FF}" {
+    Position -69.926 0 -110.176
+   }
+   ShapePoint "{69FCACB4368061A8}" {
+    Position -109.493 0 56.151
+   }
+   ShapePoint "{69FCACB4353FD6D3}" {
+    Position 33.05 0 67.839
+   }
+   ShapePoint "{69FCACB435B49E63}" {
+    Position 7.948 0 -142.678
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDeploy/OPFOR_ForwardDeployZone.et" {
+ coords 5807.296 162.015 5057.543
+ Points {
+  ShapePoint "{69FCACB574AB20F6}" {
+   Position -547.454 0 -68.741
+  }
+  ShapePoint "{69FCACB573057979}" {
+   Position -669.965 0 108.179
+  }
+  ShapePoint "{69FCACB572D50EF0}" {
+   Position -522.965 -0 473.575
+  }
+  ShapePoint "{69FCACB5714A64B5}" {
+   Position -303.252 0 781.926
+  }
+  ShapePoint "{69FCACB5713F36D6}" {
+   Position -91.199 0 810.755
+  }
+  ShapePoint "{69FCACB571AFF53F}" {
+   Position 101.032 0 613.955
+  }
+  ShapePoint "{69FCACB56E6C47D8}" {
+   Position 175.472 0 478.316
+  }
+  ShapePoint "{69FCACB56EF59ECF}" {
+   Position 133.43 0 262.34
+  }
+  ShapePoint "{69FCACB56D62FD73}" {
+   Position -23.844 0 38.534
+  }
+  ShapePoint "{69FCACB56DD5ABA9}" {
+   Position -87.775 0 -61.025
+  }
+  ShapePoint "{69FCACB56C49F67C}" {
+   Position -271.461 0 -144.167
+  }
+  ShapePoint "{69FCACB56CCC7E79}" {
+   Position -431.842 0 -155.038
+  }
+ }
 }
