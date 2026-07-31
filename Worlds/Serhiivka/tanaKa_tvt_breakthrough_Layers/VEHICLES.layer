@@ -1,0 +1,93 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 2324.912 153.094 6415
+  angles 0 -169.302 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2317.309 153.094 6416.923
+  angles 0 -169.302 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4605.946 149.264 5358.983
+  angles 0 -43.302 0
+  m_rVehicle "{0BBC303A84D87434}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBMR/VBMR_VTT_CE.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4622.729 150.996 5395.916
+  angles 1.828 47.101 1.966
+  m_rVehicle "{C31D3409F78E1EFC}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Cargo.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4625.678 150.846 5392.064
+  angles 1.219 47.087 1.311
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 4629.493 150.779 5389.185
+  angles 1.219 47.087 1.311
+  m_rVehicle "{A5019E4548F81453}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/CCE/GBC180_CCE_MK2_Transport.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2304.286 153.094 6419.824
+  angles 0 -169.302 0
+  m_rVehicle "{2B15F98903994DA3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_camo1.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2309.63 153.094 6418.98
+  angles 0 -169.302 0
+  m_rVehicle "{2B15F98903994DA3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_camo1.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2332.716 153.094 6361.617
+  angles 0 -165.58 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2334.94 153.094 6370.187
+  angles 0 -165.58 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2337.644 153.094 6379.39
+  angles 0 -165.58 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2340.329 153.094 6390.51
+  angles 0 -165.58 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 2341.286 153.094 6401.319
+  angles 0 -165.58 0
+  m_rVehicle "{1CA553733A50A2AD}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_APC.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}
