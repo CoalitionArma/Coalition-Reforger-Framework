@@ -2,22 +2,22 @@ $grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/Objectiv
  {
   coords 6232.146 189.812 6628.98
   angles 0 0 0
-  m_MarkerColor 1 0 0 1
-  m_sQuadName "flag"
-  m_sDescription "OPFOR MOB"
- }
- {
-  coords 3706.684 157.782 4226.134
-  angles 0 0 0
   m_MarkerColor 0 0.125 0.502 1
   m_sQuadName "flag"
   m_sDescription "BLUFOR MOB"
  }
  {
-  coords 4794.881 151.545 4985.583
+  coords 3706.684 157.782 4226.134
   angles 0 0 0
   m_MarkerColor 1 0 0 1
   m_sQuadName "flag"
-  m_sDescription "OPFOR FOB"
+  m_sDescription "OPFOR MOB"
+ }
+ {
+  coords 4794.881 151.545 4985.583
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "flag"
+  m_sDescription "BLUFOR FOB"
  }
 }

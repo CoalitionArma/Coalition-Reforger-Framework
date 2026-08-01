@@ -30,13 +30,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{69FEE71EC5FA5514}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "OPFOR has had air superiority for far too long. BLUFOR has been tasked with destroy AA trucks to get their own air support into the air"\
+   m_sTextData "BLUFOR has had air superiority for far too long. OPFOR has been tasked with destroy AA trucks to get their own air support into the air."\
    ""\
-   "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: 2x LAV, 1x MMG and 1x MAT"\
+   "OPFOR Composition: Mechanized Infantry Platoon"\
+   "OPFOR Assets: 2x T72, 1x MMG and 1x MAT"\
    ""\
-   "OPFOR Composition: Unknown"\
-   "OPFOR Assets: Unknown"\
+   "BLUFOR Composition: Unknown"\
+   "BLUFOR Assets: Unknown"\
    ""\
    "Time: 12:00 pm"\
    ""\
@@ -48,11 +48,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{69FEE71EC5FA296B}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Main Objective: Destroy 4x ZU-23 Trucks"\
-   "Side Objective: Capture and secure OPFOR FOB (Reward: MRSP)"\
+   "Defend your ZU-23 Trucks' postions, The enemy may attempt to capture our FOB and destory our M777 as well."\
    ""\
    "INTENT"\
-   "The trucks' postions are marked in red, tackle each one your own way. The OPFOR FOB is an strongpoint for the area taking it will be a challenge."\
+   "Your FOB has Sight lines for every ZU-23 trucks, you could set up in the FOB and defend each truck from afar or get up close and personal"\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -64,10 +63,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{69FEE71EC5FA2997}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Defend your ZU-23 Trucks' postions, The enmey may attempt to capture our FOB as well."\
+   "Main Objective: Destroy 3x ZU-23 Trucks and M777 emplacement"\
+   "Side Objective: Capture and secure OPFOR FOB (Reward: MRSP)"\
    ""\
    "INTENT"\
-   "Your FOB has Sight lines for every ZU-23 truck except one, you could set up in the FOB and defend each truck from afar or get up close and personal"\
+   "The trucks' postions are marked in red, tackle each one your own way. The BLUFOR FOB is an strongpoint for the area taking it will be a challenge."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -107,7 +107,42 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BluforSlots {
-  COA_SlottingGroup "{69FEE71D4A68007B}" {
+  COA_SlottingGroup "{6A03316D2225C649}" {
+   m_sCallsign "HAT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    HEAVY_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A03316D2225C73D}" {
+   m_sCallsign "MMG"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A03316D2225D852}" {
+   m_sCallsign "Zeus"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    ZEUS
+    ZEUS
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OpforSlots {
+  COA_SlottingGroup "{6A03316D2225D91A}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -117,41 +152,39 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FEE71D4A6801D6}" {
+  COA_SlottingGroup "{6A03316D2225D984}" {
    m_sCallsign "1-1"
-   m_FlagType INFANTRY
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FEE71D4A68020F}" {
+  COA_SlottingGroup "{6A03316D2225DA21}" {
    m_sCallsign "1-2"
-   m_FlagType INFANTRY
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FEE71D4A6802B5}" {
+  COA_SlottingGroup "{6A03316D2225DB53}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -160,81 +193,43 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69FEE71D4A6803DC}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69FEE71D4A68044D}" {
-   m_sCallsign "MAT"
-   m_FlagType ANTI_ARMOR
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69FEE71D4A6804FE}" {
-   m_sCallsign "IFV 1"
-   m_FlagType MOTORIZED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69FEE71D4A680569}" {
-   m_sCallsign "IFV 2"
-   m_FlagType MOTORIZED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
- }
- m_OpforSlots {
-  COA_SlottingGroup "{69FEE71D4A6805B4}" {
-   m_sCallsign "Sniper"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SNIPER
-    SPOTTER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{69FEE71D4A6806DA}" {
-   m_sCallsign "MMG"
+  COA_SlottingGroup "{6A03316D2225DBC6}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A03316D2225DC70}" {
+   m_sCallsign "Tank 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A03316D2225DC91}" {
+   m_sCallsign "Tank 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
@@ -246,7 +241,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{88536FB5E7857958}Configs/Gearscripts/Standard/Modern/COA_GS_ModernBund_Fleck.conf"
+  m_rGearScript "{A9355A8703C012EA}Configs/Gearscripts/Standard/Modern/COA_GS_French00s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0

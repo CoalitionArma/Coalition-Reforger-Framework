@@ -12,13 +12,13 @@ $grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/Objecti
   m_sDescription "ZU-23 Truck Location"
  }
  {
-  coords 4525.515 140.882 5134.751
+  coords 4686.666 162.651 6170.162
   m_MarkerColor 1 0 0 1
   m_fWorldSize 40
-  m_sDescription "ZU-23 Truck Location"
+  m_sDescription "M777 Location"
  }
  {
-  coords 6004.313 161.447 4653.866
+  coords 5105.172 158.237 4352.954
   m_MarkerColor 1 0 0 1
   m_fWorldSize 40
   m_sDescription "ZU-23 Truck Location"

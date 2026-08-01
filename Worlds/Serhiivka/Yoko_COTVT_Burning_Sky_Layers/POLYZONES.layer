@@ -1,40 +1,43 @@
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart/BLUFOR_SafestartBoundry.et" {
- coords 3695.505 157.781 4253.659
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ coords 4785.627 158.245 4970.679
  Points {
-  ShapePoint "{69FE19E2BD80C1BC}" {
-   Position 100.309 0 90.77
+  ShapePoint "{6A033169A8F8C564}" {
+   Position -81.971 0 5.725
   }
-  ShapePoint "{69FE19E2BC8B86F7}" {
-   Position 109.542 0 -71.878
+  ShapePoint "{6A033169AB0112BF}" {
+   Position -0.909 0 -75.32
   }
-  ShapePoint "{69FE19E2BF9BDA1F}" {
-   Position -44.111 0 -76.258
+  ShapePoint "{6A033169AA339DE6}" {
+   Position 62.377 0 -70.6
   }
-  ShapePoint "{69FE19E2BF7D9039}" {
-   Position -39.833 0 40.667
+  ShapePoint "{6A033169ACBFB00A}" {
+   Position 100.109 0 1.398
+  }
+  ShapePoint "{6A033169AF17A29B}" {
+   Position 76.524 0 58.495
+  }
+  ShapePoint "{6A033169AEFADBC3}" {
+   Position 30.836 0 102.647
+  }
+  ShapePoint "{6A033169517B3221}" {
+   Position -32.256 0 76.969
   }
  }
 }
-PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDeploy/OPFOR_ForwardDeployZone.et" {
- coords 4795.93 151.563 4992.659
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsMissionMaking/PolyZone/Safestart/OPFOR_SafestartBoundry.et" {
+ coords 3711.133 157.781 4227.767
  Points {
-  ShapePoint "{69FEE71C75AF3132}" {
-   Position 81.073 0 -4.463
+  ShapePoint "{6A033169BD44A54A}" {
+   Position 93.541 0 56.279
   }
-  ShapePoint "{69FEE71C74BBE8D3}" {
-   Position 10.331 0 83.963
+  ShapePoint "{6A033169BFEB6CBD}" {
+   Position -67.909 0 40.073
   }
-  ShapePoint "{69FEE71C768F4CAE}" {
-   Position -70.156 0 11.616
+  ShapePoint "{6A033169BED19F6A}" {
+   Position -65.985 0 -52.479
   }
-  ShapePoint "{69FEE71C7947F1BD}" {
-   Position -69.588 0 -56.274
-  }
-  ShapePoint "{69FEE71C787208FC}" {
-   Position 10.649 0 -97.206
-  }
-  ShapePoint "{69FEE71C7A557941}" {
-   Position 60.541 0 -73.875
+  ShapePoint "{6A033169A1B4AFC0}" {
+   Position 99.224 0 -49.671
   }
  }
 }
