@@ -1,6 +1,16 @@
 COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
+  COA_GamemodeManager "{652A3313EC014E7F}" {
+   components {
+    CRF_CommunityTagManager "{6A0237F6F1AD6791}" {
+    }
+    CRF_SlotLottery "{6A0237F60FB147EB}" {
+    }
+    CRF_VAAR_GamemodeComponent "{6A0237F6D17B33BF}" {
+    }
+   }
+  }
   CRF_CommunityTagManager "{69F92C2432B1CFCF}" {
   }
   CRF_LoggingManager "{69F92C24394CCB16}" {
