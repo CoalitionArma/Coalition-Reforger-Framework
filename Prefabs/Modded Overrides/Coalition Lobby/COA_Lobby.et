@@ -5,19 +5,17 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    components {
     CRF_CommunityTagManager "{6A0237F6F1AD6791}" {
     }
+    CRF_LoggingManager "{6A023B23B15185B8}" {
+    }
     CRF_SlotLottery "{6A0237F60FB147EB}" {
     }
     CRF_VAAR_GamemodeComponent "{6A0237F6D17B33BF}" {
     }
+    CRF_VehicleGearscriptManager "{6A023B23A6D941D1}" {
+    }
    }
   }
-  CRF_CommunityTagManager "{69F92C2432B1CFCF}" {
-  }
-  CRF_LoggingManager "{69F92C24394CCB16}" {
-  }
   CRF_MissionValidatorManager "{69F92C243B972BE2}" {
-  }
-  CRF_VehicleGearscriptManager "{69F92C24F37D31F8}" {
   }
  }
  m_eGME_GlobalAISkill VETERAN
