@@ -720,7 +720,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{CE0DFE68B73F6F89}Configs/Gearscripts/Custom/Yoko/COA_GS_PLA_Modern.conf"
+  m_rGearScript "{DF772B41EA36E3D7}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1

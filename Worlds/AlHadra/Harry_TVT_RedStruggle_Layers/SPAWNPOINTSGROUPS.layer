@@ -1,4 +1,0 @@
-COA_GroupSpawnPoint : "{927804A9DA9FF75B}PrefabsMissionMaking/Systems/SpawnPoints/Groups/INDFOR_InitalGroupSpawn.et" {
- coords 5531.958 61.071 2716.822
- m_sCallsignOfGroupToSpawn "Mortars"
-}
