@@ -1,0 +1,22 @@
+{
+  "_comment": [
+    "Suppressions for Tools/Validation/validate_resources.py.",
+    "Add an entry only when the finding is genuinely intentional, and say why.",
+    "",
+    "unattached-component: SCR_BaseGameModeComponent classes no prefab in CRF or",
+    "COALITION-Lobby attaches. The six below are special/alternate gamemodes that",
+    "predate this check - they were already unattached when it was written and",
+    "have NOT been verified as intentional. If a mission prefab outside these two",
+    "repositories attaches them, they belong here permanently. If nothing does,",
+    "they are dead the same way CRF_ServerStatsManager was and should be fixed",
+    "rather than suppressed."
+  ],
+  "unattached-component": [
+    "CRF_GunGame",
+    "CRF_InsurgencyGamemodeManager",
+    "CRF_PropHuntGamemode",
+    "CRF_RaidGamemodeComponent",
+    "CRF_SpawnCountDown",
+    "CRF_SupplyExtractionGamemodeManager"
+  ]
+}

@@ -1,0 +1,41 @@
+name: Validate
+
+# Static integrity checks. No game install, no Workbench - these run on a hosted
+# runner in seconds and gate every pull request.
+#
+# COALITION-Lobby is checked out alongside because the two addons reference each
+# other's resources by GUID. Scanning CRF alone reports every COA_* resource that
+# lives in the Lobby as dangling (~70 false positives), so the pair must be
+# validated together.
+
+on:
+  pull_request:
+  push:
+    branches: [main, release]
+  workflow_dispatch:
+
+jobs:
+  resources:
+    name: Resource integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout framework
+        uses: actions/checkout@v4
+        with:
+          path: Coalition-Reforger-Framework
+
+      - name: Checkout lobby
+        uses: actions/checkout@v4
+        with:
+          repository: CoalitionArma/COALITION-Lobby
+          ref: release
+          path: COALITION-Lobby
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate resources
+        working-directory: Coalition-Reforger-Framework
+        run: python Tools/Validation/validate_resources.py --project ../COALITION-Lobby
