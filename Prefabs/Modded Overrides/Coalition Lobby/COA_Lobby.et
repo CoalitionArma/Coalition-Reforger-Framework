@@ -13,8 +13,6 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
    }
   }
-  CRF_CommunityTagManager "{69F92C2432B1CFCF}" {
-  }
   CRF_LoggingManager "{69F92C24394CCB16}" {
   }
   CRF_MissionValidatorManager "{69F92C243B972BE2}" {
