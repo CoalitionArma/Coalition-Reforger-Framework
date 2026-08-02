@@ -1,0 +1,72 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 3671.168 157.781 4217.676
+  m_rVehicle "{E19FA358977E1C38}Prefabs/Vehicles/Tracked/T72B3.et"
+ }
+ {
+  coords 3676.113 157.781 4217.676
+  m_rVehicle "{E19FA358977E1C38}Prefabs/Vehicles/Tracked/T72B3.et"
+ }
+ {
+  coords 3676.113 157.781 4207.743
+  m_rVehicle "{E19FA358977E1C38}Prefabs/Vehicles/Tracked/T72B3.et"
+ }
+ {
+  coords 3670.968 157.781 4207.743
+  m_rVehicle "{E19FA358977E1C38}Prefabs/Vehicles/Tracked/T72B3.et"
+ }
+ {
+  coords 3670.968 157.781 4247.087
+  angles 0 83.771 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+ }
+ {
+  coords 3681.417 157.781 4248.228
+  angles 0 83.771 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+ }
+ {
+  coords 3690.7 157.781 4249.241
+  angles 0 83.771 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+ }
+ {
+  coords 3701.099 157.781 4250.376
+  angles 0 83.771 0
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+ }
+ {
+  coords 3719.282 157.781 4233.207
+  angles 0 6.96 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 3714.8 157.781 4233.754
+  angles 0 6.96 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 3710.579 157.781 4234.269
+  angles 0 6.96 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 3706.936 157.781 4234.714
+  angles 0 6.96 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 5429.071 147.831 5085.943
+  m_rVehicle "{5C006EFD3C82EADA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ZU23.et"
+ }
+ {
+  coords 5181.794 155.713 5669.64
+  m_rVehicle "{5C006EFD3C82EADA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ZU23.et"
+ }
+ {
+  coords 5108.039 157.945 4337.583
+  m_rVehicle "{5C006EFD3C82EADA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ZU23.et"
+ }
+}

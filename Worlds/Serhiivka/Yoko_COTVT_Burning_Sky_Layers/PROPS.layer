@@ -1,0 +1,14 @@
+$grp Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ {
+  coords 4696.972 161.725 6169.627
+  angles 0 -174.128 0
+ }
+ {
+  coords 4687.167 161.855 6171.299
+  angles 0 -162.153 0
+ }
+ {
+  coords 4678.745 161.991 6173.083
+  angles 0 -155.54 0
+ }
+}
