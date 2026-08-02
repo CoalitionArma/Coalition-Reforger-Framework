@@ -1,12 +1,13 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 2403.384 26.266 4462.292
 }
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
   CRF_AttritionGamemodeComponent "{69DCEEE0D5885261}" {
-   m_fTeamAVictoryThreshold 90
-   m_fTeamBVictoryThreshold 90
+   m_fTeamAVictoryThreshold 80
+   m_fTeamBVictoryThreshold 80
    m_bEndMissionOnVictory 0
+   m_eForceCompositionMode DYNAMIC
    m_bCountVehicles 0
   }
   CRF_FrontlineGamemodeManager "{69DB16764976ADF6}" {
@@ -20,7 +21,6 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     "charlie"
    }
    m_iMinNumberOfPlayersNeeded 4
-   m_bUseRespawns 0
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -54,7 +54,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    "BLUFOR Assets: Battle bus, gun trucks"\
    ""\
    "OPFOR Composition: Moto inf"\
-   "OPFOR Assets: Suicide team, gun trucks, embedded mmg, demo"\
+   "OPFOR Assets: Suicide team, gun trucks, embedded mmg"\
    ""\
    "Time: 60 min"\
    "Weather: Day Clear"
@@ -65,7 +65,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{69DCFAADF0A2EA61}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Fight for the frontline objectives while preserving your force. There will be no respawn waves. Refer to the win conditions page for winner scoring."\
+   "Fight for the frontline objectives while preserving your force. Refer to the win conditions page for winner scoring. Vehicles will not respawn."\
    ""\
    "INTENT"\
    "The two forces are asymetrically arrayed. Weigh the benefits, and challenges of having smaller teams, with a larger, slower battle bus. One side isn't inherently \"stronger\", it will come down to use. "\
@@ -80,7 +80,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{69DCFAADF0A2E97F}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Fight for the frontline objectives while preserving your force. There will be no respawn waves. Refer to the win conditions page for winner scoring."\
+   "Fight for the frontline objectives while preserving your force. Refer to the win conditions page for winner scoring. Vehicles will not respawn."\
    ""\
    "INTENT"\
    "The two forces are asymetrically arrayed. Weigh the benefits, and challenges of having larger teams, with more short range explosives."\
@@ -111,9 +111,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_sTitle "Win Conditions"
    m_sTextData "If one team captures and holds all three frontline objectives, they will win. "\
    ""\
-   "If one team completes attrition by reducing the enemy force by 90% they will win."\
+   "If one team completes attrition by reducing the enemy force by 80% they will win. Attrition will reset whenever a respawn wave occurs from an objective changing control."\
    ""\
-   "If neither are completed within the time limit, the winner will be scored on attrition percent with the B zone counting as 20% to whoever controls it."
+   "If neither are completed within the time limit, the winner will be scored on attrition percent with the B zone counting as 15% to whoever controls it."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -121,13 +121,21 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    }
    m_bShowForAnyFaction 1
   }
+  COA_MissionDescriptor "{69FB3457781E7DEA}" {
+   m_sTitle "VBIED Truck"
+   m_sTextData "The truck filled with barrels is the new VBIED. It needs an external explosive method to set it off. "
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
  }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
- m_BluforSlots {
-  COA_SlottingGroup "{69DD1221116BBF42}" {
+ m_BLUFORSlots {
+  COA_SlottingGroup "{69FB3455DAFD6B38}" {
    m_sCallsign "Big Boss"
    m_FlagType SIGNAL
    m_aSlots {
@@ -137,7 +145,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BBDBA}" {
+  COA_SlottingGroup "{69FB3455DAFD6F08}" {
    m_sCallsign "1st Admiral"
    m_FlagType SIGNAL
    m_aSlots {
@@ -147,7 +155,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BBC9E}" {
+  COA_SlottingGroup "{69FB3455DAFD6E2E}" {
    m_sCallsign "Crew 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,7 +169,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB3AE}" {
+  COA_SlottingGroup "{69FB3455DAFD6C54}" {
    m_sCallsign "Crew 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -175,7 +183,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB29A}" {
+  COA_SlottingGroup "{69FB3455DAFD6375}" {
    m_sCallsign "Crew 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -189,7 +197,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB1F7}" {
+  COA_SlottingGroup "{69FB3455DAFD6202}" {
    m_sCallsign "Crew 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -203,7 +211,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB0E9}" {
+  COA_SlottingGroup "{69FB3455DAFD612A}" {
    m_sCallsign "2nd Admiral"
    m_FlagType SIGNAL
    m_aSlots {
@@ -213,7 +221,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB76B}" {
+  COA_SlottingGroup "{69FB3455DAFD67C5}" {
    m_sCallsign "Crew 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -227,7 +235,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB605}" {
+  COA_SlottingGroup "{69FB3455DAFD66DF}" {
    m_sCallsign "Crew 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -241,7 +249,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB561}" {
+  COA_SlottingGroup "{69FB3455DAFD65D8}" {
    m_sCallsign "Crew 7"
    m_FlagType INFANTRY
    m_aSlots {
@@ -255,7 +263,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BB45C}" {
+  COA_SlottingGroup "{69FB3455DAFD64ED}" {
    m_sCallsign "Crew 8"
    m_FlagType INFANTRY
    m_aSlots {
@@ -269,7 +277,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BABB1}" {
+  COA_SlottingGroup "{69FB3455DAFD5BC2}" {
    m_sCallsign "The Bus"
    m_FlagType ARMORED
    m_aSlots {
@@ -280,7 +288,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BAA8E}" {
+  COA_SlottingGroup "{69FB3455DAFD5B33}" {
    m_sCallsign "Gun truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -290,7 +298,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BA949}" {
+  COA_SlottingGroup "{69FB3455DAFD59C7}" {
    m_sCallsign "Gun truck 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -301,8 +309,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_iGroupRespawns -1
   }
  }
- m_OpforSlots {
-  COA_SlottingGroup "{69DD1221116BAF86}" {
+ m_OPFORSlots {
+  COA_SlottingGroup "{69FB3455DAFD5827}" {
    m_sCallsign "Blessed leader"
    m_FlagType SIGNAL
    m_aSlots {
@@ -312,18 +320,18 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BAECB}" {
+  COA_SlottingGroup "{69FB3455DAFD5F00}" {
    m_sCallsign "Suicide Squad"
    m_FlagType INFANTRY
    m_aSlots {
     COMBAT_ENGINEER
-    COMBAT_ENGINEER
-    COMBAT_ENGINEER
+    RIFLEMAN_DEMO
+    RIFLEMAN_DEMO
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BAE1C}" {
+  COA_SlottingGroup "{69FB3455DAFD5E13}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -338,12 +346,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BAD27}" {
+  COA_SlottingGroup "{69FB3455DAFD5C5D}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -358,12 +366,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BAC2B}" {
+  COA_SlottingGroup "{69FB3455DAFD535E}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -378,12 +386,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BA326}" {
+  COA_SlottingGroup "{69FB3455DAFD5254}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -398,12 +406,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     RIFLEMAN_ANTITANK
     ASSISTANT_RIFLEMAN_ANTITANK
-    RIFLEMAN_DEMO
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BA213}" {
+  COA_SlottingGroup "{69FB3455DAFD5141}" {
    m_sCallsign "Gun Truck 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -413,7 +421,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{69DD1221116BA15A}" {
+  COA_SlottingGroup "{69FB3455DAFD508E}" {
    m_sCallsign "Gun Truck 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -431,35 +439,35 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_fMissionTimeScale 2
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{5CFD171E9B4489CD}Configs/Gearscripts/Standard/90s/COA_GS_Somali.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/COA_GS_MEInsurgents_Poor.conf"
-  m_bEnableShareableMarkers 0
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/COA_GS_FIA.conf"
-  m_bEnableShareableMarkers 0
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 0
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
-  m_bEnableShareableMarkers 0
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 0
  }
  {
   SCR_FactionManager "69DB167793D204AD" {

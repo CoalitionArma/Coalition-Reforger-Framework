@@ -133,7 +133,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
-		CacheZoneEntities();
+		CacheZoneEntities(owner);
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -148,7 +148,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 				CheckAddInitialMarkers();
 			if (RplSession.Mode() == RplMode.Client)
 				return;
-			UpdateZones();
+			UpdateZones(owner);
 			if (!m_bStartGame)
 				StartGame();
 			if (m_bZoneUpdateChecks)
@@ -227,15 +227,47 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
-	protected void CacheZoneEntities()
+	// GetGame().GetWorld() is not assigned yet while entities are still running their INIT event,
+	// so resolve through the owner entity's own world instead.
+	protected void CacheZoneEntities(IEntity owner)
 	{
 		m_mZoneEntityCache.Clear();
+
+		if (!owner || !m_aZoneObjectNames)
+			return;
+
+		BaseWorld world = owner.GetWorld();
+		if (!world)
+			return;
+
 		foreach (string zoneName : m_aZoneObjectNames)
 		{
-			IEntity zone = GetGame().GetWorld().FindEntityByName(zoneName);
+			IEntity zone = world.FindEntityByName(zoneName);
 			if (zone)
 				m_mZoneEntityCache.Insert(zoneName, zone);
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Cache lookup that falls back to a world query for zones that were not yet spawned at init time
+	protected IEntity GetZoneEntity(IEntity owner, string zoneName)
+	{
+		IEntity zone = m_mZoneEntityCache.Get(zoneName);
+		if (zone)
+			return zone;
+
+		BaseWorld world;
+		if (owner)
+			world = owner.GetWorld();
+
+		if (!world)
+			return null;
+
+		zone = world.FindEntityByName(zoneName);
+		if (zone)
+			m_mZoneEntityCache.Set(zoneName, zone);
+
+		return zone;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -304,7 +336,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void UpdateZones()
+	protected void UpdateZones(IEntity owner)
 	{
 		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
@@ -320,8 +352,8 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		{
 			m_aAllPlayersWithinZoneRange.Clear();
 			
-			IEntity zone = m_mZoneEntityCache.Get(zoneName);
-			
+			IEntity zone = GetZoneEntity(owner, zoneName);
+
 			if(!zone)
 				continue;
 			

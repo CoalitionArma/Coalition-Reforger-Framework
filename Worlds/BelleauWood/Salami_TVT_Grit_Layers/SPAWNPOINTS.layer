@@ -1,6 +1,89 @@
 COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
- coords 4767.368 173.205 3522.935
+ coords 5665.171 164.937 5759.42
+}
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/OG/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 5629.248 162.303 5116.028
+  angles 0 0 0
+  m_MarkerColor 1 0 0.013 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Southern Trenches"
+ }
+ {
+  coords 5490.722 176.841 5467.031
+  angles 0 0 0
+  m_MarkerColor 1 0 0.013 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Southern Trenches"
+ }
+ {
+  coords 5582.053 176.939 5340.141
+  angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Phase 1 LOA"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
 }
 COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
- coords 5668.048 164.891 5760.947
+ coords 4382.33 165.134 2887.058
+}
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 5629.248 162.303 5116.028
+  m_MarkerColor 1 0 0.013 1
+  m_sDescription "Southern Trench"
+  m_aVisibleForFactions {
+   "BLUFOR"
+   "OPFOR"
+   "SPEC"
+  }
+ }
+ {
+  coords 5490.722 176.841 5467.031
+  m_MarkerColor 1 0 0.013 1
+  m_sDescription "Southern Trench"
+  m_aVisibleForFactions {
+   "BLUFOR"
+   "OPFOR"
+   "SPEC"
+  }
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4392.092 165.411 2865.307
+  m_rVehicle "{E616DAF018B0D3BD}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo_Jammer.et"
+ }
+ {
+  coords 4385.311 165.994 2865.624
+  m_rVehicle "{E616DAF018B0D3BD}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Camo_Jammer.et"
+ }
+}
+PolylineShapeEntity : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
+ components {
+  COA_PolyZone "{671626BD5DA5AE25}" {
+   m_aVisibleForFactions {
+    "BLUFOR"
+   }
+  }
+ }
+ coords 5324.802 157.119 5411.293
+ Points {
+  ShapePoint "{69FEC67928EF77EA}" {
+   Position -729.666 0 151.307
+  }
+  ShapePoint "{69FEC679267B0E52}" {
+   Position 132.636 0 -72.743
+  }
+  ShapePoint "{69FEC67924599DED}" {
+   Position 749.062 0 -85.635
+  }
+  ShapePoint "{69FEC6792262D080}" {
+   Position 1083.675 0 -101.959
+  }
+ }
+ LineColor 0 0 0 1
 }
