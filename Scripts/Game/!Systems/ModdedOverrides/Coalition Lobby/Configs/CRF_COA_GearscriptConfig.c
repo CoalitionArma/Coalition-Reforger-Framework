@@ -47,6 +47,13 @@ modded class COA_GearScriptContainer
 	bool m_bEnableSightArsenal;
 }
 
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(configRoot: true)]
+class COA_SightArsenalConfig
+{	
+	[Attribute()]
+	ref array<ResourceName> m_aSights;
+}
 
 // Simplified Container for Faction Plugin
 [BaseContainerProps()]

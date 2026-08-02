@@ -187,25 +187,25 @@ class CRF_MissionValidatorManager : ScriptComponent
 		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		
 		// BLUFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BluforSlots || !gamemode.m_BluforSlots.IsEmpty()))
+		if (respawnManager.GetFactionSpawnpoints("BLUFOR").IsEmpty() && (!gamemode.m_BLUFORSlots || !gamemode.m_BLUFORSlots.IsEmpty()))
 			AddCriticalError("Missing BLUFOR Spawn Point(s) in the world! the BLUFOR Faction will not function");
 		else
 			AddInfo("[OK] BLUFOR Spawn point found");
 		
 		// OPFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty() && (!gamemode.m_OpforSlots || !gamemode.m_OpforSlots.IsEmpty()))
+		if (respawnManager.GetFactionSpawnpoints("OPFOR").IsEmpty() && (!gamemode.m_OPFORSlots || !gamemode.m_OPFORSlots.IsEmpty()))
 			AddCriticalError("Missing OPFOR Spawn Point(s) in the world! the OPFOR Faction will not function");
 		else
 			AddInfo("[OK] OPFOR Spawn point found");
 		
 		// INDFOR spawn point check
-		if (respawnManager.GetFactionSpawnpoints("INDFOR").IsEmpty() && (!gamemode.m_IndforSlots || !gamemode.m_IndforSlots.IsEmpty()))
+		if (respawnManager.GetFactionSpawnpoints("INDFOR").IsEmpty() && (!gamemode.m_INDFORSlots || !gamemode.m_INDFORSlots.IsEmpty()))
 			AddCriticalError("Missing INDFOR Spawn Point(s) in the world! the INDFOR Faction will not function");
 		else
 			AddInfo("[OK] INDFOR Spawn point found");
 		
 		// CIV spawn point check
-		if (respawnManager.GetFactionSpawnpoints("CIV").IsEmpty() && (!gamemode.m_CivSlots || !gamemode.m_CivSlots.IsEmpty()))
+		if (respawnManager.GetFactionSpawnpoints("CIV").IsEmpty() && (!gamemode.m_CIVSlots || !gamemode.m_CIVSlots.IsEmpty()))
 			AddCriticalError("Missing CIV Spawn Point(s) in the world! the CIV Faction will not function");
 		else
 			AddInfo("[OK] CIV Spawn point found");
@@ -247,22 +247,22 @@ class CRF_MissionValidatorManager : ScriptComponent
 		int indforMarkers = CountEntitiesWithName("INDFOR_SpawnMarker");
 		int civMarkers = CountEntitiesWithName("CIVILIAN_SpawnMarker");
 		
-		if (bluforMarkers == 0 && gamemode.m_BluforSlots && !gamemode.m_BluforSlots.IsEmpty())
+		if (bluforMarkers == 0 && gamemode.m_BLUFORSlots && !gamemode.m_BLUFORSlots.IsEmpty())
 			AddWarning("No BLUFOR spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 BLUFOR spawn marker(s)", bluforMarkers));
 		
-		if (opforMarkers == 0 && gamemode.m_OpforSlots && !gamemode.m_OpforSlots.IsEmpty())
+		if (opforMarkers == 0 && gamemode.m_OPFORSlots && !gamemode.m_OPFORSlots.IsEmpty())
 			AddWarning("No OPFOR spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 OPFOR spawn marker(s)", opforMarkers));
 		
-		if (indforMarkers == 0 && gamemode.m_IndforSlots && !gamemode.m_IndforSlots.IsEmpty())
+		if (indforMarkers == 0 && gamemode.m_INDFORSlots && !gamemode.m_INDFORSlots.IsEmpty())
 			AddWarning("No INDFOR spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 INDFOR spawn marker(s)", indforMarkers));
 		
-		if (civMarkers == 0 && gamemode.m_CivSlots && !gamemode.m_CivSlots.IsEmpty())
+		if (civMarkers == 0 && gamemode.m_CIVSlots && !gamemode.m_CIVSlots.IsEmpty())
 			AddWarning("No CIVILIAN spawn markers found");
 		else
 			AddInfo(string.Format("[OK] Found %1 CIVILIAN spawn marker(s)", civMarkers));
@@ -279,22 +279,22 @@ class CRF_MissionValidatorManager : ScriptComponent
 		int indforZones = CountEntitiesWithName("INDFOR_SafestartBoundry");
 		int civZones = CountEntitiesWithName("CIVILIAN_SafestartBoundry");
 		
-		if (bluforZones == 0 && gamemode.m_BluforSlots && !gamemode.m_BluforSlots.IsEmpty())
+		if (bluforZones == 0 && gamemode.m_BLUFORSlots && !gamemode.m_BLUFORSlots.IsEmpty())
 			AddWarning("No BLUFOR safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 BLUFOR safestart boundary/boundaries", bluforZones));
 		
-		if (opforZones == 0 && gamemode.m_OpforSlots && !gamemode.m_OpforSlots.IsEmpty())
+		if (opforZones == 0 && gamemode.m_OPFORSlots && !gamemode.m_OPFORSlots.IsEmpty())
 			AddWarning("No OPFOR safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 OPFOR safestart boundary/boundaries", opforZones));
 		
-		if (indforZones == 0 && gamemode.m_IndforSlots && !gamemode.m_IndforSlots.IsEmpty())
+		if (indforZones == 0 && gamemode.m_INDFORSlots && !gamemode.m_INDFORSlots.IsEmpty())
 			AddWarning("No INDFOR safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 INDFOR safestart boundary/boundaries", indforZones));
 		
-		if (civZones == 0 && gamemode.m_CivSlots && !gamemode.m_CivSlots.IsEmpty())
+		if (civZones == 0 && gamemode.m_CIVSlots && !gamemode.m_CIVSlots.IsEmpty())
 			AddWarning("No CIVILIAN safestart boundary found");
 		else
 			AddInfo(string.Format("[OK] Found %1 CIVILIAN safestart boundary/boundaries", civZones));

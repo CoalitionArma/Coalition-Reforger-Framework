@@ -87,7 +87,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
- m_BluforSlots {
+ m_BLUFORSlots {
   COA_SlottingGroup "{68984E3EC728E646}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
@@ -244,7 +244,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
   }
  }
- m_OpforSlots {
+ m_OPFORSlots {
   COA_SlottingGroup "{68984E3EC7289FC8}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
@@ -401,7 +401,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
   }
  }
- m_IndforSlots {
+ m_INDFORSlots {
   COA_SlottingGroup "{68984E3EC7289430}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
@@ -558,7 +558,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
   }
  }
- m_CivSlots {
+ m_CIVSlots {
   COA_SlottingGroup "{68984E3EC7288D7A}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL

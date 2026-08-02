@@ -132,7 +132,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
- m_BluforSlots {
+ m_BLUFORSlots {
   COA_SlottingGroup "{69F101A40A3A70CE}" {
    m_sCallsign "Justice Crusade"
    m_FlagType SIGNAL
@@ -192,7 +192,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_iGroupRespawns -1
   }
  }
- m_OpforSlots {
+ m_OPFORSlots {
   COA_SlottingGroup "{69F101A40A3A7DC2}" {
    m_sCallsign "Horde Conquerors"
    m_FlagType SIGNAL
