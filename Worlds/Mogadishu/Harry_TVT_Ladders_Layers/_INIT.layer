@@ -112,7 +112,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "BLU"
- m_BluforSlots {
+ m_BLUFORSlots {
   COA_SlottingGroup "{69F945A3EFC85AED}" {
    m_sCallsign "Blessed Leader"
    m_FlagType SIGNAL
@@ -264,7 +264,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
  }
- m_OpforSlots {
+ m_OPFORSlots {
   COA_SlottingGroup "{69F945A3EFC8570E}" {
    m_sCallsign "Captain"
    m_FlagType SIGNAL
