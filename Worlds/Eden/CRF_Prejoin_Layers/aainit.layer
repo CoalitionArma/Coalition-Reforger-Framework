@@ -55,7 +55,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iFactionTwoRatio 0
  m_sFactionOneKey ""
  m_sFactionTwoKey ""
- m_CivSlots {
+ m_CIVSlots {
   COA_SlottingGroup "{685A22E72D03414E}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY

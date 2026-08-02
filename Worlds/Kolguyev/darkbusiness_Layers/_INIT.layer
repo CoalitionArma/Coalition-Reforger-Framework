@@ -133,7 +133,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iFactionTwoRatio 1
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "IND"
- m_BluforSlots {
+ m_BLUFORSlots {
   COA_SlottingGroup "{694A4048307495A5}" {
    m_sCallsign "0-1"
    m_FlagType INFANTRY
@@ -155,7 +155,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    }
   }
  }
- m_OpforSlots {
+ m_OPFORSlots {
   COA_SlottingGroup "{694A404830749788}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
@@ -240,7 +240,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    }
   }
  }
- m_IndforSlots {
+ m_INDFORSlots {
   COA_SlottingGroup "{694A404830748B64}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
@@ -325,7 +325,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    }
   }
  }
- m_CivSlots {
+ m_CIVSlots {
   COA_SlottingGroup "{694A404830748D8C}" {
    m_sCallsign "HOSTAGES"
    m_FlagType SIGNAL

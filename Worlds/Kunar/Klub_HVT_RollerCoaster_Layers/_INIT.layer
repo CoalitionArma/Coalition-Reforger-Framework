@@ -109,7 +109,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iFactionTwoRatio 5
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
- m_BluforSlots {
+ m_BLUFORSlots {
   COA_SlottingGroup "{69E176F23CB68A7F}" {
    m_sCallsign "ANCHOR 6"
    m_FlagType SIGNAL
@@ -193,7 +193,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_iGroupRespawns -1
   }
  }
- m_OpforSlots {
+ m_OPFORSlots {
   COA_SlottingGroup "{69E176F23CB6810B}" {
    m_sCallsign "SHAMS6 (Sun/1PL)"
    m_FlagType SIGNAL
