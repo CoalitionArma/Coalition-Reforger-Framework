@@ -39,4 +39,13 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -177.932 0
   m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
  }
+ {
+  coords 5397.227 136.701 6132.107
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+ }
+ {
+  coords 5423.514 135.686 6145.067
+  angles 0 7.942 0
+  m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+ }
 }

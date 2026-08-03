@@ -1,5 +1,13 @@
-COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
- coords 5386.078 136.81 6141.505
- m_sQuadName "flag-2"
- m_sDescription "Ammo Depot"
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 5386.078 136.81 6141.505
+  m_sQuadName "flag-2"
+  m_sDescription "Ammo Depot"
+ }
+ {
+  coords 4741.796 185.348 3769.881
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "flag-2"
+  m_sDescription "OPFOR FOB"
+ }
 }
