@@ -1,0 +1,24 @@
+$grp GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
+ {
+  coords 5384.25 136.81 6141.957
+  angles 0 -27.844 0
+ }
+ {
+  coords 4650.679 112.979 6974.48
+  angles 0 -27.844 0
+ }
+}
+$grp Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ {
+  coords 5577.662 110.393 6581.741
+  angles 0 -177.744 0
+ }
+ {
+  coords 5586.145 110.393 6581.407
+  angles 0 -177.744 0
+ }
+ {
+  coords 5568.088 110.393 6582.118
+  angles 0 -177.744 0
+ }
+}

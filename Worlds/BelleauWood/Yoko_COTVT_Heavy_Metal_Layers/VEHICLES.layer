@@ -1,0 +1,42 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4641.967 113.776 6965.413
+  angles 0 112.589 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4629.984 115.339 6971.801
+  angles 0 119.53 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4618.782 116.822 6980.687
+  angles 0 119.53 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4609.346 117.937 6990.276
+  angles 0 119.53 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4664.951 111.656 6971.956
+  angles 0 -177.932 0
+  m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+ }
+ {
+  coords 4665.449 111.625 6985.736
+  angles 0 -177.932 0
+  m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+ }
+ {
+  coords 4665.833 111.59 6996.373
+  angles 0 -177.932 0
+  m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+ }
+ {
+  coords 4666.229 111.584 7007.333
+  angles 0 -177.932 0
+  m_rVehicle "{33DD0A925A38A2EA}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+ }
+}

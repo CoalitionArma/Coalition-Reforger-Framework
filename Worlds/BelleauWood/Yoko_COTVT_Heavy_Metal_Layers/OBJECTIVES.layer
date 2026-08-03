@@ -1,0 +1,17 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 4792.71 111.686 6889.984
+  m_sQuadName "flag-2"
+  m_sDescription "Defend Supply Depot"
+ }
+ {
+  coords 5577.507 110.602 6577.815
+  m_sQuadName "flag-2"
+  m_sDescription "Defend M777 emplacments"
+ }
+ {
+  coords 5416.031 135.139 6155.814
+  m_sQuadName "flag-2"
+  m_sDescription "Defend Ammo Depot"
+ }
+}

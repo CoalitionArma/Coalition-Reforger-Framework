@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{68C7A3F99AF6E4C5}Configs/Gearscripts/Standard/Modern/COA_GS_TFUSArmyMCModern_ATGM.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
