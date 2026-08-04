@@ -20,6 +20,10 @@ $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSma
 GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
  coords 5384.031 136.845 6142.112
 }
+Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ coords 5564.887 110.58 6579.717
+ angles 0 -173.767 0
+}
 PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
  coords 4606.896 169.593 10264.952
  Points {

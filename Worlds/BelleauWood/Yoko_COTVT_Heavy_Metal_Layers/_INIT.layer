@@ -129,7 +129,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A0933AE3C5BCE21}" {
+  COA_SlottingGroup "{6A0933A9060D4CA4}" {
    m_sCallsign "COY"
    m_FlagType INFANTRY
    m_aSlots {
@@ -140,7 +140,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC05C}" {
+  COA_SlottingGroup "{6A0933A9060D4EDE}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -150,7 +150,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC0FC}" {
+  COA_SlottingGroup "{6A0933A9060D4F6C}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC138}" {
+  COA_SlottingGroup "{6A0933A9060D405A}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -184,19 +184,18 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC246}" {
-   m_sCallsign "ENGI Team"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6A0933A9060D40EF}" {
+   m_sCallsign "ENGI/Artillery Team"
+   m_FlagType ARTILLERY
    m_aSlots {
     SQUAD_LEAD
-    MEDIC
     COMBAT_ENGINEER
     COMBAT_ENGINEER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC2F6}" {
+  COA_SlottingGroup "{6A0933A9060D410E}" {
    m_sCallsign "HAT 1"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -212,7 +211,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC31A}" {
+  COA_SlottingGroup "{6A0933A9060D41A0}" {
    m_sCallsign "Lotus 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -223,7 +222,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC394}" {
+  COA_SlottingGroup "{6A0933A9060D42C7}" {
    m_sCallsign "Lotus 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -234,7 +233,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC438}" {
+  COA_SlottingGroup "{6A0933A9060D4373}" {
    m_sCallsign "Lotus 3"
    m_FlagType HELICOPER
    m_aSlots {
@@ -245,7 +244,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC4AA}" {
+  COA_SlottingGroup "{6A0933A9060D43BA}" {
    m_sCallsign "Reaper 1"
    m_FlagType ATTACK_HELICOPTER
    m_aSlots {
@@ -258,7 +257,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A0933AE3C5BC5E6}" {
+  COA_SlottingGroup "{6A0933A9060D4496}" {
    m_sCallsign "VIC 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -270,7 +269,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A0933AE3C5BC60D}" {
+  COA_SlottingGroup "{6A0933A9060D453F}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
