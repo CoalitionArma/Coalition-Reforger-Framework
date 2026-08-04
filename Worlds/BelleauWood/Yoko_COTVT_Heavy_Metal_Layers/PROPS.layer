@@ -1,3 +1,12 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
+ {
+  coords 5407.415 136.452 6119.762
+  angles 0 -36.166 0
+ }
+ {
+  coords 5577.668 110.424 6581.049
+ }
+}
 $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
  {
   coords 2958.506 167.25 4756.811
@@ -10,6 +19,30 @@ $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSma
 }
 GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
  coords 5384.031 136.845 6142.112
+}
+PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
+ coords 4606.896 169.593 10264.952
+ Points {
+  ShapePoint "{6A0933AD4C791410}" {
+   Position -89.772 0 396.455
+  }
+  ShapePoint "{6A0933AD4E14A104}" {
+   Position 1001.957 0 -371.257
+  }
+  ShapePoint "{6A0933AD7144771F}" {
+   Position 815.782 0 -659.274
+  }
+  ShapePoint "{6A0933AD7356201F}" {
+   Position -413.191 0 182.722
+  }
+  ShapePoint "{6A0933AD75D956A3}" {
+   Position -293.479 0 299.836
+  }
+ }
+}
+GenericEntity : "{BA184C03DFCC7C7B}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_Conflict_US_01.et" {
+ coords 5386.192 136.889 6177.806
+ angles 0 84.06 0
 }
 $grp GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
  {
