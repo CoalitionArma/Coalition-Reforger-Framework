@@ -52,7 +52,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Phase 1"\
-   "Defend the Supply Depot and Ammo Depot. Engi Team can build a FOB here by bring supplies to the ammo depot. Supply cache has a logi truck"\
+   "Continuously defend the Supply Depot and Ammo Depot. Engi Team can build a FOB here by bring supplies to the ammo depot. Supply cache has a logi truck"\
    ""\
    "Phase 2"\
    "Destroy Enemy Mortar FOB at Champillon."\

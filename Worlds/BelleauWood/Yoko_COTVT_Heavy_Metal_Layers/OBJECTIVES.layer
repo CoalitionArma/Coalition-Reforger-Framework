@@ -1,9 +1,9 @@
 $grp SCR_BaseTriggerEntity {
  aSiteTrigger {
-  coords 6816.786 179.325 2955.7
+  coords 9772.958 128.095 2135.227
  }
  bSiteTrigger {
-  coords 7001.253 178.02 2968.295
+  coords 10273.89 149.915 2324.344
  }
 }
 $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
@@ -23,7 +23,7 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_bShowForAnyFaction 1
  }
  {
-  coords 6939.867 180.044 2945.089
+  coords 9836.01 133.237 2264.433
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
   m_fWorldSize 250
