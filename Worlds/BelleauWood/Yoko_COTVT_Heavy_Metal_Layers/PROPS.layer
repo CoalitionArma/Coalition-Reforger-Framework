@@ -16,7 +16,8 @@ $grp GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSma
   coords 2973.811 168.302 4745.332
  }
  {
-  coords 6692.356 129.54 4099.815
+  coords 6814.627 126.377 4093.338
+  angles 0 88.817 0
  }
  {
   coords 6838.061 125.165 4137.281

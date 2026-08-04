@@ -11,9 +11,6 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   coords 5416.031 135.139 6155.814
   m_sQuadName "flag-2"
   m_sDescription "Defend Ammo Depot"
-  m_aVisibleForFactions +{
-   "OPFOR"
-  }
   m_bShowForAnyFaction 1
  }
  {
@@ -21,29 +18,41 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
   m_sDescription "Mortar FOB"
-  m_aVisibleForFactions +{
-   "OPFOR"
-  }
   m_bShowForAnyFaction 1
  }
  {
   coords 6939.867 180.044 2945.089
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
-  m_sDescription "OPFOR FOB"
-  m_aVisibleForFactions +{
-   "OPFOR"
-  }
+  m_sDescription "OPFOR MOB"
   m_bShowForAnyFaction 1
  }
  {
-  coords 6830.087 125.74 4164.68
+  coords 6822.739 125.22 4134.803
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
   m_sDescription "OPFOR Supply Depot"
-  m_aVisibleForFactions +{
-   "OPFOR"
-  }
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4791.677 176.008 3588.429
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2524.232 163.967 4489.676
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6816.465 130.518 3779.804
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_sDescription "AA Emplacments"
   m_bShowForAnyFaction 1
  }
 }
