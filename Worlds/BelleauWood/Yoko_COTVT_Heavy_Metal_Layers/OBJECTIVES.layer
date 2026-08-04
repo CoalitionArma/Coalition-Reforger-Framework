@@ -1,3 +1,11 @@
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 6816.786 179.325 2955.7
+ }
+ bSiteTrigger {
+  coords 7001.253 178.02 2968.295
+ }
+}
 $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
  {
   coords 5215.199 125.44 6490.89
@@ -8,5 +16,17 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   coords 5416.031 135.139 6155.814
   m_sQuadName "flag-2"
   m_sDescription "Defend Ammo Depot"
+ }
+ {
+  coords 2970.012 168.033 4733.184
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_sDescription "Mortar FOB"
+ }
+ {
+  coords 6939.867 180.044 2945.089
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_sDescription "OPFOR MOB"
  }
 }
