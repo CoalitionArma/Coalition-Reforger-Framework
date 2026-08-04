@@ -1,12 +1,3 @@
-$grp GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
- {
-  coords 5234.179 125.625 6493.858
-  angles 0 -65.006 0
- }
- {
-  coords 5185.319 126.158 6488.118
- }
-}
 $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
  {
   coords 2958.506 167.25 4756.811
@@ -20,8 +11,19 @@ $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSma
 GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
  coords 5384.031 136.845 6142.112
 }
-GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
- coords 2973.811 168.302 4745.332
+$grp GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
+ {
+  coords 2973.811 168.302 4745.332
+ }
+ {
+  coords 6692.356 129.54 4099.815
+ }
+ {
+  coords 6838.061 125.165 4137.281
+ }
+ {
+  coords 6828.777 125.799 4169.026
+ }
 }
 $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
  {

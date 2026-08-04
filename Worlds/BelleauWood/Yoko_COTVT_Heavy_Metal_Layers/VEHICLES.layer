@@ -14,4 +14,9 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/Vehicl
   angles 0 -146.994 0
   m_rVehicle "{1529FD2C6A8162A1}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_Pylon_Quad_Hydra.et"
  }
+ {
+  coords 4606.838 169.594 10337.196
+  angles 0 -146.994 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
 }

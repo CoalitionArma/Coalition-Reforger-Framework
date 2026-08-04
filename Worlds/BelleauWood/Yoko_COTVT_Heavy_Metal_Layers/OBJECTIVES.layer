@@ -8,25 +8,42 @@ $grp SCR_BaseTriggerEntity {
 }
 $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
  {
-  coords 5215.199 125.44 6490.89
-  m_sQuadName "flag-2"
-  m_sDescription "Defend Supply Depot"
- }
- {
   coords 5416.031 135.139 6155.814
   m_sQuadName "flag-2"
   m_sDescription "Defend Ammo Depot"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 1
  }
  {
   coords 2970.012 168.033 4733.184
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
   m_sDescription "Mortar FOB"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 1
  }
  {
   coords 6939.867 180.044 2945.089
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "flag-2"
-  m_sDescription "OPFOR MOB"
+  m_sDescription "OPFOR FOB"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6830.087 125.74 4164.68
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_sDescription "OPFOR Supply Depot"
+  m_aVisibleForFactions +{
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 1
  }
 }
