@@ -235,10 +235,63 @@ def check_duplicate_components(roots: list[str]) -> list[str]:
     return failures
 
 
+def check_unattached_handlers(roots: list[str], allowlist: set[str]) -> list[str]:
+    """Widget handler classes script looks up but no layout attaches.
+
+    `widget.FindHandler(X)` returning null is a silent failure - most call sites
+    just bail out, so a handler dropped from a layout produces no log line at all.
+    That is how COA_Hint was lost: the CRF->COA rename left hint.layout naming a
+    CRF_Hint class that no longer existed, and re-saving the layout through
+    Workbench silently discarded the unresolvable handler.
+
+    FindHandler matches subclasses, so a base class is satisfied by any descendant
+    being attached.
+    """
+    parents: dict[str, str] = {}
+    wanted: dict[str, str] = {}
+    attached: set[str] = set()
+
+    handler_decl = re.compile(r"^\s*(?:modded\s+)?class\s+((?:CRF|COA)_[A-Za-z0-9_]+)\s*:\s*([A-Za-z0-9_]+)", re.M)
+    find_handler = re.compile(r"FindHandler\(\s*((?:CRF|COA)_[A-Za-z0-9_]+)\s*\)")
+    layout_attach = re.compile(r'^\s*((?:CRF|COA)_[A-Za-z0-9_]+)\s+"\{[0-9A-F]{16}\}"', re.M)
+
+    for root in roots:
+        for path in walk(root):
+            if path.endswith(".c"):
+                text = read(path)
+                for name, parent in handler_decl.findall(text):
+                    parents[name] = parent
+                for name in find_handler.findall(text):
+                    wanted.setdefault(name, rel(path, roots))
+            elif path.endswith(".layout"):
+                attached.update(layout_attach.findall(read(path)))
+
+    def satisfied(name: str) -> bool:
+        if name in attached:
+            return True
+        # Any attached class inheriting from `name` also satisfies FindHandler.
+        for candidate in attached:
+            seen = 0
+            walker = candidate
+            while walker in parents and seen < 20:
+                walker = parents[walker]
+                seen += 1
+                if walker == name:
+                    return True
+        return False
+
+    return [
+        f"{source}: FindHandler({name}) but no layout attaches {name} or a subclass"
+        for name, source in sorted(wanted.items())
+        if not satisfied(name) and name not in allowlist
+    ]
+
+
 CHECKS = {
     "dangling-reference": "References to Coalition resources that no .meta declares",
     "unattached-component": "Gamemode components no prefab attaches",
     "duplicate-component": "Component classes declared twice in one prefab",
+    "unattached-handler": "Widget handlers script looks up but no layout attaches",
 }
 
 
@@ -278,6 +331,10 @@ def main() -> int:
         results["unattached-component"] = check_unattached_components(roots, allowlist)
     if "duplicate-component" in selected:
         results["duplicate-component"] = check_duplicate_components(roots)
+    if "unattached-handler" in selected:
+        results["unattached-handler"] = check_unattached_handlers(
+            roots, set(json.loads(read(allowlist_path)).get("unattached-handler", []))
+            if os.path.exists(allowlist_path) else set())
 
     print("Scanned: " + ", ".join(os.path.basename(r) for r in roots))
     print("Owned prefixes: " + ", ".join(prefixes))

@@ -25,6 +25,7 @@ token is involved.
 | `dangling-reference` | A `{GUID}` reference to a Coalition resource that no `.meta` declares. The engine resolves by GUID, so this becomes `Can't open config file ...` and a null `ResourceName` handed to script. |
 | `unattached-component` | A `SCR_BaseGameModeComponent` subclass no prefab attaches. Compiles fine, singleton never constructed, `GetInstance()` null forever, every call site silently no-ops. |
 | `duplicate-component` | The same singleton component declared twice in one prefab, where which instance wins comes down to prefab ordering. |
+| `unattached-handler` | A widget handler class script resolves with `FindHandler()` that no layout attaches. `FindHandler` returning null is a silent failure — call sites just bail — so this produces no log line at all. Subclasses count: a base class is satisfied by any descendant being attached. |
 
 Ownership for `dangling-reference` is decided by filename prefix — default
 `CRF_` and `COA_`. Base-game and third-party resources are skipped because their
