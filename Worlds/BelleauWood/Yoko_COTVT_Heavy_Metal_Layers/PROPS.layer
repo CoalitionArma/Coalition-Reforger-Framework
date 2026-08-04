@@ -24,26 +24,6 @@ Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
  coords 5564.887 110.58 6579.717
  angles 0 -173.767 0
 }
-PolylineShapeEntity : "{93BA83DF484DB512}PrefabsMissionMaking/PolyZone/ForwardDeploy/BLUFOR_ForwardDeployZone.et" {
- coords 4606.896 169.593 10264.952
- Points {
-  ShapePoint "{6A0933AD4C791410}" {
-   Position -89.772 0 396.455
-  }
-  ShapePoint "{6A0933AD4E14A104}" {
-   Position 1001.957 0 -371.257
-  }
-  ShapePoint "{6A0933AD7144771F}" {
-   Position 815.782 0 -659.274
-  }
-  ShapePoint "{6A0933AD7356201F}" {
-   Position -413.191 0 182.722
-  }
-  ShapePoint "{6A0933AD75D956A3}" {
-   Position -293.479 0 299.836
-  }
- }
-}
 GenericEntity : "{BA184C03DFCC7C7B}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_Conflict_US_01.et" {
  coords 5386.192 136.889 6177.806
  angles 0 84.06 0
