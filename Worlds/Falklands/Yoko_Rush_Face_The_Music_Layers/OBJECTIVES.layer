@@ -4,7 +4,7 @@ $grp SCR_BaseTriggerEntity {
   angles 0 -5.256 0
  }
  bSiteTrigger {
-  coords 4081.711 3.907 8360.766
-  angles 0 -76.205 0
+  coords 4016.885 3.908 8421.636
+  angles 0 159.153 0
  }
 }

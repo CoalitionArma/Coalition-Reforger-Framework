@@ -31,7 +31,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A0973590F127284}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "OPFOR is tasked with blowing up BLUFOR's Fuel Supplies."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: 1x MAT and 1x MMG"\
@@ -49,13 +49,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A0973590F127506}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Defedn the Bombsites"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "Dedicate a infantry squad to each bombsite. Set up your MAT and MMG however you see fit."\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -64,13 +64,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A0973590F1275AB}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Destory both Bombsites"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "B Site is probably easier to take frist since your TGRs can cover the long site lines, A site is a bit tricker to take but it can be done"\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "OPFOR"
    }
