@@ -13,20 +13,24 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   coords 5031.257 3.199 9671.646
   angles 0 -79.539 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 5040.84 3.199 9669.877
   angles 0 -79.539 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 5049.398 3 9664.617
   angles 0 -61.236 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 5058.298 3 9659.731
   angles 0 -61.236 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
  }
 }
