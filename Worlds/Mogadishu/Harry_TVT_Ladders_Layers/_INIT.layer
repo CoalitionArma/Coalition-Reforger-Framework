@@ -51,7 +51,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{69F945A07E8B1695}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Either do 2 of 3: capture the enemy HAT position, destroy the enemy supply cache, destroy the enemy fuel containers"\
+   "Either do 2 of 3: remove the HAT threat from the central MSR, destroy the enemy supply cache, destroy the enemy fuel containers"\
    " OR "\
    "Attrite the enemy by 90%. "\
    ""\
@@ -68,7 +68,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{69F945A07E8B1585}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Defend two of the three main objectives: the HAT emplacement at the radio tower, the supply warehouse, and your fuel depot. "\
+   "Keep the HAT threatening the main MSR into Mog, defend the supply warehouse, and defend your fuel depot. "\
    "OR "\
    "Destroy 66% of the enemy force"\
    ""\
@@ -98,6 +98,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{69F945A07E8B142B}" {
+   m_sTitle "HAT Objective"
+   m_sTextData "The HAT objective begins positioned at the marked radio tower, and has one round it can use. The round may be spent, and isn't needed to threaten the MSR. Defenders may disassemble, but may not move the emplacement until after safestart has ended. Then, defenders may move the emplacement as they feel necessary. "\
+   ""\
+   "There will be an 8 minute grace period for this objective. After which, while the HAT emplacement is not protecting the main road into the city by being clearly visible from it, it will count as an attacker completed objective. "
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A0D13D215302C1D}" {
    m_sTitle "Ladders"
    m_sTextData "Both sides TLs have been given ladders. These can be used to navigate the city more easily, or serve as a mobile platform for your AR. Do not wedge yourself into an unrealistic position using them, or moderators/admins will intervene. "
    m_aFactionKeys {
