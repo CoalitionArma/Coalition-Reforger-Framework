@@ -1,0 +1,32 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4628.197 169.594 10323.322
+  angles 0 -146.994 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 4646.708 169.594 10311.299
+  angles 0 -146.994 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 4606.838 169.594 10337.196
+  angles 0 -146.994 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 4290.936 169.594 10448.396
+  angles 0 120.265 0
+  m_rVehicle "{08F4BDDAD3E2EB7D}Prefabs/Vehicles/FixedWing/AC-130/AC130U.et"
+ }
+ {
+  coords 5578.381 110.705 6589.555
+  angles 0 -83.03 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+ }
+ {
+  coords 5396.757 136.784 6131.251
+  angles 0 -15.245 0
+  m_rVehicle "{2013579FE0B109F3}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_MERDC_filled.et"
+ }
+}

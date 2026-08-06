@@ -26,6 +26,16 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! fetches aren't permanently blocked.
 	protected static const int FETCH_TIMEOUT_MS = 15000;
 
+	//! How long a client must wait between two RpcAsk_RequestPlayerInfo calls. Menus call
+	//! FetchPlayerInfo() on every open, so without this a player toggling the slotting menu
+	//! would hammer the authority.
+	protected static const int CLIENT_REQUEST_COOLDOWN_MS = 5000;
+
+	//! Stop auto-retrying after this many consecutive lost/failed requests so an unreachable
+	//! backend doesn't produce an endless 15s retry loop for the rest of the session.
+	//! Reset to zero as soon as one request succeeds, or when a player connects.
+	protected static const int MAX_CONSECUTIVE_FAILURES = 5;
+
 	//! XP thresholds for rank tiers.
 	//! All players start at 0 XP (rank 1 of any track).
 	//! Enlisted E1–E9 (E4/E8/E9 have sub-variants a/b/c):
@@ -97,6 +107,12 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Guards against duplicate game-mode player event registration.
 	protected bool m_bPlayerEventsSubscribed = false;
 
+	//! Client-side: set while a request to the server is on cooldown.
+	protected bool m_bClientRequestOnCooldown = false;
+
+	//! Server-side: consecutive lost/failed fetches, see MAX_CONSECUTIVE_FAILURES.
+	protected int m_iConsecutiveFailures = 0;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -112,6 +128,16 @@ class CRF_CommunityTagManager : ScriptComponent
 	{
 		if (m_sInstance == this)
 			m_sInstance = null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! EOnInit is only dispatched to components that have asked for EntityEvent.INIT. Without this
+	//! the whole component is inert: lifecycle callbacks never register, so the server never fetches
+	//! and no client ever receives a tag or rank.
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		SetEventMask(owner, EntityEvent.INIT);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -200,14 +226,19 @@ class CRF_CommunityTagManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Fetches community tags and XP for all connected players in a single HTTP request.
-	//! Server-authoritative: on clients this is a no-op — results arrive via RpcDo_PlayerInfoUpdated
-	//! instead, so every client doesn't independently hammer the backend on every menu open.
+	//! Server-authoritative: the HTTP call only ever happens on the authority, so clients don't
+	//! independently hammer the backend. A client calling this instead asks the server to re-send
+	//! (see RpcAsk_RequestPlayerInfo), which is what makes opening a menu populate tags for a
+	//! player who joined after the last broadcast.
 	//! If a fetch is already in-flight, queues one follow-up fetch to run after completion.
 	//! Subscribers to GetOnPlayerInfoUpdated() are notified when data arrives.
 	void FetchPlayerInfo()
 	{
 		if (!Replication.IsServer())
+		{
+			RequestPlayerInfoFromServer();
 			return;
+		}
 
 		if (m_bFetching)
 		{
@@ -279,6 +310,26 @@ class CRF_CommunityTagManager : ScriptComponent
 	void FetchRanksForCurrentPlayers() { FetchPlayerInfo(); }
 
 	//------------------------------------------------------------------------------------------------
+	//! Client side of FetchPlayerInfo(). Rate-limited because menus call it on every open.
+	protected void RequestPlayerInfoFromServer()
+	{
+		if (m_bClientRequestOnCooldown)
+			return;
+
+		m_bClientRequestOnCooldown = true;
+		GetGame().GetCallqueue().Remove(ClearClientRequestCooldown);
+		GetGame().GetCallqueue().CallLater(ClearClientRequestCooldown, CLIENT_REQUEST_COOLDOWN_MS, false);
+
+		Rpc(RpcAsk_RequestPlayerInfo);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ClearClientRequestCooldown()
+	{
+		m_bClientRequestOnCooldown = false;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Clears the tag, XP, and rank track caches.
 	void ClearCache()
 	{
@@ -333,6 +384,7 @@ class CRF_CommunityTagManager : ScriptComponent
 	{
 		GetGame().GetCallqueue().Remove(OnFetchTimeout);
 		m_bFetching = false;
+		m_iConsecutiveFailures = 0;
 		bool bRetry = m_bPendingFetch;
 		m_bPendingFetch = false;
 
@@ -543,13 +595,40 @@ class CRF_CommunityTagManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Re-sends whatever is already cached to every client, without touching the backend.
+	//! Used to answer a client request instantly — a player who joins mid-session gets the
+	//! existing roster's tags right away instead of waiting on the next HTTP round trip.
+	protected void BroadcastCachedPlayerInfo()
+	{
+		if (!Replication.IsServer() || m_mTagCache.IsEmpty())
+			return;
+
+		array<int> outIds = {};
+		array<string> outTags = {};
+		array<int> outXp = {};
+		array<string> outTracks = {};
+
+		foreach (int playerId, string tag : m_mTagCache)
+		{
+			outIds.Insert(playerId);
+			outTags.Insert(tag);
+			outXp.Insert(GetPlayerXp(playerId));
+			outTracks.Insert(GetPlayerRankTrack(playerId));
+		}
+
+		Print(string.Format("[CRF_CommunityTagManager][SERVER] Re-broadcasting cached info for %1 player(s)", outIds.Count()), LogLevel.NORMAL);
+		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void OnPlayerInfoFetchFailed(RestCallback cb)
 	{
 		GetGame().GetCallqueue().Remove(OnFetchTimeout);
 		m_bFetching = false;
+		m_iConsecutiveFailures++;
 		bool bRetry = m_bPendingFetch;
 		m_bPendingFetch = false;
-		Print(string.Format("[CRF_CommunityTagManager] Failed to fetch player info (result: %1)", cb.GetRestResult()), LogLevel.WARNING);
+		Print(string.Format("[CRF_CommunityTagManager] Failed to fetch player info (result: %1, http: %2)", cb.GetRestResult(), cb.GetHttpCode()), LogLevel.WARNING);
 		if (bRetry)
 			FetchPlayerInfo();
 	}
@@ -563,14 +642,34 @@ class CRF_CommunityTagManager : ScriptComponent
 		if (!m_bFetching)
 			return;
 
-		Print(string.Format("[CRF_CommunityTagManager] Player info fetch timed out after %1ms — resetting and retrying", FETCH_TIMEOUT_MS), LogLevel.WARNING);
 		m_bFetching = false;
+		m_iConsecutiveFailures++;
+
+		if (m_iConsecutiveFailures >= MAX_CONSECUTIVE_FAILURES)
+		{
+			Print(string.Format("[CRF_CommunityTagManager] Player info fetch timed out after %1ms (%2 consecutive failures) — giving up until the next player connects or a client requests a refresh", FETCH_TIMEOUT_MS, m_iConsecutiveFailures), LogLevel.WARNING);
+			return;
+		}
+
+		Print(string.Format("[CRF_CommunityTagManager] Player info fetch timed out after %1ms — resetting and retrying (attempt %2 of %3)", FETCH_TIMEOUT_MS, m_iConsecutiveFailures + 1, MAX_CONSECUTIVE_FAILURES), LogLevel.WARNING);
 		FetchPlayerInfo();
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	PRIVATE — REPLICATION
 //=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Client -> server: "send me what you have". Answered immediately from cache so the requesting
+	//! player's UI populates without waiting on the backend, then refreshed in the background in
+	//! case the roster changed since the last fetch.
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestPlayerInfo()
+	{
+		BroadcastCachedPlayerInfo();
+		m_iConsecutiveFailures = 0;
+		ScheduleFetchDebounced();
+	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Applies resolved player-info data to the local cache. Called directly on the server (so the
@@ -640,6 +739,8 @@ class CRF_CommunityTagManager : ScriptComponent
 		if (Replication.IsServer())
 		{
 			Print(string.Format("[CRF_CommunityTagManager][SERVER] Player %1 connected — scheduling debounced fetch", playerId), LogLevel.NORMAL);
+			// A new join is a fresh chance for the backend to be reachable again.
+			m_iConsecutiveFailures = 0;
 			ScheduleFetchDebounced();
 		}
 	}
