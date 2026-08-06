@@ -994,7 +994,15 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		#endif
 		
-		GetGame().GetCallqueue().CallLater(SpawnCheck, 1000, false, entity);
+		// Pass the entity by RplId, not by pointer. The call queue holds its arguments for the full
+		// delay, and a raw IEntity handed across 1000ms can be deleted in the meantime (the engine
+		// does not null script-side pointers on deletion), leaving SpawnCheck to dereference freed
+		// memory. Resolving from the RplId inside the callback fails safe instead.
+		RplComponent entityRpl = RplComponent.Cast(entity.FindComponent(RplComponent));
+		if (!entityRpl)
+			return;
+
+		GetGame().GetCallqueue().CallLater(SpawnCheck, 1000, false, entityRpl.Id());
 	}
 	
 	//We have to broadcast this, cause???
@@ -1007,11 +1015,18 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	
 	//Delay to allow the spawned entity proper time to initialize
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SpawnCheck(IEntity entity)
+	void SpawnCheck(RplId entityId)
 	{
+		// Re-resolve at use time. If the character died, disconnected or was otherwise deleted
+		// during the delay, FindItem returns null and we bail instead of touching freed memory.
+		RplComponent entityRpl = RplComponent.Cast(Replication.FindItem(entityId));
+		if (!entityRpl)
+			return;
+
+		IEntity entity = entityRpl.GetEntity();
 		if (!entity)
 			return;
-		
+
 		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			return;
 		
@@ -1120,35 +1135,63 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		IEntity currentWeapon;
 		if (weaponMan.GetCurrentWeapon())
 			currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
-		
+
+		// Both of these deferred calls used to carry raw entity pointers across their delay. In a
+		// gun game a 100-300ms window is more than enough for the player to die (or the weapon to
+		// be dropped and garbage-collected), after which the queued call dereferences freed memory.
+		// Pass IDs and re-resolve inside the callback instead.
 		if (currentWeapon)
-			GetGame().GetCallqueue().CallLater(DeleteWeapon, 100, false, currentWeapon);
-		
+		{
+			RplComponent weaponRpl = RplComponent.Cast(currentWeapon.FindComponent(RplComponent));
+			if (weaponRpl)
+				GetGame().GetCallqueue().CallLater(DeleteWeapon, 100, false, weaponRpl.Id());
+		}
+
 		CRF_GunGamePlayerStats stats = m_mPlayerStats.Get(playerId);
 		if (!stats)
 			return;
-		
+
 		int level = stats.m_iLevel;
 		if (level > m_aGunLevels.Count() - 1)
 			return;
 		CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
-		GetGame().GetCallqueue().CallLater(NewLevelAddWeapon, 300, false, player, gunLevel.m_sWeapon, gunLevel.m_sMagazines, gunLevel.m_iAmountOfMagazines);
+		if (!gunLevel)
+			return;
+
+		GetGame().GetCallqueue().CallLater(NewLevelAddWeapon, 300, false, playerId, gunLevel.m_sWeapon, gunLevel.m_sMagazines, gunLevel.m_iAmountOfMagazines);
 	}
-	
+
 	//Need time to disable PIP if using a scope
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void DeleteWeapon(IEntity weapon)
+	void DeleteWeapon(RplId weaponId)
 	{
+		RplComponent weaponRpl = RplComponent.Cast(Replication.FindItem(weaponId));
+		if (!weaponRpl)
+			return;
+
+		IEntity weapon = weaponRpl.GetEntity();
+		if (!weapon)
+			return;
+
 		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 	}
-	
+
 	//Need time for the previous weapon to be deleted
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void NewLevelAddWeapon(IEntity player, ResourceName weapon, ResourceName magazine, int amount)
+	void NewLevelAddWeapon(int playerId, ResourceName weapon, ResourceName magazine, int amount)
 	{
+		// Re-resolve the character: the player may have died, disconnected or respawned into a new
+		// entity during the 300ms delay, in which case the old pointer is stale.
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+
 		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!storageManagerComponent)
+			return;
+
 		storageManagerComponent.TrySpawnPrefabToStorage(weapon, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
-		
+
 		for (int i = 1; i < amount; i++)
 		{
 			storageManagerComponent.TrySpawnPrefabToStorage(magazine, null, -1, EStoragePurpose.PURPOSE_ANY);

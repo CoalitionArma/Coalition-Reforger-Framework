@@ -112,6 +112,11 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	// Accumulator for the distance-update tick
 	private float m_fDistanceTick = 0.0;
 
+	// Scratch buffer for stale tracking entries found during a distance tick. Reused across ticks
+	// so the hot path allocates nothing; collected during iteration and drained afterwards so the
+	// maps are never mutated while being indexed.
+	private ref array<int> m_aStaleTrackingIds = {};
+
 	// ── AAR kill/death name tracking for the client-side kill panel ──────────
 	// Populated in OnPlayerKilled; sent to each client via SendAARKillStats at game end.
 	private ref map<int, ref array<string>> m_mSessionKills  = new map<int, ref array<string>>();
@@ -148,6 +153,18 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			s_Instance = null;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Drop every raw-entity-pointer reference held for this player.
+	//! MUST be called from any path that ends this player's association with their current entity
+	//! (death, disconnect, respawn), because these maps hold non-refcounted IEntity pointers that
+	//! EOnFrame dereferences on a timer. See the comment in OnPlayerKilled for the failure mode.
+	protected void StopDistanceTracking(int playerId)
+	{
+		m_mWalkingPlayers.Remove(playerId);
+		m_mDriverVehicle.Remove(playerId);
+		m_mOccupantVehicle.Remove(playerId);
+	}
+
 	//==============================================================================================
 	// PUBLIC ENTRY POINTS
 	//==============================================================================================
@@ -171,11 +188,11 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 				GetGame().GetPlayerManager().GetPlayerName(playerId), playerId), LogLevel.VERBOSE);
 
 			// The old entity is dead/destroyed; its EHM hooks are auto-cleaned by the engine.
-			// We only need to clear the distance-tracking maps so EOnFrame stops referencing
-			// the dead entity and we can re-register on the new one below.
-			m_mWalkingPlayers.Remove(playerId);
-			m_mDriverVehicle.Remove(playerId);
-			m_mOccupantVehicle.Remove(playerId);
+			// Clear the distance-tracking maps so EOnFrame stops referencing the dead entity and
+			// we can re-register on the new one below. OnPlayerKilled already does this at the
+			// moment of death; this is the belt-and-braces path for spawns that arrive without a
+			// preceding kill event (e.g. admin-forced respawn, slot change).
+			StopDistanceTracking(playerId);
 		}
 		else
 		{
@@ -236,15 +253,41 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		float dt = m_fDistanceTick;
 		m_fDistanceTick = 0.0;
 
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager)
+			return;
+
+		// NOTE ON POINTER SAFETY
+		// The three tracking maps hold raw IEntity pointers, which the engine does not clear when
+		// the entity is deleted - a null check does NOT prove a stored pointer is still live. Every
+		// loop below therefore re-resolves the entity from the authoritative PlayerManager and only
+		// ever dereferences the freshly-resolved pointer. The stored value is used exclusively for
+		// pointer-identity comparison (safe - no dereference) and self-healing removal, so a missed
+		// cleanup path degrades to a dropped stat rather than a use-after-free.
+		// m_aStaleTrackingIds is reused across ticks to avoid a per-tick allocation; entries are
+		// collected during iteration and removed afterwards so we never mutate a map mid-loop.
+
 		// ── On-foot distance ────────────────────────────────────────────────
+		m_aStaleTrackingIds.Clear();
 		for (int wi = 0; wi < m_mWalkingPlayers.Count(); wi++)
 		{
 			int playerId   = m_mWalkingPlayers.GetKey(wi);
-			IEntity entity = m_mWalkingPlayers.GetElement(wi);
-			if (!entity)
+			IEntity stored = m_mWalkingPlayers.GetElement(wi);
+
+			// Pointer-identity check only. If the player has since died, disconnected or been
+			// reassigned, the live entity differs (or is null) and the stale entry is dropped.
+			IEntity live = playerManager.GetPlayerControlledEntity(playerId);
+			if (!live || live != stored)
+			{
+				m_aStaleTrackingIds.Insert(playerId);
+				continue;
+			}
+
+			// A player riding in a vehicle is credited by the driver/occupant loops below.
+			if (CompartmentAccessComponent.GetVehicleIn(live))
 				continue;
 
-			Physics phys = entity.GetPhysics();
+			Physics phys = live.GetPhysics();
 			if (!phys)
 				continue;
 
@@ -256,40 +299,74 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			if (stats)
 				stats.distance_walked += dist;
 		}
+		foreach (int staleWalkId : m_aStaleTrackingIds)
+			m_mWalkingPlayers.Remove(staleWalkId);
 
 		// ── Driver distance ──────────────────────────────────────────────────
+		m_aStaleTrackingIds.Clear();
 		for (int di = 0; di < m_mDriverVehicle.Count(); di++)
 		{
 			int playerId = m_mDriverVehicle.GetKey(di);
-			IEntity vehicle = m_mDriverVehicle.Get(playerId);
-			if (!vehicle)
-				continue;
 
-			Physics phys = vehicle.GetPhysics();
-			if (!phys)
+			float driven;
+			if (!TryGetOccupiedVehicleSpeed(playerManager, playerId, driven))
+			{
+				m_aStaleTrackingIds.Insert(playerId);
 				continue;
+			}
 
 			CRF_PlayerStats stats = m_mPlayerStats.Get(playerId);
 			if (stats)
-				stats.distance_driven += phys.GetVelocity().Length() * dt;
+				stats.distance_driven += driven * dt;
 		}
+		foreach (int staleDriverId : m_aStaleTrackingIds)
+			m_mDriverVehicle.Remove(staleDriverId);
 
 		// ── Occupant distance ────────────────────────────────────────────────
+		m_aStaleTrackingIds.Clear();
 		for (int oi = 0; oi < m_mOccupantVehicle.Count(); oi++)
 		{
 			int playerId = m_mOccupantVehicle.GetKey(oi);
-			IEntity vehicle = m_mOccupantVehicle.Get(playerId);
-			if (!vehicle)
-				continue;
 
-			Physics phys = vehicle.GetPhysics();
-			if (!phys)
+			float ridden;
+			if (!TryGetOccupiedVehicleSpeed(playerManager, playerId, ridden))
+			{
+				m_aStaleTrackingIds.Insert(playerId);
 				continue;
+			}
 
 			CRF_PlayerStats stats = m_mPlayerStats.Get(playerId);
 			if (stats)
-				stats.distance_as_occupant += phys.GetVelocity().Length() * dt;
+				stats.distance_as_occupant += ridden * dt;
 		}
+		foreach (int staleOccupantId : m_aStaleTrackingIds)
+			m_mOccupantVehicle.Remove(staleOccupantId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Resolve the vehicle a player is currently riding in, straight from the engine, and report its
+	//! speed. Returns false if the player is gone, dead, or no longer in a vehicle - in which case
+	//! the caller should drop its tracking entry.
+	//! Deliberately takes nothing from the tracking maps: the whole point is to avoid dereferencing
+	//! a stored vehicle pointer that SCR_GarbageSystem may already have collected.
+	protected bool TryGetOccupiedVehicleSpeed(notnull PlayerManager playerManager, int playerId, out float speed)
+	{
+		speed = 0.0;
+
+		IEntity character = playerManager.GetPlayerControlledEntity(playerId);
+		if (!character)
+			return false;
+
+		IEntity vehicle = CompartmentAccessComponent.GetVehicleIn(character);
+		if (!vehicle)
+			return false;
+
+		Physics phys = vehicle.GetPhysics();
+		if (!phys)
+			return false;
+
+		speed = phys.GetVelocity().Length();
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -308,7 +385,16 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 			return;
 		}
 
-		// Record death for the victim 
+		// Stop distance tracking immediately on death. These maps hold raw IEntity pointers, which
+		// are NOT cleared when the engine deletes the entity - and `if (!entity)` in EOnFrame does
+		// not detect a deleted entity, only one that was never set. The corpse is removed by
+		// SCR_GarbageSystem on its own timer, independent of whether the player has respawned, so
+		// waiting for NotifyPlayerSpawned() to clear these leaves EOnFrame dereferencing freed
+		// memory every DISTANCE_UPDATE_PERIOD for any player who dies and does not respawn before
+		// GC (wave respawn, spectating, AFK after death, elimination modes, end of mission).
+		StopDistanceTracking(victimPlayerId);
+
+		// Record death for the victim
 		CRF_PlayerStats victimStats = m_mPlayerStats.Get(victimPlayerId);
 		if (victimStats)
 			victimStats.deaths++;
@@ -573,9 +659,7 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	protected void CleanupEntityHooks(int playerId)
 	{
 		// Remove the player from all distance-tracking maps.
-		m_mWalkingPlayers.Remove(playerId);
-		m_mDriverVehicle.Remove(playerId);
-		m_mOccupantVehicle.Remove(playerId);
+		StopDistanceTracking(playerId);
 
 		// Entity hooks are removed automatically when the entity is destroyed.
 		// If the entity is still alive (disconnect before death), attempt removal.
