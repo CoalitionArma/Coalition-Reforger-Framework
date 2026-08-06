@@ -209,6 +209,23 @@ class CRF_TaskCreatorComponent : SCR_BaseGameModeComponent
 		return m_sInstance;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Release the static and cancel anything still queued against this component.
+	//! Without this the static outlives the component across a mission change (the process is not
+	//! restarted between back-to-back missions), so the next mission's GetInstance() hands out a
+	//! pointer to a destroyed component. InitializeTaskMarkers also re-schedules itself on a 2s
+	//! retry loop until the marker manager exists, so it can easily still be pending here.
+	override void OnDelete(IEntity owner)
+	{
+		if (GetGame())
+			GetGame().GetCallqueue().Remove(InitializeTaskMarkers);
+
+		if (m_sInstance == this)
+			m_sInstance = null;
+
+		super.OnDelete(owner);
+	}
+
 	//=========================================================================
 	// LIFECYCLE
 	//=========================================================================

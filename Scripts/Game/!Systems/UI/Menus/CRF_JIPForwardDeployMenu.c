@@ -87,6 +87,18 @@ class CRF_JIPForwardDeployMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 
+		// Cancel every pending call into this menu BEFORE anything else. The call queue keeps
+		// running after the menu is destroyed, so a call scheduled here and not cancelled fires
+		// against a freed object - closing the menu inside the scheduling window (spamming Esc
+		// right after opening) is enough to hit it. Remove() on an unscheduled method is a no-op,
+		// so calling it unconditionally is safe.
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(UpdateUnitSelection);
+			GetGame().GetCallqueue().Remove(OpenMapWithConfig);
+			GetGame().GetCallqueue().Remove(AdjustMapZoom);
+		}
+
 		UnregisterInputHandlers();
 		RemoveAllUnitMarkers();
 
