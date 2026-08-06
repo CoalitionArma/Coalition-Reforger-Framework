@@ -1,5 +1,8 @@
 modded class COA_GamemodeManager
 {
+	protected const int STATS_TRACKING_INIT_RETRY_DELAY_MS = 250;
+	protected const int STATS_TRACKING_INIT_MAX_RETRIES = 20;
+
 	//------------------------------------------------------------------------------------------------
 	//! Initialize a player into the game either as a playable character or spectator
 	//! \param[in] playerId ID of the player to initialize
@@ -53,10 +56,7 @@ modded class COA_GamemodeManager
 			
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
-				// Group affiliation drives nametag visibility, but SCR_PlayerControllerGroupComponent
-				// isn't always resolvable immediately after SetInitialMainEntity (component/replication
-				// init order). Retry until it's ready instead of guessing a fixed delay.
-				ScheduleAssignPlayerToGroup(playerId, playerRplComp.Id(), 0);
+				AssignPlayerToGroup(playerId);
 
 				// Notify the CRF-native stats manager so it begins tracking this player.
 				// Retry briefly in case component init/replication order delays availability.
