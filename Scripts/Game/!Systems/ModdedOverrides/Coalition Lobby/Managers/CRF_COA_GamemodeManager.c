@@ -1,5 +1,8 @@
 modded class COA_GamemodeManager
 {
+	protected const int STATS_TRACKING_INIT_RETRY_DELAY_MS = 250;
+	protected const int STATS_TRACKING_INIT_MAX_RETRIES = 20;
+
 	//------------------------------------------------------------------------------------------------
 	//! Initialize a player into the game either as a playable character or spectator
 	//! \param[in] playerId ID of the player to initialize
