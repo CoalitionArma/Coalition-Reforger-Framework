@@ -48,12 +48,13 @@ modded class COA_GamemodeManager
 		if (playerCharacter && playerRplComp)
 		{
 			playerCharacter.DisableAI();
-			
+
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
+				// Playable characters wait for their gear before being handed over
+				// ScheduleAssignPlayerToCharacter owns assignment, faction, group and radios.
 				ScheduleAssignPlayerToCharacter(playerCharacter, playerId, playerController, playerRplComp.Id(), 0);
-				AssignCSIColorTeam(playerId);
-				
+
 				// Notify the CRF-native stats manager so it begins tracking this player.
 				// Retry briefly in case component init/replication order delays availability.
 				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
@@ -61,8 +62,10 @@ modded class COA_GamemodeManager
 				//Sends the player the respawn screen if they reconnect while dead
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerRespawn(playerCharacter, faction.GetFactionKey(), playerId))
 					m_RplBroadcastManager.SendRespawnScreen(playerId);
-				
+
 				COA_InitializationHelper.AssignCharacterToPlayer(playerController, playerCharacter);
+				COA_InitializationHelper.AssignFactionToPlayer(playerController, faction);
+
 				m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 			};
 		};

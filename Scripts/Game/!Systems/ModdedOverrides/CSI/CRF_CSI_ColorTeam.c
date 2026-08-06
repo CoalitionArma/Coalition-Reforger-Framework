@@ -9,6 +9,15 @@ modded class COA_GamemodeManager
 	//! role default (white for any role DetermineCSIColorTeam doesn't color).
 	protected ref map<int, int> m_mCSIColorTeamAssignedSlot = new map<int, int>();
 
+	//! Hooked to group assignment rather than to InitilizePlayer: the CSI color team belongs to the
+	//! player's position within their group, so deriving it before the player is actually in that
+	//! group reads stale (or absent) group state.
+	override protected void AssignPlayerToGroup(int playerId)
+	{
+		super.AssignPlayerToGroup(playerId);
+		AssignCSIColorTeam(playerId);
+	}
+
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
@@ -18,7 +27,7 @@ modded class COA_GamemodeManager
 		m_mCSIColorTeamAssignedSlot.Remove(playerId);
 	}
 
-	void AssignCSIColorTeam(int playerId, int retryCount = 0)
+	protected void AssignCSIColorTeam(int playerId, int retryCount = 0)
 	{
 		CSI_RplBroadcastManager csiBroadcastManager = CSI_RplBroadcastManager.GetInstance();
 		if (!csiBroadcastManager)
