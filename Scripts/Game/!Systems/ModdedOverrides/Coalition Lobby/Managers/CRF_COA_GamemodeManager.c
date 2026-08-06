@@ -1,5 +1,5 @@
 modded class COA_GamemodeManager
-{	
+{
 	//------------------------------------------------------------------------------------------------
 	//! Initialize a player into the game either as a playable character or spectator
 	//! \param[in] playerId ID of the player to initialize
@@ -26,10 +26,10 @@ modded class COA_GamemodeManager
 		{
 			// SPECTATOR PATH: Create initial entity for spectators
 			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController);
-
+	
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
-
-			COA_InitializationHelper.RemovePlayerFromCurrentGroup(playerId);
+			
+			COA_PlayerHelper.RemovePlayerFromCurrentGroup(playerId);
 		} else {
 			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, entityRplID, alreadyCreated);
@@ -48,24 +48,30 @@ modded class COA_GamemodeManager
 		if (playerCharacter && playerRplComp)
 		{
 			playerCharacter.DisableAI();
+			COA_PlayerHelper.AssignFactionToPlayer(playerController, faction);
+			COA_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
 			
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
-				ScheduleAssignPlayerToCharacter(playerCharacter, playerId, playerController, playerRplComp.Id(), 0);
-				AssignCSIColorTeam(playerId);
-				
+				// Group affiliation drives nametag visibility, but SCR_PlayerControllerGroupComponent
+				// isn't always resolvable immediately after SetInitialMainEntity (component/replication
+				// init order). Retry until it's ready instead of guessing a fixed delay.
+				ScheduleAssignPlayerToGroup(playerId, playerRplComp.Id(), 0);
+
 				// Notify the CRF-native stats manager so it begins tracking this player.
 				// Retry briefly in case component init/replication order delays availability.
 				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
-			} else {
+			}
+			else
+			{
 				//Sends the player the respawn screen if they reconnect while dead
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerRespawn(playerCharacter, faction.GetFactionKey(), playerId))
 					m_RplBroadcastManager.SendRespawnScreen(playerId);
-				
-				COA_InitializationHelper.AssignCharacterToPlayer(playerController, playerCharacter);
-				m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
-			};
+			}
+
+			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
 		};
+
 		return true;
 	}
 

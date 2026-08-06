@@ -1,0 +1,78 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD1}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_US_01.et" {
+ {
+  coords 5407.415 136.452 6119.762
+  angles 0 -36.166 0
+ }
+ {
+  coords 5577.668 110.424 6581.049
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 2958.506 167.25 4756.811
+  angles 0 6.053 0
+ }
+ {
+  coords 2991.451 167.25 4753.004
+  angles 0 16.483 0
+ }
+}
+GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
+ coords 5384.031 136.845 6142.112
+}
+Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ coords 5564.887 110.58 6579.717
+ angles 0 -173.767 0
+}
+GenericEntity : "{BA184C03DFCC7C7B}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_Conflict_US_01.et" {
+ coords 5386.192 136.889 6177.806
+ angles 0 84.06 0
+}
+$grp GenericEntity : "{D774D8C83D10DB68}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_USSR_01.et" {
+ {
+  coords 2973.811 168.302 4745.332
+ }
+ {
+  coords 6814.627 126.377 4093.338
+  angles 0 88.817 0
+ }
+ {
+  coords 6838.061 125.165 4137.281
+ }
+ {
+  coords 6828.777 125.799 4169.026
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A076E18710687DC}" {
+      SlotTemplate InventoryStorageSlot "case" {
+       Prefab "{246737687711A367}Prefabs/Weapons/Launchers/FGM148_Javelin/Launcher_FGM148_Javelin.et"
+      }
+      NumSlots 5
+     }
+    }
+    m_fMaxWeight 5000000000
+   }
+  }
+  coords 5389.891 136.826 6134.666
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A076E18710687DC}" {
+      SlotTemplate InventoryStorageSlot "case" {
+       Prefab "{CF6C7F3BDA14CED8}Prefabs/Weapons/Case.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+  }
+  coords 4627.45 169.594 10381.951
+ }
+}

@@ -1,0 +1,72 @@
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 9772.958 128.095 2135.227
+ }
+ bSiteTrigger {
+  coords 10273.89 149.915 2324.344
+ }
+}
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 5416.031 135.139 6155.814
+  m_sQuadName "flag-2"
+  m_fWorldSize 250
+  m_sDescription "Defend Ammo Depot"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2970.012 168.033 4733.184
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 250
+  m_sDescription "Mortar FOB"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9836.01 133.237 2264.433
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 250
+  m_sDescription "OPFOR MOB"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6822.739 125.22 4134.803
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 250
+  m_sDescription "OPFOR Supply Depot"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4791.677 176.008 3588.429
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_fWorldSize 250
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2524.232 163.967 4489.676
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_fWorldSize 250
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6816.465 130.518 3779.804
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_fWorldSize 250
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5576.057 110.298 6583.014
+  m_sQuadName "flag-2"
+  m_fWorldSize 250
+  m_sDescription "Supply Cache"
+  m_bShowForAnyFaction 1
+ }
+}
