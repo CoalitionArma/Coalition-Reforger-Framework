@@ -50,12 +50,29 @@ modded class COA_GamemodeManager
 		
 		if (playerCharacter && playerRplComp)
 		{
-			playerCharacter.DisableAI();
+			// NOTE: this method is a full override of COA_GamemodeManager.InitilizePlayer rather than
+			// an extension, so changes to the base version do not reach here. The three lines below
+			// mirror the base deliberately - keep them in sync.
+
+			// Equip BEFORE handing the character over, matching vanilla's PrepareEntity_S ->
+			// AssignEntity_S ordering. Previously the gearscript ran from a deferred end-of-frame
+			// call queued in COA_GearscriptCharacter.EOnInit while possession happened synchronously
+			// here, so the player took control of an unequipped character and ClearEntityGear() then
+			// wiped and re-spawned its whole inventory on a character the client was already showing.
+			ApplyGearBeforeHandover(playerCharacter);
+
 			COA_PlayerHelper.AssignFactionToPlayer(playerController, faction);
+
+			// DisableAI() removed: SCR_PlayerController.SetInitialMainEntity() already calls
+			// SetAIActivation(entity, false), and doing it here ran before ownership transfer.
 			COA_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
-			
+
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
+				// Radios are built from equipped gear and need the player to control the character,
+				// so they are set up after handover now that gear is applied before it.
+				InitializeCharacterRadiosAfterHandover(playerId, playerCharacter);
+
 				AssignPlayerToGroup(playerId);
 
 				// Notify the CRF-native stats manager so it begins tracking this player.
