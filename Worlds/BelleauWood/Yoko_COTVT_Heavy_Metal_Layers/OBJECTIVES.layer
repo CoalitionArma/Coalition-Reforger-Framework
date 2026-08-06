@@ -62,11 +62,4 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "AA Emplacments"
   m_bShowForAnyFaction 1
  }
- {
-  coords 5576.057 110.298 6583.014
-  m_sQuadName "flag-2"
-  m_fWorldSize 250
-  m_sDescription "Supply Cache"
-  m_bShowForAnyFaction 1
- }
 }
