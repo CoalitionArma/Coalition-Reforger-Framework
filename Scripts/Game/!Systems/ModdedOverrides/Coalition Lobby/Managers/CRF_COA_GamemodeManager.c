@@ -50,12 +50,26 @@ modded class COA_GamemodeManager
 		
 		if (playerCharacter && playerRplComp)
 		{
-			playerCharacter.DisableAI();
+			// NOTE: this method is a full override of COA_GamemodeManager.InitilizePlayer rather than
+			// an extension, so changes to the base version do not reach here. Keep it in sync.
+
+			// GEAR IS APPLIED AFTER POSSESSION, NOT BEFORE. Do not "fix" this ordering.
+			// Equipping the character before handover left players unable to reload: the weapons and
+			// magazines were inserted while the client did not yet own the entity. Vanilla equips
+			// after assignment too - SCR_SpawnHandlerComponent runs AssignEntity_S (line 156) before
+			// OnPlayerSpawnFinalize_S (line 160), and the loadout hook OnLoadoutSpawned lives in the
+			// latter. The gearscript runs from COA_GearscriptCharacter.EOnInit's deferred call, which
+			// lands after this function hands the character over.
 			COA_PlayerHelper.AssignFactionToPlayer(playerController, faction);
+
+			// DisableAI() removed: SCR_PlayerController.SetInitialMainEntity() already calls
+			// SetAIActivation(entity, false), and doing it here ran before ownership transfer.
 			COA_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
-			
+
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
+				// Radios are handled by SetEntityGear() once the gearscript has been applied to a
+				// character the player already controls.
 				AssignPlayerToGroup(playerId);
 
 				// Notify the CRF-native stats manager so it begins tracking this player.

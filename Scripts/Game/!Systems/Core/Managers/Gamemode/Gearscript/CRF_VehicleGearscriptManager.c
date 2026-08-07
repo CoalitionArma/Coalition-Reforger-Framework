@@ -19,7 +19,150 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	protected ref map<ResourceName, bool> m_mIsWeaponDisposableCache = new map<ResourceName, bool>();
 	protected ref map<ResourceName, int> m_mMagazineCountCache = new map<ResourceName, int>();
 	protected ref map<ResourceName, bool> m_mIsGLHECache = new map<ResourceName, bool>();
-	
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 VEHICLE SPAWN SCHEDULING
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	// Vehicle spawners used to spawn themselves synchronously inside their own EOnInit, and each held
+	// EntityEvent.FRAME for the whole mission just to decrement a respawn timer. On a map like Eden
+	// Prejoin that is 42 vehicles created in a single frame during world streaming, followed by 42
+	// synchronised gearscript applications 2.5s later (each of which spawns a full inventory), plus
+	// 42 permanent per-entity frame callbacks.
+	//
+	// Vanilla never does this: SCR_AmbientVehicleSpawnPointComponent only REGISTERS itself in
+	// OnPostInit, and SCR_AmbientVehicleSystem spawns exactly one spawnpoint per update tick,
+	// round-robin, from a single server-side system. This mirrors that: spawners register here, and
+	// this manager drains a queue a few at a time so the work is spread across frames instead of
+	// landing in one.
+
+	[Attribute("2", desc: "Maximum vehicles spawned per queue drain. Keep low - this exists to stop every spawner firing in the same frame.", params: "1 16 1", category: "CRF Vehicle Spawning")]
+	protected int m_iMaxSpawnsPerTick;
+
+	[Attribute("0.25", desc: "Seconds between vehicle spawn queue drains.", params: "0.05 5 0.05", category: "CRF Vehicle Spawning")]
+	protected float m_fSpawnQueuePeriod;
+
+	[Attribute("5", desc: "Radius in metres that must be clear before a vehicle spawns. Matches vanilla SCR_AmbientVehicleSpawnPointComponent.SPAWNING_RADIUS.", params: "1 30 0.5", category: "CRF Vehicle Spawning")]
+	protected float m_fSpawnClearanceRadius;
+
+	[Attribute("15", desc: "Seconds to wait before retrying a spawner whose spawn point was blocked.", params: "1 120 1", category: "CRF Vehicle Spawning")]
+	protected float m_fBlockedSpawnRetryDelay;
+
+	//! Every registered spawner. Used to drive respawn timers centrally.
+	protected ref array<COA_VehicleSpawner> m_aRegisteredSpawners = new array<COA_VehicleSpawner>();
+
+	//! Spawners waiting for their turn to spawn (initial spawn or an elapsed respawn timer).
+	protected ref array<COA_VehicleSpawner> m_aPendingSpawns = new array<COA_VehicleSpawner>();
+
+	//! Scratch buffer for spawners that turned out to be dead during a drain, so the queue is never
+	//! mutated while it is being indexed.
+	protected ref array<COA_VehicleSpawner> m_aStaleSpawners = new array<COA_VehicleSpawner>();
+
+	protected float m_fSpawnQueueTick = 0;
+
+	//------------------------------------------------------------------------------------------------
+	//! Clamped accessors. These are prefab attributes, so a bad value on one game mode prefab would
+	//! otherwise silently break vehicle spawning for an entire mission - a batch size of 0 means the
+	//! queue never drains and no vehicle ever spawns.
+	protected int GetMaxSpawnsPerTick()
+	{
+		return Math.Max(1, m_iMaxSpawnsPerTick);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected float GetSpawnQueuePeriod()
+	{
+		return Math.Max(0.05, m_fSpawnQueuePeriod);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called by COA_VehicleSpawner.EOnInit instead of spawning inline. Queues the initial spawn.
+	void RegisterSpawner(COA_VehicleSpawner spawner)
+	{
+		if (!spawner)
+			return;
+
+		if (!m_aRegisteredSpawners.Contains(spawner))
+			m_aRegisteredSpawners.Insert(spawner);
+
+		QueueSpawn(spawner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UnregisterSpawner(COA_VehicleSpawner spawner)
+	{
+		m_aRegisteredSpawners.RemoveItem(spawner);
+		m_aPendingSpawns.RemoveItem(spawner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Enqueue a spawner. Safe to call repeatedly - a spawner is only ever queued once.
+	void QueueSpawn(COA_VehicleSpawner spawner)
+	{
+		if (!spawner || m_aPendingSpawns.Contains(spawner))
+			return;
+
+		m_aPendingSpawns.Insert(spawner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Central respawn-timer tick. This replaces the per-spawner EOnFrame: one component ticks for
+	//! all spawners rather than every spawner ticking for itself.
+	//! StartRespawnTimer() on the spawner still just sets m_fTimer/m_bWaitingToRespawn, so the
+	//! damage-manager path that calls it is unchanged.
+	protected void UpdateSpawnerTimers(float timeSlice)
+	{
+		m_aStaleSpawners.Clear();
+
+		foreach (COA_VehicleSpawner spawner : m_aRegisteredSpawners)
+		{
+			if (!spawner)
+			{
+				m_aStaleSpawners.Insert(spawner);
+				continue;
+			}
+
+			if (spawner.m_fTimer > 0)
+				spawner.m_fTimer -= timeSlice;
+
+			// The flag is deliberately NOT cleared here - SpawnVehicle() reads it to decide whether
+			// this is a respawn that should cost tickets, and clears it itself once the spawn is
+			// committed. QueueSpawn() dedupes, so re-queueing on subsequent ticks is harmless.
+			if (spawner.m_bWaitingToRespawn && spawner.m_fTimer <= 0)
+				QueueSpawn(spawner);
+		}
+
+		foreach (COA_VehicleSpawner stale : m_aStaleSpawners)
+			m_aRegisteredSpawners.RemoveItem(stale);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Drain up to m_iMaxSpawnsPerTick spawners from the queue.
+	protected void DrainSpawnQueue()
+	{
+		int spawned = 0;
+		int maxSpawns = GetMaxSpawnsPerTick();
+
+		while (spawned < maxSpawns && !m_aPendingSpawns.IsEmpty())
+		{
+			COA_VehicleSpawner spawner = m_aPendingSpawns[0];
+			m_aPendingSpawns.Remove(0);
+
+			if (!spawner)
+				continue;
+
+			// A blocked spawn point is not a failure - requeue it on a delay and move on, so a
+			// vehicle parked on a spawn pad just postpones that one spawner instead of losing it.
+			if (!SpawnVehicle(spawner))
+			{
+				spawner.m_fTimer = m_fBlockedSpawnRetryDelay;
+				spawner.m_bWaitingToRespawn = true;
+			}
+
+			spawned++;
+		}
+	}
+
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
@@ -56,9 +199,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RemoveVehicleFromSpawnedArray(Vehicle vehicle)
 	{
-		if (!m_aSpawnedVehicles.Contains(vehicle))
-			return;
 		m_aSpawnedVehicles.RemoveItem(vehicle);
+
+		// Also drop it from the faction-resolution queue. This was previously missed, so a vehicle
+		// deleted while still queued left a dangling pointer that EOnFrame dereferenced every 5s
+		// via FindFactionByClosestPlayer() for the rest of the mission. RemoveItem() is a no-op if
+		// the vehicle was never queued, and both calls are pointer comparisons - no dereference.
+		m_VehiclesInQueue.RemoveItem(vehicle);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -140,6 +287,22 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
+		// Central spawner tick. This single frame callback now serves every vehicle spawner in the
+		// mission, replacing one EntityEvent.FRAME per spawner. Both the timer update and the queue
+		// drain run on the same throttle, so respawn timers cost one pass every m_fSpawnQueuePeriod
+		// rather than a pass every frame.
+		m_fSpawnQueueTick += timeSlice;
+		if (m_fSpawnQueueTick >= GetSpawnQueuePeriod())
+		{
+			float spawnerDelta = m_fSpawnQueueTick;
+			m_fSpawnQueueTick = 0;
+
+			UpdateSpawnerTimers(spawnerDelta);
+
+			if (!m_aPendingSpawns.IsEmpty())
+				DrainSpawnQueue();
+		}
+
 		if (m_fUpdateBuffer >= 5)
 		{
 			// Pre-allocate array capacity - PERFORMANCE OPTIMIZATION
@@ -323,6 +486,27 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 		return m_mVehicleSupplyCosts.Get(resource);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Deferred entry point for SetVehicleGear, keyed on RplId instead of an entity pointer.
+	//! Callers that schedule gear application through the call queue must use this: the queue holds
+	//! its arguments for the whole delay, and the `if (!vehicle)` guard in SetVehicleGear does NOT
+	//! detect an entity the engine has already deleted - it only catches a pointer that was never
+	//! set. Resolving through replication at call time is what actually makes this safe.
+	//! \param[in] vehicleId RplId of the vehicle to equip
+	//! \param[in] factionKey The key identifying the faction to use for gear configuration
+	void SetVehicleGearById(RplId vehicleId, string factionKey)
+	{
+		RplComponent vehicleRpl = RplComponent.Cast(Replication.FindItem(vehicleId));
+		if (!vehicleRpl)
+			return;
+
+		IEntity vehicle = vehicleRpl.GetEntity();
+		if (!vehicle)
+			return;
+
+		SetVehicleGear(vehicle, factionKey);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Set gear for a vehicle entity based on its faction key
 	//!
@@ -1346,31 +1530,136 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Used as a bridge to spawn the vehicle and register it in this manager from the vehicle spawner
+	//! Spawn a spawner's vehicle. Called only from DrainSpawnQueue() - never inline from EOnInit.
 	//! \param[in] spawner the vehicle spawner that spawned this vehicle
-	//! \return fuckall
-	void SpawnVehicle(COA_VehicleSpawner spawner)
+	//! \return true if a vehicle was spawned (or the spawn was deliberately skipped, e.g. no tickets);
+	//!         false only if the spawn point was blocked and the caller should retry later
+	bool SpawnVehicle(COA_VehicleSpawner spawner)
 	{
-		if (!spawner.m_sFactionKey)
+		if (!spawner)
+			return true;
+
+		if (spawner.m_sFactionKey.IsEmpty())
 		{
 			Debug.Error("No Faction Key set on " + spawner.m_rVehicle + " spawner");
-			return;
+			return true;
 		}
+
+		if (spawner.m_rVehicle.IsEmpty())
+		{
+			Debug.Error("No Vehicle set on " + spawner + " spawner");
+			return true;
+		}
+
+		// Validate the prefab before handing it to the engine. Vanilla guards every Resource.Load
+		// that feeds a spawn (SCR_VehicleSpawner.PerformSpawn: `if (!resource) return;`); passing an
+		// unresolved Resource into SpawnEntityPrefab is undefined. This also routes through the
+		// resource cache that the rest of this class already uses, so 20 identical spawners stop
+		// re-loading the same prefab 20 times.
+		Resource vehicleResource = GetCachedResource(spawner.m_rVehicle);
+		if (!vehicleResource || !vehicleResource.IsValid())
+		{
+			Print(string.Format("[CRF_VehicleGearscriptManager] Could not load vehicle prefab '%1' - check the mod set for this mission.", spawner.m_rVehicle), LogLevel.ERROR);
+			return true;
+		}
+
+		// Remove whatever this spawner put here last, BEFORE the clearance test - otherwise our own
+		// wreck is what blocks the pad. Previously the only DeleteEntityAndChildren calls in
+		// COA_VehicleSpawner were inside #ifdef WORKBENCH, so on a live server a respawn dropped a
+		// fresh vehicle straight on top of the old one.
+		// Deletion is not guaranteed to be reflected in world queries the same frame, so if we did
+		// remove something, take the retry path and test clearance on the next drain instead.
+		if (ClearPreviousVehicle(spawner))
+			return false;
+
+		// Clearance gate, matching SCR_AmbientVehicleSpawnPointComponent: prove the pad is clear,
+		// then spawn at the spawner's authored transform so the mission-maker's rotation is kept.
+		// A blocked pad (a player parked on it, debris) returns false so the caller requeues rather
+		// than spawning a rigid body inside another one.
+		// This is deliberately ahead of the ticket accounting below: a blocked spawn must cost the
+		// faction nothing, or a permanently obstructed pad would drain tickets on every retry.
+		vector clearPosition;
+		if (!SCR_WorldTools.FindEmptyTerrainPosition(clearPosition, spawner.GetOrigin(), m_fSpawnClearanceRadius, m_fSpawnClearanceRadius))
+			return false;
+
 		//Do not spawn the vehicle if the faction doesn't have the tickets
 		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
-		if (spawner.m_bWaitingToRespawn && !spawner.m_bShouldRespawnOnSideRespawn)
+		// m_RespawnManager is only assigned if COA_RespawnManager.GetInstance() resolved at spawner
+		// init; it was previously dereferenced unguarded here, which never fired on the first spawn
+		// (m_bWaitingToRespawn is false then) and so only crashed at the first respawn, minutes in.
+		if (spawner.m_bWaitingToRespawn && !spawner.m_bShouldRespawnOnSideRespawn && spawner.m_RespawnManager)
 		{
-			if (spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) != 0 && spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) < spawner.m_iTicketsPerRespawn)
-				return;
-		
+			int factionTickets = spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey);
+			if (factionTickets != 0 && factionTickets < spawner.m_iTicketsPerRespawn)
+				return true;
+
 			if (spawner.m_RespawnManager.TicketsRemaining(spawner.m_sFactionKey))
 				spawner.m_RespawnManager.SubtractTicket(spawner.m_sFactionKey, spawner.m_iTicketsPerRespawn);
 		}
+
+		// Consume the pending-respawn flag only now that the spawn is actually going ahead. The
+		// ticket block above reads it, so it must not be cleared before this point - the old inline
+		// EOnFrame path relied on the same ordering.
+		spawner.m_bWaitingToRespawn = false;
+
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		spawner.GetTransform(params.Transform);
-		IEntity vehicle = GetGame().SpawnEntityPrefab(Resource.Load(spawner.m_rVehicle), GetGame().GetWorld(), params);
+
+		IEntity vehicle = GetGame().SpawnEntityPrefab(vehicleResource, GetGame().GetWorld(), params);
+		if (!vehicle)
+		{
+			Print(string.Format("[CRF_VehicleGearscriptManager] SpawnEntityPrefab returned null for '%1'.", spawner.m_rVehicle), LogLevel.ERROR);
+			return true;
+		}
+
+		SettleSpawnedVehicle(vehicle);
 		SetVehicle(vehicle, spawner);
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Delete the vehicle this spawner spawned previously, if it is still around.
+	//! Resolved through replication rather than the raw m_eVehicle pointer, which the engine does not
+	//! null when the entity is deleted.
+	//! \return true if an entity was actually deleted, so the caller can let the world settle before
+	//!         running a clearance query over the same spot
+	protected bool ClearPreviousVehicle(notnull COA_VehicleSpawner spawner)
+	{
+		if (!spawner.m_VehicleRplId.IsValid())
+		{
+			spawner.m_eVehicle = null;
+			return false;
+		}
+
+		RplComponent previousRpl = RplComponent.Cast(Replication.FindItem(spawner.m_VehicleRplId));
+		spawner.m_VehicleRplId = RplId.Invalid();
+		spawner.m_eVehicle = null;
+
+		if (!previousRpl)
+			return false;
+
+		IEntity previousVehicle = previousRpl.GetEntity();
+		if (!previousVehicle)
+			return false;
+
+		SCR_EntityHelper.DeleteEntityAndChildren(previousVehicle);
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Post-spawn physics settle, copied from SCR_AmbientVehicleSpawnPointComponent.
+	//! Without the handbrake a vehicle spawned on any incline rolls off its pad; without the downward
+	//! velocity nudge it can rest interpenetrating the terrain instead of settling onto it.
+	protected void SettleSpawnedVehicle(notnull IEntity vehicle)
+	{
+		CarControllerComponent carController = CarControllerComponent.Cast(vehicle.FindComponent(CarControllerComponent));
+		if (carController)
+			carController.SetPersistentHandBrake(true);
+
+		Physics vehiclePhysics = vehicle.GetPhysics();
+		if (vehiclePhysics)
+			vehiclePhysics.SetVelocity("0 -1 0");
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1380,7 +1669,21 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 	//! \return an array of ints representing the supply values in the same order as the items put in
 	void SetVehicle(IEntity vehicleEntity, COA_VehicleSpawner spawner)
 	{
+		if (!spawner)
+			return;
+
 		spawner.m_eVehicle = vehicleEntity;
+
+		// Also record the RplId so the spawner can identify its vehicle later without dereferencing
+		// a pointer the engine may already have freed. See ClearPreviousVehicle().
+		spawner.m_VehicleRplId = RplId.Invalid();
+		if (vehicleEntity)
+		{
+			RplComponent vehicleRpl = RplComponent.Cast(vehicleEntity.FindComponent(RplComponent));
+			if (vehicleRpl)
+				spawner.m_VehicleRplId = vehicleRpl.Id();
+		}
+
 		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);
 		if (vehicle)
 		{
@@ -1388,9 +1691,12 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			vehicle.m_sFactionKey = spawner.m_sFactionKey;
 			if (spawner.m_OverridedVehicleLoadout)
 				vehicle.m_OverridedVehicleLoadout = spawner.m_OverridedVehicleLoadout;
-			if (spawner.m_aVehicleGearscriptOverrides.Count() > 0)
+			// These are [Attribute] arrays with no default initialiser, so they are null on any
+			// spawner prefab authored before the attribute existed. Count() was called on them
+			// unguarded, on every single vehicle spawn.
+			if (spawner.m_aVehicleGearscriptOverrides && !spawner.m_aVehicleGearscriptOverrides.IsEmpty())
 				vehicle.m_aVehicleGearscriptOverrides = spawner.m_aVehicleGearscriptOverrides;
-			if (spawner.m_aAdditionalVehicleItems.Count() > 0)
+			if (spawner.m_aAdditionalVehicleItems && !spawner.m_aAdditionalVehicleItems.IsEmpty())
 				vehicle.m_aAdditionalVehicleItems = spawner.m_aAdditionalVehicleItems;
 			if (!spawner.m_bShouldAddAmmo)
 				vehicle.m_bShouldAddAmmo = false;
