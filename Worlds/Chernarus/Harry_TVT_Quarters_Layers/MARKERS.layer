@@ -1,0 +1,8 @@
+$grp SCR_BaseTriggerEntity {
+ RESPAWN2 {
+  coords 12168.652 84.788 13939.694
+ }
+ RESPAWN3 {
+  coords 12837.118 106.6 14635.568
+ }
+}
