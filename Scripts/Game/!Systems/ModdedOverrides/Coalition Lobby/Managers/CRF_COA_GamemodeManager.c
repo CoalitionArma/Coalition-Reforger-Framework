@@ -75,6 +75,13 @@ modded class COA_GamemodeManager
 				// Notify the CRF-native stats manager so it begins tracking this player.
 				// Retry briefly in case component init/replication order delays availability.
 				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
+
+				// After a crash resume, put this player back where they were. No-op on a normal
+				// spawn, and one-shot per player - a later death and respawn uses a normal spawn
+				// point rather than teleporting them back to a pre-crash position.
+				CRF_PersistenceManager persistenceManager = CRF_PersistenceManager.GetInstance();
+				if (persistenceManager)
+					persistenceManager.RestorePlayerPosition(playerId);
 			}
 			else
 			{
