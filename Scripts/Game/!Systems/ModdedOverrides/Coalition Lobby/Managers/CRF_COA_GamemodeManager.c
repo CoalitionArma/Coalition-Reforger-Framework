@@ -51,16 +51,15 @@ modded class COA_GamemodeManager
 		if (playerCharacter && playerRplComp)
 		{
 			// NOTE: this method is a full override of COA_GamemodeManager.InitilizePlayer rather than
-			// an extension, so changes to the base version do not reach here. The three lines below
-			// mirror the base deliberately - keep them in sync.
+			// an extension, so changes to the base version do not reach here. Keep it in sync.
 
-			// Equip BEFORE handing the character over, matching vanilla's PrepareEntity_S ->
-			// AssignEntity_S ordering. Previously the gearscript ran from a deferred end-of-frame
-			// call queued in COA_GearscriptCharacter.EOnInit while possession happened synchronously
-			// here, so the player took control of an unequipped character and ClearEntityGear() then
-			// wiped and re-spawned its whole inventory on a character the client was already showing.
-			ApplyGearBeforeHandover(playerCharacter);
-
+			// GEAR IS APPLIED AFTER POSSESSION, NOT BEFORE. Do not "fix" this ordering.
+			// Equipping the character before handover left players unable to reload: the weapons and
+			// magazines were inserted while the client did not yet own the entity. Vanilla equips
+			// after assignment too - SCR_SpawnHandlerComponent runs AssignEntity_S (line 156) before
+			// OnPlayerSpawnFinalize_S (line 160), and the loadout hook OnLoadoutSpawned lives in the
+			// latter. The gearscript runs from COA_GearscriptCharacter.EOnInit's deferred call, which
+			// lands after this function hands the character over.
 			COA_PlayerHelper.AssignFactionToPlayer(playerController, faction);
 
 			// DisableAI() removed: SCR_PlayerController.SetInitialMainEntity() already calls
@@ -69,10 +68,8 @@ modded class COA_GamemodeManager
 
 			if (!COA_EntityHelper.IsSpectator(playerCharacter))
 			{
-				// Radios are built from equipped gear and need the player to control the character,
-				// so they are set up after handover now that gear is applied before it.
-				InitializeCharacterRadiosAfterHandover(playerId, playerCharacter);
-
+				// Radios are handled by SetEntityGear() once the gearscript has been applied to a
+				// character the player already controls.
 				AssignPlayerToGroup(playerId);
 
 				// Notify the CRF-native stats manager so it begins tracking this player.
