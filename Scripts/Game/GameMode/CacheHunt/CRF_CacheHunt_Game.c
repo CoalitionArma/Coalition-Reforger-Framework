@@ -906,7 +906,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	protected void ApplyCacheArsenal(notnull CRF_CacheHuntCacheData data)
 	{
 		if (!data.m_Cache)
+		{
+			Print(string.Format("[CRF_CacheHunt] Cache %1 has no entity by the time its arsenal was due to be filled.", data.m_iIndex + 1), LogLevel.WARNING);
 			return;
+		}
 
 		array<ResourceName> ammunition = GetDefenderAmmunition();
 		if (ammunition.IsEmpty())
@@ -931,9 +934,11 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			arsenal.CRF_SetOverwriteArsenalConfig(itemList);
 		}
 
+		int before = itemList.CRF_GetItemCount();
 		itemList.CRF_ReplaceWithStandaloneItems(ammunition, m_iAmmoSupplyCost);
 
-		Print(string.Format("[CRF_CacheHunt] Cache %1 arsenal filled with %2 ammunition type(s) from the '%3' gearscript.", data.m_iIndex + 1, itemList.CRF_GetItemCount(), m_DefendingSide), LogLevel.NORMAL);
+		Print(string.Format("[CRF_CacheHunt] Cache %1 arsenal list rewritten: %2 authored entries -> %3 gearscript ammunition entries.",
+			data.m_iIndex + 1, before, itemList.CRF_GetItemCount()), LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -950,15 +955,37 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		COA_GearscriptManager gearscriptManager = COA_GearscriptManager.GetInstance();
-		if (!gamemode || !gearscriptManager)
-			return m_aDefenderAmmunition;
-
-		ResourceName gearScriptResource = gamemode.GetGearScriptResource(m_DefendingSide);
-		if (gearScriptResource.IsEmpty())
+		if (!gamemode)
 		{
-			Print(string.Format("[CRF_CacheHunt] No gearscript assigned to the defending faction '%1'. Caches cannot be stocked.", m_DefendingSide), LogLevel.WARNING);
+			Print("[CRF_CacheHunt] COA_Gamemode.GetInstance() is null - cannot resolve the defending gearscript.", LogLevel.ERROR);
 			return m_aDefenderAmmunition;
 		}
+
+		if (!gearscriptManager)
+		{
+			Print("[CRF_CacheHunt] COA_GearscriptManager.GetInstance() is null - cannot load the defending gearscript.", LogLevel.ERROR);
+			return m_aDefenderAmmunition;
+		}
+
+		// Resolve the gearscript the same way CRF_VehicleGearscriptManager.SetTruckGear does:
+		// straight off the faction's container. GetGearScriptResource() returns the separate
+		// replicated "current" field instead, which is not the same value and is populated
+		// later in startup.
+		ResourceName gearScriptResource;
+		COA_GearScriptContainer gsContainer = gamemode.GetGearScriptSettings(m_DefendingSide);
+		if (gsContainer)
+			gearScriptResource = gsContainer.m_rGearScript;
+
+		if (gearScriptResource.IsEmpty())
+			gearScriptResource = gamemode.GetGearScriptResource(m_DefendingSide);
+
+		if (gearScriptResource.IsEmpty())
+		{
+			Print(string.Format("[CRF_CacheHunt] No gearscript assigned to the defending faction '%1' (container found: %2). Caches cannot be stocked.", m_DefendingSide, gsContainer != null), LogLevel.WARNING);
+			return m_aDefenderAmmunition;
+		}
+
+		Print(string.Format("[CRF_CacheHunt] Defending faction '%1' resolved to gearscript '%2'.", m_DefendingSide, gearScriptResource), LogLevel.NORMAL);
 
 		COA_GearScriptConfig config = gearscriptManager.LoadGearScriptConfig(gearScriptResource);
 		if (!config)
@@ -996,9 +1023,44 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			}
 		}
 
-		Print(string.Format("[CRF_CacheHunt] Cache ammunition list built from '%1': %2 magazine type(s).", gearScriptResource, m_aDefenderAmmunition.Count()), LogLevel.NORMAL);
+		if (m_aDefenderAmmunition.IsEmpty())
+		{
+			// The config parsed but every magazine array in it was empty, which usually means
+			// the wrong gearscript is assigned to this faction rather than a code fault.
+			Print(string.Format("[CRF_CacheHunt] Gearscript '%1' parsed but contains no magazines. Rifles=%2 UGLs=%3 Carbines=%4 Pistols=%5 Sniper=%6 CustomRoles=%7",
+				gearScriptResource,
+				CountOrZero(config.m_Rifles),
+				CountOrZero(config.m_RifleUGLs),
+				CountOrZero(config.m_Carbines),
+				CountOrZero(config.m_Pistols),
+				config.m_SNIPER != null,
+				CountOrZeroRoles(config.m_RolesToSetCustomSettings)), LogLevel.WARNING);
+		}
+		else
+		{
+			Print(string.Format("[CRF_CacheHunt] Cache ammunition list built from '%1': %2 magazine type(s). First entry: %3",
+				gearScriptResource, m_aDefenderAmmunition.Count(), m_aDefenderAmmunition[0]), LogLevel.NORMAL);
+		}
 
 		return m_aDefenderAmmunition;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int CountOrZero(array<ref COA_Weapon_Class> weapons)
+	{
+		if (!weapons)
+			return 0;
+
+		return weapons.Count();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int CountOrZeroRoles(array<ref COA_Role_Custom_Gear> roles)
+	{
+		if (!roles)
+			return 0;
+
+		return roles.Count();
 	}
 
 	//------------------------------------------------------------------------------------------------
