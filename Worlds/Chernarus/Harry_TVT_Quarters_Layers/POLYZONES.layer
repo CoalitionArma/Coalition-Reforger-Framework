@@ -47,3 +47,23 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsMissionMaking/PolyZone/Safestart
   }
  }
 }
+PolylineShapeEntity : "{AC323BE113AE52F4}PrefabsMissionMaking/PolyZone/ForwardDeploy/OPFOR_ForwardDeployZone.et" {
+ coords 12723.509 110.64 14730.409
+ Points {
+  ShapePoint "{6A0D786B2F2C2498}" {
+   Position 420.124 0 -197.139
+  }
+  ShapePoint "{6A0D786B2D4045EB}" {
+   Position -1318.868 0 -2873.87
+  }
+  ShapePoint "{6A0D786B2C780E16}" {
+   Position -2034.358 0 -2488.901
+  }
+  ShapePoint "{6A0D786B37CB2022}" {
+   Position -873.191 0 -777.056
+  }
+  ShapePoint "{6A0D786B346C0145}" {
+   Position -243.389 0 331.186
+  }
+ }
+}
