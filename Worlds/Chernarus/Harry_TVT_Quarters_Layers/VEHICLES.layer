@@ -1,0 +1,110 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 10595.086 120.616 10644.202
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10582.897 118.464 10625.69
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10574.474 116.979 10612.896
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10589.376 119.631 10635.53
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10577.467 117.501 10617.442
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10586.185 119.052 10630.684
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10580.202 117.978 10621.598
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10571.734 116.502 10608.736
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10592.594 120.205 10640.417
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10572.898 119.101 10629.415
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10587.782 121.853 10652.02
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10564.431 117.616 10616.554
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10578.88 120.245 10638.501
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10585.29 121.426 10648.234
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10575.594 119.602 10633.508
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10582.072 120.845 10643.348
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10567.17 118.07 10620.714
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10570.163 118.593 10625.26
+  angles 0 123.362 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
