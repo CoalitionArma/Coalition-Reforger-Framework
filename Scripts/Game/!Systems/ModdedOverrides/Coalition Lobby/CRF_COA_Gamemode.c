@@ -1,6 +1,38 @@
 modded class COA_Gamemode
 {
 //=============================================================================================================================================================================================================================================================================================================================================================
+//	 PERSISTENCE HOOKS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Re-run the side effects of the CURRENT phase without advancing it.
+	//!
+	//! Needed for crash resume. The phase value itself comes back with the save data (see
+	//! COA_GamemodeStateSerializer), but everything that phase implies - game state, time scale,
+	//! menus - normally only happens inside AdvanceGamemodeState(). Calling AdvanceGamemodeState()
+	//! on resume would push the mission one phase too far, so this drives the same handler directly.
+	void ReapplyGamemodeState()
+	{
+		OnGamemodeStateChanged();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Seed the reconnect map from save data so a returning player lands back in the slot they held
+	//! when the server died. Called by COA_SlottingManagerSerializer during load.
+	//!
+	//! Reuses the existing reconnect path rather than adding a parallel one: after a crash resume,
+	//! every player reconnecting is exactly the case that map was built for.
+	//! \param[in] playerGuid identity GUID of the player who held the slot
+	//! \param[in] slotId the slot to give back to them
+	void RestoreReconnectSlot(string playerGuid, int slotId)
+	{
+		if (playerGuid.IsEmpty() || slotId < 0)
+			return;
+
+		m_mReconnectSlotByGuid.Set(playerGuid, slotId);
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
 //	 ATTRIBUTES
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
@@ -71,16 +103,38 @@ modded class COA_Gamemode
 				case COA_EGamemodeState.GAME: {
 					SetGameState(SCR_EGameModeState.GAME);
 					ApplyMissionTimeScale();
-					foreach (Vehicle vehicle : CRF_VehicleGearscriptManager.GetInstance().GetSpawnedVehicleArray())
+
+					CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+					if (vehicleGearscriptManager)
 					{
-						if (!vehicle)
-							continue;
-						vehicle.SpawnVehiclePassengers();
+						foreach (Vehicle vehicle : vehicleGearscriptManager.GetSpawnedVehicleArray())
+						{
+							if (!vehicle)
+								continue;
+							vehicle.SpawnVehiclePassengers();
+						}
 					}
+
+					// Persistence: opens the session. Writes the crash marker and takes a save point,
+					// so a crash from this moment on is resumable rather than resetting the mission.
+					CRF_PersistenceManager persistenceManagerStart = CRF_PersistenceManager.GetInstance();
+					if (persistenceManagerStart)
+					{
+						persistenceManagerStart.OnMissionStarted();
+						persistenceManagerStart.RequestImmediateSave("Mission start");
+					}
+
 					break;
 				}
 				
 				case COA_EGamemodeState.AAR: {
+					// Persistence: closes the session. Clears the crash marker and purges this
+					// mission's saves, so a mission that finished normally is never resumed on the
+					// next boot. Runs before the stats flush so a save cannot be taken in between.
+					CRF_PersistenceManager persistenceManagerEnd = CRF_PersistenceManager.GetInstance();
+					if (persistenceManagerEnd)
+						persistenceManagerEnd.OnMissionCompleted();
+
 					// Flush all player stats BEFORE SetGameState
 					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
 					if (statsManager)

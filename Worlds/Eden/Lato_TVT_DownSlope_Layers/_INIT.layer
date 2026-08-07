@@ -1,8 +1,15 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 7037.502 94.714 3778.446
 }
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  COA_GamemodeManager "{652A3313EC014E7F}" {
+   components {
+    CRF_PersistenceManager "{6A0D5B638A20AAAF}" {
+     m_fAutoSaveInterval 20
+    }
+   }
+  }
   CRF_SearchAndDestroyGamemodeManager "{68B23C5D2661645B}" {
    attackingSide "OPFOR"
    defendingSide "INDFOR"
@@ -25,9 +32,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 50
- m_bAllowEspionage 0
  m_bLockUnusedSlots 1
- m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
@@ -51,7 +56,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
@@ -61,7 +66,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    "2. Eliminate FIA forces in the region"\
    ""\
    "Indfor can deploy far forward, so leave your SS zone expecting to get into contact quickly."
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
@@ -70,14 +75,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_sTextData ""\
    "1. Defend bombsite A & B"\
    "2. Eliminate SOV forces"
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
    m_sTextData ""
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
@@ -355,35 +360,35 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/COA_GS_US80s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{31798400ADCA306C}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_RPK.conf"
-  m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{5373A80D0CED79F1}Configs/Gearscripts/Custom/Latofel/COA_GS_FIA_MixedWeapons.conf"
-  m_bEnableShareableMarkers 1
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
+  m_bEnableShareableMarkers 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 1
  }
 }

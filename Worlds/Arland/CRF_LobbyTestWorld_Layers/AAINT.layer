@@ -19,6 +19,13 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  COA_GamemodeManager "{652A3313EC014E7F}" {
+   components {
+    CRF_PersistenceManager "{6A0D5B638A20AAAF}" {
+     m_fAutoSaveInterval 15
+    }
+   }
+  }
   CRF_CommunityTagManager "{69651E04AFDA77E5}" {
   }
   CRF_TaskCreatorComponent "{69C31CE99C05917A}" {

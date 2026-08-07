@@ -5,6 +5,8 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    components {
     CRF_CommunityTagManager "{6A0237F6F1AD6791}" {
     }
+    CRF_PersistenceManager "{6A0D5B638A20AAAF}" {
+    }
     CRF_ServerStatsManager "{6A0237F408E5B447}" {
     }
     CRF_SlotLottery "{6A0237F60FB147EB}" {
