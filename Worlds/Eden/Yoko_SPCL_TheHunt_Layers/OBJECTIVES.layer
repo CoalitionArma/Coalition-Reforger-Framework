@@ -1,0 +1,11 @@
+$grp SCR_BaseTriggerEntity {
+ rally_start {
+  coords 1407.168 49.084 5843.878
+ }
+ rally_end {
+  coords 7538.148 2.402 6686.05
+ }
+ rally_cp1 {
+  coords 1431.953 51.825 5834.433
+ }
+}
