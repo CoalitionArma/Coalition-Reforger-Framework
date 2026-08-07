@@ -1,0 +1,18 @@
+FrameWidgetClass {
+ {
+  VerticalLayoutWidgetClass "{5876BC8CDCDF5238}" {
+   Prefab "{5876BC8CDCDF5238}"
+   {
+    HorizontalLayoutWidgetClass "{5876BC8CDCC18243}" {
+     Prefab "{5876BC8CDCC18243}"
+     {
+      OverlayWidgetClass "{5876BC8CDCC18247}" {
+       Prefab "{5876BC8CDCC18247}"
+       "Is Visible" 0
+      }
+     }
+    }
+   }
+  }
+ }
+}
