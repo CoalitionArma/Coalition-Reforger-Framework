@@ -114,7 +114,11 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		foreach (int i, string playerId: playerIds)
 		{
 			//Let's delay adding them until the player has had time to teleport into the plane
-			GetGame().GetCallqueue().CallLater(flight.m_PlayersInPlane.Insert, 2000, false, pm.GetPlayerControlledEntity(playerId.ToInt()));
+			// Register by player ID, not by entity pointer. This previously scheduled Insert()
+			// directly on the flight's member array with an entity resolved 2000ms early - so the
+			// queue held both a pointer into another object's container and a character that could
+			// die in transit. RegisterPlayerInPlane re-resolves everything at call time.
+			GetGame().GetCallqueue().CallLater(RegisterPlayerInPlane, 2000, false, flight.m_RplId, playerId.ToInt());
 			EntitySlotInfo slot = slotMan.GetSlotByName("Slot" + slotId.ToString());
 			vector transform[4];
 			slot.GetLocalTransform(transform);
@@ -135,6 +139,39 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		RpcDo_PlaySound(planeRplId);
 		Rpc(RpcDo_PlaySound, planeRplId);
 		RedLight(planeRplId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Deferred registration of a player as "in the plane", resolved entirely at call time.
+	//! Both the flight and the player may be gone by the time this runs (flight completed, player
+	//! died or disconnected during the 2s teleport window), so nothing is captured up front.
+	protected void RegisterPlayerInPlane(RplId flightRplId, int playerId)
+	{
+		CRF_AirdropFlight flight = FindFlightByRplId(flightRplId);
+		if (!flight)
+			return;
+
+		if (!GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
+			return;
+
+		if (!flight.m_aPlayerIdsInPlane.Contains(playerId))
+			flight.m_aPlayerIdsInPlane.Insert(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Look up a live flight by the RplId of its plane. Returns null once the flight has ended.
+	protected CRF_AirdropFlight FindFlightByRplId(RplId flightRplId)
+	{
+		if (!m_aFlightObjects)
+			return null;
+
+		foreach (CRF_AirdropFlight flight : m_aFlightObjects)
+		{
+			if (flight && flight.m_RplId == flightRplId)
+				return flight;
+		}
+
+		return null;
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -206,42 +243,65 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 		}
 		else
 			m_fBroadcastTimer += timeSlice;
+		// Flights that finished this tick. Collected here and ended after the loop: ending a flight
+		// deletes its plane, and the original code called RemoveItem() mid-iteration and then kept
+		// using `flight` and `flight.m_Plane` for the rest of the body - dereferencing an object it
+		// had just destroyed. Never mutate the array being iterated.
+		array<CRF_AirdropFlight> completedFlights = {};
+
 		foreach (CRF_AirdropFlight flight: m_aFlightObjects)
 		{
+			if (!flight)
+				continue;
+
+			if (flight.m_fProgress >= 2.0)
+			{
+				completedFlights.Insert(flight);
+				continue;
+			}
+
 			if (checkDeployParachutes)
 			{
 				PlayerManager pm = GetGame().GetPlayerManager();
-				foreach (int i, IEntity player: flight.m_PlayersInPlane)
+
+				// Players are tracked by ID and resolved here, so a player who died or disconnected
+				// mid-flight simply fails to resolve. The old code stored raw character pointers and
+				// had a "//Remove player if it's null / How???? / Idk" guard - that null was a
+				// character deleted out from under the array.
+				// Iterate backwards so removals do not shift entries we have not visited yet.
+				for (int i = flight.m_aPlayerIdsInPlane.Count() - 1; i >= 0; i--)
 				{
-					//Remove player if it's null
-					//How????
-					//Idk
+					int playerId = flight.m_aPlayerIdsInPlane[i];
+
+					IEntity player = pm.GetPlayerControlledEntity(playerId);
 					if (!player)
 					{
-						flight.m_PlayersInPlane.Remove(i);
+						flight.m_aPlayerIdsInPlane.Remove(i);
 						continue;
 					}
-					
-					int playerId = pm.GetPlayerIdFromControlledEntity(player);
-					if (playerId <= 0)
-						continue;
-					
+
 					SCR_CharacterControllerComponent charCon = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
 					if (!charCon)
 						continue;
 
-					if (charCon.GetAnimationComponent().PhysicsIsLinked())
+					CharacterAnimationComponent animComp = charCon.GetAnimationComponent();
+					if (!animComp || animComp.PhysicsIsLinked())
 						continue;
-					
+
 					if (flight.m_bAutoDeployParachute)
-						ParachuteComponent.Cast(pm.GetPlayerController(playerId).FindComponent(ParachuteComponent)).RpcAskDeployParachute();
-						
-					flight.m_PlayersInPlane.Remove(i);
+					{
+						PlayerController playerController = pm.GetPlayerController(playerId);
+						if (playerController)
+						{
+							ParachuteComponent parachute = ParachuteComponent.Cast(playerController.FindComponent(ParachuteComponent));
+							if (parachute)
+								parachute.RpcAskDeployParachute();
+						}
+					}
+
+					flight.m_aPlayerIdsInPlane.Remove(i);
 				}
-			}		
-			
-			if (flight.m_fProgress >= 2.0)
-            	m_aFlightObjects.RemoveItem(flight);
+			}
 
 			float distance = vector.Distance(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3]);
 			float step = (flight.m_fSpeed * timeSlice) / distance;
@@ -264,17 +324,65 @@ class CRF_AirdropManager: SCR_BaseGameModeComponent
 			    GreenLight(flight.m_RplId);
 	
 	        vector newPos = vector.Lerp(flight.m_vFlightCoordinates[0], flight.m_vFlightCoordinates[3], flight.m_fProgress);
+
+			// Resolve the plane through replication rather than the stored m_Plane pointer, so a
+			// plane destroyed by any other path (shot down, world cleanup) ends the flight instead
+			// of being dereferenced.
+			GenericEntity plane = GenericEntity.Cast(ResolveFlightPlane(flight));
+			if (!plane)
+			{
+				completedFlights.Insert(flight);
+				continue;
+			}
+
 			vector transform[4];
-			flight.m_Plane.GetTransform(transform);
+			plane.GetTransform(transform);
 			transform[3] = newPos;
-			
-			GenericEntity plane = GenericEntity.Cast(flight.m_Plane);
+
 	        plane.SetWorldTransform(transform);
 			plane.Update();
 			plane.OnTransformReset();
 			if (broadcastPosition)
 				Rpc(RpcDo_BroadcastPositionUpdate, flight.m_RplId, transform);
 		}
+
+		// Safe to mutate now that iteration is finished.
+		foreach (CRF_AirdropFlight completed : completedFlights)
+			EndFlight(completed);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Resolve a flight's plane entity from its RplId. Returns null once the plane is gone.
+	protected IEntity ResolveFlightPlane(notnull CRF_AirdropFlight flight)
+	{
+		RplComponent planeRpl = RplComponent.Cast(Replication.FindItem(flight.m_RplId));
+		if (!planeRpl)
+			return null;
+
+		return planeRpl.GetEntity();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Explicitly end a flight: delete its plane, then drop it from the tracking array.
+	//! This work used to live in ~CRF_AirdropFlight(), which meant an engine entity was deleted from
+	//! a script destructor at an arbitrary GC point - with no guarantee the plane still existed, and
+	//! no way for callers to control when it happened. Doing it here makes the ordering explicit.
+	protected void EndFlight(CRF_AirdropFlight flight)
+	{
+		if (!flight)
+			return;
+
+		if (Replication.IsServer())
+		{
+			IEntity plane = ResolveFlightPlane(flight);
+			if (plane)
+				SCR_EntityHelper.DeleteEntityAndChildren(plane);
+		}
+
+		flight.m_Plane = null;
+
+		if (m_aFlightObjects)
+			m_aFlightObjects.RemoveItem(flight);
 	}
 	
 	void RedLight(RplId planeId)
@@ -376,14 +484,12 @@ class CRF_AirdropFlight
 		CRF_AirdropManager.GetInstance().RegisterFlight(this);
 	}
 	
-	void ~CRF_AirdropFlight()
-	{
-		if (!Replication.IsServer())
-			return;
-		
-		SCR_EntityHelper.DeleteEntityAndChildren(m_Plane);
-	}
-	
+	// NOTE: deliberately no destructor.
+	// Deleting the plane from ~CRF_AirdropFlight() ran engine entity deletion at an arbitrary GC
+	// point, on a raw m_Plane pointer that may already have been freed by another path. Teardown is
+	// now explicit in CRF_AirdropManager.EndFlight(), which resolves the plane through replication
+	// first. Do not reintroduce a destructor here.
+
 	IEntity m_Plane;
 	RplId m_RplId;
 	vector m_vFlightCoordinates[4];
@@ -391,7 +497,9 @@ class CRF_AirdropFlight
 	float m_fProgress = 0;
 	float m_fSpeed;
 	float m_fGreenT;
-	ref array<IEntity> m_PlayersInPlane = {};
+	//! Players currently aboard, tracked by player ID. Previously an array<IEntity> of character
+	//! pointers, which went stale whenever a passenger died or disconnected mid-flight.
+	ref array<int> m_aPlayerIdsInPlane = {};
 	bool m_bAutoDeployParachute;
 }
 
