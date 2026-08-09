@@ -1,13 +1,3 @@
-$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
- {
-  coords 2958.506 167.25 4756.811
-  angles 0 6.053 0
- }
- {
-  coords 2991.451 167.25 4753.004
-  angles 0 16.483 0
- }
-}
 GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
  components {
   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
@@ -18,9 +8,21 @@ GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      }
      NumSlots 5
     }
+    MultiSlotConfiguration "{6A13547A8DE67D32}" {
+     SlotTemplate InventoryStorageSlot ammo2 {
+      Prefab "{7514E5297D0FFED8}Prefabs/Weapons/Magazines/556x45_PMAG_Window_FDE_30rnd/Magazine_556x45_PMAG_Window_FDE_30rnd_4AP_1Tracer_M855A1_M856.et"
+     }
+     NumSlots 150
+    }
+    MultiSlotConfiguration "{6A13547A569E2DCF}" {
+     SlotTemplate InventoryStorageSlot ammo3 {
+      Prefab "{AAF51CFA75A9CF8B}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4AP_1Tracer.et"
+     }
+     NumSlots 150
+    }
    }
    m_fMaxWeight 5000000000
   }
  }
- coords 5389.891 136.826 6134.666
+ coords 5202.181 125.664 6495.645
 }

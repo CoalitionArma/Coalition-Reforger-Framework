@@ -8,7 +8,7 @@ $grp SCR_BaseTriggerEntity {
 }
 $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
  {
-  coords 5416.031 135.139 6155.814
+  coords 5213.416 125.579 6488.294
   m_sQuadName "flag-2"
   m_fWorldSize 250
   m_sDescription "Defend Ammo Depot"
