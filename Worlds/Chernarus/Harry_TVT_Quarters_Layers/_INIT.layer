@@ -1,0 +1,429 @@
+SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
+ coords 9753.764 246.07 11668.034
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{6A0D636C45DBDAF0}" {
+   m_bEnableDynamicRespawns 1
+   m_aZoneRespawnConfigs {
+    CRF_Rush_ZoneRespawnConfig "{6A0E2A6142A65D52}" {
+     m_sZoneName "Zone 2"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{6A0E2A61E95C6549}" {
+       m_sMarkerEntityName "RESPAWN2"
+       m_eFaction "OPFOR"
+      }
+     }
+    }
+    CRF_Rush_ZoneRespawnConfig "{6A0E2A6142BBF40A}" {
+     m_sZoneName "Zone 3"
+     m_aRespawnPoints {
+      CRF_Rush_RespawnPointEntry "{6A0E2A61E8222CFA}" {
+       m_sMarkerEntityName "RESPAWN3"
+       m_eFaction "OPFOR"
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 80
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A0D69E6C7B12D82}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Bundeswehr move into MSV held territory, making a series of pushes through occupied towns. "\
+   ""\
+   "BLUFOR Composition:  Infantry"\
+   "BLUFOR Assets: MMG, 1x 120mm Mortar"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: N/A"\
+   ""\
+   "Time: 80 Min"\
+   "Weather: Dawn Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A0D69E6C7B12099}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Attack through the objectives in order. "\
+   ""\
+   "INTENT"\
+   "Use the trucks to redeploy closer to the front line, but do not caravan into potentially enemy held territory. Specialties will be re-armed on respawn, ping an admin if that doesn't happen."\
+   ""\
+   "EXECUTION"\
+   "Maintaining security as you push past potentially hostile forces will be important."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A0D69E6C7B127A4}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Defend the objectives in order. "\
+   ""\
+   "INTENT"\
+   "Bundeswehr will have a range advantage with their MMG, find good positioning and smart positioning to mitigate that. "\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion. "
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A0D69E6C7B12697}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A0D69E6C7B12590}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A0E2A6167AA005D}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    FORWARD_OBSERVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167AA0696}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167AA057D}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167AA046B}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FB7F}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FA60}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9F9B5}" {
+   m_sCallsign "MTR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A0E2A6167A9F80C}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FF72}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FDC5}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FD1F}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A0E2A6167A9FC6E}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{88536FB5E7857958}Configs/Gearscripts/Standard/Modern/COA_GS_ModernBund_Fleck.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A0D69E53DDE3AA2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp COA_VehicleSpawner {
+ {
+  coords 10607.381 120.585 10647.16
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10599.376 121.498 10652.578
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10591.503 122.436 10657.802
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10616.25 121.812 10660.63
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10608.245 122.654 10666.048
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 10600.372 123.559 10671.271
+  angles 0 123.362 0
+  m_rVehicle "{AD1557D294604BF9}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{FF34A55312C120C4}Missions/Falklands/CassYoko_0805_SEARCHANDDESTROY98_FacetheMusic.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

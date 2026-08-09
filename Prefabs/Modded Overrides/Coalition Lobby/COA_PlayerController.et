@@ -16,6 +16,8 @@ COA_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
   }
   CRF_ParachutePlayerComponent "{68A90AB4BC5E81E4}" {
   }
+  CRF_MagazineCheckComponent "{69F4F58EB2C4D701}" {
+  }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
     SCR_ScenarioFrameworkTriggerCountdownDisplay "{618E614FC74A6851}" {

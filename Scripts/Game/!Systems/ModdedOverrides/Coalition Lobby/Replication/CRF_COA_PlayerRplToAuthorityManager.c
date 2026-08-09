@@ -201,6 +201,16 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Asks the server to destroy a Cache Hunt cache. The server re-checks the requesting
+	//! player's faction and distance, so this is only ever a request.
+	//! \param[in] cacheId RplId of the cache entity
+	//! \param[in] playerId Player making the request
+	void CacheHuntDestroyCache(RplId cacheId, int playerId)
+	{
+		Rpc(RpcAsk_CacheHuntDestroyCache, cacheId, playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Requests a JIP (Join In Progress) forward deploy to the live position of the given friendly group.
 	void RequestJIPForwardDeploy(RplId groupId, int playerId)
 	{
@@ -1468,6 +1478,26 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		vehicle.UpdateVehicleSupplies(vehicleGearscriptManager.GetSuppliesInTruck(truck));
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_CacheHuntDestroyCache(RplId cacheId, int playerId)
+	{
+		// Telemetry: RplId + int
+		int bytes = COA_BandwidthTelemetryManager.EstimateSize_RplId();
+		bytes += COA_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("RpcAsk_CacheHuntDestroyCache", bytes);
+
+		CRF_CacheHuntGamemodeManager cacheHunt = CRF_CacheHuntGamemodeManager.GetInstance();
+		if (!cacheHunt)
+			return;
+
+		IEntity cache = ResolveReplicatedEntity(cacheId);
+		if (!cache)
+			return;
+
+		cacheHunt.RequestDestroyCache(cache, playerId);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)

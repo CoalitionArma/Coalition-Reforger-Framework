@@ -1,0 +1,19 @@
+GenericEntity : "{D584F2FFFDC7DE49}Prefabs/Weapons/Warheads/Warhead_Shell_HE.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{6A0E0540B5DE1F8C}" {
+     Prefab "{B8902B0B743C7A07}Prefabs/Weapons/Ammo/Fragmentation/Ammo_Fragmentation_Med.et"
+     Count 15
+     Dispersion 360
+    }
+    SubmunitionEffect "{6A0E0540FE59945E}" {
+     Prefab "{3E49573DBFCFE998}Prefabs/Weapons/Ammo/Fragmentation/Ammo_Fragmentation_Light.et"
+     Count 30
+     Dispersion 360
+    }
+   }
+  }
+ }
+}

@@ -9,9 +9,19 @@
     "have NOT been verified as intentional. If a mission prefab outside these two",
     "repositories attaches them, they belong here permanently. If nothing does,",
     "they are dead the same way CRF_ServerStatsManager was and should be fixed",
-    "rather than suppressed."
+    "rather than suppressed.",
+    "",
+    "CRF_CacheHuntGamemodeManager is a separate case from those six and IS",
+    "verified as intentional. Gamemode components are attached per mission, on the",
+    "COA_Lobby entity in Worlds/<Map>/<Mission>_Layers/_INIT.layer - which is why",
+    "CRF_RushGamemodeManager passes the check and the others do not. Cache Hunt",
+    "shipped without a mission in this repository, so nothing attaches it yet.",
+    "Remove this entry as soon as the first Cache Hunt mission lands; after that",
+    "the check is meaningful for it again and the suppression would hide a real",
+    "regression. See !Docs/MissionMaking/Gamemodes/CRF_CACHEHUNT_MISSION_MAKERS_GUIDE.md"
   ],
   "unattached-component": [
+    "CRF_CacheHuntGamemodeManager",
     "CRF_GunGame",
     "CRF_InsurgencyGamemodeManager",
     "CRF_PropHuntGamemode",

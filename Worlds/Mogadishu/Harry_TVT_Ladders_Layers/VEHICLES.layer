@@ -1,0 +1,16 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 1096.224 11.662 2219.346
+  angles 0 32.821 0
+  m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+ {
+  coords 1088.039 11.277 2207.702
+  angles 0 32.821 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+ }
+}

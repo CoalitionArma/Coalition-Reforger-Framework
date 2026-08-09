@@ -1,0 +1,55 @@
+GenericEntity : "{BE99D77D1155B127}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_US.et" {
+ ID "56F2C6D6F7C6DAFA"
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 493046
+   m_eSupportedArsenalItemModes 94
+   m_eEditableAttributeGroups 22
+   m_eArsenalSaveType NO_RESTRICTIONS
+  }
+  SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
+   m_aContainers {
+    SCR_ResourceContainerVirtual "{6A0F1665B1ED2DBA}" {
+     m_eResourceRights FACTION
+     m_eStorageType STORED
+     m_fResourceValueCurrent 10000
+     m_fResourceValueMax 1000
+     m_bEnableResourceGain 1
+     m_fResourceGain 100
+     m_fResourceGainTickrate 1
+    }
+   }
+   m_aDisabledResourceTypes {
+    SUPPLIES
+   }
+  }
+  SCR_ArsenalInventoryStorageManagerComponent "{56F2C6D1431ADBA8}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6A0F1665B1ED2DBF}" {
+     TargetPurpose 2
+     PrefabsToSpawn {
+      "{5A987A8A13763769}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203.et" "{2DBBEA8AE9BD2C36}Prefabs/Weapons/Attachments/Stocks/Stock_VZ58/Stock_VZ58_base.et"
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{56F2C6D1431ADB12}" {
+   additionalActions {
+    SCR_OpenStorageAction "{58EE8EA3E900BE40}" {
+     "Sort Priority" 1
+    }
+    CRF_CacheHunt_DestroyAction "{6A0F1660C10409CD}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6A0F16600D679F87}" {
+      Name "Destroy Cache"
+     }
+     ActionTitle "Destroy Cache"
+     Duration 15
+    }
+   }
+  }
+ }
+ coords 2540.327 74.473 1223.931
+}

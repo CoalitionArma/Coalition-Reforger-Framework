@@ -1,0 +1,87 @@
+GenericEntity : "{F9E1A46E3ABA116F}Prefabs/Weapons/Core/Magazine_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  AICombatPropertiesComponent "{59CE86D96C332DDF}" {
+   Priority 30
+   UsedAgainst 0x17 0
+  }
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemDisplayName UIInfo "{51FEE38527BFEA5B}" {
+     Name "#BWAR_Magazine_MG5A2_Name"
+     Description "#BWAR_Magazine_MG5A2_DM41_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6A0E2A6BF18C03A6}" {
+     Weight 0.25
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 1000
+     RestingAdditiveOffsetLS 0 -0.06 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6A0E2A6BF18C045D}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 1.2
+      FOV 10
+     }
+    }
+    CommonItemType "MG_AMMO"
+    m_Size SLOT_1x1
+   }
+  }
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MagazineWell BWAR_MagazineWell_762x51_MG5 "{6A0E2A6BF18C0450}" {
+   }
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    Name "#BWAR_Magazine_MG5A2_Name"
+    Description "BWAR_Magazine_MG5A2_DM41_Description"
+    m_sAmmoCaliber "#AR-AmmunitionID_762x51mm"
+    m_eAmmoTypeFlags AP
+   }
+   ItemModel "{2B15D7359F435106}Assets/Weapons/Magazines/MG5/BWAR_Magazine_60rnd_MG5_Item.xob"
+   MaxAmmo 60
+   AmmoConfig "{533A763E304771D9}Configs/Weapons/Ammo/Ammo_762x51.conf"
+   AmmoMapping {
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1
+   }
+  }
+  MeshObject "{CA6BE4D6A23F8EF0}" {
+   Object "{EEFCFEF6C4A94A31}Assets/Weapons/Magazines/MG5/BWAR_Magazine_60rnd_MG5.xob"
+  }
+  RigidBody "{571B0382401B1385}" {
+   Mass 2.5
+  }
+  SCR_SoundDataComponent "{5B18D200EBB5EA25}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{5B18D209080A5D15}" {
+     m_sSoundProject "{7E11250286B94F44}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_MGM60_Magazine.acp"
+    }
+    SCR_AudioSourceConfiguration "{5B18D2091B885AE6}" {
+     m_sSoundProject "{7E11250286B94F44}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_MGM60_Magazine.acp"
+    }
+    SCR_AudioSourceConfiguration "{5B18D20930D9E274}" {
+     m_sSoundProject "{1A98A88D1841C7A9}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_LMG_M60_Magazine.acp"
+    }
+   }
+  }
+  ActionsManagerComponent "{F092E6B0537754FD}" {
+   ActionContexts {
+    UserActionContext "{5086F9AB010868CE}" {
+     Position PointInfo "{5086F9AC96DB9752}" {
+      Offset -0.1028 -0.0119 0.0613
+     }
+    }
+   }
+  }
+  MagazineAnimationComponent "{6A0E2A6BF18C0457}" {
+   AnimGraph "{F24935999194A123}Assets/Weapons/Magazines/Workspaces/MG5_60Rnd_magazine.agr"
+   AnimInstance "{1F2360428D9DF3CD}Assets/Weapons/Magazines/Workspaces/MG5_60Rnd_Magazine.asi"
+   AutoVariablesBind 1
+   AnimatedMesh "{EEFCFEF6C4A94A31}Assets/Weapons/Magazines/MG5/BWAR_Magazine_60rnd_MG5.xob"
+   BulletMeshesToHide {
+    "bullet_01" "bullet_02" "bullet_03" "bullet_04" "bullet_05" "bullet_06" "bullet_07" "bullet_08" "bullet_09" "bullet_10" "bullet_11" "bullet_12" "bullet_13" "bullet_14" "bullet_15"
+   }
+  }
+ }
+ coords -0.503 0.313 0.521
+}
