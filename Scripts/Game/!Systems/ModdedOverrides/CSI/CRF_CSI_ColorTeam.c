@@ -58,7 +58,10 @@ modded class COA_GamemodeManager
 
 	//! Only squad-level roles receive a color; all other roles stay white (NONE).
 	//! AR/AAR and the first team lead in a group are red; all other squad-level roles are green.
-	protected CSI_EColorTeam DetermineCSIColorTeam(COA_SlotData slotData)
+	//! Static so other systems (e.g. the lobby's slot list icons) can derive the same color from a
+	//! slot without needing a COA_GamemodeManager instance - this is the single source of truth for
+	//! the role-to-color mapping, kept here so it only exists in CRF.
+	static CSI_EColorTeam DetermineCSIColorTeam(COA_SlotData slotData)
 	{
 		COA_EGearRole role = slotData.GetSlotRole();
 
@@ -84,14 +87,16 @@ modded class COA_GamemodeManager
 
 	//! Returns RED if this is the first TEAM_LEAD slot in the group (lowest slot ID),
 	//! GREEN if a prior slot in the same group already holds a TEAM_LEAD role.
-	protected CSI_EColorTeam GetCSITeamLeadColor(COA_SlotData slotData)
+	static CSI_EColorTeam GetCSITeamLeadColor(COA_SlotData slotData)
 	{
 		RplId groupRplId = slotData.GetSlotCurrentGroup();
 		if (groupRplId == RplId.Invalid())
 			return CSI_EColorTeam.GREEN;
 
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+
 		// Slot IDs are sorted ascending by GetAllSlotIDsForGroup
-		array<int> groupSlotIds = m_SlottingManager.GetAllSlotIDsForGroup(groupRplId);
+		array<int> groupSlotIds = slottingManager.GetAllSlotIDsForGroup(groupRplId);
 		int mySlotId = slotData.GetSlotId();
 
 		foreach (int slotId : groupSlotIds)
@@ -101,11 +106,28 @@ modded class COA_GamemodeManager
 				return CSI_EColorTeam.RED;
 
 			// A prior slot already has the team lead role — we are the second
-			COA_SlotData otherSlot = m_SlottingManager.GetSlotData(slotId);
+			COA_SlotData otherSlot = slottingManager.GetSlotData(slotId);
 			if (otherSlot && otherSlot.GetSlotRole() == COA_EGearRole.TEAM_LEAD)
 				return CSI_EColorTeam.GREEN;
 		}
 
 		return CSI_EColorTeam.GREEN;
+	}
+
+	//! Applies this slot's CSI fireteam color to its listbox row icon. Called after the row widget
+	//! exists (from COA_ListboxComponent.AddItemSpecSlot/AddItemSlot - see the modded override in
+	//! CRF_CSI_SlotIconColor.c), since SetRoleColor needs the actual widget, not just the slot data.
+	static void ApplySlotIconColor(COA_ListboxComponent listbox, int index, int slotId)
+	{
+		COA_SlotData slotData = COA_SlottingManager.GetInstance().GetSlotData(slotId);
+		if (!slotData)
+			return;
+
+		COA_ListBoxElementComponent comp = listbox.GetCRFElementComponent(index);
+		if (!comp)
+			return;
+
+		CSI_EColorTeam colorTeam = DetermineCSIColorTeam(slotData);
+		comp.SetRoleIconColor(CSI_UIHelper.ConvertColorTeamToColor(colorTeam));
 	}
 }
