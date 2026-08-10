@@ -62,4 +62,12 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_sDescription "AA Emplacments"
   m_bShowForAnyFaction 1
  }
+ {
+  coords 7301.395 133.894 4254.975
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "fortification"
+  m_fWorldSize 250
+  m_sDescription "AA Emplacments"
+  m_bShowForAnyFaction 1
+ }
 }
