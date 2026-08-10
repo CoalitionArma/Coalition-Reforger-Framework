@@ -1,107 +1,142 @@
 COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
- coords 4771.755 23.416 12047.352
- angles 0 179.863 0
+ coords 4913.735 23.416 11962.755
+ angles 0 -178.786 0
  m_rVehicle "{08F4BDDAD3E2EB7D}Prefabs/Vehicles/FixedWing/AC-130/AC130U.et"
 }
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/Systems/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 1309.198 39.109 5909.796
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1307.39 39.109 5908.571
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1304.945 39.096 5905.911
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1303.047 39.096 5904.787
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1302.694 38.916 5908.375
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1300.855 38.916 5907.304
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1306.341 38.905 5911.707
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1304.579 38.905 5910.549
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1303.196 38.689 5915.149
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1301.516 38.689 5914.064
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1299.497 38.683 5911.77
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1297.739 38.683 5910.773
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1296.305 38.477 5915.264
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1294.63 38.477 5914.341
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1299.936 38.479 5918.582
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1298.338 38.479 5917.573
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1296.181 38.234 5922.692
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1294.681 38.234 5921.77
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1293.193 38.257 5919.962
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1291.63 38.257 5919.111
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1289.903 38.043 5923.563
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1288.425 38.043 5922.789
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1293.045 38.034 5926.433
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1291.634 38.034 5925.584
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1288.609 37.781 5931.288
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1287.314 37.781 5930.542
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1285.496 37.814 5928.444
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1284.135 37.814 5927.772
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1282.169 37.593 5932.086
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1280.895 37.593 5931.492
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1286.062 37.576 5935.643
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1284.87 37.576 5934.957
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1282.81 37.583 5942.505
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1281.781 37.583 5941.893
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1279.396 37.481 5939.386
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1278.295 37.481 5938.855
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1271.615 37.363 5943.405
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1271.461 37.363 5943.798
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
  {
-  coords 1274.477 37.211 5952.335
-  angles 0 137.586 0
-  m_rVehicle "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+  coords 1273.682 37.211 5951.917
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1266.35 37.125 5949.892
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1263.68 36.963 5956.832
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1265.258 36.833 5965.129
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1258.975 36.786 5965.761
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1260.388 36.627 5975.068
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1253.498 36.509 5977.837
+  angles 0 138.937 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 1256.351 36.363 5985.814
+  angles 0 147.024 0
+  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
 }
