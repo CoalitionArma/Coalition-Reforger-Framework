@@ -1,0 +1,363 @@
+Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSoundComponent "{6A1122FE82628BA5}" {
+   Filenames {
+    "{2B83B4B20B8C0163}Sounds/M224/M224_Shot.acp" "{D2EAA1F57CE44B42}Sounds/M224/M224_Handling.acp"
+   }
+  }
+  ControllersManagerComponent "{6A1122FE82628B97}" {
+  }
+  M224_FireControlComponent "{6A1122FE82628B95}" {
+   m_fCharge0Speed 65
+   m_fCharge1Speed 115
+   m_sHEPrefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+   m_sWPPrefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+   m_sIllumPrefab "{C826A4A5B2D83B97}Prefabs/Weapons/Ammo/Mortar/M224_ILLUM.et"
+   m_sIllumFlarePrefab "{ABB7EA79A12362A3}Prefabs/Weapons/Ammo/FlareEffect_60mm_White.et"
+   m_fBurstHeight 7
+   m_sAirburstExplosionPrefab "{688F913C08D224A4}Prefabs/Weapons/Warheads/Explosions/M224_Airburst_HE_.et"
+   m_sWPBurnFieldPrefab ""
+   m_sMuzzleWispEffect "{6A24000000000021}Particles/Weapon/M224_MuzzleWisp.ptc"
+   m_MuzzlePoint PointInfo "{6A1122FE82628B8A}" {
+    PivotID "socket_Muzzle"
+    Offset 0.0101 0.0139 -0.0031
+    Angles -14.751 0 0
+   }
+   m_fShakeLinear 0.32
+   m_fShakeAngular 2.1
+   m_fShakeRadius 15
+  }
+  M224_TurretControllerComponent "{51ACD09C61C183E4}" {
+   CanAimOnlyInADS 1
+   HasMoveableBase 1
+   LimitsHoriz -45 45
+   LimitsVert 45 85
+   ReturnToPositionBeforeReload 0
+   GetUpdateEventsWhenEmpty 1
+   EnableGyroAiming 0
+  }
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Object "{B31999C3897110F0}m224_fullRevision10.xob"
+   PixelSizeScale 1
+  }
+  RigidBody "{51ACD09C423F175F}" {
+   SimState Collision
+   ResponseIndex "Normal"
+   ModelGeometry 1
+   Static 1
+  }
+  ProcAnimComponent "{51ACD09DB14C45C0}" {
+   Enabled 1
+   Parameters {
+    ProcAnimParams "{6A1122FE82628B8E}" {
+     ResourceName "{9765D9625E6272EF}m224_turret.pap"
+     BoneNames {
+      "w_yaw" "w_mortarbody"
+     }
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{6A1122FE82628B83}" {
+     ContextName "default"
+     EntryPositionInfo PointInfo "{6A1122FE82628B81}" {
+      PivotID "socket_operator"
+      Offset 0 0.0883 -0.134
+      Angles 0 0 0
+     }
+     ExitPositionInfo PointInfo "{6A1122FE82628B80}" {
+      PivotID "socket_operator"
+      Offset 0 0.0883 -0.134
+      Angles 0 0 0
+     }
+     ExitTeleportPositionInfo PointInfo "{6A1122FE82628B87}" {
+      Offset 0.5 0 -1.5
+      Angles 0 -30 0
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     StanceChangeOnExit Crouch
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     DefaultOccupantName "gunner"
+     CompartmentUniqueName "m224comp"
+     PassengerPositionInfo EntitySlotInfo "{B1CB25848A3D93A8}" {
+      PivotID "socket_operator"
+      Offset 0.2083 0 -0.0022
+      Angles 0 7.1754 0
+     }
+     EjectUnconsciousAndDeadCharacters 1
+     DoorInfoList {
+      0
+     }
+     RestrictedItemTypes + {
+      "AMMO_MORTAR" "COMPASS"
+     }
+     AllowAiming 1
+    }
+   }
+  }
+  SCR_BaseHUDComponent "{51ACD09C5E194510}" {
+   InfoDisplays {
+    SCR_WeaponInfoVehicle "{5194B831C2F89FB5}" {
+    }
+    SCR_MortarInfo "{6A1122FE82628BFF}" {
+     VisibleAtParent 1
+     InfoDisplays {
+      SCR_MortarAzimuthDisplay "{6A1122FE82628BFE}" {
+       m_LayoutPath "{96A8E7C972516000}UI/layouts/HUD/MortarInfo/WeaponAzimuthInfo.layout"
+       m_sParentSlot "m_Azimuth"
+       m_bIsEnabled 0
+      }
+      SCR_MortarElevationDisplay "{6A1122FE82628BFD}" {
+       m_LayoutPath "{624089FD20D3F2BA}UI/layouts/HUD/MortarInfo/WeaponElevationInfo.layout"
+       m_sParentSlot "m_Elevation"
+       m_bIsEnabled 0
+      }
+     }
+    }
+    M224_ChargeDisplay "{6A1122FE82628BF3}" {
+     m_LayoutPath "{6E05A9F010785A67}UI/M224_TypeCharge.layout"
+    }
+    M224_MortarDialsDisplay "{6A1122FE82628A35}" {
+     m_LayoutPath "{FCEECF96217A511B}UI/layouts/M224_ElevationDial.layout"
+    }
+    M224_AzimuthBarDisplay "{6A1122FE82628A34}" {
+     m_LayoutPath "{5D224A2B0A6B4201}UI/layouts/M224_AzimuthBar.layout"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{6A1122FE82628A2A}" {
+  }
+  SCR_WeaponBlastComponent "{6A1122FE82628A29}" {
+   m_aBlastEffects {
+    SCR_WeaponBlastEffect "{6A1122FE82628A2E}" {
+     m_DamageEffect SCR_MuzzleBlastDamageEffect "{6A1122FE82628A2D}" {
+     }
+     m_fDamageValue 3
+    }
+   }
+   m_bCanBlastRicochet 0
+   m_BlastOrigin PointInfo "{6A1122FE82628A23}" {
+    PivotID "socket_Muzzle"
+    Offset 0.0101 0.0139 -0.0031
+    Angles -14.751 0 0
+   }
+  }
+  TagComponent "{6A1122FE82628A21}" {
+   "Tag categories" 0x20 0
+  }
+  TurretComponent "{6A1122FE82628A27}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{6A1122FE82628A25}" {
+    signalsSuffix "Turret"
+   }
+   ProvideAimingType MainTurret
+   InitAiming 0 80
+   ikTargets {
+    AnimationIKTargetInfo "{6A1122FE82628A1B}" {
+     BindingName "LHandIKTarget"
+     PositionInfo PointInfo "{6A1122FE82628A69}" {
+      PivotID "socket_center"
+      Offset 0 0 -0.095
+      Angles 0 -90 90
+     }
+    }
+    AnimationIKTargetInfo "{6A1122FE82628A68}" {
+     BindingName "RHandIKTarget"
+     PositionInfo PointInfo "{6A1122FE82628A6F}" {
+      PivotID "Socket_trigger"
+      Offset 0.035 -0.01 -0.104
+      Angles 0 -88 -89.25
+     }
+    }
+   }
+   TurretSpeed 7 7
+   TurretAcceleration 15 15
+   TurretDeceleration 45 45
+  }
+  WeaponComponent "{6A1122FE82628A6C}" {
+   components {
+    SCR_MuzzleInMagComponent "{6A1122FE82628A62}" {
+     components {
+      SCR_MuzzleEffectComponent "{6A1122FE82628A60}" {
+       FollowParent 1
+       ParticleEffect "{3CE0DF2EE7CE5F6D}Particles/Weapon/Muzzle_m224.ptc"
+       EffectOrientUp 0
+       EnabledOnDedicatedServer 1
+       EffectPosition EntitySlotInfo muzzle {
+        PivotID "socket_Muzzle"
+        Offset 0.0101 0.0139 -0.0031
+        Angles -14.751 0 0
+       }
+      }
+     }
+     MuzzleEndPositions {
+      PointInfo "{6A1122FE82628A65}" {
+       PivotID "socket_Muzzle"
+       Offset 0.0101 0.0139 -0.0031
+       Angles 81.078 0 0
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{6A1122FE82628A5B}" {
+       PivotID "socket_Muzzle"
+       Offset 0.0101 0.0139 -0.0031
+       Angles 81 0 0
+      }
+     }
+     ChamberedAmmo 0
+     FireModes {
+      BaseFireMode "{6A1122FE82628A59}" {
+       UIName "TST"
+      }
+     }
+     MagazineWell MagazineWellM224 "{6A1122FE82628A5D}" {
+     }
+     DispersionRange 150
+     UIInfo MuzzleUIInfo "{6A1122FE82628A52}" {
+      m_sFiremodeBurst ""
+      m_MagIndicator SCR_MagazineIndicatorConfiguration "{6A1122FE82628A57}" {
+      }
+     }
+     ProjectilePosition InventoryStorageSlot m224 {
+      PivotID "w_mortarbody"
+      Offset 0.0029 -0.0001 0.4429
+      Angles 1.4083 0 0
+      AutoTransform 1
+      DisablePhysicsInteraction 1
+     }
+     AmmoTemplate "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+     InitialAmmo 0
+     ProjectileVisible 0
+    }
+   }
+   SignalsSourceAccess SignalsSourceAccessClass "{6A1122FE82628A4B}" {
+    signalsSuffix "Turret"
+   }
+   useAimingType MainTurret
+   WeaponType MachineGun
+   UIInfo WeaponUIInfo "{6A1122FE82628A4A}" {
+    Name ""
+    m_bShowWeaponName 0
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{6A1122FE82628A48}" {
+    }
+   }
+   BeActiveWhenInitWithoutParent 1
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   Enabled 0
+   WeaponTemplate ""
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{51ACFBB064390C6E}" {
+     Position PointInfo "{51ACFBB061993925}" {
+      PivotID "socket_center"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{6A1122FE82628A43}" {
+     UIInfo SCR_ActionUIInfo "{6A1122FE82627631}" {
+      Name "Trigger"
+     }
+     ContextName "Trigger"
+     Position EntitySlotInfo Trigger {
+      PivotID "Socket_trigger"
+      Offset 0 0.0556 0
+     }
+    }
+   }
+   additionalActions {
+    M224_PickUpMortarAction "{6A1122FE82627634}" {
+     ParentContextList {
+      "default"
+     }
+     ActionTitle "pickup"
+     "Sort Priority" 1
+     m_sCarriedPrefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+    }
+    M224_ReplaceMortarAction "{6A1122FE82627636}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo SCR_ActionUIInfo "{6A1122FE826276C9}" {
+      Name "replacement"
+     }
+     ActionTitle "replacement"
+     "Sort Priority" 4
+     m_sCarriedPrefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+    }
+    M224_ChangeChargeAction "{6A1122FE826276C8}" {
+     ParentContextList {
+      "Trigger"
+     }
+     UIInfo SCR_ActionUIInfo "{6A1122FE826276CB}" {
+      Name "charge"
+     }
+     ActionTitle "charge"
+     "Sort Priority" 2
+    }
+    M224_ChangeFuzeAction "{6A1122FE826276F7}" {
+     ParentContextList {
+      "Trigger"
+     }
+     UIInfo SCR_ActionUIInfo "{6A1122FE82627689}" {
+      Name "fuze"
+     }
+     ActionTitle "fuze"
+     "Sort Priority" 3
+    }
+    M224_CycleRoundAction "{6A1122FE82622F24}" {
+     ParentContextList {
+      "Trigger"
+     }
+     UIInfo SCR_ActionUIInfo "{6A1122FE82622F25}" {
+      Name "cycleround"
+     }
+     ActionTitle "cycleround"
+     "Sort Priority" 1
+    }
+    M224_ToggleRangeCardAction "{6A1122FE82622F26}" {
+     ParentContextList {
+      "Trigger"
+     }
+     UIInfo SCR_ActionUIInfo "{6A1122FE8263E325}" {
+      Name "rangecard"
+     }
+     ActionTitle "rangecard"
+     "Sort Priority" 4
+    }
+   }
+  }
+  MortarAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimGraph "{F328E820964DFBC8}anims/m224_graph.agr"
+   AnimInstance "{F4EDDAA65D590F62}anims/m224_working.asi"
+   StartNode "MasterControl"
+   AnimVariables {
+    AnimationVariable "{6A1122FE8263E321}" {
+     VariableName "AimX"
+     SignalName "AimTurnTurret"
+    }
+    AnimationVariable "{6A1122FE8263E320}" {
+     VariableName "AimY"
+     SignalName "AimElevationTurret"
+    }
+   }
+   AlwaysActive 1
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{F328E820964DFBC8}anims/m224_graph.agr"
+    AnimInstance "{C8E276CC014D0C7B}anims/m224_player_working.asi"
+    BindingName "Vehicle"
+   }
+   BindWithInjection 1
+   AutoCommandBind 1
+   AutoVariablesBind 1
+  }
+ }
+ coords 1269.069 37.704 2849.62
+}
