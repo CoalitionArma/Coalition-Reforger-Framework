@@ -1,6 +1,10 @@
 COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
  coords 10687.02 196.844 2040.195
 }
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/Systems/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 4310.955 169.594 10480.689
+ m_sCallsignOfGroupToSpawn "Reaper 1"
+}
 COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
  coords 4625.606 169.594 10401.656
 }
