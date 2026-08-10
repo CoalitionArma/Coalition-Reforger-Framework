@@ -583,29 +583,48 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		IEntity character = GetControlledCharacter();
 		if (character)
 		{
-			// 1. Place player safely on ground with zero velocity
-			PlacePlayerSafelyOnGround(character);
+			vector targetPos = character.GetOrigin();
+			if (m_DeployedChuteEntity)
+				targetPos = m_DeployedChuteEntity.GetOrigin();
 
-			// 2. Ask player to exit the vehicle (teleport)
+			// Ask the owner client to exit the parachute compartment first.
 			if (m_CharacterCompartmentAccess)
 				m_CharacterCompartmentAccess.AskOwnerToGetOutFromVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.LEAVE_OPEN, true, true);
 
-			// 3. After teleport, ensure they are still grounded
-			PlacePlayerSafelyOnGround(character);
+			// Then place the owner client near the parachute after the exit has had a chance to settle.
+			GetGame().GetCallqueue().CallLater(QueuePlayerExitPlacement, 300, false, targetPos);
 		}
 
 		// Start checking for empty compartment before deletion
 		GetGame().GetCallqueue().CallLater(CheckAndDeleteIfEmpty, 200, false, m_DeployedChuteEntity);
 	}
 
+	protected void QueuePlayerExitPlacement(vector targetPos)
+	{
+		Rpc(Rpc_PlacePlayerAtExitPosition, targetPos);
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void Rpc_PlacePlayerAtExitPosition(vector targetPos)
+	{
+		IEntity character = GetControlledCharacter();
+		if (!character)
+			return;
+
+		PlacePlayerSafelyOnGround(character, targetPos);
+	}
+
 	// Helper to place player safely on ground with zero velocity
-	void PlacePlayerSafelyOnGround(IEntity player)
+	void PlacePlayerSafelyOnGround(IEntity player, vector targetPos)
 	{
 		if (!player) return;
 
-		vector pos = player.GetOrigin();
+		vector pos = targetPos;
+		if (pos == vector.Zero)
+			pos = player.GetOrigin();
+
 		float terrainY = SCR_TerrainHelper.GetTerrainY(pos, null, true);
-		pos[1] = terrainY + 0.5; // .5 meters above terrain for safety
+		pos[1] = terrainY + 0.5; // keep the player near the parachute and clear of terrain
 		player.SetOrigin(pos);
 
 		Physics phys = player.GetPhysics();
