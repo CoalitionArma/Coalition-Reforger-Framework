@@ -3,7 +3,7 @@ GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
    MultiSlots {
     MultiSlotConfiguration "{6A076E18710687DC}" {
-     SlotTemplate InventoryStorageSlot "case" {
+     SlotTemplate InventoryStorageSlot javelin {
       Prefab "{246737687711A367}Prefabs/Weapons/Launchers/FGM148_Javelin/Launcher_FGM148_Javelin.et"
      }
      NumSlots 5
@@ -19,6 +19,23 @@ GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
       Prefab "{AAF51CFA75A9CF8B}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4AP_1Tracer.et"
      }
      NumSlots 150
+    }
+    MultiSlotConfiguration "{6A15428BB6264FFF}" {
+     SlotTemplate InventoryStorageSlot ammo3 {
+      Prefab "{8593361E501BBCD9}Prefabs/Weapons/Core/Mag_RK2OF.et"
+     }
+     NumSlots 10
+    }
+    MultiSlotConfiguration "{6A15428BAAF918AC}" {
+     SlotTemplate InventoryStorageSlot ammo4 {
+      Prefab "{E51CE015F20E826C}Prefabs/Weapons/Core/Mag_RK2S.et"
+     }
+     NumSlots 15
+    }
+    MultiSlotConfiguration "{6A15428B098BAF37}" {
+     SlotTemplate InventoryStorageSlot "case" {
+      Prefab "{CF6C7F3BDA14CED8}Prefabs/Weapons/Case.et"
+     }
     }
    }
    m_fMaxWeight 5000000000
