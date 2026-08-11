@@ -119,9 +119,12 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Server-side: consecutive lost/failed fetches, see MAX_CONSECUTIVE_FAILURES.
 	protected int m_iConsecutiveFailures = 0;
 
-	//! World time at which the currently pending debounce was first requested, or -1 when no
-	//! fetch is pending. Used to enforce DEBOUNCE_MAX_WAIT_MS.
-	protected float m_fDebounceFirstRequestTime = -1;
+	//! Tick at which the currently open debounce window started, or -1 when none is open.
+	//! Used to enforce DEBOUNCE_MAX_WAIT_MS. Deliberately System.GetTickCount() rather than world
+	//! time: this is a purely server-local elapsed-time measurement that is never compared across
+	//! machines, and it must not depend on a loaded world — the Workbench instantiates this
+	//! component with no world present.
+	protected int m_iDebounceWindowStart = -1;
 
 	//! Follow-up passes used by the current reconcile cycle, see MAX_RECONCILE_PASSES.
 	protected int m_iReconcilePasses = 0;
@@ -157,6 +160,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
+
+		// The World Editor instantiates the gamemode entity (and therefore this component) while
+		// editing — switching worlds runs EOnInit with no world loaded and no players to fetch for.
+		// Nothing this component does is meaningful outside play mode.
+		if (!GetGame().InPlayMode())
+			return;
+
 		RegisterPlayerLifecycleCallbacks();
 	}
 
@@ -254,7 +264,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		}
 
 		// The debounce window (if any) has now closed.
-		m_fDebounceFirstRequestTime = -1;
+		m_iDebounceWindowStart = -1;
 
 		if (m_bFetching)
 		{
@@ -319,15 +329,15 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! reset the timer indefinitely and the fetch would never run at all.
 	protected void ScheduleFetchDebounced()
 	{
-		float now = GetGame().GetWorld().GetWorldTime();
+		int now = System.GetTickCount();
 
-		if (m_fDebounceFirstRequestTime < 0)
-			m_fDebounceFirstRequestTime = now;
+		if (m_iDebounceWindowStart < 0)
+			m_iDebounceWindowStart = now;
 
 		// Cancel whatever was pending either way — we are about to replace it or run it now.
 		GetGame().GetCallqueue().Remove(FetchPlayerInfo);
 
-		if (now - m_fDebounceFirstRequestTime >= DEBOUNCE_MAX_WAIT_MS)
+		if (now - m_iDebounceWindowStart >= DEBOUNCE_MAX_WAIT_MS)
 		{
 			// Held off long enough — fetch what we have now. Players who join after this point
 			// still get picked up by the next debounce window and by the reconcile pass.
