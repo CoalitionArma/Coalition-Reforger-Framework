@@ -246,108 +246,110 @@ modded class COA_SlottingMenu
 			return;
 		
 		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
-		
-		array<int> slotStored = {};
+
 		isGroupFull = true;
-		foreach (int id: slottingManager.GetAllSlotIDsForGroup(groupId))
+		// GetAllSlotIDsForGroup already returns exactly this group's slot IDs, sorted ascending by
+		// definition order - look each one up directly instead of scanning the whole slot map for a
+		// resource match. Two slots with the same role (e.g. two Team Leads in one group) share the
+		// same resource, and map<K,V> iteration order is unspecified in this engine, so the old
+		// resource-search could pair a slot to the wrong visual row.
+		foreach (int slotId: slottingManager.GetAllSlotIDsForGroup(groupId))
 		{
-			ResourceName prefab = slottingManager.GetSlotData(id).GetSlotResource();
-			foreach(int slotId, COA_SlotData slotData : slotMap)
-			{	
-				if (slotData.GetSlotResource() != prefab || slotStored.Contains(slotId))
-					continue;
-				// Skip slots not in this group or faction
-				if (slotData.GetSlotCurrentGroup() != groupId || 
-					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
-					continue;
-				
-				// Skip locked slots for non-admins
-				if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
-					continue;
-				
-				// Track dead slots but don't display them
-				if (slotData.GetIsDeadSlot())
-				{
-					deadPlayersInGroup++;
-					continue;
-				}
-				
-				// Skip dead empty slots
-				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
-					continue;
-				
-				// Add slot to UI
-				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
-				slotStored.Insert(slotId);
-				
-				// Count players
-				if (slotData.GetSlotCurrentPlayerId() >= 0)
-					playersInGroup++;
-				
-				// Set player text if slot is taken
-				if (slotData.GetSlotCurrentPlayerId() > 0)
-				{
-					string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
-					
-					string playerTag = "";
-					int slotPlayerXp = -1;
-					string slotPlayerTrack = "enlisted";
-					if (CRF_CommunityTagManager.GetInstance())
-					{
-						playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
-						slotPlayerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(slotData.GetSlotCurrentPlayerId());
-						slotPlayerTrack = CRF_CommunityTagManager.GetInstance().GetPlayerRankTrack(slotData.GetSlotCurrentPlayerId());
-					}
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetTagText(playerTag);
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetRankChevron(slotPlayerXp, slotPlayerTrack);
-					//Sets slot to faction color when selected
-					//m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlottedWidget().SetVisible(true);
-					Color factionColor = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()).GetFactionColor();
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetColor(factionColor);
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetColor(factionColor);
-					
-					//Sets the opacity too
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetOpacity(0.5);
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetOpacity(0.5);
-					
-				}
-				else
-					isGroupFull = false;
-				
-				// subscribe to SlotButton's m_OnClicked specifically so that
-				// clicking LockButton or KickButton does NOT propagate up and accidentally trigger
-				// slot selection. Fall back to the element's own m_OnClicked only for layouts that
-				// have no dedicated SlotButton (those layouts also have no admin sub-buttons, so
-				// propagation interference is not a concern).
-				COA_ListBoxElementComponent slotElem = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
-				if (slotElem)
-				{
-					SCR_ButtonTextComponent slotBtn = slotElem.GetSlotButton();
-					if (slotBtn)
-						slotBtn.m_OnClicked.Insert(SelectSlotDelay);
-					else
-						slotElem.m_OnClicked.Insert(SelectSlotDelay);
-				}
-				
-				COA_ESlotType slotType = slotData.GetSlotType();
-				
-				// Add leaders/medics to ORBAT view
-				if ((slotType == COA_ESlotType.TEAM_LEADER 
-					|| slotType == COA_ESlotType.SQUAD_LEADER 
-					|| slotType == COA_ESlotType.MEDIC) 
-					&& slotData.GetSlotCurrentPlayerId() > 0)
-				{
-					AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
-					leadersInGroup++;
-				}
-				
-				// Add admin-only slot controls
-				if (isAdmin)
-					SetupAdminSlotControls(slotIndex, slotData);
-				
-				break;
+			COA_SlotData slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData)
+				continue;
+
+			// Skip slots not in this faction
+			if (GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
+				continue;
+
+			// Skip locked slots for non-admins
+			if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
+				continue;
+
+			// Track dead slots but don't display them
+			if (slotData.GetIsDeadSlot())
+			{
+				deadPlayersInGroup++;
+				continue;
 			}
+
+			// Skip dead empty slots
+			if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+				continue;
+
+			// Add slot to UI
+			int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
+
+			// Recolor the slot icon with its CSI fireteam color instead of the faction color
+			// COA_ListboxComponent.AddItemSlot set it to by default.
+			COA_GamemodeManager.ApplySlotIconColor(m_cSlotListBoxComponent, slotIndex, slotId);
+
+			// Count players
+			if (slotData.GetSlotCurrentPlayerId() >= 0)
+				playersInGroup++;
+
+			// Set player text if slot is taken
+			if (slotData.GetSlotCurrentPlayerId() > 0)
+			{
+				string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
+
+				string playerTag = "";
+				int slotPlayerXp = -1;
+				string slotPlayerTrack = "enlisted";
+				if (CRF_CommunityTagManager.GetInstance())
+				{
+					playerTag = CRF_CommunityTagManager.GetInstance().GetPlayerTag(slotData.GetSlotCurrentPlayerId());
+					slotPlayerXp = CRF_CommunityTagManager.GetInstance().GetPlayerXp(slotData.GetSlotCurrentPlayerId());
+					slotPlayerTrack = CRF_CommunityTagManager.GetInstance().GetPlayerRankTrack(slotData.GetSlotCurrentPlayerId());
+				}
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetTagText(playerTag);
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetRankChevron(slotPlayerXp, slotPlayerTrack);
+				//Sets slot to faction color when selected
+				//m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlottedWidget().SetVisible(true);
+				Color factionColor = GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()).GetFactionColor();
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetColor(factionColor);
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetColor(factionColor);
+
+				//Sets the opacity too
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetPlayerText().SetOpacity(0.5);
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetRoleText().SetOpacity(0.5);
+
+			}
+			else
+				isGroupFull = false;
+
+			// subscribe to SlotButton's m_OnClicked specifically so that
+			// clicking LockButton or KickButton does NOT propagate up and accidentally trigger
+			// slot selection. Fall back to the element's own m_OnClicked only for layouts that
+			// have no dedicated SlotButton (those layouts also have no admin sub-buttons, so
+			// propagation interference is not a concern).
+			COA_ListBoxElementComponent slotElem = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
+			if (slotElem)
+			{
+				SCR_ButtonTextComponent slotBtn = slotElem.GetSlotButton();
+				if (slotBtn)
+					slotBtn.m_OnClicked.Insert(SelectSlotDelay);
+				else
+					slotElem.m_OnClicked.Insert(SelectSlotDelay);
+			}
+
+			COA_ESlotType slotType = slotData.GetSlotType();
+
+			// Add leaders/medics to ORBAT view
+			if ((slotType == COA_ESlotType.TEAM_LEADER
+				|| slotType == COA_ESlotType.SQUAD_LEADER
+				|| slotType == COA_ESlotType.MEDIC)
+				&& slotData.GetSlotCurrentPlayerId() > 0)
+			{
+				AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
+				leadersInGroup++;
+			}
+
+			// Add admin-only slot controls
+			if (isAdmin)
+				SetupAdminSlotControls(slotIndex, slotData);
 		}
 	}
 
@@ -360,9 +362,13 @@ modded class COA_SlottingMenu
 	 */
 	private override void AddLeaderToOrbat(COA_SlotData slotData, int slotId, int orbatGroupIndex, int leadersInGroup)
 	{
-		int orbatIndex = m_cOrbatListBoxComponent.AddItemSlot(null, slotId, 
+		int orbatIndex = m_cOrbatListBoxComponent.AddItemSlot(null, slotId,
 			"{BD36FFAE9AB69175}UI/Listbox/PlayerSlotListboxOrbatElementNonAdmin.layout");
-		
+
+		// Recolor the slot icon with its CSI fireteam color instead of the faction color
+		// COA_ListboxComponent.AddItemSlot set it to by default.
+		COA_GamemodeManager.ApplySlotIconColor(m_cOrbatListBoxComponent, orbatIndex, slotId);
+
 		// Set player text
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
 		string playerTag = "";
