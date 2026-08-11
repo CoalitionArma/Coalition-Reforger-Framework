@@ -1,25 +1,53 @@
 //------------------------------------------------------------------------------------
-// The vanilla arsenal classes keep their item list behind protected members with no
-// script accessors, so a gamemode cannot build an arsenal at runtime. Cache Hunt needs
-// exactly that: the defending faction's ammunition, pulled from their assigned
-// gearscript, dropped into each cache's arsenal.
+// Building an SCR_ArsenalItemListConfig at runtime rather than authoring it in a prefab
+// hits three traps, all of which show up as an arsenal full of blank tiles rather than
+// as an error. Cache Hunt needs to do exactly that - fill each cache's arsenal from the
+// defending faction's gearscript - so all three are handled here.
 //
-// A modded class can reach its own class's protected members, so every accessor below
-// does its work from inside the class that owns the field. The member names are taken
-// straight from authored prefab data (see CRF_CacheHunt_Cache.et), not guessed.
+//  1. SCR_ArsenalItemStandalone's constructor loads m_ItemResource from the resource
+//     name, but a script-constructed instance has no name yet, so the constructor
+//     early-returns and m_ItemResource stays null forever. Assigning m_ItemResourceName
+//     afterwards does not re-run it. The item then has no Resource to show or spawn.
+//
+//  2. Attribute defaults ([Attribute("2")] on m_eItemType and m_eItemMode) are applied
+//     when a config is deserialised, NOT when a class is constructed with new. A
+//     script-built entry therefore has type 0 and mode 0, and SCR_ArsenalItemListConfig
+//     filters with `GetItemType() & typeFilter` - zero matches no filter, so the entry
+//     is dropped from every query.
+//
+//  3. SCR_ArsenalItemListConfig caches its filtered results per type in
+//     m_mArsenalItemsByType. Refilling m_aArsenalItems without clearing that cache
+//     leaves the arsenal serving the results it computed before the swap.
+//
+// Vanilla reference: scripts/Game/Components/Arsenal/ in the Arma-Reforger-Script-Diff
+// repository.
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
 modded class SCR_ArsenalItemStandalone
 {
 	//------------------------------------------------------------------------------------------------
-	//! Fills in this entry's resource and cost.
+	//! Fills in an entry that was built with new rather than deserialised from a config.
+	//!
+	//! Sets the fields the constructor and the attribute defaults would normally have
+	//! covered - see traps 1 and 2 at the top of this file. Every one of them is required;
+	//! an entry missing any of the three renders as an empty arsenal tile.
+	//!
 	//! \param[in] resource Item prefab this arsenal entry hands out
 	//! \param[in] supplyCost Supplies charged per take, 0 for free
-	void CRF_Configure(ResourceName resource, int supplyCost)
+	//! \param[in] itemType Arsenal type flag, matched against the component's supported types
+	//! \param[in] itemMode Arsenal mode flag, matched against the component's supported modes
+	void CRF_Configure(ResourceName resource, int supplyCost, SCR_EArsenalItemType itemType, SCR_EArsenalItemMode itemMode)
 	{
 		m_ItemResourceName = resource;
 		m_iSupplyCost = supplyCost;
+		m_eItemType = itemType;
+		m_eItemMode = itemMode;
+
+		// Trap 1: the constructor already ran against an empty name, so load it here.
+		// m_ItemResource is protected on SCR_ArsenalItem, reachable from this subclass.
+		if (!resource.IsEmpty())
+			m_ItemResource = Resource.Load(resource);
 	}
 }
 
@@ -30,24 +58,34 @@ modded class SCR_ArsenalItemListConfig
 	//! Replaces the whole list with one standalone entry per resource.
 	//! Building the entries in here keeps every protected access inside its owning class.
 	//! \param[in] resources Item prefabs the arsenal should offer
-	//! \param[in] supplyCost Supplies charged per take, 0 for free
-	void CRF_ReplaceWithStandaloneItems(notnull array<ResourceName> resources, int supplyCost)
+	//! \param[in] supplyCosts Cost per resource, parallel to resources
+	//! \param[in] itemType Arsenal type flag applied to every entry
+	//! \param[in] itemMode Arsenal mode flag applied to every entry
+	void CRF_ReplaceWithStandaloneItems(notnull array<ResourceName> resources, notnull array<int> supplyCosts, SCR_EArsenalItemType itemType, SCR_EArsenalItemMode itemMode)
 	{
 		if (!m_aArsenalItems)
 			m_aArsenalItems = {};
 
 		m_aArsenalItems.Clear();
 
-		foreach (ResourceName resource : resources)
+		foreach (int i, ResourceName resource : resources)
 		{
 			if (resource.IsEmpty())
 				continue;
 
+			int supplyCost = 0;
+			if (supplyCosts.IsIndexValid(i))
+				supplyCost = supplyCosts[i];
+
 			SCR_ArsenalItemStandalone item = new SCR_ArsenalItemStandalone();
-			item.CRF_Configure(resource, supplyCost);
+			item.CRF_Configure(resource, supplyCost, itemType, itemMode);
 
 			m_aArsenalItems.Insert(item);
 		}
+
+		// Trap 3: GetFilteredArsenalItems() memoises per type filter. Without this the
+		// arsenal keeps serving whatever it resolved before the list was swapped.
+		m_mArsenalItemsByType.Clear();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -65,14 +103,8 @@ modded class SCR_ArsenalItemListConfig
 modded class SCR_ArsenalComponent
 {
 	//------------------------------------------------------------------------------------------------
-	//! \return The component's overwrite item list, or null when the prefab authored none
-	SCR_ArsenalItemListConfig CRF_GetOverwriteArsenalConfig()
-	{
-		return m_OverwriteArsenalConfig;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! Swaps in a different overwrite item list.
+	//! Swaps in a different overwrite item list. Vanilla exposes GetOverwriteArsenalConfig()
+	//! already, but has no setter, and a prefab that authored no list needs one creating.
 	//! \param[in] config List the arsenal should serve from now on
 	void CRF_SetOverwriteArsenalConfig(SCR_ArsenalItemListConfig config)
 	{

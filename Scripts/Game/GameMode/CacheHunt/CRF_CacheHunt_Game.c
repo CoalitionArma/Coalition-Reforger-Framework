@@ -18,6 +18,21 @@
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
+//! Which weapon classes in the defending gearscript contribute their magazines to the
+//! caches. A launcher's magazine array holds its rockets or missiles - an Igla round is
+//! a magazine like any other - so pulling every array in the gearscript hands out
+//! unlimited AT and AA. Hence the split, with the heavy classes off by default.
+enum CRF_ECacheHuntAmmoClass
+{
+	SMALL_ARMS			= 1 << 0,	//!< Rifles, carbines, pistols, sniper rifles
+	SUPPORT				= 1 << 1,	//!< AR, MMG, HMG
+	GRENADE_LAUNCHER	= 1 << 2,	//!< Rifle-mounted UGL rounds
+	ANTI_TANK			= 1 << 3,	//!< AT, MAT, HAT rockets
+	ANTI_AIR			= 1 << 4,	//!< AA missiles
+	CUSTOM_ROLES		= 1 << 5,	//!< Whatever the gearscript's custom roles carry
+}
+
+//------------------------------------------------------------------------------------
 //! Per-cache server-side bookkeeping. One instance is created for every spawned cache
 //! so each can own its damage-state callback binding.
 class CRF_CacheHuntCacheData
@@ -26,7 +41,7 @@ class CRF_CacheHuntCacheData
 	IEntity m_Cache;									// The spawned cache entity
 	IEntity m_Flag;										// Auto-spawned teleport flag pole
 	vector m_vPosition;									// Cache world position
-	vector m_vSearchCenter;								// Centre of the attacker search area
+	vector m_vSearchOffset;								// Cache -> search area centre, at the starting radius
 	bool m_bDestroyed;
 	bool m_bDetonating;									// A demolition fuse is already running
 
@@ -139,6 +154,18 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("1 0.25 0.25 1", UIWidgets.ColorPicker, desc: "Colour of the attacker search area outline", category: "Cache Hunt - Attacker Markers")]
 	ref Color m_SearchMarkerColor;
 
+	[Attribute("1", UIWidgets.CheckBox, desc: "Narrow the search areas in steps as the mission runs on, so a stalled hunt still ends. Needs a mission time limit set in the COA gamemode", category: "Cache Hunt - Search Narrowing")]
+	bool m_bEnableSearchNarrowing;
+
+	[Attribute("4", UIWidgets.Slider, desc: "How many steps the search areas narrow in. Each step is announced to the attackers", params: "2 10 1", category: "Cache Hunt - Search Narrowing")]
+	int m_iSearchNarrowSteps;
+
+	[Attribute("0.25", UIWidgets.Slider, desc: "Final search radius as a fraction of the starting radius. 0.25 turns a 200m circle into a 50m one, which is still a real building-to-building search", params: "0.05 1 0.05", category: "Cache Hunt - Search Narrowing")]
+	float m_fSearchMinRadiusFactor;
+
+	[Attribute("0.75", UIWidgets.Slider, desc: "Fraction of the mission by which the search areas have fully narrowed. 0.75 leaves the last quarter of the mission at the tightest search area", params: "0.2 1 0.05", category: "Cache Hunt - Search Narrowing")]
+	float m_fSearchNarrowCompleteAt;
+
 	// Defender Markers
 	//------------------------------------------------------------------------------------
 	[Attribute("1", UIWidgets.CheckBox, desc: "Show defenders an exact map marker on every surviving cache", category: "Cache Hunt - Defender Markers")]
@@ -172,8 +199,11 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.CheckBox, desc: "Fill each cache's arsenal with ammunition pulled from the defending faction's assigned gearscript", category: "Cache Hunt - Rearm")]
 	bool m_bEnableCacheRearm;
 
-	[Attribute("0", UIWidgets.Slider, desc: "Supply cost per magazine taken from a cache. 0 makes them free", params: "0 100 1", category: "Cache Hunt - Rearm")]
-	int m_iAmmoSupplyCost;
+	[Attribute("0", UIWidgets.CheckBox, desc: "Charge supplies for ammunition taken from a cache. The per-item price comes from the faction's entity catalog, not from this gamemode - see the guide", category: "Cache Hunt - Rearm")]
+	bool m_bAmmoCostsSupplies;
+
+	[Attribute("39", UIWidgets.Flags, desc: "Which weapon classes from the defending gearscript stock the caches. Anti-tank and anti-air are off by default: a launcher's magazines are its rockets, so including them gives every defender unlimited AT and AA rounds", enums: ParamEnumArray.FromEnum(CRF_ECacheHuntAmmoClass), category: "Cache Hunt - Rearm")]
+	CRF_ECacheHuntAmmoClass m_eAmmoClasses;
 
 	// Misc
 	//------------------------------------------------------------------------------------
@@ -204,6 +234,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "OnActiveCachesReplicated")]
 	protected ref array<vector> m_aSearchMarkerPositions = {};
 
+	//! Current search radius as a fraction of the starting radius. Drops in steps as the
+	//! mission runs on. Replicated because each client sizes its own shape markers.
+	[RplProp(onRplName: "OnActiveCachesReplicated")]
+	protected float m_fSearchRadiusFactor = 1.0;
+
+	//! How many narrowing steps have already been applied
+	protected int m_iSearchNarrowStepsDone = 0;
+
 	[RplProp()]
 	protected int m_iCachesDestroyed = 0;
 
@@ -225,6 +263,11 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//! Client-only: locally spawned attacker search shapes, and the centres they sit on
 	protected ref array<IEntity> m_aLocalSearchMarkers = {};
 	protected ref array<vector> m_aLocalSearchMarkerPositions = {};
+
+	//! Radius factor the local markers were built at. Tracked separately from position
+	//! because with Search Offset Factor at 0 the centres never move, so a narrowing step
+	//! would change the size without changing a single position.
+	protected float m_fLocalSearchMarkerFactor = 1.0;
 
 	protected bool m_bMarkerPollRunning = false;
 
@@ -286,6 +329,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(UpdateFlagProximity);
 			GetGame().GetCallqueue().Remove(ApplyCacheArsenalDeferred);
 			GetGame().GetCallqueue().Remove(DetonateCache);
+			GetGame().GetCallqueue().Remove(UpdateSearchNarrowing);
 			GetGame().GetCallqueue().Remove(AssignFlagCacheIndex);
 			GetGame().GetCallqueue().Remove(UpdateLocalMarkers);
 			GetGame().GetCallqueue().Remove(EnsureMarkerWidget);
@@ -366,6 +410,9 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			ResolveHomeFlag();
 			GetGame().GetCallqueue().CallLater(UpdateFlagProximity, (int)(m_fFlagCheckInterval * 1000), true);
 		}
+
+		if (m_bEnableSearchNarrowing && m_bEnableSearchMarkers)
+			GetGame().GetCallqueue().CallLater(UpdateSearchNarrowing, NARROW_CHECK_INTERVAL_MS, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -495,7 +542,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_DamageManagerComponent. It can never be destroyed, so the objective will not complete.", m_rCachePrefab), LogLevel.ERROR);
 		}
 
-		data.m_vSearchCenter = ComputeSearchCenter(data.m_vPosition);
+		data.m_vSearchOffset = ComputeSearchOffset();
 
 		m_aCaches.Insert(data);
 
@@ -519,15 +566,26 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//! Picks where a cache's search area is centred. The centre is pushed a random distance
 	//! away from the cache so the cache sits inside the shape but never at the middle.
 	//! Decided once on the server so every attacker searches the same ground.
-	protected vector ComputeSearchCenter(vector cachePosition)
+	protected vector ComputeSearchOffset()
 	{
 		float maxOffset = m_fSearchAreaRadius * Math.Clamp(m_fSearchOffsetFactor, 0, 0.95);
 		float angle = Math.RandomFloat(0, Math.PI2);
 		float offset = Math.RandomFloat(0, maxOffset);
 
-		vector center = cachePosition;
-		center[0] = cachePosition[0] + Math.Cos(angle) * offset;
-		center[2] = cachePosition[2] + Math.Sin(angle) * offset;
+		return Vector(Math.Cos(angle) * offset, 0, Math.Sin(angle) * offset);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where a cache's search area sits at the current radius.
+	//!
+	//! The offset scales with the radius rather than staying put. That is not cosmetic: the
+	//! centre is deliberately offset by up to 95% of the radius, so a circle that shrank
+	//! around a fixed centre would eventually stop containing its own cache and send the
+	//! attackers to search ground the cache provably is not on. Scaling both together keeps
+	//! the cache in the same relative spot inside the shape, so it stays inside at every size.
+	protected vector ComputeSearchCenter(notnull CRF_CacheHuntCacheData data)
+	{
+		vector center = data.m_vPosition + (data.m_vSearchOffset * m_fSearchRadiusFactor);
 		center[1] = SCR_TerrainHelper.GetTerrainY(center);
 
 		return center;
@@ -803,6 +861,93 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		respawnManager.RespawnSide(m_DefendingSide);
 	}
 
+	//===================================================================================
+	// SEARCH NARROWING (SERVER)
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Steps the search areas down as the mission runs on, so a hunt that has stalled still
+	//! resolves. Narrowing is deliberately stepped rather than continuous: a circle that
+	//! creeps inward frame by frame just reads as players misremembering where it was, while
+	//! a step with an announcement behind it reads as fresh intel.
+	protected void UpdateSearchNarrowing()
+	{
+		if (!m_bEnableSearchNarrowing || m_bAllCachesDestroyed)
+			return;
+
+		// Nothing narrows during safestart. The mission clock only starts when safestart
+		// ends, so this is belt and braces on top of GetMissionProgress() returning -1
+		// while m_iTimeMissionEnds is still unset - but it makes the intent explicit and
+		// covers a safestart that gets re-entered.
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		if (safestartManager && safestartManager.GetSafestartStatus())
+			return;
+
+		float progress = GetMissionProgress();
+		if (progress < 0)
+			return;	// No time limit set, so there is no mission clock to narrow against
+
+		int steps = Math.ClampInt(m_iSearchNarrowSteps, 2, 10);
+		float completeAt = Math.Clamp(m_fSearchNarrowCompleteAt, 0.2, 1.0);
+
+		// How many steps should have happened by now
+		int wantedSteps = Math.ClampInt((int)Math.Floor((progress / completeAt) * steps), 0, steps);
+
+		if (wantedSteps <= m_iSearchNarrowStepsDone)
+			return;
+
+		m_iSearchNarrowStepsDone = wantedSteps;
+
+		float minFactor = Math.Clamp(m_fSearchMinRadiusFactor, 0.05, 1.0);
+		m_fSearchRadiusFactor = Math.Lerp(1.0, minFactor, (float)wantedSteps / steps);
+
+		// Recentre and resize every surviving search area, then tell the attackers why
+		RebuildActiveCachePositions();
+		AnnounceSearchNarrowing(wantedSteps, steps);
+
+		Print(string.Format("[CRF_CacheHunt] Search areas narrowed to step %1/%2 (%3%% of starting radius) at %4%% mission progress.",
+			wantedSteps, steps, (int)(m_fSearchRadiusFactor * 100), (int)(progress * 100)), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Announced to both sides on purpose. The attackers need to know their circles moved,
+	//! and the defenders knowing the net is closing is the tension that makes a stalled
+	//! round interesting rather than just slow. Neither side learns anything secret - the
+	//! defenders already know exactly where their caches are.
+	protected void AnnounceSearchNarrowing(int step, int totalSteps)
+	{
+		COA_RplBroadcastManager broadcastManager = GetBroadcastManager();
+		if (!broadcastManager)
+			return;
+
+		string body;
+		if (step >= totalSteps)
+			body = string.Format("Search areas are now at their tightest - %1%% of their original size", (int)(m_fSearchRadiusFactor * 100));
+		else
+			body = string.Format("Search areas narrowed - step %1 of %2", step, totalSteps);
+
+		broadcastManager.PopUpNotification(12, "Intel update", body);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return How far through the mission we are, 0..1, or -1 when there is no time limit
+	protected float GetMissionProgress()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		COA_GameTimerManager timerManager = COA_GameTimerManager.GetInstance();
+		if (!gamemode || !timerManager)
+			return -1;
+
+		if (gamemode.m_iTimeLimitMinutes <= 0 || timerManager.m_iTimeMissionEnds <= 0)
+			return -1;	// Untimed mission, or safestart has not started the clock yet
+
+		int durationMs = gamemode.m_iTimeLimitMinutes * 60000;
+		int startTime = timerManager.m_iTimeMissionEnds - durationMs;
+		int elapsed = GetGame().GetWorld().GetWorldTime() - startTime;
+
+		return Math.Clamp((float)elapsed / durationMs, 0, 1);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Refreshes the replicated position lists the clients draw their markers from:
 	//! exact cache positions for defenders, offset search centres for attackers.
@@ -819,7 +964,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 			m_aActiveCachePositions.Insert(cache.m_vPosition);
 			m_aActiveCacheIndices.Insert(cache.m_iIndex);
-			m_aSearchMarkerPositions.Insert(cache.m_vSearchCenter);
+			m_aSearchMarkerPositions.Insert(ComputeSearchCenter(cache));
 		}
 
 		Replication.BumpMe();
@@ -927,7 +1072,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		// Reuse the list the prefab authored where possible, so anything the arsenal has
 		// already cached off that object stays pointed at the same instance.
-		SCR_ArsenalItemListConfig itemList = arsenal.CRF_GetOverwriteArsenalConfig();
+		SCR_ArsenalItemListConfig itemList = arsenal.GetOverwriteArsenalConfig();
 		if (!itemList)
 		{
 			itemList = new SCR_ArsenalItemListConfig();
@@ -935,10 +1080,101 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		}
 
 		int before = itemList.CRF_GetItemCount();
-		itemList.CRF_ReplaceWithStandaloneItems(ammunition, m_iAmmoSupplyCost);
+
+		// EQUIPMENT and AMMUNITION are what the arsenal filters ammunition on. Both must be
+		// present in the cache prefab's Supported Item Types / Modes flags or the entries
+		// are dropped - the shipped prefab's 493046 / 94 include both.
+		//
+		// Costs come from the faction's entity catalog rather than from a gamemode attribute.
+		// The purchase path reads the catalog directly, but the arsenal UI displays whatever
+		// the entry itself carries - so copying the catalog price onto each entry is what
+		// keeps the advertised price and the charged price the same number.
+		itemList.CRF_ReplaceWithStandaloneItems(ammunition, BuildSupplyCosts(ammunition),
+			SCR_EArsenalItemType.EQUIPMENT, SCR_EArsenalItemMode.AMMUNITION);
+
+		ApplySupplyUsage(data.m_Cache);
+
+		// Rebuild the served list and tell clients, now that the entries have changed
+		arsenal.RefreshArsenal();
 
 		Print(string.Format("[CRF_CacheHunt] Cache %1 arsenal list rewritten: %2 authored entries -> %3 gearscript ammunition entries.",
 			data.m_iIndex + 1, before, itemList.CRF_GetItemCount()), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Looks up each magazine's supply cost in the faction entity catalogs, the same source
+	//! CRF_VehicleGearscriptManager prices truck resupply from. Anything with no catalog
+	//! entry stays at 0, which is also what vanilla would charge for it.
+	//! \param[in] ammunition Magazine prefabs to price
+	//! \return Costs parallel to ammunition
+	protected array<int> BuildSupplyCosts(notnull array<ResourceName> ammunition)
+	{
+		array<int> costs = {};
+		costs.Reserve(ammunition.Count());
+
+		for (int i = 0; i < ammunition.Count(); i++)
+		{
+			costs.Insert(0);
+		}
+
+		SCR_EntityCatalogManagerComponent catalogManager = SCR_EntityCatalogManagerComponent.GetInstance();
+		FactionManager factionManager = GetGame().GetFactionManager();
+		if (!catalogManager || !factionManager)
+			return costs;
+
+		array<Faction> factions = {};
+		factionManager.GetFactionsList(factions);
+
+		foreach (Faction faction : factions)
+		{
+			SCR_EntityCatalog catalog = catalogManager.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
+			if (!catalog)
+				continue;
+
+			for (int i = 0; i < ammunition.Count(); i++)
+			{
+				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(ammunition[i]);
+				if (!entry)
+					continue;
+
+				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
+				if (!data)
+					continue;
+
+				costs.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
+			}
+		}
+
+		return costs;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Turns supply charging on or off for a cache.
+	//!
+	//! An arsenal only charges at all when its owner's SCR_ResourceComponent has SUPPLIES
+	//! enabled (SCR_ArsenalComponent.IsArsenalUsingSupplies). The shipped cache prefab
+	//! ships with SUPPLIES in its disabled list, so without this every take is free no
+	//! matter what the arsenal entries say.
+	protected void ApplySupplyUsage(notnull IEntity cache)
+	{
+		SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(cache);
+		if (!resourceComponent)
+		{
+			if (m_bAmmoCostsSupplies)
+				Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_ResourceComponent, so ammunition cannot cost supplies.", m_rCachePrefab), LogLevel.WARNING);
+
+			return;
+		}
+
+		resourceComponent.SetResourceTypeEnabled(m_bAmmoCostsSupplies, EResourceType.SUPPLIES);
+
+		// The setter is a no-op when the prefab disallows changing this resource type, and
+		// it fails silently, so confirm rather than assume.
+		if (resourceComponent.IsResourceTypeEnabled(EResourceType.SUPPLIES) != m_bAmmoCostsSupplies)
+		{
+			Print(string.Format("[CRF_CacheHunt] Could not set supply usage to %1 on cache prefab '%2'. Its SCR_ResourceComponent disallows changing SUPPLIES - fix it in the prefab instead.",
+				m_bAmmoCostsSupplies, m_rCachePrefab), LogLevel.WARNING);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -994,23 +1230,39 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return m_aDefenderAmmunition;
 		}
 
-		CollectMagazinesFromWeapons(config.m_Rifles);
-		CollectMagazinesFromWeapons(config.m_RifleUGLs);
-		CollectMagazinesFromWeapons(config.m_Carbines);
-		CollectMagazinesFromWeapons(config.m_Pistols);
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.SMALL_ARMS)
+		{
+			CollectMagazinesFromWeapons(config.m_Rifles);
+			CollectMagazinesFromWeapons(config.m_Carbines);
+			CollectMagazinesFromWeapons(config.m_Pistols);
 
-		if (config.m_SNIPER)
-			CollectMagazines(config.m_SNIPER.m_MagazineArray);
+			if (config.m_SNIPER)
+				CollectMagazines(config.m_SNIPER.m_MagazineArray);
+		}
 
-		CollectSpecMagazines(config.m_AR);
-		CollectSpecMagazines(config.m_MMG);
-		CollectSpecMagazines(config.m_HMG);
-		CollectSpecMagazines(config.m_AT);
-		CollectSpecMagazines(config.m_MAT);
-		CollectSpecMagazines(config.m_HAT);
-		CollectSpecMagazines(config.m_AA);
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.GRENADE_LAUNCHER)
+			CollectMagazinesFromWeapons(config.m_RifleUGLs);
 
-		if (config.m_RolesToSetCustomSettings)
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.SUPPORT)
+		{
+			CollectSpecMagazines(config.m_AR);
+			CollectSpecMagazines(config.m_MMG);
+			CollectSpecMagazines(config.m_HMG);
+		}
+
+		// A launcher's magazine array is its rockets, so these two are what put Iglas and
+		// RPG rounds in a cache. Off by default.
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.ANTI_TANK)
+		{
+			CollectSpecMagazines(config.m_AT);
+			CollectSpecMagazines(config.m_MAT);
+			CollectSpecMagazines(config.m_HAT);
+		}
+
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.ANTI_AIR)
+			CollectSpecMagazines(config.m_AA);
+
+		if ((m_eAmmoClasses & CRF_ECacheHuntAmmoClass.CUSTOM_ROLES) && config.m_RolesToSetCustomSettings)
 		{
 			foreach (COA_Role_Custom_Gear customGear : config.m_RolesToSetCustomSettings)
 			{
@@ -1145,6 +1397,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	{
 		bool shouldShow = m_bEnableSearchMarkers && IsLocalPlayerAttacker();
 
+		// A narrowing step resizes every shape, so rebuild them all rather than trying to
+		// resize in place - it happens a handful of times a mission at most.
+		if (m_fLocalSearchMarkerFactor != m_fSearchRadiusFactor)
+		{
+			m_fLocalSearchMarkerFactor = m_fSearchRadiusFactor;
+			ClearAllSearchMarkers();
+		}
+
 		array<vector> wanted = {};
 		if (shouldShow)
 		{
@@ -1223,7 +1483,8 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		marker.SetShapeBorderWidth(m_fSearchMarkerBorderWidth);
 		// COA_ShapeMarker draws the shape centred on the entity and sized to its full
 		// extent, so the world size is the circle's diameter rather than its radius.
-		marker.SetShapeRadius(m_fSearchAreaRadius);
+		// The factor is replicated, so every attacker draws the same size.
+		marker.SetShapeRadius(m_fSearchAreaRadius * m_fSearchRadiusFactor);
 
 		// A manual marker only builds its widget on the map-open event it subscribes to in
 		// EOnInit. Spawned while the map is already open, it would stay invisible until the
@@ -1485,6 +1746,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	protected static const float FLAG_CLEARANCE_RADIUS	= 3;
 	protected static const int MARKER_POLL_INTERVAL_MS	= 2000;
 	protected static const int MARKER_WIDGET_DELAY_MS	= 100;
+	protected static const int NARROW_CHECK_INTERVAL_MS	= 15000;
 	protected static const int DEFENDER_MARKER_UPDATE_DELAY	= 1000;
 	protected static const int DEFENDER_MARKER_Z_ORDER	= 500;
 	protected static const int DEFENDER_MARKER_COLOR	= ARGB(255, 80, 200, 120);

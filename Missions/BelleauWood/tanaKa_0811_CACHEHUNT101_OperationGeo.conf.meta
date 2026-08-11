@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7E34CE23CE192F10}Missions/BelleauWood/tanaKa_0811_CACHEHUNT101_OperationGeo.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
