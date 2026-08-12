@@ -1297,7 +1297,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
-			IEntity supplyDepot = ResolveReplicatedEntity(supplyItems[i]);
+			IEntity supplyDepot = COA_EntityHelper.GetEntityFromRplId(supplyItems[i]);
 			if (!supplyDepot)
 				continue;
 
@@ -1316,11 +1316,11 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
            	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
-		IEntity truck = ResolveReplicatedEntity(truckId);
+		IEntity truck = COA_EntityHelper.GetEntityFromRplId(truckId);
 		if (!truck)
 			return;
 
-		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		IEntity supplyArsenal = COA_EntityHelper.GetEntityFromRplId(supplyArsenalId);
 		if (!supplyArsenal)
 			return;
 
@@ -1345,7 +1345,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		// Telemetry: RplId
 		LogTelemetry("RpcAsk_UpdateSupplyArsneal", COA_BandwidthTelemetryManager.EstimateSize_RplId());
 		
-		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		IEntity supplyArsenal = COA_EntityHelper.GetEntityFromRplId(supplyArsenalId);
 		if (!supplyArsenal)
 			return;
 
@@ -1361,8 +1361,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		// Telemetry: 2 RplIds
 		LogTelemetry("RpcAsk_CreateCache", COA_BandwidthTelemetryManager.EstimateSize_RplId() * 2);
 		
-		IEntity truck = ResolveReplicatedEntity(truckId);
-		IEntity player = ResolveReplicatedEntity(playerId);
+		IEntity truck = COA_EntityHelper.GetEntityFromRplId(truckId);
+		IEntity player = COA_EntityHelper.GetEntityFromRplId(playerId);
 		if (!truck || !player)
 			return;
 
@@ -1441,7 +1441,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void CreateCacheDelay(RplId cacheId, array<ResourceName> itemResources)
 	{
-		IEntity cache = ResolveReplicatedEntity(cacheId);
+		IEntity cache = COA_EntityHelper.GetEntityFromRplId(cacheId);
 		if (!cache || !itemResources)
 			return;
 
@@ -1469,7 +1469,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		if (!Replication.FindItem(truckId))
 			return;
 		
-		IEntity truck = ResolveReplicatedEntity(truckId);
+		IEntity truck = COA_EntityHelper.GetEntityFromRplId(truckId);
 		Vehicle vehicle = Vehicle.Cast(truck);
 		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
 		if (!vehicle || !vehicleGearscriptManager)
@@ -1491,7 +1491,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		if (!cacheHunt)
 			return;
 
-		IEntity cache = ResolveReplicatedEntity(cacheId);
+		IEntity cache = COA_EntityHelper.GetEntityFromRplId(cacheId);
 		if (!cache)
 			return;
 
@@ -1514,7 +1514,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		if (!Replication.FindItem(truckId))
 			return;
 		
-		IEntity truck = ResolveReplicatedEntity(truckId);
+		IEntity truck = COA_EntityHelper.GetEntityFromRplId(truckId);
 		Vehicle vehicle = Vehicle.Cast(truck);
 		CRF_VehicleGearscriptManager vehicleGearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
 		if (!vehicle || !vehicleGearscriptManager)
@@ -1523,7 +1523,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		vehicleGearscriptManager.SetVehicleGear(truck, vehicle.m_sFactionKey);
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
-			IEntity supplyDepot = ResolveReplicatedEntity(supplyItems[i]);
+			IEntity supplyDepot = COA_EntityHelper.GetEntityFromRplId(supplyItems[i]);
 			if (!supplyDepot)
 				continue;
 
@@ -1542,7 +1542,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
            	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
-		IEntity rearmTruck = ResolveReplicatedEntity(rearmTruckId);
+		IEntity rearmTruck = COA_EntityHelper.GetEntityFromRplId(rearmTruckId);
 		if (!rearmTruck)
 			return;
 
@@ -1755,7 +1755,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcDo_RequestSupplyUpdate(RplId supplyArsenalId)
 	{
-		IEntity supplyArsenal = ResolveReplicatedEntity(supplyArsenalId);
+		IEntity supplyArsenal = COA_EntityHelper.GetEntityFromRplId(supplyArsenalId);
 		if (!supplyArsenal)
 			return;
 
