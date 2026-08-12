@@ -1691,6 +1691,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			RplComponent vehicleRpl = RplComponent.Cast(vehicleEntity.FindComponent(RplComponent));
 			if (vehicleRpl)
 				spawner.m_VehicleRplId = vehicleRpl.Id();
+
+			// Same pattern as vanilla's SCR_AmbientVehicleSpawnPointComponent: get told synchronously
+			// the instant the engine destroys this vehicle, rather than relying solely on ~Vehicle()'s
+			// GC-timed cleanup. See COA_VehicleSpawner.OnVehicleDestroyed().
+			EventHandlerManagerComponent handler = EventHandlerManagerComponent.Cast(vehicleEntity.FindComponent(EventHandlerManagerComponent));
+			if (handler)
+				handler.RegisterScriptHandler("OnDestroyed", spawner, spawner.OnVehicleDestroyed);
 		}
 
 		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);
