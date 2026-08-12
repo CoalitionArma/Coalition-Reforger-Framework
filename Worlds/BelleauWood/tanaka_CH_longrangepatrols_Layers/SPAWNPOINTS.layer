@@ -3,7 +3,7 @@ COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoin
  {
   COA_ManualMarker {
    ID "68682AC1849E53AF"
-   m_fWorldSize 150
+   m_fWorldSize 100
    m_bUseWorldScale 0
   }
  }
@@ -16,7 +16,7 @@ COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoin
  {
   COA_ManualMarker {
    ID "68682AC1B6C9C4BC"
-   m_fWorldSize 150
+   m_fWorldSize 100
    m_bUseWorldScale 0
   }
  }
