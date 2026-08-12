@@ -7,7 +7,6 @@ GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/Veh
   CRF_VehicleDepot "{664C7C2465880153}" {
    m_iSpawnPointCount 1
    m_fVehicleFacingOffset 180
-   m_iGridColumns 2
    m_bEnableSpawnVisuals 1
    m_aVehicles {
     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
@@ -16,16 +15,19 @@ GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/Veh
     CRF_VehicleDepotVehicle "{6A19260A4573364D}" {
      m_sVehicleName "Bread Van"
      m_sVehiclePrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+     m_eCostType SUPPLIES
      m_iCost 200
     }
     CRF_VehicleDepotVehicle "{6A19260A65D70F46}" {
      m_sVehicleName "UAZ"
      m_sVehiclePrefab "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et"
+     m_eCostType SUPPLIES
      m_iCost 150
     }
     CRF_VehicleDepotVehicle "{6A19260BB7EEA241}" {
      m_sVehicleName "Ural Truck"
      m_sVehiclePrefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+     m_eCostType SUPPLIES
      m_iCost 300
     }
    }
