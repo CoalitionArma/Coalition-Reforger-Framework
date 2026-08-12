@@ -280,6 +280,44 @@ Proximity is evaluated **on the server** and only the resulting boolean is repli
 
 The flag prefab ships with five teleport actions (one per possible cache). On a cache flag, only slot 0 is used, so the other four stay hidden. You don't need to configure them.
 
+### Never reach for the destination flag's entity
+
+A teleport link spans the map, so **the destination flag is always the one the player is not standing next to** — and Arma Reforger only streams entities near a client. `Replication.FindItem()` returns null for it, and so does any registry lookup: it isn't on that machine at all.
+
+Reading the destination off its entity is therefore guaranteed to fail in multiplayer while working perfectly in Workbench, where one machine holds every entity. The gamemode replicates flag **positions and angles** instead, and the action reads those:
+
+| Instead of | Use |
+|---|---|
+| `GetHomeFlag() != null` | `gamemode.HasHomeFlagDestination()` |
+| `GetCacheFlag(i) != null` | `gamemode.HasCacheFlagDestination(i)` |
+| `destinationFlag.GetOwner().GetOrigin()` | `gamemode.GetFlagTransform(i, position, angles)` |
+| `destinationFlag.AreEnemiesNear()` | `gamemode.AreEnemiesNearFlag(i)` |
+
+Only the flag the player is **standing at** is resolved as a local entity, which is safe by definition.
+
+### Flag placement follows the cache, not the terrain
+
+Caches get placed indoors — basements especially — and a flag placed by terrain height ends up on the ground *above* the cache, poking up through the building. Terrain height is therefore not used anywhere in flag placement.
+
+Each of 8 candidate bearings around the cache is instead:
+
+1. **Wall-checked** — traced horizontally from the cache at waist height, so a spot on the far side of a basement wall isn't treated as the same room.
+2. **Probed vertically** from the cache's own height (+1.5 m down to −3 m), landing on the basement floor indoors and the ground outdoors.
+3. **Level-checked** — rejected if the surface found is more than 2.5 m from the cache's height, which is what filters out the terrain above a basement.
+4. **Scored by slope** from the trace normal, keeping the flattest.
+
+If no candidate qualifies, the flag goes at the cache's own position and logs a warning — ugly, but reachable, which a flag on the terrain overhead is not. Raising `Flag Spawn Distance` gives the search more room.
+
+Poles are also spawned **upright**, without `SCR_TerrainHelper.OrientToTerrain()`. That builds its basis from the terrain normal and lays the entity flat against the slope — right for a crate, wrong for a pole, which it tilts into the hillside.
+
+### Flag state is replicated by the gamemode
+
+Which cache a flag serves, and whether enemies are near it, are **not** replicated by the flag itself. Cache flags are spawned at runtime, and their component state did not reliably reach clients of a dedicated server — leaving every client's flags unassigned, so no flag reported itself as the home flag and every teleport action hid itself.
+
+Instead the gamemode publishes a **flag roster** — the flags' `RplId`s, their cache indices, and an enemy-proximity bitmask — and each client stamps its own copies from it in the local poll. The gamemode component is world-baked, so its `RplProp`s are dependable; the same channel already carries the cache positions the markers use.
+
+Anything that needs a flag's role should read it through `CRF_CacheHunt_FlagComponent` as normal — the roster keeps that accurate on every machine. Don't add per-flag replication back.
+
 ---
 
 ## Rearm
@@ -313,6 +351,14 @@ A launcher's magazine array holds its **rockets or missiles**. An Igla round is 
 
 > **Important:** an arsenal serves a *virtual* item list, not the physical contents of the box's storage. Spawning magazines into the box's inventory does **not** make them appear in the arsenal UI — the list itself has to be replaced. This is why the cache prefab needs an `SCR_ArsenalComponent` and not just an inventory.
 
+### The arsenal is filled on every machine, not replicated
+
+An arsenal's overwrite item list is **plain script state that vanilla never replicates** — it is normally static prefab data, so nothing exists to sync it. Filling it on the server does nothing for anyone else: every client keeps serving the list its own prefab authored.
+
+So each machine fills its own copy. The server does it when the cache spawns; each client does it from the marker poll, resolving its copy of the cache through a replicated `RplId`. Both derive the list from the same replicated gearscript, so they agree without the list ever going over the wire.
+
+> **This class of bug is invisible in Workbench.** There the host *is* the client and reads the server's own objects, so server-only state looks like it works. The same mission on a dedicated server showed the full default arsenal. Anything that mutates script state on a spawned entity needs testing on a real server, not just in Workbench.
+
 ### Building an arsenal list in script
 
 Constructing `SCR_ArsenalItemStandalone` entries at runtime rather than authoring them in a prefab hits three traps, and **all three fail the same silent way — an arsenal full of blank tiles, no error**. `CRF_SCR_Arsenal.c` handles them; they're written up here because anything else building an arsenal in script will hit them too.
@@ -340,7 +386,9 @@ Two separate things have to be true before a cache charges anything, and **both 
 Its SCR_ResourceComponent disallows changing SUPPLIES - fix it in the prefab instead.
 ```
 
-**2. The price is not ours to set.** For any item that exists in the faction's ITEM entity catalog — which is every standard faction magazine — vanilla reads the supply cost from the **catalog entry** and ignores whatever the arsenal list says. This is stated outright in `SCR_ArsenalItem.m_iSupplyCost`:
+**2. The cache must be on the defending faction.** The arsenal UI prices a slot by looking the item up in **the arsenal's assigned faction's** ITEM entity catalog, and returns 0 outright when it isn't there. The shipped cache inherits `ArsenalBox_US`, so left alone it asks the *US* catalog for the defenders' magazines, finds nothing, and prices everything at zero. The gamemode now sets each cache's `FactionAffiliationComponent` to the defending side at spawn to fix this.
+
+**3. The price is not ours to set.** For any item that exists in the faction's ITEM entity catalog — which is every standard faction magazine — vanilla reads the supply cost from the **catalog entry** and ignores whatever the arsenal list says. This is stated outright in `SCR_ArsenalItem.m_iSupplyCost`:
 
 > *"Note in overwrite arsenal config this value is ignored and still taken from catalog."*
 
@@ -405,9 +453,12 @@ if (cacheHunt)
 | `No cache positions could be resolved` | Spawn point names don't match any entity, or the randomisation centre entity is missing |
 | `Cache prefab '…' has no SCR_DamageManagerComponent` | Cache prefab can't be destroyed — pick a destructible prefab |
 | `Cache prefab '…' has no SCR_ArsenalComponent` | Rearm is on but the prefab has no arsenal — use a cache prefab with one, or turn rearm off |
+| `N of M magazine(s) have no arsenal entry in the '…' ITEM entity catalog` | Those magazines are free because the defending faction's catalog doesn't price them. Add `SCR_ArsenalItem` data for them in that catalog |
 | `No ammunition resolved from the '…' gearscript` | The faction's gearscript has no magazine entries, or wasn't loaded — check the COA gamemode's gearscript assignment |
 | `Defender home flag '…' was not found` | You didn't place the flag, or its entity name doesn't match the attribute |
 | `Flag pole prefab '…' is missing CRF_CacheHunt_FlagComponent` | A custom flag prefab was used without the component |
 | `Search marker prefab '…' is not a COA_ShapeMarker` | The marker prefab doesn't inherit `ShapeMarker_Base.et` |
+| Teleport actions missing on a dedicated server but fine in Workbench | The flag's cache index isn't reaching clients — see [Flag state is replicated by the gamemode](#flag-state-is-replicated-by-the-gamemode) |
+| Caches show the full default arsenal on a dedicated server | The client hasn't filled its own copy — see [The arsenal is filled on every machine](#the-arsenal-is-filled-on-every-machine-not-replicated) |
 | `No gearscript assigned to the defending faction` | The faction has no gearscript in the COA gamemode settings |
 | `Could not find a spot for randomised cache N` | Min separation is too large for the radius band — caches still spawn, just closer together |
