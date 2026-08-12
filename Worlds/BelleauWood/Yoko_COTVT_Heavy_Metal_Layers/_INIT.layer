@@ -36,7 +36,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "OPFOR are making a bold last ditch effort attack on a BLUFOR ammo depot. A last line of defense is being set up by BLUFOR to hold the line until OPFOR gives up the offensive."\
    ""\
    "BLUFOR Composition: Airborne Infantry Platoon"\
-   "BLUFOR Assets: 1x HAT, 1x ENGI Team, 3x UH60 and 1x AC-130"\
+   "BLUFOR Assets: 1x HAT, 3x UH60 and 1x AC-130"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
@@ -129,7 +129,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A15428B74E6283C}" {
+  COA_SlottingGroup "{6A1977EA21907A61}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -140,7 +140,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E629FE}" {
+  COA_SlottingGroup "{6A1977EA21907B89}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -157,7 +157,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62A03}" {
+  COA_SlottingGroup "{6A1977EA21907CEB}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -174,7 +174,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62AB3}" {
+  COA_SlottingGroup "{6A1977EA21907D01}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -191,7 +191,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62BD0}" {
+  COA_SlottingGroup "{6A1977EA21907E5D}" {
    m_sCallsign "HAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -204,7 +204,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62C4F}" {
+  COA_SlottingGroup "{6A1977EA21907ECE}" {
    m_sCallsign "Lotus 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -215,7 +215,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62CF1}" {
+  COA_SlottingGroup "{6A1977EA21907F74}" {
    m_sCallsign "Lotus 2"
    m_FlagType HELICOPER
    m_aSlots {
@@ -226,7 +226,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62D6F}" {
+  COA_SlottingGroup "{6A1977EA21907F9A}" {
    m_sCallsign "Lotus 3"
    m_FlagType HELICOPER
    m_aSlots {
@@ -237,7 +237,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62DE2}" {
+  COA_SlottingGroup "{6A1977EA2190700D}" {
    m_sCallsign "Reaper 1"
    m_FlagType ATTACK_HELICOPTER
    m_aSlots {
@@ -250,7 +250,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A15428B74E62ED3}" {
+  COA_SlottingGroup "{6A1977EA2190717C}" {
    m_sCallsign "VIC 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -262,7 +262,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A15428B74E62F72}" {
+  COA_SlottingGroup "{6A1977EA219071EB}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
