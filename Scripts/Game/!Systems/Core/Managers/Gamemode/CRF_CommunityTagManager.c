@@ -20,6 +20,12 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! How long to wait after the last connect event before firing the batch fetch.
 	//! Resets on each new join so a burst of connects produces exactly one request.
 	protected static const int DEBOUNCE_DELAY_MS = 3000;
+	protected static const int DEBOUNCE_MAX_WAIT_MS = 10000;
+	protected static const int RECONCILE_DELAY_MS = 8000;
+
+	//! Cap on those follow-ups, so players who genuinely have no backend record (and will never
+	//! resolve) don't produce an endless fetch loop.
+	protected static const int MAX_RECONCILE_PASSES = 3;
 
 	//! If neither the success nor the error callback fires within this window, the
 	//! in-flight request is considered lost and m_bFetching is force-reset so future
@@ -113,6 +119,16 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Server-side: consecutive lost/failed fetches, see MAX_CONSECUTIVE_FAILURES.
 	protected int m_iConsecutiveFailures = 0;
 
+	//! Tick at which the currently open debounce window started, or -1 when none is open.
+	//! Used to enforce DEBOUNCE_MAX_WAIT_MS. Deliberately System.GetTickCount() rather than world
+	//! time: this is a purely server-local elapsed-time measurement that is never compared across
+	//! machines, and it must not depend on a loaded world — the Workbench instantiates this
+	//! component with no world present.
+	protected int m_iDebounceWindowStart = -1;
+
+	//! Follow-up passes used by the current reconcile cycle, see MAX_RECONCILE_PASSES.
+	protected int m_iReconcilePasses = 0;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	STATIC ACCESSORS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -144,6 +160,13 @@ class CRF_CommunityTagManager : ScriptComponent
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
+
+		// The World Editor instantiates the gamemode entity (and therefore this component) while
+		// editing — switching worlds runs EOnInit with no world loaded and no players to fetch for.
+		// Nothing this component does is meaningful outside play mode.
+		if (!GetGame().InPlayMode())
+			return;
+
 		RegisterPlayerLifecycleCallbacks();
 	}
 
@@ -240,6 +263,9 @@ class CRF_CommunityTagManager : ScriptComponent
 			return;
 		}
 
+		// The debounce window (if any) has now closed.
+		m_iDebounceWindowStart = -1;
+
 		if (m_bFetching)
 		{
 			m_bPendingFetch = true;
@@ -299,9 +325,26 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! N joins produces exactly one HTTP request once the burst settles.
 	//! When the fetch completes, m_OnPlayerInfoUpdated fires so all UI subscribers
 	//! automatically refresh their tag/rank icons.
+	//! The deferral is capped at DEBOUNCE_MAX_WAIT_MS: a steady stream of joins would otherwise
+	//! reset the timer indefinitely and the fetch would never run at all.
 	protected void ScheduleFetchDebounced()
 	{
+		int now = System.GetTickCount();
+
+		if (m_iDebounceWindowStart < 0)
+			m_iDebounceWindowStart = now;
+
+		// Cancel whatever was pending either way — we are about to replace it or run it now.
 		GetGame().GetCallqueue().Remove(FetchPlayerInfo);
+
+		if (now - m_iDebounceWindowStart >= DEBOUNCE_MAX_WAIT_MS)
+		{
+			// Held off long enough — fetch what we have now. Players who join after this point
+			// still get picked up by the next debounce window and by the reconcile pass.
+			FetchPlayerInfo();
+			return;
+		}
+
 		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, DEBOUNCE_DELAY_MS, false);
 	}
 
@@ -591,7 +634,51 @@ class CRF_CommunityTagManager : ScriptComponent
 		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
 
 		if (bRetry)
+		{
 			FetchPlayerInfo();
+			return;
+		}
+
+		ScheduleReconcileIfIncomplete();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Schedule another fetch if any connected player is still absent from the cache.
+	//! Two things put a player in that state during a mass join, and neither of them recovers on
+	//! its own: their name had not replicated when the query string was built (FetchPlayerInfo
+	//! skips empty names), or the response simply had no row keyed to their name. Once the join
+	//! burst is over there are no further connect events, so without this they stay untagged for
+	//! the rest of the session.
+	protected void ScheduleReconcileIfIncomplete()
+	{
+		if (!Replication.IsServer())
+			return;
+
+		if (m_iReconcilePasses >= MAX_RECONCILE_PASSES)
+			return;
+
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
+
+		int missing = 0;
+		foreach (int playerId : playerIds)
+		{
+			if (playerId <= 0)
+				continue;
+			if (!m_mTagCache.Contains(playerId))
+				missing++;
+		}
+
+		if (missing == 0)
+		{
+			m_iReconcilePasses = 0;
+			return;
+		}
+
+		m_iReconcilePasses++;
+		Print(string.Format("[CRF_CommunityTagManager] %1 connected player(s) still have no cached info — scheduling reconcile pass %2 of %3", missing, m_iReconcilePasses, MAX_RECONCILE_PASSES), LogLevel.NORMAL);
+		GetGame().GetCallqueue().Remove(FetchPlayerInfo);
+		GetGame().GetCallqueue().CallLater(FetchPlayerInfo, RECONCILE_DELAY_MS, false);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -739,8 +826,10 @@ class CRF_CommunityTagManager : ScriptComponent
 		if (Replication.IsServer())
 		{
 			Print(string.Format("[CRF_CommunityTagManager][SERVER] Player %1 connected — scheduling debounced fetch", playerId), LogLevel.NORMAL);
-			// A new join is a fresh chance for the backend to be reachable again.
+			// A new join is a fresh chance for the backend to be reachable again, and a new player
+			// to resolve — both budgets start over.
 			m_iConsecutiveFailures = 0;
+			m_iReconcilePasses = 0;
 			ScheduleFetchDebounced();
 		}
 	}
