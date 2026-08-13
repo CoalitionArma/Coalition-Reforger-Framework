@@ -391,12 +391,21 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 				return false;
 			
 		Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
+
+		// Resolved through replication rather than a raw entity pointer, which the call queue would
+		// otherwise hold for the full 500ms delay - if the vehicle is destroyed in that window
+		// (e.g. ambushed right after spawning), SetVehicleGear's `if (!vehicle)` guard does not
+		// detect an entity the engine has already deleted. See SetVehicleGearById().
+		RplComponent vehicleRpl = RplComponent.Cast(vehicle.FindComponent(RplComponent));
+		if (!vehicleRpl)
+			return true;
+
 		game.GetCallqueue().CallLater(
-			SetVehicleGear, 500, false,
-			vehicle, Vehicle.Cast(vehicle).m_sFactionKey
+			SetVehicleGearById, 500, false,
+			vehicleRpl.Id(), Vehicle.Cast(vehicle).m_sFactionKey
 		);
 		return true;
-	}	
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Gets the total supply value of all items combined in the vehilce
@@ -1682,6 +1691,13 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			RplComponent vehicleRpl = RplComponent.Cast(vehicleEntity.FindComponent(RplComponent));
 			if (vehicleRpl)
 				spawner.m_VehicleRplId = vehicleRpl.Id();
+
+			// Same pattern as vanilla's SCR_AmbientVehicleSpawnPointComponent: get told synchronously
+			// the instant the engine destroys this vehicle, rather than relying solely on ~Vehicle()'s
+			// GC-timed cleanup. See COA_VehicleSpawner.OnVehicleDestroyed().
+			EventHandlerManagerComponent handler = EventHandlerManagerComponent.Cast(vehicleEntity.FindComponent(EventHandlerManagerComponent));
+			if (handler)
+				handler.RegisterScriptHandler("OnDestroyed", spawner, spawner.OnVehicleDestroyed);
 		}
 
 		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);
