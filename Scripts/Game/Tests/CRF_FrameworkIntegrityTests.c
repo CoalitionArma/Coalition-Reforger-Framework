@@ -15,7 +15,7 @@
 [Test(suite: CRF_FrameworkTestSuite, timeoutMs: 60000)]
 class CRF_Test_FactionGearscripts_Resolve : SCR_AutotestCaseBase
 {
-	[Step(EStage.Main)]
+	[TestStep(TestStage.Main)]
 	bool Execute()
 	{
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
@@ -49,7 +49,6 @@ class CRF_Test_FactionGearscripts_Resolve : SCR_AutotestCaseBase
 
 		AssertTrue(checkedCount > 0, "No faction had a gearscript assigned - is the world configured?");
 
-		SetResultSuccess();
 		return true;
 	}
 }
@@ -68,7 +67,7 @@ class CRF_Test_FactionGearscripts_Resolve : SCR_AutotestCaseBase
 [Test(suite: CRF_FrameworkTestSuite, timeoutMs: 60000)]
 class CRF_Test_GamemodeManagers_Attached : SCR_AutotestCaseBase
 {
-	[Step(EStage.Main)]
+	[TestStep(TestStage.Main)]
 	bool Execute()
 	{
 		if (!COA_Gamemode.GetInstance())
@@ -80,7 +79,6 @@ class CRF_Test_GamemodeManagers_Attached : SCR_AutotestCaseBase
 		if (RplSession.Mode() == RplMode.Client)
 		{
 			PrintOnce("Client session, server-side managers not expected here");
-			SetResultSuccess();
 			return true;
 		}
 
@@ -91,7 +89,6 @@ class CRF_Test_GamemodeManagers_Attached : SCR_AutotestCaseBase
 		AssertTrue(CRF_VAAR_GamemodeComponent.GetInstance() != null, "CRF_VAAR_GamemodeComponent not attached to the gamemode prefab");
 		AssertTrue(CRF_VehicleGearscriptManager.GetInstance() != null, "CRF_VehicleGearscriptManager not attached to the gamemode prefab");
 
-		SetResultSuccess();
 		return true;
 	}
 }
