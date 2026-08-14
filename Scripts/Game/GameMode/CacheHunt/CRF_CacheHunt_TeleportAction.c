@@ -39,16 +39,17 @@ class CRF_CacheHunt_TeleportAction: ScriptedUserAction
 	{
 		super.PerformAction(pOwnerEntity, pUserEntity);
 
-		CRF_CacheHunt_FlagComponent destination = GetDestinationFlag();
-		if (!destination || !destination.GetOwner())
+		CRF_CacheHuntGamemodeManager gamemode = CRF_CacheHuntGamemodeManager.GetInstance();
+		if (!gamemode)
+			return;
+
+		vector destinationPosition;
+		vector destinationYawPitchRoll;
+		if (!gamemode.GetFlagTransform(GetDestinationIndex(), destinationPosition, destinationYawPitchRoll))
 		{
-			Print("[CRF_CacheHunt] Teleport destination flag no longer exists.", LogLevel.WARNING);
+			Print("[CRF_CacheHunt] Teleport destination no longer exists.", LogLevel.WARNING);
 			return;
 		}
-
-		IEntity destinationEntity = destination.GetOwner();
-		vector destinationPosition = destinationEntity.GetOrigin();
-		vector destinationYawPitchRoll = destinationEntity.GetYawPitchRoll();
 
 		// Land next to the flag rather than inside it
 		vector finalSpawnLocation = vector.Zero;
@@ -74,42 +75,62 @@ class CRF_CacheHunt_TeleportAction: ScriptedUserAction
 			return false;
 
 		CRF_CacheHunt_FlagComponent ownFlag = GetOwnFlag();
-		if (!ownFlag)
+		if (!ownFlag || ownFlag.GetCacheIndex() == CRF_CacheHunt_FlagComponent.UNASSIGNED_INDEX)
 			return false;
 
 		// A cache flag only ever offers the single trip back home
 		if (!ownFlag.IsHomeFlag())
-			return m_iSlotIndex == 0 && CRF_CacheHunt_FlagComponent.GetHomeFlag() != null;
+			return m_iSlotIndex == 0 && gamemode.HasHomeFlagDestination();
 
 		// The home flag hides slots whose cache is destroyed or was never created
-		return CRF_CacheHunt_FlagComponent.GetCacheFlag(m_iSlotIndex) != null;
+		return gamemode.HasCacheFlagDestination(m_iSlotIndex);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override bool CanBePerformedScript(IEntity user)
 	{
+		CRF_CacheHuntGamemodeManager gamemode = CRF_CacheHuntGamemodeManager.GetInstance();
 		CRF_CacheHunt_FlagComponent ownFlag = GetOwnFlag();
-		CRF_CacheHunt_FlagComponent destination = GetDestinationFlag();
 
-		if (!ownFlag || !destination)
+		if (!gamemode || !ownFlag)
 		{
 			SetCannotPerformReason(NO_DESTINATION_REASON);
 			return false;
 		}
 
-		if (ownFlag.AreEnemiesNear())
+		int destinationIndex = GetDestinationIndex();
+		vector position;
+		vector angles;
+		if (!gamemode.GetFlagTransform(destinationIndex, position, angles))
+		{
+			SetCannotPerformReason(NO_DESTINATION_REASON);
+			return false;
+		}
+
+		if (gamemode.AreEnemiesNearFlag(ownFlag.GetCacheIndex()))
 		{
 			SetCannotPerformReason(ENEMIES_HERE_REASON);
 			return false;
 		}
 
-		if (destination.AreEnemiesNear())
+		if (gamemode.AreEnemiesNearFlag(destinationIndex))
 		{
 			SetCannotPerformReason(ENEMIES_THERE_REASON);
 			return false;
 		}
 
 		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return Cache index this action travels to, or HOME_FLAG_INDEX when heading home
+	protected int GetDestinationIndex()
+	{
+		CRF_CacheHunt_FlagComponent ownFlag = GetOwnFlag();
+		if (ownFlag && !ownFlag.IsHomeFlag())
+			return CRF_CacheHuntGamemodeManager.HOME_FLAG_INDEX;
+
+		return m_iSlotIndex;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -162,20 +183,6 @@ class CRF_CacheHunt_TeleportAction: ScriptedUserAction
 		}
 
 		return m_OwnFlag;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! Where this action leads: home flag -> cache flag, cache flag -> home flag.
-	protected CRF_CacheHunt_FlagComponent GetDestinationFlag()
-	{
-		CRF_CacheHunt_FlagComponent ownFlag = GetOwnFlag();
-		if (!ownFlag)
-			return null;
-
-		if (ownFlag.IsHomeFlag())
-			return CRF_CacheHunt_FlagComponent.GetCacheFlag(m_iSlotIndex);
-
-		return CRF_CacheHunt_FlagComponent.GetHomeFlag();
 	}
 
 	//===================================================================================

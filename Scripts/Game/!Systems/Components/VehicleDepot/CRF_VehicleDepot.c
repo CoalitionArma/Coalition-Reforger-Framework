@@ -446,59 +446,75 @@ class CRF_VehicleDepot : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Collects every distinct SUPPLIES container reachable from any qualifying consumer within
+	//! m_fSupplySearchRadius, de-duplicated by container reference.
+	protected void CollectNearbySupplyContainers(notnull set<SCR_ResourceContainer> outContainers)
+	{
+		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
+			return;
+
+		vector depotPos = GetOwner().GetOrigin();
+
+		// Clear previous results and query entities within search radius
+		m_aNearbyEntities.Clear();
+		GetGame().GetWorld().QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.ALL);
+
+		foreach (IEntity entity : m_aNearbyEntities)
+		{
+			if (!entity || entity == GetOwner())
+				continue;
+
+			// Check if entity has a resource component
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
+			if (!resourceComponent)
+				continue;
+
+			// Try to get consumer for aggregated value
+			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			if (!consumer)
+				continue;
+
+			// Force resource grid to rebuild this consumer's own container queue (within its own range)
+			GetGame().GetResourceGrid().UpdateInteractor(consumer);
+
+			SCR_ResourceContainerQueueBase containerQueue = consumer.GetContainerQueue();
+			if (!containerQueue)
+				continue;
+
+			int containerCount = containerQueue.GetContainerCount();
+			for (int i = 0; i < containerCount; i++)
+			{
+				SCR_ResourceContainer container = containerQueue.GetContainerAt(i);
+				if (container)
+					outContainers.Insert(container); // set<> dedupes by reference automatically
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Main Supply Aggregation Function - Detects live aggregated supplies from all sources in radius (SERVER ONLY)
 	protected int GetLiveAggregatedSupplies()
 	{
 		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
 			return 0;
-		
+
 		#ifdef WORKBENCH
 		if (m_fSupplySearchRadius)
 			DebugPrint(string.Format("Server searching for aggregated supplies in %1m radius...", m_fSupplySearchRadius));
 		#endif
-			
-		vector depotPos = GetOwner().GetOrigin();
-		
-		// Clear previous results and query entities within search radius
-		m_aNearbyEntities.Clear();
-		GetGame().GetWorld().QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.ALL);
-		
-		// Find the first valid consumer to get aggregated value
-		// NOTE: All consumers in a network report the same aggregated total, so we only need one
-		foreach (IEntity entity : m_aNearbyEntities)
-		{
-			if (!entity || entity == GetOwner())
-				continue;
-				
-			// Check if entity has a resource component
-			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
-			if (!resourceComponent)
-				continue;
-				
-			// Try to get consumer for aggregated value
-			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-			if (consumer)
-			{
-				// Force resource grid to update this consumer's aggregation network
-				GetGame().GetResourceGrid().UpdateInteractor(consumer);
-				
-				// Get aggregated value - this represents the total from ALL connected supply sources
-				float aggregatedSupplies = consumer.GetAggregatedResourceValue();
-				
-				#ifdef WORKBENCH
-				DebugPrint(string.Format("Found consumer with %1 aggregated supplies (total network)", aggregatedSupplies));
-				#endif
-				
-				return (int)aggregatedSupplies;
-			}
-		}
-		
-		// No valid consumers found
+
+		set<SCR_ResourceContainer> containers = new set<SCR_ResourceContainer>();
+		CollectNearbySupplyContainers(containers);
+
+		float totalSupplies;
+		foreach (SCR_ResourceContainer container : containers)
+			totalSupplies += container.GetResourceValue();
+
 		#ifdef WORKBENCH
-		DebugPrint("No supply consumers found in radius");
+		DebugPrint(string.Format("Found %1 supplies across %2 distinct containers", totalSupplies, containers.Count()));
 		#endif
-			
-		return 0;
+
+		return (int)totalSupplies;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -636,65 +652,57 @@ class CRF_VehicleDepot : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Deducts supplies across the same de-duplicated container set GetLiveAggregatedSupplies() reads
+	//! from, so what gets consumed matches what was shown as available. Mirrors the per-container
+	//! consumption loop in SCR_ResourceConsumer.RequestConsumtion(), but over containers merged from
+	//! every qualifying consumer in radius rather than a single consumer's own queue.
 	protected void DeductSupplies(int amount, int postConsumptionSupplies = -1)
 	{
 		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
 			return;
-			
-		vector depotPos = GetOwner().GetOrigin();
-		
-		// Find all supply sources in radius
-		m_aNearbyEntities.Clear();
-		GetGame().GetWorld().QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.ALL);
-		
-		// Find ANY resource component with a consumer that can handle aggregated consumption
-		foreach (IEntity entity : m_aNearbyEntities)
+
+		set<SCR_ResourceContainer> containers = new set<SCR_ResourceContainer>();
+		CollectNearbySupplyContainers(containers);
+
+		float remainingCost = amount;
+		float resourceUsed;
+		SCR_ResourceEncapsulator encapsulator;
+
+		foreach (SCR_ResourceContainer container : containers)
 		{
-			if (!entity || entity == GetOwner())
+			if (remainingCost <= 0)
+				break;
+
+			resourceUsed = Math.Min(remainingCost, container.GetResourceValue());
+			if (resourceUsed <= 0)
 				continue;
-				
-			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
-			if (!resourceComponent)
-				continue;
-				
-			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-			if (!consumer)
-				continue;
-				
-			// Update the consumer's aggregation network first
-			GetGame().GetResourceGrid().UpdateInteractor(consumer);
-			
-			// Check if this consumer has access to enough aggregated supplies
-			float aggregatedSupplies = consumer.GetAggregatedResourceValue();
-			if (aggregatedSupplies >= amount)
-			{
-				// Attempt consumption from this consumer (which handles aggregated sources automatically)
-				bool consumptionSuccess = consumer.RequestConsumtion(amount);
-				if (consumptionSuccess)
-				{
-					#ifdef WORKBENCH
-					DebugPrint(string.Format("Successfully consumed %1 supplies from aggregated sources (had %2 available)", amount, aggregatedSupplies));
-					#endif
-					
-					// Use pre-calculated post-consumption value if provided, otherwise calculate
-					if (postConsumptionSupplies == -1)
-						postConsumptionSupplies = GetLiveAggregatedSupplies();
-					
-					// Immediately update cached value to prevent exploitation during delay
-					m_iAggregatedSupplies = postConsumptionSupplies;
-					Replication.BumpMe();
-					
-					// Cancel any pending delayed update since we just updated
-					GetGame().GetCallqueue().Remove(UpdateAggregatedSupplies);
-					return; // Success - exit function
-				}
-			}
+
+			remainingCost -= resourceUsed;
+
+			encapsulator = container.GetResourceEncapsulator();
+			if (encapsulator)
+				encapsulator.RequestConsumtion(resourceUsed);
+			else
+				container.DecreaseResourceValue(resourceUsed);
 		}
-		
-		// If we get here, no suitable consumer was found
+
 		#ifdef WORKBENCH
-		DebugPrint(string.Format("No suitable supply consumer found for %1 supplies", amount));
+		if (remainingCost > 0)
+			DebugPrint(string.Format("DeductSupplies: only found %1 of the requested %2 supplies across %3 containers", amount - remainingCost, amount, containers.Count()));
+		else
+			DebugPrint(string.Format("Successfully consumed %1 supplies across %2 distinct containers", amount, containers.Count()));
 		#endif
+
+		// Use pre-calculated post-consumption value if provided, otherwise calculate
+		if (postConsumptionSupplies == -1)
+			postConsumptionSupplies = GetLiveAggregatedSupplies();
+
+		// Immediately update cached value to prevent exploitation during delay
+		m_iAggregatedSupplies = postConsumptionSupplies;
+		Replication.BumpMe();
+
+		// Cancel any pending delayed update since we just updated
+		GetGame().GetCallqueue().Remove(UpdateAggregatedSupplies);
 	}
 	
 	//------------------------------------------------------------------------------------------------
