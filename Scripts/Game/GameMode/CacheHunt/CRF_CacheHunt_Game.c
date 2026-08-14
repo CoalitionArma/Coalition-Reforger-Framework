@@ -18,6 +18,21 @@
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
+//! Which weapon classes in the defending gearscript contribute their magazines to the
+//! caches. A launcher's magazine array holds its rockets or missiles - an Igla round is
+//! a magazine like any other - so pulling every array in the gearscript hands out
+//! unlimited AT and AA. Hence the split, with the heavy classes off by default.
+enum CRF_ECacheHuntAmmoClass
+{
+	SMALL_ARMS			= 1 << 0,	//!< Rifles, carbines, pistols, sniper rifles
+	SUPPORT				= 1 << 1,	//!< AR, MMG, HMG
+	GRENADE_LAUNCHER	= 1 << 2,	//!< Rifle-mounted UGL rounds
+	ANTI_TANK			= 1 << 3,	//!< AT, MAT, HAT rockets
+	ANTI_AIR			= 1 << 4,	//!< AA missiles
+	CUSTOM_ROLES		= 1 << 5,	//!< Whatever the gearscript's custom roles carry
+}
+
+//------------------------------------------------------------------------------------
 //! Per-cache server-side bookkeeping. One instance is created for every spawned cache
 //! so each can own its damage-state callback binding.
 class CRF_CacheHuntCacheData
@@ -26,7 +41,7 @@ class CRF_CacheHuntCacheData
 	IEntity m_Cache;									// The spawned cache entity
 	IEntity m_Flag;										// Auto-spawned teleport flag pole
 	vector m_vPosition;									// Cache world position
-	vector m_vSearchCenter;								// Centre of the attacker search area
+	vector m_vSearchOffset;								// Cache -> search area centre, at the starting radius
 	bool m_bDestroyed;
 	bool m_bDetonating;									// A demolition fuse is already running
 
@@ -139,6 +154,18 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("1 0.25 0.25 1", UIWidgets.ColorPicker, desc: "Colour of the attacker search area outline", category: "Cache Hunt - Attacker Markers")]
 	ref Color m_SearchMarkerColor;
 
+	[Attribute("1", UIWidgets.CheckBox, desc: "Narrow the search areas in steps as the mission runs on, so a stalled hunt still ends. Needs a mission time limit set in the COA gamemode", category: "Cache Hunt - Search Narrowing")]
+	bool m_bEnableSearchNarrowing;
+
+	[Attribute("4", UIWidgets.Slider, desc: "How many steps the search areas narrow in. Each step is announced to the attackers", params: "2 10 1", category: "Cache Hunt - Search Narrowing")]
+	int m_iSearchNarrowSteps;
+
+	[Attribute("0.25", UIWidgets.Slider, desc: "Final search radius as a fraction of the starting radius. 0.25 turns a 200m circle into a 50m one, which is still a real building-to-building search", params: "0.05 1 0.05", category: "Cache Hunt - Search Narrowing")]
+	float m_fSearchMinRadiusFactor;
+
+	[Attribute("0.75", UIWidgets.Slider, desc: "Fraction of the mission by which the search areas have fully narrowed. 0.75 leaves the last quarter of the mission at the tightest search area", params: "0.2 1 0.05", category: "Cache Hunt - Search Narrowing")]
+	float m_fSearchNarrowCompleteAt;
+
 	// Defender Markers
 	//------------------------------------------------------------------------------------
 	[Attribute("1", UIWidgets.CheckBox, desc: "Show defenders an exact map marker on every surviving cache", category: "Cache Hunt - Defender Markers")]
@@ -172,8 +199,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.CheckBox, desc: "Fill each cache's arsenal with ammunition pulled from the defending faction's assigned gearscript", category: "Cache Hunt - Rearm")]
 	bool m_bEnableCacheRearm;
 
-	[Attribute("0", UIWidgets.Slider, desc: "Supply cost per magazine taken from a cache. 0 makes them free", params: "0 100 1", category: "Cache Hunt - Rearm")]
+	[Attribute("0", UIWidgets.CheckBox, desc: "Charge supplies for ammunition taken from a cache", category: "Cache Hunt - Rearm")]
+	bool m_bAmmoCostsSupplies;
+
+	[Attribute("10", UIWidgets.Slider, desc: "Supply cost per magazine, used when the defending faction's entity catalog does not price it - which is the usual case for gearscript magazines. A magazine the catalog does price keeps the catalog's price", params: "0 200 1", category: "Cache Hunt - Rearm")]
 	int m_iAmmoSupplyCost;
+
+	[Attribute("39", UIWidgets.Flags, desc: "Which weapon classes from the defending gearscript stock the caches. Anti-tank and anti-air are off by default: a launcher's magazines are its rockets, so including them gives every defender unlimited AT and AA rounds", enums: ParamEnumArray.FromEnum(CRF_ECacheHuntAmmoClass), category: "Cache Hunt - Rearm")]
+	CRF_ECacheHuntAmmoClass m_eAmmoClasses;
 
 	// Misc
 	//------------------------------------------------------------------------------------
@@ -198,11 +231,57 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "OnActiveCachesReplicated")]
 	protected ref array<int> m_aActiveCacheIndices = {};
 
+	//! RplIds of the surviving cache entities, in step with the positions above.
+	//!
+	//! An SCR_ArsenalComponent's overwrite item list is plain script state that vanilla
+	//! never replicates - it is normally static prefab data. Filling it on the server
+	//! therefore leaves every client still reading its own prefab-authored list, which is
+	//! why a dedicated server shows the full default arsenal while Workbench looks fine.
+	//! Clients use these ids to find their own copy of each cache and fill it locally.
+	[RplProp(onRplName: "OnActiveCachesReplicated")]
+	protected ref array<RplId> m_aActiveCacheRplIds = {};
+
+	//! Enemy proximity per flag, as a bitmask: bit 0-4 are cache flags 0-4, bit 5 is the
+	//! home flag. Keyed by cache index rather than by entity so a client can read it without
+	//! having to resolve the flag entity first - see ApplyLocalFlagRoster for why that matters.
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected int m_iFlagEnemyMask;
+
+	//! Where each teleport flag is, so a player can travel to one without that flag's entity
+	//! existing on their machine.
+	//!
+	//! A teleport link always spans the map, so the destination flag is by definition the one
+	//! the player is NOT standing next to - and therefore the one their client has not
+	//! streamed in. Reading the destination off its entity meant the actions could never
+	//! appear. These are positions and angles, not entity references, for exactly that reason.
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected ref array<vector> m_aCacheFlagPositions = {};
+
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected ref array<vector> m_aCacheFlagAngles = {};
+
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected vector m_vHomeFlagPosition;
+
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected vector m_vHomeFlagAngles;
+
+	[RplProp(onRplName: "OnFlagRosterReplicated")]
+	protected bool m_bHasHomeFlag;
+
 	//! Centres of the attacker search areas, one per surviving cache. Decided on the server
 	//! so every attacker sees the same shape in the same place, then spawned locally by each
 	//! client - shape markers carry no RplComponent and cannot be replicated entities.
 	[RplProp(onRplName: "OnActiveCachesReplicated")]
 	protected ref array<vector> m_aSearchMarkerPositions = {};
+
+	//! Current search radius as a fraction of the starting radius. Drops in steps as the
+	//! mission runs on. Replicated because each client sizes its own shape markers.
+	[RplProp(onRplName: "OnActiveCachesReplicated")]
+	protected float m_fSearchRadiusFactor = 1.0;
+
+	//! How many narrowing steps have already been applied
+	protected int m_iSearchNarrowStepsDone = 0;
 
 	[RplProp()]
 	protected int m_iCachesDestroyed = 0;
@@ -225,6 +304,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//! Client-only: locally spawned attacker search shapes, and the centres they sit on
 	protected ref array<IEntity> m_aLocalSearchMarkers = {};
 	protected ref array<vector> m_aLocalSearchMarkerPositions = {};
+
+	//! Radius factor the local markers were built at. Tracked separately from position
+	//! because with Search Offset Factor at 0 the centres never move, so a narrowing step
+	//! would change the size without changing a single position.
+	protected float m_fLocalSearchMarkerFactor = 1.0;
+
+	//! Remaining polls that log what this machine received. Diagnostic only.
+	protected int m_iPollDiagnosticsLeft = 5;
 
 	protected bool m_bMarkerPollRunning = false;
 
@@ -270,11 +357,23 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 			GetGame().GetCallqueue().CallLater(InitialiseCaches, m_iInitDelayMs, false);
 
+		// Unconditional so it appears in EVERY log - server and client alike. If this line is
+		// absent from a machine's log, that machine is not running this build of the script.
+		Print(string.Format("[CRF_CacheHunt] BUILD MARKER rev9 | OnWorldPostProcess | RplSession.Mode=%1 | IsServer=%2 | attacker=%3 defender=%4",
+			RplSession.Mode(), Replication.IsServer(), m_AttackingSide, m_DefendingSide), LogLevel.NORMAL);
+
 		// Markers are drawn by any machine with a local player, which includes a listen
 		// host and Workbench play. Replication.IsClient() is false on the host, so gating
 		// on it would leave the host with no markers at all.
 		if (RplSession.Mode() != RplMode.Dedicated)
+		{
+			Print("[CRF_CacheHunt] Starting local marker/arsenal/flag poll on this machine.", LogLevel.NORMAL);
 			StartLocalMarkerPoll();
+		}
+		else
+		{
+			Print("[CRF_CacheHunt] Dedicated server - no local poll (correct; this machine has no local player).", LogLevel.NORMAL);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -286,6 +385,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(UpdateFlagProximity);
 			GetGame().GetCallqueue().Remove(ApplyCacheArsenalDeferred);
 			GetGame().GetCallqueue().Remove(DetonateCache);
+			GetGame().GetCallqueue().Remove(UpdateSearchNarrowing);
 			GetGame().GetCallqueue().Remove(AssignFlagCacheIndex);
 			GetGame().GetCallqueue().Remove(UpdateLocalMarkers);
 			GetGame().GetCallqueue().Remove(EnsureMarkerWidget);
@@ -366,6 +466,9 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			ResolveHomeFlag();
 			GetGame().GetCallqueue().CallLater(UpdateFlagProximity, (int)(m_fFlagCheckInterval * 1000), true);
 		}
+
+		if (m_bEnableSearchNarrowing && m_bEnableSearchMarkers)
+			GetGame().GetCallqueue().CallLater(UpdateSearchNarrowing, NARROW_CHECK_INTERVAL_MS, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -495,12 +598,12 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_DamageManagerComponent. It can never be destroyed, so the objective will not complete.", m_rCachePrefab), LogLevel.ERROR);
 		}
 
-		data.m_vSearchCenter = ComputeSearchCenter(data.m_vPosition);
+		data.m_vSearchOffset = ComputeSearchOffset();
 
 		m_aCaches.Insert(data);
 
 		if (m_bEnableTeleportFlags)
-			data.m_Flag = SpawnCacheFlag(index, data.m_vPosition);
+			data.m_Flag = SpawnCacheFlag(index, data.m_vPosition, data.m_Cache);
 
 		// Give the freshly spawned cache a moment to finish initialising its arsenal.
 		if (m_bEnableCacheRearm)
@@ -519,15 +622,26 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//! Picks where a cache's search area is centred. The centre is pushed a random distance
 	//! away from the cache so the cache sits inside the shape but never at the middle.
 	//! Decided once on the server so every attacker searches the same ground.
-	protected vector ComputeSearchCenter(vector cachePosition)
+	protected vector ComputeSearchOffset()
 	{
 		float maxOffset = m_fSearchAreaRadius * Math.Clamp(m_fSearchOffsetFactor, 0, 0.95);
 		float angle = Math.RandomFloat(0, Math.PI2);
 		float offset = Math.RandomFloat(0, maxOffset);
 
-		vector center = cachePosition;
-		center[0] = cachePosition[0] + Math.Cos(angle) * offset;
-		center[2] = cachePosition[2] + Math.Sin(angle) * offset;
+		return Vector(Math.Cos(angle) * offset, 0, Math.Sin(angle) * offset);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where a cache's search area sits at the current radius.
+	//!
+	//! The offset scales with the radius rather than staying put. That is not cosmetic: the
+	//! centre is deliberately offset by up to 95% of the radius, so a circle that shrank
+	//! around a fixed centre would eventually stop containing its own cache and send the
+	//! attackers to search ground the cache provably is not on. Scaling both together keeps
+	//! the cache in the same relative spot inside the shape, so it stays inside at every size.
+	protected vector ComputeSearchCenter(notnull CRF_CacheHuntCacheData data)
+	{
+		vector center = data.m_vPosition + (data.m_vSearchOffset * m_fSearchRadiusFactor);
 		center[1] = SCR_TerrainHelper.GetTerrainY(center);
 
 		return center;
@@ -535,7 +649,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Spawns the teleport flag pole that serves a given cache.
-	protected IEntity SpawnCacheFlag(int index, vector cachePosition)
+	protected IEntity SpawnCacheFlag(int index, vector cachePosition, IEntity cacheEntity)
 	{
 		Resource flagResource = Resource.Load(m_rFlagPolePrefab);
 		if (!flagResource || !flagResource.IsValid())
@@ -544,22 +658,16 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return null;
 		}
 
-		// Offset the flag from the cache so it does not clip through it.
-		float angle = Math.RandomFloat(0, Math.PI2);
-		vector flagPosition = cachePosition;
-		flagPosition[0] = cachePosition[0] + Math.Cos(angle) * m_fFlagSpawnDistance;
-		flagPosition[2] = cachePosition[2] + Math.Sin(angle) * m_fFlagSpawnDistance;
-
-		vector settled;
-		if (SCR_WorldTools.FindEmptyTerrainPosition(settled, flagPosition, FLAG_CLEARANCE_RADIUS))
-			flagPosition = settled;
-		else
-			flagPosition[1] = SCR_TerrainHelper.GetTerrainY(flagPosition);
+		vector flagPosition = FindFlagSpawnPosition(cachePosition, cacheEntity);
 
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = flagPosition;
-		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
+
+		// Deliberately NOT SCR_TerrainHelper.OrientToTerrain. That builds its basis from the
+		// terrain normal, which lays the entity flat against the slope - correct for a crate,
+		// wrong for a pole. On a bank it tilts the pole into the hillside and buries the
+		// lower half of it. A flag pole stays upright whatever the ground is doing.
 
 		IEntity flagEntity = GetGame().SpawnEntityPrefab(flagResource, GetGame().GetWorld(), spawnParams);
 		if (!flagEntity)
@@ -603,6 +711,159 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		}
 
 		flagComponent.SetCacheIndex(index);
+		RebuildFlagRoster();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Picks where a cache's teleport flag goes.
+	//!
+	//! Tries several points on a ring around the cache and keeps the flattest one that is
+	//! reachable and on the SAME SURFACE the cache is standing on.
+	//!
+	//! Terrain height is deliberately not used anywhere here. A cache in a basement sits
+	//! well below the terrain surface, so snapping the flag to terrain Y puts it up through
+	//! the building on the ground above. Each candidate is instead probed by tracing down
+	//! from the cache's own height, which lands on the basement floor indoors and on the
+	//! ground outdoors, and candidates that come back on a different level are rejected.
+	//!
+	//! \param[in] cachePosition The cache this flag serves
+	//! \param[in] cacheEntity The cache itself, excluded from the traces
+	//! \return World position for the flag
+	protected vector FindFlagSpawnPosition(vector cachePosition, IEntity cacheEntity)
+	{
+		vector bestPosition = cachePosition;
+		float bestSlope = float.MAX;
+		bool found = false;
+
+		// Random start bearing so flags are not all on the same side of their cache
+		float startAngle = Math.RandomFloat(0, Math.PI2);
+
+		for (int i = 0; i < FLAG_SPAWN_CANDIDATES; i++)
+		{
+			float angle = startAngle + (Math.PI2 * i / FLAG_SPAWN_CANDIDATES);
+
+			vector candidate = cachePosition;
+			candidate[0] = cachePosition[0] + Math.Cos(angle) * m_fFlagSpawnDistance;
+			candidate[2] = cachePosition[2] + Math.Sin(angle) * m_fFlagSpawnDistance;
+
+			// A wall between the cache and here means this is not really the same room
+			if (!HasClearPathAtCacheLevel(cachePosition, candidate, cacheEntity))
+				continue;
+
+			float surfaceY;
+			float slope;
+			if (!ProbeSurfaceAtCacheLevel(candidate, cachePosition[1], cacheEntity, surfaceY, slope))
+				continue;
+
+			candidate[1] = surfaceY;
+
+			if (slope >= bestSlope)
+				continue;
+
+			bestSlope = slope;
+			bestPosition = candidate;
+			found = true;
+
+			// Flat enough that looking further is pointless
+			if (slope <= FLAG_ACCEPTABLE_SLOPE)
+				break;
+		}
+
+		if (!found)
+		{
+			// Nothing on the cache's level worked. Standing the flag on the cache's own spot
+			// is ugly but keeps it reachable, which putting it on the terrain above would not.
+			Print(string.Format("[CRF_CacheHunt] No clear ground found on the cache's level for its teleport flag; placing it at the cache. Consider moving the cache or raising Flag Spawn Distance."), LogLevel.WARNING);
+			return cachePosition;
+		}
+
+		return bestPosition;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Finds the surface directly under a candidate, at the cache's level rather than the
+	//! terrain's, and reports how steep it is.
+	//! \param[in] candidate Position to probe; only its X/Z are used
+	//! \param[in] cacheY Height of the cache, the level we want to stay on
+	//! \param[in] cacheEntity Excluded from the trace so the cache itself is not the surface
+	//! \param[out] surfaceY Height of the surface found
+	//! \param[out] slope 0 on the flat, rising towards 1 as it approaches vertical
+	//! \return True when a surface was found on the cache's level
+	protected bool ProbeSurfaceAtCacheLevel(vector candidate, float cacheY, IEntity cacheEntity, out float surfaceY, out float slope)
+	{
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+			return false;
+
+		vector start = candidate;
+		start[1] = cacheY + FLAG_PROBE_UP;
+
+		vector end = candidate;
+		end[1] = cacheY - FLAG_PROBE_DOWN;
+
+		TraceParam trace = new TraceParam();
+		trace.Start = start;
+		trace.End = end;
+		trace.Flags = TraceFlags.ENTS | TraceFlags.WORLD;
+		trace.TargetLayers = EPhysicsLayerDefs.FireGeometry;
+
+		if (cacheEntity)
+		{
+			array<IEntity> excludeArray = {cacheEntity};
+			trace.ExcludeArray = excludeArray;
+		}
+
+		float hit = world.TraceMove(trace, null);
+
+		// TraceMove returns 1 when it reached the end without hitting anything. Checking this
+		// matters: treating "no hit" as a result would drop the flag at the bottom of the probe.
+		if (hit >= 1)
+			return false;
+
+		surfaceY = start[1] + (end[1] - start[1]) * hit;
+
+		// Reject a surface on a different storey - the ground above a basement, or a hole
+		// through to a level below.
+		if (Math.AbsFloat(surfaceY - cacheY) > FLAG_MAX_LEVEL_DELTA)
+			return false;
+
+		vector normal = trace.TraceNorm;
+		if (normal == vector.Zero)
+			slope = 1;
+		else
+			slope = 1 - normal[1];	// A flat surface has an up-facing normal, so Y is 1
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Traces horizontally at roughly waist height on the cache's level, so a candidate on
+	//! the far side of a basement wall is not treated as being in the same room.
+	protected bool HasClearPathAtCacheLevel(vector cachePosition, vector candidate, IEntity cacheEntity)
+	{
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+			return true;
+
+		vector start = cachePosition;
+		start[1] = cachePosition[1] + FLAG_PATH_HEIGHT;
+
+		vector end = candidate;
+		end[1] = cachePosition[1] + FLAG_PATH_HEIGHT;
+
+		TraceParam trace = new TraceParam();
+		trace.Start = start;
+		trace.End = end;
+		trace.Flags = TraceFlags.ENTS | TraceFlags.WORLD;
+		trace.TargetLayers = EPhysicsLayerDefs.FireGeometry;
+
+		if (cacheEntity)
+		{
+			array<IEntity> excludeArray = {cacheEntity};
+			trace.ExcludeArray = excludeArray;
+		}
+
+		return world.TraceMove(trace, null) >= 1;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -630,6 +891,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		}
 
 		flagComponent.SetCacheIndex(HOME_FLAG_INDEX);
+		RebuildFlagRoster();
 	}
 
 	//===================================================================================
@@ -803,6 +1065,93 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		respawnManager.RespawnSide(m_DefendingSide);
 	}
 
+	//===================================================================================
+	// SEARCH NARROWING (SERVER)
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Steps the search areas down as the mission runs on, so a hunt that has stalled still
+	//! resolves. Narrowing is deliberately stepped rather than continuous: a circle that
+	//! creeps inward frame by frame just reads as players misremembering where it was, while
+	//! a step with an announcement behind it reads as fresh intel.
+	protected void UpdateSearchNarrowing()
+	{
+		if (!m_bEnableSearchNarrowing || m_bAllCachesDestroyed)
+			return;
+
+		// Nothing narrows during safestart. The mission clock only starts when safestart
+		// ends, so this is belt and braces on top of GetMissionProgress() returning -1
+		// while m_iTimeMissionEnds is still unset - but it makes the intent explicit and
+		// covers a safestart that gets re-entered.
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		if (safestartManager && safestartManager.GetSafestartStatus())
+			return;
+
+		float progress = GetMissionProgress();
+		if (progress < 0)
+			return;	// No time limit set, so there is no mission clock to narrow against
+
+		int steps = Math.ClampInt(m_iSearchNarrowSteps, 2, 10);
+		float completeAt = Math.Clamp(m_fSearchNarrowCompleteAt, 0.2, 1.0);
+
+		// How many steps should have happened by now
+		int wantedSteps = Math.ClampInt((int)Math.Floor((progress / completeAt) * steps), 0, steps);
+
+		if (wantedSteps <= m_iSearchNarrowStepsDone)
+			return;
+
+		m_iSearchNarrowStepsDone = wantedSteps;
+
+		float minFactor = Math.Clamp(m_fSearchMinRadiusFactor, 0.05, 1.0);
+		m_fSearchRadiusFactor = Math.Lerp(1.0, minFactor, (float)wantedSteps / steps);
+
+		// Recentre and resize every surviving search area, then tell the attackers why
+		RebuildActiveCachePositions();
+		AnnounceSearchNarrowing(wantedSteps, steps);
+
+		Print(string.Format("[CRF_CacheHunt] Search areas narrowed to step %1/%2 (%3%% of starting radius) at %4%% mission progress.",
+			wantedSteps, steps, (int)(m_fSearchRadiusFactor * 100), (int)(progress * 100)), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Announced to both sides on purpose. The attackers need to know their circles moved,
+	//! and the defenders knowing the net is closing is the tension that makes a stalled
+	//! round interesting rather than just slow. Neither side learns anything secret - the
+	//! defenders already know exactly where their caches are.
+	protected void AnnounceSearchNarrowing(int step, int totalSteps)
+	{
+		COA_RplBroadcastManager broadcastManager = GetBroadcastManager();
+		if (!broadcastManager)
+			return;
+
+		string body;
+		if (step >= totalSteps)
+			body = string.Format("Search areas are now at their tightest - %1%% of their original size", (int)(m_fSearchRadiusFactor * 100));
+		else
+			body = string.Format("Search areas narrowed - step %1 of %2", step, totalSteps);
+
+		broadcastManager.PopUpNotification(12, "Intel update", body);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return How far through the mission we are, 0..1, or -1 when there is no time limit
+	protected float GetMissionProgress()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		COA_GameTimerManager timerManager = COA_GameTimerManager.GetInstance();
+		if (!gamemode || !timerManager)
+			return -1;
+
+		if (gamemode.m_iTimeLimitMinutes <= 0 || timerManager.m_iTimeMissionEnds <= 0)
+			return -1;	// Untimed mission, or safestart has not started the clock yet
+
+		int durationMs = gamemode.m_iTimeLimitMinutes * 60000;
+		int startTime = timerManager.m_iTimeMissionEnds - durationMs;
+		int elapsed = GetGame().GetWorld().GetWorldTime() - startTime;
+
+		return Math.Clamp((float)elapsed / durationMs, 0, 1);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Refreshes the replicated position lists the clients draw their markers from:
 	//! exact cache positions for defenders, offset search centres for attackers.
@@ -810,6 +1159,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	{
 		m_aActiveCachePositions.Clear();
 		m_aActiveCacheIndices.Clear();
+		m_aActiveCacheRplIds.Clear();
 		m_aSearchMarkerPositions.Clear();
 
 		foreach (CRF_CacheHuntCacheData cache : m_aCaches)
@@ -819,8 +1169,13 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 			m_aActiveCachePositions.Insert(cache.m_vPosition);
 			m_aActiveCacheIndices.Insert(cache.m_iIndex);
-			m_aSearchMarkerPositions.Insert(cache.m_vSearchCenter);
+			m_aActiveCacheRplIds.Insert(GetEntityRplId(cache.m_Cache));
+			m_aSearchMarkerPositions.Insert(ComputeSearchCenter(cache));
 		}
+
+		// The flag position lists are parallel to m_aActiveCacheIndices, so they have to be
+		// republished whenever that list changes rather than waiting for the next sweep.
+		RebuildFlagRoster();
 
 		Replication.BumpMe();
 	}
@@ -831,7 +1186,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Marks every registered flag as blocked or clear based on nearby attacking players.
-	//! Runs on the server only; clients read the replicated result off the flag component.
+	//! Runs on the server only; the result reaches clients through the replicated flag roster.
 	protected void UpdateFlagProximity()
 	{
 		array<CRF_CacheHunt_FlagComponent> flags = CRF_CacheHunt_FlagComponent.GetRegisteredFlags();
@@ -861,6 +1216,140 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			}
 
 			flag.SetEnemiesNear(blocked);
+		}
+
+		RebuildFlagRoster();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Republishes the flag roster clients stamp their own flags from.
+	//! Server only. Cheap enough to call from the proximity sweep.
+	protected void RebuildFlagRoster()
+	{
+		if (!Replication.IsServer())
+			return;
+
+		int mask = 0;
+
+		m_aCacheFlagPositions.Clear();
+		m_aCacheFlagAngles.Clear();
+		m_bHasHomeFlag = false;
+
+		// Positions are published per surviving cache, in step with m_aActiveCacheIndices
+		foreach (int cacheIndex : m_aActiveCacheIndices)
+		{
+			vector position = vector.Zero;
+			vector angles = vector.Zero;
+
+			CRF_CacheHunt_FlagComponent flag = CRF_CacheHunt_FlagComponent.GetCacheFlag(cacheIndex);
+			if (flag && flag.GetOwner())
+			{
+				position = flag.GetOwner().GetOrigin();
+				angles = flag.GetOwner().GetYawPitchRoll();
+			}
+
+			m_aCacheFlagPositions.Insert(position);
+			m_aCacheFlagAngles.Insert(angles);
+		}
+
+		CRF_CacheHunt_FlagComponent homeFlag = CRF_CacheHunt_FlagComponent.GetHomeFlag();
+		if (homeFlag && homeFlag.GetOwner())
+		{
+			m_bHasHomeFlag = true;
+			m_vHomeFlagPosition = homeFlag.GetOwner().GetOrigin();
+			m_vHomeFlagAngles = homeFlag.GetOwner().GetYawPitchRoll();
+		}
+
+		foreach (CRF_CacheHunt_FlagComponent flag : CRF_CacheHunt_FlagComponent.GetRegisteredFlags())
+		{
+			if (!flag || !flag.GetOwner() || !flag.AreEnemiesNear())
+				continue;
+
+			mask = mask | GetFlagEnemyBit(flag.GetCacheIndex());
+		}
+
+		m_iFlagEnemyMask = mask;
+
+		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[in] cacheIndex Cache index, or HOME_FLAG_INDEX for the defender home flag
+	//! \return That flag's bit in the enemy proximity mask
+	protected static int GetFlagEnemyBit(int cacheIndex)
+	{
+		if (cacheIndex == HOME_FLAG_INDEX)
+			return 1 << HOME_FLAG_MASK_BIT;
+
+		if (cacheIndex < 0 || cacheIndex >= MAX_CACHES)
+			return 0;
+
+		return 1 << cacheIndex;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnFlagRosterReplicated()
+	{
+		ApplyLocalFlagRoster();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Works out what each flag on THIS machine is, without resolving anything over the network.
+	//!
+	//! Sending the server's flag RplIds does not work: Replication.FindItem only resolves
+	//! entities currently streamed to that client, so a flag on the far side of the map never
+	//! resolves and its actions never appear. Every flag is instead identified from data each
+	//! machine already has - the home flag by its world name, cache flags by which replicated
+	//! cache position they were spawned beside. A flag that has not streamed in yet simply is
+	//! not in the local registry, and gets identified the moment it arrives.
+	protected void ApplyLocalFlagRoster()
+	{
+		IEntity homeFlagEntity;
+		if (!m_sDefenderHomeFlagName.IsEmpty())
+			homeFlagEntity = GetGame().GetWorld().FindEntityByName(m_sDefenderHomeFlagName);
+
+		// A cache flag is spawned m_fFlagSpawnDistance from its cache; allow generous slack
+		// so terrain adjustment on the spawn cannot push it out of range.
+		float matchRadius = Math.Max(m_fFlagSpawnDistance * 4, MIN_FLAG_MATCH_RADIUS);
+		float matchRadiusSq = matchRadius * matchRadius;
+
+		foreach (CRF_CacheHunt_FlagComponent flag : CRF_CacheHunt_FlagComponent.GetRegisteredFlags())
+		{
+			IEntity owner = flag.GetOwner();
+			if (!owner)
+				continue;
+
+			int index = CRF_CacheHunt_FlagComponent.UNASSIGNED_INDEX;
+
+			if (homeFlagEntity && owner == homeFlagEntity)
+			{
+				index = HOME_FLAG_INDEX;
+			}
+			else
+			{
+				// Nearest surviving cache within range owns this flag
+				vector flagOrigin = owner.GetOrigin();
+				float bestDistanceSq = matchRadiusSq;
+
+				foreach (int i, vector cachePosition : m_aActiveCachePositions)
+				{
+					if (!m_aActiveCacheIndices.IsIndexValid(i))
+						continue;
+
+					float distanceSq = vector.DistanceSq(flagOrigin, cachePosition);
+					if (distanceSq > bestDistanceSq)
+						continue;
+
+					bestDistanceSq = distanceSq;
+					index = m_aActiveCacheIndices[i];
+				}
+			}
+
+			if (index == CRF_CacheHunt_FlagComponent.UNASSIGNED_INDEX)
+				continue;	// Its cache is gone, or this is not one of ours
+
+			flag.SetCacheIndexLocal(index);
+			flag.SetEnemiesNearLocal((m_iFlagEnemyMask & GetFlagEnemyBit(index)) != 0);
 		}
 	}
 
@@ -911,34 +1400,182 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 
+		FillCacheArsenal(data.m_Cache, data.m_iIndex + 1);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Fills one cache's arsenal from the defending gearscript.
+	//!
+	//! Runs on the server AND on every client, each against its own copy of the entity. The
+	//! overwrite item list is script state vanilla never replicates, so the server filling
+	//! it does nothing for anyone else - every machine has to do this for itself. Both sides
+	//! derive the list from the same replicated gearscript, so they agree without the list
+	//! itself ever going over the wire.
+	//!
+	//! \param[in] cache Cache entity on this machine
+	//! \param[in] label 1-based cache number, for logging only
+	//! \return True when the arsenal was filled
+	protected bool FillCacheArsenal(notnull IEntity cache, int label)
+	{
 		array<ResourceName> ammunition = GetDefenderAmmunition();
 		if (ammunition.IsEmpty())
 		{
-			Print(string.Format("[CRF_CacheHunt] No ammunition resolved from the '%1' gearscript, so cache %2's arsenal was left as authored.", m_DefendingSide, data.m_iIndex + 1), LogLevel.WARNING);
-			return;
+			Print(string.Format("[CRF_CacheHunt] No ammunition resolved from the '%1' gearscript, so cache %2's arsenal was left as authored.", m_DefendingSide, label), LogLevel.WARNING);
+			return false;
 		}
 
-		SCR_ArsenalComponent arsenal = SCR_ArsenalComponent.Cast(data.m_Cache.FindComponent(SCR_ArsenalComponent));
+		SCR_ArsenalComponent arsenal = SCR_ArsenalComponent.Cast(cache.FindComponent(SCR_ArsenalComponent));
 		if (!arsenal)
 		{
 			Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_ArsenalComponent, so defenders have nothing to rearm from. Disable 'Enable Cache Rearm' or use a cache prefab with an arsenal.", m_rCachePrefab), LogLevel.ERROR);
-			return;
+			return false;
 		}
 
 		// Reuse the list the prefab authored where possible, so anything the arsenal has
 		// already cached off that object stays pointed at the same instance.
-		SCR_ArsenalItemListConfig itemList = arsenal.CRF_GetOverwriteArsenalConfig();
+		SCR_ArsenalItemListConfig itemList = arsenal.GetOverwriteArsenalConfig();
 		if (!itemList)
 		{
 			itemList = new SCR_ArsenalItemListConfig();
 			arsenal.CRF_SetOverwriteArsenalConfig(itemList);
 		}
 
+		// Already correct on this machine - nothing to do. Cheap enough to check every poll,
+		// and it keeps the log quiet instead of reporting a rewrite every two seconds.
 		int before = itemList.CRF_GetItemCount();
-		itemList.CRF_ReplaceWithStandaloneItems(ammunition, m_iAmmoSupplyCost);
+		if (before == ammunition.Count())
+			return true;
+
+		// EQUIPMENT and AMMUNITION are what the arsenal filters ammunition on. Both must be
+		// present in the cache prefab's Supported Item Types / Modes flags or the entries
+		// are dropped - the shipped prefab's 493046 / 94 include both.
+		//
+		// Costs come from the faction's entity catalog rather than from a gamemode attribute.
+		// The purchase path reads the catalog directly, but the arsenal UI displays whatever
+		// the entry itself carries - so copying the catalog price onto each entry is what
+		// keeps the advertised price and the charged price the same number.
+		itemList.CRF_ReplaceWithStandaloneItems(ammunition, BuildSupplyCosts(ammunition),
+			SCR_EArsenalItemType.EQUIPMENT, SCR_EArsenalItemMode.AMMUNITION);
+
+		ApplyCacheFaction(cache);
+		ApplySupplyUsage(cache);
+
+		// Rebuild the served list now that the entries have changed
+		arsenal.RefreshArsenal();
 
 		Print(string.Format("[CRF_CacheHunt] Cache %1 arsenal list rewritten: %2 authored entries -> %3 gearscript ammunition entries.",
-			data.m_iIndex + 1, before, itemList.CRF_GetItemCount()), LogLevel.NORMAL);
+			label, before, itemList.CRF_GetItemCount()), LogLevel.NORMAL);
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Looks up each magazine's supply cost in the faction entity catalogs, the same source
+	//! CRF_VehicleGearscriptManager prices truck resupply from. Anything with no catalog
+	//! entry stays at 0, which is also what vanilla would charge for it.
+	//! \param[in] ammunition Magazine prefabs to price
+	//! \return Costs parallel to ammunition
+	protected array<int> BuildSupplyCosts(notnull array<ResourceName> ammunition)
+	{
+		// Default to the configured price. Gearscript magazines are generally not in any
+		// faction's ITEM entity catalog, so for most of them this is the price that sticks.
+		array<int> costs = {};
+		costs.Reserve(ammunition.Count());
+
+		for (int i = 0; i < ammunition.Count(); i++)
+		{
+			costs.Insert(m_iAmmoSupplyCost);
+		}
+
+		SCR_EntityCatalogManagerComponent catalogManager = SCR_EntityCatalogManagerComponent.GetInstance();
+		FactionManager factionManager = GetGame().GetFactionManager();
+		if (!catalogManager || !factionManager)
+			return costs;
+
+		// Deliberately the defending faction's catalog, which is the exact lookup the arsenal
+		// UI makes when it prices a slot. Reading a different faction's catalog here would
+		// put a number on the entry that disagrees with what the player is shown.
+		SCR_Faction defendingFaction = SCR_Faction.Cast(factionManager.GetFactionByKey(m_DefendingSide));
+		if (!defendingFaction)
+			return costs;
+
+		int missing = 0;
+
+		for (int i = 0; i < ammunition.Count(); i++)
+		{
+			SCR_EntityCatalogEntry entry = catalogManager.GetEntryWithPrefabFromFactionCatalog(EEntityCatalogType.ITEM, ammunition[i], defendingFaction);
+			if (!entry)
+			{
+				missing++;
+				continue;
+			}
+
+			SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
+			if (!data)
+			{
+				missing++;
+				continue;
+			}
+
+			costs.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
+		}
+
+		if (missing > 0)
+		{
+			Print(string.Format("[CRF_CacheHunt] %1 of %2 magazine(s) are not priced in the '%3' ITEM entity catalog; they use the Ammo Supply Cost of %4.",
+				missing, ammunition.Count(), m_DefendingSide, m_iAmmoSupplyCost), LogLevel.NORMAL);
+		}
+
+		return costs;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Puts the cache on the defending faction.
+	//!
+	//! This is what makes supply costs work, not just a cosmetic ownership flag. The arsenal
+	//! UI prices an item by looking it up in the assigned faction's ITEM entity catalog
+	//! (SCR_ArsenalInventorySlotUI.GetTotalResources), and returns 0 outright when the item
+	//! is not in it. The shipped cache inherits ArsenalBox_US, so without this it asks the
+	//! US catalog for the defenders' magazines, finds nothing, and prices everything at zero.
+	protected void ApplyCacheFaction(notnull IEntity cache)
+	{
+		FactionAffiliationComponent affiliation = FactionAffiliationComponent.Cast(cache.FindComponent(FactionAffiliationComponent));
+		if (!affiliation)
+		{
+			Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no FactionAffiliationComponent, so its arsenal cannot price items from the defenders' catalog.", m_rCachePrefab), LogLevel.WARNING);
+			return;
+		}
+
+		affiliation.SetAffiliatedFactionByKey(m_DefendingSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Turns supply charging on or off for a cache.
+	//!
+	//! An arsenal only charges at all when its owner's SCR_ResourceComponent has SUPPLIES
+	//! enabled (SCR_ArsenalComponent.IsArsenalUsingSupplies). The shipped cache prefab
+	//! ships with SUPPLIES in its disabled list, so without this every take is free no
+	//! matter what the arsenal entries say.
+	protected void ApplySupplyUsage(notnull IEntity cache)
+	{
+		SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(cache);
+		if (!resourceComponent)
+		{
+			if (m_bAmmoCostsSupplies)
+				Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_ResourceComponent, so ammunition cannot cost supplies.", m_rCachePrefab), LogLevel.WARNING);
+
+			return;
+		}
+
+		resourceComponent.SetResourceTypeEnabled(m_bAmmoCostsSupplies, EResourceType.SUPPLIES);
+
+		// The setter is a no-op when the prefab disallows changing this resource type, and
+		// it fails silently, so confirm rather than assume.
+		if (resourceComponent.IsResourceTypeEnabled(EResourceType.SUPPLIES) != m_bAmmoCostsSupplies)
+		{
+			Print(string.Format("[CRF_CacheHunt] Could not set supply usage to %1 on cache prefab '%2'. Its SCR_ResourceComponent disallows changing SUPPLIES - fix it in the prefab instead.",
+				m_bAmmoCostsSupplies, m_rCachePrefab), LogLevel.WARNING);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -967,17 +1604,16 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return m_aDefenderAmmunition;
 		}
 
-		// Resolve the gearscript the same way CRF_VehicleGearscriptManager.SetTruckGear does:
-		// straight off the faction's container. GetGearScriptResource() returns the separate
-		// replicated "current" field instead, which is not the same value and is populated
-		// later in startup.
-		ResourceName gearScriptResource;
+		// GetGearScriptResource() reads the replicated "current" gearscript, which is the only
+		// one guaranteed to be right on a client - the faction container behind it is local
+		// attribute data that an admin or plugin swap does not update. Fall back to the
+		// container the way CRF_VehicleGearscriptManager.SetTruckGear reads it, for the case
+		// where the replicated field has not been populated yet.
+		ResourceName gearScriptResource = gamemode.GetGearScriptResource(m_DefendingSide);
 		COA_GearScriptContainer gsContainer = gamemode.GetGearScriptSettings(m_DefendingSide);
-		if (gsContainer)
-			gearScriptResource = gsContainer.m_rGearScript;
 
-		if (gearScriptResource.IsEmpty())
-			gearScriptResource = gamemode.GetGearScriptResource(m_DefendingSide);
+		if (gearScriptResource.IsEmpty() && gsContainer)
+			gearScriptResource = gsContainer.m_rGearScript;
 
 		if (gearScriptResource.IsEmpty())
 		{
@@ -994,23 +1630,39 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return m_aDefenderAmmunition;
 		}
 
-		CollectMagazinesFromWeapons(config.m_Rifles);
-		CollectMagazinesFromWeapons(config.m_RifleUGLs);
-		CollectMagazinesFromWeapons(config.m_Carbines);
-		CollectMagazinesFromWeapons(config.m_Pistols);
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.SMALL_ARMS)
+		{
+			CollectMagazinesFromWeapons(config.m_Rifles);
+			CollectMagazinesFromWeapons(config.m_Carbines);
+			CollectMagazinesFromWeapons(config.m_Pistols);
 
-		if (config.m_SNIPER)
-			CollectMagazines(config.m_SNIPER.m_MagazineArray);
+			if (config.m_SNIPER)
+				CollectMagazines(config.m_SNIPER.m_MagazineArray);
+		}
 
-		CollectSpecMagazines(config.m_AR);
-		CollectSpecMagazines(config.m_MMG);
-		CollectSpecMagazines(config.m_HMG);
-		CollectSpecMagazines(config.m_AT);
-		CollectSpecMagazines(config.m_MAT);
-		CollectSpecMagazines(config.m_HAT);
-		CollectSpecMagazines(config.m_AA);
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.GRENADE_LAUNCHER)
+			CollectMagazinesFromWeapons(config.m_RifleUGLs);
 
-		if (config.m_RolesToSetCustomSettings)
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.SUPPORT)
+		{
+			CollectSpecMagazines(config.m_AR);
+			CollectSpecMagazines(config.m_MMG);
+			CollectSpecMagazines(config.m_HMG);
+		}
+
+		// A launcher's magazine array is its rockets, so these two are what put Iglas and
+		// RPG rounds in a cache. Off by default.
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.ANTI_TANK)
+		{
+			CollectSpecMagazines(config.m_AT);
+			CollectSpecMagazines(config.m_MAT);
+			CollectSpecMagazines(config.m_HAT);
+		}
+
+		if (m_eAmmoClasses & CRF_ECacheHuntAmmoClass.ANTI_AIR)
+			CollectSpecMagazines(config.m_AA);
+
+		if ((m_eAmmoClasses & CRF_ECacheHuntAmmoClass.CUSTOM_ROLES) && config.m_RolesToSetCustomSettings)
 		{
 			foreach (COA_Role_Custom_Gear customGear : config.m_RolesToSetCustomSettings)
 			{
@@ -1130,8 +1782,76 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateLocalMarkers()
 	{
+		// Report what this machine actually received for the first few polls. If the counts
+		// are 0 on a client while the server logs non-zero, the gamemode's RplProps are not
+		// reaching clients and nothing downstream of them can work.
+		if (m_iPollDiagnosticsLeft > 0)
+		{
+			m_iPollDiagnosticsLeft--;
+
+			Print(string.Format("[CRF_CacheHunt] Poll: caches=%1 cacheRplIds=%2 localFlags=%3 searchAreas=%4 enemyMask=%5 | localFaction='%6' attacker=%7 defender=%8",
+				m_aActiveCachePositions.Count(), m_aActiveCacheRplIds.Count(),
+				CRF_CacheHunt_FlagComponent.GetRegisteredFlags().Count(), m_aSearchMarkerPositions.Count(), m_iFlagEnemyMask,
+				GetLocalPlayerFactionKey(), IsLocalPlayerAttacker(), IsLocalPlayerDefender()), LogLevel.NORMAL);
+		}
+
 		UpdateDefenderMarkers();
 		UpdateSearchMarkers();
+		UpdateLocalArsenals();
+		ApplyLocalFlagRoster();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Fills the arsenal on this machine's copy of each cache.
+	//!
+	//! The server filling its own copy does nothing for anyone else - an arsenal's overwrite
+	//! item list is script state vanilla never replicates. Every client therefore has to
+	//! build its own, from the same replicated gearscript, or it keeps serving whatever the
+	//! prefab authored. That is the "full arsenal on the server, correct in Workbench" split:
+	//! in Workbench the host is the client and reads the server's own object.
+	protected void UpdateLocalArsenals()
+	{
+		if (!m_bEnableCacheRearm)
+			return;
+
+		// Deliberately re-checked every poll rather than filled once. A cache only resolves
+		// once it has streamed to this client, which for a distant cache is long after the
+		// mission starts - and an arsenal whose overwrite config is still null serves the
+		// entire faction catalog in the meantime, which is the "full arsenal" symptom.
+		foreach (int i, RplId cacheId : m_aActiveCacheRplIds)
+		{
+			if (cacheId == RplId.Invalid())
+				continue;
+
+			IEntity cache = ResolveEntity(cacheId);
+			if (!cache)
+				continue;	// Not streamed in yet - a later poll will catch it
+
+			FillCacheArsenal(cache, i + 1);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected IEntity ResolveEntity(RplId rplId)
+	{
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(rplId));
+		if (!rplComponent)
+			return null;
+
+		return rplComponent.GetEntity();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected RplId GetEntityRplId(IEntity entity)
+	{
+		if (!entity)
+			return RplId.Invalid();
+
+		RplComponent rplComponent = RplComponent.Cast(entity.FindComponent(RplComponent));
+		if (!rplComponent)
+			return RplId.Invalid();
+
+		return rplComponent.Id();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1144,6 +1864,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	protected void UpdateSearchMarkers()
 	{
 		bool shouldShow = m_bEnableSearchMarkers && IsLocalPlayerAttacker();
+
+		// A narrowing step resizes every shape, so rebuild them all rather than trying to
+		// resize in place - it happens a handful of times a mission at most.
+		if (m_fLocalSearchMarkerFactor != m_fSearchRadiusFactor)
+		{
+			m_fLocalSearchMarkerFactor = m_fSearchRadiusFactor;
+			ClearAllSearchMarkers();
+		}
 
 		array<vector> wanted = {};
 		if (shouldShow)
@@ -1223,7 +1951,8 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		marker.SetShapeBorderWidth(m_fSearchMarkerBorderWidth);
 		// COA_ShapeMarker draws the shape centred on the entity and sized to its full
 		// extent, so the world size is the circle's diameter rather than its radius.
-		marker.SetShapeRadius(m_fSearchAreaRadius);
+		// The factor is replicated, so every attacker draws the same size.
+		marker.SetShapeRadius(m_fSearchAreaRadius * m_fSearchRadiusFactor);
 
 		// A manual marker only builds its widget on the map-open event it subscribes to in
 		// EOnInit. Spawned while the map is already open, it would stay invisible until the
@@ -1365,6 +2094,66 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		return GetEntityFactionKey(entity) == m_DefendingSide;
 	}
 
+	//===================================================================================
+	// TELEPORT DESTINATIONS (ANY MACHINE)
+	//===================================================================================
+	// Read by CRF_CacheHunt_TeleportAction. All of these answer from replicated data rather
+	// than from flag entities, because the destination flag is always the far one and is
+	// therefore never streamed to the travelling player's client.
+
+	//------------------------------------------------------------------------------------------------
+	//! \return True when a defender home flag exists to travel back to
+	bool HasHomeFlagDestination()
+	{
+		return m_bHasHomeFlag;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[in] cacheIndex 0-based cache index
+	//! \return True when that cache is still standing and has a flag
+	bool HasCacheFlagDestination(int cacheIndex)
+	{
+		int slot = m_aActiveCacheIndices.Find(cacheIndex);
+
+		return slot != -1 && m_aCacheFlagPositions.IsIndexValid(slot);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where a teleport ends up.
+	//! \param[in] cacheIndex Cache index, or HOME_FLAG_INDEX for the defender home flag
+	//! \param[out] position World position of that flag
+	//! \param[out] angles Yaw/pitch/roll of that flag
+	//! \return True when the destination exists
+	bool GetFlagTransform(int cacheIndex, out vector position, out vector angles)
+	{
+		if (cacheIndex == HOME_FLAG_INDEX)
+		{
+			if (!m_bHasHomeFlag)
+				return false;
+
+			position = m_vHomeFlagPosition;
+			angles = m_vHomeFlagAngles;
+			return true;
+		}
+
+		int slot = m_aActiveCacheIndices.Find(cacheIndex);
+		if (slot == -1 || !m_aCacheFlagPositions.IsIndexValid(slot) || !m_aCacheFlagAngles.IsIndexValid(slot))
+			return false;
+
+		position = m_aCacheFlagPositions[slot];
+		angles = m_aCacheFlagAngles[slot];
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[in] cacheIndex Cache index, or HOME_FLAG_INDEX for the defender home flag
+	//! \return True when attackers are inside the proximity radius of that flag
+	bool AreEnemiesNearFlag(int cacheIndex)
+	{
+		return (m_iFlagEnemyMask & GetFlagEnemyBit(cacheIndex)) != 0;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! \return True when the given entity belongs to the attacking side
 	bool IsAttacker(IEntity entity)
@@ -1482,9 +2271,21 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	protected static const float DESTROY_RANGE			= 8;
 	protected static const ResourceName DESTRUCTION_EFFECT = "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et";
 	protected static const float CACHE_CLEARANCE_RADIUS	= 3;
-	protected static const float FLAG_CLEARANCE_RADIUS	= 3;
+	protected static const int FLAG_SPAWN_CANDIDATES	= 8;
+	//! 1 - normal.y. Roughly 25 degrees, which a pole sits on without looking planted in a wall.
+	protected static const float FLAG_ACCEPTABLE_SLOPE	= 0.1;
+	//! Vertical probe window around the cache's own height, in metres
+	protected static const float FLAG_PROBE_UP			= 1.5;
+	protected static const float FLAG_PROBE_DOWN		= 3;
+	//! How far a candidate's surface may sit from the cache before it counts as another storey
+	protected static const float FLAG_MAX_LEVEL_DELTA	= 2.5;
+	//! Height the cache-to-candidate wall check is traced at
+	protected static const float FLAG_PATH_HEIGHT		= 1;
 	protected static const int MARKER_POLL_INTERVAL_MS	= 2000;
 	protected static const int MARKER_WIDGET_DELAY_MS	= 100;
+	protected static const int NARROW_CHECK_INTERVAL_MS	= 15000;
+	protected static const int HOME_FLAG_MASK_BIT		= 5;
+	protected static const float MIN_FLAG_MATCH_RADIUS	= 25;
 	protected static const int DEFENDER_MARKER_UPDATE_DELAY	= 1000;
 	protected static const int DEFENDER_MARKER_Z_ORDER	= 500;
 	protected static const int DEFENDER_MARKER_COLOR	= ARGB(255, 80, 200, 120);

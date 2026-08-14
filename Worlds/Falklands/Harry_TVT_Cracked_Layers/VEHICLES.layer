@@ -1,0 +1,25 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 3629.629 4.844 4717.18
+  angles 0 -122.516 0
+  m_rVehicle "{44338ACCBD5D7D29}Prefabs/Vehicles/Wheeled/Conflict_Variants/BF_BRDM2_Conflict_UK.et"
+  m_sFactionKey "OPFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_iTicketsPerRespawn 3
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 2376.432 22.854 3994.893
+  angles 0 58.436 0
+  m_rVehicle "{C8D62059548EC894}Prefabs/Vehicles/BLUFOR/BLUFOR_AMMO.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldRespawnOnSideRespawn 0
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{6A1C00A552902DE9}" {
+    m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+    m_iAmountOfItemSupplyTruck 3
+    m_iAmountOfItemRegularVehicle 3
+   }
+  }
+ }
+}

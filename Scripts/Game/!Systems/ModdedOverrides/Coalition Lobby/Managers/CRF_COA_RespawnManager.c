@@ -82,8 +82,20 @@ modded class COA_RespawnManager
 			if (factionTickets != 0 && factionTickets < vehicle.m_iTicketsPerRespawn)
 				continue;
 
+			// Resolved through replication rather than the raw m_eVehicle pointer, which the engine
+			// does not null when the entity is deleted - see CRF_VehicleGearscriptManager.SetVehicleGearById().
+			// This loop runs every respawn wave over every registered spawner, so a stale m_eVehicle
+			// here would eventually race a deletion and dereference freed memory.
+			IEntity vehicleEntity;
+			if (vehicle.m_VehicleRplId.IsValid())
+			{
+				RplComponent vehicleRpl = RplComponent.Cast(Replication.FindItem(vehicle.m_VehicleRplId));
+				if (vehicleRpl)
+					vehicleEntity = vehicleRpl.GetEntity();
+			}
+
 			//Is the vehicle non existant anymore
-			if (!vehicle.m_eVehicle)
+			if (!vehicleEntity)
 			{
 				// Only the side-respawn flavour of spawner respawns from here. Note the original
 				// fell through to the FindComponent() call below when m_eVehicle was null and
@@ -95,7 +107,7 @@ modded class COA_RespawnManager
 			}
 
 			//Vehicle is not vehicling wth
-			SCR_VehicleDamageManagerComponent vehicleDamageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+			SCR_VehicleDamageManagerComponent vehicleDamageManager = SCR_VehicleDamageManagerComponent.Cast(vehicleEntity.FindComponent(SCR_VehicleDamageManagerComponent));
 			if (!vehicleDamageManager)
 				continue;
 
