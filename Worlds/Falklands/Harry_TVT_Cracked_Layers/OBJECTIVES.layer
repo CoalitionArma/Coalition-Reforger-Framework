@@ -1,0 +1,86 @@
+$grp SCR_DestructibleBuildingEntity : "{0BA359008F638CBF}Prefabs/Structures/Infrastructure/Naval/Piers/Pier20mBlank.et" {
+ {
+  coords 3497.013 5.006 4448.299
+  angles 0 142.5 0
+ }
+ {
+  coords 3506.812 5.006 4455.698
+  angles 0 142.5 0
+ }
+ {
+  coords 3501.902 5.023 4461.92
+  angles 0 -38.181 0
+ }
+ {
+  coords 3492.251 5.023 4454.331
+  angles 0 -38.181 0
+ }
+}
+$grp GenericEntity : "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et" {
+ governor {
+  components {
+   CRF_RaidItemComponent "{6A170516E10E40FB}" {
+    m_sItemName "Governor's House"
+   }
+  }
+  coords 3677.649 14.066 4872.927
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"The Governor's House has been destroyed.\", duration: 10);"\
+  "	"
+ }
+ pump {
+  components {
+   CRF_RaidItemComponent "{6A170516FF6DEEEB}" {
+    m_sItemName "Water Treatment Pump House"
+   }
+  }
+  coords 3446.249 16.589 4889.424
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"The water treament pump house has been destroyed.\", duration: 10);"\
+  "	"
+ }
+ police {
+  components {
+   CRF_RaidItemComponent "{6A170516F5E62538}" {
+    m_sItemName "Police Station"
+   }
+  }
+  coords 3612.219 11.352 4690.492
+  angles 0 -30.002 0
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"The police station has been destroyed.\", duration: 10);"\
+  "	"
+ }
+ dock {
+  components {
+   CRF_RaidItemComponent "{6A170516967F1FC1}" {
+    m_sItemName "Dock Warehouse"
+   }
+  }
+  coords 3925.663 6.04 4527.344
+  angles 0 -30.002 0
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"The dock warehouse has been destroyed.\", duration: 10);"\
+  "	"
+ }
+}
+GenericEntity monument : "{2B1D0128ED660BE9}Prefabs/Props/Crates/BoxWooden_01.et" {
+ components {
+  CRF_RaidItemComponent "{6A17051CA457E65D}" {
+   m_sItemName "Monument"
+  }
+ }
+ coords 4088.396 20.817 4575.784
+}
+SCR_DestructibleBuildingEntity transformer : "{BE3D31D8919CA073}Prefabs/Structures/Infrastructure/Power/TransformerStation110kV_E_01/TransformerStation110kV_E_01_simple_v1.et" {
+ components {
+  CRF_RaidItemComponent "{6A170516C799F64E}" {
+   m_sItemName "Transformer"
+  }
+ }
+ coords 3502.48 0.756 4457.483
+ angles 0 -128.508 0
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"The transformer has been destroyed.\", duration: 10);"\
+ "	"
+}
