@@ -805,7 +805,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		trace.TargetLayers = EPhysicsLayerDefs.FireGeometry;
 
 		if (cacheEntity)
-			trace.ExcludeArray = {cacheEntity};
+		{
+			array<IEntity> excludeArray = {cacheEntity};
+			trace.ExcludeArray = excludeArray;
+		}
 
 		float hit = world.TraceMove(trace, null);
 
@@ -852,7 +855,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		trace.TargetLayers = EPhysicsLayerDefs.FireGeometry;
 
 		if (cacheEntity)
-			trace.ExcludeArray = {cacheEntity};
+		{
+			array<IEntity> excludeArray = {cacheEntity};
+			trace.ExcludeArray = excludeArray;
+		}
 
 		return world.TraceMove(trace, null) >= 1;
 	}
