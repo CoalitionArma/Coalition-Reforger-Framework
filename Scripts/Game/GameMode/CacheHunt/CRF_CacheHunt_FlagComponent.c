@@ -55,6 +55,36 @@ class CRF_CacheHunt_FlagComponent: ScriptComponent
 		super.OnDelete(owner);
 	}
 
+	//===================================================================================
+	// JIP REPLICATION
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Cache flags are spawned by the server at runtime, so a client receives the entity
+	//! already built and never sees the RplProp writes that happened before it arrived.
+	//! Without this the index stays UNASSIGNED on every client: no flag reports itself as
+	//! the home flag, GetHomeFlag() and GetCacheFlag() find nothing, and every teleport
+	//! action hides. That failure is invisible in Workbench, where the host is also the
+	//! client and reads the server's own values.
+	//!
+	//! RplSave and RplLoad must stay symmetric - add fields to both, in the same order.
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		writer.WriteInt(m_iCacheIndex);
+		writer.WriteBool(m_bEnemiesNear);
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override bool RplLoad(ScriptBitReader reader)
+	{
+		reader.ReadInt(m_iCacheIndex);
+		reader.ReadBool(m_bEnemiesNear);
+
+		return true;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void ~CRF_CacheHunt_FlagComponent()
 	{
@@ -76,6 +106,27 @@ class CRF_CacheHunt_FlagComponent: ScriptComponent
 
 		m_iCacheIndex = index;
 		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Sets the index on this machine only, with no replication.
+	//!
+	//! Cache flags are spawned at runtime, and component-level replication has not proved
+	//! reliable for getting their initial state onto clients of a dedicated server. The
+	//! gamemode component replicates the flag roster instead - it is world-baked, so its
+	//! RplProps are dependable - and each client stamps its own flags through here.
+	//! \param[in] index -1 for the defender home flag, otherwise the served cache index
+	void SetCacheIndexLocal(int index)
+	{
+		m_iCacheIndex = index;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Sets the enemy-proximity state on this machine only, with no replication. See
+	//! SetCacheIndexLocal for why the gamemode drives this rather than the component.
+	void SetEnemiesNearLocal(bool enemiesNear)
+	{
+		m_bEnemiesNear = enemiesNear;
 	}
 
 	//------------------------------------------------------------------------------------------------

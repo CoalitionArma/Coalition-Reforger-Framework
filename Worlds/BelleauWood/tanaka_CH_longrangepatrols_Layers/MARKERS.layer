@@ -1,0 +1,6 @@
+COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 4844.799 169.593 10133.254
+ m_fWorldSize 80
+ m_sDescription "HELIPADS"
+ m_bUseWorldScale 0
+}

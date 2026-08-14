@@ -76,4 +76,22 @@ modded class COA_VehicleSpawner
 		if (gearscriptManager)
 			gearscriptManager.UnregisterSpawner(this);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Registered on the tracked vehicle's EventHandlerManagerComponent by
+	//! CRF_VehicleGearscriptManager.SetVehicle(), mirroring vanilla's
+	//! SCR_AmbientVehicleSpawnPointComponent, which clears its own vehicle back-reference the same
+	//! way. The engine fires "OnDestroyed" synchronously when the vehicle entity is actually
+	//! destroyed - unlike ~Vehicle(), which runs at an arbitrary GC point - so this is what keeps
+	//! m_eVehicle/m_VehicleRplId from going stale in the window before that destructor runs.
+	//! \param[in] vehicle the entity the engine just destroyed
+	void OnVehicleDestroyed(IEntity vehicle)
+	{
+		// Guards against a late event from a vehicle this spawner already replaced.
+		if (m_eVehicle != vehicle)
+			return;
+
+		m_eVehicle = null;
+		m_VehicleRplId = RplId.Invalid();
+	}
 }

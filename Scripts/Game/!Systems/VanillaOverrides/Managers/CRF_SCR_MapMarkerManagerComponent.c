@@ -1,5 +1,5 @@
 
-// Prevents map markers from being deleted when a player disconnects
+// Prevents map markers from being deleted when a player disconnects or dies/respawns
 modded class SCR_MapMarkerManagerComponent
 {
 	// Maximum distance (in meters) to share markers with nearby players
@@ -166,5 +166,26 @@ modded class SCR_MapMarkerManagerComponent
 	{
 		// Override the Override that would delete markers on disconnect
 		return;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Prevents map markers from being deleted when a player dies and respawns.
+	//
+	// CRF routes every death through a transient faction re-assignment: COA_GamemodeManager.
+	// InitilizePlayer() puts a dead player into the "SPEC" faction while they wait to respawn, then
+	// RespawnManager flips them back to their real faction once they respawn. Vanilla's
+	// OnPlayerFactionChanged treats each of those as a genuine faction switch and permanently
+	// deletes every marker not flagged for the new faction (RemoveMarkersOfOtherFactions), so
+	// players lost all their faction-flagged map markers on every death/respawn cycle. Skip the
+	// vanilla cleanup for transitions into or out of SPEC; keep it for real faction changes.
+	override protected void OnPlayerFactionChanged(notnull FactionAffiliationComponent owner, Faction previousFaction, Faction newFaction)
+	{
+		if (newFaction && newFaction.GetFactionKey() == "SPEC")
+			return;
+
+		if (previousFaction && previousFaction.GetFactionKey() == "SPEC")
+			return;
+
+		super.OnPlayerFactionChanged(owner, previousFaction, newFaction);
 	}
 }

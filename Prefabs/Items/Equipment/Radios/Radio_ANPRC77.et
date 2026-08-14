@@ -1,0 +1,9 @@
+GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployable_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_UniversalInventoryStorageComponent "{605C4718D6D0AEAC}" {
+   UseCapacityCoefficient 0
+   m_fMaxWeight 100
+  }
+ }
+}
