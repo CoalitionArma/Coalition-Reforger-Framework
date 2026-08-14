@@ -1,0 +1,17 @@
+$grp GameEntity {
+ cache1 {
+  coords 4722.215 174.453 3536.168
+ }
+ cache2 {
+  coords 6140.147 173.826 7258.367
+ }
+ cache3 {
+  coords 9755.572 136.053 2464.769
+ }
+ cache4 {
+  coords 1305.724 127.35 6978.548
+ }
+}
+GenericEntity : "{D255FB1F798CB6C3}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_FIA_01_V2.et" {
+ coords 9755.007 136.003 2464.31
+}

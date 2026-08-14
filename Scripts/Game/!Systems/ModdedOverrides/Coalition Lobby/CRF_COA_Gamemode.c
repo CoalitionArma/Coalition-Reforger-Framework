@@ -65,6 +65,15 @@ modded class COA_Gamemode
 					// Clear reconnect tracking — a new game cycle means all previous
 					// disconnect records are no longer valid (slots may be reassigned).
 					m_mReconnectSlotByGuid.Clear();
+
+					// Reset the stats manager's one-shot mission-end guard so
+					// NotifyMissionEnded() actually runs again for this round's AAR.
+					// This component is a persistent singleton that outlives many rounds
+					// within the same mission load - without this, stats stop flushing
+					// and no AAR data is sent after the very first round.
+					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
+					if (statsManager)
+						statsManager.ResetForNewRound();
 					break;
 				}
 				
@@ -100,9 +109,16 @@ modded class COA_Gamemode
 					}
 					break;
 				}
-			}	
+			}
 		}
-		
+
+		// Runs on every machine - server, listen host, and clients (via the RplProp
+		// onRplName callback on m_GamemodeState). Clears last round's frozen AAR display
+		// data so the next AAR doesn't show stale numbers before this round's stats arrive.
+		// See CRF_AARSessionStats.Reset() and CRF_ServerStatsManager.ResetForNewRound().
+		if (m_GamemodeState == COA_EGamemodeState.SLOTTING)
+			CRF_AARSessionStats.Reset();
+
 		COA_PlayerMenuManager playerMenuManager = COA_PlayerMenuManager.GetInstance();
 		if (playerMenuManager)
 			playerMenuManager.OpenCurrentStateMenu();
