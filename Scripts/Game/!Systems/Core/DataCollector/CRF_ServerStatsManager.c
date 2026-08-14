@@ -443,6 +443,21 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Called from CRF_COA_Gamemode when a new round begins (COA_EGamemodeState.SLOTTING).
+	//! This component is a persistent singleton that outlives many SLOTTING/GAME/AAR cycles
+	//! within the same mission load, so the one-shot m_bMissionEndTriggered guard and the
+	//! session-scoped kill/death tracking MUST be cleared here - otherwise NotifyMissionEnded()
+	//! silently no-ops for every round after the first, and stale kill/death names from the
+	//! previous round bleed into this round's AAR kill panel.
+	void ResetForNewRound()
+	{
+		m_bMissionEndTriggered = false;
+		m_mSessionKills.Clear();
+		m_mSessionDeaths.Clear();
+		m_aPendingAARSends.Clear();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Flush all remaining player stats to the log and queue in-game AAR data sends.
 	//! Called either from COA_Gamemode when transitioning to AAR state, or from OnGameModeEnd as
 	//! a fallback. The one-shot flag prevents double-work if both paths fire.

@@ -41,8 +41,8 @@ FrameWidgetClass {
       OffsetTop 72.963
       SizeX -15.128
       OffsetRight 9.393
-      SizeY 500.176
-      OffsetBottom -573.139
+      SizeY 255
+      OffsetBottom -327.963
      }
      {
       ScrollLayoutWidgetClass "{56691148E692435A}" {
@@ -131,8 +131,13 @@ FrameWidgetClass {
       OffsetTop 78.537
       SizeX -21.122
       OffsetRight 15.235
-      SizeY 494.463
-      OffsetBottom -573
+      SizeY 250
+      OffsetBottom -328.537
+     }
+     components {
+      SCR_GamepadScrollComponent "{6638414622730001}" {
+       m_bAllowScrollWheel 1
+      }
      }
      {
       VerticalLayoutWidgetClass "{663841462272CF4E}" {
