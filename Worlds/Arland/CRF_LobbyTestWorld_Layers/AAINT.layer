@@ -751,6 +751,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
   m_bEnableShareableMarkers 1
  }
+ m_EnableDebug 0
  {
   SCR_FactionManager "66631CE7FE1E32BB" {
    ID "632A77473B3CC3A8"
