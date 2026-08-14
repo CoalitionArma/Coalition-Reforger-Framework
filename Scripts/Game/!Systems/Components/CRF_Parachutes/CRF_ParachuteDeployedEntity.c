@@ -57,6 +57,16 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 	// Initialization
 	// --------------------------------------------------------------------------------------------
 
+	void CRF_ParachuteDeployedEntity(IEntitySource src, IEntity parent)
+	{
+		// Entities spawned at runtime (e.g. via SpawnEntityPrefabEx) only receive EOnInit
+		// if the INIT event is requested here. Without this, m_RplComponent/m_Physics are
+		// never assigned, IsAuthority()/IsOwner() always return false, and the SIMULATE/
+		// CONTACT/FRAME masks below never get registered either - which is why this never
+		// worked once the chute was spawned on a dedicated server.
+		SetEventMask(EntityEvent.INIT);
+	}
+
 	bool IsAuthority()
 	{
 		return m_RplComponent && m_RplComponent.Role() == RplRole.Authority;
@@ -108,9 +118,7 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		m_NetSendInterval = 1.0 / Math.Max(m_NetworkSyncHz, 1.0);
 		m_NetAccTime = 0;
 
-		SetEventMask(EntityEvent.SIMULATE);
-		SetEventMask(EntityEvent.CONTACT);
-		SetEventMask(EntityEvent.FRAME); // for interpolation
+		SetEventMask(EntityEvent.SIMULATE | EntityEvent.CONTACT | EntityEvent.FRAME); // FRAME is for interpolation
 	}
 
 	override void EOnDeactivate(IEntity owner)

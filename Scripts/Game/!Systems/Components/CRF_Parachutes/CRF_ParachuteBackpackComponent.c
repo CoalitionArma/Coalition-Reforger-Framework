@@ -21,6 +21,17 @@ class CRF_ParachuteBackpackComponent : ScriptComponent
 
 	void OnUsedChanged() { /* optional UI update */ }
 
+	override void OnPostInit(IEntity owner)
+	{
+		if (SCR_Global.IsEditMode())
+			return;
+
+		// Without this, EOnInit below is never called - nothing else in this component
+		// currently depends on it, but any future EOnInit logic would silently no-op
+		// exactly like CRF_ParachuteDeployedEntity did.
+		SetEventMask(owner, EntityEvent.INIT);
+	}
+
 	override void EOnInit(IEntity owner)
 	{
 		if (m_ParachutePrefab == "")
