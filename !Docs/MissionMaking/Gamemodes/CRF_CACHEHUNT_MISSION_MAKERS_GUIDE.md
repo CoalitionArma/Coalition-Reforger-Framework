@@ -139,9 +139,10 @@ See [Why The Areas Narrow](#why-the-areas-narrow) for the reasoning and the trad
 |-----------|-------------|---------|
 | `Enable Cache Rearm` | Fill each cache's arsenal with gearscript ammunition | ✓ |
 | `Ammo Costs Supplies` | Charge supplies for ammunition taken from a cache | ✗ |
+| `Ammo Supply Cost` | Price per magazine when the faction catalog doesn't price it | `10` |
 | `Ammo Classes` | Which gearscript weapon classes stock the caches | Small arms, support, UGL, custom roles |
 
-> **You cannot set the price here.** `Ammo Costs Supplies` is a switch, not an amount — see [Supply Costs](#supply-costs) for why.
+> Charging supplies needs more than this checkbox — see [Supply Costs](#supply-costs) for the two other things that must be true.
 
 ### Misc
 
@@ -328,7 +329,7 @@ Each cache's `SCR_ArsenalComponent` gets its **item list rebuilt from the defend
 - AR, MMG, HMG, AT, MAT, HAT, AA
 - Every custom role's primary, secondary, and pistol
 
-Only **ammunition** goes in — no weapons, clothing, medical, or radios. Whether it costs anything is controlled by `Ammo Costs Supplies`; the price per magazine comes from the faction's entity catalog.
+Only **ammunition** goes in — no weapons, clothing, medical, or radios. `Ammo Costs Supplies` controls whether it costs anything; the price comes from the faction's entity catalog where it exists, otherwise from `Ammo Supply Cost`.
 
 ### Ammo Classes — why Iglas turn up
 
@@ -388,13 +389,11 @@ Its SCR_ResourceComponent disallows changing SUPPLIES - fix it in the prefab ins
 
 **2. The cache must be on the defending faction.** The arsenal UI prices a slot by looking the item up in **the arsenal's assigned faction's** ITEM entity catalog, and returns 0 outright when it isn't there. The shipped cache inherits `ArsenalBox_US`, so left alone it asks the *US* catalog for the defenders' magazines, finds nothing, and prices everything at zero. The gamemode now sets each cache's `FactionAffiliationComponent` to the defending side at spawn to fix this.
 
-**3. The price is not ours to set.** For any item that exists in the faction's ITEM entity catalog — which is every standard faction magazine — vanilla reads the supply cost from the **catalog entry** and ignores whatever the arsenal list says. This is stated outright in `SCR_ArsenalItem.m_iSupplyCost`:
+**3. Most gearscript magazines aren't priced anywhere.** The arsenal UI prices a slot *only* from the assigned faction's ITEM entity catalog and does a bare `return 0` when the item isn't in it. Gearscript magazines generally are not — no catalog in CRF or COALITION-Lobby prices them — so they display as free even with everything else correct.
 
-> *"Note in overwrite arsenal config this value is ignored and still taken from catalog."*
+`Ammo Supply Cost` is the price used for those. A magazine the faction catalog *does* price keeps the catalog's price, so caches stay consistent with the rest of the mission economy where that economy exists.
 
-So a per-magazine price on the gamemode would be a lie. It was originally exposed as `Ammo Supply Cost` (an int) and has been replaced with a boolean for that reason. Ammunition costs whatever your faction's entity catalog says it costs, which also keeps caches consistent with every other supply source in the mission.
-
-**To change what a magazine costs**, edit its `SCR_ArsenalItem` entry in the faction's ITEM entity catalog — e.g. `Configs/Systems/Entities/Entity Catalog/BLU/SupplyContainerItems_EntityCatalog_BLUFOR.conf`, where entries look like:
+**To price a magazine properly**, add an `SCR_ArsenalItem` entry for it in the defending faction's ITEM entity catalog:
 
 ```
 SCR_ArsenalItem {
@@ -403,7 +402,14 @@ SCR_ArsenalItem {
 }
 ```
 
-The cost passed on the arsenal entries the gamemode builds is only a fallback for items *not* in the catalog, and is left at 0.
+The startup log tells you how many fell back:
+
+```
+[CRF_CacheHunt] N of M magazine(s) are not priced in the 'OPFOR' ITEM entity catalog;
+they use the Ammo Supply Cost of 10.
+```
+
+> **Why an override was needed.** Vanilla's *purchase* path already falls back to the arsenal entry's own cost when there's no catalog entry, but the *display* path doesn't — so the price shown and the price charged disagreed. `CRF_SCR_Arsenal.c` overrides `SCR_ArsenalInventorySlotUI.GetTotalResources()` to apply the same fallback, so the number on the slot is the number the player pays.
 
 > **Note:** the caches are not faction-locked. An attacker who has already found a cache can use it, but at that point they're there to destroy it anyway.
 
@@ -442,7 +448,7 @@ if (cacheHunt)
 - **Enemy Proximity Radius**: `150` m — close enough that a probing attacker shuts down reinforcement, far enough that defenders aren't locked out by a stray scout.
 - **Random Min Separation**: at least `2 ×` the search radius, so the circles don't overlap into one blob.
 - **Cache count**: 3 for a 60–90 minute session, 5 for a long op.
-- **Ammo Costs Supplies**: off for a casual op; on if you want cache resupply to draw down a supply pool rather than be unlimited. Tune the actual prices in the faction's entity catalog.
+- **Ammo Costs Supplies**: off for a casual op; on if you want cache resupply to draw down a supply pool rather than be unlimited. Tune the price with `Ammo Supply Cost`, or per-magazine in the faction's entity catalog.
 
 ---
 

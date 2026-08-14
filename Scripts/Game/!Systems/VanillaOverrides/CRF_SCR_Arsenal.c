@@ -97,6 +97,101 @@ modded class SCR_ArsenalItemListConfig
 
 		return m_aArsenalItems.Count();
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[in] prefab Item to price
+	//! \param[out] supplyCost This list's price for it
+	//! \return True when this list carries that item
+	bool CRF_GetSupplyCostForPrefab(ResourceName prefab, out int supplyCost)
+	{
+		if (!m_aArsenalItems)
+			return false;
+
+		foreach (SCR_ArsenalItem item : m_aArsenalItems)
+		{
+			if (!item || item.GetItemResourceName() != prefab)
+				continue;
+
+			supplyCost = item.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false);
+			return true;
+		}
+
+		return false;
+	}
+}
+
+//------------------------------------------------------------------------------------
+//! The arsenal UI prices a slot purely from the assigned faction's ITEM entity catalog,
+//! and returns a bare 0 when the item is not in it. Items that only exist in an arsenal's
+//! overwrite list - which is every magazine a Cache Hunt cache serves - are therefore shown
+//! as free no matter what their arsenal entry says.
+//!
+//! Note the PURCHASE path does not work this way: SCR_ResourcePlayerControllerInventoryComponent
+//! falls back to the overwrite entry's cost when there is no catalog entry. So without this
+//! the displayed price and the charged price disagree. This aligns the display with what the
+//! player is actually charged.
+modded class SCR_ArsenalInventorySlotUI
+{
+	//------------------------------------------------------------------------------------------------
+	override float GetTotalResources()
+	{
+		float cost = super.GetTotalResources();
+
+		// -1 means the arsenal does not use supplies at all; anything positive came from the
+		// catalog. Only a zero is worth a second look.
+		if (cost != 0)
+			return cost;
+
+		SCR_ArsenalItemListConfig itemList = CRF_GetOverwriteListForSlot();
+		if (!itemList)
+			return cost;
+
+		ResourceName prefab = CRF_GetSlotItemPrefab();
+		if (prefab.IsEmpty())
+			return cost;
+
+		int overwriteCost;
+		if (!itemList.CRF_GetSupplyCostForPrefab(prefab, overwriteCost) || overwriteCost <= 0)
+			return cost;
+
+		m_fSupplyCost = overwriteCost;
+
+		SCR_ResourceComponent resourceComponent = GetArsenalResourceComponent();
+		if (resourceComponent)
+		{
+			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			if (consumer)
+				m_fSupplyCost = m_fSupplyCost * consumer.GetBuyMultiplier();
+		}
+
+		return m_fSupplyCost;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected SCR_ArsenalItemListConfig CRF_GetOverwriteListForSlot()
+	{
+		if (!GetStorageUI() || !GetStorageUI().GetCurrentNavigationStorage())
+			return null;
+
+		IEntity storageEntity = GetStorageUI().GetCurrentNavigationStorage().GetOwner();
+		if (!storageEntity)
+			return null;
+
+		SCR_ArsenalComponent arsenal = SCR_ArsenalComponent.Cast(storageEntity.FindComponent(SCR_ArsenalComponent));
+		if (!arsenal)
+			return null;
+
+		return arsenal.GetOverwriteArsenalConfig();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected ResourceName CRF_GetSlotItemPrefab()
+	{
+		if (!m_pItem || !m_pItem.GetOwner() || !m_pItem.GetOwner().GetPrefabData())
+			return string.Empty;
+
+		return m_pItem.GetOwner().GetPrefabData().GetPrefabName();
+	}
 }
 
 //------------------------------------------------------------------------------------

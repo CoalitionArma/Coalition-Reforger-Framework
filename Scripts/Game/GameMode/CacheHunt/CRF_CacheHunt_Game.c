@@ -199,8 +199,11 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.CheckBox, desc: "Fill each cache's arsenal with ammunition pulled from the defending faction's assigned gearscript", category: "Cache Hunt - Rearm")]
 	bool m_bEnableCacheRearm;
 
-	[Attribute("0", UIWidgets.CheckBox, desc: "Charge supplies for ammunition taken from a cache. The per-item price comes from the faction's entity catalog, not from this gamemode - see the guide", category: "Cache Hunt - Rearm")]
+	[Attribute("0", UIWidgets.CheckBox, desc: "Charge supplies for ammunition taken from a cache", category: "Cache Hunt - Rearm")]
 	bool m_bAmmoCostsSupplies;
+
+	[Attribute("10", UIWidgets.Slider, desc: "Supply cost per magazine, used when the defending faction's entity catalog does not price it - which is the usual case for gearscript magazines. A magazine the catalog does price keeps the catalog's price", params: "0 200 1", category: "Cache Hunt - Rearm")]
+	int m_iAmmoSupplyCost;
 
 	[Attribute("39", UIWidgets.Flags, desc: "Which weapon classes from the defending gearscript stock the caches. Anti-tank and anti-air are off by default: a launcher's magazines are its rockets, so including them gives every defender unlimited AT and AA rounds", enums: ParamEnumArray.FromEnum(CRF_ECacheHuntAmmoClass), category: "Cache Hunt - Rearm")]
 	CRF_ECacheHuntAmmoClass m_eAmmoClasses;
@@ -356,7 +359,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		// Unconditional so it appears in EVERY log - server and client alike. If this line is
 		// absent from a machine's log, that machine is not running this build of the script.
-		Print(string.Format("[CRF_CacheHunt] BUILD MARKER rev8 | OnWorldPostProcess | RplSession.Mode=%1 | IsServer=%2 | attacker=%3 defender=%4",
+		Print(string.Format("[CRF_CacheHunt] BUILD MARKER rev9 | OnWorldPostProcess | RplSession.Mode=%1 | IsServer=%2 | attacker=%3 defender=%4",
 			RplSession.Mode(), Replication.IsServer(), m_AttackingSide, m_DefendingSide), LogLevel.NORMAL);
 
 		// Markers are drawn by any machine with a local player, which includes a listen
@@ -1474,12 +1477,14 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//! \return Costs parallel to ammunition
 	protected array<int> BuildSupplyCosts(notnull array<ResourceName> ammunition)
 	{
+		// Default to the configured price. Gearscript magazines are generally not in any
+		// faction's ITEM entity catalog, so for most of them this is the price that sticks.
 		array<int> costs = {};
 		costs.Reserve(ammunition.Count());
 
 		for (int i = 0; i < ammunition.Count(); i++)
 		{
-			costs.Insert(0);
+			costs.Insert(m_iAmmoSupplyCost);
 		}
 
 		SCR_EntityCatalogManagerComponent catalogManager = SCR_EntityCatalogManagerComponent.GetInstance();
@@ -1517,8 +1522,8 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		if (missing > 0)
 		{
-			Print(string.Format("[CRF_CacheHunt] %1 of %2 magazine(s) have no arsenal entry in the '%3' ITEM entity catalog, so they are free. Add them to that catalog to give them a price.",
-				missing, ammunition.Count(), m_DefendingSide), LogLevel.WARNING);
+			Print(string.Format("[CRF_CacheHunt] %1 of %2 magazine(s) are not priced in the '%3' ITEM entity catalog; they use the Ammo Supply Cost of %4.",
+				missing, ammunition.Count(), m_DefendingSide, m_iAmmoSupplyCost), LogLevel.NORMAL);
 		}
 
 		return costs;
