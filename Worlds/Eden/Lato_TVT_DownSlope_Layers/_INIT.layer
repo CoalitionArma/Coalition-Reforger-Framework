@@ -100,7 +100,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "IND"
  m_OPFORSlots {
-  COA_SlottingGroup "{6A1C0B926BA3E2EF}" {
+  COA_SlottingGroup "{6A1C0B993CE1D076}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -111,7 +111,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3E5AA}" {
+  COA_SlottingGroup "{6A1C0B993CE1D30E}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -123,7 +123,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3E409}" {
+  COA_SlottingGroup "{6A1C0B993CE1D26F}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -139,7 +139,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3E76D}" {
+  COA_SlottingGroup "{6A1C0B993CE1D2B7}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -155,7 +155,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3E7DE}" {
+  COA_SlottingGroup "{6A1C0B993CE1D50A}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -171,7 +171,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3E630}" {
+  COA_SlottingGroup "{6A1C0B993CE1D476}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -183,7 +183,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA3997F}" {
+  COA_SlottingGroup "{6A1C0B993CE1D4B0}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -199,7 +199,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA399D7}" {
+  COA_SlottingGroup "{6A1C0B993CE1D715}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -215,7 +215,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39828}" {
+  COA_SlottingGroup "{6A1C0B993CE1D677}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -231,7 +231,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39895}" {
+  COA_SlottingGroup "{6A1C0B993CE1D6D3}" {
    m_sCallsign "BTR70"
    m_FlagType ARMORED
    m_aSlots {
@@ -241,7 +241,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39B01}" {
+  COA_SlottingGroup "{6A1C0B993CE1C946}" {
    m_sCallsign "BTR70"
    m_FlagType ARMORED
    m_aSlots {
@@ -253,7 +253,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_INDFORSlots {
-  COA_SlottingGroup "{6A1C0B926BA39AB4}" {
+  COA_SlottingGroup "{6A1C0B993CE1C835}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -263,7 +263,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39D25}" {
+  COA_SlottingGroup "{6A1C0B993CE1C8A1}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -273,12 +273,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39D82}" {
+  COA_SlottingGroup "{6A1C0B993CE1CB15}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -288,12 +288,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39CE0}" {
+  COA_SlottingGroup "{6A1C0B993CE1CA74}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -303,12 +303,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39F4B}" {
+  COA_SlottingGroup "{6A1C0B993CE1CAD5}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -318,12 +318,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39FBD}" {
+  COA_SlottingGroup "{6A1C0B993CE1CD32}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -333,12 +333,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A1C0B926BA39E25}" {
+  COA_SlottingGroup "{6A1C0B993CE1CD9F}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
