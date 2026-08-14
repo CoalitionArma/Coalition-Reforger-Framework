@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B9D1109E68EAFA22}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LittlePiggies_Piggies.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
