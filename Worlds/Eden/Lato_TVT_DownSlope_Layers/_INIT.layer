@@ -1,14 +1,29 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 7037.502 94.714 3778.446
 }
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et" {
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  CRF_AttritionGamemodeComponent "{6A1C0B9FC6B4B3C3}" {
+   m_sTeamAFactionKey "INDFOR"
+   m_fTeamAVictoryThreshold 80
+   m_fTeamBVictoryThreshold 90
+   m_fNotifyIncrementPercent 20
+  }
   CRF_SearchAndDestroyGamemodeManager "{68B23C5D2661645B}" {
    attackingSide "OPFOR"
    defendingSide "INDFOR"
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 19
+   m_iStartingMinutes 55
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
    m_bRandomStartingWeather 0
+   m_bUsePredefineStartingTimeAndWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Overcast"
@@ -25,25 +40,19 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_iTimeLimitMinutes 50
- m_bAllowEspionage 0
  m_bLockUnusedSlots 1
- m_bSafestartInstantlyEnabled 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_aMissionDescriptors {
   COA_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Soviet forces attempt to clear a route through FIA controlled sector by detonating bombsites."\
+   m_sTextData "Russian forces attempt to clear a route through an insurgent controlled sector by detonating bombsites."\
    ""\
    "INDFOR Composition: Infantry"\
-   "INDFOR Assets: MMG | Armed UAZ"\
+   "INDFOR Assets: MAT | Armed UAZ"\
    ""\
-   "OPFOR Composition: Infantry"\
-   "OPFOR Assets: BTR70 | MMG "\
-   ""\
-   "Time: 18:15"\
-   ""\
-   "Weather: Overcast"
+   "OPFOR Composition: Motorized Infantry"\
+   "OPFOR Assets: BTR70s"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -51,17 +60,17 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
   COA_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Objectives"
    m_sTextData "If BLUFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Objectives"
    m_sTextData "1. Blow up bombsite A & B"\
-   "2. Eliminate FIA forces in the region"\
+   "2. Eliminate insurgent forces in the region"\
    ""\
    "Indfor can deploy far forward, so leave your SS zone expecting to get into contact quickly."
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
@@ -70,176 +79,191 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
    m_sTextData ""\
    "1. Defend bombsite A & B"\
    "2. Eliminate SOV forces"
-   m_aFactionKeys +{
+   m_aFactionKeys {
    }
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Administration"
-   m_sTextData ""
-   m_aFactionKeys +{
+   m_sTextData "Attrition is enabled"\
+   ""\
+   "If OPFOR (attacker) is 80% destroyed, defenders will be victorious. If INDFOR (defender) is 90% destroyed, attackers will be declared victorious."\
+   ""\
+   "No respawns"
+   m_aFactionKeys {
    }
-   m_bShowForAnyFaction 0
+   m_bShowForAnyFaction 1
   }
  }
- m_iFactionOneRatio 4
- m_iFactionTwoRatio 4
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "IND"
  m_OPFORSlots {
-  COA_SlottingGroup "{68CA3A5DF204A532}" {
+  COA_SlottingGroup "{6A1C0B926BA3E2EF}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
     COMPANY_COMMANDER
     FIRST_SERGEANT
+    SNIPER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A42C}" {
+  COA_SlottingGroup "{6A1C0B926BA3E5AA}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A7BE}" {
+  COA_SlottingGroup "{6A1C0B926BA3E409}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A730}" {
+  COA_SlottingGroup "{6A1C0B926BA3E76D}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A6BB}" {
+  COA_SlottingGroup "{6A1C0B926BA3E7DE}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A63A}" {
+  COA_SlottingGroup "{6A1C0B926BA3E630}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A657}" {
+  COA_SlottingGroup "{6A1C0B926BA3997F}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A1E3}" {
+  COA_SlottingGroup "{6A1C0B926BA399D7}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A174}" {
+  COA_SlottingGroup "{6A1C0B926BA39828}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A080}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-  }
-  COA_SlottingGroup "{68CA3A5DF204A015}" {
+  COA_SlottingGroup "{6A1C0B926BA39895}" {
    m_sCallsign "BTR70"
    m_FlagType ARMORED
    m_aSlots {
     VEHICLE_LEAD
     VEHICLE_DRIVER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A1C0B926BA39B01}" {
+   m_sCallsign "BTR70"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
  }
  m_INDFORSlots {
-  COA_SlottingGroup "{68CA3A5DF204A37F}" {
-   m_sCallsign "COY"
-   m_FlagType SIGNAL
-   m_aSlots {
-    COMPANY_COMMANDER
-    FIRST_SERGEANT
-   }
-  }
-  COA_SlottingGroup "{68CA3A5DF204A299}" {
+  COA_SlottingGroup "{6A1C0B926BA39AB4}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204A229}" {
+  COA_SlottingGroup "{6A1C0B926BA39D25}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -248,13 +272,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    GRENADIER
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204ADCD}" {
+  COA_SlottingGroup "{6A1C0B926BA39D82}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -263,13 +287,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    GRENADIER
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204AD60}" {
+  COA_SlottingGroup "{6A1C0B926BA39CE0}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -278,22 +302,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    GRENADIER
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204ACF5}" {
-   m_sCallsign "2PLT"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-  }
-  COA_SlottingGroup "{68CA3A5DF204AC17}" {
-   m_sCallsign "2-1"
+  COA_SlottingGroup "{6A1C0B926BA39F4B}" {
+   m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -301,14 +317,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    GRENADIER
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204AFAD}" {
-   m_sCallsign "2-2"
+  COA_SlottingGroup "{6A1C0B926BA39FBD}" {
+   m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -316,38 +332,23 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    GRENADIER
     GRENADIER
    }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{68CA3A5DF204AFC0}" {
-   m_sCallsign "2-3"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6A1C0B926BA39E25}" {
+   m_sCallsign "MAT"
+   m_FlagType ANTI_ARMOR
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
-    GRENADIER
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
    }
-  }
-  COA_SlottingGroup "{68CA3A5DF204AF58}" {
-   m_sCallsign "MMG"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
   }
  }
  m_iBLUFORTickets 0
@@ -355,35 +356,61 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Systems/!Lobby/COA_Lobby.et"
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/COA_GS_US80s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{31798400ADCA306C}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_RPK.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{0511E95A4491874B}Configs/Gearscripts/Standard/Modern/COA_GS_RHSMSV_Unrealistic.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{5373A80D0CED79F1}Configs/Gearscripts/Custom/Latofel/COA_GS_FIA_MixedWeapons.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
-  m_bEnableGIRadios 1
-  m_bEnableRTORadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 1
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
-  m_bEnableShareableMarkers 1
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
+  m_bEnableShareableMarkers 1
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
  }
 }
