@@ -1,0 +1,190 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 4814.782 169.594 10159.013
+  angles 0 -62.138 0
+ }
+ {
+  coords 4845.466 169.594 10140.221
+  angles 0 -60.449 0
+ }
+ {
+  coords 4879.26 169.594 10117.555
+  angles 0 -64.557 0
+ }
+ {
+  coords 4911.841 169.594 10092.76
+  angles 0 -59.99 0
+ }
+}
+$grp GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_Conflict_US_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4801.214 169.594 10161.858
+  angles 0 31.774 0
+  {
+   GameEntity {
+    ID "6308889467A8769E"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "6308889467AAFCAE"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "63088894EBD52CC7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_bEnableResourceGain 1
+        m_fResourceGain 10
+        m_fResourceGainTickrate 60
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4830.083 169.594 10143.944
+  angles 0 31.18 0
+  {
+   GameEntity {
+    ID "6308889467A8769E"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "6308889467AAFCAE"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "63088894EBD52CC7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_bEnableResourceGain 1
+        m_fResourceGain 10
+        m_fResourceGainTickrate 60
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4861.692 169.594 10124.728
+  angles 0 32.91 0
+  {
+   GameEntity {
+    ID "6308889467A8769E"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "6308889467AAFCAE"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "63088894EBD52CC7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_fResourceGain 10
+        m_fResourceGainTickrate 60
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4897.181 169.597 10102.395
+  angles 0 32.729 0
+  {
+   GameEntity {
+    ID "6308889467A8769E"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "6308889467AAFCAE"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "63088894EBD52CC7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_fResourceGain 10
+        m_fResourceGainTickrate 60
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
