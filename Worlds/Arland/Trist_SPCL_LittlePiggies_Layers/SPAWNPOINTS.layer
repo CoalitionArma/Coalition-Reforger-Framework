@@ -1,0 +1,53 @@
+$grp GameEntity {
+ lootSpawn {
+  coords 485.484 128.407 491.355
+ }
+ lootSpawn2 {
+  coords 484.37 128.407 495.035
+ }
+ lootSpawn3 {
+  coords 479.652 128.407 494.486
+ }
+ lootSpawn4 {
+  coords 480.652 128.407 490.229
+ }
+ lootSpawn5 {
+  coords 475.433 128.407 488.902
+ }
+ lootSpawn6 {
+  coords 477.342 128.407 495.504
+ }
+ lootSpawn7 {
+  coords 490.124 128.407 489.123
+ }
+ lootSpawn8 {
+  coords 491.764 128.407 495.831
+ }
+ lootSpawn9 {
+  coords 488.334 128.407 496.965
+ }
+ lootSpawn10 {
+  coords 486.79 128.407 494.78
+ }
+ lootSpawn11 {
+  coords 485.903 128.407 490.17
+ }
+ lootSpawn12 {
+  coords 485.954 128.407 494.832
+ }
+ lootSpawn13 {
+  coords 479.197 128.407 489.984
+ }
+ lootSpawn14 {
+  coords 473.579 128.407 487.641
+ }
+ lootSpawn15 {
+  coords 482.591 128.407 495.452
+ }
+ lootSpawn16 {
+  coords 491.692 128.407 487.104
+ }
+ lootSpawn17 {
+  coords 479.929 128.407 493.13
+ }
+}
