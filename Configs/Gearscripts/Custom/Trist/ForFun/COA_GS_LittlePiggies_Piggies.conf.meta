@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{48FC68EDD40CF4AD}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LittlePiggies_Snipers.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
