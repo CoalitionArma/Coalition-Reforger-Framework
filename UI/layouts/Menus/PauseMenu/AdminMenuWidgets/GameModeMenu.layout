@@ -1,0 +1,77 @@
+FrameWidgetClass {
+ {
+  FrameWidgetClass "{6A1D312FC0641B6C}" {
+   Name "VAAR"
+   Slot FrameWidgetSlot "{6A1D312FC0641B46}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY 132
+    OffsetTop 132
+    SizeX 360
+    OffsetRight 432
+    SizeY 80
+    OffsetBottom -212
+   }
+   {
+    TextWidgetClass "{6A1D312FC37DE52E}" {
+     Name "VAARTitle"
+     Slot FrameWidgetSlot "{6A1D312FC37DE509}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 100
+      OffsetRight -100
+      SizeY 30
+      OffsetBottom -30
+     }
+     Text "Virtual AAR"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{6A1D312FEEA56FEB}" {
+     Name "ToggleVAARButton"
+     Slot FrameWidgetSlot "{6A1D312FEEA56FD0}" {
+      PositionX 8
+      OffsetLeft 8
+      PositionY 40
+      OffsetTop 40
+      SizeX 192
+      OffsetRight -200
+      SizeY 30
+      OffsetBottom -70
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{6A1D375F485AC76B}" {
+       m_bCanBeToggled 1
+      }
+     }
+     {
+      TextWidgetClass "{6A1D312F9AD713A9}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{6A1D312F9AD713FC}" {
+       }
+       Text "Toggle Recording"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{659CDD56628B68FC}" {
+   Prefab "{659CDD56628B68FC}"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    OffsetLeft -817
+    OffsetTop -485
+    OffsetRight -311
+    OffsetBottom -443
+   }
+  }
+ }
+}
