@@ -560,7 +560,6 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			return;
 		if (IsChuteOwner())
 		{
-			// No controls to enable – just return
 			return;
 		}
 		if (m_OwnershipRetries < MAX_OWNERSHIP_RETRIES)
