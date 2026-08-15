@@ -25,7 +25,7 @@ modded class SCR_InventoryMenuUI
 			COA_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
 			
 			// Log to admin menu
-			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false);
+			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false, COA_EAdminLogLevel.High);
 		}
 		
 	}
