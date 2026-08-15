@@ -65,7 +65,7 @@ CRF_ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_C
       }
      }
      PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
-      Offset 0 -1.166 0.103
+      Offset 0 -0.3317 0.106
      }
      ForcedFreeLook 1
      SkipCharacterDoorAnimationsFromSeat 1
