@@ -1649,7 +1649,7 @@ class CRF_VehicleGearscriptManager : ScriptComponent
 			return false;
 
 		IEntity previousVehicle = previousRpl.GetEntity();
-		if (!previousVehicle)
+		if (!previousVehicle || previousVehicle.IsDeleted())
 			return false;
 
 		SCR_EntityHelper.DeleteEntityAndChildren(previousVehicle);
