@@ -25,10 +25,6 @@ class CRF_ParachuteBackpackComponent : ScriptComponent
 	{
 		if (SCR_Global.IsEditMode())
 			return;
-
-		// Without this, EOnInit below is never called - nothing else in this component
-		// currently depends on it, but any future EOnInit logic would silently no-op
-		// exactly like CRF_ParachuteDeployedEntity did.
 		SetEventMask(owner, EntityEvent.INIT);
 	}
 

@@ -137,11 +137,6 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 
 	void CRF_ParachuteDeployedEntity(IEntitySource src, IEntity parent)
 	{
-		// Entities spawned at runtime (e.g. via SpawnEntityPrefabEx) only receive EOnInit
-		// if the INIT event is requested here. Without this, m_RplComponent/m_Physics are
-		// never assigned, IsAuthority()/IsOwner() always return false, and the SIMULATE/
-		// CONTACT/FRAME masks below never get registered either - which is why this never
-		// worked once the chute was spawned on a dedicated server.
 		SetEventMask(EntityEvent.INIT);
 	}
 
