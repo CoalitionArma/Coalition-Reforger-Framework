@@ -1,0 +1,6 @@
+COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ coords 12925.105 5.751 10045.719
+ angles 0 0 0
+ m_MarkerColor 0.033 0.033 0.033 1
+ m_sDescription "Berezino docks"
+}
