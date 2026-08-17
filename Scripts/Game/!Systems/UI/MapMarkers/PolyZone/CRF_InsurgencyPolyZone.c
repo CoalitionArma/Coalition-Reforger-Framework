@@ -1,3 +1,4 @@
+/*
 //------------------------------------------------------------------------------------------------
 [ComponentEditorProps(category: "GameScripted/Insurgency", description: "Phase-based polygon zone for Insurgency gamemode", color: "255 128 0 255", icon: HYBRID_COMPONENT_ICON)]
 class CRF_InsurgencyPolyZoneClass: COA_PolyZoneClass
@@ -101,11 +102,9 @@ class CRF_InsurgencyPolyZone : COA_PolyZone
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-	 * Get the local player's faction key via SCR_FactionManager.
-	 * GetGame().GetPlayerController() returns null in component context on clients;
-	 * SCR_FactionManager.GetLocalPlayerFaction() is the correct client-safe path.
-	 */
+	// Get the local player's faction key via SCR_FactionManager.
+	// GetGame().GetPlayerController() returns null in component context on clients;
+	// SCR_FactionManager.GetLocalPlayerFaction() is the correct client-safe path.
 	protected FactionKey GetLocalPlayerFactionKey()
 	{
 		SCR_FactionManager factionMgr = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -185,3 +184,4 @@ class CRF_InsurgencyPolyZone : COA_PolyZone
 		return false;
 	}
 }
+*/

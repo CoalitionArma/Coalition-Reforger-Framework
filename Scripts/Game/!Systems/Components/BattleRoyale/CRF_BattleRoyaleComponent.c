@@ -1,3 +1,4 @@
+
 /****************************************************************************************
  * CRF_BattleRoyaleComponent.c
 
@@ -15,6 +16,8 @@
  - Consider loot spawn/object cleanup/culling similar to CheckPlayersOutside via PolyZoneTrigger
 
  **************************************************************************************/
+
+/*
 
 //------------------------------------------------------------------------------------------------
 // Stage state enum (only INACTIVE, ACTIVE, ACTIVATED needed for activation-only logic)
@@ -276,8 +279,8 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 		}
 	}
 
-//------------------------------------------------------------------------------------------------
-override void EOnFixedFrame(IEntity owner, float timeSlice)
+	//------------------------------------------------------------------------------------------------
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeSlice);
 		
@@ -378,7 +381,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Searches for boundry entities named [Prefix]1, [Prefix]2, etc. and orders them numerically
-	 */
+
 	void DiscoverZoneBoundaries(CRF_BattleRoyaleZoneData zoneData)
 	{
 		if (!zoneData || zoneData.m_sZonePrefix.IsEmpty())
@@ -447,7 +450,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	 * Select a specific zone sequence and delete all others
 	 * @param zoneIndex - Index of the zone sequence to use
 	 * @return bool - true if zone was selected successfully
-	 */
+
 	bool SelectZone(int zoneIndex)
 	{
 		if (RplSession.Mode() == RplMode.Client)
@@ -544,7 +547,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	/**
 	 * Randomly select a zone sequence
 	 * @return bool - true if zone was selected successfully
-	 */
+
 	bool SelectRandomZone()
 	{
 		if (RplSession.Mode() == RplMode.Client)
@@ -579,7 +582,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Initialize boundaries for the selected zone
-	 */
+
 	void InitializeZoneBoundaries(CRF_BattleRoyaleZoneData zoneData)
 	{
 		if (!zoneData || !zoneData.m_aStages)
@@ -634,7 +637,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Fast cached entity lookup
-	 */
+
 	IEntity GetCachedBoundaryEntity(string entityName)
 	{
 		if (!entityName || entityName.IsEmpty())
@@ -666,8 +669,8 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Get the COA_PolyZoneTrigger child entity from a GameBoundary parent
-	 */
-	COA_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
+
+	COA_GameBorder GetBoundaryTrigger(string boundaryName)
 	{
 		if (!boundaryName || boundaryName.IsEmpty())
 			return null;
@@ -679,7 +682,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 		IEntity child = parentEntity.GetChildren();
 		while (child)
 		{
-			COA_PolyZoneTrigger trigger = COA_PolyZoneTrigger.Cast(child);
+			COA_GameBorder trigger = COA_GameBorder.Cast(child);
 			if (trigger)
 				return trigger;
 			child = child.GetSibling();
@@ -691,7 +694,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Get the currently selected zone stages
-	 */
+
 	array<ref CRF_BattleRoyaleStageData> GetSelectedZoneStages()
 	{
 		if (m_iSelectedZoneIndex < 0 || m_iSelectedZoneIndex >= m_aZoneSequences.Count())
@@ -847,7 +850,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Apply the boundary activation (move to original position and check players outside)
-	 */
+
 	void ApplyBoundaryActivation(CRF_BattleRoyaleStageData stageData, int stageIndex)
 	{
 		if (!stageData)
@@ -895,7 +898,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 				Print(string.Format("[CRF_BattleRoyaleComponent] Boundary '%1' activated at %2", stageData.m_sStageBoundaryName, boundaryEntity.GetOrigin()));
 			
 			// For reversed (INCLUSION) zones, apply effects to players already outside
-			COA_PolyZoneTrigger trigger = GetBoundaryTrigger(stageData.m_sStageBoundaryName);
+			COA_GameBorder trigger = GetBoundaryTrigger(stageData.m_sStageBoundaryName);
 			if (trigger)
 				trigger.CheckPlayersOutside();
 		}
@@ -1121,7 +1124,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	 * Check for winning team in Battle Royale
 	 * Detects when only ONE group has any alive members
 	 * Uses PlayerManager + SCR_AIGroup instead of SlottingManager for stability
-	 */
+
 	void CheckForWinners()
 	{
 		if (RplSession.Mode() == RplMode.Client)
@@ -1230,7 +1233,7 @@ override void EOnFixedFrame(IEntity owner, float timeSlice)
 	/**
 	 * Declare the winners and stop the game
 	 * Uses RPC broadcast instead of RplProp array
-	 */
+
 	void DeclareWinners()
 	{
 		if (RplSession.Mode() == RplMode.Client)
