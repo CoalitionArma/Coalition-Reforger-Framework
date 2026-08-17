@@ -1,11 +1,88 @@
+SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
+ coords 13000.474 48.041 13742.09
+}
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  coords 0 0 0
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A236B47A155C7D5}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "A OPFOR armored platoon is trapped from the rest of their forces at Modestnoye."\
+   ""\
+   "OPFOR Composition: Armored Platoon"\
+   "OPFOR Assets: 5x T72B, 1x Recon Squad and 1x HAT"\
+   ""\
+   "BLUFOR Composition: Unknown"\
+   "BLUFOR Assets: Unknwon"\
+   ""\
+   "Time: 12:00"\
+   ""\
+   "Weather: Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A236B47A155DD4F}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Prevnt OPFOR from reaching the rest of their forces at Modestnoye."\
+   ""\
+   "INTENT"\
+   "Set up ambush point along the way to your spawn to delay and possibly stop OPFOR's advance."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A236B47A155DDF5}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Reach the rest of your forces at Modestnoye."\
+   ""\
+   "INTENT"\
+   "Play this either fast and loose or slow steady, You have a recon team at your disposal to scout ahead for threats."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A236B47A155DE47}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A236B47A155DED7}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A2323F8DB7EF37E}" {
+  COA_SlottingGroup "{6A236B450E320B54}" {
    m_sCallsign "Tank 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -16,7 +93,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EF436}" {
+  COA_SlottingGroup "{6A236B450E320C21}" {
    m_sCallsign "Tank 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -29,17 +106,18 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A2323F8DB7EF5D4}" {
+  COA_SlottingGroup "{6A236B450E320D80}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    JTAC
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EF64B}" {
+  COA_SlottingGroup "{6A236B450E320E25}" {
    m_sCallsign "Recon"
    m_FlagType INFANTRY
    m_aSlots {
@@ -55,7 +133,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EF6F4}" {
+  COA_SlottingGroup "{6A236B450E320F61}" {
    m_sCallsign "HAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
@@ -69,7 +147,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EF761}" {
+  COA_SlottingGroup "{6A236B450E320F9F}" {
    m_sCallsign "Anvil 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -80,7 +158,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EF798}" {
+  COA_SlottingGroup "{6A236B450E32001B}" {
    m_sCallsign "Anvil 2"
    m_FlagType ARMORED
    m_aSlots {
@@ -91,7 +169,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EC86E}" {
+  COA_SlottingGroup "{6A236B450E320090}" {
    m_sCallsign "Anvil 3"
    m_FlagType ARMORED
    m_aSlots {
@@ -102,7 +180,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EC8E8}" {
+  COA_SlottingGroup "{6A236B450E320117}" {
    m_sCallsign "Anvil 4"
    m_FlagType ARMORED
    m_aSlots {
@@ -113,7 +191,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EC96D}" {
+  COA_SlottingGroup "{6A236B450E320184}" {
    m_sCallsign "Anvil 5"
    m_FlagType ARMORED
    m_aSlots {
@@ -124,7 +202,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A2323F8DB7EC99B}" {
+  COA_SlottingGroup "{6A236B450E320200}" {
    m_sCallsign "Zeus"
    m_FlagType UNDEFINED
    m_aSlots {
@@ -168,7 +246,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A236B46C0811FCD" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
