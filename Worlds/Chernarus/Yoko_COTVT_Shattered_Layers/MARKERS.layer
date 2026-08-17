@@ -1,0 +1,10 @@
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 8558.424 104.866 12752.977
+  m_sDescription "Refuel and Rearm Station"
+ }
+ {
+  coords 13949.421 18.296 13217.015
+  m_sDescription "Main Objective: Reach Modestnoye"
+ }
+}
