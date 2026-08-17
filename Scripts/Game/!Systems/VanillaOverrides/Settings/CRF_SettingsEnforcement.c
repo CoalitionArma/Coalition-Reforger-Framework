@@ -1,3 +1,18 @@
+//------------------------------------------------------------------------------------------------
+//! COOP and COTVT missions don't enforce a level playing field against AI, so grass/shadow
+//! settings are left to each player's own hardware/preference instead of being forced up.
+bool CRF_ShouldEnforceGraphicsSettings()
+{
+	if (!GetGame())
+		return true;
+
+	SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+	if (!header)
+		return true;
+
+	return header.m_sGameMode != "COOP" && header.m_sGameMode != "COTVT";
+}
+
 void ShadowCheck()
 {
 	if (!GetGame() || !GetGame().GetEngineUserSettings())
@@ -125,9 +140,12 @@ modded class SCR_BaseGameMode : BaseGameMode
 	protected override void OnGameModeStart()
 	{
 		super.OnGameModeStart();
-		
-		ShadowCheck();
-		GrassCheck();
+
+		if (CRF_ShouldEnforceGraphicsSettings())
+		{
+			ShadowCheck();
+			GrassCheck();
+		}
 		//GammaBrightnessCheck();
 	}
 }
@@ -137,9 +155,12 @@ modded class SCR_VideoSettingsSubMenu: SCR_SettingsSubMenuBase
 	override void OnMenuItemChanged(SCR_SettingsBindingBase binding)
 	{
 		super.OnMenuItemChanged(binding);
-		
-		ShadowCheck();
-		GrassCheck();
+
+		if (CRF_ShouldEnforceGraphicsSettings())
+		{
+			ShadowCheck();
+			GrassCheck();
+		}
 		//GammaBrightnessCheck();
 	}
 };
