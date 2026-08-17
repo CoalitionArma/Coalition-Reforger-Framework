@@ -18,18 +18,76 @@ modded class SCR_InventoryMenuUI
 
 			string name = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
 			InventoryItemComponent itemIIC = InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent));
+			if (!itemIIC)
+				return;
 			UIInfo itemUiInfo = itemIIC.GetUIInfo();
+			if (!itemUiInfo)
+				return;
 			RplComponent rplComponent = RplComponent.Cast(m_Player.FindComponent(RplComponent));
 			if (!rplComponent)
 				return;
 			COA_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
-			
+			if (!slotData)
+				return;
+
 			// Log to admin menu
 			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false, COA_EAdminLogLevel.High);
 		}
-		
+
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Logs items taken out of a vehicle's inventory, alongside the arsenal logging above.
+	override void OnItemRemovedListener(IEntity item, notnull BaseInventoryStorageComponent storage)
+	{
+		super.OnItemRemovedListener(item, storage);
+
+		if (!CRF_IsVehicleStorage(storage))
+			return;
+
+		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		COA_SlottingManager sm = COA_SlottingManager.GetInstance();
+		if (!sm || !rplManager)
+			return;
+
+		InventoryItemComponent itemIIC = InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent));
+		if (!itemIIC)
+			return;
+
+		UIInfo itemUiInfo = itemIIC.GetUIInfo();
+		RplComponent rplComponent = RplComponent.Cast(m_Player.FindComponent(RplComponent));
+		if (!rplComponent)
+			return;
+
+		COA_SlotData slotData = sm.GetSlotDataFromCharacter(rplComponent.Id());
+		if (!slotData)
+			return;
+
+		string name = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
+
+		// Log to admin menu
+		rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from a vehicle", -1, false, COA_EAdminLogLevel.High);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vehicle inventory storages are attached either directly on the vehicle entity or on a child
+	//! compartment beneath it - see CRF_SCR_OpenVehicleStorageAction_Faction.DelayedInit for the same
+	//! "self, or parent" Vehicle.Cast check against a freshly-opened storage owner.
+	protected bool CRF_IsVehicleStorage(BaseInventoryStorageComponent storage)
+	{
+		if (!storage)
+			return false;
+
+		IEntity owner = storage.GetOwner();
+		if (!owner)
+			return false;
+
+		if (Vehicle.Cast(owner))
+			return true;
+
+		return Vehicle.Cast(owner.GetParent()) != null;
+	}
+
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();

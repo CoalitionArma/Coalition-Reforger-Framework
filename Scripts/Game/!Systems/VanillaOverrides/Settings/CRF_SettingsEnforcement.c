@@ -1,3 +1,18 @@
+//------------------------------------------------------------------------------------------------
+//! COOP and COTVT missions don't enforce a level playing field against AI, so grass/shadow
+//! settings are left to each player's own hardware/preference instead of being forced up.
+bool CRF_ShouldEnforceGraphicsSettings()
+{
+	if (!GetGame())
+		return true;
+
+	SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+	if (!header)
+		return true;
+
+	return header.m_sGameMode != "COOP" && header.m_sGameMode != "COTVT";
+}
+
 void ShadowCheck()
 {
 	if (!GetGame() || !GetGame().GetEngineUserSettings())
@@ -57,7 +72,6 @@ void GrassCheck()
 		GetGame().UserSettingsChanged();
 	}
 }
-
 /*
 void GammaBrightnessCheck()
 {
@@ -81,7 +95,7 @@ void GammaBrightnessCheck()
 	if (Math.AbsFloat(currentGamma - DEFAULT_GAMMA) > TOLERANCE)
 	{
 		needsReset = true;
-		violationType = string.Format("Gamma: %.2f (Default: %.2f)", currentGamma, DEFAULT_GAMMA);
+		violationType = string.Format("Gamma: %1 (Default: %2)", currentGamma.ToString(lenDec: 2), DEFAULT_GAMMA.ToString(lenDec: 2));
 	}
 	
 	if (Math.AbsFloat(currentBrightness - DEFAULT_BRIGHTNESS) > TOLERANCE)
@@ -89,7 +103,7 @@ void GammaBrightnessCheck()
 		needsReset = true;
 		if (!violationType.IsEmpty())
 			violationType += ", ";
-		violationType += string.Format("Brightness: %.2f (Default: %.2f)", currentBrightness, DEFAULT_BRIGHTNESS);
+		violationType += string.Format("Brightness: %1 (Default: %2)", currentBrightness.ToString(lenDec: 2), DEFAULT_BRIGHTNESS.ToString(lenDec: 2));
 	}
 	
 	if (Math.AbsFloat(currentContrast - DEFAULT_CONTRAST) > TOLERANCE)
@@ -97,7 +111,7 @@ void GammaBrightnessCheck()
 		needsReset = true;
 		if (!violationType.IsEmpty())
 			violationType += ", ";
-		violationType += string.Format("Contrast: %.2f (Default: %.2f)", currentContrast, DEFAULT_CONTRAST);
+		violationType += string.Format("Contrast: %1 (Default: %2)", currentContrast.ToString(lenDec: 2), DEFAULT_CONTRAST.ToString(lenDec: 2));
 	}
 	
 	// Reset to default and notify admins if needed
@@ -117,17 +131,20 @@ void GammaBrightnessCheck()
 				rplManager.ReportSettingsViolation(playerId, violationType);
 		}
 	}
-}
-*/
+}*/
 
 modded class SCR_BaseGameMode : BaseGameMode
 {
 	protected override void OnGameModeStart()
 	{
 		super.OnGameModeStart();
-		
-		ShadowCheck();
-		GrassCheck();
+
+		if (CRF_ShouldEnforceGraphicsSettings())
+		{
+			ShadowCheck();
+			GrassCheck();
+		}
+
 		//GammaBrightnessCheck();
 	}
 }
@@ -137,9 +154,13 @@ modded class SCR_VideoSettingsSubMenu: SCR_SettingsSubMenuBase
 	override void OnMenuItemChanged(SCR_SettingsBindingBase binding)
 	{
 		super.OnMenuItemChanged(binding);
-		
-		ShadowCheck();
-		GrassCheck();
+
+		if (CRF_ShouldEnforceGraphicsSettings())
+		{
+			ShadowCheck();
+			GrassCheck();
+		}
+
 		//GammaBrightnessCheck();
 	}
 };
