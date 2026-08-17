@@ -109,7 +109,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_ReportSettingsViolation, playerId, violationType);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	void RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
@@ -701,7 +701,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		// Also log to server console
 		Print(message, LogLevel.WARNING);
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)
