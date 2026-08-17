@@ -598,9 +598,9 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 			string itemName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 			string logMessage = string.Format("%2 was added to %1's inventory", playerName, itemName);
-			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true, COA_EAdminLogLevel.Low);
+			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true, COA_EAdminLogLevel.Medium);
 		}
-		
+
 		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 
@@ -668,7 +668,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 				string itemName = oldPrefab.Substring(oldPrefab.LastIndexOf("/") + 1, oldPrefab.LastIndexOf(".") - oldPrefab.LastIndexOf("/") - 1);
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 				string logMessage = string.Format("%2 was converted in %1's inventory", playerName, itemName);
-				m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true, COA_EAdminLogLevel.Low);
+				m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true, COA_EAdminLogLevel.Medium);
 			}
 		}
 
@@ -785,7 +785,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 			string oldItemName = oldItemComp.GetUIInfo().GetName();
 			string newItemName = newItemComp.GetUIInfo().GetName();
 			COA_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
-			newItemName, playerId, false, COA_EAdminLogLevel.Low);
+			newItemName, playerId, false, COA_EAdminLogLevel.Medium);
 		}
 		
 		// This instance was only needed for compatibility validation. Recreate it
@@ -990,7 +990,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 			string oldItemName = oldItemComp.GetUIInfo().GetName();
 			string newItemName = newItemComp.GetUIInfo().GetName();
 			COA_RplBroadcastManager.GetInstance().LogAdminAction(GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced " + oldItemName + " with " + 
-			newItemName, playerId, false, COA_EAdminLogLevel.Low);
+			newItemName, playerId, false, COA_EAdminLogLevel.Medium);
 		}
 		
 		// Recreate the requested weapon after the delay. This avoids retaining
@@ -1265,7 +1265,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		{
 			COA_RplBroadcastManager.GetInstance().LogAdminAction(
 				GetGame().GetPlayerManager().GetPlayerName(playerId) + " has replaced their sight with " + 
-				itemComp.GetUIInfo().GetName(), playerId, false, COA_EAdminLogLevel.Low);
+				itemComp.GetUIInfo().GetName(), playerId, false, COA_EAdminLogLevel.Medium);
 		}
 	}
 	
