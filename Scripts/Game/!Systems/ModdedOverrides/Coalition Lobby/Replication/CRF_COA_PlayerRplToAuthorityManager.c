@@ -697,11 +697,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		
 		// Log to admin action logs
 		LogAdminAction(message, playerId, false, COA_EAdminLogLevel.High);
-		
-		// Broadcast to admin chat (only admins/mods will see this)
-		if (m_RplBroadcastManager)
-			m_RplBroadcastManager.BroadcastAdminChatMessage(message);
-		
+
 		// Also log to server console
 		Print(message, LogLevel.WARNING);
 	}

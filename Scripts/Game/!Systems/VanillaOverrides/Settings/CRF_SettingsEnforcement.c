@@ -72,7 +72,6 @@ void GrassCheck()
 		GetGame().UserSettingsChanged();
 	}
 }
-
 /*
 void GammaBrightnessCheck()
 {
@@ -96,7 +95,7 @@ void GammaBrightnessCheck()
 	if (Math.AbsFloat(currentGamma - DEFAULT_GAMMA) > TOLERANCE)
 	{
 		needsReset = true;
-		violationType = string.Format("Gamma: %.2f (Default: %.2f)", currentGamma, DEFAULT_GAMMA);
+		violationType = string.Format("Gamma: %1 (Default: %2)", currentGamma.ToString(lenDec: 2), DEFAULT_GAMMA.ToString(lenDec: 2));
 	}
 	
 	if (Math.AbsFloat(currentBrightness - DEFAULT_BRIGHTNESS) > TOLERANCE)
@@ -104,7 +103,7 @@ void GammaBrightnessCheck()
 		needsReset = true;
 		if (!violationType.IsEmpty())
 			violationType += ", ";
-		violationType += string.Format("Brightness: %.2f (Default: %.2f)", currentBrightness, DEFAULT_BRIGHTNESS);
+		violationType += string.Format("Brightness: %1 (Default: %2)", currentBrightness.ToString(lenDec: 2), DEFAULT_BRIGHTNESS.ToString(lenDec: 2));
 	}
 	
 	if (Math.AbsFloat(currentContrast - DEFAULT_CONTRAST) > TOLERANCE)
@@ -112,7 +111,7 @@ void GammaBrightnessCheck()
 		needsReset = true;
 		if (!violationType.IsEmpty())
 			violationType += ", ";
-		violationType += string.Format("Contrast: %.2f (Default: %.2f)", currentContrast, DEFAULT_CONTRAST);
+		violationType += string.Format("Contrast: %1 (Default: %2)", currentContrast.ToString(lenDec: 2), DEFAULT_CONTRAST.ToString(lenDec: 2));
 	}
 	
 	// Reset to default and notify admins if needed
@@ -132,8 +131,7 @@ void GammaBrightnessCheck()
 				rplManager.ReportSettingsViolation(playerId, violationType);
 		}
 	}
-}
-*/
+}*/
 
 modded class SCR_BaseGameMode : BaseGameMode
 {
@@ -146,6 +144,7 @@ modded class SCR_BaseGameMode : BaseGameMode
 			ShadowCheck();
 			GrassCheck();
 		}
+
 		//GammaBrightnessCheck();
 	}
 }
@@ -161,6 +160,7 @@ modded class SCR_VideoSettingsSubMenu: SCR_SettingsSubMenuBase
 			ShadowCheck();
 			GrassCheck();
 		}
+
 		//GammaBrightnessCheck();
 	}
 };
