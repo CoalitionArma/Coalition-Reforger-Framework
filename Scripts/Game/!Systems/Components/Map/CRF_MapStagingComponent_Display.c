@@ -4,7 +4,7 @@
  * Date Created:     08/03/25
  * Description:      HUD display for map staging system
  ****************************************************************************************/
-
+/*
 class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 {
 	protected string m_sStoredString;
