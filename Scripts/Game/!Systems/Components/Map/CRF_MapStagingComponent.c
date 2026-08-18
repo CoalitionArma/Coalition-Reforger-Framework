@@ -26,6 +26,7 @@
 
  */
 
+/*
 enum CRF_BoundaryStageType
 {
 	ACTIVATION = 0,
@@ -310,7 +311,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * Fast cached entity lookup to avoid expensive FindEntityByName calls
 	 * @param entityName - Name of the entity to find
 	 * @return IEntity - The found entity or null
-	 */
+
 	IEntity GetCachedBoundaryEntity(string entityName)
 	{
 		// Null/empty check
@@ -349,11 +350,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Get the COA_PolyZoneTrigger child entity from a GameBoundry parent
+	 * Get the COA_GameBorder child entity from a GameBoundry parent
 	 * @param boundaryName - Name of the parent GameBoundry entity
-	 * @return COA_PolyZoneTrigger - The child trigger entity, or null if not found
-	 */
-	COA_PolyZoneTrigger GetBoundaryTrigger(string boundaryName)
+	 * @return COA_GameBorder - The child trigger entity, or null if not found
+	 
+	COA_GameBorder GetBoundaryTrigger(string boundaryName)
 	{
 		if (!boundaryName || boundaryName.IsEmpty())
 			return null;
@@ -362,11 +363,11 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		if (!parentEntity)
 			return null;
 		
-		// Find child COA_PolyZoneTrigger
+		// Find child COA_GameBorder
 		IEntity child = parentEntity.GetChildren();
 		while (child)
 		{
-			COA_PolyZoneTrigger trigger = COA_PolyZoneTrigger.Cast(child);
+			COA_GameBorder trigger = COA_GameBorder.Cast(child);
 			if (trigger)
 				return trigger;
 			child = child.GetSibling();
@@ -464,7 +465,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Simplified timer update method - handles countdown only
-	 */
+	 
 	void UpdateStageTimer()
 	{
 		// Server-only operation for multiplayer safety
@@ -505,7 +506,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * Enhanced stage execution method - handles all execution logic based on parameters
 	 * @param isChainedExecution - Whether this should chain to next stages (true for sequences, false for single stages)
 	 * @param fromTimer - Whether this execution came from a timer completion (true) or immediate call (false)
-	 */
+	 
 	void ExecuteStage(bool isChainedExecution = true, bool fromTimer = true)
 	{
 		// Server-only operation for mp
@@ -550,7 +551,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	/**
 	 * Handle stage progression logic - separated from ExecuteStage for cleaner flow
 	 * @param isChainedExecution - Whether this should chain to next stages
-	 */
+	 
 	void StageProgressHandler(bool isChainedExecution)
 	{
 		// Handle progression based on chaining mode
@@ -587,7 +588,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * Finalize staging system after delay (allows final sound to play)
-	 */
+	 
 	void FinalizeStagingSystem()
 	{
 		if (m_bDebugEnabled) Print("[CRF_MapStagingComponent] Finalizing staging system");
@@ -629,7 +630,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	/**
 	 * Simple sound system - handles all staging sound effects
 	 * @param soundType - "start" or "end" to determine which sound to play
-	 */
+	 
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void PlayStageSound(string soundType)
 	{
@@ -664,7 +665,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * RPC method to update boundary colors on all clients (including server)
 	 * @param boundaryName - Name of the boundary entity to update
 	 * @param newState - The new visual state to apply
-	 */
+	 
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void UpdateBoundaryVisualState(string boundaryName, CRF_BoundaryStageState newState)
 	{
@@ -677,7 +678,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * Local implementation of boundary visual state updates (works in both dedicated server and Workbench)
 	 * @param boundaryName - Name of the boundary entity to update
 	 * @param newState - The new visual state to apply
-	 */
+	 
 	void UpdateBoundaryVisualStateLocal(string boundaryName, CRF_BoundaryStageState newState)
 	{
 		// Safety checks
@@ -801,7 +802,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * JIP handling
-	 */
+	 
 	void OnBoundaryStatesChanged()
 	{
 		// Skip on server - server already has the correct states
@@ -839,7 +840,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * @param stageIndex - Index of the stage (for completion message)
 	 * @param isChainedExecution - Whether this is part of a sequence (affects completion message and progression)
 	 * @return string - The stage type string for completion message
-	 */
+	 
 	string ApplyBoundaryAction(CRF_BoundaryStageData stageData, int stageIndex, bool isChainedExecution = false)
 	{
 		if (!stageData)
@@ -990,7 +991,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * 
 	 * // Execute stage with timer but no chaining (old TriggerStageTimedNoChain)
 	 * staging.ExecuteStaging(0, true, false);
-	 */
+	 
 	bool ExecuteStaging(int stageIndex, bool useTimer = true, bool chainToNext = true)
 	{
 		// Server-only operation for multiplayer safety
@@ -1056,7 +1057,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * 
 	 * // Start sequence from stage 3
 	 * staging.ExecuteStagingSequence(2);
-	 */
+	 
 	bool ExecuteStagingSequence(int startIndex = 0)
 	{
 		// Server-only operation for multiplayer safety
@@ -1093,7 +1094,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * 
 		CRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));
 		staging.BeginStaging();
-	 */
+	 
 	void BeginStaging()
 	{
 		// Server-only operation for multiplayer safety
@@ -1119,7 +1120,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	 * 
 		CRF_MapStagingComponent staging = CRF_MapStagingComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_MapStagingComponent));
 		staging.StopStaging();
-	 */
+	 
 	void StopStaging()
 	{
 		// Server-only operation for multiplayer safety
