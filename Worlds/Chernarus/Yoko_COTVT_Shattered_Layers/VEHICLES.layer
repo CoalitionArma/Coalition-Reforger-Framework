@@ -1,4 +1,4 @@
-$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
   coords 3598.76 236.641 14126.339
   angles 0 -105.166 0
@@ -58,5 +58,10 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   coords 5928.816 234.407 13614.217
   angles 0 -142.546 0
   m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 4886.633 327.406 9666.155
+  angles 0 -28.978 0
+  m_rVehicle "{B700FC19C6823768}Prefabs/Vehicles/FixedWing/SU25/SU25.et"
  }
 }
