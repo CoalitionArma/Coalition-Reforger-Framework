@@ -2,7 +2,7 @@
  * CRF_BattleRoyaleComponent_Display.c
  - Contains all display logic for the Battle Royale component
  ****************************************************************************************/
-
+/*
 class CRF_BattleRoyaleComponentDisplay : SCR_InfoDisplayExtended
 {
 	protected string m_sStoredString;

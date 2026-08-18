@@ -16,10 +16,36 @@ modded class COA_GamemodeManager
 		if (!EnsureManagersReady())
 			return false;
 		
+		// GM possession slots are handled entirely by the base class now (COALITION-Lobby owns
+		// COA_GMPossessionManager/COA_SlottingManager.RegisterGMPossessionGroup) this override is a
+		// full carbon copy for everything else and doesn't call super for the rest of the method, so
+		// possession slots need to be peeled off here and handed to super explicitly, or the base
+		// class's possession handling would never run for CRF servers. The stats-tracking hook is
+		// CRF-only, so it's re-attached here as a follow-up rather than living in the base class.
+		int gmSlotId = m_SlottingManager.GetPlayerSlotID(playerId);
+		RplId possessionTargetId;
+		if (gmSlotId >= 0 && COA_GMPossessionManager.GetInstance().TryGetPossessionTarget(gmSlotId, possessionTargetId))
+		{
+			bool initialized = super.InitilizePlayer(playerId, spawnPointID, entityRplID);
+			if (initialized)
+			{
+				// Re-resolve rather than trusting possessionTargetId as-is: if the target body had
+				// already died, the base class falls back to a normal role-based spawn instead, and
+				// the entity the player actually ended up controlling won't be possessionTargetId.
+				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+				RplComponent controlledRplComp;
+				if (controlledEntity)
+					controlledRplComp = RplComponent.Cast(controlledEntity.FindComponent(RplComponent));
+				if (controlledRplComp)
+					TryNotifyStatsManager(playerId, controlledRplComp.Id(), 0);
+			}
+			return initialized;
+		}
+
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		if (!playerController)
 			return false;
-			
+
 		COA_PlayerCharacter playerCharacter = null;
 		Faction faction = null;
 		bool alreadyCreated;
@@ -88,7 +114,6 @@ modded class COA_GamemodeManager
 
 		return true;
 	}
-
 
 	//------------------------------------------------------------------------------------------------
 	//! Resolve delayed stats-manager availability and delayed replicated-entity availability.
