@@ -40,6 +40,15 @@ class CRF_MissionQAChecklistPlugin : WorkbenchPlugin
 	//! not via a live manager singleton, since Workbench context can't guarantee one exists.
 	protected static const ResourceName ROLES_CONFIG = "{4388548E9F600148}Configs/Gearscripts/COA_Global_Roles_Config.conf";
 
+	//! Absolute path to this project's own root folder, computed once in Run(). Used by the
+	//! resource-naming check to skip files that belong to COALITION-Lobby, the base game, or a
+	//! third-party mod dependency - a mission maker can't rename those, so flagging them is just
+	//! noise. Workbench resolves resource references across every loaded addon transparently, so
+	//! there's no direct "which addon owns this file" API - this is derived by taking the
+	//! currently open world's own absolute path (definitely a CRF file) and stripping its known
+	//! resource-relative suffix off the end.
+	protected string m_sProjectRoot;
+
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
@@ -50,6 +59,14 @@ class CRF_MissionQAChecklistPlugin : WorkbenchPlugin
 		WorldEditorAPI api = worldEditor.GetApi();
 		if (!api)
 			return;
+
+		string worldPath;
+		api.GetWorldPath(worldPath);
+
+		string absWorldPath;
+		m_sProjectRoot = string.Empty;
+		if (!worldPath.IsEmpty() && Workbench.GetAbsolutePath(worldPath, absWorldPath, false) && absWorldPath.Length() > worldPath.Length())
+			m_sProjectRoot = absWorldPath.Substring(0, absWorldPath.Length() - worldPath.Length());
 
 		IEntitySource entitySource = api.FindEntityByName("COA_Lobby");
 		if (!entitySource)
@@ -870,12 +887,17 @@ class CRF_MissionQAChecklistPlugin : WorkbenchPlugin
 	//------------------------------------------------------------------------------------------------
 	//! Checks the FILENAME only, not the directories it sits in - directory names (e.g. the
 	//! "North America" folder under Configs/Identities) are fine in-engine and out of a mission
-	//! maker's control anyway. Only the file's own name is what actually needs to be renamed.
-	//! \return true if resourceName is non-empty and its filename was flagged (and a line inserted)
+	//! maker's control anyway. Only the file's own name is what actually needs to be renamed. Also
+	//! only checks files this project actually owns - see IsOwnedByThisProject.
+	//! \return true if resourceName is non-empty, owned by this project, and its filename was
+	//!         flagged (and a line inserted)
 	protected bool CheckResourceName(array<string> lines, string factionKey, ResourceName resourceName, string label, inout int failCount)
 	{
 		if (resourceName.IsEmpty())
 			return false;
+
+		if (!IsOwnedByThisProject(resourceName))
+			return false; // COALITION-Lobby / base-game / third-party mod asset - not ours to rename
 
 		string path = resourceName.GetPath();
 		string fileName = GetFileName(path);
@@ -885,6 +907,23 @@ class CRF_MissionQAChecklistPlugin : WorkbenchPlugin
 		lines.Insert(string.Format("[X] %1 %2: \"%3\" - filename contains a space or special character", factionKey, label, path));
 		failCount++;
 		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! True if resourceName resolves to a file physically inside this project's own root folder
+	//! (m_sProjectRoot), as opposed to COALITION-Lobby, the base game, or a third-party mod
+	//! dependency - all of which resolve fine through Workbench's merged resource namespace but
+	//! aren't files a CRF mission maker has any ability to rename.
+	protected bool IsOwnedByThisProject(ResourceName resourceName)
+	{
+		if (resourceName.IsEmpty() || m_sProjectRoot.IsEmpty())
+			return false;
+
+		string absResourcePath;
+		if (!Workbench.GetAbsolutePath(resourceName.GetPath(), absResourcePath, false))
+			return false;
+
+		return absResourcePath.StartsWith(m_sProjectRoot);
 	}
 
 	//------------------------------------------------------------------------------------------------

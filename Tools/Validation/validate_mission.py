@@ -398,7 +398,7 @@ def load_gearscript_config(resource: str, roots: list[str]) -> list[dict] | None
     return None
 
 
-def check_gear(report: Report, faction: str, mission: list[dict], roles: set[str], roots: list[str]) -> tuple[list[dict] | None, str | None]:
+def check_gear(report: Report, faction: str, mission: list[dict], roles: set[str], roots: list[str], crf_root: str) -> tuple[list[dict] | None, str | None]:
     report.section(f"Gear - {faction}")
     _, _, gs_container = get_block(mission, GEARSCRIPT_FIELD[faction])
     gearscript_resource = get_field(gs_container, "m_rGearScript") if gs_container else None
@@ -452,7 +452,7 @@ def check_gear(report: Report, faction: str, mission: list[dict], roles: set[str
 
     check_medic_gear(report, faction, roles, config)
     check_ammo_compatibility(report, faction, config, roots)
-    check_resource_naming(report, faction, config)
+    check_resource_naming(report, faction, config, crf_root)
 
     return config, gearscript_resource
 
@@ -481,10 +481,15 @@ def check_medic_gear(report: Report, faction: str, roles: set[str], config: list
 _SAFE_FILENAME_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
 
 
-def check_resource_naming(report: Report, faction: str, config: list[dict]) -> None:
+def check_resource_naming(report: Report, faction: str, config: list[dict], crf_root: str) -> None:
     """Checks each resource's FILENAME only, not the directories it sits in - directory names
     (e.g. the "North America" folder under Configs/Identities) are fine in-engine and not
-    something a mission maker can fix anyway. Only the file's own name is worth flagging."""
+    something a mission maker can fix anyway. Only the file's own name is worth flagging.
+
+    Also only checks resources that actually resolve inside the CRF project root specifically -
+    not COALITION-Lobby, not any other --project root, not anything absent from both (a
+    third-party mod dependency). A mission maker can't rename a file that isn't theirs to rename,
+    so flagging one is just noise nobody can act on."""
     found_issue = False
     seen: set[str] = set()
 
@@ -494,18 +499,21 @@ def check_resource_naming(report: Report, faction: str, config: list[dict]) -> N
             for kind, val in e["tokens"]:
                 if kind == "str" and GUID_PATH_RE.match(val):
                     _, path = split_guid_path(val)
-                    if path not in seen:
-                        seen.add(path)
-                        filename = path.rsplit("/", 1)[-1]
-                        if not _SAFE_FILENAME_RE.match(filename):
-                            report.fail(f'{faction}: "{path}" - filename contains a space or special character')
-                            found_issue = True
+                    if path in seen:
+                        continue
+                    seen.add(path)
+                    if not resolve_resource_path(val, [crf_root]):
+                        continue  # not a CRF-owned file - nothing we can fix here
+                    filename = path.rsplit("/", 1)[-1]
+                    if not _SAFE_FILENAME_RE.match(filename):
+                        report.fail(f'{faction}: "{path}" - filename contains a space or special character')
+                        found_issue = True
             if e["block"]:
                 visit(e["block"])
 
     visit(config)
     if not found_issue:
-        report.ok(f"{faction} gearscript resource filenames are clean (no spaces/special characters)")
+        report.ok(f"{faction} gearscript resource filenames are clean (no spaces/special characters, for files this project owns)")
 
 
 # --- ammo compatibility -------------------------------------------------------------------------
@@ -981,7 +989,7 @@ def check_world(ent_path: str, repo_root: str, roots: list[str]) -> Report:
 
         roles = check_orbat(report, faction, slots, respawn_mode)
         check_tickets(report, faction, mission, lobby_default, respawn_enabled, respawn_mode)
-        check_gear(report, faction, mission, roles, roots)
+        check_gear(report, faction, mission, roles, roots, repo_root)
         check_radios(report, faction, mission, roles, roles_config)
 
     if not any_faction_used:
