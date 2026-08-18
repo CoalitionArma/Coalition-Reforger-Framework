@@ -18,7 +18,13 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 	protected MultilineEditBoxWidget m_wDetailBox;
 	protected SCR_ButtonTextComponent m_bRefreshButton;
 	protected Widget m_wWeaponPreviewBackground;
-	protected ItemPreviewWidget m_wWeaponPreview;
+	//! Holds one dynamically-created weapon-preview cell per weapon the selected role carries (e.g.
+	//! RIFLEMAN_ANTITANK gets a rifle cell AND an AT launcher cell), stacked vertically - same "clear
+	//! children, CreateWidgets() one per entry" pattern CRF_MiniArsenal.c already uses for its item
+	//! list.
+	protected VerticalLayoutWidget m_wWeaponPreviewList;
+	protected const string WEAPON_PREVIEW_CELL_WIDE = "{346E0876850453E2}UI/MissionQA/CRF_MissionQAWeaponPreviewCell.layout";
+	protected const string WEAPON_PREVIEW_CELL_SMALL = "{43A7FADEECD07917}UI/MissionQA/CRF_MissionQAWeaponPreviewCellSmall.layout";
 
 	//! Index 0 is always the "Mission Summary" sentinel (null entry); every following index is a
 	//! slotted (faction, role) pair, in the same order as m_wRoleListBox's items.
@@ -68,9 +74,9 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		m_wDetailBox = MultilineEditBoxWidget.Cast(m_wRoot.FindAnyWidget("QADetailBox0"));
 		m_bRefreshButton = SCR_ButtonTextComponent.GetButtonText("MenuButton0", m_wRoot);
 		m_wWeaponPreviewBackground = m_wRoot.FindAnyWidget("WeaponPreviewBackground0");
-		m_wWeaponPreview = ItemPreviewWidget.Cast(m_wRoot.FindAnyWidget("WeaponPreview0"));
+		m_wWeaponPreviewList = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("WeaponPreviewList0"));
 
-		if (!m_wRoleListBox || !m_wDetailBox || !m_bRefreshButton || !m_wWeaponPreviewBackground || !m_wWeaponPreview)
+		if (!m_wRoleListBox || !m_wDetailBox || !m_bRefreshButton || !m_wWeaponPreviewBackground || !m_wWeaponPreviewList)
 		{
 			Close();
 			return;
@@ -201,7 +207,7 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void ShowMissionSummary()
 	{
-		ShowWeaponPreview(string.Empty);
+		ShowWeaponPreviews({}, {}, {});
 
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (!gamemode)
@@ -377,7 +383,7 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void ShowRoleDetail(CRF_MissionQARoleEntry entry)
 	{
-		ShowWeaponPreview(string.Empty);
+		ShowWeaponPreviews({}, {}, {});
 
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (!gamemode)
@@ -411,7 +417,10 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		if (rolesConfig)
 			roleConfig = rolesConfig.FindRoleConfig(entry.m_eRole);
 
-		ResourceName previewWeapon = AppendWeaponAndAmmo(lines, entry.m_eRole, gearConfig, roleConfig);
+		array<ResourceName> previewWeapons = {};
+		array<string> previewLabels = {};
+		array<bool> previewIsPistol = {};
+		AppendWeaponAndAmmo(lines, entry.m_eRole, gearConfig, roleConfig, previewWeapons, previewLabels, previewIsPistol);
 		lines.Insert("");
 		AppendRadioStatus(lines, entry.m_eRole, gamemode.GetGearScriptSettings(entry.m_sFactionKey), roleConfig);
 
@@ -422,20 +431,27 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		}
 
 		m_wDetailBox.SetText(SCR_StringHelper.Join("\n", lines));
-		ShowWeaponPreview(previewWeapon);
+		ShowWeaponPreviews(previewWeapons, previewLabels, previewIsPistol);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Shows a live 3D preview of the given weapon prefab, matching the mechanism CRF's own Arsenal
-	//! UIs already use for item art from a bare ResourceName (see CRF_MiniArsenal.c's
-	//! ItemPreviewManagerEntity.SetPreviewItemFromPrefab usage) - hides the preview if the role has
-	//! no single fixed weapon (general infantry pool) or nothing loaded.
-	protected void ShowWeaponPreview(ResourceName weapon)
+	//! Shows one live 3D preview cell per weapon the role carries, stacked vertically - a role can
+	//! have more than one (e.g. RIFLEMAN_ANTITANK gets a rifle AND an AT launcher), so this
+	//! dynamically creates one cell instance per entry into m_wWeaponPreviewList, the same "clear
+	//! then CreateWidgets() per item" pattern CRF_MiniArsenal.c uses for its item list. Long guns get
+	//! the wide cell (full container width, landscape) since a rifle/launcher needs the horizontal
+	//! room to render recognizably; a pistol is small enough that the compact square cell is plenty,
+	//! so it keeps its own fixed size instead of stretching. Each cell's own preview comes from the
+	//! same ItemPreviewManagerEntity.SetPreviewItemFromPrefab mechanism CRF's Arsenal UIs already use
+	//! for item art from a bare ResourceName.
+	protected void ShowWeaponPreviews(array<ResourceName> weapons, array<string> labels, array<bool> isPistol)
 	{
-		if (weapon.IsEmpty())
+		while (m_wWeaponPreviewList.GetChildren())
+			m_wWeaponPreviewList.GetChildren().RemoveFromHierarchy();
+
+		if (!weapons || weapons.IsEmpty())
 		{
 			m_wWeaponPreviewBackground.SetVisible(false);
-			m_wWeaponPreview.SetVisible(false);
 			return;
 		}
 
@@ -443,54 +459,61 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		if (!manager)
 		{
 			m_wWeaponPreviewBackground.SetVisible(false);
-			m_wWeaponPreview.SetVisible(false);
 			return;
 		}
 
-		manager.SetPreviewItemFromPrefab(m_wWeaponPreview, weapon);
+		for (int i = 0, count = weapons.Count(); i < count; i++)
+		{
+			if (weapons[i].IsEmpty())
+				continue;
+
+			string cellLayout = WEAPON_PREVIEW_CELL_WIDE;
+			if (i < isPistol.Count() && isPistol[i])
+				cellLayout = WEAPON_PREVIEW_CELL_SMALL;
+
+			Widget cell = GetGame().GetWorkspace().CreateWidgets(cellLayout, m_wWeaponPreviewList);
+			if (!cell)
+				continue;
+
+			ItemPreviewWidget previewWidget = ItemPreviewWidget.Cast(cell.FindAnyWidget("PreviewWidget"));
+			if (previewWidget)
+				manager.SetPreviewItemFromPrefab(previewWidget, weapons[i]);
+
+			TextWidget labelWidget = TextWidget.Cast(cell.FindAnyWidget("PreviewLabel"));
+			if (labelWidget && i < labels.Count())
+				labelWidget.SetText(labels[i]);
+		}
+
 		m_wWeaponPreviewBackground.SetVisible(true);
-		m_wWeaponPreview.SetVisible(true);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Weapon assignment + total magazine count, and (for specialty/sniper roles, which point at one
-	//! specific weapon) any magazine/well mismatches for that weapon. Returns the weapon prefab shown
-	//! (for the live item preview), or an empty ResourceName if the role draws from a general pool.
-	protected ResourceName AppendWeaponAndAmmo(array<string> lines, COA_EGearRole role, COA_GearScriptConfig gearConfig, COA_RoleConfig roleConfig)
+	//! Weapon assignment(s) + total magazine count. A role can carry more than one weapon at once -
+	//! e.g. RIFLEMAN_ANTITANK's COA_RoleConfig.m_aWeapons lists both RIFLE and AT, so it gets a rifle
+	//! AND the launcher - so every entry in m_aWeapons is shown, not just one. Driven directly off the
+	//! role's actual m_aWeapons data (matching COA_GearscriptManager.ApplyDefaultWeapons's own
+	//! per-entry loop) rather than a hardcoded per-role guess, so it stays correct if the mission's
+	//! role config changes. Every resolved weapon prefab (and its display label, for the preview
+	//! cell's caption, and whether it's a pistol, for the preview cell's size) is appended to
+	//! previewWeapons/previewLabels/previewIsPistol for the live item preview.
+	protected void AppendWeaponAndAmmo(array<string> lines, COA_EGearRole role, COA_GearScriptConfig gearConfig, COA_RoleConfig roleConfig, inout array<ResourceName> previewWeapons, inout array<string> previewLabels, inout array<bool> previewIsPistol)
 	{
 		lines.Insert("Weapon");
-		ResourceName previewWeapon;
 
-		if (role == COA_EGearRole.SNIPER)
+		if (!roleConfig || !roleConfig.m_aWeapons || roleConfig.m_aWeapons.IsEmpty())
 		{
-			AppendWeaponLine(lines, gearConfig.m_SNIPER, gearConfig.m_SNIPER != null && !gearConfig.m_SNIPER.m_MagazineArray);
-			if (gearConfig.m_SNIPER)
-			{
-				AppendWeaponAmmoIssues(lines, gearConfig.m_SNIPER.m_Weapon, gearConfig.m_SNIPER.m_MagazineArray);
-				previewWeapon = gearConfig.m_SNIPER.m_Weapon;
-			}
+			lines.Insert("  [X] No weapons configured for this role");
 		}
 		else
 		{
-			COA_Spec_Weapon_Class specWeapon = GetSpecialtyWeapon(gearConfig, role);
-			if (specWeapon)
+			foreach (COA_EGearscriptWeapons weaponType : roleConfig.m_aWeapons)
 			{
-				AppendWeaponLine(lines, specWeapon, false);
-				AppendSpecWeaponAmmoIssues(lines, specWeapon.m_Weapon, specWeapon.m_MagazineArray);
-				previewWeapon = specWeapon.m_Weapon;
-			}
-			else
-			{
-				ResourceName representativeWeapon = ResolveRepresentativeWeapon(gearConfig, roleConfig);
-				if (representativeWeapon.IsEmpty())
+				ResourceName weaponResource = AppendWeaponTypeLine(lines, gearConfig, weaponType);
+				if (!weaponResource.IsEmpty())
 				{
-					lines.Insert("  General infantry weapon pool (Rifles/Carbines) - not one fixed weapon");
-				}
-				else
-				{
-					lines.Insert(string.Format("  %1", representativeWeapon));
-					lines.Insert("  (representative - general infantry pool, exact weapon issued may vary)");
-					previewWeapon = representativeWeapon;
+					previewWeapons.Insert(weaponResource);
+					previewLabels.Insert(GetWeaponTypeLabel(weaponType));
+					previewIsPistol.Insert(weaponType == COA_EGearscriptWeapons.PISTOL);
 				}
 			}
 		}
@@ -501,7 +524,7 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		if (!roleConfig || !roleConfig.m_aMagazines)
 		{
 			lines.Insert("  Unable to determine - role not found in the global roles config");
-			return previewWeapon;
+			return;
 		}
 
 		bool isAssistant = (roleConfig.m_SlottingType == COA_ESlotType.ASSISTANT || roleConfig.m_SlottingType == COA_ESlotType.SPECIALTY_ASSISTANT);
@@ -557,8 +580,6 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 			lines.Insert("  No magazines configured for this role's magazine type(s)");
 		else
 			lines.Insert(string.Format("  Total: %1 magazine(s)/round(s), %2 rounds", totalMagazineCount, totalRounds));
-
-		return previewWeapon;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -616,62 +637,123 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void AppendWeaponLine(array<string> lines, COA_Weapon_Class weapon, bool noMagazineArray)
+	//! Same label text AppendWeaponTypeLine's branches already print in the Weapon section - reused
+	//! as-is for the preview cell's caption so the picture and the text line clearly correspond.
+	protected string GetWeaponTypeLabel(COA_EGearscriptWeapons weaponType)
 	{
-		if (!weapon || weapon.m_Weapon.IsEmpty())
+		switch (weaponType)
 		{
-			lines.Insert("  [X] No weapon configured for this role");
-			return;
+			case COA_EGearscriptWeapons.RIFLE: return "Rifle";
+			case COA_EGearscriptWeapons.RIFLEUGL: return "Rifle (UGL)";
+			case COA_EGearscriptWeapons.CARBINE: return "Carbine";
+			case COA_EGearscriptWeapons.PISTOL: return "Pistol";
+			case COA_EGearscriptWeapons.SNIPER: return "Sniper";
+			case COA_EGearscriptWeapons.AR: return "AR";
+			case COA_EGearscriptWeapons.MMG: return "MMG";
+			case COA_EGearscriptWeapons.HMG: return "HMG";
+			case COA_EGearscriptWeapons.AT: return "AT";
+			case COA_EGearscriptWeapons.MAT: return "MAT";
+			case COA_EGearscriptWeapons.HAT: return "HAT";
+			case COA_EGearscriptWeapons.AA: return "AA";
 		}
 
-		lines.Insert(string.Format("  %1", weapon.m_Weapon));
+		return "";
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void AppendWeaponLine(array<string> lines, COA_Spec_Weapon_Class weapon, bool unused)
+	//! Dispatches one COA_EGearscriptWeapons entry to the matching gearConfig field, mirroring
+	//! COA_GearscriptManager.ApplyDefaultWeapons's own switch exactly (same field-per-case mapping),
+	//! so this stays correct for whatever weapon types a role's data actually lists. Returns the
+	//! resolved weapon's ResourceName (for the item preview), or empty if nothing was configured.
+	protected ResourceName AppendWeaponTypeLine(array<string> lines, COA_GearScriptConfig gearConfig, COA_EGearscriptWeapons weaponType)
 	{
-		if (!weapon || weapon.m_Weapon.IsEmpty())
+		switch (weaponType)
 		{
-			lines.Insert("  [X] No weapon configured for this role");
-			return;
-		}
+			case COA_EGearscriptWeapons.RIFLE:
+				return AppendPoolWeaponLine(lines, gearConfig.m_Rifles, "Rifle");
 
-		lines.Insert(string.Format("  %1", weapon.m_Weapon));
-	}
+			case COA_EGearscriptWeapons.RIFLEUGL:
+				return AppendPoolWeaponLine(lines, gearConfig.m_RifleUGLs, "Rifle (UGL)");
 
-	//------------------------------------------------------------------------------------------------
-	//! Picks a "representative" weapon for a general-pool role's preview icon - the same index-0
-	//! weapon the ammo total below is already implicitly computed against (ResolveMagazineArray
-	//! always reads m_Rifles[0]/m_RifleUGLs[0]/m_Carbines[0], regardless of which exact weapon a
-	//! given player ends up issued), so showing its icon here is consistent with those numbers even
-	//! though the role isn't locked to one specific weapon.
-	protected ResourceName ResolveRepresentativeWeapon(COA_GearScriptConfig gearConfig, COA_RoleConfig roleConfig)
-	{
-		if (!roleConfig || !roleConfig.m_aMagazines)
-			return string.Empty;
+			case COA_EGearscriptWeapons.CARBINE:
+				return AppendPoolWeaponLine(lines, gearConfig.m_Carbines, "Carbine");
 
-		foreach (COA_EGearscriptMagazines magType : roleConfig.m_aMagazines)
-		{
-			switch (magType)
-			{
-				case COA_EGearscriptMagazines.RIFLE_MAG:
-					if (gearConfig.m_Rifles && !gearConfig.m_Rifles.IsEmpty() && gearConfig.m_Rifles[0] && !gearConfig.m_Rifles[0].m_Weapon.IsEmpty())
-						return gearConfig.m_Rifles[0].m_Weapon;
-					break;
+			case COA_EGearscriptWeapons.PISTOL:
+				return AppendPoolWeaponLine(lines, gearConfig.m_Pistols, "Pistol");
 
-				case COA_EGearscriptMagazines.RIFLEUGL_MAG:
-					if (gearConfig.m_RifleUGLs && !gearConfig.m_RifleUGLs.IsEmpty() && gearConfig.m_RifleUGLs[0] && !gearConfig.m_RifleUGLs[0].m_Weapon.IsEmpty())
-						return gearConfig.m_RifleUGLs[0].m_Weapon;
-					break;
+			case COA_EGearscriptWeapons.SNIPER:
+				return AppendSniperWeaponLine(lines, gearConfig);
 
-				case COA_EGearscriptMagazines.CARBINE_MAG:
-					if (gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty() && gearConfig.m_Carbines[0] && !gearConfig.m_Carbines[0].m_Weapon.IsEmpty())
-						return gearConfig.m_Carbines[0].m_Weapon;
-					break;
-			}
+			case COA_EGearscriptWeapons.AR:
+				return AppendSpecWeaponLine(lines, gearConfig.m_AR, "AR");
+
+			case COA_EGearscriptWeapons.MMG:
+				return AppendSpecWeaponLine(lines, gearConfig.m_MMG, "MMG");
+
+			case COA_EGearscriptWeapons.HMG:
+				return AppendSpecWeaponLine(lines, gearConfig.m_HMG, "HMG");
+
+			case COA_EGearscriptWeapons.AT:
+				return AppendSpecWeaponLine(lines, gearConfig.m_AT, "AT");
+
+			case COA_EGearscriptWeapons.MAT:
+				return AppendSpecWeaponLine(lines, gearConfig.m_MAT, "MAT");
+
+			case COA_EGearscriptWeapons.HAT:
+				return AppendSpecWeaponLine(lines, gearConfig.m_HAT, "HAT");
+
+			case COA_EGearscriptWeapons.AA:
+				return AppendSpecWeaponLine(lines, gearConfig.m_AA, "AA");
 		}
 
 		return string.Empty;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! RIFLE/RIFLEUGL/CARBINE/PISTOL are all drawn randomly from a pool at actual gear-application
+	//! time (COA_WeaponHelper.SelectRandomWeapon), not one fixed weapon - index [0] is shown as a
+	//! representative example, same convention already used for the ammo totals below.
+	protected ResourceName AppendPoolWeaponLine(array<string> lines, array<ref COA_Weapon_Class> pool, string label)
+	{
+		if (!pool || pool.IsEmpty() || !pool[0] || pool[0].m_Weapon.IsEmpty())
+		{
+			lines.Insert(string.Format("  [X] No %1 configured for this role", label));
+			return string.Empty;
+		}
+
+		lines.Insert(string.Format("  %1: %2", label, pool[0].m_Weapon));
+		lines.Insert(string.Format("    (representative - general infantry pool, exact %1 issued may vary)", label));
+		return pool[0].m_Weapon;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected ResourceName AppendSniperWeaponLine(array<string> lines, COA_GearScriptConfig gearConfig)
+	{
+		if (!gearConfig.m_SNIPER || gearConfig.m_SNIPER.m_Weapon.IsEmpty())
+		{
+			lines.Insert("  [X] No Sniper weapon configured for this role");
+			return string.Empty;
+		}
+
+		lines.Insert(string.Format("  Sniper: %1", gearConfig.m_SNIPER.m_Weapon));
+		if (gearConfig.m_SNIPER.m_MagazineArray)
+			AppendWeaponAmmoIssues(lines, gearConfig.m_SNIPER.m_Weapon, gearConfig.m_SNIPER.m_MagazineArray);
+
+		return gearConfig.m_SNIPER.m_Weapon;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected ResourceName AppendSpecWeaponLine(array<string> lines, COA_Spec_Weapon_Class weapon, string label)
+	{
+		if (!weapon || weapon.m_Weapon.IsEmpty())
+		{
+			lines.Insert(string.Format("  [X] No %1 configured for this role", label));
+			return string.Empty;
+		}
+
+		lines.Insert(string.Format("  %1: %2", label, weapon.m_Weapon));
+		AppendSpecWeaponAmmoIssues(lines, weapon.m_Weapon, weapon.m_MagazineArray);
+		return weapon.m_Weapon;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -692,6 +774,11 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 			case COA_EGearscriptMagazines.CARBINE_MAG:
 				if (gearConfig.m_Carbines && !gearConfig.m_Carbines.IsEmpty())
 					return gearConfig.m_Carbines[0].m_MagazineArray;
+				break;
+
+			case COA_EGearscriptMagazines.PISTOL_MAG:
+				if (gearConfig.m_Pistols && !gearConfig.m_Pistols.IsEmpty())
+					return gearConfig.m_Pistols[0].m_MagazineArray;
 				break;
 
 			case COA_EGearscriptMagazines.SNIPER_MAG:
@@ -828,43 +915,6 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		}
 
 		return SCR_Enum.GetEnumName(COA_EGearRole, role);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected COA_Spec_Weapon_Class GetSpecialtyWeapon(COA_GearScriptConfig config, COA_EGearRole role)
-	{
-		switch (role)
-		{
-			case COA_EGearRole.AUTOMATIC_RIFLEMAN:
-			case COA_EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN:
-				return config.m_AR;
-
-			case COA_EGearRole.MEDIUM_MACHINEGUN:
-			case COA_EGearRole.ASSISTANT_MEDIUM_MACHINEGUN:
-				return config.m_MMG;
-
-			case COA_EGearRole.HEAVY_MACHINEGUN:
-			case COA_EGearRole.ASSISTANT_HEAVY_MACHINEGUN:
-				return config.m_HMG;
-
-			case COA_EGearRole.RIFLEMAN_ANTITANK:
-			case COA_EGearRole.ASSISTANT_RIFLEMAN_ANTITANK:
-				return config.m_AT;
-
-			case COA_EGearRole.MEDIUM_ANTITANK:
-			case COA_EGearRole.ASSISTANT_MEDIUM_ANTITANK:
-				return config.m_MAT;
-
-			case COA_EGearRole.HEAVY_ANTITANK:
-			case COA_EGearRole.ASSISTANT_HEAVY_ANTITANK:
-				return config.m_HAT;
-
-			case COA_EGearRole.ANTI_AIR:
-			case COA_EGearRole.ASSISTANT_ANTI_AIR:
-				return config.m_AA;
-		}
-
-		return null;
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
