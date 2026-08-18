@@ -10,17 +10,17 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/Systems/Vehicl
   m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
  }
  {
-  coords 3595.41 237.156 14138.699
+  coords 3594.694 237.302 14141.339
   angles 0 -105.166 0
   m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
  }
  {
-  coords 3593.772 237.522 14144.742
+  coords 3591.652 238.032 14152.563
   angles 0 -105.166 0
   m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
  }
  {
-  coords 3592.364 237.856 14149.937
+  coords 3589.024 238.622 14162.26
   angles 0 -105.166 0
   m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
  }

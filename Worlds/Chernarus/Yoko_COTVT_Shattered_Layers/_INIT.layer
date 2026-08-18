@@ -2,7 +2,31 @@ SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
  coords 13000.474 48.041 13742.09
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
  coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 120
+ m_bLockUnusedSlots 0
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A236B47A155C7D5}" {
    m_sTitle "Mission: Situation"
@@ -217,6 +241,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 35
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/COA_GS_CDF_Modern_Day.conf"
   m_bEnableBFT 1
