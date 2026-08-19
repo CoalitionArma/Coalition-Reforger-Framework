@@ -8,37 +8,3 @@ $grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/S
   m_sCallsignOfGroupToSpawn "SU25"
  }
 }
-$grp COA_ObjectSpawner : "{B2BC4A98A3D3ADF7}PrefabsMissionMaking/SpawnPoints/ObjectSpawner/Object_Spawner.et" {
- {
-  coords 8537.558 104.81 12724.721
-  angles 0 -149.55 0
-  m_rObject "{41AD913EDAC580FB}Prefabs/Weapons/Tripod_KORNET.et"
- }
- {
-  coords 8540.292 104.853 12723.113
-  angles 0 -149.55 0
-  m_rObject "{41AD913EDAC580FB}Prefabs/Weapons/Tripod_KORNET.et"
- }
-}
-GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-   MultiSlots {
-    MultiSlotConfiguration "{6A2323F9D649C1B2}" {
-     SlotTemplate InventoryStorageSlot atgm {
-      Prefab "{E77E3B271E591F34}Prefabs/Weapons/Core/Mag_9M133.et"
-     }
-     NumSlots 25
-    }
-    MultiSlotConfiguration "{6A2323F9CA6E755B}" {
-     SlotTemplate InventoryStorageSlot atgm {
-      Prefab "{6974F10960FFE79A}Prefabs/Weapons/Core/Mag_9M133F.et"
-     }
-     NumSlots 25
-    }
-   }
-  }
- }
- coords 8537.74 104.813 12722.584
- angles 0 -149.55 0
-}
