@@ -20,6 +20,35 @@ modded class COA_PlayerChatCommandManager
 
 		ChatCommandInvoker invoker10 = chatPanelManager.GetCommandInvoker("fd");
 		invoker10.Insert(ReopenForwardDeployMenu);
+
+		ChatCommandInvoker invoker11 = chatPanelManager.GetCommandInvoker("qa");
+		invoker11.Insert(OpenMissionQAMenu);
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 MISSION QA METHODS
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Opens the live Mission QA menu (roles, loadouts, ammo, issues). Workbench-only, admin-only -
+	//! this is a mission-development tool, not a player-facing feature.
+	//! Usage: /qa
+	void OpenMissionQAMenu(SCR_ChatPanel panel, string data)
+	{
+#ifdef WORKBENCH
+		if (!SCR_Global.IsAdmin())
+		{
+			if (panel)
+			{
+				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+				if (chatComponent)
+					chatComponent.ShowMessage("You need admin privileges to use the /qa command.");
+			}
+			return;
+		}
+
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_MissionQAMenu);
+#endif
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

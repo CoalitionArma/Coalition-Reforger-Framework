@@ -39,3 +39,34 @@ jobs:
       - name: Validate resources
         working-directory: Coalition-Reforger-Framework
         run: python Tools/Validation/validate_resources.py --project ../COALITION-Lobby
+
+  mission-qa:
+    name: Mission QA checklist
+    runs-on: ubuntu-latest
+    # Only mission/<name> branches - the world auto-detection below diffs against
+    # release specifically to find what that branch added/changed.
+    if: startsWith(github.head_ref || github.ref_name, 'mission/')
+    steps:
+      - name: Checkout framework
+        uses: actions/checkout@v4
+        with:
+          path: Coalition-Reforger-Framework
+          fetch-depth: 0 # full history - needed to diff against release below
+
+      - name: Checkout lobby
+        uses: actions/checkout@v4
+        with:
+          repository: CoalitionArma/COALITION-Lobby
+          ref: release
+          path: COALITION-Lobby
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate mission
+        working-directory: Coalition-Reforger-Framework
+        run: |
+          git fetch origin release --depth=1
+          python Tools/Validation/validate_mission.py --project ../COALITION-Lobby --base-ref origin/release

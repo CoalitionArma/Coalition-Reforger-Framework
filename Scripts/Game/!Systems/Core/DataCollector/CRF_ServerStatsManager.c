@@ -399,10 +399,14 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		if (victimStats)
 			victimStats.deaths++;
 
-		// Record kill / friendly-kill for the killer
+		// Record kill / friendly-kill for the killer.
 		int killerPlayerId = 0;
-		if (instigator)
+		if (killerEntity)
+			killerPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity);
+		if (killerPlayerId <= 0 && instigator)
 			killerPlayerId = instigator.GetInstigatorPlayerID();
+		if (killerPlayerId <= 0)
+			killerPlayerId = instigatorContextData.GetKillerPlayerID();
 
 		if (killerPlayerId <= 0 || killerPlayerId == victimPlayerId)
 			return;

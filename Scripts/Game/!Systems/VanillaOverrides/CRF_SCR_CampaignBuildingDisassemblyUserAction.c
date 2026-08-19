@@ -7,8 +7,20 @@ modded class SCR_CampaignBuildingDisassemblyUserAction
 	protected const string CRF_REMOVAL_ON_COOLDOWN_REASON = "Prop removal is on cooldown";
 
 	//------------------------------------------------------------------------------------------------
+	//! Guards against a vanilla NULL deref: SCR_CampaignBuildingDisassemblyUserAction.CanBePerformedScript
+	//! (line ~399) calls scriptedFaction.GetRanks().IsRankRenegade(playerRank) with no null check, and
+	//! GetRanks() returns null for any faction whose .conf has no Ranks resource assigned. Skip calling
+	//! into vanilla entirely for that case rather than crashing.
 	override bool CanBePerformedScript(IEntity user)
 	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(user);
+		if (character)
+		{
+			SCR_Faction scriptedFaction = SCR_Faction.Cast(character.GetFaction());
+			if (scriptedFaction && !scriptedFaction.GetRanks())
+				return false;
+		}
+
 		if (!super.CanBePerformedScript(user))
 			return false;
 

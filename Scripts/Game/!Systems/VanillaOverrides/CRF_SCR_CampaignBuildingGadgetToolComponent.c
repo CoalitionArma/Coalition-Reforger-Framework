@@ -121,4 +121,27 @@ modded class SCR_CampaignBuildingGadgetToolComponent
 		float cooldownS = Math.Max(0, cycleS - CRF_GetChoppingActiveDurationS(isEngineer));
 		m_CRF_ChoppingAvailableSince = world.GetServerTimestamp().PlusSeconds(cooldownS);
 	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
+//	 TRENCH DIGGING
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//! Static (not [Attribute]) because the consumer, SCR_CampaignBuildingLayoutComponent.GetBuildingValue,
+	//! has no held-tool instance to read a per-prefab attribute from - it runs once at composition
+	//! placement, independent of any specific player. See CRF_SCR_CampaignBuildingLayoutComponent.
+	protected static const float CRF_TRENCH_DIG_SAFESTART_SLOWDOWN_MULTIPLIER = 2;
+	protected static const float CRF_TRENCH_DIG_NORMAL_SLOWDOWN_MULTIPLIER = 4;
+
+	//------------------------------------------------------------------------------------------------
+	//! \return how many times higher the required building value for a trench should currently be vs
+	//! its unmodified baseline (2x during safestart, 4x once it ends, by default) - i.e. how many
+	//! times more E-tool swings digging a trench takes
+	static float CRF_GetTrenchDigSlowdownMultiplier()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		if (safestartManager && safestartManager.GetSafestartStatus())
+			return CRF_TRENCH_DIG_SAFESTART_SLOWDOWN_MULTIPLIER;
+
+		return CRF_TRENCH_DIG_NORMAL_SLOWDOWN_MULTIPLIER;
+	}
 }
