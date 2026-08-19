@@ -1,0 +1,202 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  ImageWidgetClass "{6A2553EFF26B2E3C}" {
+   Name "Background"
+   Slot FrameWidgetSlot "{6A2553EFF26B2E23}" {
+    Anchor 0 0 0 0
+    PositionX 26.937
+    OffsetLeft 26.937
+    PositionY 9.324
+    OffsetTop 9.324
+    SizeX 1139.91
+    OffsetRight -1166.84
+    SizeY 941.304
+    OffsetBottom -950.628
+   }
+   Texture "{75455009AFED376B}UI/Textures/Workshop/AddonThumbnails/workshop_loading_UI.edds"
+   Size 492 384
+  }
+  FrameWidgetClass "{65534CACFD64038F}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 376.762
+    OffsetLeft 376.762
+    PositionY 13.957
+    OffsetTop 13.957
+    SizeX 784
+    OffsetRight -1160.76
+    SizeY 928
+    OffsetBottom -941.957
+   }
+   "Is Enabled" 0
+  }
+  FrameWidgetClass "{65534CACFD64038E}" {
+   Name "MenuSlot0"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -927.238
+    OffsetLeft -927.238
+    PositionY -526.043
+    OffsetTop -526.043
+    SizeX 320
+    OffsetRight 607.238
+    SizeY 928
+    OffsetBottom -401.957
+   }
+   "Is Enabled" 0
+  }
+  WindowWidgetClass "{BAAA6D0E64200560}" {
+   Name "RoleListBackground0"
+   Slot FrameWidgetSlot "{DC72A6F5B1248D5F}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -919.982
+    OffsetLeft -919.982
+    PositionY -522.873
+    OffsetTop -522.873
+    SizeX 309.405
+    OffsetRight 610.577
+    SizeY 841.01
+    OffsetBottom -318.137
+   }
+   Color 0.007 0.0091 0.011 1
+  }
+  OverlayWidgetClass "{65534CACD957A8E3}" {
+   Name "RoleList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -911.982
+    OffsetLeft -911.982
+    PositionY -514.873
+    OffsetTop -514.873
+    SizeX 293.405
+    OffsetRight 618.577
+    SizeY 825.01
+    OffsetBottom -310.137
+   }
+   {
+    OverlayWidgetClass "{65534CACD9581A14}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "RoleListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{65534CACD9581A12}" {
+     Name "RoleListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Roles (select \"Mission Summary\" for mission-wide checks)"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CACD958379D}" {
+   Name "MenuButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.466 0.536 0.466 0.536
+    PositionX -240.962
+    OffsetLeft -240.962
+    PositionY -86.993
+    OffsetTop -86.993
+    SizeX 112
+    OffsetRight 128.962
+    SizeY 29.999
+    OffsetBottom 56.994
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CACD958B475}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Refresh"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  WindowWidgetClass "{65534CAEB645009D}" {
+   Name "QADetailBackground0"
+   Slot FrameWidgetSlot "{62A27DD4085F87AF}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -579.303
+    OffsetLeft -579.303
+    PositionY -521.573
+    OffsetTop -521.573
+    SizeX 400
+    OffsetRight 179.303
+    SizeY 468.634
+    OffsetBottom 52.939
+   }
+   Color 0.0072 0.0091 0.011 1
+  }
+  MultilineEditBoxWidgetClass "{65534CAEB6450155}" {
+   Name "QADetailBox0"
+   Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -571.303
+    OffsetLeft -571.303
+    PositionY -513.573
+    OffsetTop -513.573
+    SizeX 384
+    OffsetRight 187.303
+    SizeY 451.146
+    OffsetBottom 62.427
+   }
+   Text ""
+   "Min Font Size" 12
+  }
+  WindowWidgetClass "{9B80AB3FB7399123}" {
+   Name "WeaponPreviewBackground0"
+   Slot FrameWidgetSlot "{F5999AEF078D834B}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -173.681
+    OffsetLeft -173.681
+    PositionY -520.822
+    OffsetTop -520.822
+    SizeX 337.619
+    OffsetRight -163.938
+    SizeY 320
+    OffsetBottom 200.822
+   }
+   Color 0.013 0.0152 0.0176 1
+  }
+  VerticalLayoutWidgetClass "{1319D998F144912D}" {
+   Name "WeaponPreviewList0"
+   Slot FrameWidgetSlot "{A9AB6AA240720339}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -165.681
+    OffsetLeft -165.681
+    PositionY -512.822
+    OffsetTop -512.822
+    SizeX 323.691
+    OffsetRight -158.01
+    SizeY 304
+    OffsetBottom 208.822
+   }
+  }
+ }
+}

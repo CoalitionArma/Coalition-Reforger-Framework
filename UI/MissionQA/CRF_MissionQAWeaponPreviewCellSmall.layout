@@ -1,0 +1,58 @@
+SizeLayoutWidgetClass "{EFDAFFDE01F406E0}" {
+ Name "rootFrame"
+ Slot LayoutSlot "{1597E546648DC482}" {
+  HorizontalAlign 1
+  SizeMode Auto
+ }
+ AllowWidthOverride 1
+ WidthOverride 160
+ AllowHeightOverride 1
+ HeightOverride 160
+ {
+  WindowWidgetClass "{4947CA9DDD727B6C}" {
+   Name "PreviewBackground"
+   Slot FrameWidgetSlot "{C2AAA269C4539884}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 160
+    OffsetRight -160
+    SizeY 160
+    OffsetBottom -160
+   }
+   Color 0.013 0.0152 0.0176 1
+  }
+  ItemPreviewWidgetClass "{A76E3D6FAA4A0014}" {
+   Name "PreviewWidget"
+   Slot FrameWidgetSlot "{5719DC5147156021}" {
+    PositionX 4
+    OffsetLeft 4
+    PositionY 4
+    OffsetTop 4
+    SizeX 152
+    OffsetRight -156
+    SizeY 152
+    OffsetBottom -156
+   }
+  }
+  TextWidgetClass "{C4D4D593E896D427}" {
+   Name "PreviewLabel"
+   Slot FrameWidgetSlot "{A8BA5A9E494168C0}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 138
+    OffsetTop 138
+    SizeX 160
+    OffsetRight -160
+    SizeY 20
+    OffsetBottom -158
+   }
+   Text ""
+   "Font Size" 12
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}
