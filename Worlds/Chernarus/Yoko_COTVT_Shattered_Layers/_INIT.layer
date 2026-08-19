@@ -33,10 +33,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "A OPFOR armored platoon is trapped from the rest of their forces at Modestnoye."\
    ""\
    "OPFOR Composition: Armored Platoon"\
-   "OPFOR Assets: 5x T72B, 1x Recon Squad and 1x HAT"\
+   "OPFOR Assets: 5x T72B, 1x SU25, 1x Recon Squad and 1x HAT"\
    ""\
    "BLUFOR Composition: Unknown"\
-   "BLUFOR Assets: Unknwon"\
+   "BLUFOR Assets: Unknown"\
    ""\
    "Time: 12:00"\
    ""\
