@@ -19,6 +19,12 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  CRF_CTFGamemodeManager "{6A273964079A0662}" {
+   m_eGameModeType "Neutral"
+   m_TeamAMarkerPrefab "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et"
+   m_TeamBMarkerPrefab "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et"
+   m_iScoreToWin 1
+  }
   CRF_CommunityTagManager "{69651E04AFDA77E5}" {
   }
   CRF_TaskCreatorComponent "{69C31CE99C05917A}" {
@@ -788,7 +794,29 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
 }
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsMissionMaking/PolyZone/GameBoundry.et" {
+$grp GameEntity {
+ ctf_teamA_base {
+  coords 1142.852 38 2818.818
+ }
+ ctf_teamB_base {
+  coords 1371.938 38 2871.863
+ }
+}
+GenericEntity : "{25782F94FA996F41}Prefabs/Items/Demining/MineFlags/CRF_CTF_Flag.et" {
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    CRF_CTF_PickUpFlagAction "{6A273966B50E474D}" {
+     ParentContextList {
+      "default"
+     }
+    }
+   }
+  }
+ }
+ coords 1222.435 38 2824.194
+}
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
  coords 1237.725 37.908 2830.09
  Points {
   ShapePoint "{659E505EE50F4D29}" {
