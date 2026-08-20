@@ -102,6 +102,10 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	// ── Private state ────────────────────────────────────────────────────────
 	private ref map<int, ref CRF_PlayerStats> m_mPlayerStats   = new map<int, ref CRF_PlayerStats>();
 
+	// Keyed by playerId so each in-flight wait stays alive (ref-counted) until it resolves or times
+	// out - see CRF_EntityHooksWaiter below.
+	private ref map<int, ref CRF_EntityHooksWaiter> m_mEntityHooksWaiters = new map<int, ref CRF_EntityHooksWaiter>();
+
 	// Players currently on foot → their controlled entity (for velocity-based distance_walked)
 	private ref map<int, IEntity> m_mWalkingPlayers            = new map<int, IEntity>();
 	// Players currently driving → reference to their vehicle entity
@@ -222,7 +226,17 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 
 		// Attach entity-level invokers for shots, grenades, healing, compartment.
 		// Retry briefly in case character subcomponents are not ready on the same frame.
-		RegisterEntityHooksWithRetry(playerId, playerEntity, 0);
+		CRF_EntityHooksWaiter waiter = new CRF_EntityHooksWaiter();
+		waiter.Setup(this, playerId, playerEntity);
+		m_mEntityHooksWaiters.Set(playerId, waiter);
+		waiter.Start(HOOK_RETRY_DELAY_MS, HOOK_RETRY_MAX_ATTEMPTS, string.Format("Entity hooks for player %1", playerId));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called by CRF_EntityHooksWaiter once it resolves, times out, or abandons, so it can be released.
+	void RemoveEntityHooksWaiter(int playerId)
+	{
+		m_mEntityHooksWaiters.Remove(playerId);
 	}
 
 	//==============================================================================================
@@ -605,7 +619,8 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 	//==============================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	protected bool RegisterEntityHooks(int playerId, IEntity playerEntity)
+	//! Public: called by CRF_EntityHooksWaiter (not a subclass) as its per-attempt condition check.
+	bool RegisterEntityHooks(int playerId, IEntity playerEntity)
 	{
 		if (!playerEntity)
 			return false;
@@ -647,31 +662,6 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 		}
 
 		return hasAnyHook;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void RegisterEntityHooksWithRetry(int playerId, IEntity playerEntity, int attempt)
-	{
-		if (!playerEntity || playerId <= 0)
-			return;
-
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		if (!playerManager || !playerManager.IsPlayerConnected(playerId))
-			return;
-
-		if (playerManager.GetPlayerControlledEntity(playerId) != playerEntity)
-			return;
-
-		if (RegisterEntityHooks(playerId, playerEntity))
-			return;
-
-		if (attempt + 1 >= HOOK_RETRY_MAX_ATTEMPTS)
-		{
-			Print(string.Format("[CRF_ServerStatsManager] WARNING: Failed to attach entity hooks for player %1 after %2 attempts", playerId, HOOK_RETRY_MAX_ATTEMPTS), LogLevel.WARNING);
-			return;
-		}
-
-		GetGame().GetCallqueue().CallLater(RegisterEntityHooksWithRetry, HOOK_RETRY_DELAY_MS, false, playerId, playerEntity, attempt + 1);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1005,5 +995,64 @@ class CRF_ServerStatsManager : SCR_BaseGameModeComponent
 
 		if (f)
 			stats.faction = f.GetFactionKey();
+	}
+}
+
+//! Retries attaching entity-level tracking invokers (shots, grenades, healing, compartment) until the
+//! spawned character's subcomponents are ready. See CRF_ServerStatsManager.NotifyPlayerSpawned.
+class CRF_EntityHooksWaiter : COA_RetryWaiter
+{
+	protected CRF_ServerStatsManager m_Owner;
+	protected int m_iPlayerId;
+	protected IEntity m_PlayerEntity;
+
+	//------------------------------------------------------------------------------------------------
+	void Setup(CRF_ServerStatsManager owner, int playerId, IEntity playerEntity)
+	{
+		m_Owner = owner;
+		m_iPlayerId = playerId;
+		m_PlayerEntity = playerEntity;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override bool IsConditionMet()
+	{
+		if (!m_PlayerEntity || m_iPlayerId <= 0)
+		{
+			Cancel();
+			return false;
+		}
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager || !playerManager.IsPlayerConnected(m_iPlayerId))
+		{
+			// Player disconnected before hooks could attach - abandon quietly, not a timeout.
+			Cancel();
+			return false;
+		}
+
+		// Control assignment doesn't necessarily reflect in GetPlayerControlledEntity() on the very
+		// same tick it's set - that's normal, not staleness, so keep retrying rather than abandoning.
+		// A genuinely stale wait just times out instead, which OnTimeout() already logs.
+		if (playerManager.GetPlayerControlledEntity(m_iPlayerId) != m_PlayerEntity)
+			return false;
+
+		return m_Owner.RegisterEntityHooks(m_iPlayerId, m_PlayerEntity);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnReady()
+	{
+		if (m_Owner)
+			m_Owner.RemoveEntityHooksWaiter(m_iPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnTimeout()
+	{
+		Print(string.Format("[CRF_ServerStatsManager] WARNING: Failed to attach entity hooks for player %1 after %2 attempts", m_iPlayerId, m_iMaxAttempts), LogLevel.WARNING);
+
+		if (m_Owner)
+			m_Owner.RemoveEntityHooksWaiter(m_iPlayerId);
 	}
 }

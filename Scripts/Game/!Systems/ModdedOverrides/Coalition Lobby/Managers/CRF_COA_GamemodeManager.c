@@ -1,157 +1,101 @@
 modded class COA_GamemodeManager
 {
-	protected const int STATS_TRACKING_INIT_RETRY_DELAY_MS = 250;
-	protected const int STATS_TRACKING_INIT_MAX_RETRIES = 20;
+	// Keyed by the awaited entity's RplId so each in-flight wait stays alive (ref-counted) until it
+	// resolves or times out - see CRF_StatsNotifyWaiter below.
+	protected ref map<RplId, ref CRF_StatsNotifyWaiter> m_mStatsNotifyWaiters = new map<RplId, ref CRF_StatsNotifyWaiter>();
 
 	//------------------------------------------------------------------------------------------------
-	//! Initialize a player into the game either as a playable character or spectator
-	//! \param[in] playerId ID of the player to initialize
-	//! \param[in] spawnPointID the ID of the spawn point we want to spawn this player at (either set manually with the respawn screen or automatic if -1;
-	//! \param[in] entityRplID the rplID of the entity  we want to spawn this player at (either set manually or automatic if invalid rpl id;
-	override bool InitilizePlayer(int playerId, int spawnPointID = -1, RplId entityRplID = RplId.Invalid())
-	{	
-		if (playerId <= 0)
-			return true;
-		
-		if (!EnsureManagersReady())
-			return false;
-		
-		// GM possession slots are handled entirely by the base class now (COALITION-Lobby owns
-		// COA_GMPossessionManager/COA_SlottingManager.RegisterGMPossessionGroup) this override is a
-		// full carbon copy for everything else and doesn't call super for the rest of the method, so
-		// possession slots need to be peeled off here and handed to super explicitly, or the base
-		// class's possession handling would never run for CRF servers. The stats-tracking hook is
-		// CRF-only, so it's re-attached here as a follow-up rather than living in the base class.
-		int gmSlotId = m_SlottingManager.GetPlayerSlotID(playerId);
-		RplId possessionTargetId;
-		if (gmSlotId >= 0 && COA_GMPossessionManager.GetInstance().TryGetPossessionTarget(gmSlotId, possessionTargetId))
+	//! Base COA_GamemodeManager.InitilizePlayer already handles spawn/possession/gear ordering
+	//! (including the GM-possession short-circuit) for both the normal and possession paths - this
+	//! hook just needs to know once a non-spectator player has been initialized, to start CRF's stats
+	//! tracking. See COA_GamemodeManager.OnPlayerInitialized for where this is called from.
+	override void OnPlayerInitialized(int playerId, IEntity playerCharacter, RplComponent playerRplComp, bool isSpectator)
+	{
+		if (isSpectator || !playerRplComp)
+			return;
+
+		CRF_StatsNotifyWaiter waiter = new CRF_StatsNotifyWaiter();
+		waiter.Setup(this, playerId, playerRplComp.Id());
+		m_mStatsNotifyWaiters.Set(playerRplComp.Id(), waiter);
+		waiter.Start(CRF_StatsNotifyWaiter.INTERVAL_MS, CRF_StatsNotifyWaiter.MAX_ATTEMPTS, string.Format("Stats tracking for player %1", playerId));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called by CRF_StatsNotifyWaiter once it resolves, times out, or abandons, so it can be released.
+	void RemoveStatsNotifyWaiter(RplId playerEntityRplId)
+	{
+		m_mStatsNotifyWaiters.Remove(playerEntityRplId);
+	}
+}
+
+//! Resolves delayed stats-manager availability and delayed replicated-entity availability before
+//! starting CRF stats tracking for a newly-initialized player. See COA_GamemodeManager.OnPlayerInitialized.
+class CRF_StatsNotifyWaiter : COA_RetryWaiter
+{
+	static const int INTERVAL_MS = 250;
+	static const int MAX_ATTEMPTS = 20; // ~5 seconds at 250ms interval
+
+	protected COA_GamemodeManager m_Owner;
+	protected int m_iPlayerId;
+	protected RplId m_PlayerEntityRplId;
+	protected IEntity m_ResolvedEntity;
+	protected CRF_ServerStatsManager m_ResolvedStatsManager;
+
+	//------------------------------------------------------------------------------------------------
+	void Setup(COA_GamemodeManager owner, int playerId, RplId playerEntityRplId)
+	{
+		m_Owner = owner;
+		m_iPlayerId = playerId;
+		m_PlayerEntityRplId = playerEntityRplId;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override bool IsConditionMet()
+	{
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		if (!playerManager || !playerManager.IsPlayerConnected(m_iPlayerId))
 		{
-			bool initialized = super.InitilizePlayer(playerId, spawnPointID, entityRplID);
-			if (initialized)
-			{
-				// Re-resolve rather than trusting possessionTargetId as-is: if the target body had
-				// already died, the base class falls back to a normal role-based spawn instead, and
-				// the entity the player actually ended up controlling won't be possessionTargetId.
-				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-				RplComponent controlledRplComp;
-				if (controlledEntity)
-					controlledRplComp = RplComponent.Cast(controlledEntity.FindComponent(RplComponent));
-				if (controlledRplComp)
-					TryNotifyStatsManager(playerId, controlledRplComp.Id(), 0);
-			}
-			return initialized;
+			// Player disconnected before stats tracking could start - abandon quietly, not a timeout.
+			Cancel();
+			return false;
 		}
 
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		if (!playerController)
+		m_ResolvedStatsManager = CRF_ServerStatsManager.GetInstance();
+
+		m_ResolvedEntity = null;
+		RplComponent playerRplComp = RplComponent.Cast(Replication.FindItem(m_PlayerEntityRplId));
+		if (playerRplComp)
+			m_ResolvedEntity = playerRplComp.GetEntity();
+
+		if (!m_ResolvedStatsManager || !m_ResolvedEntity)
 			return false;
 
-		COA_PlayerCharacter playerCharacter = null;
-		Faction faction = null;
-		bool alreadyCreated;
-		
-		// Determine if player should be spectator or playable character
-		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
-		{
-			// SPECTATOR PATH: Create initial entity for spectators
-			playerCharacter = GetOrCreateSpectatorEntity(playerId, playerController);
-	
-			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
-			
-			COA_PlayerHelper.RemovePlayerFromCurrentGroup(playerId);
-		} else {
-			// PLAYABLE CHARACTER PATH: Skip initial entity, spawn real character directly
-			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnPointID, entityRplID, alreadyCreated);
-			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
-			
-			m_MenuManager.RemovePlayerFromAnyChannel(playerId, false);
-		}
-		
-		if (!playerCharacter)
+		// Control assignment (AssignCharacterToPlayer) doesn't necessarily reflect in
+		// GetPlayerControlledEntity() on the very same tick it's set - that's normal, not staleness,
+		// so keep retrying rather than abandoning. A genuinely stale wait (player respawned into a
+		// different character before this caught up) just times out instead, which is fine: it's rare
+		// and OnTimeout() already logs it.
+		if (playerManager.GetPlayerControlledEntity(m_iPlayerId) != m_ResolvedEntity)
 			return false;
-		
-		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
-		if (!playerRplComp)
-			return false;
-		
-		if (playerCharacter && playerRplComp)
-		{
-			// NOTE: this method is a full override of COA_GamemodeManager.InitilizePlayer rather than
-			// an extension, so changes to the base version do not reach here. Keep it in sync.
-
-			// GEAR IS APPLIED AFTER POSSESSION, NOT BEFORE. Do not "fix" this ordering.
-			// Equipping the character before handover left players unable to reload: the weapons and
-			// magazines were inserted while the client did not yet own the entity. Vanilla equips
-			// after assignment too - SCR_SpawnHandlerComponent runs AssignEntity_S (line 156) before
-			// OnPlayerSpawnFinalize_S (line 160), and the loadout hook OnLoadoutSpawned lives in the
-			// latter. The gearscript runs from COA_GearscriptCharacter.EOnInit's deferred call, which
-			// lands after this function hands the character over.
-			COA_PlayerHelper.AssignFactionToPlayer(playerController, faction);
-
-			// DisableAI() removed: SCR_PlayerController.SetInitialMainEntity() already calls
-			// SetAIActivation(entity, false), and doing it here ran before ownership transfer.
-			COA_PlayerHelper.AssignCharacterToPlayer(playerController, playerCharacter);
-
-			if (!COA_EntityHelper.IsSpectator(playerCharacter))
-			{
-				// Radios are handled by SetEntityGear() once the gearscript has been applied to a
-				// character the player already controls.
-				AssignPlayerToGroup(playerId);
-
-				// Notify the CRF-native stats manager so it begins tracking this player.
-				// Retry briefly in case component init/replication order delays availability.
-				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
-			}
-			else
-			{
-				//Sends the player the respawn screen if they reconnect while dead
-				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerRespawn(playerCharacter, faction.GetFactionKey(), playerId))
-					m_RplBroadcastManager.SendRespawnScreen(playerId);
-			}
-
-			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
-		};
 
 		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Resolve delayed stats-manager availability and delayed replicated-entity availability.
-	protected void TryNotifyStatsManager(int playerId, RplId playerEntityRplId, int attempt)
+	protected override void OnReady()
 	{
-		if (playerId <= 0 || playerEntityRplId == RplId.Invalid())
-			return;
+		m_ResolvedStatsManager.NotifyPlayerSpawned(m_iPlayerId, m_ResolvedEntity);
 
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		if (!playerManager || !playerManager.IsPlayerConnected(playerId))
-			return;
+		if (m_Owner)
+			m_Owner.RemoveStatsNotifyWaiter(m_PlayerEntityRplId);
+	}
 
-		CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
-		IEntity playerEntity = null;
+	//------------------------------------------------------------------------------------------------
+	protected override void OnTimeout()
+	{
+		Print(string.Format("[CRF_COA_GamemodeManager] WARNING: Failed to initialize stats tracking for player %1 after %2 attempts", m_iPlayerId, MAX_ATTEMPTS), LogLevel.WARNING);
 
-		Managed replicatedItem = Replication.FindItem(playerEntityRplId);
-		if (replicatedItem)
-		{
-			RplComponent playerRplComp = RplComponent.Cast(replicatedItem);
-			if (playerRplComp)
-				playerEntity = playerRplComp.GetEntity();
-		}
-
-		if (statsManager && playerEntity)
-		{
-			if (playerManager.GetPlayerControlledEntity(playerId) != playerEntity)
-				return;
-
-			statsManager.NotifyPlayerSpawned(playerId, playerEntity);
-			return;
-		}
-
-		if (attempt + 1 >= STATS_TRACKING_INIT_MAX_RETRIES)
-		{
-			Print(string.Format("[COA_GamemodeManager] WARNING: Failed to initialize stats tracking for player %1 after %2 attempts", playerId, STATS_TRACKING_INIT_MAX_RETRIES), LogLevel.WARNING);
-			return;
-		}
-
-		GetGame().GetCallqueue().CallLater(TryNotifyStatsManager, STATS_TRACKING_INIT_RETRY_DELAY_MS, false, playerId, playerEntityRplId, attempt + 1);
+		if (m_Owner)
+			m_Owner.RemoveStatsNotifyWaiter(m_PlayerEntityRplId);
 	}
 }

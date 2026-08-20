@@ -784,6 +784,8 @@ class CRF_CommunityTagManager : ScriptComponent
 //	PRIVATE — PLAYER LIFECYCLE
 //=============================================================================================================================================================================================================================================================================================================================================================
 
+	protected ref CRF_GamemodeReadyWaiter m_GamemodeReadyWaiter;
+
 	//------------------------------------------------------------------------------------------------
 	//! Registers to game-mode connect/disconnect events so UI can refresh immediately
 	//! and player info can be re-fetched when roster changes.
@@ -792,13 +794,15 @@ class CRF_CommunityTagManager : ScriptComponent
 		if (m_bPlayerEventsSubscribed)
 			return;
 
-		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (!gameMode)
-		{
-			GetGame().GetCallqueue().CallLater(RegisterPlayerLifecycleCallbacks, 500, false);
-			return;
-		}
+		m_GamemodeReadyWaiter = new CRF_GamemodeReadyWaiter();
+		m_GamemodeReadyWaiter.Setup(this);
+		m_GamemodeReadyWaiter.Start(CRF_GamemodeReadyWaiter.INTERVAL_MS, CRF_GamemodeReadyWaiter.MAX_ATTEMPTS, "CommunityTagManager gamemode lookup");
+	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Called by CRF_GamemodeReadyWaiter once SCR_BaseGameMode is confirmed available.
+	void OnGamemodeReady(SCR_BaseGameMode gameMode)
+	{
 		// Remove before insert to keep registration idempotent.
 		gameMode.GetOnPlayerConnected().Remove(OnTrackedPlayerConnected);
 		gameMode.GetOnPlayerConnected().Insert(OnTrackedPlayerConnected);
@@ -843,5 +847,40 @@ class CRF_CommunityTagManager : ScriptComponent
 
 		m_OnPlayerRosterChanged.Invoke();
 		// No re-fetch: remaining players' cached data is still valid.
+	}
+}
+
+//! Waits for SCR_BaseGameMode to exist before wiring up connect/disconnect tracking.
+//! See CRF_CommunityTagManager.RegisterPlayerLifecycleCallbacks.
+class CRF_GamemodeReadyWaiter : COA_RetryWaiter
+{
+	static const int INTERVAL_MS = 500;
+	static const int MAX_ATTEMPTS = 120; // ~1 minute at 500ms interval
+
+	protected CRF_CommunityTagManager m_Owner;
+
+	//------------------------------------------------------------------------------------------------
+	void Setup(CRF_CommunityTagManager owner)
+	{
+		m_Owner = owner;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override bool IsConditionMet()
+	{
+		return SCR_BaseGameMode.Cast(GetGame().GetGameMode()) != null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnReady()
+	{
+		if (m_Owner)
+			m_Owner.OnGamemodeReady(SCR_BaseGameMode.Cast(GetGame().GetGameMode()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnTimeout()
+	{
+		Print("[CRF_CommunityTagManager] ERROR: SCR_BaseGameMode never became available — player connect/disconnect tracking was not registered.", LogLevel.ERROR);
 	}
 }

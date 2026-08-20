@@ -35,6 +35,8 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 
 	protected static CRF_SlotLottery m_sInstance;
 
+	protected ref CRF_ChatPanelReadyWaiter m_ChatPanelWaiter;
+
 	//------------------------------------------------------------
 	// Faction list
 	//------------------------------------------------------------
@@ -146,7 +148,9 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 		foreach (string fk : factions)
 			m_mRegisteredPlayersByFaction.Insert(fk, new array<ref CRF_LotteryEntry>());
 
-		GetGame().GetCallqueue().CallLater(RegisterChatCommands, 500, false);
+		m_ChatPanelWaiter = new CRF_ChatPanelReadyWaiter();
+		m_ChatPanelWaiter.Setup(this);
+		m_ChatPanelWaiter.Start(CRF_ChatPanelReadyWaiter.INTERVAL_MS, CRF_ChatPanelReadyWaiter.MAX_ATTEMPTS, "SlotLottery chat command registration");
 	}
 
 	//------------------------------------------------------------
@@ -161,16 +165,9 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 	// Chat command registration
 	//------------------------------------------------------------
 
-	protected void RegisterChatCommands()
+	//! Called by CRF_ChatPanelReadyWaiter once SCR_ChatPanelManager is confirmed available.
+	void RegisterChatCommands(SCR_ChatPanelManager chatMgr)
 	{
-		SCR_ChatPanelManager chatMgr = SCR_ChatPanelManager.GetInstance();
-		if (!chatMgr)
-		{
-			Print("[SlotLottery] WARNING: SCR_ChatPanelManager not available — retrying in 1s.");
-			GetGame().GetCallqueue().CallLater(RegisterChatCommands, 1000, false);
-			return;
-		}
-
 		chatMgr.GetCommandInvoker("roll").Insert(OnChatCmd_Roll);
 		chatMgr.GetCommandInvoker("runlottery").Insert(OnChatCmd_RunLottery);
 		chatMgr.GetCommandInvoker("clearlottery").Insert(OnChatCmd_ClearLottery);
@@ -739,5 +736,40 @@ class CRF_SlotLottery : SCR_BaseGameModeComponent
 	static CRF_SlotLottery GetInstance()
 	{
 		return m_sInstance;
+	}
+}
+
+//! Waits for SCR_ChatPanelManager to exist before registering lottery chat commands.
+//! See CRF_SlotLottery.OnPostInit / RegisterChatCommands.
+class CRF_ChatPanelReadyWaiter : COA_RetryWaiter
+{
+	static const int INTERVAL_MS = 1000;
+	static const int MAX_ATTEMPTS = 120; // ~2 minutes at 1s interval
+
+	protected CRF_SlotLottery m_Owner;
+
+	//------------------------------------------------------------------------------------------------
+	void Setup(CRF_SlotLottery owner)
+	{
+		m_Owner = owner;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override bool IsConditionMet()
+	{
+		return SCR_ChatPanelManager.GetInstance() != null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnReady()
+	{
+		if (m_Owner)
+			m_Owner.RegisterChatCommands(SCR_ChatPanelManager.GetInstance());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected override void OnTimeout()
+	{
+		Print("[SlotLottery] ERROR: SCR_ChatPanelManager never became available — lottery chat commands were not registered.", LogLevel.ERROR);
 	}
 }

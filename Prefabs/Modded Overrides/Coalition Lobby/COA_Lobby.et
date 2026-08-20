@@ -20,7 +20,6 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   CRF_VehicleGearscriptManager "{69F92C24F37D31F8}" {
   }
  }
- m_eGME_GlobalAISkill VETERAN
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_aSupplyTrucks {
    "{C8D62059548EC894}Prefabs/Vehicles/BLUFOR/BLUFOR_AMMO.et" "{0CA6F84C835A080E}Prefabs/Vehicles/BLUFOR/MERDC/BLUFOR_AMMO_MERDC.et" "{FF65607D073A8981}Prefabs/Vehicles/BLUFOR/BLUFOR_ARSENAL.et" "{FC3AB83990745796}Prefabs/Vehicles/BLUFOR/MERDC/BLUFOR_ARSENAL_MERDC.et"
@@ -56,6 +55,17 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_FactionManager "69F555E61964163F" {
    ID "632A77473B3CC3A8"
    coords 0 0 -1.5
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_FactionLabel FACTION_US
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_FactionLabel FACTION_USSR
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_FactionLabel FACTION_FIA
+    }
+   }
   }
   PerceptionManager "69F555E61964162C" {
    ID "64443AC8FCA0C42D"
