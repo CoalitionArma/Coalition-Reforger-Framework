@@ -2,5 +2,17 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 2277.381 235.732 3729.434
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_AttritionGamemodeComponent "{6A2832111259365B}" {
+   m_fTeamAVictoryThreshold 90
+   m_fTeamBVictoryThreshold 75
+   m_bEndMissionOnVictory 0
+   m_fNotifyIncrementPercent 25
+   m_fVehicleGracePeriodSeconds 60
+  }
+  CRF_RaidGamemodeComponent "{6A283211E6FF8152}" {
+   m_fWinThresholdPercent 60
+  }
+ }
  coords 0 0 0
 }
