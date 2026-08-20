@@ -98,7 +98,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A2746036484A93B}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "N/A"
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -300,14 +300,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
@@ -324,7 +324,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A28F5847FACAE96" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
