@@ -121,4 +121,10 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
   m_iRespawnTimer 999999
  }
+ {
+  coords 2006.528 76.871 3663.233
+  angles 0 -180 0
+  m_rVehicle "{68ECE2D074E161BB}Prefabs/Vehicles/Tracked/LTM_BMP_2_Shkval_ZTM.et"
+  m_iRespawnTimer 999999
+ }
 }
