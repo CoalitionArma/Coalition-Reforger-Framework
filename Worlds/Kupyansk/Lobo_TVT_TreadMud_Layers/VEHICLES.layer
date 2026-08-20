@@ -1,3 +1,59 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 2155.136 80.098 849.452
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2160 80.261 835.967
+  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2163.98 80.281 821.91
+  m_rVehicle "{AC12E5669B411D57}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2165.392 80.294 814.757
+  m_rVehicle "{AC12E5669B411D57}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2168.018 80.345 807.678
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2170.538 80.451 802.591
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2171.816 80.416 797.172
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2176.279 80.477 783.544
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 2181.747 80.648 775.237
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_iRespawnTimer 999999
+  m_iTicketsPerRespawn 0
+ }
+}
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
   coords 2083.737 78.49 3663.634
