@@ -25,19 +25,34 @@ class CRF_CTF_PickUpFlagAction : ScriptedUserAction
 		super.PerformAction(pOwnerEntity, pUserEntity);
 
 		if (!m_FlagComponent || !pOwnerEntity || !pUserEntity)
+		{
+			Print("[CRF_CTF] PickUpFlagAction REJECTED: missing flag component/owner/user entity.", LogLevel.WARNING);
 			return;
+		}
 
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(pUserEntity);
 		if (playerId <= 0)
+		{
+			Print(string.Format("[CRF_CTF] PickUpFlagAction REJECTED: GetPlayerIdFromControlledEntity returned %1 for the acting entity.", playerId), LogLevel.WARNING);
 			return;
+		}
 
 		RplComponent rplComponent = RplComponent.Cast(pOwnerEntity.FindComponent(RplComponent));
 		if (!rplComponent)
+		{
+			Print(string.Format("[CRF_CTF] PickUpFlagAction REJECTED: flag entity '%1' has no RplComponent - add one to the flag prefab, pickups cannot work without it.", pOwnerEntity.GetName()), LogLevel.WARNING);
 			return;
+		}
 
 		COA_PlayerRplToAuthorityManager rplManager = COA_PlayerRplToAuthorityManager.GetInstance();
-		if (rplManager)
-			rplManager.RequestCTFFlagPickup(playerId, rplComponent.Id());
+		if (!rplManager)
+		{
+			Print("[CRF_CTF] PickUpFlagAction REJECTED: COA_PlayerRplToAuthorityManager.GetInstance() returned null.", LogLevel.WARNING);
+			return;
+		}
+
+		Print(string.Format("[CRF_CTF] PickUpFlagAction: requesting pickup for playerId=%1, flag RplId=%2.", playerId, rplComponent.Id()), LogLevel.NORMAL);
+		rplManager.RequestCTFFlagPickup(playerId, rplComponent.Id());
 	}
 
 	//------------------------------------------------------------------------------------------------

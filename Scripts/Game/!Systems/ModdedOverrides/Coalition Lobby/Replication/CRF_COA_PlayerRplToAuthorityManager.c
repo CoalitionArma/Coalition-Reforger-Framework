@@ -1511,17 +1511,28 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_RplId();
 		LogTelemetry("RpcAsk_RequestCTFFlagPickup", bytes);
 
+		Print(string.Format("[CRF_CTF] RpcAsk_RequestCTFFlagPickup received on server: playerId=%1, flagRplId=%2", playerId, flagRplId), LogLevel.NORMAL);
+
 		CRF_CTFGamemodeManager ctfGamemode = CRF_CTFGamemodeManager.GetInstance();
 		if (!ctfGamemode)
+		{
+			Print("[CRF_CTF] RpcAsk_RequestCTFFlagPickup REJECTED: CRF_CTFGamemodeManager.GetInstance() returned null - is the component actually added to the gamemode entity?", LogLevel.WARNING);
 			return;
+		}
 
 		IEntity flagEntity = COA_EntityHelper.GetEntityFromRplId(flagRplId);
 		if (!flagEntity)
+		{
+			Print(string.Format("[CRF_CTF] RpcAsk_RequestCTFFlagPickup REJECTED: no entity found for RplId %1 (item not found or not yet streamed to the server).", flagRplId), LogLevel.WARNING);
 			return;
+		}
 
 		CRF_CTF_FlagComponent flagComponent = CRF_CTF_FlagComponent.Cast(flagEntity.FindComponent(CRF_CTF_FlagComponent));
 		if (!flagComponent)
+		{
+			Print(string.Format("[CRF_CTF] RpcAsk_RequestCTFFlagPickup REJECTED: entity '%1' has no CRF_CTF_FlagComponent.", flagEntity.GetName()), LogLevel.WARNING);
 			return;
+		}
 
 		ctfGamemode.TryPickUpFlag(playerId, flagComponent);
 	}

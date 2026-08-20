@@ -57,7 +57,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	[Attribute("1 0.25 0.25 1", UIWidgets.ColorPicker, desc: "Colour of Team B's capture zone marker")]
 	protected ref Color m_TeamBMarkerColor;
 
-	[Attribute("3", UIWidgets.EditBox, desc: "Number of captures needed to win the round.")]
+	[Attribute("3", UIWidgets.EditBox, desc: "Number of captures a team needs to be announced as having reached the score limit. Purely a popup announcement - capturing keeps working and the mission does not end automatically. 0 disables the announcement.")]
 	protected int m_iScoreToWin;
 
 	[Attribute("8", UIWidgets.EditBox, desc: "Distance (m) from a base a carrier must be within to capture or return a flag.")]
@@ -71,6 +71,12 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 	[Attribute("0.5", UIWidgets.EditBox, desc: "How often (seconds) capture/return/auto-return conditions are checked.")]
 	protected float m_fTickInterval;
+
+	[Attribute("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav", UIWidgets.ResourceNamePicker, "Sound played on every machine alongside pickup/drop/return notifications. Leave empty to disable.", params: "wav")]
+	protected ResourceName m_sNotificationSound;
+
+	[Attribute("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav", UIWidgets.ResourceNamePicker, "Sound played on every machine alongside capture and score-limit notifications - kept distinct from Notification Sound so scoring stands out. Leave empty to disable.", params: "wav")]
+	protected ResourceName m_sCaptureSound;
 
 	// Capture zone visualization (only visible in Workbench editor)
 	[Attribute("1", UIWidgets.CheckBox, desc: "Show a debug sphere sized to Capture Radius on each base entity. Editor only, no runtime cost.")]
@@ -97,7 +103,11 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 	protected static const int MARKER_WIDGET_DELAY_MS = 100;
 
-	protected bool m_bVictoryTriggered = false;
+	// Latches per team so each side's "reached the score limit" popup fires exactly once,
+	// without ever stopping capturing or ending the mission - see CheckScoreLimit().
+	protected bool m_bTeamAScoreLimitAnnounced = false;
+	protected bool m_bTeamBScoreLimitAnnounced = false;
+
 	protected float m_fTickAccumulator = 0;
 
 	protected static CRF_CTFGamemodeManager m_sInstance;
@@ -144,15 +154,18 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 
+		Print(string.Format("[CRF_CTF] OnWorldPostProcess: gamemode initializing. IsServer=%1", Replication.IsServer()), LogLevel.NORMAL);
+
 		IEntity teamABase = GetGame().GetWorld().FindEntityByName(m_sTeamABaseName);
 		if (teamABase)
 		{
 			m_vTeamABasePos = teamABase.GetOrigin();
 			m_bTeamABaseFound = true;
+			Print(string.Format("[CRF_CTF] Team A base '%1' found at %2.", m_sTeamABaseName, m_vTeamABasePos), LogLevel.NORMAL);
 		}
 		else
 		{
-			Print(string.Format("[CRF_CTF] WARNING: Team A base entity '%1' not found in world.", m_sTeamABaseName), LogLevel.WARNING);
+			Print(string.Format("[CRF_CTF] WARNING: Team A base entity '%1' not found in world. Captures for Team A can never succeed until this is fixed.", m_sTeamABaseName), LogLevel.WARNING);
 		}
 
 		IEntity teamBBase = GetGame().GetWorld().FindEntityByName(m_sTeamBBaseName);
@@ -160,10 +173,11 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		{
 			m_vTeamBBasePos = teamBBase.GetOrigin();
 			m_bTeamBBaseFound = true;
+			Print(string.Format("[CRF_CTF] Team B base '%1' found at %2.", m_sTeamBBaseName, m_vTeamBBasePos), LogLevel.NORMAL);
 		}
 		else
 		{
-			Print(string.Format("[CRF_CTF] WARNING: Team B base entity '%1' not found in world.", m_sTeamBBaseName), LogLevel.WARNING);
+			Print(string.Format("[CRF_CTF] WARNING: Team B base entity '%1' not found in world. Captures for Team B can never succeed until this is fixed.", m_sTeamBBaseName), LogLevel.WARNING);
 		}
 
 		SpawnBaseMarkers();
@@ -189,10 +203,10 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			return;
 
 		if (m_bTeamABaseFound)
-			SpawnShapeMarker(m_vTeamABasePos, m_TeamAMarkerColor);
+			SpawnShapeMarker(m_vTeamABasePos, m_TeamAMarkerColor, string.Format("%1 Base", m_eTeamA));
 
 		if (m_bTeamBBaseFound)
-			SpawnShapeMarker(m_vTeamBBasePos, m_TeamBMarkerColor);
+			SpawnShapeMarker(m_vTeamBBasePos, m_TeamBMarkerColor, string.Format("%1 Base", m_eTeamB));
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -200,7 +214,8 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//! local-only, which is what an unreplicated COA_ShapeMarker needs.
 	//! \param[in] position World position to spawn the marker at
 	//! \param[in] color Marker outline/fill colour
-	protected IEntity SpawnShapeMarker(vector position, Color color)
+	//! \param[in] label Zone name shown when hovering the marker on the map
+	protected IEntity SpawnShapeMarker(vector position, Color color, string label)
 	{
 		if (m_rBaseMarkerPrefab.IsEmpty())
 			return null;
@@ -237,6 +252,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		marker.SetShapeType(m_eBaseMarkerShape);
 		marker.SetShapeBorderWidth(m_fBaseMarkerBorderWidth);
 		marker.SetShapeRadius(m_fCaptureRadius);
+		marker.SetShapeName(label);
 
 		// A manual marker only builds its widget on the map-open event it subscribes to in
 		// EOnInit. Spawned while the map is already open (e.g. a JIP player), it would stay
@@ -373,34 +389,70 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] flag The flag being picked up
 	void TryPickUpFlag(int playerId, CRF_CTF_FlagComponent flag)
 	{
-		if (!Replication.IsServer() || !flag || playerId <= 0)
+		Print(string.Format("[CRF_CTF] TryPickUpFlag called: playerId=%1, IsServer=%2", playerId, Replication.IsServer()), LogLevel.NORMAL);
+
+		if (!Replication.IsServer())
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: not running on the server. If this ever prints, the RpcAsk handler is being invoked somewhere that isn't authoritative.", LogLevel.WARNING);
 			return;
+		}
+
+		if (!flag)
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: null flag component (bad RplId, or the entity found isn't a CRF_CTF_FlagComponent).", LogLevel.WARNING);
+			return;
+		}
+
+		if (playerId <= 0)
+		{
+			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: invalid playerId %1.", playerId), LogLevel.WARNING);
+			return;
+		}
 
 		if (flag.IsCarried())
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: flag is already carried.", LogLevel.WARNING);
 			return;
+		}
 
 		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
+		{
+			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: no controlled entity for playerId %1.", playerId), LogLevel.WARNING);
 			return;
+		}
 
 		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(playerEntity.FindComponent(SCR_DamageManagerComponent));
 		if (damageManager && damageManager.GetState() == EDamageState.DESTROYED)
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: player is dead.", LogLevel.WARNING);
 			return;
+		}
 
 		FactionKey playerFaction = GetEntityFactionKey(playerEntity);
 		if (playerFaction.IsEmpty())
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: player has no FactionAffiliationComponent / no affiliated faction. This is the most common cause of pickups silently doing nothing in an ad-hoc Workbench test - check the test character was slotted into a faction normally.", LogLevel.WARNING);
 			return;
+		}
 
 		FactionKey flagFaction = flag.GetOwningFaction();
 
 		// A team cannot steal its own home flag while it is still docked at base.
 		if (flag.IsAtBase() && !flagFaction.IsEmpty() && playerFaction == flagFaction)
+		{
+			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: %1 tried to take their own faction's ('%2') docked home flag.", playerFaction, flagFaction), LogLevel.WARNING);
 			return;
+		}
 
 		if (!flag.TryPickUp(playerId))
+		{
+			Print("[CRF_CTF] TryPickUpFlag REJECTED: flag.TryPickUp() itself returned false (race condition, or not running on server).", LogLevel.WARNING);
 			return;
+		}
 
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		Print(string.Format("[CRF_CTF] Pickup succeeded: %1 (faction %2) took '%3'.", playerName, playerFaction, flag.GetDisplayName()), LogLevel.NORMAL);
 		BroadcastMessage(string.Format("%1 has taken the %2!", playerName, flag.GetDisplayName()));
 	}
 
@@ -411,9 +463,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void ServerTick()
 	{
-		if (m_bVictoryTriggered)
-			return;
-
 		foreach (CRF_CTF_FlagComponent flag : CRF_CTF_FlagComponent.GetRegisteredFlags())
 		{
 			if (!flag)
@@ -446,11 +495,17 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		int carrierId = flag.GetCarrierId();
 		IEntity carrierEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(carrierId);
 		if (!carrierEntity)
+		{
+			Print(string.Format("[CRF_CTF] CheckCarriedFlag: no controlled entity for carrierId %1 (flag '%2').", carrierId, flag.GetDisplayName()), LogLevel.WARNING);
 			return;
+		}
 
 		FactionKey carrierFaction = GetEntityFactionKey(carrierEntity);
 		if (carrierFaction.IsEmpty())
+		{
+			Print(string.Format("[CRF_CTF] CheckCarriedFlag: carrier of '%1' has no resolvable faction, skipping capture/return checks.", flag.GetDisplayName()), LogLevel.WARNING);
 			return;
+		}
 
 		FactionKey flagFaction = flag.GetOwningFaction();
 		vector carrierPos = carrierEntity.GetOrigin();
@@ -461,7 +516,10 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		{
 			vector homePos;
 			if (!TryGetBasePosition(carrierFaction, homePos))
+			{
+				Print(string.Format("[CRF_CTF] CheckCarriedFlag: no base position known for faction %1 - is its base entity name set/found?", carrierFaction), LogLevel.WARNING);
 				return;
+			}
 
 			if (vector.DistanceSq(carrierPos, homePos) <= radiusSq)
 			{
@@ -481,23 +539,34 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 		vector captureBasePos;
 		if (!TryGetBasePosition(captureBaseFaction, captureBasePos))
+		{
+			Print(string.Format("[CRF_CTF] CheckCarriedFlag: no base position known for capture-target faction %1 - is its base entity name set/found? Captures can never trigger until this resolves.", captureBaseFaction), LogLevel.WARNING);
 			return;
+		}
 
-		if (vector.DistanceSq(carrierPos, captureBasePos) > radiusSq)
+		float distSq = vector.DistanceSq(carrierPos, captureBasePos);
+		Print(string.Format("[CRF_CTF] CheckCarriedFlag: carrier (faction %1) is %2m from %3's base (capture radius %4m).", carrierFaction, Math.Sqrt(distSq), captureBaseFaction, m_fCaptureRadius), LogLevel.NORMAL);
+
+		if (distSq > radiusSq)
 			return;
 
 		if (m_bRequireOwnFlagAtHomeToCapture && !flagFaction.IsEmpty())
 		{
 			CRF_CTF_FlagComponent ownFlag = CRF_CTF_FlagComponent.GetFlagForFaction(carrierFaction);
 			if (ownFlag && !ownFlag.IsAtBase())
+			{
+				Print(string.Format("[CRF_CTF] CheckCarriedFlag: %1 is in range to capture but their own flag is not at home (Require Own Flag At Home To Capture is on).", carrierFaction), LogLevel.NORMAL);
 				return;
+			}
 		}
 
 		CaptureFlag(flag, carrierId, carrierFaction);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Awards a capture, resets the flag, and checks for round victory.
+	//! Awards a capture, resets the flag, and announces if the scoring team just reached the
+	//! score limit. Capturing keeps working and the mission never ends automatically - see
+	//! CheckScoreLimit().
 	protected void CaptureFlag(CRF_CTF_FlagComponent flag, int scoringPlayerId, FactionKey scoringTeam)
 	{
 		if (scoringTeam == m_eTeamA)
@@ -505,51 +574,72 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		else if (scoringTeam == m_eTeamB)
 			m_iTeamBScore++;
 		else
+		{
+			Print(string.Format("[CRF_CTF] CaptureFlag REJECTED: scoringTeam '%1' matches neither Team A ('%2') nor Team B ('%3').", scoringTeam, m_eTeamA, m_eTeamB), LogLevel.WARNING);
 			return;
+		}
 
 		Replication.BumpMe();
 
 		flag.ReturnToBase();
 
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(scoringPlayerId);
-		BroadcastMessage(string.Format("%1 captured the %2! Score: %3 - %4", playerName, flag.GetDisplayName(), m_iTeamAScore, m_iTeamBScore));
+		Print(string.Format("[CRF_CTF] CAPTURE: %1 (%2) captured '%3'. Score is now %4 (Team A) - %5 (Team B). Score To Win = %6.", playerName, scoringTeam, flag.GetDisplayName(), m_iTeamAScore, m_iTeamBScore, m_iScoreToWin), LogLevel.NORMAL);
+		BroadcastMessage(string.Format("%1 captured the %2! Score: %3", playerName, flag.GetDisplayName(), GetScoreLine()), m_sCaptureSound);
 
-		CheckVictory(scoringTeam);
+		CheckScoreLimit(scoringTeam);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void CheckVictory(FactionKey scoringTeam)
+	//! Announces (once per team) when that team reaches Score To Win. Purely a popup - does not
+	//! stop capturing, does not touch CRF_LoggingManager, and never advances the gamemode state.
+	//! If the mission should actually end at some point, that's a separate, explicit decision for
+	//! the mission maker (a timer, an admin action, etc.), not something this gamemode forces.
+	protected void CheckScoreLimit(FactionKey scoringTeam)
 	{
-		if (m_bVictoryTriggered || m_iScoreToWin <= 0)
+		if (m_iScoreToWin <= 0)
 			return;
 
 		int score = 0;
+		bool alreadyAnnounced = false;
+
 		if (scoringTeam == m_eTeamA)
+		{
 			score = m_iTeamAScore;
+			alreadyAnnounced = m_bTeamAScoreLimitAnnounced;
+		}
 		else if (scoringTeam == m_eTeamB)
+		{
 			score = m_iTeamBScore;
+			alreadyAnnounced = m_bTeamBScoreLimitAnnounced;
+		}
 		else
+		{
+			return;
+		}
+
+		if (alreadyAnnounced || score < m_iScoreToWin)
 			return;
 
-		if (score < m_iScoreToWin)
-			return;
+		if (scoringTeam == m_eTeamA)
+			m_bTeamAScoreLimitAnnounced = true;
+		else
+			m_bTeamBScoreLimitAnnounced = true;
 
-		m_bVictoryTriggered = true;
-
-		BroadcastMessage(string.Format("%1 wins the round!", scoringTeam));
-
-		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
-		if (loggingManager)
-			loggingManager.SetWinningFaction(scoringTeam, "automatic");
-
-		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
-		if (gamemode)
-			gamemode.AdvanceGamemodeState(true);
+		Print(string.Format("[CRF_CTF] %1 reached the score limit (%2 captures). Announcing only - match continues.", scoringTeam, score), LogLevel.NORMAL);
+		BroadcastMessage(string.Format("%1 has reached the score limit! Score: %2", scoringTeam, GetScoreLine()), m_sCaptureSound);
 	}
 
 	//===================================================================================
 	// HELPERS
 	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! \return The current score formatted as "TeamA X-Y TeamB", e.g. "BLUFOR 1-0 OPFOR"
+	protected string GetScoreLine()
+	{
+		return string.Format("%1 %2-%3 %4", m_eTeamA, m_iTeamAScore, m_iTeamBScore, m_eTeamB);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	protected bool TryGetBasePosition(FactionKey factionKey, out vector position)
@@ -597,9 +687,19 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void BroadcastMessage(string message)
+	//! A Broadcast RPC does not loop back to the calling machine on a listen server, so the
+	//! host would never see its own popups without also applying the effect directly here -
+	//! same "call directly + Rpc" pattern CRF_CommunityTagManager.RpcDo_PlayerInfoUpdated uses
+	//! to "cover dedicated + listen server".
+	//! \param[in] message Popup text
+	//! \param[in] sound Sound to play alongside it; empty defaults to Notification Sound
+	protected void BroadcastMessage(string message, ResourceName sound = "")
 	{
-		Rpc(RpcDo_BroadcastMessage, message);
+		if (sound.IsEmpty())
+			sound = m_sNotificationSound;
+
+		RpcDo_BroadcastMessage(message, sound);
+		Rpc(RpcDo_BroadcastMessage, message, sound);
 	}
 
 	//===================================================================================
@@ -608,11 +708,26 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_BroadcastMessage(string message)
+	protected void RpcDo_BroadcastMessage(string message, ResourceName sound)
 	{
+		Print(string.Format("[CRF_CTF] RpcDo_BroadcastMessage received: '%1'. COA_Gamemode.GetInstance()=%2", message, COA_Gamemode.GetInstance() != null), LogLevel.NORMAL);
+
+		// Sound is independent of the popup text - play it even if the popup widget below
+		// can't (e.g. no COA_Gamemode in this world), so notifications are never fully silent.
+		if (!sound.IsEmpty())
+			AudioSystem.PlaySound(sound);
+
 		SCR_PopUpNotification notification = SCR_PopUpNotification.GetInstance();
-		if (notification)
-			notification.PopupMsg(message);
+		if (!notification)
+		{
+			Print("[CRF_CTF] WARNING: SCR_PopUpNotification.GetInstance() returned null - the popup entity doesn't exist in this world at all.", LogLevel.WARNING);
+			return;
+		}
+
+		if (!COA_Gamemode.GetInstance())
+			Print("[CRF_CTF] WARNING: COA_Gamemode.GetInstance() is null. SCR_PopUpNotification.ProcessInit() (see CRF's COA_PopUpNotification.c) never builds its widgets without a COA_Gamemode present, so PopupMsg() below is expected to do nothing - the mission's GameMode entity needs to be (or extend) COA_Gamemode.", LogLevel.WARNING);
+
+		notification.PopupMsg(message);
 	}
 
 	//===================================================================================

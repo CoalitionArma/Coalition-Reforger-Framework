@@ -21,9 +21,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  components {
   CRF_CTFGamemodeManager "{6A273964079A0662}" {
    m_eGameModeType "Neutral"
-   m_TeamAMarkerPrefab "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et"
-   m_TeamBMarkerPrefab "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et"
    m_iScoreToWin 1
+   m_sCaptureSound "{3A201FA286FF5D35}Sounds/UI/Samples/Editor/Ping_Chords/A.wav"
   }
   CRF_CommunityTagManager "{69651E04AFDA77E5}" {
   }
