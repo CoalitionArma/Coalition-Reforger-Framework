@@ -70,6 +70,8 @@ modded class COA_GamemodeManager
 		if (!playerCharacter)
 			return false;
 		
+		playerCharacter.MarkIsPlayer();
+		
 		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 		if (!playerRplComp)
 			return false;
@@ -103,13 +105,11 @@ modded class COA_GamemodeManager
 				TryNotifyStatsManager(playerId, playerRplComp.Id(), 0);
 			}
 			else
-			{
 				//Sends the player the respawn screen if they reconnect while dead
 				if (m_SlottingManager.IsPlayerInASlot(playerId) && m_SlottingManager.IsPlayerConsideredDead(playerId) && m_RespawnManager.CanPlayerRespawn(playerCharacter, faction.GetFactionKey(), playerId))
 					m_RplBroadcastManager.SendRespawnScreen(playerId);
-			}
 
-			m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, playerRplComp.Id());
+			m_RplBroadcastManager.VerifyPlayerBroadcast(playerId, playerRplComp.Id());
 		};
 
 		return true;
