@@ -62,4 +62,17 @@ modded class COA_ShapeMarker
 
 	//------------------------------------------------------------------------------------------------
 	float GetShapeBorderWidth() { return m_fShapeBorderWidth; }
+
+	//------------------------------------------------------------------------------------------------
+	//! Sets the marker's hover label on this machine
+	void SetShapeName(string label)
+	{
+		m_sDescription = label;
+
+		if (m_hManualMarkerComponent)
+			m_hManualMarkerComponent.SetDescription(m_sDescription, m_bJustText);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	string GetShapeName() { return m_sDescription; }
 }
