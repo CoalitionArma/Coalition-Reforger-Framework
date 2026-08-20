@@ -1,6 +1,12 @@
 COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
- coords 2440.633 157.75 9464.747
+ coords 2436.642 161.928 9492.115
  angles 0 0 0
  m_MarkerColor 0.259 0.686 0.686 1
  m_sDescription "No Mans Land"
+}
+COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 2436.63 161.595 9491.967
+ m_MarkerColor 0.259 0.686 0.686 1
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
 }

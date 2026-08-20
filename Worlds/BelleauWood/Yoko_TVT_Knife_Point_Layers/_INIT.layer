@@ -36,15 +36,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "Russian and French forces fight over No Mans Land."\
    ""\
-   "BLUFOR Composition: Infatry Platoon"\
+   "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: 1x MMG"\
    ""\
    "OPFOR Composition: Infantry Platoon"\
-   "OPFOR Assets: 1xMMG"\
+   "OPFOR Assets: 1x MMG"\
    ""\
    "Time: 5:00am"\
    ""\
-   "Weather: Clear"
+   "Weather: C"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -52,13 +52,16 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A23764626AE7754}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Capture No Mans Land"\
+   "Or"\
+   "Reduce Enemy Forces by 80%"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "This is a man vs man mission, no crazy assets just pure leadership and good skill expression. The capture area is surround by craters and trenches you could use these as cover to get up close and personal with the enemy."\
+   ""\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -67,13 +70,17 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A23764626AE77C1}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Capture No Mans Land"\
+   "Or"\
+   "Reduce Enemy Forces by 80%"\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "This is a man vs man mission, no crazy assets just pure leadership and good skill expression. The capture area is surround by craters and trenches you could use these as cover to get up close and personal with the enemy."\
+   ""\
+   ""\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "OPFOR"
    }
@@ -96,7 +103,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A23764626AE48DE}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData ""
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
