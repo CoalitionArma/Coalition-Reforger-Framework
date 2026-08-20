@@ -1,0 +1,285 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 4425.403 327.407 10693.189
+ }
+ {
+  coords 4407.187 327.406 10731.294
+ }
+ {
+  coords 4390.786 327.407 10757.989
+ }
+ {
+  coords 4371.239 327.405 10790.869
+ }
+ {
+  coords 4354.613 327.405 10819.141
+ }
+ {
+  coords 4334.237 327.405 10854.228
+ }
+ {
+  coords 4428.465 327.409 10695.36
+ }
+}
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords 4398.172 327.404 10784.983
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4379.457 327.406 10813.424
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4361.997 327.41 10844.22
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4415.627 327.407 10753.48
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4433.279 327.404 10722.64
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4452.805 327.409 10688.49
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_fSpawnDistance 14
+   m_fSpawnSpacing 14
+   m_fVehicleFacingOffset 180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "LAV25"
+     m_sVehiclePrefab "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+     m_eCostType USES
+     m_iCost 6
+    }
+    CRF_VehicleDepotVehicle "{6A28383E915A7CA5}" {
+     m_sVehicleName "VBCI"
+     m_sVehiclePrefab "{2834E391EC6FC919}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBCI/VBCI_Dragar_CE.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+    CRF_VehicleDepotVehicle "{6A28383EAE3E95AD}" {
+     m_sVehicleName "VBCI"
+     m_sVehiclePrefab "{2834E391EC6FC919}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/VBCI/VBCI_Dragar_CE.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+   }
+  }
+ }
+ coords 4488.821 327.407 10776.86
+ angles 0 60.328 0
+}

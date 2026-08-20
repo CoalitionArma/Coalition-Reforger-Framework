@@ -359,7 +359,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		// Unconditional so it appears in EVERY log - server and client alike. If this line is
 		// absent from a machine's log, that machine is not running this build of the script.
-		Print(string.Format("[CRF_CacheHunt] BUILD MARKER rev9 | OnWorldPostProcess | RplSession.Mode=%1 | IsServer=%2 | attacker=%3 defender=%4",
+		Print(string.Format("[CRF_CacheHunt] BUILD MARKER rev10 | OnWorldPostProcess | RplSession.Mode=%1 | IsServer=%2 | attacker=%3 defender=%4",
 			RplSession.Mode(), Replication.IsServer(), m_AttackingSide, m_DefendingSide), LogLevel.NORMAL);
 
 		// Markers are drawn by any machine with a local player, which includes a listen
@@ -493,7 +493,25 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 				continue;
 			}
 
-			positions.Insert(spawnPoint.GetOrigin());
+			vector position = spawnPoint.GetOrigin();
+
+			// A named point is a deliberate placement, so move it as little as possible -
+			// but a cache underwater cannot be reached, defended or destroyed.
+			if (!IsPositionOnLand(position))
+			{
+				vector onLand;
+				if (FindNearbyLand(position, onLand))
+				{
+					Print(string.Format("[CRF_CacheHunt] Cache spawn point '%1' is in water. Moved the cache %2m to the nearest land.", entityName, (int)vector.Distance(position, onLand)), LogLevel.WARNING);
+					position = onLand;
+				}
+				else
+				{
+					Print(string.Format("[CRF_CacheHunt] Cache spawn point '%1' is in water and no land was found within %2m. Move it in the world editor.", entityName, (int)LAND_SEARCH_RADIUS), LogLevel.ERROR);
+				}
+			}
+
+			positions.Insert(position);
 		}
 	}
 
@@ -532,9 +550,16 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 				if (!IsFarEnoughFromOthers(candidate, positions))
 					continue;
 
+				if (!IsPositionOnLand(candidate))
+					continue;
+
 				vector settled;
 				if (SCR_WorldTools.FindEmptyTerrainPosition(settled, candidate, CACHE_CLEARANCE_RADIUS))
 					candidate = settled;
+
+				// FindEmptyTerrainPosition can nudge the position into water it was clear of
+				if (!IsPositionOnLand(candidate))
+					continue;
 
 				placed = true;
 				break;
@@ -542,11 +567,80 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 			if (!placed)
 			{
-				Print(string.Format("[CRF_CacheHunt] Could not find a spot for randomised cache %1 that respects the minimum separation. Placing it anyway.", i + 1), LogLevel.WARNING);
+				// Separation is a preference; dry land is not. Retry ignoring separation
+				// rather than dropping a cache into the sea.
+				for (int attempt = 0; attempt < RANDOM_PLACEMENT_ATTEMPTS; attempt++)
+				{
+					float angle = Math.RandomFloat(0, Math.PI2);
+					float distance = Math.RandomFloat(minRadius, maxRadius);
+
+					candidate = centreOrigin;
+					candidate[0] = centreOrigin[0] + Math.Cos(angle) * distance;
+					candidate[2] = centreOrigin[2] + Math.Sin(angle) * distance;
+					candidate[1] = SCR_TerrainHelper.GetTerrainY(candidate);
+
+					if (!IsPositionOnLand(candidate))
+						continue;
+
+					placed = true;
+					break;
+				}
+
+				if (placed)
+					Print(string.Format("[CRF_CacheHunt] Could not place randomised cache %1 with the minimum separation. Placed it closer to another cache to keep it on land.", i + 1), LogLevel.WARNING);
+				else
+					Print(string.Format("[CRF_CacheHunt] Could not find any land for randomised cache %1 between %2m and %3m of the centre. Check the centre entity and radii.", i + 1, (int)minRadius, (int)maxRadius), LogLevel.ERROR);
 			}
 
 			positions.Insert(candidate);
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[in] position World position to test
+	//! \return True when there is no water surface over this position
+	protected bool IsPositionOnLand(vector position)
+	{
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+			return true;
+
+		// Same test vanilla fast travel uses to refuse a destination. Covers lakes and rivers
+		// as well as the sea, which a plain ocean-height comparison would miss.
+		return !ChimeraWorldUtils.TryGetWaterSurfaceSimple(world, position);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Searches outward in rings for dry land near a position.
+	//! \param[in] position Where to search from
+	//! \param[out] landPosition Nearest land found, on the terrain
+	//! \return True when land was found within LAND_SEARCH_RADIUS
+	protected bool FindNearbyLand(vector position, out vector landPosition)
+	{
+		int rings = (int)Math.Ceil(LAND_SEARCH_RADIUS / LAND_SEARCH_STEP);
+
+		for (int ring = 1; ring <= rings; ring++)
+		{
+			float radius = ring * LAND_SEARCH_STEP;
+
+			for (int i = 0; i < LAND_SEARCH_SAMPLES; i++)
+			{
+				float angle = Math.PI2 * i / LAND_SEARCH_SAMPLES;
+
+				vector candidate = position;
+				candidate[0] = position[0] + Math.Cos(angle) * radius;
+				candidate[2] = position[2] + Math.Sin(angle) * radius;
+				candidate[1] = SCR_TerrainHelper.GetTerrainY(candidate);
+
+				if (!IsPositionOnLand(candidate))
+					continue;
+
+				landPosition = candidate;
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -2272,6 +2366,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	protected static const ResourceName DESTRUCTION_EFFECT = "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et";
 	protected static const float CACHE_CLEARANCE_RADIUS	= 3;
 	protected static const int FLAG_SPAWN_CANDIDATES	= 8;
+	//! Outward search for dry land when a cache lands in water
+	protected static const float LAND_SEARCH_RADIUS		= 120;
+	protected static const float LAND_SEARCH_STEP		= 10;
+	protected static const int LAND_SEARCH_SAMPLES		= 12;
 	//! 1 - normal.y. Roughly 25 degrees, which a pole sits on without looking planted in a wall.
 	protected static const float FLAG_ACCEPTABLE_SLOPE	= 0.1;
 	//! Vertical probe window around the cache's own height, in metres
