@@ -627,7 +627,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			m_bTeamBScoreLimitAnnounced = true;
 
 		Print(string.Format("[CRF_CTF] %1 reached the score limit (%2 captures). Announcing only - match continues.", scoringTeam, score), LogLevel.NORMAL);
-		BroadcastMessage(string.Format("%1 has reached the score limit! Score: %2", scoringTeam, GetScoreLine()), m_sCaptureSound);
+		BroadcastMessage(string.Format("%1 has won! Score: %2", scoringTeam, GetScoreLine()), m_sCaptureSound);
 	}
 
 	//===================================================================================

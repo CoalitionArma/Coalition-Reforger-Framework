@@ -54,6 +54,9 @@ GenericEntity : "{37535B53F57D1632}Prefabs/Items/Demining/MineFlags/MineFlag_bas
      "Sort Priority" 99
     }
     CRF_CTF_PickUpFlagAction "{6A273966B50E474D}" {
+     ParentContextList {
+      "default"
+     }
      UIInfo SCR_ActionUIInfo "{6A2739660719B357}" {
       Name "Carry Flag"
       m_sIconName "pick-up"

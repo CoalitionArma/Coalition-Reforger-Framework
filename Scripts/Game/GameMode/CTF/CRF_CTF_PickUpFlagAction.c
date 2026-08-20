@@ -9,14 +9,31 @@ class CRF_CTF_PickUpFlagAction : ScriptedUserAction
 {
 	protected CRF_CTF_FlagComponent m_FlagComponent;
 
+	// Throttles CanBeShownScript logging to state transitions only - the interaction system
+	// calls it continuously while a player is in range, so logging every call would flood
+	// the log without adding information.
+	protected string m_sLastLoggedVisibilityReason = "";
+
 	//------------------------------------------------------------------------------------------------
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
 		if (!GetGame().InPlayMode())
+		{
+			Print("[CRF_CTF] PickUpFlagAction.Init: skipped, GetGame().InPlayMode() is false on this machine.", LogLevel.WARNING);
 			return;
+		}
 
-		if (pOwnerEntity)
-			m_FlagComponent = CRF_CTF_FlagComponent.Cast(pOwnerEntity.FindComponent(CRF_CTF_FlagComponent));
+		if (!pOwnerEntity)
+		{
+			Print("[CRF_CTF] PickUpFlagAction.Init: no owner entity passed in.", LogLevel.WARNING);
+			return;
+		}
+
+		m_FlagComponent = CRF_CTF_FlagComponent.Cast(pOwnerEntity.FindComponent(CRF_CTF_FlagComponent));
+		if (!m_FlagComponent)
+			Print(string.Format("[CRF_CTF] PickUpFlagAction.Init: entity '%1' has no CRF_CTF_FlagComponent - this action will never be shown.", pOwnerEntity.GetName()), LogLevel.WARNING);
+		else
+			Print(string.Format("[CRF_CTF] PickUpFlagAction.Init: bound to flag '%1' on entity '%2'.", m_FlagComponent.GetDisplayName(), pOwnerEntity.GetName()), LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -58,23 +75,58 @@ class CRF_CTF_PickUpFlagAction : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownScript(IEntity user)
 	{
-		if (!m_FlagComponent || !user)
+		string reason;
+		bool result = EvaluateVisibility(user, reason);
+
+		if (reason != m_sLastLoggedVisibilityReason)
+		{
+			m_sLastLoggedVisibilityReason = reason;
+			Print(string.Format("[CRF_CTF] PickUpFlagAction.CanBeShownScript -> %1 (%2)", result, reason), LogLevel.NORMAL);
+		}
+
+		return result;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \param[out] reason Why the result came out the way it did, for CanBeShownScript's logging
+	protected bool EvaluateVisibility(IEntity user, out string reason)
+	{
+		if (!m_FlagComponent)
+		{
+			reason = "no CRF_CTF_FlagComponent bound - Init() never found one on this entity";
 			return false;
+		}
+
+		if (!user)
+		{
+			reason = "no user entity passed in";
+			return false;
+		}
 
 		if (m_FlagComponent.IsCarried())
+		{
+			reason = "flag is already carried";
 			return false;
+		}
 
 		FactionKey userFaction = GetUserFactionKey(user);
 		if (userFaction.IsEmpty())
+		{
+			reason = "user has no FactionAffiliationComponent / no affiliated faction";
 			return false;
+		}
 
 		FactionKey flagFaction = m_FlagComponent.GetOwningFaction();
 
 		// A docked home flag can only be stolen by the opposing faction - your own
 		// team's flag isn't "picked up" until an enemy has taken it out of base.
 		if (m_FlagComponent.IsAtBase() && !flagFaction.IsEmpty() && userFaction == flagFaction)
+		{
+			reason = string.Format("user faction %1 matches this docked home flag's owning faction", userFaction);
 			return false;
+		}
 
+		reason = string.Format("visible (user faction %1)", userFaction);
 		return true;
 	}
 
