@@ -91,7 +91,7 @@ class CRF_CTF_FlagComponent : ScriptComponent
 		string factionLabel = m_eOwningFaction;
 		if (factionLabel.IsEmpty())
 			factionLabel = "NONE (neutral)";
-		Print(string.Format("[CRF_CTF] Flag '%1' (Owning Faction: %2) registered. RplComponent present: %3", m_sFlagDisplayName, factionLabel, owner.FindComponent(RplComponent) != null), LogLevel.NORMAL);
+		//Print(string.Format("[CRF_CTF] Flag '%1' (Owning Faction: %2) registered. RplComponent present: %3", m_sFlagDisplayName, factionLabel, owner.FindComponent(RplComponent) != null), LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------
