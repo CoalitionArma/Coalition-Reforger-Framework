@@ -1,0 +1,68 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 2083.737 78.49 3663.634
+  angles 0 -180 0
+  m_rVehicle "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2082.648 78.814 3679.454
+  angles 0 -180 0
+  m_rVehicle "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2093.742 78.527 3653.958
+  angles 0 -180 0
+  m_rVehicle "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2093.826 78.954 3671.414
+  angles 0 -180 0
+  m_rVehicle "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2087.056 78.112 3644.116
+  angles 0 -180 0
+  m_rVehicle "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2075.202 78.103 3625.398
+  angles 0 -180 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2091.034 78.292 3619.626
+  angles 0 -180 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 1999.574 77.066 3678.319
+  angles 0 -180 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2015.853 77.181 3671.764
+  angles 0 -180 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2059.408 77.131 3624.989
+  angles 0 -180 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_iRespawnTimer 999999
+ }
+ {
+  coords 2051.5 77.078 3629.488
+  angles 0 -180 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_iRespawnTimer 999999
+ }
+}
