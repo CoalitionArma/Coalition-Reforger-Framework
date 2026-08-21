@@ -1,0 +1,771 @@
+GenericEntity : "{080E381B512E1B01}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x15x3.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     BaseDamageMultiplier 151.6
+    }
+   }
+  }
+ }
+ coords 546.131 128.601 343.298
+ angles -1.25 -63.582 1.008
+}
+GenericEntity : "{0C51EDCEEC144BC1}Prefabs/Compositions/Misc/SubCompositions/CrateWooden_Cluttered_US_03.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{6684B114DDC8D314}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     BaseDamageMultiplier 153.8
+    }
+   }
+  }
+ }
+ coords 515.98 128.631 336.025
+ angles 0 28.957 0
+}
+$grp GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 527.102 128.641 339.439
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 522.19 129.175 341.006
+  angles -89.966 -151.044 180
+  scale 1.03
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 532.165 128.654 344.221
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 529.674 128.635 339.306
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 544.583 128.655 357.71
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 523.492 128.665 339.898
+  angles 0 -40.541 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 539.828 128.659 352.319
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 520.94 128.665 339.205
+  angles 0 28.957 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 526.01 130.327 343.437
+  angles 0 -52.802 -90
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 544.471 128.644 354.036
+  angles 0 109.129 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 533.058 128.626 342.262
+  angles 0 -21.282 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 145
+     }
+    }
+   }
+  }
+  coords 540.491 129.093 340.585
+  angles -89.966 -151.044 180
+  scale 1.03
+ }
+}
+$grp StaticModelEntity : "{B08DF585ECD2CF4D}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareNarrow.et" {
+ {
+  coords 516.563 128.083 336.393
+  angles 0 -23.98 -90
+  scale 3.769
+ }
+ {
+  coords 526.377 128.083 340.423
+  angles 0 -33.4 -90
+  scale 3.769
+ }
+ {
+  coords 540.568 128.149 350.451
+  angles 0 -41.615 -90
+  scale 3.43
+ }
+ {
+  coords 553.28 127.744 331.229
+  angles 0 -129.544 -90
+  scale 5.792
+ }
+ {
+  coords 551.216 128.149 351.444
+  angles 0 -48.825 -90
+  scale 3.43
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{DB114F623141F302}Prefabs/Structures/Walls/Stone/StoneRetainingWall_01/StoneRetainingWall_01_8m_V2.et" {
+ {
+  coords 543.711 130.37 342.746
+  angles 0 50.598 0
+  scale 1.214
+ }
+ {
+  coords 548.513 130.37 336.9
+  angles 0 50.598 0
+  scale 1.214
+ }
+}
+$grp GenericEntity : "{E4416C4C6938BEEE}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x1.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 525.253 128.622 343.179
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 525.965 128.638 339.246
+  angles 0 1.32 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 513.636 128.66 333.169
+  angles 0 -34.488 0
+  scale 0.902
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 518.68 128.644 340.227
+  angles 0 68.924 0
+  scale 1.161
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 521.724 128.632 336.8
+  angles 0 43.708 0
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 541.311 128.633 350.441
+  angles 0 34.757 0
+  scale 1.161
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 519.849 128.613 335.253
+  angles 1.43 -15.795 -1.417
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 528.177 128.652 344.84
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 531.01 128.618 339.95
+  angles 1.961 42.029 0.455
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 527.88 128.683 343.011
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 518.541 128.646 337.412
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 526.737 128.645 344.013
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 524.43 128.622 337.335
+  angles 0.01 -60.769 -2.013
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 526.495 128.655 342.748
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 540.681 128.648 354.208
+  angles 0 34.757 0
+  scale 1.161
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 529.675 128.634 342.139
+  angles 1.43 -15.795 -1.417
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 525.245 128.656 341.929
+  angles 0.931 91.436 1.785
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 529.197 128.668 343.51
+  angles 1.995 21.135 -0.274
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 529.646 128.587 340.629
+  angles 1.861 6.528 -0.768
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 530.414 128.648 346.153
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 528.111 129.812 343.962
+  angles 1.641 64.351 1.166
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 536.885 128.318 350.681
+  angles 0.647 -42.313 -1.906
+  scale 1.51
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 542.566 128.617 337.691
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 546.019 128.631 336.011
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 554.852 128.598 335.133
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 549.641 128.599 339.886
+  angles 1.908 10.351 -0.642
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 552.83 128.602 338.54
+  angles 0.567 -44.68 -1.931
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 536.285 128.64 345.917
+  angles 1.961 42.029 0.455
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 547.035 128.608 346.443
+  angles 1.961 42.029 0.455
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 538.501 128.284 348.693
+  angles 0.847 -36.165 -1.826
+  scale 1.933
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 559.096 128.656 358.621
+  angles -0.471 145.697 1.957
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 553.149 128.645 351.979
+  angles 0.398 120.775 1.973
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 543.277 127.071 360.388
+  angles 0.1 -130.176 2.01
+  scale 1.864
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 544.977 126.892 363.77
+  angles 0.1 -130.176 2.01
+  scale 1.864
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 547.363 126.993 361.962
+  angles -0.884 -101.271 1.808
+  scale 1.864
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 550.784 127.751 359.578
+  angles -0.285 127.073 1.992
+  scale 1.864
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 533.969 128.643 348.314
+  angles 0.1 116.1 2.01
+  scale 1.864
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 549.614 128.598 355.506
+  angles 0.398 107.559 1.973
+  scale 1.18
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 149.2
+     }
+    }
+   }
+  }
+  coords 553.972 128.672 356.46
+  angles 0.398 120.775 1.973
+  scale 1.18
+ }
+}
