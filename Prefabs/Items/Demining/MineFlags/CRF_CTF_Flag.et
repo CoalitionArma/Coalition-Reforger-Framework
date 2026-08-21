@@ -1,0 +1,82 @@
+GenericEntity : "{37535B53F57D1632}Prefabs/Items/Demining/MineFlags/MineFlag_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  CRF_CTF_FlagComponent "{6A273966952EFB68}" {
+  }
+  MeshObject "{5A2CCE4594CABF3B}" {
+   Object "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+  }
+  RigidBody "{5A2CCE4594CABF3D}" {
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5C7EE70A42E61150}" {
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{5C7EE709989B2A10}" {
+     m_ModelPrefabs {
+      "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+     }
+    }
+   }
+  }
+  SCR_MineFlagComponent "{6A2739669A966159}" {
+  }
+  SCR_PlaceableInventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "#AR-Mines_Flag_Name"
+     Description "#AR-Mines_Flag_Description_US"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.1
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 250
+     RestingAdditiveRotationLS 0 0 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6A2739669A966145}" {
+      CameraOffset 0 0.15 -0.2
+     }
+    }
+    CommonItemType "NONE"
+    m_Size SLOT_1x1
+    m_SlotType SLOT_ANY
+   }
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_PickUpItemAction "{51EC842E3A187379}" {
+     UIInfo SCR_ActionUIInfo "{51EC842E413D3E1D}" {
+      Name "Use the other action"
+     }
+     Duration 99
+     "Sort Priority" 99
+    }
+    CRF_CTF_PickUpFlagAction "{6A273966B50E474D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo SCR_ActionUIInfo "{6A2739660719B357}" {
+      Name "Carry Flag"
+      m_sIconName "pick-up"
+     }
+     ActionTitle "Carry Flag"
+    }
+   }
+  }
+ }
+ coords 108.8 1.001 164.934
+ {
+  COA_ManualMarker : "{7B677FB61E410D0D}PrefabsMissionMaking/Markers/ObjectiveMarkers/ObjectiveMarker_Base.et" {
+   ID "6A27396049491998"
+   coords 1.067 -0.329 -0.185
+   m_MarkerColor 0.761 0.03 0.008 1
+   m_sQuadName "flag-2"
+   m_fWorldSize 60
+   m_sDescription "Flag"
+   m_bVisibleForEmptyFaction 1
+   m_bShowForAnyFaction 1
+  }
+ }
+}

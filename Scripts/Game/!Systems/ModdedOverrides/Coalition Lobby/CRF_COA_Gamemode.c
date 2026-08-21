@@ -129,28 +129,14 @@ modded class COA_Gamemode
 	//! \param[in] iPlayerID ID of the connecting player
 	protected override void OnPlayerAuditSuccess(int iPlayerID)
 	{
+		// vanilla here is COA_Gamemode's own (pre-CRF) OnPlayerAuditSuccess, which already does the
+		// reconnect-GUID restore and QueuePlayerInitialization(iPlayerID) - don't repeat that here,
+		// this override only adds CRF-specific privilege checks on top.
 		vanilla.OnPlayerAuditSuccess(iPlayerID);
-		
+
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
-		
-		// Reconnect restore: if this player has a pending GUID entry, force-update their slot's
-		// player ID before InitilizePlayer runs so IsPlayerInASlot() finds the correct slot.
-		// This handles dedicated-server scenarios where a reconnecting player may get a new
-		// numeric player ID but the GUID (BI account identity) remains the same.
-		if (IsMaster() && m_SlottingManager)
-		{
-			string reconnectGuid = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
-			int savedSlotId;
-			if (!reconnectGuid.IsEmpty() && m_mReconnectSlotByGuid.Find(reconnectGuid, savedSlotId))
-			{
-				m_mReconnectSlotByGuid.Remove(reconnectGuid);
-				m_SlottingManager.ForceUpdateSlotPlayerID(savedSlotId, iPlayerID);
-			}
-		}
-		
-		QueuePlayerInitialization(iPlayerID);
 
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
