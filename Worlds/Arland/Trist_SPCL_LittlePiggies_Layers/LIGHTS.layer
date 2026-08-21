@@ -1,0 +1,249 @@
+$grp LightEntity : "{FF5D8ABF8AFBC7CD}Prefabs/Vehicles/Helicopters/UH1H/Lights/VehicleLight_UH1H_AntiCollision.et" {
+ {
+  coords 421.443 136.141 401.223
+  angles 0 0 0
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 422.709 132.582 435.385
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.8118 0.5843 1
+  LV 6.55
+  Radius 8.55
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 425.518 132.582 444.271
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.8118 0.5843 1
+  LV 6.55
+  Radius 8.55
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 422.673 132.582 429.516
+  angles 0 0 0
+  scale 1.46
+  Color 0.2588 0.6863 0.6863 1
+  LV 6.55
+  Radius 8.55
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 421.988 132.582 424.988
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 6.55
+  Radius 8.55
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 421.466 132.582 419.293
+  angles 0 0 0
+  scale 1.46
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.55
+  Radius 8.55
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 419.95 132.582 412.544
+  angles 0 0 0
+  scale 1.46
+  Color 0.1912 0 0.1467 1
+  LV 6.55
+  Radius 9.87
+  NearPlane 1.35
+  DistanceAttenuation 1.13
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 426.831 134.723 388.155
+  angles 0 0 0
+  Color 0.8196 0.851 0.9373 1
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 494.072 179.002 417.131
+  angles 0 0 0
+  Color 0.8196 0.851 0.9373 1
+  LV 13.74
+  CastShadow 0
+  Radius 100
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 432.103 132.582 379.656
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.5843 0.8118 1
+  LV 9.5
+  Radius 7.89
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 438.695 132.582 370.274
+  angles 0 0 0
+  scale 1.46
+  Color 0.1569 0.2745 0.6235 1
+  LV 9.5
+  Radius 7.89
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 434.68 136.041 362.858
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.5843 0.8118 1
+  LV 9.5
+  Radius 12.5
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 445.936 138.102 353.988
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.5843 0.8118 1
+  LV 9.5
+  Radius 29.61
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 471.74 138.102 338.968
+  angles 0 0 0
+  scale 1.46
+  Color 0.5059 0.5843 0.8118 1
+  LV 9.5
+  Radius 29.61
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 499 136.816 332.255
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 399.015 141.991 363.511
+  angles 0 0 0
+  scale 1.46
+  Color 0.1569 0.2745 0.6235 1
+  LV 9.5
+  CastShadow 0
+  Radius 30.92
+  Dynamic 1
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 522.797 136.816 340.656
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 535.261 136.816 340.083
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 551.215 136.816 330.281
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 546.521 136.816 345.93
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 550.205 136.816 357.08
+  angles 0 0 0
+  scale 1.46
+  Color 0.0706 0.1922 0.5608 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 560.222 136.816 376.785
+  angles 0 0 0
+  scale 1.46
+  Color 0.502 0 0 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 567.538 134.22 409.607
+  angles 0 0 0
+  scale 1.46
+  Color 0 0.502 0.1255 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 565.269 134.22 429.025
+  angles 0 0 0
+  scale 1.46
+  Color 0 0.502 0.1255 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+ {
+  coords 558.861 134.22 461.557
+  angles 0 0 0
+  scale 1.46
+  Color 0.251 0 0.502 1
+  LV 8.21
+  Radius 15.79
+  ShowSource 0
+  SourceSize 0
+ }
+}

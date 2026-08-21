@@ -23,8 +23,30 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     }
    }
   }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 20
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 1
+  }
  }
  coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A1C30C701631B74}" {
    m_sTitle "Mission: Situation"
@@ -94,7 +116,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A1C30CB81D0CDCD}" {
+  COA_SlottingGroup "{6A2A8B6F9500115E}" {
    m_sCallsign "Piggies"
    m_FlagType INFANTRY
    m_aSlots {
@@ -190,7 +212,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A1C30CB81D0C084}" {
+  COA_SlottingGroup "{6A2A8B6F9501179B}" {
    m_sCallsign "Snipers"
    m_FlagType SNIPER
    m_aSlots {
@@ -207,6 +229,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{48FC68EDD40CF4AD}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LittlePiggies_Piggies.conf"
   m_bEnableBFT 0
@@ -280,7 +303,7 @@ $grp Turret : "{0A17C0D659FA2473}Prefabs/Weapons/Tripods/6G10/Tripod_6G10_AGS17.
   angles 0 175.021 0
  }
 }
-COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoints/OPFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
  coords 493.211 129.834 420.172
  angles 0 159.112 0
  m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
@@ -288,11 +311,29 @@ COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/Systems/SpawnPoin
   m_bSpawnPointConformsToTerrain 0
  }
 }
-COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/Systems/SpawnPoints/BLUFOR_Spawn.et" {
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
  coords 444.7 131.332 508.386
  angles 0 159.112 0
  m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
   m_iSpawnPointRadius 2
   m_bSpawnPointConformsToTerrain 0
  }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 443.566 130.175 507.22
+ Points {
+  ShapePoint "{6A1C30B5EF12BE94}" {
+   Position -25.255 0 -10.367
+  }
+  ShapePoint "{6A1C30B5EFDFB9FF}" {
+   Position -14.153 0 30.152
+  }
+  ShapePoint "{6A1C30B5EEA3A67C}" {
+   Position 27.31 0 19.837
+  }
+  ShapePoint "{6A1C30B5E15FB8F6}" {
+   Position 15.495 0 -20.789
+  }
+ }
+ m_fHeight 631.9
 }

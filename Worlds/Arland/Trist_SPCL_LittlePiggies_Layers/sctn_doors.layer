@@ -1,0 +1,346 @@
+$grp GenericEntity : "{562156E7147026C9}Prefabs/Structures/Industrial/Houses/FactoryHallWIP_01/FactoryHallWIP_01_pillar.et" {
+ {
+  coords 421.246 132.831 438.542
+  angles 89.549 -111.073 -36.218
+  scale 1.5
+  {
+   $grp GenericEntity : "{E66C8CFE0DC308BA}Prefabs/Structures/BuildingParts/Doors/Door_BrickWall_01_LEFT_EXT_COV_B.et" {
+    {
+     coords 0.067 6.09 -2.042
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords -0.007 3.566 -2.025
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.001 1.029 -2.009
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.008 -1.499 -1.993
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+    {
+     coords -0.073 4.223 -1.503
+     angles 89.586 151.56 -28.708
+     scale 0.113
+    }
+    {
+     coords -0.082 1.695 -1.487
+     angles 89.586 151.56 -28.708
+     scale 0.113
+    }
+    {
+     coords -0.091 -0.837 -1.471
+     angles 89.586 151.56 -28.708
+     scale 0.113
+    }
+    {
+     coords -0.099 -3.363 -1.455
+     angles 89.586 151.56 -28.708
+     scale 0.113
+    }
+   }
+  }
+ }
+ {
+  coords 419.705 132.815 432.52
+  angles 89.549 -111.073 -33.63
+  scale 1.5
+  {
+   $grp GenericEntity : "{E66C8CFE0DC308BA}Prefabs/Structures/BuildingParts/Doors/Door_BrickWall_01_LEFT_EXT_COV_B.et" {
+    {
+     coords -0.013 6.09 -2.012
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords -0.007 3.566 -1.988
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.001 1.029 -1.963
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.008 -1.498 -1.947
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+    {
+     coords -0.073 4.223 -1.503
+     angles 89.587 151.581 -28.686
+     scale 0.113
+    }
+    {
+     coords -0.082 1.695 -1.487
+     angles 89.587 151.581 -28.686
+     scale 0.113
+    }
+    {
+     coords -0.091 -0.837 -1.471
+     angles 89.587 151.581 -28.686
+     scale 0.113
+    }
+    {
+     coords -0.099 -3.363 -1.455
+     angles 89.587 151.581 -28.686
+     scale 0.113
+    }
+   }
+  }
+ }
+ {
+  coords 418.717 132.82 427.873
+  angles 89.549 -111.073 -30.323
+  scale 1.5
+  {
+   $grp GenericEntity : "{E66C8CFE0DC308BA}Prefabs/Structures/BuildingParts/Doors/Door_BrickWall_01_LEFT_EXT_COV_B.et" {
+    {
+     coords -0.013 6.09 -2.019
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords -0.006 3.566 -1.991
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.001 1.029 -1.995
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+    {
+     coords 0.008 -1.498 -1.961
+     angles -0.163 -89.732 89.636
+     scale 0.667
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+    {
+     coords -0.073 4.223 -1.503
+     angles 89.585 151.604 -28.664
+     scale 0.113
+    }
+    {
+     coords -0.082 1.695 -1.487
+     angles 89.585 151.604 -28.664
+     scale 0.113
+    }
+    {
+     coords -0.091 -0.837 -1.471
+     angles 89.585 151.604 -28.664
+     scale 0.113
+    }
+    {
+     coords -0.099 -3.363 -1.455
+     angles 89.585 151.604 -28.664
+     scale 0.113
+    }
+   }
+  }
+ }
+ {
+  coords 418.021 132.802 422.95
+  angles 89.549 -111.073 -28.1
+  scale 1.5
+  {
+   $grp GenericEntity : "{E66C8CFE0DC308BA}Prefabs/Structures/BuildingParts/Doors/Door_BrickWall_01_LEFT_EXT_COV_B.et" {
+    {
+     coords -0.013 6.09 -2.016
+     angles -0.163 -89.732 89.635
+     scale 0.667
+    }
+    {
+     coords -0.007 3.566 -2.008
+     angles -0.163 -89.732 89.635
+     scale 0.667
+    }
+    {
+     coords 0.001 1.029 -1.978
+     angles -0.163 -89.732 89.635
+     scale 0.667
+    }
+    {
+     coords 0.008 -1.498 -1.962
+     angles -0.163 -89.732 89.635
+     scale 0.667
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+    {
+     coords -0.073 4.223 -1.503
+     angles 89.583 151.616 -28.651
+     scale 0.113
+    }
+    {
+     coords -0.082 1.695 -1.487
+     angles 89.583 151.616 -28.651
+     scale 0.113
+    }
+    {
+     coords -0.091 -0.837 -1.471
+     angles 89.583 151.616 -28.651
+     scale 0.113
+    }
+    {
+     coords -0.099 -3.363 -1.455
+     angles 89.583 151.616 -28.651
+     scale 0.113
+    }
+   }
+  }
+ }
+ {
+  coords 418.042 132.847 415.389
+  angles 89.544 -110.57 -21.67
+  scale 1.5
+  {
+   $grp GenericEntity : "{E66C8CFE0DC308BA}Prefabs/Structures/BuildingParts/Doors/Door_BrickWall_01_LEFT_EXT_COV_B.et" {
+    {
+     coords -0.013 6.09 -2.101
+     angles -0.163 -89.732 89.637
+     scale 0.667
+    }
+    {
+     coords -0.006 3.566 -2.085
+     angles -0.163 -89.732 89.637
+     scale 0.667
+    }
+    {
+     coords 0.001 1.029 -2.069
+     angles -0.163 -89.732 89.637
+     scale 0.667
+    }
+    {
+     coords 0.008 -1.498 -2.053
+     angles -0.163 -89.732 89.637
+     scale 0.667
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{FF4D386515F942C0}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Pillar.et" {
+    {
+     coords -0.073 4.222 -1.541
+     angles 89.587 151.532 -28.735
+     scale 0.113
+    }
+    {
+     coords -0.082 1.695 -1.525
+     angles 89.587 151.532 -28.735
+     scale 0.113
+    }
+    {
+     coords -0.091 -0.837 -1.509
+     angles 89.587 151.532 -28.735
+     scale 0.113
+    }
+    {
+     coords -0.099 -3.363 -1.493
+     angles 89.587 151.532 -28.735
+     scale 0.113
+    }
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{B08DF585ECD2CF4D}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_SideSquareNarrow.et" {
+ {
+  coords 417.768 129.284 439.871
+  angles 0 16.63 -90
+  scale 3.769
+ }
+ {
+  coords 415.964 129.284 433.064
+  angles 0 12.136 -90
+  scale 3.769
+ }
+ {
+  coords 414.687 129.284 426.2
+  angles 0 8.302 -90
+  scale 3.769
+ }
+ {
+  coords 414.302 129.284 419.07
+  angles 0 0.067 -90
+  scale 3.769
+ }
+ {
+  coords 414.394 129.284 412.344
+  angles 0 -7.736 -90
+  scale 3.769
+ }
+}
+$grp GenericEntity : "{E73EA3C4C0031BCF}Prefabs/Structures/Walls/Brick/BrickWall_02/dst/Brick_wall_02_2m_dst_01_orange.et" {
+ {
+  coords 430.004 130.682 436.08
+  angles 0 -166.311 0
+ }
+ {
+  coords 422.864 130.783 437.847
+  angles 0 -166.311 0
+ }
+ {
+  coords 419.025 130.65 438.782
+  angles 0 -166.311 0
+ }
+ {
+  coords 428.515 130.627 430.246
+  angles 0 -166.311 0
+ }
+ {
+  coords 425.045 130.448 431.091
+  angles 0 -166.311 0
+ }
+ {
+  coords 417.593 130.627 432.672
+  angles 0 -166.311 0
+ }
+ {
+  coords 427.68 130.483 426.228
+  angles 0 -172.039 0
+ }
+ {
+  coords 416.284 130.483 428.034
+  angles 0 -172.039 0
+ }
+ {
+  coords 415.741 130.483 422.92
+  angles 0 -172.039 0
+ }
+ {
+  coords 419.699 130.319 422.436
+  angles 0 -172.039 0
+ }
+ {
+  coords 423.486 130.554 421.942
+  angles 0 -172.039 0
+ }
+ {
+  coords 423.4 130.27 415.126
+  angles 0 -178.9 0
+ }
+ {
+  coords 420.247 130.594 427.264
+  angles 0 -166.311 0
+ }
+ {
+  coords 427.015 130.27 415.005
+  angles 0 -178.9 0
+ }
+ {
+  coords 419.833 130.27 415.195
+  angles 0 -178.9 0
+ }
+}
