@@ -59,6 +59,19 @@ The placer makes 40 attempts per cache to satisfy the separation rule. If it can
 
 > **Note:** Randomisation happens **per mission start**, on the server. Both sides get a fresh layout every round.
 
+### Caches never spawn in water
+
+Every cache position is checked against the water surface before use, with `ChimeraWorldUtils.TryGetWaterSurfaceSimple` — the same test vanilla fast travel uses to refuse a destination. It covers lakes and rivers, not just the sea.
+
+| Placement | Behaviour |
+|-----------|-----------|
+| **Randomised** | Water candidates are rejected and another bearing is tried. If the minimum separation can't be met on land, separation is dropped rather than the cache — you get a warning saying so |
+| **Named entity** | The cache is moved to the nearest land within 120 m and a warning names the entity, so you can fix it properly in the editor |
+
+A named point with no land within 120 m logs an `ERROR` and is left where it is, rather than being flung somewhere unintended.
+
+Note the randomised path re-checks **after** `FindEmptyTerrainPosition`, since nudging a cache out of geometry can push it into water it was originally clear of.
+
 ---
 
 ## Gamemode Attributes
@@ -464,6 +477,8 @@ if (cacheHunt)
 | `Defender home flag '…' was not found` | You didn't place the flag, or its entity name doesn't match the attribute |
 | `Flag pole prefab '…' is missing CRF_CacheHunt_FlagComponent` | A custom flag prefab was used without the component |
 | `Search marker prefab '…' is not a COA_ShapeMarker` | The marker prefab doesn't inherit `ShapeMarker_Base.et` |
+| `Cache spawn point '…' is in water` | A named spawn point is submerged — the cache was moved to nearby land; fix the entity in the editor |
+| `Could not find any land for randomised cache N` | The randomisation centre and radii cover only water — move the centre or widen them |
 | Teleport actions missing on a dedicated server but fine in Workbench | The flag's cache index isn't reaching clients — see [Flag state is replicated by the gamemode](#flag-state-is-replicated-by-the-gamemode) |
 | Caches show the full default arsenal on a dedicated server | The client hasn't filled its own copy — see [The arsenal is filled on every machine](#the-arsenal-is-filled-on-every-machine-not-replicated) |
 | `No gearscript assigned to the defending faction` | The faction has no gearscript in the COA gamemode settings |
