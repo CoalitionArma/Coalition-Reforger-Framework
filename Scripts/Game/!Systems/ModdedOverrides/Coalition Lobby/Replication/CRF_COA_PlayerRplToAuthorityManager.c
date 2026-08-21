@@ -1511,7 +1511,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_RplId();
 		LogTelemetry("RpcAsk_RequestCTFFlagPickup", bytes);
 
-		Print(string.Format("[CRF_CTF] RpcAsk_RequestCTFFlagPickup received on server: playerId=%1, flagRplId=%2", playerId, flagRplId), LogLevel.NORMAL);
+		//Print(string.Format("[CRF_CTF] RpcAsk_RequestCTFFlagPickup received on server: playerId=%1, flagRplId=%2", playerId, flagRplId), LogLevel.NORMAL);
 
 		CRF_CTFGamemodeManager ctfGamemode = CRF_CTFGamemodeManager.GetInstance();
 		if (!ctfGamemode)
