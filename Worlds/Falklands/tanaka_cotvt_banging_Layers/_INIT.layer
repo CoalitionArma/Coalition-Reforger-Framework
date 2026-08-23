@@ -269,6 +269,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_bSeperateSpectatorsByFaction 1
+ m_bHideOtherSpectatorFactions 1
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{52AFB3AF94AE003E}Configs/Gearscripts/Standard/Modern/COA_GS_RHSUSMC_2008.conf"
