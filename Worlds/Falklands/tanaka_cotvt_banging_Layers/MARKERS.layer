@@ -1,0 +1,125 @@
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 7443.346 4.906 6232.717
+ {
+  COA_ManualMarker {
+   ID "68682AC1849E53AF"
+   m_fWorldSize 30
+   m_bUseWorldScale 0
+  }
+ }
+}
+COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 9133.498 113.731 5522.594
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+ m_fWorldSizeX 500
+ m_fWorldSizeY 500
+}
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 9237.251 3.843 6808.027
+  m_MarkerColor 0.749 0.655 0.376 1
+  m_fWorldSize 50
+  m_sDescription "VEHICLE DEPOT"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9130.939 113.316 5529.475
+  m_fWorldSize 80
+  m_sDescription "OBJ B: BUILD FOB"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 8912.688 48.806 5168.644
+  m_MarkerColor 0.795 0.006 0.018 1
+  m_sQuadName "mark-exclamation-2"
+  m_fWorldSize 50
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9365.063 4.721 6643.096
+  m_MarkerColor 0.795 0.006 0.018 1
+  m_sQuadName "mark-exclamation-2"
+  m_fWorldSize 50
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7463.667 33.088 5884.128
+  m_MarkerColor 0.795 0.006 0.018 1
+  m_sQuadName "mark-exclamation-2"
+  m_fWorldSize 50
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7333.792 7.128 6259.301
+  m_fWorldSize 80
+  m_sDescription "OBJ C: SECURE BRIDGE"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6338.533 32.023 5545.985
+  m_MarkerColor 0.795 0.006 0.018 1
+  m_sQuadName "mark-exclamation-2"
+  m_fWorldSize 50
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9778.024 48.406 8495.301
+  angles 0 143.097 0
+  m_MarkerColor 0.002 0.001 0.001 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 60
+  m_sDescription ""
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9858.237 53.982 8393.619
+  angles 0 170.307 0
+  m_MarkerColor 0.002 0.001 0.001 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 60
+  m_sDescription "Landing"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9522.44 90.409 8769.497
+  angles 0 93.943 0
+  m_MarkerColor 0.002 0.001 0.001 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 60
+  m_sDescription "Landing"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 9618.254 5.498 8427.487
+  m_fWorldSize 80
+  m_sDescription "OBJ A: BUILD BEACHHEAD"
+  m_bUseWorldScale 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

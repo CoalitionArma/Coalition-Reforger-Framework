@@ -1,0 +1,7 @@
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 9633.845 7.454 8426.901
+ angles 0 0.819 0
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
+  m_sSpawnPointName "Beach"
+ }
+}
