@@ -41,7 +41,7 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
       SlotTemplate InventoryStorageSlot ammo {
        Prefab "{E77E3B271E591F34}Prefabs/Weapons/Core/Mag_9M133.et"
       }
-      NumSlots 25
+      NumSlots 15
      }
      MultiSlotConfiguration "{6A31042BB4A1ED1B}" {
       SlotTemplate InventoryStorageSlot ammo {

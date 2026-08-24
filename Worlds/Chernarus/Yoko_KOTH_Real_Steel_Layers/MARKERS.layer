@@ -9,8 +9,8 @@ COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/S
  coords 4539.535 306.427 8305.042
  m_MarkerColor 0 0 0 1
  m_bShowForAnyFaction 1
- m_fWorldSizeX 982
- m_fWorldSizeY 982
+ m_fWorldSizeX 1000
+ m_fWorldSizeY 1000
  {
   COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
    coords 0.455 -0.004 0.654

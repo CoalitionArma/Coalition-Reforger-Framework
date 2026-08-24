@@ -7,8 +7,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 12
+     m_sWeatherPresetName "Dry Thunder (Overcast)"
+     m_iStartingHour 18
      m_iStartingMinutes 0
     }
    }
@@ -39,9 +39,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "OPFOR Assets: 9x T72B, 2x HAT and 1x Recon (Drone Ops)"\
    ""\
    ""\
-   "Time: 12:00"\
+   "Time: 18:00"\
    ""\
-   "Weather: Cloudy"
+   "Weather: Dry Thunder (Overcast)"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -422,7 +422,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A314D46CE92C8F3" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {

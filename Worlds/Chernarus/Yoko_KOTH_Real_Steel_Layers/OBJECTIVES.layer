@@ -5,7 +5,6 @@ GameEntity {
    m_fCaptureRadius 500
    m_iCountdownSeconds 900
    m_iMinPlayersToCapture 3
-   m_bResetOnLostControl 0
   }
  }
  coords 4539.949 306.448 8305.1
