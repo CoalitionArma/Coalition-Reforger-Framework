@@ -1,0 +1,123 @@
+$grp COA_ObjectSpawner : "{B2BC4A98A3D3ADF7}PrefabsMissionMaking/SpawnPoints/ObjectSpawner/Object_Spawner.et" {
+ {
+  coords 6950.271 313.778 5752.828
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 6949.697 313.741 5756.041
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 6949.412 313.67 5758.897
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 2258.682 240 9632.117
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 2255.487 240 9632.493
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 2252.109 240 9632.212
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 2249.12 240 9632.212
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+ {
+  coords 6951.975 313.622 5754.251
+  m_rObject "{E4B61F751D2B8B7E}Prefabs/Weapons/Tripods/Tripod_KORNET.et"
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A31042B81209783}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{E77E3B271E591F34}Prefabs/Weapons/Core/Mag_9M133.et"
+      }
+      NumSlots 25
+     }
+     MultiSlotConfiguration "{6A31042BB4A1ED1B}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{6974F10960FFE79A}Prefabs/Weapons/Core/Mag_9M133F.et"
+      }
+      NumSlots 25
+     }
+    }
+   }
+  }
+  coords 4567.559 307.223 8349.644
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A31042B81209783}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{E77E3B271E591F34}Prefabs/Weapons/Core/Mag_9M133.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A31042BB4A1ED1B}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{6974F10960FFE79A}Prefabs/Weapons/Core/Mag_9M133F.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A3110DC38B885A5}" {
+      SlotTemplate InventoryStorageSlot ant {
+       Prefab "{F09518802063A355}Prefabs/Items/Equipment/DroneAntenna/DroneAntenna.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A3110DD40798AA9}" {
+      SlotTemplate InventoryStorageSlot drone {
+       Prefab "{FDA92D590B9C633B}Prefabs/Drones/DJIBase/DJIBase.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+  }
+  coords 6952.541 313.573 5756.39
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A31042B81209783}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{E77E3B271E591F34}Prefabs/Weapons/Core/Mag_9M133.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A31042BB4A1ED1B}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{6974F10960FFE79A}Prefabs/Weapons/Core/Mag_9M133F.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A3110DC03D596F2}" {
+      SlotTemplate InventoryStorageSlot ant {
+       Prefab "{F09518802063A355}Prefabs/Items/Equipment/DroneAntenna/DroneAntenna.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A3110DD7759C30B}" {
+      SlotTemplate InventoryStorageSlot drone {
+       Prefab "{FDA92D590B9C633B}Prefabs/Drones/DJIBase/DJIBase.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+  }
+  coords 2255.505 240.008 9630.19
+ }
+}

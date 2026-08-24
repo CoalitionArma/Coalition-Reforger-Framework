@@ -1,0 +1,450 @@
+SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
+ coords 4111.874 299.47 8488.557
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 60
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A3110D1B456995A}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "CDF and RUS fight over a important ammo depot"\
+   ""\
+   "BLUFOR Composition: Armored Company"\
+   "BLUFOR Assets: 9x T72B, 2x HAT and 1x Recon (Drone Ops)"\
+   ""\
+   "OPFOR Composition: Armored Company"\
+   "OPFOR Assets: 9x T72B, 2x HAT and 1x Recon (Drone Ops)"\
+   ""\
+   ""\
+   "Time: 12:00"\
+   ""\
+   "Weather: Cloudy"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A3110D1B4569E30}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   ""\
+   "Capture the Supply Depot (only three people needed to capture)"\
+   ""\
+   "INTENT"\
+   "Tank vs Tank combat in a somewhat open field, spread you forces wide or concentrate them in an area your choice."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A3110D1B4569EAC}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   ""\
+   "Capture the Supply Depot (only three people needed to capture)"\
+   ""\
+   "INTENT"\
+   "Tank vs Tank combat in a somewhat open field, spread you forces wide or concentrate them in an area your choice."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A3110D1B4569F37}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A3110D1B4569FB5}" {
+   m_sTitle "Additional Info"
+   m_sTextData "Both sides have limted HAT Ammo but there is a ammo crate with more atgms in it at the ammo depot."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A3110D0DBCB3D99}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3F60}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3F99}" {
+   m_sCallsign "Anvil 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3017}" {
+   m_sCallsign "Anvil 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB30BA}" {
+   m_sCallsign "Anvil 3"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3130}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB31B4}" {
+   m_sCallsign "Anvil 4"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3236}" {
+   m_sCallsign "Anvil 5"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB32B3}" {
+   m_sCallsign "Anvil 6"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3320}" {
+   m_sCallsign "HAT 1"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3442}" {
+   m_sCallsign "HAT 2"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB34FD}" {
+   m_sCallsign "Recon"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A3110D0DBCB35E6}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB361D}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB369C}" {
+   m_sCallsign "Hammer 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB371D}" {
+   m_sCallsign "Hammer 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB3790}" {
+   m_sCallsign "Hammer 3"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB0817}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB08B9}" {
+   m_sCallsign "Hammer 4"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB0907}" {
+   m_sCallsign "Hammer 5"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB09B8}" {
+   m_sCallsign "Hammer 6"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB0A06}" {
+   m_sCallsign "HAT 1"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB0A82}" {
+   m_sCallsign "HAT 2"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+    HEAVY_ANTITANK
+    ASSISTANT_HEAVY_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3110D0DBCB0B01}" {
+   m_sCallsign "Recon"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 0.1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4F16730FE9A73058}Configs/Gearscripts/Standard/Modern/COA_GS_CDF_Modern_Day.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
