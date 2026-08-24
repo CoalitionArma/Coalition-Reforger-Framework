@@ -16,7 +16,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Cloudy"
      m_iStartingHour 1
-     m_iStartingMinutes 30
+     m_iStartingMinutes 15
     }
    }
    m_bRandomWeatherChanges 0
