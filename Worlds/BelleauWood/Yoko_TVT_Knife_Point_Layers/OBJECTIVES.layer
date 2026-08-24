@@ -1,0 +1,9 @@
+GameEntity {
+ components {
+  CRF_AreaTimerComponent "{6A23764409D573A3}" {
+   m_sZoneLabel "No Mans Land"
+   m_iCountdownSeconds 600
+  }
+ }
+ coords 2437.109 161.466 9491.353
+}

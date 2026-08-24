@@ -37,3 +37,6 @@ GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/Veh
  coords 5867.43 182.956 4143.146
  angles 0 178.683 0
 }
+GenericEntity : "{D255FB1F798CB6C3}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_FIA_01_V2.et" {
+ coords 1079.807 126.472 6925.226
+}
