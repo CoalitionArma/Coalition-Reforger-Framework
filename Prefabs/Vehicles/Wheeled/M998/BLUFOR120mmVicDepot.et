@@ -1,0 +1,59 @@
+Vehicle : "{33AB44A084BAA0CD}Prefabs/Vehicles/Wheeled/M998/M1025_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "120mm Supply Vic"
+    m_Image "{32803C3E4B220918}UI/Textures/EditorPreviews/Mortar/MRS120/BWAR_MRS120.edds"
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_02 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_03 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_04 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_06 {
+     Enabled 1
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_bShouldAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B90839D322}" {
+   m_Prefab "{E0075ECED6C5438E}Prefabs/Items/Equipment/Mortars/MRS120/BWAR_Part_MRS120_BasePlate.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B917103FA2}" {
+   m_Prefab "{412D75447EDDAC7A}Prefabs/Items/Equipment/Mortars/MRS120/BWAR_Part_MRS120_Bipod.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B91C15B3BD}" {
+   m_Prefab "{F24D0056D7FDCFCF}Prefabs/Items/Equipment/Mortars/MRS120/BWAR_Part_MRS120_Barrel.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B97235C3A2}" {
+   m_Prefab "{B464D0A54EB7D21E}Prefabs/Weapons/Ammo/BWAR_Ammo_Shell_120mm_HE_DM81.et"
+   m_iAmountOfItemSupplyTruck 40
+   m_iAmountOfItemRegularVehicle 40
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B97BDB52CB}" {
+   m_Prefab "{75FD3813E29FC3F9}Prefabs/Weapons/Ammo/BWAR_Ammo_Shell_120mm_Smoke_DM65.et"
+   m_iAmountOfItemSupplyTruck 20
+   m_iAmountOfItemRegularVehicle 20
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A32F2B95340A38F}" {
+   m_Prefab "{748E56B08801998D}Prefabs/Items/Equipment/BallisticTable/BWAR_BallisticTable_base.et"
+  }
+ }
+}

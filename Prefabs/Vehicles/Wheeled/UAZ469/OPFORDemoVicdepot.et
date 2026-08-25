@@ -1,0 +1,146 @@
+Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentAction SCR_GetInUserAction "{5086DB209BDE8253}" {
+      "Sort Priority" 1
+     }
+     GetOutAction SCR_GetOutAction "{509D56667AFC4BD5}" {
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{5D0B1D4516F8F592}" {
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56667885A8DC}" {
+      "Sort Priority" 1
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528254D8CE5491}" {
+       "Sort Priority" 0
+      }
+      SCR_RemoveCasualtyUserAction "{61089D5E93B44D65}" {
+       VisibilityRange 1.5
+       "Sort Priority" 0
+      }
+     }
+    }
+    CargoCompartmentSlot Passenger_r01 {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      "Sort Priority" 9
+     }
+     GetOutAction SCR_GetOutAction "{509D56665A8C6923}" {
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{5D0B1D46E1FC958A}" {
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      "Sort Priority" 9
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       "Sort Priority" 8
+      }
+      SCR_RemoveCasualtyUserAction "{61089D5E00C44348}" {
+       "Sort Priority" 8
+      }
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "MAT Transport"
+    m_Image "{60FD5EEDB1A98369}Assets/Props/Military/Posters/Data/PosterMilitary_01_RPG7_V1_BCR.edds"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 150
+     }
+    }
+   }
+  }
+  SCR_ResourceComponent "{5D83561B226A69C6}" {
+   m_aEncapsulators {
+    SCR_ResourceEncapsulator "{5DAD42B36FF7E6E7}" {
+     m_aActions {
+      SCR_ResourceEncapsulatorActionChangeResourceValue "{5DDCCC77C7BA6B26}" {
+       m_fResourceValueCurrent 0
+      }
+     }
+    }
+   }
+   m_eDebugVisualizationFlags ENCAPSULATOR
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Frame {
+    }
+    RegisteringComponentSlotInfo Door_L01 {
+     Prefab "{DDFD5B95F006DD71}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L01.et"
+    }
+    RegisteringComponentSlotInfo Door_R01 {
+     Prefab "{128D80D820A5DC31}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01.et"
+    }
+    RegisteringComponentSlotInfo Door_L02 {
+     Prefab "{B1A96F754CC2525F}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L02.et"
+    }
+    RegisteringComponentSlotInfo Door_R02 {
+     Prefab "{7ED9B4389C61531F}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R02.et"
+    }
+    RegisteringComponentSlotInfo SeatsRear {
+     Prefab "{780AAF0A51AEE61A}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Seats/UAZ469_seats_rear.et"
+    }
+    RegisteringComponentSlotInfo SupplyStorage_05 {
+     PivotID "v_body"
+     Offset -0.1873 1.1635 -1.6017
+     Angles -85.0629 0 0
+     MergePhysics 1
+     Prefab "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_06 {
+     PivotID "v_body"
+     Offset 0.4041 0.8851 -1.4127
+     Angles 25.2855 -93.0068 -1.2853
+     MergePhysics 1
+     Prefab "{2E10FD09B66A44FF}Prefabs/Props/Military/SupplyBox/SupplyPortableContainers/SupplyPortableContainer_01/SupplyPortableContainers_01_large_Vehicle.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Roof {
+     MergePhysics 1
+     Prefab "{3C8EB193B030CCDC}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Roof/UAZ469_roof_canvas.et"
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{5AD4F813E67EB6A5}" {
+    }
+    UserActionContext "{5AD4F813E67E5DFA}" {
+    }
+   }
+  }
+  VehicleAnimationComponent "{50B803EAA459B0AF}" {
+   StartNode "VehicleMasterControl"
+  }
+ }
+ m_bShouldAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A33342B017D7202}" {
+   m_Prefab "{73F69547963CAEE0}PrefabsEditable/Explosives/E_DemoBlock_TSh400g.et"
+   m_iAmountOfItemSupplyTruck 6
+   m_iAmountOfItemRegularVehicle 6
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A33342B10F86320}" {
+   m_Prefab "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+   m_iAmountOfItemSupplyTruck 6
+   m_iAmountOfItemRegularVehicle 6
+  }
+ }
+}

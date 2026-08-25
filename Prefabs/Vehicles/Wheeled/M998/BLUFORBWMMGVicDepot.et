@@ -1,0 +1,48 @@
+Vehicle : "{33AB44A084BAA0CD}Prefabs/Vehicles/Wheeled/M998/M1025_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "120mm Supply Vic"
+    m_Image "{32803C3E4B220918}UI/Textures/EditorPreviews/Mortar/MRS120/BWAR_MRS120.edds"
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_02 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_03 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_04 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_06 {
+     Enabled 1
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_bShouldAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A33342AA1BD9BE9}" {
+   m_Prefab "{5A6E96C5E0658029}Prefabs/Weapons/MachineGuns/MG5/BWAR_MG_MG5A2_ZO4x30i.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A33342AA19E8245}" {
+   m_Prefab "{3F8F4DB3892CC07A}Prefabs/Weapons/Magazines/BWAR_Box_762x51_MG5_60rnd_DM41_AP_low_weight.et"
+   m_iAmountOfItemSupplyTruck 20
+   m_iAmountOfItemRegularVehicle 20
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A33342AAEA4071F}" {
+   m_Prefab "{03810BEF182ADA0B}Prefabs/Items/Equipment/Binoculars/Rangefinder_Vector21.et"
+  }
+ }
+}

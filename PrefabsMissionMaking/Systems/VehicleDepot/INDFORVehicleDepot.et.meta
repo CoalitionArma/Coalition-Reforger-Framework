@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{156F2D75ACF00031}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M_live.et"
+ Name "{FA835AC0FBB7BF54}PrefabsMissionMaking/Systems/VehicleDepot/INDFORVehicleDepot.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

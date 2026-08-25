@@ -1,0 +1,349 @@
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  coords 2568.069 184 5273.56
+  angles 0 2.886 0
+ }
+ {
+  coords 3617.103 210.281 12571.688
+  angles 0 73.752 0
+ }
+ {
+  coords 9494.969 219.578 14635.044
+  angles 0 42.087 0
+ }
+ {
+  coords 4995.933 309.74 5562.381
+  angles 0 -177.415 0
+ }
+ {
+  coords 4993.28 309.937 5558.745
+  angles 0 -177.415 0
+ }
+ {
+  coords 4748.74 327.406 10148.8
+  angles 0 -125.536 0
+ }
+ {
+  coords 4753.238 327.406 10148.957
+  angles 0 -125.536 0
+ }
+ {
+  coords 7454.125 225.071 13658.73
+  angles 0 -177.415 0
+ }
+ {
+  coords 7456.778 225.174 13662.366
+  angles 0 -177.415 0
+ }
+}
+$grp GenericEntity : "{971302B9970AA871}PrefabsMissionMaking/Systems/VehicleDepot/OPFORVehicleDepot.et" {
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE230432}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE641DF8}" {
+      m_sVehicleName "BTR-70"
+      m_sVehiclePrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{7E0EF719C691B548}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMMGVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{5F52150E3DEEEB9C}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMATVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "Demo"
+      m_sVehiclePrefab "{F9F2AC2D5F6AE5DA}Prefabs/Vehicles/Wheeled/UAZ469/OPFORDemoVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 200
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+  }
+  coords 2561.116 184 5273.974
+  angles 0 94.992 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE230432}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE641DF8}" {
+      m_sVehicleName "BTR-70"
+      m_sVehiclePrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{7E0EF719C691B548}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMMGVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{5F52150E3DEEEB9C}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMATVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "Demo"
+      m_sVehiclePrefab "{F9F2AC2D5F6AE5DA}Prefabs/Vehicles/Wheeled/UAZ469/OPFORDemoVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 200
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+  }
+  coords 3615.215 210.281 12578.394
+  angles 0 165.857 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE230432}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423FE641DF8}" {
+      m_sVehicleName "BTR-70"
+      m_sVehiclePrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{7E0EF719C691B548}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMMGVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{5F52150E3DEEEB9C}Prefabs/Vehicles/Wheeled/UAZ469/OPFORMATVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "Demo"
+      m_sVehiclePrefab "{F9F2AC2D5F6AE5DA}Prefabs/Vehicles/Wheeled/UAZ469/OPFORDemoVicdepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 200
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+  }
+  coords 9489.842 219.589 14639.76
+  angles 0 134.193 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423E434C12D}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423875C186E}" {
+      m_sVehicleName "LAV"
+      m_sVehiclePrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{5D5EF8AB9E46CDA2}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMMGVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{7C021ABC65399376}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMATVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "120mm Mortar"
+      m_sVehiclePrefab "{A05B6B29C9A44560}Prefabs/Vehicles/Wheeled/M998/BLUFOR120mmVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 700
+     }
+     CRF_VehicleDepotVehicle "{6A3334299E5EB1CE}" {
+      m_sVehicleName "Engineering"
+      m_sVehiclePrefab "{DA3B08A80DD3A288}Prefabs/Vehicles/Wheeled/M998/BLUFOREngiVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 300
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+   SCR_FactionAffiliationComponent "{6A3144F111246FD7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 5002.888 309.521 5562.003
+  angles 0 -85.309 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423E434C12D}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423875C186E}" {
+      m_sVehicleName "LAV"
+      m_sVehiclePrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{5D5EF8AB9E46CDA2}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMMGVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{7C021ABC65399376}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMATVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "120mm Mortar"
+      m_sVehiclePrefab "{A05B6B29C9A44560}Prefabs/Vehicles/Wheeled/M998/BLUFOR120mmVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 700
+     }
+     CRF_VehicleDepotVehicle "{6A3334299E5EB1CE}" {
+      m_sVehicleName "Engineering"
+      m_sVehiclePrefab "{DA3B08A80DD3A288}Prefabs/Vehicles/Wheeled/M998/BLUFOREngiVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 300
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+   SCR_FactionAffiliationComponent "{6A3144F111246FD7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 4757.235 327.406 10143.252
+  angles 0 -33.43 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{6A3144F111246FC7}" {
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+      m_sVehicleName "Ambulance"
+      m_sVehiclePrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+      m_eCostType USES
+      m_iCost 1
+     }
+     CRF_VehicleDepotVehicle "{6A333423E434C12D}" {
+      m_sVehicleName "Transport"
+      m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+      m_eCostType USES
+      m_iCost 5
+     }
+     CRF_VehicleDepotVehicle "{6A333423875C186E}" {
+      m_sVehicleName "LAV"
+      m_sVehiclePrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+      m_eCostType SUPPLIES
+      m_iCost 1000
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B7AC381047}" {
+      m_sVehicleName "MMG"
+      m_sVehiclePrefab "{5D5EF8AB9E46CDA2}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMMGVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B788435DF1}" {
+      m_sVehicleName "MAT"
+      m_sVehiclePrefab "{7C021ABC65399376}Prefabs/Vehicles/Wheeled/M998/BLUFORBWMATVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 500
+     }
+     CRF_VehicleDepotVehicle "{6A32F2B798E1D880}" {
+      m_sVehicleName "120mm Mortar"
+      m_sVehiclePrefab "{A05B6B29C9A44560}Prefabs/Vehicles/Wheeled/M998/BLUFOR120mmVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 700
+     }
+     CRF_VehicleDepotVehicle "{6A3334299E5EB1CE}" {
+      m_sVehicleName "Engineering"
+      m_sVehiclePrefab "{DA3B08A80DD3A288}Prefabs/Vehicles/Wheeled/M998/BLUFOREngiVicDepot.et"
+      m_eCostType SUPPLIES
+      m_iCost 300
+     }
+    }
+    m_bRestrictToLeadership 1
+   }
+   SCR_FactionAffiliationComponent "{6A3144F111246FD7}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 7463.733 224.855 13661.988
+  angles 0 -85.309 0
+ }
+}
