@@ -53,7 +53,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
- m_eRespawnMode 1
+ m_eRespawnMode 0
  m_iTimeLimitMinutes 120
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
@@ -123,7 +123,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A3527F4E656EA8C}" {
+  COA_SlottingGroup "{6A3527F856628136}" {
    m_sCallsign "ANCHOR 6"
    m_FlagType SIGNAL
    m_aSlots {
@@ -135,9 +135,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656EC3F}" {
+  COA_SlottingGroup "{6A3527F8566280DD}" {
    m_sCallsign "ANCHOR 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -149,9 +149,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656EC9C}" {
+  COA_SlottingGroup "{6A3527F85662833A}" {
    m_sCallsign "ANCHOR 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -163,9 +163,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656EF0E}" {
+  COA_SlottingGroup "{6A3527F8566283A6}" {
    m_sCallsign "ANCHOR 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -177,9 +177,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656EE78}" {
+  COA_SlottingGroup "{6A3527F856628217}" {
    m_sCallsign "ANCHOR 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -191,9 +191,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656EEE4}" {
+  COA_SlottingGroup "{6A3527F856628284}" {
    m_sCallsign "ANCHOR 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -205,9 +205,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     PILOT
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 5
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656E15D}" {
+  COA_SlottingGroup "{6A3527F8566285F3}" {
    m_sCallsign "ANVIL 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -220,9 +220,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     MEDIC
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 3
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656E1C7}" {
+  COA_SlottingGroup "{6A3527F856628461}" {
    m_sCallsign "ANVIL 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -235,9 +235,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     MEDIC
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 3
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656E02A}" {
+  COA_SlottingGroup "{6A3527F8566284D2}" {
    m_sCallsign "ANVIL 3"
    m_FlagType ARMORED
    m_aSlots {
@@ -250,9 +250,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     MEDIC
    }
    m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns 3
+   m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A3527F4E656E35E}" {
+  COA_SlottingGroup "{6A3527F856628744}" {
    m_sCallsign "HAMMER"
    m_FlagType ARTILLERY
    m_aSlots {
@@ -269,7 +269,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A3527F4E656E39E}" {
+  COA_SlottingGroup "{6A3527F856628670}" {
    m_sCallsign "OPFOR"
    m_FlagType INFANTRY
    m_aSlots {
