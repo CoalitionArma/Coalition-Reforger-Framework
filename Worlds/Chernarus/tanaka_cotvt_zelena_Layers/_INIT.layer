@@ -123,7 +123,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A28383F23CC7CFA}" {
+  COA_SlottingGroup "{6A3527F4E656EA8C}" {
    m_sCallsign "ANCHOR 6"
    m_FlagType SIGNAL
    m_aSlots {
@@ -137,7 +137,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC7FB8}" {
+  COA_SlottingGroup "{6A3527F4E656EC3F}" {
    m_sCallsign "ANCHOR 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -151,7 +151,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC7E19}" {
+  COA_SlottingGroup "{6A3527F4E656EC9C}" {
    m_sCallsign "ANCHOR 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -165,7 +165,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC7E8C}" {
+  COA_SlottingGroup "{6A3527F4E656EF0E}" {
    m_sCallsign "ANCHOR 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -179,7 +179,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC71EA}" {
+  COA_SlottingGroup "{6A3527F4E656EE78}" {
    m_sCallsign "ANCHOR 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +193,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC7052}" {
+  COA_SlottingGroup "{6A3527F4E656EEE4}" {
    m_sCallsign "ANCHOR 5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -207,42 +207,69 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 5
   }
-  COA_SlottingGroup "{6A28383F23CC70C0}" {
+  COA_SlottingGroup "{6A3527F4E656E15D}" {
    m_sCallsign "ANVIL 1"
    m_FlagType ARMORED
    m_aSlots {
     VEHICLE_LEAD
     VEHICLE_GUNNER
     VEHICLE_DRIVER
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
+    MEDIC
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 3
   }
-  COA_SlottingGroup "{6A28383F23CC733F}" {
+  COA_SlottingGroup "{6A3527F4E656E1C7}" {
    m_sCallsign "ANVIL 2"
    m_FlagType INFANTRY
    m_aSlots {
     VEHICLE_LEAD
     VEHICLE_GUNNER
     VEHICLE_DRIVER
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
+    MEDIC
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 3
   }
-  COA_SlottingGroup "{6A28383F23CC73A3}" {
+  COA_SlottingGroup "{6A3527F4E656E02A}" {
    m_sCallsign "ANVIL 3"
    m_FlagType ARMORED
    m_aSlots {
     VEHICLE_LEAD
     VEHICLE_GUNNER
     VEHICLE_DRIVER
+    TEAM_LEAD
+    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
+    MEDIC
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns 3
   }
+  COA_SlottingGroup "{6A3527F4E656E35E}" {
+   m_sCallsign "HAMMER"
+   m_FlagType ARTILLERY
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_LOADER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A28383F23CC72E6}" {
+  COA_SlottingGroup "{6A3527F4E656E39E}" {
    m_sCallsign "OPFOR"
    m_FlagType INFANTRY
    m_aSlots {
@@ -260,14 +287,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
  }
- m_iBLUFORTickets 50
- m_iOPFORTickets 0
+ m_iBLUFORTickets 75
+ m_iOPFORTickets 10
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 2
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{08608B7EAF4CD6DF}Configs/Gearscripts/Standard/Modern/COA_GS_USSpecOps.conf"
-  m_bEnableBFT 0
+  m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
