@@ -215,4 +215,22 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	{
 		CRF_AARSessionStats.SetStats(kills, deaths, shots, grenades, bandages, distKm, friendlyKills, xp);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tells this player's own client that their connection was audited while the round was already
+	//! in COA_EGamemodeState.GAME - the real "join in progress" signal. Called from
+	//! CRF_COA_Gamemode.NotifyJoinInProgressStatus.
+	void SetJoinInProgress()
+	{
+		Rpc(RpcDo_SetJoinInProgress);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_SetJoinInProgress()
+	{
+		COA_PlayerController pc = COA_PlayerController.Cast(GetOwner());
+		if (pc)
+			pc.SetIsJoinInProgress(true);
+	}
 };
