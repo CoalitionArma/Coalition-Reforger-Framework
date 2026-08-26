@@ -1,0 +1,32 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3745.876 388.086 6012.039
+  angles 0 -58.737 0
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
+ }
+ {
+  coords 3749.492 388.086 6017.994
+  angles 0 -58.737 0
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
+ }
+ {
+  coords 3742.302 389.024 6006.151
+  angles 0 -58.737 0
+  m_rVehicle "{D9AC0E3578809137}Prefabs/Vehicles/Wheeled/M1240A1_MATV/M1240A1_MATV_Turret_Green.et"
+ }
+ {
+  coords 3722.586 387.187 6016.982
+  angles 0 -38.037 0
+  m_rVehicle "{04BDACC0BB83284F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+ }
+ {
+  coords 3733.558 388.15 6002.958
+  angles 0 -38.037 0
+  m_rVehicle "{04BDACC0BB83284F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+ }
+ {
+  coords 3746.594 389.444 5986.295
+  angles 0 -38.037 0
+  m_rVehicle "{04BDACC0BB83284F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+ }
+}
