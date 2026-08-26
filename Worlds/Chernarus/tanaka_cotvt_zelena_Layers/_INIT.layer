@@ -29,9 +29,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   CRF_CacheHuntGamemodeManager "{6A28383AAA2899C3}" {
    m_bRandomizeCaches 1
    m_iRandomCacheCount 5
-   m_fRandomMinRadius 750
-   m_fRandomMaxRadius 2990
-   m_fRandomMinSeparation 900
+   m_fRandomMinRadius 1000
+   m_fRandomMaxRadius 4000
+   m_fRandomMinSeparation 1250
    m_fDestroyFuseSeconds 15
    m_fSearchAreaRadius 1000
   }
