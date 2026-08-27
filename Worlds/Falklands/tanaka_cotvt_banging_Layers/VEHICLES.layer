@@ -1,0 +1,20 @@
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 11715.055 52.847 11439.309
+  angles 0 0 -3.576
+ }
+ {
+  coords 11719.325 52.771 11431.999
+  angles 2.039 -52.145 -4.074
+ }
+}
+$grp Turret : "{54838E573DCDC027}Prefabs/Weapons/Howitzers/M777/M777_Howitzer.et" {
+ {
+  coords 11690.678 52.357 11421.109
+  angles 0 -158.961 0
+ }
+ {
+  coords 11674.24 52.518 11420.887
+  angles 0 -158.961 0
+ }
+}

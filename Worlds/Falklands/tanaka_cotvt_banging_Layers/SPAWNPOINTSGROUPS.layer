@@ -1,0 +1,7 @@
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 11702.188 52.396 11426.791
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
+  m_sSpawnPointName "Artillery"
+  m_sRestrictedToGroup "ARTY"
+ }
+}

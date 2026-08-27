@@ -138,6 +138,8 @@ modded class COA_Gamemode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 
+		NotifyJoinInProgressStatus(iPlayerID);
+
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
 		
@@ -158,10 +160,31 @@ modded class COA_Gamemode
 		if (!playerGUID.IsEmpty()) {
 			if (COA_ModeratorConfig.IsModerator(playerGUID))
 				m_PermissionManager.SetPlayerStatus(iPlayerID, "mod");
-			
+
 			if (CRF_DonatorConfig.IsDonator(playerGUID))
 				m_PermissionManager.SetPlayerStatus(iPlayerID, "don");
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The only real signal for "this player is joining in progress": their connection is being
+	//! audited while the round is already in COA_EGamemodeState.GAME. Every player who was already
+	//! slotted before the round started has THIS event happen during SLOTTING, never GAME - so unlike
+	//! "has SafeStart ended" (which the JIP menu used to gate on), this can't misfire for everyone at
+	//! once at round start, and it isn't retriggered by Zeus possessing an AI unit later, since that
+	//! isn't a connect event at all. See COA_PlayerController.SetIsJoinInProgress / OnControlledEntityChanged.
+	protected void NotifyJoinInProgressStatus(int playerId)
+	{
+		if (m_GamemodeState != COA_EGamemodeState.GAME)
+			return; // client already defaults to "not JIP" - nothing to tell them.
+
+		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
+		if (!pc)
+			return;
+
+		COA_PlayerRplToOwnerManager rplManager = COA_PlayerRplToOwnerManager.Cast(pc.FindComponent(COA_PlayerRplToOwnerManager));
+		if (rplManager)
+			rplManager.SetJoinInProgress();
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
