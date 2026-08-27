@@ -20,11 +20,89 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 	protected float m_WindDirDeg;
 	protected float m_WindSpeed;
 
+	// Steering: input state
+	protected InputManager m_InputManager;
+	protected bool m_ControlsEnabled;
+	protected float m_fInputPitch;
+	protected float m_fInputRoll;
+
+	// Steering: input as received by authority from a remote owner
+	protected float m_NetInputPitch;
+	protected float m_NetInputRoll;
+	protected float m_InputTimeSinceRecv;
+
+	// Steering: input send throttling (owner -> server)
+	protected float m_InputAccTime;
+	protected float m_LastSentPitch;
+	protected float m_LastSentRoll;
+
+	// Steering: cached per-tick physics state
+	protected vector m_vWorldTransform[4];
+	protected vector m_vVelocity;
+	protected vector m_vAngularVelocity;
+	protected float m_fForwardSpeed;
+	protected float m_fAccel;
+	protected float m_fSmoothAccel;
+
+	protected const float HEADING_LERP_RATE = 2.5;
+
 	[Attribute("4.0", UIWidgets.Slider, "Max fall speed (m/s)", "1 20 0.1")]
 	protected float m_MaxFallSpeed = 4.0;
 
 	[Attribute("2.0", UIWidgets.Slider, "Drag strength to limit fall speed", "0 20 0.1")]
 	protected float m_DragStrength = 2.0;
+
+	// Steering settings
+	[Attribute("60", UIWidgets.Slider, "Pitch torque", "1 200 1", category: "Steering")]
+	protected float m_PitchTorque = 60.0;
+
+	[Attribute("60", UIWidgets.Slider, "Roll torque", "1 200 1", category: "Steering")]
+	protected float m_RollTorque = 60.0;
+
+	[Attribute("200", UIWidgets.Slider, "Auto-level proportional gain", "0 500 1", category: "Steering")]
+	protected float m_LevelPropGain = 200.0;
+
+	[Attribute("20", UIWidgets.Slider, "Auto-level damping", "0 50 0.1", category: "Steering")]
+	protected float m_LevelDampening = 20.0;
+
+	[Attribute("2", UIWidgets.Slider, "Auto-level power", "0.1 3.0 0.1", category: "Steering")]
+	protected float m_LevelPower = 2.0;
+
+	[Attribute("45", UIWidgets.Slider, "Max turn rate (deg/s)", "0 90 1", category: "Steering")]
+	protected float m_MaxTurnRate = 45.0;
+
+	[Attribute("4.0", UIWidgets.Slider, "Turn proportional gain", "0 20 0.1", category: "Steering")]
+	protected float m_TurnPropGain = 4.0;
+
+	[Attribute("1.0", UIWidgets.Slider, "Turn damping", "0 10 0.1", category: "Steering")]
+	protected float m_TurnDampening = 1.0;
+
+	[Attribute("8", UIWidgets.Slider, "Min bank angle to turn (deg)", "0 45 1", category: "Steering")]
+	protected float m_MinBankAngle = 8.0;
+
+	[Attribute("0.1", UIWidgets.Slider, "Min pitch input to turn", "0 1 0.01", category: "Steering")]
+	protected float m_MinPitchInput = 0.1;
+
+	[Attribute("4.0", UIWidgets.Slider, "Glide accel, pitch down", "0 20 0.1", category: "Steering")]
+	protected float m_GlideDownPitch = 4.0;
+
+	[Attribute("5.0", UIWidgets.Slider, "Glide decel, pitch up", "0 20 0.1", category: "Steering")]
+	protected float m_GlideUpPitch = 5.0;
+
+	[Attribute("0.0", UIWidgets.Slider, "Min forward speed", "0 10 0.1", category: "Steering")]
+	protected float m_MinForwardSpeed = 0.0;
+
+	[Attribute("21.0", UIWidgets.Slider, "Max forward speed", "0 50 0.1", category: "Steering")]
+	protected float m_MaxForwardSpeed = 21.0;
+
+	[Attribute("20", UIWidgets.Slider, "Input send rate (hz)", "1 60 1", category: "Steering")]
+	protected float m_InputSendHz = 20.0;
+
+	[Attribute("0.01", UIWidgets.Slider, "Input change threshold", "0 0.5 0.01", category: "Steering")]
+	protected float m_InputChangeThreshold = 0.01;
+
+	[Attribute("0.30", UIWidgets.Slider, "Input timeout (s)", "0 2 0.05", category: "Steering")]
+	protected float m_InputTimeoutSec = 0.30;
 
 	// Flare settings
 	[Attribute("10.0", UIWidgets.Slider, "Flare start height (m)", "0 50 1")]
@@ -57,6 +135,11 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 	// Initialization
 	// --------------------------------------------------------------------------------------------
 
+	void CRF_ParachuteDeployedEntity(IEntitySource src, IEntity parent)
+	{
+		SetEventMask(EntityEvent.INIT);
+	}
+
 	bool IsAuthority()
 	{
 		return m_RplComponent && m_RplComponent.Role() == RplRole.Authority;
@@ -81,6 +164,7 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 
 		m_RplComponent = RplComponent.Cast(FindComponent(RplComponent));
 		m_Physics = GetPhysics();
+		m_InputManager = GetGame().GetInputManager();
 		m_WeatherManager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager();
 
 		m_CompartmentManager = SCR_BaseCompartmentManagerComponent.Cast(FindComponent(SCR_BaseCompartmentManagerComponent));
@@ -108,14 +192,13 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		m_NetSendInterval = 1.0 / Math.Max(m_NetworkSyncHz, 1.0);
 		m_NetAccTime = 0;
 
-		SetEventMask(EntityEvent.SIMULATE);
-		SetEventMask(EntityEvent.CONTACT);
-		SetEventMask(EntityEvent.FRAME); // for interpolation
+		SetEventMask(EntityEvent.SIMULATE | EntityEvent.CONTACT | EntityEvent.FRAME); // FRAME is for interpolation
 	}
 
 	override void EOnDeactivate(IEntity owner)
 	{
 		UnhookPilotExit();
+		DisableControls();
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -178,6 +261,39 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 			m_VelocityApplied = true;
 		}
 
+		// Cache current transform/velocity - steering handlers below all read these
+		GetWorldTransform(m_vWorldTransform);
+		m_vVelocity = m_Physics.GetVelocity();
+		m_vAngularVelocity = m_Physics.GetAngularVelocity();
+
+		// Resolve pitch/roll input: the owner uses local player input directly (set by
+		// SetPitch/SetRoll below); authority uses whatever a remote owner last reported
+		// over RpcAsk_Input, and zeroes it out if that input goes stale.
+		if (!IsOwner())
+		{
+			m_InputTimeSinceRecv += timeSlice;
+			if (m_InputTimeSinceRecv > m_InputTimeoutSec)
+			{
+				m_fInputPitch = 0.0;
+				m_fInputRoll = 0.0;
+			}
+			else
+			{
+				m_fInputPitch = Math.Clamp(m_NetInputPitch, -1.0, 1.0);
+				m_fInputRoll = Math.Clamp(m_NetInputRoll, -1.0, 1.0);
+			}
+		}
+
+		// Steering: canopy orientation, self-leveling, and bank-to-turn
+		HandlePitch(timeSlice);
+		HandleRoll(timeSlice);
+		HandleAutoLevel(timeSlice);
+		HandleBankTurn(timeSlice);
+
+		// Forward glide speed from pitch input; updates horizontal velocity and
+		// carries the existing vertical speed through to the drag/flare logic below
+		HandleGlide(timeSlice);
+
 		vector vel = m_Physics.GetVelocity();
 		float downwardSpeed = -vel[1];
 
@@ -218,6 +334,23 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 				SendSync();
 			}
 		}
+
+		// Controls & input networking - owner client only. A listen-host that is both
+		// owner and authority reads its own m_fInputPitch/Roll directly above and never
+		// needs to send it anywhere; a remote owner must relay input to the server.
+		if (IsOwner())
+		{
+			if (m_CargoSlot && m_CargoSlot.IsOccupied())
+			{
+				EnableControls();
+				if (!IsAuthority())
+					SendInputIfChanged(timeSlice);
+			}
+			else
+			{
+				DisableControls();
+			}
+		}
 	}
 
 	override void EOnContact(IEntity owner, IEntity other, Contact contact)
@@ -233,6 +366,7 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		if (m_HasLanded)
 			return;
 		m_HasLanded = true;
+		DisableControls();
 
 		// Small delay before exit to allow flare to finish
 		GetGame().GetCallqueue().CallLater(DoRequestExit, 100, false);
@@ -292,6 +426,257 @@ class CRF_ParachuteDeployedEntity : GenericEntity
 		float decel = t * m_MaxFlareDeceleration;
 		float impulse = decel * m_Physics.GetMass() * timeSlice;
 		m_Physics.ApplyImpulse(vector.Up * impulse);
+	}
+
+	// --------------------------------------------------------------------------------------------
+	// Steering
+	// --------------------------------------------------------------------------------------------
+
+	// Pitch with forward/back input
+	protected void HandlePitch(float timeSlice)
+	{
+		vector axisWorld = VectorToParent(vector.Right);
+		float torque = m_fInputPitch * m_PitchTorque;
+		m_Physics.ApplyTorque(axisWorld * torque);
+	}
+
+	// Roll with left/right input
+	protected void HandleRoll(float timeSlice)
+	{
+		vector axisWorld = VectorToParent(vector.Forward);
+		float torque = -m_fInputRoll * m_RollTorque;
+		m_Physics.ApplyTorque(axisWorld * torque);
+	}
+
+	// Converts bank angle + forward pull into a yaw rate, so banking the canopy turns it
+	void HandleBankTurn(float timeSlice)
+	{
+		vector ang = Math3D.MatrixToAngles(m_vWorldTransform);
+		float rollDeg = ang[2];
+
+		if (Math.AbsFloat(rollDeg) < m_MinBankAngle)
+			return;
+		if (m_fInputPitch < m_MinPitchInput)
+			return;
+
+		float bankFactor = Math.Sin(rollDeg * Math.DEG2RAD);
+		float pitchFactor = Math.Clamp(m_fInputPitch, 0, 1);
+		float yawRateDes = bankFactor * pitchFactor * m_MaxTurnRate;
+
+		vector yawAxisWorld = VectorToParent(vector.Up);
+		float yawRateCur = vector.Dot(m_vAngularVelocity, yawAxisWorld) * Math.RAD2DEG;
+
+		float rateError = yawRateDes - yawRateCur;
+		float torque = rateError * m_TurnPropGain - yawRateCur * m_TurnDampening;
+
+		m_Physics.ApplyTorque(yawAxisWorld * torque);
+	}
+
+	// Keeps the canopy roughly upright when there's no roll input fighting it
+	void HandleAutoLevel(float timeSlice)
+	{
+		vector worldUp = vector.Up;
+		vector actualUp = m_vWorldTransform[1];
+
+		vector errorAxis = VecCross(actualUp, worldUp);
+		float errorMag = errorAxis.Length();
+
+		if (errorMag < 0.001)
+			return;
+		errorAxis.Normalize();
+
+		float kpEff = m_LevelPropGain * Math.Pow(errorMag, m_LevelPower);
+		float errorVel = vector.Dot(m_vAngularVelocity, errorAxis);
+
+		vector correctiveTorque =
+			errorAxis * (errorMag * kpEff) -
+			errorAxis * (errorVel * m_LevelDampening);
+
+		m_Physics.ApplyTorque(correctiveTorque);
+	}
+
+	vector VecCross(vector a, vector b)
+	{
+		return {
+			a[1] * b[2] - a[2] * b[1],
+			a[2] * b[0] - a[0] * b[2],
+			a[0] * b[1] - a[1] * b[0]};
+	}
+
+	// Integrates forward glide speed from pitch input and steers heading toward the
+	// canopy's nose. Sets full velocity (horizontal from glide, vertical carried over
+	// from m_vVelocity) - the drag/flare logic that runs right after this call still
+	// adjusts the vertical component via impulses on top of what this produces.
+	void HandleGlide(float timeSlice)
+	{
+		vector forwardW = VectorToParent(vector.Forward);
+		vector upW = vector.Up;
+
+		float pitchDot = vector.Dot(forwardW, upW);
+		float normPitch = Math.Sin(Math.Asin(-pitchDot));
+
+		float forwardSpeed = m_fForwardSpeed;
+		float verticalSpeed = m_vVelocity[1];
+
+		if (normPitch > 0.03)
+			m_fAccel = normPitch * m_GlideDownPitch;
+		else if (Math.AbsFloat(normPitch) <= 0.03)
+			m_fAccel = m_GlideDownPitch * 0.33;
+		else
+			m_fAccel = normPitch * m_GlideUpPitch;
+
+		float smoothing = Math.Clamp(0.5 * timeSlice, 0.0, 0.04);
+		m_fSmoothAccel += (m_fAccel - m_fSmoothAccel) * smoothing;
+
+		float prevSpeed = forwardSpeed;
+		forwardSpeed = Math.Clamp(forwardSpeed + m_fSmoothAccel * timeSlice, m_MinForwardSpeed, m_MaxForwardSpeed);
+
+		if (m_fSmoothAccel < 0)
+		{
+			float maxDrop = 1.5 * timeSlice;
+			float actual = prevSpeed - forwardSpeed;
+			if (actual > maxDrop)
+				forwardSpeed = prevSpeed - maxDrop;
+		}
+
+		if (normPitch < -0.12 && prevSpeed > m_MinForwardSpeed + 1.5)
+		{
+			float liftFactor = Math.Clamp(-normPitch, 0.0, 1.0);
+			float liftConvert = Math.Min(prevSpeed - m_MinForwardSpeed, 2.0) * liftFactor * timeSlice * 0.8;
+			verticalSpeed += liftConvert;
+			forwardSpeed -= liftConvert * 0.7;
+			forwardSpeed = Math.Max(forwardSpeed, m_MinForwardSpeed);
+		}
+
+		vector horizVel = m_vVelocity;
+		horizVel[1] = 0;
+		float horizLen = horizVel.Length();
+
+		vector curDir;
+		if (horizLen > 0.01)
+			curDir = horizVel / horizLen;
+		else
+			curDir = forwardW.Normalized();
+
+		vector targetDir = forwardW;
+		targetDir[1] = 0;
+		float tgtLen = targetDir.Length();
+		if (tgtLen > 0.001)
+			targetDir /= tgtLen;
+		else
+			targetDir = curDir;
+
+		float lerpAlpha = Math.Clamp(HEADING_LERP_RATE * timeSlice, 0, 1);
+		vector newDir = curDir + (targetDir - curDir) * lerpAlpha;
+		newDir.Normalize();
+
+		vector newHorizVel = newDir * forwardSpeed;
+		vector newVel = {newHorizVel[0], verticalSpeed, newHorizVel[2]};
+
+		m_Physics.SetVelocity(newVel);
+		m_vVelocity = newVel;
+		m_fForwardSpeed = forwardSpeed;
+	}
+
+	// --------------------------------------------------------------------------------------------
+	// Steering: input capture (owner client) & networking (owner -> server)
+	// --------------------------------------------------------------------------------------------
+
+	void EnableControls()
+	{
+		if (!m_InputManager)
+			m_InputManager = GetGame().GetInputManager();
+		if (!m_InputManager)
+			return;
+
+		if (!m_InputManager.IsContextActive("CharacterMovementContext"))
+			m_InputManager.ActivateContext("CharacterMovementContext");
+
+		if (m_ControlsEnabled)
+			return;
+
+		// Only the owning client should read local input; a non-owner authority
+		// (dedicated server) relies on RpcAsk_Input instead.
+		if (IsAuthority() && !IsOwner())
+			return;
+
+		m_ControlsEnabled = true;
+
+		// Character context (on-foot style)
+		m_InputManager.AddActionListener("CharacterForward", EActionTrigger.VALUE, SetPitch);
+		m_InputManager.AddActionListener("CharacterRight", EActionTrigger.VALUE, SetRoll);
+
+		// Vehicle context fallback (some contexts stop emitting CharacterForward/Right)
+		m_InputManager.AddActionListener("VehicleThrottle", EActionTrigger.VALUE, SetPitch);
+		m_InputManager.AddActionListener("VehicleSteer", EActionTrigger.VALUE, SetRoll);
+	}
+
+	void DisableControls()
+	{
+		if (!m_ControlsEnabled)
+			return;
+		m_ControlsEnabled = false;
+
+		if (!m_InputManager)
+			return;
+
+		m_InputManager.RemoveActionListener("CharacterForward", EActionTrigger.VALUE, SetPitch);
+		m_InputManager.RemoveActionListener("CharacterRight", EActionTrigger.VALUE, SetRoll);
+		m_InputManager.RemoveActionListener("VehicleThrottle", EActionTrigger.VALUE, SetPitch);
+		m_InputManager.RemoveActionListener("VehicleSteer", EActionTrigger.VALUE, SetRoll);
+
+		// Prevent "sticky" input from a listener removed mid-press
+		m_fInputPitch = 0.0;
+		m_fInputRoll = 0.0;
+	}
+
+	void SetPitch(float value = 0.0, EActionTrigger reason = 0, string actionName = string.Empty)
+	{
+		if (!m_ControlsEnabled)
+			return;
+		m_fInputPitch = value;
+	}
+
+	void SetRoll(float value = 0.0, EActionTrigger reason = 0, string actionName = string.Empty)
+	{
+		if (!m_ControlsEnabled)
+			return;
+		m_fInputRoll = value;
+	}
+
+	// Sends the owner's local input to the authoritative server so its simulation
+	// (and everyone else who receives its broadcast sync) actually reflects steering.
+	protected void SendInputIfChanged(float timeSlice)
+	{
+		m_InputAccTime += timeSlice;
+
+		float pitch = Math.Clamp(m_fInputPitch, -1.0, 1.0);
+		float roll = Math.Clamp(m_fInputRoll, -1.0, 1.0);
+
+		bool changed = (Math.AbsFloat(pitch - m_LastSentPitch) > m_InputChangeThreshold) ||
+					   (Math.AbsFloat(roll - m_LastSentRoll) > m_InputChangeThreshold);
+
+		float sendInterval = 1.0 / Math.Max(m_InputSendHz, 1.0);
+		if (m_InputAccTime >= sendInterval && (changed || m_InputAccTime >= sendInterval * 3.0))
+		{
+			m_InputAccTime = 0;
+			m_LastSentPitch = pitch;
+			m_LastSentRoll = roll;
+			Rpc(RpcAsk_Input, pitch, roll);
+		}
+	}
+
+	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
+	void RpcAsk_Input(float pitch, float roll)
+	{
+		if (!IsAuthority())
+			return;
+		if (!m_CargoSlot || !m_CargoSlot.IsOccupied())
+			return;
+
+		m_NetInputPitch = Math.Clamp(pitch, -1.0, 1.0);
+		m_NetInputRoll = Math.Clamp(roll, -1.0, 1.0);
+		m_InputTimeSinceRecv = 0.0;
 	}
 
 	// --------------------------------------------------------------------------------------------

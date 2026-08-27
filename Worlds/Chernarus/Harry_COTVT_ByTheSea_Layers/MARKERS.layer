@@ -1,0 +1,359 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 10503.121 184.306 9021.655
+  angles -14.453 -2.539 10.074
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supply Cache"
+ }
+ {
+  coords 11723.446 223.511 11095.456
+  angles -51.986 6.223 -6.219
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supply Cache"
+ }
+ {
+  coords 10437.942 149.566 10886.07
+  angles 3.576 -0.056 -0.897
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supply Cache"
+ }
+ {
+  coords 13423.051 37.527 11667.553
+  angles 4.467 0.111 0.009
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supply Cache"
+ }
+ {
+  coords 12501.847 102.083 7794.284
+  angles -9.734 -0.39 2.711
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supply Cache"
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A200A4AABDB3741}" {
+      SlotTemplate InventoryStorageSlot backpack {
+       Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4A904FD0AE}" {
+      SlotTemplate InventoryStorageSlot m224 {
+       Prefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{6A200A4AEA36819F}" {
+      SlotTemplate InventoryStorageSlot HE {
+       Prefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AFED6E345}" {
+      SlotTemplate InventoryStorageSlot Smoke {
+       Prefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AD2384D19}" {
+      SlotTemplate InventoryStorageSlot Rifle_ammo {
+       Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+      }
+      NumSlots 50
+     }
+     MultiSlotConfiguration "{6A200A4B2C936C5A}" {
+      SlotTemplate InventoryStorageSlot AR {
+       Prefab "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4BAABD080B}" {
+      SlotTemplate InventoryStorageSlot GL {
+       Prefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A200A4BBE6E06BD}" {
+      SlotTemplate InventoryStorageSlot GLsmoke {
+       Prefab "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4C6C588B32}" {
+      SlotTemplate InventoryStorageSlot MAT {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 10502.343 184.225 9022.458
+  angles -14.453 -2.539 10.074
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A200A4AABDB3741}" {
+      SlotTemplate InventoryStorageSlot backpack {
+       Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4A904FD0AE}" {
+      SlotTemplate InventoryStorageSlot m224 {
+       Prefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{6A200A4AEA36819F}" {
+      SlotTemplate InventoryStorageSlot HE {
+       Prefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AFED6E345}" {
+      SlotTemplate InventoryStorageSlot Smoke {
+       Prefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AD2384D19}" {
+      SlotTemplate InventoryStorageSlot Rifle_ammo {
+       Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+      }
+      NumSlots 50
+     }
+     MultiSlotConfiguration "{6A200A4B2C936C5A}" {
+      SlotTemplate InventoryStorageSlot AR {
+       Prefab "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4BAABD080B}" {
+      SlotTemplate InventoryStorageSlot GL {
+       Prefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A200A4BBE6E06BD}" {
+      SlotTemplate InventoryStorageSlot GLsmoke {
+       Prefab "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4C6C588B32}" {
+      SlotTemplate InventoryStorageSlot MAT {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 11722.668 201.533 11096.259
+  angles 10.476 -2.547 15.861
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A200A4AABDB3741}" {
+      SlotTemplate InventoryStorageSlot backpack {
+       Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4A904FD0AE}" {
+      SlotTemplate InventoryStorageSlot m224 {
+       Prefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{6A200A4AEA36819F}" {
+      SlotTemplate InventoryStorageSlot HE {
+       Prefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AFED6E345}" {
+      SlotTemplate InventoryStorageSlot Smoke {
+       Prefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AD2384D19}" {
+      SlotTemplate InventoryStorageSlot Rifle_ammo {
+       Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+      }
+      NumSlots 50
+     }
+     MultiSlotConfiguration "{6A200A4B2C936C5A}" {
+      SlotTemplate InventoryStorageSlot AR {
+       Prefab "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4BAABD080B}" {
+      SlotTemplate InventoryStorageSlot GL {
+       Prefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A200A4BBE6E06BD}" {
+      SlotTemplate InventoryStorageSlot GLsmoke {
+       Prefab "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4C6C588B32}" {
+      SlotTemplate InventoryStorageSlot MAT {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 10437.164 149.604 10886.873
+  angles 3.573 -0.236 -0.908
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A200A4AABDB3741}" {
+      SlotTemplate InventoryStorageSlot backpack {
+       Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4A904FD0AE}" {
+      SlotTemplate InventoryStorageSlot m224 {
+       Prefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{6A200A4AEA36819F}" {
+      SlotTemplate InventoryStorageSlot HE {
+       Prefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AFED6E345}" {
+      SlotTemplate InventoryStorageSlot Smoke {
+       Prefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AD2384D19}" {
+      SlotTemplate InventoryStorageSlot Rifle_ammo {
+       Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+      }
+      NumSlots 50
+     }
+     MultiSlotConfiguration "{6A200A4B2C936C5A}" {
+      SlotTemplate InventoryStorageSlot AR {
+       Prefab "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4BAABD080B}" {
+      SlotTemplate InventoryStorageSlot GL {
+       Prefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A200A4BBE6E06BD}" {
+      SlotTemplate InventoryStorageSlot GLsmoke {
+       Prefab "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4C6C588B32}" {
+      SlotTemplate InventoryStorageSlot MAT {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 13422.272 37.601 11668.355
+  angles 6.242 0.249 0.027
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A200A4AABDB3741}" {
+      SlotTemplate InventoryStorageSlot backpack {
+       Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4A904FD0AE}" {
+      SlotTemplate InventoryStorageSlot m224 {
+       Prefab "{6A9A1A000785D3B7}Prefabs/Weapons/Core/m224_base1.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{6A200A4AEA36819F}" {
+      SlotTemplate InventoryStorageSlot HE {
+       Prefab "{B424DB8FB53341EF}Prefabs/Weapons/Ammo/Mortar/M224_HE.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AFED6E345}" {
+      SlotTemplate InventoryStorageSlot Smoke {
+       Prefab "{81A970FA78C924F6}Prefabs/Weapons/Ammo/Mortar/M224_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{6A200A4AD2384D19}" {
+      SlotTemplate InventoryStorageSlot Rifle_ammo {
+       Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+      }
+      NumSlots 50
+     }
+     MultiSlotConfiguration "{6A200A4B2C936C5A}" {
+      SlotTemplate InventoryStorageSlot AR {
+       Prefab "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4BAABD080B}" {
+      SlotTemplate InventoryStorageSlot GL {
+       Prefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+      }
+      NumSlots 5
+     }
+     MultiSlotConfiguration "{6A200A4BBE6E06BD}" {
+      SlotTemplate InventoryStorageSlot GLsmoke {
+       Prefab "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A200A4C6C588B32}" {
+      SlotTemplate InventoryStorageSlot MAT {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+  }
+  coords 12501.068 101.981 7795.086
+  angles -9.739 -0.291 2.694
+ }
+}

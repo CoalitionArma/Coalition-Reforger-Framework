@@ -2,7 +2,7 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
  ID "511E9C6ADE70F798"
  components {
   CRF_ParachuteBackpackComponent "{68A904A00C1F40B4}" {
-   m_ParachutePrefab "{E95CAF01F817549F}Prefabs/DeployedParachutes/CRF_DeployedChickenParachute.et"
+   m_ParachutePrefab "{7AA5ACA7C16AD2BC}Prefabs/DeployedParachutes/CRF_Parachute.et"
   }
   MeshObject "{511E9C6ADE70F7BD}" {
    Object "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
@@ -10,8 +10,8 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
   SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
    Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
     ItemDisplayName UIInfo "{5222CB03904B414C}" {
-     Name "Chicken Parachute Backpack"
-     Description "A chicken what slows your fall"
+     Name "Parachute Backpack"
+     Description "It has a parachute in it"
     }
     ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
      Weight 1
