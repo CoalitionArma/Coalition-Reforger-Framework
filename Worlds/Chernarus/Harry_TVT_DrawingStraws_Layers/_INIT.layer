@@ -35,7 +35,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A33342358273751}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Budeswehr make first contact with an unknown Russian force composition. Defending PL has 2 minutes from safestart start to decide on 1 of 3 AO's, and then each PL must choose their own force multipliers."\
+   m_sTextData "Bundeswehr make first contact with an unknown Russian force composition. Defending PL has 2 minutes from safestart start to decide on 1 of 3 AO's, and then each PL must choose their own force multipliers."\
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets: Platoon Choice"\
@@ -389,7 +389,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A37103002C8B14A" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
