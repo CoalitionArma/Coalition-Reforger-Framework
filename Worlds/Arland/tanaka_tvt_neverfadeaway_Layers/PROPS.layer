@@ -1,0 +1,65 @@
+GenericEntity : "{144F1136AB4DB0E8}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_FIA_01.et" {
+ coords 2053.373 62.037 2162.854
+ angles 4.457 -0.209 -2.692
+}
+GenericEntity : "{14FCC70BB815E13B}Prefabs/Compositions/Slotted/SlotFlatSmall/BWAR_MortarPlacement_S_DE_01.et" {
+ coords 1382.896 36.285 2365.735
+ angles 0 106 0
+}
+$grp GenericEntity : "{24B7F96197053B39}Prefabs/Compositions/Slotted/SlotRoadSmall/Barricade_S_US_01.et" {
+ {
+  coords 2017.67 60.269 2162.601
+ }
+ {
+  coords 2024.535 60.926 2170.257
+  angles -5.345 -58.127 -19.343
+ }
+ {
+  coords 2027.103 62.863 2175.706
+  angles -6.025 -54.161 -17.005
+ }
+ {
+  coords 2013.238 59.252 2158.518
+  angles 0 -42 0
+ }
+}
+StaticModelEntity : "{2BE44AD67609A0C0}Prefabs/Structures/Military/Fortifications/Bunker_SPS/Dst/Bunker_SPS_Ruin_base.et" {
+ coords 2050.759 60.337 2149.002
+ angles 0 -51.087 0
+}
+SCR_DestructibleBuildingEntity : "{501A020C34E2FB63}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Camo.et" {
+ coords 2033.037 0 2139.072
+ angles 0 -90 0
+}
+$grp GenericEntity : "{627A868E7B5D3914}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_FIA_01.et" {
+ {
+  coords 2062.991 64.6 2177.801
+  angles 3.681 31.054 -0.913
+ }
+ {
+  coords 2086.577 62.656 2156.994
+  angles 3.681 31.054 -0.913
+ }
+ {
+  coords 2050.265 54.169 2109.995
+  angles -7.322 -131.331 -13.429
+ }
+}
+$grp GenericEntity : "{917158017F425567}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_01.et" {
+ {
+  coords 2040.142 60.618 2159.336
+  angles 1.538 -43.237 -8.748
+ }
+ {
+  coords 2032.976 59.732 2147.408
+  angles -1.131 -129.172 -1.388
+ }
+}
+GenericEntity : "{AC84AEB35260CEF8}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_US_01.et" {
+ coords 2064.837 59.764 2135.375
+ angles 3.072 -50.337 -7.856
+}
+GenericEntity : "{FD256CE1C386DA49}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_02.et" {
+ coords 2027.087 60.001 2154.022
+ angles -1.759 -130.938 -2.027
+}

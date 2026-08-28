@@ -1,0 +1,34 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 2042.989 59.173 2142.623
+  angles 0 0 0
+  m_MarkerColor 0.844 0.01 0.017 1
+  m_sQuadName "dot"
+  m_sDescription "CROSSROADS"
+ }
+ {
+  coords 2790.577 73.953 1667.284
+  angles 0 0 0
+  m_MarkerColor 0.844 0.01 0.017 1
+  m_sQuadName "dot"
+  m_sDescription "SEIZE"
+ }
+}
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 2041.688 59.093 2142.034
+  m_MarkerColor 1 0 0.053 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 150
+  m_fWorldSizeY 150
+ }
+ {
+  coords 2790.12 73.965 1668.904
+  m_MarkerColor 1 0 0.053 1
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 220
+  m_fWorldSizeY 220
+ }
+}
