@@ -230,62 +230,87 @@ class CRF_MiniArsenal: ChimeraMenuBase
 			return;
 		}
 		array<string> m_addedItems = {};
-		foreach (COA_Clothing clothing: m_GearScriptConfig.m_DefaultClothing)
+		COA_EGearRole role = COA_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
+
+		// If the mission maker overrode this role's gear for this specific slot, only their
+		// override should be selectable here, otherwise players can still pick a default item
+		// that doesn't fit the role
+		bool categoryIsOverridden = false;
+		foreach (COA_Role_Custom_Gear customGearCheck: m_GearScriptConfig.m_RolesToSetCustomSettings)
 		{
-			if (clothing.m_iClothingType != miniArsnealCategory.m_iCategoryIndex)
+			if (customGearCheck.m_Role != role)
 				continue;
-			
-			ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
-			if (!manager)
-				return;
-			foreach(ResourceName cloth: clothing.m_ClothingPrefabs)
+
+			foreach (COA_Clothing clothingCheck: customGearCheck.m_Clothing)
 			{
-				if (cloth == "")
-					continue;
-				
-				if (m_addedItems.Contains(cloth))
-					continue;
-				
-				m_addedItems.Insert(cloth);
-				Widget item = GetGame().GetWorkspace().CreateWidgets("{2B983EDBF688480D}UI/layouts/Menus/Arsenal/MiniArsenalItem.layout", m_Items);
-				ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
-				manager.SetPreviewItemFromPrefab(itemPreview, cloth);
-				//Thank you random BI Forum from Arkensor
-				Resource loadedCloth = Resource.Load(cloth);
-				IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedCloth);
-				if (entitySource)
+				if (clothingCheck.m_iClothingType == miniArsnealCategory.m_iCategoryIndex)
 				{
-				    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
-				    {
-				        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
-				        if(componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
-				        {
-				            BaseContainer attributesContainer = componentSource.GetObject("Attributes");
-				            if (attributesContainer)
-				            {
-				                BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
-				                if (itemDisplayNameContainer)
-				                {
-				                    string name
-				                    itemDisplayNameContainer.Get("Name", name);
-				
-				                    TextWidget.Cast(item.FindWidget("ArsenalItemText")).SetText(name);
-				                    break;
-				                }
-				            }
-				        }
-				    }
+					categoryIsOverridden = true;
+					break;
 				}
+			}
+
+			if (categoryIsOverridden)
+				break;
+		}
+
+		if (!categoryIsOverridden)
+		{
+			foreach (COA_Clothing clothing: m_GearScriptConfig.m_DefaultClothing)
+			{
+				if (clothing.m_iClothingType != miniArsnealCategory.m_iCategoryIndex)
+					continue;
+			
+				ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
+				if (!manager)
+					return;
+				foreach(ResourceName cloth: clothing.m_ClothingPrefabs)
+				{
+					if (cloth == "")
+						continue;
 				
-				CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
-				itemButton.m_sResource = cloth;
-				itemButton.m_iSlotId = miniArsnealCategory.m_iCategoryIndex;
-				itemButton.m_OnClicked.Insert(SelectItem);
+					if (m_addedItems.Contains(cloth))
+						continue;
+				
+					m_addedItems.Insert(cloth);
+					Widget item = GetGame().GetWorkspace().CreateWidgets("{2B983EDBF688480D}UI/layouts/Menus/Arsenal/MiniArsenalItem.layout", m_Items);
+					ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
+					manager.SetPreviewItemFromPrefab(itemPreview, cloth);
+					//Thank you random BI Forum from Arkensor
+					Resource loadedCloth = Resource.Load(cloth);
+					IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedCloth);
+					if (entitySource)
+					{
+					    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+					    {
+					        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+					        if(componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
+					        {
+					            BaseContainer attributesContainer = componentSource.GetObject("Attributes");
+					            if (attributesContainer)
+					            {
+					                BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
+					                if (itemDisplayNameContainer)
+					                {
+					                    string name
+					                    itemDisplayNameContainer.Get("Name", name);
+				
+					                    TextWidget.Cast(item.FindWidget("ArsenalItemText")).SetText(name);
+					                    break;
+					                }
+					            }
+					        }
+					    }
+					}
+				
+					CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
+					itemButton.m_sResource = cloth;
+					itemButton.m_iSlotId = miniArsnealCategory.m_iCategoryIndex;
+					itemButton.m_OnClicked.Insert(SelectItem);
+				}
 			}
 		}
-		
-		COA_EGearRole role = COA_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
-		
+
 		foreach (COA_Role_Custom_Gear customGear: m_GearScriptConfig.m_RolesToSetCustomSettings)
 		{
 			if (customGear.m_Role != role)
