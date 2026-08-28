@@ -29,12 +29,74 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseCVON 1
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A390C37FD3B877B}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "OPFOR forces are attempting to securing the village of Arleville. BLUFOR British forces have a small detachment of forces on the island looking to prevent that. "\
+   ""\
+   "BLUFOR Composition: Motorized Infantry"\
+   "BLUFOR Assets: 1x Gun Truck"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: 1x 120mm Mortar"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
   }
   COA_MissionDescriptor "{6A390C37FD3BB10F}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Defend the village of Arleville in linear order. Prevent the crossroads from falling. If it does, fall back and defend the village."\
+   ""\
+   "INTENT"\
+   "Defend in a linear fashion of crossroads and then the town proper if crossroads is lost."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion. Mission creator recommends you use ambushing patrols, pickets, and scouts to identify attack vectors."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6A390C37FD3BA9E5}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Secure the crossroads West of Arleville in order to Seize the village of Arleville proper"\
+   ""\
+   "INTENT"\
+   "Use your overwhelming firepower and forces to maneuver onto Arleville and seize it after assuming control of the crossroads."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6A390C37FD3BA184}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A390C2B2B6FB65F}" {
+   m_sTitle "Administration"
+   m_sTextData "One respawn wave if OBJ Crossroads is secured"\
+   ""\
+   "It requires 5 men in a hill to begin capturing it"
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
   }
  }
  m_iFactionOneRatio 4
@@ -285,7 +347,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A390C2B8CB50CC0" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
