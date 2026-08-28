@@ -1,0 +1,56 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2065.752 78.411 1162.652
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2155.772 80.662 1158.321
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2445.26 84.315 884.602
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2396.586 84.104 842.785
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2321.147 82 585.152
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A2832107F39DBB9}" {
+    m_iSupplyValue 20
+    m_sItemName "Supply Cache"
+   }
+  }
+  coords 2191.633 81.203 656.221
+ }
+}

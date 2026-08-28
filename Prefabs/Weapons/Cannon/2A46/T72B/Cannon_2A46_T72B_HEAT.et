@@ -1,0 +1,16 @@
+GenericEntity : "{81FE29E45402FC7C}Prefabs/Weapons/Cannon/2A46/T72B/Cannon_2A46_T72B.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{868500A948C772BF}Particles/Weapon/Muzzle_RH120_cannon.ptc"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,26 @@
+Vehicle : "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5E546E7AD864594D}" {
+     SlotTemplate InventoryStorageSlot RPKammunition {
+      Enabled 0
+     }
+    }
+    MultiSlotConfiguration "{5E5821CDD2C13A83}" {
+     SlotTemplate InventoryStorageSlot Ammo {
+      Enabled 0
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{FEDB8A72B0AE2333}Prefabs/Vehicles/Tracked/VehParts/Turret/Berezok_Module_No_AGS.et"
+    }
+   }
+  }
+ }
+}
