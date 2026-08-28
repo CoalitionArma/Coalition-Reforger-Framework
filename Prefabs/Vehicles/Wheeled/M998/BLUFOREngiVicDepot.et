@@ -1,0 +1,52 @@
+Vehicle : "{33AB44A084BAA0CD}Prefabs/Vehicles/Wheeled/M998/M1025_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "120mm Supply Vic"
+    m_Image "{32803C3E4B220918}UI/Textures/EditorPreviews/Mortar/MRS120/BWAR_MRS120.edds"
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_02 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_03 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_04 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_06 {
+     Enabled 1
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_bShouldAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A3334282C59D76C}" {
+   m_Prefab "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et"
+   m_iAmountOfItemSupplyTruck 3
+   m_iAmountOfItemRegularVehicle 3
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A3334282C59D77E}" {
+   m_Prefab "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+   m_iAmountOfItemSupplyTruck 3
+   m_iAmountOfItemRegularVehicle 3
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A3334282C59D77B}" {
+   m_Prefab "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et"
+   m_iAmountOfItemSupplyTruck 3
+   m_iAmountOfItemRegularVehicle 3
+  }
+ }
+}

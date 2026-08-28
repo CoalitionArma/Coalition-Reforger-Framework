@@ -3,6 +3,10 @@ GenericEntity : "{D584F2FFFDC7DE49}Prefabs/Weapons/Warheads/Warhead_Shell_HE.et"
  components {
   BaseTriggerComponent "{55129E81CBAA1390}" {
    PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5D38C8F8C6A477C7}" {
+     ChargeWeight 2000
+     TntEquivalent 1.3
+    }
     SubmunitionEffect "{6A0E0540B5DE1F8C}" {
      Prefab "{B8902B0B743C7A07}Prefabs/Weapons/Ammo/Fragmentation/Ammo_Fragmentation_Med.et"
      Count 15

@@ -1,0 +1,417 @@
+SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
+ coords 7498.138 296.046 887.789
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_AttritionGamemodeComponent "{6A3334220399B96A}" {
+   m_fTeamAVictoryThreshold 90
+   m_fTeamBVictoryThreshold 90
+   m_bEndMissionOnVictory 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 22
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A33342358273751}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Bundeswehr make first contact with an unknown Russian force composition. Defending PL has 2 minutes from safestart start to decide on 1 of 3 AO's, and then each PL must choose their own force multipliers."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Platoon Choice"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: Platoon Choice"\
+   ""\
+   "Time: 45 Min"\
+   "Weather: Clear Day"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A33342358272AC5}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Capture the assigned control point, or complete the attrition goal. "\
+   ""\
+   "INTENT"\
+   "This is a freeform mission that will ask more of platoon than normal. Decide on force multipliers, and adjust to the chosen AO. "\
+   ""\
+   "EXECUTION"\
+   "Impossible to say"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A33342358272A1D}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Defend the assigned control point, or complete the attrition goal. "\
+   ""\
+   "INTENT"\
+   "This is a freeform mission that will ask more of platoon than normal. Defending PL or their representative in case of disconnect has 2 minutes to decide the AO, or it will default to 1, and then must decide on force composition. "\
+   ""\
+   "EXECUTION"\
+   "Impossible to say"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A33342358272954}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A3334235827289E}" {
+   m_sTitle "Administration"
+   m_sTextData "Defending PL has 2 minutes to decide on an AO or it will default to AO 1. Do not pull out specialty gear from a depot outside of the chosen AO. "
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A3334267C023F2C}" {
+   m_sCallsign "PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023D5C}" {
+   m_sCallsign "1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023C23}" {
+   m_sCallsign "2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023325}" {
+   m_sCallsign "3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C02327B}" {
+   m_sCallsign "4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023166}" {
+   m_sCallsign "5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023048}" {
+   m_sCallsign "Specialty 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C0237BA}" {
+   m_sCallsign "Specialty 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C0236A6}" {
+   m_sCallsign "Specialty 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C023594}" {
+   m_sCallsign "Specialty 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A3334267C0226C2}" {
+   m_sCallsign "PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C0225D7}" {
+   m_sCallsign "1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C0224C1}" {
+   m_sCallsign "2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C022420}" {
+   m_sCallsign "3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C021B1E}" {
+   m_sCallsign "Specialty 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A3334267C021A6C}" {
+   m_sCallsign "Specialty 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{88536FB5E7857958}Configs/Gearscripts/Standard/Modern/COA_GS_ModernBund_Fleck.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A37103002C8B14A" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

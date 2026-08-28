@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A05B6B29C9A44560}Prefabs/Vehicles/Wheeled/M998/120mmVicDepot.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,23 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 2505.609 185.103 5207.289
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_fWorldSize 120
+  m_sDescription "AO 1: Zelenogorsk Railway Depot"
+ }
+ {
+  coords 3504.428 211.214 12478.89
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_fWorldSize 120
+  m_sDescription "AO 2: Bonzievka Railyard"
+ }
+ {
+  coords 9390.796 221.578 14598.12
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_fWorldSize 120
+  m_sDescription "AO 3: Nattingnoe"
+ }
+}
