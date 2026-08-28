@@ -1,0 +1,248 @@
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 2546.152 184 5292.911
+}
+COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 5009.262 307.458 5585.519
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ red1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "red1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "red2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "red3"
+     }
+    }
+   }
+  }
+  coords 2551.05 184 5293.433
+ }
+ red2 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "red1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "red2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "red3"
+     }
+    }
+   }
+  }
+  coords 3573.169 210.438 12578.26
+ }
+ red3 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "red1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "red2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "red3"
+     }
+    }
+   }
+  }
+  coords 9468.481 220.294 14655.066
+ }
+ blue1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "blue1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "blue2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "blue3"
+     }
+    }
+   }
+  }
+  coords 5015.284 307.021 5585.905
+ }
+ blue2 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "blue1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "blue2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "blue3"
+     }
+    }
+   }
+  }
+  coords 4835.285 327.406 10097.09
+ }
+ blue3 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To AO 1"
+      }
+      m_sObjectNameToTeleportTo "blue1"
+     }
+     CRF_TeleportPlayerAction "{6A33342F66B0C043}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342F79838E81}" {
+       Name "Teleport To AO 2"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      "Sort Priority" 1
+      m_sObjectNameToTeleportTo "blue2"
+     }
+     CRF_TeleportPlayerAction "{6A33342FA746A5CD}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6A33342FA455F64B}" {
+       Name "Teleport To AO 3"
+      }
+      ActionTitle "Teleport"
+      VisibilityRange 5
+      Duration 2.5
+      m_sObjectNameToTeleportTo "blue3"
+     }
+    }
+   }
+  }
+  coords 7506.201 222.852 13656.674
+ }
+}
