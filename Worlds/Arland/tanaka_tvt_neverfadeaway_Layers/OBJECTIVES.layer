@@ -1,0 +1,28 @@
+$grp GameEntity {
+ {
+  components {
+   CRF_AreaTimerComponent "{6A390C3EED0AB230}" {
+    m_sZoneLabel "Crossroads"
+    m_fCaptureRadius 150
+    m_iCountdownSeconds 300
+    m_iMinPlayersToCapture 5
+    m_bResetOnLostControl 0
+    m_bWinCondition 0
+   }
+  }
+  coords 2040.972 59.114 2142.329
+ }
+ {
+  components {
+   CRF_AreaTimerComponent "{6A390C3EED0AB230}" {
+    m_sZoneLabel "Arleville"
+    m_fCaptureRadius 220
+    m_iCountdownSeconds 300
+    m_iMinPlayersToCapture 5
+    m_bResetOnLostControl 0
+    m_bWinCondition 0
+   }
+  }
+  coords 2789.489 73.977 1668.658
+ }
+}
