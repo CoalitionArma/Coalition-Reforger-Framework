@@ -8,7 +8,7 @@
 //   - Status line  ("{Faction} capturing..." / "CONTESTED" / "{Faction} WIN!")
 //
 // The panel is hidden when no area timer is active in the mission, during
-// safestart, in spectator, and when the HUD is toggled off.
+// safestart, and when the HUD is toggled off.
 
 class CRF_AreaTimerDisplay : SCR_InfoDisplayExtended
 {
@@ -85,7 +85,6 @@ class CRF_AreaTimerDisplay : SCR_InfoDisplayExtended
 			|| COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME
 			|| !COA_SafestartManager.GetInstance()
 			|| COA_SafestartManager.GetInstance().GetSafestartStatus()
-			|| COA_EntityHelper.IsSpectator()
 			|| !COA_PlayerControllerManager.GetInstance()
 			|| !COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
