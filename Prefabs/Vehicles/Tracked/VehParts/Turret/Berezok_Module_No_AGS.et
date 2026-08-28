@@ -1,0 +1,8 @@
+Turret : "{F37355B7361A951E}Prefabs/Vehicles/Tracked/VehParts/Turret/Berezok_Module.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSlotComponent "{64F4F907B641AAFE}" {
+   Enabled 0
+  }
+ }
+}

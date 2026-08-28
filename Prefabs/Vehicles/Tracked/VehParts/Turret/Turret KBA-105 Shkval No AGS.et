@@ -1,0 +1,8 @@
+Turret : "{DB96DF87567E3F13}Prefabs/Vehicles/Tracked/VehParts/Turret/Turret KBA-105 Shkval.et" {
+ ID "51ACD0965653D003"
+ components {
+  WeaponSlotComponent "{64F2976E1A862ECA}" {
+   Enabled 0
+  }
+ }
+}

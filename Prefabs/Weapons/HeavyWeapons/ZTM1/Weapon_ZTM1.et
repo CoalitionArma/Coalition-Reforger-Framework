@@ -1,0 +1,19 @@
+GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{64F2DC2A5F231F8A}" {
+     components {
+      SCR_MuzzleEffectComponent "{64F2DC2A5F231FBD}" {
+       ResetOnFire 0
+      }
+      SCR_OptimizedMuzzleEffectComponent "{64F2DC2A5F231FB7}" {
+       ResetOnFire 0
+      }
+     }
+    }
+   }
+  }
+ }
+}

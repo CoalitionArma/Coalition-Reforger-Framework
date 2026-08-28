@@ -1,0 +1,17 @@
+Vehicle : "{62F416029692CE40}Prefabs/Vehicles/Core/Wheeled_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5E546E7AD864594D}" {
+     SlotTemplate InventoryStorageSlot RPKammunition {
+     }
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{5E5821CDD2C13A83}" {
+     NumSlots 0
+    }
+   }
+  }
+ }
+}
