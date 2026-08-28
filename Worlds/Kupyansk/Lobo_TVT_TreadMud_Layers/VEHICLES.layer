@@ -7,7 +7,7 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/Ve
  }
  {
   coords 2160 80.261 835.967
-  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
+  m_rVehicle "{00C5386B5B01FD93}Prefabs/Vehicles/Tracked/LTM_BMP_2M_No_AGS.et"
   m_iRespawnTimer 999999
   m_iTicketsPerRespawn 0
  }
@@ -124,7 +124,7 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
  {
   coords 2006.528 76.871 3663.233
   angles 0 -180 0
-  m_rVehicle "{68ECE2D074E161BB}Prefabs/Vehicles/Tracked/LTM_BMP_2_Shkval_ZTM.et"
+  m_rVehicle "{98C1553517CB6FEB}Prefabs/Vehicles/Tracked/LTM_BMP_2_Shkval_ZTM_No_AGS.et"
   m_iRespawnTimer 999999
  }
 }
