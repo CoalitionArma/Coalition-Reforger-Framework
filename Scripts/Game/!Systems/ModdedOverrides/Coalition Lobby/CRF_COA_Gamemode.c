@@ -45,6 +45,33 @@ modded class COA_Gamemode
 		};
 		
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+
+		AddMissionTechnicalsDescriptor();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Adds the auto-generated "Mission Technicals" descriptor - runs on every machine (server, listen
+	//! host, and clients each read the same locally-loaded mission data) so the in-game briefing
+	//! (COA_MissionDescriptionUI) always shows an up-to-date summary of the mission maker's configured
+	//! technical settings, without requiring it to be hand-authored or kept in sync via the
+	//! "Configure Descriptions" plugin.
+	protected void AddMissionTechnicalsDescriptor()
+	{
+		if (!m_aMissionDescriptors)
+			m_aMissionDescriptors = {};
+
+		foreach (ref COA_MissionDescriptor existing : m_aMissionDescriptors)
+		{
+			if (existing.m_sTitle == "Mission Technicals")
+				return;
+		}
+
+		COA_MissionDescriptor descriptor = new COA_MissionDescriptor();
+		descriptor.m_sTitle = "Mission Technicals";
+		descriptor.m_sTextData = CRF_MissionTechnicalsGenerator.BuildText(this);
+		descriptor.m_bShowForAnyFaction = true;
+
+		m_aMissionDescriptors.Insert(descriptor);
 	}
 
 	//------------------------------------------------------------------------------------------------
