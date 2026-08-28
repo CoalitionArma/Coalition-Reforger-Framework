@@ -1,0 +1,184 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 6935.381 315.837 5737.325
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6908.202 316.896 5731.541
+  angles 0 -89.231 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6907.992 316.59 5715.855
+  angles 0 -89.231 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6908.088 316.762 5723.046
+  angles 0 -89.231 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6935.222 314.985 5725.463
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6935.089 314.197 5715.561
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6934.967 313.799 5706.477
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6934.892 313.659 5700.874
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6906.358 316.088 5699.263
+  angles 0 -89.231 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6919.739 315.688 5714.174
+  angles 0 -89.231 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6907.766 316.762 5699.068
+  angles 0 -74.524 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6920.723 314.556 5695.48
+  angles 0 -74.524 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6892.395 316.263 5678.008
+  angles 0 -38.668 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6877.124 318.398 5697.091
+  angles 0 -38.668 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6863.899 319.442 5713.617
+  angles 0 -38.668 0
+  m_rVehicle "{E87F0D0B1C88BFD7}Prefabs/Vehicles/Tracked/T72B_RU.et"
+ }
+ {
+  coords 6952.996 313.659 5700.631
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+ {
+  coords 6953.189 313.659 5714.984
+  angles 0 -89.231 0
+  m_rVehicle "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 2248.732 239.969 9585.164
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2249.957 239.969 9576.475
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2247.658 239.969 9592.786
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2251.486 239.992 9565.628
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2288.702 240.167 9631.521
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2281.306 240.167 9625.219
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2276.438 240.167 9621.071
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2267.719 240.167 9613.642
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2239.407 239.825 9580.748
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2239.805 239.772 9569.872
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2238.174 239.825 9589.494
+  angles 0 81.977 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2245.265 239.937 9595.363
+  angles 0 138.612 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2235.653 239.937 9606.271
+  angles 0 138.612 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2229.077 239.937 9613.733
+  angles 0 138.612 0
+  m_rVehicle "{B9A8400A3CEC2DFA}Prefabs/Vehicles/Tracked/T72B_UA.et"
+ }
+ {
+  coords 2274.085 240.167 9606.171
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2282.515 240.167 9613.354
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2289.916 240.167 9619.66
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2281.247 240.167 9612.272
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+ {
+  coords 2272.651 240.167 9604.948
+  angles 0 139.565 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+ }
+}
