@@ -1,0 +1,11 @@
+GameEntity {
+ components {
+  CRF_AreaTimerComponent "{6A310428DFCE6570}" {
+   m_sZoneLabel "Ammo Depot"
+   m_fCaptureRadius 500
+   m_iCountdownSeconds 900
+   m_iMinPlayersToCapture 3
+  }
+ }
+ coords 4539.949 306.448 8305.1
+}

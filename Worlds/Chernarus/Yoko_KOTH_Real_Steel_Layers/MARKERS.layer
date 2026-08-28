@@ -1,0 +1,22 @@
+COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ coords 4568.131 307.244 8350.74
+ angles 0 0 0
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "dot"
+ m_sDescription "AMMO"
+}
+COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 4539.535 306.427 8305.042
+ m_MarkerColor 0 0 0 1
+ m_bShowForAnyFaction 1
+ m_fWorldSizeX 1000
+ m_fWorldSizeY 1000
+ {
+  COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+   coords 0.455 -0.004 0.654
+   angles 0 0 0
+   m_MarkerColor 0 0 0 1
+   m_sDescription "Ammo Depot"
+  }
+ }
+}
