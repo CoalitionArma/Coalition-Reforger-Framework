@@ -1,0 +1,36 @@
+Vehicle : "{7F038AC225B7330B}Prefabs/Vehicles/Wheeled/TIGR/GAZ_TIGR_v2_Mounted_Turret_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_UniversalInventoryStorageComponent "{62B233ED7C26143C}" {
+   MultiSlots {
+    MultiSlotConfiguration "{62B233ED7C2615D9}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Enabled 1
+     }
+    }
+    MultiSlotConfiguration "{62B233ED7C2615D9}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+     }
+     NumSlots 2
+    }
+    MultiSlotConfiguration "{62B233ED7C2615D2}" {
+     SlotTemplate InventoryStorageSlot PKMT {
+      Enabled 0
+     }
+    }
+    MultiSlotConfiguration "{62B233ED7C2615D3}" {
+     SlotTemplate InventoryStorageSlot KORD {
+      Prefab "{843D9B182BCD2765}Prefabs/Weapons/Magazines/NSV/Box_127x108_NSV_50rnd_4AP_1APIT.et"
+     }
+     NumSlots 5
+    }
+    MultiSlotConfiguration "{6A38086FDF42CFA3}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{CADA6D2DC5098A08}Prefabs/Weapons/Magazines/Kord/Box_127x108_NSV_50rnd_Base.et"
+     }
+    }
+   }
+  }
+ }
+}
