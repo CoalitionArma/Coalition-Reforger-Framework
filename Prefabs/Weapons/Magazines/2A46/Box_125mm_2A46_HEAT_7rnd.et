@@ -1,0 +1,10 @@
+GenericEntity : "{F9E1A46E3ABA116F}Prefabs/Weapons/Core/Magazine_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    m_sAmmoType "HEAT"
+   }
+  }
+ }
+}
