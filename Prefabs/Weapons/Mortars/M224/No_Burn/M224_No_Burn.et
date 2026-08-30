@@ -1,0 +1,130 @@
+GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  M224_CarriedMarkerComponent "{6A1122FF18BA1D88}" {
+   m_sDeployedPrefab "{A0A457EA2788769D}Configs/Gearscripts/Custom/Creme/M224 No Burn/Deployed_No_Burn/M224A1_Deployed_testing_No_Burn.et"
+   m_sGhostPrefab "{DF0F9F7A06F4B55A}Prefabs/M224A1_Deployed_Ghost.et"
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{5740AA78377C2123}mortar_base_backslot.xob"
+   Materials {
+    MaterialAssignClass "{6A1122FF18BA1DF9}" {
+     SourceMaterial "M224_Base"
+     AssignedMaterial "{D0D3E399C32B0CA5}Data/M224_Base1.emat"
+    }
+    MaterialAssignClass "{6A1122FF18BA1DFE}" {
+     SourceMaterial "M224_Selector"
+     AssignedMaterial "{8EA571D557630343}Data/M224_Selector1.emat"
+    }
+   }
+  }
+  RigidBody "{6A1122FF18BA1DFC}" {
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{6A1122FF18BA1DF1}" {
+     Name "M224A1"
+     Description "60mm Mortar "
+     m_bShowWeaponName 0
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6A1122FF18BA1DF7}" {
+     Weight 6
+     SizeSetupStrategy Manual
+     ItemDimensions 10 10 100
+     RestingUP Right
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6A1122FF18BA1DF5}" {
+     IkSettings {
+      ItemIKSettings "{6A1122FF18BA1DEB}" {
+       MovementSpeedRange 0 1
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x7 0
+      }
+      ItemIKSettings "{6A1122FF18BA1DEA}" {
+       MovementSpeedRange 1 2
+       IkSettingsStand 0x7 0
+       IkSettingsCrouch 0x7 0
+       IkSettingsProne 0x4 0
+      }
+      ItemIKSettings "{6A1122FF18BA1DE9}" {
+       MovementSpeedRange 3 3
+       IkSettingsStand 0x6 0
+       IkSettingsCrouch 0x6 0
+       IkSettingsProne 0x6 0
+      }
+      ItemIKSettings "{6A1122FF18BA1DEF}" {
+       Lowered 1
+       InAds 0
+       OutAds 0
+      }
+     }
+     AllowInspection 1
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      CrouchLimitsVertical -50 50
+      ProneLimitsVertical -10 20
+     }
+     PreviewRenderAttributes "{6A1122FF18BA1DE3}" {
+      CameraPreset Top
+      CameraOrbitAngles 0 0 90
+      CameraDistanceToItem 0.5
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6A1122FF18BA1DE0}" {
+     AttachmentSlot InventoryStorageSlot m224 {
+      PivotID "Scene_Root"
+      Angles 0 0 45
+      ChildPivotID ""
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      PivotID "eye"
+     }
+     CameraRecoilAmount 0.1
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{75C2D39DE6D90FDA}Assets/Weapons/Launchers/workspaces/m72.agr"
+     AnimInstance "{A83FF45B765A4CD5}Assets/Weapons/Launchers/workspaces/m72_player.asi"
+     AnimInjection AnimationAttachmentInfo "{6A1122FF18BA1C1A}" {
+      AnimGraph "{75C2D39DE6D90FDA}Assets/Weapons/Launchers/workspaces/m72.agr"
+      AnimInstance "{5361656AEE5B2839}Assets/Weapons/Launchers/workspaces/m72_weapon.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+   SignalsSourceAccess SignalsSourceAccessClass "{CC7B64C6B99546FB}" {
+   }
+   useAimingType Weapon
+   WeaponType RocketLauncher
+   AllowedRaise "ADS, raised and lowered allowed"
+   obstructionTestCharacterOffset 0 0 0
+   obstructionTestAddedLength 0.1
+   slightObstrWeaponMaxZOffset 0
+   signiObstrWeaponMaxZOffset 0
+   SoundInt 1050000
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M224 Base"
+    Description "M224 Base"
+   }
+   WeaponOffset 0 0 0
+   WeaponOffsetADS 0 0 0
+  }
+  WeaponGamepadEffectsManagerComponent "{61A2E5C3F4458F86}" {
+   "Default Chambered Trigger effect" GamepadTriggerEffect "{61D30BF7F0381163}" : "{77AEF03E2CDCBADF}Prefabs/Weapons/Core/Configs/TriggerEffects/Charged/TriggerEffect_ChargedLauncher.conf" {
+   }
+   "Default ADS Trigger effect" GamepadTriggerEffect "{61B129618F212411}" : "{84CE840D723D5497}Prefabs/Weapons/Core/Configs/TriggerEffects/ADS/TriggerEffect_ADSLauncher.conf" {
+   }
+   "Default Firing Trigger effect" GamepadTriggerEffect "{61D30BF7F81F8C61}" : "{0D15C0B4910C36A1}Prefabs/Weapons/Core/Configs/TriggerEffects/Fire/TriggerEffect_FireLauncher.conf" {
+   }
+  }
+ }
+ coords 1271.418 37.752 2845.298
+}
