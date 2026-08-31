@@ -1,0 +1,36 @@
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ {
+  coords 1292.884 37.63 6022.63
+  Points {
+   ShapePoint "{6A3F189765FC2C3E}" {
+    Position -458.014 0 72.882
+   }
+   ShapePoint "{6A3F189767170BAF}" {
+    Position 34.664 -0 -333.516
+   }
+   ShapePoint "{6A3F1897698C2985}" {
+    Position 291.991 0 107.662
+   }
+   ShapePoint "{6A3F189768A9D1B0}" {
+    Position -141.762 -0 442.372
+   }
+  }
+ }
+ {
+  coords 2583.482 105.409 5487.762
+  Points {
+   ShapePoint "{6A3F18999C6868A2}" {
+    Position 92.004 0 -12.741
+   }
+   ShapePoint "{6A3F18999F4E9587}" {
+    Position 35.093 0 102.841
+   }
+   ShapePoint "{6A3F189981B7E19A}" {
+    Position -98.644 0 93.125
+   }
+   ShapePoint "{6A3F1899803B7A63}" {
+    Position -8.858 0 -106.876
+   }
+  }
+ }
+}

@@ -1,0 +1,4 @@
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 2588.316 104.187 5517.058
+ m_sCallsignOfGroupToSpawn "Recon"
+}
