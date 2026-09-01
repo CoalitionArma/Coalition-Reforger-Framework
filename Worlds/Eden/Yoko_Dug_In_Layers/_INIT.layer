@@ -8,6 +8,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     "Cache1"
     "Cache2"
     "Cache3"
+    "Cache4"
+    "Cache5"
    }
    m_iRandomCacheCount 4
    m_fRandomMinRadius 1000
@@ -18,8 +20,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 18
-     m_iStartingMinutes 0
+     m_iStartingHour 5
+     m_iStartingMinutes 30
     }
    }
    m_bRandomWeatherChanges 0
@@ -168,16 +170,16 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
- m_fMissionTimeScale 1
+ m_fMissionTimeScale 1.5
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{08608B7EAF4CD6DF}Configs/Gearscripts/Standard/Modern/COA_GS_USSpecOps.conf"
+  m_rGearScript "{696E32C057156A37}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_GreenBeret.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{FA82A9F5101BF159}Configs/Gearscripts/Standard/GWOT/COA_GS_RUS_2000s.conf"
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
