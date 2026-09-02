@@ -2,7 +2,7 @@ COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/Spawn
  coords 7576.814 166.165 4245.37
 }
 COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
- coords 5907.651 0.194 4273.362
+ coords 5894.01 4.692 3420.95
  m_sCallsignOfGroupToSpawn "Recon"
 }
 GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHunt/CRF_CacheHunt_FlagPole.et" {

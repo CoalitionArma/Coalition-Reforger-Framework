@@ -14,10 +14,4 @@ $grp GameEntity {
  Cache5 {
   coords 6225.945 107.683 5118.542
  }
- Cache6 {
-  coords 4883.344 52.468 5699.975
- }
- Cache7 {
-  coords 4819.945 84.505 4457.381
- }
 }
