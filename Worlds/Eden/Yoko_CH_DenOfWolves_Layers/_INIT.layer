@@ -58,10 +58,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A442DA7B0DE025C}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Destroy all caches both time runs out"\
+   "Destroy all caches before time runs out"\
    ""\
    "INTENT"\
-   "Use you recon team to scout ahead to plan the best course of action before commiting your entrie force."\
+   "Use your recon team to scout ahead to plan the best course of action before commiting your entire force. The enemy could be anywhere, so ambushes are possible"\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -375,21 +375,21 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{4E686A7B35B6559B}Configs/Gearscripts/Standard/GWOT/COA_GS_RUSMilitia.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
