@@ -1,0 +1,14 @@
+$grp GenericEntity : "{A700AD9077074654}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Large_Soviet.et" {
+ {
+  coords 5465.96 96.261 5117.882
+  angles 0 19.163 0
+ }
+ {
+  coords 7076.9 116.168 5433.992
+  angles 0 -179.92 0
+ }
+ {
+  coords 4820.858 84.443 4456.97
+  angles 0 45.526 0
+ }
+}
