@@ -1,0 +1,8 @@
+COA_ManualMarker : "{E256B56F799AEB41}PrefabsMissionMaking/Markers/SpawnMarkers/BLUFOR_SpawnMarker.et" {
+ coords 4767.269 166.12 6957.139
+ m_fWorldSize 100
+ m_sDescription "BLUFOR FOB"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+}
