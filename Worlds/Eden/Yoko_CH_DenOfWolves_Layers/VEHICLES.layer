@@ -1,48 +1,43 @@
 $grp COA_VehicleSpawner : "{0D3E442F1C959D7A}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/INDFOR_VehicleSpawner.et" {
  {
   coords 5336.788 80.5 6293.133
-  angles 0 -97.968 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  angles 0 85.547 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
   coords 5341.916 80.544 6302.896
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
   coords 5348.708 80.544 6306.325
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
   coords 5344.934 80.483 6314.25
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 5337.198 80.329 6310.497
+  coords 5338.111 80.329 6310.958
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 5332.18 80.298 6318.374
+  coords 5334.401 80.298 6319.495
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
   coords 5339.036 80.314 6322.987
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
   coords 5336.349 80.267 6329.23
   angles 0 153.217 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
- }
- {
-  coords 5329.446 80.298 6327.721
-  angles 0 176.227 0
-  m_rVehicle "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
 }
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
