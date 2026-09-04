@@ -82,14 +82,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A48FB9FA99306DB}" {
    m_sTitle "INDFOR Briefing"
-   m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
-   ""\
-   "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
-   ""\
-   "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_sTextData "N/A"
    m_aFactionKeys {
     "INDFOR"
    }
