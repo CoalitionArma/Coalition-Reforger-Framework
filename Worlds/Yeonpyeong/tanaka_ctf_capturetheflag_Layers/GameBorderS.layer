@@ -1,0 +1,69 @@
+GenericEntity : "{25782F94FA996F41}Prefabs/Items/Demining/MineFlags/CRF_CTF_Flag.et" {
+ coords 3853.135 84.429 7293.044
+}
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 3860.418 84.032 7308.903
+ Points {
+  ShapePoint "{6A48FB90D65F66FF}" {
+   Position -845.933 0 622.975
+  }
+  ShapePoint "{6A48FB90FAB5F828}" {
+   Position 82.406 0 549.599
+  }
+  ShapePoint "{6A48FB90FFBAFE02}" {
+   Position 177.121 0 274.099
+  }
+  ShapePoint "{6A48FB90FD541DF9}" {
+   Position 461.614 -28.556 -60.7
+  }
+  ShapePoint "{6A48FB90F3EB18C3}" {
+   Position 927.276 0 -454.641
+  }
+  ShapePoint "{6A48FB90F6F5962A}" {
+   Position 665.31 0 -672.504
+  }
+  ShapePoint "{6A48FB90EB6E259A}" {
+   Position 337.051 0 -799.118
+  }
+  ShapePoint "{6A48FB90E9B69D70}" {
+   Position -287.08 0 -219.637
+  }
+  ShapePoint "{6A48FB90EF04CB4D}" {
+   Position -802.569 0 11.684
+  }
+ }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 3141.013 2.988 7831.044
+ Points {
+  ShapePoint "{6A48FB902D7C034C}" {
+   Position -83.007 -0 88.345
+  }
+  ShapePoint "{6A48FB902C30BB25}" {
+   Position 92.761 0 97.115
+  }
+  ShapePoint "{6A48FB9023B71AF5}" {
+   Position 128.505 0 -55.083
+  }
+  ShapePoint "{6A48FB90222019F8}" {
+   Position -56.874 0 -77.111
+  }
+ }
+}
+COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 4573.3 6.041 6811.729
+ Points {
+  ShapePoint "{6A48FB9054431241}" {
+   Position -4.661 0 181.14
+  }
+  ShapePoint "{6A48FB904B8C3FEA}" {
+   Position 177.439 0 38.779
+  }
+  ShapePoint "{6A48FB904924F304}" {
+   Position -77.107 0 -194.725
+  }
+  ShapePoint "{6A48FB904859037E}" {
+   Position -164.966 0 -30.602
+  }
+ }
+}

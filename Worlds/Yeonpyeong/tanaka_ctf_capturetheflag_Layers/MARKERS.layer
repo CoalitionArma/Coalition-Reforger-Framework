@@ -1,0 +1,18 @@
+$grp CRF_MissionMarker : "{821DA53A26209581}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/GLOBAL_NewObjectiveMarker.et" {
+ {
+  coords 4409.231 6.103 6737.41
+  m_MarkerColor 0 0 0.617 1
+  m_sQuadName "dot"
+  m_fWorldSize 25
+  m_sDescription "BLU Capture Zone"
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3240.206 7.284 7876.914
+  m_MarkerColor 0.844 0.01 0.01 1
+  m_sQuadName "dot"
+  m_fWorldSize 25
+  m_sDescription "OPF Capture Zone"
+  m_bVisibleForEmptyFaction 1
+ }
+}
