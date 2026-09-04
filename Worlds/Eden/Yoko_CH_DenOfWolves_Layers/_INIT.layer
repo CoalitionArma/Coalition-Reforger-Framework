@@ -40,7 +40,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A442DA7B0DE0FCA}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Green Beret are tasked with rooting out a RUS Millita force in Western Eden."\
+   m_sTextData "Green Berets are tasked with rooting out a RUS Millita force in Western Eden."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 1x Recon Squad"\
@@ -91,7 +91,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Defend all your Caches"\
    ""\
    "INTENT"\
-   "The enemy has a recon team deployed closer to the caches be wary of them. I suggest you send out pickets or use gureilla tactics to confuse and wear down your foe."\
+   "The enemy has a recon team deployed closer to the caches, be wary of them. I suggest you send out pickets or use gureilla tactics to confuse and wear down your foe."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
