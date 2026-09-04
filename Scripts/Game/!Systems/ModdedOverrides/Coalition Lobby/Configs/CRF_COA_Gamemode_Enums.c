@@ -13,4 +13,5 @@ modded enum COA_EGamemode
 	PROPHUNT,
 	KOTH,
 	ATTRITION,
+	CTF,
 }

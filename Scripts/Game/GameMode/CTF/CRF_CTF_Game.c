@@ -154,18 +154,11 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 		SetEventMask(GetOwner(), EntityEvent.FRAME);
 
-		Print(string.Format("[CRF_CTF] OnWorldPostProcess: gamemode initializing. IsServer=%1", Replication.IsServer()), LogLevel.NORMAL);
-
 		IEntity teamABase = GetGame().GetWorld().FindEntityByName(m_sTeamABaseName);
 		if (teamABase)
 		{
 			m_vTeamABasePos = teamABase.GetOrigin();
 			m_bTeamABaseFound = true;
-			Print(string.Format("[CRF_CTF] Team A base '%1' found at %2.", m_sTeamABaseName, m_vTeamABasePos), LogLevel.NORMAL);
-		}
-		else
-		{
-			Print(string.Format("[CRF_CTF] WARNING: Team A base entity '%1' not found in world. Captures for Team A can never succeed until this is fixed.", m_sTeamABaseName), LogLevel.WARNING);
 		}
 
 		IEntity teamBBase = GetGame().GetWorld().FindEntityByName(m_sTeamBBaseName);
@@ -173,11 +166,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		{
 			m_vTeamBBasePos = teamBBase.GetOrigin();
 			m_bTeamBBaseFound = true;
-			Print(string.Format("[CRF_CTF] Team B base '%1' found at %2.", m_sTeamBBaseName, m_vTeamBBasePos), LogLevel.NORMAL);
-		}
-		else
-		{
-			Print(string.Format("[CRF_CTF] WARNING: Team B base entity '%1' not found in world. Captures for Team B can never succeed until this is fixed.", m_sTeamBBaseName), LogLevel.WARNING);
 		}
 
 		SpawnBaseMarkers();
@@ -223,7 +211,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		Resource markerResource = Resource.Load(m_rBaseMarkerPrefab);
 		if (!markerResource || !markerResource.IsValid())
 		{
-			Print(string.Format("[CRF_CTF] WARNING: Base marker prefab '%1' could not be loaded.", m_rBaseMarkerPrefab), LogLevel.WARNING);
 			return null;
 		}
 
@@ -238,7 +225,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		COA_ShapeMarker marker = COA_ShapeMarker.Cast(markerEntity);
 		if (!marker)
 		{
-			Print(string.Format("[CRF_CTF] WARNING: Base marker prefab '%1' is not a COA_ShapeMarker.", m_rBaseMarkerPrefab), LogLevel.WARNING);
 			SCR_EntityHelper.DeleteEntityAndChildren(markerEntity);
 			return null;
 		}
@@ -299,10 +285,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 				ownedCount++;
 		}
 
-		if (m_eGameModeType == "Neutral" && neutralCount != 1)
-			Print(string.Format("[CRF_CTF] WARNING: Neutral mode expects exactly 1 flag with no Owning Faction set, found %1.", neutralCount), LogLevel.WARNING);
-		else if (m_eGameModeType == "Double" && ownedCount != 2)
-			Print(string.Format("[CRF_CTF] WARNING: Double mode expects exactly 2 flags with Owning Faction set (one per team), found %1.", ownedCount), LogLevel.WARNING);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -389,50 +371,41 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//! \param[in] flag The flag being picked up
 	void TryPickUpFlag(int playerId, CRF_CTF_FlagComponent flag)
 	{
-		Print(string.Format("[CRF_CTF] TryPickUpFlag called: playerId=%1, IsServer=%2", playerId, Replication.IsServer()), LogLevel.NORMAL);
-
 		if (!Replication.IsServer())
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: not running on the server. If this ever prints, the RpcAsk handler is being invoked somewhere that isn't authoritative.", LogLevel.WARNING);
 			return;
 		}
 
 		if (!flag)
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: null flag component (bad RplId, or the entity found isn't a CRF_CTF_FlagComponent).", LogLevel.WARNING);
 			return;
 		}
 
 		if (playerId <= 0)
 		{
-			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: invalid playerId %1.", playerId), LogLevel.WARNING);
 			return;
 		}
 
 		if (flag.IsCarried())
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: flag is already carried.", LogLevel.WARNING);
 			return;
 		}
 
 		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
 		{
-			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: no controlled entity for playerId %1.", playerId), LogLevel.WARNING);
 			return;
 		}
 
 		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(playerEntity.FindComponent(SCR_DamageManagerComponent));
 		if (damageManager && damageManager.GetState() == EDamageState.DESTROYED)
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: player is dead.", LogLevel.WARNING);
 			return;
 		}
 
 		FactionKey playerFaction = GetEntityFactionKey(playerEntity);
 		if (playerFaction.IsEmpty())
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: player has no FactionAffiliationComponent / no affiliated faction. This is the most common cause of pickups silently doing nothing in an ad-hoc Workbench test - check the test character was slotted into a faction normally.", LogLevel.WARNING);
 			return;
 		}
 
@@ -441,18 +414,15 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		// A team cannot steal its own home flag while it is still docked at base.
 		if (flag.IsAtBase() && !flagFaction.IsEmpty() && playerFaction == flagFaction)
 		{
-			Print(string.Format("[CRF_CTF] TryPickUpFlag REJECTED: %1 tried to take their own faction's ('%2') docked home flag.", playerFaction, flagFaction), LogLevel.WARNING);
 			return;
 		}
 
 		if (!flag.TryPickUp(playerId))
 		{
-			Print("[CRF_CTF] TryPickUpFlag REJECTED: flag.TryPickUp() itself returned false (race condition, or not running on server).", LogLevel.WARNING);
 			return;
 		}
 
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		Print(string.Format("[CRF_CTF] Pickup succeeded: %1 (faction %2) took '%3'.", playerName, playerFaction, flag.GetDisplayName()), LogLevel.NORMAL);
 		BroadcastMessage(string.Format("%1 has taken the %2!", playerName, flag.GetDisplayName()));
 	}
 
@@ -496,14 +466,12 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		IEntity carrierEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(carrierId);
 		if (!carrierEntity)
 		{
-			Print(string.Format("[CRF_CTF] CheckCarriedFlag: no controlled entity for carrierId %1 (flag '%2').", carrierId, flag.GetDisplayName()), LogLevel.WARNING);
 			return;
 		}
 
 		FactionKey carrierFaction = GetEntityFactionKey(carrierEntity);
 		if (carrierFaction.IsEmpty())
 		{
-			Print(string.Format("[CRF_CTF] CheckCarriedFlag: carrier of '%1' has no resolvable faction, skipping capture/return checks.", flag.GetDisplayName()), LogLevel.WARNING);
 			return;
 		}
 
@@ -517,7 +485,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			vector homePos;
 			if (!TryGetBasePosition(carrierFaction, homePos))
 			{
-				Print(string.Format("[CRF_CTF] CheckCarriedFlag: no base position known for faction %1 - is its base entity name set/found?", carrierFaction), LogLevel.WARNING);
 				return;
 			}
 
@@ -540,12 +507,10 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		vector captureBasePos;
 		if (!TryGetBasePosition(captureBaseFaction, captureBasePos))
 		{
-			Print(string.Format("[CRF_CTF] CheckCarriedFlag: no base position known for capture-target faction %1 - is its base entity name set/found? Captures can never trigger until this resolves.", captureBaseFaction), LogLevel.WARNING);
 			return;
 		}
 
 		float distSq = vector.DistanceSq(carrierPos, captureBasePos);
-		Print(string.Format("[CRF_CTF] CheckCarriedFlag: carrier (faction %1) is %2m from %3's base (capture radius %4m).", carrierFaction, Math.Sqrt(distSq), captureBaseFaction, m_fCaptureRadius), LogLevel.NORMAL);
 
 		if (distSq > radiusSq)
 			return;
@@ -555,7 +520,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			CRF_CTF_FlagComponent ownFlag = CRF_CTF_FlagComponent.GetFlagForFaction(carrierFaction);
 			if (ownFlag && !ownFlag.IsAtBase())
 			{
-				Print(string.Format("[CRF_CTF] CheckCarriedFlag: %1 is in range to capture but their own flag is not at home (Require Own Flag At Home To Capture is on).", carrierFaction), LogLevel.NORMAL);
 				return;
 			}
 		}
@@ -575,7 +539,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			m_iTeamBScore++;
 		else
 		{
-			Print(string.Format("[CRF_CTF] CaptureFlag REJECTED: scoringTeam '%1' matches neither Team A ('%2') nor Team B ('%3').", scoringTeam, m_eTeamA, m_eTeamB), LogLevel.WARNING);
 			return;
 		}
 
@@ -584,7 +547,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		flag.ReturnToBase();
 
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(scoringPlayerId);
-		Print(string.Format("[CRF_CTF] CAPTURE: %1 (%2) captured '%3'. Score is now %4 (Team A) - %5 (Team B). Score To Win = %6.", playerName, scoringTeam, flag.GetDisplayName(), m_iTeamAScore, m_iTeamBScore, m_iScoreToWin), LogLevel.NORMAL);
 		BroadcastMessage(string.Format("%1 captured the %2! Score: %3", playerName, flag.GetDisplayName(), GetScoreLine()), m_sCaptureSound);
 
 		CheckScoreLimit(scoringTeam);
@@ -626,7 +588,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 		else
 			m_bTeamBScoreLimitAnnounced = true;
 
-		Print(string.Format("[CRF_CTF] %1 reached the score limit (%2 captures). Announcing only - match continues.", scoringTeam, score), LogLevel.NORMAL);
 		BroadcastMessage(string.Format("%1 has won! Score: %2", scoringTeam, GetScoreLine()), m_sCaptureSound);
 	}
 
@@ -710,8 +671,6 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	protected void RpcDo_BroadcastMessage(string message, ResourceName sound)
 	{
-		Print(string.Format("[CRF_CTF] RpcDo_BroadcastMessage received: '%1'. COA_Gamemode.GetInstance()=%2", message, COA_Gamemode.GetInstance() != null), LogLevel.NORMAL);
-
 		// Sound is independent of the popup text - play it even if the popup widget below
 		// can't (e.g. no COA_Gamemode in this world), so notifications are never fully silent.
 		if (!sound.IsEmpty())
@@ -719,13 +678,7 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 
 		SCR_PopUpNotification notification = SCR_PopUpNotification.GetInstance();
 		if (!notification)
-		{
-			Print("[CRF_CTF] WARNING: SCR_PopUpNotification.GetInstance() returned null - the popup entity doesn't exist in this world at all.", LogLevel.WARNING);
 			return;
-		}
-
-		if (!COA_Gamemode.GetInstance())
-			Print("[CRF_CTF] WARNING: COA_Gamemode.GetInstance() is null. SCR_PopUpNotification.ProcessInit() (see CRF's COA_PopUpNotification.c) never builds its widgets without a COA_Gamemode present, so PopupMsg() below is expected to do nothing - the mission's GameMode entity needs to be (or extend) COA_Gamemode.", LogLevel.WARNING);
 
 		notification.PopupMsg(message);
 	}

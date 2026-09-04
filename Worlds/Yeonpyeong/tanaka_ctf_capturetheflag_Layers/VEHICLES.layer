@@ -1,0 +1,26 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 4602.126 5.906 6793.051
+  angles 0 38.751 0
+  m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4614.531 5.875 6781.395
+  angles 0 38.751 0
+  m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 3156.731 4.325 7814.459
+  angles 0 125.516 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3150.544 4.684 7849.942
+  angles 0 16.919 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

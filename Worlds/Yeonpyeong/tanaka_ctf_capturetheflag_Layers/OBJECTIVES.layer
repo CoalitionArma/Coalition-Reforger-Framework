@@ -1,0 +1,8 @@
+$grp GameEntity {
+ ctf_teamA_base {
+  coords 4409.23 6.103 6737.409
+ }
+ ctf_teamB_base {
+  coords 3240.207 7.284 7876.914
+ }
+}
