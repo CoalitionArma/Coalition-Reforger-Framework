@@ -5,7 +5,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{645A000846476766}" {
       ParentContextList {
@@ -19,7 +19,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{645A000847BA13D3}" {
       ParentContextList {
@@ -33,7 +33,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{645A0008470A47AB}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -42,7 +42,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{6582DB7010581DD2}" {
       ParentContextList {
@@ -56,7 +56,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{6582DB70170EE41F}" {
       ParentContextList {
@@ -70,7 +70,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B12EC831774}" {
       ParentContextList {
@@ -84,7 +84,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{6958080BD07374B3}" {
       ParentContextList {
@@ -98,7 +98,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69F1088EC55A5981}" {
       ParentContextList {
@@ -112,12 +112,12 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 7
       m_sObjectNameToTeleportTo "Mortar"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
   }
-  coords 7493.121 6.578 6707.745
+  coords 5756.857 216.97 7054.295
   angles 0 150.497 0
  }
  VehRange {
@@ -126,7 +126,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DD4A7ECC8}" {
       ParentContextList {
@@ -140,7 +140,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A0E1A9BBC}" {
       ParentContextList {
@@ -154,7 +154,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A6945F972}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -163,7 +163,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A46FB574D}" {
       ParentContextList {
@@ -177,7 +177,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0AA0CCB136}" {
       ParentContextList {
@@ -191,7 +191,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B13045981DF}" {
       ParentContextList {
@@ -205,7 +205,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69580812F62E7349}" {
       ParentContextList {
@@ -219,7 +219,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -232,7 +232,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DF6A26379}" {
       ParentContextList {
@@ -246,7 +246,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A3AAD5456}" {
       ParentContextList {
@@ -260,7 +260,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A1787BA07}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -269,7 +269,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A71DBAD39}" {
       ParentContextList {
@@ -283,7 +283,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0A4D19BB5D}" {
       ParentContextList {
@@ -297,7 +297,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B12C0B04141}" {
       ParentContextList {
@@ -311,7 +311,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{6958081290DA3209}" {
       ParentContextList {
@@ -325,7 +325,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -338,7 +338,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DC6831E4B}" {
       ParentContextList {
@@ -352,7 +352,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A004C0345}" {
       ParentContextList {
@@ -366,7 +366,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A1DA6550A}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -375,7 +375,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A7FD0E8C2}" {
       ParentContextList {
@@ -389,7 +389,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0A5B0FAA0D}" {
       ParentContextList {
@@ -403,7 +403,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B132E3CC44B}" {
       ParentContextList {
@@ -417,7 +417,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69580812E1C4A21A}" {
       ParentContextList {
@@ -431,7 +431,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -445,7 +445,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DD2B450BA}" {
       ParentContextList {
@@ -459,7 +459,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A0B1F6158}" {
       ParentContextList {
@@ -473,7 +473,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A67EDE68B}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -482,7 +482,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A424811A6}" {
       ParentContextList {
@@ -496,7 +496,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0A5FFFB9E3}" {
       ParentContextList {
@@ -510,7 +510,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B13307F8C93}" {
       ParentContextList {
@@ -524,7 +524,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69580812EB26AC75}" {
       ParentContextList {
@@ -538,7 +538,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -551,7 +551,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DF8EF7C98}" {
       ParentContextList {
@@ -565,7 +565,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A3D92255F}" {
       ParentContextList {
@@ -579,7 +579,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A1AF5DDDE}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -588,7 +588,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A74489A3F}" {
       ParentContextList {
@@ -602,7 +602,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0A50530AD0}" {
       ParentContextList {
@@ -616,7 +616,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B12CEA21FF9}" {
       ParentContextList {
@@ -630,7 +630,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{6958081299EA4228}" {
       ParentContextList {
@@ -644,7 +644,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -657,7 +657,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DD4A7ECC8}" {
       ParentContextList {
@@ -671,7 +671,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A0E1A9BBC}" {
       ParentContextList {
@@ -685,7 +685,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A6945F972}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -694,7 +694,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A46FB574D}" {
       ParentContextList {
@@ -708,7 +708,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0AA0CCB136}" {
       ParentContextList {
@@ -722,7 +722,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B133FA59689}" {
       ParentContextList {
@@ -736,7 +736,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69580812EC3C639E}" {
       ParentContextList {
@@ -750,7 +750,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -763,7 +763,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
       VisibilityRange 5
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0DD4A7ECC8}" {
       ParentContextList {
@@ -777,7 +777,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 1
       m_sObjectNameToTeleportTo "Airfield"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A0E1A9BBC}" {
       ParentContextList {
@@ -791,7 +791,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 2.5
       "Sort Priority" 2
       m_sObjectNameToTeleportTo "FiringRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A6945F972}" {
       UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -800,7 +800,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       ActionTitle "Teleport"
       "Sort Priority" 3
       m_sObjectNameToTeleportTo "VehRange"
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
      CRF_TeleportPlayerAction "{69231A0A46FB574D}" {
       ParentContextList {
@@ -814,7 +814,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 4
       m_sObjectNameToTeleportTo "BLUFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69231A0AA0CCB136}" {
       ParentContextList {
@@ -828,7 +828,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 5
       m_sObjectNameToTeleportTo "OPFOR"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{69232B13045981DF}" {
       ParentContextList {
@@ -842,7 +842,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "RifleRange"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
      CRF_TeleportPlayerAction "{6958080AE7412602}" {
       ParentContextList {
@@ -856,7 +856,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       Duration 1
       "Sort Priority" 6
       m_sObjectNameToTeleportTo "DanceHall"
-      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+      m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
      }
     }
    }
@@ -868,7 +868,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
    ActionsManagerComponent "{645A0008F3808301}" {
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+      m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
      }
     }
    }

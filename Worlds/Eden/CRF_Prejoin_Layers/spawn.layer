@@ -1,7 +1,7 @@
 $grp COA_VehicleSpawner {
  {
-  coords 7388.637 9.688 6712.818
-  angles 0 126.941 0
+  coords 5727.029 219.143 7076.411
+  angles 0 -74.468 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -9,44 +9,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7432.262 9.684 6767.306
-  angles 0 -144.616 0
-  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7435.064 9.684 6765.315
-  angles 0 -144.616 0
-  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7438.068 9.684 6763.181
-  angles 0 -144.616 0
-  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7440.804 9.684 6761.238
-  angles 0 -144.616 0
-  m_rVehicle "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7390.462 9.688 6715.043
-  angles 0 126.941 0
+  coords 5787.754 216.793 7063.842
+  angles 0 104.938 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -54,8 +18,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7392.187 9.688 6717.336
-  angles 0 126.941 0
+  coords 5760.413 214.983 7034.821
+  angles 0 -170.044 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -63,8 +27,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7394.022 9.688 6719.777
-  angles 0 126.941 0
+  coords 5786.155 216.868 7060.86
+  angles 0 104.938 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -72,8 +36,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7395.725 9.688 6722.041
-  angles 0 126.941 0
+  coords 5757.174 215.063 7034.883
+  angles 0 -170.044 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -81,8 +45,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7397.388 9.688 6724.252
-  angles 0 126.941 0
+  coords 5753.208 215.121 7034.767
+  angles 0 -170.044 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -90,8 +54,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7399.09 9.688 6726.515
-  angles 0 126.941 0
+  coords 5763.267 214.986 7034.422
+  angles 0 -170.044 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -99,8 +63,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7400.878 9.688 6728.893
-  angles 0 126.941 0
+  coords 5724.644 218.987 7069.584
+  angles 0 -74.468 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -108,8 +72,8 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7402.781 9.688 6731.424
-  angles 0 126.941 0
+  coords 5784.804 216.904 7058.268
+  angles 0 104.938 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
@@ -117,105 +81,13 @@ $grp COA_VehicleSpawner {
   m_bShouldAddAmmo 0
  }
  {
-  coords 7410.889 9.688 6742.206
-  angles 0 126.941 0
+  coords 5725.831 219.051 7073.268
+  angles 0 -74.468 0
   m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
   m_sFactionKey "CIV"
   m_iRespawnTimer 60
   m_iTicketsPerRespawn 0
   m_bShouldAddAmmo 0
- }
- {
-  coords 7412.621 9.688 6744.509
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7414.573 9.688 6747.104
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7416.51 9.688 6749.679
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7418.447 9.688 6752.255
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7420.338 9.688 6754.77
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7422.392 9.688 6757.501
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7424.222 9.688 6759.934
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
- {
-  coords 7425.845 9.688 6762.093
-  angles 0 126.941 0
-  m_rVehicle "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-  m_sFactionKey "CIV"
-  m_iRespawnTimer 60
-  m_iTicketsPerRespawn 0
-  m_bShouldAddAmmo 0
- }
-}
-CommentEntity {
- coords 7449.809 10.758 6698.563
- angles 0 -158.304 0
- m_Comment "Tanaka when there is no "\
- "prejoin update for 2 months."
- m_Size 0.3
- m_Color 1 0 0
- m_FaceCamera 1
- m_VisibleOverall 1
- m_VisibleIngame 1
- m_TextBackground 1
- m_BackgroundTransparency 0.2
- {
-  GenericEntity : "{167A0AF597E9CA76}Prefabs/Props/Military/E_SignFlag_PensiveMan_01.et" {
-   coords 0 -3.266 0
-   angles 0 177.902 0
-   scale 1.5
-  }
  }
 }
 $grp SCR_DestructibleEntity : "{2FBF5DEDFA25D947}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_6m_A.et" {
@@ -537,7 +409,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
    additionalActions {
     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
      VisibilityRange 5
-     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
     }
     CRF_TeleportPlayerAction "{69231A0DF6A26379}" {
      ParentContextList {
@@ -551,7 +423,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 2.5
      "Sort Priority" 1
      m_sObjectNameToTeleportTo "Airfield"
-     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
     }
     CRF_TeleportPlayerAction "{69231A0A3AAD5456}" {
      ParentContextList {
@@ -565,7 +437,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 2.5
      "Sort Priority" 2
      m_sObjectNameToTeleportTo "FiringRange"
-     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
     }
     CRF_TeleportPlayerAction "{69231A0A1787BA07}" {
      UIInfo UIInfo "{69231A0C98CA8E32}" {
@@ -574,7 +446,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      ActionTitle "Teleport"
      "Sort Priority" 3
      m_sObjectNameToTeleportTo "VehRange"
-     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/Characters/!GS_Characters/Special/CRF_Unarmed.et"
+     m_sGearscriptToSet "{42C91BDBD19B390A}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_Unarmed.et"
     }
     CRF_TeleportPlayerAction "{69231A0A71DBAD39}" {
      ParentContextList {
@@ -588,7 +460,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 4
      m_sObjectNameToTeleportTo "BLUFOR"
-     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/CRF_Rifleman.et"
+     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
     }
     CRF_TeleportPlayerAction "{69231A0A4D19BB5D}" {
      ParentContextList {
@@ -602,7 +474,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 5
      m_sObjectNameToTeleportTo "OPFOR"
-     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
     }
     CRF_TeleportPlayerAction "{69232B12C0B04141}" {
      ParentContextList {
@@ -616,7 +488,7 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 6
      m_sObjectNameToTeleportTo "RifleRange"
-     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
     }
     CRF_TeleportPlayerAction "{6958081290DA3209}" {
      ParentContextList {
@@ -630,15 +502,15 @@ GenericEntity Airfield2 : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Telepo
      Duration 1
      "Sort Priority" 6
      m_sObjectNameToTeleportTo "DanceHall"
-     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/Characters/!GS_Characters/Squad Level/COA_Rifleman.et"
+     m_sGearscriptToSet "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et"
     }
    }
   }
  }
  coords 4906.283 28.594 11899.383
 }
-COA_StaticSpawnPoint : "{91AC884B31EDEE23}PrefabsMissionMaking/Systems/SpawnPoints/CIVILIAN_Spawn.et" {
- coords 7525.148 5.98 6763.489
+COA_StaticSpawnPoint "6A49392DC23BE6B9" : "{91AC884B31EDEE23}PrefabsMissionMaking/SpawnPoints/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 5754.511 217.336 7055.933
 }
 GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
  coords 7449.313 -2.835 6697.37

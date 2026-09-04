@@ -1,908 +1,110 @@
-$grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7389.796 0 6687.871
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7392.513 0 6690.602
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7393.555 0 6691.915
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7394.722 0.001 6693.269
-  angles 0 38.839 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7395.707 0 6694.583
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7396.718 0 6695.563
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7397.736 0 6696.567
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7398.674 0 6697.608
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7399.675 0 6698.634
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7400.37 0 6699.656
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7401.068 0 6700.816
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7401.396 0 6702.352
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7401.676 0 6704.29
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7402.29 0 6706.186
-  angles 0 -127.852 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7403.223 0 6707.656
-  angles 0 168.524 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7404.656 0 6709.435
-  angles 0 116.486 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7405.321 0 6710.252
-  angles 0 63.548 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7406.121 0 6711.176
-  angles 0 137.401 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7408.145 0 6711.927
-  angles 0 -165.151 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7408.994 0 6715.23
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7411.214 0 6717.873
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7409.891 -0.004 6716.718
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7412.066 0 6719.331
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7413.804 0 6721.422
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7414.85 0 6722.891
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7415.697 0 6724.549
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7417.654 0 6725.258
-  angles 0 61.45 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7417.827 0 6727.109
-  angles 0 -44.704 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7419.446 0 6727.672
-  angles 0 -44.704 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7419.975 0 6729.934
-  angles 0 -44.704 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7422.045 -0.001 6729.997
-  angles 0 -44.704 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7422.248 0 6732.565
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7423.652 0 6734.417
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7425.538 0 6735.968
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7426.251 0 6738.109
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7428.896 -0.001 6741.513
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7428.55 -0.001 6738.913
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7430.408 0 6744.01
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7433.185 0 6744.582
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7433.481 0 6747.608
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7435.106 0 6749.851
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7437.47 0 6751.157
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7439.61 0 6750.75
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7441.122 0 6752.467
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7442.536 0 6753.944
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7444.01 0 6755.483
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7445.427 0.15 6756.961
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7446.793 0 6758.385
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7448.164 0 6759.815
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7449.736 0 6760.861
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.101 0 6783.261
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.212 0 6785.063
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.335 0 6786.806
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.528 0 6788.708
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.614 -0.001 6790.416
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.552 0 6792.162
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.395 0 6794.193
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7467.745 0 6795.872
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7467.394 0 6797.728
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7470.83 0.001 6805.338
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7472.063 0.001 6806.625
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7473.206 0 6807.817
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7474.239 0 6808.895
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.167 -0.041 6782.87
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.277 -0.247 6784.672
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.4 -0.243 6786.415
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.593 -0.204 6788.317
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.679 -0.194 6790.025
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.617 -0.182 6791.771
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7466.46 -0.157 6793.802
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7465.811 -0.096 6795.481
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7465.459 0.006 6797.337
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7468.278 -0.075 6799.087
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7438.319 -0.174 6751.499
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7439.831 -0.171 6753.215
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7441.245 -0.165 6754.692
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7442.719 -0.2 6756.231
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7444.136 -0.082 6757.709
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7445.502 -0.369 6759.133
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7446.873 -0.713 6760.563
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7448.445 -0.662 6761.609
-  angles 0 -136.235 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7391.26 -0.049 6690.749
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7392.302 -0.078 6692.062
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7393.469 -0.105 6693.416
-  angles 0 38.839 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7394.454 -0.108 6694.73
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7395.465 -0.094 6695.71
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7396.483 -0.095 6696.714
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7397.421 -0.089 6697.755
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7398.422 -0.085 6698.781
-  angles 0 -65.382 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7399.117 -0.085 6699.803
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7399.815 -0.065 6700.963
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7400.143 -0.066 6702.499
-  angles 0 -93.288 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7447.417 0 6805.729
-  angles 0 63.815 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7449.165 0 6806.122
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7521.767 0 6780.399
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7444.412 0 6804.962
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7524.594 0 6778.327
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7523.162 0 6779.469
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7450.71 0 6806.305
-  angles 0 -68.878 0
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7453.407 0.041 6806.708
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7518.769 0 6782.269
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7452.002 0 6806.428
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{54EEB068A4771EB9}" {
-    Enabled 0
-   }
-  }
-  coords 7520.27 0 6781.424
+$grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+ {
+  coords 5780.948 0 7058.187
+ }
+ {
+  coords 5782.31 0 7061.117
+ }
+ {
+  coords 5784.229 0 7064.265
+ }
+ {
+  coords 5786.283 -0 7066.798
+ }
+ {
+  coords 5779.228 0 7052.17
+ }
+ {
+  coords 5777.716 -0 7049.098
+ }
+ {
+  coords 5775.419 0 7043.978
+ }
+ {
+  coords 5777.328 -0 7045.917
+ }
+ {
+  coords 5772.429 0 7041.635
+ }
+ {
+  coords 5768.626 0 7039.291
+ }
+ {
+  coords 5764.661 0 7037.555
+ }
+ {
+  coords 5762.171 -0 7037.256
+ }
+ {
+  coords 5759.256 0 7037.399
+ }
+ {
+  coords 5756.146 -0 7037.939
+ }
+ {
+  coords 5753.316 0 7038.057
+ }
+ {
+  coords 5750.23 0 7037.701
+ }
+ {
+  coords 5747.306 0 7037.444
+ }
+ {
+  coords 5728.811 0.084 7066.426
+ }
+ {
+  coords 5729.403 0 7070.195
+ }
+ {
+  coords 5730.691 -0 7074.034
+ }
+ {
+  coords 5731.823 -0 7077.37
+ }
+ {
+  coords 5731.118 0 7052.859
+ }
+ {
+  coords 5750.438 -0 7081.912
+ }
+ {
+  coords 5752.543 0 7081.383
+ }
+ {
+  coords 5755.318 0 7086.277
+ }
+ {
+  coords 5755.946 0 7088.426
+ }
+ {
+  coords 5756.684 -0 7090.897
+ }
+ {
+  coords 5734.715 -0 7079.421
+ }
+ {
+  coords 5737.426 0.526 7079.694
+ }
+ {
+  coords 5739.864 -0 7080.852
+ }
+ {
+  coords 5743.281 -0 7081.96
+ }
+ {
+  coords 5786.395 -0 7069.763
+ }
+ {
+  coords 5785.423 -0 7073.144
+ }
+ {
+  coords 5784.231 2.407 7075.561
+ }
+ {
+  coords 5786.818 0 7079.983
+ }
+ {
+  coords 5785.177 0 7084.627
  }
 }
