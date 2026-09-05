@@ -19,4 +19,14 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   angles 0 -125.214 0
   m_rVehicle "{7D0A4C3F2E19B6A8}Prefabs/Vehicles/Tracked/Marder_1A3.et"
  }
+ {
+  coords 11541.971 166.299 11652.275
+  angles 0 -125.214 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+ }
+ {
+  coords 11554.451 166.299 11663.15
+  angles 0 -125.214 0
+  m_rVehicle "{193CAE259137911B}Prefabs/Vehicles/Wheeled/Dingo2/BWAR_Dingo2A3_2B.et"
+ }
 }

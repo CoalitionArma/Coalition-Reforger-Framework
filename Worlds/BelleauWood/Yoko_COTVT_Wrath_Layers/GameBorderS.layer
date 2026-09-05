@@ -5,22 +5,22 @@ COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safest
    Position 125.984 0 191.967
   }
   ShapePoint "{6A4B1DA89A5CE67F}" {
-   Position 223.839 -0 61.878
+   Position 223.839 0 61.878
   }
   ShapePoint "{6A4B1DA89D99EBA2}" {
-   Position 214.79 -0 -17.691
+   Position 214.79 0 -17.691
   }
   ShapePoint "{6A4B1DA89C911555}" {
    Position 33.19 0 -132.815
   }
   ShapePoint "{6A4B1DA89F30C258}" {
-   Position -177.255 -0 -160.477
+   Position -177.255 0 -160.477
   }
   ShapePoint "{6A4B1DA89E839688}" {
-   Position -252.753 -0 -126.447
+   Position -252.753 0 -126.447
   }
   ShapePoint "{6A4B1DA89EF6AC84}" {
-   Position -166.454 -0 110.26
+   Position -166.454 0 110.26
   }
  }
 }
