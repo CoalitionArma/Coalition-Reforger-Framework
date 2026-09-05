@@ -2,10 +2,12 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
  {
   coords 11536.572 165.609 11616.218
   angles 0 -71.151 0
+  m_rVehicle "{1C5FE7B7FF49BB8E}Prefabs/Vehicles/Tracked/Leopard/Leopard2A_Base.et"
  }
  {
   coords 11540.365 165.609 11627.327
   angles 0 -71.151 0
+  m_rVehicle "{1C5FE7B7FF49BB8E}Prefabs/Vehicles/Tracked/Leopard/Leopard2A_Base.et"
  }
  {
   coords 11511.173 166.299 11630.011
