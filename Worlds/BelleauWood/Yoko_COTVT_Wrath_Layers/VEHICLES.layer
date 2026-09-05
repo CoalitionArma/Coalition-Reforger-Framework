@@ -1,0 +1,20 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 11536.572 165.609 11616.218
+  angles 0 -71.151 0
+ }
+ {
+  coords 11540.365 165.609 11627.327
+  angles 0 -71.151 0
+ }
+ {
+  coords 11511.173 166.299 11630.011
+  angles 0 -125.214 0
+  m_rVehicle "{7D0A4C3F2E19B6A8}Prefabs/Vehicles/Tracked/Marder_1A3.et"
+ }
+ {
+  coords 11529.216 166.299 11642.745
+  angles 0 -125.214 0
+  m_rVehicle "{7D0A4C3F2E19B6A8}Prefabs/Vehicles/Tracked/Marder_1A3.et"
+ }
+}
