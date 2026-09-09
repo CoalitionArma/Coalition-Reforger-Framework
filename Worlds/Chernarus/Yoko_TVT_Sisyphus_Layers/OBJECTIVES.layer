@@ -1,0 +1,8 @@
+$grp SCR_BaseTriggerEntity {
+ mcom_a_trigger {
+  coords 6718.987 343.188 14366.582
+ }
+ mcom_b_trigger {
+  coords 4850.148 480.141 14988.021
+ }
+}
