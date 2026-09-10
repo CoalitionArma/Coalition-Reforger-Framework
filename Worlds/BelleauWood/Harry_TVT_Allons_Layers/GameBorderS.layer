@@ -1,0 +1,199 @@
+$grp COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ {
+  coords 9840.868 140.032 9180.94
+  Points {
+   ShapePoint "{6A50FAF8810F63CC}" {
+    Position -289.615 0 -342.457
+   }
+   ShapePoint "{6A50FAF881E776D0}" {
+    Position -441.457 0 -90.182
+   }
+   ShapePoint "{6A50FAF887CA1E71}" {
+    Position -480.539 0 113.366
+   }
+   ShapePoint "{6A50FAF8867DC7E3}" {
+    Position -513.448 0 215.263
+   }
+   ShapePoint "{6A50FAF88BFCFBAB}" {
+    Position -498.422 0 1722.646
+   }
+   ShapePoint "{6A50FAF8893CAEEB}" {
+    Position 969.222 0 1805.953
+   }
+   ShapePoint "{6A50FAF88FD6FC6D}" {
+    Position 432.399 0 -458.242
+   }
+   ShapePoint "{6A50FAF2BCA8528D}" {
+    Position -281.164 0 -345.101
+   }
+  }
+  m_bLineMode 1
+ }
+ {
+  coords 9931.094 108.342 1566.997
+  Points {
+   ShapePoint "{6A50FAF920978382}" {
+    Position -240.394 0 -631.02
+   }
+   ShapePoint "{6A50FAF924268EEB}" {
+    Position -1245.167 0 1635.517
+   }
+   ShapePoint "{6A50FAF924CE5144}" {
+    Position 417.86 0 2045.082
+   }
+   ShapePoint "{6A50FAF92E85F8C8}" {
+    Position 460.589 0 -394.86
+   }
+   ShapePoint "{6A50FAF0E26382B8}" {
+    Position -233.17 -0 -629.13
+   }
+  }
+  m_bLineMode 1
+ }
+ {
+  coords 8684.688 223.446 5344.104
+  Points {
+   ShapePoint "{6A50FAF97B9289D0}" {
+    Position 1171.434 -0 -1507.01
+   }
+   ShapePoint "{6A50FAF979E05A3C}" {
+    Position 362.157 0 -829.578
+   }
+   ShapePoint "{6A50FAF29EC5F529}" {
+    Position -779.613 -0 78.008
+   }
+   ShapePoint "{6A50FAF97D2FCED6}" {
+    Position -786.058 -0 83.84
+   }
+   ShapePoint "{6A50FAF05DACAB7F}" {
+    Position -287.781 0 738.724
+   }
+   ShapePoint "{6A50FAF97CAE241A}" {
+    Position -284.202 0 746.718
+   }
+   ShapePoint "{6A50FAF9AE47B059}" {
+    Position 223.562 0 415.021
+   }
+   ShapePoint "{6A50FAF9AC2EFD17}" {
+    Position 1433.113 0 -24.751
+   }
+   ShapePoint "{6A50FAF941D24B55}" {
+    Position 1804.074 0 -659.355
+   }
+   ShapePoint "{6A50FAF94728E25F}" {
+    Position 1845.509 0 -1329.458
+   }
+   ShapePoint "{6A50FAF28FBD2AC9}" {
+    Position 1184.997 0 -1505.201
+   }
+  }
+  m_bLineMode 1
+ }
+}
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ {
+  coords 9645.637 175.858 10573.737
+  Points {
+   ShapePoint "{6A50FAF8C9C3538D}" {
+    Position 160.491 0 199.42
+   }
+   ShapePoint "{6A50FAF8C84DF67A}" {
+    Position 258.723 0 -149.211
+   }
+   ShapePoint "{6A50FAF8C8EC4215}" {
+    Position -69.765 0 -261.595
+   }
+   ShapePoint "{6A50FAF8CFECD32D}" {
+    Position -240.629 0 139.053
+   }
+  }
+ }
+ {
+  coords 9452.477 156.337 2992.668
+  Points {
+   ShapePoint "{6A50FAF91B8E6DD1}" {
+    Position -287.665 -0 121.426
+   }
+   ShapePoint "{6A50FAF91BDA6180}" {
+    Position 204.646 0 118.625
+   }
+   ShapePoint "{6A50FAF91AF495F4}" {
+    Position 177.648 -0 -229.748
+   }
+   ShapePoint "{6A50FAF91968B8E4}" {
+    Position -225.188 0 -219.977
+   }
+  }
+ }
+ {
+  coords 8353.108 186.013 5677.688
+  Points {
+   ShapePoint "{6A50FAF9864B4E8E}" {
+    Position 294.164 0 13.875
+   }
+   ShapePoint "{6A50FAF9855449D8}" {
+    Position -0.174 0 -345.984
+   }
+   ShapePoint "{6A50FAF985DA794A}" {
+    Position -213.674 0 -54.706
+   }
+   ShapePoint "{6A50FAF984BF01E2}" {
+    Position -21.611 0 204.379
+   }
+  }
+ }
+}
+COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
+ coords 9884.479 120.658 9289.807
+ Points {
+  ShapePoint "{6A50FAF8E2B672B6}" {
+   Position -345.039 0 -390.134
+  }
+  ShapePoint "{6A50FAF8E10F4F36}" {
+   Position -498.13 0 5.067
+  }
+  ShapePoint "{6A50FAF8E653A2B2}" {
+   Position 511.31 -0 -10.252
+  }
+  ShapePoint "{6A50FAF8E4F67F1A}" {
+   Position 321.887 0 -512.06
+  }
+ }
+}
+$grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ {
+  coords 9938.853 105.796 1334.544
+  angles -7.832 1.84 -1.464
+  Points {
+   ShapePoint "{6A50FAF93C082699}" {
+    Position -270.989 -24.66 -229.546
+   }
+   ShapePoint "{6A50FAF93CA90604}" {
+    Position -327.395 29.11 71.628
+   }
+   ShapePoint "{6A50FAF90317DDC2}" {
+    Position 145.722 20.285 171.337
+   }
+   ShapePoint "{6A50FAF90233AA1B}" {
+    Position 247.745 -20.029 -112.478
+   }
+  }
+ }
+ {
+  coords 10035.104 213.594 4204.507
+  Points {
+   ShapePoint "{6A50FAF953F02058}" {
+    Position -195.984 0 130.125
+   }
+   ShapePoint "{6A50FAF9517819A2}" {
+    Position 306.875 0 416.748
+   }
+   ShapePoint "{6A50FAF9572B95AC}" {
+    Position 319.937 0 -17.454
+   }
+   ShapePoint "{6A50FAF9579D152D}" {
+    Position -28.287 0 -198.421
+   }
+  }
+ }
+}

@@ -1,0 +1,84 @@
+$grp SCR_FactionControlTriggerEntity {
+ fuel {
+  coords 10040.521 216.157 4096.646
+  userScript "	bool m_sent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 50
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		if (m_sent == false)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR have captured the fuel depot\", 10);"\
+  "			m_sent = true;"\
+  "		}"\
+  "		"\
+  "	"
+  m_aOwnerFactionKeys {
+   "BLUFOR"
+  }
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.7
+ }
+ church {
+  coords 9743.185 136.062 9224.011
+  userScript "	bool m_sent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 25
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		if (m_sent == false)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR have captured the church\", 10);"\
+  "			m_sent = true;"\
+  "		}"\
+  "		"\
+  "	"
+  m_aOwnerFactionKeys {
+   "BLUFOR"
+  }
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.7
+ }
+}
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 9908.121 106.155 1366.231
+  m_sDescription "Cache"
+ }
+ {
+  coords 9894.987 108.924 1255.433
+  m_sDescription "Cache"
+ }
+ {
+  coords 9915.108 105.665 1412.307
+  m_sDescription "Cache"
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cache1 {
+  coords 9908.232 106.155 1365.4
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed.\", 10);"\
+  "	"
+ }
+ cache2 {
+  coords 9895.099 108.924 1254.602
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed.\", 10);"\
+  "	"
+ }
+ cache3 {
+  coords 9915.22 105.665 1411.476
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A cache has been destroyed.\", 10);"\
+  "	"
+ }
+}
