@@ -1,15 +1,5 @@
 $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
-  coords 5507.192 19.363 5050.821
-  angles 0 94.531 0
-  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
- }
- {
-  coords 5488.794 19.313 5047.641
-  angles 0 80.998 0
-  m_rVehicle "{AD611A3CC117689B}Prefabs/Vehicles/Tracked/LTM_BMP_2M.et"
- }
- {
   coords 5475.854 19.397 5038.864
   angles 0 53.728 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
@@ -36,28 +26,27 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/Ve
 }
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 6896.004 17.657 5974.464
-  angles 0 -12.467 0
-  m_rVehicle "{4C833DD8FD18EC23}Prefabs/Vehicles/Tracked/Leopard/Leopard2A_No Fuel.et"
- }
- {
   coords 6892.093 17.371 6061.064
   angles 0 -117.62 0
   m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 6902.802 17.371 6066.668
   angles 0 -117.62 0
   m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 6914.661 17.371 6072.873
   angles 0 -117.62 0
   m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_bShouldAddAmmo 0
  }
  {
   coords 6928.248 17.371 6079.982
   angles 0 -117.62 0
   m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_bShouldAddAmmo 0
  }
 }

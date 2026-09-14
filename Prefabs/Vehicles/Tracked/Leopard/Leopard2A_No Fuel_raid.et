@@ -232,6 +232,10 @@ Vehicle : "{543A50BF3A42AD47}Prefabs/Vehicles/Core/Wheeled_APC_Base.et" {
     }
    }
   }
+  CRF_RaidItemComponent "{6A5D33563EBD7503}" {
+   m_iSupplyValue 100
+   m_sItemName "Leopard2A6"
+  }
   LTM_AutomaticFireSuppressionComponent "{6A5D2B609DA67845}" {
    m_fScanInterval 5.25
   }

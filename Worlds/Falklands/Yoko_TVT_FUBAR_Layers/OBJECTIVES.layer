@@ -1,0 +1,5 @@
+COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ coords 6896.004 17.657 5974.464
+ angles 0 -12.467 0
+ m_rVehicle "{4C833DD8FD18EC23}Prefabs/Vehicles/Tracked/Leopard/Leopard2A_No Fuel_raid.et"
+}

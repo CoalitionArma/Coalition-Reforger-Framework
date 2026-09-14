@@ -1,0 +1,38 @@
+$grp GenericEntity : "{78AB783E28EDEBD4}Prefabs/Props/Military/Sandbags/Sandbag_01_long_plastic.et" {
+ {
+  coords 6917.6 22.935 6024.729
+ }
+ {
+  coords 6915.422 22.92 6023.156
+  angles 0 90.554 0
+ }
+ {
+  coords 6915.39 22.92 6019.876
+  angles 0 90.554 0
+ }
+}
+GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6A5D33514058201E}" {
+     SlotTemplate InventoryStorageSlot sandbags {
+      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+     NumSlots 10000
+    }
+   }
+  }
+ }
+ coords 6917.029 17.594 6038.986
+}
+$grp GenericEntity : "{E86E2C320BF1F524}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_base.et" {
+ {
+  coords 6917.752 22.495 6020.457
+  angles 0 -88.131 0
+ }
+ {
+  coords 6884.585 17.727 5925.489
+  angles 0 -67.525 0
+ }
+}
