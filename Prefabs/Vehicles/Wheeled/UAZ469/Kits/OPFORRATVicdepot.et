@@ -132,15 +132,15 @@ Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
  }
  m_bShouldAddAmmo 0
  m_aAdditionalVehicleItems {
-  CRF_VehicleGearScriptAdditionalItem "{6A33342B017D7202}" {
-   m_Prefab "{73F69547963CAEE0}PrefabsEditable/Explosives/E_DemoBlock_TSh400g.et"
-   m_iAmountOfItemSupplyTruck 6
-   m_iAmountOfItemRegularVehicle 6
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADAF365EA17}" {
+   m_Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+   m_iAmountOfItemSupplyTruck 2
+   m_iAmountOfItemRegularVehicle 2
   }
-  CRF_VehicleGearScriptAdditionalItem "{6A33342B10F86320}" {
-   m_Prefab "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
-   m_iAmountOfItemSupplyTruck 6
-   m_iAmountOfItemRegularVehicle 6
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADAF365EA18}" {
+   m_Prefab "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et"
+   m_iAmountOfItemSupplyTruck 2
+   m_iAmountOfItemRegularVehicle 2
   }
  }
 }

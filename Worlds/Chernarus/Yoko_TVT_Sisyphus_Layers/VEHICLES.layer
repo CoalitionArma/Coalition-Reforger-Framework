@@ -1,0 +1,62 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 8483.26 205.84 14037.559
+  angles 0 -128.902 0
+  m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+ }
+ {
+  coords 8466.709 205.84 14024.203
+  angles 0 -128.902 0
+  m_rVehicle "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+ }
+ {
+  coords 8455.596 205.84 14015.235
+  angles 0 -128.902 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 8444.545 205.84 14006.318
+  angles 0 -128.902 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 8435.476 205.84 13999
+  angles 0 -128.902 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 8422.164 205.84 13988.258
+  angles 0 -128.902 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4519.859 462.188 15204.861
+  angles 0 96.265 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4505.104 462.188 15206.481
+  angles 0 96.265 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4492.478 462.188 15207.867
+  angles 0 96.265 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 4476.626 462.188 15209.607
+  angles 0 96.265 0
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  m_bShouldAddAmmo 0
+ }
+}

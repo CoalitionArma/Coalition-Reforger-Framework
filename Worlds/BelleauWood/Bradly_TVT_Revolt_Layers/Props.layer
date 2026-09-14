@@ -1,0 +1,45 @@
+GenericEntity Desk {
+ coords 9822.651 131.321 9188.576
+ {
+  GenericEntity {
+   components {
+    MeshObject "{6A4E00E1FA3C78F7}" {
+     Object "{3093CB3E78E4A641}Assets/Props/Furniture/Desk_01/Desk_01.xob"
+    }
+   }
+   coords 0.736 0 -0.688
+  }
+  GenericEntity : "{1592EC23A583FB04}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_01_vodka_V2.et" {
+   coords -0.806 0.906 -0.21
+  }
+  GenericEntity : "{79C6D8C31947742A}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_01_vodka_V1.et" {
+   coords -0.867 0.906 -0.27
+  }
+  GenericEntity : "{89CF04517B5283CB}Prefabs/Props/Garbage/Generic/LitterInterior_01/Piles/LitterInterior_USSR_01_pile_V1.et" {
+   coords 0.135 0.906 -0.511
+   angles 0 110.169 0
+  }
+  GenericEntity : "{9DBA8179AFD4FF9F}Prefabs/Props/Furniture/LightTable_02.et" {
+   coords -0.754 0.906 -0.519
+   angles 0 45.383 0
+  }
+  GenericEntity : "{AB50753990C87073}Prefabs/Props/S2/S2_Vodka/S2_Vodka.et" {
+   coords -0.824 0.906 -0.327
+   angles 0 112.933 0
+  }
+  GenericEntity : "{C0CCCB68B7147DEC}Prefabs/Props/Furniture/Chair_02/Chair_02_Base.et" {
+   coords -0.393 0 -0.095
+   angles 0 167.636 0
+  }
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{03F1BFA3E3AD3E57}Prefabs/Structures/Houses/Shed/Shed_02/Shed_02_big_V2.et" {
+ Shed_1 {
+  coords 9620.536 0 9227.199
+  angles 0 61.714 0
+ }
+ Shed_2 {
+  coords 9774.773 0 9059.248
+  angles 0 178.875 0
+ }
+}

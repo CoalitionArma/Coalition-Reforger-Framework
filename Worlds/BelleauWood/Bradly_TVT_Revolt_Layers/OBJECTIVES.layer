@@ -1,0 +1,14 @@
+$grp GameEntity : "{4D3B073D0673ABB7}PrefabsMissionMaking/Systems/TaskCreator/CRF_task_empty.et" {
+ CRF_Task_1 {
+  coords 9822.272 132.227 9188.396
+  angles 0 -170.096 0
+ }
+ CRF_Task_2 {
+  coords 9621.226 120.998 9226.296
+  angles 0 -25.559 0
+ }
+ CRF_Task_3 {
+  coords 9772.807 134.906 9058.802
+  angles 0 179.531 0
+ }
+}

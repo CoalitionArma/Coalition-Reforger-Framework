@@ -1,0 +1,12 @@
+GenericEntity : "{30D4D9300051C7A5}Prefabs/Items/Equipment/Accessories/PouchSystem/Radio/Pouch_Radio_Base.et" {
+ ID "521AC0491712FB3A"
+ components {
+  SCR_EquipmentStorageComponent "{5526DABF40B24F9D}" {
+   InitialStorageSlots {
+    SCR_EquipmentStorageSlot Radio {
+     Prefab ""
+    }
+   }
+  }
+ }
+}

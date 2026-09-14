@@ -1,0 +1,15 @@
+GenericEntity : "{CE1FEE57398578B7}Prefabs/Items/Equipment/Accessories/PouchSystem/Medical/Pouch_Medical_Base.et" {
+ ID "521AC0491712FB3A"
+ components {
+  SCR_UniversalInventoryStorageComponent "{64E5181DAF566C36}" {
+   MultiSlots {
+    MultiSlotConfiguration "{65D921A559CD71A7}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{65D921A536FF9053}" {
+     NumSlots 0
+    }
+   }
+  }
+ }
+}

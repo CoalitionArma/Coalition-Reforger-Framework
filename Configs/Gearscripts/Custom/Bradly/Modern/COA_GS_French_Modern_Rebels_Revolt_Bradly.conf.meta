@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{598B9DD88944475D}Configs/Gearscripts/Custom/Bradly/Modern/COA_GS_French_Modern_Rebels_Bradly.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

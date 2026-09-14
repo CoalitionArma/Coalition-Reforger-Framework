@@ -1,0 +1,433 @@
+SCR_AIWorld AI_World : "{CFDC9C151CAB3F8D}Prefabs/AI/SCR_AIWorld_BelleauWood.et" {
+ coords 10301.303 1058.42 13577.136
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_TaskCreatorComponent "{6A4D3EC76B640150}" {
+   m_aTaskEntries {
+    CRF_TaskCreatorEntry "{6A4D3EC4579914E0}" {
+     m_sTaskLabel "Intel"
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "CRF_Task_1"
+     m_sNotificationText "Intel Collected"
+     m_sMarkerLabel "Intel"
+     m_sMarkerIcon "{F5AAB5890F3843B6}UI/Textures/InventoryIcons/InventorySlot-StorageClose.edds"
+    }
+    CRF_TaskCreatorEntry "{6A4E00E59250ACC7}" {
+     m_sTaskLabel "Cache"
+     m_eTaskType PLANT_DEFUSE_BOMB
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "CRF_Task_2"
+     m_sNotificationText "Weapons Cache Destroyed"
+     m_sMarkerLabel "Weapons Cache"
+     m_sMarkerIcon "{F5AAB5890F3843B6}UI/Textures/InventoryIcons/InventorySlot-StorageClose.edds"
+    }
+    CRF_TaskCreatorEntry "{6A533A58198FCCC7}" {
+     m_sTaskLabel "Cache"
+     m_eTaskType PLANT_DEFUSE_BOMB
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "CRF_Task_3"
+     m_sNotificationText "Weapons Cache Destroyed"
+     m_sMarkerLabel "Weapons Cache"
+     m_sMarkerIcon "{F5AAB5890F3843B6}UI/Textures/InventoryIcons/InventorySlot-StorageClose.edds"
+    }
+   }
+   m_CollectIntel CRF_TaskHandler_CollectIntel "{6A4D3EC595DAD86A}" {
+    m_sPrefab "{6F718AC6E11EE13B}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel_Revolt.et"
+   }
+   m_PlantDefuseBomb CRF_TaskHandler_PlantDefuseBomb "{6A4E00E6E4D07553}" {
+    m_sPrefab "{EAC7C5EAA48277B5}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Cache_Revolt.et"
+    m_eDefendingSide BLUFOR
+   }
+   m_eWinCondition SET_AMOUNT_PER_SIDE
+   m_iTasksRequiredForWin 3
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 75
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A550683D112E83A}" {
+   m_sTitle "Mission: Revolt"
+   m_sTextData "French infantry platoon is to raid the town of Epaux-Bezu to destroy known weapons cache locations and recover rebel intelligence."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Shotguns"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: DJI"\
+   ""\
+   "Time: 75"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A550683D1129781}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "French army raid on rebel town."\
+   ""\
+   "INTENT"\
+   "Protect weapons cache locations and sensitive information from the attacking force."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A550683D11296F9}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "French army raid on rebel town."\
+   ""\
+   "INTENT"\
+   "Destroy rebel weapons caches and recover any relevant intelligence."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A550683D112963D}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A550683D112917C}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A5646D593C3DF6E}" {
+   m_sCallsign "1PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3D9B8}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3D871}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3DB7A}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3DA72}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C57A}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C470}" {
+   m_sCallsign "1-6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A5646D593C3C645}" {
+   m_sCallsign "1PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C15E}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C043}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C344}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3C259}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3CD51}" {
+   m_sCallsign "1-5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3CC1C}" {
+   m_sCallsign "1-6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5646D593C3CF10}" {
+   m_sCallsign "RECON"
+   m_FlagType RECON
+   m_aSlots {
+    FIRST_SERGEANT
+    DRONE_OPERATOR
+    DRONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{598B9DD88944475D}Configs/Gearscripts/Custom/Bradly/Modern/COA_GS_French_Modern_Rebels_Revolt_Bradly.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{D4B07F9EDFEA037E}Configs/Gearscripts/Custom/Bradly/Modern/COA_GS_French_Modern_Revolt_Bradly.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A4D3EDBF0B99BCB" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

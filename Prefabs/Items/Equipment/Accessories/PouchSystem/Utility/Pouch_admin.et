@@ -1,0 +1,21 @@
+GenericEntity : "{3FBEE9D1DBA9EC4C}Prefabs/Items/Equipment/Accessories/PouchSystem/Utility/Pouch_Utility_Base.et" {
+ ID "521AC0491712FB3A"
+ components {
+  SCR_UniversalInventoryStorageComponent "{62113D97B6A4CB76}" {
+   MultiSlots {
+    MultiSlotConfiguration "{65D921A600A60A5D}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{65D921A5F75D53D4}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{65D921A5F8B23A4D}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{65D921A5C8C7B971}" {
+     NumSlots 0
+    }
+   }
+  }
+ }
+}

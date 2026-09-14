@@ -1,0 +1,64 @@
+GenericEntity {
+ ID "6A4E00E7AF31FF5D"
+ components {
+  Persistence "{6A4E00E7AF31FF45}" {
+  }
+  CRF_TaskCreatorObjectComponent "{6A4E00E7AF31FF49}" {
+  }
+  MeshObject "{6A4E00E7AF31FF4B}" {
+   Object "{28D2B8AEEC437AFD}Assets/Items/Identity/Belongings_Personal/Notebook_01_Personal_Base.xob"
+  }
+  RigidBody "{6A4E00E7AF31FF74}" {
+   Mass 5
+   ModelGeometry 0
+  }
+  SCR_SoundDataComponent "{6A4E00E7AF31FF76}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{6A4E00E7AF31FF72}" {
+     m_sSoundProject "{12A94705DF2BFD25}Sounds/Items/_SharedData/PickUp/Items_PickUp_Generic.acp"
+     m_sSoundEventName "SOUND_PICK_UP"
+    }
+    SCR_AudioSourceConfiguration "{6A4E00E7AF31FF7C}" {
+     m_sSoundProject "{12A94705DF2BFD25}Sounds/Items/_SharedData/PickUp/Items_PickUp_Generic.acp"
+     m_sSoundEventName "SOUND_EQUIP"
+     m_eFlags 0
+    }
+    SCR_AudioSourceConfiguration "{6A4E00E7AF31FF7D}" {
+     m_sSoundProject "{CC0E5A1324E761C1}Sounds/Items/_SharedData/Drop/Items_Drop_Generic.acp"
+     m_sSoundEventName "SOUND_DROP"
+    }
+   }
+  }
+  ActionsManagerComponent "{6A4E00E7AF31FF7F}" {
+   ActionContexts {
+    UserActionContext "{6A4E00E7AF31FF7B}" {
+     ContextName "TaskInteract"
+     Position PointInfo "{6A4E00E7AF31FF65}" {
+      Offset 0 0.5 0
+     }
+     Radius 0.5
+     "Display UI At Reference Point" 0
+    }
+   }
+   additionalActions {
+    CRF_TaskCreatorAction "{6A4E00E7AF31FF60}" {
+     ParentContextList {
+      "TaskInteract"
+     }
+     UIInfo SCR_ActionUIInfo "{6A4E00E7AF31FF61}" {
+      Name "Collect Intel"
+     }
+     VisibilityRange 3
+     Duration 3
+    }
+   }
+  }
+  RplComponent "{6A4E00E7AF31FF14}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{6A4E00E7AF31FF16}" {
+  }
+ }
+ coords 1233.045 37.757 2843.1
+}

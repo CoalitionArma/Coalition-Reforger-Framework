@@ -1,0 +1,59 @@
+Vehicle : "{33AB44A084BAA0CD}Prefabs/Vehicles/Wheeled/M998/M1025_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "120mm Supply Vic"
+    m_Image "{32803C3E4B220918}UI/Textures/EditorPreviews/Mortar/MRS120/BWAR_MRS120.edds"
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_02 {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_03 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_04 {
+     Enabled 1
+    }
+    EntitySlotInfo SupplyStorage_06 {
+     Enabled 1
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_bShouldAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA8653A30}" {
+   m_Prefab "{0D540E16A6E53433}Prefabs/Items/Equipment/Mortars/M252/Part_M252_BasePlate.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA86539C3}" {
+   m_Prefab "{80D38046CB4D4663}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Bipod.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA86539CC}" {
+   m_Prefab "{62B704DD79A3B5BE}Prefabs/Items/Equipment/Mortars/M252/Part_M252_Barrel.et"
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA86539CE}" {
+   m_Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+   m_iAmountOfItemSupplyTruck 50
+   m_iAmountOfItemRegularVehicle 50
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA86539CA}" {
+   m_Prefab "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+   m_iAmountOfItemSupplyTruck 30
+   m_iAmountOfItemRegularVehicle 30
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A50FADBA86539D4}" {
+   m_Prefab "{6113990D163E5249}Prefabs/Items/Equipment/BallisticTable/BalisticTable_US.et"
+  }
+ }
+}
