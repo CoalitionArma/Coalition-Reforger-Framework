@@ -1,0 +1,9 @@
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_RaidGamemodeComponent "{6A5D2B61BDB32815}" {
+   m_sAttackingSide "OPFOR"
+   m_sDefendingSide "BLUFOR"
+  }
+ }
+ coords 0 0 0
+}
