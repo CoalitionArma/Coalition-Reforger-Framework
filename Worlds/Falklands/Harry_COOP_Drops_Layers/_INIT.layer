@@ -1,5 +1,28 @@
-SCR_AIWorld : "{927183382E18B2AC}Prefabs/AIWorld/SCR_AIWorld_Cherno.et" {
- coords 12518.51 254.171 9163.859
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A5D73EA4355E4A6}" {
+     NavmeshFile "{8EA933D593EBAE00}Worlds/GameMaster/Navmeshes/BritMapProject.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{EE7A1FAB146720E2}Worlds/GameMaster/Navmeshes/BritMapProjectBTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{B42DA99EE5260987}Worlds/GameMaster/Navmeshes/BritMapProjectLowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2171.961 616.784 7157.062
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
@@ -7,8 +30,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Overcast"
-     m_iStartingHour 12
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 10
      m_iStartingMinutes 0
     }
    }
@@ -28,38 +51,38 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
  m_aMissionDescriptors {
-  COA_MissionDescriptor "{6A200A4EAC912344}" {
+  COA_MissionDescriptor "{6A5D73E8ECF79B1B}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "US paratroopers have been sent to capture the docks at Berezino. "\
+   m_sTextData "A zeus mission with dynamic goals. "\
    ""\
-   "BLUFOR Composition: Paratroopers"\
-   "BLUFOR Assets: 60mm mortars, MAT"\
+   "BLUFOR Composition: US Paratroopers"\
+   "BLUFOR Assets: TBD"\
    ""\
-   "OPFOR Composition: Unknown"\
-   "OPFOR Assets: Unknown"\
+   "OPFOR Composition: Argentinan forces"\
+   "OPFOR Assets: TBD"\
    ""\
-   "Time: 90 min"\
-   "Weather: Overcast Day"
+   "Time: 90"\
+   "Weather: Day Clear"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  COA_MissionDescriptor "{6A200A4EAC912755}" {
+  COA_MissionDescriptor "{6A5D73E8ECF79F46}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Sieze the docks at Berezino."\
+   "Zeus will give you taskings."\
    ""\
    "INTENT"\
-   "BLUFOR needs to deploy well away from the town, regroup, gather supplies, and then launch the attack on the town. "\
+   "Your pilot will reinforce and resupply your forces throughout the mission. "\
    ""\
    "EXECUTION"\
-   "Have pre-planned rally points with timers on them. An insufficient plan will sink this mission. "
+   "Decide on a landing, and resupply area away from AA emplacements. Then, establish RPs with opening and closing windows, and signaling mechanisms. "
    m_aFactionKeys {
     "BLUFOR"
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A200A4EAC9126AD}" {
+  COA_MissionDescriptor "{6A5D73E8ECF79E99}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -74,7 +97,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A200A4EAC9125D3}" {
+  COA_MissionDescriptor "{6A5D73E8ECF79DD4}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -89,7 +112,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A200A4EAC91252C}" {
+  COA_MissionDescriptor "{6A5D73E8ECF79D2C}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -105,100 +128,98 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A200A4EB01A40AD}" {
+  COA_SlottingGroup "{6A5D73E87C4A5CE7}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
-    RADIO_TELEPHONE_OPERATOR
-    FORWARD_OBSERVER
-    INDIRECT_GUNNER
-    INDIRECT_GUNNER
-    INDIRECT_GUNNER
+    PILOT
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A200A4EB01A465E}" {
-   m_sCallsign "Alpha"
+  COA_SlottingGroup "{6A5D73E87C4A5307}" {
+   m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    GRENADIER
-    TEAM_LEAD
-    COMBAT_ENGINEER
-    COMBAT_ENGINEER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A200A4EB01A44CA}" {
-   m_sCallsign "Bravo"
+  COA_SlottingGroup "{6A5D73E87C4A5211}" {
+   m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
-    GRENADIER
-    TEAM_LEAD
-    COMBAT_ENGINEER
-    COMBAT_ENGINEER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A200A4EB01A3BD3}" {
-   m_sCallsign "Charlie"
+  COA_SlottingGroup "{6A5D73E87C4A510F}" {
+   m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
     MEDIC
     TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     TEAM_LEAD
-    MEDIUM_ANTITANK
-    ASSISTANT_MEDIUM_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
     GRENADIER
-    TEAM_LEAD
-    COMBAT_ENGINEER
-    COMBAT_ENGINEER
-    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5D73E87C4A506A}" {
+   m_sCallsign "Zeus"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ZEUS
+    ZEUS
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A200A4EB01A3AA2}" {
-   m_sCallsign "0-1"
+  COA_SlottingGroup "{6A5D73E87C4A5720}" {
+   m_sCallsign "1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     AUTOMATIC_RIFLEMAN
     RIFLEMAN_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A5D73E87C4A567B}" {
+   m_sCallsign "Zeus"
+   m_FlagType INFANTRY
+   m_aSlots {
+    ZEUS
+    ZEUS
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
@@ -211,14 +232,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{E5E94F72DC4F52B9}Configs/Gearscripts/Custom/Harry/80s/COA_GS_US80s_Parachutes.conf"
-  m_bEnableBFT 0
-  m_bEnableLeadershipRadios 0
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
-  m_bEnableBFT 0
+  m_rGearScript "{DB8407A4960467E4}Configs/Gearscripts/Standard/80s/COA_GS_Argentina80s.conf"
+  m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
@@ -238,7 +259,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A5D7C717B20C1C4" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
