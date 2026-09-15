@@ -21,6 +21,13 @@ class CRF_ParachuteBackpackComponent : ScriptComponent
 
 	void OnUsedChanged() { /* optional UI update */ }
 
+	override void OnPostInit(IEntity owner)
+	{
+		if (SCR_Global.IsEditMode())
+			return;
+		SetEventMask(owner, EntityEvent.INIT);
+	}
+
 	override void EOnInit(IEntity owner)
 	{
 		if (m_ParachutePrefab == "")

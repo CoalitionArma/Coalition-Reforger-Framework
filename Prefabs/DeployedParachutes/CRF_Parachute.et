@@ -1,0 +1,120 @@
+CRF_ParachuteDeployedEntity : "{278E487E19D82680}Prefabs/Vehicles/Core/Vehicle_Cargo_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  MeshObject "{4B42E716914465B9}" {
+   Object "{23E53701DE82201D}Assets/Parachute/CRF_Parachute.xob"
+   LODFactors {
+    1 0.6 0.2
+   }
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Layers 0x4040 0
+   Mass 40
+   CenterOfMass 0 1.862 0
+   LinearDamping 0.5
+   AngularDamping 0.1
+   SimState Simulation
+   ResponseIndex "Normal"
+  }
+  SCR_BaseCompartmentManagerComponent "{2CD4A765A7D52986}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{65949456D72B32FF}" {
+     EntryPositionInfo PointInfo "{65949456D72B32E0}" {
+      PivotID "passenger_getin"
+     }
+     ExitPositionInfo PointInfo "{65949456D72B32E6}" {
+      Offset 0 1 0
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     AccessibilitySettings CompartmentAccessibilityContext "{65949456D72B32EB}" {
+      BBHalfExtents 0.5 0.7 0.005
+      TraceOffset 0 1 0.65
+      ExcludePhysicsLayer 0x40000 0
+     }
+    }
+   }
+   CompartmentSlots {
+    CargoCompartmentSlot passenger_l02 {
+     CompartmentAction SCR_GetInUserAction "{65949456D72B32ED}" {
+      ParentContextList {
+       "passenger_l02"
+      }
+      CanAggregate 1
+      "Sort Priority" 3
+     }
+     GetOutAction SCR_GetOutAction "{65949456D72B3213}" {
+      ParentContextList {
+       "door_rear_int"
+      }
+      VisibilityRange 5
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{65949456D72B3210}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{65949456D72B321A}" {
+        Name "Remove Casualty"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 9
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset 0 -0.3317 0.106
+     }
+     ForcedFreeLook 1
+     SkipCharacterDoorAnimationsFromSeat 1
+     DoorInfoList {
+      0
+     }
+     BaseCoverage 0
+     ContextName "passenger_l02"
+     m_fFreelookAimLimitOverrideLeft -160
+     m_fFreelookAimLimitOverrideRight 160
+     m_fFreelookCameraNeckFollowTraverse 1
+    }
+   }
+  }
+  SCR_BaseHUDComponent "{59BC55AE2A7F6FE0}" {
+   Enabled 0
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   Enabled 0
+  }
+  SCR_UniversalInventoryStorageComponent "{5E58C207959A9200}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{2CD4A765B4482F53}" {
+   ActionContexts {
+    UserActionContext "{65949456D72B3230}" {
+     UIInfo SCR_ActionContextUIInfo "{65949456D72B3239}" {
+     }
+     ContextName "passenger_l02"
+     Position PointInfo "{65949456D72B323F}" {
+      PivotID "passenger_l02_idle"
+      Offset 0 0.05 0
+     }
+     Height 0
+    }
+    UserActionContext "{65949456D72B3222}" {
+     ContextName "default"
+     Position PointInfo "{65949456D72B3221}" {
+      PivotID "Bone"
+      Offset 0.0001 0.0001 1.9219
+     }
+     Radius 2.5
+     Height 0
+    }
+   }
+  }
+  RplComponent "{63136787FD0BCE14}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+ }
+}
