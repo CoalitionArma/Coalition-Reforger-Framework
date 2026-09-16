@@ -39,7 +39,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A5D3354FED81BD1}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "A Leopard2A6 is stuck on the Merturn Dam, with an incoming Russain Company, Bundeswehr forces are tasked with slowing down the Russain advance until reinforcements arrive"\
+   m_sTextData "A Leopard2A6 is stuck on the Mertun Dam, with an incoming Russain Company, Bundeswehr forces are tasked with slowing down the Russain advance until reinforcements arrive by any means necessary."\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 1x Leopard2A6 and 1x MMG"\
@@ -59,7 +59,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "MISSION"\
    "Defend the Leopard2A6 and its crew until time runs out."\
    ""\
-   "Find and Destroy  two RUS supply caches. (A satchel can destory it) - Destorying both caches will result in a BLUFOR victory"\
+   "Find and Destroy two RUS supply caches. (A satchel can destroy it) - Destroying both caches will result in a BLUFOR victory"\
    ""\
    "INTENT"\
    "The timer of this mission is much shorter than other missions, you just need to survive until time runs out. You have limited transport to send troops further up the valley. The enemy has a supply cache somewhere in Mertun with AT in it, destory it and limit enemy AT."\
