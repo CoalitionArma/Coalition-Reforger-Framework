@@ -39,12 +39,17 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 	protected IEntity m_QueryCharacter;
 
 	// Retry limits
-	protected const int MAX_RESOLVE_RETRIES = 10;
-	protected const int MAX_ENTER_RETRIES = 10;
-	protected const int MAX_OWNERSHIP_RETRIES = 10;
+	protected const int MAX_RESOLVE_RETRIES = 20;
+	protected const int MAX_ENTER_RETRIES = 20;
+	protected const int MAX_OWNERSHIP_RETRIES = 20;
+	protected const int MAX_OCCUPANCY_RETRIES = 20;
 	protected int m_ResolveRetries;
 	protected int m_EnterRetries;
 	protected int m_OwnershipRetries;
+	protected int m_OccupancyRetries;
+
+	protected bool m_DeployRequestPending = false;
+	protected const int DEPLOY_REQUEST_COOLDOWN_MS = 1000;
 
 	// --------------------------------------------------------------------------------------------
 	// Initialization & Cleanup
@@ -140,6 +145,8 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		m_ControlledCharacter = to;
 		m_CharacterCompartmentAccess = SCR_CompartmentAccessComponent.Cast(to.FindComponent(SCR_CompartmentAccessComponent));
 		RefreshBackpackReference();
+
+		m_DeployRequestPending = false;
 
 		// If authority and a chute is deployed while changing character, clean up immediately.
 		if (IsAuthority() && m_IsDeployed)
@@ -267,6 +274,9 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 
 	void OnJumpPressed()
 	{
+		if (m_DeployRequestPending || m_IsDeployed)
+			return;
+
 		IEntity character = GetControlledCharacter();
 		if (!character)
 			return;
@@ -278,10 +288,19 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		if (!CanDeployParachute(character, m_BackpackComponent))
 			return;
 
+		m_DeployRequestPending = true;
+
+		GetGame().GetCallqueue().CallLater(ClearDeployRequestPending, DEPLOY_REQUEST_COOLDOWN_MS, false);
+
 		if (IsAuthority())
 			Rpc_RequestDeploy();
 		else
 			Rpc(Rpc_RequestDeploy);
+	}
+
+	protected void ClearDeployRequestPending()
+	{
+		m_DeployRequestPending = false;
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -322,8 +341,6 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		if (!spawned)
 			return;
 
-		backpack.SetUsed();
-
 		CRF_ParachuteDeployedEntity chuteEntity = CRF_ParachuteDeployedEntity.Cast(spawned);
 		if (!chuteEntity)
 		{
@@ -331,14 +348,13 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			return;
 		}
 
-		m_DeployedChuteEntity = chuteEntity;
-		m_BackpackComponent = backpack;
-
-		TransferChuteOwnership(chuteEntity);
-
 		BaseCompartmentManagerComponent bcm = BaseCompartmentManagerComponent.Cast(chuteEntity.FindComponent(BaseCompartmentManagerComponent));
 		if (!bcm)
+		{
+			Print("CRF_ParachutePlayerComponent: deployed parachute prefab has no compartment manager, aborting deploy.", LogLevel.ERROR);
+			SCR_EntityHelper.DeleteEntityAndChildren(spawned);
 			return;
+		}
 
 		array<BaseCompartmentSlot> slots = {};
 		bcm.GetCompartments(slots);
@@ -352,7 +368,18 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			}
 		}
 		if (!pilotSlot)
+		{
+			Print("CRF_ParachutePlayerComponent: deployed parachute prefab has no CARGO compartment, aborting deploy.", LogLevel.ERROR);
+			SCR_EntityHelper.DeleteEntityAndChildren(spawned);
 			return;
+		}
+
+		// All validation passed - commit to this deployment.
+		backpack.SetUsed();
+		m_DeployedChuteEntity = chuteEntity;
+		m_BackpackComponent = backpack;
+
+		TransferChuteOwnership(chuteEntity);
 
 		chuteEntity.SetPilotAndHook(character, m_CharacterCompartmentAccess);
 		chuteEntity.SetInitialVelocity(initialVelocity);
@@ -405,6 +432,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 
 	void OnDeployStateChanged()
 	{
+		// Authoritative confirmation received from the server; release the
+		// input debounce regardless of deployed/cleared state.
+		m_DeployRequestPending = false;
+
 		if (!GetGame().InPlayMode())
 			return;
 		if (!m_IsDeployed)
@@ -430,6 +461,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 				m_ResolveRetries++;
 				RetryFindChute();
 			}
+			else
+			{
+				AbortStuckDeployment("could not resolve replicated chute entity");
+			}
 			return;
 		}
 
@@ -440,6 +475,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			{
 				m_ResolveRetries++;
 				RetryFindChute();
+			}
+			else
+			{
+				AbortStuckDeployment("replicated chute entity never became available");
 			}
 			return;
 		}
@@ -487,6 +526,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 				m_EnterRetries++;
 				RetryEnterChute();
 			}
+			else
+			{
+				AbortStuckDeployment("compartment manager never became available on client");
+			}
 			return;
 		}
 
@@ -497,6 +540,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			{
 				m_EnterRetries++;
 				RetryEnterChute();
+			}
+			else
+			{
+				AbortStuckDeployment("target compartment slot never resolved on client");
 			}
 			return;
 		}
@@ -514,6 +561,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 				m_EnterRetries++;
 				RetryEnterChute();
 			}
+			else
+			{
+				AbortStuckDeployment("compartment slot occupied by someone else");
+			}
 			return;
 		}
 
@@ -523,6 +574,10 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			{
 				m_EnterRetries++;
 				RetryEnterChute();
+			}
+			else
+			{
+				AbortStuckDeployment("compartment slot never became accessible");
 			}
 			return;
 		}
@@ -542,11 +597,66 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 				m_EnterRetries++;
 				RetryEnterChute();
 			}
+			else
+			{
+				AbortStuckDeployment("GetInVehicle repeatedly failed");
+			}
 			return;
 		}
 
-		m_OwnershipRetries = 0;
-		WaitForChuteOwnership();
+
+		m_OccupancyRetries = 0;
+		VerifyChuteOccupancy();
+	}
+
+	protected bool IsCharacterSeatedInChute(IEntity character)
+	{
+		if (!m_DeployedChuteEntity || !character)
+			return false;
+
+		BaseCompartmentManagerComponent bcm = BaseCompartmentManagerComponent.Cast(m_DeployedChuteEntity.FindComponent(BaseCompartmentManagerComponent));
+		if (!bcm)
+			return false;
+
+		BaseCompartmentSlot slot = bcm.FindCompartment(m_ChuteSlotId);
+		if (!slot)
+			return false;
+
+		return slot.IsOccupied() && slot.GetOccupant() == character;
+	}
+
+	protected void VerifyChuteOccupancy()
+	{
+		if (!GetGame().InPlayMode() || !m_DeployedChuteEntity || m_ChuteSlotId < 0)
+			return;
+
+		IEntity character = GetControlledCharacter();
+		if (!character)
+			return;
+
+		if (IsCharacterSeatedInChute(character))
+		{
+			m_OwnershipRetries = 0;
+			WaitForChuteOwnership();
+			return;
+		}
+
+		if (m_OccupancyRetries < MAX_OCCUPANCY_RETRIES)
+		{
+			m_OccupancyRetries++;
+			GetGame().GetCallqueue().CallLater(VerifyChuteOccupancy, 50, false);
+			return;
+		}
+
+		if (m_EnterRetries < MAX_ENTER_RETRIES)
+		{
+			m_EnterRetries++;
+			RetryEnterChute();
+		}
+		else
+		{
+			AbortStuckDeployment("compartment slot never actually became occupied after GetInVehicle reported success");
+		}
 	}
 
 	protected void RetryEnterChute()
@@ -560,7 +670,19 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			return;
 		if (IsChuteOwner())
 		{
-			// No controls to enable – just return
+			IEntity character = GetControlledCharacter();
+			if (IsCharacterSeatedInChute(character))
+				return;
+
+			if (m_OccupancyRetries < MAX_OCCUPANCY_RETRIES)
+			{
+				m_OccupancyRetries++;
+				GetGame().GetCallqueue().CallLater(WaitForChuteOwnership, 50, false);
+			}
+			else
+			{
+				AbortStuckDeployment("chute ownership confirmed but pilot was never actually seated");
+			}
 			return;
 		}
 		if (m_OwnershipRetries < MAX_OWNERSHIP_RETRIES)
@@ -568,6 +690,42 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 			m_OwnershipRetries++;
 			GetGame().GetCallqueue().CallLater(WaitForChuteOwnership, 50, false);
 		}
+		else
+		{
+			AbortStuckDeployment("chute ownership never transferred to client");
+		}
+	}
+
+	// --------------------------------------------------------------------------------------------
+	// Stuck-deployment recovery
+	// --------------------------------------------------------------------------------------------
+
+	protected void AbortStuckDeployment(string reason)
+	{
+		Print(string.Format("CRF_ParachutePlayerComponent: aborting stuck parachute deployment (%1)", reason), LogLevel.WARNING);
+
+		if (m_DeployedChuteRplId != RplId.Invalid())
+			Rpc(Rpc_RequestAbortDeploy, m_DeployedChuteRplId);
+
+		m_DeployRequestPending = false;
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void Rpc_RequestAbortDeploy(RplId chuteId)
+	{
+		if (!IsAuthority() || !m_IsDeployed || chuteId != m_DeployedChuteRplId)
+			return;
+
+		if (m_DeployedChuteEntity)
+			DeleteChuteEntity(m_DeployedChuteEntity);
+
+		m_DeployedChuteEntity = null;
+		m_IsDeployed = false;
+		m_DeployedChuteRplId = RplId.Invalid();
+		m_ChuteSlotId = -1;
+		Replication.BumpMe();
+
+		Rpc(Rpc_ConfirmChuteCleared);
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -583,29 +741,48 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		IEntity character = GetControlledCharacter();
 		if (character)
 		{
-			// 1. Place player safely on ground with zero velocity
-			PlacePlayerSafelyOnGround(character);
+			vector targetPos = character.GetOrigin();
+			if (m_DeployedChuteEntity)
+				targetPos = m_DeployedChuteEntity.GetOrigin();
 
-			// 2. Ask player to exit the vehicle (teleport)
+			// Ask the owner client to exit the parachute compartment first.
 			if (m_CharacterCompartmentAccess)
 				m_CharacterCompartmentAccess.AskOwnerToGetOutFromVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.LEAVE_OPEN, true, true);
 
-			// 3. After teleport, ensure they are still grounded
-			PlacePlayerSafelyOnGround(character);
+			// Then place the owner client near the parachute after the exit has had a chance to settle.
+			GetGame().GetCallqueue().CallLater(QueuePlayerExitPlacement, 300, false, targetPos);
 		}
 
 		// Start checking for empty compartment before deletion
 		GetGame().GetCallqueue().CallLater(CheckAndDeleteIfEmpty, 200, false, m_DeployedChuteEntity);
 	}
 
+	protected void QueuePlayerExitPlacement(vector targetPos)
+	{
+		Rpc(Rpc_PlacePlayerAtExitPosition, targetPos);
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void Rpc_PlacePlayerAtExitPosition(vector targetPos)
+	{
+		IEntity character = GetControlledCharacter();
+		if (!character)
+			return;
+
+		PlacePlayerSafelyOnGround(character, targetPos);
+	}
+
 	// Helper to place player safely on ground with zero velocity
-	void PlacePlayerSafelyOnGround(IEntity player)
+	void PlacePlayerSafelyOnGround(IEntity player, vector targetPos)
 	{
 		if (!player) return;
 
-		vector pos = player.GetOrigin();
+		vector pos = targetPos;
+		if (pos == vector.Zero)
+			pos = player.GetOrigin();
+
 		float terrainY = SCR_TerrainHelper.GetTerrainY(pos, null, true);
-		pos[1] = terrainY + 0.5; // .5 meters above terrain for safety
+		pos[1] = terrainY + 0.5; // keep the player near the parachute and clear of terrain
 		player.SetOrigin(pos);
 
 		Physics phys = player.GetPhysics();
@@ -653,5 +830,6 @@ class CRF_ParachutePlayerComponent : ScriptComponent
 		m_DeployedChuteRplId = RplId.Invalid();
 		m_ChuteSlotId = -1;
 		m_DeployedChuteEntity = null;
+		m_DeployRequestPending = false;
 	}
 }
