@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E7A186381EB4FDC4}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV_No MAT AMMO.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

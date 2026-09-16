@@ -1,8 +1,41 @@
-COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
- coords 6895.809 17.66 5975.065
- angles 0 0 0
- m_MarkerColor 1 0 0.024 1
- m_sQuadName "objective-marker"
- m_fWorldSize 100
- m_sDescription "Leopard2A6"
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 6392.33 21.813 5476.688
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 100
+  m_sDescription "MAT Ammo"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6406.426 20.634 5429.051
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 100
+  m_sDescription "RUS Supply Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6431.311 25.818 5336.929
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 100
+  m_sDescription "MAT Ammo"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
 }

@@ -11,20 +11,107 @@ $grp GenericEntity : "{78AB783E28EDEBD4}Prefabs/Props/Military/Sandbags/Sandbag_
   angles 0 90.554 0
  }
 }
-GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-   MultiSlots {
-    MultiSlotConfiguration "{6A5D33514058201E}" {
-     SlotTemplate InventoryStorageSlot sandbags {
-      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 5492.001 19.397 5048.415
+  angles 0 80.063 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5511.388 19.397 5049.125
+  angles 0 99.555 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+}
+$grp GenericEntity : "{A700AD9077074654}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Large_Soviet.et" {
+ {
+  coords 6391.979 21.812 5480.454
+  angles 0 -89.227 0
+ }
+ {
+  coords 6431.826 25.816 5335.749
+  angles 0 134.182 0
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A5D33514058201E}" {
+      SlotTemplate InventoryStorageSlot sandbags {
+       Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+      }
+      NumSlots 10000
      }
-     NumSlots 10000
     }
    }
   }
+  coords 6917.029 17.594 6038.986
  }
- coords 6917.029 17.594 6038.986
+ {
+  components {
+   CRF_RaidItemComponent "{6A60F04CBE5F5E9B}" {
+    m_iSupplyValue 50
+    m_sItemName "Supply Cache"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A5D33514058201E}" {
+      SlotTemplate InventoryStorageSlot sandbags {
+       Prefab "{9E0B02AA0AE6E59D}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VL_LS.et"
+      }
+      NumSlots 10000
+     }
+     MultiSlotConfiguration "{6A60F04AC665306F}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{86A7681BD1D4E4BB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VR.et"
+      }
+      NumSlots 15
+     }
+     MultiSlotConfiguration "{6A60F04C01A68D97}" {
+      SlotTemplate InventoryStorageSlot ammo2 {
+       Prefab "{4A3B196E4EA820E9}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_OG7V.et"
+      }
+      NumSlots 15
+     }
+    }
+   }
+  }
+  coords 6390.386 21.814 5480.159
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A60F04CBE5F5E9B}" {
+    m_iSupplyValue 50
+    m_sItemName "Supply Cache"
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A5D33514058201E}" {
+      SlotTemplate InventoryStorageSlot sandbags {
+       Prefab "{9E0B02AA0AE6E59D}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VL_LS.et"
+      }
+      NumSlots 10000
+     }
+     MultiSlotConfiguration "{6A60F04AC665306F}" {
+      SlotTemplate InventoryStorageSlot ammo {
+       Prefab "{86A7681BD1D4E4BB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VR.et"
+      }
+      NumSlots 15
+     }
+     MultiSlotConfiguration "{6A60F04C2183A182}" {
+      SlotTemplate InventoryStorageSlot ammo2 {
+       Prefab "{4A3B196E4EA820E9}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_OG7V.et"
+      }
+     }
+    }
+   }
+  }
+  coords 6431.057 25.822 5336.432
+ }
 }
 $grp GenericEntity : "{E86E2C320BF1F524}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_base.et" {
  {
