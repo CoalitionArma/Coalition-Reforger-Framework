@@ -1,0 +1,44 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 5407.018 4.25 3980.272
+  angles 0 60.438 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6A60F0BA0CA1CF29}" {
+   m_iAmountofMachineGunAmmo 3000
+  }
+ }
+ {
+  coords 5404.95 4.25 3983.918
+  angles 0 60.438 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6A60F0BA1BF4A6CE}" {
+   m_iAmountofMachineGunAmmo 3000
+  }
+ }
+ {
+  coords 5402.132 4.25 3988.886
+  angles 0 60.438 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6A60F0BA1BF4A6CE}" {
+   m_iAmountofMachineGunAmmo 3000
+  }
+ }
+ {
+  coords 5398.5 4.25 3995.289
+  angles 0 60.438 0
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 3786.189 2.844 5305.716
+  angles 0 33.821 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
