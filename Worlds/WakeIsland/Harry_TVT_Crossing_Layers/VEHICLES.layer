@@ -20,16 +20,6 @@ $grp COA_VehicleSpawner {
   }
  }
  {
-  coords 5402.132 4.25 3988.886
-  angles 0 60.438 0
-  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
-  m_sFactionKey "BLUFOR"
-  m_bShouldAddAmmo 0
-  m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6A60F0BA1BF4A6CE}" {
-   m_iAmountofMachineGunAmmo 3000
-  }
- }
- {
   coords 5398.5 4.25 3995.289
   angles 0 60.438 0
   m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"

@@ -25,10 +25,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
- m_iTimeLimitMinutes 45
+ m_iTimeLimitMinutes 60
  m_bLockUnusedSlots 1
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A60F0BB1DE90550}" {
@@ -79,14 +79,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A60F0BB1DE8FF61}" {
    m_sTitle "INDFOR Briefing"
-   m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
-   ""\
-   "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
-   ""\
-   "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_sTextData "N/A"
    m_aFactionKeys {
     "INDFOR"
    }
@@ -94,7 +87,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A60F0BB1DE8FEFB}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "Humvees will be respawned or repaired/refilled at respawn."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -108,17 +101,20 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A60F0BBFCB4E08D}" {
+  COA_SlottingGroup "{6A62FB1880B54040}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     MEDICAL_OFFICER
+    PLATOON_SERGEANT
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4E72C}" {
+  COA_SlottingGroup "{6A62FB1880B54682}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -136,7 +132,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4E5CA}" {
+  COA_SlottingGroup "{6A62FB1880B545AC}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -154,7 +150,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4E527}" {
+  COA_SlottingGroup "{6A62FB1880B54497}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -172,7 +168,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4E47A}" {
+  COA_SlottingGroup "{6A62FB1880B53BEE}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -190,7 +186,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4DB57}" {
+  COA_SlottingGroup "{6A62FB1880B53AC3}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -208,7 +204,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4DAAF}" {
+  COA_SlottingGroup "{6A62FB1880B53A11}" {
    m_sCallsign "Rattler 1"
    m_FlagType ARMORED
    m_aSlots {
@@ -219,19 +215,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4D9F1}" {
+  COA_SlottingGroup "{6A62FB1880B53952}" {
    m_sCallsign "Rattler 2"
-   m_FlagType ARMORED
-   m_aSlots {
-    VEHICLE_LEAD
-    VEHICLE_GUNNER
-    VEHICLE_DRIVER
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6A60F0BBFCB4D8A5}" {
-   m_sCallsign "Rattler 3"
    m_FlagType ARMORED
    m_aSlots {
     VEHICLE_LEAD
@@ -243,7 +228,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A60F0BBFCB4DF02}" {
+  COA_SlottingGroup "{6A62FB1880B53FD7}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -253,7 +238,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4DE49}" {
+  COA_SlottingGroup "{6A62FB1880B53F16}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -270,7 +255,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4DDA3}" {
+  COA_SlottingGroup "{6A62FB1880B53E6D}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -287,7 +272,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4DCF2}" {
+  COA_SlottingGroup "{6A62FB1880B53DBA}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -304,7 +289,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4D3CA}" {
+  COA_SlottingGroup "{6A62FB1880B53C80}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -321,7 +306,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A60F0BBFCB4D336}" {
+  COA_SlottingGroup "{6A62FB1880B533DD}" {
    m_sCallsign "MAT"
    m_FlagType ANTI_ARMOR
    m_aSlots {
