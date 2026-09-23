@@ -40,7 +40,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "BLUFOR Assets: None"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
-   "OPFOR Assets: 1x MMG and 1x MAT"\
+   "OPFOR Assets: 1x MMG and 1x ENG"\
    ""\
    "Time: 12:00pm"\
    ""\
@@ -67,13 +67,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A6D18CC1CD7F00E}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   "Defend each Mcom."\
    ""\
    "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   "When defend either MCOM, your enemy can come from anywhere, plan your defenses around this fact."\
    ""\
    "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "Commanders discretion"
    m_aFactionKeys {
     "OPFOR"
    }
@@ -110,7 +110,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A6D18CD1BE8DFFC}" {
+  COA_SlottingGroup "{6A6EF88CA5DDDC97}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -120,7 +120,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D0B7}" {
+  COA_SlottingGroup "{6A6EF88CA5DDDE4A}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -130,7 +130,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D12C}" {
+  COA_SlottingGroup "{6A6EF88CA5DDDEC5}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -147,7 +147,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D26F}" {
+  COA_SlottingGroup "{6A6EF88CA5DDDF2E}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -164,7 +164,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D285}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD04A}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +181,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D325}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD0FA}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -191,7 +191,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D45A}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD17C}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -208,7 +208,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D4CE}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD1FE}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -225,7 +225,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D54D}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD275}" {
    m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -244,7 +244,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A6D18CD1BE8D5EE}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD319}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -254,7 +254,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D661}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD3E5}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -271,7 +271,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D6E1}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD41D}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -288,7 +288,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D71F}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD496}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -305,7 +305,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8D796}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD508}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -322,7 +322,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8A807}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD58B}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
@@ -336,7 +336,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A6D18CD1BE8A8BA}" {
+  COA_SlottingGroup "{6A6EF88CA5DDD612}" {
    m_sCallsign "ENGI"
    m_FlagType MAINTENANCE
    m_aSlots {
@@ -382,7 +382,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A6EF88CDDC16ABE" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {

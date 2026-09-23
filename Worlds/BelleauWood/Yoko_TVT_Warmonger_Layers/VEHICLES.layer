@@ -62,4 +62,16 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
   m_bShouldAddAmmo 0
  }
+ {
+  coords 5484.864 129.829 7968.213
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5480.188 126.358 8000.971
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
 }
