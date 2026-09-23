@@ -1,53 +1,23 @@
-SCR_AIWorld : "{CFDC9C151CAB3F8D}Prefabs/AI/SCR_AIWorld_BelleauWood.et" {
- coords 7452.966 117.383 10231.744
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 6601.07 15.576 5771.941
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
-  CRF_TaskCreatorComponent "{6A621412D671EC85}" {
-   m_aTaskEntries {
-    CRF_TaskCreatorEntry "{6A62141359C9C48B}" {
-     m_sTaskLabel "Intel"
-     m_eAssignedSide OPFOR
-     m_sSpawnEntityName "Intel_1"
-     m_sNotificationText "Intel Collected"
-     m_sMarkerLabel "Intel"
-     m_sMarkerIcon "{BA29CA05FF6FE474}UI/Images/LobbyImages/cross.edds"
-    }
-    CRF_TaskCreatorEntry "{6A62141359EFF7F2}" {
-     m_sTaskLabel "Cache_1"
-     m_eTaskType PLANT_DEFUSE_BOMB
-     m_eAssignedSide OPFOR
-     m_sSpawnEntityName "Cache_1"
-     m_sNotificationText "Cache Destroyed"
-     m_sMarkerLabel "Weapon Cache"
-     m_sMarkerIcon "{BA29CA05FF6FE474}UI/Images/LobbyImages/cross.edds"
-    }
-    CRF_TaskCreatorEntry "{6A62141359F49B0A}" {
-     m_sTaskLabel "Cache_2"
-     m_eTaskType PLANT_DEFUSE_BOMB
-     m_eAssignedSide OPFOR
-     m_sSpawnEntityName "Cache_2"
-     m_sNotificationText "Cache Destroyed"
-     m_sMarkerLabel "Weapon Cache"
-     m_sMarkerIcon "{BA29CA05FF6FE474}UI/Images/LobbyImages/cross.edds"
-    }
-   }
-   m_CollectIntel CRF_TaskHandler_CollectIntel "{6A621412852F1CD1}" {
-    m_sPrefab "{6F718AC6E11EE13B}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel_Revolt.et"
-   }
-   m_PlantDefuseBomb CRF_TaskHandler_PlantDefuseBomb "{6A6214128419E858}" {
-    m_sPrefab "{EAC7C5EAA48277B5}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Cache_Revolt.et"
-    m_eDefendingSide BLUFOR
-   }
-   m_eWinCondition SET_AMOUNT_PER_SIDE
-   m_iTasksRequiredForWin 3
+  CRF_RaidGamemodeComponent "{6A5D2B61BDB32815}" {
+   m_fWinThresholdPercent 100
+   m_sAttackingSide "OPFOR"
+   m_sDefendingSide "BLUFOR"
+  }
+  CRF_RaidGamemodeComponent "{6A60F04C8A95A2C9}" {
+   m_fWinThresholdPercent 100
+   m_bEnableMapMarkers 0
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Clear"
-     m_iStartingHour 10
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 12
      m_iStartingMinutes 0
     }
    }
@@ -61,60 +31,64 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
- m_iTimeLimitMinutes 75
+ m_iTimeLimitMinutes 45
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
  m_aMissionDescriptors {
-  COA_MissionDescriptor "{6A622598A079285D}" {
+  COA_MissionDescriptor "{6A5D3354FED81BD1}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "French infantry platoon is to raid the town of Epaux-Bezu to destroy known weapons cache locations and recover rebel intelligence."\
+   m_sTextData "A Leopard2A6 is stuck on the Mertun Dam, with an incoming Russain Company, Bundeswehr forces are tasked with slowing down the Russain advance until reinforcements arrive by any means necessary."\
    ""\
-   "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets: Shotguns & Rifles"\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x Leopard2A6 and 1x MMG"\
    ""\
-   "OPFOR Composition: Infantry"\
-   "OPFOR Assets: DJI Recon"\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 2x MAT"\
    ""\
-   "Time: 75"\
+   "Time: 12:00pm"\
    ""\
-   "Weather: Clear"
+   "Weather: Cloudy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
-  COA_MissionDescriptor "{6A622598A078D7C3}" {
+  COA_MissionDescriptor "{6A5D3354FED810F7}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "French infantry raid on Epaux-Bezu"\
+   "Defend the Leopard2A6 and its crew until time runs out."\
+   ""\
+   "Find and Destroy two RUS supply caches. (A satchel can destroy it) - Destroying both caches will limt OPFOR ability to destroy the Leopard."\
    ""\
    "INTENT"\
-   "Protect both weapon cache locations along with sensitive intelligence"\
+   "The timer of this mission is much shorter than other missions, you just need to survive until time runs out. You have limited transport to send troops further up the valley. The enemy has  supply caches somewhere in Mertun with AT in it, destorying them and limit enemy AT."\
    ""\
    "EXECUTION"\
-   "Commanders Discretion"
+   "Commanders discretion"
    m_aFactionKeys {
     "BLUFOR"
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A622598A078D73A}" {
+  COA_MissionDescriptor "{6A5D3354FED8111A}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "French infantry raid on Epaux-Bezu"\
+   "Destroy the Leopard2A6 and its crew before time runs out."\
+   ""\
+   "Defend your Supply Caches as they contain the ammo to destory the tank."\
    ""\
    "INTENT"\
-   "Destroy both weapon caches and recover enemy intelligence"\
+   "You need to be quick, the mission timer is much shorter than ususal. So be fast and aggressive. You have a supply cache filled with MAT ammo with Mertun."\
    ""\
    "EXECUTION"\
-   "Commanders Discretion"
+   "Commanders discretion."
    m_aFactionKeys {
     "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A622598A078D671}" {
+  COA_MissionDescriptor "{6A5D3354FED811E5}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -129,7 +103,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6A622598A078D188}" {
+  COA_MissionDescriptor "{6A5D3354FED81261}" {
    m_sTitle "Administration"
    m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
    m_aFactionKeys {
@@ -141,121 +115,127 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_iFactionOneRatio 1
- m_iFactionTwoRatio 1
+ m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A622599DB8B95DF}" {
+  COA_SlottingGroup "{6A6334AF7D1B1FDC}" {
    m_sCallsign "1PLT"
-   m_FlagType INFANTRY
+   m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
+    COMBAT_ENGINEER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B97E1}" {
+  COA_SlottingGroup "{6A6334AF7D1B10AD}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B965C}" {
+  COA_SlottingGroup "{6A6334AF7D1B11C2}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9174}" {
+  COA_SlottingGroup "{6A6334AF7D1B1277}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9066}" {
+  COA_SlottingGroup "{6A6334AF7D1B12E2}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9326}" {
-   m_sCallsign "1-5"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6A6334AF7D1B136F}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
    m_aSlots {
     SQUAD_LEAD
     MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9DCD}" {
-   m_sCallsign "1-6"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6A6334AF7D1B139C}" {
+   m_sCallsign "Anvil 1"
+   m_FlagType ARMORED
    m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    LOGI_LEAD
-    LOGI_RUNNER
-    LOGI_RUNNER
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_LOADER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A622599DB8B9F95}" {
+  COA_SlottingGroup "{6A6334AF7D1B1558}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A6334AF7D1B15D9}" {
    m_sCallsign "1PLT"
-   m_FlagType INFANTRY
+   m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     PLATOON_SERGEANT
@@ -263,7 +243,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9E9E}" {
+  COA_SlottingGroup "{6A6334AF7D1B1658}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -273,13 +253,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9974}" {
+  COA_SlottingGroup "{6A6334AF7D1B16D1}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -289,13 +270,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9863}" {
+  COA_SlottingGroup "{6A6334AF7D1B1750}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -305,14 +287,25 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9B1E}" {
-   m_sCallsign "1-4"
+  COA_SlottingGroup "{6A6334AF7D1B17DD}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A6334AF7D1B17AE}" {
+   m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -321,14 +314,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B9A02}" {
-   m_sCallsign "1-5"
+  COA_SlottingGroup "{6A6334AF7D24E823}" {
+   m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -337,14 +331,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B8504}" {
-   m_sCallsign "1-6"
+  COA_SlottingGroup "{6A6334AF7D24E952}" {
+   m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -353,19 +348,37 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
+    RIFLEMAN_ANTITANK
+    COMBAT_ENGINEER
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A622599DB8B843C}" {
-   m_sCallsign "RECON"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6A6334AF7D24E9D5}" {
+   m_sCallsign "MAT 1"
+   m_FlagType ANTI_ARMOR
    m_aSlots {
-    FIRST_SERGEANT
-    DRONE_OPERATOR
-    DRONE_OPERATOR
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A6334AF7D24EA48}" {
+   m_sCallsign "MAT 2"
+   m_FlagType ANTI_ARMOR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
@@ -377,16 +390,16 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{598B9DD88944475D}Configs/Gearscripts/Custom/Bradly/Modern/COA_GS_French_Modern_Rebels_Revolt_Bradly.conf"
+  m_rGearScript "{88536FB5E7857958}Configs/Gearscripts/Standard/Modern/COA_GS_ModernBund_Fleck.conf"
   m_bEnableBFT 1
-  m_bEnableLeadershipRadios 0
+  m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{D4B07F9EDFEA037E}Configs/Gearscripts/Custom/Bradly/Modern/COA_GS_French_Modern_Revolt_Bradly.conf"
+  m_rGearScript "{E7A186381EB4FDC4}Configs/Gearscripts/Custom/Yoko/COA_GS_TFMSV_No MAT AMMO.conf"
   m_bEnableBFT 1
-  m_bEnableLeadershipRadios 0
+  m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
@@ -405,7 +418,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager "6A621411FB7960A4" {
+  SCR_FactionManager "6A5D33562E3CEA54" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
