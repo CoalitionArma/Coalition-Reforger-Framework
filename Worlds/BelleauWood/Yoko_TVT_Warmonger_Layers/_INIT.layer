@@ -30,7 +30,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
- m_bUseCVON 1
+ m_bUseCVON 0
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A6D18CC1CD7FB8E}" {
    m_sTitle "Mission: Situation"
