@@ -1,0 +1,77 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 6972.111 127.991 6866.898
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 6980.242 127.991 6866.898
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 6988.281 127.991 6866.898
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 6997.17 127.991 6866.898
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 7011.132 127.991 6866.898
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_bShouldAddAmmo 0
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 5434.124 129.098 7959.015
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5423.291 129.098 7946.318
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5410.159 129.098 7930.925
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5403.797 127.312 7953.158
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5425.595 127.028 7969.56
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5455.584 127.195 7983.103
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5484.864 129.829 7968.213
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5480.188 126.358 8000.971
+  angles 0 130.469 0
+  m_rVehicle "{76D20E81440D458D}Prefabs/Vehicles/Land_Vehicles/Wheeled_Vehicles/GBC180/TDF/GBC180_TDF_MK2_Transport.et"
+  m_bShouldAddAmmo 0
+ }
+}
