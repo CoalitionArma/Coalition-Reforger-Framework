@@ -1,0 +1,12 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 5585.974 10 6936.232
+  angles 0 91.548 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+ {
+  coords 5537.286 10 6977.533
+  angles 0 91.548 0
+  m_rVehicle "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+ }
+}
