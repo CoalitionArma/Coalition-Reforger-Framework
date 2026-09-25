@@ -1,0 +1,81 @@
+GenericEntity : "{971302B9970AA871}PrefabsMissionMaking/Systems/VehicleDepot/OPFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F111246FC7}" {
+   m_iSpawnPointCount 2
+   m_fSpawnSpacing 4.5
+   m_fVehicleFacingOffset 180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+     m_sVehicleName "Ural"
+     m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+     m_eCostType USES
+     m_iCost -1
+    }
+   }
+   m_bRestrictToLeadership 1
+  }
+ }
+ coords 4992.888 106.144 9108.434
+ angles 0 -26.275 0
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 5604.142 4.001 6464.847
+  angles 0 -118.971 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+ }
+ {
+  coords 5617.736 4.002 6457.631
+  angles 0 -120.499 0
+  m_rVehicle "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et"
+ }
+ {
+  coords 5608.002 4 6437.925
+  angles 0 -153.312 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5619.498 4.001 6432.147
+  angles 0 -153.312 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5614.886 4.001 6422.972
+  angles 0 -153.312 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5604.881 4.001 6428.001
+  angles 0 -153.312 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5519.95 4.001 6443.328
+  angles 0 -129.634 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5526.794 4.001 6451.163
+  angles 0 -129.634 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5527.094 4.001 6434.704
+  angles 0 -129.634 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5535.001 4.001 6441.254
+  angles 0 -129.634 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_bShouldAddAmmo 0
+ }
+}
