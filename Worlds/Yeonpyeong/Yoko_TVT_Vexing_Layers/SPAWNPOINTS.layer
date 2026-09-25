@@ -1,0 +1,9 @@
+COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 4991.447 106.047 9116.305
+}
+GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHunt/CRF_CacheHunt_FlagPole.et" {
+ coords 4992.623 106.01 9121.464
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 5560.823 3.996 6438.577
+}

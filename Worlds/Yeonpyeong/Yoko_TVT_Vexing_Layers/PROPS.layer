@@ -1,0 +1,8 @@
+$grp GenericEntity : "{B90CA0BEF3CC1D19}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Medium_Soviet.et" {
+ {
+  coords 4071.571 10.844 8853.74
+ }
+ {
+  coords 4923.26 108.093 9045.583
+ }
+}
