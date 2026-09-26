@@ -5,5 +5,5 @@ GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHu
  coords 3193.252 18 8185.828
 }
 COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
- coords 5591.525 10 7027.458
+ coords 5648.071 10.028 7146.085
 }
