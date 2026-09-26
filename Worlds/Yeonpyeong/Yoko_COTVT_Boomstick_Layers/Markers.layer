@@ -1,0 +1,18 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 6180.048 62.687 1917.313
+  m_sDescription "LZ 1 (!!!)"
+ }
+ {
+  coords 6333.303 44.15 839.613
+  m_sDescription "LZ 2 (!)"
+ }
+ {
+  coords 5739.198 0.587 1067.221
+  m_sDescription "LZ 3 (!!!)"
+ }
+ {
+  coords 6382.2 0.029 1362.331
+  m_sDescription "LZ 4 (!!!)"
+ }
+}

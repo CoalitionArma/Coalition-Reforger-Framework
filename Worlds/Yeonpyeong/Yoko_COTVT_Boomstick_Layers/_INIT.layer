@@ -81,7 +81,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destory all caches"\
    ""\
    "INTENT"\
-   "The enemy is on a heavily fortified island. The middle cache is underground, find a way in (there are multiple ways underground)."\
+   "The enemy is on a heavily fortified island. The middle cache is underground, find a way in (there are multiple ways underground). AA is light on the island but still expect it. Possible landing zone have been marked."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -294,7 +294,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6A754477DCE884EA" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
