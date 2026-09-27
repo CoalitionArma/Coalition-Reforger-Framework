@@ -1,0 +1,19 @@
+GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLUFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F0F94232BA}" {
+   m_fSpawnDistance 10
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F0F94232A9}" {
+     m_sVehicleName "RHIB (Armed)"
+     m_sVehiclePrefab "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+     m_eCostType USES
+     m_iCost -1
+    }
+   }
+  }
+ }
+ coords 5691.56 0 7131.343
+ angles 0 -79.278 0
+}

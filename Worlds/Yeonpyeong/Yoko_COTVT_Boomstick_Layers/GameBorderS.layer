@@ -1,0 +1,17 @@
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 5591.723 9.999 7023.097
+ Points {
+  ShapePoint "{6A720B6DFFD4A15E}" {
+   Position 221.009 0 -298.503
+  }
+  ShapePoint "{6A720B6DFEBE1BC2}" {
+   Position 250.991 0 257.817
+  }
+  ShapePoint "{6A720B6DE1063BFD}" {
+   Position -344.506 0 255.607
+  }
+  ShapePoint "{6A720B6DE0561CA9}" {
+   Position -357.861 0 -243.378
+  }
+ }
+}
