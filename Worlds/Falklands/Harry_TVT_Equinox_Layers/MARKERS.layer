@@ -1,0 +1,14 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 8196.858 13.219 3469.769
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sDescription "OPFOR Capture Zone"
+ }
+ {
+  coords 6872.94 57.334 4680.817
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sDescription "BLUFOR Capture Zone"
+ }
+}

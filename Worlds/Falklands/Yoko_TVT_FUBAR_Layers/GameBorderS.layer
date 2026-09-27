@@ -1,0 +1,81 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 6390.192 20.575 5425.368
+ Points {
+  ShapePoint "{6A5D3356E34E8758}" {
+   Position -1341.411 0 -891.971
+  }
+  ShapePoint "{6A5D3356E563450E}" {
+   Position -1267.425 0 -408.542
+  }
+  ShapePoint "{6A5D3356E8D19C9E}" {
+   Position -579.581 0 187.441
+  }
+  ShapePoint "{6A5D3356ED16DB70}" {
+   Position 338.201 0 880.531
+  }
+  ShapePoint "{6A5D335692B4E5E1}" {
+   Position 702.303 0 908.768
+  }
+  ShapePoint "{6A5D3356955A5E94}" {
+   Position 854.488 0 542.168
+  }
+  ShapePoint "{6A5D335696E0BA94}" {
+   Position 722.886 0 241.861
+  }
+  ShapePoint "{6A5D33569BB91C61}" {
+   Position 418.326 0 -153.519
+  }
+  ShapePoint "{6A5D33569A59B708}" {
+   Position 18.924 0 -447.703
+  }
+  ShapePoint "{6A5D33569FBBBCA3}" {
+   Position -354.41 0 -700.15
+  }
+  ShapePoint "{6A5D335680DB89BD}" {
+   Position -598.089 0 -844.047
+  }
+ }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 6896.985 17.656 6042.824
+ Points {
+  ShapePoint "{6A5D2B63C2D94992}" {
+   Position 161.645 0 49.822
+  }
+  ShapePoint "{6A5D2B63C5524D7F}" {
+   Position 146.835 0 -211.038
+  }
+  ShapePoint "{6A5D2B63C9A8AEE4}" {
+   Position -141.988 0 -282.94
+  }
+  ShapePoint "{6A5D2B63CB61D0FA}" {
+   Position -296.567 0 -70.204
+  }
+  ShapePoint "{6A5D2B63CD1812B1}" {
+   Position -283.736 0 23.689
+  }
+  ShapePoint "{6A5D2B63CFB277A1}" {
+   Position -21.314 0 105.107
+  }
+ }
+}
+COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 5473.75 21.754 5090.154
+ Points {
+  ShapePoint "{6A5D2B63F743C7CD}" {
+   Position -193.033 0 5.366
+  }
+  ShapePoint "{6A5D2B63F6E49F54}" {
+   Position -187.037 0 -122.195
+  }
+  ShapePoint "{6A5D2B63F8E8A745}" {
+   Position 19.409 0 -125.228
+  }
+  ShapePoint "{6A5D2B63FB4013F3}" {
+   Position 75.805 0 7.246
+  }
+  ShapePoint "{6A5D2B63FDD5C4B2}" {
+   Position -8.494 0 91.177
+  }
+ }
+}

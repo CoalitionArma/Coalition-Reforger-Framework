@@ -1,0 +1,17 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 7479.625 45.306 3999.71
+ Points {
+  ShapePoint "{6A6B6E94B79B5054}" {
+   Position 656.427 0 -970.976
+  }
+  ShapePoint "{6A6B6E94BB4F3E68}" {
+   Position -1099.68 0 259.436
+  }
+  ShapePoint "{6A6B6E94BA849BAE}" {
+   Position -581.346 0 1035.295
+  }
+  ShapePoint "{6A6B6E94B83EB1CA}" {
+   Position 1083.406 0 -338.767
+  }
+ }
+}
