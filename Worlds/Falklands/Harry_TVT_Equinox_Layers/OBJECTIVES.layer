@@ -1,0 +1,11 @@
+$grp SCR_BaseTriggerEntity {
+ ctf_teamB_base {
+  coords 8199.581 13.232 3471.809
+ }
+ ctf_teamA_base {
+  coords 6869.041 56.645 4680.886
+ }
+}
+GenericEntity : "{25782F94FA996F41}Prefabs/Items/Demining/MineFlags/CRF_CTF_Flag.et" {
+ coords 7495.042 42.942 4041.236
+}
