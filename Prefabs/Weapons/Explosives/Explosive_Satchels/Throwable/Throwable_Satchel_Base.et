@@ -131,6 +131,9 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
       }
      }
     }
+    BaseItemAnimationComponent "{67200BC641998A34}" {
+     Enabled 0
+    }
    }
    UIInfo GrenadeUIInfo "{172367262E10E042}" {
     m_eAmmoTypeFlags HE
@@ -159,6 +162,9 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
    }
   }
   Hierarchy "{64F2449BAC2567D1}" {
+  }
+  Hierarchy "{67200BC641998A02}" {
+   Enabled 0
   }
  }
 }
