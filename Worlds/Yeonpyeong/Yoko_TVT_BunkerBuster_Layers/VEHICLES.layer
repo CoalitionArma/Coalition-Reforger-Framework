@@ -29,16 +29,4 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
   m_bShouldAddAmmo 0
  }
- {
-  coords 6407.227 0.295 797.321
-  angles 0 132.805 0
-  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
-  m_bShouldAddAmmo 0
- }
- {
-  coords 6412.619 0.295 803.143
-  angles 0 132.805 0
-  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
-  m_bShouldAddAmmo 0
- }
 }
