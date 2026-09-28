@@ -1,4 +1,13 @@
-GameEntity aSiteTrigger {
- coords 5929.212 129.283 1636.767
- angles 0 52.027 0
+$grp SCR_BaseTriggerEntity {
+ mcom_b_trigger {
+  coords 6457.054 2.75 1814.327
+ }
+ mcom_c_trigger {
+  coords 5929.025 129.284 1636.641
+  angles 0 141.442 0
+ }
+ mcom_a_trigger {
+  coords 5337.242 17.251 1403.903
+  angles 0 162.945 0
+ }
 }

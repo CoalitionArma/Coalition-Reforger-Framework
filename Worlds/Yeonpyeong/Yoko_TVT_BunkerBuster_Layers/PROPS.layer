@@ -1,3 +1,86 @@
+$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ McomB {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "Spawn1"
+     }
+    }
+   }
+  }
+  coords 6448.985 3.878 1774.57
+ }
+ Spawn1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport to MCOM B"
+      }
+      m_sObjectNameToTeleportTo "McomB"
+     }
+    }
+   }
+  }
+  coords 5899.929 129.262 1588.702
+ }
+ Spawn2 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport to MCOM A"
+      }
+      m_sObjectNameToTeleportTo "McomA"
+     }
+    }
+   }
+  }
+  coords 5889.813 129.262 1589.851
+ }
+ McomA {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "Spawn1"
+     }
+    }
+   }
+  }
+  coords 5359.448 12.824 1494.601
+ }
+ Boats {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sObjectNameToTeleportTo "BluSpawn1"
+     }
+    }
+   }
+  }
+  coords 6414.878 0.002 824.63
+ }
+ Bluspawn1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Boats"
+      }
+      m_sObjectNameToTeleportTo "Boats"
+     }
+    }
+   }
+  }
+  coords 6348.389 44.007 812.607
+ }
+}
 $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
  {
   coords 6025.488 129.394 1707.503
