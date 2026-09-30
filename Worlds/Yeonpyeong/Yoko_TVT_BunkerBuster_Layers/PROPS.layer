@@ -1,5 +1,20 @@
-GenericEntity : "{28ECED0C0F3655DB}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_USSR.et" {
- coords 5811.995 53.363 1219.044
+$grp GenericEntity : "{0D6A1225534F164D}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Small_USSR.et" {
+ {
+  coords 6287.845 55.912 1442.229
+  angles 0 -56.946 0
+ }
+ {
+  coords 6264.196 57.809 1407.391
+  angles 0 -56.946 0
+ }
+ {
+  coords 5809.931 56.198 1238.097
+  angles 0 -93.798 0
+ }
+ {
+  coords 5817.727 44.078 1196.093
+  angles 0 -93.798 0
+ }
 }
 $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
  Spawn1 {
@@ -99,8 +114,8 @@ $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_
   angles 0 53.468 0
  }
  {
-  coords 5956.343 130.712 1666.74
-  angles 0 -32.545 0
+  coords 5978.359 129.447 1676.195
+  angles 0 57.4 0
  }
  {
   coords 5941.89 129.198 1642.123
@@ -119,15 +134,11 @@ $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_
   angles 0 -39.118 0
  }
  {
-  coords 5956.304 129.509 1666.715
-  angles 0 -32.545 0
+  coords 5972.796 129.388 1667.623
+  angles 0 50.673 0
  }
  {
-  coords 5954.986 130.712 1665.874
-  angles 0 -32.545 0
- }
- {
-  coords 5954.986 129.509 1665.874
+  coords 5947.525 129.38 1674.329
   angles 0 -32.545 0
  }
  {
@@ -153,6 +164,86 @@ $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_
  {
   coords 5961.1 137.106 1659.672
   angles 0 54.477 0
+ }
+ {
+  coords 5912.457 129.374 1621.753
+  angles 0 54.156 0
+ }
+ {
+  coords 5902.604 129.387 1618.8
+  angles 0 54.156 0
+ }
+ {
+  coords 5964.143 129.396 1658.714
+  angles 0 -32.545 0
+ }
+ {
+  coords 5958.73 129.395 1656.519
+  angles 0 -125.573 0
+ }
+ {
+  coords 5956.527 129.39 1661.992
+  angles 0 -32.545 0
+ }
+ {
+  coords 5925.316 129.407 1709.564
+  angles 0 -35.718 0
+ }
+ {
+  coords 5914.219 129.628 1694.513
+  angles 0 -35.718 0
+ }
+ {
+  coords 5914.219 130.775 1694.513
+  angles 0 -35.718 0
+ }
+ {
+  coords 5865.421 129.382 1650.514
+  angles 0 89.226 0
+ }
+ {
+  coords 5872.914 129.326 1667.195
+  angles 0 138.577 0
+ }
+ {
+  coords 5872.914 130.517 1667.195
+  angles 0 138.577 0
+ }
+ {
+  coords 5865.421 130.615 1650.514
+  angles 0 89.226 0
+ }
+ {
+  coords 5999.91 128.32 1725.93
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.209 128.32 1726.905
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.209 129.53 1726.905
+  angles 0 143.104 0
+ }
+ {
+  coords 5999.987 129.53 1725.988
+  angles 0 143.104 0
+ }
+ {
+  coords 5999.987 130.71 1725.988
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.165 130.71 1726.872
+  angles 0 143.104 0
+ }
+ {
+  coords 6017.519 128.365 1756.281
+  angles 0 -127.037 0
+ }
+ {
+  coords 6017.519 129.511 1756.281
+  angles 0 -127.037 0
  }
 }
 $grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {

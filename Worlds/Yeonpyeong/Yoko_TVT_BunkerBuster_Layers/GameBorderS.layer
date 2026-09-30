@@ -75,10 +75,10 @@ $grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/S
     Position 95.638 0 -106.214
    }
    ShapePoint "{6A794476A0DB187A}" {
-    Position 178.473 0 -62.023
+    Position 119.362 9.623 -25.647
    }
    ShapePoint "{6A794476A2E0866D}" {
-    Position 222.81 0 -18.743
+    Position 172.159 14.597 12.912
    }
    ShapePoint "{6A794476A5EEEBFF}" {
     Position 195.019 0 49.331
