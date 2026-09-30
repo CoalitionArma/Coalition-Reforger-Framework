@@ -1,0 +1,26 @@
+$grp GenericEntity : "{0D6A1225534F164D}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Small_USSR.et" {
+ {
+  coords 6264.196 57.809 1407.391
+  angles 0 -56.946 0
+ }
+ {
+  coords 6287.845 55.912 1442.229
+  angles 0 -56.946 0
+ }
+}
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 5814.052 53.308 1218.557
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "destroy-2"
+  m_sDescription "Minefield"
+ }
+ {
+  coords 6275.353 57.886 1424.521
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "destroy-2"
+  m_sDescription "Minefield"
+ }
+}

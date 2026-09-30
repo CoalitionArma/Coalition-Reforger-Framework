@@ -10,11 +10,8 @@ COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safest
   ShapePoint "{6A790175B37A5EBF}" {
    Position -115.826 0 128.738
   }
-  ShapePoint "{6A790175B563A067}" {
-   Position -86.107 0 164.489
-  }
   ShapePoint "{6A790175B7C387E7}" {
-   Position -20.838 0 188.515
+   Position -55.609 0 115.289
   }
  }
 }
@@ -29,7 +26,7 @@ $grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/S
     Position -81.293 0 -36.308
    }
    ShapePoint "{6A79447699FEA344}" {
-    Position 71.904 -0 -75.858
+    Position 71.904 0 -75.858
    }
    ShapePoint "{6A7944769A2DA417}" {
     Position 68.634 0 145.741
@@ -55,13 +52,13 @@ $grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/S
     Position 33.607 0 21.083
    }
    ShapePoint "{6A7944768FDEA0D1}" {
-    Position -36.967 -0 21.609
+    Position -36.967 0 21.609
    }
    ShapePoint "{6A7944768E1E472E}" {
-    Position -39.418 -0 -23.046
+    Position -39.418 0 -23.046
    }
    ShapePoint "{6A794476B1BF4695}" {
-    Position 32.071 -0 -25.149
+    Position 32.071 0 -25.149
    }
   }
  }
@@ -69,10 +66,10 @@ $grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/S
   coords 5353.298 17.25 1405.01
   Points {
    ShapePoint "{6A794476BC611B51}" {
-    Position -73.82 -0 -11.661
+    Position -73.82 0 -11.661
    }
    ShapePoint "{6A794476BF2E088C}" {
-    Position 14.667 -0 -94.096
+    Position 14.667 0 -94.096
    }
    ShapePoint "{6A794476BE74D9D3}" {
     Position 95.638 0 -106.214

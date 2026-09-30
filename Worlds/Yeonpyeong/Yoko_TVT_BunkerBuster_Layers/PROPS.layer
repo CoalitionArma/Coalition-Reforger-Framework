@@ -1,3 +1,6 @@
+GenericEntity : "{28ECED0C0F3655DB}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_USSR.et" {
+ coords 5811.995 53.363 1219.044
+}
 $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
  Spawn1 {
   components {
