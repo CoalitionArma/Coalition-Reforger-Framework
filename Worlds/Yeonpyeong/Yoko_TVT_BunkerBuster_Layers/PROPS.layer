@@ -1,3 +1,11 @@
+$grp GameEntity {
+ MCOM_A_Teleport {
+  coords 5334.44 4.125 1587.937
+ }
+ MCOM_B_Teleport {
+  coords 6436.231 2.75 1813.325
+ }
+}
 $grp GenericEntity : "{0D6A1225534F164D}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Small_USSR.et" {
  {
   coords 6287.845 55.912 1442.229
@@ -25,7 +33,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       UIInfo UIInfo "{645A000816F0F771}" {
        Name "Teleport to MCOM B"
       }
-      m_sObjectNameToTeleportTo "mcom_b_trigger"
+      m_sObjectNameToTeleportTo "MCOM_B_Teleport"
      }
     }
    }
@@ -40,7 +48,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
       UIInfo UIInfo "{645A000816F0F771}" {
        Name "Teleport to MCOM A"
       }
-      m_sObjectNameToTeleportTo "mcom_a_trigger"
+      m_sObjectNameToTeleportTo "MCOM_A_Teleport"
      }
     }
    }
