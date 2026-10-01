@@ -1,0 +1,304 @@
+COA_StaticSpawnPoint : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 4113.046 34.568 3586.575
+}
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 3649.533 0.187 1781.296
+ Points {
+  ShapePoint "{6A7CB8DE13F8C401}" {
+   Position 66.454 0 -216.818
+  }
+  ShapePoint "{6A7CB8DE0BFFD048}" {
+   Position 878.504 0 1996.093
+  }
+  ShapePoint "{6A7CB8DE03774B4E}" {
+   Position 2239.837 0 944.862
+  }
+  ShapePoint "{6A7CB8DFFF60D9B2}" {
+   Position 1508.718 0 -950.886
+  }
+ }
+}
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ {
+  coords 4665.448 42.743 2361.018
+  Points {
+   ShapePoint "{6A82EC8F35FBFBFE}" {
+    Position 135.106 0 -197.31
+   }
+   ShapePoint "{6A82EC8F31357A97}" {
+    Position -224.93 -0 -177.69
+   }
+   ShapePoint "{6A82EC8F306EF17F}" {
+    Position -195.719 0 84.527
+   }
+   ShapePoint "{6A82EC8F2E7F93FA}" {
+    Position -24.885 0 178.638
+   }
+   ShapePoint "{6A82EC8F2D6D1F51}" {
+    Position 253.154 0 98.989
+   }
+   ShapePoint "{6A82EC8F2C239F86}" {
+    Position 163.077 0 -138.72
+   }
+  }
+ }
+ {
+  coords 4311.557 36.203 2057.602
+  Points {
+   ShapePoint "{6A82EC8F254ACB5C}" {
+    Position 283.868 0 628.556
+   }
+   ShapePoint "{6A82EC8F24DB6169}" {
+    Position 66.284 0 577.243
+   }
+   ShapePoint "{6A82EC8F231D1C17}" {
+    Position -79.238 0 286.141
+   }
+   ShapePoint "{6A82EC8F210F74DF}" {
+    Position 112.48 0 -63.821
+   }
+   ShapePoint "{6A82EC8F200BD95D}" {
+    Position 378.677 0 -208.655
+   }
+   ShapePoint "{6A82EC8F1F58231F}" {
+    Position 624.446 0 -186.876
+   }
+   ShapePoint "{6A82EC8F1DA661E6}" {
+    Position 752.995 0 131.688
+   }
+   ShapePoint "{6A82EC8F1C13BC74}" {
+    Position 770.118 0 289.223
+   }
+   ShapePoint "{6A82EC8F1CF3BE44}" {
+    Position 767.035 0 379.537
+   }
+   ShapePoint "{6A82EC8F1CB0837B}" {
+    Position 714.708 0 562.637
+   }
+   ShapePoint "{6A82EC8F1BD3C1EA}" {
+    Position 533.777 0 676.522
+   }
+  }
+ }
+}
+$grp COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
+ {
+  coords 5550.874 26.862 2324.451
+  Points {
+   ShapePoint "{6A7CB8D261053B3E}" {
+    Position -64.131 0 -73.605
+   }
+   ShapePoint "{6A7CB8D261BE8C52}" {
+    Position -74.78 0 -6.68
+   }
+   ShapePoint "{6A7CB8D26018BEB5}" {
+    Position -38.541 0 150.822
+   }
+   ShapePoint "{6A7CB8D260CE27FD}" {
+    Position 17.894 0 166.42
+   }
+   ShapePoint "{6A7CB8D260B819EC}" {
+    Position 129.382 0 153.831
+   }
+   ShapePoint "{6A7CB8D25F75288C}" {
+    Position 120.295 0 60.158
+   }
+   ShapePoint "{6A7CB8D25F21405C}" {
+    Position 56.52 0 -43.049
+   }
+   ShapePoint "{6A7CB8D25E484B0C}" {
+    Position 32.487 3.326 -67.568
+   }
+  }
+ }
+ {
+  coords 4568.54 48.751 3331.733
+  Points {
+   ShapePoint "{6A7CB8D3B58DD548}" {
+    Position -75.346 -8.117 -35.467
+   }
+   ShapePoint "{6A7CB8D3B22646AF}" {
+    Position -47.382 0 23.688
+   }
+   ShapePoint "{6A7CB8D3B29A1F8C}" {
+    Position -18.902 0 49.823
+   }
+   ShapePoint "{6A7CB8D3B1576B63}" {
+    Position 26.663 0 31.701
+   }
+   ShapePoint "{6A7CB8D3B16F2072}" {
+    Position 36.214 0 10.464
+   }
+   ShapePoint "{6A7CB8D3B1AF8648}" {
+    Position 48.943 0 -32.82
+   }
+   ShapePoint "{6A7CB8D3B0358196}" {
+    Position 40.218 0 -67.145
+   }
+  }
+ }
+ {
+  coords 5226.945 11.982 1279.882
+  Points {
+   ShapePoint "{6A7CB8D36A64E783}" {
+    Position -21.923 0 -1.84
+   }
+   ShapePoint "{6A7CB8D3683E1812}" {
+    Position 21.485 0 89.437
+   }
+   ShapePoint "{6A7CB8D3688366CD}" {
+    Position 87.25 0 33.804
+   }
+   ShapePoint "{6A7CB8D36758A188}" {
+    Position 84.045 0 -23.582
+   }
+   ShapePoint "{6A7CB8D3671E7E2B}" {
+    Position 53.091 0 -49.762
+   }
+   ShapePoint "{6A7CB8D367FE99FA}" {
+    Position 42.145 0 -57.826
+   }
+  }
+ }
+}
+$grp COA_BorderBase : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
+ {
+  coords 4581.863 26.251 3130.941
+  Points {
+   ShapePoint "{6A7CB8DD8675484B}" {
+    Position -11.218 0 95.382
+   }
+   ShapePoint "{6A7CB8DD827D1CC6}" {
+    Position -89.482 0 33.893
+   }
+   ShapePoint "{6A7CB8DD8112D40C}" {
+    Position -183.907 0 -87.312
+   }
+   ShapePoint "{6A7CB8DD819AC775}" {
+    Position -214.054 0 -185.926
+   }
+   ShapePoint "{6A7CB8DD6D29CA6A}" {
+    Position -183.327 0 -287.268
+   }
+   ShapePoint "{6A7CB8DD641714A0}" {
+    Position -293.746 0 -298.141
+   }
+   ShapePoint "{6A7CB8DD635B7BFC}" {
+    Position -160.623 0 -438.654
+   }
+   ShapePoint "{6A7CB8DD620C492D}" {
+    Position -40.98 0 -267.448
+   }
+   ShapePoint "{6A7CB8DD611543B3}" {
+    Position -114.945 0 -276.493
+   }
+   ShapePoint "{6A7CB8DD6098742A}" {
+    Position -120.267 0 -202.24
+   }
+   ShapePoint "{6A7CB8DD5F281E8D}" {
+    Position -83.318 0 -115.521
+   }
+   ShapePoint "{6A7CB8DD5D37FF07}" {
+    Position -21.009 0 -18.54
+   }
+   ShapePoint "{6A7CB8DD5C7492F6}" {
+    Position 34.508 0 35.013
+   }
+  }
+  LineColor 0.855 0.031 0.028 1
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+   "SPEC"
+  }
+  m_cPolygonBorderColor 0.855 0.031 0.028 1
+ }
+ {
+  coords 5456.788 36.205 2483.308
+  Points {
+   ShapePoint "{6A7CB8DEB5E2DF18}" {
+    Position 34.555 0 13.261
+   }
+   ShapePoint "{6A7CB8DEB44DF4E8}" {
+    Position -67.776 0 -26.748
+   }
+   ShapePoint "{6A7CB8DEB4D40725}" {
+    Position -182.205 0 -50.149
+   }
+   ShapePoint "{6A7CB8DEB4A2399E}" {
+    Position -344.862 0 -62.758
+   }
+   ShapePoint "{6A7CB8DEB3FD218E}" {
+    Position -351.162 0 20.379
+   }
+   ShapePoint "{6A7CB8DEB2FF76F4}" {
+    Position -457.364 0 -81.961
+   }
+   ShapePoint "{6A7CB8DEB104AA6D}" {
+    Position -338.291 0 -194.495
+   }
+   ShapePoint "{6A7CB8DEB1AEBC5C}" {
+    Position -339.249 0 -124.393
+   }
+   ShapePoint "{6A7CB8DEB0C7D71E}" {
+    Position -179.809 0 -116.932
+   }
+   ShapePoint "{6A7CB8DEAF5A89E4}" {
+    Position -51.311 0 -81.263
+   }
+   ShapePoint "{6A7CB8DEAD77E394}" {
+    Position 77.952 0 -37.847
+   }
+  }
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+   "SPEC"
+  }
+  m_cPolygonBorderColor 0.855 0.031 0.028 1
+ }
+ {
+  coords 5171.762 17.172 1423.129
+  Points {
+   ShapePoint "{6A7CB8DE8CCC2A3E}" {
+    Position 70.918 0 -10.371
+   }
+   ShapePoint "{6A7CB8DE8A67028B}" {
+    Position -21.578 0 46.139
+   }
+   ShapePoint "{6A7CB8DE89E9774B}" {
+    Position -130.144 0 177.977
+   }
+   ShapePoint "{6A7CB8DE8823A80D}" {
+    Position -193.986 0 292.362
+   }
+   ShapePoint "{6A7CB8DE873218A2}" {
+    Position -122 0 311.219
+   }
+   ShapePoint "{6A7CB8DE8212DA6F}" {
+    Position -227.554 0 366.985
+   }
+   ShapePoint "{6A7CB8DE8102EE13}" {
+    Position -304.016 0 253.317
+   }
+   ShapePoint "{6A7CB8DE81B7EEB7}" {
+    Position -242.713 0 273.378
+   }
+   ShapePoint "{6A7CB8DE7725FAF1}" {
+    Position -179.776 0 140.876
+   }
+   ShapePoint "{6A7CB8DE76D028BE}" {
+    Position -75.425 0 5.836
+   }
+   ShapePoint "{6A7CB8DE754B43B4}" {
+    Position 15.958 0 -69.237
+   }
+  }
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+   "SPEC"
+  }
+  m_cPolygonBorderColor 0.855 0.031 0.028 1
+ }
+}
