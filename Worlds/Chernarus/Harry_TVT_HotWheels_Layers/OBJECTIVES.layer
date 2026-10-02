@@ -26,8 +26,8 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
     }
    }
   }
-  coords 3867.81 300.23 8966.85
-  angles 0 7.749 0
+  coords 3867.047 310.984 8961.24
+  angles -0.121 7.747 0.887
  }
  {
   components {
@@ -41,8 +41,8 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
     }
    }
   }
-  coords 2787.078 266.023 9907.739
-  angles 0 7.749 0
+  coords 2787.729 274.062 9912.527
+  angles -0.035 7.747 -0.112
  }
  {
   components {
@@ -56,8 +56,8 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
     }
    }
   }
-  coords 2711.317 268.598 10045.142
-  angles 0 7.749 0
+  coords 2711.317 283.827 10045.142
+  angles 0.069 7.749 0.04
  }
  {
   components {
@@ -71,7 +71,7 @@ $grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/Equipme
     }
    }
   }
-  coords 2900.675 261.466 9705.751
-  angles 0 7.749 0
+  coords 2901.118 271.594 9706.123
+  angles 0 6.148 0
  }
 }

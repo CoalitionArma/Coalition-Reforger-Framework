@@ -1,0 +1,35 @@
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 2230.193 266.692 11056.083
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 200
+  m_fWorldSizeY 200
+ }
+ {
+  coords 2693.347 274.001 10045.879
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 200
+  m_fWorldSizeY 200
+ }
+ {
+  coords 3868.216 310.969 8954.394
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2789.983 274.067 9911.612
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 200
+  m_fWorldSizeY 200
+ }
+ {
+  coords 2885.247 271.137 9744.728
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 200
+  m_fWorldSizeY 200
+ }
+}
