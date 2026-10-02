@@ -1,0 +1,212 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 3649.533 0.187 1781.296
+ Points {
+  ShapePoint "{6A7CB8DE13F8C401}" {
+   Position 66.454 0 -216.818
+  }
+  ShapePoint "{6A7CB8DE0BFFD048}" {
+   Position 878.504 0 1996.093
+  }
+  ShapePoint "{6A7CB8DE03774B4E}" {
+   Position 2239.837 0 944.862
+  }
+  ShapePoint "{6A7CB8DFFF60D9B2}" {
+   Position 1508.718 0 -950.886
+  }
+ }
+}
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ {
+  coords 4311.557 36.203 2057.602
+  Points {
+   ShapePoint "{6A82EC8F254ACB5C}" {
+    Position 283.868 0 628.556
+   }
+   ShapePoint "{6A82EC8F24DB6169}" {
+    Position 66.284 0 577.243
+   }
+   ShapePoint "{6A82EC8F231D1C17}" {
+    Position -79.238 0 286.141
+   }
+   ShapePoint "{6A82EC8F210F74DF}" {
+    Position 112.48 0 -63.821
+   }
+   ShapePoint "{6A82EC8F200BD95D}" {
+    Position 378.677 0 -208.655
+   }
+   ShapePoint "{6A82EC8F1F58231F}" {
+    Position 624.446 0 -186.876
+   }
+   ShapePoint "{6A82EC8F1DA661E6}" {
+    Position 752.995 0 131.688
+   }
+   ShapePoint "{6A82EC8F1C13BC74}" {
+    Position 770.118 0 289.223
+   }
+   ShapePoint "{6A82EC8F1CF3BE44}" {
+    Position 767.035 0 379.537
+   }
+   ShapePoint "{6A82EC8F1CB0837B}" {
+    Position 714.708 0 562.637
+   }
+   ShapePoint "{6A82EC8F1BD3C1EA}" {
+    Position 533.777 0 676.522
+   }
+  }
+ }
+ {
+  coords 4665.448 42.743 2361.018
+  Points {
+   ShapePoint "{6A82EC8F35FBFBFE}" {
+    Position 135.106 0 -197.31
+   }
+   ShapePoint "{6A82EC8F31357A97}" {
+    Position -224.93 0 -177.69
+   }
+   ShapePoint "{6A82EC8F306EF17F}" {
+    Position -195.719 0 84.527
+   }
+   ShapePoint "{6A82EC8F2E7F93FA}" {
+    Position -24.885 0 178.638
+   }
+   ShapePoint "{6A82EC8F2D6D1F51}" {
+    Position 253.154 0 98.989
+   }
+   ShapePoint "{6A82EC8F2C239F86}" {
+    Position 163.077 0 -138.72
+   }
+  }
+ }
+}
+$grp COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
+ {
+  coords 5226.945 11.982 1279.882
+  Points {
+   ShapePoint "{6A7CB8D36A64E783}" {
+    Position -21.923 0 -1.84
+   }
+   ShapePoint "{6A7CB8D3683E1812}" {
+    Position 21.485 0 89.437
+   }
+   ShapePoint "{6A7CB8D3688366CD}" {
+    Position 87.25 0 33.804
+   }
+   ShapePoint "{6A7CB8D36758A188}" {
+    Position 84.045 0 -23.582
+   }
+   ShapePoint "{6A7CB8D3671E7E2B}" {
+    Position 53.091 0 -49.762
+   }
+   ShapePoint "{6A7CB8D367FE99FA}" {
+    Position 42.145 0 -57.826
+   }
+  }
+ }
+ {
+  coords 4568.54 48.751 3331.733
+  Points {
+   ShapePoint "{6A7CB8D3B58DD548}" {
+    Position -75.346 -8.117 -35.467
+   }
+   ShapePoint "{6A7CB8D3B22646AF}" {
+    Position -47.382 0 23.688
+   }
+   ShapePoint "{6A7CB8D3B29A1F8C}" {
+    Position -18.902 0 49.823
+   }
+   ShapePoint "{6A7CB8D3B1576B63}" {
+    Position 26.663 0 31.701
+   }
+   ShapePoint "{6A7CB8D3B16F2072}" {
+    Position 36.214 0 10.464
+   }
+   ShapePoint "{6A7CB8D3B1AF8648}" {
+    Position 48.943 0 -32.82
+   }
+   ShapePoint "{6A7CB8D3B0358196}" {
+    Position 40.218 0 -67.145
+   }
+  }
+ }
+ {
+  coords 5550.874 26.862 2324.451
+  Points {
+   ShapePoint "{6A7CB8D261053B3E}" {
+    Position -64.131 0 -73.605
+   }
+   ShapePoint "{6A7CB8D261BE8C52}" {
+    Position -74.78 0 -6.68
+   }
+   ShapePoint "{6A7CB8D26018BEB5}" {
+    Position -38.541 0 150.822
+   }
+   ShapePoint "{6A7CB8D260CE27FD}" {
+    Position 17.894 0 166.42
+   }
+   ShapePoint "{6A7CB8D260B819EC}" {
+    Position 129.382 0 153.831
+   }
+   ShapePoint "{6A7CB8D25F75288C}" {
+    Position 120.295 0 60.158
+   }
+   ShapePoint "{6A7CB8D25F21405C}" {
+    Position 56.52 0 -43.049
+   }
+   ShapePoint "{6A7CB8D25E484B0C}" {
+    Position 32.487 3.326 -67.568
+   }
+  }
+ }
+}
+CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ coords 4655.188 42.811 2350.832
+ m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+ m_sQuadName "objective-marker-2"
+ m_fWorldSize 125
+ m_bUseWorldScale 0
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+ m_sMissionMarkerDescription "American forces have been reported to have taken up refuge in this farm. Find and eliminate all American forces within the farm, prevent their escape. This farm was used to store equipment for fortification of the island so they may utlize it to build up their defenses. "
+ m_aMissionMarkerImages {
+  "{ACB0D3DBC3EF17FA}UI/Images/Objectives/Salami/BoogieDown/BoogieDownOPFORIMAGE1.edds"
+ }
+}
+COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 4158.689 31.693 3650.912
+ Points {
+  ShapePoint "{6A8318956E1EAD30}" {
+   Position -150.363 0 -74.957
+  }
+  ShapePoint "{6A8318956EF1DCFF}" {
+   Position -171.187 0 123.998
+  }
+  ShapePoint "{6A8318956D0B941A}" {
+   Position 120.334 0 155.195
+  }
+  ShapePoint "{6A8318956DAC7B49}" {
+   Position 101.451 0 -104.395
+  }
+ }
+}
+COA_BorderBase : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
+ coords 4515.887 39.396 2302.212
+ Points {
+  ShapePoint "{6A833B7BCAEDD8C1}" {
+   Position 66.315 0 152.171
+  }
+  ShapePoint "{6A833B7BC90C8693}" {
+   Position 82.695 0 -13.309
+  }
+  ShapePoint "{6A833B7BC998D41B}" {
+   Position 227.079 0 -4.999
+  }
+  ShapePoint "{6A833B7BC8E8387F}" {
+   Position 214.398 0 163.181
+  }
+  ShapePoint "{6A833B7BC7C93B0C}" {
+   Position 66.313 0 152.18
+  }
+ }
+ m_cPolygonBorderColor 0 0 0 1
+}
