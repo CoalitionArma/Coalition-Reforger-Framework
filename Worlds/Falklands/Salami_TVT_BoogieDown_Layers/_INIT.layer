@@ -1,0 +1,479 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 8874.435 47.634 5383.872
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 6
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A8318959C4D2718}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "The Falkland conflict has escalated since the failed British offensive earlier this year. Since then the British blockade has forced an uneasy alliance between the Military Junta in Argentina and the USSR, as the USSR seeks to expand its influence in South America. Members have gone back and forth on whether this action enacts Article 5."\
+   ""\
+   "However in the night, on November 23rd 1982 the US sent a Pathfinder Company from the 82nd Airborne to mark DZs for the Airborne landings the next night. Soviet ZSU emplacements spotted the incoming aircraft and shot down 3 of the 8 Hueys sent in forcing the Company to consolidate forces in a nearby farm and assess the situation."\
+   ""\
+   "Local VDV forces along with a section of BRDMs from Battalion have been tasked with finding the American force and wiping them out before they slip away into the terrain of the Falklands."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets:"\
+   "Marksmen with 40 rounds of AP"\
+   "Squad level machine guns"\
+   "Construction point available within the objective"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets:"\
+   "2x BRDMs"\
+   "Squad level ammo bearers for the AR"\
+   ""\
+   "Time: 45"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A8318959C4D2022}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Destroy the enemy force."\
+   ""\
+   "INTENT"\
+   "Your recon element can push out beyond the inner safestart border into the outer border. The intent is for you to use them during safestart to identify positions you would want your teams pushing out and meeting with the enemy."\
+   ""\
+   "The goal is to have some sort of delaying attempt until you fall back to primary positions around the farm. I have given you a construction point which allows you to setup sandbags and machine gun emplacements."\
+   ""\
+   "EXECUTION"\
+   "Defenders identify the main attack axis of OPFOR and focus their defenses and firepower on them to completely destroy their force."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A8318959C4D2105}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Destroy the enemy force."\
+   ""\
+   "INTENT"\
+   "Choose 1 of the 3 forward deploy locations around the objective to start your assault from."\
+   ""\
+   "EXECUTION"\
+   "Very open here, giving you a lot of options to approach this however you want."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A8318959C4D21B1}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A8318959C4DDED6}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 5
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A83189FD4DE3B57}" {
+   m_sCallsign "Rogue 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE38D9}" {
+   m_sCallsign "Rogue Recon"
+   m_FlagType RECON
+   m_aSlots {
+    SNIPER
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE391B}" {
+   m_sCallsign "Rogue 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE367B}" {
+   m_sCallsign "Rogue 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE36AD}" {
+   m_sCallsign "Rogue 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE37EF}" {
+   m_sCallsign "Rogue 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A83189FD4DE3569}" {
+   m_sCallsign "AGAT PLT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE3255}" {
+   m_sCallsign "AGAT 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    LOGI_RUNNER
+    LOGI_RUNNER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE32AC}" {
+   m_sCallsign "AGAT 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    UNARMED
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    LOGI_RUNNER
+    LOGI_RUNNER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE3390}" {
+   m_sCallsign "AGAT 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    LOGI_RUNNER
+    LOGI_RUNNER
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    ASSISTANT_RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE30CA}" {
+   m_sCallsign "AGAT 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE313F}" {
+   m_sCallsign "KAZKAV 1"
+   m_FlagType RECON_MOTORIZED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A83189FD4DE2E7E}" {
+   m_sCallsign "KAZKAV 2"
+   m_FlagType RECON_MOTORIZED
+   m_aSlots {
+    VEHICLE_LEAD
+    VEHICLE_GUNNER
+    VEHICLE_DRIVER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{02BEB10C5728F94E}Configs/Gearscripts/Custom/Salami/Boogie Down/COA_GS_US80s_DRP.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{426FCC6890ACB9C8}Configs/Gearscripts/Custom/Salami/Boogie Down/COA_GS_USSR80s_Airborne.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A7B27331CCF511B" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_FactionLabel FACTION_USSR
+     m_aFriendlyFactionsIds {
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{6A830860B9D99BF3}" {
+        m_aGroupNames {
+         "Rogue 6"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189F86B5B2DE}" {
+        m_aGroupNames {
+         "Rogue Recon"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189F786B06F2}" {
+        m_aGroupNames {
+         "Rogue 1"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189F6FC14111}" {
+        m_aGroupNames {
+         "Rogue 2"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189F6BE373E9}" {
+        m_aGroupNames {
+         "Rogue 3"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189F671A770D}" {
+        m_aGroupNames {
+         "Rogue 4"
+        }
+        m_aLRFrequencies {
+         "Recon Platoon"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{6A83189E2A47CF20}" {
+        m_aGroupNames {
+         "AGAT PLT"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189E18A0CDF6}" {
+        m_aGroupNames {
+         "KAZKAV 1"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+         "ARMOR NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189E065E4023}" {
+        m_aGroupNames {
+         "KAZKAV 2"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+         "ARMOR NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189FC9AC8B83}" {
+        m_aGroupNames {
+         "AGAT 1"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189FBC99A2C7}" {
+        m_aGroupNames {
+         "AGAT 2"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189FB89A8E72}" {
+        m_aGroupNames {
+         "AGAT 3"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6A83189FB4B47092}" {
+        m_aGroupNames {
+         "AGAT 4"
+        }
+        m_aLRFrequencies {
+         "PLATOON NET"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

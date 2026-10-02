@@ -34,6 +34,7 @@ FrameWidgetClass {
     SizeY -1050
     OffsetBottom 0
    }
+   "Is Visible" 0
    Color 0 0 0 1
    style outline_4px
   }

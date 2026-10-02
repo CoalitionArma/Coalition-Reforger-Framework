@@ -1,0 +1,22 @@
+GenericEntity : "{7649AC4689618998}Prefabs/Props/Military/Compositions/US/BuildingService_US.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+   m_fBuildingRadius 200
+  }
+  SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_ResourceComponent "{5D7CC617AC1077DD}" {
+   m_aContainers {
+    SCR_ResourceContainer "{6A83086AA96C71BD}" {
+     m_eResourceRights ALL
+     m_eStorageType STORED
+     m_fResourceValueCurrent 600
+     m_fResourceValueMax 600
+    }
+   }
+  }
+ }
+ coords 4647.869 42.894 2328.255
+ angles 0 -117 0
+}

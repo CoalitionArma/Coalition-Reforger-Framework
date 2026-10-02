@@ -1,0 +1,300 @@
+GenericEntity : "{43497A18DD888667}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{1205F0D91C1E5D1B}Sounds/Weapons/Rifles/AK74M/RHS_Weapons_Rifles_AK74M_Shot.acp" "{83BF13405E50D896}Sounds/Weapons/Rifles/AK74M/RHS_Weapons_Rifles_AK74M_Handling.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp" "{E419B2CF55F4A389}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Bayonett.acp" "{D335D51093EA8456}Sounds/Weapons/Rifles/AK74M/Suppressed/RHS_Weapons_Rifles_AK74M_Suppressed.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{B3C6A9BD13A1981B}Assets/Weapons/Rifles/ak74m/ak74m_bebra.xob"
+  }
+  RHS_WeaponRplComponent "{6A7B27259F2E6801}" {
+  }
+  ProcAnimComponent "{6A7B27259F2E6838}" {
+   Parameters {
+    ProcAnimParams "{6A7B27259F2E6835}" {
+     ResourceName "{7F5E28984F61C806}Assets/Weapons/Rifles/ak74m/anims/StockFold_action_AK74M.pap"
+     BoneNames {
+      "w_stock"
+     }
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_AK74M_Name"
+     Description "#RHS-Weapon_AK74M_Description"
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{F4FBBFB2B7526664}Assets/Weapons/Rifles/ak74m/anims/anm/p_ak74m_IK_bell.anm"
+     AnimIkposeBlendDuration 0.035
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5A88DB44D1DE25C6}" {
+        StabilizationPoints {
+         DeploymentPointInfo bipod_pos {
+          PivotID "bipod_pos"
+          Offset 0 0.0256 -0.0703
+         }
+        }
+       }
+      }
+     }
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+     }
+    }
+    AttachmentSlotComponent "{647D1DE8DE70EEE9}" {
+     AttachmentSlot InventoryStorageSlot "{647D1DE8D7A8ECC4}" {
+      Offset 0 0.0525 0.3651
+     }
+    }
+    AttachmentSlotComponent "{6A7B27259F2E6823}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Offset 0 0.0752 0.1587
+      Prefab "{174D0ED5EFBDA1E1}Prefabs/Weapons/Attachments/Handguards/Handguard_WoodAK74.et"
+      InspectionWidgetOffset 0 0.0667 0.269
+     }
+     AttachmentType AttachmentHandGuard "{6A7B27259F2E68DD}" {
+     }
+    }
+    AttachmentSlotComponent "{6A7B27259F2E6826}" {
+     AttachmentSlot InventoryStorageSlot gp_buttpad {
+      PivotID "w_stock"
+      Offset 0.0168 0.2342 -0.0084
+      Angles -86.8205 0 0
+      InspectionWidgetOffset 0 0.0243 -0.3154
+     }
+     AttachmentType AttachmentAKbuttPad "{6A7B27259F2E6820}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{6A7B27259F2E6828}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      PivotID "slot_optic"
+      Offset 0 0 0
+      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset -0.025 0.0527 0
+     }
+     AttachmentType AttachmentOpticsDovetail "{6A7B27259F2E6827}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{6A7B27259F2E68D8}" {
+     AttachmentSlot InventoryStorageSlot DustCover {
+      Prefab "{662F1972AD015A9D}Prefabs/Weapons/Attachments/DustCovers/DustCover_AK74M_Standart/RHS_AK74M_DustCover_base.et"
+     }
+    }
+    AttachmentSlotComponent "{6A7B27259F2E68D9}" {
+     AttachmentSlot InventoryStorageSlot PistolGrip {
+      Prefab "{F75754A1E6231DB4}Prefabs/Weapons/Attachments/Grips/PistolGrip_AK74M_Plastic/RHS_AK74M_PistolGrip_base.et"
+     }
+    }
+    AttachmentSlotComponent "{6A7B27259F2E68DF}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      PivotID "w_stock"
+      Offset 0.0159 -0.0911 -0.0355
+      Angles -90 180 -180
+      Prefab "{1B3F7AC43A0202B0}Prefabs/Weapons/Attachments/Stocks/Stock_AKS74U_metal/RHS_AKS74U_Stock_base.et"
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 -0.0013 -0.0502
+     }
+     SightsRanges {
+      SightRangeInfo "{6A7B27259F2E68D4}" {
+       Range 0 440
+       WeaponPosition PointInfo "{6A7B27259F2E689D}" {
+        PivotID "eye"
+        Offset 0 -0.0018 0
+        Angles 0.23 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E689F}" {
+       Range 0.1 100
+       WeaponPosition PointInfo "{6A7B27259F2E689E}" {
+        PivotID "eye"
+        Offset 0 -0.0004 0
+        Angles 0.1 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E6899}" {
+       Range 0.2 200
+       WeaponPosition PointInfo "{6A7B27259F2E6898}" {
+        Offset 0 -0.0002 0
+        Angles 0.1 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E689B}" {
+       Range 0.3 300
+       WeaponPosition PointInfo "{6A7B27259F2E689A}" {
+        PivotID "eye"
+        Offset 0 -0.0007 0
+        Angles 0.14 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E6895}" {
+       Range 0.4 400
+       WeaponPosition PointInfo "{6A7B27259F2E6894}" {
+        PivotID "eye"
+        Offset 0 -0.0015 0
+        Angles 0.2 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E58DD}" {
+       Range 0.5 500
+       WeaponPosition PointInfo "{6A7B27259F2E58DF}" {
+        Offset 0 -0.0024 0
+        Angles 0.27 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2E58C7}" {
+       Range 0.6 600
+       WeaponPosition PointInfo "{6A7B27259F2ED103}" {
+        Offset 0 -0.0034 0
+        Angles 0.36 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2ED104}" {
+       Range 0.7 700
+       WeaponPosition PointInfo "{6A7B27259F2ED105}" {
+        Offset 0 -0.0044 0
+        Angles 0.46 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2ED106}" {
+       Range 0.8 800
+       WeaponPosition PointInfo "{6A7B27259F2ED107}" {
+        Offset 0 -0.0056 0
+        Angles 0.58 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2F2FB3}" {
+       Range 0.9 900
+       WeaponPosition PointInfo "{6A7B27259F2F2FBC}" {
+        PivotID "eye"
+        Offset 0 -0.0071 0
+        Angles 0.72 0 0
+       }
+      }
+      SightRangeInfo "{6A7B27259F2F2FBD}" {
+       Range 1 1000
+       WeaponPosition PointInfo "{6A7B27259F2F2FBE}" {
+        PivotID "eye"
+        Offset 0 -0.0091 0
+        Angles 0.89 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{6A7B27259F2F2FB8}" {
+      PivotID "barrel_muzzle"
+      Offset 0 0.0516 -0.0736
+     }
+     SightsPointRear PointInfo "{6A7B27259F2F2FBA}" {
+      PivotID "barrel_chamber"
+      Offset 0 0.0496 -0.0069
+     }
+     SightsSwitchSkip 1
+     ZeroingGenerator BaseZeroingGenerator "{6A7B27259F2F2F84}" {
+      ZeroRaiseToEye 1
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{4E2B66CBA589F625}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        PivotID "slot_bayonet"
+        Offset 0 0 -0.0691
+        MergePhysics 1
+        Prefab "{07AF951403CBAB0A}Prefabs/Weapons/Attachments/Muzzle/AK103_muzzle/RHS_AK103_muzzle.et"
+        InspectionWidgetOffset 0 0.0695 0.5626
+       }
+       AttachmentType AttachmentMuzzle545_39 "{5B289DE552A66F3A}" {
+       }
+       ShowInInspection 1
+      }
+     }
+     WeaponAimModifiers {
+      SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
+      }
+      RecoilWeaponAimModifier "{55349E9229B55D9A}" {
+       IsEnabled 1
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      PivotID "slot_magazine"
+      Offset 0 0 0
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo rht {
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 0.0067 0.0063
+     }
+     MagazineTemplate "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{3C68AA25F757B7BA}Assets/Weapons/Rifles/workspaces/RHS_ak74.agr"
+     AnimInstance "{442488B8F369CC8E}Assets/Weapons/Rifles/workspaces/rhs_ak74m_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{55349E9229B55D8A}" {
+      AnimGraph "{3C68AA25F757B7BA}Assets/Weapons/Rifles/workspaces/RHS_ak74.agr"
+      AnimInstance "{BF7A19896B68A862}Assets/Weapons/Rifles/workspaces/rhs_ak74m_player.asi"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#RHS-Weapon_AK74M_Name"
+    Description "#RHS-Weapon_AK74M_Description"
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{5A1E5C47B0C4EE1E}" {
+      Angles 180 90 0
+     }
+    }
+    UserActionContext "{618A84270A2BFDC0}" {
+     Position PointInfo "{618A842792A66B70}" {
+      PivotID "barrel_muzzle"
+      Offset 0 0 -0.06
+     }
+    }
+    UserActionContext "{6A7B27259F2F2F90}" {
+     ContextName "FoldStock"
+     Position PointInfo "{6A7B27259F2F2F91}" {
+      Offset -0.0204 0.0532 -0.0754
+     }
+     Radius 0.085
+    }
+   }
+   additionalActions {
+    RHS_FlipSightUserAction "{6A7B27259F2F2F9D}" {
+     ParentContextList {
+      "FoldStock"
+     }
+     UIInfo UIInfo "{6A7B27259F2F2F9F}" {
+      Name "#RHS-Action_FoldStock"
+     }
+     Duration 1
+     m_bIgnoreInRadial 0
+     m_sRadialLabelOverride "#RHS-Action_FoldStock"
+     m_sSignalName "StockFold"
+     m_fFoldedAngle 180
+    }
+   }
+  }
+ }
+ coords 0 0.002 -0.054
+}
