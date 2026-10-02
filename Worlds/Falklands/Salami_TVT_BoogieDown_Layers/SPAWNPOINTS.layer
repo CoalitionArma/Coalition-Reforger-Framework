@@ -20,3 +20,15 @@ COA_StaticSpawnPoint : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/Spawn
  }
  coords 4661.369 35 2329.815
 }
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 4151.927 32.359 3641.387
+  angles -4.555 -12.174 0.069
+  m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+ }
+ {
+  coords 4167.855 32.068 3644.389
+  angles -4.555 -12.174 0.069
+  m_rVehicle "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+ }
+}

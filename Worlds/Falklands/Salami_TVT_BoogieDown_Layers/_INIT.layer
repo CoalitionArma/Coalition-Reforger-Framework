@@ -117,7 +117,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A83189FD4DE3B57}" {
+  COA_SlottingGroup "{6A8423DD4ADB0587}" {
    m_sCallsign "Rogue 6"
    m_FlagType INFANTRY
    m_aSlots {
@@ -129,7 +129,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE38D9}" {
+  COA_SlottingGroup "{6A8423DD4ADB030E}" {
    m_sCallsign "Rogue Recon"
    m_FlagType RECON
    m_aSlots {
@@ -139,7 +139,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE391B}" {
+  COA_SlottingGroup "{6A8423DD4ADB0052}" {
    m_sCallsign "Rogue 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -153,7 +153,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE367B}" {
+  COA_SlottingGroup "{6A8423DD4ADB0083}" {
    m_sCallsign "Rogue 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE36AD}" {
+  COA_SlottingGroup "{6A8423DD4ADB01F4}" {
    m_sCallsign "Rogue 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +181,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE37EF}" {
+  COA_SlottingGroup "{6A8423DD4ADB3E37}" {
    m_sCallsign "Rogue 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -197,7 +197,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A83189FD4DE3569}" {
+  COA_SlottingGroup "{6A8423DD4ADB3F8A}" {
    m_sCallsign "AGAT PLT"
    m_FlagType INFANTRY
    m_aSlots {
@@ -209,7 +209,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE3255}" {
+  COA_SlottingGroup "{6A8423DD4ADB3CC3}" {
    m_sCallsign "AGAT 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -227,12 +227,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE32AC}" {
+  COA_SlottingGroup "{6A8423DD4ADB3D20}" {
    m_sCallsign "AGAT 2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    UNARMED
+    RADIO_TELEPHONE_OPERATOR
     MEDIC
     AUTOMATIC_RIFLEMAN
     LOGI_RUNNER
@@ -245,7 +245,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE3390}" {
+  COA_SlottingGroup "{6A8423DD4ADB3A0C}" {
    m_sCallsign "AGAT 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -263,7 +263,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE30CA}" {
+  COA_SlottingGroup "{6A8423DD4ADB3B40}" {
    m_sCallsign "AGAT 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -279,7 +279,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE313F}" {
+  COA_SlottingGroup "{6A8423DD4ADB3B89}" {
    m_sCallsign "KAZKAV 1"
    m_FlagType RECON_MOTORIZED
    m_aSlots {
@@ -290,7 +290,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A83189FD4DE2E7E}" {
+  COA_SlottingGroup "{6A8423DD4ADB38CB}" {
    m_sCallsign "KAZKAV 2"
    m_FlagType RECON_MOTORIZED
    m_aSlots {

@@ -1,0 +1,30 @@
+$grp CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
+ {
+  coords 4655.188 42.811 2350.832
+  m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+  m_sQuadName "objective-marker-2"
+  m_fWorldSize 125
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_sMissionMarkerDescription "American forces have been reported to have taken up refuge in this farm. Find and eliminate all American forces within the farm, prevent their escape. This farm was used to store equipment for fortification of the island so they may utlize it to build up their defenses. "
+  m_aMissionMarkerImages {
+   "{ACB0D3DBC3EF17FA}UI/Images/Objectives/Salami/BoogieDown/BoogieDownOPFORIMAGE1.edds"
+  }
+ }
+ {
+  coords 4655.228 42.812 2350.798
+  m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+  m_sQuadName "objective-marker-2"
+  m_fWorldSize 125
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_sMissionMarkerDescription "Soviet forces have been spotted massing all around us, they could come from any direction. Developing our position here is crutial to our success. We know we are going to be fighting VDV forces more than likely backed up but the light armor on the island."
+  m_aMissionMarkerImages {
+   "{104CE3FAF59035AE}UI/Images/Objectives/Salami/BoogieDown/BoogieDownBLUFORIMAGE.edds"
+  }
+ }
+}

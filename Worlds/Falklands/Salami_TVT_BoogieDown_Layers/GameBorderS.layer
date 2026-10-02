@@ -158,20 +158,6 @@ $grp COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorde
   }
  }
 }
-CRF_MissionMarker : "{AAE0E36B0BB5FEC4}PrefabsMissionMaking/Markers/ObjectiveMarkers/NEW/BLUFOR_NewObjectiveMarker.et" {
- coords 4655.188 42.811 2350.832
- m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
- m_sQuadName "objective-marker-2"
- m_fWorldSize 125
- m_bUseWorldScale 0
- m_aVisibleForFactions {
-  "OPFOR"
- }
- m_sMissionMarkerDescription "American forces have been reported to have taken up refuge in this farm. Find and eliminate all American forces within the farm, prevent their escape. This farm was used to store equipment for fortification of the island so they may utlize it to build up their defenses. "
- m_aMissionMarkerImages {
-  "{ACB0D3DBC3EF17FA}UI/Images/Objectives/Salami/BoogieDown/BoogieDownOPFORIMAGE1.edds"
- }
-}
 COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
  coords 4158.689 31.693 3650.912
  Points {
