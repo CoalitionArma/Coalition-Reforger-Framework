@@ -1,16 +1,23 @@
 $grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
  {
-  coords 5814.052 53.308 1218.557
+  coords 5827.197 129.377 1598.336
   angles 0 0 0
-  m_MarkerColor 1 0 0.024 1
-  m_sQuadName "destroy-2"
-  m_sDescription "Minefield"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "Entrance"
  }
  {
-  coords 6275.353 57.886 1424.521
+  coords 5909.3 129.369 1727.601
   angles 0 0 0
-  m_MarkerColor 1 0 0.024 1
-  m_sQuadName "destroy-2"
-  m_sDescription "Minefield"
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "Entrance"
+ }
+ {
+  coords 6049.553 215.867 1731.09
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "Entrance"
  }
 }

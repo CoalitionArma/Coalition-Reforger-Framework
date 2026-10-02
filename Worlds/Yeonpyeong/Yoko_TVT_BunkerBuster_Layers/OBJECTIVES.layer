@@ -1,13 +1,66 @@
-$grp SCR_BaseTriggerEntity {
- mcom_a_trigger {
-  coords 6457.054 2.75 1814.327
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5955.682 129.55 1733.449
  }
- mcom_b_trigger {
-  coords 5929.025 129.284 1636.641
-  angles 0 141.442 0
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5959.899 129.396 1660.065
  }
- mcom_c_trigger {
-  coords 5322.761 4.126 1585.792
-  angles 0 162.945 0
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5900.107 129.709 1688.648
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5883.761 129.436 1647.094
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5926.598 129.303 1594.824
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 6029.08 128.377 1727.49
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5997.631 132.298 1728.319
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{6A8445E285077B51}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 5866.377 129.381 1640.292
  }
 }
