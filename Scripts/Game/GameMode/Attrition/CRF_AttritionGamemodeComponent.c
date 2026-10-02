@@ -440,8 +440,8 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 			SCR_DamageManagerComponent dmgMgr = FindVehicleDamageManager(vehicle);
 			if (!dmgMgr)
 			{
-				Print(string.Format("[CRF_Attrition] WARNING: Vehicle %1 (faction %2) has no damage manager component and will not be tracked.",
-					vehicle.GetPrefabData().GetPrefabName(), factionKey), LogLevel.WARNING);
+				//Print(string.Format("[CRF_Attrition] WARNING: Vehicle %1 (faction %2) has no damage manager component and will not be tracked.",
+					//vehicle.GetPrefabData().GetPrefabName(), factionKey), LogLevel.WARNING);
 				continue;
 			}
 
