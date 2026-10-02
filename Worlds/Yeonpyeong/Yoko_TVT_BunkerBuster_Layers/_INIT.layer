@@ -32,7 +32,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A7B15B91E672D16}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "U.S Marines have landed on Soyoenpyeogdo Island, a Russian Stronghold, to destroy supply caches within the underground bunker."\
+   m_sTextData "U.S Marines have landed on Soyoenpyeogdo Island, a Russian Militia Stronghold, to destroy supply caches within the underground bunker."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: Squad Integrated Demo"\
@@ -314,14 +314,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{AC6CC80AFCDE06E0}Configs/Gearscripts/Custom/Yoko/COA_GS_RHSUSMC_Alt_MATHE.conf"
+  m_rGearScript "{AC6CC80AFCDE06E0}Configs/Gearscripts/Custom/Yoko/COA_GS_RHSUSMC_Alt_BunkerBusterconf.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{A268CFAF558A02F2}Configs/Gearscripts/Custom/Yoko/COA_GS_TFMSV_ENG.conf"
+  m_rGearScript "{4E686A7B35B6559B}Configs/Gearscripts/Standard/GWOT/COA_GS_RUSMilitia.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
