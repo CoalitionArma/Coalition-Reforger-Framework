@@ -54,7 +54,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destroy each MCOM in order."\
    ""\
    "INTENT"\
-   "Be prepared for a fortified enemy postions and be wary of Marked OPFOR Minefields. Anyone can disarm the mines. Mcom C is underground, multiple entrances exist to get in there. Your MAT team is there to help bust thru enemy fortified postions."\
+   "Be prepared for a fortified enemy postions and be wary of Marked OPFOR Minefields. Anyone can disarm the mines. Mcom B is underground, multiple entrances exist to get in there. Your MAT team is there to help bust thru enemy fortified postions."\
    ""\
    "EXECUTION"\
    "Commanders discretion"\
@@ -70,7 +70,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Defend each Mcom in order"\
    ""\
    "INTENT"\
-   "BLUFOR has already landed on the island, luckly you were able to set up minefields on all major routes around the island. You have also been giving sandbags to help fortified postion you deem worthy."\
+   "BLUFOR has already landed on the island, luckly you were able to set up minefields on all major routes around the island. You have also been giving sandbags to help fortified postion you deem worthy. MCOM B is already pretty fortified, you will only need to fortfied MCOM A and MCOM C."\
    ""\
    "Once you teleport you cannot teleport back, make sure you teleport to the correct Mcom."\
    ""\

@@ -1,9 +1,9 @@
 $grp GameEntity {
  MCOM_A_Teleport {
-  coords 5334.44 4.125 1587.937
+  coords 6440.174 2.75 1812.624
  }
  MCOM_B_Teleport {
-  coords 6436.231 2.75 1813.325
+  coords 5926.376 129.275 1654.728
  }
 }
 $grp GenericEntity : "{0D6A1225534F164D}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Small_USSR.et" {
@@ -38,7 +38,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     }
    }
   }
-  coords 5899.929 129.262 1588.702
+  coords 5338.282 4.094 1607.833
  }
  Spawn2 {
   components {
@@ -53,7 +53,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     }
    }
   }
-  coords 5889.813 129.262 1589.851
+  coords 5332.748 4.112 1606.855
  }
 }
 $grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
