@@ -1,0 +1,1356 @@
+SCR_DestructibleBuildingEntity : "{0742119E2528D96F}Prefabs/Structures/Agriculture/Gates/GateCollectiveFarm_03/GateCollectiveFarm_03_base.et" {
+ coords 5238.755 -15.414 9108.465
+ angles 0 102.676 0
+ scale 5.138
+}
+$grp GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5292.275 1.903 9102.063
+  angles -2.684 0 0
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5336.255 2.102 9100.62
+  angles -5.355 0.042 -0.895
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5353.651 1.555 9118.116
+  angles -3.576 0 0
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5368.836 2.853 9100.568
+  angles -2.684 0 0
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5369.845 5.505 9081.108
+  angles -4.467 0.028 -0.895
+ }
+ {
+  components {
+   SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 5299.743 4.981 9079.31
+  angles -6.242 0 0
+ }
+}
+StaticModelEntity : "{E21F2AB86A94A5DB}Prefabs/Props/Construction/GravelPile_01/Small_Hill_Ground_Texture.et" {
+ coords 3139.605 -2.396 7804.521
+ angles -12.45 -3.095 -0.841
+ scale 2.386
+}
+$grp LightEntity : "{FBDB4A2BDE254410}Prefabs/Vehicles/Helicopters/Mi8MT/Lights/VehicleLight_Mi8_Hazard_Red.et" {
+ {
+  coords 5242.112 16.18 9123.301
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5240.173 16.18 9115.207
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5237.78 16.18 9104.927
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5236.663 15.977 9099.503
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5239.068 16.18 9110.311
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5235.35 15.977 9093.666
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5241.175 16.18 9119.215
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5243.463 12.961 9129.527
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5234.081 13.278 9087.437
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5243.463 7.469 9129.527
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5233.877 10.246 9087.137
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  Dynamic 1
+ }
+ {
+  coords 5325.511 3.936 9103.934
+  angles 0 0 0
+  Color 0.1569 0.6235 0.6235 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5303.417 7.025 9078.982
+  angles 0 0 0
+  Color 0.8196 0.9373 0.9373 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5292.85 3.054 9104.784
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5292.647 3.467 9099.108
+  angles 0 0 0
+  Color 0.0706 0.1922 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5295.715 7.084 9078.081
+  angles 0 0 0
+  Color 0.6863 0.2588 0.2588 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5290.275 6.099 9075.985
+  angles 0 0 0
+  Color 0.6863 0.2588 0.2588 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5351.517 3.714 9098.09
+  angles 0 0 0
+  ColorType Temperature
+  Color 0.5608 0.0706 0.4392 1
+  Radius 2.49
+  Dynamic 1
+ }
+ {
+  coords 5351.667 2.678 9121.378
+  angles 0 0 0
+  ColorType Temperature
+  Color 0.5608 0.0706 0.4392 1
+  Radius 2.49
+  Dynamic 1
+ }
+ {
+  coords 5364.76 7.548 9078.843
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5373.684 7.868 9078.873
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5377.933 7.787 9083.488
+  angles 0 0 0
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5380.227 7.787 9084.782
+  angles 0 0 0
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5382.669 7.787 9085.988
+  angles 0 0 0
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5385.121 7.858 9087.271
+  angles 0 0 0
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5355.049 4.192 9105.715
+  angles 0 0 0
+  Color 0.6863 0.2588 0.2588 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5375.173 4.568 9104.959
+  angles 0 0 0
+  Color 0.6863 0.2588 0.2588 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5442.867 4.122 9131.916
+  angles 0 0 0
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5450.052 3.196 9142.854
+  angles 0 0 0
+  Color 0.3921 0.1569 0.6235 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5449.973 4.129 9134.781
+  angles 0 0 0
+  Color 0.6235 0.1569 0.1569 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5432.106 3.914 9127.085
+  angles 0 0 0
+  Color 0.3765 0.749 0.4706 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5436.022 4.305 9133.801
+  angles 0 0 0
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5441.366 3.595 9137.196
+  angles 0 0 0
+  Color 0.3921 0.1569 0.6235 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5493.466 2.374 9176.668
+  angles 0 0 0
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5507.789 3.456 9174.178
+  angles 0 0 0
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5515.421 5.959 9167.85
+  angles 0 0 0
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5412.577 1.239 9135.813
+  angles -3.576 0.056 -0.897
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5433.42 5.519 9106.297
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5402.028 5.451 9089.846
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5398.173 5.252 9090.706
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5389.791 5.063 9090.588
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5464.895 5.704 9130.12
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5468.979 5.689 9133.159
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5384.565 1.404 9126.678
+  angles -3.576 0.056 -0.897
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5405.526 1.437 9131.192
+  angles -2.683 0.042 -0.896
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5391.713 1.497 9126.638
+  angles -2.683 0.042 -0.896
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5395.038 5.181 9090.412
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5427.333 2.671 9122.8
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5397.137 1.544 9127.173
+  angles -1.789 0.028 -0.896
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5376.739 1.034 9129.853
+  angles -4.463 0.14 -1.795
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5371.873 0.743 9132.051
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5424.799 5.9 9099.93
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5461.402 2.988 9142.705
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5419.857 0.606 9145.844
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5446.42 5.766 9114.359
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5523.019 15.079 8175.895
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5332.513 8.868 7606.925
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5826.809 54.076 8479.633
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 4073.617 58.307 7653.438
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5315.02 15.253 7747.978
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5800.711 45.23 8426.336
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5834.006 52.218 8680.28
+  angles -5.354 0.084 -0.899
+  Color 0.6235 0.1569 0.5059 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 4059.532 58.887 7663.736
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5186.096 9.257 7532.969
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 4064.42 58.813 7657.323
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5649.85 34.39 8361.644
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5545.501 15.079 8211.948
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5842.558 58.116 8585.068
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5055.473 9.445 7435.7
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5120.695 9.192 7490.055
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5892.298 57.306 8545.633
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5847.568 58.116 8564.993
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5321.214 8.989 7597.623
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5354.299 9.079 7637.925
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5471.922 15.079 8105.154
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5840.124 58.116 8575.24
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5035.596 8.156 7410.383
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 4055.504 58.684 7669.904
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5570.917 16.164 8251.219
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5156.296 9.306 7515.634
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5344.01 9.026 7619.498
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5420.779 17.862 8042.855
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5494.074 15.079 8136.064
+  angles -5.354 0.084 -0.899
+  Color 0.502 0 0 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5092.03 9.284 7467.213
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5847.595 58.116 8596.109
+  angles -5.354 0.084 -0.899
+  Color 0.6235 0.1569 0.5059 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5326.505 21.649 7914.136
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.21
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5350.312 9.003 7629.107
+  angles -5.354 0.084 -0.899
+  Color 0.2588 0.6863 0.6863 1
+  LV 4.1
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 5711.47 40.795 8769.053
+  angles -5.354 0.084 -0.899
+  Color 0 0.502 0.502 1
+  LV 5.85
+  CastShadow 0
+  Radius 14.29
+  Dynamic 1
+ }
+ {
+  coords 5587.301 20.189 8883.718
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 6.67
+  CastShadow 0
+  Radius 18.68
+  Dynamic 1
+ }
+ {
+  coords 4097.733 58.567 7672.578
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 4072.454 58.625 7674.682
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 4085.315 58.842 7672.777
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 4340.165 34.15 7845.546
+  angles 0 0 0
+  Color 0.8972 1 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4346.701 39.995 7871.635
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4860.526 11.048 7248.662
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 8.21
+  Radius 21.25
+  Dynamic 1
+ }
+ {
+  coords 4290.468 45.503 7934.817
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4538.954 17.431 7103.315
+  angles 0 0 0
+  Color 0.2588 0.6863 0.6863 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4259.973 51.683 7785.704
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4226.749 45.429 7895.712
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4262.594 53.724 7686.965
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4889.063 11.048 7272.721
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 8.21
+  Radius 21.25
+  Dynamic 1
+ }
+ {
+  coords 4319.073 35.462 7762.736
+  angles 0 0 0
+  Color 0.8972 1 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 4836.894 11.048 7223.115
+  angles 0 0 0
+  Color 0.502 0 0 1
+  LV 8.21
+  Radius 21.25
+  Dynamic 1
+ }
+ {
+  coords 4506.188 39.114 7587.851
+  angles -3.576 0.056 -0.897
+  Color 0.5608 0.0706 0.4392 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4698.305 17.538 7397.419
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4634.142 17.303 7482.776
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4648.898 17.847 7338.601
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4185.038 50.991 7652.113
+  angles -3.576 0.056 -0.897
+  Color 0.5608 0.0706 0.4392 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4607.106 18.064 7255.023
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4739.369 14.46 7149.755
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 4617.211 13.681 7119.35
+  angles -3.576 0.056 -0.897
+  Color 0.0706 0.1922 0.5608 1
+  LV 9.85
+  CastShadow 0
+  Radius 49.08
+  Dynamic 1
+ }
+ {
+  coords 3957.77 60.26 7687.715
+  angles 0 0 0
+  Color 0.0706 0.1922 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 4071.729 66.721 7665.143
+  angles 0 0 0
+  Color 0.8972 1 0 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3849.507 45.786 7730.342
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3963.826 60.468 7683.898
+  angles 0 0 0
+  Color 0.0706 0.1922 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3968.02 67.075 7691.889
+  angles 0 0 0
+  Color 0.3765 0.749 0.749 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3960.569 60.289 7685.517
+  angles 0 0 0
+  Color 0.0706 0.1922 0.5608 1
+  LV 4.18
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5531.125 32.167 8966.181
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3631.135 23.099 7792.166
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3473.241 19.381 7836.642
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3256.762 9.887 7845.48
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3207.933 10.195 7843.633
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3180.178 12.798 7835.232
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3053.935 13.689 8058.864
+  angles 0 0 0
+  Color 0.5059 0.8118 0.5843 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3100.266 13.689 7952.404
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3036.066 13.689 8004.292
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3135.17 13.689 7880.377
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 9.23
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3067.235 13.689 8028.518
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3133.375 13.689 7838.25
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 9.23
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3131.774 8.704 7791.768
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 9.23
+  Radius 49.82
+  Dynamic 1
+ }
+ {
+  coords 3163.51 11.463 7738.46
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 6.67
+  Radius 23.81
+  Dynamic 1
+ }
+ {
+  coords 3091.575 13.689 7890.784
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 9.23
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3059.367 13.689 7983.392
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 2939.962 10.283 8168.877
+  angles 0 0 0
+  Color 0.3765 0.749 0.749 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3070.945 13.689 7949.146
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3083.726 13.689 7924.549
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 2941.189 10.14 8170.833
+  angles 0 0 0
+  Color 0.502 0 0.3765 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2985.08 13.689 8145.425
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3002.757 13.689 8130.342
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2956.024 13.689 8153.505
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3095.627 13.689 7847.798
+  angles 0 0 0
+  Color 0.3176 0.0706 0.5608 1
+  LV 9.23
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3111.13 13.689 7980.068
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3114.782 13.689 7931.024
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 2963.313 13.689 8161.167
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2992.624 13.689 8090.089
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3092.256 13.689 8001.269
+  angles 0 0 0
+  Color 0.4125 0 0 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 3020.148 13.689 8050.415
+  angles 0 0 0
+  Color 0.5059 0.8118 0.5843 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 2945.444 10.14 8174.468
+  angles 0 0 0
+  Color 0.5608 0.0706 0.4392 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3039.021 13.689 8087.382
+  angles 0 0 0
+  Color 0.5059 0.8118 0.5843 1
+  LV 7.08
+  Radius 53.85
+  Dynamic 1
+ }
+ {
+  coords 2979.544 13.689 8117.585
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2967.118 13.689 8136.855
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 3017.471 13.689 8101.575
+  angles 0 0 0
+  Color 0.6863 0.2588 0.5804 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2943.76 10.14 8172.566
+  angles 0 0 0
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+ {
+  coords 2947.557 10.14 8176.324
+  angles 0 0 0
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.72
+  Radius 34.07
+  Dynamic 1
+ }
+}

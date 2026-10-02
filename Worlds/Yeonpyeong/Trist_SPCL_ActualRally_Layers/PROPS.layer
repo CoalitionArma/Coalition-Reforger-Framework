@@ -1,0 +1,5074 @@
+$grp SplineShapeEntity {
+ {
+  coords 5224.949 7.624 9086.916
+  Points {
+   ShapePoint "{6A851C08554EC35E}" {
+    Position -20.89 -0.003 -8.438
+   }
+   ShapePoint "{6A851C08554EFEEC}" {
+    Position -11.488 0.38 -2.998
+   }
+   ShapePoint "{6A851C0849F7EEC9}" {
+    Position -0.888 0.285 -0.829
+   }
+   ShapePoint "{6A851C084AA95AA7}" {
+    Position 11.915 -0.013 -5.763
+   }
+   ShapePoint "{6A851C084D492627}" {
+    Position 35.428 -1.043 -15.961
+   }
+   ShapePoint "{6A851C084CB7AB87}" {
+    Position 67.711 -1.616 -19.667
+   }
+   ShapePoint "{6A851C084E6465A8}" {
+    Position 133.083 -1.354 -18.683
+   }
+   ShapePoint "{6A851C08417C9089}" {
+    Position 196.422 -0.88 7.987
+   }
+   ShapePoint "{6A851C0840ADE1F0}" {
+    Position 245.67 -0.82 42.013
+   }
+   ShapePoint "{6A851C08451503F3}" {
+    Position 264.093 -0.725 54.077
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{CB2D3046A8023287}Prefabs/WEGenerators/Walls/Concrete/WG_ConcreteWall_USSR_03.et" {
+    Flags 0x100003 0
+    coords 0 0 0
+    m_iSeed 7199
+    {
+     $grp SCR_DestructibleEntity : "{0DBCD231BF0A3C56}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_damaged_V1.et" {
+      {
+       coords 16.332 -0.3 -7.846
+       angles 0 26.887 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 46.769 -1.472 -18.227
+       angles 0 7.251 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{27EB771E3DD9C354}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_V1.et" {
+      {
+       coords -14.006 0.026 -4.191
+       angles 0 334.544 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -11.57 0.371 -3.032
+       angles 0 339.465 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -6.469 0.352 -1.285
+       angles 0 349.759 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -1.118 0.282 -0.809
+       angles 0 11.122 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 8.977 0.066 -4.478
+       angles 0 23.687 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 21.146 -0.499 -10.281
+       angles 0 26.266 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 23.564 -0.514 -11.475
+       angles 0 24.843 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 26.012 -0.645 -12.608
+       angles 0 23.089 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 28.493 -0.754 -13.666
+       angles 0 20.669 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 31.016 -0.827 -14.618
+       angles 0 18.093 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 33.58 -0.936 -15.455
+       angles 0 14.842 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 44.104 -1.405 -17.812
+       angles 0 8.825 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 54.815 -1.61 -19.067
+       angles 0 3.768 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 57.506 -1.631 -19.245
+       angles 0 3.049 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 62.895 -1.631 -19.505
+       angles 0 2.045 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 65.59 -1.622 -19.602
+       angles 0 1.83 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 84.448 -1.482 -20.497
+       angles 0 2.947 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 92.53 -1.409 -20.878
+       angles 0 2.085 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 95.226 -1.404 -20.977
+       angles 0 1.72 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 108.709 -1.374 -21.116
+       angles 0 358.647 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 148.394 -1.523 -14.337
+       angles 0 340.553 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 153.467 -1.606 -12.504
+       angles 0 338.833 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 160.976 -1.643 -9.49
+       angles 0 336.639 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 165.922 -1.622 -7.339
+       angles 0 335.48 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 178.109 -1.412 -1.566
+       angles 0 333.329 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 204.219 -0.675 12.505
+       angles 0 328.007 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 217.69 -0.551 21.468
+       angles 0 324.483 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 222.07 -0.605 24.615
+       angles 0 323.846 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 228.579 -0.594 29.424
+       angles 0 323.297 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 230.741 -0.558 31.035
+       angles 0 323.085 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 239.377 -0.735 37.501
+       angles 0 323.728 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 241.552 -0.807 39.097
+       angles 0 324.315 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 248.193 -0.782 43.718
+       angles 0 326.073 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 259.451 -0.935 51.143
+       angles 0 327.545 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{4BBF43FE811D4C7A}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_V2.et" {
+      {
+       coords -18.638 0.175 -6.953
+       angles 0 328.169 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -16.347 -0.146 -5.53
+       angles 0 330.229 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -9.044 0.274 -2.086
+       angles 0 342.724 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -3.815 0.331 -0.806
+       angles 0 0.059 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 1.529 0.305 -1.328
+       angles 0 20.068 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 4.062 0.24 -2.254
+       angles 0 24.128 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 11.447 -0.001 -5.561
+       angles 0 23.987 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 38.813 -1.159 -16.766
+       angles 0 11.924 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 60.2 -1.642 -19.389
+       angles 0 2.484 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 68.286 -1.614 -19.687
+       angles 0 2.079 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 70.981 -1.591 -19.785
+       angles 0 2.729 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 87.141 -1.436 -20.636
+       angles 0 2.804 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 89.835 -1.421 -20.768
+       angles 0 2.345 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 97.921 -1.392 -21.058
+       angles 0 1.077 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 114.1 -1.374 -20.949
+       angles 0 356.827 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 116.793 -1.376 -20.8
+       angles 0 355.847 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 119.483 -1.372 -20.604
+       angles 0 354.79 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 122.169 -1.351 -20.359
+       angles 0 353.574 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 124.85 -1.356 -20.058
+       angles 0 352.087 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 127.521 -1.362 -19.687
+       angles 0 350.624 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 132.83 -1.354 -18.733
+       angles 0 347.303 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 135.461 -1.379 -18.141
+       angles 0 345.898 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 150.937 -1.554 -13.438
+       angles 0 339.722 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 158.485 -1.626 -10.524
+       angles 0 337.443 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 168.376 -1.557 -6.22
+       angles 0 335.141 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 170.824 -1.605 -5.086
+       angles 0 334.675 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 173.262 -1.531 -3.933
+       angles 0 334.11 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 180.52 -1.257 -0.355
+       angles 0 333.036 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 190.098 -0.977 4.609
+       angles 0 331.891 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 194.855 -0.771 7.15
+       angles 0 331.671 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 199.583 -0.771 9.748
+       angles 0 329.741 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 206.506 -0.716 13.935
+       angles 0 327.092 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 211.024 -0.504 16.881
+       angles 0 325.966 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 215.479 -0.613 19.922
+       angles 0 325.038 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 219.885 -0.488 23.035
+       angles 0 324.122 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 226.413 -0.684 27.815
+       angles 0 323.391 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 235.054 -0.677 34.275
+       angles 0 323.185 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 237.213 -0.708 35.892
+       angles 0 323.38 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 243.743 -0.873 40.67
+       angles 0 325.232 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 252.676 -0.878 46.719
+       angles 0 326.607 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 261.727 -0.848 52.59
+       angles 0 327.835 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{61E8E6D103CEB378}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_damaged_V2.et" {
+      {
+       coords 103.315 -1.374 -21.146
+       angles 0 0.013 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 163.452 -1.649 -8.421
+       angles 0 336.357 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 201.913 -0.637 11.107
+       angles 0 328.773 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 213.26 -0.546 18.391
+       angles 0 325.392 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     SCR_DestructibleEntity : "{850FA846E37E385D}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_pillar.et" {
+      coords 264.01 -0.734 54.025
+      angles 0 328.094 0
+      "Collision multiplier" 0
+      "Melee multiplier" 0
+      "Kinetic multiplier" 0
+      "Fragmentation multiplier" 0
+      "Explosive multiplier" 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{AE230F078DF8DB11}Prefabs/Structures/Walls/Concrete/ConcreteWall_USSR_01/ConcreteWall_USSR_01_V3.et" {
+      {
+       coords -20.89 -0.003 -8.438
+       angles 0 326.585 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 6.523 0.19 -3.356
+       angles 0 24.552 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 13.911 -0.167 -6.657
+       angles 0 26.146 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 18.738 -0.345 -9.065
+       angles 0 26.792 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 36.187 -1.062 -16.146
+       angles 0 13.27 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 41.451 -1.292 -17.322
+       angles 0 10.468 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 49.444 -1.538 -18.567
+       angles 0 5.873 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 52.127 -1.6 -18.843
+       angles 0 4.78 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 73.675 -1.577 -19.914
+       angles 0 3.036 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 76.368 -1.541 -20.057
+       angles 0 3.131 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 79.062 -1.514 -20.204
+       angles 0 3.131 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 81.754 -1.498 -20.352
+       angles 0 3.097 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 100.618 -1.374 -21.107
+       angles 0 0.793 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 106.012 -1.374 -21.146
+       angles 0 359.374 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 111.405 -1.374 -21.053
+       angles 0 357.793 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 130.182 -1.343 -19.247
+       angles 0 349.034 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 138.077 -1.387 -17.483
+       angles 0 344.712 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 140.679 -1.393 -16.772
+       angles 0 343.592 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 143.266 -1.455 -16.011
+       angles 0 342.407 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 145.837 -1.496 -15.195
+       angles 0 341.44 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 155.982 -1.602 -11.53
+       angles 0 338.111 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 175.688 -1.446 -2.755
+       angles 0 333.857 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 182.923 -1.156 0.867
+       angles 0 332.789 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 185.322 -1.124 2.101
+       angles 0 332.391 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 187.712 -1.004 3.351
+       angles 0 332.188 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 192.477 -0.983 5.88
+       angles 0 331.891 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 197.229 -0.768 8.431
+       angles 0 330.763 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 208.771 -0.645 15.399
+       angles 0 326.679 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 224.248 -0.702 26.207
+       angles 0 323.391 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 232.897 -0.645 32.655
+       angles 0 323.084 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 245.958 -0.813 42.208
+       angles 0 325.946 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 250.431 -0.834 45.224
+       angles 0 326.335 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 254.928 -0.856 48.203
+       angles 0 326.829 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 257.186 -0.859 49.679
+       angles 0 327.141 0
+       "Collision multiplier" 0
+       "Melee multiplier" 0
+       "Kinetic multiplier" 0
+       "Fragmentation multiplier" 0
+       "Explosive multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 5369.093 0.643 9132.644
+  Points {
+   ShapePoint "{6A852375AE03996B}" {
+    Position -26.438 -1.614 21.46
+   }
+   ShapePoint "{6A852375AE038269}" {
+    Position 1.837 0.151 -1.297
+   }
+   ShapePoint "{6A852375A095DA8E}" {
+    Position 18.457 0.875 -7.438
+   }
+   ShapePoint "{6A8523759DC14D89}" {
+    Position 32.697 0.967 -5.731
+   }
+   ShapePoint "{6A8523759C998E64}" {
+    Position 41.474 0.771 -0.272
+   }
+   ShapePoint "{6A8523759F69549D}" {
+    Position 54.853 -0.311 17.799
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 17439
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords -26.438 -1.614 21.46
+      angles 0 40.542 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords 53.695 -0.212 16.124
+      angles 0 304.662 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords -0.806 -0.062 0.541
+       angles 0 34.852 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 12.533 0.738 -6.341
+       angles 0 12.03 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 27.508 0.97 -7.06
+       angles 0 346.856 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 51.971 -0.039 13.654
+       angles 0 304.914 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords -24.162 -1.584 19.513
+       angles 0 40.083 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 1.67 0.139 -1.193
+       angles 0 25.305 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 15.487 0.819 -6.981
+       angles 0 0.322 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 30.455 0.967 -6.386
+       angles 0 331.735 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 41.055 0.798 -0.709
+       angles 0 308.099 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords -14.966 -1.232 11.772
+       angles 0 39.381 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -10.309 -0.909 7.949
+       angles 0 38.634 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -5.603 -0.51 4.186
+       angles 0 37.206 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 48.474 0.289 8.748
+       angles 0 305.477 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 5421.917 4.913 9103.65
+  Points {
+   ShapePoint "{6A852375E8191A55}" {
+    Position -37.052 0.039 -13.094
+   }
+   ShapePoint "{6A852375E8ACF2B6}" {
+    Position -29.183 0.153 -12.567
+   }
+   ShapePoint "{6A852375EB2B3942}" {
+    Position -22.139 0.395 -13.013
+   }
+   ShapePoint "{6A852375EA18E15B}" {
+    Position -15.878 0.667 -13.422
+   }
+   ShapePoint "{6A852375EABB85E7}" {
+    Position -12.128 0.921 -12.293
+   }
+   ShapePoint "{6A852375ED26D538}" {
+    Position -4.536 1.078 -8.278
+   }
+   ShapePoint "{6A852375EC043203}" {
+    Position 4.395 0.402 -0.8
+   }
+   ShapePoint "{6A852375ECA3BDF7}" {
+    Position 19.953 0.252 9.933
+   }
+   ShapePoint "{6A852375D74A1796}" {
+    Position 45.966 0.414 30.896
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 24815
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords -37.052 0.039 -13.094
+      angles 0 355.102 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords 44.905 0.426 30.029
+      angles 0 320.76 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords -34.067 0.089 -12.837
+       angles 0 356.178 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -19.026 0.539 -13.297
+       angles 0 2.392 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -16.005 0.657 -13.437
+       angles 0 346.117 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -7.62 1.06 -10.15
+       angles 0 329.145 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 42.573 0.488 28.124
+       angles 0 320.759 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords -5.021 1.128 -8.606
+       angles 0 320.314 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 4.226 0.383 -0.926
+       angles 0 326.04 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 19.096 0.251 9.293
+       angles 0 321.784 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords -31.052 0.129 -12.631
+       angles 0 1.397 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -25.029 0.282 -12.775
+       angles 0 4.944 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -13.069 0.96 -12.721
+       angles 0 334.689 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 14.196 0.283 5.787
+       angles 0 324.396 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 28.541 0.372 16.728
+       angles 0 321.081 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 33.229 0.476 20.514
+       angles 0 320.916 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 37.906 0.537 24.312
+       angles 0 320.76 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 5439.197 2.731 9130.15
+  Points {
+   ShapePoint "{6A852375E6BA1497}" {
+    Position 0.08 -1.168 10.763
+   }
+   ShapePoint "{6A852375E6C3F6A0}" {
+    Position -9.562 -0.448 -2.653
+   }
+   ShapePoint "{6A852375DB0894AE}" {
+    Position -11.234 0.174 -8.82
+   }
+   ShapePoint "{6A852375DBE71E8C}" {
+    Position -4.357 0.177 -4.387
+   }
+   ShapePoint "{6A852375DA8BF6ED}" {
+    Position 14.339 0.622 5.682
+   }
+   ShapePoint "{6A852375DCB75085}" {
+    Position 22.384 -0.154 14.69
+   }
+   ShapePoint "{6A852375DF773C35}" {
+    Position 10.599 -1.107 14.942
+   }
+   ShapePoint "{6A852375DE046A97}" {
+    Position 0.574 -1.134 10.516
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 8194
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords 0.08 -1.168 10.763
+      angles 0 127.026 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords 2.216 -1.147 11.425
+      angles 0 151.722 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords 10.3 0.566 3.199
+       angles 0 329.464 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 16.569 -0.807 15.621
+       angles 0 175.254 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords -1.725 -1.047 8.372
+       angles 0 125.807 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -5.682 0.165 -5.179
+       angles 0 332.405 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 12.909 0.616 4.726
+       angles 0 317.857 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 13.555 -0.985 15.384
+       angles 0 160.712 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords -8.764 -0.527 -1.372
+       angles 0 115.97 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -11.473 -0.099 -6.848
+       angles 0 343.838 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 4.971 0.409 0.388
+       angles 0 332.17 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 21.902 0.178 12.801
+       angles 0 207.61 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 5491.434 0.95 9175.359
+  Points {
+   ShapePoint "{6A852375AE03996B}" {
+    Position -16.569 -1.36 13.978
+   }
+   ShapePoint "{6A852375AE038269}" {
+    Position 1.837 0.151 -1.297
+   }
+   ShapePoint "{6A852375A095DA8E}" {
+    Position 14.394 1.447 -6.266
+   }
+   ShapePoint "{6A852375CDB51FB0}" {
+    Position 21.89 6.069 -17.82
+   }
+   ShapePoint "{6A852375CC2E095B}" {
+    Position 29.333 7.397 -28.897
+   }
+   ShapePoint "{6A852375CCF555F3}" {
+    Position 32.879 9.809 -38.312
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 19809
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords -16.569 -1.504 13.978
+      angles 0 41.624 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords 32.197 9.803 -36.103
+      angles 0 71.671 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords 10.505 0.759 -4.42
+       angles 0 21.639 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 27.066 7.37 -25.237
+       angles 0 57.346 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 31.216 9.009 -33.256
+       angles 0 70.995 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords -14.33 -1.306 11.987
+       angles 0 40.642 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -0.517 -0.047 0.376
+       angles 0 23.508 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 13.332 1.15 -5.514
+       angles 0 54.144 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 20.374 5.113 -15.254
+       angles 0 56.166 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords -5.21 -0.476 4.157
+       angles 0 38.728 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 28.704 7.356 -27.779
+       angles 0 65.404 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 5500.161 8.034 9136.245
+  Points {
+   ShapePoint "{6A8523779C49A19D}" {
+    Position -10.917 -1.172 4.906
+   }
+   ShapePoint "{6A8523779F53096A}" {
+    Position -3.42 -0.023 5.655
+   }
+   ShapePoint "{6A8523779E02D88D}" {
+    Position 12.537 0.162 2.177
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 3639
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords -10.917 -1.172 4.906
+      angles 0 347.718 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords 9.769 0.117 2.853
+      angles 0 13.405 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords -7.99 -0.826 5.55
+       angles 0 356.207 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords 6.84 0.091 3.551
+       angles 0 13.405 0
+       BaseDamageMultiplier 0
+      }
+     }
+     SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      coords -4.975 -0.167 5.763
+      angles 0 10.618 0
+      BaseDamageMultiplier 0
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3174.469 6.469 7848.853
+  Points {
+   ShapePoint "{6A8523642CD4E044}" {
+    Position 0 0 0
+   }
+   ShapePoint "{6A8523642CD31BF0}" {
+    Position -4.125 -0.069 -1.98
+   }
+   ShapePoint "{6A852364215E6826}" {
+    Position -12.971 -0.892 -8.642
+   }
+   ShapePoint "{6A852364258CB5BE}" {
+    Position -17.994 -2.229 -36.084
+   }
+   ShapePoint "{6A85236418F1DCB3}" {
+    Position -10.02 -2.425 -80.798
+   }
+   ShapePoint "{6A8523641C2E9687}" {
+    Position -16.297 -3.121 -83.626
+   }
+   ShapePoint "{6A85236415029DBA}" {
+    Position -27.875 -3.76 -48.266
+   }
+   ShapePoint "{6A8523641759EC3B}" {
+    Position -24.887 -2.034 -3.469
+   }
+   ShapePoint "{6A8523640866BE7B}" {
+    Position -18.89 -0.552 29.74
+   }
+   ShapePoint "{6A85236408F1CB63}" {
+    Position -21.145 -0 73.193
+   }
+   ShapePoint "{6A8523640B671160}" {
+    Position -31.823 -0.122 98.123
+   }
+   ShapePoint "{6A8523640ABFFC49}" {
+    Position -49.229 -0.676 137.443
+   }
+   ShapePoint "{6A8523640D2681C9}" {
+    Position -73.995 -0.749 198.798
+   }
+   ShapePoint "{6A8523640D92E3F9}" {
+    Position -144.455 -1.609 300.415
+   }
+   ShapePoint "{6A8523640E4CE8A0}" {
+    Position -208.901 -4.17 328.484
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    coords 0 0 0
+    m_iSeed 21428
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords 0 0 0
+      angles 0 156.945 0
+      "Collision multiplier" 0
+      BaseDamageMultiplier 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords -208.704 -4.168 328.45
+      angles 0 189.81 0
+      "Collision multiplier" 0
+      BaseDamageMultiplier 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords -17.999 -2.081 -31.332
+       angles 0 90.707 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -10.64 -2.408 -75.807
+       angles 0 81.469 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -10.299 -2.512 -84.829
+       angles 0 127.385 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -12.12 -2.75 -87.294
+       angles 0 208.856 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -27.321 -3.789 -52.151
+       angles 0 261.524 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -25.334 -2.18 -7.173
+       angles 0 276.884 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -19.246 -0.683 25.358
+       angles 0 275.204 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -29.248 -0.049 92.753
+       angles 0 243.527 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -47.749 -0.693 133.954
+       angles 0 247.014 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -141.422 -1.579 297.372
+       angles 0 225.402 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords -2.761 -0.033 -1.165
+       angles 0 145.395 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -12.68 -0.849 -7.972
+       angles 0 107.991 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -18.042 -2.181 -34.354
+       angles 0 83.599 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -14.788 -2.999 -85.856
+       angles 0 243.013 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -27.772 -3.777 -49.163
+       angles 0 267.922 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -24.975 -2.065 -4.173
+       angles 0 279.952 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -18.969 -0.583 28.368
+       angles 0 271.388 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -20.671 0 70.422
+       angles 0 255.308 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -30.597 -0.098 95.456
+       angles 0 245.788 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -48.931 -0.683 136.735
+       angles 0 249.761 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -73.576 -0.75 198.071
+       angles 0 239.495 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -143.54 -1.591 299.528
+       angles 0 219.691 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords -16.399 -1.564 -19.402
+       angles 0 100.338 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -17.486 -1.845 -25.329
+       angles 0 94.855 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -16.706 -2.387 -46.3
+       angles 0 79.159 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -15.574 -2.445 -52.218
+       angles 0 78.059 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -14.328 -2.462 -58.113
+       angles 0 77.745 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -13.049 -2.456 -64.001
+       angles 0 77.866 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -11.781 -2.441 -69.891
+       angles 0 79.105 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -10.183 -2.405 -78.795
+       angles 0 91.376 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -20.247 -3.448 -75.147
+       angles 0 248.682 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -22.439 -3.601 -69.535
+       angles 0 251.165 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -24.387 -3.708 -63.833
+       angles 0 254.098 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -26.041 -3.784 -58.039
+       angles 0 257.768 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -28.212 -3.508 -37.15
+       angles 0 272.829 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -27.916 -3.283 -31.132
+       angles 0 274.734 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -27.42 -3.006 -25.128
+       angles 0 276.051 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -26.785 -2.736 -19.136
+       angles 0 276.798 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -26.072 -2.466 -13.153
+       angles 0 277.034 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -22.9 -1.468 7.667
+       angles 0 283.559 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -21.487 -1.161 13.524
+       angles 0 282.531 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -20.176 -0.901 19.405
+       angles 0 278.847 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -18.676 -0.262 40.384
+       angles 0 269.097 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -18.77 -0.082 46.409
+       angles 0 267.816 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -18.998 0 52.43
+       angles 0 266.461 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -19.369 0 58.443
+       angles 0 264.845 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -19.908 0 64.445
+       angles 0 262.668 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -23.71 0 82.052
+       angles 0 243.71 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -26.377 0 87.455
+       angles 0 241.559 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -35.526 -0.446 106.419
+       angles 0 245.616 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -38.014 -0.679 111.907
+       angles 0 245.685 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -40.495 -0.684 117.398
+       angles 0 245.949 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -42.951 -0.75 122.9
+       angles 0 246.322 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -45.371 -0.686 128.417
+       angles 0 246.759 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -53.091 -0.523 148.012
+       angles 0 252.297 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -54.924 -0.488 153.752
+       angles 0 252.412 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -56.744 -0.545 159.496
+       angles 0 251.657 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -58.639 -0.602 165.215
+       angles 0 250.311 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -60.667 -0.454 170.889
+       angles 0 248.479 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -62.876 -0.383 176.495
+       angles 0 246.535 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -65.274 -0.364 182.022
+       angles 0 244.505 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -67.866 -0.426 187.462
+       angles 0 242.599 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -70.637 -0.75 192.812
+       angles 0 240.793 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -79.678 -0.75 208.428
+       angles 0 239.085 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -82.773 -0.75 213.597
+       angles 0 238.828 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -85.892 -0.75 218.753
+       angles 0 238.578 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -89.033 -0.79 223.895
+       angles 0 238.254 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -92.203 -0.839 229.018
+       angles 0 237.894 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -95.405 -0.935 234.122
+       angles 0 237.658 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -98.628 -1.04 239.213
+       angles 0 237.253 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -101.887 -1.169 244.281
+       angles 0 236.81 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -105.185 -1.3 249.324
+       angles 0 236.398 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -108.519 -1.404 254.342
+       angles 0 235.913 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -111.895 -1.45 259.332
+       angles 0 235.341 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -115.322 -1.513 264.289
+       angles 0 234.773 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -118.797 -1.554 269.211
+       angles 0 233.987 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -122.339 -1.571 274.085
+       angles 0 233.227 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -125.945 -1.591 278.912
+       angles 0 232.156 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -129.641 -1.6 283.671
+       angles 0 231.025 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -133.429 -1.585 288.356
+       angles 0 229.405 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -137.349 -1.585 292.932
+       angles 0 227.45 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -152.787 -2.246 307.209
+       angles 0 212.947 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -157.841 -3.101 310.488
+       angles 0 209.324 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -163.093 -4.04 313.442
+       angles 0 206.155 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -168.5 -4.219 316.1
+       angles 0 203.502 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -174.025 -4.197 318.504
+       angles 0 201.102 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -179.645 -4.187 320.676
+       angles 0 198.907 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -185.345 -4.19 322.63
+       angles 0 196.881 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -191.11 -3.783 324.381
+       angles 0 195.018 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -196.929 -4.156 325.944
+       angles 0 193.068 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+      {
+       coords -202.798 -4.156 327.308
+       angles 0 190.931 0
+       "Collision multiplier" 0
+       BaseDamageMultiplier 0
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3150.357 2.176 7735.093
+  Points {
+   ShapePoint "{6A85236469F49082}" {
+    Position 46.582 4.293 33.574
+   }
+   ShapePoint "{6A8523646B2CF441}" {
+    Position 38.743 3.719 11.739
+   }
+   ShapePoint "{6A8523646B4267A6}" {
+    Position 28.158 2.677 -9.069
+   }
+   ShapePoint "{6A8523646A970102}" {
+    Position 7.802 0.521 -21.592
+   }
+   ShapePoint "{6A8523646D06F611}" {
+    Position -13.024 -1.197 -1.795
+   }
+   ShapePoint "{6A8523646C54D203}" {
+    Position -23.199 -1.464 30.958
+   }
+   ShapePoint "{6A8523646EB702DB}" {
+    Position -50.625 -1.931 73.391
+   }
+   ShapePoint "{6A852364606C717B}" {
+    Position -71.227 -2.06 111.195
+   }
+  }
+  LineColor 0 0 0 0
+  {
+   WallGeneratorEntity : "{15A66991B89461AB}Prefabs/WEGenerators/Walls/Crashbarrier/WG_CrashBarrier_E_01_rusty.et" {
+    Flags 0x100003 0
+    m_iSeed 18900
+    {
+     SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+      coords 46.582 4.293 33.574
+      angles 0 108.279 0
+     }
+     SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+      coords -70.006 -2.043 108.848
+      angles 0 242.531 0
+     }
+     $grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+      {
+       coords -21.062 -1.396 26.005
+       angles 0 247.977 0
+      }
+      {
+       coords -48.119 -1.911 69.361
+       angles 0 237.925 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+      {
+       coords 45.643 4.294 30.729
+       angles 0 109.126 0
+      }
+      {
+       coords 39.571 3.802 13.739
+       angles 0 112.182 0
+      }
+      {
+       coords 29.182 2.758 -7.895
+       angles 0 135.497 0
+      }
+      {
+       coords 9.945 0.754 -21.704
+       angles 0 204.896 0
+      }
+      {
+       coords -12.445 -1.152 -2.762
+       angles 0 249.223 0
+      }
+      {
+       coords -22.189 -1.448 28.809
+       angles 0 241.221 0
+      }
+      {
+       coords -49.725 -1.916 71.921
+       angles 0 239.866 0
+      }
+     }
+     $grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+      {
+       coords 41.706 4.03 19.372
+       angles 0 110.774 0
+      }
+      {
+       coords 35.035 3.313 2.607
+       angles 0 115.181 0
+      }
+      {
+       coords 32.477 3.049 -2.849
+       angles 0 123.251 0
+      }
+      {
+       coords 20.614 1.942 -16.327
+       angles 0 145.344 0
+      }
+      {
+       coords 15.664 1.378 -19.766
+       angles 0 161.607 0
+      }
+      {
+       coords -0.968 -0.32 -16.657
+       angles 0 224.881 0
+      }
+      {
+       coords -5.241 -0.654 -12.409
+       angles 0 230.784 0
+      }
+      {
+       coords -9.054 -0.939 -7.744
+       angles 0 235.873 0
+      }
+      {
+       coords -16.716 -1.335 8.475
+       angles 0 258.225 0
+      }
+      {
+       coords -17.945 -1.346 14.374
+       angles 0 257.149 0
+      }
+      {
+       coords -19.281 -1.369 20.249
+       angles 0 252.775 0
+      }
+      {
+       coords -27.973 -1.588 39.346
+       angles 0 237.296 0
+      }
+      {
+       coords -31.228 -1.648 44.417
+       angles 0 236.013 0
+      }
+      {
+       coords -34.596 -1.706 49.413
+       angles 0 235.556 0
+      }
+      {
+       coords -38.003 -1.764 54.382
+       angles 0 235.451 0
+      }
+      {
+       coords -41.421 -1.817 59.344
+       angles 0 235.733 0
+      }
+      {
+       coords -44.814 -1.87 64.323
+       angles 0 236.736 0
+      }
+      {
+       coords -55.761 -1.979 82.316
+       angles 0 241.116 0
+      }
+      {
+       coords -58.671 -1.993 87.591
+       angles 0 241.459 0
+      }
+      {
+       coords -61.55 -2.007 92.884
+       angles 0 241.803 0
+      }
+      {
+       coords -64.397 -2.02 98.194
+       angles 0 242.099 0
+      }
+      {
+       coords -67.217 -2.033 103.519
+       angles 0 242.378 0
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{0511E95F422061BB}Prefabs/Props/Recreation/Camp/TentSmall_02/TentSmall_02_blue.et" {
+ {
+  coords 5370.705 2.461 9103.19
+  angles -8.937 -20.609 1.457
+ }
+ {
+  coords 5329.791 2.138 9099.646
+  angles -6.735 19.138 -2.33
+ }
+ {
+  coords 5296.182 1.806 9103.688
+  angles -4.223 19.073 -1.458
+ }
+ {
+  coords 5366.134 2.966 9099.501
+  angles -9.743 0.307 -1.816
+ }
+ {
+  coords 5296.872 1.989 9100.369
+  angles 1.585 -99.017 4.271
+ }
+ {
+  coords 5346.718 1.422 9119.751
+  angles -2.944 -34.629 2.031
+ }
+ {
+  coords 5447.465 2.256 9139.146
+  angles -8.087 -54.205 5.102
+ }
+ {
+  coords 5451.106 2.256 9142.017
+  angles -8.087 -54.205 5.102
+ }
+ {
+  coords 5456.23 2.256 9141.527
+  angles -8.087 -54.205 5.102
+ }
+ {
+  coords 5498.055 1.079 9177.051
+  angles -1.674 18.835 -3.404
+ }
+ {
+  coords 5510.637 2.494 9170.671
+  angles -8.456 19.541 -13.093
+ }
+ {
+  coords 3121.86 2.478 7869.691
+  angles -4.792 -116.751 0.414
+ }
+ {
+  coords 3120.989 2.585 7874.245
+  angles -4.792 -116.751 0.414
+ }
+ {
+  coords 3123.784 3 7878.567
+  angles -4.792 -116.751 0.414
+ }
+ {
+  coords 3153.824 4.628 7835.702
+  angles -6.483 -103.265 -0.303
+ }
+ {
+  coords 3092.65 0.769 7877.243
+  angles -0.794 -34.731 -2.715
+ }
+}
+SCR_DestructibleBuildingEntity : "{0742119E2528D96F}Prefabs/Structures/Agriculture/Gates/GateCollectiveFarm_03/GateCollectiveFarm_03_base.et" {
+ coords 2945.091 2.952 8172.395
+ angles 0 -43.833 0
+ scale 1.747
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{07FBB9A2F51332E4}Prefabs/Rocks/Granite/Granite_BeachStone_01.et" {
+ {
+  coords 3129.29 0.234 7846.75
+ }
+ {
+  coords 3116.662 0 7854.771
+  angles 0 -38.732 0
+ }
+ {
+  coords 3120.728 -0.003 7850.827
+ }
+ {
+  coords 3105.165 0.036 7875.407
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{1200EAC7C79003AF}Prefabs/Rocks/Granite/GraniteRock_03_V2.et" {
+ coords 3142.852 -0.723 7723.607
+ angles 1.123 38.209 -2.637
+}
+$grp GenericEntity : "{17A78A0D3701386A}Prefabs/Compositions/Misc/SubCompositions/Garbage/Tire_Stack_Garbage_01.et" {
+ {
+  coords 5288.225 2.349 9097.208
+  angles -7.125 0 0
+ }
+ {
+  coords 5333.549 1.812 9106.815
+ }
+}
+$grp GenericEntity : "{1B48219F84D1D00B}Prefabs/Props/Recreation/Camp/TentBig_02/TentBig_02_green.et" {
+ {
+  coords 5357.584 5.853 9073.755
+  angles -3.664 -7.733 -0.405
+ }
+ {
+  coords 5357.357 1.365 9121.999
+  angles 3.13 -162.11 1.948
+ }
+ {
+  coords 5295.078 5.359 9075.862
+  angles -6.213 5.578 -0.606
+ }
+ {
+  coords 5350.933 2.129 9102.935
+  angles -5.354 0.07 -1.789
+ }
+ {
+  coords 3103.29 1.439 7879.491
+  angles -2.787 -162.407 2.866
+ }
+}
+SCR_DestructibleEntity : "{1FC924A939F7E9E2}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_start_rusty.et" {
+ coords 3116.52 0.001 7863.238
+ angles 3.997 64.461 0.072
+ BaseDamageMultiplier 0
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{1FFB6B5828D2B35F}Prefabs/Rocks/Granite/GraniteRock_03.et" {
+ {
+  coords 5406.527 -1.668 9104.043
+  angles 0 -121.871 0
+  scale 1.065
+ }
+ {
+  coords 5386.469 -2.702 9170.174
+  angles 0 165.049 0
+  scale 1.917
+ }
+ {
+  coords 3164.873 1.758 7692.291
+  angles 0 -14.8 -4.655
+  scale 2.05
+ }
+}
+$grp GenericEntity : "{24DE47095BD6BE7B}Prefabs/Props/Agriculture/Farm/HayBale_01_square_big.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5309.036 6.674 7900.318
+  angles 0 -15.833 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5330.62 9.15 7953.86
+  angles 0 25.069 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5385.619 8.391 8039.784
+  angles 0 30.968 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5393.006 8.781 8045.306
+  angles 0 55.357 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5580.864 9.945 8282.862
+  angles 0 0 15.709
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5557.831 10.154 8269.294
+  angles 0 0 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5408.59 9.941 8056.155
+  angles 0.808 35.819 4.986
+  scale 1.487
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5267.305 7.907 7585.99
+  angles 0 33.621 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5011.787 7.316 7406.631
+  angles 0 4.88 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5221.169 8.65 7563.578
+  angles 0 28.153 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5306.881 8.062 7587.032
+  angles 0 -110.091 0
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5077.384 8.563 7474.128
+  angles 0 4.88 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5315.47 8.102 7593.047
+  angles -1.155 -110.789 -0.519
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4970.181 5.499 7328.576
+  angles 0 72.706 0
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5305.857 6.5 7776.485
+  angles 0 -15.833 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 5305.947 6.474 7792.189
+  angles 0 -15.833 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4581.091 10.29 7147.784
+  angles 0 53.338 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4584.208 10.29 7154.261
+  angles 0 5.513 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4596.73 10.27 7244.713
+  angles 0 -7.367 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4508.475 13.4 7577.27
+  angles 0 12.575 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4550.69 10.344 7152.433
+  angles 0 64.719 -0.895
+  scale 1.982
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      "Collision multiplier" 0.2
+     }
+    }
+   }
+  }
+  coords 4864.321 5.315 7268.098
+  angles 0 4.88 -0.895
+  scale 1.982
+ }
+}
+$grp GenericEntity : "{3BAF6AA8C20D924D}Prefabs/Compositions/Misc/SubCompositions/Barricade_Logs_01.et" {
+ {
+  coords 4796.92 5.86 7160.938
+  angles 0 -59.028 0
+  scale 1.67
+ }
+ {
+  coords 4783.686 5.799 7174.866
+  angles 0 -59.028 0
+  scale 1.67
+ }
+ {
+  coords 4766.946 6.173 7137.208
+  angles 0 6.002 0
+ }
+ {
+  coords 4738.918 7.312 7163.803
+  angles 0 -30.529 0
+  scale 1.2
+ }
+ {
+  coords 4734.515 6.58 7134.846
+  angles 0 22.603 0
+  scale 1.2
+ }
+ {
+  coords 4519.431 10.843 7103.722
+  angles 0 33.465 0
+  scale 1.2
+ }
+ {
+  coords 4516.955 10.779 7116.462
+  angles 0 87.565 0
+  scale 1.2
+ }
+ {
+  coords 4515.648 10.719 7109.927
+  angles 0 33.465 0
+  scale 1.2
+ }
+ {
+  coords 4640.219 9.996 7311.549
+  angles -4.715 112.919 -4.886
+  scale 1.2
+ }
+ {
+  coords 4642.938 9.996 7318.695
+  angles -4.715 112.919 -4.886
+  scale 1.2
+ }
+ {
+  coords 4706.218 9.919 7396.127
+  angles -4.715 124.815 -4.886
+  scale 1.2
+ }
+ {
+  coords 4704.661 9.687 7407.596
+  angles -4.715 42.087 -4.886
+  scale 1.2
+ }
+ {
+  coords 4707.702 9.828 7402.179
+  angles 0.61 68.014 0.423
+  scale 1.2
+ }
+ {
+  coords 4633.877 9.743 7486.267
+  angles 0.61 -7.664 0.423
+  scale 1.2
+ }
+ {
+  coords 4623.367 10.093 7476.716
+  angles -1.452 160.073 -1.378
+  scale 1.2
+ }
+ {
+  coords 4511.094 13.263 7573.943
+  angles -0.736 80.566 1.03
+  scale 1.2
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{3CB20A890FB1B6F5}Prefabs/Rocks/Granite/GraniteSurfaceStone_02.et" {
+ {
+  coords 3129.148 3.384 7885.655
+  angles 0 0 -4.661
+ }
+ {
+  coords 3105.367 2.464 7920.324
+  angles 6.778 63.308 1.575
+  scale 2.042
+ }
+ {
+  coords 3056.358 0.527 7954.347
+  angles 5.039 93.933 4.804
+  scale 2.042
+ }
+ {
+  coords 3023.844 -1.459 7967.938
+  angles 0.32 137.571 6.95
+  scale 3.471
+ }
+ {
+  coords 3127.818 4.169 7968.675
+  angles -0.057 137.563 1.265
+  scale 3.471
+ }
+ {
+  coords 3099.228 4.043 7975.797
+  angles 0.07 131.829 1.264
+  scale 1.805
+ }
+ {
+  coords 3088.365 3.897 7977.351
+  angles 1.217 61.006 0.349
+  scale 1.805
+ }
+ {
+  coords 3052.021 0.959 7974.119
+  angles 1.217 61.006 0.349
+  scale 1.805
+ }
+ {
+  coords 3079.792 1.598 7956.336
+  angles 1.217 61.006 0.349
+  scale 1.805
+ }
+ {
+  coords 3069.693 2.535 8002.851
+  angles 0.32 137.571 6.95
+  scale 2.048
+ }
+ {
+  coords 3100.333 4.537 8017.767
+  angles 0.32 137.571 6.95
+  scale 2.048
+ }
+ {
+  coords 3070.668 2.964 8072.906
+  angles 0.32 137.571 6.95
+  scale 2.048
+ }
+ {
+  coords 2985.034 -1.019 8028.419
+  angles 0.32 137.571 6.95
+  scale 2.048
+ }
+ {
+  coords 3082.501 -110.876 7955.338
+  angles 20.839 132.045 -24.566
+  scale 3.471
+ }
+}
+GenericEntity : "{3F0D0593590519DA}Prefabs/Props/Garbage/Tires/TirePile_01_medium.et" {
+ coords 5368.882 3.48 9097.09
+ angles -10.609 0.335 -1.821
+}
+$grp GenericEntity : "{57FB5E487EC91D64}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Barricade_Logs_02.et" {
+ {
+  coords 4292.973 41.918 7936.751
+ }
+ {
+  coords 4212.833 41.026 7642.021
+  angles 0 -48.131 0
+ }
+ {
+  coords 4071.222 58.716 7653.312
+  angles 5.319 6.737 0.627
+ }
+ {
+  coords 4061.138 58.844 7658.36
+  angles 0 49.245 0
+ }
+ {
+  coords 4054.822 58.763 7667.443
+  angles 0.678 49.238 -0.585
+ }
+ {
+  coords 4072.906 58.631 7676.125
+  angles -2.664 -173.114 -0.322
+ }
+ {
+  coords 4085.437 58.82 7674.057
+  angles 0.995 -173.164 -0.782
+ }
+ {
+  coords 4096.965 58.579 7673.317
+  angles 0.407 -152.944 -0.797
+ }
+ {
+  coords 3959.857 59.97 7682.82
+  angles 7.352 31.707 -1.732
+ }
+ {
+  coords 3634.512 18.196 7778.507
+  angles 0.645 46.072 -0.621
+ }
+ {
+  coords 3628.258 17.156 7804.192
+  angles 0 -152.944 0
+ }
+ {
+  coords 3455.219 14.213 7847.417
+  angles 0 -152.944 0
+ }
+ {
+  coords 3210.546 7.076 7850.653
+  angles 0.803 174.349 -0.979
+ }
+}
+GenericEntity : "{582392E334A36FEA}Prefabs/Props/Indicators/Indicator_Pointer_Flat.et" {
+ coords 5237.448 1.49 9121.949
+ angles -0.958 102.725 -3.881
+}
+$grp GenericEntity : "{5CA44F8D9F7491ED}Prefabs/Props/VehicleParts/Tires/Tire_M151A2_pile.et" {
+ {
+  coords 5364.063 5.394 9081.373
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5341.563 1.455 9118.724
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5378.936 5.237 9086.35
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5343.625 1.111 9123.699
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5348.923 0.945 9126.066
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5341.754 1.282 9121.422
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5356.281 1.852 9107.374
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5352.107 1.843 9107.069
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5380.996 2.224 9106.131
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5384.078 5.171 9088.192
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5361.135 5.379 9080.815
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5346.051 1.654 9115.094
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5354.817 3.41 9095.116
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5375.269 2.084 9106.776
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5382.044 3.453 9100.102
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5365.386 3.707 9095.289
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5358.433 5.479 9078.752
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5347.434 1.888 9105.29
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5371.043 2.02 9106.756
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5366.396 5.38 9082.014
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5350.104 3.247 9095.033
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5349.011 1.671 9115.036
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5396.875 5.405 9088.359
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5362.088 1.912 9106.922
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5359.984 3.525 9095.484
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5371.285 5.341 9083.498
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5343.419 1.637 9115.611
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5368.005 1.912 9107.525
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5375.194 3.474 9098.168
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5390.188 5.206 9089.038
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5356.163 0.97 9126.678
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5346.436 2.166 9101.469
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5354.096 5.672 9075.792
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5347.644 2.622 9098.165
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5346.568 1.025 9125
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 5374.988 5.297 9084.79
+  angles -10.612 0.264 -1.808
+ }
+ {
+  coords 5352.287 1.678 9115.316
+  angles -4.466 0.07 -0.898
+ }
+ {
+  coords 3087.496 0.55 7876.215
+  angles 0.892 -0.098 -1.791
+ }
+ {
+  coords 3094.855 1.04 7883.558
+  angles 1.77 -0.321 -3.585
+ }
+ {
+  coords 3087.687 0.598 7878.914
+  angles 0.892 -0.098 -1.791
+ }
+ {
+  coords 3091.983 0.665 7872.585
+  angles 0.892 -0.098 -1.791
+ }
+ {
+  coords 3094.943 0.779 7872.528
+  angles 1.779 -0.224 -2.689
+ }
+ {
+  coords 3106.869 1.502 7873.903
+  angles 1.777 -0.167 -4.47
+ }
+ {
+  coords 3102.095 1.513 7884.169
+  angles 1.757 -0.418 -4.478
+ }
+ {
+  coords 3092.5 0.874 7882.492
+  angles 0.887 -0.182 -2.686
+ }
+ {
+  coords 3098.219 0.945 7872.808
+  angles 1.77 -0.321 -3.585
+ }
+ {
+  coords 3102.315 1.175 7872.963
+  angles 1.775 -0.237 -3.582
+ }
+}
+$grp GenericEntity : "{6A346A8D0372FD3A}Prefabs/Props/Recreation/Camp/TentBig_02/TentBig_02_orange.et" {
+ {
+  coords 5366.561 5.767 9076.368
+  angles -3.664 -7.733 -0.405
+ }
+ {
+  coords 5350.433 1.311 9122.113
+  angles 4.201 145.914 -1.762
+ }
+ {
+  coords 5304.415 5.305 9076.346
+  angles -6.213 5.578 -0.606
+ }
+ {
+  coords 5355.121 2.208 9103.111
+  angles -6.24 0.098 -0.9
+ }
+ {
+  coords 5438.15 2.391 9132.25
+  angles -7.24 -54.608 2.495
+ }
+ {
+  coords 3123.689 2.202 7858.247
+  angles -4.789 -117.159 0.449
+ }
+ {
+  coords 3158.151 5.482 7848.898
+  angles -4.789 -117.159 0.449
+ }
+ {
+  coords 3096.365 1.011 7879.605
+  angles 0.771 145.751 2.722
+ }
+}
+SCR_DestructibleEntity : "{6E0CD9748FAA0E19}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_end_rusty.et" {
+ coords 3116.916 -0 7865.438
+ angles 4.489 89.287 1.729
+ BaseDamageMultiplier 0
+}
+SCR_IndestructibleEnvironmentalEntity : "{6FDC70C8E32A8254}Prefabs/Rocks/Granite/GraniteStone_02.et" {
+ coords 3153.712 -0.125 7884.068
+ angles 0.89 -0.069 -4.468
+}
+GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+ coords 3159.969 8.552 7833.434
+ angles 0 -174.904 0
+}
+SCR_IndestructibleEnvironmentalEntity : "{76AF1688C649DC10}Prefabs/Rocks/Granite/Granite_ForestStone_03.et" {
+ coords 3130.569 0 7861.37
+ angles 1.774 -0.166 -5.358
+}
+$grp GenericEntity : "{908E3B090C2438E9}Prefabs/Props/Recreation/Camp/TentSmall_03/TentSmall_03_white.et" {
+ {
+  coords 5334.705 2.469 9097.47
+  angles 8.846 166.638 -1.184
+ }
+ {
+  coords 5358.802 2.955 9098.448
+  angles -4.646 -70.649 7.78
+ }
+ {
+  coords 5382.223 2.976 9103.161
+  angles -8.74 -26.51 0.387
+ }
+ {
+  coords 5379.511 2.865 9102.917
+  angles -9.123 -6.58 -1.621
+ }
+ {
+  coords 5444.083 2.867 9132.556
+  angles 0.137 -124.502 9.592
+ }
+ {
+  coords 5433.294 2.531 9127.722
+  angles 0.137 -124.502 9.592
+ }
+ {
+  coords 5502.969 1.32 9174.874
+  angles 8.846 166.638 -1.184
+ }
+ {
+  coords 5515.551 4.218 9168.494
+  angles 21.114 168.678 9.41
+ }
+ {
+  coords 3125.472 2.142 7851.851
+  angles -1.217 172.818 4.654
+ }
+ {
+  coords 3126.151 2.623 7863.653
+  angles -1.982 172.719 5.647
+ }
+ {
+  coords 3156.339 3.433 7793.842
+  angles -1.982 172.719 5.647
+ }
+ {
+  coords 3155.571 3.271 7780.322
+  angles -5.936 -117.901 2.129
+ }
+ {
+  coords 3152.673 4.031 7820.654
+  angles -2.453 -173.82 6.01
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{93335A71CAAC4B7B}Prefabs/Rocks/Granite/Granite_ForestStone_02.et" {
+ coords 3149.148 -0 7866.001
+ angles 1.769 -0.193 -6.245
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Granite/GraniteRock_01.et" {
+ {
+  coords 5331.71 2.958 9072.171
+ }
+ {
+  coords 3092.563 -1.489 7790.22
+  angles 0 46.903 0
+  scale 1.93
+ }
+ {
+  coords 3130.038 -1.489 7715.428
+  angles 0 46.903 0
+  scale 1.93
+ }
+}
+DecalEntity : "{9ECFB26FBB0227A2}Prefabs/Decals/Markings/Runway/Decal_Runway_Line_White.et" {
+ coords 5238.792 0.791 9108.563
+ angles -90 102.435 -180
+ FarPlane 7.37
+ Stretch 45.79
+}
+$grp GenericEntity : "{A00729CC0E1EE305}Prefabs/Props/VehicleParts/Tires/Tire_M998_pile.et" {
+ {
+  coords 4326.98 26.879 7762.646
+  angles -2.539 157.494 -3.783
+ }
+ {
+  coords 4325.015 27.192 7755.449
+  angles 7.716 153.768 -24.852
+ }
+ {
+  coords 4326.871 26.81 7759.679
+  angles -2.539 157.494 -3.783
+ }
+ {
+  coords 4325.976 26.84 7757.178
+  angles -2.539 157.494 -3.783
+ }
+}
+$grp SCR_DestructibleEntity : "{A30DF11005057F3F}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_3m_rusty.et" {
+ {
+  coords 3119.803 0 7880.111
+  angles 3.075 112.909 4.203
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3127.941 0 7868.825
+  angles -5.44 -92.964 -1.503
+  BaseDamageMultiplier 0
+ }
+}
+$grp GenericEntity : "{A81F99C793D11875}Prefabs/Props/VehicleParts/Tires/Tire_M151A2.et" {
+ {
+  components {
+   Hierarchy "{5CB0D997AAB49E1F}" {
+    Enabled 1
+   }
+  }
+  coords 3079.647 0.674 7864.26
+  angles -22.054 -5.412 14.112
+ }
+ {
+  components {
+   Hierarchy "{5CB0D997AAB49E14}" {
+    Enabled 1
+   }
+  }
+  coords 3079.647 0.674 7864.26
+  angles -22.449 -3.673 13.453
+ }
+ {
+  components {
+   Hierarchy "{5CB0D997AAB49E28}" {
+    Enabled 1
+   }
+  }
+  coords 3079.647 0.675 7864.26
+  angles -11.198 94.434 -23.608
+ }
+ {
+  components {
+   Hierarchy "{5CB0D997AAB49E11}" {
+    Enabled 1
+   }
+  }
+  coords 3079.647 0.675 7864.26
+  angles 10.349 -83.606 23.974
+ }
+}
+$grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {
+ {
+  coords 4478.275 16.002 7639.96
+  angles 0 -105.423 0
+ }
+ {
+  coords 4433.15 19.25 7722.718
+  angles 0.843 -105.401 3.058
+  {
+   StaticModelEntity {
+    ID "5CC6B48557A6429B"
+    coords 4.623 0.18 -2.202
+   }
+   StaticModelEntity {
+    ID "5CC6B48557A642D1"
+    coords 7.833 0.183 -0.32
+   }
+  }
+ }
+}
+$grp GameEntity : "{B935D6C77D639F8E}Prefabs/Items/Equipment/Accessories/XmasLights/XmasLights.et" {
+ {
+  coords 5349.723 2.704 9097.019
+  scale 7.205
+ }
+ {
+  coords 5348.669 1.646 9120.319
+  scale 7.205
+ }
+ {
+  coords 5364.067 5.932 9075.578
+  scale 7.205
+ }
+ {
+  coords 5324.691 1.884 9102.483
+  scale 10.224
+ }
+ {
+  coords 5295.113 0.96 9102.134
+  scale 8.455
+ }
+ {
+  coords 5396.532 6.095 9088.606
+  angles 0 0 106.447
+  scale 4.468
+ }
+ {
+  coords 3094.602 0.876 7877.811
+  angles 1.783 -0.112 -3.578
+  scale 7.205
+ }
+}
+$grp GenericEntity : "{BACC130DDD951CA4}Prefabs/Props/Recreation/Camp/TentSmall_03/TentSmall_03_blue.et" {
+ {
+  coords 5366.896 2.185 9104.73
+  angles -6.24 0.098 -0.9
+ }
+ {
+  coords 5325.728 2.062 9100.347
+  angles 5.04 -160.172 1.814
+ }
+ {
+  coords 5331.6 1.867 9103.499
+  angles -2.669 -5.933 0.277
+ }
+ {
+  coords 5361.034 2.466 9101.921
+  angles -8.878 0.14 -0.906
+ }
+ {
+  coords 5293.303 1.642 9105.942
+  angles 1.383 -160.265 1.446
+ }
+ {
+  coords 5296.236 2.373 9096.776
+  angles -1.05 81.569 -7.048
+ }
+ {
+  coords 5442.542 2.244 9136.385
+  angles -7.758 -54.459 3.193
+ }
+ {
+  coords 5493.992 0.913 9177.751
+  angles 5.04 -160.172 1.814
+ }
+ {
+  coords 5499.864 0.92 9180.903
+  angles -2.946 -5.922 -2.39
+ }
+ {
+  coords 5512.446 1.927 9174.523
+  angles -10.267 -5.237 -5.241
+ }
+ {
+  coords 5506.574 0.913 9171.371
+  angles 5.04 -160.172 1.814
+ }
+ {
+  coords 3122.042 2.286 7864.049
+  angles -4.79 -117.007 0.436
+ }
+ {
+  coords 3151.307 3.195 7798.186
+  angles -4.79 -117.007 0.436
+ }
+ {
+  coords 3152.803 3.075 7787.229
+  angles -4.003 -47.436 -4.874
+ }
+}
+$grp GenericEntity : "{BC008E0E80A24B9C}Prefabs/Props/Recreation/Camp/TentSmall_02/TentSmall_02_base.et" {
+ {
+  coords 5372.136 3.092 9099.697
+  angles -9.955 -32.048 4.113
+ }
+ {
+  coords 5334.138 1.929 9102.624
+  angles -3.576 0 0
+ }
+ {
+  coords 5331.763 2.258 9098.906
+  angles -6.305 21.578 -3.441
+ }
+ {
+  coords 5363.268 3.054 9098.643
+  angles -9.743 0.307 -1.816
+ }
+ {
+  coords 5363.314 2.599 9101.365
+  angles -9.748 0.308 -0.934
+ }
+ {
+  coords 5355.549 2.999 9097.561
+  angles -9.743 0.307 -1.816
+ }
+ {
+  coords 5296.922 1.6 9106.951
+  angles -2.684 0.306 -0.014
+ }
+ {
+  coords 5293.641 2.093 9099.486
+  angles 3.695 -117.644 5.112
+ }
+ {
+  coords 5344.851 1.558 9117.441
+  angles -2.208 -34.664 1.526
+ }
+ {
+  coords 5343.318 1.414 9119.698
+  angles -3.449 -34.72 1.301
+ }
+ {
+  coords 5444.313 2.16 9137.924
+  angles -8.282 -54.254 3.878
+ }
+ {
+  coords 5446.508 2.566 9136.312
+  angles -8.989 -18.246 3.365
+ }
+ {
+  coords 5449.674 2.566 9135.624
+  angles -8.989 -18.246 3.365
+ }
+ {
+  coords 5452.979 2.566 9138.325
+  angles -8.989 -29.858 3.365
+ }
+ {
+  coords 5502.402 1.074 9180.028
+  angles -3.576 0 -1.786
+ }
+ {
+  coords 5500.027 1.2 9176.311
+  angles -2.679 21.389 -2.967
+ }
+ {
+  coords 5514.984 2.397 9173.648
+  angles -20.458 1.358 -4.66
+ }
+ {
+  coords 5512.609 3.032 9169.931
+  angles -12.774 23.719 -18.272
+ }
+ {
+  coords 3125.128 2.938 7874.207
+  angles -4.542 -92.552 -1.584
+ }
+ {
+  coords 3123.934 2.574 7867.536
+  angles -4.135 -81.027 -2.459
+ }
+ {
+  coords 3126.003 2.845 7870.029
+  angles -4.878 -81.068 -3.47
+ }
+ {
+  coords 3121.493 2.315 7866.331
+  angles -4.792 -116.799 0.419
+ }
+ {
+  coords 3153.2 3.483 7801.672
+  angles -4.135 -81.027 -2.459
+ }
+ {
+  coords 3150.758 3.224 7800.467
+  angles -4.792 -116.799 0.419
+ }
+ {
+  coords 3156.729 3.506 7786.675
+  angles 0.471 -11.798 -6.472
+ }
+ {
+  coords 3152.615 3.211 7793.283
+  angles -4.03 -47.182 -6.142
+ }
+ {
+  coords 3154.123 4.518 7831.15
+  angles -5.79 -79.004 -2.935
+ }
+ {
+  coords 3090.783 0.664 7874.933
+  angles -0.284 -34.73 -1.981
+ }
+ {
+  coords 3089.25 0.639 7877.19
+  angles -0.8 -34.845 -2.713
+ }
+}
+$grp GenericEntity : "{CC98E67AC15E257D}Prefabs/Props/Recreation/Camp/TentBig_01/TentBig_01_orange.et" {
+ {
+  coords 5327.527 1.838 9104.404
+  angles -0.845 19.195 -0.294
+ }
+ {
+  coords 5375.296 2.609 9103.091
+  angles -8.861 0.419 -2.716
+ }
+ {
+  coords 5288.734 5.386 9075.434
+  angles -3.904 -34.644 3.776
+ }
+ {
+  coords 5351.613 2.802 9097.985
+  angles 9.743 -179.693 1.816
+ }
+ {
+  coords 5373.608 5.806 9077.353
+  angles -2.683 0.042 -0.896
+ }
+ {
+  coords 5495.791 0.721 9181.809
+  angles -2.49 19.302 -3.71
+ }
+ {
+  coords 5508.373 1.524 9175.429
+  angles -1.063 19.214 -5.096
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{CCEFA69FB27FD706}Prefabs/Rocks/Granite/GraniteSurfaceStone_06.et" {
+ {
+  coords 3150.075 5.664 7894.553
+  angles -0.885 0 0
+ }
+ {
+  coords 3138.588 5.738 7929.455
+  angles -0.724 -35.101 0.509
+  scale 2.382
+ }
+ {
+  coords 3066.205 0.526 7913.51
+  angles -0.082 -35.137 -3.223
+  scale 2.382
+ }
+}
+SCR_DestructibleBuildingEntity : "{CF86E4F10D9173E9}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_Base.et" {
+ coords 2944.772 3.081 8172.592
+ angles 0 45.683 14.425
+ scale 1.57
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{D5CC7A5A32C640A3}Prefabs/Rocks/Granite/GraniteRock_02_V2.et" {
+ {
+  coords 5419.222 -4.453 9116.189
+ }
+ {
+  coords 3195.257 0.932 7717.228
+  angles 0 -86.241 0
+  scale 2.23
+ }
+ {
+  coords 3192.807 0.932 7704.535
+  angles 0 -86.241 0
+  scale 2.23
+ }
+ {
+  coords 3178.586 -0.824 7726.072
+ }
+}
+$grp GenericEntity : "{D6711114DE2407D8}Prefabs/Props/VehicleParts/Tires/Tire_BTR70_pile.et" {
+ {
+  coords 5284.467 5.059 9077.411
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5286.704 1.848 9099.853
+  angles -5.356 0 0
+ }
+ {
+  coords 5287.198 4.838 9079.31
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5300.252 4.473 9082.049
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5288.076 1.993 9098.525
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5295.951 4.63 9080.63
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5291.932 1.583 9107.515
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5288.341 1.68 9102.631
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5290.177 2.222 9096.557
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5322.075 1.606 9104.144
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5322.476 2.014 9098.823
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5326.542 2.245 9097.001
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5319.683 1.871 9100.199
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5330.15 1.597 9108.568
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5331.294 2.557 9095.292
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 5324.978 1.582 9107.548
+  angles -2.18 -66.05 4.893
+ }
+ {
+  coords 4923.098 5.531 7315.024
+  scale 1.42
+ }
+ {
+  coords 4926.922 5.531 7317.053
+  scale 1.42
+ }
+ {
+  coords 4926.712 5.531 7324.256
+  scale 1.42
+ }
+ {
+  coords 4927.96 5.531 7319.545
+  scale 1.42
+ }
+ {
+  coords 4927.487 5.531 7321.938
+  scale 1.42
+ }
+ {
+  coords 4915.392 5.531 7312.74
+  scale 1.42
+ }
+ {
+  coords 4917.374 5.531 7299.155
+  scale 1.42
+ }
+ {
+  coords 4917.8 5.531 7313.343
+  scale 1.42
+ }
+ {
+  coords 4921.948 5.531 7300.871
+  scale 1.42
+ }
+ {
+  coords 4906.985 5.531 7295.083
+  scale 1.42
+ }
+ {
+  coords 4911.821 5.531 7296.993
+  scale 1.42
+ }
+ {
+  coords 4891.968 5.531 7286.643
+  scale 1.42
+ }
+ {
+  coords 4899.653 5.531 7276.792
+  scale 1.42
+ }
+ {
+  coords 4890.041 5.531 7282.283
+  scale 1.42
+ }
+ {
+  coords 4903.922 5.531 7290.527
+  scale 1.42
+ }
+ {
+  coords 4901.23 5.531 7283.508
+  scale 1.42
+ }
+ {
+  coords 4895.115 5.531 7293.203
+  scale 1.42
+ }
+ {
+  coords 4896.465 5.531 7295.55
+  scale 1.42
+ }
+ {
+  coords 4893.795 5.531 7290.546
+  scale 1.42
+ }
+ {
+  coords 4888.793 5.531 7278.569
+  scale 1.42
+ }
+ {
+  coords 4885.674 5.531 7260.628
+  scale 1.42
+ }
+ {
+  coords 4885.593 5.531 7275.107
+  scale 1.42
+ }
+ {
+  coords 4880.742 5.531 7273.088
+  scale 1.42
+ }
+ {
+  coords 4890.58 5.531 7264.354
+  scale 1.42
+ }
+ {
+  coords 4874.684 5.531 7271.863
+  scale 1.42
+ }
+ {
+  coords 4864.675 5.531 7244.637
+  scale 1.42
+ }
+ {
+  coords 4850.107 5.531 7234.197
+  scale 1.42
+ }
+ {
+  coords 4859.573 5.531 7241.155
+  scale 1.42
+ }
+ {
+  coords 4871.989 5.531 7245.928
+  scale 1.42
+ }
+ {
+  coords 4868.866 5.531 7245.847
+  scale 1.42
+ }
+ {
+  coords 4853.996 5.531 7237.471
+  scale 1.42
+ }
+ {
+  coords 4868.797 5.531 7266.379
+  scale 1.42
+ }
+ {
+  coords 4819.876 5.531 7184.342
+  scale 1.42
+ }
+ {
+  coords 4831.157 5.531 7201.774
+  scale 1.42
+ }
+ {
+  coords 4836.09 5.531 7209.311
+  scale 1.42
+ }
+ {
+  coords 4816.793 5.531 7187.437
+  scale 1.42
+ }
+ {
+  coords 4843.673 5.531 7223.88
+  scale 1.42
+ }
+ {
+  coords 4840.025 5.531 7215.19
+  scale 1.42
+ }
+ {
+  coords 4846.297 5.531 7229.158
+  scale 1.42
+ }
+ {
+  coords 4773.29 6.343 7135.937
+  scale 1.42
+ }
+ {
+  coords 4763.876 6.176 7139.429
+  scale 1.42
+ }
+ {
+  coords 4888.496 5.531 7274.888
+  scale 1.42
+ }
+ {
+  coords 4959.089 5.688 7307.85
+  scale 1.42
+ }
+ {
+  coords 4831.519 5.833 7226.24
+  scale 1.42
+ }
+ {
+  coords 4958.105 5.688 7306.187
+  scale 1.42
+ }
+ {
+  coords 4956.045 5.688 7305.011
+  scale 1.42
+ }
+ {
+  coords 4957.894 5.5 7294.116
+  scale 1.42
+ }
+ {
+  coords 4829.693 5.846 7222.976
+  scale 1.42
+ }
+ {
+  coords 4825.863 5.781 7213.474
+  scale 1.42
+ }
+ {
+  coords 4859.285 5.5 7184.245
+  scale 1.42
+ }
+ {
+  coords 4825.267 5.811 7210.82
+  scale 1.42
+ }
+ {
+  coords 4827.141 5.903 7216.813
+  scale 1.42
+ }
+ {
+  coords 4875.479 5.313 7262.215
+  scale 1.42
+ }
+ {
+  coords 4940.846 5.5 7281.865
+  scale 1.42
+ }
+ {
+  coords 4955.286 5.5 7286.914
+  scale 1.42
+ }
+ {
+  coords 4871.283 5.369 7257.32
+  scale 1.42
+ }
+ {
+  coords 4904.771 5.5 7229.407
+  scale 1.42
+ }
+ {
+  coords 4873.729 5.5 7199.032
+  scale 1.42
+ }
+ {
+  coords 4868.126 5.375 7254.902
+  scale 1.42
+ }
+ {
+  coords 4873.543 5.344 7259.63
+  scale 1.42
+ }
+ {
+  coords 4864.809 5.406 7252.787
+  scale 1.42
+ }
+ {
+  coords 4878.215 5.312 7264.904
+  scale 1.42
+ }
+ {
+  coords 4861.358 5.531 7262.621
+  scale 1.42
+ }
+ {
+  coords 4827.858 5.882 7219.029
+  scale 1.42
+ }
+ {
+  coords 4824.036 5.812 7208.243
+  scale 1.42
+ }
+}
+$grp GenericEntity : "{D7B8408B96F4DF79}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadSmall/E_Barricade_S_US_01.et" {
+ {
+  coords 5447.508 10.125 8101.354
+  angles 0 -47.316 0
+ }
+ {
+  coords 5433.765 10.34 8080.777
+  angles 0 -47.316 0
+ }
+ {
+  coords 5459.34 10.455 8091.291
+  angles 0 -47.316 0
+ }
+ {
+  coords 5540.367 9.871 8234.294
+  angles 0 -47.316 0
+ }
+ {
+  coords 5557.525 10.187 8261.599
+  angles 0 -47.316 0
+ }
+ {
+  coords 5527.834 25.464 8953.987
+  angles 0 0.276 0
+ }
+ {
+  coords 5535.295 26.426 8977.437
+  angles 0 12.934 0
+ }
+ {
+  coords 5577.869 17.494 8913.231
+  angles 0 -162.269 0
+ }
+ {
+  coords 5585.807 14.812 8858.131
+  angles 0 -100.476 0
+ }
+ {
+  coords 5603.562 14.6 8870.497
+  angles 0 -108.207 0
+ }
+ {
+  coords 5580.689 10.091 8273.724
+  angles -5.311 97.433 -0.692
+ }
+ {
+  coords 5016.146 7.174 7409.365
+  angles -5.311 97.433 -0.692
+ }
+ {
+  coords 4989.992 5.812 7344.346
+  angles -5.311 131.86 -0.692
+ }
+ {
+  coords 4988.256 5.809 7336.278
+  angles -5.311 141.678 -0.692
+  scale 1.42
+ }
+ {
+  coords 4948.01 5.5 7281.887
+  angles -5.311 171.729 -0.692
+ }
+ {
+  coords 4838.881 5.674 7178.084
+  angles -5.311 143.624 -0.692
+ }
+ {
+  coords 4833.654 5.687 7177.219
+  angles -5.311 -172.158 -0.692
+ }
+ {
+  coords 4828.932 5.824 7179.467
+  angles -5.311 -150.596 -0.692
+ }
+ {
+  coords 4824.452 5.837 7182.657
+  angles -5.311 -146.506 -0.692
+ }
+ {
+  coords 4811.169 5.924 7206.593
+  angles -5.311 142.797 -0.692
+ }
+}
+GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ components {
+  SCR_FireplaceComponent "{5876E7F288BF5C8E}" {
+   m_eInitialLightState LIT
+  }
+ }
+ coords 3099.584 1.086 7875.608
+ angles 1.769 -0.335 -3.585
+}
+GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ coords 5383.27 5.642 9082.041
+ angles 1.29 -117.728 4.369
+}
+$grp SCR_DestructibleEntity : "{DD20F9B0026506F1}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_12m_rusty.et" {
+ {
+  coords 3128.015 -0 7850.779
+  angles -5.352 -89.916 -2.68
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3118.625 0 7877.327
+  angles 4.163 98.317 2.411
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3127.787 0.001 7871.844
+  angles -5.854 -104.587 -1.24
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3117.811 -0.001 7860.534
+  angles 3.997 63.235 -0.014
+  BaseDamageMultiplier 0
+ }
+}
+$grp SCR_DestructibleEntity : "{DD6199F41E37D54E}Prefabs/Structures/Infrastructure/Barriers/CrashBarrier_E_01/CrashBarrier_E_01_6m_rusty.et" {
+ {
+  coords 3127.981 -0 7862.799
+  angles -4.475 -90.262 -1.764
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3124.762 -0 7883.546
+  angles 1.09 145.129 4.685
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3123.216 -0 7849.798
+  angles 4.649 53.299 -1.235
+  BaseDamageMultiplier 0
+ }
+ {
+  coords 3126.828 -0.001 7844.872
+  angles -4.203 -78.604 -1.757
+  BaseDamageMultiplier 0
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{DF692A1784D6B324}Prefabs/Rocks/Granite/GraniteRock_01_V2.et" {
+ {
+  coords 3187.592 2.941 7740.144
+  angles 0 94.117 0
+ }
+ {
+  coords 3161.506 -17.05 7755.425
+  angles 0 94.117 0
+  scale 3.069
+ }
+}
+GenericEntity : "{E004AC0F82A7BC8B}Prefabs/World/Locations/Arland/Urban/Arland_Harbor_03.et" {
+ components {
+  SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+   DisplayName "Rally Dunes"
+  }
+ }
+ coords 5279.109 5.588 9093.866
+}
+$grp StaticModelEntity : "{E21F2AB86A94A5DB}Prefabs/Props/Construction/GravelPile_01/Small_Hill_Ground_Texture.et" {
+ {
+  coords 3125.905 -0.817 7774.707
+  angles 0 0 -12.63
+  scale 1.559
+ }
+ {
+  coords 3146.703 -0.799 7790.018
+  angles 0 0 6.664
+  scale 2.386
+ }
+ {
+  coords 3101.375 -3.695 7812.106
+  angles 0 0 -11.175
+  scale 3.412
+ }
+ {
+  coords 3174.894 1.94 7715.724
+  angles 0 0 -6.409
+  scale 2.386
+ }
+ {
+  coords 3169.883 1.377 7712.513
+  angles 0 0 -6.409
+  scale 2.386
+ }
+ {
+  coords 3163.425 0.652 7709.706
+  angles 0 0 -6.409
+  scale 2.386
+ }
+ {
+  coords 3159.118 0.168 7710.131
+  angles 0 0 -6.409
+  scale 2.386
+ }
+ {
+  coords 3178.178 1.388 7732.947
+  angles 0 0 -6.409
+  scale 2.386
+ }
+ {
+  coords 3165.664 0.428 7779.466
+  angles 0 0 -14.742
+  scale 2.386
+ }
+ {
+  coords 3186.941 1.723 7775.438
+  angles 0 0 4.818
+  scale 2.386
+ }
+ {
+  coords 3145.725 -2.52 7830.087
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3077.402 -3.298 7854.807
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3127.25 -3.876 7819.319
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3148.249 -3.637 7813.597
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3127.49 -5.314 7787.812
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3151.5 -3.567 7766.506
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3184.086 0.884 7792.447
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3161.873 -1.348 7816.905
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3145.226 -4.779 7757.192
+  angles -3.754 -66.742 -2.583
+  scale 3.412
+ }
+ {
+  coords 3163.295 -2.848 7742.925
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3154.678 -2.946 7745.965
+  angles 0 0 -0.652
+  scale 3.412
+ }
+ {
+  coords 3102.234 -1.555 7917.12
+  angles 0 0 -11.175
+  scale 3.412
+ }
+ {
+  coords 3133.948 3.05 7929.303
+  angles 0 0 -11.175
+  scale 3.412
+ }
+ {
+  coords 3086.005 -3.045 7946.805
+  angles -11.914 0.291 -1.411
+  scale 3.412
+ }
+ {
+  coords 3120.908 -0.193 7941.124
+  angles -11.914 0.291 -1.411
+  scale 3.412
+ }
+ {
+  coords 3066.607 -3.021 7926.541
+  angles -11.914 0.291 -1.411
+  scale 3.412
+ }
+ {
+  coords 3048.467 -2.768 7964.312
+  angles 0.169 0.285 -1.35
+  scale 4.197
+ }
+ {
+  coords 3088.864 0.244 7981.415
+  angles 0.169 0.285 -1.35
+  scale 3.987
+ }
+ {
+  coords 3064.461 -3.034 7978.594
+  angles -1.69 0.43 -6.236
+  scale 3.987
+ }
+ {
+  coords 3105.818 0.779 8011.744
+  angles 0.169 0.285 -1.35
+  scale 3.987
+ }
+ {
+  coords 3018.044 -0.057 8007.861
+  angles 0.169 0.285 -1.35
+  scale 3.987
+ }
+ {
+  coords 3005.543 -3.441 7960.762
+  angles 0.169 0.285 -1.35
+  scale 3.987
+ }
+ {
+  coords 3064.007 2.511 8014.861
+  angles 0.195 0.268 -6.757
+  scale 3.987
+ }
+ {
+  coords 3096.887 3.962 8028.67
+  angles 0.169 0.285 -1.35
+  scale 3.987
+ }
+ {
+  coords 3034.877 -1.107 8045.422
+  angles 0.172 0.283 -2.006
+  scale 3.987
+ }
+ {
+  coords 2985.462 -1.043 8056.054
+  angles 0.172 97.258 -2.006
+  scale 4.585
+ }
+ {
+  coords 3018.147 -6.561 8069.526
+  angles 0.172 97.258 -2.006
+  scale 4.585
+ }
+ {
+  coords 3057.969 -1.293 8079.468
+  angles 4.66 97.188 -9.462
+  scale 4.585
+ }
+ {
+  coords 3033.03 -1.293 8116.89
+  angles 9.415 98.938 -0.455
+  scale 4.585
+ }
+ {
+  coords 2966.275 -6.39 8100.76
+  angles 9.415 98.938 -0.455
+  scale 4.585
+ }
+ {
+  coords 3032.676 -4.163 8086.478
+  angles 0.172 10.042 -2.006
+  scale 3.668
+ }
+ {
+  coords 3179.919 1.133 7756.467
+  angles 16.736 -2.486 -5.617
+  scale 2.386
+ }
+ {
+  coords 3140.25 -2.396 7774.636
+  angles -13.219 -1.566 -6.447
+  scale 2.386
+ }
+}
+GenericEntity : "{EB5573D0274225E8}Prefabs/Compositions/Misc/SubCompositions/Garbage/Tire_Stack_USSR_01.et" {
+ coords 5322.048 2.712 9101.422
+ scale 1.55
+}
+GenericEntity : "{F35FFCC271B2E4FB}Prefabs/Compositions/Misc/SubCompositions/Tire_UAZ469_pile_01.et" {
+ coords 5364.226 2.174 9104.443
+ angles -6.24 0.098 -0.9
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{FA6727A124372434}Prefabs/Rocks/Granite/GraniteRock_02.et" {
+ {
+  coords 3109.577 -2.431 7723.623
+  scale 2.18
+ }
+ {
+  coords 3087.252 -2.431 7772.756
+  scale 2.18
+ }
+ {
+  coords 3044.753 -8.621 7961.125
+  scale 2.18
+ }
+ {
+  coords 3095.887 4.005 7979.271
+  scale 1.067
+ }
+ {
+  coords 3080.845 0.5 7955.356
+  scale 1.067
+ }
+}
+$grp LightEntity : "{FBDB4A2BDE254410}Prefabs/Vehicles/Helicopters/Mi8MT/Lights/VehicleLight_Mi8_Hazard_Red.et" {
+ {
+  coords 5490.215 6.939 9141.315
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5507.526 4.652 9166.024
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5511.483 6.875 9160.634
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5514.602 7.978 9155.938
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5518.464 9.328 9150.212
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5522.16 10.549 9143.178
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5492.35 8.242 9141.82
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5495.055 8.774 9142.052
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5498.759 8.921 9141.339
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5503.752 9.027 9140.417
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5510.158 9.083 9139.065
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5524.148 11.241 9137.746
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5487.592 1.592 9178.433
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5484.376 1.267 9181.112
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5479.346 0.841 9185.334
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5494.928 2.266 9174.063
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5502.841 2.864 9170.638
+  angles -5.354 0.084 -0.899
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3126.159 2.559 7862.279
+  angles -3.501 -62.273 -4.856
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3119.76 2.463 7873.695
+  angles -3.501 -62.273 -4.856
+  Color 0.3921 0.1569 0.6235 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3126.889 2.924 7869.906
+  angles -3.917 -62.292 -4.066
+  Color 0.6235 0.1569 0.1569 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3125.49 2.101 7850.502
+  angles -3.132 -62.371 -3.652
+  Color 0.3765 0.749 0.4706 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3127.094 2.059 7844.292
+  angles -3.556 -62.576 -2.848
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3121.333 1.981 7857.072
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3120.781 2.157 7863.379
+  angles -2.717 -62.36 -4.442
+  Color 0.3921 0.1569 0.6235 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3125.121 3.329 7883.7
+  angles -3.149 -62.627 -3.638
+  Color 0.8118 0.5059 0.5059 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3083.884 1.052 7837.114
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3089.322 1.174 7826.998
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3095.648 1.201 7815.585
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3102.691 1.293 7803.689
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3112.168 1.381 7789.746
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3121.03 1.608 7776.406
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3129.209 1.714 7761.313
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3133.466 1.723 7744.031
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3160.379 3.909 7713.354
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3173.321 5.206 7720.986
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3183.875 6.35 7734.396
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3191.624 7.134 7753.294
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3196.031 7.506 7765.719
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3164.316 4.939 7768.554
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3162.287 5.115 7781.084
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3159.465 4.974 7794.017
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3156.863 5.313 7811.207
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3157.874 5.917 7827.944
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3169.427 7.293 7846.002
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3161.62 6.497 7840.201
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3146.386 3.78 7807.193
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3150.769 3.869 7782.758
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3155.76 4.267 7770.602
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3148.645 5.099 7837.855
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3154.233 6.419 7868.668
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3155.68 7.321 7895.025
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 3151.407 6.513 7931.53
+  angles -3.132 -62.371 -3.652
+  Color 0.9373 0.8196 0.8196 1
+  LV 4.18
+  CastShadow 0
+  Radius 6.65
+  Dynamic 1
+ }
+ {
+  coords 5428.044 29.631 8041.153
+  angles 0 -146.509 0
+  scale 0.34
+  Color 0.3176 0.0706 0.5608 1
+  LV 9.23
+  Radius 53.85
+  Dynamic 1
+ }
+}
+SCR_IndestructibleEnvironmentalEntity : "{FF676E917668C455}Prefabs/Rocks/Granite/Granite_ForestStone_01.et" {
+ coords 3147.078 0 7843.921
+}
