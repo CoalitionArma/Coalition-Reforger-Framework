@@ -1,3 +1,29 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 6105.515 142.938 1585.841
+ Points {
+  ShapePoint "{6A85154413A402C6}" {
+   Position -218.17 0 -359.893
+  }
+  ShapePoint "{6A85154412FE11BD}" {
+   Position -391.476 0 -259.253
+  }
+  ShapePoint "{6A85154416440FBA}" {
+   Position -514.325 0 -24.927
+  }
+  ShapePoint "{6A85154418015384}" {
+   Position -348.961 0 197.376
+  }
+  ShapePoint "{6A8515441A39E385}" {
+   Position -19.508 0 320.289
+  }
+  ShapePoint "{6A851544038E18A8}" {
+   Position 162.029 0 167.533
+  }
+  ShapePoint "{6A851544079598C4}" {
+   Position 195.839 0 -167.17
+  }
+ }
+}
 COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
  coords 6194.38 105.563 1553.765
  Points {

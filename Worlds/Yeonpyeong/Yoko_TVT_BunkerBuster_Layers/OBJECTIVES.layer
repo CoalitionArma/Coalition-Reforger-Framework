@@ -21,7 +21,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     m_sItemName "Supply"
    }
   }
-  coords 5900.107 129.709 1688.648
+  coords 5898.903 129.709 1687.832
  }
  {
   components {

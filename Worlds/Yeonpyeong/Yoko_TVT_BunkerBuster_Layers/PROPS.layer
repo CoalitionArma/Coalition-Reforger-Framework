@@ -554,3 +554,128 @@ $grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_
   angles 0 51.634 0
  }
 }
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 6026.447 128.377 1730.585
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5999.343 132.3 1725.948
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5957.785 129.55 1734.496
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5924.944 129.303 1596.971
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5864.161 129.381 1638.879
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5881.707 129.436 1649.187
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5901.406 129.709 1689.143
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5960.937 129.395 1664.006
+ }
+ {
+  coords 6193.909 105.563 1555.89
+ }
+}

@@ -67,9 +67,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Defend your supply caches"\
+   "Extract all Intel Folders to the extraction point."\
    ""\
    "INTENT"\
    "BLUFOR needs to destroy at least 50% of your caches to secure victory."\
+   ""\
+   "At every cache location is a green box within it is an intel folder, get it to the green box at the extraction point."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
