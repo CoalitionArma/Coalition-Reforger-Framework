@@ -1,0 +1,681 @@
+$grp GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+ {
+  coords 6025.488 129.394 1707.503
+  angles 0 56.109 0
+ }
+ {
+  coords 6026.508 129.394 1712.757
+  angles 0 56.109 0
+ }
+ {
+  coords 5978.618 130.013 1642.533
+  angles 0 49.765 0
+ }
+ {
+  coords 6039.538 130.029 1688.752
+  angles 0 54.178 0
+ }
+ {
+  coords 6020.953 130.019 1672.628
+  angles 0 50.13 0
+ }
+ {
+  coords 5998.335 130.014 1655.568
+  angles 0 50.859 0
+ }
+ {
+  coords 5928.527 129.389 1699.442
+  angles 0 -35.718 0
+ }
+ {
+  coords 5946.616 129.485 1681.233
+  angles 0 -32.545 0
+ }
+ {
+  coords 5978.359 129.447 1676.195
+  angles 0 57.4 0
+ }
+ {
+  coords 5941.89 129.198 1642.123
+  angles 0 -39.118 0
+ }
+ {
+  coords 5941.435 129.203 1648.4
+  angles 0 54.339 0
+ }
+ {
+  coords 5939.333 129.208 1648.524
+  angles 0 -39.118 0
+ }
+ {
+  coords 5943.364 129.198 1643.321
+  angles 0 -39.118 0
+ }
+ {
+  coords 5972.796 129.388 1667.623
+  angles 0 50.673 0
+ }
+ {
+  coords 5947.525 129.38 1674.329
+  angles 0 -32.545 0
+ }
+ {
+  coords 5937.937 129.208 1647.388
+  angles 0 -39.118 0
+ }
+ {
+  coords 5943.668 129.203 1645.288
+  angles 0 54.339 0
+ }
+ {
+  coords 5868.958 129.4 1601.095
+  angles 0 70.837 0
+ }
+ {
+  coords 5896.859 129.415 1609.993
+  angles 0 54.156 0
+ }
+ {
+  coords 5961.1 135.905 1659.672
+  angles 0 54.477 0
+ }
+ {
+  coords 5961.1 137.106 1659.672
+  angles 0 54.477 0
+ }
+ {
+  coords 5912.457 129.374 1621.753
+  angles 0 54.156 0
+ }
+ {
+  coords 5902.604 129.387 1618.8
+  angles 0 54.156 0
+ }
+ {
+  coords 5964.143 129.396 1658.714
+  angles 0 -32.545 0
+ }
+ {
+  coords 5958.73 129.395 1656.519
+  angles 0 -125.573 0
+ }
+ {
+  coords 5956.527 129.39 1661.992
+  angles 0 -32.545 0
+ }
+ {
+  coords 5925.316 129.407 1709.564
+  angles 0 -35.718 0
+ }
+ {
+  coords 5865.421 129.382 1650.514
+  angles 0 89.226 0
+ }
+ {
+  coords 5872.914 129.326 1667.195
+  angles 0 138.577 0
+ }
+ {
+  coords 5872.914 130.517 1667.195
+  angles 0 138.577 0
+ }
+ {
+  coords 5865.421 130.615 1650.514
+  angles 0 89.226 0
+ }
+ {
+  coords 5999.91 128.32 1725.93
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.209 128.32 1726.905
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.209 129.53 1726.905
+  angles 0 143.104 0
+ }
+ {
+  coords 5999.987 129.53 1725.988
+  angles 0 143.104 0
+ }
+ {
+  coords 5999.987 130.71 1725.988
+  angles 0 143.104 0
+ }
+ {
+  coords 6001.165 130.71 1726.872
+  angles 0 143.104 0
+ }
+ {
+  coords 5997.276 131.065 1661.539
+  angles 0 142.171 0
+ }
+ {
+  coords 5997.965 131.224 1662.074
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.168 165.256 1637.603
+  angles 0 142.171 0
+ }
+ {
+  coords 5996.456 131.082 1660.902
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.095 165.362 1637.547
+  angles 0 142.171 0
+ }
+ {
+  coords 5997.276 131.224 1661.539
+  angles 0 142.171 0
+ }
+ {
+  coords 5996.435 131.224 1660.886
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.935 165.126 1638.199
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.935 165.043 1638.199
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.935 166.333 1638.199
+  angles 0 142.171 0
+ }
+ {
+  coords 5997.965 132.514 1662.074
+  angles 0 142.171 0
+ }
+ {
+  coords 5997.276 132.514 1661.539
+  angles 0 142.171 0
+ }
+ {
+  coords 5996.435 132.514 1660.886
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.095 166.652 1637.547
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.168 166.546 1637.603
+  angles 0 142.171 0
+ }
+ {
+  coords 5996.456 132.372 1660.902
+  angles 0 142.171 0
+ }
+ {
+  coords 6014.935 166.416 1638.199
+  angles 0 142.171 0
+ }
+ {
+  coords 5997.276 132.355 1661.539
+  angles 0 142.171 0
+ }
+ {
+  coords 5948.214 130.956 1686.856
+  angles 0 -38.064 0
+ }
+ {
+  coords 5948.214 129.78 1686.856
+  angles 0 -38.064 0
+ }
+ {
+  coords 5940.162 137.045 1685.233
+  angles 0 -38.064 0
+ }
+ {
+  coords 5948.214 132.064 1686.856
+  angles 0 -38.064 0
+ }
+ {
+  coords 5940.162 135.893 1685.233
+  angles 0 -38.064 0
+ }
+ {
+  coords 5952.961 137.135 1697.653
+  angles 0 -8.257 0
+ }
+ {
+  coords 5952.685 135.889 1697.613
+  angles 0 -8.257 0
+ }
+ {
+  coords 5952.961 135.908 1697.653
+  angles 0 -8.257 0
+ }
+ {
+  coords 5952.685 137.135 1697.613
+  angles 0 -8.257 0
+ }
+ {
+  coords 6000.022 129.437 1686.217
+  angles 0 143.956 0
+ }
+ {
+  coords 5969.177 131.281 1653.791
+  angles 0 -123.906 0
+ }
+ {
+  coords 5971.793 130.99 1648.968
+  angles 0 143.477 0
+ }
+ {
+  coords 5969.177 132.431 1653.791
+  angles 0 -123.906 0
+ }
+ {
+  coords 5970.647 130.99 1650.516
+  angles 0 143.477 0
+ }
+ {
+  coords 5972.376 130.64 1665.28
+  angles 0 143.477 0
+ }
+ {
+  coords 5971.18 130.99 1649.796
+  angles 0 143.477 0
+ }
+ {
+  coords 5972.376 129.479 1665.28
+  angles 0 143.477 0
+ }
+ {
+  coords 5973.105 130.99 1647.196
+  angles 0 143.477 0
+ }
+ {
+  coords 6000.416 130.643 1686.504
+  angles 0 143.956 0
+ }
+ {
+  coords 5970.268 130.99 1651.027
+  angles 0 143.477 0
+ }
+ {
+  coords 6000.041 130.643 1686.231
+  angles 0 143.956 0
+ }
+ {
+  coords 6000.474 129.437 1686.546
+  angles 0 143.956 0
+ }
+ {
+  coords 5972.461 130.99 1648.066
+  angles 0 143.477 0
+ }
+ {
+  coords 5973.105 129.888 1647.196
+  angles 0 143.477 0
+ }
+ {
+  coords 6017.859 130.235 1676.781
+  angles 0 50.13 0
+ }
+ {
+  coords 6017.859 132.615 1676.781
+  angles 0 50.13 0
+ }
+ {
+  coords 6017.859 131.462 1676.781
+  angles 0 50.13 0
+ }
+ {
+  coords 6001.208 128.342 1714.33
+  angles 0 144.021 0
+ }
+ {
+  coords 5991.756 128.852 1691.552
+  angles 0 144.021 0
+ }
+ {
+  coords 6001.208 129.472 1714.33
+  angles 0 144.021 0
+ }
+ {
+  coords 6008.809 128.582 1704.484
+  angles 0 144.021 0
+ }
+ {
+  coords 6002.698 129.472 1715.411
+  angles 0 144.021 0
+ }
+ {
+  coords 6008.809 127.382 1704.484
+  angles 0 144.021 0
+ }
+ {
+  coords 6002.72 128.342 1715.428
+  angles 0 144.021 0
+ }
+ {
+  coords 5991.756 127.64 1691.552
+  angles 0 144.021 0
+ }
+ {
+  coords 5853.051 129.381 1594.479
+  angles 0 88.097 0
+ }
+ {
+  coords 6039.02 129.37 1722.36
+  angles 0 56.109 0
+ }
+ {
+  coords 6000.486 129.3 1688.677
+  angles 0 -131.285 0
+ }
+ {
+  coords 6002.848 128.32 1728.135
+  angles 0 143.104 0
+ }
+ {
+  coords 6003.8 128.32 1728.849
+  angles 0 143.104 0
+ }
+ {
+  coords 6003.8 129.509 1728.849
+  angles 0 143.104 0
+ }
+ {
+  coords 6002.913 129.509 1728.183
+  angles 0 143.104 0
+ }
+ {
+  coords 6002.913 130.513 1728.183
+  angles 0 143.104 0
+ }
+ {
+  coords 6003.796 130.513 1728.846
+  angles 0 143.104 0
+ }
+ {
+  coords 6026.547 128.37 1741.731
+  angles 0 143.104 0
+ }
+ {
+  coords 6026.547 129.561 1741.731
+  angles 0 143.104 0
+ }
+ {
+  coords 6026.547 130.707 1741.731
+  angles 0 143.104 0
+ }
+ {
+  coords 6021.247 128.408 1737.537
+  angles 0 143.104 0
+ }
+ {
+  coords 6021.247 129.67 1737.537
+  angles 0 143.104 0
+ }
+ {
+  coords 6016.628 128.327 1733.636
+  angles 0 143.104 0
+ }
+ {
+  coords 6015.145 128.327 1732.522
+  angles 0 143.104 0
+ }
+ {
+  coords 6015.145 129.501 1732.522
+  angles 0 143.104 0
+ }
+ {
+  coords 6016.64 129.501 1733.644
+  angles 0 143.104 0
+ }
+ {
+  coords 5963.078 129.265 1691.141
+  angles 0 53.216 0
+ }
+ {
+  coords 5963.078 130.473 1691.141
+  angles 0 53.216 0
+ }
+ {
+  coords 5941.511 129.184 1706.187
+  angles 0 143.343 0
+ }
+ {
+  coords 5941.511 130.307 1706.187
+  angles 0 143.343 0
+ }
+ {
+  coords 5950.62 129.121 1686.496
+  angles 0 -128.312 0
+ }
+ {
+  coords 5951.308 129.121 1685.625
+  angles 0 -128.312 0
+ }
+ {
+  coords 5951.308 130.329 1685.625
+  angles 0 -128.312 0
+ }
+ {
+  coords 5950.5 130.329 1686.647
+  angles 0 -128.312 0
+ }
+ {
+  coords 5955.178 129.304 1680.608
+  angles 0 -128.312 0
+ }
+ {
+  coords 5955.935 129.304 1679.65
+  angles 0 -128.312 0
+ }
+ {
+  coords 5955.935 130.436 1679.65
+  angles 0 -128.312 0
+ }
+ {
+  coords 5955.115 130.436 1680.688
+  angles 0 -128.312 0
+ }
+ {
+  coords 5955.529 129.945 1677.272
+  angles 0 -38.59 0
+ }
+ {
+  coords 5955.529 131.151 1677.272
+  angles 0 -38.59 0
+ }
+ {
+  coords 5955.529 132.378 1677.272
+  angles 0 -38.59 0
+ }
+ {
+  coords 5939.603 129.204 1705.932
+  angles 0 40.647 0
+ }
+ {
+  coords 5939.023 129.204 1706.43
+  angles 0 40.647 0
+ }
+ {
+  coords 5939.023 130.381 1706.43
+  angles 0 40.647 0
+ }
+ {
+  coords 5939.529 130.381 1705.996
+  angles 0 40.647 0
+ }
+ {
+  coords 6032.024 130.024 1698.885
+  angles 0 53.73 0
+ }
+ {
+  coords 6032.024 131.186 1698.885
+  angles 0 53.73 0
+ }
+ {
+  coords 5932.499 129.199 1635.062
+  angles 0 -39.118 0
+ }
+ {
+  coords 5933.939 129.199 1636.234
+  angles 0 -39.118 0
+ }
+ {
+  coords 5928.437 129.199 1640.333
+  angles 0 -39.118 0
+ }
+ {
+  coords 5929.846 129.199 1641.479
+  angles 0 -39.118 0
+ }
+ {
+  coords 5928.003 129.207 1638.324
+  angles 0 51.685 0
+ }
+ {
+  coords 5930.478 129.207 1635.193
+  angles 0 51.685 0
+ }
+ {
+  coords 5882.551 129.413 1606.043
+  angles 0 67.34 0
+ }
+}
+$grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {
+ {
+  coords 5938.127 146.118 1595.715
+  angles 0 51.634 0
+ }
+ {
+  coords 5937.163 146.118 1596.933
+  angles 0 51.634 0
+ }
+}
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 6026.447 128.377 1730.585
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5999.343 132.3 1725.948
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5957.785 129.55 1734.496
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5924.944 129.303 1596.971
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5864.161 129.381 1638.879
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5881.707 129.436 1649.187
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5901.406 129.709 1689.143
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A85135E0B77C269}" {
+      SlotTemplate InventoryStorageSlot intel {
+       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 5960.937 129.395 1664.006
+ }
+ {
+  coords 6193.909 105.563 1555.89
+ }
+}

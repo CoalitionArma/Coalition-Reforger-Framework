@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3C85035B67D776AE}Configs/Gearscripts/Standard/GWOT/COA_GS_RUSMilitia_BunkerBuster.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
