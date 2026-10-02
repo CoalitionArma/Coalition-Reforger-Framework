@@ -32,10 +32,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A7B15B91E672D16}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "U.S Marines have landed on Soyoenpyeogdo Island, a Russian Stronghold, to destroy three MCOMs on the Island."\
+   m_sTextData "U.S Marines have landed on Soyoenpyeogdo Island, a Russian Stronghold, to destroy supply caches within the underground bunker."\
    ""\
-   "BLUFOR Composition: Motorized Infantry Platoon"\
-   "BLUFOR Assets: MAT"\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: Squad Integrated Demo"\
    ""\
    "OPFOR Composition: Infantry Platoon"\
    "OPFOR Assets: MMG"\
@@ -50,10 +50,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A7B15B91E6723C8}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Destroy each MCOM in order."\
+   "Destroy at least 50% of Enemy Supply Caches."\
    ""\
    "INTENT"\
-   "Be prepared for a fortified enemy postions and be wary of Marked OPFOR Minefields. Anyone can disarm the mines. Mcom B is underground, multiple entrances exist to get in there. Your MAT team is there to help bust thru enemy fortified postions."\
+   "Be prepared for fortified enemy postions  Multiple entrances exist to get in there. Your Squads have demo to destroy the caches."\
    ""\
    "EXECUTION"\
    "Commanders discretion"\
@@ -66,12 +66,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A7B15B91E672414}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Defend each Mcom in order"\
+   "Defend your supply caches"\
    ""\
    "INTENT"\
-   "BLUFOR has already landed on the island, luckly you were able to set up minefields on all major routes around the island. You have also been giving sandbags to help fortified postion you deem worthy. MCOM B is already pretty fortified, you will only need to fortfied MCOM A and MCOM C."\
-   ""\
-   "Once you teleport you cannot teleport back, make sure you teleport to the correct Mcom."\
+   "BLUFOR needs to destroy at least 50% of your caches to secure victory."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
