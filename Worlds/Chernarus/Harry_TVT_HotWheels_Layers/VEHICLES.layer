@@ -1,0 +1,108 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 1668.741 269.715 12053.639
+  angles 0 82.324 0
+  m_rVehicle "{B308E3F783833C8F}Prefabs/Vehicles/Wheeled/LAV25/LAV25 (Slat).et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1666.219 269.525 12061.536
+  angles 0 82.324 0
+  m_rVehicle "{B308E3F783833C8F}Prefabs/Vehicles/Wheeled/LAV25/LAV25 (Slat).et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1665.518 269.485 12068.904
+  angles 0 82.324 0
+  m_rVehicle "{B308E3F783833C8F}Prefabs/Vehicles/Wheeled/LAV25/LAV25 (Slat).et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1664.208 269.429 12079.733
+  angles 0 82.324 0
+  m_rVehicle "{B308E3F783833C8F}Prefabs/Vehicles/Wheeled/LAV25/LAV25 (Slat).et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1662.434 269.427 12092.968
+  angles 0 82.324 0
+  m_rVehicle "{B308E3F783833C8F}Prefabs/Vehicles/Wheeled/LAV25/LAV25 (Slat).et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1660.491 269.465 12106.29
+  angles 0 82.324 0
+  m_rVehicle "{99D8E96526104CCD}Prefabs/Vehicles/BLUFOR/BLUFOR_REPAIR.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 4612.811 309.484 8200.866
+  angles 0 4.864 0
+  m_rVehicle "{AFA5940761CFDDF8}Prefabs/Vehicles/Wheeled/BTR70/BTR72A.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4601.704 309.237 8228.332
+  angles 0 98.208 0
+  m_rVehicle "{AFA5940761CFDDF8}Prefabs/Vehicles/Wheeled/BTR70/BTR72A.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4600.878 308.751 8204.85
+  angles 0 16.405 0
+  m_rVehicle "{AFA5940761CFDDF8}Prefabs/Vehicles/Wheeled/BTR70/BTR72A.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4604.633 309.576 8240.978
+  angles 0 98.208 0
+  m_rVehicle "{AFA5940761CFDDF8}Prefabs/Vehicles/Wheeled/BTR70/BTR72A.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4583.058 307.195 8209.185
+  angles 0 16.302 0
+  m_rVehicle "{AFA5940761CFDDF8}Prefabs/Vehicles/Wheeled/BTR70/BTR72A.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4605.642 309.745 8257.104
+  angles 0 96.177 0
+  m_rVehicle "{1F248314047F79CF}Prefabs/Vehicles/OPFOR/OPFOR_REPAIR.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4674.223 312.67 8239.771
+  angles 0 -108.541 0
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4675.367 312.643 8231.661
+  angles 0 -108.541 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 1722.333 266.219 12064.692
+  angles 0 -77.209 0
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1719.093 266.512 12057.171
+  angles 0 -77.209 0
+  m_rVehicle "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+$grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ {
+  coords 1655.49 269.928 12088.672
+  angles 0 -17.053 0
+ }
+ {
+  coords 4600.622 309.644 8268.057
+  angles 0 -17.053 0
+ }
+}
