@@ -28,7 +28,7 @@ COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safest
    Position -1234.538 0 722.278
   }
   ShapePoint "{6A7165815CAB633C}" {
-   Position -1773.512 -0 344.356
+   Position -1773.512 0 344.356
   }
   ShapePoint "{6A71658A9B6A2F83}" {
    Position -1794.829 0 -259.93
@@ -49,10 +49,10 @@ COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safest
    Position -1506.82 0 -877.568
   }
   ShapePoint "{6A71658721A777A7}" {
-   Position -1466.264 -0 -659.411
+   Position -1466.264 0 -659.411
   }
   ShapePoint "{6A71658723A44BA6}" {
-   Position -1318.635 -0 -532.047
+   Position -1167.47 0 -617.058
   }
  }
 }
