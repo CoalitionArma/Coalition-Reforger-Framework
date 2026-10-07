@@ -83,11 +83,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
  m_iTimeLimitMinutes 45
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 15
- m_bUseCVON 0
+ m_bUseCVON 1
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 2
  m_sFactionOneKey "BLU"
@@ -724,6 +725,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{DF772B41EA36E3D7}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
   m_bEnableBFT 1
@@ -806,8 +808,7 @@ GenericEntity : "{25782F94FA996F41}Prefabs/Items/Demining/MineFlags/CRF_CTF_Flag
   ActionsManagerComponent "{508AB5952B584B2E}" {
    additionalActions {
     CRF_CTF_PickUpFlagAction "{6A273966B50E474D}" {
-     ParentContextList {
-      "default"
+     ParentContextList +{
      }
     }
    }
