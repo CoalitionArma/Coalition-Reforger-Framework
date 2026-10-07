@@ -1,19 +1,47 @@
 /**
- * After Action Report Menu UI class
- * Responsible for displaying mission summary, player statistics, and slot management
+ * After Action Review screen. Opened by the cinematic outro (CRF_COA_Outro) once it finishes, and
+ * fades in from black. Shows:
+ *  - the full-screen map with every map marker of every faction (CRF_AARManager sends them)
+ *  - voice channels, one per group (CRF_AARManager), which players can click to switch between
+ *  - the result, the mission/author, and the coalitiongroup.net AAR page for this round
+ *  - the local player's personal stats panel (CRF_AARStatsHUD)
+ *  - the per-faction roster (alive/total), mission description, chat, time/weather/player count
  */
 class COA_AARMenu: ChimeraMenuBase
 {
 	//----------------------------------------
+	// Constants
+	//----------------------------------------
+	protected static const ResourceName STATS_LAYOUT = "{7CDA3F81B4920E56}UI/layouts/HUD/Intro/CRF_AARStats.layout";
+	protected static const ResourceName CHANNEL_PLAYER_LAYOUT = "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout";
+	protected static const string WEBSITE_AAR_URL = "coalitiongroup.net/aar";
+
+	// Seconds the screen takes to fade in from the outro's black background
+	protected static const float FADE_IN_TIME = 3.0;
+	// Seconds between refreshes of the time/weather/player count header
+	protected static const float INFO_REFRESH_INTERVAL = 1.0;
+
+	// Faction sidebar slide positions (LeftFaction PositionX in AAR.layout) and ease-out rate -
+	// higher is snappier; 12 settles in about a quarter of a second
+	protected static const float SIDEBAR_CLOSED_X = -671;
+	protected static const float SIDEBAR_OPEN_X = -14;
+	protected static const float SIDEBAR_SLIDE_SPEED = 12;
+
+	//----------------------------------------
 	// UI Widget References
 	//----------------------------------------
 	protected Widget m_wRoot;
-	protected Widget m_wFactions;
-	protected Widget m_wMissionDescription;
-	protected Widget m_wRoleFrame;
 	protected Widget m_wLeftFaction;
+	protected Widget m_wSidebarHitArea; // "FactionSelector": covers the sidebar's visible content
+	protected bool m_bSidebarOpen;
+	protected Widget m_wFadeOverlay;
+	protected Widget m_wStatsRoot;
+	protected TextWidget m_wResultText;
+	protected TextWidget m_wLinkText;
+	protected TextWidget m_wTimeText;
+	protected TextWidget m_wPlayersText;
 	protected ButtonWidget m_wBackButton;
-	
+
 	//----------------------------------------
 	// Core Components
 	//----------------------------------------
@@ -21,137 +49,224 @@ class COA_AARMenu: ChimeraMenuBase
 	protected SCR_MapEntity m_MapEntity;
 	protected COA_Gamemode m_Gamemode;
 	protected COA_MenuManager m_MenuManager;
-	protected SCR_ListBoxComponent m_cPlayerListBoxComponent;
+	protected COA_ListboxComponent m_cChannelListBoxComponent;
 	protected COA_ListboxComponent m_cSlotListBoxComponent;
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent;
-	protected SCR_PlayerController m_PlayerController;
-	
+	protected ref CRF_AARStatsHUD m_StatsHUD;
+
 	//----------------------------------------
-	// Faction & Slot Data
+	// State
 	//----------------------------------------
 	protected Faction m_fSelectedFaction;
 	protected ref array<ref COA_MissionDescriptor> m_aActiveDescriptors = {};
-	
-	// Total slots per faction
-	protected int m_iBluforSlots = 0;
-	protected int m_iOpforSlots = 0;
-	protected int m_iIndforSlots = 0;
-	protected int m_iCivSlots = 0;
-	
-	// Currently alive slots per faction
-	protected int m_iAliveBluforSlots = 0;
-	protected int m_iAliveOpforSlots = 0;
-	protected int m_iAliveIndforSlots = 0;
-	protected int m_iAliveCivSlots = 0;
-	
+	protected float m_fFadeElapsed;
+	protected float m_fInfoRefreshTimer;
+	protected int m_iShownChannelChanges = -1;
+
+	// Set when the round leaves the AAR, so the menu doesn't reopen itself (see OnMenuClose)
+	protected bool m_bAllowClose;
+
+	// Total and alive (not dead) slotted players per faction
+	protected int m_iBluforSlots;
+	protected int m_iOpforSlots;
+	protected int m_iIndforSlots;
+	protected int m_iCivSlots;
+	protected int m_iAliveBluforSlots;
+	protected int m_iAliveOpforSlots;
+	protected int m_iAliveIndforSlots;
+	protected int m_iAliveCivSlots;
+
 	//----------------------------------------
 	// Menu Lifecycle Methods
 	//----------------------------------------
-	
-	/**
-	 * Initialize the menu when it's first created
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	override void OnMenuInit()
-	{	
+	{
 		super.OnMenuInit();
-			
+
 		if (!m_MapEntity)
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
 	}
-	
-	/**
-	 * Called when the menu is opened
-	 * Initializes all UI elements and sets up data
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	override void OnMenuOpen()
-	{	
+	{
 		super.OnMenuOpen();
-		
+
 		// Exit if this is a dedicated server (menu is client-side only)
-		if (RplSession.Mode() == RplMode.Dedicated) {
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			m_bAllowClose = true;
 			Close();
 			return;
 		}
-		
-		// Initialize map if available
-		if (m_MapEntity)
-		{	
-			GetGame().GetCallqueue().Call(OpenMap); 
-		}
-		
-		// Set up input handling
-		SetupInputHandlers();
-		
-		// Initialize UI components
-		InitializeUIComponents();
-		
-		// Set up mission text and weather information
-		SetupMissionInfo();
-		
-		// Initialize faction flags
-		SetupFactionFlags();
-		
-		// Initialize faction selection colors
-		SetupFactionColors();
-		
-		// Initialize slots
-		InitSlots();
-		
-		// Select initial faction based on availability
-		SelectInitialFaction();
-		
-		// Update the UI to reflect current slot status
-		UpdateSlots();
-		
-		// Register for slot updates (structural: lock/death/group/role deltas + batch sync)
-		COA_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
-		// Also register for surgical player-ID delta updates so AAR stays current
-		COA_SlottingManager.GetInstance().GetOnSlotChanged().Insert(UpdateSlots);
-		
-		// Initialize back button
-		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
-		m_wBackButton.SetOpacity(0);
-		m_wBackButton.SetEnabled(false);
-		
-		// Initialize mission description list
-		m_cMissionDescriptionListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("DescriptionList")).FindHandler(SCR_ListBoxComponent));
-		
-		// Initialize description panel
-		DescriptionInit();
-	}
-	
-	/**
-	 * Initialize UI components and store references
-	 */
-	protected void InitializeUIComponents()
-	{
+
 		m_wRoot = GetRootWidget();
 		m_Gamemode = COA_Gamemode.GetInstance();
 		m_MenuManager = COA_MenuManager.GetInstance();
-		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		
-		// Find main UI panels
-		m_wFactions = m_wRoot.FindAnyWidget("Factions");
-		m_wMissionDescription = m_wRoot.FindAnyWidget("DescriptionList");
-		m_wRoleFrame = m_wRoot.FindAnyWidget("RoleList");
-		m_wLeftFaction = m_wRoot.FindAnyWidget("LeftFaction");
-		
-		// Initialize chat panel
-		Widget wChatPanel = GetRootWidget().FindAnyWidget("ChatPanel");
-		if (wChatPanel)
-			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
-		
-		// Initialize list components
-		m_cPlayerListBoxComponent = SCR_ListBoxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("PlayerList")).FindHandler(SCR_ListBoxComponent));
-		m_cSlotListBoxComponent = COA_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(COA_ListboxComponent));
+
+		// The outro muted voice - the AAR is where everyone talks again. The game world stays muted
+		// (sound effects) for as long as the AAR is up, see OnMenuUpdate/OnMenuClose.
+		if (m_Gamemode)
+			m_Gamemode.m_bIsInEndCredits = false;
+		AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
+
+		InitializeUIComponents();
+		SetupInputHandlers();
+		SetupMissionInfo();
+		SetupResultAndLink();
+		SetupFactionFlags();
+		SetupFactionColors();
+		SetupFactionButtons();
+		CreateStatsPanel();
+		StartFadeIn();
+
+		if (m_MapEntity)
+			GetGame().GetCallqueue().Call(OpenMap);
+
+		// Faction roster
+		SelectInitialFaction();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (slottingManager)
+		{
+			slottingManager.GetOnSlottingUpdate().Insert(UpdateSlots);
+			slottingManager.GetOnSlotChanged().Insert(UpdateSlots);
+		}
+
+		// Voice channels
+		if (m_MenuManager)
+			m_MenuManager.GetOnPlayerChannelChanged().Insert(OnPlayerChannelChanged);
+		RebuildChannelList();
+
+		// Mission description list
+		m_wBackButton = ButtonWidget.Cast(m_wRoot.FindAnyWidget("BackButton"));
+		m_cMissionDescriptionListBoxComponent = SCR_ListBoxComponent.Cast(m_wRoot.FindAnyWidget("DescriptionList").FindHandler(SCR_ListBoxComponent));
+		DescriptionInit();
+
+		UpdateInfoDisplay();
+
+		// Ask the server for every faction's map markers and the website link
+		COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (authorityManager)
+			authorityManager.RequestAARData();
 	}
-	
-	/**
-	 * Set up input handlers for menu controls
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuClose()
+	{
+		super.OnMenuClose();
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (slottingManager)
+		{
+			slottingManager.GetOnSlottingUpdate().Remove(UpdateSlots);
+			slottingManager.GetOnSlotChanged().Remove(UpdateSlots);
+		}
+
+		if (m_MenuManager)
+			m_MenuManager.GetOnPlayerChannelChanged().Remove(OnPlayerChannelChanged);
+
+		CRF_AARSessionStats.s_OnMissionIdReceived.Remove(UpdateLinkText);
+
+		// Give the game world its sound back (if the AAR reopens itself it mutes it again)
+		AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
+
+		if (m_StatsHUD)
+		{
+			m_StatsHUD.Cleanup();
+			m_StatsHUD = null;
+		}
+
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
+		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
+		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		// Like the outro, the AAR can't be dismissed while the round is still in it - otherwise a
+		// stray menu close would leave the player looking at the world with nothing to do
+		if (!m_bAllowClose)
+			GetGame().GetCallqueue().Call(ReopenIfStillInAAR);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static void ReopenIfStillInAAR()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		MenuManager menuManager = GetGame().GetMenuManager();
+		if (!menuManager || menuManager.FindMenuByPreset(ChimeraMenuPreset.COA_AARMenu))
+			return;
+
+		menuManager.OpenMenu(ChimeraMenuPreset.COA_AARMenu);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+
+		if (m_Gamemode && m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			m_bAllowClose = true;
+
+		// Keep the game world (ambient sound, gunfire, vehicles) muted - re-applied every frame, as
+		// the outro does, so nothing that resets the volume brings it back
+		AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
+
+		if (m_MapEntity)
+			GetGame().GetInputManager().ActivateContext("MapContext");
+
+		UpdateFadeIn(tDelta);
+
+		// Cheap int compare; the list is only rebuilt when the channels actually change
+		if (m_MenuManager && m_MenuManager.m_iChannelChanges != m_iShownChannelChanges)
+			RebuildChannelList();
+
+		m_fInfoRefreshTimer += tDelta;
+		if (m_fInfoRefreshTimer >= INFO_REFRESH_INTERVAL)
+		{
+			m_fInfoRefreshTimer = 0;
+			UpdateInfoDisplay();
+		}
+
+		if (m_ChatPanel)
+			m_ChatPanel.OnUpdateChat(tDelta);
+
+		AnimateSidebar(tDelta);
+	}
+
+	//----------------------------------------
+	// Setup
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	protected void InitializeUIComponents()
+	{
+		m_wLeftFaction = m_wRoot.FindAnyWidget("LeftFaction");
+		m_wSidebarHitArea = m_wRoot.FindAnyWidget("FactionSelector");
+		m_wFadeOverlay = m_wRoot.FindAnyWidget("FadeOverlay");
+		m_wResultText = TextWidget.Cast(m_wRoot.FindAnyWidget("ResultText"));
+		m_wLinkText = TextWidget.Cast(m_wRoot.FindAnyWidget("LinkText"));
+		m_wTimeText = TextWidget.Cast(m_wRoot.FindAnyWidget("TimeText"));
+		m_wPlayersText = TextWidget.Cast(m_wRoot.FindAnyWidget("PlayersText"));
+
+		Widget chatPanelWidget = m_wRoot.FindAnyWidget("ChatPanel");
+		if (chatPanelWidget)
+			m_ChatPanel = SCR_ChatPanel.Cast(chatPanelWidget.FindHandler(SCR_ChatPanel));
+
+		m_cChannelListBoxComponent = COA_ListboxComponent.Cast(m_wRoot.FindAnyWidget("PlayerList").FindHandler(COA_ListboxComponent));
+		m_cSlotListBoxComponent = COA_ListboxComponent.Cast(m_wRoot.FindAnyWidget("RoleList").FindHandler(COA_ListboxComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetupInputHandlers()
 	{
-		// Add action listeners
+		// CVON handles push-to-talk itself; this is the vanilla VON fallback
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
 			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
@@ -160,57 +275,148 @@ class COA_AARMenu: ChimeraMenuBase
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
-	
-	/**
-	 * Set up mission information displays
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetupMissionInfo()
 	{
 		TextWidget missionText = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionText"));
-		
-		// Set mission name
-		if(GetGame().GetMissionName())
-			missionText.SetText(GetGame().GetMissionName());
-		else
-			missionText.SetText("Unknown Mission");
-		
-		// Add author information if available
-		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
-		if(header)
-			missionText.SetText(missionText.GetText() + " | By " + header.m_sAuthor);
-		else
-			missionText.SetText(missionText.GetText() + " | By " + "Unknown");
-		
-		// Set weather text
-		string currentStateName = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager().GetCurrentWeatherState().GetStateName();
-		TextWidget.Cast(m_wRoot.FindAnyWidget("WeatherText")).SetText("Weather: " + currentStateName);
+		if (missionText)
+		{
+			string missionName = "Unknown Mission";
+			if (GetGame().GetMissionName())
+				missionName = GetGame().GetMissionName();
+
+			string author = "Unknown";
+			SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+			if (header && header.m_sAuthor)
+				author = header.m_sAuthor;
+
+			missionText.SetText(missionName + " | By " + author);
+		}
+
+		TextWidget weatherText = TextWidget.Cast(m_wRoot.FindAnyWidget("WeatherText"));
+		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());
+		if (weatherText && world && world.GetTimeAndWeatherManager())
+			weatherText.SetText("Weather: " + world.GetTimeAndWeatherManager().GetCurrentWeatherState().GetStateName());
 	}
-	
-	/**
-	 * Set up faction flags in the UI
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! Result banner (winner, coloured by faction) and the coalitiongroup.net AAR page link
+	protected void SetupResultAndLink()
+	{
+		if (m_wResultText)
+		{
+			string winningFaction;
+			COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
+			if (broadcastManager)
+				winningFaction = broadcastManager.m_sOutroWinningFaction;
+
+			Faction faction;
+			if (winningFaction != "" && GetGame().GetFactionManager())
+				faction = GetGame().GetFactionManager().GetFactionByKey(winningFaction);
+
+			if (faction)
+			{
+				m_wResultText.SetText(GetOutcomeText(winningFaction));
+				m_wResultText.SetColor(faction.GetFactionColor());
+			}
+			else
+			{
+				m_wResultText.SetText("MISSION COMPLETE");
+			}
+		}
+
+		// The mission ID can arrive after the menu opens (the server looks it up when the AAR starts)
+		CRF_AARSessionStats.s_OnMissionIdReceived.Insert(UpdateLinkText);
+		UpdateLinkText();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetOutcomeText(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR": return "BLUFOR VICTORY";
+			case "OPFOR": return "OPFOR VICTORY";
+			case "INDFOR": return "INDFOR VICTORY";
+			case "CIV": return "CIVILIAN VICTORY";
+		}
+		return "MISSION COMPLETE";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateLinkText()
+	{
+		if (!m_wLinkText)
+			return;
+
+		if (CRF_AARSessionStats.s_iMissionId > 0)
+			m_wLinkText.SetText(string.Format("Full AAR: %1/%2", WEBSITE_AAR_URL, CRF_AARSessionStats.s_iMissionId));
+		else
+			m_wLinkText.SetText("Past missions: " + WEBSITE_AAR_URL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The personal stats panel that used to appear on the outro
+	protected void CreateStatsPanel()
+	{
+		Widget statsHolder = m_wRoot.FindAnyWidget("StatsHolder");
+		if (!statsHolder)
+		{
+			Print("[COA_AARMenu] StatsHolder widget missing from the AAR layout - no stats panel", LogLevel.WARNING);
+			return;
+		}
+
+		m_wStatsRoot = GetGame().GetWorkspace().CreateWidgets(STATS_LAYOUT, statsHolder);
+		if (!m_wStatsRoot)
+		{
+			Print("[COA_AARMenu] Could not create the stats panel layout " + STATS_LAYOUT, LogLevel.WARNING);
+			return;
+		}
+
+		// The stats layout's root frame has no slot of its own, so stretch it over the holder -
+		// otherwise it can end up zero-sized and draw nothing
+		FrameSlot.SetAnchorMin(m_wStatsRoot, 0, 0);
+		FrameSlot.SetAnchorMax(m_wStatsRoot, 1, 1);
+		FrameSlot.SetOffsets(m_wStatsRoot, 0, 0, 0, 0);
+		m_wStatsRoot.SetVisible(true);
+		m_wStatsRoot.SetOpacity(1);
+
+		// The panel background is off by default (it sat on the outro's black screen); turn it on so
+		// the text is readable over the map
+		Widget panelBackground = m_wStatsRoot.FindAnyWidget("PanelBG");
+		if (panelBackground)
+			panelBackground.SetOpacity(1);
+
+		m_StatsHUD = new CRF_AARStatsHUD(m_wStatsRoot);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetupFactionFlags()
 	{
-		// Set flag images for each faction
 		SetFactionFlag("FlagBlufor", "BLUFOR");
 		SetFactionFlag("FlagOpfor", "OPFOR");
 		SetFactionFlag("FlagIndfor", "INDFOR");
 		SetFactionFlag("FlagCiv", "CIV");
 	}
-	
-	/**
-	 * Helper method to set a faction flag
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetFactionFlag(string widgetName, string factionKey)
 	{
 		ImageWidget flagWidget = ImageWidget.Cast(m_wRoot.FindAnyWidget(widgetName));
-		flagWidget.LoadImageTexture(1, SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey(factionKey)).GetFactionFlag());
+		if (!flagWidget || !GetGame().GetFactionManager())
+			return;
+
+		// A mission doesn't have to define all four factions
+		SCR_Faction faction = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey(factionKey));
+		if (!faction)
+			return;
+
+		flagWidget.LoadImageTexture(1, faction.GetFactionFlag());
 		flagWidget.SetImage(1);
 	}
-	
-	/**
-	 * Set up faction selection colors
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetupFactionColors()
 	{
 		m_wRoot.FindAnyWidget("BluforBGSelect").SetColor(Color.FromRGBA(34, 196, 244, 33));
@@ -218,304 +424,315 @@ class COA_AARMenu: ChimeraMenuBase
 		m_wRoot.FindAnyWidget("IndforBGSelect").SetColor(Color.FromRGBA(0, 177, 79, 33));
 		m_wRoot.FindAnyWidget("CivBGSelect").SetColor(Color.FromRGBA(168, 110, 207, 33));
 	}
-	
-	/**
-	 * Select initial faction based on availability
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! The old AAR screen never wired these up, so its faction tabs did nothing when clicked
+	protected void SetupFactionButtons()
+	{
+		SCR_ButtonTextComponent button = GetFactionButton("ButtonBlufor");
+		if (button)
+			button.m_OnClicked.Insert(SelectFactionBlufor);
+
+		button = GetFactionButton("ButtonOpfor");
+		if (button)
+			button.m_OnClicked.Insert(SelectFactionOpfor);
+
+		button = GetFactionButton("ButtonIndfor");
+		if (button)
+			button.m_OnClicked.Insert(SelectFactionIndfor);
+
+		button = GetFactionButton("ButtonCiv");
+		if (button)
+			button.m_OnClicked.Insert(SelectFactionCiv);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected SCR_ButtonTextComponent GetFactionButton(string widgetName)
+	{
+		Widget buttonWidget = m_wRoot.FindAnyWidget(widgetName);
+		if (!buttonWidget)
+			return null;
+
+		return SCR_ButtonTextComponent.Cast(buttonWidget.FindHandler(SCR_ButtonTextComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void SelectInitialFaction()
 	{
 		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
-		
-		if(slottingManager.IsFactionValid("BLUFOR"))
+		if (!slottingManager)
+			return;
+
+		if (slottingManager.IsFactionValid("BLUFOR"))
 			SelectFactionBlufor();
-		else if(slottingManager.IsFactionValid("OPFOR"))
+		else if (slottingManager.IsFactionValid("OPFOR"))
 			SelectFactionOpfor();
-		else if(slottingManager.IsFactionValid("INDFOR"))
+		else if (slottingManager.IsFactionValid("INDFOR"))
 			SelectFactionIndfor();
-		else if(slottingManager.IsFactionValid("CIV"))
+		else if (slottingManager.IsFactionValid("CIV"))
 			SelectFactionCiv();
 	}
-	
-	/**
-	 * Clean up when menu is closed
-	 */
-	override void OnMenuClose()
+
+	//----------------------------------------
+	// Fade-in
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	protected void StartFadeIn()
 	{
-		super.OnMenuClose();
-		
-		// Unregister from slot updates
-		COA_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
-		COA_SlottingManager.GetInstance().GetOnSlotChanged().Remove(UpdateSlots);
-		
-		// Remove input handlers
-		if (!CVON_VONGameModeComponent.GetInstance())
+		m_fFadeElapsed = 0;
+		if (!m_wFadeOverlay)
+			return;
+
+		m_wFadeOverlay.SetVisible(true);
+		m_wFadeOverlay.SetOpacity(1);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateFadeIn(float tDelta)
+	{
+		if (!m_wFadeOverlay || !m_wFadeOverlay.IsVisible())
+			return;
+
+		m_fFadeElapsed += tDelta;
+		float opacity = 1 - Math.Clamp(m_fFadeElapsed / FADE_IN_TIME, 0, 1);
+		m_wFadeOverlay.SetOpacity(opacity);
+
+		if (opacity <= 0)
+			m_wFadeOverlay.SetVisible(false);
+	}
+
+	//----------------------------------------
+	// Header info
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateInfoDisplay()
+	{
+		if (m_wPlayersText)
+			m_wPlayersText.SetText("Players: " + GetGame().GetPlayerManager().GetPlayerCount());
+
+		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());
+		if (!m_wTimeText || !world || !world.GetTimeAndWeatherManager())
+			return;
+
+		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
+		m_wTimeText.SetText(string.Format("Time: %1:%2", time.m_iHours.ToString(2), time.m_iMinutes.ToString(2)));
+	}
+
+	//----------------------------------------
+	// Voice channels
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	//! A single player moved channel. The AAR rebuilds the (small) list rather than patching rows.
+	protected void OnPlayerChannelChanged(int playerId, int newChannelIndex, int oldChannelIndex)
+	{
+		m_iShownChannelChanges = -1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! One header per channel (click to join it) followed by its players
+	protected void RebuildChannelList()
+	{
+		if (!m_cChannelListBoxComponent || !m_MenuManager)
+			return;
+
+		m_iShownChannelChanges = m_MenuManager.m_iChannelChanges;
+		m_cChannelListBoxComponent.Clear();
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		int localChannel = m_MenuManager.GetChannel(localPlayerId);
+
+		// Parse every channel's members first: Global (index 1) also shows everyone who isn't listed in
+		// any channel, and that is only known once the later channels have been read too
+		array<int> unlistedPlayers = {};
+		playerManager.GetPlayers(unlistedPlayers);
+
+		array<string> channelNames = {};
+		array<ref array<int>> channelMembers = {};
+
+		foreach (string channelData : m_MenuManager.m_aVONChannels)
 		{
-			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+			array<string> channelParts = {};
+			channelData.Split("|", channelParts, true);
+
+			string channelName;
+			if (!channelParts.IsEmpty())
+				channelName = channelParts[0];
+
+			array<int> members = {};
+			if (channelParts.Count() > 1)
+			{
+				array<string> memberIds = {};
+				channelParts[1].Split(",", memberIds, true);
+				foreach (string memberId : memberIds)
+				{
+					int playerId = memberId.ToInt();
+					if (playerId <= 0 || !playerManager.IsPlayerConnected(playerId) || members.Contains(playerId))
+						continue;
+
+					members.Insert(playerId);
+					unlistedPlayers.RemoveItem(playerId);
+				}
+			}
+
+			channelNames.Insert(channelName);
+			channelMembers.Insert(members);
 		}
-		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
-		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
-	}
-	
-	/**
-	 * Update the menu each frame
-	 */
-	override void OnMenuUpdate(float tDelta)
-	{
-		super.OnMenuUpdate(tDelta);
-		
-		// Activate map context if map exists
-		if (m_MapEntity)
-			GetGame().GetInputManager().ActivateContext("MapContext");
-		
-		// Update time display
-		UpdateTimeDisplay();
-		
-		// Update player count
-		UpdatePlayerCount();
-		
-		// Update player list
-		UpdatePlayerList(tDelta);
-		
-		// Update faction availability
-		UpdateFactionAvailability();
-		
-		// Handle sidebar animation
-		AnimateSidebar(tDelta);
-	}
-	
-	/**
-	 * Update the time display
-	 */
-	protected void UpdateTimeDisplay()
-	{
-		TimeContainer timeContainer = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetTimeAndWeatherManager().GetTime();
-		int hours = timeContainer.m_iHours;
-		int minutes = timeContainer.m_iMinutes;
-		
-		string minuteString;
-		string hourString;
-		
-		if(minutes < 10)
-			minuteString = "0" + minutes.ToString();
-		else
-			minuteString = minutes.ToString();
-		
-		if(hours < 10)
-			hourString = "0" + hours.ToString();
-		else
-			hourString = hours.ToString();
-		
-		TextWidget.Cast(m_wRoot.FindAnyWidget("TimeText")).SetText("Time: " + hourString + ":" + minuteString);
-	}
-	
-	/**
-	 * Update the player count display
-	 */
-	protected void UpdatePlayerCount()
-	{
-		TextWidget.Cast(m_wRoot.FindAnyWidget("PlayersText")).SetText("Players: " + GetGame().GetPlayerManager().GetPlayerCount());
-	}
-	
-	/**
-	 * Update the player list with current players
-	 */
-	protected void UpdatePlayerList(float tDelta)
-	{
-		ref array<int> playerIds = {};
-		
-		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
-		m_cPlayerListBoxComponent.Clear();
-		
-		foreach(int playerId : playerIds)
+
+		for (int channelIndex = 0, channelCount = channelNames.Count(); channelIndex < channelCount; channelIndex++)
 		{
-			if(!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			if (channelNames[channelIndex].IsEmpty())
 				continue;
-				
-			int index = m_cPlayerListBoxComponent.AddItem(GetGame().GetPlayerManager().GetPlayerName(playerId), null, "{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout");
-			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
-			
-			if (!CVON_VONGameModeComponent.GetInstance())
+
+			array<int> members = channelMembers[channelIndex];
+
+			// Global also holds everyone who hasn't been put in a channel
+			if (channelIndex == 1)
 			{
-				// Set color based on player status
-				if(SCR_Global.IsAdmin(playerId))
-					comp.SetColor(Color.Red);
-				else if(COA_PermissionManager.GetInstance().IsModerator(playerId))
-					comp.SetColor(Color.Yellow);
-				else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
-					comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
+				foreach (int unlistedId : unlistedPlayers)
+					members.Insert(unlistedId);
 			}
-			else
+
+			// Like the spectator list, Deafen only ever shows yourself
+			if (channelIndex == 0)
 			{
-				// Set color based on player status
-				if(SCR_Global.IsAdmin(playerId))
-					comp.SetColor(Color.Red);
-				else if(COA_PermissionManager.GetInstance().IsModerator(playerId))
-					comp.SetColor(Color.Yellow);
+				members.Clear();
+				if (localChannel == 0)
+					members.Insert(localPlayerId);
 			}
+
+			AddChannelRows(channelIndex, channelNames[channelIndex], members, channelIndex == localChannel, playerManager);
 		}
-		
-		// Update chat if available
-		if (m_ChatPanel)
-			m_ChatPanel.OnUpdateChat(tDelta);
 	}
-	
-	/**
-	 * Update the faction availability status
-	 */
-	protected void UpdateFactionAvailability()
+
+	//------------------------------------------------------------------------------------------------
+	protected void AddChannelRows(int channelIndex, string channelName, array<int> members, bool isLocalChannel, PlayerManager playerManager)
 	{
-		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
-		
-		// Update BLUFOR status
-		UpdateFactionStatus("BLUFOR", "SlotsBlufor", "BluforFactionLockBG", "BluforFactionLock", "ButtonBlufor", 
-			m_iAliveBluforSlots, m_iBluforSlots, slottingManager.IsFactionValid("BLUFOR"));
-			
-		// Update OPFOR status
-		UpdateFactionStatus("OPFOR", "SlotsOpfor", "OpforFactionLockBG", "OpforFactionLock", "ButtonOpfor",
-			m_iAliveOpforSlots, m_iOpforSlots, slottingManager.IsFactionValid("OPFOR"));
-			
-		// Update INDFOR status
-		UpdateFactionStatus("INDFOR", "SlotsIndfor", "IndforFactionLockBG", "IndforFactionLock", "ButtonIndfor",
-			m_iAliveIndforSlots, m_iIndforSlots, slottingManager.IsFactionValid("INDFOR"));
-			
-		// Update CIV status
-		UpdateFactionStatus("CIV", "SlotsCiv", "CivFactionLockBG", "CivFactionLock", "ButtonCiv",
-			m_iAliveCivSlots, m_iCivSlots, slottingManager.IsFactionValid("CIV"));
-	}
-	
-	/**
-	 * Helper method to update a faction's status display
-	 */
-	protected void UpdateFactionStatus(string factionKey, string slotsWidget, string lockBgWidget, string lockWidget, string buttonWidget,
-		int aliveSlots, int totalSlots, bool isValid)
-	{
-		if(isValid)
+		string headerText = string.Format("%1 [%2]", channelName, members.Count());
+		if (isLocalChannel)
+			headerText = "> " + headerText;
+
+		int headerIndex = m_cChannelListBoxComponent.AddItemChannel(null, headerText);
+		COA_ListBoxElementComponent channelComponent = m_cChannelListBoxComponent.GetCRFElementComponent(headerIndex);
+		if (channelComponent)
 		{
-			TextWidget.Cast(m_wRoot.FindAnyWidget(slotsWidget)).SetText(aliveSlots.ToString() + "/" + totalSlots);
-			ImageWidget.Cast(m_wRoot.FindAnyWidget(lockBgWidget)).SetColor(Color.FromRGBA(63,63,63,0));
-			ImageWidget.Cast(m_wRoot.FindAnyWidget(lockWidget)).SetColor(Color.FromRGBA(255,255,255,0));
-			ButtonWidget.Cast(m_wRoot.FindAnyWidget(buttonWidget)).SetEnabled(true);
+			channelComponent.m_iChannelId = channelIndex;
+			channelComponent.GetChannelButton().m_OnClicked.Insert(JoinSelectedChannelDelayed);
+		}
+
+		foreach (int playerId : members)
+		{
+			int rowIndex = m_cChannelListBoxComponent.AddItem(playerManager.GetPlayerName(playerId), null, CHANNEL_PLAYER_LAYOUT);
+			COA_ListBoxElementComponent playerComponent = m_cChannelListBoxComponent.GetCRFElementComponent(rowIndex);
+			if (playerComponent)
+			{
+				playerComponent.m_iPlayerId = playerId;
+				playerComponent.m_bIsPlayer = true;
+			}
 		}
 	}
-	
-	/**
-	 * Animate the sidebar based on cursor position
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	protected void JoinSelectedChannelDelayed()
+	{
+		GetGame().GetCallqueue().Call(JoinSelectedChannel);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Group channels and Deafen/Global are joined directly. A player-created channel (named
+	//! "Name's Channel (ID)") still asks its creator first, as in the spectator menu.
+	protected void JoinSelectedChannel()
+	{
+		if (!m_cChannelListBoxComponent || !m_MenuManager)
+			return;
+
+		COA_ListBoxElementComponent selectedComponent = m_cChannelListBoxComponent.GetCRFElementComponent(m_cChannelListBoxComponent.GetSelectedItem());
+		if (!selectedComponent)
+			return;
+
+		COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (!authorityManager)
+			return;
+
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		int channelId = selectedComponent.m_iChannelId;
+		if (channelId < 0 || channelId >= m_MenuManager.m_aVONChannels.Count() || channelId == m_MenuManager.GetChannel(localPlayerId))
+			return;
+
+		if (m_MenuManager.m_aVONChannels[channelId].Contains("("))
+			authorityManager.RequestToJoinChannel(channelId, localPlayerId);
+		else
+			authorityManager.JoinChannel(localPlayerId, channelId);
+	}
+
+	//----------------------------------------
+	// Faction roster
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateFactionStatus(string slotsWidget, string lockBgWidget, string lockWidget, string buttonWidget, int aliveSlots, int totalSlots, bool isValid)
+	{
+		if (!isValid)
+			return;
+
+		TextWidget.Cast(m_wRoot.FindAnyWidget(slotsWidget)).SetText(aliveSlots.ToString() + "/" + totalSlots);
+		ImageWidget.Cast(m_wRoot.FindAnyWidget(lockBgWidget)).SetColor(Color.FromRGBA(63, 63, 63, 0));
+		ImageWidget.Cast(m_wRoot.FindAnyWidget(lockWidget)).SetColor(Color.FromRGBA(255, 255, 255, 0));
+		ButtonWidget.Cast(m_wRoot.FindAnyWidget(buttonWidget)).SetEnabled(true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Slide the faction sidebar open while the cursor is over it.
+	//! Hover is decided from the sidebar's rectangle rather than the widget under the cursor (which
+	//! changes as different child widgets slide past, making it flicker open/closed), with hysteresis:
+	//! it opens when the cursor touches the visible part, and stays open while the cursor is anywhere
+	//! the fully-open panel covers - even mid-animation.
 	protected void AnimateSidebar(float tDelta)
 	{
-		Widget cursorWidget = WidgetManager.GetWidgetUnderCursor();
-		float leftFactionX = FrameSlot.GetPosX(m_wLeftFaction);
-		
-		if(cursorWidget)
+		if (!m_wLeftFaction || !m_wSidebarHitArea)
+			return;
+
+		float currentX = FrameSlot.GetPosX(m_wLeftFaction);
+
+		int mouseX, mouseY;
+		WidgetManager.GetMousePos(mouseX, mouseY);
+
+		float hitX, hitY, hitWidth, hitHeight;
+		m_wSidebarHitArea.GetScreenPos(hitX, hitY);
+		m_wSidebarHitArea.GetScreenSize(hitWidth, hitHeight);
+
+		if (m_bSidebarOpen)
 		{
-			Widget parentWidget = cursorWidget.GetParent();
-			
-			// Check if cursor is over a menu element
-			if(parentWidget == m_wFactions || parentWidget == m_wMissionDescription || 
-			   parentWidget == m_wRoleFrame || parentWidget == m_wLeftFaction || 
-			   cursorWidget.FindHandler(COA_ListBoxElementComponent))
-			{
-				// Slide in
-				leftFactionX += tDelta * 2400.0;
-				if (leftFactionX > -14)
-					leftFactionX = -14;
-			}
-			else
-			{
-				// Slide out
-				leftFactionX -= tDelta * 2400.0;
-				if (leftFactionX < -671)
-					leftFactionX = -671;
-			}
+			// Where the panel will sit once fully open, in screen pixels
+			float openOffset = GetGame().GetWorkspace().DPIScale(SIDEBAR_OPEN_X - currentX);
+			float openLeft = hitX + openOffset;
+			m_bSidebarOpen = mouseX >= openLeft && mouseX <= openLeft + hitWidth && mouseY >= hitY && mouseY <= hitY + hitHeight;
 		}
 		else
 		{
-			// Slide out when no cursor
-			leftFactionX -= tDelta * 2400.0;
-			if (leftFactionX < -671)
-				leftFactionX = -671;
+			// Only the part currently on screen can be hovered to open it
+			m_bSidebarOpen = mouseX >= Math.Max(hitX, 0) && mouseX <= hitX + hitWidth && mouseY >= hitY && mouseY <= hitY + hitHeight;
 		}
-		
-		FrameSlot.SetPosX(m_wLeftFaction, leftFactionX);
+
+		float targetX = SIDEBAR_CLOSED_X;
+		if (m_bSidebarOpen)
+			targetX = SIDEBAR_OPEN_X;
+
+		// Ease out towards the target; snap once it's close enough not to matter
+		float newX = currentX + (targetX - currentX) * (1 - Math.Pow(2.71828, -SIDEBAR_SLIDE_SPEED * tDelta));
+		if (Math.AbsFloat(targetX - newX) < 0.5)
+			newX = targetX;
+
+		FrameSlot.SetPosX(m_wLeftFaction, newX);
 	}
-	
-	//----------------------------------------
-	// Description Panel Methods
-	//----------------------------------------
-	
-	/**
-	 * Initialize the mission description panel
-	 */
-	void DescriptionInit()
+
+	//------------------------------------------------------------------------------------------------
+	//! Count slotted players (and those still alive) per faction
+	protected void CountSlots()
 	{
-		// Disable scrolling initially
-		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
-		scrollLayout.SetEnabled(false);
-		
-		// Reset back button
-		m_wBackButton.SetOpacity(0);
-		m_wBackButton.SetEnabled(false);
-		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
-		backButton.m_OnClicked.Clear();
-		
-		// Clear description text
-		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
-		missionDescriptionText.SetText("");
-		
-		// Set up description list
-		m_cMissionDescriptionListBoxComponent.Clear();
-		m_aActiveDescriptors.Clear();
-		
-		// Populate description list
-		foreach(ref COA_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
-		{
-			m_cMissionDescriptionListBoxComponent.AddItem(description.m_sTitle, null, "{A564FC959554A1B9}UI/Listbox/DescriptionListboxElementNoIcon.layout");
-			m_aActiveDescriptors.Insert(description);
-		}
-		
-		// Register selection handler
-		m_cMissionDescriptionListBoxComponent.m_OnChanged.Insert(DescriptionSelected);
-	}
-	
-	/**
-	 * Handler for when a description is selected
-	 */
-	void DescriptionSelected()
-	{
-		// Enable scrolling
-		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
-		scrollLayout.SetEnabled(true);
-		
-		// Get selected description
-		int index = m_cMissionDescriptionListBoxComponent.GetSelectedItem();
-		string description = m_aActiveDescriptors.Get(index).m_sTextData;
-		
-		// Show back button
-		m_wBackButton.SetOpacity(1);
-		m_wBackButton.SetEnabled(true);
-		SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
-		backButton.m_OnClicked.Insert(DescriptionInit);
-		
-		// Clear list and handler
-		m_cMissionDescriptionListBoxComponent.Clear();
-		m_cMissionDescriptionListBoxComponent.m_OnChanged.Clear();
-		
-		// Set description text
-		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
-		missionDescriptionText.SetText(description);
-	}
-	
-	//----------------------------------------
-	// Slot Management Methods
-	//----------------------------------------
-	
-	/**
-	 * Initialize slot counts for each faction
-	 */
-	void InitSlots()
-	{
-		// Reset slot counts
 		m_iBluforSlots = 0;
 		m_iOpforSlots = 0;
 		m_iIndforSlots = 0;
@@ -524,341 +741,334 @@ class COA_AARMenu: ChimeraMenuBase
 		m_iAliveOpforSlots = 0;
 		m_iAliveIndforSlots = 0;
 		m_iAliveCivSlots = 0;
-		
-		// Get slot data
-		map<int, ref COA_SlotData> slotMap = COA_SlottingManager.GetInstance().GetSlotMap();
-		
-		// Count slots by faction
-		foreach (int slotId, COA_SlotData slotData : slotMap)
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		foreach (int slotId, COA_SlotData slotData : slottingManager.GetSlotMap())
 		{
-			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
+			if (!slotData || slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
-			
-			switch(slotData.GetSlotFactionKey())
+
+			bool alive = !slotData.GetIsDeadSlot();
+			switch (slotData.GetSlotFactionKey())
 			{
-				case "BLUFOR":
-					m_iBluforSlots++;
-					if(!slotData.GetIsDeadSlot())
-						m_iAliveBluforSlots++;
-					break;
-					
-				case "OPFOR":
-					m_iOpforSlots++;
-					if(!slotData.GetIsDeadSlot())
-						m_iAliveOpforSlots++;
-					break;
-					
-				case "INDFOR":
-					m_iIndforSlots++;
-					if(!slotData.GetIsDeadSlot())
-						m_iAliveIndforSlots++;
-					break;
-					
-				case "CIV":
-					m_iCivSlots++;
-					if(!slotData.GetIsDeadSlot())
-						m_iAliveCivSlots++;
-					break;
+				case "BLUFOR": m_iBluforSlots++; if (alive) m_iAliveBluforSlots++; break;
+				case "OPFOR": m_iOpforSlots++; if (alive) m_iAliveOpforSlots++; break;
+				case "INDFOR": m_iIndforSlots++; if (alive) m_iAliveIndforSlots++; break;
+				case "CIV": m_iCivSlots++; if (alive) m_iAliveCivSlots++; break;
 			}
 		}
+
+		UpdateFactionStatus("SlotsBlufor", "BluforFactionLockBG", "BluforFactionLock", "ButtonBlufor", m_iAliveBluforSlots, m_iBluforSlots, slottingManager.IsFactionValid("BLUFOR"));
+		UpdateFactionStatus("SlotsOpfor", "OpforFactionLockBG", "OpforFactionLock", "ButtonOpfor", m_iAliveOpforSlots, m_iOpforSlots, slottingManager.IsFactionValid("OPFOR"));
+		UpdateFactionStatus("SlotsIndfor", "IndforFactionLockBG", "IndforFactionLock", "ButtonIndfor", m_iAliveIndforSlots, m_iIndforSlots, slottingManager.IsFactionValid("INDFOR"));
+		UpdateFactionStatus("SlotsCiv", "CivFactionLockBG", "CivFactionLock", "ButtonCiv", m_iAliveCivSlots, m_iCivSlots, slottingManager.IsFactionValid("CIV"));
 	}
-	
-	/**
-	 * Update slot display for the currently selected faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! Rebuild the roster for the selected faction (driven by slotting update events)
 	void UpdateSlots()
 	{
-		// Reset slot counts
-		m_iBluforSlots = 0;
-		m_iOpforSlots = 0;
-		m_iIndforSlots = 0;
-		m_iCivSlots = 0;
-		m_iAliveBluforSlots = 0;
-		m_iAliveOpforSlots = 0;
-		m_iAliveIndforSlots = 0;
-		m_iAliveCivSlots = 0;
-		
-		// Clear the slot list
+		CountSlots();
+
+		if (!m_cSlotListBoxComponent || !m_fSelectedFaction)
+			return;
+
 		m_cSlotListBoxComponent.Clear();
-		
-		// Update faction color for borders
+
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("PlayerBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("RoleBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
-		
-		// Reinitialize slot counts
-		InitSlots();
-		
-		// Get slot data and groups
-		map<int, ref COA_SlotData> slotMap = COA_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = COA_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
-		
-		if (factionGroups.IsEmpty())
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
 			return;
-		
-		// Process each group
-		foreach(SCR_AIGroup group : factionGroups)
-		{	
-			int playersInGroup = 0;
-			
-			// Skip private groups
-			if(group.IsPrivate())
+
+		map<int, ref COA_SlotData> slotMap = slottingManager.GetSlotMap();
+		array<SCR_AIGroup> factionGroups = slottingManager.GetAllGroups(m_fSelectedFaction.GetFactionKey());
+		if (!factionGroups)
+			return;
+
+		foreach (SCR_AIGroup group : factionGroups)
+		{
+			if (!group || group.IsPrivate())
 				continue;
-			
-			// Add group to list
+
 			int groupIndex = m_cSlotListBoxComponent.AddItemGroup(null, group);
-			
-			// Set group colors and icon
 			SetGroupVisuals(group, groupIndex);
-			
-			// Process each slot in the group
-			foreach(int slotId, COA_SlotData slotData : slotMap)
-			{	
-				// Skip slots not in this group or faction
+
+			int playersInGroup = 0;
+			foreach (int slotId, COA_SlotData slotData : slotMap)
+			{
 				if (!IsSlotInGroupAndFaction(slotData, group))
 					continue;
-				
-				// Add slot to list
+
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
-				
-				// Set slot information
 				SetSlotVisuals(slotIndex, slotData);
-				
 				playersInGroup++;
 			}
-			
-			// Remove empty groups
-			if(playersInGroup == 0)
+
+			if (playersInGroup == 0)
 				m_cSlotListBoxComponent.RemoveItem(groupIndex);
 		}
 	}
-	
-	/**
-	 * Check if a slot is in the specified group and faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected bool IsSlotInGroupAndFaction(COA_SlotData slotData, SCR_AIGroup group)
 	{
 		RplId groupId;
 		if (!slotData || !COA_ReplicationHelper.GetRplId(group, groupId))
 			return false;
 
-		if (slotData.GetSlotCurrentGroup() != groupId
-			|| slotData.GetIsLockedSlot() 
-			|| slotData.GetSlotCurrentPlayerId() == 0 
-			|| GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
-			return false;
-			
-		return true;
+		return slotData.GetSlotCurrentGroup() == groupId
+			&& !slotData.GetIsLockedSlot()
+			&& slotData.GetSlotCurrentPlayerId() != 0
+			&& GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) == m_fSelectedFaction;
 	}
-	
-	/**
-	 * Set visual properties for a group in the list
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetGroupVisuals(SCR_AIGroup group, int groupIndex)
 	{
+		COA_ListBoxElementComponent element = m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex);
+		if (!element)
+			return;
+
 		Color factionColor = group.GetFaction().GetFactionColor();
-		// Set group colors
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(factionColor);
-		
-		if(group.GetFaction().GetFactionKey() == "INDFOR")
-			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().SetColor(factionColor);
-		
-		// Set group icon
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
+		element.GetGroupUnderline().SetColor(factionColor);
+
+		if (group.GetFaction().GetFactionKey() == "INDFOR")
+			element.GetGroupIcon().SetColor(factionColor);
+
+		element.GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 	}
-	
-	/**
-	 * Set visual properties for a slot in the list
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetSlotVisuals(int slotIndex, COA_SlotData slotData)
 	{
-		COA_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
-		
-		if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
-			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-		else
-		{
-			elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
-			elementComponent.GetDisconnectWidget().SetVisible(true);
-		}
-		
-		// Disable slot button
-		elementComponent.GetSlotButton().SetEnabled(false);
+		COA_ListBoxElementComponent element = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
+		if (!element)
+			return;
+
+		int playerId = slotData.GetSlotCurrentPlayerId();
+		element.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(playerId));
+
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			element.GetDisconnectWidget().SetVisible(true);
+
+		element.GetSlotButton().SetEnabled(false);
 	}
-	
-	//----------------------------------------
-	// Faction Selection Methods
-	//----------------------------------------
-	
-	/**
-	 * Select BLUFOR faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	protected void SelectFaction(string factionKey, string selectedBackground, Color slotsColor)
+	{
+		if (!GetGame().GetFactionManager())
+			return;
+
+		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+		if (!faction)
+			return;
+
+		m_fSelectedFaction = faction;
+
+		array<string> backgrounds = {"BluforBGSelect", "OpforBGSelect", "IndforBGSelect", "CivBGSelect"};
+		foreach (string background : backgrounds)
+		{
+			float opacity = 0;
+			if (background == selectedBackground)
+				opacity = 1;
+
+			m_wRoot.FindAnyWidget(background).SetOpacity(opacity);
+		}
+
+		m_wRoot.FindAnyWidget("SlotsBG").SetColor(slotsColor);
+		UpdateSlots();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void SelectFactionBlufor()
 	{
-		m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("BLUFOR");
-		
-		// Update faction selection UI
-		m_wRoot.FindAnyWidget("BluforBGSelect").SetOpacity(1);
-		m_wRoot.FindAnyWidget("OpforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("IndforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("CivBGSelect").SetOpacity(0);
-		
-		// Set slot background color
-		m_wRoot.FindAnyWidget("SlotsBG").SetColor(Color.FromRGBA(34, 196, 244, 33));
-		
-		// Update slots display
-		UpdateSlots();
+		SelectFaction("BLUFOR", "BluforBGSelect", Color.FromRGBA(34, 196, 244, 33));
 	}
-	
-	/**
-	 * Select OPFOR faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void SelectFactionOpfor()
 	{
-		m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("OPFOR");
-		
-		// Update faction selection UI
-		m_wRoot.FindAnyWidget("BluforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("OpforBGSelect").SetOpacity(1);
-		m_wRoot.FindAnyWidget("IndforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("CivBGSelect").SetOpacity(0);
-		
-		// Set slot background color
-		m_wRoot.FindAnyWidget("SlotsBG").SetColor(Color.FromRGBA(238, 49, 47, 33));
-		
-		// Update slots display
-		UpdateSlots();
+		SelectFaction("OPFOR", "OpforBGSelect", Color.FromRGBA(238, 49, 47, 33));
 	}
-	
-	/**
-	 * Select INDFOR faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void SelectFactionIndfor()
 	{
-		m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("INDFOR");
-		
-		// Update faction selection UI
-		m_wRoot.FindAnyWidget("BluforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("OpforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("IndforBGSelect").SetOpacity(1);
-		m_wRoot.FindAnyWidget("CivBGSelect").SetOpacity(0);
-		
-		// Set slot background color
-		m_wRoot.FindAnyWidget("SlotsBG").SetColor(Color.FromRGBA(0, 177, 79, 33));
-		
-		// Update slots display
-		UpdateSlots();
+		SelectFaction("INDFOR", "IndforBGSelect", Color.FromRGBA(0, 177, 79, 33));
 	}
-	
-	/**
-	 * Select CIV faction
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void SelectFactionCiv()
 	{
-		m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("CIV");
-		
-		// Update faction selection UI
-		m_wRoot.FindAnyWidget("BluforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("OpforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("IndforBGSelect").SetOpacity(0);
-		m_wRoot.FindAnyWidget("CivBGSelect").SetOpacity(1);
-		
-		// Set slot background color
-		m_wRoot.FindAnyWidget("SlotsBG").SetColor(Color.FromRGBA(168, 110, 207, 33));
-		
-		// Update slots display
-		UpdateSlots();
+		SelectFaction("CIV", "CivBGSelect", Color.FromRGBA(168, 110, 207, 33));
 	}
-	
+
 	//----------------------------------------
-	// Map Handling Methods
+	// Mission description
 	//----------------------------------------
-	
-	/**
-	 * Initialize map opening sequence
-	 * Uses multiple frame delays to ensure proper loading
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	void DescriptionInit()
+	{
+		if (!m_cMissionDescriptionListBoxComponent || !m_Gamemode)
+			return;
+
+		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
+		if (scrollLayout)
+			scrollLayout.SetEnabled(false);
+
+		if (m_wBackButton)
+		{
+			m_wBackButton.SetOpacity(0);
+			m_wBackButton.SetEnabled(false);
+			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+			if (backButton)
+				backButton.m_OnClicked.Clear();
+		}
+
+		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
+		if (missionDescriptionText)
+			missionDescriptionText.SetText("");
+
+		m_cMissionDescriptionListBoxComponent.Clear();
+		m_aActiveDescriptors.Clear();
+
+		foreach (COA_MissionDescriptor description : m_Gamemode.m_aMissionDescriptors)
+		{
+			m_cMissionDescriptionListBoxComponent.AddItem(description.m_sTitle, null, "{A564FC959554A1B9}UI/Listbox/DescriptionListboxElementNoIcon.layout");
+			m_aActiveDescriptors.Insert(description);
+		}
+
+		m_cMissionDescriptionListBoxComponent.m_OnChanged.Insert(DescriptionSelected);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void DescriptionSelected()
+	{
+		int index = m_cMissionDescriptionListBoxComponent.GetSelectedItem();
+		if (!m_aActiveDescriptors.IsIndexValid(index))
+			return;
+
+		ScrollLayoutWidget scrollLayout = ScrollLayoutWidget.Cast(m_wRoot.FindAnyWidget("ScrollLayout"));
+		if (scrollLayout)
+			scrollLayout.SetEnabled(true);
+
+		string description = m_aActiveDescriptors.Get(index).m_sTextData;
+
+		if (m_wBackButton)
+		{
+			m_wBackButton.SetOpacity(1);
+			m_wBackButton.SetEnabled(true);
+			SCR_ButtonTextComponent backButton = SCR_ButtonTextComponent.Cast(m_wBackButton.FindHandler(SCR_ButtonTextComponent));
+			if (backButton)
+				backButton.m_OnClicked.Insert(DescriptionInit);
+		}
+
+		m_cMissionDescriptionListBoxComponent.Clear();
+		m_cMissionDescriptionListBoxComponent.m_OnChanged.Clear();
+
+		RichTextWidget missionDescriptionText = RichTextWidget.Cast(m_wRoot.FindAnyWidget("DescriptionInfo"));
+		if (missionDescriptionText)
+			missionDescriptionText.SetText(description);
+	}
+
+	//----------------------------------------
+	// Map
+	//----------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	//! The map needs a few frames to initialise - each step defers to the next frame
 	void OpenMap()
 	{
-		GetGame().GetCallqueue().Call(OpenMapWrap); // Need two frames for proper initialization
+		GetGame().GetCallqueue().Call(OpenMapWrap);
 	}
-	
-	/**
-	 * Second step in map opening sequence
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void OpenMapWrap()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
+		if (!gameMode || !gameMode.FindComponent(SCR_MapConfigComponent))
 			return;
-		
-		SCR_MapConfigComponent configComp = SCR_MapConfigComponent.Cast(gameMode.FindComponent(SCR_MapConfigComponent));
-		if (!configComp)
-			return;
-		
+
 		MapConfiguration mapConfigFullscreen = m_MapEntity.SetupMapConfig(EMapEntityMode.FULLSCREEN, "{1B8AC767E06A0ACD}Configs/Map/MapFullscreen.conf", GetRootWidget());
 		m_MapEntity.OpenMap(mapConfigFullscreen);
 		GetGame().GetCallqueue().Call(OpenMapWrapZoomChange);
 	}
-	
-	/**
-	 * Third step in map opening sequence
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void OpenMapWrapZoomChange()
 	{
-		// Additional frame delay to ensure map is ready
 		GetGame().GetCallqueue().Call(OpenMapWrapZoomChangeWrap);
 	}
-	
-	/**
-	 * Final step in map opening sequence
-	 * Sets the initial zoom level & pan to center of AO
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! Zoom out over the AO and make sure every marker (all factions) is shown
 	void OpenMapWrapZoomChangeWrap()
 	{
 		m_MapEntity.ZoomOut();
-		
-		vector aoCenter = COA_Gamemode.GetInstance().GetOrigin();
-		if (aoCenter)
-		{
+
+		vector aoCenter = COA_Gamemode.GetInstance().GetGenericSpawn();
+		if (aoCenter != vector.Zero)
 			m_MapEntity.ZoomPanSmooth(0.3, aoCenter[0], aoCenter[2]);
-		}
+
+		SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (markerManager)
+			markerManager.UpdateAllMarkerVisibilities();
 	}
-	
+
 	//----------------------------------------
-	// Voice and Chat Methods
+	// Voice (vanilla VON fallback) and chat
 	//----------------------------------------
 
-	/**
-	 * Start voice transmission
-	 */
+	//------------------------------------------------------------------------------------------------
 	void Action_VONon()
 	{
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+
+		IEntity controlled = GetGame().GetPlayerController().GetControlledEntity();
+		if (!controlled)
+			return;
+
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(controlled.FindComponent(SCR_VoNComponent));
+		if (!von)
+			return;
+
 		von.SetTransmitRadio(GetVoNTransiver());
 		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		von.SetCapture(true);
 	}
 
-	/**
-	 * Get the radio transceiver for voice communication
-	 */
+	//------------------------------------------------------------------------------------------------
 	RadioTransceiver GetVoNTransiver()
 	{
 		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
-		ref array<IEntity> items = {};
-		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
+		if (!entity)
+			return null;
 
-		// Find radio in inventory
-		IEntity radioEntity;
-		foreach(IEntity item: items)
+		SCR_InventoryStorageManagerComponent inventory = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (!inventory)
+			return null;
+
+		array<IEntity> items = {};
+		inventory.GetItems(items);
+
+		BaseRadioComponent radio;
+		foreach (IEntity item : items)
 		{
-			if(item.FindComponent(BaseRadioComponent))
-				radioEntity = item;
+			BaseRadioComponent itemRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
+			if (itemRadio)
+				radio = itemRadio;
 		}
 
-		// Configure radio
-		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		if (!radio)
+			return null;
+
 		radio.SetPower(true);
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
 		if (transceiver)
@@ -867,58 +1077,51 @@ class COA_AARMenu: ChimeraMenuBase
 		return transceiver;
 	}
 
-	/**
-	 * Stop voice transmission with delay
-	 */
+	//------------------------------------------------------------------------------------------------
 	void Action_VONOff()
 	{
 		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 
-	/**
-	 * Delayed function to disable voice
-	 */
+	//------------------------------------------------------------------------------------------------
 	void LobbyVoNDisableDelayed()
 	{
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+		IEntity controlled = GetGame().GetPlayerController().GetControlledEntity();
+		if (!controlled)
+			return;
+
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(controlled.FindComponent(SCR_VoNComponent));
+		if (!von)
+			return;
+
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
 	}
-	/**
-	 * Toggle chat panel
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void Action_OnChatToggleAction()
 	{
 		if (!m_ChatPanel)
 			return;
-		
-		// Frame delay to ensure proper toggling
+
 		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
-	
-	/**
-	 * Open chat panel wrapper
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void OpenChatWrap()
 	{
-		if (!m_ChatPanel.IsOpen())
-		{
+		if (m_ChatPanel && !m_ChatPanel.IsOpen())
 			SCR_ChatPanelManager.GetInstance().OpenChatPanel(m_ChatPanel);
-		}
 	}
-	
-	/**
-	 * Exit action - opens pause menu instead of exiting to prevent accidental exits
-	 */
+
+	//------------------------------------------------------------------------------------------------
+	//! Opens the pause menu rather than leaving, since players often hit it by accident
 	void Action_Exit()
 	{
-		// Open pause menu rather than exiting directly
 		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
 	}
-	
-	/**
-	 * Open pause menu wrapper
-	 */
+
+	//------------------------------------------------------------------------------------------------
 	void OpenPauseMenuWrap()
 	{
 		ArmaReforgerScripted.OpenPauseMenu();

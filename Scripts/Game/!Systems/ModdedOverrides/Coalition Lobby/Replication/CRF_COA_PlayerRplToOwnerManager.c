@@ -233,4 +233,40 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 		if (pc)
 			pc.SetIsJoinInProgress(true);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Sends one map marker (of any faction) to this player's AAR map. Called by CRF_AARManager.
+	void ReceiveAARMarker(SCR_MapMarkerBase marker)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARMarker(marker);
+		else
+			Rpc(RpcDo_ReceiveAARMarker, marker);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARMarker(SCR_MapMarkerBase marker)
+	{
+		SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (markerManager)
+			markerManager.RevealAARMarker(marker);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tells this player's AAR screen which coalitiongroup.net/aar/<id> page belongs to this round
+	void ReceiveAARMissionLink(int missionId)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARMissionLink(missionId);
+		else
+			Rpc(RpcDo_ReceiveAARMissionLink, missionId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARMissionLink(int missionId)
+	{
+		CRF_AARSessionStats.SetMissionId(missionId);
+	}
 };

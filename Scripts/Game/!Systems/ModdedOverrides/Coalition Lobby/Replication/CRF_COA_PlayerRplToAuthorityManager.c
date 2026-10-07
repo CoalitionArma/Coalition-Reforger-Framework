@@ -251,7 +251,28 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Sent when the AAR screen opens: the server replies with the website mission link and every
+	//! map marker of every faction (see CRF_AARManager.SendAARDataToPlayer)
+	void RequestAARData()
+	{
+		Rpc(RpcAsk_RequestAARData);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestAARData()
+	{
+		LogTelemetry("RpcAsk_RequestAARData", 0);
+
+		// Only once the round is actually over - this reveals every faction's map markers
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		CRF_AARManager.GetInstance().SendAARDataToPlayer(GetCallerPlayerId());
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void RequestSupplyUpdate(RplId supplyArsenalId)
 	{
