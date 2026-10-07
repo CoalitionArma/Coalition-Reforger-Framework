@@ -362,9 +362,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 			}
 		}
 
-		// Prop position sync — broadcast position of every active prop to all clients.
-		// SetWorldTransform on an entity with SimulationState.NONE does not replicate
-		// on its own, so we push the update explicitly via RPC at 10 Hz.
+		// Server-side prop position sync at 10 Hz. Only the server's own prop copies are moved
+		// here: clients move their local copies every frame from the replicated character
+		// transform (client branch above), so no per-tick RPC is needed. A one-off
+		// RpcDo_SyncPropTransform snap is still sent when the hunt phase starts.
 		if ((m_ePhase == CRF_EPropHuntPhase.GRACE || m_ePhase == CRF_EPropHuntPhase.HUNT) && !m_mPlayerToPropEntity.IsEmpty())
 		{
 			m_fPropSyncTimer -= timeSlice;
@@ -387,19 +388,16 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 					Math3D.AnglesToMatrix(Vector(yaw, 0, 0), propMat);
 					propMat[3] = pos;
 					propEnt.SetWorldTransform(propMat);
-					#ifdef WORKBENCH
-					RpcDo_SyncPropTransform(propPlayerId, pos, yaw);
-					#else
-					Rpc(RpcDo_SyncPropTransform, propPlayerId, pos, yaw);
-					#endif
 				}
 			}
 		}
 	}
 
 	//------------------------------------------------------------
-	// RpcDo_SyncPropTransform — reliable broadcast at 10 Hz.
-	// Moves and rotates each client's local visual prop copy.
+	// RpcDo_SyncPropTransform — reliable broadcast, sent once per prop
+	// as a position snap when the hunt phase starts (ongoing movement is
+	// handled client-side in EOnFrame). Moves and rotates each client's
+	// local visual prop copy.
 	// Uses playerId (not RplId) because world prop prefabs lack
 	// RplComponent and are not replicated by the engine.
 	// In Workbench the server entity in m_mPlayerToPropEntity is used
@@ -1347,7 +1345,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		if (!character)
 			return;
 
-		RplId charRplId = Replication.FindId(character);
+		RplId charRplId = Replication.FindItemId(character);
 
 		#ifdef WORKBENCH
 		RpcDo_SetPropCharacterVisible(charRplId, visible);
