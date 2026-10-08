@@ -23,7 +23,7 @@ FrameWidgetClass {
     SizeY 0
     OffsetBottom 0
    }
-   Color 0.044 0.048 0.062 0.9
+   Color 0.0033 0.0037 0.0052 0.97
   }
   ImageWidgetClass "{C7A3E4D2000A0004}" {
    Name "AccentBar"
@@ -37,7 +37,7 @@ FrameWidgetClass {
     SizeY 3
     OffsetBottom -3
    }
-   Color 0.89 0.6 0.18 1
+   Color 0.5841 0.0369 0.0369 1
   }
   TextWidgetClass "{C7A3E4D2000A0006}" {
    Name "TitleText"
@@ -51,7 +51,7 @@ FrameWidgetClass {
     SizeY 28
     OffsetBottom -38
    }
-   Color 1 1 1 1
+   Color 0.8632 0.8879 0.9301 1
    Text "PLAYERS"
    "Font Size" 22
    "Min Font Size" 14
@@ -75,7 +75,7 @@ FrameWidgetClass {
     SizeY 28
     OffsetBottom -38
    }
-   Color 0.72 0.77 0.87 1
+   Color 0.3968 0.4564 0.6038 1
    Text "0"
    "Font Size" 18
    "Min Font Size" 12
@@ -97,7 +97,7 @@ FrameWidgetClass {
     SizeY 20
     OffsetBottom -60
    }
-   Color 0.72 0.77 0.87 1
+   Color 0.3968 0.4564 0.6038 1
    Text "Double-click a name to move the camera"
    "Font Size" 14
    "Min Font Size" 10
@@ -119,7 +119,7 @@ FrameWidgetClass {
     SizeY 1
     OffsetBottom -67
    }
-   Color 1 1 1 0.12
+   Color 1 1 1 0.016
   }
   ScrollLayoutWidgetClass "{C7A3E4D2000A0011}" {
    Name "PlayerScroll"
@@ -154,7 +154,7 @@ FrameWidgetClass {
     SizeY 0
     OffsetBottom 0
    }
-   Color 0.07 0.076 0.096 0.94
+   Color 0.0075 0.0086 0.0123 0.98
   }
   ImageWidgetClass "{C7A3E4D2000A0017}" {
    Name "TabAccent"
@@ -168,7 +168,7 @@ FrameWidgetClass {
     SizeY 0
     OffsetBottom 0
    }
-   Color 0.89 0.6 0.18 1
+   Color 0.5841 0.0369 0.0369 1
   }
   TextWidgetClass "{C7A3E4D2000A0019}" {
    Name "TabArrow"
@@ -183,7 +183,7 @@ FrameWidgetClass {
     SizeY 36
     OffsetBottom -2
    }
-   Color 1 1 1 1
+   Color 0.8632 0.8879 0.9301 1
    Text "›"
    "Font Size" 30
    "Min Font Size" 16
@@ -207,7 +207,7 @@ FrameWidgetClass {
     SizeY 24
     OffsetBottom -28
    }
-   Color 0.72 0.77 0.87 1
+   Color 0.3968 0.4564 0.6038 1
    Text "0"
    "Font Size" 15
    "Min Font Size" 9

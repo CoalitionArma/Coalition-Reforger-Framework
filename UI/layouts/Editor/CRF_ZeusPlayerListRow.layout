@@ -3,7 +3,7 @@ ButtonWidgetClass {
  Slot AlignableSlot "{C7A3E4D2000B0001}" {
   HorizontalAlign 3
  }
- Color 0.09 0.1 0.13 0.75
+ Color 0.0075 0.0086 0.0123 0.97
  components {
   CRF_ZeusPlayerRowButton "{C7A3E4D2000B0004}" {
   }
@@ -41,7 +41,7 @@ ButtonWidgetClass {
         VerticalAlign 1
         Padding 12 0 72 0
        }
-       Color 0.94 0.95 0.97 1
+       Color 0.8632 0.8879 0.9301 1
        Text "Player Name"
        "Font Size" 17
        "Min Font Size" 11
@@ -58,7 +58,7 @@ ButtonWidgetClass {
         VerticalAlign 1
         Padding 0 0 8 0
        }
-       Color 0.72 0.77 0.87 1
+       Color 0.3968 0.4564 0.6038 1
        Text ""
        "Font Size" 14
        "Min Font Size" 10

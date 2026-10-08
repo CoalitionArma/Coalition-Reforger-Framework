@@ -326,7 +326,7 @@ class COA_AARMenu: ChimeraMenuBase
 		TextWidget weatherText = TextWidget.Cast(m_wRoot.FindAnyWidget("WeatherText"));
 		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());
 		if (weatherText && world && world.GetTimeAndWeatherManager())
-			weatherText.SetText("Weather: " + world.GetTimeAndWeatherManager().GetCurrentWeatherState().GetStateName());
+			weatherText.SetText(world.GetTimeAndWeatherManager().GetCurrentWeatherState().GetStateName());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -487,10 +487,10 @@ class COA_AARMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void SetupFactionColors()
 	{
-		m_wRoot.FindAnyWidget("BluforBGSelect").SetColor(Color.FromRGBA(34, 196, 244, 33));
-		m_wRoot.FindAnyWidget("OpforBGSelect").SetColor(Color.FromRGBA(238, 49, 47, 33));
-		m_wRoot.FindAnyWidget("IndforBGSelect").SetColor(Color.FromRGBA(0, 177, 79, 33));
-		m_wRoot.FindAnyWidget("CivBGSelect").SetColor(Color.FromRGBA(168, 110, 207, 33));
+		m_wRoot.FindAnyWidget("BluforBGSelect").SetColor(Color.FromSRGBA(28, 31, 40, 255));
+		m_wRoot.FindAnyWidget("OpforBGSelect").SetColor(Color.FromSRGBA(28, 31, 40, 255));
+		m_wRoot.FindAnyWidget("IndforBGSelect").SetColor(Color.FromSRGBA(28, 31, 40, 255));
+		m_wRoot.FindAnyWidget("CivBGSelect").SetColor(Color.FromSRGBA(28, 31, 40, 255));
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -648,14 +648,14 @@ class COA_AARMenu: ChimeraMenuBase
 	protected void UpdateInfoDisplay()
 	{
 		if (m_wPlayersText)
-			m_wPlayersText.SetText("Players: " + GetGame().GetPlayerManager().GetPlayerCount());
+			m_wPlayersText.SetText(GetGame().GetPlayerManager().GetPlayerCount().ToString() + " players");
 
 		ChimeraWorld world = ChimeraWorld.CastFrom(GetGame().GetWorld());
 		if (!m_wTimeText || !world || !world.GetTimeAndWeatherManager())
 			return;
 
 		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
-		m_wTimeText.SetText(string.Format("Time: %1:%2", time.m_iHours.ToString(2), time.m_iMinutes.ToString(2)));
+		m_wTimeText.SetText(string.Format("%1:%2", time.m_iHours.ToString(2), time.m_iMinutes.ToString(2)));
 	}
 
 	//----------------------------------------
@@ -1095,25 +1095,25 @@ class COA_AARMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	void SelectFactionBlufor()
 	{
-		SelectFaction("BLUFOR", "BluforBGSelect", Color.FromRGBA(34, 196, 244, 33));
+		SelectFaction("BLUFOR", "BluforBGSelect", Color.FromSRGBA(21, 23, 29, 255));
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void SelectFactionOpfor()
 	{
-		SelectFaction("OPFOR", "OpforBGSelect", Color.FromRGBA(238, 49, 47, 33));
+		SelectFaction("OPFOR", "OpforBGSelect", Color.FromSRGBA(21, 23, 29, 255));
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void SelectFactionIndfor()
 	{
-		SelectFaction("INDFOR", "IndforBGSelect", Color.FromRGBA(0, 177, 79, 33));
+		SelectFaction("INDFOR", "IndforBGSelect", Color.FromSRGBA(21, 23, 29, 255));
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void SelectFactionCiv()
 	{
-		SelectFaction("CIV", "CivBGSelect", Color.FromRGBA(168, 110, 207, 33));
+		SelectFaction("CIV", "CivBGSelect", Color.FromSRGBA(21, 23, 29, 255));
 	}
 
 	//----------------------------------------

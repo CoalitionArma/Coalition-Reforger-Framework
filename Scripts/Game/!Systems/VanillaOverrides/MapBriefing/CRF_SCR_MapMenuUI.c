@@ -10,6 +10,12 @@ modded class SCR_MapMenuUI
 	protected ref COA_MissionDescriptionUI m_MissionDescriptionUI = new COA_MissionDescriptionUI();
 	protected bool m_bMissionDescriptionsInitialized = false; // Flag to track if descriptions have been initialized
 
+	// The briefing panel is a drawer on the right edge (UI/layouts/Map/MapMenu.layout "MissionDescription"):
+	// PositionX with only its 44px tab on screen, and fully out
+	protected static const float BRIEFING_DRAWER_CLOSED_X = -44;
+	protected static const float BRIEFING_DRAWER_OPEN_X = -524;
+	protected ref COA_HoverDrawer m_BriefingDrawer;
+
 	//----------------------------------------
 	// Menu Lifecycle Methods
 	//----------------------------------------
@@ -52,6 +58,34 @@ modded class SCR_MapMenuUI
 		}
 
 		m_MissionDescriptionUI.ShowList();
+
+		// Starts tucked away; slides out while the cursor is over it
+		m_BriefingDrawer = new COA_HoverDrawer(missionDescriptionWidget, BRIEFING_DRAWER_CLOSED_X, BRIEFING_DRAWER_OPEN_X);
+		m_BriefingDrawer.m_OnOpenChanged.Insert(OnBriefingDrawerChanged);
+		OnBriefingDrawerChanged(false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+
+		if (m_BriefingDrawer)
+			m_BriefingDrawer.Update(tDelta);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Flip the drawer tab's arrow
+	protected void OnBriefingDrawerChanged(bool open)
+	{
+		TextWidget arrow = TextWidget.Cast(GetRootWidget().FindAnyWidget("BriefingTabArrow"));
+		if (!arrow)
+			return;
+
+		if (open)
+			arrow.SetText("›");
+		else
+			arrow.SetText("‹");
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -71,5 +105,6 @@ modded class SCR_MapMenuUI
 
 		// Clear mission description state and event handlers
 		m_MissionDescriptionUI.Clear();
+		m_BriefingDrawer = null;
 	}
 }

@@ -1,48 +1,103 @@
 FrameWidgetClass {
  {
-  FrameWidgetClass "{6638414622724963}" {
+  FrameWidgetClass "{6A6300000000101D}" {
    Name "MissionDescription"
-   Slot FrameWidgetSlot "{62F0124A5876B3A6}" {
-    Anchor 0.039 0.014 0.254 0.332
-    PositionX -0.688
-    OffsetLeft -0.688
-    PositionY 0.867
-    OffsetTop 0.867
-    SizeX 0.424
-    OffsetRight 0.264
-    SizeY -1.75
-    OffsetBottom 0.883
+   Slot FrameWidgetSlot "{6A6300000000101C}" {
+    Anchor 1 0 1 1
+    PositionX -44
+    OffsetLeft -44
+    PositionY 96
+    OffsetTop 96
+    SizeX 524
+    OffsetRight -480
+    SizeY -192
+    OffsetBottom 96
    }
    "Z Order" 10
    {
-    ImageWidgetClass "{6638414622724961}" {
+    ImageWidgetClass "{6A6300000000100A}" {
      Name "MissionBG"
-     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
+     Slot FrameWidgetSlot "{6A63000000001009}" {
       Anchor 0 0 1 1
-      PositionX 0
-      OffsetLeft 0
+      PositionX 44
+      OffsetLeft 44
       PositionY 0
       OffsetTop 0
-      SizeX 0
+      SizeX -44
       OffsetRight 0
       SizeY 0
       OffsetBottom 0
      }
-     Opacity 0.3
-     Color 0.1758 0.1734 0.1734 0.784
+     Color 0.0033 0.0037 0.0052 0.97
+    }
+    ImageWidgetClass "{6A6300000000100C}" {
+     Name "MissionHeader"
+     Slot FrameWidgetSlot "{6A6300000000100B}" {
+      Anchor 0 0 0 1
+      PositionX 44
+      OffsetLeft 44
+      PositionY 0
+      OffsetTop 0
+      SizeX 1
+      OffsetRight -45
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Z Order" 1
+     Color 1 1 1 0.013
+    }
+    TextWidgetClass "{6A6300000000100F}" {
+     Name "MissionText"
+     Slot FrameWidgetSlot "{6A6300000000100D}" {
+      Anchor 0 0 1 0
+      PositionX 72
+      OffsetLeft 72
+      PositionY 18
+      OffsetTop 18
+      SizeX -100
+      OffsetRight 28
+      SizeY 28
+      OffsetBottom -46
+     }
+     "Z Order" 2
+     Color 0.3968 0.4564 0.6038 1
+     Text "BRIEFING"
+     "Font Size" 15
+     "Min Font Size" 9
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6300000000100E}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    ImageWidgetClass "{6A63000000001011}" {
+     Name "MissionDivider"
+     Slot FrameWidgetSlot "{6A63000000001010}" {
+      Anchor 0 0 1 0
+      PositionX 72
+      OffsetLeft 72
+      PositionY 54
+      OffsetTop 54
+      SizeX -100
+      OffsetRight 28
+      SizeY 1
+      OffsetBottom -55
+     }
+     "Z Order" 2
+     Color 1 1 1 0.013
     }
     OverlayWidgetClass "{663841462272B53C}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "DescriptionList"
-     Slot FrameWidgetSlot "{62F0125F18C6CEA2}" {
-      Anchor 0 0 1 0
-      PositionX 5.735
-      OffsetLeft 5.735
-      PositionY 72.963
-      OffsetTop 72.963
-      SizeX -15.128
-      OffsetRight 9.393
-      SizeY 255
-      OffsetBottom -327.963
+     Slot FrameWidgetSlot "{6A63000000001001}" {
+      Anchor 0 0 1 1
+      PositionX 60
+      OffsetLeft 60
+      PositionY 64
+      OffsetTop 64
+      SizeX -76
+      OffsetRight 16
+      SizeY -80
+      OffsetBottom 16
      }
      {
       ScrollLayoutWidgetClass "{56691148E692435A}" {
@@ -59,80 +114,58 @@ FrameWidgetClass {
       }
      }
     }
-    ImageWidgetClass "{663841462272B53A}" {
-     Name "MissionHeader"
-     Slot FrameWidgetSlot "{62F0124AA12818CD}" {
-      Anchor 0 0 1 0
-      PositionX 0
-      OffsetLeft 0
-      PositionY 0
-      OffsetTop 0
-      SizeX 0
-      OffsetRight 0
-      SizeY 39.96
-      OffsetBottom -39.96
-     }
-     Color 0.017 0.017 0.017 1
-    }
-    TextWidgetClass "{663841462272B539}" {
-     Name "MissionText"
-     Slot FrameWidgetSlot "{62F01245493B2589}" {
-      Anchor 0 0 1 0
-      PositionX 0
-      OffsetLeft 0
-      PositionY 5
-      OffsetTop 5
-      SizeX 0
-      OffsetRight 0
-      SizeY 29.96
-      OffsetBottom -34.96
-     }
-     Text "Briefing"
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{663841462272C653}" {
+    ButtonWidgetClass "{6A63000000001008}" {
      Name "BackButton"
-     Slot FrameWidgetSlot "{62F06D427631DA08}" {
-      Anchor 0 0 1 0
-      PositionX 332.6
-      OffsetLeft 332.6
-      PositionY 43.497
-      OffsetTop 43.497
-      SizeX -341.851
-      OffsetRight 9.251
-      SizeY 29.578
-      OffsetBottom -73.075
+     Slot FrameWidgetSlot "{6A63000000001004}" {
+      Anchor 0 0 0 0
+      PositionX 62
+      OffsetLeft 62
+      PositionY 66
+      OffsetTop 66
+      SizeX 130
+      OffsetRight -192
+      SizeY 40
+      OffsetBottom -106
      }
-     Color 0.105 0.105 0.105 0
+     Color 1 1 1 0
      components {
-      SCR_ButtonTextComponent "{62F092D5D1C77526}" {
-       m_BackgroundDefault 0.084 0.084 0.084 0.1
-       m_BackgroundHovered 0.337 0.337 0.337 0.3
+      SCR_ButtonTextComponent "{6A63000000001003}" {
+       m_BackgroundDefault 1 1 1 0
+       m_BackgroundHovered 1 1 1 0.02
        m_sTextWidgetName ""
       }
      }
      {
-      TextWidgetClass "{663841462272C652}" {
+      TextWidgetClass "{6A63000000001007}" {
        Name "BackText"
-       Slot ButtonWidgetSlot "{62F06D4306D37B6C}" {
+       Slot ButtonWidgetSlot "{6A63000000001005}" {
+        HorizontalAlign 3
+        VerticalAlign 3
        }
-       Text "<- Back"
+       Color 0.8632 0.8879 0.9301 1
+       Text "‹  BACK"
+       "Font Size" 18
+       "Min Font Size" 9
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A63000000001006}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
       }
      }
     }
     ScrollLayoutWidgetClass "{663841462272CF70}" {
      Name "ScrollLayout"
-     Slot FrameWidgetSlot "{64635E2E391DE034}" {
-      Anchor 0 0 1 0
-      PositionX 5.887
-      OffsetLeft 5.887
-      PositionY 78.537
-      OffsetTop 78.537
-      SizeX -21.122
-      OffsetRight 15.235
-      SizeY 250
-      OffsetBottom -328.537
+     Slot FrameWidgetSlot "{6A63000000001002}" {
+      Anchor 0 0 1 1
+      PositionX 72
+      OffsetLeft 72
+      PositionY 118
+      OffsetTop 118
+      SizeX -92
+      OffsetRight 20
+      SizeY -138
+      OffsetBottom 20
      }
      components {
       SCR_GamepadScrollComponent "{6638414622730001}" {
@@ -154,6 +187,86 @@ FrameWidgetClass {
         }
        }
       }
+     }
+    }
+    ImageWidgetClass "{6A63000000001013}" {
+     Name "BriefingTabBG"
+     Slot FrameWidgetSlot "{6A63000000001012}" {
+      Anchor 0 0.5 0 0.5
+      PositionX 0
+      OffsetLeft 0
+      PositionY -100
+      OffsetTop -100
+      SizeX 44
+      OffsetRight -44
+      SizeY 200
+      OffsetBottom -100
+     }
+     "Z Order" 3
+     Color 0.0075 0.0086 0.0123 0.98
+    }
+    ImageWidgetClass "{6A63000000001015}" {
+     Name "BriefingTabAccent"
+     Slot FrameWidgetSlot "{6A63000000001014}" {
+      Anchor 0 0.5 0 0.5
+      PositionX 0
+      OffsetLeft 0
+      PositionY -100
+      OffsetTop -100
+      SizeX 3
+      OffsetRight -3
+      SizeY 200
+      OffsetBottom -100
+     }
+     "Z Order" 4
+     Color 0.5841 0.0369 0.0369 1
+    }
+    TextWidgetClass "{6A63000000001018}" {
+     Name "BriefingTabArrow"
+     Slot FrameWidgetSlot "{6A63000000001016}" {
+      Anchor 0 0.5 0 0.5
+      PositionX 0
+      OffsetLeft 0
+      PositionY -46
+      OffsetTop -46
+      SizeX 44
+      OffsetRight -44
+      SizeY 40
+      OffsetBottom 6
+     }
+     "Z Order" 4
+     Color 0.8632 0.8879 0.9301 1
+     Text "‹"
+     "Font Size" 30
+     "Min Font Size" 9
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A63000000001017}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{6A6300000000101B}" {
+     Name "BriefingTabLabel"
+     Slot FrameWidgetSlot "{6A63000000001019}" {
+      Anchor 0 0.5 0 0.5
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 44
+      OffsetRight -44
+      SizeY 24
+      OffsetBottom -24
+     }
+     "Z Order" 4
+     Color 0.3968 0.4564 0.6038 1
+     Text "BRIEF"
+     "Font Size" 12
+     "Min Font Size" 9
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6300000000101A}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
      }
     }
    }

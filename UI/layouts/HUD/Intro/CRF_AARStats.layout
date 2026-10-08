@@ -15,8 +15,8 @@ FrameWidgetClass {
     OffsetBottom -373
    }
    "Is Enabled" 0
-   Opacity 0
-   Color 0.044 0.048 0.062 0.94
+   Opacity 1
+   Color 0.0075 0.0086 0.0123 0.97
   }
   TextWidgetClass "{7CDA3F8200000003}" {
    Name "StatsHeaderLeft"
@@ -52,7 +52,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -82
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "KILLS"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -95,7 +95,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -109
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "DEATHS"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -138,7 +138,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -136
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "SHOTS FIRED"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -181,7 +181,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -163
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "GRENADES THROWN"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -224,7 +224,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -190
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "BANDAGES APPLIED"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -267,7 +267,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -217
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "DISTANCE TRAVELED"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -310,7 +310,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -244
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "FRIENDLY KILLS"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -353,7 +353,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -271
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "XP GAINED"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -396,7 +396,7 @@ FrameWidgetClass {
     SizeY 355
     OffsetBottom -365
    }
-   Color 0.4 0.4 0.4 0.7
+   Color 1 1 1 0.013
   }
   TextWidgetClass "{7CDA3F820000001F}" {
    Name "StatsHeaderRight"
@@ -432,7 +432,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -82
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "YOU KILLED"
    "Font Size" 16
    "Horizontal Alignment" Left
@@ -475,7 +475,7 @@ FrameWidgetClass {
     SizeY 22
     OffsetBottom -275
    }
-   Color 0.7 0.7 0.7 1
+   Color 0.3968 0.4564 0.6038 1
    Text "KILLED BY"
    "Font Size" 16
    "Horizontal Alignment" Left

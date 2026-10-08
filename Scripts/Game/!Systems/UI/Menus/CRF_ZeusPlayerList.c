@@ -73,14 +73,16 @@ class CRF_ZeusPlayerList
 	// A ping keeps the player's name red for this long, or until they are double-clicked
 	protected static const int PING_HIGHLIGHT_MS = 120000;
 
-	protected static const ref Color HEADER_ROW_COLOR = new Color(0, 0, 0, 0.35);
-	protected static const ref Color NAME_COLOR = new Color(0.94, 0.95, 0.97, 1);
-	protected static const ref Color INACTIVE_NAME_COLOR = new Color(0.6, 0.63, 0.7, 1);
-	protected static const ref Color UNSLOTTED_COLOR = new Color(0.6, 0.63, 0.7, 1);
+	protected static const ref Color HEADER_ROW_COLOR = Color.FromSRGBA(28, 31, 40, 255);
+	protected static const ref Color NAME_COLOR = Color.FromSRGBA(239, 242, 247, 255);
+	protected static const ref Color INACTIVE_NAME_COLOR = Color.FromSRGBA(140, 150, 171, 255);
+	protected static const ref Color UNSLOTTED_COLOR = Color.FromSRGBA(140, 150, 171, 255);
 	// Readable on the slate panel (about 5.5:1)
-	protected static const ref Color ATTENTION_COLOR = new Color(0.95, 0.3, 0.3, 1);
-	protected static const ref Color ACCENT_COLOR = new Color(0.89, 0.6, 0.18, 1);
-	protected static const ref Color TAB_COUNT_COLOR = new Color(0.72, 0.77, 0.87, 1);
+	protected static const ref Color ATTENTION_COLOR = Color.FromSRGBA(240, 82, 82, 255);
+	protected static const ref Color ACCENT_COLOR = Color.FromSRGBA(201, 54, 54, 255);
+	protected static const ref Color TAB_COUNT_COLOR = Color.FromSRGBA(169, 180, 204, 255);
+	protected static const ref Color TAB_BG = Color.FromSRGBA(21, 23, 29, 250);
+	protected static const ref Color TAB_ATTENTION_BG = Color.FromSRGBA(74, 22, 26, 250);
 
 	// Players with an open admin ticket, as last reported by the server
 	protected static ref array<int> s_aTicketHolders = {};
@@ -410,6 +412,16 @@ class CRF_ZeusPlayerList
 			else
 				m_wTabCount.SetColor(TAB_COUNT_COLOR);
 		}
+
+		// The accent is red too, so the tab's background is what changes for attention
+		Widget tabBG = m_wRoot.FindAnyWidget("TabBG");
+		if (tabBG)
+		{
+			if (anyAttention)
+				tabBG.SetColor(TAB_ATTENTION_BG);
+			else
+				tabBG.SetColor(TAB_BG);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -679,11 +691,12 @@ class CRF_ZeusPlayerList
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Faction colours can be too dark to read on the slate panel - pull them towards white
+	//! Faction colours can be too dark to read on the slate panel - pull them towards white. Colours are
+	//! linear, where a small step already lightens a lot, so 0.2 keeps the faction hue recognisable.
 	protected Color LightenForText(Color color)
 	{
 		Color text = Color.FromInt(color.PackToInt());
-		text.Lerp(Color.White, 0.35);
+		text.Lerp(Color.White, 0.2);
 		text.SetA(1);
 		return text;
 	}
