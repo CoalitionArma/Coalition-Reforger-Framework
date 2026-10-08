@@ -18,7 +18,16 @@
     "shipped without a mission in this repository, so nothing attaches it yet.",
     "Remove this entry as soon as the first Cache Hunt mission lands; after that",
     "the check is meaningful for it again and the suppression would hide a real",
-    "regression. See !Docs/MissionMaking/Gamemodes/CRF_CACHEHUNT_MISSION_MAKERS_GUIDE.md"
+    "regression. See !Docs/MissionMaking/Gamemodes/CRF_CACHEHUNT_MISSION_MAKERS_GUIDE.md",
+    "",
+    "unattached-handler: COA_UIHoverEffect (COALITION-Lobby, Scripts/Game/Systems/UI/Polish)",
+    "is never attached by a layout by design - COA_UIPolish adds it to buttons at runtime",
+    "with Widget.AddHandler. Its FindHandler(COA_UIHoverEffect) calls are 'already",
+    "attached?' guards that keep repeated scans from attaching it twice, so null is the",
+    "normal result there, not a silent failure."
+  ],
+  "unattached-handler": [
+    "COA_UIHoverEffect"
   ],
   "unattached-component": [
     "CRF_CacheHuntGamemodeManager",
