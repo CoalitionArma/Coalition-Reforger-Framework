@@ -1,77 +1,22 @@
-$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6A7CF12B5C544A7C}" {
-      SlotTemplate InventoryStorageSlot intel {
-       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
-      }
-     }
-    }
-   }
-  }
-  coords 2265.168 268.863 11061.986
-  angles 0 7.749 0
+$grp SCR_BaseTriggerEntity {
+ HVT1 {
+  coords 2187.552 267.432 11052.945
+  angles 0 85.935 0
  }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6A7CF12B5C544A7C}" {
-      SlotTemplate InventoryStorageSlot intel {
-       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
-      }
-     }
-    }
-   }
-  }
-  coords 3867.047 310.984 8961.24
-  angles -0.121 7.747 0.887
+ HVT2 {
+  coords 2672.893 277.043 10034.499
+  angles 0 85.935 0
  }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6A7CF12B5C544A7C}" {
-      SlotTemplate InventoryStorageSlot intel {
-       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
-      }
-     }
-    }
-   }
-  }
-  coords 2787.729 274.062 9912.527
-  angles -0.035 7.747 -0.112
+ HVT3 {
+  coords 3863.374 311.287 8968.577
+  angles 0 85.935 0
  }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6A7CF12B5C544A7C}" {
-      SlotTemplate InventoryStorageSlot intel {
-       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
-      }
-     }
-    }
-   }
-  }
-  coords 2711.317 283.827 10045.142
-  angles 0.069 7.749 0.04
+ HVT4 {
+  coords 2885.626 272.139 9757.439
+  angles 0 85.935 0
  }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6A7CF12B5C544A7C}" {
-      SlotTemplate InventoryStorageSlot intel {
-       Prefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
-      }
-     }
-    }
-   }
-  }
-  coords 2901.118 271.594 9706.123
-  angles 0 6.148 0
+ HVT5 {
+  coords 2819.527 277.583 9872.604
+  angles 0 85.935 0
  }
 }

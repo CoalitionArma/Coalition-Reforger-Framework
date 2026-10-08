@@ -1,0 +1,56 @@
+$grp GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A8F5381982AE629}" {
+      SlotTemplate InventoryStorageSlot sandbags {
+       Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+      }
+      NumSlots 100
+     }
+     MultiSlotConfiguration "{6A8F5381FA1BA4E1}" {
+      SlotTemplate InventoryStorageSlot wire {
+       Prefab "{2997FA6F521B519C}Prefabs/Items/Misc/BarbedTape/Barbed_Tape.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A8F5381CCEBFF4F}" {
+      SlotTemplate InventoryStorageSlot wirepicket {
+       Prefab "{55F8A472A0533C7E}Prefabs/Items/Misc/BarbedTape/BarbedTape_Stake.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 3851.901 7.5 1965.082
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    MultiSlots {
+     MultiSlotConfiguration "{6A8F5381982AE629}" {
+      SlotTemplate InventoryStorageSlot sandbags {
+       Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+      }
+      NumSlots 100
+     }
+     MultiSlotConfiguration "{6A8F5381FA1BA4E1}" {
+      SlotTemplate InventoryStorageSlot wire {
+       Prefab "{2997FA6F521B519C}Prefabs/Items/Misc/BarbedTape/Barbed_Tape.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{6A8F5381CCEBFF4F}" {
+      SlotTemplate InventoryStorageSlot wirepicket {
+       Prefab "{55F8A472A0533C7E}Prefabs/Items/Misc/BarbedTape/BarbedTape_Stake.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 3103.904 9.845 2644.134
+ }
+}

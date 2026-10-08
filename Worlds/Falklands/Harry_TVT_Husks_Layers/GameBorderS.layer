@@ -1,0 +1,93 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 5035.264 17.205 1654.515
+ Points {
+  ShapePoint "{6A8F5385DDF12AD4}" {
+   Position 446.603 0 -647.599
+  }
+  ShapePoint "{6A8F5384222D4053}" {
+   Position -497.864 0 -267.087
+  }
+  ShapePoint "{6A8F5384205AF238}" {
+   Position -1415.851 0 -141.181
+  }
+  ShapePoint "{6A8F5384242AF1C5}" {
+   Position -1775.053 0 -122.644
+  }
+  ShapePoint "{6A8F538424C9A4E3}" {
+   Position -2059.338 0 276.202
+  }
+  ShapePoint "{6A8F53842B79B130}" {
+   Position -2046.298 0 469.008
+  }
+  ShapePoint "{6A8F53842ABCEABF}" {
+   Position -2127.817 0 1068.647
+  }
+  ShapePoint "{6A8F538429C2041B}" {
+   Position -2122.809 0 1595.417
+  }
+  ShapePoint "{6A8F538428BAD8F4}" {
+   Position -1760.421 0 1668.891
+  }
+  ShapePoint "{6A8F53842E41B0BF}" {
+   Position -1542.244 0 1285.56
+  }
+  ShapePoint "{6A8F53842DD480C4}" {
+   Position -1115.84 0 1209.306
+  }
+  ShapePoint "{6A8F5384320D954F}" {
+   Position -594.18 0 809.545
+  }
+  ShapePoint "{6A8F538431FB30B1}" {
+   Position 1160.363 0 493.324
+  }
+ }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 5524.625 19.753 1824.855
+ Points {
+  ShapePoint "{6A8F53843FC57072}" {
+   Position 29.459 0 -146.304
+  }
+  ShapePoint "{6A8F53843E73E35B}" {
+   Position -211.218 0 -44.843
+  }
+  ShapePoint "{6A8F53843E8E0180}" {
+   Position -85.1 -0 197.209
+  }
+  ShapePoint "{6A8F53843D2CF371}" {
+   Position 110.542 -0 40.98
+  }
+ }
+}
+COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
+ coords 3397.499 13.866 2285.574
+ Points {
+  ShapePoint "{6A8F5384060E50B5}" {
+   Position 487.889 0 -427.604
+  }
+  ShapePoint "{6A8F53840B118CD7}" {
+   Position 282.752 0 -525.689
+  }
+  ShapePoint "{6A8F53840BE6D74A}" {
+   Position -3.801 0 -412.071
+  }
+  ShapePoint "{6A8F53840AEEDF17}" {
+   Position -330.041 0 -95.05
+  }
+  ShapePoint "{6A8F53840955E886}" {
+   Position -429.657 0 261.825
+  }
+  ShapePoint "{6A8F538409EE0FEA}" {
+   Position -342.147 0 514.845
+  }
+  ShapePoint "{6A8F538408FCEEDF}" {
+   Position -144.319 0 364.734
+  }
+  ShapePoint "{6A8F53840CFA2D4F}" {
+   Position 266.934 0 184.303
+  }
+  ShapePoint "{6A8F538413698F76}" {
+   Position 430.962 -0 -64.646
+  }
+ }
+}
