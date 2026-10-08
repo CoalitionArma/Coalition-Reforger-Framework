@@ -171,6 +171,13 @@ class CRF_AARManager
 	//------------------------------------------------------------------------------------------------
 	protected void OnLookupSuccess(RestCallback callback)
 	{
+		// Only a 200 means the round's AAR page exists (clients copy the link to the clipboard on it)
+		if (callback.GetHttpCode() != HttpCode.HTTP_CODE_200)
+		{
+			RetryLookup();
+			return;
+		}
+
 		int missionId = ParseMissionId(callback.GetData());
 		if (missionId <= 0)
 		{

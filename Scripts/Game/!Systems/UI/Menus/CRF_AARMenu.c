@@ -15,6 +15,8 @@ class COA_AARMenu: ChimeraMenuBase
 	protected static const ResourceName STATS_LAYOUT = "{7CDA3F81B4920E56}UI/layouts/HUD/Intro/CRF_AARStats.layout";
 	protected static const ResourceName CHANNEL_PLAYER_LAYOUT = "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout";
 	protected static const string WEBSITE_AAR_URL = "coalitiongroup.net/aar";
+	// Mission whose AAR link was last copied to the clipboard, so reopening the screen doesn't copy again
+	protected static int s_iClipboardMissionId;
 
 	// Seconds the screen takes to fade in from the outro's black background
 	protected static const float FADE_IN_TIME = 3.0;
@@ -413,10 +415,22 @@ class COA_AARMenu: ChimeraMenuBase
 		if (!m_wLinkText)
 			return;
 
-		if (CRF_AARSessionStats.s_iMissionId > 0)
-			m_wLinkText.SetText(string.Format("Full AAR: %1/%2", WEBSITE_AAR_URL, CRF_AARSessionStats.s_iMissionId));
-		else
+		int missionId = CRF_AARSessionStats.s_iMissionId;
+		if (missionId <= 0)
+		{
 			m_wLinkText.SetText("Past missions: " + WEBSITE_AAR_URL);
+			return;
+		}
+
+		// The server only sends an id once the website lookup answered HTTP 200 (CRF_AARManager), so
+		// the page exists - put the link on the clipboard, once per round
+		if (s_iClipboardMissionId != missionId)
+		{
+			s_iClipboardMissionId = missionId;
+			System.ExportToClipboard(string.Format("https://%1/%2", WEBSITE_AAR_URL, missionId));
+		}
+
+		m_wLinkText.SetText(string.Format("Full AAR: %1/%2  (link copied to clipboard)", WEBSITE_AAR_URL, missionId));
 	}
 
 	//------------------------------------------------------------------------------------------------
