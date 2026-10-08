@@ -1,0 +1,14 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 3858.755 7.323 1966.369
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sDescription "Barricades"
+ }
+ {
+  coords 3113.23 10.069 2642.375
+  angles 0 0 0
+  m_MarkerColor 0.033 0.033 0.033 1
+  m_sDescription "POI Farm- OPFOR BOA"
+ }
+}

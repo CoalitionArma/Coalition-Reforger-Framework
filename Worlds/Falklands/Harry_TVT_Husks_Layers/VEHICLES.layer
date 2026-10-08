@@ -1,0 +1,33 @@
+$grp COA_VehicleSpawner {
+ {
+  coords 5572.141 20.985 1842.468
+  angles 0 -147.826 0
+  m_rVehicle "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et"
+  m_sFactionKey "BLUFOR"
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 5567.149 21.388 1864.751
+  angles 0 120.313 0
+  m_rVehicle "{4E2F7BE504E64AD9}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5552.058 21.46 1871.49
+  angles 0 120.313 0
+  m_rVehicle "{4E2F7BE504E64AD9}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5533.867 21.702 1880.791
+  angles 0 120.313 0
+  m_rVehicle "{4E2F7BE504E64AD9}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 5517.137 21.942 1889.412
+  angles 0 120.313 0
+  m_rVehicle "{4E2F7BE504E64AD9}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
