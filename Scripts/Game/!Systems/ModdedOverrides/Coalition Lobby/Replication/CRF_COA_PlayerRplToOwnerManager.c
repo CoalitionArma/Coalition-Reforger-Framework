@@ -271,6 +271,23 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! AAR screen: whether the website accepted this player's mission rating
+	void ReceiveMissionRatingResult(int rating, bool saved)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveMissionRatingResult(rating, saved);
+		else
+			Rpc(RpcDo_ReceiveMissionRatingResult, rating, saved);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveMissionRatingResult(int rating, bool saved)
+	{
+		CRF_AARSessionStats.SetRatingResult(rating, saved);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Game Master player list: players with an open admin ticket (see RequestZeusTicketHolders)
 	void ReceiveZeusTicketHolders(array<int> playerIds)
 	{

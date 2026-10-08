@@ -224,6 +224,11 @@ modded class COA_SlottingMenu
 			crfComp.SetTagText(tagMgr.GetPlayerTag(crfComp.m_iPlayerId));
 			crfComp.SetRankChevron(tagMgr.GetPlayerXp(crfComp.m_iPlayerId), tagMgr.GetPlayerRankTrack(crfComp.m_iPlayerId));
 		}
+
+		// Player names carry the admin-only lead count (WithLeadCount), which is baked in when a row
+		// is built - rebuild both player lists once so newly arrived counts show
+		m_sPlayerListSignature = "";
+		UpdateUnslottedPlayersList();
 	}
 
 	/**
@@ -428,7 +433,7 @@ modded class COA_SlottingMenu
 				continue;
 			
 			// Add player to unslotted list
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			string playerName = WithLeadCount(playerId, GetGame().GetPlayerManager().GetPlayerName(playerId));
 			string playerTag = "";
 			int unslottedXp = -1;
 			string unslottedTrack = "enlisted";
@@ -467,6 +472,27 @@ modded class COA_SlottingMenu
 	}
 
 	/**
+	 * For admins and moderators, appends how many rounds the player has led a squad or higher
+	 * (from the website's ORBAT history) to help with handing out leadership slots.
+	 */
+	protected string WithLeadCount(int playerId, string playerName)
+	{
+		CRF_CommunityTagManager tagManager = CRF_CommunityTagManager.GetInstance();
+		if (!tagManager)
+			return playerName;
+
+		COA_PermissionManager permissionManager = COA_PermissionManager.GetInstance();
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && !(permissionManager && permissionManager.IsModerator()))
+			return playerName;
+
+		int leads = tagManager.GetPlayerLeadCount(playerId);
+		if (leads <= 0)
+			return playerName;
+
+		return string.Format("%1  ·  Led %2", playerName, leads);
+	}
+
+	/**
 	 * Adds a player to the player list with appropriate faction icon and status color
 	 * @param playerId - ID of the player to add
 	 */
@@ -482,7 +508,7 @@ modded class COA_SlottingMenu
 		 else 
 			playerIconResource = EMPTY_RESOURCE;
 			
-		string displayName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		string displayName = WithLeadCount(playerId, GetGame().GetPlayerManager().GetPlayerName(playerId));
 		string playerTag = "";
 		int playerXp = -1;
 		string playerTrack = "enlisted";

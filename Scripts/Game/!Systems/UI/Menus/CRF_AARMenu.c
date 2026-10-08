@@ -14,6 +14,9 @@ class COA_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 	protected static const ResourceName STATS_LAYOUT = "{7CDA3F81B4920E56}UI/layouts/HUD/Intro/CRF_AARStats.layout";
 	protected static const ResourceName CHANNEL_PLAYER_LAYOUT = "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout";
+	protected static const ResourceName RATING_LAYOUT = "{7C10B6E2A4F95D31}UI/layouts/HUD/AAR/CRF_AARRating.layout";
+	// Unselected rating button (linear colour, matches RateBG in the layout)
+	protected static const ref Color RATING_BUTTON_COLOR = new Color(0.0116, 0.0137, 0.0212, 1);
 	protected static const string WEBSITE_AAR_URL = "coalitiongroup.net/aar";
 	// Mission whose AAR link was last copied to the clipboard, so reopening the screen doesn't copy again
 	protected static int s_iClipboardMissionId;
@@ -63,6 +66,11 @@ class COA_AARMenu: ChimeraMenuBase
 	protected TextWidget m_wTimeText;
 	protected TextWidget m_wPlayersText;
 	protected ButtonWidget m_wBackButton;
+	protected Widget m_wRatingRoot;
+	protected Widget m_wRatingCard;
+	protected TextWidget m_wRatingStatus;
+	protected int m_iPendingRating; // sent, server hasn't answered yet
+	protected bool m_bLastRatingFailed;
 
 	//----------------------------------------
 	// Core Components
@@ -138,6 +146,7 @@ class COA_AARMenu: ChimeraMenuBase
 		SetupInputHandlers();
 		SetupMissionInfo();
 		SetupResultAndLink();
+		CreateRatingCard();
 		SetupFactionFlags();
 		SetupFactionColors();
 		SetupFactionButtons();
@@ -191,6 +200,7 @@ class COA_AARMenu: ChimeraMenuBase
 			m_MenuManager.GetOnPlayerChannelChanged().Remove(OnPlayerChannelChanged);
 
 		CRF_AARSessionStats.s_OnMissionIdReceived.Remove(UpdateLinkText);
+		CRF_AARSessionStats.s_OnRatingResult.Remove(OnRatingResult);
 
 		// Don't leave entrance/drawer animations running against widgets that are going away
 		foreach (Widget animatedWidget : m_aAnimatedWidgets)
@@ -412,6 +422,9 @@ class COA_AARMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateLinkText()
 	{
+		// The rating card waits on the same mission ID
+		UpdateRatingCard();
+
 		if (!m_wLinkText)
 			return;
 
@@ -431,6 +444,100 @@ class COA_AARMenu: ChimeraMenuBase
 		}
 
 		m_wLinkText.SetText(string.Format("Full AAR: %1/%2  (link copied to clipboard)", WEBSITE_AAR_URL, missionId));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! "Rate this mission" card: five buttons, shown once the round's website page is known
+	protected void CreateRatingCard()
+	{
+		m_wRatingRoot = GetGame().GetWorkspace().CreateWidgets(RATING_LAYOUT, m_wRoot);
+		if (!m_wRatingRoot)
+			return;
+
+		m_wRatingCard = m_wRatingRoot.FindAnyWidget("RatingCard");
+		m_wRatingStatus = TextWidget.Cast(m_wRatingRoot.FindAnyWidget("RatingStatus"));
+
+		for (int i = 1; i <= 5; i++)
+		{
+			ButtonWidget button = ButtonWidget.Cast(m_wRatingRoot.FindAnyWidget("Rate" + i));
+			if (!button)
+				continue;
+
+			SCR_ButtonTextComponent buttonComponent = SCR_ButtonTextComponent.Cast(button.FindHandler(SCR_ButtonTextComponent));
+			if (buttonComponent)
+				buttonComponent.m_OnClicked.Insert(OnRateClicked);
+		}
+
+		CRF_AARSessionStats.s_OnRatingResult.Insert(OnRatingResult);
+		UpdateRatingCard();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnRateClicked(SCR_ButtonBaseComponent button)
+	{
+		if (!button || !button.GetRootWidget())
+			return;
+
+		// Buttons are named Rate1 .. Rate5
+		string buttonName = button.GetRootWidget().GetName();
+		int rating = buttonName.Substring(buttonName.Length() - 1, 1).ToInt();
+		if (rating < 1 || rating > 5)
+			return;
+
+		COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (!authorityManager)
+			return;
+
+		authorityManager.SubmitMissionRating(rating);
+
+		m_iPendingRating = rating;
+		UpdateRatingCard();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnRatingResult()
+	{
+		m_iPendingRating = 0;
+		m_bLastRatingFailed = !CRF_AARSessionStats.s_bRatingSaved;
+		UpdateRatingCard();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateRatingCard()
+	{
+		if (!m_wRatingCard)
+			return;
+
+		m_wRatingCard.SetVisible(CRF_AARSessionStats.s_iMissionId > 0);
+
+		int shownRating = CRF_AARSessionStats.s_iRating;
+		if (m_iPendingRating > 0)
+			shownRating = m_iPendingRating;
+
+		for (int i = 1; i <= 5; i++)
+		{
+			Widget background = m_wRatingRoot.FindAnyWidget("RateBG" + i);
+			if (!background)
+				continue;
+
+			// Fill up to the chosen rating, like stars
+			if (i <= shownRating)
+				background.SetColor(COA_PhaseUI.ACCENT);
+			else
+				background.SetColor(RATING_BUTTON_COLOR);
+		}
+
+		if (!m_wRatingStatus)
+			return;
+
+		if (m_iPendingRating > 0)
+			m_wRatingStatus.SetText("Sending...");
+		else if (m_bLastRatingFailed)
+			m_wRatingStatus.SetText("Couldn't save your rating - try again");
+		else if (CRF_AARSessionStats.s_iRating > 0)
+			m_wRatingStatus.SetText(string.Format("Thanks - you rated it %1/5. Click to change.", CRF_AARSessionStats.s_iRating));
+		else
+			m_wRatingStatus.SetText("1 = poor  ·  5 = great");
 	}
 
 	//------------------------------------------------------------------------------------------------

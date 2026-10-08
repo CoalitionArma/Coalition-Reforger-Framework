@@ -5,6 +5,7 @@
 //  - looks up this round's coalitiongroup.net/aar/<id> page from the website backend
 //  - sends every map marker, of every faction, to each client that opens the AAR screen
 //    (clients normally discard other factions' markers - see SCR_MapMarkerManagerComponent)
+//  - forwards players' 1-5 ratings of the round to the website (needs CRF_WebsiteApiConfig)
 //------------------------------------------------------------------------------------------------
 class CRF_AARManager
 {
@@ -15,6 +16,9 @@ class CRF_AARManager
 	protected static const string CURRENT_MISSION_ENDPOINT = "api/game/current-mission?name=";
 	protected static const int LOOKUP_RETRY_MS = 15000;
 	protected static const int LOOKUP_MAX_ATTEMPTS = 4;
+	protected static const string MISSION_RATING_ENDPOINT = "api/game/mission-rating";
+	// A player can change their rating, but not faster than this
+	protected static const int RATING_COOLDOWN_MS = 2000;
 
 	// Markers are streamed in small batches so a full map doesn't arrive as one burst of RPCs
 	protected static const int MARKERS_PER_BATCH = 10;
@@ -27,6 +31,11 @@ class CRF_AARManager
 	// playerId -> marker IDs still to send to that player
 	protected ref map<int, ref array<int>> m_mPendingMarkers = new map<int, ref array<int>>();
 	protected ref set<int> m_sPlayersServed = new set<int>();
+
+	// Rating requests waiting on the website, and each player's last submission time (world ms)
+	protected ref array<ref CRF_MissionRatingRequest> m_aRatingRequests = {};
+	protected ref map<int, int> m_mLastRatingTime = new map<int, int>();
+	protected bool m_bWarnedMissingKey;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_AARManager GetInstance()
@@ -54,6 +63,7 @@ class CRF_AARManager
 		GetGame().GetCallqueue().Remove(SendMarkerBatch);
 		m_mPendingMarkers.Clear();
 		m_sPlayersServed.Clear();
+		m_mLastRatingTime.Clear();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -257,6 +267,84 @@ class CRF_AARManager
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
+//	 MISSION RATING
+//=============================================================================================================================================================================================================================================================================================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: a player rated the round 1-5 on the AAR screen. Posted to the website against this
+	//! round's mission ID; the player is told whether it was saved.
+	void SubmitRating(int playerId, int rating)
+	{
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(playerId);
+		if (!ownerManager)
+			return;
+
+		int now = GetGame().GetWorld().GetWorldTime();
+		int lastRating;
+		bool onCooldown = m_mLastRatingTime.Find(playerId, lastRating) && now - lastRating < RATING_COOLDOWN_MS;
+
+		if (rating < 1 || rating > 5 || m_iMissionId <= 0 || onCooldown)
+		{
+			ownerManager.ReceiveMissionRatingResult(rating, false);
+			return;
+		}
+
+		string key = CRF_WebsiteApiConfig.GetGameServerKey();
+		RestApi rest = GetGame().GetRestApi();
+		if (key.IsEmpty() || !rest)
+		{
+			if (!m_bWarnedMissingKey)
+			{
+				m_bWarnedMissingKey = true;
+				Print("[CRF_AARManager] No gameServerKey in $profile:CRF_WebsiteApiConfig.json - mission ratings are not sent", LogLevel.WARNING);
+			}
+
+			ownerManager.ReceiveMissionRatingResult(rating, false);
+			return;
+		}
+
+		RestContext context = rest.GetContext(API_BASE_URL);
+		if (!context)
+			return;
+
+		m_mLastRatingTime.Set(playerId, now);
+
+		string guid = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		string payload = string.Format("{\"missionId\":%1,\"guid\":\"%2\",\"name\":\"%3\",\"rating\":%4}",
+			m_iMissionId, EscapeJsonString(guid), EscapeJsonString(playerName), rating);
+
+		CRF_MissionRatingRequest request = new CRF_MissionRatingRequest(this, playerId, rating);
+		m_aRatingRequests.Insert(request);
+
+		context.SetHeaders("Content-Type,application/json,x-game-server-key," + key);
+		context.POST(request.m_Callback, MISSION_RATING_ENDPOINT, payload);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called by CRF_MissionRatingRequest when the website answers (or the request fails)
+	void OnRatingRequestFinished(CRF_MissionRatingRequest request, bool saved)
+	{
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(request.m_iPlayerId);
+		if (ownerManager)
+			ownerManager.ReceiveMissionRatingResult(request.m_iRating, saved);
+
+		if (!saved)
+			Print(string.Format("[CRF_AARManager] Website rejected mission rating from player %1 (HTTP %2)", request.m_iPlayerId, request.m_Callback.GetHttpCode()), LogLevel.WARNING);
+
+		m_aRatingRequests.RemoveItem(request);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected static string EscapeJsonString(string value)
+	{
+		string escaped = value;
+		escaped.Replace("\\", "\\\\");
+		escaped.Replace("\"", "\\\"");
+		return escaped;
+	}
+
+//=============================================================================================================================================================================================================================================================================================================================================================
 //	 MAP MARKERS
 //=============================================================================================================================================================================================================================================================================================================================================================
 
@@ -337,5 +425,40 @@ class CRF_AARManager
 
 		if (!m_mPendingMarkers.IsEmpty())
 			GetGame().GetCallqueue().CallLater(SendMarkerBatch, MARKER_BATCH_INTERVAL_MS, false);
+	}
+}
+
+
+//------------------------------------------------------------------------------------------------
+//! One in-flight POST of a player's mission rating (see CRF_AARManager.SubmitRating)
+class CRF_MissionRatingRequest
+{
+	ref RestCallback m_Callback = new RestCallback();
+	int m_iPlayerId;
+	int m_iRating;
+	protected CRF_AARManager m_Owner;
+
+	//------------------------------------------------------------------------------------------------
+	void CRF_MissionRatingRequest(CRF_AARManager owner, int playerId, int rating)
+	{
+		m_Owner = owner;
+		m_iPlayerId = playerId;
+		m_iRating = rating;
+		m_Callback.SetOnSuccess(OnSuccess);
+		m_Callback.SetOnError(OnError);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnSuccess(RestCallback callback)
+	{
+		if (m_Owner)
+			m_Owner.OnRatingRequestFinished(this, callback.GetHttpCode() == HttpCode.HTTP_CODE_200);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnError(RestCallback callback)
+	{
+		if (m_Owner)
+			m_Owner.OnRatingRequestFinished(this, false);
 	}
 }

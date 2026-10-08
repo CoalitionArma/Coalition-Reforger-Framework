@@ -274,6 +274,25 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! AAR screen: the local player's 1-5 rating of the round, forwarded to the website
+	void SubmitMissionRating(int rating)
+	{
+		Rpc(RpcAsk_SubmitMissionRating, rating);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SubmitMissionRating(int rating)
+	{
+		LogTelemetry("RpcAsk_SubmitMissionRating", COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		CRF_AARManager.GetInstance().SubmitRating(GetCallerPlayerId(), rating);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Game Master player list: move the caller's editor camera to a player the caller's client has
 	//! not streamed in (see CRF_ZeusPlayerList.FocusCameraOnPlayer)
 	void RequestZeusCameraToPlayer(int targetPlayerId)
